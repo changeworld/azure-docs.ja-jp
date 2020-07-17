@@ -4,16 +4,16 @@ description: Azure Automation を使用して Windows Virtual Desktop のセッ�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362545"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
@@ -33,7 +33,7 @@ ms.locfileid: "83745704"
 スケーリング ツールでは、セッション ホスト VM のコストを最適化したいお客様のために低コストの自動化オプションを提供しています。
 
 スケーリング ツールを使用すると、次の操作を行えます。
- 
+
 - ピーク時とピーク時以外の営業時間に基づいて、VM の起動と停止をスケジュールします。
 - CPU コアあたりのセッション数に基づいて VM をスケールアウトします。
 - ピーク時以外の時間帯に VM をスケールインして、最低限の数のセッション ホスト VM だけを実行状態のままにします。
@@ -67,7 +67,7 @@ ms.locfileid: "83745704"
 - 構成されて Windows Virtual Desktop サービスに登録されたセッション ホスト プール VM
 - Azure サブスクリプション対する[共同作成者のアクセス権](../../role-based-access-control/role-assignments-portal.md)を持っているユーザー
 
-ツールのデプロイに使用するマシンには、次のものが必要です。 
+ツールのデプロイに使用するマシンには、次のものが必要です。
 
 - Windows PowerShell 5.1 以降
 - Microsoft Az PowerShell モジュール
@@ -106,7 +106,8 @@ ms.locfileid: "83745704"
 
 6. Azure Automation アカウントの設定が完了したら、Azure サブスクリプションにサインインし、次の図に示すように、指定のリソースグループに Azure Automation アカウントと関連する Runbook が表示されていることを確認します。
 
-![新しく作成した Automation アカウントと Runbook を示す Azure の概要ページの画像。](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![新しく作成した Automation アカウントと Runbook を示す Azure の概要ページの画像。](../media/automation-account.png)
 
   Webhook が必要な場所にあるかどうかを確認するには、Runbook の名前を選択します。 次に、Runbook の Resources セクションに移動して、 **[Webhooks]** を選択します。
 
@@ -180,21 +181,21 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +205,12 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 
@@ -236,11 +237,13 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      スクリプトを実行すると、次の図に示すように、ロジック アプリがリソース グループに表示されます。
 
-     ![Azure ロジック アプリの例を表す概要ページの画像。](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![Azure ロジック アプリの例を表す概要ページの画像。](../media/logic-app.png)
 
 繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Logic Apps デザイナーに移動します。
 
-![Logic Apps デザイナーの画像。 繰り返し時間と Webhook ファイルを編集できる [繰り返し] メニューと [Webhook] メニューが開いています。](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![Logic Apps デザイナーの画像。 繰り返し時間と Webhook ファイルを編集できる [繰り返し] メニューと [Webhook] メニューが開いています。](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>スケーリング ツールを管理する
 
@@ -252,7 +255,8 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
 選択した Automation アカウントの右側にある [ジョブの統計情報] で、すべての Runbook ジョブの概要の一覧を表示できます。 ウィンドウの左側にある **[ジョブ]** ページを開くと、現在のジョブの状態、開始時刻、完了時刻が表示されます。
 
-![ジョブの状態ページのスクリーンショット。](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![ジョブの状態ページのスクリーンショット。](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>ログとスケーリング ツールの出力を見る
 
@@ -260,5 +264,6 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
 Azure Automation アカウントをホストしているリソース グループの Runbook (既定の名前は WVDAutoScaleRunbook) に移動して、 **[概要]** を選択します。 [概要] ページで、[最近のジョブ] の下にあるジョブを選択すると、次の図に示すようなスケーリング ツールの出力が表示されます。
 
-![スケーリング ツールの出力ウィンドウの画像。](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![スケーリング ツールの出力ウィンドウの画像。](../media/tool-output.png)
 

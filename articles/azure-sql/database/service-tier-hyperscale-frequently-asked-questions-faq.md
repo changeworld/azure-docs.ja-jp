@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084343"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231592"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,12 +45,12 @@ ms.locfileid: "86084343"
 | **最適な用途** |All|予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。|ほとんどのビジネス ワークロード。 最大 100 TB のストレージ サイズの自動スケーリング、垂直および水平方向への高速コンピューティング スケーリング、データベースの高速復元。|トランザクション レートが高く IO 待ち時間が低い OLTP アプリケーション。 同期的に更新された複数のレプリカを使用して、最高の耐障害性と高速フェールオーバーを提供します。|
 |  **リソースの種類** ||SQL Database/SQL Managed Instance | 単一データベース | SQL Database/SQL Managed Instance |
 | **コンピューティング サイズ**|SQL Database* | 1 - 80 の仮想コア | 1 - 80 の仮想コア * | 1 - 80 の仮想コア |
-| |SQL Managed Instance | 8、16、24、32、40、64、80 の仮想コア | 該当なし | 8、16、24、32、40、64、80 の仮想コア |
+| **コンピューティング サイズ**|SQL Managed Instance | 8、16、24、32、40、64、80 の仮想コア | 該当なし | 8、16、24、32、40、64、80 の仮想コア |
 | **ストレージの種類** | All |Premium リモート ストレージ (インスタンスあたり) | ローカル SSD キャッシュを使用して切り離したストレージ (インスタンスあたり) | 超高速ローカル SSD ストレージ (インスタンスあたり) |
 | **ストレージ サイズ** | SQL Database *| 5 GB – 4 TB | 最大 100 TB | 5 GB – 4 TB |
-| | SQL Managed Instance  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
+| **ストレージ サイズ** | SQL Managed Instance  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
 | **IOPS** | 単一データベース | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。 | 5000 IOPS (最大 200,000 IOPS)|
-| | SQL Managed Instance | ファイル サイズによって異なる | 該当なし | 1375 IOPS/仮想コア |
+| **IOPS** | SQL Managed Instance | ファイル サイズによって異なる | 該当なし | 1375 IOPS/仮想コア |
 |**可用性**|All|1 レプリカ、読み取りスケールアウトなし、ローカル キャッシュなし | 複数のレプリカ、最大 4 読み取りスケールアウト、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケールアウト、ゾーン冗長 HA、完全ローカル ストレージ |
 |**バックアップ**|All|RA-GRS、7 から 35 日のリテンション期間 (既定では 7 日)| RA-GRS、7 日のリテンション期間、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 から 35 日のリテンション期間 (既定では 7 日) |
 
