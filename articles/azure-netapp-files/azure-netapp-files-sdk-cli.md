@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 93d51681a703258477baa81cc8737fefd4955e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731680"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045469"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK および CLI ツール
 
@@ -29,7 +29,7 @@ ms.locfileid: "82731680"
 
 次の表は、サポートされる SDK の一覧です。  サポートされている SDK の詳細については、GitHub の公開場所を参照してください。  
 
-|    言語    |    GitHub の SDK の公開場所    |
+|    Language    |    GitHub の SDK の公開場所    |
 |------------------|--------------------------------------------------------------|
 |    .NET  |    [Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
@@ -49,12 +49,7 @@ ms.locfileid: "82731680"
 
 ## <a name="code-samples"></a>コード サンプル
 
-次の表は、参照用としてコード サンプルをまとめたものです。   
-
-|    言語/ツール    |    コード サンプル ドキュメント    |
-|------------------|--------------------------------------------|
-|    .NET   |    [.NETCore 用の Azure NetApp Files SDK サンプル](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
-|    Python    |    [Python 用の Azure NetApp Files SDK サンプル](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+[Azure NetApp Files のコード サンプル](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ   
  [Azure SDK のダウンロード](https://azure.microsoft.com/downloads/)

@@ -3,15 +3,15 @@ title: ストアドプロシージャ、トリガー、および UDF を Azure C
 description: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を定義する方法について説明します
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262873"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -52,21 +52,42 @@ var helloWorldStoredProc = {
 
 ストアド プロシージャには、説明を設定するパラメーターも含まれており、このパラメーターはブール値です。 パラメーターが true に設定されているときに説明が存在しないと、ストアド プロシージャは例外をスローします。 そうでない場合、ストアド プロシージャの残りの部分が引き続き実行されます。
 
-次のサンプル ストアド プロシージャは、新しい Azure Cosmos 項目を入力として受け取り、Azure Cosmos コンテナーに挿入し、新しく作成された項目の ID を返します。 この例では、[クイック スタート .NET SQL API](create-sql-api-dotnet.md) のToDoList サンプルを使用します。
+次のストアド プロシージャの例では、新しい Azure Cosmos 項目の配列を入力として受け取り、それを Azure Cosmos コンテナーに挿入して、挿入された項目の数を返します。 この例では、[クイック スタート .NET SQL API](create-sql-api-dotnet.md) のToDoList サンプルを使用します。
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 

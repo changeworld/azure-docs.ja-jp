@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: cba39b1631988ec33fb349357de3efa6a321fc03
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 80fa5b7264d675317fba3cc12fa5049bdea76906
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032303"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042579"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに Azure SQL Database エラスティック プールを追加する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -268,7 +268,7 @@ Azure portal を使用して、フェールオーバー グループのフェー
 1. 作業ウィンドウで **[フェールオーバー]** を選択し、エラスティック プールを含むフェールオーバー グループをフェールオーバーします。
 1. TDS セッションが切断されることが通知される警告で **[はい]** を選択します。
 
-   ![SQL データベースを含むフェールオーバー グループをフェールオーバーする](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
+   ![データベースが含まれるフェールオーバー グループをフェールオーバーする](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
 
 1. どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 フェールオーバーが成功すると、2 つのサーバー ロールがスワップされているはずです。
 1. フェールオーバー グループを元の設定に戻すには、 **[フェールオーバー]** をもう一度選択します。

@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690902"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298499"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -242,11 +242,16 @@ ms.locfileid: "82690902"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-すべての関数のタイムアウト期間を示します。 これは、期間文字列形式に従います。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。  
+すべての関数のタイムアウト期間を示します。 これは、期間文字列形式に従います。 
 
-Premium プランの有効な範囲は 1 秒から 60 分で、既定値は 30 分です。
+| プランの種類 | 既定値 (分) | 最大値 (分) |
+| -- | -- | -- |
+| 従量課金 | 5 | 10 |
+| Premium<sup>1</sup> | 30 | -1 (無制限)<sup>2</sup> |
+| 専用 (App Service) | 30 | -1 (無制限)<sup>2</sup> |
 
-専用 (App Service) プランでは、全体的な制限はなく、既定値は 30 分です。 `-1` の値は無制限の実行を示しますが、固定の上限を維持することをお勧めします。
+<sup>1</sup> Premium プランの実行が保証されるのは 60 分間のみですが、技術的には無制限です。   
+<sup>2</sup> `-1` の値は無制限の実行を示しますが、固定の上限を維持することをお勧めします。
 
 ```json
 {

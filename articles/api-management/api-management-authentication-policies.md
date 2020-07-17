@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 70f124a498ff4aa45b5d90f6221fe3d0121e804a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557986"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -77,14 +77,23 @@ ms.locfileid: "84221041"
 
 ### <a name="examples"></a>例
 
-この例では、クライアントの証明書は拇印によって識別されます。
+この例では、クライアント証明書はサムプリントによって識別されます。
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-この例では、クライアントの証明書はリソース名によって識別されます。
+
+この例では、クライアント証明書はリソース名によって識別されます。
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+この例では、クライアント証明書は、組み込みの証明書ストアから取得されるのではなく、ポリシーで設定されています。
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>要素  
   
@@ -96,8 +105,10 @@ ms.locfileid: "84221041"
   
 |名前|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
-|証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
+|thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|
+|証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|
+|body|バイト配列としてのクライアント証明書。|いいえ|該当なし|
+|password|クライアント証明書のパスワード。|`body` で指定された証明書がパスワードで保護されている場合に使用されます。|該当なし|
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -107,12 +118,14 @@ ms.locfileid: "84221041"
 -   **ポリシー スコープ:** すべてのスコープ  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> マネージド ID による認証  
- `authentication-managed-identity` ポリシーを使用して、API Management サービスのマネージド ID を利用したバックエンド サービスによる認証を行います。 このポリシーでは、指定されたリソースにアクセスするためのアクセス トークンを Azure Active Directory から取得するために、基本的にマネージド ID を利用します。 トークンが正常に取得されると、ポリシーは、`Bearer` スキームを使用してトークンの値を `Authorization` ヘッダーに設定します。
+ `authentication-managed-identity` ポリシーを使用して、マネージド ID を利用するバックエンド サービスで認証します。 このポリシーでは、指定されたリソースにアクセスするためのアクセス トークンを Azure Active Directory から取得するために、基本的にマネージド ID を利用します。 トークンが正常に取得されると、ポリシーは、`Bearer` スキームを使用してトークンの値を `Authorization` ヘッダーに設定します。
+
+システムによって割り当てられた ID と、ユーザーが割り当てた複数の ID のいずれかの、どちらを使用してもトークンを要求できます。 `client-id` が指定されていない場合、システムによって割り当てられた ID が指定されたと見なされます。 `client-id` 変数が指定されている場合、そのユーザー割り当て ID のトークンが Azure Active Directory に要求されます
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>例  
@@ -127,7 +140,7 @@ ms.locfileid: "84221041"
 <authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
 ```
 ```xml  
-<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Busr-->
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Bus-->
 ```
 ```xml  
 <authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
@@ -169,7 +182,8 @@ ms.locfileid: "84221041"
   
 |名前|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
-|resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID (セキュリティで保護されたリソース)。|はい|該当なし|  
+|resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID (セキュリティで保護されたリソース)。|はい|該当なし|
+|client-id|文字列 をオンにします。 Azure Active Directory のユーザー割り当て ID のアプリ ID。|いいえ|システム割り当て ID|
 |output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。 |いいえ|該当なし|  
 |ignore-error|Boolean です。 `true` に設定された場合、アクセス トークンが取得されなかったとしても、ポリシー パイプラインは引き続き実行されます。|いいえ|false|  
   

@@ -1,35 +1,39 @@
 ---
-title: モデルのパフォーマンスを評価する
+title: モデルの評価とクロス検証
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法と、このタスクで使用できるメトリックについて説明します。
+description: Azure Machine Learning Studio (classic) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945105"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法
+# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) でモデルのパフォーマンスを評価する
 
-この記事では、Azure Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法を紹介し、このタスクで使用できるメトリックについて簡単に説明します。 以下の 3 種類の学習のシナリオを取り上げます。 
+この記事では、Azure Machine Learning Studio (classic) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。  モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 Azure Machine Learning Studio (クラシック) では、 
++ [モデルの評価][evaluate-model] 
++ [モデルのクロス検証][cross-validate-model]
 
+これらのモジュールを使用すれば、機械学習と統計情報でよく使用されるさまざまなメトリックの観点からモデルのパフォーマンスを確認できます。
+
+モデルの評価は、以下と一緒に検討する必要があります。
++ [アルゴリズムのパラメーターの最適化](algorithm-parameters-optimize.md)
++ [モデルの解釈可能性](interpret-model-results.md)
+
+以下の 3 種類の学習のシナリオを取り上げます。 
 * 回帰
 * 二項分類 
 * 多クラス分類
 
-
-
-モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 
-
-Azure Machine Learning Studio (クラシック) では、[モデルの評価][evaluate-model]と[モデルのクロス検証][cross-validate-model]という 2 つの主な機械学習モジュールによってモデルの評価を行えます。 これらのモジュールを使用すれば、機械学習と統計情報でよく使用されるさまざまなメトリックの観点からモデルのパフォーマンスを確認できます。
 
 ## <a name="evaluation-vs-cross-validation"></a>評価とクロス検証
 評価とクロス検証は、モデルのパフォーマンスを測定する標準的な方法です。 どちらの場合も評価メトリックが生成されるので、そのメトリックを確認したり、他のモデルと比較したりできます。

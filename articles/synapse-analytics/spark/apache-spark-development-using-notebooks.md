@@ -1,24 +1,25 @@
 ---
-title: Azure Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
+title: Synapse Studio ノートブック
 description: この記事では、データの準備と視覚化を行うために、Azure Synapse Studio (プレビュー) ノートブックを作成および開発する方法について学習します。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: tracking-python
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702102"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045690"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
 
-Azure Synapse Studio (プレビュー) ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
+Synapse Studio (プレビュー) ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
 
 Azure Synapse Studio ノートブックでは、次のことができます。
 
@@ -109,7 +110,7 @@ Synapse Studio ノートブックでは、異なる言語間でデータや変�
 
 ### <a name="ide-style-intellisense"></a>IDE スタイルの IntelliSense
 
-Azure Synapse Studio ノートブックは、IDE スタイルの IntelliSense をセル エディターに取り込むために、Monaco エディターと統合されています。 構文の強調表示、エラー マーカー、および自動コード補完は、コードを記述して問題をより迅速に特定するのに役立ちます。
+Azure Synapse Studio ノートブックは、IDE スタイルの IntelliSense をセル エディターに取り込むために、Monaco エディターと統合されています。 構文の強調表示、エラー マーカー、および自動コード補完は、コードを記述したり、問題をより迅速に特定したりするために役立ちます。
 
 IntelliSense の機能は、言語によって異なる成熟度レベルにあります。 次の表を使用して、サポートされているものを確認してください。
 
@@ -343,7 +344,7 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することはできません。 `Enter` キーを押すか、マウスを使用してセルのエディター領域をクリックし、編集モードに入ります。
+2. 編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することができます。 `Enter` キーを押すか、マウスを使用してセルのエディター領域をクリックし、編集モードに入ります。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

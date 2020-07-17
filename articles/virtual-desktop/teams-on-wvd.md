@@ -4,16 +4,16 @@ description: Windows Virtual Desktop で Microsoft Teams を使用する方法�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564461"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
@@ -32,7 +32,7 @@ Microsoft Teams のメディア最適化では、Teams を使った通話と会�
 Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作を行う必要があります。
 
 - Microsoft Teams 用の[ネットワークを準備します](/microsoftteams/prepare-network/)。
-- [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 デバイスに [Windows デスクトップ クライアント](connect-windows-7-and-10.md)をインストールします。
+- [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアント](connect-windows-7-and-10.md)をインストールします。
 - Windows 10 マルチセッションまたは Windows 10 Enterprise 仮想マシン (VM) に接続します。
 - マシン単位のインストールを使って、ホストに Teams のデスクトップ アプリをインストールします。 Microsoft Teams のメディア最適化の利用には、Teams デスクトップ アプリのバージョン 1.3.00.4461 以降が必要です。
 
@@ -42,7 +42,7 @@ Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作
 
 ### <a name="prepare-your-image-for-teams"></a>Teams 用のイメージを準備する
 
-Teams をコンピューター別にインストールするには、ホストで次のレジストリ キーを設定します。
+Teams でメディアの最適化を有効にするには、ホストで次のレジストリ キーを設定します。
 
 1. スタート メニューから、**RegEdit** を管理者として実行します。 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** に移動します。
 2. Teams のキー用に以下の値を作成します。
@@ -53,33 +53,43 @@ Teams をコンピューター別にインストールするには、ホスト�
 
 ### <a name="install-the-teams-websocket-service"></a>Teams WebSocket Service をインストールする
 
-VM イメージに [WebSocket Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vkL6) をインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
+VM イメージに [WebSocket Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) をインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
 
 ### <a name="install-microsoft-teams"></a>Microsoft Teams をインストールする
 
-コンピューター別のインストールを使用して、Teams のデスクトップ アプリを展開できます。 Microsoft Teams を Windows Virtual Desktop 環境にインストールするには、次のようにします。
+コンピューター別またはユーザー別のインストールを使用して、Teams のデスクトップ アプリを展開できます。 Microsoft Teams を Windows Virtual Desktop 環境にインストールするには、次のようにします。
 
 1. 環境に合った [Teams MSI パッケージ](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/)をダウンロードします。 64 ビットのオペレーティング システムでは、64 ビットのインストーラーを使用することをお勧めします。
 
       > [!NOTE]
       > Microsoft Teams のメディア最適化の利用には、Teams デスクトップ アプリのバージョン 1.3.00.4461 以降が必要です。
 
-2. 次のコマンドを実行して、ホスト VM に MSI をインストールします。
+2. 次のいずれかのコマンドを実行して、ホスト VM に MSI をインストールします。
 
-      ```console
-      msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
-      ```
+    - ユーザー別のインストール
 
-      これにより、64 ビット オペレーティング システム上の Program Files (x86) フォルダーと、32 ビット オペレーティング システム上の Program Files フォルダーに Teams がインストールされます。 この時点で、ゴールデン イメージのセットアップが完了しています。 非永続的なセットアップのためには、マシン単位で Teams をインストールする必要があります。
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        ```
 
-      次にセッションで Teams を開いたときに、資格情報の入力を求められます。
+        この処理は、 **%AppData%** ユーザー フォルダーに Teams をインストールする既定のインストールです。 非永続的なセットアップへのユーザー別のインストールでは、Teams は正しく機能しません。
 
-      > [!NOTE]
-      > この時点では、ユーザーと管理者がサインイン中に Teams の自動起動を無効にすることはできません。
+    - コンピューター別のインストール
 
-      ホスト VM から MSI をアンインストールするには、次のコマンドを実行します。
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        ```
 
-      ```console
+        これにより、64 ビット オペレーティング システム上の Program Files (x86) フォルダーと、32 ビット オペレーティング システム上の Program Files フォルダーに Teams がインストールされます。 この時点で、ゴールデン イメージのセットアップが完了しています。 非永続的なセットアップのためには、マシン単位で Teams をインストールする必要があります。
+
+        次にセッションで Teams を開いたときに、資格情報の入力を求められます。
+
+        > [!NOTE]
+        > この時点では、ユーザーと管理者がサインイン中に Teams の自動起動を無効にすることはできません。
+
+3. ホスト VM から MSI をアンインストールするには、次のコマンドを実行します。
+
+      ```powershell
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
@@ -125,7 +135,7 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 
 Teams の既知の問題のうち、仮想環境に関係のないものについては、[組織における Teams のサポート](/microsoftteams/known-issues/)に関するページを参照してください。
 
-## <a name="feedback"></a>フィードバック
+## <a name="uservoice-site"></a>UserVoice サイト
 
 Windows Virtual Desktop 上の Microsoft Teams に関するフィードバックは、[UserVoice サイト](https://microsoftteams.uservoice.com/)からお送りください。
 
@@ -137,7 +147,7 @@ Windows Virtual Desktop 環境で Teams デスクトップ アプリに問題が
 
 ## <a name="contact-microsoft-teams-support"></a>Microsoft Teams サポートに問い合わせる
 
-Microsoft Teams サポートに問い合わせる場合には、[Microsoft 365 管理センター](https://docs.microsoft.com/microsoft-365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=online)にアクセスしてください。
+Microsoft Teams サポートに問い合わせる場合には、[Microsoft 365 管理センター](/microsoft-365/admin/contact-support-for-business-products)にアクセスしてください。
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル プロパティをカスタマイズする
 

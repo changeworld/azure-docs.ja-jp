@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864336"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481835"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割
 
@@ -34,6 +34,14 @@ Azure Cosmos DB は、ハッシュベースのパーティション分割を使�
 [Azure Cosmos DB でパーティションを管理する方法](partition-data.md)の詳細を参照できます。 (アプリケーションをビルドまたは実行するために内部の詳細を理解する必要はありませんが、興味がある方のためにここに追加されています。)
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>パーティション キーを使用する場合
+
+パーティション キーには、**パーティション キーのパス**と**パーティション キーの値**の 2 つのコンポーネントがあります。 例として、項目 { "userId" :"Andrew", "worksFor":"Microsoft" } について考えてみます。パーティション キーとして "userId" を選択した場合、パーティション キーの 2 つのコンポーネントは次のようになります。
+
+* パーティション キーのパス (例: "/userId")。 パーティション キーのパスには、英数字とアンダースコア (_) 文字を使用できます。 また、標準パス表記 (/) を使用して、入れ子になったオブジェクトを使用することもできます。
+
+* パーティション キーの値 (例:"Andrew")。 パーティション キーの値には、文字列型または数値型を使用できます。
+
+パーティション キーのスループット、ストレージ、および長さの制限については、記事「[Azure Cosmos DB サービスのクォータ](concepts-limits.md)」を参照してください。
 
 パーティション キーの選択はシンプルですが、Azure Cosmos DB での設計上の重要な選択です。 パーティション キーを選択した後は、その場で変更することはできません。 パーティション キーを変更する必要がある場合は、新しい必要なパーティション キーを使用して、新しいコンテナーにデータを移動する必要があります。
 

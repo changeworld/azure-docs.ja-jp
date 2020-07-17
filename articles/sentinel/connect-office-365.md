@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Office 365 のログを接続する | Microsoft Docs
-description: Azure Sentinel に Office 365 データを接続する方法について説明します。
+description: Office 365 のログ コネクタを使用して、Exchange と SharePoint (OneDrive を含む) で実行中のユーザーと管理者のアクティビティに関する情報を取得する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: yelevin
-ms.openlocfilehash: bcd00247486faeea47ef4a4a43fa1df5420321e6
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559335"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Azure Sentinel に Office 365 のログを接続する
 

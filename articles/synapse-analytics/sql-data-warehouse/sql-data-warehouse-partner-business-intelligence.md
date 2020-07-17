@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e529e398b90050bf654c702ec34686bdc173c9e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85299332"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics のビジネス インテリジェンス パートナー
 
@@ -44,6 +44,6 @@ Azure Synapse 内で Synapse SQL プールを使用して完全なデータ ウ�
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>次の手順
-その他のパートナーの詳細については、[データ統合パートナー](sql-data-warehouse-partner-data-integration.md)に関するページと[データ管理パートナー](sql-data-warehouse-partner-data-management.md)に関するページをご覧ください。
+その他のパートナーの詳細については、「[データ統合パートナー](sql-data-warehouse-partner-data-integration.md)」、「[データ管理パートナー](sql-data-warehouse-partner-data-management.md)」、および[機械学習と AI のパートナー](sql-data-warehouse-partner-machine-learning-ai.md)に関するページを参照してください。
 
  

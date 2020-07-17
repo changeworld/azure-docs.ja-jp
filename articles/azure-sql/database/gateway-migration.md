@@ -2,32 +2,47 @@
 title: ゲートウェイ トラフィックの移行に関する注意事項
 description: Azure SQL Database ゲートウェイの IP アドレスの移行についてユーザーにお知らせする記事です
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: sqldbrb=1 
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: f5e45a4625b1cf9422f7ef7e10e9080a7878172d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028753"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084955"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure インフラストラクチャの機能強化に伴い、Microsoft は可能な限り最高のカスタマー エクスペリエンスを提供するためにハードウェアを定期的に更新しています。 これから数か月間で、より新しいハードウェア世代で構築されたゲートウェイを追加して、それらにトラフィックを移行し、一部のリージョンでは以前のハードウェアで構築されたゲートウェイの使用を最終的に停止する予定です。  
+Azure インフラストラクチャの機能強化に伴い、Microsoft は可能な限り最高のカスタマー エクスペリエンスを提供するためにハードウェアを定期的に更新しています。 今後数か月間で、より新しいハードウェア世代に基づくゲートウェイを追加し、それらにトラフィックを移行して、最終的に一部のリージョンでは以前のハードウェアに基づくゲートウェイの使用を停止する予定です。  
 
 各リージョンで使用できるゲートウェイが変更される場合は、事前にメールと Azure portal でお客様にお知らせします。 最新の情報は、「[Azure SQL Database ゲートウェイ IP アドレス](connectivity-architecture.md#gateway-ip-addresses)」の表に保持される予定です。
 
-## <a name="impact-of-this-change"></a>この変更の影響
+## <a name="status-updates"></a>ステータスの更新
 
-より新しいゲートウェイへの最初のトラフィックの移行は、次のリージョンで **2019 年 10 月 14 日**に予定されています。
+# <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
 
+### <a name="august-2020"></a>2020 年 8 月
+
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
+- オーストラリア東部: 13.70.112.9
+- カナダ中部: 52.246.152.0、20.38.144.1 
+- 米国西部 2: 40.78.240.8
+
+これらの SQL ゲートウェイは、2020 年 8 月 10 日にお客様のトラフィックの受け入れを開始します。 
+
+# <a name="completed"></a>[完了](#tab/completed-ip)
+
+次のゲートウェイの移行が完了しました。 
+
+### <a name="october-2019"></a>2019 年 10 月
 - ブラジル南部
 - 米国西部
 - 西ヨーロッパ
@@ -42,13 +57,18 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - 米国東部 2
 - 東アジア
 
-トラフィックの移行により、ご利用の SQL Database に対して DNS で解決されるパブリック IP アドレスが変更されます。
-次の場合、影響を受けます。
+---
+
+## <a name="impact-of-this-change"></a>この変更の影響
+
+トラフィックの移行により、Azure SQL Database のデータベースに対して DNS で解決されるパブリック IP アドレスが変更される場合があります。
+次の場合に影響を受ける可能性があります。
 
 - オンプレミスのファイアウォールで特定のゲートウェイに対して IP アドレスをハードコーディングしている
 - サービス エンドポイントとして Microsoft.SQL を使用しているサブネットがあるが、ゲートウェイ IP アドレスと通信できない
+- データベースに対して[ゾーン冗長構成](high-availability-sla.md#zone-redundant-configuration)を使用している
 
-次の場合、影響を受けません。
+次の場合は影響を受けません。
 
 - 接続ポリシーとしてのリダイレクトがある
 - Azure の内部から SQL Database へのサービス タグを使用した接続がある

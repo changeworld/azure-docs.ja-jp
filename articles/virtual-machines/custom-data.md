@@ -7,18 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678360"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
 
-## <a name="what-is-custom-data"></a>カスタム データとは
-
-お客様はしばしば、プロビジョニング時にスクリプトまたはその他のメタデータを Microsoft Azure 仮想マシンに挿入する方法について質問されます。  他のクラウドでは、この概念は多くの場合、ユーザー データと呼ばれます。  Microsoft Azure には、カスタム データと呼ばれる同様の機能があります。 
+プロビジョニング時にスクリプトまたはその他のメタデータを Microsoft Azure 仮想マシンに挿入する必要がある場合があります。  他のクラウドでは、この概念は多くの場合、ユーザー データと呼ばれます。  Microsoft Azure には、カスタム データと呼ばれる同様の機能があります。 
 
 カスタム データは、最初の起動時または初期セットアップ時にのみ VM で使用可能になります。これを "プロビジョニング" と呼びます。 プロビジョニングとは、VM 作成のパラメーター (ホスト名、ユーザー名、パスワード、証明書、カスタムデータ、キーなど) が VM で使用可能になり、[Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)や [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init) などのプロビジョニング エージェントがそれらを処理するプロセスです。 
 

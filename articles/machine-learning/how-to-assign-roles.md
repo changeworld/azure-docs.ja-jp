@@ -5,18 +5,18 @@ description: ロールベースのアクセス制御 (RBAC) を使用して、Az
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/06/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609250"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,9 +29,9 @@ Azure Machine Learning ワークスペースは Azure リソースの 1 つで�
 
 | Role | アクセス レベル |
 | --- | --- |
-| **Reader** | ワークスペースでの読み取り専用のアクション。 閲覧者はワークスペースで資産を一覧および表示できますが、これらの資産を作成または更新することはできません。 |
+| **Reader** | ワークスペースでの読み取り専用のアクション。 閲覧者はワークスペースで資産 ([データストア](how-to-access-data.md)の資格情報を含む) を一覧および表示できますが、これらの資産を作成または更新することはできません。 |
 | **Contributor** | ワークスペース内の資産を表示、作成、編集、削除 (該当する場合) します。 たとえば、共同作成者は実験を作成したり、コンピューティング クラスターを作成またはアタッチしたり、実行を送信したり、Web サービスをデプロイしたりできます。 |
-| **[所有者]** | ワークスペース内の資産を表示、作成、編集、削除 (該当する場合) する機能など、ワークスペースへのフル アクセス。 また、ロールの割り当てを変更することができます。 |
+| **所有者** | ワークスペース内の資産を表示、作成、編集、削除 (該当する場合) する機能など、ワークスペースへのフル アクセス。 また、ロールの割り当てを変更することができます。 |
 
 > [!IMPORTANT]
 > ロール アクセス権は、Azure の複数のレベルにスコープ指定できます。 たとえば、ワークスペースへの所有者アクセス権を持つユーザーであっても、そのワークスペースが含まれるリソース グループへの所有者アクセス権を持っていないことがあります。 詳細については、「[RBAC のしくみ](/azure/role-based-access-control/overview#how-rbac-works)」を参照してください。
@@ -58,6 +58,14 @@ az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
+
+> [!NOTE]
+> "az ml workspace share" コマンドは、Azure Active Directory B2B のフェデレーション アカウントでは機能しません。 コマンドの代わりに Azure UI ポータルを使用してください。
+
+
+## <a name="azure-machine-learning-operations"></a>Azure Machine Learning の操作
+
+多くの操作とタスクのための Azure Machine Learning の組み込みアクションがあります。 完全な一覧については、[Azure リソース プロバイダーの操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)に関するページを参照してください。
 
 ## <a name="create-custom-role"></a>カスタム ロールの作成
 
@@ -87,7 +95,8 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 }
 ```
 
-`AssignableScopes` フィールドを変更し、サブスクリプション レベル、リソース グループ レベル、特定のワークスペース レベルでこのカスタム ロールのスコープを設定することができます。
+> [!TIP]
+> `AssignableScopes` フィールドを変更し、サブスクリプション レベル、リソース グループ レベル、特定のワークスペース レベルでこのカスタム ロールのスコープを設定することができます。
 
 このカスタム ロールは、次のアクションを除くすべてのアクションをワークスペース内で実行できます。
 
@@ -110,9 +119,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](/azure/role-based-access-control/custom-roles)」を参照してください。
 
-カスタム ロールで使用できる操作 (アクション) の詳細については、「[リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)」を参照してください。
-
-
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 
@@ -126,7 +132,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 新しいコンピューティング クラスターの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `workspaces/computes/write` が可能なカスタム ロール |
 | 新しい Notebook VM の作成 | 必要なし | 所有者または共同作成者 | サポートできません |
 | 新しいコンピューティング インスタンスの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `workspaces/computes/write` が可能なカスタム ロール |
-| 実行の送信、データへのアクセス、モデルまたは公開パイプラインのデプロイなどのデータ プレーン アクティビティ | 必要なし | 必要なし | 所有者、共同作成者、または `workspaces/*/write` が可能なカスタム ロール <br/> また、MSI がストレージ アカウントのデータにアクセスできるようにするには、ワークスペースに登録されているデータストアも必要です。 |
+| 実行の送信、データへのアクセス、モデルのデプロイ、パイプラインの公開などのデータ プレーン アクティビティ | 必要なし | 必要なし | 所有者、共同作成者、または `workspaces/*/write` が可能なカスタム ロール <br/> また、MSI がストレージ アカウントのデータにアクセスできるようにするには、ワークスペースに登録されているデータストアも必要です。 |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. サブスクリプション内のすべてのカスタム ロールを一覧表示するにはどうすればよいですか。
@@ -153,7 +159,7 @@ Azure CLI で、次のコマンドを実行します。
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-新しいロールの定義のスコープ全体に対するアクセス許可が必要であることに注意してください。 たとえば、この新しいロールが 3 つのサブスクリプションにわたってスコープを持つ場合は、3 つすべてのサブスクリプションに対するアクセス許可が必要です。 
+新しいロールの定義のスコープ全体に対するアクセス許可が必要となります。 たとえば、この新しいロールが 3 つのサブスクリプションにわたってスコープを持つ場合は、3 つすべてのサブスクリプションに対するアクセス許可が必要です。 
 
 > [!NOTE]
 > ロールの更新は、そのスコープ内のすべてのロールの割り当てに適用されるまでに 15 分 ~ 1 時間かかることがあります。
@@ -172,5 +178,5 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 - [エンタープライズ セキュリティの概要](concept-enterprise-security.md)
 - [仮想ネットワーク内での実験と推論/スコアの安全な実行](how-to-enable-virtual-network.md)
-- [チュートリアル: モデルをトレーニングする](tutorial-train-models-with-aml.md)
+- [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
 - [リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 1e48573c2b73c10f10f665b5b91759d54d79acdd
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 021999e1757993eea4bbfe3aec0bd68049a37e42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737667"
 ---
-# <a name="data-processing-optimization"></a>データ処理の最適化
+# <a name="data-processing-optimization-for-apache-spark"></a>Apache Spark のデータ処理の最適化
 
 この記事では、Azure HDInsight で最高のパフォーマンスが得られるように Apache Spark クラスターの構成を最適化する方法について説明します。
 

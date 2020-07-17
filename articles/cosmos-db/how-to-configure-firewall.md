@@ -3,15 +3,15 @@ title: Azure Cosmos DB アカウントに IP ファイアウォールを構成�
 description: Azure Cosmos アカウントでファイアウォールをサポートするために IP アクセス制御ポリシーを構成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1f1ac9e7c5d44fd5cf6e7d692a71f5cf34b48df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78162946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261683"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "78162946"
 
 Azure portal で IP アクセス制御ポリシーを構成するには、Azure Cosmos DB アカウント ページに移動し、ナビゲーション メニューで **[ファイアウォールと仮想ネットワーク]** を選択します。 **[許可するアクセス元]** の値を **[選択されたネットワーク]** に変更し、 **[保存]** を選択します。
 
-![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/how-to-configure-firewall/azure-portal-firewall.png)
+:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Azure portal で [ファイアウォール] ページを開く方法を示すスクリーンショット":::
 
 IP アクセス制御を有効にすると、Azure portal で IP アドレス、IP アドレスの範囲、およびスイッチを指定する機能を使用できるようになります。 スイッチを使用して、他の Azure サービスと Azure portal にアクセスすることができます。 以下のセクションでは、これらのスイッチの詳細について説明します。
 
@@ -45,13 +45,13 @@ IP アクセス制御ポリシーをプログラムで有効にする場合は�
 
 次のスクリーン ショットに示すように、 **[Azure portal からのアクセスを許可する]** を選択することで、Azure portal へのアクセス要求を有効にできます。
 
-![Azure Portal へのアクセスを有効にする方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-azure-portal.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Azure portal へのアクセスを有効にする方法を示すスクリーンショット":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>世界中の Azure データ センターまたは Azure 内の他のソースからの要求を許可する
 
 Azure Stream Analytics や Azure Functions などの静的 IP を提供しないサービスから Azure Cosmos DB アカウントにアクセスする場合も、IP ファイアウォールを使用してアクセスを制限できます。 次のスクリーン ショットに示すように、 **[Accept connections from within Azure datacenters]\(Azure データセンター内からの接続を受け入れる\)** を選択することで、Azure 内の他のソースからのアクセスを有効にできます。
 
-![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-azure-services.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Azure portal で [ファイアウォール] ページを開く方法を示すスクリーンショット":::
 
 このオプションを有効にすると、IP アドレス `0.0.0.0` が、許可される IP アドレスの一覧に追加されます。 `0.0.0.0` の IP アドレスにより、Azure データセンターの IP 範囲からご利用の Azure Cosmos DB アカウントへの要求が制限されます。 この設定では、その他の IP 範囲からご利用の Azure Cosmos DB アカウントへのアクセスは許可されません。
 
@@ -66,7 +66,7 @@ Azure Stream Analytics や Azure Functions などの静的 IP を提供しない
 
 現在の IP を IP の一覧に追加するには、 **[現在の IP を追加する]** を選択します。 次に、 **[保存]** を選択します。
 
-![現在の IP のファイアウォール設定を構成する方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-current-ip.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="現在の IP のファイアウォール設定を構成する方法を示すスクリーンショット":::
 
 ### <a name="requests-from-cloud-services"></a>クラウド サービスからの要求
 
@@ -74,7 +74,7 @@ Azure では、Azure Cosmos DB を使用して中間層のサービス ロジッ
 
 クラウド サービスの IP アドレスは Azure Portal で確認できます。次のスクリーンショットをご覧ください。
 
-![Azure Portal に表示されるクラウド サービスのパブリック IP アドレスを示すスクリーンショット](./media/how-to-configure-firewall/public-ip-addresses.png)
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Azure portal に表示されるクラウド サービスのパブリック IP アドレスを示すスクリーンショット":::
 
 (複数の) ロール インスタンスを追加してご利用のクラウド サービスをスケールアウトした場合、それらのインスタンスは、同じクラウド サービスに属すことになるので、Azure Cosmos DB アカウントへのアクセス権が自動的に割り当てられます。
 
@@ -84,7 +84,7 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 
 仮想マシンの IP アドレスは Azure portal で取得できます。次のスクリーンショットを参照してください。
 
-![Azure Portal に表示される仮想マシンのパブリック IP アドレスを示すスクリーンショット](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Azure portal に表示される仮想マシンのパブリック IP アドレスを示すスクリーンショット":::
 
 このグループに仮想マシン インスタンスを追加した場合、それらのインスタンスにも自動的にご利用の Azure Cosmos DB アカウントへのアクセス権が割り当てられます。
 

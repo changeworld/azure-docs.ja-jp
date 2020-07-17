@@ -1,6 +1,6 @@
 ---
 title: Saas アプリ:多くのデータベースのパフォーマンスを監視する
-description: マルチテナント SaaS アプリの Azure SQL Database およびプールのパフォーマンスを監視および管理する
+description: マルチテナント SaaS アプリの Azure SQL Database のパフォーマンスを監視および管理する
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 458349ec666de7cdb94fca5422143738fea50a26
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 714ddf69bd8bca70019487576830b319bd25a7c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027973"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042817"
 ---
-# <a name="monitor-and-manage-performance-of-azure-sql-database-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL Database およびプールのパフォーマンスを監視および管理する
+# <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL Database のパフォーマンスを監視および管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 このチュートリアルでは、SaaS アプリケーションで使用されるいくつかの主要なパフォーマンス管理シナリオを説明します。 ロード ジェネレーターを使用して、すべてのテナント データベース間でのアクティビティをシミュレートし、SQL Database およびエラスティック プールに組み込まれている監視機能およびアラート機能を示します。

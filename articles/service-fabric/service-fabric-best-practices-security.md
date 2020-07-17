@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944323"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric のセキュリティ 
 
@@ -87,7 +87,7 @@ Service Fabric クラスター プロセスに対する証明書に ACL を適�
 > [!NOTE]
 > Service Fabric クラスターでは、ホストの証明書ストアで最初に見つかった有効な証明書が使用されます。 Windows では、これは共通名と発行者のサムプリントが一致し、有効期限が最も遅い証明書になります。
 
-*\<自分のサブドメイン\>.cloudapp.azure.com や \<自分のサブドメイン\>.trafficmanager.net などの Azure ドメインは、Microsoft によって所有されています。 証明機関では、承認されていないユーザーにはドメインの証明書は発行されません。 証明機関にその一般名で証明書を発行してもらうには、ほとんどのユーザーは、レジストラーからドメインを購入するか、承認されたドメイン管理者になる必要があります。
+*\<YOUR SUBDOMAIN\>.cloudapp.azure.com や \<YOUR SUBDOMAIN\>.trafficmanager.net などの Azure ドメインは、Microsoft によって所有されています。 証明機関では、承認されていないユーザーにはドメインの証明書は発行されません。 証明機関にその一般名で証明書を発行してもらうには、ほとんどのユーザーは、レジストラーからドメインを購入するか、承認されたドメイン管理者になる必要があります。
 
 自分のドメインが Microsoft の IP アドレスに解決されるように DNS サービスを構成する方法について詳しくは、[ドメインをホストするための Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) の構成方法に関する記事をご覧ください。
 
@@ -157,7 +157,7 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>マネージド サービス ID (MSI) を使用して Azure リソースに対して Service Fabric アプリケーションを認証する
 
-Azure リソースに対するマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」をご覧ください。
+Azure リソースに対するマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。
 Azure Service Fabric クラスターは、[マネージド サービス ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources) をサポートする仮想マシン スケール セットでホストされています。
 MSI を認証に使用できるサービスの一覧を取得するには、「[Azure AD 認証をサポートしている Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
@@ -217,7 +217,12 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 これらのファイアウォール規則は、許可されている送信ネットワーク セキュリティ グループを補完するものであり、お使いの仮想ネットワークから許可される宛先として ServiceFabric と Storage が含まれます。
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+Microsoft Azure は、すべてのお客様がトランスポート層セキュリティ (TLS) 1.2 をサポートするソリューションへの移行を完了し、TLS 1.2 が既定で使用されることを確認することを[お勧めします](https://azure.microsoft.com/updates/azuretls12/)。
+
+[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493) を含む Azure サービスでは、TLS 1.0/1.1 プロトコルの依存関係を削除するエンジニアリング作業を完了し、TLS 1.2 接続のみを受け入れて開始するようにワークロードを構成する必要があるお客様に完全なサポートを提供します。
+
+お客様は、Azure でホストされるワークロードとオンプレミスのアプリケーションを Azure サービスと対話するように構成して、既定で TLS 1.2 を使用する必要があります。 特定の TLS バージョンを使用するには、[Service Fabric クラスター ノードとアプリケーションを構成する方法](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)に関するページを参照してください。
 
 ## <a name="windows-defender"></a>Windows Defender 
 

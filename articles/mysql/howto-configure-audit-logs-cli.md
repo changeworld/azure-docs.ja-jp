@@ -4,21 +4,18 @@ description: この記事では、Azure CLI から Azure Database for MySQL の�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: d532e1990586d80d675a8ccb247c0c9f7908bb6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: 1a26f3c1b57fd750cbb59f32ddc8bd0ea85293ca
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384120"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112767"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Azure CLI での監査ログの構成とアクセス
 
 Azure CLI を使用して、[Azure Database for MySQL の監査ログ](concepts-audit-logs.md)を構成することができます。
-
-> [!IMPORTANT]
-> 監査ログ機能は現在、プレビュー段階です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,6 +29,9 @@ Azure CLI を使用して、[Azure Database for MySQL の監査ログ](concepts-
 > このガイドで説明する方法では、Azure CLI バージョン 2.0 以降を使う必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
 
 ## <a name="configure-audit-logging"></a>監査ログを構成する
+
+>[!IMPORTANT]
+> サーバーのパフォーマンスに大きな影響を与えないように、監査のために必要なイベントの種類とユーザーのみをログに記録することをお勧めします。
 
 次の手順に従って、監査ログを有効にし、構成します。
 

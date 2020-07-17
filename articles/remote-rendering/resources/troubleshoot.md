@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563266"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -146,6 +146,16 @@ Azure Remote Rendering では、動画を使用してフレーム合成を行っ
 
 ![Unity のフレーム デバッガー](./media/troubleshoot-unity-pipeline.png)
 
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>モデルの読み込み後にチェッカーボード パターンがレンダリングされる
+
+レンダリングされたイメージが次のように表示される場合:![チェッカーボード](../reference/media/checkerboard.png) レンダラーが[標準の VM サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium VM** サイズに切り替えるか、表示されるポリゴンの数を減らします。
+
+## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity でレンダリングされるイメージが上下反転している
+
+[Unity チュートリアル:リモート モデルを表示する](../tutorials/unity/view-remote-models/view-remote-models.md)に関するページの説明に正確に従っていることを確認します。 イメージが上下反転するのは、Unity がオフスクリーン レンダー ターゲットを作成する必要があることを示しています。 この動作は現在サポートされていないため、HoloLens 2 のパフォーマンスに大きな影響を与えます。
+
+この問題の原因は、MSAA、HDR、または後処理の有効化です。 低品質のプロファイルが選択されていることを確認し、Unity で既定値として設定します。 これを行うには、 *[Edit] > [Project Settings] > [Quality]* に移動します。
+
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Remote Rendering API を使用する Unity コードがコンパイルされない
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>Unity エディター用にコンパイルするときにデバッグを使用する
@@ -162,6 +172,10 @@ HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパ
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>AudioPluginMsHRTF.dll が見つからないために Unity プロジェクトで Arm64 のビルドが失敗する
+
+Arm64 の `AudioPluginMsHRTF.dll` は、バージョン 3.0.1 の *Windows Mixed Reality* パッケージ *(com.unity.xr.windowsmr.metro)* に追加されました。 Unity パッケージ マネージャーを使用して、バージョン 3.0.1 以降がインストールされていることを確認します。 Unity のメニュー バーで、 *[Window] > [Package Manager]* に移動し、 *[Windows Mixed Reality]* パッケージを見つけます。
+
 ## <a name="unstable-holograms"></a>ホログラムが不安定である
 
 レンダリングされたオブジェクトが頭部の動きに連動して動くように見える場合は、*Late Stage Reprojection* (LSR) に関する問題が発生している可能性があります。 このような状況への対処方法のガイダンスについては、[Late Stage Reprojection](../overview/features/late-stage-reprojection.md) に関するセクションをご覧ください。
@@ -171,6 +185,56 @@ HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパ
 確認すべきもう 1 つの値は `ARRServiceStats.LatencyPoseToReceiveAvg` です。 この値は、常に 100 ミリ秒未満である必要があります。 値がそれよりも大きい場合は、接続されているデータ センターが離れすぎていることを示しています。
 
 考えられる軽減策の一覧については、[ネットワーク接続のガイドライン](../reference/network-requirements.md#guidelines-for-network-connectivity)をご覧ください。
+
+## <a name="z-fighting"></a>Z ファイティング
+
+ARR には [Z ファイティングの軽減機能](../overview/features/z-fighting-mitigation.md)が用意されていますが、シーンでは Z ファイティングが引き続き表示されます。 このガイドは、これらの残りの問題のトラブルシューティングを目的としています。
+
+### <a name="recommended-steps"></a>推奨される手順
+
+次のワークフローを使用して、Z ファイティングを軽減します。
+
+1. ARR の既定の設定を使用してシーンをテストします (Z ファイティングの軽減が有効)
+
+1. [API](../overview/features/z-fighting-mitigation.md) を使用して Z ファイティングの軽減を無効にします 
+
+1. カメラの近くと遠くの面をより近い範囲に変更します
+
+1. 次の項でシーンのトラブルシューティングを行います
+
+### <a name="investigating-remaining-z-fighting"></a>残りの Z ファイティングを調査する
+
+上記の手順を実行しても、残りの Z ファイティングを許容できない場合は、Z ファイティングの根底にある原因を調査する必要があります。 [Z ファイティングの軽減機能](../overview/features/z-fighting-mitigation.md)に関するページに記載されているように、Z ファイティングには主に 2 つの原因があります。深度範囲の遠い側での深さの精度の損失と、同一平面で交差するサーフェスです。 深さの精度の損失は数学的な不測の事態であり、上記の手順 3 に従った場合にのみ軽減できます。 同一平面のサーフェスは、ソース アセットの欠陥を示し、ソース データではより適切に修正されています。
+
+ARR には、サーフェスが Z ファイティングになるかどうかを判断するための[チェッカーボードの強調表示](../overview/features/z-fighting-mitigation.md)という機能があります。 また、Z ファイティングの原因を視覚的に判断することもできます。 次の最初のアニメーションは、距離における深さの精度の損失の例を示しています。2 番目のアニメーションは、ほぼ同一平面のサーフェスの例を示しています。
+
+![深さの精度 - Z ファイティング](./media/depth-precision-z-fighting.gif)  ![同一平面 - Z ファイティング](./media/coplanar-z-fighting.gif)
+
+これらの例を実際の Z ファイティングと比較して原因を特定するか、必要に応じて次のステップバイステップのワークフローに従ってください。
+
+1. カメラを Z ファイティングのサーフェイスの上に配置して、サーフェイスを直接見ます。
+1. カメラをゆっくりと後ろに移動させて、サーフェイスから離します。
+1. Z ファイティングが常に表示される場合、サーフェスは完全に同一平面にあります。 
+1. Z ファイティングがほとんどの位置で表示される場合、サーフェスはほぼ同一平面にあります。
+1. Z ファイティングが遠くでのみ表示される場合は、原因は深さの精度の損失です。
+
+同一平面のサーフェスの場合は、次のようなさまざまな原因が考えられます。
+
+* エラーまたは異なるワークフロー アプローチが原因で、エクスポートしたアプリケーションによってオブジェクトが重複している。
+
+    それぞれのアプリケーションとアプリケーション サポートで、これらの問題を確認してください。
+
+* 表面または裏面のカリングを使用するレンダラーでは、サーフェスが重複し、反転して両面が表示される。
+
+    [モデル変換](../how-tos/conversion/model-conversion.md) を使用してインポートすると、モデルの基本の面が決まります。 既定値は両面です。 サーフェスは、両側からの物理的に正しい光源で、薄い壁としてレンダリングされます。 片面は、ソース アセットのフラグによって暗黙的に指定することも、[モデル変換](../how-tos/conversion/model-conversion.md)中に明示的に強制することもできます。 また、必要に応じて[片面モード](../overview/features/single-sided-rendering.md) を "標準" に設定することもできます。
+
+* ソース アセットでオブジェクトが交差している。
+
+     サーフェスの一部が重なり合うように変換されたオブジェクトでは、Z ファイティングも作成されます。 ARR にインポートされたシーンでシーン ツリーの一部を変換した場合も、この問題が発生することがあります。
+
+* サーフェスが、壁の図柄やテキストのように、タッチするために意図的に作成されている。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

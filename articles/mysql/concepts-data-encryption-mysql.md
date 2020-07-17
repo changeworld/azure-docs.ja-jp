@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849733"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027411"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
-
-> [!NOTE]
-> 現時点では、この機能を使用するにはアクセス権をリクエストする必要があります。 これを行う場合は、AskAzureDBforMySQL@service.microsoft.com にお問い合わせください。
 
 Azure Database for MySQL のカスタマーマネージド キーによるデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 また、組織でキーとデータの管理における職務の分離を実装することもできます。 カスタマーマネージド暗号化を使用する場合、キーのライフサイクル、キーの使用アクセス許可、およびキーに対する操作の監査については、お客様の責任となり、お客様が完全に制御できます。
 
@@ -74,7 +71,7 @@ Key Vault を構成するための要件を以下に示します。
 * キーは、"*有効*" 状態になっている必要があります。
 * Key Vault に既存のキーをインポートする場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で指定するようにしてください。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 カスタマーマネージド キーを使用してデータ暗号化を利用する場合、Key Vault の構成に関する推奨事項は次のとおりです。
 
@@ -129,6 +126,19 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 * マスター Azure Database for MySQL から、復元または読み取りレプリカの作成プロセスを開始します。
 * 新しく作成されたサーバー (復元またはレプリカ) は、アクセス不可状態のままにしておきます。これは、その一意の ID に Key Vault へのアクセス許可がまだ付与されていないためです。
 * 復元またはレプリカ サーバーで、データ暗号化設定のカスタマーマネージド キーを再検証して、Key Vault に格納されているキーへのラップおよびラップ解除アクセス許可が新しく作成されたサーバーに付与されるようにします。
+
+## <a name="limitations"></a>制限事項
+
+Azure Database for MySQL の場合、カスタマー マネージド キー (CMK) を使用した保存データの暗号化のサポートには、いくつかの制限があります。
+
+* この機能のサポートは、**General Purpose** および **Memory Optimized** 価格レベルに限定されています。
+* この機能は、16 TB までのストレージをサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[こちらの](concepts-pricing-tiers.md#storage)ドキュメントにあるストレージのセクションを参照してください
+
+    > [!NOTE]
+    > - 上記のリージョンで作成されたすべての新しい MySQL サーバーで、カスタマー マネージャー キーによる暗号化のサポートを**利用できます**。 ポイント イン タイム リストア (PITR) サーバーまたは読み取りレプリカは、理論的には "新規" に適合しません。
+    > - プロビジョニングされたサーバーによって最大 16 TB がサポートされているかどうかを検証するには、ポータルの [価格レベル] ブレードにアクセスして、プロビジョニング済みのサーバーでサポートされる最大ストレージ サイズを確認できます。 スライダーを最大 4 TB まで動かすことができる場合、サーバーでは、カスタマー マネージド キーを使用した暗号化がサポートされていない可能性があります。 ただし、データは常にサービス マネージド キーを使用して暗号化されます。 質問がある場合は、AskAzureDBforMySQL@service.microsoft.com までご連絡ください。
+
+* RSA 2048 暗号化キーを使用した暗号化のみがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

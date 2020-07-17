@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673362"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper サーバーが Azure HDInsight にクォーラムを形成できない
 
@@ -27,7 +27,7 @@ ms.locfileid: "83860496"
 
 ## <a name="sample-log"></a>サンプル ログ
 
-次のようなエラー メッセージが表示される場合があります。
+YARN ログ (ヘッドノートに /var/log/hadoop-yarn/yarn/yarn-yarn*.log が付く) に、次のようなエラー メッセージが表示される場合があります。
 
 ```output
 2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
@@ -116,6 +116,7 @@ Node count: 133212
 
 ## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>zookeeper サーバー ログの CancelledKeyException には、スナップショットのクリーンアップは必要ありません
 
+* この例外は、zookeeper サーバー (/var/log/zookeeper/zookeeper-zookeeper-* または /var/log/hdinsight-zookeeper/zookeeper* ファイル) に表示されます
 * この例外は通常、クライアントがアクティブでなくなり、サーバーがメッセージを送信できないことを意味します
 * また、zookeeper クライアントがセッションを途中で終了していることも示しています
 * このドキュメントに記載されている他の症状を探します

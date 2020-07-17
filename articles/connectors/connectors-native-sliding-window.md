@@ -3,19 +3,19 @@ title: 連続したデータを処理するタスクをスケジュールする
 description: Azure Logic Apps のスライディング ウィンドウを使用して、連続したデータを処理する定期的なタスクを作成および実行する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322102"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Azure Logic Apps のスライディング ウィンドウ トリガーを使用して、連続したデータに対するタスクをスケジュール設定して実行する
 
-連続したチャンクでデータを処理する必要があるタスク、プロセス、またはジョブを定期的に実行するには、**スライディング ウィンドウ** トリガーを使用してロジック アプリ ワークフローを開始します。 ワークフローを開始するための日付と時刻やタイム ゾーン、およびそのワークフローを反復処理するための繰り返しを設定できます。 何らかの理由で繰り返しが行われなかった場合、このトリガーによってその行われなかった繰り返しが処理されます。 たとえば、データベースとバックアップ ストレージ間でデータを同期するときは、スライディング ウィンドウ トリガーを使用して、ギャップを起こすことなくデータが同期されるようにします。 組み込みのスケジュール トリガーとアクションの詳細については、[Azure Logic Apps を使用した定期的な自動タスク、ワークフローのスケジュールと実行](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
+連続したチャンクでデータを処理する必要があるタスク、プロセス、またはジョブを定期的に実行するには、**スライディング ウィンドウ** トリガーを使用してロジック アプリ ワークフローを開始します。 ワークフローを開始するための日付と時刻やタイム ゾーン、およびそのワークフローを反復処理するための繰り返しを設定できます。 中断やワークフローの無効化など、何らかの理由で繰り返しが発生しなかった場合は、このトリガーによって、発生しなかった繰り返しが処理されます。 たとえば、データベースとバックアップ ストレージ間でデータを同期するときは、スライディング ウィンドウ トリガーを使用して、ギャップを起こすことなくデータが同期されるようにします。 組み込みのスケジュール トリガーとアクションの詳細については、[Azure Logic Apps を使用した定期的な自動タスク、ワークフローのスケジュールと実行](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
 
 このトリガーがサポートするパターンの一部を次に示します。
 

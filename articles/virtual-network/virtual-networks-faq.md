@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481733"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -55,7 +55,14 @@ VNet を使用して次のことが行えます。
 * ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。 「[Configure a VNet using a network configuration file (ネットワーク構成ファイルを使用した VNet の構成)](virtual-networks-using-network-configuration-file.md)」を参照してください。
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>VNet でどのアドレス範囲が使用できるでしょうか。
-[RFC 1918](https://tools.ietf.org/html/rfc1918) で定義されている任意の IP アドレス範囲 (例: 10.0.0.0/16)。 次のアドレス範囲は追加できません。
+[RFC 1918](https://tools.ietf.org/html/rfc1918) で列挙されているアドレス範囲を使用することをお勧めします。これらの範囲は、プライベートのルーティング不能なアドレス空間用に、IETF によって留保されています。
+* 10.0.0.0 ～ 10.255.255.255 (10/8 プレフィックス)
+* 172.16.0.0 ～ 172.31.255.255 (172.16/12 プレフィックス)
+* 192.168.0.0 ～ 192.168.255.255 (192.168/16 プレフィックス)
+
+その他のアドレス空間は、機能することもありますが、望ましくない副作用が発生する可能性があります。
+
+さらに、以下のアドレス範囲は追加できません。
 * 224.0.0.0/4 (マルチキャスト)
 * 255.255.255.255/32 (ブロードキャスト)
 * 127.0.0.0/8 (ループバック)
@@ -207,7 +214,7 @@ Azure Storage、Azure SQL Database などの一部の Azure PaaS サービスを
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>サービスを VNet 内外で移動できますか。
 いいえ。 サービスを VNet 内外で移動することはできません。 リソースを別の VNet に移動するには、リソースを削除して再デプロイする必要があります。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="what-is-the-security-model-for-vnets"></a>VNet のセキュリティ モデルとは何ですか。
 Vnet は、他の VNet から、および Azure インフラストラクチャでホストされている他のサービスから、完全に分離されています。 VNet は、トラスト バウンダリです。

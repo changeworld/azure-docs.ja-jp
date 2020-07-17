@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805009"
 ---
 # <a name="get-information-about-a-converted-model"></a>変換されたモデルに関する情報を取得する
 
@@ -100,7 +100,7 @@ ms.locfileid: "80679301"
 このセクションでは、ソース シーンに関する情報が提供されます。 多くの場合、このセクションの値と、ソース モデルを作成したツールの同等の値には相違点があります。 エクスポートと変換の手順中にモデルは変更されるため、このような違いは想定されます。
 
 * `numMeshes`:各パーツが 1 つの素材を参照できるメッシュ パーツの数。
-* `numFaces`:モデル全体の "_三角形_" の合計数。 変換中はメッシュが三角形になることに注意してください。
+* `numFaces`:モデル全体の "_三角形_" の合計数。 変換中はメッシュが三角形になることに注意してください。 この数値は、[標準レンダリング VM サイズ](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)の多角形の制限に寄与します。
 * `numVertices`:モデル全体の頂点の合計数。
 * `numMaterial`:モデル全体の素材の合計数。
 * `numFacesSmallestMesh`:モデルの最小メッシュの三角形の数。

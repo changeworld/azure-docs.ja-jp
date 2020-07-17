@@ -4,14 +4,14 @@ description: Github に接続して、GitHub リポジトリから Azure Cosmos 
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ce65d316b8236b83435388d2c1883cb9b89b03a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262890"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>GitHub リポジトリから Azure Cosmos DB にノートブックをインポートする
 
@@ -29,7 +29,7 @@ Azure Cosmos アカウントの[ノートブック サポートを有効にす�
 
 1. 表示されるタブで、**パブリック リポジトリ**のみに接続するか、**パブリック リポジトリとプライベート リポジトリ**に接続するかを選択できます。  必要なオプションを選択した後、 **[アクセスを承認する]** を選択します。 Azure Cosmos DB から GitHub アカウントのリポジトリにアクセスするには、承認が必要です。
 
-   ![Azure Cosmos DB から GitHub リポジトリにアクセスすることの承認](./media/import-github-notebooks/authorize-access-github.png)
+   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Azure Cosmos DB から GitHub リポジトリにアクセスすることの承認":::
 
 1. "github.com" のWeb ページにリダイレクトされます。このページで、承認を確認できます。 **[AzureCosmosDBNotebooks の承認]** ボタンを選択し、プロンプトで GitHub アカウントのパスワードを入力します。
 
@@ -37,7 +37,7 @@ Azure Cosmos アカウントの[ノートブック サポートを有効にす�
 
 1. 必要なリポジトリを選択すると、リポジトリ エントリが **[固定解除されたリポジトリ]** セクションから **[固定されたリポジトリ]** セクションに移動します。 必要であれば、そのリポジトリのどのブランチからノートブックをインポートするかを指定することもできます。
 
-   ![リポジトリとブランチを選択する](./media/import-github-notebooks/choose-repo-branch.png)
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="リポジトリとブランチを選択する":::
 
 1. **[OK]** を選択して、インポート操作を完了します。 選択したブランチで利用できるすべてのノートブックが、Azure Cosmos アカウントにインポートされます。
 
@@ -53,7 +53,7 @@ GitHub アカウントをノートブック ワークスペースから切断す
 
 変更をコミットした後の通常の GitHub フローでは、通常、変更をリモートへとプッシュすることになります。 ただし、この場合は、コミット オプションによって、更新を GitHub にステージングし、コミットし、プッシュするという目的が果たされます。
 
-![ノートブックを編集して変更を GitHub にコミットする](./media/import-github-notebooks/commit-changes-github.png)
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="ノートブックを編集して変更を GitHub にコミットする":::
 
 ## <a name="next-steps"></a>次のステップ
 

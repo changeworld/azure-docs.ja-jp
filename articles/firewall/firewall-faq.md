@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/07/2020
 ms.author: victorh
-ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649614"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078427"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -58,7 +58,7 @@ Azure Firewall は受信と送信のフィルター処理をサポートして�
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
-Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、「[チュートリアル:Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
+Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、[Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure Firewall の動作は、マーケットプレースの NVA などの既存のサービスとどのように異なりますか?
 
@@ -176,7 +176,7 @@ Azure Firewall の初期スループット容量は 2.5 から 3 Gbps で、30 G
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Firewall のスケールアウトにはどのくらいの時間がかかりますか。
 
-Azure Firewall は、平均スループットまたは CPU 使用率が 60% になると、徐々にスケーリングされます。 スケールアウトには 5 から 7 分かかります。 パフォーマンス テストを行うときは、少なくとも 10 から 15 分のテストを行い、新しく作成された Firewall ノードを活用するために新しい接続を開始してください。
+Azure Firewall は、平均スループットまたは CPU 使用率が 60% になると、徐々にスケーリングされます。 スケールアウトには 5 から 7 分かかります。 パフォーマンス テストを行うときは、少なくとも 10 ～ 15 分のテストを行い、新しく作成されたファイアウォール ノードを活用するために新しい接続を開始してください。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Firewall では Active Directory へのアクセスが既定で許可されますか。
 
@@ -211,3 +211,15 @@ TCP ping は実際にはターゲット FQDN に接続していません。 Azur
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP グループでサポートされる IP アドレスの数に制限はありますか。
 
 はい。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)」を参照してください。
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>別のリソース グループに IP グループを移動できますか。
+
+いいえ。IP グループを別のリソースグループに移動することは現在サポートされていません。
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure Firewall の TCP アイドル タイムアウトはどうなっていますか。
+
+ネットワーク ファイアウォールの標準的な動作では、TCP 接続が確実に維持されるようにして、アクティビティがない場合はすぐに終了するようになっています。 Azure Firewall の TCP アイドル タイムアウトは 4 分です。 この設定を構成することはできません。 アイドル時間がタイムアウト値よりも長い場合、TCP や HTTP のセッションが維持される保証はありません。 一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、[.NET の例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)に関するページを参照してください。
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>パブリック IP アドレスを使用せずに Azure Firewall をデプロイできますか。
+
+いいえ。現時点では、Azure Firewall はパブリック IP アドレスを使用してデプロイする必要があります。

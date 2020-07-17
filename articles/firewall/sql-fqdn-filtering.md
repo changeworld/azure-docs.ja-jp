@@ -4,15 +4,15 @@ description: この記事では、Azure Firewall アプリケーション規則�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 05/18/2020
+ms.topic: how-to
+ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e921ea707e4a0df968d162726fe53064491cb032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610508"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>SQL FQDN を使用して Azure Firewall アプリケーション規則を構成する
 
@@ -24,7 +24,7 @@ SQL FQDN では、以下のトラフィックをフィルター処理できま�
 - オンプレミスから Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
 - スポーク間から Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
 
-SQL の FQDN のフィルター処理は、[プロキシ モード](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)のみでサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](overview.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
+SQL の FQDN のフィルター処理は、[プロキシ モード](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)のみでサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](features.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
 SQL IaaS のトラフィックに既定以外のポートを使用する場合は、ファイアウォール アプリケーション規則でこれらのポートを構成できます。
 
 ## <a name="configure-using-azure-cli"></a>Azure CLI を使用して構成する
@@ -63,4 +63,4 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL のプロキシ モードとリダイレクト モードの詳細については、[Azure SQL データベースの接続アーキテクチャ](../azure-sql/database/connectivity-architecture.md)を参照してください。
+SQL のプロキシ モードとリダイレクト モードの詳細については、「[Azure SQL Database 接続アーキテクチャ](../azure-sql/database/connectivity-architecture.md)」を参照してください。

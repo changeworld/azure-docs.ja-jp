@@ -4,16 +4,16 @@ description: Azure Database for MySQL での認証に Azure Active Directory (Az
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2019
-ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ff5d2e5546c8b29ed486c587a555f47fa2c7e31b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229861"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101428"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
 この記事では、Azure Database for MySQL を使用して Azure Active Directory アクセスを構成する方法と、Azure AD トークンを使用して接続する方法について説明します。
 
@@ -63,7 +63,7 @@ Azure Cloud Shell、Azure VM、またはお使いのローカル コンピュー
 
 ### <a name="step-1-authenticate-with-azure-ad"></a>手順 1:Azure AD による認証
 
-最初に、Azure CLI ツールを使用して Azure AD での認証を行います。 この手順は、Azure Cloud Shell では必要ありません。
+最初に、Azure CLI ツールを使用して Azure AD による認証を行います。 この手順は、Azure Cloud Shell では必要ありません。
 
 ```
 az login
@@ -123,6 +123,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+
+接続時の重要な考慮事項:
+
+* `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です
+* Azure AD ユーザー/グループ名の後には常にサーバー名を付加してください (`@mydb` など)
+* Azure AD ユーザーまたはグループ名の正確なスペルを使用するようにしてください
+* Azure AD ユーザーおよびグループの名前では、大文字と小文字が区別されます
+* グループとして接続する場合は、グループ名のみ (`GroupName@mydb` など) を使用します
+* 名前にスペースが含まれている場合は、各スペースの前に `\` を使用してエスケープします
 
 “enable-cleartext-plugin” 設定に注意してください。トークンがハッシュされずにサーバーに送信されるようにするには、他のクライアントと同様の構成を使用する必要があります。
 

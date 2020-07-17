@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791624"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions による Azure Static Web Apps プレビューでの API のサポート
 
@@ -33,6 +33,7 @@ Azure Static Web Apps では、Azure Functions を通じて API が提供され�
 
 - API ルートのプレフィックスは、_api_ である必要があります。
 - API 関数アプリは JavaScript で記述されている必要があります。
+- API 関数のルート規則では、[リダイレクト](routes.md#redirects)と[ロールによるルートのセキュリティ保護](routes.md#securing-routes-with-roles)のみがサポートされます。
 - トリガーとバインドは、[HTTP](../azure-functions/functions-bindings-http-webhook.md) に限定されています。
   - 出力バインドを除く他のすべての [Azure Functions のトリガーとバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)は、制限されます。
 - ログは、関数アプリに [Application Insights](../azure-functions/functions-monitoring.md) を追加した場合にのみ使用できます。

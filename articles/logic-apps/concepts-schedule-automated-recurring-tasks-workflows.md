@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945615"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する
 
@@ -52,9 +52,9 @@ Logic Apps は、自動化された定期的なタスクとプロセスを作成
 
 これらのトリガーの違いを以下に示します。
 
-* **繰り返し**: 指定されたスケジュールに基づいて、一定の間隔でワークフローが実行されます。 実行されない繰り返しが発生した場合、実行されなかった繰り返しが繰り返しトリガーによって処理されることはなく、スケジュールされている次の間隔で繰り返しが再度開始されます。 開始の日時およびタイム ゾーンを指定できます。 "日" を選択した場合は、時刻と分を指定できます (例: 毎日 2:30)。 "週" を選択した場合は、曜日も選択できます (例: 水曜日と土曜日)。 詳しくは、[繰り返しトリガーで繰り返されるタスクとワークフローを作成、スケジュール設定、実行する方法](../connectors/connectors-native-recurrence.md)に関する記事をご覧ください。
+* **繰り返し**: 指定されたスケジュールに基づいて、一定の間隔でワークフローが実行されます。 中断やワークフローの無効化などによって実行されない繰り返しが発生した場合、実行されなかった繰り返しが繰り返しトリガーによって処理されることはなく、スケジュールされている次の間隔で繰り返しが再度開始されます。 開始の日時およびタイム ゾーンを指定できます。 "日" を選択した場合は、時刻と分を指定できます (例: 毎日 2:30)。 "週" を選択した場合は、曜日も選択できます (例: 水曜日と土曜日)。 詳しくは、[繰り返しトリガーで繰り返されるタスクとワークフローを作成、スケジュール設定、実行する方法](../connectors/connectors-native-recurrence.md)に関する記事をご覧ください。
 
-* **スライディング ウィンドウ**: 一定の間隔でワークフローが実行され、データは連続したチャンクで処理されします。 実行されない繰り返しが発生した場合、スライディング ウィンドウ トリガーは前に戻って、実行されなかった繰り返しを処理します。 開始日時、タイム ゾーン、およびワークフローで各繰り返しを遅延する期間を指定できます。 このトリガーでは、1 日の特定の時間帯、1 時間の特定の分、週の特定の曜日などの詳細スケジュールはサポートされていません。 詳しくは、「[Create, schedule, and run recurring tasks and workflows with the Sliding Window trigger](../connectors/connectors-native-sliding-window.md)」(スライディング ウィンドウ トリガーで繰り返されるタスクとワークフローを作成、スケジュール設定、実行する) をご覧ください。
+* **スライディング ウィンドウ**: 一定の間隔でワークフローが実行され、データは連続したチャンクで処理されします。 中断やワークフローの無効化などによって実行されない繰り返しが発生した場合、スライディング ウィンドウ トリガーは前に戻って、実行されなかった繰り返しを処理します。 開始日時、タイム ゾーン、およびワークフローで各繰り返しを遅延する期間を指定できます。 このトリガーでは、1 日の特定の時間帯、1 時間の特定の分、週の特定の曜日などの詳細スケジュールはサポートされていません。 詳しくは、「[Create, schedule, and run recurring tasks and workflows with the Sliding Window trigger](../connectors/connectors-native-sliding-window.md)」(スライディング ウィンドウ トリガーで繰り返されるタスクとワークフローを作成、スケジュール設定、実行する) をご覧ください。
 
 <a name="schedule-actions"></a>
 

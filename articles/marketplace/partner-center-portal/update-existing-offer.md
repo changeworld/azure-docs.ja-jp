@@ -1,18 +1,18 @@
 ---
 title: Commercial Marketplace の既存のオファーを更新する
 description: 既存の Commercial Marketplace オファーの更新 (編集、ドラフトの削除、発行要求のキャンセル、オファーまたはプランの販売停止、プライベートの対象ユーザーの同期など) を行う方法。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62170df567f552699304710902a1f83b84728af2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285148"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120706"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Commercial Marketplace で既存のオファーを更新する
 
@@ -37,20 +37,29 @@ Marketplace で現在ライブになっている既存のオファーを更新�
 > [!IMPORTANT]
 > オファーのプレビューをレビューし、公開可能になったら、 **[Go-live]\(公開\)** を選択して、対象となるユーザー (パブリックまたはプライベート) に更新されたオファーを発行する必要があります。
 
+## <a name="add-a-plan-to-an-existing-offer"></a>既存のオファーにプランを追加する
+
+既に発行されている既存のオファー内に新しいプランを追加するには、次の手順に従います。
+
+1. 既存のオファーの **[オファーの概要]** ページを開いて、 **[プランの概要]** ページにアクセスし、 **[新しいプランの作成]** を選択します。
+1. **既存のプランの価格モデル**を使用して、[ガイドライン](./create-new-saas-offer.md#plan-overview)に従って新しいプランを作成します。
+1. プラン名を変更した後、 **[下書きの保存]** を選択します。 
+1. 更新を発行する準備ができたら、 **[発行]** を選択します。 **[[Review and publish]\(確認と発行)](#review-and-publish-an-updated-offer)** ページが開いて、更新の完了状態が表示されます。
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>既存のオファー内のプランを更新する
 
 既に発行されている既存のオファー内のプランを変更するには、次の手順に従います。
 
-- 既存のオファーの **[オファーの概要]** ページを開いて、変更するプランを選択します。 **[Plan overview]\(プランの概要)** の一覧からプランにアクセスできない場合、 **[See all plans]\(すべてのプランの表示)** を選択します。
-- プランの **[名前]** 、 **[価格モデル]** 、または **[提供の可否]** を選択できます。 *現在、プランは英語 (米国) でのみ利用できます*。
-- プランの名前、説明、価格、または対象ユーザーの利用可能性に必要な変更を行った後、 **[保存]** を選択します。 
-- 更新を発行する準備ができたら、 **[発行]** を選択します。 **[[Review and publish]\(確認と発行)](#review-and-publish-an-updated-offer)** ページが開いて、更新の完了状態が表示されます。
+1. 既存のオファーの **[オファーの概要]** ページを開いて、変更するプランを選択します。 **[プランの概要]** の一覧からプランにアクセスできない場合、 **[See all plans]\(すべてのプランの表示)** を選択します。
+1. プランの **[名前]** 、 **[価格モデル]** 、または **[提供の可否]** を選択できます。 *現在、プランは英語 (米国) でのみ利用できます*。
+1. プランの名前、説明、または対象ユーザーの利用可能性に必要な変更を行った後、 **[保存]** を選択します。 
+1. 更新を発行する準備ができたら、 **[発行]** を選択します。 **[[Review and publish]\(確認と発行)](#review-and-publish-an-updated-offer)** ページが開いて、更新の完了状態が表示されます。
 
 ## <a name="compare-changes-to-marketplace-offers"></a>マーケットプレースのオファーの変更を比較する
 
 [発行済み](#compare-changes-to-published-offer)または[プレビュー](#compare-changes-to-a-preview-offer)のオファーに行った変更を監査してから、 **[比較]** を使用してライブにすることができます。
 
->[!NOTE]
+> [!NOTE]
 > 発行済みのオファーとは、プレビューまたはライブ状態に正常に発行されたオファーです。
 
 一般的な監査情報については、以下を参照してください。
@@ -122,9 +131,9 @@ Marketplace で現在ライブになっている既存のオファーを更新�
 
 **[発行中]** 状態のオファーをキャンセルするには、次の手順に従います。
 
-- オファー名を選択して、 **[オファーの概要]** ページを開きます。
-- ページの右上隅の **[発行の取り消し]** を選択します。
-- オファーの発行を停止することを確認します。
+1. オファー名を選択して、 **[オファーの概要]** ページを開きます。
+1. ページの右上隅の **[発行の取り消し]** を選択します。
+1. オファーの発行を停止することを確認します。
 
 後でオファーを発行する場合は、発行プロセスを最初からやり直す必要があります。
 

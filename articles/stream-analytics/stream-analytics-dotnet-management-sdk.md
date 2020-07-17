@@ -5,15 +5,15 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835497"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043446"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK:.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
@@ -212,7 +212,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics の出力ターゲットの作成
 出力ターゲットの作成は、Stream Analytics の入力ソースの作成と似ています。 入力ソースと同様、出力ターゲットも特定のジョブに関連付けられます。 1 つの出力ターゲットを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。
 
-次のコードで出力ターゲット (Azure SQL データベース) を作成します。 出力ターゲットのデータとシリアル化の種類はカスタマイズできます。
+次のコードで、出力ターゲット (Azure SQL Database) を作成します。 出力ターゲットのデータとシリアル化の種類はカスタマイズできます。
 
    ```csharp
    // Create an output

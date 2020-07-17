@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322039"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Data Share での一般的な問題のトラブルシューティング 
 
@@ -62,9 +62,9 @@ SQL ベースの共有には、追加のアクセス許可が必要です。 詳
 
 ## <a name="troubleshooting-sql-based-sharing"></a>SQL ベースの共有のトラブルシューティング
 
-"ユーザー x は SQL データベースに存在しません"
+"ユーザー x は SQL Database に存在しません"
 
-SQL ベースのソースからデータセットを追加するときにこのエラーが発生する場合は、SQL Server で Azure Data Share マネージド ID のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
+SQL ベースのソースからデータセットを追加するときにこのエラーが発生する場合は、SQL Database で Azure Data Share マネージド ID のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
 
 ```sql
     create user "<share_acct_name>" from external provider; 

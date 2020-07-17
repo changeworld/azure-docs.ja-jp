@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482124"
 ---
 # <a name="connection-strings"></a>Connection strings
 
@@ -149,7 +149,7 @@ ms.locfileid: "83125708"
 接続文字列は、次の SDK バージョンでサポートされています。
 - .NET および .NET Core v2.12.0
 - Java v2.5.1 および Java 3.0
-- Javascript v2.3.0
+- JavaScript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
 
@@ -165,7 +165,7 @@ ms.locfileid: "83125708"
 
 TelemetryConfiguration.ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net の明示的な設定:
+.NET の明示的な設定:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.Net 構成ファイル:
+.NET 構成ファイル:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -182,6 +182,14 @@ var configuration = new TelemetryConfiguration
 </ApplicationInsights>
 ```
 
+NetCore の明示的な設定:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
 NetCore config.json: 
 
@@ -212,7 +220,7 @@ ApplicationInsights.xml
 
 # <a name="javascript"></a>[JavaScript](#tab/js)
 
-重要:Javascript では、環境変数の使用はサポートされていません。
+重要:JavaScript では、環境変数の使用はサポートされていません。
 
 スニペットの使用:
 

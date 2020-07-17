@@ -4,18 +4,18 @@ description: Active Directory ドメインが設定された既存の Windows Vi
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 06/02/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1ea47dbc743c980b0509a3da42da13d294bc64fc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302034"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027394"
 ---
-# <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>ドメイン コントローラーを使用して Azure Files のファイル共有を作成する
+# <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure Files および AD DS を使用してプロファイル コンテナーを作成する
 
 この記事では、既存の Windows Virtual Desktop ホスト プール上のドメイン コントローラーによって認証された Azure ファイル共有を作成する方法について説明します。 このファイル共有は、ストレージのプロファイルの格納に利用できます。
 
@@ -43,7 +43,7 @@ ms.locfileid: "84302034"
     - ストレージ アカウント用に一意の名前を入力します。
     - **[場所]** については、Windows Virtual Desktop ホスト プールと同じ場所を選択することをお勧めします。
     - **[パフォーマンス]** には **[Standard]** を選択します (IOPS の要件によって異なります。 詳細については、「[Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」を参照してください)。
-    - **[アカウントの種類]** には **[StorageV2]** を選択します。
+    - **[アカウントの種類]** については、 **[StorageV2]** または **[FileStorage]** を選択します (パフォーマンス レベルが Premium の場合のみ有効です)。
     - **[レプリケーション]** には **[ローカル冗長ストレージ (LRS)]** を選択します。
 
 5. 完了したら、 **[確認と作成]** 、 **[作成]** の順に選択します。
@@ -64,21 +64,22 @@ ms.locfileid: "84302034"
 
 4. **［作成］** を選択します
 
-## <a name="enable-azure-active-directory-authentication"></a>Azure Active Directory 認証を有効にする
+## <a name="enable-active-directory-authentication"></a>Active Directory 認証を有効にする
 
-次は、Azure Active Directory (AD) 認証を有効にする必要があります。 このポリシーを有効にするには、既にドメインに参加済みのマシン上で、このセクションの手順に従う必要があります。 認証を有効にするには、ドメイン コントローラーが稼働している VM で次の手順に従います。
+次は、Active Directory (AD) 認証を有効にする必要があります。 このポリシーを有効にするには、既にドメインに参加済みのマシン上で、このセクションの手順に従う必要があります。 認証を有効にするには、ドメイン コントローラーが稼働している VM で次の手順に従います。
 
 1. ドメイン参加済みの VM に、リモート デスクトップ プロトコルを使って接続します。
 
 2. [Azure ファイル共有に Azure AD DS 認証を有効にする](../storage/files/storage-files-identity-ad-ds-enable.md)方法を説明したページの手順に従い、AzFilesHybrid モジュールをインストールして認証を有効にします。
 
-3.  Azure portal を開き、ストレージ アカウントを開いて **[構成]** を選択したら、 **[Azure Active Directory (AD)]** が **[有効]** に設定されていることを確認します。
+3.  Azure portal を開き、ストレージ アカウントを開いて **[構成]** を選択したら、 **[Active Directory (AD)]** が **[有効]** に設定されていることを確認します。
 
-     ![[構成] ページで Azure Active Directory (AD) が有効になった状態のスクリーンショット。](media/active-directory-enabled.png)
+     > [!div class="mx-imgBorder"]
+     > ![[構成] ページで Azure Active Directory (AD) が有効になった状態のスクリーンショット。](media/active-directory-enabled.png)
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Windows Virtual Desktop のユーザーに Azure RBAC のアクセス許可を割り当てる
 
-FSLogix プロファイルをストレージ アカウントに保存する必要があるユーザー全員に、記憶域ファイル データの SMB 共有の共同作成者ロールを割り当てる必要があります。 
+FSLogix プロファイルをストレージ アカウントに保存する必要があるユーザー全員に、記憶域ファイル データの SMB 共有の共同作成者ロールを割り当てる必要があります。
 
 Windows Virtual Desktop セッション ホストにサインインするユーザーには、ファイル共有にアクセスするためのアクセス許可が必要です。 Azure ファイル共有に対するアクセス権を付与する際には、従来の Windows 共有の場合と同じように、共有レベルと NTFS レベルの両方でアクセス許可を構成する必要があります。
 
@@ -93,15 +94,17 @@ Windows Virtual Desktop セッション ホストにサインインするユー�
 
 2. 「[ストレージ アカウントを設定する](#set-up-a-storage-account)」で作成したストレージ アカウントを開きます。
 
-3. **[アクセス制御 (IAM)]** を選択します。
+3. **[ファイル共有]** を選択し、使用する予定のファイル共有の名前を選択します。
 
-4. **[ロールの割り当てを追加する]** を選択します。
+4. **[アクセス制御 (IAM)]** を選択します。
 
-5. **[ロールの割り当ての追加]** タブで、管理者アカウントについて **[ストレージ ファイル データの SMB 共有の管理者特権の共同作成者]** を選択します。
-   
+5. **[ロールの割り当てを追加する]** を選択します。
+
+6. **[ロールの割り当ての追加]** タブで、管理者アカウントについて **[ストレージ ファイル データの SMB 共有の管理者特権の共同作成者]** を選択します。
+
      ユーザーに FSLogix プロファイルに対するアクセス許可を割り当てる場合も、同じ手順を使用します。 ただし、手順 5 では代わりに **[記憶域ファイル データの SMB 共有の共同作成者]** を選択してください。
 
-6. **[保存]** を選択します。
+7. **[保存]** を選択します。
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>ユーザーに Azure ファイル共有に対するアクセス許可を割り当てる
 
@@ -126,7 +129,7 @@ UNC パスの取得方法は次のとおりです。
 
 5. URI をコピーしたら、次の操作を行って UNC に変更します。
 
-    - `https://` を削除します
+    - `https://` を削除し、`\\` に置き換えます。
     - スラッシュ `/` をバック スラッシュ `\` で置き換えます。
     - 「[Azure ファイル共有を作成する](#create-an-azure-file-share)」で作成したファイル共有の名前を、UNC の末尾に追加します。
 
@@ -157,7 +160,7 @@ NTFS のアクセス許可を構成するには:
      ```
 
 3. 次のコマンドレットを実行し、Azure ファイル共有へのアクセス許可を確認します。
-    
+
     ```powershell
     icacls <mounted-drive-letter>:
     ```
@@ -167,7 +170,7 @@ NTFS のアクセス許可を構成するには:
     *NT Authority\Authenticated Users* と *BUILTIN\Users* はどちらも、既定で一定のアクセス許可が割り当てられています。 これらのユーザーはその既定のアクセス許可により、他のユーザーのプロファイル コンテナーを読み取ることができます。 これに対して、「[プロファイル コンテナーと Office コンテナーで使用するストレージ アクセス許可を構成する](/fslogix/fslogix-storage-config-ht)」に記載されているアクセス許可では、ユーザーが他のユーザーのプロファイル コンテナーの中を見ることができません。
 
 4. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドレットを実行します。
-     
+
      ```powershell
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)

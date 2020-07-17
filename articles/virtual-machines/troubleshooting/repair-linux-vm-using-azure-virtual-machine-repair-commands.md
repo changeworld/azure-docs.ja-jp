@@ -14,19 +14,24 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 9029082a275905bbdb9efe0cefa05337c9969a2f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a7357ef3b0151096746e37bddd235f0db53baed7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85444813"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
 
 Azure の Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合は、ディスク自体で軽減策を実行する必要がある可能性があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure 仮想マシンの修復コマンドを使用してディスクを別の Linux VM に接続してエラーを修正した後、元の VM をリビルドする方法について詳しく説明します。
 
 > [!IMPORTANT]
-> この記事のスクリプトは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用している VM にのみ適用されます。
+> * この記事のスクリプトは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用している VM にのみ適用されます。
+> * スクリプトを実行するには、VM からの送信接続 (ポート 443) が必要です。
+> * 実行できるスクリプトは一度に 1 つだけです。
+> * 実行中のスクリプトを取り消すことはできません。
+> * スクリプトを実行できる最大時間は 90 分であり、それを過ぎるとタイムアウトします。
+> * Azure Disk Encryption を使用する VM では、(KEK の有無にかかわらず) シングル パス暗号化で暗号化されたマネージド ディスクのみがサポートされます。
 
 ## <a name="repair-process-overview"></a>修復プロセスの概要
 
@@ -53,6 +58,8 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
    **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell にコード貼り付けてから、 **[入力]** を選択して実行します。
 
    CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+   
+   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) を使用できます。
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 
@@ -66,7 +73,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
    az extension update -n vm-repair
    ```
 
-3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、新しいリソース グループに修復 VM が作成されて、OS ディスクのコピーに接続されます。  修復 VM のサイズとリージョンは、指定された機能していない VM と同じになります。 すべての手順で使用されるリソース グループと VM の名前は、機能していない VM 用になります。
+3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、新しいリソース グループに修復 VM が作成されて、OS ディスクのコピーに接続されます。  修復 VM のサイズとリージョンは、指定された機能していない VM と同じになります。 すべての手順で使用されるリソース グループと VM の名前は、機能していない VM 用になります。 VM が Azure Disk Encryption を使用している場合、コマンドは、修復 VM に接続されているときにアクセスできるように、暗号化されたディスクのロックを解除しようとします。
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose

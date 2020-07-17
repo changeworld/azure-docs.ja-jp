@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 995d70419edb374c3761fe2f989ce3a757cc7a47
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85251171"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "84038283"
 
 ## <a name="create-and-configure-the-agent"></a>エージェントの作成と構成
 
-1. S0 以上で、中身が空の SQL データベースを作成または特定します。 このデータベースが、エラスティック ジョブ エージェントの作成時に "*ジョブ データベース*" として使用されます。
+1. S0 以上で、中身が空のデータベースを作成または特定します。 このデータベースが、エラスティック ジョブ エージェントの作成時に "*ジョブ データベース*" として使用されます。
 2. [ポータル](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)または [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) を使用してエラスティック ジョブ エージェントを作成します。
 
    ![エラスティック ジョブ エージェントの作成中](./media/elastic-jobs-overview/create-elastic-job-agent.png)

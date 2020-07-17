@@ -8,14 +8,14 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: a7827349166ce55b1604f949f1d78a1ddce7c5e0
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 119f26f8d5a425462382a873d7ca4bcfdd6f3d03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116022"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214504"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -123,7 +123,7 @@ weighted_accuracy|重み付けされた精度は、それぞれの例に対し�
 
 <a name="precision-recall-chart"></a>
 ### <a name="precision-recall-chart"></a>精度/再現率グラフ
-#### <a name="what-is-a-precision-recall-chart"></a>精密/再現率グラフとは何ですか？
+#### <a name="what-is-a-precision-recall-chart"></a>精度/再現率グラフとは何ですか？
 精度/再現率曲線は、モデルの精度と再現率の関係を示します。 精度という用語は、モデルがすべてのインスタンスに正しくラベルを付ける能力を表します。 再現率は、分類子が特定のラベルのすべてのインスタンスを見つける能力を表します。
 
 #### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>自動 ML では、精度/再現率グラフを使用するとどうなりますか？
@@ -265,6 +265,9 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 ## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> モデルの解釈可能性と機能の重要性
 自動 ML は、実行に対する機械学習の解釈可能性ダッシュボードを提供します。
 解釈可能性機能の有効化の詳細については、自動 ML 実験で解釈可能性を有効にする[方法](how-to-machine-learning-interpretability-automl.md)を参照してください。
+
+> [!NOTE]
+> 現在、ForecastTCN モデルは説明クライアントではサポートされていません。 このモデルが最適なモデルとして返された場合、説明ダッシュボードは返されず、オンデマンドでの説明の実行はサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

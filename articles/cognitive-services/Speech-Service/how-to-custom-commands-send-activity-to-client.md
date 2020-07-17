@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0a3e3455615006c0e93cf32eebcdaedac9960a79
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307298"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027615"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>クライアント アプリケーションへのカスタム コマンド アクティビティの送信
 
@@ -28,7 +28,7 @@ ms.locfileid: "85307298"
 
 ## <a name="prerequisites"></a>前提条件
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) またはそれ以降。 このガイドでは Visual Studio 2019 を使用します
 > * 音声サービス用の Azure サブスクリプション キー: [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
 > * 以前に[作成したカスタム コマンド アプリ](quickstart-custom-commands-application.md)
 > * Speech SDK が有効なクライアント アプリ: [Speech SDK を使用してクライアント アプリケーションと統合する](./how-to-custom-commands-setup-speech-sdk.md)
@@ -46,7 +46,7 @@ ms.locfileid: "85307298"
      "device": "{SubjectDevice}"
    }
    ```
-1. **[保存]** をクリックして、アクティビティの送信アクションを含む新しいルールを作成します。
+1. **[保存]** をクリックして、アクティビティの送信アクションを含む新しいルールを作成し、変更内容を**トレーニング**して**公開**します
 
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信の完了規則](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,9 +55,12 @@ ms.locfileid: "85307298"
 
 [方法: Speech SDK (プレビュー) を使用してカスタム コマンド アプリケーションを設定する](./how-to-custom-commands-setup-speech-sdk.md) では、`turn on the tv`、`turn off the fan` などのコマンドを処理する Speech SDK を使用して UWP クライアント アプリケーションを作成しました。 いくつかのビジュアルを追加して、それらのコマンドの結果を確認できます。
 
-`MainPage.xaml` に追加される次の XML を使用して、**オン**または**オフ**を示すテキストを含むラベル付きボックスを追加します
+**オン**または**オフ**を示すテキストを含むラベル付きボックスを追加するには、以下の StackPanel の XML ブロックを `MainPage.xaml` に追加します。
 
 ```xml
+<StackPanel Orientation="Vertical" H......>
+......
+</StackPanel>
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
     <Grid x:Name="Grid_TV" Margin="50, 0" Width="100" Height="100" Background="LightBlue">
         <StackPanel>
@@ -72,6 +75,7 @@ ms.locfileid: "85307298"
         </StackPanel>
     </Grid>
 </StackPanel>
+<MediaElement ....../>
 ```
 
 ### <a name="add-reference-libraries"></a>参照ライブラリを追加する
@@ -79,15 +83,21 @@ ms.locfileid: "85307298"
 JSON ペイロードを作成したので、[JSON.NET](https://www.newtonsoft.com/json) ライブラリへの参照を追加して、逆シリアル化を処理する必要があります。
 
 1. ソリューションを右クリックします。
-1. **[ソリューションの NuGet パッケージの管理]** を選択し、 **[インストール]** を選択します 
-1. 更新リストで **Newtonsoft.json** を探し、**Microsoft.NETCore.UniversalWindowsPlatform** を最新バージョンに更新します
+1. **[ソリューションの NuGet パッケージの管理]** を選択し、 **[Browse]\(参照\)** を選択します。 
+1. **Newtonsoft. json** を既にインストールしている場合は、そのバージョンが 12.0.3 以降であることを確認してください。 そうでない場合は、 **[ソリューションの NuGet パッケージの管理] - [Updates]\(更新プログラム\)** にアクセスし、**Newtonsoft. json** を検索して更新します。 このガイドでは、バージョン 12.0.3 を使用しています。
 
-> [!div class="mx-imgBorder"]
-> ![アクティビティの送信のペイロード](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > [!div class="mx-imgBorder"]
+    > ![アクティビティの送信のペイロード](media/custom-commands/send-activity-to-client-json-nuget.png)
+
+1. また、NuGet パッケージ **Microsoft.NETCore.UniversalWindowsPlatform** が 6.2.10 以降になっていることを確認します。 このガイドでは、バージョン 6.2.10 を使用しています。
 
 "MainPage.xaml.cs" に以下を追加します
-- `using Newtonsoft.Json;` 
-- `using Windows.ApplicationModel.Core;`
+
+```C#
+using Newtonsoft.Json; 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+```
 
 ### <a name="handle-the-received-payload"></a>受信したペイロードを処理する
 

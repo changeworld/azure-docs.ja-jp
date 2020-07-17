@@ -1,21 +1,17 @@
 ---
 title: マネージド サービス ID を使用したイベント配信
 description: この記事では、Azure イベント グリッド トピックに対してマネージド サービス ID を有効にする方法を説明します。 これを使用して、サポートされている配信先にイベントを転送します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/24/2020
-ms.author: spelluru
-ms.openlocfilehash: a13b9339c55d4d70c19ce737e81f34106dd3d6f6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.date: 07/07/2020
+ms.openlocfilehash: 5138a89101a7e6c1770952028de9c3d478bc3852
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167998"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119193"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>マネージド ID を使用したイベント配信
-この記事では、Azure Event Grid トピックまたはドメインに対して、[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする方法を説明します。 これを使用して、Service Bus のキューとトピック、イベント ハブ、ストレージ アカウントなどの、サポートされている配信先にイベントを転送します。
+この記事では、Azure イベント グリッド トピックまたはドメインに対して、[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする方法を説明します。 これを使用して、Service Bus のキューとトピック、イベント ハブ、ストレージ アカウントなどの、サポートされている配信先にイベントを転送します。
 
 この記事では、次の手順の詳細を説明します。
 1. システム割り当て ID を持つトピックまたはドメインを作成するか、既存のトピックまたはドメインを更新して ID を有効にする。 
@@ -44,13 +40,18 @@ az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCAT
 前のセクションでは、トピックまたはドメインを作成する際にシステム マネージド ID を有効にする方法を学びました。 このセクションでは、既存のトピックまたはドメインに対してシステム マネージド ID を有効にする方法について学びます。 
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+次の手順では、トピックに対してシステム マネージド ID を有効にする方法を示します。 ドメインに対して ID を有効にする手順と似ています。 
+
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. 検索バーで「**event grid topics (イベント グリッド トピック)** 」を検索します。
+2. 上部の検索バーで「**event grid topics (イベント グリッド トピック)** 」を検索します。
 3. マネージド ID を有効にする**トピック**を選択します。 
 4. **[ID]** タブに移動します。 
-5. スイッチをオンにして、ID を有効にします。 
+5. スイッチを**オン**にして、ID を有効にします。 
+1. ツール バーの **[保存]** を選択して設定を保存します。 
 
-同様の手順により、Event Grid ドメインに対して ID を有効にできます。
+    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="トピックに対する ID のページ"::: 
+
+同様の手順により、イベント グリッド ドメインに対して ID を有効にできます。
 
 ### <a name="use-the-azure-cli"></a>Azure CLI の使用
 `--identity` に `systemassigned` を設定して `az eventgrid topic update` コマンドを使用し、既存のトピックに対してシステム割り当て ID を有効にします。 ID を無効にする場合は、値として `noidentity` を指定します。 
@@ -65,9 +66,9 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 ## <a name="supported-destinations-and-rbac-roles"></a>サポートされている配信先と RBAC ロール
 イベント グリッド トピックまたはドメインに対して ID を有効にすると、Azure によって Azure Active Directory 内で自動的に ID が作成されます。 トピックまたはドメインによってサポート対象の配信先にイベントを転送できるように、適切なロールベースのアクセス制御 (RBAC) ロールにこの ID を追加します。 たとえば、ある Azure Event Hubs 名前空間の **Azure Event Hubs データ送信者**ロールに ID を追加すると、イベント グリッド トピックによってその名前空間のイベント ハブにイベントを転送できるようになります。 
 
-現在、Azure Event Grid では、システム割り当てマネージド ID で構成されたトピックやドメインによって次の配信先にイベントを転送することをサポートしています。 この表は、トピックによってイベントを転送できるようにするために、ID を含めるべきロールも示しています。
+現在、Azure イベント グリッド では、システム割り当てマネージド ID で構成されたトピックやドメインによって、次の配信先にイベントを転送することをサポートしています。 この表は、トピックによってイベントを転送できるようにするために、ID を含めるべきロールも示しています。
 
-| 宛先 | RBAC ロール | 
+| 到着地 | RBAC ロール | 
 | ----------- | --------- | 
 | Service Bus のキューとトピック | [Azure Service Bus データ送信者](../service-bus-messaging/authenticate-application.md#built-in-rbac-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Azure Event Hubs データ送信者](../event-hubs/authorize-access-azure-active-directory.md#built-in-rbac-roles-for-azure-event-hubs) | 
@@ -93,7 +94,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 表に示されている他のロールへの ID の追加の手順も同様です。 
 
 ### <a name="use-the-azure-cli"></a>Azure CLI の使用
-このセクションの例では、Azure CLI を使用して ID を RBAC ロールに追加する方法を説明します。 サンプル コマンドは、イベント グリッド トピックのものです。 Event Grid ドメインのコマンドも同様です。 
+このセクションの例では、Azure CLI を使用して ID を RBAC ロールに追加する方法を説明します。 サンプル コマンドは、イベント グリッド トピックのものです。 イベント グリッド ドメインのコマンドも同様です。 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>トピックのシステム ID のプリンシパル ID を取得する 
 最初に、トピックのシステム マネージド ID のプリンシパル ID を取得して、その ID を適切なロールに割り当てます。

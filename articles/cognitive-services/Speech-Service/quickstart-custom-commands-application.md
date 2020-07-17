@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307184"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362144"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "85307184"
 ## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech リソースを作成する <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">カスタム コマンドをサポートするリージョンに Azure Speech リソースを作成する。<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * サンプルの [Smart Room Lite](https://aka.ms/speech/cc-quickstart) JSON ファイルをダウンロードする。
 > * [Windows 音声アシスタント クライアント](https://aka.ms/speech/va-samples-wvac)の最新バージョンをダウンロードする。
 
@@ -82,7 +82,8 @@ ms.locfileid: "85307184"
     - Turn on the tv (テレビをつけて)
     - Set the temperature to 80 degrees (温度を 80 度に設定して)
     - Turn it off (消して)
-    - アラームを設定する
+    - The tv (テレビ)
+    - Set an alarm for 5 PM (アラームを午後 5 時に設定して)
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>カスタム コマンド アプリケーションをアシスタントに統合する
 このアプリケーションに外部の Speech Studio からアクセスするには、アプリケーションを発行する必要があります。 アプリケーションを発行するには、予測 LUIS リソースを構成する必要があります。  
@@ -110,9 +111,9 @@ ms.locfileid: "85307184"
 
 この記事の範囲では、前提条件の一部としてダウンロードした Windows 音声アシスタント クライアントを使用します。 フォルダーを解凍します。
 1. **VoiceAssistantClient.exe** を起動します。
-1. 新しい発行プロファイルを作成し、 **[接続プロファイル]** の値を入力します。 **[全般設定]** セクションで、 **[サブスクリプション キー]** 、 **[Subscription key region]\(サブスクリプション キーのリージョン\)** 、 **[Custom commands app ID]\(カスタム コマンド アプリの ID\)** の値を入力します。
+1. 新しい発行プロファイルを作成し、 **[接続プロファイル]** の値を入力します。 **[全般設定]** セクションで、 **[サブスクリプション キー]** (これはアプリケーションの公開時に保存した **[Speech resource key]\(音声リソース キー\)** 値と同じ)、 **[Subscription key region]\(サブスクリプション キーのリージョン\)** 、 **[Custom commands app ID]\(カスタム コマンド アプリの ID\)** の値を入力します。
     > [!div class="mx-imgBorder"]
-    > ![WVAC プロファイルの作成](media/custom-commands/create-profile.png)
+    > ![WVAC でのプロファイルの作成](media/custom-commands/create-profile.png)
 1. **[Save and Apply Profile]\(プロファイルを保存して適用する\)** を選択します。
 1. 音声またはテキストを通じて次の入力を試してみます。
     > [!div class="mx-imgBorder"]

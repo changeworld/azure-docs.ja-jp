@@ -4,12 +4,12 @@ description: Kubernetes の基本のクラスターおよびワークロード�
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336637"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -105,9 +105,9 @@ kubectl describe node [NODE_NAME]
 
 メモリと CPU の割り当てに関する上記の規則は、クラスターの正常性に不可欠ないくつかのホスティング システム ポッドを含むエージェント ノードを正常な状態に保つために使用されます。 これらの割り当て規則により、ノードが報告する割り当て可能なメモリと CPU は、Kubernetes クラスターに含まれていない場合よりも少なくなります。 上記のリソースの予約を変更することはできません。
 
-たとえば、ノードで 7 GB が提供される場合、750Mi のハード削除しきい値に加えて、メモリの 34% を割り当て不可として報告されます。
+たとえば、ノードで 7 GB が提供される場合、750Mi のハード削除しきい値を含めて、メモリの 34% が割り当て不可として報告されます。
 
-`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
+`0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
 Kubernetes 自体の予約に加えて、基になるノード OS も OS 機能を維持するための CPU とメモリ リソースの量を予約します。
 
@@ -204,11 +204,7 @@ YAML マニフェスト内にロード バランサーなどのサービスも�
 
 Kubernetes のアプリケーションを管理する一般的な方法としては、[Helm][helm] を使用します。 アプリケーション コードのパッケージ化されたバージョンと、Kubernetes YAML マニフェストを含む既存のパブリック Helm *Chart* を構築して使用し、リソースをデプロイできます。 これらの Helm Chart はローカルに保存したり、多くの場合、[Azure Container Registry の Helm Chart リポジトリ][acr-helm]などのリモート リポジトリ内に保存したりできます。
 
-Helm を使用するために、Kubernetes クラスターに *Tiller* と呼ばれるサーバー コンポーネントがインストールされます。 Tiller では、クラスター内のチャートのインストールを管理します。 Helm クライアント自体は、お使いのコンピューターにローカルにインストールするか、または [Azure Cloud Shell][azure-cloud-shell] 内で使用できます。 クライアントの Helm Chart を検索または作成して、お使いの Kubernetes クラスターにインストールできます。
-
-![Helm には、クライアント コンポーネントと Kubernetes クラスター内にリソースを作成するサーバー側の Tiller コンポーネントが含まれます。](media/concepts-clusters-workloads/use-helm.png)
-
-詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][aks-helm]」を参照してください。
+Helm を使用するには、コンピューターに Helm クライアントをインストールするか、[Azure Cloud Shell][azure-cloud-shell] で Helm クライアントを使用します。 クライアントの Helm Chart を検索または作成して、お使いの Kubernetes クラスターにインストールできます。 詳細については、「[AKS で Helm を使用して既存のアプリケーションをインストールする][aks-helm]」を参照してください。
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet と DaemonSet
 

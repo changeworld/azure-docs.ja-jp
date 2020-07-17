@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100245"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039009"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
 
@@ -130,13 +130,13 @@ LUIS [ポータル](https://www.luis.ai)には、トレーニング済みアプ�
 
 ### <a name="export-published-apps-package-from-luis-portal"></a>LUIS ポータルから発行済みアプリのパッケージをエクスポートする
 
-発行済みアプリのパッケージは、 **[My apps]\(マイ アプリ\)** 一覧ページから入手できます。
+発行済みアプリのパッケージは、 **[マイ アプリ]** 一覧ページから入手できます。
 
 1. LUIS [ポータル](https://www.luis.ai)にサインオンします。
 1. 一覧でアプリ名の左側にあるチェック ボックスをオンにします。
-1. 一覧の上にあるコンテキスト ツール バーから **[Export]\(エクスポート\)** 項目を選択します。
+1. 一覧の上にあるコンテキスト ツール バーから **[エクスポート]** 項目を選択します。
 1. **[Export for container (GZIP)]\(コンテナー用にエクスポート (GZIP)\)** を選択します。
-1. **[Production slot]\(運用スロット\)** または **[Staging slot]\(ステージング スロット\)** の環境を選択します。
+1. **[運用スロット]** または **[ステージング スロット]** の環境を選択します。
 1. ブラウザーからパッケージがダウンロードされます。
 
 ![アプリ ページの [エクスポート] メニューからコンテナー用の発行済みパッケージをエクスポートする](./media/luis-container-how-to/export-published-package-for-container.png)
@@ -147,10 +147,10 @@ LUIS [ポータル](https://www.luis.ai)には、トレーニング済みアプ�
 
 1. LUIS [ポータル](https://www.luis.ai)にサインオンします。
 1. 一覧でアプリを選択します。
-1. アプリのナビゲーション バーで **[Manage]\(管理\)** を選択します。
-1. 左側のナビゲーション バーで **[Versions]\(バージョン\)** を選択します。
+1. アプリのナビゲーション バーで **[管理]** を選択します。
+1. 左側のナビゲーション バーで **[バージョン]** を選択します。
 1. 一覧でバージョン名の左側にあるチェック ボックスをオンにします。
-1. 一覧の上にあるコンテキスト ツール バーから **[Export]\(エクスポート\)** 項目を選択します。
+1. 一覧の上にあるコンテキスト ツール バーから **[エクスポート]** 項目を選択します。
 1. **[Export for container (GZIP)]\(コンテナー用にエクスポート (GZIP)\)** を選択します。
 1. ブラウザーからパッケージがダウンロードされます。
 

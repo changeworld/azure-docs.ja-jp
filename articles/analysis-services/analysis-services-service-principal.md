@@ -4,15 +4,15 @@ description: Azure Analysis Services 管理タスクを自動化するための�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9797b4c8f8059f9cfefbb70672aa202c7a3f4825
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077373"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -20,7 +20,7 @@ ms.locfileid: "84168337"
 
 Analysis Services では、サービス プリンシパルは Azure Automation、PowerShell 無人モード、カスタム クライアント アプリケーション、Web アプリと共に使用し、共通タスクを自動化します。 たとえば、サーバーのプロビジョニング、モデルのデプロイ、データ更新、拡大縮小、一時停止/再開をすべて、サービス プリンシパルを利用することで自動化できます。 権限は、通常の Azure AD UPN アカウントとほぼ同じように、ロール メンバーシップを介してサービス プリンシパルに割り当てられます。
 
-Analysis Services では、サービス プリンシパルを使用してマネージド ID によって実行される操作もサポートされます。 詳細については、[Azure リソースのマネージド ID に関するページ](../active-directory/managed-identities-azure-resources/overview.md) と [Azure AD 認証をサポートする Azure サービスに関するページ](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)を参照してください。  
+Analysis Services では、サービス プリンシパルを使用してマネージド ID によって実行される操作もサポートされます。 詳細については、[Azure リソースのマネージド ID に関するページ](../active-directory/managed-identities-azure-resources/overview.md) と [Azure AD 認証をサポートする Azure サービスに関するページ](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)を参照してください。    
 
 ## <a name="create-service-principals"></a>サービス プリンシパルの作成
  
@@ -38,7 +38,7 @@ Runbook 操作のために、サービス プリンシパルの資格情報と�
 
 ## <a name="add-service-principals-to-server-admin-role"></a>サービス プリンシパルをサーバー管理者ロールに追加する
 
-Analysis Services サーバー管理操作のためにサービス プリンシパルを使用するには、最初にサービス プリンシパルをサーバー管理者ロールに追加する必要があります。 詳細については、「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。
+Analysis Services サーバー管理操作のためにサービス プリンシパルを使用するには、最初にサービス プリンシパルをサーバー管理者ロールに追加する必要があります。 サービス プリンシパルは、サーバー管理者ロールに直接追加する必要があります。 サービス プリンシパルをセキュリティ グループに追加してから、そのセキュリティ グループをサーバー管理者ロールに追加することはサポートされていません。 詳細については、「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。
 
 ## <a name="service-principals-in-connection-strings"></a>接続文字列のサービス プリンシパル
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO と ADOMD 
 
-クライアント アプリケーションや Web アプリと接続するとき、[AMO と ADOMD のクライアント ライブラリ](analysis-services-data-providers.md) バージョン 15.0.2 以降の、NuGet からインストールできるパッケージでは、接続文字列にサービス プリンシパルを指定できます。構文 `app:AppID` とパスワードまたは `cert:thumbprint` を利用します。 
+クライアント アプリケーションや Web アプリと接続するとき、[AMO と ADOMD のクライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) バージョン 15.0.2 以降の、NuGet からインストールできるパッケージでは、接続文字列にサービス プリンシパルを指定できます。構文 `app:AppID` とパスワードまたは `cert:thumbprint` を利用します。 
 
 次の例では、`appID` と `password` を使用し、モデル データベース更新操作を実行します。
 

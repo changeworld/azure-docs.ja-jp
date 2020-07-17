@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603346"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386336"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -66,12 +66,13 @@ ms.locfileid: "81603346"
 | [セルフサービス パスワード リセット](../authentication/howto-sspr-deployment.md)| セルフサービス パスワード リセット により、ユーザーは、必要に応じていつでも、どこでも、管理者の介入なしでパスワードをリセットできます。 |
 | [パスワードレス](../authentication/howto-authentication-passwordless-deployment.md) | 組織内の Microsoft Authenticator アプリまたは FIDO2 セキュリティ キーを使用してパスワードレス認証を実装します。 |
 
-## <a name="deploy-application-management"></a>アプリケーション管理のデプロイ
+## <a name="deploy-application-and-device-management"></a>アプリケーションおよびデバイス管理のデプロイ
 
 | 機能 | 説明|
 | -| - |
 | [シングル サインオン](../manage-apps/plan-sso-deployment.md)| シングル サインオンは、ユーザーが 1 回サインインするだけで作業に必要なアプリとリソースにアクセスできる機能です。 サインインすると、資格情報をもう一度入力する必要なしに、Microsoft Office から SalesForce、Box、さらには内部アプリケーションにアクセスできるようになります。 |
 | [アクセス パネル](../manage-apps/access-panel-deployment-plan.md)| すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。 |
+| [デバイス](../devices/plan-device-deployment.md) | この記事は、デバイスを Azure AD と統合する方法を評価し、実装計画を選択するのに役立ちます。また、サポートされているデバイス管理ツールへの主要なリンクを提供します。 |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>ハイブリッド シナリオのデプロイ

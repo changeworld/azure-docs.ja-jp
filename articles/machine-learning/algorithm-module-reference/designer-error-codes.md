@@ -5,16 +5,16 @@ description: エラー コードを使用した Azure Machine Learning デザイ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: reference
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213756"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
 
@@ -1515,7 +1515,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 このエラーは、他の方法では処理されない内部エンジン エラーをキャプチャするために提供されます。 そのため、このエラーの原因は、エラーが生成されたモジュールによって異なる可能性があります。  
 
-詳細なヘルプを取得するには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、Azure Machine Learning フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
+詳細なヘルプを受けるには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、[Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
 
 |例外メッセージ|
 |------------------------|

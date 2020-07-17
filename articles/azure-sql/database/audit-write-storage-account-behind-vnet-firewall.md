@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/19/2020
+ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: cf615da14e2749f998f900500cc33da68a625e16
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944766"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet とファイアウォールの背後にあるストレージ アカウントに対して監査を書き込む
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -127,7 +127,7 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
    要求のサンプル
 
    ```html
-   PUT https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Sql/servers/<azure server name>?api-version=2017-03-01-preview
+     PUT https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Sql/servers/<azure server name>/auditingSettings/default?api-version=2017-03-01-preview
    ```
 
    要求本文
@@ -145,6 +145,18 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
 
 - [データベース監査ポリシーを作成または更新する (Set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [サーバー監査ポリシーを作成または更新する (Set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
+
+## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+
+次の例に示すように、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) テンプレートを使用して、仮想ネットワークとファイアウォールの背後にあるストレージ アカウントにデータベース イベントを書き込むように監査を構成できます。
+
+> [!IMPORTANT]
+> 仮想ネットワークとファイアウォールの背後でストレージ アカウントを使用するには、**isStorageBehindVnet** パラメーターを true に設定する必要があります。
+
+- [BLOB ストレージに監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+
+> [!NOTE]
+> リンクされたサンプルは、外部の公開リポジトリにあり、保証なしに "手を加えず" に提供され、Microsoft サポート プログラム/サービスのサポート対象ではありません。
 
 ## <a name="next-steps"></a>次のステップ
 

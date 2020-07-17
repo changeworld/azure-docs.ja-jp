@@ -10,40 +10,75 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/14/2020
+ms.date: 6/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656393"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737463"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
-## <a name="may-2020-guest-os"></a>2020 年 5 月のゲスト OS
->[!NOTE]
->4 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされています。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 4 月のゲスト OS には、次の修正プログラムが含まれています。 この一覧は変更されることがあります。
+## <a name="june-2020-guest-os"></a>2020 年 6 月のゲスト OS
+">[!NOTE]
+>6 月のゲスト OS は現在、自動更新が構成されているクラウド サービス VM にロールアウトされています。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 4 月のゲスト OS には、次の修正プログラムが含まれています。 この一覧は変更されることがあります。
+
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2.98,  3.85, 4.78  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556813]  |  最新の累積的な更新プログラム (LCU)   |  5.43  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4551853]  |  最新の累積的な更新プログラム (LCU)   |  6.19  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552940]  |  マンスリー ロールアップ   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556836]  |  マンスリー ロールアップ   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4555449]  |  サービス スタック更新プログラム   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552920]  |  マンスリー ロールアップ   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552979]  |  マンスリー ロールアップ   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556840]  |  マンスリー ロールアップ   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552947]  |  マンスリー ロールアップ   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552982]  |  マンスリー ロールアップ   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552946]  |  マンスリー ロールアップ   |  4.78  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556846]  |  マンスリー ロールアップ   |  4.78  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4550994]  |  サービス スタック更新プログラム   |  5.43  |  2020 年 4 月 14 日  |
-|  Rel 20-05   |  [4552924]  |  マンスリー ロールアップ   |  6.19  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4549947]  |  サービス スタック更新プログラム   |  6.19  |  2020 年 4 月 14 日  |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2.99、3.86、4.79  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561616]  |  最新の累積的な更新プログラム (LCU)  |  5.44  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561608]  |  最新の累積的な更新プログラム (LCU)  |  6.20  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562030]  |  サービス スタック更新プログラム  |  2.99  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561643]  |  マンスリー ロールアップ  |  2.99  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562252]  |  サービス スタック更新プログラム  |  3.86  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561612]  |  マンスリー ロールアップ  |  3.86  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561600]  |  点滅  |  3.86、4.79、5.44、6.20  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562253]  |  サービス スタック更新プログラム  |  4.79  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561666]  |  マンスリー ロールアップ  |  4.79  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562561]  |  サービス スタック更新プログラム  |  5.44  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562562]  |  サービス スタック更新プログラム  |  6.20  |  2020 年 6 月 9 日  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+
+
+## <a name="may-2020-guest-os"></a>2020 年 5 月のゲスト OS
+
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2.98]、[3.85]、[4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556813]  |  最新の累積的な更新プログラム (LCU)   |  [5.43]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4551853]  |  最新の累積的な更新プログラム (LCU)   |  [6.19]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552940]  |  マンスリー ロールアップ   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556836]  |  マンスリー ロールアップ   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4555449]  |  サービス スタック更新プログラム   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552920]  |  マンスリー ロールアップ   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552979]  |  マンスリー ロールアップ   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556840]  |  マンスリー ロールアップ   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552947]  |  マンスリー ロールアップ   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552982]  |  マンスリー ロールアップ   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552946]  |  マンスリー ロールアップ   |  [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556846]  |  マンスリー ロールアップ   |  [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4550994]  |  サービス スタック更新プログラム   |  [5.43]  |  2020 年 4 月 14 日  |
+|  Rel 20-05  |  [4552924]  |  マンスリー ロールアップ   |  [6.19]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4549947]  |  サービス スタック更新プログラム   |  [6.19]  |  2020 年 4 月 14 日  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -62,6 +97,11 @@ ms.locfileid: "83656393"
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
+[2.98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="april-2020-guest-os"></a>2020 年 4 月のゲスト OS

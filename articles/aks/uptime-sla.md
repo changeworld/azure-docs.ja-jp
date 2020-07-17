@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) とアップタイム SLA
 description: Azure Kubernetes Service (AKS) API サーバーのオプションのアップタイム SLA オファリングについて説明します。
 services: container-service
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361576"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
@@ -23,27 +23,43 @@ ms.locfileid: "84299555"
 > [!Important]
 > エグレス ロックダウンを使用するクラスターの場合、[エグレス トラフィックの制限](limit-egress-traffic.md)に関するページを参照して、適切なポートを開きます。
 
+## <a name="region-availability"></a>利用可能なリージョン
+
+アップタイム SLA は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンで利用できます。
+
+* Azure Government は現在サポートされていません。
+* Azure China 21Vianet は現在サポートされていません。
+
+## <a name="limitations"></a>制限事項
+
+* プライベート クラスターは現時点ではサポートされていません。
+
 ## <a name="sla-terms-and-conditions"></a>SLA の使用条件
 
 アップタイム SLA は有料の機能であり、クラスターごとに有効化されます。 アップタイム SLA の価格は、個々のクラスターのサイズではなく、個別のクラスターの数によって決まります。 詳細については、[アップタイム SLA の価格の詳細](https://azure.microsoft.com/pricing/details/kubernetes-service/)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Azure CLI バージョン 2.7.0 以降
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.8.0 以降をインストールします
 
-## <a name="creating-a-cluster-with-uptime-sla"></a>アップタイム SLA を使用したクラスターの作成
+## <a name="creating-a-new-cluster-with-uptime-sla"></a>アップタイム SLA を使用した新しいクラスターの作成
+
+> [!NOTE]
+> 現時点では、アップタイム SLA を有効にした場合、これをクラスターから削除することはできません。
 
 アップタイム SLA を使用して新しいクラスターを作成するには、Azure CLI を使用します。
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
+# Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
-AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 コンテナーの Azure Monitor は、 *--enable-addons monitoring* パラメーターを使用して有効にすることもできます。  この操作は、完了するまでに数分かかります。
+AKS クラスターを作成するには、[`az aks create`][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 この操作は、完了するまでに数分かかります。
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1 --enable-addons monitoring --generate-ssh-keys
+# Create an AKS cluster with uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。 次の JSON スニペットは SKU の有料レベルを示し、クラスターでアップタイム SLA が有効になっていることを示します。
 
@@ -55,15 +71,61 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla 
   },
 ```
 
-## <a name="limitations"></a>制限事項
+## <a name="modify-an-existing-cluster-to-use-uptime-sla"></a>既存のクラスターを変更してアップタイム SLA を使用する
 
-* 現時点では、アップタイム SLA を有効にするために既存のクラスターとして変換することはできません。
-* 現時点では、アップタイム SLA を有効にして作成した後で AKS クラスターからアップタイム SLA を解除する方法はありません。  
-* プライベート クラスターは現時点ではサポートされていません。
+必要に応じて、既存のクラスターを更新してアップタイム SLA を使用することもできます。
+
+前の手順で AKS クラスターを作成した場合は、リソース グループを削除します。
+
+```azurecli-interactive
+# Delete the existing cluster by deleting the resource group 
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+新しいリソース グループを作成します。
+
+```azurecli-interactive
+# Create a resource group
+az group create --name myResourceGroup --location eastus
+```
+
+新しいクラスターを作成します。アップタイム SLA は使用しません。
+
+```azurecli-interactive
+# Create a new cluster without uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
+```
+
+[`az aks update`][az-aks-nodepool-update] コマンドを使用して、既存のクラスターを更新します。
+
+```azurecli-interactive
+# Update an existing cluster to use Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
+ ```
+
+ 次の JSON スニペットは SKU の有料レベルを示し、クラスターでアップタイム SLA が有効になっていることを示します。
+
+ ```output
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Paid"
+  },
+  ```
+
+## <a name="clean-up"></a>クリーンアップ
+
+課金されないようにするために、作成したすべてのリソースをクリーンアップします。 クラスターを削除するには、[`az group delete`][az-group-delete] コマンドを使用して AKS リソース グループを削除します。
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 
 [Availability Zones][availability-zones] を使用し、AKS クラスター ワークロードで高可用性を上げます。
+
 [エグレス トラフィックを制限する](limit-egress-traffic.md)ようにクラスターを構成します。
 
 <!-- LINKS - External -->
@@ -79,3 +141,5 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla 
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-group-delete]: /cli/azure/group#az-group-delete

@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359009"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md#111050)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
@@ -57,6 +57,10 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 
 問題が生じていると思われる場合は、最初に `Get-ADSyncAutoUpgrade` を実行して、自動アップグレードが有効になっていることを確認してください。
 
+状態が中断になっている場合は、`Get-ADSyncAutoUpgrade -Detail` を使用して理由を表示できます。  中断の理由には任意の文字列値を含めることができますが、通常は UpgradeResult の文字列値 (つまり、`UpgradeNotSupportedNonLocalDbInstall` または `UpgradeAbortedAdSyncExeInUse`) が格納されます。  `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` などの複合値が返される場合もあります。
+
+また、UpgradeResult ではない結果 (つまり、"AADHealthEndpointNotDefined" または "DirSyncInPlaceUpgradeNonLocalDb") を取得する場合もあります。
+
 その後、プロキシまたはファイアウォールで必要な URL を開いていることを確認してください。 自動更新では、「 [概要](#overview)」で説明されているように、Azure AD Connect Health が使用されています。 プロキシを使用する場合は、 [プロキシ サーバー](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)を使用するよう Health が構成されていることを確認します。 また、Azure AD に対する [Health の接続](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) もテストします。
 
 Azure AD への接続が確認されたら、イベント ログを調査します。 イベント ビューアーを起動し、 **[アプリケーション]** イベントログを確認します。 ソースとして **[Azure AD Connect Upgrade (Azure AD Connect のアップグレード)]** を選択し、イベント ID 範囲に「**300-399**」を指定したイベント ログ フィルターを追加します。  
@@ -89,18 +93,11 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeAbortedSyncExeInUse |サーバーで [Sychronization Service Manager UI](how-to-connect-sync-service-manager-ui.md) が開いています。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |インストール ウィザードが実行されているか、同期がスケジューラ以外の場所でスケジュールされました。 |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | ユーザーがサインイン方法として Adfs を選択しました。 |
 | UpgradeNotSupportedCustomizedSyncRules |ユーザーが構成に独自のカスタム ルールを追加しました。 |
-| UpgradeNotSupportedDeviceWritebackEnabled |ユーザーが [デバイスの書き戻し](how-to-connect-device-writeback.md) 機能を有効にしました。 |
-| UpgradeNotSupportedGroupWritebackEnabled |グループの書き戻し機能を有効にしました。 |
 | UpgradeNotSupportedInvalidPersistedState |インストールが簡単設定でも DirSync のアップグレードでもありません。 |
-| UpgradeNotSupportedMetaverseSizeExceeeded |メタバース内のオブジェクトが 100,000 を超えています。 |
-| UpgradeNotSupportedMultiForestSetup |現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。 |
 | UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB データベースが使用されていません。 |
-| UpgradeNotSupportedNonMsolAccount |[AD DS Connector アカウント](reference-connect-accounts-permissions.md#ad-ds-connector-account)は、既定の MSOL_ アカウントではなくなりました。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | AAD Connect を設定する場合は、サインオン方法の選択時に *[構成しない]* を選択します。 |
-| UpgradeNotSupportedStagingModeEnabled |サーバーが [ステージング モード](how-to-connect-sync-staging-server.md)に設定されています。 |
-| UpgradeNotSupportedUserWritebackEnabled |ユーザーが [ユーザーの書き戻し](how-to-connect-preview.md#user-writeback) 機能を有効にしました。 |
+|UpgradeNotSupportedLocalDbSizeExceeded|ローカル DB のサイズが 8 GB 以上です。|
+|UpgradeNotSupportedAADHealthUploadDisabled|正常性データのアップロードがポータルから無効になっています。|
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

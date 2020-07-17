@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 202acff5bae87174781dc6c914bebf0494dfcf05
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975794"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell を使用して高速ネットワークが有効な Windows VM を作成する
 
@@ -66,6 +66,10 @@ Azure ギャラリーでは次のディストリビューションが直接サ�
 ハイパースレッディングをサポートするインスタンスでは、高速ネットワークは 4 つ以上の vCPU を持つ VM インスタンスでサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms、Ms/Mmsv2 です。
 
 VM インスタンスの詳細については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+
+### <a name="custom-images"></a>カスタム イメージ
+
+カスタム イメージを使用する予定で、そのイメージで高速ネットワークをサポートする場合は、Azure 上の Mellanox ConnectX-3 および ConnectX-4 Lx NIC で動作する必須のドライバーを必ず含めるようにします。
 
 ### <a name="regions"></a>リージョン
 
@@ -327,7 +331,7 @@ Azure で VM を作成したら、VM に接続し、Windows にイーサネッ�
 3. 変更がすぐに選択されるように、適用された更新を自動に設定します。
 
     ```azurepowershell
-    $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+    $vmss.UpgradePolicy.Mode = "Automatic"
     
     Update-AzVmss -ResourceGroupName "myResourceGroup" `
         -VMScaleSetName "myScaleSet" `

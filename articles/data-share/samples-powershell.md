@@ -6,20 +6,19 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/06/2019
-ms.openlocfilehash: c2593c4c03f48624b8b9e3b9d72a3558f5f581be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd7604e33a9f98d9104eecabb20369fe2fcee8a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73499293"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119635"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure Data Share 用の Azure PowerShell のサンプル
 
 次の表には、Azure Data Share 用の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 
-| |  |
+|PowerShell のサンプル|説明|
 |---|---|
-|**PowerShell のサンプル**||
 |[新しいデータ共有アカウントを作成する](scripts/powershell/create-new-share-account-powershell.md)| この PowerShell スクリプトでは、新しいデータ共有アカウントを作成します。 |
 |[新しいデータ共有を作成する](scripts/powershell/create-new-share-powershell.md)| この PowerShell スクリプトでは、新しいデータ共有を作成します。 |
 |[データ セットを共有に追加する](scripts/powershell/add-datasets-powershell.md)| この PowerShell スクリプトでは、既存のデータ共有アカウントに BLOB データ セットを追加します。 |

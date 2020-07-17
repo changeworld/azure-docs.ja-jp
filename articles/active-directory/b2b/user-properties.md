@@ -4,20 +4,20 @@ description: 招待に応じる前と後の Azure Active Directory B2B ゲスト
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 03/19/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f5002e361653614c966dc43301afa83eb7b200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386625"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -104,7 +104,11 @@ PowerShell を使用して、UserType をメンバーからゲストに、また
 ![ユーザー設定の [外部ユーザー] オプションを示すスクリーンショット](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
-はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?** 」を参照してください。 
+はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?** 」を参照してください。
+
+## <a name="can-i-update-a-guest-users-email-address"></a>ゲスト ユーザーのメール アドレスを更新できますか。
+
+ゲスト ユーザーが招待を承諾し、その後メール アドレスを変更した場合、新しいメールはディレクトリ内のゲスト ユーザー オブジェクトに自動的に同期されません。 メールのプロパティは、[Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) を介して作成されます。 メールのプロパティは、Exchange 管理センターまたは [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) を介して更新できます。そしてこの変更が、Azure AD のゲスト ユーザー オブジェクトに反映されます。
 
 ## <a name="next-steps"></a>次のステップ
 

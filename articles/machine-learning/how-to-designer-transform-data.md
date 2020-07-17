@@ -5,17 +5,17 @@ description: Azure Machine Learning デザイナーでデータを変換して�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
-ms.date: 05/04/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ea0ba58c3eb38a54be5ff777519ca12d6a2cf9ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644296"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517536"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーでデータを変換する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "83644296"
 
 サンプルの[国勢調査の成人収入に関する二項分類](sample-designer-datasets.md)データセットを使用して、2 つのデータセットを準備します。1 つのデータセットには米国のみの成人の国勢調査情報が含まれ、もう 1 つのデータセットには米国以外の成人の国勢調査情報が含まれています。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 1. データセットを変換し、トレーニング用に準備します。
 1. 結果のデータセットをデータストアにエクスポートします。
@@ -78,7 +78,7 @@ ms.locfileid: "83644296"
 
 パイプラインは次のようになっているはずです。
 
-![パイプラインと Split Data モジュールの構成方法を示すスクリーンショット](media/how-to-designer-transform-data/split-data.png)。
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="パイプラインと Split Data モジュールの構成方法を示すスクリーンショット":::
 
 
 ## <a name="save-the-datasets"></a>データセットの保存

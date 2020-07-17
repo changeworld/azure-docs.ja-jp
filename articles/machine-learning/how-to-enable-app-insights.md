@@ -5,17 +5,18 @@ description: Azure Machine Learning でデプロイされた Web サービスを
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 03/12/2020
-ms.openlocfilehash: 464ec1fcf0986dc04bd92bbe9e31b5675e5822d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/09/2020
+ms.custom: tracking-python
+ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743511"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,10 +44,12 @@ ms.locfileid: "79136195"
 
 ## <a name="web-service-metadata-and-response-data"></a>Web サービスのメタデータと応答データ
 
->[!Important]
-> Azure Application Insights では、最大 64 KB のペイロードのみがログに記録されます。 この制限に達すると、その後はモデルの最新の出力のみがログに記録されます。 
+> [!IMPORTANT]
+> Azure Application Insights では、最大 64 KB のペイロードのみがログに記録されます。 この制限に達すると、メモリ不足などのエラーが発生したり、情報がログに記録されないことがあります。
 
-サービスへのメタデータと応答は、Web サービスのメタデータとモデルの予測に対応しており、メッセージ `"model_data_collection"` で Azure Application Insights のトレースに記録されます。 Azure Application Insights に直接クエリを実行してこのデータにアクセスしたり、長期の保持やさらなる処理のためにストレージ アカウントに対する[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を設定したりできます。 モデル データはその後、Azure Machine Learning で、ラベル付け、再トレーニング、説明、データ分析などの用途を設定するために使用できます。 
+Web サービスへの要求の情報を記録するには、`print` ステートメントを score.py ファイルに追加します。 各 `print` ステートメントによって、メッセージ `STDOUT` の Application Insights のトレース テーブルに 1 つのエントリが生成されます。 `print` ステートメントの内容は、`customDimensions` に格納されてから、トレース テーブルの `Contents` に格納されます。 JSON 文字列を出力すると、`Contents` のトレース出力に階層データ構造が生成されます。
+
+Azure Application Insights に直接クエリを実行してこのデータにアクセスしたり、長期の保持やさらなる処理のためにストレージ アカウントに対する[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を設定したりできます。 モデル データはその後、Azure Machine Learning で、ラベル付け、再トレーニング、説明、データ分析などの用途を設定するために使用できます。 
 
 <a name="python"></a>
 
@@ -70,10 +73,51 @@ ms.locfileid: "79136195"
 
 カスタム トレースをログに記録する場合は、[デプロイする方法と場所](how-to-deploy-and-where.md)のドキュメントにある AKS または ACI のための標準のデプロイ プロセスに従います。 次に、次の手順を使用します。
 
-1. print ステートメントを追加してスコアリング ファイルを更新します。
+1. 推論中に Application Insights にデータを送信するには、print ステートメントを追加してスコアリング ファイルを更新します。 要求データや応答などのより複雑な情報をログに記録するには、JSON 構造体を使用してください。 次の例の score.py ファイルは、モデルが初期化された時刻、推論時の入力と出力、およびエラーが発生した時刻をログに記録します。
+
+    > [!IMPORTANT]
+    > Azure Application Insights では、最大 64 KB のペイロードのみがログに記録されます。 この制限に達すると、メモリ不足などのエラーが発生したり、情報がログに記録されないことがあります。 ログに記録するデータが 64 kb より大きい場合は、「[実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)」の情報を使用して、Blob ストレージに格納する必要があります。
     
     ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
+    import pickle
+    import json
+    import numpy 
+    from sklearn.externals import joblib
+    from sklearn.linear_model import Ridge
+    from azureml.core.model import Model
+    import time
+
+    def init():
+        global model
+        #Print statement for appinsights custom traces:
+        print ("model initialized" + time.strftime("%H:%M:%S"))
+        
+        # note here "sklearn_regression_model.pkl" is the name of the model registered under the workspace
+        # this call should return the path to the model.pkl file on the local disk.
+        model_path = Model.get_model_path(model_name = 'sklearn_regression_model.pkl')
+        
+        # deserialize the model file back into a sklearn model
+        model = joblib.load(model_path)
+    
+
+    # note you can pass in multiple rows for scoring
+    def run(raw_data):
+        try:
+            data = json.loads(raw_data)['data']
+            data = numpy.array(data)
+            result = model.predict(data)
+            # Log the input and output data to appinsights:
+            info = {
+                "input": raw_data,
+                "output": result.tolist()
+                }
+            print(json.dumps(info))
+            # you can return any datatype as long as it is JSON-serializable
+            return result.tolist()
+        except Exception as e:
+            error = str(e)
+            print (error + time.strftime("%H:%M:%S"))
+            return error
     ```
 
 2. サービスの構成を更新します。
@@ -117,19 +161,19 @@ Azure Application Insights を無効にするには、次のコードを使用�
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. **[概要]** タブを選択すると、サービスの基本的なメトリック セットが表示されます。
+1. 左側の一覧の **[概要]** タブまたは __[監視]__ セクションで、 __[ログ]__ を選択します。
 
-   [![概要](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+    [![監視の [概要] タブ](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. Web サービス要求のメタデータと応答を確認するには、 **[ログ (Analytics)]** セクションで **[要求]** テーブルを選択し、 **[実行]** を選択して要求を表示します
+1. score.py ファイルからログに記録された情報を表示するには、__traces__ テーブルを参照してください。 次のクエリは、__input__ 値が記録されたログを検索しています。
 
-   [![モデル データ](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+    ```kusto
+    traces
+    | where customDimensions contains "input"
+    | limit 10
+    ```
 
-
-3. カスタム トレースを確認するには、 **[分析]** を選択します。
-4. [スキーマ] セクションで **[トレース]** を選択します。 次に、 **[実行]** を選択してクエリを実行します。 データは表形式で表示され、スコアリング ファイルのカスタムの呼び出しにマップされます。
-
-   [![カスタム トレース](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![トレース データ](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 Azure Application Insights の使用方法の詳細については、「[Application Insights とは何か?](../azure-monitor/app/app-insights-overview.md)」を参照してください。
 
@@ -138,7 +182,7 @@ Azure Application Insights の使用方法の詳細については、「[Applica
 >[!Important]
 > Azure Application Insights では、BLOB ストレージへのエクスポートのみがサポートされています。 このエクスポート機能の追加の制限については「[Application Insights からのテレメトリのエクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration)」に示されています。
 
-Azure Application Insights の[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を使用して、サポートされているストレージ アカウントにメッセージを送信し、より長い保持を設定できます。 `"model_data_collection"` メッセージは JSON 形式で格納され、簡単に解析してモデル データを抽出できます。 
+Azure Application Insights の[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を使用して、サポートされているストレージ アカウントにメッセージを送信し、より長い保持を設定できます。 データは JSON 形式で格納され、簡単に解析してモデル データを抽出できます。 
 
 Azure Data Factory、Azure ML パイプライン、またはその他のデータ処理ツールを使用して、必要に応じてデータを変換できます。 データを変換したら、データセットとして Azure Machine Learning ワークスペースに登録できます。 そのためには、[データセットを作成して登録する方法](how-to-create-register-datasets.md)に関するページをご覧ください。
 

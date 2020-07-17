@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: a3917443e25589cafe1d68522e13ba60ef634341
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 45a343fdbd41abf1388556131f1f53a675d8ab49
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191504"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316226"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する
 
@@ -36,7 +36,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-この記事では、SQL Server から Azure SQL Database の単一データベースまたはプールされたデータベースへのオフライン移行について説明します。 オンライン移行については、「[DMS を使用して SQL Server を Azure SQL Database にオンラインで移行する](tutorial-sql-server-azure-sql-online.md)」を参照してください。
+この記事では、SQL Server から Azure SQL Database のデータベースへのオフライン移行について説明します。 オンライン移行については、「[DMS を使用して SQL Server を Azure SQL Database にオンラインで移行する](tutorial-sql-server-azure-sql-online.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 
 - [SQL Server 2016 以降](https://www.microsoft.com/sql-server/sql-server-downloads)をダウンロードしてインストールします。
 - SQL Server Express のインストール時に既定では無効になっている TCP/IP プロトコルを有効にします。有効にする手順については、[サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事を参照してください。
-- 「[Azure portal を使用して Azure SQL Database で単一データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started)」の詳細な手順に従って、Azure SQL Database の単一 (またはプールされた) データベースを作成します。
+- [Azure portal を使用して Azure SQL Database 内にデータベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started)ことに関する記事の詳細に従って、Azure SQL Database 内にデータベースを作成します。
 
     > [!NOTE]
     > SQL Server Integration Services (SSIS) を使用していて、SSIS プロジェクト/パッケージ (SSISDB) のカタログ データベースを SQL Server から Azure SQL Database に移行する場合は、SSIS を Azure Data Factory (ADF) にプロビジョニングしたときに移行先 SSISDB が自動的に作成および管理されます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
@@ -70,7 +70,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 - Azure SQL Database のサーバー レベル IP [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 - ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含めます。
-- ターゲットの Azure SQL データベース インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可を含めます。
+- ターゲットの Azure SQL Database インスタンスへの接続に使用される資格情報に、ターゲット データベースに対する CONTROL DATABASE アクセス許可を含めます。
 
 ## <a name="assess-your-on-premises-database"></a>オンプレミス データベースを評価する
 
@@ -97,7 +97,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
     ![データ移行の評価](media/tutorial-sql-server-to-azure-sql/dma-assessments.png)
 
-    評価では、Azure SQL Database の単一データベースまたはプールされたデータベースについて、単一データベースまたはプールされたデータベースへのデプロイでの機能パリティの問題と移行の障害となっている問題が特定されます。
+    Azure SQL Database のデータベースの場合、この評価では、単一データベースまたはプールされたデータベースへのデプロイで、機能パリティの問題と移行の障害となっている問題が特定されます。
 
     - **SQL Server の機能類似性**カテゴリでは、幅広い推奨事項や、Azure で利用できる代替アプローチ、および移行プロジェクトの計画に役立つ移行手順を確認できます。
     - **互換性問題**カテゴリでは、部分的にサポートされている機能やサポートされていない機能を確認できます。この情報は、SQL Server データベースから Azure SQL Database への移行を妨げる可能性がある互換性の問題を反映しています。 また、それらの問題への対処に役立つ推奨事項も確認できます。
@@ -109,7 +109,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 評価結果をレビューし、選択したデータベースが Azure SQL Database の単一データベースまたはプールされたデータベースに移行可能であることを確認したら、DMA を使用してスキーマを Azure SQL Database に移行します。
 
 > [!NOTE]
-> Data Migration Assistant で移行プロジェクトを作成する前に、Azure SQL データベースが前提要件での説明に従って既にプロビジョニングされていることを確認してください。 このチュートリアルでは、Azure SQL Database の名前を **AdventureWorksAzure** としていますが、任意の名前を指定することもできます。
+> Data Migration Assistant で移行プロジェクトを作成する前に、Azure 内のデータベースが、前提要件で言及されたように既にプロビジョニングされていることを確認します。 このチュートリアルでは、Azure SQL Database の名前を **AdventureWorksAzure** としていますが、任意の名前を指定することもできます。
 
 > [!IMPORTANT]
 > SSIS を使用する場合、現在 DMA ではソース SSISDB の移行はサポートされていませんが、Azure SQL Database によってホストされている移行先 SSISDB に SSIS プロジェクト/パッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。

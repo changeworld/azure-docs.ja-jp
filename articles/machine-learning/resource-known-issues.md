@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 169dd7f71b86c77717226872fecb493a6eb5bf0d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309851"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610067"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -46,16 +46,16 @@ ms.locfileid: "84309851"
 
    これは pip の既知の制限であり、単一行としてインストールするときに、機能する依存関係競合回避モジュールがないことが原因です。 pip によって参照されるのは、最初の固有の依存関係のみです。 
 
-   次のコードでは、`azure-ml-datadrift` と `azureml-train-automl` の両方が単一行の pip インストールを使用してインストールされます。 
+   次のコードでは、`azureml-datadrift` と `azureml-train-automl` の両方が単一行の pip インストールを使用してインストールされます。 
      ```
-       pip install azure-ml-datadrift, azureml-train-automl
+       pip install azureml-datadrift, azureml-train-automl
      ```
-   この例で、`azure-ml-datadrift` にはバージョン > 1.0 が必要で、`azureml-train-automl` にはバージョン < 1.2 が必要であるとします。 `azure-ml-datadrift` の最新バージョンが 1.3 の場合、古いバージョンの `azureml-train-automl` パッケージ要件に関係なく、両方のパッケージが 1.3 にアップグレードされます。 
+   この例で、`azureml-datadrift` にはバージョン > 1.0 が必要で、`azureml-train-automl` にはバージョン < 1.2 が必要であるとします。 `azureml-datadrift` の最新バージョンが 1.3 の場合、古いバージョンの `azureml-train-automl` パッケージ要件に関係なく、両方のパッケージが 1.3 にアップグレードされます。 
 
    パッケージに適切なバージョンがインストールされていることを確認するには、次のコードのように複数行を使用してインストールします。 pip は次の行呼び出しの一部として明示的にダウングレードされるため、ここでは順序は問題になりません。 そのため、適切なバージョンの依存関係が適用されます。
     
      ```
-        pip install azure-ml-datadrift
+        pip install azureml-datadrift
         pip install azureml-train-automl 
      ```
      
@@ -174,12 +174,26 @@ ms.locfileid: "84309851"
 
 ### <a name="data-labeling-projects"></a>プロジェクトのラベル付けデータ
 
-|問題  |解像度  |
+|問題  |解決方法  |
 |---------|---------|
 |BLOB データストアに作成されたデータセットしか使用できない。     |  これは、現在のリリースの既知の制限です。       |
 |作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される。     | ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。         |
 |画像をレビューする際に、新しくラベル付けされた画像が表示されない。     |   ラベル付けされたすべての画像を読み込むには、 **[First]\(1 番目\)** ボタンを選択します。 **[First]\(1 番目\)** ボタンを選択すると、リストの先頭に戻りますが、ラベル付けされたデータはすべて読み込まれます。      |
 |オブジェクト検出のラベル付け中に Esc キーを押すと、左上隅にゼロ サイズのラベルが作成されます。 この状態でラベルを送信することはできません。     |   ラベルの横にある交差マークをクリックして、ラベルを削除してください。  |
+
+### <a name="data-drift-monitors"></a>データ ドリフト モニター
+
+* SDK の `backfill()` 関数で予期された出力が生成されない場合は、認証の問題が原因である可能性があります。  この関数に渡す計算を作成するときに、`Run.get_context().experiment.workspace.compute_targets` を使用しないでください。  代わりに、次のような [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) を使用して、その `backfill()` 関数に渡す計算を作成します。 
+
+  ```python
+   auth = ServicePrincipalAuthentication(
+          tenant_id=tenant_id,
+          service_principal_id=app_id,
+          service_principal_password=client_secret
+          )
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   compute = ws.compute_targets.get("xxx")
+   ```
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 
@@ -220,8 +234,14 @@ ms.locfileid: "84309851"
 
 ## <a name="automated-machine-learning"></a>自動化された機械学習
 
-* **TensorFlow**: 自動化された機械学習では、現時点では TensorFlow バージョン 1.13 はサポートされていません。 このバージョンをインストールすると、パッケージの依存関係が動作を停止することになります。 Microsoft は、将来のリリースでこの問題を解決するよう取り組んでいます。
-
+* **TensorFlow**: SDK のバージョン 1.5.0 以降の自動機械学習では、TensorFlow モデルは既定ではインストールされません。 自動 ML 実験で TensorFlow をインストールして使用するには、CondaDependecies を使用して tensorflow==1.12.0 をインストールしてください。 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
 * **実験グラフ**:自動化された ML の実験のイテレーションで示される二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は、4/12 以降のユーザー インターフェイスでは正しくレンダリングされません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
 
 * **Databricks での自動化された機械学習の実行をキャンセルする**:自動化された機械学習機能を Azure Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始するには、Azure Databricks クラスターを再起動してください。
@@ -238,7 +258,7 @@ ms.locfileid: "84309851"
 
 次のエラーに対して、これらのアクションを実行します。
 
-|エラー  | 解像度  |
+|エラー  | 解決方法  |
 |---------|---------|
 |Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |

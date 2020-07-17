@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945496"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB の探索
 
@@ -119,6 +119,10 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 ブックは、リソース グループ内の、ユーザー個人の **[個人用レポート]** セクション、またはリソース グループにアクセスできるユーザーであればだれでもアクセスできる **[共有レポート]** セクションのいずれかに保存されます。 カスタム ブックを保存した後は、ブック ギャラリーに移動して起動する必要があります。
 
 ![コマンド バーからブック ギャラリーを起動する](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+トラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングの記事](troubleshoot-workbooks.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

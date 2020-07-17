@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317778"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
 
@@ -45,7 +45,7 @@ Azure Resource Manager テンプレートの詳細については、これらの
 
 Resource Manager テンプレートを作成するには、Azure PowerShell と [LogicAppTemplate モジュール](https://github.com/jeffhollan/LogicAppTemplateCreator)を使用します。 このオープン ソース モジュールは、最初にロジック アプリとロジック アプリで使用している接続を評価します。 次に、モジュールは、デプロイに必要なパラメーターでテンプレート リソースを生成します。
 
-たとえば、Azure Service Bus キューからメッセージを受信し、Azure SQL データベースにデータをアップロードするロジック アプリがあるとします。 このモジュールは、オーケストレーション ロジック全体を保存し、SQL および Service Bus の接続文字列をパラメーター化することで、それらの値をデプロイのニーズに応じて提供し、変更できるようにします。
+たとえば、Azure Service Bus キューからメッセージを受信し、Azure SQL Database にデータをアップロードするロジック アプリがあるとします。 このモジュールは、オーケストレーション ロジック全体を保存し、SQL および Service Bus の接続文字列をパラメーター化することで、それらの値をデプロイのニーズに応じて提供し、変更できるようにします。
 
 これらのサンプルでは、Azure Resource Manager テンプレート、Azure DevOps の Azure Pipelines、および Azure PowerShell を使用してロジック アプリを作成およびデプロイする方法が示されています。
 

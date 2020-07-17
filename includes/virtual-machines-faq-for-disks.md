@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242076"
 ---
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
@@ -451,7 +451,7 @@ Azure Backup でサポートされる最大のディスク サイズは、32 TiB
 
 **すべてのディスク サイズについてホスト キャッシュを有効にするサポートはしていますか?**
 
-4 TiB 未満のディスク サイズについて、読み取りのみおよび読み取り/書き込みのホスト キャッシュをサポートしています。 4 TiB を超えるディスク サイズについては、 [なし] 以外の設定キャッシュ オプションをサポートしていません。 VM にキャッシュされたデータでより優れたパフォーマンス向上の確認を期待することができる場合は、より小さいディスク サイズのキャッシュを活用することをお勧めします。
+ホスト キャッシュ (ReadOnly および Read/Write) は、4 TiB 未満のディスク サイズでサポートされています。 つまり、4095 GiB までプロビジョニングされているすべてのディスクで、ホスト キャッシュを利用できます。 4096 GiB 以上のディスク サイズでは、ホスト キャッシュはサポートされていません。 たとえば、4095 GiB でプロビジョニングされた P50 Premium ディスクではホスト キャッシュを利用できますが、4096 GiB でプロビジョニングされた P50 ディスクではホスト キャッシュを利用できません。 VM にキャッシュされたデータでより優れたパフォーマンス向上の確認を期待することができる場合は、より小さいディスク サイズのキャッシュを活用することをお勧めします。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 

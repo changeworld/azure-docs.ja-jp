@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 8f191fffd1c8d66ac959953c55cbc79b3807c803
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 9beb617ed8626b1fda1c9db98d626ca70ee01755
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204554"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042919"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -79,7 +79,7 @@ ms.locfileid: "84204554"
 |SQL Managed Instance で脆弱性評価を有効にする必要がある|この操作により、選択した SQL Managed Instance 上で SQL の脆弱性評価が有効になります。 <br>**注**:<ul><li>SQL の脆弱性評価は、SQL Advanced Data Security (ADS) パッケージの一部です。 マネージド インスタンス上で ADS がまだ有効ではない場合は、自動的に有効になります。</li><li>選択した SQL Managed Instance のリージョンとリソース グループごとに、スキャン結果を格納するストレージ アカウントが作成され、そのリージョン内のすべてのインスタンスによって共有されます。</li><li>ADS には、SQL Database あたり 15 米ドルの料金がかかります。</li></ul>||
 |SQL Database で Advanced Data Security を有効にする必要があります|この操作により、選択したサーバーとそのデータベース上で Advanced Data Security (ADS) が有効になります。 <br>**注**:<ul><li>選択した SQL Database のリージョンとリソース グループごとに、スキャン結果を格納するストレージ アカウントが作成され、そのリージョン内のすべてのサーバーによって共有されます。</li><li>ADS には、SQL Database あたり 15 米ドルの料金がかかります。</li></ul>||
 |SQL Database で脆弱性評価を有効にする必要があります|この操作により、これらの選択したサーバーとそのデータベース上で SQL の脆弱性評価が有効になります。 <br>**注**:<ul><li>SQL の脆弱性評価は、SQL Advanced Data Security (ADS) パッケージの一部です。 SQL Database 上で ADS がまだ有効ではない場合は、自動的に有効になります。</li><li>選択した SQL Database のリージョンとリソース グループごとに、スキャン結果を格納するストレージ アカウントが作成され、そのリージョン内のすべてのインスタンスによって共有されます。</li><li>ADS には、SQL Database あたり 15 米ドルの料金がかかります。</li></ul>||
-|Transparent Data Encryption を SQL データベース上で有効にする必要がある|この操作により、選択したデータベース上で SQL Database Transparent Data Encryption (TDE) が有効になります。 <br>**注**:既定では、サービスによって管理される TDE キーが使用されます。
+|SQL Database で透過的なデータ暗号化を有効にする必要があります|この操作により、選択したデータベース上で SQL Database Transparent Data Encryption (TDE) が有効になります。 <br>**注**:既定では、サービスによって管理される TDE キーが使用されます。
 |ストレージ アカウントへの安全な転送を有効にする必要がある|この操作により、ストレージ アカウントのセキュリティが更新され、セキュリティで保護された接続での要求のみが許可されます (HTTPS)。 <br>**注**:<ul><li>HTTP を使用するすべての要求は拒否されます。</li><li>Azure ファイル サービスを使用している場合、暗号化されていない接続は失敗します。これには、SMB 2.1、暗号化なしの SMB 3.0、および Linux SMB クライアントの一部の種類を使用するシナリオが含まれます。 詳細情報。</li></ul>|
 |Web アプリケーションには HTTPS を介してのみアクセスできるようにする|この操作により、選択したリソースに関する HTTP から HTTPS へのすべてのトラフィックはリダイレクトされます。 <br>**注**:<ul><li>SSL 証明書がない HTTPS エンドポイントは、ブラウザーに "プライバシーエラー" と表示されます。 そのため、カスタム ドメインを持っているユーザーは、SSL 証明書が設定済みであることを確認する必要があります。</li><li>パケットと Web アプリケーションのファイアウォールでアプリ サービスを保護し、HTTPS セッションの転送を許可します。</li></ul>|
 |Function App には HTTPS 経由でのみアクセスできるようにする|この操作により、選択したリソースに関する HTTP から HTTPS へのすべてのトラフィックはリダイレクトされます。 <br>**注**:<ul><li>SSL 証明書がない HTTPS エンドポイントは、ブラウザーに "プライバシーエラー" と表示されます。 そのため、カスタム ドメインを持っているユーザーは、SSL 証明書が設定済みであることを確認する必要があります。</li><li>パケットと Web アプリケーションのファイアウォールでアプリ サービスを保護し、HTTPS セッションの転送を許可します。</li></ul>|

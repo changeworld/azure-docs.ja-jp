@@ -15,12 +15,12 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a8781a5afb8b6df0444ce177be452f84c73413e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172227"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087221"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS のトークンベース (HTTP/2) 認証
 
@@ -53,15 +53,15 @@ APNS の証明書の資格情報の使用から移行した場合、トークン
 
 キー識別子は、Apple Developer アカウント内の **[Certificates, Identifiers & Profiles]\(証明書、識別子およびプロファイル\)** の **[Keys]\(キー\)** ページから入手できます。
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
+![証明書](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
+![識別子](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier-and-application-name"></a>アプリケーション識別子とアプリケーション名
 
 アプリケーションの名前と識別子も、開発者アカウントの **[Certificates, Identifiers & Profiles]\(証明書、識別子およびプロファイル\)** ページにあります。
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
+![証明書と ID](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
 ### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>.NET SDK または Azure portal を使用して構成する
 
@@ -77,9 +77,9 @@ APNS の証明書の資格情報の使用から移行した場合、トークン
 
 * **キー ID**:Apple Developer ポータルで生成された秘密キーの識別子。たとえば、`2USFGKSKLT` です。
 * **チーム ID**:"プレフィックス" または "アプリのプレフィックス" とも呼ばれます。 これは、Apple Developer ポータルの組織の識別子です。たとえば、`S4V3D7CHJR` です。
-* **[Bundle ID]\(バンドル ID\)** : "アプリ ID" とも呼ばれます。 これは、アプリケーションのバンドル識別子です。たとえば、`com.microsoft.nhubsample2019` です。 1 つのキーを複数のアプリで使用できることに注意してください。 この値は、通知の送信時に `apns-topic` HTTP ヘッダーにマップされ、特定のアプリケーションを対象とするために使用されます。
+* **[Bundle ID]\(バンドル ID\)** : "アプリ ID" とも呼ばれます。 これは、アプリケーションのバンドル識別子です。たとえば、`com.example.myapp` です。 1 つのキーを複数のアプリで使用できることに注意してください。 この値は、通知の送信時に `apns-topic` HTTP ヘッダーにマップされ、特定のアプリケーションを対象とするために使用されます。 `apns-topic` の値は明示的に設定できないことに注意してください。
 * **トークン**:"キー" または "秘密キー" とも呼ばれます。 これは、Apple Developer ポータルで生成された .p8 ファイルから取得されます。 キーで APNS が有効になっている必要があります (キーの生成時に Apple Developer ポータルで選択されます)。 この値を NH ポータルや API に指定するときは、その値から PEM ヘッダー/フッターを削除する必要があります。
-* **エンドポイント**: これは、Notification Hubs ポータル ブレードのトグルであり、API の文字列フィールドです。 有効な値は `https://api.push.apple.com` または `https://api.sandbox.push.apple.com`です。 Notification Hubs は、通知を送信するために、この値を運用またはサンドボックスのいずれかの環境で使用します。 これは、アプリの `aps-environment` エンタイトルメントと一致する必要があります。一致しないと、生成された APNS デバイス トークンが環境と一致せず、通知の送信に失敗します。
+* **エンドポイント**: これは、Notification Hubs ポータル ブレードのトグルであり、API の文字列フィールドです。 有効な値は `https://api.development.push.apple.com:443/3/device` または `https://api.sandbox.push.apple.com:443/3/device`です。 Notification Hubs は、通知を送信するために、この値を運用またはサンドボックスのいずれかの環境で使用します。 これは、アプリの `aps-environment` エンタイトルメントと一致する必要があります。一致しないと、生成された APNS デバイス トークンが環境と一致せず、通知の送信に失敗します。
 
 正しい使用法を示すコード サンプルを次に示します。
 

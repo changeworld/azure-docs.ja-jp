@@ -3,12 +3,12 @@ title: 開発者向けリソース - Language Understanding
 description: SDK、REST API、CLI は、ご使用のプログラミング言語で Language Understanding (LUIS) アプリを開発する際に役立ちます。 Azure リソースと LUIS 予測を管理します。
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 27212f30c90abb20e7ded2eee01365c7b023f851
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758063"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610790"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
@@ -72,6 +72,10 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 |`q` または `query`|チャット ボットなどのクライアント アプリケーションから送信される発話テキスト|
 |`version`|10 文字のバージョン名|
 |`slot`| `production` または `staging`|
+
+### <a name="rest-query-string-parameters"></a>REST クエリ文字列パラメーター
+
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ## <a name="app-schema"></a>アプリ スキーマ
 

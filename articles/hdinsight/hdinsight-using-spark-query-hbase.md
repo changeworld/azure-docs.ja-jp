@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: e5d9d4f215752d95ee1d676e8a5b126b6d0d3ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190624"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087488"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
@@ -113,13 +113,49 @@ exit
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spark HBase コネクターを参照する Spark Shell を実行する
 
-1. 開いている Spark クラスターへの SSH セッションから以下のコマンドを入力して、Spark シェルを開始します。
+前の手順を完了すると、適切なバージョンの Spark HBase コネクタを参照して、Spark シェルを実行できるようになります。 自分のクラスター シナリオに適した最新の Spark HBase コネクタ コア バージョンを確認するには、[SHC コア リポジトリ](https://repo.hortonworks.com/content/groups/public/com/hortonworks/shc/shc-core/)のページを参照してください。
+
+例として、次の表では、HDInsight チームが現在使用している 2 つのバージョンと対応するコマンドを示します。 表で示されているように HBase と Spark のバージョンが同じ場合は、クラスターに同じバージョンを使用できます。 
+
+
+1. 開いている Spark クラスターへの SSH セッションで、下のコマンドを入力して、Spark シェルを開始します。
+
+    |Spark のバージョン| HDI HBase のバージョン  | SHC のバージョン    |  コマンド  |
+    | :-----------:| :----------: | :-----------: |:----------- |
+    |      2.1    | HDI 3.6 (HBase 1.1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4.0 (HBase 2.0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+
+2. この Spark シェル インスタンスを開いたままで、[カタログとクエリを定義します](#define-a-catalog-and-query)。 SHC コア リポジトリ内のバージョンに対応する jar が見つからない場合は、引き続き読んでください。 
+
+jar は、[spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitHub ブランチから直接ビルドできます。 たとえば、Spark 2.3 と HBase 1.1 を使用してを実行している場合は、次の手順を実行します。
+
+1. リポジトリを複製します。
 
     ```bash
-    spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
-    ```  
+    git clone https://github.com/hortonworks-spark/shc
+    ```
+    
+2. ブランチ - 2.3 にアクセスします。
 
-2. この Spark シェル インスタンスを開いたままで、次の手順に進みます。
+    ```bash
+    git checkout branch-2.3
+    ```
+
+3. ブランチからビルドします (.jar ファイルを作成します)。
+
+    ```bash
+    mvn clean package -DskipTests
+    ```
+    
+3. 次のコマンドを実行します (作成した .jar ファイルに対応するよう .jar の名前を変更してください)。
+
+    ```bash
+    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
+    ```
+    
+4. この Spark シェル インスタンスを開いたままで、次のセクションに進みます。 
+
+
 
 ## <a name="define-a-catalog-and-query"></a>カタログとクエリを定義する
 
@@ -150,11 +186,11 @@ exit
     |}""".stripMargin
     ```
 
-    このコードは、次の処理を実行します。  
+    コード:  
 
-     a. `Contacts` という名前の HBase テーブルのカタログ スキーマを定義します。  
-     b. rowkey を `key` として指定し、Spark で使用されている列名を、HBase で使用されている列ファミリ、列名、列タイプにマップします。  
-     c. また、rowkey を、`rowkey` の特定の列ファミリ `cf` を持つ名前付きの列 (`rowkey`) として詳細に定義する必要があります。  
+    1. `Contacts` という名前の HBase テーブルのカタログ スキーマを定義します。  
+    1. rowkey を `key` として指定し、Spark で使用されている列名を、HBase で使用されている列ファミリ、列名、列タイプにマップします。  
+    1. `rowkey` の特定の列ファミリ `cf` を持つ名前付きの列 (`rowkey`) として、rowkey を詳細に定義します。  
 
 1. 以下のコマンドを入力して、HBase で `Contacts` テーブルの DataFrame を提供するメソッドを定義します。
 

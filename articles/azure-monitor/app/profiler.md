@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678590"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -25,9 +25,9 @@ Profiler は、Basic 以上のサービス レベルを使用し、Azure App Ser
 
 Application Insights Profiler は、App Services ランタイムの一部として事前インストールされています。 次の手順は、これを App Service で有効にする方法を示しています。 App Insights SDK をアプリケーションのビルド時に含めている場合でも、これらの手順に従ってください。
 
-1. App Service の "Always On" 設定を有効にします。 この設定は、App Service の構成ページの [全般設定] で更新することができます。
-1. Azure Portal の **[App Services]** ウィンドウに移動します。
-1. **[設定] > [Application Insights]** ウィンドウに移動します。
+1. ご自身の App Service の Azure コントロール パネルに移動します。
+1. App Service の "Always On" 設定を有効にします。 この設定を確認するには、 **[設定]** 、 **[構成]** ページ (次の手順のスクリーンショットを参照) の順にクリックし、 **[全般設定]** タブをクリックします。
+1. **[設定] > [Application Insights]** ページに移動します。
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535784"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037513"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -30,13 +30,13 @@ Azure Stream Analytics を使用して、リアルタイムのダッシュボー
 
 ## <a name="use-sql-for-dashboard"></a>ダッシュボードに SQL を使用する
 
-Power BI ダッシュボードは、待ち時間は短いものの、本格的な Power BI レポートを生成する用途には使用できません。 レポート作成パターンとしては、データをまず SQL データベースに出力するのが一般的です。 その後、Power BI の SQL コネクタを使用して、SQL に最新のデータを照会します。
+Power BI ダッシュボードは、待ち時間は短いものの、本格的な Power BI レポートを生成する用途には使用できません。 レポート作成パターンとしては、データをまず SQL Database に出力するのが一般的です。 その後、Power BI の SQL コネクタを使用して、SQL に最新のデータを照会します。
 
 ![ASA SQL ダッシュボード](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-SQL データベースを使用することで、待ち時間はわずかに長くなりますが、柔軟性は向上します。 待ち時間の要件が 1 秒を超えるジョブには、このソリューションが最適です。 この方法では、Power BI の機能を最大限に活用して、レポートに使用するデータをさらにスライスしてダイスしたり、その他の視覚化オプションを使用したりできます。 また、Tableau など他のダッシュボード ソリューションを使用する柔軟性も得られます。
+SQL Database を使用することで、待ち時間はわずかに長くなりますが、柔軟性は向上します。 待ち時間の要件が 1 秒を超えるジョブには、このソリューションが最適です。 この方法では、Power BI の機能を最大限に活用して、レポートに使用するデータをさらにスライスしてダイスしたり、その他の視覚化オプションを使用したりできます。 また、Tableau など他のダッシュボード ソリューションを使用する柔軟性も得られます。
 
-SQL は、高スループットのデータ ストアではありません。 Azure Stream Analytics から SQL データベースへの最大スループットは、現時点では約 24 MB/秒です。 実際のソリューションのイベント ソースからもっと高速にデータが生成される場合、Stream Analytics の処理ロジックを使用して、SQL への出力速度を下げる必要があります。 フィルタリング、ウィンドウ集計、テンポラル結合を使用したパターン マッチング、分析関数などの手法を利用できます。 SQL への出力速度は、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」で説明されている手法を使って、さらに最適化することができます。
+SQL は、高スループットのデータ ストアではありません。 Azure Stream Analytics から SQL Database への最大スループットは、現時点では約 24 MB/秒です。 実際のソリューションのイベント ソースからもっと高速にデータが生成される場合、Stream Analytics の処理ロジックを使用して、SQL への出力速度を下げる必要があります。 フィルタリング、ウィンドウ集計、テンポラル結合を使用したパターン マッチング、分析関数などの手法を利用できます。 SQL への出力速度は、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」で説明されている手法を使って、さらに最適化することができます。
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>イベント メッセージングを使用してリアルタイムの分析情報をアプリケーションに取り込む
 
@@ -72,7 +72,7 @@ CRUD ベースのシステムでは、大量のデータがパフォーマンス
 
 ## <a name="use-reference-data-for-application-customization"></a>アプリケーションのカスタマイズに参照データを使用する
 
-Azure Stream Analytics の参照データ機能は、アラートのしきい値、処理ルール、[ジオフェンス](geospatial-scenarios.md)など、特にエンドユーザーのカスタマイズを考えて設計されています。 アプリケーション レイヤーは、パラメーターの変更を受け付けて、それらを SQL データベースに格納できます。 Stream Analytics ジョブはそのデータベースに対して定期的に変更を照会し、参照データの結合によって、カスタマイズのパラメーターを利用しやすい状態にします。 参照データを使用してアプリケーションのカスタマイズを行う方法の詳細については、[SQL 参照データ](sql-reference-data.md)と[参照データの結合](/stream-analytics-query/reference-data-join-azure-stream-analytics)に関するページを参照してください。
+Azure Stream Analytics の参照データ機能は、アラートのしきい値、処理ルール、[ジオフェンス](geospatial-scenarios.md)など、特にエンドユーザーのカスタマイズを考えて設計されています。 アプリケーション レイヤーは、パラメーターの変更を受け付けて、それらを SQL Database に格納できます。 Stream Analytics ジョブはそのデータベースに対して定期的に変更を照会し、参照データの結合によって、カスタマイズのパラメーターを利用しやすい状態にします。 参照データを使用してアプリケーションのカスタマイズを行う方法の詳細については、[SQL 参照データ](sql-reference-data.md)と[参照データの結合](/stream-analytics-query/reference-data-join-azure-stream-analytics)に関するページを参照してください。
 
 このパターンを使用すれば、ルールのしきい値が参照データから定義されるようなルール エンジンを実装することもできます。 ルールの詳細については、「[Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理](stream-analytics-threshold-based-rules.md)」を参照してください。
 
@@ -106,7 +106,7 @@ Azure Stream Analytics のビルトインの[異常検出モデル](stream-analy
 
 ## <a name="use-reference-data-for-enrichment"></a>エンリッチメントに参照データを使用する
 
-データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL データベースと Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と SQL Data Warehouse の両方へのデータ ランディングを実現できます。
+データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL Database と Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と SQL Data Warehouse の両方へのデータ ランディングを実現できます。
 
 ![ASA のオフライン分析とデータ エンリッチメント](media/stream-analytics-solution-patterns/offlineanalytics.png)
 

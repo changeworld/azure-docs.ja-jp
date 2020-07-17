@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74196522"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113107"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Storage Analytics ログを使用した待ち時間のトラブルシューティング
 
@@ -93,7 +93,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 
    * クライアントの待ち時間 = エンドツーエンドの待ち時間 - サーバーの待ち時間
 
-          * Example: 8453 – 391 = 8062ms
+        例:8453 – 391 = 8062 ms
 
    次の表は、長い待ち時間の OperationType と RequestStatus の結果に関する情報を示しています。
 

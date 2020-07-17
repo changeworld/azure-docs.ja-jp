@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: db0addfbc2fc5b322c2f6dd9b51f3ace10935589
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260865"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026969"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "84260865"
 * [IoT Edge デバイスを登録します](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
 * [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
-    * 次のいずれかのリージョンを使用します: 米国東部 2、米国中部、米国中北部、西日本、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
+    * 次のいずれかのリージョンを使用します: 米国東部 2、米国中部、米国中北部、東日本、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
     * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします。
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Live Video Analytics を使用するための Azure リソースの構成
@@ -206,7 +206,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
    運用環境で実行する場合は、このプロパティを **false** に設定する必要があります。 これにより、セキュリティ保護されていないすべてのエンドポイントがアプリケーションでブロックされ、グラフのトポロジを実行するには、有効な接続資格情報が必要になります。  
    
     [追加] を選択して、モジュール ツインのプロパティを追加します。
-1. **ルート** 　でルート のセクションに進みます。
+1. **Next:ルート** 　でルート のセクションに進みます。
     ルートを指定します。
 
 既定のルートをそのまま保持して、[**次へ] を選択します:[確認と作成]** で、[レビュー] セクションに進みます。

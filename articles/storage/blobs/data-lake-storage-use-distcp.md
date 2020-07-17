@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109503"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする
 
@@ -37,25 +37,33 @@ HDInsight クラスターには DistCp ユーティリティが付属してい�
 
 2. (階層型名前空間が有効になっていない) 既存の汎用 V2 アカウントにアクセスできるかどうかを確認します。
 
-        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```bash
+    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```
 
    出力には、コンテナーの内容の一覧が表示されます。
 
 3. 同様に、クラスターから階層型名前空間が有効になったストレージ アカウントにアクセスできるかどうかを確認します。 次のコマンドを実行します。
 
-        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```bash
+    hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```
 
     出力には、Data Lake Storage アカウントのファイル/フォルダーの一覧が表示されます。
 
 4. DistCp を使用し、WASB から Data Lake Storage アカウントにデータをコピーします。
 
-        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```bash
+    hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```
 
     このコマンドを実行すると、Blob Storage の **/example/data/gutenberg/** フォルダーの内容が Data Lake Storage アカウントの **/myfolder** にコピーされます。
 
 5. 同様に、DistCp を使用し、Data Lake Storage アカウントから Blob Storage (WASB) にデータをコピーします。
 
-        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```bash
+    hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```
 
     このコマンドを実行すると、Data Lake Store アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダーにコピーされます。
 
@@ -65,7 +73,9 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 **例**
 
-    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```bash
+hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>使用するマッパーの数を特定するにはどうすればよいですか。
 
@@ -75,7 +85,7 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 * **手順 2:マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
 
-        m = (number of nodes * YARN memory for each node) / YARN container size
+    m = (ノードの数 * YARN の各ノードのメモリ) / YARN コンテナーのサイズ
 
 **例**
 
@@ -83,11 +93,11 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 * **合計 YARN メモリ**:Ambari ポータルから、D14 ノードの YARN メモリが 96 GB であることがわかります。 したがって、4 ノード クラスターの合計 YARN メモリは次のとおりです。 
 
-        YARN memory = 4 * 96GB = 384GB
+    YARN メモリ = 4 * 96 GB = 384 GB
 
 * **マッパーの数**:Ambari ポータルから、D14 ノードの YARN コンテナー サイズが 3,072 MB であることがわかります。 したがって、マッパーの数は次のとおりです。
 
-        m = (4 nodes * 96GB) / 3072MB = 128 mappers
+    m = (4 ノード * 96 GB) / 3072 MB = 128 マッパー
 
 他のアプリケーションがメモリを使用している場合は、クラスターの YARN メモリで DistCp に対する部分のみを使用するように選択できます。
 

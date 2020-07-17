@@ -3,15 +3,15 @@ title: Azure Cosmos DB の要求ユニット (RU) 使用量を確認する
 description: Azure Cosmos コンテナーに対して実行した操作の要求ユニット (RU) 使用量を確認する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: e5420b9b765fffcf7b4ccd6775d05795b1b13871
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: bf109d3f15c9865a8e9ad1d27a1e8d320d172761
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261836"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 
@@ -37,7 +37,7 @@ SQL API を使用している場合、Azure Cosmos コンテナーに対する�
 
 1. **[Query Stats]\(クエリの統計\)** を選択すると、実行した要求の実際の使用量が表示されます。
 
-![Azure portal で SQL クエリの要求の使用量を表示した画面のスクリーンショット](./media/find-request-unit-charge/portal-sql-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure portal で SQL クエリの要求の使用量を表示した画面のスクリーンショット":::
 
 ### <a name="use-the-net-sdk"></a>.NET SDK を使用する
 
@@ -187,7 +187,7 @@ RU 使用量は、`getLastRequestStatistics` という名前のカスタム [デ
 
 1. **[Query Stats]\(クエリの統計\)** を選択すると、実行した要求の実際の使用量が表示されます。
 
-![Azure portal で MongoDB クエリの要求の使用量を表示した画面のスクリーンショット](./media/find-request-unit-charge/portal-mongodb-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure portal で MongoDB クエリの要求の使用量を表示した画面のスクリーンショット":::
 
 ### <a name="use-the-mongodb-net-driver"></a>MongoDB .NET ドライバーの使用
 

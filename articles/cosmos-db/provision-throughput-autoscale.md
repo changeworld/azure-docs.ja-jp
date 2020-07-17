@@ -5,13 +5,13 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/04/2020
+ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791148"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>自動スケーリングのスループットを使用して Azure Cosmos コンテナーとデータベースを作成する
 
@@ -29,7 +29,7 @@ Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリ
 
 * **スケーラブル:** データベースとコンテナーでは、必要に応じて、プロビジョニング スループットが自動的にスケーリングされます。 クライアント接続やアプリケーションは中断されず、また、Azure Cosmos DB SLA への影響はありません。
 
-* **コスト効率:** 自動スケーリングを利用すると、使用されていないときにスケールダウンすることで、RU/秒の使用率とコストの使用状況を最適化できます。 ワークロードで必要とされるリソースに対してのみ、時間単位で料金を支払います。
+* **コスト効率:** 自動スケーリングを利用すると、使用されていないときにスケールダウンすることで、RU/秒の使用率とコストの使用状況を最適化できます。 ワークロードで必要とされるリソースに対してのみ、時間単位で料金を支払います。 自動スケーリングの最大 RU/秒 (Tmax) を設定しており、1 か月の全時間数のうち、全 Tmax 量を使用している時間が 66% 以下の場合、自動スケーリングによって節約されます。 詳細については、「[標準 (手動) および自動スケーリングのプロビジョニング スループットから選択する方法](how-to-choose-offer.md)」を参照してください。
 
 * **高可用性:** 自動スケーリングを使用するデータベースおよびコンテナーでは、グローバルに分散されたフォールト トレラントで可用性の高い同一の Azure Cosmos DB バックエンドが使用され、データの持続性と高可用性が保証されます。
 
@@ -57,8 +57,9 @@ Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリ
 
 自動スケーリングの最大スループット `Tmax` のエントリ ポイントは 4000 RU/秒で開始され、400 から 4000 RU/秒の間でスケーリングされます。 `Tmax` は 1000 RU/秒の増分で設定でき、値はいつでも変更できます。  
 
-## <a name="enable-autoscale-on-existing-resources"></a>既存のリソースに対して自動スケーリングを有効にする ##
-[Azure portal ](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)を使用して、既存のデータベースまたはコンテナーに対して自動スケーリングを有効にします。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)を参照してください。
+## <a name="enable-autoscale-on-existing-resources"></a>既存のリソースに対して自動スケーリングを有効にする
+
+[Azure portal ](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)を使用して、既存のデータベースまたはコンテナーに対して自動スケーリングを有効にします。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)を参照してください。 現在、すべての API において、既存のリソースで自動スケールを有効にするには、Azure portal のみを使用できます。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自動スケーリングのスループットとストレージ制限
 

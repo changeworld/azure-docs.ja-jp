@@ -3,19 +3,19 @@ title: 定期的なタスクとワークフローをスケジュール設定す�
 description: Azure Logic Apps で繰り返しトリガーを使用して自動化された繰り返しタスクおよびワークフローをスケジュール設定して実行する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 47bb4e4cc4902168631fa67f186d0b3259c94328
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 18a58815ccd7bd229b6c1a27c92e903f22c8fd55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322570"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps で繰り返しトリガーを使用して繰り返しタスクおよびワークフローを作成、スケジュール設定、および実行する
 
-特定のスケジュールでタスク、プロセス、またはジョブを定期的に実行するには、組み込みの **[Recurrence - Schedule] (繰り返し - スケジュール)** トリガーを使用してロジック アプリ ワークフローを開始できます。 ワークフローを開始するための日付と時刻やタイム ゾーン、およびそのワークフローを反復処理するための繰り返しを設定できます。 繰り返しが何らかの理由で失敗した場合、このトリガーは、次のスケジュール設定された間隔で繰り返しを続行します。 組み込みのスケジュール トリガーとアクションの詳細については、[Azure Logic Apps を使用した定期的な自動タスク、ワークフローのスケジュールと実行](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
+特定のスケジュールでタスク、プロセス、またはジョブを定期的に実行するには、組み込みの **[Recurrence - Schedule] (繰り返し - スケジュール)** トリガーを使用してロジック アプリ ワークフローを開始できます。 ワークフローを開始するための日付と時刻やタイム ゾーン、およびそのワークフローを反復処理するための繰り返しを設定できます。 中断やワークフローの無効化などの何らかの理由で、実行されない繰り返しが発生した場合、実行されなかった繰り返しはこのトリガーによって処理されず、スケジュールされている次の間隔で繰り返しが再度開始されます。 組み込みのスケジュール トリガーとアクションの詳細については、[Azure Logic Apps を使用した定期的な自動タスク、ワークフローのスケジュールと実行](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
 
 このトリガーがサポートするいくつかのパターンを、より高度な繰り返しや複雑なスケジュールと共に次に示します。
 

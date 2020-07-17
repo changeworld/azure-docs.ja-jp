@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのデプロイを計画する
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610593"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 
@@ -28,7 +28,7 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 * クラスターの信頼性と耐久性の特徴
 
 ### <a name="select-the-initial-number-of-node-types"></a>ノード タイプの初期数を選択する
-最初に、作成するクラスターの使用目的について考えておく必要があります。 このクラスターにどのような種類のアプリケーションを展開する予定があるでしょうか。 アプリケーションに複数のサービスが存在するか、またその中に、外部に公開 (インターネットに接続) しなければならないサービスはあるか。 アプリケーションの構成要素として、インフラストラクチャ ニーズの異なる複数のサービスが存在するか (大容量の RAM が必要、高い CPU 処理能力が必要など)。 Service Fabric クラスターは、複数のノード タイプ (1 つのプライマリ ノード タイプと 1 つ以上の非プライマリ ノード タイプ) で構成できます。 ノード タイプはそれぞれ 1 つの仮想マシン スケール セットに対応付けられます。 各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 [ノードのプロパティと配置の制約][placementconstraints]は、特定のサービスを特定のノード タイプに制約するように設定できます。  詳細については、「[クラスターで最初に必要となるノード タイプの数](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)」を参照してください。
+最初に、作成するクラスターの使用目的について考えておく必要があります。 このクラスターにどのような種類のアプリケーションを展開する予定があるでしょうか。 アプリケーションに複数のサービスが存在するか、またその中に、外部に公開 (インターネットに接続) しなければならないサービスはあるか。 アプリケーションの構成要素として、インフラストラクチャ ニーズの異なる複数のサービスが存在するか (大容量の RAM が必要、高い CPU 処理能力が必要など)。 Service Fabric クラスターは、複数のノード タイプ (1 つのプライマリ ノード タイプと 1 つ以上の非プライマリ ノード タイプ) で構成できます。 ノード タイプはそれぞれ 1 つの仮想マシン スケール セットに対応付けられます。 各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 [ノードのプロパティと配置の制約][placementconstraints]は、特定のサービスを特定のノード タイプに制約するように設定できます。  詳細については、[Service Fabric クラスターの容量計画](service-fabric-cluster-capacity.md)に関する記事を参照してください。
 
 ### <a name="select-node-properties-for-each-node-type"></a>各ノード タイプのノード プロパティを選択する
 ノード タイプは、関連付けられたスケール セット内の VM の VM SKU、数、プロパティを定義します。
@@ -37,7 +37,7 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 
 プライマリ ノード タイプの最低 VM 数は、選択した[信頼性レベル][reliability]によって決まります。
 
-[プライマリ ノード タイプ](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)、[非プライマリ ノード タイプのステートフル ワークロード](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)、[非プライマリ ノード タイプのステートレス ワークロード](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)に関する最小推奨事項を参照してください。
+[プライマリ ノード タイプ](service-fabric-cluster-capacity.md#primary-node-type)、[非プライマリ ノード タイプのステートフル ワークロード](service-fabric-cluster-capacity.md#stateful-workloads)、[非プライマリ ノード タイプのステートレス ワークロード](service-fabric-cluster-capacity.md#stateless-workloads)に関する最小推奨事項を参照してください。
 
 最小ノード数を超える数は、このノード タイプで実行するアプリケーション/サービスのレプリカ数に基づいて決定する必要があります。  「[Service Fabric アプリケーションの容量計画](service-fabric-capacity-planning.md)」をご覧いただくと、アプリケーションの実行に必要なリソースを見積もるのに役立ちます。 変化するアプリケーションのワークロードに合わせて調整するために、後でいつでもクラスターをスケールアップまたはスケールダウンできます。 
 
@@ -123,5 +123,5 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 * [Linux を実行する Service Fabric クラスターを作成する](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster

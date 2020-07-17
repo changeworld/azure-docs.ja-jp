@@ -1,22 +1,22 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して、フォルダーと複数の CSV ファイルに対してクエリを実行する
+title: SQL オンデマンド (プレビュー) を使用して、フォルダーと複数のファイルに対してクエリを実行する
 description: SQL オンデマンド (プレビュー) では、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207633"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>フォルダーと複数の CSV ファイルに対してクエリを実行する  
+# <a name="query-folders-and-multiple-files"></a>クエリ フォルダーと複数のファイル  
 
 この記事では、Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。
 

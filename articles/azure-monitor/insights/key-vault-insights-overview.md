@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 542861afe49d03a179a9740d5a58b9d27e0d7f20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945462"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Azure Monitor for Key Vault (プレビュー) によるキー コンテナーの監視
 Azure Monitor Key Vault (プレビュー) では、Key Vault の要求、パフォーマンス、エラー、待機時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
@@ -158,55 +158,51 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
+一般的なトラブルシューティングのガイダンスについては、専用に準備されたブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
+
 このセクションは、Azure Monitor for Key Vault (プレビュー) を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
 
 ### <a name="resolving-performance-issues-or-failures"></a>パフォーマンスの問題またはエラーの解決
 
 Azure Monitor for Key Vault (プレビュー) で発生するキー コンテナー関連の問題のトラブルシューティングについては、[Azure Key Vault のドキュメント](https://docs.microsoft.com/azure/key-vault/)をご覧ください。
 
-### <a name="why-can-i-only-see-200-key-vaults"></a>200 個のキー コンテナーしか表示できないのはなぜですか。
+### <a name="why-can-i-only-see-200-key-vaults"></a>200 個のキー コンテナーしか表示できないのはなぜですか
 
 選択して表示できるキー コンテナーには 200 の制限があります。 選択されているサブスクリプションの数には関係なく、選択されるキー コンテナーの数には 200 の制限があります。
 
-### <a name="what-will-happen-when-a-pinned-item-is-clicked"></a>ピン留めされた項目をクリックするとどうなりますか。
-
-ダッシュボードにピン留めされた項目をクリックすると、次の 2 つのいずれかが開きます。
-* 分析情報が保存されている場合は、ピンの保存元の分析情報インスタンスが開きます。
-* 分析情報が保存されていない場合は、新しい既定の分析情報インスタンスが開きます。
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>サブスクリプション ピッカーに自分のすべてのサブスクリプションが表示されないのはなぜですか。
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>サブスクリプション ピッカーに自分のすべてのサブスクリプションが表示されないのはなぜですか
 
 選択したサブスクリプション フィルターから選択されたキー コンテナーを含むサブスクリプションのみが表示されます。このフィルターは、Azure portal ヘッダーの [ディレクトリ + サブスクリプション] で選択されています。
 
 ![サブスクリプション フィルターのスクリーンショット](./media/key-vaults-insights-overview/Subscriptions.png)
 
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>"query exceeds the maximum number of workspaces/regions allowed"\(クエリは、許可されているワークスペース/リージョンの最大数を超えています\) というエラー メッセージが表示されます。
+### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>"query exceeds the maximum number of workspaces/regions allowed"\(クエリは、許可されているワークスペース/リージョンの最大数を超えています\) というエラー メッセージが表示されます。どうしたらいいですか
 
 現時点では、25 のリージョンと 200 のワークスペースに制限されており、データを表示するには、サブスクリプションやリソース グループの数を減らす必要があります。
 
-### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Key Vault 分析情報に変更を加えたり、視覚化を追加したりするには、どうすればよいですか。
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Key Vault 分析情報に変更を加えたり、視覚化を追加したりするには、どうすればよいですか
 
 変更するには、[編集モード] を選択してブックを変更し、指定したサブスクリプションとリソース グループに関連付けられている新しいブックとして作業内容を保存します。
 
-### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>ブックのある部分をピン留めした後の時間グレインはどれだけですか。
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>ブックのある部分をピン留めした後の時間グレインはどれだけですか
 
 [自動] 時間グレインを使用しているので、選択されている時間範囲によって異なります。
 
-### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>ブックのある部分をピン留めしたときの時間範囲はどうなりますか。
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>ブックのある部分をピン留めしたときの時間範囲はどうなりますか
 
 時間範囲は、ダッシュボードの設定によって異なります。
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>[操作と待機時間] セクションの下に自分の Key Vault のデータが表示されないのはなぜですか。
+### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>[操作と待機時間] セクションの下に自分の Key Vault のデータが表示されないのはなぜですか
 
 ログベースのデータを表示するには、監視するキー コンテナーごとにログを有効にする必要があります。 これは、各キー コンテナーの診断設定で行うことができます。 指定された Log Analytics ワークスペースにデータを送信する必要があります。
 
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Key Vault のログを既に有効にしていますが、[操作と待機時間] の下にデータが表示されないのはなぜですか。
+### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Key Vault のログを既に有効にしていますが、[操作と待機時間] の下にデータが表示されないのはなぜですか
 
 現時点では、診断ログは以前にさかのぼって機能しないので、キー コンテナーに対してアクションが実行された後にのみ、データが表示されるようになります。 そのため、キー コンテナーがどの程度アクティブかに応じて、これには数時間から 1 日かかることがあります。
 
 さらに、多数のキー コンテナーとサブスクリプションを選択している場合は、クエリの制限のためにデータを表示できないことがあります。 データを表示するために、選択したサブスクリプションまたはキー コンテナーの数を減らすことが必要になる場合があります。 
 
-### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>他のデータを表示したり、独自の視覚化を作成したりするにはどうすればよいですか。 Key Vault 分析情報に変更を加えるにはどうすればよいですか。
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>他のデータを表示したり、独自の視覚化を作成したりするにはどうすればよいですか。 Key Vault 分析情報に変更を加えるにはどうすればよいですか
 
 編集モードを使用して既存のブックを編集し、新しい変更をすべて反映した新しいブックとして作業内容を保存できます。
 

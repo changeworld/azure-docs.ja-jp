@@ -3,15 +3,16 @@ title: Azure Cosmos コンテナーの一意のキーを定義する
 description: Azure portal、PowerShell、.Net、Java、およびその他のさまざまな SDK を使用して、Azure Cosmos コンテナーの一意のキーを定義する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261547"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos コンテナーの一意のキーを定義する
 
@@ -33,7 +34,7 @@ ms.locfileid: "82871009"
 
 1. 必要な場合は、 **[+ Add unique key]** (+ 一意のキーの追加) をクリックして、一意のキー エントリを追加します
 
-    ![Azure portal での一意キー制約エントリのスクリーンショット](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Azure portal での一意キー制約エントリのスクリーンショット":::
 
 ## <a name="use-powershell"></a>PowerShell の使用
 

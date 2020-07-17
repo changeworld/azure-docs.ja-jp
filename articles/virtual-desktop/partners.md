@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266731"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038057"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -33,12 +33,12 @@ Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度
 
 ![VMware のロゴ](./media/partners/vmware.png)
 
-組織は VMware Horizon Cloud on Microsoft Azure で、Microsoft Azure 上の自社のインスタンスを、仮想化された Windows アプリケーションおよびデスクトップを提供するシンプルで直観的な Horizon Cloud コントロール プレーンに接続して、安全で包括的なクラウド ホスト ソリューションを構築できます。 VMware は、Windows Virtual Desktop のリリースで Microsoft とパートナーシップを組み、Horizon Cloud on Microsoft Azure を使用し、お客様の Windows Virtual Desktop の機能を拡張しました。 この機能は、2019 の終わりまでにテクニカル プレビューで使用できるようになります。
- 
-認定プロバイダーに対する Windows Virtual Desktop のベネフィットは、Microsoft Azure の顧客での VMware Horizon Cloud まで拡張されます。これには、マルチセッションに対する Windows 10 Enterprise、最大 3 年間の無料拡張セキュリティ更新プログラムを含む Windows 7、および FSLogix が含まれます。 さらに、幅広いエンドポイント サポート、グローバルなクラウド最適化ブローカー、柔軟なデスクトップ オプションと構成、ユーザー環境の管理、ハイブリッド環境のサポートなど、Horizon Cloud のエンタープライズ クラスの機能が顧客に提供されます。
+VMware Horizon Cloud on Microsoft Azure はネイティブ クラウド サービスであり、組織が使用すると、VMware Horizon のすべての機能を活用しながら、既存の Microsoft Azure サブスクリプションからリモート デスクトップとアプリケーションをすばやくデプロイすることができます。 Horizon Cloud では Horizon Control Plane が使用され、オンプレミスまたはクラウド内のすべての Horizon 環境に対して 1 つの管理インターフェイスが提供されます。 これにより、ハイブリッド デスクトップ仮想化が可能になり、お客様は自分のペースでワークロードを Azure に移行できます。
 
-- [Horizon Cloud on Microsoft Azure のテクニカル プレビューに登録する。](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)
+VMware は Windows Virtual Desktop 認定プロバイダーであり、Windows Virtual Desktop を使用しながら VMware Horizon に付属する追加機能 (統合された使いやすい電源管理、クラウドベースの監視、Blast Extreme プロトコルなど) も利用したいお客様を支援しています。 これらの機能はすぐに変化するネットワーク条件に適応し、一貫して優れたユーザー エクスペリエンスが提供されます。 VMware Horizon Cloud には VMware App Volumes と Dynamic Environment Manager も付属しています。これらによって、MSIX アプリのアタッチと FSLogix を使用して機能する高度なアプリケーションとユーザー環境管理機能が追加されます。
+
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
+- [VMWare Horizon Cloud の技術ドキュメントを参照してください](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
 
 ## <a name="10zig"></a>10ZiG
 
@@ -102,6 +102,28 @@ deviceTRUST は、企業をコンテキスト化する Windows Virtual Desktop �
 
 - [パートナーの Web サイトにアクセスする。](https://devicetrust.com/wvd)
 
+## <a name="ekran-system"></a>Ekran System
+
+![Ekran System のロゴ](./media/partners/ekran.png)
+
+Ekran System は Windows Virtual Desktop の付加価値パートナーであり、IT チームはこれを利用して Microsoft Azure 仮想マシン上のすべてのリモート ユーザー アクティビティを監視することができます。 Ekran System を使用すると、発行されたアプリケーションまたは仮想デスクトップのすべてのユーザー セッションの画面上のアクティビティを記録し、さらにアプリケーション名、アクティブなウィンドウのタイトル、アクセスされた URL、キー入力など、さまざまな状況に応じたメタデータを収集できます。 高度な機能を使用して詳細な可視性と迅速なインシデント対応時間を実現できるので、Ekran System は効率的なインサイダー脅威管理およびコンプライアンス ソリューションになります。  
+
+Ekran System クライアントの独自の浮動エンドポイント ライセンスは、動的に変化する仮想デスクトップをサポートするように自動化されています。 Ekran System を使用すると、削除された非永続的な仮想デスクトップからライセンスの割り当てを自動的に解除し、データベースから削除することができます。 Ekran System は、Azure Active Directory および Azure Sentinel とシームレスに統合されています。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8)
+- [パートナー ページに移動する](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring)。
+
+## <a name="flexxible-it"></a>Flexxible IT
+
+![Flexxible IT のロゴ](./media/partners/flexxible.png)
+
+Flexxible IT は Windows Virtual Desktop の付加価値パートナーであり、Windows Virtual Desktop と Citrix Workspace のインフラストラクチャの迅速なスケール、監視、および効率的な管理を行う機能を組織に提供します。 IT 管理者は、Flexxible | SUITE を使用すると、オンプレミス内と Azure でホストされている Windows Virtual Desktop ワークロードをインテリジェントにプロビジョニングおよび管理することができます。
+ 
+Flexxible IT のテクノロジを使用すると、共通のプロセスを自動化してインフラストラクチャの構成、デスクトップのプロビジョニング、日常の管理を簡素化することにより、ネイティブ Windows Virtual Desktop と Citrix ワークスペースの両方の価値を広げることができます。 SUITE は複雑な PowerShell スクリプトや時間のかかる手動プロセスを必要とせず、スケーラブルなデスクトップ展開、広範な監視とレポート、セキュリティで保護された委任管理を備えています。 これらの機能を使用すると、拡張されたサービス レベルと、品質の高い Windows Virtual Desktop エクスペリエンスをユーザーに提供することに専念できます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A)
+- [パートナーの Web サイトにアクセスする。](https://www.flexxible.com/suite-for-windows-virtual-desktop)
+
 ## <a name="hp"></a>HP
 
 ![HP のロゴ](./media/partners/hp.png)
@@ -127,7 +149,7 @@ IGEL OS は、Citrix、Microsoft、VMware のすべての一般的な仮想ア�
 
 ![Ivanti ロゴ](./media/partners/ivanti.png)
 
-Ivanti User Workspace Manager は、デスクトップからユーザー データを分離してシームレスな移植性を実現することでデスクトップのデプロイと管理を容易にする、Windows Virtual Desktop の付加価値サービスです。 Ivanti を使用すると、ユーザーは、Windows 10 への移行、Office 365 の導入、クラウドへのサービスの迅速な移動などの複雑なプロジェクトを実現できます。 
+Ivanti User Workspace Manager は、デスクトップからユーザー データを分離してシームレスな移植性を実現することでデスクトップのデプロイと管理を容易にする、Windows Virtual Desktop の付加価値サービスです。 Ivanti を使用すると、ユーザーは、Windows 10 への移行、Microsoft 365 の導入、クラウドへのサービスの迅速な移動などの複雑なプロジェクトを実現できます。 
 
 Windows Virtual Desktop で Ivanti User Workspace Manager を使用すると、ユーザーはデスクトップ エクスペリエンスのコンテキストを簡単に管理できるため、サインインに時間がかかることがなくなり、グループ ポリシーに関する悩みの種がなくなります。 Ivanti User Workspace Manager のすぐに使えるテンプレートを使用すると、エージェントや既存のコンソールを使用してユーザーが簡単にインストールを行えます。 Ivanti User Workspace Manager は、ユーザーの期待にかなう応答性とセキュリティで保護されたデスクトップを提供するため、サーバーのコストを節約し、ユーザーをより効果的に管理し、エンドポイントのセキュリティ リスクを軽減できます。 
 
@@ -163,6 +185,7 @@ Liquit アプリケーションの集計および配信ソフトウェアを使�
 
 Liquit は、認定された統合パートナーとして、完全な置き換え (rip-and-replace) による遅延なしでクラウドへの移行を加速させるのに役立ちます。 Windows Virtual Desktop は容易に既存の環境に接続し、ワークスペースを作成して、デスクトップを配信できます。 その後、古いプラットフォームから移行し、ユーザーが気付くことなくバックエンドで変更を加えることができます。 一貫したエンドユーザー エクスペリエンスと柔軟なインフラストラクチャを提供するとともに、場所に関係なくアプリケーションの制御を維持します。
 
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yol8)
 - [パートナーの Web サイトにアクセスする。](https://www.liquit.com/wvd/)
 
 ## <a name="login-vsi"></a>Login VSI
@@ -232,9 +255,20 @@ Printix は、オフィスの印刷リソースへのユーザー接続を自動
 
 RDPSoft は、強力で安価な監視、管理、およびレポートのソリューションを提供する Windows Virtual Desktop パートナーです。 その Remote Desktop Commander オファリングにより、IT プロフェッショナルは、Windows Virtual Desktop のデプロイの正常性、パフォーマンス、ユーザー アクティビティ、ライセンス、およびセキュリティに関する分析情報を得ることができます。 
  
-RDPSoft の Remote Desktop Commander ソリューションにより、Windows Virtual Desktop の管理機能が強化されます。 Premium Management 機能を利用すると、リモート アシスタンス、ユーザー セッション、プロセス管理を実現することで、デスク スタッフをサポートするための Windows Virtual Desktop 管理タスクの委任が簡略化されます。 同時に、Remote Desktop Commander Suite は、ユーザーごとのパフォーマンスと負荷、ユーザーのアクティビティと監査、Windows Virtual Desktop の接続品質 (待機時間と帯域幅)、ライセンス、およびセキュリティに関する豊富なメトリックを、確認用の中央の Azure SQL データベース インスタンス内に収集します。 RDPSoft を使用すれば、豊富な履歴レポートと包括的なダッシュボードをクリックするだけで済みます。
+RDPSoft の Remote Desktop Commander ソリューションにより、Windows Virtual Desktop の管理機能が強化されます。 Premium Management 機能を利用すると、リモート アシスタンス、ユーザー セッション、プロセス管理を実現することで、デスク スタッフをサポートするための Windows Virtual Desktop 管理タスクの委任が簡略化されます。 同時に、Remote Desktop Commander Suite は、ユーザーごとのパフォーマンスと負荷、ユーザーのアクティビティと監査、Windows Virtual Desktop の接続品質 (待機時間と帯域幅)、ライセンス、およびセキュリティに関する豊富なメトリックを、確認用の中央の Azure SQL Database インスタンス内に収集します。 RDPSoft を使用すれば、豊富な履歴レポートと包括的なダッシュボードをクリックするだけで済みます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="rimo3"></a>Rimo3
+
+![Rimo3 のロゴ](./media/partners/rimo3.png)
+
+Rimo3 では、デプロイを促進し、進行中の変更管理を向上させることにより、Windows Virtual Desktop エクスペリエンスを強化しています。 IT チームが Rimo3 を利用すると、アプリケーション ワークロードを Azure に移行できるようにアプリケーション ポートフォリオを支援する上で必要な知識が得られます。 ユーザーはアプリケーションをオンボードして、ターゲットの Windows Virtual Desktop ワークスペースですばやく簡単にテストできます。 また、ユーザーは、組織が新しいアプリケーションや更新プログラムをロールアウトするときに、変更の影響を事前に把握することもできます。 最後に、IT 管理者は、Rimo3 の Intelligent Smoke Testing 機能を利用して、ユーザー セッションを中断することなく機能テストを自動化することができます。
+
+Rimo3 には、使いやすくスケーラブルな自動アプリケーション テスト プラットフォームが用意されています。 このプラットフォームには、互換性、機能、パフォーマンスという 3 つのアプリケーション テストの基本すべてに対応する機能があります。 これにより、組織、リーダー、およびチームは、ビジネス継続性を向上させ、変更により迅速に対応し、ユーザー エクスペリエンスを最適化することができます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B)
+- [パートナーの Web サイトにアクセスする。](https://rimo3.com/outcomes/)
 
 ## <a name="sepago"></a>sepago
 

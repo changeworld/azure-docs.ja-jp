@@ -3,16 +3,18 @@ title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554351"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
 この記事では、Azure リソースの名前付け規則と制限事項の概要について説明します。 リソースに名前を付ける方法に関する推奨事項については、「[推奨される名前付けおよびタグ付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)」を参照してください。
+
+この記事では、リソース プロバイダーの名前空間ごとにリソースを一覧表示します。 リソース プロバイダーと Azure サービスの対応を示す一覧については、「[Azure サービスのリソース プロバイダー ](azure-services-resource-providers.md)」を参照してください。
 
 「有効な文字」列に特に明記されていない限り、リソース名では大文字と小文字は区別されません。
 
@@ -34,7 +36,7 @@ ms.locfileid: "84170581"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | サービス (service) | グローバル | 1-50 | 英数字。<br><br>文字で開始します。 |
+> | サービス (service) | グローバル | 1-50 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
 > | service/apis | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
 > | service/apis/issues | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
 > | service/apis/issues/attachments | イシュー | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
@@ -172,8 +174,8 @@ ms.locfileid: "84170581"
 > | galleries/images/versions | image | 32-bit integer | 数字とピリオド。 |
 > | images | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | スナップショット | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/""[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
-> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/""[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/"'[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/"'[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
 
 > [!NOTE]
 > Azure 仮想マシンには、リソース名とホスト名の 2 つの異なる名前があります。 ポータルで仮想マシンを作成すると、両方の名前に同じ値が使用されます。 前の表に記載されている制限事項は、ホスト名に適用されます。 実際のリソース名の最大文字数は 64 文字です。
@@ -522,7 +524,7 @@ ms.locfileid: "84170581"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | namespaces | グローバル | 6-50 | 英数字とハイフン<br><br>先頭と末尾には英数字を使用します。 |
+> | namespaces | グローバル | 6-50 | 英数字とハイフン<br><br>文字で開始します。 末尾には英数字を使用します。 |
 > | namespaces/AuthorizationRules | namespace | 1-256 | 英数字、ピリオド、ハイフン、およびアンダースコア。<br><br>英数字で開始します。 |
 > | namespaces / notificationHubs | namespace | 1-260 | 英数字、ピリオド、ハイフン、およびアンダースコア。<br><br>英数字で開始します。 |
 > | namespaces/notificationHubs/AuthorizationRules | 通知ハブ | 1-256 | 英数字、ピリオド、ハイフン、およびアンダースコア。<br><br>英数字で開始します。 |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1d74bf089f3e5bc1fd04232b58ce95c649a170e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307196"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362375"
 ---
 # <a name="add-parameters-to-commands"></a>コマンドにパラメーターを追加する
 
@@ -60,9 +60,10 @@ ms.locfileid: "85307196"
        | 構成      | 内部カタログから事前定義済み入力値を受け取る | Strings の場合、これにより入力が一連の指定可能値に限定されます。 |
        | 定義済み入力値     | `on`, `off`           | 一連の入力可能値とその別名         |
        
-        > [!div class="mx-imgBorder"]
+        
+   1. 定義済み入力値を追加するには、 **[Add a predefined input]\(定義済みの入力を追加\)** を選択し、 **[新しい項目]** ウィンドウで、上の表に示されているように **[名前]** を入力します。 今回の場合は別名を使用しないため、空白のままにします。 
+    > [!div class="mx-imgBorder"]
         > ![パラメーターの作成](media/custom-commands/create-on-off-parameter.png)
-
    1. パラメーターのすべての構成を保存するには、 **[保存]** を選択します。
  
  ### <a name="add-subjectdevice-parameter"></a>SubjectDevice パラメーターを追加する 

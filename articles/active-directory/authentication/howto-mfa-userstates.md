@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476837"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>ユーザーごとの Azure Multi-Factor Authentication を有効にしてサインイン イベントのセキュリティを確保する
 
 Azure AD で多要素認証を要求することによってユーザーのサインイン イベントのセキュリティを確保するには、2 つの方法があります。 推奨される最初のオプションは、特定の条件下で多要素認証を要求する条件付きアクセス ポリシーを設定することです。 2 つ目のオプションは、個々のユーザーに Azure Multi-Factor Authentication を有効にする方法です。 ユーザーを個別に有効にした場合は、サインインするたびに多要素認証が実行されます (信頼できる IP アドレスからサインインするときや、_記憶されたデバイス_の機能が有効なときなど、一部例外があります)。
 
 > [!NOTE]
-> 条件付きアクセス ポリシーを使って Azure Multi-Factor Authentication を有効にするのが推奨されるアプローチです。 ライセンスに条件付きアクセスが含まれていない場合 (この場合、ユーザーはサインインするたびに MFA を実行する必要があります) を除き、ユーザーの状態を変更することは推奨されなくなりました。
+> 条件付きアクセス ポリシーを使って Azure Multi-Factor Authentication を有効にするのが推奨されるアプローチです。 ライセンスに条件付きアクセスが含まれていない場合 (この場合、ユーザーはサインインするたびに MFA を実行する必要があります) を除き、ユーザーの状態を変更することは推奨されなくなりました。 条件付きアクセスの使用を開始するには、「[チュートリアル:Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
-> 条件付きアクセスの使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+> 条件付きアクセスを使用しない Azure AD 無料テナントについては、[セキュリティの既定値を使用してユーザーを保護](../fundamentals/concept-fundamentals-security-defaults.md)できます。
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Azure Multi-Factor Authentication におけるユーザーの状態
 
@@ -39,7 +39,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 | Status | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
 |:---:| --- |:---:|:--:|:--:|
 | 無効 | Azure Multi-Factor Authentication に登録されていない、新しいユーザーの既定の状態です。 | いいえ | いいえ | いいえ |
-| Enabled | ユーザーは多要素認証に登録されていますが、まだ登録されていません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。 |
+| Enabled | ユーザーは Azure Multi-Factor Authentication に登録されていますが、認証方法を登録していません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。 |
 | 強制 | ユーザーは登録されており、Azure Multi-Factor Authentication の登録プロセスが完了しています。 | はい。 アプリはアプリ パスワードを必要とします。 | はい。 ログイン時に Azure Multi-Factor Authentication が必要です。 | はい。 ログイン時に Azure Multi-Factor Authentication が必要です。 |
 
 ユーザーの状態には、管理者がユーザーを Azure Multi-Factor Authentication に登録したかどうか、およびユーザーが登録プロセスを完了したかどうかが反映されます。
@@ -84,7 +84,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 * *Enforced (強制)*
 * *Disabled*  
 
-ユーザーを直接 "*適用*" の状態に移さないでください。 そのようにしても、ユーザーは Azure Multi-Factor Authentication の登録を終えておらず、[アプリのパスワード](howto-mfa-mfasettings.md#app-passwords)を取得していないため、ブラウザーベースでないアプリは動作を停止します。
+ユーザーを直接 "*適用*" の状態に移さないでください。 そのようにしても、ユーザーは Azure Multi-Factor Authentication の登録を終えておらず、[アプリのパスワード](howto-mfa-app-passwords.md)を取得していないため、ブラウザーベースでないアプリは動作を停止します。
 
 使用を開始するには、以下のように [Install-Module](/powershell/module/powershellget/install-module) を使用して *MSOnline* モジュールをインストールします。
 

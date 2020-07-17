@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7feb69b2ea53794b780a983ed8ab4ba5874ac022
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260850"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory での統合されたセキュリティ情報の登録の有効化
 
@@ -48,6 +48,9 @@ Internet Explorer でサイトとゾーンの割り当て一覧を構成した�
 ## <a name="conditional-access-policies-for-combined-registration"></a>統合登録の条件付きアクセス ポリシー
 
 Azure Multi-Factor Authentication とセルフサービス パスワード リセット の登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 この機能は、[統合登録機能](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用できます。 この機能は、HR オンボード中に信頼できるネットワークの場所などの一元化された場所から Azure Multi-Factor Authentication および SSPR の登録をユーザーに行わせたい組織で有効にすることができます。
+
+> [!NOTE]
+> このポリシーは、ユーザーが統合登録ページにアクセスした場合にのみ適用されます。 このポリシーは、ユーザーが他のアプリケーションにアクセスしたときに MFA 登録を強制しません。 MFA 登録ポリシーを作成するには、[Azure Identity Protection - MFA ポリシーの構成](../identity-protection/howto-identity-protection-configure-mfa-policy.md)を使用します。
 
 条件付きアクセスでの信頼できる場所の作成について詳しくは、[Azure Active Directory 条件付きアクセスの場所の条件の概要](../conditional-access/location-condition.md#named-locations)に関する記事をご覧ください。
 

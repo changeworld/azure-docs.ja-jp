@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771674"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076948"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | id | 必須 | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
 | Version | 必須 | このパラメーターは **2.0** に設定する必要があります。 |
@@ -86,6 +86,8 @@ Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`:この値は、Azure Active Directory が要求の形式を選択することを許可します。 Azure Active Directory は、一対の識別子として NameID 要求を発行します。
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`:Azure Active Directory は、現在の SSO 操作に固有となる無作為に生成された値として NameID 要求を発行します。 つまり、値は一時的であり、認証ユーザーの識別に使うことはできません。
 
+`SPNameQualifier` が指定されている場合は、Azure AD により、応答に同じ `SPNameQualifier` が含められます。
+
 Azure AD は `AllowCreate` 属性を無視します。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
@@ -97,7 +99,7 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 指定する場合は、`ProxyCount` 属性、`IDPListOption` 要素、または `RequesterID` 要素を使用しないでください。これらはサポートされていません。
 
 ### <a name="signature"></a>署名
-`AuthnRequest` 要素に `Signature` 要素を含めないでください。 Azure AD は、署名された認証要求を検証しません。 要求元の検証は、登録されている Assertion Consumer Service の URL に応答することによってのみ提供されます。
+`AuthnRequest` 要素内の `Signature` 要素は省略可能です。 Azure AD では、署名がある場合は署名済みの認証要求の検証を行いません。 要求元の検証は、登録されている Assertion Consumer Service の URL に応答することによってのみ提供されます。
 
 ### <a name="subject"></a>サブジェクト
 `Subject` 要素を含めないでください。 Azure AD は、要求のサブジェクトの指定をサポートしていません。指定した場合は、エラーが返されます。
@@ -157,7 +159,7 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 
 ### <a name="issuer"></a>発行者
 
-Azure AD は、`Issuer` 要素を `https://sts.windows.net/<TenantIDGUID>/` に設定します。\<TenantIDGUID> は、Azure AD テナントのテナント ID です。
+Azure AD は、`Issuer` 要素を  `https://sts.windows.net/<TenantIDGUID>/` に設定します。\<TenantIDGUID> は、Azure AD テナントのテナント ID です。
 
 たとえば、Issuer 要素を含む応答の例は次のようになります。
 

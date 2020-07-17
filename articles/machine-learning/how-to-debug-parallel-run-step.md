@@ -6,21 +6,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 01/15/2020
-ms.openlocfilehash: 7f05133f15f1df39a61c34b43f18828ee494b735
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/06/2020
+ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433458"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027003"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep のデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) の [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) クラスのデバッグとトラブルシューティングを行う方法について説明します。
+この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) の [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) クラスのデバッグとトラブルシューティングを行う方法について説明します。
 
 ## <a name="testing-scripts-locally"></a>スクリプトのローカルでのテスト
 
@@ -40,7 +40,7 @@ ParallelRunStep ジョブには分散型の性質があるため、複数の異�
 
 EntryScript ヘルパーおよび PRINT ステートメントを使用したエントリ スクリプトから生成されたログは、次のファイルにあります。
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`:これらは、EntryScript ヘルパーを使用して entry_script から書き込まれたログです。 また、entry_script からの PRINT ステートメント (stdout) も含まれています。
+- `~/logs/user/<ip_address>/<node_name>.log.txt`:これらのファイルは、EntryScript ヘルパーを使用して entry_script から書き込まれたログです。 また、entry_script からの PRINT ステートメント (stdout) も含まれています。
 
 スクリプトのエラーを簡潔に理解するために、次のものがあります。
 
@@ -58,7 +58,7 @@ EntryScript ヘルパーおよび PRINT ステートメントを使用したエ�
     - 項目の合計数、正常に処理された項目数、および失敗した項目数。
     - 開始時刻、期間、処理時間、および実行メソッドの時間。
 
-各ワーカーのプロセスのリソース使用量に関する情報も確認できます。 この情報は、CSV 形式で `~/logs/sys/perf/overview.csv` にあります。 各プロセスの詳細については、`~logs/sys/processes.csv` から参照できます。
+各ワーカーのプロセスのリソース使用量に関する情報も確認できます。 この情報は、CSV 形式で `~/logs/sys/perf/overview.csv` にあります。 各プロセスに関する情報は、`~logs/sys/processes.csv` で参照できます。
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>リモート コンテキストからユーザー スクリプトのログを記録する方法
 次のサンプルコードに示すように、EntryScript からロガーを取得して、ポータルの **logs/user** フォルダーにログが表示されるようにすることができます。
@@ -113,6 +113,6 @@ labels_path = args.labels_dir
 
 ## <a name="next-steps"></a>次のステップ
 
-* [azureml-contrib-pipeline-step](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) パッケージと ParallelRunStep クラスの[ドキュメント](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py)のへプルについては、SDK リファレンス参照してください。
+* [azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) パッケージについては、SDK リファレンスを参照してください。 ParallelRunStep クラスのリファレンス [ドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py)を参照してください。
 
-* ParallelRunStep でのパイプラインの使用方法と、別のファイルをサイド入力として渡す例については、[高度なチュートリアル](tutorial-pipeline-batch-scoring-classification.md)に従ってください。 
+* ParallelRunStep でパイプラインを使用するには、[高度なチュートリアル](tutorial-pipeline-batch-scoring-classification.md)に従ってください。 このチュートリアルでは、別のファイルをサイド入力として渡す方法について説明しています。 

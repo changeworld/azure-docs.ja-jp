@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3e342d42e6baf2bc4caaed07dc196203d8a032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261071"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 
@@ -37,7 +37,8 @@ ms.locfileid: "79235215"
 
 関数がローカルに実行されている場合、アプリ設定値は *local.settings.json* ファイルから来ます。
 
-トリガーとバインディングの `connection` プロパティは特殊なケースであり、値をアプリ設定 (パーセント記号なし) として自動的に解決することに注意してください。 
+> [!NOTE]
+> トリガーとバインディングの `connection` プロパティは特殊なケースであり、値はアプリ設定 (パーセント記号なし) として自動的に解決されます。 
 
 次の例は、アプリ設定 `%input-queue-name%` を使用してトリガーの対象となるキューを定義する Azure Queue Storage トリガーです。
 

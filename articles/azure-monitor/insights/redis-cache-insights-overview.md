@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847363"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945411"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor for Azure Cache for Redis (プレビュー) について知る
 
@@ -179,6 +179,10 @@ Azure Redis Cache の **[概要]** ブックには、複数のパフォーマン
 カスタム ブックを保存した後は、ブック ギャラリーに移動して開きます。
 
 ![[ギャラリー] が強調表示されたコマンド バー](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+トラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングの記事](troubleshoot-workbooks.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

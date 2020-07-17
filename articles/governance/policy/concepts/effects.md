@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 05/20/2020
+ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791420"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -22,22 +22,26 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled)
-- [EnforceOPAConstraint](#enforceopaconstraint) (プレビュー)
-- [EnforceRegoPolicy](#enforceregopolicy) (プレビュー)
 - [Modify](#modify)
+
+次の効果は_非推奨_となっています。
+
+- [EnforceOPAConstraint](#enforceopaconstraint)
+- [EnforceRegoPolicy](#enforceregopolicy)
+
+> [!IMPORTANT]
+> **EnforceOPAConstraint** 効果または **EnforceRegoPolicy** 効果の代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ と _Deny_ を使用します。 組み込みのポリシー定義が更新されています。 これらの組み込みポリシー定義の既存のポリシー割り当てが変更された場合、_effect_ パラメーターは、更新された _allowedValues_ リスト内の値に変更する必要があります。
 
 ## <a name="order-of-evaluation"></a>評価の順序
 
-Azure Resource Manager を通したリソースの作成または更新の要求は、まず Azure Policy によって評価されます。 Azure Policy では、リソースに適用されるすべての割り当ての一覧が作成された後、各定義に対してリソースが評価されます。 Azure Policy では、適切なリソース プロバイダーに要求が渡される前に、さまざまな効果が処理されます。 それによって、リソースが意図された Azure Policy のガバナンス コントロールを満たさない場合に、リソース プロバイダーによって不要な処理が行われるのを防止します。
+リソースの作成または更新の要求は、まず Azure Policy によって評価されます。 Azure Policy では、リソースに適用されるすべての割り当ての一覧が作成された後、各定義に対してリソースが評価されます。 [リソース マネージャー モード](./definition-structure.md#resource-manager-modes)の場合、Azure Policy では、適切なリソース プロバイダーに要求が渡される前に、さまざまな効果が処理されます。 この順序で処理することで、リソースが意図された Azure Policy のガバナンス コントロールを満たさない場合に、リソース プロバイダーによって不要な処理が行われるのを防止します。 [リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)を使用すると、リソース プロバイダーは評価と結果を管理し、その結果を Azure Policy に報告します。
 
 - **Disabled** は、ポリシー規則を評価する必要があるかどうかを判断するために、最初に確認されます。
-- **Append** と **Modify** は、その後で評価されます。 これらいずれかによって要求が変更される可能性があるため、その変更によって、Audit または Deny の効果がトリガーされるのが止められる場合があります。
+- **Append** と **Modify** は、その後で評価されます。 これらいずれかによって要求が変更される可能性があるため、その変更によって、Audit または Deny の効果がトリガーされるのが止められる場合があります。 これらの効果は、リソース マネージャー モードでのみ使用できます。
 - 次に、**Deny** が評価されます。 Audit の前に Deny を評価することによって、不要なリソースの二重のログ記録が回避されます。
-- 次に、要求がリソース プロバイダーに移動する前に **Audit** が評価されます。
+- **Audit** が最後に評価されます。
 
-リソース プロバイダーによって成功コードが返された後、**AuditIfNotExists** と **DeployIfNotExists** が評価され、追加のコンプライアンスのログ記録またはアクションが必要かどうかが判断されます。
-
-現在のところ、**EnforceOPAConstraint** または **EnforceRegoPolicy** 効果の評価順序はありません。
+リソース マネージャー モードの要求では、リソース プロバイダーによって成功コードが返された後、**AuditIfNotExists** と **DeployIfNotExists** が評価され、追加のコンプライアンスのログ記録またはアクションが必要かどうかが判断されます。
 
 ## <a name="append"></a>Append
 
@@ -88,24 +92,30 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-
-
-
 ## <a name="audit"></a>Audit
 
 非準拠のリソースが評価された場合、Audit を使用してアクティビティ ログに警告イベントが作成されますが、要求は停止されません。
 
 ### <a name="audit-evaluation"></a>Audit の評価
 
-Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 その後、リソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非準拠としてマークされます。
+Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非準拠としてマークされます。
 
 ### <a name="audit-properties"></a>Audit のプロパティ
 
-Audit 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
+リソース マネージャー モードの場合、Audit 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
+
+`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Audit 効果の **details** には次のサブプロパティが追加されます。
+
+- **constraintTemplate** (必須)
+  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
+- **constraint** (必須)
+  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例 2 では、これらの値は `{{ .Values.excludedNamespaces }}` および `{{ .Values.allowedContainerImagesRegex }}` です。
+- **values** (省略可能)
+  - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
 
 ### <a name="audit-example"></a>Audit の例
 
-例:Audit 効果を使用します。
+例 1:リソース マネージャー モードで Audit 効果を使用する。
 
 ```json
 "then": {
@@ -113,9 +123,25 @@ Audit 効果には、ポリシー定義の **then** 条件で使用するため�
 }
 ```
 
+例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Audit 効果を使用する。 **details** の追加情報では、許可されるコンテナー イメージを制限するために Kubernetes で使用する制約テンプレートと CRD を定義します。
+
+```json
+"then": {
+    "effect": "audit",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
+}
+```
+
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists は **if** 条件に一致するリソースの監査を有効にしますが、**then** 条件の **details** に指定されるコンポーネントはありません。
+AuditIfNotExists は、**if** 条件に一致するリソースに_関連する_リソースで監査を有効にしますが、**then** 条件の **details** で指定されるプロパティはありません。
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists の評価
 
@@ -125,7 +151,7 @@ AuditIfNotExists は、リソース プロバイダーでリソースの作成�
 
 AuditIfNotExists 効果の **details** プロパティは、照合する関連リソースを定義するすべてのサブプロパティを含みます。
 
-- **Type** [必須]
+- **Type** (必須)
   - 照合する関連リソースの型を指定します。
   - **details.type** が **if** 条件リソース下にあるリソースの型である場合、この **type** のリソースが、ポリシーによって評価対象リソースのスコープ内から照会されます。 それ以外の場合は、評価対象リソースと同じリソース グループ内から照会されます。
 - **Name** (省略可能)
@@ -185,17 +211,26 @@ Deny は、ポリシーを通して定義された基準に一致していない
 
 ### <a name="deny-evaluation"></a>Deny の評価
 
-照合されたリソースを作成または更新する場合、Deny は、リソース プロバイダーに要求が送信されないようにします。 要求は `403 (Forbidden)` として返されます。 ポータルでは、ポリシーの割り当てによって阻止されたデプロイの状態として、この Forbidden を表示できます。
+リソース マネージャー モードで照合されたリソースを作成または更新する場合、Deny は、リソース プロバイダーに要求が送信されないようにします。 要求は `403 (Forbidden)` として返されます。 ポータルでは、ポリシーの割り当てによって阻止されたデプロイの状態として、この Forbidden を表示できます。 リソース プロバイダー モードでは、リソース プロバイダーによってリソースの評価が管理されます。
 
 既存のリソースの評価では、Deny ポリシー定義と一致するリソースは、非準拠としてマークされます。
 
 ### <a name="deny-properties"></a>Deny のプロパティ
 
-Deny 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
+リソース マネージャー モードの場合、Deny 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
+
+`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Deny 効果の **details** には次のサブプロパティが追加されます。
+
+- **constraintTemplate** (必須)
+  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
+- **constraint** (必須)
+  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例 2 では、これらの値は `{{ .Values.excludedNamespaces }}` および `{{ .Values.allowedContainerImagesRegex }}` です。
+- **values** (省略可能)
+  - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
 
 ### <a name="deny-example"></a>Deny の例
 
-例:Deny 効果を使用します。
+例 1:リソース マネージャー モードで Deny 効果を使用する。
 
 ```json
 "then": {
@@ -203,6 +238,21 @@ Deny 効果には、ポリシー定義の **then** 条件で使用するため�
 }
 ```
 
+例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Deny 効果を使用する。 **details** の追加情報では、許可されるコンテナー イメージを制限するために Kubernetes で使用する制約テンプレートと CRD を定義します。
+
+```json
+"then": {
+    "effect": "deny",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
+}
+```
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
@@ -222,7 +272,7 @@ DeployIfNotExists は、リソースプロバイダーでリソースの作成�
 
 DeployIfNotExists 効果の **details** プロパティは、照合する関連リソースおよび実行するテンプレートのデプロイを定義するすべてのサブプロパティを含みます。
 
-- **Type** [必須]
+- **Type** (必須)
   - 照合する関連リソースの型を指定します。
   - 最初に **if** 条件リソースの下にあるリソースを取得しようとし、次に **if** 条件リソースと同じリソース グループ内を検索します。
 - **Name** (省略可能)
@@ -246,14 +296,14 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 照合する関連リソースのいずれかが true と評価された場合、効果は条件を満たしているため、デプロイはトリガーされません。
   - [field()] を使用して、**if** 条件の値と等しいことを確認できます。
   - たとえば、(**if** 条件内の) 親リソースが照合する関連リソースと同じリソースの場所にあることを検証できます。
-- **roleDefinitionIds** [必須]
+- **roleDefinitionIds** (必須)
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
 - **DeploymentScope** (省略可能)
   - 使用できる値は _Subscription_ と _ResourceGroup_ です。
   - トリガーされるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/templates/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
   - サブスクリプション レベルのデプロイを使用する場合は、_Deployment_ で _location_ プロパティを指定する必要があります。
   - 既定値は _ResourceGroup_ です。
-- **Deployment** [必須]
+- **Deployment** (必須)
   - このプロパティは `Microsoft.Resources/deployments` PUT API に渡されるため、完全なテンプレートのデプロイを含める必要があります。 詳細については、[Deployments REST API](/rest/api/resources/deployments) をご覧ください。
 
   > [!NOTE]
@@ -319,13 +369,12 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 無効にした効果の代替は、ポリシー割り当てに設定されている **enforcementMode** です。
 **enforcementMode** が _[無効]_ の場合、リソースは引き続き評価されます。 アクティビティ ログなどのログ記録や、ポリシーの効果はありません。 詳細については、[ポリシー割り当て - 強制モード](./assignment-structure.md#enforcement-mode)に関するページを参照してください。
 
-
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
 この効果は、`Microsoft.Kubernetes.Data` のポリシー定義_モード_で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に対して定義された Gatekeeper v3 受付制御ルールを、Azure 上の Kubernetes クラスターに渡すために使用されます。
 
 > [!NOTE]
-> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。
+> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceOPAConstraint** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint の評価
 
@@ -336,11 +385,11 @@ Open Policy Agent アドミッション コントローラーは、クラスタ�
 
 EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3 受付制御ルールを記述するサブプロパティがあります。
 
-- **constraintTemplate** [必須]
+- **constraintTemplate** (必須)
   - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
-- **constraint** [必須]
+- **constraint** (必須)
   - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例では、これらの値は `{{ .Values.cpuLimit }}` および `{{ .Values.memoryLimit }}` です。
-- **values** [オプション]
+- **values** (省略可能)
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint の例
@@ -381,7 +430,7 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 この効果は、`Microsoft.ContainerService.Data` のポリシー定義_モード_で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
 
 > [!NOTE]
-> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、更新された [EnforceOPAConstraint](#enforceopaconstraint) 効果を使用してください。
+> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy の評価
 
@@ -392,11 +441,11 @@ Open Policy Agent アドミッション コントローラーは、クラスタ�
 
 EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 受付制御ルールを記述するサブプロパティがあります。
 
-- **policyId** [必須]
+- **policyId** (必須)
   - Rego 受付制御規則にパラメーターとして渡される一意の名前。
-- **policy** [必須]
+- **policy** (必須)
   - Rego 受付制御規則の URI を指定します。
-- **policyParameters** [省略可能]
+- **policyParameters** (省略可能)
   - rego ポリシーに渡すパラメーターと値を定義します。
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy の例
@@ -445,15 +494,21 @@ Modify 効果を使用するポリシー定義が評価サイクルの一部と�
 
 Modify 効果の **details** プロパティには、修復に必要なアクセス許可を定義するすべてのサブプロパティと、タグ値の追加、更新、または削除に使用する **operations** が含まれます。
 
-- **roleDefinitionIds** [必須]
+- **roleDefinitionIds** (必須)
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
   - 定義されたロールには、[Contributor](../../../role-based-access-control/built-in-roles.md#contributor) ロールに与えられているすべての操作が含まれている必要があります。
-- **operations** [必須]
+- **conflictEffect** (省略可能)
+  - 複数のポリシー定義によって同じプロパティが変更された場合に、どのポリシー定義が "優先" されるかを決定します。
+    - 新規または更新されたリソースについては、_Deny_ を持つポリシー定義が優先されます。 _Audit_ のポリシー定義では、すべての **operations** がスキップされます。 複数のポリシー定義に _Deny_ がある場合、その要求は競合として拒否されます。 すべてのポリシー定義に _Audit_ がある場合、競合しているポリシー定義のどの **operations** も処理されません。
+    - 既存のリソースについては、複数のポリシー定義に _Deny_ がある場合、コンプライアンス状態は_競合_になります。 _Deny_ があるポリシー定義が 1 つ以下の場合、各割り当ては_非準拠_のコンプライアンス状態を返します。
+  - 使用可能な値は、_Audit_、_Deny_、_Disabled_ です。
+  - 既定値は _Deny_ です。
+- **operations** (必須)
   - 一致するリソースで完了されるすべてのタグ操作の配列です。
   - プロパティ:
-    - **operation** [必須]
+    - **operation** (必須)
       - 一致するリソースに対して実行するアクションを定義します。 オプションは、_addOrReplace_、_Add_、_Remove_ です。 _Add_ は、[Append](#append) 効果に似た動作をします。
-    - **field** [必須]
+    - **field** (必須)
       - 追加、置換、または削除するタグです。 タグ名は、他の [fields](./definition-structure.md#fields) と同じ名前付け規則に従う必要があります。
     - **value** (オプション)
       - タグに設定する値です。
@@ -528,6 +583,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
         "roleDefinitionIds": [
             "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
         ],
+        "conflictEffect": "deny",
         "operations": [
             {
                 "operation": "Remove",
@@ -542,8 +598,6 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
     }
 }
 ```
-
-
 
 ## <a name="layering-policy-definitions"></a>ポリシー定義を階層化する
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f0cb402741163c657b3e7961eb5a4f9c8e18dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673022"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -40,6 +40,7 @@ Microsoft では、継続的アクセス評価の最初の実装について、E
 
 - ユーザーアカウントが削除または無効化された
 - ユーザーのパスワードが変更またはリセットされた
+- MFA がユーザーに対して有効になっている
 - 管理者が、ユーザーのすべての更新トークンを明示的に取り消した
 - Azure AD Identity Protection によって管理者特権のユーザー リスクが検出された
 
@@ -76,7 +77,7 @@ CAE セッションでは、アクセス トークンの有効期間が 24 時�
 1. リソース プロバイダーにアクセス トークンが提示されます。 リソース プロバイダーは、トークンの有効性を評価し、ユーザーの失効イベントがあるかどうかを確認します。 リソース プロバイダーは、この情報を使用して、リソースへのアクセスを許可するかどうかを決定します。
 1. この場合、リソース プロバイダーはアクセスを拒否し、401+ 要求チャレンジをクライアントに送り返します
 1. CAE 対応クライアントは、401+ 要求チャレンジを認識します。 キャッシュをバイパスし、手順 1 に戻り、要求チャレンジと共に更新トークンを Azure AD に送り返します。 その後、Azure AD ですべての条件が再評価され、この場合はユーザーに再認証を求めるメッセージが表示されます。
- 
+
 ## <a name="faqs"></a>FAQ
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>アクセス トークンの有効期間はどれくらいですか。

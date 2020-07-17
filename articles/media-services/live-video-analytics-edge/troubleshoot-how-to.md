@@ -1,14 +1,16 @@
 ---
 title: Live Video Analytics on IoT Edge のトラブルシューティング - Azure
 description: この記事では、Live Video Analytics on IoT Edge のトラブルシューティング手順について説明します。
+author: IngridAtMicrosoft
 ms.topic: how-to
+ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: c235dd27da1d370531c1668c40586d4ae479aec7
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: dd55050521a1791a11f220cd5617d9df2fa2d160
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260445"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045580"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
 
@@ -128,7 +130,7 @@ ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
     ```
 1. 次の拡張機能がインストールされていることを確認します。 このガイドの執筆時点では、拡張機能のバージョンは次のようになっていました。
 
-    |||
+    | 拡張機能 | Version |
     |---|---|
     |azure-cli   |      2.5.1*|
     |command-modules-nspkg         |   2.0.3|
@@ -243,7 +245,92 @@ Live Video Analytics on IoT Edge では、複数のトポロジと複数のグ�
 
 Assembly Initialization method Microsoft.Media.LiveVideoAnalytics.Test.Feature.Edge.AssemblyInitializer.InitializeAssemblyAsync threw exception. Microsoft.Azure.Devices.Common.Exceptions.IotHubException:Microsoft.Azure.Devices.Common.Exceptions.IotHubException:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
 
-ダイレクト メソッドは並列で呼び出さず、直列で呼び出すことをお勧めします。つまり、ダイレクト メソッド呼び出しが終了した後にのみ、次のダイレクト メソッド呼び出しを起動します。 
+ダイレクト メソッドは並列で呼び出さず、直列で呼び出すことをお勧めします。つまり、ダイレクト メソッド呼び出しが終了した後にのみ、次のダイレクト メソッド呼び出しを起動します。
+
+### <a name="collecting-logs-for-submitting-a-support-ticket"></a>サポート チケットを送信するためのログの収集
+
+セルフガイドによるトラブルシューティング手順で問題が解決しない場合は、Azure portal にアクセスして[サポート チケットを開いてください](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+
+チケットに追加する必要のある関連ログを収集するには、以下の手順を実行します。 ログ ファイルは、サポート リクエストの **[詳細]** タブからアップロードできます。
+
+### <a name="support-bundle"></a>Support-bundle
+
+IoT Edge デバイスからログを収集する必要がある場合、最も簡単な方法は `support-bundle` コマンドを使用することです。 このコマンドでは、次の内容を収集します。
+
+- モジュール ログ
+- IoT Edge Security Manager とコンテナー エンジンのログ
+- Iotedge check JSON 出力
+- 有用なデバッグ情報
+
+#### <a name="use-the-iot-edge-security-manager"></a>IoT Edge Security Manager を使用する
+ 
+IoT Edge Security Manager は、デバイスの起動およびプロビジョニング時の IoT Edge システムの初期化などの操作を担当します。 IoT Edge が開始されていない場合、セキュリティ マネージャーのログに有用な情報が提供されることがあります。 IoT Edge Security Manager の詳細なログを表示するには、次の手順を実行します。
+
+1. IoT Edge デバイスの IoT Edge デーモン設定を編集します。
+
+    ```
+    sudo systemctl edit iotedge.service
+    ```
+
+1. 次の行を更新します。
+
+    ```
+    [Service]
+    Environment=IOTEDGE_LOG=edgelet=debug
+    ```
+
+1. 次のコマンドを実行して、IoT Edge Security Daemon を再起動します。
+
+    ```
+    sudo systemctl cat iotedge.service
+    sudo systemctl daemon-reload
+    sudo systemctl restart iotedge
+    ```
+
+1. ログを取得する過去の期間を指定するには、--since フラグを指定して `support-bundle` コマンドを実行します。 たとえば、2h は過去 2 時間のログを取得します。 このフラグの値を変更することで、別の期間のログを取得できます。
+
+    ```
+    sudo iotedge support-bundle --since 2h
+    ```
+
+### <a name="lva-debug-logs"></a>LVA デバッグ ログ
+
+デバッグ ログを生成するように IoT Edge モジュールの LVA を構成するには、次の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。
+1. メニューから **[IoT Edge]** を選択します。
+1. デバイスの一覧でターゲット デバイスの ID をクリックします。
+1. 上部メニューの **[モジュールの設定]** リンクをクリックします。
+
+  ![Azure portal の [モジュールの設定]](media/troubleshoot-how-to/set-modules.png)
+
+5. [IoT Edge モジュール] セクションで、 **[lvaEdge]** を見つけてクリックします。
+1. **[コンテナーの作成オプション]** をクリックします。
+1. [Binds]\(バインド\) セクションで、次のコマンドを追加します。
+
+    `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
+
+    これにより、エッジ デバイスとコンテナーの間でログ フォルダーがバインドされます。
+
+1. **[更新]** ボタンをクリックします。
+1. ページの下部にある **[確認および作成]** ボタンをクリックします。 簡単な検証が行われ、検証の正常終了後のメッセージが緑色のバナーの下に表示されます。
+1. **[作成]** ボタンをクリックします。
+1. 次に、 **[モジュール ID ツイン]** を更新して、DebugLogsDirectory パラメーターがログ収集先のディレクトリを指すようにします。
+    1. **[モジュール]** テーブルの下にある **[lvaEdge]** を選択します。
+    1. **[モジュール ID ツイン]** リンクをクリックします。 これは、ページの上部にあります。 これにより、編集可能なウィンドウが開きます。
+    1. **[desired key]\(必要なキー\)** の下に、次のキーと値のペアを追加します。
+
+        `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
+
+    1. **[Save]** をクリックします。
+
+1. 問題を再現します。
+1. ポータルの [IoT Hub] ページから仮想マシンに接続します。
+1. `/var/local/mediaservices/logs` フォルダーに移動し、このフォルダーのバイナリ コンテンツを zip 形式にして、Microsoft と共有します。 (これらのログ ファイルは、自己診断を目的としたものではありません。 これらは、Azure のエンジニアリングが問題を分析するためのものです)。
+
+1. **[モジュール ID ツイン]** で、その値を再び *null* に設定することで、ログ収集を停止できます。 **[モジュール ID ツイン]** ページに戻り、次の内容をパラメーターとして更新します。
+
+    `"DebugLogsDirectory": ""`
 
 ## <a name="next-steps"></a>次のステップ
 

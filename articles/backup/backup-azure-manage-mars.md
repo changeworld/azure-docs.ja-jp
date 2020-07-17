@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248602"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057825"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -167,6 +167,27 @@ ms.locfileid: "84248602"
 
     ![パスフレーズを生成します。](./media/backup-azure-manage-mars/passphrase2.png)
 - パスフレーズは、(ソース マシンではない) 別の場所、できれば Azure Key Vault に安全に保存するようにします。 複数のマシンが MARS エージェントでバックアップされている場合は、すべてのパスフレーズを追跡します。
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>使用できないマシンのバックアップ データを管理する
+
+このセクションでは、MARS で保護されていたソース マシンが、削除、破損、マルウェア/ランサムウェアの感染、または使用停止になったことにより、使用できなくなったシナリオについて説明します。
+
+これらのマシンでは、バックアップ ポリシーで指定された保持規則に従って、最後の復旧ポイントが期限切れにならない (つまり、排除されない) ことが、Azure Backup サービスによって保証されます。 そのため、マシンを安全に復元できます。  バックアップされたデータに対して実行できる次のシナリオを考えてみましょう。
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>シナリオ 1:ソース マシンが使用できなくなり、バックアップ データを保持する必要がなくなった
+
+- [この記事](backup-azure-delete-vault.md#delete-protected-items-on-premises)に記載されている手順に従って、Azure portal からバックアップ データを削除できます。
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>シナリオ 2: ソース マシンは使用できなくなったが、バックアップ データを保持する必要がある
+
+MARS のバックアップ ポリシーの管理は、ポータルではなく、MARS コンソールを使用して行われます。 期限切れになる前に既存の復旧ポイントの保有期間の設定を延長する必要がある場合は、マシンを復元し、MARS コンソールをインストールして、ポリシーを延長する必要があります。
+
+- マシンを復元するには、次の手順を実行します。
+  - [代替のターゲット マシンに VM を復元します](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - ソース マシンと同じホスト名でターゲット マシンを再作成します
+  - エージェントをインストールし、同じパスフレーズを使用して同じコンテナーに再登録します
+  - MARS クライアントを起動して、要件に応じて保有期間を延長します
+- 新しく復元されたマシンは、MARS で保護され、引き続きバックアップを実行します。  
 
 ## <a name="next-steps"></a>次のステップ
 

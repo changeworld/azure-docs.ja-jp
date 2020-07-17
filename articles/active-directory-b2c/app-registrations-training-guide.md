@@ -6,20 +6,20 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e60e8452b5cd3750a7b3478c860de95d8992528d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c89ed98d8100df270f09f1d2d1b621e71e326fe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386302"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の新しいアプリの登録エクスペリエンス
 
-Azure Active Directory Azure AD B2C (Azure AD B2C) の新しい **[アプリの登録](https://aka.ms/b2cappregistrations)** エクスペリエンスが一般提供されました。 アプリケーションを Azure AD B2C に登録するための**アプリケーション** エクスペリエンスに慣れている場合、ここでは「従来のエクスペリエンス」として触れられています。本ガイドは新しいエクスペリエンスの使用開始をサポートします。
+Azure Active Directory B2C (Azure AD B2C) の新しい **[アプリの登録](https://aka.ms/b2cappregistrations)** エクスペリエンスが一般提供されました。 アプリケーションを Azure AD B2C に登録するための**アプリケーション** エクスペリエンスに慣れている場合、ここでは「従来のエクスペリエンス」として触れられています。本ガイドは新しいエクスペリエンスの使用開始をサポートします。
 
 ## <a name="overview"></a>概要
 以前は、従来のエクスペリエンスを使用して、コンシューマー向けの Azure AD B2C アプリケーションを他のアプリとは別に管理する必要がありました。 これは、Azure のさまざまな場所で、さまざまなアプリ作成エクスペリエンスが存在していたことを意味します。
@@ -58,7 +58,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 
 アカウントの種類の違いを理解するには、[作成] エクスペリエンスで **[選択に関する詳細]** を選択します。 
 
-従来のエクスペリエンスでは、アプリは常に顧客向けアプリケーションとして作成されていました。 これらのアプリの場合、アカウントの種類は、 **[任意の組織ディレクトリ内のアカウントまたは任意の ID プロバイダー。Azure AD B2C でユーザーを認証します。]** に設定されます。 
+従来のエクスペリエンスでは、アプリは常に顧客向けアプリケーションとして作成されていました。 これらのアプリの場合、アカウントの種類は、 **[任意の組織ディレクトリ内のアカウントまたは任意の ID プロバイダー。Azure AD B2C でユーザーを認証します。]** に設定されます。
 > [!NOTE]
 > このオプションは、このアプリケーション用にユーザーを認証するための Azure AD B2C ユーザー フローを実行できるようにするために必要です。 [ユーザー フローで使用するアプリケーションを登録する方法](tutorial-register-applications.md)を参照してください。
 
@@ -79,22 +79,22 @@ Azure AD B2C を使用してユーザーをアプリにサインインできる�
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>プラットフォーム/認証:応答 URL/リダイレクト URI
 従来のエクスペリエンスでは、さまざまなプラットフォームの種類が **[プロパティ]** で管理されており、Web アプリや API の応答 URL として、またネイティブ クライアントのリダイレクト URI として使用されていました。 "ネイティブ クライアント" は "パブリック クライアント" とも呼ばれ、iOS、macOS、Android、およびその他の種類のモバイルおよびデスクトップ アプリケーション向けのアプリが含まれます。 
 
-新しいエクスペリエンスでは、応答 URL とリダイレクト URI は両方ともリダイレクト URI と呼ばれ、アプリの **[認証]** セクションにあります。 アプリの登録は、Web アプリや API、またはネイティブ アプリケーションのいずれかに制限されているわけではありません。 それぞれのリダイレクト URI を登録することで、これらすべてのプラットフォームの種類に対して、同じアプリの登録を使用できます。 
+新しいエクスペリエンスでは、応答 URL とリダイレクト URI は両方ともリダイレクト URI と呼ばれ、アプリの **[認証]** セクションにあります。 アプリの登録は、Web アプリまたはネイティブ アプリケーションのいずれかに制限されているわけではありません。 それぞれのリダイレクト URI を登録することで、これらすべてのプラットフォームの種類に対して、同じアプリの登録を使用できます。 
 
 リダイレクト URI は、Web またはパブリック (モバイルおよびデスクトップ) のアプリの種類のいずれかに関連付けられている必要があります。 [リダイレクト URI の詳細情報についてご確認ください](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
-可能であれば、アプリケーションがパブリック クライアントとして扱われるかどうかは、実行時にリダイレクト URI プラットフォーム型から推論されます。 ROPC フローなどの、リダイレクト URI を使用しない可能性のあるフローに対しては、 **[Treat application as a public client]\(アプリケーションは、パブリック クライアントとして扱います\)** の設定を *[はい]* に設定する必要があります。
+<!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
 **iOS/macOS** と **Android** プラットフォームは、パブリック クライアントの一種です。 これらでは、MSAL で使用するための対応するリダイレクト URI を使用して、iOS/macOS または Android アプリを簡単に構成できるようにする方法が提供されています。 [アプリケーション構成オプション](../active-directory/develop/msal-client-applications.md)の詳細をご確認ください。
 
 
 ## <a name="application-certificates--secrets"></a>アプリケーション証明書とシークレット
 
-新しいエクスペリエンスでは、 **[キー]** ではなく **[証明書とシークレット]** ブレードを使用して、証明書とシークレットを管理します。 資格情報を使用すると、アプリケーションは Web アドレス指定可能な場所でトークンを受信するときに、認証サービスに対して身元を証明できます (HTTPS スキームを使用します)。 Azure AD に対して認証する場合は、クライアント シークレットではなく証明書をクライアントの資格情報シナリオに使用することをお勧めします。 Azure AD B2C に対しては、証明書を使用して認証を行うことはできません。
+新しいエクスペリエンスでは、 **[キー]** ではなく **[証明書とシークレット]** ブレードを使用して、証明書とシークレットを管理します。 証明書とシークレットを使用すると、アプリケーションは Web アドレス指定可能な場所でトークンを受信するときに、認証サービスに対して身元を証明できます (HTTPS スキームを使用します)。 Azure AD に対して認証する場合は、クライアント シークレットではなく証明書をクライアントの資格情報シナリオに使用することをお勧めします。 Azure AD B2C に対しては、証明書を使用して認証を行うことはできません。
 
 
-## <a name="features-not-available-in-azure-ad-b2c-tenants"></a>Azure AD B2C テナントでは利用できない機能
-次の Azure AD アプリの登録機能は、Azure AD B2C テナントには適用されません。
+## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C テナントに適用されない機能
+次の Azure AD アプリの登録機能は、Azure AD B2C テナントに適用されないか、テナントで利用できません。
 - **役割と管理者** - これには、Azure AD B2C では現在使用できない Azure AD Premium P1 または P2 ライセンスが必要です。
 - **ブランド** - UI や UX のカスタマイズは、**会社のブランド** エクスペリエンスまたはユーザー フローの一部として構成されます。 [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui-overview.md)方法を参照してください。
 - **発行元ドメインの検証** - アプリは、検証済みのドメインではない *onmicrosoft.com* に登録されます。 また、発行元ドメインは主にユーザーの同意を与えるために使用され、ユーザー認証のために Azure AD B2C アプリに適用されるものではありません。 [発行元ドメインの詳細についてご確認ください](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain)。

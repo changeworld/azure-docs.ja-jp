@@ -4,13 +4,13 @@ description: Azure Functions で実行されているアプリケーションと
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/20/2020
-ms.openlocfilehash: a936c77abb9aed5886fae8b2ec4a10bb076b7cb5
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 06/26/2020
+ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482107"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Monitor Application Insights で Azure Functions を監視する
 
@@ -20,11 +20,10 @@ Application Insights は、ログ、パフォーマンス、エラー データ�
 
 必要な Application Insights インストルメンテーションは、Azure Functions に組み込まれています。 唯一必要なのは、関数アプリを Application Insights リソースに接続するための有効なインストルメンテーション キーです。 インストルメンテーション キーは、関数アプリのリソースが Azure で作成されるときに、アプリケーションの設定に追加する必要があります。 関数アプリにまだこのキーがない場合は、手動で設定できます。 詳細については、[Azure Functions の監視](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd)に関するページを参照してください。
 
-## <a name="distributed-tracing-for-java-applications-public-preview"></a>Java アプリケーションの分散トレース (パブリック プレビュー)
-
+## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Windows 上の Java アプリケーションの分散トレース (パブリック プレビュー)
 
 > [!IMPORTANT]
-> この機能は現在、Java Azure Functions のパブリック プレビュー段階にあります。 従量課金プランでは、コールド スタートの影響が 8 - 9 秒あります。
+> この機能は現在、Windows 上の Java Azure Functions のパブリック プレビュー段階にあります。Linux 上の Java Azure Functions の分散トレースはサポートされていません。 従量課金プランでは、8 ～ 9 秒のコールド スタートがあります。
 
 アプリケーションが Java で記述されている場合は、関数アプリケーションからの豊富なデータ (要求、依存関係、ログ、メトリックなど) を表示できます。 この追加データによって、エンドツーエンドのトランザクションの表示や診断を行えるほか、アプリケーション マップで多数のトランザクションを集計して、システムの相互作用の状況を示すトポロジ ビューや、平均パフォーマンスとエラー率を確認できます。
 

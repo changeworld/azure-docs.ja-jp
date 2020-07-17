@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389974"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
 
 Azure Automation および PowerShell Runbook を使用して、Azure Analysis 表形式モデルに対する自動データ更新操作を行うことができます。  
 
-この記事の例では、[PowerShell SqlServer モジュール](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)を使用します。
-
-モデルの更新方法を示す PowerShell Runbook のサンプルは、この記事の後半で提供されます。  
+この記事の例では、[SqlServer PowerShell モジュール](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)を使用します。 モデルの更新方法を示す PowerShell Runbook のサンプルは、この記事の後半で提供されます。  
 
 ## <a name="authentication"></a>認証
 
-すべての呼び出しを、有効な Azure Active Directory (OAuth 2) トークンで認証する必要があります。  この記事の例では、サービス プリンシパル (SPN) を使用して Azure Analysis Services を認証します。
-
-サービス プリンシパルの作成の詳細については、[Azure portal を使用したサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
+すべての呼び出しを、有効な Azure Active Directory (OAuth 2) トークンで認証する必要があります。  この記事の例では、サービス プリンシパル (SPN) を使用して Azure Analysis Services を認証します。 詳細については、[Azure portal を使用したサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> 次の例では、Azure Analysis Services ファイアウォールが無効になっていることを前提としています。 ファイアウォールが有効になっている場合は、要求イニシエーターのパブリック IP アドレスが、ファイアウォールでホワイトリストに登録されている必要があります。
+> 次の例では、Azure Analysis Services ファイアウォールが無効になっていることを前提としています。 ファイアウォールが有効になっている場合は、要求イニシエーターのパブリック IP アドレスがファイアウォール規則に含まれている必要があります。
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>PowerShell ギャラリーから SqlServer モジュールをインストールします。
 

@@ -1,7 +1,7 @@
 ---
 title: Speech SDK を使用してクライアント アプリと統合する
 titleSuffix: Azure Cognitive Services
-description: この記事では、UWP アプリケーションで実行されている Speech SDK から、発行されたカスタム コマンド アプリケーションに対して要求を行う方法について説明します。
+description: UWP アプリケーションで実行されている Speech SDK から、発行されたカスタム コマンド アプリケーションに対して要求を行う方法。
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: d87301f09665062a1b56fa33443f1178b42fb42f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307281"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027632"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Speech SDK を使用してクライアント アプリケーションと統合する
 
-この記事では、UWP アプリケーションで実行されている Speech SDK から、発行されたカスタム コマンド アプリケーションに対して要求を行う方法について説明します。 カスタム コマンド アプリケーションへの接続を確立するには、次のタスクを実行します。
+この記事では、UWP アプリケーションで実行されている Speech SDK から、発行されたカスタム コマンド アプリケーションに対して要求を行う方法について説明します。 カスタム コマンド アプリケーションへの接続を確立するには、次のことが必要です。
 
 - カスタム コマンド アプリケーションを発行してアプリケーション識別子 (アプリ ID) を取得する
 - Speech SDK を使用してユニバーサル Windows プラットフォーム (UWP) クライアント アプリを作成し、カスタム コマンド アプリケーションと対話できるようにする
@@ -32,13 +32,19 @@ ms.locfileid: "85307281"
 
 次のものも必要です。
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) またはそれ以降。 このガイドは、Visual Studio 2019 に基づいています。
 > * Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
 > * [デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>手順 1:カスタム コマンド アプリケーションを発行する
 
-1. 以前に作成したカスタム コマンド アプリケーション (プレビュー) を開き、 **[発行]** を選択します
+1. 前に作成したカスタム コマンド アプリケーションを開きます
+1. **[設定]** 、 **[LUIS リソース]** に移動します
+1. **予測リソース**が割り当てられていない場合は、クエリ予測キーを選択するか、新しいキーを作成します
+
+    クエリ予測キーはアプリケーションを公開する前に常に必要です。 LUIS リソースの詳細については、「[LUIS リソースを作成する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)」を参照してください
+
+1. 編集コマンドに戻り、 **[発行]** を選択します
 
    > [!div class="mx-imgBorder"]
    > ![アプリケーションの発行](media/custom-commands/setup-speech-sdk-publish-application.png)
@@ -131,11 +137,8 @@ ms.locfileid: "85307281"
    using Microsoft.CognitiveServices.Speech.Audio;
    using Microsoft.CognitiveServices.Speech.Dialog;
    using System;
-   using System.Diagnostics;
    using System.IO;
    using System.Text;
-   using Windows.Foundation;
-   using Windows.Storage.Streams;
    using Windows.UI.Xaml;
    using Windows.UI.Xaml.Controls;
    using Windows.UI.Xaml.Media;
@@ -324,7 +327,7 @@ ms.locfileid: "85307281"
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
-   connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+   connector.ActivityReceived += (sender, activityReceivedEventArgs) =>
    {
        NotifyUser(
            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");

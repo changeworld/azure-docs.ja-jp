@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316075"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
 
-Azure Cache for Redis には、セッション状態プロバイダーが用意されています。セッション状態プロバイダーを使用すると、セッション状態を SQL Server データベースにではなく Azure Cache for Redis でメモリ内に格納することができます。 キャッシュ セッション状態プロバイダーを使用するには、まず対象のキャッシュを構成し、Azure Cache for Redis Session State NuGet パッケージを使用して、キャッシュに必要な構成を ASP.NET アプリケーションに対して行います。
+Azure Cache for Redis には、セッション状態プロバイダーが用意されています。セッション状態プロバイダーを使用すると、セッション状態を SQL Server データベースにではなく Azure Cache for Redis でメモリ内に格納することができます。 キャッシュ セッション状態プロバイダーを使用するには、まず対象のキャッシュを構成し、Azure Cache for Redis Session State NuGet パッケージを使用して、キャッシュに必要な構成を ASP.NET アプリケーションに対して行います。 ASP.NET Core アプリケーションの場合は、[ASP.NET Core でのセッションと状態管理](https://docs.microsoft.com/aspnet/core/fundamentals/app-state)に関するページを参照してください。
 
 ユーザー セッションの状態をなんらかの形で格納しないのは、実際のクラウド アプリケーションでは実用的でない場合が多いですが、方法によっては、パフォーマンスとスケーラビリティに与える影響が大きくなります。 状態を格納する必要がある場合は、状態の量を少なくし、Cookie に格納することをお勧めします。 この方法を利用できない場合は、ASP.NET セッション状態と分散型メモリ内キャッシュのプロバイダーを使用することを次にお勧めします。 パフォーマンスとスケーラビリティの観点から最もお勧めできないのが、データベースを利用したセッション状態プロバイダーを使用する方法です。 このトピックでは、Azure Cache for Redis の ASP.NET セッション状態プロバイダーを使用する方法について説明します。 その他のセッション状態のオプションについては、 [ASP.NET セッション状態のオプション](#aspnet-session-state-options)に関するトピックを参照してください。
 
@@ -94,7 +94,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 * **operationTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの syncTimeout 設定をオーバーライドすることができます。 指定されていない場合は、syncTimeout 設定の既定値である 1000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](https://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
 * **redisSerializerType** - この設定では、Redis に送信されるセッションの内容のカスタム シリアル化を指定できます。 指定される型では、`Microsoft.Web.Redis.ISerializer` を実装し、パラメーターのないパブリック コンストラクターを宣言する必要があります。 既定では `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` が使用されます。
 
-これらのプロパティの詳細については、 [Redis の ASP.NET セッション状態プロバイダーの発表](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関する元のブログ投稿を参照してください。
+これらのプロパティの詳細については、 [Redis の ASP.NET セッション状態プロバイダーの発表](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)に関する元のブログ投稿を参照してください。
 
 web.config の標準の InProc セッション状態プロバイダー セクションを忘れずにコメント アウトしてください。
 

@@ -4,15 +4,16 @@ description: Azure Synapse Studio のトラブルシューティング
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ede38317762e5aac5562c9bb3494713c3edacc69
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 20978a6389c790575fa26258c4468f891af733ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211461"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (プレビュー) のトラブルシューティング
 
@@ -90,7 +91,7 @@ URL 列が次のパターンに一致する項目を探します。
 
 ![開発者ツールのコンソール](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
-スクリーンショットを添付する場合は、スクリーンショットを取得した時刻 (または推定時間の範囲) を指定します。 それは問題を調査するときに役立ちます。
+スクリーンショットを添付する場合は、スクリーンショットを取得した時刻 (または推定時間の範囲) を記述します。 それは問題を調査するときに役立ちます。
 
 一部のブラウザーでは、[コンソール] タブでのタイムスタンプの表示がサポートされています。Chromium Edge または Chrome の場合は、"開発者ツール" の [設定] ダイアログを開き、[基本設定] タブの [タイムスタンプを表示] をオンにします。
 

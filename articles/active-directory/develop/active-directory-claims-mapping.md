@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737505"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478401"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -325,6 +325,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | jobtitle | 役職 |
 | User | employeeid | 従業員 ID |
 | User | facsimiletelephonenumber | ファックスの電話番号 |
+| User | assignedroles | ユーザーに割り当てられたアプリ ロールの一覧|
 | アプリケーション、リソース、対象ユーザー | displayName | 表示名 |
 | アプリケーション、リソース、対象ユーザー | objected | ObjectID |
 | アプリケーション、リソース、対象ユーザー | tags | サービス プリンシパル タグ |

@@ -11,21 +11,22 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608519"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory でのユーザー プリンシパル名の変更の計画とトラブルシューティング
 
 ユーザー プリンシパル名 (UPN) は、ユーザー アカウントのインターネット通信標準である属性です。 UPN は、UPN プレフィックス (ユーザー アカウント名) と UPN サフィックス (DNS ドメイン名) とから成ります。 プレフィックスとサフィックスは、"@" 記号を使用して結合されます。 たとえば、「 someone@example.com 」のように入力します。 UPN は、ディレクトリ フォレスト内のすべてのセキュリティ プリンシパル オブジェクトの中で一意であることが必要です。 
 
-> [!NOTE]
-> 開発者には、変更不可の識別子として、UPN ではなくユーザーの objectID を使用することをお勧めします。 アプリケーションで現在 UPN を使用している場合は、エクスペリエンスを向上させるため、ユーザーのプライマリ電子メール アドレスと一致するように UPN を設定することをお勧めします。<br> **ハイブリッド環境では、ユーザーの UPN がオンプレミスのディレクトリと Azure Active Directory で同一であることが重要です**。
-
 **この記事では、ユーザー識別子として UPN を使用していることを前提としています。UPN の変更の計画と、UPN の変更によって発生する可能性がある問題からの復旧について説明します。**
+
+> [!NOTE]
+> UPN またはメール アドレスは値が変更される可能性があるため、開発者には変更不可の識別子としてユーザーの objectID を使用することをお勧めします。
+
 
 ## <a name="learn-about-upns-and-upn-changes"></a>UPN と UPN の変更について理解する
 サインイン ページでは、必要な値が実際には UPN であるときに、ユーザーにメール アドレスの入力を求めることがよくあります。 そのため、プライマリ メール アドレスが変更されるたびに、ユーザーの UPN を変更する必要があります。
@@ -60,7 +61,7 @@ ms.locfileid: "80743321"
      または<br>
     * Britta.Simon@labs.contoso.com に対して Britta.Simon@corp.contoso.com を行います 
 
-ユーザーのプライマリ メール アドレスが更新されるたびに、ユーザーの UPN を変更します。 メール アドレスの変更の理由に関係なく、UPN は常に一致するように更新する必要があります。
+プライマリ メール アドレスが更新されるたびに、ユーザーの UPN を変更することをお勧めします。
 
 Active Directory から Azure AD への初期同期中に、ユーザーのメール アドレスが UPN と同じであることを確認します。
 
@@ -74,10 +75,10 @@ username@contoso.com
 
 たとえば、labs.contoso.com を追加し、ユーザーの UPN とメール アドレスにそれを反映させることができます。 この場合、次のようになります
 
-username@labs.contoso.com
+username@labs.contoso.com.
 
 >[!IMPORTANT]
-> Active Directory と Azure Active Directory の UPN が一致しない場合、問題が発生します。 [Active Directory でサフィックスを変更](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)した場合は、一致するカスタム ドメイン名を [Azure AD に追加して検証する](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)必要があります。 
+> [Active Directory でサフィックスを変更](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)した場合は、一致するカスタム ドメイン名を [Azure AD に追加して検証する](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)必要があります。 
 
 ![検証済みドメインのスクリーンショット](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -130,10 +131,14 @@ UPN の一括変更については、[パイロットのベスト プラクテ�
 **既知の問題** <br>
 認証を Azure AD に依存するアプリケーションで、シングル サインオンに関する問題が発生する可能性があります。
 
+**解決策** <br>
+この項で説明した問題は、2020 年 5 月の Windows 10 更新プログラム (2004) で修正されました。
+
 **回避策** <br>
 UPN の変更が Azure AD に同期されるのに十分な時間を確保します。 新しい UPN が Azure AD ポータルに反映されたことを確認した後、[その他のユーザー] タイルを選択して新しい UPN でサインインするようにユーザーに依頼します。 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0) を使用して確認することもできます。 新しい UPN でサインインした後も、古い UPN への参照により、[職場または学校へのアクセス] という Windows の設定が表示される場合があります。
 
 ![検証済みドメインのスクリーンショット](./media/howto-troubleshoot-upn-changes/other-user.png)
+
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
@@ -149,6 +154,9 @@ Windows 10 の Hybrid Azure AD 参加済みデバイスでは、予期しない�
 
 "PC は 1 分で自動的に再起動されます。 Windows で問題が発生したため、再起動する必要があります。 今すぐこのメッセージを閉じて、作業中のデータを保存してください。"
 
+**解決策** <br>
+この項で説明した問題は、2020 年 5 月の Windows 10 更新プログラム (2004) で修正されました。
+
 **回避策** 
 
 デバイスの Azure AD への参加を解除し、再起動する必要があります。 再起動後、デバイスは自動的に Azure AD に再び参加します。ユーザーは、[その他のユーザー] タイルを選択し、新しい UPN を使用してサインインする必要があります。 デバイスの Azure AD への参加を解除するには、コマンド プロンプトで次のコマンドを実行します。
@@ -156,6 +164,7 @@ Windows 10 の Hybrid Azure AD 参加済みデバイスでは、予期しない�
 **dsregcmd /leave**
 
 Windows Hello for Business が使用されている場合、ユーザーは[再登録する](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision)必要があります。 Windows 7 および8.1 のデバイスは、UPN 変更後のこの問題による影響を受けません。
+
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator に関する既知の問題と回避策
 

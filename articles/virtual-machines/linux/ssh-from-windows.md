@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390229"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -63,15 +63,15 @@ PuTTYgen で SSH RSA キー ペアを作成するには:
 
 2. **[Generate]\(生成\)** をクリックします。 既定では、PuTTYgen は 2048 ビットの SSH-2 RSA キーを生成します。
 
-4. 空白領域内でマウスを動かすと、キーがランダムになります。
+3. 空白領域内でマウスを動かすと、キーがランダムになります。
 
-5. 公開キーが生成された後、必要に応じて、パスフレーズを入力して確認します。 プライベート SSH キーを使用して VM の認証を受けると、パスフレーズの入力を求められます。 パスフレーズを使用しない場合、だれかが秘密キーを入手すると、その人物はそのキーを使用するすべての VM またはサービスにサインインできるようになります。 そのため、パスフレーズを作成することをお勧めします。 ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
+4. 公開キーが生成された後、必要に応じて、パスフレーズを入力して確認します。 プライベート SSH キーを使用して VM の認証を受けると、パスフレーズの入力を求められます。 パスフレーズを使用しない場合、だれかが秘密キーを入手すると、その人物はそのキーを使用するすべての VM またはサービスにサインインできるようになります。 そのため、パスフレーズを作成することをお勧めします。 ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
 
-6. 公開キーがウィンドウの上部に表示されます。 Linux VM を作成するときに、この公開キー全体をコピーし、Azure portal または Azure Resource Manager テンプレートに貼り付けます。 **[Save public key]\(公開キーの保存\)** をクリックして、公開キーを自分のコンピューターに保存することもできます。
+5. 公開キーがウィンドウの上部に表示されます。 Linux VM を作成するときに、この公開キー全体をコピーし、Azure portal または Azure Resource Manager テンプレートに貼り付けます。 **[Save public key]\(公開キーの保存\)** をクリックして、公開キーを自分のコンピューターに保存することもできます。 ファイルに保存すると、PuTTY によって公開キーが別の形式 ([RFC4716](https://tools.ietf.org/html/rfc4716)) に変換されることに注意してください。 RFC4716 形式には、互換性がない API がある場合があります。 そのため、Azure portal でを使用するには、[PuTTY] ウィンドウに表示されている公開キーをコピーすることをお勧めします。
 
     ![PuTTY 公開キー ファイルの保存](./media/ssh-from-windows/save-public-key.png)
 
-7. PuTTy の秘密キー形式 (.ppk ファイル) で秘密キーを保存する必要がある場合は、 **[Save private key]\(秘密キーの保存\)** を選択します。 後で PuTTY を使用して VM への SSH 接続を行うときに .ppk ファイルが必要になります。
+6. PuTTy の秘密キー形式 (.ppk ファイル) で秘密キーを保存する必要がある場合は、 **[Save private key]\(秘密キーの保存\)** を選択します。 後で PuTTY を使用して VM への SSH 接続を行うときに .ppk ファイルが必要になります。
 
     ![PuTTY 秘密キー ファイルを保存する](./media/ssh-from-windows/save-ppk-file.png)
 

@@ -5,18 +5,18 @@ description: Azure Kubernetes Service (AKS) での分離に関するクラスタ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668354"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077767"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) でのクラスターの分離に関するベスト プラクティス
 
 Azure Kubernetes Service (AKS) でクラスターを管理する際は、多くの場合、チームとワークロードを分離する必要があります。 AKS では、柔軟にマルチ テナント クラスターを実行してリソースを分離することができます。 Kubernetes への投資を最大限に活用するには、これらのマルチ テナントおよび分離機能を理解して実装する必要があります。
 
-このベスト プラクティスの記事では、クラスター オペレーターを対象とした分離に重点を置いています。 この記事では、次のことについて説明します。
+このベスト プラクティスの記事では、クラスター オペレーターを対象とした分離に重点を置いています。 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * マルチ テナント クラスターとリソースの分離の計画
@@ -30,7 +30,7 @@ Kubernetes では、同じクラスター内のチームとワークロードを
   * スケジューラのより高度な機能には、テイントと容認、ノード セレクター、およびノードとポッドのアフィニティまたは非アフィニティが含まれます。 これらの機能の詳細については、[AKS の高度なスケジューラ機能のベスト プラクティス][aks-best-practices-advanced-scheduler]に関するページを参照してください。
 * **ネットワーク**には、ポッド内外のトラフィックのフローを制御するためのネットワーク ポリシーの使用が含まれます。
 * **認証と承認**には、ロールベースのアクセス制御 (RBAC) と Azure Active Directory (AD) の統合、ポッド ID、および Azure Key Vault のシークレットの使用が含まれます。 これらの機能の詳細については、[AKS の認証と承認のベスト プラクティス][aks-best-practices-identity]に関するページを参照してください。
-* **コンテナー**には、ポッドのセキュリティ ポリシー、ポッドのセキュリティ コンテキスト、脆弱性に関するイメージとランタイムのスキャンが含まれます。 また、基になるノードへのコンテナー アクセスを制限するための App Armor や Seccomp (セキュア コンピューティング) の使用も含まれます。
+* **コンテナー**には、ポッド セキュリティを適用するための AKS 用の Azure Policy アドオン、ポッドのセキュリティ コンテキストの使用、および脆弱性に関するイメージとランタイムの両方のスキャンが含まれています。 また、基になるノードへのコンテナー アクセスを制限するための App Armor や Seccomp (セキュア コンピューティング) の使用も含まれます。
 
 ## <a name="logically-isolate-clusters"></a>クラスターを論理的に分離する
 

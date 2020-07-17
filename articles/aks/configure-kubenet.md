@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309670"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055496"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -40,7 +40,7 @@ Azure CLI バージョン 2.0.65 以降がインストールされて構成さ�
 
 多くの環境では、割り当て済みの IP アドレス範囲を使用して仮想ネットワークとサブネットを定義します。 これらの仮想ネットワーク リソースは、複数のサービスとアプリケーションをサポートするために使用されます。 ネットワーク接続を提供するため、AKS クラスターでは *kubenet* (基本的なネットワーク) または Azure CNI ("*高度なネットワーク*) を使用できます。
 
-*kubenet* では、ノードだけが仮想ネットワーク サブネットの IP アドレスを受け取ります。 ポッドが相互に直接通信することはできません。 代わりに、複数のノードにまたがるポッド間の接続には、ユーザー定義ルーティング (UDR) と IP 転送が使用されます。 割り当て済み IP アドレスを受け取ってアプリケーションに対するトラフィックを負荷分散するサービスの背後に、ポッドをデプロイすることもできます。 次の図では、ポッドではなく AKS ノードが仮想ネットワーク サブネットの IP アドレスを受け取る方法を示します。
+*kubenet* では、ノードだけが仮想ネットワーク サブネットの IP アドレスを受け取ります。 ポッドが相互に直接通信することはできません。 代わりに、複数のノードにまたがるポッド間の接続には、ユーザー定義ルーティング (UDR) と IP 転送が使用されます。 既定では、UDR と IP 転送の構成は AKS サービスによって作成および管理されますが、[カスタム ルート管理用に独自のルートテーブルを用意する][byo-subnet-route-table]オプションがあります。 割り当て済み IP アドレスを受け取ってアプリケーションに対するトラフィックを負荷分散するサービスの背後に、ポッドをデプロイすることもできます。 次の図では、ポッドではなく AKS ノードが仮想ネットワーク サブネットの IP アドレスを受け取る方法を示します。
 
 ![AKS クラスターでの kubenet ネットワーク モデル](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 - 使用可能な IP アドレス空間が十分にある。
 - ポッドの通信のほとんどが、クラスターの外部にあるリソースに対するものである。
-- UDR を管理したくない。
+- ポッド接続用にユーザー定義ルートを管理したくない。
 - 仮想ノードや Azure ネットワーク ポリシーなどの高度な AKS 機能を使用する必要がある。  [Calico ネットワーク ポリシー][calico-network-policies] を使用している。
 
 どのネットワーク モデルを使用するかの決定に役立つ詳細については、[ネットワーク モデルとそのサポート範囲の比較][network-comparisons]に関するページを参照してください。
@@ -139,10 +139,10 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-次に、[az role assignment create][az-role-assignment-create] コマンドを使用して、AKS クラスターのサービス プリンシパルに、仮想ネットワークでの "*共同作成者*" アクセス許可を割り当てます。 前のサービス プリンシパル作成コマンドの出力で示されている独自の *\<appId>* を指定します。
+次に、[az role assignment create][az-role-assignment-create] コマンドを使用して、AKS クラスターのサービス プリンシパルに、仮想ネットワークでの "*ネットワーク共同作成者*" アクセス許可を割り当てます。 前のサービス プリンシパル作成コマンドの出力で示されている独自の *\<appId>* を指定します。
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>仮想ネットワークに AKS クラスターを作成する
@@ -201,16 +201,37 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
 
 kubenet では、ルート テーブルがクラスター サブネット上に存在している必要があります。 AKS では、独自の既存のサブネットとルート テーブルを使用することがサポートされています。
 
-カスタム サブネットにルート テーブルが含まれていない場合は、AKS によって作成され、それにルールが追加されます。 クラスターを作成するときにカスタム サブネットにルートテーブルが含まれている場合、クラスターの操作中に既存のルート テーブルが AKS で認識され、クラウド プロバイダーの操作に応じて規則が更新されます。
+カスタム サブネットにルート テーブルが含まれていない場合は、AKS によって作成され、クラスターのライフサイクル全体にわたってそれにルールが追加されます。 クラスターを作成するときにカスタム サブネットにルートテーブルが含まれている場合、クラスターの操作中に既存のルート テーブルが AKS で認識され、クラウド プロバイダーの操作に応じてルールが追加または更新されます。
+
+> [!WARNING]
+> カスタム ルールをカスタム ルート テーブルに追加し、更新することができます。 ただし、Kubernetes クラウド プロバイダーによって追加されたルールは、更新または削除してはなりません。 0\.0.0.0/0 などのルールは、特定のルート テーブルに常に存在し、NVA や他のエグレス ゲートウェイなどのインターネット ゲートウェイのターゲットにマップされている必要があります。 ルールの更新でカスタム ルールのみが変更されている場合は注意が必要です。
+
+[カスタム ルート テーブル][custom-route-table]のセットアップに関する詳細を参照してください。
+
+Kubernet ネットワークで要求を正常にルーティングするには、整理されたルート テーブル ルールが必要です。 この設計のため、ルート テーブルはそれに依存するクラスターごとに慎重に保守する必要があります。 異なるクラスターからのポッド CIDR が重複し、予期しないルーティングや壊れたルーティングが発生する可能性があるため、複数のクラスターでルート テーブルを共有することはできません。 同じ仮想ネットワークで複数のクラスターを構成する場合、または仮想ネットワークを各クラスター専用にする場合は、次の制限事項を考慮してください。
 
 制限事項:
 
 * クラスターを作成する前にアクセス許可を割り当てる必要があります。対象のカスタム サブネットおよびカスタム ルート テーブルへの書き込みアクセス許可を持つサービス プリンシパルを使用していることを確認してください。
 * マネージド ID は、kubenet のカスタム ルート テーブルでは現在サポートされていません。
-* AKS クラスターを作成する前に、カスタム ルート テーブルをサブネットに関連付ける必要があります。 このルート テーブルを更新することはできません。また、AKS クラスターを作成する前に、初期ルート テーブルに対してすべてのルーティング規則を追加または削除する必要があります。
-* AKS 仮想ネットワーク内のすべてのサブネットは、同じルート テーブルに関連付けられている必要があります。
-* すべての AKS クラスターは、一意のルート テーブルを使用する必要があります。 複数のクラスターでルート テーブルを再利用することはできません。
+* AKS クラスターを作成する前に、カスタム ルート テーブルをサブネットに関連付ける必要があります。
+* クラスターを作成した後で、関連付けられているルート テーブル リソースを更新することはできません。 ルート テーブル リソースは更新できませんが、カスタム ルールはルート テーブルで変更できます。
+* 各 AKS クラスターでは、クラスターに関連付けられているすべてのサブネットに対して、一意のルート テーブルを 1 つだけ使用する必要があります。 ポッドの CIDR が重複してルーティング規則が競合する可能性があるため、複数のクラスターでルート テーブルを再利用することはできません。
 
+カスタム ルート テーブルを作成し、仮想ネットワーク内のサブネットにそれを関連付けた後は、ルート テーブルを使用する新しい AKS クラスターを作成できます。
+AKS クラスターをデプロイする予定の場所に対するサブネット ID を使用する必要があります。 このサブネットは、カスタム ルート テーブルに関連付けられている必要もあります。
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -232,9 +253,11 @@ kubenet では、ルート テーブルがクラスター サブネット上に�
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md
