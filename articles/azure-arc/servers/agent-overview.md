@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/01/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111254"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242952"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Azure Arc for servers エージェントの概要
 
@@ -62,7 +62,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
 
     |Folder |説明 |
     |-------|------------|
-    |C:\Program Files\AzureConnectedMachineAgent |エージェント サポート ファイルが含まれている既定のインストール パス。|
+    |%ProgramFiles%\AzureConnectedMachineAgent |エージェント サポート ファイルが含まれている既定のインストール パス。|
     |%ProgramData%\AzureConnectedMachineAgent |エージェント構成ファイルが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |取得したトークンが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |サービスへの登録情報を記録する `agentconfig.json` エージェント構成ファイルが含まれています。|
@@ -99,7 +99,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
 
 * エージェントのアンインストール中に、次の成果物は削除されません。
 
-    * C:\Program Files\AzureConnectedMachineAgent\Logs
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
     * %ProgramData%\AzureConnectedMachineAgent とサブディレクトリ
     * %ProgramData%\GuestConfig
 
@@ -170,9 +170,9 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-- マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
+* マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
 
-- マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
+* マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
@@ -195,19 +195,20 @@ Linux と Windows 用の Connected Machine エージェントは、TCP ポート
 
 サービス タグ:
 
-- AzureActiveDirectory
-- AzureTrafficManager
+* AzureActiveDirectory
+* AzureTrafficManager
 
 URL:
 
 | エージェントのリソース | 説明 |
 |---------|---------|
-|management.azure.com|Azure Resource Manager|
-|login.windows.net|Azure Active Directory|
-|dc.services.visualstudio.com|Application Insights|
-|agentserviceapi.azure-automation.net|ゲスト構成|
-|*-agentservice-prod-1.azure-automation.net|ゲスト構成|
-|*.his.arc.azure.com|ハイブリッド ID サービス|
+|`management.azure.com`|Azure Resource Manager|
+|`login.windows.net`|Azure Active Directory|
+|`dc.services.visualstudio.com`|Application Insights|
+|`agentserviceapi.azure-automation.net`|ゲスト構成|
+|`*-agentservice-prod-1.azure-automation.net`|ゲスト構成|
+|`*.guestconfiguration.azure.com` |ゲスト構成|
+|`*.his.arc.azure.com`|ハイブリッド ID サービス|
 
 各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 詳細については、「[サービス タグ](../../virtual-network/security-overview.md#service-tags)」を参照してください。
 
@@ -217,8 +218,8 @@ URL:
 
 Azure Arc for servers (プレビュー) は、このサービスを使用するために、サブスクリプション内の次の Azure リソースプロバイダーに依存します。
 
-- **Microsoft.HybridCompute**
-- **Microsoft.GuestConfiguration**
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
 
 これらが登録されていない場合は、次のコマンドを使って登録できます。
 
