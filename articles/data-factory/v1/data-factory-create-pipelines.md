@@ -156,7 +156,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | longRetryInterval |TimeSpan |00:00:00 |長い再試行の間の遅延 |
 
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
+次のサンプル パイプラインでは、**Copy** in the **アクティビティ**型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
 
 ```json
 {
@@ -210,7 +210,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 このパイプラインを作成する完全なチュートリアルについては、「[チュートリアル: Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ## <a name="sample-transformation-pipeline"></a>変換パイプラインのサンプル
-次のサンプル パイプラインでは、 **HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](data-factory-hive-activity.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
+次のサンプル パイプラインでは、**HDInsightHive** in the **アクティビティ**型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](data-factory-hive-activity.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
 
 ```json
 {
