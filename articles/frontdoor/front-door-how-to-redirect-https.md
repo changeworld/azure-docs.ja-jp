@@ -87,7 +87,7 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 ### <a name="enable-https-on-your-custom-domain"></a>カスタム ドメインで HTTPS を有効にする
 
 1. 追加されたカスタム ドメインをクリックし、 **[カスタム ドメイン HTTPS]** セクションで、状態を **[有効]** に変更します。
-2. Front Door によって維持、管理、およびオートローテーションされる無料の証明書については、 **[証明書の管理の種類]** を _[Front Door managed]/(Front Door による管理/)_ のままにすることができます。 また、Azure Key Vault に格納されている独自のカスタム TLS/SSL 証明書を使用することも選択できます。 このチュートリアルでは、Front Door によって管理される証明書を使用することを前提としています。
+2. Front Door によって維持、管理、およびオートローテーションされる無料の証明書については、 **[証明書の管理の種類]** を *[Front Door managed]\(Front Door による管理\)* のままにすることができます。 また、Azure Key Vault に格納されている独自のカスタム TLS/SSL 証明書を使用することも選択できます。 このチュートリアルでは、Front Door によって管理される証明書を使用することを前提としています。
 ![カスタム ドメインに対して HTTPS を有効にする](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. **[更新]** をクリックして選択内容を保存し、 **[保存]** をクリックします。
