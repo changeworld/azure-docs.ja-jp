@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118833"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172028"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -115,7 +115,7 @@ IR が実行中の状態の場合は、まず IR を停止し、新しいカス�
 ## <a name="virtual-network-configuration"></a>Virtual Network の構成
 
 SSIS IR を Azure Virtual Network に参加させると、SSIS IR はユーザー サブスクリプションにある仮想ネットワークを使用します。 詳細については、「[Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
-
+SSIS IR が正常に起動した後、ネットワーク接続の問題が発生した場合は、[診断接続ツール](ssis-integration-runtime-diagnose-connectivity-faq.md)を使用して、問題を自分で診断できます。
 Virtual Network 関連の問題がある場合は、次のいずれかのエラーが表示されます。
 
 ### <a name="invalidvnetconfiguration"></a>InvalidVnetConfiguration

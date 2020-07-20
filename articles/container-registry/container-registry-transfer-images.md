@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186930"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259457"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -36,7 +36,7 @@ ms.locfileid: "86186930"
 * **ストレージ アカウント** - サブスクリプション内および任意の場所にソース ストレージ アカウントとターゲット ストレージ アカウントを作成します。 テスト目的では、ソース レジストリおよびターゲット レジストリと同じ 1 つまたは複数のサブスクリプションを使用できます。 クロスクラウドのシナリオでは、通常、各クラウドに個別のストレージ アカウントを作成します。 必要に応じて、[Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) またはその他のツールでストレージ アカウントを作成します。 
 
   各アカウントで成果物転送用の BLOB コンテナーを作成します。 たとえば、*transfer* という名前のコンテナーを作成します。 2 つ以上の転送パイプラインで同じストレージ アカウントを共有できますが、異なるストレージ コンテナー スコープを使用する必要があります。
-* **キー コンテナー** - ソース ストレージ アカウントとターゲット ストレージ アカウントへのアクセスに使用される SAS トークン シークレットを格納するには、キー コンテナーが必要です。 ソース レジストリおよびターゲット レジストリと同じ 1 つまたは複数の Azure サブスクリプションに、ソース キー コンテナーとターゲット キー コンテナーを作成します。 必要に応じて、[Azure CLI](../key-vault/quick-create-cli.md) またはその他のツールを使用してキー コンテナーを作成します。
+* **キー コンテナー** - ソース ストレージ アカウントとターゲット ストレージ アカウントへのアクセスに使用される SAS トークン シークレットを格納するには、キー コンテナーが必要です。 ソース レジストリおよびターゲット レジストリと同じ 1 つまたは複数の Azure サブスクリプションに、ソース キー コンテナーとターゲット キー コンテナーを作成します。 必要に応じて、[Azure CLI](../key-vault/secrets/quick-create-cli.md) またはその他のツールを使用してキー コンテナーを作成します。
 * **環境変数** - この記事のコマンド例では、ソース環境とターゲット環境に対して次の環境変数を設定します。 すべての例は、Bash シェル用に書式設定されています。
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -257,7 +257,7 @@ az storage blob list \
 
 AzCopy ツールまたはその他の方法を使用して、ソース ストレージ アカウントからターゲット ストレージ アカウントに [BLOB データを転送](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts)します。
 
-たとえば、次の [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) コマンドでは、ソース アカウントの *transfer* コンテナーからターゲット アカウントの *transfer* コンテナーに myblob がコピーされます。 BLOB がターゲット アカウントに存在する場合は上書きされます。 認証では、ソース コンテナーとターゲット コンテナーに対する適切なアクセス許可を持つ SAS トークンが使用されます (トークンを作成する手順については説明しません)。
+たとえば、次の [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) コマンドでは、ソース アカウントの *transfer* コンテナーからターゲット アカウントの *transfer* コンテナーに myblob がコピーされます。 BLOB がターゲット アカウントに存在する場合は上書きされます。 認証では、ソース コンテナーとターゲット コンテナーに対する適切なアクセス許可を持つ SAS トークンが使用されます (トークンを作成する手順については説明しません)。
 
 ```console
 azcopy copy \
@@ -366,6 +366,3 @@ az deployment group delete \
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

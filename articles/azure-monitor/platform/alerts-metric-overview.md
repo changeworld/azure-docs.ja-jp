@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 03/17/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248823"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187525"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -135,9 +135,13 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 1 つのメトリック警告ルールで監視の範囲を指定するには、次の 3 つの方法があります。 たとえば、仮想マシンではスコープを次のように指定できます。  
 
-- サブスクリプション内の 1 つの Azure リージョン内の仮想マシンのリスト
+- サブスクリプション内の (1 つの Azure リージョン内の) 仮想マシンのリスト
 - サブスクリプション内の 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシン
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシン
+
+> [!NOTE]
+>
+> 複数リソースのメトリック アラート ルールのスコープには、選択したリソースの種類に該当するリソースが少なくとも 1 つ含まれている必要があります。
 
 複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 監視対象のリソースごとに個別の通知が届きます。
 

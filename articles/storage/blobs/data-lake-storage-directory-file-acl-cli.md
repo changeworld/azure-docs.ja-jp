@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 8fdcad18ccec2748761cf35f2cd0b8efe9749958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159f3c63a647ff565e838b01dbaaadf947fb8ada
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466138"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142623"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、階層型名前空間を持つストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
-[Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [フィードバックの送信](https://github.com/Azure/azure-cli-extensions/issues)
+[サンプル](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md) | [フィードバックを送る](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,39 +65,39 @@ ms.locfileid: "84466138"
 > [!NOTE]
 > この記事に示す例は、Azure Active Directory (AD) 認証を示しています。 認証方法の詳細については、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](../common/authorize-data-operations-cli.md)」を参照してください。
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
-ファイル システムは、ファイルのコンテナーとして機能します。 `az storage fs create` コマンドを使用して、ファイル システムを作成できます。 
+コンテナーは、ファイルのファイル システムとして機能します。 `az storage fs create` コマンドを使用して、ファイル システムを作成できます。 
 
-この例では、`my-file-system` という名前のファイル システムを作成します。
+この例では、`my-file-system` という名前のコンテナーを作成します。
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="show-file-system-properties"></a>ファイル システムのプロパティを表示する
+## <a name="show-container-properties"></a>コンテナーのプロパティを表示する
 
-`az storage fs show` コマンドを使用して、ファイル システムのプロパティをコンソールに出力できます。
+`az storage fs show` コマンドを使用して、コンテナーのプロパティをコンソールに出力できます。
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="list-file-system-contents"></a>ファイル システムの内容を一覧表示する
+## <a name="list-container-contents"></a>コンテナーの内容を一覧表示する
 
 `az storage fs file list` コマンドを使用して、ディレクトリの内容を一覧表示します。
 
-この例では、`my-file-system` という名前のファイル システムの内容を一覧表示します。
+この例では、`my-file-system` という名前のコンテナーの内容を一覧表示します。
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="delete-a-file-system"></a>ファイル システムを削除する
+## <a name="delete-a-container"></a>コンテナーを削除する
 
-`az storage fs delete` コマンドを使用してファイル システムを削除します。
+`az storage fs delete` コマンドを使用してコンテナーを削除します。
 
-この例では、`my-file-system` という名前のファイル システムを削除します。 
+この例では、`my-file-system` という名前のコンテナーを削除します。 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -107,7 +107,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 `az storage fs directory create` コマンドを使用して、ディレクトリ参照を作成します。 
 
-この例では、`mystorageaccount` という名前のアカウントにある `my-file-system` という名前のファイル システムに `my-directory` という名前のディレクトリを追加します。
+この例では、`mystorageaccount` という名前のアカウントにある `my-file-system` という名前のコンテナーに `my-directory` という名前のディレクトリを追加します。
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -125,13 +125,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 `az storage fs directory move` コマンドを使用して、ディレクトリの名前変更または移動を行います。
 
-この例では、同じファイル システム内でディレクトリの名前を `my-directory` から `my-new-directory` に変更します。
+この例では、同じコンテナー内でディレクトリの名前を `my-directory` から `my-new-directory` に変更します。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-この例では、ディレクトリを `my-second-file-system` という名前のファイル システムに移動します。
+この例では、ディレクトリを `my-second-file-system` という名前のコンテナーに移動します。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -149,9 +149,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>ディレクトリが存在するかどうか確認する
 
-`az storage fs directory exists` コマンドを使用して、ファイル システムに特定のディレクトリが存在するかどうかを確認します。
+`az storage fs directory exists` コマンドを使用して、コンテナーに特定のディレクトリが存在するかどうかを確認します。
 
-この例では、`my-file-system` ファイル システムに、`my-directory` という名前のディレクトリが存在するかどうかを確認します。 
+この例では、`my-file-system` コンテナーに、`my-directory` という名前のディレクトリが存在するかどうかを確認します。 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -171,7 +171,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 `az storage fs file list` コマンドを使用して、ディレクトリの内容を一覧表示します。
 
-この例では、`mystorageaccount` という名前のストレージ アカウントの `my-file-system` ファイル システムにある `my-directory` という名前のディレクトリの内容を一覧表示します。 
+この例では、`mystorageaccount` という名前のストレージ アカウントの `my-file-system` コンテナーにある `my-directory` という名前のディレクトリの内容を一覧表示します。 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -310,7 +310,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ## <a name="see-also"></a>関連項目
 
-* [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [サンプル](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [フィードバックのご提供](https://github.com/Azure/azure-cli-extensions/issues)
 * [既知の問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

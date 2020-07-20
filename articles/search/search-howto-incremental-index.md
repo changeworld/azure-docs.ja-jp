@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146887"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230708"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する方法
 
@@ -174,7 +174,7 @@ api-key: [YOUR-ADMIN-KEY]
 | [インデクサーの作成 (2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | インデクサー定義で指定されている場合は、キャッシュの作成などの最初の使用時にインデクサーを作成して実行します。 |
 | [インデクサー実行](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | 必要に応じてエンリッチメント パイプラインを実行します。 この API は、キャッシュが存在する場合はキャッシュから読み取り、更新されたインデクサー定義にキャッシュを追加した場合はキャッシュを作成します。 キャッシュが有効になっているインデクサーを実行すると、キャッシュされた出力を使用できる場合はインデクサーが手順を省略します。 この API の一般公開版またはプレビュー版 API を使用できます。|
 | [インデクサーのリセット](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| 増分インデックスの作成情報のインデクサーをクリアします。 次回のインデクサー実行 (オンデマンドまたはスケジュール) は、すべてのスキルの再実行やキャッシュの再構築を含み、最初から完全に再処理されます。 これは、インデクサーを削除して再作成することと機能的には同じです。 この API の一般公開版またはプレビュー版 API を使用できます。|
-| [スキルのリセット](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | スキルを変更していない場合でも、次回のインデクサー実行時に再実行するスキルを指定します。 キャッシュは適宜更新されます。 ナレッジ ストアや検索インデックスなどの出力は、キャッシュにある再利用可能なデータと更新されたスキルに基づく新しいコンテンツを使用して更新されます。 |
+| [スキルのリセット](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | スキルを変更していない場合でも、次回のインデクサー実行時に再実行するスキルを指定します。 キャッシュは適宜更新されます。 ナレッジ ストアや検索インデックスなどの出力は、キャッシュにある再利用可能なデータと更新されたスキルに基づく新しいコンテンツを使用して更新されます。 |
 
 キャッシュの動作を制御する方法の詳細については、「[キャッシュ管理](cognitive-search-incremental-indexing-conceptual.md#cache-management)」を参照してください。
 

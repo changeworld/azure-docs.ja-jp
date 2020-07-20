@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 03/09/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: a967bb1ac2c29b130ccd5e33b4aad768dd8daa6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 525dd90f37175dc5b2b50bc577a5a4f04649555b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557009"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146387"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Scikit-learn モデルを大規模に構築する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,6 +146,8 @@ estimator = SKLearn(source_directory=project_folder,
                    )
 ```
 
+> [!WARNING]
+> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)を使用してデータにアクセスしてください。
 
 Python 環境のカスタマイズの詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関するページを参照してください。 
 

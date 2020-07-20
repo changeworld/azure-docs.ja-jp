@@ -7,12 +7,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/08/2020
 ms.author: thomasge
-ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b30c5b0e81f4748d5e94c05d016be83163c1e78e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251129"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS マネージド Azure Active Directory の統合 (プレビュー)
 
@@ -71,13 +71,13 @@ kubectl version --client
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -131,7 +131,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Azure AD が有効なクラスターへのアクセス
 
-次の手順を実行するには、[Azure Kubernetes Service クラスター ユーザー](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role)組み込みロールが必要です。
+次の手順を実行するには、[Azure Kubernetes Service クラスター ユーザー](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)組み込みロールが必要です。
 
 クラスターにアクセスするためのユーザー資格情報を取得します。
  
@@ -150,7 +150,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-[ロールベースのアクセスの制御 (RBAC)](https://docs.microsoft.com/azure/aks/azure-ad-rbac) を構成して、クラスターの追加のセキュリティ グループを構成します。
+[ロールベースのアクセスの制御 (RBAC)](./azure-ad-rbac.md) を構成して、クラスターの追加のセキュリティ グループを構成します。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Azure AD でのアクセスに関する問題のトラブルシューティング
 
@@ -159,7 +159,7 @@ aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 
 クラスターへのアクセス権を持つ有効な Azure AD グループへのアクセス権がないために永続的にブロックされている場合でも、クラスターに直接アクセスするための管理者資格情報を取得することができます。
 
-これらの手順を実行するには、[Azure Kubernetes Service クラスター管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role)組み込みロールにアクセスできる必要があります。
+これらの手順を実行するには、[Azure Kubernetes Service クラスター管理者](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role)組み込みロールにアクセスできる必要があります。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
@@ -180,7 +180,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-rbac-integration]: manage-azure-rbac.md
@@ -195,4 +195,3 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
-

@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 6/2/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299317"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187576"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -1521,7 +1521,9 @@ az group deployment create \
 
 > [!NOTE]
 >
-> 複数のリソースを監視するメトリック アラート ルールの場合、許可される条件は 1 つだけです。
+> 複数のリソースを監視するメトリック アラート ルールでは、次の制限事項が適用されます。
+> - アラート ルールのスコープには、選択したリソースの種類のリソースが少なくとも 1 つ含まれている必要があります。
+> - アラート ルールに含めることができる条件は 1 つだけです。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>1 つまたは複数のリソース グループ内のすべての仮想マシンの静的しきい値アラート
 
