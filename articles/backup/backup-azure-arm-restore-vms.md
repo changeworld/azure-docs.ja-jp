@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 00b0f7313ba77037d90dcdb8ed04e5f61e335c55
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597775"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023331"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -161,6 +161,9 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 ![復元の構成](./media/backup-azure-arm-restore-vms/rest-config.png)
 
+>[!NOTE]
+>セカンダリ リージョンの仮想ネットワークは一意に割り当てる必要があり、そのリソース グループの他の VM には使用できません。
+
 ![復元進行中通知をトリガーする](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 - VM を復元して作成する方法については、「[VMの作成](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm)」を参照してください。
@@ -183,7 +186,7 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 **シナリオ** | **ガイダンス**
 --- | ---
 **Hybrid Use Benefit を使用して VM を復元する** | Windows VM が [Hybrid Use Benefit (HUB) ライセンス](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合、ディスクを復元し、提供されているテンプレート ( **[ライセンスの種類]** を **Windows_Server** に設定)、または PowerShell を使用して新しい VM を作成します。  この設定は、VM の設定後にも適用できます。
-**Azure データ センターでの障害発生時に VM を復元する** | コンテナーで GRS を使用しており、VM のプライマリ データセンターがダウンした場合、Azure Backup では、バックアップされた VM を、ペアのデータセンターに復元することができます。 ペアのデータセンターでストレージ アカウントを選択し、通常どおりに復元します。 Azure Backup は、ペアのリージョンのコンピューティング サービスを使用して、復元された VM を作成します。 データセンターの回復性に関して[詳しくはこちらを参照してください](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)。
+**Azure データ センターでの障害発生時に VM を復元する** | コンテナーで GRS を使用しており、VM のプライマリ データセンターがダウンした場合、Azure Backup では、バックアップされた VM を、ペアのデータセンターに復元することができます。 ペアのデータセンターでストレージ アカウントを選択し、通常どおりに復元します。 Azure Backup は、ペアのリージョンのコンピューティング サービスを使用して、復元された VM を作成します。 データセンターの回復性に関して[詳しくはこちらを参照してください](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)。<br><br> コンテナーで GRS が使用されている場合、[リージョンをまたがる復元](#cross-region-restore)という新しい機能を選択できます。 これにより、完全な停止でも、部分的な停止でも、あるいはまったく停止していない場合でさえも、第二リージョンに復元できます。
 **単一ドメイン内の単一ドメイン コントローラー VM を復元する** | 他の VM と同様に VM を復元します。 以下の点に注意してください。<br/><br/> Active Directory の観点からは、Azure VM は他の VM と同様です。<br/><br/> ディレクトリ サービス復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 仮想化ドメイン コントローラーのバックアップと復元の考慮事項に関する[詳細情報](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)。
 **単一ドメイン内の複数のドメイン コントローラー VM を復元する** | 同じドメイン内の他のドメイン コントローラーにネットワーク経由で到達できる場合は、VM と同様にそのドメイン コントローラーを復元できます。 これがドメイン内の最後のドメイン コントローラーである場合や、分離されたネットワークでの復旧を実行している場合は、[フォレストの復旧](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)を使用します。
 **1 つのフォレスト内の複数のドメインを復元する** | [フォレストの復旧](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)をお勧めします。
@@ -191,6 +194,8 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 **特別なネットワーク構成を持つ VM を復元する** | 特別なネットワーク構成に含まれるものとしては、内部または外部の負荷分散を使用する VM、複数の NIC の使用、または複数の予約済み IP アドレスがあります。 これらの VM は、[ディスクの復元オプション](#restore-disks)を使用して復元します。 このオプションでは、指定されたストレージ アカウントに VHD のコピーを作成した後、構成に応じて、[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)または[外部](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell)のロード バランサー、[複数の NIC](../virtual-machines/windows/multiple-nics.md)、または[複数の予約済み IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)を使用して VM を作成できます。
 **NIC/サブネットでのネットワーク セキュリティ グループ (NSG)** | Azure VM バックアップは、vnet、サブネット、および NIC レベルでの NSG 情報のバックアップと復元をサポートします。
 **ゾーンにピン留めされた VM** | ゾーンに固定されている Azure VM をバックアップする場合は (Azure Backup を使用して)、固定されているのと同じゾーンに復元できます。 [詳細情報](https://docs.microsoft.com/azure/availability-zones/az-overview)
+**可用性セットで VM を復元する** | ポータルから VM を復元するとき、可用性セットを選択するオプションはありません。 復元された VM には可用性セットがありません。 ディスクの復元オプションを使用する場合、提供されているテンプレートまたは PowerShell を使用してディスクから VM を作成するときに[可用性セットを指定する](../virtual-machines/windows/tutorial-availability-sets.md)ことができます。
+**SQL VM などの特別な VM を復元する** | Azure VM バックアップを使用して SQL VM をバックアップした後、VM の復元オプションを使用したか、またはディスクを復元した後に VM を作成した場合は、新しく作成した VM を SQL プロバイダーに登録する必要があります ([こちら](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-register?tabs=azure-cli%2Cbash)を参照してください)。 これにより、復元された VM が SQL VM に変換されます。
 
 ## <a name="track-the-restore-operation"></a>復元操作を追跡する
 

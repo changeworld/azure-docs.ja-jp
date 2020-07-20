@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267156"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037190"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Security Center での脅威の防止
 
@@ -106,36 +106,18 @@ App Service プランの詳細については、「[App Service プラン](https
 
 
 
-## <a name="threat-protection-for-azure-containers"></a>Azure コンテナーの脅威の防止 <a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>コンテナーの脅威の防止 <a name="azure-containers"></a>
 
-> [!NOTE]
-> 現在、Azure Government およびソブリン クラウド リージョンでは、このサービスを利用できません。
+### <a name="availability"></a>可用性
 
-Security Center では、コンテナー化された環境に対するリアルタイムの脅威の防止が提供され、疑わしいアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
+- リリース状態: **一般提供**
+- 必要なロール: **セキュリティ管理者**はアラートを無視できます。 **セキュリティ閲覧者**は、結果を表示できます。
+- クラウド:<br>
+    ✔ 商用クラウド<br>
+    ✘ US Gov<br>
+    ✘ China Gov、その他の Gov
 
-Security Center では、さまざまなレベルで脅威の防止が提供されます。 
-
-* **ホスト レベル** - Security Center のエージェント (Standard レベルで利用可能。詳細については、[価格](security-center-pricing.md)に関するページを参照) が、Linux に対する不審なアクティビティを監視します。 ノードまたはそこで実行されているコンテナーを発生源とする不審なアクティビティについては、エージェントによってアラートがトリガーされます。 そのようなアクティビティとしては、たとえば、Web シェルの検出や既知の不審な IP アドレスとの接続が挙げられます。
-
-    コンテナー化された環境のセキュリティについて、より詳しい分析情報を得るために、エージェントは、コンテナー固有の分析情報を監視します。 特権コンテナーの作成、API サーバーへの不審なアクセス、Docker コンテナー内での SSH (Secure Shell) サーバーの実行などのイベントが発生すると、アラートがトリガーされます。
-
-    >[!IMPORTANT]
-    > ホストにエージェントをインストールしなかった場合、脅威の防止によってもたらされるメリットとセキュリティ アラートは限定されます。 その場合でも、ネットワーク分析や悪意のあるサーバーとの通信に関連したアラートは通知されます。
-
-    ホスト レベルのアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-containerhost)に関するページを参照してください。
-
-
-* **AKS クラスター レベル**では、脅威の防止は Kubernetes の監査ログの分析に基づきます。 この**エージェントレス**の監視を有効にするには、 **[価格と設定]** ページから、ご利用のサブスクリプションに Kubernetes オプションを追加してください ([価格](security-center-pricing.md)に関するページを参照)。 このレベルのアラートを生成するために、Security Center は、AKS によって取得されたログを使用して、AKS のマネージド サービスを監視します。 このレベルのイベントの例として、公開されている Kubernetes ダッシュボード、高い特権ロールの作成、機微なマウントの作成などがあります。
-
-    >[!NOTE]
-    > Azure Kubernetes Service のアクションやデプロイについてのセキュリティ アラートが Security Center から生成されるのは、サブスクリプションの設定で Kubernetes オプションが有効にされた後になります。 
-
-    AKS クラスター レベルのアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-akscluster)に関するページを参照してください。
-
-また、Microsoft のセキュリティ研究員から成るグローバル チームも、脅威の状況を絶えず監視しています。 コンテナー固有のアラートや脆弱性は、それらが検出された時点で追加されます。
-
-> [!TIP]
-> コンテナーのアラートをシミュレートするには、[こちらのブログ記事](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)の手順に従います。
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
@@ -150,7 +132,7 @@ Advanced Threat Protection for Azure SQL Database では、データベースへ
 
 疑わしいデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセスやクエリのパターンがある場合に、アラートが表示されます。
 
-Advanced Threat Protection for Azure SQL Database and SQL は、高度な SQL セキュリティ機能を提供する [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 統合パッケージに含まれており、Azure SQL データベース、Azure SQL Database マネージド インスタンス、Azure SQL Data Warehouse データベース、Azure Virtual Machines 上の SQL サーバーに対応しています。
+Advanced Threat Protection for Azure SQL Database and SQL は、高度な SQL セキュリティ機能を提供する [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 統合パッケージに含まれており、Azure SQL Database、Azure SQL Managed Instance、Azure SQL Data Warehouse データベース、Azure Virtual Machines 上の SQL サーバーに対応しています。
 
 詳細については、次を参照してください。
 
@@ -162,15 +144,44 @@ Advanced Threat Protection for Azure SQL Database and SQL は、高度な SQL �
 
 ## <a name="threat-protection-for-azure-storage"></a>Azure Storage の脅威の防止 <a name="azure-storage"></a>
 
-Advanced Threat Protection for Azure Storage では、ストレージ アカウントにアクセスしたり、ストレージ アカウントを利用したりする試みに通常と異なるところがあり、有害な性質が疑われる場合に、そのような試みを検出できます。 この保護層により、セキュリティの専門家でなくても脅威に対処し、セキュリティ監視システムを管理できます。 
+### <a name="availability"></a>可用性
 
-お客様のストレージ アカウントで不審なアクティビティがある場合や、異常な動作が検出された場合に、セキュリティ アラートがトリガーされます。 不審なアクティビティとしては、マルウェアが含まれている可能性がある BLOB のアップロードなどが考えられます。 異常な動作のアラートには、ストレージ アカウントへのアクセス パターンの変化が含まれています。
+- リリース状態:
+    - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)
+    - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (プレビュー)
+    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (プレビュー)
+- クラウド:<br>
+    ✔ 商用クラウド<br>
+    ✔ US Gov<br>
+    ✘ China Gov、その他の Gov
+
+### <a name="whats-protected"></a>保護対象
+
+Azure Storage の脅威の防止では、お使いの Azure ストレージ アカウントにおいて有害である可能性があるアクティビティが検出されます。 BLOB コンテナー、ファイル共有、またはデータ レイクのいずれに格納されているデータでも保護できます。
+
+この保護層により、セキュリティの専門家で "*なくても*" 脅威に対処し、セキュリティ監視システムを管理できます。
+
+お使いのストレージ アカウントが保護されます 
+
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Azure Storage に対する脅威の防止で提供されるアラートの種類
+
+セキュリティ アラートは、次のような場合にトリガーされます。
+
+- **疑わしいアクティビティ** - たとえば、ストレージ アカウントが Tor のアクティブな出口ノードとして知られている IP アドレスから正常にアクセスされました
+- **異常な動作** - たとえば、ストレージ アカウントへのアクセス パターンの変化
+- **マルウェアがアップロードされた可能性** - ハッシュ評価分析で、アップロードされたファイルにマルウェアが含まれていることが示されています
 
 アラートには、それらをトリガーするインシデントの詳細と、脅威の調査や修復方法に関する推奨事項が含まれています。
 
-Threat Protection for Azure Storage は、現在 [BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)でのみ使用できます。 
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>マルウェアのハッシュ評価分析とは
 
-このサービスはすべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウド (Azure Government クラウド) のリージョンでは使用できません。 
+アップロードされたファイルが疑わしいかどうかを判断するため、Azure Storage に対する脅威の防止では、[Microsoft 脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)でサポートされているハッシュ評価分析が使用されます。 脅威の防止ツールでは、アップロードされたファイルがスキャンされるのではなく、ストレージ ログが調べられ、新しくアップロードされたファイルのハッシュと、既知のウイルス、トロイの木馬、スパイウェア、ランサムウェアのハッシュが比較されます。 
+
+ファイルにマルウェアが含まれている疑いがある場合、Security Center ではアラートが表示されます。また、必要に応じて、疑わしいファイルの削除の承認を求めるメールをストレージの所有者に送信できます。 ハッシュ評価分析によってマルウェアが含まれることが示されているファイルの自動削除を設定するには、["マルウェアがストレージ アカウントにアップロードされた可能性" を含むアラートでトリガーするワークフローの自動化](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)をデプロイします。
+
+
+
+### <a name="next-steps"></a>次のステップ 
 
 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
@@ -178,9 +189,13 @@ Threat Protection for Azure Storage は、現在 [BLOB ストレージ](https://
 
 * [Advanced Threat Protection for Azure Storage を有効にする方法](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure Storage 向け脅威保護アラートの一覧](alerts-reference.md#alerts-azurestorage)
+* [Microsoft の脅威インテリジェンスの機能](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> Azure Storage のアラートをシミュレートするには、[こちらのブログ記事](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)の手順に従います。
+> [こちらのブログ記事](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)の手順に従って、ストレージのアラートをシミュレートできます。
+
+
+
 
 
 
@@ -228,14 +243,17 @@ Azure Resource Manager (プレビュー) アラートの一覧については、
 >[!NOTE]
 > 上記のいくつかの分析では、Microsoft Cloud App Security が利用されています。 これらの分析を活用するには、Cloud App Security ライセンスをアクティブにする必要があります。 Cloud App Security ライセンスをお持ちの場合、これらのアラートは既定で有効になります。 アラートを無効にするには、次のようにします。
 >
-> 1. **[Security Center]** ブレードで **[セキュリティ ポリシー]** を選択します。 変更するサブスクリプションに対して **[設定の編集]** を選択します。
-> 2. **[脅威検出]** を選択します。
-> 3. **[統合の有効化]** で、 **[Microsoft Cloud App Security にデータへのアクセスを許可する]** チェック ボックスをクリアして、 **[保存]** を選択します。
+> 1. Security Center のメニューから、 **[価格と設定]** を選択します。
+> 1. 変更するサブスクリプションを選択します。
+> 1. **[脅威検出]** を選択します。
+> 1. **[私のデータに Microsoft Cloud App Security がアクセスすることを許可します]** チェック ボックスをオフにして、 **[保存]** を選択します。
 
 >[!NOTE]
 >Security Center では、そのリソースと同じ地域でセキュリティ関連の顧客データが格納されます。 Microsoft によってまだリソースの地域に Security Center がデプロイされていない場合、米国でデータが格納されます。 Cloud App Security が有効になっている場合、この情報は、Cloud App Security の地域の場所のルールに従って格納されます。 詳細については、[非リージョン サービスのデータ ストレージ](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
 
+1. エージェントをインストールするワークスペースを設定します。 ワークスペースが存在するサブスクリプションが Security Center で使用しているサブスクリプションと同じであること、またそのワークスペースに対する読み取り/書き込みのアクセス許可があることを確認します。
 
+1. Standard 価格レベルを設定して、 **[保存]** を選択します。
 
 
 

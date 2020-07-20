@@ -3,13 +3,13 @@ title: Azure Kubernetes Service に関する一般的な問題のトラブルシ
 description: Azure Kubernetes Service (AKS) を使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/20/2020
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724996"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054391"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -31,11 +31,34 @@ Azure CLI で AKS クラスターをデプロイする場合、ノードあた�
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークで AKS クラスターをデプロイしているときに、insufficientSubnetSize エラーが発生します。 どうすればよいですか。
 
-Azure CNI ネットワーク プラグインを使用する場合、AKS はノード パラメーターごとに "--max-pods" に基づいて IP アドレスを割り当てます。 サブネットのサイズは、ノードの数にノード設定あたりの最大ポッド数を掛けた数よりも大きい値にする必要があります。 次の式は、その概要を示します。
+このエラーは、クラスターに使用中のサブネットに、正常なリソース割り当てのためにその CIDR 内で使用可能な IP がもうないことを示しています。 Kubenet クラスターでは、クラスター内のノードごとに十分な IP 空間が必要です。 Azure CNI クラスターでは、クラスター内の各ノードとポッドに十分な IP 空間が必要です。
+ポッドに IP を割り当てるための Azure CNI の設計の詳細については、[こちら](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)を参照してください。
 
-サブネットのサイズ > クラスター内のノードの数 (今後のスケーリングの要件を考慮して) * ノード セットあたりの最大ポッド数。
+これらのエラーは、サブネットのサイズが不足しているなどの問題を事前に検出する、[AKS 診断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)でも検出されます。
 
-詳しくは、「[クラスターの IP アドレス指定を計画する](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)」を参照してください。
+次の 3 つのケースでは、サブネットのサイズ不足エラーが発生します。
+
+1. AKS Scale または AKS Nodepool scale
+   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of new nodes requested` **より小さい**場合に発生します。
+   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい**場合に発生します。
+
+1. AKS Upgrade または AKS Nodepool upgrade
+   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade` **より小さい**場合に発生します。
+   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` **より小さい**場合に発生します。
+   
+   既定では、AKS クラスターによって最大サージ (アップグレード バッファー) 値が 1 に設定されますが、このアップグレード動作は、アップグレードを完了するために必要な使用可能な IP の数を増やす[ノード プールの最大サージ値](upgrade-cluster.md#customize-node-surge-upgrade-preview)を設定することでカスタマイズできます。
+
+1. AKS create または AKS Nodepool add
+   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested for the node pool` **より小さい**場合に発生します。
+   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい**場合に発生します。
+
+新しいサブネットを作成することによって、次の軽減策を実行できます。 既存のサブネットの CIDR 範囲を更新できないため、リスク軽減には新しいサブネットを作成するためのアクセス許可が必要です。
+
+1. 操作の目標に十分な、より大きな CIDR 範囲を持つ新しいサブネットを再構築します。
+   1. 必要な重複しない新しい範囲を使用して、新しいサブネットを作成します。
+   1. 新しいサブネットに新しいノードプールを作成します。
+   1. 置換する古いサブネットにある古いノードプールからポッドをドレインします。
+   1. 古いサブネットと古いノードプールを削除します。
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>ポッドが CrashLoopBackOff モードでスタックします。 どうすればよいですか。
 
@@ -46,6 +69,19 @@ Azure CNI ネットワーク プラグインを使用する場合、AKS はノ�
 
 ポッドの問題のトラブルシューティング方法について詳しくは、「[Debug applications (アプリケーションをデバッグする)](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)」をご覧ください。
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`kubectl` または API サーバーに接続する他のサードパーティ製ツールを使用すると、`TCP timeouts` が発生します
+AKS には、サービス レベル目標 (SLO) とサービス レベル アグリーメント (SLA) を保証するために、コア数に応じて垂直方向にスケーリングする HA コントロール プレーンがあります。 接続のタイムアウトが発生している場合は、以下を確認してください。
+
+- **すべての API コマンドが常にタイムアウトしていますか、それとも一部だけですか?** 一部だけの場合は、ノードからコントロール プレーンへの通信を担当する `tunnelfront` ポッドまたは `aks-link` ポッドが実行状態ではない可能性があります。 このポッドをホストしているノードが過剰に使用されていないか、ストレスがかかっていないことを確認してください。 これらを独自の [`system` ノード プール](use-system-pools.md)に移動することを検討してください。
+- **[AKS のエグレス トラフィックの制限に関するドキュメント](limit-egress-traffic.md)に記載されているすべての必要なポート、FQDN、および IP を開いていますか?** そうでない場合は、いくつかのコマンドの呼び出しが失敗する可能性があります。
+- **現在の IP は [API IP の承認された範囲](api-server-authorized-ip-ranges.md)に含まれていますか?** この機能を使用していて、IP が範囲に含まれていない場合、呼び出しはブロックされます。 
+- **API サーバーへの呼び出しをリークしているクライアントまたはアプリケーションはありますか?** 頻繁な get 呼び出の代わりにウォッチを使用し、サードパーティのアプリケーションがそのような呼び出しをリークしていないことを確認してください。 たとえば、Istio Mixer のバグにより、シークレットが内部で読み取られるたびに新しい API サーバー ウォッチ接続が作成されます。 この動作は一定の間隔で発生するため、ウォッチ接続はすぐに蓄積され、最終的に API サーバーがスケーリング パターンに関係なく過負荷になります。 https://github.com/istio/istio/issues/19481
+- **helm デプロイに多くのリリースがありますか?** このシナリオでは、両方の tiller がノードで大量のメモリを使用するだけでなく、大量の `configmaps` が発生する可能があるため、API サーバーでの不要な急増が発生する可能性があります。 `helm init` で `--history-max` を構成し、新しい Helm 3 を利用することを検討してください。 次のイシューで詳細を確認してください。 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>既存のクラスターでロールベースのアクセス制御 (RBAC) を有効にしようとしています。 どうすればいいですか。
 
 現時点では、既存のクラスターでのロールベースのアクセス制御 (RBAC) の有効化はサポートされていません。新しいクラスターを作成するときに設定する必要があります。 CLI、ポータル、または `2020-03-01` 以降の API バージョンを使用すると、既定で RBAC が有効になります。
@@ -53,12 +89,6 @@ Azure CNI ネットワーク プラグインを使用する場合、AKS はノ�
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>RBAC が有効になっているクラスターを作成したところ、Kubernetes ダッシュボードに多くの警告が表示されるようになりました。 以前ダッシュボードは警告なしで動作していました。 どうすればよいですか。
 
 警告が表示されるのは、クラスターで RBAC が有効になっていて、ダッシュボードへのアクセスが既定で制限されるようになったためです。 ダッシュボードを、クラスターのすべてのユーザーに既定で公開すると、セキュリティの脅威につながる可能性があるため、一般的にこのアプローチは適切な方法です。 それでもダッシュボードを有効にする場合は、[こちらのブログ投稿](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)の手順に従ってください。
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>ダッシュボードに接続できません。 どうすればよいですか。
-
-クラスター外にあるサービスにアクセスする最も簡単な方法は、`kubectl proxy` を実行することです。これにより、自分の localhost ポート 8001 に送信された要求が Kubernetes API サーバーにプロキシされます。 そこからは、API サーバーがユーザーのサービス `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` にプロキシできます。
-
-Kubernetes ダッシュボードが表示されない場合は、`kube-proxy` ポッドが `kube-system` 名前空間で実行されているかどうか確認します。 実行状態でない場合は、ポッドを削除します。これにより再起動されます。
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>kubectl logs を使用してログを取得できません。または、API サーバーに接続できません。 "Error from server: error dialing backend: dial tcp…" (サーバーからのエラー: バックエンドへのダイヤルでのエラー: tcp にダイヤル...) と表示されます。 どうすればよいですか。
 
@@ -119,6 +149,7 @@ AKS クラスターを別のサブスクリプションに移動した場合、�
 * AKS Node/*MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。 また、[ノード リソース グループ名をカスタマイズする](cluster-configuration.md#custom-resource-group-name)こともできます。
 * *dnsPrefix* の最初と最後は英数字の値にする必要があり、1 から 54 文字の間にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。
 * AKS ノード プール名はすべて小文字にする必要があり、linux ノード プールの場合は 1 - 11 文字、windows ノード プールの場合は 1 - 6 文字にする必要があります。 名前は英字で始める必要があり、使用できる文字は英数字のみです。
+* Linux ノードに管理者のユーザー名を設定する *admin-username* は、文字で始まる必要があります。文字、数字、ハイフン、アンダースコアのみを含めることができ、最大文字数は 64 文字です。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>クラスターを作成、更新、スケーリング、削除、またはアップグレードしようとすると、別の操作が進行中のためその操作は許可されませんというエラーを受け取ります。
 
