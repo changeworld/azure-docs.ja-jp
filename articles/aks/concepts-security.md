@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d154ca6b67f3f587234deb34cef171ffc5924530
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831541"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145540"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -19,11 +19,16 @@ Azure Kubernetes Service (AKS) でアプリケーション ワークロードを
 
 この記事では、AKS 内でアプリケーションをセキュリティで保護する主要な概念について説明します。
 
-- [マスター コンポーネントのセキュリティ](#master-security)
-- [ノードのセキュリティ](#node-security)
-- [クラスターのアップグレード](#cluster-upgrades)
-- [ネットワークのセキュリティ](#network-security)
-- [Kubernetes シークレット](#kubernetes-secrets)
+- [Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [マスターのセキュリティ](#master-security)
+  - [ノードのセキュリティ](#node-security)
+    - [コンピューティングの分離](#compute-isolation)
+  - [クラスターのアップグレード](#cluster-upgrades)
+    - [切断およびドレイン](#cordon-and-drain)
+  - [ネットワークのセキュリティ](#network-security)
+    - [Azure ネットワーク セキュリティ グループ](#azure-network-security-groups)
+  - [Kubernetes シークレット](#kubernetes-secrets)
+  - [次の手順](#next-steps)
 
 ## <a name="master-security"></a>マスターのセキュリティ
 
@@ -46,6 +51,13 @@ Windows Server ノードでは、Windows Update が自動的に実行された�
 ストレージを提供するために、ノードは Azure Managed Disks を使用します。 ほとんどの VM ノードのサイズでは、これらは高パフォーマンスの SSD によってサポートされる Premium ディスクです。 マネージド ディスクに格納されたデータは、Azure プラットフォームへの保存時に自動的に暗号化されます。 冗長性を高めるためには、これらのディスクも Azure データ センター内で安全にレプリケートされます。
 
 現在、AKS またはその他の場所にある Kubernetes 環境は、悪意のあるマルチテナント使用に対して完全に安全ではありません。 ノードに対して *Pod Security Policy* やより高度なロール ベースのアクセス制御 (RBAC) などの追加のセキュリティ機能を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。 ワークロードを分離する方法については、「[AKS でのクラスターの分離に関するベスト プラクティス][cluster-isolation]」を参照してください。
+
+### <a name="compute-isolation"></a>コンピューティングの分離
+
+ 特定のワークロードでは、コンプライアンスや規制上の要件により、他の顧客のワークロードからの高いレベルの分離が必要になる場合があります。 これらのワークロードの場合、Azure は、AKS クラスター内のエージェント ノードとして使用できる[分離された仮想マシン](..\virtual-machines\linux\isolation.md)を提供します。 これらの分離された仮想マシンは、特定のハードウェアの種類に分離され、単一顧客専用です。 
+
+ これらの分離された仮想マシンを AKS クラスターで使用するには、AKS クラスターを作成するとき、またはノード プールを追加するときに、 **[ノード サイズ]** として[こちら](..\virtual-machines\linux\isolation.md)に示されている分離された仮想マシンのサイズのいずれかを選択します。
+
 
 ## <a name="cluster-upgrades"></a>クラスターのアップグレード
 

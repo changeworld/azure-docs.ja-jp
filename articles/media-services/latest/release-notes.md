@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647645"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075435"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -32,9 +32,27 @@ ms.locfileid: "83647645"
 ## <a name="known-issues"></a>既知の問題
 
 > [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+> [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+>
+> 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
 
-詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Live Video Analytics on IoT Edge プレビュー リリース
+
+Live Video Analytics on IoT Edge のプレビューが公開されました。 詳細については、「[リリース ノート](../live-video-analytics-edge/release-notes.md)」を参照してください。
+
+Live Video Analytics on IoT Edge は、メディア サービス ファミリの拡張です。 独自のエッジ デバイスで任意の AI モデルを使用してライブ ビデオを分析し、必要に応じてそのビデオをキャプチャして記録することができます。 ライブ ビデオ パイプラインの構築と運用の複雑さを気にせずに、エッジでリアルタイムのビデオ分析を使用してアプリを作成できるようになりました。
+
+### <a name="search-by-topics"></a>トピックで検索
+
+検索 API を使用して、特定のトピックでビデオを検索できるようになりました (API のみ)。
+
+トピックは、`textScope` (省略可能なパラメーター) の一部として追加されます。 詳細については [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) を参照してください。  
+
+### <a name="labels-enhancement"></a>ラベルの機能強化
+
+ラベルのタグ付け機能がアップグレードされました。これにより、特定しやすいより視覚的なラベルが追加されます。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -63,9 +81,9 @@ Media Services が次の Azure Government リージョンで一般公開され�
 
 |HTTP ヘッダー|値|送信者|受信者|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN-Origin-Assist-Prefetch-Enabled | 1 (既定) または 0 |CDN|Origin (配信元)|CDN がプリフェッチ対応であることを示すこと|
-|CDN-Origin-Assist-Prefetch-Path| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|Origin (配信元)|CDN|CDN にプリフェッチ パスを提供すること|
-|CDN-Origin-Assist-Prefetch-Request|1 (プリフェッチ要求) または 0 (通常の要求)|CDN|Origin (配信元)|CDN からの要求がプリフェッチであることを示すこと|
+|CDN-Origin-Assist-Prefetch-Enabled | 1 (既定) または 0 |CDN|出発地|CDN がプリフェッチ対応であることを示すこと|
+|CDN-Origin-Assist-Prefetch-Path| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|出発地|CDN|CDN にプリフェッチ パスを提供すること|
+|CDN-Origin-Assist-Prefetch-Request|1 (プリフェッチ要求) または 0 (通常の要求)|CDN|出発地|CDN からの要求がプリフェッチであることを示すこと|
 
 ヘッダー交換の一部を実際に確認するには、次の手順を実行します。
 
@@ -199,7 +217,7 @@ Media Services のパフォーマンス向上を含む更新が追加されま�
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs)」を参照してください。
+動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
 
 資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associating-filters-with-streaming-locator)に関する記事を参照してください。
 
@@ -362,11 +380,15 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 ### <a name="known-issues"></a>既知の問題
 
-* ジョブを送信するときに、Azure Blob storage 内にあるファイルへの HTTPS URL、SAS の URL またはパスを使用して、ソース ビデオを取り込むように指定できます。 現時点では、AMS v3 には、HTTPS URL 経由でチャンク転送エンコード処理がサポートされていません。
+* ジョブを送信するときに、Azure Blob storage 内にあるファイルへの HTTPS URL、SAS の URL またはパスを使用して、ソース ビデオを取り込むように指定できます。 現在、Media Services v3 では HTTPS URL を介したチャンク転送エンコードはサポートされていません。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
+
+## <a name="see-also"></a>関連項目
+
+[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)
 
 ## <a name="next-steps"></a>次のステップ
 

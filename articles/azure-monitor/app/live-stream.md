@@ -4,12 +4,12 @@ description: カスタム メトリックを使用して Web アプリをリア�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507348"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166486"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -49,12 +49,12 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 | |Live Stream | メトリックス エクスプローラーと Analytics |
 |---|---|---|
-|Latency|1 秒以内に表示されるデータ|数分間で集計|
-|リテンション期間なし|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|オン デマンド|データは、[Live Metircs] ペインが開いている間のみストリーミングされます |SDK がインストールされて有効になるたびに、データが送信されます|
-|Free|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
-|サンプリング|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)されることがあります|
-|コントロール チャネル|フィルターの制御シグナルが SDK に送信されます。 このチャネルをセキュリティで保護することをお勧めします。|通信はポータルへの一方向です|
+|**待機時間**|1 秒以内に表示されるデータ|数分間で集計|
+|**リテンション期間なし**|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**[要求時]**|データは、[Live Metircs] ペインが開いている間のみストリーミングされます |SDK がインストールされて有効になるたびに、データが送信されます|
+|**Free**|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
+|**サンプリング**|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)されることがあります|
+|**コントロール チャネル**|フィルターの制御シグナルが SDK に送信されます。 このチャネルをセキュリティで保護することをお勧めします。|通信はポータルへの一方向です|
 
 ## <a name="select-and-filter-your-metrics"></a>メトリックの選択とフィルタリング
 

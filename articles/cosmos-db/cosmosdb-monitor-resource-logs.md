@@ -4,15 +4,15 @@ description: Azure の診断設定を使用して、Azure Cosmos DB に格納さ
 author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: b1a507c54c6a6555fc945dd35ee6e54d37d49bfd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549972"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure の診断設定を使用して Azure Cosmos DB データを監視する
 
@@ -145,6 +145,21 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
    | order by requestCharge_s desc
    | limit 100
    ```
+
+1. 要求の料金とクエリの実行時間を取得する方法
+
+   ```kusto
+   AzureDiagnostics
+   | where TimeGenerated >= ago(24hr)
+   | where Category == "QueryRuntimeStatistics"
+   | join (
+   AzureDiagnostics
+   | where TimeGenerated >= ago(24hr)
+   | where Category == "DataPlaneRequests"
+   ) on $left.activityId_g == $right.activityId_g
+   | project databasename_s, collectionname_s, OperationName1 , querytext_s,requestCharge_s1, duration_s1, bin(TimeGenerated, 1min)
+   ```
+
 
 1. さまざまな操作の分布を取得する方法
 

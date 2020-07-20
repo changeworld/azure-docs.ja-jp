@@ -4,13 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) でクラスターの認証と認可を管理する方法に関するクラスター オペレーター ベスト プラクティスについて説明します
 services: container-service
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 07/07/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: c7e8cd28380a86a671c74af03fa479abce5cfe25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020049"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107140"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス
 
@@ -21,8 +23,9 @@ Azure Kubernetes Service (AKS) でクラスターをデプロイし、保守管�
 > [!div class="checklist"]
 >
 > * Azure Active Directory (AAD) を利用して AKS クラスター ユーザーを認証する
-> * ロールベースのアクセス制御 (RBAC) を使用し、リソースへのアクセスを制御する
-> * マネージド ID を使用し、他のサービスで認証する
+> * Kubernetes のロールベースのアクセス制御 (RBAC) を使用し、リソースへのアクセスを制御する
+> * Azure RBAC を使用して、規模に応じた AKS リソースと Kubernetes API へのアクセス、および kubeconfig へのアクセスを細かく制御する。
+> * マネージド ID を使用し、他のサービスでポッド自体を認証する
 
 ## <a name="use-azure-active-directory"></a>Azure Active Directory を使用する
 
@@ -36,18 +39,18 @@ Azure AD 統合クラスターを AKS を使用するとき、リソースへの
 
 1. 開発者が Azure AD を利用して認証します。
 1. Azure AD トークン発行エンドポイントがアクセス トークンを発行します。
-1. 開発者は、`kubectl create pod` など、Azure AD トークンを使用して操作を実行します。
+1. 開発者は、`kubectl create pod` など、Azure AD トークンを使用してアクションを実行します。
 1. Kubernetes では Azure Active Directory を利用してトークンの有効性が検証され、開発者のグループ メンバーシップが取得されます。
 1. Kubernetes のロールベースのアクセス制御 (RBAC) とクラスター ポリシーが適用されます。
 1. 先の Azure AD グループ メンバーシップの検証、Kubernetes RBAC、ポリシーに基づき、開発者の要求が通過するか、却下されます。
 
 Azure AD を使用する AKS クラスターを作成する方法については、「[Azure Active Directory と Azure Kubernetes Service を統合する][aks-aad]」を参照してください。
 
-## <a name="use-role-based-access-controls-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用する
+## <a name="use-kubernetes-role-based-access-controls-rbac"></a>Kubernetes のロールベースのアクセス制御 (RBAC) を使用する
 
 **ベスト プラクティス ガイダンス** - Kubernetes RBAC を使用し、クラスターのリソースに対するユーザーまたはグループのアクセス許可を定義します。 必要最低限のアクセス許可を割り当てるロールとバインディングを作成します。 ユーザーの状態やグループ メンバーシップが変わったとき、それが自動的に更新されるように、また、クラスター リソースへのアクセスが最新の状態になるように、Azure AD と統合します。
 
-Kubernetes では、クラスターのリソースへのアクセスを細かく制御できます。 アクセス許可はクラスター レベルで定義するか、特定の名前空間に定義できます。 管理できるリソースとアクセス許可の種類を定義できます。 このようなロールはその後、バインディングが与えられているユーザーまたはグループに適用されます。 *Roles*、*ClusterRoles*、*Bindings* に関する詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][aks-concepts-identity]」を参照してください。
+Kubernetes では、クラスターのリソースへのアクセスを細かく制御できます。 アクセス許可は、クラスター レベルで、または特定の名前空間に対して定義されます。 管理できるリソースとアクセス許可の種類を定義できます。 このようなロールはその後、バインディングが与えられているユーザーまたはグループに適用されます。 *Roles*、*ClusterRoles*、*Bindings* に関する詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][aks-concepts-identity]」を参照してください。
 
 たとえば、*finance-app* という名前の名前空間にあるリソースに完全アクセスできる Role を作成できます。次のサンプル YAML マニフェストをご覧ください。
 
@@ -84,6 +87,16 @@ roleRef:
 *developer1\@contoso.com* が AKS クラスターに対して認証されると、*finance-app* 名前空間に対する完全アクセスが与えられます。 このように、リソースへのアクセスが論理的に分離されて制御されます。 Kubernetes RBAC は、前のセクションで説明したように、Azure AD 統合との連動で使用してください。
 
 RBAC で Azure AD グループを使用して Kubernetes クラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access controls and Azure Active Directory identities in AKS][azure-ad-rbac]」 (AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
+
+## <a name="use-azure-rbac"></a>Azure RBAC を使用する 
+**ベスト プラクティス ガイダンス** - Azure RBAC を使用して、ユーザーまたはグループが 1 つ以上のサブスクリプションの AKS リソースに対して持つ必要な最小限のアクセス許可を定義します。
+
+AKS クラスターを完全に運用するには、次の 2 つのレベルのアクセスが必要です。 
+1. Azure サブスクリプションの AKS リソースへのアクセス。 このアクセス レベルでは、AKS API を使用してクラスターのスケーリングやアップグレードを制御したり、kubeconfig をプルしたりすることができます。
+AKS リソースと kubeconfig へのアクセスを制御する方法については、[クラスター構成ファイルへのアクセスの制限](control-kubeconfig-access.md)に関する記事を参照してください。
+
+2. Kubernetes API へのアクセス。 このアクセス レベルは、[Kubernetes RBAC](#use-kubernetes-role-based-access-controls-rbac) (従来)、または Kubernetes 認可のための Azure RBAC と AKS の統合によって制御されます。
+Azure RBAC を使用して Kubernetes API にアクセス許可を細かく付与する方法については、[Kubernetes 認可に対する Azure RBAC の使用](manage-azure-rbac.md)に関する記事を参照してください。
 
 ## <a name="use-pod-identities"></a>ポッド ID を使用する
 

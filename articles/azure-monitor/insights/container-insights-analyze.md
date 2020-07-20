@@ -3,12 +3,12 @@ title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 17efb89e36429f9658759a0ed90d4e7b785fe4b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340901"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166639"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -66,7 +66,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 
 次の表では、複数クラスター ビューでの監視対象クラスターの正常性状態を制御する計算の詳細を示します。
 
-| |Status |可用性 |
+| 監視対象のクラスター |Status |可用性 |
 |-------|-------|-----------------|
 |**ユーザー ポッド**| | |
 | |Healthy |100% |

@@ -1,28 +1,28 @@
 ---
 title: IP ファイアウォール規則
-description: SQL Database または Azure Synapse Analytics のファイアウォールにサーバー レベルの IP ファイアウォール規則を構成します。 1 つまたはプールされたデータベースに対して、アクセスを管理し、データベース レベルの IP ファイアウォール規則を構成します。
+description: Azure SQL Database または Azure Synapse Analytics のファイアウォールに、データベース用のサーバー レベルの IP ファイアウォール規則を構成します。 SQL Database のアクセスを管理し、データベース レベルの IP ファイアウォール規則を構成します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and Azure Synapse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/18/2019
-ms.openlocfilehash: 4ebb430945a00007f3b7260da87369bf6fd61ae2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/17/2020
+ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028803"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085091"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse の IP ファイアウォール規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-たとえば、Azure SQL Database または Azure Synapse 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 簡潔にするため、*SQL Database* という言葉を使用して、SQL Database と Azure Synapse (旧称 Azure SQL Data Warehouse) の両方を言い表します。
+たとえば、Azure SQL Database または Azure Synapse Analytics 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 簡潔にするため、*SQL Database* という言葉を使用して、SQL Database と Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) の両方を言い表します。
 
 > [!IMPORTANT]
 > この記事は、*Azure SQL Managed Instance* には適用され "*ません*"。 ネットワーク構成については、「[Azure SQL Managed Instance にアプリケーションを接続する](../managed-instance/connect-application-instance.md)」を参照してください。
@@ -102,6 +102,14 @@ Azure 内でホストされているアプリケーションから SQL Server �
 
 > [!IMPORTANT]
 > このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+
+## <a name="permissions"></a>アクセス許可
+
+Azure SQL Server の IP ファイアウォール規則を作成して管理できるようにするには、次のいずれかの操作を行う必要があります。
+
+- [SQL Server 共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)ロール
+- [SQL セキュリティ管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)ロール
+- Azure SQL Server を含むリソースの所有者
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP ファイアウォール規則の作成および管理
 

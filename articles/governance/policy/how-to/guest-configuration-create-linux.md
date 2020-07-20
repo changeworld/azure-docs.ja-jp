@@ -3,12 +3,12 @@ title: Linux 用のゲスト構成ポリシーを作成する方法
 description: Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654868"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026714"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -33,8 +33,8 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 
 ゲスト構成モジュールは、次のようなカスタム コンテンツの作成プロセスを自動化します。
 
-- ゲスト構成コンテンツ成果物 (.zip) の作成
-- 成果物の自動テスト
+- ゲスト構成コンテンツ アーティファクト (.zip) の作成
+- アーティファクトの自動テスト
 - ポリシー定義の作成
 - ポリシーの発行
 
@@ -81,7 +81,7 @@ Linux 環境でも、ゲスト構成では、言語の抽象化として Desired
 
 #### <a name="configuration-requirements"></a>構成要件
 
-カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Resource Manager テンプレート内のゲスト割り当て名は同じである必要があります。
+カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Azure Resource Manager テンプレート (ARM テンプレート) 内のゲスト割り当て名は同じである必要があります。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 
@@ -284,8 +284,8 @@ New-GuestConfigurationPolicy `
 
 > [!Note]
 > 最新のゲスト構成モジュールには、次の新しいパラメーターが含まれています。
-> - **タグ**は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
->   - 「[タグを使用したゲスト構成ポリシーのフィルター処理](#filtering-guest-configuration-policies-using-tags)」のセクションをご覧ください。
+> - **Tag** は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
+>   - 「[タグを使用したゲスト構成ポリシーのフィルター処理](#filtering-guest-configuration-policies-using-tags)」のセクションを参照してください。
 > - **カテゴリ**は、ポリシー定義のカテゴリ メタデータ フィールドを設定します
 >   - このパラメーターが含まれていない場合、カテゴリは既定で [ゲスト構成] になります。
 > これらの機能は現在プレビュー段階であり、ゲスト構成モジュール バージョン 1.20.1 が必要です。これは `Install-Module GuestConfiguration -AllowPrerelease`を使用してインストールできます。
@@ -371,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 

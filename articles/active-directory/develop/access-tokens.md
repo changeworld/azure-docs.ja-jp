@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 75c211ea61359c244c6280b9664a4f412b3d2279
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552016"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -230,11 +230,13 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ## <a name="user-and-application-tokens"></a>ユーザー トークンとアプリケーション トークン
 
-アプリケーションでは、ユーザーに代わってトークンを受け取る (通常のフロー) か、(クライアント資格情報フロー ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) を通じて) アプリケーションから直接受け取る場合があります。 これらのアプリ専用トークンは、この呼び出しがアプリケーションからのものであり、その背後にユーザーがいないことを示します。 これらのトークンはほぼ同様に処理されますが、違いがいくつかあります。
+アプリケーションでは、ユーザー用トークンを受信する (通常のフロー) か、アプリケーションから直接受信します ([クライアント資格情報フロー](v1-oauth2-client-creds-grant-flow.md)を通じて)。 これらのアプリ専用トークンは、この呼び出しがアプリケーションからのものであり、その背後にユーザーがいないことを示します。 これらのトークンは、ほぼ同じように処理されます。
 
-* アプリ専用トークンには `scp` 要求は含まれず、代わりに `roles` 要求が含まれることがあります。 これに、(委任されたアクセス許可ではなく) アプリケーションのアクセス許可が記録されます。 委任されたアクセス許可とアプリケーションのアクセス許可の詳細については、アクセス許可と同意 ([v1.0](../azuread-dev/v1-permissions-consent.md)、[v2.0](v2-permissions-and-consent.md)) に関するページを参照してください。
-* 多くの人間固有の要求 (`name` や `upn` など) はありません。
-* `sub` および `oid` 要求は同じになります。
+* `roles` を使用して、トークンの対象 (この場合はユーザーではなく、サービス プリンシパル) に付与されているアクセス許可が確認されます。
+* `oid` または `sub` を使用して、呼び出し元のサービス プリンシパルが想定されているものであることが検証されます。
+
+アプリでアプリ専用アクセス トークンとユーザー用アクセス トークンを区別する必要がある場合は、`idtyp` [ オプション要求](active-directory-optional-claims.md)が使用されます。  `accessToken` フィールドに `idtyp` 要求を追加し、`app` の値を確認することで、アプリ専用のアクセス トークンを検出できます。  ユーザー用の ID トークンとアクセス トークンには、`idtyp` 要求は含まれません。
+
 
 ## <a name="token-revocation"></a>トークンの失効
 
@@ -254,7 +256,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 更新トークンは、資格情報の変更、または管理者の操作により、サーバーによって取り消される場合があります。  更新トークンは、機密クライアント (右端の列) に対して発行されたクラスと、パブリック クライアント (その他すべての列) に対して発行されたクラスの 2 つのクラスに分類されます。   
 
-|   | パスワードに基づくクッキー | パスワードに基づくトークン | パスワードに基づかないクッキー | パスワードに基づかないトークン | 機密のクライアントのトークン |
+| Change | パスワードに基づくクッキー | パスワードに基づくトークン | パスワードに基づかないクッキー | パスワードに基づかないトークン | 機密のクライアントのトークン |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | パスワードが期限切れ | 存続 | 存続 | 存続 | 存続 | 存続 |
 | ユーザーによるパスワードの変更 | 取り消し | 取り消し | 存続 | 存続 | 存続 |

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 2/10/2020
-ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/09/2020
+ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982997"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171875"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -239,7 +239,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成する
 
-2 つの異なるサブスクリプションの SQL Managed Instance 間で、フェールオーバー グループを作成することができます。 PowerShell API を使用する場合は、セカンダリ SQL Managed Instance の `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。
+サブスクリプションが同じ [Azure Active Directory テナント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)に関連付けられている限り、2 つの異なるサブスクリプションの SQL Managed Instances 間でフェールオーバー グループを作成することができます。 PowerShell API を使用する場合は、セカンダリ SQL Managed Instance の `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。
   
 > [!IMPORTANT]
 > Azure portal では、異なるサブスクリプション間でのフェールオーバー グループの作成はサポートされません。 また、異なるサブスクリプションやリソース グループにまたがる既存のフェールオーバー グループについては、プライマリ SQL Managed Instance からポータルを使用して手動でフェールオーバーを開始することはできません。 代わりに、geo セカンダリ インスタンスから開始してください。

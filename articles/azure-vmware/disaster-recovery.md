@@ -3,12 +3,12 @@ title: 仮想マシンのディザスター リカバリーを完了する
 description: この記事では、AVS を使用して仮想マシンのディザスター リカバリーを完了する方法について説明します
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749950"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Azure VMware Solution を使用して仮想マシンのディザスター リカバリーを完了する
 
@@ -56,7 +56,7 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 - **Enable Quiescence (休止を有効にする):** 一貫性のあるコピーがリモート サイトに同期されるように、VM を一時停止します。
 
-- **同期先ストレージ:** 保護されている VM のリモート データストアを選択します。 AVS プライベート クラウドでは、この選択は VSAN データストアである必要があります。
+- **同期先ストレージ:** 保護されている VM のリモート データストアを選択します。 AVS プライベート クラウドでは、この選択は vSAN データストアである必要があります。
 
 - **コンピューティング コンテナー:** リモート vSphere クラスターまたはリソース プールです。
 

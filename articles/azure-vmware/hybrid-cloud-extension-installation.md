@@ -3,17 +3,19 @@ title: Hybrid Cloud Extension (HCX) をインストールする
 description: Azure VMware Solution (AVS) プライベート クラウド用の VMware Hybrid Cloud Extension (HCX) ソリューションを設定します
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367548"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware Solution 用の HCX をインストールする
 
-この記事では、Azure VMware Solution (AVS) プライベート クラウド用の VMware Hybrid Cloud Extension (HCX) ソリューションを設定する手順を説明します。 HCX Advanced (既定のインストール) では最大 3 つの外部サイトがサポートされており、各外部サイトでは、HCX Enterprise マネージャーまたはコネクタをインストールしてアクティブ化する必要があります。
-HCX を使用すると、さまざまな組み込みの HCX でサポートされた移行の種類により、クラウドやその他の接続されたサイトに VMware のワークロードを移行できます。 3 つより多くのサイトが必要な場合は、サポートを通じて HCX Enterprise アドオンを有効にすることができます。 HCX Enterprise では、一般提供 (GA) 後にはお客様に対して追加料金が発生しますが、[追加の機能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)が提供されます。
+この記事では、Azure VMWare Solution (AVS) プライベート クラウド用の VMWare Hybrid Cloud Extension (HCX) ソリューションを設定する手順を説明します。 HCX を使用すると、さまざまな組み込みの HCX でサポートされた移行の種類により、クラウドやその他の接続されたサイトに VMware のワークロードを移行できます。
+
+HCX Advanced (既定のインストール) では、最大 3 つの外部サイトがサポートされます。 3 つより多くのサイトが必要な場合は、サポートを通じて HCX Enterprise アドオンを有効にすることができます。 HCX Enterprise のインストールでは、一般提供 (GA) 後、お客様に対して追加料金が発生しますが、[追加の機能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)が提供されます。
+
 
 「[開始する前に](#before-you-begin)」、「[ソフトウェア バージョンの要件](#software-version-requirements)」、「[前提条件](#prerequisites)」を最初によく確認してください。 
 
@@ -25,7 +27,7 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 > * ネットワーク アップリンクとサービス メッシュを構成する
 > * アプライアンスの状態を確認してセットアップを完了する
 
-セットアップが完了した後、推奨される次の手順を示します。
+セットアップが完了したら、この記事の最後に記載されている推奨される次の手順に進むことができます。  
 
 ## <a name="before-you-begin"></a>開始する前に
     
@@ -36,29 +38,29 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 * 必要に応じて、HCX についての VMware vSphere [ブログシリーズ](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)など、HCX に関連する VMware の資料を確認します。 
 * AVS サポート チャネルを通じて、AVS HCX Enterprise のアクティブ化を注文します。
 
-コンピューティング リソースとストレージ リソースに対するワークロードのサイズの決定は、AVS Private Cloud HCX ソリューションの使用を準備する際に不可欠な計画手順です。 このサイズ決定手順は、最初のプライベート クラウド環境計画の一環として行う必要があります。 
+コンピューティング リソースとストレージ リソースに対するワークロードのサイズの決定は、AVS Private Cloud HCX ソリューションの使用を準備する際に不可欠な計画手順です。 サイズ決定手順には、初期プライベート クラウド環境計画の一環として対処します。   
 
 ## <a name="software-version-requirements"></a>ソフトウェア バージョンの要件
 インフラストラクチャ コンポーネントでは、必要な最小バージョンが実行されている必要があります。 
                                                          
-| コンポーネントの種類                                                          | ソース環境の要件                                                                   | ターゲット環境の要件                                                                      |
+| コンポーネントの種類    | ソース環境の要件    | ターゲット環境の要件   |
 | --- | --- | --- |
-| vCenter Server                                                          | 5.1<br/><br/>5\.5 U1 以前を使用している場合は、HCX 操作用にスタンドアロンの HCX ユーザー インターフェイスを使用します。         | 6.0 U2 以降                                                                                          |
-| ESXi                                                                    | 5.0                                                                                               | ESXi 6.0 以降                                                                                        |
-| NSX                                                                     | ソースの論理スイッチの HCX ネットワーク拡張機能の場合:NSXv 6.2 以降または NSX-T 2.4 以降              | NSXv 6.2 以降または NSX-T 2.4 以降<br/>HCX 近接ルーティングの場合:NSXv 6.4 以降 (NSX-T では近接ルーティングはサポートされていません) |
-| vCloud Director                                                         | 必須ではありません - ソース サイトの vCloud Director との相互運用性はありません | ターゲット環境が vCloud Director と統合されている場合、最小値は 9.1.0.2 です。              |
+| vCenter Server   | 5.1<br/><br/>5\.5 U1 以前を使用している場合は、HCX 操作用にスタンドアロンの HCX ユーザー インターフェイスを使用します。  | 6.0 U2 以降   |
+| ESXi   | 5.0    | ESXi 6.0 以降   |
+| NSX    | ソースの論理スイッチの HCX ネットワーク拡張機能の場合:NSXv 6.2 以降または NSX-T 2.4 以降   | NSXv 6.2 以降または NSX-T 2.4 以降<br/><br/>HCX 近接ルーティングの場合: NSXv 6.4 以降 (NSX-T では近接ルーティングはサポートされていません) |
+| vCloud Director   | 必須ではありません - ソース サイトの vCloud Director との相互運用性はありません | ターゲット環境を vCloud Director と統合する場合、最小値は 9.1.0.2 です。  |
 
 ## <a name="prerequisites"></a>前提条件
 
-* オンプレミスと AVS SDDC ER 回線の間に、グローバル リーチを構成する必要があります。
+* オンプレミスと AVS SDDC ER 回線の間に Global Reach を構成する必要があります。
 
 * オンプレミスと AVS SDDC の間で、すべての必要なポートを開く必要があります ([VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)を参照)。
 
 * オンプレミスの HCX Manager 用に 1 つの IP アドレス、相互接続 (IX) とネットワーク拡張機能 (NE) アプライアンス用に 2 つ以上の IP アドレス。
 
-* オンプレミスの HCX IX と NE アプライアンスは、vCenter と ESXi インフラストラクチャに接続できる必要があります。
+* オンプレミスの HCX IX と NE アプライアンスは、vCenter と ESXi インフラストラクチャに到達できる必要があります。
 
-* WAN 相互接続アプライアンスをデプロイするには、Azure portal で SDDC デプロイに使用される /22 CIDR ネットワーク アドレス ブロックに加えて、HCX に /29 ブロックが必要です。 ネットワークの計画でこれを考慮する必要があります。
+* WAN 相互接続アプライアンスをデプロイするには、Azure portal で SDDC デプロイに使用される /22 CIDR ネットワーク アドレス ブロックに加えて、HCX に /29 ブロックが必要です。 この要件をネットワーク計画に組み込むようにしてください。
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>VMware HCX OVA をオンプレミスにデプロイする
 
@@ -66,11 +68,11 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 
     ![AV vCenter で HCX を選択する](./media/hybrid-cloud-extension-installation/avs-vsphere-client.png)
 
-1. VMware HCX OVA ファイルをダウンロードするには、 **[Administration]\(管理\)**  >  **[System Updates]\(システム更新\)** を選択します。
+1. **[管理]** の下で **[システムの更新プログラム]** を選択し、次に **[Request download link]\(ダウンロードリンクを要求\)** を選択して、VMware HCX OVA ファイルをダウンロードします。
 
     ![システムの更新プログラムを取得する](./media/hybrid-cloud-extension-installation/administration-updates.png)
 
-1. オンプレミスの vCenter にデプロイする OVF テンプレートを選択します。  
+1. 次に、オンプレミスの vCenter にアクセスし、オンプレミスの vCenter にデプロイする OVF テンプレートを選択します。  
 
     ![OVF テンプレートを選択する](./media/hybrid-cloud-extension-installation/select-template.png)
 
@@ -90,7 +92,10 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 
 インストールが完了したら、次の手順を実行します。
 
-1. `https://HCXManagerIP:9443` で HCX Manager を開き、ユーザー名とパスワードを使用してサインインします。 
+1. `https://HCXManagerIP:9443` でオンプレミスの HCX Manager にログオンし、ユーザー名とパスワードを使用してサインインします。 
+
+   > [!IMPORTANT]
+   > 必ず HCX Manager の IP アドレスと共に `9443` のポート番号を含めてください。
 
 1. **[Licensing]\(ライセンス\)** で、 **[HCX Advanced Key]\(HCX Advanced キー\)** を入力します。  
 
@@ -99,7 +104,7 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
     > [!NOTE]
     > HCX Manager では、インターネット アクセスが開かれているか、またはプロキシが構成されている必要があります。
 
-1. vCenter を構成します。
+1. **vCenter** で、必要に応じて、vCenter の情報を編集します。
 
     ![vCenter を構成する](./media/hybrid-cloud-extension-installation/configure-vcenter.png)
 
@@ -109,25 +114,25 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 
 ## <a name="configure-hcx"></a>HCX を構成する 
 
-1. オンプレミスの vCenter にサインインし、 **[Home]\(ホーム\)**  >  **[HCX]** を選択します。
+1. オンプレミスの vCenter にサインインし、 **[ホーム]** の下から **[HCX]** を選択します。
 
     ![VCenter の HCX](./media/hybrid-cloud-extension-installation/hcx-vcenter.png)
 
-1. **[Infrastructure]\(インフラストラクチャ\)**  >  **[Site Pairing]\(サイトのペアリング\)**  >  **[Add a site pairing]\(サイトのペアリングの追加\)** を選択します。
+1. **[インフラストラクチャ]** の下で、 **[Site Pairing]\(サイトのペアリング\)**  >  **[Add a site pairing]\(サイトのペアリングの追加\)** を選択します。
 
     ![サイトのペアリングを追加する](./media/hybrid-cloud-extension-installation/site-pairing.png)
 
-1. **[Remote HCX URL]\(リモート HCX URL\)** 、 **[Username]\(ユーザー名\)** 、 **[Password]\(パスワード\)** を入力します。 次に、 **[接続]\(Connect\)** を選択します。
+1. リモート HCX の URL または IP アドレス、AVS CloudAdmin のユーザー名とパスワードを入力し、 **[接続]** を選択します。
 
    システムに接続されたサイトが表示されます。
    
     ![サイトの接続](./media/hybrid-cloud-extension-installation/site-connection.png)
 
-1. **[Interconnect]\(相互接続\)**  >  **[Multi-Site Service Mesh]\(複数サイト サービス メッシュ\)**  >  **[Network Profiles]\(ネットワーク プロファイル\)**  >  **[Create Network Profile]\(ネットワーク プロファイルの作成\)** を選択します。
+1. **[インフラストラクチャ]** で、 **[Interconnect]\(相互接続\)**  >  **[Multi-Site Service Mesh]\(マルチサイト サービス メッシュ\)**  >  **[Network Profiles]\(ネットワーク プロファイル\)**  >  **[Create Network Profile]\(ネットワーク プロファイルの作成\)** を選択します。
 
     ![ネットワーク プロファイルを作成する](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. HCX IX および NE IP アドレス範囲を入力します (IX および NE アプライアンスには、少なくとも 2 つの IP アドレスが必要です)。
+1. 新しいネットワーク プロファイルでは、HCX IX および NE IP アドレス範囲を入力します (IX および NE アプライアンスには、少なくとも 2 つの IP アドレスが必要です)。
     
    ![IP アドレス範囲を入力する](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   
@@ -140,7 +145,7 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 
     ![コンピューティング プロファイルを作成する](./media/hybrid-cloud-extension-installation/create-compute-profile.png)
 
-1. 移行、ネットワーク拡張機能、pr ディザスター リカバリーなど、有効にするサービスを選択します。 **[続行]** をクリックします。
+1. 有効にするサービス (移行、ネットワーク拡張機能、またはディザスター リカバリーなど) を選択し、 **[Continue]\(続行\)** を選択します。
 
     ![サービスを選択する](./media/hybrid-cloud-extension-installation/select-services.png)
 
@@ -175,25 +180,25 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 
 1. **[vMotion Network Profile]\(vMotion ネットワーク プロファイル\)** を選択し、 **[Continue]\(続行\)** を選択します。
       
-    ESXi ホストの vMotion インターフェイスに到達できるネットワーク プロファイルを選択します。 そのようなネットワーク プロファイルをまだ定義していない場合は、ここで作成できます。 vMotion ネットワークがない場合は、 **[Management Network Profile]\(管理ネットワーク プロファイル\)** を選択します。  
+   ESXi ホストの vMotion インターフェイスに到達できるネットワーク プロファイルを選択します。 そのようなネットワーク プロファイルをまだ定義していない場合は、ここで作成できます。 vMotion ネットワークがない場合は、 **[Management Network Profile]\(管理ネットワーク プロファイル\)** を選択します。  
     
-    ![vMotion ネットワーク プロファイルを選択する](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
+   ![vMotion ネットワーク プロファイルを選択する](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
 
-1. **[vSphere Replication Network Profile]\(vSphere レプリケーション ネットワーク プロファイル\)** を選択し、 **[Continue]\(続行\)** を選択します。
+1. **[vSphere レプリケーション ネットワーク プロファイルを選択する]** から、ESXi ホストの vSphere レプリケーション インターフェイスへの接続に使用するネットワーク プロファイルを選択し、 **[Continue]\(続行\)** を選択します。
       
-    ESXi ホストの vSphere レプリケーション インターフェイスに到達できるネットワーク プロファイルを選択します。 ほとんどの場合、このプロファイルは管理ネットワーク プロファイルと同じです。  
+   ほとんどの場合、このプロファイルは管理ネットワーク プロファイルと同じです。  
     
-    ![vSphere レプリケーション ネットワーク プロファイルを選択する](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
+   ![vSphere レプリケーション ネットワーク プロファイルを選択する](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. **[Distributed Switches for Network Extensions]\(ネットワーク拡張機能用分散スイッチ\)** を選択し、 **[Continue]\(続行\)** を選択します。  
+1. **[Select Distributed Switches for Network Extensions]\(ネットワーク拡張機能の分散スイッチを選択する\)** から、統合される VM があり接続されているネットワークがある DVS を選択します。  **[続行]** をクリックします。  
       
-    移行する仮想マシンが接続されるネットワークが存在する分散仮想スイッチを選択します。
-
     ![分散仮想スイッチを選択する](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 
-1. 接続ルールを確認し、 **[Continue]\(続行\)** を選択します。 **[Finish]\(完了\)** を選択して、コンピューティング プロファイルを作成します。  
+1. 接続ルールを確認し、 **[Continue]\(続行\)** を選択します。  
 
     ![コンピューティング プロファイルを作成する](./media/hybrid-cloud-extension-installation/complete-compute-profile.png)
+
+1.  **[Finish]\(完了\)** を選択して、コンピューティング プロファイルを作成します。
 
 ## <a name="configure-network-uplink"></a>ネットワーク アップリンクを構成する
 
@@ -201,7 +206,7 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 
 1. SDDC NSX-T にサインインして新しい論理スイッチを作成するか、オンプレミスと AVS SDDC の間のネットワーク アップリンクに使用できる既存の論理スイッチを使用します。
 
-1. オンプレミスと AVS SDDC の通信に使用できる、AVS SDDC 内の HCX アップリンク用のネットワーク プロファイルを作成します。  
+1. オンプレミスから AVS SDDC の通信に使用できる、AVS SDDC に HCX アップリンク用のネットワーク プロファイルを作成します。  
     
    ![アップリンク用のネットワーク プロファイルを作成する](./media/hybrid-cloud-extension-installation/network-profile-uplink.png)
 
@@ -217,45 +222,45 @@ HCX を使用すると、さまざまな組み込みの HCX でサポートさ�
 
 1. AV SDDC vCenter にサインインし、 **[HCX]** を選択します。
 
-1. **[Infrastructure]\(インフラストラクチャ\)**  >  **[Interconnect]\(相互接続\)**  >  **[Service Mesh]\(サービス メッシュ\)**  >  **[Create Service Mesh]\(サービス メッシュの作成\)** を選択します。  前の手順で作成したネットワーク プロファイルとコンピューティング プロファイルを構成します。    
+2. **[インフラストラクチャ]** で、 **[Interconnect]\(相互接続\)**  >  **[Service Mesh]\(サービス メッシュ\)**  >  **[Create Service Mesh]\(サービス メッシュの作成\)** を選択して、前の手順で作成したネットワークとコンピューティング プロファイルを構成します。    
       
     ![サービス メッシュを構成する](./media/hybrid-cloud-extension-installation/configure-service-mesh.png)
 
-1. **[Create Service Mesh]\(サービス メッシュの作成\)** を選択し、 **[Continue]\(続行\)** を選択します。  
-      
-    ハイブリッド モビリティを有効にするペアのサイトを選択します。  
+3. ペアになっているサイトを選択してハイブリッド機能を有効にし、 **[Continue]\(続行\)** を選択します。   
     
     ![ペアになっているサイトを選択する](./media/hybrid-cloud-extension-installation/select-paired-sites.png)
 
-1. **[Compute profile]\(コンピューティング プロファイル\)** を選択し、 **[Continue]\(続行\)** を選択します。
+4. ソースとリモートのコンピューティング プロファイルを選択してハイブリッド サービスを有効にし、 **[Continue]\(続行\)** を選択します。
       
-    ハイブリッド サービスを有効にするソース サイトとリモート サイトのそれぞれで 1 つのコンピューティング プロファイルを選択します。 選択すると、仮想マシンが HCX サービスを使用できるリソースが定義されます。  
+    選択により、VM が HCX サービスを使用できるリソースが定義されます。  
       
     ![ハイブリッド サービスを有効にする](./media/hybrid-cloud-extension-installation/enable-hybridity.png)
 
-1. HCX に対して有効にするサービスを選択し、 **[Continue]\(続行\)** をします。  
+5. 有効にするサービスを選択し、 **[Continue]\(続行\)** を選択します。  
       
     ![HCX サービスを選択する](./media/hybrid-cloud-extension-installation/hcx-services.png)
 
-1. **[Advanced Configuration - Override Uplink Network profiles]\(詳細構成 - アップリンク ネットワーク プロファイルのオーバーライド\)** で、 **[Continue]\(続行\)** を選択 ます。  
+6. **[Advanced Configuration - Override Uplink Network profiles]\(詳細構成 - アップリンク ネットワーク プロファイルのオーバーライド\)** で、 **[Continue]\(続行\)** を選択 ます。  
       
     アップリンク ネットワーク プロファイルは、リモート サイトの相互接続アプライアンスに到達できるネットワークに接続するために使用されます。  
       
     ![アップリンク プロファイルをオーバーライドする](./media/hybrid-cloud-extension-installation/override-uplink-profiles.png)
 
-1. **[Advanced Configuration – Network Extension Appliance Scale Out]\(詳細構成 – ネットワーク拡張機能アプライアンスのスケールアウト\)** で、 **[Configure the Network Extension Appliance Scale Out]\(ネットワーク拡張機能アプライアンスのスケールアウトの構成\)** を選択します。 
+7. **[Configure the Network Extension Appliance Scale Out]\(ネットワーク拡張機能アプライアンスのスケールアウトを構成する\)** を選択します。 
       
     ![ネットワーク拡張機能のスケールアウト](./media/hybrid-cloud-extension-installation/network-extension-scale-out.png)
 
-1. DVS スイッチの数に対応するアプライアンスの数を入力します。  
+8. DVS スイッチの数に対応するアプライアンスの数を入力します。  
       
     ![アプライアンスの数を構成する](./media/hybrid-cloud-extension-installation/appliance-scale.png)
 
-1. **[Advanced Configuration - Traffic Engineering]\(詳細構成 - トラフィック エンジニアリング\)** で、 **[Continue]\(続行\)** を選択します。  
+9. **[Continue]\(続行\)** を選択してスキップします。  
       
     ![トラフィック エンジニアリングを構成する](./media/hybrid-cloud-extension-installation/traffic-engineering.png)
 
-1. トポロジのプレビューを確認し、 **[Continue]\(続行\)** を選択します。 次に、このサービス メッシュのわかりやすい名前を入力し、 **[Finish]\(完了\)** を選択して完了します。  
+10. トポロジのプレビューを確認し、 **[Continue]\(続行\)** を選択します。 
+
+11. このサービス メッシュのわかりやすい名前を入力し、 **[Finish]\(完了\)** を選択して完了します。  
       
     ![サービス メッシュを完了する](./media/hybrid-cloud-extension-installation/complete-service-mesh.png)
 

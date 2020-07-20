@@ -2,22 +2,22 @@
 title: SAML シングル サインオン - 非ギャラリー アプリケーション - Microsoft ID プラットフォーム | Microsoft Docs
 description: Microsoft ID プラットフォーム (Azure AD) の非ギャラリー アプリケーションへのシングル サインオン (SSO) を構成する
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
-ms.date: 07/19/2019
-ms.author: celested
+ms.date: 06/08/2020
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3cee2b9a0ea32a3b331849263c8a97f55930542d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758369"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024233"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する
 
@@ -41,6 +41,8 @@ ms.locfileid: "83758369"
    - アプリケーションを検索するには、 **[アプリケーションの種類]** メニューの **[すべてのアプリケーション]** を選択した後、 **[適用]** を選択します。 検索ボックスにアプリケーションの名前を入力し、結果からアプリケーションを選択します。
 
 3. **[管理]** セクションの **[シングル サインオン]** を選択します。 
+
+   - **[シングル サインオン]** オプションが表示されないシナリオがいくつかあることに注意してください。 たとえば、アプリケーションが**アプリの登録**を使用して登録されている場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録**を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、(https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) を参照してください。 SSO 標準の詳細については、(https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform) を参照してください。 ナビゲーションに **[シングル サインオン]** が表示されないその他のシナリオには、アプリケーションが別のテナントでホストされている場合や、アカウントに必要なアクセス許可 (グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者) がない場合などがあります。 アクセス許可によっては、 **[シングル サインオン]** を開くことができるが、保存できないシナリオが発生する場合もあります。 Azure AD の管理者ロールの詳細については、(https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) を参照してください。
 
 4. **[SAML]** を選択します。 **[SAML によるシングル サインオンのセットアップ - プレビュー]** ページが表示されます。
 
@@ -122,9 +124,9 @@ Azure AD の **[SAML によるシングル サインオンのセットアップ]
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>手順 4. Azure AD を使用するようにアプリケーションを設定する
 
-**[\<applicationName> のセットアップ]** セクションには、Azure AD が SAML ID プロバイダーとして使用されるようにアプリケーションで構成する必要のある値の一覧が表示されます。 必要な値は、アプリケーションによって異なります。 詳細については、アプリケーションの SAML ドキュメントを参照してください。 ドキュメントを検索するには、 **[\<アプリケーション名> のセットアップ]** の見出しに移動し、 **[ステップ バイ ステップの手順を表示]** を選択します。 ドキュメントが **[サインオンの構成]** ページに表示されます。 そのページでは、 **[\<アプリケーション名> のセットアップ]** の見出しで **[ログイン URL]** 、 **[Azure AD 識別子]** 、および **[ログアウト URL]** の値を入力する手順が説明されています。
+**[\<applicationName> のセットアップ]** セクションには、Azure AD が SAML ID プロバイダーとして使用されるようにアプリケーションで構成する必要のある値の一覧が表示されます。 必要な値は、アプリケーションによって異なります。 詳細については、アプリケーションの SAML ドキュメントを参照してください。 ドキュメントを検索するには、 **[\<application name> のセットアップ]** の見出しに移動し、 **[ステップ バイ ステップの手順を表示]** を選択します。 ドキュメントが **[サインオンの構成]** ページに表示されます。 そのページでは、 **[\<application name> のセットアップ]** の見出しで **[ログイン URL]** 、 **[Azure AD 識別子]** 、および **[ログアウト URL]** の値を入力する手順が説明されています。
 
-1. **[\<applicationName> のセットアップ]** セクションまで下にスクロールします。 
+1. **[\<applicationName> のセットアップ]** セクションまで下へスクロールします。 
    
    ![手順 4. アプリケーションをセットアップする](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

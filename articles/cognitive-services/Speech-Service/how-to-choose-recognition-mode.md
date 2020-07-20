@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 979899dd1c4c7624b3fca6e69c4dbdfeb6cbd758
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed2c59a92f348812afac3e39719d3814f0720621
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833572"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023042"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>音声認識モードを選択する
 
@@ -67,7 +67,7 @@ result = speech_recognizer.recognize_once()
 
 ::: zone pivot="programming-language-javascript"
 
-`recognizeOnceAsync` 関数の詳しい使用方法については、[JavaScript Speech SDK のドキュメント](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)を参照してください。
+`recognizeOnceAsync`関数の使用方法の詳細については、[JavaScript の Speech SDK のドキュメント](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)を参照してください。
 
 ```JavaScript
 recognizer.recognizeOnceAsync((result)=>{}, (error)=>{}));
@@ -236,7 +236,7 @@ SpeechConfig.enable_dictation()
 
 ::: zone pivot="programming-language-javascript"
 
-`enableDictation` 関数の詳しい使用方法については、[JavaScript Speech SDK のドキュメント](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)を参照してください。
+`enableDictation` 関数の使用方法の詳細については、[JavaScript の Speech SDK のドキュメント](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)を参照してください。
 
 ```JavaScript
 // Enable diction

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75430559"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169987"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -170,7 +170,7 @@ http.createServer(function (req, res) {
 
 site/wwwroot ディレクトリに移動します。 次の図のようなコマンド プロンプトが表示されます。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![サイト/wwwroot ディレクトリとコマンド プロンプトを示すスクリーンショット。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 コマンド `npm install v8-profiler` を実行します。
 
@@ -203,11 +203,11 @@ http.createServer(function (req, res) {
 
 上記のコードで、WriteConsoleLog 関数はプロファイリングされ、プロファイル出力が site wwwroot の下にある 'profile.cpuprofile' ファイルに書き込まれます。 アプリケーションに要求を送信します。 'profile.cpuprofile' ファイルが site wwwroot の下に作成されたことがわかります。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![profile.cpuprofile ファイルを示すスクリーンショット。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 このファイルをダウンロードし、Chrome の F12 ツールで開きます。 Chrome で F12 キーを押し、 **[Profiles]\(プロファイル\)** タブを選択します。 **[Load]\(読み込み\)** ボタンを選択します。 ダウンロードした profile.cpuprofile ファイルを選択します。 読み込んだプロファイルをクリックします。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![読み込んだ profile.cpuprofile ファイルを示すスクリーンショット。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 95% の時間が WriteConsoleLog 関数によって消費されたことがわかります。 出力には、問題の原因となる正確な行番号とソース ファイルも表示されます。
 

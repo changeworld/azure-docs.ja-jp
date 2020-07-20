@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に F5 ASM データを接続する | Microsoft Docs
-description: Azure Sentinel に F5 ASM データを接続する方法について説明します。
+description: F5 ASM データ コネクタを使用して、F5 ASM ログを Azure Sentinel にプルする方法について説明します。 F5 ASM データをブックに表示し、アラートを作成し、調査を改善します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: bee8ec9b6532042659d54d590a29d49e7ce07c92
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715836"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555407"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>F5 ASM を Azure Sentinel に接続する
 

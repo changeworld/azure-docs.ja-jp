@@ -4,12 +4,12 @@ description: この記事では、Azure Backup エージェントのインスト
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598013"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056611"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -58,7 +58,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 1. 管理者特権でのコマンド プロンプトから、`psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` を実行します。
 
    このコマンドで Internet Explorer が開きます。
-1. **[ツール]** >  **[インターネット オプション]** >  **[接続]** >  **[LAN の設定]** の順に移動します。
+1. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。
 1. システム アカウントのプロキシ設定を確認します。
 1. プロキシが構成されていてプロキシの詳細が提供されている場合は、詳細を削除します。
 1. プロキシが構成されていてプロキシの詳細が正しくない場合は、**プロキシの IP** と**ポート**の詳細が正しいことを確認します。
@@ -74,7 +74,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 | エラー  | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした。 (ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください。<li>(407) プロキシの認証が必要です。 |プロキシによって接続がブロックされています。 |  <ul><li>Internet Explorer で、 **[ツール]** >  **[インターネット オプション]** >  **[セキュリティ]** >  **[インターネット]** の順に移動します。 次に、 **[レベルのカスタマイズ]** を選択し、 **[ファイルのダウンロード]** セクションまで下にスクロールします。 **[有効化]** を選択します。<p>また、Internet Explorer で信頼済みサイトに [URL と IP アドレス](install-mars-agent.md#verify-internet-access)を追加する必要がある場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<li> マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL と IP アドレス](install-mars-agent.md#verify-internet-access)が許可されることを確認します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、これらのファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET Framework のバージョンに対して存在します。 影響を受けるサーバー上のすべてのバージョンの .NET Framework 用の CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
+| <br /><ul><li>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした。 (ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください。<li>(407) プロキシの認証が必要です。 |プロキシによって接続がブロックされています。 |  <ul><li>Internet Explorer で、 **[ツール]**  >  **[インターネット オプション]**  >  **[セキュリティ]**  >  **[インターネット]** の順に移動します。 次に、 **[レベルのカスタマイズ]** を選択し、 **[ファイルのダウンロード]** セクションまで下にスクロールします。 **[有効化]** を選択します。<p>また、Internet Explorer で信頼済みサイトに [URL と IP アドレス](install-mars-agent.md#verify-internet-access)を追加する必要がある場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<li> マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL と IP アドレス](install-mars-agent.md#verify-internet-access)が許可されることを確認します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、これらのファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET Framework のバージョンに対して存在します。 影響を受けるサーバー上のすべてのバージョンの .NET Framework 用の CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
 ## <a name="backup-jobs-completed-with-warning"></a>バックアップ ジョブが警告付きで完了した
 
@@ -91,7 +91,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 - バックアップ サービスでは、次の名前付け規則に従って、これらのファイルは失敗としてログ ファイルにマークされます。*C:\Program Files\Microsoft Azure Recovery Service Agent\temp* フォルダー下の *LastBackupFailedFilesxxxx.txt*。
 - この問題を解決するには、ログ ファイルを確認して、問題の性質を理解します。
 
-  | エラー コード             | 理由                                             | Recommendations                                              |
+  | エラー コード             | 理由                                             | 推奨事項                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | ファイルまたはディレクトリが壊れているため、読み取ることができません。 | ソース ボリュームで **chkdsk** を実行します。                             |
   | 0x80070002、0x80070003 | 指定されたファイルが見つかりません。         | [スクラッチ フォルダーがいっぱいになっていないことを確認します](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  スクラッチ領域が構成されているボリュームが存在するかどうか (削除されていないかどうか) を確認します  <br><br>   [マシンにインストールされているウイルス対策から MARS エージェントが除外されていることを確認します](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
@@ -166,6 +166,25 @@ Set-ExecutionPolicy Unrestricted
 --- | --- | ---
 現在の操作は、内部サービス エラー "サービス スタンプにプロビジョニングされていないリソース" が原因で失敗しました。 しばらくしてから、操作を再試行してください。 (ID: 230006) | 保護されたサーバーの名前が変更されました。 | <li> サーバーの名前を、コンテナーに登録されている元の名前に戻します。 <br> <li> 新しい名前を使用して、サーバーをコンテナーに再登録します。
 
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>別のジョブが進行中であったため、ジョブを開始できませんでした
+
+**MARS コンソール** >  **[ジョブ履歴]** に "別のジョブが進行中であったため、ジョブを開始できませんでした" という警告メッセージが表示された場合は、タスク スケジューラによってトリガーされたジョブのインスタンスが重複している可能性があります。
+
+![別のジョブが進行中であったため、ジョブを開始できませんでした](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+この問題を解決するには、次の手順を実行します。
+
+1. [ファイル名を指定して実行] ウィンドウで *taskschd.msc* と入力して、タスク スケジューラ スナップインを起動します。
+1. 左側のペインで、 **[タスク スケジューラ ライブラリ]**  ->  **[Microsoft]**  ->  **[OnlineBackup]** に移動します。
+1. このライブラリ内の各タスクについて、タスクをダブルクリックしてプロパティを開き、次の手順を実行します。
+    1. **[設定]** タブに切り替えます。
+
+         ![Settings tab](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. **[タスクが既に実行中の場合に適用される規則]** のオプションを選択します。 **[新しいインスタンスを開始しない]** を選択します。
+
+         ![新しいインスタンスを開始しないように規則を変更する](./media/backup-azure-mars-troubleshoot/change-rule.png)
+
 ## <a name="troubleshoot-restore-problems"></a>復元の問題のトラブルシューティング
 
 Azure Backup が、数分たっても回復ボリュームに正常にマウントできないことがあります。 また、処理中にエラー メッセージを受け取ることもあります。 正常に回復を開始するには、次の手順を実行します。
@@ -174,9 +193,9 @@ Azure Backup が、数分たっても回復ボリュームに正常にマウン�
 
 2. 最新バージョンの Backup エージェントがあるかどうかを確認します。 バージョンを確認するには、MARS コンソールの **[アクション]** ウィンドウで、 **[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン**番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 このリンクを選択して[最新バージョンをダウンロード](https://go.microsoft.com/fwLink/?LinkID=288905)します。
 
-3. **[デバイス マネージャー]** >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7 に進みます。
+3. **[デバイス マネージャー]**  >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7 に進みます。
 
-4. Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]** >  **[記憶域コントローラー]** の下で、 **[不明なデバイス]** という名前でハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
+4. Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]**  >  **[記憶域コントローラー]** の下で、 **[不明なデバイス]** という名前でハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
 
 5. **[不明なデバイス]** を右クリックし、 **[ドライバー ソフトウェアの更新]** を選択します。
 
@@ -184,7 +203,7 @@ Azure Backup が、数分たっても回復ボリュームに正常にマウン�
 
     ![[記憶域コントローラー] が強調表示されている Azure Backup デバイス マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7. **[タスク マネージャー]** >  **[サービス (ローカル)]** >  **[Microsoft iSCSI イニシエーター サービス]** に移動します。
+7. **[タスク マネージャー]**  >  **[サービス (ローカル)]**  >  **[Microsoft iSCSI イニシエーター サービス]** に移動します。
 
     ![[サービス (ローカル)] が強調表示されている Azure Backup タスク マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 

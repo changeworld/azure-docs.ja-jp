@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c774d3f56eaf666a31ff73f433a3b4a5a363ce2f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466070"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142501"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>JavaScript を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -48,7 +48,7 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 
 ### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
 
-これは最も簡単にアカウントに接続する方法です。 
+これはアカウントに接続する最も簡単な方法です。 
 
 この例では、アカウント キーを使用して **DataLakeServiceClient** インスタンスを作成します。
 
@@ -90,11 +90,11 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 > [!NOTE]
 > その他の例については、[JS 用 Azure ID クライアント ライブラリ](https://www.npmjs.com/package/@azure/identity)のドキュメントを参照してください。
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
-ファイル システムは、ファイルのコンテナーとして機能します。 これは、**FileSystemClient** インスタンスを取得し、次に **FileSystemClient.Create** メソッドを呼び出すことで作成できます。
+コンテナーは、ファイルのファイル システムとして機能します。 これは、**FileSystemClient** インスタンスを取得し、次に **FileSystemClient.Create** メソッドを呼び出すことで作成できます。
 
-この例では、`my-file-system` という名前のファイル システムを作成します。 
+この例では、`my-file-system` という名前のコンテナーを作成します。 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -112,7 +112,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 ディレクトリ参照は、**DirectoryClient** インスタンスを取得し、次に **DirectoryClient.create** メソッドを呼び出すことによって作成します。
 
-この例では、`my-directory` という名前のディレクトリをファイル システムに追加します。 
+この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {

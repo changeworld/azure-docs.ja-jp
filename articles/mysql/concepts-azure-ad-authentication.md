@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556369"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
@@ -38,7 +38,7 @@ Azure Active Directory 認証を構成して使用するには、次の手順に
 > [!NOTE]
 > Azure AD を作成して設定し、Azure Database for MySQL で Azure AD を構成する方法については、[Azure Database for MySQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-azure-ad-authentication.md)に関するページを参照してください。
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
 次の概要図は、Azure Database for MySQL で Azure AD 認証を使用した場合の認証のしくみをまとめたものです。 矢印は通信経路を示します。
 
@@ -66,8 +66,11 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 - Azure Active Directory 統合
 - MFA による Azure Active Directory ユニバーサル
 - Active Directory Application 証明書またはクライアント シークレットの使用
+- [Managed Identity](howto-connect-with-managed-identity.md)
 
 Active Directory に対して認証された後、トークンを取得します。 このトークンはログイン用のパスワードです。
+
+新しいユーザーの追加などの管理操作は、現時点では Azure AD ユーザー ロールに対してのみサポートされることに注意してください。
 
 > [!NOTE]
 > Active Directory トークンを使用して接続する方法の詳細については、[Azure Database for MySQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-azure-ad-authentication.md)に関するページを参照してください。

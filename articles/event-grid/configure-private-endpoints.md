@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する
 description: この記事では Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/22/2020
-ms.author: spelluru
-ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 07/07/2020
+ms.openlocfilehash: ace3f7f59e4f26388652d7bda1a5ee28800a414b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890822"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115337"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する
 [プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、パブリック インターネットを経由せずに[プライベート リンク](../private-link/private-link-overview.md)上で安全に仮想ネットワークからトピックおよびドメインへ直接、イベントのイングレスを行えるようになります。 プライベート エンドポイントは、トピックまたはドメインの VNet アドレス空間からの IP アドレスを使用します。 概念の詳細については、[ネットワーク セキュリティ](network-security.md)に関する記事をご覧ください。
@@ -43,20 +39,20 @@ ms.locfileid: "82890822"
         1. **リソースの種類**については、 **[リソースの種類]** に **Microsoft.EventGrid/topics** または **Microsoft.EventGrid/domains** を選択します。
         2. **[リソース]** については、ドロップダウン リストからトピックまたはドメインを選択します。 
         3. **ターゲット サブリソース**が **[トピック]** または **[ドメイン]** に設定されていることを確認します (選択したリソースの種類に基づく)。    
-        4. **[次へ: 構成 >/]** ボタンがページの下部にあるので選択します。 
+        4. **Next:次へ: 構成 >/** ボタンがページの下部にあるので選択します。 
 
             ![[プライベート エンドポイント - リソース] ページ](./media/configure-private-endpoints/resource-page.png)
     2. **[リソース ID またはエイリアスを使ってリソースに接続します]** を選択した場合は、次の手順に従います。
         1. リソースの ID を入力します。 (例: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`)。  
         2. **[リソース]** には、 **[トピック]** または **[ドメイン]** を入力してください。 
         3. (省略可能) 要求メッセージを追加します。 
-        4. **[次へ: 構成 >/]** ボタンがページの下部にあるので選択します。 
+        4. **Next:次へ: 構成 >/** ボタンがページの下部にあるので選択します。 
 
             ![[プライベート エンドポイント - リソース] ページ](./media/configure-private-endpoints/connect-azure-resource-id.png)
 4. **[構成]** ページで、プライベート エンドポイントのデプロイ先とする仮想ネットワーク内のサブネットを選択します。 
     1. **[仮想ネットワーク]** を選択します。 ドロップダウン リストには、現在選択されているサブスクリプションおよび場所内の仮想ネットワークのみが一覧表示されます。 
     2. 選択した仮想ネットワーク内の**サブネット**を選択します。 
-    3. **[次へ: タグ >]** ボタンがページの下部にあるので選択します。 
+    3. **Next:次へ: タグ >** ボタンがページの下部にあるので選択します。 
 
     ![[プライベート エンドポイント - 構成] ページ](./media/configure-private-endpoints/configuration-page.png)
 5. **[タグ]** ページでは、プライベート エンドポイント リソースに関連付ける任意のタグ (名前と値) を作成します。 次に、ページの下部にある **[確認と作成]** ボタンを選択します。 
@@ -484,4 +480,5 @@ Invoke-RestMethod -Method 'Get'
 API を介して拒否された後でも、接続を承認できます。 Azure portal を使用した場合、拒否されたエンドポイントを承認することはできません。 
 
 ## <a name="next-steps"></a>次のステップ
-IP ファイアウォール設定を構成する方法については、[Azure Event Grid トピックまたはドメインに対する IP ファイアウォールの構成](configure-firewall.md)に関する記事を参照してください。
+* IP ファイアウォール設定を構成する方法については、[Azure Event Grid トピックまたはドメインに対する IP ファイアウォールの構成](configure-firewall.md)に関する記事を参照してください。
+* ネットワーク接続の問題をトラブルシューティングするには、[ネットワーク接続の問題のトラブルシューティング](troubleshoot-network-connectivity.md)に関するページを参照してください。

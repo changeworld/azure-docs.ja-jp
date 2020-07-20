@@ -1,29 +1,19 @@
 ---
-title: Azure Event Grid メッセージ配信の監視
-description: この記事では、Azure portal を使用して、Azure Event Grid メッセージの配信状態を確認する方法について説明します。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+title: Azure Event Grid メトリックの表示とアラートの設定
+description: この記事では、Azure portal を使用して Azure Event Grid のトピックとサブスクリプションのメトリックを表示し、それらのアラートを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890849"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114885"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
+この記事では、ポータルを使用して Event Grid のトピックとサブスクリプションのメトリックを表示し、それらのアラートを作成する方法について説明します。 
 
-この記事では、ポータルを使用してイベント配信の状態を表示する方法について説明します。
-
-Event Grid は、持続性のある配信を提供します。 各サブスクリプションに対して、最低 1 回は各メッセージを配信します。 イベントは、各サブスクリプションの登録済みの Webhook にすぐに送信されます。 1 回目の配信で、Webhook がイベントの受信を 60 秒以内に確認しなかった場合、Event Grid はそのイベントの配信を再試行します。
-
-イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。
-
-## <a name="delivery-metrics"></a>配信のメトリック
+## <a name="metrics"></a>メトリック
 
 ポータルでは、イベント メッセージ配信の状態のメトリックを表示します。
 
@@ -43,50 +33,69 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
     > [!NOTE]
     > メトリックの完全な一覧については、「[Azure Event Grid でサポートされているメトリック](metrics.md)」を参照してください。
 
-## <a name="event-subscription-status"></a>イベント サブスクリプションの状態
+## <a name="view-custom-topic-metrics"></a>カスタム トピック メトリックの表示
 
-イベント サブスクリプションのメトリックを表示するには、サブスクリプションの種類または特定のリソースのサブスクリプションによって検索できます。
+カスタム トピックを発行済みの場合は、そのトピックのメトリックを表示できます。 
 
-イベント サブスクリプションの種類による検索は、 **[すべてのサービス]** を選択します。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. トピックの検索バーに「**Event Grid トピック**」と入力し、ドロップ ダウン リストから **[Event Grid トピック]** を選択します。 
 
-![[すべてのサービス] を選択する](./media/monitor-event-delivery/all-services.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text=""Event Grid トピック" を検索して選択する":::
+3. トピックの一覧から対象のカスタム トピックを選択します。 
 
-**イベント グリッド** を検索し、利用可能なオプションから **[Event Grid サブスクリプション]** を選択します。
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="カスタム トピックの選択":::
+4. カスタム イベント トピックのメトリックが **[Event Grid トピック]** ページに表示されます。 次の図では、リソース グループ、サブスクリプションなどを示す **[Essentials]** セクションが最小化されています。 
 
-![イベント サブスクリプションの検索](./media/monitor-event-delivery/search-and-select.png)
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="イベント メトリックの表示":::
 
-イベントの種類、サブスクリプション、および場所別にフィルター処理します。 表示するサブスクリプションの **[メトリック]** を選択します。
+サポートされているメトリックを使用してグラフを作成するには、 **[Event Grid トピック]** ページの **[メトリック]** タブを使用します。
 
-![イベント サブスクリプションのフィルター処理](./media/monitor-event-delivery/filter-events.png)
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="トピック - メトリック ページ":::
 
-イベント トピックおよびサブスクリプションのメトリックを表示します。
+メトリックについて詳しくは、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」をご覧ください。
 
-![イベント メトリックの表示](./media/monitor-event-delivery/subscription-metrics.png)
+たとえば、**発行されたイベント** メトリックのメトリック グラフを確認します。
 
-特定のリソースのメトリックを検索するには、そのリソースを選択します。 次に**イベント** を選択します。
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="発行されたイベント メトリック":::
 
-![リソースのイベントを選択します](./media/monitor-event-delivery/select-events.png)
 
-サブスクリプションのリソースのメトリックが表示されます。
+## <a name="view-subscription-metrics"></a>サブスクリプションのメトリックを表示する
+1. 前のセクションの手順に従って、 **[Event Grid トピック]** ページに移動します。 
+2. 次の例に示すように、下部のペインからサブスクリプションを選択します。 
 
-## <a name="custom-event-status"></a>イベントの状態のカスタマイズ
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="[イベント サブスクリプション] を選択する":::    
 
-カスタム トピックを発行済みの場合は、そのトピックのメトリックを表示できます。 トピックが含まれているリソース グループを選択して、トピックを選択します。
+    また、Azure portal の検索バーで「**Event Grid サブスクリプション**」を検索し、 **[トピックの種類]** 、 **[サブスクリプション]** 、 **[場所]** を選択してイベント サブスクリプションを確認することもできます。 
 
-![カスタム トピックの選択](./media/monitor-event-delivery/select-custom-topic.png)
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="[Event Grid サブスクリプション] ページからイベント サブスクリプションを選択する":::        
 
-カスタム イベント トピックのメトリックを表示します。
+    カスタム トピックの場合は、 **[トピックの種類]** として **[Event Grid トピック]** を選択します。 システム トピックについては、Azure リソースの種類 (**ストレージ アカウント (BLOB、GPv2)** など) を選択します。 
+3. サブスクリプションのホームページで、サブスクリプションのメトリックをグラフで確認します。 過去 1 時間、6 時間、12 時間、1 日、7 日間、または 30 日間の **[全般]** 、 **[エラー]** 、 **[待機時間]** 、 **[配信不能]** メトリックを確認できます。 
 
-![イベント メトリックの表示](./media/monitor-event-delivery/custom-topic-metrics.png)
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="サブスクリプションのホーム ページのメトリック":::    
 
-## <a name="set-alerts"></a>アラートの設定
+## <a name="view-system-topic-metrics"></a>システム トピックのメトリックを表示する
 
-アラートは、カスタム トピックやイベント ドメインのトピックおよびドメイン レベルのメトリックに設定できます。 [概要] ブレードで、アラート ルールを表示、管理、および作成するために、左側にある **[アラート]** を選択します。 [Azure Monitor アラートの詳細情報](../azure-monitor/platform/alerts-overview.md)
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. トピックの検索バーに「**Event Grid システム トピック**」と入力し、ドロップ ダウン リストから **[Event Grid システム トピック]** を選択します。 
 
-![イベント メトリックの表示](./media/monitor-event-delivery/select-alerts.png)
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid システム トピックを検索して選択する":::
+3. トピックの一覧から対象のシステム トピックを選択します。 
+
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="システム トピックの選択":::
+4. システム トピックのメトリックが **[Event Grid システム トピック]** ページに表示されます。 次の図では、リソース グループ、サブスクリプションなどを示す **[Essentials]** セクションが最小化されています。 
+
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="概要ページでシステム トピックのメトリックを表示する":::
+
+サポートされているメトリックを使用してグラフを作成するには、 **[Event Grid トピック]** ページの **[メトリック]** タブを使用します。
+
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="システム トピック - メトリック ページ":::
+
+メトリックについて詳しくは、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」をご覧ください。
+
 
 ## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
-* イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。
-* Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
-* Event Grid の使用をすぐに開始するには、[Azure Event Grid でのカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関する記事を参照してください。
+- メトリックとアクティビティ ログ操作に関するアラートを作成する方法については、「[アラートの設定](set-alerts.md)」を参照してください。
+- イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。

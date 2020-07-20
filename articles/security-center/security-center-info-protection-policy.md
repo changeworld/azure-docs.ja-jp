@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711087"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
@@ -75,7 +75,11 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
 7. メインの **[ラベル]** ブレードで **[保存]** をクリックして、すべての変更を適用します。
  
 情報保護ポリシーは、完全に定義されて保存された後、テナント内のすべての Azure SQL データベース上のデータの分類に適用されます。
- 
+
+## <a name="manage-sql-information-protection-using-azure-powershell"></a>Azure PowerShell を使用した SQL 情報保護の管理
+
+- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy):有効なテナント SQL 情報保護ポリシーを取得します。
+- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy):有効なテナント SQL 情報保護ポリシーを設定します。
  
 ## <a name="next-steps"></a>次のステップ
  
@@ -83,5 +87,5 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
 
 Azure Security Center 上のセキュリティ ポリシーとデータ セキュリティについて詳しくは、次の記事をご覧ください。
  
-- [Azure Security Center 上でのセキュリティ ポリシーの設定](tutorial-security-policy.md): Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています
-- [Azure Security Center のデータ セキュリティ](security-center-data-security.md): Security Center でデータがどのように管理および保護されているかを説明しています
+- [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します
+- [Azure Security Center のデータ セキュリティ](security-center-data-security.md):Security Center でデータがどのように管理および保護されているかを説明しています

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611995"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086927"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
@@ -53,7 +53,7 @@ Windows 10 Enterprise マルチセッションでは、現在、ハイブリッ�
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise マルチセッション イメージはどこで入手できますか?
 
-Windows 10 Enterprise マルチセッションは Azure ギャラリーにあります。 これを見つけるには、Azure portal に移動し、Windows 10 Enterprise for Virtual Desktops のリリースを検索します。 Office Pro Plus と統合されたイメージの場合は、Azure portal にアクセスし、Microsoft Windows 10 + Office 365 ProPlus を検索します。
+Windows 10 Enterprise マルチセッションは Azure ギャラリーにあります。 これを見つけるには、Azure portal に移動し、Windows 10 Enterprise for Virtual Desktops のリリースを検索します。 Microsoft 365 Apps for enterprise と統合されたイメージの場合は、Azure portal にアクセスし、「**Microsoft Windows 10 + Microsoft 365 Apps for enterprise**」を検索します。
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>どの Windows 10 Enterprise マルチセッション イメージを使用すればよいですか?
 
@@ -61,7 +61,7 @@ Azure ギャラリーには、Windows 10 Enterprise マルチセッション、�
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>サポートされている Windows 10 Enterprise のマルチセッション バージョンはどれですか?
 
-Windows 10 Enterprise マルチセッション、バージョン 1809 以降がサポートされており、Azure ギャラリーで入手できます。 これらのリリースは、Windows 10 Enterprise と同じサポート ライフサイクル ポリシーに従っています。つまり、春のリリースは 18 か月間サポートされ、秋のリリースは 30 か月間サポートされます。
+Windows 10 Enterprise マルチセッション、バージョン 1809 以降がサポートされており、Azure ギャラリーで入手できます。 これらのリリースは、Windows 10 Enterprise と同じサポート ライフサイクル ポリシーに従っています。つまり、3 月のリリースは 18 か月間サポートされ、9 月のリリースは 30 か月間サポートされます。
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise マルチセッションには、どのプロファイル管理ソリューションを使用すればよいですか?
 

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: 8f39c9cf159f8ce5068cf10460ba6f195baa7806
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205060"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026986"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure App Configuration でのプライベート エンドポイントの使用
 
@@ -24,7 +24,7 @@ App Configuration にプライベート エンドポイントを使用すると�
 - [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoutes](../expressroute/expressroute-locations.md) とプライベート ピアリングを使用して VNet に接続するオンプレミス ネットワークから App Configuration ストアに安全に接続します。
 
 > [!NOTE]
-> Azure App Configuration では、パブリック プレビューとしてプライベート エンドポイントを使用できます。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。
+> インド中部を*除く*すべてのリージョンで、プライベート エンドポイント機能が一般提供されました。 **インド中部**リージョンでは、Azure App Configuration でプライベート エンドポイントをパブリック プレビューとして使用できます。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。
 
 ## <a name="conceptual-overview"></a>概念の概要
 

@@ -3,7 +3,7 @@ title: トランザクション レプリケーション
 titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance で SQL Server トランザクション レプリケーションを使用する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: e23b772c6f57a2649d626e879d404e76ab2ab380
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086400"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,13 +29,13 @@ ms.locfileid: "84219339"
 トランザクション レプリケーションを使用して、Azure SQL Managed Instance で行われた変更を以下にプッシュすることができます。
 
 - オンプレミスまたは Azure VM 上の SQL Server データベース
-- Azure SQL Database 上の単一データベースまたはプールされたデータベース
-- Azure SQL Managed Instance 上の単一データベースまたはプールされたデータベース
+- Azure SQL Database 内のデータベース
+- Azure SQL Managed Instance 内のインスタンス データベース
 
   > [!NOTE]
   > Azure SQL Managed Instance のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用している必要があります。
 
-### <a name="components"></a>Components
+### <a name="components"></a>コンポーネント
 
 トランザクション レプリケーションの主要なコンポーネントは、次の図の**パブリッシャー**、**ディストリビューター**、**サブスクライバー**です。  
 

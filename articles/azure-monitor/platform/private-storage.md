@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610068"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184499"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor におけるログ取り込み用の顧客所有のストレージ アカウント
 
@@ -40,7 +40,7 @@ BYOS を必要とするシナリオの 1 つが、 Private Link によるネッ�
 
 - ストレージにログを書き込む VNet 上のリソースにアクセスできること。
 - リンク先のワークスペースと同じリージョンにあること。
-- *[allow trusted MS services to access this storage account]\(信頼できる MS サービスによるこのストレージ アカウントのへのアクセスを許可\)* を選択して、Log Analytics でストレージ アカウントからログを読み取ることを明示的に許可していること。
+- Azure Monitor アクセスを許可する - ストレージ アカウントのアクセスを特定のネットワークに制限することを選択した場合は、必ず「*信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します*」の例外を許可してください。
 
 ## <a name="process-to-configure-customer-owned-storage"></a>顧客所有のストレージを構成するプロセス
 独自のストレージ アカウントを取り込みに使用する基本的なプロセスは次のとおりです。
@@ -51,7 +51,12 @@ BYOS を必要とするシナリオの 1 つが、 Private Link によるネッ�
 
 リンクの作成と削除に使用できる唯一の方法は、REST API を使用することです。 各プロセスに必要な特定の API 要求の詳細については、以下のセクションで説明します。
 
-## <a name="api-request-values"></a>API 要求の値
+## <a name="command-line-and-rest-api"></a>コマンド ラインと REST API
+
+### <a name="command-line"></a>コマンド ライン
+リンクされたストレージ アカウントを作成および管理するには、[az monitor log-analytics workspace linked-storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) を使用します。 このコマンドでは、ワークスペースからストレージ アカウントをリンクおよびリンク解除したり、リンクされたストレージ アカウントを一覧表示したりできます。
+
+### <a name="request-and-cli-values"></a>要求と CLI の値
 
 #### <a name="datasourcetype"></a>dataSourceType 
 
@@ -73,37 +78,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
-
-## <a name="get-current-links"></a>現在のリンクを取得する
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>特定のデータソースの型のリンクされたストレージ アカウントを取得する
-
-#### <a name="api-request"></a>API 要求
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Response 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-### <a name="get-all-linked-storage-accounts"></a>すべてのリンクされたストレージ アカウントを取得する
+### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>すべてのデータソースの型のリンクされたストレージ アカウントを取得する
 
 #### <a name="api-request"></a>API 要求
 
@@ -145,6 +120,34 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
         }
     ]
+}
+```
+
+
+### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>特定のデータソースの型のリンクされたストレージ アカウントを取得する
+
+#### <a name="api-request"></a>API 要求
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
+```
+
+#### <a name="response"></a>Response 
+
+```json
+{
+    "properties":
+    {
+        "dataSourceType": "CustomLogs",
+        "storageAccountIds  ": 
+        [  
+            "<storage_account_resource_id_1>",
+            "<storage_account_resource_id_2>"
+        ],
+    },
+    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
+    "name": "CustomLogs",
+    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
 }
 ```
 

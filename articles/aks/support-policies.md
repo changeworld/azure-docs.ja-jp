@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402453"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106987"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -51,9 +51,12 @@ AKS は、完全なマネージド クラスター ソリューションでは�
 
 Microsoft は、以下に関するテクニカル サポートを提供します。
 
+> [!NOTE]
+> Microsoft/AKS によって実行されるクラスター アクションはすべて、ユーザーの同意を得たうえで、組み込みの Kubernetes ロール `aks-service` と組み込みのロール バインド `aks-service-rolebinding` に基づいて行われます。 このロールにより、AKS はクラスターの問題のトラブルシューティングや診断を行うことができますが、アクセス許可の変更や、ロールやロール バインドの作成など、高い特権を必要とする操作を行うことはできません。 ロールによるアクセスは、アクティブなサポート チケットで Just-In-Time (JIT) アクセスを使用する場合にのみ有効になります。
+
 * API サーバーなど、Kubernetes Service によって提供およびサポートされるすべての Kubernetes コンポーネントへの接続。
 * Kubernetes コントロール プレーン サービスの管理、アップタイム、QoS、操作 (Kubernetes マスター ノード、API サーバー、etcd、kube-dns など)。
-* etcd。 サポートには、障害計画とクラスターの状態復元のために 30 分ごとに行われる etcd のすべてのデータの自動的で透過的なバックアップが含まれます。 これらのバックアップは、お客様やユーザーが直接使用することはできません。 これらにより、データの信頼性と一貫性が確保されます。
+* etcd。 サポートには、障害計画とクラスターの状態復元のために 30 分ごとに行われる etcd のすべてのデータの自動的で透過的なバックアップが含まれます。 これらのバックアップは、お客様やユーザーが直接使用することはできません。 これらにより、データの信頼性と一貫性が確保されます。 etcd。 オン デマンドのロールバックや復元は、機能としてサポートされていません。
 * Kubernetes 用の Azure クラウド プロバイダー ドライバー内のすべての統合ポイント。 これらには、ロード バランサー、永続ボリューム、ネットワーク (Kubernetes や Azure CNI) などの他の Azure サービスへの統合が含まれます。
 * Kubernetes API サーバー、etcd、kube-dns などのコントロール プレーン コンポーネントのカスタマイズに関する質問または問題。
 * Azure CNI、Kubenet、他のネットワーク アクセスなどのネットワークに関する問題、および機能の問題。 問題には、DNS 解決、パケット損失、ルーティングなどが含まれる可能性があります。 Microsoft では、次のさまざまなネットワーク シナリオをサポートしています。

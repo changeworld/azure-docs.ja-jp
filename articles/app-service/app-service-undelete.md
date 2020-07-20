@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167793"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146241"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell を使用して、削除された App Service アプリを復元する
 
@@ -18,6 +18,10 @@ Azure App Service で誤ってアプリを削除した場合は、[Az PowerShell
 
 > [!NOTE]
 > 削除されたアプリは、最初の削除から 30 日後にシステムから削除されます。 削除されたアプリは復元できません。
+>
+
+> [!NOTE]
+> 削除の取り消し機能は、従量課金プランではサポートされていません。
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>App Service リソース プロバイダーを再登録します。

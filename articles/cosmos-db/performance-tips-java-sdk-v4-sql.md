@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30573eb3b35152ab5769c1aab9c4af052cb454a6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850203"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171025"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 のパフォーマンスに関するヒント
 
@@ -37,52 +37,46 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 * **接続モード: **直接モードを使用する
 <a id="direct-connection"></a>
     
-    クライアントが Azure Cosmos DB に接続する方法は、特にクライアント側の待機時間の観点から、パフォーマンスに重要な影響を及ぼします。 *ConnectionMode* は、クライアントの *ConnectionPolicy* を構成するときに利用できる重要な構成設定です。 Azure Cosmos DB Java SDK v4 では、次の 2 つの *ConnectionMode* を使用できます。  
-      
-    * [Gateway (既定値)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
-    * [直接](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
+    クライアントが Azure Cosmos DB に接続する方法は、特にクライアント側の待機時間の観点から、パフォーマンスに重要な影響を及ぼします。 接続モードは、クライアントを構成するときに利用できる重要な構成設定です。 Azure Cosmos DB Java SDK v4 では、次の 2 つの接続モードを使用できます。  
 
-    基本的に、これらの *ConnectionMode* では、要求がクライアント マシンから Azure Cosmos DB バックエンドのパーティションに到達するまでのルートを調整します。 通常、直接モードは、最高のパフォーマンスを得るための推奨オプションです。クライアントは、Azure Cosmos DB バックエンドのパーティションへの TCP 接続を直接開き、中継なしで要求を "*直接*" 送信できます。 これに対して、ゲートウェイ モードでは、クライアントからの要求は Azure Cosmos DB フロントエンドのいわゆる "ゲートウェイ" サーバーにルーティングされ、そこから Azure Cosmos DB バックエンドの適切なパーティションに送信されます。 ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップ (クライアントとゲートウェイ間およびゲートウェイとパーティション間) が必要になります。 そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
+    * 直接モード (既定)      
+    * ゲートウェイ モード
 
-    *ConnectionMode* は、Azure Cosmos DB クライアント インスタンスの作成時に、*ConnectionPolicy* パラメーターを使用して構成されます。
+    基本的に、これらの接続モードでは、データ プレーン要求 (ドキュメントの読み取りと書き込み) がクライアント マシンから Azure Cosmos DB バックエンドのパーティションに到達するまでのルートを調整します。 通常、直接モードは、最高のパフォーマンスを得るための推奨オプションです。クライアントは、Azure Cosmos DB バックエンドのパーティションへの TCP 接続を直接開き、中継なしで要求を "*直接*" 送信できます。 これに対して、ゲートウェイ モードでは、クライアントからの要求は Azure Cosmos DB フロントエンドのいわゆる "ゲートウェイ" サーバーにルーティングされ、そこから Azure Cosmos DB バックエンドの適切なパーティションに送信されます。 ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップ (クライアントとゲートウェイ間およびゲートウェイとパーティション間) が必要になります。 そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
+
+    データ プレーン要求の接続モードは、次に示すように、Azure Cosmos DB クライアント ビルダーで *directMode()* メソッドまたは *gatewayMode()* メソッドを使用して構成されます。 既定の設定でいずれかのモードを構成するには、引数を指定せずにいずれかのメソッドを呼び出します。 それ以外の場合は、構成設定クラス インスタンスを引数として渡します (*directMode()* の場合は *DirectConnectionConfig*、*gatewayMode()* の場合は *GatewayConnectionConfig*)。
     
-   #### <a name="async"></a>[非同期](#tab/api-async)
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-   ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同期 API
+    # <a name="async"></a>[非同期](#tab/api-async)
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosAsyncClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildAsyncClient();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientConnectionModeAsync)]
 
-    #### <a name="sync"></a>[同期](#tab/api-sync)
+    # <a name="sync"></a>[同期](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-connection-policy-sync"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 同期 API
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同期 API
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientConnectionModeSync)]
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildClient();
-    ```
+    --- 
+
+    *directMode()* メソッドには、次の理由により、追加のオーバーライドがあります。 データベースやコンテナーの CRUD などのコントロール プレーン操作は、*常に*ゲートウェイ モードを利用します。ユーザーがデータ プレーン操作に直接モードを構成した場合、コントロール プレーン操作では既定のゲートウェイ モード設定が使用されます。 これはほとんどのユーザーに適しています。 ただし、データ プレーン操作の直接モードとコントロール プレーンのゲートウェイ モードパラメーターの調整機能を必要とするユーザーは、次の *directMode()* オーバーライドを使用できます。
+
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
+
+    # <a name="async"></a>[非同期](#tab/api-async)
+
+    Java SDK V4 (Maven com.azure::azure-cosmos) Async API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
+
+    # <a name="sync"></a>[同期](#tab/api-sync)
+
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同期 API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientDirectOverrideSync)]
 
     --- 
 
@@ -156,7 +150,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 * **ConnectionPolicy のチューニング**
 
-    既定では、Azure Cosmos DB Java SDK v4 を使用するときに、直接モードの Cosmos DB 要求は TCP 経由で行われます。 内部的には、SDK で特別な直接モード アーキテクチャを使用してネットワーク リソースを動的に管理し、最良のパフォーマンスを実現します。
+    既定では、Azure Cosmos DB Java SDK v4 を使用するときに、直接モードの Cosmos DB 要求は TCP 経由で行われます。 内部的には、直接モードで特別なアーキテクチャを使用してネットワーク リソースを動的に管理し、最良のパフォーマンスを実現します。
 
     Azure Cosmos DB Java SDK v4 では、ほとんどのワークロードでデータベースのパフォーマンスを向上させるための最適な選択肢は直接モードです。 
 
@@ -166,30 +160,21 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
         直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の**チャネル**が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの**サービス エンドポイント**によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、**TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー**では、サービス エンドポイントの前に要求がバッファリングされます。
 
-    * ***直接モード用の ConnectionPolicy 構成オプション***
+    * ***直接モード用の構成オプション***
 
-        これらの構成設定では、直接モードの SDK の動作を制御する RNTBD アーキテクチャの動作を制御します。
-        
-        最初の手順として、次の推奨される構成設定を使用します。 これらの *ConnectionPolicy* オプションは高度な構成設定であり、SDK のパフォーマンスに予期しない影響を与える可能性があります。トレードオフを十分に理解したうえで、どうしても必要な場合を除き、これらを変更しないようにすることをお勧めします。 この特定のトピックで問題が発生した場合は、[Azure Cosmos DB チーム](mailto:CosmosDBPerformanceSupport@service.microsoft.com)にお問い合わせください。
+        既定以外の直接モードの動作が必要な場合は、*DirectConnectionConfig* インスタンスを作成し、そのプロパティをカスタマイズしてから、Azure Cosmos DB クライアント ビルダーでカスタマイズしたプロパティ インスタンスを *directMode()* メソッドに渡します。
 
-        Azure Cosmos DB を参照データベースとして使用している (つまり、データベースが多数のポイント読み取り操作に使用され、書き込み操作にはほとんど使用されていない) 場合には、*idleEndpointTimeout* を 0 (タイムアウトなし) に設定してもかまいません。
+        これらの構成設定は、上記で説明した基になる直接モードのアーキテクチャの動作を制御します。
 
+        最初の手順として、次の推奨される構成設定を使用します。 これらの *DirectConnectionConfig* オプションは高度な構成設定であり、SDK のパフォーマンスに予期しない影響を与える可能性があります。トレードオフを十分に理解したうえで、どうしても必要な場合を除き、これらを変更しないようにすることをお勧めします。 この特定のトピックで問題が発生した場合は、[Azure Cosmos DB チーム](mailto:CosmosDBPerformanceSupport@service.microsoft.com)にお問い合わせください。
 
         | 構成オプション       | Default    |
         | :------------------:       | :-----:    |
-        | bufferPageSize             | 8192       |
-        | connectionTimeout          | "PT1M"     |
-        | idleChannelTimeout         | "PT0S"     |
-        | idleEndpointTimeout        | "PT1M10S"  |
-        | maxBufferCapacity          | 8388608    |
-        | maxChannelsPerEndpoint     | 10         |
-        | maxRequestsPerChannel      | 30         |
-        | receiveHangDetectionTime   | "PT1M5S"   |
-        | requestExpiryInterval      | "PT5S"     |
-        | requestTimeout             | "PT1M"     |
-        | requestTimerResolution     | "PT0.5S"   |
-        | sendHangDetectionTime      | "PT10S"    |
-        | shutdownTimeout            | "PT15S"    |
+        | idleConnectionTimeout      | "PT1M"     |
+        | maxConnectionsPerEndpoint  | "PT0S"     |
+        | connectTimeout             | "PT1M10S"  |
+        | idleEndpointTimeout        | 8388608    |
+        | maxRequestsPerConnection   | 10         |
 
 * **パーティション分割コレクションに対する並列クエリを調整する**
 
@@ -326,17 +311,11 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
  
 * **インデックス作成から未使用のパスを除外して書き込みを高速化する**
 
-    Azure Cosmos DB のインデックス作成ポリシーでは、パスのインデックス作成 (setIncludedPaths および setExcludedPaths) を使って、インデックス作成に含める/除外するドキュメント パスを指定できます。 インデックス作成コストはインデックス付きの一意のパスの数に直接関係するため、パスのインデックス作成を使用すると、クエリ パターンが事前にわかっているシナリオで書き込みパフォーマンスが向上し、インデックス ストレージを削減できます。 たとえば、次のコードは、ワイルドカード "*" を使用して、ドキュメントのセクション全体 (サブツリーとも呼ばれる) をインデックス作成から除外する方法を示しています。
+    Azure Cosmos DB のインデックス作成ポリシーでは、パスのインデックス作成 (setIncludedPaths および setExcludedPaths) を使って、インデックス作成に含める/除外するドキュメント パスを指定できます。 インデックス作成コストはインデックス付きの一意のパスの数に直接関係するため、パスのインデックス作成を使用すると、クエリ パターンが事前にわかっているシナリオで書き込みパフォーマンスが向上し、インデックス ストレージを削減できます。 たとえば、次のコードは、ワイルドカード "*" を使用して、ドキュメントのセクション全体 (サブツリーとも呼ばれる) をインデックス作成から追加および除外する方法を示しています。
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
-    ```java
-    Index numberIndex = Index.Range(DataType.Number);
-    indexes.add(numberIndex);
-    includedPath.setIndexes(indexes);
-    includedPaths.add(includedPath);
-    indexingPolicy.setIncludedPaths(includedPaths);        
-    containerProperties.setIndexingPolicy(indexingPolicy);
-    ``` 
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
 
     詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関するページをご覧ください。
 

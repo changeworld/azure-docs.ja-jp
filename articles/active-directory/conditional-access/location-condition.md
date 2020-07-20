@@ -4,21 +4,20 @@ description: ユーザーのネットワークの場所に基づき、場所の�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 05/28/2020
+ms.topic: conceptual
+ms.date: 06/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253224"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -34,7 +33,7 @@ ms.locfileid: "84220576"
 ネットワークの場所は、クライアントが Azure Active Directory に提供するパブリック IP アドレスによって決定されます。 条件付きアクセス ポリシーは、既定ではすべての IPv4 アドレスおよび IPv6 アドレスに適用されます。 
 
 > [!TIP]
-> IPV6 の範囲は、 **[ネームド ロケーション (プレビュー)](#preview-features)** インターフェイスでのみサポートされています。 
+> IPv6 範囲は、 **[ネームド ロケーション (プレビュー)](#preview-features)** インターフェイスでのみサポートされています。 
 
 ## <a name="named-locations"></a>ネームド ロケーション
 
@@ -50,7 +49,7 @@ ms.locfileid: "84220576"
 - 最大 90 のネームド ロケーションで、それぞれ 1 つ割り当てられる IP 範囲。
 
 > [!TIP]
-> IPV6 の範囲は、 **[ネームド ロケーション (プレビュー)](#preview-features)** インターフェイスでのみサポートされています。 
+> IPv6 範囲は、 **[ネームド ロケーション (プレビュー)](#preview-features)** インターフェイスでのみサポートされています。 
 
 ### <a name="trusted-locations"></a>信頼できる場所
 
@@ -65,7 +64,7 @@ ms.locfileid: "84220576"
 一部の組織では、国またはリージョンの IP 境界全体を、条件付きアクセス ポリシーのネームド ロケーションとして定義することがあります。 北朝鮮などの場所から有効なユーザーがアクセスすることがないことがわかっている場合、不要なトラフィックをブロックするときに、これらの場所を使用することがあります。 これらの IP アドレスから国へのマッピングは、定期的に更新されます。 
 
 > [!NOTE]
-> 国には IPv6 アドレス範囲は含まれず、既知の IPv4 アドレス範囲のみが含まれます。
+> 国には IPv6 アドレス範囲は含まれず、既知の IPv4 アドレス範囲のみが含まれており、信頼済みとしてマークすることはできません。
 
 ![Azure portal で国またはリージョンに基づいた新しい場所を作成する](./media/location-condition/new-named-location-country-region.png)
 
@@ -102,7 +101,7 @@ IP アドレスによっては、特定の国またはリージョンにマッ�
 
 - 最大 195 個のネームド ロケーションを構成する
 - ネームド ロケーションごとに最大 2000 個の IP 範囲を構成する
-- IPv6 アドレスを構成する
+- IPv4 アドレスと共に IPv6 アドレスを構成する
 
 また、誤った構成変更を減らすために、いくつかの追加チェックも追加しました。
 
@@ -115,7 +114,7 @@ IP アドレスによっては、特定の国またはリージョンにマッ�
 - **IP 範囲の場所**
 
 > [!NOTE]
-> 国には IPv6 アドレス範囲は含まれず、既知の IPv4 アドレス範囲のみが含まれます。
+> 国には IPv6 アドレス範囲は含まれず、既知の IPv4 アドレス範囲のみが含まれており、信頼済みとしてマークすることはできません。
 
 ![ネームド ロケーション プレビューのインターフェイス](./media/location-condition/named-location-preview.png)
 
@@ -141,6 +140,30 @@ IP アドレスによっては、特定の国またはリージョンにマッ�
 ### <a name="selected-locations"></a>選択された場所
 
 このオプションを使用すると、ネームド ロケーションを 1 つ以上選択できます。 この設定を適用するポリシーの場合、ユーザーは選択したいずれかの場所から接続する必要があります。 **[選択]** をクリックすると、名前付きネットワークの一覧が表示される名前付きネットワークの選択コントロールが開きます。 この一覧には、ネットワークの場所が信頼済みとマークされているかどうかも表示されます。 **MFA の信頼できる IP** というネームド ロケーションは、多要素認証サービス設定ページで構成できる IP 設定を含めるために使用されます。
+
+## <a name="ipv6-traffic"></a>IPv6 トラフィック
+
+既定では、条件付きアクセス ポリシーは、すべての IPv6 トラフィックに適用されます。 [ネームド ロケーションのプレビュー](#preview-features)を使用すると、条件付きアクセスポリシーから特定の IPv6 アドレス範囲を除外できます。 このオプションは、特定の IPv6 範囲に対してポリシーを適用しない場合に便利です。 たとえば、企業ネットワークでを使用するためのポリシーを強制しない場合に、企業ネットワークがパブリック IPv6 範囲でホストされているような場合です。  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>テナントで IPv6 トラフィックを使用するようになるのはいつですか。
+
+Azure Active Directory (Azure AD) は、現時点では IPv6 を使用する直接ネットワーク接続をサポートしていません。 ただし、認証トラフィックが別のサービスによってプロキシされる場合があります。 そのような場合は、ポリシーの評価時に IPv6 アドレスが使用されます。
+
+Azure AD にプロキシされる IPv6 トラフィックの大部分は、Microsoft Exchange Online から送信されます。 使用可能な場合、Exchange では IPv6 接続が優先されます。 **そのため、特定の IPv4 範囲に対して構成されている Exchange 用の条件付きアクセスポリシーがある場合は、組織の IPv6 範囲も追加していることを確認してください。** IPv6 の範囲を含めないと、次の 2 つの場合に予期しない動作が発生します。
+
+- レガシ認証を使用して Exchange Online に接続するためにメール クライアントが使用されている場合、Azure AD は IPv6 アドレスを受け取ることがあります。 最初の認証要求は、Exchange に送られ、その後 Azure AD にプロキシされます。
+- ブラウザーで Outlook Web Access (OWA) を使用すると、すべての条件付きアクセスポリシーが引き続き満たされているかどうかが定期的に確認されます。 このチェックを使用して、ユーザーが許可された IP アドレスから新しい場所 (コーヒー ショップなど) に移動した可能性が確認されます。 この場合、IPv6 アドレスが使用されていて、その IPv6 アドレスが構成された範囲内にない場合は、ユーザーのセッションが中断され、再認証のために Azure AD に戻される可能性があります。 
+
+これらは、ネームド ロケーションに IPv6 の範囲を構成することが必要になる可能性がある最も一般的な理由です。 さらに、Azure VNet を使用している場合は、IPv6 アドレスからのトラフィックが発生します。 条件付きアクセスポリシーによって VNet トラフィックがブロックされている場合は、Azure AD のサインイン ログを確認します。 トラフィックを特定したら、使用されている IPv6 アドレスを確認し、ポリシーから除外することができます。 
+
+> [!NOTE]
+> 1 つのアドレスに対して IP CIDR 範囲を指定する場合は、/32 ビット マスクを適用します。 たとえば IPv6 アドレス 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a があり、この 1 つのアドレスを範囲として除外する場合は、2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/32 を使用します。
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Azure AD サインイン アクティビティ レポートでの IPv6 トラフィックの特定
+
+テナント内の IPv6 トラフィックを探索するには、[Azure AD サインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)に移動します。 アクティビティ レポートを開いた後、[IP アドレス] 列を追加します。 この列で、IPv6 トラフィックを識別できます。
+
+また、レポート内の行をクリックし、サインイン アクティビティの詳細の [場所] タブに移動して、クライアント IP を見つけることもできます。 
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 

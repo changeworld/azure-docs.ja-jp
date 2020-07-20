@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054391"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243683"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -22,7 +22,7 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>作成またはアップグレード中に、"クォータ超過" エラーが発生します。 どうすればよいですか。 
 
- [さらに多くのコアを要求します](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
+ [さらに多くのコアを要求します](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>AKS におけるノードあたりの最大ポッド数はいくつに設定されていますか。
 
@@ -34,7 +34,7 @@ Azure CLI で AKS クラスターをデプロイする場合、ノードあた�
 このエラーは、クラスターに使用中のサブネットに、正常なリソース割り当てのためにその CIDR 内で使用可能な IP がもうないことを示しています。 Kubenet クラスターでは、クラスター内のノードごとに十分な IP 空間が必要です。 Azure CNI クラスターでは、クラスター内の各ノードとポッドに十分な IP 空間が必要です。
 ポッドに IP を割り当てるための Azure CNI の設計の詳細については、[こちら](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)を参照してください。
 
-これらのエラーは、サブネットのサイズが不足しているなどの問題を事前に検出する、[AKS 診断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)でも検出されます。
+これらのエラーは、サブネットのサイズが不足しているなどの問題を事前に検出する、[AKS 診断](./concepts-diagnostics.md)でも検出されます。
 
 次の 3 つのケースでは、サブネットのサイズ不足エラーが発生します。
 

@@ -1,5 +1,5 @@
 ---
-title: PowerShell:SQL Server から SQL マネージド インスタンスに移行する
+title: PowerShell:SQL Server から SQL Managed Instance に移行する
 titleSuffix: Azure Database Migration Service
 description: Azure PowerShell と Azure Database Migration Service を使用して、SQL Server から Azure SQL Managed Instance に移行する方法について説明します。
 services: database-migration
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: caa936e0d61056336d11f58e59ba512b62cd6108
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: eb8ec09646fa3f3c226edbe957e19d079fd2607c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248653"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147415"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して SQL Server から SQL Managed Instance に移行する
 
@@ -121,13 +121,11 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-次の例は、SQL 認証を使用する "targetmanagedinstance.database.windows.net" という名前の Azure SQL マネージド インスタンスへの接続情報の作成を示しています。
+次の例は、SQL 認証を使用する "targetmanagedinstance" という名前の Azure SQL Managed Instance への接続情報の作成を示しています。
 
 ```powershell
-$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
-  -DataSource "targetmanagedinstance.database.windows.net" `
-  -AuthType SqlAuthentication `
-  -TrustServerCertificate:$false
+$targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $targetResourceId
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>移行プロジェクト用のデータベースを指定する

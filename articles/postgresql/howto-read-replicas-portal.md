@@ -4,14 +4,14 @@ description: Azure portal から Azure Database for PostgreSQL - 単一サーバ
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/09/2020
+ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768962"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106630"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 
@@ -21,34 +21,38 @@ ms.locfileid: "76768962"
 ## <a name="prerequisites"></a>前提条件
 マスター サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)。
 
+## <a name="azure-replication-support"></a>Azure レプリケーション サポート
+
+[読み取りレプリカ](concepts-read-replicas.md)と[論理デコード](concepts-logical.md)はどちらも、情報を Postgres 書き込み先行ログ (WAL) に依存しています。 この 2 つの機能には、Postgres とは異なるレベルのログが必要です。 論理デコードには、読み取りレプリカよりも高いレベルのログが必要です。
+
+適切なレベルのログを構成するには、Azure レプリケーション サポート パラメーターを使用します。 Azure レプリケーション サポートには、次の 3 つの設定オプションがあります。
+
+* **[オフ]** - 最小限の情報を WAL に格納します。 この設定は、ほとんどの Azure Database for PostgreSQL サーバーでは使用できません。  
+* **[レプリカ]** - **[オフ]** よりも詳細な情報が得られます。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
+* **[論理]** - **[レプリカ]** よりも詳細な情報が得られます。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカもこの設定で機能します。
+
+このパラメーターを変更した後、サーバーを再起動する必要があります。 内部的には、このパラメーターによって、Postgres パラメーター `wal_level`、`max_replication_slots`、および `max_wal_senders` が設定されます。
+
 ## <a name="prepare-the-master-server"></a>マスター サーバーの準備
-汎用またはメモリ最適化レベルにあるマスター サーバーを準備するには、次の手順を使用する必要があります。 マスター サーバーをレプリケーション用に準備するには、azure.replication_support パラメーターを設定します。 レプリケーション パラメーターを変更した場合、その変更を有効にするにはサーバーの再起動が必要です。 Azure portal では、1 つのボタン **[レプリケーションのサポートを有効にします]** に、これら 2 つのステップがカプセル化されています。
 
-1. Azure Portal で、マスターとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。
+1. Azure portal で、マスターとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。
 
-2. サーバー サイドバーで、 **[設定]** の **[レプリケーション]** を選択します。
+2. サーバーのメニューから、 **[レプリケーション]** を選択します。 Azure レプリケーション サポートが少なくとも **[レプリカ]** に設定されていれば、読み取りレプリカを作成できます。 
 
-> [!NOTE] 
-> **[レプリケーションのサポートを無効にする]** がグレー表示になっている場合は、レプリケーションの設定は既定で既にサーバーに設定されています。 次の手順をスキップして、読み取りレプリカの作成に進むことができます。 
+3. Azure レプリケーション サポートが少なくとも **[レプリカ]** に設定されていない場合は、設定します。 **[保存]** を選択します。
 
-3. **[レプリケーションのサポートを有効にします]** を選択します。 
+   ![Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存](./media/howto-read-replicas-portal/set-replica-save.png)
 
-   ![レプリケーションのサポートを有効にする](./media/howto-read-replicas-portal/enable-replication-support.png)
+4. サーバーを再起動して変更を適用するには、 **[はい]** を選択します。
 
-4. レプリケーションのサポートを有効にすることを確認します。 この操作では、マスター サーバーが再起動されます。 
+   ![Azure Database for PostgreSQL - レプリケーション - 再起動の確認](./media/howto-read-replicas-portal/confirm-restart.png)
 
-   ![レプリケーションのサポートを有効にすることを確認する](./media/howto-read-replicas-portal/confirm-enable-replication.png)
-   
 5. 操作が完了すると、Azure portal の通知を 2 つ受け取ります。 1 つの通知は、サーバー パラメーターの更新に関するものです。 もう 1 つの通知は、すぐ後のサーバーの再起動に関するものです。
 
-   ![成功通知 - 有効](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![成功通知](./media/howto-read-replicas-portal/success-notifications.png)
 
 6. Azure portal のページを最新の情報に更新して、レプリケーション ツール バーを更新します。 このサーバーの読み取りレプリカを作成できるようになります。
-
-   ![更新されたツール バー](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-レプリケーションのサポートを有効にするのは、マスター サーバーごとに 1 回限りの操作です。 **[レプリケーションのサポートを無効にします]** ボタンは、利便性のために用意されています。 このマスター サーバーでレプリカを二度と作成しないことが確実な場合を除き、レプリケーションのサポートを無効にすることはお勧めしません。 マスター サーバーに既存のレプリカがある間は、レプリケーションのサポートを無効できません。
-
 
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 読み取りレプリカを作成するには、次の手順に従います。

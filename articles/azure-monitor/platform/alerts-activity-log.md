@@ -4,12 +4,12 @@ description: Azure portal、Azure Resource Manager テンプレート、およ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744263"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056261"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -200,6 +200,11 @@ Azure Resource Manager テンプレートを使用してアクティビティ �
 }
 ```
 前述のサンプル JSON は、このチュートリアルの目的で、たとえば sampleActivityLogAlert.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md) を使用してデプロイできます。
+
+  > [!NOTE]
+  > 
+  > 定義できる最高レベルのアクティビティ ログ アラートはサブスクリプションであることに注意してください。
+  > つまり、いくつかのサブスクリプションに対してアラートを定義するオプションがないため、定義はサブスクリプションごとにアラートである必要があります。
 
 次のフィールドは、Azure Resource Manager テンプレートで条件フィールドに対して使用できるオプションです。"Resource Health"、"Advisor"、および "Service Health" には、特別なフィールドに対して追加のプロパティ フィールドがあることに注意してください。 
 1. resourceId:アラートを生成する必要があるアクティビティ ログ イベントの影響を受けるリソースのリソース ID。

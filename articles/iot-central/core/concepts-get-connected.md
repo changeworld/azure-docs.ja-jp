@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710441"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -259,9 +259,9 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | テレメトリ | デバイスからクラウドへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| command | ダイレクト メソッド |
+| コマンド | ダイレクト メソッド |
 
-デバイス SDK の使用方法の詳細については、「[DevDiv キット デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-devkit.md)」のコード例を参照してください。
+デバイス SDK の使用方法の詳細については、「[MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-devkit.md)」のコード例を参照してください。
 
 ### <a name="protocols"></a>プロトコル
 
@@ -275,7 +275,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 デバイスでサポートされているプロトコルのいずれも使用できない場合は、Azure IoT Edge を使用して、プロトコルを変換します。 IoT Edge は、Azure IoT Central アプリケーションの処理負荷を軽減するための他のエッジ上のインテリジェンス シナリオをサポートします。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 デバイスと、Azure IoT Central 間で交換されるすべてのデータは暗号化されます。 IoT Hub は IoT Hub エンドポイントに接続するデバイスからのすべての要求を認証します。 有線上で資格情報を交換することを避けるため、デバイスでは、認証に署名入りトークンが使用されます。 詳細については、「[IoT Hub へのアクセスの制御](../../iot-hub/iot-hub-devguide-security.md)」を参照してください。
 

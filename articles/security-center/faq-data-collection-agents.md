@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261394"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -39,6 +39,25 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 > Security Center で作成されたワークスペースのログ分析の価格レベルは、Security Center の課金には影響しません。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+## <a name="what-is-the-log-analytics-agent"></a>Log Analytics エージェントとは
+
+セキュリティの脆弱性と脅威を監視するために、Azure Security Center は [Log Analytics エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)に依存しています。これは、Azure Monitor サービスで使用されるのと同じエージェントです。 
+
+このエージェントは、Microsoft Monitoring Agent ("MMA") と呼ばれることもあります。 
+
+エージェントは、接続されているマシンからさまざまなセキュリティ関連の構成の詳細とイベント ログを収集し、さらに分析するためにデータを Log Analytics ワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。
+
+次のページの説明に従って、このエージェントでサポートされているオペレーティング システムのいずれかがマシンで実行されていることを確認してください。
+
+* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+
+* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+
+詳細については、[Log Analytics エージェントによって収集されたデータ](security-center-enable-data-collection.md)に関する記事をご覧ください。
+
+
 
 
 ## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>Log Analytics エージェント インストールの自動プロビジョニングでは、何をもって VM を適格と見なしますか?

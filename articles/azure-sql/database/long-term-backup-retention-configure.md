@@ -1,30 +1,29 @@
 ---
 title: Azure SQL Database:長期のバックアップ リテンション期間の管理
-description: Azure portal と PowerShell を使用して、Azure SQL Database の単一またはプールされたデータベースの自動バックアップを Azure storage に (最大 10 年間) 格納および復元する方法について説明します。
+description: Azure portal と PowerShell を使用して、Azure SQL Database の自動バックアップを Azure ストレージに (最大 10 年間) 格納および復元する方法について説明します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: operations
+ms.service: sql-db-mi
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 6ae38bb81ad0b229d6bb5a9e2f626d17810d7b01
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 713ac569acb7866b4c7431b80e2afb1e7953ce08
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035823"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087352"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL Database では、[長期的なバックアップ保有期間](long-term-retention-overview.md)ポリシー (LTR) を使用してデータベースを構成し、別々の Azure Blob Storage コンテナーに最大 10 年間自動的にデータベースのバックアップを保持することができます。 Azure Portal または PowerShell でこのようなバックアップを使用して、データベースを復旧できます。 [Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) の長期的な保有期間を構成することもできますが、この機能は現時点では制限のあるパブリック プレビュー段階です。
 
-## <a name="using-azure-portal"></a>Azure Portal の使用
+## <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
 以下のセクションでは、Azure Portal を使用して長期保存を構成し、長期保存のバックアップを表示し、長期保存からバックアップを復元する方法について説明します。
 
@@ -32,7 +31,7 @@ Azure SQL Database では、[長期的なバックアップ保有期間](long-te
 
 ご利用のサービス レベルのリテンション期間より長く[自動バックアップを保持](long-term-retention-overview.md)するように SQL Database を構成できます。
 
-1. Azure Portal で SQL Server を選択し、 **[バックアップの管理]** をクリックします。 **[ポリシーの構成]** タブで、長期的なバックアップ保有期間ポリシーを設定または変更するデータベースのチェックボックスをオンにします。 データベースの横にあるチェックボックスがオンになっていない場合、そのデータベースにはポリシーの変更が適用されません。  
+1. Azure portal で SQL Server インスタンスを選択し、 **[バックアップの管理]** をクリックします。 **[ポリシーの構成]** タブで、長期的なバックアップ保有期間ポリシーを設定または変更するデータベースのチェックボックスをオンにします。 データベースの横にあるチェックボックスがオンになっていない場合、そのデータベースにはポリシーの変更が適用されません。  
 
    ![バックアップの管理リンク](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -61,7 +60,7 @@ LTR ポリシーを使用して保持されている特定のデータベース�
 
    ![復元](./media/long-term-backup-retention-configure/ltr-restore.png)
 
-1. **[OK]** をクリックして、Azure SQL ストレージ内にあるバックアップから新しいデータベースにデータベースを復元します。
+1. **[OK]** をクリックして、Azure ストレージ内にあるバックアップから新しいデータベースにデータベースを復元します。
 
 1. ツール バーの通知アイコンをクリックして、復元ジョブの状態を確認します。
 
@@ -79,7 +78,7 @@ LTR ポリシーを使用して保持されている特定のデータベース�
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
-以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure SQL ストレージ内のバックアップを表示し、Azure SQL ストレージ内のバックアップから復元する方法について説明します。
+以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure ストレージ内のバックアップを表示し、Azure ストレージ内のバックアップから復元する方法について説明します。
 
 ### <a name="rbac-roles-to-manage-long-term-retention"></a>長期的な保有期間を管理するための RBAC ロール
 
@@ -134,12 +133,12 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -Database
 
 ```powershell
 # get all LTR policies within a server
-$ltrPolicies = Get-AzSqlDatabase -ResourceGroupName Default-SQL-WestCentralUS -ServerName trgrie-ltr-server | `
-    Get-AzSqlDatabaseLongTermRetentionPolicy -Current
+$ltrPolicies = Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $serverName | `
+    Get-AzSqlDatabaseLongTermRetentionPolicy
 
 # get the LTR policy of a specific database
 $ltrPolicies = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName `
-    -ResourceGroupName $resourceGroup -Current
+    -ResourceGroupName $resourceGroup
 ```
 
 ### <a name="clear-an-ltr-policy"></a>LTR ポリシーをクリアする
