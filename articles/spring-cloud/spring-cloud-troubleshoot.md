@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791658"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -74,7 +74,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 2. 監視するアプリケーションを指定するには、**App=** フィルターを追加します。
 3. **インスタンス**ごとにメトリックを分割します。
 
-"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、「[チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
+"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
 
 "*一部のインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、インスタンスの状態とその検出状態を確認します。
 
@@ -198,7 +198,9 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 **[アプリの管理]** に移動し、アプリケーションの状態が _[実行中]_ かつ _[稼働中]_ であることを確認します。
 
-_JVM_ のメトリックは表示されるが、_Tomcat_ のメトリックは表示されない場合は、アプリケーション パッケージで `spring-boot-actuator` 依存関係が有効になっており、正常に起動しているかどうかを確認します。
+アプリケーション パッケージで _JMX_ が有効になっているか確認します。 この機能は構成プロパティ `spring.jmx.enabled=true` で有効にできます。  
+
+アプリケーション パッケージで `spring-boot-actuator` 依存関係が有効になっており、正常に起動しているかどうかを確認します。
 
 ```xml
 <dependency>

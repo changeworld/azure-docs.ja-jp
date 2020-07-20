@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099231"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182000"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -91,7 +91,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 > [!IMPORTANT]
 > [Azure Active Directory 認証ライブラリ (ADAL)](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) を使用している場合は、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)に関する記事をご覧ください。
 
-    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
+   詳細については、「[C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する](time-series-insights-manage-reference-data-csharp.md)」の記事を参照してください。
 
 ## <a name="common-headers-and-parameters"></a>一般的なヘッダーとパラメーター
 

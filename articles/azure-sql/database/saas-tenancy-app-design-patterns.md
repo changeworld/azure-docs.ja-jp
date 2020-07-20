@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: efb25a16b5a3ae7de831436d255358aca19b828f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027033"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85250713"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>マルチテナント SaaS データベース テナント パターン
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ ms.locfileid: "84027033"
 
 #### <a name="vendor-management"></a>ベンダーの管理
 
-アプリ インスタンスが別のテナント サブスクリプションにインストールされていても、ベンダーはすべてのスタンドアロン アプリ インスタンスの全データベースにアクセスできます。  アクセスは、SQL 接続経由で行われます。  このクロス インスタンス アクセスによって、ベンダーはスキーマ管理やレポートまたは分析を目的としたデータベース間のクエリを一元化できます。  このような一元管理が求められている場合、データベース URI にテナント識別子をマップするカタログがデプロイされている必要があります。  Azure SQL Database には、カタログを提供するために、SQL データベースと共に使用されるシャーディング ライブラリが用意されています。  シャーディング ライブラリは、正式には "[Elastic Database クライアント ライブラリ][docu-elastic-db-client-library-536r]" といいます。
+アプリ インスタンスが別のテナント サブスクリプションにインストールされていても、ベンダーはすべてのスタンドアロン アプリ インスタンスの全データベースにアクセスできます。  アクセスは、SQL 接続経由で行われます。  このクロス インスタンス アクセスによって、ベンダーはスキーマ管理やレポートまたは分析を目的としたデータベース間のクエリを一元化できます。  このような一元管理が求められている場合、データベース URI にテナント識別子をマップするカタログがデプロイされている必要があります。  Azure SQL Database には、カタログを提供するために共に使用されるシャーディング ライブラリが用意されています。  シャーディング ライブラリは、正式には "[Elastic Database クライアント ライブラリ][docu-elastic-db-client-library-536r]" といいます。
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. テナント単位データベースを利用したマルチテナント アプリ
 

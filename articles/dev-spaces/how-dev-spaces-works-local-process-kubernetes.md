@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Local Process with Kubernetes を使用して開発用コンピューターを Kubernetes クラスターに接続するプロセスについて説明します
 keywords: Local Process with Kubernetes, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 443783eb7f5359318cf8efbec8b6466a80fa1e85
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974400"
 ---
 # <a name="how-local-process-with-kubernetes-works"></a>Local Process with Kubernetes のしくみ
 
@@ -42,6 +42,15 @@ Local Process with Kubernetes を使用するには、[Azure Dev Spaces][azds-vs
 ## <a name="diagnostics-and-logging"></a>診断とログ記録
 
 Local Process with Kubernetes を使用してクラスターに接続しているときは、クラスターからの診断ログが、開発用コンピューターの[一時ディレクトリ][azds-tmp-dir]に記録されます。 Visual Studio Code を使用している場合は、*Show diagnostic info* コマンドを使用して、クラスターから現在の環境変数と DNS エントリを出力することもできます。
+
+## <a name="limitations"></a>制限事項
+
+Local Process with Kubernetes には次の制限があります。
+
+* Local Process with Kubernetes では、1 つのサービスのトラフィックが開発コンピューターにリダイレクトされます。 Local Process with Kubernetes を使用し、複数のサービスを同時にリダイレクトすることはできません。
+* あるサービスに接続するには、そのサービスを 1 つのポッドでサポートする必要があります。 レプリカが含まれるサービスなど、1 つのサービスに複数のポッドで接続することはできません。
+* Local Process with Kubernetes を正常に接続するために、1 つのポッドには、そのポッドで実行されているコンテナーが 1 つだけ与えられます。 Local Process with Kubernetes では、サービス メッシュによって挿入されたサイドカー コンテナーなど、追加のコンテナーが与えられたポッドを利用してサービスに接続できません。
+* ホスト ファイルを編集する目的で開発コンピューターで実行するには、管理者特権が Local Process with Kubernetes に必要になります。
 
 ## <a name="next-steps"></a>次のステップ
 

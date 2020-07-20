@@ -4,14 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 926434d7110877e234888682cb6c946afe3ae685
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298601"
 ---
 関数を使用すると、開発中に HTTP 関数のエンドポイントにアクセスするのをより困難にするようにキーを使用できます。 HTTP によってトリガーされる関数で HTTP アクセス レベルが `anonymous` に設定されている場合を除き、要求には API アクセス キーが含まれている必要があります。 
+
+キーからは既定のセキュリティ メカニズムが与えられますが、運用環境で HTTP エンドポイントをセキュリティで保護する追加オプションの検討もお勧めします。 たとえば、パブリック アプリで共有シークレットを配布することは通常、良い習慣ではありません。 関数がパブリック クライアントから呼び出される場合、別のセキュリティ メカニズムの実装を検討することをお勧めします。 詳細については、[運用環境で HTTP エンドポイントを保護する](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)を参照してください。
+
+関数キー値を更新したら、関数が呼び出されるすべてのクライアントに更新後のキー値を手動で再配布する必要があります。  
 
 #### <a name="authorization-scopes-function-level"></a>承認スコープ (関数レベル)
 

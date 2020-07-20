@@ -1,19 +1,19 @@
 ---
 title: Azure portal を使用して検索インデックスにデータをインポートする
 titleSuffix: Azure Cognitive Search
-description: Azure portal でデータのインポート ウィザードを使用して、Cosmos DB、Blob Storage、Table Storage、SQL Database、Azure VM 上の SQL Server から Azure データをクロールします。
+description: Azure portal でデータのインポート ウィザードを使用して、Cosmos DB、Blob Storage、Table Storage、SQL Database、SQL Managed Instance、Azure VM 上の SQL Server から Azure データをクロールします。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321383"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Cognitive Search のデータのインポート ウィザード
 
@@ -65,7 +65,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 | ---------- | ----------- |
 | **既存のデータ ソース** |検索サービスに定義済みのインデクサーが既にある場合は、再利用できるデータ ソース定義が既に存在することがあります。 Azure Cognitive Search では、データ ソース オブジェクトはインデクサーでのみ使用されます。 データ ソース オブジェクトは、プログラムで、または**データのインポート** ウィザードを使用して作成でき、必要に応じて再利用できます。|
 | **サンプル**| Azure Cognitive Search には、チュートリアルとクイックスタートで使用される 2 つの組み込みサンプル データ ソースが用意されています。これは、Cosmos DB でホストされている不動産 SQL データベースとホテル データベースです。 ホテル サンプルに基づくチュートリアルについては、クイックスタートの「[Azure portal でインデックスを作成する](search-get-started-portal.md)」を参照してください。 |
-| [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |サービス名、読み取り権限を持つデータベース ユーザーの資格情報、データベース名は、このページで、または ADO.NET 接続文字列を使用して指定できます。 接続文字列のオプションを選択して、プロパティを表示またはカスタマイズします。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。|
+| [**Azure SQL Database または SQL Managed Instance**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |サービス名、読み取り権限を持つデータベース ユーザーの資格情報、データベース名は、このページで、または ADO.NET 接続文字列を使用して指定できます。 接続文字列のオプションを選択して、プロパティを表示またはカスタマイズします。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。|
 | **Azure VM 上の SQL Server** |接続文字列として、完全修飾サービス名、ユーザー ID とパスワード、データベースを指定します。 このデータ ソースを使用するには、接続を暗号化する証明書をローカル ストアにあらかじめインストールしておく必要があります。 手順については、[Azure Cognitive Search への SQL VM 接続](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)に関する記事をご覧ください。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。 |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要件には、アカウント、データベース、コレクションが含まれます。 コレクション内のすべてのドキュメントはインデックスに含まれます。 行セットをフラット化またはフィルター処理するクエリを定義することも、クエリを空白のままにすることもできます。 このウィザードでは、クエリは必要はありません。|
 | [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |要件には、ストレージ アカウントとコンテナーが含まれます。 BLOB 名がグループ化のために仮想名前付け規則に従っている場合は、必要に応じて、コンテナーの下のフォルダーとして名前の仮想ディレクトリの部分を指定できます。 詳しくは、[Blob Storage のインデックス作成](search-howto-indexing-azure-blob-storage.md)に関する記事をご覧ください。 |
@@ -93,7 +93,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
    ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
 
-**[データのインポート]** は、Azure Cosmos DB、Azure SQL Database、Azure Blob Storage を含む、他の Azure サービスから起動することもできます。 サービスの概要ページの左側にあるナビゲーション ウィンドウで、 **[Add Azure Cognitive Search]\(Azure Cognitive Search の追加\)** を見つけます。
+**[データのインポート]** は、Azure Cosmos DB、Azure SQL Database、SQL Managed Instance、Azure Blob Storage を含む、他の Azure サービスから起動することもできます。 サービスの概要ページの左側にあるナビゲーション ウィンドウで、 **[Add Azure Cognitive Search]\(Azure Cognitive Search の追加\)** を見つけます。
 
 <a name="index-definition"></a>
 

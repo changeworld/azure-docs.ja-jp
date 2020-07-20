@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 50d408da248bfcea7088af52cd551579da0ad14e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039923"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045945"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance 用の Azure セキュリティ ベースライン
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,7 +49,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**: お使いの Azure SQL データベースのデプロイ先のサブネットには、Azure Security Center およびネットワーク保護の修復に関する推奨事項を使用します。
+**ガイダンス**:お使いの Azure SQL データベースのデプロイ先のサブネットには、Azure Security Center およびネットワーク保護の修復に関する推奨事項を使用します。
 
 お使いの Azure SQL データベースに接続される Azure 仮想マシン (VM) の場合は、これらの VM を保護するネットワーク セキュリティ グループ (NSG) の NSG フロー ログを有効にし、トラフィックの監査のために Azure Storage アカウントにログを送信します。
 
@@ -305,7 +305,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス**: 適用できません。Azure SQL Database の場合、マルウェア対策ソリューションは、基になるプラットフォーム上で Microsoft によって管理されます。
+**ガイダンス**:適用できません。Azure SQL Database の場合、マルウェア対策ソリューションは、基になるプラットフォーム上で Microsoft によって管理されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -353,7 +353,7 @@ https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemem
 
 Azure SQL による Azure Active Directory 認証を構成して管理する方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 **Azure Security Center の監視**: はい
 
@@ -449,7 +449,7 @@ Azure でネームド ロケーションを構成する方法: https://docs.micr
 
 Azure SQL による Azure Active Directory 認証を構成して管理する方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 AAD インスタンスを作成して構成する方法:
 
@@ -477,7 +477,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 Azure SQL による Azure Active Directory 認証を構成して管理する方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 Azure Activity Logs を Azure Monitor に統合する方法:
 
@@ -557,7 +557,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-over
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
-**ガイダンス**: 機密情報を格納または処理する Azure SQL Database のデータベースでは、タグを使用してデータベースと関連リソースを機密とマークします。 機密情報の窃盗を防止するために、Azure SQL Database インスタンスで Private Link とネットワーク セキュリティ グループのサービス タグを構成します。
+**ガイダンス**:機密情報を格納または処理する Azure SQL Database のデータベースでは、タグを使用してデータベースと関連リソースを機密とマークします。 機密情報の窃盗を防止するために、Azure SQL Database インスタンスで Private Link とネットワーク セキュリティ グループのサービス タグを構成します。
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護された状態に維持されるように、Microsoft は一連の堅牢なデータ保護制御および機能を実装し、それを保持しています。
 
@@ -657,7 +657,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **ガイダンス**: Azure SQL Database 向け Advanced Data Security を有効にし、お使いのサーバーに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。
 
-Azure SQL Database で脆弱性評価を実行する方法:
+Azure SQL Database で脆弱性評価を実行する方法
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
@@ -873,7 +873,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**: Azure SQL Database に関する Azure Policy または Azure Security Center の推奨事項を使用して、すべての Azure リソースのセキュリティ構成を保持します。
+**ガイダンス**:Azure SQL Database に関する Azure Policy または Azure Security Center の推奨事項を使用して、すべての Azure リソースのセキュリティ構成を保持します。
 
 Azure Policy を構成して管理する方法:
 
@@ -1069,7 +1069,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**ガイダンス**: Azure SQL Database では、7 ～ 35 日間保持されるデータベース バックアップが自動的に作成され、データ センターが使用できない場合でもそれらが確実に保持されるように Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) が使用されます。 これらのバックアップは自動的に作成されます。 必要に応じて、Azure SQL Database に対する長期間の geo 冗長バックアップを有効にしてください。
+**ガイダンス**: Azure SQL Database では、7 ～ 35 日間保持されるデータベース バックアップが自動的に作成され、データ センターが使用できない場合でもそれらが確実に保持されるように Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) が使用されます。 これらのバックアップは自動的に作成されます。 必要に応じて、Azure SQL データベースに対する長期間の geo 冗長バックアップを有効にしてください。
 
 Transparent Data Encryption にカスタマー マネージド キーを使用している場合は、キーが確実にバックアップされるようにしてください。
 
@@ -1199,7 +1199,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **ガイダンス**:侵入テストが Microsoft のポリシーに違反しないようにするために、Microsoft の活動規則に従ってください。
 
-https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 

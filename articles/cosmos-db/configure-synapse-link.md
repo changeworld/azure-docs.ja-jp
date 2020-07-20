@@ -3,15 +3,15 @@ title: Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して�
 description: Azure Cosmos アカウントの Synapse Link を有効にする方法、分析ストアを有効にしたコンテナーを作成する方法、Synapse ワークスペースに Azure Cosmos データベースを接続する方法、クエリを実行する方法について説明します。
 author: SriChintala
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: 24f6f77f1371157ca1b57cfd85ac196cace822fc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262040"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
 
@@ -40,11 +40,11 @@ Azure Cosmos DB の Synapse Link を使用して分析クエリを実行する�
 
 1. 機能一覧から **[Synapse Link]** を選択します。
 
-   ![Synapse Link プレビュー機能の検索](./media/configure-synapse-link/find-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Synapse Link プレビュー機能の検索":::
 
 1. 次に、ご利用のアカウントで Synapse Link を有効にするように求めるメッセージが表示されます。 [有効化] を選択します。
 
-   ![Synapse Link 機能の有効化](./media/configure-synapse-link/enable-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Synapse Link 機能の有効化":::
 
 1. これで、ご利用のアカウントで Synapse Link を使用できるようになりました。 次に、分析ストアが有効なコンテナーを作成して、トランザクション ストアから分析ストアへのオペレーショナル データのレプリケートを自動的に開始する方法について確認します。
 
@@ -67,7 +67,7 @@ Azure Cosmos DB の Synapse Link を使用して分析クエリを実行する�
 
 1. **[新しいコンテナー]** を選択し、データベースの名前、コンテナー、パーティション キー、スループットの詳細を入力します。 **[分析ストア]** オプションをオンにします。 分析ストアを有効にすると、`AnalyicalTTL` プロパティが既定値の -1 (無限のリテンション期間) に設定されたコンテナーが作成されます。 この分析ストアでは、レコードのすべての履歴バージョンが保持されます。
 
-   ![Azure Cosmos コンテナーの分析ストアを有効にする](./media/configure-synapse-link/create-container-analytical-store.png)
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Azure Cosmos コンテナーの分析ストアを有効にする":::
 
 1. このアカウントで以前に Synapse Link を有効にしていない場合は、分析ストアが有効なコンテナーを作成するための前提条件であるため、これを行うように求めるメッセージが表示されます。 プロンプトが表示されたら、 **[Enable Synapse Link]\(Synapse Link を有効にする\)** を選択します。
 

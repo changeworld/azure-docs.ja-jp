@@ -4,12 +4,12 @@ description: リージョン間で App Service リソースを移動する方法
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945479"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service アプリを別のリージョンに移動する
 

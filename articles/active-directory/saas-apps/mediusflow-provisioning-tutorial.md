@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd2217046a725f0bb0a05f1eb0afc5434bf3b6fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482413"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために MediusFlow を構成する
 
@@ -52,11 +52,11 @@ ms.locfileid: "83662720"
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように MediusFlow を構成する
 
-### <a name="activate-the-office-365-app-within-mediusflow"></a>MediusFlow 内で Office 365 アプリをアクティブ化する
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>MediusFlow 内で Microsoft 365 アプリをアクティブ化する
 まず、次の手順を実行して、Azure AD ログインと MediusFlow 内の Azure AD 構成機能へのアクセスを有効にします。
 
 #### <a name="user-login"></a>ユーザー ログイン
-Office 365/Azure AD へのログイン フローを有効にするには、 (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) に関する記事を参照してください。
+Microsoft 365/Azure AD へのログイン フローを有効にするには、こちら (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) ) の記事を参照してください。
 
 #### <a name="user-transfer-configuration"></a>ユーザー転送の構成
 Azure AD からのプロビジョニングのためにユーザーの構成ポータルを有効にするには、[こちら](

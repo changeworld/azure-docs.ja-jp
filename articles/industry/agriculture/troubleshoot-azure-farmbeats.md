@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656826"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187712"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -314,3 +314,39 @@ ms.locfileid: "83656826"
 1. FarmBeats Datahub リソース グループにアクセスします。
 2. **App Service** を選択します。  
 3. [App Service の価格のスケールアップ](https://azure.microsoft.com/pricing/details/app-service/windows/)に関するページにアクセスし、適切な価格レベルを選択します。
+
+## <a name="weather-data-job-failures"></a>気象データ ジョブの失敗
+
+**Error**: 気象データを取得するジョブを実行したが、ジョブが失敗する
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>ログを収集して、気象データ ジョブの失敗をトラブルシューティングする
+
+1. Azure portal で FarmBeats リソース グループに移動します。
+2. リソース グループに含まれる Data Factory サービスをクリックします。 サービスには "sku:Datahub" というタグが付きます
+
+> [!NOTE]
+> リソース グループ内のサービスのタグを表示するには、[列の編集] をクリックし、リソース グループ ビューに [タグ] を追加します。
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="プロジェクト FarmBeats":::
+
+3. Data Factory の [概要] ページで、 **[Author and Monitor]\(作成と監視\)** をクリックします。 ブラウザーに新しいタブが表示されます。 **[監視]** をクリックします。
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="プロジェクト FarmBeats":::
+
+4. 気象ジョブの実行の一部であるパイプライン実行の一覧が表示されます。 ログを収集するジョブをクリックします。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="プロジェクト FarmBeats":::
+
+5. パイプラインの概要ページに、アクティビティの実行の一覧が表示されます。 ログを収集するアクティビティの実行 ID をメモします。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="プロジェクト FarmBeats":::
+
+6. Azure portal の FarmBeats リソース グループに戻り、名前が **datahublogs-XXXX** のストレージ アカウントをクリックします。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="プロジェクト FarmBeats":::
+
+7. **[Containers]\(コンテナー\)**  ->  **[adfjobs]** をクリックします。 検索ボックスに、上記の手順 5 でメモしたジョブの実行 ID を入力します。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="プロジェクト FarmBeats":::
+
+8. 検索結果には、このジョブに関連するログを持つフォルダーが表示されます。 問題のデバッグの支援を受けるには、ログをダウンロードして farmbeatssupport@microsoft.com に送信してください。

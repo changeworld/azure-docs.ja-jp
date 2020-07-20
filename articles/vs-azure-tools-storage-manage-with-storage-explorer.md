@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 11166d5578b90fe6ec936389bcd173c4c26b4852
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975267"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -55,9 +55,9 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 Storage Explorer は、 *.tar.gz* ダウンロードとして入手することもできます。 依存関係は手動でインストールする必要があります。 *.tar.gz* のインストールは次のディストリビューションの Linux でサポートされています。
 
+* Ubuntu 20.04 x64
 * Ubuntu 18.04 x64
 * Ubuntu 16.04 x64
-* Ubuntu 14.04 x64
 
 *.tar.gz* のインストールは他のディストリビューションでも機能する可能性がありますが、正式にサポートされているのは、こちらの一覧に表示されているものだけです。
 

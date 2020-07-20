@@ -1,5 +1,5 @@
 ---
-title: AI エンリッチメントの概要
+title: AI エンリッチメントの概念
 titleSuffix: Azure Cognitive Search
 description: コンテンツ抽出、自然言語処理 (NLP)、および画像処理は、定義済みのコグニティブ スキルとカスタム AI アルゴリズムの両方を用いて、Azure Cognitive Search インデックスで検索可能なコンテンツを作成するために使用されます。
 manager: nitinme
@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/24/2020
-ms.openlocfilehash: cdff42c6ff0cadb5ce4b3d7fc469d648349d1e88
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/18/2020
+ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564420"
 ---
-# <a name="getting-started-with-ai-enrichment"></a>AI エンリッチメントの使用を開始する
+# <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
-AI エンリッチメントは、画像、BLOB、その他の構造化されていないデータ ソースからテキストを抽出するために使用される Azure Cognitive Search のインデックス作成の機能です。 エンリッチメントと抽出によって、[インデックス](search-what-is-an-index.md)または[ナレッジ ストア](knowledge-store-concept-intro.md)でコンテンツがより検索しやすくなります。 抽出とエンリッチメントは、インデックス作成パイプラインにアタッチされた "*コグニティブ スキル*" を使用して実装されています。 サービスに組み込まれたコグニティブ スキルは、次のカテゴリに分類されます。 
+AI エンリッチメントは、画像、BLOB、その他の構造化されていないデータ ソースからテキストを抽出するために使用できる[インデクサー](search-indexer-overview.md)の拡張機能です。 エンリッチメントと抽出によって、[検索インデックス](search-what-is-an-index.md)または[ナレッジ ストア](knowledge-store-concept-intro.md)でも、インデクサーの出力オブジェクトでコンテンツがより検索しやすくなります。 
+
+抽出とエンリッチメントは、インデックサー ドリブン パイプラインにアタッチされた "*コグニティブ スキル*" を使用して実装されています。 Microsoft の組み込みのスキルを使用することも、作成した "[*カスタム スキル*](cognitive-search-create-custom-skill-example.md)" に外部処理を埋め込むこともできます。 カスタム スキルの例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
+
+組み込みのスキルは、次のカテゴリに分類されます。 
 
 + **自然言語処理**スキルには、[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[言語検出](cognitive-search-skill-language-detection.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、テキスト操作、[センチメント検出](cognitive-search-skill-sentiment.md)、[PII 検出](cognitive-search-skill-pii-detection.md)が含まれます。 これらのスキルによって、構造化されていないテキストが、インデックスで検索可能およびフィルター可能なフィールドとしてマップされます。
 
@@ -25,9 +29,9 @@ AI エンリッチメントは、画像、BLOB、その他の構造化されて�
 
 ![エンリッチメント パイプラインの図](./media/cognitive-search-intro/cogsearch-architecture.png "エンリッチメント パイプラインの概要")
 
-Azure Cognitive Search のコグニティブ スキルは、Cognitive Services APIs の事前トレーニング済み機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)) に基づいています。 
+Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs の事前トレーニング済み機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)) に基づいています。 コンテンツの処理中にこれらのリソースを活用する場合は、Cognitive Services リソースをアタッチできます。
 
-自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Cognitive Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。 アーキテクチャは拡張可能なため、組み込みのスキルでは不十分な場合は、[カスタム スキル](cognitive-search-create-custom-skill-example.md)を作成して追加し、カスタム処理を統合できます。 例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
+自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Cognitive Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。  
 
 ## <a name="when-to-use-ai-enrichment"></a>どのような場合に AI エンリッチメントを使用するか
 
@@ -55,8 +59,7 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 
 カスタム スキルは、フォームの認識や、[カスタム スキル Web インターフェイス](cognitive-search-custom-skill-interface.md)で指定してラップするモデルを使用するカスタム エンティティ検出などの、より複雑なシナリオに対応できます。 カスタム スキルの例としては、[Forms Recognizer](/azure/cognitive-services/form-recognizer/overview)、[Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) の統合、[カスタム エンティティ認識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)などがあります。
 
-
-## <a name="steps-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインの手順
+<a name="enrichment-steps"> エンリッチメント パイプラインの手順 </a>
 
 エンリッチメント パイプラインは "[*インデクサー*](search-indexer-overview.md)" に基づきます。 インデクサーは、ドキュメント解析のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを設定します。 インデクサーにアタッチされたスキルにより、ユーザーが定義した 1 つ以上のスキルセットに従ってドキュメントがインターセプトされ、エンリッチメントされます。 インデックスが作成されると、[Azure Cognitive Search でサポートされているすべての種類のクエリ](search-query-overview.md)から検索を要求してコンテンツにアクセスできます。  インデクサーを使い慣れていない場合は、このセクションで手順を示します。
 
@@ -80,7 +83,7 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>knowledgeStore 要素を追加してエンリッチメントを保存する
 
-[Search REST api-version=2019-05-06-Preview](search-api-preview.md) では、Azure ストレージ接続を提供する `knowledgeStore` 定義とエンリッチメントの格納方法について説明するプロジェクションによってスキルセットが拡張されます。 これは、インデックスに追加されます。 標準的な AI パイプラインでは、エンリッチメントされたドキュメントは一時的なものであり、インデックス作成時にのみ使用され、その後破棄されます。 エンリッチメントされたドキュメントは、ナレッジ ストアを使用して保存されます。 詳細については、[ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md) に関するページを参照してください。
+[Search REST api-version=2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) では、Azure ストレージ接続を提供する `knowledgeStore` 定義とエンリッチメントの格納方法について説明するプロジェクションによってスキルセットが拡張されます。 これは、インデックスに追加されます。 標準的な AI パイプラインでは、エンリッチメントされたドキュメントは一時的なものであり、インデックス作成時にのみ使用され、その後破棄されます。 エンリッチメントされたドキュメントは、ナレッジ ストアを使用して保存されます。 詳細については、[ナレッジ ストア](knowledge-store-concept-intro.md)に関するページを参照してください。
 
 ### <a name="step-3-search-index-and-query-based-access"></a>手順 3:検索インデックスとクエリ ベースのアクセス
 
@@ -118,6 +121,6 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 + [例:AI エンリッチメント用のカスタム スキルを作成する (C#)](cognitive-search-create-custom-skill-example.md)
 + [クイック スタート: ポータルにおける AI エンリッチメントのチュートリアル](cognitive-search-quickstart-blob.md)
 + [チュートリアル:AI エンリッチメント API について](cognitive-search-tutorial-blob.md)
-+ [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md)
++ [ナレッジ ストア](knowledge-store-concept-intro.md)
 + [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)
 + [トラブルシューティングのヒント](cognitive-search-concept-troubleshooting.md)

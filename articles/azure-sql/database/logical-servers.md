@@ -1,7 +1,7 @@
 ---
-title: Azure SQL Database と Azure Synapse のサーバーとは何ですか。
+title: Azure SQL Database と Azure Synapse Analytics のサーバーとは何ですか。
 titleSuffix: ''
-description: Azure SQL Database と Azure Synapse によって使用される論理 SQL サーバーと、それらを管理する方法について説明します。
+description: Azure SQL Database と Azure Synapse Analytics によって使用される論理 SQL サーバーと、それらを管理する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 6df3cd82413f9a1c352be4349006accd52c24490
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035933"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367575"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL Database と Azure Synapse の論理 SQL サーバーとは何ですか。
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Azure SQL Database と Azure Synapse では、サーバーは、データベースのコレクションの中央管理ポイントとして機能する論理コンストラクトです。 サーバー レベルでは、[ログイン](logins-create-manage.md)、[ファイアウォール規則](firewall-configure.md)、[監査規則](../../azure-sql/database/auditing-overview.md)、[脅威検出ポリシー](threat-detection-configure.md)、[自動フェールオーバー グループ](auto-failover-group-overview.md)を管理できます。 サーバーは、そのリソース グループとは別のリージョンに入ることができます。 Azure SQL Database のデータベースまたは Azure Synapse のデータ ウェアハウス データベースを作成するには、サーバーが存在している必要があります。 単一のサーバーによって管理されるすべてのデータベースは、サーバーと同じリージョン内で作成されます。
+Azure SQL Database と Azure Synapse Analytics では、サーバーは、データベースのコレクションの中央管理ポイントとして機能する論理コンストラクトです。 サーバー レベルでは、[ログイン](logins-create-manage.md)、[ファイアウォール規則](firewall-configure.md)、[監査規則](../../azure-sql/database/auditing-overview.md)、[脅威検出ポリシー](threat-detection-configure.md)、[自動フェールオーバー グループ](auto-failover-group-overview.md)を管理できます。 サーバーは、そのリソース グループとは別のリージョンに入ることができます。 Azure SQL Database のデータベースまたは Azure Synapse Analytics のデータ ウェアハウス データベースを作成するには、サーバーが存在している必要があります。 単一のサーバーによって管理されるすべてのデータベースは、サーバーと同じリージョン内で作成されます。
 
 このサーバーは、オンプレミス環境でなじみのある SQL Server インスタンスとは異なります。 具体的には、データベースまたはデータ ウェアハウス データベースを管理するサーバーとの関係において、データベースまたはデータ ウェアハウス データベースの場所についての保証はありません。 さらに、Azure SQL Database も Azure Synapse も、インスタンス レベルのアクセスや機能を公開しません。 対照的に、マネージド インスタンスのインスタンス データベースは、オンプレミス環境または仮想マシン環境の SQL Server と同じ方法で、すべて物理的に同じ場所に配置されます。
 
-サーバーを作成するとき、サーバーのログイン アカウント/パスワードを指定します。このアカウントには、そのサーバー上のマスター データベースとそのサーバーで作成されるすべてのデータベースに対する管理特権が与えられます。 この初回アカウントは SQL ログイン アカウントです。 Azure SQL Database と Synapse Analytics は認証のために SQL 認証と Azure Active Directory 認証をサポートしています。 ログインと認証の詳細については、「[Azure SQL Database におけるデータベースとログインの管理](logins-create-manage.md)」をご覧ください。 Windows 認証はサポートされません。
+サーバーを作成するとき、サーバーのログイン アカウント/パスワードを指定します。このアカウントには、そのサーバー上のマスター データベースとそのサーバーで作成されるすべてのデータベースに対する管理特権が与えられます。 この初回アカウントは SQL ログイン アカウントです。 Azure SQL Database と Synapse Analytics では認証のために SQL 認証と Azure Active Directory 認証がサポートされています。 ログインと認証の詳細については、「[Azure SQL Database におけるデータベースとログインの管理](logins-create-manage.md)」をご覧ください。 Windows 認証はサポートされません。
 
 SQL Database と Azure Synapse のサーバーは、以下のような特長を持ちます。
 
@@ -53,9 +53,9 @@ SQL Database と Azure Synapse のサーバーは、以下のような特長を�
 
 ### <a name="create-a-blank-server"></a>空のサーバーを作成する
 
-[Azure portal](https://portal.azure.com) を利用して (データベース、エラスティック プール、データ ウェアハウス データベースのない) サーバーを作成するには、空の SQL サーバー (論理サーバー) フォームに移動します。
+[Azure portal](https://portal.azure.com) を利用して (データベース、エラスティック プール、データ ウェアハウス データベースのない) サーバーを作成するには、空の SQL サーバー (論理 SQL サーバー) フォームに移動します。
 
-### <a name="create-a-blank-or-sample-sql-database-in-azure-sql-database"></a>Azure SQL Database に空またはサンプルの SQL データベースを作成する
+### <a name="create-a-blank-or-sample-database-in-azure-sql-database"></a>Azure SQL Database に空またはサンプルのデータベースを作成する
 
 [Azure portal](https://portal.azure.com) を利用して SQL Database にデータベースを作成するには、空の SQL Database フォームに移動し、要求された情報を指定します。 データベース自体を作成する前に、あるいは作成するときにリソース グループとサーバーを作成できます。 Adventure Works LT に基づいて空のデータベースやサンプル データベースを作成できます。
 
@@ -105,7 +105,7 @@ Azure PowerShell を利用してサーバー、データベース、ファイア
 | New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、[*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
 
 > [!TIP]
-> PowerShell のクイックスタートについては、[PowerShell を使用した単一の Azure SQL データベースの作成](single-database-create-quickstart.md)に関するページを参照してください。 PowerShell のスクリプトの例については、[PowerShell を使用した単一の Azure SQL データベースの作成と、ファイアウォール規則の構成](scripts/create-and-configure-database-powershell.md)および [PowerShell を使用した単一の Azure SQL データベースの監視およびスケーリング](scripts/monitor-and-scale-database-powershell.md)に関するページを参照してください。
+> PowerShell クイックスタートについては、[PowerShell を使用した Azure SQL Database 内のデータベースの作成](single-database-create-quickstart.md)に関する記事を参照してください。 PowerShell のスクリプトの例については、[PowerShell を使用した Azure SQL Database 内のデータベースの作成とファイアウォール規則の構成](scripts/create-and-configure-database-powershell.md)に関する記事と、[PowerShell を使用した Azure SQL Database 内のデータベースの監視およびスケーリング](scripts/monitor-and-scale-database-powershell.md)に関する記事を参照してください。
 >
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>Azure CLI を利用してサーバー、データベース、ファイアウォールを管理する
@@ -135,7 +135,7 @@ Azure PowerShell を利用してサーバー、データベース、ファイア
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|ファイアウォール規則を削除します。|
 
 > [!TIP]
-> Azure CLI のクイックスタートについては、[Azure CLI を使用した単一の Azure SQL データベースの作成](az-cli-script-samples-content-guide.md)に関するページを参照してください。 Azure CLI のスクリプトの例については、[CLI を使用した単一の Azure SQL データベースの作成と、ファイアウォール規則の構成](scripts/create-and-configure-database-cli.md)および [CLI を使用した単一の Azure SQL データベースの監視およびスケーリング](scripts/monitor-and-scale-database-cli.md)に関するページを参照してください。
+> Azure CLI クイックスタートについては、[Azure CLI を使用した Azure SQL Database 内のデータベースの作成](az-cli-script-samples-content-guide.md)に関する記事を参照してください。 Azure CLI のスクリプトの例については、[CLI を使用した Azure SQL Database 内のデータベースの作成とファイアウォール規則の構成](scripts/create-and-configure-database-cli.md)に関する記事と、[CLI を使用した Azure SQL Database 内のデータベースの監視およびスケーリング](scripts/monitor-and-scale-database-cli.md)に関する記事を参照してください。
 >
 
 ## <a name="manage-servers-databases-and-firewalls-using-transact-sql"></a>Transact-SQL を利用してサーバー、データベース、ファイアウォールを管理する
@@ -150,19 +150,19 @@ Transact-SQL を利用してサーバー、データベース、ファイアウ�
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Azure SQL Database に新しいデータベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
 |[CREATE DATABASE (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Azure Synapse に新しいデータ ウェアハウス データベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |データベースまたはエラスティック プールを変更します。 |
-|[ALTER DATABASE (Azure SQL Data Warehouse)](/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)|Azure Synapse 内のデータ ウェアハウス データベースを変更します。|
+|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure Synapse 内のデータ ウェアハウス データベースを変更します。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|データベースを削除します。|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|データベースのエディション (サービス レベル)、サービス目標 (価格レベル)、およびエラスティック プール名 (存在する場合) を返します。 サーバーの master データベースにログオンしている場合は、すべてのデータベースの情報が返されます。 Azure Synapse の場合は、master データベースに接続する必要があります。|
 |[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL Database 内のデータベースの CPU、IO、メモリ使用量を返します。 データベースにアクティビティがない場合でも、15 秒ごとに 1 つの行が存在します。|
-|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Azure SQL Database の CPU 使用率とストレージ データを返します。 データは、5 分間隔で収集と集計が実行されます。|
+|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Azure SQL Database 内のデータベースの CPU 使用率とストレージ データを返します。 データは、5 分間隔で収集と集計が実行されます。|
 |[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Azure SQL Database のデータベース接続のイベントの統計が含まれており、データベース接続の成功と失敗の概要を示します。 |
 |[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|成功した Azure SQL Database のデータベース接続、接続エラー、Azure SQL Database のデッドロックを返します。 この情報を使用して、データベースの利用状況の追跡またはトラブルシューティングを行うことができます。|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|サーバーのサーバーレベルのファイアウォールの設定を作成または更新します。 このストアド プロシージャは、マスター データベースのサーバーレベル プリンシパル ログインでのみ利用できます。 サーバーレベルのファイアウォール規則は、Azure レベルのアクセス許可を持つユーザーにより最初のサーバーレベルのファイアウォール規則が作成された後で Transact-SQL を使用しなければ作成できません。|
 |[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|サーバーに関連付けられた、サーバーレベルのファイアウォールの設定に関する情報を返します。|
 |[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|サーバーからサーバーレベルのファイアウォール設定を削除します。 このストアド プロシージャは、マスター データベースのサーバーレベル プリンシパル ログインでのみ利用できます。|
-|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Azure SQL Database 内のデータベースのデータベースレベルのファイアウォール規則を作成または更新します。 マスター データベースと SQL Database のユーザー データベースにデータベース ファイアウォール規則を構成できます。 データベース ファイアウォール規則は、包含データベース ユーザーの利用時に便利です。 データベース ファイアウォール規則は、Azure Synapse ではサポートされていません。|
+|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Azure SQL Database 内のデータベースのデータベースレベルのファイアウォール規則を作成または更新します。 マスター データベースと SQL Database 内のユーザー データベースに対して、データベース ファイアウォール規則を構成できます。 データベース ファイアウォール規則は、包含データベース ユーザーの利用時に便利です。 データベース ファイアウォール規則は、Azure Synapse ではサポートされていません。|
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Azure SQL Database 内のデータベースのデータベースレベルのファイアウォール設定に関する情報を返します。 |
-|[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Azure SQL Database からデータベースのデータベースレベルのファイアウォール設定を削除します。 |
+|[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Azure SQL Database 内のデータベースに関するデータベースレベルのファイアウォール設定を削除します。 |
 
 > [!TIP]
 > Microsoft Windows で SQL Server Management Studio を使用する方法に関するクイックスタートについては、[Azure SQL Database でSQL Server Management Studio を使ってデータに接続してクエリを行う方法](connect-query-ssms.md)に関する記事をご覧ください。 macOS、Linux、Windows で Visual Studio Code を使用する方法に関するクイックスタートについては、[Azure SQL Database でVisual Studio Code を使ってデータに接続してクエリを行う方法](connect-query-vscode.md)に関する記事をご覧ください。

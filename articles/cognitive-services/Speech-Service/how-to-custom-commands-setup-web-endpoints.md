@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307302"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027683"
 ---
 # <a name="set-up-web-endpoints"></a>Web エンドポイントを設定する
 
@@ -46,11 +46,12 @@ ms.locfileid: "85307302"
    | 名前 | UpdateDeviceState | Web エンドポイントの名前。 |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | カスタム コマンド アプリの通信相手とするエンドポイントの URL。 |
    | Method | POST | エンドポイントに対して許可されたやりとり (GET や POST など)。|
-   | ヘッダー | キー: アプリ。値: ご利用のアプリの一意の名前 | 要求ヘッダーに含めるヘッダー パラメーター。|
+   | ヘッダー | キー: アプリ、値: applicationId の最初の 8 桁を取得します | 要求ヘッダーに含めるヘッダー パラメーター。|
 
     > [!NOTE]
     > - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) を使用して作成された Web エンドポイントの例。テレビとファンのデバイス状態を保存するデータベースと結合されます
     > - 提案されたヘッダーは、エンドポイントの例にのみ必要です
+    > - ヘッダーの値が例のエンドポイントで一意になるよう、applicationId の最初の 8 桁を取得します
     > - 現実には、Web エンドポイントを、ご利用のデバイスを管理する [IOT ハブ](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)のエンドポイントとすることができます。
 
 1. **[保存]** をクリックします。
@@ -74,6 +75,8 @@ ms.locfileid: "85307302"
     > - 提案されたクエリ パラメーターは、エンドポイントの例にのみ必要です
 
 1. **[成功時] - [実行するアクション]** で、 **[Send speech response]\(音声応答の送信\)** を選択します。
+    
+    **[シンプルなエディター]** に「`{SubjectDevice} is {OnOff}`」と入力します。
    
    > [!div class="mx-imgBorder"]
    > ![成功時の Web エンドポイント アクションの呼び出し](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -86,6 +89,9 @@ ms.locfileid: "85307302"
    > - `{YourWebEndpointName.FieldName}` を使用すれば、http 応答内のフィールドに直接アクセスすることもできます。 例: `{UpdateDeviceState.TV}`
 
 1. **[失敗時] - [実行するアクション]** で、 **[Send speech response]\(音声応答の送信\)** を選択します。
+
+    **[シンプルなエディター]** に「`Sorry, {WebEndpointErrorMessage}`」と入力します。
+
    > [!div class="mx-imgBorder"]
    > ![失敗時の Web エンドポイント アクションの呼び出し](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212627"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
 
@@ -58,7 +58,7 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 
     ![ストレージのアクセス許可を示すスクリーンショット](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-これで、 **[API のアクセス許可]** ウィンドウに、登録済み Azure AD アプリケーションに Microsoft Graph と Azure Storage の両方へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。
+これで、 **[API のアクセス許可]** ウィンドウに、登録済み Azure AD アプリケーションに Microsoft Graph と Azure Storage の両方の API へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。
 
 ![登録済みのアプリのアクセス許可を示すスクリーンショット](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
@@ -213,7 +213,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
     properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
                                                  scopes.Union(additionalBuildInScopes).ToList());
@@ -241,7 +241,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>完全なサンプルを表示して実行する
 
-サンプル アプリケーションを実行するには、最初に [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal) からクローンまたはダウンロードします。 その後、以下のセクションで説明するようにアプリケーションを更新します。
+サンプル アプリケーションを実行するには、最初に [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal) から複製またはダウンロードします。 その後、以下のセクションで説明するようにアプリケーションを更新します。
 
 ### <a name="provide-values-in-the-settings-file"></a>設定ファイルで値を提供する
 
@@ -284,8 +284,8 @@ CloudBlockBlob blob = new CloudBlockBlob(
 サンプルを実行するには、アプリの登録に対して暗黙的な許可のフローを構成することが必要な場合があります。 次の手順に従います。
 
 1. Azure portal でアプリの登録に移動します。
-1. [管理] セクションで、 **[認証]** 設定を選択します。
-1. **[詳細設定]** の **[暗黙の付与]** セクションで、次の図のように、チェック ボックスをオンにしてアクセス トークンと ID トークンを有効にします。
+1. **[管理]** セクションで、 **[認証]** 設定を選択します。
+1. **[暗黙の付与]** セクションで、次の図のように、チェック ボックスをオンにして ID トークンを有効にします。
 
     ![暗黙的な許可のフローの設定を有効にする方法を示すスクリーンショット](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
@@ -294,13 +294,13 @@ CloudBlockBlob blob = new CloudBlockBlob(
 サンプルを実行するとき、実行時に割り当てられる *localhost* ポートを使うように、アプリの登録で指定されているリダイレクト URI を更新することが必要な場合があります。 割り当てられたポートを使用するようリダイレクト URI を更新するには、次の手順のようにします。
 
 1. Azure portal でアプリの登録に移動します。
-1. [管理] セクションで、 **[認証]** 設定を選択します。
+1. **[管理]** セクションで、 **[認証]** 設定を選択します。
 1. **[リダイレクト URI]** で、次の図のように、ポートを編集して、サンプル アプリケーションで使われているものと一致させます。
 
     ![アプリの登録のリダイレクト URI を示すスクリーンショット](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-- Microsoft ID プラットフォームの詳細については、「[Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)」を参照してください。
-- Azure Storage の RBAC ロールについては、[RBAC を使用したストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。
-- Azure Storage を使用して Azure リソースのマネージド ID を使用する方法については、「[Azure リソースに対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する](storage-auth-aad-msi.md)」を参照してください。
+- [Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)
+- [RBAC を使用してストレージ データへのアクセス権を管理する](storage-auth-aad-rbac.md)
+- [Azure リソースに対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する](storage-auth-aad-msi.md)

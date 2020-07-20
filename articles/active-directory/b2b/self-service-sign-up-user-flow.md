@@ -4,26 +4,23 @@ description: Facebook とフェデレーションして、外部ユーザー (�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551251"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)
-|     |
-| --- |
-| セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+> [!NOTE]
+> セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 組織によって作成されたアプリのユーザー フローを作成できます。 ユーザー フローをアプリケーションに関連付けることで、そのアプリでのサインアップを有効にすることができます。 ユーザー フローを関連付けるアプリケーションは複数選択することができます。 ユーザー フローを 1 つ以上のアプリケーションに関連付けると、そのアプリにアクセスするユーザーが、ユーザー フローで構成されているオプションを使用してサインアップしてゲスト アカウントを取得できるようになります。
 
@@ -109,3 +106,5 @@ Azure AD は、セルフサービス サインアップ用の既定の ID プロ
 
 - [ソーシャル ID プロバイダーの一覧に Google を追加する](google-federation.md)
 - [ソーシャル ID プロバイダーの一覧に Facebook を追加する](facebook-federation.md)
+- [API コネクタを使用して、Web API 経由でユーザー フローをカスタマイズおよび拡張する](api-connectors-overview.md)
+- [ユーザー フローにカスタム承認ワークフローを追加する](self-service-sign-up-add-approvals.md)

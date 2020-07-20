@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 4111b0b01690097535412205b60619172e2c100a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: d207c318a76ec9c75f7c64d25153d1aa415e4f2b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416658"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143038"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での SSL/TLS 接続
 Azure Database for MariaDB では、Secure Sockets Layer (SSL) を使用して、データベース サーバーをクライアント アプリケーションに接続できます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -44,9 +44,9 @@ Azure Database for MariaDB には、クライアント接続に TLS バージョ
 たとえば、[Minimum TLS setting version]\(TLS の最小設定バージョン\) の値を TLS 1.0 に設定した場合、サーバーは TLS 1.0、1.1、および 1.2+ を使用しているクライアントからの接続を許可することになります。 また、これを 1.2 に設定すると、TLS 1.2+ を使用するクライアントからの接続だけが許可され、TLS 1.0 および TLS 1.1 を使用した接続はすべて拒否されます。
 
 > [!Note] 
-> Azure Database for MariaDB では既定で、すべての新しいサーバーに対して TLS が無効になっています。 
+> 既定では、Azure Database for MariaDB ではTLS の最小バージョン (設定 `TLSEnforcementDisabled`) は強制されません。
 >
-> 現在、Azure Database for MariaDB でサポートされている TLS バージョンは、TLS 1.0、1.1、1.2 です。 特定の TLS の最小バージョンに適用されると、無効に変更することはできません。
+> TLS の最小バージョンを強制すると、後で最小バージョンの強制を無効にすることはできません。
 
 Azure Database for MariaDB の TLS 設定を行う方法については、[TLS 設定の構成方法](howto-tls-configurations.md)に関するページを参照してください。
 

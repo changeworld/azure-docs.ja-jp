@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551668"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -79,7 +79,7 @@ Azure AD で、中間層サービスとクライアント アプリケーショ�
 1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリケーション用にアクセス許可を構成します。 **[API のアクセス許可]** で、 **[アクセス許可の追加]** を選択し、 **[自分の API]** を選択します。
 1. テキスト フィールドに中間層サービスの名前を入力します。
-1. **[アクセス許可の選択]** 、 **[\<サービス名> にアクセス]** の順に選択します。
+1. **[アクセス許可の選択]** を選択し、 **[\<service name> にアクセス]** を選択します。
 
 ### <a name="configure-known-client-applications"></a>既知のクライアント アプリケーションの構成
 
@@ -105,7 +105,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 OBO 要求は JSON Web トークン (JWT) を使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるアクセス トークンの値。 |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 OBO 要求は JWT アクセス トークンを使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるトークンの値。 |
@@ -249,7 +249,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 サービス間の SAML アサーション要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるアクセス トークンの値。|
@@ -283,9 +283,9 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 - ext_expires_in:0
 - expires_on:1529627844
 - resource: `https://api.contoso.com`
-- access_token:\<SAML assertion\>
+- access_token: \<SAML assertion\>
 - issued_token_type: urn:ietf:params:oauth:token-type:saml2
-- refresh_token:\<更新トークン\>
+- refresh_token: \<Refresh token\>
 
 ## <a name="client-limitations"></a>クライアントの制限事項
 

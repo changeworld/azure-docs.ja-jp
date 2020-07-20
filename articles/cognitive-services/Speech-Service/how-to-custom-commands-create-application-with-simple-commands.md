@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307261"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362409"
 ---
 # <a name="create-application-with-simple-commands"></a>単純なコマンドを使用してアプリケーションを作成する
 
@@ -27,6 +27,10 @@ ms.locfileid: "85307261"
 ## <a name="create-empty-application"></a>空のアプリケーションを作成する
 空のカスタム コマンド アプリケーションを作成します。 詳細については、[クイックスタート](quickstart-custom-commands-application.md)を参照してください。 今回は、プロジェクトをインポートする代わりに、空のプロジェクトを作成します。
 
+1. **[名前]** ボックスに、プロジェクト名として「`Smart-Room-Lite`」 (またはご自分で選んだ名前) を入力します。
+1. **[言語]** 一覧で、 **[英語 (米国)]** を選択します。
+1. 任意の LUIS リソースを選択または作成します。
+
    > [!div class="mx-imgBorder"]
    > ![プロジェクトの作成](media/custom-commands/create-new-project.png)
 
@@ -36,7 +40,7 @@ ms.locfileid: "85307261"
 
 ## <a name="add-turnon-command"></a>TurnOn コマンドを追加する
 
-**smart room-lite** カスタム コマンド アプリケーションで、発話を処理する単純なコマンド `turn on the tv` を追加し、メッセージ `Ok, turning the tv on` で応答します。
+作成した空の **Smart-Room-Lite** カスタム コマンド アプリケーションで、発話を処理する単純なコマンド `turn on the tv` を追加し、メッセージ `Ok, turning the tv on` で応答します。
 
 1. 左ペインの上部にある **[新しいコマンド]** を選択して、新しいコマンドを作成します。 **[新しいコマンド]** ウィンドウが開きます。
 1. **[名前]** フィールドの値に **TurnOn** を指定します。
@@ -74,7 +78,7 @@ ms.locfileid: "85307261"
 
 次に、コマンドに完了ルールを追加する必要があります。 このルールは、ユーザに対して、フルフィルメント アクションが実行されていることを示します。 ルールと完了ルールの詳細については、[リファレンス](./custom-commands-references.md)を参照してください。
 
-1. 既定の完了ルール **Done** を選択し、次のように編集します。 
+1. 既定の完了ルール **Done** を選択し、次のように編集します。
 
     
     | 設定    | 推奨値                          | 説明                                        |
@@ -84,13 +88,7 @@ ms.locfileid: "85307261"
     | **アクション**    | [Send speech response]\(音声応答を送信する\) > [Simple editor]\(シンプルなエディター\) > [First variation]\(最初のバリエーション\) > `Ok, turning the tv on` | ルール条件が真のときに実行するアクション |
     
 
-1. または、既定の完了ルールを削除し、中央のペインの上部で **[追加]** を選択して、新しいルールを作成することもできます。
-1. **[名前]** セクションに値を指定します。
-1. アクションを追加します。
-   1. **[アクション]** セクションで **[アクションの追加]** を選択して、アクションを作成します。
-   1. **[新しいアクション]** ウィンドウの **[Type]\(種類\)** の一覧で、 **[Send speech response]\(音声応答の送信\)** を選択します。
-   1. **[応答]** で、 **[Simple editor]\(シンプルなエディター\)** を選択します。
-   1. **[First variation]\(最初のバリエーション\)** フィールドで、応答の値に `Ok, turning the tv on` を指定します。
+
 
    > [!div class="mx-imgBorder"]
    > ![音声応答の作成](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ ms.locfileid: "85307261"
 1. **[保存]** を選択してアクションを保存します。
 1. **[完了ルール]** セクションに戻り、 **[保存]** を選択してすべての変更を保存します。 
 
+
+ > [!NOTE]
+    > コマンドに付属する既定の完了ルールを使用する必要はありません。 必要に応じて、既定の完了ルールを削除し、独自のルールを追加することができます。
 
 ### <a name="try-it-out"></a>試してみる
 

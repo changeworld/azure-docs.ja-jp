@@ -5,18 +5,18 @@ description: Azure Machine Learning を使用する Azure Kubernetes Service と
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: contperfq4
-ms.openlocfilehash: f65b263bb90356a4d739ebc963458cc7e992863c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214368"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes Service と Azure Container Instances を使用したモデルの Docker デプロイのトラブルシューティング 
 
@@ -277,7 +277,7 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 504 状態コードは、要求がタイムアウトしたことを示します。既定のタイムアウトは 1 分です。
 
-タイムアウト値を増やすか、score.py を変更して不要な呼び出しを削除することで、サービスの高速化を試みることができます。 これらのアクションで問題が解決しない場合は、この記事の情報を使用して score.py ファイルをデバッグします。 コードがハング状態または無限ループになっている可能性があります。
+タイムアウト値を増やすか、score.py を変更して不要な呼び出しを削除することで、サービスの高速化を試みることができます。 これらのアクションで問題が解決しない場合は、この記事の情報を使用して score.py ファイルをデバッグします。 コードが応答なし状態または無限ループになっている可能性があります。
 
 ## <a name="advanced-debugging"></a>高度なデバッグ
 

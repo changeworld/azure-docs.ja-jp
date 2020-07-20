@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f389943d284c573312473f426048f8aadb79088e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e758c69f91fb60a83dfcc119b2c7f7aba44384ca
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533974"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054663"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -131,7 +131,7 @@ Interactive | [対話型認証](https://github.com/AzureAD/azure-activedirectory
 
 アプリの種類 | Grant | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Web アプリ、Web API、デーモン | クライアントの資格情報 | [ADAL.NET のクライアント資格情報フロー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET のクライアント資格情報フロー](msal-authentication-flows.md#client-credentials))
+Web アプリ、Web API、デーモン | クライアントの資格情報 | [ADAL.NET のクライアント資格情報フロー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET のクライアント資格情報フロー](msal-authentication-flows.md#client-credentials)
 Web API | 次の代理 | [ADAL.NET でのユーザーの代わりのサービス間呼び出し](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET での次の代理](msal-authentication-flows.md#on-behalf-of)
 Web アプリ | 承認コード | [ADAL.NET を使用する Web アプリの承認コードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [MSAL.NET を使用する Web アプリの承認コードでのトークンの取得](msal-authentication-flows.md#authorization-code)
 

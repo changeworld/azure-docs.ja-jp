@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557459"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search で AI エンリッチメント パイプラインにスキルセットを作成する方法 
 
@@ -55,7 +55,7 @@ AI エンリッチメントは、データを抽出して強化し、Azure Cogni
 スキルセットは、スキルの配列として定義されます。 スキルごとに、入力ソースと生成される出力の名前を定義します。 [スキルセット REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-skillset)に関するページに従って、前の図に対応するスキルセットを定義することができます。 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -247,7 +247,7 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 ## <a name="add-a-knowledge-store"></a>ナレッジ ストアを追加する
 
-[ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure Cognitive Search のプレビュー機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
+[ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure Cognitive Search の機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
 
 ナレッジ ストアの定義は、スキルセットに追加されます。 プロセス全体のチュートリアルについては、[REST でのナレッジ ストアの作成](knowledge-store-create-rest.md)に関するページをご覧ください。
 

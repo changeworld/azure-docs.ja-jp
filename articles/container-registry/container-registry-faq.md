@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390365"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -269,6 +269,7 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 - [Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Azure portal でリポジトリまたはタグをフェッチできないのはなぜですか?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [リポジトリ形式が無効またはサポートされていません](#repository-format-is-invalid-or-unsupported)
 - [Windows で http トレースを収集するにはどうすればよいですか?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>`az acr check-health` を使用した正常性チェック
@@ -438,6 +439,13 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 * クラシック レジストリはサポートされなくなりました。 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) か Azure portal を使用して、サポートされている[サービス レベル](https://aka.ms/acr/skus)にアップグレードしてください。
 * イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) コマンドを使用して、現在の属性を表示できます。
 * イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、[こちら](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)をご覧ください。
+* レジストリが、その[ストレージの上限](container-registry-skus.md#service-tier-features-and-limits)に達した可能性があります。
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>リポジトリ形式が無効またはサポートされていません
+
+リポジトリの操作でリポジトリ名を指定するときに "サポートされていないリポジトリ形式"、"無効な形式"、"要求されたデータが存在しません" などのエラーが表示された場合は、名前のスペル、および大文字か小文字かを確認します。 有効なリポジトリ名には、小文字の英数字、ピリオド、ダッシュ、アンダースコア、およびスラッシュのみを含めることができます。 
+
+リポジトリの完全な名前付け規則については、[Open Container Initiative Distribution Specification](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview) (オープン コンテナー イニシアチブの配布仕様) を参照してください。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows で http トレースを収集するにはどうすればよいですか?
 

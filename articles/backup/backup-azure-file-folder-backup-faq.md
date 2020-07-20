@@ -3,12 +3,12 @@ title: ファイルとフォルダーのバックアップに関する一般的�
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254752"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056176"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
@@ -159,7 +159,8 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 
 ### <a name="manage"></a>管理する
 
-**パスフレーズを忘れた場合、復旧できますか?**
+#### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>パスフレーズを忘れた場合、復旧できますか?
+
 Azure Backup エージェントでは、バックアップしたデータを復元中に暗号化を解除するには、パスフレーズ (登録時に指定したもの) が必要です。 忘れたパスフレーズを処理するためのオプションを理解するには、以下のシナリオを確認してください。
 
 | 元のコンピューター <br> " *(バックアップが作成されているソース マシン)* " | Passphrase | 利用可能なオプション |
@@ -177,7 +178,7 @@ Azure Backup エージェントでは、バックアップしたデータを復�
   * "*異なるパスフレーズ*" を使用すると、バックアップしたデータを復元することができません。
 * 元のコンピューターが破損して、MARS コンソールからパスフレーズを再生成することができないものの、MARS エージェントによって使用される元のスクラッチ フォルダーを復元したり、アクセスしたりすることができる場合は、パスワードを忘れた場合に復元することができる可能性があります。 さらにヘルプが必要な場合は、カスタマー サポートにお問い合わせください。
 
-**バックアップが作成されている元のコンピューターを紛失した場合、復旧するにはどうすればよいですか?**
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>バックアップが作成されている元のコンピューターを紛失した場合、復旧するにはどうすればよいですか?
 
 元のコンピューターと同じパスフレーズ (登録時に指定したもの) がある場合は、バックアップされたデータを別のコンピューターに復元できます。 復元オプションを理解するには、以下のシナリオを確認してください。
 
@@ -185,6 +186,10 @@ Azure Backup エージェントでは、バックアップしたデータを復�
 | --- | --- | --- |
 | 紛失 |利用可能 |元のコンピューターの登録時に指定したものと同じパスフレーズを持つ別のコンピューターに、MARS エージェントをインストールして登録することができます。 **[復旧オプション]**  >  **[別の場所]** を選択して、復元を実行します。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)を参照してください。
 | 忘れた |忘れた |データを復旧できないか、データを利用できません。 |
+
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>バックアップジョブが失敗したか、長時間実行されていません。 保有期間を過ぎています。 引き続き復元できますか?
+
+安全性対策として、Azure Backup では、保有期間が過ぎていても、最後の回復ポイントが保持されます。 バックアップが再開され、新しい回復ポイントが使用できるようになると、指定した保有期間に従って古い回復ポイントが削除されます。
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか。
 

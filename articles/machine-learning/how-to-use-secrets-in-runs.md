@@ -1,5 +1,5 @@
 ---
-title: トレーニングの実行でシークレットを使用する
+title: トレーニングの認証シークレット
 titleSuffix: Azure Machine Learning
 description: ワークスペース キー コンテナ―を使用して、セキュリティで保護された方法でトレーニングの実行にシークレットを渡します
 services: machine-learning
@@ -8,16 +8,16 @@ ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: d877794abf12b8b412cd1ecf4efd72fd1179d768
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fefeb162dd6f036c21485715dd680972823fbaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942268"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677477"
 ---
-# <a name="use-secrets-in-training-runs"></a>トレーニングの実行でシークレットを使用する
+# <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning トレーニングの実行で認証資格情報シークレットを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、トレーニングの実行でシークレットを安全に使用する方法について説明します。 ユーザー名やパスワードなどの認証情報はシークレットです。 たとえば、トレーニング データを問い合わせる目的で外部データベースに接続する場合、リモート実行コンテキストにユーザー名とパスワードを渡す必要があります。 このような値をクリアテキストでトレーニング スクリプトにコーディングすると、シークレットが公開されるので安全ではありません。 

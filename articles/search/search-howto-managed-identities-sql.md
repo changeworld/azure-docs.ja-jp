@@ -1,7 +1,7 @@
 ---
-title: マネージド ID を使用して Azure SQL データベースへの接続を設定する (プレビュー)
+title: マネージド ID を使用して Azure SQL Database への接続を設定する (プレビュー)
 titleSuffix: Azure Cognitive Search
-description: マネージド ID を使用して Azure SQL データベースへのインデクサー接続を設定する方法 (プレビュー) について説明します
+description: マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する方法 (プレビュー) について説明します
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559937"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Azure SQL データベースへのインデクサー接続を設定する (プレビュー)
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する (プレビュー)
 
 > [!IMPORTANT] 
 > マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、限定的なパブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
 > プレビューへのアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)に入力して行うことができます。
 
-このページでは、データ ソース オブジェクトの接続文字列に資格情報を指定する代わりに、マネージド ID を使用して Azure SQL データベースへのインデクサー接続を設定する方法について説明します。
+このページでは、データ ソース オブジェクトの接続文字列に資格情報を指定する代わりに、マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する方法について説明します。
 
 この機能について詳しく学ぶ前に、インデクサーとは何か、また、データ ソースに対してインデクサーを設定する方法について理解しておくことをお勧めします。 以下のリンクで詳しい情報を確認できます。
+
 * [インデクサーの概要](search-indexer-overview.md)
 * [Azure SQL インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ ms.locfileid: "83663460"
 **[保存]** を選択した後に、検索サービスに割り当てられたオブジェクト ID が表示されます。
 
 ![オブジェクト ID](./media/search-managed-identities/system-assigned-identity-object-id.png "Object ID")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2 - SQL Server に対して Azure Active Directory の管理者をプロビジョニングする
 
 次の手順でデータベースに接続する際には、検索サービス上でデータベースへのアクセスが許可されるように、データベースに対する管理者アクセス権がある Azure Active Directory (Azure AD) アカウントで接続を行う必要があります。
@@ -56,7 +57,7 @@ ms.locfileid: "83663460"
 
 2. Azure AD アカウントを使用して認証を行う
 
-    ![認証](./media/search-managed-identities/visual-studio-authentication.png "Authenticate")
+    ![認証](./media/search-managed-identities/visual-studio-authentication.png "認証")
 
 3. 次のコマンドを実行します。
 
@@ -102,7 +103,7 @@ SQL データベースからインデックスを作成する場合は、デー�
 * **name** は、Search サービス内のデータ ソースの一意の名前です。
 * **型**は、`azuresql` です
 * **credentials**
-    * マネージド ID を使用して認証する場合、**credentials** 形式は、マネージド ID を使用しない場合とは異なります。 この場合、Initial Catalog または Database の名前と、アカウント キーまたはパスワードが設定されていない ResourceId を指定します。 ResourceId には、Azure SQL データベースのサブスクリプション ID、SQL データベースのリソース グループ、および SQL データベースの名前を含める必要があります。 
+    * マネージド ID を使用して認証する場合、**credentials** 形式は、マネージド ID を使用しない場合とは異なります。 この場合、Initial Catalog または Database の名前と、アカウント キーまたはパスワードが設定されていない ResourceId を指定します。 ResourceId には、Azure SQL Database のサブスクリプション ID、SQL データベースのリソース グループ、および SQL データベースの名前を含める必要があります。 
     * マネージド ID の接続文字列の形式:
         * *Initial Catalog|Database=**データベース名**;ResourceId=/subscriptions/**お使いのサブスクリプション ID**/resourceGroups/**お使いのリソース グループ名**/providers/Microsoft.Sql/servers/**お使いの SQL Server 名**/;Connection Timeout=**接続タイムアウトの長さ**;*
 * **container** には、インデックスを作成する対象のテーブルまたはビューの名前を指定します。
@@ -110,7 +111,7 @@ SQL データベースからインデックスを作成する場合は、デー�
 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して Azure SQL データ ソース オブジェクトを作成する方法の例:
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -131,7 +132,7 @@ Azure portal と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azur
 検索可能な `booktitle` フィールドを使用してインデックスを作成する方法を次に示します。   
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -155,7 +156,7 @@ api-key: [admin key]
 Azure SQL インデクサーのインデクサー定義の例:
 
 ```
-POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 

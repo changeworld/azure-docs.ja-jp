@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907467"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -91,7 +91,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 
 1. Load Balancer の作成  
    1. [Azure portal](https://portal.azure.com) で、[すべてのリソース]、[追加] の順にクリックして、**Load Balancer** を検索します  
-   1. **[作成]** 
+   1. **[作成]** をクリックします。 
    1. ロード バランサーの名前を「**MyPublicILB**」に設定します  
    1. 種類として **[パブリック]** を選択し、SKU として **[Standard]** を選択します  
    1. **[パブリック IP アドレスの作成]** を選択し、名前として「**MyPublicILBFrondEndIP**」と指定します  
@@ -222,7 +222,10 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
 
 ## <a name="other-solutions"></a>その他のソリューション
 
-送信トラフィックがサード パーティのファイアウォール経由でルーティングされる場合は、ファイアウォール構成で Azure 管理 API への送信接続が許可されていることを確認します: `https://management.azure.com` と `https://login.microsoftonline.com`。  
+サードパーティ ファイアウォール経由で送信トラフィックが経路指定される場合:
+
+- Azure フェンス エージェントを使用している場合、Azure 管理 API `https://management.azure.com` および `https://login.microsoftonline.com` への送信接続がファイアウォール構成で許可されるようにします。   
+- 更新プログラムやパッチの適用に SUSE の Azure パブリック クラウド更新インフラストラクチャを使用している場合、「[Azure Public Cloud Update Infrastructure 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)」 (Azure パブリック クラウド更新インフラストラクチャ 101) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

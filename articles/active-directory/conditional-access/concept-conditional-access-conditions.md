@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160717"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024453"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -32,6 +32,10 @@ ms.locfileid: "82160717"
 
 [Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてサインイン リスクを評価できます。 サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 サインイン リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)」と「[方法:リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
+## <a name="user-risk"></a>ユーザー リスク 
+
+[Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてユーザー リスクを評価できます。 ユーザー リスクは、特定の ID またはアカウントに対する侵害の確率を表します。 ユーザー リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#user-risk)」および「[方法: リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
+
 ## <a name="device-platforms"></a>デバイス プラットフォーム
 
 デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって分類されます。 Azure AD では、デバイスによって提供される、ユーザー エージェント文字列などの情報を使用してプラットフォームを識別します。 ユーザー エージェント文字列は変更できるため、この情報は未検証です。 デバイス プラットフォームは、Microsoft Intune デバイス コンプライアンス ポリシーと連携して使用するか、ブロック ステートメントの一部として使用する必要があります。 既定では、すべてのデバイス プラットフォームに適用されます。
@@ -43,9 +47,6 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 - Windows Phone
 - Windows
 - macOS
-
-> [!WARNING]
-> Microsoft は、条件付きアクセス ポリシーと macOS 10.15.4 ベースのデバイスに関する問題を認識しています。 詳細については、ブログ記事「[Known Issue:Conditional access unexpectedly blocking macOS 10.15.4 native mail client/other apps](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283)」 (既知の問題: 条件付きアクセスにより macOS 10.15.4 ネイティブ メール クライアントまたはその他のアプリが予期せずにブロックされる) を参照してください。
 
 **他のクライアント**条件を使用してレガシ認証をブロックする場合は、デバイスのプラットフォーム条件も設定できます。
 
@@ -115,21 +116,17 @@ Windows 7、iOS、Android、および macOS では、Azure AD によって、デ
 
 Chrome ブラウザーにこの拡張機能を自動的に展開するには、次のレジストリ キーを作成します。
 
-|    |    |
-| --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 名前 | 1 |
-| Type | REG_SZ (文字列) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+- パス HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 名前 1
+- 型 REG_SZ (文字列)
+- データ ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx
 
 **Windows 8.1 および 7** で Chrome をサポートするには、次のレジストリ キーを作成してください。
 
-|    |    |
-| --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 名前 | 1 |
-| Type | REG_SZ (文字列) |
-| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+- パス HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 名前 1
+- 型 REG_SZ (文字列)
+- データ {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。
 

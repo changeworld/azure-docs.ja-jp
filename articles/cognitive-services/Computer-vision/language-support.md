@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589195"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560181"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
 Computer Vision の一部の機能では、複数の言語がサポートされています。ここに記載されていない機能では、英語だけがサポートされています。
 
-## <a name="text-recognition"></a>テキストの認識
+## <a name="text-detection-ocr"></a>テキストの検出 (OCR)
 
-Computer Vision では、さまざまな言語のテキストを認識できます。 OCR API と Read API では、言語コードを指定する必要はありません。 この機能および各 API の利点の詳細については、「[印刷されたテキストと手書きのテキストの認識](concept-recognizing-text.md)」を参照してください。
+Computer Vision では、さまざまな言語のテキストを検出できます。 Read API と OCR API では、言語コードを指定する必要はありません。 この機能および各 API の利点の詳細については、[画像やドキュメントからのテキストの読み取り](concept-recognizing-text.md)に関する記事を参照してください。
 
 |Language| 言語コード | OCR API | Read API |
 |:-----|:----:|:-----:|:---:|

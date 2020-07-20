@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78155395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112071"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保存されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションは個々の VM 障害を許容しますが、VM のデプロイ時間または個々の VM インスタンスの再イメージ化によって影響をより強く受けます。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 
  
@@ -47,6 +47,9 @@ ms.locfileid: "78155395"
 VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 たとえば、マーケットプレースの標準の Windows Server イメージは約 127 GiB であり、これは 127 GiB より大きいキャッシュを持つ VM サイズが必要であることを意味します。 この場合、[Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) のキャッシュ サイズは 86 GiB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GiB であり、十分な大きさです。 この場合、Standard_DS3_v2 が、このイメージで使用できる DSv2 シリーズの最小サイズ です。 Marketplace の基本の Linux イメージと `[smallsize]` で示される Windows Server イメージは約 30 GiB になる傾向があり、利用可能な VM サイズのほとんどを使用できます。
 
 また、エフェメラル ディスクでは、VM サイズで Premium Storage がサポートされていることも必要です。 通常 (常にではありませんが)、 サイズには DSv2 や EsV3 のように名前に `s` があります。 詳細については、[Azure の VM サイズ](../articles/virtual-machines/linux/sizes.md)に関する記事で Premium Storage をサポートするサイズの詳細を参照してください。
+
+## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>プレビュー - エフェメラル OS ディスクを一時ディスクに保存できるようになりました
+エフェメラル OS ディスクは、VM キャッシュに加え、VM の一時ディスクまたはリソース ディスクに保存できるようになりました。 つまり、これからは、VM にキャッシュがないか、キャッシュが十分でなくても、Dav3、Dav4、Eav4、Eav3 など、エフェメラル OS ディスクを保存する一時ディスクまたはリソース ディスクがあれば、エフェメラル OS ディスクを使用できます。 また、VM に十分なキャッシュと一時領域がある場合、[DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement) という名前の新しいプロパティを使用し、エフェメラル OS ディスクを格納する場所を指定できるようになります。 現在、この機能はプレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 始めるには、[アクセスをリクエスト](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)してください。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -198,7 +201,24 @@ A:はい。エフェメラル OS ディスクを使用する VM にマネージ�
 
 **Q:エフェメラル OS ディスクではすべての VM サイズがサポートされますか?**
 
-A:いいえ。B シリーズ、N シリーズ、H シリーズのサイズを除くすべての Premium Storage VM のサイズ (DS、ES、FS、GS、および M) がサポートされます。  
+A:いいえ。ほとんどの Premium Storage VM サイズがサポートされています (DS、ES、FS、GS、M など)。 特定の VM サイズでエフェメラル OS ディスクがサポートされているかどうかは、次の方法で確認できます。
+
+`Get-AzComputeResourceSku` PowerShell コマンドレットを呼び出します。
+```azurepowershell-interactive
+ 
+$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
+
+foreach($vmSize in $vmSizes)
+{
+   foreach($capability in $vmSize.capabilities)
+   {
+       if($capability.Name -eq 'EphemeralOSDiskSupported' -and $capability.Value -eq 'true')
+       {
+           $vmSize
+       }
+   }
+}
+```
  
 **Q:エフェメラル OS ディスクを既存の VM およびスケール セットに適用できますか?**
 

@@ -6,29 +6,30 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 53ae3217e77a9301cbe0d3d63ce0712a0b9b7f1e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 520f64cbe768f2fcbd4603d1fb038bc349cd01db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391980"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 これは、同期操作がサポートされる最初の Azure Cosmos DB Sync Java SDK v2 for SQL API です。
@@ -47,6 +48,12 @@ ms.locfileid: "84171618"
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="251"></a><a name="2.5.1"></a>2.5.1
+* documentCollection クエリのマスター パーティション キャッシュの問題を修正します。
+
+### <a name="250"></a><a name="2.5.0"></a>2.5.0
+* 449 再試行カスタム構成のサポートが追加されました。
 
 ### <a name="247"></a><a name="2.4.7"></a>2.4.7
 * 接続プールのタイムアウト問題を修正します。
@@ -268,6 +275,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2020 年 6 月 3 日 |--- |
+| [2.5.0](#2.5.0) |2020 年 5 月 12 日 |--- |
 | [2.4.7](#2.4.7) |2020 年 2 月 20 日 |--- |
 | [2.4.6](#2.4.6) |2020 年 1 月 24 日 |--- |
 | [2.4.5](#2.4.5) |2019 年 11 月 10 日 |--- |

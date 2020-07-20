@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 36662a0089fef34a539788cfac667b5086a10c78
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255536"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -150,7 +150,7 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** は、Azure SQL データベースの SSIS カタログ データベース (SSISDB) の価格レベルです。 この設定は、IR インスタンス内の worker の最大数、パッケージの実行をキューに入れる速度、実行ログを読み込む速度に影響します。
+**SSISDBPricingTier** は、Azure SQL Database の SSIS カタログ データベース (SSISDB) の価格レベルです。 この設定は、IR インスタンス内の worker の最大数、パッケージの実行をキューに入れる速度、実行ログを読み込む速度に影響します。
 
 -   パッケージの実行をキューに入れる速度および実行ログを読み込む速度が重要でない場合は、最低のデータベース価格レベルを選んでかまいません。 Basic 価格レベルの Azure SQL Database は、1 つの統合ランタイム インスタンスで 8 個の worker をサポートします。
 

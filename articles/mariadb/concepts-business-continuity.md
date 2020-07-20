@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532393"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076574"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのビジネス継続性を理解する
 
@@ -48,11 +48,12 @@ Azure Database for MariaDB で提供されるビジネス継続性機能には�
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。
 
+## <a name="cross-region-read-replicas"></a>リージョンにまたがる読み取りレプリカ
+
+リージョンにまたがる読み取りレプリカを使用すると、事業継続とディザスター リカバリーの計画を強化できます。 読み取りレプリカは、MariaDB のバイナリ ログ レプリケーション テクノロジを使用して非同期的に更新されます。 読み取りレプリカ、利用可能なリージョン、フェールオーバーする方法については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
+
 ## <a name="next-steps"></a>次のステップ
 
-- 自動バックアップについて詳しくは、[Azure Database for MariaDB でのバックアップ](concepts-backup.md)に関するページをご覧ください。
-- Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- [Azure Database for MariaDB での自動バックアップ](concepts-backup.md)の詳細を確認する。
+- [Azure portal](howto-restore-server-portal.md) または [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法を確認する。
+- [Azure Database for MariaDB の読み取りレプリカ](concepts-read-replicas.md)について確認する。

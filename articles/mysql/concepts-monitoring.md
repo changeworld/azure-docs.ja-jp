@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: ee9fe44844cd7263075c9dfe0acea8558f325525
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/25/2020
+ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414115"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -26,7 +26,7 @@ ms.locfileid: "84267669"
 |---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
-|io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
+|io_consumption_percent|IO の割合|Percent|使用されている IO の割合 (Basic レベルのサーバーには適用されません。)|
 |storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
 |storage_used|使用済みストレージ|バイト|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
 |serverlog_storage_percent|サーバー ログ ストレージの割合|Percent|サーバーの最大サーバー ログ ストレージのうち、使用されているサーバー ログ ストレージの割合。|
@@ -73,7 +73,7 @@ ms.locfileid: "84267669"
 **サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
 
 > [!IMPORTANT]
-> 計画メンテナンスの通知は、現在、米国中西部**を除く**すべてのリージョンで プレビューとして利用できます
+> 計画メンテナンスの通知は、現在、米国中西部**を除く**すべてのリージョンでプレビューとして利用できます
 
 ## <a name="next-steps"></a>次のステップ
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。

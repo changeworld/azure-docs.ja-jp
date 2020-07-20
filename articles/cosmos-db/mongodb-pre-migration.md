@@ -4,15 +4,15 @@ description: このドキュメントでは、MongoDB から Cosmos DB にデー
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
-ms.date: 01/09/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263060"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 
@@ -79,7 +79,10 @@ Azure Cosmos DB では、スループットは事前にプロビジョニング�
 同様の方法で、パーティション分割機能によって自動的に容量が追加され、それに応じてデータが再調整されます。 データに適したパーティション キーの選択に関する詳細および推奨事項については、「[パーティション キーの選択](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)」記事を参照してください。 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>データのインデックス作成
-既定では、Azure Cosmos DB で、挿入されたすべてのデータに対して自動インデックス作成が提供されます。 Azure Cosmos DB によって提供されるインデックス作成機能には、複合インデックス、一意のインデックス、Time-to-Live (TTL) インデックスの追加が含まれます。 インデックス管理インターフェイスは、`createIndex()` コマンドにマップされます。 詳細については、[Azure Cosmos DB の MongoDB 用 API でのインデックス作成](mongodb-indexing.md)に関するページを参照してください。
+
+Azure Cosmos DB の MongoDB サーバー バージョン 3.6 用 API では、`_id` フィールドのみ、インデックスが自動的に作成されます。 このフィールドは削除できません。 シャード キーごとに `_id` フィールドの一意性が自動的に適用されます。 その他のフィールドのインデックスを作成するには、MongoDB インデックス管理コマンドを適用します。 この既定のインデックス作成ポリシーは Azure Cosmos DB の SQL API とは異なり、既定ですべてのフィールドのインデックスが作成されます。
+
+Azure Cosmos DB によって提供されるインデックス作成機能には、複合インデックス、一意のインデックス、Time-to-Live (TTL) インデックスの追加が含まれます。 インデックス管理インターフェイスは、`createIndex()` コマンドにマップされます。 詳細については、[Azure Cosmos DB の MongoDB 用 API でのインデックス作成](mongodb-indexing.md)に関する記事を参照してください。
 
 [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) では、一意のインデックスがある MongoDB のコレクションは自動的に移行されます。 ただし、一意のインデックスは移行前に作成する必要があります。 Azure Cosmos DB では、コレクションにデータが既にある場合、一意のインデックスの作成をサポートしていません。 詳細については、[Azure Cosmos DB における一意のキー](unique-keys.md)に関するページをご覧ください。
 

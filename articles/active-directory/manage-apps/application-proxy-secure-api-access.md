@@ -2,22 +2,21 @@
 title: Azure AD アプリケーション プロキシを使用してオンプレミス API にアクセスする
 description: Azure Active Directory のアプリケーション プロキシは、オンプレミスまたはクラウド VM でホストされている API およびビジネス ロジックにネイティブ アプリが安全にアクセスできるようにします。
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: has-adal-ref
-ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206446"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護
 
@@ -35,7 +34,7 @@ ms.locfileid: "84168811"
 
 ![Azure AD アプリケーション プロキシの API アクセス](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
+Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
 
 Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection) の機械学習支援型のセキュリティも活用できます。
 
@@ -48,7 +47,7 @@ Azure AD アプリケーション プロキシの認証と承認は Azure AD 上
 
 ## <a name="publish-the-api-through-application-proxy"></a>アプリケーション プロキシ経由で API を公開する
 
-アプリケーション プロキシを介してイントラネットの外部で API を公開するには、Web アプリを公開する場合と同じパターンに従ってください。 詳細については、「[チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
+アプリケーション プロキシを介してイントラネットの外部で API を公開するには、Web アプリを公開する場合と同じパターンに従ってください。 詳細については、[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
 
 アプリケーション プロキシ経由で SecretAPI Web API を公開するには、次のようにします。
 
@@ -137,7 +136,7 @@ AppProxyNativeAppSample ネイティブ アプリを登録するには、次の�
 
 ## <a name="configure-the-native-app-code"></a>ネイティブ アプリ コードを構成する
 
-最後の手順では、ネイティブ アプリを構成します。 NativeClient サンプル アプリの *Form1.cs* ファイルからのものである次のスニペットによって、ADAL ライブラリは、API 呼び出しを要求するためのトークンを取得し、それをベアラーとしてアプリのヘッダーに添付します。
+最後の手順では、ネイティブ アプリを構成します。 NativeClient サンプル アプリの *Form1.cs* ファイルからのものである次のスニペットによって、MSAL ライブラリは、API 呼び出しを要求するためのトークンを取得し、それをベアラーとしてアプリのヘッダーに添付します。
 
    ```
    // Acquire Access Token from AAD for Proxy Application

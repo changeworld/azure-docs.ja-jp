@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database と Data Warehouse の接続の設定
-description: このドキュメントでは、TLS バージョンの選択と、Azure SQL Database および Azure Synapse Analytics のプロキシとリダイレクトの設定の比較について説明します
+description: このドキュメントでは、Transport Layer Security (TLS) バージョンの選択と、Azure SQL Database および Azure Synapse Analytics のプロキシとリダイレクトの設定の比較について説明します
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 3397fcb14f27e6bc0cc64b048dedde7198d5a06b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 07/06/2020
+ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266085"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045376"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続の設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,9 +33,17 @@ ms.locfileid: "84266085"
 
 ## <a name="deny-public-network-access"></a>パブリック ネットワーク アクセスの拒否
 
-Azure portal で **[パブリック ネットワーク アクセスの拒否]** 設定が **[はい]** に設定されている場合、プライベート エンドポイント経由の接続のみが許可されます。 この設定を **[いいえ]** に設定すると、クライアントはプライベートまたはパブリック エンドポイントを使用して接続できます。
+**[パブリック ネットワーク アクセスの拒否]** 設定が **[はい]** に設定されている場合、プライベート エンドポイント経由の接続のみが許可されます。 この設定が **[いいえ]** (既定) に設定されているとき、[ネットワーク アクセスの概要](network-access-controls-overview.md)に記載されているように、パブリック エンドポイント (IP ベースのファイアウォール規則、VNET ベースのファイアウォール規則) またはプライベート エンドポイント (Private Link を使用) を使用してクライアントから接続できます。 
 
-お客様は、[ネットワーク アクセスの概要](network-access-controls-overview.md)に記載されているように、パブリック エンドポイント (IP ベースのファイアウォール規則、VNET ベースのファイアウォール規則) またはプライベート エンドポイント (Private Link を使用) を使用して SQL Database に接続できます。 
+ ![接続のスクリーンショット。パブリック ネットワーク アクセスが拒否されています][2]
+
+論理サーバーにプライベート エンドポイントが存在しない状態で **[パブリック ネットワーク アクセスの拒否]** 設定を **[はい]** に設定しようとすると失敗し、次のようなエラー メッセージが表示されます。  
+
+```output
+Error 42102
+Unable to set Deny Public Network Access to Yes since there is no private endpoint enabled to access the server. 
+Please set up private endpoints and retry the operation. 
+```
 
 **[Deny public network access]\(パブリック ネットワーク アクセスを拒否する\)** 設定を **[はい]** に設定すると、プライベート エンドポイント経由の接続のみが許可され、パブリック エンドポイント経由の接続はすべて拒否され、次のようなエラーメッセージが表示されます。  
 
@@ -44,6 +52,14 @@ Error 47073
 An instance-specific error occurred while establishing a connection to SQL Server. 
 The public network interface on this server is not accessible. 
 To connect to this server, use the Private Endpoint from inside your virtual network.
+```
+
+**[パブリック ネットワーク アクセスの拒否]** 設定を **[はい]** に設定後、ファイアウォール規則を追加したり、更新したりすると、すべて拒否され、次のようなエラー メッセージが表示されます。
+
+```output
+Error 42101
+Unable to create or modify firewall rules when public network interface for the server is disabled. 
+To manage server or database level firewall rules, please enable the public network interface.
 ```
 
 ## <a name="change-public-network-access-via-powershell"></a>PowerShell を使用してパブリック ネットワーク アクセスを変更する
@@ -86,9 +102,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 最小 [トランスポート層セキュリティ (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) バージョン設定を使用すると、ユーザーは Azure SQL Database で使用される TLS のバージョンを制御できます。
 
-現時点では、TLS 1.0、1.1、1.2 がサポートされています。 最小 TLS バージョンを設定すると、以降の新しい TLS バージョンがサポートされるようになります。 たとえば、1.1 よりも大きい TLS バージョンを選択する ことは、TLS 1.1 および 1.2 との接続のみが受け入れられ、TLS 1.0 は拒否されることを意味します。 テスト後、アプリケーションでこれがサポートされていることを確認するために、最小 TLS バージョンを 1.2 に設定することをお勧めします。これは、以前のバージョンの脆弱性に対する修正プログラムが含まれており、Azure SQL Database でサポートされる TLS の最高バージョンであるためです。
+現時点では、TLS 1.0、1.1、1.2 がサポートされています。 最小 TLS バージョンを設定すると、以降の新しい TLS バージョンがサポートされるようになります。 たとえば、1.1 よりも大きい TLS バージョンを選択します。 ことは、TLS 1.1 および 1.2 との接続のみが受け入れられ、TLS 1.0 は拒否されることを意味します。 テスト後、アプリケーションでこれがサポートされていることを確認するために、最小 TLS バージョンを 1.2 に設定することをお勧めします。これは、以前のバージョンの脆弱性に対する修正プログラムが含まれており、Azure SQL Database でサポートされる TLS の最高バージョンであるためです。
 
-以前のバージョンの TLS に依存するアプリケーションを使用しているお客様には、アプリケーションの要件に従って最小 TLS バージョンを設定することをお勧めします。 暗号化されていない接続を使用して接続するアプリケーションに依存しているお客様は、最少 TLS バージョンを設定しないことをお勧めします。 
+> [!IMPORTANT]
+> 最小 TLS バージョンの既定は、すべてのバージョンを許可することです。 ただし、TLS のバージョンを強制した後で既定値に戻すことはできません。
+
+以前のバージョンの TLS に依存するアプリケーションを使用しているお客様には、アプリケーションの要件に従って最小 TLS バージョンを設定することをお勧めします。 暗号化されていない接続を使用して接続するアプリケーションに依存しているお客様は、最少 TLS バージョンを設定しないことをお勧めします。
 
 詳細については、「[SQL Database の接続に関する TLS の考慮事項](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity)」を参照してください。
 
@@ -205,3 +224,4 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png
+[2]: media/single-database-create-quickstart/manage-connectivity-flowchart.png

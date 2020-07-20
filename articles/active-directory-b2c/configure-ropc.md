@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389600"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
@@ -50,9 +50,9 @@ ms.locfileid: "83636411"
 ## <a name="test-the-user-flow"></a>ユーザー フローをテストする
 
 お気に入りの API 開発アプリケーションを使用して API 呼び出しを生成し、応答を確認して、ユーザー フローをデバッグします。 次の表の情報を使用して、POST 要求の本文として、このような呼び出しを作成します。
-- *\<tenant-name>.onmicrosoft.com* は実際の B2C テナント名に置き換えます。
-- *\<B2C_1A_ROPC_Auth>* は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
-- *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* は実際の登録のアプリケーション ID に置き換えます。
+- *\<tenant-name>.onmicrosoft.com* は、実際の B2C テナント名に置き換えます。
+- *\<B2C_1A_ROPC_Auth>* は、実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
+- *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* は、登録のアプリケーション ID に置き換えます。
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 

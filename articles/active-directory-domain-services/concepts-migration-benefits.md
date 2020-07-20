@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: iainfou
-ms.openlocfilehash: 29d7772ef688134e8fc9009ec32cffacc3f23ca7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 837ca3afaf014c41fded09fa8342eed1c13e5dcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734930"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のクラシックから Resource Manager デプロイ モデルへの移行による利点
 
-Azure Active Directory Domain Services (AD DS) では、クラシック デプロイ モデルを使用する既存のマネージド ドメインを Resource Manager デプロイ モデルに移行できます。 Resource Manager デプロイ モデルを使用する Azure AD DS マネージド ドメインでは、詳細なパスワード ポリシー、監査ログ、アカウント ロックアウト保護などの追加機能が提供されます。
+Azure Active Directory Domain Services (Azure AD DS) では、クラシック デプロイ モデルを使用する既存のマネージド ドメインを Resource Manager デプロイ モデルに移行できます。 Resource Manager デプロイ モデルを使用する Azure AD DS マネージド ドメインでは、詳細なパスワード ポリシー、監査ログ、アカウント ロックアウト保護などの追加機能が提供されます。
 
 この記事では、移行による利点について概説します。 作業を開始するには、「[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行][howto-migrate]」を参照してください。
 
@@ -30,7 +30,7 @@ Azure Active Directory Domain Services (AD DS) では、クラシック デプ�
 
 ## <a name="migration-benefits"></a>移行の利点
 
-移行プロセスでは、クラシック デプロイ モデルを使用する既存の Azure AD DS インスタンスを選択し、Resource Manager デプロイモデルを使用するように移動します。 Azure AD DS マネージド ドメインをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行すると、コンピューターをマネージド ドメインに再参加させたり、Azure AD DS インスタンスを削除して最初から作成したりする必要がなくなります。 移行プロセスの終わりの時点で、VM は引き続き Azure AD DS マネージド ドメインに参加しています。
+移行プロセスでは、クラシック デプロイ モデルを使用する既存のマネージド ドメインを選択し、Resource Manager デプロイ モデルを使用するように移動します。 マネージド ドメインをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行すると、コンピューターをマネージド ドメインに再参加させたり、マネージド ドメインを削除して最初から作成したりする必要がなくなります。 移行プロセスの終わりの時点で、VM は引き続きマネージド ドメインに参加しています。
 
 移行後は Azure AD DS によって、Resource Manager デプロイ モデルを使用しているドメインでのみ利用可能な多くの機能が提供されます。次に例を示します。
 
@@ -46,7 +46,7 @@ Azure Active Directory Domain Services (AD DS) では、クラシック デプ�
 * サポートはより多くのテレメトリにアクセスでき、より効果的なトラブルシューティングに役立てることができます。
 * マネージド ドメイン コントローラー上のデータに対する、[Azure Managed Disks][managed-disks] を使用した保存時の暗号化。
 
-Resource Manager デプロイ モデルを使用する Azure AD DS マネージド ドメインは、最新の機能を使用して最新の状態を維持するのに役立ちます。 クラシック デプロイ モデルを使用する Azure AD DS マネージド ドメインでは、新機能を使用できません。
+Resource Manager デプロイ モデルを使用するマネージド ドメインは、最新の機能を使用して最新の状態を維持するのに役立ちます。 クラシック デプロイ モデルを使用するマネージド ドメインでは、新機能を使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

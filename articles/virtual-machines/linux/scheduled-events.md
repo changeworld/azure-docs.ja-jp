@@ -1,18 +1,19 @@
 ---
 title: Azure の Linux VM 向けのスケジュールされたイベント
 description: Linux 仮想マシンに Azure Metadata Service を使用してイベントをスケジュールします。
-author: mimckitt
-ms.service: virtual-machines-windows
-ms.topic: article
+author: EricRadzikowskiMSFT
+ms.service: virtual-machines-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: mimckitt
-ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.author: ericrad
+ms.reviewer: mimckitt
+ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262108"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -53,7 +54,12 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 - スタンドアロンの仮想マシン。
 - クラウド サービス内のすべての VM。
 - 可用性セット内のすべての VM。
+- 可用性ゾーン内のすべての VM。 
 - スケール セットの配置グループすべての VM。 
+
+> [!NOTE]
+> 可用性ゾーンの VM に固有ですが、スケジュール化されたイベントはゾーン内のシングル VM に進みます。
+> たとえば、ある可用性セット内に 100 の VM があるとき、そのうちの 1 つが更新されるなら、スケジュール化されたイベントは 100 すべてに進みます。一方で、あるゾーン内に 100 のシングル VM がある場合、イベントは、影響を受ける VM にのみ進みます。
 
 そのため、イベント内の `Resources` フィールドをチェックして、影響を受ける VM を特定する必要があります。
 

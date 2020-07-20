@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77530208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974842"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い
 
@@ -30,9 +30,9 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>購入する前に適切なキャッシュのサイズを決定する
 
-予約のサイズは、既存のまたはすぐにデプロイされる予定のキャッシュ (特定のリージョン内で同じサービス レベルを使用するもの) で使用される計算量の合計に基づいて決める必要があります。
+予約のサイズは、既存のまたはすぐにデプロイされる予定のキャッシュ (特定のリージョン内で同じサービス レベルを使用するもの) で使用されるメモリ サイズの合計に基づいて決める必要があります。
 
-たとえば、1 つの汎用の Gen5 - 32 仮想コア キャッシュと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア キャッシュを実行しているとします。 さらに、来月中に汎用の Gen5 - 32 仮想コア データベース サーバーを 1 つと、メモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つデプロイする予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 個の仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 個の仮想コア 1 年予約分を購入する必要があります。
+たとえば、2 つのキャッシュを実行しているとします。13 GB で 1 つ、26 GB で 1 つです。 いずれも少なくとも 1 年は必要です。 さらに、季節需要に合わせるため、月あたり既存の 13 GB キャッシュを 26 GB にスケーリングし、その後、元に戻す計画を立てているとします。 この場合、1 年予約で 1 P1 キャッシュと 1 P2 キャッシュか 3 P1 キャッシュを購入することで最大限に節約できます。 キャッシュ間での配分に関係なく、予約したキャッシュ メモリの合計量に対して割引を受けられます。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>予約容量用に Azure Cache for Redis を購入する

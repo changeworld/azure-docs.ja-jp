@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124989"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027167"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -247,9 +247,9 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>大容量ディスクを含む仮想マシンのバックアップからのファイルの回復
 
-このセクションでは、16 を超える数のディスクがあり、かつ各ディスク サイズが 32 TB を超える Azure 仮想マシンのバックアップからファイルの回復を実行する方法について説明します。
+このセクションでは、16 を超える数のディスクがあるか、各ディスク サイズが 4 TB を超える Azure 仮想マシンのバックアップからファイルの回復を実行する方法について説明します。
 
-ファイルの回復プロセスではバックアップのすべてのディスクがアタッチされるため、多数のディスク (16 を超える) または大容量ディスク (それぞれ 32 TB を超える) が使用されている場合は、次のアクション ポイントが推奨されます。
+ファイルの回復プロセスではバックアップのすべてのディスクがアタッチされるため、多数のディスク (16 を超える) または大容量ディスク (それぞれ 4 TB を超える) が使用されている場合は、次のアクション ポイントが推奨されます。
 
 - ファイルの回復のために個別の復元サーバー (Azure VM D2v3 VM) を保持します。 それはファイルの回復にのみ使用でき、必要がないときはシャットダウンできます。 元のコンピューターへの復元は、VM 自体に大きな影響を与えるためお勧めできません。
 - 次に、ファイルの回復操作が成功するかどうかを確認するために、スクリプトを 1 回実行します。

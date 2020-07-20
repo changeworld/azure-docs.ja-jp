@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: fe6e0a0f3ffd3680c75c086222a4a390ce15d4df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: a014628a9664e33aa855cc4fbf40979236d765f9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213195"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355609"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Form Recognizer コンテナーのインストールと実行 (プレビュー)
 
@@ -138,6 +138,9 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 `docker run` コマンドの[例](form-recognizer-container-configuration.md#example-docker-run-commands)を利用できます。
 
 ### <a name="form-recognizer"></a>Form Recognizer
+
+> [!NOTE]
+> これらの例の `--mount` に使用されるディレクトリは、Windows のディレクトリ パスです。 Linux または macOS を使用している場合は、環境に合わせてパラメーターを変更してください。 
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \

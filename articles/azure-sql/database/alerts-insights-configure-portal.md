@@ -11,20 +11,20 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: 0e9b8f7bc4129c07145130f198b738839b0c7b55
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553496"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-using-azure-portal"></a>Azure portal を使用して Azure SQL Database と Azure Synapse のアラートを作成する
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal を使用して、Azure SQL Database と Azure Synapse Analytics のアラートを作成します
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
 ## <a name="overview"></a>概要
 
-この記事では、Azure portal を使用して、Azure SQL Database と Azure Synapse (旧称 Azure SQL Data Warehouse) のデータベースのアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。
+この記事では、Azure portal を使用して、Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) のデータベースのアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。
 
 > [!NOTE]
 > Azure SQL Managed Instance 固有の手順については、[Azure SQL Managed Instance のアラートを作成する](../managed-instance/alerts-create.md)方法に関するページを参照してください。
@@ -42,7 +42,7 @@ ms.locfileid: "84035133"
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
 
-* [Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure ポータル](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [コマンド ライン インターフェイス (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)

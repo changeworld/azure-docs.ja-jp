@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ac9d9fddc45abbcbe4890d1060dcc2c931c72182
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482872"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -105,9 +105,9 @@ ms.locfileid: "84265167"
     パフォーマンスは、環境設定、構成、また、これが初期の同期か継続的な同期かに応じて異なります。詳細については、「[Azure File Sync のパフォーマンス メトリック](storage-files-scale-targets.md#azure-file-sync-performance-metrics)」を参照してください
 
 * <a id="afs-conflict-resolution"></a>**2 つのサーバーで同じファイルがほぼ同時に変更された場合、どうなりますか。**  
-    Azure File Sync では、シンプルな競合解決方法が採用されています。ファイルに対して 2 つのサーバーで同時に変更を加えた場合、その両方の変更が保持されます。 最後に書き込まれた変更では、元のファイル名が維持されます。 古いファイルでは、"ソース" マシンと競合番号が名前に追加されます。 次の命名規則が使用されます。 
+    Azure File Sync では、シンプルな競合解決方法が採用されています。ファイルに対して 2 つのエンドポイントで同時に変更を加えた場合、その両方の変更が保持されます。 最後に書き込まれた変更では、元のファイル名が維持されます。 (LastWriteTime によって決定される) 古いファイルには、エンドポイント名と競合番号がファイル名に追加されます。 サーバー エンドポイントの場合、エンドポイント名はサーバーの名前です。 クラウド エンドポイントの場合、エンドポイント名は **Cloud** です。 名前は、次の命名規則に従います。 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
     たとえば、CompanyReport.docx で競合が生じたとします。古い方の書き込みが CentralServer で行われた場合、最初の競合で生じるファイルの名前は CompanyReport-CentralServer.docx となります。 2 回目の競合では、CompanyReport-CentralServer-1.docx という名前になります。 Azure File Sync は、1 つのファイルにつき 100 個の競合ファイルをサポートします。 競合ファイルの最大数に達すると、競合ファイルの数が 100 個未満になるまで、ファイルは同期されません。
 
@@ -133,6 +133,10 @@ ms.locfileid: "84265167"
 * <a id="afs-effective-vfs"></a>
   **ボリューム上に複数のサーバー エンドポイントがある場合、*ボリュームの空き領域*はどのように解釈されますか。**  
   「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-effective-vfs)」を参照してください。
+  
+* <a id="afs-tiered-files-tiering-disabled"></a>
+  **クラウドを使った階層化を無効にしたのですが、サーバー エンドポイントの場所に階層化されたファイルがあるのはなぜでしょうか。**  
+  「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-tiering-disabled)」を参照してください。
 
 * <a id="afs-files-excluded"></a>
   **Azure File Sync によって自動的に除外されるのは、どのファイルまたはフォルダーですか。**  
@@ -151,16 +155,16 @@ ms.locfileid: "84265167"
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-  **ストレージ同期サービスやストレージ アカウントを別のリソース グループまたはサブスクリプションに移動できますか。**  
-   はい。ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
+  **ストレージ同期サービスやストレージ アカウントを、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できますか。**  
+   はい。ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
-    > Azure File Sync では、別の Azure AD テナントへのサブスクリプションの移動がサポートされません。
+    > クラウド エンドポイントを作成するときは、ストレージ同期サービスとストレージ アカウントが同じ Azure AD テナントに存在する必要があります。 クラウド エンドポイントが作成された後、ストレージ同期サービスとストレージ アカウントを別の Azure AD テナントに移動できます。
     
 * <a id="afs-ntfs-acls"></a>
   **Azure File Sync では、Azure Files の格納データと共にディレクトリ レベルまたはファイル レベルの NTFS ACL が保持されますか。**
 
-    2020 年2 月 24 日の時点で、Azure File Sync によって階層化された新規および既存の ACL は NTFS 形式で保存され、Azure ファイル共有に直接加えられた ACL の変更は、同期グループ内のすべてのサーバーに同期されます。 Azure Files に対して行われた ACL の変更は、Azure File Sync 経由で同期されます。Azure Files にデータをコピーするときは、SMB を使用して共有にアクセスし、ACL を保持する必要があります。 AzCopy や Storage Explorer などの既存の REST ベースのツールは、ACL を保持しません。
+    2020 年2 月 24 日の時点で、Azure File Sync によって階層化された新規および既存の ACL は NTFS 形式で保存され、Azure ファイル共有に直接加えられた ACL の変更は、同期グループ内のすべてのサーバーに同期されます。 Azure Files に対して行われた ACL の変更は、Azure File Sync 経由で同期されます。Azure Files にデータをコピーするときは、必要な "忠実性" をサポートするコピー ツールを使用して、属性、タイムスタンプ、ACL を SMB または REST 経由で Azure ファイル共有に必ずコピーしてください。 AzCopy などの Azure コピー ツールを使用する場合は、最新バージョンを使用することが重要です。 [ファイル コピー ツールの表](storage-files-migration-overview.md#file-copy-tools)をチェックして、Azure コピー ツールの概要を確認し、ファイルの重要なメタデータをすべてコピーできることを確認します。
 
     File Sync で管理されているファイル共有に対して Azure Backup を有効にした場合、ファイル ACL をバックアップ復元ワークフローの一部として引き続き復元できます。 これは、共有全体または個々のファイル/ディレクトリに対して機能します。
 

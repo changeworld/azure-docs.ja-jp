@@ -6,18 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2627cd540efe644315e303337b7dce95a6e2d126
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84906889"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
-
-監視ソリューションでは、Azure のサービスを利用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報が提供されます。 この記事では、Azure の監視ソリューションの簡単な概要と、監視ソリューションの使用とインストールの詳細について説明します。
-
-使用する任意のアプリケーションおよびサービスの Azure Monitor に監視ソリューションを追加できます。 通常、これらは無料で使用できますが、利用料金が発生する可能性のあるデータが収集されます。 パートナーとお客様は、Microsoft 提供のソリューションとは別に、自身の環境で使用する[管理ソリューションを作成](solutions-creating.md)したり、作成したソリューションをコミュニティを通じて公開したりすることができます。
+監視ソリューションでは、Azure のサービスを活用し、特定のアプリケーションまたはサービスの操作をさらに分析します。 この記事では、Azure の監視ソリューションの簡単な概要と、監視ソリューションの使用とインストールの詳細について説明します。 使用する任意のアプリケーションおよびサービスの Azure Monitor に監視ソリューションを追加できます。 通常、これらは無料で使用できますが、利用料金が発生する可能性のあるデータが収集されます。
 
 ## <a name="use-monitoring-solutions"></a>監視ソリューションの使用
 

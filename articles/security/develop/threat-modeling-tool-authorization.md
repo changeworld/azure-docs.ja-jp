@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 75bbce0f1e9787e55880ccac80dacb5457e1f2c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322657"
 ---
-# <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
+# <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | [アーティクル] |
 | --------------- | ------- |
 | **コンピューターの信頼の境界** | <ul><li>[デバイス上のデータへの未承認アクセスを制限する適切な ACL が構成されていることを確認する](#acl-restricted-access)</li><li>[ユーザー固有の機密アプリケーション コンテンツがユーザー プロファイル ディレクトリに保存されていることを確認する](#sensitive-directory)</li><li>[デプロイされたアプリケーションが最小権限で実行されていることを確認する](#deployed-privileges)</li></ul> |
@@ -146,7 +146,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [SQL Database 権限の階層](https://msdn.microsoft.com/library/ms191465)、[SQL データベースのセキュリティ保護機能](https://msdn.microsoft.com/library/ms190401) |
+| **参照**              | [SQL 権限の階層](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine)、[SQL セキュリティ保護可能なリソース](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **手順** | 最小権限のアカウントを使用してデータベースに接続します。 アプリケーションのログインはデータベース内に制限し、選択したストアド プロシージャのみを実行します。 アプリケーションのログインには、直接テーブル アクセスは含まれません。 |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>テナントがお互いのデータにアクセスできないように行レベル セキュリティの RLS を実装する
@@ -160,7 +160,7 @@ WHERE userID=:id < - session var
 | **参照**              | [SQL Server の行レベルのセキュリティ (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **手順** | <p>行レベルのセキュリティを使用すると、クエリを実行しているユーザーの特性 (たとえば、グループ メンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。</p><p>Row-Level Security (RLS) は、アプリケーションでセキュリティの設計やコーディングを簡略化します。 RLS を使用すると、データ行のアクセスに対して制限を実装できます。 たとえば、ワーカーが自分の部署に関連するデータ行にのみアクセスできるようにしたり、顧客のデータ アクセスをその顧客の会社のデータにのみ制限したりできます。</p><p>アクセスの制限のロジックは、別のアプリケーション層のデータから離れてではなく、データベース層にあります。 任意の層からデータへのアクセスが試行されるたびに、データベース システムにはアクセス制限が適用されます。 これによりセキュリティ システムの侵入口が減り、そのシステムの信頼性と堅牢性が向上します。</p><p>|
 
-そのまま使用できるデータベース機能としての RLS は、SQL Server 2016 以降および Azure SQL データベースにのみ適用できます。 そのまま使用できる RLS 機能が実装されていない場合、データ アクセスはビューとプロシージャの使用に制限されます
+そのまま使用できるデータベース機能としての RLS は、SQL Server 2016 以降、Azure SQL Database、および SQL Managed Instance にのみ適用できます。 そのまま使用できる RLS 機能が実装されていない場合、データ アクセスはビューとプロシージャの使用に制限されます
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>Sysadmin ロールには必要かつ有効なユーザーのみを割り当てる
 
@@ -170,7 +170,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [SQL Database 権限の階層](https://msdn.microsoft.com/library/ms191465)、[SQL データベースのセキュリティ保護機能](https://msdn.microsoft.com/library/ms190401) |
+| **参照**              | [SQL 権限の階層](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine)、[SQL セキュリティ保護可能なリソース](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **手順** | SysAdmin 固定サーバー ロールには限られたメンバーのみを割り当て、アプリケーションで使用されるアカウントは追加しないようにします。  ロールのユーザーの一覧を確認し、不要なアカウントはすべて削除してください|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>最小権限のトークンを使用してクラウド ゲートウェイに接続する

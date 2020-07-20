@@ -4,12 +4,12 @@ description: App Service でさまざまなシナリオに合わせて認証お�
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205647"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -17,8 +17,8 @@ ms.locfileid: "79236195"
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
-* [チュートリアル: Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)
-* [チュートリアル: Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および承認する](containers/tutorial-auth-aad.md)
+* [チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](app-service-web-tutorial-auth-aad.md)
+* [チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](containers/tutorial-auth-aad.md)
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法](configure-authentication-provider-aad.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](configure-authentication-provider-facebook.md)
 * [Google ログインを使用するようにアプリを構成する方法](configure-authentication-provider-google.md)
@@ -35,7 +35,7 @@ ms.locfileid: "79236195"
 
 サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 次に例を示します。
 
-```HTML
+```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
 <a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
@@ -47,7 +47,7 @@ ms.locfileid: "79236195"
 
 サインイン後のユーザーをカスタム URL にリダイレクトさせるには、`post_login_redirect_url` クエリ文字列パラメーターを使用します (ご利用の ID プロバイダーの構成におけるリダイレクト URI と混同しないでください)。 たとえば、サインイン後にユーザーを `/Home/Index` にリダイレクトさせるには、次の HTML コードを使用します。
 
-```HTML
+```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
@@ -103,7 +103,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 Web ページの簡単なサインアウト リンクを次に示します。
 
-```HTML
+```html
 <a href="/.auth/logout">Sign out</a>
 ```
 
@@ -172,11 +172,11 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
-- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページをご覧ください)。
+- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページを参照してください)。
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
-    2. 左側のブラウザーで、**subscriptions** >  **_\<subscription\_name_**  > **resourceGroups** >  **_\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<app\_name>_**  > **config** > **authsettings** に移動します。 
+    2. 左側のブラウザーで、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettings** に移動します。 
     3. **[編集]** をクリックします。
     4. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
@@ -190,7 +190,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 任意の時点でアクセス トークンを更新するには、任意の言語で `/.auth/refresh` を呼び出します。 次のスニペットでは、jQuery を使用して、JavaScript クライアントからアクセス トークンを更新します。
 
-```JavaScript
+```javascript
 function refreshTokens() {
   let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
@@ -223,7 +223,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure AD では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 ただし、ユーザーを独自のブランドの Azure AD サインインページ (`contoso.com`など) に直接誘導することもできます。 サインイン アカウントのドメイン名を提示するには、以下の手順に従います。
 
-[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** >  **_\< subscription\_ name_**  > **resourceGroups** >  **_\< resource\_ group\_ name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< app\_ name>_**  > **config** > **authsettings** に移動します。 
+[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name> _** > **config** > **authsettings** に移動します。 
 
 **[Edit]** をクリックし、次のプロパティを変更し、 **[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
 
@@ -281,5 +281,5 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Windows)](app-service-web-tutorial-auth-aad.md)
-> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Linux)](containers/tutorial-auth-aad.md)
+> [チュートリアル:ユーザーをエンド ツー エンドで認証および承認する (Windows)](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル: ユーザーをエンド ツー エンドで認証および承認する (Linux)](containers/tutorial-auth-aad.md)

@@ -4,12 +4,12 @@ description: アプリ用に事前構築済みの PHP コンテナーを構成�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9e4237f1eecb9f6542aac946525ff4583e478c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905699"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
 
@@ -109,7 +109,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 PHP のインストールを変更する必要がある場合は、以下の手順に従って、いずれかの [php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を変更できます。
 
 > [!NOTE]
-> PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://www.php.net/manual/function.phpinfo.php) を呼び出すことです。
+> PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://php.net/manual/function.phpinfo.php) を呼び出すことです。
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a> 非 PHP_INI_SYSTEM ディレクティブをカスタマイズする
@@ -187,7 +187,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>ブラウザーで SSH セッションを開く
 
@@ -198,7 +198,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 動作中の PHP アプリが App Service で異なる動作をしたり、エラーが発生した場合は、次のことを試してください。
 
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
-- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 次に例を示します。
+- 実稼働モードでローカルにアプリをテストします。 App Service では、アプリが実稼働モードで実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 次に例を示します。
     - *composer.json* に応じて、実稼働モードに別々のパッケージ (`require` と `require-dev`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。

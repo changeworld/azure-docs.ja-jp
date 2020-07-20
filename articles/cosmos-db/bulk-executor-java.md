@@ -5,22 +5,22 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260595"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
 このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos コンテナーに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
 
-現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor Java ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。
+現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor Java ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。 説明されているバルク エグゼキューター ライブラリは、[Azure Cosmos DB Java sync SDK v2](sql-api-sdk-java.md) でのみ使用することができ、Java バルク サポートで現在推奨されているソリューションとなります。 現在、3.x、4.x、またはより上位のその他のバージョンの SDK では使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 

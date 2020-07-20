@@ -4,29 +4,29 @@ description: Windows デバイスのローカル管理者グループに Azure �
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386370"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
 Windows デバイスを管理するには、ローカル管理者グループのメンバーになる必要があります。 Azure Active Directory (Azure AD) では、Azure AD の参加プロセス時に、デバイス上でのこのグループのメンバーシップが更新されます。 メンバーシップの更新方法は、ビジネス要件に応じてカスタマイズすることもできます。 メンバーシップの更新は、たとえば、デバイスへの管理者権限を要するタスクをヘルプデスク スタッフが実行できるようにするうえで役立ちます。
 
-この記事では、Azure AD 参加中のメンバーシップの更新のしくみと、そのカスタマイズ方法について説明します。 この記事の内容は、**ハイブリッド** Azure AD 参加には適用されません。
+この記事では、Azure AD 参加中のローカル管理者メンバーシップの更新のしくみと、そのカスタマイズ方法について説明します。 この記事の内容は、**ハイブリッド Azure AD 参加**デバイスには適用されません。
 
 ## <a name="how-it-works"></a>しくみ
 
-Azure AD 参加を使用して Windows デバイスを Azure AD に接続すると、Azure AD によって、デバイスのローカル管理者グループに次のセキュリティ原則が追加されます。
+Azure AD 参加を使用して Windows デバイスを Azure AD に接続すると、Azure AD によって、デバイスのローカル管理者グループに次のセキュリティ プリンシパルが追加されます。
 
 - Azure AD のグローバル管理者ロール
 - Azure AD のデバイス管理者ロール 
@@ -59,10 +59,13 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 >[!NOTE]
 > このオプションを使用するには、Azure AD Premium テナントが必要です。 
 
-デバイス管理者は、すべての Azure AD 参加済みデバイスに割り当てられます。 デバイス管理者の対象範囲を特定のデバイス セットに限定することはできません。 デバイス管理者ロールを更新しても、対象のユーザーにすぐに影響が及ぶとは限りません。 ユーザーが既にサインインしているデバイスでは、次の "*両方の*" アクションが発生したときに特権の更新が行われます。
+デバイス管理者は、すべての Azure AD 参加済みデバイスに割り当てられます。 デバイス管理者の対象範囲を特定のデバイス セットに限定することはできません。 デバイス管理者ロールを更新しても、対象のユーザーにすぐに影響が及ぶとは限りません。 ユーザーが既にサインインしているデバイスでは、次の "*両方の*" アクションが発生したときに特権の昇格が行われます。
 
-- Azure AD が適切な特権を備える新しいプライマリ更新トークンを発行するために 4 時間が経過した。 
+- Azure AD が適切な特権を備える新しいプライマリ更新トークンを発行するために最大 4 時間が経過した。 
 - ユーザーが、プロファイルを更新するために、ロックおよびロック解除ではなく、いったんログアウトした後でサインインした。
+
+>[!NOTE]
+> 上記のアクションは、関連するデバイスに以前にサインインしていないユーザーには適用されません。 この場合、管理者特権は、デバイスへの最初のサインインの直後に適用されます。 
 
 ## <a name="manage-regular-users"></a>通常のユーザーの管理
 
@@ -88,7 +91,7 @@ Azure AD の参加プロセスを使用するのではなく、通常のユー�
 
 デバイス管理者は、すべての Azure AD 参加済みデバイスに割り当てられます。 対象を特定のデバイス セットに限定することはできません。
 
-デバイス管理者ロールからユーザーを削除しても、ユーザーがデバイスにサインインしている間は、ローカル管理者特権が維持されます。 特権は、次回サインインするときか、4 時間が経過して新しいプライマリ更新トークンが発行されるときに失効します。
+デバイス管理者ロールからユーザーを削除しても、ユーザーがデバイスにサインインしている間は、ローカル管理者特権が維持されます。 特権は、次回サインイン中に、新しいプライマリ更新トークンが発行されるときに失効します。 この失効は、特権の昇格と同様に、最大 4 時間かかる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスター用のサービス �
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7dcbd91063d4f36c4d78023b6548db0c968eda74
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392631"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077696"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
@@ -31,9 +31,19 @@ AKS クラスターの資格情報を更新する場合、以下の方法から�
 * クラスターで使用されている既存のサービス プリンシパルの資格情報を更新する。または、
 * サービス プリンシパルを作成し、それらの新しい資格情報を使用するようにクラスターを更新する。
 
+### <a name="check-the-expiration-date-of-your-service-principal"></a>サービス プリンシパルの有効期限を確認する
+
+サービス プリンシパルの有効期限を確認するには、[az ad sp credential list][az-ad-sp-credential-list] コマンドを使用します。 次の例では、[az aks show][az-aks-show] コマンドを使用して、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのサービス プリンシパル ID を取得します。 サービス プリンシパル ID は、[az ad sp credential list][az-ad-sp-credential-list] コマンドで使用するための *SP_ID* という名前の変数として設定されます。
+
+```azurecli
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+```
+
 ### <a name="reset-existing-service-principal-credential"></a>既存のサービス プリンシパルの資格情報をリセットする
 
-既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。
+既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。 これらのコマンドでは Bash 構文を使用します。
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -88,7 +98,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --client-secret "$SP_SECRET"
 ```
 
 サービス プリンシパル資格情報が AKS で更新されるまでに少し時間がかかります。
@@ -120,4 +130,5 @@ az aks update-credentials \
 [aad-integration]: azure-ad-integration.md
 [create-aad-app]: azure-ad-integration.md#create-the-server-application
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

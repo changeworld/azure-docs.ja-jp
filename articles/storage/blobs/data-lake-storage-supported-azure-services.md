@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: edfcb1d0bfc87c84620b13ed26ec681fef32f1e3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 1854c6f86e1a3578b6314b072f104174032344e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907586"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされている Azure のサービス
 
@@ -39,7 +39,7 @@ Azure のサービスを使用して、データを取り込み、分析を実�
 |HDInsight |一般公開|[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Data Lake Storage Gen2 で HDFS CLI を使用する](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、および読み込み](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |一般公開|[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
 |Power BI|一般公開|[Power BI を使用して Data Lake Storage Gen2 のデータを分析する](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
-|SQL Data Warehouse|一般公開|[Azure SQL Data Warehouse で使用する](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
+|Azure Synapse Analytics (旧称 SQL Data Warehouse)|一般公開|[Azure Synapse Analytics (旧称 SQL Data Warehouse) と共に使用する](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server Integration Services (SSIS)|一般公開|[Azure Storage 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 |Azure Cognitive Search|プレビュー|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure Data Explorer|プレビュー|[Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|

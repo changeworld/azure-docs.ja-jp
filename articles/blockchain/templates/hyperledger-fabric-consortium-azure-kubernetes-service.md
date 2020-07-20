@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 description: Azure Kubernetes Service に Hyperledger Fabric コンソーシアム ネットワークをデプロイして構成する方法
-ms.date: 01/08/2020
-ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980229"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085808"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 
@@ -19,6 +19,18 @@ Azure Kubernetes Service (AKS) 上の Hyperledger Fabric (HLF) テンプレー�
 
 - Hyperledger Fabric と、Hyperledger Fabric ブロックチェーン ネットワークの構成要素を形成するさまざまなコンポーネントについての、実用的な知識が得られます。
 - 運用シナリオ用に Azure Kubernetes Service に Hyperledger Fabric コンソーシアムをデプロイして構成する方法がわかります。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
+
+## <a name="choose-an-azure-blockchain-solution"></a>Azure Blockchain ソリューションの選択
+
+ソリューション テンプレートの使用を選択する前に、利用可能な Azure Blockchain オプションの一般的なユース ケースと実際のシナリオを比較してください。
+
+オプション | サービス モデル | 一般的なユース ケース
+-------|---------------|-----------------
+ソリューション テンプレート | IaaS | ソリューション テンプレートは、完全に構成されたブロックチェーン ネットワーク トポロジのプロビジョニングに使用できる Azure Resource Manager テンプレートです。 これらのテンプレートでは、特定のブロックチェーン ネットワークの種類に対応する Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスをデプロイして構成します。 ソリューション テンプレートは、サービス レベル アグリーメントなしに提供されます。 サポートが必要な場合には、[Microsoft Q&A の質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)をご利用ください。
+[Azure Blockchain Service](../service/overview.md) | PaaS | Azure Blockchain Service (プレビュー) により、コンソーシアム ブロックチェーン ネットワークの構成、管理、ガバナンスが簡素化されます。 Azure Blockchain Service は、PaaS、コンソーシアム管理、またはコントラクトとトランザクションのプライバシーを必要とするソリューションに使用します。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS および PaaS | Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン ソリューションまたはブロックチェーン アプリケーションの概念実証のプロトタイプを作成する際に使用します。 Azure Blockchain Workbench は、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A の質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)をご利用ください。
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric コンソーシアムのアーキテクチャ
 
@@ -190,7 +202,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > コンソーシアムのピア組織の数に基づいて、ピア コマンドを繰り返し、あわせて環境変数を設定することが必要になる場合があります。
 
-**Azure ストレージ アカウントを設定するための以下の環境変数を設定する**
+**Azure Storage アカウントを設定するための以下の環境変数を設定する**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -200,7 +212,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-Azure ストレージ アカウントの作成については、以下の手順に従ってください。 Azure ストレージ アカウントが既に作成されている場合は、この手順をスキップします。
+Azure Storage アカウントの作成については、次の手順に従います。 Azure Storage アカウントが既に作成されている場合は、この手順をスキップします。
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -208,7 +220,7 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-Azure ストレージ アカウントでファイル共有を作成するには、次の手順に従います。 既にファイル共有が作成されている場合は、この手順をスキップします。
+Azure Storage アカウントでファイル共有を作成するには、次の手順に従います。 既にファイル共有が作成されている場合は、この手順をスキップします。
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -284,12 +296,12 @@ orderer 組織クライアントから、コマンドを発行して新しいチ
 > コンソーシアム操作を開始する前に、クライアント アプリケーションの初期セットアップが完了していることを確認します。  
 
 チャネルおよびコンソーシアムにピア組織を追加するには、次のコマンドを指定された順序で実行します。
-1.  ピア組織クライアントで、Azure ストレージにピア組織 MSP をアップロードします。
+1.  ピア組織クライアントで、Azure Storage にピア組織 MSP をアップロードします。
 
       ```bash
       ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
       ```
-2.  orderer 組織クライアントで、Azure ストレージからピア組織 MSP をダウンロードし、コマンドを発行してチャネルまたはコンソーシアムにピア組織を追加します。
+2.  orderer 組織クライアントで、Azure Storage からピア組織 MSP をダウンロードし、コマンドを発行してチャネルまたはコンソーシアムにピア組織を追加します。
 
       ```bash
       ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -297,13 +309,13 @@ orderer 組織クライアントから、コマンドを発行して新しいチ
       ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ```
 
-3.  orderer 組織クライアントで、Azure ストレージに orderer 接続プロファイルをアップロードして、ピア組織がこの接続プロファイルを使用して orderer ノードに接続できるようにします。
+3.  orderer 組織クライアントで、Azure Storage に orderer 接続プロファイルをアップロードして、ピア組織がこの接続プロファイルを使用して orderer ノードに接続できるようにします。
 
       ```bash
       ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ```
 
-4.  ピア組織クライアントで、Azure ストレージから orderer 接続プロファイルをダウンロードし、コマンドを発行してチャネルにピア ノードを追加します。
+4.  ピア組織クライアントで、Azure Storage から orderer 接続プロファイルをダウンロードし、コマンドを発行してチャネルにピア ノードを追加します。
 
       ```bash
       ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -418,3 +430,17 @@ SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
+
+## <a name="support-and-feedback"></a>サポートとフィードバック
+
+Azure Blockchain の最新情報については、[Azure Blockchain のブログ](https://azure.microsoft.com/blog/topics/blockchain/)をご覧ください。Azure Blockchain エンジニアリング チームからの情報やブロックチェーン サービスの内容に関する最新の情報を把握することができます。
+
+製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)で投稿またはアイデアに投票してください。
+
+### <a name="community-support"></a>コミュニティ サポート
+
+Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
+
+- [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 ブロックチェーン テンプレートに関するエンジニアリング サポートは、デプロイに関する問題に限りご利用いただけます。
+- [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

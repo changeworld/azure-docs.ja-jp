@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362511"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -118,7 +118,8 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>エラー:Get-RdsSessionHost コマンドレットで記録されたステータスに、ステータスが Unavailable (利用不可) と示されています
 
-![Get-RdsSessionHost コマンドレットでステータスが Unavailable (利用不可) と示されます。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Get-RdsSessionHost コマンドレットでステータスが Unavailable (利用不可) と示されています。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因:** エージェントを新しいバージョンに更新できません。
 
@@ -191,7 +192,8 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 サイドバイサイド スタックがインストールされ、有効になっている場合、**qwinsta** の出力には、**rdp-sxs** が一覧表示されます。
 
-![サイドバイサイド スタックは、出力に rdp-sxs として記載されている qwinsta でインストールされ、有効化されました。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![サイドバイサイド スタックは、出力に rdp-sxs として記載されている qwinsta でインストールされ、有効化されました。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 下に記載されているレジストリ エントリを調べ、その値が一致することを確認します。 レジストリ キーがないか、値が一致しない場合、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」にあるサイドバイサイド スタックの再インストール方法を実行してください。
 
@@ -205,7 +207,8 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>エラー:O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE エラー コード。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE エラー コード。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因:** サイドバイサイド スタックがセッション ホスト VM にインストールされていません。
 
@@ -247,19 +250,21 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname は、サイドバイサイド スタックが誤作動する VM のマシン名です。
 
 7. [同意する] をクリックし、PsExec の使用許諾契約に同意します。
 
-    ![ソフトウェア使用許諾契約のスクリーンショット。](../media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![ソフトウェア使用許諾契約のスクリーンショット。](../media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >このダイアログは、PsExec の初回実行時にのみ表示されます。
 
 8. サイドバイサイド スタックが誤作動する VM でコマンド プロンプト セッションが開いたら、qwinsta を実行し、rdp-sxs という名前のエントリがあることを確認します。 エントリがない場合、サイドバイサイド スタックは VM 上にありません。そのため、問題はサイドバイサイド スタックに関連したものではありません。
 
-    ![管理者コマンド プロンプト](../media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![管理者コマンド プロンプト](../media/AdministratorCommandPrompt.png)
 
 9. 次のコマンドを実行します。このコマンドによって、サイドバイサイドが誤作動する VM にインストールされている Microsoft コンポーネントが一覧表示されます。
 
@@ -327,7 +332,8 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 3. **[PC 情報]** を選択します。
 4. "バージョン" の横の数字を確認します。 次の図に示すように、この数字は "1809" または "1903" のいずれかになります。
 
-    ![Windows の仕様ウィンドウのスクリーンショット。 バージョン番号が青色で強調表示されています。](../media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Windows の仕様ウィンドウのスクリーンショット。 バージョン番号が青色で強調表示されています。](../media/windows-specifications.png)
 
 バージョン番号がわかったら、該当するセクションに進んでください。
 
@@ -341,7 +347,7 @@ Azure ギャラリーから、最新バージョンの Windows 10 バージョ�
 
 ## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>We couldn't connect to the remote PC because of a security error (セキュリティ エラーのため、リモート PC に接続できませんでした)
 
-"We couldn't connect to the remote PC because of a security error. If this keeps happening, ask your admin or tech support for help" (セキュリティ エラーのため、リモート PC に接続できませんでした。この問題が引き続き発生する場合は、管理者または技術サポートにお問い合わせください) というエラーがユーザーに表示された場合は、既定の RDP アクセス許可を変更する既存のポリシーを確認してください。 このエラーを発生させる可能性があるポリシーの 1 つは、"リモート デスクトップ サービスを使ったログオンを許可" セキュリティ ポリシーです。
+「We couldn't connect to the remote PC because of a security error. (セキュリティ エラーのため、リモート PC に接続できませんでした。) If this keeps happening, ask your admin or tech support for help (この問題が引き続き発生する場合は、管理者または技術サポートにお問い合わせください)」というエラーがユーザーに表示された場合は、既定の RDP アクセス許可を変更する既存のポリシーを確認してください。 このエラーを発生させる可能性があるポリシーの 1 つは、"リモート デスクトップ サービスを使ったログオンを許可" セキュリティ ポリシーです。
 
 このポリシーの詳細については、「[リモート デスクトップ サービスを使ったログオンを許可](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)」を参照してください。
 

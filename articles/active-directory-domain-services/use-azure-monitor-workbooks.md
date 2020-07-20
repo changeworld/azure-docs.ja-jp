@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84733400"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure AD Domain Services のセキュリティ監査イベントを確認する
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
 Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインの状態を把握するために、セキュリティ監査イベントを有効にすることができます。 これらのセキュリティ監査イベントは、Azure Monitor ブックを使用して確認できます。このブックでは、テキスト、分析クエリ、およびパラメーターが、豊富な対話型レポートに結合されています。 Azure AD DS には、セキュリティの概要とアカウントのアクティビティに関するブック テンプレートが含まれており、監査イベントを掘り下げて環境を管理することができます。
 
@@ -31,7 +31,7 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+    * 必要に応じて、[Azure Active Directory Domain Services マネージド ドメインを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
 * Log Analytics ワークスペースにデータをストリーミングする、Azure Active Directory Domain Services マネージド ドメインに対して有効にされたセキュリティ監査イベント。
     * 必要な場合は、[Azure Active Directory Domain Services でセキュリティ監査を有効にします][enable-security-audits]。
 

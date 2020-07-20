@@ -9,16 +9,15 @@ ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
-manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266969"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078971"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング
 
@@ -106,7 +105,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 - **Console.ReadLine** メソッドか、[OK] ボタンを含むダイアログのいずれかを使用して、以降の実行を一時停止します。 コンピューターがネットワークに接続された後に、ユーザーが Enter キーを押します。
 - 再度接続を試みます。
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>接続時に間違った綴りのデータベース名を使用することによるテスト
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>接続時に間違った綴りのユーザー名を使用することによるテスト
 
 意図的に間違ったユーザー名を使って初回接続を試みます。 エラーは次のとおりです。
 

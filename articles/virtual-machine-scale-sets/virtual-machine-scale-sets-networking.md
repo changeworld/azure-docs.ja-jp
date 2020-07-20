@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 07/17/2017
+ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 39539f29df48d19b956b8bab6f63da50473453d4
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374731"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -44,7 +44,7 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure 仮想マシン スケール セットと Azure Load Balancer
 
-仮想マシン スケール セットとロード バランサーを操作する場合は、次の点を考慮する必要があります。
+仮想マシン スケール セットとロード バランサーを操作する場合は、次の項目を考慮する必要があります。
 
 * **複数の仮想マシン スケール セットで同じロード バランサーを使用することはできません**。
 * **ポート フォワーディングとインバウンド NAT 規則**:
@@ -52,7 +52,7 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
   * スケール セットが作成された後、ロード バランサーの正常性プローブに使用される負荷分散ルールのバックエンド ポートを変更することはできません。 ポートを変更するには、Azure 仮想マシン スケール セットを更新し、ポートを更新してから正常性プローブを再度構成することで、正常性プローブを削除できます。
   * ロード バランサーのバックエンド プールで仮想マシン スケール セットを使用している場合は、既定のインバウンド NAT 規則が自動的に作成されます。
 * **インバウンド NAT プール**:
-  * インバウンド NAT プールはインバウンド NAT 規則のコレクションです。 1 つのインバウンド NAT プールは複数の VM Scale Sets をサポートできません。
+  * インバウンド NAT プールはインバウンド NAT 規則のコレクションです。 1 つのインバウンド NAT プールで複数の仮想マシン スケール セットをサポートすることはできません。
 * **負荷分散規則**:
   * ロード バランサーのバックエンド プールで仮想マシン スケール セットを使用している場合は、既定の負荷分散規則が自動的に作成されます。
 * **アウトバウンド規則**:

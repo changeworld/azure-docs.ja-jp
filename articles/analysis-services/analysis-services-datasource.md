@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5b0639179c21aefebc44222c9efaa4cd8d9c82f5
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921903"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077441"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -37,7 +37,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 <a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。  
 <a name="azprovider">2</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、インメモリと DirectQuery の両方のモデルで、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、または .NET Framework Data Provider SQL Server が必要です。  
-<a name="azsqlmanaged">3</a> - Azure SQL Managed Instance がサポートされています。 マネージド インスタンスはプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)が必要です。  
+<a name="azsqlmanaged">3</a> - Azure SQL Managed Instance がサポートされています。 SQL Managed Instance はプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)が必要です。  
 <a name="databricks">4</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。  
 <a name="gen2">5</a> - ADLS Gen2 コネクタは現在サポートされていませんが、ADLS Gen2 データ ソースでは Azure Blob Storage コネクタを使用できます。
 

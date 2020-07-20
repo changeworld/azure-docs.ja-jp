@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445442"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>ブロック BLOB でポイントインタイム リストアを有効にして管理する (プレビュー)
 
@@ -30,35 +30,23 @@ ms.locfileid: "84170105"
 
 ## <a name="install-the-preview-module"></a>プレビュー モジュールをインストールする
 
-PowerShell を使用して Azure のポイントインタイム リストアを構成するには、まず、Az.Storage PowerShell モジュールのバージョン [1.14.1-preview](https://www.powershellgallery.com/packages/Az.Storage/1.14.1-preview) をインストールします。 次の手順に従って、プレビュー モジュールをインストールします。
+PowerShell を使用して Azure のポイントインタイム リストアを構成するには、まず、Az.Storage プレビュー モジュールのバージョン 1.14.1-preview 以降をインストールします。 最新のプレビュー バージョンを使用することをお勧めしますが、ポイントインタイム リストアはバージョン 1.14.1-preview 以降でサポートされています。 Az. Storage モジュールの他のバージョンをすべて削除します。
 
-1. **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールをアンインストールします。
+次に示すのは、Az.Storage の [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) モジュールをインストールするコマンドです。
 
-1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
+```powershell
+Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
+```
 
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-
-1. PowerShellGet のインストール後、PowerShell ウィンドウを閉じて再び開きます。
-
-1. 最新バージョンの Azure PowerShell をインストールします。
-
-    ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
-    ```
-
-1. Az.Storage プレビュー モジュールをインストールします。
-
-    ```powershell
-    Install-Module Az.Storage -Repository PSGallery -RequiredVersion 1.14.1-preview -AllowPrerelease -AllowClobber -Force
-    ```
-
+上記のコマンドでは、バージョン 2.2.4.1 以上の PowerShellGet をインストールする必要があります。 現在読み込まれているバージョンを確認するには、次を実行します。
+```powershell
+Get-Module PowerShellGet
+```
 Azure PowerShell のインストールの詳細については、[PowerShellGet を使用した Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>ポイントインタイム リストアを有効にして構成する
 
-ポイントインタイム リストアを有効にして構成する前に、その前提条件 (論理的な削除、変更フィード、および BLOB のバージョン管理) を有効にします。 これらの各機能を有効にする方法の詳細については、次の記事を参照してください。
+ポイントインタイム リストアを有効にして構成する前に、ストレージ アカウントに対してその前提条件 (論理的な削除、変更フィード、および BLOB のバージョン管理) を有効にします。 これらの各機能を有効にする方法の詳細については、次の記事を参照してください。
 
 - [BLOB の論理的な削除を有効にする](soft-delete-enable.md)
 - [変更フィードを有効または無効にする](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
@@ -99,7 +87,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>復元操作を実行する
 
-復元操作を開始するには、UTC **DateTime** 値として復元ポイントを指定して、Restore-AzStorageBlobRange コマンドを呼び出します。 復元する辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントにあるすべてのコンテナー内のすべての BLOB を復元することもできます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。 復元操作が完了するまでに数分かかる場合があります。
+復元操作を開始するには、UTC **DateTime** 値として復元ポイントを指定して、**Restore-AzStorageBlobRange** コマンドを呼び出します。 復元する辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントにあるすべてのコンテナー内のすべての BLOB を復元することもできます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。 ページ BLOB と追加 BLOB は復元に含まれません。 復元操作が完了するまでに数分かかる場合があります。
 
 復元する BLOB の範囲を指定するときは、次の規則に注意してください。
 
@@ -115,7 +103,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ### <a name="restore-all-containers-in-the-account"></a>アカウント内のすべてのコンテナーを復元する
 
-ストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、`-BlobRestoreRange` パラメーターを省略して、Restore-AzStorageBlobRange コマンドを呼び出します。 次の例は、ストレージ アカウント内のコンテナーを、現時点から 12 時間前の状態に復元します。
+ストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、`-BlobRestoreRange` パラメーターを省略して、**Restore-AzStorageBlobRange** コマンドを呼び出します。 次の例は、ストレージ アカウント内のコンテナーを、現時点から 12 時間前の状態に復元します。
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -126,7 +114,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-a-single-range-of-block-blobs"></a>1 つの範囲のブロック BLOB を復元する
 
-1 つの範囲の BLOB を復元するには、Restore-AzStorageBlobRange コマンドを呼び出し、`-BlobRestoreRange` パラメーターに対してコンテナーの辞書式範囲と BLOB 名を指定します。 範囲の開始は含まれ、範囲の終了は含まれません。
+1 つの範囲の BLOB を復元するには、**Restore-AzStorageBlobRange** コマンドを呼び出し、`-BlobRestoreRange` パラメーターに対してコンテナーの辞書式範囲と BLOB 名を指定します。 範囲の開始は含まれ、範囲の終了は含まれません。
 
 たとえば、*sample-container* という名前の 1 つのコンテナー内の BLOB を復元するには、*sample-container* で始まり、*sample-container1* で終わる範囲を指定できます。 開始と終了の範囲に指定されたコンテナーが存在している必要はありません。 範囲の終了は除外されるため、ストレージ アカウントに *sample-container1* という名前のコンテナーが含まれていたとしても、*sample-container* という名前のコンテナーだけが復元されます。
 
@@ -140,7 +128,7 @@ $range = New-AzStorageBlobRangeToRestore -StartRange sample-container -EndRange 
 $range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d -EndRange sample-container/g
 ```
 
-次に、Restore-AzStorageBlobRange コマンドに範囲を指定します。 `-TimeToRestore` パラメーターに UTC **DateTime** 値を指定して、復元ポイントを指定します。 次の例は、指定された範囲の BLOB を、現時点から 3 日前の状態に復元します。
+次に、**Restore-AzStorageBlobRange** コマンドに範囲を指定します。 `-TimeToRestore` パラメーターに UTC **DateTime** 値を指定して、復元ポイントを指定します。 次の例は、指定された範囲の BLOB を、現時点から 3 日前の状態に復元します。
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -155,7 +143,9 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 複数の範囲のブロック BLOB を復元するには、`-BlobRestoreRange` パラメーターに範囲の配列を指定します。 復元操作ごとに最大 10 個の範囲がサポートされます。 次の例では、*container1* と *container4* の完全な内容を復元する 2 つの範囲を指定しています。
 
 ```powershell
+# Specify a range that includes the complete contents of container1.
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2
+# Specify a range that includes the complete contents of container4.
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 -EndRange container5
 
 Restore-AzStorageBlobRange -ResourceGroupName $rgName `
@@ -163,6 +153,31 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddMinutes(-30) `
     -BlobRestoreRange @($range1, $range2)
 ```
+
+### <a name="restore-block-blobs-asynchronously"></a>ブロック BLOB を非同期に復元する
+
+復元操作を非同期に実行するには、`-AsJob` パラメーターを **AzStorageBlobRange** への呼び出しに追加し、呼び出しの結果を変数に格納します。 **Restore-AzStorageBlobRange** コマンドは、**AzureLongRunningJob** 型のオブジェクトを返します。 このオブジェクトの **State** プロパティをチェックして、復元操作が完了したかどうかを判断できます。 **State** プロパティの値は、**Running** または **Completed** である可能性があります。
+
+次の例は、復元操作を非同期に呼び出す方法を示しています。
+
+```powershell
+$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddMinutes(-5) `
+    -AsJob
+
+# Check the state of the job.
+$job.State
+```
+
+実行後に復元操作が完了するまで待機するには、次の例に示すように、[Wait-Job](/powershell/module/microsoft.powershell.core/wait-job) コマンドを呼び出します。
+
+```powershell
+$job | Wait-Job
+```
+
+## <a name="known-issues"></a>既知の問題
+- 追加 BLOB が存在する復元のサブセットの場合、復元は失敗します。 ここでは、アカウントに追加 BLOB が存在する場合は、復元を実行しないようにしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

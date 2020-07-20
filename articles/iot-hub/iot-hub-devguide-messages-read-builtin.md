@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: 791d41aae7dde3e1ef2ae511de4ffd84141f0232
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310786"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083995"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -57,7 +57,7 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 | hostname | abcd1234namespace.servicebus.windows.net |
 | 名前空間 | abcd1234namespace |
 
-この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセス ポリシーを使用できます。
+上記のスクリーンショットに示されているように、ドロップダウンから任意の共有アクセス ポリシーを選択できます。 指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つポリシーのみが表示されます。
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントに接続する際に使用できる SDK は次のとおりです。
 
@@ -66,7 +66,7 @@ IoT Hub が公開している組み込みのイベント ハブ互換エンド�
 | .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [クイックスタート](quickstart-send-telemetry-dotnet.md) |
 | Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [クイックスタート](quickstart-send-telemetry-java.md) |
 | Node.js | https://www.npmjs.com/package/@azure/event-hubs | [クイックスタート](quickstart-send-telemetry-node.md) |
-| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
+| Python | https://pypi.org/project/azure-eventhub/ | [クイックスタート](quickstart-send-telemetry-python.md) |
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントで使用できる製品統合は次のとおりです。
 

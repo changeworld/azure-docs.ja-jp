@@ -2,13 +2,13 @@
 title: REST API とテンプレートを使用してリソースをデプロイする
 description: Azure Resource Manager と Resource Manager REST API を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: d7865ac6f9b2bb176ea5308e326dec0741a80962
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/04/2020
+ms.openlocfilehash: a2280d3bb406fd7e5c41558478363de68cbd44b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678411"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>ARM テンプレートと Resource Manager REST API を使用してリソースをデプロイする
 
@@ -73,7 +73,7 @@ ms.locfileid: "83723121"
    }
    ```
 
-1. [テンプレート デプロイを検証する](/rest/api/resources/deployments/validate)操作を実行して、デプロイを実行する前に検証します。 デプロイをテストする場合、(次の手順で示すように) デプロイの実行時に必要なパラメーターを正確に指定します。
+1. テンプレートをデプロイする前に、テンプレートが環境に与える変更をプレビューすることができます。 [what-if 操作](template-deploy-what-if.md)を使用して、テンプレートによって必要な変更が行われるかどうかを確認します。 What-if はまた、テンプレートのエラーも検証します。
 
 1. テンプレートをデプロイするには、要求 URI にサブスクリプション ID、リソース グループの名前、デプロイの名前を指定します。
 
@@ -133,7 +133,7 @@ ms.locfileid: "83723121"
       "properties": {
       "mode": "Incremental",
       "template": {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
           "storageAccountType": {

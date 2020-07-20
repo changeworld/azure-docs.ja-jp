@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 1a7a45433c2db71cbfaf16ab7107f233f1dd0eb9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985518"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085601"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Intelligent Insights ログのエクスポートをストリーミングする�
 
 これらの送信先のいずれかにストリーミングされたこの診断テレメトリを使用することで、リソース使用率とクエリ実行統計を測定し、パフォーマンスの監視を容易にできます。
 
-![Architecture](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
+![アーキテクチャ](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>診断テレメトリのストリーミング エクスポートを有効にして構成する
 
@@ -133,9 +133,9 @@ Azure portal で診断テレメトリのストリーミング エクスポート
 > [!IMPORTANT]
 > エラスティック プールの診断テレメトリの構成に加え、エラスティック プール内の各データベースの診断テレメトリも構成する必要があります。
 
-### <a name="single-and-pooled-databases-in-azure-sql-database"></a>Azure SQL Database の単一およびプールされたデータベース
+### <a name="databases-in-azure-sql-database"></a>Azure SQL Database 内のデータベース
 
-次の診断テレメトリを収集するように、単一データベース リソースまたはプールされたデータベース リソースを設定できます。
+次の診断テレメトリを収集するように、データベース リソースを設定できます。
 
 | リソース | 監視テレメトリ |
 | :------------------- | ------------------- |

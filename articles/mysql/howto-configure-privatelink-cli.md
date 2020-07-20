@@ -4,14 +4,14 @@ description: Azure CLI から Azure Database for MySQL 用のプライベート 
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78634ee7236c8bc0d256bac7eea521e699c0c39d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368011"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113277"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>CLI を使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -45,7 +45,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>サブネットのプライベート エンドポイント ポリシーを無効にする 
-Azure では仮想ネットワーク内のサブネットにリソースがデプロイされるため、プライベート エンドポイントのネットワーク ポリシーを無効にするようにサブネットを作成または更新する必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
+Azure では仮想ネットワーク内のサブネットにリソースがデプロイされるため、プライベート エンドポイントの[ネットワーク ポリシー](../private-link/disable-private-endpoint-network-policy.md)を無効にするようにサブネットを作成または更新する必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -68,7 +68,7 @@ VM のパブリック IP アドレスを書き留めます。 このアドレス
 az mysql server create コマンドを使用して Azure Database for MySQL を作成します。 MySQL サーバーの名前は Azure 全体で一意である必要があるため、角かっこ内のプレースホルダー値を独自の一意の値に置き換えることを忘れないでください。 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az mysql server create \
 --name mydemoserver \
 --resource-group myResourcegroup \
@@ -78,18 +78,21 @@ az mysql server create \
 --sku-name GP_Gen5_2
 ```
 
-MySQL サーバー ID は  ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/servername.``` と同様であることに注意してください。この MySQL サーバー ID は次の手順で使用します。 
+> [!NOTE]
+> Azure Database for MySQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
+> - 両方のサブスクリプションに **Microsoft.DBforMySQL** リソース プロバイダーが登録されていることを確認してください。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="create-the-private-endpoint"></a>プライベート エンドポイントを作成する 
 Virtual Network 内に MySQL サーバーのプライベート エンドポイントを作成します。 
+
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MySQL Server ID>" \  
-    --group-ids mysqlServer \  
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMySQL/servers" --query "id") \    
+    --group-id mysqlServer \  
     --connection-name myConnection  
  ```
 
@@ -190,3 +193,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure プライベート エンドポイントの概要](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)について学習します。
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

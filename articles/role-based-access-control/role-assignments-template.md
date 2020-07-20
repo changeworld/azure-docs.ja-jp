@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392456"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
 
-### <a name="resource-group-without-parameters"></a>リソース グループ (パラメーターなし)
+### <a name="resource-group-scope-without-parameters"></a>リソース グループのスコープ (パラメーターなし)
 
 次のテンプレートは、ロールの割り当てを追加する基本的な方法を示したものです。 一部の値は、テンプレート内で指定されます。 以下のテンプレートでは次のことを示します。
 
@@ -111,7 +111,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![リソース グループをスコープとするロールの割り当て](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>リソース グループまたはサブスクリプション
+### <a name="resource-group-or-subscription-scope"></a>リソース グループまたはサブスクリプションのスコープ
 
 前述のテンプレートは、それほど柔軟性が高いものではありません。 次のテンプレートでは、パラメーターを使用して、異なるスコープで使用できます。 以下のテンプレートでは次のことを示します。
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>リソース
+### <a name="resource-scope"></a>リソースのスコープ
 
 リソース レベルでロールの割り当てを追加する必要がある場合は、ロールの割り当ての形式が異なります。 ロールを割り当てるリソースのリソース プロバイダーの名前空間とリソースの種類を指定します。 ロールの割り当ての名前にリソースの名前も含めます。
 

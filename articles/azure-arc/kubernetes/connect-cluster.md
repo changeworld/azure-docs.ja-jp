@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc 対応の Kubernetes クラスターを Azure Arc と接続する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 868964361e6089eb3417b0f2e2681d82d4aa0b75
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1a186ac3bf2297de5ffc7ff478ba9b4350dae4c8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299645"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104283"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc 対応の Kubernetes クラスターを接続する (プレビュー)
 
@@ -24,10 +24,33 @@ Kubernetes クラスターを Azure Arc に接続します。
 
 次の要件の準備ができていることを確認します。
 
-* 稼働している Kubernetes クラスター
-* kubeconfig のアクセス権と、クラスター管理者のアクセス権が必要です。
+* 稼働している Kubernetes クラスター。 既存の Kubernetes クラスターがない場合は、次のいずれかのガイドを使用してテスト クラスターを作成できます。
+  * [Docker 内の Kubernetes (kind)](https://kind.sigs.k8s.io/) を使用して Kubernetes クラスターを作成する
+  * [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) または [Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 用の Docker を使用して Kubernetes クラスターを作成する
+* Arc 対応の Kubernetes エージェントをデプロイするには、クラスターとクラスター上のクラスター管理者ロールにアクセスするための kubeconfig ファイルが必要です。
 * `az login` および `az connectedk8s connect` コマンドで使用されるユーザーまたはサービス プリンシパルには、"Microsoft.Kubernetes/connectedclusters" リソースの種類に対する "読み取り" と "書き込み" のアクセス許可が必要です。 オンボード用に Azure CLI で使用されるユーザーまたはサービス プリンシパルに対するロールの割り当てには、これらのアクセス許可を持つ "Azure Arc for Kubernetes のオンボード" ロールを使用できます。
-* *connectedk8s* および *k8sconfiguration* 拡張機能の最新バージョン
+* connectedk8s 拡張機能を使用してクラスターをオンボードするには、Helm 3 が必要です。 この要件を満たすには、[最新リリースの Helm 3 をインストール](https://helm.sh/docs/intro/install)してください。
+* Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン2.3 以降が必要です。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)するか、最新バージョンに更新して、Azure CLI バージョン 2.3 以降があるようにしてください。
+* Arc 対応 Kubernetes CLI 拡張機能をインストールします。
+  
+  Kubernetes クラスターを Azure に接続するために必要な `connectedk8s` 拡張機能をインストールします。
+  
+  ```console
+  az extension add --name connectedk8s
+  ```
+  
+  `k8sconfiguration` 拡張機能をインストールします。
+  
+  ```console
+  az extension add --name k8sconfiguration
+  ```
+  
+  これらの拡張機能を後で更新する場合は、次のコマンドを実行します。
+  
+  ```console
+  az extension update --name connectedk8s
+  az extension update --name k8sconfiguration
+  ```
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -54,10 +77,8 @@ Azure Arc エージェントが機能するには、次のプロトコル、ポ�
 
 ```console
 az provider register --namespace Microsoft.Kubernetes
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.Kubernetes'
 
 az provider register --namespace Microsoft.KubernetesConfiguration
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.KubernetesConfiguration'
 ```
 
 登録は非同期プロセスです。 登録には、10 分ほどかかる場合があります。 次のコマンドを使用して、登録プロセスを監視できます。
@@ -69,31 +90,6 @@ az provider show -n Microsoft.Kubernetes -o table
 ```console
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
-
-## <a name="install-azure-cli-and-arc-enabled-kubernetes-extensions"></a>Azure CLI および Arc 対応 Kubernetes 拡張機能をインストールする
-Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン2.3 以降が必要です。 [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)するか、最新バージョンに更新して、Azure CLI バージョン 2.3 以降があるようにしてください。
-
-Kubernetes クラスターを Azure に接続するために必要な `connectedk8s` 拡張機能をインストールします。
-
-```console
-az extension add --name connectedk8s
-```
-
-`k8sconfiguration` 拡張機能をインストールします。
-
-```console
-az extension add --name k8sconfiguration
-```
-
-次のコマンドを実行して、拡張機能を最新バージョンに更新します。
-
-```console
-az extension update --name connectedk8s
-az extension update --name k8sconfiguration
-```
-
-## <a name="install-helm"></a>Helm のインストール
-connectedk8s 拡張機能を使用してクラスターをオンボードするには、Helm 3 が必要です。 この要件を満たすには、[最新リリースの Helm 3 をインストール](https://helm.sh/docs/intro/install)してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成します
 
@@ -171,7 +167,7 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-このリソースは、[Azure プレビュー ポータル](https://preview.portal.azure.com/)で表示することもできます。 ブラウザーでポータルを開いたら、先ほど `az connectedk8s connect` コマンドで使用したリソース名とリソース グループ名の入力に基づいて、リソース グループと Azure Arc 対応の Kubernetes リソースに移動します
+このリソースは、[Azure portal](https://portal.azure.com/) で表示することもできます。 ブラウザーでポータルを開いたら、先ほど `az connectedk8s connect` コマンドで使用したリソース名とリソース グループ名の入力に基づいて、リソース グループと Azure Arc 対応の Kubernetes リソースに移動します
 
 Azure Arc 対応の Kubernetes では、`azure-arc` 名前空間にいくつかのオペレーターがデプロイされます。 これらのデプロイとポッドを次のようにして表示できます。
 
@@ -210,7 +206,7 @@ Azure Arc 対応の Kubernetes は、`azure-arc` 名前空間にデプロイさ�
 * `deployment.apps/metrics-agent`: 他の Arc エージェントのメトリックを収集し、これらのエージェントのパフォーマンスが最適であることを確認します
 * `deployment.apps/cluster-metadata-operator`: クラスターのメタデータを収集します (クラスターのバージョン、ノード数、Arc エージェントのバージョン)
 * `deployment.apps/resource-sync-agent`: 前述のクラスター メタデータを Azure に同期します
-* `deployment.apps/clusteridentityoperator`: 他のエージェントが Azure との通信に使用する管理サービス ID (MSI) 証明書を保持します
+* `deployment.apps/clusteridentityoperator`:Azure Arc 対応 Kubernetes では、現在、システムによって割り当てられた ID がサポートされています。 clusteridentityoperator では、他のエージェントが Azure との通信に使用する管理サービス ID (MSI) 証明書が保持されます。
 * `deployment.apps/flux-logs-agent`: ソース管理構成の一部としてデプロイされる Flux オペレーターからログを収集します
 
 ## <a name="delete-a-connected-cluster"></a>接続されているクラスターを削除する

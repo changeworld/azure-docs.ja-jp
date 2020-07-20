@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/22/2020
+ms.date: 06/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0a7048e79ddd4a86d7e14e573cf5b8556f462f03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550334"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメールを使用して Azure Active Directory にサインインする (プレビュー)
 
@@ -29,10 +29,8 @@ ms.locfileid: "84220717"
 
 ハイブリッド認証への移行を支援するために、ユーザーが代替ログイン ID として確認済みドメイン内のメールでサインインできるように Azure AD を構成できます。 たとえば、*Contoso* が *Fabrikam* にブランド変更した場合、従来の `balas@contoso.com` UPN でのサインインを続行するのではなく、代替ログイン ID としてメールを使用できるようになりました。 アプリケーションまたはサービスにアクセスするために、ユーザーは、割り当てられたメール (`balas@fabrikam.com` など) を使用して Azure AD にサインインします。
 
-|     |
-| --- |
-| 代替ログイン ID としてメールを使用した Azure AD へのサインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+> [!NOTE]
+> 代替ログイン ID としてメールを使用した Azure AD へのサインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD サインイン方法の概要
 
@@ -45,6 +43,19 @@ Azure AD にサインインするには、ユーザーが自分のアカウン�
 この問題の一般的な回避策は、Azure AD UPN を、ユーザーがサインインに使用するメール アドレスに設定することでした。 この方法は有効ですが、オンプレミスの AD と Azure AD 内で UPN が異なるため、この構成はすべての Microsoft 365 ワークロードと互換性がありません。
 
 別の方法は、Azure AD とオンプレミスの UPN を同じ値に同期し、ユーザーが確認済みのメールを使用して Azure AD にサインインできるように Azure AD を構成するというものです。 この機能を実現するには、オンプレミス ディレクトリ内のユーザーの *ProxyAddresses* 属性で 1 つ以上のメール アドレスを定義します。 そうすると、*ProxyAddresses* が Azure AD Connect を使用して自動的に Azure AD と同期されます。
+
+## <a name="preview-limitations"></a>プレビューの制限事項
+
+現在のプレビュー状態では、ユーザーが代替ログイン ID として UPN 以外の電子メールを使用してサインインすると、次の制限が適用されます。
+
+* UPN 以外の電子メールを使用してサインインしている場合でも、ユーザーに UPN が表示される場合があります。 次のような動作の例が表示されます。
+    * `login_hint=<non-UPN email>` を使用した Azure AD サインインに誘導される場合、ユーザーは UPN でサインインするように求められます。
+    * ユーザーが UPN 以外の電子メールを使用してサインインし、間違ったパスワードを入力すると、" *[パスワードの入力]* " ページが UPN の表示に変わります。
+    * [https://portal.azure.com](https://portal.azure.com) や Microsoft Office など、一部の Microsoft サイトおよびアプリでは、通常、右上に表示される **[アカウント マネージャー]** コントロールに、サインインに使用される UPN 以外の電子メールではなく、ユーザーの UPN が表示される場合があります。
+
+* 現在、次のような一部のフローは、UPN 以外の電子メールとは互換性がありません。
+    * 現在、ID 保護では、電子メールの代替ログイン ID と "*漏洩した資格情報*" のリスク検出との照合を行っていません。 このリスク検出では、UPN を使用して、漏洩した資格情報を照合します。 詳細については、[Azure AD Identity Protection のリスク検出と修復][identity-protection]に関する記事を参照してください。
+    * 代替ログイン ID の電子メールに送信された B2B 招待は、完全にはサポートされていません。 代替ログイン ID として電子メールに送信された招待を受け入れると、ユーザーはテナント化されたエンドポイントで代替電子メールを使用してサインインできなくなる場合があります。
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>サインインのメール アドレスを Azure AD に同期する
 
@@ -177,6 +188,7 @@ Azure AD アプリ プロキシや Azure AD Domain Services などのハイブ�
 [hybrid-overview]: ../hybrid/cloud-governed-management-for-on-premises.md
 [phs-overview]: ../hybrid/how-to-connect-password-hash-synchronization.md
 [pta-overview]: ../hybrid/how-to-connect-pta-how-it-works.md
+[identity-protection]: ../identity-protection/overview-identity-protection.md#risk-detection-and-remediation
 
 <!-- EXTERNAL LINKS -->
 [Install-Module]: /powershell/module/powershellget/install-module

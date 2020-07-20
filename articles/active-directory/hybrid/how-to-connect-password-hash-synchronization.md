@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358564"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -89,14 +89,13 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 オンプレミス環境で期限切れになった同期パスワードを利用し、引き続きクラウド サービスにサインインできます。 クラウドのパスワードは、次にオンプレミス環境でパスワードを変更したときに更新されます。
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>*EnforceCloudPasswordPolicyForPasswordSyncedUsers* 機能 (パブリック プレビュー)
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 Azure AD 統合サービスのみを操作し、パスワードの有効期限ポリシーに準拠している必要がある同期済みユーザーがいる場合は、*EnforceCloudPasswordPolicyForPasswordSyncedUsers* 機能を有効にすることで、Azure AD パスワードの有効期限ポリシーに強制的に準拠させることができます。
 
 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* が無効になっている場合 (既定の設定)、Azure AD Connect では、同期済みユーザーの PasswordPolicies 属性は "DisablePasswordExpiration" に設定されます。 これは、ユーザーのパスワードが同期されるたびに実行され、そのユーザーのクラウド パスワードの有効期限ポリシーを無視するように Azure AD へ指示されます。 Azure AD PowerShell モジュールを使用して、次のコマンドを使って属性の値を確認できます。
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 EnforceCloudPasswordPolicyForPasswordSyncedUsers 機能を有効にするには、下に示すように、MSOnline PowerShell モジュールを使用して次のコマンドを実行します。 場合によっては、下に示すように、Enable パラメーターに「yes」と入力する必要があります。
 
@@ -123,10 +122,9 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> この機能は現在、パブリック プレビュー段階にあります。
 > Set-MsolPasswordPolicy PowerShell コマンドはフェデレーション ドメインで機能しません。 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>一時パスワードと "次回ログオン時にパスワード変更を適用" を同期する (パブリック プレビュー)
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>一時パスワードと "次回ログオン時にパスワード変更を適用" を同期する
 
 通常は、最初のログオン時、特に管理者によるパスワードのリセットが行われた後に、ユーザーにパスワードの変更を強制します。  一般的に "一時" パスワードの設定と呼ばれており、Active Directory (AD) では、ユーザー オブジェクト上の [ユーザーは次回ログオン時にパスワード変更が必要] フラグのチェックをオンにすることで実現できます。
   
@@ -141,9 +139,6 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
 
 > [!CAUTION]
 > この機能は、テナント上で SSPR とパスワード ライトバックが有効になっている場合にのみ使用してください。  これは、ユーザーが SSPR を使用してパスワードを変更した場合に、Active Directory に同期されるようにするためです。
-
-> [!NOTE]
-> この機能は現在、パブリック プレビュー段階にあります。
 
 #### <a name="account-expiration"></a>アカウントの有効期限
 

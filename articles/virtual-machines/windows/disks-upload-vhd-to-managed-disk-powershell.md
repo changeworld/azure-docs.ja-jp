@@ -3,17 +3,17 @@ title: VHD を Azure にアップロードするか、リージョン間でデ�
 description: Azure PowerShell を使用して、直接アップロード経由で、Azure マネージド ディスクに VHD をアップロードし、リージョン間でマネージド ディスクをコピーする方法を説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944629"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure PowerShell
 
@@ -47,6 +47,9 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 次に、ご利用のローカル シェル上に、アップロード用の空の標準 HDD を作成するには、[New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) コマンドレットにおいて、 **-CreateOption** パラメーターに **Upload** 設定を指定すると共に、 **-UploadSizeInBytes** パラメーターを指定します。 次に、[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) を呼び出してディスクを作成します。
 
 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` を置き換え、次のコマンドを実行します。
+
+> [!TIP]
+> OS ディスクを作成する場合は、-HyperVGeneration '<yourGeneration>' を `New-AzDiskConfig` に追加します。
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -98,6 +101,9 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 > Azure のマネージド ディスクのディスク サイズ (バイト単位) を指定する場合は、512 のオフセットを追加する必要があります。 これは、Azure からディスク サイズが返されるときにフッターが省略されるためです。 この操作を行わないと、コピーは失敗します。 次のスクリプトでは、この操作が自動的に行われています。
 
 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourOSTypeHere>`、および `<yourTargetLocationHere>` (場所の値の例: uswest2) を実際の値に置き換えたら、次のスクリプトを実行してマネージド ディスクをコピーします。
+
+> [!TIP]
+> OS ディスクを作成する場合は、-HyperVGeneration '<yourGeneration>' を `New-AzDiskConfig` に追加します。
 
 ```powershell
 

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955270"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170362"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -116,15 +116,15 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. APT 更新を行う前に、.NET 開発ソース リストを設定します。
+1. APT 更新を行う前に、APT ソース リストを設定します。
 
-   Ubuntu の APT ソース リストを設定するには、次のコマンドを実行します。
+    ##### <a name="ubuntu"></a>Ubuntu
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-   Debian の APT ソース リストを設定するには、次のコマンドを実行します。
+    ##### <a name="debian"></a>Debian
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -136,6 +136,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
     | --------------- | ----------- |
     | Debian 10 | `buster`  |
     | Debian 9  | `stretch` |
+    | Ubuntu 20.04    | `focal`     |
     | Ubuntu 19.04    | `disco`     |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
@@ -206,22 +207,17 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--csharp`**<br/> **`--dotnet`** | [C# クラス ライブラリ (.cs) プロジェクト](functions-dotnet-class-library.md)を初期化します。 |
-| **`--csx`** | [C# スクリプト (.csx) プロジェクト](functions-reference-csharp.md)を初期化します。 後続のコマンドで、`--csx` を指定する必要があります。 |
+| **`--csx`** | .NET 関数を C# スクリプトとして作成します。これはバージョン 1.x の動作です。 `--worker-runtime dotnet` でのみ有効です。 |
 | **`--docker`** | 選択した `--worker-runtime` に基づく基本イメージを使用して、コンテナーの Dockerfile を作成します。 カスタム Linux コンテナーに発行する場合は、このオプションを使用します。 |
 | **`--docker-only`** |  既存のプロジェクトに Dockerfile を追加します。 local.settings.json で設定されていないか指定されていない場合、worker ランタイムのプロンプトを表示します。 既存のプロジェクトをカスタム Linux コンテナーに発行する場合は、このオプションを使用します。 |
 | **`--force`** | プロジェクトに既存のファイルがある場合でも、プロジェクトを初期化します。 この設定は、同じ名前の既存のファイルを上書きします。 プロジェクト フォルダー内の他のファイルには影響ありません。 |
-| **`--java`**  | [Java プロジェクト](functions-reference-java.md)を初期化します。 |
-| **`--javascript`**<br/>**`--node`**  | [JavaScript プロジェクト](functions-reference-node.md)を初期化します。 |
-| **`--no-source-control`**<br/>**`-n`** | バージョン 1.x での Git リポジトリの既定の作成を禁止します。 バージョン 3.x/2.x では、Git リポジトリは既定では作成されません。 |
-| **`--powershell`**  | [PowerShell プロジェクト](functions-reference-powershell.md)を初期化します。 |
-| **`--python`**  | [Python プロジェクト](functions-reference-python.md)を初期化します。 |
+| **`--language`** | 言語固有のプロジェクトを初期化します。 現時点では、`--worker-runtime` が `node` に設定されている場合にサポートされます。 オプションは `typescript` と `javascript` です。 `--worker-runtime javascript` または `--worker-runtime typescript` を使用することもできます。  |
+| **`--managed-dependencies`**  | マネージドの依存関係をインストールします。 現時点では、この機能は PowerShell worker ランタイムのみでサポートされています。 |
 | **`--source-control`** | Git リポジトリを作成するかどうかを制御します。 既定では、リポジトリは作成されません。 `true` を指定すると、リポジトリが作成されます。 |
-| **`--typescript`**  | [TypeScript プロジェクト](functions-reference-node.md#typescript)を初期化します。 |
-| **`--worker-runtime`** | プロジェクトの言語ランタイムを設定します。 サポートされる値は、`csharp`、`dotnet`、`java`、`javascript`、`node` (JavaScript)、`powershell`、`python`、`typescript` です。 設定しないと、初期化中にランタイムの選択を求められます。 |
-
+| **`--worker-runtime`** | プロジェクトの言語ランタイムを設定します。 サポートされる値は、`csharp`、`dotnet`、`javascript`、`node` (JavaScript)、`powershell`、`python`、`typescript` です。 Java の場合は、[Maven](functions-reference-java.md#create-java-functions) を使用します。設定しない場合は、初期化中にランタイムの選択を求められます。 |
+|
 > [!IMPORTANT]
-> 既定では、Core Tools のバージョン 3.x/2.x では、.NET ランタイムの関数アプリ プロジェクトは [C# クラス プロジェクト](functions-dotnet-class-library.md) (.csproj) として作成されます。 Visual Studio または Visual Studio Code で使用できるこれらの C# プロジェクトは、テスト中および Azure への発行時にコンパイルされます。 バージョン 1.x およびポータルで作成される同じ C# スクリプト (.csx) ファイルを代わりに作成および使用したい場合は、関数を作成して展開するときに、`--csx` パラメーターを指定する必要があります。
+> 既定では、Core Tools のバージョン 2.x 以降のバージョンでは、.NET ランタイムの関数アプリ プロジェクトは [C# クラス プロジェクト](functions-dotnet-class-library.md) (.csproj) として作成されます。 Visual Studio または Visual Studio Code で使用できるこれらの C# プロジェクトは、テスト中および Azure への発行時にコンパイルされます。 バージョン 1.x およびポータルで作成される同じ C# スクリプト (.csx) ファイルを代わりに作成および使用したい場合は、関数を作成して展開するときに、`--csx` パラメーターを指定する必要があります。
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -235,6 +231,8 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 * [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
+* [PowerShell](functions-reference-powershell.md#environment-variables)
+* [Python](functions-reference-python.md#environment-variables)
 
 有効なストレージ接続文字列が [`AzureWebJobsStorage`] に設定されていなく、エミュレーターが使用されていない場合は、次のエラー メッセージが表示されます。
 
@@ -307,10 +305,11 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 | 引数     | 説明                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (バージョン 3.x/2.x) バージョン 1.x およびポータルで使用されるものと同じ C# スクリプト (.csx) テンプレートを生成します。 |
-| **`--language`** 、 **`-l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 3.x/2.x では、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
+| **`--csx`** | (バージョン 2.x 以降のバージョン。)バージョン 1.x およびポータルで使用されるものと同じ C# スクリプト (.csx) テンプレートを生成します。 |
+| **`--language`** 、 **`-l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x 以降のバージョンでは、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
 | **`--name`** 、 **`-n`** | 関数名。 |
 | **`--template`** 、 **`-t`** | サポートされている各言語で使用可能なテンプレートの完全な一覧を表示するには、`func templates list` コマンドを使います。   |
+
 
 たとえば、JavaScript HTTP トリガーを 1 つのコマンドで作成するには、次を実行します。
 
@@ -367,11 +366,10 @@ npm start
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 実行前に現在のプロジェクトをビルドしません。 dotnet プロジェクトの場合のみ。 既定値は false に設定されます。 バージョン 1.x はサポートされません。 |
-| **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 バージョン 1.x はサポートされません。 |
 | **`--cors-credentials`** | クロスオリジン認証済み要求 (つまり、Cookie と Authentication ヘッダー) バージョン 1.x はサポートされません。 |
 | **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
 | **`--language-worker`** | 言語ワーカーを構成するための引数。 たとえば、[デバッグ ポートとその他の必要な引数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)を指定して、言語ワーカーのデバッグを有効にすることができます。 バージョン 1.x はサポートされません。 |
-| **`--nodeDebugPort`** 、 **`-n`** | 使用する Node.js デバッガーのポート。 既定値はlaunch.json または 5858 の値。 バージョン 1.x のみ。 |
+| **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 バージョン 1.x はサポートされません。 |
 | **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 バージョン 1.x はサポートされません。 |
 | **`--port`** 、 **`-p`** | ローカル ポート。このポートでリッスンします。 既定値:7071。 |
 | **`--pause-on-error`** | プロセスを終了する前に、追加入力を一時停止します。 統合開発環境 (IDE) から Core Tools を起動した場合にのみ使用されます。|
@@ -405,7 +403,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 次のエンドポイントを呼び出して、HTTP と webhook でトリガーされる関数をローカルで実行できます。
 
-```http
+```
 http://localhost:{port}/api/{function_name}
 ```
 
@@ -441,7 +439,7 @@ Event Grid でトリガーされた関数をローカルでテストする方法
 
 次の管理者エンドポイントを呼び出して、非 HTTP 関数をトリガーします。
 
-```http
+```
 http://localhost:{port}/admin/functions/{function_name}
 ```
 
@@ -511,14 +509,14 @@ func azure functionapp publish <FunctionAppName>
 > Azure portal で関数アプリを作成すると、既定でバージョン 3.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。
 > 既存の関数がある関数アプリのランタイム バージョンを変更することはできません。
 
-次の発行オプションは、バージョン 3.x、2.x、および 1.x に適用されます。
+次の発行オプションは、次のすべてのバージョンに適用されます。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。 Microsoft Azure ストレージ エミュレーターを使用している場合は、まずアプリ設定を[実際のストレージ接続](#get-your-storage-connection-strings)に変更します。 |
 | **`--overwrite-settings -y`** | `--publish-local-settings -i` を使用するときに、アプリの設定を上書きするプロンプトを抑制します。|
 
-次の発行オプションは、バージョン 3.x および 2.x でのみサポートされています。
+次の発行オプションは、バージョン 2.x 以降のバージョンでのみサポートされています。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
@@ -531,7 +529,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--additional-packages`** | ネイティブの依存関係を構築するときにインストールするパッケージの一覧 (例: `python3-dev libevent-dev`)。 |
 | **`--force`** | 特定のシナリオで発行前の検証を無視します。 |
 | **`--csx`** | C# スクリプト (.csx) プロジェクトを発行します。 |
-| **`--no-build`** | .NET クラス ライブラリ関数をビルドしません。 |
+| **`--no-build`** | プロジェクトは発行中にはビルドされません。 Python の場合、`pip install` は実行されません。 |
 | **`--dotnet-cli-params`** | コンパイル済み C# (.csproj) 関数を発行するとき、Core Tools は "dotnet build --output bin/publish" を呼び出します。 これに渡されるすべてのパラメーターは、コマンド ラインに追加されます。 |
 
 ### <a name="deploy-custom-container"></a>カスタム コンテナーのデプロイ

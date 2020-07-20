@@ -1,6 +1,6 @@
 ---
 title: 抽出されたデータを使用したクロステナント分析
-description: シングル テナント アプリでの複数の Azure SQL Database から抽出されたデータを使用した、クロステナント分析クエリ。
+description: シングル テナント アプリでの複数の Azure SQL データベースから抽出されたデータを使用した、クロステナント分析クエリ。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 3078cf7a7b16d5932e861f28a352002aa01cea45
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026753"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043514"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -89,8 +89,8 @@ ms.locfileid: "84026753"
 次の手順では、**tenantanalytics** という分析ストアをデプロイします。 このチュートリアルで後ほど設定する、定義済みのテーブルもデプロイします。
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* を開きます。 
 2. 選択した分析ストアに合わせて、スクリプト内の $DemoScenario 変数を設定します。
-    - 列ストアを使用せずに SQL データベースを使用するには、 **$DemoScenario** = **2** を設定します。
-    - 列ストアを使用して SQL データベースを使用するには、 **$DemoScenario** = **3** を設定します。  
+    - 列ストアを使用せずに SQL Database を使用するには、 **$DemoScenario** = **2** を設定します
+    - 列ストアを使用して SQL Database を使用するには、 **$DemoScenario** = **3** を設定します  
 3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
 
 アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-dpt-&lt;User&gt;** サーバーと **catalog-dpt-&lt;User&gt;** サーバーに接続します。ログイン名として「*developer*」、パスワードとして「*P\@ssword1*」を使用します。 詳しいガイダンスについては、[入門チュートリアル](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)をご覧ください。

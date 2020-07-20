@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 268295ce86a9323a1f7ae16bbfcbd4e78367c3a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724178f71befbe4eace0d3d5615871c21253c1f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203624"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170073"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
@@ -70,7 +70,7 @@ SAML 応答のアサーションを暗号化する場合:
 3. 技術プロファイル メタデータ **WantsEncryptedAssertions** を `true` に設定します。
 4. ID プロバイダーを新しい Azure AD B2C の技術プロファイル メタデータで更新します。 **use** プロパティ付きの **KeyDescriptor** が証明書の公開キーを含む `encryption` に設定されます。
 
-次の例では、メタデータの Azure AD B2C 技術プロファイル暗号化セクションを示しています。
+次の例は、暗号化に使用される SAML メタデータのキー記述子セクションを示しています。
 
 ```xml
 <KeyDescriptor use="encryption">
