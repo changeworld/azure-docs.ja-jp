@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965265"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147311"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション
 
@@ -87,7 +87,7 @@ blobfuse ファイル システムを使用してスタンドアロンの V-Ray 
 
 [Azure Files](../storage/files/storage-files-introduction.md) はクラウドで、SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。  Azure Files は Azure BLOB ストレージをベースとし、[コスト効率が高く](https://azure.microsoft.com/pricing/details/storage/files/)、他のリージョンへのデータ レプリケーションを使用して構成できるため、グローバルな冗長性を備えます。  プール サイズとアセット ファイルの数の予測から、Azure Files を使用する必要があるかどうかを判断するには、[スケール ターゲット](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)を確認する必要があります。
 
-Azure ファイル共有をマウントする方法について説明する[ブログ記事](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/)と[ドキュメント](../storage/files/storage-how-to-use-files-windows.md)が用意されています。
+Azure ファイル共有をマウントする方法について説明する[ドキュメント](../storage/files/storage-how-to-use-files-windows.md)が用意されています。
 
 ### <a name="mounting-an-azure-files-share"></a>Azure ファイル共有をマウントする
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344137"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144271"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -24,17 +24,9 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-
-## <a name="create-first-key-for-bing-spell-check-v7"></a>最初の Bing Spell Check V7 キーの作成
-
-[最初の Bing Spell Check API v7 キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)は無料です。
-
-![無料のキーの作成](./media/luis-tutorial-bing-spellcheck/free-key.png)
-
-<a name="create-subscription-key"></a>
-
 ## <a name="create-endpoint-key"></a>エンドポイント キーの作成
-無料のキーの期限が切れた場合は、エンドポイント キーを作成します。
+
+Azure portal で Bing Spell Check リソースを作成するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 

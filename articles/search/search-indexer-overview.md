@@ -1,7 +1,7 @@
 ---
 title: インポート時にデータをクロールするためのインデクサー
 titleSuffix: Azure Cognitive Search
-description: Azure SQL データベース、Azure Cosmos DB、または Azure ストレージをクロールして検索可能なデータを抽出し、Azure Cognitive Search インデックスを作成します。
+description: Azure SQL Database、SQL Managed Instance、Azure Cosmos DB、または Azure ストレージをクロールして検索可能なデータを抽出し、Azure Cognitive Search インデックスを作成します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2faadc962b31560e9e2eb10372493a483bf06905
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 253cd8174ec523f6c8a6aae2b94f7ed367701fec
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203887"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146777"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -50,7 +50,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (プレビュー段階)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database と SQL Managed Instance](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Virtual Machines における SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
@@ -77,8 +77,10 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 インデックス作成はスケジュール設定するのが普通ですが、[Run コマンド](https://docs.microsoft.com/rest/api/searchservice/run-indexer)を使用して、インデクサーをオンデマンドで呼び出すことも可能です。
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
-    api-key: [Search service admin key]
+```http
+POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 > [!NOTE]
 > API の実行で正しい応答があった場合、インデクサーの呼び出しはスケジュール済みですが、実際の処理は非同期的に実行されます。 
@@ -91,44 +93,47 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 インデクサーの現在の状態と実行の履歴は、[インデクサー状態の取得](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)コマンドを使用して取得できます。
 
-
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 応答には、全体的なインデクサーの状態、最後の (または実行中の) インデクサー呼び出し、およびインデクサー呼び出しの最近の履歴が含まれています。
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 実行履歴には、最近完了した 50 件の実行内容が含まれ、時系列の逆の順に並べられます (そのため、最近の実行内容が応答の最初に表示されます)。
 
 ## <a name="next-steps"></a>次のステップ
 基本的な概念の説明は以上です。次のステップとしてデータ ソースの種類ごとの要件とタスクを確認してください。
 
-* [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database、SQL Managed Instance、または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)

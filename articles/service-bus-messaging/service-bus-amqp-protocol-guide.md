@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
-services: service-bus-messaging,event-hubs
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086157"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186913"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -275,8 +264,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 トランザクションの作業を開始するには、 コントローラーがコーディネータから `txn-id` を取得する必要があります。 `declare` 型のメッセージを送信することで、これを行います。 宣言が成功すると、コーディネーターは処理出力で応答し、それを通じて、割り当てられた `txn-id` が伝えられます。
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()** )}| ------> |  |
@@ -288,8 +277,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 > 注: fail=true はトランザクションのロールバックを示し、fail=false はコミットを示します。
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | 。 。 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> 。 。 。 |
@@ -300,8 +289,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 すべてのトランザクション作業は、txn-id を伝送するトランザクションの配信ステータス `transactional-state` を使って行われます。メッセージを送信する場合は、トランザクションのステータスは、メッセージの転送フレームによって伝送されます。 
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ payload }| ------> |  |
@@ -311,8 +300,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 メッセージの処理には、`Complete` / `Abandon` / `DeadLetter` / `Defer` のような操作が含まれています。 トランザクションの中でこれらの操作を実行するには、disposition を使って `transactional-state` を渡します。
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
@@ -410,8 +399,8 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 > 注:このリンクを確立する前に、*via-entity* と *destination-entity* の両方に対して認証が実行される必要があります。
 
-| Client | | Service Bus |
-| --- | --- | --- |
+| Client | Direction | Service Bus |
+| :--- | :---: | :--- |
 | attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target= **{via-entity}** ,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 

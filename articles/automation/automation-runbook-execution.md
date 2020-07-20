@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 6db4ceed0121f072104312ac24abb13fb241737b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832352"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186046"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -56,14 +56,14 @@ Runbook は、Azure のリソースに対して認証および実行されるよ
 |特定の要件を持つモジュールを使用する| Hybrid Runbook Worker|いくつかの例を次に示します。</br> WinSCP - winscp.exe への依存関係 </br> IIS administration - IIS の有効化または管理に対する依存関係|
 |インストーラでモジュールをインストールする|Hybrid Runbook Worker|サンドボックス用のモジュールでは、コピーがサポートされている必要があります。|
 |4\.7.2 以外のバージョンの .NET Framework が必要な Runbook またはモジュールを使用する|Hybrid Runbook Worker|Azure サンドボックスでは .NET Framework 4.7.2 がサポートされており、別のバージョンへのアップグレードはサポートされていません。|
-|昇格が必要なスクリプトを実行する|Hybrid Runbook Worker|サンドボックスでは、昇格は許可されません。 Hybrid Runbook Worker を使用すると、UAC をオフにして、昇格が必要なコマンドを実行するときに [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) を使用できます。|
+|昇格が必要なスクリプトを実行する|Hybrid Runbook Worker|サンドボックスでは、昇格は許可されません。 Hybrid Runbook Worker を使用すると、UAC をオフにして、昇格が必要なコマンドを実行するときに [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) を使用できます。|
 |Windows Management Instrumentation (WMI) へのアクセスを必要とするスクリプトを実行する|Hybrid Runbook Worker|クラウドのサンドボックスで実行されているジョブでは、WMI プロバイダーにアクセスできません。 |
 
 ## <a name="resources"></a>リソース
 
-Runbook には必ず、[リソース](https://docs.microsoft.com/rest/api/resources/resources) (VM、ネットワーク、ネットワーク上のリソースなど) を扱うロジックが含まれています。 リソースは Azure サブスクリプションに関連付けられており、どのリソースにアクセスする場合でも Runbook に適切な資格情報が必要となります。 Runbook におけるリソースの処理の例については、「[リソースの処理](manage-runbooks.md#handle-resources)」を参照してください。 
+Runbook には必ず、[リソース](/rest/api/resources/resources) (VM、ネットワーク、ネットワーク上のリソースなど) を扱うロジックが含まれています。 リソースは Azure サブスクリプションに関連付けられており、どのリソースにアクセスする場合でも Runbook に適切な資格情報が必要となります。 Runbook におけるリソースの処理の例については、「[リソースの処理](manage-runbooks.md#handle-resources)」を参照してください。 
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 Azure Automation は、[Azure Security Center (ASC)](../security-center/security-center-intro.md) を使用してリソースのセキュリティを確保し、Linux システムにおけるセキュリティ侵害を検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
 
@@ -71,7 +71,7 @@ VM 上でスクリプトを実行できるユーザーには、ASC によって�
 
 ## <a name="subscriptions"></a>サブスクリプション
 
-Azure [サブスクリプション](https://docs.microsoft.com/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings)は、課金の対象となる 1 つまたは複数のクラウドベース サービスをご利用いただくために Microsoft との間で交わされる契約です。 Azure Automation では、各サブスクリプションが 1 つの Azure Automation アカウントに関連付けられます。また、そのアカウントには、[複数のサブスクリプションを作成](manage-runbooks.md#work-with-multiple-subscriptions)することができます。
+Azure [サブスクリプション](/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings)は、課金の対象となる 1 つまたは複数のクラウドベース サービスをご利用いただくために Microsoft との間で交わされる契約です。 Azure Automation では、各サブスクリプションが 1 つの Azure Automation アカウントに関連付けられます。また、そのアカウントには、[複数のサブスクリプションを作成](manage-runbooks.md#work-with-multiple-subscriptions)することができます。
 
 ## <a name="credentials"></a>資格情報
 
@@ -79,18 +79,18 @@ Azure のリソースであれ、サードパーティ システムのリソー�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Automation では、そのマシンの操作を監視するために [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) が使用されます。 これらの操作には、Log Analytics ワークスペースと [Log Analytics エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)が必要です。
+Azure Automation では、そのマシンの操作を監視するために [Azure Monitor](../azure-monitor/overview.md) が使用されます。 これらの操作には、Log Analytics ワークスペースと [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)が必要です。
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows 用の Log Analytics エージェント
 
-[Windows 用の Log Analytics エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)は、Azure Monitor と連携して、Windows VM と物理コンピューターを管理します。 マシンは、Azure 内で実行されていても、Azure 以外の環境 (ローカル データセンターなど) で実行されていてもかまいません。 エージェントは、1 つ以上の Log Analytics ワークスペースにレポートを送信するように構成されている必要があります。 
+[Windows 用の Log Analytics エージェント](../azure-monitor/platform/agent-windows.md)は、Azure Monitor と連携して、Windows VM と物理コンピューターを管理します。 マシンは、Azure 内で実行されていても、Azure 以外の環境 (ローカル データセンターなど) で実行されていてもかまいません。 エージェントは、1 つ以上の Log Analytics ワークスペースにレポートを送信するように構成されている必要があります。 
 
 >[!NOTE]
 >Windows 用の Log Analytics エージェントは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていました。
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェント
 
-[Linux 用 Log Analytics エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 エージェントをインストールすると、Hybrid Runbook Worker などでルート アクセス許可が要求されるコマンドを実行できる、**nxautomation** というユーザー アカウントもインストールされます。 **nxautomation** アカウントは、パスワードを必要としないシステム アカウントです。 
+[Linux 用 Log Analytics エージェント](../azure-monitor/platform/agent-linux.md)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 エージェントをインストールすると、Hybrid Runbook Worker などでルート アクセス許可が要求されるコマンドを実行できる、**nxautomation** というユーザー アカウントもインストールされます。 **nxautomation** アカウントは、パスワードを必要としないシステム アカウントです。 
 
 [Linux Hybrid Runbook Worker のインストール](automation-linux-hrw-install.md)中は、対応する sudo アクセス許可を持った **nxautomation** アカウントが存在していなければなりません。 そのアカウントが存在しない、または適切なアクセス許可がアカウントにない状態でワーカーをインストールしようとすると、インストールは失敗します。
 
@@ -120,7 +120,7 @@ Runbook では、証明機関 (CA) による署名のない自己署名証明書
 
 Azure Automation では、同じ Automation アカウントから複数のジョブを実行するための環境がサポートされています。 1 つの Runbook で、多数のジョブを同時に実行することができます。 同時に実行するジョブが多いほど、同じサンドボックスにディスパッチする頻度が上がります。 
 
-同じサンドボックス プロセスで実行するジョブは、お互いに影響し合う可能性があります。 1 つの例は、[Disconnect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) コマンドレットの実行です。 このコマンドレットを実行すると、共有サンドボックス プロセス内の各 Runbook ジョブが切断されます。 このシナリオに取り組む例については、「[コンカレント ジョブの防止](manage-runbooks.md#prevent-concurrent-jobs)」を参照してください。
+同じサンドボックス プロセスで実行するジョブは、お互いに影響し合う可能性があります。 1 つの例は、[Disconnect-AzAccount](/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) コマンドレットの実行です。 このコマンドレットを実行すると、共有サンドボックス プロセス内の各 Runbook ジョブが切断されます。 このシナリオに取り組む例については、「[コンカレント ジョブの防止](manage-runbooks.md#prevent-concurrent-jobs)」を参照してください。
 
 >[!NOTE]
 >Azure サンドボックスで実行されている Runbook から開始された PowerShell ジョブは、完全な [PowerShell 言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)で実行されないことがあります。 
@@ -156,7 +156,7 @@ Azure Automation で Runbook を実行すると、その Automation アカウン
 
 [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 変数により、終了しないエラーに対して PowerShell が対応する方法が決まります。 終了するエラーは常に終了し、`ErrorActionPreference` の影響を受けません。
 
-Runbook で `ErrorActionPreference` を使用すると、[Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) コマンドレットの `PathNotFound` などの通常は終了しないエラーによって、Runbook の完了が停止します。 次の例は、`ErrorActionPreference` の使用方法を示しています。 スクリプトが停止するため、最後の [Write-Output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) コマンドは実行されません。
+Runbook で `ErrorActionPreference` を使用すると、[Get-ChildItem](/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) コマンドレットの `PathNotFound` などの通常は終了しないエラーによって、Runbook の完了が停止します。 次の例は、`ErrorActionPreference` の使用方法を示しています。 スクリプトが停止するため、最後の [Write-Output](/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) コマンドは実行されません。
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -222,14 +222,13 @@ Azure DevOps Services や GitHub などの外部サービスを使用すると�
 
 長時間実行される Azure Automation タスクの場合は、Hybrid Runbook Worker の使用をお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限がありません。 その他のジョブの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間のフェア シェア制限を受けませんが、予期しないローカル インフラストラクチャの問題からの再起動がサポートされる worker で実行されるように Runbook を開発する必要があります。
 
-もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 たとえば、複数のデータベースに対するデータベース操作など、複数のリソースに対する同じ機能によって Runbook がループする可能性があります。 このような機能は、[子 Runbook](automation-child-runbooks.md) に移動し、[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) を使用して親 Runbook でそれを呼び出すことができます。 子 Runbook は別々のプロセスで並列に実行されます。
+もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 たとえば、複数のデータベースに対するデータベース操作など、複数のリソースに対する同じ機能によって Runbook がループする可能性があります。 このような機能は、[子 Runbook](automation-child-runbooks.md) に移動し、[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) を使用して親 Runbook でそれを呼び出すことができます。 子 Runbook は別々のプロセスで並列に実行されます。
 
-子 Runbook を使用すると、親 Runbook の完了までにかかる合計時間が短縮されます。 Runbook で子の完了後にまだ実行する操作がある場合、[Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) コマンドレットを使用して、子 Runbook のジョブ状態を確認できます。
+子 Runbook を使用すると、親 Runbook の完了までにかかる合計時間が短縮されます。 Runbook で子の完了後にまだ実行する操作がある場合、[Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) コマンドレットを使用して、子 Runbook のジョブ状態を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* PowerShell Runbook の使用を開始するには、「[チュートリアル: PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
-* Runbook を使った作業については、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
-* PowerShell の詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
-* * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* Runbook を操作するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
+* PowerShell の詳細については、[PowerShell のドキュメント](/powershell/scripting/overview)を参照してください。
+* * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。

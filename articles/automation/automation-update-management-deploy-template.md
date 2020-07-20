@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 06/10/2020
+ms.openlocfilehash: ad9029b44ffb0c98bad58bbf012eb19d084d5446
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830993"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185757"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management を有効にする
 
@@ -23,12 +23,9 @@ ms.locfileid: "83830993"
 * Automation アカウントから Log Analytics ワークスペースへのリンク (まだリンクされていない場合)。
 * Update Management の有効化。
 
-このテンプレートでは、1 つ以上の Azure VM または Azure 以外の VM の有効化は自動化されません。
+このテンプレートでは、1 つ以上の Azure VM または Azure 以外の VM で、Update Management の有効化は自動化されません。
 
-サブスクリプションでサポートされているリージョンに Log Analytics ワークスペースと Automation アカウントが既にデプロイされている場合、これらはリンクされていません。 ワークスペースでは、Update Management がまだ有効になっていません。 このテンプレートを使用すると、リンクが正常に作成され、VM の Update Management がデプロイされます。 
-
->[!NOTE]
->Linux で Update Management の一環として有効化された **nxautomation** ユーザーによって実行されるのは、署名済みの Runbook だけです。
+サブスクリプションでサポートされているリージョンに Log Analytics ワークスペースと Automation アカウントが既にデプロイされている場合、これらはリンクされていません。 このテンプレートを使用すると、リンクが正常に作成され、Update Management がデプロイされます。
 
 ## <a name="api-versions"></a>API のバージョン
 
@@ -36,22 +33,23 @@ ms.locfileid: "83830993"
 
 | リソース | リソースの種類 | API バージョン |
 |:---|:---|:---|
-| ワークスペース | workspaces | 2017-03-15-preview |
-| Automation アカウント | automation | 2015-10-31 | 
+| ワークスペース | workspaces | 2020-03-01-preview |
+| Automation アカウント | automation | 2018-06-30 | 
 | 解決策 | solutions | 2015-11-01-preview |
 
 ## <a name="before-using-the-template"></a>テンプレートを使用する前に
 
-PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell Az モジュールが必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) を実行して Azure との接続を作成する必要もあります。 Azure PowerShell では、デプロイに [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) が使用されます。
+PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell Az モジュールが必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) を実行して Azure との接続を作成する必要もあります。 Azure PowerShell では、デプロイに [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) が使用されます。
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.1.0 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI では、このデプロイに [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) が使用されます。 
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.1.0 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI では、このデプロイに [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) が使用されます。 
 
 JSON テンプレートは、次のことを求めるように構成されています。
 
-* ワークスペースの名前
-* ワークスペースを作成するリージョン
-* Automation アカウントの名前
-* アカウントを作成するリージョン
+* ワークスペースの名前。
+* ワークスペースを作成するリージョン。
+* リソースまたはワークスペースのアクセス許可を有効にするかどうか。
+* Automation アカウントの名前。
+* アカウントを作成するリージョン。
 
 JSON テンプレートでは、環境で標準構成用に使用される可能性のある他のパラメーターの既定値を指定します。 このテンプレートは、組織内の共有アクセス用に Azure ストレージ アカウントに格納できます。 テンプレートの操作について詳しくは、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
 
@@ -59,7 +57,6 @@ JSON テンプレートでは、環境で標準構成用に使用される可能
 
 * sku - 既定値は、2018 年 4 月の価格モデルでリリースされた新しい 1 GB あたりの価格レベル
 * data retention - 既定値は 30 日
-* capacity reservation - 既定値は 100 GB
 
 >[!WARNING]
 >新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。
@@ -114,18 +111,17 @@ Azure Automation と Azure Monitor を初めて使用する場合、新しい Au
                 "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
             }
         },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
-            }
-        },
         "location": {
             "type": "string",
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -150,13 +146,11 @@ Azure Automation と Azure Monitor を初めて使用する場合、新しい Au
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -168,7 +162,7 @@ Azure Automation と Azure Monitor を初めて使用する場合、新しい Au
             "resources": [
                 {
                     "apiVersion": "2015-11-01-preview",
-                    "location": "[resourceGroup().location]",
+                    "location": "[parameters('location')]",
                     "name": "[variables('Updates').name]",
                     "type": "Microsoft.OperationsManagement/solutions",
                     "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
@@ -189,7 +183,7 @@ Azure Automation と Azure Monitor を初めて使用する場合、新しい Au
         },
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [],
@@ -201,10 +195,10 @@ Azure Automation と Azure Monitor を初めて使用する場合、新しい Au
             },
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -242,8 +236,7 @@ Azure Automation と Azure Monitor を初めて使用する場合、新しい Au
 ## <a name="next-steps"></a>次のステップ
 
 * VM の Update Management を使用するには、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」をご覧ください。
+
 * Log Analytics ワークスペースが不要になった場合は、「[Unlink workspace from Automation account for Update Management (Update Management の Automation アカウントからワークスペースのリンクを解除する)](automation-unlink-workspace-update-management.md)」の手順を参照してください。
-* Update Management から VM を削除するには、「[Remove VMs from Update Management (Update Management から VM を削除する)](automation-remove-vms-from-update-management.md)」をご覧ください。
-* Update Management の一般的なエラーのトラブルシューティングについては、「[Troubleshoot Update Management issues (Update Management に関する問題のトラブルシューティング)](troubleshoot/update-management.md)」をご覧ください。
-* Windows Update エージェントに関する問題のトラブルシューティングについては、「[Windows Update エージェントの問題をトラブルシューティングする](troubleshoot/update-agent-issues.md)」をご覧ください。
-* Linux Update エージェントに関する問題のトラブルシューティングについては、「[Linux Update エージェントに関する問題のトラブルシューティング](troubleshoot/update-agent-issues-linux.md)」をご覧ください。
+
+* Update Management から VM を削除するには、「[Update Management から VM を削除する](automation-remove-vms-from-update-management.md)」を参照してください。

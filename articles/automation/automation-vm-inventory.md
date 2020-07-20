@@ -4,14 +4,14 @@ description: この記事では、VM からのインベントリ収集を管理�
 services: automation
 ms.subservice: change-inventory-management
 keywords: インベントリ, オートメーション, 変更, 追跡
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830618"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185723"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>VM からのインベントリ収集を管理する
 
@@ -100,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ![[インベントリ] ページでコンピューター グループを表示する](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-一覧からコンピューター グループを選択すると、[Machine groups] (コンピューター グループ) ページが開きます。 このページには、コンピューター グループに関する詳細が表示されます。 これらの詳細には、グループを定義するために使用されるログ分析クエリが含まれます。 ページの下部には、そのグループの一部になっているコンピューターのページ単位の一覧があります。
+一覧からコンピューター グループを選択すると、[Machine groups] (コンピューター グループ) ページが開きます。 このページには、コンピューター グループに関する詳細が表示されます。 これらの詳細には、グループを定義するために使用される Azure Monitor ログ クエリが含まれます。 ページの下部には、そのグループの一部になっているコンピューターのページ単位の一覧があります。
 
 ![コンピューター グループのページを表示する](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,18 +115,21 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 変更履歴とインベントリの管理対象から VM を除外するには、次の手順に従います。
 
 1. Azure portal の左ペインで **[Log Analytics]** を選択し、変更履歴とインベントリの対象として VM を有効にするときに使用したワークスペースを選択します。
-2. [Log Analytics] ページで、 **[リソース]** メニューを開きます。
+2. **[Log Analytics]** ページで、 **[リソース]** メニューを開きます。
 3. **[ワークスペースのデータ ソース]** で **[仮想マシン]** を選択します。
 4. 切断する VM を一覧から選択します。 マシンの **[OMS 接続]** 列の **[このワークスペース]** の横に、緑色のチェック マークが表示されます。
 
    >[!NOTE]
    >Operations Management Suite (OMS) は、Azure Monitor ログと呼ばれるようになりました。
-   
+
 5. 次のページの上部にある **[切断]** をクリックします。
 6. 確認ウィンドウで **[はい]** をクリックして、マシンを管理から切断します。
+
+>[!NOTE]
+>マシンは登録解除された後も表示されます。これは、過去 24 時間以内にインベントリされたすべてのマシンについてレポートするためです。 マシンの接続を切断した後、マシンが一覧に表示されなくなるには、24 時間待機する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * この機能の操作の詳細については、「[Change Tracking と Inventory の管理](change-tracking-file-contents.md)」を参照してください。
-* ソフトウェアの変更の追跡について詳しくは、[変更履歴を使用して環境内のソフトウェアの変更を追跡する](../log-analytics/log-analytics-change-tracking.md)方法に関するページを参照してください。
+* ソフトウェアの変更の追跡について詳しくは、[変更履歴を使用して環境内のソフトウェアの変更を追跡する](./change-tracking.md)方法に関するページを参照してください。
 * この機能に関する一般的な問題のトラブルシューティングについては、「[Change Tracking と Inventory に関する問題のトラブルシューティング](troubleshoot/change-tracking.md)」を参照してください。

@@ -3,33 +3,33 @@ title: Azure Automation Hybrid Runbook Worker の概要
 description: この記事では、ローカル データ センターまたはクラウド プロバイダー内のコンピューターで Runbook を実行できるようにする Hybrid Runbook Worker の概要について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/05/2019
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9305d0d6443c923c680af0d5fafc58887dadb902
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835293"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186250"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hybrid Runbook Worker の概要
 
-Azure Automation の Runbook は Azure クラウド プラットフォームで実行されるため、他のクラウドやオンプレミス環境のリソースにはアクセスできないことがあります。 Azure Automation の Hybrid Runbook Worker 機能を使う、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の割り当て済みコンピューターに配信されます。
+Azure Automation の Runbook は Azure クラウド プラットフォームで実行されるため、他のクラウドやオンプレミス環境のリソースにはアクセスできないことがあります。 Azure Automation の Hybrid Runbook Worker 機能を使うと、ロールをホスティングしているマシン上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の割り当て済みマシンに配信されます。
 
 次の図にこの機能を示します。
 
 ![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/automation.png)
 
-Hybrid Runbook Worker は、Windows または Linux オペレーティング システムのいずれかを実行できます。 監視を行うには、サポートされているオペレーティング システムの、Azure Monitor と Log Analytics エージェントを使用する必要があります。 詳細については、[Azure Monitor](automation-runbook-execution.md#azure-monitor) に関するページをご覧ください。
+Hybrid Runbook Worker は、Windows と Linux のいずれのオペレーティング システム上でも実行できます。 Azure Monitor [Log Analytics ワークスペース](../azure-monitor/platform/design-logs-deployment.md)にレポートする [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)に依存します。 ワークスペースは、サポートされているオペレーティング システムのマシンを監視するだけでなく、Hybrid Runbook Worker に必要なコンポーネントをダウンロードするためのものでもあります。
 
-各 Hybrid Runbook Worker は、エージェントのインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループには単一のエージェントを含めることができますが、高可用性グループに複数のエージェントをインストールすることができます。 それぞれのマシンでは、1 つのハイブリッド worker レポートを 1 つの Automation アカウントにホストできます。 
+各 Hybrid Runbook Worker は、エージェントのインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループには単一のエージェントを含めることができますが、高可用性グループに複数のエージェントをインストールすることができます。 それぞれのマシンでは、1 つのハイブリッド worker レポートを 1 つの Automation アカウントにホストできます。
 
-Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 ジョブ キューの処理時間は、ハイブリッド worker のハードウェア プロファイルと負荷によって異なります。 特定の worker を指定することはできません。 
+Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 ジョブ キューの処理時間は、ハイブリッド worker のハードウェア プロファイルと負荷によって異なります。 特定の worker を指定することはできません。
 
-[Azure サンドボックス](automation-runbook-execution.md#runbook-execution-environment)の代わりに Hybrid Runbook Worker を 使用します。これには、ディスク領域、メモリ、またはネットワーク ソケットに関するサンドボックスの多くの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)がないためです。 ハイブリッド worker の制限は、ワーカーそのもののリソースにのみ関連します。 
+[Azure サンドボックス](automation-runbook-execution.md#runbook-execution-environment)の代わりに Hybrid Runbook Worker を 使用します。これには、ディスク領域、メモリ、またはネットワーク ソケットに関するサンドボックスの多くの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)がないためです。 ハイブリッド worker の制限は、ワーカーそのもののリソースにのみ関連します。
 
 > [!NOTE]
-> Hybrid Runbook Worker には、Azure サンドボックスに存在するような[フェア シェア](automation-runbook-execution.md#fair-share)による時間制限はありません。 
+> Hybrid Runbook Worker には、Azure サンドボックスに存在するような[フェア シェア](automation-runbook-execution.md#fair-share)による時間制限はありません。
 
 ## <a name="hybrid-runbook-worker-installation"></a>Hybrid Runbook Worker のインストール
 
@@ -40,7 +40,7 @@ Hybrid Runbook Worker をインストールするプロセスは、オペレー�
 |Windows     | [自動](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
 
-Azure Automation Runbook を使用して、Windows コンピューターを構成するプロセスを完全に自動化するインストール方法をお勧めします。 2 番目の方法は、ロールを手動でインストールして構成するステップごとの手順に従うものです。 Linux マシンでは、コンピューターにエージェントをインストールする Python スクリプトを実行します。
+Azure Automation Runbook を使用して、Windows マシンを構成するプロセスを完全に自動化するインストール方法をお勧めします。 それができない場合は、ステップごとの手順に従って、ロールを手動でインストールして構成します。 Linux マシンでは、コンピューターにエージェントをインストールする Python スクリプトを実行します。
 
 ## <a name="network-planning"></a><a name="network-planning"></a>ネットワークの計画
 
@@ -51,56 +51,37 @@ Hybrid Runbook Worker が Azure Automation に接続して登録するには、�
 Hybrid Runbook Worker には、次のポートと URL が必要です。
 
 * ポート: 送信インターネット アクセスには TCP 443 のみが必要です
-* グローバル URL: *.azure-automation.net
-* 米国バージニア州 (政府機関向け) のグローバル URL: *.azure automation.us
-* エージェント サービス: https://\<workspaceId\>.agentsvc.azure-automation.net
+* グローバル URL: `*.azure-automation.net`
+* US Gov バージニアのグローバル URL: `*.azure-automation.us`
+* エージェント サービス: `https://<workspaceId>.agentsvc.azure-automation.net`
 
-[例外](automation-runbook-execution.md#exceptions)を定義するときは、一覧に示されているアドレスを使用することをお勧めします。 IP アドレスについては、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=56519)をダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。
-
-### <a name="dns-records-per-region"></a>リージョンあたりの DNS レコード数
-
-特定のリージョンに対して定義された Automation アカウントがある場合は、そのリージョン データセンターへの Hybrid Runbook Worker の通信を制限できます。 次の表は、リージョンごとの DNS レコードを示しています。
-
-| **リージョン** | **DNS レコード** |
-| --- | --- |
-| オーストラリア中部 |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
-| オーストラリア東部 |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
-| オーストラリア東南部 |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| カナダ中部 |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| インド中部 |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| 米国東部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| 東日本 |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| 北ヨーロッパ |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| 米国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| 東南アジア |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Gov バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-| 米国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| 西ヨーロッパ |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| 米国西部 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
-
-リージョン名の代わりにリージョン IP アドレスの一覧を入手するには、Microsoft ダウンロード センターから [Azure データセンター IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) XML ファイルをダウンロードします。 更新された IP アドレス ファイルが毎週発表されます。 
-
-IP アドレス ファイルには、Microsoft Azure データセンターで使用されている IP アドレス範囲が一覧表示されています。 計算、SQL、およびストレージの範囲が含まれ、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。
-
-新しい IP アドレス ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 
-
-> [!NOTE]
-> Azure ExpressRoute を使用している場合は、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために、IP アドレス ファイルが使用されることを覚えておきます。
+特定のリージョンに対して定義された Automation アカウントがある場合は、そのリージョン データセンターへの Hybrid Runbook Worker の通信を制限できます。 必要な DNS レコードについては、[Azure Automation によって使用される DNS レコード](how-to/automation-region-dns-records.md)に関するページを参照してください。
 
 ### <a name="proxy-server-use"></a>プロキシ サーバーの使用
 
-Azure Automation と Log Analytics エージェントの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 Hybrid Runbook Worker および Automation サービスからの要求のタイムアウトは 30 秒です。 3 回試行した後で、要求は失敗します。 
+Azure Automation と、Log Analytics エージェントを実行しているマシンとの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 Hybrid Runbook Worker および Automation サービスからの要求のタイムアウトは 30 秒です。 3 回試行した後で、要求は失敗します。
 
 ### <a name="firewall-use"></a>ファイアウォールの使用
 
-ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、Hybrid Runbook Worker 用に構成されていることを確認してください。 [Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)に関するセクションを参照してください。
+ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、Hybrid Runbook Worker 用に構成されていることを確認してください。 [Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](../azure-monitor/platform/gateway.md)に関するセクションを参照してください。
+
+### <a name="service-tags"></a>サービス タグ
+
+Azure Automation では、サービス タグ [GuestAndHybridManagement](../virtual-network/service-tags-overview.md) で始まる Azure 仮想ネットワーク サービス タグがサポートされています。 サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用できます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 **GuestAndHybridManagement** を指定することで、Automation サービスのトラフィックを許可または拒否できます。 このサービス タグでは、IP 範囲を特定のリージョンに制限することによる、より詳細な制御はサポートされていません。
+
+Azure Automation サービスのサービス タグでは、以下のシナリオで使用される IP のみが提供されます。
+
+* 仮想ネットワーク内から Webhook をトリガーする
+* VNet 上の Hybrid Runbook Worker または State Configuration エージェントに Automation サービスとの通信を許可する
+
+>[!NOTE]
+>現時点で、サービス タグ **GuestAndHybridManagement** は、Azure サンドボックスでの Runbook ジョブの実行をサポートしていません。Hybrid Runbook Worker での直接の実行のみがサポートされています。
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Hybrid Runbook Worker の Update Management
 
-Azure Automation [Update Management](automation-update-management.md) を有効にすると、Log Analytics ワークスペースに接続されたコンピューターはすべて Hybrid Runbook Worker として自動的に構成されます。 各 worker は、対象の Runbook を更新の管理でサポートできます。 
+Azure Automation [Update Management](automation-update-management.md) を有効にすると、Log Analytics ワークスペースに接続されたマシンはすべて Hybrid Runbook Worker として自動的に構成されます。 各 worker は、対象の Runbook を更新の管理でサポートできます。
 
-このように構成されたコンピューターは、Automation アカウントで既に定義した可能性のある Hybrid Runbook Worker グループには登録されません。 このコンピューターを Hybrid Runbook Worker グループに追加できますが、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用する必要があります。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
+このように構成されたマシンは、Automation アカウントで既に定義された Hybrid Runbook Worker グループには登録されません。 このマシンを Hybrid Runbook Worker グループに追加できますが、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用する必要があります。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Hybrid Runbook Worker の Update Management アドレス
 
@@ -108,9 +89,9 @@ Update Management には、Hybrid Runbook Worker に必要となる標準アド�
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     | *.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
+|`*.ods.opinsights.azure.com`     | `*.ods.opinsights.azure.us`         |
+|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
+|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Azure Automation State Configuration
 
@@ -118,7 +99,7 @@ Hybrid Runbook Worker で [Azure Automation State Configuration](automation-dsc-
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook
 
-ローカル コンピューター上のリソースを管理したり、Hybrid Runbook Worker が展開されているローカル環境のリソースに対して実行したりする Runbook があるとします。 この場合は、Automation アカウントではなく、ハイブリッド worker で Runbook を実行できます。 Hybrid Runbook Worker で実行される Runbook は、Automation アカウントで実行する Runbook と同じ構造になります。 詳細については、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照してください。
+ローカル マシン上のリソースを管理したり、Hybrid Runbook Worker が展開されているローカル環境のリソースに対して実行したりする Runbook があるとします。 この場合は、Automation アカウントではなく、ハイブリッド worker で Runbook を実行できます。 Hybrid Runbook Worker で実行される Runbook は、Automation アカウントで実行する Runbook と同じ構造になります。 詳細については、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照してください。
 
 ### <a name="hybrid-runbook-worker-jobs"></a>Hybrid Runbook Worker ジョブ
 
@@ -133,4 +114,4 @@ Hybrid Runbook Worker で実行される Runbook は Azure 以外のリソース
 ## <a name="next-steps"></a>次のステップ
 
 * オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
-* Hybrid Runbook Worker をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#general)」を参照してください。
+* Hybrid Runbook Worker のトラブルシューティングを行う方法については、「[Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#general)」を参照してください。

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 3c6a5e011a536cc9c34565d4f72a9bee6c6a5254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 278e7a89385eba975f4409237727c925da66c08b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945159"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169835"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -74,6 +74,7 @@ Secure Shell (SSH) を使用して、仮想マシンにサインオンするた�
  - ポータル - 12 から 72 文字の間
  - PowerShell - 8 から 123 文字の間
  - CLI - 12 から 123 文字の間
+ - Azure Resource Manager (ARM) テンプレート - 12 から 72 文字。制御文字は使用できません
  
 
 また、パスワードは次の 4 つの複雑性要件のうち 3 つを満たしている必要があります。

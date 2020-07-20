@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995858"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183037"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay ライセンスの要件と構成 
 
@@ -61,6 +61,9 @@ Media Services を使用した **Apple FairPlay** での HLS コンテンツの�
   * .der ファイル
   * .pfx ファイル
   * .pfx のパスワード
+  
+> [!NOTE]
+> Azure Media Services は、パッケージ化やキー配信の際に証明書の有効期限を確認しません。 証明書の有効期限が切れた後も、引き続き機能します。
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay とプレーヤー アプリ
 

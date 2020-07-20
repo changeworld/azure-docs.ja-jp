@@ -3,15 +3,15 @@ title: プログラムによる Azure サブスクリプションの作成
 description: 追加の Azure サブスクリプションをプログラムで作成する方法について説明します。
 author: amberbhargava
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 06/26/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 33f1d154f438b917b79cd299e81c9078e2f2e81d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460400"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170634"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>プログラムによる Azure サブスクリプションの作成 (プレビュー)
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
 | `owners`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 
-監視対象の `subscriptionOperation` オブジェクトが返されます。 サブスクリプションの作成が完了すると、`subscriptionOperation` オブジェクトから、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。
+応答では、監視対象の `Location` URL が返されます。 サブスクリプションの作成が完了すると、`Location` URL の GET によって、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。 詳細については、[サブスクリプション API のドキュメント](https://docs.microsoft.com/rest/api/subscription/)を参照してください
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -205,7 +205,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 
 - この API を使用して作成できるのは、Azure Enterprise サブスクリプションのみです。
-- 登録アカウントあたりのサブスクリプションの上限数は 500 です。 その後、アカウントの追加のサブスクリプションは、Azure portal でのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
+- 登録アカウントあたりのサブスクリプションの上限数は 2000 です。 その後、アカウントの追加のサブスクリプションは、Azure portal でのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
 - アカウント所有者ではないが、RBAC 経由で登録アカウントに追加されたユーザーは、Azure portal でサブスクリプションを作成することはできません。
 - サブスクリプションが作成されるテナントを選択することはできません。 サブスクリプションは常に、アカウント所有者のホーム テナント内に作成されます。 サブスクリプションを別のテナントに移動する場合は、[テナントのサブスクリプションの変更](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関する記事を参照してください。
 
@@ -355,7 +355,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ### <a name="prerequisites"></a>前提条件
 
-課金アカウントのサブスクリプションを作成するには、組織のクラウド ソリューション プロバイダー アカウントにグローバル管理者ロールまたは管理エージェント ロールが必要です。 詳細については、「[パートナー センター - ユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)」を参照してください。
+課金アカウントのサブスクリプションを作成するには、組織のクラウド ソリューション プロバイダー アカウントにグローバル管理者ロールまたは管理エージェント ロールが必要です。 詳細については、「[パートナー センター - ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
 
 次に示す例では、REST API を使用します。 現時点では、PowerShell と Azure CLI はサポートされていません。
 

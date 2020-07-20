@@ -3,12 +3,12 @@ title: デプロイ用のテンプレートをリンクする
 description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056686"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170651"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -160,7 +160,7 @@ ms.locfileid: "86056686"
 
 `exampleVar` の値は、`expressionEvaluationOptions` の `scope` プロパティの値によって変わります。 次の表に、両方のスコープの結果を示します。
 
-| `expressionEvaluationOptions` `scope` | 出力 |
+| `expressionEvaluationOptions` のスコープ | 出力 |
 | ----- | ------ |
 | inner | 入れ子になったテンプレートから |
 | outer (既定値) | 親テンプレートから |

@@ -4,12 +4,13 @@ description: Azure Application Insights を Azure Functions とともに使用�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757757"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170413"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -245,7 +246,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ## <a name="configure-sampling"></a>サンプリングを構成する
 
-Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 Application Insights では、受信実行の割合が指定されたしきい値を超えると、受信した実行の一部がランダムに無視され始めます。 1 秒あたりの最大実行数の既定の設定は 20 (バージョン 1.x では 5) です。 [host.json] でサンプリングを構成できます。  次に例を示します。
+Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 Application Insights では、受信実行の割合が指定されたしきい値を超えると、受信した実行の一部がランダムに無視され始めます。 1 秒あたりの最大実行数の既定の設定は 20 (バージョン 1.x では 5) です。 [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) でサンプリングを構成できます。  次に例を示します。
 
 ### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
@@ -255,12 +256,15 @@ Application Insights には、負荷がピークのときに、完了した実�
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+バージョン 2.x では、サンプリングから特定の種類のテレメトリを除外できます。 上の例では、`Request` 型のデータがサンプリングから除外されています。 これにより、"*すべての*" 関数実行 (要求) がログに記録される一方、他の種類のテレメトリはサンプリング対象のままとなります。
 
 ### <a name="version-1x"></a>バージョン 1.x 
 
@@ -313,7 +317,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -533,7 +537,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>JavaScript 関数でカスタム テレメトリをログに記録する
 
-[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) でカスタム テレメトリを送信するサンプル コード スニペットを示します。
+[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) を使用してカスタム テレメトリを送信するサンプル コード スニペットを次に示します。
 
 ### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
@@ -682,6 +686,42 @@ Add-AzAccount
 Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
+```
+
+## <a name="scale-controller-logs-preview"></a>スケール コントローラーのログ (プレビュー)
+
+この機能はプレビュー段階にあります。 
+
+[Azure Functions スケール コントローラー](./functions-scale.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights または BLOB ストレージにログを出力させることで、関数アプリに対してスケール コントローラーが行っている決定をより詳しく把握することができます。
+
+この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前の新しいアプリケーション設定を追加します。 この設定の値は `<DESTINATION>:<VERBOSITY>` の形式にし、以下に基づいて指定する必要があります。
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+たとえば、次の Azure CLI コマンドを実行すると、スケール コントローラーから Application Insights への詳細ログ記録が有効になります。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
+
+この例では、`<FUNCTION_APP_NAME>` と `<RESOURCE_GROUP_NAME>` を実際の関数アプリの名前とリソース グループ名でそれぞれ置き換えます。 
+
+次の Azure CLI コマンドでは、詳細度が `None` に設定されているため、ログ記録が無効になります。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+また、次の Azure CLI コマンドを使用して `SCALE_CONTROLLER_LOGGING_ENABLED` 設定を削除することで、ログ記録を無効にすることもできます。
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
 ## <a name="disable-built-in-logging"></a>組み込みログを無効にする

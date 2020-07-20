@@ -3,12 +3,13 @@ title: Azure Functions の Python 開発者向けリファレンス
 description: Python を使用して関数を開発する方法について説明します
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 49577f5ac274b4e34fa07415e5495329ff650aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676186"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170379"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -262,7 +263,7 @@ def main(req):
 
 ## <a name="http-trigger-and-bindings"></a>HTTP トリガーとバインディング
 
-HTTP トリガーは function.jon ファイルで定義されています。 バインディングの `name` は、関数の名前付きパラメーターと一致している必要があります。
+HTTP トリガーは function.json ファイルで定義されています。 バインディングの `name` は、関数の名前付きパラメーターと一致している必要があります。
 前の例では、バインド名 `req` が使用されています。 このパラメーターは [HttpRequest] オブジェクトであり、[HttpResponse] オブジェクトが返されます。
 
 [HttpRequest] オブジェクトからは、要求ヘッダー、クエリ パラメーター、ルート パラメーター、およびメッセージ本文を取得できます。
@@ -427,17 +428,15 @@ pip install -r requirements.txt
 
 発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。
 
-Python プロジェクトを Azure に発行するために、次の 3 つのビルド アクションがサポートされています。
+Python プロジェクトを Azure に発行するために、リモート ビルド、ローカル ビルド、およびカスタム依存関係を使用したビルドの 3 つのビルド アクションがサポートされています。
 
-+ リモート ビルド:依存関係は、requirements.txt ファイルの内容に基づいてリモートで取得されます。 [リモート ビルド](functions-deployment-technologies.md#remote-build) は推奨されるビルド方法です。 リモートは、Azure ツールの既定のビルド オプションでもあります。
-+ ローカル ビルド:依存関係は、requirements.txt ファイルの内容に基づいてローカルで取得されます。
-+ カスタムの依存関係:プロジェクトがツールで公開されていないパッケージを使用しています。 (Docker が必要です。)
-
-継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure パイプラインを使用](functions-how-to-azure-devops.md)します。
+Azure Pipelines を使用して依存関係をビルドし、継続的デリバリー (CD) を使用して発行することもできます。 詳細については、「[Azure DevOps を使用した継続的デリバリー](functions-how-to-azure-devops.md)」を参照してください。
 
 ### <a name="remote-build"></a>リモート ビルド
 
-次の [func azure functionapp publish](functions-run-local.md#publish) コマンドを使用して Python プロジェクトを Azure に発行すると、既定では Azure Functions Core Tools によってリモート ビルドが要求されます。
+リモート ビルドを使用する場合、サーバー上に復元された依存関係とネイティブの依存関係は運用環境と一致します。 これにより、アップロードするデプロイ パッケージが小さくなります。 Windows 上で Python アプリを開発する場合は、リモート ビルドを使用します。 プロジェクトにカスタム依存関係がある場合は、[追加のインデックスの URL を使用するリモート ビルドを使用する](#remote-build-with-extra-index-url)ことができます。 
+ 
+依存関係は、requirements.txt ファイルの内容に基づいてリモートで取得されます。 [リモート ビルド](functions-deployment-technologies.md#remote-build) は推奨されるビルド方法です。 次の [func azure functionapp publish](functions-run-local.md#publish) コマンドを使用して Python プロジェクトを Azure に発行すると、既定では Azure Functions Core Tools によってリモート ビルドが要求されます。
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -449,7 +448,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="local-build"></a>ローカル ビルド
 
-次の [func azure functionapp publish](functions-run-local.md#publish) コマンドを使用してローカル ビルドとして発行することで、リモート ビルドを実行しないようにすることができます。
+依存関係は、requirements.txt ファイルの内容に基づいてローカルで取得されます。 次の [func azure functionapp publish](functions-run-local.md#publish) コマンドを使用してローカル ビルドとして発行することで、リモート ビルドを実行しないようにすることができます。
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -457,9 +456,21 @@ func azure functionapp publish <APP_NAME> --build local
 
 `<APP_NAME>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。
 
-`--build local` オプションを使用すると、プロジェクトの依存関係が requirements.txt ファイルから読み取られ、これらの依存パッケージがローカルにダウンロードされ、インストールされます。 プロジェクト ファイルと依存関係は、ローカル コンピューターから Azure にデプロイされます。 これにより、大きいサイズのデプロイ パッケージが Azure にアップロードされます。 何らかの理由で、コア ツールが requirements.txt ファイルの依存関係を取得できない場合は、発行に際して [custom dependencies]\(カスタムの依存関係\) オプションを使用する必要があります。
+`--build local` オプションを使用すると、プロジェクトの依存関係が requirements.txt ファイルから読み取られ、これらの依存パッケージがローカルにダウンロードされ、インストールされます。 プロジェクト ファイルと依存関係は、ローカル コンピューターから Azure にデプロイされます。 これにより、大きいサイズのデプロイ パッケージが Azure にアップロードされます。 何らかの理由で、コア ツールが requirements.txt ファイルの依存関係を取得できない場合は、発行に際して [custom dependencies]\(カスタムの依存関係\) オプションを使用する必要があります。 
+
+Windows でローカルに開発する場合は、ローカル ビルドの使用をお勧めしません。
 
 ### <a name="custom-dependencies"></a>カスタムの依存関係
+
+[Python パッケージ インデックス](https://pypi.org/)にない依存関係がプロジェクトにある場合、2 つの方法でプロジェクトをビルドすることができます。 ビルド方法は、プロジェクトのビルド方法によって異なります。
+
+#### <a name="remote-build-with-extra-index-url"></a>追加のインデックスの URL を使用するリモート ビルド
+
+アクセス可能なカスタム パッケージ インデックスからパッケージを取得できる場合は、リモート ビルドを使用します。 発行する前に、必ず、`PIP_EXTRA_INDEX_URL` という名前の[アプリ設定を作成](functions-how-to-use-azure-function-app-settings.md#settings)してください。 この設定の値は、カスタム パッケージ インデックスの URL です。 この設定は、リモート ビルドで `--extra-index-url` オプションを使用して `pip install` を実行することを指示するために使用します。 詳細については、[Python の pip install に関するドキュメント](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)を参照してください。 
+
+また、基本認証の資格情報を追加のパッケージ インデックスの URL と共に使用することもできます。 詳細については、Python ドキュメントの「[基本認証の資格情報](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials)」を参照してください。
+
+#### <a name="install-local-packages"></a>ローカル パッケージをインストールする
 
 ツールで公開されていないパッケージをプロジェクトに使用している場合は、それを \_\_app\_\_/.python_packages ディレクトリに配置することで、アプリで使用可能にすることができます。 発行する前に次のコマンドを実行して、依存関係をローカルでインストールします。
 
@@ -467,7 +478,7 @@ func azure functionapp publish <APP_NAME> --build local
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-カスタムの依存関係を使用する場合は、既に依存関係がインストールされているため、`--no-build` 公開オプションを使用する必要があります。
+カスタムの依存関係を使用する場合は、既に依存関係がプロジェクト フォルダーにインストールされているため、`--no-build` 発行オプションを使用する必要があります。
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
@@ -629,6 +640,45 @@ from os import listdir
 
 テストは、プロジェクト フォルダーとは別のフォルダーに保存することをお勧めします。 これにより、アプリでテスト コードをデプロイすることを防ぐことができます。
 
+## <a name="preinstalled-libraries"></a>プレインストール済みライブラリ
+
+Python Functions ランタイムには、いくつかのライブラリが付属しています。
+
+### <a name="python-standard-library"></a>Python 標準ライブラリ
+
+Python 標準ライブラリには、各 Python ディストリビューションに同梱されている組み込み Python モジュールの一覧が含まれています。 これらのライブラリのほとんどは、ファイル I/O などのシステム機能へのアクセスに役立ちます。 Windows システムでは、これらのライブラリは Python と共にインストールされます。 Unix ベースのシステムでは、これらはパッケージ コレクションによって提供されます。
+
+これらのライブラリの一覧の完全な詳細については、次のリンク先を参照してください。
+
+* [Python 3.6 標準ライブラリ](https://docs.python.org/3.6/library/)
+* [Python 3.7 標準ライブラリ](https://docs.python.org/3.7/library/)
+* [Python 3.8 標準ライブラリ](https://docs.python.org/3.8/library/)
+
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python worker の依存関係
+
+Functions Python worker は、特定のライブラリ セットを必要とします。 これらのライブラリは、関数内で使用することもできますが、Python 標準の一部ではありません。 対象の関数がこれらのライブラリのいずれかに依存している場合、Azure Functions の外部で実行したときにコードでそれらのライブラリを使用できない場合があります。 依存関係の詳細な一覧は、[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) ファイルの **install\_requires** セクションで確認できます。
+
+### <a name="azure-functions-python-library"></a>Azure Functions Python ライブラリ
+
+すべての Python worker の更新プログラムには、新しいバージョンの [Azure Functions Python ライブラリ (azure.functions)](https://github.com/Azure/azure-functions-python-library) が含まれています。 各更新プログラムには下位互換性があるため、これで簡単に Python 関数アプリを継続的に更新できるようになります。 このライブラリのリリースの一覧は、[azure-functions PyPi](https://pypi.org/project/azure-functions/#history) で確認できます。
+
+ランタイム ライブラリのバージョンは Azure によって修正され、requirements.txt で上書きすることはできません。 requirements.txt の `azure-functions` エントリは、リンティングと顧客意識のためだけに用意されています。 
+
+対象のランタイムの Python Functions ライブラリの実際のバージョンを追跡するには、次のコードを使用します。
+
+```python
+getattr(azure.functions, '__version__', '< 1.2.1')
+```
+
+### <a name="runtime-system-libraries"></a>ランタイム システム ライブラリ
+
+Python worker の Docker イメージにプレインストールされているシステム ライブラリの一覧については、次のリンク先を参照してください。
+
+|  Functions ランタイム  | Debian のバージョン | Python のバージョン |
+|------------|------------|------------|
+| バージョン 2.x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| バージョン 3.x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+
 ## <a name="cross-origin-resource-sharing"></a>クロス オリジン リソース共有
 
 [!INCLUDE [functions-cors](../../includes/functions-cors.md)]
@@ -637,7 +687,7 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 
 ## <a name="known-issues-and-faq"></a>既知の問題とよくあるご質問
 
-貴重なご意見をお寄せいただきありがとうございます。一般的な問題については、トラブルシューティング ガイドの一覧をご利用いただけます。
+一般的な問題のトラブルシューティング ガイドの一覧を次に示します。
 
 * [ModuleNotFoundError および ImportError](recover-module-not-found.md)
 

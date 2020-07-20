@@ -6,31 +6,32 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/16/2020
+ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983603"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147252"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内の Python スクリプトの実行モジュールについて説明します。
 
-Python コードを実行するには、このモジュールを使用します。 Python のアーキテクチャと設計原則の詳細については、[次の記事](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)を参照してください。
+Python コードを実行するには、このモジュールを使用します。 Python のアーキテクチャと設計原則の詳細については、[Azure Machine Learning デザイナーで Python コードを実行する方法](../how-to-designer-python.md)に関するページを参照してください。
 
-Python を使用すると、既存のモジュールでは現在サポートされていない次のようなタスクを実行できます。
+Python を使用すると、既存のモジュールではサポートされない次のようなタスクを実行できます。
 
-+ `matplotlib` を使用してデータを可視化する
-+ Python ライブラリを使用してワークスペース内のデータセットとモデルを列挙する
-+ [データのインポート](./import-data.md) モジュールではサポートされていないソースからデータを読み取り、読み込み、操作する
-+ 独自のディープ ラーニング コードを実行する 
++ `matplotlib` を使用してデータを可視化する。
++ Python ライブラリを使用してワークスペース内のデータセットとモデルを列挙する。
++ [データのインポート](./import-data.md) モジュールではサポートされていないソースからデータを読み取り、読み込み、操作する。
++ 独自のディープ ラーニング コードを実行する。 
 
 
-Azure Machine Learning で使用されている Python の Anaconda ディストリビューションには、データ処理のための一般的なユーティリティが数多く含まれています。 ここでは、Anaconda バージョンを自動的に更新します。 最新のバージョンは次のとおりです。
+Azure Machine Learning で使用されている Python の Anaconda ディストリビューションには、データ処理のための一般的なユーティリティが数多く含まれています。 ここでは、Anaconda バージョンを自動的に更新します。 現行バージョンは次のとおりです。
  -  Python 3.6 の Anaconda 4.5 以上のディストリビューション 
 
 プレインストールされているパッケージは次のとおりです。
@@ -144,26 +145,37 @@ Azure Machine Learning で使用されている Python の Anaconda ディスト
 -    werkzeug==0.16.1
 -    wheel==0.34.2
 
- プレインストール一覧に含まれていない他のパッケージ (*scikit-misc* など) をインストールするには、スクリプトに次のコードを追加します。 
+ プレインストール一覧に含まれていないパッケージ (*scikit-misc* など) をインストールするには、スクリプトに次のコードを追加します。 
 
  ```python
 import os
 os.system(f"pip install scikit-misc")
 ```
+
+特に推論の場合は、次のコードを使用してパッケージをインストールした方がパフォーマンスは高くなります。
+```python
+import importlib.util
+package_name = 'scikit-misc'
+spec = importlib.util.find_spec(package_name)
+if spec is None:
+    import os
+    os.system(f"pip install scikit-misc")
+```
+
 > [!NOTE]
-> パイプラインに複数の Python スクリプトの実行モジュールが含まれており、プレインストールされている一覧に含まれていない同じパッケージが必要な場合は、それぞれのモジュールにそれらのパッケージをインストールしてください。 
+> プレインストール一覧に含まれていないパッケージを必要とする Python スクリプトの実行モジュールがパイプラインに複数含まれている場合は、それぞれのモジュールにそれらのパッケージをインストールしてください。
 
 ## <a name="upload-files"></a>ファイルをアップロードする
-**Execute Python Script** では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
+Python スクリプトの実行モジュールでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
 
-次の例は、**Execute Python Script** モジュールでイメージ ファイルをアップロードする方法を示しています。
+次の例は、Python スクリプトの実行モジュールでイメージ ファイルをアップロードする方法を示しています。
 
 ```Python
 
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# imports up here can be used to
+# Imports up here can be used to
 import pandas as pd
 
 # The entry point function must have two input arguments:
@@ -185,7 +197,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     run.upload_file(f"graphics/{img_file}", img_file)
 
     # Return value must be of a sequence of pandas.DataFrame
-    # E.g.
+    # For example:
     #   -  Single return value: return dataframe1,
     #   -  Two return values: return dataframe1, dataframe2
     return dataframe1,
@@ -195,54 +207,54 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 パイプラインの実行が終了したら、モジュールの右側のパネルでイメージをプレビューできます
 
 > [!div class="mx-imgBorder"]
-> ![アップロードされたイメージ](media/module/upload-image-in-python-script.png)
+> ![アップロードされた画像のプレビュー](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Execute Python Script を構成する方法
 
-**Python スクリプトの実行**モジュールには、出発点として利用できるサンプル Python コードが含まれています。 **Python スクリプトの実行**モジュールを構成するには、実行する Python コードと一連の入力を **[Python スクリプト]** ボックスに指定します。
+Python スクリプトの実行モジュールには、出発点として利用できるサンプル Python コードが含まれています。 Python スクリプトの実行モジュールを構成するには、実行する Python コードと一連の入力を **[Python スクリプト]** ボックスに指定します。
 
 1. **Python スクリプトの実行**モジュールをパイプラインに追加します。
 
 2. デザイナーから、入力に使用するデータセットを追加して **Dataset1** に接続します。 Python スクリプトでは、このデータセットを **DataFrame1** として参照します。
 
-    Python を使用してデータを生成したい場合や、Python コードを使用してデータを直接モジュールにインポートしたい場合、必ずしもデータセットを使用する必要はありません。
+    データセットの使用は任意です。 Python を使用してデータを生成したい場合に使用します。データを直接モジュールにインポートしたい場合は Python コードを使用してください。
 
-    このモジュールは、第 2 のデータセットを **Dataset2** で追加することができます。 Python スクリプトでは、第 2 のデータセットを DataFrame2 として参照します。
+    このモジュールは、第 2 のデータセットを **Dataset2** で追加することができます。 Python スクリプトでは、第 2 のデータセットを **DataFrame2** として参照します。
 
-    Azure Machine Learning に格納されたデータセットは、このモジュールに読み込まれた時点で自動的に **pandas** data.frames に変換されます。
+    Azure Machine Learning に格納されたデータセットは、このモジュールに読み込まれた時点で自動的に pandas data.frames に変換されます。
 
     ![Python 実行入力マップ](media/module/python-module.png)
 
-4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースを含む ZIP ファイルを**スクリプト バンドル**で追加します。 **スクリプト バンドル**への入力は、ファイルの種類をデータセットとしてワークスペースにアップロードされた ZIP ファイルであることが必要です。 データセットは、 **[データセット]** 資産ページでアップロードでき、デザイナー作成ページの左側のモジュール　ツリーにある **[My datasets]\(マイ データセット\)** リストから、データセット モジュールをドラッグ アンド ドロップできます。 
+4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースを含む ZIP ファイルを**スクリプト バンドル**で追加します。 **スクリプト バンドル**への入力は、ファイルの種類をデータセットとしてワークスペースにアップロードされた ZIP ファイルであることが必要です。 データセットのアップロードは、 **[データセット]** 資産ページで行うことができます。 デザイナー作成ページの左側のモジュール　ツリーにある **[My datasets]\(マイ データセット\)** リストから、データセット モジュールをドラッグしてください。 
 
     アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれていても、その構造は維持されます。ただしその場合は、**src** というディレクトリをパスの先頭に追加する必要があります。
 
 5. **[Python スクリプト]** ボックスに、有効な Python スクリプトを入力するか貼り付けます。
 
     > [!NOTE]
-    > スクリプトを記述するときは十分に注意し、宣言されていないオブジェクトやインポートされていないモジュールの使用など、構文エラーがないことをご確認ください。 また、事前にインストールされているモジュールの一覧にも特別な注意を払ってください。 一覧表示されていないモジュールをインポートするには、対応するパッケージを次のようなスクリプトでインストールします。
+    >  スクリプトを記述するときは注意が必要です。 宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことをご確認ください。 事前にインストールされているモジュールの一覧にも特別な注意を払ってください。 一覧表示されていないモジュールをインポートするには、対応するパッケージを次のようなスクリプトでインストールします。
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    **[Python スクリプト]** ボックスには、データへのアクセスと出力に使用するサンプル コードと共に、いくつかの指示がコメントとして事前に入力されています。 このコードを編集するか置き換える必要があります。 大文字と小文字の区別およびインデントに関する Python の規則に必ず従ってください。
+    **[Python スクリプト]** ボックスには、データへのアクセスと出力に使用するサンプル コードと共に、いくつかの指示がコメントとして事前に入力されています。 このコードを編集するか置き換える必要があります。 大文字と小文字の区別およびインデントに関する Python の規則に従ってください。
 
     + スクリプトには、このモジュールのエントリ ポイントとして、`azureml_main` という名前の関数が含まれている必要があります。
     + `Param<dataframe1>` と `Param<dataframe2>` の 2 つの入力引数がスクリプトで使用されていない場合でも、エントリ ポイント関数にはこれらの引数が必要です。
     + 第 3 の入力ポートに接続された ZIP ファイルは解凍されて `.\Script Bundle` ディレクトリに格納されます。Python の `sys.path` には、このディレクトリも追加されます。 
 
-    そのため、ZIP ファイルに `mymodule.py` が含まれている場合は、`import mymodule` を使用してインポートすることになります。
+    ZIP ファイルに `mymodule.py` が含まれている場合は、`import mymodule` を使用してインポートすることになります。
 
-    + デザイナーに対しては 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
+    デザイナーに対しては 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
 
-6. パイプラインを送信します。Python スクリプトだけを実行する場合は、このモジュールを選択して **[選択項目の実行]** をクリックしてください。
+6. パイプラインを送信します。Python スクリプトだけを実行する場合は、このモジュールを選択して **[選択項目の実行]** を選択してください。
 
     すべてのデータおよびコードが仮想マシンに読み込まれ、指定した Python 環境を使用して実行されます。
 
 ## <a name="results"></a>結果
 
-埋め込み Python コードによって実行された計算の結果は pandas.DataFrame として返す必要があります。そうすることで自動的に Azure Machine Learning データセット形式に変換され、その結果をパイプライン内の他のモジュールで使用できるようになります。
+埋め込み Python コードによる計算の結果は `pandas.DataFrame` として返す必要があります。そうすることで自動的に Azure Machine Learning データセット形式に変換されます。 その結果は、パイプライン内の他のモジュールで使用することができます。
 
 このモジュールからは、次の 2 つのデータセットが返されます。  
   

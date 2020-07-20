@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236883"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146905"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET アプリケーションから Azure Cognitive Search を使用する方法
 
-この記事では、[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) を使用する手順について説明します。 .NET SDK を使用すると、Azure Cognitive Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
+この記事では、[Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用する手順について説明します。 .NET SDK を使用すると、Azure Cognitive Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
 
 ## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure Cognitive Search SDK の内容
 この SDK は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､シノニム マップの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています｡ これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
@@ -38,7 +38,7 @@ SDK のその他の NuGet パッケージとしては以下があります｡
 
 SDK の今後の更新プログラムについてフィードバックを提供する場合は、[フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/) を参照するか、[GitHub](https://github.com/azure/azure-sdk-for-net/issues) でイシューを作成し、イシューのタイトルに "Azure Cognitive Search" を含めます。
 
-.NET SDK は、バージョン `2019-05-06` の [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[AI エンリッチメント](cognitive-search-concept-intro.md)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
+.NET SDK は、バージョン `2019-05-06` の [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を対象としています。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[AI エンリッチメント](cognitive-search-concept-intro.md)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
 
 この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Cognitive Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
 
@@ -171,46 +171,49 @@ private static SearchIndexClient CreateSearchIndexClient(string indexName, IConf
 
 有効なサービス名と API キーを使用してこのアプリケーションを実行すると、出力は次の例のようになります。(一部のコンソール出力は、説明のため "..." で置き換えられています。)
 
-    Deleting index...
+```output
 
-    Creating index...
+Deleting index...
 
-    Uploading documents...
+Creating index...
 
-    Waiting for documents to be indexed...
+Uploading documents...
 
-    Search the entire index for the term 'motel' and return only the HotelName field:
+Waiting for documents to be indexed...
 
-    Name: Secret Point Motel
+Search the entire index for the term 'motel' and return only the HotelName field:
 
-    Name: Twin Dome Motel
+Name: Secret Point Motel
 
-
-    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
-
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
-
-    HotelId: 2
-    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+Name: Twin Dome Motel
 
 
-    Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
 
-    Name: Triple Landscape Hotel
-    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
 
-    Name: Twin Dome Motel
-    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+HotelId: 2
+Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
 
 
-    Search the hotel names for the term 'hotel':
+Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
 
-    HotelId: 3
-    Name: Triple Landscape Hotel
-    ...
+Name: Triple Landscape Hotel
+Last renovated on: 9/20/2015 12:00:00 AM +00:00
 
-    Complete.  Press any key to end application... 
+Name: Twin Dome Motel
+Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+Search the hotel names for the term 'hotel':
+
+HotelId: 3
+Name: Triple Landscape Hotel
+...
+
+Complete.  Press any key to end application... 
+```
 
 アプリケーションの完全なソース コードは、この記事の最後で提供します。
 
@@ -566,7 +569,9 @@ Azure Cognitive Search インデックスにマップする独自のモデル �
 
 これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Cognitive Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 このため、ベスト プラクティスとして、モデル クラスでは null 許容型を使用することをお勧めします。
 
@@ -680,9 +685,11 @@ WriteDocuments(results);
 
 この例では、検索可能なあらゆるフィールドで "motel" という単語のインデックス全体を検索し、`Select` パラメーターによって指定されるとおり、ホテル名だけを返します。 結果は次のようになります。
 
-    Name: Secret Point Motel
+```output
+Name: Secret Point Motel
 
-    Name: Twin Dome Motel
+Name: Twin Dome Motel
+```
 
 次のクエリは、さらに興味深いものです。  1 泊 100 ドル未満の部屋があるホテルを検索し、ホテル ID と説明だけを返します。
 
@@ -703,11 +710,13 @@ WriteDocuments(results);
 
 クエリの結果は次のとおりです。
 
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+```output
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
 
-    HotelId: 2
-    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+HotelId: 2
+Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+```
 
 次に、最近改装された上位 2 つのホテルを検索し、ホテル名と最終改装日を表示します。 次にコードを示します。 
 
@@ -729,8 +738,10 @@ WriteDocuments(results);
 
 結果は次のようになります。
 
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```output
+Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
+Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```
 
 最後に、"hotel" という単語に一致するすべてのホテル名を検索します。
 
@@ -746,9 +757,11 @@ WriteDocuments(results);
 
 結果は次のとおりです。`Select` プロパティを指定しなかったので、この結果にはすべてのフィールドが含まれています。
 
+```output
     HotelId: 3
     Name: Triple Landscape Hotel
     ...
+```
 
 チュートリアルはここまでですが、ここで止めないでください。 **次のステップでは、Azure Cognitive Search をさらに学習するための他のリソースを提供します。
 

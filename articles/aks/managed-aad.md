@@ -3,25 +3,29 @@ title: Azure Kubernetes Service で Azure AD を使用する
 description: Azure Kubernetes Service (AKS) における Azure AD の使用方法
 services: container-service
 manager: gwallace
+author: TomGeske
 ms.topic: article
-ms.date: 05/11/2020
-ms.openlocfilehash: 67f5f707ad2971551e3c9623dd5c07ad880afcf2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204378"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166503"
 ---
-# <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Azure AD を Azure Kubernetes Service (プレビュー) に統合する
+# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS マネージド Azure Active Directory の統合 (プレビュー)
 
-> [!Note]
-> AAD (Azure Active Directory) と統合された既存の AKS クラスターは、新しい AKS マネージド AAD エクスペリエンスの影響を受けません。
+> [!NOTE]
+> Azure Active Directory (Azure AD) と統合された既存の AKS (Azure Kubernetes Service) クラスターは、新しい AKS マネージド Azure AD エクスペリエンスの影響を受けません。
 
-Azure AD と AKS マネージド AAD の統合は、Azure AD の統合エクスペリエンスを簡素化するように設計されています。これまでユーザーは、クライアント アプリとサーバー アプリを作成し、Azure AD テナントでディレクトリの読み取りアクセス許可を付与する必要がありました。 新しいバージョンでは、クライアント アプリとサーバー アプリは AKS リソース プロバイダーで管理されます。
+AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエンスを簡素化するように設計されています。これまでユーザーは、クライアント アプリとサーバー アプリを作成し、Azure AD テナントでディレクトリの読み取りアクセス許可を付与する必要がありました。 新しいバージョンでは、クライアント アプリとサーバー アプリは AKS リソース プロバイダーで管理されます。
 
-## <a name="limitations"></a>制限事項
+## <a name="azure-ad-authentication-overview"></a>Azure AD 認証の概要
 
-* 現在、既存の AKS AAD 統合クラスターを、新しい AKS マネージド AAD エクスペリエンスにアップグレードすることはできません。
+クラスター管理者は、ユーザーの ID またはディレクトリ グループのメンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成できます。 Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][open-id-connect]を参照してください。
+
+[Azure Active Directory 統合の概念に関するドキュメント](concepts-identity.md#azure-active-directory-integration)で AAD 統合フローの詳細を確認してください。
 
 > [!IMPORTANT]
 > AKS のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、ベストエフォート ベースでカスタマー サポートによって部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポート記事を参照してください。
@@ -30,6 +34,8 @@ Azure AD と AKS マネージド AAD の統合は、Azure AD の統合エクス�
 > - [Azure サポートに関する FAQ](faq.md)
 
 ## <a name="before-you-begin"></a>開始する前に
+
+* Azure アカウント テナント ID を確認します。そのためには、Azure portal に移動し、[Azure Active Directory] > [プロパティ] > [ディレクトリ ID] の順に選択します
 
 > [!Important]
 > 最小バージョンが 1.18 の Kubectl を使用する必要があります。
@@ -52,7 +58,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-Kubectl をインストールするには、次の Azure CLI コマンドを使用します。
+Kubectl をインストールするには、次のコマンドを使用します。
 
 ```azurecli
 sudo az aks install-cli
@@ -60,9 +66,6 @@ kubectl version --client
 ```
 
 他のオペレーティング システムでは、[これらの手順](https://kubernetes.io/docs/tasks/tools/install-kubectl/)を使用します。
-
-> [!CAUTION]
-> サブスクリプションで機能を登録した後、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にすると、サブスクリプションで後で作成されたすべての AKS クラスターに対して既定値が使用される場合があります。 運用サブスクリプションではプレビュー機能を有効にしないでください。 代わりに、プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
@@ -82,36 +85,39 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>Azure AD が有効になっている AKS クラスターを作成する
 
-次の CLI コマンドを使用し、AKS クラスターを作成できるようになりました。
+次の CLI コマンドを使用して、AKS クラスターを作成します。
 
-最初に、Azure リソース グループを作成します。
+Azure リソース グループを作成します。
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location centralus
 ```
 
-次に、AKS クラスターを作成します。
+既存の Azure AD グループを使用することも、新しい Azure AD グループを作成することもできます。 Azure AD グループのオブジェクト ID が必要です。
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
+# List existing groups in the directory
+az ad group list
 ```
-上記のコマンドでは、3 ノードの AKS クラスターが作成されますが、クラスターを作成したユーザーは、既定では、このクラスターへのアクセス権を持つグループのメンバーではありません。 このユーザーは、Azure AD グループを作成し、そのグループのメンバーとして自身を追加した後、次のようにクラスターを更新する必要があります。 [こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)で説明されている手順に従います
 
-グループを作成して自身 (およびその他の人を) メンバーとして追加したら、次のコマンドを使用して、Azure AD グループでクラスターを更新できます。
+クラスター管理者用の新しい Azure AD グループを作成するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
+# Create an Azure AD group
+az ad group create --display-name MyDisplay --mail-nickname MyDisplay
 ```
-また、最初にグループを作成してメンバーを追加した場合は、次のコマンドを使用して作成時に Azure AD グループを有効にすることもできます。
+
+AKS クラスターを作成し、Azure AD グループの管理アクセスを有効にします
 
 ```azurecli-interactive
+# Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
-正常に作成された AKS マネージド AAD クラスターの応答本文には、次のセクションが含まれます
+正常に作成された AKS マネージド Azure AD クラスターの応答本文には、次のセクションが含まれます
 ```
-"Azure ADProfile": {
+"AADProfile": {
     "adminGroupObjectIds": null,
     "clientAppId": null,
     "managed": true,
@@ -124,12 +130,17 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 クラスターは数分以内に作成されます。
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Azure AD が有効なクラスターへのアクセス
-クラスターにアクセスするための管理者資格情報を取得するには、次のようにします。
 
+次の手順を実行するには、[Azure Kubernetes Service クラスター ユーザー](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role)組み込みロールが必要です。
+
+クラスターにアクセスするためのユーザー資格情報を取得します。
+ 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
+ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-次に、kubectl get nodes コマンドを使用して、クラスターのノードを表示します。
+手順に従ってサインインします。
+
+kubectl get nodes コマンドを使用して、クラスターのノードを表示します。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -139,22 +150,49 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
+[ロールベースのアクセスの制御 (RBAC)](https://docs.microsoft.com/azure/aks/azure-ad-rbac) を構成して、クラスターの追加のセキュリティ グループを構成します。
 
-クラスターにアクセスするためのユーザー資格情報を取得するには、次のようにします。
- 
+## <a name="troubleshooting-access-issues-with-azure-ad"></a>Azure AD でのアクセスに関する問題のトラブルシューティング
+
+> [!Important]
+> 次に示す手順では、通常の Azure AD グループ認証をバイパスしています。 これは緊急時にのみ使用してください。
+
+クラスターへのアクセス権を持つ有効な Azure AD グループへのアクセス権がないために永続的にブロックされている場合でも、クラスターに直接アクセスするための管理者資格情報を取得することができます。
+
+これらの手順を実行するには、[Azure Kubernetes Service クラスター管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role)組み込みロールにアクセスできる必要があります。
+
 ```azurecli-interactive
- az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
-手順に従ってサインインします。
 
-次のようなメッセージが表示された場合:**You must be logged in to the server (Unauthorized)**
+## <a name="non-interactive-sign-in-with-kubelogin"></a>kubelogin を使用した非対話型サインイン
 
-上記のユーザーはクラスターへのアクセス権を持つグループに属していないため、エラーが発生しています。
+継続的インテグレーション パイプラインなど、現在 kubectl で使用できない非対話型シナリオがいくつかあります。 [`kubelogin`](https://github.com/Azure/kubelogin) を使用して、非対話型サービス プリンシパル サインインでクラスターにアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD のロールベースのアクセス制御][azure-ad-rbac]について学習する。
+* [Kubernetes 承認用の Azure RBAC 統合][azure-rbac-integration]について学習する。
+* [Azure AD と Kubernetes RBAC の統合][azure-ad-rbac]について学習する。
 * [kubelogin](https://github.com/Azure/kubelogin) を使用して、kubectl では利用できない Azure 認証の機能にアクセスする。
+* [AKS と Kubernetes ID の概念][aks-concepts-identity]について学習する。
+* [Azure Resource Manager (ARM) テンプレート][aks-arm-template]を使用して、AKS マネージド Azure AD が有効なクラスターを作成する。
+
+<!-- LINKS - external -->
+[kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[azure-rbac-integration]: manage-azure-rbac.md
+[aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-group-create]: /cli/azure/group#az-group-create
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
+[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[operator-best-practices-identity]: operator-best-practices-identity.md
+[azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md
+

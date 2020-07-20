@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/03/2020
 ms.custom: seodec18, contperfq4, tracking-python
-ms.openlocfilehash: 636d16c4fbbd662d6fccb811fb4a88b2d862b533
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ace657efaac323dcf48cfba95629abc59ca0cac3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107327"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231762"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 
@@ -65,7 +65,7 @@ FPGA には、プログラミング可能なロジック ブロックの配列�
 
 ![Azure Machine Learning における FPGA の比較図](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|プロセッサ||説明|
+|プロセッサ| 省略形 |説明|
 |---|:-------:|------|
 |特定用途向け集積回路|ASIC|Google の TensorFlow Processor Unit (TPU) などのカスタム回路は、最高の効率性を提供します。 ニーズに変化に応じて再構成することはできません。|
 |フィールド プログラマブル ゲート アレイ|FPGA|FPGA (Azure で利用できるものなど) は、ASIC に近いパフォーマンスを提供します。 将来新しいロジックを実装するための柔軟性と再構成可能性も備えています。|

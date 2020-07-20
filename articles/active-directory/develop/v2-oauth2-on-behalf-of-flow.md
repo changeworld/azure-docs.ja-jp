@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/8/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553541"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165874"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -47,7 +47,7 @@ OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサ�
 > [!NOTE]
 > このシナリオでは、中間層サービスに、ダウンストリーム API にアクセスするユーザーの同意を得るためのユーザー操作はありません。 そのため、ダウンストリーム API へのアクセス権を付与するオプションは、認証中の同意手順の一部として事前に提供されます。 ご使用のアプリに対してこれを設定する方法について詳しくは、「[中間層アプリケーションの同意の取得](#gaining-consent-for-the-middle-tier-application)」を参照してください。
 
-## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
+## <a name="middle-tier-access-token-request"></a>中間層アクセス トークン要求
 
 アクセス トークンを要求するには、次のパラメーターを使用して、テナントに固有の Microsoft ID プラットフォーム トークン エンドポイントへの HTTP POST を作成します。
 
@@ -66,7 +66,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | `grant_type` | 必須 | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `client_secret` | 必須 | Azure portal の [アプリの登録] ページで、アプリ用に生成したクライアント シークレット。 |
-| `assertion` | 必須 | 要求で使用されるトークンの値。  このトークンには、この OBO 要求を行うアプリ (`client-id` フィールドに示されるアプリ) の対象ユーザーが必要です。 |
+| `assertion` | 必須 | 中間層 API に送信されたアクセス トークン。  このトークンには、この OBO 要求を行うアプリ (`client-id` フィールドに示されるアプリ) の対象ユーザー (`aud`) 要求が必要です。 アプリケーションは別のアプリ用のトークンを利用することはできません (たとえば、クライアントが API に MS Graph 用のトークンを送信した場合、API は OBO を使用してそれを利用することはできません。  代わりに、トークンを拒否する必要があります)。  |
 | `scope` | 必須 | トークン要求のスコープのスペース区切りリスト。 詳細については、「[スコープ](v2-permissions-and-consent.md)」を参照してください。 |
 | `requested_token_use` | 必須 | 要求の処理方法を指定します。 OBO フローでは、この値は `on_behalf_of` に設定する必要があります。 |
 
@@ -99,7 +99,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | `client_id` | 必須 |  [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `client_assertion_type` | 必須 | 値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります。 |
 | `client_assertion` | 必須 | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 |
-| `assertion` | 必須 | 要求で使用されるトークンの値。 |
+| `assertion` | 必須 |  中間層 API に送信されたアクセス トークン。  このトークンには、この OBO 要求を行うアプリ (`client-id` フィールドに示されるアプリ) の対象ユーザー (`aud`) 要求が必要です。 アプリケーションは別のアプリ用のトークンを利用することはできません (たとえば、クライアントが API に MS Graph 用のトークンを送信した場合、API は OBO を使用してそれを利用することはできません。  代わりに、トークンを拒否する必要があります)。  |
 | `requested_token_use` | 必須 | 要求の処理方法を指定します。 OBO フローでは、この値は `on_behalf_of` に設定する必要があります。 |
 | `scope` | 必須 | トークン要求のスコープのスペース区切りリスト。 詳細については、「[スコープ](v2-permissions-and-consent.md)」を参照してください。|
 
@@ -125,7 +125,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>サービス間のアクセス トークン応答
+## <a name="middle-tier-access-token-response"></a>中間層アクセス トークン応答
 
 成功応答は、次のパラメーターを含む JSON OAuth 2.0 応答です。
 

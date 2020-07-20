@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ab6ee597cfdc5d169bd33b77a061880b19e134b6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302294"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165636"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
@@ -183,9 +183,10 @@ Azure アクティビティ ログの次のサンプル イベントは、連続
 - 分析プラットフォームへのデータ フローがありません。 指定したクエリに対するデータがないので[クエリを実行するとエラーが発生します](https://dev.loganalytics.io/documentation/Using-the-API/Errors)。
 - [クエリ言語](https://docs.microsoft.com/azure/kusto/query/)が変更され、コマンドと関数の形式が変更されています。 したがって、アラート ルールで以前指定したクエリが無効になっています。
 
-この動作は、[Azure Advisor](../../advisor/advisor-overview.md) で警告されています。 Azure Advisor の高可用性の影響が中程度のカテゴリに、"確実に監視するためログ アラート ルールを修復します" という説明で、特定のログ アラート ルールでの推奨事項が追加されています。 Azure Advisor により推奨事項が 7 日間表示された後も、ログ アラート ルールのアラート クエリが修正されない場合、Azure Monitor では、ルールが相当な期間 (1 週間など) 継続して実行できない場合に、ログ アラートが無効にされ、お客様が不必要に課金されないようにします。
+この動作は、[Azure Advisor](../../advisor/advisor-overview.md) で警告されています。 Azure Advisor の高可用性の影響が中程度のカテゴリに、"確実に監視するためログ アラート ルールを修復します" という説明で、特定のログ アラート ルールでの推奨事項が追加されています。
 
-Azure Monitor がログ アラート ルールを無効にした正確な時間は、[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)でイベントを検索すると見つけることができます。
+> [!NOTE]
+> Azure Advisor により推奨事項が 7 日間表示された後も、ログ アラート ルールのアラート クエリが修正されない場合、Azure Monitor では、ルールが相当な期間 (7 日間) 継続して実行できない場合に、ログ アラートが無効にされ、お客様が不必要に課金されないようにします。 Azure Monitor がログ アラート ルールを無効にした正確な時間は、[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)でイベントを検索すると見つけることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

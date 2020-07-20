@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734794"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220271"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のユーザー プロファイルの同期をサポートするように Azure Active Directory Domain Services を構成します。
 
@@ -42,18 +42,18 @@ SharePoint Server には、ユーザー プロファイルを同期するサー�
 
 ## <a name="service-accounts-overview"></a>サービス アカウントの概要
 
-マネージド ドメインでは、 **[AAD DC Service Accounts]\(AAD DC サービス アカウント\)** という名前のセキュリティ グループが *[ユーザー]* 組織単位 (OU) の一部として存在します。 このセキュリティ グループのメンバーには、次の特権が委任されます。
+マネージド ドメインでは、 *[AAD DC Service Accounts]\(AAD DC サービス アカウント\)* という名前のセキュリティ グループが *[ユーザー]* 組織単位 (OU) の一部として存在します。 このセキュリティ グループのメンバーには、次の特権が委任されます。
 
 - ルート DSE に対する**ディレクトリの変更のレプリケート**特権。
 - *[構成]* 名前付けコンテキスト (`cn=configuration` コンテナー) に対する**ディレクトリの変更のレプリケート**特権。
 
-**[AAD DC Service Accounts]\(AAD DC サービス アカウント\)** セキュリティ グループは、組み込みグループの **Pre-Windows 2000 Compatible Access** のメンバーでもあります。
+*[AAD DC Service Accounts]\(AAD DC サービス アカウント\)* セキュリティ グループは、組み込みグループの *Pre-Windows 2000 Compatible Access* のメンバーでもあります。
 
 このセキュリティ グループに追加されると、SharePoint Server ユーザー プロファイル同期サービスのサービス アカウントに、正しく機能するために必要な特権が付与されます。
 
 ## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>SharePoint Server ユーザー プロファイルの同期のサポートを有効にする
 
-SharePoint Server のサービス アカウントには、変更をディレクトリにレプリケートし、SharePoint Server ユーザー プロファイルの同期を正しく機能させるために適切な特権が必要です。 これらの特権を付与するには、**AAD DC Service Accounts** グループに、SharePoint のユーザー プロファイルの同期に使用するサービス アカウントを追加します。
+SharePoint Server のサービス アカウントには、変更をディレクトリにレプリケートし、SharePoint Server ユーザー プロファイルの同期を正しく機能させるために適切な特権が必要です。 これらの特権を付与するには、*AAD DC Service Accounts* グループに、SharePoint のユーザー プロファイルの同期に使用するサービス アカウントを追加します。
 
 Azure AD DS 管理 VM から、次の手順を実行します。
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74122694"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184788"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service から Azure Cache for Redis への移行
 Azure Managed Cache Service を使用するアプリケーションの Azure Cache for Redis への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 この記事では、Azure Cache for Redis を使用するように Managed Cache Service アプリケーションを移行する際に必要な構成とアプリケーションの変更を行う方法、および Azure Cache for Redis の機能の一部を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。
@@ -40,7 +40,7 @@ Azure Managed Cache Service と Azure Cache for Redis は似ていますが、�
 | Managed Cache Service の機能 | Managed Cache Service のサポート | Azure Cache for Redis のサポート |
 | --- | --- | --- |
 | 名前付きキャッシュ |既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大 9 個の名前付きキャッシュを追加構成できます。 |Azure Cache for Redis には、名前付きキャッシュに似た機能の実装に使用できるデータベースの数を構成できます (既定は 16 個)。 詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」と「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
-| 高可用性 |Standard および Premium キャッシュ プランでは、キャッシュ内のアイテムの高可用性が提供されます。 アイテムが障害によって失われた場合でも、キャッシュ内のアイテムのバックアップ コピーを使用できます。 セカンダリ キャッシュへの書き込みは同期的に行われます。 |高可用性は Standard および Premium キャッシュ プランで利用でき、2 ノードのプライマリ/レプリカ構成を使用します (Premium キャッシュではシャードごとにプライマリ/レプリカ ペアがあります)。 レプリカへの書き込みは非同期的に行われます。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。 |
+| 高可用性 |Standard および Premium キャッシュ プランでは、キャッシュ内のアイテムの高可用性が提供されます。 アイテムが障害によって失われた場合でも、キャッシュ内のアイテムのバックアップ コピーを使用できます。 レプリカ キャッシュへの書き込みは同期的に行われます。 |高可用性は Standard および Premium キャッシュ プランで利用でき、2 ノードのプライマリ/レプリカ構成を使用します (Premium キャッシュではシャードごとにプライマリ/レプリカ ペアがあります)。 レプリカへの書き込みは非同期的に行われます。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。 |
 | 通知 |名前付きキャッシュでさまざまなキャッシュ操作が発生したとき、クライアントは非同期の通知を受け取ることができます。 |クライアント アプリケーションは、Redis のパブリッシュ/サブスクライブまたは [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) を使用して、同様の通知機能を実現できます。 |
 | ローカル キャッシュ |特に高速のアクセスのため、キャッシュされたオブジェクトのコピーをクライアントにローカルに格納します。 |クライアント アプリケーションは、ディクショナリまたは類似のデータ構造を使用してこの機能を実装する必要があります。 |
 | 削除ポリシー |None または LRU。 既定のポリシーは LRU です。 |Azure Cache for Redis は、volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction の各削除ポリシーをサポートします。 既定のポリシーは volatile-lru です。 詳細については、「 [既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |

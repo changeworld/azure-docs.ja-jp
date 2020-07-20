@@ -4,104 +4,80 @@ description: Business Applications ISV コネクト プログラムにオンボ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: parthpandyaMSFT
-ms.author: parthp
-ms.date: 7/12/2019
-ms.openlocfilehash: fe518cf5b01bbefd5b596b10dff27d0e3ecfcfcc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 6/25/2020
+ms.author: dsindona
+ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104949"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170243"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
-[Business Applications ISV コネクト プログラム](https://partner.microsoft.com/solutions/business-applications/isv-overview)の目的は、"*Dynamics 365 Customer Engagement and PowerApps*" ("Dynamics CE オファー") または "*Dynamics 365 Finance and Operations*" ("Dynamics Ops オファー") を使用して最新のクラウドベースの基幹業務 (LOB) ソリューションを構築する独立系ソフトウェアベンダー (ISV) の成長と全体的な成功を促進することです。 ここではそれに参加する方法を示します。
+[ビジネス アプリケーション ISV コネクト プログラム](https://partner.microsoft.com/solutions/business-applications/isv-overview)の目的は、Dynamics 365 Customer Engagement and Power Apps (Dynamics CE アプリケーション) または Dynamics 365 Finance and Operations (Dynamics Ops アプリケーション) を使用して最新のクラウドベースの基幹業務 (LOB) ソリューションを構築する独立系ソフトウェア ベンダー (ISV) の成長と全体的な成功を促進することです。 
+
+ビジネス アプリケーション ISV コネクト プログラムのすべての技術、マーケティング、販売に関する有効化ベネフィットに登録して利用するには、この記事の次のセクションを完了してください。 
 
 > [!IMPORTANT]
-> *Dynamics 365 Customer Engagement*、*Dynamics 365 for Finance and Operations*、および *PowerApps* アプリケーションを使用する既存の ISV パートナーは、[Microsoft AppSource](https://appsource.microsoft.com) から既存のオファーが削除されないように、**2019 年 10 月 15 日**より前に、以下のすべてのオンボード手順を完了する必要があります。
-
-Business Applications ISV コネクト プログラムのすべての[技術、マーケティング、販売に関する有効化ベネフィット](https://partner.microsoft.com/solutions/business-applications/isv-overview)に登録して利用するため、既存の ISV パートナー ("*Dynamics CE*" オファーと "*Ops*" オファーを使用) には以下の手順を完了することをお願いします。
-
-- [Microsoft パートナー センター アカウントを設定する](#set-up-your-microsoft-partner-center-account)。
-- [Business Applications 補遺に同意する](#accept-the-business-applications-isv-program-addendum)。
-- [課金情報を設定する](#set-up-your-billing-information)。
-- [アプリケーションを再認定する](#recertify-your-application)。
-
-> [!IMPORTANT]
-> 既存のオファーに対する変更を発行する前に、上記の手順をすべて完了しておく必要があります。
+> 新規または既存のプランに変更を発行する前に、この記事のすべての手順を完了する必要があります。
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Microsoft パートナー センター アカウントを設定する
 
-[パートナー センター](https://partner.microsoft.com)は、ISV コネクト プログラムのアカウント設定を管理する場所です。
+ISV コネクト プログラムのアカウントを設定して管理するには、次の記事の手順を実行します: 「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)」。 この記事では、新しいアカウントを作成するためのすべての手順と、新しい発行元をコマーシャル マーケットプレース プログラムに追加する方法について説明します。
 
 > [!NOTE]
-> このステップでは、特定のアカウントに対する Cloud パートナー ポータルでの "*所有者*" ロールと、パートナー センターでの "*所有者*" または "*管理者*" ロールが必要です。
+> この手順では、パートナー センターで "*所有者*" または "*マネージャー*" のロールが必要です。
 
-Dynamics CE オファーまたは Dynamics Ops オファーを既に発行している場合は、通常、Cloud パートナー ポータル (CPP) アカウントはパートナー センターに既に移行されてアクティブ化されています。 そうではない場合は、CPP 発行元プロファイルからパートナー センター アカウントを手動でアクティブ化することができます。
+## <a name="accept-the-business-applications-isv-program-addendum"></a>ビジネス アプリケーション ISV プログラムの補遺に同意する
 
-1. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)で、**発行元プロファイル**のページにサインインします。
-2. アカウント設定がパートナー センターに移行済みであることを示すバナーが表示される場合は、次のセクションに進みます。 それ以外の場合は、パートナー センター アカウントのアクティブ化を求めるバナーを選択します。
-
-詳細については、「[Cloud パートナー ポータルからパートナー センターへのアカウントの移行](../partner-center-portal/account-migration-from-cpp-to-pc.md)」をご覧ください。
-
-## <a name="accept-the-business-applications-isv-program-addendum"></a>Business Applications ISV プログラム補遺に同意する
-
-このプログラムに参加するには、"*Business Applications 補遺*" を確認してそれに同意する必要があります。
+このプログラムに参加するには、"[Business Applications 補遺](https://aka.ms/bizappsisvaddendum)" を確認してそれに同意する必要があります。
 
 > [!NOTE]
-> このステップで法的契約に署名するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。 前のステップで[パートナー センター アカウントをアクティブ化する](#set-up-your-microsoft-partner-center-account)ことによって Cloud パートナー ポータル アカウントの移行を完了した場合、アクセス許可もパートナー センターに移行されています。
+> この手順で法的契約に署名するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。 
 
-1. [[パートナー センター ダッシュボード]](https://partner.microsoft.com/dashboard/account/agreements) に移動し、メッセージが表示されたらパートナー センターにサインインします。
-
-2. **[商業マーケットプレース]** という見出しの下で、**Microsoft Business Applications ISV 補遺**を見つけます。
-
-3. バージョンのリンクを選択し、契約を表示します。
-
-4. **[Accept Agreement]\(契約に同意する\)** を選択し、契約に同意して受け入れます。
+1.  [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
+2.  **[設定]** (歯車アイコン) を選択し、 **[開発者向け設定]** を選択します。
+3.  **[契約]** を選択します。 
+4.  バージョンのリンクを選択し、契約を表示します。
+5.  契約に同意して受け入れるには、 **[Accept Agreement]\(契約に同意する\)** を選択します。
 
 ## <a name="set-up-your-billing-information"></a>課金情報を設定する
 
-次に、Business Applications ISV コネクト プログラムの課金情報を設定します。
+ビジネス アプリケーション ISV コネクト プログラムの課金情報を設定します。
 
 > [!NOTE]
 > このステップで課金情報を更新するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
+1.  [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
+2.  **[設定]** (歯車アイコン) を選択し、 **[開発者向け設定]** を選択します。
+3.  **[アカウント]** で、 **[課金プロファイル]** を選択します。
+4.  法人から設定された主要連絡先と課金情報を確認し、必要な更新を行います。
+5.  該当する場合は、税 ID または VAT ID の設定を指定します。
+6.  変更を保存するには、 **[保存]** をクリックします。
 
-2. *[設定]* (歯車) アイコンを選択し、 **[開発者向け設定]** を選択します。
+> [!NOTE]
+> 課金プロファイルはいつでも更新できます。 ただし、"*会社名*" と請求先住所の "*国*" は後で変更することはできません。
 
-3. *[アカウント]* で、 **[課金プロファイル]** を選択します。
+## <a name="publish-and-certify-your-application"></a>アプリケーションを発行して認定を受ける
 
-4. 法人から設定された主要連絡先と課金情報を確認し、必要な更新を行います。
+上記の手順を完了すると、既存の Dynamics 365 CE または Dynamics 365 Ops アプリケーションをパートナー センターで編集できるようになります。 また、新しいアプリケーションを作成することもできます。
 
-5. 必要に応じて、税 ID/VAT ID の設定を指定します。
+ビジネス アプリケーション ISV コネクト プログラムに登録する最後の手順は、既存のアプリケーションを発行して認定を受けることです。 アプリケーションを AppSource に発行して認定を受けるには、適切なリンクに従ってください。 
 
-6. **[保存]** を選択して変更を保存します。
+- [Dynamics 365 Customer Engagement の場合](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
+- [Dynamics 365 for Finance and Operations の場合](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
-課金プロファイルはいつでも更新できますが、"*会社名*" と請求先住所の "*国*" は後で変更することはできません。
+> [!IMPORTANT]
+> AppSource でアプリをライブ状態に保つには、6 か月ごとにアプリを再認定する必要があります。 詳細については、「[コマーシャル マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」を参照してください。 
 
-## <a name="recertify-your-application"></a>アプリケーションを再認定する
+## <a name="next-steps"></a>次のステップ
 
-上記の手順を完了すると、既存の Dynamics CE オファーおよび Dynamics Ops オファーをパートナー センターで編集できるようになります。 パートナー センターで新しいオファーを作成することもできます。
+アカウントに関する問い合わせは、アカウント マネージャーまたは [Microsoft パートナー サポート](https://aka.ms/marketplacepublishersupport)に対して行ってください。 ビジネス アプリケーション ISV コネクト プログラムの一般情報については、以下をご覧ください。
 
-Business Applications ISV コネクト プログラムに登録する最後のステップは、既存アプリケーションの再認定を受けることです。
+- **[ISV 向けビジネス アプリケーション (オンライン記事)](https://aka.ms/bizappsisvweb)**
 
-1. [手順に従って](https://partner.microsoft.com/solutions/business-applications/isv-publish)、AppSource に対するアプリケーションの再認定を受けます。
-2. [新しいオファーを作成して発行します](../partner-center-portal/create-new-customer-engagement-offer.md)。 このオファーはまったく新しいオファーになり、既存のオファーに代わるものではありません。
+- **[ビジネス アプリケーション ISV 向けの新しいプログラムの概要 (PDF)](https://aka.ms/bizappsisvprogram)**
 
-## <a name="further-info"></a>詳細情報
+- **[ISV コネクト プログラムのポリシー](https://aka.ms/bizappsisvpolicies)**
 
-アカウントに関する問い合わせは、アカウント マネージャーまたは [Microsoft パートナー サポート](https://partner.microsoft.com/support)に対して行ってください。 Business Applications ISV コネクト プログラムおよび Microsoft パートナー センターの一般情報については、以下をご覧ください。
-
-#### <a name="business-applications-for-isvs-online-article"></a>ISV 向け Business Applications (オンライン記事)
-https://partner.microsoft.com/solutions/business-applications/isv-overview
-
-#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Business Applications ISV 向けの新しいプログラムの概要 (PDF)
-https://aka.ms/BizAppsISVProgram
-
-#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Business Applications ISV コネクト プログラムの FAQ (PDF)
-https://assetsprod.microsoft.com/business-applications-partner-faq.pdf
-
-#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Business Applications ISV 向けの今後のプログラム (ブログ投稿)
-https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/

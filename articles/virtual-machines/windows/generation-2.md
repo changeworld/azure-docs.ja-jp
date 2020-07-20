@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144848"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -192,6 +192,9 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 * **第 2 世代 VM では高速ネットワークはサポートされていますか?**  
     はい。 詳細については、[高速ネットワークを使用した VM の作成](../../virtual-network/create-vm-accelerated-networking-cli.md)に関するページを参照してください。
 
+* **Azure の第 2 世代 VM では、セキュア ブートまたは vTPM がサポートされますか?**
+    Azure の第 1 世代と第 2 世代の VM では、どちらもセキュア ブートと vTPM はサポートされません。 
+    
 * **第 2 世代では VHDX はサポートされていますか?**  
     いいえ。第 2 世代 VM では VHD のみがサポートされています。
 

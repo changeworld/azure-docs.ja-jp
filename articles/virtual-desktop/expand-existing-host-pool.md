@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209353"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259882"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>新しいセッション ホストで既存のホスト プールを拡張する
 
@@ -78,7 +78,7 @@ ms.locfileid: "85209353"
 
 既存のホスト プールを拡張したので、Windows Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
 
-- [Windows デスクトップ クライアントを使用して接続する](./connect-windows-7-and-10.md)
+- [Windows デスクトップ クライアントを使用して接続する](./connect-windows-7-10.md)
 - [Web クライアントに接続する](./connect-web.md)
 - [Android クライアントに接続する](./connect-android.md)
 - [macOS クライアントに接続する](./connect-macos.md)

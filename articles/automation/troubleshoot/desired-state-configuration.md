@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681377"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187219"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Automation State Configuration の問題のトラブルシューティング
 
@@ -26,7 +26,7 @@ ms.locfileid: "83681377"
 
 ### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1.ローカル コンピューター上で構成が正常にコンパイルされていることを確認する
 
-Azure Automation State Configuration は、PowerShell Desired State Configuration (DSC) に基づいて構築されています。 DSC の言語と構文については、[PowerShell DSC のドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
+Azure Automation State Configuration は、PowerShell Desired State Configuration (DSC) に基づいて構築されています。 DSC の言語と構文については、[PowerShell DSC のドキュメント](/powershell/scripting/overview)を参照してください。
 
 ご利用のローカル コンピューター上で DSC の構成をコンパイルすると、次のような一般的なエラーを検出して解決できます。
 
@@ -42,7 +42,7 @@ Azure Automation State Configuration は、PowerShell Desired State Configuratio
 
 [安定バージョンのモジュールのインストール](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)に関するページにある手順に従って、ローカル コンピューター上に `xDscDiagnostics` モジュールをインストールできます。
 
-ご利用の Azure のコンピューター上に `xDscDiagnostics` モジュールをインストールするには、[Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) を使用します。 また、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../../virtual-machines/windows/run-command.md)」の手順に従って、Azure portal で **[実行コマンド]** オプションを使用することもできます。
+ご利用の Azure のコンピューター上に `xDscDiagnostics` モジュールをインストールするには、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) を使用します。 また、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../../virtual-machines/windows/run-command.md)」の手順に従って、Azure portal で **[実行コマンド]** オプションを使用することもできます。
 
 **xDscDiagnostics** の使用方法については、「[xDscDiagnostics を使用した DSC ログの分析](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)」を参照してください。 また、[xDscDiagnostics コマンドレット](https://github.com/PowerShell/xDscDiagnostics#cmdlets)に関するページも参照してください。
 
@@ -64,15 +64,15 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 このエラーは、一時的な問題であり、解決される予定です。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
-[Remove-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 ) コマンドレットを使用して、構成を削除します。
+[Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) コマンドレットを使用して、構成を削除します。
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>シナリオ:DSC エージェントを登録できなかった
 
 ### <a name="issue"></a>問題
 
-[Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) または別の DSC コマンドレットの場合に、次のエラーが返されます。
+[Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) または別の DSC コマンドレットの場合に、次のエラーが返されます。
 
 ```error
 Registration of the Dsc Agent with the server
@@ -89,7 +89,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 このエラーは、通常、ファイアウォール、プロキシ サーバーの背後にあるマシン、またはその他のネットワーク エラーが原因で発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 DSC の適切なエンドポイントへのアクセス権がご利用のマシンにあることを確認し、もう一度やり直してください。 必要なポートとアドレスの一覧については、[ネットワークの計画](../automation-dsc-overview.md#network-planning)に関するページを参照してください。
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 この問題は、* **.azure-automation.net** へのアクセスを許可しないプロキシ構成が原因である場合もあります。 詳細については、「[プライベート ネットワークの構成](../automation-dsc-overview.md#network-planning)」を参照してください。 
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 失敗した DSC ノードを再登録するには、次の手順に従います。
 
@@ -171,13 +171,13 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 通常、このエラーは、ノードがノード構成 (MOF ファイル) の名前 (**ABC.WebServer** など) ではなく構成名 (**ABC** など) に割り当てられている場合に発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 * ノードに構成名ではなく、ノード構成名が割り当てられていることを確認してください。
 * ノード構成は、Azure portal または PowerShell コマンドレットを使用してノードに割り当てることができます。
 
   * Azure portal で、 **[ホーム]**  >  **[Automation アカウント]** > (自分の Automation アカウント) > **[状態の構成 (DSC)]** の順に移動します。 次に、ノードを選択し、 **[ノード構成の割り当て]** を選択します。
-  * [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) コマンドレットを使用します。
+  * [Set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) コマンドレットを使用します。
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>シナリオ: 構成のコンパイル時に、ノード構成 (MOF ファイル) が生成されなかった
 
@@ -193,7 +193,7 @@ Compilation completed successfully, but no node configuration **.mof** files wer
 
 DSC 構成の `Node` キーワードに続く式の評価結果が `$null` の場合、ノード構成は生成されません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 問題を解決するには、次のいずれかの解決策を使用します。
 
@@ -214,9 +214,9 @@ No instance found with given property values
 
 ご利用の Windows Management Framework (WMF) バージョンをアップグレードしましたが、Windows Management Instrumentation (WMI) が破損しています。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
-[DSC の既知の問題と制限事項](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)に関するページに示された手順に従ってください。
+[DSC の既知の問題と制限事項](/powershell/scripting/wmf/known-issues/known-issues-dsc)に関するページに示された手順に従ってください。
 
 ## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>シナリオ:DSC 構成で資格情報が使用できない
 
@@ -232,7 +232,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 構成に資格情報を使用したが、ノード構成ごとに `PSDscAllowPlainTextPassword` を true に設定するための適切な `ConfigurationData` を指定していませんでした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 構成に示されている各ノード構成の `PSDscAllowPlainTextPassword` を true に設定するために、適切な `ConfigurationData` を渡してください。 [Azure Automation State Configuration での DSC 構成のコンパイル](../automation-dsc-compile.md)に関するページを参照してください。
 
@@ -250,7 +250,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 通常、このエラーは、サービスに存在しないノード構成名がノードに割り当てられたときに発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 * ノードに割り当てる名前が、サービスに存在する名前と正確に一致していることを確認します。
 * ノード構成名を含めないようにすることもできます。この場合、ノードは有効化されますが、ノード構成は割り当てられません。
@@ -259,7 +259,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 ### <a name="issue"></a>問題
 
-[Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) または [Register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) を使用してノードを登録すると、次のエラーが表示されます。
+[Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) または [Register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) を使用してノードを登録すると、次のエラーが表示されます。
 
 ```error
 One or more errors occurred.
@@ -269,7 +269,7 @@ One or more errors occurred.
 
 このエラーは、Automation アカウントで使用されているものとは別のサブスクリプションにノードを登録しようとしたときに発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 別のクラウドまたはオンプレミスに対して定義されているかのように、クロスサブスクリプション ノードを扱います。 マシンを有効化するための次のいずれかのオプションを使用してノードを登録します。
 
@@ -290,7 +290,7 @@ Provisioning has failed
 
 ノードと Azure 間の接続に問題がある場合、このメッセージが表示されます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 ご利用のノードが仮想プライベート ネットワーク (VPN) 内にあるのか、または Azure への接続に関する他の問題を抱えているかを判断します。 [「機能のデプロイに関する問題のトラブルシューティング」](onboarding.md)を参照してください。
 
@@ -308,7 +308,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 **/tmp** の場所が `noexec` に設定されていると、現在のバージョンの DSC は構成の適用に失敗します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 **/tmp** の場所から `noexec` オプションを削除します。
 
@@ -322,7 +322,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 これはコンパイル サービスにおける既知の問題です。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 最善の回避策としては、ローカルで、または CI/CD パイプラインでコンパイルを行い、サービスにノード構成 MOF ファイルを直接アップロードします。 サービス内でコンパイルを行うことが必須である場合、最善の回避策として次に推奨されるのは、名前が重複しないように、コンパイル ジョブを分割することです。
 
@@ -336,9 +336,9 @@ DSC 構成をアップロードするときに、`GatewayTimeout` エラーが�
 
 コンパイルに長い時間がかかる DSC 構成では、このエラーが発生する可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
-任意の [Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 呼び出しに対して `ModuleName` パラメーターを明示的に含めることで、DSC 構成をより速く解析することができます。
+任意の [Import-DSCResource](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 呼び出しに対して `ModuleName` パラメーターを明示的に含めることで、DSC 構成をより速く解析することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

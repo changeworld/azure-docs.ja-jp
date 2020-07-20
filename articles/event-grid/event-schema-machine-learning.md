@@ -3,12 +3,12 @@ title: Event Grid のソースとしての Azure Machine Learning
 description: Azure Event Grid の Machine Learning ワークスペース イベント用に用意されているプロパティについて説明します
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102499"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181524"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid のソースとしての Azure Machine Learning
 
@@ -26,7 +26,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 | Microsoft.MachineLearningServices.ModelDeployed | モデルがエンドポイントに正常にデプロイされたときに発生します。 |
 | Microsoft.MachineLearningServices.RunCompleted | 実行が正常に完了したときに発生します。 |
 | Microsoft.MachineLearningServices.DatasetDriftDetected | データセット ドリフト モニターがドリフトを検出したときに発生します。 |
-| Microsoft.MachineLearningServices.RunStatusChanged | 実行状態が 'failed' に変更されたときに発生します。 |
+| Microsoft.MachineLearningServices.RunStatusChanged | 実行状態が変化したときに発生します。 |
 
 ### <a name="the-contents-of-an-event-response"></a>イベント応答の内容
 

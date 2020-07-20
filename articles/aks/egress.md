@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターでエグレス ト�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a2f0394b172361e9053b1490a46357a5d3f2f47d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803384"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145500"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
 
@@ -23,6 +23,9 @@ ms.locfileid: "80803384"
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+
+> [!IMPORTANT]
+> この記事では、*Basic* SKU のロード バランサーと単一のノード プールを使用します。 複数のノード プールでは *Basic* SKU のロード バランサーがサポートされないため、この構成は利用できません。 *Standard* SKU のロード バランサーの使用について詳しくは、「[Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する][slb]」を参照してください。
 
 ## <a name="egress-traffic-overview"></a>エグレス トラフィックの概要
 
@@ -134,3 +137,4 @@ Azure Load Balancer に複数のパブリック IP アドレスを保持しな�
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

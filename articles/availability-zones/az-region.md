@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: eec92672801d33290df1690d8cb17e79d4626192
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2e337628542475c081a59bffd25368de313011f8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042052"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206215"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure での Availability Zones をサポートしているリージョン
 
@@ -24,9 +24,8 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 
 各リージョンで利用可能なサービスと、今後の可用性のためのロードマップについては、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)に関するページを参照してください。
 
-|                                 |アメリカ |              |           |           | ヨーロッパ |              |          |              | アジア太平洋 |                 |                |
+| サービス |アメリカ合衆国:米国中部|アメリカ合衆国:米国東部|アメリカ合衆国:米国東部 2|アメリカ合衆国:米国西部 2|ヨーロッパ: フランス中部|ヨーロッパ: 北ヨーロッパ|ヨーロッパ: 英国南部|ヨーロッパ: 西ヨーロッパ|アジア太平洋: 東日本|アジア太平洋: 東南アジア|アジア太平洋: オーストラリア東部|
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|-------------|
-|          |米国中部|米国東部|米国東部 2|米国西部 2|フランス中部|北ヨーロッパ|英国南部|西ヨーロッパ|東日本|東南アジア|オーストラリア東部|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |                |
 | Linux Virtual Machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       | &#10003;               |
 | Windows Virtual Machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       | &#10003;               |

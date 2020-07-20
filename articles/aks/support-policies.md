@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106987"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243853"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -75,7 +75,7 @@ Microsoft では、次に関するテクニカル サポートは提供してい
   > Microsoft では、Helm や Kured など、サード パーティのオープン ソース プロジェクトに対してベスト エフォートのサポートを提供できます。 サード パーティのオープン ソース ツールが Kubernetes の Azure クラウド プロバイダーまたは他の AKS 固有のバグと統合される場合、Microsoft では、Microsoft ドキュメントからの例やアプリケーションをサポートします。
 * サード パーティのクローズド ソース ソフトウェア。 このソフトウェアには、セキュリティ スキャン ツール、およびネットワーク デバイスまたはソフトウェアが含まれる場合があります。
 * マルチクラウドまたはマルチベンダーの構築に関する問題。 たとえば、Microsoft では、フェデレーション マルチパブリック クラウド ベンダーのソリューションの実行に関連する問題はサポートしていません。
-* [AKS ドキュメント](https://docs.microsoft.com/azure/aks/)に記載されている以外のネットワークのカスタマイズ。
+* [AKS ドキュメント](./index.yml)に記載されている以外のネットワークのカスタマイズ。
   > [!NOTE]
   > Microsoft では、ネットワーク セキュリティ グループ (NSG) に関連する問題およびバグをサポートしています。 Microsoft サポートでは、たとえば、NSG の更新の失敗や、NSG またはロード バランサーの予期しない動作に関する質問にはお答えできます。
 

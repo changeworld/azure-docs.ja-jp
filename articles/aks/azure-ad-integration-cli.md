@@ -2,14 +2,16 @@
 title: Azure Active Directory と Azure Kubernetes Service を統合する
 description: Azure CLI を使用して Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法を学習する
 services: container-service
+author: TomGeske
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: 85441b53b22b4d33ee2ff967d777cc3267e171da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 0465c54df2095cff7647e974765e61fa9b9ff3e1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106103"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169461"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -19,9 +21,9 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 
 この記事で使用されているサンプル スクリプトの完成版については、[Azure CLI のサンプルの AKS と Azure AD の統合][complete-script]に関するページを参照してください。
 
-次の制限事項が適用されます。
+## <a name="the-following-limitations-apply"></a>次の制限事項が適用されます。
 
-- Azure AD は、RBAC が有効なクラスターを新しく作成するときにのみ有効にできます。 既存の AKS クラスターで Azure AD を有効にすることはできません。
+- Azure AD は、RBAC が有効なクラスターでのみ有効にすることができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 

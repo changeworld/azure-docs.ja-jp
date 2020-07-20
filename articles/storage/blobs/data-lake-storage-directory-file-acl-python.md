@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: tracking-python
-ms.openlocfilehash: f5ff33d021f27f2c5dfb86ca87f2579602f0d1cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07708de1326e0aba6485b2cf1fb0610d9710cdf7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559149"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142483"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -94,11 +94,11 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 > [!NOTE]
 > その他の例については、[Python 用 Azure ID クライアント ライブラリ](https://pypi.org/project/azure-identity/)のドキュメントを参照してください。
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
-ファイル システムは、ファイルのコンテナーとして機能します。 **FileSystemDataLakeServiceClient.create_file_system** メソッドを呼び出すことによって作成できます。
+コンテナーは、ファイルのファイル システムとして機能します。 **FileSystemDataLakeServiceClient.create_file_system** メソッドを呼び出すことによって作成できます。
 
-この例では、`my-file-system` という名前のファイル システムを作成します。
+この例では、`my-file-system` という名前のコンテナーを作成します。
 
 ```python
 def create_file_system():
@@ -116,7 +116,7 @@ def create_file_system():
 
 **FileSystemClient.create_directory** メソッドを呼び出して、ディレクトリ参照を作成します。
 
-この例では、`my-directory` という名前のディレクトリをファイル システムに追加します。 
+この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。 
 
 ```python
 def create_directory():

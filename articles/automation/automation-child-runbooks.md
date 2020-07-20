@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 95e156c17b723c679772293401c730cbdff2220b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828646"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169886"
 ---
 # <a name="create-modular-runbooks"></a>モジュラー Runbook を作成する
 
@@ -20,12 +20,12 @@ Azure Automation では、他の Runbook によって呼び出される個別の
 
 |  | インライン | コマンドレット |
 |:--- |:--- |:--- |
-| ジョブ |子 Runbook は、親と同じジョブで実行されます。 |子 Runbook 用に別のジョブが作成されます。 |
-| 実行 |親 Runbook は、子 Runbook の完了を待ってから続行します。 |親 Runbook は、子 Runbook が開始されたらすぐに続行するか、 *または* 、子ジョブの完了を待ちます。 |
-| 出力 |親 Runbook は、子 Runbook から出力を直接取得できます。 |親 Runbook は、子 Runbook ジョブから出力を取得する必要があるか、 *または* 、子 Runbook から出力を直接取得できます。 |
-| パラメーター |子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。 |子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があります。 このハッシュテーブルには、JSON のシリアル化が使用される、単純、配列、オブジェクトの各データ型のみを含めることができます。 |
-| Automation アカウント |親 Runbook は、同じ Automation アカウントの子 Runbook のみを使用できます。 |親 Runbook は、同じ Azure サブスクリプション、および接続されている別のサブスクリプションの、任意の Automation アカウントの子 Runbook を使用できます。 |
-| 発行 |親 Runbook を発行する前に、子 Runbook を発行する必要があります。 |子 Runbook は、親 Runbook が開始される前の任意の時点で発行されます。 |
+| **ジョブ** |子 Runbook は、親と同じジョブで実行されます。 |子 Runbook 用に別のジョブが作成されます。 |
+| **実行** |親 Runbook は、子 Runbook の完了を待ってから続行します。 |親 Runbook は、子 Runbook が開始されたらすぐに続行するか、 *または* 、子ジョブの完了を待ちます。 |
+| **出力** |親 Runbook は、子 Runbook から出力を直接取得できます。 |親 Runbook は、子 Runbook ジョブから出力を取得する必要があるか、 *または* 、子 Runbook から出力を直接取得できます。 |
+| **パラメーター** |子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。 |子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があります。 このハッシュテーブルには、JSON のシリアル化が使用される、単純、配列、オブジェクトの各データ型のみを含めることができます。 |
+| **Automation アカウント** |親 Runbook は、同じ Automation アカウントの子 Runbook のみを使用できます。 |親 Runbook は、同じ Azure サブスクリプション、および接続されている別のサブスクリプションの、任意の Automation アカウントの子 Runbook を使用できます。 |
+| **発行** |親 Runbook を発行する前に、子 Runbook を発行する必要があります。 |子 Runbook は、親 Runbook が開始される前の任意の時点で発行されます。 |
 
 ## <a name="invoke-a-child-runbook-using-inline-execution"></a>インライン実行を使用して子 Runbook を呼び出す
 

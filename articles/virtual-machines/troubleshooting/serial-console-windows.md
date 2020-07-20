@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135245"
+ms.locfileid: "86146642"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -100,8 +100,7 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 
 1. シリアル コンソールに接続します。 正常に接続できたら、プロンプトは **SAC>** になります。
 
-    ![SAC に接続する](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
-
+   ![SAC に接続する](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 1. 「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
 
 1. 「`ch -si 1`」と入力するか、`<esc>+<tab>` のショートカット キーを押して、CMD インスタンスを実行しているチャネルに切り替えます。
@@ -112,7 +111,7 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 
 1. PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、**Enter** キーを押します。
 
-    ![PowerShell インスタンスを開く](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+   ![PowerShell インスタンスを開く](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>NMI 呼び出しにシリアル コンソールを使用する
 マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。 現在、プログラマーやシステム管理者は、応答していないシステムのデバッグやトラブルシューティングのためのメカニズムとして、NMI をよく使用しています。

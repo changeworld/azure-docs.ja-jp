@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235345"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169913"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -33,6 +33,42 @@ Application Insights の接続文字列。 お使いの関数アプリで接続�
 |Key|値の例|
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey=[key];IngestionEndpoint=[url];LiveEndpoint=[url];ProfilerEndpoint=[url];SnapshotEndpoint=[url];|
+
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+既定では、[Functions プロキシ](functions-proxies.md)は、ショートカットを使用して、同じ関数アプリ内の関数にプロキシから直接 API 呼び出しを送信します。 このショートカットは、新しい HTTP 要求を作成する代わりに使用されます。 この設定を使用すると、そのショートカット動作を無効にすることができます。
+
+|Key|値|説明|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接送信されません。 代わりに、要求は、関数アプリの HTTP フロントエンドに戻されます。|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されます。 これが既定値です。 |
+
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+この設定は、文字 `%2F` がバックエンド URL に挿入されたときにこれをルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
+
+|Key|値|説明|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュを含むルート パラメーターがデコードされます。 |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|すべてのルート パラメーターは変更されずに渡されます。これは既定の動作です。 |
+
+たとえば、`myfunction.com` ドメインの関数アプリ用の proxies.json ファイルを考えてみます。
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+
+`AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` が `true` に設定されている場合、URL `example.com/api%2ftest` は `example.com/api/test` に解決されます。 既定では、URL は `example.com/test%2fapi` のまま変更されません。 詳細については、[Functions プロキシ](functions-proxies.md)に関するページを参照してください。
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
@@ -151,7 +187,31 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
-## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
+
+この設定の値は、Python アプリのカスタム パッケージ インデックス URL を示します。 この設定は、追加のパッケージ インデックスにあるカスタム依存関係を使用してリモート ビルドを実行する必要がある場合に使用します。   
+
+|Key|値の例|
+|---|------------|
+|PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
+
+詳細については、Python 開発者リファレンスの「[カスタムの依存関係](functions-reference-python.md#remote-build-with-extra-index-url)」を参照してください。
+
+## <a name="scale_controller_logging_enable"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLE
+
+"_この設定は現在プレビューの段階です。_ "  
+
+この設定は、Azure Functions スケール コントローラーからのログ記録を制御します。 詳細については、[スケール コントローラーのログ](functions-monitoring.md#scale-controller-logs-preview)に関するセクションを参照してください。
+
+|Key|値の例|
+|-|-|
+|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights:Verbose|
+
+このキーの値は `<DESTINATION>:<VERBOSITY>` の形式で指定されます。これは次のように定義されます。
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
 従量課金および Premium プランのみ。 関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
@@ -197,47 +257,16 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 有効な値は、展開パッケージ ファイルの場所に解決される URL、または `1` です。 `1` に設定した場合、パッケージは `d:\home\data\SitePackages` フォルダーに存在する必要があります。 この設定で zip デプロイを使用すると、パッケージは自動的にこの場所にアップロードされます。 プレビューでは、この設定は `WEBSITE_RUN_FROM_ZIP` という名前でした。 詳細については、[パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページを参照してください。
 
-## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="website_time_zone"></a>WEBSITE\_TIME\_ZONE
 
-既定では、Functions プロキシは新しい HTTP 要求を作成するのではなく、同じ Function App 内の関数にプロキシから直接 API 呼び出しを送信するためのショートカットを使用します。 この設定を使用すると、その動作を無効にすることができます。
+関数アプリのタイムゾーンを設定できます。 
 
-|Key|値|説明|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
+|Key|OS|値の例|
+|---|--|------------|
+|WEBSITE\_TIME\_ZONE|Windows|東部標準時|
+|WEBSITE\_TIME\_ZONE|Linux|America/New_York|
 
-
-## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
-
-この設定は、スラッシュがバックエンド URL に挿入されたときに、%2F をルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
-
-|Key|値|説明|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュがルート パラメーターに含まれている場合、それらがデコードされます。 `example.com/api%2ftest` は `example.com/api/test` になります。|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|これは既定の動作です。 すべてのルート パラメーターが、変更されることなく渡されます|
-
-### <a name="example"></a>例
-
-次に示すのは、URL myfunction.com にある関数アプリ内の proxies.json の例です
-
-```JSON
-{
-    "$schema": "http://json.schemastore.org/proxies",
-    "proxies": {
-        "root": {
-            "matchCondition": {
-                "route": "/{*all}"
-            },
-            "backendUri": "example.com/{all}"
-        }
-    }
-}
-```
-|URL のデコード|入力|出力|
-|-|-|-|
-|true|myfunction.com/test%2fapi|example.com/test/api
-|false|myfunction.com/test%2fapi|example.com/test%2fapi|
-
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

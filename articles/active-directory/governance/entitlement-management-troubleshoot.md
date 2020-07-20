@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207246"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145762"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -45,7 +45,7 @@ ms.locfileid: "82207246"
 
 * アクセス パッケージで管理するリソースにユーザーが既に割り当てられている場合は、適切なポリシーを使用してユーザーがアクセス パッケージに割り当てられていることを確認します。 たとえば、既にユーザーがいるグループをアクセス パッケージに含めるとよいでしょう。 グループ内のこれらのユーザーが引き続きアクセスを必要とする場合、これらのユーザーは、アクセス パッケージに対する適切なポリシーを持ち、グループへのアクセスが不可能にならないようにする必要があります。 アクセス パッケージを割り当てるには、そのリソースを含むアクセス パッケージを要求するようにユーザーに依頼するか、またはアクセス パッケージにユーザーを直接割り当てます。 詳細については、[アクセス パッケージの要求と承認の設定の変更](entitlement-management-access-package-request-policy.md)に関する記事を参照してください。
 
-* チームのメンバーを削除すると、Office 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)」を参照してください。
+* チームのメンバーを削除すると、Microsoft 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)」を参照してください。
 
 * ディレクトリが複数地域用に構成されていないことを確認してください。 エンタイトルメント管理では現在、SharePoint Online の複数地域の場所はサポートされません。 SharePoint Online サイトをエンタイトルメント管理で統制するためには、既定の地域の場所にサイトが存在する必要があります。 詳細については、「[OneDrive および SharePoint Online の複数地域機能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)」を参照してください。
 
@@ -95,7 +95,9 @@ ms.locfileid: "82207246"
 
 アクセス パッケージの再処理要求をトリガーした後にエラーが発生した場合は、システムで要求が再処理されるまで待つ必要があります。 システムでは数時間にわたって再処理が複数回試行されるため、この間に再処理を強制することはできません。 
 
-再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。
+再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。 それ以外の場合、**再処理**ボタンは淡色表示されます。
+
+![淡色表示された再処理ボタン](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - 試用期間中にエラーが修正されると、要求の状態が **[Delivering]\(配信中\)** に変わります。 要求は、ユーザーからの追加のアクションなしで再処理されます。
 
@@ -117,7 +119,7 @@ ms.locfileid: "82207246"
 
 ### <a name="cancel-a-pending-request"></a>保留中の要求をキャンセルする
 
-キャンセルできるのは、まだ配信されていないか、配信に失敗した保留中の要求のみです。
+キャンセルできるのは、まだ配信されていないか、配信に失敗した保留中の要求のみです。それ以外の場合、**キャンセル** ボタンは淡色表示されます。
 
 **事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 

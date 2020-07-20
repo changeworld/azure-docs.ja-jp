@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 40ea26a2394b7ca093f1bba2456ebf5ef116cd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695812"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249820"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事では、C# 7 のポリシー式の構文について説明します。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -27,7 +27,7 @@ ms.locfileid: "84695812"
 
 - バックエンド サービスにコンテキスト情報を指定する方法をご覧ください。 この情報を指定するには、[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーおよび [HTTP ヘッダーの設定](api-management-transformation-policies.md#SetHTTPheader)ポリシーを使用します。
 - [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。
-- [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) トレースによってポリシーの評価方法と評価結果を確認する方法を示します。
+- [API Inspector](./api-management-howto-api-inspector.md) トレースによってポリシーの評価方法と評価結果を確認する方法を示します。
 - [キャッシュから取得](api-management-caching-policies.md#GetFromCache)ポリシーおよび[キャッシュに格納](api-management-caching-policies.md#StoreToCache)ポリシーの式を使用して、API Management 応答のキャッシュを構成する方法をご覧ください。 バックエンド サービスの `Cache-Control` ディレクティブによって指定されたバックエンド サービスの応答キャッシュ時間と一致するように設定しています。
 - コンテンツのフィルター処理を実行する方法をご覧ください。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーおよび[本文設定](api-management-transformation-policies.md#SetBody)ポリシーを使用して、バックエンドから受信した応答からデータ要素を削除しています。
 - ポリシー ステートメントをダウンロードするには、[api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub リポジトリをご覧ください。
@@ -252,5 +252,5 @@ ms.locfileid: "84695812"
 
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 + [ポリシーのサンプル](policy-samples.md)

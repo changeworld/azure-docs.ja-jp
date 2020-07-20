@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 05/22/2020
+ms.date: 06/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 127a83bbe29a5e102a82cf169919a44f52532228
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847330"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185689"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -29,7 +29,7 @@ VM の Update Management は、次の方法で有効にできます。
 [Azure Resource Manager テンプレート](automation-update-management-deploy-template.md)を使用すると、お使いのサブスクリプション内の新しいまたは既存の Automation アカウントと Log Analytics ワークスペースに Update Management をデプロイするのに役立ちます。
 
 > [!NOTE]
-> Update Management で構成されたコンピューターを使用して Azure Automation からカスタム スクリプトを実行することはできません。 このコンピューターで実行できるのは、Microsoft が署名した更新プログラム スクリプトのみです。 
+> Update Management で構成されたコンピューターを使用して Azure Automation からカスタム スクリプトを実行することはできません。 このコンピューターで実行できるのは、Microsoft が署名した更新プログラム スクリプトのみです。
 
 ## <a name="about-update-management"></a>Update Management について
 
@@ -57,32 +57,33 @@ Linux マシンでは、コンプライアンス スキャンは既定で 1 時�
 Update Management では、同期先として構成されたソースに基づいて、マシンがどの程度最新の状態であるかがレポートされます。 WSUS にレポートするように Windows マシンが構成されている場合、WSUS の Microsoft Update との最後の同期のタイミングによっては、Microsoft Updates で示されるものと結果が一致しないことがあります。 この動作は、パブリック リポジトリではなくローカル リポジトリにレポートするように構成されている Linux マシンでも同様です。
 
 > [!NOTE]
-> サービスに正しく報告するためには、Update Management で、特定の URL とポートを有効にする必要があります。 これらの要件の詳細については、[ネットワーク構成](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#network-planning)に関する記事を参照してください。
+> サービスに正しく報告するためには、Update Management で、特定の URL とポートを有効にする必要があります。 これらの要件の詳細については、[ネットワーク構成](./automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 スケジュールされたデプロイを作成することで、更新が必要なマシンへのソフトウェア更新プログラムのデプロイとインストールを実行できます。 Windows マシンの場合、オプションに分類されている更新プログラムはデプロイの範囲に含まれません。 デプロイの範囲には、必須の更新プログラムのみが含まれています。
 
-スケジュールされたデプロイでは、適用可能な更新プログラムを受け取るターゲット マシンが定義されます。 これを行うには、特定のマシンを明示的に指定するか、特定のマシン セットのログ検索 (または指定した条件に基づいて動的に Azure VM を選択する [Azure クエリ](automation-update-management-query-logs.md)) に基づいて[コンピューター グループ](https://docs.microsoft.com/azure/azure-monitor/platform/computer-groups)を選択します。 これらのグループは、Update Management を有効にするために構成を受け取るコンピューターのターゲット設定を制御するために使用される[スコープ構成](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)とは異なります。 これにより、更新プログラムのコンプライアンスを実行および報告したり、承認された必要な更新プログラムをインストールしたりできなくなります。
+スケジュールされたデプロイでは、適用可能な更新プログラムを受け取るターゲット マシンが定義されます。 これを行うには、特定のマシンを明示的に指定するか、特定のマシン セットのログ検索 (または指定した条件に基づいて動的に Azure VM を選択する [Azure クエリ](automation-update-management-query-logs.md)) に基づいて[コンピューター グループ](../azure-monitor/platform/computer-groups.md)を選択します。 これらのグループは、Update Management を有効にするために構成を受け取るコンピューターのターゲット設定を制御するために使用される[スコープ構成](../azure-monitor/insights/solution-targeting.md)とは異なります。 これにより、更新プログラムのコンプライアンスを実行および報告したり、承認された必要な更新プログラムをインストールしたりできなくなります。
 
 デプロイを定義するときに、更新プログラムをインストールできる期間を承認および設定するスケジュールも指定します。 この期間は、メンテナンス期間と呼ばれます。 再起動が必要な場合、適切な再起動オプションを選択していれば、再起動のために 20 分間のメンテナンス期間が予約されます。 パッチ適用に予想よりも時間がかかり、メンテナンス期間の残りが 20 分を切った場合、再起動は行われません。
 
 更新プログラムは、Azure Automation の Runbook によってインストールされます。 これらの Runbook は表示できません。また、これらは構成不要です。 更新プログラムのデプロイを作成すると、対象に含めたマシンに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。 このマスター Runbook は、必須の更新プログラムをインストールする子 Runbook を各エージェントで開始します。
 
 更新プログラムのデプロイで指定された日時に、ターゲット マシンでデプロイが並列で実行されます。 まず、スキャンが実行され、その更新プログラムが依然として必須であることが確認されてからインストールされます。 WSUS クライアント マシンの場合、更新プログラムが WSUS で承認されていないと、更新プログラムのデプロイは失敗します。
+
 1 つのマシンを複数の Log Analytics ワークスペースに Update Management 用に登録すること (マルチホームとも言われます) は、サポートされていません。
 
 ## <a name="clients"></a>クライアント
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-次の表は、更新プログラムの評価でサポートされているオペレーティング システムの一覧です。 修正プログラムを適用するには、Hybrid Runbook Worker が必要です。 Hybrid Runbook Worker の要件の詳細については、「[Windows Hybrid Runbook Worker をデプロイする](automation-windows-hrw-install.md)」と「[Linux Hybrid Runbook Worker を展開する](automation-linux-hrw-install.md)」を参照してください。
+次の表は、更新プログラムの評価および修正プログラムの適用でサポートされているオペレーティング システムの一覧です。 修正プログラムを適用するには、Hybrid Runbook Worker が必要です。 Hybrid Runbook Worker の要件の詳細については、「[Windows Hybrid Runbook Worker をデプロイする](automation-windows-hrw-install.md)」と「[Linux Hybrid Runbook Worker を展開する](automation-linux-hrw-install.md)」を参照してください。
 
 > [!NOTE]
-> Linux マシンの更新プログラムの評価は、Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)に記載されている特定のリージョンでのみサポートされています。 
+> Linux マシンの更新プログラムの評価は、Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](./how-to/region-mappings.md#supported-mappings)に記載されている特定のリージョンでのみサポートされています。 
 
 |オペレーティング システム  |Notes  |
 |---------|---------|
-|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価のみがサポートされます。 Windows Server 2008 R2 では [Hybrid Runbook Worker](automation-windows-hrw-install.md) はサポートされていないため、修正プログラムの適用はサポートされていません。 |
+|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](automation-windows-hrw-install.md) がサポートされています。 |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](automation-view-update-assessments.md#linux-2)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
@@ -97,31 +98,31 @@ Update Management では、同期先として構成されたソースに基づ�
 
 |オペレーティング システム  |Notes  |
 |---------|---------|
-|Windows クライアント     | クライアント オペレーティング システム (Windows 7 や Windows 10 など) はサポートされません。<br> Azure Windows Virtual Desktop (WVD) の場合、<br> 更新プログラムを管理する推奨方法は、Windows 10 クライアント コンピューター パッチ管理用の [Windows Update for Business](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) です。 |
+|Windows クライアント     | クライアント オペレーティング システム (Windows 7 や Windows 10 など) はサポートされません。<br> Azure Windows Virtual Desktop (WVD) の場合、<br> 更新プログラムを管理する推奨方法は、Windows 10 クライアント コンピューター パッチ管理用の [Windows Update for Business](/windows/deployment/update/waas-manage-updates-wufb) です。 |
 |Windows Server 2016 Nano Server     | サポートされていません。       |
 |Azure Kubernetes Service ノード | サポートされていません。 「[Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用する](../aks/node-updates-kured.md)」で説明されている修正プログラム適用プロセスを使用します。|
 
 ### <a name="client-requirements"></a>クライアントの要件
 
-オペレーティング システム固有のクライアント要件については、以下の情報を参照してください。 追加のガイダンスについては、「[ネットワークの計画](#ports)」を参照してください。
+オペレーティング システム固有のクライアント要件については、以下の情報を参照してください。 追加のガイダンスについては、「[ネットワークの計画](#ports)」を参照してください。 TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)」のセクションを参照してください。
 
 #### <a name="windows"></a>Windows
 
-WSUS サーバーと通信するように Windows エージェントを構成するか、Microsoft Update へのアクセスが必要です。 Windows 用 Log Analytics エージェントをインストールする方法については、「[Windows コンピューターを Azure Monitor に接続する](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
+WSUS サーバーと通信するように Windows エージェントを構成するか、Microsoft Update へのアクセスが必要です。 Windows 用 Log Analytics エージェントをインストールする方法については、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/agent-windows.md)」を参照してください。
 
 Microsoft Endpoint Configuration Manager は、Update Management と組み合わせて使用できます。 統合シナリオの詳細については、「[Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する](updatemgmt-mecmintegration.md)」を参照してください。 Configuration Manager 環境のサイトによって管理されている Windows サーバーでは、[Windows 用の Log Analytics エージェント](../azure-monitor/platform/agent-windows.md)が必要です。 
 
 既定では、Azure Marketplace からデプロイされた Windows VM は、Windows Update Service から自動更新を受信するように設定されています。 Windows VM をワークスペースに追加しても、この動作は変わりません。 Update Management を使用して更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。
 
 > [!NOTE]
-> グループ ポリシーを変更して、システムではなくユーザーだけがマシンの再起動を実行できるようにすることができます。 Update Management にユーザーによる手動操作なしでマシンを再起動する権限がない場合、管理対象のマシンが停止する可能性があります。 詳しくは、「[自動更新のグループ ポリシー設定を構成する](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)」をご覧ください。
+> グループ ポリシーを変更して、システムではなくユーザーだけがマシンの再起動を実行できるようにすることができます。 Update Management にユーザーによる手動操作なしでマシンを再起動する権限がない場合、管理対象のマシンが停止する可能性があります。 詳しくは、「[自動更新のグループ ポリシー設定を構成する](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)」をご覧ください。
 
 #### <a name="linux"></a>Linux
 
 Linux の場合、マシンでは、プライベートまたはパブリックの更新リポジトリへのアクセス権が必要になります。 Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。 Update Management では、複数の Log Analytics ワークスペースにレポートするように構成されている Linux 用 Log Analytics エージェントはサポートされていません。 マシンには Python 2.x もインストールされている必要があります。
 
 > [!NOTE]
-> Linux マシンの更新プログラムの評価は、特定のリージョンでのみサポートされています。 Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)を参照してください。 
+> Linux マシンの更新プログラムの評価は、特定のリージョンでのみサポートされています。 Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](./how-to/region-mappings.md#supported-mappings)を参照してください。 
 
 Linux 用 Log Analytics エージェントをインストールして最新バージョンをダウンロードする方法の詳細については、[Linux 用 Log Analytics エージェント](../azure-monitor/platform/agent-linux.md)に関するページを参照してください。 
 
@@ -157,7 +158,7 @@ Operations Manager 管理グループが [Log Analytics ワークスペースに
 管理パックの更新プログラムの詳細については、[Azure Monitor ログへの Operations Manager の接続](../azure-monitor/platform/om-agents.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Log Analytics エージェントを使用して Update Management でマシンを完全に管理するには、Windows 用の Log Analytics エージェント、または Linux 用 Log Analytics エージェントに更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。 Operations Manager を使用する環境では、System Center Operations Manager 2012 R2 UR 14 以降を実行している必要があります。
+> Log Analytics エージェントを使用して Update Management でマシンを完全に管理するには、Windows 用の Log Analytics エージェント、または Linux 用 Log Analytics エージェントに更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。 Operations Manager を使用する環境では、System Center Operations Manager 2012 R2 UR 14 以降を実行している必要があります。
 
 ## <a name="data-collection"></a>データ コレクション
 
@@ -187,10 +188,10 @@ Update Management には次のアドレスが明示的に必要です。 この�
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *.azure-automation.us|
+|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
+|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
+|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+|`*.azure-automation.net` | `*.azure-automation.us`|
 
 Windows マシンでは、Windows Update で必要なすべてのエンドポイントへのトラフィックも許可する必要があります。 必要なエンドポイントの更新された一覧は、「[HTTP またはプロキシに関連する問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)」で確認できます。 ローカル環境に [Windows Update サーバー](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)がある場合は、[WSUS キー](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)で指定されているサーバーへのトラフィックも許可する必要があります。
 
@@ -224,13 +225,20 @@ Hybrid Runbook Worker で必要なポートの詳細については、「[Hybrid
 |緊急更新プログラムとセキュリティ更新プログラム     | 特定の問題または製品固有のセキュリティに関連する問題に対する更新プログラムです。         |
 |他の更新プログラム     | 本質的に重要ではない、またはセキュリティ更新プログラムではない、他のすべての更新プログラムです。        |
 
+>[!NOTE]
+>Linux マシン用の更新プログラムの分類は、サポートされている Azure パブリック クラウド リージョンで使用される場合にのみ使用できます。 以下の国内クラウド リージョンで Update Management を使用する場合、
+>* Azure US Government
+>* 中国の 21Vianet
+>
+> Linux の更新プログラムの分類はなく、 **[他の更新プログラム]** カテゴリの下でレポートされます。 Update Management では、サポートされているディストリビューションによって発行されたデータが使用されます。具体的には、リリースされた [OVAL](https://oval.mitre.org/) (Open Vulnerability and Assessment Language) ファイルです。 インターネット アクセスはこれらの国内クラウドから制限されているため、Update Management はこれらのファイルにアクセスして使用することはできません。
+
 Linux の場合、クラウドでのデータ エンリッチメントにより、Update Management は、評価データを表示しながら、クラウド内で重要な更新プログラムとセキュリティ更新プログラムを識別できます。 修正プログラムの場合、Update Management はマシン上にある分類データを使用します。 他のディストリビューションとは異なり、RTM バージョンの CentOS ではこの情報は使用できません。 CentOS マシンで、次のコマンドに対してセキュリティ データを返すように構成されている場合、Update Management は分類に基づいて修正プログラムを適用できます。
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこの機能をご自身で使用可能にした場合には、できる範囲内のサポートのみを提供しています。 
+CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこの機能をご自身で使用可能にした場合には、できる範囲内のサポートのみを提供しています。
 
 Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の[ナレッジ記事](https://access.redhat.com/solutions/10021)を参照してください。
 
@@ -240,7 +248,7 @@ PC、サーバー、モバイル デバイスを管理するために Microsoft 
 
 ## <a name="third-party-updates-on-windows"></a>Windows でのサードパーティの更新プログラム
 
-Update Management では、ローカルで構成された更新リポジトリに依存して、サポートされている Windows システム (WSUS または Windows Update) を更新します。 [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) などのツールを使用すると、WSUS を使用してカスタム更新プログラムをインポートして発行することができます。 このシナリオでは、サードパーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で更新プログラムを適用できます。 Updates Publisher を構成する方法については、「[Install Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher)」(Updates Publisher のインストール) を参照してください。
+Update Management では、ローカルで構成された更新リポジトリに依存して、サポートされている Windows システム (WSUS または Windows Update) を更新します。 [System Center Updates Publisher](/configmgr/sum/tools/updates-publisher) などのツールを使用すると、WSUS を使用してカスタム更新プログラムをインポートして発行することができます。 このシナリオでは、サードパーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で更新プログラムを適用できます。 Updates Publisher を構成する方法については、「[Install Updates Publisher](/configmgr/sum/tools/install-updates-publisher)」(Updates Publisher のインストール) を参照してください。
 
 ## <a name="enable-update-management"></a>Update Management の有効化
 

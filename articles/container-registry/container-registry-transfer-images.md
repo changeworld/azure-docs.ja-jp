@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006186"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186930"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -58,7 +58,7 @@ ms.locfileid: "83006186"
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** - ExportPipeline リソースまたは ImportPipeline リソースを呼び出すために使用されるリソース。  
   * ExportPipeline を手動で実行するには、PipelineRun リソースを作成し、エクスポートする成果物を指定します。  
   * インポート トリガーが有効になっている場合、ImportPipeline は自動的に実行されます。 また、PipelineRun を使用して手動で実行することもできます。 
-  * 現時点では、PipelineRun ごとに最大 **10 個の成果物**を転送できます。
+  * 現時点では、PipelineRun ごとに最大 **50 個の成果物**を転送できます。
 
 ### <a name="things-to-know"></a>注意事項
 * ExportPipeline と ImportPipeline は、通常、ソース クラウドとターゲット クラウドに関連付けられている異なる Active Directory テナントにあります。 このシナリオでは、リソースのエクスポートとインポート用に個別のマネージド ID とキー コンテナーが必要です。 テスト目的では、これらのリソースを同じクラウドに配置し、ID を共有することができます。
@@ -337,7 +337,7 @@ az deployment group delete \
 * **AzCopy の問題**
   * [AzCopy の問題のトラブルシューティング](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues)に関するセクションを参照してください。  
 * **成果物の転送に関する問題**
-  * 一部の成果物が転送されないか、または 1 つも転送されません。 エクスポート実行で成果物のスペルを確認し、エクスポート実行とインポート実行で BLOB の名前を確認します。 最大 10 個の成果物を転送していることを確認します。
+  * 一部の成果物が転送されないか、または 1 つも転送されません。 エクスポート実行で成果物のスペルを確認し、エクスポート実行とインポート実行で BLOB の名前を確認します。 最大 50 個の成果物を転送していることを確認します。
   * パイプライン実行が完了していない可能性があります。 エクスポート実行またはインポート実行には時間がかかることがあります。 
   * パイプラインに関するその他の問題については、Azure Container Registry チームにエクスポート実行またはインポート実行のデプロイ[関連付け ID](../azure-resource-manager/templates/deployment-history.md) を提示してください。
 

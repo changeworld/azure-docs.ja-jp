@@ -3,12 +3,12 @@ title: 任意の AI を利用したライブ ビデオの分析 - Azure
 description: この記事では、IoT Edge で Live Video Analytics と統合できる IoT Edge モジュールを構築し、任意のコンピューター ビジョン モデルを使用してライブ ビデオを分析する方法について説明します。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6a1ea3ebd8c7de4c691d7a982dbc08e9d08d9e38
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260645"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182867"
 ---
 # <a name="analyze-live-video-with-ai-of-your-choice"></a>任意の AI を利用したライブ ビデオの分析
 
@@ -46,7 +46,7 @@ HTTP コントラクトは次のように定義されます。
 
 Live Video Analytics モジュールからモジュールへの要求は、次のようになります。
 
-|||
+| Key | 値 |
 |---|---|
 |POST| `https://hostname/optional-path?optional-query`|
 |Accept|application/json、 */*|
@@ -72,7 +72,7 @@ Content-Length: 519222
 
 モジュールから Live Video Analytics モジュールへの応答は次のようになります
 
-|||
+| Key | 値 |
 |---|---|
 |状態コード|200 OK - 推論の結果が見つかりました<br/>204 No Content - AI によってコンテンツが見つかりませんでした<br/>400 Bad Request - 想定されていません<br/>500 Internal Server Error - 想定されていません<br/>503 Server Busy - AMS は "Retry-After" ヘッダーに基づいて、またはケース ヘッダーが事前に設定されていない場合の既定の時間に基づいてバックオフされます。|
 |Content-Type|application/json|
@@ -265,7 +265,7 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
  
 ## <a name="sample-http-extension-modules"></a>HTTP 拡張モジュールのサンプル
 
-いくつかの HTTP 拡張モジュールのサンプルは、[Live Video Analytics GitHub リポジトリ](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)にあります。 これらの[ビデオ分析サンプル](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) の 1 つは [Yolov3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) モデルを使用して、オブジェクト検出のための IoT Edge モジュールを構築する方法を示しています。 同じ方法で、任意の AI モデルを使用して独自のモジュールを構築できます。
+いくつかの HTTP 拡張モジュールのサンプルは、[Live Video Analytics GitHub リポジトリ](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)にあります。 これらの[ビデオ分析サンプル](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx)の 1 つは [YOLOv3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) モデルを使用して、オブジェクト検出のための IoT Edge モジュールを構築する方法を示しています。 もう 1 つの[ビデオ分析サンプル](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx-tiny)は、YOLOv3 ONNX モデルの軽量バージョンである、Tiny YOLOv3 を使用する方法を示しています。 同じ方法で、任意の AI モデルを使用して独自のモジュールを構築できます。
 
 ## <a name="next-steps"></a>次のステップ
 

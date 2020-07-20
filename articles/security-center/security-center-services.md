@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 22f66a7be27f42bfd0305ad1eaf297ca8c8029fa
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996756"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187015"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -41,7 +41,6 @@ ms.locfileid: "83996756"
 |[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
 |[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|アダプティブ ネットワーク制御|✔|✔|-|Standard|
 |[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|-|-|-|Standard|
 |足りない OS パッチの評価|✔|✔|✔|Free|
@@ -106,7 +105,7 @@ ms.locfileid: "83996756"
  **\*** カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
 
 > [!NOTE]
-> Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) が検出されるには、PowerShell 3.0 (またはそれ以降) の後で SCEP をインストールする必要があります。
+> Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) を検出するには、PowerShell (v3.0 またはそれ以降) の後で SCEP をインストールする必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ

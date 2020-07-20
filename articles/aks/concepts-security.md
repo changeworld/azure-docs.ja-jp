@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: d154ca6b67f3f587234deb34cef171ffc5924530
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145540"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244533"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -54,9 +54,9 @@ Windows Server ノードでは、Windows Update が自動的に実行された�
 
 ### <a name="compute-isolation"></a>コンピューティングの分離
 
- 特定のワークロードでは、コンプライアンスや規制上の要件により、他の顧客のワークロードからの高いレベルの分離が必要になる場合があります。 これらのワークロードの場合、Azure は、AKS クラスター内のエージェント ノードとして使用できる[分離された仮想マシン](..\virtual-machines\linux\isolation.md)を提供します。 これらの分離された仮想マシンは、特定のハードウェアの種類に分離され、単一顧客専用です。 
+ 特定のワークロードでは、コンプライアンスや規制上の要件により、他の顧客のワークロードからの高いレベルの分離が必要になる場合があります。 これらのワークロードの場合、Azure は、AKS クラスター内のエージェント ノードとして使用できる[分離された仮想マシン](../virtual-machines/linux/isolation.md)を提供します。 これらの分離された仮想マシンは、特定のハードウェアの種類に分離され、単一顧客専用です。 
 
- これらの分離された仮想マシンを AKS クラスターで使用するには、AKS クラスターを作成するとき、またはノード プールを追加するときに、 **[ノード サイズ]** として[こちら](..\virtual-machines\linux\isolation.md)に示されている分離された仮想マシンのサイズのいずれかを選択します。
+ これらの分離された仮想マシンを AKS クラスターで使用するには、AKS クラスターを作成するとき、またはノード プールを追加するときに、 **[ノード サイズ]** として[こちら](../virtual-machines/linux/isolation.md)に示されている分離された仮想マシンのサイズのいずれかを選択します。
 
 
 ## <a name="cluster-upgrades"></a>クラスターのアップグレード
@@ -112,12 +112,12 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
-[encryption-atrest]: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
+[encryption-atrest]: ../security/fundamentals/encryption-atrest.md
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md
