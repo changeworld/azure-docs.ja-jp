@@ -34,7 +34,7 @@ ms.locfileid: "81261671"
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用の Network Watcher Agent 拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。 現時点では、Nano Server はサポートされていません。
+Windows 用の Network Watcher Agent 拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016、2019 の各リリースで実行できます。 現時点では、Nano Server はサポートされていません。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
