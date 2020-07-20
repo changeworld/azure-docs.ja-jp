@@ -12,12 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445510"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243411"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -146,7 +146,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 1. **v1** エンドポイントを使用する場合は、**resource** という名前の本文パラメーターを追加します。 このパラメーターの値には、バックエンド アプリの**アプリケーション ID** を使用します。 
 
-1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。 また、必ず [アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)で [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) プロパティの値を `2` に設定します。
+1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。 また、必ず [アプリケーション マニフェスト](../active-directory/develop/reference-app-manifest.md)で [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティの値を `2` に設定します。
 
 1. 次に、クライアントの資格情報を指定します。 これらはクライアントアプリの資格情報です。
 
@@ -203,7 +203,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ただし、誰かがトークンを使用せず、または無効なトークンを使用して API を呼び出すとどうなるでしょうか。 たとえば、API を `Authorization` ヘッダーなしで呼び出してみても、呼び出しは処理されます。 理由は、API Management がこの時点でアクセス トークンを検証していないためです。 `Authorization` ヘッダーはバックエンド API に渡されます。
 
-[JWT 検証](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認します。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `Echo API` の `<inbound>` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](https://docs.microsoft.com/azure/api-management/set-edit-policies)に関する記事をご覧ください。
+[JWT 検証](./api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認します。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `Echo API` の `<inbound>` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](./set-edit-policies.md)に関する記事をご覧ください。
 
 
 ```xml
@@ -228,7 +228,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory と OAuth2.0](../active-directory/develop/authentication-scenarios.md) の詳細を確認します。
+- [Azure Active Directory と OAuth2.0](../active-directory/develop/authentication-vs-authorization.md) の詳細を確認します。
 - API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
 - バックエンド サービスを保護するその他の方法については、「[相互証明書認証](./api-management-howto-mutual-certificates.md)」を参照してください。
 - [API Management サービス インスタンスの作成](./get-started-create-service-instance.md)。

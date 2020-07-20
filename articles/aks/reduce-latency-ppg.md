@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: 095746b9cf3cada9cebf7d169078eff9eb64a52d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444269"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244074"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>近接配置グループを使用して待機時間を短縮する (プレビュー)
 
@@ -74,7 +74,7 @@ az extension update --name aks-preview
 
 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *centralus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 
 
-高速ネットワークを使用すると、仮想マシンのネットワーク パフォーマンスが大幅に向上します。 近接配置グループと高速ネットワークを併用するのが理想的です。 既定では、AKS により[サポートされている仮想マシン インスタンス](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)で高速ネットワークが使用されます。これには、2 つ以上の vCPU を持つほとんどの Azure 仮想マシンが含まれます。
+高速ネットワークを使用すると、仮想マシンのネットワーク パフォーマンスが大幅に向上します。 近接配置グループと高速ネットワークを併用するのが理想的です。 既定では、AKS により[サポートされている仮想マシン インスタンス](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)で高速ネットワークが使用されます。これには、2 つ以上の vCPU を持つほとんどの Azure 仮想マシンが含まれます。
 
 近接配置グループを使用して新しい AKS クラスターを作成します。
 
@@ -164,4 +164,3 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-

@@ -3,12 +3,12 @@ title: Reliable Collection での作業
 description: Azure Service Fabric アプリケーション内で Reliable Collection を操作するためのベスト プラクティスについて説明します。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374697"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255797"
 ---
 # <a name="working-with-reliable-collections"></a>Reliable Collection での作業
 Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。 具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。 これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。 リライアブル ディクショナリ オブジェクトの一般的な使い方と、実際の動作を見てみましょう。
@@ -219,10 +219,10 @@ Reliable Collection は、内部で .NET の DataContractSerializer を使用し
 または、いわゆる 2 段階アップグレードを実行することができます。 2 段階アップグレードでは、V1 から V2 にサービスをアップグレードします。V2 には新しいスキーマの変更を処理できるコードが含まれていますが、このコードは実行しません。 V2 コードが V1 のデータを読み取ると、V1 に対する操作を行い、V1 のデータを書き込みます。 次に、すべてのアップグレード ドメインでアップグレードが完了したら、アップグレードが完了したことを実行中の V2 のインスタンスに何らかの方法で通知できます。 (1 つの通知方法として、構成のアップグレードのロールアウトがあります。これにより 2 段階アップグレードが行われます。)これで、V2 のインスタンスが V1 のデータを読み取り、V2 のデータに変換し、処理を行って、V2 のデータとして書き出すことができます。 他のインスタンスが V2 のデータを読み取るときに、変換の必要はありません。インスタンスは操作を行い、V2 のデータを書き出すだけです。
 
 ## <a name="next-steps"></a>次のステップ
-上位互換性のあるデータ コントラクトを作成する方法については、「[上位互換性のあるデータ コントラクト](https://msdn.microsoft.com/library/ms731083.aspx)」を参照してください。
+上位互換性のあるデータ コントラクトを作成する方法については、「[上位互換性のあるデータ コントラクト](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts)」を参照してください。
 
-データ コントラクトのバージョン管理のベスト プラクティスについては、「[データ コントラクトのバージョン管理](https://msdn.microsoft.com/library/ms731138.aspx)」を参照してください。
+データ コントラクトのバージョン管理のベスト プラクティスについては、「[データ コントラクトのバージョン管理](/dotnet/framework/wcf/feature-details/data-contract-versioning)」を参照してください。
 
-バージョン トレラントなデータ コントラクトを実装する方法については、「[バージョン トレラントなシリアル化コールバック](https://msdn.microsoft.com/library/ms733734.aspx)」を参照してください。
+バージョン トレラントなデータ コントラクトを実装する方法については、「[バージョン トレラントなシリアル化コールバック](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)」を参照してください。
 
-複数のバージョンで相互運用できるデータ構造を提供する方法については、「[IExtensibleDataObject インターフェイス](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)」を参照してください。
+複数のバージョンで相互運用できるデータ構造を提供する方法については、「[IExtensibleDataObject インターフェイス](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)」を参照してください。

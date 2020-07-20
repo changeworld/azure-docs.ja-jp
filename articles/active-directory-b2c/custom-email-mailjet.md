@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85397971"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230878"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -57,7 +57,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 ## <a name="create-a-mailjet-template"></a>Mailjet テンプレートを作成する
 
-Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリシー キーに格納したら、Mailjet の[動的トランザクション テンプレート](https://Mailjet.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)を作成します。
+Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリシー キーに格納したら、Mailjet の[動的トランザクション テンプレート](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)を作成します。
 
 1. Mailjet サイトで、[トランザクション テンプレート](https://app.mailjet.com/templates/transactional) ページを開き、 **[Create a new template]\(新しいテンプレートを作成する\)** を選択します。
 1. **[By coding it in HTML]\(HTML でコーディング\)** を選択してから、 **[Code from scratch]\(最初からコーディング\)** を選びます。

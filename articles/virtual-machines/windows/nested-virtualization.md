@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 543ed51cc10cce017e0e57a1a351ce382f1ca35f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083510"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232323"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -181,3 +181,4 @@ IP アドレスがゲスト仮想マシンに動的に割り当てられるよ�
 ゲスト仮想マシンで、ブラウザーを開いて Web ページに移動します。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
+ゲスト VM と Azure VM との間で透過的接続を有効にする手順については、[こちらのドキュメント](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)を参照してください。

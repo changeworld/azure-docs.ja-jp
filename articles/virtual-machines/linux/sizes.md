@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2620795d8c4fc8adf11fc0795048ff9999d6ef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 568f4189c55b49aa6f3e2d4e86582165a4a89cdd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783357"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201105"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシンのサイズ
 
@@ -49,6 +49,10 @@ VM サイズを照会するための REST API の使用については、以下�
 ## <a name="benchmark-scores"></a>ベンチマーク スコア
 
 [CoreMark ベンチマーク スコア](compute-benchmark-scores.md)を使用して、Linux VM の処理性能について学習します。
+
+## <a name="manage-costs"></a>コストを管理する
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
