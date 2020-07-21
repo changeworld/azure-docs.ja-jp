@@ -17,7 +17,7 @@
       expanded: true
       items:
         - name: Visual Studio Code
-          href: /azure/azure-functions/functions-create-first-function-vs-code
+          href: ./functions-create-first-function-vs-code.md
         - name: "Visual\_Studio"
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
@@ -177,11 +177,11 @@
                 - name: Azure portal
                   href: functions-create-first-azure-function.md
                 - name: コマンド ライン
-                  href: create-cli.md
+                  href: ./functions-create-first-azure-function-azure-cli.md
                 - name: "Visual\_Studio"
-                  href: create-visual-studio.md
+                  href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: create-visual-studio-code.md
+                  href: ./functions-create-first-function-vs-code.md
                 - name: Gradle を使用した Java
                   href: functions-create-first-java-gradle.md
                 - name: Eclipse を使用した Java
@@ -195,7 +195,7 @@
                 - name: Linux App Service プラン
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 従量課金プラン
-                  href: functions-create-first-azure-function-azure-cli-linux.md
+                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
                 - name: Microsoft Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB のトリガー
@@ -211,13 +211,13 @@
             - name: Azure Cosmos DB - ポータル
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: ストレージ - Python
-              href: add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: ストレージ - ポータル
               href: functions-integrate-storage-queue-output-binding.md
             - name: ストレージ - Visual Studio Code
-              href: add-output-binding-storage-queue-vs-code.md
+              href: ./functions-add-output-binding-storage-queue-vs-code.md
             - name: ストレージ - Visual Studio
-              href: add-output-binding-storage-queue-vs.md
+              href: ./functions-add-output-binding-storage-queue-vs.md
             - name: ストレージ - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: デバッグおよびテスト
@@ -316,7 +316,7 @@
             - name: Azure Cosmos DB - ポータル
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: ストレージ - Python
-              href: functions-add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: ストレージ - ポータル
               href: functions-integrate-storage-queue-output-binding.md
             - name: ストレージ - Visual Studio Code
@@ -326,9 +326,9 @@
         - name: SQL Database への接続
           href: functions-scenario-database-table-cleanup.md
         - name: 仮想ネットワークへの接続
-          href: functions-create-vnet-old.md
+          href: ./functions-create-vnet.md
         - name: Open API 2.0 定義の作成
-          href: functions-api-definition-getting-started.md
+          href: ./functions-openapi-definition.md
         - name: PowerApps および Microsoft Flow にエクスポートする
           href: app-service-export-api-to-powerapps-and-flow.md
         - name: マネージド ID の使用
@@ -354,9 +354,9 @@
         - name: Azure PowerShell
           href: /powershell/module/az.functions
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
+          href: /java/api/overview/azure/functions/runtime?view=azure-java-stable
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
+          href: /python/api/azure-functions/azure.functions?view=azure-python
     - name: アプリ設定のリファレンス
       href: functions-app-settings.md
     - name: トリガーとバインド
@@ -504,7 +504,7 @@
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-functions
     - name: アーキテクチャのガイダンス
-      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
+      href: /azure/architecture/serverless-quest/serverless-overview
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 価格
@@ -518,7 +518,7 @@
     - name: ビデオ
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+      href: /answers/topics/azure-functions.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter
