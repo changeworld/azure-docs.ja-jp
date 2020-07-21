@@ -72,6 +72,10 @@
           href: how-to-manage-routes.md
         - name: Azure Maps と統合する
           href: how-to-integrate-maps.md
+    - name: トラブルシューティング
+      items:
+        - name: 既知の問題
+          href: troubleshoot-known-issues.md
 - name: リファレンス
   items:
     - name: Digital Twins サービスに関する制約
