@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c1e14fe6764a9f5e850d3b975ef3bcc6cb28bf78
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782587"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -34,9 +34,9 @@ ms.locfileid: "84309154"
 2. ダウンストリーム デバイスのデバイス ID を作成して、IoT Hub で認証できるようにします。 ゲートウェイ デバイスを介してメッセージを送信するようにダウンストリーム デバイスを構成します。 詳細については、「[Azure IoT Hub に対するダウンストリーム デバイスの認証を行う](how-to-authenticate-downstream-device.md)」を参照してください。
 3. ダウンストリーム デバイスをゲートウェイ デバイスに接続し、メッセージの送信を開始します。 詳細については、「[ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)」のページを参照してください。
 
-デバイスがゲートウェイとして機能するためには、そのダウンストリーム デバイスに安全に接続できる必要があります。 Azure IoT Edge では、公開キー基盤 (PKI) を使用して、これらのデバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。 妥当なセキュリティを維持するために、ダウン ストリーム デバイスはゲートウェイ デバイスの ID を確認する必要があります。 この ID 検査により、お使いのデバイスが悪意のある可能性のあるゲートウェイに接続することを防止できます。
+デバイスがゲートウェイとして機能するためには、そのダウンストリーム デバイスに安全に接続する必要があります。 Azure IoT Edge では、公開キー基盤 (PKI) を使用して、これらのデバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。 妥当なセキュリティを維持するために、ダウン ストリーム デバイスはゲートウェイ デバイスの ID を確認する必要があります。 この ID 検査により、お使いのデバイスが悪意のある可能性のあるゲートウェイに接続することを防止できます。
 
-透過的ゲートウェイの シナリオでのダウンストリーム デバイスには、[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) クラウド サービスを使って作成された ID を持つ、任意のアプリケーションまたはプラットフォームを使用できます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 実際には、ダウンストリーム デバイスには IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションも指定できます。 ただし、IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。
+[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。 ただし、IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。
 
 デバイス ゲートウェイ トポロジに必要な信頼を有効にする証明書インフラストラクチャを作成できます。 この記事では、IoT Hub で [X.509 CA セキュリティ](../iot-hub/iot-hub-x509ca-overview.md)を 有効にするために使用するのと同じ証明書のセットアップを前提としています。これには、特定の IoT ハブ (IoT ハブのルート CA) に関連付けられた X.509 CA 証明書、およびこの CA と IoT Edge デバイスの CA によって署名された一連の証明書が使用されます。
 
@@ -70,7 +70,7 @@ IoT Edge がインストールされている Linux または Windows デバイ�
 
 1. デモ証明書を使用している場合は、次の手順を使用してファイルを作成します。
    1. [ルート CA 証明書を作成します](how-to-create-test-certificates.md#create-root-ca-certificate)。 これらの手順を終えると、ルート CA 証明書ファイルが作成されます。
-      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    2. [IoT Edge デバイス CA 証明書を作成します](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates)。 これらの手順を終えると、デバイス CA 証明書とその秘密キーの 2 つのファイルが作成されます。
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`、および
@@ -95,7 +95,7 @@ IoT Edge がインストールされている Linux または Windows デバイ�
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>edgeHub をゲートウェイにデプロイする
 
-デバイスに IoT Edge を初めてインストールするときには、1 つのシステム モジュール (IoT Edge エージェント) のみが自動的に起動します。 最初のデプロイをしてデバイスを追加したら、2番目のシステムモジュール (IoT Edge ハブ) も起動します。
+デバイスに IoT Edge を初めてインストールするときには、1 つのシステム モジュール (IoT Edge エージェント) のみが自動的に起動します。 デバイスの最初のデプロイを作成すると、2 番目のシステム モジュール (IoT Edge ハブ) も起動されます。
 
 IoT Edge ハブは、ダウンストリームのデバイスからの受信メッセージを受信し、次の宛先にルーティングする役割を担います。 デバイス上で **edgeHub** モジュールが実行されていない場合は、デバイスの初期デプロイを作成します。 どのモジュールも追加していないため、デプロイが空のように見えますが、これにより、両方のシステム モジュールが実行されているのを確認されます。
 
@@ -109,7 +109,7 @@ IoT Edge ハブは、ダウンストリームのデバイスからの受信メ�
 
 3. **[Set Modules] \(モジュールの設定)** を選択します。
 
-4. **[次へ: ルート]** を選択します。
+4. **Next:次へ: ルート** を選択します。
 
 5. **[ルート]** ページには、モジュールまたはダウンストリーム デバイスから IoT Hub にすべてのメッセージを送信する既定のルートがあるはずです。 ない場合は、次の値を使用して新しいルートを追加し、 **[確認および作成]** を選択します。
    * **名前**: `route`

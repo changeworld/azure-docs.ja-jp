@@ -3,12 +3,12 @@ title: デプロイされている Azure Kubernetes Service (AKS) クラスタ�
 description: Azure Monitor for containers を使用して、自分のサブスクリプションに既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 5b7450f5eb132dab9961de712d8cddb33bd2c521
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337973"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -27,10 +27,10 @@ ms.locfileid: "84264207"
 
 ## <a name="enable-using-azure-cli"></a>Azure CLI を使用して有効にする
 
-Azure CLI を使用して AKS クラスターの監視を有効にするには、次の手順のようにします。 この例では、ワークスペースを事前に作成したり、既存のワークスペースを指定したりする必要はありません。 このコマンドでは、リージョンにワークスペースがまだ存在しない場合、AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースが作成されるので、プロセスが簡単になります。  作成される既定のワークスペースは、*DefaultWorkspace-\<GUID>-\<Region>* のような形式になります。  
+Azure CLI を使用して AKS クラスターの監視を有効にするには、次の手順のようにします。 この例では、ワークスペースを事前に作成したり、既存のワークスペースを指定したりする必要はありません。 このコマンドでは、リージョンにワークスペースがまだ存在しない場合、AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースが作成されるので、プロセスが簡単になります。  作成される既定のワークスペースは、*DefaultWorkspace-\<GUID>-\<Region>* のような形式になります。
 
 ```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
 出力は次のようになります。
@@ -41,7 +41,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>既存のワークスペースと統合する
 
-既存のワークスペースと統合する場合は、次の手順を実行して、最初に `--workspace-resource-id` パラメーターに必要な Log Analytics ワークスペースの完全なリソース ID を特定し、コマンドを実行して、指定されたワークスペースに対して監視アドオンを有効にします。  
+既存のワークスペースと統合する場合は、次の手順を実行して、最初に `--workspace-resource-id` パラメーターに必要な Log Analytics ワークスペースの完全なリソース ID を特定し、コマンドを実行して、指定されたワークスペースに対して監視アドオンを有効にします。
 
 1. 次のコマンドを使用して、アクセス権のあるすべてのサブスクリプションを一覧表示します。
 
@@ -112,7 +112,7 @@ Azure portal で Azure Monitor からの AKS クラスターの監視を有効�
 
 4. 監視対象外のクラスターの一覧でコンテナーを検索し、 **[有効にする]** をクリックします。
 
-5. **[コンテナーの Azure Monitor へのオンボード]** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。  
+5. **[コンテナーの Azure Monitor へのオンボード]** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。
     このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。
 
     ![AKS コンテナーの分析情報の監視を有効にする](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -130,15 +130,15 @@ Azure Portal でいずれかの AKS クラスターから直接監視を有効�
 
 2. リソースの一覧で、「**Containers**」と入力を開始します。  入力内容に基づいて、一覧がフィルター処理されます。
 
-3. **[Kubernetes サービス]** を選択します。  
+3. **[Kubernetes サービス]** を選択します。
 
     ![Kubernetes サービスのリンク](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. コンテナーの一覧で、コンテナーを選択します。
 
-5. コンテナーの概要ページで、 **[コンテナーの監視]** を選択します。  
+5. コンテナーの概要ページで、 **[コンテナーの監視]** を選択します。
 
-6. そのクラスターと同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、 **[コンテナーの Azure Monitor へのオンボード]** ページのドロップダウン リストでそれを選択します。  
+6. そのクラスターと同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、 **[コンテナーの Azure Monitor へのオンボード]** ページのドロップダウン リストでそれを選択します。
     このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。
 
     ![AKS コンテナーの正常性の監視を有効にする](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
@@ -310,7 +310,21 @@ kubectl get ds omsagent --namespace=kube-system
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
+
+クラスターに Windows Server ノードがある場合は、次のコマンドを実行して、エージェントが正常にデプロイされていることを確認できます。
+
+```
+kubectl get ds omsagent-win --namespace=kube-system
+```
+
+出力は次のようになり、適切にデプロイされたことが示されます。
+
+```output
+User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
+NAME                   DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                   AGE
+omsagent-win           2         2         2         2            2           beta.kubernetes.io/os=windows   1d
+```
 
 ソリューションのデプロイを確認するには、次のコマンドを実行します。
 
@@ -328,23 +342,23 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>06072018 より前のバージョンのエージェント
 
-*06072018* より前にリリースされたバージョンの Log Analytics エージェントが適切にデプロイされていることを確認するには、次のコマンドを実行します。  
+*06072018* より前にリリースされたバージョンの Log Analytics エージェントが適切にデプロイされていることを確認するには、次のコマンドを実行します。
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-出力は次のようになり、適切にデプロイされたことが示されます。  
+出力は次のようになり、適切にデプロイされたことが示されます。
 
 ```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
 
 ## <a name="view-configuration-with-cli"></a>CLI で構成を表示する
 
-ソリューションが有効かどうか、Log Analytics ワークスペースのリソース ID、クラスターに関するサマリー詳細などの詳細を取得するには、`aks show` コマンドを使用します。  
+ソリューションが有効かどうか、Log Analytics ワークスペースのリソース ID、クラスターに関するサマリー詳細などの詳細を取得するには、`aks show` コマンドを使用します。
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>

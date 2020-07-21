@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753203"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
 
@@ -32,7 +33,7 @@ ms.locfileid: "77669949"
     )
     ```
 
-3. `settings.py` の `OPENCENSUS` に AzureExporter が正しく構成されていることを確認します。
+3. `settings.py` の `OPENCENSUS` に AzureExporter が正しく構成されていることを確認します。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
 
     ```python
     OPENCENSUS = {
@@ -41,20 +42,7 @@ ms.locfileid: "77669949"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-        }
-    }
-    ```
-
-4. また、追跡したくない要求については、`settings.py` の `BLACKLIST_PATHS` に URL を追加することもできます。
-
-    ```python
-    OPENCENSUS = {
-        'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
-            'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                connection_string="InstrumentationKey=<your-ikey-here>",
-            )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -86,7 +74,7 @@ ms.locfileid: "77669949"
     
     ```
 
-2. コードで直接 `flask` ミドルウェアを構成できます。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
+2. `app.config` を使用して `flask` アプリケーションを構成することもできます。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -133,6 +121,6 @@ ms.locfileid: "77669949"
 
 * [アプリケーション マップ](../../azure-monitor/app/app-map.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [検索](../../azure-monitor/app/diagnostic-search.md)
+* [Search](../../azure-monitor/app/diagnostic-search.md)
 * [Log (Analytics) のクエリ](../../azure-monitor/log-query/log-query-overview.md)
 * [トランザクションの診断](../../azure-monitor/app/transaction-diagnostics.md)

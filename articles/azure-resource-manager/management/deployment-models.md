@@ -3,12 +3,12 @@ title: Resource Manager デプロイとクラシック デプロイ
 description: Resource Manager デプロイ モデルとクラシック (あるいはサービス管理) デプロイ モデルの違いについて説明します。
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064514"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057570"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -78,6 +78,8 @@ Resource Manager で作成したリソースだけがタグに対応していま
 
 ![Resource Manager architecture](./media/deployment-models/arm_arch3.png)
 
+SRP: ストレージ リソース プロバイダー、CRP: コンピューティング リソース プロバイダー、NRP: ネットワーク リソース プロバイダー
+
 次に挙げるリソース間の関係を確認してください。
 
 * すべてのリソースがリソース グループ内に存在します。
@@ -123,7 +125,7 @@ Resource Manager で作成したリソースだけがタグに対応していま
 1. [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+4. [Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -150,4 +152,3 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 ## <a name="next-steps"></a>次のステップ
 
 * テンプレートをデプロイするためのコマンドについては、「 [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](../templates/deploy-powershell.md)」を参照してください。
-

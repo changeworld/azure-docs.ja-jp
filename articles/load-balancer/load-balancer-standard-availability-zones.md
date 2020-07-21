@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 6deb5714a43d61f5ceb793757d49bd099f09f2b7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977654"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027564"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
@@ -50,7 +50,9 @@ Azure Standard Load Balancer は、可用性ゾーンのシナリオをサポー
 
 フロントエンドの IP アドレスは、複数の可用性ゾーンで複数の独立したインフラストラクチャ展開によって同時に処理されます。 再試行または再確立は、ゾーンの障害による影響を受けない他のゾーンで成功します。 
 
-:::image type="content" source="./media/az-zonal/zone-redundant-lb-1.svg" alt-text="ゾーン冗長" border="true":::
+<p align="center">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
 
 *図:ゾーン冗長ロード バランサー*
 
@@ -60,7 +62,12 @@ Azure Standard Load Balancer は、可用性ゾーンのシナリオをサポー
 
 さらに、各ゾーン内の負荷分散されたエンドポイントに対して、ゾーン フロントエンドを直接使用することもできます。 この構成を使ってゾーンごとに負荷分散されたエンドポイントを公開し、各ゾーンを個別に監視することができます。 パブリック エンドポイントの場合は、これらを [Traffic Manager](../traffic-manager/traffic-manager-overview.md) などの DNS 負荷分散製品と統合して、1 つの DNS 名を使用できます。
 
-:::image type="content" source="./media/az-zonal/zonal-lb-1.svg" alt-text="ゾーン冗長" border="true":::
+
+<p align="center">
+  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
+
+*図:ゾーン冗長ロード バランサー*
 
 これらの概念を組み合わせる (同じバックエンドでゾーン冗長とゾーン ベースを使う) 場合は、[Azure Load Balancer での複数のフロントエンド](load-balancer-multivip-overview.md)に関するページをご覧ください。
 
@@ -98,7 +105,7 @@ SNAT ポートの事前割り当てアルゴリズムは、可用性ゾーンが
 
 ロード バランサーは、可用性ゾーンという観点から柔軟性があります。 ゾーンに一致させることも、規則ごとにゾーン冗長にすることもできます。 可用性の向上には、複雑さが増すという代償が伴います。 最適なパフォーマンスを実現するために、可用性を設計します。
 
-### <a name="automatic-zone-redundancy"></a>自動ゾーン冗長性
+### <a name="zone-redundancy"></a>ゾーンの冗長性
 
 Load Balancer を使うと、ゾーン冗長フロントエンドとして 1 つの IP アドレスを簡単に持つことができます。 ゾーン冗長 IP アドレスは、任意のゾーンでゾーンのリソースを提供できます。  IP は、リージョン内に正常なゾーンが 1 つでも残っている限り、1 つまたは複数のゾーンで障害があっても存続できます。  その代わりに、ゾーンのフロントエンドは、単一のゾーンへのサービスの縮小であり、対応するゾーンの正常性に依存します。
 

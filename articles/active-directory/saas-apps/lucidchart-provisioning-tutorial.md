@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367973"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:Lucidchart を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -162,6 +162,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="change-log"></a>ログの変更
 
 * 2020 年 4 月 30 日 - エンタープライズ拡張属性とユーザーのカスタム属性 "CanEdit" のサポートを追加しました。
+* 2020/06/15 - ユーザーの論理的な削除が有効になりました ([active](https://tools.ietf.org/html/rfc7643) 属性のサポート)。
 
 ## <a name="additional-resources"></a>その他のリソース
 

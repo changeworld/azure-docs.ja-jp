@@ -4,16 +4,16 @@ description: Azure Database for PostgreSQL (単一サーバー) での認証に 
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e813459ddf516b170e7f429646dad38452188335
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236315"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102380"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
+# <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
 この記事では、Azure Database for PostgreSQL を使用して Azure Active Directory アクセスを構成する方法と、Azure AD トークンを使用して接続する方法について説明します。
 
@@ -115,8 +115,12 @@ az account get-access-token --resource-type oss-rdbms
 
 Windows の例:
 
-```shell
+```cmd
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
+```
+
+```PowerShell
+$env:PGPASSWORD='<copy/pasted TOKEN value from step 2>'
 ```
 
 Linux/macOS の例:
@@ -130,6 +134,15 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+
+接続時の重要な考慮事項:
+
+* `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です。
+* Azure AD ユーザー/グループ名の後には常にサーバー名を追加してください (`@mydb` など)。
+* Azure AD ユーザーまたはグループ名の正確なスペルを使用するようにしてください。
+* Azure AD ユーザーおよびグループ名は大文字と小文字が区別されます。
+* グループとして接続する場合は、グループ名のみ (`GroupName@mydb` など) を使用します。
+* 名前にスペースが含まれている場合は、各スペースの前に `\` を使用してそれをエスケープします。
 
 これで、Azure AD 認証を使用して PostgreSQL サーバーに対して認証されました。
 

@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview のスマート コントラク�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74325963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254635"
 ---
 # <a name="smart-contract-integration-patterns"></a>スマート コントラクトの統合パターン
 
@@ -31,7 +31,7 @@ Azure Blockchain Workbench で生成される Web アプリケーションの機
 
 REST API は、主に Web、モバイル、およびボット アプリケーションなどの対話型クライアントに使用されます。
 
-このセクションでは、分散型台帳にトランザクションを送信する REST API と、トランザクションに関するデータを Azure Blockchain Workbench の*オフ チェーン* SQL データベースに問い合わせる方法について説明します。
+このセクションでは、分散型台帳にトランザクションを送信する REST API と、トランザクションに関するデータを Azure Blockchain Workbench の "*オフ チェーン*" データベースに問い合わせる方法について説明します。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>外部システムから分散型台帳へのトランザクションの送信
 
@@ -204,7 +204,7 @@ Azure Blockchain Workbench には、REST とメッセージ ベースの API に
 
 -   Azure Blockchain Workbench は、アプリケーション、ワークフロー、コントラクト、およびトランザクションに関するメタデータを、通常の操作の一部として格納します。
 -   外部システムまたはツールには、データベース サーバー名、データベース名、認証の種類、ログインの資格情報、使用するデータベースのビューなど、データベースに関する情報の収集を容易にする 1 つ以上のダイアログが用意されています。
--   外部システム、サービス、レポート、開発者ツール、エンタープライズ生産性ツールによるダウンストリームの利用を容易にするために、SQL データベース ビューに対してクエリが作成されます。
+-   外部システム、サービス、レポート、開発者ツール、エンタープライズ生産性ツールによるダウンストリームの利用を容易にするために、データベース ビューに対してクエリが作成されます。
 
 ## <a name="storage-integration"></a>ストレージの統合
 

@@ -5,16 +5,16 @@ description: Azure CLI を使用して、新しい Azure Machine Learning ワー
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392711"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 Azure Machine Learning ワークスペースは、次の Azure サービスまたはエンティティに依存しています。
 
 > [!IMPORTANT]
-> 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。
+> 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。 独自のストレージ アカウントをアタッチする場合は、Azure BLOB と Azure File の両方の機能が有効であることと、階層型名前空間 (ADLS Gen 2) が無効であることを確認します。 ワークスペースをデータ ストアとして作成した後は、いつでも独自のストレージ アカウントをアタッチできます。
 
 | サービス | 既存のインスタンスを指定するパラメーター |
 | ---- | ---- |
@@ -317,7 +317,7 @@ Azure Machine Learning を使用したロールベースのアクセス制御 (R
 
 ## <a name="sync-keys-for-dependent-resources"></a>依存リソースのキーの同期
 
-ワークスペースで使用されているリソースのいずれかのアクセス キーを変更する場合は、次のコマンドを使用して、新しいキーとワークスペースを同期します。
+ワークスペースに使用されているいずれかのリソースのアクセス キーを変更すると、ワークスペースが新しいキーと同期されるまでに約 1 時間かかります。 ワークスペースで新しいキーを直ちに同期させるには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601634"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
 
@@ -82,9 +82,9 @@ Web にユーザー名を入力し、 **[次へ]** を選択すると、ユー�
 
 ### <a name="ad-fs-integration"></a>AD FS の統合
 
-ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[代わりにパスワードを使用する] をクリックする追加の手順を行わずに、サインイン確認のために ADFS に移動されないようにします。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
+ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[代わりにパスワードを使用する] をクリックする追加の手順を行わずに、サインイン確認のために AD FS に移動されないようにします。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
 
-ユーザーがパスワードなしの電話によるサインインの確認に回答せずに保留していて、もう一度サインインを試行した場合は、代わりにパスワードを入力するようにユーザーに ADFS を表示することができます。  
+ユーザーがパスワードなしの電話によるサインインの確認に回答せずに保留していて、もう一度サインインを試行した場合は、代わりにパスワードを入力するようにユーザーに AD FS を表示することができます。  
 
 ### <a name="azure-mfa-server"></a>Azure MFA サーバー
 
@@ -103,7 +103,7 @@ Web にユーザー名を入力し、 **[次へ]** を選択すると、ユー�
 
 ## <a name="next-steps"></a>次のステップ
 
-[パスワードなしとは](concept-authentication-passwordless.md)
+[パスワードレス認証のしくみを学習する](concept-authentication-passwordless.md)
 
 [デバイス登録の詳細](../devices/overview.md#getting-devices-in-azure-ad)
 

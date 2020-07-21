@@ -1,6 +1,6 @@
 ---
-title: ハイパースケール サービス レベルとは
-description: この記事では、Azure SQL Database における仮想コアベースの購入モデルでのハイパースケール サービス レベル、およびそれが General Purpose および Business Critical サービス レベルと異なる点について説明します。
+title: Hyperscale サービス レベルとは
+description: この記事では、Azure SQL Database における仮想コアベースの購入モデルでの Hyperscale サービス レベル、およびそれが General Purpose および Business Critical サービス レベルと異なる点について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,16 +10,15 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 65d7cb60d0d3df43323833f254278c20abacc9d1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/03/2020
+ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231230"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255008"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL Database は、インフラストラクチャに障害が発生した場合でも 99.99% の可用性を確保するために、クラウド環境に合わせて調整された SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database で使用されているアーキテクチャ モデルは 3 つあります。
 
@@ -32,7 +31,7 @@ Azure SQL Database の Hyperscale サービス レベルは、仮想コアベー
 > [!NOTE]
 >
 > - 仮想コアベースの購入モデルでの General Purpose サービス レベルと Business Critical サービス レベルの詳細については、[General Purpose](service-tier-general-purpose.md) サービス レベルと [Business Critical](service-tier-business-critical.md) サービス レベルの記事を参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](purchasing-models.md)に関する記事をご覧ください。
-> - ハイパースケール サービス レベルは現在、Azure SQL Database でのみ使用でき、Azure SQL Managed Instance では使用できません。
+> - Hyperscale サービス レベルは現在、Azure SQL Database でのみ使用でき、Azure SQL Managed Instance では使用できません。
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>ハイパースケールの機能とは
 
@@ -59,7 +58,7 @@ Hyperscale サービス レベルは、個別にスケーラブルなコンピ�
 - 既にクラウドを利用しているが、他のサービス レベルのデータベースの最大サイズ制限によって制限されている (1 ～ 4 TB)
 - 使用するデータベースは小さいが、垂直方向と水平方向の高速なコンピューティング スケーリング、高パフォーマンス、インスタント バックアップ、データベースの高速復元を必要としている。
 
-Hyperscale サービスレベルは、純粋な OLTP から純粋な分析まで、さまざまな SQL Server ワークロードをサポートしていますが、主に OLTP とハイブリッド トランザクションおよび分析処理 (HTAP) のワークロード向けに最適化されています。
+Hyperscale サービス レベルは、純粋な OLTP から純粋な分析まで、さまざまな SQL Server ワークロードをサポートしていますが、主に OLTP とハイブリッド トランザクションおよび分析処理 (HTAP) のワークロード向けに最適化されています。
 
 > [!IMPORTANT]
 > エラスティック プールでは、Hyperscale サービス レベルはサポートされていません。
@@ -74,7 +73,7 @@ Hyperscale サービスレベルは、純粋な OLTP から純粋な分析まで
 
 - **ストレージ**:
 
-  ハイパースケールのデータベースを構成するときに、最大データ サイズを指定する必要はありません。 ハイパースケール レベルでは、実際の割り当てに基づいてデータベースのストレージに対して課金されます。 ストレージは、40 GB から 100 TB までの間 (10 GB 単位の増分) で自動的に割り当てられます。 必要に応じて、複数のデータ ファイルを同時に拡大することができます。 ハイパースケール データベースは、10 GB の開始サイズで作成され、10分ごとに 10 GB ずつ拡大し、最終的には 40 GB のサイズに達します。
+  ハイパースケールのデータベースを構成するときに、最大データ サイズを指定する必要はありません。 Hyperscale レベルでは、実際の割り当てに基づいてデータベースのストレージに対して課金されます。 ストレージは、40 GB から 100 TB までの間 (10 GB 単位の増分) で自動的に割り当てられます。 必要に応じて、複数のデータ ファイルを同時に拡大することができます。 ハイパースケール データベースは、10 GB の開始サイズで作成され、10分ごとに 10 GB ずつ拡大し、最終的には 40 GB のサイズに達します。
 
 ハイパースケールの価格について詳しくは、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」をご覧ください。
 
@@ -106,7 +105,7 @@ Azure Storage には、データベース内のすべてのデータ ファイ�
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 
-バックアップはファイル スナップショット ベースなので、ほぼ瞬時に実行されます。 ストレージとコンピューティングの分離により、バックアップ/復元操作をストレージ層に移すことができるので、プライマリ コンピューティング レプリカの処理の負荷が軽減されます。 その結果、データベースのバックアップはプライマリ コンピューティング ノードのパフォーマンスに影響を与えません。同様に、復元はファイル スナップショットに戻すことによって行われるため、データ サイズに左右される操作ではありません。 復元は一定時間の操作であり、数テラバイトのデータベースであっても数時間や数日ではなく数分で復元できます。 既存のバックアップを復元することによって新しいデータベースを作成する場合もこの機能を利用します。開発またはテスト目的でのデータベース コピーの作成は、テラバイト サイズのデータベースであっても数分で実行できます。
+バックアップはファイル スナップショット ベースなので、ほぼ瞬時に実行されます。 ストレージとコンピューティングの分離により、バックアップ/復元操作をストレージ層に移すことができるので、プライマリ コンピューティング レプリカの処理の負荷が軽減されます。 その結果、データベースのバックアップによりプライマリ コンピューティング ノードのパフォーマンスが影響を受けることはありません。 同様に、復元はファイル スナップショットに戻すことによって行われるため、データ サイズに左右される操作ではありません。 復元は一定時間の操作であり、数テラバイトのデータベースであっても数時間や数日ではなく数分で復元できます。 既存のバックアップを復元することによって新しいデータベースを作成する場合もこの機能を利用します。開発またはテスト目的でのデータベース コピーの作成は、テラバイト サイズのデータベースであっても数分で実行できます。
 
 ## <a name="scale-and-performance-advantages"></a>スケールとパフォーマンスの利点
 
@@ -114,7 +113,7 @@ Azure Storage には、データベース内のすべてのデータ ファイ�
 
 ## <a name="create-a-hyperscale-database"></a>ハイパースケール データベースの作成
 
-ハイパースケール データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](service-tiers-vcore.md)を使用してのみ入手できます。
+Hyperscale データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](service-tiers-vcore.md)を使用してのみ入手できます。
 
 次の T-SQL コマンドによって、ハイパースケール データベースが作成されます。 `CREATE DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。 有効なサービス目標の一覧については[リソースの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4)に関するページを参照してください。
 
@@ -147,9 +146,9 @@ GO
 Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
-ハイパースケールのセカンダリ レプリカはすべて同じであり、プライマリ レプリカと同じサービス レベル目標が使用されます。 複数のセカンダリ レプリカが存在する場合、ワークロードは使用可能なすべてのセカンダリ レプリカに分散されます。 各セカンダリ レプリカは個別に更新されるため、レプリカごとに、プライマリ レプリカに対して異なるデータ遅延が生じる可能性があります。
+ハイパースケールのセカンダリ レプリカはすべて同じであり、プライマリ レプリカと同じサービス レベル目標が使用されます。 複数のセカンダリ レプリカが存在する場合、ワークロードは使用可能なすべてのセカンダリ レプリカに分散されます。 各セカンダリ レプリカは個別に更新されます。 そのため、レプリカごとに、プライマリ レプリカに対して異なるデータ遅延が生じる可能性があります。
 
-## <a name="database-high-availability-in-hyperscale"></a>ハイパースケールでのデータベースの高可用性
+## <a name="database-high-availability-in-hyperscale"></a>Hyperscale でのデータベースの高可用性
 
 他のすべてのサービス レベルと同様に、Hyperscale は、コンピューティング レプリカの可用性に関係なく、コミットされたトランザクションのデータの持続性を保証します。 プライマリ レプリカが使用できなくなったことによるダウンタイムの程度は、フェールオーバーの種類 (計画されたものと計画外のもの)、および少なくとも 1 つのセカンダリ レプリカの存在に左右されます。 計画フェールオーバー (つまりメンテナンス イベント) では、システムはフェールオーバーを開始する前に新しいプライマリ レプリカを作成するか、既存のセカンダリ レプリカをフェールオーバーのターゲットとして使用します。 計画外のフェールオーバー (つまりプライマリ レプリカでのハードウェア障害) では、システムはセカンダリ レプリカが存在する場合はこれをフェールオーバーのターゲットとして使用し、あるいは使用可能なコンピューティング能力のプールから新しいプライマリ レプリカを作成します。 後者の場合、新しいプライマリ レプリカの作成に必要な追加の手順により、ダウンタイムの期間が長くなります。
 
@@ -159,20 +158,27 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 
 ### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Hyperscale データベースを別の地理的な場所に復元する
 
-ディザスター リカバリー操作の一環として、またはドリル、再配置などの他の理由で、Azure SQL Database Hyperscale DB を、現在ホストされているリージョン以外のリージョンに復元する必要がある場合、主な方法として、データベースの geo リストアを実行します。  これには、他の SQL Database を別のリージョンに復元するときとまったく同じ手順が含まれます。
+ディザスター リカバリー操作の一環として、またはドリル、再配置などの他の理由で、Azure SQL Database の Hyperscale データベースを、現在ホストされているリージョン以外のリージョンに復元する必要がある場合、主な方法として、データベースの geo リストアを実行します。 これには、SQL Database の他のデータベースを別のリージョンに復元するときとまったく同じ手順が含まれます。
 
 1. ターゲット リージョンにまだ適切なサーバーが存在しない場合は、そこに[サーバー](logical-servers.md)を作成します。  このサーバーは、元の (ソース) サーバーと同じサブスクリプションが所有する必要があります。
-2. 自動バックアップからの Azure SQL データベースの復元に関するページの「[geo リストア](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore)」トピックにある手順に従ってください。
+2. 自動バックアップからの Azure SQL Database のデータベースの復元に関するページの「[geo リストア](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore)」トピックにある手順に従ってください。
 
 > [!NOTE]
 > ソースとターゲットが別々のリージョンにあるため、データベースは、geo リストア以外と同様に、スナップショット ストレージをソース データベースと共有することができません。これは、非常に短時間で完了します。 Hyperscale データベースの geo リストアの場合、ターゲットが geo レプリケーション ストレージのペア リージョンにある場合でも、データのサイズに関連した操作になります。  つまり、geo リストアを実行すると、復元されるデータベースのサイズに比例した時間がかかります。  ペア リージョン内にターゲットがある場合、コピーは 1 つのリージョン内で行われます。これは、複数のリージョンにまたがって行われるコピーよりもはるかに高速になりますが、それでもデータのサイズに左右される操作になります。
 
 ## <a name="available-regions"></a><a name=regions></a>対応リージョン
 
-現在、Azure SQL Database Hyperscale レベルは次のリージョンで使用できます。
+Azure SQL Database の Hyperscale レベルはすべてのリージョンで利用できますが、以下に示すリージョンでは既定で有効になっています。
+サポート対象として掲載されていないリージョンに Hyperscale データベースを作成したい場合は、Azure portal 経由でオンボード要求を送信できます。 手順については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。 要求を送信するときは、次のガイドラインに従ってください。
 
+- [リージョン アクセス](quota-increase-request.md#region)の SQL Database クォータの種類を使用します。
+- テキストの詳細に、読み取り可能なレプリカを含むコンピューティング SKU/コア総数を追加します。
+- また、推定 TB を指定します。
+
+有効なリージョン:
 - オーストラリア東部
 - オーストラリア南東部
+- オーストラリア中部
 - ブラジル南部
 - カナダ中部
 - 米国中部
@@ -182,26 +188,29 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 - 米国東部
 - 米国東部 2
 - フランス中部
+- ドイツ中西部
 - 東日本
 - 西日本
 - 韓国中部
 - 韓国南部
 - 米国中北部
 - 北ヨーロッパ
+- ノルウェー東部
+- ノルウェー西部
 - 南アフリカ北部
 - 米国中南部
 - 東南アジア
+- スイス西部
 - 英国南部
 - 英国西部
+- US DoD Central
+- US DoD East
+- US Gov アリゾナ
+- US Gov テキサス
+- 米国中西部
 - 西ヨーロッパ
 - 米国西部
 - 米国西部 2
-
-サポート対象として掲載されていないリージョンに Hyperscale データベースを作成したい場合は、Azure portal 経由でオンボード要求を送信できます。 手順については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。 要求を送信するときは、次のガイドラインに従ってください。
-
-- [その他のクォータ要求](quota-increase-request.md#other) SQL データベースのクォータの種類を使用します。
-- テキストの詳細に、読み取り可能なレプリカを含むコンピューティング SKU/コア総数を追加します。
-- また、推定 TB を指定します。
 
 ## <a name="known-limitations"></a>既知の制限事項
 
@@ -209,17 +218,17 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 
 | 問題 | 説明 |
 | :---- | :--------- |
-| サーバーの [バックアップの管理] ウィンドウには、Hyperscale データベースが表示されません。これらはビューからフィルターで除外されます  | Hyperscale では別の方法でバックアップが管理されています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されません。 したがって、ハイパースケールのデータベースは、[バックアップの管理] ウィンドウに表示されません。|
-| ポイントインタイム リストア | Hyperscale 以外のデータベースを Hyperscale データベースとして復元することも、Hyperscale データベースを Hyperscale 以外のデータベースとして復元することもできません。 サービス レベルを変更することで Hyperscale に移行された Hyperscale 以外のデータベースの場合は、[プログラムによって](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups)、データベースのバックアップ保有期間内における移行前の特定の時点に復元することができます。 復元されたデータベースは Hyperscale 以外となります。 |
+| サーバーの [バックアップの管理] ペインに、Hyperscale データベースが表示されない。 ビューからフィルターで除外される。  | Hyperscale では別の方法でバックアップが管理されています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されません。 したがって、Hyperscale データベースは、[バックアップの管理] ペインに表示されません。|
+| ポイントインタイム リストア | Hyperscale 以外のデータベースを Hyperscale データベースとして復元することも、Hyperscale データベースを Hyperscale 以外のデータベースとして復元することもできません。 サービス レベルを変更することで Hyperscale に移行された Hyperscale 以外のデータベースの場合は、[プログラムによって](recovery-using-backups.md#programmatic-recovery-using-automated-backups)、データベースのバックアップ保有期間内における移行前の特定の時点に復元することができます。 復元されたデータベースは Hyperscale 以外となります。 |
 | 1 TB を超えるデータ ファイルがデータベースに 1 つ以上ある場合、移行に失敗します。 | 場合によっては、サイズの大きいファイルを 1 TB 未満に圧縮することで、この問題を回避できることがあります。 移行プロセス中に使用されているデータベースを移行する場合は、1 TB を超えるファイルがないことを確認してください。 データベース ファイルのサイズを確認するには、以下のクエリを使用してください。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
-| SQL Managed Instance | Azure SQL Managed Instance は、現在、Hyperscale データベースではサポートされていません。 |
+| SQL Managed Instance | 現在、Azure SQL Managed Instance は Hyperscale データベースではサポートされていません。 |
 | エラスティック プール |  エラスティック プールは、現在、Hyperscale ではサポートされていません。|
-| ハイパースケールへの移行は現在一方向 | データベースがハイパースケールにいったん移行されると、ハイパースケール以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポートおよびインポートすることです。Azure portal、PowerShell ([New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) と [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport))、Azure CLI ([az sql db export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) と [az sql db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import))、[REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) から BACPAC のエクスポートとインポートを行うことはサポートされていません。 比較的小さい Hyperscale データベース (最大 200 GB) の BACPAC インポートと BACPAC エクスポートは、SSMS と [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) バージョン 18.4 以降を使用することでサポートされます。 大きなデータベースでは、BACPAC エクスポートと BACPAC インポートに時間がかかり、さまざまな理由で失敗する可能性があります。|
+| ハイパースケールへの移行は現在一方向 | データベースが Hyperscale にいったん移行されると、Hyperscale 以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポートおよびインポートすることです。Azure portal、PowerShell ([New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) と [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport))、Azure CLI ([az sql db export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) と [az sql db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import))、[REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) から BACPAC のエクスポートとインポートを行うことはサポートされていません。 比較的小さい Hyperscale データベース (最大 200 GB) の BACPAC インポートと BACPAC エクスポートは、SSMS と [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) バージョン 18.4 以降を使用することでサポートされます。 大きなデータベースでは、BACPAC エクスポートと BACPAC インポートに時間がかかり、さまざまな理由で失敗する可能性があります。|
 | 永続メモリ内 OLTP オブジェクトを含むデータベースの移行 | Hyperscale では、非永続メモリ内 OLTP オブジェクト (テーブル型、ネイティブ SP、関数) のみがサポートされます。  データベースが Hyperscale サービス レベルに移行される前に、永続メモリ内 OLTP テーブルとその他のオブジェクトは削除され、ディスク ベースのオブジェクトとして再作成されます。|
 | geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。 |
 | データベース コピー | 現時点では、データベース コピーを使用して、Azure SQL Hyperscale に新しいデータベースを作成することはできません。 |
 | TDE/AKV の統合 | Azure Key Vault を使用した Transparent Database Encryption (一般には、通常は Bring-Your-Own-Key (BYOK) と呼ばれる) は、現在プレビュー段階です。 |
-| インテリジェント データベース機能 | [Force Plan] オプションを除き、他のすべての自動チューニング オプションは Hyperscale ではまだサポートされていません。オプションは有効になっているように見えますが、推奨事項やアクションは実行されません。 |
+| インテリジェント データベース機能 | [プランの強制] オプションを除き、他のすべての自動チューニング オプションは Hyperscale ではまだサポートされていません。オプションは有効になっているように見えますが、推奨事項やアクションは実行されません。 |
 | Query Performance Insights | Query Performance Insight は現在、Hyperscale データベースではサポートされていません。 |
 | データベースの圧縮 | DBCC SHRINKDATABASE または DBCC SHRINKFILE は、現在、Hyperscale データベースではサポートされていません。 |
 | データベースの整合性チェック | DBCC CHECKDB は現在、Hyperscale データベースではサポートされていません。 回避策として、DBCC CHECKFILEGROUP と DBCC CHECKTABLE を使用することもできます。 Azure SQL Database におけるデータ整合性管理の詳細については、「[Azure SQL Database でのデータ整合性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)」を参照してください。 |
@@ -231,3 +240,4 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 - サーバーおよびサブスクリプション レベルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページをご覧ください。
 - 単一データベースの購入モデルの制限について詳しくは、「[Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](resource-limits-vcore-single-databases.md)」をご覧ください。
 - 機能比較一覧については、[SQL 共通機能](features-comparison.md)に関する記事をご覧ください。
+ 

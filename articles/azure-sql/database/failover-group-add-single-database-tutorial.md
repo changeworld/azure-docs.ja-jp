@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:フェールオーバー グループにデータベースを追加する
-description: Azure portal、PowerShell、または Azure CLI を使用して、Azure SQL Database を自動フェールオーバー グループに追加します。
+description: Azure portal、PowerShell、または Azure CLI を使用して、Azure SQL Database のデータベースを自動フェールオーバー グループに追加します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 78904feac106fbd1b612dfd494a2e8a280b40b25
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84040313"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255315"
 ---
-# <a name="tutorial-add-an-azure-sql-database-to-an-auto-failover-group"></a>チュートリアル:自動フェールオーバー グループに Azure SQL Database を追加する
+# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>チュートリアル:自動フェールオーバー グループに Azure SQL Database を追加する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[フェールオーバー グループ](auto-failover-group-overview.md)は、複数の geo レプリケートされたデータベースをグループ化できるようにする、宣言型の抽象化レイヤーです。 Azure portal、PowerShell、または Azure CLI のいずれかを使用して、Azure SQL Database にフェールオーバー グループを構成し、フェールオーバーをテストする方法について説明します。  このチュートリアルでは、次の内容を学習します。
+[フェールオーバー グループ](auto-failover-group-overview.md)は、複数の geo レプリケートされたデータベースをグループ化できるようにする、宣言型の抽象化レイヤーです。 Azure portal、PowerShell、または Azure CLI のいずれかを使用して、Azure SQL Database にフェールオーバー グループを構成し、フェールオーバーをテストする方法について説明します。  このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ ms.locfileid: "84040313"
 
 ## <a name="prerequisites"></a>前提条件
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+# <a name="the-portal"></a>[ポータル](#tab/azure-portal)
 
 このチュートリアルを完了するには、以下のものが必要です。
 
@@ -44,12 +44,12 @@ ms.locfileid: "84040313"
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 このチュートリアルを完了するには、次のものが必要です。
 
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) の最新バージョン。
+- 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ---
 
@@ -61,7 +61,7 @@ ms.locfileid: "84040313"
 
 この手順では、既存のサーバーと別のリージョンの新しいサーバーの間に[フェールオーバー グループ](auto-failover-group-overview.md)を作成します。 その後、そのフェールオーバー グループにサンプル データベースを追加します。
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+# <a name="the-portal"></a>[ポータル](#tab/azure-portal)
 
 フェールオーバー グループを作成し、Azure portal を使用してデータベースを追加します。
 
@@ -172,7 +172,7 @@ ms.locfileid: "84040313"
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Azure SQL Database で 1 つまたは複数のデータベースを取得します。 |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Azure SQL Database 内のフェールオーバー グループに 1 つまたは複数のデータベースを追加します。 |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 フェールオーバー グループを作成し、Azure CLI を使用してデータベースを追加します。
 
@@ -207,7 +207,7 @@ ms.locfileid: "84040313"
 
 この手順では、フェールオーバー グループをセカンダリ サーバーにフェールオーバーしてから、Azure portal を使用してフェールバックします。
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+# <a name="the-portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用してフェールオーバーをテストします。
 
@@ -222,10 +222,10 @@ Azure portal を使用してフェールオーバーをテストします。
    ![ポータルからフェールオーバー グループを選択](./media/failover-group-add-single-database-tutorial/select-failover-group.png)
 
 1. どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。
-1. 作業ウィンドウで **[フェールオーバー]** を選択し、サンプルのデータベースを含むフェールオーバー グループをフェールオーバーします。
+1. 作業ペインで **[フェールオーバー]** を選択し、サンプルのデータベースを含むフェールオーバー グループをフェールオーバーします。
 1. TDS セッションが切断されることが通知される警告で **[はい]** を選択します。
 
-   ![SQL データベースを含むフェールオーバー グループをフェールオーバーする](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![データベースが含まれるフェールオーバー グループをフェールオーバーする](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
 1. 現在、どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 フェールオーバーが成功すると、2 つのサーバー ロールがスワップされているはずです。
 1. サーバーを元のロールにフェールバックするには、もう一度 **[フェールオーバー]** を選択します。
@@ -291,7 +291,7 @@ PowerShell を使用してフェールオーバーをテストします。
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Database のフェールオーバー グループを取得または一覧表示します。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Databese のフェールオーバー グループのフェールオーバーを実行します。 |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用してフェールオーバーをテストします。
 
@@ -331,7 +331,7 @@ Azure CLI を使用してフェールオーバーをテストします。
 
 リソース グループを削除して、リソースをクリーンアップします。
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+# <a name="the-portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用してリソース グループを削除します。
 
@@ -359,7 +359,7 @@ PowerShell を使用してリソース グループを削除します。
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用してリソース グループを削除します。
 
@@ -419,7 +419,7 @@ Azure CLI を使用してリソース グループを削除します。
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 現在のプライマリ サーバーからすべてのデータベースをフェールオーバーして、フェールオーバー グループのプライマリを設定します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+# <a name="the-portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal に使用できるスクリプトはありません。
 
@@ -429,7 +429,7 @@ Azure portal に使用できるスクリプトはありません。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、フェールオーバー グループに Azure SQL Database を追加し、フェールオーバーをテストしました。 以下の方法を学習しました。
+このチュートリアルでは、フェールオーバー グループに Azure SQL Database のデータベースを追加し、フェールオーバーをテストしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 >

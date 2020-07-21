@@ -4,19 +4,19 @@ description: Azure Active Directory の条件付きアクセスを使用して�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4476502896705c2133b09b203bea0d6f5d74f121
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253360"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする
 
@@ -37,7 +37,7 @@ ms.locfileid: "83681415"
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>シナリオ 1:Office 365 アプリで、承認済みアプリとアプリ保護ポリシーの使用を必須にする
 
-このシナリオでは、Contoso は、Office 365 リソースへのすべてのモバイル アクセスで、アクセス権の取得に先立って、アプリ保護ポリシーで保護された承認済みクライアント アプリ (Outlook Mobile、OneDrive、Microsoft Teams など) の使用を必須とすることにしました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
+このシナリオでは、Contoso は、Office 365 リソースへのすべてのモバイル アクセスで、アクセス権の取得に先立って、アプリ保護ポリシーで保護された承認済みクライアント アプリ (Outlook Mobile、OneDrive など) の使用を必須とすることにしました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
 
 組織は、モバイル デバイスで承認済みクライアント アプリの使用を必須とするために、次の手順を完了する必要があります。
 

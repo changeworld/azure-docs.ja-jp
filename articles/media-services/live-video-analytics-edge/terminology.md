@@ -1,14 +1,14 @@
 ---
-title: 用語集 - Azure
+title: IoT Edge の Live Video Analytics の用語 - Azure
 description: この記事では、Live Video Analytics on IoT Edge の用語の概要について説明します。
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 51fcc962f6546d727dbbc5e7ff62dc9c4e5677af
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84816530"
 ---
 # <a name="terminology"></a>用語
 

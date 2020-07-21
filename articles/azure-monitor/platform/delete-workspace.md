@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 3784eda2db5f375f04cdde84108a78ae277baf60
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367956"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復旧
 
@@ -24,7 +24,7 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
 > [!NOTE]
 > 論理的な削除の動作をオーバーライドして、ご利用のワークスペースを完全に削除する場合は、「[ワークスペースの完全削除](#permanent-workspace-delete)」の手順に従います。
 
-重要なデータや構成が含まれているとサービスの運用に悪影響が生じるおそれがあるため、ワークスペースを削除する場合は注意が必要です。 エージェントやソリューションなど、Log Analytics にデータを格納する各種 Azure サービスとソースを再確認してください。そうしたサービスとソースの例を次に示します。
+重要なデータや構成が含まれているとサービスの運用に悪影響が生じるおそれがあるため、ワークスペースを削除する場合は注意が必要です。 エージェントやソリューションなど、Log Analytics にデータを格納する各種 Azure サービスを再確認してください。そうしたサービスとソースの例を次に示します。
 
 * 管理ソリューション
 * Azure Automation
@@ -64,21 +64,11 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 > [!IMPORTANT]
 > ワークスペースの完全削除操作を行うと元に戻すことができず、ワークスペースとそのデータを復元できないため、注意して使用してください。
 
-ワークスペースを完全に削除するには、「[ワークスペース - Delete](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)」REST 要求を force タグと共に使用します。
+ワークスペースを完全に削除するには、'-force' タグを追加します。
 
-```rst
-DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
-Authorization: Bearer <token>
+```powershell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
 ```
-
-または、Azure REST ドキュメント サイトから操作を実行することもできます。
-1.  「[ワークスペース - Delete](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)」REST API に移動して、 **[使ってみる]** をクリックします。 
-2.  完全に削除するワークスペースの詳細を入力します。
-3.  新しいパラメーター *force* を入力して、値 *true* を指定します。
-4.  値の右側にある [+] アイコンをクリックします。 これにより、要求の URI に *force=true* が追加されます。
-5.  *[実行]* ボタンをクリックします。
-
-応答は 200 OK です。
 
 ## <a name="recover-workspace"></a>ワークスペースを回復させる
 誤って、または意図的に Log Analytics ワークスペースを削除すると、ワークスペースは論理的な削除状態になり、どの操作からもアクセスできなくなります。 論理的な削除期間中は、削除されたワークスペースの名前が維持されるため、新しいワークスペースを作成するときにその名前を使用することはできません。 論理的な削除期間が終了すると、ワークスペースは回復不可能になります。永続的な削除がスケジュールされて名前が解放され、新しいワークスペースの作成に使用できるようになります。
@@ -114,11 +104,14 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 > [!NOTE]
 > * 論理的な削除期間中にワークスペースを再作成すると、このワークスペース名が既に使用中であることが表示されます。 
  
-### <a name="troubleshooting"></a>トラブルシューティング
-ワークスペースを削除するには、少なくとも "*Log Analytics の共同作成者*" のアクセス許可が必要です。<br>
-ワークスペースの作成時に "*このワークスペース名は既に使用されています*" または "*競合*" というエラー メッセージが表示される場合は、次の原因が考えられます。
-* ワークスペース名を使用できず、組織内の誰か、または他の顧客によって使用されている。
-* ワークスペースが過去 14 日以内に削除されており、その名前は論理的な削除期間にわたって予約されている。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。<br>
-   1. ワークスペースを[回復](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)します。
-   2. ワークスペースを[完全に削除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)します。
-   3. 同じワークスペース名を使用して新しいワークスペースを作成します。
+## <a name="troubleshooting"></a>トラブルシューティング
+
+ワークスペースを削除するには、少なくとも "*Log Analytics の共同作成者*" のアクセス許可が必要です。
+
+* 削除されたワークスペースが論理的な削除状態で回復できるかどうかわからない場合は、*Log Analytics ワークスペース* ページの [[回復]](#recover-workspace) をクリックして、サブスクリプションごとに論理的に削除されたワークスペースの一覧を表示します。 完全に削除されたワークスペースは一覧に含まれません。
+* ワークスペースの作成時に "*このワークスペース名は既に使用されています*" または "*競合*" というエラー メッセージが表示される場合は、次の原因が考えられます。
+  * ワークスペース名を使用できず、組織内の誰か、または他の顧客によって使用されている。
+  * ワークスペースが過去 14 日以内に削除されており、その名前は論理的な削除期間にわたって予約されている。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。<br>
+     1. ワークスペースを[回復](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)します。
+     2. ワークスペースを[完全に削除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)します。
+     3. 同じワークスペース名を使用して新しいワークスペースを作成します。

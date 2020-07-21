@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 8cfa7a7b251f2aa74230d8883a0335582387aa06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602518"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -45,9 +45,9 @@ Azure Machine Learning のアーキテクチャ、概念、ワークフローに
 Azure Machine Learning 用のこれらのツールを使用します。
 
 +  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
-+ [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します。
++ [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します (プレビュー)。
 + [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) を使用して、機械学習アクティビティを自動化します。
-+ [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) を使用して、コードを記述せずにワークフローの手順を行います。
++ [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) を使用して、コードを記述せずにワークフローの手順を行います。 (デザイナーを使用するには、[Enterprise ワークスペース](concept-workspace.md#upgrade)が必要です。)
 + [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
 > [!NOTE]
@@ -212,7 +212,7 @@ Web サービスとしてのモデルのデプロイ例については、[Azure 
 Azure IoT Edge ではモジュールが実行されるのを保証し、モジュールをホストしているデバイスを監視します。
 
 
-### <a name="compute-instance-preview"></a><a name="compute-instance"></a>コンピューティング インスタンス (プレビュー)
+### <a name="compute-instance"></a><a name="compute-instance"></a>コンピューティング インスタンス
 
 **Azure Machine Learning コンピューティング インスタンス** (旧称 Notebook VM) は、機械学習用にインストールされた複数のツールと環境を含む、フル マネージドのクラウドベースのワークステーションです。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング ターゲットとして使用できます。 大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
 

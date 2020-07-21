@@ -3,12 +3,12 @@ title: Azure CLI を使用して Azure ファイル共有をバックアップ�
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure CLI を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee83d4df5a857f0ae5b554514ecda0c257a829ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391096"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>CLI を使用して Azure ファイル共有をバックアップする
 
@@ -42,7 +42,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     eastus      AzureFiles
     ```
 
-2. [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
+1. [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
 
     次の例では、米国東部リージョンに *azurefilesvault* という名前の Recovery Services コンテナーを作成します。
 
@@ -54,28 +54,6 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     Location    Name                ResourceGroup
     ----------  ----------------    ---------------
     eastus      azurefilesvault     azurefiles
-    ```
-
-3. コンテナー ストレージに使用する冗長性の種類を指定します。 [ローカル冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)または [geo 冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)を使用できます。
-
-    次の例では、[az backup vault backup-properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) コマンドレットを使用して *azurefilesvault* のストレージ冗長オプションを **Georedundant** に設定します。
-
-    ```azurecli-interactive
-    az backup vault backup-properties set --name azurefilesvault --resource-group azurefiles --backup-storage-redundancy Georedundant
-    ```
-
-    コンテナーが正常に作成されたかどうかを確認するには、[az backup vault show](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-show) コマンドレットを使用して、コンテナーの詳細を取得します。 次の例では、前の手順で作成した *azurefilesvault* の詳細を表示します。
-
-    ```azurecli-interactive
-    az backup vault show --name azurefilesvault --resource-group azurefiles --output table
-    ```
-
-    出力は次の応答のようになります。
-
-    ```output
-    Location     Name               ResourceGroup
-    ----------   ---------------    ---------------
-    eastus       azurefilesvault    azurefiles
     ```
 
 ## <a name="enable-backup-for-azure-file-shares"></a>Azure ファイル共有のバックアップを有効にする
@@ -108,7 +86,7 @@ Name                                  ResourceGroup
 * **--item-name** は、オンデマンド バックアップをトリガーするファイル共有の名前をです。 バックアップ項目の**名前**または**フレンドリ名**を取得するには、[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) コマンドを使用します。
 * **--retain-until** は、回復ポイントを保持する日付を指定します。 値は UTC 時刻形式 (dd-mm-yyyy) で設定する必要があります。
 
-次の例では、*afsaccount* ストレージ アカウントの *azuresfiles* ファイル共有のオンデマンド バックアップを、*20-01-2020* まで保持した状態でトリガーします。
+次の例では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有のオンデマンド バックアップを、*20-01-2020* まで保持した状態でトリガーします。
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table

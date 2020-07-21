@@ -4,16 +4,16 @@ description: Windows Virtual Desktop で Windows 7 仮想マシンを構成し�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0cb5b2ee8b8391dc4fcb78cc1d3bd212c44f1803
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eafe2050f834fdd9aecba492c7121be9c1e121e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206004"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
 
@@ -32,9 +32,9 @@ Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイする
 
 Windows Virtual Desktop で Windows 7 VM を設定するには、次のようにします。
 
-1. Azure portal にサインインし、Windows 7 Enterprise イメージを検索するか、独自のカスタマイズした Windows 7 Enterprise (x64) イメージをアップロードします。  
+1. Azure portal にサインインし、Windows 7 Enterprise イメージを検索するか、独自のカスタマイズした Windows 7 Enterprise (x64) イメージをアップロードします。
 2. Windows 7 Enterprise をホスト オペレーティング システムとして使用する 1 つまたは複数の仮想マシンをデプロイします。 仮想マシンでリモート デスクトップ プロトコル (RDP) (TCP/3389 ポート) が許可されていることを確認します。
-3. RDP を使用して Windows 7 Enterprise ホストに接続し、デプロイの構成時に定義した資格情報で認証します。 
+3. RDP を使用して Windows 7 Enterprise ホストに接続し、デプロイの構成時に定義した資格情報で認証します。
 4. RDP でのホストへの接続時に使用したアカウントを、"リモート デスクトップ ユーザー" グループに追加します。 これを行わないと、VM を Active Directory ドメインに参加させた後に接続できなくなる可能性があります。
 5. VM の Windows Update に移動します。
 6. 重要なカテゴリのすべての Windows Update をインストールします。
@@ -43,17 +43,18 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
 9. リモート デスクトップ プロトコル 8.0 ポリシーを有効にします。
 10. Active Directory ドメインにこの VM を参加させます。
 11. 次のコマンドを実行して、仮想マシンを再起動します。
-    
+
      ```cmd
      shutdown /r /t 0
      ```
-    
+
 12. [こちら](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/)の指示に従って、登録トークンを取得します。
 13. [Windows 7 用 Windows Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
 14. [Windows 7 用 Windows Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
 15. Windows Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。
-16. Windows Virtual Desktop インストーラーを開き、指示に従います。
+16. Windows Virtual Desktop エージェント マネージャーを開き、指示に従います。
 17. 必要に応じて、TCP/3389 ポートをブロックし、リモート デスクトップ プロトコルで VM に直接アクセスできないようにします。
+18. 必要に応じて、.NET Framework がバージョン 4.7.2 以降であることを確認します。 これは、カスタム イメージを作成する場合に特に重要です。
 
 ## <a name="next-steps"></a>次のステップ
 

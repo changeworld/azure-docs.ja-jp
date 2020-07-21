@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: ef7dc69b69f17f9b9759f767edb2bcaab32792d5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 12a187b29737ba9388d9b33ac8bcfedf1339c059
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253785"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84038533"
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。
 2. マスクする機微なデータを含むデータベースの設定ページに移動します。
-3. SQL データベースの **[セキュリティ]** セクションの下にある **[動的データ マスキング]** ブレードをクリックします。
+3. データベースの **[セキュリティ]** セクションの下にある **[動的データ マスキング]** ブレードをクリックします。
 
    ![ナビゲーション ウィンドウ](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
 

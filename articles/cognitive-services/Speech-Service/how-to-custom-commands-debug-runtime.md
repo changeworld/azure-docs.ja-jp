@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307329"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023025"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>カスタム コマンド アプリケーションの実行時にエラーをデバッグする
 
@@ -27,9 +27,8 @@ ms.locfileid: "85307329"
 
 | エラー コード | 詳細 |
 | ------- | -------- |
-| 401 | AuthenticationFailure: 認証エラーで WebSocket をアップグレードできませんでした |
-| 1000 | WebSocket の接続アイドル期間の最大値 (300,000 ミリ秒) を超えました |
-| 1002 | サーバーが状態コード '101' を返すはずが、状態コード '404' を返しました。 |
+| [401](#error-401) | AuthenticationFailure: 認証エラーで WebSocket をアップグレードできませんでした |
+| [1002](#error-1002)] | サーバーが状態コード '101' を返すはずが、状態コード '404' を返しました。 |
 
 ### <a name="error-401"></a>エラー 401
 - クライアント アプリケーションで指定されているリージョンが、カスタム コマンド アプリケーションのリージョンと一致しません
@@ -37,9 +36,6 @@ ms.locfileid: "85307329"
 - 音声リソース キーが無効です
     
     音声リソース キーが正しいことを確認します。
-
-### <a name="error-1000"></a>エラー 1000 
-アイドル状態の接続は、5 分経つとサーバーによって終了されます。 再接続してみてください。
 
 ### <a name="error-1002"></a>エラー 1002 
 - お使いのカスタム コマンド アプリケーションは公開されていません
@@ -49,10 +45,12 @@ ms.locfileid: "85307329"
 - お使いのカスタム コマンド アプリケーションは有効ではありません
 
     お使いのカスタム コマンド アプリケーションの ID が正しいことを確認してください。
-
-- 音声リソースの外部にあるカスタム コマンド アプリケーションにアクセスしようとしています
+ 音声リソースの外部にあるカスタム コマンド アプリケーション
 
     カスタム コマンド アプリケーションが、ご自分の音声リソースの下に作成されていることを確認してください。
+
+接続に関する問題のトラブルシューティングについて詳しくは、[Windows 音声アシスタント クライアントのトラブルシューティング](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting)に関するページを参照してください
+
 
 ## <a name="dialog-is-canceled"></a>ダイアログがキャンセルされる
 
@@ -70,14 +68,14 @@ CancelledDialog イベントは、次に示すキャンセル コードと説明
 
 | キャンセル コード | キャンセルの説明 |
 | ------- | --------------- | ----------- |
-| MaxTurnThresholdReached | 許可されたターンの最大数の後で状態が進行しませんでした |
-| RecognizerQuotaExceeded | 認識エンジンの使用量クォータを超えました |
-| RecognizerConnectionFailed | 認識エンジンへの接続に失敗しました |
-| RecognizerUnauthorized | 現在のサブスクリプションではこのアプリケーションにアクセスできません |
-| RecognizerInputExceededAllowedLength | 入力が認識エンジンでサポートされている最大長を超えています |
-| RecognizerNotFound | 認識エンジンが見つかりません |
-| RecognizerInvalidQuery | 認識エンジンに対するクエリが無効です |
-| RecognizerError | 認識エンジンがエラーを返します |
+| [MaxTurnThresholdReached](#no-progress-was-made-after-the-max-number-of-turns-allowed) | 許可されたターンの最大数の後で状態が進行しませんでした |
+| [RecognizerQuotaExceeded](#recognizer-usage-quota-exceeded) | 認識エンジンの使用量クォータを超えました |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | 認識エンジンへの接続に失敗しました |
+| [RecognizerUnauthorized](#this-application-cannot-be-accessed-with-the-current-subscription) | 現在のサブスクリプションではこのアプリケーションにアクセスできません |
+| [RecognizerInputExceededAllowedLength](#input-exceeds-the-maximum-supported-length) | 入力が認識エンジンでサポートされている最大長を超えています |
+| [RecognizerNotFound](#recognizer-not-found) | 認識エンジンが見つかりません |
+| [RecognizerInvalidQuery](#invalid-query-for-the-recognizer) | 認識エンジンに対するクエリが無効です |
+| [RecognizerError](#recognizer-return-an-error) | 認識エンジンがエラーを返します |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>許可されたターンの最大数の後で状態が進行しませんでした
 特定の数のターンの後で必要なスロットが正常に更新されない場合、ダイアログはキャンセルされます。 組み込みの最大数は 3 です。

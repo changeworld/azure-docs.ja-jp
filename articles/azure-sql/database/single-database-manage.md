@@ -1,6 +1,6 @@
 ---
 title: サーバーと単一データベースの作成と管理
-description: Azure portal、PowerShell、Az CLI、Transact-SQL (T-SQL)、および REST API を使用した Azure SQL Database でのサーバーと単一データベースの作成および管理について説明します。
+description: Azure portal、PowerShell、Azure CLI、Transact-SQL (T-SQL)、および REST API を使用した Azure SQL Database でのサーバーと単一データベースの作成および管理について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,31 +11,30 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 301d881e2065234bbd1a38e39eb1806d23c6809a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254992"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database でのサーバーと単一データベースの作成と管理
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使用して、Azure SQL Database でサーバーと単一データベースを作成および管理できます。
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="the-azure-portal"></a>Azure ポータル
 
-サーバー自体を作成する前に、あるいは作成しているときに Azure SQL Database のリソース グループを作成できます。
+サーバー自体を作成する前に、または作成している間に、Azure SQL Database のリソース グループを作成できます。
 
 ### <a name="create-a-server"></a>サーバーの作成
 
-[Azure portal](https://portal.azure.com) を使用してサーバーを作成するには、Azure Marketplace から新しい [サーバー](logical-servers.md) リソースを作成します。 または、Azure SQL Database をデプロイするときにサーバーを作成することもできます。
+[Azure portal](https://portal.azure.com) を使用してサーバーを作成するには、Azure Marketplace から新しい[サーバー](logical-servers.md) リソースを作成します。 または、Azure SQL Database をデプロイするときにサーバーを作成することもできます。
 
   ![サーバーの作成](./media/single-database-manage/create-logical-sql-server.png)
 
 ### <a name="create-a-blank-or-sample-database"></a>空のデータベースまたはサンプルのデータベースを作成する
 
-[Azure portal](https://portal.azure.com) を使用して単一の Azure SQL Database を作成するには、Azure Marketplace で Azure SQL Database リソースを選択します。 単一のデータベース自体を作成する前に、あるいは作成しているときにリソース グループとサーバーを作成できます。 Adventure Works LT に基づいて空のデータベースやサンプル データベースを作成できます。
+[Azure portal](https://portal.azure.com) を使用して単一の Azure SQL Database を作成するには、Azure Marketplace で Azure SQL Database リソースを選択します。 単一のデータベース自体を作成する前に、または作成している間に、リソース グループとサーバーを作成できます。 Adventure Works LT に基づいて空のデータベースやサンプル データベースを作成できます。
 
   ![データベースの作成 -1](./media/single-database-manage/create-database-1.png)
 
@@ -44,7 +43,7 @@ Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使
 
 ## <a name="manage-an-existing-server"></a>既存のサーバーを管理する
 
-既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定の SQL データベース ページ、 **[SQL サーバー]** ページ、または **[すべてのリソース]** ページから移動します。
+既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定のデータベース ページ、 **[SQL サーバー]** ページ、 **[すべてのリソース]** ページから移動します。
 
 既存のデータベースを管理するには、 **[SQL データベース]** ページに移動し、管理するデータベースを選択します。 次のスクリーンショットでは、データベースの**概要**ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
 
@@ -64,7 +63,7 @@ Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使
 Azure PowerShell を利用して、サーバー、単一データベースおよびプールされたデータベース、およびサーバーレベルのファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
 > [!TIP]
-> PowerShell のスクリプトの例については、[PowerShell を使用した Azure SQL の単一データベースの作成と、サーバーレベルのファイアウォール規則の構成](scripts/create-and-configure-database-powershell.md)および [PowerShell を使用した単一の SQL データベースの監視およびスケーリング](scripts/monitor-and-scale-database-powershell.md)に関するページを参照してください。
+> PowerShell のスクリプトの例については、[PowerShell を使用した SQL Database 内のデータベースの作成とサーバー レベルのファイアウォール規則の構成](scripts/create-and-configure-database-powershell.md)に関する記事と、[PowerShell を使用した SQL Database 内のデータベースの監視およびスケーリング](scripts/monitor-and-scale-database-powershell.md)に関する記事を参照してください。
 
 | コマンドレット | 説明 |
 | --- | --- |
@@ -83,12 +82,12 @@ Azure PowerShell を利用して、サーバー、単一データベースおよ
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|サーバーからファイアウォール規則を削除します。|
 | New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、[*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="the-azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure) を使用してサーバー、データベース、ファイアウォールを作成および管理するには、次の [Azure CLI](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](elastic-pool-overview.md)に関する記事をご覧ください。
 
 > [!TIP]
-> Azure CLI クイックスタートについては、[Azure CLI を使用した単一の Azure SQL Database の作成](az-cli-script-samples-content-guide.md)に関するページを参照してください。 Azure CLI のスクリプトの例については、[CLI を使用した単一の Azure SQL Database の作成と、SQL Database ファイアウォール規則の構成](scripts/create-and-configure-database-cli.md)および [CLI を使用した単一の Azure SQL Database の監視およびスケーリング](scripts/monitor-and-scale-database-cli.md)に関するページを参照してください。
+> Azure CLI クイックスタートについては、[Azure CLI を使用した単一の Azure SQL Database の作成](az-cli-script-samples-content-guide.md)に関するページを参照してください。 Azure CLI のスクリプトの例については、[CLI を使用した Azure SQL Database 内のデータベースの作成と SQL Database ファイアウォール規則の構成](scripts/create-and-configure-database-cli.md)に関する記事と、[CLI を使用した Azure SQL Database 内のデータベースの監視およびスケーリング](scripts/monitor-and-scale-database-cli.md)に関する記事を参照してください。
 >
 
 | コマンドレット | 説明 |
@@ -127,16 +126,16 @@ Transact-SQL を利用してサーバー、データベース、ファイアウ�
 |[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|新しい単一データベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |データベースまたはエラスティック プールを変更します。 |
 |[DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql)|データベースを削除します。|
-|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Azure SQL Database または Azure Synapse SQL プールのエディション (サービス レベル)、サービス目標 (価格レベル)、およびエラスティック プール名 (存在する場合) を返します。 SQL Database のサーバーのマスター データベースにログオンしている場合は、すべてのデータベースの情報が返されます。 Azure Synapse の場合は、マスター データベースに接続する必要があります。|
-|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL Database の CPU、IO、メモリ使用量を返します。 データベースにアクティビティがない場合でも、15 秒ごとに 1 つの行が存在します。|
-|[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Azure SQL Database の CPU 使用率とストレージ データを返します。 データは、5 分間隔で収集と集計が実行されます。|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Azure SQL Database または Azure Synapse Analytics SQL プールのエディション (サービス レベル)、サービス目標 (価格レベル)、およびエラスティック プール名 (存在する場合) が返されます。 SQL Database のサーバーのマスター データベースにログオンしている場合は、すべてのデータベースの情報が返されます。 Azure Synapse Analytics の場合は、master データベースに接続する必要があります。|
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL Database 内のデータベースの CPU、IO、メモリ使用量を返します。 データベースにアクティビティがない場合でも、15 秒ごとに 1 つの行が存在します。|
+|[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Azure SQL Database 内のデータベースの CPU 使用率とストレージ データを返します。 データは、5 分間隔で収集と集計が実行されます。|
 |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|SQL Database 接続イベントの統計が含まれており、データベース接続の成功と失敗の概要を示します。 |
 |[sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|成功した Azure SQL Database の接続、接続エラー、デッドロックを返します。 この情報を使用して、SQL Database を使用したデータベース アクティビティの追跡またはトラブルシューティングを行うことができます。|
 |[sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|サーバーのサーバーレベル ファイアウォールの設定を作成または更新します。 このストアド プロシージャは、マスター データベースのサーバーレベル プリンシパル ログインでのみ利用できます。 サーバーレベルのファイアウォール規則は、Azure レベルのアクセス許可を持つユーザーにより最初のサーバーレベルのファイアウォール規則が作成された後で Transact-SQL を使用しなければ作成できません。|
-|[sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Azure SQL Database に関連付けられているサーバーレベルのファイアウォール設定に関する情報を返します。|
+|[sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Azure SQL Database のデータベースに関連付けられているサーバー レベルのファイアウォール設定に関する情報が返されます。|
 |[sp_delete_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|サーバーからサーバーレベルのファイアウォール設定を削除します。 このストアド プロシージャは、マスター データベースのサーバーレベル プリンシパル ログインでのみ利用できます。|
-|[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Azure SQL Database のデータベース レベルのファイアウォール規則を作成または更新します。 マスター データベースと SQL Database のユーザー データベースにデータベース ファイアウォール規則を構成できます。 データベース ファイアウォール規則は、包含データベース ユーザーの利用時に便利です。 |
-|[sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Azure SQL Database に関連付けられているデータベースレベルのファイアウォール設定に関する情報を返します。 |
+|[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Azure SQL Database 内のデータベースのデータベース レベルのファイアウォール規則を作成または更新します。 マスター データベースと SQL Database のユーザー データベースにデータベース ファイアウォール規則を構成できます。 データベース ファイアウォール規則は、包含データベース ユーザーの利用時に便利です。 |
+|[sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Azure SQL Database のデータベースに関連付けられているデータベース レベルのファイアウォール設定に関する情報が返されます。 |
 |[sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|データベースから、データベースレベルのファイアウォールの設定を削除します。 |
 
 ## <a name="rest-api"></a>REST API
@@ -166,3 +165,4 @@ Transact-SQL を利用してサーバー、データベース、ファイアウ�
 
 - SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](migrate-to-database-from-sql-server.md)」を参照してください。
 - サポートされている機能については、[機能](features-comparison.md)に関する記事をご覧ください。
+ 

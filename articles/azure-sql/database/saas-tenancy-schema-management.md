@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a9378d0f499814706762349a0eac2c5a26ca939a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255553"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>テナントごとのデータベース パターンを使用した Azure SQL Database での SaaS アプリケーション内のスキーマの管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,12 +49,10 @@ ms.locfileid: "84026813"
 ![スクリーン](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
-## <a name="elastic-jobs-limited-preview"></a>エラスティック ジョブの限定プレビュー
+## <a name="elastic-jobs-public-preview"></a>エラスティック ジョブのパブリック プレビュー
 
-Azure SQL Database の統合機能となった新しいバージョンのエラスティック ジョブが入手可能です。 現在、この新しいバージョンのエラスティック ジョブは限定プレビュー中です。 現在、この限定プレビューでは、ジョブ エージェントを作成するための PowerShell と、ジョブを作成および管理するための T-SQL の使用がサポートされています。
-
-> [!NOTE]
-> このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。 このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。
+Azure SQL Database の統合機能となった新しいバージョンのエラスティック ジョブが入手可能です。 現在、この新しいバージョンのエラスティック ジョブはパブリック プレビュー中です。 現在、このパブリック プレビューでは、ジョブ エージェントを作成するための PowerShell と、ジョブを作成および管理するための T-SQL の使用がサポートされています。
+詳細については、[Elastic Database ジョブ](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview)に関する記事を参照してください。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>テナントごとのデータベースを使用する Wingtip Tickets SaaS アプリケーションのスクリプトの入手
 
@@ -67,7 +65,7 @@ Azure SQL Database の統合機能となった新しいバージョンのエラ�
 1. **PowerShell ISE** で、…\\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1* を開きます。
 1. **F5** キーを押して、スクリプトを実行します。
 
-*Demo-SchemaManagement.ps1* スクリプトは、*Deploy-SchemaManagement.ps1* スクリプトを呼び出して、カタログ サーバーに *osagent* という名前の SQL データベースを作成します。 次に、このデータベースをパラメーターとして使用して、ジョブ エージェントを作成します。
+*Demo-SchemaManagement.ps1* スクリプトでは、*Deploy-SchemaManagement.ps1* スクリプトが呼び出されて、カタログ サーバーに *osagent* という名前のデータベースが作成されます。 次に、このデータベースをパラメーターとして使用して、ジョブ エージェントを作成します。
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>新しい参照データをすべてのテナントにデプロイするジョブの作成
 

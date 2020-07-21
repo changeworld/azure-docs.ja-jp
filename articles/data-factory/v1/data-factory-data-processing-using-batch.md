@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c6fb590cbb57e8798bf65d0aa30585ae3db3691d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321407"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -144,7 +144,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 1. `customactivitycontainer` という名前の別のコンテナーを作成します。 カスタム アクティビティの zip ファイルを、このコンテナーにアップロードします。
 
-#### <a name="visual-studio"></a>Visual Studio
+#### <a name="visual-studio"></a>Visual Studio
 Visual Studio 2012 以降をインストールして、データ ファクトリ ソリューションで使用するカスタム Batch アクティビティを作成します。
 
 ### <a name="high-level-steps-to-create-the-solution"></a>ソリューションを作成する手順の概要
@@ -925,7 +925,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
    >
 1. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。 そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。 Batch を使用する場合のベスト プラクティスは、Azure Key Vault のシークレットを保持することです。 次に、証明書ベースのサービス プリンシパルを使用してキー コンテナーを保護し、証明書を Batch プールに配布します。 こうすることで .NET カスタム アクティビティが実行時にキー コンテナー内のシークレットにアクセスすることができます。 これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
 
-    さらに簡単な回避策もありますが、ベスト プラクティスではありません。 接続文字列の設定を使用して、SQL データベースにリンクされたサービスを作成できます。 これで、リンクされたサービスを使用するデータセットを作成し、データセットをダミーの入力データセットとしてカスタム .NET アクティビティに連結できます。 その後は、カスタム アクティビティのコードで、リンクされたサービスの接続文字列にアクセスできます。 これは実行時に問題なく動作します。  
+    さらに簡単な回避策もありますが、ベスト プラクティスではありません。 接続文字列の設定を使用して、SQL Database にリンクされたサービスを作成できます。 これで、リンクされたサービスを使用するデータセットを作成し、データセットをダミーの入力データセットとしてカスタム .NET アクティビティに連結できます。 その後は、カスタム アクティビティのコードで、リンクされたサービスの接続文字列にアクセスできます。 これは実行時に問題なく動作します。  
 
 #### <a name="extend-the-sample"></a>サンプルの拡張
 Data Factory および Batch の機能の詳細については、このサンプルを拡張することができます。 たとえば、異なる時間範囲でスライスを処理するには、次の手順を実行します。

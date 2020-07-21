@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: e36a69be19844a75562f87d3c195494e3ef148a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140934"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108501"
 ---
-# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>固有表現認識 v3 でサポートされるエンティティのカテゴリ
+# <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Text Analytics API v3 でサポートされているエンティティのカテゴリ
 
-この記事では、[固有表現認識 ](how-tos/text-analytics-how-to-entity-linking.md) (NER) から取得できるエンティティのカテゴリを紹介しています。 NER v3.1 のプレビューも提供されており、そちらには、個人情報 (`PII`) と医療情報 (`PHI`) を検出する機能が備わっています。
+この記事では、[固有表現認識 ](how-tos/text-analytics-how-to-entity-linking.md) (NER) から取得できるエンティティのカテゴリを紹介しています。 NER v3.1 のプレビューも提供されており、そちらには、個人情報 (`PII`) と医療情報 (`PHI`) を検出する機能が備わっています。 また、 **[正常性]** タブをクリックして、Text Analytics で正常性に対してサポートされているカテゴリの一覧を表示します。
 
 ## <a name="entity-categories"></a>エンティティのカテゴリ
 
@@ -27,9 +27,13 @@ ms.locfileid: "84140934"
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-and-health"></a>[個人と医療](#tab/personal)
+#### <a name="personal"></a>[個人](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
+
+#### <a name="health"></a>[正常性](#tab/health)
+
+[!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
 ***
 

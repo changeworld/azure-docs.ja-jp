@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d94f7219c5a29de9a707aa9ae4ed25ac4b2bf03e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254312"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 このチュートリアルでは、Wingtip Tickets SaaS テナント単位データベース アプリケーション (Wingtip) をデプロイして操作します。 このアプリでは、複数のテナントのデータを保存するために、テナント単位データベース パターンが使用されます。 このアプリは、SaaS シナリオを実現する方法を簡素化する Azure SQL Database の機能を紹介することを目的としています。
 
-**[Azure にデプロイ]** を選択すると、5 分後にマルチテナント SaaS アプリケーションが作成されます。 このアプリには、クラウドで実行される SQL データベースが含まれています。 アプリは、それぞれ独自のデータベースを使用する 3 つのサンプル テナントと共にデプロイされます。 すべてのデータベースが SQL エラスティック プールにデプロイされます。 アプリは Azure サブスクリプションにデプロイされます。 ユーザーには、アプリの個々のコンポーネントを確認して操作するフル アクセス権があります。 アプリケーションの C# ソース コードと管理スクリプトは、[WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]で入手できます。
+**[Azure にデプロイ]** を選択すると、5 分後にマルチテナント SaaS アプリケーションが作成されます。 アプリには Azure SQL Database で実行されるデータベースが含まれています。 アプリは、それぞれ独自のデータベースを使用する 3 つのサンプル テナントと共にデプロイされます。 すべてのデータベースが SQL エラスティック プールにデプロイされます。 アプリは Azure サブスクリプションにデプロイされます。 ユーザーには、アプリの個々のコンポーネントを確認して操作するフル アクセス権があります。 アプリケーションの C# ソース コードと管理スクリプトは、[WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]で入手できます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -107,7 +108,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 アプリは、イベントを開催する会場の窓口の機能を提供します。 会場の種類には、コンサート ホール、ジャズ クラブ、スポーツ クラブなどがあります。 Wingtip Tickets アプリでは、会場がテナントとして登録されます。 テナントになることで、会場が顧客に対して、イベントの一覧表示やチケットの販売を簡単に行うことができます。 各会場が、イベントの表示やチケット販売を行うためのパーソナライズされた Web サイトを利用できます。
 
-アプリの内部では、テナントごとに SQL Database が作成され、1 つの SQL エラスティック プールにデプロイされます。
+アプリの内部では、テナントごとにデータベースが作成され、1 つのエラスティック プールにデプロイされます。
 
 中央の **Events Hub** ページには、デプロイのテナントへのリンク一覧が表示されます。
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4bb315991846b115070854b6e81caf16232fef6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808527"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
-Azure には、FSLogix プロファイル コンテナーの格納に利用できるさまざまなストレージ ソリューションが用意されています。 この記事では、Windows Virtual Desktop FSLogix ユーザー プロファイル コンテナーのために Azure で用意されているストレージ ソリューションを比較します。
+Azure には、FSLogix プロファイル コンテナーの格納に利用できるさまざまなストレージ ソリューションが用意されています。 この記事では、Windows Virtual Desktop FSLogix ユーザー プロファイル コンテナーのために Azure で用意されているストレージ ソリューションを比較します。 ほとんどのお客様には、Azure Files に FSLogix プロファイル コンテナーを保存することをお勧めします。 
 
 Windows Virtual Desktop では、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。
 
@@ -25,7 +25,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-platform-details"></a>Azure プラットフォームの詳細
 
-|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|特徴|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
 |使用事例|汎用|オンプレミスの NetApp からの Ultra パフォーマンスまたは移行|クロス プラットフォーム|
 |プラットフォーム サービス|はい。Azure ネイティブ ソリューションです。|はい。Azure ネイティブ ソリューションです。|いいえ。自己管理型です。|
@@ -38,7 +38,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-management-details"></a>Azure 管理の詳細
 
-|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|特徴|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
 |アクセス|クラウド、オンプレミス、ハイブリッド (Azure ファイル同期)|クラウド、オンプレミス (ExpressRoute 経由)|クラウド、オンプレミス|
 |バックアップ|Azure Backup スナップショット統合|Azure NetApp Files スナップショット|Azure Backup スナップショット統合|

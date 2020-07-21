@@ -4,15 +4,15 @@ description: この記事では、Azure Application Gateway のコンポーネ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254669"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -307,7 +307,7 @@ Azure Application Gateway では、ユーザー セッションを維持する�
 
 ### <a name="connection-draining"></a>接続のドレイン
 
-接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、規則の作成中にバックエンド プールのすべてのメンバーに適用することができます。 これで、バックエンド プールの登録を解除するすべてのインスタンスが既存の接続を維持して、構成可能なタイムアウトに対して進行中の要求を処理し、新しい要求や接続を受信しないことが保証されます。 これに対する唯一の例外は、ゲートウェイによって管理されるセッション アフィニティのために登録を解除するインスタンス宛ての要求です。これらは、登録を解除するインスタンスによって引き続き転送されます。 接続のドレインは、バックエンド プールから明示的に削除されるバックエンド インスタンスに適用されます。
+接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 HTTP の設定で接続のドレインを有効にすることで、この設定をバックエンド プールのすべてのメンバーに適用できます。 これで、バックエンド プールの登録を解除するすべてのインスタンスが既存の接続を維持して、構成可能なタイムアウトに対して進行中の要求を処理し、新しい要求や接続を受信しないことが保証されます。 これに対する唯一の例外は、ゲートウェイによって管理されるセッション アフィニティのために登録を解除するインスタンス宛ての要求です。これらは、登録を解除するインスタンスによって引き続き転送されます。 接続のドレインは、バックエンド プールから明示的に削除されるバックエンド インスタンスに適用されます。
 
 ### <a name="protocol"></a>Protocol
 

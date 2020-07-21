@@ -1,15 +1,15 @@
 ---
 title: Azure 上に Ethereum Proof-of-Authority Consortium ソリューション テンプレートをデプロイする
 description: Etherereum Proof-of-Authority Consortium ソリューションを使用して Azure 上にマルチメンバー コンソーシアム型 Ethereum ネットワークをデプロイして構成する
-ms.date: 12/18/2019
-ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75387683"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085924"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 
@@ -17,15 +17,17 @@ ms.locfileid: "75387683"
 
 ソリューション テンプレートにより、各コンソーシアム メンバーは、Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスを使用してブロックチェーン ネットワーク フットプリントをプロビジョニングできます。 各コンソーシアム メンバーのネットワーク フットプリントは、一連の負荷分散型検証ノードで構成されます。アプリケーションまたはユーザーはそれらのノードと対話して、Ethereum トランザクションを送信できます。
 
+[!INCLUDE [Preview note](./includes/preview.md)]
+
 ## <a name="choose-an-azure-blockchain-solution"></a>Azure Blockchain ソリューションの選択
 
 Ethereum Proof-of-Authority Consortium ソリューション テンプレートを使用する前に、利用可能な Azure Blockchain オプションの一般的なユース ケースと実際のシナリオを比較してください。
 
 オプション | サービス モデル | 一般的なユース ケース
 -------|---------------|-----------------
-ソリューション テンプレート | IaaS | ソリューション テンプレートは、完全に構成されたブロックチェーン ネットワーク トポロジのプロビジョニングに使用できる Azure Resource Manager テンプレートです。 これらのテンプレートでは、特定のブロックチェーン ネットワークの種類に対応する Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスをデプロイして構成します。
+ソリューション テンプレート | IaaS | ソリューション テンプレートは、完全に構成されたブロックチェーン ネットワーク トポロジのプロビジョニングに使用できる Azure Resource Manager テンプレートです。 これらのテンプレートでは、特定のブロックチェーン ネットワークの種類に対応する Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスをデプロイして構成します。 ソリューション テンプレートは、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A の質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)をご利用ください。
 [Azure Blockchain Service](../service/overview.md) | PaaS | Azure Blockchain Service (プレビュー) により、コンソーシアム ブロックチェーン ネットワークの構成、管理、ガバナンスが簡素化されます。 Azure Blockchain Service は、PaaS、コンソーシアム管理、またはコントラクトとトランザクションのプライバシーを必要とするソリューションに使用します。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS および PaaS | Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン ソリューションまたはブロックチェーン アプリケーションの概念実証のプロトタイプを作成する際に使用します。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS および PaaS | Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン ソリューションまたはブロックチェーン アプリケーションの概念実証のプロトタイプを作成する際に使用します。 Azure Blockchain Workbench は、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)をご利用ください。
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -718,6 +720,20 @@ Ether は proof-of-authority コンソーシアムの目的では動作しませ
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>スマート コントラクト イベントをサブスクライブする方法は?
 
 Ethereum の Proof-of-Authority は Web ソケットをサポートするようになりました。  デプロイの出力を確認して、Web ソケットの URL とポートを見つけてください。
+
+## <a name="support-and-feedback"></a>サポートとフィードバック
+
+Azure Blockchain の最新情報については、[Azure Blockchain のブログ](https://azure.microsoft.com/blog/topics/blockchain/)をご覧ください。Azure Blockchain エンジニアリング チームからの情報やブロックチェーン サービスの内容に関する最新の情報を把握することができます。
+
+製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)で投稿またはアイデアに投票してください。
+
+### <a name="community-support"></a>コミュニティ サポート
+
+Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
+
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 ブロックチェーン テンプレートに関するエンジニアリング サポートは、デプロイに関する問題に限定されています。
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>次のステップ
 

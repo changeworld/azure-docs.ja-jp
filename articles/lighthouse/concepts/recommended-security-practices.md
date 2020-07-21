@@ -1,18 +1,18 @@
 ---
 title: 推奨セキュリティ プラクティス
-description: Azure の委任されたリソース管理を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。
-ms.date: 03/24/2020
+description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c620feabf5bcedc35a36104c3ba305ac9337ff0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246910"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105423"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
-[Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。 テナント内のユーザーは、顧客のサブスクリプションとリソース グループに直接アクセスできるようになるため、テナントのセキュリティを確保するための手順を実行する必要があります。 また許可の対象も、顧客のリソースを効果的に管理するうえで必要なアクセス権に限定することが必要です。 このトピックでは、そのために役立つ推奨事項を紹介しています。
+[Azure Lighthouse](../overview.md) を使用する場合、セキュリティとアクセス制御を考慮することが重要です。 テナント内のユーザーは、顧客のサブスクリプションとリソース グループに直接アクセスできるようになるため、テナントのセキュリティを確保するための手順を実行する必要があります。 また許可の対象も、顧客のリソースを効果的に管理するうえで必要なアクセス権に限定することが必要です。 このトピックでは、そのために役立つ推奨事項を紹介しています。
 
 ## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を必須とする
 

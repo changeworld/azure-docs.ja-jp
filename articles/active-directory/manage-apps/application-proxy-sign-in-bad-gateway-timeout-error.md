@@ -3,25 +3,25 @@ title: アプリ プロキシ アプリ使用時のこの企業アプリケー�
 description: Azure AD アプリケーション プロキシ アプリケーションのアクセスに関する一般的な問題の解決方法。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367752"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
@@ -71,7 +71,7 @@ ms.locfileid: "83846734"
 アプリケーションが動作するコネクタ グループに割り当てられていることを確認するには、次の手順に従います。
 
 1. **Azure Active Directory** に移動し、 **[エンタープライズ アプリケーション]** 、次に **[すべてのアプリケーション]** をクリックして、ポータルでアプリケーションを開きます。 アプリケーションを開き、左側のメニューから **[アプリケーション プロキシ]** を選択します。
-1. [コネクタ グループ] フィールドを調べます。 グループ内にアクティブなコネクタがない場合は、警告が表示されます。 警告が表示されない場合は、[必要なポート](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)がすべて許可されていることの確認に進みます。
+1. [コネクタ グループ] フィールドを調べます。 グループ内にアクティブなコネクタがない場合は、警告が表示されます。 警告が表示されない場合は、[必要なポート](application-proxy-add-on-premises-application.md)がすべて許可されていることの確認に進みます。
 1. 間違ったコネクタ グループが表示されている場合は、ドロップダウンを使用して正しいグループを選択し、警告が表示されなくなったことを確認します。 目的のコネクタ グループが表示されている場合は、警告メッセージをクリックして、コネクタ管理のページを開きます。
 1. ここから、さらに詳細に調べるための方法がいくつかあります。
 
@@ -83,7 +83,7 @@ ms.locfileid: "83846734"
 
 ## <a name="check-all-required-ports-are-open"></a>必要なすべてのポートが開いていることを確認する
 
-必要なすべてのポートが開いていることを確認するには、[ポートの開放に関するドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)を参照してください。 必要なすべてのポートが開いている場合は、次のセクションに移動します。
+必要なすべてのポートが開いていることを確認します。 必要なポートについては、「ポートを開く」セクション - 「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。 必要なすべてのポートが開いている場合は、次のセクションに移動します。
 
 ## <a name="check-for-other-connector-errors"></a>その他のコネクタ エラーを確認する
 

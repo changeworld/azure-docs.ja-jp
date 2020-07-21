@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/08/2020
+ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252000"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Synapse Analytics へのデータの読み込み
 
@@ -42,7 +42,7 @@ Azure Data Factory には、Azure Synapse Analytics にデータを読み込む�
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Azure Synapse Analytics:SQL データベースからコピーされたデータは、データ ウェアハウスに格納されます。 Azure Synapse Analytics がない場合は、[Azure Synapse Analytics インスタンスの作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)の手順を参照してください。
-* Azure SQL Database:このチュートリアルでは、Adventure Works LT サンプル データを使って Azure SQL データベースからデータをコピーします。 SQL データベースを作成するには、[Azure SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順に従います。
+* Azure SQL Database:このチュートリアルでは、Azure SQL Database 内に Adventure Works LT サンプル データセットからのデータを コピーします。 SQL Database 内にこのサンプル データベースを作成するには、[Azure SQL Database でのサンプル データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順に従います。
 * Azure ストレージ アカウント:Azure Storage は、一括コピー操作の_ステージング_ BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」の手順をご覧ください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
@@ -136,11 +136,13 @@ Azure Data Factory には、Azure Synapse Analytics にデータを読み込む�
 1. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
     ![概要ページ](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
 
-1. 左側の **[監視]** タブが自動的に選択されたことがわかります。 パイプラインの実行が正常に完了したら、 **[パイプライン名]** 列の下の **[CopyFromSQLToSQLDW]** リンクを選択してアクティビティの実行の詳細を表示し、パイプラインを再実行します。
+1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。 
+ 
+1. 左側の **[監視]** タブが自動的に選択されたことがわかります。 パイプラインの実行が正常に完了したら、 **[パイプライン名]** 列の下の **[CopyFromSQLToSQLDW]** リンクを選択してアクティビティの実行の詳細を表示するか、またはパイプラインを再実行します。
 
     [![パイプラインの実行を監視する](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+
 1. パイプラインの実行ビューに戻るには、上部の **[すべてのパイプラインの実行]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
     ![アクティビティの実行を監視する](./media/load-azure-sql-data-warehouse/activity-monitoring.png)

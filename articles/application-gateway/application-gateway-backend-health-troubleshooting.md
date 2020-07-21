@@ -4,15 +4,15 @@ description: Azure Application Gateway のバックエンドの正常性に関�
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
-ms.topic: article
-ms.date: 08/30/2019
+ms.topic: troubleshooting
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648447"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808186"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -81,7 +81,7 @@ BackendAddressPoolsText : [
 **[詳細]** 列に表示されるメッセージは問題に関する詳細な分析情報を示すため、これに基づいて問題のトラブルシューティングを開始できます。
 
 > [!NOTE]
-> 既定の probe 要求は \<プロトコル\>://127.0.0.1:\<ポート\>/ の形式で送信されます。 たとえば、ポート80 における HTTP probe の場合は http://127.0.0.1:80 になります。 HTTP 状態コード 200 から 399 のみが正常と見なされます。 プロトコルと宛先ポートは、HTTP 設定から継承されます。 Application Gateway で別のプロトコル、ホスト名、またはパスに対して probe を実行し、他の状態コードを正常として認識させるには、カスタム probe を構成し、それを HTTP 設定に関連付けます。
+> 既定の probe 要求は、\<protocol\>://127.0.0.1:\<port\>/ の形式で送信されます。 たとえば、ポート80 における HTTP probe の場合は http://127.0.0.1:80 になります。 HTTP 状態コード 200 から 399 のみが正常と見なされます。 プロトコルと宛先ポートは、HTTP 設定から継承されます。 Application Gateway で別のプロトコル、ホスト名、またはパスに対して probe を実行し、他の状態コードを正常として認識させるには、カスタム probe を構成し、それを HTTP 設定に関連付けます。
 
 <a name="error-messages"></a>エラー メッセージ
 ------------------------
@@ -170,7 +170,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **メッセージ:** Status code of the backend\'s HTTP response did not match the probe setting. (バックエンドの HTTP 応答の状態コードが probe 設定と一致しませんでした。) Expected:{HTTPStatusCode0} Received:{HTTPStatusCode1}. (必要: {HTTPStatusCode0} 受信: {HTTPStatusCode1}。)
 
-**原因:** TCP 接続が確立され、TLS ハンドシェイクが完了すると (TLS が有効な場合)、Application Gateway は probe を HTTP GET 要求としてバックエンド サーバーに送信します。 前述のように、既定の probe の対象は \<プロトコル\>://127.0.0.1:\<ポート\>/ であり、200 から 399 の範囲の応答状態コードは正常であると見なされます。 サーバーからそれ以外の状態コードが返された場合、そのサーバーはこのメッセージで "異常" とマークされます。
+**原因:** TCP 接続が確立され、TLS ハンドシェイクが完了すると (TLS が有効な場合)、Application Gateway は probe を HTTP GET 要求としてバックエンド サーバーに送信します。 前述のように、既定の probe の対象は \<protocol\>://127.0.0.1:\<port\>/ であり、200 から 399 の範囲の応答状態コードは正常であると見なされます。 サーバーからそれ以外の状態コードが返された場合、そのサーバーはこのメッセージで "異常" とマークされます。
 
 **解決方法:** バックエンド サーバーの応答コードに応じて、次の手順を実行できます。 一般的な状態コードをいくつか次に示します。
 
@@ -209,7 +209,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 #### <a name="backend-server-certificate-invalid-ca"></a>バックエンド サーバーの証明書: 無効な CA
 
-**メッセージ:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (バックエンドによって使用されるサーバー証明書が既知の証明機関 (CA) によって署名されていません。) Whitelist the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (バックエンドによって使用されるサーバー証明書のルート証明書をアップロードして、アプリケーション ゲートウェイでバックエンドをホワイトリストに登録してください。)
+**メッセージ:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (バックエンドによって使用されるサーバー証明書が既知の証明機関 (CA) によって署名されていません。) Allow the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (バックエンドによって使用されるサーバー証明書のルート証明書をアップロードして、アプリケーション ゲートウェイでバックエンドを許可してください。)
 
 **原因:** Application Gateway v2 でのエンドツーエンド SSL を使用するには、サーバーが正常であると判断するためにバックエンド サーバーの証明書を検証する必要があります。
 TLS または SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。

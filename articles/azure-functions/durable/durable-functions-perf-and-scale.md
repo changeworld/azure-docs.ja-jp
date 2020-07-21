@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84762124"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -52,6 +52,13 @@ Durable Task 拡張機能は、アイドル状態のキューのポーリング�
 
 > [!NOTE]
 > Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
+
+### <a name="orchestration-start-delays"></a>オーケストレーション開始の遅延
+オーケストレーションのインスタンスを開始するには、タスク ハブのコントロール キューのいずれかに `ExecutionStarted` メッセージを追加します。 特定の状況では、オーケストレーションの実行がスケジュールされている時刻から、実際に実行が開始されるまでの間に、複数秒の遅延が発生する場合があります。 この時間の間、オーケストレーションのインスタンスは `Pending` 状態のままになります。 この遅延には、次の 2 つの原因が考えられます。
+
+1. **コントロール キューのバックログ**: このインスタンスのコントロール キューに多数のメッセージが含まれている場合は、`ExecutionStarted` メッセージがランタイムによって受信および処理されるまでに時間がかかることがあります。 メッセージのバックログは、オーケストレーションで多数のイベントが同時に処理されている場合に発生する可能性があります。 コントロール キューに送られるイベントには、オーケストレーション開始イベント、アクティビティ完了、永続タイマー、終了、外部イベントなどがあります。 通常の状況でこの遅延が発生する場合は、より多くのパーティションを持つ新しいタスク ハブを作成することを検討してください。 より多くのパーティションを構成すると、ランタイムによって負荷分散のためにより多くのコントロール キューが作成されます。
+
+2. **バックオフ ポーリングの遅延**: オーケストレーションが遅延するもう 1 つの一般的な原因は、[前に説明したコントロール キューに対するバックオフ ポーリング動作](#queue-polling)です。 ただし、この遅延は、アプリが 2 つ以上のインスタンスにスケールアウトされている場合にのみ予想されます。 アプリ インスタンスが 1 つしかない場合、またはオーケストレーションを開始するアプリ インスタンスがターゲット コントロール キューをポーリングしているインスタンスでもある場合は、キューのポーリング遅延は発生しません。 前に説明したように、**host.json** の設定を更新することで、バックオフ ポーリング遅延を減らすことができます。
 
 ## <a name="storage-account-selection"></a>ストレージ アカウントの選択
 

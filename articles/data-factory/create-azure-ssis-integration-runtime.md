@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 07/06/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6f7ae5bbf49c0d66e43ddac9532b55d02b87fdb2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6bf146f043dac4908387a4650130df76bdd07bd1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195696"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087862"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 
@@ -25,9 +25,9 @@ ms.locfileid: "84195696"
 この記事では、Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を Azure Data Factory (ADF) でプロビジョニングする手順について説明します。 Azure-SSIS IR では、次のことがサポートされます。
 
 - Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) にデプロイされたパッケージを実行する (プロジェクト デプロイ モデル)
-- Azure SQL Managed Instance をホストとする SQL Server データベース (MSDB)、Azure Files、ファイル システムのいずれかにデプロイされたパッケージを実行する (パッケージ デプロイ モデル)
+- Azure SQL Managed Instance にホストされた SQL Server データベース (MSDB)、Azure Files、ファイル システムのいずれかにデプロイされたパッケージを実行する (パッケージ デプロイ モデル)
 
-Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使用して、Azure にパッケージをデプロイして実行することができます。 これらのツールは既に Azure に対応しています。たとえば、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) のほか、`dtinstall`、`dtutil`、`dtexec` などのコマンド ライン ユーティリティがあります。
+Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使用して、Azure にパッケージをデプロイして実行することができます。 これらのツールは既に Azure に対応しています。たとえば、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) のほか、[dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017)、[AzureDTExec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec) などのコマンド ライン ユーティリティがあります。
 
 [Azure-SSIS IR のプロビジョニング](tutorial-create-azure-ssis-runtime-portal.md)のチュートリアルに関するページでは、Azure-SSIS IR を Azure portal または Data Factory アプリから作成する方法が紹介されています。 このチュートリアルでは、必要に応じて Azure SQL Database サーバーまたはマネージド インスタンスを使用して SSISDB をホストする方法についても説明されています。 この記事ではそのチュートリアルをさらに掘り下げており、次の任意の操作を行う方法について説明しています。
 
@@ -45,17 +45,17 @@ Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使
 
 - **Azure サブスクリプション**。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)アカウントを作成できます。
 
-- **Azure SQL Database サーバーまたはマネージド インスタンス (オプション)** 。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 その後、Data Factory によって、このデータベース サーバーに SSISDB インスタンスが作成されます。 
+- **Azure SQL Database サーバーまたは SQL Managed Instance (オプション)** 。 まだデータベース サーバーまたはマネージド インスタンスをお持ちでない場合は、あらかじめ Azure portal でデータベース サーバーを作成しておいてください。 その後、Data Factory によって、このデータベース サーバーに SSISDB インスタンスが作成されます。 
 
-  このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンをまたがることなく SSISDB に実行ログを書き込むことができます。
+  データベース サーバーまたはマネージド インスタンスは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンをまたがることなく SSISDB に実行ログを書き込むことができます。
 
   次の点に留意してください。
 
-  - SSISDB インスタンスは、選択したデータベース サーバーに基づいて、単一データベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成できます。 パブリック ネットワークからアクセスできるほか、仮想ネットワークに参加させてアクセスすることもできます。 SSISDB のホストとなるデータベース サーバーの種類を選択する場合のガイダンスについては、この記事の[SQL Database と SQL Managed Instance の比較](#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。 
+  - SSISDB インスタンスは、単一データベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成できます。 パブリック ネットワークからアクセスできるほか、仮想ネットワークに参加させてアクセスすることもできます。 SSISDB のホストとなる SQL Database または SQL Managed Instance を選択する場合のガイダンスについては、この記事の[SQL Database と SQL Managed Instance の比較](#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。 
   
-    IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスを使用して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミスのデータへのアクセスを必要としている場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
+    IP ファイアウォール規則または仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバー、またはプライベート エンドポイントを備えた SQL マネージド インスタンスを使用して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミスのデータへのアクセスを必要としている場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
 
-  - データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 この設定は、IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスを使用して SSISDB をホストする場合は適用されません。 詳細については、「[Azure SQL データベースのセキュリティ保護](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)」を参照してください。
+  - データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 この設定は、IP ファイアウォール規則または仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバー、またはプライベート エンドポイントを備えた SQL マネージド インスタンスを使用して SSISDB をホストする場合は適用されません。 詳細については、「[Azure SQL Database のセキュリティ保護](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)」を参照してください。
 
   - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、データベース サーバーのファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)」を参照してください。
 
@@ -64,7 +64,9 @@ Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使
   - データベース サーバーに SSISDB インスタンスがまだないことを確認します。 Azure-SSIS IR のプロビジョニングでは、既存の SSISDB インスタンスの使用はサポートされていません。
 
 - **Azure Resource Manager 仮想ネットワーク (オプション)** 。 次の条件に 1 つでも当てはまる場合は、Azure Resource Manager 仮想ネットワークが必要です。
+
   - IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスで SSISDB をホストしている。
+
   - セルフホステッド IR を構成せずに、Azure-SSIS IR 上で実行されている SSIS パッケージからオンプレミス データ ストアに接続する必要がある。
 
 - **Azure PowerShell (オプション)** . PowerShell スクリプトを実行して Azure-SSIS IR をプロビジョニングする場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-az-ps)に関する記事の指示に従ってください。
@@ -75,14 +77,14 @@ Data Factory と Azure-SSIS IR が使用可能な Azure リージョンの一覧
 
 ### <a name="comparison-of-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance の比較
 
-次の表では、Azure-SSIR IR に関連する Azure SQL Database サーバーとマネージド インスタンスの一部の機能を比較しています。
+次の表では、Azure-SSIR IR に関連する Azure SQL Database サーバーと SQL Managed Instance の一部の機能を比較しています。
 
-| 機能 | 単一データベース/エラスティック プール| マネージド インスタンス |
+| 特徴量 | SQL Database| SQL Managed Instance |
 |---------|--------------|------------------|
 | **スケジュール設定** | SQL Server エージェントは使用できません。<br/><br/>[Data Factory パイプラインでのパッケージの実行のスケジュール](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)に関するセクションを参照してください。| マネージド インスタンス エージェントを使用できます。 |
 | **認証** | **db_owner** ロールのメンバーとしてデータ ファクトリのマネージド ID を持つ Azure AD グループを表す包含データベース ユーザーを使用して SSISDB を作成できます。<br/><br/>[Azure SQL Database サーバーで SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)に関するページを参照してください。 | データ ファクトリのマネージド ID を表す包含データベース ユーザーを使用して SSISDB を作成できます。 <br/><br/>[Azure SQL Managed Instance で SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance)に関するページを参照してください。 |
 | **サービス レベル** | Azure SQL Database サーバーで Azure-SSIS IR を作成するときに、SSISDB のサービス レベルを選択できます。 複数のサービス レベルがあります。 | マネージド インスタンスで Azure-SSIS IR を作成するときは、SSISDB のサービス レベルを選択することはできません。 マネージド インスタンス上のすべてのデータベースは、そのインスタンスに割り当てられた同じリソースを共有します。 |
-| **Virtual Network** | IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーを使用している場合、Azure-SSIS IR は Azure Resource Manager 仮想ネットワークに参加できます。 | プライベート エンドポイントを備えたマネージド インスタンスを使用している場合、Azure-SSIS IR は Azure Resource Manager 仮想ネットワークに参加できます。 マネージド インスタンスでパブリック エンドポイントを有効にしない場合、仮想ネットワークが必要です。<br/><br/>マネージド インスタンスと同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ずマネージド インスタンスとは異なるサブネットに配置します。 マネージド インスタンスとは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリングかネットワーク間接続のいずれかをお勧めします。 「[Azure SQL Database マネージド インスタンスにアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。 |
+| **Virtual Network** | IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーを使用している場合、Azure-SSIS IR は Azure Resource Manager 仮想ネットワークに参加できます。 | プライベート エンドポイントを備えたマネージド インスタンスを使用している場合、Azure-SSIS IR は Azure Resource Manager 仮想ネットワークに参加できます。 マネージド インスタンスでパブリック エンドポイントを有効にしない場合、仮想ネットワークが必要です。<br/><br/>マネージド インスタンスと同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ずマネージド インスタンスとは異なるサブネットに配置します。 マネージド インスタンスとは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリングかネットワーク間接続のいずれかをお勧めします。 [Azure SQL Database Managed Instance へのアプリケーションの接続](../sql-database/sql-database-managed-instance-connect-app.md)に関する記事を参照してください。 |
 | **分散トランザクション** | この機能はエラスティック トランザクションを介してサポートされます。 Microsoft 分散トランザクション コーディネーター (MSDTC) トランザクションはサポートされていません。 SSIS パッケージが MSDTC を使用して分散トランザクションを調整している場合は、Azure SQL Database 用のエラスティック トランザクションに移行することを検討してください。 詳細については、「[クラウド データベースにまたがる分散トランザクション](../sql-database/sql-database-elastic-transactions-overview.md)」を参照してください。 | サポートされていません。 |
 | | | |
 
@@ -128,11 +130,11 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 #### <a name="deployment-settings-page"></a>[デプロイ設定] ページ
 
-**[統合ランタイムのセットアップ]** ペインの **[デプロイ設定]** ページで、次の手順を行います。
+**[Integration Runtime Setup]\(統合ランタイムの設定\)** の **[デプロイ設定]** ペインで、次の手順を行います。
 
-   1. パッケージを SSISDB にデプロイ (プロジェクト デプロイ モデル) するかどうかを、 **[Create SSIS catalog (SSISDB) hosted by Azure SQL Database server/Managed Instance to store your projects/packages/environments/execution logs]\(Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) を作成してプロジェクト、パッケージ、環境、実行ログを格納する\)** チェック ボックスで選択します。 また、Azure SQL Managed Instance をホストとする SQL Server データベース (MSDB)、Azure Files、またはファイル システムにパッケージをデプロイする場合 (パッケージ デプロイ モデル) は、SSISDB を作成する必要はありません。
+   1. パッケージを SSISDB にデプロイ (プロジェクト デプロイ モデル) するかどうかを、 **[Create SSIS catalog (SSISDB) hosted by Azure SQL Database server/Managed Instance to store your projects/packages/environments/execution logs]\(Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) を作成してプロジェクト、パッケージ、環境、実行ログを格納する\)** チェック ボックスで選択します。 Azure SQL Managed Instance にホストされた SQL Server データベース (MSDB)、Azure Files、ファイル システムのいずれかにパッケージをデプロイする場合 (パッケージ デプロイ モデル) は、SSISDB を作成する必要はありません。
    
-      デプロイ モデルに関係なく、Azure SQL Managed Instance をホストとする SQL Server エージェントを使用してパッケージの実行を調整またはスケジュールするかどうかは、それが SSISDB によって有効にされるため、このチェック ボックスで選択してください。 詳細については、[Azure SQL Managed Instance エージェントを使用した、SSIS パッケージの実行のスケジュール](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent)に関するページを参照してください。
+      デプロイ モデルに関係なく、Azure SQL Managed Instance にホストされた SQL Server エージェントを使用してパッケージの実行を調整 (スケジュール) したい場合は、SSISDB によって有効になっているため、このチェック ボックスをオンにしてください。 詳細については、[Azure SQL Managed Instance エージェントを使用して SSIS パッケージの実行をスケジュールする](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent)方法に関するページを参照してください。
    
       このチェック ボックスをオンにした場合は、お客様に代わって Microsoft が作成および管理する SSISDB をホストするための独自のデータベース サーバーを用意していただく必要があります。
 
@@ -166,35 +168,35 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
       ![MSDB、ファイル システム、Azure Files のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
 
-      **[Add package store]\(パッケージ ストアの追加\)** ペインで、次の手順を行います。
+      **[Add package store]\(パッケージ ストアの追加\)** ペインで、次の手順を実行します。
    
-      1. **[Package store name]\(パッケージ ストア名\)** に、使用するパッケージ ストアの名前を入力します。 
+      1. **[Package store name]\(パッケージ ストア名\)** に、パッケージ ストアの名前を入力します。 
 
-      1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[新規]** を選択して新しいものを作成します。 **[新しいリンクされたサービス]** ペインで、次の手順を行います。 
+      1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[New]\(新規\)** を選択して新たに作成します。 **[New Linked Service]\(新しいリンクされたサービス\)** ペインで、次の手順を実行します。 
 
          ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
-         1. **[名前]** に、使用するリンクされたサービスの名前を入力します。 
+         1. **[名前]** に、リンクされたサービスの名前を入力します。 
          
-         1. **[説明]** に、そのリンクされたサービスの説明を入力します。 
+         1. **[説明]** に、リンクされたサービスの説明を入力します。 
          
-         1. **[種類]** で、 **[Azure File Storage]** 、 **[Azure SQL Managed Instance]** 、 **[ファイル システム]** のいずれかを選択します。
+         1. **[Type]\(種類\)** で、 **[Azure File Storage]** 、 **[Azure SQL Managed Instance]** 、 **[ファイル システム]** のいずれかを選択します。
 
          1. **[統合ランタイム経由で接続]** は無視してかまいません。パッケージ ストアのアクセス情報は、常に Microsoft がお客様の Azure-SSIS IR を使用してフェッチするからです。
 
-         1. **[Azure File Storage]** を選択した場合は、次の手順を行います。 
+         1. **[Azure File Storage]** を選択した場合は、次の手順を実行します。 
 
-            1. **[アカウントの選択方法]** で、 **[Azure サブスクリプションから]** または **[手動で入力]** を選択します。
+            1. **[Account selection method]\(アカウントの選択方法\)** で、 **[From Azure subscription]\(Azure サブスクリプションから\)** または **[Enter manually]\(手動で入力\)** を選択します。
          
-            1. **[Azure サブスクリプションから]** を選択した場合は、適切な **Azure サブスクリプション**、**ストレージ アカウント名**、**ファイル共有**を選択します。
+            1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択した場合は、適切な **Azure サブスクリプション**、**ストレージ アカウント名**、**ファイル共有**を選択します。
             
-            1. **[手動で入力]** を選択した場合は、 **[ホスト]** に「`\\<storage account name>.file.core.windows.net\<file share name>`」を、 **[ユーザー名]** に「`Azure\<storage account name>`」を、 **[パスワード]** に「`<storage account key>`」を入力するか、またはそれがシークレットとして保存されている **Azure Key Vault** を選択します。
+            1. **[Enter manually]\(手動で入力\)** を選択した場合は、 **[ホスト]** に「`\\<storage account name>.file.core.windows.net\<file share name>`」を、 **[ユーザー名]** に「`Azure\<storage account name>`」を、 **[パスワード]** に「`<storage account key>`」を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-         1. **[Azure SQL Managed Instance]** を選択した場合は、次の手順を行います。 
+         1. **[Azure SQL Managed Instance]** を選択した場合は、次の手順を実行します。 
 
-            1. **[接続文字列]** を選択して手動で入力するか、またはそれがシークレットとして保存されている **Azure Key Vault** を選択します。
+            1. **[接続文字列]** を選択して手動で入力するか、それがシークレットとして保存されている **[Azure Key Vault]** を選択します。
          
-            1. **[接続文字列]** を選択した場合は、次の手順を行います。 
+            1. **[接続文字列]** を選択した場合は、次の手順を実行します。 
 
                1. Azure SQL Managed Instance のプライベート エンドポイントまたはパブリック エンドポイントとして、それぞれ「`<server name>.<dns prefix>.database.windows.net`」または「`<server name>.public.<dns prefix>.database.windows.net,3342`」を **[完全修飾ドメイン名]** に入力します。 プライベート エンドポイントを入力した場合、ADF UI からは到達できないため、 **[テスト接続]** は利用できません。
 
@@ -202,17 +204,17 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
                
                1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** のいずれかを選択します。
 
-               1. **[SQL 認証]** を選択した場合は、適切な**ユーザー名**と**パスワード**を入力するか、またはそれがシークレットとして保存されている **Azure Key Vault** を選択します。
+               1. **[SQL 認証]** を選択した場合は、適切な**ユーザー名**と**パスワード**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
                1. **[マネージド ID]** を選択した場合は、ご利用の ADF マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
 
-               1. **[サービス プリンシパル]** を選択した場合は、適切な**サービス プリンシパル ID** と**サービス プリンシパル キー**を入力するか、またはそれがシークレットとして保存されている **Azure Key Vault** を選択します。
+               1. **[サービス プリンシパル]** を選択した場合は、適切な**サービス プリンシパル ID** と**サービス プリンシパル キー**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-         1. **[ファイル システム]** を選択した場合は、パッケージのデプロイ先フォルダーの UNC パスを **[ホスト]** に入力すると共に、適切な**ユーザー名**と**パスワード**を入力するか、またはそれがシークレットとして保存されている **Azure Key Vault** を選択します。
+         1. **[ファイル システム]** を選択した場合は、パッケージのデプロイ先フォルダーの UNC パスを **[ホスト]** に入力すると共に、適切な**ユーザー名**と**パスワード**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
          1. **[テスト接続]** を選択し (該当する場合)、成功したら **[作成]** を選択します。
 
-      追加したパッケージ ストアが **[デプロイ設定]** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
+      追加したパッケージ ストアが **[Deployment settings]\(デプロイ設定\)** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 
    1. **[テスト接続]** を選択し (該当する場合)、成功したら **[次へ]** を選択します。
 
@@ -289,11 +291,11 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 #### <a name="connections-pane"></a>[接続] ペイン
 
-**[管理]** ハブの **[接続]** ペインで、 **[統合ランタイム]** ページに切り替え、 **[更新]** を選択します。 
+**[管理]** ハブの **[接続]** ペインで、 **[Integration runtimes]\(統合ランタイム\)** ページに切り替え、 **[Refresh]\(更新\)** を選択します。 
 
    ![[接続] ペイン](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 
-   Azure-SSIS IR は、その名前を選択することで編集したり再構成したりすることができます。 該当するボタンを選択することで、Azure-SSIS IR を監視、開始、停止、削除したり、Azure-SSIS IR 上で動作する SSIS パッケージの実行アクティビティを含む ADF パイプラインを自動生成したり、Azure-SSIS IR の JSON コードまたはペイロードを表示したりすることもできます。  Azure-SSIS IR の編集と削除は、それが停止しているときにしか実行できません。
+   Azure-SSIS IR は、その名前を選択することで編集したり再構成したりすることができます。 該当するボタンを選択することで、Azure-SSIS IR を監視、開始、停止、削除したり、Azure-SSIS IR 上で動作する SSIS パッケージの実行アクティビティを含む ADF パイプラインを自動生成したりできます。また、Azure-SSIS IR の JSON コード (またはペイロード) を表示することもできます。  Azure-SSIS IR の編集と削除は、それが停止しているときにしか実行できません。
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>ポータルでの Azure SSIS 統合ランタイム
 
@@ -948,7 +950,11 @@ SSISDB を使用する場合は、そこにパッケージをデプロイし、A
 - プライベート エンドポイントを備えたマネージド インスタンスの場合、サーバー エンドポイントの形式は `<server name>.<dns prefix>.database.windows.net` です。
 - パブリック エンドポイントを備えたマネージド インスタンスの場合、サーバー エンドポイントの形式は `<server name>.public.<dns prefix>.database.windows.net,3342` です。 
 
-SSISDB を使用しない場合は、Azure SQL Managed Instance をホストとする MSDB、ファイル システム、Azure Files のいずれかにパッケージをデプロイし、Azure に対応した `dtinstall`、`dtutil`、`dtexec` の各コマンド ライン ユーティリティを使用してそれらを Azure-SSIS IR 上で実行できます。 詳しくは、[SSIS パッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)に関する記事を参照してください。 どちらの場合も、Data Factory パイプラインの SSIS パッケージの実行アクティビティを使用して、デプロイしたパッケージを Azure-SSIS IR 上で実行することもできます。 詳細については、[ファーストクラスの Data Factory アクティビティとして SSIS パッケージの実行を呼び出す方法](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関するページを参照してください。
+SSISDB を使用しない場合は、Azure SQL Managed Instance にホストされた MSDB、ファイル システム、Azure Files のいずれかにパッケージをデプロイし、[dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) および [AzureDTExec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec) コマンド ライン ユーティリティを使用してそれらのパッケージを Azure-SSIS IR 上で実行できます。 
+
+詳細については、[SSIS プロジェクトおよびパッケージのデプロイ](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15)に関する記事を参照してください。
+
+どちらの場合も、Data Factory パイプラインの SSIS パッケージの実行アクティビティを使用して、デプロイしたパッケージを Azure-SSIS IR 上で実行することもできます。 詳細については、[ファーストクラスの Data Factory アクティビティとして SSIS パッケージの実行を呼び出す方法](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

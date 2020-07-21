@@ -3,13 +3,13 @@ title: Linux ASP.NET Core アプリを構成する
 description: アプリ用に事前構築済みの ASP.NET Core コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/13/2019
-ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/02/2020
+ms.openlocfilehash: e009f5b1fc656f700b3f0e76dda6e545aed535d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905767"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの Linux ASP.NET Core アプリを構成する
 
@@ -59,7 +59,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
 
-Linux 上で App Service によって ASP.NET Core アプリが実行およびビルドされる方法に関する詳細については、[Oryx ドキュメントの.NET Core アプリの検出およびビルド方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)に関するページを参照してください。
+Linux 上で App Service によって ASP.NET Core アプリが実行されビルドされる方法に関する詳細については、[Oryx ドキュメントの .NET Core アプリが検出されビルドされる方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)に関するページを参照してください。
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
@@ -81,8 +81,8 @@ namespace SomeNamespace
     
         public SomeMethod()
         {
-            // retrieve App Service app setting
-            var myAppSetting = _configuration["MySetting"];
+            // retrieve nested App Service app setting
+            var myHierarchicalConfig = _configuration["My:Hierarchical:Config:Data"];
             // retrieve App Service connection string
             var myConnString = _configuration.GetConnectionString("MyDbConnection");
         }
@@ -91,6 +91,13 @@ namespace SomeNamespace
 ```
 
 たとえば、App Service と *appsettings.json* で同じ名前のアプリ設定を構成した場合は、App Service の値が *appsettings.json* の値よりも優先されます。 ローカルの *appsettings.json* 値ではアプリをローカルでデバッグできますが、App Service の値では実稼働設定の製品内でアプリを実行できます。 接続文字列は同じように機能します。 これにより、コード リポジトリの外部にアプリケーション シークレットを保存し、コードを変更することなく適切な値にアクセスできます。
+
+> [!NOTE]
+> *appsettings. json* の[階層型の構成データ](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)は、.NET Core に標準の `:` 区切り記号を使用してアクセスされることに注意してください。 App Service で特定の階層型構成設定をオーバーライドするには、キーにアプリ設定名を同じ区切り形式で設定します。 [Cloud Shell](https://shell.azure.com) で次の例を実行できます。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
+```
 
 ## <a name="get-detailed-exceptions-page"></a>例外の詳細ページを表示する
 
@@ -154,7 +161,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>アプリ設定を使用
 
-<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> で、次の CLI コマンドを実行して App Service アプリにアプリ設定を追加します。 *\<app-name>* 、 *\<resource-group-name>* 、および *\<project-name>* を適切な値で置き換えます。
+<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> で、次の CLI コマンドを実行して App Service アプリにアプリ設定を追加します。 *\<app-name>* 、 *\<resource-group-name>* 、 *\<project-name>* を適切な値に置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -162,7 +169,26 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+ASP.NET Core には、[App Service 用の組み込みのログ プロバイダー](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service)が用意されています。 プロジェクトの *Program.cs* で、次の例に示すように、`ConfigureLogging` 拡張メソッドを使用してそのプロバイダーをアプリケーションに追加します。
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.AddAzureWebAppDiagnostics();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+その後、[標準の .NET Core パターン](https://docs.microsoft.com/aspnet/core/fundamentals/logging)を使用して、ログを構成して生成できます。
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+App Service での ASP.NET Core アプリのトラブルシューティングの詳細については、「[Azure App Service および IIS での ASP.NET Core のトラブルシューティング](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis)」を参照してください
 
 ## <a name="open-ssh-session-in-browser"></a>ブラウザーで SSH セッションを開く
 

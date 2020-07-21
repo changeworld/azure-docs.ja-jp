@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975335"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
 
@@ -39,6 +39,9 @@ Azure Cognitive Search インデクサーを使用すると、入力データが
 3. `mappingFunction` (省略可能)。定義済みのいずれかの関数を使用してデータを変換できます。 これは入力と出力の両方のフィールド マッピングに適用できます。 関数の完全な一覧については、[以下](#mappingFunctions)をご覧ください。
 
 フィールド マッピングは、インデクサー定義の `fieldMappings` 配列に追加されます。
+
+> [!NOTE]
+> フィールド マッピングが追加されない場合、インデクサーでは、データ ソース フィールドが同じ名前のインデックス フィールドにマップされていると仮定されます。 フィールド マッピングを追加すると、ソースおよびターゲットのフィールドに対するこれらの既定のフィールド マッピングは削除されます。 [Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)などの一部のインデクサーでは、インデックス キー フィールドに対して既定のフィールド マッピングが追加されます。
 
 ## <a name="map-fields-using-the-rest-api"></a>REST API を使用してフィールドをマップする
 
@@ -136,6 +139,27 @@ Azure Cognitive Search ドキュメント キーには、URL で使用できる�
     }
   }]
  ```
+
+#### <a name="example---preserve-original-values"></a>例 - 元の値を保持する
+
+フィールド マッピングが指定されていない場合、[Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)によって自動的に `metadata_storage_path`(BLOB の URI) からインデックス キー フィールドにフィールド マッピングが追加されます。 この値は Base64 によってエンコードされているため、Azure Cognitive Search ドキュメント キーとして安全に使用できます。 次の例では、*URL が安全な* Base64 によってエンコードされたバージョンの `metadata_storage_path` を `index_key` フィールドにマップして、同時に、`metadata_storage_path` フィールドで元の値を保持する方法を示します。
+
+```JSON
+
+"fieldMappings": [
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "metadata_storage_path"
+  },
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "index_key",
+    "mappingFunction": {
+       "name": "base64Encode"
+    }
+  }
+]
+```
 
 マッピング関数に parameters プロパティを含めない場合、既定で値 `{"useHttpServerUtilityUrlTokenEncode" : true}` になります。
 

@@ -1,9 +1,9 @@
 ---
-title: ビルトイン ファイアウォールのポートセキュリティを確認する
+title: ビルトイン ファイアウォールのポート セキュリティを確認する
 description: Azure SQL Managed Instance のビルトイン ファイアウォールの保護機能を検証する方法について説明します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 04a630e51a68fab8f6c60262fbd14fad2e4aef1c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1d2fffabba3615394bdf96ed487177bf21f3ecec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708707"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>Azure SQL Managed Instance のビルトイン ファイアウォールを検証する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-SQL Managed Instance を保護するネットワーク セキュリティ グループ (NSG) は、**すべての発信元**に対し、管理ポート 9000、9003、1438、1440、1452 を開放することが Azure SQL Managed Instance の[必須のインバウンド セキュリティ規則](connectivity-architecture-overview.md#mandatory-inbound-security-rules)によって義務付けられています。 これらのポートは NSG レベルでは開放されますが、ネットワーク レベルではビルトインのファイアウォールによって保護されます。
+SQL Managed Instance を保護するネットワーク セキュリティ グループ (NSG) では、**すべての発信元**から管理ポート 9000、9003、1438、1440、および 1452 が開放されることが、Azure SQL Managed Instance の[必須のインバウンド セキュリティ規則](connectivity-architecture-overview.md#mandatory-inbound-security-rules)によって義務付けられています。 これらのポートは NSG レベルでは開放されますが、ネットワーク レベルではビルトインのファイアウォールによって保護されます。
 
 ## <a name="verify-firewall"></a>ファイアウォールを検証する
 
@@ -31,4 +31,4 @@ SQL Managed Instance を保護するネットワーク セキュリティ グル
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL Managed Instances と接続の詳細については、[Azure SQL Database Managed Instance の接続アーキテクチャ](connectivity-architecture-overview.md)に関するページを参照してください。
+SQL Managed Instances と接続の詳細については、「[Azure SQL Managed Instance の接続アーキテクチャ](connectivity-architecture-overview.md)」を参照してください。

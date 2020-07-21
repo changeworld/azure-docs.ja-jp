@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 14f304e3846cab25691da347732de50924356540
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254941"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL Database のデータベース アドバイザーのパフォーマンスに関する推奨事項
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Azure SQL Database で使用できるパフォーマンスに関する推奨事�
 | **インデックスの作成に関する推奨事項** - ワークロードのパフォーマンスを向上させることができるインデックスの作成を推奨します。 | はい | いいえ |
 | **インデックスの削除に関する推奨事項** - 一意なインデックスを除く冗長なインデックスや重複するインデックスの日次削除、また長期間 (90 日超) 使用されていないインデックスの削除を推奨します。 なお、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。 Premium および Business Critical サービスレベルでは、使われていないインデックスの削除はサポートされていません。 | はい | いいえ |
 | **クエリのパラメーター化に関する推奨事項 (プレビュー)** - 継続的に再コンパイルされてはいるもののクエリ実行プランが同じままのクエリが 1 つ以上ある場合、強制パラメーター化を推奨します。 | はい | いいえ |
-| **スキーマの問題の修正に関する推奨事項 (プレビュー)** - Azure SQL Database が、ご使用の SQL データベースで発生したスキーマ関連の SQL エラー数が異常であることを検出すると、スキーマの修正の推奨事項が表示されます。 Microsoft は、現在、"スキーマの問題の修正" に関する推奨事項を廃止しているところです。 | はい | いいえ |
+| **スキーマの問題の修正に関する推奨事項 (プレビュー)** - データベースで発生したスキーマ関連の SQL エラー数が異常であることが Azure SQL Database で検出すると、スキーマの修正の推奨事項が表示されます。 Microsoft は、現在、"スキーマの問題の修正" に関する推奨事項を廃止しているところです。 | はい | いいえ |
 
 ![Azure SQL Database のパフォーマンスに関する推奨事項](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -97,11 +97,11 @@ CPU、データ IO、ログ IO が直前の 30 分間で 80% を超えている�
 > [!IMPORTANT]
 > Microsoft は、現在、"スキーマの問題の修正" に関する推奨事項を廃止しているところです。 かつて "スキーマの問題の修正" 推奨事項で扱っていたスキーマの問題を含め、データベース パフォーマンスの問題を監視するには、[Intelligent Insights](intelligent-insights-overview.md) の使用をお勧めします。
 
-Azure SQL Database が、ご使用の SQL データベースで発生したスキーマ関連の SQL エラー数が異常であることを検出すると、 **[スキーマの問題の修正]** 推奨事項が表示されます。 この推奨事項は、通常、データベースでスキーマ関連のエラー (無効な列名、無効なオブジェクト名など) が 1 時間に複数件発生した場合に表示されます。
+Azure SQL Database によって、データベースで発生したスキーマ関連の SQL エラー数が異常であることが検出されると、 **[スキーマの問題の修正]** 推奨事項が表示されます。 この推奨事項は、通常、データベースでスキーマ関連のエラー (無効な列名、無効なオブジェクト名など) が 1 時間に複数件発生した場合に表示されます。
 
 "スキーマの問題" は構文エラーの一種です。 SQL クエリの定義とデータベース スキーマの定義が合っていないときに発生します。 たとえば、クエリで想定される列の 1 つがターゲット テーブルで見つからない、あるいはその逆の場合です。
 
-Azure SQL Database で、ご使用の SQL データベースで発生したスキーマ関連の SQL エラー数が異常であることが検出されると、"スキーマの問題の修正" 推奨事項が表示されます。 下の表は、スキーマの問題に関連したエラーを示しています。
+Azure SQL Database によって、データベースで発生したスキーマ関連の SQL エラー数が異常であることが検出されると、"スキーマの問題の修正" 推奨事項が表示されます。 下の表は、スキーマの問題に関連したエラーを示しています。
 
 | SQL エラー コード | Message |
 | --- | --- |

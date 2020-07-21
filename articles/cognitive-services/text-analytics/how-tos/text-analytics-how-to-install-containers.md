@@ -9,20 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702140"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108992"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
 > [!NOTE]
 > * 感情分析 v3 用のコンテナーが一般公開されました。 制限なしのパブリック プレビューとして、キー フレーズ抽出コンテナーと言語検出コンテナーを使用できます。
 > * 現時点では、エンティティのリンクと NER をコンテナーとして使用することはできません。
+> * 現在、Text Analytics for Health コンテナーの使用には課金されません。
 
 コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 
 
@@ -59,6 +60,8 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 |---|---------|-------------|--|--|
 | **言語検出、キー フレーズ抽出**   | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15 | 30|
 | **感情分析 v3**   | 1 コア、2 GB メモリ | 4 コア、8 GB メモリ |15 | 30|
+| **Text Analytics for Health - 1 ドキュメント/要求**   |  4 コア、10 GB メモリ | 6 コア、12 GB メモリ |15 | 30|
+| **Text Analytics for Health - 10 ドキュメント/要求**   |  6 コア、16 GB メモリ | 8 コア、20 GB メモリ |15 | 30|
 
 CPU コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
@@ -80,6 +83,10 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
+# <a name="text-analytics-for-health-preview"></a>[Text Analytics for Health (プレビュー)](#tab/healthcare)
+
+[!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
+
 ***
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
@@ -92,13 +99,6 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
 コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 コンテナーは一度実行すると、お客様が停止するまで動作し続けます。
-
-次のプレースホルダーを実際の値に置き換えてください。
-
-| プレースホルダー | 値 | 形式または例 |
-|-------------|-------|---|
-| **{API_KEY}** | 自分の Text Analytics リソースのキー。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** ページで見つけることができます。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | Text Analytics API にアクセスするためのエンドポイント。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** ページで見つけることができます。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 > [!IMPORTANT]
 > * 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
@@ -116,6 +116,10 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 # <a name="language-detection-preview"></a>[言語検出 (プレビュー)](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+# <a name="text-analytics-for-health-preview"></a>[Text Analytics for Health (プレビュー)](#tab/healthcare)
+
+[!INCLUDE [docker-run-health-container](../includes/docker-run-health-container.md)]
 
 ***
 
@@ -161,8 +165,8 @@ Text Analytics コンテナーは、Azure アカウントの _Text Analytics_ �
    * *感情分析*
    * *キー フレーズ抽出 (プレビュー)* 
    * *言語検出 (プレビュー)*
-   
-* コンテナー イメージは、Azure の Microsoft Container Registry (MCR) からダウンロードされます。
+   * *Text Analytics for Health (プレビュー)*
+* コンテナー イメージは、Microsoft Container Registry (MCR) またはプレビュー コンテナー リポジトリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。
 * REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Text Analytics コンテナーの操作を呼び出すことができます。
 * コンテナーをインスタンス化するときは、課金情報を指定する必要があります。

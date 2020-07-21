@@ -2,7 +2,7 @@
 title: Machine Learning Services (プレビュー) の主な違い
 description: このトピックでは、Azure SQL Managed Instance の Machine Learning Services と SQL Server Machine Learning Services の主な違いについて説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: 02211a09df2d2744119ea8fbe6f0ecaa63dba020
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254750"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL Managed Instance と SQL Server の Machine Learning Services の主な違い
 
@@ -48,7 +48,7 @@ SQL Managed Instance と SQL Server の Machine Learning Services は、Python �
   | SQL Managed Instance | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
-- `sp_configure` で `external scripts enabled` を構成する必要はありません。 プレビューに[サインアップ](machine-learning-services-overview.md#signup)すると、SQL データベースで機械学習が有効になります。
+- `sp_configure` で `external scripts enabled` を構成する必要はありません。 プレビューに[サインアップ](machine-learning-services-overview.md#signup)すると、Azure SQL Managed Instance に対する機械学習が有効になります。
 
 ## <a name="packages"></a>パッケージ
 

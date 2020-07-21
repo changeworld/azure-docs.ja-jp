@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 32f8f157abaf5076911c3908a83be4a644e09656
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 8109b7b1f6cd8477d49bafd114be24b91530d123
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734964"
 ---
-# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>既存の Azure AD Domain Services マネージド ドメインの SKU を変更する
+# <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>既存の Azure Active Directory Domain Services マネージド ドメインの SKU を変更する
 
 Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォーマンスと機能は、SKU の種類によって変わります。 このような機能の違いには、バックアップの頻度や、一方向の送信フォレストの信頼の最大数 (現在はプレビュー段階) などがあります。 マネージド ドメインを作成するときに SKU を選択する必要があり、マネージド ドメインのデプロイ後にビジネス ニーズが変わったときに SKU を上や下に切り替えることができます。 ビジネス要件の変更には、バックアップ頻度を増やしたり、追加のフォレストの信頼を作成したりするニーズなどがあります。 さまざまな SKU の制限と価格の詳細については、[Azure AD DS SKU の概念][concepts-sku]と [Azure AD DS の価格][pricing]に関するページを参照してください。
 
@@ -32,11 +32,11 @@ Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォ
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+    * 必要に応じて、チュートリアルを完了し、[マネージド ドメインを作成して構成します][create-azure-ad-ds-instance]。
 
 ## <a name="sku-change-limitations"></a>SKU の変更の制限
 
-Azure AD DS マネージド ドメインをデプロイした後で、SKU を上や下に変更できます。 ただし、リソース フォレスト (現在プレビュー段階) を使用し、Azure AD DS からオンプレミスの AD DS 環境への一方向の送信フォレストの信頼を作成する場合、SKU の変更操作にはいくつかの制限があります。 *Premium* および *Enterprise* SKU には、作成できる信頼の数に関する制限が定義されています。 現在構成されている上限よりも低い上限の SKU に変更することはできません。
+マネージド ドメインがデプロイされた後は、SKU を引き上げたり引き下げたりして変更できます。 ただし、リソース フォレスト (現在プレビュー段階) を使用し、Azure AD DS からオンプレミスの AD DS 環境への一方向の送信フォレストの信頼を作成する場合、SKU の変更操作にはいくつかの制限があります。 *Premium* および *Enterprise* SKU には、作成できる信頼の数に関する制限が定義されています。 現在構成されている上限よりも低い上限の SKU に変更することはできません。
 
 次に例を示します。
 
@@ -47,14 +47,14 @@ Azure AD DS マネージド ドメインをデプロイした後で、SKU を上
 
 ## <a name="select-a-new-sku"></a>新しい SKU を選択する
 
-Azure portal を使用して Azure AD DS マネージド ドメインの SKU を変更するには、次の手順を実行します。
+Azure portal を使用してマネージド ドメインの SKU を変更するには、次の手順を実行します。
 
 1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 *aaddscontoso.com* などのマネージド ドメインを一覧から選択します。
 1. Azure AD DS ページの左側にあるメニューで、 **[設定] > [SKU]** を選択します。
 
     ![Azure portal で Azure AD DS マネージド ドメインの [SKU] メニュー オプションを選択します。](media/change-sku/overview-change-sku.png)
 
-1. ドロップダウン メニューから、Azure AD DS マネージド ドメインに使用する SKU を選択します。 リソース フォレストがある場合、フォレストの信頼は *Enterprise* SKU 以上でのみ使用できるため、*Standard* SKU を選択できません。
+1. ドロップダウン メニューから、マネージド ドメインに使用する SKU を選択します。 リソース フォレストがある場合、フォレストの信頼は *Enterprise* SKU 以上でのみ使用できるため、*Standard* SKU を選択できません。
 
     ドロップダウン メニューから目的の SKU を選択し、 **[保存]** を選択します。
 

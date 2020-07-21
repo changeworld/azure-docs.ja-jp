@@ -2,7 +2,7 @@
 title: Azure SQL Managed Instance の Machine Learning Services (プレビュー)
 description: この記事では、Azure SQL Managed Instance の概要または Machine Learning Services について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -11,13 +11,13 @@ author: garyericson
 ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
-ms.date: 05/27/2020
-ms.openlocfilehash: fb74cc3aba3ad37e36a4d7cbe726bde4cb088e90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/03/2020
+ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708741"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance の Machine Learning Services (プレビュー)
 
@@ -63,3 +63,4 @@ Python と R のベース ディストリビューションは Machine Learning 
 - [SQL Server Machine Learning Services との重要な違い](machine-learning-services-differences.md)に関する記事を参照してください。
 - Machine Learning Services で Python を使用する方法については、[Python スクリプトの実行](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)に関するページを参照してください。
 - Machine Learning Services で R を使用する方法については、[R スクリプトの実行](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)に関するページを参照してください。
+- 他の SQL プラットフォームの機械学習に関する詳細については、[SQL 機械学習のドキュメント](https://docs.microsoft.com/sql/machine-learning/)を参照してください。

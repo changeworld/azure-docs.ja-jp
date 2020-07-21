@@ -1,25 +1,23 @@
 ---
 title: Azure Event Grid リソースのネットワーク セキュリティ
 description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
-services: event-grid
 author: VidyaKukke
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857054"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119244"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid リソースのネットワーク セキュリティ
 この記事では、Azure Event Grid で次のセキュリティ機能を使用する方法について説明します。 
 
-- エグレス用のサービス タグ (プレビュー)
+- 送信用のサービス タグ
 - イングレス用の IP ファイアウォール規則 (プレビュー)
-- イングレス用のプライベート エンドポイント (プレビュー)
+- イングレス用のプライベート エンドポイント
 
 
 ## <a name="service-tags"></a>サービス タグ
@@ -28,8 +26,8 @@ ms.locfileid: "82857054"
 サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#security-rules) または  [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース* " または " *宛先* " フィールドにサービス タグ名 (たとえば **AzureEventGrid**) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
 
 | サービス タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid。 <br/><br/>*注:* このタグは、米国中南部、米国東部、米国東部 2、米国西部 2、および米国中部の Azure Event Grid エンドポイントのみを対象としています。 | 両方 | いいえ | いいえ |
+| --- | -------- |:---:|:---:|:---:|
+| AzureEventGrid | Azure Event Grid。 | 両方 | いいえ | いいえ |
 
 
 ## <a name="ip-firewall"></a>IP ファイアウォール 
@@ -37,6 +35,7 @@ Azure Event Grid は、トピックおよびドメインへの発行に IP ベ�
 
 既定では、要求が有効な認証と承認を受けている限り、トピックおよびドメインにはインターネットからアクセスできます。 IP ファイアウォールを使用すると、[CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IP アドレスまたは IP アドレス範囲のみにアクセスを制限できます。 他の IP アドレスから発信するパブリッシャーは拒否され、403 (禁止) の応答が返されます。
 
+トピックとドメインに対して IP ファイアウォールを構成する詳細な手順については、[IP ファイアウォールの構成](configure-firewall.md)に関する記事を参照してください。
 
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 [プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、パブリック インターネットを経由せずに[プライベート リンク](../private-link/private-link-overview.md)上で安全に仮想ネットワークからトピックおよびドメインへ直接、イベントのイングレスを行えるようになります。 プライベート エンドポイントは、VNet 内の Azure サービス用の特別なネットワーク インターフェイスです。 トピックまたはドメインのプライベート エンドポイントを作成すると、VNet 上のクライアントと Event Grid リソース間の安全な接続が提供されます。 プライベート エンドポイントには、VNet の IP アドレス範囲から IP アドレスが割り当てられます。 プライベート エンドポイントと Event Grid サービス間の接続には、セキュリティで保護されたプライベート リンクが使用されます。
@@ -61,7 +60,7 @@ Event Grid リソースにプライベート エンドポイントを使用す�
 | 名前                                          | Type      | 値                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure Traffic Manager プロファイル\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
 
 [IP ファイアウォール](#ip-firewall)を使用して、VNet の外部のクライアントによるパブリック エンドポイント経由のアクセスを拒否または制御することができます。 
 
@@ -100,3 +99,5 @@ Event Grid リソースにプライベート エンドポイントを使用す�
 Event Grid リソースに IP ファイアウォールを構成して、パブリック インターネット経由のアクセスを、IP アドレスまたは IP アドレス範囲の選択されたセットからのみに制限することができます。 詳細な手順については、[IP ファイアウォールの構成](configure-firewall.md)に関する記事を参照してください。
 
 選択した仮想ネットワークからのアクセスのみに制限するようにプライベート エンドポイントを構成できます。 詳細な手順については、[プライベート エンドポイントの構成](configure-private-endpoints.md)に関する記事を参照してください。
+
+ネットワーク接続の問題をトラブルシューティングするには、[ネットワーク接続の問題のトラブルシューティング](troubleshoot-network-connectivity.md)に関するページを参照してください。

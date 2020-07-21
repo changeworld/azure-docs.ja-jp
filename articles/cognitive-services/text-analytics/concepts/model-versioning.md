@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9431ff862dd987a1a806087053014e7c880bf801
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c9c598d385768e604d9b42e3ea055629e6ae2866
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108551"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Text Analytics API でのモデルのバージョン管理
 
@@ -37,6 +37,19 @@ Text Analytics API のバージョン 3 を使用すると、データで使用�
 
 
 これらのモデルの更新情報の詳細については、[新機能](../whats-new.md)に関する記事を参照してください。
+
+## <a name="text-analytics-for-health"></a>Text Analytics for Health
+
+[Text Analytics for Health](../how-tos/text-analytics-for-health.md) コンテナーでは、上記の API エンドポイントとは異なるモデルのバージョン管理が使用されています。  コンテナー イメージごとに使用できるモデルのバージョンは 1 つだけであることに注意してください。
+
+| エンドポイント                        | コンテナー イメージ タグ                     | モデル バージョン |
+|---------------------------------|-----------------------------------------|---------------|
+| `/domains/health`               | `1.1.012640001-amd64-preview` または最新 | `2020-05-08`  |
+| `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

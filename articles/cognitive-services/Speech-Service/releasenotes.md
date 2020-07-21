@@ -8,17 +8,85 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607875"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112988"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="text-to-speech-2020-july-release"></a>テキスト読み上げ 2020 年 7 月リリース
+
+### <a name="new-features"></a>新機能
+
+* **ニューラル TTS、15 の新しいニューラル音声**: ニューラル TTS ポートフォリオに追加された新しい音声は、Salma (`ar-EG` アラビア語 (エジプト))、Zariyah (`ar-SA` アラビア語 (サウジアラビア))、Alba (`ca-ES` カタルニア語 (スペイン))、Christel (`da-DK` デンマーク語 (デンマーク))、Neerja (`es-IN` 英語 (インド))、Noora (`fi-FI` フィンランド語 (フィンランド))、Swara (`hi-IN` ヒンディー語 (インド))、Colette (`nl-NL` オランダ語 (オランダ))、Zofia (`pl-PL` ポーランド語 (ポーランド))、Fernanda (`pt-PT` ポルトガル (ポルトガル))、Dariya (`ru-RU` ロシア語 (ロシア))、Hillevi (`sv-SE` スウェーデン語 (スウェーデン))、Achara (`th-TH` タイ語 (タイ))、HiuGaai (`zh-HK` 中国語 (広東語、繁体中国語))、HsiaoYu (`zh-TW` 中国語 (台湾標準中国語)) です。 すべての[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)を確認してください。  
+
+* **Custom Voice、ユーザー エクスペリエンスを簡単にするトレーニング フローで合理化された音声テスト**: 新しいテスト機能を使用すると、一般的なシナリオや音声アシスタントのシナリオに対応するために、各言語用に最適化された定義済みのテスト セットを使用して、各音声が自動的にテストされます。 これらのテスト セットは慎重に選択され、一般的なユース ケースと音素が言語に含まれるようにテストされています。 さらに、ユーザーは、モデルのトレーニング時に独自のテスト スクリプトをアップロードできます。
+
+* **オーディオ コンテンツの作成: 新しい機能のセットがリリースされ、より強力な音声チューニングとオーディオ管理機能が可能になりました**
+
+    * `Pitch`、`rate`、`volume` は、低、中、高などの定義済みの値を使用したチューニングをサポートするように強化されています。 ユーザーは、オーディオ編集の "定数" 値を簡単に選択できるようになりました。
+
+    ![オーディオ チューニング](media/release-notes/audio-tuning.png)
+
+    * ユーザーは、作業ファイルの `Audio history` を確認できるようになりました。 この機能を使用すると、ユーザーは作業ファイルに関連するすべての生成されたオーディオを簡単に追跡できます。 履歴バージョンを確認し、同時にチューニングしながら品質を比較することができます。 
+
+    ![オーディオ履歴](media/release-notes/audio-history.png)
+
+    * `Clear` 機能の柔軟性が向上しました。 ユーザーは、選択したコンテンツで使用可能な他のパラメーターを維持したまま、特定のチューニング パラメーターをクリアできます。  
+
+    * ユーザーが TTS 音声チューニングとオーディオ管理をすぐに開始できるようにするためのチュートリアル ビデオが、[ランディング ページ](https://speech.microsoft.com/audiocontentcreation)に追加されました。 
+
+### <a name="general-tts-voice-quality-improvements"></a>一般的な TTS 音声品質の改善
+
+* 再現性が高く、待機時間が短くなるように、TTS ボコーダーが改善されました。
+
+    * `it-IT` の Elsa が新しいボコーダーに更新されました。これは、音声品質で +0.464 CMOS (Comparative Mean Opinion Score) の向上、合成で 40% の高速化、最初のバイトの待機時間で 30% の短縮を実現するものです。 
+    * `zh-CN` の Xiaoxiao が新しいボコーダーに更新されました。これは、一般的なドメインで +0148 CMOS、ニュース放送スタイルで +0.348、叙情スタイルで +0.195 の向上を実現するものです。 
+
+* TTS 出力をより自然にするために、`de-DE` および `ja-JP` 音声モデルが更新されました。
+    
+    * 最新の韻律モデリング方法を使用して `de-DE` の Katja が更新されました。MOS (Mean Opinion Score) の向上は +0.13 です。 
+    * 新しいピッチ アクセント韻律モデルを使用して `ja-JP` の Nanami が更新されました。MOS (Mean Opinion Score) の向上は +0.19 です。  
+
+* 5 つの言語の単語レベルの発音精度が向上しました。
+
+    | Language | 発音エラーの除去 |
+    |---|---|
+    | `en-GB` | 51% |
+    | `ko-KR` | 17% |
+    | `pt-BR` | 39% |
+    | `pt-PT` | 77% |
+    | `id-ID` | 46% |
+
+### <a name="bug-fixes"></a>バグの修正
+
+* 通貨の読み取り
+    * `es-ES` と `es-MX` での通貨の読み取りに関する問題が修正されました
+     
+    | Language | 入力 | 改善後の読み上げ |
+    |---|---|---|
+    | `es-MX` | $1.58 | un peso cincuenta y ocho centavos |
+    | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |
+
+    * 次のロケールでの負の通貨 ("-325 €" など) のサポート: `en-US`、`en-GB`、`fr-FR`、`it-IT`、`en-AU`、`en-CA`。
+
+* `pt-PT` での住所の読み取りが改善されました。
+* 単語 "for" と "four" について、Natasha (`en-AU`) と Libby (`en-UK`) の発音に関する問題を修正しました。  
+* オーディオ コンテンツ作成ツールのバグを修正しました
+    * 2 番目の段落の後の追加および予期しない一時停止が修正されています。  
+    * "休止なし" 機能が回帰バグから再び追加されています。 
+    * Speech Studio のランダム更新の問題が修正されています。  
+
+### <a name="samplessdk"></a>サンプル/SDK
+
+* JavaScript:FireFox および macOS と iOS での Safari における再生の問題が修正されました。 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020 年 6 月リリース
 **Speech CLI (別名 SPX)**
 -   CLI 内ヘルプ検索機能が追加されました。
@@ -33,7 +101,7 @@ ms.locfileid: "84607875"
 
 **バグの修正**
 -   **C\#、C++** :話者認識の 1.12 で機能していなかったマイクの録音を修正しました。
--   **JavaScript**:FireFox および MacOS と iOS 上の Safari でのテキスト読み上げの修正。
+-   **JavaScript**:FireFox および macOS と iOS 上の Safari でのテキスト読み上げの修正。
 -   8 チャネル ストリーム使用時の、会話の文字起こしでの Windows アプリケーション検証ツールのアクセス違反クラッシュの修正。
 -   マルチデバイス会話翻訳での Windows アプリケーション検証ツールのアクセス違反クラッシュの修正。
 
@@ -215,7 +283,7 @@ ms.locfileid: "84607875"
 - Android、iOS、Linux での ALaw、Mulaw、FLAC に対する `Compressed` 入力のサポートが追加されました
 - メッセージをサービスに送信するための `SendMessageAsync` が `Connection` クラスに追加されました
 - メッセージのプロパティを設定するための `SetMessageProperty` が `Connection` クラスに追加されました
-- TTS で Java (Jre と Android)、Python、Swift、Objective-C に対するバインドが追加されました
+- TTS で Java (JRE と Android)、Python、Swift、Objective-C に対するバインドが追加されました
 - TTS で macOS、iOS、Android に対する再生のサポートが追加されました。
 - TTS に対する "ワード境界" の情報が追加されました。
 

@@ -4,12 +4,12 @@ description: Azure Functions を使用して、Azure SQL Database に接続し�
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 18e310559cb0b88aac53b1020172847968616f97
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254278"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
@@ -21,13 +21,13 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 + 「[Visual Studio を使用して初めての関数を作成する](functions-create-your-first-function-visual-studio.md)」記事の手順が完了しており、バージョン 2.x 以降のランタイムを対象としたローカル関数アプリを作成しています。 また、プロジェクトを Azure の関数アプリに発行している必要があります。
 
-+ この記事では、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、記事「[Azure portal で Azure SQL データベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」の手順を実行します。
++ この記事では、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、[Azure portal を使用して Azure SQL Database でデータベースを作成する方法](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順を実行します。
 
-+ このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](../sql-database/sql-database-get-started-portal-firewall.md)を追加している必要があります。 このルールは、ローカル コンピューターから SQL データベース インスタンスにアクセスできるようにするために必要です。  
++ このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](../sql-database/sql-database-get-started-portal-firewall.md)を追加している必要があります。 このルールは、ローカル コンピューターから SQL Database インスタンスにアクセスできるようにするために必要です。  
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-「[Azure Portal で Azure SQL データベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」を完了したときに作成したデータベースの接続文字列を取得する必要があります。
+[Azure portal を使用して Azure SQL Database でデータベースを作成する方法](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順で作成したデータベースの接続文字列を取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -55,7 +55,7 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>SqlClient パッケージをプロジェクトに追加する
 
-SqlClient ライブラリを含む NuGet パッケージを追加する必要があります。 SQL データベースへの接続には、このデータ アクセス ライブラリが必要です。
+SqlClient ライブラリを含む NuGet パッケージを追加する必要があります。 SQL Database への接続には、このデータ アクセス ライブラリが必要です。
 
 1. Visual Studio 2019 で、ローカル関数アプリ プロジェクトを開きます。
 

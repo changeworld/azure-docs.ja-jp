@@ -4,20 +4,20 @@ description: Azure Active Directory の条件付きアクセスに関してよ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 05/28/2020
+ms.topic: troubleshooting
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1704fb50586168be6f960e62b918019cb67ce4c8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253241"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory の条件付きアクセスに関する FAQ
 
@@ -54,6 +54,12 @@ Microsoft Teams はまた、条件付きアクセス ポリシーでクラウド
 Windows 版および Mac 版の Microsoft Teams デスクトップ クライアントでは、先進認証がサポートされています。 先進認証では、Azure Active Directory Authentication Library (ADAL) に基づいて、プラットフォームでの Microsoft Office クライアント アプリケーションへのサインインが行われます。
 
 詳細については、[条件付きアクセスのサービス依存関係](service-dependencies.md)に関する記事をご覧ください。また、代わりに [Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365-preview)をポリシーの対象にすることを検討してください。
+
+## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>条件付きアクセス ポリシーを有効にした後、Microsoft Teams で一部のタブが機能しないのはなぜですか?
+
+Microsoft Teams のテナントでいくつかの条件付きアクセス ポリシーを有効にした後、特定のタブがデスクトップ クライアントで期待どおりに機能しなくなる可能性があります。 ただし、この影響を受けたタブは、Microsoft Teams Web クライアントを使用すると機能します。 影響を受けるタブには、Power BI、フォーム、VSTS、PowerApps、SharePoint リストなどがあります。
+
+影響を受けたタブを表示するには、Windows 10 アカウント拡張機能がインストールされている Edge、Internet Explorer、または Chrome の Teams Web クライアントを使用する必要があります。 一部のタブは Web 認証に依存しており、条件付きアクセスが有効な場合、Microsoft Teams デスクトップ クライアントでは機能しません。 Microsoft はパートナーと連携して、このようなシナリオの実現に取り組んでいます。 これまでに、Planner、OneNote、Stream に関連するシナリオを実現しています。
 
 ## <a name="next-steps"></a>次のステップ
 

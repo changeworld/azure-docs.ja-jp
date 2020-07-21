@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844507"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057672"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering アカウントを作成する
 
@@ -28,20 +28,24 @@ Azure Remote Rendering サービスのアカウントを作成するには、次
     1. [リソース名] をアカウントの名前に設定します。
     1. 必要に応じて、[サブスクリプション] を更新します。
     1. [リソース グループ] を任意のリソース グループに設定します。
+    1. [場所] ドロップダウンから、このリソースを作成するリージョンを選択します。 下の[アカウント リージョン](create-an-account.md#account-regions)にの解説を参照してください。
 1. アカウントが作成されたら、そのアカウントに移動し、次の操作を行います。
     1. *[概要]* タブで、[アカウント ID] をメモします。
     1. *[設定] > [アクセス キー]* タブで、[プライマリ キー] をメモします。これはアカウントの秘密アカウント キーです。
+
+### <a name="account-regions"></a>アカウント リージョン
+アカウントの作成時に指定された場所によって、アカウント リソースが割り当てられるリージョンが決まります。 作成後にこれを変更することはできません。 ただし、アカウントの場所に関係なく、アカウントを使用して、任意の[サポートされているリージョン](./../reference/regions.md)の Remote Rendering セッションに接続できます。
 
 ### <a name="retrieve-the-account-information"></a>アカウント情報を取得する
 
 サンプルとチュートリアルでは、アカウント ID とキーを指定する必要があります。 たとえば、PowerShell サンプル スクリプトに使用される **arrconfig.json** ファイルの場合は、次のようになります。
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 *region* オプションを入力するには、[使用可能なリージョンの一覧](../reference/regions.md)を参照してください。
@@ -89,6 +93,7 @@ Azure Remote Rendering サービスのアカウントを作成するには、次
 > Remote Rendering アカウントが表示されない場合は、この[トラブルシューティングに関するセクション](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)を参照してください。
 
 **[ロール]** ドロップダウンから、それぞれの選択項目について新しいロールの追加をさらに 2 回繰り返します。
+
 * **Storage Account Contributor**
 * **ストレージ BLOB データ共同作成者**
 

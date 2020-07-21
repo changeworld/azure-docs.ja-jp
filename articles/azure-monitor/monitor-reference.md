@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/17/2020
-ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/15/2020
+ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873841"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085499"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -31,8 +31,8 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [Azure Monitor for Networks (プレビュー)](insights/network-insights-overview.md) | すべてのネットワーク リソースの正常性とメトリックの包括的ビューを提供します。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。 |
 [Azure Monitor for Resource Groups (プレビュー)](insights/resource-group-insights.md) |  個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 |
 | [Azure Monitor for Storage](insights/storage-insights-overview.md) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
-| [Azure Monitor for VMs](insights/container-insights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
-| [Azure Monitor for Key Vault (プレビュー)](insights/key-vaults-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待機時間の統合ビューが提供されており、キー コンテナーの包括的な監視を実現できます。 |
+| [Azure Monitor for VMs](insights/vminsights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
+| [Azure Monitor for Key Vault (プレビュー)](insights/key-vaults-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 |
 | [Azure Monitor for Azure Cache for Redis (プレビュー)](insights/redis-cache-insights-overview.md) |  全体のパフォーマンス、エラー、容量、および操作の正常性を、統一された対話形式で表示できます。 |
 
 
@@ -137,8 +137,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |Notification Hubs | はい | いいえ | いいえ |  |
 |オープン データセット | いいえ | いいえ | いいえ |  |
 |ポリシー | いいえ | いいえ | いいえ |  |
-|Power BI | はい | はい | いいえ |  |
-|Power BI Embedded | いいえ | いいえ | いいえ |  |
+|Power BI Embedded | はい | はい | いいえ |  |
 |Private Link | いいえ | いいえ | いいえ |  |
 |Project Spool Communication Platform | いいえ | いいえ | いいえ |  |
 |Red Hat OpenShift | いいえ | いいえ | いいえ |  |
@@ -185,7 +184,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Azure Monitor にログを送信するための診断設定を作成します。 「[Intune でストレージ、イベント ハブ、または Log Analytics にログ データを送信する (プレビュー)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)」を参照してください。  |
 | ネットワーク  | [Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
 | [Office 365](insights/solution-office-365.md) | Office 365 環境を監視します。 Azure Sentinel から使用できる改善されたオンボード機能を備えた更新バージョンです。 |
-| [SQL Analytics](insights/azure-sql.md) | 複数のサブスクリプションにわたって大規模に Azure SQL データベース、エラスティック プール、マネージド インスタンスのパフォーマンスを監視します。 |
+| [SQL Analytics](insights/azure-sql.md) | Azure SQL データベースと SQL マネージド インスタンスのパフォーマンスを、複数のサブスクリプションにわたって大規模に監視します。 |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub デバイスの正常性と使用状況を追跡します。 |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | 管理グループを Azure Monitor に接続して Operations Manager エージェントからデータを収集します。 「[Operations Manager を Azure Monitor に接続する](platform/om-agents.md)」を参照してください。<br> [Operations Manager Assessment](insights/scom-assessment.md) ソリューションを使用して、System Center Operations Manager 管理グループのリスクと正常性を評価します。 |
 | [Microsoft Teams ミーティング](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft Teams ミーティング デバイスの統合されたエンドツーエンド管理。 |
@@ -201,7 +200,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |:---|:---|
 | [Active Directory 正常性チェック](insights/ad-assessment.md) | Active Directory 環境のリスクと正常性を評価します。 |
 | [Active Directory Replication Status](insights/ad-replication-status.md) | レプリケーションの失敗について Active Directory 環境を定期的に監視します。 |
-| [Activity Log Analytics](platform/activity-log-view.md#azure-portal) | アクティビティ ログ エントリを表示します。 |
+| [Activity Log Analytics](platform/activity-log.md#activity-log-analytics-monitoring-solution) | アクティビティ ログ エントリを表示します。 |
 | [DNS Analytics (プレビュー)](insights/dns-analytics.md) | Windows DNS の分析ログと監査ログおよび他の関連データを DNS サーバーから収集して分析し、関連付けます。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 複数のデプロイにわたって Cloud Foundry システムの正常性とパフォーマンスのメトリックを収集、表示、および分析します。 |
 | [Containers](insights/containers.md) | Docker と Windows のコンテナー ホストを表示および管理します。 |

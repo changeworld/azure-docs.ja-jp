@@ -1,5 +1,5 @@
 ---
-title: Python
+title: デザイナーで Python スクリプトを実行する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning デザイナーで Python を使用してデータを変換する方法について説明します。
 services: machine-learning
@@ -10,14 +10,14 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer, tracking-python
-ms.openlocfilehash: af26dce03c0dcf5226c52dcdd8af4408186aa343
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557048"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041015"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
 
 この記事では、[Python スクリプトの実行](algorithm-module-reference/execute-python-script.md)モジュールを使用して、Azure Machine Learning デザイナーにカスタム ロジックを追加する方法について説明します。 次の攻略ガイドでは、Pandas ライブラリを使用して簡単な特徴エンジニアリングを行います。
 
