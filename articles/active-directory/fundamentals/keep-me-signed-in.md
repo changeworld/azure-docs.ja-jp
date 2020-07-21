@@ -46,14 +46,14 @@ ms.locfileid: "86054714"
 
 ユーザーが **[サインインの状態を維持しますか?]** プロンプトに対する操作をしないままサインイン試行を中止した場合、次の図に示すように、中断を示すサインイン ログ エントリが表示されます。
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text=""サインインの状態を維持しますか?" プロンプトを表示する":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="サインインの状態を維持しますか? プロンプトを表示する":::
 
 サインイン エラーの詳細は次のとおりです。この例では強調表示されています。
 
 * **サインイン エラー コード**: 50140
 * **エラーの理由**: ユーザーがサインインしたときの "サインインしたままにする" 割り込みによりエラーが発生しました。
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text=" "サインインしたままにする" 割り込みが記録されたサインイン ログ エントリの例":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="サインインしたままにする 割り込みが記録されたサインイン ログ エントリの例":::
 
 ユーザーに割り込みが表示されないようにするには、ブランドの詳細設定で **[サインインしたままにするオプションを表示する]** 設定を **[いいえ]** に設定します。 これにより、Azure AD ディレクトリ内のすべてのユーザーに対して KMSI プロンプトが無効になります。
 

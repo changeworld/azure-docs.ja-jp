@@ -40,7 +40,7 @@ ms.locfileid: "86114885"
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. トピックの検索バーに「**Event Grid トピック**」と入力し、ドロップ ダウン リストから **[Event Grid トピック]** を選択します。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text=""Event Grid トピック" を検索して選択する":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid トピック を検索して選択する":::
 3. トピックの一覧から対象のカスタム トピックを選択します。 
 
     :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="カスタム トピックの選択":::
