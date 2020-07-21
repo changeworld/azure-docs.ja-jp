@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71212056"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220152"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 
@@ -331,11 +331,11 @@ ms.locfileid: "71212056"
 2. 下の画面に示すように、 **[ユーザー名]** と **[パスワード]** を入力します。 Windows Phone で入力するユーザー名とパスワードとは異なるユーザー名とパスワードを入力する必要があります。
 3. **[ログインして登録]** をクリックし、ログインしたことを示すダイアログを確認します。 このコードにより、 **[プッシュを送信する]** ボタンも有効になります。
 
-    ![][14]
+    ![ユーザー名とパスワードが入力された Notification Hubs アプリケーションのスクリーンショット。][14]
 5. 次に、 **[受信ユーザー タグ]** フィールドに、登録されているユーザー名を入力します。 通知メッセージを入力し、 **[プッシュを送信する]** をクリックします。
 6. 一致するユーザー名タグが登録されているデバイスだけが通知メッセージを受信します。
 
-    ![][15]
+    ![プッシュされたメッセージが表示された Notification Hubs アプリケーションのスクリーンショット。][15]
 
 ## <a name="next-steps"></a>次のステップ
 

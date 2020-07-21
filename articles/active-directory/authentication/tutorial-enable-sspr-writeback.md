@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551749"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202549"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
     * 必要に応じて、[前のチュートリアルを完了して Azure AD SSPR を有効にしてください](tutorial-enable-sspr.md)。
 * Azure AD Connect の現在のバージョンを使用して構成された既存のオンプレミスの AD DS 環境。
     * 必要に応じて、[簡易](../hybrid/how-to-connect-install-express.md)または[カスタム](../hybrid/how-to-connect-install-custom.md)設定を使用して Azure AD Connect を構成してください。
-    * パスワード ライトバックを使用するためには、ドメイン コントローラーが Windows Server 2008 R2 以降である必要があります。
+    * パスワード ライトバックを使用するためには、ドメイン コントローラーが Windows Server 2012 以降である必要があります。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Azure AD Connect に対するアカウントのアクセス許可を構成する
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81453899"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146412"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -64,7 +64,7 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 - ワイルドカード証明書はサポートされません。
 - ネイキッド ドメインはサポートされていません。
 - エクスポートはできません。
-- DNS A レコードはサポートされません。
+- A レコードはサポートされません。 たとえば、A レコードでは自動更新が機能しません。
 
 > [!NOTE]
 > 無料の証明書は DigiCert によって発行されます。 一部のトップレベル ドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue digicert.com` の値を使用して作成することによって、DigiCert を証明書の発行者として明示的に許可する必要があります。
@@ -72,7 +72,7 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 
 無料の App Service マネージド証明書を作成するには、次の手順を実行します。
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[Create App Service Managed Certificate]\(App Service マネージド証明書の作成\)** を選択します。
 
@@ -163,7 +163,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 ### <a name="import-certificate-into-app-service"></a>App Service に証明書をインポートする
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[App Service 証明書のインポート]** を選択します。
 
@@ -183,7 +183,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 Azure Key Vault を使用して証明書を管理している場合は、[要件を満たしている](#private-certificate-requirements)限り、Key Vault から App Service に PKCS12 証明書をインポートすることができます。
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[Key Vault 証明書のインポート]** を選択します。
 
@@ -253,7 +253,7 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 これで、証明書を App Service にアップロードする準備ができました。
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[証明書のアップロード]** を選択します。
 
@@ -273,7 +273,7 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 公開証明書は、 *.cer* 形式でサポートされています。 
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションで、 **[SSL 設定]**  >  **[公開証明書 (.cer)]**  >  **[公開キー証明書のアップロード]** の順にクリックします。
 

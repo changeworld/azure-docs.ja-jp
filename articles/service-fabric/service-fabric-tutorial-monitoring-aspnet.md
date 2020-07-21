@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6ce2e5a71d48942642ee01d8d2cc75a232abf259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f06387ea317029f5648ab0884cea80262e8640a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159951"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245009"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
@@ -102,7 +102,7 @@ Application Insights では、シナリオによって使い分けられる Serv
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. *[変更のプレビュー]* ダイアログ ボックスが表示されたら **[OK]** をクリックし、 *[ライセンスの同意]* に同意します。 これで、サービスへの NuGet の追加が完了します。
 6. 今度は 2 つのサービスにテレメトリの初期化子を設定する必要があります。 そのためには、*VotingWeb.cs* と *VotingData.cs* を開きます。 両方に対して、次の 2 つの手順を実行します。
-    1. それぞれの *\<サービス名>.cs* の上部で、既存の *using* ステートメントの下に次の 2 つの *using* ステートメントを追加します。
+    1. それぞれの *\<ServiceName>.cs* の上部で、既存の *using* ステートメントの下に次の 2 つの *using* ステートメントを追加します。
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -268,4 +268,4 @@ ASP.NET アプリケーションの監視と診断の設定が完了したとこ
 
 * [Service Fabric での監視と診断についてさらに詳しく知る](service-fabric-diagnostics-overview.md)
 * [Application Insights を使用した Service Fabric イベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
-* Application Insights の詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/azure/application-insights/)をご覧ください。
+* Application Insights の詳細については、[Application Insights のドキュメント](/azure/application-insights/)をご覧ください。

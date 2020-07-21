@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391929"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206545"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>エンド ツー エンドのソリューションを構築する
 
@@ -205,8 +205,9 @@ IoT ハブに付けた名前は保存しておいてください。 これは後
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure portal: イベント サブスクリプションの作成":::
 
-次のようにフィールドに入力します。
+各フィールドに次のように入力します (既定値が入力されるフィールドは省略しています)。
 * *[イベント サブスクリプションの詳細]*  >  **[名前]** : イベント サブスクリプションに名前を付けます。
+* *[トピックの詳細]*  >  **[システム トピック名]** : システム トピックに使用する名前を指定します。 
 * *[イベントの種類]*  >  **[イベントの種類のフィルター]** : メニュー オプションから *[Device Telemetry]\(デバイス テレメトリ\)* を選択します。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
 * *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure portal のイベント サブスクリプション: Azure 関数の選択" border="false":::
@@ -363,9 +364,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 このイベント サブスクリプションを作成する手順は、このチュートリアルの中で先ほど 1 つ目の Azure 関数から IoT Hub をサブスクライブしたときと同様です。 ただし今回は、リッスンするイベントの種類として "*デバイス テレメトリ*" を指定する必要はありません。また、接続先となる Azure 関数も異なります。
 
-以下に、改めてサブスクリプションの手順を示します。
-
-*[イベント サブスクリプションの作成]* ページで、各フィールドに次のように入力します。
+*[イベント サブスクリプションの作成]* ページで、各フィールドに次のように入力します (既定値が入力されるフィールドは省略しています)。
 * *[イベント サブスクリプションの詳細]*  >  **[名前]** : イベント サブスクリプションに名前を付けます。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
 * *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。

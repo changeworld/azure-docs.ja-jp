@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513807"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245332"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使用してカスタム スキルを作成およびデプロイする 
 
@@ -29,6 +29,9 @@ Azure Machine Learning でアスペクトベースのセンチメント モデ�
 > * モデルをトレーニングして Azure Kubernetes クラスターにデプロイする
 > * デプロイされたモデルに AI エンリッチメント パイプラインをリンクする
 > * デプロイされたモデルからの出力をカスタム スキルとして取り込む
+
+> [!IMPORTANT] 
+> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現在、.NET SDK によるサポートはありません。
 
 ## <a name="prerequisites"></a>前提条件
 

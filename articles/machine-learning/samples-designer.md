@@ -1,5 +1,5 @@
 ---
-title: デザイナーのパイプラインとデータセットのサンプル
+title: デザイナー (プレビュー) のパイプラインとデータセットのサンプル
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning デザイナーのサンプルを使用することで、機械学習パイプラインをすぐに開始できます。
 services: machine-learning
@@ -10,14 +10,14 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: e40c49cdcaae6fa84a72c645f5fea4bac99ee03f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654560"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206332"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのパイプラインとデータセットのサンプル
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) のパイプラインとデータセットのサンプル
 
 Azure Machine Learning デザイナーの組み込みサンプルを使用すると、独自の機械学習パイプラインの構築をすぐに開始できます。 Azure Machine Learning デザイナーの [GitHub リポジトリ](https://github.com/Azure/MachineLearningDesigner)には、一般的な機械学習のシナリオを理解するのに役立つ詳細なドキュメントが含まれています。
 

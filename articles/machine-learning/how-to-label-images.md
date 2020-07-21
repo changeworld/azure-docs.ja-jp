@@ -2,20 +2,20 @@
 title: ラベル付けプロジェクトで画像にタグを付ける
 title.suffix: Azure Machine Learning
 description: Azure Machine Learning のラベル付けプロジェクトでデータのタグ付けツールを使用する方法について説明します。
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147022"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>ラベル付けプロジェクトで画像にタグを付ける (プレビュー)
+# <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
 プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)されたら、ラベル付けツール (パブリック プレビュー) を使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
 
@@ -64,7 +64,7 @@ Azure では、ページ上のすべての画像にタグを付け終わると�
 
 手元にあるデータのタグを送信すると、Azure によって作業キューの新しい画像セットを使ってページが更新されます。
 
-### <a name="assisted-machine-learning"></a>支援型機械学習 
+### <a name="assisted-machine-learning-preview"></a>支援型機械学習 (プレビュー) 
 
 機械学習アルゴリズムがトリガーされる可能性があります。 プロジェクトでこれらのアルゴリズムを有効にした場合、次のメッセージが表示されることがあります。
 

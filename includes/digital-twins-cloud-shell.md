@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85805686"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277844"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -22,7 +22,11 @@ Cloud Shell ウィンドウを開いた後は、まずログインし、この�
 az login
 az account set --subscription <your-Azure-subscription-ID>
 ```
-
+> [!TIP]
+> サブスクリプション名を使用してサブスクリプションを設定することもできます。 次のコマンドを実行します。 
+> ```azurecli
+> az account set --subscription "your-Azure-subscription-name"
+> 
 このサブスクリプションを Azure Digital Twins で初めて使用する場合は、次のコマンドを実行して Azure Digital Twins の名前空間に登録します (それが不明な場合は、以前に実行していたとしても、もう一度実行して問題ありません)。
 
 ```azurecli

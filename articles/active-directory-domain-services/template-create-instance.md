@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 01/14/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734217"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223008"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインを作成する
 
 Azure Active Directory Domain Services (Azure AD DS) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) が提供されます。 ドメイン コントローラーのデプロイ、管理、パッチの適用を自分で行わなくても、これらのドメイン サービスを使用することができます。 Azure AD DS は、既存の Azure AD テナントと統合されます。 この統合により、ユーザーは、各自の会社の資格情報を使用してサインインすることができます。また管理者は、既存のグループとユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。
 
-この記事では、Azure Resource Manager テンプレートを使用して Azure AD DS を有効にする方法について説明します。 サポート リソースは、Azure PowerShell を使用して作成されます。
+この記事では、Azure Resource Manager テンプレートを使用してマネージド ドメインを作成する方法について説明します。 サポート リソースは、Azure PowerShell を使用して作成されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,7 @@ Azure AD DS のマネージド ドメインを作成する際は、DNS 名を指
 >
 > 場合によっては、環境内の他のサービス用に追加で DNS レコードを作成したり、環境内に既に存在する 2 つの DNS 名前空間の間に条件付き DNS フォワーダーを作成したりする必要があります。 たとえば、ルート DNS 名を使用するサイトをホストする Web サーバーを実行する場合、名前の競合が発生して、追加の DNS エントリが必要になる可能性があります。
 >
-> これらのチュートリアルとハウツー記事では、簡略な例として *aaddscontoso.com* というカスタム ドメインを使用しています。 すべてのコマンドで、独自のドメイン名を指定してください。
+> このサンプルと操作方法に関する記事では、簡略な例として *aaddscontoso.com* というカスタム ドメインを使用しています。 すべてのコマンドで、独自のドメイン名を指定してください。
 
 DNS 名には、次の制限も適用されます。
 
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 *AAD DC Administrators* グループが作成されたら、[Add-AzureADGroupMember][Add-AzureADGroupMember] コマンドレットを使用してグループにユーザーを追加します。 まず、[Get-AzureADGroup][Get-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* グループのオブジェクト ID を取得し、次に [Get-AzureADUser][Get-AzureADUser] コマンドレットを使用して目的のユーザーのオブジェクト ID を取得します。
 
-次の例では、UPN が `admin@aaddscontoso.onmicrosoft.com` のアカウントのユーザー オブジェクト ID です。 このユーザー アカウントを、*AAD DC Administrators* グループに追加するユーザーの UPN に置き換えます。
+次の例では、UPN が `admin@contoso.onmicrosoft.com` のアカウントのユーザー オブジェクト ID です。 このユーザー アカウントを、*AAD DC Administrators* グループに追加するユーザーの UPN に置き換えます。
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -124,9 +124,9 @@ Resource Manager リソース定義の一部として、次の構成パラメー
 | パラメーター               | 値 |
 |-------------------------|---------|
 | domainName              | マネージド ドメインの DNS ドメイン名。プレフィックスの名前付けや競合に関する前のポイントを考慮に入れてください。 |
-| filteredSync            | Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーとグループを同期できるほか、特定のグループのみを "*範囲指定*" して同期することもできます。 すべてのユーザーとグループを同期することを選択した場合は、後で、範囲指定された同期のみの実行を選択することはできません。<br /> 範囲指定された同期の詳細については、[Azure AD Domain Services の範囲指定された同期][scoped-sync]に関するページを参照してください。|
-| notificationSettings    | マネージド ドメインで生成されたアラートがある場合は、電子メール通知を送信できます。 <br />Azure テナントの*全体管理者*と *AAD DC Administrators* グループのメンバーは、これらの通知に対して *[有効]* にすることができます。<br /> 必要に応じて、注意を必要とするアラートが発生した場合の通知の受信者を追加できます。|
-| domainConfigurationType | 既定では、マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 ユーザー フォレストを作成するために *domainConfiguration* 値を指定する必要はありません。<br /> "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストは現在プレビュー段階です。 リソース フォレストを作成するには、この値を *ResourceTrusting* に設定します。<br />リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。|
+| filteredSync            | Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーとグループを同期できるほか、特定のグループのみを "*範囲指定*" して同期することもできます。<br /><br /> 範囲指定された同期の詳細については、[Azure AD Domain Services の範囲指定された同期][scoped-sync]に関するページを参照してください。|
+| notificationSettings    | マネージド ドメインで生成されたアラートがある場合は、電子メール通知を送信できます。 <br /><br />Azure テナントの*全体管理者*と *AAD DC Administrators* グループのメンバーは、これらの通知に対して *[有効]* にすることができます。<br /><br /> 必要に応じて、注意を必要とするアラートが発生した場合の通知の受信者を追加できます。|
+| domainConfigurationType | 既定では、マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 ユーザー フォレストを作成するために *domainConfiguration* 値を指定する必要はありません。<br /><br /> "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストは現在プレビュー段階です。 リソース フォレストを作成するには、この値を *ResourceTrusting* に設定します。<br /><br />リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。|
 
 次の圧縮されたパラメーターの定義は、これらの値がどのように宣言されるかを示しています。 *aaddscontoso.com* という名前のユーザー フォレストは、マネージド ドメインに同期されている Azure AD のすべてのユーザーで作成されます。
 
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+* [Azure AD DS とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

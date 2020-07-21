@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:デザイナーを使用して ML モデルをデプロイする
+title: チュートリアル:デザイナー (プレビュー) を使用して ML モデルをデプロイする
 titleSuffix: Azure Machine Learning
 description: このチュートリアルでは、Azure Machine Learning デザイナー (プレビュー) で予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。
 author: peterclu
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 1d0cd074f6e4ad836bc5102f3f6edc61b75215e4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517468"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199967"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>チュートリアル:デザイナー (プレビュー) で機械学習モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026833"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232391"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合
 
@@ -61,13 +61,13 @@ Akamai EAA が Azure AD 上で単一のアプリケーションとして構成�
 
 **長所:** :
 
-• IDP の構成が 1 回だけで済む
+* IDP の構成が 1 回だけで済む
 
 **短所**:
 
-• ユーザーは最終的に 2 つのアプリケーション ポータルを持つことになる
+* ユーザーは最終的に 2 つのアプリケーション ポータルを持つことになる
 
-• すべてのアプリケーションを対象とする、共通する 1 つの CA ポリシー
+* すべてのアプリケーションを対象とする、共通する 1 つの CA ポリシー。
 
 ![統合シナリオ 1](./media/header-akamai-tutorial/scenario1.png)
 
@@ -77,13 +77,14 @@ Akamai EAA アプリケーションが Azure AD ポータル上で個別に設�
 
 **長所:** :
 
-• 個々の CA ポリシーを定義できる
+* 個々の CA ポリシーを定義できる
 
-• すべてのアプリが O365 のワッフルと myApps.microsoft.com パネルに表示される
+* すべてのアプリが O365 のワッフルと myApps.microsoft.com パネルに表示される。
+
 
 **短所**:
 
-• 複数の IDP を構成する必要がある
+* 複数の IDP を構成する必要がある。
 
 ![統合シナリオ 2](./media/header-akamai-tutorial/scenario2.png)
 
@@ -450,7 +451,7 @@ Akamai ヘッダー ベースの認証
 
 ### <a name="kerberos-authentication"></a>Kerberos 認証
 
-次の例では、内部 Web サーバー [http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/) を発行し、KCD を使用して SSO を有効化します。
+次の例では、内部 Web サーバー <code>http://frp-app1.superdemo.live</code> を発行し、KCD を使用して SSO を有効化します
 
 #### <a name="general-tab"></a>全般タブ
 

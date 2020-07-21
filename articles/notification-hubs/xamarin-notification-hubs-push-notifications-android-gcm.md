@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f1d12081591b180acca8ee35ecc5a5bf202211e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308134"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223943"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する
 
@@ -60,7 +60,7 @@ ms.locfileid: "84308134"
 2. Google Firebase Console からメモした**サーバー キー**を入力します。
 3. ツールバーの **[保存]** を選択します。
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Google G C M F C M オプションが強調表示され、赤線で囲まれた、Azure portal の通知ハブのスクリーンショット。](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 通知ハブが FCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
 

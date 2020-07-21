@@ -4,31 +4,33 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 ms.date: 05/21/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: c3a37e9086744fb45c8d1e4ebe3bd16da7a83770
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f4cb4cb1fc56d06ab1e061b2d0e9a031e0e511dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971149"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242051"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
-このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。 このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してポリシー割り当てを作成し、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。 このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイする" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイック スタートでは、ポリシー割り当てを作成し、"_マネージド ディスクを使用していない VM の監査_" という組み込みのポリシー定義を割り当てます。 使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](./samples/index.md)に関する記事をご覧ください。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
 
@@ -36,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [Microsoft.Authorization/policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 > [!NOTE]
 > Azure Policy サービスは無料です。 詳細については、[Azure Policy の概要](./overview.md)に関するページを参照してください。
@@ -63,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - その他のサンプル テンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)」を参照してください。
 - テンプレート リファレンスを確認するには、[Azure テンプレート リファレンス](/azure/templates/microsoft.authorization/allversions)に関するページを参照してください。
-- Resource Manager テンプレート (ARM テンプレート) を開発する方法については、[Resource Manager のドキュメント](../../azure-resource-manager/management/overview.md)を参照してください。
+- ARM テンプレートを開発する方法については、[Azure Resource Manager のドキュメント](../../azure-resource-manager/management/overview.md)を参照してください。
 - サブスクリプション レベルのデプロイについては、「[サブスクリプション レベルでリソース グループとリソースを作成する](../../azure-resource-manager/templates/deploy-to-subscription.md)」を参照してください。
 
 ## <a name="validate-the-deployment"></a>デプロイの検証

@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service の Java アプリケーションでのチーム開発を行う方法を示します。
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 352671b2fe31095b0ffcaffb49195071a456a892
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8bfcf16d3fcf685f946eb38b0b47fce4f2feba5b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78245020"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220237"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces での Java と Visual Studio Code を使用したチーム開発
 
@@ -34,7 +34,7 @@ ms.locfileid: "78245020"
 * サービスの依存関係の多くをシミュレートしたり、モックを作成したりする開発者もいます。 これは有効な方法ですが、これらのモックの管理はすぐに開発コストに影響を与える可能性があります。 さらに、この方法では開発環境が運用環境と大きく異なって見えるようになり、特定しにくいバグが知らない間に発生するおそれもあります。
 * その結果、あらゆる種類の統合テストの実行が困難になります。 実際には、統合テストはコミット後にのみ行われる場合があります。つまり、問題は開発サイクルの後半に発生します。
 
-    ![](media/common/microservices-challenges.png)
+    ![マイクロサービスを開発するときに直面する課題を示す図。](media/common/microservices-challenges.png)
 
 ### <a name="work-in-a-shared-dev-space"></a>共有開発空間で作業する
 Azure Dev Spaces を使用して、Azure に "*共有*" 開発空間をセットアップできます。 各開発者は、アプリケーションの自分の担当部分だけに集中でき、自分のシナリオが依存する他のすべてのサービスとクラウド リソースが既に含まれている開発空間で、"*事前コミット コード*" を繰り返し開発できます。 依存関係は常に最新の状態であり、開発者は運用環境を反映した方法で作業を行います。
@@ -56,7 +56,7 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 
 1. [Dev Spaces サンプル アプリケーション](https://github.com/Azure/dev-spaces)を複製します。`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. リモート ブランチ *azds_updates* をチェックアウトします。`git checkout -b azds_updates origin/azds_updates`
-1. _dev_ 空間を選択します。`azds space select --name dev` 親 dev 空間を選択するように要求されたら、" _\<なし\>_ " を選択します。
+1. _dev_ 空間を選択します。`azds space select --name dev` 親 dev 空間を選択するように要求されたら、" _\<none\>_ " を選択します。
 1. _mywebapi_ ディレクトリに移動し、`azds up -d` を実行します。
 1. _webfrontend_ ディレクトリに移動し、`azds up -d` を実行します。
 1. `azds list-uris` を実行して _webfrontend_ のパブリック エンドポイントを確認します
@@ -94,7 +94,7 @@ azds space select --name scott
 
 ここでは入門用の仮定に合わせて、新しい空間には _scott_ という名前を使用しました。これは、だれが作業しているのかが同僚にわかるようにするためです。 しかし、これには任意の名前を付けることができ、_sprint4_、_demo_ のように柔軟な意味を持たせることができます。 いずれにしても、_dev_ は、このアプリケーションの一部を使用するすべての開発者にとってのベースラインとなります。
 
-![](media/common/ci-cd-space-setup.png)
+![単純な C I C D 空間の設定を示す図。](media/common/ci-cd-space-setup.png)
 
 `azds space list` コマンドを実行すると、開発環境にあるすべてのスペースが一覧表示されます。 _[Selected]\(選択\)_ 列には、現在選択している空間が示されます (true/false)。 この例では、空間の作成時に _dev/scott_ という名前の空間が自動的に選択されました。 `azds space select` コマンドを使用して、いつでも別のスペースを選択することができます。
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562989"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220608"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -87,17 +87,7 @@ ms.locfileid: "85562989"
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet をハブに接続する
 
-この手順では、ハブと VNet の間の接続を作成します。 接続する VNet ごとにこれらの手順を繰り返します。
-
-1. 仮想 WAN のページで、 **[仮想ネットワーク接続]** をクリックします。
-2. 仮想ネットワーク接続のページで、 **[+ 接続の追加]** をクリックします。
-3. **[接続の追加]** ページで、次のフィールドに入力します。
-
-    * **[接続名]** - 接続に名前を付けます。
-    * **[ハブ]** - この接続に関連付けるハブを選択します。
-    * **[サブスクリプション]** - サブスクリプションを確認します。
-    * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することはできません。
-4. **[OK]** をクリックして、仮想ネットワーク接続を作成します。
+[!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>VPN 構成をダウンロードする
 
@@ -262,7 +252,7 @@ VPN ゲートウェイの設定は、 **[表示/構成]** を選択すること�
 * VPN Gateway のパブリック IP アドレス (Azure によって割り当てられます)
 * VPN Gateway のプライベート IP アドレス (Azure によって割り当てられます)
 * VPN Gateway の既定の BGP IP アドレス (Azure によって割り当てられます)
-* カスタム BGP IP アドレスの構成オプション: このフィールドは APIPA (Automatic Private IP Addressing) 用に予約されています。 Azure では、169.254.21.* から 169.254.22.* の範囲の BGP IP がサポートされます。
+* カスタム BGP IP アドレスの構成オプション: このフィールドは APIPA (Automatic Private IP Addressing) 用に予約されています。 Azure では、169.254.21.* から 169.254.22.* の範囲の BGP IP がサポートされます。 Azure では、これらの範囲の BGP 接続が受け入れられますが、既定の BGP IP を使用して接続がダイヤルされます。
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="構成を表示する" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 

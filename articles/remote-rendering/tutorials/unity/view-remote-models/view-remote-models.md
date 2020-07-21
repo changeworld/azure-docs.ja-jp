@@ -1,16 +1,16 @@
 ---
 title: リモートでレンダリングされたモデルの表示
 description: Azure Remote Rendering の入門チュートリアルでは、Azure によってリモートでレンダリングされるモデルを表示する方法について説明します
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: f0b9bf1c7e085efd86f70f8246214d366265036a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566785"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231908"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -101,7 +101,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. **[Clear flags]\(フラグをクリア\)** を *[Solid Color]\(単色\)* に設定します。
 
-1. **[Background]\(背景\)** を *[Black]\(黒\)* (#000000) に設定します (フル (255)、アルファ (A) を使用します)
+1. **[Background]\(背景\)** を *[Black]\(黒\)* (#000000) に設定します (アルファ (A) 値は完全に透明 (0) を使用します)
 
     ![カラー ホイール](./media/color-wheel-black.png)
 

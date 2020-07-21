@@ -8,14 +8,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: e20b7b447797a957f860c6b1dd9679519960ebc5
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8c0aabc3242bf9576de917ad63ce4f71bec9905e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025184"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146547"
 ---
-# <a name="create-a-data-labeling-project-preview-and-export-labels"></a>データのラベル付けプロジェクト (プレビュー) を作成してラベルをエクスポートする 
+# <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -144,7 +144,7 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 >[!NOTE]
 > ラベラーは最初の 9 つのラベルを 1 から 9 の数字キーを使用して選択できることを必ず明記してください。
 
-## <a name="use-ml-assisted-labeling"></a>ML によるラベル付けを使用する
+## <a name="use-ml-assisted-labeling-preview"></a>ML によるラベル付けを使用する (プレビュー)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
