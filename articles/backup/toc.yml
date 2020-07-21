@@ -323,11 +323,11 @@
               href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
-            - name: Azure portal での Azure VM
+            - name: Azure VM
               href: backup-azure-vms-automation.md
-            - name: Azure portal での DPM
+            - name: Data Protection Manager (DPM)
               href: backup-dpm-automation.md
-            - name: Azure portal での Windows Server
+            - name: MARS エージェントを使用した Windows Server
               href: backup-client-automation.md
             - name: Azure VM バックアップ内の SQL
               href: backup-azure-sql-automation.md
@@ -422,7 +422,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
+      href: /answers/topics/azure-backup.html
     - name: 料金計算ツール
       href: azure-backup-pricing.md
     - name: サービスの更新情報

@@ -179,6 +179,8 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
+        - name: Azure Ultra Disks の使用 (プレビュー)
+          href: use-ultra-disks.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用
@@ -191,8 +193,6 @@
           href: internal-lb.md
         - name: Standard Load Balancer の使用
           href: load-balancer-standard.md
-        - name: ユーザー定義ルートをエグレスに使用する
-          href: egress-outboundtype.md
         - name: 静的 IP アドレスの使用
           href: static-ip.md
         - name: イングレス
@@ -214,8 +214,14 @@
                   href: ingress-tls.md
                 - name: 静的パブリック IP アドレスの使用
                   href: ingress-static-ip.md
-        - name: エグレス トラフィック
-          href: egress.md
+        - name: エグレス
+          items:
+            - name: クラスターのエグレス トラフィックの制限および制御
+              href: limit-egress-traffic.md
+            - name: ユーザー定義ルートをエグレスに使用する
+              href: egress-outboundtype.md
+            - name: 基本的なロード バランサーと静的 IP アドレスを使用する
+              href: egress.md
         - name: CoreDNS のカスタマイズ
           href: coredns-custom.md
     - name: セキュリティと認証
@@ -238,13 +244,11 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: クラスターの資格情報を更新する
           href: update-credentials.md
-        - name: クラスターのエグレス トラフィックの制限および制御
-          href: limit-egress-traffic.md
         - name: Azure Active Directory の統合の有効化
           items:
-            - name: AKS マネージド AAD (プレビュー)
+            - name: AKS マネージド AAD
               href: managed-aad.md
-            - name: Azure CLI の使用
+            - name: AAD 統合 (レガシ)
               href: azure-ad-integration-cli.md
         - name: Kubernetes 承認での Azure RBAC の使用 (プレビュー)
           href: manage-azure-rbac.md
@@ -291,8 +295,6 @@
       items:
         - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
           href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
-        - name: Visual Studio で Local Process with Kubernetes を使用する (プレビュー)
-          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用
@@ -383,10 +385,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: サポート ポリシー
       href: support-policies.md
-    - name: ロードマップ
+    - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 製品フィードバックの提供
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: AKS のロードマップ
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: ビデオ

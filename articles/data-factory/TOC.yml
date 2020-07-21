@@ -23,7 +23,8 @@
       href: quickstart-create-data-factory-python.md
     - name: データ ファクトリの作成 - REST
       href: quickstart-create-data-factory-rest-api.md
-    - name: データ ファクトリの作成 - Resource Manager テンプレート
+    - name: データファクトリの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
       href: enable-customer-managed-key.md
@@ -98,6 +99,8 @@
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: 時間でパーティション分割されたファイル名による新しいファイル
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+        - name: マネージド VNet とプライベート エンドポイントを使用してコピー パイプラインを構築する
+          href: tutorial-copy-data-portal-private.md
     - name: データを変換する
       items:
         - name: マッピング データ フローを使用してデータを変換する
@@ -126,6 +129,8 @@
                   href: tutorial-transform-data-hive-virtual-network-portal.md
                 - name: Azure PowerShell
                   href: tutorial-transform-data-hive-virtual-network.md
+        - name: マネージド VNet とプライベート エンドポイントを使用してマッピング データフロー パイプラインを構築する
+          href: tutorial-data-flow-private.md
     - name: 制御フロー
       items:
         - name: ユーザー インターフェイス (UI)
@@ -162,6 +167,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
+    - name: マネージド仮想ネットワーク
+      href: managed-virtual-network-private-endpoint.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
@@ -408,6 +415,8 @@
           href: connector-web-table.md
         - name: Xero
           href: connector-xero.md
+        - name: XML 形式
+          href: format-xml.md
         - name: Zoho
           href: connector-zoho.md
     - name: データの移動
@@ -469,12 +478,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight Streaming アクティビティ
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning バッチ実行アクティビティ
-          href: transform-data-using-machine-learning.md
-        - name: Machine Learning 更新リソース アクティビティ
-          href: update-machine-learning-models.md
         - name: Machine Learning パイプラインの実行アクティビティ
           href: transform-data-machine-learning-service.md
+        - name: Machine Learning Studio (classic) のバッチ実行アクティビティ
+          href: transform-data-using-machine-learning.md
+        - name: Machine Learning Studio (classic) の更新リソース アクティビティ
+          href: update-machine-learning-models.md
         - name: ストアド プロシージャ アクティビティ
           href: transform-data-using-stored-procedure.md
         - name: コンピューティングのリンクされたサービス
@@ -681,7 +690,7 @@
               href: how-to-fixed-width.md
             - name: エラー行の処理
               href: how-to-data-flow-error-rows.md
-            - name: Azure SQL DB から CosmosDB へ
+            - name: Azure SQL DB から Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
         - name: オンプレミスからの SSIS の移行
           items:

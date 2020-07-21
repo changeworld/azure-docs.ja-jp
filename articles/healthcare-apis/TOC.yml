@@ -19,6 +19,8 @@
       href: fhir-oss-powershell-quickstart.md
     - name: FHIR Server for Azure をデプロイする - CLI
       href: fhir-oss-cli-quickstart.md
+    - name: IoT コネクタをデプロイする - ポータル
+      href: iot-fhir-portal-quickstart.md
 - name: チュートリアル
   expanded: false
   items:
@@ -37,6 +39,11 @@
       href: access-fhir-postman-tutorial.md
     - name: SMART on FHIR プロキシを使用する
       href: use-smart-on-fhir-proxy.md
+    - name: IoT デバイスからのデータの取り込み
+      expanded: false
+      items:
+        - name: Azure IoT Hub を通じてデバイス データを受信する
+          href: device-data-through-iot-hub.md
 - name: サンプル
   items:
     - name: Azure Policy の組み込み
@@ -79,6 +86,8 @@
       href: enable-diagnostic-logging.md
     - name: Azure API for FHIR のトークンを取得する - CLI
       href: get-healthcare-apis-access-token-cli.md
+    - name: IoT コネクタのエラーのトラブルシューティング
+      href: iot-troubleshoot-guide.md
 - name: 概念
   expanded: false
   items:
@@ -88,6 +97,13 @@
       href: azure-ad-hcapi-token-validation.md
     - name: カスタム HTTP ヘッダーを使用してデータを監査ログに追加する
       href: use-custom-headers.md
+    - name: IoT コネクタの動作
+      expanded: false
+      items:
+        - name: IoT コネクタのデータ フロー
+          href: iot-data-flow.md
+        - name: IoT コネクタのマッピング テンプレート
+          href: iot-mapping-templates.md
 - name: リソース
   items:
     - name: よく寄せられる質問

@@ -6,14 +6,15 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs と Lab Services
       href: lab-services-overview.md
+- name: クイック スタート
+  items:
+    - name: ラボを作成する - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: create-lab-windows-vm-template.md
 - name: チュートリアル
   items:
     - name: ラボを設定する
-      items:
-        - name: Azure Portal の使用
-          href: tutorial-create-custom-lab.md
-        - name: Resource Manager テンプレートの使用
-          href: create-lab-windows-vm-template.md
+      href: tutorial-create-custom-lab.md
     - name: ラボにアクセスする
       href: tutorial-use-custom-lab.md
 - name: サンプル
@@ -64,6 +65,10 @@
           href: devtest-lab-training-lab.md
         - name: クレーム可能 VM を使用するシナリオ
           href: devtest-lab-use-claim-capabilities.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: ラボの構成
@@ -122,18 +127,26 @@
           href: personal-data-delete-export.md
     - name: ラボでの VM の使用
       items:
-        - name: VM の作成 - Azure portal
-          href: devtest-lab-add-vm.md
-        - name: VM の作成 - Azure PowerShell
-          href: devtest-lab-vm-powershell.md
-        - name: VM の作成 - Azure CLI
-          href: devtest-lab-vmcli.md
-        - name: VM の作成 - Resource Manager テンプレート
-          href: devtest-lab-use-resource-manager-template.md
-        - name: 共有イメージ ギャラリーのイメージを使用して VM を作成する
-          href: add-vm-use-shared-image.md
-        - name: ブラウザーを使用して VM に接続する
-          href: connect-virtual-machine-through-browser.md
+        - name: VM の作成
+          items:
+            - name: Azure portal
+              href: devtest-lab-add-vm.md
+            - name: Azure PowerShell
+              href: devtest-lab-vm-powershell.md
+            - name: Azure CLI
+              href: devtest-lab-vmcli.md
+            - name: Resource Manager テンプレート
+              href: devtest-lab-use-resource-manager-template.md
+            - name: 共有イメージ ギャラリーのイメージを使用して VM を作成する
+              href: add-vm-use-shared-image.md
+        - name: VM への接続
+          items:
+            - name: Windows VM に接続する
+              href: connect-windows-virtual-machine.md
+            - name: Linux VM に接続する
+              href: connect-linux-virtual-machine.md
+            - name: ブラウザーを使用して VM に接続する
+              href: connect-virtual-machine-through-browser.md
         - name: PowerShell または CLI を使用して VM を開始/停止する
           href: use-command-line-start-stop-virtual-machines.md
         - name: VM の再起動
@@ -263,6 +276,12 @@
           href: troubleshoot-vm-environment-creation-failures.md
         - name: アーティファクトの失敗に関するトラブルシューティング
           href: devtest-lab-troubleshoot-artifact-failure.md
+    - name: モニター
+      items:
+        - name: アクティビティ ログを表示する
+          href: activity-logs.md
+        - name: アクティビティ ログ アラートの作成
+          href: create-alerts.md
 - name: リファレンス
   items:
     - name: CLI
