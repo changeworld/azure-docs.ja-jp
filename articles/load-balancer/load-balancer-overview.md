@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 598df2f0a1e9badebbb1bf8e7ec0f93ff98d55ce
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341790"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170566"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -67,7 +67,7 @@ Standard Load Balancer を使用して実現できる主なシナリオは、次
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>既定でのセキュリティ保護
 
 Standard Load Balancer は、ゼロ トラスト ネットワーク セキュリティ モデルを中核として構築されています。 既定では Standard Load Balancer はセキュリティで保護され、仮想ネットワークの一部です。 仮想ネットワークは、プライベートの分離されたネットワークです。  つまり、Standard Load Balancer と Standard パブリック IP アドレスは、ネットワーク セキュリティ グループによって開かれない限り、インバウンド フローに閉じられています。 NSG は、トラフィックを明示的に許可するために使用されます。  お使いの仮想マシン リソースのサブネットまたは NIC に NSG がない場合、トラフィックはこのリソースに到達することを許可されません。 NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関する記事をご覧ください。
-Basic Load Balancer は、既定ではインターネットに対して公開されています。
+Basic Load Balancer は、既定ではインターネットに対して公開されています。 また、Load Balancer には顧客データは格納されません。
 
 ## <a name="pricing-and-sla"></a>料金と SLA
 

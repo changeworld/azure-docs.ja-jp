@@ -1,5 +1,5 @@
 ---
-title: デザイナーを使用して ML モデルを構築する
+title: デザイナー (プレビュー) を使用して ML モデルを構築する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning 用のデザイナーを構成する用語、概念、ワークフローについて説明します。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517376"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199983"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]

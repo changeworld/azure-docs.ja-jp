@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 74183eafbddada0125f739a1ac4bfed0286f9cd1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187491"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232051"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Management SDK のバージョンのアップグレード
 
@@ -27,7 +27,7 @@ Management SDK は、Management REST API の特定のバージョンを対象と
 | SDK バージョン | 対応する REST API バージョン | 機能の追加または動作の変更 |
 |-------------|--------------------------------|-------------------------------------|
 | [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-version=2020-30-20 | エンドポイント セキュリティ (IP ファイアウォール、および [Azure Private Link](../private-link/private-endpoint-overview.md) との統合) を追加します |
-| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-version=2019-10-01 | 操作性の向上 |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-version=2019-10-01 | 操作性の向上。 [クエリ キーの一覧](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice)の破壊的変更 (GET は廃止されました)。 |
 | [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-version=2015-08-19  | 最初のバージョン |
 
 ## <a name="how-to-upgrade"></a>アップグレードする方法

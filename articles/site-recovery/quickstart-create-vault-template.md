@@ -1,33 +1,31 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Azure Recovery Services コンテナーを作成するためのクイックスタート。
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Recovery Services コンテナーを作成する方法について説明します。
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Recovery Services コンテナーを作成する方法について説明します。
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217296"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248827"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Recovery Services コンテナーを作成する
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Recovery Services コンテナーを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Recovery Services コンテナーを設定する方法について説明します。 [Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリがオンライン状態を保てるよう、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Recovery Services コンテナーを設定する方法について説明します。 [Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリがオンライン状態を保てるよう、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
-[なし] :
+アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
-
-### <a name="review-the-template"></a>テンプレートを確認する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)からのものです。
 
@@ -42,7 +40,7 @@ ms.locfileid: "84217296"
 
 その他の Azure Recovery Services テンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular)」を参照してください。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイするには、**サブスクリプション**、**リソース グループ**、**コンテナー名**が必要です。
 

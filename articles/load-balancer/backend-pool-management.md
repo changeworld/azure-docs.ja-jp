@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113974"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273763"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -22,9 +22,9 @@ ms.locfileid: "86113974"
 * ネットワーク インターフェイス カード (NIC)
 * IP アドレスと Virtual Network (VNET) のリソース ID の組み合わせ
 
-仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。 
+既存の仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。 
 
-コンテナーや Kubernetes の Pod などの NIC が使用できないシナリオでは、IP アドレスと VNET ID の組み合わせによってバックエンド プールを構成します。
+後で仮想マシンと仮想マシン スケール セットを作成する予定の IP アドレス範囲を使用してバックエンド プールを事前に割り当てる場合は、IP アドレスと VNET ID の組み合わせによってバックエンド プールを構成します。
 
 この記事の構成セクションでは、次のことに焦点を当てます。
 
@@ -249,7 +249,7 @@ JSON 要求本文:
 この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/)に従って、ロード バランサーと仮想マシンをデプロイし、ネットワーク インターフェイスを使用して仮想マシンをバックエンド プールに追加します。
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する
-コンテナーまたは IP が事前に設定されたバックエンド プールのシナリオでは、IP と仮想ネットワークを使用します。
+事前に設定されたバックエンド プールのシナリオでは、IP と仮想ネットワークを使用します。
 
 バックエンド プールのすべての管理は、次の例で強調されているように、バックエンド プール オブジェクトで直接実行されます。
 

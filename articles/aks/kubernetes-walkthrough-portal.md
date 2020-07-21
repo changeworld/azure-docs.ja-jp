@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: d904be260db8fe6170f57d438d3be6d306864d89
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ed4f69ea3c994d9d1cc71e26e35b8d2b6021982
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725110"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251421"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -43,7 +43,7 @@ AKS クラスターを作成するには、次の手順を実行します。
     
     ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    **スケール** を完了後に選択します。
+    **[Next:スケール]** を完了後に選択します。
 
 4. **[スケール]** ページで、既定のオプションを維持します。 ページの下部にある **[Next:Authentication] (次: 認証)** をクリックします。
     > [!CAUTION]
@@ -232,7 +232,7 @@ Azure Portal にこのデータが入力されるまで、数分かかる場合�
 
 1. 左側の **[監視]** の下で、 **[Insights]** を選択します
 1. 上部の **[+ フィルターの追加]** を選択します
-1. プロパティとして "*名前空間*" を選択し、 *\<All but kube-system (kube-system 以外のすべて)\>* を選択します
+1. プロパティとして "*名前空間*" を選択し、 *\<All but kube-system\>* を選択します。
 1. **コンテナー**の表示を選択します。
 
 次の例に示されているように、*azure-vote-back* コンテナーと *azure-vote-front* コンテナーが表示されます。
@@ -280,11 +280,11 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
-[aks-monitor]: ../monitoring/monitoring-container-health.md
+[aks-monitor]: ../azure-monitor/insights/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services

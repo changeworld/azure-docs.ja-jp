@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145981"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223977"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -117,8 +117,8 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 
     - DNS レコードを定期的に確認して、サブドメインがすべて以下の Azure リソースにマップされていることを確認します。
 
-        - **存在しているかどうか** - DNS ゾーンに対して、*.azurewebsites.net や *.cloudapp.azure.com などの Azure サブドメインを指すリソースのクエリを実行します (詳しくは[このリファレンス リスト](azure-domains.md)を参照してください)。
-        - **所有者が自分であるかどうか** - DNS サブドメインが対象としているすべてのリソースを所有していることを確認します。
+        - 存在しているかどうか - DNS ゾーンに対して、*.azurewebsites.net や *.cloudapp.azure.com などの Azure サブドメインを指すリソースのクエリを実行します (詳しくは[このリファレンス リスト](azure-domains.md)を参照してください)。
+        - 所有者が自分であるかどうか - DNS サブドメインが対象としているすべてのリソースを所有していることを確認します。
 
     - Azure の完全修飾ドメイン名 (FQDN) エンドポイントとアプリケーション所有者のサービス カタログを維持します。 サービス カタログを作成するには、次の表のパラメーターを使用して、次の Azure Resource Graph (ARG) クエリを実行します。
     
@@ -127,26 +127,15 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
         >
         > **制限** - Azure Resource Graph には、大規模な Azure 環境を使用している場合に考慮する必要がある調整およびページングの制限があります。 大規模な Azure リソース データセットを処理する方法について[参照してください](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)。  
 
-        ```
-        Search-AzGraph -Query "resources | where type == '[ResourceType]' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = [FQDNproperty]"
+        ```powershell
+        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = <FQDNproperty>"
         ``` 
-        
-        たとえば、このクエリでは Azure App Service からリソースが返されます。
-
-        ```
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-        
-        また、複数のリソースの種類を組み合わせることもできます。 このクエリの例では、Azure App Service **と** Azure App Service - Slot からリソースが返されます。
-
-        ```azurepowershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-
 
         ARG クエリのサービスごとのパラメーター:
 
-        |リソース名  |[ResourceType]  | [FQDNproperty]  |
+        |リソース名  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
         |Azure Front Door|microsoft.network/frontdoors|properties.cName|
         |Azure Blob Storage|microsoft.storage/storageaccounts|properties.primaryEndpoints.blob|
@@ -157,6 +146,23 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
         |Azure API Management|microsoft.apimanagement/service|properties.hostnameConfigurations.hostName|
         |Azure App Service|microsoft.web/sites|properties.defaultHostName|
         |Azure App Service - Slots|microsoft.web/sites/slots|properties.defaultHostName|
+
+        
+        **例 1** - このクエリでは Azure App Service からリソースが返されます。 
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = properties.defaultHostName"
+        ```
+        
+        **例 2** - このクエリでは、Azure App Service **および** Azure App Service - Slot からリソースを返すために、複数のリソースの種類が結合されます。
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
+        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
+        resourceGroup, name, endpoint = properties.defaultHostName"
+        ```
 
 
 - **修復手順を作成する:**
@@ -173,4 +179,4 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 
 - [Azure App Service でカスタム ドメインを追加するときにドメイン検証 ID を使用する](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
 
--    [クイック スタート: Azure PowerShell を使用して最初の Resource Graph クエリを実行します](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [クイック スタート: Azure PowerShell を使用して最初の Resource Graph クエリを実行します](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)

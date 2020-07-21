@@ -10,16 +10,18 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588294"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223756"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
 Azure Cognitive Services は、開発者が直接的な AI またはデータ サイエンスのスキルや知識がなくてもインテリジェントなアプリケーションを構築するために使用できる API、SDK、およびサービスです。 Azure Cognitive Services によって、開発者は簡単にアプリケーションに Cognitive 機能を追加できます。 Azure Cognitive Services の目標は、開発者が、聞いたり、話したり、理解したり、推論し始めたりできるアプリケーションの作成を支援することです。 Azure Cognitive Services 内のサービス カタログは、5 つの主要な柱として、視覚、音声、言語、Web 検索、および意思決定に分類できます。
+
+新着情報と更新された Cognitive Services ドキュメントを確認するには、 [Cognitive Services ドキュメントの新着情報](whats-new-docs.md)に関するページを参照してください。
 
 ## <a name="vision-apis"></a>Vision API
 
@@ -52,7 +54,7 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 |[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。|
 |[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Text Analytics")|Text Analytics は、未加工のテキストに、センチメント分析、キー フレーズ抽出、および言語検出のための自然言語処理を提供します。|
-|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "[変換者]")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
+|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
 
 
 ## <a name="search-apis"></a>Search API
@@ -78,17 +80,13 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。|
 |[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。|
 
-## <a name="use-free-trials"></a>無料試用版の使用
-
-[無料試用版へのサインアップ](https://azure.microsoft.com/try/cognitive-services/ "サインアップのヘルプ")には、メールといくつかの簡単な手順のみが必要です。 Microsoft アカウントをまだお持ちでない場合は、それが必要です。 要求された各 API の一意のキー ペアを受け取ります。 2 つ目は単なるスペアです。 秘密鍵は誰とも共有しないでください。 試用版には、秒または分あたりのトランザクション数の速度制限と、月間使用量の上限の両方があります。 トランザクションは単なる API 呼び出しです。 有料プランにアップグレードすれば制限を解除できます。
-
 ## <a name="subscription-management"></a>サブスクリプション管理
 
 Microsoft Account にサインインすると、[個人用サブスクリプション](https://www.microsoft.com/cognitive-services/subscriptions "個人用サブスクリプション")にアクセスして、使用している製品、残りのクォータ、およびサブスクリプションにさらに製品を追加する機能を表示できます。
 
 ## <a name="upgrade-to-unlock-limits"></a>アップグレードして制限を解除する
 
-すべての API には、使用量とスループットの制限が設けられた無料試用プランが用意されています。  有料プランを使用し、サービスをデプロイするときに Azyre portal 上で適切な価格レベルのオプションを選択することで、これらの制限を引き上げることができます。 [オファリングと価格の詳細についてはこちらを参照してください](https://azure.microsoft.com/pricing/details/cognitive-services/ "プランと価格")。 クレジット カードと電話番号で、Azure サブスクリプション アカウントを設定する必要があります。 特殊な要件がある場合や、単に販売員と話したい場合は、料金ページの上部にある「問い合わせ」ボタンをクリックしてください。
+すべての API には、使用量とスループットの制限が設けられた無料レベルが用意されています。  有料プランを使用し、サービスをデプロイするときに Azyre portal 上で適切な価格レベルのオプションを選択することで、これらの制限を引き上げることができます。 [オファリングと価格の詳細についてはこちらを参照してください](https://azure.microsoft.com/pricing/details/cognitive-services/ "プランと価格")。 クレジット カードと電話番号で、Azure サブスクリプション アカウントを設定する必要があります。 特殊な要件がある場合や、単に販売員と話したい場合は、料金ページの上部にある「問い合わせ」ボタンをクリックしてください。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 

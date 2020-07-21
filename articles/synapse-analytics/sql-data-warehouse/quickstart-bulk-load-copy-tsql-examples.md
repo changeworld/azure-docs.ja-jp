@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
-ms.date: 05/06/2020
+ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5f6c6970ad8bb697ceb118b6725b37e93ca80b5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f9aa0214712704c1a80f73ae3fd05929f7245eb3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213059"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274146"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
@@ -23,10 +23,10 @@ ms.locfileid: "85213059"
 
 次の表は、サポートされている認証方法をファイルの種類別およびストレージ アカウント別にまとめたものです。 これはソース ストレージの場所とエラー ファイルの場所に適用されます。
 
-|                      |                CSV                |              Parquet              |                ORC                |
-| :------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  Azure BLOB ストレージ  | SAS/MSI/サービス プリンシパル/キー/AAD |              SAS/キー              |              SAS/キー              |
-| Azure Data Lake Gen2 | SAS/MSI/サービス プリンシパル/キー/AAD | SAS/MSI/サービス プリンシパル/キー/AAD | SAS/MSI/サービス プリンシパル/キー/AAD |
+|                          |                CSV                |              Parquet              |                ORC                |
+| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|  **Azure Blob Storage**  | SAS/MSI/サービス プリンシパル/キー/AAD |              SAS/キー              |              SAS/キー              |
+| **Azure Data Lake Gen2** | SAS/MSI/サービス プリンシパル/キー/AAD | SAS/MSI/サービス プリンシパル/キー/AAD | SAS/MSI/サービス プリンシパル/キー/AAD |
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 行を終止させるものとして LF が与えられたストレージ アカウント キー (Unix スタイルの改行)
 
@@ -93,6 +93,11 @@ WITH (
    > [!NOTE]
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)をご覧ください。
    
+    > [!IMPORTANT]
+    > **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の RBAC ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。 
+
+    ![読み込みのための RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+
 4. これで "マネージド ID" を指定して COPY ステートメントを実行できます。
 
     ```sql
@@ -104,14 +109,15 @@ WITH (
     )
     ```
 
-> [!IMPORTANT]
->
-> - **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の RBAC ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。 
-
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 認証 (AAD)
 #### <a name="steps"></a>手順
 
 1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者**の RBAC ロールを AAD ユーザーに割り当てます。 
+
+    > [!IMPORTANT]
+    > **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の RBAC ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。
+
+    ![読み込みのための RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. 次の[ドキュメント](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)を進め、Azure AD 認証を構成します。 
 
@@ -125,9 +131,6 @@ WITH (
     )
     ```
 
-> [!IMPORTANT]
->
-> - **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の RBAC ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。 
 
 ## <a name="e-service-principal-authentication"></a>E. サービス プリンシパル認証
 #### <a name="steps"></a>手順

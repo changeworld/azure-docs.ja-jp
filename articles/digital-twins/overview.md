@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737123"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257992"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure Digital Twins** は、環境全体の包括的なデジタル モデルの作成を可能にする IoT プラットフォームです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
 
@@ -46,6 +43,12 @@ DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plu
 ### <a name="live-execution-environment"></a>ライブ実行環境
 
 Azure Digital Twins のデジタル モデルは、現実世界のライブの最新の表現です。 カスタム DTDL モデルのリレーションシップを使用して、ご自分の環境を表す**ライブ グラフ**にツインを接続します。
+
+Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](https://github.com/Azure-Samples/digital-twins-explorer) を使用して確認できます。
+
+次に、視覚化の例を示します。
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="デジタル ツインを表すノードのグラフが表示された Azure Digital Twins explorer サンプル アプリケーションのスクリーンショット" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Azure Digital Twins では、そのグラフをデータ処理とビジネス ロジックで最新の状態に保つための豊富な**イベント システム**を提供しています。 [Azure Functions](../azure-functions/functions-overview.md) などの外部のコンピューティング リソースを接続して、このデータ処理を柔軟でカスタマイズされた方法で行うことができます。
 

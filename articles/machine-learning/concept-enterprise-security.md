@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392235"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259439"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -111,14 +111,19 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 
 ## <a name="data-encryption"></a>データの暗号化
 
+> [!IMPORTANT]
+> __トレーニング__中の運用グレードの暗号化の場合、Microsoft は Azure Machine Learning コンピューティング クラスターを使用することをお勧めします。 __推論__中の運用グレードの暗号化の場合、Microsoft は Azure Kubernetes Service を使用することをお勧めします。
+>
+> Azure Machine Learning コンピューティング インスタンスは、開発またはテスト環境です。 これを使用する場合は、ノートブックやスクリプトなどのファイルをファイル共有に保存することをお勧めします。 データは、データストアに格納する必要があります。
+
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
 > [!IMPORTANT]
 > ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 
 
-`hbi_workspace` フラグにより、Microsoft が診断目的で収集するデータの量が制御され、Microsoft が管理する環境での追加の暗号化が可能になります。 さらに、次のことが可能になります。
+`hbi_workspace` フラグにより、Microsoft が診断目的で収集するデータの量が制御され、Microsoft が管理する環境での追加の暗号化が可能になります。 さらに、次のアクションが可能になります。
 
-* そのサブスクリプションで以前にクラスターを作成していない場合に、Amlcompute クラスターでローカル スクラッチ ディスクの暗号化を開始します。 それ以外の場合は、コンピューティング クラスターのスクラッチ ディスクの暗号化を有効にするためにサポート チケットを作成する必要があります。 
+* そのサブスクリプションで以前にクラスターを作成していない場合に、Azure Machine Learning コンピューティング クラスターでローカル スクラッチ ディスクの暗号化を開始します。 それ以外の場合は、コンピューティング クラスターのスクラッチ ディスクの暗号化を有効にするためにサポート チケットを作成する必要があります。 
 * 実行間でローカル スクラッチ ディスクをクリーンアップします
 * Key Vault を使用して、ストレージ アカウント、コンテナー レジストリ、SSH アカウントの資格情報を実行層からコンピューティング クラスターに安全に渡します。
 * AzureMachineLearningService 以外の外部サービスから基になる Batch プールを呼び出すことができないように、IP フィルタリングを有効にします。
@@ -228,7 +233,7 @@ Azure Databricks は Azure Machine Learning パイプラインで使用できま
 
 Azure Machine Learning では、さまざまな Azure Machine Learning マイクロサービス間の内部通信をセキュリティで保護するために、TLS を使用します。 すべての Azure Storage アクセスも、セキュリティで保護されたチャネル経由で行われます。
 
-スコアリング エンドポイントへの外部呼び出しをセキュリティで保護するために、Azure Machine Learning では TLS を使用します。 詳細については、「[TSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)」を参照してください。
+スコアリング エンドポイントへの外部呼び出しをセキュリティで保護するために、Azure Machine Learning では TLS が使用されます。 詳細については、「[TSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)」を参照してください。
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 

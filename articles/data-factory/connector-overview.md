@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 07/08/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: d7a872121ca6560b8ede86abc35294ab8c9b0c1b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f22b4bec17abe95be2a17d3e0e3c41fab3483fe0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142007"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224819"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory コネクタの概要
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory は、コピー、データ フロー、ルックアップ、メタデータの取得、および削除アクティビティを使用して、次のデータ ストアおよび形式をサポートします。 各データ ストアをクリックすると、サポートされている機能と対応する構成の詳細を確認できます。
+Azure Data Factory では、コピー、データ フロー、ルックアップ、メタデータの取得、および削除アクティビティを介して、次のデータ ストアおよび形式がサポートされます。 各データ ストアをクリックすると、サポートされている機能と対応する構成の詳細を確認できます。
 
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
@@ -34,6 +34,7 @@ Azure Data Factory では次のファイル形式がサポートされます。 
 - [バイナリ形式](format-binary.md)
 - [Common Data Model 形式](format-common-data-model.md)
 - [区切りテキスト形式](format-delimited-text.md)
+- [差分形式](format-delta.md)
 - [Excel 形式](format-excel.md)
 - [JSON 形式](format-json.md)
 - [ORC 形式](format-orc.md)

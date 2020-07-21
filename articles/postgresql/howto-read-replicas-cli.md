@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: b8da326ea48133d2029f385fc55450c00aecf656
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: de74258cadcdf81da211561a84ff06927830e690
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106613"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274409"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する
 
@@ -84,9 +84,9 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 
 汎用またはメモリ最適化マスター サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定しておらず、サーバーを再起動していないと、エラーが返されます。 レプリカを作成する前に、この 2 つの手順を済ませておいてください。
 
-レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立にいくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
-
 > [!IMPORTANT]
+> [読み取りレプリカの概要に関するページの考慮事項セクション](concepts-read-replicas.md#considerations)を確認してください。
+>
 > マスター サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
 
 ### <a name="list-replicas"></a>レプリカの一覧表示

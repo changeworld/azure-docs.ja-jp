@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142410"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258216"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -21,11 +21,27 @@ Azure Digital Twins ソリューションでは、環境内のエンティティ
 > [!TIP]
 > "Azure Digital Twins" は、この Azure サービス全体を指します。 "デジタル ツイン" または単に "ツイン" は、サービスのインスタンス内の個々のツイン ノードを指します。
 
-## <a name="creating-digital-twins"></a>デジタル ツインの作成
+## <a name="digital-twins"></a>Digital Twins
 
 Azure Digital Twins インスタンスでデジタル ツインを作成するには、"*モデル*" をサービスにアップロードしておく必要があります。 モデルは、特に、プロパティ、テレメトリ メッセージ、特定のツインが持つことのできるリレーションシップのセットを記述したものです。 モデルで定義される情報の種類については、[カスタム モデル](concepts-models.md)に関するページを参照してください。
 
 モデルを作成してアップロードしたら、クライアント アプリはその型のインスタンスを作成できます。これがデジタル ツインです。 たとえば、モデル *Floor* を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン (*GroundFloor* という *Floor* 型ツイン、*Floor2* という別のツインなど) を作成できます。 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>リレーションシップ: デジタル ツインのグラフ
+
+ツインは、そのリレーションシップによってツイン グラフに接続されます。 ツインが持つことのできるリレーションシップは、そのモデルの一部として定義されます。  
+
+たとえば、モデル *Floor* で、*room* 型のツインをターゲットとする *contains* リレーションシップが定義されているとします。 この定義により、Azure Digital Twins では、任意の *Floor* ツインから任意の *Room* ツイン (*Room* サブタイプのツインを含む) への *contains* リレーションシップを作成できます。 
+
+このプロセスにより、グラフ内にエッジ (リレーションシップ) によって接続された一連のノード (デジタル ツイン) が作成されます。
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>API を使用して作成する
+
+このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[Digital Twins API](how-to-use-apis-sdks.md) を利用する .NET コードの例が含まれています。
+
+### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
 [DigitalTwins API](how-to-use-apis-sdks.md) を使用して、*Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>リレーションシップ: デジタル ツインのグラフの作成
-
-ツインは、そのリレーションシップによってツイン グラフに接続されます。 ツインが持つことのできるリレーションシップは、そのモデルの一部として定義されます。  
-
-たとえば、モデル *Floor* で、*room* 型のツインをターゲットとする *contains* リレーションシップが定義されているとします。 この定義により、Azure Digital Twins では、任意の *Floor* ツインから任意の *Room* ツイン (*Room* サブタイプのツインを含む) への *contains* リレーションシップを作成できます。 
+### <a name="create-relationships"></a>リレーションシップの作成
 
 [DigitalTwins API](how-to-use-apis-sdks.md) を使用して、*GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-このプロセスにより、グラフ内にエッジ (リレーションシップ) によって接続された一連のノード (デジタル ツイン) が作成されます。
 
 ## <a name="json-representations-of-graph-elements"></a>グラフ要素の JSON 表現
 

@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL を使用してデータを一括で読み込む
+title: クイック スタート:Synapse SQ を使用してデータを一括で読み込む
 description: Synapse Studio を使用して Synapse SQL にデータを一括で読み込みます
 services: synapse-analytics
 author: kevinvngo
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 959742ec3c0434213d19b0f92fe523671fd60f33
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7f840d4a75be72a4317860dcf4a6708642369a24
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964551"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274222"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Synapse SQL を使用したデータの一括読み込み
 

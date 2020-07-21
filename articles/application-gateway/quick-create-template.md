@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170496"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249361"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Resource Manager テンプレート
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>クイック スタート:Azure Application Gateway を使用して Web トラフィックを転送する - ARM テンプレート
 
-このクイック スタートでは、Resource Manager テンプレートを使用して Azure Application Gateway を作成します。 次いで、アプリケーション ゲートウェイをテストし、それが正常に動作することを確認します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Application Gateway を作成します。 次いで、アプリケーション ゲートウェイをテストし、それが正常に動作することを確認します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ ms.locfileid: "84170496"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
 わかりやすくするために、このテンプレートでは、パブリック フロントエンド IP、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を作成します。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)からのものです
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/ag-docs-qs/)からのものです
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
@@ -50,10 +52,9 @@ ms.locfileid: "84170496"
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : 仮想マシン用に 2 つ。
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : IIS と Web ページの構成用。
 
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
-
-Azure への Resource Manager テンプレートのデプロイ:
+ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートにより、アプリケーション ゲートウェイ、ネットワーク インフラストラクチャ、IIS を実行しているバックエンドプールに 2 つの仮想マシンが作成されます。
 

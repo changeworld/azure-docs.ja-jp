@@ -1,5 +1,5 @@
 ---
-title: VS Code 拡張機能によるリソースの作成と管理
+title: VS Code 拡張機能 (プレビュー) によるリソースの作成と管理
 titleSuffix: Azure Machine Learning
 description: VS Code 拡張機能を使用してリソースを作成および管理する
 services: machine-learning
@@ -9,15 +9,15 @@ ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 07/08/2020
-ms.openlocfilehash: 5ff435a291d742b8a174d7571aa443b7cef4d1e1
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/09/2020
+ms.openlocfilehash: 2deb939745647636cc04ae124d1e843db0bef7f6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156400"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206505"
 ---
-# <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension"></a>VS Code 拡張機能を使用して Azure Machine Learning リソースを管理する
+# <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
 VS Code 拡張機能を使用して Azure Machine Learning リソースを管理する方法について説明します。
 

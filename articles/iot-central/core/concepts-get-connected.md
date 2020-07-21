@@ -3,20 +3,19 @@ title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710441"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224761"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -73,19 +72,40 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 運用環境では、X.509 証明書を使用することが、IoT Central に対して推奨されるデバイス認証メカニズムです。 詳細については、「[X.509 CA 証明書を使用したデバイス認証](../../iot-hub/iot-hub-x509ca-overview.md)」をご覧ください。
 
-X.509 証明書を使用してデバイスを接続するには、あらかじめ中間またはルート X.509 証明書をアプリケーションに追加し、検証しておく必要があります。 デバイスは、ルート証明書または中間証明書から生成されたリーフ X.509 証明書を使用する必要があります。
+X.509 証明書を使用してデバイスをアプリケーションに接続するには、次のようにします。
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>ルート証明書または中間証明書を追加して検証する
+1. **証明書 (X.509)** 構成証明の種類を使用する*登録グループ*を作成します。
+2. 登録グループで、中間またはルート X.509 証明書を追加して検証します。
+3. 登録グループのルートまたは中間証明書から生成されたリーフ X.509 証明書を使用するデバイスを登録して接続します。
 
-**[管理] > [デバイス接続] > [プライマリ証明書の管理]** に移動し、デバイス証明書の生成に使用する X.509 ルート証明書または中間証明書を追加します。
+### <a name="create-an-enrollment-group"></a>登録グループを作成する
 
-![接続の設定](media/concepts-get-connected/manage-x509-certificate.png)
+[登録グループ](../../iot-dps/concepts-service.md#enrollment)は、同じ構成証明の種類を共有するデバイスのグループです。 サポートされている構成証明の種類は、X.509 証明書と SAS の 2 つです。
 
-証明書の所有権を検証して、証明書のアップロード担当者が証明書の秘密キーを持っていることを確認します。 証明書を検証するには:
+- X.509 登録グループでは、IoT Central に接続するすべてのデバイスによって、登録グループのルートまたは中間証明書から生成されたリーフ X.509 証明書が使用されます。
+- SAS 登録グループでは、IoT Central に接続するすべてのデバイスによって、登録グループの SAS トークンから生成された SAS トークンが使用されます。
 
-  1. **[確認コード]** の横のボタンを選択してコードを生成します。
-  1. 前の手順で生成した確認コードを使用して X.509 検証証明書を作成します。 証明書を .cer ファイルとして保存します。
-  1. 署名された検証証明書をアップロードし、 **[確認]** を選択します。 正常に確認されると、証明書が "**確認済み**" としてマークされます。
+すべての IoT Central アプリケーションの 2 つの既定の登録グループは、1 つは IoT デバイス用、もう 1 つは Azure IoT Edge デバイス用の、SAS 登録グループです。 X.509 登録グループを作成するには、 **[デバイスの接続]** ページに移動し、 **[+ Add enrollment group]\(+ 登録グループの追加\)** を選択します。
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="X.509 登録グループの追加のスクリーンショット":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>ルートまたは中間 X.509 証明書を追加して検証する
+
+登録グループにルートまたは中間証明書を追加して検証するには、次のようにします。
+
+1. 先ほど作成した X.509 登録グループに移動します。 プライマリとセカンダリの両方の X.509 証明書を追加することもできます。 **[+ Manage primary]\(プライマリの管理\)** を選択します。
+
+1. **[プライマリ証明書] ページ**で、プライマリの X.509 証明書をアップロードします。 これは、ルートまたは中間証明書です。
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="プライマリ証明書のスクリーンショット":::
+
+1. **確認コード**を使用して、使用しているツールで確認コードを生成します。 次に、 **[検証]** を選択して検証証明書をアップロードします。
+
+1. 検証が成功すると、次の確認メッセージが表示されます。
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="検証済みのプライマリ証明書のスクリーンショット":::
+
+証明書の所有権を検証して、証明書のアップロード担当者が証明書の秘密キーを持っていることを確認します。
 
 セキュリティ侵害があるか、プライマリ証明書の期限が設定されている場合は、セカンダリ証明書を使用してダウンタイムを短縮します。 プライマリ証明書の更新中に、セカンダリ証明書を使用してデバイスのプロビジョニングに進むことができます。
 
@@ -93,7 +113,7 @@ X.509 証明書を使用してデバイスを接続するには、あらかじ�
 
 X.509 証明書を使用してデバイスを一括接続するには、まず CSV ファイルを使用してデバイスをアプリケーションに登録し、[デバイス ID とデバイス名をインポート](howto-manage-devices.md#import-devices)します。 デバイス ID はすべて小文字である必要があります。
 
-アップロードしたルート証明書または中間証明書を使用して、デバイスの X.509 リーフ証明書を生成します。 **デバイス ID** をリーフ証明書の `CNAME` 値として使用します。 デバイス コードには、アプリケーションの **ID スコープ**値と**デバイス ID**、および対応するデバイス証明書が必要です。
+X.509 登録グループにアップロードしたルートまたは中間証明書を使用して、デバイスの X.509 リーフ証明書を生成します。 **デバイス ID** をリーフ証明書の `CNAME` 値として使用します。 デバイス コードには、アプリケーションの **ID スコープ**値と**デバイス ID**、および対応するデバイス証明書が必要です。
 
 #### <a name="sample-device-code"></a>サンプル デバイス コード
 
@@ -123,9 +143,9 @@ X.509 証明書を使用してデバイスを一括接続するには、まず C
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>SAS トークンを使用するデバイスを登録なしで接続する
 
-1. IoT Central アプリケーションのグループ プライマリ キーをコピーします。
+1. **SAS-IoT-Devices** 登録グループからグループ プライマリ キーをコピーします。
 
-    ![アプリケーションのグループ プライマリ SAS キー](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="SAS-IoT-Devices 登録グループのグループ プライマリ キー":::
 
 1. [dps-keygen](https://www.npmjs.com/package/dps-keygen) ツールを使用してデバイスの SAS キーを生成します。 前の手順で得たグループ プライマリ キーを使用します。 デバイス ID は小文字にする必要があります。
 
@@ -146,7 +166,7 @@ X.509 証明書を使用してデバイスを一括接続するには、まず C
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>X.509 証明書を使用するデバイスを登録なしで接続する
 
-1. IoT Central アプリケーションに[ルートまたは中間 X.509 証明書を追加して検証します](#connect-devices-using-x509-certificates)。
+1. [登録グループを作成](#create-an-enrollment-group)し、IoT Central アプリケーションに[ルートまたは中間 X.509 証明書を追加して検証](#add-and-verify-a-root-or-intermediate-x509-certificate)します。
 
 1. IoT Central アプリケーションに追加したルートまたは中間証明書を使用して、デバイスのリーフ証明書を生成します。 小文字のデバイス ID をリーフ証明書の `CNAME` として使用してください。
 

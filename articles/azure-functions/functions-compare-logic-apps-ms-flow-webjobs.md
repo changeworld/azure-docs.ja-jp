@@ -4,12 +4,12 @@ description: 統合タスクに最適化された Microsoft クラウド サー�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878138"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169869"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure における統合と自動化の適切なサービスを選ぶ
 
@@ -78,13 +78,13 @@ Azure Functions は、WebJobs SDK の上に構築されているため、同じ�
 
 |  | 関数 | WebJobs と WebJobs SDK |
 | --- | --- | --- |
-|[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と[自動スケール](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
-|[ブラウザーでの開発とテスト](functions-create-first-azure-function.md) |✔||
-|[従量課金制の価格](functions-scale.md#consumption-plan)|✔||
-|[Logic Apps との統合](functions-twitter-email.md)|✔||
-| トリガー イベント |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
-|パッケージ マネージャー|NPM と NuGet|NuGet<sup>2</sup>|
+|**[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と[自動スケーリング](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[ブラウザーでの開発とテスト](functions-create-first-azure-function.md)** |✔||
+|**[従量課金制の価格](functions-scale.md#consumption-plan)**|✔||
+|**[Logic Apps との統合](functions-twitter-email.md)**|✔||
+| **イベントのトリガー** |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| **サポートされている言語**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
+|**パッケージ マネージャー**|NPM と NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> (WebJobs SDK なしの) WebJobs では、C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python などがサポートされます。 これは、包括的な一覧ではありません。 WebJobs は、App Service のサンドボックス内で動作するあらゆるプログラムまたはスクリプトを実行できます。
 

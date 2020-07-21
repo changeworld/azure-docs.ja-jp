@@ -10,34 +10,34 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300666"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252353"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する
+# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure でのロールの割り当てを追加する
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 このクイックスタートでは、リソース グループを作成し、リソース グループ内で仮想マシンを作成および管理するアクセス権をユーザーに付与します。 このクイックスタートでは、Resource Manager テンプレートを使用してアクセス権を付与します。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 このクイックスタートでは、リソース グループを作成し、リソース グループ内で仮想マシンを作成および管理するアクセス権をユーザーに付与します。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してアクセス権を付与します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
 ロールの割り当てを追加するには、以下が必要です。
 
-* `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
+- ロールの割り当てを追加するには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素を指定する必要があります。 このクイックスタートでは、セキュリティ プリンシパルは自分またはディレクトリ内の別のユーザーであり、ロールの定義は[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)、スコープは指定したリソース グループです。
 
-## <a name="create-a-role-assignment"></a>役割の割り当ての作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
-ロールの割り当てを追加するには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素を指定する必要があります。 このクイックスタートでは、セキュリティ プリンシパルは自分またはディレクトリ内の別のユーザーであり、ロールの定義は[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)、スコープは指定したリソース グループです。
-
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)からのものです。 テンプレートには、3 つのパラメーターとリソース セクションがあります。 リソース セクションには、ロールの割り当ての 3 つの要素 (セキュリティ プリンシパル、ロールの定義、スコープ) が含まれることに注意してください。 
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)からのものです。 テンプレートには、3 つのパラメーターとリソース セクションがあります。 リソース セクションには、ロールの割り当ての 3 つの要素 (セキュリティ プリンシパル、ロールの定義、スコープ) が含まれることに注意してください。
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [Microsoft.Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 

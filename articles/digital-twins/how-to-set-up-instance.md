@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4cac7a3f663d9ede966b8d6e5753c48629049dcd
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fecacbd2c7c6549a1321367157bb179321779ca9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057485"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206522"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを設定する
 
@@ -57,15 +57,15 @@ Azure Digital Twins は、ロールベースのアクセス制御 (RBAC) に [Az
 
 Azure サブスクリプションの AAD テナントに関連付けられているメールを使用して、自分用のロールの割り当てを Azure Digital Twins インスタンスに作成します。 
 
-これを可能にするには、Azure サブスクリプションで所有者として分類されている必要があります。 これを確認するには、`az role assignment list --assignee <your-Azure-email>` コマンドを実行し、出力内の *roleDefinitionName* の値が *Owner* であることを確認します。 値が *Contributor* であるか、または *Owner* 以外のものであった場合は、サブスクリプションでアクセス許可を付与する権限のあるサブスクリプション管理者に連絡して、ロールを昇格してもらってください。
+これを可能にするには、Azure サブスクリプションで所有者として分類されている必要があります。 これを確認するには、`az role assignment list --assignee <your-Azure-email>` コマンドを実行し、出力内の *roleDefinitionName* の値が *Owner* であることを確認します。 値が *Contributor* であるか、または *Owner* 以外のものであった場合は、サブスクリプションでアクセス許可を付与する権限のあるサブスクリプション管理者に連絡してください。 彼らは、あなたが次のコマンドを実行できるようにサブスクリプション全体であなたのロールを昇格させることができます。または、所有者があなたに代わって次のコマンドを実行して、あなたの Azure Digital Twins アクセス許可を設定することができます。
 
-サブスクリプションの所有者は、次のコマンドを使用して、ユーザーを Azure Digital Twins インスタンスの所有者ロールに割り当てることができます。
+ご自分のユーザー "所有者" アクセス許可をご自分の Azure Digital Twins インスタンスで割り当てるには、次のコマンドを使用します (Azure サブスクリプションの所有者が実行する必要があります)。
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-このコマンドを実行すると、作成したロールの割り当てに関する情報が出力されます。
+このコマンドの結果として、作成されたロールの割り当てに関する情報が出力されます。
 
 > [!TIP]
 > 代わりに *400:BadRequest* エラーが発生した場合は、次のコマンドを実行して、ユーザーの *ObjectID* を取得します。
@@ -74,7 +74,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 > ```
 > 次に、メールの代わりに、ユーザーの*オブジェクト ID* 使用して、ロールの割り当てコマンドを繰り返します。
 
-これで、Azure Digital Twins インスタンスの準備が完了しました。
+これで、Azure Digital Twins インスタンスの準備が完了しました。また、それを管理するためのアクセス許可が付与されました。
 
 ## <a name="next-steps"></a>次のステップ
 

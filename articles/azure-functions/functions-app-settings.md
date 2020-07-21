@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169913"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242765"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -17,6 +17,9 @@ ms.locfileid: "86169913"
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
+
+> [!NOTE]  
+> アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 

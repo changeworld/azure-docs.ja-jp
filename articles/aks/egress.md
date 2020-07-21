@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターでエグレス ト�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: a2f0394b172361e9053b1490a46357a5d3f2f47d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145500"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205774"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
 
@@ -96,7 +96,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-このサービスを作成すると、Azure Load Balancer に新しいフロントエンド IP が構成されます。 他の IP が構成されていない場合は、**すべての**エグレス トラフィックがこのアドレスを使用するようになります。 Azure Load Balancer に複数のアドレスが構成されている場合、エグレスはそのロード バランサーの最初の IP を使用します。
+このサービスを作成すると、Azure Load Balancer に新しいフロントエンド IP が構成されます。 他の IP が構成されていない場合は、**すべての**エグレス トラフィックがこのアドレスを使用するようになります。 複数のアドレスが Azure Load Balancer 上で構成されている場合、それらのパブリック IP アドレスはどれもアウトバウンド フローの候補になり、その 1 つがランダムに選択されます。
 
 ## <a name="verify-egress-address"></a>エグレス アドレスを確認する
 

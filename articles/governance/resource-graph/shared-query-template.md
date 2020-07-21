@@ -4,30 +4,32 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969808"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252370"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して共有クエリを作成する
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して共有クエリを作成する
 
 Resource Graph クエリは、"_プライベート クエリ_" または "_共有クエリ_" として保存できます。 プライベート クエリは、個人のポータル プロファイルに保存され、他のユーザーには表示されません。 共有クエリは、アクセス許可とロールベースのアクセス権を使用して他のユーザーと共有できる Resource Manager オブジェクトです。 共有クエリにより、共通かつ一貫したリソース検出の実行が提供されます。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して共有クエリを作成します。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure への共有クエリを作成するための ARM テンプレートをデプロイする" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="create-a-shared-query"></a>共有クエリを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートでは、_Count VMs by OS_ という共有クエリを作成します。 SDK 内または Resource Graph エクスプローラーを使用してポータル内でこのクエリを実行するには、[OS の種類別に仮想マシンをカウントするサンプル](./samples/starter.md#count-os)に関する説明を参照してください。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
 
@@ -35,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [Microsoft.ResourceGraph/queries](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 > [!NOTE]
 > Azure Resource Graph サービスは無料です。 詳細については、[Azure Resource Graph の概要](./overview.md)に関するページを参照してください。

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106630"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274545"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 
@@ -23,13 +23,13 @@ ms.locfileid: "86106630"
 
 ## <a name="azure-replication-support"></a>Azure レプリケーション サポート
 
-[読み取りレプリカ](concepts-read-replicas.md)と[論理デコード](concepts-logical.md)はどちらも、情報を Postgres 書き込み先行ログ (WAL) に依存しています。 この 2 つの機能には、Postgres とは異なるレベルのログが必要です。 論理デコードには、読み取りレプリカよりも高いレベルのログが必要です。
+[読み取りレプリカ](concepts-read-replicas.md)と[論理デコード](concepts-logical.md)はどちらも、情報を Postgres 書き込み先行ログ (WAL) に依存しています。 これらの 2 つの機能には、Postgres とは異なるレベルのログが必要です。 論理デコードには、読み取りレプリカよりも高いレベルのログが必要です。
 
 適切なレベルのログを構成するには、Azure レプリケーション サポート パラメーターを使用します。 Azure レプリケーション サポートには、次の 3 つの設定オプションがあります。
 
-* **[オフ]** - 最小限の情報を WAL に格納します。 この設定は、ほとんどの Azure Database for PostgreSQL サーバーでは使用できません。  
-* **[レプリカ]** - **[オフ]** よりも詳細な情報が得られます。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
-* **[論理]** - **[レプリカ]** よりも詳細な情報が得られます。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカもこの設定で機能します。
+* **オフ** - 最小限の情報を WAL に格納します。 この設定は、ほとんどの Azure Database for PostgreSQL サーバーでは使用できません。  
+* **レプリカ** - **[オフ]** よりも冗長です。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
+* **論理** - **[レプリカ]** よりも冗長です。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカはこの設定でも機能します。
 
 このパラメーターを変更した後、サーバーを再起動する必要があります。 内部的には、このパラメーターによって、Postgres パラメーター `wal_level`、`max_replication_slots`、および `max_wal_senders` が設定されます。
 
@@ -78,15 +78,15 @@ ms.locfileid: "86106630"
 
 6. **[OK]** を選択して、レプリカの作成を確認します。
 
-レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立にいくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
-
-> [!IMPORTANT]
-> マスター サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
-
 読み取りレプリカが作成されたら、それを **[レプリケーション]** ウィンドウから表示できます。
 
 ![[レプリケーション] ウィンドウに新しいレプリカを表示する](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> [読み取りレプリカの概要に関するページの考慮事項セクション](concepts-read-replicas.md#considerations)を確認してください。
+>
+> マスター サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
 
 ## <a name="stop-replication"></a>レプリケーションの停止
 マスター サーバーと読み取りレプリカの間のレプリケーションを停止できます。

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669734"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186692"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway の新着情報
 
@@ -27,6 +27,7 @@ Azure Application Gateway は、継続的に更新されます。 常に最新�
 
 |特徴量  |説明  |追加日  |
 |---------|---------|---------|
+| 正常性プローブ用のカスタム ポート | Application Gateway v2 SKU の正常性プローブの構成で、カスタム ポートを指定できるようになりました。 詳細については、[正常性プローブの概要](application-gateway-probe-overview.md)に関するページを参照してください。 | 2020 年 7 月
 | Application Gateway イングレス コントローラー (AGIC) AKS アドオン (プレビュー) |Azure CLI から 1 行で、Application Gateway イングレス コントローラーをネイティブ AKS アドオンとしてデプロイできるようになりました。 AKS アドオンとなったことで、AGIC をご利用の AKS クラスターで実行したまま、フル マネージドのサービスとしてご利用いただけます。 詳細については、[AGIC アドオンの相違点](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)に関するセクションを参照してください。 |2020 年 6 月 |
 | v2 のユーザー定義ルート (UDR) (プレビュー) |Application Gateway v2 SKU では、ユーザー定義ルートが一部のシナリオで新たにサポートされます。 詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。 |2020 年 3 月 |
 |アフィニティ Cookie の変更 |Cookie ベースのアフィニティが有効になっている場合、Application Gateway は、既存の ApplicationGatewayAffinity Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie を挿入します。 *ApplicationGatewayAffinityCORS* には、クロスオリジン要求に対してもスティッキー セッションが維持されるように、2 つの属性が追加されています (*SameSite = None; Secure*)。 詳細については、[Application Gateway の Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)に関するトピックを参照してください。 |2020 年 2 月 |

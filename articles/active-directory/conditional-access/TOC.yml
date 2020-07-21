@@ -47,8 +47,6 @@
       href: controls.md
     - name: クラシック ポリシーの移行
       href: policy-migration.md
-    - name: ベースライン保護ポリシー
-      href: concept-baseline-protection.md
 - name: 操作方法ガイド
   expanded: true
   items:

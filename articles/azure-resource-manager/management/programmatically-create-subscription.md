@@ -1,17 +1,17 @@
 ---
 title: プログラムによる Azure サブスクリプションの作成
 description: 追加の Azure サブスクリプションをプログラムで作成する方法について説明します。
-author: amberbhargava
+author: anuragdalmia
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170634"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224164"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>プログラムによる Azure サブスクリプションの作成 (プレビュー)
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
 | `owners`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 
-応答では、監視対象の `Location` URL が返されます。 サブスクリプションの作成が完了すると、`Location` URL の GET によって、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。 詳細については、[サブスクリプション API のドキュメント](https://docs.microsoft.com/rest/api/subscription/)を参照してください
+応答では、ヘッダー `Location` の一部として、サブスクリプション作成操作の状態を照会できる URL が返されます。 サブスクリプションの作成が完了すると、`Location` URL の GET によって、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。 詳細については、[サブスクリプション API のドキュメント](https://docs.microsoft.com/rest/api/subscription/)を参照してください
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

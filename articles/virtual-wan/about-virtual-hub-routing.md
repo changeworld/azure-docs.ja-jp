@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147397"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259177"
 ---
 # <a name="about-virtual-hub-routing"></a>仮想ハブのルーティングについて
 
@@ -63,6 +63,9 @@ ms.locfileid: "86147397"
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>仮想ネットワーク接続での静的ルートの構成
 
 静的ルートを構成すると、仮想ハブに接続されたスポーク VNet にプロビジョニングされているネットワーク仮想アプライアンス (NVA) のものである可能性がある次ホップ IP 経由でトラフィックを誘導するメカニズムが提供されます。 静的ルートは、ルート名、宛先プレフィックスの一覧、および次ホップ IP で構成されます。
+
+## <a name="reset-hub"></a><a name="route"></a>ハブのリセット
+Azure portal でのみ使用できます。ユーザーはこのオプションを使用すると、ルート テーブル、ハブ ルーター、または仮想ハブ リソース自体などの失敗したリソースを適切なプロビジョニング状態に戻すことができます。 これは、ユーザーが Microsoft にサポートを依頼する前の検討対象となる追加のオプションです。 この操作では、仮想ハブ内のいずれのゲートウェイもリセットされません。 
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>関連付けと伝達の機能セットの前の Basic および Standard Virtual WAN 内のルート テーブル
 

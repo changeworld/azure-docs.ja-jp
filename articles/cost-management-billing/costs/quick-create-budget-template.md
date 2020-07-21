@@ -8,22 +8,28 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686411"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252438"
 ---
-# <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して予算を作成する
+# <a name="quickstart-create-a-budget-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して予算を作成する
 
-Cost Management での予算は、組織のアカウンタビリティを計画および推進するのに役立ちます。 予算では、特定の期間中に消費またはサブスクライブする Azure サービスを考慮することができます。 コストを事前に管理するために支出を他のユーザーに通知したり、支出の時間変化を監視したりするのに役立ちます。 作成した予算のしきい値を超えた場合は、通知がトリガーされます。 どのリソースも影響を受けることはなく、消費が停止されることはありません。 予算を使用して、コストを分析するときに支出を比較および追跡できます。 このクイックスタートでは、Resource Manager テンプレートを使用して予算を作成する方法について説明します。
+Cost Management での予算は、組織のアカウンタビリティを計画および推進するのに役立ちます。 予算では、特定の期間中に消費またはサブスクライブする Azure サービスを考慮することができます。 コストを事前に管理するために支出を他のユーザーに通知したり、支出の時間変化を監視したりするのに役立ちます。 作成した予算のしきい値を超えた場合は、通知がトリガーされます。 どのリソースも影響を受けることはなく、消費が停止されることはありません。 予算を使用して、コストを分析するときに支出を比較および追跡できます。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して予算を作成する方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>前提条件
 
-Azure Resource Manager テンプレートでサポートされるのは、マイクロソフト エンタープライズ契約 (EA) の Azure サブスクリプションのみです。 その他の種類のサブスクリプションは、このテンプレートではサポートされません。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+ARM テンプレートでサポートされるのは、マイクロソフト エンタープライズ契約 (EA) の Azure サブスクリプションのみです。 その他の種類のサブスクリプションは、このテンプレートではサポートされません。
 
 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。 Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。
 
@@ -39,11 +45,9 @@ Azure Resource Manager テンプレートでサポートされるのは、マイ
 
 Cost Management データに対するアクセス許可の割り当てについて詳しくは、「[Cost Management のデータへのアクセス許可を割り当てる](assign-access-acm-data.md)」をご覧ください。
 
-## <a name="create-a-budget"></a>予算を作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/create-budget)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/create-budget)からのものです。
 
 :::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
@@ -51,7 +55,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets): Azure の予算を作成します。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートによって予算が作成されます。
 

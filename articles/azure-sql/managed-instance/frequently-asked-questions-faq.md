@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: d2e4b07c97e09fce5cdaa034e2fe67a18ef0d7f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171161"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224419"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -122,56 +122,121 @@ Managed Instance は、Azure Portal、[PowerShell](https://docs.microsoft.com/po
 - CliConfig を使用して別名を定義する。 このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能です。
 - *TrustServerCertificate=true* オプションを指定した *CNAME* を使用する。
 
-## <a name="move-a-database-from-sql-managed-instance"></a>SQL Managed Instance からデータベースを移動する 
+## <a name="migration-options"></a>移行オプション
 
-**データベースを SQL Managed Instance から元の SQL Server や Azure SQL Database に移動するには、どうすればよいですか?**
+**Azure SQL Database の単体またはエラスティック プールから SQL Managed Instance に移行するには、どうすればよいですか?**
 
-[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)できます。 データベースが 100 GB 未満の場合は、これが推奨される方法です。
+マネージド インスタンスで提供されるコンピューティングおよびストレージ サイズあたりのパフォーマンス レベルは、Azure SQL Database の他のデプロイ オプションと同じです。 単一インスタンスでデータを統合する場合または単にマネージド インスタンスでのみサポートされている機能が必要な場合は、エクスポートおよびインポート (BACPAC) 機能を使用してデータを移行できます。 SQL Database の SQL Managed Instance への移行に関して検討可能な他の方法を、次に示します。 
+- [Data Source External]() を使用する
+- [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) を使用する
+- [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) を使用する
 
-データベース内のすべてのテーブルに主キーがある場合は、トランザクション レプリケーションを使用できます。
+**インスタンス データベースを単一の Azure SQL Database に移行するには、どうすればよいですか?**
 
-SQL Managed Instance から取得したネイティブの `COPY_ONLY` バックアップを SQL Server に復元することはできません。SQL Managed Instance には、SQL Server と比較してより新しいデータベース バージョンがあるためです。
+1 つの方法として、[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)します。 データベースが 100 GB 未満の場合は、これが推奨される方法です。
 
-## <a name="migrate-an-instance-database"></a>インスタンス データベースの移行
+データベース内のすべてのテーブルに*主*キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、[トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017)を使用できます。
 
-**インスタンス データベースを Azure SQL Database に移行するには、どうすればよいですか?**
+マネージド インスタンスから取得したネイティブの COPY_ONLY バックアップを SQL Server に復元することはできません。マネージド インスタンスには、SQL Server と比較して新しいバージョンのデータベースがあるためです。 詳細については、「[コピーのみのバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)」を参照してください。
 
-1 つの方法として、[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)します。 
+**自分の SQL Server インスタンスを SQL Managed Instance に移行するには、どうすればよいですか?**
 
-データベースが 100 GB 未満の場合は、これが推奨される方法です。 データベース内のすべてのテーブルに主キーがある場合は、トランザクション レプリケーションを使用できます。
+SQL Server インスタンスを移行するには、「[Azure SQL Managed Instance への SQL Server インスタンスの移行](migrate-to-instance-from-sql-server.md)」を参照してください。
+
+**他のプラットフォームから SQL Managed Instance に移行するには、どうすればよいですか?**
+
+他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
 
 ## <a name="switch-hardware-generation"></a>ハードウェアの世代の切り替え 
 
-**使用している SQL マネージド インスタンスのハードウェア世代を Gen 4 と Gen 5 間でオンラインで切り替えることはできますか?**
+**マネージド インスタンスのハードウェア世代の Gen 4 と Gen 5 をオンラインで切り替えることはできますか?**
 
-SQL Managed Instance がプロビジョニングされているリージョンでハードウェアの世代が両方とも利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合は、[仮想コア モデルの概要ページ](../database/service-tiers-vcore.md)でハードウェアの世代間を切り替える方法を参照してください。
+マネージド インスタンスがプロビジョニングされているリージョンで Gen5 ハードウェアが利用可能になっている場合は、Gen4 から Gen5 へのオンライン切り替えを自動で行うことができます。 この場合は、「[仮想コア モデルの概要](../database/service-tiers-vcore.md)」ページでハードウェアの世代間を切り替える方法を参照してください。
 
-これは、新しいマネージド インスタンスがバックグラウンドでプロビジョニングされ、データベースがプロセスの最後の迅速なフェールオーバーによって古いインスタンスと新しいインスタンスの間で自動的に転送されるため、時間のかかる操作です。 
+これは、新しいマネージド インスタンスがバックグラウンドでプロビジョニングされ、データベースがプロセスの最後の迅速なフェールオーバーによって古いインスタンスと新しいインスタンスの間で自動的に転送されるため、時間のかかる操作です。
 
-**ハードウェアの両方の世代が同じリージョンでサポートされていない場合はどうなりますか?**
+注:Gen4 ハードウェアは段階的に廃止中であり、新しいデプロイでは利用できなくなりました。 すべての新しいデータベースを Gen5 ハードウェアにデプロイする必要があります。 Gen5 から Gen4 への切り替えもできません。
 
-ハードウェアの両方の世代が同じリージョンでサポートされていない場合、ハードウェアの世代を変更することはできますが、手動で行う必要があります。 その場合は、必要なハードウェアの世代が使用可能になっているリージョンに新しいインスタンスをプロビジョニングし、古いインスタンスと新しいインスタンスの間でデータのバックアップと復元を手動で行う必要があります。
+## <a name="performance"></a>パフォーマンス 
 
-**更新操作を実行できるだけの十分な IP アドレスが存在しない場合はどうなりますか?**
+**Managed Instance のパフォーマンスを SQL Server のパフォーマンスと比較するにはどうすればよいですか?**
 
-マネージド インスタンスのプロビジョニング先となるサブネットに十分な IP アドレスが存在しない場合は、新しいサブネットを作成したうえで、その中に新しいマネージド インスタンスを作成する必要があります。 また、新しいサブネットを作成するにあたっては、将来の更新操作で同様の問題が生じないよう、より多くの IP アドレスを確保することをお勧めします。 (適切なサブネット サイズについては、[VNet のサブネット サイズを決める方法](vnet-subnet-determine-size.md)に関するページを参照してください。)新しいインスタンスのプロビジョニング後、古いインスタンスと新しいインスタンスとの間で、データのバックアップと復元を手動で行うことができるほか、インスタンス間の[ポイントインタイム リストア](point-in-time-restore.md?tabs=azure-powershell)を実行することができます。 
+マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL マネージド インスタンスと SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。
 
+**Managed Instance と SQL Server の間でパフォーマンスの差が生じる原因は何ですか?**
 
-## <a name="tune-performance"></a>パフォーマンスの調整
+「[SQL Managed Instance と SQL Server の間でパフォーマンスの差が生じる主な原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)」を参照してください。 General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響の詳細については、「[General Purpose のログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」を参照してください。
 
-**SQL Managed Instance のパフォーマンスを調整するには、どうすればよいですか?**
+**マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか?**
 
-General Purpose レベルの SQL Managed Instance ではリモート ストレージが使用されるため、データとログ ファイルのサイズはパフォーマンスにとって重要です。 詳しくは、「[Impact of log file size on General Purpose SQL Managed Instance performance (General Purpose SQL Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響)](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」をご覧ください。
+次の方法で、マネージド インスタンスのパフォーマンスを最適化することができます。
+- [自動チューニング](../database/automatic-tuning-overview.md)では、AI と機械学習に基づく継続的なパフォーマンス チューニングによって、最大限のパフォーマンスと安定したワークロードが実現されます。
+-   [インメモリ OLTP](../in-memory-oltp-overview.md) では、トランザクション処理ワークロードのスループットと待機時間が改善され、ビジネスの分析情報がより迅速に提供されます。 
 
-ワークロードが多数の小さなトランザクションで構成されている場合は、接続の種類をプロキシからリダイレクト モードに切り替えることを検討してください。
+パフォーマンスをさらにチューニングするには、[アプリケーションとデータベースのチューニング](../database/performance-guidance.md#tune-your-database)の*ベスト プラクティス*をいくつか適用することを検討してください。
+ワークロードが多数の小さなトランザクションで構成されている場合は、待機時間を短縮しスループットを向上させるために[接続の種類をプロキシからリダイレクト モードに切り替える](connection-types-overview.md#changing-connection-type)ことを検討してください。
 
-## <a name="maximum-storage-size"></a>最大ストレージ サイズ
+## <a name="monitoring-metrics-and-alerts"></a>監視、メトリック、およびアラート
+
+**マネージ インスタンスの監視とアラートにはどのようなオプションがありますか?**
+
+SQL Managed Instance の使用状況とパフォーマンスを監視してアラートを生成するためのすべてのオプションについては、「[Azure SQL Managed Instance の監視オプションに関するブログ投稿](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)」を参照してください。 SQL MI のリアルタイムのパフォーマンス監視については、「[Azure SQL DB Managed Instance のリアルタイムによるパフォーマンスの監視](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)」を参照してください。
+
+**パフォーマンスの追跡に SQL Profiler を使用できますか?**
+
+はい。SQL Profiler は SQL Managed Instance でサポートされています。 詳細については、[SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) に関する記事を参照してください。
+
+**Database Advisor と Query Performance Insight は Managed Instance データベースでサポートされていますか?**
+
+いいえ。サポートされていません。 [DMV](../database/monitoring-with-dmvs.md) と [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15)を [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) と [XEvent](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) と共に使用して、データベースを監視できます。
+
+**SQL Managed Instance でメトリック アラートを作成できますか?**
+
+はい。 詳細については、[SQL Managed Instance のアラートの作成](alerts-create.md)に関する記事を参照してください。
+
+**マネージド インスタンス内のデータベースでメトリック アラートを作成できますか?**
+
+できません。アラート メトリックは、マネージド インスタンスでのみ使用できます。 マネージド インスタンス内の個々のデータベースのアラート メトリックは使用できません。
+
+## <a name="storage-size"></a>ストレージ サイズ
 
 **SQL Managed Instance の最大ストレージ サイズはどうなっていますか?**
 
 SQL Managed Instance のストレージ サイズは選択したサービス レベル (General Purpose または Business Critical) に応じて異なります。 これらのサービス レベルのストレージ制限については、[サービス レベルの特性](../database/service-tiers-general-purpose-business-critical.md)に関するページを参照してください。
 
-  
+**マネージド インスタンスで使用可能な最小ストレージ サイズは?**
+
+インスタンスで使用可能なストレージの最小量は 32 GB です。 ストレージは、最大ストレージ サイズになるまで、32 GB ずつ追加できます。 最初の 32 GB は無料です。
+
+**インスタンスに割り当てられたストレージ スペースは、コンピューティング リソースとは別に増やすことができますか?**
+
+はい。コンピューティングとは別に、アドオン ストレージをある程度まで購入できます。 この*表*にある "[インスタンスの予約済み最大ストレージ](resource-limits.md#hardware-generation-characteristics)" を参照してください。
+
+**General Purpose サービス レベルでストレージのパフォーマンスを最適化するにはどうすればよいですか?**
+
+ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)」を参照してください。
+
+## <a name="backup-and-restore"></a>バックアップと復元
+
+**バックアップ ストレージは、マネージド インスタンス ストレージから差し引かれますか?**
+
+いいえ。バックアップ ストレージがマネージド インスタンス ストレージ領域から差し引かれることはありません。 バックアップ ストレージはインスタンス ストレージ領域から独立しており、サイズは制限されていません。 バックアップ ストレージは、インスタンス データベースのバックアップを保持する期間に制限があり、35 日まで構成可能です。 詳細については、「[自動バックアップ](../database/automated-backups-overview.md)」を参照してください。
+
+**マネージド インスタンスで自動バックアップが行われたタイミングを確認するにはどうすればよいですか?**
+Managed Instance で自動バックアップが実行された時間を追跡するには、「[Azure SQL Managed Instance の自動バックアップの追跡方法](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)」を参照してください。
+
+**オンデマンド バックアップはサポートされていますか?**
+はい。Azure Blob Storage にコピーのみの完全バックアップを作成できます。ただし、これは Managed Instance でのみ復元できます。 詳細については、「[コピーのみのバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)」を参照してください。 ただし、暗号化に使用される証明書にアクセスできないため、データベースがサービス マネージド TDE によって暗号化されている場合、コピーのみのバックアップは不可能です。 このような場合、ポイントインタイム リストア機能を使用して、データベースを別の SQL Managed Instance に移動するか、カスタマー マネージド キーに切り替えてください。
+
+**Managed Instance への (.bak ファイルからの) ネイティブ復元はサポートされていますか?**
+はい。SQL Server 2005 以降のバージョンでサポートされており、使用可能です。  ネイティブ復元を使用するには、.bak ファイルを Azure Blob Storage にアップロードし、T-SQL コマンドを実行します。 詳細については、「[URL からのネイティブ復元](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)」を参照してください。
+
+## <a name="business-continuity"></a>ビジネス継続性
+
+**システム データベースは、フェールオーバー グループのセカンダリ インスタンスにレプリケートされますか?**
+
+システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。 回避策については、「[システム データベースのオブジェクトに依存するシナリオを実現させる](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases)」を参照してください。
+ 
 ## <a name="networking-requirements"></a>ネットワーク要件 
 
 **Managed Instance サブネットでの現在の受信/送信 NSG の制約はどのようなものですか?**
@@ -231,6 +296,44 @@ Managed Instances が含まれている場合は、できません。 これは�
 
 いいえ。 現時点では、他のリソースの種類が既に含まれているサブネットに Managed Instance を配置することはサポートされていません。
 
+## <a name="connectivity"></a>接続 
+
+**IP アドレスを使用してマネージド インスタンスに接続できますか?**
+
+いいえ、これはサポートされていません。 Managed Instance のホスト名は、Managed Instance の仮想クラスターの前にあるロード バランサーにマップされます。 1 つの仮想クラスターが複数の Managed Instance をホストすることが可能なため、名前を指定しないで適切な Managed Instance に接続をルーティングすることはできません。
+SQL Managed Instance 仮想クラスターのアーキテクチャの詳細については、「[仮想クラスターの接続アーキテクチャ](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)」を参照してください。
+
+**マネージド インスタンスに静的 IP アドレスを付与することはできますか?**
+
+現在これはサポートされていません。
+
+まれではあるものの不可欠な状況として、マネージド インスタンスを新しい仮想クラスターにオンラインで移行することが必要になる場合があります。 必要な場合、この移行を行うのは、サービスのセキュリティおよび信頼性の向上を目指してテクノロジ スタックに変更を加えるためです。 新しい仮想クラスターに移行すると、マネージド インスタンスのホスト名にマップされている IP アドレスが変更されます。 マネージド インスタンス サービスは、静的 IP アドレスのサポートを要求することはなく、定期的なメンテナンス サイクルの一環として、そのアドレスを予告なしに変更する権限を有しています。
+
+このような理由から、IP アドレスの不変性を当てにすると不要なダウンタイムの発生につながるので、変更を想定しておくことを強くお勧めします。
+
+**Managed Instance にはパブリック エンドポイントがありますか?**
+
+はい。 Managed Instance には、既定でサービス管理にのみ使用されるパブリック エンドポイントがありますが、お客様はデータ アクセスに対してもそれを有効にすることができます。 詳細については、[パブリック エンドポイントを使用した SQL Managed Instance の使用](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)に関する記事を参照してください。 パブリック エンドポイントを構成するには、[SQL Managed Instance のパブリック エンドポイントの構成](public-endpoint-configure.md)に関する記事を参照してください。
+
+**パブリック エンドポイントは Managed Instance コントロールからどのようにアクセスされるのですか?**
+
+Managed Instance コントロールからパブリック エンドポイントへのアクセスは、ネットワークとアプリケーションの両方のレベルで行われます。
+
+管理およびデプロイ サービスでは、外部ロード バランサーにマッピングされる[管理エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint)を使用して、マネージド インスタンスに接続します。 トラフィックは、マネージド インスタンスの管理コンポーネントだけが使用する定義済みの一連のポートで受信された場合のみ、ノードにルーティングされます。 ノード上の組み込みのファイアウォールは、Microsoft の IP 範囲からのトラフィックのみを許可するように設定されています。 証明書によって、管理コンポーネントと管理プレーンとの間のすべての通信が互いに認証されます。 詳細については、[SQL Managed Instance の接続アーキテクチャ](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)に関する記事を参照してください。
+
+**パブリック エンドポイントを使用して Managed Instance データベースのデータにアクセスすることはできますか?**
+
+はい。 お客様は [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) / ARM からのパブリック エンドポイント データ アクセスを有効にして、データ ポート (ポート番号 3342) へのアクセスをロック ダウンするよう NSG を構成する必要があります。 詳細については、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](public-endpoint-configure.md)」と「[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](public-endpoint-overview.md)」を参照してください。 
+
+**SQL データ エンドポイントのカスタム ポートを指定できますか?**
+
+いいえ。このオプションは使用できません。  プライベート データ エンドポイントの場合、Managed Instance では既定のポート番号 1433 が使用され、パブリック データ エンドポイントの場合、Managed Instance では既定のポート番号 3342 が使用されます。
+
+**異なるリージョンに配置されている Managed Instance に接続するには、どのような方法がお勧めですか?**
+
+これを行うには、Express Route 回線のピアリングがお勧めの方法です。 これは、内部ロード バランサーに関連する[制約](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)のためにサポートされていないリージョン間仮想ネットワーク ピアリングと混在させることはできません。
+
+Express Route 回線のピアリングが不可能な場合、他の唯一のオプションはサイト間 VPN 接続 ([Azure portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、[PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)、[Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) を作成することです。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>データ窃盗リスクを軽減する  
 
@@ -277,21 +380,6 @@ DNS 構成は、最終的に次の場合に更新されます。
 - プラットフォームのアップグレード時。
 
 対処方法として、SQL Managed Instance を 4 仮想コアにダウングレードしてから、後でアップグレードし直します。 これには、DNS 構成の更新という副作用があります。
-
-
-## <a name="ip-address"></a>IP アドレス
-
-**IP アドレスを使用して SQL Managed Instance に接続できますか?**
-
-IP アドレスを使用した SQL Managed Instance への接続はサポートされていません。 SQL Managed Instance のホスト名は、SQL Managed Instance 仮想クラスターの前にあるロード バランサーにマップされます。 1 つの仮想クラスターでは複数のマネージド インスタンスをホストすることが可能なため、名前を明示的に指定せずに適切なマネージド インスタンスに接続をルーティングすることはできません。
-
-SQL Managed Instance 仮想クラスターのアーキテクチャの詳細については、「[仮想クラスターの接続アーキテクチャ](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)」を参照してください。
-
-**SQL Managed Instance に静的 IP アドレスを付与することはできますか?**
-
-まれではあるものの必ず生じる状況として、SQL Managed Instance を新しい仮想クラスターにオンラインで移行することが必要になる場合があります。 必要な場合、この移行を行うのは、サービスのセキュリティおよび信頼性の向上を目指してテクノロジ スタックに変更を加えるためです。 新しい仮想クラスターに移行すると、その SQL Managed Instance のホスト名にマップされている IP アドレスが変更されます。 SQL Managed Instance サービスでは、静的 IP アドレスのサポートの要求は行われておらず、定期的なメンテナンス サイクルの一環として、そのアドレスを予告なしに変更する権限が維持されています。
-
-このような理由から、IP アドレスの不変性を当てにすると不要なダウンタイムの発生につながるので、変更を想定しておくことを強くお勧めします。
 
 ## <a name="change-time-zone"></a>タイムゾーンの変更
 
