@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75c6f8ec8410ff90b3da4fb6a50c9ef8ba7d1618
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196373"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184621"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
@@ -40,7 +40,7 @@ Azure Cache for Redis は以下のレベルでご利用いただけます。
 | レベル | 説明 |
 |---|---|
 Basic | 単一ノード キャッシュ。 このレベルでは、複数のメモリ サイズ (250 MB から 53 GB) がサポートされており、開発、テスト、および重要ではないワークロードに最適です。 Basic レベルには、サービス レベル アグリーメント (SLA) はありません。 |
-| Standard | Azure によって管理されているプライマリとセカンダリの 2 つのノードにレプリケートされたキャッシュ。高可用性の SLA が付きます (99.9%) |
+| Standard | Azure によって構成が管理されているプライマリとレプリカの 2 つのノードにレプリケートされたキャッシュ。高可用性の SLA が付きます (99.9%) |
 | Premium | Premium レベルは、エンタープライズ対応レベルです。 Premium レベルのキャッシュでは、より多くの機能をサポートし、より短い待機時間でより高いスループットを実現します。 Premium レベルのキャッシュは、Basic または Standard レベルと比較して優れたパフォーマンスを発揮する、より高性能なハードウェア上にデプロイされます。 この利点によって、Premium レベルでは、Standard レベルと比較して、同じサイズのキャッシュのスループットがより高くなります。 |
 
 > [!TIP]

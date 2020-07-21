@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8f91727ddc131b1f44acb4303a2368aed1890223
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60200bd35d142b8b55a40d6912f946f9421f52e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783301"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207653"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシンのサイズ
 
@@ -47,6 +47,10 @@ VM サイズを照会するための REST API の使用については、以下�
 ## <a name="benchmark-scores"></a>ベンチマーク スコア
 
 [CoreMark ベンチマーク スコア](compute-benchmark-scores.md)を使用して、Windows VM の処理性能について学習します。
+
+## <a name="manage-costs"></a>コストを管理する
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

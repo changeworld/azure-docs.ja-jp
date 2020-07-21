@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 8109b7b1f6cd8477d49bafd114be24b91530d123
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734964"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221445"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>既存の Azure Active Directory Domain Services マネージド ドメインの SKU を変更する
 
-Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォーマンスと機能は、SKU の種類によって変わります。 このような機能の違いには、バックアップの頻度や、一方向の送信フォレストの信頼の最大数 (現在はプレビュー段階) などがあります。 マネージド ドメインを作成するときに SKU を選択する必要があり、マネージド ドメインのデプロイ後にビジネス ニーズが変わったときに SKU を上や下に切り替えることができます。 ビジネス要件の変更には、バックアップ頻度を増やしたり、追加のフォレストの信頼を作成したりするニーズなどがあります。 さまざまな SKU の制限と価格の詳細については、[Azure AD DS SKU の概念][concepts-sku]と [Azure AD DS の価格][pricing]に関するページを参照してください。
+Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォーマンスと機能は、SKU の種類によって変わります。 このような機能の違いには、バックアップの頻度や、一方向の送信フォレストの信頼の最大数 (現在はプレビュー段階) などがあります。
+
+マネージド ドメインを作成するときに SKU を選択する必要があり、マネージド ドメインのデプロイ後にビジネス ニーズが変わったときに SKU を上や下に切り替えることができます。 ビジネス要件の変更には、バックアップ頻度を増やしたり、追加のフォレストの信頼を作成したりするニーズなどがあります。 さまざまな SKU の制限と価格の詳細については、[Azure AD DS SKU の概念][concepts-sku]と [Azure AD DS の価格][pricing]に関するページを参照してください。
 
 この記事では、Azure portal を使用して、既存の Azure AD DS マネージド ドメインの SKU を変更する方法について説明します。
 

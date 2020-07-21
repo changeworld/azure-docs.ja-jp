@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5b311dd9b0cd2c2b007bc19994aee771b2c4360f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058114"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246382"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric での拡大縮小
 Azure Service Fabric では、クラスター内のノードでサービス、パーティション、およびレプリカを管理することにより、スケーラブルなアプリケーションを簡単に構築できます。 同じハードウェアで多くのワークロードを実行することで、リソースを最大限に活用すると同時に、ワークロードを拡大縮小する方法も柔軟に選択できます。 この Channel 9 ビデオでは、スケーラブルなマイクロサービス アプリケーションを構築する方法について説明します。
@@ -63,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>新しい名前付きサービスの作成または削除による拡大縮小
 名前付きサービス インスタンスとは、クラスター内の一部の名前付きアプリケーション インスタンスにある、特別な種類のサービス インスタンスです (「[Service Fabric アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)」を参照)。 
 
-サービスのビジー状態が変わると、新しい名前付きサービス インスタンスを作成 (または削除) できます。 これにより、さらに多くのサービス インスタンスに要求を分散し、多くの場合、既存のサービスへの負荷を軽減できます。 サービスを作成するとき、Service Fabric Cluster Resource Manager は、サービスをクラスターに分散させて配置します。 細かなことは、クラスター内の[メトリック](service-fabric-cluster-resource-manager-metrics.md)とその他の配置ルールによって決まります。 サービスを作成する方法は複数ありますが、最も一般的なのは管理アクションを使用する方法で、ユーザーが [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) を呼び出すか、コードで [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) を呼び出します。 `CreateServiceAsync` は、クラスターで実行されている他のサービス内から呼び出すこともできます。
+サービスのビジー状態が変わると、新しい名前付きサービス インスタンスを作成 (または削除) できます。 これにより、さらに多くのサービス インスタンスに要求を分散し、多くの場合、既存のサービスへの負荷を軽減できます。 サービスを作成するとき、Service Fabric Cluster Resource Manager は、サービスをクラスターに分散させて配置します。 細かなことは、クラスター内の[メトリック](service-fabric-cluster-resource-manager-metrics.md)とその他の配置ルールによって決まります。 サービスを作成する方法は複数ありますが、最も一般的なのは管理アクションを使用する方法で、ユーザーが [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) を呼び出すか、コードで [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) を呼び出します。 `CreateServiceAsync` は、クラスターで実行されている他のサービス内から呼び出すこともできます。
 
 サービスの動的作成は、あらゆる種類のシナリオで使用できる一般的なパターンです。 たとえば、特定のワークフローを表すステートフル サービスについて考えてみます。 この作業を表す呼び出しはこのサービスに提示され、サービスは、そのワークフローへの手順を実行し、進捗状況を記録します。 
 

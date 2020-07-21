@@ -11,20 +11,20 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368041"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135646"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure SQL Database に単一データベースを作成する
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure SQL Database で単一データベースを作成する
 
-[単一データベース](single-database-overview.md)の作成は、Azure SQL Database でデータベースを作成する場合の最も迅速かつ簡単なオプションです。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して単一データベースを作成する方法について説明します。
+[単一データベース](single-database-overview.md)の作成は、Azure SQL Database でデータベースを作成する場合の最も迅速かつ簡単なオプションです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して単一データベースを作成する方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、[Azure へのデプロイ] ボタンを選択します。 Azure portal でテンプレートが開きます。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
 [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 単一データベースには、2 種類の[購入モデル](purchasing-models.md)のいずれかを使用して定義されたコンピューティング、メモリ、IO、ストレージのリソースのセットがあります。 単一データベースを作成するときは、それを管理するための[サーバー](logical-servers.md)も定義し、指定したリージョンの [Azure リソース グループ](../../active-directory-b2c/overview.md)内にそれを配置します。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-sql-logical-server/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-sql-database/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
@@ -88,4 +88,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
   - [Azure Data Studio を使用して接続およびクエリを実行する](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Azure CLI を使用して単一データベースを作成するには、「[Azure CLI のサンプル](az-cli-script-samples-content-guide.md)」をご覧ください。
 - Azure PowerShell を使用して単一データベースを作成するには、「[Azure PowerShell サンプル](powershell-script-content-guide.md)」をご覧ください。
-- Resource Manager テンプレートを作成する方法については、[初めてのテンプレートの作成](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)に関するページを参照してください。
+- ARM テンプレートを作成する方法については、[初めてのテンプレートの作成](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)に関するページをご覧ください。

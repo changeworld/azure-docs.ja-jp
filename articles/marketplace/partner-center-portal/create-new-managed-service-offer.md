@@ -1,23 +1,22 @@
 ---
 title: Microsoft コマーシャル マーケットプレースにマネージド サービス プランを作成する
 description: パートナー センターのコマーシャル マーケットプレース ポータルを使用して Azure Marketplace に掲載するための新しいマネージド サービス オファーを作成する方法について説明します。
-author: JnHs
-ms.author: jenhayes
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+author: JnHs
+ms.author: jenhayes
+ms.date: 07/07/2020
+ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847721"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121794"
 ---
 # <a name="create-a-managed-service-offer"></a>管理サービス オファーの作成
 
-マネージド サービス オファーは、[Azure Lighthouse](../../lighthouse/overview.md) のシナリオを有効にするために役立ちます。 顧客は、マネージド サービス オファーを受け取ると、[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)のためにリソースをオンボードできます。 開始する前に、まだ[パートナー センターで商業マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成してください。 ご利用のアカウントを確実に商業マーケットプレース プログラムに登録します。
+マネージド サービス オファーは、[Azure Lighthouse](../../lighthouse/overview.md) のシナリオを有効にするために役立ちます。 顧客は、マネージド サービス オファーを受け取ると、[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)のためにリソースをオンボードできます。 開始する前に、まだ[パートナー センターで商業マーケットプレース アカウントを作成](create-account.md)していなければ、作成してください。 ご利用のアカウントを確実に商業マーケットプレース プログラムに登録します。
 
 マネージド サービス オファーを発行するには、[Silver または Gold Cloud Platform コンピテンシー レベル](https://partner.microsoft.com/membership/cloud-platform-competency)を取得しているか、または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) である必要があります。
 
@@ -80,6 +79,17 @@ ms.locfileid: "83847721"
 > [!NOTE]
 > オファー登録情報の内容 (説明、ドキュメント、スクリーンショット、使用条件など) は、オファーの説明が "このアプリケーションは、<英語以外の言語> でのみ利用可能です" という文言で始まっていれば、英語である必要はありません。 また、オファー登録情報のコンテンツで使用されている言語以外の言語でコンテンツを提供するための*役に立つリンクの URL* を提供することもできます。
 
+Azure portal でのオファー情報の表示例を次に示します。
+
+:::image type="content" source="media/example-managed-services.png" alt-text="Azure portal でこのオファーがどのように表示されるかを示しています。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. タイトル
+2. 説明
+3. 便利なリンク
+4. Screenshots (スクリーンショット)
+
 ### <a name="name"></a>名前
 
 ここで入力する名前は、オファー登録情報のタイトルとして顧客に表示されます。 このフィールドには、オファーの作成時に **[オファーの別名]** に入力したテキストが事前に設定されていますが、この値は変更できます。 この名前は商標の場合もあります (商標または著作権マークを含めることもできます)。 名前は 50 文字以下にする必要があります。絵文字を含めることはできません。
@@ -127,9 +137,9 @@ ms.locfileid: "83847721"
 
 オファーのロゴを次の 4 つのピクセル サイズで提供します。
 
-- **小** (40 x 40)
+- **小** (48 x 48)
 - **中** (90 x 90)
-- **大** (115 x 115)
+- **大** (216 x 216)
 - **ワイド** (255 x 115)
 
 お客様のロゴについては、これらのガイドラインに従ってください。
@@ -151,7 +161,7 @@ ms.locfileid: "83847721"
 
 #### <a name="additional-marketplace-listing-resources"></a>マーケットプレースのリスト登録に関するその他のリソース
 
-- [マーケットプレース オファーのリスト登録に関するベスト プラクティス](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [マーケットプレース オファーのリスト登録に関するベスト プラクティス](../gtm-offer-listing-best-practices.md)
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -220,7 +230,7 @@ ms.locfileid: "83847721"
 
 - **Azure AD Object ID (Azure AD オブジェクト ID)** :顧客のリソースに対する特定のアクセス許可を付与される ([ロールの定義] で定義される) ユーザー、ユーザー グループ、またはアプリケーションの Azure AD 識別子。
 - **Azure AD Object Display Name (Azure AD オブジェクトの表示名)** :顧客がこの承認の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
-- **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについては、[組み込みロール](../../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure の委任されたリソース管理でのロールのサポート](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)」をご覧ください。
+- **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについては、[組み込みロール](../../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure Lighthouse 用のロールのサポート](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)」をご覧ください。
   > [!NOTE]
   > 適用される新しい組み込みロールが Azure に追加されると、ここで使用できるようになりますが、表示されるまでに時間がかかる場合があります。
 - **Assignable Roles (割り当て可能なロール)** :このオプションは、この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合のみ表示されます。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD オブジェクト ID]** フィールド内のユーザーは、これらのロールを[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)に割り当てることができます。これは、[修復可能なポリシーをデプロイする](../../lighthouse/how-to/deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。

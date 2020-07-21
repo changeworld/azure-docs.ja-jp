@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 55fd27d473bd47fd3321bdb2e730e4ef2d35352f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 560f7b958e04b55a7d642c9f95750812b86d32bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106174"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251724"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -83,7 +83,7 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
 
 上の図に示すように、API サーバーでは、AKS Webhook サーバーが呼び出されて、次の手順が実行されます。
 
-1. [OAuth 2.0 デバイス承認許可フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)でユーザーをサインインさせるため、kubectl では Azure AD クライアント アプリケーションが使用されます。
+1. [OAuth 2.0 デバイス承認許可フロー](../active-directory/develop/v2-oauth2-device-code.md)でユーザーをサインインさせるため、kubectl では Azure AD クライアント アプリケーションが使用されます。
 2. Azure AD では、access_token、id_token、refresh_token が提供されます。
 3. ユーザーは、kubeconfig からの access_token を使用して kubectl に対する要求を行います。
 4. kubectl では、APIServer に access_token が送信されます。

@@ -3,12 +3,12 @@ title: Azure Service Fabric ノード タイプのスケールアップ
 description: 仮想マシン スケール セットを追加することで Service Fabric クラスターをスケーリングする方法を説明します。
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42e33fa87b6cf7966368481ef6d3920511919e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610695"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260451"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
 この記事では、仮想マシンのリソースを増やして、Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -49,7 +49,7 @@ ms.locfileid: "85610695"
 Login-AzAccount -SubscriptionId "<your subscription ID>"
 ```
 
-このチュートリアルでは、自己署名証明書を作成するシナリオについて説明します。 Azure Key Vault の既存の証明書を使用するには、次の手順をスキップし、代わりに[既存の証明書を使用したクラスターのデプロイ](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster)に関する記事の手順を反映させます。
+このチュートリアルでは、自己署名証明書を作成するシナリオについて説明します。 Azure Key Vault の既存の証明書を使用するには、次の手順をスキップし、代わりに[既存の証明書を使用したクラスターのデプロイ](./upgrade-managed-disks.md#use-an-existing-certificate-to-deploy-the-cluster)に関する記事の手順を反映させます。
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>自己署名証明書を生成してクラスターをデプロイする
 
@@ -251,4 +251,3 @@ foreach($name in $nodeNames){
 * [Azure クラスターをスケールインまたはスケールアウト](service-fabric-tutorial-scale-cluster.md)します。
 * fluent Azure コンピューティング SDK を使用して [Azure クラスターをプログラムでスケーリングします](service-fabric-cluster-programmatic-scaling.md)。
 * [スタンドアロン クラスターのスケールインまたはスケールアウトします](service-fabric-cluster-windows-server-add-remove-nodes.md)。
-

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027207"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143901"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
@@ -58,7 +58,7 @@ Azure リージョンは、接続先として選択できるハブとして機�
 
 * **ハブ仮想ネットワーク接続:** ハブ仮想ネットワーク接続リソースは、ハブを仮想ネットワークにシームレスに接続するために使用します。
 
-* **(プレビュー) ハブ間接続** - ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
+* **ハブ間接続**ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
 
 * **ハブのルート テーブル:** 仮想ハブのルートを作成して、そのルートを仮想ハブのルート テーブルに適用することができます。 仮想ハブのルート テーブルには、複数のルートを適用できます。
 
@@ -122,7 +122,7 @@ Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機�
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Basic および Standard Virtual WAN のルート テーブル
 
-ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用したい場合は、以下を考慮してください。
+ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用する場合は、次を考慮してください。
 
 * **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
 

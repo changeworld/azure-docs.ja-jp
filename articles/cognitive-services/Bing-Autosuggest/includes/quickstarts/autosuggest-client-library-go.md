@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 25b45f2731e94fc6a7a4bedd9c8d44b10125c273
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82975072"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156700"
 ---
 Go 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、ライブラリをインストールし、基本タスクの例を試してみましょう。 
 
@@ -33,7 +33,7 @@ Azure リソースを作成して、Bing Autosuggest クライアント ライ�
 ## <a name="create-environment-variables"></a>環境変数を作成する
 
 >[!NOTE]
-> 2019 年 7 月 1 日より後に作成された非試用版リソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。 
+> 2019 年 7 月 1 日より後に作成されたリソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。 
 
 作成したリソースのキーとエンドポイントを使用して、認証用に 2 つの環境変数を作成します。
 <!-- replace the below variable names with the names expected in the code sample.-->

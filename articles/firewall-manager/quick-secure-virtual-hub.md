@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563688"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242017"
 ---
-# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>クイック スタート:Azure Firewall Manager を使用して仮想ハブをセキュリティで保護する - Resource Manager テンプレート
+# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>クイック スタート:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する - Resource Manager テンプレート
 
-このクイック スタートでは、Resource Manager テンプレートを使用し、Azure Firewall Manager を使用して仮想ハブをセキュリティで保護します。 展開されたファイアウォールには、`www.microsoft.com` への接続を許可するアプリケーション ルールがあります。 ファイアウォールをテストするために、2 つの Windows Server 2019 仮想マシンが展開されています。 ワークロード サーバーへの接続には、1 台のジャンプ サーバーが使用されます。 ワークロード サーバーからは、`www.microsoft.com` にのみ接続できます。
+このクイック スタートでは、Azure Resource Manager テンプレート (Resource Manager テンプレート) を使用し、Azure Firewall Manager を使用して仮想ハブをセキュリティで保護します。 展開されたファイアウォールには、`www.microsoft.com` への接続を許可するアプリケーション ルールがあります。 ファイアウォールをテストするために、2 つの Windows Server 2019 仮想マシンが展開されています。 ワークロード サーバーへの接続には、1 台のジャンプ サーバーが使用されます。 ワークロード サーバーからは、`www.microsoft.com` にのみ接続できます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Azure Firewall Manager の詳細については、[Azure Firewall Manager の概要](overview.md)に関するページを参照してください。
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このテンプレートによって、Azure Firewall Manager を使用してセキュリティ保護付き仮想ハブと、そのシナリオをサポートするために必要なリソースが作成されます。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
@@ -51,9 +53,9 @@ Azure Firewall Manager の詳細については、[Azure Firewall Manager の概
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Azure への Resource Manager テンプレートのデプロイ:
+Resource Manager テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートによって、Azure Firewall、仮想 WAN と仮想ハブ、ネットワーク インフラストラクチャ、2 つの仮想マシンが作成されます。
 
@@ -86,7 +88,7 @@ Azure への Resource Manager テンプレートのデプロイ:
 
 これで、ファイアウォール ルールが動作していることを確認できました。
 
-* 1 つの許可された FQDN は参照できますが、それ以外は参照できません。
+- 1 つの許可された FQDN は参照できますが、それ以外は参照できません。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

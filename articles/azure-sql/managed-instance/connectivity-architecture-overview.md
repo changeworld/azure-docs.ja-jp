@@ -1,9 +1,9 @@
 ---
 title: 接続のアーキテクチャ
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL Managed Instance の通信および接続アーキテクチャと、コンポーネントによる SQL Managed Instance へのトラフィックの誘導方法について説明します。
+description: Azure SQL Managed Instance の通信および接続アーキテクチャと、コンポーネントによるマネージド インスタンスへのトラフィックの誘導方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: fasttrack-edit
 ms.devlang: ''
@@ -12,19 +12,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: e0a16ac8b52907f5ce27d0d186172725e8536423
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031313"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706207"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-この記事では、Azure SQL Managed Instance の通信について説明します。 接続アーキテクチャと、コンポーネントによる SQL Managed Instance へのトラフィックの誘導方法についても説明します。  
+この記事では、Azure SQL Managed Instance の通信について説明します。 また、接続アーキテクチャと、コンポーネントによるマネージド インスタンスへのトラフィックの誘導方法についても説明します。  
 
-SQL Managed Instance は、SQL Managed Instance 専用の Azure 仮想ネットワークとサブネットの内部に配置されます。 このデプロイでは、以下が提供されます。
+SQL Managed Instance は、マネージド インスタンス専用の Azure 仮想ネットワークとサブネットの内部に配置されます。 このデプロイでは、以下が提供されます。
 
 - セキュリティで保護されたプライベート IP アドレス。
 - オンプレミス ネットワークを SQL Managed Instance に接続する機能。
@@ -33,7 +33,7 @@ SQL Managed Instance は、SQL Managed Instance 専用の Azure 仮想ネット�
 
 ## <a name="communication-overview"></a>通信の概要
 
-次の図は、SQL Managed Instance に接続するエンティティを示しています。 SQL Managed Instance と通信するために必要なリソースも示されています。 図の一番下にある通信プロセスは、SQL Managed Instance にデータ ソースとして接続するお客様のアプリケーションとツールを表しています。  
+次の図は、SQL Managed Instance に接続するエンティティを示しています。 マネージド インスタンスと通信するために必要なリソースも示されています。 図の一番下にある通信プロセスは、SQL Managed Instance にデータ ソースとして接続するお客様のアプリケーションとツールを表しています。  
 
 ![接続アーキテクチャのエンティティ](./media/connectivity-architecture-overview/connectivityarch001.png)
 
@@ -41,7 +41,7 @@ SQL Managed Instance は、PaaS (サービスとしてのプラットフォー�
 
 エンド ユーザーまたはアプリケーションによって開始される操作の中には、SQL Managed Instance とプラットフォームとの間のやりとりを必要とするものがあります。 1 つのケースが、SQL Managed Instance データベースの作成です。 このリソースは、Azure portal、PowerShell、Azure CLI、および REST API を介して公開されます。
 
-SQL Managed Instance は、Azure サービスに依存しています。たとえば、バックアップは Azure Storage、テレメトリは Azure Event Hubs、認証は Azure Active Directory、Transparent Data Encryption (TDE) は Azure Key Vault、そして、いくつかの Azure プラットフォーム サービスによってセキュリティとサポート機能が提供されています。 SQL Managed Instance では、これらのサービスへの接続が行われます。
+SQL Managed Instance は、Azure サービスに依存しています。たとえば、バックアップには Azure Storage、テレメトリには Azure Event Hubs、認証には Azure Active Directory (Azure AD)、Transparent Data Encryption (TDE) には Azure Key Vault、そして、セキュリティとサポート機能が提供されるいくつかの Azure プラットフォーム サービスがあります。 SQL Managed Instance では、これらのサービスへの接続が行われます。
 
 通信はすべて暗号化され、証明書を使って署名されます。 通信相手の信頼性を確認するために、SQL Managed Instance では、証明書失効一覧を介してこれらの証明書が確認されます。 証明書が失効している場合、SQL Managed Instance ではデータを保護するために接続が終了されます。
 
@@ -49,64 +49,64 @@ SQL Managed Instance は、Azure サービスに依存しています。たと�
 
 おおまかに言えば、SQL Managed Instance は、一連のサービス コンポーネントです。 これらのコンポーネントは、お客様の仮想ネットワーク サブネット内で実行される分離された専用の仮想マシン セット上でホストされます。 これらのマシンによって仮想クラスターが形成されます。
 
-1 つの仮想クラスターで、複数の SQL Managed Instance をホストできます。 サブネットにプロビジョニングされるインスタンスの数をお客様が変更した場合、クラスターは、必要に応じて自動的に拡張または縮小されます。
+1 つの仮想クラスターで、複数のマネージド インスタンスをホストできます。 サブネットにプロビジョニングされるインスタンスの数をお客様が変更した場合、クラスターは、必要に応じて自動的に拡張または縮小されます。
 
 お客様のアプリケーションは、SQL Managed Instance に接続できます。また、クエリを実行して、仮想ネットワーク、ピアリングされた仮想ネットワーク、または VPN か Azure ExpressRoute によって接続されたネットワーク内のデータベースを更新できます。 このネットワークでは、エンドポイントとプライベート IP アドレスを使用する必要があります。  
 
 ![接続アーキテクチャ図](./media/connectivity-architecture-overview/connectivityarch002.png)
 
-Azure の管理およびデプロイ サービスは、仮想ネットワークの外部で実行されます。 SQL Managed Instance と Azure サービスは、パブリック IP アドレスを持つエンドポイント経由で接続されます。 SQL Managed Instance で送信接続を作成する場合、受信側では、ネットワーク アドレス変換 (NAT) によって、このパブリック IP を発信元とする接続であるかのように見えます。
+Azure の管理およびデプロイ サービスは、仮想ネットワークの外部で実行されます。 SQL Managed Instance と Azure サービスは、パブリック IP アドレスを持つエンドポイント経由で接続されます。 SQL Managed Instance によって送信接続が作成される場合、受信側では、ネットワーク アドレス変換 (NAT) によってこのパブリック IP アドレスを発信元とする接続のように見えます。
 
 管理トラフィックは、お客様の仮想ネットワーク内を通過します。 つまり、仮想ネットワークのインフラストラクチャの要素は、インスタンスを失敗させて利用不可にすることで管理トラフィックに害を及ぼす可能性があります。
 
 > [!IMPORTANT]
-> カスタマー エクスペリエンスとサービスの可用性を高めるために、Azure では、Azure Virtual Network インフラストラクチャの要素に対してネットワーク インテント ポリシーを適用しています。 このポリシーによって、SQL Managed Instance の動作に影響が出る可能性があります。 このプラットフォーム メカニズムは、ネットワーク要件をユーザーに透過的に伝達します。 このポリシーの主要な目的は、ネットワークの誤った構成を防ぎ、SQL Managed Instance の通常の動作を確保することです。 SQL Managed Instance を削除すると、ネットワーク インテント ポリシーも削除されます。
+> カスタマー エクスペリエンスとサービスの可用性を高めるために、Azure では、Azure Virtual Network インフラストラクチャの要素に対してネットワーク インテント ポリシーを適用しています。 このポリシーによって、SQL Managed Instance の動作に影響が出る可能性があります。 このプラットフォーム メカニズムは、ネットワーク要件をユーザーに透過的に伝達します。 このポリシーの主要な目的は、ネットワークの誤った構成を防ぎ、SQL Managed Instance の通常の動作を確保することです。 マネージド インスタンスを削除すると、ネットワーク インテント ポリシーも削除されます。
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>仮想クラスターの接続アーキテクチャ
 
-SQL Managed Instance の接続アーキテクチャについて、さらに踏み込んでみましょう。 次の図は、仮想クラスターの概念上のレイアウトを示しています。
+SQL Managed Instance の接続アーキテクチャについて、さらに踏み込んで見ていきましょう。 次の図は、仮想クラスターの概念上のレイアウトを示しています。
 
 ![仮想クラスターの接続アーキテクチャ](./media/connectivity-architecture-overview/connectivityarch003.png)
 
-クライアントは、`<mi_name>.<dns_zone>.database.windows.net` 形式のホスト名を使用して、SQL Managed Instance に接続します。 このホスト名は、パブリック ドメイン ネーム システム (DNS) ゾーンに登録されていてパブリックに解決できますが、プライベート IP アドレスに解決されます。 クラスターを作成すると、`zone-id` が自動的に生成されます。 新しく作成されたクラスターで 2 番目の SQL Managed Instance がホストされる場合は、プライマリ クラスターとゾーン ID が共有されます。 詳細については、「[自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)」を参照してください。
+クライアントは、`<mi_name>.<dns_zone>.database.windows.net` 形式のホスト名を使用して、SQL Managed Instance に接続します。 このホスト名は、パブリック ドメイン ネーム システム (DNS) ゾーンに登録されていてパブリックに解決できますが、プライベート IP アドレスに解決されます。 クラスターを作成すると、`zone-id` が自動的に生成されます。 新しく作成されたクラスターで 2 番目のマネージド インスタンスがホストされる場合は、プライマリ クラスターとゾーン ID が共有されます。 詳細については、「[自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)」を参照してください。
 
-このプライベート IP アドレスは、SQL Managed Instance の内部ロード バランサーに属しています。 ロード バランサーは、SQL Managed Instance のゲートウェイにトラフィックを送信します。 同じクラスター内で複数の SQL Managed Instance を実行できるため、ゲートウェイでは、SQL Managed Instance のホスト名を使用して、トラフィックを適切な SQL Engine サービスにリダイレクトします。
+このプライベート IP アドレスは、SQL Managed Instance の内部ロード バランサーに属しています。 ロード バランサーは、SQL Managed Instance のゲートウェイにトラフィックを送信します。 同じクラスター内で複数のマネージド インスタンスを実行できるため、ゲートウェイでは、SQL Managed Instance のホスト名を使用して、トラフィックを適切な SQL Engine サービスにリダイレクトします。
 
-管理およびデプロイ サービスでは、SQL Managed Instance への接続に、外部ロード バランサーにマッピングされる[管理エンドポイント](#management-endpoint)が使用されます。 トラフィックは、SQL Managed Instance の管理コンポーネントだけが使用する定義済みの一連のポートで受信された場合のみ、ノードにルーティングされます。 ノード上の組み込みのファイアウォールは、Microsoft の IP 範囲からのトラフィックのみを許可するように設定されています。 証明書によって、管理コンポーネントと管理プレーンとの間のすべての通信が互いに認証されます。
+管理およびデプロイ サービスでは、SQL Managed Instance への接続に、外部ロード バランサーにマッピングされる[管理エンドポイント](#management-endpoint)が使用されます。 トラフィックは、SQL Managed Instance の管理コンポーネントだけに使用される定義済みの一連のポートで受信された場合のみ、ノードにルーティングされます。 ノード上の組み込みのファイアウォールは、Microsoft の IP 範囲からのトラフィックのみを許可するように設定されています。 証明書によって、管理コンポーネントと管理プレーンとの間のすべての通信が互いに認証されます。
 
 ## <a name="management-endpoint"></a>管理エンドポイント
 
 Azure では、管理エンドポイントを使用して SQL Managed Instance が管理されます。 このエンドポイントは、インスタンスの仮想クラスターの内部にあります。 管理エンドポイントは、ネットワーク レベルでは組み込みのファイアウォールによって保護されます。 アプリケーション レベルでは、相互の証明書の検証によって保護されます。 このエンドポイントの IP アドレスを見つけるには、[管理エンドポイントの IP アドレスの確認](management-endpoint-find-ip-address.md)に関する記事を参照してください。
 
-SQL Managed Instance の内部から接続が開始される場合 (バックアップと監査ログ)、トラフィックは、管理エンドポイントのパブリック IP アドレスから始まっているように見えます。 SQL Managed Instance の IP アドレスのみを許可するようにファイアウォール規則を設定することで、SQL Managed Instance からパブリック サービスへのアクセスを制限することができます。 詳細については、[SQL Managed Instance の組み込みのファイアウォールの確認](management-endpoint-verify-built-in-firewall.md)に関する記事を参照してください。
+SQL Managed Instance の内部から接続が開始される場合 (バックアップおよび監査ログのように)、トラフィックは、管理エンドポイントのパブリック IP アドレスから始まっているように見えます。 SQL Managed Instance の IP アドレスのみを許可するようにファイアウォール規則を設定することで、SQL Managed Instance からパブリック サービスへのアクセスを制限することができます。 詳細については、[SQL Managed Instance の組み込みのファイアウォールの確認](management-endpoint-verify-built-in-firewall.md)に関する記事を参照してください。
 
 > [!NOTE]
-> SQL Managed Instance のリージョン内にある Azure サービスに送信されるトラフィックは最適化されるため、管理エンドポイントのパブリック IP アドレスに変換される NAT 処理が行われません。 そのため、IP ベースのファイアウォール規則を使用する必要がある場合 (最も一般的な用途はストレージ)、サービスが SQL Managed Instance とは異なるリージョンに存在している必要があります。
+> SQL Managed Instance のリージョン内にある Azure サービスに送信されたトラフィックは最適化されるため、管理エンドポイントのパブリック IP アドレスに変換される NAT 処理が行われません。 そのため、IP ベースのファイアウォール規則を使用する必要がある場合 (最も一般的な用途はストレージ)、サービスが SQL Managed Instance とは異なるリージョンに存在している必要があります。
 
 ## <a name="service-aided-subnet-configuration"></a>サービス支援サブネット構成
 
 お客様のセキュリティと管理の要件に対処するため、SQL Managed Instance は、手動からサービス支援サブネット構成に切り替え中です。
 
-サービス支援サブネット構成では、ユーザーがデータ トラフィックを完全に制御 (TDS) しますが、SQL Managed Instance は、SLA を満たすために、管理トラフィックが確実に中断されないようにする役割を担います。
+サービス支援サブネット構成では、ユーザーがデータ (TDS) トラフィックを完全に制御しますが、SQL Managed Instance は、SLA を満たすために、管理トラフィックのフローが中断されないことを保証する役割を担います。
 
-サービス支援サブネット構成は、仮想ネットワーク [サブネット委任](../../virtual-network/subnet-delegation-overview.md)機能の上に構築されます。これにより、ネットワーク構成を自動管理し、サービス エンドポイントを有効にすることができます。 サービス エンドポイントを使用することで、バックアップ/監査ログを保持するストレージ アカウントの仮想ネットワーク ファイアウォール規則を構成することができます。
+サービス支援サブネット構成は、仮想ネットワーク [サブネット委任](../../virtual-network/subnet-delegation-overview.md)機能の上に構築されます。これにより、ネットワーク構成の自動管理を提供し、サービス エンドポイントを有効にすることができます。 サービス エンドポイントを使用することで、バックアップおよび監査ログを保持するストレージ アカウントの仮想ネットワーク ファイアウォール規則を構成することができます。
 
 ### <a name="network-requirements"></a>ネットワークの要件
 
 SQL Managed Instance を、仮想ネットワーク内の専用サブネットにデプロイします。 サブネットには、次の特性が必要です。
 
-- **専用サブネット:** SQL Managed Instance のサブネットには、それ自身に関連付けられている他のクラウド サービスを含められず、それをゲートウェイ サブネットにすることもできません。 サブネットには、SQL Managed Instance 以外のリソースを含めることはできず、後でサブネットに他の種類のリソースを追加することもできません。
-- **[サブネットの委任]:** SQL Managed Instance のサブネットは `Microsoft.Sql/managedInstances` リソースプロバイダーに委任する必要があります。
-- **ネットワーク セキュリティ グループ (NSG):** SQL Managed Instance のサブネットに NSG を関連付ける必要があります。 SQL Managed Instance がリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000-11999 上のトラフィックをフィルター処理することで、SQL Managed Instance のデータ エンドポイントへのアクセスを制御できます。 サービスは、管理トラフィックが中断されないようにするために必要な[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)を自動的にプロビジョニングし、最新に維持します。
-- **ユーザー定義ルート (UDR) テーブル:** SQL Managed Instance のサブネットに UDR テーブルを関連付ける必要があります。 オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。 サービスは、管理トラフィックが中断されないようにするために必要な[エントリ](#user-defined-routes-with-service-aided-subnet-configuration)を自動的にプロビジョニングし、最新に維持します。
-- **十分な IP アドレス**: SQL Managed Instance サブネットには、少なくとも 16 個の IP アドレスが必要です。 推奨される最小値は、32 個の IP アドレスです。 詳細については、[SQL Managed Instance 用のサブネットのサイズの決定](vnet-subnet-determine-size.md)に関する記事を参照してください。 [SQL Managed Instance のネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](vnet-existing-add-subnet.md)を構成し、そのネットワークに SQL Managed Instance をデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](virtual-network-subnet-create-arm-template.md)を作成します。
+- **専用サブネット:** SQL Managed Instance のサブネットには、それ自体に関連付けられている他のクラウド サービスを含められず、それをゲートウェイ サブネットにすることもできません。 サブネットには、SQL Managed Instance 以外のリソースを含めることはできず、後でサブネットに他の種類のリソースを追加することもできません。
+- **[サブネットの委任]:** SQL Managed Instance のサブネットは `Microsoft.Sql/managedInstances` リソース プロバイダーに委任する必要があります。
+- **ネットワーク セキュリティ グループ (NSG):** NSG は、SQL Managed Instance サブネットに関連付けられている必要があります。 SQL Managed Instance がリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000 から 11999 上のトラフィックをフィルター処理することで、SQL Managed Instance のデータ エンドポイントへのアクセスを制御できます。 サービスによって、管理トラフィックのフローが中断されないようにするために必要な[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)が自動的にプロビジョニングされ、最新に維持されます。
+- **ユーザー定義ルート (UDR) テーブル:** UDR テーブルは、SQL Managed Instance サブネットに関連付けられている必要があります。 オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。 サービスは、管理トラフィックが中断されないようにするために必要な[エントリ](#user-defined-routes-with-service-aided-subnet-configuration)を自動的にプロビジョニングし、最新に維持します。
+- **十分な IP アドレス**: SQL Managed Instance サブネットには、少なくとも 16 個の IP アドレスが必要です。 推奨される最小値は、32 個の IP アドレスです。 詳細については、[SQL Managed Instance 用のサブネットのサイズの決定](vnet-subnet-determine-size.md)に関する記事を参照してください。 [SQL Managed Instance のネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](vnet-existing-add-subnet.md)を構成した後、そのネットワークにマネージド インスタンスをデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](virtual-network-subnet-create-arm-template.md)を作成します。
 
 > [!IMPORTANT]
-> SQL Managed Instance を作成すると、ネットワーク設定に対する非準拠の変更を防止するために、ネットワーク インテント ポリシーが適用されます。 最後のインスタンスがサブネットから削除されると、ネットワーク インテント ポリシーも削除されます。
+> マネージド インスタンスを作成すると、ネットワーク設定に対する非準拠の変更を防止するために、ネットワーク インテント ポリシーが適用されます。 最後のインスタンスがサブネットから削除されると、ネットワーク インテント ポリシーも削除されます。
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の受信セキュリティ規則
 
-| 名前       |Port                        |Protocol|source           |宛先|アクション|
+| 名前       |Port                        |Protocol|source           |到着地|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpNetSaw       |MI SUBNET  |Allow |
@@ -116,14 +116,14 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の送信セキュリティ規則
 
-| 名前       |Port          |Protocol|source           |宛先|アクション|
+| 名前       |Port          |Protocol|source           |到着地|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用したユーザー定義ルート
 
-|名前|アドレス プレフィックス|次ホップ|
+|名前|アドレス プレフィックス|次のホップ|
 |----|--------------|-------|
 |subnet-to-vnetlocal|MI SUBNET|仮想ネットワーク|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|インターネット|
@@ -306,27 +306,27 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 現在、SQL Managed Instance では、次の仮想ネットワーク機能はサポートされていません。
 
-- **Microsoft ピアリング**:SQL Managed Instance が存在する仮想ネットワークと直接または推移的にピアリングされた Express Route 回線で [Microsoft ピアリング](../../expressroute/expressroute-faqs.md#microsoft-peering)を有効にすると、仮想ネットワーク内の SQL Managed Instance コンポーネント間のトラフィック フローと、それに依存するサービスに影響が及び、可用性の問題が発生します。 Microsoft ピアリングが既に有効になっている仮想ネットワークへの Managed Instance デプロイは、失敗することが予想されます。
+- **Microsoft ピアリング**:SQL Managed Instance が存在する仮想ネットワークと直接または推移的にピアリングされた ExpressRoute 回線で [Microsoft ピアリング](../../expressroute/expressroute-faqs.md#microsoft-peering)を有効にすると、仮想ネットワーク内の SQL Managed Instance コンポーネント間のトラフィック フローと、それに依存するサービスに影響が及び、可用性の問題が発生します。 Microsoft ピアリングが既に有効になっている仮想ネットワークへの SQL Managed Instance デプロイは、失敗することが予想されます。
 - **グローバル仮想ネットワーク ピアリング**:Azure リージョン間での[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)接続は、[ドキュメントに記載されているロード バランサーの制約](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)により、SQL Managed Instance では機能しません。
-- **AzurePlatformDNS**:AzurePlatformDNS [サービス タグ](../../virtual-network/service-tags-overview.md)を使用してプラットフォーム DNS 解決をブロックすると、SQL Managed Instance をレンダリングできなくなります。 SQL Managed Instance では、エンジン内部での DNS 解決にユーザー定義の DNS を使用することがサポートされていますが、プラットフォームの操作については、プラットフォーム DNS への依存性が存在します。
-- **NAT Gateway**:[Virtual Network NAT](../../virtual-network/nat-overview.md) を使用して、特定のパブリック IP アドレスでの送信接続を制御すると、SQL Managed Instance が使用できなくなります。 現時点では、SQL Managed Instance サービスは基本的なロード バランサーの使用に制限されています。このロード バランサーは、Virtual Network NAT を使用した受信フローと送信フローを同時に実行することができません。
+- **AzurePlatformDNS**:AzurePlatformDNS [サービス タグ](../../virtual-network/service-tags-overview.md)を使用してプラットフォーム DNS 解決をブロックすると、SQL Managed Instance をレンダリングできなくなります。 SQL Managed Instance では、エンジン内部の DNS 解決にお客様による定義の DNS がサポートされていますが、プラットフォームの操作については、プラットフォーム DNS への依存性があります。
+- **NAT Gateway**:[Azure Virtual Network NAT](../../virtual-network/nat-overview.md) を使用して、特定のパブリック IP アドレスでの送信接続を制御すると、SQL Managed Instance をレンダリングできなくなります。 現時点では、SQL Managed Instance サービスは基本的なロード バランサーの使用に制限されており、Virtual Network NAT を使用した受信フローと送信フローを同時に実行することができません。
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[非推奨] サービス支援サブネット構成を使用しないネットワーク要件
 
 SQL Managed Instance を、仮想ネットワーク内の専用サブネットにデプロイします。 サブネットには、次の特性が必要です。
 
-- **専用サブネット:** SQL Managed Instance のサブネットには、それ自身に関連付けられている他のクラウド サービスを含められず、それをゲートウェイ サブネットにすることもできません。 サブネットには、SQL Managed Instance 以外のリソースを含めることはできず、後でサブネットに他の種類のリソースを追加することもできません。
-- **ネットワーク セキュリティ グループ (NSG):** 仮想サブネットに関連付けられている NSG で、他の規則に先立って、[受信セキュリティ規則](#mandatory-inbound-security-rules)と[送信セキュリティ規則](#mandatory-outbound-security-rules)を定義する必要があります。 SQL Managed Instance がリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000-11999 上のトラフィックをフィルター処理することで、SQL Managed Instance のデータ エンドポイントへのアクセスを制御できます。
+- **専用サブネット:** SQL Managed Instance のサブネットには、それ自体に関連付けられている他のクラウド サービスを含められず、それをゲートウェイ サブネットにすることもできません。 サブネットには、SQL Managed Instance 以外のリソースを含めることはできず、後でサブネットに他の種類のリソースを追加することもできません。
+- **ネットワーク セキュリティ グループ (NSG):** 仮想サブネットに関連付けられている NSG で、他の規則に先立って、[受信セキュリティ規則](#mandatory-inbound-security-rules)と[送信セキュリティ規則](#mandatory-outbound-security-rules)を定義する必要があります。 SQL Managed Instance がリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000 から 11999 上のトラフィックをフィルター処理することで、SQL Managed Instance のデータ エンドポイントへのアクセスを制御できます。
 - **ユーザー定義ルート (UDR) テーブル:** 仮想ネットワークに関連付けられている UDR テーブルには、特定の[エントリ](#user-defined-routes)が含まれている必要があります。
-- **サービス エンドポイントなし**: SQL Managed Instance のサブネットにサービス エンドポイントを関連付けることはできません。 仮想ネットワークの作成時に、サービス エンドポイント オプションが無効になっていることを確認してください。
-- **十分な IP アドレス**: SQL Managed Instance サブネットには、少なくとも 16 個の IP アドレスが必要です。 推奨される最小値は、32 個の IP アドレスです。 詳細については、[SQL Managed Instance 用のサブネットのサイズの決定](vnet-subnet-determine-size.md)に関する記事を参照してください。 [SQL Managed Instance のネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](vnet-existing-add-subnet.md)を構成し、そのネットワークに SQL Managed Instance をデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](virtual-network-subnet-create-arm-template.md)を作成します。
+- **サービス エンドポイントなし**: SQL Managed Instance サブネットにサービス エンドポイントを関連付けることはできません。 仮想ネットワークの作成時に、サービス エンドポイント オプションが無効になっていることを確認してください。
+- **十分な IP アドレス**: SQL Managed Instance サブネットには、少なくとも 16 個の IP アドレスが必要です。 推奨される最小値は、32 個の IP アドレスです。 詳細については、[SQL Managed Instance 用のサブネットのサイズの決定](vnet-subnet-determine-size.md)に関する記事を参照してください。 [SQL Managed Instance のネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](vnet-existing-add-subnet.md)を構成した後、そのネットワークにマネージド インスタンスをデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](virtual-network-subnet-create-arm-template.md)を作成します。
 
 > [!IMPORTANT]
-> デプロイ先のサブネットにこれらの特性が欠けている場合、新しい SQL Managed Instance をデプロイすることはできません。 SQL Managed Instance を作成すると、ネットワーク設定に対する非準拠の変更を防止するために、ネットワーク インテント ポリシーが適用されます。 最後のインスタンスがサブネットから削除されると、ネットワーク インテント ポリシーも削除されます。
+> デプロイ先のサブネットにこれらの特性が欠けている場合、新しいマネージド インスタンスをデプロイすることはできません。 マネージド インスタンスを作成すると、ネットワーク設定に対する非準拠の変更を防止するために、ネットワーク インテント ポリシーが適用されます。 最後のインスタンスがサブネットから削除されると、ネットワーク インテント ポリシーも削除されます。
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| 名前       |Port                        |Protocol|source           |宛先|アクション|
+| 名前       |Port                        |Protocol|source           |到着地|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |Allow |
 |mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -334,13 +334,13 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| 名前       |Port          |Protocol|source           |宛先|アクション|
+| 名前       |Port          |Protocol|source           |到着地|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
 
 > [!IMPORTANT]
-> ポート 9000、9003、1438、1440、1452 に対するインバウンド規則が 1 つだけあり、ポート 443、12000 に対するアウトバウンド規則が 1 つあることを確認します。 インバウンド規則とアウトバウンド規則がポートごとに別々に構成されていると、Azure Resource Manager デプロイによる SQL Managed Instance のプロビジョニングは失敗します。 これらのポートが別々の規則に含まれている場合、デプロイはエラー コード `VnetSubnetConflictWithIntendedPolicy` で失敗します
+> ポート 9000、9003、1438、1440、および 1452 に対するインバウンド規則が 1 つだけあり、ポート 443 および 12000 に対するアウトバウンド規則が 1 つあることを確認します。 インバウンド規則とアウトバウンド規則がポートごとに別々に構成されていると、Azure Resource Manager デプロイによる SQL Managed Instance のプロビジョニングは失敗します。 これらのポートが別々の規則に含まれている場合、デプロイはエラー コード `VnetSubnetConflictWithIntendedPolicy` で失敗します。
 
 \* MI SUBNET は、x.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
 
@@ -352,7 +352,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 ### <a name="user-defined-routes"></a>ユーザー定義のルート
 
-|名前|アドレス プレフィックス|次ホップ|
+|名前|アドレス プレフィックス|次のホップ|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|仮想ネットワーク|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|インターネット|
@@ -528,7 +528,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 - 概要については、「 [Azure SQL Managed Instance とは](sql-managed-instance-paas-overview.md)」を参照してください。
 - SQL Managed Instance をデプロイできる[新しい Azure 仮想ネットワーク](virtual-network-subnet-create-arm-template.md)または[既存の Azure 仮想ネットワーク](vnet-existing-add-subnet.md)の設定方法を確認します。
 - SQL Managed Instance をデプロイする[サブネットのサイズを計算](vnet-subnet-determine-size.md)します。
-- SQL Managed Instance の作成方法を確認します。
+- マネージド インスタンスの作成方法を確認します。
   - [Azure ポータル](instance-create-quickstart.md)から設定。
   - [PowerShell](scripts/create-configure-managed-instance-powershell.md) を使用して。
   - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)を使用して。

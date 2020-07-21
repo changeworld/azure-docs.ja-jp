@@ -5,17 +5,96 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 04/06/2020
-ms.openlocfilehash: 561767b6857f4b52b3ee1eb17fedd51ad409ee29
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 07/08/2020
+ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462976"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203762"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="general"></a>全般
+- [Azure Monitor をデプロイする](platform/deploy-scale.md) - 新しい記事。
+- [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - billingtype プロパティを更新しました。 PowerShell コマンドを追加しました。
+
+### <a name="agents"></a>エージェント
+- [Log Analytics エージェントの概要](platform/log-analytics-agent.md) - Python 2 要件を追加しました。
+
+### <a name="alerts"></a>警告
+- [ターゲット リソースが別の Azure リージョンに移動されるときにアラート ルールまたはアクション ルールを更新する方法](platform/alerts-resource-move.md) - 新しい記事。
+- [Azure メトリック警告のトラブルシューティング](platform/alerts-troubleshoot-metric.md) - 新しい記事。
+- [Azure Monitor におけるログ アラートのトラブルシューティング](platform/alerts-troubleshoot-metric.md) - 新しい記事。
+  
+### <a name="application-insights"></a>Application Insights
+- [JavaScript Web アプリのための Azure Application Insights](app/javascript.md) - JavaScript SDK セクションを更新。 読み込みエラーを報告するようにスニペットを更新しました。
+- [BYOS (Bring Your Own Storage) を Profiler および Visual Studio スナップショット デバッガー用に構成する](app/profiler-bring-your-own-storage.md) - 新しい記事。
+- [OpenCensus Python を使用した Azure Application Insights における受信要求の追跡](app/opencensus-python-request.md) - OpenCensus のログと構成を更新しました。
+- [Azure Application Insights を使用してライブ ASP.NET Web アプリを監視する](app/monitor-performance-live-website-now.md) - Status Monitor v1 が非推奨になる日付を更新しました。
+- [Azure Application Insights を使用して Node.js サービスを監視する](app/nodejs.md) - 以前のバージョンからの移行と SDK 構成含む複数の更新
+- [Azure Monitor を使用して Python アプリを監視する (プレビュー)](app/opencensus-python.md) - Azure Monitor エクスポーターの構成に関するセクションを追加しました。
+- [コードを変更せずにアプリを監視する - Azure Monitor Application Insights の自動インストルメンテーション](app/codeless-overview.md) - 新しい記事。
+- [JavaScript Web アプリの SDK 読み込みエラーのトラブルシューティング](app/javascript-sdk-load-failure.md) - 新しい記事。
+
+### <a name="containers"></a>Containers
+- [お使いのハイブリッド Kubernetes クラスターの監視を停止する方法](insights/container-insights-optout-hybrid.md) - Arc 対応 Kubernetes に関するセクションを追加しました。
+- [Azure Arc 対応 Kubernetes クラスターに Azure Monitor for containers を構成する](insights/container-insights-enable-arc-enabled-clusters.md) - 新しい記事。
+- [Azure Monitor for containers を使用して Azure Red Hat OpenShift v4.x を構成する](insights/container-insights-azure-redhat4-setup.md) - 前提条件を更新しました。
+- [コンテナー用 Azure Monitor のライブ データ (プレビュー) の設定](insights/container-insights-livedata-setup.md) - Azure US Government で利用できない機能に関する注を削除しました。
+
+### <a name="insights"></a>洞察
+- [FAQ - Azure の Network Performance Monitor ソリューション](insights/network-performance-monitor-faq.md) - ExpressRoute モニターの FAQ を追加しました。
+
+### <a name="logs"></a>ログ
+- [Azure Log Analytics ワークスペースの削除と復旧](platform/delete-workspace.md) - PowerShell コマンドを追加しました。 トラブルシューティングを更新しました。
+- [Azure Monitor で Log Analytics ワークスペースを管理する](platform/manage-access.md) - RBAC セクションに許可されないテーブルの例を追加しました。
+- [Azure Monitor ログの使用量とコストを管理する](platform/manage-cost-storage.md) - データ サイズの計算に関する詳細を追加しました。 データ ボリューム アラートの構成について更新しました。 Azure Sentinel によって収集されるセキュリティ データの詳細。 データ上限の明確化。
+- [Azure Logic Apps と Power Automate で Azure Monitor ログを使用する](platform/logicapp-flow-connector.md) - コネクターの制限を追加しました。
+
+### <a name="metrics"></a>メトリック
+- [Azure Monitor でサポートされているメトリック (リソースの種類別)](platform/metrics-supported.md) - SQL Server のメトリックを更新しました。
+
+
+### <a name="platform-logs"></a>プラットフォーム ログ
+
+- [診断設定用の Resource Manager テンプレートのサンプル](samples/resource-manager-diagnostic-settings.md) - アクティビティ ログの診断設定を修正します。
+- [Azure portal を使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する](learn/quick-collect-activity-log-portal.md) - 新しい記事。
+- [Azure Resource Manager テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する](learn/quick-collect-activity-log-arm.md) - 新しい記事。
+
+#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>プラットフォーム ログ コンテンツの再構築と統合による新規および更新された記事
+- [Azure リソース ログをストレージ アカウントにアーカイブする](platform/resource-logs-collect-storage.md)
+- [Azure アクティビティ ログのイベント スキーマ](platform/activity-log-schema.md)
+- [Azure アクティビティ ログ](platform/activity-log.md)
+- [Azure Monitor CLI のサンプル](samples/cli-samples.md)
+- [Azure Monitor PowerShell のサンプル](samples/powershell-samples.md)
+- [Azure 監視 REST API のチュートリアル](platform/rest-api-walkthrough.md)
+- [Azure リソース ログでサポートされているサービスとスキーマ](platform/diagnostic-logs-schema.md)
+- [Azure リソース ログ](platform/resource-logs.md)
+- [Azure Monitor での Azure アクティビティ ログの収集と分析](platform/activity-log-collect.md)
+- [Log Analytics ワークスペースで Azure リソース ログを収集する](platform/resource-logs-collect-workspace.md)
+- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](platform/diagnostic-settings.md)
+- [Azure アクティビティ ログをエクスポートする](platform/activity-log-export.md)
+- [Azure プラットフォーム ログの概要](platform/platform-logs-overview.md)
+- [Azure プラットフォーム ログをイベント ハブにストリーム配信する](platform/resource-logs-stream-event-hubs.md)
+- [Azure Monitor で Azure アクティビティ ログ イベントを表示する](platform/activity-log-view.md)
+
+### <a name="virtual-machines"></a>仮想マシン
+- [Azure portal で Azure Monitor for VMs を有効にする](insights/vminsights-enable-single-vm.md) - Azure Arc を含めるように更新しました。
+- [Azure Monitor for VMs の有効化の概要](insights/vminsights-enable-overview.md) - Azure Arc を含めるように更新しました。
+- [Azure Monitor for VMs とは?](insights/vminsights-overview.md) - Azure Arc を含めるように更新しました。
+
+
+### <a name="visualizations"></a>視覚化
+- [Azure Monitor ブックのデータ ソース](platform/workbooks-data-sources.md) - アラートとカスタム エンドポイントのセクションを追加しました。
+- [Azure Monitor のブックベースの分析情報のトラブルシューティング](insights/troubleshoot-workbooks.md) - 新しい記事。
+- [Log Analytics ダッシュボードの視覚化のアップグレード](log-query/dashboard-upgrade.md) - 新しい記事。
+
+
 
 ## <a name="may-2020"></a>2020 年 5 月
 

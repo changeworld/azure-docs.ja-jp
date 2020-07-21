@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817126"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205698"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動機械学習での特徴量化
 
@@ -104,7 +104,7 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 ガードレール|Status|トリガー&nbsp;の&nbsp;条件
 ---|---|---
 **欠損特徴量値の補完** |Passed <br><br><br> 完了| トレーニング データで、不足している機能の値が検出されませんでした。 [不足している値の補完](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)の詳細を確認してください。 <br><br> 不足している特徴の値が、トレーニング データで検出され、補完されました。
-**高カーディナリティの特徴量の処理** |Passed <br><br><br> 完了| 入力が分析され、高カーディナリティの特徴は検出されませんでした。 [高カーディナリティの特徴の検出](#automatic-featurization)に関する詳細を確認してください。 <br><br> 高カーディナリティの特徴が入力で検出され、処理されました。
+**高カーディナリティの特徴量の処理** |Passed <br><br><br> 完了| 入力が分析され、高カーディナリティの特徴は検出されませんでした。 <br><br> 高カーディナリティの特徴が入力で検出され、処理されました。
 **検証分割処理** |完了| 検証構成は `'auto'` に設定されており、トレーニング データには "*20,000 行未満*" が含まれていました。 <br> トレーニング済みモデルの各イテレーションは、クロス検証を使用して検証されました。 [検証データ](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)の詳細を確認してください。 <br><br> 検証構成は `'auto'` に設定されており、トレーニング データには "*20,000 行超*" が含まれていました。 <br> 入力データはトレーニング データセットと検証データセットに分割され、モデルが検証されます。
 **クラス均衡の検出** |Passed <br><br><br><br><br> 通知済み | 入力が分析され、すべてのクラスがトレーニング データ内で均衡が取られます。 サンプルの数と比率によって測定され、データセット内で各クラスに適正な表現がある場合、データセットは均衡が取れていると見なされます。 <br><br><br> 入力で、不均衡なクラスが検出されました。 モデルのバイアスを修正するには、バランスの問題を修正します。 [不均衡なデータ](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)の詳細を確認してください。
 **メモリの問題の検出** |Passed <br><br><br><br> 完了 |<br> 選択された値 (期間、ラグ、ローリング ウィンドウ) が分析され、潜在的なメモリ不足の問題は検出されませんでした。 時系列[予測構成](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)の詳細を確認してください。 <br><br><br>選択された値 (期間、ラグ、ローリング ウィンドウ) が分析され、実験でメモリが不足する可能性があります。 ラグまたはローリング ウィンドウの構成がオフになっています。

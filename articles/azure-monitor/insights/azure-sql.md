@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116550"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087182"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -58,11 +58,11 @@ Azure SQL Analytics は、すべての Azure SQL データベースを対象に�
 
 [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) を Log Analytics ワークスペースに追加します。
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーム配信するための Azure SQL データベースの構成
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーミングするように Azure SQL Database を構成する
 
 ワークスペースに Azure SQL Analytics ソリューションを作成した後は、その診断テレメトリを Azure SQL Analytics にストリーム配信するように、監視するリソースの**それぞれを構成**する必要があります。 次のページの詳細手順に従ってください。
 
-- Azure SQL データベースの Azure Diagnostics を有効にして、[診断テレメトリを Azure SQL Analytics にストリーム配信](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)します。
+- データベースに対して Azure Diagnostics を有効にして、[診断テレメトリを Azure SQL Analytics にストリーミング](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)します。
 
 上記手順ではまた､1 つの Azure SQL Analytics ワークスペースから複数の Azure サブスクリプションを 1 つの窓で監視するためのサポート機能を有効にする手順も説明しています｡
 
@@ -72,7 +72,7 @@ Azure SQL Analytics をワークスペースに追加すると、Azure SQL Analy
 
 ![Azure SQL Analytics の概要タイル](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-読み込みが完了すると、タイルには SQL Database のデータベースとエラスティック プールの数と、Azure SQL Analytics が診断テレメトリを受信する SQL Managed Instance のマネージド インスタンスおよびインスタンス データベースの数が表示されます。
+読み込みが完了すると、タイルには SQL Database のデータベースおよびエラスティック プールの数と、Azure SQL Analytics が診断テレメトリを受信する SQL Managed Instance のインスタンスおよびインスタンス データベースの数が表示されます。
 
 ![Azure SQL Analytics のタイル](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -106,7 +106,7 @@ Azure Monitor に一部のメトリックまたはログがストリーム配信
 
 タイルのいずれかを選択すると、特定のパースペクティブでドリルダウン レポートが開きます。 パースペクティブを選択すると、ドリル ダウン レポートが開きます。
 
-SQL Managed Instance のビューを選択すると、マネージド インスタンスの使用率、それに含まれるデータベース、インスタンス全体で実行されたクエリに関するテレメトリの詳細が表示されます。
+SQL Managed Instance ビューを選択すると、インスタンスの使用率、インスタンス データベース、およびマネージド インスタンス全体で実行されたクエリに関するテレメトリの詳細が表示されます。
 
 ![Azure SQL Analytics のタイムアウト](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5033d19de2321e0dfd3b6d89d2da3306b1723bd0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745141"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146588"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールの新着情報
 
@@ -25,8 +25,9 @@ Azure Web アプリケーション ファイアウォールは、継続的に更
 
 ## <a name="new-features"></a>新機能
 
-|機能  |説明  |追加日  |
+|特徴量  |説明  |追加日  |
 |---------|---------|---------|
+|サイトごとのポリシーの GA| サイトごとのポリシーが一般公開されました。 | 2020 年 7 月 |
 |ボット軽減策ルールセット (プレビュー)|ボット軽減策ルールセットは、選択した CRS ルールセットと共に有効にすることができます。 | 2019 年 11 月 |
 |GeoDB 統合 (プレビュー)|発生した国/地域別にトラフィックを制限するカスタム ルールを作成できるようになりました。 | 2019 年 11 月 |
 |サイトごと/URI ごとの WAF ポリシー (プレビュー)|WAF-v2 では、パスベース ルールだけでなく、リスナーへのポリシーの適用がサポートされるようになりました。 「[WAF ポリシーの作成](create-waf-policy-ag.md)」を参照してください。 | 2019 年 11 月 |

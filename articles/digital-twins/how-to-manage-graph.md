@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392252"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258097"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -21,6 +21,8 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 機能する [Azure Digital Twins インスタンス](how-to-set-up-instance.md)があり、クライアント アプリの[認証](how-to-authenticate-client.md)を設定すると、[**DigitalTwins API**](how-to-use-apis-sdks.md) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
 
 この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインを操作については、[「デジタル ツインを管理する」方法](how-to-manage-twin.md)を参照してください。
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>リレーションシップの作成
 

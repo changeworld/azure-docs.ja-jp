@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 9f38ba439a5f2facbc1c80493b802b5205a54691
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 72ace8a94d16b79f756c83393db2b39a1c0df714
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323592"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134862"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL サーバーを作成する
 
-Azure Database for MySQL は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 このクイックスタートでは、ARM テンプレートを使用して、Azure Database for MySQL サーバーと仮想ネットワーク統合を作成します。 サーバーの作成には、Azure portal、Azure CLI、Azure PowerShell を使用できます。
+Azure Database for MySQL は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Database for MySQL サーバーと仮想ネットワーク統合を作成します。 サーバーの作成には、Azure portal、Azure CLI、Azure PowerShell を使用できます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,11 +42,9 @@ Azure Database for MySQL は、高可用な MySQL データベースをクラウ
 
 ---
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
 Azure Database for MySQL サーバーは、定義済みの一連のコンピューティング リソースとストレージ リソースを使って作成します。 詳細については、「[Azure Database for MySQL の価格レベル](concepts-pricing-tiers.md)」を参照してください。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成します。
-
-### <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/)からのものです。
 
@@ -214,7 +216,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>次のステップ
 
-テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
+Resource Manager テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [ チュートリアル: 初めての Azure Resource Manager テンプレートを作成およびデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
