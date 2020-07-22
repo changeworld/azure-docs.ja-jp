@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
-author: jonbeck7
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c898721102177a0d796db3b8b0f194c4ec3efae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84793689"
 ---
 SQL Server や Oracle などの一部のデータベース ワークロードでは、メモリ、記憶域、I/O 帯域幅は大量に必要ですが、コアの数は多くなくてもかまいません。 多くのデータベース ワークロードは、CPU 集中型ではありません。 Azure で提供される一部の VM サイズでは、VM の vCPU の数を制限してフトウェア ライセンスのコストを抑えながら、同じメモリ、記憶域、I/O 帯域幅を維持できます。
 
@@ -24,7 +24,7 @@ vCPU の数を、元の VM サイズの半分または 4 分の 1 に制限す�
 SQL Server または Oracle のライセンス料金は新しい vCPU の数に制限され、他の製品は新しい vCPU の数に基づいて課金されます。 その結果、アクティブな (課金対象の) vCPU に対する VM の仕様の比は 50 ～ 75% 高くなります。 これらの新しい VM サイズを利用すると、お客様のワークロードで、ソフトウェア ライセンスのコストを最適化しながら、同じメモリ、ストレージ、I/O 帯域幅を使用できます。 現時点では、OS のライセンスを含むコンピューティング コストは元のサイズと同じです。 詳しくは、[コスト効率の高いデータベース ワークロードのための新しい VM サイズ](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)に関するページをご覧ください。
 
 
-| Name                | vCPU | 仕様           |
+| 名前                | vCPU | 仕様           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | M8ms と同じ    |
 | Standard_M8-4ms     | 4    | M8ms と同じ    |
@@ -45,6 +45,24 @@ SQL Server または Oracle のライセンス料金は新しい vCPU の数に�
 | Standard_E32-8s_v3  | 8    | E32s_v3 と同じ |
 | Standard_E64-32s_v3 | 32   | E64s_v3 と同じ |
 | Standard_E64-16s_v3 | 16   | E64s_v3 と同じ |
+| Standard_E4-2s_v4   | 2    | E4s_v4 と同じ  |
+| Standard_E8-4s_v4   | 4    | E8s_v4 と同じ  |
+| Standard_E8-2s_v4   | 2    | E8s_v4 と同じ  |
+| Standard_E16-8s_v4  | 8    | E16s_v4 と同じ |
+| Standard_E16-4s_v4  | 4    | E16s_v4 と同じ |
+| Standard_E32-16s_v4 | 16   | E32s_v4 と同じ |
+| Standard_E32-8s_v4  | 8    | E32s_v4 と同じ |
+| Standard_E64-32s_v4 | 32   | E64s_v4 と同じ |
+| Standard_E64-16s_v4 | 16   | E64s_v4 と同じ |
+| Standard_E4-2ds_v4  | 2    | E4ds_v4 と同じ |
+| Standard_E8-4ds_v4  | 4    | E8ds_v4 と同じ |
+| Standard_E8-2ds_v4  | 2    | E8ds_v4 と同じ |
+| Standard_E16-8ds_v4 | 8    | E16ds_v4 と同じ|
+| Standard_E16-4ds_v4 | 4    | E16ds_v4 と同じ|
+| Standard_E32-16ds_v4| 16   | E32ds_v4 と同じ|
+| Standard_E32-8ds_v4 | 8    | E32ds_v4 と同じ|
+| Standard_E64-32ds_v4| 32   | E64ds_v4 と同じ|
+| Standard_E64-16ds_v4| 16   | E64ds_v4 と同じ|
 | Standard_GS4-8      | 8    | GS4 と同じ     |
 | Standard_GS4-4      | 4    | GS4 と同じ     |
 | Standard_GS5-16     | 16   | GS5 と同じ     |

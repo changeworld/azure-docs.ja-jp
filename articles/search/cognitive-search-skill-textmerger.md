@@ -1,19 +1,19 @@
 ---
 title: テキスト マージ コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure コグニティブ検索の AI エンリッチメント パイプラインでこのコグニティブ スキルを使用します。
+description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure Cognitive Search の AI エンリッチメント パイプラインでこのコグニティブ スキルを使用します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162346"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982018"
 ---
 #   <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
 
@@ -31,8 +31,8 @@ Microsoft.Skills.Text.MergeSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| insertPreTag  | 各挿入前に含まれる文字列。 既定値は `" "` です。 スペースを省略するには、値を `""` に設定します。  |
-| insertPostTag | 各挿入後に含まれる文字列。 既定値は `" "` です。 スペースを省略するには、値を `""` に設定します。  |
+| `insertPreTag`    | 各挿入前に含まれる文字列。 既定値は `" "` です。 スペースを省略するには、値を `""` に設定します。  |
+| `insertPostTag`   | 各挿入後に含まれる文字列。 既定値は `" "` です。 スペースを省略するには、値を `""` に設定します。  |
 
 
 ##  <a name="sample-input"></a>サンプル入力
@@ -108,18 +108,22 @@ Microsoft.Skills.Text.MergeSkill
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
@@ -140,7 +144,7 @@ Microsoft.Skills.Text.MergeSkill
 }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

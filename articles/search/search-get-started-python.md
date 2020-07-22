@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 04/01/2020
-ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.custom: tracking-python
+ms.openlocfilehash: 304d0a689b30b0e900d07b4654c4f5cd6db7b9ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585923"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496725"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
 
@@ -23,7 +24,7 @@ ms.locfileid: "80585923"
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
-> * [ポータル](search-create-index-portal.md)
+> * [ポータル](search-get-started-portal.md)
 > 
 
 Python と [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
@@ -68,7 +69,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
-   api_version = '?api-version=2019-05-06'
+   api_version = '?api-version=2020-06-30'
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```

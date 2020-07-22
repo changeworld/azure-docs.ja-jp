@@ -3,14 +3,14 @@ title: チュートリアル:ASP.NET Core と SQL Database
 description: SQL Database に接続された .NET Core アプリを Azure App Service で動作させる方法について説明します。
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/23/2020
+ms.date: 05/27/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: f8e76c90a670adb8fa5de5a33063d9de3bcc6cc3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c020e49b12784e628661bff61fe344df0ac6049a
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207651"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905988"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -90,7 +90,7 @@ SQL Database については、このチュートリアルでは [Azure SQL Data
 
 Cloud Shell で、[`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) コマンドを使用して SQL Database 論理サーバーを作成します。
 
-*\<server-name>* プレースホルダーを "*一意の*" SQL Database 名で置換します。 この名前は、グローバルに一意の SQL Database エンドポイント `<server-name>.database.windows.net` の一部として使用されます。 有効な文字は `a`-`z`、`0`-`9`、`-` です。 また、 *\<db-username>* と *\<db-password>* を、選択したユーザー名とパスワードで置換します。 
+*\<server-name>* プレースホルダーは、"*一意の*" SQL Database 名に置き換えてください。 この名前は、グローバルに一意の SQL Database エンドポイント `<server-name>.database.windows.net` の一部として使用されます。 有効な文字は `a`-`z`、`0`-`9`、`-` です。 また、 *\<db-username>* と *\<db-password>* は、選択したユーザー名とパスワードに置き換えます。 
 
 
 ```azurecli-interactive
@@ -129,7 +129,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 > [アプリで使用する送信 IP アドレスのみを使用する](overview-inbound-outbound-ips.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+Cloud Shell 内で *\<your-ip-address>* を[ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
 ```azurecli-interactive
 az sql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -179,7 +179,7 @@ services.AddDbContext<MyDatabaseContext>(options =>
 
 現在、対象のアプリはローカルの Sqlite データベースに接続しています。 Azure SQL Database を構成したので、これをターゲットとする最初の移行を再作成します。 
 
-リポジトリのルートから、次のコマンドを実行します。 *\<connection-string>* は、前に作成した接続文字列に置き換えてください。
+リポジトリのルートから、次のコマンドを実行します。 *\<connection-string>* は、先ほど作成した接続文字列で置き換えます。
 
 ```
 # Delete old migrations
@@ -236,7 +236,7 @@ git commit -m "connect to SQLDB in Azure"
 
 ### <a name="configure-connection-string"></a>接続文字列を構成する
 
-Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、 *\<app-name>* および *\<connection-string>* パラメーターを、先ほど作成した接続文字列で置換します。
+Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドの *\<app-name>* および *\<connection-string>* パラメーターは、先ほど作成した接続文字列に置き換えてください。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
@@ -446,3 +446,8 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 
 > [!div class="nextstepaction"]
 > [チュートリアル:カスタム DNS 名をアプリにマップする](app-service-web-tutorial-custom-domain.md)
+
+その他のリソース:
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)

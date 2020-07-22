@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262895"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309834"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>事前に GRUB と sysrq に確実にアクセスできるようにすることでダウンタイムを大幅に短縮する
 
@@ -76,7 +76,7 @@ Azure シリアル コンソールと GRUB にアクセスできるようにす�
 
 - ディスク スワップ – 次のいずれかを使用して自動化できます。
 
-   - [Power Shell の復旧スクリプト](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+   - [PowerShell の復旧スクリプト](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
    - [bash の復旧スクリプト](https://github.com/sribs/azure-support-scripts)
 
 - 従来の方法
@@ -98,7 +98,7 @@ GRUB にアクセスできない場合は、[こちら](https://youtu.be/m5t0GZ5
 Sysrq キーは、一部の新しい Linux ディストリビューションでは既定で有効になりますが、他のディストリビューションでは、特定の SysRq 関数に対する値のみを受け入れるように構成されている場合があります。
 古いディストリビューションでは、完全に無効になっている可能性があります。
 
-SysRq 機能は、クラッシュまたはハングした VM を Azure シリアル コンソールから直接再起動する場合に役立ちます。また、GRUB メニューにアクセスする場合にも便利です。代わりに、別のポータル ウィンドウや SSH セッションから VM を再起動すると、現在のコンソール接続が切断され、そのために GRUB メニューの表示に使用される GRUB タイムアウトが切れる可能性があります。
+SysRq 機能は、クラッシュまたは応答しない VM を Azure シリアル コンソールから直接再起動する場合に役立ちます。また、GRUB メニューにアクセスする場合にも便利です。代わりに、別のポータル ウィンドウや SSH セッションから VM を再起動すると、現在のコンソール接続が切断され、そのために GRUB メニューの表示に使用される GRUB タイムアウトが切れる可能性があります。
 VM は、カーネル パラメーターの値として、sysrq のすべての関数が有効になる 1、または再起動と電源オフのみが可能な 128 を受け入れるように、構成する必要があります
 
 
@@ -346,7 +346,7 @@ Esc キーを押さなくても、GRUB メニューは構成されている time
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 sp1
-公式の[ドキュメント](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)に従って、yast ブートローダーを使用します
+公式の[ドキュメント](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)に従って、YaST ブートローダーを使用します
 
 または、/etc/default/grub に次のパラメーターを追加または変更します。
 

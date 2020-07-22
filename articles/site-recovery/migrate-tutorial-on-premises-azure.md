@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: ccf83bacedb667e52e9865b6d451641faa0ac414
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388918"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131187"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -132,21 +132,21 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 
 - データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。 
 - Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
-- [Azure VM エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)では、Azure ファブリック コントローラーと VM の対話を管理します。 Azure Backup、Site Recovery、および Azure Security など、一部の Azure サービスでは必須です。
+- [Azure VM エージェント](../virtual-machines/extensions/agent-windows.md)では、Azure ファブリック コントローラーと VM の対話を管理します。 Azure Backup、Site Recovery、および Azure Security など、一部の Azure サービスでは必須です。
     - VMware マシンおよび物理サーバーを移行する場合、モビリティ サービス インストーラーによって Windows マシン上で利用できる Azure VM エージェントがインストールされます。 Linux VM 上で、フェールオーバー後にエージェントをインストールすることをお勧めします。
     - Azure VM をセカンダリ リージョンに移行する場合、移行前に、VM 上に Azure VM エージェントがプロビジョニングされている必要があります。
     - Hyper-V VM を Azure に移行する場合、移行後に Azure VM 上に Azure VM エージェントをインストールします。
 - VM から任意の Site Recovery プロバイダー/エージェントを手動で削除します。 VMware VM または物理サーバーを移行する場合は、モビリティ サービスを VM からアンインストールしてください。
 - 復元性の向上:
-    - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
+    - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](azure-to-azure-quickstart.md)。
 - セキュリティの強化：
-    - Azure Security Center の[ジャスト イン タイム管理]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time)を利用して、受信トラフィック アクセスをロック ダウンして制限します。
-    - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
-    - [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
+    - Azure Security Center の[ジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、受信トラフィック アクセスをロック ダウンして制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ )に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/ ) を確認してください。
 - 監視と管理：
-    - [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) をデプロイして、リソースの使用率と消費量を監視します。
+    - [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 
 ### <a name="post-migration-steps-on-premises"></a>オンプレミスにおける移行後の手順
 

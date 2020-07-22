@@ -6,12 +6,12 @@ author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964925"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165857"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>VM の可用性セットを変更する
 以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 
@@ -19,6 +19,8 @@ ms.locfileid: "76964925"
 この記事は、Linux と Windows の両方の VM に適用されます。
 
 この記事は、2019 年 2 月 12 日に [Azure Cloud Shell](https://shell.azure.com/powershell) と [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps) バージョン 1.2.0 を使用して最後にテストされました。
+
+この例では、VM がロード バランサーに接続されているかどうかは確認されません。 VM がロード バランサーに接続されている場合は、そのケースを処理するようスクリプトを更新する必要があります。 
 
 
 ## <a name="change-the-availability-set"></a>可用性セットを変更する 

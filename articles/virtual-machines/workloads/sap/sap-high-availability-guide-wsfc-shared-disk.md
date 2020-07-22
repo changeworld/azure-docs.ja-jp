@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982957"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
@@ -60,8 +60,8 @@ Windows では、SAP ASCS/SCS インスタンスには、SAP セントラル サ
 SAP ASCS/SCS インスタンスには、次のコンポーネントがあります。
 
 * SAP セントラル サービス:
-    * メッセージとエンキュー サーバーの 2 つのプロセス、およびこれら 2 つのプロセスへのアクセスに使われる \<ASCS/SCS 仮想ホスト名>。
-    * ファイル構造: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<インスタンス番号\>
+    * メッセージとエンキュー サーバーの 2 つのプロセス、およびこれら 2 つのプロセスへのアクセスに使われる \<ASCS/SCS virtual host name>。
+    * ファイル構造: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance number\>
 
 
 * SAP グローバル ホスト ファイル:
@@ -83,7 +83,7 @@ _**図 3:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ
 
 > [!IMPORTANT]
 > これら 2 つのコンポーネントは、同じ SAP ASCS/SCS インスタンスの下で実行されます。
->* 同じ \<ASCS/SCS 仮想ホスト名> が、SAP メッセージ プロセスとエンキュー サーバー プロセスへのアクセス、および sapmnt ファイル共有経由での SAP グローバル ホスト ファイルへのアクセスに使われます。
+>* 同じ \<ASCS/SCS virtual host name> が、SAP メッセージ プロセスとエンキュー サーバー プロセスへのアクセス、および sapmnt ファイル共有経由での SAP グローバル ホスト ファイルへのアクセスに使われます。
 >* 同じクラスター共有ディスク ドライブ S が、これらの間で共有されます。
 >
 

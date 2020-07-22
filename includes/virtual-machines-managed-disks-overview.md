@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0eaac5aac94c536fda58d7d004a54df51219f7cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147764"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343448"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -55,11 +55,14 @@ ms.locfileid: "82147764"
 
 ### <a name="server-side-encryption"></a>サーバー側暗号化
 
-[Azure サーバー側暗号化](../articles/virtual-machines/windows/disk-encryption.md)は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています。 キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+[Azure サーバー側暗号化](../articles/virtual-machines/windows/disk-encryption.md)は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています (これに対し、一時ディスクは Storage Service Encryption によって暗号化されません。[一時ディスク ディスク ロール](#temporary-disk)に関するページを参照してください)。
+
+キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Azure Disk Encryption を使用すると、IaaS 仮想マシンで使用される OS とデータ ディスクを暗号化できます。 この暗号化にはマネージド ディスクが含まれます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 暗号化プロセスは Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 詳細については、[IaaS VM のための Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) に関するページを参照してください。
+Azure Disk Encryption を使用すると、IaaS 仮想マシンで使用される OS とデータ ディスクを暗号化できます。 この暗号化にはマネージド ディスクが含まれます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 暗号化プロセスは Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 詳細については、「[Linux VM に対する Azure Disk Encryption](../articles/virtual-machines/linux/disk-encryption-overview.md)」または「[Windows VM 用の Azure Disk Encryption](../articles/virtual-machines/windows/disk-encryption-overview.md)」をご覧ください。
 
 ## <a name="disk-roles"></a>ディスク ロール
 
@@ -79,7 +82,9 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) イベント中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 Azure Linux VM の一時ディスクは既定で /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 VM の標準の再起動が正常に実行されている間、一時ディスクのデータは保持されます。
+すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) イベント中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 VM の標準の再起動が正常に実行されている間、一時ディスクのデータは保持されます。  
+
+Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクはサーバー側暗号化によって暗号化されません (「[暗号化](#encryption)」を参照してください)。
 
 ## <a name="managed-disk-snapshots"></a>マネージド ディスクのスナップショット
 

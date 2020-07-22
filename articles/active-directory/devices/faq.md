@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689046"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
 ## <a name="general-faq"></a>一般的な FAQ
 
-### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか?  または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
+### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
 
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、 **[ユーザー デバイス]** には表示されません。
 Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
@@ -176,6 +176,8 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 **A:** 現在、Azure AD 参加済みデバイスでの UPN の変更は完全にはサポートされていません。 そのため、UPN の変更後に Azure AD での認証が失敗します。 その結果、ユーザーのデバイスで SSO と条件付きアクセスの問題が生じます。 現時点では、この問題を解決するために、ユーザーは新しい UPN を使用して [他のユーザー] タイルから Windows にサインインする必要があります。 現在、この問題の対策に取り組んでいます。 なお、この問題は Windows Hello for Business でサインインしているユーザーには影響しません。 
 
+Windows 10 2004 更新プログラムでは、UPN の変更がサポートされています。 この更新プログラムがインストールされたデバイスのユーザーには、UPN の変更後も問題は発生しません
+
 ---
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>Q:ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。 どうすればそれらのデバイスからの印刷を有効にできますか?
@@ -266,6 +268,8 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 ### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>Q:UPN の変更後、Windows 10 のハイブリッド Azure AD 参加済みデバイスでユーザーに問題が生じるのはなぜですか?
 
 **A:** 現在、ハイブリッド Azure AD 参加済みデバイスでの UPN の変更は完全にはサポートされていません。 UPN の変更後、ユーザーはデバイスにサインインして、オンプレミス アプリケーションにアクセスできますが、Azure AD での認証は失敗します。 その結果、ユーザーのデバイスで SSO と条件付きアクセスの問題が生じます。 現時点では、この問題を解決するには、Azure AD からデバイスの参加を解除 (昇格された特権を使用して "dsregcmd /leave" を実行) し、再度参加する (自動的に行われる) 必要があります。 現在、この問題の対策に取り組んでいます。 なお、この問題は Windows Hello for Business でサインインしているユーザーには影響しません。 
+
+Windows 10 2004 更新プログラムでは、UPN の変更がサポートされています。 この更新プログラムがインストールされたデバイスのユーザーには、UPN の変更後も問題は発生しません
 
 ---
 

@@ -4,15 +4,15 @@ description: Azure Analysis Services の表形式 1200 以上のデータ モデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77461659"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077441"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -20,10 +20,10 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 ## <a name="azure-data-sources"></a>Azure データ ソース
 
-|データ ソース  |メモリ内  |DirectQuery  |メモ |
+|データ ソース  |メモリ内  |DirectQuery  |Notes |
 |---------|---------|---------|---------|
 |Azure SQL データベース      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL Data Warehouse)      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  はい        |  いいえ        |<sup>[1](#tab1400a)</sup> |
@@ -33,16 +33,17 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 |Azure HDInsight Spark     |   はい       |   いいえ       |<sup>[1](#tab1400a)</sup>、<sup>[4](#databricks)</sup>|
 ||||
 
-**注:**    
+**注:**
+
 <a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。  
-<a name="azprovider">2</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、インメモリと DirectQuery の両方のモデルで、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、または .NET Framework Data Provider SQL Server が必要です。    
-<a name="azsqlmanaged">3</a> - Azure SQL Database Managed Instance がサポートされています。 マネージド インスタンスはプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)が必要です。    
-<a name="databricks">4</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。   
-<a name="gen2">5</a> - ADLS Gen2 コネクタは現在サポートされていませんが、ADLS Gen2 データ ソースでは Azure Blob Storage コネクタを使用できます。   
+<a name="azprovider">2</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、インメモリと DirectQuery の両方のモデルで、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、または .NET Framework Data Provider SQL Server が必要です。  
+<a name="azsqlmanaged">3</a> - Azure SQL Managed Instance がサポートされています。 SQL Managed Instance はプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)が必要です。  
+<a name="databricks">4</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。  
+<a name="gen2">5</a> - ADLS Gen2 コネクタは現在サポートされていませんが、ADLS Gen2 データ ソースでは Azure Blob Storage コネクタを使用できます。
 
 ## <a name="other-data-sources"></a>他のデータ ソース
 
-|データ ソース | メモリ内 | DirectQuery |メモ   |
+|データ ソース | メモリ内 | DirectQuery |Notes   |
 |  --- | --- | --- | --- |
 |Access データベース     |  はい | いいえ |  |
 |Active Directory     |  はい | いいえ | <sup>[6](#tab1400b)</sup>  |
@@ -67,7 +68,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 |SAP HANA     |  はい | いいえ |  |
 |SAP Business Warehouse    |  はい | いいえ | <sup>[6](#tab1400b)</sup> |
 |SharePoint リスト      |   はい | いいえ | <sup>[6](#tab1400b)</sup>、<sup>[11](#filesSP)</sup> |
-|SQL Server |はい   | はい  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> | 
+|SQL Server |はい   | はい  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
 |SQL Server Data Warehouse |はい   | はい  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
 |Sybase データベース     |  はい | いいえ |  |
 |Teradata | はい  | はい  | <sup>[10](#teradata)</sup> |
@@ -75,19 +76,19 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 |XML テーブル    |  はい | いいえ | <sup>[6](#tab1400b)</sup> |
 | | | |
 
-**注:**    
+**注:**  
 <a name="tab1400b">6</a> - 表形式 1400 以上のモデルのみ。  
 <a name="sqlim">7</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、または .NET Framework Data Provider SQL Server を指定します。  
 <a name="instgw">8</a> - データ プロバイダーとして MSOLEDBSQL を指定する場合は、オンプレミス データ ゲートウェイと同じコンピューターに、[Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) をダウンロードしてインストールすることが必要になる場合があります。  
 <a name="oracle">9</a> - 表形式 1200 モデルの場合、または表形式 1400 以上のモデルの "*プロバイダー*" データ ソースとしては、Oracle Data Provider for .NET を指定します。  
-<a name="teradata">10</a> - 表形式 1200 モデルの場合、または表形式 1400 以上のモデルの "*プロバイダー*" データ ソースとしては、Teradata Data Provider for .NET を指定します。   
+<a name="teradata">10</a> - 表形式 1200 モデルの場合、または表形式 1400 以上のモデルの "*プロバイダー*" データ ソースとしては、Teradata Data Provider for .NET を指定します。  
 <a name="filesSP">11</a> - オンプレミスの SharePoint 内のファイルはサポートされていません。
 
-Azure Analysis Services サーバーからオンプレミスのデータ ソースに接続するには、[オンプレミスのゲートウェイ](analysis-services-gateway.md)が必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーが必要です。 
+Azure Analysis Services サーバーからオンプレミスのデータ ソースに接続するには、[オンプレミスのゲートウェイ](analysis-services-gateway.md)が必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーが必要です。
 
 ## <a name="understanding-providers"></a>プロバイダーについて
 
-Visual Studio で表形式 1400 以上のモデル プロジェクトを作成する場合、既定では **[データの取得]** を使用してデータ ソースに接続するときにデータ プロバイダーを指定しません。 表形式 1400 以上のモデルでは、[Power Query](/power-query/power-query-what-is-power-query) コネクタを使用して、データ ソースと Analysis Services の間の接続、データ クエリ、およびマッシュアップを管理します。 これらは、接続プロパティの設定が自動で行われていることから、"*構造化*" データ ソース接続と呼ばれることもあります。 ただし、レガシ データ ソースを有効にすることはできます。 有効にすると、 **[テーブルのインポート ウィザード]** を使用して、"*レガシ*" または "*プロバイダー*" のデータ ソースとして、表形式 1200 以下のモデルで従来サポートされていた特定のデータ ソースに接続できます。 プロバイダー データ ソースとして指定した場合は、特定のデータ プロバイダーとその他の詳細な接続プロパティを指定できます。 たとえば、オンプレミスの SQL Server データ ウェアハウスに接続することも、レガシ データ ソースとして Azure SQL Database に接続することもできます。 その後、OLE DB Driver for SQL Server MSOLEDBSQL データ プロバイダーを選択できます。 この場合、OLE DB データ プロバイダーを選択すると、Power Query コネクタよりもパフォーマンスが向上する可能性があります。 
+Visual Studio で表形式 1400 以上のモデル プロジェクトを作成する場合、既定では **[データの取得]** を使用してデータ ソースに接続するときにデータ プロバイダーを指定しません。 表形式 1400 以上のモデルでは、[Power Query](/power-query/power-query-what-is-power-query) コネクタを使用して、データ ソースと Analysis Services の間の接続、データ クエリ、およびマッシュアップを管理します。 これらは、接続プロパティの設定が自動で行われていることから、"*構造化*" データ ソース接続と呼ばれることもあります。 ただし、Visual Studio のモデル プロジェクトのレガシ データ ソースを有効にすることはできます。 有効にすると、 **[テーブルのインポート ウィザード]** を使用して、"*レガシ*" または "*プロバイダー*" のデータ ソースとして、表形式 1200 以下のモデルで従来サポートされていた特定のデータ ソースに接続できます。 プロバイダー データ ソースとして指定した場合は、特定のデータ プロバイダーとその他の詳細な接続プロパティを指定できます。 たとえば、SQL Server Data Warehouse インスタンスに接続することも、レガシ データ ソースとして Azure SQL Database に接続することもできます。 その後、OLE DB Driver for SQL Server MSOLEDBSQL データ プロバイダーを選択できます。 この場合、OLE DB データ プロバイダーを選択すると、Power Query コネクタよりもパフォーマンスが向上する可能性があります。 
 
 Visual Studio で [テーブルのインポート ウィザード] を使用する場合、任意のデータ ソースへの接続にはデータ プロバイダーが必要です。 既定のデータ プロバイダーが自動的に選択されます。 必要に応じて、データ プロバイダーは変更できます。 選択するプロバイダーの種類は、パフォーマンス、モデルがインメモリ ストレージまたは DirectQuery を使用しているかどうか、モデルをデプロイする Analysis Services プラットフォームによって異なる場合があります。
 
@@ -105,9 +106,8 @@ Visual Studio で [テーブルのインポート ウィザード] を使用す�
 
 ![レガシ データ ソースの詳細プロパティ](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
-
 ## <a name="impersonation"></a>権限借用
-場合によっては、異なる権限借用アカウントの指定が必要になることがあります。 権限借用アカウントは、Visual Studio または SSMS で指定できます。
+場合によっては、異なる権限借用アカウントの指定が必要になることがあります。 権限借用アカウントは、Visual Studio または SQL Server Management Studio (SSMS) で指定できます。
 
 オンプレミスのデータ ソースの場合:
 
@@ -120,11 +120,11 @@ Visual Studio で [テーブルのインポート ウィザード] を使用す�
 
 ## <a name="oauth-credentials"></a>OAuth 資格情報
 
-インメモリ モードを使用する 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse Analytics (SQL Data Warehouse)、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、SSMS を使用して資格情報を設定します。
+インメモリ モードを使用する 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse (旧称 SQL Data Warehouse)、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、SSMS を使用して資格情報を設定します。
 
 直接クエリモードは OAuth 資格情報ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
-[オンプレミス ゲートウェイ](analysis-services-gateway.md)   
-[サーバーの管理](analysis-services-manage.md)   
 
+* [オンプレミス ゲートウェイ](analysis-services-gateway.md)
+* [サーバーの管理](analysis-services-manage.md)

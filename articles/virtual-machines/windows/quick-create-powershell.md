@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 45160e8bc406318f3b3924142899e33640ee6b73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9ea550b9d9579438e18a3ee1d93ab9e9e22cc65
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097950"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508476"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Windows 仮想マシンを作成する
 
@@ -30,7 +30,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -38,7 +38,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 各リソースの名前を指定すると、それらがまだ存在していない場合は、`New-AzVM` コマンドレットによって作成されます。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 各リソースの名前を指定すると、それらがまだ存在していない場合は、`New-AzVM` コマンドレットによって作成されます。
 
 メッセージが表示されたら、VM のサインイン資格情報として使用するユーザー名とパスワードを入力します。
 
@@ -58,7 +58,7 @@ New-AzVm `
 
 展開が完了した後、RDP で VM に接続します。 VM の動作を確認するために、IIS Web サーバーがインストールされます。
 
-VM のパブリック IP アドレスを確認するには、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) コマンドレットを使用します。
+VM のパブリック IP アドレスを確認するには、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) コマンドレットを使用します。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -92,7 +92,7 @@ IIS をインストールし、VM のポート 80 をインターネットから
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

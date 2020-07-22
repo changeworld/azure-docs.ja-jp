@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: 復元
           items:
+            - name: Azure VM の復元について
+              href: about-azure-vm-restore.md
             - name: ポータルで Azure VM を復元する
               href: backup-azure-arm-restore-vms.md
             - name: Azure VM のバックアップからのファイルの回復
@@ -217,8 +219,12 @@
           href: sap-hana-db-manage.md
     - name: Azure Backup Server (MABS)
       items:
-        - name: Azure Backup Server の保護マトリックス
-          href: backup-mabs-protection-matrix.md
+        - name: 保護マトリックス
+          items:
+            - name: MABS V3 UR1 の保護マトリックス
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM の保護マトリックス
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: インストールまたはアップグレード
           items:
             - name: Azure Backup Server のインストール
@@ -227,7 +233,7 @@
               href: backup-mabs-add-storage.md
             - name: MABS の新機能
               href: backup-mabs-whats-new-mabs.md
-            - name: リリース ノート MABS V3
+            - name: MABS のリリース ノート
               href: backup-mabs-release-notes-v3.md
             - name: 自動実行インストール
               href: backup-mabs-unattended-install.md
@@ -282,7 +288,9 @@
         - name: Import/Export を使用したオフライン バックアップ (MARS)
           href: backup-azure-backup-import-export.md
         - name: Import/Export を使用したオフライン バックアップ (DPM/MABS)
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: DPM と MABS のオフライン バックアップ (以前のバージョン)
+          href: offline-backup-server-previous-versions.md
     - name: 監視とアラート
       items:
         - name: バックアップ エクスプローラーの使用
@@ -315,11 +323,11 @@
               href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
-            - name: Azure portal での Azure VM
+            - name: Azure VM
               href: backup-azure-vms-automation.md
-            - name: Azure portal での DPM
+            - name: Data Protection Manager (DPM)
               href: backup-dpm-automation.md
-            - name: Azure portal での Windows Server
+            - name: MARS エージェントを使用した Windows Server
               href: backup-client-automation.md
             - name: Azure VM バックアップ内の SQL
               href: backup-azure-sql-automation.md
@@ -341,7 +349,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md
@@ -361,8 +369,10 @@
           href: backup-azure-security-feature.md
         - name: プライベート エンドポイント
           href: private-endpoints.md
-        - name: 暗号化
+        - name: Azure Backup での暗号化
           href: backup-encryption.md
+        - name: カスタマー マネージド キーを使用した暗号化
+          href: encryption-at-rest-with-cmk.md
         - name: 組み込みのセキュリティ制御
           href: backup-security-controls.md
         - name: セキュリティ ベースライン
@@ -412,9 +422,9 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
+      href: /answers/topics/azure-backup.html
     - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+      href: azure-backup-pricing.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=backup'
     - name: ビデオ

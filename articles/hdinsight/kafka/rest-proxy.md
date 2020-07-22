@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
+ms.custom: has-adal-ref, tracking-python
 ms.date: 04/03/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: affdbfba125b7e9b3f3fe250a56af30e9efe816e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3050062a80e253d0e63f6d20a8c8de31e9866ea1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611008"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082558"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
@@ -42,6 +42,9 @@ REST プロキシ エンドポイント要求の場合、クライアント ア�
 > [!NOTE]
 > AAD セキュリティ グループの詳細については、「[Azure Active Directory グループを使用したアプリとリソース アクセスの管理](../../active-directory/fundamentals/active-directory-manage-groups.md)」を参照してください。 OAuth トークンのしくみについては、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。
 
+## <a name="kafka-rest-proxy-with-network-security-groups"></a>ネットワーク セキュリティ グループを使用した Kafka REST プロキシ
+独自の VNet を利用し、ネットワーク セキュリティ グループを使用してネットワーク トラフィックを制御する場合は、ポート 443 に加えてポート **9400** で**受信**トラフィックを許可します。 これにより、Kafka REST プロキシ サーバーにアクセスできるようになります。
+
 ## <a name="prerequisites"></a>前提条件
 
 1. アプリケーションを Azure AD に登録する。 Kafka REST プロキシを操作するために記述するクライアント アプリケーションは、このアプリケーションの ID とシークレットを使用して Azure に対する認証を行います。
@@ -55,6 +58,8 @@ REST プロキシ エンドポイント要求の場合、クライアント ア�
     ![メンバーシップの確認](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST プロキシが有効な Kafka クラスターを作成する
+
+以下の手順では、Azure portal を使用します。 Azure CLI の使用例については、[Azure CLI を使用した Apache Kafka REST プロキシ クラスターの作成](tutorial-cli-rest-proxy.md)に関するページを参照してください。
 
 1. Kafka クラスター作成ワークフローの実行中に、 **[セキュリティとネットワーク]** タブで、 **[Enable Kafka REST proxy]\(Kafka REST プロキシを有効にする\)** オプションをオンにします。
 

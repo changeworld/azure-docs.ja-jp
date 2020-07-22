@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780081"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367106"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
-Azure HDInsight には、エンタープライズ セキュリティ ニーズに対応するためのさまざまな方法が用意されています。 これらのソリューションのほとんどは、既定ではアクティブ化されていません。 この柔軟性により、ユーザーにとって最も重要なセキュリティ機能を選択することができます。 また、不要な機能の支払いを避けることもできます。 つまり、セットアップと環境で適切なソリューションが有効になっていることをユーザーが責任を持って確認する必要があるということでもあります。
+Azure HDInsight には、エンタープライズ セキュリティ ニーズに対応するためのさまざまな方法が用意されています。 これらのソリューションのほとんどは、既定ではアクティブ化されていません。 この柔軟性により、ユーザーにとって最も重要なセキュリティ機能を選択することができ、不要な機能に支払いを行う必要がありません。 つまり、セットアップと環境で適切なソリューションが有効になっていることをユーザーが責任を持って確認する必要があるということでもあります。
 
 この記事では、セキュリティ ソリューションについて、境界セキュリティ、認証、承認、暗号化という従来からある 4 つの柱に分けて説明します。
 
@@ -43,7 +43,7 @@ HDInsight の [Enterprise セキュリティ パッケージ](apache-domain-join
 
 ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにフル アクセスできるわけではないというベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 この操作は、ESP クラスターでのみ使用できます。
 
-Hadoop 管理者は、ロールベースのアクセス制御 (RBAC) を構成できます。 この構成では、Apache Range プラグインを使用して、Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md)、および [Kafka](apache-domain-joined-run-kafka.md) をセキュリティで保護します。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
+Hadoop 管理者は、ロールベースのアクセス制御 (RBAC) を構成できます。 この構成では、Apache Ranger プラグインを使用して、Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md)、および [Kafka](apache-domain-joined-run-kafka.md) をセキュリティで保護します。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
 
 たとえば、管理者は [Apache Ranger](https://ranger.apache.org/) を構成して Hive のアクセス制御ポリシーを設定できます。 この機能により、行レベルおよび列レベルのフィルター処理 (データ マスキング) が実現されます。 また、未承認のユーザーがアクセスできないように、機密データがフィルター処理されます。
 
@@ -53,7 +53,7 @@ Hadoop 管理者は、ロールベースのアクセス制御 (RBAC) を構成�
 
 管理者は HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。 また、管理者はアクセス制御ポリシーへの変更を表示して報告することができます。
 
-Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)にします。 次に、監査レコードが記載されたテーブルを表示します。
+Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)にし、監査レコードが記載されたテーブルを表示します。
 
 ### <a name="encryption"></a>暗号化
 
@@ -81,6 +81,7 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 |  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | Customer |
 |  | 転送中のデータに対して [TLS 暗号化](../../storage/common/storage-security-tls.md)が有効になっていることを確認する。 | Customer |
 |  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
+|  | [カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
 | アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | Customer |
 |  | [Apache Ranger 認証](apache-domain-joined-run-hive.md)ポリシーを構成する | Customer |
 |  | [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)を使用する | Customer |

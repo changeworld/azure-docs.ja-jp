@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837313"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506975"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
@@ -30,7 +30,7 @@ Azure Monitor のカスタム メトリックは現在、パブリック プレ�
 - [InfluxData Telegraf エージェント](collect-custom-metrics-linux-telegraf.md)を Azure Linux VM にインストールし、Azure Monitor 出力プラグインを使用してメトリックを送信する。
 - [Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
 
-## <a name="pricing-model-and-rentention"></a>価格モデルと保持期間
+## <a name="pricing-model-and-retention"></a>価格モデルと保持期間
 
 カスタム メトリックとメトリック クエリに対する課金を有効にする場合の詳細については、[「Azure Monitor の価格」ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 カスタム メトリックやメトリック クエリを含むすべてのメトリックの具体的な価格の詳細は、このページに記載されています。 要約すると、標準メトリック (プラットフォーム メトリック) を Azure Monitor メトリック ストアに取り込むコストは発生しませんが、カスタム メトリックは一般提供されると、コストが発生します。 メトリック API クエリには、コストが発生します。
 
@@ -189,27 +189,28 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |Azure リージョン |リージョンのエンドポイントのプレフィックス|
 |---|---|
 | **米国およびカナダ** | |
-|米国中西部 | https:\//westcentralus.monitoring.azure.com/ |
-|米国西部 2       | https:\//westus2.monitoring.azure.com/ |
+|米国中西部 | https:\//westcentralus.monitoring.azure.com |
+|米国西部 2       | https:\//westus2.monitoring.azure.com |
 |米国中北部 | https:\//northcentralus.monitoring.azure.com
-|米国中南部| https:\//southcentralus.monitoring.azure.com/ |
+|米国中南部| https:\//southcentralus.monitoring.azure.com |
 |米国中部      | https:\//centralus.monitoring.azure.com |
-|カナダ中部 | https:\//canadacentral.monitoring.azure.comc
-|米国東部| https:\//eastus.monitoring.azure.com/ |
+|カナダ中部 | https:\//canadacentral.monitoring.azure.com |
+|米国東部| https:\//eastus.monitoring.azure.com |
+|米国東部 2 | https:\//eastus2.monitoring.azure.com |
 | **ヨーロッパ** | |
-|北ヨーロッパ    | https:\//northeurope.monitoring.azure.com/ |
-|西ヨーロッパ     | https:\//westeurope.monitoring.azure.com/ |
+|北ヨーロッパ    | https:\//northeurope.monitoring.azure.com |
+|西ヨーロッパ     | https:\//westeurope.monitoring.azure.com |
 |英国南部 | https:\//uksouth.monitoring.azure.com
 |フランス中部 | https:\//francecentral.monitoring.azure.com |
 | **アフリカ** | |
-|南アフリカ北部 | https:\//southafricanorth.monitoring.azure.com
+|南アフリカ北部 | https:\//southafricanorth.monitoring.azure.com |
 | **アジア** | |
-|インド中部 | https:\//centralindia.monitoring.azure.com
-|オーストラリア東部 | https:\//australiaeast.monitoring.azure.com
-|東日本 | https:\//japaneast.monitoring.azure.com
+|インド中部 | https:\//centralindia.monitoring.azure.com |
+|オーストラリア東部 | https:\//australiaeast.monitoring.azure.com |
+|東日本 | https:\//japaneast.monitoring.azure.com |
 |東南アジア  | https:\//southeastasia.monitoring.azure.com |
-|東アジア | https:\//eastasia.monitoring.azure.com
-|韓国中部   | https:\//koreacentral.monitoring.azure.com
+|東アジア | https:\//eastasia.monitoring.azure.com |
+|韓国中部   | https:\//koreacentral.monitoring.azure.com |
 
 ## <a name="latency-and-storage-retention"></a>待機時間とストレージのリテンション期間
 

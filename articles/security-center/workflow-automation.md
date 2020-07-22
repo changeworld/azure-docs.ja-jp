@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629390"
 ---
 # <a name="workflow-automation"></a>ワークフローの自動化
 
@@ -25,15 +25,25 @@ ms.locfileid: "80397911"
 > サイドバーでプレイブック (プレビュー) ビューを以前に使用していた場合は、新しいワークフローの自動化のページに、拡張された機能と共に同じ機能が表示されます。
 
 
-## <a name="requirements"></a>必要条件
 
-* Azure Logic Apps のワークフローを操作するには、次のロジック アプリのロール/アクセス許可が必要です。
+## <a name="availability"></a>可用性
 
-    * [ロジック アプリのオペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)のアクセス許可が必要。または、ロジック アプリの読み取り/トリガーのアクセス権 (このロールでは、ロジック アプリを作成したり編集したりすることはできません。既存のものを*実行*するだけです)
+- リリース状態: **一般提供**
+- 必要なロールとアクセス許可:
+    - エクスポート構成を含むサブスクリプション上での**閲覧者**
+    - リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)
+    - ターゲット リソースに対する書き込みアクセス許可も必要になる
+    - また、Azure Logic Apps のワークフローを操作するには、次のロジック アプリのロール/アクセス許可も必要です。
 
-    * [ロジック アプリの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)のアクセス許可は、ロジック アプリの作成と変更に必要です
+        * [ロジック アプリのオペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)のアクセス許可が必要。または、ロジック アプリの読み取り/トリガーのアクセス権 (このロールでは、ロジック アプリを作成したり編集したりすることはできません。既存のものを*実行*するだけです)
 
-* ロジック アプリのコネクタを使用する場合は、それぞれのサービス (たとえば、Outlook/Teams/Slack のインスタンス) にサインインするために追加の資格情報が必要になることがあります。
+        * [ロジック アプリの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)のアクセス許可は、ロジック アプリの作成と変更に必要です
+
+        * ロジック アプリのコネクタを使用する場合は、それぞれのサービス (たとえば、Outlook/Teams/Slack のインスタンス) にサインインするために追加の資格情報が必要になることがあります。
+- クラウド: 
+    - ✔ 商用クラウド
+    - ✔ US Gov
+    - ✘ China Gov、その他の Gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>ロジック アプリを作成し、自動的に実行するタイミングを定義する 

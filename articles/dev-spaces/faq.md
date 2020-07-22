@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27e834e71f9e5cfdf3d72fb3b221c24edecab4e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414307"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258305"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -43,7 +43,7 @@ Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes �
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Azure Dev Spaces によって生成されたファイルを変更できますか。
 
-はい。[プロジェクトを準備するときに Azure Dev Spaces によって生成される][dev-spaces-prep]*azds.yaml* ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
+はい。[プロジェクトを準備するときに Azure Dev Spaces によって生成される][dev-spaces-prep] *azds.yaml* ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
 
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>パブリック IP アドレスなしで Azure Dev Spaces を使用できますか。
 
@@ -99,13 +99,12 @@ Visual Studio では、Azure Dev Spaces を使用してデバッグするため�
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
-[aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
-[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#list-currently-supported-versions
+[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md

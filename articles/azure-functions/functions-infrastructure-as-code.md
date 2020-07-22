@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382520"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170396"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -26,12 +26,12 @@ Azure Resource Manager テンプレートを使用して、関数アプリをデ
 
 Azure Functions のデプロイは通常、次のリソースで構成されています。
 
-| リソース                                                                           | 要件 | 構文とプロパティの参照                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 関数アプリ                                                                     | 必須    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure Storage](../storage/index.yml) アカウント                                   | 必須    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md) コンポーネント | 省略可能    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
-| [ホスティング プラン](./functions-scale.md)                                             | 省略可能<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| リソース                                                                           | 要件 | 構文とプロパティの参照                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| 関数アプリ                                                                     | 必須    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
+| [Azure Storage](../storage/index.yml) アカウント                                   | 必須    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md) コンポーネント | 省略可能    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |
+| [ホスティング プラン](./functions-scale.md)                                             | 省略可能<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup>ホスティング プランは、[Premium プラン](./functions-premium-plan.md) または [App Service プラン](../app-service/overview-hosting-plans.md)で関数アプリを実行することを選択する場合にのみ必要です。
 

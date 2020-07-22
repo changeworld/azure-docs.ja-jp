@@ -3,24 +3,24 @@ title: アプリ ロールを追加してトークンから取得する | Azure
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory に登録されたアプリケーションにアプリ ロールを追加し、それらのロールにユーザーとグループを割り当てて、トークンの `roles` 要求で受け取る方法について説明します。
 services: active-directory
-author: kkrishna
+author: kalyankrishna1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884258"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187032"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
 
 ロールベースのアクセス制御 (RBAC) は、アプリケーションにおいて承認を実施する一般的なメカニズムです。 RBAC を使用するとき、管理者は、個々のユーザーまたはグループではなく、ロールにアクセス許可を付与します。 その後、管理者はロールをさまざまなユーザーやグループに割り当てて、コンテンツや機能にだれがアクセスできるかを制御できます。
 
@@ -34,7 +34,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal を使用してアプリ ロールを宣言する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ポータルツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択します。
 1. **[お気に入り]** または **[すべてのディレクトリ]** リストで、アプリケーションを登録する Active Directory テナントを選択します。
 1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
@@ -51,7 +51,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 
 ### <a name="examples"></a>例
 
-次の例では、`appRoles` に割り当てることができる `users` を示します。
+次の例では、`users` に割り当てることができる `appRoles` を示します。
 
 > [!NOTE]
 >`id` は一意の GUID であることが必要です。
@@ -122,7 +122,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 ## <a name="more-information"></a>詳細情報
 
 - [アプリ ロールおよびロール要求を使用して ASP.NET Core Web アプリに承認を追加する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [アプリでのセキュリティ グループとアプリケーション ロールの使用 (ビデオ)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [Implement authorization in your applications with Microsoft identity platform (Microsoft ID プラットフォームを使用してアプリケーションで承認を実装する) (ビデオ)](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [グループ要求とアプリケーション ロールが追加された Azure Active Directory](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD アクセス トークン](access-tokens.md)

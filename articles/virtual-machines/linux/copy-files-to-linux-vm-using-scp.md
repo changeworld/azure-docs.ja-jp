@@ -4,16 +4,16 @@ description: SCP と SSH キー ペアを使用して Azure の Linux VM とフ�
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 531edf5bb857b570e595fc1a179a887013e094f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969614"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659773"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP を使用して Linux VM とファイルをやり取りする
 

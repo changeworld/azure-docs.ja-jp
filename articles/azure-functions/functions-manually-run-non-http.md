@@ -3,14 +3,14 @@ title: HTTP によってトリガーされない Azure 関数を手動で実行�
 description: HTTP 要求を使用して HTTP によってトリガーされない Azure 関数を実行する
 author: craigshoemaker
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892361"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121773"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する
 
@@ -37,11 +37,17 @@ HTTP によってトリガーされない関数を実行するには、関数を
 
 ## <a name="get-the-functions-master-key"></a>関数のマスター キーを取得する
 
-Azure portal で関数に移動し、 **[管理]** をクリックし、 **[ホスト キー]** セクションを見つけます。 *_master* 行で **[コピー]** ボタンをクリックして、マスター キーをクリップボードにコピーします。
+1. Azure portal で関数に移動して、**関数キー**を選択します。 次に、コピーする関数キーを選択します。 
 
-![関数の [管理] 画面からマスター キーをコピーする](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
 
-マスター キーをコピーしたら、関数名をクリックしてコード ファイル ウィンドウに戻ります。 次に、 **[ログ]** タブをクリックします。Postman から手動で関数を実行すると、ログに記録された関数のメッセージがここに表示されます。
+1. **[キーの編集]** セクションで、キーの値をクリップボードにコピーして、 **[OK]** を選択します。
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="マスター キーをクリップボードにコピーします。" border="true":::
+
+1. *_master* キーをコピーした後、 **[Code + Test]\(コード + テスト\)** を選択し、 **[ログ]** を選択します。 Postman から手動で関数を実行すると、ログに記録された関数のメッセージがここに表示されます。
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="ログを表示して、マスター キーのテスト結果を確認します。" border="true":::
 
 > [!CAUTION]  
 > マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、アプリケーションに配布したりしないでください。
@@ -51,27 +57,27 @@ Azure portal で関数に移動し、 **[管理]** をクリックし、 **[ホ�
 Postman を開き、次の手順を実行します。
 
 1. **[URL] テキスト ボックスに要求の場所**を入力します。
-2. HTTP メソッドが **[POST]** に設定されていることを確認します。
-3. **[ヘッダー]** タブを**クリック**します。
-4. 最初の **[キー]** に「**x-functions-key**」と入力し、 **[値]** ボックスに (クリップボードから) マスター キーを貼り付けます。
-5. 2 番目の **[キー]** に「**Content-Type**」と入力し、 **[値]** に「**application/json**」と入力します。
+1. HTTP メソッドが **[POST]** に設定されていることを確認します。
+1. **[Headers]\(ヘッダー\)** タブを選択します。
+1. 最初のキーとして「**x-functions-key**」と入力して、(クリップボードから) マスター キーを値として貼り付けます。
+1. 2 番目のキーとして「**Content-type**」と入力して、値として「**application/json**」と入力します。
 
-    ![Postman のヘッダーの設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Postman のヘッダーの設定。" border="true":::
 
-6. **[本文]** タブを**クリック**します。
-7. 要求の本文に「 **{ "input": "test" }** 」と入力します。
+1. **[本文]** タブを選択します。
+1. 要求の本文として「 **{ "input": "test" }** 」と入力します。
 
-    ![Postman の本文の設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman の本文の設定。" border="true":::
 
-8. **[送信]** をクリックします。
+1. **[送信]** を選択します。
+        
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Postman を使用して要求を送信します。" border="true":::
 
-    ![Postman を使用して要求を送信する](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    Postman から **202 Accepted** の状態が報告されます。
 
-Postman から **202 Accepted** の状態が報告されます。
+1. 次に、Azure portal で関数に戻ります。 ログを確認すると、関数の手動呼び出しによるメッセージが表示されます。
 
-次に、Azure portal で関数に戻ります。 *ログ* ウィンドウに移動すると、関数の手動呼び出しの結果によるメッセージが表示されます。
-
-![手動呼び出しの関数ログの結果](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="ログを表示して、マスター キーのテスト結果を確認します。" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

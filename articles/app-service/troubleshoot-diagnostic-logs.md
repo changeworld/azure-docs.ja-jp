@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261343"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -193,6 +193,8 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
 | AppServiceFileAuditLogs | はい | TBD | FTP および Kudu 経由のファイル変更 |
 | AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
+| AppServiceIPSecAuditLogs  | はい | はい | IP ルールからの要求 |
+| AppServicePlatformLogs  | TBA | はい | コンテナー ログ |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)

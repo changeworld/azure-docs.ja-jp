@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 04f4c91ece77f7476cbe3bb27236ecdc2b5c60e7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943144"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603164"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>チュートリアル:Web ページ上で検索候補を取得する
 
@@ -29,7 +29,7 @@ ms.locfileid: "78943144"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを進めるには、Bing Autosuggest API のサブスクリプション キーが必要です。 所有していない場合は、Azure portal で [Bing Autosuggest リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)してください。 [試用キー](https://azure.microsoft.com/try/cognitive-services/)を使用することもできます。
+このチュートリアルを進めるには、Bing Autosuggest API のサブスクリプション キーが必要です。 所有していない場合は、Azure portal で [Bing Autosuggest リソースを作成](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)してください。
 
 ## <a name="create-a-new-web-page"></a>新しい Web ページを作成する
 

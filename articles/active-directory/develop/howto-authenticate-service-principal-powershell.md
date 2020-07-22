@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 10/10/2019
+ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 7bd8c3b25c23ba8586e38ec8eb7d1baefaa21633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6204fcefa60d1a627e6e3d4e6b799efd3ee9298b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505870"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "80884189"
 
 この記事を完了するには、Azure AD と Azure サブスクリプションの両方で十分なアクセス許可を持っている必要があります。 具体的には、Azure AD でアプリケーションを作成し、ロールにサービス プリンシパルを割り当てることができる必要があります。
 
-自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](howto-create-service-principal-portal.md#required-permissions)に関するページを参照してください。
+自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)に関するページを参照してください。
 
 ## <a name="assign-the-application-to-a-role"></a>アプリケーションをロールに割り当てる
 サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用可能なロールについては、「[RBAC: 組み込みロール](/azure/role-based-access-control/built-in-roles)」を参照してください。

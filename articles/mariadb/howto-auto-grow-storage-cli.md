@@ -4,14 +4,14 @@ description: この記事では、Azure CLI を使用して Azure Database for M
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 4be84c750f6a3ca7a0d48aa2b98d75272c1cbadf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39b07e313213be2645d211f292d49d9fa1a8d6bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529086"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120162"
 ---
 # <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB のストレージの自動拡張
 この記事では、ワークロードに影響を与えることなく拡張されるように Azure Database for MariaDB サーバーのストレージを構成する方法について説明します。

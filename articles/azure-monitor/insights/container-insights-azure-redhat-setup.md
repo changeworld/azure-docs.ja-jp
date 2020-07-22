@@ -2,13 +2,13 @@
 title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v3.x を構成する | Microsoft Docs
 description: この記事では、Azure Red Hat OpenShift バージョン 3 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.date: 06/30/2020
+ms.openlocfilehash: e04ef42971756cffe0906e1ddfb8406e876588bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800513"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する
 
@@ -32,9 +32,47 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 ## <a name="prerequisites"></a>前提条件
 
+- [Log Analytics ワークスペース。](../platform/design-logs-deployment.md)
+
+    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+
 - Azure Monitor for containers の機能を有効にしてアクセスするには、少なくとも、Azure サブスクリプションの Azure *共同作成者* ロールのメンバー、および Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 共同作成者*](../platform/manage-access.md#manage-access-using-azure-permissions)のメンバーである必要があります。
 
 - 監視データを表示するには、Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 閲覧者*](../platform/manage-access.md#manage-access-using-azure-permissions) ロールのアクセス権限を持つメンバーであることを確認します。
+
+## <a name="identify-your-log-analytics-workspace-id"></a>Log Analytics ワークスペース ID を識別する
+
+ 既存の Log Analytics ワークスペースと統合するには、まず、Log Analytics ワークスペースの完全なリソース ID を特定します。 Azure Resource Manager テンプレート メソッドを使用して監視を有効にする場合、パラメーター `workspaceResourceId` にはワークスペースのリソース ID が必要です。
+
+1. 次のコマンドを実行して、アクセス権のあるすべてのサブスクリプションを一覧表示します。
+
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    出力は次のようになります。
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
+    ```
+
+1. **SubscriptionId** の値をコピーします。
+
+1. 次のコマンドを実行して、Log Analytics ワークスペースをホストするサブスクリプションに切り替えます。
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+1. 次のコマンドを実行して、サブスクリプション内のワークスペースのリストを既定の JSON 形式で表示します。
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+1. 出力でワークスペース名を探し、その Log Analytics ワークスペースについてフィールド **ID** にある完全なリソース ID をコピーします。
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用している新しいクラスターで有効にする
 
@@ -54,7 +92,7 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 - 作成手順を実行した後にメモされた、または既存の [Azure AD セキュリティ グループ](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-security-group)。
 
-- 既存の Log Analytics ワークスペースのリソース ID。
+- 既存の Log Analytics ワークスペースのリソース ID。 この情報を取得する方法については、「[Log Analytics ワークスペース ID を識別する](#identify-your-log-analytics-workspace-id)」を参照してください。
 
 - クラスターで作成するマスター ノードの数。
 
@@ -70,18 +108,16 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
 
-Azure PowerShell または CLI を使用して監視を有効にするには、その前に Log Analytics ワークスペースが作成されている必要があります。 ワークスペースを作成するには、[Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して設定できます。
-
 1. 次のコマンドを使用して、監視アドオンが追加されたクラスターを作成するには、Azure Resource Manager テンプレートおよびパラメーター ファイルをダウンロードしてローカル フォルダーに保存します。
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
 2. Azure へのサインイン
 
     ```azurecli
-    az login    
+    az login
     ```
 
     複数のサブスクリプションへのアクセス権がある場合は、`az account set -s {subscription ID}` を実行して、`{subscription ID}` を、使用するサブスクリプションに置き換えます。
@@ -149,7 +185,7 @@ Azure にデプロイされた Azure Red Hat OpenShift クラスターの監視�
 
 - クラスターが展開されているリソース グループ。
 
-- Log Analytics ワークスペース。
+- Log Analytics ワークスペース。 この情報を取得する方法については、「[Log Analytics ワークスペース ID を識別する](#identify-your-log-analytics-workspace-id)」を参照してください。
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 
@@ -159,18 +195,16 @@ Azure にデプロイされた Azure Red Hat OpenShift クラスターの監視�
 
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
 
-Azure PowerShell または CLI を使用して監視を有効にするには、その前に Log Analytics ワークスペースが作成されている必要があります。 ワークスペースを作成するには、[Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して設定できます。
-
 1. 次のコマンドを使用して、監視アドオンでクラスターを更新するためのテンプレートとパラメーター ファイルをダウンロードします。
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
 2. Azure へのサインイン
 
     ```azurecli
-    az login    
+    az login
     ```
 
     複数のサブスクリプションへのアクセス権がある場合は、`az account set -s {subscription ID}` を実行して、`{subscription ID}` を、使用するサブスクリプションに置き換えます。
@@ -187,7 +221,7 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. JSON パラメーターファイル **existingClusterParam.json** を編集し、*araResourceId* および *araResoruceLocation*の値を更新します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
+5. JSON パラメーター ファイル **existingClusterParam.json** を編集し、*aroResourceId* および *aroResourceLocation* の値を更新します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
 
 6. Azure CLI を使用してデプロイするには、次のコマンドを実行します。
 

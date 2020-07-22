@@ -1,24 +1,23 @@
 ---
-title: Application Insights での機械学習パイプラインのデバッグとトラブルシューティング
+title: パイプラインのログ ファイルを監視して収集する
 titleSuffix: Azure Machine Learning
 description: トレーニングおよびバッチ スコアリングのパイプラインにログを追加し、Application Insights に記録された結果を表示します。
 services: machine-learning
-author: sanpil
-ms.author: sanpil
+author: NilsPohlmann
+ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
-ms.custom: seodec18
-ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 6a4a32db18b881b702aacf7bb669ffa14f9d103e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982363"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201242"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Application Insights での機械学習パイプラインのデバッグとトラブルシューティング
+# <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Application Insights でアラートとデバッグ用に機械学習パイプラインのログ ファイルを収集する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 [OpenCensus](https://opencensus.io/quickstart/python/) の Python ライブラリを使用して、スクリプトから Application Insights にログをルーティングできます。 パイプラインの実行のログを 1 か所に集約することで、クエリを作成し、イシューを診断することができます。 Application Insights を使用すると、ログを経時的に追跡し、実行全体のパイプライン ログを比較することができます。

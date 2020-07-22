@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/01/2020
+ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75863844"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052448"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI の Time Series Insights からのデータを視覚化する
 
@@ -111,8 +111,10 @@ Time Series Insights 環境を Power BI に接続するには、次の手順を�
     [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1.  **[視覚化]** 列で、希望する視覚化を選択します。 たとえば、 **[折れ線グラフ]** を選択します。 これにより、空の折れ線グラフがキャンバスに追加されます。
- 
-1.  **[フィールド]** の一覧で **[タイムスタンプ]** を選択し、 **[軸]** フィールドにドラッグして項目を X 軸に沿って表示します。
+
+1.  **[フィールド]** 一覧で **[_Timestamp]\(_タイムスタンプ\)** を選択し、 **[軸]** フィールドにドラッグして項目を X 軸に沿って表示します。 必ず、 **[軸]** の値として **[_Timestamp]\(_タイムスタンプ\)** に切り替えます (既定は **[日付の階層]** です)。
+
+    [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1.  再び **[フィールド]** の一覧で **[TimeSeriesId]** を選択し、 **[値]** フィールドにドラッグして項目を Y 軸に表示します。
 

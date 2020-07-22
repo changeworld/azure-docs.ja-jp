@@ -1,14 +1,14 @@
 ---
 title: ポリシーのサンプルのインデックス
 description: Azure Policy のビルトインのインデックス。 カテゴリ タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成など。
-ms.date: 03/25/2020
+ms.date: 06/10/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7528a22ad09db1e06aabf84ad946ef7af36a8430
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697190"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736783"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 
@@ -32,6 +32,15 @@ ms.locfileid: "83697190"
 - [count 演算子](./pattern-count-operator.md)
 - [イニシアティブでのポリシー定義のグループ化](./pattern-group-with-initiative.md)
 - [deployIfNotExists によるリソースのデプロイ](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>規制コンプライアンス
+
+次に示すのは、[法令遵守](../concepts/regulatory-compliance.md)の組み込みです。
+
+- [Azure セキュリティ ベンチマーク](./azure-security-benchmark.md)
+- [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 
 ## <a name="other-samples"></a>その他のサンプル
 

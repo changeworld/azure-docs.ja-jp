@@ -3,16 +3,16 @@ title: Azure Site Recovery で Linux VM を Azure Premium Storage に移行す�
 description: Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 author: luywang
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 734d4f9e3c9832d08b61d98c9f9c8fe860998135
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660202"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -203,7 +203,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * [仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
+* [Microsoft Azure Site Recovery に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
 
 ## <a name="next-steps"></a>次のステップ
 

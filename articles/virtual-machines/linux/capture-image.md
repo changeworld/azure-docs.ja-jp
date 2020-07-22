@@ -8,16 +8,18 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792685"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723308"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
 仮想マシン (VM) のコピーを複数作成し、Azure で開発およびテストに使用するには、VM または OS VHD のマネージド イメージをキャプチャします。 イメージを大規模に作成、保存、共有する方法については、「[共有イメージ ギャラリー](../shared-images-cli.md)」を参照してください。
+
+1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](shared-image-galleries.md) イメージを使用します。
 
 マネージド イメージを作成するには、個人のアカウント情報を削除する必要があります。 次の手順で既存の VM のプロビジョニングと割り当てを解除し、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。
 

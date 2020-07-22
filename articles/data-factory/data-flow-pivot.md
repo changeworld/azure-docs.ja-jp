@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686417"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683305"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>マッピング データ フローでのピボット変換
 
@@ -27,7 +27,7 @@ ms.locfileid: "81686417"
 
 ### <a name="group-by"></a>グループ化
 
-![オプションでグループ化する](media/data-flow/pivot2.png "[グループ化オプション")
+![オプションでグループ化する](media/data-flow/pivot2.png "オプションでグループ化する")
 
 ピボットされた列を集計する列を選択します。 出力データは、同じグループ化の値を持つすべての行を 1 つの行にグループ化します。 ピボットされた列で行われる集計は、各グループに対して行われます。
 
@@ -73,7 +73,7 @@ ms.locfileid: "81686417"
 
 ### <a name="sinking-pivoted-columns"></a>ピボットされた列のシンク
 
-ピボットされた列は動的ですが、宛先のデータ ストアに書き込むことができます。 シンク設定で、 **[Allow Schema Drift]\(スキーマの誤差を許可\)** を有効にします。 これにより、メタデータに含まれていない列を書き込むことができます。 列のメタデータですが、[schema drift]\(スキーマの誤差\) オプションを使用すると、データを配置できます。
+ピボットされた列は動的ですが、宛先のデータ ストアに書き込むことができます。 シンク設定で、 **[Allow Schema Drift]\(スキーマの誤差を許可\)** を有効にします。 これにより、メタデータに含まれていない列を書き込むことができます。 列のメタデータ内の新しい動的な名前は表示されませんが、スキーマの誤差のオプションによってデータを取得することができます。
 
 ### <a name="rejoin-original-fields"></a>元のフィールドを再結合する
 

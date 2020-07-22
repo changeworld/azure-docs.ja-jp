@@ -4,19 +4,19 @@ description: お使いの環境での条件付きアクセス ポリシーの影
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77620684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253139"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
@@ -40,7 +40,7 @@ ms.locfileid: "77620684"
      
 次の手順として、設定を評価するシミュレーションの実行を開始できます。 有効になっているポリシーのみが、評価実行の一部になります。
 
-評価が完了すると、ツールは、影響を受けたポリシーのレポートを生成します。
+評価が完了すると、ツールは、影響を受けたポリシーのレポートを生成します。 条件付きアクセス ポリシーに関する詳細情報を収集するには、レポート専用モードのポリシーと現在有効なポリシーの詳細について「[条件付きアクセスに関する分析情報とレポート」ワークブック](howto-conditional-access-insights-reporting.md)を参照してください。
 
 ## <a name="running-the-tool"></a>ツールの実行
 
@@ -104,6 +104,5 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
-- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。 
-- クラシック ポリシーを移行する場合は、「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」を参照してください。  
+- 条件付きアクセス ポリシー アプリケーションの詳細については、「[条件付きアクセスに関する分析情報とレポート](howto-conditional-access-insights-reporting.md)」のポリシーのレポート専用モードを参照してください。
+- 環境に条件付きアクセス ポリシーを構成する準備ができたら、[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)に関するページを参照してください。 

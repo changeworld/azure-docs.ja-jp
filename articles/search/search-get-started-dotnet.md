@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:.NET を使用して C# で検索インデックスを作成する
+title: .NET で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: この C# クイックスタートでは、Azure Cognitive Search .NET SDK を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 manager: nitinme
@@ -8,15 +8,15 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 3d0006a3c77050c1bb21a0da8d6be51e659f933d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/07/2020
+ms.openlocfilehash: 7172fe1f7eb81bbd00e7efa611111e04cc96abd3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77589217"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083578"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Cognitive Search インデックスを作成する
+# <a name="quickstart-create-a-search-index-in-net"></a>クイック スタート:.NET で検索インデックスを作成する
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
 > * [ポータル](search-get-started-portal.md)
@@ -25,20 +25,22 @@ ms.locfileid: "77589217"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Visual Studio と [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core C# コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成する方法について順を追って説明します。 代わりに、[完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)こともできます。
+Visual Studio と [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core C# コンソール アプリケーションを C# で作成します。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+この記事では、アプリケーションを作成する方法について順を追って説明します。 コードにすぐ進みたい場合は、[完成したアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)こともできます。
 
 > [!NOTE]
 > この記事のデモ コードでは、わかりやすくするため、Azure Cognitive Search .NET SDK の同期メソッドを使用します。 ただし、運用環境シナリオの実際のアプリケーションでは、スケーラビリティと応答性を維持するため、非同期メソッドを使用することをお勧めします。 たとえば、`Create` と `Delete` の代わりに、`CreateAsync` および `DeleteAsync` を使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートでは、次のサービスとツールが必要です。
+開始する前に、次の項目を用意する必要があります。
+
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
+
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
-
-+ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
 <a name="get-service-info"></a>
 
@@ -62,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) は、NuGet パッケージとして配布されるいくつかのクライアント ライブラリで構成されています。
+[Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) は、NuGet パッケージとして配布されるいくつかのクライアント ライブラリで構成されています。
 
 このプロジェクトでは、バージョン 9 の `Microsoft.Azure.Search` NuGet パッケージと最新の `Microsoft.Extensions.Configuration.Json` NuGet パッケージを使用します。
 
@@ -70,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[参照]** をクリックします。
 
-1. `Microsoft.Azure.Search` を検索し、バージョン 9.0.1 以降を選択します。
+1. `Microsoft.Azure.Search` を検索し、バージョン 9.0.1 以降 (最新の安定バージョンは 10.1.0 です) を選択します。
 
 1. 右側にある **[インストール]** をクリックして、ご自分のプロジェクトとソリューションにアセンブリを追加します。
 
@@ -87,26 +89,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ファイルをご自分の出力ディレクトリに追加します。 appsettings.json を右クリックし、 **[プロパティ]** を選択します。 **[出力ディレクトリにコピー]** で、 **[新しい場合はコピーする]** を選択します。
 
-1. 次の JSON をご自分の新しい JSON ファイルにコピーします。 検索サービス名 (YOUR-SEARCH-SERVICE-NAME) と管理者 API キー (YOUR-ADMIN-API-KEY) を有効な値に置き換えます。 ご使用のサービス エンドポイントが `https://mydemo.search.windows.net` の場合、サービス名は "mydemo" になります。
+1. 次の JSON をご自分の新しい JSON ファイルにコピーします。 
 
-```json
-{
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
-  "SearchIndexName": "hotels-quickstart"
-}
-```
+    ```json
+    {
+      "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
+      "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+      "SearchIndexName": "hotels-quickstart"
+    }
+    ```
+
+1. 検索サービス名 (YOUR-SEARCH-SERVICE-NAME) と管理者 API キー (YOUR-ADMIN-API-KEY) を有効な値に置き換えます。 ご使用のサービス エンドポイントが `https://mydemo.search.windows.net` の場合、サービス名は "mydemo" になります。
 
 ### <a name="add-class-method-files-to-your-project"></a>クラス ".Method" ファイルをご自分のプロジェクトに追加する
 
-コンソール ウィンドウに結果を出力するときに、Hotel オブジェクトから個々のフィールドが文字列として返される必要があります。 必要なコードを 2 つの新しいファイルにコピーして、[ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) を実装することで、このタスクを実行できます。
+この手順は、コンソールで意味のある出力を生成するために必要です。 コンソール ウィンドウに結果を出力するときに、Hotel オブジェクトから個々のフィールドが文字列として返される必要があります。 この手順では、[ToString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) を実装してこのタスクを実行します。これは、必要なコードを 2 つの新しいファイルにコピーすることによって行います。
 
 1. 2 つの空のクラス定義をご自分のプロジェクトに追加します。Address.Methods.cs、Hotel.Methods.cs
 
-1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 32](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32) で上書きします。
+1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25) で上書きします。
 
-1. Hotel.Methods.cs に、[行 1 から 66](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66) をコピーします。
-
+1. Hotel.Methods.cs に、[行 1 から 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68) をコピーします。
 
 ## <a name="1---create-index"></a>1 - インデックスの作成
 
@@ -271,7 +274,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
             // The fields of the index are defined by calling the FieldBuilder.BuildForType() method.
             private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
             {
-                var definition = new Index()
+                var definition = new Microsoft.Azure.Search.Models.Index()
                 {
                     Name = indexName,
                     Fields = FieldBuilder.BuildForType<Hotel>()
@@ -564,3 +567,8 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
 > [!div class="nextstepaction"]
 > [.NET で開発する方法](search-howto-dotnet-sdk.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

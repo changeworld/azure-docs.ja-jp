@@ -1,21 +1,29 @@
 ---
 title: 組み込みのポリシー定義の一覧
 description: Azure Policy の組み込みのポリシー定義を一覧表示します。 カテゴリには、タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成などが含まれます。
-ms.date: 04/26/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 47105fdbc2bc48d43aa5539613854c82ce4ffbd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1db053744a68e34fc3995916605be75a49887f01
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191001"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277350"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy の組み込みのポリシー定義
 
 このページは、Azure Policy の組み込みのポリシー定義のインデックスです。
 
-各組み込みの名前は、Azure portal のポリシー定義にリンクしています。 **[ソース]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。 組み込みは、**metadata** 内の **category** プロパティごとにグループ化されています。 特定の**カテゴリ**にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
+各組み込みの名前は、Azure portal のポリシー定義にリンクしています。 **[ソース]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。 組み込みは、**メタデータ**内の**カテゴリ** プロパティによってグループ化されます。 特定の**カテゴリ**にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
+
+## <a name="api-for-fhir"></a>API for FHIR
+
+[!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)]
+
+## <a name="api-management"></a>API Management
+
+[!INCLUDE [azure-policy-samples-policies-api-management](../../../../includes/policy/samples/bycat/policies-api-management.md)]
 
 ## <a name="app-configuration"></a>App Configuration
 
@@ -29,7 +37,7 @@ ms.locfileid: "82191001"
 
 [!INCLUDE [azure-policy-samples-policies-app-service](../../../../includes/policy/samples/bycat/policies-app-service.md)]
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>オートメーション
 
 [!INCLUDE [azure-policy-samples-policies-automation](../../../../includes/policy/samples/bycat/policies-automation.md)]
 
@@ -44,6 +52,10 @@ ms.locfileid: "82191001"
 ## <a name="cache"></a>キャッシュ
 
 [!INCLUDE [azure-policy-samples-policies-cache](../../../../includes/policy/samples/bycat/policies-cache.md)]
+
+## <a name="cognitive-services"></a>Cognitive Services
+
+[!INCLUDE [azure-policy-samples-policies-cognitive-services](../../../../includes/policy/samples/bycat/policies-cognitive-services.md)]
 
 ## <a name="compute"></a>Compute
 
@@ -64,6 +76,10 @@ ms.locfileid: "82191001"
 ## <a name="data-lake"></a>Data Lake
 
 [!INCLUDE [azure-policy-samples-policies-data-lake](../../../../includes/policy/samples/bycat/policies-data-lake.md)]
+
+## <a name="event-grid"></a>Event Grid
+
+[!INCLUDE [azure-policy-samples-policies-event-grid](../../../../includes/policy/samples/bycat/policies-event-grid.md)]
 
 ## <a name="event-hub"></a>イベント ハブ
 
@@ -89,10 +105,6 @@ ms.locfileid: "82191001"
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](../../../../includes/policy/samples/bycat/policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Kubernetes サービス
-
-[!INCLUDE [azure-policy-samples-policies-kubernetes-service](../../../../includes/policy/samples/bycat/policies-kubernetes-service.md)]
-
 ## <a name="lighthouse"></a>Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](../../../../includes/policy/samples/bycat/policies-lighthouse.md)]
@@ -100,6 +112,10 @@ ms.locfileid: "82191001"
 ## <a name="logic-apps"></a>Logic Apps
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](../../../../includes/policy/samples/bycat/policies-logic-apps.md)]
+
+## <a name="machine-learning"></a>Machine Learning
+
+[!INCLUDE [azure-policy-samples-policies-machine-learning](../../../../includes/policy/samples/bycat/policies-machine-learning.md)]
 
 ## <a name="managed-application"></a>マネージド アプリケーション
 
@@ -129,6 +145,10 @@ ms.locfileid: "82191001"
 
 [!INCLUDE [azure-policy-samples-policies-service-fabric](../../../../includes/policy/samples/bycat/policies-service-fabric.md)]
 
+## <a name="signalr"></a>SignalR
+
+[!INCLUDE [azure-policy-samples-policies-signalr](../../../../includes/policy/samples/bycat/policies-signalr.md)]
+
 ## <a name="sql"></a>SQL
 
 [!INCLUDE [azure-policy-samples-policies-sql](../../../../includes/policy/samples/bycat/policies-sql.md)]
@@ -144,6 +164,10 @@ ms.locfileid: "82191001"
 ## <a name="tags"></a>Tags
 
 [!INCLUDE [azure-policy-samples-policies-tags](../../../../includes/policy/samples/bycat/policies-tags.md)]
+
+## <a name="vm-image-builder"></a>VM Image Builder
+
+[!INCLUDE [azure-policy-samples-policies-vm-image-builder](../../../../includes/policy/samples/bycat/policies-vm-image-builder.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

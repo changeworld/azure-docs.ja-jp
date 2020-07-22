@@ -11,16 +11,16 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 86b39beb2958194f7c86409c5d78992616234b05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769911"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252574"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>チュートリアル:IoT ハブの手動フェールオーバーを実行する
 
-手動フェールオーバーとは、お客様がハブの運用をプライマリ リージョンから Azure の geo でペアとなっているリージョンに[フェールオーバー](https://en.wikipedia.org/wiki/Failover)できるようにする、IoT Hub サービスの機能です。 手動フェールオーバーは、リージョンの障害が発生した場合や、サービスが長時間にわたって停止した場合に実行できます。 また、ディザスター リカバリーの機能をテストするために、計画的なフェールオーバーを実行することもできます (ただし、実稼働環境で実行している IoT ハブではなく、テスト用の IoT ハブを使用することをお勧めします)。 手動フェールオーバー機能は、追加コストなしでお客様に提供されます。
+手動フェールオーバーとは、お客様がハブの運用をプライマリ リージョンから Azure の geo でペアとなっているリージョンに[フェールオーバー](https://en.wikipedia.org/wiki/Failover)できるようにする、IoT Hub サービスの機能です。 手動フェールオーバーは、リージョンの障害が発生した場合や、サービスが長時間にわたって停止した場合に実行できます。 また、ディザスター リカバリーの機能をテストするために、計画的なフェールオーバーを実行することもできます (ただし、実稼働環境で実行している IoT ハブではなく、テスト用の IoT ハブを使用することをお勧めします)。 2017 年 5 月 18 日以降に作成された IoT ハブについては、追加コストなしで手動フェールオーバー機能をお使いいただけます。
 
 このチュートリアルでは、以下のタスクを実行します。
 

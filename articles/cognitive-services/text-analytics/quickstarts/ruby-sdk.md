@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 039a52c9ab0bfc460116e48086c854f4d7e8efb4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77919670"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996964"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>クイック スタート:Ruby 用 Text Analytics クライアント ライブラリを使用する
 
@@ -31,7 +31,7 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 > [!NOTE]
 > このクイックスタートは、Text Analytics バージョン 2.1 だけに適用されます。 現在、Ruby 用 v3 クライアント ライブラリは使用できません。
 
-[リファレンスのドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [パッケージ (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [コード サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [パッケージ (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
@@ -83,7 +83,7 @@ Text Analytics クライアントでは、ご利用のキーを使用して Azur
 
 ## <a name="code-examples"></a>コード例
 
-これらのコード スニペットでは、Python 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
+これらのコード スニペットでは、Ruby 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
 
 * [クライアントを認証する](#authenticate-the-client)
 * [感情分析](#sentiment-analysis)

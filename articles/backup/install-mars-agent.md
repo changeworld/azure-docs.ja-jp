@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェントをインス�
 description: Windows マシンをバックアップする目的で Microsoft Azure Recovery Services (MARS) エージェントをインストールする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855242"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントをインストールする
 
@@ -66,11 +66,12 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 マシンのインターネットへのアクセスが制限されている場合、マシンまたはプロキシのファイアウォール設定によって次の URL と IP アドレスが許可されていることを確保してください。
 
 * URL
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
   * `*.windows.net`
+  * `www.msftconnecttest.com`
 * IP アドレス
   * 20.190.128.0/18
   * 40.126.0.0/18
@@ -82,6 +83,7 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 パブリック ピアリングを使用するには、まず次のドメインとアドレスへのアクセスを確保します。
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
 * `.WindowsAzure.com`
 * `.microsoftonline.com`

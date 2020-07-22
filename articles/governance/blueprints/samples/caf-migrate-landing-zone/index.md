@@ -3,12 +3,12 @@ title: CAF 移行ランディング ゾーン ブループリント サンプル
 description: Cloud Adoption Framework for Azure (CAF) 移行ランディング ゾーン ブループリント サンプルの概要とアーキテクチャ。
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459867"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044823"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルの概要
 
@@ -28,7 +28,7 @@ CAF 移行ランディング ゾーン ブループリント サンプルは、�
 - [Log Analytics](../../../../azure-monitor/overview.md)。移行の開始以降、すべてのアクションとサービス ログが中心的な場所に確保されるようにデプロイされます。
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (標準バージョン)。移行されたワークロードを脅威から保護します。
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md)。仮想マシン用の分離されたネットワークとサブネットを提供します。
-- [Azure Migrate プロジェクト](../../../..//migrate/migrate-overview.md)。検出と評価のために使用されます。 サーバーの評価、サーバーの移行、データベースの評価、データベースの移行のためのツールが今後追加される予定です。  
+- [Azure Migrate プロジェクト](../../../../migrate/migrate-services-overview.md)。検出と評価のために使用されます。 サーバーの評価、サーバーの移行、データベースの評価、データベースの移行のためのツールが今後追加される予定です。  
 
 
 これらの要素はすべて、「[Azure アーキテクチャ センター - 参照アーキテクチャ](/azure/architecture/reference-architectures/)」で公開されている実証済みのプラクティスに従っています。

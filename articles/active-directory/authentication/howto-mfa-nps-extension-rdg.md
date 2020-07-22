@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848748"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -115,24 +115,24 @@ NPS 拡張機能をインストールするには、Azure AD の GUID が必要�
 
 このセクションでは、リモート デスクトップ ゲートウェイでのクライアント認証に Azure MFA を使用するように RDS インフラストラクチャを構成する手順について説明します。
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory の GUID ID を取得する
+### <a name="acquire-azure-active-directory-tenant-id"></a>Azure Active Directory テナント ID を取得する
 
-NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの Azure AD ID を入力する必要があります。 次の手順は、テナント ID を取得する方法を示しています。
+NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの Azure AD ID を入力する必要があります。 テナント ID を取得するには、次の手順を実行します。
 
 1. Azure テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
 1. Azure portal のメニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
-1. **[プロパティ]** を選択します。
-1. [プロパティ] ブレードで、次のように [ディレクトリ ID] の横の **[コピー]** アイコンをクリックして、ID をクリップボードにコピーします。
+1. **[概要]** ページに、"*テナント情報*" が表示されます。 次のスクリーンショットの例に示すように、 *[テナント ID]* の横にある **[コピー]** アイコンを選択します。
 
-   ![Azure portal からのディレクトリ ID の取得](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![Azure portal からのテナント ID の取得](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
 ネットワーク ポリシーとアクセス サービス (NPS) の役割がインストールされているサーバーに NPS 拡張機能をインストールします。 これが、設計で RADIUS サーバーとして機能します。
 
-> [!Important]
-> リモート デスクトップ ゲートウェイ サーバーには NPS 拡張機能をインストールしないでください。
+> [!IMPORTANT]
+> リモート デスクトップ ゲートウェイ (RDG) サーバーには NPS 拡張機能をインストールしないでください。 RDG サーバーはそのクライアントと共に RADIUS プロトコルを使用しないため、この拡張機能では MFA を解釈して実行することができません。
 >
+> RDG サーバーと、NPS 拡張機能を備えた NPS サーバーが異なるサーバーである場合、RDG は NPS を内部で使用して他の NPS サーバーと通信し、RADIUS をプロトコルとして使用して正しく通信します。
 
 1. [NPS 拡張機能](https://aka.ms/npsmfa)をダウンロードします。
 1. セットアップ実行可能ファイル (NpsExtnForAzureMfaInstaller.exe) を NPS サーバーにコピーします。
@@ -166,9 +166,9 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
    ![PowerShell での Azure AD への認証](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. メッセージが表示されたら、先ほどクリップボードにコピーしたディレクトリ ID を貼り付け、**Enter** キーを押します。
+1. メッセージが表示されたら、先ほどクリップボードにコピーした "*テナント ID*" を貼り付け、**Enter** キーを押します。
 
-   ![PowerShell でのディレクトリ ID の入力](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![PowerShell でのテナント ID の入力](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. スクリプトによって自己署名証明書が作成され、他の構成変更が実行されます。 出力は次の画像のようになります。
 

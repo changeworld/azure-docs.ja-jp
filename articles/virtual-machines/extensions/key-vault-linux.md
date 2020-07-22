@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 9b651776ccd8c93271b57eab0efa24c6a79f50a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676235"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -53,9 +53,9 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
       "settings": {
         "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "certificateStoreName": <It is ignored on Linux>,
           "linkOnRenewal": <Not available on Linux e.g.: false>,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
         }      
@@ -79,9 +79,9 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | INT |
 | pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| certificateStoreName | Linux では無視されます | string |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 文字列配列
 
@@ -109,8 +109,8 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
         }      
       }
@@ -194,7 +194,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 次の制限/要件に注意してください。
 - Key Vault の制限:
   - デプロイ時に存在している必要があります 
-  - MSI を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されていること
+  - マネージド ID を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されている必要があります。 「[マネージド ID で Key Vault の認証を提供する](../../key-vault/managed-identity.md)」を参照してください
 
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
@@ -211,6 +211,13 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ## <a name="azure-cli"></a>Azure CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
+```
+### <a name="logs-and-configuration"></a>ログと構成
+
+```
+/var/log/waagent.log
+/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
+/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
 
 ### <a name="support"></a>サポート

@@ -3,16 +3,16 @@ title: チュートリアル:タグ ガバナンスを管理する
 description: このチュートリアルでは、新しいリソースと既存のリソースに対してタグ ガバナンス モデルを作成して適用するために、Azure Policy の Modify 効果を使用します。
 ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759070"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142267"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>チュートリアル:Azure Policy を使用してタグ ガバナンスを管理する
 
-[タグ](../../../azure-resource-manager/management/tag-resources.md)は、Azure リソースを分類してまとめるうえで重要な要素です。 [タグ管理のベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)に従う際に、タグは Azure Policy を使用してビジネス ポリシーを適用したり、[Cost Management を使用してコストを追跡](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)したりするための基礎にすることができます。
+[タグ](../../../azure-resource-manager/management/tag-resources.md)は、Azure リソースを分類してまとめるうえで重要な要素です。 [タグ管理のベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)に従う際に、タグは Azure Policy を使用してビジネス ポリシーを適用したり、[Cost Management を使用してコストを追跡](../../../cost-management-billing/costs/cost-mgt-best-practices.md#tag-shared-resources)したりするための基礎にすることができます。
 タグを使用する方法や理由にかかわらず、Azure リソースのタグをすばやく追加、変更、および削除できることが重要です。 Azure リソースでタグ付けがサポートされているかどうかを確認するには、[タグのサポート](../../../azure-resource-manager/management/tag-support.md)に関するページをご覧ください。
 
 Azure Policy の [Modify](../concepts/effects.md#modify) 効果は、現在のリソース ガバナンスの段階に関係なく、タグのガバナンスを支援するように設計されています。 **Modify** は、次の場合に役立ちます。

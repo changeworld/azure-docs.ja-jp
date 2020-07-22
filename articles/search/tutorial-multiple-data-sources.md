@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780523"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262210"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して複数のデータ ソースのデータにインデックスを付ける
 
@@ -21,7 +21,7 @@ Azure Cognitive Search では、複数のデータ ソースから 1 つの統�
 
 このチュートリアルでは、Azure Cosmos DB データ ソースのホテルのデータにインデックスを付け、それを Azure Blob Storage ドキュメントから取得したホテルの部屋の詳細とマージする方法について説明します。 その結果、結合されたホテル検索インデックスには複雑なデータ型が含まれます。
 
-このチュートリアルでは、C# と [.NET SDK](https://aka.ms/search-sdk) を使用します。 このチュートリアルでは、以下のタスクを実行します。
+このチュートリアルでは、C# と [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用します。 このチュートリアルでは、以下のタスクを実行します。
 
 > [!div class="checklist"]
 > * サンプル データをアップロードしてデータ ソースを作成する

@@ -7,12 +7,12 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b243d05619642e1dd3ad8dfe2bbe1d0a9661b773
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75351315"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84455945"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11
 
@@ -109,12 +109,11 @@ namespace blob_quickstart
 {
     class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             Console.WriteLine("Azure Blob Storage - .NET quickstart sample\n");
 
-            // Run the examples asynchronously, wait for the results before proceeding
-            ProcessAsync().GetAwaiter().GetResult();
+            await ProcessAsync();
 
             Console.WriteLine("Press any key to exit the sample application.");
             Console.ReadLine();

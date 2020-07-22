@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411426"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864251"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -108,7 +108,7 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>効果的な集計コマンドおよびディメンションを summarize と join で使用する
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>効果的な集計コマンドおよびディメンションを summarize と join で使用する
 
 [max()](/azure/kusto/query/max-aggfunction)、[sum()](/azure/kusto/query/sum-aggfunction)、[count()](/azure/kusto/query/count-aggfunction)、[avg()](/azure/kusto/query/avg-aggfunction) などの集計コマンドには、そのロジックにより CPU への影響は小さくなるものもありますが、より複雑で、効率的な実行を可能にするヒューリスティックや推定が含まれるものもあります。 たとえば、[dcount ()](/azure/kusto/query/dcount-aggfunction) では、HyperLogLog アルゴリズムを使用することで、各値を実際にカウントすることなく、大規模なデータ セットの個別カウントに近い推定値が提供されます。また、パーセンタイル関数は、最も近いランク パーセンタイル アルゴリズムを使用して同様の概算を行います。 コマンドのいくつかには、影響を軽減するための省略可能なパラメーターが含まれています。 たとえば、[makeset ()](/azure/kusto/query/makeset-aggfunction) 関数には、CPU とメモリに大きく影響する、最大セット サイズを定義するための省略可能なパラメーターがあります。
 

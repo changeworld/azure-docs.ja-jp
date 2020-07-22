@@ -5,16 +5,16 @@ services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587879"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85808048"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics (ワークスペース プレビュー) とは
 
@@ -63,7 +63,7 @@ Azure Synapse は、SQL と Spark を組み合わせて使用する場合の従�
 
 Azure Synapse には Azure Data Factory と同じデータ統合エンジンとエクスペリエンスが組み込まれているため、別個のオーケストレーション エンジンを使用せずに多機能なデータ パイプラインを作成できます。
 
-* Synapse と 85 以上のオンプレミス データ ソース間でデータを移動する
+* Azure Synapse と 90 以上のオンプレミス データ ソース間でデータを移動する
 * ノートブック、パイプライン、Spark ジョブ、SQL スクリプト、ストアド プロシージャを調整する
 * データ フロー アクティビティを使用したコードフリーの ETL
 
@@ -87,6 +87,6 @@ Azure Synapse は、エンタープライズが分析リソースを管理し、
 
 * [ワークスペースを作成する](quickstart-create-workspace.md)
 * [Synapse Studio を使用する](quickstart-synapse-studio.md)
-* [SQL プールを作成する](quickstart-create-sql-pool.md)
+* [SQL プールを作成する](quickstart-create-sql-pool-portal.md)
 * [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
-* [Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
+* [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)

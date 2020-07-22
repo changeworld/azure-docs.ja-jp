@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: 595440dc727f3faf1fa475266825a671f00d9153
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77116455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143616"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,16 +71,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; } </style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -371,16 +363,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; } </style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -676,16 +659,7 @@ green_taxi_df.describe()
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; } </style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -874,10 +848,7 @@ ws = Workspace.from_config()
 ```python
 from sklearn.model_selection import train_test_split
 
-y_df = final_df.pop("totalAmount")
-x_df = final_df
-
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
+x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 ```
 
 この手順の目的は、正しい精度を測定するために、モデルのトレーニングに使用されたことのないデータ ポイントで完成モデルをテストすることです。
@@ -925,8 +896,8 @@ from azureml.train.automl import AutoMLConfig
 
 automl_config = AutoMLConfig(task='regression',
                              debug_log='automated_ml_errors.log',
-                             X=x_train.values,
-                             y=y_train.values.flatten(),
+                             training_data=x_train,
+                             label_column_name="totalAmount",
                              **automl_settings)
 ```
 
@@ -945,44 +916,46 @@ experiment = Experiment(ws, "taxi-experiment")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 
-    Running on local machine
-    Parent Run ID: AutoML_1766cdf7-56cf-4b28-a340-c4aeee15b12b
-    Current status: DatasetFeaturization. Beginning to featurize the dataset.
-    Current status: DatasetEvaluation. Gathering dataset statistics.
-    Current status: FeaturesGeneration. Generating features for the dataset.
-    Current status: DatasetFeaturizationCompleted. Completed featurizing the dataset.
-    Current status: DatasetCrossValidationSplit. Generating individually featurized CV splits.
-    Current status: ModelSelection. Beginning model selection.
+```output
+Running on local machine
+Parent Run ID: AutoML_1766cdf7-56cf-4b28-a340-c4aeee15b12b
+Current status: DatasetFeaturization. Beginning to featurize the dataset.
+Current status: DatasetEvaluation. Gathering dataset statistics.
+Current status: FeaturesGeneration. Generating features for the dataset.
+Current status: DatasetFeaturizationCompleted. Completed featurizing the dataset.
+Current status: DatasetCrossValidationSplit. Generating individually featurized CV splits.
+Current status: ModelSelection. Beginning model selection.
 
-    ****************************************************************************************************
-    ITERATION: The iteration being evaluated.
-    PIPELINE: A summary description of the pipeline being evaluated.
-    DURATION: Time taken for the current iteration.
-    METRIC: The result of computing score on the fitted pipeline.
-    BEST: The best observed score thus far.
-    ****************************************************************************************************
+****************************************************************************************************
+ITERATION: The iteration being evaluated.
+PIPELINE: A summary description of the pipeline being evaluated.
+DURATION: Time taken for the current iteration.
+METRIC: The result of computing score on the fitted pipeline.
+BEST: The best observed score thus far.
+****************************************************************************************************
 
-     ITERATION   PIPELINE                                       DURATION      METRIC      BEST
-             0   StandardScalerWrapper RandomForest             0:00:16       0.8746    0.8746
-             1   MinMaxScaler RandomForest                      0:00:15       0.9468    0.9468
-             2   StandardScalerWrapper ExtremeRandomTrees       0:00:09       0.9303    0.9468
-             3   StandardScalerWrapper LightGBM                 0:00:10       0.9424    0.9468
-             4   RobustScaler DecisionTree                      0:00:09       0.9449    0.9468
-             5   StandardScalerWrapper LassoLars                0:00:09       0.9440    0.9468
-             6   StandardScalerWrapper LightGBM                 0:00:10       0.9282    0.9468
-             7   StandardScalerWrapper RandomForest             0:00:12       0.8946    0.9468
-             8   StandardScalerWrapper LassoLars                0:00:16       0.9439    0.9468
-             9   MinMaxScaler ExtremeRandomTrees                0:00:35       0.9199    0.9468
-            10   RobustScaler ExtremeRandomTrees                0:00:19       0.9411    0.9468
-            11   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9077    0.9468
-            12   StandardScalerWrapper LassoLars                0:00:15       0.9433    0.9468
-            13   MinMaxScaler ExtremeRandomTrees                0:00:14       0.9186    0.9468
-            14   RobustScaler RandomForest                      0:00:10       0.8810    0.9468
-            15   StandardScalerWrapper LassoLars                0:00:55       0.9433    0.9468
-            16   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9026    0.9468
-            17   StandardScalerWrapper RandomForest             0:00:13       0.9140    0.9468
-            18   VotingEnsemble                                 0:00:23       0.9471    0.9471
-            19   StackEnsemble                                  0:00:27       0.9463    0.9471
+ ITERATION   PIPELINE                                       DURATION      METRIC      BEST
+         0   StandardScalerWrapper RandomForest             0:00:16       0.8746    0.8746
+         1   MinMaxScaler RandomForest                      0:00:15       0.9468    0.9468
+         2   StandardScalerWrapper ExtremeRandomTrees       0:00:09       0.9303    0.9468
+         3   StandardScalerWrapper LightGBM                 0:00:10       0.9424    0.9468
+         4   RobustScaler DecisionTree                      0:00:09       0.9449    0.9468
+         5   StandardScalerWrapper LassoLars                0:00:09       0.9440    0.9468
+         6   StandardScalerWrapper LightGBM                 0:00:10       0.9282    0.9468
+         7   StandardScalerWrapper RandomForest             0:00:12       0.8946    0.9468
+         8   StandardScalerWrapper LassoLars                0:00:16       0.9439    0.9468
+         9   MinMaxScaler ExtremeRandomTrees                0:00:35       0.9199    0.9468
+        10   RobustScaler ExtremeRandomTrees                0:00:19       0.9411    0.9468
+        11   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9077    0.9468
+        12   StandardScalerWrapper LassoLars                0:00:15       0.9433    0.9468
+        13   MinMaxScaler ExtremeRandomTrees                0:00:14       0.9186    0.9468
+        14   RobustScaler RandomForest                      0:00:10       0.8810    0.9468
+        15   StandardScalerWrapper LassoLars                0:00:55       0.9433    0.9468
+        16   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9026    0.9468
+        17   StandardScalerWrapper RandomForest             0:00:13       0.9140    0.9468
+        18   VotingEnsemble                                 0:00:23       0.9471    0.9471
+        19   StackEnsemble                                  0:00:27       0.9463    0.9471
+```
 
 ## <a name="explore-the-results"></a>結果を検索する
 
@@ -1047,11 +1020,13 @@ print("Model Accuracy:")
 print(1 - mean_abs_percent_error)
 ```
 
-    Model MAPE:
-    0.14353867606052823
+```output
+Model MAPE:
+0.14353867606052823
 
-    Model Accuracy:
-    0.8564613239394718
+Model Accuracy:
+0.8564613239394718
+```
 
 
 最終的な予測精度メトリックから、モデルでのデータ セットの特徴によるタクシー料金の予測はかなり良好で、誤差は ± 4 ドル (約 15%) 以内であることがわかります。

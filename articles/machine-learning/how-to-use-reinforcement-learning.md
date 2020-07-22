@@ -1,20 +1,21 @@
 ---
-title: 強化学習モデルをトレーニングしてデプロイする
+title: 強化学習モデルをトレーニングしてデプロイします (プレビュー)。
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の強化学習 (RL) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
+description: Azure Machine Learning の強化学習 (プレビュー) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654426"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203274"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -41,7 +42,7 @@ ms.locfileid: "83654426"
 
  - Azure Machine Learning コンピューティング インスタンス
 
-     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
+     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
          - **tutorials** ではなく **how-to-use-azureml** フォルダーを複製します
      - `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` にある仮想ネットワーク セットアップ ノートブックを実行して、分散強化学習に使用されるネットワーク ポートを開きます。
      - サンプル ノートブック `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb` を実行します

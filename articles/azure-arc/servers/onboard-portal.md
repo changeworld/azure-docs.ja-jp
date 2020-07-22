@@ -6,14 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.custom: references_regions
+ms.openlocfilehash: 077dc0e8048da39253729d56f1e812cccc69500c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366376"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242918"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Azure portal からハイブリッド マシンを Azure に接続する
 
@@ -21,7 +22,7 @@ ms.locfileid: "80366376"
 
 この方法では、エージェントをインストールおよび構成するために、マシンに対する管理者権限が必要です。 Linux ではルート アカウントを使用し、Windows ではローカルの Administrators グループのメンバーである必要があります。
 
-開始する前に、必ず[前提条件](overview.md#prerequisites)を確認し、ご利用のサブスクリプションおよびリソースが要件を満たしていることを確認してください。
+開始する前に、必ず[前提条件](agent-overview.md#prerequisites)を確認し、ご利用のサブスクリプションおよびリソースが要件を満たしていることを確認してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -31,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. お使いのブラウザーで [Azure portal](https://aka.ms/hybridmachineportal) に移動します。
 
-1. **[マシン - Azure Arc]** ページで、左上にある **[追加]** か、中央のペインの下部にある **[Create machine - Azure Arc]\(マシンの作成 - Azure Arc\)** オプションを選択します。 
+1. **[マシン - Azure Arc]** ページで、左上にある **[追加]** か、中央のペインの下部にある **[Create machine - Azure Arc]\(マシンの作成 - Azure Arc\)** オプションを選択します。
 
 1. **[メソッドの選択]** ページで、 **[Add machines using interactive script]\(対話型スクリプト タイルを使用してマシンを追加\)** タイルを選択し、 **[スクリプトの生成]** を選択します。
 
@@ -39,16 +40,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     >[!NOTE]
     >Azure Arc for servers (プレビュー) では、次のリージョンのみがサポートされます。
+    >- EastUS
     >- WestUS2
     >- 西ヨーロッパ
-    >- WestAsia
+    >- SoutheastAsia
     >
     >リージョンを選択時のその他の考慮事項については、概要記事の[こちら](overview.md#supported-regions)を参照してください。
 
 1. **[スクリプトの生成]** ページの **[オペレーティング システム]** ボックスの一覧で、スクリプトを実行するオペレーティング システムを選択します。
 
-1. マシンがインターネットに接続するためにプロキシ サーバー経由で通信している場合は、 **[Next: Proxy Server]\(次へ: プロキシ サーバー\)** を選択します。 
-1. **[プロキシ サーバー]** タブで、プロキシ サーバーの IP アドレスか、マシンがプロキシ サーバーとの通信に使用する名前およびポート番号を指定します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。 
+1. マシンがインターネットに接続するためにプロキシ サーバー経由で通信している場合は、 **[Next: Proxy Server]\(次へ: プロキシ サーバー\)** を選択します。
+1. **[プロキシ サーバー]** タブで、プロキシ サーバーの IP アドレスか、マシンがプロキシ サーバーとの通信に使用する名前およびポート番号を指定します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。
 1. **[確認と生成]** を選択します。
 
 1. **[確認と生成]** タブで概要情報を確認し、 **[ダウンロード]** を選択します。 引き続き変更が必要な場合は、 **[前へ]** を選択します。
@@ -57,29 +59,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="install-manually"></a>手動でインストールする
 
-Windows インストーラー パッケージ *AzureConnectedMachineAgent.msi* を実行することで、Connected Machine エージェントを手動でインストールできます。 
+Windows インストーラー パッケージ *AzureConnectedMachineAgent.msi* を実行することで、Connected Machine エージェントを手動でインストールできます。 最新バージョンの [Windows エージェント Windows インストーラー パッケージ](https://aka.ms/AzureConnectedMachineAgent)を Microsoft ダウンロード センターからダウンロードできます。
 
-> [!NOTE]
-> * エージェントをインストールまたはアンインストールするには、"*管理者*" アクセス許可が必要です。
-> * まず、インストーラー パッケージをダウンロードし、ターゲット サーバー上のフォルダーにコピーするか、共有ネットワーク フォルダーからコピーする必要があります。 オプションを指定せずにこのインストーラー パッケージを実行すると、セットアップ ウィザードが起動します。ここで、指示に従って対話形式でエージェントをインストールできます。
+>[!NOTE]
+>* エージェントをインストールまたはアンインストールするには、"*管理者*" アクセス許可が必要です。
+>* まず、インストーラー パッケージをダウンロードし、ターゲット サーバー上のフォルダーにコピーするか、共有ネットワーク フォルダーからコピーする必要があります。 オプションを指定せずにこのインストーラー パッケージを実行すると、セットアップ ウィザードが起動します。ここで、指示に従って対話形式でエージェントをインストールできます。
 
 マシンがプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、この記事で後ほど説明するコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。
 
-Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/command-line-options)に関するページを参照してください。
+Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](/windows/win32/msi/command-line-options)に関するページを参照してください。
 
-たとえば、ヘルプとクイック リファレンスのオプションを確認するには、`/?` パラメーターを指定してインストール プログラムを実行します。 
+たとえば、ヘルプとクイック リファレンスのオプションを確認するには、`/?` パラメーターを指定してインストール プログラムを実行します。
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-エージェントをサイレント モードでインストールして、`C:\Support\Logs` フォルダーにセットアップ ログ ファイルを作成するには、次のコマンドを実行します。
+エージェントをサイレント モードでインストールし、存在する `C:\Support\Logs` フォルダー内にセットアップ ログ ファイルを作成するには、次のコマンドを実行します。
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
 ```
 
-Connected Machine エージェントのファイルは、既定では *C:\Program Files\AzureConnectedMachineAgent* にインストールされます。 セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%Programfiles%\AzureConnectedMachineAgentAgent\logs* です。
+セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%Programfiles%\AzureConnectedMachineAgentAgent\logs* です。
 
 ### <a name="install-with-the-scripted-method"></a>スクリプト化された手法を使用してインストールする
 
@@ -88,6 +90,8 @@ Connected Machine エージェントのファイルは、既定では *C:\Progra
 1. 管理者特権の PowerShell コマンド プロンプトを開きます。
 
 1. スクリプトをコピーしたフォルダーまたは共有に移動し、`./OnboardingScript.ps1` スクリプトを実行することでそのスクリプトをサーバー上で実行します。
+
+セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%Programfiles%\AzureConnectedMachineAgentAgent\logs* です。
 
 ### <a name="configure-the-agent-proxy-setting"></a>エージェント プロキシ設定を構成する
 
@@ -109,7 +113,7 @@ Restart-Service -Name himds
 
 エージェントをインストールした後は、次のコマンドを実行して、Azure Arc サービスと通信するようにエージェントを構成する必要があります。
 
-`%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Linux でエージェントをインストールして検証する
 
@@ -120,7 +124,7 @@ Linux 用の Connected Machine エージェントは、Microsoft [パッケー�
 
 必要に応じて、`--proxy "{proxy-url}:{proxy-port}"` パラメーターを含めることで、プロキシ情報を使用してエージェントを構成できます。
 
-このスクリプトには、サポートされているディストリビューションとサポートされていないディストリビューションを識別するロジックも含まれており、インストールの実行に必要なアクセス許可が検証されます。 
+このスクリプトには、サポートされているディストリビューションとサポートされていないディストリビューションを識別するロジックも含まれており、インストールの実行に必要なアクセス許可が検証されます。
 
 次の例では、エージェントをダウンロードしてインストールします。
 
@@ -128,7 +132,7 @@ Linux 用の Connected Machine エージェントは、Microsoft [パッケー�
 # Download the installation package.
 wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
+# Install the connected machine agent.
 bash ~/Install_linux_azcmagent.sh
 ```
 
@@ -146,7 +150,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 エージェントをインストールした後は、次のコマンドを実行して、Azure Arc サービスと通信するように構成する必要があります。
 
-`/opt/azcmagent/bin/azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc との接続を検証する
 

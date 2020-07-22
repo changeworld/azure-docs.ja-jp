@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1224aef044c558147f4c7234f6514d0de2f09e0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ca3f4b1e1061b0ca86cc836849499b83ee055fe
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143991"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826521"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービス パスワード リセットのトラブルシューティング
 
@@ -84,7 +84,7 @@ Azure Active Directory (Azure AD) セルフサービス パスワード リセ�
 | オンプレミスでパスワードのリセット サービスが開始しません。 Azure AD Connect マシンのアプリケーション イベント ログに、エラー 6800 が表示されます。 <br> <br> フェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーは、オンボード後に自分のパスワードをリセットできません。 | パスワード ライトバックを有効にすると、同期エンジンはライトバック ライブラリを呼び出し、クラウド オンボード サービスと通信して構成 (オンボード) を実行します。 オンボード中またはパスワード ライトバックの Windows Communication Foundation (WCF) エンドポイントの起動中に発生したエラーは、Azure AD Connect マシンのイベント ログのエラーになります。 <br> <br> Azure AD Sync (ADSync) サービスの再起動時にライトバックが構成された場合は、WCF エンドポイントが起動します。 ただし、エンドポイントの起動に失敗した場合は、イベント 6800 をログに記録して同期サービスを起動します。 このイベントが存在するということは、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。 このイベント 6800 のイベント ログ詳細では、PasswordResetService コンポーネントで生成されたイベント ログ エントリとともに、エンドポイントが起動できなかった理由が示されます。 パスワード ライトバックがまだ機能していない場合は、これらのイベント ログのエラーを再確認して、Azure AD Connect の再起動を試してください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。
 | パスワード ライトバックを有効にした状態でユーザーがアカウントのロック解除またはパスワードのリセットを試みると操作に失敗します。 <br> <br> また、Azure AD Connect のイベント ログを見ると、ロック解除操作の後に "Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long (同期エンジンから hr=800700CE エラーと、ファイル名または拡張子が長すぎるというメッセージが返されました)" というイベントが記録されています。 | Azure AD Connect の Active Directory アカウントを探し、そのパスワードを 256 文字以内に収めてリセットします。 次に、 **[開始]** メニューから **[同期サービス]** を開きます。 **[コネクタ]** を表示し、 **[Active Directory Connector]\(Active Directory コネクタ\)** を探します。 これを選択してから、 **[プロパティ]** を選択します。 **[資格情報]** ページを表示して、新しいパスワードを入力します。 **[OK]** を選択してページを閉じます。 |
 | Azure AD Connect インストール プロセスの最後の手順で、パスワード ライトバックを構成できなかったことを示すエラーが表示されます。 <br> <br> Azure AD Connect アプリケーションのイベント ログには、エラー 32009 とテキスト “Error getting auth token” (認証トークンの取得エラー) が記録されています。 | このエラーは、次の 2 つの場合に発生します。 <br><ul><li>Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントに不正なパスワードを指定しています。</li><li>Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントにフェデレーション ユーザーを使用しようとしています。</li></ul> この問題を解決するには、このインストール プロセスの開始時に指定したグローバル管理者用のフェデレーション アカウントを使用していないことを確認します。 また、指定したパスワードが正しいことも確認します。 |
-| Azure AD Connect マシンのイベント ログに、PasswordResetService の実行によってスローされたエラー 32002 が記録されています。 <br> <br> エラーの内容は次のとおりです。“Error Connecting to ServiceBus.  The token provider was unable to provide a security token” (ServiceBus への接続エラー。トークン プロバイダーがセキュリティ トークンを提供できませんでした) | ご利用のオンプレミス環境では、クラウドの Azure Service Bus エンドポイントに接続できません。 このエラーは、通常、特定のポートまたは Web のアドレスへの発信接続をブロックするファイアウォール規則が原因で発生します。 詳細については、[接続の前提条件](../hybrid/how-to-connect-install-prerequisites.md)に関する記事をご覧ください。 これらのルールを更新したあと、Azure AD Connect マシンを再起動してパスワード ライトバックの動作を再開する必要があります。 |
+| Azure AD Connect マシンのイベント ログに、PasswordResetService の実行によってスローされたエラー 32002 が記録されています。 <br> <br> エラーの内容は次のとおりです。“Error Connecting to ServiceBus. The token provider was unable to provide a security token” (ServiceBus への接続エラー。トークン プロバイダーがセキュリティ トークンを提供できませんでした) | ご利用のオンプレミス環境では、クラウドの Azure Service Bus エンドポイントに接続できません。 このエラーは、通常、特定のポートまたは Web のアドレスへの発信接続をブロックするファイアウォール規則が原因で発生します。 詳細については、[接続の前提条件](../hybrid/how-to-connect-install-prerequisites.md)に関する記事をご覧ください。 これらのルールを更新したあと、Azure AD Connect マシンを再起動してパスワード ライトバックの動作を再開する必要があります。 |
 | フェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーは、しばらく操作した後に自分のパスワードをリセットできません。 | Azure AD Connect を再起動したときに、まれにパスワード ライトバック サービスの再起動に失敗することがあります。 このような場合は、まずパスワード ライトバックがオンプレミス環境で有効と表示されているかどうかを確認します。 Azure AD Connect ウィザードまたは PowerShell を使用して確認できます ("方法" に関する前のセクションをご覧ください)。 この機能が有効と表示されている場合は、UI または PowerShell を使用して、この機能をもう一度有効または無効にしてみます。 これでうまくいかない場合は、Azure AD Connect を完全にアンインストールして再インストールしてください。 |
 | 自分のパスワードのリセットを試みるフェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーには、パスワード送信後にエラーが表示されます。 このエラーは、サービスに問題があったことを示しています。 <br ><br> この問題に加えて、パスワードのリセット操作中に、管理エージェントがオンプレミスのイベント ログでアクセスを拒否されたというエラーが表示されることがあります。 | イベント ログにこのようなエラーが表示された場合は、構成時にウィザードで指定した Active Directory 管理エージェント (ADMA) アカウントに、パスワード ライトバックのために必要なアクセス許可があることを確認します。 <br> <br> このアクセス許可が付与された後、ドメイン コントローラー (DC) の `sdprop` バックグラウンド タスクを介して、アクセス許可が適用されるのに最大 1 時間かかることがあります。 <br> <br> パスワードのリセットが機能するには、パスワードがリセットされるユーザー オブジェクトのセキュリティ記述子に権限を設定する必要があります。 このアクセス許可がユーザー オブジェクトに表示されるまでは、引き続きアクセス拒否メッセージが表示されてパスワードのリセットが失敗します。 |
 | 自分のパスワードのリセットを試みるフェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーには、パスワード送信後にエラーが表示されます。 このエラーは、サービスに問題があったことを示しています。 <br> <br> この問題に加えて、パスワードのリセット操作中に、Azure AD Connect サービスのイベント ログに “Object could not be found” (オブジェクトが見つかりませんでした) というエラーが表示されることがあります。 | このエラーは通常、Azure AD コネクタ スペース内またはリンクされたメタバース (MV) 内のユーザー オブジェクトか、Azure AD コネクタ スペース オブジェクトのいずれかを、同期エンジンが検索できないことを示しています。 <br> <br> この問題をトラブルシューティングするには、Azure AD Connect の現在のインスタンスを介してオンプレミスから Azure AD にユーザーが実際に同期されていることを確認し、コネクタ スペースと MV 内のオブジェクトの状態を検査します。 Active Directory 証明書サービス (AD CS) オブジェクトが、"Microsoft.InfromADUserAccountEnabled.xxx" ルールによって MV オブジェクトに接続されていることを確認します。|
@@ -256,7 +256,7 @@ Azure AD Connect には、パスワード ライトバックを実行するた�
 
 ## <a name="azure-ad-forums"></a>Azure AD フォーラム
 
-Azure AD やセルフサービス パスワード リセットに関する一般的な質問がある場合は、コミュニティに質問を [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD)で投稿できます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
+Azure AD やセルフサービス パスワード リセットに関する一般的な質問がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
 
 ## <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 

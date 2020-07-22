@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248311"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]
@@ -456,7 +456,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 17. メニューの **[デバッグ]**  ->  **[デバッグの開始]** の順にクリックして、サンプルを実行します。 **[Getting run details of a data slice (データ スライスの実行の詳細を取得中)]** が表示されている場合は、数分待機して、**Enter** を押します。
 18. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。
     * リンクされたサービス: **AzureStorageLinkedService**
-    * データセット: **DatasetBlobSource** と **DatasetBlobDestination**
+    * データセット: **DatasetBlobSource** と **DatasetBlobDestination**。
     * パイプライン: **PipelineBlobSample**
 19. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
@@ -500,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure Blob Storage から Azure SQL データベースにデータをコピーする .NET SDK を使用してパイプラインを作成するには、次の例を確認してください。 
+Azure の BLOB ストレージから Azure SQL Database にデータをコピーする .NET SDK を使用してパイプラインを作成するには、次の例を参照してください。 
 
 - [Blob Storage から SQL Database にデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-dotnet-api.md)

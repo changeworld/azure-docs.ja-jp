@@ -5,14 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.custom: references_regions
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982001"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -72,7 +73,13 @@ v2 SKU の場合は、パブリック IP リソースを開き、 **[構成]** �
 
 *キープアライブ タイムアウト*では、固定接続が再利用されるか、または閉じられる前に、クライアントによってその接続上で別の HTTP 要求が送信されるまでの Application Gateway の待機時間が制御されます。 *TCP アイドル タイムアウト*では、アクティビティがない場合に TCP 接続が開いた状態になる時間の長さが制御されます。 
 
-Application Gateway v1 SKU での*キープアライブ タイムアウト*は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト*は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 これらの値は変更できません。
+Application Gateway v1 SKU での*キープアライブ タイムアウト*は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト*は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 v1 および v2 Application Gateway での TCP アイドル タイムアウト値は、4 分から 30 分までの範囲で構成できます。 v1 と v2 どちらの Application Gateway でも、ポータルで Application Gateway のパブリック IP に移動し、パブリック IP の [構成] ブレードで TCP アイドル タイムアウトを変更する必要があります。 次のコマンドを実行して、PowerShell からパブリック IP の TCP アイドル タイムアウト値を設定できます。 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>アプリケーション ゲートウェイの有効期間内に IP や DNS 名が変わることはありますか?
 
@@ -94,7 +101,7 @@ Application Gateway V1 SKU では、アプリケーション ゲートウェイ�
 
 はい。 特定の Application Gateway のデプロイの複数のインスタンスに加え、別の Application Gateway リソースを含む既存のサブネットに別の一意の Application Gateway リソースをプロビジョニングできます。
 
-1 つのサブネットで Standard_v2 と Standard の両方の Application Gateway を混在させることはできません。
+1 つのサブネットで v2 と v1 両方の Application Gateway SKU をサポートすることはできません。
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Application Gateway v2 はユーザー定義ルート (UDR) をサポートしていますか?
 
@@ -211,7 +218,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>カスタム プローブの [ホスト] フィールドは何を表しているのでしょうか?
 
-Application Gateway 上でマルチサイトを構成した場合には、[ホスト] フィールドにプローブの送信先の名前を指定します。 それ以外の場合には、"127.0.0.1" を使用します。 この値は、仮想マシンのホスト名とは異なります。 形式は、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> です。
+Application Gateway 上でマルチサイトを構成した場合には、[ホスト] フィールドにプローブの送信先の名前を指定します。 それ以外の場合には、"127.0.0.1" を使用します。 この値は、仮想マシンのホスト名とは異なります。 形式は \<protocol\>://\<host\>:\<port\>\<path\>です。
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Application Gateway に対するアクセスを少数のソース IP アドレスだけに限定することはできますか?
 
@@ -332,16 +339,36 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 
 ## <a name="configuration---ingress-controller-for-aks"></a>構成 - AKS のイングレス コントローラー
 
-### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか? 
+### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか?
 
 Kubernetes を使用すると、`deployment` リソースおよび `service` リソースを作成して、クラスター内のポッドのグループを内部で公開できます。 同じサービスを外部で公開するには、[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) リソースを定義します。これは、負荷分散、TLS 終端、および名前ベースの仮想ホスティングを提供します。
 この `Ingress` リソースを満たすには、`Ingress` リソースの変更をリスンし、ロード バランサー ポリシーを構成するイングレス コントローラーが必要です。
 
-Application Gateway のイングレス コントローラーを使用すると、AKS クラスターとも呼ばれる [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) に対するイングレスとして [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) を使用できます。
+Application Gateway イングレス コントローラー (AGIC) を使用すると、AKS クラスターとも呼ばれる [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) に対するイングレスとして [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) を使用できます。
 
-### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>イングレス コントローラーの単一のインスタンスで複数の Application Gateway を管理できますか? 
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>イングレス コントローラーの単一のインスタンスで複数の Application Gateway を管理できますか?
 
 現在、イングレス コントローラーの 1 つのインスタンスは、1 つの Application Gateway にのみ関連付けることができます。
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>AKS クラスターと kubenet が AGIC で機能しないのはなぜですか?
+
+AGIC はルート テーブル リソースを Application Gateway サブネットに自動的に関連付けようとしますが、AGIC からのアクセス許可がないため、関連付けに失敗する場合があります。 AGIC がルート テーブルを Application Gateway サブネットに関連付けることができない場合、そのことを示すエラーが AGIC ログに記録されます。その場合、AKS クラスターによって作成されたルート テーブルを Application Gateway のサブネットに手動で関連付ける必要があります。 詳細については、[こちら](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)の手順を参照してください。
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>AKS クラスターと Application Gateway を別々の仮想ネットワークに接続できますか? 
+
+はい。ただし、仮想ネットワークがピアリングされていて、アドレス空間が重複していないことが条件です。 kubenet と共に AKS を実行している場合は必ず、AKS によって生成されたルート テーブルを Application Gateway サブネットに関連付けてください。 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>AGIC アドオンでサポートされていない機能は何ですか? 
+
+Helm 経由でデプロイされる AGIC と、AKS アドオンとしてデプロイされる AGIC の違いについて、[こちら](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)を参照してください。
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>アドオンと Helm デプロイのどちらを使用すればよいですか? 
+
+Helm 経由でデプロイされる AGIC と、AKS アドオンとしてデプロイされる AGIC の違いについて、[こちら](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)を参照してください。特に、AKS アドオンではなく Helm 経由でデプロイされる AGIC でサポートされているシナリオについて説明した表を参照してください。 一般に、Helm 経由でデプロイすると、正式リリースよりも前にベータ機能とリリース候補をテストできます。 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>どのバージョンの AGIC がアドオンでデプロイされるかを制御できますか?
+
+いいえ。AGIC アドオンはマネージド サービスであり、アドオンは Microsoft によって自動的に最新の安定バージョンに更新されます。 
 
 ## <a name="diagnostics-and-logging"></a>診断とログ記録
 
@@ -411,8 +438,6 @@ Application Gateway V2 は現在、プライベート IP モードのみをサ�
 
 プライベート IP のみのアクセスの NSG 構成の例:![プライベート IP アクセスのみの Application Gateway V2 NSG 構成](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
-はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Syslog データを接続する | Microsoft Docs
-description: Azure Sentinel に Syslog データを接続する方法について説明します。
+description: アプライアンスと Sentinel の間で Linux コンピューター上のエージェントを使用して、Syslog をサポートするオンプレミスのアプライアンスを Azure Sentinel に接続します。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 73fd55fc24fd94dc88bba2f591c32480f77c7d5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65c4e5d9e0752379541063c8a80a4316196ad7c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565374"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Syslog を使用して、ご利用の外部ソリューションを接続する
 

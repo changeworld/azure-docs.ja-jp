@@ -3,12 +3,12 @@ title: Language Understanding (LUIS) とは
 description: Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592816"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675981"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -46,7 +46,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 
 * **構築済みのモデル**: LUIS には、意図、発話、および構築済みのエンティティを含む構築済みのドメイン モデルが多数あります。 構築済みのモデルの意図と発話を使用せずに、構築済みのエンティティを使用できます。 [構築済みのドメイン モデル](luis-how-to-use-prebuilt-domains.md)には、必要な設計がすべて含まれているため、LUIS の使用をすぐに開始できる優れた方法です。
 
-* **カスタム モデル**の LUIS を使うと、意図を含む独自のカスタムモデルやエンティティを複数の方法で識別できます。 エンティティには、コンピューターによって学習されたエンティティ、特定のエンティティまたはリテラル エンティティ、コンピューターによって学習されたエンティティとリテラル エンティティの組み合わせが含まれます。
+* **カスタム モデル**の LUIS を使うと、意図を含む独自のカスタムモデルやエンティティを複数の方法で識別できます。 エンティティには、機械学習エンティティ、特定のエンティティまたはリテラル エンティティ、機械学習エンティティとリテラル エンティティの組み合わせが含まれます。
 
 ## <a name="build-the-luis-model"></a>LUIS モデルの構築
 モデルの構築には、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API または [LUIS ポータル](https://www.luis.ai)を使用します。
@@ -56,7 +56,7 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
 |ユーザーの発話例|Intent|抽出された日付|
 |-----------|-----------|-----------|
 |`Book a flight to Seattle?`|BookFlight|Seattle|
-|`When does your store open?`|StoreHoursAndLocation|オープン|
+|`When does your store open?`|StoreHoursAndLocation|open|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
 ## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行

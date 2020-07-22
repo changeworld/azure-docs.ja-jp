@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77168461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921031"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -71,7 +71,7 @@ ms.locfileid: "77168461"
 
 **Q:個人の要求はログに記録されますか。**
 
-**A**: トレースをオフに切り替えるデプロイを作成する場合には、選択肢があります。 その時点では、音声または文字起こしは記録されません。 そうしない場合、通常は Azure のセキュリティで保護された記憶域に要求のログが記録されます。
+**A**: 既定では、要求は (音声と文字起こしのどちらにも) ログに記録されません。 必要に応じて、[カスタム エンドポイントを作成する](how-to-custom-speech-deploy-model.md)ときに、 *[Log content from this endpoint]\(このエンドポイントからコンテンツをログに記録する\)* オプションを選択して、トレースを有効にすることができます。 その後、要求は Azure のセキュリティで保護されたストレージに記録されます。
 
 **Q:ユーザーの要求は調整されますか。**
 
@@ -118,6 +118,13 @@ or
   - 表示されたサービスから、コンカレンシーを引き上げる音声サービスを選択します。
   - このサービスの `Properties` を表示します。
   - 完全な `Resource ID` をコピーします。
+  
+**Q:コンカレンシーの制限を引き上げるとコストが増加しますか?**
+
+**A**: いいえ、コストは使用量に基づいています。 コンカレンシーを引き上げてもコストは増えません。 コストの詳細については、Microsoft の[価格に関するページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)をご覧ください。 
+  
+>[!NOTE]
+>[コンテナー](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)は、ホストされているハードウェアの CPU によってのみ制限されるため、コンテナーでコンカレンシーの制限を増やす必要はありません。
 
 ## <a name="importing-data"></a>データのインポート
 

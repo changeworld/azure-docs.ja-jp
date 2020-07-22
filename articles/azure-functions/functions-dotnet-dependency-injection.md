@@ -2,16 +2,16 @@
 title: .NET Azure Functions で依存関係の挿入を使用する
 description: .NET 関数にサービスを登録して使用するために、依存関係の挿入を使用する方法について学習します
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678453"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249259"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -27,7 +27,7 @@ Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイ
 
 - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Microsoft.NET.Sdk.Functions パッケージ](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) バージョン 1.0.28 以降
+- [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) パッケージ バージョン 1.0.28 以降
 
 ## <a name="register-services"></a>サービスを登録する
 
@@ -36,11 +36,8 @@ Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイ
 このメソッドを登録するには、起動時に使用される型名を指定する `FunctionsStartup` アセンブリ属性を追加します。
 
 ```csharp
-using System;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -52,7 +49,7 @@ namespace MyNamespace
         {
             builder.Services.AddHttpClient();
 
-            builder.Services.AddSingleton((s) => {
+            builder.Services.AddSingleton<IMyService>((s) => {
                 return new MyService();
             });
 
@@ -61,6 +58,8 @@ namespace MyNamespace
     }
 }
 ```
+
+この例では、スタートアップ時に `HttpClient` を登録するために必要な [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) パッケージが使用されています。
 
 ### <a name="caveats"></a>注意事項
 
@@ -72,48 +71,47 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>挿入された依存関係を使用する
 
-コンストラクターの挿入は、依存関係を関数で利用できるようにする目的で使用されます。 コンストラクターの挿入を使用するには、静的クラスを使用しないことが必須となります。
+コンストラクターの挿入は、依存関係を関数で利用できるようにする目的で使用されます。 コンストラクターの挿入を使用するには、挿入されたサービスまたは関数クラスに対して静的クラスを使用しないようにする必要があります。
 
-次のサンプルでは、`IMyService` と `HttpClient` の依存関係が、HTTP によってトリガーされる関数にどのように挿入されるかを示します。 この例では、スタートアップ時に `HttpClient` を登録するために必要な [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) パッケージが使用されています。
+次のサンプルでは、`IMyService` と `HttpClient` の依存関係が、HTTP によってトリガーされる関数にどのように挿入されるかを示します。
 
 ```csharp
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MyNamespace
 {
-    public class HttpTrigger
+    public class MyHttpTrigger
     {
-        private readonly IMyService _service;
         private readonly HttpClient _client;
+        private readonly IMyService _service;
 
-        public HttpTrigger(IMyService service, HttpClient httpClient)
+        public MyHttpTrigger(HttpClient httpClient, MyService service)
         {
-            _service = service;
-            _client = httpClient;
+            this._client = httpClient;
+            this._service = service;
         }
 
-        [FunctionName("GetPosts")]
-        public async Task<IActionResult> Get(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "posts")] HttpRequest req,
+        [FunctionName("MyHttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            var res = await _client.GetAsync("https://microsoft.com");
-            await _service.AddResponse(res);
+            var response = await _client.GetAsync("https://microsoft.com");
+            var message = _service.GetMessage();
 
-            return new OkResult();
+            return new OkObjectResult("Response from function with injected dependencies.");
         }
     }
 }
 ```
+
+この例では、スタートアップ時に `HttpClient` を登録するために必要な [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) パッケージが使用されています。
 
 ## <a name="service-lifetimes"></a>サービスの有効期間
 
@@ -121,13 +119,15 @@ Azure Functions アプリのサービス有効期間は [ASP.NET 依存関係挿
 
 - **一時的**:一時的なサービスは、サービスが要求されるたびに作成されます。
 - **スコープ付き**:スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは毎回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
-- **シングルトン**:シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`SqlConnection` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
+- **シングルトン**:シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`DocumentClient` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
 
 GitHub の[さまざまなサービスの有効期間のサンプル](https://aka.ms/functions/di-sample)を表示するか、ダウンロードします。
 
 ## <a name="logging-services"></a>ログ記録サービス
 
-独自のログ記録プロバイダーが必要であれば、カスタムの型を `ILoggerProvider` インスタンスとして登録します。 Azure Functions によって Application Insights が自動的に追加されます。
+独自のログ記録プロバイダーが必要な場合は、カスタム型を [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) のインスタンスとして登録します。これは、[Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet パッケージを通じて使用できます。
+
+Azure Functions によって Application Insights が自動的に追加されます。
 
 > [!WARNING]
 > - サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。環境によって提供されるサービスと競合するサービスが登録されます。
@@ -135,7 +135,9 @@ GitHub の[さまざまなサービスの有効期間のサンプル](https://ak
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> および ILoggerFactory
 
-ホストでは、`ILogger<T>` および `ILoggerFactory` サービスをコンストラクターに挿入します。  ただし、これらの新しいログ フィルターは、既定で関数のログから除外されます。  追加のフィルターおよびカテゴリを選択するには、`host.json` ファイルを変更する必要があります。  次のサンプルは、ホストによって公開されるログでの `ILogger<HttpTrigger>` の追加を示しています。
+ホストでは、`ILogger<T>` サービスと `ILoggerFactory` サービスがコンストラクターに挿入されます。  ただし、既定では、これらの新しいログ フィルターは関数のログから除外されます。  追加のフィルターおよびカテゴリを選択するには、`host.json` ファイルを変更する必要があります。
+
+次の例では、ホストに公開されるログを含む `ILogger<HttpTrigger>` を追加する方法を示します。
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +162,7 @@ namespace MyNamespace
 }
 ```
 
-また、ログ フィルターを追加する `host.json` ファイルを以下に示します。
+次の例の `host.json` ファイルでは、ログ フィルターが追加されます。
 
 ```json
 {
@@ -251,7 +253,7 @@ public class HttpTrigger
 オプションの使用に関する詳細については、「[ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)」を参照してください。
 
 > [!WARNING]
-> 従量課金プランで *local.settings.json* や *appsettings.{environment}.json* のようなファイルから値を読み取らないようにします。 トリガー接続に関連するこれらのファイルから読み取られた値は、ホスティング インフラストラクチャに構成情報へのアクセス権がないため、アプリのスケールとして利用することはできません。
+> 従量課金プランで *local.settings.json* や *appsettings.{environment}.json* のようなファイルから値を読み取らないようにします。 トリガー接続に関連するこれらのファイルから読み取られた値は、アプリのスケールとして利用することはできません。これは、スケール コントローラーがアプリの新しいインスタンスを作成する際に、ホスティング インフラストラクチャが構成情報にアクセスできないためです。
 
 ## <a name="next-steps"></a>次のステップ
 

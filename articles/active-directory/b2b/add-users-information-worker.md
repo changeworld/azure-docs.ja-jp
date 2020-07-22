@@ -4,7 +4,7 @@ description: B2B コラボレーションを利用して、インフォメーシ
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387390"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 
@@ -28,7 +28,7 @@ ms.locfileid: "77565419"
  - セルフサービス用にアプリを構成して、グループをアプリに割り当てる
 
 > [!NOTE]
-> この記事では、Azure AD テナントに追加したギャラリーおよび SAML ベースのアプリのセルフサービス管理を設定する方法について説明します。 ユーザーが自身の Office 365 グループへのアクセスを管理できるように[セルフサービス Office 365 グループを設定する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)こともできます。 ユーザーが Office ファイルとアプリをゲスト ユーザーと共有できるその他の方法については、「[Office 365 グループでのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)」と「[SharePoint ファイルまたはフォルダーの共有](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)」をご覧ください。
+> この記事では、Azure AD テナントに追加したギャラリーおよび SAML ベースのアプリのセルフサービス管理を設定する方法について説明します。 ユーザーが自身の Microsoft 365 グループへのアクセスを管理できるように、[Microsoft 365 のセルフサービス グループを設定する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)こともできます。 ユーザーが Office ファイルとアプリをゲスト ユーザーと共有できるその他の方法については、[Microsoft 365 グループでのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)に関するページと、「[SharePoint ファイルまたはフォルダーの共有](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)」を参照してください。
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>アクセス パネルからアプリにゲスト ユーザーを招待する
 

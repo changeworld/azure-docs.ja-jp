@@ -9,20 +9,18 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 6afd222730a9864e0b8edd681b1ce919b03c3be8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21bb8253d94ca91ee1baffb6de1f47ca34e9a7d0
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204292"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117559"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用 PowerShell モジュール
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-
 PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio (クラシック) のリソースと資産をプログラムで管理できます。
 
-次の 3 つの Powershell モジュールを使用して Studio (クラシック) のリソースとやり取りすることができます。
+次の 3 つの PowerShell モジュールを使用して Studio (クラシック) のリソースとやり取りすることができます。
 
 * 2018 年にリリースされた [Azure PowerShell Az](#az-rm)。AzureRM のすべての機能が含まれていますが、コマンドレット名は異なります
 * 2016 年にリリースされた [AzureRM](#az-rm)。PowerShell Az に置き換えられます

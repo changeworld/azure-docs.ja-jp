@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322314"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure Front Door でのメトリックとログの監視
 
@@ -88,6 +88,7 @@ Front Door の診断ログを構成するには、以下の手順を実行しま
 | RequestUri | 受信した要求の URI。 |
 | ResponseBytes | 応答としてバックエンド サーバーによって送信されたバイト数。  |
 | RoutingRuleName | 要求が一致したルーティング規則の名前。 |
+| RulesEngineMatchNames | 要求が一致した規則の名前。 |
 | SecurityProtocol | 要求によって使用された TLS/SSL プロトコルのバージョン。暗号化がない場合は、null 値。 |
 | SentToOriginShield | 最初の環境でキャッシュ ミスがあり、要求がリージョンのキャッシュに送信されたかどうかを表すブール値フィールド。 ルーティング規則がリダイレクトの場合、またはルーティング規則でキャッシュが有効になっていない場合は、このフィールドを無視します。 |
 | TimeTaken | アクションにかかった時間の長さ (ミリ秒単位)。 |

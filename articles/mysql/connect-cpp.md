@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/26/2020
+ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80062578"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871511"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Connector/C++ を使った接続とデータの照会
 このクイックスタートでは、C++ アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、C++ を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであることを前提としています。
@@ -28,6 +28,9 @@ ms.locfileid: "80062578"
 - [Visual Studio](https://www.visualstudio.com/downloads/)
 - [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) のインストール 
 - [Boost](https://www.boost.org/) のインストール
+
+> [!IMPORTANT] 
+> [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
 
 ## <a name="install-visual-studio-and-net"></a>Visual Studio と .NET のインストール
 このセクションの手順では、.NET を使用した開発に慣れていることを前提としています。

@@ -2,14 +2,14 @@
 title: 概念 - Azure Kubernetes サービス (AKS) におけるネットワーク
 description: Azure Kubernetes Service (AKS) におけるネットワークについて説明します。kubenet と Azure CNI ネットワーク、イングレス コントローラー、ロード バランサー、静的 IP アドレスの説明が含まれます。
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146057"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244652"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -129,6 +129,8 @@ LoadBalancer 型のサービスを作成すると、基になる Azure ロード
 
 AKS では、NGINX などを使用してイングレス リソースを作成するか、AKS の HTTP アプリケーションのルーティング機能を使用できます。 AKS クラスターで HTTP アプリケーションのルーティングを有効にすると、Azure プラットフォームがイングレス コントローラーと*External-DNS* コントローラーを作成します。 新しいイングレス リソースが Kubernetes に作成されると、必要な DNS A レコードがクラスター固有のDNS ゾーンに作成されます。 詳細については、「[HTTP アプリケーション ルーティング][aks-http-routing]」を参照してください。
 
+Application Gateway イングレス コントローラー (AGIC) アドオンを使用すると、AKS のお客様は、Azure のネイティブ Application Gateway レベル 7 ロード バランサーを活用してクラウド ソフトウェアをインターネットに公開できます。 AGIC では、ホストされている Kubernetes クラスターを監視し、Application Gateway を継続的に更新して、選択されたサービスがインターネットに公開されるようにします。 AKS 用の AGIC アドオンの詳細については、「[Application Gateway イングレス コントローラーとは][agic-overview]」を参照してください。
+
 イングレスのもう 1 つの一般的な機能は、SSL/TLS 終端です。 HTTPS 経由でアクセスされる大規模な Web アプリケーションでは、アプリケーション自体の中ではなく、イングレス リソースによって TLS 終端を処理できます。 TLS 証明書の自動生成と構成を提供することで、Let's Encrypt などのプロバイダーを使用するイングレス リソースを構成できます。 Let's Encrypt を使用した NGINX イングレス コントローラーの構成の詳細については、[イングレスと TLS][aks-ingress-tls] に関する記事を参照してください。
 
 イングレス コントローラーを構成して、クライアント ソース IP を AKS クラスター内のコンテナーへの要求上で保持することもできます。 クライアントの要求が、イングレス コントローラー経由で AKS クラスター内のコントローラーにルーティングされている場合、その要求の元のソース IP は、ターゲット コンテナーに対しては利用できません。 *クライアント ソース IP の保持*を有効にすると、クライアントに対するソース IP は、*X-Forwarded-For* 下にある要求ヘッダー内で利用できます。 クライアント ソース IP の保持機能をイングレス コントローラー上で使用している場合は、TLS パススルーを使用できません。 クライアント ソース IP の保持と TLS パススルーは、*LoadBalancer* 型など、他のサービスによって使用できます。
@@ -172,7 +174,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
@@ -180,6 +182,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md

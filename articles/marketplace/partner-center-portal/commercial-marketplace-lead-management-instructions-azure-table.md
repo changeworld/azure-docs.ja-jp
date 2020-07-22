@@ -1,18 +1,18 @@
 ---
 title: Azure Table ストレージによるリード管理 - Microsoft 商用マーケットプレース
 description: Azure Table ストレージを使用して Microsoft AppSource および Azure Marketplace のリードを構成する方法について説明します
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791019"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120842"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
 
@@ -26,11 +26,11 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
     1. 左側のメニュー バーにある **[+ リソースの作成]** を選択します。 **[新規]** ウィンドウが右側に表示されます。
     1. **[新規]** ウィンドウで **[ストレージ]** を選択します。 **[おすすめ]** の一覧が右側に表示されます。
-    1. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。 [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)に関するページの手順に従います。
+    1. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)に関するページの手順に従います。
 
         ![Azure ストレージ アカウントを作成する手順](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        ストレージ アカウントの詳細については、[クイック スタートのチュートリアル](https://docs.microsoft.com/azure/storage/)に関するページをご覧ください。 ストレージの価格の詳細については、[ストレージの価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。
+        ストレージ アカウントの詳細については、[クイック スタートのチュートリアル](../../storage/index.yml)に関するページをご覧ください。 ストレージの価格の詳細については、[ストレージの価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。
 
 1. ストレージ アカウントがプロビジョニングされるまで待ちます。 通常、このプロセスには数分かかります。 
 
@@ -107,7 +107,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
    **[作成]** を選択すると、 **[エンティティの取得]** ウィンドウが表示されます。 ここで、 **[詳細オプションの表示]** を選択し、次のボックスに情報を指定します。
 
-   * **テーブル**:お使いのテーブルの名前を選択します ([テーブルの作成](#create-a-table-in-your-storage-account)に関するセクションから)。 次の画像は、この例で "marketplaceleads" テーブルが選択されたときのプロンプトを示しています。
+   * **テーブル**:お使いのテーブルの名前を選択します ([テーブルの作成](#create-a-table-in-your-storage-account)に関するセクションから)。 次の画像は、この例で `marketplaceleads` テーブルが選択されているときに表示されるプロンプトです。
 
      ![[エンティティの取得] ウィンドウ](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -182,8 +182,9 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. オファーの **[オファーのセットアップ]** ページに移動します。
 
-1. **[リード管理]** セクションで **[接続]** を選択します。
-     ![リード管理](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** として **[Azure テーブル]** を選択します。 
      ![リード管理、接続の詳細](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

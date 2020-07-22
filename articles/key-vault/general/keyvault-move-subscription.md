@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6fe25efe8f38772162c916c8d0b965267d457c0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121186"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488819"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -66,9 +66,8 @@ Azure portal の Azure Policy ページにアクセスし、現在のサブス�
 4. [移動] ボタン を選択する
 5. ドロップダウン リストのオプションから [別のサブスクリプションに移動する] を選択する
 6. キー コンテナーを移動するリソース グループを選択する
-7. キー コンテナーを移動するリソース グループを選択する
-8. リソースの移動に関する警告を確認する
-9. [OK] を選択する
+7. リソースの移動に関する警告を確認する
+8. [OK] を選択する
 
 ### <a name="additional-steps-post-move"></a>追加の手順 (移動後)
 

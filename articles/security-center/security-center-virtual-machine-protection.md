@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799736"
 ---
 # <a name="protect-your-machines-and-applications"></a>マシンとアプリケーションを保護する
 Azure Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -163,15 +163,13 @@ Web アプリケーションを選択すると、次の 3 つのタブがある�
 
 ![コンテナー ホスト](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) コンテナーホスト - Docker を実行している VM 
 
-![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes Service (AKS) クラスター
+![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes Service (AKS) クラスター。 [Security Center の AKS バンドルについての詳細情報](azure-kubernetes-service-integration.md)
 
-![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) レジストリ - 標準価格レベルを使用していて、Azure Container Registry バンドルが有効になっている場合にのみ表示されます。
+![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) のレジストリ。 [Security Center の ACR バンドルについての詳細情報](azure-container-registry-integration.md)
 
 コンテナーのセキュリティ機能を使用する方法については、「[コンテナーのセキュリティを監視する](monitor-container-security.md)」を参照してください。
 
-Azure Container Registry バンドルの利点については、[こちら](azure-container-registry-integration.md)を参照してください
 
-Kubernetes Services バンドルの利点については、[こちら](azure-kubernetes-service-integration.md)を参照してください
 
 [![[コンテナー] タブ](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 

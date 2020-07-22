@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Visual Studio Code と Azure Dev Spaces による、Kubernetes アプリケーションのデバッグと迅速な反復処理の支援について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 91440e59fdb8c21579ef1f04e78e66f933221ba0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a2ae1f603626acf7ec4d42838b301c88ee21da
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240455"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307352"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code と Azure Dev Spaces が連動するしくみ
 
@@ -35,14 +35,13 @@ Dockerfile、Helm グラフ、`azds.yaml` ファイルは `azds prep` の実行�
 
 プロジェクト用のアセットを生成したら、Visual Studio Code から、既存の開発スペースで Java、Node.js、.NET Core サービスを実行できます。 Visual Studio Code の *[デバッグ]* ページで、`.vscode` ディレクトリから起動構成を呼び出し、プロジェクトを実行できます。
 
-AKS クラスターを作成し、Visual Studio Code の外でクラスターの Azure Dev Spaces を有効にする必要があります。 たとえば、Azure CLI または Azure portal を利用してこの設定を行うことができます。 `azds prep` を実行することで生成されたアセットなど、Visual Studio Code の外で作成された既存の Dockerfile、Helm グラフ、`azds.yaml` ファイルを再利用できます。 Visual Studio Code の外で生成されたアセットを再利用する場合も、`.vscode` ディレクトリを用意する必要があります。 この `.vscode` ディレクトリは Visual Studio コードと Azure Dev Spaces 拡張機能で再生成できます。既存のアセットを上書きすることはありません。
+AKS クラスターを作成し、Visual Studio Code の外でクラスターの Azure Dev Spaces を有効にする必要があります。 `azds prep` を実行することで生成されたアセットなど、Visual Studio Code の外で作成された既存の Dockerfile、Helm グラフ、`azds.yaml` ファイルを再利用できます。 Visual Studio Code の外で生成されたアセットを再利用する場合も、`.vscode` ディレクトリを用意する必要があります。 この `.vscode` ディレクトリは Visual Studio コードと Azure Dev Spaces 拡張機能で再生成できます。既存のアセットを上書きすることはありません。
 
 .NET Core プロジェクトの場合、Visual Studio Code から .NET サービスを実行するには、[C# 拡張機能][csharp-extension]をインストールする必要があります。 Maven を使用する Java プロジェクトの場合も、Visual Studio Code から Java サービスを実行するには、[Java Debugger for Azure Dev Spaces 拡張機能][java-extension]をインストールし、[Maven をインストールして構成する][maven]必要があります。
 
 ## <a name="debug-your-service-in-aks"></a>AKS でサービスをデバッグする
 
 プロジェクトを起動したら、Visual Studio Code から直接、開発スペースで実行している Java、Node.js、.NET Core サービスをデバッグできます。 `.vscode` ディレクトリの起動構成からは、開発スペースでデバッグが有効になっているサービスの実行に関して、付加的なデバッグ情報が与えられます。 Visual Studio Code は、開発スペースで実行中のコンテナーのデバッグ プロセスにも付随し、ブレーク ポイントの設定、変数の調査、その他のデバッグ操作を可能にします。
-
 
 ## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio Code を Azure Dev Spaces と共に使用する
 

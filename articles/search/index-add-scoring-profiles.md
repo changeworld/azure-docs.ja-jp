@@ -3,34 +3,29 @@ title: スコアリング プロファイルを使用して検索順位を上げ
 titleSuffix: Azure Cognitive Search
 description: スコアリング プロファイルを追加することにより、Azure Cognitive Search の検索結果での検索順位スコアを上げます。
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565351"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する
 
 "*スコアリング*" では、順位に従って並べられる結果セット内の各項目の検索スコアが計算されます。 検索結果セット内のすべての項目にそれぞれ検索スコアが割り当てられ、最上位から最下位まで順位が付けられます。
 
  Azure Cognitive Search では、既定のスコアリングを使用して初期スコアを計算しますが、"*スコアリング プロファイル*" を介して計算をカスタマイズすることができます。 スコアリング プロファイルでは、検索結果の項目の順位付けをより細かく制御できます。 たとえば、収益の可能性に基づいて項目をブーストしたり、より新しい項目を昇格させたり、場合によっては在庫期間が長すぎる項目をブーストしたりできます。  
+
+ 次のビデオ セグメントは、Azure Cognitive Search でのスコアリング プロファイルの動作についての部分まで早送りされます。
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>スコアリング プロファイルの定義
 
  スコアリング プロファイルは、インデックス定義の一部であり、重み付けされたフィールド、関数、およびパラメーターで構成されます。  
 
@@ -66,7 +61,7 @@ ms.locfileid: "82231103"
  このスコアリング プロファイルを使用するには、クエリを作成して、クエリ文字列にプロファイルを指定します。 次のクエリで、要求内のクエリ パラメーター `scoringProfile=geo` に注目してください。  
 
 ```  
-GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
+GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2020-06-30 
 ```  
 
  このクエリは、語句 'inn' を検索し、現在の場所を渡します。 このクエリには、`scoringParameter` などの他のパラメーターが含まれていることがわかります。 クエリ パラメーターについては、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。  
@@ -82,7 +77,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  検索スコアの値は、結果セット全体で繰り返すことができます。 たとえば、スコアが 1.2 である項目が 10 個、スコアが 1.0 である項目が 20 個、スコアが 0.5 である項目が 20 個あるとします。 同じ検索スコアを持つ項目が複数ヒットした場合、同じスコアを持つ項目の順序付けは定義されていないので安定しません。 もう一度クエリを実行すると、項目の位置が変わる可能性があります。 同一スコアの項目が 2 つ存在する場合、最初に表示される項目を特定することはできません。  
 
-## <a name="when-to-use-custom-scoring"></a>カスタム スコアリングを使用する場合  
+## <a name="when-to-add-scoring-logic"></a>スコアリング ロジックを追加する場合 
  既定の順位付けの動作ではビジネス目標を達成するに至らない場合、1 つ以上のスコアリング プロファイルを作成する必要があります。 たとえば、検索の関連性で、新しく追加された項目を優先するとします。 同様に、利益率を含んでいるフィールド、または他に収益の可能性を示す何らかのフィールドがあるとします。 ビジネスに利点をもたらすブースティング ヒットは、スコアリング プロファイルの使用を決定する上で重要な要因になる場合があります。  
 
  関連性に基づく順序付けも、スコアリング プロファイルを通して実装されます。 価格、日付、評価、または関連性での並べ替えが可能な、以前に使用した検索結果ページを検討してしてください。 Azure Cognitive Search では、スコアリング プロファイルによって「関連性」オプションが開始されます。 関連性の定義は、ビジネス目標および提供する検索機能の種類に基づいて、ユーザーによって制御されます。  

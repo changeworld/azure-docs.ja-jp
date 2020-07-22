@@ -4,8 +4,6 @@
   items:
     - name: Microsoft ID プラットフォームとは
       href: v2-overview.md
-    - name: Microsoft ID プラットフォームの進化
-      href: about-microsoft-identity-platform.md
 - name: クイックスタート
   expanded: true
   items:
@@ -305,7 +303,7 @@
         - name: iOS と macOS
           items:
             - name: Azure AD B2C との統合
-              href: 'config-authority.md#b2c'
+              href: config-authority.md#b2c
             - name: MSAL.iOS/macOS への移行
               href: migrate-objc-adal-msal.md
             - name: iOS デバイスの共有デバイス モード
@@ -376,6 +374,11 @@
               displayName: 'shared device mode, firstline worker, frontline worker, flw'
             - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
+            - name: v1.0 トークンを受け入れる Web API のスコープ
+              href: msal-v1-app-scopes.md
+            - name: ADAL から MSAL へのアプリの移行
+              href: msal-migration.md
+              displayName: migration
     - name: 認証プロトコル
       displayName: Auth protocol
       items:
@@ -410,6 +413,8 @@
               href: id-tokens.md
             - name: アクセス トークン
               href: access-tokens.md
+            - name: UserInfo エンドポイント
+              href: userinfo.md
             - name: 証明書の資格情報
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0 プロトコル
@@ -469,6 +474,34 @@
           href: /azure/active-directory/app-provisioning/scim-graph-scenarios
         - name: MS Graph を使用した構成の自動化
           href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+    - name: Azure portal のヘルプ記事
+      items:
+        - name: 独自に開発したアプリケーションのトークン有効期間の既定値
+          href: registration-config-change-token-lifetime-how-to.md
+        - name: エンドポイントを検出する
+          href: registration-config-how-to.md
+        - name: 指定の API のアクセス許可を選択する
+          href: perms-for-given-api.md
+        - name: 認証プロトコル
+          href: active-directory-authentication-protocols.md
+        - name: 委任されたアクセス許可とアプリケーションのアクセス許可の違い
+          href: delegated-and-app-perms.md
+        - name: アプリケーションの同意のしくみ
+          href: consent-framework-links.md
+        - name: 独自に開発したアプリケーションに必要な特定の API を見つける
+          href: api-find-an-api-how-to.md
+        - name: アプリ登録のリファレンス
+          href: active-directory-v2-registration-portal.md
+        - name: 独自に開発したアプリ用の Azure portal の登録フィールド
+          href: registration-config-specific-application-property-how-to.md
+        - name: 新しいマルチテナント アプリケーションを構成する
+          href: setup-multi-tenant-app.md
+        - name: Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションを追加する
+          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
+        - name: Azure Active Directory との統合
+          href: active-directory-how-to-integrate.md
+        - name: アプリケーションのシングル サインオンを構成する
+          href: registration-config-sso-how-to.md
 - name: 操作方法ガイド
   items:
     - name: 認証
@@ -546,6 +579,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: プロンプトの動作
               href: msal-js-prompt-behavior.md
+            - name: 暗黙から認証コード フローに SPA を移行する
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: iOS および macOS 用の MSAL
           items:
             - name: iOS および macOS 用の MSAL の違い

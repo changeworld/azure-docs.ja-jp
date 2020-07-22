@@ -73,8 +73,8 @@
               href: how-dev-spaces-works-routing.md
             - name: リモート デバッグ
               href: how-dev-spaces-works-remote-debugging.md
-            - name: 開発用コンピューターを AKS に接続する
-              href: how-dev-spaces-works-connect.md
+            - name: Local Process with Kubernetes
+              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: VS Code と Dev Spaces を連携させるしくみ
           href: how-vs-code-works-with-dev-spaces.md
         - name: さまざまなネットワーク トポロジでのネットワーク構成
@@ -111,8 +111,10 @@
           href: how-to/ingress-https-traefik.md
         - name: カスタムのイングレスと HTTPS に NGINX を使用する
           href: how-to/ingress-https-nginx.md
-        - name: 開発用コンピューターを AKS クラスターに接続する (プレビュー)
-          href: how-to/connect.md
+        - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
+          href: how-to/local-process-kubernetes-vs-code.md
+        - name: Visual Studio を使用して Local Process with Kubernetes を利用する (プレビュー)
+          href: how-to/local-process-kubernetes-visual-studio.md
     - name: トラブルシューティング
       href: troubleshooting.md
     - name: よく寄せられる質問

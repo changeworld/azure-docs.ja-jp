@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612369"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259898"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトを含まない Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/environment-setup-2019.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/environment-setup-2019.md)を参照してください。
 >
 > Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
@@ -66,7 +66,7 @@ Windows Virtual Desktop ホスト プールを設定する方法については�
 
 Windows Virtual Desktop に接続する方法については、次のいずれかの記事をご覧ください。
 
-- [Windows 10 または Windows 7 を使用して接続する](connect-windows-7-and-10.md)
+- [Windows 10 または Windows 7 を使用して接続する](connect-windows-7-10.md)
 - [Web ブラウザーを使用して接続する](connect-web.md)
 - [Android クライアントに接続する](connect-android.md)
 - [macOS クライアントに接続する](connect-macos.md)

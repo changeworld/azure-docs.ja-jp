@@ -1,21 +1,14 @@
 ---
 title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/02/2019
-ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320585"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -97,11 +90,29 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
+
+### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>名前空間へのメッセージの送信または受信を行うクライアント IP はどこで確認できますか。
+まず、名前空間で [IP フィルター](event-hubs-ip-filtering.md)を有効にします。 
+
+次に、「[診断ログを有効にする](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」の手順に従って、[Event Hubs 仮想ネットワーク接続イベント](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)の診断ログを有効にします。 接続が拒否された IP アドレスが表示されます。
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka の統合
 
@@ -150,9 +161,11 @@ Event Hubs でのスループットは、Event Hubs 経由で入出力される�
 この機能に関連して生じる**コストはありません**。 
 
 ### <a name="how-are-throughput-limits-enforced"></a>スループットの制限はどのように適用されるのですか。
-名前空間内のすべてのイベント ハブの合計イングレス スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
+名前空間内のすべてのイベント ハブの合計**イングレス** スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
 
-名前空間内のすべてのイベント ハブの合計エグレス スループットまたは合計イベント エグレス レートがスループット ユニットの上限の総計を超過した場合は、受信側が調整され、送信クォータが超過したことを示すエラーを受信します。 送信側でイベントの使用速度が低下しないようにするため、また受信側でイベント ハブにイベントを送信できなくなることを避けるために、イングレス クォータとエグレス クォータは別々に適用されます。
+名前空間内のすべてのイベント ハブの合計**エグレス** スループットまたは合計イベント エグレス レートがスループット ユニットの上限の総計を超過した場合は、受信側が調整されますが、調整エラーは生成されません。 
+
+送信側でイベントの使用速度が低下しないようにするため、また受信側でイベント ハブにイベントを送信できなくなることを避けるために、イングレス クォータとエグレス クォータは別々に適用されます。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>予約または選択できるスループット ユニット (TU) の数に制限はありますか。
 マルチテナント オファリングでは、スループット ユニットは 40 TU まで増やすことができます (ポータルで最大 20 TU を選択し、同じ名前空間でそれを 40 TU に増やすためのサポート チケットを生成できます)。 40 TU を超える場合、Event Hubs には、**Event Hubs Dedicated クラスター**と呼ばれるリソース/容量ベースのモデルが用意されています。 Dedicated クラスターは、容量ユニット (CU) で販売されます。
@@ -248,7 +261,7 @@ Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診�
 
 ### <a name="support-and-sla"></a>サポートと SLA
 
-Event Hubs のテクニカル サポートは、 [コミュニティ フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)を通して利用できます。 課金とサブスクリプション管理のサポートは無料で提供されます。
+Event Hubs のテクニカル サポートについては、[Microsoft Q&A の Azure Service Bus に関する質問ページ](https://docs.microsoft.com/answers/topics/azure-service-bus.html)を参照してください。 課金とサブスクリプション管理のサポートは無料で提供されます。
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
 

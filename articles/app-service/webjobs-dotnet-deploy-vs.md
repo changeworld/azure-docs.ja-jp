@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d73c858bdbfee7c5b7c7e31b62b1f601b7b6838a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 971ab39ddf4b383f92f0cd81e5258ad357e76e99
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866437"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857070"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して WebJobs を開発してデプロイする - Azure App Service
 
@@ -165,32 +165,36 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
 ### <a name="webjob-publish-settingsjson"></a><a id="publishsettings"></a>webjob-publish-settings.json
 WebJobs のデプロイメント用にコンソール アプリケーションを構成すると、Visual Studio によって [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet パッケージがインストールされ、WebJobs プロジェクトの *Properties* フォルダーにある *webjob-publish-settings.json* ファイルにスケジュール情報が格納されます。 次にこのファイルの例を示します。
 
-        {
-          "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
-          "webJobName": "WebJob1",
-          "startTime": "null",
-          "endTime": "null",
-          "jobRecurrenceFrequency": "null",
-          "interval": null,
-          "runMode": "Continuous"
-        }
+```json
+{
+  "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
+  "webJobName": "WebJob1",
+  "startTime": "null",
+  "endTime": "null",
+  "jobRecurrenceFrequency": "null",
+  "interval": null,
+  "runMode": "Continuous"
+}
+```
 
 このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) に格納され、そこで表示できます。  
 
 ### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 WebJobs 対応のプロジェクトを Web プロジェクトにリンクすると、Visual Studio は WebJobs プロジェクトの名前を Web プロジェクトの *Properties* フォルダー内の *webjobs-list.json* ファイルに格納します。 次の例に示すように、一覧には複数の WebJobs プロジェクトが含まれる場合があります。
 
-        {
-          "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
-          "WebJobs": [
-            {
-              "filePath": "../ConsoleApplication1/ConsoleApplication1.csproj"
-            },
-            {
-              "filePath": "../WebJob1/WebJob1.csproj"
-            }
-          ]
-        }
+```json
+{
+  "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
+  "WebJobs": [
+    {
+      "filePath": "../ConsoleApplication1/ConsoleApplication1.csproj"
+    },
+    {
+      "filePath": "../WebJob1/WebJob1.csproj"
+    }
+  ]
+}
+```
 
 このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) に格納され、そこで表示できます。
 

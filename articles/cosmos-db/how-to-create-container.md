@@ -3,15 +3,15 @@ title: Azure Cosmos DB にコンテナーを作成する
 description: Azure portal、.Net、Java、Python、Node.js およびその他の SDK を使用して、Azure Cosmos DB で コンテナーを作成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 809ebe848e38a7c99c96ef44f130da917fb35942
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390892"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "82161624"
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-    ![[新しいコンテナー] が強調して示されている [データ エクスプローラー] ウィンドウのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="[新しいコンテナー] が強調して示されている [データ エクスプローラー] ウィンドウのスクリーンショット":::
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>MongoDB 用 Azure Cosmos DB API
 
@@ -52,7 +52,7 @@ ms.locfileid: "82161624"
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-    ![MongoDB 用 Azure Cosmos DB API の [コンテナーの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="MongoDB 用 Azure Cosmos DB API の [コンテナーの追加] ダイアログ ボックスのスクリーンショット":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
@@ -68,7 +68,7 @@ ms.locfileid: "82161624"
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-    ![Cassandra API の [テーブルの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API の [テーブルの追加] ダイアログ ボックスのスクリーンショット":::
 
 > [!NOTE]
 > Cassandra API では、主キーがパーティション キーとして使用されます。
@@ -88,7 +88,7 @@ ms.locfileid: "82161624"
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-    ![Gremlin API の [グラフの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Gremlin API の [グラフの追加] ダイアログ ボックスのスクリーンショット":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>Table API
 
@@ -102,7 +102,7 @@ ms.locfileid: "82161624"
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-    ![Table API の [テーブルの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-table.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Table API の [テーブルの追加] ダイアログ ボックスのスクリーンショット":::
 
 > [!Note]
 > Table API では、新しい行を追加するたびにパーティション キーが指定されます。
@@ -132,6 +132,8 @@ ms.locfileid: "82161624"
 * [Powershell を使用して Table API テーブルを作成する](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>.NET SDK を使用してコンテナーを作成する
+
+コレクションの作成時にタイムアウト例外が発生した場合は、コレクションが正常に作成されたかどうかを確認する読み取り操作を実行します。 この読み取り操作では、コレクションの作成操作が成功するまで例外がスローされます。 作成操作でサポートされている状態コードの一覧については、記事「[Azure Cosmos DB の HTTP 状態コード](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」を参照してください。
 
 ### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL API と Gremlin API
 

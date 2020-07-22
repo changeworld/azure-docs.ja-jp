@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73847520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562382"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
 
-バージョン 9.0 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 10 を使用するようにアプリケーションをアップグレードできます。
+バージョン 9.0 以前の [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用している場合、アプリケーションをアップグレードしてバージョン 10 を使用するには、この記事が役に立ちます。
 
 バージョン10では Azure Search の名前が Azure Cognitive Search に変更されますが、名前空間とパッケージ名は変更されません。 以前のバージョンの SDK (9.0 以前) では、変更前の名前が引き続き使用されます。 例を含む SDK の使用方法の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-バージョン 10 では、いくつかの機能とバグ修正が追加され、REST API バージョンの最新リリース `2019-05-06` と同じ機能レベルになっています。 変更によって既存のコードが機能しなくなる場合は、[問題を解決するために必要な手順](#UpgradeSteps)を説明します。
+バージョン 10 では、いくつかの機能とバグ修正が追加され、REST API バージョン `2019-05-06` と同じ機能レベルになっています。 変更によって既存のコードが機能しなくなる場合は、[問題を解決するために必要な手順](#UpgradeSteps)を説明します。
 
 > [!NOTE]
 > 8\.0-preview 以前のバージョンを使用している場合は、まずバージョン 9 にアップグレードしてから、バージョン 10 にアップグレードする必要があります。 手順については、[Azure Search .NET SDK バージョン 9 へのアップグレード](search-dotnet-sdk-migration-version-9.md)に関するページを参照してください。
@@ -32,7 +32,7 @@ ms.locfileid: "73847520"
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>バージョン 10 の新機能
-Azure Cognitive Search .NET SDK のバージョン 10 は、これらの更新が含まれている REST API の最新の一般提供バージョン (`2019-05-06`) を対象としています。
+Azure Cognitive Search .NET SDK のバージョン 10 は、これらの更新が含まれている REST API `2019-05-06` を対象としています。
 
 * 2 つの新しいスキルの導入 - [条件付きスキル](cognitive-search-skill-conditional.md)と[テキスト翻訳スキル](cognitive-search-skill-text-translation.md)。
 * 入れ子になったコンテキストからの統合に対応するために、[Shaper スキル](cognitive-search-skill-shaper.md)の入力が再構築されました。 詳細については、こちらの [JSON 定義の例](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)を参照してください。

@@ -2,21 +2,21 @@
 title: Azure AD アプリのパスワード シングル サインオンを構成する方法 | Microsoft Docs
 description: Microsoft ID プラットフォーム (Azure AD) で Azure AD エンタープライズ アプリケーションに対するパスワード シングル サインオン (SSO) を構成する方法
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763501"
 ---
 # <a name="configure-password-single-sign-on"></a>パスワード シングル サインオンの構成
 
@@ -68,7 +68,7 @@ ms.locfileid: "77063528"
 
 Azure AD による解析の試行が失敗した場合、サインオンを手動で構成することができます。
 
-1. **[\<アプリケーション名> の構成]** の **[\<アプリケーション名> パスワード シングル サインオン設定の構成]** を選択し、 **[サインオンの構成]** ページを表示します。 
+1. **[\<application name> の構成]** で **[\<application name> パスワード シングル サインオン設定の構成]** を選択し、 **[サインオンの構成]** ページを表示します。 
 
 2. **[サインイン フィールドの手動検出]** を選択します。 サインイン フィールドの手動検出について説明した追加手順が表示されます。
 

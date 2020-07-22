@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces に使用する Azure Kubernetes Service クラスターのセットアップの実際について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241345"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995889"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces に使用するクラスターのセットアップの実際
 
@@ -18,7 +18,7 @@ Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復�
 
 ## <a name="prepare-your-aks-cluster"></a>AKS クラスターを準備する
 
-Dev Spaces に使用する AKS クラスターを準備するには、AKS クラスターが [Azure Dev Spaces でサポート][supported-regions]されるリージョンに存在すること、また Kubernetes 1.10.3 以降が実行されていることを確認します。 Azure portal からクラスターで Azure Dev Spaces を有効にするには、目的のクラスターに移動し、 *[Dev Spaces]* をクリックして、 *[Dev Spaces の使用]* を *[はい]* に変更し、 *[保存]* をクリックします。 Azure CLI から `az aks use-dev-spaces` を実行して、Azure Dev Spaces を有効にすることもできます。
+Dev Spaces に使用する AKS クラスターを準備するには、AKS クラスターが [Azure Dev Spaces でサポート][supported-regions]されるリージョンに存在すること、また Kubernetes 1.10.3 以降が実行されていることを確認します。 Azure CLI から `az aks use-dev-spaces` を実行して、Azure Dev Spaces を有効にできます。
 
 Dev Spaces に使用する AKS クラスターをセットアップする例については、[チーム開発のクイックスタート][quickstart-team]を参照してください。
 
@@ -86,7 +86,7 @@ AKS クラスターの準備が完了したら、クライアント側ツール�
 コマンド ラインから `azds` コマンドの一部としてクライアント側ツールを使用することができます。 クライアント側ツールを以下のものと共に使用することもできます。
 
 * [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)を使用する Visual Studio Code。
-* Visual Studio および [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
+* Visual Studio と Azure 開発ワークロード。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,13 +2,13 @@
 title: Azure Application Insights でのデータ保持と保存 | Microsoft Docs
 description: データ保持およびプライバシー ポリシー ステートメント
 ms.topic: conceptual
-ms.date: 09/29/2019
-ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601362"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -18,8 +18,8 @@ ms.locfileid: "79234707"
 
 * 「難しい設定なしで」動く標準の製品利用統計情報モジュールは、多くの場合、機密データをサービスに送信しません。 製品利用統計情報は、負荷指標、パフォーマンス指標、利用率指標、例外レポート、その他の診断データに関連します。 診断レポートに表示される主なユーザー データは URL ですが、いかなる場合も、アプリは URL にプレーンテキストで機密データを入力するべきではありません。
 * 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。 (この拡張機能は Application Insights の優れた機能です。)手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。 アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに徹底したレビュー プロセスを適用してください。
-* アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
-* データは米国またはヨーロッパの [Microsoft Azure](https://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
+* アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。
+* 新しい Application Insights リソースを作成するときに場所を選択できます。 リージョンごとの Application Insights の可用性の詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=all)を参照してください。
 *   収集されたデータを確認します。これには、ある状況では許可されても他の状況では許可されないデータが含まれている可能性があるためです。  典型的な例は、デバイス名です。 サーバーからのデバイス名はプライバシーに影響を与えず便利ですが、電話やノート PC のデバイス名はプライバシーに影響を与え、あまり役に立たない場合があります。 主にサーバーを対象にして開発された SDK は、既定でデバイス名を収集することがあります。これは、通常のイベントと例外の両方で、上書きしなければならない場合があります。
 
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。 設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
@@ -48,7 +48,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 ### <a name="what-kinds-of-data-are-collected"></a>どのような種類のデータが収集されますか。
 主なカテゴリは次のとおりです。
 
-* [Web サーバー製品利用統計情報](../../azure-monitor/app/asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 `Session id`
+* [Web サーバー製品利用統計情報](../../azure-monitor/app/asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 `Session id`.
 * [Web ページ](../../azure-monitor/app/javascript.md) - ページ、ユーザーとセッションの数。 ページの読み込み時間。 例外。 AJAX 呼び出し。
 * パフォーマンス カウンター - メモリ、CPU、IO、ネットワーク占有率。
 * クライアントとサーバーのコンテキスト - OS、ロケール、デバイスの種類、ブラウザー、画面の解像度。
@@ -202,8 +202,8 @@ Application Insight エンドポイントへのデータの転送時のセキュ
 
 |プラットフォーム/言語 | サポート | 詳細情報 |
 | --- | --- | --- |
-| Azure App Service  | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。  |
-| Azure Function App | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。 |
+| Azure App Service  | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)のお知らせを参照してください。  |
+| Azure Function App | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)のお知らせを参照してください。 |
 |.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
 |Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET 構成](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
 |Node.js |  サポートされています。v10.5.0 では構成が必要な場合があります。 | アプリケーションに固有の構成については、[公式の Node.js TLS/SSL ドキュメント](https://nodejs.org/api/tls.html)を使用してください。 |

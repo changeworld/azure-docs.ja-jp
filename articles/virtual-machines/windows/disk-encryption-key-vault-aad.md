@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8610beb8903c979f0d5f5e71bd6710a3ccb49bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcd0bbad41964e09665552a716d2577b1ccc0856
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081984"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080331"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 
@@ -123,10 +123,10 @@ Azure CLI で [az ad sp](/cli/azure/ad/sp) コマンドを使用してサービ�
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a>Azure portal を使用して Azure AD アプリとサービス プリンシパルを設定する
 [ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関する記事の手順を使用して、Azure AD アプリケーションを作成します。 以下の各手順で、完了する必要がある記事のセクションに直接進むことができます。 
 
-1. [必要なアクセス許可を確認する](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
-2. [Azure Active Directory アプリケーションを作成する](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [必要なアクセス許可を確認する](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)
+2. [Azure Active Directory アプリケーションを作成する](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 
      - アプリケーションの作成時には任意の名前とサインオン URL を使用できます。
-3. [アプリケーション ID と認証キーを取得する](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。 
+3. [アプリケーション ID と認証キーを取得する](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 
      - 認証キーはクライアント シークレットであり、Set-AzVMDiskEncryptionExtension の AadClientSecret として使用されます。 
         - 認証キーは、Azure AD にサインインするための資格情報としてアプリケーションによって使用されます。 Azure portal では、このシークレットはキーと呼ばれますが、キー コンテナーとは関係がありません。 このシークレットはセキュリティで適切に保護してください。 
      - アプリケーション ID は、あとで Set-AzVMDiskEncryptionExtension の AadClientId と Set-AzKeyVaultAccessPolicy の ServicePrincipalName として使用されます。 
@@ -153,10 +153,10 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) を使用してアクセス ポリシーを設定します。 詳細については、[CLI 2.0 を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)に関するページを参照してください。
 
 次のコマンドを使用して、Azure CLI アクセス経由で作成したサービス プリンシパルにシークレット キーとラップ キーを渡します。
- 
-     ```azurecli-interactive
-     az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
-     ```
+
+```azurecli-interactive
+az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
+```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a>ポータルを使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
 

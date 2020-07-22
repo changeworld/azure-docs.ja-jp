@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/08/2020
+ms.date: 06/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e01951b6147cfc39fe6c46035db822071bda3aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984074"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204049"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -106,7 +106,7 @@ ms.locfileid: "80984074"
 
 1. 他の設定を指定するには、 **[詳細設定]** セクションを展開します。
 
-    ![アクセス レビューの作成 - 詳細設定](./media/create-access-review/advanced-settings.png)
+    ![アクセス レビューの作成 - 詳細設定](./media/create-access-review/advanced-settings-preview.png)
 
 1. ユーザーの情報に基づくシステムの推奨事項をレビュー担当者に表示するには、 **[推奨事項を表示]** を **[有効]** に設定します。
 
@@ -114,9 +114,14 @@ ms.locfileid: "80984074"
 
 1. アクセス レビュー開始時に Azure AD からレビュー担当者にメール通知を送信し、レビュー完了時に管理者にメール通知を送信するには、 **[メール通知]** を **[有効]** に設定します。
 
-1. レビューを完了していないレビュー担当者に、進行中のアクセス レビューに関するリマインダーを Azure AD から送信するには、 **[リマインダー]** を **[有効]** に設定します。
+1. レビューを完了していないレビュー担当者に、進行中のアクセス レビューに関するリマインダーを Azure AD から送信するには、 **[リマインダー]** を **[有効]** に設定します。 
 
-    既定では、終了日まであと半分になった時点で、Azure AD はまだ応答していないレビュー担当者に自動的に通知が送信されます。
+    >[!NOTE]
+    > 既定では、終了日まであと半分になった時点で、Azure AD はまだ応答していないレビュー担当者に自動的に通知が送信されます。
+
+1. (プレビュー) レビュー担当者に送信されるメールの内容は、レビュー名、リソース名、期限などのレビューの詳細に基づいて自動生成されます。追加の指示や連絡先情報などの追加情報を伝達する方法が必要な場合は、割り当てられたレビュー担当者に送信される招待メールと通知メールに含まれる、レビュー担当者のメールに関する追加のコンテンツでこれらの詳細を指定することができます。 下の強調表示されているセクションは、この情報が表示される場所です。
+
+    ![グループへのユーザー アクセスを確認する](./media/create-access-review/review-users-access-group.png)
 
 ## <a name="start-the-access-review"></a>アクセス レビューを開始する
 

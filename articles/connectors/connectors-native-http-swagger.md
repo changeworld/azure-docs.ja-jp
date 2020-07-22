@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74787371"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831927"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
 
@@ -137,9 +137,9 @@ ms.locfileid: "74787371"
 
 1. [Azure portal](https://portal.azure.com) または [Azure Storage Explorer](https://storageexplorer.com/) のいずれかから、[Swagger ファイルを BLOB コンテナーにアップロード](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)します。
 
-1. BLOB コンテナー内のファイルを参照するには、次の形式に従う HTTPS リンクを使用します。ここで、大文字と小文字は区別されます。
+1. BLOB コンテナー内のファイルを参照するには、次の形式の HTTPS URL を Azure Storage Explorer から取得します。URL の大文字と小文字は区別されます。
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

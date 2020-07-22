@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
-ms.openlocfilehash: 64e1f172a947cb08795272fe2a022e9d7beac7a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: 4348eebdeccdd0dfc0a2e4af6ca58b7099d62109
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74215739"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610986"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python のサンプル
 

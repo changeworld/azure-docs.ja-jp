@@ -1,18 +1,18 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 03/30/2020
-ms.topic: conceptual
-ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/10/2020
+ms.topic: how-to
+ms.openlocfilehash: 63b19f56538f060a158fd665a9bef3bf43a9d087
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458813"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252285"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
-お客様はサービス プロバイダーとして、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を通して顧客のサブスクリプションまたはリソース グループがご利用のテナントに委任された日時、または以前に委任されているソースが削除された日時を確認することが必要な場合があります。
+お客様はサービス プロバイダーとして、[Azure Lighthouse](../overview.md) を通して顧客のサブスクリプションまたはリソース グループがご利用のテナントに委任された日時、または以前に委任されているリソースが削除された日時を確認することが必要な場合があります。
 
 管理テナントでは、[Azure アクティビ ティログ](../../azure-monitor/platform/platform-logs-overview.md)によって委任アクティビティがテナント レベルで追跡されます。 このログに記録されるアクティビティには、すべての顧客テナントに対する委任の追加または削除が含まれます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "81458813"
 
 - この機能に対してのみ使用する[新しいサービス プリンシパル アカウントを作成](../../active-directory/develop/howto-create-service-principal-portal.md)し、他の自動化に使用する既存のサービス プリンシパルにこのロールを割り当てることはしません。
 - このサービス プリンシパルに、委任された顧客リソースへのアクセス権がないことを確認してください。
-- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/best-practices.md)。
+- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/best-practices.md)。
 - サービス プリンシパルの代理として機能するアクセス権を持つユーザーを制限します。
 
 次のいずれかの方法を使用して、ルート スコープの割り当てを行います。
@@ -73,7 +73,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 ご利用の管理テナントのルート スコープに対して監視閲覧者アクセス権を持つ新しいサービス プリンシパル アカウントを作成したら、それを使用して、ご利用のテナント内の委任アクティビティのクエリとレポートを行うことができます。 
 
-[この Azure PowerShell スクリプト](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)を使用すると、過去 1 日間のアクティビティを照会し、追加または削除された委任 (または、成功しなかった試行) についてレポートすることができます。 [Tenant Activity Log](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) データに対してクエリが実行され、追加または削除された委任についてレポートするために次の値が構築されます。
+[この Azure PowerShell スクリプト](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)を使用すると、過去 1 日間のアクティビティを照会し、追加または削除された委任 (または、成功しなかった試行) についてレポートすることができます。 [Tenant Activity Log](/rest/api/monitor/TenantActivityLogs/List) データに対してクエリが実行され、追加または削除された委任についてレポートするために次の値が構築されます。
 
 - **DelegatedResourceId**: 委任されたサブスクリプションまたはリソース グループの ID
 - **CustomerTenantId**: 顧客テナント ID
@@ -91,7 +91,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
-# Azure Lighthouse: Query Tenant Activity Log for registered/unregistered delegations for the past 1 day
+# Azure Lighthouse: Query Tenant Activity Log for registered/unregistered delegations for the last 1 day
 
 $GetDate = (Get-Date).AddDays((-1))
 
@@ -106,57 +106,61 @@ $profileClient = [Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClien
 $token = $profileClient.AcquireAccessToken($currentContext.Tenant.Id)
 
 $listOperations = @{
-    Uri = "https://management.azure.com/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&`$filter=eventTimestamp ge '$($dateFormatForQuery)'"
+    Uri     = "https://management.azure.com/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&`$filter=eventTimestamp ge '$($dateFormatForQuery)'"
     Headers = @{
-        Authorization = "Bearer $($token.AccessToken)"
+        Authorization  = "Bearer $($token.AccessToken)"
         'Content-Type' = 'application/json'
     }
-    Method = 'GET'
+    Method  = 'GET'
 }
 $list = Invoke-RestMethod @listOperations
-$showOperations = $list.value
 
-if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/register/action")
-{
-    $registerOutputs  = $showOperations | Where-Object -FilterScript {$_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/register/action"}
-    foreach ($registerOutput in $registerOutputs)
-    {
+# First link can be empty - and point to a next link (or potentially multiple pages)
+# While you get more data - continue fetching and add result
+while($list.nextLink){
+    $list2 = Invoke-RestMethod $list.nextLink -Headers $listOperations.Headers -Method Get
+    $data+=$list2.value;
+    $list.nextLink = $list2.nextlink;
+}
+
+$showOperations = $data;
+
+if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/register/action") {
+    $registerOutputs = $showOperations | Where-Object -FilterScript { $_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/register/action" }
+    foreach ($registerOutput in $registerOutputs) {
+        $eventDescription = $registerOutput.description | ConvertFrom-Json;
     $registerOutputdata = [pscustomobject]@{
-        Event = "An Azure customer has delegated resources to your tenant";
-        DelegatedResourceId = $registerOutput.description |%{$_.split('"')[11]};
-        CustomerTenantId = $registerOutput.description |%{$_.split('"')[7]};
-        CustomerSubscriptionId = $registerOutput.subscriptionId;
+        Event                    = "An Azure customer has registered delegated resources to your Azure tenant";
+        DelegatedResourceId      = $eventDescription.delegationResourceId; 
+        CustomerTenantId         = $eventDescription.subscriptionTenantId;
+        CustomerSubscriptionId   = $eventDescription.subscriptionId;
         CustomerDelegationStatus = $registerOutput.status.value;
-        EventTimeStamp = $registerOutput.eventTimestamp;
+        EventTimeStamp           = $registerOutput.eventTimestamp;
         }
         $registerOutputdata | Format-List
     }
 }
-if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/unregister/action") 
-{
-    $unregisterOutputs  = $showOperations | Where-Object -FilterScript {$_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/unregister/action"}
-    foreach ($unregisterOutput in $unregisterOutputs)
-    {
+if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/unregister/action") {
+    $unregisterOutputs = $showOperations | Where-Object -FilterScript { $_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/unregister/action" }
+    foreach ($unregisterOutput in $unregisterOutputs) {
+        $eventDescription = $registerOutput.description | ConvertFrom-Json;
     $unregisterOutputdata = [pscustomobject]@{
-        Event = "An Azure customer has removed delegated resources from your tenant";
-        DelegatedResourceId = $unregisterOutput.description |%{$_.split('"')[11]};
-        CustomerTenantId = $unregisterOutput.description |%{$_.split('"')[7]};
-        CustomerSubscriptionId = $unregisterOutput.subscriptionId;
+        Event                    = "An Azure customer has unregistered delegated resources from your Azure tenant";
+        DelegatedResourceId      = $eventDescription.delegationResourceId;
+        CustomerTenantId         = $eventDescription.subscriptionTenantId;
+        CustomerSubscriptionId   = $eventDescription.subscriptionId;
         CustomerDelegationStatus = $unregisterOutput.status.value;
-        EventTimeStamp = $unregisterOutput.eventTimestamp;
+        EventTimeStamp           = $unregisterOutput.eventTimestamp;
         }
         $unregisterOutputdata | Format-List
     }
 }
-else 
-{
-    Write-Output "No new delegation changes."
-}   
-
-
+else {
+    Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
+}
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)に顧客をオンボードする方法について説明します。
+- [Azure Lighthouse](../concepts/azure-delegated-resource-management.md) への顧客のオンボード方法について説明します。
 - [Azure Monitor](../../azure-monitor/index.yml) と [Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)について説明します。

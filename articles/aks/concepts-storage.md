@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のストレージについて、ボ
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595996"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171380"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -55,10 +55,12 @@ PersistentVolume は、クラスター管理者が "*静的に*" 作成するこ
 
 Premium や Standard など異なる階層を定義するために、*StorageClass* を作成できます。 StorageClass によって *reclaimPolicy* も定義されます。 この reclaimPolicy が、ポッドが削除されて永続ボリュームが不要になる可能性がある場合の、基礎となる Azure Storage リソースの動作を制御します。 基礎となるストレージ リソースは削除することも、将来のポッドで使用するために保持しておくこともできます。
 
-AKS では、次の 2 つの初期 StorageClasses が作成されます。
+AKS では、次の 4 つの初期 StorageClasses が作成されます。
 
-- *default* - Azure Standard ストレージを使用してマネージド ディスクを作成します。 解放ポリシーは、基礎となる Azure ディスクを使用した永続ボリュームが削除されるときに、ディスクが削除されるように指定します。
+- *default* - Azure StandardSSD ストレージを使用してマネージド ディスクを作成します。 解放ポリシーは、基礎となる Azure ディスクを使用した永続ボリュームが削除されるときに、ディスクが削除されるように指定します。
 - *managed-premium* - Azure Premium ストレージを使用してマネージド ディスクを作成します。 ここでも、解放ポリシーは、基礎となる Azure ディスクを使用したポッドが削除されるときに、ディスクが削除されるように指定します。
+- *azurefile* - Azure Standard ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーは、基礎となる Azure ファイル共有を使用した永続ボリュームが削除されるときに、Azure ファイル共有が削除されるように指定します。
+- *azurefile-premium* - Azure Premium ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーは、基礎となる Azure ファイル共有を使用した永続ボリュームが削除されるときに、Azure ファイル共有が削除されるように指定します。
 
 永続ボリュームで StorageClass が指定されない場合は、既定の StorageClass が使用されます。 永続ボリュームを要求するときは、必要なストレージが使用されることに注意してください。 `kubectl` を使用して、その他のニーズのために StorageClass を作成できます。 次の例は、Premium マネージド ディスクを使用し、ポッドの削除時に基礎となる Azure ディスクを "*保持する*" ように指定します。
 

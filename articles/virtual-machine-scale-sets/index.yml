@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Virtual Machine Scale Sets のドキュメント
-summary: Azure Virtual Machine Scale Sets では、負荷分散と自動スケーリングが行われる同一の VM のグループを作成して管理できます。
+summary: Azure 仮想マシン スケール セットでは、負荷分散と自動スケーリングが行われる VM のグループを作成して管理できます。
 metadata:
   title: Virtual Machine Scale Sets のドキュメント
   description: Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、仮想マシン スケール セットの作成、構成、管理、自動スケーリングを行う方法を確認してください。
@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 8eff3979088aecf5ea8ed0383a1af8ad0d71c21d
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: 96719159e3dd360554c795c5cd1f6436d05fbeeb
+  ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701330"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86027258"
 landingContent:
 - title: 仮想マシン スケール セットについて
   linkLists:

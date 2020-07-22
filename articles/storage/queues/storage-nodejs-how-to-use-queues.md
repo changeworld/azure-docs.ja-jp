@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
+ms.topic: how-to
+ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b8f15831c02a74bbba85ca4327369af6a4dbb2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060933"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808805"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue サービスを使用して Node.js でキューを作成および削除する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "80060933"
 
 ## <a name="overview"></a>概要
 このガイドでは、Microsoft Azure Queue サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Node.js API を使用して記述されています。 キュー メッセージの**挿入**、**ピーク**、**取得**、**削除**と、**キューの作成と削除**の各シナリオについて説明します。
+
+> [!IMPORTANT]
+> この記事では、JavaScript 向け Azure Storage クライアント ライブラリのレガシ バージョンについて説明します。 最新バージョンで始めるには、「[クイックスタート: JavaScript 用 Azure Queue storage クライアント ライブラリ v12](storage-quickstart-queues-nodejs.md)」を参照してください
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

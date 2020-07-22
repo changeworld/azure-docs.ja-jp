@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79137324"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
@@ -51,7 +51,7 @@ ms.locfileid: "79137324"
 | プレゼンテーション時間   | イベントが閲覧者に提示される時間。 時間は、閲覧者がイベントを見るメディア タイムライン上の時点を表します。 たとえば、SCTE-35 splice_info() コマンド メッセージのプレゼンテーション時間は splice_time() です。 |
 | 到着時間        | イベント メッセージが到着する時間。 イベント メッセージはイベントのプレゼンテーション時間より前に送信されるため、通常、この時間はイベントのプレゼンテーション時間とは異なります。                                                    |
 | スパース トラック        | 連続的ではなく、親トラックまたは制御トラックと時間が同期されるメディア トラック。                                                                                                                                                  |
-| Origin (配信元)              | Azure メディア ストリーミング サービス                                                                                                                                                                                                             |
+| 出発地              | Azure メディア ストリーミング サービス                                                                                                                                                                                                             |
 | チャンネル シンク        | Azure メディア ライブ ストリーミング サービス                                                                                                                                                                                                        |
 | HLS                 | Apple HTTP ライブ ストリーミング プロトコル                                                                                                                                                                                                            |
 | DASH                | Dynamic Adaptive Streaming Over HTTP (HTTP 経由のダイナミック アダプティブ ストリーミング)                                                                                                                                                                                                          |

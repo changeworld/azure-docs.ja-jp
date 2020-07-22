@@ -1,7 +1,7 @@
 ---
 title: インポート時にデータをクロールするためのインデクサー
 titleSuffix: Azure Cognitive Search
-description: Azure SQL データベース、Azure Cosmos DB、または Azure ストレージをクロールして検索可能なデータを抽出し、Azure Cognitive Search インデックスを作成します。
+description: Azure SQL Database、SQL Managed Instance、Azure Cosmos DB、または Azure ストレージをクロールして検索可能なデータを抽出し、Azure Cognitive Search インデックスを作成します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 253cd8174ec523f6c8a6aae2b94f7ed367701fec
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236859"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146777"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -31,7 +31,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 インデクサーの作成と管理は、次の方法で行うことができます。
 
 * [Portal のデータのインポート ウィザード](search-import-data-portal.md)
-* [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* [Service REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
 最初は、新しいインデクサーがプレビュー機能として発表されます。 プレビュー機能は、まず API (REST および .NET) に導入され、その後、一般公開を経てポータルに統合されます。 新しいインデクサーを評価する場合は、コードの作成を検討してください。
@@ -50,25 +50,25 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (プレビュー段階)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database と SQL Managed Instance](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Virtual Machines における SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
-* [Azure 上の SQL マネージド インスタンス](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>基本的な構成手順
 インデクサーで実行できる機能は、データ ソースごとに異なります。 そのためインデクサーやデータ ソースの構成には、インデクサーの種類ごとに異なる点があります。 しかし基本的な成り立ちと要件は、すべてのインデクサーに共通です。 以降、すべてのインデクサーに共通の手順について取り上げます。
 
-### <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
+### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 インデクサーは、*データ ソース* オブジェクトからデータ ソース接続を取得します。 データ ソース定義では、接続文字列と、場合によっては資格情報が提供されます。 [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API または [DataSource クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)を呼び出して、リソースを作成します。
 
 データ ソースは、それを使用するインデクサーとは別に構成および管理されます。これは、1 つのデータ ソースを複数のインデクサーで使用して、一度に複数のインデックスを読み込めることを意味します。
 
-### <a name="step-2-create-an-index"></a>手順 2: インデックスを作成する
+### <a name="step-2-create-an-index"></a>手順 2:インデックスを作成する
 インデクサーは、データ インジェストに関連したいくつかのタスクを自動化しますが通常、そこにはインデックスの作成は含まれていません。 前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。 各フィールドでは、名前とデータ型が一致する必要があります。 インデックス構築の詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index)」または「[Index クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)」を参照してください。 フィールドの関連付けについては、[Azure Cognitive Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。
 
 > [!Tip]
 > インデクサーで自動的にインデックスを生成することはできませんが、ポータルにある**データのインポート**ウィザードを活用することができます。 ほとんどの場合、ウィザードで、ソース内の既存のメタデータからインデックス スキーマを推測し、仮のインデックス スキーマを得ることができます。ウィザードがアクティブである間は、このスキーマをインライン編集することが可能です。 サービスのインデックスが作成された後にポータルで行う編集は、主に新しいフィールドの追加に限定されます。 ウィザードは、あくまでインデックスの作成にご使用ください。インデックスの修正には適していません。 実践的なスキルを身に付けるには、[ポータルのチュートリアル](search-get-started-portal.md)をご覧ください。
 
-### <a name="step-3-create-and-schedule-the-indexer"></a>手順 3: インデクサーを作成してスケジュールを設定する
+### <a name="step-3-create-and-schedule-the-indexer"></a>手順 3:インデクサーを作成してスケジュールを設定する
 インデクサー定義は、データの取り込みに関連するすべての要素をまとめたコンストラクトです。 必要な要素には、データ ソースとインデックスが含まれます。 省略可能な要素には、スケジュールとフィールド マッピングが含まれます。 フィールド マッピングは、ソース フィールドとインデックス フィールドが明らかに対応している場合にのみ、省略可能となります。 インデクサー構築の詳細については、「[インデクサーの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)」を参照してください。
 
 <a id="RunIndexer"></a>
@@ -77,8 +77,10 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 インデックス作成はスケジュール設定するのが普通ですが、[Run コマンド](https://docs.microsoft.com/rest/api/searchservice/run-indexer)を使用して、インデクサーをオンデマンドで呼び出すことも可能です。
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
-    api-key: [Search service admin key]
+```http
+POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 > [!NOTE]
 > API の実行で正しい応答があった場合、インデクサーの呼び出しはスケジュール済みですが、実際の処理は非同期的に実行されます。 
@@ -91,44 +93,47 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 インデクサーの現在の状態と実行の履歴は、[インデクサー状態の取得](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)コマンドを使用して取得できます。
 
-
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 応答には、全体的なインデクサーの状態、最後の (または実行中の) インデクサー呼び出し、およびインデクサー呼び出しの最近の履歴が含まれています。
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 実行履歴には、最近完了した 50 件の実行内容が含まれ、時系列の逆の順に並べられます (そのため、最近の実行内容が応答の最初に表示されます)。
 
 ## <a name="next-steps"></a>次のステップ
 基本的な概念の説明は以上です。次のステップとしてデータ ソースの種類ごとの要件とタスクを確認してください。
 
-* [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database、SQL Managed Instance、または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)

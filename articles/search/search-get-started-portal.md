@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369452"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083561"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -25,15 +25,17 @@ ms.locfileid: "80369452"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-ポータルの **データ インポート** ウィザードおよび **Search エクスプローラー** ツールを使用して概念を簡単に把握し、インデックスに対する興味深いクエリを数分で作成します。
+**[データのインポート]** ウィザードは、検索インデックスの作成手順を案内する Azure portal ツールであり、これを使用すれば、関心のあるクエリを数分で記述することができます。 
 
-ツールに制限がありすぎる場合は、[.NET での Azure Cognitive Search のプログラミングに関するコーディングを前提とした概要記事](search-howto-dotnet-sdk.md)を検討するか、または [REST API の呼び出しを行うために Postman](search-get-started-postman.md) を使います。 
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+また、このウィザードには、AI エンリッチメントのページも用意されているので、イメージ ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI を使用したコンテンツ処理には、光学式文字認識 (OCR)、キー フレーズとエンティティ抽出、イメージ分析が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
+開始する前に、次の項目を用意する必要があります。
+
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
+
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
 ### <a name="check-for-space"></a>領域の確認
 
@@ -51,15 +53,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>手順 1 - データのインポート ウィザードを起動し、データ ソースを作成する
 
-1. Azure Cognitive Search サービスのダッシュボード上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
+1. Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
+
+1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページ上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
 
    ![[データのインポート] コマンド](media/search-get-started-portal/import-data-cmd.png)
 
-2. ウィザードで **[データに接続します]**  >  **[サンプル]**  >  **[hotels-sample]** の順にクリックします。 このデータ ソースは組み込まれています。 独自のデータ ソースを作成する場合は、名前、型、接続情報を指定する必要があります。 作成すると、他のインポート操作で再度使用できる "既存のデータ ソース" になります。
+1. ウィザードで **[データに接続します]**  >  **[サンプル]**  >  **[hotels-sample]** の順にクリックします。 このデータ ソースは組み込まれています。 独自のデータ ソースを作成する場合は、名前、型、接続情報を指定する必要があります。 作成すると、他のインポート操作で再度使用できる "既存のデータ ソース" になります。
 
    ![サンプル データセットの選択](media/search-get-started-portal/import-datasource-sample.png)
 
-3. 次のページに進みます。
+1. 次のページに進みます。
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>手順 2 - [コンテンツのエンリッチ] ページをスキップする
 
@@ -146,7 +150,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[Search エクスプローラー] コマンド](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2019-05-06) を使います。
+2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2020-06-30) を使用します。
 
    ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -271,4 +275,9 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 ポータルのウィザードを使用して、ブラウザーで動作するすぐに使用できる Web アプリを生成します。 このウィザードを、先ほど作成した小さなインデックスで試すか、またはいずれかのビルトイン サンプル データ セットを使用して充実した検索環境を実現することができます。
 
 > [!div class="nextstepaction"]
-> [ポータルで検索アプリを作成する](search-create-app-portal.md)
+> [ポータルでデモ アプリを作成する](search-create-app-portal.md)
+
+クラウドの支出を最適化して節約することをご希望ですか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

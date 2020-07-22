@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255230"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -104,9 +104,9 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 アプリケーションをクラウドで実行するには、次の手順を実行します。
 
 * Azure クラウド サービスを作成します。
-* Azure SQL データベースを作成します。
+* Azure SQL Database にデータベースを作成します。
 * Azure ストレージ アカウントを作成します。
-* Azure で実行されたときに Azure SQL データベースを使用するためのソリューションを構成します。
+* Azure で実行されたらユーザーのデータベースを使用するようにソリューションを構成します。
 * Azure で実行されたときに Azure ストレージ アカウントを使用するためのソリューションを構成します。
 * プロジェクトを Azure クラウド サービスにデプロイします。
 
@@ -130,7 +130,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
     ![新しいクラウド サービス](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Azure SQL データベースの作成
+### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL Database にデータベースを作成する
 アプリをクラウドで実行すると、クラウドベースのデータベースがアプリによって使用されます。
 
 1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]、[Databases]、[SQL Database]** の順にクリックします。
@@ -152,7 +152,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 8. **[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスをオンにします。
 9. 新しいサーバーについて **[選択]** をクリックします。
 
-    ![新しい SQL Database サーバー](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![新しいサーバー](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. **Create** をクリックしてください。
 
 ### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
@@ -182,8 +182,9 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
     次の画像では、ストレージ アカウントは `csvccontosoads.core.windows.net`という URL で作成されます。
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Azure で実行されたときに Azure SQL データベースを使用するためのソリューションの設定
-Web プロジェクトと worker ロール プロジェクトはそれぞれ独自のデータベース接続文字列を持ち、アプリが Azure で実行されたときにそれぞれが Azure SQL データベースを指し示す必要があります。
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>Azure で実行されたら Azure SQL Database のデータベースを使用するようにソリューションを構成する
+
+Web プロジェクトと worker ロール プロジェクトにはそれぞれ独自のデータベース接続文字列があり、アプリが Azure で実行されたときはそれぞれが Azure SQL Database のデータベースを指し示す必要があります。
 
 Web ロールと worker ロールのクラウド サービス環境設定には、 [Web.config の変換](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) を使用します。
 
@@ -530,7 +531,7 @@ imagesQueue.CreateIfNotExists();
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 *AdController.cs* ファイル内では、コンストラクターによって `InitializeStorage` メソッドが呼び出され、BLOB とキューを操作するための API を提供する Azure Storage クライアント ライブラリ オブジェクトが作成されます。
 
-次に、*Global.asax.cs* と同様に、*images* BLOB コンテナーへの参照が取得されます。 この処理中に、Web アプリに適した既定の [再試行ポリシー](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) が設定されます。 既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが 1 分以上停止する可能性があります。 ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
+次に、*Global.asax.cs* と同様に、*images* BLOB コンテナーへの参照が取得されます。 この処理中に、Web アプリに適した既定の [再試行ポリシー](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) が設定されます。 既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが 1 分以上応答を停止する可能性があります。 ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -776,6 +777,3 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
 * [Azure ストレージ](https://docs.microsoft.com/azure/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-

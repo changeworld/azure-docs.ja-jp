@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 259d20474ef075f6247878b2b7798c6fa8e608aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07e6e0d1a7d358deebba7b4857b6afebcfb3be1c
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161268"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>チュートリアル: Azure Active Directory と Nomadic の統合
 
@@ -109,10 +109,10 @@ Nomadic で Azure AD シングル サインオンを構成するには、次の�
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
-    | |
-    |--|
-    | `https://<company name>.nomadic.fm/auth/saml2/sp` |
-    | `https://<company name>.staging.nomadic.fm/auth/saml2/sp` |
+    ```http
+    https://<company name>.nomadic.fm/auth/saml2/sp
+    https://<company name>.staging.nomadic.fm/auth/saml2/sp
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Nomadic クライアント サポート チーム](mailto:help@nomadic.fm)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -2,19 +2,19 @@
 title: Azure portal を使用して Azure SQL Edge (プレビュー) をデプロイする
 description: Azure portal を使用して Azure SQL Edge (プレビュー) をデプロイする方法について説明します
 keywords: SQL Edge をデプロイする
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7dfc7b680c6b7d6b2a3641b25c0f82665143bde1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594671"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233238"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) をデプロイする 
 
@@ -119,4 +119,4 @@ Azure Marketplace は、アプリケーションとサービスのオンライ�
 ## <a name="next-steps"></a>次の手順
 
 - [SQL Edge での ONNX を使用した機械学習と人工知能](onnx-overview.md)。
-- IoT Edge を使用して SQL Edge でエンドツーエンドの IoT ソリューションを構築する。
+- [IoT Edge を使用して SQL Edge でエンド ツー エンドの IoT ソリューションを構築する](tutorial-deploy-azure-resources.md)。

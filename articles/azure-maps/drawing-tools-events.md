@@ -32,7 +32,7 @@ ms.locfileid: "80804675"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="描画ツールのイベント" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/dyPMRWo'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io'>描画ツール イベント</a>に関するページを参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/dyPMRWo'>描画ツール イベント</a>に関するページを参照してください。
 </iframe>
 
 <br/>
@@ -48,7 +48,7 @@ ms.locfileid: "80804675"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="描画された多角形領域でデータを選択する" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/XWJdeja'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io'>描画された多角形領域でのデータの選択</a>に関するページを参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/XWJdeja'>描画された多角形領域でのデータの選択</a>に関するページを参照してください。
 </iframe>
 
 <br/>
@@ -60,7 +60,7 @@ ms.locfileid: "80804675"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="多角形領域で描画および検索する" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/eYmZGNv'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io'>多角形領域での描画と検索</a>に関するページを参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/eYmZGNv'>多角形領域での描画と検索</a>に関するページを参照してください。
 </iframe>
 
 <br/>
@@ -72,7 +72,7 @@ ms.locfileid: "80804675"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="測定ツール" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/RwNaZXe'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io'>測定ツール</a>に関するページを参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/RwNaZXe'>測定ツール</a>に関するページを参照してください。
 </iframe>
 
 <br/>

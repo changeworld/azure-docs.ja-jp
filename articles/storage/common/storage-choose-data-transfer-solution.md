@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514442"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>データ転送用の Azure ソリューションを選択する
 
@@ -35,7 +35,7 @@ ms.locfileid: "82176398"
 
     - **グラフィカル インターフェイス** - 少数のファイルを時折転送するだけで、データ転送を自動化する必要がない場合は、Azure Storage Explorer や、Azure portal の Web ベースの探索ツールなど、グラフィカル インターフェイス ツールを選択できます。
     - **スクリプトまたはプログラムによる転送** - 提供されている最適化されたソフトウェア ツールを使用するか、REST API/SDK を直接呼び出すことができます。 使用可能かつスクリプト実行可能なツールは、AzCopy、Azure PowerShell、および Azure CLI です。 プログラム インターフェイスでは、.NET、Java、Python、Node/JS、C++、Go、PHP、または Ruby のいずれかの SDK を使用します。
-    - **オンプレミス デバイス** - データセンター内に存在し、ネットワーク経由のデータ転送を最適化する、物理または仮想デバイスが提供されています。 これらのデバイスは、頻繁に使用されるファイルのローカル キャッシュも提供します。 物理デバイスは Data Box Edge、仮想デバイスは Data Box Gateway です。 両方ともオンプレミスで永続的に実行され、ネットワーク経由で Azure に接続されます。
+    - **オンプレミス デバイス** - データセンター内に存在し、ネットワーク経由のデータ転送を最適化する、物理または仮想デバイスが提供されています。 これらのデバイスは、頻繁に使用されるファイルのローカル キャッシュも提供します。 物理デバイスは Azure Stack Edge、仮想デバイスは Data Box Gateway です。 両方ともオンプレミスで永続的に実行され、ネットワーク経由で Azure に接続されます。
     - **マネージド データ パイプライン** - クラウド パイプラインを設定して、複数の Azure サービス間またはオンプレミスで、あるいは 2 つを組み合わせて、ファイルを定期的に転送することができます。 データ パイプラインを設定および管理したり、分析用にデータを移動および変換するには、Azure Data Factory を使用します。
 
 次の図は、転送に使用可能なネットワーク帯域幅、転送用のデータのサイズ、および転送の頻度に応じて、さまざまな Azure データ転送ツールを選択するためのガイドラインを示しています。
@@ -77,7 +77,7 @@ Azure portal で Azure Storage アカウントにアクセスして、 **[デー
 - 内容は次のとおりです。
 
     - [オフライン転送用の Azure Data Box、Azure Data Box Disk、および Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)
-    - [オンライン転送用の Azure Data Box Gateway と Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/)
+    - [オンライン転送用の Azure Data Box Gateway と Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/)
 - [Azure Data Factory の概要を理解する](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)
 - REST API を使用してデータ転送する
 

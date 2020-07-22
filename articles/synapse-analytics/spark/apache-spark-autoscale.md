@@ -7,13 +7,14 @@ ms.reviewer: euang
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 86e9b7425c8c75495a17b66af710d2c55e6e59ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194282"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure Synapse Analytics Apache Spark プールの自動スケーリング
 
@@ -74,4 +75,4 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい Spark プールを設定する ([Spark プールの作成](..\quickstart-create-apache-spark-pool.md)に関するクイック スタート)
+新しい Spark プールを設定する ([Spark プールの作成](../quickstart-create-apache-spark-pool-portal.md)に関するクイック スタート)

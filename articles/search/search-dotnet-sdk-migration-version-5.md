@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793035"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171909"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
 
-バージョン 4.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 5 を使用するようにアプリケーションをアップグレードできます。
+バージョン 4.0-preview 以前の [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用している場合、この記事を参考にして、バージョン 5 を使用するようにアプリケーションをアップグレードできます。
 
 例を含む SDK の一般的なチュートリアルについては、「 [.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
@@ -48,7 +48,9 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 ビルドが失敗した場合は、次のようにビルド エラーが表示されます。
 
-    The name 'SuggesterSearchMode' does not exist in the current context
+```output
+The name 'SuggesterSearchMode' does not exist in the current context
+```
 
 次の手順として、このビルド エラーを修正します。 エラーの原因と修正方法については、「[バージョン 5 における重大な変更](#ListOfChanges)」をご覧ください。
 
@@ -66,10 +68,10 @@ Azure Search .NET SDK のパッケージにおける変更のため、バージ�
 
 バージョン 5 における最も重大な変更は、`Microsoft.Azure.Search` アセンブリとその内容が 4 つの別個のアセンブリに分割されたことです。これらは 4 つの別個の NuGet パッケージとして配布されるようになりました。
 
- - `Microsoft.Azure.Search`: これは､依存関係がある Azure Search の他のパッケージをすべて含むメタパッケージです｡ 以前のバージョンの SDK からアップグレードする場合は、単純にこのパッケージをアップグレードしてリビルドすれば、新しいバージョンの使用を開始するのに十分です。
- - `Microsoft.Azure.Search.Data`: Azure Search を使用して .NET アプリケーションを開発していて､インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します｡ インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
- - `Microsoft.Azure.Search.Service`: .NET で、Azure Search インデックス、シノニム マップ､インデクサー､データ ソース､またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します｡ インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
- - `Microsoft.Azure.Search.Common`: Azure Search .NET ライブラリに必要な共通の型です｡ このパッケージは、アプリケーションで直接使用する必要はないはずで、依存関係としての使用のみが想定されています｡
+ - `Microsoft.Azure.Search`:依存関係がある Azure Search の他のパッケージをすべて含むメタパッケージです。 以前のバージョンの SDK からアップグレードする場合は、単純にこのパッケージをアップグレードしてリビルドすれば、新しいバージョンの使用を開始するのに十分です。
+ - `Microsoft.Azure.Search.Data`:Azure Search を使用して .NET アプリケーションを開発していて、インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します。 インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+ - `Microsoft.Azure.Search.Service`:.NET で、Azure Search インデックス、シノニム マップ、インデクサー、データ ソース、またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します。 インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+ - `Microsoft.Azure.Search.Common`:Azure Search .NET ライブラリに必要な共通の型です。 このパッケージは、アプリケーションで直接使用する必要はないはずで、依存関係としての使用のみが想定されています｡
  
 この変更が技術的に重要なのは、多くの型がアセンブリ間で移動されたためです。 バージョン 5 の SDK にアップグレードするためにアプリケーションのリビルドが必要なのは、このためです。
 

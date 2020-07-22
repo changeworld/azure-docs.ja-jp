@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585897"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826096"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -42,9 +42,9 @@ ms.locfileid: "83585897"
 
 > [!IMPORTANT]
 > 直接リンクはテナントに固有である必要があります。 つまり、共有アプリが配置されている、テナントでゲストを認証できるように、テナント ID または確認済みドメインが含まれている必要があります。 https://myapps.microsoft.com のような一般的な URL では、認証のためにホーム テナントにリダイレクトされるため、ゲスト向けには機能しません。 テナント コンテキストを含む直接リンクの例をいくつか以下に示します。
- > - アプリ アクセス パネル: https://myapps.microsoft.com/?tenantid=&lt;テナント ID&gt; 
- > - 確認済みドメインのアプリ アクセス パネル: https://myapps.microsoft.com/&lt;確認済みドメイン&gt;
- > - Azure portal: https://portal.azure.com/&lt;テナント ID&gt;
+ > - アプリ アクセス パネル: `https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - 確認済みドメインのアプリ アクセス パネル: `https://myapps.microsoft.com/<;verified domain>`
+ > - Azure portal: `https://portal.azure.com/<tenant id>`
  > - 個々のアプリ: [直接サインオン リンク](../manage-apps/end-user-experiences.md#direct-sign-on-links)の使用方法を参照してください
 
 直接リンク経由の招待メールが推奨されるケースがいくつかあります。 このような特殊なケースが組織にとって重要な場合は、引き続き招待メールを送信する方法を使用してユーザーを招待することをお勧めします。

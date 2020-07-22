@@ -3,17 +3,17 @@ title: Azure Storage での AzCopy の構成、最適化、およびトラブル
 description: AzCopy の構成、最適化、トラブルシューティングを行います。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504357"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -30,13 +30,24 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | コマンド プロンプトでは、`set https_proxy=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:https_proxy="<proxy IP>:<proxy port>"` を使用します|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 現在のところ、AzCopy は、NTLM または Kerberos による認証を必要とするプロキシをサポートしていません。
+
+### <a name="bypassing-a-proxy"></a>プロキシのバイパス ###
+
+Windows で AzCopy を実行していて、プロキシを使用_しない_ように (設定の自動検出ではなく) 指定する場合、次のコマンドを使用します。 これらの設定を使用すると、AzCopy はプロキシを検索したり、使用したりしません。
+
+| オペレーティング システム | 環境 | コマンド  |
+|--------|-----------|----------|
+| **Windows** | コマンド プロンプト (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+他のオペレーティング システムでは、プロキシを使用しない場合は HTTPS_PROXY 変数の設定を解除してください。
 
 ## <a name="optimize-performance"></a>パフォーマンスを最適化する
 
@@ -52,27 +63,27 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 
 ### <a name="run-benchmark-tests"></a>ベンチマーク テストを実行する
 
-特定の BLOB コンテナーに対してパフォーマンス ベンチマーク テストを実行して、全般的なパフォーマンスの統計情報を表示し、パフォーマンスのボトルネックを識別できます。 
+特定の BLOB コンテナーまたはファイル共有に対してパフォーマンス ベンチマーク テストを実行して、全般的なパフォーマンスの統計情報を表示し、パフォーマンスのボトルネックを識別できます。 
 
 パフォーマンス ベンチマーク テストを実行するには、次のコマンドを使用します。
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **構文** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **例** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 このコマンドは、指定したコピー先にテスト データをアップロードすることで、パフォーマンス ベンチマークを実行します。 テスト データはメモリ内に生成され、コピー先にアップロードされた後、テストの完了後にコピー先から削除されます。 オプションのコマンド パラメーターを使用して、生成するファイルの数と、必要なサイズを指定できます。
 
-詳細なリファレンス ドキュメントについては、「[azcopy bench](storage-ref-azcopy-bench.md)」をご覧ください。
+詳細なリファレンス ドキュメントについては、「[azcopy benchmark](storage-ref-azcopy-bench.md)」を参照してください。
 
-このコマンドの詳細なヘルプ ガイダンスを表示するには、「`azcopy bench -h`」と入力して Enter キーを押してください。
+このコマンドの詳細なヘルプ ガイダンスを表示するには、「`azcopy benchmark -h`」と入力して Enter キーを押してください。
 
 ### <a name="optimize-throughput"></a>スループットを最適化する
 
-コマンドで `cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドでは、ジョブを再開し、スループットを 1 秒あたり `10` メガバイト (MB) に制限します。 
+コマンドで `cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドではジョブを再開し、スループットを 1 秒あたり `10` メガビット (Mb) に制限します。 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -82,11 +93,11 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `3000` ですが、この値は手動で高い値または低い値に設定できます。 
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
 この変数の現在の値を確認するには、`azcopy env` を使用します。 値が空白の場合は、AzCopy ログ ファイルの先頭を調べることで、使用されている値を読み取ることができます。 選択された値と選択された理由が報告されています。
 
@@ -97,11 +108,11 @@ azcopy jobs resume <job-id> --cap-mbps 10
 `AZCOPY_BUFFER_GB` 環境変数を設定して、ファイルをダウンロードおよびアップロードするときに AzCopy で使用するシステム メモリの最大量を指定します。
 この値はギガバイト (GB) 単位で指定します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ### <a name="optimize-file-synchronization"></a>ファイル同期を最適化する
 
@@ -180,11 +191,11 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | PowerShell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
 この変数の現在の値を確認するには、`azcopy env` を使用します。 値が空白の場合、プラン ファイルは既定の場所に書き込まれます。
 
@@ -192,11 +203,11 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | PowerShell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
 この変数の現在の値を確認するには、`azcopy env` を使用します。 値が空白の場合、ログは既定の場所に書き込まれます。
 

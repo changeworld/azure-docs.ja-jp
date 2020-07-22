@@ -3,16 +3,16 @@ title: Premium Azure ファイル共有を作成する
 description: この記事では、Premium Azure ファイル共有を作成する方法について説明します。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509984"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure ファイル共有を作成する方法
 Premium ファイル共有は、ソリッド ステート ディスク (SSD) ストレージ メディアで提供され、データベースのホスティングやハイパフォーマンス コンピューティング (HPC) など、IO 集中型のワークロードに役立ちます。 Premium ファイル共有は、FileStorage アカウントと呼ばれる、特殊用途のストレージ アカウントの種類でホストされます。 Premium ファイル共有は、ハイ パフォーマンスおよびエンタープライズ規模のアプリケーション向けに設計され、一貫性のある待機時間の短縮、高 IOPS、高スループット共有を提供します。
@@ -27,7 +27,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ### <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
 
@@ -46,13 +46,16 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 1. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
 1. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
 1. **[パフォーマンス]** では **[Premium]** を選択します。
+
+    **[アカウントの種類]** ドロップダウンにオプションとして **[FileStorage]** を表示するには、 **[Premium]** を選択する必要があります。
+
 1. **[アカウントの種類]** を選択し、 **[FileStorage]** を選択します。
 1. **[レプリケーション]** の設定は、既定値の **[ローカル冗長ストレージ (LRS)]** のままにします。
 
     ![Premium ファイル共有にストレージ アカウントを作成する方法](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ストレージ アカウント リソースが作成されたら、そこに移動します。
 

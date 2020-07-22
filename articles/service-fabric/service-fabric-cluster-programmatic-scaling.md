@@ -5,12 +5,12 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787143"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261123"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
@@ -20,7 +20,7 @@ Azure で実行される Service Fabric クラスターは仮想マシン スケ
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>資格情報を管理する
-スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 サインインには、[Azure CLI](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
+スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 サインインには、[Azure CLI](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
 
 サービス プリンシパルは、次の手順で作成できます。
 
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-または、PowerShell コマンドレットを使用して、仮想マシン スケール セットのサイズを管理することもできます。 [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) では、仮想マシン スケール セットのオブジェクトを取得できます。 現在の容量は `.sku.capacity` プロパティを通じて使用できます。 容量を目的の値に変更したら、Azure の仮想マシン スケール セットを [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) コマンドで更新できます。
+または、PowerShell コマンドレットを使用して、仮想マシン スケール セットのサイズを管理することもできます。 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) では、仮想マシン スケール セットのオブジェクトを取得できます。 現在の容量は `.sku.capacity` プロパティを通じて使用できます。 容量を目的の値に変更したら、Azure の仮想マシン スケール セットを [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) コマンドで更新できます。
 
 手動でノードを追加する場合と同様に、スケール セット インスタンスを追加するだけで新しい Service Fabric ノードを開始できます。スケール セット テンプレートには、新しいインスタンスを Service Fabric クラスターに自動的に参加させる拡張機能が含まれているためです。 
 
@@ -121,4 +121,4 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 - [手動でのスケーリングまたは自動スケール ルールを使用したスケーリング](./service-fabric-cluster-scale-in-out.md)
 - [.NET 用 Fluent Azure Management ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (Service Fabric クラスターの基盤となる仮想マシン スケール セットの操作に便利です)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (Service Fabric クラスターとそのノードの操作に便利です)
+- [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient) (Service Fabric クラスターとそのノードの操作に便利です)

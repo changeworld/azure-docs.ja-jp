@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics での Azure Data Lake Storage Gen2 への取り込み
+title: Azure Data Lake Storage Gen2 に取り込む
 description: Azure Synapse Analytics で Azure Data Lake Storage Gen2 にデータを取り込む方法について説明します
 services: synapse-analytics
 author: djpmsft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4d7d7be523749797e5dbce0e50c307fc682974f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7b844bcf45417fefc7dd78a26d5dae0b2ce03249
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427247"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982906"
 ---
 # <a name="ingesting-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 にデータを取り込む 
 

@@ -30,7 +30,7 @@ ms.locfileid: "80885635"
 
 ## <a name="azure-ad-only-applications"></a>Azure AD 専用アプリケーション
 
-この一覧には、Azure AD v1.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、Azure Active Directory の職場/学校アカウントを持つユーザーのみがサインインできます。 この一覧には、**Azure portal** の[アプリの登録](https://portal.azure.com)エクスペリエンスを使用して登録されたアプリケーションが含まれます。
+この一覧には、Azure AD v1.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、Azure Active Directory の職場/学校アカウントを持つユーザーのみがサインインできます。 この一覧には、[Azure portal](https://portal.azure.com) の**アプリの登録**エクスペリエンスを使用して登録されたアプリケーションが含まれます。
 
 ## <a name="live-sdk-applications"></a>Live SDK アプリケーション
 

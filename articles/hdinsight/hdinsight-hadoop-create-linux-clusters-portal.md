@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192095"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083374"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
@@ -62,6 +62,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **ストレージ >>** を選択して、次のタブに進みます。
 
 ## <a name="storage"></a>ストレージ
+
+> [!WARNING] 
+> 2020 年 6 月 15 日以降、HDInsight を使用して新しいサービス プリンシパルを作成することはできません。 Azure Active Directory 使用した[サービス プリンシパルと証明書の作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関する記事を参照してください。
 
 ![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal での新しいクラスターの作成 - ストレージ")
 

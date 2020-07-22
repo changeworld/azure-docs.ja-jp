@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74280980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557268"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI によって強化されたフィールドを検索可能なインデックスにマップする方法
 
@@ -21,11 +21,14 @@ ms.locfileid: "74280980"
 
 出力フィールド マッピングは、強化されたドキュメントからインデックスにコンテンツを移動するために必要です。  強化されたドキュメントは情報のツリーであり、インデックスで複合型がサポートされている場合でも、強化されたツリーの情報をより単純な型 (文字列配列など) に変換することが必要になる場合があります。 出力フィールド マッピングを使用すると、情報をフラット化することによってデータ シェイプを変換できます。
 
+> [!NOTE]
+> 最近、出力フィールド マッピングで関数をマッピングする機能を有効にしました。 マッピング関数の詳細については、「[フィールド マッピング関数](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)」を参照してください。
+
 ## <a name="use-outputfieldmappings"></a>outputFieldMappings の使用
 フィールドをマップするには、次に示すように `outputFieldMappings` をインデクサー定義に追加します。
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -50,7 +53,10 @@ Content-Type: application/json
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

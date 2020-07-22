@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499096"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267632"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 
@@ -60,7 +60,7 @@ IoT Hub サービスは、サービスのほぼすべてのレイヤーに冗長
 IoT Hub のフェールオーバー操作が完了すると、デバイスおよびバックエンド アプリケーションからのすべての操作は、機能し続けることが期待されます。手動操作は必要ありません。 これは、device-to-cloud メッセージが引き続き動作するはずであり、デバイス レジストリ全体が破損していないことを意味します。 Event Grid から発行されたイベントは、Event Grid のサブスクリプションを引き続き利用できる限り、以前に構成されたその同じサブスクリプションから使用できます。
 
 > [!CAUTION]
-> - IoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントはフェールオーバー後に変更され、構成されたコンシューマー グループは削除されます (これは 2020 年 5 月より前に修正されるバグです)。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[使用するコンシューマー グループを再構成し、新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 Azure Functions または Azure Stream Analytics を使用して組み込みのエンドポイントを接続する場合は、**再起動**が必要になることがあります。
+> - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 Azure Functions または Azure Stream Analytics を使用して組み込みのエンドポイントを接続する場合は、**再起動**が必要になることがあります。
 >
 > - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 
 

@@ -4,16 +4,16 @@ description: この記事では、Azure portal を使って Microsoft ピアリ�
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54674be0010bd062cfe6263db4167a24805a9e5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727128"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する:Azure portal
 > [!div class="op_single_selector"]

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 02/14/2020
+ms.date: 06/15/2020
 ms.author: diberry
-ms.openlocfilehash: c0ee1abcb99e10d57d05945f45595e5bfd76fa28
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155989"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791216"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -24,6 +24,15 @@ ms.locfileid: "80155989"
 ## <a name="release-notes"></a>リリース ノート
 
 QnA Maker の新機能について説明します。
+
+### <a name="june-2020"></a>2020 年 6 月
+
+* すばやく簡単に手順に取り組めるよう、[Power Virtual Agent](tutorials/integrate-with-power-virtual-assistant-fallback-topic.md) のチュートリアルを更新
+
+### <a name="may-2020"></a>2020 年 5 月
+
+* [ロールベースのアクセス制御 (RBAC)](concepts/role-based-access-control.md)
+* 回答の[リッチテキスト編集](how-to/edit-knowledge-base.md#rich-text-editing-for-answer)
 
 ### <a name="march-2020"></a>2020 年 3 月
 
@@ -64,6 +73,6 @@ QnA Maker の新機能について説明します。
 > [!div class="nextstepaction"]
 > [QnA Maker サービスを作成する](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>コグニティブ サービスの更新プログラム
+## <a name="cognitive-service-updates"></a>Cognitive Services の更新プログラム
 
 [Cognitive Services に対する Azure 更新プログラムのお知らせ](https://azure.microsoft.com/updates/?product=cognitive-services)

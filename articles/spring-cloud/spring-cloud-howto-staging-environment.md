@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471032"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure Spring Cloud でステージング環境を設定する
@@ -67,10 +67,10 @@ Azure portal で自分のサービス インスタンスに移動し、 **[Deplo
 
 >[!TIP]
 > * テスト エンドポイントの末尾がスラッシュ (/) であり、CSS ファイルが正しく読み込まれていることを確認します。  
-> * ページを表示するためにブラウザーでログイン資格情報の入力を求められる場合は、[URL デコード](https://www.urldecoder.org/)を使用して自分のテスト エンドポイントをデコードします。 URL デコードは、"https://\<ユーザー名>:\<パスワード>@\<クラスター名>.test.azureapps.io/gateway/green" の形式で URL を返します。  このフォームを使用してエンドポイントにアクセスします。
+> * ページを表示するためにブラウザーでログイン資格情報の入力を求められる場合は、[URL デコード](https://www.urldecoder.org/)を使用して自分のテスト エンドポイントをデコードします。 URL デコードでは、"https://\<username>:\<password>@\<cluster-name>.test.azureapps.io/gateway/green" の形式の URL が返されます。  このフォームを使用してエンドポイントにアクセスします。
 
 >[!NOTE]    
-> 構成サーバーの設定はステージング環境と運用環境の両方に適用されます。 たとえば、構成サーバーでアプリ ゲートウェイのコンテキスト パス (`server.servlet.context-path`) を *somepath* に設定すると、自分のグリーン デプロイへのパスは、"https://\<ユーザー名>:\<パスワード>@\<クラスター名>.test.azureapps.io/gateway/green/somepath/..." になります。
+> 構成サーバーの設定はステージング環境と運用環境の両方に適用されます。 たとえば、構成サーバー内のアプリ ゲートウェイのコンテキスト パス (`server.servlet.context-path`) を *somepath* として設定すると、グリーン デプロイへのパスは "https://\<username>:\<password>@\<cluster-name>.test.azureapps.io/gateway/green/somepath/..." に変更されます。
  
  このポイントで自分の公開アプリ ゲートウェイにアクセスすると、新しい変更が反映されていない古いページが表示されます。
     

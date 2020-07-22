@@ -1,21 +1,17 @@
 ---
 title: Azure PowerShell を使用して Service Bus キューを作成する
 description: このクイック スタートでは、Azure PowerShell を使用して Service Bus キューを作成する方法について説明します。 その後、サンプル アプリケーションを使用してキューとの間でメッセージを送受信します。
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 12/20/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1fecfd7ba9f35d06b680d43248bf82aeb54a27b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75426949"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337244"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>クイック スタート:Azure PowerShell を使用して Service Bus キューを作成する
 このクイック スタートでは、Service Bus キューとの間でメッセージを送受信し、PowerShell を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。

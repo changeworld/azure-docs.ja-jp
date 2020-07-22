@@ -2,22 +2,22 @@
 title: Azure AD アプリのリンクされたサインオン - Microsoft ID プラットフォーム
 description: Microsoft ID プラットフォーム (Azure AD) で Azure AD エンタープライズ アプリケーションに、リンクされたシングル サインオン (SSO) を構成する
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cfcece43ae1b7d7bcf0c38feba14f1e82b29f18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063545"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763484"
 ---
 # <a name="configure-linked-sign-on"></a>リンクされたサインオンの構成
 

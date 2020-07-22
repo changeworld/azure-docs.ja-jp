@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.author: curtand
 ms.date: 04/30/2020
-ms.topic: article
+ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807861"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -82,7 +82,7 @@ Azure AD Privileged Identity Management を有効にしたら、次のように�
 
 4. **[すべてのサービス]** の一覧から Privileged Identity Management を開き、ダッシュ ボードにピン留めします。
 
-組織で PIM を使用する最初のユーザーには、**セキュリティ管理者**と**特権ロール管理者**のロールが割り当てられます。 ユーザーの Azure AD ディレクトリ ロールの割り当てを管理できるのは特権ロール管理者だけです。 PIM セキュリティ ウィザードの指示に従って初回の検出と割り当てを実行できます。 この時点でさらに変更を加えずに、ウィザードを終了することができます。
+組織で PIM を使用する最初のユーザーに**セキュリティ管理者**と**特権ロール管理者**のロールが割り当てられていることを確認します。 ユーザーの Azure AD ディレクトリ ロールの割り当てを管理できるのは特権ロール管理者だけです。 PIM セキュリティ ウィザードの指示に従って初回の検出と割り当てを実行できます。 この時点でさらに変更を加えずに、ウィザードを終了することができます。
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>高度な特権ロールに属するアカウントを識別および分類する
 
@@ -90,8 +90,8 @@ Azure AD Privileged Identity Management を有効にした後、次の Azure AD 
 
 * 全体管理者
 * 特権ロール管理者
-* Exchange Online 管理者
-* SharePoint Online 管理者
+* Exchange 管理者
+* SharePoint 管理者
 
 Azure AD Privileged Identity Management が組織内にない場合は、[PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) を使用できます。 全体管理者は、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持つため、全体管理者ロールから始めます。 これらのアクセス許可は、Microsoft 365 管理センター、Azure portal、または Microsoft PowerShell の Azure AD モジュールのいずれで割り当てられた場合でも付与されます。
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>多要素認証を有効にし、その他のすべての高度な特権を持つシングル ユーザー非フェデレーション管理者アカウントを登録します。
 
-1 つまたは複数の Azure AD 管理者ロール (グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者) に永続的に割り当てられているすべての個々のユーザーのサインイン時に Azure Multi-factor Authentication (MFA) が必要です。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 2. と手順 3. をご覧ください。 
+1 つまたは複数の Azure AD 管理者ロール グローバル管理者、特権ロール管理者、Exchange 管理者、および SharePoint 管理者。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 2. と手順 3. をご覧ください。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>ステージ 2:よく使用される攻撃の緩和
 

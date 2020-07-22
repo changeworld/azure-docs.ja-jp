@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688034"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216316"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault について
 
@@ -73,7 +73,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 
 Azure 内の安全なストアとして、Key Vault は次のようなシナリオの簡略化に使用されてきました。
 -  [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)
--  SQL サーバーと Azure SQL Database 内の [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能
+-  SQL サーバーと Azure SQL Database 内の [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) と [Transparent Data Encryption]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15) 機能
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate)。 
 
 Key Vault 自体は、ストレージ アカウント、イベント ハブ、ログ分析と統合できます。

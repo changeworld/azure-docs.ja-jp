@@ -5,16 +5,16 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a60f0e2f40fa1a4945198a4b5738b4f7b65b05ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617419"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251843"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
-Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 この記事では、これら 2 つの Azure サービス間の認証を構成する例を示します。 
+Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 この操作は、必要なアクセス許可を ACR に付与することで、CLI とポータルのエクスペリエンスの一部として実装されます。 この記事では、これら 2 つの Azure サービス間の認証を構成する例を示します。 
 
 Azure CLI を使用して、いくつかの単純なコマンドで AKS から ACR への統合を設定できます。 この統合により、AKS クラスターに関連付けられているサービス プリンシパルに AcrPull ロールが割り当てられます。
 
@@ -23,7 +23,7 @@ Azure CLI を使用して、いくつかの単純なコマンドで AKS から A
 これらの例には以下のものが必要です。
 
 * **Azure サブスクリプション**上の**所有者**または **Azure アカウント管理者**ロール。
-* Azure CLI バージョン 2.0.73 以降
+* Azure CLI バージョン 2.7.0 以降
 
 **所有者** または **Azure アカウント管理者** の役割を必要としないようにするには、サービス プリンシパルを手動で構成するか、既存のサービス プリンシパルを使用して AKS から ACR を認証します。 詳細については、[サービス プリンシパルによる ACR 認証](../container-registry/container-registry-auth-service-principal.md)または[プル シークレットを使用した Kubernetes からの認証](../container-registry/container-registry-auth-kubernetes.md)に関するページをご参照ください。
 
@@ -33,7 +33,7 @@ AKS クラスターの初期作成中に AKS と ACR の統合を設定できま
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-$MYACR=myContainerRegistry
+MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
@@ -143,5 +143,9 @@ nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
+### <a name="troubleshooting"></a>トラブルシューティング
+* ACR 診断の詳細については、[こちら](../container-registry/container-registry-diagnostics-audit-logs.md)を参照してください。
+* ACR の正常性の詳細については、[こちら](../container-registry/container-registry-check-health.md)を参照してください。
+
 <!-- LINKS - external -->
-[AKS AKS CLI]:  https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
+[AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

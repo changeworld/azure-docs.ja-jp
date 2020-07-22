@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee370bc9c381eb11ae7cae53b31d0c987c52733c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128603"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170498"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -54,7 +54,7 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 
 外部 Azure AD ディレクトリまたはドメインを接続された組織として追加するには、このセクションの手順のようにします。
 
-**事前に必要なロール**:"*全体管理者*"、"*ユーザー管理者*"、または "*ゲスト招待元*"
+**事前に必要なロール**:"*グローバル管理者*" または "*ユーザー管理者*"
 
 1. Azure portal で **[Azure Active Directory]** を選択し、 **[Identity Governance]** を選択します。
 

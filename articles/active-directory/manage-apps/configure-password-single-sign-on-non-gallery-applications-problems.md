@@ -3,24 +3,24 @@ title: ギャラリー以外のアプリのパスワード SSO を構成する�
 description: Azure AD アプリケーション ギャラリーに含まれていないカスタム アプリのパスワード シングル サインオン (SSO) を構成するときに発生する一般的な問題です。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74274149"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763450"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題
 

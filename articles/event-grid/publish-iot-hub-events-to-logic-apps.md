@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - IoT Hub のイベントを使用して Azure Logic Apps をトリガーする
 description: このチュートリアルでは、Azure Event Grid のイベント ルーティング サービスを使い、IoT Hub のイベントに基づいて Azure Logic Apps のアクションを実行する自動化されたプロセスの作成方法を紹介します。
-services: iot-hub
+services: iot-hub, event-grid
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 11/21/2019
+ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722560"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120485"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>チュートリアル:Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
@@ -175,19 +175,26 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 4. 次の値でイベント サブスクリプションを作成します。 
 
-   * **イベント サブスクリプションの詳細**:わかりやすい名前を指定し、 **[イベント グリッド スキーマ]** を選択します。
+    1. **[イベント サブスクリプションの詳細]** セクションで、次の作業を行います。
+        1. イベント サブスクリプションの**名前**を指定します。 
+        2. **[イベント スキーマ]** に **[イベント グリッド スキーマ]** を選択します。 
+   2. **[トピックの詳細]** セクションで、次の作業を行います。
+       1. **[トピックの種類]** が **[IoT Hub]** に設定されていることを確認します。 
+       2. **[ソース リソース]** フィールドの値として IoT ハブの名前が設定されていることを確認します。 
+       3. 自動的に作成される**システム トピック**の名前を入力します。 システム トピックについては、「[システム トピックの概要](system-topics.md)」を参照してください。
+   3. **[イベントの種類]** セクションで、次の作業を行います。 
+        1. **[イベントの種類のフィルター]** で、 **[デバイスの作成完了]** を除くすべての選択項目をオフにします。
 
-   * **イベントの種類**: **[イベントの種類のフィルター]** で、 **[デバイスの作成完了]** を除くすべての選択項目をオフにします。
+           ![サブスクリプション イベントの種類](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   4. **[エンドポイントの詳細]** セクションで、次の作業を行います。 
+       1. **[webhook]** として **[エンドポイントのタイプ]** を選択します。
+       2. **[エンドポイントの選択]** をクリックし、ロジック アプリからコピーした URL を貼り付けて、選択内容を確認します。
 
-       ![サブスクリプション イベントの種類](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![エンドポイントの URL を選択する](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   * **エンドポイントの詳細**:[エンドポイントのタイプ] として **[Web Hook]** を選択し、 *[エンドポイントの選択]* を選択して、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
+         終了すると、ペインは次の例のようになります。 
 
-     ![エンドポイントの URL を選択する](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
-
-   終了すると、ペインは次の例のようになります。 
-
-    ![サンプルのイベント サブスクリプション フォーム](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+        ![サンプルのイベント サブスクリプション フォーム](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
 5. 以上でイベント サブスクリプションを保存すると、IoT hub でデバイスが作成されるたびに通知を受け取るようになります。 しかし、このチュートリアルでは、特定のデバイスでフィルター処理をするためにオプションのフィールドを追加します。 ペインの上部にある **[フィルター]** を選択します。
 

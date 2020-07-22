@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75433862"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253237"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services の WCF ベースの通信スタック
 Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。 **CreateServiceReplicaListeners または CreateServiceInstanceListeners** メソッドから返された [ICommunicationListener](service-fabric-reliable-services-communication.md) を介し、選択した通信スタックをプラグインできます。 フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
@@ -116,6 +116,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ## <a name="next-steps"></a>次のステップ
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services の OWIN 対応 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication-wcf.md)
-

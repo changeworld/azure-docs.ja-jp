@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: ea0f61ddd2c60d2806af0f6dcf97c7d2388335d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1ed68b2ba00a89ff7b20b8ed61457dfb268917e4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975875"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391266"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>クイック スタート:macOS 上で Swift と Speech SDK を使用して音声を合成する
 

@@ -6,19 +6,19 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 36b449c4c4ca30eb658c9519ce8e870a4f1fab32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71970739"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962264"
 ---
 # <a name="what-is-a-dictionary"></a>辞書とは
 
-辞書とは、一連の句または文、そしてそれに対応する翻訳を指定する、アラインされたドキュメントのペアです。 特定の句または文がソースに出現したとき、辞書に指定した翻訳を Microsoft Translator にいつも使用させたい場合は、トレーニングに辞書を使用します。 辞書は、用語集や用語ベースと呼ばれることもあります。 指定したすべての用語を強制的に "置換" する手段が辞書であると考えられます。 さらに、Microsoft カスタム翻訳ツールのサービスは、独自に構築した汎用辞書により高品質の翻訳を実現しています。 汎用辞書を使用している場合でも、単語や文を検索する際はご提供いただいた辞書が優先されます。
+辞書とは、一連の句または文、そしてそれに対応する翻訳を指定する、アラインされたドキュメントのペアです。 特定の句または文がソースに出現したときに、辞書に指定した翻訳が翻訳ツールで常に使用されるようにするには、トレーニングに辞書を使用します。 辞書は、用語集や用語ベースと呼ばれることもあります。 指定したすべての用語を強制的に "置換" する手段が辞書であると考えられます。 さらに、カスタム翻訳ツール機能は、独自に構築した汎用辞書により高品質の翻訳を実現しています。 汎用辞書を使用している場合でも、単語や文を検索する際はご提供いただいた辞書が優先されます。
 
 辞書が正しく機能するのは、Microsoft の一般ニューラル ネットワークモデルが完全にサポートされる言語ペアのプロジェクトのみです。 [言語の完全な一覧を確認してください](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "71970739"
 >[!Note]
 >Custom Translator には辞書ファイルを文単位でアラインする機能がありません。そのため、辞書ドキュメントでソースとターゲットに同数の句および文が存在していること、また正確にアラインされていることが重要です。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 - 辞書は、トレーニング データを使用するトレーニング済みモデルに代わるものではありません。 辞書は使用せず、トレーニング データを使用してシステムに学習させることをお勧めします。 ただし、文や複合名詞をそのままレンダリングする必要がある場合は、辞書を使用します。
 - 句辞書は控えめに使用してください。 そのため、文中の句が置換されると、その文の残りの部分を翻訳するためのコンテキストが文中から失われるか制限されることに注意してください。 結果、文中の語句は提供される辞書に従って翻訳されるものの、多くの場合、文全体の翻訳の品質は低下します。

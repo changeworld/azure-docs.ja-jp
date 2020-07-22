@@ -2,22 +2,22 @@
 title: ギャラリー以外のアプリケーションの追加 - Microsoft ID プラットフォーム | Microsoft Docs
 description: Azure AD テナントにギャラリー以外のアプリケーションを追加します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5db8aed0a47e7d8d928ef3287010d60efbc5e5da
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063613"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200446"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>一覧にない (ギャラリー以外の) アプリケーションを Azure AD 組織に追加する
 
@@ -54,7 +54,7 @@ ms.locfileid: "77063613"
    >* **[オンプレミスのアプリケーションへのセキュリティで保護されたリモート アクセス用のアプリケーション プロキシを構成します]** を選択すると、Azure AD アプリケーション プロキシとコネクタの構成ページが開きます。
    >* **[操作中のアプリケーションを登録して Azure AD と統合します]** を選択すると、 **[アプリの登録]** ページが開きます。 このオプションは、通常、OpenID Connect アプリケーションに対して使用します。
 
-7. **作成** を選択します。 アプリケーションの **[概要]** ページが開きます。
+7. **［作成］** を選択します アプリケーションの **[概要]** ページが開きます。
 
 ## <a name="configure-user-sign-in-properties"></a>ユーザーのサインイン プロパティを構成する
 
@@ -70,31 +70,31 @@ ms.locfileid: "77063613"
 
       **割り当てられている**ユーザーの動作:
 
-       | アプリケーション プロパティの設定 | | | 割り当てられているユーザーのエクスペリエンス | |
+       | アプリケーション プロパティ | アプリケーション プロパティ | アプリケーション プロパティ | 割り当てられているユーザーのエクスペリエンス | 割り当てられているユーザーのエクスペリエンス |
        |---|---|---|---|---|
        | ユーザーのサインインが有効になっていますか? | ユーザーの割り当てが必要ですか? | ユーザーに表示しますか? | 割り当てられているユーザーはサインインできますか? | 割り当てられているユーザーにアプリケーションが表示されますか?* |
        | はい | はい | はい | はい | はい  |
-       | はい | はい | いいえ  | はい | いいえ   |
-       | はい | いいえ  | はい | はい | はい  |
-       | はい | いいえ  | いいえ  | はい | いいえ   |
-       | いいえ  | はい | はい | いいえ  | いいえ   |
-       | いいえ  | はい | いいえ  | いいえ  | いいえ   |
-       | いいえ  | いいえ  | はい | いいえ  | いいえ   |
-       | いいえ  | いいえ  | いいえ  | いいえ  | いいえ   |
+       | はい | はい | no  | はい | no   |
+       | はい | no  | はい | はい | はい  |
+       | はい | no  | no  | はい | no   |
+       | no  | はい | はい | no  | no   |
+       | no  | はい | no  | no  | no   |
+       | no  | no  | はい | no  | no   |
+       | no  | no  | no  | no  | no   |
 
       **割り当てられていない**ユーザーの動作:
 
-       | アプリケーション プロパティの設定 | | | 割り当てられていないユーザーのエクスペリエンス | |
+       | アプリケーション プロパティ | アプリケーション プロパティ | アプリケーション プロパティ | 割り当てられていないユーザーのエクスペリエンス | 割り当てられていないユーザーのエクスペリエンス |
        |---|---|---|---|---|
        | ユーザーのサインインが有効になっていますか? | ユーザーの割り当てが必要ですか? | ユーザーに表示しますか? | 割り当てられていないユーザーはサインインできますか? | 割り当てられていないユーザーにアプリケーションが表示されますか?* |
-       | はい | はい | はい | いいえ  | いいえ   |
-       | はい | はい | いいえ  | いいえ  | いいえ   |
-       | はい | いいえ  | はい | はい | いいえ   |
-       | はい | いいえ  | いいえ  | はい | いいえ   |
-       | いいえ  | はい | はい | いいえ  | いいえ   |
-       | いいえ  | はい | いいえ  | いいえ  | いいえ   |
-       | いいえ  | いいえ  | はい | いいえ  | いいえ   |
-       | いいえ  | いいえ  | いいえ  | いいえ  | いいえ   |
+       | はい | はい | はい | no  | no   |
+       | はい | はい | no  | no  | no   |
+       | はい | no  | はい | はい | no   |
+       | はい | no  | no  | はい | no   |
+       | no  | はい | はい | no  | no   |
+       | no  | はい | no  | no  | no   |
+       | no  | no  | はい | no  | no   |
+       | no  | no  | no  | no  | no   |
 
      \* ユーザーのアクセス パネルと Office 365 アプリ ランチャーにアプリケーションが表示されますか?
 

@@ -44,11 +44,11 @@ ms.locfileid: "81416975"
 
 1. 自分の環境内で[参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。 次の参照データ スキームを使用します。
 
-   | キー名 | 種類 |
+   | キー名 | Type |
    | --- | --- |
    | uuid | String | 
 
-1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。 `http://localhost:8080/`リダイレクト URI**として** を使用します。
+1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。 **リダイレクト URI** として `http://localhost:8080/` を使用します。
 
 1. 必要なプロジェクト依存関係をインストールします。
 

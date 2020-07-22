@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ee4d629d80ff8265d58a1d05b8dca1652ddac6fb
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81112866"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82095892"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -77,7 +77,7 @@ ms.locfileid: "81112866"
 | Load Balancer あたりのアウトバウンド規則数        | 600                           |
 | [TCP アイドル タイムアウト](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分 / 30 分          |
 
-<sup>1</sup>制限は、最大 150 のリソース (スタンドアロン仮想マシン リソース、可用性セット リソース、および仮想マシン スケール セット リソースの任意の組み合わせ) です。
+<sup>1</sup>制限は、最大 150 のリソース (スタンドアロンの仮想マシン リソース、可用性セット リソース、仮想マシン スケール セット配置グループの任意の組み合わせ) です。
 
 **Basic Load Balancer**
 

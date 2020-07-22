@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: 6796906ca24eb69a52a3b822ee6a000038a445c5
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: 08b54d7ae3217f9b9f7715ba2ccb3fe1a290cc05
+  ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024593"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86147116"
 highlightedContent:
   items:
   - title: Azure IoT とは?
@@ -24,6 +24,9 @@ highlightedContent:
   - title: Azure IoT 用 VS Code ツールのインストール
     itemType: download
     url: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
+  - title: Azure CLI を使用した Azure IoT の開発の開始
+    itemType: reference
+    url: https://docs.microsoft.com/en-us/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest
   - title: Azure IoT のコード サンプルの参照
     itemType: overview
     url: https://docs.microsoft.com/samples/browse/?term=iot

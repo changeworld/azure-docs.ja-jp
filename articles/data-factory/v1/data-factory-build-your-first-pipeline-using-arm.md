@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "82203898"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -28,14 +28,14 @@ ms.locfileid: "82203898"
 > 
  
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 この記事では、Azure Resource Manager テンプレートを使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 
 このチュートリアルのパイプラインには、1 つのアクティビティ (**HDInsight Hive アクティビティ**) が含まれます。 このアクティビティは、入力データを変換して出力データを生成する Hive スクリプトを Azure HDInsight クラスターで実行します。 このパイプラインは、指定した開始時刻と終了時刻の間で、月 1 回実行されるようスケジュールされています。 
 
 > [!NOTE]
-> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 > 
 > このチュートリアルのパイプラインには、種類が HDInsightHive のアクティビティが 1 つだけ含まれます。 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するページを参照してください。 
 
@@ -261,7 +261,7 @@ ms.locfileid: "82203898"
 ```
 
 > [!NOTE]
-> Azure Data Factory を作成するための Resource Manager テンプレートのその他の例については、「[Tutorial: Create a pipeline with Copy Activity using an Azure Resource Manager template (チュートリアル: Azure Resource Manager テンプレートを使用してコピー アクティビティでパイプラインを作成する)](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)」を参照してください。  
+> Azure データ ファクトリを作成するための Resource Manager テンプレートのその他の例については、[Azure Resource Manager テンプレートを使用してコピー アクティビティを含むパイプラインを作成する方法のチュートリアル](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)を参照してください。  
 > 
 > 
 
@@ -615,7 +615,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
     ]
 }
 ```
-このテンプレートでは、GatewayUsingARM という名前のゲートウェイで GatewayUsingArmDF という名前のデータ ファクトリを作成しています。 
+このテンプレートでは、GatewayUsingArmDF という名前のデータ ファクトリと GatewayUsingARM という名前のゲートウェイを作成します。 
 
 ## <a name="see-also"></a>参照
 

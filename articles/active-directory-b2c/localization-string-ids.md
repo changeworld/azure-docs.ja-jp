@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/02/2020
+ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa90775df4462328ed7c39e70c8dd1989248e308
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 1cd18ae9fd3814765e77dad672909343d651913e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900512"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355507"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -56,7 +56,7 @@ ms.locfileid: "82900512"
 
 ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素で構成されます。 ID プロバイダーのタイトルをローカライズするには、 **ElementType** は`ClaimsProvider`に設定され、**StringId** は`ClaimsExchange`の ID に設定されます。
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -75,7 +75,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 次の例では、Facebook の ID プロバイダーをアラビア語にローカライズしています。
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">فيس بوك</LocalizedString>
 ```
 
@@ -219,7 +219,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ### <a name="example"></a>例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
@@ -229,6 +229,31 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
     <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="restful-service-error-messages"></a>RESTful サービスのエラー メッセージ
+
+[RESTful サービスの技術プロファイル](restful-technical-profile.md)のエラー メッセージ用 ID を次に示します。
+
+| id | 既定値 |
+| -- | ------------- |
+|DefaultUserMessageIfRequestFailed | RESTful サービス エンド ポイントへの接続を確立できませんでした。 RESTful サービスの URL: {0} |
+|UserMessageIfCircuitOpen | {0}RESTful サービスの URL: {1} |
+|UserMessageIfDnsResolutionFailed | RESTful サービス エンドポイントのホスト名を解決できませんでした。 RESTful サービスの URL: {0} |
+|UserMessageIfRequestTimeout | タイムアウト制限の {0} 秒内に、RESTful サービス エンド ポイントへの接続を確立できませんでした。 RESTful サービスの URL: {1} |
+
+
+### <a name="example"></a>例
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="DefaultUserMessageIfRequestFailed">Failed to establish connection to restful service end point.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCircuitOpen">Unable to connect to the restful service end point.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfDnsResolutionFailed">Failed to resolve the hostname of the restful service endpoint.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfRequestTimeout">Failed to establish connection to restful service end point within timeout limit.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
 ```
@@ -248,7 +273,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ### <a name="example"></a>例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCouldntSendSms">Cannot Send SMS to the phone, please try another phone number.</LocalizedString>
@@ -257,6 +282,33 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfServerError">Cannot use MFA service, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">Your request has been throttled, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfWrongCodeEntered">Wrong code entered, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="azure-ad-sspr"></a>Azure AD SSPR
+
+[Azure AD SSPR の技術プロファイル](aad-sspr-technical-profile.md)のエラー メッセージ用 ID を次に示します。
+
+| id | 既定値 |
+| -- | ------------- |
+|UserMessageIfChallengeExpired | コードの有効期限が切れています。|
+|UserMessageIfInternalError | 電子メール サービスで内部エラーが発生しました。後でもう一度お試しください。|
+|UserMessageIfThrottled | 送信された要求が多すぎます。後でもう一度お試しください。|
+|UserMessageIfVerificationFailedNoRetry | 検証の試行の最大回数を超えました。|
+|UserMessageIfVerificationFailedRetryAllowed | 検証に失敗しました。もう一度お試しください。|
+
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInternalError">We are having trouble verifying your email address. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">There have been too many requests to verify this email address. Please wait a while, then try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfChallengeExpired">That code is expired. Please request a new code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedNoRetry">You've made too many incorrect attempts. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
 ```
@@ -275,7 +327,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ### <a name="example"></a>例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
@@ -286,7 +338,6 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
   </LocalizedStrings>
 </LocalizedResources>
 ```
-
 
 ## <a name="claims-transformations-error-messages"></a>要求の変換のエラー メッセージ
 
@@ -300,7 +351,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ### <a name="example"></a>例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your email address hasn't been verified.</LocalizedString>

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414219"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187683"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -55,7 +55,7 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 コピー アクティビティを使用すると、ファイル ベースの 2 つのデータ ストア間でファイルをそのままコピーできます。その場合、データはシリアル化または逆シリアル化なしで効率的にコピーされます。 また、特定の形式のファイルを解析または生成することもできます。たとえば、次のような操作を実行できます。
 
-* オンプレミスの SQL Server データベースからデータをコピーし、Parquet 形式で Azure Data Lake Storage Gen2 に書き込む。
+* SQL Server データベースからデータをコピーし、Parquet 形式で Azure Data Lake Storage Gen2 に書き込む。
 * オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB ストレージに Avro 形式で書き込む。
 * オンプレミスのファイル システムから zip 形式のファイルをコピーし、その場で圧縮解除して、抽出されたファイルを Azure Data Lake Storage Gen2 に書き込む。
 * Azure BLOB ストレージから Gzip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
@@ -250,4 +250,4 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 
 - [ある場所から同じ Azure Blob Storage アカウントの別の場所にデータをコピーする](quickstart-create-data-factory-dot-net.md)
 - [Azure Blob Storage から Azure SQL Database にデータをコピーする](tutorial-copy-data-dot-net.md)
-- [オンプレミスの SQL Server データベースから Azure にデータをコピーする](tutorial-hybrid-copy-powershell.md)
+- [SQL Server データベースから Azure にデータをコピーする](tutorial-hybrid-copy-powershell.md)

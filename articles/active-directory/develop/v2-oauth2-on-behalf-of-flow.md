@@ -1,5 +1,6 @@
 ---
 title: Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー | Azure
+titleSuffix: Microsoft identity platform
 description: この記事では、HTTP メッセージを使用して、OAuth2.0 On-Behalf-Of フローを使用するサービス間の認証を実装する方法について説明します。
 services: active-directory
 author: hpsin
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 07/8/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 57497c7bd8cd1d0b46c40b6977079f4a6a2d876f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82689545"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165874"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -46,7 +47,7 @@ OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサ�
 > [!NOTE]
 > このシナリオでは、中間層サービスに、ダウンストリーム API にアクセスするユーザーの同意を得るためのユーザー操作はありません。 そのため、ダウンストリーム API へのアクセス権を付与するオプションは、認証中の同意手順の一部として事前に提供されます。 ご使用のアプリに対してこれを設定する方法について詳しくは、「[中間層アプリケーションの同意の取得](#gaining-consent-for-the-middle-tier-application)」を参照してください。
 
-## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
+## <a name="middle-tier-access-token-request"></a>中間層アクセス トークン要求
 
 アクセス トークンを要求するには、次のパラメーターを使用して、テナントに固有の Microsoft ID プラットフォーム トークン エンドポイントへの HTTP POST を作成します。
 
@@ -60,12 +61,12 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | `grant_type` | 必須 | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `client_secret` | 必須 | Azure portal の [アプリの登録] ページで、アプリ用に生成したクライアント シークレット。 |
-| `assertion` | 必須 | 要求で使用されるトークンの値。  このトークンには、この OBO 要求を行うアプリ (`client-id` フィールドに示されるアプリ) の対象ユーザーが必要です。 |
+| `assertion` | 必須 | 中間層 API に送信されたアクセス トークン。  このトークンには、この OBO 要求を行うアプリ (`client-id` フィールドに示されるアプリ) の対象ユーザー (`aud`) 要求が必要です。 アプリケーションは別のアプリ用のトークンを利用することはできません (たとえば、クライアントが API に MS Graph 用のトークンを送信した場合、API は OBO を使用してそれを利用することはできません。  代わりに、トークンを拒否する必要があります)。  |
 | `scope` | 必須 | トークン要求のスコープのスペース区切りリスト。 詳細については、「[スコープ](v2-permissions-and-consent.md)」を参照してください。 |
 | `requested_token_use` | 必須 | 要求の処理方法を指定します。 OBO フローでは、この値は `on_behalf_of` に設定する必要があります。 |
 
@@ -92,13 +93,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | `grant_type` | 必須 | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
 | `client_id` | 必須 |  [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `client_assertion_type` | 必須 | 値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります。 |
 | `client_assertion` | 必須 | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 |
-| `assertion` | 必須 | 要求で使用されるトークンの値。 |
+| `assertion` | 必須 |  中間層 API に送信されたアクセス トークン。  このトークンには、この OBO 要求を行うアプリ (`client-id` フィールドに示されるアプリ) の対象ユーザー (`aud`) 要求が必要です。 アプリケーションは別のアプリ用のトークンを利用することはできません (たとえば、クライアントが API に MS Graph 用のトークンを送信した場合、API は OBO を使用してそれを利用することはできません。  代わりに、トークンを拒否する必要があります)。  |
 | `requested_token_use` | 必須 | 要求の処理方法を指定します。 OBO フローでは、この値は `on_behalf_of` に設定する必要があります。 |
 | `scope` | 必須 | トークン要求のスコープのスペース区切りリスト。 詳細については、「[スコープ](v2-permissions-and-consent.md)」を参照してください。|
 
@@ -124,7 +125,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>サービス間のアクセス トークン応答
+## <a name="middle-tier-access-token-response"></a>中間層アクセス トークン応答
 
 成功応答は、次のパラメーターを含む JSON OAuth 2.0 応答です。
 
@@ -156,7 +157,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ### <a name="error-response-example"></a>エラー応答の例
 
-ダウンストリーム API に条件付きアクセス ポリシー (多要素認証など) が設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスでこのエラーをクライアント アプリケーションに示す必要があります。
+ダウンストリーム API に条件付きアクセス ポリシー ([多要素認証](../authentication/concept-mfa-howitworks.md)など) が設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスでこのエラーをクライアント アプリケーションに示す必要があります。
 
 ```json
 {
@@ -179,7 +180,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```HTTP
 GET /v1.0/me HTTP/1.1
 Host: graph.microsoft.com
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
+Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>中間層アプリケーションの同意の取得

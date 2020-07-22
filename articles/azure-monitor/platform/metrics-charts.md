@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509824"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980900"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの高度な機能
 
@@ -137,9 +137,6 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 グラフの線の色を変更するには、グラフに対応する凡例の色分けされたバーをクリックします。 カラー ピッカーのダイアログが開きます。 カラー ピッカーを使用して、線の色を構成します。
 
 構成したグラフの色はその後、グラフをダッシュボードにピン留めしても、そのままになります。 次のセクションでは、グラフをピン留めする方法について説明します。
-
-> [!NOTE]
-> Microsoft のリリースと発行のスケジュールの制約により、一時的処置として、グラフの線の色を変更するには、Azure portal [https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true) を開始するときに特別なパラメーター **?feature.colorpicker=true**を渡す必要があります。 この制限は間もなく解除される予定です。 
 
 ![メトリックの画像](./media/metrics-charts/018.png)
 

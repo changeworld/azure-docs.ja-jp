@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848477"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -65,13 +65,21 @@ Windows Server 2008 R2 SP1 以上。
 
 Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セットアップ プロセスの一環として実行する構成スクリプトによってインストールされます (モジュールがまだ存在しない場合)。 このモジュールをまだインストールしていない場合、事前にインストールする必要はありません。
 
+次のライブラリを手動でインストールする必要があります。
+
+- [Visual Studio 2015 の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=48145)
+
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
 NPS の拡張機能を使用するすべてのユーザーが、Azure AD Connect を使用して Azure Active Directory に同期され、MFA の対象として登録されている必要があります。
 
-拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインします。 **[Azure Active Directory]** を探して選択してから、 **[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。 NPS 拡張機能をインストールする際は、この GUID をテナント ID として使用します。
+拡張機能をインストールするときは、Azure AD テナントの "*テナント ID*" と管理資格情報が必要です。 テナント ID を取得するには、次の手順のようにします。
 
-![Azure Active Directory のプロパティでディレクトリ ID を探す](./media/howto-mfa-nps-extension/properties-directory-id.png)
+1. Azure テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
+1. **Azure Active Directory** を探して選択します。
+1. **[概要]** ページに、"*テナント情報*" が表示されます。 次のスクリーンショットの例に示すように、"*テナント ID*" の横にある **[コピー]** アイコンを選択します。
+
+   ![Azure portal からのテナント ID の取得](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="network-requirements"></a>ネットワークの要件
 
@@ -186,14 +194,23 @@ NPS 拡張機能を展開して使用する前に、2 段階認証を実行す�
 1. Windows PowerShell を管理者として実行します。
 2. ディレクトリを変更します。
 
-   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+   ```powershell
+   cd "C:\Program Files\Microsoft\AzureMfa\Config"
+   ```
 
 3. インストーラーによって作成された PowerShell スクリプトを実行します。
 
-   `.\AzureMfaNpsExtnConfigSetup.ps1`
+   > [!IMPORTANT]
+   > Azure Government クラウドまたは Azure China 21Vianet クラウドを使用しているお客様の場合は、最初に *AzureMfaNpsExtnConfigSetup.ps1* スクリプトで `Connect-MsolService` コマンドレットを編集して、必要なクラウドの *AzureEnvironment* パラメーターを含めます。 たとえば、 *-AzureEnvironment USGovernment* または *--AzureEnvironment AzureChinaCloud* を指定します。
+   >
+   > 詳細については、[Connect-MsolService パラメーターのリファレンス](/powershell/module/msonline/connect-msolservice#parameters)を参照してください。
+
+   ```powershell
+   .\AzureMfaNpsExtnConfigSetup.ps1
+   ```
 
 4. 管理者として Azure AD にログインします。
-5. PowerShell によって、テナント ID の入力が求められます。 前提条件セクションで、 Azure Portal からコピーしたディレクトリ ID の GUID を使用します。
+5. PowerShell によって、テナント ID の入力が求められます。 前提条件のセクションで Azure portal からコピーした "*テナント ID*" の GUID を使用します。
 6. スクリプトが終了すると、PowerShell によって成功メッセージが表示されます。  
 
 負荷分散用に設定するすべての追加 NPS サーバーで、この手順を繰り返します。
@@ -201,19 +218,30 @@ NPS 拡張機能を展開して使用する前に、2 段階認証を実行す�
 以前のコンピューター証明書が期限切れになり、新しい証明書が生成された場合は、期限切れの証明書をすべて削除する必要があります。 期限切れの証明書があると、NPS 拡張機能の起動で問題が生じる可能性があります。
 
 > [!NOTE]
-> PowerShell スクリプトを使用して証明書を生成するのではなく独自の証明書を使用する場合は、NPS 名前付け規則に合わせてください。 サブジェクト名は **CN=\<TenantID\>,OU=Microsoft NPS Extension** にする必要があります。 
+> PowerShell スクリプトを使用して証明書を生成するのではなく独自の証明書を使用する場合は、NPS 名前付け規則に合わせてください。 サブジェクト名は **CN=\<TenantID\>,OU=Microsoft NPS Extension** にする必要があります。
 
-### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government の追加手順
+### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure Government または Azure China 21Vianet の場合の追加手順
 
-Azure Government クラウドを使用しているお客様については、各 NPS サーバーで次の追加の構成手順を実行する必要があります。
+Azure Government クラウドまたは Azure China 21Vianet クラウドを使用しているお客様については、各 NPS サーバーで次の追加の構成手順を実行する必要があります。
 
-1. NPS サーバーで**レジストリ エディター**を開きます。
-1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` に移動します。 次のキーの値を設定します。
+> [!IMPORTANT]
+> これらのレジストリ設定の構成は、Azure Government または Azure China 21Vianet を利用している場合のみ行ってください。
+
+1. Azure Government または Azure China 21Vianet を利用している場合、NPS サーバーで**レジストリ エディター**を開きます。
+1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` に移動します。
+1. Azure Government のお客様の場合は、次のキー値を設定します。
 
     | レジストリ キー       | 値 |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Azure China 21Vianet のお客様の場合は、次のキー値を設定します。
+
+    | レジストリ キー       | 値 |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.cn   |
+    | STS_URL            | https://login.chinacloudapi.cn/   |
 
 1. 前の 2 つの手順を繰り返して、各 NPS サーバーのレジストリ キーの値を設定します。
 1. NPS サーバーごとに NPS サービスを再起動します。
@@ -268,7 +296,7 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>クライアント証明書が正常にインストールされていることを確認するにはどうすればよいですか。
 
-インストーラーによって証明書ストア内に作成された自己署名証明書を探して、ユーザー **NETWORK SERVICE** が秘密キーへのアクセスを許可されていることを確認します。 この証明書のサブジェクト名は **CN \<tenantid\>, OU = Microsoft NPS Extension** になります。
+インストーラーによって証明書ストア内に作成された自己署名証明書を探して、ユーザー **NETWORK SERVICE** が秘密キーへのアクセスを許可されていることを確認します。 この証明書のサブジェクト名は **CN \<tenantid\>, OU = Microsoft NPS Extension** になります
 
 *AzureMfaNpsExtnConfigSetup.ps1* スクリプトによって生成された自己署名証明書の有効期間も 2 年間です。 証明書がインストールされていることを確認するときは、証明書の有効期限が切れていないことも確認する必要があります。
 
@@ -278,7 +306,7 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 PowerShell コマンド プロンプトを開き、次のコマンドを実行します。
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
@@ -288,7 +316,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 次のコマンドによって、名前が "npscertificate"、形式が .cer のファイルが "C:" ドライブに作成されます。
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer

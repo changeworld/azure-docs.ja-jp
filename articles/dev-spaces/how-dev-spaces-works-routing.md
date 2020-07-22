@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスと、ルーティングがどのように機能するかについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241241"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307420"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Azure Dev Spaces でルーティングがどのように機能するか
 
@@ -64,12 +64,12 @@ HTTP ではないその他の TCP トラフィックはすべて、未変更の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Dev Spaces で迅速な反復処理と開発を提供するためにルーティングがどのように使用されているかについての例を確認するには、[開発スペースへの開発用マシンの接続のしくみ][how-it-works-connect]に関する記事、「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」、および [GitHub Actions と Azure Kubernetes Service][pr-flow] に関する記事を参照してください。
+Azure Dev Spaces で迅速な反復処理と開発を提供するためにルーティングがどのように使用されているかについての例を確認するには、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」、「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」、[GitHub Actions と Azure Kubernetes Service][pr-flow] に関する記事を参照してください。
 
 チーム開発のために Azure Dev Spaces でルーティングの使用を開始するには、[Azure Dev Spacesでのチーム開発][quickstart-team]に関するクイックスタートを参照してください。
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
 [quickstart-team]: quickstart-team-development.md

@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415720"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557064"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>クイック スタート:Unity のサンプルをデスクトップにデプロイする
 
@@ -45,8 +45,8 @@ ms.locfileid: "81415720"
 
 ## <a name="build-the-sample-project"></a>サンプル プロジェクトをビルドする
 
-1. *[File]\ (ファイル\) > [Build Settings]\(ビルド設定\)* の順に開きます。
-1. *[Platform]\(プラットフォーム\)* を **[Universal Windows Platform]\(ユニバーサル Windows プラットフォーム\)** に変更します。
+1. *[File]\(ファイル\) > [Build Settings]\(ビルド設定\)* の順に開きます。
+1. *[Platform]\(プラットフォーム\)* を**ユニバーサル Windows プラットフォーム**に変更します (**PC スタンドアロン**もサポートされますが、ここでは使用しません。「[プラットフォームの制限事項](../reference/limits.md#platform-limitations)」を参照してください)。
 1. *[Target Device]\(ターゲットデバイス\)* を **[PC]** に設定します。
 1. *[Architecture]\(アーキテクチャ\)* を **[x86]** に設定します。
 1. *[Build Type]\(ビルドの種類\)* を **[D3D Project]\(D3D プロジェクト\)** に設定します。
@@ -60,7 +60,7 @@ ms.locfileid: "81415720"
 1. ソリューションをビルドします (F7)。
 
 > [!WARNING]
-> 必ず **[x86]** を選択してください。 現在、**x64** はサポートされていません。「[プラットフォームの制限事項](../reference/limits.md#platform-limitations)」を参照してください。
+> 必ず **[x86]** を選択してください。 現在、**UWP/x64** はサポートされていません。「[プラットフォームの制限事項](../reference/limits.md#platform-limitations)」を参照してください。
 
 ## <a name="launch-the-sample-project"></a>サンプル プロジェクトを起動する
 

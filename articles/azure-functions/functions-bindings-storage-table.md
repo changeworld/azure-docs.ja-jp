@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.custom: tracking-python
+ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559947"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -40,7 +41,7 @@ Azure Table Storage の入力バインドを使用して、Azure Storage アカ�
 
 ### <a name="one-entity"></a>1 つのエンティティ
 
-次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 テーブルに挿入されるすべてのレコードについて、関数がトリガーされます。
+次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 キューに送信されるすべてのメッセージについて、関数がトリガーされます。
 
 行キー値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 

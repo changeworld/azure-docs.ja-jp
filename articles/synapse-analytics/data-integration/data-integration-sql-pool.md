@@ -5,16 +5,16 @@ services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c093a424ecf085c59501ee3d480838cc30c2ebf4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427243"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963038"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>SQL プールへのデータの取り込み
 
@@ -24,7 +24,7 @@ ms.locfileid: "81427243"
 
 * **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * **Azure ストレージ アカウント**: "*ソース*" データ ストアとして Azure Data Lake Storage Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
-* **Azure Synapse Analytics**:SQL プールを "*シンク*" データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、SQL プールを作成する手順については、[SQL プールの作成](../../sql-database/sql-database-get-started-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+* **Azure Synapse Analytics**:SQL プールを "*シンク*" データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、SQL プールを作成する手順については、[SQL プールの作成](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -39,7 +39,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 
-パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、ADLS gen 2 から SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
+パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、ADLS Gen2 から SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
 
 1. **[調整]** タブに移動します。パイプライン ヘッダーの横にある正符号アイコンをクリックし、 **[パイプライン]** を選択します。
 1. アクティビティ ウィンドウの **[Move and Transform]\(移動と変換\)** で、 **[データ コピー]** をパイプライン キャンバス上にドラッグします。

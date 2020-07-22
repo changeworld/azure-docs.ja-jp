@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/27/2020
-ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369663"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488207"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>クイック スタート:Search エクスプローラーを使用してポータルでクエリを実行する
 
-**Search エクスプローラー**は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいは新しい内容の存在を確認することによるインデックス更新の結果の確認が簡単になります。
+**Search エクスプローラー**は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいはインデックス内の新しいコンテンツの有無を確認することによるデータ更新の確認が簡単になります。
 
-このクイックスタートでは、**realestate-us-sample-index** を使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して作成され、応答は JSON ドキュメントとして返されます。
+このクイックスタートでは、既存のインデックスを使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して作成され、応答は JSON ドキュメントとして返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
+開始する前に、次の項目を用意する必要があります。
 
-+ このクイックスタートでは、**realestate-us-sample-index** が使用されます。 組み込みのサンプル データ ソースからインデックスを生成するには、[**データのインポート**](search-import-data-portal.md) ウィザードをステップ実行します。
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
+
++ Azure Cognitive Search サービス。 [サービスを作成する](search-create-service-portal.md)か、現在のサブスクリプションで[既存のサービスを探してください](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
+
++ このクイックスタートでは、*realestate-us-sample-index* を使用します。 [ **[データのインポート]** ](search-import-data-portal.md) ウィザードを使用して、このインデックスを作成してください。 最初の手順でデータ ソースの入力を求められたら、 **[サンプル]** 、**realestate-us-sample** データ ソースの順に選択します。 インデックスの作成にあたっては、ウィザードの既定値をすべてそのまま使用してください。
 
 ## <a name="start-search-explorer"></a>Search エクスプローラーの起動
 

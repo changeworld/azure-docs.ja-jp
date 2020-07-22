@@ -1,23 +1,14 @@
 ---
 title: Azure Event Hubs - Resource Manager の例外 | Microsoft Docs
 description: Azure Resource Manager によって表示される Azure Event Hubs の例外と推奨されるアクションの一覧。
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/08/2019
-ms.author: spelluru
-ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74936109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312527"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs - Resource Manager の例外
 この記事では、Azure Resource Manager を使用して、テンプレートまたは直接呼び出しにより Azure Event Hubs とやり取りするときに生成される例外を示します。

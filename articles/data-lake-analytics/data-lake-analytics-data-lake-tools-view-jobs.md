@@ -5,14 +5,14 @@ ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0db5482a48819074fc0552417aa79dbc2e5cf66
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71309951"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120179"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics ジョブに対してジョブ ブラウザーとジョブ ビューを使用
 Azure Data Lake Analytics サービスは、送信されたジョブをクエリ ストアにアーカイブします。 この記事では、Azure Data Lake Tools for Visual Studio のジョブ ブラウザーとジョブ ビューを使用して過去のジョブ情報を検索する方法について説明します。 

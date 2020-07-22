@@ -8,13 +8,14 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.custom: tracking-python
+ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592391"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147057"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -29,7 +30,7 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
     | [Estimator](#estimators) | Estimator クラスを使用すると、**広く使われている機械学習フレームワークに基づいてモデルのトレーニングを簡単に行う**ことができます。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer**、および **Ray RLlib** 用の Estimator クラスがあります。 また、専用の Estimator クラスがまだないフレームワークで使用できる汎用 Estimator もあります。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。 |
     | [機械学習パイプライン](#machine-learning-pipeline) | パイプラインは別のトレーニング方法ではなく、**モジュール型の再利用可能な手順を使用してワークフローを定義する方法**であり、トレーニングをワークフローの一部として含めることができます。 機械学習パイプラインでは、自動機械学習、Estimator、および実行構成を使用したモデルのトレーニングがサポートされています。 パイプラインはトレーニングに明示的に重点を置いていないため、パイプラインを使用する理由は、他のトレーニング方法と大きく異なります。 一般に、以下の場合にパイプラインを使用できます。<br>* 実行時間の長いトレーニング ジョブやデータ準備など、**無人プロセスをスケジュール設定する**。<br>* 異種コンピューティング リソースとストレージの場所全体で調整された**複数の手順**を使用する。<br>* 再トレーニングやバッチ スコアリングなどの特定のシナリオ向けにパイプラインを**再利用可能なテンプレート**として使用する。<br>* ワークフローの**データソース、入力、出力を追跡してバージョン管理する**。<br>* ワークフローが、**特定の手順で個別に作業するさまざまなチームによって実装される**。 その後、手順をパイプラインに結合して、ワークフローを実装できます。 |
 
-+ [Azure Machine Learning SDK for Python](#r-sdk):SDK では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
++ [Azure Machine Learning SDK for R](#r-sdk):SDK for R では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
 
 + **デザイナー**: Azure Machine Learning デザイナー (プレビュー) では、概念実証を構築するため、またはコーディングの経験がほとんどないないユーザーのための簡単なエントリポイントが機械学習に提供されます。 これにより、ドラッグ アンド ドロップ Web ベース UI を使用してモデルをトレーニングできます。 Python コードを設計の一部として使用したり、コードを記述せずにモデルをトレーニングしたりすることができます。
 
@@ -112,12 +113,28 @@ R SDK を使用すると、Azure Machine Learning で R 言語を使用できま
 + [カスタム R スクリプトを使用した分類: フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)
 + [テキスト分類: Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)
 
+## <a name="many-models-solution-accelerator"></a>多数モデル ソリューション アクセラレータ
+
+[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
+
+たとえば次のシナリオで、__それぞれの事例または個々の対象の__モデルを構築すると、結果が改善される可能性があります。
+
+* 個々の店舗の売上予測
+* 数百基の油井の予測メンテナンス
+* 個々のユーザーのエクスペリエンスの調整。
+
+詳細については、GitHub の[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)に関するページを参照してください。
+
 ## <a name="cli"></a>CLI
 
 機械学習 CLI は、Azure CLI 用の拡張機能です。 Azure Machine Learning を操作するためのクロスプラットフォーム CLI コマンドが提供されます。 通常は、CLI を使用して、機械学習モデルのトレーニングなどのタスクを自動化します。
 
 * [Azure Machine Learning 用の CLI 拡張機能を使用する](reference-azure-machine-learning-cli.md)
 * [Azure 上の MLOps](https://github.com/microsoft/MLOps)
+
+## <a name="vs-code"></a>VS Code
+
+VS Code 拡張機能を使用して、トレーニング ジョブを実行および管理できます。 詳細については、[VS Code リソース管理の攻略ガイド](how-to-manage-resources-vscode.md#experiments)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

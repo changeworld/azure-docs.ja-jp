@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981928"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245308"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
@@ -52,6 +52,11 @@ geo リストア機能では、geo 冗長バックアップを使用してサー
 
 ## <a name="cross-region-read-replicas"></a>リージョンにまたがる読み取りレプリカ
 リージョンにまたがる読み取りレプリカを使用すると、事業継続とディザスター リカバリーの計画を強化できます。 読み取りレプリカは、PostgreSQL の物理的なレプリケーション テクノロジを使用して非同期的に更新されます。 読み取りレプリカ、利用可能なリージョン、フェールオーバーする方法については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
+
+## <a name="faq"></a>よく寄せられる質問
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Azure Database for PostgreSQL は顧客データをどこに格納しますか?
+既定では、Azure Database for PostgreSQL によって、デプロイされているリージョン外に顧客データが移動または格納されることはありません。 ただし、顧客は必要に応じて、[地理冗長バックアップ](concepts-backup.md#backup-redundancy-options)を有効にするか、別のリージョンにデータを格納するための[クロスリージョン読み取りレプリカ](concepts-read-replicas.md#cross-region-replication)を作成することを選択できます。
+
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL での自動バックアップ](concepts-backup.md)の詳細を確認する。 

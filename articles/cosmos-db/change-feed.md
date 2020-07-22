@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e36e95aeb25c83ccd94f11e25bfe9f1b8f7bfdad
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119377"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 
@@ -67,7 +67,7 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 変更フィードは、コンテナー内の論理パーティション キーごとに利用できるため、次の図のように 1 つまたは複数のコンシューマーに分散して並列処理できます。
 
-![Azure Cosmos DB の Change Feed の分散処理](./media/change-feed/changefeedvisual.png)
+:::image type="content" source="./media/change-feed/changefeedvisual.png" alt-text="Azure Cosmos DB の Change Feed の分散処理" border="false":::
 
 ## <a name="features-of-change-feed"></a>変更フィードの特徴
 

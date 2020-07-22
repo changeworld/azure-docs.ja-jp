@@ -1,25 +1,25 @@
 ---
-title: コマーシャル マーケットプレース公開ガイド
-description: アプリとサービスの発行元向けのコマーシャル マーケットプレースの概要です。
-author: dsindona
+title: Microsoft コマーシャル マーケットプレース公開ガイド
+description: Microsoft AppSource と Azure Marketplace にプランを公開する Microsoft パートナー向けのコマーシャル マーケットプレースの概要です。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/12/2020
-ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2ce8767092fb1b93f743e8a5b81a9fbfb01468bf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261994"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120825"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>コマーシャル マーケットプレース公開ガイド
 
-この Marketplace 公開ガイドでは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップを使い、アプリケーションとサービスを登録することによって、Microsoft と連携してそのビジネスを成長させる方法を、新しいパブリッシャーと既存のパブリッシャー向けにわかりやすく説明しています。
+この公開ガイドでは、新しいパブリッシャーと既存のパブリッシャー向けに、コマーシャル マーケットプレースのネットショップ [Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) にアプリケーションとサービスを登録し、Microsoft と連携してビジネスを成長させる方法を、わかりやすく説明しています。
 
 >[!Note]
->Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。
+>Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](comparing-appsource-azure-marketplace.md)に関するページを参照してください。
 
 このガイドでは、次のトピックについて説明します。 
 *   Marketplace の概要とそのしくみ 
@@ -62,7 +62,7 @@ Marketplace に新しく参加することで、パートナーは、Marketplace
 
 *   共同販売: Marketplace を通じた Microsoft との共同販売のプロセスを開始または加速します。 Microsoft チームとの共同販売を推進するプログラムおよびサポートにアクセスします。
 
-Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。  詳細については、[パートナー センター アカウントの作成方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を参照してください。
+Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。  詳細については、[パートナー センター アカウントの作成方法](partner-center-portal/create-account.md)に関する記事を参照してください。
 
 [商用マーケットプレースのベネフィット](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)の詳細を確認します。
 

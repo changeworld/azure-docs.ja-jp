@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75965837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099648"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -45,7 +45,7 @@ ms.locfileid: "75965837"
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>仮想ネットワーク規則の利点
 
@@ -69,7 +69,7 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 
 しかし、2018 年 8 月時点ではまだ、Azure Database for PostgreSQL サービスは、サブネットに直接割り当てることができるサービスではありません。
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>仮想ネットワーク規則の詳細
 
@@ -102,7 +102,7 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 > Azure Database for PostgreSQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
 > - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
 > - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
-> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
+> - 両方のサブスクリプションに **Microsoft.Sql** および **Microsoft.DBforPostgreSQL** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="limitations"></a>制限事項
 

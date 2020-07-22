@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 46c27f18f8f16f783248790f03364654d0b3c2fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559890"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986830"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -95,9 +95,7 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 ## <a name="get-domain-verification-id"></a>ドメイン検証 ID を取得する
 
-アプリにカスタム ドメインを追加するには、ドメイン プロバイダーで検証 ID を TXT レコードとして追加して、ドメインの所有権を確認する必要があります。 アプリ ページの左側のナビゲーションで、 **[開発ツール]** の下にある **[リソース エクスプローラー]** をクリックし、 **[移動]** をクリックします。
-
-アプリのプロパティの JSON ビューで `customDomainVerificationId` を検索し、二重引用符で囲まれたその値をコピーします。 この検証 ID は、次の手順に必要です。
+アプリにカスタム ドメインを追加するには、ドメイン プロバイダーで検証 ID を TXT レコードとして追加して、ドメインの所有権を確認する必要があります。 アプリ ページの左側のナビゲーションで、 **[設定]** の下の **[カスタム ドメイン]** をクリックします。 ここからカスタム ドメインの検証 ID の値をコピーします。 この検証 ID は、次の手順に必要です。
 
 ## <a name="map-your-domain"></a>ドメインをマップする
 
@@ -113,6 +111,8 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 ### <a name="map-a-cname-record"></a>CNAME レコードのマップ
 
 このチュートリアルの例では、`www` サブドメイン (たとえば `www.contoso.com`) の CNAME レコードを追加します。
+
+`www` 以外のサブドメインがある場合は、`www` を自分のサブドメインに置き換えます (たとえば、カスタム ドメインが `sub.constoso.com` の場合は、`sub` に置き換えます)。
 
 #### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
 

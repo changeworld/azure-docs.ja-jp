@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945343"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
@@ -705,16 +705,30 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 
 ## <a name="retrieve-activity-log-data"></a>アクティビティ ログ データの取得
 
-メトリック定義と関連する値だけでなく、Azure Monitor REST API を使用して Azure リソースに関連するその他の興味深い分析情報を取得することもできます。 たとえば、 [アクティビティ ログ](https://msdn.microsoft.com/library/azure/dn931934.aspx) データにクエリを実行できます。 次の例は、Azure Monitor REST API を使用して、Azure サブスクリプションの特定の日付範囲にあるアクティビティ ログ データにクエリを実行しています。
+メトリック定義と関連する値だけでなく、Azure Monitor REST API を使用して Azure リソースに関連するその他の興味深い分析情報を取得することもできます。 たとえば、 [アクティビティ ログ](https://msdn.microsoft.com/library/azure/dn931934.aspx) データにクエリを実行できます。 次のサンプル要求では、Azure Monitor REST API を使用し、アクティビティ ログにクエリを実行します。
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+フィルターを使用してアクティビティ ログを取得します。
+
+``` HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+フィルターと選択を使用してアクティビティ ログを取得します。
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+選択を使用してアクティビティ ログを取得します。
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+フィルターや選択を使用せずにアクティビティ ログを取得します。
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>次のステップ

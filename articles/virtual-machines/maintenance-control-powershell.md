@@ -3,16 +3,16 @@ title: PowerShell を使用した Azure 仮想マシンのメンテナンス コ
 description: メンテナンス コントロールと PowerShell を使用して Azure VM にメンテナンスを適用するタイミングを制御する方法について学びます。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675844"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
@@ -20,11 +20,17 @@ ms.locfileid: "82136534"
  
 ## <a name="enable-the-powershell-module"></a>PowerShell モジュールを有効にする
 
-`PowerShellGet` が最新の状態であることを確認します。
+`PowerShellGet` が最新の状態であることを確認します。    
 
-```azurepowershell-interactive
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
+```azurepowershell-interactive  
+Install-Module -Name PowerShellGet -Repository PSGallery -Force 
+``` 
+
+`Az.Maintenance` PowerShell モジュールをインストールします。     
+
+```azurepowershell-interactive  
+Install-Module -Name Az.Maintenance
+``` 
 
 ローカルにインストールする場合は、管理者として、PowerShell プロンプトを開いてください。
 

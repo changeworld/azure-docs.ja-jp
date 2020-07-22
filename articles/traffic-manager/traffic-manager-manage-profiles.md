@@ -7,17 +7,17 @@ author: rohinkoul
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: rohink
-ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938605"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711580"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Azure Traffic Manager プロファイルの管理
 

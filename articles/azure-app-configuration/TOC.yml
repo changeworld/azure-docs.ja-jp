@@ -77,7 +77,7 @@
       href: concept-github-action.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: カスタム エンドポイントへのイベントのルーティング
       href: howto-app-configuration-event.md
+    - name: 構成ストアの自動バックアップ
+      href: howto-backup-config-store.md
     - name: ベスト プラクティス
       href: howto-best-practices.md
 - name: リファレンス

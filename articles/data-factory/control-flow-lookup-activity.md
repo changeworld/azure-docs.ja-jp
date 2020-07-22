@@ -54,7 +54,7 @@ ms.locfileid: "81418002"
 
 ## <a name="type-properties"></a>型のプロパティ
 
-Name | 説明 | 種類 | 必須
+名前 | 説明 | Type | 必須
 ---- | ----------- | ---- | --------
 dataset | ルックアップ用のデータセット参照を提供します。 対応する各コネクタの記事の 「**データセットのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
 source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「**コピー アクティビティのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
@@ -82,7 +82,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
     }
     ```
 
-* **`firstRowOnly` が `false` に設定されているときは**、出力形式は次のコードに示すとおりです。 `count` フィールドは、返されたレコードの数を示します。 固定された `value` 配列の下に詳細な値が表示されます。 このような場合は、ルックアップ アクティビティの後ろに [Foreach アクティビティ](control-flow-for-each-activity.md)が続きます。 `value` 配列は、パターン `items` を使用して ForEach アクティビティの `@activity('MyLookupActivity').output.value` フィールドに渡します。 `value` 配列の要素にアクセスするには、構文 `@{activity('lookupActivity').output.value[zero based index].propertyname}` を使用します。 たとえば `@{activity('lookupActivity').output.value[0].tablename}` です。
+* **`firstRowOnly` が `false` に設定されているときは**、出力形式は次のコードに示すとおりです。 `count` フィールドは、返されたレコードの数を示します。 固定された `value` 配列の下に詳細な値が表示されます。 このような場合は、ルックアップ アクティビティの後ろに [Foreach アクティビティ](control-flow-for-each-activity.md)が続きます。 `value` 配列は、パターン `@activity('MyLookupActivity').output.value` を使用して ForEach アクティビティの `items` フィールドに渡します。 `value` 配列の要素にアクセスするには、構文 `@{activity('lookupActivity').output.value[zero based index].propertyname}` を使用します。 たとえば `@{activity('lookupActivity').output.value[0].tablename}` です。
 
     ```json
     {
@@ -106,7 +106,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 この例では、最初の行のみのルックアップを示します。 すべての行のルックアップについて、および ForEach アクティビティで結果をチェーンするには、「[Azure Data Factory を使って複数のテーブルを一括コピーする](tutorial-bulk-copy.md)」のサンプルを参照してください。
 
 ### <a name="pipeline"></a>パイプライン
-このパイプラインには、ルックアップとコピーという 2 つのアクティビティが含まれています。 
+このパイプラインには、ルックアップとコピーという 2 つのアクティビティが含まれます。 
 
 - ルックアップ アクティビティは、Azure Blob Storage 内の場所を表す **LookupDataset** を使用するように設定されています。 ルックアップ アクティビティは、この場所にある JSON ファイルから SQL テーブルの名前を読み取ります。 
 - コピー アクティビティは、SQL テーブルの名前であるルックアップ アクティビティの出力を使用します。 **SourceDataset** 内の **tableName** プロパティは、ルックアップ アクティビティからの出力を使用するように設定されています。 コピー アクティビティは、SQL テーブルから Azure Blob Storage 内の場所にデータをコピーします。 場所は **SinkDataset** プロパティによって指定されます。 

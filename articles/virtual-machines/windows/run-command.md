@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143774"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653599"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
 実行コマンド機能は、仮想マシン (VM) エージェントを使用して Azure Windows VM 内で PowerShell スクリプトを実行します。 これらのスクリプトは、マシンやアプリケーションの一般的な管理に使用できます。 これらを使用すれば、VM のアクセスおよびネットワークの問題を迅速に診断して修正し、VM を良好な状態に戻すことができます。
 
- 
+
 
 ## <a name="benefits"></a>メリット
 
@@ -102,9 +102,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>実行コマンドへのアクセスの制限
 
-実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、`Microsoft.Compute/locations/runCommands/read` アクセス許可がサブスクリプション レベルで必要です。 組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上のレベルには、このアクセス許可があります。
+実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、`Microsoft.Compute/locations/runCommands/read` アクセス許可が必要になります。 組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上のレベルには、このアクセス許可があります。
 
-コマンドの実行には、`Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可がサブスクリプション レベルで必要です。 [仮想マシンの共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上のレベルには、このアクセス許可があります。
+コマンドの実行には、`Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可が必要になります。 [仮想マシンの共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上のレベルには、このアクセス許可があります。
 
 実行コマンドを使用するには、いずれかの[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用するか、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成します。
 

@@ -24,6 +24,8 @@
   items:
     - name: Windows Virtual Desktop リソースに接続する
       items:
+        - name: Windows デスクトップ クライアントを使用して接続する
+          href: connect-windows-7-10-2019.md
         - name: Web クライアントに接続する
           href: connect-web-2019.md
         - name: Android クライアントに接続する

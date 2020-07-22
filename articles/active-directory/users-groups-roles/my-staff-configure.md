@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850904"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>マイ スタッフを使用してユーザーを管理する (プレビュー)
 
@@ -71,9 +71,10 @@ Microsoft では、[Azure AD 条件付きアクセス ポリシー](https://docs
 1. [Microsoft Graph ベータ版の PowerShell コマンドレット](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)をインストールします。
 1. 次のコマンドを実行します。
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. マイ スタッフ クラウド アプリケーションに適用する条件付きアクセス ポリシーを作成します。
 
     ![マイ スタッフ アプリの条件付きアクセス ポリシーを作成する](media/my-staff-configure/conditional-access.png)

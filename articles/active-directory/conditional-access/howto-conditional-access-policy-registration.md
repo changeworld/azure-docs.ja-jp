@@ -4,19 +4,19 @@ description: セキュリティ情報登録のためのカスタム条件付き�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457911"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993747"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件付きアクセス:セキュリティ情報登録のセキュリティ保護
 
@@ -61,6 +61,7 @@ Azure Multi-Factor Authentication とセルフサービス パスワード リ�
 
 > [!WARNING]
 > ポリシー内で条件としてデバイスの状態を使用すると、ディレクトリのゲスト ユーザーに影響を与える可能性があります。 [レポート専用モード](concept-conditional-access-report-only.md)は、ポリシーの決定の影響を判断するのに役立ちます。
+> "ユーザー アクション" を範囲とする CA ポリシーにはレポート専用モードは該当しないことにご留意ください。
 
 ## <a name="next-steps"></a>次のステップ
 

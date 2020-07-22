@@ -9,22 +9,25 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 595436daa2efbd8e706a539d0a89c3ea98be31ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bece22fa0b9d41f29f8829d47a26f4ae2075feac
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655464"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040114"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Azure portal を使用して Azure Active Directory Domain Services マネージド ドメインを無効化または削除する
 
-マネージド ドメインが不要になった場合、Azure Active Directory Domain Services (Azure AD DS) インスタンスを削除できます。 Azure AD DS マネージド ドメインをオフにしたり、一時的に無効にしたりすることはできません。 Azure AD DS マネージド ドメインを削除しても、Azure AD テナントが削除されたり、削除以外の悪影響が出たりすることはありません。 この記事では、Azure portal を使用して Azure AD DS マネージド ドメインを削除する方法について説明します。
+Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインが不要になった場合は、削除できます。 Azure AD DS マネージド ドメインをオフにしたり、一時的に無効にしたりすることはできません。 マネージド ドメインを削除しても、Azure AD テナントが削除されたり、その他の悪影響が出たりすることはありません。
+
+この記事では、Azure portal を使用してマネージド ドメインを削除する方法について説明します。
 
 > [!WARNING]
 > **削除は永続的であり、元に戻すことはできません。**
-> Azure AD DS マネージド ドメインを削除すると、次の処理が行われます。
+> 
+> マネージド ドメインを削除すると、次の処理が行われます。
 >   * マネージド ドメインのドメイン コント ローラーはプロビジョニング解除され、仮想ネットワークから削除されます。
 >   * マネージド ドメイン上のデータは完全に削除されます。 このデータには、作成したカスタム OU、GPO、カスタムの DNS レコード、サービス プリンシパル、GMSA などが含まれます。
 >   * マネージド ドメインに参加しているコンピューターでは、ドメインとの信頼関係が失われ、ドメインへの参加を解消する必要があります。
@@ -32,19 +35,19 @@ ms.locfileid: "80655464"
 
 ## <a name="delete-the-managed-domain"></a>マネージド ドメインを削除する
 
-Azure AD DS マネージド ドメインを削除するには、次の手順を実行します。
+マネージド ドメインを削除するには、次の手順を実行します。
 
 1. Azure portal で、**Azure AD Domain Services** を検索して選択します。
-1. Azure AD DS マネージド ドメインの名前 (*aaddscontoso.com* など) を選択します。
+1. マネージド ドメインの名前 (*aaddscontoso.com* など) を選択します。
 1. **[概要]** ページで **[削除]** を選択します。 削除を確定するには、マネージド ドメインのドメイン名を再度入力し、 **[削除]** を選択します。
 
-Azure AD DS マネージド ドメインを削除するには、15 から 20 分以上かかることがあります。
+マネージド ドメインを削除するには、15 から 20 分以上かかることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure AD DS に希望する機能があれば、[フィードバックの投稿][feedback]をご検討ください。
 
-Azure AD DS を再開する場合、「[チュートリアル: Azure Active Directory Domain Services インスタンスを作成して構成する][create-instance]」を参照してください。
+Azure AD DS を再開する場合は、[Azure Active Directory Domain Services マネージド ドメインの作成と構成][create-instance]に関する記事をご覧ください。
 
 <!-- INTERNAL LINKS -->
 [feedback]: contact-us.md

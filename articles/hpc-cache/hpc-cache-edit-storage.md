@@ -3,19 +3,22 @@ title: Azure HPC Cache ストレージ ターゲットを更新する
 description: Azure HPC Cache ストレージ ターゲットを編集する方法
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 1/08/2020
-ms.author: rohogue
-ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: v-erkel
+ms.openlocfilehash: 0fa8be58db9754c652d6e1ee5349c950a1c19109
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513834"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する
 
 ストレージ ターゲットは、キャッシュの **[ストレージ ターゲット]** ページから削除または変更できます。
+
+> [!TIP]
+> [Azure HPC Cache の管理ビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)は、ストレージ ターゲットを編集する方法を示しています。
 
 ## <a name="remove-a-storage-target"></a>ストレージ ターゲットの削除
 
@@ -35,7 +38,7 @@ ms.locfileid: "75867001"
 
   * 名前空間のパス
   * 使用モデル
-  * [エクスポート]
+  * エクスポート
   * サブディレクトリのエクスポート
 
 ストレージ ターゲットの名前、種類、またはバックエンド ストレージ システム (Blob コンテナーまたは NFS ホスト名/IP アドレス) を編集することはできません。 これらのプロパティを変更する必要がある場合は、ストレージ ターゲットを削除し、新しい値で置換を作成します。

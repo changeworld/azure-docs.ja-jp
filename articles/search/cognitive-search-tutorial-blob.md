@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/15/2020
+ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190724"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503304"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -140,7 +140,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 1. **POST** と次の URL を使用します。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
 1. 要求の**本文**に次の JSON 定義をコピーします。`connectionString` は、自分のストレージ アカウントの実際の接続に置き換えてください。 
@@ -161,7 +161,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
     ```
 1. 要求を送信します。 成功を確認する状態コード 201 が表示されるはずです。 
 
-403 または 404 エラーが発生した場合は、要求の構造を確認してください。`api-version=2019-05-06` はエンドポイント上にある必要があり、`api-key` は `Content-Type` の後のヘッダーにある必要があり、その値は Search サービスに対して有効である必要があります。 構文が正しいことを確認するために、オンラインの JSON 検証ツールを使用して JSON ドキュメントを実行することができます。 
+403 または 404 エラーが発生した場合は、要求の構造を確認してください。`api-version=2020-06-30` はエンドポイント上にある必要があり、`api-key` は `Content-Type` の後のヘッダーにある必要があり、その値は Search サービスに対して有効である必要があります。 構文が正しいことを確認するために、オンラインの JSON 検証ツールを使用して JSON ドキュメントを実行することができます。 
 
 ### <a name="step-2-create-a-skillset"></a>手順 2:スキルセットを作成する
 
@@ -170,7 +170,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 1. **PUT** と次の URL を使用します。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
     ```http
-    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
 1. 要求の**本文**に次の JSON 定義をコピーします。 このスキルセットは、次の組み込みスキルで構成されています。
@@ -255,7 +255,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 1. **PUT** と次の URL を使用して、インデックスに名前を付けます。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
 1. 要求の**本文**に次の JSON 定義をコピーします。 `content` フィールドには、ドキュメント自体が格納されます。 `languageCode`、`keyPhrases`、および `organizations` の追加フィールドは、スキルセットによって作成される新しい情報 (フィールドと値) を表します。
@@ -339,7 +339,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 1. **PUT** と次の URL を使用して、インデクサーに名前を付けます。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
    ```http
-   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
 1. 要求の**本文**に次の JSON 定義をコピーします。 フィールド マッピング要素に注目してください。これらのマッピングは、データ フローを定義するものであるため、重要です。 
@@ -432,7 +432,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 1. **GET** と次の URL を使用して、インデクサーに名前を付けます。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2020-06-30
    ```
 
 1. 応答を調べて、インデクサーが実行されているかどうかを確認するか、エラーと警告の情報を確認します。  
@@ -451,7 +451,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 1. **GET** と次の URL を使用して、用語や語句の出現箇所を検索します。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。これにより、`content` フィールドと、一致するドキュメントの数が返されます。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=content&api-version=2020-06-30
    ```
    
    このクエリでは、結果としてドキュメントのコンテンツが返されます。これは、コグニティブ検索パイプラインなしで BLOB インデクサーを使用した場合に取得されるのと同じ結果です。 このフィールドは検索可能ですが、ファセット、フィルター、またはオートコンプリートを使用したいと思っても、動作しません。
@@ -461,7 +461,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 1. 2 番目のクエリでは、パイプラインによって作成された新しいフィールドの一部 (persons、organizations、locations、languageCode) が返されます。 簡潔にするために keyPhrases は省略していますが、それらの値を確認したい場合は含める必要があります。
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    $select ステートメントのフィールドには、Cognitive Services の自然言語処理機能によって作成された新しい情報が含まれています。 予想どおり、結果内のノイズやドキュメント間のバリエーションもいくらかあるものの、多くの場合、分析モデルによって正確な結果が生成されます。
 
@@ -472,7 +472,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 1. これらのフィールドをどのように活用できるかを確認するには、ファセット パラメーターを追加して、場所ごとの一致するドキュメントの集計を返します。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2020-06-30
    ``` 
 
    この例では、場所ごとに 2 件または 3 件の一致があります。
@@ -483,7 +483,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 1. この最後の例では、組織のコレクションにフィルターを適用します。それにより、NASDAQ に基づくフィルター条件に対して 2 件の一致が返されます。
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 これらのクエリは、Cognitive Search によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。 その他のクエリの例については、[Search Documents REST API の例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。
@@ -501,7 +501,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 または、**DELETE** を使用して、各オブジェクトの URL を指定します。 次のコマンドは、インデクサーを削除します。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
 ```
 
 正常に削除されると、状態コード 204 が返されます。

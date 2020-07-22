@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 87190c5cab772e4b8dc04672066e575b10c14533
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: 455f71c7fd9defd7a1187f6b5df6b5b3b9c3131b
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800776"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85563755"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -123,10 +123,13 @@ conceptualContent:
     links:
     - itemType: how-to-guide
       text: Speaker Recognition について
-      url: ../Speaker-recognition/Home.md
+      url: speaker-recognition-overview.md
+    - itemType: how-to-guide
+      text: Speaker Recognition の基礎
+      url: speaker-recognition-basics.md
     - itemType: how-to-guide
       text: Speaker Recognition API リファレンス
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
+      url: https://docs.microsoft.com/rest/api/speakerrecognition/
   - title: ツール
     links:
     - itemType: overview
@@ -211,6 +214,8 @@ additionalContent:
         url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
     - title: リソース
       links:
+      - text: ドキュメントの最新情報
+        url: whats-new.md
       - text: 価格
         url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
       - text: リージョン

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c6eaf23950f83592a33709574be464f4499f0ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b4ae8462a3905c63ece1e010fa021c3ab7b6b0fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74823034"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Claromentis の統合
 
@@ -91,10 +91,10 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | | |
-    |-|-|
-    | `https://<customer_site_url>/login`|
-    | `https://<customer_site_url>/login?no_auto=0`|
+    ```https
+    https://<customer_site_url>/login
+    https://<customer_site_url>/login?no_auto=0
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、およびサインオン URL に更新します。実際の値については、このチュートリアルの後の方で説明します。

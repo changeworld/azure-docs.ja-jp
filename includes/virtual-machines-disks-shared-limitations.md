@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/09/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1e53dda2c6cb293a9204f344d152daa1937aa38b
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: ce964ac197fbff64bbb7cc36e8c2bf762f93663f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84337354"
 ---
 プレビュー段階では、一部の種類のディスクでのみ、共有ディスクを有効にできます。 現在のところ、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 共有ディスクが有効になっているマネージド ディスクはそれぞれ、次の制約を受けます。制限はディスクの種類別に整理されています。
 
@@ -23,7 +23,6 @@ Ultra ディスクには、共有ディスクとは関係なく、独自の制�
 
 Ultra ディスクを共有するとき、次の追加制限があります。
 
-- 現在、米国西部 2 のみがサポートされています。
 - Azure Resource Manager または SDK サポートに現在、制限されています。
 - Windows Server フェールオーバー クラスターの一部のバージョンでは、ベーシック ディスクのみを使用できます。詳細については、「[フェールオーバー クラスタリングのハードウェア要件と記憶域オプション](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)」を参照してください。
 

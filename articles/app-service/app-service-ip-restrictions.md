@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207126"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限
 
@@ -59,6 +59,10 @@ IP アドレスに基づく規則を設定するには、種類として IPv4 �
 App Service Environment で実行されているアプリへのアクセスを制限するために、サービス エンドポイントを使うことはできません。 アプリが App Service Environment 内にあるときは、IP アクセス規則でアプリへのアクセスを制御できます。 
 
 サービス エンドポイントにより、Application Gateway やその他の WAF デバイスを使用してアプリを構成することができます。 また、セキュリティで保護されたバックエンドを使用して多層アプリケーションを構成することもできます。 いくつかの方法の詳細については、[ネットワーク機能と App Service](networking-features.md) に関する記事と、「[サービス エンドポイントと Application Gateway の統合](networking/app-gateway-with-service-endpoints.md)」を参照 してください。
+
+> [!NOTE]
+> 現在のところ、IP SSL 仮想 IP (VIP) を使用する Web アプリにはサービス エンドポイントがサポートされていません。 
+>
 
 ## <a name="managing-access-restriction-rules"></a>アクセス制限規則の管理
 

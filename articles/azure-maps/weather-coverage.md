@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c18a09b494de7ecb639fbc5639b7162bdb02d2a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80333584"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241983"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps の天気の対象範囲
 
@@ -166,7 +166,6 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | チュニジア                     | ✓               |                              |        ✓| 
 | ウガンダ                      | ✓               |                              |        ✓| 
 | アラブ首長国連邦        | ✓               |                              |        ✓| 
-| 西サハラ              | ✓               |                              |        ✓| 
 | イエメン                       | ✓               |                              |        ✓| 
 | ザンビア                      | ✓               |                              |        ✓| 
 | ジンバブエ                    | ✓               |                              |        ✓| 

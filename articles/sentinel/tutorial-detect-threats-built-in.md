@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel でアラートを調査する | Microsoft Docs
-description: このチュートリアルでは、Azure Sentinel でアラートを調査する方法について説明します。
+description: すぐに使用できる組み込み Azure 脅威検出テンプレートについて説明します。これを使用すると、何か疑わしいことが発生したときに通知が届きます。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77585205"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560045"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>チュートリアル:難しい設定なしで脅威を検出する
 

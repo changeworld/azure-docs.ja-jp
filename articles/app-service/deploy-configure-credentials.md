@@ -6,10 +6,10 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649124"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
@@ -38,7 +38,7 @@ JSON 出力には、パスワードが `null` として表示されます。 `'C
 
 Azure portal で、[デプロイ資格情報] ページにアクセスするには、少なくとも 1 つのアプリが必要です。 ユーザー レベルの資格情報を構成するには:
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]** 、 **[\<任意のアプリ>]** 、 **[デプロイ センター]** 、 **[FTP]** 、 **[ダッシュボード]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]**  >  **\<any_app>**  >  **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** を選択します。
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workspot Control の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workspot Control の統合 | Microsoft Docs
 description: Azure Active Directory と Workspot Control に対してシングル サインオンを構成する方法について学習します。
 services: active-directory
 documentationCenter: na
@@ -22,7 +22,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086675"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル: Azure Active Directory と Workspot Control の統合
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
 
 このチュートリアルでは、Workspot Control と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Workspot Control を統合すると、次のことができます。
 
@@ -176,11 +176,11 @@ Workspot Control で Azure AD シングル サインオンを構成するには�
 
     1. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** フィールドに、**brittasimon@* yourcompanydomain.extension*** と入力します。 たとえば、「 **BrittaSimon@contoso.<i></i>com**」と入力します。
+    1. **[ユーザー名]** フィールドに、**brittasimon@* yourcompanydomain.extension** と入力します*。 たとえば、「 **BrittaSimon@contoso.<i></i>com**」と入力します。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

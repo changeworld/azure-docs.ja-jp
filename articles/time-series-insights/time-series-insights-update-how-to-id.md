@@ -1,21 +1,21 @@
 ---
 title: 時系列 ID の選択のベスト プラクティス - Azure Time Series Insights | Microsoft Docs
 description: Azure Time Series Insights プレビューで時系列 ID を選択する場合のベスト プラクティスについて説明します。
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+author: shipramishra
+ms.author: shmishr
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 312bb9bac93ea30d01e1c3138709325ee1aa6173
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838724"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042171"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
@@ -37,9 +37,10 @@ ms.locfileid: "82838724"
 従うべき主なベストプラクティスは、次のとおりです：
 
 * 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
-* タイム シリーズ ID は、[タイム シリーズ モデル](./time-series-insights-update-tsm.md)のリーフ ノード レベルで一意である必要があります。
+* タイム シリーズ ID は、[タイム シリーズ モデル](./concepts-model-overview.md)のリーフ ノード レベルで一意である必要があります。
 * 時系列 ID のプロパティ名文字列の文字制限は、128 です。 時系列 ID のプロパティ値の場合、文字数の制限は 1024 です。
 * 時系列 ID の一意のプロパティ値がない場合は、null 値として扱われ、一意性制約と同じルールに従います。
+* 時系列 ID が複雑な JSON オブジェクト内で入れ子になっている場合、プロパティ名を指定するとき、イングレス [フラット化ルール](./concepts-json-flattening-escaping-rules.md)に従います。 例 [B](concepts-json-flattening-escaping-rules.md#example-b) を確認してください。 
 * 時系列 ID として最大 *3* 個のキー プロパティも選択できます。 これらの組み合わせは、時系列 ID を表す複合キーになります。  
   > [!NOTE]
   > 3 個のキー プロパティは文字列である必要があります。
@@ -75,12 +76,10 @@ ms.locfileid: "82838724"
 
 Azure portal では、次のようにして、複合キーを入力できます：
 
-```JSON
-[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
-```
+[![環境に合わせてタイム シリーズ ID を構成します。](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [データ モデリング](./time-series-insights-update-tsm.md)の詳細を確認します。
+* [JSON のフラット化とエスケープのルール](./concepts-json-flattening-escaping-rules.md)を読み、イベントの格納方法を理解する。
 
 * [Azure Time Series Insights プレビューの環境](./time-series-insights-update-plan.md)を計画します。

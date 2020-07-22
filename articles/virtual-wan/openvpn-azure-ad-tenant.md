@@ -5,15 +5,15 @@ titleSuffix: Azure Virtual WAN
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 74347ce969b6a5ffd57f5ca8396517e78590f3f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c65d194d03dd1b7ff4cc2f3b45d84ff7909968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059454"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753358"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>ユーザー VPN OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 

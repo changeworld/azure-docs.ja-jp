@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 03fe40cea5891e87f42f0d6a50eedee80a68f25e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: efcc5e8f629c8b6ccc903478473b54989c0e9fd6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200534"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959493"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ ms.locfileid: "83200534"
 開始する前に次の点を確認します。
 
 - 「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。 
-- コピージョブが完了していること。 コピージョブが進行中の場合、発送準備を行うことはできません。
+- コピー ジョブが完了し、 **[接続とコピー]** ページにエラーがないこと。 コピー ジョブが進行中の場合、または **[接続とコピー]** ページにエラーがある場合、発送準備を行うことはできません。
 
 ## <a name="prepare-to-ship"></a>発送の準備をする
 

@@ -3,12 +3,12 @@ title: ServiceNow で Azure サービス正常性アラートを送信する
 description: ServiceNow インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654105"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260211"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>ServiceNow で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -140,9 +140,10 @@ ms.locfileid: "77654105"
      ![ServiceNow の [Base API Path]\(ベース API パス\)](./media/webhook-alerts/servicenow-base-api-path.png)
 
 1.  完全統合 URL は次のようになります。
-        
-         https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
+    ```http
+    https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
+    ```
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>ServiceNow を使用して Azure Portal でアラートを作成する
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:

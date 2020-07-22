@@ -8,8 +8,6 @@
   items:
     - name: 使用条件への同意を必須にする
       href: require-tou.md
-    - name: セッションのリスクが検出されたときにアクセスをブロックする
-      href: app-sign-in-risk.md
 - name: チュートリアル
   items:
     - name: Azure Multi-Factor Authentication を必須とする
@@ -49,8 +47,6 @@
       href: controls.md
     - name: クラシック ポリシーの移行
       href: policy-migration.md
-    - name: ベースライン保護ポリシー
-      href: concept-baseline-protection.md
 - name: 操作方法ガイド
   expanded: true
   items:
@@ -68,8 +64,10 @@
           href: howto-conditional-access-policy-azure-management.md
         - name: すべてのユーザーに対して MFA を必須にする
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: リスクベースの条件付きアクセス
+        - name: サインイン リスクベースの条件付きアクセス
           href: howto-conditional-access-policy-risk.md
+        - name: ユーザー リスクベースの条件付きアクセス
+          href: howto-conditional-access-policy-risk-user.md
         - name: セキュリティ情報の登録のセキュリティ保護
           href: howto-conditional-access-policy-registration.md
         - name: 場所ごとにアクセスをブロックする
@@ -104,6 +102,18 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: よく寄せられる質問
           href: faqs.md
+- name: リファレンス
+  items:
+    - name: ベータ版 Graph API
+      items:
+        - name: conditionalAccessPolicy API
+          href: /graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta
+        - name: namedLocation API
+          href: /graph/api/resources/namedlocation?view=graph-rest-beta
+        - name: countryNamedLocation API
+          href: /graph/api/resources/countrynamedlocation?view=graph-rest-beta
+        - name: ipNamedLocation API
+          href: /graph/api/resources/ipnamedlocation?view=graph-rest-beta
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

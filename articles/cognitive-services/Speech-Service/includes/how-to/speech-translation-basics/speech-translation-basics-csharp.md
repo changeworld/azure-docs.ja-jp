@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: bac2ed447c9055f095e604725591c487378f5091
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0f113c22d28b4ae211562974d1c3292f54351498
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399646"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035536"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -17,7 +17,7 @@ ms.locfileid: "81399646"
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
-何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 お使いのプラットフォームに応じて、Speech SDK の記事の「<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Speech SDK を取得する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」セクションに記載されている手順に従ってください。
+何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 お使いのプラットフォームに応じて、記事「_Speech SDK について_」の「<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Speech SDK を取得する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」セクションに記載されている手順に従ってください。
 
 ## <a name="import-dependencies"></a>依存関係のインポート
 
@@ -105,7 +105,7 @@ static async Task TranslateSpeechAsync()
 
 ## <a name="add-translation-language"></a>翻訳言語を追加する
 
-音声翻訳のもう 1 つの一般的なタスクは、対象の翻訳言語を指定することです。少なくとも 1 つが必要ですが、複数もサポートされています。 次のコード スニペットでは、フランス語とドイツ語の両方が翻訳言語ターゲットとなっています。
+音声翻訳のもう 1 つの一般的なタスクは、対象の翻訳言語を指定することです。少なくとも 1 つが必要ですが、複数もサポートされています。 次のコード スニペットでは、フランス語とドイツ語の両方が翻訳言語ターゲットとして設定されています。
 
 ```csharp
 static async Task TranslateSpeechAsync()

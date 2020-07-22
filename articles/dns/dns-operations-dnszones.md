@@ -4,21 +4,19 @@ description: Azure Powershell を使用して DNS ゾーンを管理できます
 services: dns
 documentationcenter: na
 author: rohinkoul
-manager: timlt
-ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: rohink
-ms.openlocfilehash: 0120501aab7f0a63721126bfb5b3d04d9deb42fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46e2d31c8d6c5a175239c76795359ad64b1abd3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76936813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686207"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell を使用して DNS ゾーンを管理する方法
 

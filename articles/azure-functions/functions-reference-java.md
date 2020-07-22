@@ -3,12 +3,12 @@ title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145326"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057604"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -16,7 +16,7 @@ Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win
 
 他の言語と同様、関数アプリにも、1 つまたは複数の関数を使用することができます。 Java 関数は、注釈 `@FunctionName` で装飾された `public` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 Java で作成された 1 つの関数アプリに、`@FunctionName` で注釈付けされたパブリック メソッドを複数持つクラスが複数存在することもあります。
 
-この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 さらに、[Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) または [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java) を使用して、最初の関数を作成する Functions のクイック スタートも終えている必要があります。
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、次の Functions のクイックスタートのいずれかを完了する必要があります: [Visual Studio Code を使用した初めての Java 関数の作成](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)または [Maven を使用したコマンド ラインからの初めての Java 関数の作成](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。
 
 ## <a name="programming-model"></a>プログラミング モデル 
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 このアーキタイプの基本的な使い方については、[Java クイックスタート](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)を参照してください。 
 
-## <a name="create-kotlin-functions-preview"></a>Kotlin 関数を作成する (プレビュー)
-
-Kotlin 関数を生成する Maven アーキタイプもあります。 このアーキタイプは現在プレビュー段階であり、[com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/) という _groupId_:_artifactId_ で発行されています。 
-
-次のコマンドを使用すると、このアーキタイプを使用して新しい Java 関数プロジェクトが生成されます。
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-このアーキタイプの基本的な使い方については、[Kotlin クイックスタート](functions-create-first-kotlin-maven.md)を参照してください。
-
 ## <a name="folder-structure"></a>フォルダー構造
 
 Azure Functions の Java プロジェクトのフォルダー構造を次に示します。
@@ -89,8 +75,6 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
-
-_* Kotlin プロジェクトは、あくまで Maven であるため、見た目はよく似ています_
 
 共有 [host.json](functions-host-json.md) ファイルを使用して関数アプリを構成できます。 各関数には、独自のコード ファイル (.java) とバインディング構成ファイル (function.json) があります。
 
@@ -391,7 +375,7 @@ public class Function {
 
 ## <a name="execution-context"></a>実行コンテキスト
 
-`azure-functions-java-library` 内で定義されている `ExecutionContext` には、関数ランタイムと通信するためのヘルパー メソッドが含まれています。
+`azure-functions-java-library` 内で定義されている `ExecutionContext` には、関数ランタイムと通信するためのヘルパー メソッドが含まれています。 詳しくは、[ExecutionContext のリファレンス記事](/java/api/com.microsoft.azure.functions.executioncontext)をご覧ください。
 
 ### <a name="logger"></a>ロガー
 
@@ -467,6 +451,6 @@ Java による Azure Functions 開発の詳細については、次のリソー�
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使ったローカルでの開発とデバッグ
-* [Visual Studio Code を使用した Java Azure Functions のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Visual Studio Code を使用した Java 関数のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [Maven plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) (Azure Functions 用の Maven プラグイン) 
 * `azure-functions:add` 目標を使って関数の作成を効率化し、[ZIP ファイル デプロイ](deployment-zip-push.md)に向けてステージング ディレクトリを準備します。

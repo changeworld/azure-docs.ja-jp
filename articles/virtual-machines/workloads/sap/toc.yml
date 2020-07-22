@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -123,6 +123,8 @@
     - name: Azure での SAP NetWeaver の計画と実装
       href: planning-guide.md
       items:
+        - name: SAP ワークロードの Azure Storage の種類
+          href: planning-guide-storage.md
         - name: Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
           href: sap-planning-supported-configurations.md
         - name: Azure デプロイでサポートされている SAP ソフトウェア
@@ -230,7 +232,7 @@
             - name: A(SCS) インスタンス用の Pacemaker マルチ SID を使用した RHEL
               href: high-availability-guide-rhel-multi-sid.md
     - name: SAP のディザスター リカバリーのための Azure Site Recovery
-      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+      href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
       href: sap-proximity-placement-scenarios.md
 - name: AAD SAP ID 統合およびシングル サインオン
@@ -259,6 +261,18 @@
       href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
     - name: Azure Data Factory による SAP HANA と Business Warehouse データの統合
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+- name: SAP ソリューション向け Azure Monitor
+  items:
+    - name: SAP ソリューション向け Azure Monitor の概要
+      href: azure-monitor-overview.md
+    - name: SAP ソリューション向け Azure Monitor のプロバイダー
+      href: azure-monitor-providers.md
+    - name: SAP ソリューション向け Azure Monitor に関する FAQ
+      href: azure-monitor-faq.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/sap-hana/hanainstance
 - name: リソース
   items:
     - name: Azure のロードマップ

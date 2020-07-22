@@ -4,16 +4,16 @@ description: AzCopy と Amazon S3 バケットでデータを転送する
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75941497"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513764"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
@@ -135,7 +135,7 @@ AzCopy の `copy` コマンドの一部として、オプションの `s2s-inval
 | **FailIfInvalid** | オブジェクトはコピーされません。 AzCopy はエラーを記録し、そのエラーを、転送の概要に表示される失敗の数に含めます。  |
 | **RenameIfInvalid**  | AzCopy は無効なメタデータ キーを解決し、解決されたメタデータのキーと値のペアを使用してオブジェクトを Azure にコピーします。 AzCopy でオブジェクト キーの名前を変更するために実行する正確な手順については、以下の「[AzCopy でオブジェクト キーの名前を変更する方法](#rename-logic)」のセクションを参照してください。 AzCopy でキーの名前を変更できない場合、オブジェクトはコピーされません。 |
 
-<a id="rename-logic" />
+<a id="rename-logic"></a>
 
 ### <a name="how-azcopy-renames-object-keys"></a>AzCopy でオブジェクト キーの名前を変更する方法
 

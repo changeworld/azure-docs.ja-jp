@@ -13,6 +13,9 @@
       href: quick-create-portal.md
     - name: VM の作成 - Azure PowerShell
       href: quick-create-powershell.md
+    - name: VM の作成 - Resource Manager テンプレート
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: チュートリアル
   items:
     - name: 1 - VM の作成/管理
@@ -53,12 +56,8 @@
       href: tutorial-azure-devops-blue-green-strategy.md
     - name: 15d - Azure Pipelines を使用した CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16a - LAMP スタックの作成
+    - name: 16 - LAMP スタックの作成
       href: tutorial-lamp-stack.md
-    - name: 16b - LEMP スタックの作成
-      href: tutorial-lemp-stack.md
-    - name: 16c - MEAN スタックの作成
-      href: tutorial-mean-stack.md
     - name: 17 - SSL による Web サーバーのセキュリティ保護
       href: tutorial-secure-web-server.md
 - name: サンプル
@@ -158,8 +157,16 @@
       href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
-    - name: イメージ
-      href: shared-image-galleries.md
+    - name: イメージング
+      items:
+        - name: 概要
+          href: imaging.md
+        - name: プロビジョニング
+          href: provisioning.md
+        - name: 共有イメージ ギャラリー
+          href: shared-image-galleries.md
+        - name: Image Builder
+          href: image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: リージョン
@@ -202,6 +209,10 @@
               href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Dav4 および Dasv4 シリーズ
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ddv4 および Ddsv4 シリーズ
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv4 および Dsv4 シリーズ
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: コンピューティング最適化
           items:
             - name: 概要
@@ -219,6 +230,10 @@
               href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Eav4 および Easv4 シリーズ
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Edv4 および Edsv4 シリーズ
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev4 および Esv4 シリーズ
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: M シリーズ
               href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Mv2 シリーズ
@@ -281,6 +296,8 @@
         - name: スポット VM
           href: spot-vms.md
           displayName: 'pre-empt, preempt'
+        - name: 一時ディスクを使用しない Azure VM
+          href: ../azure-vms-no-temp-disk.md
         - name: 旧世代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Isolated のサイズ
@@ -333,7 +350,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: infrastructure-automation.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: security-policy.md
@@ -350,9 +367,9 @@
     - name: バックアップと回復
       href: backup-recovery.md
     - name: クラウド導入フレームワーク
-      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/'
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
     - name: アーキテクチャ センター
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
+      href: 'https://docs.microsoft.com/azure/architecture/'
     - name: インフラストラクチャのガイドライン
       href: infrastructure-example.md
 - name: 操作方法ガイド
@@ -406,6 +423,50 @@
     - name: イメージの使用
       displayName: 'SIG, AMI, image'
       items:
+        - name: ディストリビューション固有の要件
+          items:
+            - name: 一般的な手順
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: cloud-init を使用する
+          items:
+            - name: cloud-init の概要
+              href: using-cloud-init.md
+            - name: 詳細情報
+              href: cloud-init-deep-dive.md
+            - name: トラブルシューティング
+              href: cloud-init-troubleshooting.md
+            - name: VM のホスト名の構成
+              href: cloudinit-update-vm-hostname.md
+            - name: VM 内のパッケージの更新
+              href: cloudinit-update-vm.md
+            - name: VM へのユーザーの追加
+              href: cloudinit-add-user.md
+            - name: スワップ ファイルの構成
+              href: cloudinit-configure-swapfile.md
+            - name: 既存の Bash スクリプトの実行
+              href: cloudinit-bash-script.md
+            - name: cloud-init のための既存の VM の準備
+              href: cloudinit-prepare-custom-image.md
+        - name: 次を使用せずにイメージを作成する
+          href: no-agent.md
+        - name: Linux エージェントのプロビジョニングを無効にする
+          href: disable-provisioning.md
         - name: Shared Image Gallery
           items:
             - name: CLI
@@ -416,12 +477,16 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-cli.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-cli.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-cli.md
                     - name: 別のギャラリーからコピーする
                       href: ../image-version-another-gallery-cli.md
                 - name: VM の作成
                   items:
+                    - name: 専用イメージ
+                      href: ../vm-specialized-image-version-cli.md
                     - name: 一般化されたイメージ
                       href: ../vm-generalized-image-version-cli.md
                 - name: イメージ リソースを更新する
@@ -436,6 +501,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-powershell.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-powershell.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-powershell.md
                     - name: 別のギャラリーからコピーする
@@ -448,6 +515,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: イメージ リソースを更新する
                   href: ../update-image-resources-powershell.md
+                - name: 共有のためのアプリの登録
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: ポータル
               items:
                 - name: ギャラリー、イメージ、VM の作成
@@ -469,8 +538,6 @@
               href: ../image-version-encryption.md
         - name: Image Builder (プレビュー)
           items:
-            - name: 概要
-              href: image-builder-overview.md
             - name: Azure CLI の使用
               href: image-builder.md
             - name: Resource Manager テンプレート リファレンス
@@ -484,27 +551,9 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
-        - name: カスタム イメージを作成する
-          items:
-            - name: 一般的な手順
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: VM をイメージにキャプチャする
+        - name: 購入プラン情報
+          href: ../marketplace-images.md
+        - name: VM をマネージド イメージにキャプチャする
           href: capture-image.md
         - name: Packer でイメージを作成する
           href: build-image-with-packer.md
@@ -512,7 +561,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -684,7 +733,7 @@
             - name: エージェントの概要
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: よく寄せられる質問
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Diagnostics 拡張機能
               items:
                 - name: 概要
@@ -741,7 +790,7 @@
             - name: 一般提供の FAQ
               href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: よく寄せられる質問
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要
@@ -802,22 +851,6 @@
               href: /azure/developer/terraform/install-configure
             - name: 完全な VM の作成
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: cloud-init
-          items:
-            - name: cloud-init の概要
-              href: using-cloud-init.md
-            - name: VM のホスト名の構成
-              href: cloudinit-update-vm-hostname.md
-            - name: VM 内のパッケージの更新
-              href: cloudinit-update-vm.md
-            - name: VM へのユーザーの追加
-              href: cloudinit-add-user.md
-            - name: スワップ ファイルの構成
-              href: cloudinit-configure-swapfile.md
-            - name: 既存の Bash スクリプトの実行
-              href: cloudinit-bash-script.md
-            - name: cloud-init のための既存の VM の準備
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:
@@ -840,11 +873,7 @@
     - name: アプリケーションの実行
       items:
         - name: Cloud Foundry
-          items:
-            - name: 概要
-              href: cloudfoundry-get-started.md
-            - name: 初めてのアプリのデプロイ
-              href: cloudfoundry-deploy-your-first-app.md
+          href: 'https://docs.microsoft.com/azure/cloudfoundry/'
         - name: Cassandra
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json'
         - name: OpenShift
@@ -887,7 +916,7 @@
           href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
         - name: IBM Db2 pureScale
           items:
-            - name: Architecture
+            - name: アーキテクチャ
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
@@ -922,6 +951,16 @@
           href: disks-incremental-snapshots-portal.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
+        - name: 暗号化
+          items:
+            - name: ホスト時の暗号化を有効にする - CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: カスタマー マネージド キーを有効にする - CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: カスタマー マネージド キーを有効にする - ポータル
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: 保存時の二重暗号化を有効にする
+              href: disks-enable-double-encryption-at-rest-cli.md
         - name: 移行と変換
           items:
             - name: Azure Site Recovery を使用した Premium Storage への移行
@@ -946,8 +985,10 @@
               href: configure-raid.md
             - name: LVM を構成する
               href: configure-lvm.md
-        - name: アタッチされていないディスクの検出
+        - name: アタッチされていないディスクの検出 - CLI
           href: find-unattached-disks.md
+        - name: アタッチされていないディスクの検出 - ポータル
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: File Storage を使用する
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: ディスクに関する FAQ

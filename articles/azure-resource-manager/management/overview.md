@@ -1,14 +1,14 @@
 ---
-title: 概要
+title: Azure Resource Manager の概要
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 ms.topic: overview
 ms.date: 04/21/2020
-ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870486"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087029"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -68,7 +68,7 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 リソース グループを定義する際、次のような考慮すべき要素があります。
 
-* グループ内のすべてのリソースで、同じライフサイクルが共有される必要がある。 そのため、これらのリソースは一緒にデプロイ、更新、削除されます。 データベース サーバーなどの 1 つのリソースが、別のデプロイ サイクル上に存在する必要がある場合は、別のリソース グループに含めなければなりません。
+* グループ内のすべてのリソースで、同じライフサイクルが共有される必要がある。 そのため、これらのリソースは一緒にデプロイ、更新、削除されます。 サーバーなどの 1 つのリソースが、別のデプロイ サイクル上に存在する必要がある場合は、別のリソース グループに含めなければなりません。
 
 * 各リソースは、1 つのリソース グループにのみ存在できる。
 

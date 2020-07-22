@@ -12,6 +12,13 @@
   items:
     - name: Azure リソースの監視
       href: learn/quick-monitor-azure-resource.md
+    - name: ワークスペースへのアクティビティ ログの送信
+      items:
+        - name: Azure portal
+          href: learn/quick-collect-activity-log-portal.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: learn/quick-collect-activity-log-arm.md
     - name: 仮想マシンの監視
       items:
         - name: Azure VM
@@ -74,6 +81,10 @@
               href: samples/resource-manager-alerts-metric.md
             - name: アクション グループ
               href: samples/resource-manager-action-groups.md
+        - name: Application Insights
+          items:
+            - name: リソースの作成
+              href: samples/resource-manager-app-resource.md
         - name: 診断設定
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics ワークスペース
@@ -114,6 +125,8 @@
         - name: ログ データ インジェスト時間
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Event Hubs へのデータのストリーム配信
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: 洞察
       href: insights/insights-overview.md
     - name: データのセキュリティ
@@ -155,6 +168,8 @@
           displayname: VM
     - name: 管理と構成
       items:
+        - name: 大規模にデプロイする
+          href: platform/deploy-scale.md
         - name: ロールのアクセス許可とセキュリティ
           href: platform/roles-permissions-security.md
         - name: IP アドレス
@@ -195,7 +210,7 @@
             - name: 概要
               href: platform/agents-overview.md
             - name: よく寄せられる質問
-              href: 'faq.md#agents'
+              href: faq.md#agents
             - name: Azure Diagnostics 拡張機能
               items:
                 - name: 概要
@@ -230,7 +245,7 @@
                     - name: バージョン履歴
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON Lines リソース ログの形式
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: トラブルシューティング
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -297,36 +312,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: アクティビティ ログ
-          items:
-            - name: Azure portal に表示
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: 収集と分析
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: エクスポート (レガシ)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Log Analytics ワークスペースに送信する
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Azure Storage への送信
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Event Hubs への送信
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: 診断設定の作成
+          href: platform/activity-log.md
+        - name: リソース ログ
+          href: platform/resource-logs.md
+        - name: 診断設定
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Resource Manager での診断設定の作成
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: BLOB ストレージのフォーマットの変更
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Event Hubs へのデータのストリーム配信
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: ログ クエリの概要
@@ -402,6 +393,8 @@
               href: log-query/unify-app-resource-data.md
         - name: 例とガイダンス
           items:
+            - name: クエリの例
+              href: log-query/saved-queries.md
             - name: ログ クエリの例
               href: log-query/examples.md
             - name: スマート分析の例
@@ -464,6 +457,8 @@
               href: platform/alerts-metric-logs.md
             - name: Resource Manager テンプレートの使用
               href: platform/alerts-metric-create-templates.md
+            - name: メトリック アラートのトラブルシューティング
+              href: platform/alerts-troubleshoot-metric.md
         - name: ログ アラート ルール
           items:
             - name: 分析クエリのアラートを構成する
@@ -473,7 +468,7 @@
             - name: Webhook アクション
               href: platform/alerts-log-webhook.md
             - name: ログ アラートのトラブルシューティング
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: アクティビティ ログ アラート ルール
           items:
             - name: アクティビティ ログ イベントのアラート
@@ -524,6 +519,8 @@
           href: platform/api-alerts.md
         - name: アラートのトラブルシューティング
           href: platform/alerts-troubleshoot.md
+        - name: アラートとリージョンの移動
+          href: platform/alerts-resource-move.md
         - name: IT Service Management
           items:
             - name: IT Service Management Connector
@@ -620,6 +617,10 @@
                   href: app/javascript.md
                 - name: JavaScript のソース マップ
                   href: app/source-map-support.md
+                - name: トラブルシューティング
+                  items:
+                    - name: SDK 読み込みエラー
+                      href: app/javascript-sdk-load-failure.md
             - name: Application Insights API の概要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -629,6 +630,8 @@
               href: app/remove-application-insights.md
         - name: コード不要の監視
           items:
+            - name: 概要
+              href: app/codeless-overview.md
             - name: Azure VM とスケール セット
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service
@@ -741,6 +744,8 @@
               href: app/profiler-settings.md
             - name: プロファイリング要求を追跡する
               href: app/profiler-trackrequests.md
+            - name: BYOS (Bring Your Own Storage) を構成する
+              href: app/profiler-bring-your-own-storage.md
             - name: Profiler に関するトラブルシューティング
               href: app/profiler-troubleshooting.md
         - name: スナップショット デバッガー
@@ -754,6 +759,8 @@
               href: app/snapshot-debugger-vm.md
             - name: スナップショット デバッガーのアップグレード
               href: app/snapshot-debugger-upgrade.md
+            - name: BYOS (Bring Your Own Storage) を構成する
+              href: app/profiler-bring-your-own-storage.md
             - name: スナップショット デバッガーのトラブルシューティング
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md
@@ -893,7 +900,7 @@
         - name: 一般提供の FAQ
           href: insights/vminsights-ga-release-faq.md
         - name: よく寄せられる質問
-          href: 'faq.md#azure-monitor-for-vms'
+          href: faq.md#azure-monitor-for-vms
         - name: 監視を有効にする
           items:
             - name: 監視の有効化の概要
@@ -925,7 +932,7 @@
         - name: 概要
           href: insights/container-insights-overview.md
         - name: よく寄せられる質問
-          href: 'faq.md#azure-monitor-for-containers'
+          href: faq.md#azure-monitor-for-containers
         - name: 監視を有効にする
           items:
             - name: 監視の有効化の概要
@@ -934,6 +941,8 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: 既存の AKS クラスターでの有効化
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Arc 対応クラスターでの有効化
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: ハイブリッド クラスターでの有効化
               href: insights/container-insights-hybrid-setup.md
             - name: Azure Red Hat OpenShift v3 での有効化
@@ -992,15 +1001,17 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
-        - name: Key Vault
-          href: insights/key-vaults-insights-overview.md
         - name: ネットワーク
           href: insights/network-insights-overview.md
+        - name: Key Vault
+          href: insights/key-vault-insights-overview.md
         - name: ストレージ
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
           href: insights/storage-insights-overview.md
         - name: リソース グループ
           href: insights/resource-group-insights.md
+        - name: 分析情報のトラブルシューティング
+          href: insights/troubleshoot-workbooks.md
     - name: ソリューション
       items:
         - name: 概要
@@ -1079,23 +1090,10 @@
               href: platform/view-designer-parts.md
             - name: フィルター
               href: platform/view-designer-filters.md
-        - name: カスタム ソリューション
-          items:
-            - name: 設計とビルド
-              href: insights/solutions-creating.md
-            - name: ソリューション ファイル
-              href: insights/solutions-solution-file.md
-            - name: Automation リソース
-              href: insights/solutions-resources-automation.md
-            - name: ログ検索とアラート
-              href: insights/solutions-resources-searches-alerts.md
-            - name: ビュー
-              href: insights/solutions-resources-views.md
-            - name: ベスト プラクティス
-              href: insights/solutions-best-practices.md
     - name: Workbooks
       items:
         - name: 概要
+          displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: 視覚化
           href: platform/workbooks-visualizations.md
@@ -1133,6 +1131,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: アプリケーション データを使用したダッシュボード
               href: learn/tutorial-app-dashboards.md
+            - name: Log Analytics ダッシュボードをアップグレードする
+              href: log-query/dashboard-upgrade.md
         - name: データを Grafana に送信する
           href: platform/grafana-plugin.md
     - name: カスタム データの収集と分析
@@ -1184,10 +1184,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: プラットフォーム ログ
       items:
-        - name: リソース ログ スキーマ
-          href: platform/diagnostic-logs-schema.md
         - name: アクティビティ ログのスキーマ
           href: platform/activity-log-schema.md
+        - name: リソース ログ スキーマ
+          href: platform/resource-logs-schema.md
+        - name: サポートされているリソース ログのカテゴリ
+          href: platform/resource-logs-categories.md
     - name: 診断の拡張機能のスキーマ
       items:
         - name: Windows Diagnostics 拡張機能
@@ -1206,6 +1208,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: リリース ノート
+          items:
+            - name: Web アプリ拡張機能
+              href: app/web-app-extension-release-notes.md
         - name: データ モデル
           items:
             - name: 概要
@@ -1239,9 +1245,14 @@
     - name: Azure CLI
       items:
         - name: Azure Monitor
-          href: /cli/azure/monitor?view=azure-cli-latest
+          href: /cli/azure/azure-cli-reference-for-monitor
+          displayName: 'Action Groups, Autoscale, Diagnostic Settings, Metrics, Private Link Scope'
         - name: Application Insights
-          href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'
+          href: /cli/azure/ext/application-insights/monitor/app-insights
+        - name: アクティビティ ログ
+          href: /cli/azure/monitor/activity-log
+        - name: Log Analytics
+          href: /cli/azure/monitor/log-analytics
     - name: REST API
       items:
         - name: Azure Monitor
@@ -1274,6 +1285,9 @@
           href: platform/oms-portal-transition.md
         - name: ディスク メトリックの廃止
           href: platform/portal-disk-metrics-deprecation.md
+        - name: BLOB ストレージのフォーマットの変更
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: リソース
   items:
     - name: Azure のロードマップ

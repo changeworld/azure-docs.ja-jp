@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0cb402741163c657b3e7961eb5a4f9c8e18dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112577"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673022"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -40,6 +40,7 @@ Microsoft では、継続的アクセス評価の最初の実装について、E
 
 - ユーザーアカウントが削除または無効化された
 - ユーザーのパスワードが変更またはリセットされた
+- MFA がユーザーに対して有効になっている
 - 管理者が、ユーザーのすべての更新トークンを明示的に取り消した
 - Azure AD Identity Protection によって管理者特権のユーザー リスクが検出された
 
@@ -50,13 +51,13 @@ Microsoft では、継続的アクセス評価の最初の実装について、E
 継続的アクセス評価を行う前に、クライアントは、期限切れになっていない限り、常にキャッシュからアクセス トークンを再生しようとします。 CAE では、リソース プロバイダーが期限切れになっていない場合も、トークンを拒否できる新しいケースが導入されています。 キャッシュされたトークンの有効期限が切れていない場合でも、クライアントにキャッシュをバイパスするように通知するために、**要求チャレンジ**と呼ばれるメカニズムが導入されました。 CAE で要求チャレンジを認識するには、クライアントの更新が必要です。 次のアプリケーションの最新バージョンで、要求チャレンジがサポートされています。
 
 - Windows 用 Outlook 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- Outlook for iOS 
+- Outlook for Android 
+- Outlook for Mac 
 - Windows 用 Teams
-- Teams iOS 
-- Teams Android 
-- Teams Mac 
+- Teams for iOS 
+- Teams for Android 
+- Teams for Mac 
 
 ## <a name="token-lifetime"></a>トークンの有効期間
 
@@ -76,7 +77,7 @@ CAE セッションでは、アクセス トークンの有効期間が 24 時�
 1. リソース プロバイダーにアクセス トークンが提示されます。 リソース プロバイダーは、トークンの有効性を評価し、ユーザーの失効イベントがあるかどうかを確認します。 リソース プロバイダーは、この情報を使用して、リソースへのアクセスを許可するかどうかを決定します。
 1. この場合、リソース プロバイダーはアクセスを拒否し、401+ 要求チャレンジをクライアントに送り返します
 1. CAE 対応クライアントは、401+ 要求チャレンジを認識します。 キャッシュをバイパスし、手順 1 に戻り、要求チャレンジと共に更新トークンを Azure AD に送り返します。 その後、Azure AD ですべての条件が再評価され、この場合はユーザーに再認証を求めるメッセージが表示されます。
- 
+
 ## <a name="faqs"></a>FAQ
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>アクセス トークンの有効期間はどれくらいですか。

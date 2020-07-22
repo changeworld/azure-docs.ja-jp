@@ -37,7 +37,7 @@
       items:
         - name: Azure NetApp Files を使用したソリューション アーキテクチャ
           href: azure-netapp-files-solution-architectures.md
-        - name: 特定のソリューション
+        - name: Azure NetApp Files 利用のメリット
           items:
             - name: Oracle Database での Azure NetApp Files 利用のメリット
               href: solutions-benefits-azure-netapp-files-oracle-database.md
@@ -73,8 +73,10 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: 開発
       items:
-        - name: REST
+        - name: REST API
           href: azure-netapp-files-develop-with-rest-api.md
+        - name: PowerShell を使用した REST API
+          href: develop-rest-api-powershell.md
         - name: Azure NetApp Files SDK および CLI ツール
           href: azure-netapp-files-sdk-cli.md
         - name: Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング

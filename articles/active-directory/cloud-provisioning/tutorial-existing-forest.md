@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa612ad30ae0faa42071613be15c1d91fb96b8f6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d369395cc06902f31bdf17b427ecbb9f71f42001
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80332260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146820"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
 
@@ -105,13 +105,13 @@ ms.locfileid: "80332260"
 2.  **[Azure Active Directory]** をクリックします。
 3.  **[Azure AD Connect]** をクリックします。
 4.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
-![](media/how-to-configure/manage1.png)
+![[プロビジョニングの管理 (プレビュー)] リンクのスクリーンショット。](media/how-to-configure/manage1.png)
 5.  **[新しい構成]** をクリックします。
-![](media/tutorial-single-forest/configure1.png)
+![[新しい構成] リンクを強調表示した [Azure AD のプロビジョニング (プレビュー)] 画面のスクリーンショット。](media/tutorial-single-forest/configure1.png)
 7.  構成画面で、**通知用メール アドレス**を入力し、セレクターを **[有効]** に移動して、 **[保存]** をクリックします。
-![](media/tutorial-single-forest/configure2.png)
+![メール アドレスの入力を終え、[有効にする] を選択した状態の [構成] 画面のスクリーンショット。](media/tutorial-single-forest/configure2.png)
 1.  構成の状態が **[正常]** になります。
-![](media/how-to-configure/manage4.png)
+![ステータスが [正常] と表示された状態の [Azure AD のプロビジョニング (プレビュー)] 画面のスクリーンショット。](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>ユーザーが作成され、同期が実行されていることを確認する
 オンプレミスのディレクトリに存在していたユーザーが同期され、現在は Azure AD テナントに存在することを確認します。  これが完了するまでに数時間かかる場合があることに注意してください。  ユーザーが同期されていることを確認するには、以下を実行します。

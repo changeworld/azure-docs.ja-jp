@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60580938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513630"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array のバックアップから複製する
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/27/2020
+ms.date: 7/10/2020
 ms.author: raynew
-ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420837"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219880"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -30,11 +30,15 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 
-**[サーバー]** | **必要条件** | **詳細**
+**サーバー** | **必要条件** | **詳細**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager なしで実行) |  Windows Server 2019、Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。 
-Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。<br/><br/> 注:別の場所へのフェールバックは、Windows Server 2019 ホストではサポートされていません。
+Hyper-V (Virtual Machine Manager なしで実行) |  最新の更新プログラムが適用された Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 (Windows Server 2019 を除くこれらのオペレーティング システムのサーバー コア インストールを含む) | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。
+Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 (Virtual Machine Manager 2019 を除くこれらのオペレーティング システムのサーバー コア インストールを含む) | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。
 
+> [!NOTE]
+>
+> - オンプレミス サーバーに .NET Framework 4.6.2 以降が存在することを確認してください。
+> - Virtual Machine Manager の有無にかかわらず、別の場所または元の場所へのフェールオーバーとフェールバックを実行することは、Windows Server 2019 サーバー コア バージョンではサポートされていません。
 
 ## <a name="replicated-vms"></a>レプリケートされた VM
 
@@ -44,7 +48,7 @@ Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019
  **コンポーネント** | **詳細**
 --- | ---
 VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
-ゲスト オペレーティング システム | [Azure がサポートする](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)任意のゲスト OS。<br/><br/> Windows Server 2016 の Nano Server はサポートされていません。
+ゲスト オペレーティング システム | [Azure がサポートする](../cloud-services/cloud-services-guestos-update-matrix.md#family-5-releases)任意のゲスト OS。<br/><br/> Windows Server 2016 の Nano Server はサポートされていません。
 
 
 ## <a name="vmdisk-management"></a>VM/ディスク管理
@@ -69,6 +73,7 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 ゲスト VM ネットワーク: 静的 IP (Linux) | いいえ | いいえ
 ゲスト VM ネットワーク: マルチ NIC | はい | はい
 HTTPS プロキシ | いいえ | いいえ
+
 
 
 
@@ -132,10 +137,13 @@ geo 冗長ストレージ | はい | はい
 ブロック blob | いいえ | いいえ
 保存時の暗号化 (SSE)| はい | はい
 保存時の暗号化 (CMK) <br></br> (マネージド ディスクへのフェールオーバーの場合のみ)| はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
+保存時の二重暗号化 <br></br> (マネージド ディスクへのフェールオーバーの場合のみ) <br></br> [Windows](../virtual-machines/windows/disk-encryption.md) および [Linux](../virtual-machines/linux/disk-encryption.md) でサポートされているリージョンの詳細について参照してください | はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
 Premium Storage | はい | はい
+Standard Storage | はい | はい
 Import/Export サービス | いいえ | いいえ
 ファイアウォールが有効になっている Azure Storage アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
 ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure Storage アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
+転送オプションのセキュリティ保護 | はい
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能
@@ -152,7 +160,7 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 
 **コンポーネント** | **必要条件** | **詳細**
 --- | --- | ---
-ゲスト オペレーティング システム | Site Recovery では、[Azure でサポートされている](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのオペレーティング システムがサポートされます。  | サポートされていない場合、前提条件の確認は失敗します。
+ゲスト オペレーティング システム | Site Recovery では、[Azure でサポートされている](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))すべてのオペレーティング システムがサポートされます。  | サポートされていない場合、前提条件の確認は失敗します。
 ゲスト オペレーティング システムのアーキテクチャ | 32 ビット (Windows Server 2008)/64 ビット | サポートされていない場合、前提条件の確認は失敗します。
 オペレーティング システムのディスク サイズ | 第 1 世代の VM では最大 2,048 GB です。<br/><br/> 第 2 世代の VM では最大 300 GB です。  | サポートされていない場合、前提条件の確認は失敗します。
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、前提条件の確認は失敗します。

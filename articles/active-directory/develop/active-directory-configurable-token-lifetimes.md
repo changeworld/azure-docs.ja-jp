@@ -8,24 +8,24 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23283a44f78522d2b589993c11b494092352cbb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478367"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
 Azure Active Directory (Azure AD) によって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。
 
 > [!IMPORTANT]
-> プレビュー中にお客様のご意見をお聞きした後、Azure AD の条件付きアクセスの[認証セッション管理機能](https://go.microsoft.com/fwlink/?linkid=2083106)を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。 2020 年 5 月 1 日以降は、構成可能なトークンの有効期間ポリシーを使用してセッションと更新トークンを構成できなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
+> プレビュー中にお客様のご意見をお聞きした後、Azure AD の条件付きアクセスの[認証セッション管理機能](https://go.microsoft.com/fwlink/?linkid=2083106)を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。 2020 年 5 月 30 日以降、新しいテナントでは、構成可能なトークンの有効期間ポリシーを使用してセッションと更新トークンを構成できなくなります。 廃止はその数か月後に行われます。つまり、セッションと更新トークンに関する既存のポリシーは適用されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
 
 Azure AD では、ポリシー オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
@@ -75,7 +75,7 @@ ID トークンは、Web サイトとネイティブ クライアントに渡さ
 
 Azure AD は永続的と非永続的の 2 つの種類の SSO セッション トークンを使用します。 永続的セッション トークンは、ブラウザーで永続的な Cookie として保存されます。 非永続的セッション トークンは、セッション Cookie として保存されます (セッション Cookie は、ブラウザーを閉じると破棄されます)。通常は、非永続的セッション トークンが保存されます。 ただし、ユーザーが認証時に **[サインインしたままにする]** チェック ボックスをオンにした場合は、永続的セッション トークンが保存されます。
 
-非永続的セッション トークンには、24 時間の有効期間があります。 永続的トークンには、180 日間の有効期間があります。 有効期間内に SSO セッション トークンを使用した時点で、有効期間はトークンの種類に応じて、さらに 24 時間または 180 日間延長されます。 SSO セッション トークンが有効期間内に使用されない場合は、期限切れとみなされ、受け付けられなくなります。
+非永続的セッション トークンには、24 時間の有効期間があります。 永続的トークンには、90 日間の有効期間があります。 有効期間内に SSO セッション トークンを使用した時点で、有効期間はトークンの種類に応じて、さらに 24 時間または 90 日間延長されます。 SSO セッション トークンが有効期間内に使用されない場合は、期限切れとみなされ、受け付けられなくなります。
 
 ポリシーを使用して最初のセッション トークンが発行された後の時間を設定し、それを超えるとセッションのトークンを受け付けないようにすることができます (これを行うには、Session Token Max Age プロパティを使用します)。セッション トークンの有効期間を調整して、Web アプリケーションの使用時に、ユーザーが自動的に再認証されるのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
 
@@ -545,3 +545,9 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
+
+## <a name="license-requirements"></a>ライセンスの要件
+
+この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+
+[Microsoft 365 Business ライセンス](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。

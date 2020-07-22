@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/22/2020
+ms.openlocfilehash: ac351e688eba274c989b4b475c6d61607b9ea5c1
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417232"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219301"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -46,7 +46,7 @@ SAP HANA データベースから、サポートされている任意のシン�
 - SAP HANA ソースからの並列コピー。 詳細については、「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションを参照してください。
 
 > [!TIP]
-> データを SAP HANA データ ストア**に**コピーするには、汎用 ODBC コネクタを使用します。 詳細については、「[SAP HANA シンク](connector-odbc.md#sap-hana-sink)」を参照してください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
+> データを SAP HANA データ ストア**に**コピーするには、汎用 ODBC コネクタを使用します。 詳細については、「[SAP HANA シンク](#sap-hana-sink)」セクションを参照してください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -298,6 +298,34 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 | VARCHAR            | String                         |
 | timestamp          | DateTime                       |
 | VARBINARY          | Byte[]                         |
+
+## <a name="sap-hana-sink"></a>SAP HANA シンク
+
+現時点では、SAP HANA コネクタはシンクとしてサポートされていませんが、SAP HANA ドライバーで汎用 ODBC コネクタを使用して SAP HANA にデータを書き込むことができます。 
+
+[前提条件](#prerequisites)に従って、セルフホステッド Integration Runtime を設定し、まず SAP HANA ODBC ドライバーをインストールします。 次の例に示すように、SAP HANA データストアに接続するための ODBC のリンクされたサービスを作成し、データセットを作成し、それに応じた ODBC 型でアクティビティ シンクをコピーします。 詳細については [ODBC コネクタ](connector-odbc.md)に関する記事をご覧ください。
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

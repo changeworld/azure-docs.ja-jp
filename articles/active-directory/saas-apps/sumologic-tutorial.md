@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de6d941c6efe42993b6bad7c556582831d179250
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bca74d7cce0257f4d852e1520cb23e6a77969ec7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75659748"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167727"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SumoLogic の統合
 
@@ -83,28 +83,24 @@ SumoLogic に対する Azure AD SSO を構成してテストするには、次�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `https://service.sumologic.com`|
-    | `https://<tenantname>.us2.sumologic.com`|
-    | `https://<tenantname>.us4.sumologic.com`|
-    | `https://<tenantname>.eu.sumologic.com`|
-    | `https://<tenantname>.jp.sumologic.com`|
-    | `https://<tenantname>.de.sumologic.com`|
-    | `https://<tenantname>.ca.sumologic.com`|
+    - `https://service.sumologic.com`
+    - `https://<tenantname>.us2.sumologic.com`
+    - `https://<tenantname>.us4.sumologic.com`
+    - `https://<tenantname>.eu.sumologic.com`
+    - `https://<tenantname>.jp.sumologic.com`
+    - `https://<tenantname>.de.sumologic.com`
+    - `https://<tenantname>.ca.sumologic.com`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://service.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.us2.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.us4.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.eu.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.jp.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.de.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.ca.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.au.sumologic.com/sumo/saml/consume/<tenantname>`|
+    - `https://service.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.us2.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.us4.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.eu.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.jp.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.de.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.ca.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.au.sumologic.com/sumo/saml/consume/<tenantname>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[SumoLogic クライアント サポート チーム](https://www.sumologic.com/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

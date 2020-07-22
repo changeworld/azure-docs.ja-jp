@@ -3,12 +3,12 @@ title: Azure Lighthouse と Azure Managed Applications
 description: Azure Lighthouse と Azure Managed Applications...
 ms.date: 05/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9923d31e78675927b4ca235607b2a61b24ccc41
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782584"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121607"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
 
@@ -47,4 +47,4 @@ Azure Lighthouse と Azure Managed Applications は異なるアクセス メカ�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Managed Applications](../../azure-resource-manager/managed-applications/overview.md) の詳細について説明します。
-- [Azure の委任されたリソース管理にサブスクリプションをオンボード](../how-to/onboard-customer.md)する方法について説明します。
+- [サブスクリプションを Azure Lighthouse にオンボードする](../how-to/onboard-customer.md)方法について学習します。

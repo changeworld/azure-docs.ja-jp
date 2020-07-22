@@ -2,16 +2,20 @@
 title: Application Insights からのテレメトリの連続エクスポート | Microsoft Docs
 description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/26/2020
+ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298281"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110217"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
+
+> [!NOTE]
+> 連続エクスポートは、従来の Application Insights リソースに対してのみサポートされます。 [ワークスペース ベースの Application Insights リソース](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)では、[診断設定](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)を使用する必要があります。
+>
 
 連続エクスポートをセットアップする前に、次の代替手段を検討してください。
 
@@ -30,8 +34,6 @@ ms.locfileid: "80298281"
 
 * [VNET/Azure Storage ファイアウォール](https://docs.microsoft.com/azure/storage/common/storage-network-security)と Azure BLOB ストレージの併用。
 
-* Azure Blob Storage 向けの[不変ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)。
-
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>連続エクスポートを作成する
@@ -49,7 +51,8 @@ ms.locfileid: "80298281"
 
 4. ストレージにコンテナーを作成するか、選択します。
 
-エクスポートが作成されると、処理が開始されます エクスポートを作成した後に到着したデータのみが取得されます。
+> [!NOTE]
+> エクスポートを作成すると、新しく取り込まれたデータが Azure Blob storage へフローするようになります。 連続エクスポートでは、連続エクスポートが有効になった後に作成または取り込まれた新しいテレメトリのみが送信されます。 連続エクスポートを有効にする前に存在していたデータはエクスポートされず、連続エクスポートを使用して以前に作成されたデータをさかのぼってエクスポートすることはできません。
 
 ストレージにデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
 
@@ -105,7 +108,9 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
 パスの形式を以下に示します。
 
-    $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```console
+$"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```
 
 Where
 
@@ -115,37 +120,41 @@ Where
 ## <a name="data-format"></a><a name="format"></a> データ形式
 * それぞれの Blob は、"\n" で区切られた複数の行を含むテキスト ファイルです。 約 30 秒の間に処理されたテレメトリが含まれています。
 * 各行は、要求やページ表示などのテレメトリ データ ポイントを表します。
-* それぞれの行は、書式設定されていない JSON ドキュメントです。 詳細を確認する場合は、Visual Studio でファイルを開き、[編集]、[詳細]、[フォーマット ファイル] の順に選択します。
+* それぞれの行は、書式設定されていない JSON ドキュメントです。 行を表示する場合は、Visual Studio で BLOB を開き、 **[編集]**  >  **[詳細設定]**  >  **[フォーマットファイル]** の順に選択します。
 
-![適切なツールでテレメトリを表示します](./media/export-telemetry/06-json.png)
+   ![適切なツールでテレメトリを表示します](./media/export-telemetry/06-json.png)
 
 時間の長さはティック単位で表記されます。10,000 ティックが 1 ミリ秒です。 たとえば、次の値は、ブラウザーから要求を送信するのに 1 ミリ秒、要求を受信するのに 3 ミリ秒、ブラウザーでページを処理するのに 1.8 秒の時間がかかったことを示しています。
 
-    "sendRequest": {"value": 10000.0},
-    "receiveRequest": {"value": 30000.0},
-    "clientProcess": {"value": 17970000.0}
+```json
+"sendRequest": {"value": 10000.0},
+"receiveRequest": {"value": 30000.0},
+"clientProcess": {"value": 17970000.0}
+```
 
 [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
 
 ## <a name="processing-the-data"></a>データの処理
 小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。 次に例を示します。
 
-    private IEnumerable<T> DeserializeMany<T>(string folderName)
-    {
-      var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
-      foreach (var file in files)
+```csharp
+private IEnumerable<T> DeserializeMany<T>(string folderName)
+{
+   var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
+   foreach (var file in files)
+   {
+      using (var fileReader = File.OpenText(file))
       {
-         using (var fileReader = File.OpenText(file))
+         string fileContent = fileReader.ReadToEnd();
+         IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
+         foreach (var entity in entities)
          {
-            string fileContent = fileReader.ReadToEnd();
-            IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
-            foreach (var entity in entities)
-            {
-                yield return JsonConvert.DeserializeObject<T>(entity);
-            }
+            yield return JsonConvert.DeserializeObject<T>(entity);
          }
       }
-    }
+   }
+}
+```
 
 大規模なコード サンプルについては、「[worker ロールの使用][exportasa]」をご覧ください。
 

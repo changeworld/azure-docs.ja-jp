@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4d41ece86240a20afea06bff3469b5c02c6e46ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678590"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -25,9 +25,9 @@ Profiler は、Basic 以上のサービス レベルを使用し、Azure App Ser
 
 Application Insights Profiler は、App Services ランタイムの一部として事前インストールされています。 次の手順は、これを App Service で有効にする方法を示しています。 App Insights SDK をアプリケーションのビルド時に含めている場合でも、これらの手順に従ってください。
 
-1. App Service の "Always On" 設定を有効にします。 この設定は、App Service の構成ページの [全般設定] で更新することができます。
-1. Azure Portal の **[App Services]** ウィンドウに移動します。
-1. **[設定] > [Application Insights]** ウィンドウに移動します。
+1. ご自身の App Service の Azure コントロール パネルに移動します。
+1. App Service の "Always On" 設定を有効にします。 この設定を確認するには、 **[設定]** 、 **[構成]** ページ (次の手順のスクリーンショットを参照) の順にクリックし、 **[全般設定]** タブをクリックします。
+1. **[設定] > [Application Insights]** ページに移動します。
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
 
@@ -63,9 +63,9 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
-個々の Web アプリのインスタンスで Profiler を停止または再起動するには、 **[WebJobs]** で Web Apps リソースに移動します。 Profiler を削除するには、 **[拡張機能]** に移動します。
+個々のアプリのインスタンスに対して Profiler を停止または再起動するには、 **[Web ジョブ]** で、ApplicationInsightsProfiler3 という名前の Web ジョブを停止します。 前述したように、Application Insights ページのスイッチを使用して Profiler を無効にしても、Profiler プロセスは引き続き実行されます。 Profiler は、Profiler 自体が有効になっているかどうかをチェックします。 無効になっている場合は、しばらくしてから再びチェックを行います。 無効になっている場合、プロファイリングは実行しません。 この Web ジョブを無効にすると、Profiler プロセスは完全に実行されなくなり、有効になっているかどうかのチェックも行われなくなります。
 
-![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
+  ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
 
 パフォーマンスの問題をできるだけ早く検出するために、すべてのアプリで Profiler を有効にすることをお勧めします。
 

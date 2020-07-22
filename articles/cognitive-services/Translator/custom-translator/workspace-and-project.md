@@ -7,15 +7,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a67e199af1ee6e68f00dbde9a0a43d02e4c7d638
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 659ecbc7f6c2a5627824ff09af5f30ef503c9e16
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588668"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954538"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Custom Translator ワークスペースとは
 

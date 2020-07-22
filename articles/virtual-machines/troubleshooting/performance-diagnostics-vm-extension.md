@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71057537"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135273"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -66,14 +66,14 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 ### <a name="property-values"></a>プロパティ値
 
-|   **Name**   |**値/例**|       **説明**      |
+|   **名前**   |**値/例**|       **説明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API のバージョン。
 |publisher|Microsoft.Azure.Performance.Diagnostics|拡張機能の発行元名前空間。
 |type|AzurePerformanceDiagnostics|VM 拡張機能の種類。
 |typeHandlerVersion|1.0|拡張機能ハンドラーのバージョン。
 |performanceScenario|basic|データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。
-|traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
+|traceDurationInSeconds|該当なし|いずれかのトレース オプションを選択した場合、トレースの期間。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |xperfTrace|x|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
@@ -88,7 +88,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 Windows 仮想マシンにこの拡張機能をインストールするには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. この拡張機能をインストールする仮想マシンを選びます。
 
     ![仮想マシンが強調表示されている Azure Portal のスクリーンショット](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -253,6 +253,6 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
     拡張機能の状態で拡張機能が正常にプロビジョニングされたことが示されている限り、この問題は無視しても安全です。
 - インストール中の問題の一部は、拡張ログを使って対処できます。 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
 
-        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
+    `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

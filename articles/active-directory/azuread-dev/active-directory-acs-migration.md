@@ -7,20 +7,20 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3168d36bf4c2d3c696173725f669b12dc168dcc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551720"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法: Azure Access Control Service からの移行
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -113,8 +113,8 @@ Access Control の詳細については、「[Access Control Service 2.0](https:
 Access Control コンポーネントの廃止スケジュールを次に示します。
 
 - **2017 年 11 月**: Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの[提供は終了します](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 この時点で、Access Control の名前空間の管理は、新しい専用の URL `https://manage.windowsazure.com?restoreClassic=true` で利用できるようになります。 この URl を使用すれば、既存の名前空間を表示したり、名前空間を有効または無効にしたり、名前空間を削除することができます。
-- **2018 年 4 月 2日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はどの URL でも使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://\<namespace\>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
-- **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャット ダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 これ以降、(\<名前空間\>.accesscontrol.windows.net にある) Access Control へ送信されるすべての要求は失敗するようになります。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
+- **2018 年 4 月 2 日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はすべての URL で使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://\<namespace\>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
+- **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャットダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 これ以降、(\<namespace\>.accesscontrol.windows.net にある) Access Control へ送信されるすべての要求は失敗するようになります。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
 
 > [!NOTE]
 > ポリシーは、一定期間トークンを要求していない名前空間を無効にします。 2018 年初頭現在、この期間は 14 日間の非アクティブですが、今後数週間以内に 7 日間の非アクティブに短縮されます。 現在無効になっている Access Control 名前空間がある場合、[ACS PowerShell をダウンロードしてインストールし](#download-and-install-acs-powershell)、名前空間を再度有効にすることができます。
@@ -148,7 +148,7 @@ Access Control によって発行されたトークンを受け入れる各 Micr
 
 SharePoint 2013、2016、SharePoint Online のユーザーは、クラウド、オンプレミス、およびハイブリッドのシナリオでの認証のために長い間 ACS を使ってきました。 SharePoint の一部の機能とユース ケースは ACS 提供終了の影響を受けますが、それ以外には影響ありません。 次の表は、ACS を利用する最も一般的な SharePoint 機能の一部に対する移行のガイダンスをまとめたものです。
 
-| 機能 | ガイダンス |
+| 特徴量 | ガイダンス |
 | ------- | -------- |
 | Azure AD からのユーザーの認証 | これまで、Azure AD は SharePoint での認証に必要な SAML 1.1 トークンをサポートしておらず、SharePoint を Azure AD トークン形式と互換性があるようにする手段として ACS が使われていました。 現在は、[Azure AD アプリ ギャラリーの SharePoint オンプレミス アプリを使って SharePoint を Azure AD に直接接続する](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)ことができます。 |
 | [オンプレミスの SharePoint でのアプリ認証とサーバー間認証](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | ACS の提供終了の影響を受けません。変更は必要ありません。 | 
@@ -281,10 +281,13 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 
 以上のような場合には、Web アプリケーションを別のクラウド認証サービスに移行することを検討してください。 次のオプションを検討することをお勧めします。 これらのオプションでは、Access Control と同様の機能が提供されます。
 
-|     |     |
-| --- | --- |
-| ![この図は Auth0 のロゴを示します](./media/active-directory-acs-migration/rsz-auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![この図は Ping Identity のロゴを示します](./media/active-directory-acs-migration/rsz-ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
+![この図は Auth0 のロゴを示します](./media/active-directory-acs-migration/rsz-auth0.png) 
+
+[Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。
+
+![この図は Ping Identity のロゴを示します](./media/active-directory-acs-migration/rsz-ping.png)
+
+[Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 
@@ -306,7 +309,7 @@ Access Control によって発行されたトークンでセキュリティ保�
     - サービス ID に対して作成されるシンプルなパスワード
     - 対称キーまたは X509 証明書を使用した署名付き SWT
     - 信頼できる ID プロバイダー (通常は AD FS インスタンス) によって発行された SAML トークン
-- 次のトークン形式のサポート: JWT、SAML 1.1、SAML 2.0、および SWT。
+- 次のトークン形式のサポート: JWT、SAML 1.1、SAML 2.0、SWT。
 - シンプルなトークン変換ルール。
 
 Access Control のサービス ID は、通常はサーバー対サーバー認証の実装に使用されます。 
@@ -343,10 +346,12 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 
 以上のような場合には、Web アプリケーションを別のクラウド認証サービスに移行することを検討してください。 次のオプションを検討することをお勧めします。 これらのオプションでは、Access Control と同様の機能が提供されます。
 
-|     |     |
-| --- | --- |
-| ![この図は Auth0 のロゴを示します](./media/active-directory-acs-migration/rsz-auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![この図は Ping Identity のロゴを示します](./media/active-directory-acs-migration/rsz-ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
+![この図は Auth0 のロゴを示します](./media/active-directory-acs-migration/rsz-auth0.png)
+
+[Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。
+
+![この図は、ACS に似た 2 つのソリューションを提供する Ping ID のロゴ](./media/active-directory-acs-migration/rsz-ping.png)
+[Ping ID](https://www.pingidentity.com)を示します。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 

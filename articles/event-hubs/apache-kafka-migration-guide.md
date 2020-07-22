@@ -1,23 +1,14 @@
 ---
 title: Apache Kafka 用 Azure Event Hubs への移行
 description: この記事では、さまざまなプロトコル (AMQP、Apache Kafka、および HTTPS) を使用するコンシューマーとプロデューサーが、Azure Event Hubs の使用時にイベントを交換する方法を示しています。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/01/2020
-ms.author: shvija
-ms.openlocfilehash: 32b08e565b86af8f6373c9848211646128bb346d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/23/2020
+ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322748"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Apache Kafka エコシステム用 Azure Event Hubs への移行
 Azure Event Hubs は Apache Kafka エンドポイントを公開します。これにより、Kafka プロトコルを使用して Event Hubs に接続できます。 既存の Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を享受することができます。 Kafka 用 Event Hubs では、[Apache Kafka バージョン 1.0 以降](https://kafka.apache.org/10/documentation.html)がサポートされています。

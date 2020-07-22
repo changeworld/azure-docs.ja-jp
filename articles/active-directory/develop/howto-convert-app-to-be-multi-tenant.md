@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884088"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201948"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -71,15 +71,21 @@ Web アプリケーションと Web API は、Microsoft ID プラットフォー
 
 アプリケーションで Microsoft ID プラットフォームから受信したトークンが検証される仕組みを見てみましょう。 シングル テナント アプリケーションは通常、次のようなエンドポイント値を取得します。
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 そして、この値を使用して、次のようなメタデータ URL (この例では OpenID Connect) を作成します。
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 さらに、この URL を使用して、トークンの検証に使用する 2 種類の重要な情報である、テナントの署名キーと issuer 値をダウンロードします。 各 Azure AD テナントは、次のような形をした一意の issuer 値を持ちます。
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 ここで、GUID の値は、テナントのテナント ID を名前変更できるようにしたものです。 前述の `contoso.onmicrosoft.com` のメタデータ リンクを選択すると、ドキュメントでこの issuer 値を確認できます。
 
@@ -87,7 +93,9 @@ Web アプリケーションと Web API は、Microsoft ID プラットフォー
 
 /common エンドポイントはテナントに対応しておらず発行者でもないので、/common のメタデータの issuer 値を確認すると、実際の値の代わりに次のようなテンプレート URL が表示されます。
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 このため、マルチテナント アプリケーションでは、メタデータの issuer 値をトークンの `issuer` 値と照合するだけでは、トークンの検証を行うことができません。 マルチテナント アプリケーションには、issuer 値のテナント ID の部分に基づいて issuer 値が有効であるかどうかを判定するロジックが必要になります。 
 
@@ -135,7 +143,9 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 この処理は、論理アプリケーションが 2 つ以上のアプリケーション登録 (別々のクライアントとリソースなど) で構成されている場合に問題になる可能性があります。 まずユーザーのテナントにリソースを追加するにはどうすればいいのでしょうか。 Azure AD では、ワンステップでクライアントとリソースが同意されるようにすることによって、この状況に対応します。 ユーザーには、同意ページにクライアントとリソースの両方によって要求されたアクセス許可の合計が表示されます。 この動作を有効にするには、リソースのアプリケーション登録で、[アプリケーションのマニフェスト][AAD-App-Manifest]に `knownClientApplications` というクライアントのアプリ ID を含める必要があります。 次に例を示します。
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 この方法については、この記事の末尾の「[関連コンテンツ](#related-content)」セクションにある多層ネイティブ クライアントによる Web API 呼び出しのサンプルを参照してください。 次の図は、1 つのテナントに登録されている多層アプリケーションのための同意の概要を示しています。
 

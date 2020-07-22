@@ -1,25 +1,27 @@
 ---
-title: Azure プライベート エンドポイントを使用して非公開で Web アプリに接続する
+title: プライベート エンドポイントを使用して非公開で Azure Web アプリに接続する
 description: Azure プライベート エンドポイントを使用して非公開で Web アプリに接続する
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756282"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054578"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web アプリでのプライベート エンドポイントの使用 (プレビュー)
 
 > [!Note]
-> このプレビューは、PremiumV2 の Windows および Linux の Web アプリとエラスティック Premium 関数すべてに対して、米国東部と米国西部 2 のリージョンでご利用いただけます。 
+> プレビューの更新により、データ窃盗からの保護機能がリリースされました。
+>
+> このプレビューは、PremiumV2 の Windows および Linux の Web アプリとエラスティック Premium 関数すべてに対して、すべてのパブリック リージョンでご利用いただけます。 
 
 Azure Web アプリにプライベート エンドポイントを使用すると、プライベート ネットワーク内のクライアントが Private Link 経由で安全にアプリにアクセスできるようになります。 プライベート エンドポイントは、Azure VNet アドレス空間からの IP アドレスを使用します。 プライベート ネットワーク上のクライアントと Web アプリ間のネットワーク トラフィックは、VNet および Microsoft バックボーン ネットワーク上の Private Link を経由することで、パブリック インターネットにさらされないようにします。
 
@@ -27,6 +29,7 @@ Web アプリにプライベート エンドポイントを使用することで
 
 - プライベート エンドポイントを構成することにより Web アプリをセキュリティで保護し、公開されないようにする。
 - VPN または ExpressRoute のプライベート ピアリングを使用して VNet に接続するオンプレミス ネットワークから Web アプリに安全に接続する。
+- VNet からデータが一切流出しないようにしてください。 
 
 単に、VNet と Web アプリ間のセキュリティで保護された接続が必要な場合、サービス エンドポイントが最も簡単なソリューションです。 さらに、Azure ゲートウェイ、リージョンでピアリングされた VNet、またはグローバルにピアリングされた VNet を介してオンプレミスから Web アプリに接続する必要がある場合は、プライベート エンドポイントがソリューションになります。  
 
@@ -42,7 +45,7 @@ Web アプリのプライベート エンドポイントを作成すると、プ
 また、プライベート エンドポイントを Web アプリとは別のリージョンにデプロイすることもできます。 
 
 > [!Note]
->VNet 統合機能は、プライベート エンドポイントと同じサブネットを使用することはできません。これは、VNet 統合機能の制限です。
+>VNet 統合機能では、プライベート エンドポイントと同じサブネットを使用することはできません。これは、VNet 統合機能の制限です。
 
 セキュリティの観点から:
 
@@ -52,9 +55,9 @@ Web アプリのプライベート エンドポイントを作成すると、プ
 - プライベート エンドポイントの NIC に NSG を関連付けることはできません。
 - プライベート エンドポイントをホストするサブネットには NSG を関連付けることができますが、プライベート エンドポイントに対するネットワーク ポリシーの適用を無効にする必要があります。「[プライベート エンドポイントのネットワーク ポリシーを無効にする][disablesecuritype]」を参照してください。 このため、プライベート エンドポイントへのアクセスを NSG でフィルタに掛けることはできません。
 - Web アプリに対してプライベート エンドポイントを有効にすると、Web アプリの[アクセス制限][accessrestrictions]構成は評価されません。
-- 宛先が "インターネット" または "Azure サービス" になっているすべての NSG ルールを削除することによって、VNet からのデータ流出リスクを減らすことができます。 しかし、サブネットに Web アプリのプライベート エンドポイントを追加すると、同じデプロイ スタンプでホストされ、インターネットに公開されているどの Web アプリにもアクセスできます。
+- 宛先が "インターネット" または "Azure サービス" になっているすべての NSG ルールを削除することによって、VNet からのデータ流出リスクをなくすことができます。 Web アプリのプライベート エンドポイントをデプロイするときに、この特定の Web アプリには、このプライベート エンドポイントからのみできます。 別の Web アプリがある場合は、この別の Web アプリの別の専用プライベート エンドポイントをデプロイする必要があります。
 
-Web アプリの Web HTTP ログには、クライアントのソース IP が含まれています。 これは、TCP プロキシ プロトコルを使用して実装されており、Web アプリにクライアント IP プロパティを転送します。 詳細については、「[TCP プロキシ v2 を使用した接続情報の取得][tcpproxy]」を参照してください。
+Web アプリの Web HTTP ログには、クライアントのソース IP が含まれています。 この機能は、TCP プロキシ プロトコルを使用して実装されており、Web アプリにクライアント IP プロパティを転送します。 詳細については、「[TCP プロキシ v2 を使用した接続情報の取得][tcpproxy]」を参照してください。
 
 
   > [!div class="mx-imgBorder"]
@@ -62,8 +65,50 @@ Web アプリの Web HTTP ログには、クライアントのソース IP が�
 
 ## <a name="dns"></a>DNS
 
-この機能はプレビュー段階であるため、プレビュー期間中は DNS エントリを変更しません。 DNS エントリは、プライベート DNS サーバーまたは Azure DNS プライベート ゾーンでご自身で管理する必要があります。
-カスタム DNS 名を使用する必要がある場合は、カスタム名を Web アプリに追加する必要があります。 プレビュー期間中は、すべてのカスタム名と同様に、パブリック DNS 解決を使用してカスタム名を検証する必要があります。 詳細については、[カスタム DNS 検証][dnsvalidation]に関する記事を参照してください。
+Web アプリにプライベート エンドポイントを使用する場合は、要求する URL が Web アプリの名前と一致している必要があります。 既定値は mywebappname.azurewebsites.net です。
+
+既定では、プライベート エンドポイントを使用しない場合、Web アプリのパブリック名がクラスターの正規の名前になります。
+たとえば、名前解決は次のようになります。
+
+|名前 |Type |値 |
+|-----|-----|------|
+|mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154| 
+
+
+プライベート エンドポイントをデプロイすると、DNS エントリは正規名 mywebapp.privatelink.azurewebsites.net を指すように更新されます。
+たとえば、名前解決は次のようになります。
+
+|名前 |Type |値 |注記 |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154|<-- このパブリック IP はプライベート エンドポイントではありません。403 エラーを受け取ります|
+
+テスト コンピューターのホスト エントリを変更できることをテストするには、プライベート DNS サーバーまたは Azure DNS プライベート ゾーンを設定する必要があります。
+作成する必要がある DNS ゾーンは、**privatelink.azurewebsites.net** です。 A レコードとプライベート エンドポイント IP を使用して、Web アプリのレコードを登録します。
+たとえば、名前解決は次のようになります。
+
+|名前 |Type |値 |注記 |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<-- プライベート エンドポイントの IP アドレスを指すように、DNS システムでこのエントリを管理します|
+
+この DNS 構成の後、既定の名前 mywebappname.azurewebsites.net を使用してプライベートに Web アプリに接続できます。
+
+
+カスタム DNS 名を使用する必要がある場合は、カスタム名を Web アプリに追加する必要があります。 プレビュー期間中は、すべてのカスタム名と同様に、パブリック DNS 解決を使用してカスタム名を検証する必要があります。 詳細については、[カスタム DNS 検証][dnsvalidation]に関するページをご覧ください。
+
+Kudu コンソールまたは Kudu REST API (Azure DevOps セルフホステッド エージェントを使用したデプロイなど) の場合は、Azure DNS プライベート ゾーンまたはカスタム DNS サーバーに 2 つのレコードを作成する必要があります。 
+
+| 名前 | Type | 値 |
+|-----|-----|-----|
+| mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+| mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+
+
 
 ## <a name="pricing"></a>価格
 
@@ -71,12 +116,17 @@ Web アプリの Web HTTP ログには、クライアントのソース IP が�
 
 ## <a name="limitations"></a>制限事項
 
+Elastic Premium プランの Azure Function をプライベート エンドポイントとともに使用する場合、Azure Web ポータルで関数を実行するには、直接ネットワークにアクセスする必要があります。そうでないと、HTTP 403 エラーが発生します。 つまり、Azure Web ポータルから関数を実行するには、お使いのブラウザーで、プライベート エンドポイントに到達できる必要があります。 
+
+プレビュー期間中は、運用スロットのみがプライベート エンドポイントの背後で公開され、他のスロットにはパブリック エンドポイントから接続する必要があります。
+
 定期的に Private Link 機能とプライベート エンドポイントの改善を行っています。制限に関する最新情報については、[こちらの記事][pllimitations]を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ポータルを使用して Web アプリのプライベート エンドポイントをデプロイするには、[Web アプリに非公開で接続する方法][howtoguide]に関する記事を参照してください。
-
+- ポータルを使用して Web アプリのプライベート エンドポイントをデプロイするには、[ポータルを使用して Web アプリに非公開で接続する方法][howtoguide1]に関するページを参照してください
+- Azure CLI を使用して Web アプリのプライベート エンドポイントをデプロイするには、[Azure CLI を使用して Web アプリに非公開で接続する方法][howtoguide2]に関するページを参照してください
+- PowerShell を使用して Web アプリのプライベート エンドポイントをデプロイするには、[PowerShell を使用して Web アプリに非公開で接続する方法][howtoguide3]に関するページを参照してください
 
 
 
@@ -90,4 +140,6 @@ Web アプリの Web HTTP ログには、クライアントのソース IP が�
 [dnsvalidation]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain
 [pllimitations]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
+[howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint

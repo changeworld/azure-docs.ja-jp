@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68359591"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835633"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知
 OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表されました。
@@ -23,7 +23,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 **2014 年 11 月 3 日** : ゲスト OS ファミリ 1 の延長サポートが終了し、完全に提供終了となりました。 ファミリ 1 を利用しているすべてのサービスは、この影響を受けます。 これらのサービスは、突然停止される可能性があります。 自分で手動でこれらのサービスをアップグレードしない限り、サービスが継続される保証はありません。
 
-質問がある場合は、[Cloud Services フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+質問がある場合は、[Cloud Services の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cloud-services.html)にアクセスするか、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 ## <a name="are-you-affected"></a>利用中のサービスが影響を受けるか
 次のいずれかの条件に該当する場合、利用中の Cloud Services は影響を受けます。

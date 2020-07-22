@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 08e718739971283418d151bef9ad75333e313d85
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811177"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250432"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
@@ -330,7 +330,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 
 ### <a name="step-11"></a>手順 11.
 
-Application Gateway のインスタンス数とサイズを構成します。 この例では、API Management リソースのセキュリティを強化するために、[WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) を使用しています。
+Application Gateway のインスタンス数とサイズを構成します。 この例では、API Management リソースのセキュリティを強化するために、[WAF SKU](../web-application-firewall/ag/ag-overview.md) を使用しています。
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -368,9 +368,9 @@ VNET で構成された Azure API Management は、ホスト先がオンプレ�
 
 ## <a name="next-steps"></a><a name="next-steps"> </a> 次のステップ
 * Azure Application Gateway の詳細を確認する
-  * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
-  * [Application Gateway の Web アプリケーション ファイアウォール](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [パスベースのルーティングを使用して Application Gateway を作成する](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+  * [Application Gateway の概要](../application-gateway/overview.md)
+  * [Application Gateway の Web アプリケーション ファイアウォール](../web-application-firewall/ag/ag-overview.md)
+  * [パスベースのルーティングを使用して Application Gateway を作成する](../application-gateway/tutorial-url-route-powershell.md)
 * API Management と VNET の詳細を確認する
   * [内部仮想ネットワークでの Azure API Management サービスの使用](api-management-using-with-internal-vnet.md)
   * [VNET での API Management の使用](api-management-using-with-vnet.md)

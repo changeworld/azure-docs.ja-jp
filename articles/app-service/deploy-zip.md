@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32fc57e720f9c23f6ef26f02b2cd4a82c4266984
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75945178"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957037"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -27,6 +27,9 @@ ms.locfileid: "75945178"
 詳しくは、[Kudu ドキュメント](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)をご覧ください。
 
 WAR ファイルの展開では、Java Web アプリを実行するために [WAR](https://wikipedia.org/wiki/WAR_(file_format)) ファイルを App Service に展開します。 「[WAR ファイルの展開](#deploy-war-file)」を参照してください。
+
+> [!NOTE]
+> `ZipDeploy` を使用すると、ファイルは、タイムスタンプが既にデプロイされているものと一致しない場合にのみコピーされます。 出力をキャッシュするビルド プロセスを使用して zip を生成すると、デプロイが高速になる場合があります。 詳細については、「[zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

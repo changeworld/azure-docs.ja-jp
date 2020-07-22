@@ -5,17 +5,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/11/2020
-ms.openlocfilehash: 6f65ba96f768a4b88aa13c073cc66920b8c5e049
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/25/2020
+ms.openlocfilehash: f058ce1ae5b7328c6864684994a74f2fd118ca6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506992"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>VM 用 Azure Monitor とは?
 
-Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および仮想マシン スケール セットの大規模な監視が行われます。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 この場合は、オンプレミスまたは別のクラウド プロバイダーでホストされている VM について、パフォーマンスおよびアプリケーションの依存関係の監視もサポートされています。 次の主な機能によって、詳細な分析情報が提供されます。
+Azure Monitor for VMs では、仮想マシン、仮想マシン スケール セット、Azure Arc マシンの大規模な監視が行われます。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 この場合は、オンプレミスまたは別のクラウド プロバイダーでホストされている VM について、パフォーマンスおよびアプリケーションの依存関係の監視もサポートされています。 次の主な機能によって、詳細な分析情報が提供されます。
 
 - **事前に定義された、傾向を示すパフォーマンス グラフ**:ゲスト VM オペレーティング システムから主要なパフォーマンス メトリックが表示されます。
 

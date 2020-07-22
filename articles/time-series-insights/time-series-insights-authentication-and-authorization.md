@@ -4,29 +4,24 @@ description: この記事では、Azure Time Series Insights API を呼び出す
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+ms.author: shresha
+manager: dpalled
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612284"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182000"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
 このドキュメントでは、新しい Azure Active Directory ブレードを使用して Azure Active Directory にアプリを登録する方法について説明します。 Azure Active Directory に登録されたアプリを使用すると、ユーザーは、Time Series Insights 環境に関連付けられた Azure Time Series Insight API を使用する認証と承認を受けることができます。
-
-> [!IMPORTANT]
-> Azure Time Series Insights は、次の認証ライブラリの両方をサポートしています:
-> * より新しい [Microsoft 認証ライブラリ (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * [Azure Active Directory 認証ライブラリ (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
@@ -38,7 +33,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 1. Azure Active Directory に[アプリケーションを登録する](#azure-active-directory-app-registration)。
 1. [Time Series Insights 環境へのデータ アクセス](#granting-data-access)をアプリケーションに承認します。
-1. **クライアント アプリ**の  **からトークンを取得するには、** [申請 ID]`https://api.timeseries.azure.com/` と[[クライアント シークレット]](#client-app-initialization) を使用します。 トークンは、Time Series Insights API の呼び出しに使用できます。
+1. [クライアント アプリ](#client-app-initialization)の  **からトークンを取得するには、** [申請 ID] **と**[クライアント シークレット]`https://api.timeseries.azure.com/` を使用します。 トークンは、Time Series Insights API の呼び出しに使用できます。
 
 **手順 3** に従い、アプリケーションとユーザーの資格情報を分離すると、次のことが可能になります。
 
@@ -81,9 +76,9 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 ### <a name="client-app-initialization"></a>クライアント アプリの初期化
 
-* 開発者は、[Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) または [Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) を使用して Azure Time Series Insights で認証することができます。
+* 開発者は、Microsoft Authentication Library (MSAL) を使用して Azure Time Series Insights で認証することができます。
 
-* たとえば、ADAL を使用して認証するには、次のようにします:
+* ADAL を使用して認証するには、次のようにします。
 
    1. アプリケーションに代わってトークンを取得するには、Azure Active Directory のアプリ登録セクションの **[申請 ID]** と **[クライアント シークレット]** (アプリケーション キー) を使用します。
 
@@ -93,7 +88,10 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
    1. トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
 
-* また、開発者は MSAL を使用して認証を選択することができます。 詳細については、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)に関するページを確認し、「[C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する](time-series-insights-manage-reference-data-csharp.md)」の記事を参照してください。
+> [!IMPORTANT]
+> [Azure Active Directory 認証ライブラリ (ADAL)](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) を使用している場合は、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)に関する記事をご覧ください。
+
+   詳細については、「[C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する](time-series-insights-manage-reference-data-csharp.md)」の記事を参照してください。
 
 ## <a name="common-headers-and-parameters"></a>一般的なヘッダーとパラメーター
 
@@ -107,7 +105,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 [Time Series Insights REST APIs](https://docs.microsoft.com/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)内で渡す必要があります。
 
 > [!TIP]
-> チャートやグラフと共に [JavaScript クライアント SDK](https://tsiclientsample.azurewebsites.net/) を使用して、プログラムによって Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)に関する記事を参照してください。
+> チャートやグラフと共に [JavaScript クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用して、プログラムによって Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://tsiclientsample.azurewebsites.net/)に関する記事を参照してください。
 
 ### <a name="http-headers"></a>HTTP ヘッダー
 
@@ -119,7 +117,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 > [!IMPORTANT]
 > そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。
-> * したがって、[Postman](https://www.getpostman.com/) **AuthURL** は`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/` のようになります
+> * したがって、[Postman](https://www.getpostman.com/) **AuthURL** は`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default` のようになります
 > * `https://api.timeseries.azure.com/` は有効ですが、`https://api.timeseries.azure.com` は有効ではありません。
 
 省略可能な要求ヘッダーを以下に示します。
@@ -161,10 +159,10 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 ## <a name="next-steps"></a>次のステップ
 
-- GA Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](./time-series-insights-query-data-csharp.md)に関する記事を参照してください。
+* GA Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](./time-series-insights-query-data-csharp.md)に関する記事を参照してください。
 
-- プレビュー Time Series Insights API コード サンプルについては、[C# を使用したプレビュー データの照会](./time-series-insights-update-query-data-csharp.md)に関する記事を参照してください。
+* プレビュー Time Series Insights API コード サンプルについては、[C# を使用したプレビュー データの照会](./time-series-insights-update-query-data-csharp.md)に関する記事を参照してください。
 
-- API リファレンスについては、[クエリ API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)のドキュメントを参照してください。
+* API リファレンスについては、[クエリ API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)のドキュメントを参照してください。
 
-- [サービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)方法について学習します。
+* [サービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)方法について学習します。

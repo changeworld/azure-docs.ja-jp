@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c08b99b0449608309b42e51c0ffb8d4b71a0621f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3729e0e0831319b42615c11db1ea9ba20f0a0e74
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085334"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207262"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB のアプリを構築する
 
@@ -122,7 +122,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 Cloud Shell で、[`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) コマンドを使用して Cosmos DB アカウントを作成します。
 
-次のコマンドで、 *\<cosmosdb-name>* プレースホルダーを一意の Cosmos DB 名に置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb-name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
+次のコマンドで、 *\<cosmosdb-name>* プレースホルダーを一意の Cosmos DB 名で置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb-name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -250,7 +250,7 @@ MEAN.JS version: 0.5.0
 
 アプリ設定を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。
 
-次の例では、Azure アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app-name>* 、 *\<cosmosdb-name>* 、および *\<primary-master-key>* プレースホルダーを置き換えます。
+次の例では、Azure アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app-name>* 、 *\<cosmosdb-name>* 、および *\<primary-master-key>* の各プレースホルダーを置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
@@ -367,7 +367,7 @@ _modules/articles/client/views/view-article.client.view.html_ を開きます。
 
 `</section>` 終了タグのすぐ上に、`comment` と残りの記事データを表示する次の行を追加します。
 
-```HTML
+```html
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
@@ -375,7 +375,7 @@ _modules/articles/client/views/list-articles.client.view.html_ を開きます�
 
 `</a>` 終了タグのすぐ上に、`comment` と残りの記事データを表示する次の行を追加します。
 
-```HTML
+```html
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
@@ -383,7 +383,7 @@ _modules/articles/client/views/admin/list-articles.client.view.html_ を開き�
 
 `<div class="list-group">` 要素内の `</a>` 終了タグのすぐ上に、`comment` と残りの記事データを表示する次の行を追加します。
 
-```HTML
+```html
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
@@ -391,7 +391,7 @@ _modules/articles/client/views/admin/form-article.client.view.html_ を開きま
 
 次のような送信ボタンを含む `<div class="form-group">` 要素を探します。
 
-```HTML
+```html
 <div class="form-group">
   <button type="submit" class="btn btn-default">{{vm.article._id ? 'Update' : 'Create'}}</button>
 </div>
@@ -399,7 +399,7 @@ _modules/articles/client/views/admin/form-article.client.view.html_ を開きま
 
 このタグのすぐ上に、もう 1 つ `<div class="form-group">` 要素を追加して、ユーザーが `comment` フィールドを編集できるようにします。 新しい要素は次のようになります。
 
-```HTML
+```html
 <div class="form-group">
   <label class="control-label" for="comment">Comment</label>
   <textarea name="comment" data-ng-model="vm.article.comment" id="comment" class="form-control" cols="30" rows="10" placeholder="Comment"></textarea>
@@ -444,7 +444,7 @@ git push azure master
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 

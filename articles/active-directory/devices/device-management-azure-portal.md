@@ -4,19 +4,19 @@ description: Azure Portal を使用してデバイスを管理する方法を説
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
-ms.date: 06/04/2019
+ms.topic: how-to
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf3f6455be992502182fb942f0e6db089051ab1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253156"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -27,11 +27,13 @@ Azure Active Directory (Azure AD) のデバイス ID 管理を使用して、ユ
 - [Azure Active Directory でのデバイス ID 管理の概要](overview.md)を理解していることを前提とします
 - Azure AD ポータルを使用してデバイス ID を管理する方法について説明します
 
+![Azure portal の [すべてのデバイス] ビュー](./media/device-management-azure-portal/all-devices-azure-portal.png)
+
 ## <a name="manage-device-identities"></a>デバイス ID を管理する
 
 Azure AD ポータルは、お客様のデバイス ID を一元的に管理する場所を提供します。 この場所にアクセスするには、[直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用するか、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
 
 **[デバイス]** ページでは、次の操作が可能です。
@@ -47,7 +49,7 @@ Azure AD ポータルを使ってデバイス ID を管理するには、デバ�
 
 デバイスの設定ページでは、デバイス ID に関連する設定を構成できます。
 
-![Intune デバイスの管理](./media/device-management-azure-portal/21.png)
+![Azure AD に関連するデバイス設定](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
 - **[ユーザーはデバイスを Azure AD に参加させることができます]** - この設定を使用すると、Azure AD 参加済みデバイスとしてデバイスを登録できるユーザーを選択できます。 既定値は **[すべて]** です。
 
@@ -82,13 +84,9 @@ Azure AD ポータルを使ってデバイス ID を管理するには、デバ�
 - 登録済みおよび参加済みデバイスの概要情報を確認できる
 - 一般的なデバイス管理タスクを実行できる
 
-![すべてのデバイス](./media/device-management-azure-portal/51.png)
-
 >[!TIP]
 >
 >* [登録済み] 列の下の状態が "保留中" である "ハイブリッド Azure AD 参加済み" のデバイスが表示されている場合、そのデバイスが Azure AD 接続から同期されており、クライアントからの登録の完了を待機していることを示します。 [Hybrid Azure AD 参加の実装を計画する](hybrid-azuread-join-plan.md)方法について詳細を参照してください。 追加情報については、[デバイスについてよく寄せられる質問](faq.md)に関する記事を参照してください。
->
->   ![保留中のデバイス](./media/device-management-azure-portal/75.png)
 >
 >* 一部の iOS デバイスの名前で使用されているアポストロフィは、アポストロフィに見える別の文字である可能性があります。 このため、このようなデバイスを検索するときは少し注意が必要です。正しい検索結果が表示されない場合は、検索文字列のアポストロフィが、正しいアポストロフィ文字であることを確認してください。
 
@@ -96,7 +94,7 @@ Azure AD ポータルを使ってデバイス ID を管理するには、デバ�
 
 グローバル管理者またはクラウド デバイス管理者は、登録済みまたは参加済みデバイスを管理することができます。 Intune サービス管理者は次のことができます。
 
-- デバイスを更新する  - たとえば、デバイスを有効化/無効化するなどといった日常の操作
+- デバイスを更新する - たとえば、デバイスを有効化/無効化するなどといった日常の操作
 - デバイスを削除する - デバイスが廃止された場合や、Azure AD から削除する必要がある場合
 
 このセクションでは、一般的なデバイス ID 管理タスクについて説明します。
@@ -145,7 +143,7 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
    - Windows デバイスの BitLocker キーなど、デバイスに関連付けられているすべての詳細が削除されます。  
    - 削除は回復不可能な操作であり、必須の場合以外は推奨されません。
 
-デバイスが別の管理機関 (Microsoft Intune など) によって管理されている場合は、Azure AD でデバイスを削除する前に、デバイスがワイプ/使用中止されているかどうかを確認してください。 デバイスを削除する前に、[古いデバイスを管理する](device-management-azure-portal.md)方法を確認してください。
+デバイスが別の管理機関 (Microsoft Intune など) によって管理されている場合は、Azure AD でデバイスを削除する前に、デバイスがワイプ/使用中止されているかどうかを確認してください。 デバイスを削除する前に、[古いデバイスを管理する](manage-stale-devices.md)方法を確認してください。
 
 ### <a name="view-or-copy-device-id"></a>デバイス ID を表示またはコピーする
 
@@ -170,6 +168,27 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 
 > [!NOTE]
 > ハイブリッド Azure AD 参加済みの Windows 10 デバイスには、所有者がありません。 そのため、所有者でデバイスを検索していて、見つからなかった場合は、デバイス ID で検索してください。
+
+### <a name="device-list-filtering-preview"></a>デバイス一覧のフィルター処理 (プレビュー)
+
+以前は、デバイスの一覧はアクティビティと有効な状態でのみフィルター処理できていました。 このプレビューでは、デバイスの次の属性によってデバイス一覧をフィルター処理できます。
+
+- 有効な状態
+- 準拠状態
+- 参加の種類 (Azure AD 参加済み、ハイブリッド Azure AD 参加済み、Azure AD に登録済み)
+- アクティビティ タイムスタンプ
+- OS
+- デバイスの種類 (プリンター、セキュリティで保護された VM、共有デバイス、登録済みのデバイス)
+
+**[すべてのデバイス]** ビューのプレビュー フィルター機能を有効にするには、次のようにします。
+
+![プレビュー フィルター機能を有効にする](./media/device-management-azure-portal/device-filter-preview-enable.png)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
+1. **[新しいデバイスのフィルターの改善された機能をお試しください。クリックすると、プレビューが有効になります。]** というバナーを選択します。
+
+**[すべてのデバイス]** ビューに**フィルターを追加**できるようになりました。
 
 ## <a name="audit-logs"></a>監査ログ
 

@@ -31,6 +31,8 @@
           href: data-box-gateway-use-cases.md
     - name: 方法
       items:
+        - name: 更新
+          href: data-box-gateway-apply-updates.md
         - name: 管理する
           items:
             - name: 共有
@@ -51,7 +53,9 @@
           href: azure-stack-edge-contact-microsoft-support.md
     - name: リリース ノート
       items:
-        - name: 1911 - 最新
+        - name: 2007 - 最新
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
           href: data-box-gateway-1911-release-notes.md
         - name: 1906
           href: data-box-gateway-1906-release-notes.md
@@ -95,7 +99,7 @@
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: 方法
       items:
-        - name: 'C# モジュールの開発'
+        - name: C# モジュールの開発
           href: azure-stack-edge-create-iot-edge-module.md
         - name: 管理する
           items:
@@ -123,7 +127,9 @@
           href: azure-stack-edge-return-device.md
     - name: リリース ノート
       items:
-        - name: 1911 - 最新
+        - name: 2007 - 最新
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
           href: data-box-gateway-1911-release-notes.md
         - name: 1906
           href: data-box-gateway-1906-release-notes.md
@@ -133,7 +139,7 @@
           href: data-box-gateway-release-notes.md
 - name: リソース
   items:
-    - name: 'Azure Stack Edge C# モジュールのサンプル (.NET)'
+    - name: Azure Stack Edge C# モジュールのサンプル (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
     - name: Azure Stack Edge/Data Box Gateway の製品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'

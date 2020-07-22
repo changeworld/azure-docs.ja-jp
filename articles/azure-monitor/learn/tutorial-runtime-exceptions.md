@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670425"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516364"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -35,7 +35,7 @@ Azure Application Insights は、お使いのアプリケーションからテ�
     - ASP.NET および Web の開発
     - Azure の開発
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
-- [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) を有効にします
+- [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md) を有効にします
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../../azure-monitor/app/asp-net.md)を実行します。 
 - このチュートリアルでは、お使いのアプリケーションで例外の ID を追跡し、例外を生成する開発環境またはテスト環境でお使いのコードを変更します。 
 

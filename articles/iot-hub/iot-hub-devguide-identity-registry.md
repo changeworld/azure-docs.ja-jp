@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674956"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -188,7 +188,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 | プロパティ | Options | 説明 |
 | --- | --- | --- |
-| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
+| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , : = @ $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232](https://tools.ietf.org/html/rfc7232) に準拠した、デバイス ID の弱い ETag を表す文字列。 |
 | auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
@@ -212,8 +212,8 @@ iothub-message-schema | moduleLifecycleNotification |
 
 | プロパティ | Options | 説明 |
 | --- | --- | --- |
-| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
-| moduleId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
+| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , : = @ $ '`)。 |
+| moduleId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , : = @ $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232](https://tools.ietf.org/html/rfc7232) に準拠した、デバイス ID の弱い ETag を表す文字列。 |
 | auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |

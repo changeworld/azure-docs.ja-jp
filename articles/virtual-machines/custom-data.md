@@ -7,18 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 9497e665d024b583c261ade3e6fb5393a9322ce0
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678360"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
 
-## <a name="what-is-custom-data"></a>カスタム データとは
-
-お客様はしばしば、プロビジョニング時にスクリプトまたはその他のメタデータを Microsoft Azure 仮想マシンに挿入する方法について質問されます。  他のクラウドでは、この概念は多くの場合、ユーザー データと呼ばれます。  Microsoft Azure には、カスタム データと呼ばれる同様の機能があります。 
+プロビジョニング時にスクリプトまたはその他のメタデータを Microsoft Azure 仮想マシンに挿入する必要がある場合があります。  他のクラウドでは、この概念は多くの場合、ユーザー データと呼ばれます。  Microsoft Azure には、カスタム データと呼ばれる同様の機能があります。 
 
 カスタム データは、最初の起動時または初期セットアップ時にのみ VM で使用可能になります。これを "プロビジョニング" と呼びます。 プロビジョニングとは、VM 作成のパラメーター (ホスト名、ユーザー名、パスワード、証明書、カスタムデータ、キーなど) が VM で使用可能になり、[Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)や [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init) などのプロビジョニング エージェントがそれらを処理するプロセスです。 
 
@@ -84,7 +82,7 @@ Azure では、現在、次の 2 つのプロビジョニング エージェン�
 
 ## <a name="faq"></a>よく寄せられる質問
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>VM の作成後にカスタム データを更新できますか?
-単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、REST API を使用して VMSS カスタム データを更新できます (PS または AZ CLI クライアントには適用されません)。 VMSS モデルのカスタム データを更新すると、次のようになります。
+単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、[REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) を使用して VMSS カスタム データを更新できます (PS または AZ CLI クライアントには適用されません)。 VMSS モデルのカスタム データを更新すると、次のようになります。
 * VMSS の既存のインスタンスは、再イメージ化されるまで、更新されたカスタム データを取得しません。
 * VMSS のアップグレードされた既存のインスタンスは、更新されたカスタム データを取得しません。
 * 新しいインスタンスは、新しいカスタム データを受け取ります。

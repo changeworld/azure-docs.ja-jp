@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 7b81e88fe6f658fdf4c1857c6082100894c6f2f6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067716"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608027"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>クイック スタート:シンプルな Azure CLI コマンド az mysql up (プレビュー) を使用して Azure Database for MySQL を作成する
 
@@ -64,7 +64,7 @@ sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コ�
 backup-retention | 7 | バックアップを保持する必要のある時間。 単位は日数です。
 geo-redundant-backup | 無効 | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。
 location | westus2 | サーバーの Azure の場所。
-ssl-enforcement | 無効 | このサーバーに対して SSL を有効にする必要があるかどうかどうか。
+ssl-enforcement | Enabled | このサーバーに対して SSL を有効にする必要があるかどうかどうか。
 storage-size | 5120 | サーバーのストレージ容量 (単位はメガバイト)。
 version | 5.7 | MySQL のメジャー バージョン。
 admin-user | システム生成 | 管理者ログインのユーザー名。

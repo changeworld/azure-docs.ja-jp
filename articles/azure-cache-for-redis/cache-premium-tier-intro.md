@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15b4764d32c536698246bddfcca50ffa6ce9b3b5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74121669"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184686"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Cache for Redis Premium レベルの概要
 Azure Cache for Redis は、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションの作成を可能にする分散マネージド キャッシュです。 
@@ -19,26 +19,26 @@ Azure Cache for Redis は、データへの超高速アクセスを提供する�
 新しい Premium レベルは、Standard レベルの全機能に加えて、パフォーマンスの向上、ワークロードの増加、障害復旧、インポート/エクスポート、セキュリティの強化などを備えたエンタープライズ対応のレベルです。 Premium キャッシュ レベルの追加機能の詳細をお知りになりたい場合は、このドキュメントを引き続きお読みください。
 
 ## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Standard/Basic レベルを超えるパフォーマンス
-**Standard/Basic レベルを超えるパフォーマンス。** Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。 
+**Standard/Basic レベルを超えるパフォーマンス。** Premium レベルのキャッシュは、高速プロセッサを備え、Basic またはStandard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。 
 
 **同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。** たとえば、C6 (Standard) キャッシュのスループットが毎秒 15 万要求であるのに対し、53 GB の P4 (Premium) キャッシュは毎秒 25 万要求です。
 
 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Cache for Redis FAQ](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」(Azure Cache for Redis の FAQ) を参照してください。
 
 ## <a name="redis-data-persistence"></a>Redis データの保持
-Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、[Redis 永続化](https://redis.io/topics/persistence)の RDB オプションと AOF オプション (近日提供予定) が用意されています。 
+Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic または Standard のキャッシュは、すべてのデータをメモリ内にのみ格納します。 基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、[Redis 永続化](https://redis.io/topics/persistence)の RDB オプションと AOF オプション (近日提供予定) が用意されています。 
 
 永続化の構成手順については、[Premium Azure Cache for Redis の永続性の構成方法](cache-how-to-premium-persistence.md)に関するページを参照してください。
 
 ## <a name="redis-cluster"></a>Redis クラスター
-53 GB を超えるキャッシュを作成するか、複数の Redis ノード間でデータを共有する場合、Premium レベルで利用可能な Redis クラスタリングを使用することができます。 各ノードは、Azure によって管理される高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 
+53 GB を超えるキャッシュを作成したり、複数の Redis ノード間でデータを共有したりする場合は、Premium レベルで利用可能な Redis クラスタリングを使用することができます。 各ノードは、Azure によって管理される高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 
 
-**Redis クラスタリングでは、スケールとスループットを最大限に利用できます。** クラスター内のシャード (ノード) の数を増やすと、スループットは直線的に増加します。 例: 10 個のシャードで構成される P4 クラスターを作成すると、利用可能なスループットは毎秒 250 万要求 (25 万 * 10) となります。 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Cache for Redis FAQ](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」(Azure Cache for Redis の FAQ) を参照してください。
+**Redis クラスタリングでは、スケールとスループットを最大限に利用できます。** クラスター内のシャード (ノード) の数を増やすと、スループットは直線的に増加します。 たとえば、10 個のシャードで構成される P4 クラスターを作成すると、利用可能なスループットは毎秒 250 万要求 (25 万 * 10) となります。 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Cache for Redis に関する FAQ](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」を参照してください。
 
 クラスタリングを開始する場合は、[Premium Azure Cache for Redis のクラスタリングの構成方法](cache-how-to-premium-clustering.md)に関するページを参照してください。
 
 ## <a name="enhanced-security-and-isolation"></a>強化されたセキュリティと分離
-Basic/Standard レベルで作成されたキャッシュは、パブリック インターネット上でアクセス可能です。 キャッシュへのアクセスは、アクセス キーに基づいて制限されます。 Premium レベルでは、さらに、指定されたネットワーク内のクライアントだけがキャッシュにアクセスできるようにすることが可能になります。 Azure Cache for Redis は、[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) 内にデプロイできます。 サブネット、アクセス制御ポリシー、およびその他の Redis へのアクセスをさらに制限する機能を始め、VNet のすべての機能を使用できます。
+Basic/Standard レベルで作成されたキャッシュは、パブリック インターネット上でアクセス可能です。 キャッシュへのアクセスは、アクセス キーに基づいて制限されます。 Premium レベルを使用すると、さらに、指定されたネットワーク内のクライアントだけがキャッシュにアクセスできるようにすることが可能になります。 Azure Cache for Redis は、[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) 内にデプロイできます。 サブネット、アクセス制御ポリシー、およびその他の Redis へのアクセスをさらに制限する機能を始め、VNet のすべての機能を使用できます。
 
 詳細については、[Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)に関するページを参照してください。
 
@@ -54,10 +54,10 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 ## <a name="reboot"></a>再起動
 Premium レベルでは、キャッシュの 1 つ以上のノードをオンデマンドで再起動できます。 これにより、障害発生時のアプリケーションの回復性をテストすることができます。 次のノードを再起動できます。
 
-* キャッシュのマスター ノード
-* キャッシュのセカンダリ ノード
-* キャッシュのプライマリ ノードとセカンダリ ノードの両方
-* クラスタリングを備えたプレミアム キャッシュを使用している場合は、キャッシュ内の個々のシャードに対してプライマリ ノード、セカンダリ ノード、または両方のノードを再起動できます。
+* キャッシュのプライマリ ノード
+* キャッシュのレプリカ ノード
+* キャッシュのプライマリ ノードとレプリカ ノードの両方
+* クラスタリングを備えたプレミアム キャッシュを使用している場合は、キャッシュ内の個々のシャードについてプライマリ ノード、レプリカ ノード、または両方のノードを再起動できます
 
 詳細については、「[再起動](cache-administration.md#reboot)」および「[再起動に関する FAQ](cache-administration.md#reboot-faq)」を参照してください。
 
@@ -67,7 +67,7 @@ Premium レベルでは、キャッシュの 1 つ以上のノードをオンデ
 >
 
 ## <a name="schedule-updates"></a>更新のスケジュール
-更新のスケジュール機能では、キャッシュのメンテナンス時間を指定できます。 メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。 メンテナンス時間を指定するには、目的の曜日をオンにして、曜日ごとにメンテナンス時間の開始時刻を指定します。 メンテナンス時間の時刻は UTC 時間で指定します。 
+更新のスケジュール機能では、キャッシュのメンテナンス時間を指定できます。 メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。 メンテナンス時間を指定するには、目的の曜日をオンにして、曜日ごとにメンテナンス時間の開始時刻を指定します。 メンテナンス時間の時刻は UTC 時間です。 
 
 詳細については、「[更新のスケジュール](cache-administration.md#schedule-updates)」および「[更新のスケジュールに関する FAQ](cache-administration.md#schedule-updates-faq)」を参照してください。
 
@@ -84,7 +84,7 @@ Premium レベルでは、キャッシュの 1 つ以上のノードをオンデ
 
 
 ## <a name="to-scale-to-the-premium-tier"></a>Premium レベルにスケーリングするには
-Premium レベルにスケーリングするには、 **[価格レベルの変更]** ブレードで Premium レベルのいずれかを選択するだけです。 PowerShell および CLI を使用して、キャッシュを Premium レベルにスケーリングすることもできます。 詳細な手順については、「[How to Scale Azure Cache for Redis](cache-how-to-scale.md)」(Azure Redis Cache のスケーリング方法) と「[How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」(スケーリング処理を自動化する方法) を参照してください。
+Premium レベルにスケーリングするには、 **[価格レベルの変更]** ブレードで Premium レベルのいずれかを選択します。 PowerShell および CLI を使用して、キャッシュを Premium レベルにスケーリングすることもできます。 詳細な手順については、「[How to Scale Azure Cache for Redis](cache-how-to-scale.md)」(Azure Redis Cache のスケーリング方法) と「[How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」(スケーリング処理を自動化する方法) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 キャッシュを作成し、Premium レベルの新機能を確認します。

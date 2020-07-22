@@ -1,27 +1,33 @@
 ---
 title: 既知の問題とトラブルシューティング
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning に関する既知の問題、回避策、トラブルシューティングの一覧を示します。
+description: Azure Machine Learning のエラーを見つけて修正するための支援を得ます。 既知の問題、トラブルシューティング、および対処方法について説明します。
 services: machine-learning
 author: j-martens
 ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
+ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610067"
 ---
-# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
+# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
-この記事は、Azure Machine Learning の使用時に発生する可能性があるエラーや障害を見つけて修正するのに役立ちます。
+この記事は、Azure Machine Learning の使用時に発生する可能性がある既知の問題のトラブルシューティングに役立ちます。 
 
-## <a name="diagnostic-logs"></a>診断ログ
+トラブルシューティングの詳細については、この記事の末尾の「[次のステップ](#next-steps)」を参照してください。
+
+> [!TIP]
+> エラーまたはその他の問題が、Azure Machine Learning を操作する際に生じる[リソース クォータ](how-to-manage-quotas.md)の問題の結果である場合があります。 
+
+## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
 サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 いくつかのログを表示するには: 
 1. [Azure Machine Learning Studio](https://ml.azure.com) にアクセスします。 
@@ -34,32 +40,50 @@ ms.locfileid: "82231970"
 > Azure Machine Learning では、AutoML やトレーニング ジョブを実行する Docker コンテナーなど、トレーニング中にさまざまなソースからの情報がログに記録すされます。 これらのログの多くについては、ドキュメントに記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
 
 
-## <a name="resource-quotas"></a>リソース クォータ
-
-Azure Machine Learning の使用時に扱うことがあるリソース クォータの詳細は[こちら](how-to-manage-quotas.md)にあります。
-
 ## <a name="installation-and-import"></a>インストールとインポート
-
+                           
 * **pip のインストール:依存関係は単一行のインストールとの整合性が保証されていない**: 
 
    これは pip の既知の制限であり、単一行としてインストールするときに、機能する依存関係競合回避モジュールがないことが原因です。 pip によって参照されるのは、最初の固有の依存関係のみです。 
 
-   次のコードでは、`azure-ml-datadrift` と `azureml-train-automl` の両方が単一行の pip インストールを使用してインストールされます。 
+   次のコードでは、`azureml-datadrift` と `azureml-train-automl` の両方が単一行の pip インストールを使用してインストールされます。 
      ```
-       pip install azure-ml-datadrift, azureml-train-automl
+       pip install azureml-datadrift, azureml-train-automl
      ```
-   この例で、`azure-ml-datadrift` にはバージョン > 1.0 が必要で、`azureml-train-automl` にはバージョン < 1.2 が必要であるとします。 `azure-ml-datadrift` の最新バージョンが 1.3 の場合、古いバージョンの `azureml-train-automl` パッケージ要件に関係なく、両方のパッケージが 1.3 にアップグレードされます。 
+   この例で、`azureml-datadrift` にはバージョン > 1.0 が必要で、`azureml-train-automl` にはバージョン < 1.2 が必要であるとします。 `azureml-datadrift` の最新バージョンが 1.3 の場合、古いバージョンの `azureml-train-automl` パッケージ要件に関係なく、両方のパッケージが 1.3 にアップグレードされます。 
 
    パッケージに適切なバージョンがインストールされていることを確認するには、次のコードのように複数行を使用してインストールします。 pip は次の行呼び出しの一部として明示的にダウングレードされるため、ここでは順序は問題になりません。 そのため、適切なバージョンの依存関係が適用されます。
     
      ```
-        pip install azure-ml-datadrift
+        pip install azureml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **azureml-train-automl-client をインストールする際に、説明パッケージのインストールが保証されていない:** 
+   
+   モデルの説明を有効にして、リモートの AutoML を実行すると、"Please install azureml-explain-model package for model explanations (モデルの説明のために azureml-explain-model パッケージをインストールしてください)" というエラー メッセージが表示されます。 これは既知の問題です。 回避策として、次のいずれかの手順に従います。
+  
+  1. azureml-explain-model をローカルでインストールします。
+   ```
+      pip install azureml-explain-model
+   ```
+  2. AutoML 構成で model_explainability=False を渡すことによって、説明機能を完全に無効にします。
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **panda のエラー:通常は AutoML 実験中に見られる**:
    
-   pip を使用して手動で環境を設定すると、サポートされていないパッケージ バージョンがインストールされるため、(特に pandas の) 属性エラーが表示されます。 このようなエラーを回避するには、[automl_setup.cmd を使用して AutoML SDK をインストールしてください](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)。
+   pip を使用して手動で環境を設定すると、サポートされていないパッケージ バージョンがインストールされるため、(特に pandas の) 属性エラーが表示される場合があります。 このようなエラーを回避するには、[automl_setup.cmd を使用して AutoML SDK をインストールしてください](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)。
    
     1. Anaconda プロンプトを開き、一連のサンプル ノートブックの GitHub リポジトリをクローンします。
 
@@ -150,12 +174,26 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 
 ### <a name="data-labeling-projects"></a>プロジェクトのラベル付けデータ
 
-|問題  |解決策  |
+|問題  |解決方法  |
 |---------|---------|
-|使用できるのは BLOB データストアに作成されたデータセットのみ     |  これは、現在のリリースの既知の制限です。       |
-|作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される     | ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。         |
-|画像をレビューする際に、新しくラベル付けされた画像が表示されない     |   ラベル付けされたすべての画像を読み込むには、 **[First]\(1 番目\)** ボタンを選択します。 **[First]\(1 番目\)** ボタンを選択すると、リストの先頭に戻りますが、ラベル付けされたデータはすべて読み込まれます。      |
+|BLOB データストアに作成されたデータセットしか使用できない。     |  これは、現在のリリースの既知の制限です。       |
+|作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される。     | ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。         |
+|画像をレビューする際に、新しくラベル付けされた画像が表示されない。     |   ラベル付けされたすべての画像を読み込むには、 **[First]\(1 番目\)** ボタンを選択します。 **[First]\(1 番目\)** ボタンを選択すると、リストの先頭に戻りますが、ラベル付けされたデータはすべて読み込まれます。      |
 |オブジェクト検出のラベル付け中に Esc キーを押すと、左上隅にゼロ サイズのラベルが作成されます。 この状態でラベルを送信することはできません。     |   ラベルの横にある交差マークをクリックして、ラベルを削除してください。  |
+
+### <a name="data-drift-monitors"></a>データ ドリフト モニター
+
+* SDK の `backfill()` 関数で予期された出力が生成されない場合は、認証の問題が原因である可能性があります。  この関数に渡す計算を作成するときに、`Run.get_context().experiment.workspace.compute_targets` を使用しないでください。  代わりに、次のような [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) を使用して、その `backfill()` 関数に渡す計算を作成します。 
+
+  ```python
+   auth = ServicePrincipalAuthentication(
+          tenant_id=tenant_id,
+          service_principal_id=app_id,
+          service_principal_password=client_secret
+          )
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   compute = ws.compute_targets.get("xxx")
+   ```
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 
@@ -169,7 +207,7 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 
     [Estimator](concept-azure-machine-learning-architecture.md#estimators) を使用して実験を送信する場合は、パッケージのインストール元に基づく Estimator 内の `pip_packages` または `conda_packages` パラメータ―を使って、パッケージ名を指定できます。 また、`conda_dependencies_file` を使用してすべての依存関係を含む yml ファイルを指定したり、`pip_requirements_file` パラメーターを使用して txt ファイル内のすべての pip 要件を一覧表示したりすることも可能です。 Estimator で使用される既定のイメージをオーバーライドする独自の Azure ML 環境オブジェクトがある場合は、Estimator コンストラクターの `environment` パラメーターを使用してその環境を指定できます。
 
-    Azure ML では、Tensorflow、PyTorch、Chainer、および SKLearn に対応するフレームワーク固有の Estimator も提供されています。 これらの Estimator を使用すると、ユーザーに代わって、トレーニングに使用される環境にコア フレームワークの依存関係が確実にインストールされます。 前述のように、追加の依存関係を指定することもできます。 
+    Azure ML では、TensorFlow、PyTorch、Chainer、および SKLearn に対応するフレームワーク固有の Estimator も提供されています。 これらの Estimator を使用すると、ユーザーに代わって、トレーニングに使用される環境にコア フレームワークの依存関係が確実にインストールされます。 前述のように、追加の依存関係を指定することもできます。 
  
     Azure ML によって保守される docker イメージとそのコンテンツは、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)内で確認できます。
     フレームワーク固有の依存関係は、それぞれのフレームワークのドキュメント ([Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)) に示されています。
@@ -196,8 +234,14 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 
 ## <a name="automated-machine-learning"></a>自動化された機械学習
 
-* **Tensor Flow**:自動化された機械学習では、現時点では Tensor Flow バージョン 1.13 はサポートされていません。 このバージョンをインストールすると、パッケージの依存関係が動作を停止することになります。 Microsoft は、将来のリリースでこの問題を解決するよう取り組んでいます。
-
+* **TensorFlow**: SDK のバージョン 1.5.0 以降の自動機械学習では、TensorFlow モデルは既定ではインストールされません。 自動 ML 実験で TensorFlow をインストールして使用するには、CondaDependecies を使用して tensorflow==1.12.0 をインストールしてください。 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
 * **実験グラフ**:自動化された ML の実験のイテレーションで示される二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は、4/12 以降のユーザー インターフェイスでは正しくレンダリングされません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
 
 * **Databricks での自動化された機械学習の実行をキャンセルする**:自動化された機械学習機能を Azure Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始するには、Azure Databricks クラスターを再起動してください。
@@ -214,7 +258,7 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 
 次のエラーに対して、これらのアクションを実行します。
 
-|エラー  | 解決策  |
+|エラー  | 解決方法  |
 |---------|---------|
 |Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |
@@ -264,7 +308,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="authentication-errors"></a>認証エラー
 
-リモート ジョブからコンピューティング ターゲットで管理操作を実行すると、次のいずれかのエラーが発生します。
+リモート ジョブからコンピューティング ターゲットで管理操作を実行すると、次のいずれかのエラーが発生します。 
 
 ```json
 {"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
@@ -275,3 +319,13 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
 たとえば、リモート実行のために送信される ML パイプラインからコンピューティング ターゲットを作成またはアタッチしようとすると、エラーが発生します。
+
+## <a name="next-steps"></a>次のステップ
+
+Azure Machine Learning のその他のトラブルシューティング記事を参照します。
+
+* [Azure Machine Learning での Docker デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
+* [機械学習パイプラインのデバッグ](how-to-debug-pipelines.md)
+* [Azure Machine Learning SDK からの ParallelRunStep クラスのデバッグ](how-to-debug-parallel-run-step.md)
+* [VS Code を使用した機械学習コンピューティング インスタンスの対話型デバッグ](how-to-set-up-vs-code-remote.md)
+* [Application Insights を使用した機械学習パイプラインのデバッグ](how-to-debug-pipelines-application-insights.md)

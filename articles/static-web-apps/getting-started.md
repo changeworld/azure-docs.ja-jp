@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599133"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259254"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>クイック スタート:静的 Web アプリを初めてビルドする
 
@@ -31,25 +31,25 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/angular-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="react"></a>[React](#tab/react)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/react-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/vue-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/vanilla-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
@@ -70,7 +70,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 - **[リソースの作成]** をクリックします
 - **Static Web Apps** を検索します
 - **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-- **[作成]**
+- **[作成]** をクリックします。
 
 ### <a name="basics"></a>基本
 
@@ -81,7 +81,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 - お使いの "_Azure サブスクリプション_" を選択します
 - "_リソース グループ_" を選択するか、新しく作成します
 - アプリに **my-first-static-web-app** という名前を設定します。
-  - 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `_`です。
+  - 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
 - 最も近い "_リージョン_" を選択します
 - **[Free]** _SKU_ を選択します
 - **[GitHub でサインイン]** ボタンをクリックし、GitHub で認証します
@@ -130,6 +130,8 @@ GitHub にサインインしたら、リポジトリの情報を入力します�
 **[確認および作成]** ボタンを選択します。
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="[確認および作成] ボタン":::
+
+アプリを作成した後でこれらの値を変更するには、[ワークフロー ファイル](github-actions-workflow.md)を編集します。
 
 ### <a name="review--create"></a>確認と作成
 

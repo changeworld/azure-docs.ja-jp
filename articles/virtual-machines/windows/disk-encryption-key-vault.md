@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9160ab530037da1f24a2f07903b949b42ecbb34b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656696"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207083"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
 
@@ -23,6 +23,9 @@ Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)](disk-encryption-key-vault-aad.md)」を参照してください。
 
 Azure Disk Encryption で使用するためのキー コンテナーの作成と構成には、次の 3 つの手順が必要です。
+
+> [!Note]
+> ボリューム暗号化のために Azure Disk Encryption へのアクセスを有効にするには、Azure Key Vault のアクセス ポリシー設定でオプションを選択する必要があります。
 
 1. 必要に応じて、リソース グループを作成する。
 2. キー コンテナーを作成する。 

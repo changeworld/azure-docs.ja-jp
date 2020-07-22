@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616539"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202130"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -40,7 +40,7 @@ PowerShell における Key Vault の具体的な参照情報については、[
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| Operation | 説明 | ユーザーのアクセス許可 |
+| 操作 | 説明 | ユーザーのアクセス許可 |
 |:--|:--|:--|
 |List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
@@ -265,9 +265,9 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 
 ## <a name="enabling-purge-protection"></a>消去保護を有効にする
 
-消去保護をオンにすると、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 このようなコンテナーまたはオブジェクトは回復することもできます。 この機能は、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます。
+消去保護をオンにすると、削除状態のコンテナーまたはオブジェクトは、保持期間が経過するまで消去できません。 このようなコンテナーまたはオブジェクトは回復することもできます。 この機能は、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます。 既定の保有期間は 90 日ですが、キー コンテナーの作成時に、リテンション期間ポリシーの間隔を 7 日から 90 日の値に設定することができます。 保護の削除のアイテム保持ポリシーでは、同じ間隔が使用されます。 設定した場合、保持ポリシーの間隔は変更できません。
 
-論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 
+論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 消去保護を無効にすることはサポートされていません。 
 
 コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) コマンドレットを使用します。
 

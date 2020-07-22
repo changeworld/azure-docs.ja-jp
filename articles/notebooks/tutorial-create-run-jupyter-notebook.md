@@ -3,20 +3,21 @@ title: チュートリアル - Jupyter ノートブックを作成して実行�
 description: データ サイエンスの線形回帰のプロセスを示す Jupyter ノートブックを Azure Notebooks で作成して実行する方法を説明します。
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75660819"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834133"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 このチュートリアルでは、Azure Notebooks を使用して単純な線形回帰を示す完全な Jupyter ノートブックを作成するプロセスについて説明します。 このチュートリアルでは、異なるセルの作成、セルの実行、スライド ショーとしてのノートブックの提示など、Jupyter Notebook の UI について理解します。
 
 完成したノートブックは、[GitHub の Azure Notebook サンプル](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)にありあます。 ただし、このチュートリアルでは、新しいプロジェクトと空のノートブックで始めるので、作成する手順を経験できます。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 このチュートリアルでは、以下の内容を学習します。
 

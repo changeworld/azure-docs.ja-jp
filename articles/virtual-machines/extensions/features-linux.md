@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226867"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042120"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -115,7 +115,7 @@ VM 拡張機能は、Azure Portal から既存の VM に適用できます。 �
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
-VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は、負荷分散された一連の VM と Azure SQL データベースをデプロイした後、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
+VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は、負荷分散された一連の VM と Azure SQL Database をデプロイした後、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
 
 詳細については、[Resource Manager テンプレート](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)全体を参照してください。
 

@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2196fe825570c371f4590868e994780b16a9c552
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426203"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040947"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics による高頻度取引のシミュレーション
 Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義関数 (UDF) とユーザー定義集計 (UDA) を組み合わせることで高度な分析を行うことができます。 高度な分析には、オンライン機械学習のトレーニングやスコアリングのほか、ステートフル プロセス シミュレーションが含まれます。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。

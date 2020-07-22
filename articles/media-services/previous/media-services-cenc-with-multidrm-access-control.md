@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162992"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960469"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 
 
@@ -234,8 +234,10 @@ Azure AD に関する情報:
 
 * 発行者 URL は "/" で終わっている必要があります。 対象ユーザーは、プレーヤー アプリケーション クライアント ID である必要があります。 また、発行者 URL の末尾に "/" を追加します。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     [JWT デコーダー](http://jwt.calebb.net/)では、JWT の **aud** と **iss** が次のように表示されます。
 
@@ -247,11 +249,15 @@ Azure AD に関する情報:
 
 * 動的 CENC 保護を設定するときは、正しい発行者を使う必要があります。
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     次のように指定すると動作しません。
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     GUID は Azure AD テナント ID です。 GUID は、Azure Portal の **[エンドポイント]** ポップアップ メニューで確認できます。
 
@@ -261,7 +267,9 @@ Azure AD に関する情報:
 
 * 制限要件を作成するときに、適切な TokenType を設定します。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     SWT (ACS) に加えて JWT (Azure AD) のサポートを追加するので、既定の TokenType は TokenType.JWT です。 SWT/ACS を使う場合は、トークンを TokenType.SWT に設定する必要があります。
 

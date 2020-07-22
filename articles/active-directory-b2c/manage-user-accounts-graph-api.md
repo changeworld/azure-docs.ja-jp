@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387628"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する
 
@@ -67,7 +67,7 @@ Microsoft Graph API では、ローカル ID とフェデレーション ID の�
 
 次の **Identities** プロパティ。サインイン名を含むローカル アカウント ID、サインインとしての電子メール アドレス、およびソーシャル ID が含まれます。 
 
- ```JSON
+ ```json
  "identities": [
      {
        "signInType": "userName",
@@ -95,7 +95,7 @@ Microsoft Graph API では、ローカル ID とフェデレーション ID の�
 
 フェデレーション (ソーシャル) ID の場合、**passwordProfile** プロパティは必要ありません。
 
-```JSON
+```json
 "passwordProfile" : {
     "password": "password-value",
     "forceChangePasswordNextSignIn": false
@@ -108,7 +108,7 @@ Azure AD B2C の (ローカル アカウントの) パスワード ポリシー�
 
 ユーザー移行シナリオでは、移行するアカウントのパスワード強度が、Azure AD B2C によって適用された[強力なパスワード強度](../active-directory/authentication/concept-sspr-policy.md)より弱い場合は、強力なパスワードという要件を無効にすることができます。 既定のパスワード ポリシーを変更するには、`passwordPolicies` プロパティを `DisableStrongPassword` に設定します。 たとえば、ユーザー作成要求を次のように変更できます。
 
-```JSON
+```json
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
@@ -118,7 +118,7 @@ Azure AD B2C の (ローカル アカウントの) パスワード ポリシー�
 
 Microsoft Graph API では、拡張属性を使用したユーザーの作成と更新がサポートされています。 Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使って名前が付けられます。 次に例を示します。
 
-```JSON
+```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 

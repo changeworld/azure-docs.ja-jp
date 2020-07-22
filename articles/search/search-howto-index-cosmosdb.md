@@ -9,18 +9,18 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236863"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146903"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
 > [!IMPORTANT] 
 > SQL API は一般提供されています。
-> MongoDB API、Gremlin API、Cassandra API のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力して行うことができます。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
+> MongoDB API、Gremlin API、Cassandra API のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力して行うことができます。 プレビュー機能は [REST API バージョン 2020-06-30-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 > [!WARNING]
 > Azure Cognitive Search でサポートされるのは、[インデックス作成ポリシー](https://docs.microsoft.com/azure/cosmos-db/index-policy)が [[常に]](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) に設定されている Cosmos DB コレクションだけです。 [遅延] インデックス作成ポリシーを使用したコレクションのインデックス作成はお勧めできず、データが失われることがあります。 インデックス作成が無効になっているコレクションはサポートされません。
@@ -33,9 +33,9 @@ Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスの�
 
 + [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) (一般提供開始済み) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)、[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) を利用できます。
 
-+ [MongoDB API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)または [REST API バージョン 2019-05-06-Preview](search-api-preview.md) を作成できます。
++ [MongoDB API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)または [REST API バージョン 2020-06-30-Preview](search-api-preview.md) を作成できます。
 
-+ [Cassandra API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) と [Gremlin API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) では、データ ソースとインデクサーの作成に使用できるのは [REST API バージョン 2019-05-06-Preview](search-api-preview.md) のみになります。
++ [Cassandra API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) と [Gremlin API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) では、データ ソースとインデクサーの作成に使用できるのは [REST API バージョン 2020-06-30-Preview](search-api-preview.md) のみになります。
 
 
 > [!Note]
@@ -123,7 +123,7 @@ Azure Cognitive Search サービス ページのコマンド バーから[ウィ
 REST API を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースを作成し、インデックスを作成して、インデクサーを作成する) で、Azure Cosmos DB データのインデックスを作成できます。 Cosmos DB からのデータ抽出は、インデクサーの作成要求を送信した時点で発生します。 この要求が完了すると、クエリ可能なインデックスが作成されます。 
 
 > [!NOTE]
-> Cosmos DB Gremlin API または Cosmos DB Cassandra API からデータのインデックスを作成するためには、まず[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力し、限定プレビュー機能に対するアクセスを要求する必要があります。 要求が処理されると、[REST API バージョン 2019-05-06-Preview](search-api-preview.md) を使ってデータ ソースを作成する手順の案内が届きます。
+> Cosmos DB Gremlin API または Cosmos DB Cassandra API からデータのインデックスを作成するためには、まず[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力し、限定プレビュー機能に対するアクセスを要求する必要があります。 要求が処理されると、[REST API バージョン 2020-06-30-Preview](search-api-preview.md) を使ってデータ ソースを作成する手順の案内が届きます。
 
 この記事の前の方で、[Azure Cosmos DB のインデックス作成](https://docs.microsoft.com/azure/cosmos-db/index-overview)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)が異なる操作であると説明しました。 Cosmos DB のインデックス作成では、既定ですべてのドキュメントのインデックスが自動的に作成されます (Cassandra API の場合を除きます)。 インデックスの自動作成を無効にすると、ドキュメント ID を使用したクエリまたは自己リンクでのみドキュメントにアクセスできるようになります。 Azure Cognitive Search のインデックス作成では、Azure Cognitive Search によってインデックスが作成されるコレクションで、Cosmos DB の自動インデックス作成が有効になっている必要があります。 Cosmos DB Cassandra API インデクサーのプレビューにサインアップした場合には、Cosmos DB のインデックス作成の設定手順に関する案内が届きます。
 
@@ -154,7 +154,9 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 
 データ ソースを作成するには、POST 要求を作成します。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -170,6 +172,7 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
             "highWaterMarkColumnName": "_ts"
         }
     }
+```
 
 要求の本文には、次のフィールドを含むデータ ソースの定義が含まれている必要があります。
 
@@ -190,6 +193,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 ドキュメントのサンプル:
 
+```http
     {
         "userId": 10001,
         "contact": {
@@ -199,31 +203,38 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
         "company": "microsoft",
         "tags": ["azure", "cosmosdb", "search"]
     }
+```
 
 フィルター処理クエリ:
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```sql
+SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 平坦化クエリ:
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-    
-    
+```sql
+SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
+
 プロジェクション クエリ:
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 配列を平坦化するクエリ:
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 ### <a name="3---create-a-target-search-index"></a>3 - ターゲット検索インデックスを作成する 
 
 まだない場合は、[ターゲットの Azure Cognitive Search インデックスを作成](/rest/api/searchservice/create-index)します。 次の例では、ID と説明のフィールドを持つインデックスを作成します。
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -243,6 +254,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
          "suggestions": true
        }]
      }
+```
 
 ターゲット インデックスのスキーマがソース JSON ドキュメントのスキーマまたはカスタムのクエリ プロジェクションの出力と互換性があることを確認します。
 
@@ -267,7 +279,8 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -277,6 +290,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
@@ -299,10 +313,12 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 データ変更の検出ポリシーの目的は、変更されたデータ項目を効率的に識別することです。 現在、唯一サポートされているポリシーは、次に示すように、Azure Cosmos DB によって指定される `_ts` (タイムスタンプ) プロパティを使用した [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) です。
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
+```
 
 インデクサーの優れたパフォーマンスを確保するのには、このポリシーを使用することが推奨されます。 
 
@@ -318,11 +334,13 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 ただし状況によっては、クエリに `ORDER BY [collection alias]._ts` 句が含まれる場合でも、クエリ結果が `_ts` で並べ替えられることを Azure Cognitive Search で推論されない可能性があります。 `assumeOrderByHighWaterMarkColumn` 構成プロパティを使用して結果が並べ替えられるように Azure Cognitive Search に指示することもできます。 このヒントを指定するには、次のようにインデクサーを作成または更新します。 
 
+```http
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
     } 
+```
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -330,17 +348,20 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 コレクションから行が削除されると、通常、検索インデックスからも同様に行を削除する必要があります。 データ削除の検出ポリシーの目的は、削除されたデータ項目を効率的に識別することです。 現在、唯一サポートされているポリシーは、`Soft Delete` ポリシー (削除されると何らかのフラグでマークされる) のみです。このポリシーは、次のように指定します。
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
         "softDeleteColumnName" : "the property that specifies whether a document was deleted",
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
+```
 
 カスタム クエリを使用している場合、`softDeleteColumnName` から参照されているプロパティはクエリによって投影されていることを確認します。
 
 次の例では、ソフト削除ポリシーとともにデータ ソースを作成します。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -361,6 +382,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
             "softDeleteMarkerValue": "true"
         }
     }
+```
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>次のステップ
 

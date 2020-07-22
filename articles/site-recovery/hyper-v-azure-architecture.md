@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082661"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134924"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -67,14 +67,14 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 ### <a name="enable-protection"></a>保護を有効にする
 
 1. Hyper-V VM の保護を有効にした後、Azure Portal またはオンプレミスで、**保護の有効化**が始まります。
-2. このジョブは、マシンが前提条件を満たしていることを確認してから、構成された設定を使用してレプリケーションをセットアップするために、[CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) を呼び出します。
-3. ジョブが [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) メソッドを呼び出して初期レプリケーションを開始し、完全 VM レプリケーションを初期化して、VM の仮想ディスクを Azure に送信します。
+2. このジョブは、マシンが前提条件を満たしていることを確認してから、構成された設定を使用してレプリケーションをセットアップするために、[CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) を呼び出します。
+3. ジョブが [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) メソッドを呼び出して初期レプリケーションを開始し、完全 VM レプリケーションを初期化して、VM の仮想ディスクを Azure に送信します。
 4. ジョブは **[ジョブ]** タブで監視できます。    ![ジョブ一覧](media/hyper-v-azure-architecture/image1.png) ![[保護を有効にする] の詳細](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初期データ レプリケーション
 
-1. 初期レプリケーションがトリガーされると、[Hyper-V VM スナップショット](https://technet.microsoft.com/library/dd560637.aspx)が作成されます。
+1. 初期レプリケーションがトリガーされると、[Hyper-V VM スナップショット](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))が作成されます。
 2. VM の仮想ハード ディスクは、すべてが Azure にコピーされるまで、1 つずつレプリケートされます。 VM サイズとネットワーク帯域幅によっては、しばらく時間がかかる場合があります。 ネットワーク帯域幅を広げる方法を[確認](https://support.microsoft.com/kb/3056159)してください。
 3. 初期レプリケーションの進行中にディスクの変更が発生した場合、Hyper-V レプリカ レプリケーション トラッカーはそれらの変更を Hyper-V レプリケーション ログ (.hrl) として追跡します。 これらのログ ファイルは、ディスクと同じフォルダーに配置されます。 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリ ストレージに送信されます。 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。
 4. 初期レプリケーションが完了すると、VM スナップショットは削除されます。

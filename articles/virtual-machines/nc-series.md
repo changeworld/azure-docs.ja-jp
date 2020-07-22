@@ -1,18 +1,18 @@
 ---
 title: NC シリーズ - Azure Virtual Machines
 description: NC シリーズ VM の仕様。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: eab7dfe79aa5cdf234c8bc9472387214f7df3563
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 9df68d76c9a06a8391c301fa13b6a0d1ac6529a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164527"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726652"
 ---
 # <a name="nc-series"></a>NC シリーズ
 

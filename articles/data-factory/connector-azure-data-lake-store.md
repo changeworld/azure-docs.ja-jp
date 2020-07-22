@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/12/2020
-ms.openlocfilehash: 61bb8fe950de8cd9be91bc76bd24aa0151f3fb79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 833dd0948a4a6a0ecc5c33ea8c92723169b52387
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737803"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 
@@ -81,7 +81,7 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 2. サービス プリンシパルに適切なアクセス許可を付与します。 Data Lake Storage Gen1 におけるアクセス許可の動作例については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)」を参照してください。
 
     - **ソースとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) について、少なくとも**実行**アクセス許可を与えると共に、コピーするファイルの**読み取り**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
-    - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに**書き込み**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 Azure 統合ランタイムを使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、IAM で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを避けたい場合は、Data Lake Store の場所を使用して明示的に [Azure 統合ランタイムを作成](create-azure-integration-runtime.md#create-azure-ir)してください。 たとえば、Data Lake Store が西ヨーロッパにある場合、場所を "西ヨーロッパ" に設定した Azure 統合ランタイムを作成します。 次の例で示すように、Data Lake Store のリンクされたサービスでそれらを関連付けます。
+    - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに**書き込み**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。
 
 次のプロパティがサポートされています。
 
@@ -128,7 +128,7 @@ Azure リソースのマネージド ID 認証を使用するには、次のよ�
 2. Data Lake Store へのアクセス権をマネージド ID に付与します。 Data Lake Storage Gen1 におけるアクセス許可の動作例については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)」を参照してください。
 
     - **ソースとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) について、少なくとも**実行**アクセス許可を与えると共に、コピーするファイルの**読み取り**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
-    - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに**書き込み**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 Azure 統合ランタイムを使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、IAM で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを避けたい場合は、Data Lake Store の場所を使用して明示的に [Azure 統合ランタイムを作成](create-azure-integration-runtime.md#create-azure-ir)してください。 次の例で示すように、Data Lake Store のリンクされたサービスでそれらを関連付けます。
+    - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに**書き込み**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。
 
 Azure Data Factory では、リンクされたサービスの Data Lake Store の一般的な情報以外にプロパティを指定する必要はありません。
 
@@ -202,15 +202,20 @@ Azure Data Lake Store Gen1 では、形式ベースのデータセットの `loc
 
 Azure Data Lake Store Gen1 では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
-| プロパティ                 | 説明                                                  | 必須                                      |
-| ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` の type プロパティは **AzureDataLakeStoreReadSettings** に設定する必要があります。 | はい                                           |
-| recursive                | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定されていて、シンクがファイル ベースのストアである場合、空のフォルダーまたはサブフォルダーはシンクでコピーも作成もされません。 使用可能な値: **true** (既定値) および **false**。 | いいえ                                            |
-| wildcardFolderPath       | ソース フォルダーをフィルター処理するための、ワイルドカード文字を含むフォルダー パス。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
-| wildcardFileName         | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい (データセットで `fileName` が指定されていない場合) |
-| modifiedDatetimeStart    | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。 | いいえ                                            |
-| modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
-| maxConcurrentConnections | ストレージ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
+| プロパティ                 | 説明                                                  | 必須                                     |
+| ------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
+| type                     | `storeSettings` の type プロパティは **AzureDataLakeStoreReadSettings** に設定する必要があります。 | はい                                          |
+| ***コピーするファイルを特定する:*** |  |  |
+| オプション 1: 静的パス<br> | データセットに指定されている所定のフォルダーまたはファイル パスからコピーします。 フォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
+| オプション 2: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するための、ワイルドカード文字を含むフォルダー パス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
+| オプション 2: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
+| オプション 3: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。このファイルの一覧は、行ごとに 1 つのファイルが記載されていて、データセットで構成されているパスへの相対パスになっています。<br/>このオプションを使用する場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
+| ***追加の設定:*** |  | |
+| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
+| deleteFilesAfterCompletion | コピー先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを指定します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルは既にコピー先にコピーされてソースから削除されているのに対して、他のファイルはまだソース ストアに残っています。 <br/>このプロパティは、データ ソース ストアが BLOB、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、ファイル、Azure ファイル、SFTP、または FTP であるバイナリ コピーのシナリオでのみ有効です。 既定値: false。 |いいえ |
+| modifiedDatetimeStart    | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> このプロパティは NULL にできます。これは、ファイル属性フィルターはデータセットに適用されないことを意味します。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
+| modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                           |
+| maxConcurrentConnections | ストレージ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                           |
 
 **例:**
 
@@ -312,6 +317,16 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `st
 | `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
+### <a name="file-list-examples"></a>ファイル リストの例
+
+このセクションでは、コピー アクティビティのソースでファイル リスト パスを使用した結果の動作について説明します。
+
+次のソース フォルダー構造があり、太字のファイルをコピーするとします。
+
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | ADF の構成                                            |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
+| root<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- フォルダー パス: `root/FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `root/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
+
 ### <a name="examples-of-behavior-of-the-copy-operation"></a>コピー操作の動作の例
 
 このセクションでは、コピー操作の動作から得られる結果を、`recursive` 値と `copyBehavior` 値の組み合わせごとに説明します。
@@ -334,11 +349,17 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでデータを変換するときに、JSON、Avro、区切りテキスト、または Parquet 形式で Azure Data Lake Storage Gen1 からファイルを読み取ること、および書き込むことができます。 詳細については、マッピング データ フロー機能の[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関するページを参照してください。
+マッピング データ フローでデータを変換するときには、Azure Data Lake Storage Gen1 にある次の形式のファイルの読み取りと書き込みが可能です。
+* [JSON](format-json.md#mapping-data-flow-properties)
+* [Avro](format-avro.md#mapping-data-flow-properties)
+* [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)
+* [Parquet](format-parquet.md#mapping-data-flow-properties)。
+
+形式固有の設定については、各形式のドキュメントに記載されています。 詳細については、「[マッピング データ フローのソース変換](data-flow-source.md)」と「[マッピング データ フローでのシンク変換](data-flow-sink.md)」を参照してください。
 
 ### <a name="source-transformation"></a>ソース変換
 
-ソース変換では、Azure Data Lake Storage Gen1 内のコンテナー、フォルダー、または個々のファイルから読み取ることができます。 **[Source options]\(ソース オプション\)** タブで、ファイルの読み取り方法を管理できます。 
+ソース変換では、Azure Data Lake Storage Gen1 内のコンテナー、フォルダー、または個々のファイルからの読み取りが可能です。 **[Source options]\(ソース オプション\)** タブで、ファイルの読み取り方法を管理できます。 
 
 ![ソース オプション](media/data-flow/sourceOptions1.png "ソース オプション")
 

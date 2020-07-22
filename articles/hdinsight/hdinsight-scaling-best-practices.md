@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592062"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086009"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 

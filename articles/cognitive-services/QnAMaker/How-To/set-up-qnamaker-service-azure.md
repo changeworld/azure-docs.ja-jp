@@ -2,13 +2,13 @@
 title: QnA Maker サービスを設定する - QnA Maker
 description: QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402984"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214130"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -59,9 +59,10 @@ QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA 
 
     種類が _Cognitive Services_ であるリソースには、_サブスクリプション_ キーがあります。
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Azure portal でサブスクリプション キーを確認する
 
-QnA Maker リソースを作成した Azure portal で、サブスクリプション キーの表示とリセットを実行できます。
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
+
+QnA Maker リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。 これらのキーは、サブスクリプション キーと呼ばれる場合もあります。 
 
 1. Azure portal で QnA Maker リソースに移動し、種類が _Cognitive Services_ であるリソースを選択します。
 
@@ -71,7 +72,7 @@ QnA Maker リソースを作成した Azure portal で、サブスクリプシ�
 
     ![Subscription key](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>QnA Maker ポータルでエンドポイント キーを確認する
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>QnA Maker ポータルでクエリ エンドポイント キーを確認する
 
 ナレッジ ベースの呼び出しにはエンドポイント キーが使用されるため、エンドポイントはリソースと同じリージョンにあります。
 
@@ -209,6 +210,34 @@ Azure Resource Manager テンプレートを使用して QnA サービスを作�
 1. アプリを再起動して新しい設定を使用するかどうかを確認するメッセージが表示されます。 **[続行]** をクリックします。
 
 詳しくは、App Service の[一般設定](../../../app-service/configure-common.md#configure-general-settings)を構成する方法をご覧ください。
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Qna Maker App Service をホストするように App Service Environment を構成する
+App Service Environment を使用して、QnA Maker App Service をホストできます。 App Service Environment が内部の場合は、これらの手順を実行する必要があります。
+1. アプリ サービスと Azure Search サービスを作成します。
+2. パブリック DNS でアプリ サービスを公開し、QnA Maker サービス タグ: CognitiveServicesManagement をホワイトリストに登録するか、またはインターネットに接続したままにします。
+3. Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは App Service Environment に設定する必要があります。 
+
+## <a name="business-continuity-with-traffic-manager"></a>トラフィック マネージャーを使用したビジネス継続性
+
+ビジネス継続性計画の主な目的は、回復性に優れたナレッジ ベース エンドポイントを作成し、そのナレッジ ベース エンドポイントを使用するボットまたはアプリケーションにダウン タイムが発生しないようにすることです。
+
+> [!div class="mx-imgBorder"]
+> ![QnA Maker bcp 計画](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+
+上に示した概念の説明は次のとおりです。
+
+1. [ペアになっている Azure リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)に、同一の [QnA Maker サービス](set-up-qnamaker-service-azure.md)を 1 つずつ、計 2 つ設定します。
+
+1. プライマリ QnA Maker App サービスを[バックアップ](../../../app-service/manage-backup.md)して、セカンダリ セットアップで[復元](../../../app-service/web-sites-restore.md)します。 これにより、両方のセットアップが同じホスト名とキーで動作するようになります。
+
+1. プライマリとセカンダリの Azure 検索インデックスを常に同期しておきます。Azure のインデックスをバックアップおよび復元する方法については、[GitHub](https://github.com/pchoudhari/QnAMakerBackupRestore) でサンプルを参照してください。
+
+1. [連続エクスポート](../../../application-insights/app-insights-export-telemetry.md)を使って Application Insights をバックアップします。
+
+1. プライマリとセカンダリのスタックを設定したら、[トラフィック マネージャー](../../../traffic-manager/traffic-manager-overview.md)を使用して 2 つのエンドポイントを構成し、ルーティング方法を設定します。
+
+1. トラフィック マネージャーのエンドポイント向けに Transport Layer Security (TLS) (旧称は Secure Sockets Layer (SSL)) 証明書を作成する必要があります。 アプリ サービスで [TLS/SSL 証明書](../../../app-service/configure-ssl-bindings.md)をバインドします。
+
+1. 最後に、ボットまたはアプリでトラフィック マネージャー エンドポイントを使用します。
 
 ## <a name="delete-azure-resources"></a>Azure リソースを削除する
 
@@ -219,4 +248,4 @@ QnA Maker ナレッジ ベースに使用されているいずれかの Azure �
 [App Service](../../../app-service/index.yml) と [Search Service](../../../search/index.yml) の詳細をご覧ください。
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの作成と発行](../Quickstarts/create-publish-knowledge-base.md)
+> [他のユーザーとの作成方法の詳細をご覧ください](../how-to/collaborate-knowledge-base.md)

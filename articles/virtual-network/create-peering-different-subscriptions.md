@@ -1,27 +1,27 @@
 ---
 title: VNet ピアリングの作成 - 異なるサブスクリプション
 titlesuffix: Azure Virtual Network
-description: Resource Manager で作成されて異なる Azure サブスクリプションに存在する仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法を説明します。
+description: 同じまたは別の Azure Active Directory テナント内の異なる Azure サブスクリプションに存在する Resource Manager で作成された仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法を説明します。
 services: virtual-network
 documentationcenter: ''
-author: anavinahar
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
-ms.author: anavin
-ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kumud
+ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688790"
 ---
-# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション
+# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション、および Azure Active Directory テナント
 
-このチュートリアルでは、Resource Manager で作成された仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法について説明します。 仮想ネットワークは、異なるサブスクリプションに存在します。 2 つの仮想ネットワークをピアリングすると、別々の仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような帯域幅と待ち時間で相互に通信を行うことができます。 詳しくは、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」をご覧ください。
+このチュートリアルでは、Resource Manager で作成された仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法について説明します。 異なる Azure Active Directory (Azure AD) テナントに属している可能性のあるさまざまなサブスクリプションに仮想ネットワークが存在します。 2 つの仮想ネットワークをピアリングすると、別々の仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような帯域幅と待ち時間で相互に通信を行うことができます。 詳しくは、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」をご覧ください。
 
 仮想ネットワーク ピアリングを作成する手順は、サブスクリプションが同じか異なるか、また、どの[Azure デプロイメント モデル](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使用して仮想ネットワークが作成されているかによって異なります。 他のシナリオで仮想ネットワークを作成する方法については、次の表で目的のシナリオを選択してください。
 

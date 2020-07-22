@@ -3,16 +3,16 @@ title: Azure IaaS Windows VM 用のディスクの種類の選択 - マネージ
 description: Ultra ディスク、Premium SSD、Standard SSD、Standard HDD などの、Windows 仮想マシンで使用できる Azure ディスクの種類について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 11/04/2019
+ms.date: 06/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: a37234ea7116056b76356d70afaa442e61c440c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeec1d4e8b092d5f7a0b4633b0d13a9ad0a608f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343559"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]

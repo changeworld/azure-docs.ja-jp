@@ -4,16 +4,16 @@ description: Azure Import/Export サービスを使って、作成したイン�
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f5db321d8c4a6e42591a82b0ed8eb6bc6e93bad4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5c0e9bf94a9953e107de148792af2e39f8bac24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512295"
 ---
 # <a name="repairing-an-import-job"></a>Import ジョブの修復
 Microsoft Azure Import/Export サービスでは、ファイルの全部または一部の Windows Azure Blob service へのコピーに失敗する場合があります。 失敗の原因には次のものが挙げられます。  

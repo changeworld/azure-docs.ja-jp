@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73936043"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129962"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
 
@@ -39,7 +39,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 ## <a name="before-you-start"></a>開始する前に
 
 * VM、VM あたりのディスク数、ディスクあたりのストレージなど、環境の情報を収集します。
-* レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 [Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間にわたって実行して平均値を取り込むことをお勧めします。
+* レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 [Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](./hyper-v-deployment-planner-overview.md) を参照してください。 このツールは 1 週間にわたって実行して平均値を取り込むことをお勧めします。
 
 
 ## <a name="run-the-quick-planner"></a>クイック プランナーの実行
@@ -53,7 +53,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
    a. **[シナリオの選択]** で **[Hyper-V から Azure]** または **[VMware/物理から Azure]** を選択します。
 
-   b. **[Average daily data change rate (%)]\(1 日の平均データ変更率 (%)\)** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。
+   b. **[Average daily data change rate (%)]\(1 日の平均データ変更率 (%)\)** に [Hyper-V 容量計画ツール](./hyper-v-deployment-planner-overview.md)または [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。
 
    c. **[Compression]\(圧縮\)** 設定は、Hyper-V VM を Azure にレプリケートする場合には使用されません。 圧縮する場合は、Riverbed などのサードパーティのアプライアンスを使用します。
 
@@ -147,4 +147,4 @@ AA から AE の列が出力され、各 VM の情報が示されます。
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>次のステップ
-Capacity Planner ツールを[実行する方法について説明します](site-recovery-capacity-planning-for-hyper-v-replication.md)。
+Capacity Planner ツールを[実行する方法について説明します](./hyper-v-deployment-planner-overview.md)。

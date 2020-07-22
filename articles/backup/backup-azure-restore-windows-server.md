@@ -1,17 +1,17 @@
 ---
-title: Azure のデータを Windows サーバーに復元する
+title: MARS エージェントを使用して Windows Server にファイルを復元する
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを使用して、Azure に格納されているデータを Windows サーバーまたは Windows コンピューターに復元する方法について説明します。
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 0494ce8016ff8b09265dd7ced8dc0926fd0c1a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 040ac3069500d0e52441df6f07d92645a7ae69df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764436"
 ---
-# <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用してファイルを Windows に復元する
+# <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS エージェントを使用して Windows Server にファイルを復元する
 
 この記事では、バックアップ コンテナーからデータを復元する方法について説明します。 データを復元するには、Microsoft Azure Recovery Services (MARS) エージェントのデータの回復ウィザードを使用します。 次のようにすることができます。
 
@@ -51,7 +51,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
    > 個別のファイルとフォルダーを復元するオプションには、.NET Framework 4.5.2 以降が必要です。 **[個別のファイルとフォルダー]** オプションが表示されない場合は、.NET Framework をバージョン 4.5.2 以降にアップグレードして再試行する必要があります。
 
    > [!TIP]
-   > **[個別のファイルとフォルダー]** オプションを使用すると、復旧ポイントのデータにすばやくアクセスできます。 これは、合計サイズが 80 GB を超えない個別のファイルの復旧に適しており、復旧中に最大 6 MB/秒の転送またはコピー速度を提供します。 **[ボリューム]** オプションでは、指定されたボリューム内のすべてのバックアップ済みデータを復旧します。 このオプションは、より高速な転送速度 (最大 60 MB/秒) を提供します。これは、大きなサイズのデータやボリューム全体の復旧に最適です。
+   > **[個別のファイルとフォルダー]** オプションを使用すると、復旧ポイントのデータにすばやくアクセスできます。 これは、合計サイズが 80 GB を超えない個別のファイルの復旧に適しており、復旧中に最大 6 MB/秒の転送またはコピー速度が提供されます。 **[ボリューム]** オプションでは、指定されたボリューム内のすべてのバックアップ済みデータを復旧します。 このオプションでは、より高速な転送速度 (最大 40 MB/秒) が提供されます。これは、大きなサイズのデータやボリューム全体の復旧に最適です。
 
 5. **[ボリュームと日付の選択]** ページで、復元するファイルとフォルダーを含むボリュームを選択します。
 

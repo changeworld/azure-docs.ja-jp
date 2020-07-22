@@ -5,16 +5,17 @@ description: Azure Machine Learning のラベル付けプロジェクトから�
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.topic: conceptual
+ms.subservice: core
+ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 657b1dbb169d80a3e5563dd1a4fa52eac2278aae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655770"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025728"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>ラベル付き Azure Machine Learning データセット (プレビュー) を作成して探索する
 
 この記事では、Azure Machine Learning データのラベル付けプロジェクトからデータ ラベルをエクスポートし、データ探索用の Pandas データフレーム、または画像変換用の Torchvision データセットなどの一般的な形式に読み込む方法について説明します。 
 

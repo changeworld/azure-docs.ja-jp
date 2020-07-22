@@ -3,25 +3,25 @@ title: Azure AD アプリケーション プロキシでのカスタム ドメ�
 description: Azure AD アプリケーション プロキシでカスタム ドメインを構成して管理します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
-ms.reviewer: harshja
+ms.author: kenwith
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764912"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -138,11 +138,11 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 すべての証明書は、個々のアプリケーションのページを通して管理されます。 **[証明書]** フィールドにアクセスするには、アプリケーションの **[アプリケーション プロキシ]** ページに移動します。
 
-複数のアプリケーションに対して同じ証明書を使用できます。 アップロードされた証明書が別のアプリケーションで使用される場合は、その証明書が自動的に適用されます。 アプリを追加または構成しても、それを再度アップロードするよう求められることはありません。 
+アプリケーションの証明書がアップロードされると、同じ証明書を使用するように構成された新しい**アプリ**にも自動的に適用されます。 テナント内の既存のアプリ用には、証明書を再アップロードする必要があります。
 
 証明書の期限が切れると、別の証明書をアップロードするよう指示する警告が表示されます。 証明書が取り消された場合は、ユーザーがそのアプリにアクセスすると、セキュリティの警告が表示されることがあります。 アプリの証明書を更新するには、アプリの **[アプリケーション プロキシ]** ページに移動し、 **[証明書]** を選択して新しい証明書をアップロードします。 古い証明書が他のアプリによって使用されていない場合、その証明書は自動的に削除されます。 
 
 ## <a name="next-steps"></a>次のステップ
-* Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)。
-* 発行されたアプリに対する[条件付きアクセスを有効にする](../conditional-access/overview.md)。
 
+* Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)。
+* 発行されたクラウド アプリに対する[条件付きアクセス](../conditional-access/concept-conditional-access-cloud-apps.md)。

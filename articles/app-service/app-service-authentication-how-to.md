@@ -2,14 +2,14 @@
 title: 認証/承認の高度な使用方法
 description: App Service でさまざまなシナリオに合わせて認証および承認機能をカスタマイズし、ユーザーの要求とさまざまなトークンを取得する方法について説明します。
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236195"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205573"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -17,13 +17,14 @@ ms.locfileid: "79236195"
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
-* [チュートリアル: Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)
-* [チュートリアル: Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および承認する](containers/tutorial-auth-aad.md)
+* [チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](app-service-web-tutorial-auth-aad.md)
+* [チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](containers/tutorial-auth-aad.md)
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法](configure-authentication-provider-aad.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](configure-authentication-provider-facebook.md)
 * [Google ログインを使用するようにアプリを構成する方法](configure-authentication-provider-google.md)
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法](configure-authentication-provider-microsoft.md)
 * [Twitter ログインを使用するようにアプリを構成する方法](configure-authentication-provider-twitter.md)
+* [OpenID Connect プロバイダーを使用してログインするようにアプリを構成する方法 (プレビュー)](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>複数のサインイン プロバイダーを使用する
 
@@ -35,7 +36,7 @@ ms.locfileid: "79236195"
 
 サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 次に例を示します。
 
-```HTML
+```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
 <a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
@@ -47,7 +48,7 @@ ms.locfileid: "79236195"
 
 サインイン後のユーザーをカスタム URL にリダイレクトさせるには、`post_login_redirect_url` クエリ文字列パラメーターを使用します (ご利用の ID プロバイダーの構成におけるリダイレクト URI と混同しないでください)。 たとえば、サインイン後にユーザーを `/Home/Index` にリダイレクトさせるには、次の HTML コードを使用します。
 
-```HTML
+```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
@@ -103,7 +104,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 Web ページの簡単なサインアウト リンクを次に示します。
 
-```HTML
+```html
 <a href="/.auth/logout">Sign out</a>
 ```
 
@@ -172,11 +173,11 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
-- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページをご覧ください)。
+- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページを参照してください)。
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
-    2. 左側のブラウザーで、**subscriptions** >  **_\<subscription\_name_**  > **resourceGroups** >  **_\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<app\_name>_**  > **config** > **authsettings** に移動します。 
+    2. 左側のブラウザーで、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettings** に移動します。 
     3. **[編集]** をクリックします。
     4. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
@@ -190,7 +191,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 任意の時点でアクセス トークンを更新するには、任意の言語で `/.auth/refresh` を呼び出します。 次のスニペットでは、jQuery を使用して、JavaScript クライアントからアクセス トークンを更新します。
 
-```JavaScript
+```javascript
 function refreshTokens() {
   let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
@@ -223,7 +224,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure AD では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 ただし、ユーザーを独自のブランドの Azure AD サインインページ (`contoso.com`など) に直接誘導することもできます。 サインイン アカウントのドメイン名を提示するには、以下の手順に従います。
 
-[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** >  **_\< subscription\_ name_**  > **resourceGroups** >  **_\< resource\_ group\_ name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< app\_ name>_**  > **config** > **authsettings** に移動します。 
+[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name> _** > **config** > **authsettings** に移動します。 
 
 **[Edit]** をクリックし、次のプロパティを変更し、 **[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
 
@@ -278,8 +279,197 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 
 他のいずれのレベルでも必要な承認が提供されない場合、またはお使いのプラットフォームまたは ID プロバイダーがサポートされていない場合、[ユーザーの要求](#access-user-claims)に基づいてユーザーを承認するカスタム コードを記述する必要があります。
 
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>ファイルを使用して構成する (プレビュー)
+
+認証設定は、必要に応じて、デプロイによって提供されるファイルを使用して構成できます。 これは、App Service の認証または承認の特定のプレビュー機能で必要になる場合があります。
+
+> [!IMPORTANT]
+> アプリのペイロード、つまりこのファイルは、[スロット](./deploy-staging-slots.md)と同様に環境間を移動する場合があることに注意してください。 各スロットに異なるアプリ登録を固定したい場合はよくありますが、このような場合は、構成ファイルを使用する代わりに、標準の構成方法を使用し続ける必要があります。
+
+### <a name="enabling-file-based-configuration"></a>ファイルベースの構成の有効化
+
+> [!CAUTION]
+> プレビュー期間中、ファイルベースの構成を有効にすると、Azure portal、Azure CLI、Azure PowerShell などの一部のクライアントを介したアプリケーションの App Service の認証または承認機能の管理が無効になります。
+
+1. 構成用の新しい JSON ファイルをプロジェクトのルートに作成します (Web/関数アプリでは D:\home\site\wwwroot にデプロイされます)。 [ファイルベースの構成リファレンス](#configuration-file-reference)に従って、必要な構成を入力します。 既存の Azure Resource Manager 構成を変更する場合は、必ず、`authsettings` コレクションにキャプチャされたプロパティを構成ファイルに変換してください。
+
+2. [Azure Resource Manager](../azure-resource-manager/management/overview.md) API で `Microsoft.Web/sites/<siteName>/config/authsettings` にキャプチャされた既存の構成を変更します。 これを変更するには、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)や、[Azure Resource Explorer](https://resources.azure.com/) などのツールを使用できます。 authsettings コレクション内で、3 つのプロパティを設定する必要があります (他のプロパティは削除してもかまいません)。
+
+    1.  `enabled` を "true" に設定します
+    2.  `isAuthFromFile` を "true" に設定します
+    3.  `authFilePath` をファイルの名前に設定します ("auth.json" など)
+
+この構成の更新を行うと、ファイルの内容を使用して、そのサイトでの App Service の認証または承認の動作が定義されます。 Azure Resource Manager 構成に戻りたい場合、`isAuthFromFile` を "false" に設定し直せば戻ることができます。
+
+### <a name="configuration-file-reference"></a>構成ファイル リファレンス
+
+構成ファイルから参照されるシークレットがある場合、[アプリケーション設定](./configure-common.md#configure-app-settings)として保存する必要があります。 設定には任意の名前を付けることができます。 構成ファイルからの参照で同じキーを使用していることを確認してください。
+
+次の例では、ファイル内の可能な構成オプションを使い果たしています。
+
+```json
+{
+    "platform": {
+        "enabled": <true|false>
+    },
+    "globalValidation": {
+        "requireAuthentication": <true|false>,
+        "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
+        "redirectToProvider": "<default provider alias>",
+        "excludedPaths": [
+            "/path1",
+            "/path2"
+        ]
+    },
+    "identityProviders": {
+        "azureActiveDirectory": {
+            "enabled": <true|false>,
+            "registration": {
+                "openIdIssuer": "<issuer url>",
+                "clientId": "<app id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_AAD_SECRET",
+            },
+            "login": {
+                "loginParameters": [
+                    "paramName1=value1",
+                    "paramName2=value2"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "facebook": {
+            "enabled": <true|false>,
+            "registration": {
+                "appId": "<app id>",
+                "appSecretSettingName": "APP_SETTING_CONTAINING_FACEBOOK_SECRET"
+            },
+            "graphApiVersion": "v3.3",
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+        },
+        "gitHub": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GITHUB_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
+        "google": {
+            "enabled": true,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GOOGLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "twitter": {
+            "enabled": <true|false>,
+            "registration": {
+                "consumerKey": "<consumer key>",
+                "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
+            }
+        },
+        "openIdConnectProviders": {
+            "provider name": {
+                "enabled": <true|false>,
+                "registration": {
+                    "clientId": "<client id>",
+                    "clientCredential": {
+                        "secretSettingName": "<name of app setting containing client secret>"
+                    },
+                    "openIdConnectConfiguration": {
+                        "authorizationEndpoint": "<url specifying authorization endpoint>",
+                        "tokenEndpoint": "<url specifying token endpoint>",
+                        "issuer": "<url specifying issuer>",
+                        "certificationUri": "<url specifying jwks endpoint>",
+                        "wellKnownOpenIdConfiguration": "<url specifying .well-known/open-id-configuration endpoint - if this property is set, the other properties of this object are ignored, and authorizationEndpoint, tokenEndpoint, issuer, and certificationUri are set to the corresponding values listed at this endpoint>"
+                    }
+                },
+                "login": {
+                    "nameClaimType": "<name of claim containing name>",
+                    "loginScopes": [
+                        "profile",
+                        "email"
+                    ],
+                    "loginParameterNames": [
+                        "paramName1=value1",
+                        "paramName2=value2"
+                    ],
+                }
+            },
+            //...
+        },
+        "login": {
+            "routes": {
+                "logoutEndpoint": "<logout endpoint>"
+            },
+            "tokenStore": {
+                "enabled": <true|false>,
+                "tokenRefreshExtensionHours": "<double>",
+                "fileSystem": {
+                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
+                },
+                "azureBlobStorage": {
+                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+                }
+            },
+            "preserveUrlFragmentsForLogins": <true|false>,
+            "allowedExternalRedirectUrls": [
+                "https://uri1.azurewebsites.net/",
+                "https://uri2.azurewebsites.net/"
+            ],
+            "cookieExpiration": {
+                "convention": "FixedTime|IdentityProviderDerived",
+                "timeToExpiration": "<timespan>"
+            },
+            "nonce": {
+                "validateNonce": <true|false>,
+                "nonceExpirationInterval": "<timespan>"
+            }
+        },
+        "httpSettings": {
+            "requireHttps": <true|false>,
+            "routes": {
+                "apiPrefix": "<api prefix>"
+            },
+            "forwardProxy": {
+                "convention": "NoProxy|Standard|Custom",
+                "customHostHeaderName": "<host header value>",
+                "customProtoHeaderName": "<proto header value>"
+            }
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Windows)](app-service-web-tutorial-auth-aad.md)
-> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Linux)](containers/tutorial-auth-aad.md)
+> [チュートリアル:ユーザーをエンド ツー エンドで認証および承認する (Windows)](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル: ユーザーをエンド ツー エンドで認証および承認する (Linux)](containers/tutorial-auth-aad.md)

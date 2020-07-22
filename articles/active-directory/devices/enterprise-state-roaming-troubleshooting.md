@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604541"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -84,7 +84,7 @@ Azure Multi-Factor Authentication が構成されている場合、特定の条�
 
 ### <a name="event-viewer"></a>イベント ビューアー
 
-高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > [アプリケーションとサービス ログ] > **[Microsoft]**  >  **[Windows]**  >  **[SettingSync-Azure]** でイベントを表示します。同期の ID 関連の問題については、 **[Microsoft]**  >  **[Windows]**  >  **[AAD]** に移動します。
+高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[SettingSync-Azure]** でイベントを表示します。同期の ID 関連の問題については、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[AAD]** に移動します。
 
 ## <a name="known-issues"></a>既知の問題
 

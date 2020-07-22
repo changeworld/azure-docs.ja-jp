@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158973"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299946"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項のエクスポート
 
@@ -26,6 +26,21 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 * Log Analytics ワークスペースへの連続エクスポート
 * Azure Event Hubs への連続エクスポート (サードパーティ SIEM との統合のため)
 * CSV ファイルへのエクスポート (1 回限り)
+
+
+
+
+## <a name="availability"></a>可用性
+
+- リリース状態: **一般提供**
+- 必要なロールとアクセス許可:
+    - エクスポート構成を含むサブスクリプション上での**閲覧者**
+    - リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)
+    - ターゲット リソースに対する書き込みアクセス許可も必要になります
+- クラウド: 
+    - ✔ 商用クラウド
+    - ✔ US Gov
+    - ✘ China Gov、その他の Gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>連続エクスポートを設定する

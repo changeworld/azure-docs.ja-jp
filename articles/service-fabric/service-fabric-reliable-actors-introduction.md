@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c534ba54ccea78759628f554707271934ddc9a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645567"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258483"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors の概要
 Reliable Actors は、[Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) パターンに基づく Service Fabric アプリケーション フレームワークです。 Reliable Actors API は、Service Fabric による拡張性と信頼性の保証の上に構築された、シングル スレッドのプログラミング モデルを提供します。
@@ -137,7 +137,7 @@ Reliable Actors ランタイムは、アクター メソッドにアクセスす
 ## <a name="next-steps"></a>次のステップ
 最初の Reliable Actors サービスの開発を始めます。
    * [.NET での Reliable Actors の使用](service-fabric-reliable-actors-get-started.md)
-   * [Java での Reliable Actors の使用](service-fabric-reliable-actors-get-started-java.md)
+   * [Java での Reliable Actors の使用](./service-fabric-create-your-first-linux-application-with-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

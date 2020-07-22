@@ -5,23 +5,29 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/08/2020
-ms.openlocfilehash: 5bb5d5dd5110f176b59a99f6a3aa223184158da5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 06/25/2020
+ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507077"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 
-この記事では、仮想マシンで Azure Monitor for VMs を有効にして正常性とパフォーマンスを監視するために使用できるオプションの概要について説明します。 Azure 仮想マシン (VM) と仮想マシンのスケール セット、オンプレミスの VM、または別のクラウド環境でホストされている VM で実行されるアプリケーションの依存関係を発見します。  
+この記事では、Azure Monitor for VMs を有効にして、次の正常性とパフォーマンスを監視するために使用できるオプションの概要について説明します。
+
+- Azure の仮想マシン 
+- Azure Virtual Machine Scale Sets
+- Azure Arc に接続されているハイブリッド仮想マシン
+- オンプレミスの仮想マシン
+- 別のクラウド環境でホストされている仮想マシン  
 
 Azure Monitor for VMs を設定する方法は、次のとおりです。
 
-* VM または仮想マシン スケール セットから直接 **Insights** を選択して、単一の Azure VM または仮想マシン スケール セットを有効にします。
-* Azure Policy を使用して、複数の Azure VM および仮想マシン スケール セットを有効にします。 この方法を使用すると、既存および新規の VM とスケール セットに、必要な依存関係が確実にインストールされ、適切に構成されます。 準拠していない VM とスケール セットがレポートされるので、それらを有効にするかどうかと、それらを修復するかどうかを決めることができます。
-* PowerShell を使用して、指定したサブスクリプションまたはリソース グループ全体の複数の Azure VM または仮想マシン スケール セットを有効にします。
+* Azure portal のメニューから直接 **[Insights]** を選択して、単一の Azure VM、Azure VMSS、または Azure Arc マシンを有効にします。
+* Azure Policy を使用して、複数の Azure VM、Azure VMSS、または Azure Arc マシンを有効にします。 この方法を使用すると、既存および新規の VM とスケール セットに、必要な依存関係が確実にインストールされ、適切に構成されます。 準拠していない VM とスケール セットがレポートされるので、それらを有効にするかどうかと、それらを修復するかどうかを決めることができます。
+* PowerShell を使用して、指定されたサブスクリプションまたはリソース グループにわたって、複数の Azure VM、Azure Arc VM、Azure VMSS、または Azure Arc マシンを有効にします。
 * 企業ネットワークまたはその他のクラウド環境でホストされている VM または物理コンピューターを監視するために、Azure Monitor for VMs を有効にします。
 
 ## <a name="prerequisites"></a>前提条件
@@ -43,6 +49,8 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 - 米国東部 2
 - 米国中部
 - 米国中北部
+- US Gov アリゾナ州
+- US Gov バージニア州
 - カナダ中部
 - 英国南部
 - 北ヨーロッパ
@@ -66,15 +74,13 @@ Log Analytics ワークスペースがない場合は、次のいずれかのリ
 
 Azure portal で単一の Azure VM または仮想マシン スケール セットに対する監視を有効にしているときにも、ワークスペースを作成できます。
 
-Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレートを使用した大規模なシナリオを設定するには、Log Analytics ワークスペースで次の操作を行います。
-
-* *ServiceMap* および *InfrastructureInsights* ソリューションをインストールします。 提供されている Azure Resource Manager テンプレートを使用して、このインストールを完了できます。 または、Azure portal の **[開始]** タブで、 **[ワークスペースの構成]** を選択します。
-* パフォーマンス カウンターを収集するように Log Analytics ワークスペースを構成します。
-
-大規模シナリオ用ワークスペースを構成するには、次のいずれかの方法を使用します。
+Azure Policy テンプレート、Azure PowerShell テンプレート、または Azure Resource Manager テンプレートを使用した大規模なシナリオを設定するには、*VMInsights* をインストールする必要があります。 これは、次のいずれか方法で実行できます。
 
 * [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace) を使用します。
 * Azure Monitor for VMs の [ **[ポリシー対象範囲]** ](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) ページで、 **[ワークスペースの構成]** を選択します。 
+
+### <a name="azure-arc-machines"></a>Azure Arc マシン
+Azure Monitor for VMs は、Arc 拡張サービスが利用可能なリージョンの Azure Arc 対応サーバーで使用できます。 Arc 対応サーバーで Azure Monitor for VMs を有効にするには、ユーザーが Arc エージェントのバージョン 0.9 以降を実行している必要があります。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -134,7 +140,7 @@ Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレ�
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 18.04 | 5.0 (Azure で調整されたカーネルを含む)<br>4.18 *<br>4.15* |
+| 18.04 | 5.3.0-1020<br>5.0 (Azure で調整されたカーネルを含む)<br>4.18 *<br>4.15* |
 | 16.04.3 | 4.15。* |
 | 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
@@ -175,8 +181,8 @@ Dependency Agent は、以下の場所からダウンロードできます。
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.3.9380 | 40763BD0A5B60707DF3F9E7BCC17D917F5CE995F2F5A4633D8B733F3BE143921  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.3.9380 | BB41BB59BDD293968F02A9EF821F9639406AA1BDF1F67925DB9EE00D54AA7F0B |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -190,10 +196,10 @@ Log Analytics ワークスペースへのアクセスを制御する方法の詳
 
 | デプロイの状態 | Method | 説明 |
 |------------------|--------|-------------|
-| 単一の Azure VM または仮想マシン スケール セット | [VM から有効にする](vminsights-enable-single-vm.md) | 単一の Azure VM を有効にするには、VM または仮想マシン スケール セットから直接 **Insights** を選択します。 |
-| 複数の Azure VM または仮想マシン スケール セット | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy と使用可能なポリシー定義を使用すると、複数の Azure VM を有効にできます。 |
-| 複数の Azure VM または仮想マシン スケール セット | [Azure PowerShell または Azure Resource Manager テンプレートを介して有効にする](vminsights-enable-at-scale-powershell.md) | Azure PowerShell または Azure Resource Manager テンプレートを使用すると、指定したサブスクリプションまたはリソース グループ全体の複数の Azure VM または仮想マシン スケール セットを有効にできます。 |
-| ハイブリッド クラウド | [ハイブリッド環境用に有効にする](vminsights-enable-hybrid-cloud.md) | ご自身のデータ センターやその他のクラウド環境でホストされている VM または物理コンピューターにデプロイできます。 |
+| 単一の Azure VM、Azure VMSS、または Azure Arc マシン | [ポータルから有効にする](vminsights-enable-single-vm.md) | Azure portal のメニューから直接 **[Insights]** を選択します。 |
+| 複数の Azure VM、Azure VMSS、または Azure Arc マシン | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy を使用して、VM または VMSS の作成時に自動的に有効にします。 |
+| | [Azure PowerShell または Azure Resource Manager テンプレートを介して有効にする](vminsights-enable-at-scale-powershell.md) | Azure PowerShell テンプレートまたは Azure Resource Manager テンプレートを使用して、指定されたサブスクリプションまたはリソース グループにわたって、複数の Azure VM、Azure Arc VM、または Azure VMSS を有効にします。 |
+| ハイブリッド クラウド | [ハイブリッド環境用に有効にする](vminsights-enable-hybrid-cloud.md) | ご自身のデータセンターやその他のクラウド環境でホストされている VM または物理コンピューターにデプロイできます。 |
 
 ## <a name="management-packs"></a>管理パック
 

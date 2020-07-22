@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 216705ef4ff7c235179c1f1be38a993ecd2fe782
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632400"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244414"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -20,7 +20,7 @@ HTTP アプリケーション ルーティング ソリューションを使用�
 アドオンを有効にすると、サブスクリプション内に DNS ゾーンが作成されます。 DNS のコストの詳細については、[DNS の価格][dns-pricing]に関するページを参照してください。
 
 > [!CAUTION]
-> HTTP アプリケーションのルーティング アドオンは、ユーザーがすばやくイングレス コントローラーを作成し、アプリケーションにアクセスできるように設計されています。 このアドオンを運用環境で使用することはお勧めできません。 複数のレプリカと TLS のサポートを含む運用環境対応のイングレス デプロイについては、[HTTPS イングレス コントローラーの作成](https://docs.microsoft.com/azure/aks/ingress-tls)に関するページを参照してください。
+> HTTP アプリケーションのルーティング アドオンは、ユーザーがすばやくイングレス コントローラーを作成し、アプリケーションにアクセスできるように設計されています。 このアドオンを運用環境で使用することはお勧めできません。 複数のレプリカと TLS のサポートを含む運用環境対応のイングレス デプロイについては、[HTTPS イングレス コントローラーの作成](./ingress-tls.md)に関するページを参照してください。
 
 ## <a name="http-routing-solution-overview"></a>HTTP のルーティング ソリューションの概要
 
@@ -46,16 +46,17 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-クラスターのデプロイまたは更新が完了したら、[az aks show][az-aks-show] コマンドを使用して DNS ゾーン名を取得します。 この名前は、アプリケーションを AKS クラスターにデプロイするのに必要です。
+クラスターのデプロイまたは更新が完了したら、[az aks show][az-aks-show] コマンドを使用して DNS ゾーン名を取得します。 
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-結果
+この名前は、アプリケーションを AKS クラスターにデプロイするのに必要であり、次の出力例に示されています。
 
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
-
+```
 
 ## <a name="deploy-http-routing-portal"></a>HTTP ルーティングをデプロイする:ポータル
 
@@ -67,6 +68,22 @@ HTTP アプリケーション ルーティング アドオンは、AKS クラス
 
 ![DNS ゾーン名を取得する](media/http-routing/dns.png)
 
+## <a name="connect-to-your-aks-cluster"></a>ご利用の AKS クラスターに接続する
+
+お使いのローカル コンピューターから Kubernetes クラスターに接続するには、[kubectl][kubectl] (Kubernetes コマンドライン クライアント) を使用します。
+
+Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 [az aks install-cli][] コマンドを使用してローカルにインストールすることもできます。
+
+```azurecli
+az aks install-cli
+```
+
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] コマンドを使用します。 次の例では、*MyResourceGroup* の *MyAKSCluster* という名前の AKS クラスターの資格情報を取得します。
+
+```azurecli
+az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
+```
+
 ## <a name="use-http-routing"></a>HTTP ルーティングを使用する
 
 HTTP アプリケーション ルーティング ソリューションは、次のように記述されたイングレス リソースに対してのみトリガーできます。
@@ -77,7 +94,6 @@ annotations:
 ```
 
 **samples-http-application-routing.yaml** という名前のファイルを作成し、次の YAML にコピーします。 43 行目の `<CLUSTER_SPECIFIC_DNS_ZONE>` を、この記事の前の手順で収集した DNS ゾーン名で更新します。
-
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -136,6 +152,12 @@ spec:
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使用してリソースを作成します。
+
+```bash
+kubectl apply -f samples-http-application-routing.yaml
+```
+
+次の例は、作成されたリソースを示しています。
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -262,7 +284,13 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>クリーンアップ
 
-この記事で作成された関連する Kubernetes オブジェクトを削除します。
+`kubectl delete` を使用して、この記事で作成された関連する Kubernetes オブジェクトを削除します。
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+出力例は、Kubernetes オブジェクトが削除されたことを示しています。
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -281,11 +309,13 @@ ingress "party-clippy" deleted
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

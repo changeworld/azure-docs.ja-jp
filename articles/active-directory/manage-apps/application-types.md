@@ -3,24 +3,24 @@ title: アプリケーション リストに予期しないアプリケーショ
 description: テナントのすべてのアプリケーションを表示し、[エンタープライズ アプリケーション] の [All Applications (すべてのアプリケーション)] リストにアプリケーションが表示される方法を理解する
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65781092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317466"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>アプリケーション リストに予期しないアプリケーションがある
 
@@ -66,7 +66,7 @@ ms.locfileid: "65781092"
 
 5. [V2.0 アプリケーション登録ポータル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 
-6. Visual Studio の [ASP.net の認証方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)を使用して開発しているアプリケーションを追加する場合
+6. Visual Studio の [ASP.net の認証方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)を使用して開発しているアプリケーションを追加する場合
 
 7. [Azure AD PowerShell モジュール](/powershell/azure/install-adv2?view=azureadps-2.0)を使用してサービス プリンシパル オブジェクトを作成する場合
 

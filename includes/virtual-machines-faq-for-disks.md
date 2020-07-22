@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595284"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242076"
 ---
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
@@ -257,32 +257,6 @@ Standard SSD ディスクは、ソリッドステート メディアでサポー
 **Standard SSD を使用しているときに Azure Backup は使用できますか?**
 はい。Azure Backup が利用可能になりました。
 
-**Standard SSD ディスクを作成するにはどうすればよいですか?**
-Azure Resource Manager テンプレート、SDK、PowerShell、または CLI を使用して Standard SSD ディスクを作成することができます。 Resource Manager テンプレートで Standard SSD ディスクを作成するには、次のパラメーターが必要です。
-
-* Microsoft.Compute の *apiVersion* を `2018-04-01` (またはそれ以降) として設定する必要があります。
-* `StandardSSD_LRS` として *managedDisk.storageAccountType* を指定します。
-
-次の例は、Standard SSD ディスクを使用する VM の *properties.storageProfile.osDisk* セクションを示したものです。
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)に関するページを参照してください。
-
-**既存のディスクを Standard SSD に変換できますか?**
-はい、できます。 マネージド ディスクの変換に関する一般的なガイドラインについては、「[Azure マネージド ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
--AccountType StandardSSD_LRS
-
 **HDD ではなく Standard SSD ディスクを使用する利点は何ですか?**
 Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一貫性、可用性、および信頼性が優れています。 そのため、Standard SSD ではアプリケーション ワークロードがはるかにスムーズに実行されます。 I/O 負荷の高いほとんどの運用ワークロードに推奨されるソリューションが Premium SSD ディスクであることにも注意してください。
 
@@ -332,9 +306,9 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks と Storage Service Encryption
 
-**Azure Storage Service Encryption は、マネージド ディスクを作成するときに、既定で有効になりますか?**
+**サーバー側の暗号化は、マネージド ディスクを作成するときに、既定で有効になりますか?**
 
-はい。
+はい。 マネージド ディスクは、プラットフォーム マネージド キーを使用したサーバー側の暗号化で暗号化されます。 
 
 **ブートボリュームは、マネージド ディスク上で既定で暗号化されていますか?**
 
@@ -342,30 +316,27 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 **だれが暗号化キーを管理するのですか?**
 
-暗号化キーは Microsoft が管理します。
+プラットフォーム マネージド キーは Microsoft によって管理されます。 Azure Key Vault に格納されている独自のキーを使用したり、管理したりすることもできます。 
 
-**自分のマネージド ディスクの Storage Service Encryption を無効にすることはできますか?**
+**自分のマネージド ディスクのサーバー側の暗号化を無効にすることはできますか?**
 
 いいえ。
 
-**Storage Service Encryption は、特定のリージョンだけで使用可能ですか?**
+**サーバー側の暗号化は、特定のリージョンだけで使用可能ですか?**
 
-いいえ。 Managed Disks を使用できるすべてのリージョンで使用できます。 Managed Disks は、すべてのパブリック リージョンおよびドイツで使用できます。 中国でも使用できますが、Microsoft 管理キーのみが対象であり、顧客管理キーは対象外です。
+いいえ。 プラットフォーム マネージド キーとカスタマー マネージド キーの両方でのサーバー側の暗号化は、マネージド ディスクを利用できるあらゆるリージョンで利用できます。 
 
-**マネージド ディスクが暗号化されているかどうかは、どうすれば判断できますか?**
+**Azure Site Recovery では、障害時にオンプレミスから Azure に復旧するシナリオと Azure から Azure に復旧するシナリオで、カスタマー マネージド キーによるサーバー側の暗号化をサポートしていますか?**
 
-Azure Portal、Azure CLI、および PowerShell で、マネージド ディスクがいつ作成されたかを調べることができます。 その日時が 2017 年 6 月 9 日より後であれば、ディスクは暗号化されています。
+はい。 
 
-**2017 年 6 月 10 日より前に作成された既存のディスクは、どうすれば暗号化できますか?**
+**カスタマー マネージド キーとサーバー側の暗号化で暗号化したマネージド ディスクを Azure Backup サービスを利用してバックアップできますか?**
 
-2017 年 6 月 10 日以降、既存のマネージド ディスクに書き込まれる新しいデータは自動的に暗号化されます。 既存のデータの暗号化も予定しており、暗号化はバック グラウンドで非同期的に行われます。 既存のデータを今すぐ暗号化する必要がある場合は、ディスクのコピーを作成してください。 新しいディスクは暗号化されます。
-
-* [Azure CLI によるマネージド ディスクのコピー](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [PowerShell によるマネージド ディスクのコピー](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+はい。
 
 **管理スナップショットおよびイメージは、暗号化されますか?**
 
-はい。 2017 年 6 月 9 日より後に作成されたすべての管理スナップショットおよびイメージは、自動的に暗号化されます。 
+はい。 すべての管理スナップショットおよびイメージは、自動的に暗号化されます。 
 
 **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されているアンマネージド ディスクを持つ VM をマネージド ディスクに変換できますか?**
 
@@ -480,10 +451,10 @@ Azure Backup でサポートされる最大のディスク サイズは、32 TiB
 
 **すべてのディスク サイズについてホスト キャッシュを有効にするサポートはしていますか?**
 
-4 TiB 未満のディスク サイズについて、読み取りのみおよび読み取り/書き込みのホスト キャッシュをサポートしています。 4 TiB を超えるディスク サイズについては、 [なし] 以外の設定キャッシュ オプションをサポートしていません。 VM にキャッシュされたデータでより優れたパフォーマンス向上の確認を期待することができる場合は、より小さいディスク サイズのキャッシュを活用することをお勧めします。
+ホスト キャッシュ (ReadOnly および Read/Write) は、4 TiB 未満のディスク サイズでサポートされています。 つまり、4095 GiB までプロビジョニングされているすべてのディスクで、ホスト キャッシュを利用できます。 4096 GiB 以上のディスク サイズでは、ホスト キャッシュはサポートされていません。 たとえば、4095 GiB でプロビジョニングされた P50 Premium ディスクではホスト キャッシュを利用できますが、4096 GiB でプロビジョニングされた P50 ディスクではホスト キャッシュを利用できません。 VM にキャッシュされたデータでより優れたパフォーマンス向上の確認を期待することができる場合は、より小さいディスク サイズのキャッシュを活用することをお勧めします。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 
-質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。 この記事の末尾のコメントに、質問を投稿することができます。 この記事に関して、Azure Storage チームやその他のコミュニティのメンバーとやり取りするには、MSDN の [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)をご利用ください。
+質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。 この記事の末尾のコメントに、質問を投稿することができます。 この記事に関して、Azure Storage チームやその他のコミュニティのメンバーとやり取りするには、MSDN の [Azure Storage に関する Microsoft Q&A ページ](https://docs.microsoft.com/answers/products/azure?product=storage)をご利用ください。
 
 機能についてのご要望がある場合は、ご要望やアイデアを [Azure Storage フィードバック フォーラム](https://feedback.azure.com/forums/217298-storage)までお送りください。

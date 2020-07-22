@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a58103bad3914bd0c0c6e70f8e3d2882271e1070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049206"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608383"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -45,9 +45,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="overview"></a>概要
 
-クライアント アプリケーションは、特定のリソースにアクセスするために、Azure リソースの[アプリ専用アクセス トークン](../develop/developer-glossary.md#access-token)に対してマネージド ID を要求できます。 トークンは、[Azure リソース サービス プリンシパルのマネージド ID に基づいています](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/v2-oauth2-client-creds-grant-flow.md)のベアラー トークンとしての使用に適しています。
+クライアント アプリケーションは、特定のリソースにアクセスするために、Azure リソースの[アプリ専用アクセス トークン](../develop/developer-glossary.md#access-token)に対してマネージド ID を要求できます。 トークンは、[Azure リソース サービス プリンシパルのマネージド ID に基づいています](overview.md#managed-identity-types)。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/v2-oauth2-client-creds-grant-flow.md)のベアラー トークンとしての使用に適しています。
 
-|  |  |
+| Link | 説明 |
 | -------------- | -------------------- |
 | [HTTP を使用してトークンを取得する](#get-a-token-using-http) | Azure リソース トークン エンドポイントのマネージド ID に関するプロトコルの詳細 |
 | [.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリを使用してトークンを取得する](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | .NET クライアントからの Microsoft.Azure.Services.AppAuthentication ライブラリの使用例

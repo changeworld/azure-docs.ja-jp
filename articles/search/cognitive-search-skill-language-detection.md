@@ -1,19 +1,19 @@
 ---
 title: 言語検出コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: 非構造化テキストを評価し、各レコードに対し、Azure コグニティブ検索の AI エンリッチメント パイプラインの分析の強度を示すスコアと共に言語識別子を返します。
+description: 非構造化テキストを評価し、各レコードに対し、Azure Cognitive Search の AI エンリッチメント パイプラインの分析の強度を示すスコアと共に言語識別子を返します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: bac2f86f4134cc8d22e9f388b46bc76ab2d0e5ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045021"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080802"
 ---
 #   <a name="language-detection-cognitive-skill"></a>言語検出コグニティブ スキル
 
@@ -26,7 +26,7 @@ ms.locfileid: "76045021"
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -41,15 +41,15 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 | 入力     | 説明 |
 |--------------------|-------------|
-| text | 分析されるテキスト。|
+| `text` | 分析されるテキスト。|
 
 ## <a name="skill-outputs"></a>スキルの出力
 
 | 出力名    | 説明 |
 |--------------------|-------------|
-| languageCode | 識別された言語の ISO 6391 言語コード。 例: "en"。 |
-| languageName | 言語の名前。 例: "English"。 |
-| score | 0 から 1 の値。 言語が正しく識別されている確率。 文章内に言語が混在している場合、スコアが 1 よりも低くなる場合があります。  |
+| `languageCode` | 識別された言語の ISO 6391 言語コード。 例: "en"。 |
+| `languageName` | 言語の名前。 例: "English"。 |
+| `score` | 0 から 1 の値。 言語が正しく識別されている確率。 文章内に言語が混在している場合、スコアが 1 よりも低くなる場合があります。  |
 
 ##  <a name="sample-definition"></a>定義例
 
@@ -134,7 +134,7 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 ## <a name="error-cases"></a>エラーになる場合
 テキストがサポートされていない言語で表されている場合、エラーが生成され、言語識別子は返されません。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

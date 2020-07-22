@@ -1,5 +1,5 @@
 ---
-title: Azure VM 上でマネージド ID を使用してサインインする - Azure AD
+title: Azure VM 上でマネージド ID を使用してサインインする - Azure ADV
 description: Azure リソース サービス プリンシパルの Azure VM マネージド ID を使用して、スクリプト クライアントのサインインとリソースへのアクセスを行うための手順を追った説明と例。
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1380562cfc073d906ea4cfc0d6d849e9ca2a70d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74547389"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608417"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 上の Azure リソースのマネージド ID を使用してサインインする方法 
 
@@ -41,7 +41,7 @@ ms.locfileid: "74547389"
 
 ## <a name="overview"></a>概要
 
-Azure リソースのマネージド ID は、[サービス プリンシパル オブジェクト](../develop/developer-glossary.md#service-principal-object)を提供します。これは、VM 上で [Azure リソースのマネージド ID を有効にしたときに作成](overview.md#how-does-the-managed-identities-for-azure-resources-work)されます。 サービス プリンシパルに Azure のリソースへのアクセス権を付与し、スクリプトまたはコマンドライン クライアントがサインインおよびリソースにアクセスするための ID として使用できます。 従来では、独自の ID でセキュリティで保護されたリソースにアクセスするには、スクリプト クライアントは以下を実行する必要がありました。  
+Azure リソースのマネージド ID は、[サービス プリンシパル オブジェクト](../develop/developer-glossary.md#service-principal-object)を提供します。これは、VM 上で [Azure リソースのマネージド ID を有効にしたときに作成](overview.md)されます。 サービス プリンシパルに Azure のリソースへのアクセス権を付与し、スクリプトまたはコマンドライン クライアントがサインインおよびリソースにアクセスするための ID として使用できます。 従来では、独自の ID でセキュリティで保護されたリソースにアクセスするには、スクリプト クライアントは以下を実行する必要がありました。  
 
    - Azure AD で機密/Web クライアント アプリケーションとして登録し合意されている
    - (多くの場合、スクリプトに埋め込まれている) アプリの資格情報を使用して、そのサービス プリンシパルを使ってサインインする。

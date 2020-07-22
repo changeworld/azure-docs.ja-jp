@@ -3,12 +3,12 @@ title: Linux 用のゲスト構成ポリシーを作成する方法
 description: Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024984"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026714"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -31,7 +31,14 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
-ゲスト構成アーティファクトの作成、アーティファクトの自動テスト、ポリシー定義の作成、およびポリシーの発行は、PowerShell のゲスト構成モジュールを使用して完全に自動化できます。 モジュールは、ローカルで実行している PowerShell 6.2 以降、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Core Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell-core)を使用して、Windows、macOS、または Linux を実行しているマシンにインストールできます。
+ゲスト構成モジュールは、次のようなカスタム コンテンツの作成プロセスを自動化します。
+
+- ゲスト構成コンテンツ アーティファクト (.zip) の作成
+- アーティファクトの自動テスト
+- ポリシー定義の作成
+- ポリシーの発行
+
+モジュールは、ローカルで実行している PowerShell 6.2 以降、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Core Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell-core)を使用して、Windows、macOS、または Linux を実行しているマシンにインストールできます。
 
 > [!NOTE]
 > Linux では、構成のコンパイルはサポートされていません。
@@ -74,7 +81,7 @@ Linux 環境でも、ゲスト構成では、言語の抽象化として Desired
 
 #### <a name="configuration-requirements"></a>構成要件
 
-カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Resource Manager テンプレート内のゲスト割り当て名は同じである必要があります。
+カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Azure Resource Manager テンプレート (ARM テンプレート) 内のゲスト割り当て名は同じである必要があります。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 
@@ -275,6 +282,14 @@ New-GuestConfigurationPolicy `
 
 コマンドレットの出力では、イニシアティブの表示名とポリシー ファイルのパスが含まれるオブジェクトが返されます。
 
+> [!Note]
+> 最新のゲスト構成モジュールには、次の新しいパラメーターが含まれています。
+> - **Tag** は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
+>   - 「[タグを使用したゲスト構成ポリシーのフィルター処理](#filtering-guest-configuration-policies-using-tags)」のセクションを参照してください。
+> - **カテゴリ**は、ポリシー定義のカテゴリ メタデータ フィールドを設定します
+>   - このパラメーターが含まれていない場合、カテゴリは既定で [ゲスト構成] になります。
+> これらの機能は現在プレビュー段階であり、ゲスト構成モジュール バージョン 1.20.1 が必要です。これは `Install-Module GuestConfiguration -AllowPrerelease`を使用してインストールできます。
+
 最後に、`Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。
 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。
 
@@ -356,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 
@@ -386,6 +401,38 @@ Configuration AuditFilePathExists
 - **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
+
+
+### <a name="filtering-guest-configuration-policies-using-tags"></a>タグを使用したゲスト構成ポリシーのフィルター処理
+
+> [!Note]
+> この機能は現在プレビュー段階であり、ゲスト構成モジュール バージョン 1.20.1 が必要です。これは `Install-Module GuestConfiguration -AllowPrerelease`を使用してインストールできます。
+
+ゲスト構成モジュールのコマンドレットによって作成されたポリシーには、必要に応じてタグのフィルターを含めることができます。 `New-GuestConfigurationPolicy` の **-Tag** パラメーターは、個々のタグ エントリを含むハッシュテーブルの配列をサポートしています。 タグは、ポリシー定義の `If` セクションに追加され、ポリシーの割り当てで変更することはできません。
+
+タグをフィルター処理するポリシー定義のスニペットの例を次に示します。
+
+```json
+"if": {
+  "allOf" : [
+    {
+      "allOf": [
+        {
+          "field": "tags.Owner",
+          "equals": "BusinessUnit"
+        },
+        {
+          "field": "tags.Role",
+          "equals": "Web"
+        }
+      ]
+    },
+    {
+      // Original Guest Configuration content will follow
+    }
+  ]
+}
+```
 
 ## <a name="optional-signing-guest-configuration-packages"></a>省略可能:ゲスト構成パッケージに署名する
 

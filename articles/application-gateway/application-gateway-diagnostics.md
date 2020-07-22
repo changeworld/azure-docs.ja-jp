@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889697"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
@@ -113,11 +113,11 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 アクセス ログとパフォーマンス ログで使用可能なデータの収集を開始するには、これらのログを有効にする必要があります。 ログ記録を有効にするには、次の手順に従います。
 
-1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。 この値の形式は、/subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Storage/storageAccounts/\<ストレージ アカウント名\> です。 サブスクリプション内の任意のストレージ アカウントを使用できます。 この情報は、Azure Portal で確認できます。
+1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。 この値の形式は /subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Storage/storageAccounts/\<storage account name\> です。 サブスクリプション内の任意のストレージ アカウントを使用できます。 この情報は、Azure Portal で確認できます。
 
     ![ポータル: ストレージ アカウントのリソース ID](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. ログを有効にするアプリケーション ゲートウェイのリソース ID をメモしておきます。 この値の形式は、/subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Network/applicationGateways/\<Application Gateway 名\> です。 この情報は、ポータルで確認できます。
+2. ログを有効にするアプリケーション ゲートウェイのリソース ID をメモしておきます。 この値の形式は /subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/applicationGateways/\<application gateway name\> です。 この情報は、ポータルで確認できます。
 
     ![ポータル: Application Gateway のリソース ID](./media/application-gateway-diagnostics/diagnostics2.png)
 

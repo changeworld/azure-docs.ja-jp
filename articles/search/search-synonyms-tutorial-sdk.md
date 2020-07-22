@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72794232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079433"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>例:C# で Azure Cognitive Search にシノニムを追加する
 
@@ -38,7 +38,7 @@ Azure Cognitive Search では、シノニムは同等の用語を関連付ける
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Cognitive Search サービス](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET ライブラリ](https://aka.ms/search-sdk)
+* [Microsoft.Azure.Search .NET ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 * [.NET アプリケーションから Azure Cognitive Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>概要

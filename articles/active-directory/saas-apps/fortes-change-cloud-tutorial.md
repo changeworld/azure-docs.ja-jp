@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55305fff95e9707b35ea265915e2893a736ab97d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1a8dc8bec5d5e81a8e1e23e7697e6e630b307670
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81264877"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219740"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortes-change-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fortes Change Cloud の統合
 
@@ -83,7 +83,7 @@ Fortes Change Cloud に対する Azure AD SSO を構成してテストするに�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://<identifier>.fortes-online.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<identifier>.fortes-online.com/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<identifier>.fortes-online.com/saml/SSO` のパターンを使用して URL を入力します
 
@@ -94,7 +94,7 @@ Fortes Change Cloud に対する Azure AD SSO を構成してテストするに�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Fortes Change Cloud クライアント サポート チーム](mailto:support@fortes.nl)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Fortes Change Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Fortes Change Cloud アプリケーションでは、**nameidentifier** が **user.samaccountname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Fortes Change Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Fortes Change Cloud アプリケーションでは、 **[一意のユーザー ID]** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 

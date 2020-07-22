@@ -7,20 +7,19 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
-ms.openlocfilehash: 65d34d1e82a46cc5b3d7b0ad3239836acaee6f97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d162639885a7736953a3e7388336c3105f2f0893
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80585341"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683863"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET V3 SDK (Microsoft.Azure.Cosmos) のサンプル
 
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK のサンプル](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK のサンプル](sql-api-dotnet-v3sdk-samples.md)
-> * [Java のサンプル](sql-api-java-samples.md)
-> * [非同期 Java のサンプル](sql-api-async-java-samples.md)
+> * [Java V4 SDK のサンプル](sql-api-java-sdk-samples.md)
 > * [Node.js のサンプル](sql-api-nodejs-samples.md)
 > * [Python のサンプル](sql-api-python-samples.md)
 > * [Azure のコード サンプル ギャラリー](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

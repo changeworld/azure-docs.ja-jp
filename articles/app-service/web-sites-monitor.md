@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482685"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
@@ -58,7 +58,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 ## <a name="understand-metrics"></a>メトリックを理解する
 
 > [!NOTE]
-> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューのホワイトリストに登録されていない場合、データは表示されません。
+> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューへのアクセスが付与されていない場合、データは表示されません。
 > 
 
 > [!IMPORTANT]

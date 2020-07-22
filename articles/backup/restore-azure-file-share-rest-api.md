@@ -4,11 +4,11 @@ description: REST API を使用して、Azure Backup によって作成された
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710577"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>REST API を使用して Azure ファイル共有を復元する
 

@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844889"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296671"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -49,6 +49,10 @@ Azure Spatial Anchors はマネージド クラウド サービスの開発者�
 
 **A:** アンカーは、Azure アカウントによって分離されています。 お使いのアカウントへのアクセスを許可されているアプリだけが、アカウント内のアンカーにアクセスできます。
 
+**Q:Azure Spatial Anchors ではどのようにデータが格納されますか?**
+
+**A:** すべてのデータは、Microsoft によって管理されるデータ暗号化キーを使用して暗号化され、格納されます。
+
 **Q:Azure Spatial Anchors を使用すると、環境に関するどのような情報が送信されて、サービスに格納されますか?環境の画像は送信されて格納されますか?**
 
 **A**: アンカーが作成または特定されるときは、デバイス上で環境の画像が処理されて派生形式になります。 この派生形式が転送されて、サービスに格納されます。
@@ -60,7 +64,6 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 ![環境とそれから派生したまばらな点の集まり](./media/sparse-point-cloud.png)
 *図 1: 環境とそれから派生したまばらな点の集まり*
 
-
 **Q:診断情報を Microsoft に送信できる方法はありますか?**
 
 **A**: はい。 Azure Spatial Anchors には診断モードがあり、開発者は Azure Spatial Anchors API を使用してオプトインすることができます。 これは、たとえば予測どおりにアンカーを作成したり検索したりできない環境が発生した場合などに便利です。 デバッグに役立つ情報を含む診断レポートを送信することができるかどうかお客様にお尋ねする場合があります。 詳しくは、「[Logging and diagnostics in Azure Spatial Anchors (Azure Spatial Anchors でのログ記録と診断)](./concepts/logging-diagnostics.md)」をご覧ください。
@@ -69,21 +72,21 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 
 **Q:SLA は提供されますか?**
 
-**A:** 標準の Azure サービスと同様に、99.9% を超える可用性を目標にしています。 Azure Spatial Anchors は現在プレビュー段階にあるため、「[プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」が適用されることに注意してください。
+**A:** 標準の Azure サービスと同様に、99.9% を超える可用性を目標にしています。 
 
 **Q:Azure Spatial Anchors を使用している自分のアプリをアプリ ストアに公開することができますですか? ミッション クリティカルな運用シナリオに Azure Spatial Anchors を使用できますか?**
 
-**A:** Azure Spatial Anchors は現在プレビュー段階であり、この期間中は、開発者の皆さんに、アプリの開発、製品についての[フィードバック](https://feedback.azure.com/forums/919252-azure-spatial-anchors)、および運用デプロイの計画をお勧めしています。
-
-一般提供 (GA) の期日はまもなく発表されます。
+**A:** はい。Azure Spatial Anchors は一般提供段階にあり、標準の Azure サービス SLA が提供されます。 お使いの運用デプロイ用にアプリを開発し、製品に関する[フィードバックを Microsoft と共有](https://feedback.azure.com/forums/919252-azure-spatial-anchors)してください。
 
 **Q:何らかのスロットリング制限が適用されますか?**
 
-**A**: はい、スロットリング制限があります。  一般的なアプリケーションの開発とテストでは、それに達することはないものと思われます。 運用デプロイの場合は、お客様の高スケール要件をサポートする準備を整えています。 詳しくは[お問い合わせください](mailto:azuremrs@microsoft.com)。 このプレビュー フェーズでは、レベル設定と価格体系をまだ公開していませんが、まもなく公開する予定です。
+**A**: はい、スロットリング制限があります。  一般的なアプリケーションの開発とテストでは、それに達することはないものと思われます。 運用デプロイの場合は、お客様の高スケール要件をサポートする準備を整えています。 詳しくは[お問い合わせください](mailto:azuremrs@microsoft.com)。 
 
 **Q:Azure Spatial Anchors はどのリージョンで利用できますか?**
 
-**A:** 現在、Azure Spatial Anchors アカウントを作成できるのは米国東部 2 リージョンです。 つまり、このサービスのコンピューティングとストレージの能力はどちらもこのリージョン内にあります。 ただし、クライアントの場所に制限はありません。 今後は、すべてのプライマリ Azure リージョンでサービスを利用できるように拡張する予定です。
+**A:** Azure Spatial Anchors は、現在、米国西部 2、米国東部、米国東部 2、米国中南部、西ヨーロッパ、北ヨーロッパ、英国南部、およびオーストラリア東部で利用できます。 今後、さらに多くのリージョンで利用できるようになります。
+
+つまり、このサービスを提供するコンピューティングとストレージの両方がこれらのリージョン内にあります。 ただし、クライアントの場所に制限はありません。 
 
 **Q:Azure Spatial Anchors には課金されますか? いつ課金されるようになりますか?**
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234575"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684646"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -150,7 +150,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 ### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Networking Analytics ソリューションのインストールと構成は、次の手順で行います。
 
-1. Azure ネットワーク セキュリティ グループ分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従って有効にします。
+1. [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページに説明されている手順に従って Azure ネットワーク セキュリティ グループ分析ソリューションを有効にします。
 2. 監視する[ネットワーク セキュリティ グループ](../../virtual-network/virtual-network-nsg-manage-log.md)のリソースの診断ログを有効にします。
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Azure Portal で Azure ネットワーク セキュリティ グループの診断を有効にする
@@ -208,7 +208,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 1. [Azure Application Gateway から Azure Monitor に診断が直接送信されるように構成します。](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Azure ネットワーク セキュリティ グループから Azure Monitor に診断が直接送信されるように構成します。](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. *ソリューション ギャラリーからの Azure Monitor ソリューションの追加*に関する記事で説明されている手順に従って、*Azure Application Gateway Analytics* ソリューションと [Azure Network Security Group Analytics](solutions.md) ソリューションを有効にします。
+2. [ソリューション ギャラリーからの Azure Monitor ソリューションの追加](solutions.md)に関する記事で説明されている手順に従って、*Azure Application Gateway Analytics* ソリューションと *Azure Network Security Group Analytics* ソリューションを有効にします。
 3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
    + 型を AzureDiagnostics にします。 ResourceType を使用して、Azure ネットワーク ログをフィルター処理できます。
 

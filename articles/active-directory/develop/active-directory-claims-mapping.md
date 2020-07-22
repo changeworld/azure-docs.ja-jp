@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871209"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275395"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -319,16 +319,17 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | extensionattribute14 | 拡張属性 14 |
 | User | extensionattribute15 | 拡張属性 15 |
 | User | othermail | その他のメール |
-| User | country | Country |
+| User | country | 国/リージョン |
 | User | city | City |
 | User | state | State |
 | User | jobtitle | 役職 |
 | User | employeeid | 従業員 ID |
 | User | facsimiletelephonenumber | ファックスの電話番号 |
+| User | assignedroles | ユーザーに割り当てられたアプリ ロールの一覧|
 | アプリケーション、リソース、対象ユーザー | displayName | 表示名 |
 | アプリケーション、リソース、対象ユーザー | objected | ObjectID |
 | アプリケーション、リソース、対象ユーザー | tags | サービス プリンシパル タグ |
-| [会社] | tenantcountry | テナントの国 |
+| [会社] | tenantcountry | テナントの国/リージョン |
 
 **TransformationID:** TransformationID 要素は、ソース要素が "transformation" に設定されている場合にのみ指定する必要があります。
 
@@ -361,7 +362,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 |TransformationMethod|想定される入力|想定される出力|説明|
 |-----|-----|-----|-----|
 |Join|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
-|ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
+|ExtractMailPrefix|電子メールまたは UPN|UPN|ExtensionAttributes 1-15 または、UPN やユーザーのメール アドレス値 (johndoe@contoso.com など) を格納するその他のあらゆるスキーマ拡張。 メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
 
 **InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
 
@@ -478,7 +479,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>例:サービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を要求として含めるために、ポリシーを作成して割り当てる
 
-この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
+この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国/リージョン要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
    1. ポリシーを作成するには、次のコマンドを実行します。  

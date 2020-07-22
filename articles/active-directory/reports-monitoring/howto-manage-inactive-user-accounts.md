@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608145"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
@@ -43,7 +43,7 @@ ms.locfileid: "80886043"
 
 非アクティブなアカウントを検出するには、**Microsoft Graph** API のリソースの種類 **signInActivity** によって表示される **lastSignInDateTime** プロパティを評価します。 このプロパティを使用すると、次のシナリオの解決策を実行できます。
 
-- **名前別のユーザー**:このシナリオでは、特定のユーザーを名前で検索することで、lastSignInDate を評価できます。`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **名前別のユーザー**:このシナリオでは、特定のユーザーを名前で検索することで、lastSignInDateTime を評価できます。`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
 - **日付別のユーザー**:このシナリオでは、指定した日付よりも前の lastSignInDateTime を持つユーザーの一覧を要求します。 `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 

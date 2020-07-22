@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 9cd59fdf81e9b5d56872d20c76e8ea177b3c8577
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 118e1e49393a797a065f1e9968a83a6d4464868e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470896"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171042"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する
 
@@ -43,14 +43,6 @@ ms.locfileid: "79470896"
 3. [Maven 3.0 以上をインストールする](https://maven.apache.org/download.cgi)
 4. [Azure CLI バージョン 2.0.67 以上をインストールする](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
-
-## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
-
-次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします
-
-```azurecli
-az extension add --name spring-cloud
-```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Azure portal でサービス インスタンスをプロビジョニングする
 
@@ -112,7 +104,7 @@ az extension add --name spring-cloud
 
 ## <a name="build-and-deploy-microservice-applications"></a>マイクロサービス アプリケーションのビルドとデプロイ
 
-1. [Azure Cloud Shell](https://shell.azure.com) を開き、サンプル アプリのリポジトリをご利用のローカル コンピューターにクローンします。  ここでは、まず、`source-code` という名前の一時ディレクトリを作成してから、アプリを複製します。
+1. [Azure Cloud Shell](https://shell.azure.com) または Azure CLI がインストールされているローカル シェルを開きます。 ここでは、まず、`source-code` という名前の一時ディレクトリを作成してから、サンプル アプリを複製します。
 
     ```console
     mkdir source-code
@@ -127,21 +119,29 @@ az extension add --name spring-cloud
     mvn clean package -DskipTests
     ```
 
-3. リソース グループとサービスに名前を割り当てます。 次のプレースホルダーは、このチュートリアルで前にプロビジョニングしたリソース グループ名とサービス名で置き換えます。
+3. 次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+4. リソース グループとサービスに名前を割り当てます。 次のプレースホルダーは、このチュートリアルで前にプロビジョニングしたリソース グループ名とサービス名で置き換えます。
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. `gateway` アプリケーションを作成し、JAR ファイルをデプロイします。
+5. `gateway` アプリケーションを作成し、JAR ファイルをデプロイします。
+
+    Spring Cloud 拡張機能を使用して、アプリを作成します。
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-5. 同じパターンに従い、`account-service` および `auth-service` アプリケーションを作成し、JAR ファイルをデプロイします。
+6. 同じパターンに従い、`account-service` および `auth-service` アプリケーションを作成し、JAR ファイルをデプロイします。
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -150,7 +150,7 @@ az extension add --name spring-cloud
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-6. アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** ブレードに移動します。 3 つのアプリケーションのそれぞれに 1 行が表示されます。
+7. アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** ブレードに移動します。 3 つのアプリケーションのそれぞれに 1 行が表示されます。
 
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)

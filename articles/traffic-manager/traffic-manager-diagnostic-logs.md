@@ -3,20 +3,19 @@ title: Azure Traffic Manager でリソースログを有効にする
 description: Traffic Manager プロファイルのリソース ログを有効にし、その結果作成されるログ ファイルにアクセスする方法について説明します。
 services: traffic-manager
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711682"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager でリソースログを有効にする
 

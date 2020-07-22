@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226143"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248687"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -272,7 +272,7 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-これにより、VM の保護が有効になっていて、ポリシー スケジュールに従って最初のバックアップがトリガーされることが確認されます。
+これにより、VM の保護が有効になっており、ポリシー スケジュールに従って最初のバックアップがトリガーされることが確認されます。
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>保護された Azure VM のオンデマンド バックアップをトリガーする
 

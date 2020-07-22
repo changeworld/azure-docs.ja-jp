@@ -3,13 +3,13 @@ title: クイック スタート:Linux Python アプリを作成する
 description: App Service で Linux コンテナーに初めての Python アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 ms.topic: quickstart
 ms.date: 04/03/2020
-ms.custom: seo-python-october2019, cli-validate
-ms.openlocfilehash: 5b055c3ed93d5f093295b52c7a28a73e242bfe75
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: seo-python-october2019, cli-validate, tracking-python
+ms.openlocfilehash: 622709098d8b45f6c7badfddd3006dc730a6bf14
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690876"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561692"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -102,11 +102,6 @@ az login
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
-> [!CAUTION]
-> **Azure-CLI バージョン 2.5.0** を使用している場合、前のバージョンにはなかった不具合が `az webapp up` に存在します。`-l <location-name>` パラメーターが指定されないと、特定のシナリオでエラーが発生します。 この問題は、[こちらで追跡](https://github.com/Azure/azure-cli/issues/13257)されています。  
-> 
->使用している Azure CLI のバージョンは、`az --version` コマンドを使用して確認できます。
->
 
 `--sku F1` 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略すると、代わりに Premium レベルを使用することができます。その場合、時間単位のコストが発生します。
 

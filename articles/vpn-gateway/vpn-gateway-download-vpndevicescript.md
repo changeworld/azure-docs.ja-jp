@@ -6,15 +6,15 @@ services: vpn-gateway
 author: yushwang
 manager: rossort
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17d17484ea9caf735fd717b1e58b85e798df87b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983208"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 

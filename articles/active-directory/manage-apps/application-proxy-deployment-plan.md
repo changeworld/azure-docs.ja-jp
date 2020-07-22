@@ -3,8 +3,8 @@ title: Azure Active Directory アプリケーション プロキシのデプロ�
 description: 組織内でアプリケーション プロキシのデプロイを計画するためのエンド ツー エンド ガイド
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.author: kenwith
+ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367786"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -254,7 +253,7 @@ SSO の実行が可能なのは、Azure AD が、リソースへのアクセス�
 
 ###  <a name="working-with-other-types-of-applications"></a>他の種類のアプリケーションを操作する
 
-Azure AD アプリケーション プロキシは、Azure AD 認証ライブラリ ([ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)) または Microsoft 認証ライブラリ ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) を使用するように開発されたアプリケーションもサポートできます。 これは、クライアント要求のヘッダー情報で受け取った Azure AD 発行のトークンを使用して、ユーザーのために事前認証を実行することにより、ネイティブ クライアント アプリをサポートします。
+Azure AD アプリケーション プロキシは、[Microsoft 認証ライブラリ (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) を使用するように開発されたアプリケーションもサポートできます。 これは、クライアント要求のヘッダー情報で受け取った Azure AD 発行のトークンを使用して、ユーザーのために事前認証を実行することにより、ネイティブ クライアント アプリをサポートします。
 
 アプリケーション プロキシの使用可能な構成については、[ネイティブおよびモバイル クライアント アプリの発行](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client)に関するページや[要求ベースのアプリケーション](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps)に関するページをご覧ください。
 
@@ -318,7 +317,7 @@ Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provi
 * [アプリ ページを表示できない](application-proxy-page-appearance-broken-problem.md)
 * [アプリケーション読み込みに時間がかかりすぎる](application-proxy-page-load-speed-problem.md)
 * [アプリケーション ページ上のリンクが動作しない](application-proxy-page-links-broken-problem.md)
-* [アプリに対して開く必要のあるポート](application-proxy-connectivity-ports-how-to.md)
+* [アプリに対して開く必要のあるポート](application-proxy-add-on-premises-application.md)
 * [アプリのコネクタ グループに動作するコネクタがない](application-proxy-connectivity-no-working-connector.md)
 * [管理ポータルでの構成](application-proxy-config-how-to.md)
 * [アプリに対するシングル サインオンの構成](application-proxy-config-sso-how-to.md)

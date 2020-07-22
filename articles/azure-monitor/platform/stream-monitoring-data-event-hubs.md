@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 915df5d6356e2246c8937cb167c8068b00e0917b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733096"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854625"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>イベント ハブへの Azure 監視データのストリーム配信
 Azure Monitor では、Azure や他のクラウド、オンプレミスのアプリケーションとサービスに対する包括的なフル スタック監視ソリューションが提供されます。 Azure Monitor を使用してデータを分析し、さまざまな監視シナリオに活用するだけでなく、環境内にある別の監視ツールにそれを送信することが必要な場合もあります。 ほとんどの場合、監視データを外部ツールにストリーム配信するうえで最も効率的なのは、[Azure Event Hubs](/azure/event-hubs/) を使用する方法です。 この記事では、各種ソースからイベント ハブに監視データをストリーム配信する方法について簡単に説明するほか、詳細なガイダンスへのリンクを紹介します。

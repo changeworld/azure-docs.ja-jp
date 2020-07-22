@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/28/2019
-ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662486"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871249"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Monitor で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -34,8 +34,8 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 ## <a name="prerequisites"></a>前提条件
 
 * SQL 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.6.2 がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。  
-* このソリューションは、SQL Server バージョン 2012、2014、2016 をサポートしています。
-* Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。
+* ソリューションでは、SQL Server バージョン 2012、2014、2016、2017、2019 がサポートされています。
+* Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。 ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。
 
   > [!NOTE]
   > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの Azure Monitor に送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。

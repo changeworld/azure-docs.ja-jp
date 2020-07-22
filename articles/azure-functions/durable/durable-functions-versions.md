@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152892"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807843"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions のバージョンの概要
 
@@ -82,3 +82,7 @@ Durable Functions 2.x では、新しいホストの json スキーマが使用�
 #### <a name="functionjson-changes-javascript-and-c-script"></a>function.json の変更 (JavaScript および C# スクリプト)
 
 Durable Functions 1.x では、オーケストレーション クライアントのバインドには `orchestrationClient` の `type` が使用されます。 バージョン 2.x では、代わりに `durableClient` が使用されます。
+
+#### <a name="raise-event-changes"></a>イベント発生の変更
+
+Durable Functions 1.x では、[イベント発生](durable-functions-external-events.md#send-events) API を呼び出して、存在しないインスタンスを指定すると、サイレント エラーが発生しました。 2\.x 以降では、存在しないオーケストレーションに対するイベント発生は例外になります。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165690"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201285"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -97,7 +97,7 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 
 アクセス モードを以下の表にまとめています。
 
-| | ワークスペース コンテキスト | リソース コンテキスト |
+| 問題 | ワークスペース コンテキスト | リソース コンテキスト |
 |:---|:---|:---|
 | モデルの利用対象者 | 全体管理。 データ収集を構成する必要がある管理者と多様なリソースにアクセスする必要があるユーザー。 また、現時点では、Azure 外部のリソースのログにアクセスする必要があるユーザーにとって必要です。 | アプリケーション チーム。 監視されている Azure リソースの管理者。 |
 | ログを表示するために必要なもの | ワークスペースに対するアクセス許可。 「[ワークスペースのアクセス許可を使用してアクセスを管理する](manage-access.md#manage-access-using-workspace-permissions)」の**ワークスペースのアクセス許可**の説明を参照してください。 | リソースへの読み取りアクセス。 「[Azure のアクセス許可を使用してアクセスを管理する](manage-access.md#manage-access-using-azure-permissions)」の「**リソースのアクセス許可**」を参照してください。 アクセス許可は継承する (含まれているリソース グループなどから) ことも、リソースに直接割り当てることもできます。 リソースのログに対するアクセス許可は自動的に割り当てられます。 |
@@ -140,7 +140,7 @@ Operation
 ``` 
 
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 ![リソース コンテキストの設計例](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 

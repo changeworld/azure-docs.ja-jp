@@ -3,12 +3,12 @@ title: 管理グループを作成してリソースを整理する - Azure の�
 description: ポータル、Azure PowerShell、および Azure CLI を使用して、複数のリソースを管理する Azure 管理グループを作成する方法について説明します。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381583"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971137"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -19,9 +19,9 @@ ms.locfileid: "81381583"
 ## <a name="create-a-management-group"></a>管理グループの作成
 
 テナント内のすべての Azure AD ユーザーは、そのユーザーに割り当てられた管理グループの書き込みアクセス許可なしで管理グループを作成できます。 この新しい管理グループは、ルート管理グループの子になり、作成者には "所有者" ロールの割り当てが付与されます。 管理グループ サービスでは、この機能が許可されるため、ルート レベルでのロールの割り当ては必要ありません。 ルート管理グループには、その作成時に、どのユーザーもアクセスできません。 管理グループの使用を開始する場合に Azure AD の全体管理者を見つけるという困難を回避するために、ルート  
-レベルで最初の管理グループを作成できるようになっています。
+レベルでの最初の管理グループの作成が許可されています。
 
-管理グループを作成するには、ポータル、[Resource Manager テンプレート](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell、または Azure CLI を使用します。
+管理グループを作成するには、ポータル、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell、または Azure CLI を使用します。
 
 ### <a name="create-in-portal"></a>ポータルで作成する
 
@@ -29,9 +29,7 @@ ms.locfileid: "81381583"
 
 1. **[すべてのサービス]**  >  **[管理 + ガバナンス]** を選択します。
 
-1. **[コストの管理と請求]** を選択します
-
-1. [コストの管理と請求] - [管理グループ] ページで、 **[管理グループ]** を選択します
+1. **[管理グループ]** を選択します。
 
 1. **[+ 管理グループの追加]** を選択します。
 
@@ -40,7 +38,7 @@ ms.locfileid: "81381583"
 1. [管理グループ ID] フィールドに入力します。
 
    - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 [ルート管理グループ](overview.md#root-management-group-for-each-directory)は、Azure Active Directory ID である ID を使用して自動的に作成されます。 他のすべての管理グループには、一意の ID を割り当てます。
-   - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、  
+   - 表示名フィールドは、Azure Portal 内で表示される名前です。 別の表示名は、管理グループの作成時には省略可能なフィールドであり、  
      いつでも変更できます。
 
    :::image type="content" source="./media/create_context_menu.png" alt-text="新しい管理グループを作成するための [オプション] ペイン" border="false":::

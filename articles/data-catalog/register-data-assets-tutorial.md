@@ -6,16 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68950247"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255196"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>チュートリアル:Azure Data Catalog でのデータ資産の登録
 
-このチュートリアルでは、登録ツールを使用して、Azure SQL データベース サンプルのデータ資産をカタログに登録します。 登録は、データ ソースおよびそれに格納されている資産から、名前、型、場所などの重要な構造メタデータを抽出し、そのメタデータをカタログにコピーするプロセスです。 データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。
+このチュートリアルでは、登録ツールを使用して、データベース サンプルのデータ資産をカタログに登録します。 登録は、データ ソースおよびそれに格納されている資産から、名前、型、場所などの重要な構造メタデータを抽出し、そのメタデータをカタログにコピーするプロセスです。 データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -39,11 +39,11 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
 ### <a name="register-a-data-source"></a>データ ソースの登録
 
-[Azure SQL データベース サンプル](../sql-database/sql-database-single-database-get-started.md)のデータ資産 (テーブル) を登録しますが、自分の役割に関連する使い慣れたデータを操作したい場合、サポートされている任意のデータ ソースを使用できます。 サポート対象のデータ ソースの一覧については、 [サポートされるデータ ソース](data-catalog-dsr.md)に関する記事を参照してください。
+Azure SQL Database の[データベース サンプル](../azure-sql/database/single-database-create-quickstart.md)のデータ資産 (テーブル) を登録しますが、自分の役割に関連する使い慣れたデータを操作したい場合、サポートされている任意のデータ ソースを使用できます。 サポート対象のデータ ソースの一覧については、 [サポートされるデータ ソース](data-catalog-dsr.md)に関する記事を参照してください。
 
-このチュートリアルで使用する Azure SQL データベースの名前は *RLSTest* です。
+このチュートリアルで使用するデータベースの名前は *RLSTest* です。
 
-これで、Azure SQL データベース サンプルのデータ資産を、Azure Data Catalog を使用して登録できます。
+これで、データベース サンプルのデータ資産を、Azure Data Catalog を使用して登録できます。
 
 1. [Azure Data Catalog のホーム ページ](http://azuredatacatalog.com)に移動し、 **[データの発行]** を選択します。
 
@@ -61,13 +61,13 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
     ![Azure Data Catalog--data sources](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. Azure SQL データベース サンプルの SQL Server 接続のプロパティを入力し、 **[接続]** を選択します。
+5. Azure SQL Database のデータベース サンプルの SQL Server 接続プロパティを入力し、 **[接続]** を選択します。
 
    ![Azure Data Catalog--SQL Server connection settings](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. データ資産のメタデータを登録します。 この例では、Azure SQL データベース サンプル名前空間から **Product** オブジェクトを登録します。
+6. データ資産のメタデータを登録します。 この例では、サンプル名前空間の **Product** オブジェクトを登録します。
 
-    1. **[サーバー階層]** ツリーで、Azure SQL データベース サンプルを展開し、 **[SalesLT]** を選択します。
+    1. **[サーバー階層]** ツリーで、データベース サンプルを展開し、 **[SalesLT]** を選択します。
 
     2. Ctrl キーを押しながら、 **[Product]** 、 **[ProductCategory]** 、 **[ProductDescription]** 、 **[ProductModel]** を選択します。
 
@@ -85,7 +85,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
           ![Azure Data Catalog tutorial--objects to be registered](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. **[登録]** を選択します。 Azure Data Catalog は、選択したオブジェクトを登録します。 この演習では、Azure SQL データベース サンプルから選択したオブジェクトが登録されます。 登録ツールは、データ資産からメタデータを抽出し、そのデータを Azure Data Catalog サービスにコピーします。 データは現在存在する場所に残ります。 データは、元のシステムの管理者とポリシーの制御下に留まります。
+    8. **[登録]** を選択します。 Azure Data Catalog は、選択したオブジェクトを登録します。 この演習では、データベース サンプルから選択したオブジェクトが登録されます。 登録ツールは、データ資産からメタデータを抽出し、そのデータを Azure Data Catalog サービスにコピーします。 データは現在存在する場所に残ります。 データは、元のシステムの管理者とポリシーの制御下に留まります。
 
           ![Azure Data Catalog--registered objects](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
         ![Objects in the Azure Data Catalog portal](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-この演習では、Azure SQL データベース サンプルからオブジェクトを登録して、組織全体のユーザーがそれらを簡単に発見できるようにしました。
+この演習では、Azure SQL Database のデータベース サンプルのオブジェクトを登録して、組織全体のユーザーがそれらを簡単に発見できるようにしました。
 
 次の演習では、登録されているデータ資産を検出する方法を学習します。
 
@@ -178,7 +178,7 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 
 3. **Enter**キーを押します。
 
-4. 登録した **Product**、**ProductCategory**、**ProductDescription** の各テーブルと Azure SQL データベースが検索結果に表示されていることを確認します。
+4. 登録した **Product**、**ProductCategory**、**ProductDescription** の各テーブルと SQL データベースが検索結果に表示されていることを確認します。
 
     ![Azure Data Catalog--comparison search results](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -251,7 +251,7 @@ Azure Data Catalog では、注釈に対するクラウドソーシング手法�
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-この演習では、Azure Data Catalog を使用して検出されたデータ資産に接続しました。 Azure Data Catalog ポータルでは、 **[開く]** メニューに統合されたクライアント アプリケーションを使用して、データ資産に直接接続できます。 また、資産メタデータに含まれる接続場所の情報を使用して、任意のアプリケーションに接続することもできます。 たとえば、SQL Server Management Studio を使用すると、Azure SQL データベースに接続し、このチュートリアルで登録されたデータ資産のデータにアクセスできます。
+この演習では、Azure Data Catalog を使用して検出されたデータ資産に接続しました。 Azure Data Catalog ポータルでは、 **[開く]** メニューに統合されたクライアント アプリケーションを使用して、データ資産に直接接続できます。 また、資産メタデータに含まれる接続場所の情報を使用して、任意のアプリケーションに接続することもできます。 たとえば、SQL Server Management Studio を使用すると、Azure SQL Database に接続し、このチュートリアルで登録されたデータ資産のデータにアクセスできます。
 
 1. **SQL Server Management Studio** を開きます。
 

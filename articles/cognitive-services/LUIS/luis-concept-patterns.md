@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 86f4eab266aabccd25e1269e1942e535f6af5436
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591840"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683904"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
@@ -36,14 +36,14 @@ ms.locfileid: "83591840"
 パターンは次のような状況を解決します。
 
 * 意図スコアが低い
-* 正しい意図が最上位のスコアではないが、最上位のスコアに近すぎる。 
+* 正しい意図が最上位のスコアではないが、最上位のスコアに近すぎる。
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>パターンは意図を保証するものではない
 パターンは、さまざまな予測テクノロジを使用します。 パターンにテンプレートの発話の意図を設定することは、意図の予測を保証するものではありませんが、強力なシグナルになります。
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>パターンでは機械学習エンティティの検出は改善されない
+## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>パターンでは機械学習エンティティの検出は改善されない
 
 パターンは主として、意図とロールの予測を支援するためのものです。 _pattern.any_ エンティティは、自由形式のエンティティを抽出するために使用されます。 パターンではエンティティが使用されますが、パターンは機械学習エンティティの検出には役に立ちません。
 

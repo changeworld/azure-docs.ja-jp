@@ -3,12 +3,12 @@ title: Java アプリケーションを任意の環境で監視する - Azure Mo
 description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508073"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319705"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション - パブリックプレビュー
 
@@ -24,11 +24,11 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 
 **1.エージェントのダウンロード**
 
-[applicationinsights-agent-3.0.0-PREVIEW.4.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) をダウンロードします
+[applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) をダウンロードします。
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
@@ -44,7 +44,7 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.4.jar` と同じディレクトリに配置します。
+または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` と同じディレクトリに配置します。
 
 ```json
 {

@@ -4,16 +4,16 @@ description: .NET クライアント ライブラリを使用して、Azure Stor
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da0c5bf6bc371bc512d9264afeab52b9908396fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79135906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463560"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET を使用して BLOB コンテナーを一覧表示する
 

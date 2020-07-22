@@ -1,19 +1,19 @@
 ---
-title: チュートリアル - Azure Spring Cloud で Config Server インスタンスを設定する
-description: このチュートリアルでは、Azure portal で自分の Azure Spring Cloud 向けに Spring Cloud Config Server インスタンスを設定する方法を説明します
+title: Azure Spring Cloud で Config Server インスタンスを設定する
+description: Azure portal で自分の Azure Spring Cloud 向けに Spring Cloud Config Server インスタンスを設定する方法を説明します
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277521"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142189"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>チュートリアル:自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
+# <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
 この記事では、Spring Cloud Config Server インスタンスを自分の Azure Spring Cloud サービスに接続する方法を紹介します。
 
@@ -33,6 +33,7 @@ eureka.client.tls.keystore
 server.port
 spring.cloud.config.tls.keystore
 spring.application.name
+spring.jmx.enabled
 ```
 
 > [!CAUTION]
@@ -53,7 +54,7 @@ Azure Spring Cloud では、Config Server ファイルを格納するために�
 > [!NOTE]
 > 現在サポートされている名前付け規則は、ハイフン (-) を使用して単語を区切ることだけです。 たとえば、*default-label* は使用できますが、*defaultLabel* は使用できません。
 
-| プロパティ        | 必須 | 機能                                                      |
+| プロパティ        | 必須 | 特徴量                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | はい    | Config Server バックエンドとして使用される Git リポジトリの URI は、*http://* 、*https://* 、*git@* 、*ssh://* のいずれかで始まります。 |
 | `default-label` | いいえ     | Git リポジトリの既定のラベルは、リポジトリの "*ブランチ名*"、"*タグ名*"、"*コミット ID*" のいずれかにする必要があります。 |
@@ -68,7 +69,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 > [!NOTE]
 > 現在サポートされている名前付け規則は、ハイフン (-) を使用して単語を区切ることだけです。 たとえば、*default-label* は使用できますが、*defaultLabel* は使用できません。
 
-| プロパティ                   | 必須 | 機能                                                      |
+| プロパティ                   | 必須 | 特徴量                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | はい    | Config Server バックエンドとして使用される Git リポジトリの URI は、*http://* 、*https://* 、*git@* 、*ssh://* のいずれかで始まる必要があります。 |
 | `default-label`            | いいえ     | Git リポジトリの既定のラベルは、リポジトリの "*ブランチ名*"、"*タグ名*"、"*コミット ID*" のいずれかにする必要があります。 |
@@ -87,7 +88,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 > [!NOTE]
 > 現在サポートされている名前付け規則は、ハイフン (-) を使用して単語を区切ることだけです。 たとえば、*defaultLabel* とはせずに、*default-label* としてください。
 
-| プロパティ        | 必須 | 機能                                                      |
+| プロパティ        | 必須 | 特徴量                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | はい    | Config Server バックエンドとして使用される Git リポジトリの URI は、*http://* 、*https://* 、*git@* 、*ssh://* のいずれかで始まる必要があります。 |
 | `default-label` | いいえ     | Git リポジトリの既定のラベルは、リポジトリの "*ブランチ名*"、"*タグ名*"、"*コミット ID*" のいずれかにする必要があります。 |
@@ -105,7 +106,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 > [!NOTE]
 > 現在サポートされている名前付け規則は、ハイフン (-) を使用して単語を区切ることだけです。 たとえば、*defaultLabel* とはせずに、*default-label* としてください。
 
-| プロパティ                           | 必須         | 機能                                                      |
+| プロパティ                           | 必須         | 特徴量                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | いいえ             | 指定された名前の Git リポジトリの設定で構成されるマップ。 |
 | `repos."uri"`                      | はい (`repos` の場合) | Config Server バックエンドとして使用される Git リポジトリの URI は、*http://* 、*https://* 、*git@* 、*ssh://* のいずれかで始まる必要があります。 |
@@ -189,7 +190,4 @@ YAML ファイルの情報が Azure portal に表示されます。 完了する
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Spring Cloud Config Server インスタンスを有効にし、構成する方法を学習しました。 アプリケーションの管理の詳細については、手動によるアプリのスケーリングに関するチュートリアルに進んでください。
-
-> [!div class="nextstepaction"]
-> [チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)
+この記事では、Spring Cloud Config Server インスタンスを有効にし、構成する方法を学習しました。 アプリケーション管理の詳細については、「[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」を参照してください。

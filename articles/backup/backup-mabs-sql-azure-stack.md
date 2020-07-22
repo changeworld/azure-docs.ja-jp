@@ -3,12 +3,12 @@ title: Azure Stack での SQL Server ワークロードのバックアップ
 description: この記事では、Azure Stack 上の SQL Server データベースを保護するように Microsoft Azure Backup Server (MABS) を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172304"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192974"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack での SQL Server のバックアップ
 

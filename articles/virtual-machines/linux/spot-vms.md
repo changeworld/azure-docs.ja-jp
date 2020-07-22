@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 80601170a39333ea0075bb4ec262dd48c7f2d76d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c83f754fdc236cc7a08f5a6a6e62ca3cf620b536
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506050"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure でスポット VM を使用する
 
@@ -23,6 +23,6 @@ ms.locfileid: "81758341"
 
 
 ## <a name="next-steps"></a>次のステップ
-[CLI](spot-cli.md)、[ポータル](../windows/spot-portal.md) または [PowerShell](../windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
+[CLI](spot-cli.md)、[ポータル](../windows/spot-portal.md)、[ARM テンプレート](spot-template.md)、または [PowerShell](../windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
 
 また、[スポット VM インスタンスを使用したスケール セット](../../virtual-machine-scale-sets/use-spot.md)をデプロイすることもできます。

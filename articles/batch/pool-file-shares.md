@@ -1,14 +1,14 @@
 ---
 title: Azure Batch プールの Azure ファイル共有
 description: Azure Batch の Linux または Windows プールの計算ノードから Azure Files 共有をマウントする方法
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83780284"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
 
@@ -40,7 +40,7 @@ Batch では、タスクが Windows ノード上で実行されるたびに共�
 たとえば、各タスクのコマンド ラインの一部としてファイル共有をマウントするための `net use` コマンドを含めます。 ファイル共有をマウントするには、次の資格情報が必要になります。
 
 * **ユーザー名**:AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
-* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
+* **パスワード**: \<StorageAccountKeyWhichEnds in==>、たとえば *XXXXXXXXXXXXXXXXXXXXX==*
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を *S:* ドライブとしてマウントします。
 
@@ -117,7 +117,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 次に、以下の資格情報を指定して、`mount` コマンドを実行してファイル共有をマウントします。
 
 * **ユーザー名**: \<storageaccountname\> (たとえば、*mystorageaccountname*)
-* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
+* **パスワード**: \<StorageAccountKeyWhichEnds in==>、たとえば *XXXXXXXXXXXXXXXXXXXXX==*
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を */mnt/MyAzureFileShare* でマウントします。 
 
@@ -172,6 +172,5 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Batch でデータの読み取りと書き込みを行うためのその他のオプションについては、[Batch 機能の概要](batch-api-basics.md) に関するページと「[ジョブとタスク出力を保持する](batch-task-output.md)」を参照してください。
-
+* Batch のデータの読み書きのその他のオプションについては、「[ジョブとタスク出力を保持する](batch-task-output.md)」を参照してください。
 * また、Batch コンテナー ワークロードにファイル システムをデプロイするための[Shipyard レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes) を含む [Batch Shipyard](https://github.com/Azure/batch-shipyard) ツールキットも参照してください。

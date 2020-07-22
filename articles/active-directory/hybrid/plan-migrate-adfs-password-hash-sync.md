@@ -7,17 +7,17 @@ manager: daveba
 ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 05/31/2019
+ms.topic: conceptual
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356681"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
@@ -25,10 +25,14 @@ ms.locfileid: "76028399"
 
 > [!NOTE]
 > 認証方法を変更するには、計画、テスト、予測されるダウンタイムが必要です。 [段階的なロールアウト](how-to-connect-staged-rollout.md)では、フェデレーションからパスワード ハッシュ同期を使用するクラウド認証への段階的な移行をテストして実行するための、別の方法が提供されます。
+>
+> 段階的なロールアウトを使用する予定がある場合は、カットオーバーが完了したら、段階的ロールアウト機能を無効にすることを忘れないでください。  詳細については、「[段階的なロールアウトを使用してクラウド認証に移行する](how-to-connect-staged-rollout.md)」を参照してください
+
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>パスワード ハッシュ同期への移行の前提条件
 
 AD FS の使用からパスワード ハッシュ同期の使用に移行するには、次の前提条件を満たしている必要があります。
+
 
 ### <a name="update-azure-ad-connect"></a>Azure AD Connect を更新する
 

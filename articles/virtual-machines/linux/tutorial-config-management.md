@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fe53f400c1e03f0f3bb9d5e85891769d58320d84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501978"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 
@@ -29,7 +29,7 @@ Azure Linux VM では、Azure [Change Tracking](../../automation/change-tracking
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Windows 更新プログラムを管理する
+> * Linux の更新プログラムを管理する
 > * 変更とインベントリを監視する
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
@@ -77,7 +77,7 @@ VM から直接、利用可能な更新プログラムのステータスを迅�
 この VM で Update Management が有効になっているかを確認する検証が行われます。
 この検証では、Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、ソリューションがワークスペースにあるかどうかの確認が行われます。
 
-[Log Analytics](../../log-analytics/log-analytics-overview.md) ワークスペースは、Update Management のような機能およびサービスによって生成されるデータを収集するために使用されます。
+[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) ワークスペースは、Update Management のような機能およびサービスによって生成されるデータを収集するために使用されます。
 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 更新を必要とする VM で追加のアクションを実行する場合、Azure Automation を使用すると、VM に対して Runbook を実行して、更新プログラムをダウンロードして適用するなどの操作を行うことができます。
 
@@ -87,8 +87,8 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 オンボード中に次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) ワークスペース
-* [Automation アカウント](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) ワークスペース
+* [Automation アカウント](../../automation/index.yml)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) が VM で有効になっている
 
 **[更新の管理]** 画面が開きます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、 **[有効にする]** を選択します。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。

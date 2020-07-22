@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550321"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -90,9 +90,9 @@ ms.locfileid: "79230367"
 
     グループまたはチームを選択すると、 **[サブ タイプ]** 列に次のいずれかのサブタイプが表示されます。
 
-    |  |  |
+    | サブタイプ | 説明 |
     | --- | --- |
-    | Security | リソースにアクセスを付与するために使用されます。 |
+    | セキュリティ | リソースにアクセスを付与するために使用されます。 |
     | Distribution | ユーザー グループに通知を送信するために使用されます。 |
     | O365 | Teams が有効になっていない Office 365 グループ。 社内と社外の両方でユーザー間の共同作業に使用されます。 |
     | チーム | Teams が有効になっている Office 365 グループ。 社内と社外の両方でユーザー間の共同作業に使用されます。 |

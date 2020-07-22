@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d4896a2dd2115e5654baffe394618b30a294d5b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371834"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231745"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning と Machine Learning Studio (classic) の違い
 
@@ -27,9 +27,9 @@ Azure Machine Learning には、Python と R の SDK に**加え**、機械学�
 
 次の表は、Azure Machine Learning と Studio (クラシック) の主な違いのいくつかをまとめたものです。
 
-| | Machine Learning Studio (クラシック) | Azure Machine Learning |
+| 特徴量 | Machine Learning Studio (クラシック) | Azure Machine Learning |
 |---| --- | --- |
-| ドラッグ アンド ドロップ インターフェイス | サポートされています | サポートされています - [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) | 
+| ドラッグ アンド ドロップ インターフェイス | サポートされています | サポートされています - [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) <br/>(Enterprise ワークスペースが必要) | 
 | 実験 | スケーラブル (10 GB トレーニング データの上限) | コンピューティング先に合わせてスケーリング |
 | コンピューティング ターゲットのトレーニング | 独自のコンピューティング ターゲット、CPU のサポートのみ | カスタマイズできる広範な[トレーニング コンピューティング先](concept-compute-target.md#train)。 GPU と CPU のサポートが含まれます | 
 | デプロイのコンピューティング ターゲット | 独自の Web サービス形式 (カスタマイズ不可) | カスタマイズできる広範な[デプロイ コンピューティング先](concept-compute-target.md#deploy)。 GPU と CPU のサポートが含まれます |

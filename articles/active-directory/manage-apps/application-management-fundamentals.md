@@ -3,27 +3,28 @@ title: アプリケーション管理:ベスト プラクティスと推奨事�
 description: Azure Active Directory でアプリケーションを管理するためのベスト プラクティスと推奨事項について説明します。 自動プロビジョニングの使用と、アプリケーション プロキシを使用したオンプレミス アプリの発行について説明します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6534efb6fcd07ee3b9f3979cabf2feb77496a8b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74085191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760271"
 ---
 # <a name="application-management-best-practices"></a>アプリケーション管理のベスト プラクティス
+
 この記事には、Azure Active Directory (Azure AD) でのアプリケーションの管理、自動プロビジョニングの使用、アプリケーション プロキシを使用したオンプレミス アプリの発行に関する推奨事項とベスト プラクティスが記載されています。
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>クラウド アプリとシングル サインオンに関する推奨事項

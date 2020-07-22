@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252442"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -116,7 +116,7 @@ PHP では接続プールがサポートされていませんが、バックエ�
 ### <a name="additional-guidance-specific-to-app-service"></a>App Service 固有のその他のガイダンス:
 
 * [ロード テスト](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test)では、現実に即したデータを、安定したフィード速度でシミュレートするようにしてください。 現実的なストレス下でアプリおよび関数をテストすることで、SNAT ポートの枯渇の問題を事前に識別し、解決することができます。
-* バックエンド サービスが迅速に応答を返せることを確認します。 Azure SQL データベースのパフォーマンスの問題のトラブルシューティングについては、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)」を確認してください。
+* バックエンド サービスが迅速に応答を返せることを確認します。 Azure SQL データベースのパフォーマンスの問題のトラブルシューティングについては、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)」を参照してください。
 * App Service プランをより多くのインスタンスにスケールアウトします。 スケーリングの詳細については、[Azure App Service でのアプリのスケーリング](https://docs.microsoft.com/azure/app-service/manage-scale-up)に関する記事を参照してください。 App Service プランの各ワーカー インスタンスには、いくつかの SNAT ポートが割り当てられています。 より多くのインスタンスに使用量を分散させた場合、インスタンスあたりの SNAT ポート使用数が、一意のリモート エンドポイントあたり 100 件の送信接続という推奨制限値を下回る可能性があります。
 * 1 つの送信 IP アドレスが割り当てられ、接続数と SNAT ポート数の制限がずっと大きい [App Service Environment (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase) への移行を検討してください。
 
@@ -160,7 +160,7 @@ TCP 接続と SNAT ポートは直接関連していません。 TCP 接続の�
 
 ### <a name="webjobs-and-database-connections"></a>WebJob とデータベース接続
  
-SNAT ポートが枯渇していて、WebJob が Azure SQL データベースに接続できない場合に、個別の Web アプリケーション プロセスによって開かれている接続の数を示すメトリックはありません。 問題のある WebJob を見つけるには、いくつかの WebJob を別の App Service プランに移動し、状況が改善するかどうか、またはいずれかのプランで問題が継続するかどうかを確認します。 問題のある WebJob が見つかるまで、このプロセスを繰り返します。
+SNAT ポートが枯渇していて、WebJob が SQL Database に接続できない場合に、個別の Web アプリケーション プロセスによって開かれている接続の数を示すメトリックはありません。 問題のある WebJob を見つけるには、いくつかの WebJob を別の App Service プランに移動し、状況が改善するかどうか、またはいずれかのプランで問題が継続するかどうかを確認します。 問題のある WebJob が見つかるまで、このプロセスを繰り返します。
 
 ### <a name="using-snat-ports-sooner"></a>SNAT ポートの使用を早める
 

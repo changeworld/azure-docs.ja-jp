@@ -5,21 +5,20 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132347"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797882"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Istio を使用した Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視 - 非推奨
 
 > [!IMPORTANT]
-> 現在この機能はパブリック プレビュー版です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> この機能は現在非推奨とされており、2020 年 8 月 1 日以降はサポートされなくなります。
+> 現時点では、コード不要の監視を有効にできるのは、[スタンドアロン エージェントを通じた Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) だけです。 以下のその他の言語では、AKS 上のアプリを監視するには SDK を使用します。[ASP.Net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)、[ASP.Net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)、[Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)、[JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)、および [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
 
-現在、Azure Monitor では、Kubernetes クラスターでのサービス メッシュ技術を利用して、Kubernetes でホストされているアプリに対する標準のアプリケーション監視が提供されています。 既定の Application Insight は、依存関係をモデル化するための[アプリケーション マップ](../../azure-monitor/app/app-map.md)、リアルタイムの監視のための [Live Metrics Stream](../../azure-monitor/app/live-stream.md)、[既定のダッシュボード](../../azure-monitor/app/overview-dashboard.md)での強力な視覚化、[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)、[Workbooks](../../azure-monitor/app/usage-workbooks.md) などの機能を備えています。 この機能は、選択した Kubernetes 名前空間内のすべての Kubernetes ワークロードでパフォーマンスのボトルネックや障害のホットスポットをユーザーが特定するのに役立ちます。 Istio などのテクノロジでの既存のサービス メッシュへの投資を利用することにより、Azure Monitor では、アプリケーションのコードを変更することなく、自動的にインストルメント化されたアプリ監視を実現できます。
+現在、Azure Monitor では、Kubernetes クラスターでのサービス メッシュ技術を利用して、Kubernetes でホストされているアプリに対する標準のアプリケーション監視が提供されています。 既定の Application Insight は、依存関係をモデル化するための[アプリケーション マップ](../../azure-monitor/app/app-map.md)、リアルタイムの監視のための [Live Metrics Stream](../../azure-monitor/app/live-stream.md)、[既定のダッシュボード](../../azure-monitor/app/overview-dashboard.md)での強力な視覚化、[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)、[Workbooks](../../azure-monitor/platform/workbooks-overview.md) などの機能を備えています。 この機能は、選択した Kubernetes 名前空間内のすべての Kubernetes ワークロードでパフォーマンスのボトルネックや障害のホットスポットをユーザーが特定するのに役立ちます。 Istio などのテクノロジでの既存のサービス メッシュへの投資を利用することにより、Azure Monitor では、アプリケーションのコードを変更することなく、自動的にインストルメント化されたアプリ監視を実現できます。
 
 > [!NOTE]
 > これは、Kubernetes でアプリケーションの監視を実行するさまざまな方法の 1 つです。 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) を使用することで、サービス メッシュの必要なしに、Kubernetes でホストされているアプリをインストルメント化することもできます。 SDK でアプリケーションをインストルメント化することなく Kubernetes を監視するには、以下の方法を使用できます。

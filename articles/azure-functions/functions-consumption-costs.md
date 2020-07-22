@@ -237,5 +237,5 @@ customMetrics
 > [!div class="nextstepaction"]
 > [関数アプリの監視についての詳細情報](functions-monitoring.md)
 
-[価格ページ]:https://azure.microsoft.com/pricing/details/functions/
+[価格ページ]: https://azure.microsoft.com/pricing/details/functions/
 [Azure Portal]: https://portal.azure.com

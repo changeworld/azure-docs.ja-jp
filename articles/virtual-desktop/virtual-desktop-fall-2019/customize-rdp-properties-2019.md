@@ -4,16 +4,16 @@ description: PowerShell コマンドレットを使用して Windows Virtual Des
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dc89b0f6ed745b3de829c0fff145adc79c5af642
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eeab433bbbfc9db0f1c5f5546ae80434899a91dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614308"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259213"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル プロパティをカスタマイズする
 
@@ -50,7 +50,8 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
 ```
 
-![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/singlecustomrdpproperty.png)
+> [!div class="mx-imgBorder"]
+> ![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>複数のカスタム RDP プロパティを追加または編集する
 
@@ -61,7 +62,8 @@ $properties="<property1>;<property2>;<property3>"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
 
-![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/multiplecustomrdpproperty.png)
+> [!div class="mx-imgBorder"]
+> ![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>すべてのカスタム RDP プロパティをリセットする
 
@@ -71,11 +73,12 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
 
-![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/resetcustomrdpproperty.png)
+> [!div class="mx-imgBorder"]
+> ![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 特定のホスト プールの RDP プロパティをカスタマイズしたので、Windows Virtual Desktop クライアントにサインインして、それらをユーザー セッションの一部としてテストできます。 次の 2 つの手順では、任意のクライアントを使用してセッションに接続する方法を説明します。
 
-- [Windows デスクトップ クライアントを使用して接続する](../connect-windows-7-and-10.md)
+- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10-2019.md)
 - [Web クライアントに接続する](connect-web-2019.md)

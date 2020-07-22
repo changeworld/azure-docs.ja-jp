@@ -4,16 +4,16 @@ description: カスタム メトリックを使用して Web アプリをリア�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670102"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166486"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 [プロファイラー](../../azure-monitor/app/profiler.md)、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)と共に、 Live Metrics Stream によって、ライブ Web サイトに影響を与えない強力な診断ツールが提供されます。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションを監視します。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream を[プロファイラー](../../azure-monitor/app/profiler.md)と[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)と併用することにより、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを利用できます。
 
 Live Metrics Stream を使用すると、次のことが可能になります。
 
@@ -25,13 +25,13 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 * すべての Windows パフォーマンス カウンターをライブで監視します。
 * 問題が発生しているサーバーを簡単に特定し、すべての KPI/ライブ フィードをフィルター処理してそのサーバーだけに絞り込むことができます。
 
-[![Live Metrics Stream 動画](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+![[Live Metrics] タブ](./media/live-stream/live-metric.png)
 
 現在、Live Metrics は ASP.NET、ASP.NET Core、Azure Functions、Java、および Node.js アプリでサポートされています。
 
 ## <a name="get-started"></a>はじめに
 
-1. Web アプリに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.yml)していない場合は、今すぐインストールしてください。
+1. アプリケーションに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.yml)します。
 2. Live Metrics ストリームを有効にするには、標準の Application Insights パッケージに加え、[Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) が必要です。
 3. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
@@ -49,12 +49,12 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 | |Live Stream | メトリックス エクスプローラーと Analytics |
 |---|---|---|
-|Latency|1 秒以内に表示されるデータ|数分間で集計|
-|リテンション期間なし|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|オン デマンド|Live Metrics を開いている間、データはストリーミングされます|SDK がインストールされて有効になるたびに、データが送信されます|
-|Free|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
-|サンプリング|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)されることがあります|
-|コントロール チャネル|フィルターの制御シグナルが SDK に送信されます。 このチャネルをセキュリティで保護することをお勧めします。|通信はポータルへの一方向です|
+|**待機時間**|1 秒以内に表示されるデータ|数分間で集計|
+|**リテンション期間なし**|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**[要求時]**|データは、[Live Metircs] ペインが開いている間のみストリーミングされます |SDK がインストールされて有効になるたびに、データが送信されます|
+|**Free**|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
+|**サンプリング**|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)されることがあります|
+|**コントロール チャネル**|フィルターの制御シグナルが SDK に送信されます。 このチャネルをセキュリティで保護することをお勧めします。|通信はポータルへの一方向です|
 
 ## <a name="select-and-filter-your-metrics"></a>メトリックの選択とフィルタリング
 
@@ -62,42 +62,48 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 ポータルで Application Insights Telemetry に任意のフィルターを適用して、カスタム ライブ KPI を監視できます。 グラフをマウスでポイントしたときに表示されるフィルター コントロールをクリックします。 次のグラフは、URL 属性と期間属性にフィルターを適用して、カスタム要求数 KPI をプロットしています。 [ストリームのプレビュー] セクションでフィルターを検証します。このセクションには、指定した条件といずれかの時点で一致するテレメトリのライブ フィードが表示されます。
 
-![カスタム要求 KPI](./media/live-stream/live-stream-filteredMetric.png)
+![要求率のフィルター処理](./media/live-stream/filter-request.png)
 
 Count 以外の値を監視できます。 オプションはストリームの種類によって異なります。ストリームの種類には、任意の Application Insights Telemetry (要求、依存関係、例外、トレース、イベント、またはメトリック) を指定できます。 オプションには、独自の[カスタム測定](../../azure-monitor/app/api-custom-events-metrics.md#properties)を指定できます。
 
-![値のオプション](./media/live-stream/live-stream-valueoptions.png)
+![クエリ ビルダーで要求率にカスタム メトリックを使用する](./media/live-stream/query-builder-request.png)
 
 Application Insights Telemetry だけでなく、Windows パフォーマンス カウンターを監視することもできます。ストリーム オプションから Windows パフォーマンス カウンターを選択し、パフォーマンス カウンターの名前を指定します。
 
 ライブ メトリックは 2 つのポイントで集計されます。具体的には、サーバーごとにローカルで集計された後、すべてのサーバーにわたって集計されます。 どちらについても、それぞれのドロップダウンで他のオプションを選択することで既定値を変更できます。
 
 ## <a name="sample-telemetry-custom-live-diagnostic-events"></a>サンプル テレメトリ:カスタム ライブ診断イベント
-既定では、イベントのライブ フィードには失敗した要求と依存関係呼び出し、例外、イベント、トレースのサンプルが表示されます。 フィルター アイコンをクリックすると、任意の時点で適用された条件が表示されます。 
+既定では、イベントのライブ フィードには失敗した要求と依存関係呼び出し、例外、イベント、トレースのサンプルが表示されます。 フィルター アイコンをクリックすると、任意の時点で適用された条件が表示されます。
 
-![既定のライブ フィード](./media/live-stream/live-stream-eventsdefault.png)
+![[フィルター] ボタン](./media/live-stream/filter.png)
 
-メトリックと同様に、Application Insights Telemetry の種類のいずれかに任意の条件を指定できます。 この例では、特定の要求エラー、トレース、イベントを選択しています。 また、すべての例外と依存関係エラーも選択しています。
+メトリックと同様に、Application Insights Telemetry の種類のいずれかに任意の条件を指定できます。 この例では、特定の要求エラーとイベントを選択しています。
 
-![カスタム ライブ フィード](./media/live-stream/live-stream-events.png)
+![[クエリ ビルダー]](./media/live-stream/query-builder.png)
 
-注:現時点では、例外メッセージ ベースの条件には、最も外側の例外メッセージを使用します。 前の例では、"クライアントが切断されました。" という内部例外メッセージ ("<--" 区切り記号の後) が示されている害のない例外を除外するために、 "Error reading request content (要求内容の読み取りエラー)" が含まれていないメッセージという条件を使用します。
+> [!NOTE]
+> 現時点では、例外メッセージ ベースの条件には、最も外側の例外メッセージを使用します。 前の例では、"クライアントが切断されました。" という内部例外メッセージ ("<--" 区切り記号の後) が示されている害のない例外を除外するために、 "Error reading request content (要求内容の読み取りエラー)" が含まれていないメッセージという条件を使用します。
 
 ライブ フィードの項目をクリックして詳細を表示します。 フィードを一時停止するには、 **[一時停止]** をクリックするか、下にスクロールするか、または項目をクリックします。 スクロールして上部に戻るか、一時停止されている間に収集された項目のカウンターをクリックすると、ライブ フィードが再開されます。
 
-![サンプリングされたライブ エラー](./media/live-stream/live-metrics-eventdetail.png)
+![サンプリングされたライブ エラー](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>サーバー インスタンスによるフィルター処理
 
-特定のサーバー ロール インスタンスを監視する場合は、サーバーでフィルター処理できます。
+特定のサーバー ロール インスタンスを監視する場合は、サーバーでフィルター処理できます。 フィルターを適用するには、" *[サーバー]* " でサーバー名を選択します。
 
-![サンプリングされたライブ エラー](./media/live-stream/live-stream-filter.png)
+![サンプリングされたライブ エラー](./media/live-stream/filter-by-server.png)
 
 ## <a name="secure-the-control-channel"></a>コントロール チャネルの保護
+
+> [!NOTE]
+> 現時点では、コード ベースの監視を使用して認証されたチャネルのみを設定できます。コードなしアタッチを使用してサーバーを認証することはできません。
+
 指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 インストルメンテーション キーに加え、シークレット API キーを使用してチャネルをセキュリティで保護できます。
 ### <a name="create-an-api-key"></a>API キーを作成する
 
-![API キーを作成する](./media/live-stream/live-metrics-apikeycreate.png)
+![[API キー] > [API キーの作成]](./media/live-stream/api-key.png)
+![[API キーの作成] タブ。[SDK コントロール チャネルの認証]、[キーの生成] の順に選択する](./media/live-stream/create-api-key.png)
 
 ### <a name="add-api-key-to-configuration"></a>API キーを構成に追加する
 

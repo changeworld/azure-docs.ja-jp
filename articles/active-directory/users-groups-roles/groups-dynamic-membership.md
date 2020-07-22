@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728369"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -118,7 +118,7 @@ user.department -eq "Sales"
 | streetAddress |任意の文字列値または *null* |(user.streetAddress -eq "value") |
 | surname |任意の文字列値または *null* |(user.surname -eq "value") |
 | telephoneNumber |任意の文字列値または *null* |(user.telephoneNumber -eq "value") |
-| usageLocation |2 文字の国コード |(user.usageLocation -eq "US") |
+| usageLocation |2 文字の国または地域コード |(user.usageLocation -eq "US") |
 | userPrincipalName |任意の文字列値 |(user.userPrincipalName -eq "alias@domain") |
 | userType |member guest *null* |(user.userType -eq "Member") |
 
@@ -384,7 +384,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
- enrollmentProfileName | Apple Device Enrollment Profile、デバイス登録 - 企業デバイス ID (Android - キオスク)、または Windows Autopilot プロファイル名 | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Apple Device Enrollment プロファイル名、Android Enterprise 企業所有専用 Enrollment プロファイル名、または Windows Autopilot プロファイル名 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

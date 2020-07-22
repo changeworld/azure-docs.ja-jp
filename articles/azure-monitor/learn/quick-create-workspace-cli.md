@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2019
-ms.openlocfilehash: 0e91bc9c994a48b335c3ccb7373a9f4f5dc6d1e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 11fb2b7785540f24b0a8318428da01a4edd5cb5b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605084"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860632"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
@@ -117,6 +117,14 @@ CLI をローカルにインストールして使用することを選択する�
 デプロイが完了するまでに数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
 
 ![デプロイ完了時の結果の例](media/quick-create-workspace-cli/template-output-01.png)
+
+## <a name="troubleshooting"></a>トラブルシューティング
+過去 14 日間に削除され、[論理的な削除状態](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)になっているワークスペースを作成した場合は、ワークスペースの構成に応じて、操作の結果が異なる可能性があります。
+1. 削除されたワークスペースと同じワークスペース名、リソース グループ、サブスクリプション、リージョンを指定した場合は、データ、構成、および接続されたエージェントを含むワークスペースが復旧されます。
+2. 同じワークスペース名を使用していて、リソース グループ、サブスクリプション、またはリージョンが異なる場合は、*ワークスペース名 'workspace-name' が一意ではない*、または*競合している*というエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
+   * ワークスペースを[回復します](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
+   * ワークスペースを[完全に削除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)します
+   * 同じワークスペース名を使用して新しいワークスペースを作成します
 
 ## <a name="next-steps"></a>次のステップ
 使用できるワークスペースが用意されたので、管理テレメトリの収集の構成、ログ検索の実行によるデータの分析、管理ソリューションの追加による追加データと分析的な考察の提供を行うことができます。  

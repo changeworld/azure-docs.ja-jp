@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7d54fa25bc4ab55e62b8f88a3cf76a5ba1130e55
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374629"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>特殊化されたイメージを使用して VM を作成する 
 
-共有イメージ ギャラリーに格納されている特殊化されたイメージ バージョンから VM を作成します。 一般化されたイメージ バージョンを使用して VM を作成する場合は、[特殊化されたイメージ バージョンからの VM の作成](vm-generalized-image-version-powershell.md)に関する記事をご覧ください。
+共有イメージ ギャラリーに格納されている特殊化されたイメージ バージョンから VM を作成します。 一般化されたイメージ バージョンを使用して VM を作成する場合は、「[一般化されたイメージを使用して VM を作成する](vm-generalized-image-version-powershell.md)」を参照してください。
 
 特殊化されたイメージ バージョンが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットの使用。 
 

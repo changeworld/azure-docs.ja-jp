@@ -4,12 +4,13 @@ description: Azure portal を使用して、仮想ノードを使用する Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7fa547ca8a3907669c9e7671b11fe3a6307d97f4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: references_regions
+ms.openlocfilehash: 277bdc19635231628cea8c308b30c57b129dc364
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773425"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250704"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -58,7 +59,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * 米国西部 2 (westus2)
 
 ## <a name="known-limitations"></a>既知の制限事項
-仮想ノードの機能は、ACI の機能セットに大きく依存します。 次のシナリオは、仮想ノードではまだサポートされていません
+仮想ノードの機能は、ACI の機能セットに大きく依存します。 [Azure Container Instances のクォータと制限](../container-instances/container-instances-quotas.md)に加えて、次のシナリオは仮想ノードではまだサポートされていません。
 
 * サービス プリンシパルを使用した ACR イメージのプル。 [対処法](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry)は、[Kubernetes シークレット](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)を使用することです
 * [仮想ネットワークの制限事項](../container-instances/container-instances-vnet.md) (VNet ピアリング、Kubernetes ネットワーク ポリシー、およびネットワーク セキュリティ グループを使用したインターネットへの送信トラフィックなど)。
@@ -66,7 +67,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * [ホストのエイリアス](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI の exec の[引数](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) ではポッドは仮想ノードにデプロイされません
-* 仮想ノードでは、Linux ポッドのスケジュール設定がサポートされています。 オープンソースの [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) プロバイダーを手動でインストールして、Windows Server のコンテナーを ACI にスケジュールすることができます。 
+* 仮想ノードでは、Linux ポッドのスケジュール設定がサポートされています。 オープンソースの [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) プロバイダーを手動でインストールして、Windows Server のコンテナーを ACI にスケジュールすることができます。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -234,7 +235,7 @@ curl -L http://10.241.0.4
 [acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
-[aks-network]: ./networking-overview.md
+[aks-network]: ./configure-azure-cni.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md

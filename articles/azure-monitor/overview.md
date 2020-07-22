@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: dbace6b93e07571693b221bb3d2a947010b1e476
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9a5c03664205676d53c083bddcfa6833ace641d2
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799997"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457152"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -32,7 +32,7 @@ Azure Monitor でできることの例を次に示します。
 
 ## <a name="overview"></a>概要
 
-次の図は、Azure Monitor の概要を示します。 図の中央には、Azure Monitor が使用するデータの 2 つの基本的な型であるメトリックとログを格納するデータ ストアがあります。 左側には、これらの[データ ストア](platform/data-platform.md)に投入される[監視データのソース](platform/data-sources.md)があります。 右側には、Azure Monitor が収集したデータを使って実行するさまざまな機能があります。たとえば、分析、アラート、および外部システムへのストリーミングなどです。
+次の図は、Azure Monitor の概要を示します。 図の中央にあるデータ ストアには、Azure Monitor で使用される 2 つの基本的なデータの種類であるメトリックとログを格納します。 左側には、これらの[データ ストア](platform/data-platform.md)に投入される[監視データのソース](platform/data-sources.md)があります。 右側には、Azure Monitor が収集したデータを使って実行するさまざまな機能があります。たとえば、分析、アラート、および外部システムへのストリーミングなどです。
 
 ![Azure Monitor の概要](media/overview/overview.png)
 

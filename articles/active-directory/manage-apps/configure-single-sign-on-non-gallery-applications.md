@@ -2,22 +2,22 @@
 title: SAML シングル サインオン - 非ギャラリー アプリケーション - Microsoft ID プラットフォーム | Microsoft Docs
 description: Microsoft ID プラットフォーム (Azure AD) の非ギャラリー アプリケーションへのシングル サインオン (SSO) を構成する
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
-ms.date: 07/19/2019
-ms.author: celested
+ms.date: 06/08/2020
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cee2b9a0ea32a3b331849263c8a97f55930542d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224927"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024233"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "79224927"
 > [!NOTE]
 > ギャラリー アプリを追加しますか? 詳細な設定手順は、[SaaS アプリのチュートリアルの一覧](../saas-apps/tutorial-list.md)で探してください。
 
-"コードの記述なしで" ギャラリー以外のアプリケーションの SAML シングル サインオンを構成するには、サブスクリプションと Azure AD Premium ライセンスを持っており、アプリケーションが SAML 2.0 をサポートしている必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
+"コードの記述なしで" ギャラリー以外のアプリケーションの SAML シングル サインオンを構成するには、Azure AD サブスクリプションを持っており、アプリケーションが SAML 2.0 をサポートしている必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -42,11 +42,13 @@ ms.locfileid: "79224927"
 
 3. **[管理]** セクションの **[シングル サインオン]** を選択します。 
 
+   - **[シングル サインオン]** オプションが表示されないシナリオがいくつかあることに注意してください。 たとえば、アプリケーションが**アプリの登録**を使用して登録されている場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録**を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、(https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) を参照してください。 SSO 標準の詳細については、(https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform) を参照してください。 ナビゲーションに **[シングル サインオン]** が表示されないその他のシナリオには、アプリケーションが別のテナントでホストされている場合や、アカウントに必要なアクセス許可 (グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者) がない場合などがあります。 アクセス許可によっては、 **[シングル サインオン]** を開くことができるが、保存できないシナリオが発生する場合もあります。 Azure AD の管理者ロールの詳細については、(https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) を参照してください。
+
 4. **[SAML]** を選択します。 **[SAML によるシングル サインオンのセットアップ - プレビュー]** ページが表示されます。
 
    ![手順 1. [基本的な SAML 構成] を編集する](media/configure-single-sign-on-non-gallery-applications/step-one-basic-saml-config.png)
 
-5. 基本的な SAML 構成オプションを編集するには、**[基本的な SAML 構成]** セクションの右上隅にある **[編集]** アイコン (鉛筆) を選択します。
+5. 基本的な SAML 構成オプションを編集するには、 **[基本的な SAML 構成]** セクションの右上隅にある **[編集]** アイコン (鉛筆) を選択します。
 
 1. 次の設定を入力します。 これらの値は、アプリケーション ベンダーから取得する必要があります。 値を手動で入力するか、メタデータ ファイルをアップロードしてフィールドの値を抽出できます。
 
@@ -70,9 +72,9 @@ ms.locfileid: "79224927"
 
 2. **[名前識別子の値]** を確認します。 既定値は *user.principalname* です。 アプリケーション内の各ユーザーは、ユーザー識別子によって一意に識別されます。 たとえば、メール アドレスがユーザー名と一意識別子を兼ねている場合、この値を *user.mail* に設定します。
 
-3. **[名前識別子の値]** を変更するには、**[名前識別子の値]** フィールドの **[編集]** アイコン (鉛筆) を選択します。 必要に応じて、識別子の形式とソースに適切な変更を加えます。 詳細については、「[NameID の編集](../develop/active-directory-saml-claims-customization.md#editing-nameid)」を参照してください。 完了したら、変更を保存します。 
+3. **[名前識別子の値]** を変更するには、 **[名前識別子の値]** フィールドの **[編集]** アイコン (鉛筆) を選択します。 必要に応じて、識別子の形式とソースに適切な変更を加えます。 詳細については、「[NameID の編集](../develop/active-directory-saml-claims-customization.md#editing-nameid)」を参照してください。 完了したら、変更を保存します。 
  
-4. グループ要求を構成するには、**[要求で返されるグループ]** フィールドの **[編集]** アイコンを選択します。 詳細については、[グループ要求の構成](../hybrid/how-to-connect-fed-group-claims.md)に関するページを参照してください。
+4. グループ要求を構成するには、 **[要求で返されるグループ]** フィールドの **[編集]** アイコンを選択します。 詳細については、[グループ要求の構成](../hybrid/how-to-connect-fed-group-claims.md)に関するページを参照してください。
 
 5. 要求を追加するには、ページの上部にある **[新しいクレームの追加]** を選択します。 **[名前]** を入力し、適切なソースを選択します。 **[属性]** ソースを選択した場合、使用する**ソース属性**を選択する必要があります。 **[翻訳]** ソースを選択した場合、使用する**変換**と**パラメーター 1** を選択する必要があります。 詳細については、「[アプリケーション固有の要求の追加](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims)」を参照してください。 完了したら、変更を保存します。 
 
@@ -104,7 +106,7 @@ Azure AD の **[SAML によるシングル サインオンのセットアップ]
 
 2. 証明書をダウンロードするには、Base64 形式、未加工の形式、フェデレーション メタデータ XML のいずれかのオプションを選択します。 また、Azure AD では、アプリケーション固有のメタデータにアクセスできる**アプリのフェデレーション メタデータ URL** が `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` 形式で提供されます。
 
-3. 証明書を管理、作成、またはインポートするには、**[SAML 署名証明書]** セクションの右上隅にある **[編集]** アイコン (鉛筆) を選択します。
+3. 証明書を管理、作成、またはインポートするには、 **[SAML 署名証明書]** セクションの右上隅にある **[編集]** アイコン (鉛筆) を選択します。
 
    ![SAML 署名証明書](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
 
@@ -118,13 +120,13 @@ Azure AD の **[SAML によるシングル サインオンのセットアップ]
       - **[署名アルゴリズム]** ドロップダウン リストで、 **[SHA-1]** または **[SHA-256]** を選択します。
    - アクティブな証明書の有効期限が近づいたときに他のユーザーに通知するには、 **[通知の電子メール アドレス]** フィールドにメール アドレスを入力します。
 
-4. 変更を加えた場合は、**[SAML 署名証明書]** セクションの上部にある **[保存]** を選択します。 
+4. 変更を加えた場合は、 **[SAML 署名証明書]** セクションの上部にある **[保存]** を選択します。 
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>手順 4. Azure AD を使用するようにアプリケーションを設定する
 
-**[\<applicationName> のセットアップ]** セクションには、Azure AD が SAML ID プロバイダーとして使用されるようにアプリケーションで構成する必要のある値の一覧が表示されます。 必要な値は、アプリケーションによって異なります。 詳細については、アプリケーションの SAML ドキュメントを参照してください。 ドキュメントを検索するには、 **[\<アプリケーション名> のセットアップ]** の見出しに移動し、 **[ステップ バイ ステップの手順を表示]** を選択します。 ドキュメントが **[サインオンの構成]** ページに表示されます。 そのページでは、**[\<アプリケーション名> のセットアップ]** の見出しで **[ログイン URL]**、**[Azure AD 識別子]**、および **[ログアウト URL]** の値を入力する手順が説明されています。
+**[\<applicationName> のセットアップ]** セクションには、Azure AD が SAML ID プロバイダーとして使用されるようにアプリケーションで構成する必要のある値の一覧が表示されます。 必要な値は、アプリケーションによって異なります。 詳細については、アプリケーションの SAML ドキュメントを参照してください。 ドキュメントを検索するには、 **[\<application name> のセットアップ]** の見出しに移動し、 **[ステップ バイ ステップの手順を表示]** を選択します。 ドキュメントが **[サインオンの構成]** ページに表示されます。 そのページでは、 **[\<application name> のセットアップ]** の見出しで **[ログイン URL]** 、 **[Azure AD 識別子]** 、および **[ログアウト URL]** の値を入力する手順が説明されています。
 
-1. **[\<applicationName> のセットアップ]** セクションまで下にスクロールします。 
+1. **[\<applicationName> のセットアップ]** セクションまで下へスクロールします。 
    
    ![手順 4. アプリケーションをセットアップする](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

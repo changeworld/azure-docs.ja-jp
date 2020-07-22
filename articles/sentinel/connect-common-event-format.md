@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel Preview に CEF データを接続する | Microsoft Docs
-description: Azure Sentinel に CEF データを接続する方法について説明します。
+description: Linux マシンをプロキシとして使用して、Azure Sentinel に共通イベント形式 (CEF) メッセージを送信する外部ソリューションを接続します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563930"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 

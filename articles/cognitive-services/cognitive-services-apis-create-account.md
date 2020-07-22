@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 33200f8807ad28ac160bb377b1107548f4e42d51
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f76b444f737c4deb0fc61953c839c8826f379d5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590810"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207270"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -25,24 +25,30 @@ ms.locfileid: "83590810"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
+* 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>新しい Azure Cognitive Services リソースを作成する
 
 1. リソースを作成します。
 
     #### <a name="multi-service-resource"></a>[マルチサービス リソース](#tab/multiservice)
-    
+
     マルチサービス リソースには、ポータルで **Cognitive Services** という名前が付けられます。 [Cognitive Services リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。
-    
+
     現在、マルチサービス リソースでは次の Cognitive Services にアクセスできます。
-    
-    |                  |                                                      |                    |                               |                  |
-    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Text Analytics   |
-    | Translator  | Bing Search v7 <br>(Web、画像、ニュース、ビデオ、ビジュアル) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
-    | Bing Spell Check |                                                      |                    |                               |                  |
-    
+
+    - Computer Vision
+    - Content Moderator
+    - Face
+    - Language Understanding (LUIS)
+    - Text Analytics
+    - [変換者]
+    - Bing Search v7 <br>(Web、画像、ニュース、ビデオ、ビジュアル)
+    - Bing Custom Search
+    - Bing Entity Search
+    - Bing Autosuggest
+    - Bing Spell Check
+
     #### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
 
     以下のリンクを使用して、利用可能な Cognitive Services のリソースを作成します。

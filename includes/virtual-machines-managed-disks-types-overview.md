@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78262557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84436085"
 ---
 現在、Azure マネージド ディスクには 4 種類のディスクがあり、それぞれの種類は特定の顧客シナリオを対象としています。
 
@@ -26,7 +26,7 @@ ms.locfileid: "78262557"
 |ディスクの種類   |SSD   |SSD   |SSD   |HDD   |
 |シナリオ   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md) やトップ レベルのデータベース (たとえば SQL や Oracle) などの I/O 集約型のワークロードと、その他のトランザクションが多いワークロード。   |運用環境のワークロードやパフォーマンスに影響されやすいワークロード   |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト   |バックアップ、重要ではない、不定期に起こるアクセス   |
 |最大ディスク サイズ   |65,536 ギビバイト (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
-|最大スループット   |2,000 MiB/秒    |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
+|最大スループット   |2,000 MB/秒    |900 MB/秒   |750 MB/秒   |500 MB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-disk"></a>Ultra Disk

@@ -11,27 +11,27 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 04/15/2020
-ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 07/09/2020
+ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747517"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184363"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) のカスタム セットアップには、使用する Azure-SSIS IR のセットアップまたは再構成中に独自の手順を追加するためのインターフェイスが用意されています。 
+Azure Data Factory (ADF) 内の Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) のカスタム セットアップには、使用する Azure-SSIS IR のプロビジョニングまたは再構成中に独自の手順を追加するためのインターフェイスが用意されています。 
 
-カスタム セットアップを使用すると、既定の動作の構成または環境を変更して、たとえば、追加の Windows サービスを開始したり、ファイル共有のアクセス資格情報を永続化したり、強力な暗号化やより安全なネットワーク プロトコル (TLS 1.2) を使用したりすることができます。 また、ご利用の Azure-SSIS IR の各ノード上にアセンブリ、ドライバー、拡張機能などの追加のコンポーネントをインストールすることもできます。
+カスタム セットアップを使用すると、既定の動作の構成または環境を変更して、たとえば、追加の Windows サービスを開始したり、ファイル共有のアクセス資格情報を永続化したり、強力な暗号化やより安全なネットワーク プロトコル (TLS 1.2) を使用したりすることができます。 また、ご利用の Azure-SSIS IR の各ノード上にアセンブリ、ドライバー、拡張機能などの追加のカスタム/サード パーティ コンポーネントをインストールすることもできます。 組み込みコンポーネントとプレインストール コンポーネントの詳細については、[Azure-SSIS IR の組み込みコンポーネントとプレインストール コンポーネント](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime)に関するページを参照してください。
 
 ご利用の Azure-SSIS IR では、次の 2 つの方法のいずれかでカスタム セットアップを行うことができます。 
-* **スクリプトを使用しない高速カスタム セットアップ**: いくつかの一般的なシステム構成および Windows コマンドを実行したり、スクリプトを使用せずにいくつかの一般的なまたは推奨される追加コンポーネントをインストールしたりします。
 * **スクリプトを使用した標準カスタム セットアップ**: スクリプトとその関連ファイルを準備し、それらをすべてまとめてご利用の Azure ストレージ アカウントの BLOB コンテナーにアップロードします。 その後、Azure SSIS IR を設定または再構成するときに、ご利用のコンテナーに対して Shared Access Signature (SAS) の Uniform Resource Identifier (URI) を指定します。 ご利用の Azure SSIS IR の各ノードでは、その後、スクリプトとその関連ファイルがご利用のコンテナーからダウンロードされ、昇格されたアクセス許可を使用してご自分のカスタム セットアップが実行されます。 そのカスタム セットアップが完了すると、各ノードによって、実行の標準出力およびその他のログがご利用にコンテナーにアップロードされます。
+* **スクリプトを使用しない高速カスタム セットアップ**: いくつかの一般的なシステム構成および Windows コマンドを実行したり、スクリプトを使用せずにいくつかの一般的なまたは推奨される追加コンポーネントをインストールしたりします。
 
-高速および標準のカスタム セットアップでは、無料のライセンスなしのコンポーネントおよび有料のライセンスありコンポーネントの両方をインストールできます。 お客様が独立ソフトウェア ベンダー (ISV) である場合は、[Azure SSIS IR の有料またはライセンスありのコンポーネントの開発](how-to-develop-azure-ssis-ir-licensed-components.md)に関するドキュメントを参照してください。
+標準および高速のカスタム セットアップでは、無料のライセンスなしのコンポーネントおよび有料のライセンスありコンポーネントの両方をインストールできます。 お客様が独立ソフトウェア ベンダー (ISV) である場合は、[Azure SSIS IR の有料またはライセンスありのコンポーネントの開発](how-to-develop-azure-ssis-ir-licensed-components.md)に関するドキュメントをご覧ください。
 
 > [!IMPORTANT]
 > 将来の機能強化の恩恵を受けるには、カスタム セットアップのある Azure-SSIS IR に v3 以降の一連のノードを使用することをお勧めします。
@@ -62,7 +62,11 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
 ## <a name="instructions"></a>Instructions
 
-1. PowerShell を使用して Azure-SSIS IR を設定または再構成する場合は、[Azure PowerShell](/powershell/azure/install-az-ps) をダウンロードしてインストールします。 高速カスタム セットアップの場合は、手順 4 に進みます。
+ADF UI でカスタム セットアップを使用して Azure-SSIS IR をプロビジョニングまたは再構成できます。 PowerShell を使用して同じ操作を実行する場合は、[Azure PowerShell](/powershell/azure/install-az-ps) をダウンロードしてインストールします。
+
+### <a name="standard-custom-setup"></a>標準カスタム セットアップ
+
+標準カスタム セットアップを使用して Azure-SSIS IR をプロビジョニングまたは再構成するには、次の手順を実行します。
 
 1. カスタム セットアップ スクリプトとその関連ファイル (たとえば、.bat、.cmd、.exe、.dll、.msi、または .ps1 ファイル) を準備します。
 
@@ -70,7 +74,7 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
    * スクリプトを確実にサイレント実行できるようにするには、まずご利用のローカル コンピューターでテストすることをお勧めします。  
    * 他のツール (*msiexec* など) によって生成された追加のログが、ご利用のコンテナーにアップロードされるようにする場合は、定義済みの環境変数 `CUSTOM_SETUP_SCRIPT_LOG_DIR` をご自分のスクリプトのログ フォルダーとして指定します (たとえば、*msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log*)。
 
-1. [Azure Storage Explorer](https://storageexplorer.com/) をダウンロードし、インストールして、開きます。 そのためには次を行います。
+1. [Azure Storage Explorer](https://storageexplorer.com/) をダウンロードし、インストールして、開きます。
 
    a. **[(Local and Attached)]\((ローカルで接続済み)\)** で、 **[ストレージ アカウント]** を右クリックして、 **[Azure Storage へ接続]** を選択します。
 
@@ -107,11 +111,17 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
       ![Shared Access Signature をコピーして保存する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-1. データ ファクトリ UI を使用して Azure-SSIS IR を設定または再構成する場合、 **[Integration runtime setup]\(統合ランタイムの設定)** ウィンドウの **[詳細設定]** セクションにある **[Customize your Azure-SSIS Integration Runtime with additional system configurations/component installations]\(追加のシステム構成およびコンポーネントのインストールで Azure-SSIS 統合ランタイムをカスタマイズする\)** チェックボックスをオンにすれば、カスタム セットアップを追加または削除することができます。 
+1. ADF UI で Azure-SSIS IR をプロビジョニングまたは再構成する場合は、 **[詳細設定]** ページの **[統合ランタイムのセットアップ]** ウィンドウにある **[Customize your Azure-SSIS Integration Runtime with additional system configurations/component installations]\(追加のシステム構成およびコンポーネントのインストールで Azure-SSIS 統合ラインタイムをカスタマイズする\)** チェックボックスをオンにして、 **[Custom setup container SAS URI]\(カスタム セットアップ コンテナー SAS URI\)** フィールドにコンテナーの SAS URI を入力します。
 
-   標準カスタム セットアップを追加する場合は、 **[Custom setup container SAS URI]\(カスタム セットアップ コンテナー SAS URI\)** ボックスに、ご利用のコンテナーの SAS URI を入力します。 
-   
-   高速カスタム セットアップを追加する場合は、 **[新規]** を選択して **[Add express custom setup]\(高速カスタム セットアップの追加\)** ウィンドウを開いてから、 **[Express custom setup type]\(高速カスタム セットアップの種類\)** ドロップダウン リストで種類を選択します。
+   ![カスタム セットアップでの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+
+### <a name="express-custom-setup"></a>高速カスタム セットアップ
+
+高速カスタム セットアップを使用して Azure-SSIS IR をプロビジョニングまたは再構成するには、次の手順を実行します。
+
+1. ADF UI で Azure-SSIS IR をプロビジョニングまたは再構成する場合は、 **[詳細設定]** ページの **[統合ランタイムのセットアップ]** ウィンドウにある **[Customize your Azure-SSIS Integration Runtime with additional system configurations/component installations]\(追加のシステム構成およびコンポーネントのインストールで Azure-SSIS 統合ラインタイムをカスタマイズする\)** チェックボックスをオンにします。 
+
+1. **[新規]** を選択して **[Add express custom setup]\(高速カスタム セットアップの追加\)** ウィンドウを開いてから、 **[Express custom setup type]\(高速カスタム セットアップの種類\)** ドロップダウン リストで種類を選択します。
 
    * **[Run cmdkey command]\(cmdkey コマンドの実行\)** という種類を選択した場合は、 **[/Add]** 、 **[/User]** 、 **[/Pass]** の各ボックスに、ターゲットのコンピューター名またはドメイン名、アカウント名またはユーザー名、アカウント キーまたはパスワードを入力することにより、ご利用のファイル共有または Azure Files 共有のアクセス資格情報を Azure-SSIS IR で保持できます。 これは、ローカル コンピューターで Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) コマンドを実行する場合と似ています。
    
@@ -131,12 +141,16 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
      * **Theobald Software の Xtract IS** コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の Theobald Software から、購入した製品ライセンス ファイルを **[ライセンス ファイル]** ボックスにドラッグ アンド ドロップまたはアップロードして SAP システム (ERP、S/4HANA、BW) の [Xtract IS](https://theobald-software.com/en/xtract-is/) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **6.1.1.3** です。
 
-   追加した高速カスタム セットアップは、 **[詳細設定]** セクションに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
+追加された高速カスタム セットアップは、 **[詳細設定]** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 
-   ![カスタム セットアップでの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+### <a name="azure-powershell"></a>Azure PowerShell
 
-1. PowerShell を使用して Azure-SSIS IR を設定または再構成する場合は、Azure-SSIS IR を開始する前に `Set-AzDataFactoryV2IntegrationRuntime` コマンドレットを実行して、カスタム セットアップを追加または削除できます。
-   
+Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR をプロビジョニングまたは再構成するには、次の手順を実行します。
+
+1. Azure-SSIS IR が既に開始または実行している場合は、最初に停止します。
+
+1. この後、Azure-SSIS IR を開始する前に `Set-AzDataFactoryV2IntegrationRuntime` コマンドレットを実行して、カスタム セットアップを追加したり削除したりできます。
+
    ```powershell
    $ResourceGroupName = "[your Azure resource group name]"
    $DataFactoryName = "[your data factory name]"
@@ -214,10 +228,14 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
        -Name $AzureSSISName `
        -Force
    ```
-   
-   標準カスタム セットアップが完了し、Azure SSIS IR が開始した後、ご利用のストレージ コンテナーの *main.cmd.log* フォルダー内で *main.cmd* の標準出力とその他の実行ログを見つけることができます。
 
-1. 標準カスタム セットアップのサンプルをいくつか確認するには、Azure Storage Explorer を使用して、パブリック プレビュー コンテナーに接続します。
+1. 標準カスタム セットアップが完了し、Azure SSIS IR が開始した後、ご利用のコンテナーの *main.cmd.log* フォルダー内で *main.cmd* の標準出力とその他の実行ログを見つけることができます。
+
+### <a name="standard-custom-setup-samples"></a>標準カスタム セットアップのサンプル
+
+標準カスタム セットアップのサンプルを表示して再利用するには、次の手順を実行します。
+
+1. Azure Storage Explorer を使用して、パブリック プレビュー コンテナーに接続します。
 
    a. **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、 **[ストレージ アカウント]** を右クリックし、 **[Connect to Azure storage]\(Azure Storage へ接続\)** を選択し、 **[Use a connection string or a shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択して、 **[次へ]** を選択します。
 
@@ -295,13 +313,15 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
         ![ユーザー シナリオ フォルダー内のフォルダー](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
-   f. これらのカスタム セットアップのサンプルを試行するには、選択したフォルダーからご利用のコンテナーへ内容をコピーします。
+   f. これらの標準カスタム セットアップのサンプルを再利用するには、選択したフォルダーの内容をご利用のコンテナーへコピーします。
+
+1. ADF UI で Azure-SSIS IR をプロビジョニングまたは再構成する場合は、 **[詳細設定]** ページの **[統合ランタイムのセットアップ]** ウィンドウにある **[Customize your Azure-SSIS Integration Runtime with additional system configurations/component installations]\(追加のシステム構成およびコンポーネントのインストールで Azure-SSIS 統合ラインタイムをカスタマイズする\)** チェックボックスをオンにして、 **[Custom setup container SAS URI]\(カスタム セットアップ コンテナー SAS URI\)** フィールドにコンテナーの SAS URI を入力します。
    
-      データ ファクトリ UI を使用して Azure-SSIS IR を設定または再構成する場合は、 **[詳細設定]** セクションの **[Customize your Azure-SSIS Integration Runtime with additional system configurations/component installations]\(追加のシステム構成およびコンポーネントのインストールで Azure-SSIS 統合ラインタイムをカスタマイズする\)** チェックボックスをオンにして、 **[Custom setup container SAS URI]\(カスタム セットアップ コンテナー SAS URI\)** ボックスにコンテナーの SAS URI を入力します。
-   
-      PowerShell を使用して Azure-SSIS IR を設定または再構成する場合は、ご利用のコンテナーの SAS URI を `SetupScriptContainerSasUri` パラメーターの値として設定して、`Set-AzDataFactoryV2IntegrationRuntime` コマンドレットを実行します。
+1. Azure PowerShell を使って Azure SSIS IR をプロビジョニングまたは再構成する場合、Azure SSIS IR が既に開始/実行している場合はこれを停止し、コンテナーの SAS URI を `SetupScriptContainerSasUri` パラメーターの値として設定して `Set-AzDataFactoryV2IntegrationRuntime` コマンドレットを実行した後に、Azure SSIS IR を起動します。
+
+1. 標準カスタム セットアップが完了し、Azure SSIS IR が開始した後、ご利用のコンテナーの *main.cmd.log* フォルダー内で *main.cmd* の標準出力とその他の実行ログを見つけることができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure-SSIS Integration Runtime の Enterprise Edition を設定する](how-to-configure-azure-ssis-ir-enterprise-edition.md)
-- [Azure-SSIS Integration Runtime 用の有料またはライセンスありのカスタム コンポーネントを開発する](how-to-develop-azure-ssis-ir-licensed-components.md)
+- [Azure-SSIS IR の Enterprise Edition のセットアップ](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [Azure-SSIS IR の有料またはライセンス付きコンポーネントの開発](how-to-develop-azure-ssis-ir-licensed-components.md)

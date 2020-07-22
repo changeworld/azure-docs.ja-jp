@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75864368"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204159"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。
@@ -55,33 +55,37 @@ ms.locfileid: "75864368"
 
 ExpressRoute 回線は、リソースの作成時に次の状態を報告します。
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **接続プロバイダーが回線にプロビジョニングしているとき**
 
 ExpressRoute 回線は、接続プロバイダーが回線のプロビジョニングを処理している間に次の状態を報告します。
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **接続プロバイダーがプロビジョニングを完了したとき**
 
 ExpressRoute 回線では、接続プロバイダーによって回線が正常にプロビジョニングされると、次の状態が報告されます。
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **接続プロバイダーが回線をプロビジョニング解除しているとき**
 
 ExpressRoute 回線をプロビジョニング解除する必要がある場合、サービス プロバイダーがプロビジョニング解除プロセスを完了したときに、回線は次の状態を報告します。
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 必要に応じて再度有効にしたり、PowerShell コマンドレットを実行して回線を削除したりできます。  
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066759"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
@@ -64,7 +64,7 @@ initrd または initramfs イメージの再構築のためのメカニズム�
 ### <a name="resizing-vhds"></a>VHD のサイズ変更
 Azure の VHD イメージは、1 MB に整列された仮想サイズが必要です。  通常、HYPER-V を使用して作成された VHD は正しく整列されています。  VHD が正しく整列されていない場合は、VHD からイメージを作成しようとすると、次のようなエラー メッセージが表示される場合があります。
 
-* The VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. (VHD http:<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd にサポートされていない仮想サイズ 21475270656 バイトがあります。) The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
+* VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd の仮想サイズ (21475270656 バイト) がサポートされていません。 The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
 
 この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 

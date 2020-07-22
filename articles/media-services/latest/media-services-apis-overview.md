@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515065"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API を使用して開発する
 
@@ -41,7 +41,7 @@ Media Services API では、REST API 要求を行うユーザーまたはアプ�
 
 Azure AD アプリとサービス プリンシパルを作成する場合は、アプリを専用のテナントに置く必要があります。 アプリを作成した後、アプリの**共同作成者**または**所有者**ロールのアクセス権を、Media Services アカウントに付与します。
 
-Azure AD アプリを作成するためのアクセス許可を自分が持っているかどうかわからない場合は、「[必要なアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」を参照してください。
+Azure AD アプリを作成するためのアクセス許可を自分が持っているかどうかわからない場合は、「[必要なアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)」を参照してください。
 
 次の図の番号は、要求のフローを時系列で表したものです。
 
@@ -54,7 +54,7 @@ Azure AD アプリを作成するためのアクセス許可を自分が持っ�
    * REST Media Services のリソース URI。
    * Azure AD アプリの値: クライアント ID とクライアント シークレット。
 
-   必要な値をすべて取得するには、「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」をご覧ください。
+   必要な値をすべて取得するには、[Azure Media Services API にアクセスする](access-api-cli-how-to.md)方法に関する記事を参照してください。
 
 2. Azure AD アクセス トークンが中間層アプリに送信されます。
 4. 中間層アプリが、Azure AD トークンを使用して要求を Azure Media REST API に送信します。
@@ -148,7 +148,7 @@ AMSE はオープン ソース プロジェクトであり、サポートはコ�
 
 ## <a name="see-also"></a>関連項目
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+必要な値をすべて取得するには、[Azure Media Services API にアクセスする](access-api-cli-how-to.md)方法に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

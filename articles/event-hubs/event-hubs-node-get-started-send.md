@@ -1,19 +1,14 @@
 ---
 title: JavaScript を使用して Azure Event Hubs との間でイベントを送受信する (レガシ)
 description: この記事では、以前の azure/event-hubs バージョン 2 パッケージを使用して、Azure Event Hubs との間でイベントを送受信する JavaScript アプリケーションを作成する方法について説明します。
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 0a4b76bd1febca864cab6060fbdbd96dd0061cff
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 548276b4bcbdd514c37a19375154923ad9f3f9a4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162618"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314511"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>クイック スタート:JavaScript を使用して Azure Event Hubs との間でイベントを送受信する (@azure/event-hubs バージョン 2)
 このクイックスタートでは、azure/event-hubs バージョン 2 JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する JavaScript アプリケーションを作成する方法を示します。 

@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437504"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134009"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>セカンダリのオンプレミスのサイトに対して Hyper-V VM のディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
-この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されるオンプレミスの Hyper-V VM で、セカンダリ サイトに対するディザスター リカバリーを設定する方法について説明します。 この記事では、次のことについて説明します。
+この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されるオンプレミスの Hyper-V VM で、セカンダリ サイトに対するディザスター リカバリーを設定する方法について説明します。 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * オンプレミスの VMM サーバーと Hyper-V ホストを準備する
@@ -48,10 +48,10 @@ ms.locfileid: "80437504"
 
 次のように VMM を準備します。
 
-1. ソースおよびターゲット VMM サーバー上に [VMM 論理ネットワーク](https://docs.microsoft.com/system-center/vmm/network-logical)があることを確認します。
+1. ソースおよびターゲット VMM サーバー上に [VMM 論理ネットワーク](/system-center/vmm/network-logical)があることを確認します。
     - ソース サーバー上の論理ネットワークは、Hyper-V ホストが配置されているソース クラウドと関連付けられている必要があります。
     - ターゲット サーバーの論理ネットワークは、ターゲット クラウドと関連付けられている必要があります。
-1. ソースおよびターゲット VMM サーバー上に [VM ネットワーク](https://docs.microsoft.com/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
+1. ソースおよびターゲット VMM サーバー上に [VM ネットワーク](/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
 2. ソース Hyper-V ホスト上の VM をソース VM ネットワークに接続します。 
 
 

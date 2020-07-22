@@ -4,11 +4,11 @@ description: Azure Active Directory ID でのサインイン、サービス プ�
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712039"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure コンテナー レジストリでの認証
 

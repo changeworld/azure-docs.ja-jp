@@ -46,6 +46,8 @@
           href: test-createuidefinition.md
         - name: Just-In-Time アクセスを要求する
           href: request-just-in-time-access.md
+        - name: 既存の仮想ネットワークを使用する
+          href: existing-vnet-integration.md
         - name: マネージド リソースの更新
           href: update-managed-resources.md
         - name: ポータルを使用したアプリケーション定義の発行

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d03a201711488b1c0a3f4f2bab0981f83374a5d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806662"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085584"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .NET SDK の使用
 
@@ -25,7 +25,9 @@ C# および .NET アプリケーションの場合、[.NET 用 Microsoft HBase 
 
 HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio の **NuGet パッケージ マネージャー コンソール**から、次のコマンドを使用してインストールできます。
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>新しい HBaseClient オブジェクトのインスタンス化
 

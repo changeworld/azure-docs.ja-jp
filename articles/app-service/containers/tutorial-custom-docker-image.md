@@ -7,13 +7,13 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085860"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906838"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>チュートリアル:カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 
@@ -139,7 +139,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 </pre>
 
-ローカルのターミナル ウィンドウから、次の例に示すように `docker login` コマンドを使用して Azure Container Registry にサインインします。 *\<azure-container-registry-name>* と *\<registry-username>* を、自分のレジストリの値に置き換えます。 入力を求められたら、前の手順のいずれかのパスワードを入力します。
+ローカルのターミナル ウィンドウから、次の例に示すように `docker login` コマンドを使用して Azure Container Registry にサインインします。 *\<azure-container-registry-name>* と *\<registry-username>* は、レジストリの値に置き換えてください。 入力を求められたら、前の手順のいずれかのパスワードを入力します。
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -180,7 +180,7 @@ az acr repository list -n <azure-container-registry-name>
 
 ### <a name="create-web-app"></a>Web アプリの作成
 
-Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app-name>_ を一意のアプリ名に置き換え、 _\<azure-container-registry-name>_ を自分のレジストリ名に置き換えます。
+Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app-name>_ はアプリの一意の名前、 _\<azure-container-registry-name>_ はレジストリの名前に、それぞれ置き換えてください。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -205,7 +205,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Web アプリにレジストリの資格情報を構成する
 
-App Service でプライベート イメージをプルするには、レジストリとイメージに関する情報が必要です。 Cloud Shell で、[`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用してそれらを提供します。 *\<app-name>* 、 *\<azure-container-registry-name>* 、 _\<registry-username>_ 、および _\<password>_ を置き換えます。
+App Service でプライベート イメージをプルするには、レジストリとイメージに関する情報が必要です。 Cloud Shell で、[`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用してそれらを提供します。 *\<app-name>* 、 *\<azure-container-registry-name>* 、 _\<registry-username>_ 、 _\<password>_ は、適宜置き換えてください。
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -236,23 +236,33 @@ Web アプリの動作を確認するには、これを参照します (`http://
 
 ## <a name="change-web-app-and-redeploy"></a>Web アプリを変更して再デプロイする
 
-ローカルの Git リポジトリで、app/templates/app/index.html を開きます。 最初の HTML 要素を見つけて、それを次のように変更します。
+ローカルの Git リポジトリで、*app/templates/app/index.html* を開きます。 最初の HTML 要素を次のコードに一致するように変更します。
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-Python ファイルを変更し、保存した後で、新しい Docker イメージをリビルドし、プッシュする必要があります。 次に、変更を反映するために Web アプリを再起動します。 このチュートリアルで前に使用したのと同じコマンドを使用します。 「[Docker ファイルからイメージを作成する](#build-the-image-from-the-docker-file)」と「[Azure Container Registry へのイメージのプッシュ](#push-image-to-azure-container-registry)」を参照してください。 「[Web アプリをテストする](#test-the-web-app)」の手順に従って、Web アプリをテストします。
+変更を保存したら、このチュートリアルの前半で使用したのと同じコマンドを使用して、新しい Docker イメージを再構築してプッシュします。 「[Docker ファイルからイメージを作成する](#build-the-image-from-the-docker-file)」と「[Azure Container Registry へのイメージのプッシュ](#push-image-to-azure-container-registry)」を参照してください。
+
+新しいイメージをプッシュした後、次のコマンドを使用して、変更を有効にするために Web アプリを再起動します。
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+`<app_name>` を、前に使用した特定の名前に置き換えます。
+
+アプリが再起動したら、「[Web アプリをテストする](#test-the-web-app)」の手順に従ってアプリをテストします。
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>SSH 接続を有効にする
 

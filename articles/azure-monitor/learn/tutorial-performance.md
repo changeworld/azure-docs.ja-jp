@@ -5,14 +5,14 @@ ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/13/2019
+ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223679"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783148"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -61,7 +61,7 @@ Application Insights は、アプリケーションのさまざまな操作に�
     ![操作のエンドツーエンドの詳細](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  **プロファイラー**を使用すると、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間が表示され、詳細情報とコード レベルの診断を確認できます。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、 **[プロファイラーのトレース]** をクリックします。
+6.  [**プロファイラー**](../../azure-monitor/app/profiler-overview.md)を使用すると、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間が表示され、詳細情報とコード レベルの診断を確認できます。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、 **[プロファイラーのトレース]** をクリックします。
 5.  トレースは、各操作の個別のイベントを示すため、操作全体の実行時間の長さの根本原因を診断できます。  上の例の最も実行時間が長い操作をクリックします。
 6.  **[ホット パス]** をクリックして、操作の実行時間を長くしているイベントの特定のパスを強調表示します。  この例では、最も遅い呼び出しが *FabrikamFiberAzureStorage.GetStorageTableData* メソッドから行われていることがわかります。 ほとんどの時間を費やしている部分は、*CloudTable.CreateIfNotExist* メソッドです。 関数が呼び出されるたびにこのコード行が実行される場合は、不要なネットワークの呼び出しと CPU リソースが消費されます。 コードを修正する最善の方法は、1 回だけ実行する一部のスタートアップ メソッドにこの行を追加することです。
 

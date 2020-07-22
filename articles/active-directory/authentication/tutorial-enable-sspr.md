@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c84aa99608a4fc2ac1842c617cca54e2afc3cdbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201994"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983151"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
@@ -47,7 +47,11 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 ## <a name="enable-self-service-password-reset"></a>セルフサービス パスワード リセットを有効にする
 
-Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択済み]* 、または *[すべて]* から選択できます。 この詳細な機能により、SSPR の登録プロセスとワークフローのテスト対象となるユーザーのサブセットを選択できます。 このプロセスに慣れ、より広範なユーザーに要求を伝えることができるようになったら、追加のユーザー グループを選択して、SSPR を有効にすることができます。 または、Azure AD テナント内のすべてのユーザーに対して SSPR を有効にすることもできます。
+Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択済み]* 、または *[すべて]* から選択できます。 この詳細な機能により、SSPR の登録プロセスとワークフローのテスト対象となるユーザーのサブセットを選択できます。 このプロセスに慣れ、より広範なユーザーに要求を伝えることができるようになったら、ユーザー グループを選択して、SSPR を有効にすることができます。 または、Azure AD テナント内のすべてのユーザーに対して SSPR を有効にすることもできます。
+
+> [!NOTE]
+>
+> 現在、Azure portal を使用して SSPR に対して有効にできる Azure AD グループは 1 つだけです。 SSPR のより広範な展開の一環として、入れ子になったグループがサポートされています。 選択したグループ内のユーザーに適切なライセンスが割り当てられていることを確認してください。 現在、これらのライセンス要件の検証プロセスは用意されていません。
 
 このチュートリアルでは、テスト グループ内の一連のユーザーに対して SSPR を構成します。 次の例では、*SSPR-Test-Group* グループを使用します。 必要に応じて、独自の Azure AD グループを指定してください。
 
@@ -57,8 +61,6 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
 1. 使用する Azure AD グループ (*SSPR-Test-Group* など) を参照して選択し、 *[選択]* を選択します。
 
     [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
-
-    SSPR のより広範な展開の一環として、入れ子になったグループがサポートされています。 選択したグループ内のユーザーに適切なライセンスが割り当てられていることを確認してください。 現在、これらのライセンス要件の検証プロセスは用意されていません。
 
 1. 選択したユーザーに対して SSPR を有効にするには、 **[保存]** を選択します。
 
@@ -77,6 +79,7 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
     * *Email*
     * *携帯電話*
     * *会社電話*
+    * *セキュリティの質問*
 
 1. 認証方法を適用するには、 **[保存]** を選択します。
 

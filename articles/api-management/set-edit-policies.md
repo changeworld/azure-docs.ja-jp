@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9249cb1ac64bf61b405bc3537523cc85bca3f00c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70071700"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252795"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ポリシーの設定または編集方法
 
@@ -41,7 +41,7 @@ ms.locfileid: "70071700"
 7. **[受信処理]** または **[送信処理]** セクションで、**</>** (コード エディター) アイコンを選択します。
 8. 目的のポリシー コードを適切なブロックのいずれかに貼り付けます。
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />
@@ -135,5 +135,5 @@ API スコープは、選択した API の **[すべての操作]** に対して
 次の関連トピックをご覧ください。
 
 + [API を変換する](transform-api.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 + [ポリシーのサンプル](policy-samples.md)

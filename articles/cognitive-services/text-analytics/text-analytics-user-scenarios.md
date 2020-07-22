@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218533"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141817"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
@@ -50,6 +50,13 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 ドキュメントに含まれる個人情報や機密情報を識別するには、名前付きエンティティの認識を使用します。 そのデータを使用してドキュメントを分類または編集し、それらを安全に共有できるようにします。
 
 ![NER を使用して個人情報を検出したりドキュメントを分類、編集したりする方法を説明する画像](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>意見マイニングを実行する
+
+アンケートでの商品やサービスの特定の特徴に関連した意見、カスタマー フィードバック、特徴に関する意見がテキストで保持されているかどうかをグループ化します。 これを使用すると、商品の発売や改良点、マーケティング活動を案内にしたり、商品やサービスのパフォーマンスを明確に示したりするのに役立ちます。 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="ホテルに関する意見の例。":::
 
 ## <a name="next-steps"></a>次のステップ
 

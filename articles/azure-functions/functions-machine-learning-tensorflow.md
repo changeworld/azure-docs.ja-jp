@@ -5,13 +5,13 @@ author: anthonychu
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
-ms.custom: mvc
-ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 89b2fc9ffe05853e34670b6f33ed665240d59457
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255500"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540198"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 
@@ -133,7 +133,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     func new --name classify --template "HTTP trigger"
     ```
 
-    このコマンドによって、関数の名前 (*classify*) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルのコンテンツの詳細については、Python クイックスタートの「[ファイルの内容を確認する](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents)」を参照してください。
+    このコマンドによって、関数の名前 (*classify*) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルのコンテンツの詳細については、Python クイックスタートの「[ファイルの内容を確認する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents)」を参照してください。
 
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する

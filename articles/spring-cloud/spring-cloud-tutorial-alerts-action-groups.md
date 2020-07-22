@@ -6,14 +6,14 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77920078"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142467"
 ---
-# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する
+# <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する方法
 
 Azure Spring Cloud のアラートは、使用可能なストレージ、要求の速度、データ使用状況などの条件に基づくリソースの監視をサポートします。 速度や条件が定義済みの仕様を満たしたときにアラートから通知が送信されます。
 
@@ -22,12 +22,9 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 2. アラート ルールを設定します。 これらのルールによってメトリックのパターンが、ターゲット リソース、メトリック、条件、累計時間などに基づいてアクション グループにバインドされます。
 
 ## <a name="prerequisites"></a>前提条件
-Azure Spring の要件に加え、このチュートリアルでは、次のリソースを利用します。
 
-* デプロイされた Azure Spring Cloud インスタンス。  [クイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従って始めてください。
+このチュートリアルの手順では、Azure Spring の要件に加え、デプロイされた Azure Spring Cloud インスタンスが必要となります。  [クイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従って始めてください。
 
-* 監視する Azure リソース。 この例では、Spring Cloud インスタンスを監視します。
- 
 以降の手順では、Spring Cloud インスタンスの左側のナビゲーション ペインにある **[アラート]** オプションから **[アクション グループ]** と **[アラート]** の両方を初期化します (この手順は、Azure portal の **[Monitor Overview]\(監視の概要\)** ページから開始することもできます)。 
 
 リソース グループから自分の Spring Cloud インスタンスに移動します。 左側のペインで **[アラート]** を選択し、 **[アクションの管理]** を選択します。
@@ -109,7 +106,11 @@ Azure Spring の要件に加え、このチュートリアルでは、次のリ�
    ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)
-* [Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* [アクション グループの SMS アラート動作](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
-* [チュートリアル:Azure Spring Cloud で分散トレースを使用する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+
+このチュートリアルでは、Azure Spring Cloud アプリケーションのアラートとアクション グループを設定する方法について学習しました。 アクション グループの詳細については、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+
+> [!div class="nextstepaction"]
+> [アクション グループの SMS アラート動作](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

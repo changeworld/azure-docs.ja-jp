@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20a2066dc0228fe9c2fee09387d96bf6aafeb32f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 708b243d9db16ee8454b4bc0f5c136b9f4399916
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413197"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MariaDB には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -28,7 +28,7 @@ ms.locfileid: "79531976"
 |---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
-|io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
+|io_consumption_percent|IO の割合|Percent|使用されている IO の割合 (Basic レベルのサーバーには適用されません。)|
 |storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
 |storage_used|使用済みストレージ|バイト|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
 |serverlog_storage_percent|サーバー ログ ストレージの割合|Percent|サーバーの最大サーバー ログ ストレージのうち、使用されているサーバー ログ ストレージの割合。|
@@ -77,7 +77,7 @@ ms.locfileid: "79531976"
 **サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
 
 > [!IMPORTANT]
-> 計画メンテナンスの通知は現在、プレビュー段階です
+> 計画メンテナンスの通知は、現在、米国中西部**を除く**すべてのリージョンでプレビューとして利用できます
 
 ## <a name="next-steps"></a>次のステップ
 

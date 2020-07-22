@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c1af9a532b390b428e74957c455988dfd4df3967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484973"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -18,15 +18,16 @@ ms.locfileid: "82184947"
 - バックアップおよび復元の監査。
 - さまざまな細分性レベルで主要な傾向を特定する。
 
-現在、Azure Backup では、[Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)と [Azure ブック](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
+現在、Azure Backup では、[Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)と [Azure ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-- バックアップ レポートは、Azure VM、Azure VM の SQL、Azure VM の SAP HANA/ASE、Microsoft Azure Recovery Services (MARS) エージェント、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) でサポートされています。 Azure ファイル共有のバックアップのデータは現在、バックアップ レポートには表示されません。
+- バックアップ レポートは、Azure VM、Azure VM の SQL、Azure VM の SAP HANA、Microsoft Azure Recovery Services (MARS) エージェント、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) でサポートされています。 Azure ファイル共有のバックアップの場合は、2020 年 6 月 1 日以降に作成されたすべてのレコードのデータが表示されます。
 - DPM ワークロードの場合、バックアップ レポートは DPM バージョン 5.1.363.0 以降、およびエージェント バージョン 2.0.9127.0 以降でサポートされています。
 - MABS ワークロードの場合、バックアップ レポートは MABS バージョン 13.0.415.0 以降、およびエージェント バージョン 2.0.9170.0 以降でサポートされています。
 - バックアップ レポートは、ユーザーがアクセスできる Log Analytics ワークスペースにデータが送信されている限り、すべてのバックアップ項目、コンテナー、サブスクリプション、およびリージョンにわたって表示できます。 一連のコンテナーのレポートを表示するには、コンテナーがデータを送信している Log Analytics ワークスペースへの閲覧者アクセス権のみが必要です。 個々のコンテナーへのアクセス権は必要ありません。
 - お客様が、ご自分の顧客のサブスクリプションへの委任アクセス権を持つ [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) ユーザーである場合は、Azure Lighthouse でこれらのレポートを使用して、ご利用のすべてのテナントにわたってレポートを表示することができます。
+- 現時点では、データは最大で 100 個の Log Analytics ワークスペースにわたって (複数のテナントにわたって) バックアップ レポートで表示できます。
 - ログ バックアップ ジョブのデータは、現在レポートに表示されません。
 
 ## <a name="get-started"></a>はじめに
@@ -81,6 +82,9 @@ Log Analytics にデータを送信するようにコンテナーを構成した
 
    ![[使用] タブ](./media/backup-azure-configure-backup-reports/usage.png)
 
+> [!NOTE]
+> DPM ワークロードの場合、レポートに表示されている使用量の値が、Recovery Services コンテナーの概要タブに表示されている使用量の集計値と比較してわずかに (DPM サーバーごとに 20 MB ほど) 異なることが、ユーザーから確認できることがあります。この違いは、バックアップ用に登録されているすべての DPM サーバーに、レポート用の成果物として表示されない "メタデータ" データソースが関連付けられているという事実によって説明されます。
+
 - **ジョブ**:このタブを使用して、1 日あたりの失敗したジョブの数やジョブの失敗の主な原因など、ジョブの長期傾向を表示します。 この情報は、集約レベルとバックアップ項目レベルの両方で表示できます。 グリッド内の特定のバックアップ項目を選択して、選択した時間の範囲内のそのバックアップ項目でトリガーされた各ジョブの詳細情報を表示します。
 
    ![[ジョブ] タブ](./media/backup-azure-configure-backup-reports/jobs.png)
@@ -127,7 +131,7 @@ Log Analytics にデータを送信するようにコンテナーを構成した
 
 - レポート作成用の以前の Power BI テンプレート アプリ (Azure ストレージ アカウントのデータをソースとしていました) は、非推奨となる予定です。 レポートを表示するために、Log Analytics へのコンテナーの診断データの送信を開始することをお勧めします。
 
-- * また、ストレージ アカウントまたは LA ワークスペースに診断データを送信する [V1 スキーマ](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema)も、非推奨のパスにあります。 つまり、V1 スキーマに基づいてカスタム クエリまたは自動化を記述した場合は、現在サポートされている V2 スキーマを使用するようにクエリを更新することをお勧めします。
+- また、ストレージ アカウントまたは LA ワークスペースに診断データを送信する [V1 スキーマ](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema)も、非推奨のパスにあります。 つまり、V1 スキーマに基づいてカスタム クエリまたは自動化を記述した場合は、現在サポートされている V2 スキーマを使用するようにクエリを更新することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

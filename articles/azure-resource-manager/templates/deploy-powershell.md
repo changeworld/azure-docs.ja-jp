@@ -2,13 +2,13 @@
 title: PowerShell とテンプレートを使用してリソースをデプロイする
 description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: e595aa8f86a24e59c8e00d24ea8e9dcb0875a8f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/04/2020
+ms.openlocfilehash: af255e0248c029f42c9c2999ae7c0389d60c58fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431842"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -16,39 +16,39 @@ Azure PowerShell と Azure Resource Manager (ARM) テンプレートを使用し
 
 ## <a name="deployment-scope"></a>デプロイのスコープ
 
-リソースグループ、サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 多くの場合、リソース グループをデプロイの対象にします。 より大きなスコープでポリシーとロールの割り当てを適用するには、サブスクリプション、管理グループ、またはテナントのデプロイを使用します。 サブスクリプションにデプロイする際には、リソース グループを作成してそこにリソースをデプロイすることができます。
+リソース グループ、サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 多くの場合、リソース グループをデプロイの対象にします。 より大きなスコープでポリシーとロールの割り当てを適用するには、サブスクリプション、管理グループ、またはテナントのデプロイを使用します。 サブスクリプションにデプロイする際には、リソース グループを作成してそこにリソースをデプロイすることができます。
 
 使用するコマンドは、デプロイのスコープに応じて異なります。
 
-**リソース グループ**にデプロイするには、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用します。
+* **リソース グループ**にデプロイするには、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用します。
 
-```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  ```
 
-**サブスクリプション**にデプロイするには、New-AzResourceGroupDeployment を使用します。
+* **サブスクリプション**にデプロイするには、New-AzResourceGroupDeployment を使用します。
 
-```azurepowershell
-New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
+  サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-**管理グループ**にデプロイするには、[新しい AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)を使用します。
+* **管理グループ**にデプロイするには、[新しい AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)を使用します。
 
-```azurepowershell
-New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
+  管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
 
-**テナント**にデプロイするには、[新しい AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
+* **テナント**にデプロイするには、[新しい AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
 
-```azurepowershell
-New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-テナント レベルでのデプロイの詳細については、「[テナント レベルでリソースを作成する](deploy-to-tenant.md)」を参照してください。
+  テナント レベルでのデプロイの詳細については、「[テナント レベルでリソースを作成する](deploy-to-tenant.md)」を参照してください。
 
 この記事の例では、リソース グループ デプロイを使用します。
 
@@ -92,6 +92,10 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```
 
 前の例では、テンプレートにはパブリックにアクセスできる URI が必要になります。テンプレートに機密データを含めてはいけないため、この方法は多くの場合に利用できます。 機密データ (管理者パスワードなど) を指定する必要がある場合は、セキュリティで保護されたパラメーターとしてその値を渡します。 ただし、テンプレートを一般からアクセス可能にしない場合は、プライベートなストレージ コンテナーに格納することで保護できます。 Shared Access Signature (SAS) トークンを必要とするテンプレートをデプロイする方法については、[SAS トークンを使用したプライベート テンプレートのデプロイ](secure-template-with-sas-token.md)に関するページをご覧ください。 チュートリアルについては、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](template-tutorial-use-key-vault.md)」を参照してください。
+
+## <a name="preview-changes"></a>変更のプレビュー
+
+テンプレートをデプロイする前に、テンプレートが環境に与える変更をプレビューすることができます。 [what-if 操作](template-deploy-what-if.md)を使用して、テンプレートによって必要な変更が行われるかどうかを確認します。 また、what-if はテンプレートのエラーも検証します。
 
 ## <a name="deploy-from-azure-cloud-shell"></a>Azure Cloud Shell からデプロイする
 
@@ -169,35 +173,6 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
-```
-
-## <a name="test-template-deployments"></a>テンプレートのデプロイをテストする
-
-リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment) を使用します。 
-
-```powershell
-Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
-```
-
-エラーが検出されなかった場合は、コマンドが応答なしで終了します。 エラーが検出された場合は、エラー メッセージが返されます。 たとえば、ストレージ アカウント SKU について間違った値を渡した場合は、次のエラーが返されます。
-
-```powershell
-Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType badSku
-
-Code    : InvalidTemplate
-Message : Deployment template validation failed: 'The provided value 'badSku' for the template parameter 'storageAccountType'
-          at line '15' and column '24' is not valid. The parameter value is not part of the allowed value(s):
-          'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.
-Details :
-```
-
-テンプレートに構文エラーがある場合は、テンプレートを解析できなかったことを示すエラー メッセージが返されます。 このメッセージには、解析エラーの行番号と位置が表示されます。
-
-```powershell
-Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
-  ". Path 'variables', line 31, position 3.
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792583"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206156"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -133,7 +133,7 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
 - **暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
 
      ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
+     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "data"
      ```
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-powershell"></a>PowerShell を使用して既存または実行中の Linux VM で暗号化を有効にする
@@ -218,7 +218,7 @@ Linux VM ディスク暗号化テンプレートの構成の詳細について�
  >暗号化の設定の更新中にこのパラメーターを設定すると、実際の暗号化の前に再起動が行われる可能性があります。 その場合、フォーマットしないディスクを fstab ファイルから削除する必要があります。 同様に、暗号化操作を開始する前に、暗号化フォーマットするパーティションを fstab ファイルに追加する必要があります。 
 
 ### <a name="encryptformatall-criteria"></a>EncryptFormatAll 条件
-パーティションが以下の条件を**すべて**満たしている場合に限り、このパラメーターはすべてのパーティションを確認して暗号化します。 
+パーティションが以下の条件を**すべて**満たしている場合に限り、このパラメーターはすべてのパーティションを確認して暗号化します。
 - ルート/OS/ブート パーティションではない
 - まだ暗号化されていない
 - BEK ボリュームではない
@@ -234,7 +234,7 @@ RAID または LVM ボリュームではなく RAID または LVM ボリュー�
 -  **EncryptFormatAll を使用して、実行中の VM を暗号化する:**
 
      ```azurecli-interactive
-     az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --encrypt-format-all
+     az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type "data" --encrypt-format-all
      ```
 
 ### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a>EncryptFormatAll パラメーターを PowerShell コマンドレットで使用する
@@ -251,43 +251,57 @@ $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $KVRGname
 $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
 $KeyVaultResourceId = $KeyVault.ResourceId;
 
-Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -EncryptFormatAll
+Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType "data" -EncryptFormatAll
 ```
 
 
 ### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a>EncryptFormatAll パラメーターを論理ボリューム マネージャー (LVM) で使用する 
 LVM-on-crypt のセットアップをお勧めします。 以下に示すすべての例では、デバイス パスとマウント ポイントをユース ケースに適した値に置き換えます。 このセットアップは次の手順で行うことができます。
 
-- VM を構成するデータ ディスクを追加します。
-- それらのディスクをフォーマットおよびマウントして fstab ファイルに追加します。
+1.  VM を構成するデータ ディスクを追加します。
 
-    1. パーティションの標準を選択し、ドライブ全体にわたるパーティションを作成してから、パーティションをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](troubleshoot-device-names-problems.md)に関する記事を参照してください。
-    
-         ```azurepowershell-interactive
-         parted /dev/disk/azure/scsi1/lun0 mklabel gpt
-         parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
-         
-         mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
-         ```
-    
-    1. ディスクをマウントします。
-         
-         `mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint`
-    
-    1. fstab に追加します。
-         
-        `echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab`
-    
-    1. -EncryptFormatAll を指定して Set-AzVMDiskEncryptionExtension PowerShell コマンドレットを実行し、これらのディスクを暗号化します。
+1. それらのディスクをフォーマットおよびマウントして fstab ファイルに追加します。
 
-       ```azurepowershell-interactive
-       $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
-           
-       Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri  -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data
-       ```
+1. パーティションの標準を選択し、ドライブ全体にわたるパーティションを作成してから、パーティションをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](troubleshoot-device-names-problems.md)に関する記事を参照してください。
+    
+    ```bash
+    parted /dev/disk/azure/scsi1/lun0 mklabel gpt
+    parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
+    
+    mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
+    ```
 
-    1. これらの新しいディスク上に LVM を設定します。 VM の起動が完了した後で、暗号化されたドライブのロックが解除されます。 そのため、LVM のマウントをその後に遅延させる必要があります。
+1. ディスクをマウントします。
 
+    ```bash
+    mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint
+    ````
+    
+    fstab ファイルに追加します。
+
+    ```bash
+    echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
+    ```
+    
+1. -EncryptFormatAll を指定して Azure PowerShell の [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0) コマンドレットを実行し、これらのディスクを暗号化します。
+
+    ```azurepowershell-interactive
+    $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
+    
+    Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data
+    ```
+
+    キー暗号化キー (KEK) を使用する場合は、次のように、KEK の URI とキー コンテナーの ResourceID を -KeyEncryptionKeyUrl パラメーターと -KeyEncryptionKeyVaultId パラメーターにそれぞれ渡します。
+
+    ```azurepowershell-interactive
+    $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
+    $KEKKeyVault = Get-AzKeyVault -VaultName "MyKEKVault" -ResourceGroupName "MySecureGroup"
+    $KEK = Get-AzKeyVaultKey -VaultName "myKEKVault" -KeyName "myKEKName"
+    
+    Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data -KeyEncryptionKeyUrl $$KEK.id -KeyEncryptionKeyVaultId $KEKKeyVault.ResourceId
+    ```
+
+1. これらの新しいディスク上に LVM を設定します。 VM の起動が完了した後で、暗号化されたドライブのロックが解除されます。 そのため、LVM のマウントをその後に遅延させる必要があります。
 
 ## <a name="new-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>お客様が暗号化した VHD と暗号化キーから作成された新しい VM
 このシナリオでは、PowerShell コマンドレットまたは CLI コマンドを使用して、暗号化を有効にすることができます。 
@@ -374,23 +388,7 @@ PowerShell 構文とは異なり、CLI では暗号化を有効にする際に�
 
 
 ## <a name="disable-encryption-for-linux-vms"></a>Linux VM に対して暗号化を無効にする
-Azure PowerShell、Azure CLI、または Resource Manager テンプレートを使用して暗号化を無効にすることができます。 
-
->[!IMPORTANT]
->Linux VM での Azure Disk Encryption による暗号化の無効化は、データ ボリュームに対してのみサポートされます。 OS ボリュームが暗号化されている場合、暗号化の無効化はデータ ボリュームまたは OS ボリュームではサポートされません。  
-
-- **Azure PowerShell を使用してディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType {ALL, DATA, OS}]
-     ```
-
-- **Azure CLI を使用して暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
-     ```
-- **Resource Manager テンプレートを使用して暗号化を無効にする:** 暗号化を無効にするには、「[Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)」 (実行中の Linux VM での暗号化を無効にする) のテンプレートを使用します。
-     1. **[Azure へのデプロイ]** をクリックします。
-     2. サブスクリプション、リソース グループ、場所、VM、法律条項、および契約を選択します。
+[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
@@ -406,12 +404,17 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - 動的ボリューム。
 - エフェメラル OS ディスク。
 - 次のもの (ただし、限定されない) の共有/分散ファイル システムの暗号化:DFS、GFS、DRDB、CephFS。
-- 暗号化された VM を別のサブスクリプションに移動する。
+- 暗号化された VM を別のサブスクリプションまたはリージョンに移動する。
+- 暗号化された VM のイメージまたはスナップショットを作成し、それを使用して追加の VM をデプロイする。
 - カーネル クラッシュ ダンプ (kdump)。
 - Oracle ACFS (ASM クラスター ファイル システム)。
 - Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)。
 - Lsv2 シリーズ VM ([LSv2 シリーズ](../lsv2-series.md))。
 - "マウント ポイントが入れ子になっている"、つまり、1 つのパスに複数のマウント ポイントがある ("/1stmountpoint/data/2stmountpoint" など) VM。
+- OS フォルダーの上にデータ ドライブがマウントされている VM。
+- 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
+- [ユーザーが管理するキーを使用して実行するサーバー側の暗号化](disk-encryption.md)を、ADE によって暗号化された VM に適用する (その逆も同様)。
+- ADE を使用して暗号化された VM を[ユーザーが管理するキーを使用して実行するサーバー側の暗号化](disk-encryption.md)に移行する。
 
 ## <a name="next-steps"></a>次のステップ
 

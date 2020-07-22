@@ -6,17 +6,17 @@ documentationcenter: ''
 author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: rohink
-ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f779910460ec19f0efb02fb1a65f39bb100050c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711614"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>エンドポイントの追加、削除、有効化、無効化
 

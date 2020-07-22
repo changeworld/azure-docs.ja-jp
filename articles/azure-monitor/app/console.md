@@ -2,14 +2,14 @@
 title: コンソール アプリケーション用の Azure Application Insights | Microsoft Docs
 description: Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655431"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086247"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 
@@ -18,7 +18,7 @@ ms.locfileid: "77655431"
 [Microsoft Azure](https://azure.com) のサブスクリプションが必要になります。 Windows、Xbox Live、またはその他の Microsoft クラウド サービスの Microsoft アカウントでサインインします。 所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
 
 > [!NOTE]
-> [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) と呼ばれる新しい Application Insights SDK があります。これは、任意のコンソール アプリケーションに対して Application Insights を有効にするために使用できます。 このパッケージおよび関連する手順は、[ここ](../../azure-monitor/app/worker-service.md)から使用することをお勧めします。 このパッケージは [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) を対象としているため、.NET Core 2.0 以上と .NET Framework 4.7.2 以上で使用できます。
+> コンソール アプリケーションについては、[ここ](../../azure-monitor/app/worker-service.md)から [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージおよび関連付けられた手順を使用することを*強くお勧めします*。 このパッケージは [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) を対象としているため、.NET Core 2.1 以上と .NET Framework 4.7.2 以上で使用できます。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -36,7 +36,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソールアプリでは、この記事で後述する[完全な例](#full-example)に示すように、アプリが終了する前に `Flush()` と `Sleep` が完了しない限り、テレメトリが送信されない場合があります。
+> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソール アプリでは、この記事で後述する[完全な例](#full-example)に示すように、アプリが終了する前に `Flush()` と `Sleep`/`Delay` が完了しない限り、テレメトリが送信されない場合があります。 `InMemoryChannel` を使用する場合、`Sleep` は必要ありません。 `Sleep` の必要性に関してはアクティブな問題があります。参照先:[ApplicationInsights-dotnet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) パッケージの最新バージョンをインストールします。このパッケージにより、HTTP、SQL、またはその他の外部の依存関係呼び出しが自動的に追跡されます。
@@ -131,7 +131,7 @@ configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInit
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* [こちら](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)の説明に従って、パフォーマンス カウンター コレクター モジュールをインストールし、初期化することもできます
+* [こちら](https://apmtips.com/posts/2017-02-13-enable-application-insights-live-metrics-from-code/)の説明に従って、パフォーマンス カウンター コレクター モジュールをインストールし、初期化することもできます
 
 
 #### <a name="full-example"></a>完全な例
@@ -172,7 +172,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }

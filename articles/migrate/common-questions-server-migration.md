@@ -3,12 +3,12 @@ title: Azure Migrate Server Migration についてよく寄せられる質問
 description: Azure Migrate Server Migration を使用したマシンの移行についてよく寄せられる質問の回答を示します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744338"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224130"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -66,6 +66,9 @@ VMware のエージェントレス レプリケーション方式では、VMware
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>レプリケーション時に Azure Migrate で使用されるトランスポート プロトコルは何ですか?
 
 Azure Migrate では、TLS 暗号化に Network Block Device (NBD) プロトコルが使用されます。
+
+## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>オンプレミス環境から Azure にはどのようにしてデータが送信されますか? 送信前に暗号化されますか? 
+エージェントレス レプリケーションの場合の Azure Migrate アプライアンスでは、アップロード前にデータを圧縮して暗号化します。 データはセキュリティで保護された通信チャネルを介して HTTPS で送信され、TLS 1.2 以降を使用します。 さらに、Azure Storage では、データはクラウドに永続化されるときに自動的に暗号化されます (保存時暗号化)。  
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>移行に必要な最低限の vCenter Server バージョンは何ですか?
 

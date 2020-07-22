@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 87a9632ec2433b8698e3ae3761ba733aa6bc63a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478299"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -169,9 +169,9 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 条件を追加する順序は重要です。 Azure AD では、条件を上から下に評価し、要求に出力する値を決定しています。 
 
-たとえば、Brita Simon は Contoso テナントのゲストユーザーです。 彼女は、同様に Azure AD を使用する別の組織に属しています。 Fabrikam アプリケーションが次のように構成されている場合、Brita が Fabrikam にサインインしようとすると、Azure AD では次のように条件が評価されます。
+たとえば、Britta Simon は Contoso テナントのゲスト ユーザーです。 彼女は、同様に Azure AD を使用する別の組織に属しています。 Fabrikam アプリケーションが次のように構成されている場合、Britta が Fabrikam にサインインしようとすると、Azure AD では次のように条件が評価されます。
 
-まず、Azure AD では、Brita のユーザーの種類が `All guests` であるかどうかが確認されます。 これに当てはまれば、Azure AD によって要求のソースが `user.extensionattribute1` に割り当てられます。 2 つ目に、Azure AD では Brita のユーザーの種類が `AAD guests` かどうかが確認されます。これにも当てはまるため、Azure AD によって要求のソースが `user.mail` に割り当てられます。 最後に、Brita の値 `user.email` を使用して要求が出力されます。
+Azure AD は、まず Britta のユーザーの種類が `All guests` であるかどうかを確認します。 これに当てはまれば、Azure AD によって要求のソースが `user.extensionattribute1` に割り当てられます。 次に Britta のユーザーの種類が `AAD guests` かどうかを確認します。これにも当てはまるため、Azure AD が要求のソースを `user.mail` に割り当てます。 最後に、Britta の値 `user.mail` を使用して要求が出力されます。
 
 ![要求の条件付き構成](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

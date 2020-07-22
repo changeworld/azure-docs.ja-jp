@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806637"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Cognitive Search での類似性とスコアリング
 
@@ -36,7 +36,9 @@ ms.locfileid: "82254064"
 
 スコアリング プロファイルは、インデックス定義の一部であり、重み付けされたフィールド、関数、およびパラメーターで構成されます。 定義方法の詳細については、「[スコアリング プロファイル](index-add-scoring-profiles.md)」を参照してください。
 
-## <a name="scoring-statistics"></a>スコア付けの統計
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions"></a>スコアリング統計とスティッキー セッション
 
 スケーラビリティのために、Azure Cognitive Search ではシャーディング プロセスを介して各インデックスが水平方向に分散されます。つまり、インデックスの各部が物理的に分離されます。
 
@@ -45,13 +47,21 @@ ms.locfileid: "82254064"
 すべてのシャードの統計プロパティに基づいてスコアを計算する場合、これを行うには、*scoringStatistics=global* を[クエリ パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents)として追加します (または[クエリ要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)の本文パラメーターとして *"scoringStatistics": "global"* を追加します)。
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+scoringStatistics を使用すると、同じレプリカのすべてのシャードで同じ結果が得られるようになります。 ただし、レプリカはインデックスの最新の変更で常に更新されるため、それぞれ若干異なる場合があります。 一部のシナリオでは、ユーザーが "クエリ セッション" 中により一貫した結果を得られるようにすることが必要な場合があります。 このようなシナリオでは、クエリの一部として `sessionId` を指定できます。 `sessionId` は、一意のユーザー セッションを参照するために作成する一意の文字列です。
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2020-06-30&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+同じ `sessionId` が使用されていれば、同じレプリカをターゲットにするためにベストエフォートの試行が行われるので、ユーザーに表示される結果の一貫性が向上します。 
 
 > [!NOTE]
-> `scoringStatistics` パラメーターには、管理者 API キーが必須です。
+> 同じ `sessionId` 値を繰り返し再利用すると、レプリカ間での要求の負荷分散が妨げられ、検索サービスのパフォーマンスに悪影響を与える可能性があります。 sessionId として使用される値は、'_' 文字で始めることはできません。
 
 ## <a name="similarity-ranking-algorithms"></a>類似性ランク付けアルゴリズム
 
@@ -59,16 +69,40 @@ Azure Cognitive Search では、次の 2 種類の類似性ランク付けアル
 
 今のところ、使用したい類似性ランク付けアルゴリズムを指定できます。 詳細については、[ランク付けアルゴリズム](index-ranking-similarity.md)に関するページを参照してください。
 
-## <a name="watch-this-video"></a>次の動画をご覧ください
+次のビデオ セグメントは、Azure Cognitive Search で使用されるランク付けアルゴリズムの説明に早送りされます。 詳しい背景情報については、ビデオ全編をご覧ください。
 
-この 16 分間のビデオでは、ソフトウェア エンジニアの Raouf Merouche が、インデックスの作成のプロセス、クエリの実行、スコアリング プロファイルの作成方法について説明しています。 ドキュメントへのインデックス付け、およびドキュメントの取得の際に、内部で何が行われているのかをわかりやすく説明します。
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
+<a name="featuresMode-param"></a>
 
-+ 2 - 3 分ではインデックス付けについて説明: テキスト処理と字句解析。
-+ 3 - 4 分ではインデックス付けについて説明: 逆インデックス。
-+ 4 - 6 分ではクエリの実行について説明: 取得と順位付け。
-+ 7 - 16 分ではスコアリング プロファイルについて説明。
+## <a name="featuresmode-parameter-preview"></a>featuresMode パラメーター (プレビュー)
+
+[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents)の要求には、フィールド レベルでの関連性に関する追加の詳細情報を提供できる新しい [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) パラメーターがあります。 `@searchScore` はドキュメント全体に対して計算されますが (このクエリのコンテキストにおけるこのドキュメントの関連度)、featuresMode を使用すると、`@search.features` 構造体で表現された、個々のフィールドに関する情報を取得できます。 この構造体には、クエリで使用されるすべてのフィールド (クエリ内の **searchFields** を介した特定のフィールド、またはインデックス内で**検索可能**として属性が付けられているすべてのフィールド) が含まれます。 フィールドごとに、次の値が取得されます。
+
++ フィールド内で見つかった一意のトークン数
++ 類似性スコア。つまり、クエリ用語に対するフィールド内容の類似度のメジャー
++ 用語の頻度。つまり、フィールド内でクエリ用語が見つかった回数
+
+"Description" および "title" フィールドを対象とするクエリの場合、`@search.features` を含む応答は次のようになります。
+
+```json
+"value": [
+ {
+    "@search.score": 5.1958685,
+    "@search.features": {
+        "description": {
+            "uniqueTokenMatches": 1.0,
+            "similarityScore": 0.29541412,
+            "termFrequency" : 2
+        },
+        "title": {
+            "uniqueTokenMatches": 3.0,
+            "similarityScore": 1.75451557,
+            "termFrequency" : 6
+        }
+```
+
+[カスタムのスコアリング ソリューション](https://github.com/Azure-Samples/search-ranking-tutorial)でこれらのデータ ポイントを使用したり、この情報を使用して検索の関連性の問題をデバッグしたりできます。
 
 ## <a name="see-also"></a>関連項目
 

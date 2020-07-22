@@ -42,6 +42,8 @@
   items:
     - name: Logic Apps で Form Recognizer を使用する
       href: tutorial-form-recognizer-with-logic-apps.md
+    - name: Cognitive Search で Form Recognizer を使用する
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成
@@ -58,22 +60,24 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Container Instances の使用
           href: deploy-form-recognizer-on-container-instances.md
+    - name: モデルのバックアップと復旧
+      href: disaster-recovery.md
 - name: リファレンス
   items:
     - name: Form Recognizer API v2.0
-      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: Form Recognizer API v1.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre'
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview'
+          href: 'https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/formrecognizer'
         - name: JavaScript
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview'
+          href: 'https://docs.microsoft.com/azure/cognitive-services/form-recognizer/'
 - name: リソース
   items:
     - name: 料金と制限

@@ -1,30 +1,31 @@
 ---
 title: クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリを構築する
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Python コード サンプルについて説明します
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 10247e22b3fbe1250a15b06a0cce974905ca6b7f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+- tracking-python
+ms.openlocfilehash: 1b3a97a11c8d5782b8b7577d6afccbbdaadea0e7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78942622"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116572"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -51,7 +52,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
     
     **[コンテナーの追加]** 領域が右端に表示されます。表示するには、右へスクロールする必要がある場合があります。
 
-    ![Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+    :::image type="content" source="./media/create-sql-api-python/azure-cosmosdb-data-explorer.png" alt-text="Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ":::
 
 2. **[コンテナーの追加]** ページで、新しいコンテナーの設定を入力します。
 
@@ -107,7 +108,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、左側のナビゲーションから **[キー]** を選択します。 次の手順では、画面の右側のコピー ボタンを使用して、**URI** と**プライマリ キー**を *cosmos_get_started.py* ファイルにコピーします。
 
-    ![Azure portal でキー設定のアクセス キーと URI を取得する](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portal でキー設定のアクセス キーと URI を取得する":::
 
 2. Visual Studio Code で、 *\git-samples\azure-cosmos-db-python-getting-started* の *cosmos_get_started.py* ファイルを開きます。
 
@@ -153,13 +154,13 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
    
 ## <a name="run-the-app"></a>アプリを実行する
 
-1. Visual Studio Code で、**[表示]** > **[コマンド パレット]** の順に選択します。  
+1. Visual Studio Code で、 **[ビュー]**  >  **[コマンド パレット]** の順に選択します。 
 
 2. プロンプトで「**Python: Select Interpreter**」と入力し、使用する Python のバージョンを選択します。
 
     Visual Studio Code のフッターが、選択されているインタープリターを示すように更新されます。 
 
-3. **[表示]** > **[統合ターミナル]** の順に選択して、Visual Studio Code 統合ターミナルを開きます。
+3. **[表示]**  >  **[統合ターミナル]** の順に選択して、Visual Studio Code 統合ターミナルを開きます。
 
 4. 統合ターミナル ウィンドウで、*azure-cosmos-db-python-getting-started* フォルダー内にいることを確認します。 そうでない場合は、次のコマンドを実行して、サンプル フォルダーに切り替えます。 
 

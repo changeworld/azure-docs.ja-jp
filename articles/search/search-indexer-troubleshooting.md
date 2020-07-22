@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79db94298d190f646393410ec73ba1a25bb48270
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560388"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -76,7 +76,7 @@ Azure Cognitive Search は、Cosmos DB のインデックス付けに暗黙に�
 BLOB インデクサーでは、[明示的にサポートされているドキュメント形式が説明](search-howto-indexing-azure-blob-storage.md#SupportedFormats)されています。 場合によっては、サポートされないドキュメントが BLOB ストレージ コンテナーに含まれています。 問題があるドキュメントがあることもあります。 [構成オプションを変更](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)すると、このようなドキュメントに対してインデクサーを停止することを回避できます。
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -94,7 +94,7 @@ BLOB インデクサーによって、[コンテナー内の BLOB からテキ�
 * BLOB インデクサーは、メタデータのインデックス付けのみを行うように構成されています。 コンテンツを抽出するには、[コンテンツとメタデータの両方を抽出](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)するように BLOB インデクサーを構成する必要があります。
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -111,6 +111,7 @@ api-key: [admin key]
 インデクサーによって[データ ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)でドキュメントが検索されます。 場合によっては、インデックスが付けられているはずのデータ ソースのドキュメントが、インデックスに存在しないように見えることがあります。 このようなエラーが発生する一般的な理由がいくつかあります。
 
 * ドキュメントがインデックス付けされていません。 インデクサーの実行が成功したかどうかポータルで確認します。
+* [変更追跡](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)の値を確認します。 高基準値の日付が将来の時刻に設定されている場合、これよりも近い日付になっているドキュメントはすべて、インデクサーによってスキップされます。 [インデクサーの状態](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result)の 'initialTrackingState' および 'finalTrackingState' フィールドを使用して、インデクサーの変更追跡の状態を把握できます。
 * インデクサーの実行後にドキュメントが更新されませんでした。 インデクサーが[スケジュール](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)設定されている場合は、いずれ再実行されて、ドキュメントを処理します。
 * データ ソースに指定されている[クエリ](/rest/api/searchservice/create-data-source)によって、ドキュメントが除外されています。 インデクサーは、データ ソースに含まれないドキュメントにインデックス付けすることはできません。
 * [フィールド マッピング](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)または [AI エンリッチメント](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)によってドキュメントが変更され、予期していたドキュメントとは違って見えます。

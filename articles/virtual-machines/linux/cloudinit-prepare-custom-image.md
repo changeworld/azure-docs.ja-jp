@@ -29,7 +29,7 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-`cloud_init_modules` の `/etc/cloud/cloud.cfg` のセクションを更新して次のモジュールを含めます。
+`/etc/cloud/cloud.cfg` の `cloud_init_modules` のセクションを更新して次のモジュールを含めます。
 
 ```bash
 - disk_setup

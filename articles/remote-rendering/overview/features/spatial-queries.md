@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758845"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021298"
 ---
 # <a name="spatial-queries"></a>空間クエリ
 
@@ -88,9 +88,9 @@ void CastRay(ApiHandle<AzureSession> session)
 
 3 種類のヒット コレクション モードがあります。
 
-* **最も近い:** このモードでは、最も近いヒットだけが報告されます。
-* **任意:** レイが何かにヒット "*するかどうか*" を知りたいだけで、何がヒットしたのかは知る必要がない場合、このモードをお勧めします。 このクエリはかなりの低コストで評価できますが、アプリケーションはごくわずかです。
-* **すべて:** このモードでは、レイに沿ったすべてのヒットが、距離で並べ替えられて報告されます。 最初のヒット以外にも必要な場合を除き、このモードは使用しないでください。 `MaxHits` オプションを使用して、報告されるヒット数を制限します。
+* **`Closest`:** このモードでは、最も近いヒットだけが報告されます。
+* **`Any`:** レイが何かにヒット "*するかどうか*" を知りたいだけで、何がヒットしたのかは知る必要がない場合、このモードをお勧めします。 このクエリはかなりの低コストで評価できますが、アプリケーションはごくわずかです。
+* **`All`:** このモードでは、レイに沿ったすべてのヒットが、距離で並べ替えられて報告されます。 最初のヒット以外にも必要な場合を除き、このモードは使用しないでください。 `MaxHits` オプションを使用して、報告されるヒット数を制限します。
 
 レイ キャストの検討対象から除外するオブジェクトを選択するには、[HierarchicalStateOverrideComponent](override-hierarchical-state.md) コンポーネントを使用できます。
 
@@ -106,11 +106,11 @@ TODO : Add an API to make that possible.
 
 ヒットには次のプロパティがあります。
 
-* **HitEntity:** どの[エンティティ](../../concepts/entities.md)がヒットしたか。
-* **SubPartId:** どの *submesh* が [MeshComponent](../../concepts/meshes.md) でヒットしたか。 `MeshComponent.UsedMaterials` にインデックスを作成し、その時点で[素材](../../concepts/materials.md)を検索するために使用できます。
-* **HitPosition:** レイがオブジェクトと交差するワールド空間の位置。
-* **HitNormal:** 交差の位置にあるメッシュのワールド空間表面法線。
-* **DistanceToHit:** レイの開始位置からヒットまでの距離。
+* **`HitEntity`:** どの[エンティティ](../../concepts/entities.md)がヒットしたか。
+* **`SubPartId`:** どの *submesh* が [MeshComponent](../../concepts/meshes.md) でヒットしたか。 `MeshComponent.UsedMaterials` にインデックスを作成し、その時点で[素材](../../concepts/materials.md)を検索するために使用できます。
+* **`HitPosition`:** レイがオブジェクトと交差するワールド空間の位置。
+* **`HitNormal`:** 交差の位置にあるメッシュのワールド空間表面法線。
+* **`DistanceToHit`:** レイの開始位置からヒットまでの距離。
 
 ## <a name="next-steps"></a>次のステップ
 

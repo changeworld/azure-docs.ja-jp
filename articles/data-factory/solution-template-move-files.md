@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
 ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628165"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Data Factory でファイルを移動する

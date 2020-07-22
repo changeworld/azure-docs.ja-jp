@@ -1,17 +1,17 @@
 ---
 title: メトリック アラートを使用して Azure Automation Runbook を監視する
-description: この記事では、メトリックに基づいて Azure Automation Runbook を監視する手順を説明します
+description: この記事では、メトリックに基づいて Runbook を監視する方法について説明します。
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310554"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828748"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>メトリック アラートによる Runbook の監視
+# <a name="monitor-runbooks-with-metric-alerts"></a>メトリック アラートによる Runbook の監視
 
 この記事では、Runbook の完了状態に基づいてアラートを作成する方法を説明します。
 
@@ -67,7 +67,7 @@ Azure Portal で、Automation アカウントに移動します。 **[監視]** 
 > [!NOTE]
 > メール アドレスをアクション グループに追加すると、アドレスがアクション グループに追加されたことを示す通知メールが送信されます。
 
-## <a name="notification"></a>Notification
+## <a name="receive-notification"></a>通知の受信
 
 アラートの条件が満たされると、アクション グループは定義されているアクションを実行します。 この記事の例では、メールが送信されます。 次の図は、アラートがトリガーされた後で受け取るメールの例です。
 
@@ -77,7 +77,4 @@ Azure Portal で、Automation アカウントに移動します。 **[監視]** 
 
 ## <a name="next-steps"></a>次のステップ
 
-Automation アカウントにアラートを統合する他の方法について学習する次の記事に進んでください。
-
-> [!div class="nextstepaction"]
-> [Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)
+* 詳細については、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」を参照してください。

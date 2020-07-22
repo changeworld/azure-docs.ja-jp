@@ -3,17 +3,17 @@ title: チュートリアル - Azure の予算を作成して管理する
 description: このチュートリアルでは、使用する Azure サービスのコストの計画とアカウントについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101758"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559320"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -115,6 +115,15 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 前の例では、サブスクリプションの予算を作成しました。 リソース グループに対する予算を作成することもできます。 リソース グループに対する予算を作成する場合は、 **[コストの管理と請求]** &gt; **[サブスクリプション]** に移動してサブスクリプションを選択し、 **[リソース グループ]** を選択してリソース グループを選択し、 **[予算]** を選択して予算を**追加**します。
 
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>Azure と AWS の統合コストに対する予算を作成する
+
+リンクされた統合アカウントと共に、管理グループをコネクタに割り当てることで、Azure と AWS のコストを 1 つにまとめることができます。 同じ管理グループに、ご利用の Azure サブスクリプションを割り当てます。 そのうえで、統合したコストの予算を作成します。
+
+1. Cost Management で **[予算]** を選択します。
+1. **[追加]** を選択します。
+1. **[スコープの変更]** を選択し、管理グループを選択します。
+1. 完了するまで、予算の作成を続行します。
+
 ## <a name="costs-in-budget-evaluations"></a>予算評価におけるコスト
 
 予算コスト評価に予約インスタンスと購入データが含まれるようになりました。 料金が適用される場合は、評価に料金が組み込まれるときにアラートが表示されることがあります。 [Azure portal](https://portal.azure.com) にサインインし、新しいコストを考慮するように予算のしきい値が適切に構成されているかどうか、確認することをお勧めします。 Azure で課金される料金は変更されません。 予算が、より完全なコストのセットに対して評価されるようになりました。 料金が適用されない場合、予算の動作は変わりません。
@@ -124,8 +133,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 - パブリッシャーの種類: Azure
 - 料金タイプ: 使用法
 
-予算コストの評価は、実際のコストに基づいています。 償却費は含まれていません。 予算で使用できるフィルター オプションの詳細については、「[グループ化とフィルタリングのオプションの概要](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)」を参照してください。
-
+予算コストの評価は、実際のコストに基づいています。 償却費は含まれていません。 予算で使用できるフィルター オプションの詳細については、「[グループ化とフィルタリングのオプションの概要](group-filter.md)」を参照してください。
 
 ## <a name="trigger-an-action-group"></a>アクション グループをトリガーする
 

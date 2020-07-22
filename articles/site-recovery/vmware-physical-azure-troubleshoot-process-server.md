@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131983"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -96,7 +96,7 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>手順 4:ソース マシンの時刻同期の確認
 
-レプリケートされたマシンのシステム日時が同期していることを確認します。[詳細情報](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+レプリケートされたマシンのシステム日時が同期していることを確認します。[詳細情報](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>手順 5:ソース マシン上のウイルス対策ソフトウェアの確認
 
@@ -105,7 +105,7 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 ## <a name="step-6-check-connectivity-from-source-machine"></a>手順 6:ソース マシンからの接続の確認
 
 
-1. 必要であれば、[Telnet クライアント](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)をソース マシン上にインストールします。 ping は使用しないでください。
+1. 必要であれば、[Telnet クライアント](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10))をソース マシン上にインストールします。 ping は使用しないでください。
 2. ソース マシンから、Telnet を使用して HTTPS ポート上のプロセス サーバーを ping します。 既定では、9443 がレプリケーション トラフィック用の HTTPS ポートです。
 
     `telnet <process server IP address> <port>`
@@ -246,7 +246,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 ## <a name="next-steps"></a>次のステップ
 
-さらにサポートが必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。 
+さらにサポートが必要な場合は、[Azure Site Recovery に関する Microsoft Q&A 質問ページ](/answers/topics/azure-site-recovery.html)に質問を投稿してください。 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

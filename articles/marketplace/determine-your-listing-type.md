@@ -1,18 +1,18 @@
 ---
-title: Microsoft の商業マーケットプレースのネットショップで公開オプションを決定する
-description: この記事では､パートナーが Microsoft AppSource や Azure Marketplace にアプリを公開しようとするときに理解しておく必要がある適格性条件と公開要件を説明します｡
-author: dsindona
+title: 公開オプションを選定する - Microsoft 商業マーケットプレース
+description: この記事では､Microsoft AppSource や Azure Marketplace にオファーを公開する際の適格性条件と要件について説明します｡
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: keferna
+ms.author: keferna
+ms.date: 06/22/2020
+ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415738"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103655"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 
@@ -56,7 +56,7 @@ ms.locfileid: "81415738"
 **Azure Marketplace** のアプリケーションは、Azure 上または Azure 用に構築された、IT または開発者向けの技術的な "構成要素" ソリューションです。 Azure Marketplace コンサルティング サービスは、お客様が Azure の使用を開始または促進するために役立つプロフェッショナル サービスです。
 
 >[!Note]
->クロス リスト (SaaS アプリの場合のみ): 一覧または試用版ベースのオファーが技術ユーザーとビジネス ユーザーの両方の条件を満たしている場合は、どちらのネットショップにもオファーが表示されます。 公開オプションについて詳しくは、以下の内容を参照してください。
+>クロス リスト (SaaS アプリのみ): SaaS プランが技術ユーザー (Azure Marketplace) とビジネス ユーザー (AppSource) を対象としている場合、両方のネットショップに適用されているカテゴリおよびサブカテゴリを選択できます。 プランを "クロス リスト" するという意図は、両方のユーザーにまたがる価値提案に基づいている必要があることにご注意ください。 各ネットショップに適用されるカテゴリを確認するには、[こちら](./gtm-offer-listing-best-practices.md#categories)をクリックしてください。
 
 ## <a name="choose-a-publishing-option"></a>公開オプションを選択する
 

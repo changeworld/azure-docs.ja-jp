@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76261621"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141995"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -152,11 +152,21 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>相互関係のあるメッセージを順番に送信する
+
+相互関係のあるメッセージを特定の順序で送信する必要がある場合は、[Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、["*シーケンシャルなコンボイ*" パターン](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
+
+ロジック アプリを作成するとき、シーケンシャルなコンボイ パターンを実装する **Correlated in-order delivery using service bus sessions** テンプレートを選択できます。 詳細については、[関連のあるメッセージを順番に送信する](../logic-apps/send-related-messages-sequential-convoy.md)方法に関するページを参照してください。
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
 Service Bus コネクタを使用すると、Service Bus からコネクタ キャッシュまで最大 1500 個の一意のセッションを同時に保存できます。 セッション数がこの制限を超えると、古いセッションはキャッシュから削除されます。 詳細については、[メッセージ セッション](../service-bus-messaging/message-sessions.md)に関するページを参照してください。
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、制限に関するその他の技術的な詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。 Azure Service Bus メッセージングの詳細については、「[Azure Service Bus とは](../service-bus-messaging/service-bus-messaging-overview.md)」を参照してください。
+コネクタの Swagger の説明に記載されているトリガー、アクション、制限に関するその他の技術的な詳細については、[コネクタのリファレンス ページ](/connectors/servicebus/)を確認してください。 Azure Service Bus メッセージングの詳細については、「[Azure Service Bus とは](../service-bus-messaging/service-bus-messaging-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

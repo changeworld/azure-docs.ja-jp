@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a400ae798245cc4912724c16840421d5282b3a0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78155395"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277707"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保存されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションは個々の VM 障害を許容しますが、VM のデプロイ時間または個々の VM インスタンスの再イメージ化によって影響をより強く受けます。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 
  
@@ -30,23 +30,26 @@ ms.locfileid: "78155395"
  
 永続 OS ディスクとエフェメラル OS ディスクの主な違いは、次のとおりです。
 
-|                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |    |
+|                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| OS ディスクのサイズ制限      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ**については、[DS](../articles/virtual-machines/linux/sizes-general.md)、[ES](../articles/virtual-machines/linux/sizes-memory.md)、[M](../articles/virtual-machines/linux/sizes-memory.md)、[FS](../articles/virtual-machines/linux/sizes-compute.md)、および [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series) に関するページを参照してください              |
-| サポート対象の VM サイズ          | All                                                                                          | DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
-| サポート対象のディスクの種類           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
-| リージョンのサポート              | すべてのリージョン                                                                                  | すべてのリージョン                              |
-| データの永続化            | 書き込まれた OS ディスク データは Azure Storage に格納                                  | OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage に保持されない |
-| 停止と割り当て解除      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
-| 特殊化された OS ディスクのサポート | はい                                                                                          | いいえ                                                                                 |
-| OS ディスクのサイズ変更              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成時のみ変更可能                                                  |
-| VM サイズ変更時の動作   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング                                      |
+| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ**については、[DS](../articles/virtual-machines/linux/sizes-general.md)、[ES](../articles/virtual-machines/linux/sizes-memory.md)、[M](../articles/virtual-machines/linux/sizes-memory.md)、[FS](../articles/virtual-machines/linux/sizes-compute.md)、および [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series) に関するページを参照してください              |
+| **サポート対象の VM サイズ**          | All                                                                                          | Premium ストレージをサポートしている DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、LSv2、M などの VM サイズ                                               |
+| **サポート対象のディスクの種類**           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
+| **リージョンのサポート**              | すべてのリージョン                                                                                  | すべてのリージョン                              |
+| **データの永続化**            | 書き込まれた OS ディスク データは Azure Storage に格納                                  | OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage に保持されない |
+| **停止と割り当て解除**      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
+| **特殊化された OS ディスクのサポート** | はい                                                                                          | いいえ                                                                                 |
+| **OS ディスクのサイズ変更**              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成時のみ変更可能                                                  |
+| **VM サイズ変更時の動作**   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング                                      |
 
 ## <a name="size-requirements"></a>サイズの要件
 
 VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 たとえば、マーケットプレースの標準の Windows Server イメージは約 127 GiB であり、これは 127 GiB より大きいキャッシュを持つ VM サイズが必要であることを意味します。 この場合、[Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) のキャッシュ サイズは 86 GiB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GiB であり、十分な大きさです。 この場合、Standard_DS3_v2 が、このイメージで使用できる DSv2 シリーズの最小サイズ です。 Marketplace の基本の Linux イメージと `[smallsize]` で示される Windows Server イメージは約 30 GiB になる傾向があり、利用可能な VM サイズのほとんどを使用できます。
 
 また、エフェメラル ディスクでは、VM サイズで Premium Storage がサポートされていることも必要です。 通常 (常にではありませんが)、 サイズには DSv2 や EsV3 のように名前に `s` があります。 詳細については、[Azure の VM サイズ](../articles/virtual-machines/linux/sizes.md)に関する記事で Premium Storage をサポートするサイズの詳細を参照してください。
+
+## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>プレビュー - エフェメラル OS ディスクを一時ディスクに保存できるようになりました
+エフェメラル OS ディスクは、VM キャッシュに加え、VM の一時ディスクまたはリソース ディスクに保存できるようになりました。 つまり、これからは、VM にキャッシュがないか、キャッシュが十分でなくても、Dav3、Dav4、Eav4、Eav3 など、エフェメラル OS ディスクを保存する一時ディスクまたはリソース ディスクがあれば、エフェメラル OS ディスクを使用できます。 また、VM に十分なキャッシュと一時領域がある場合、[DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement) という名前の新しいプロパティを使用し、エフェメラル OS ディスクを格納する場所を指定できるようになります。 現在、この機能はプレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 始めるには、[アクセスをリクエスト](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)してください。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -198,7 +201,24 @@ A:はい。エフェメラル OS ディスクを使用する VM にマネージ�
 
 **Q:エフェメラル OS ディスクではすべての VM サイズがサポートされますか?**
 
-A:いいえ。B シリーズ、N シリーズ、H シリーズのサイズを除くすべての Premium Storage VM のサイズ (DS、ES、FS、GS、および M) がサポートされます。  
+A:いいえ。ほとんどの Premium Storage VM サイズがサポートされています (DS、ES、FS、GS、M など)。 特定の VM サイズでエフェメラル OS ディスクがサポートされているかどうかは、次の方法で確認できます。
+
+`Get-AzComputeResourceSku` PowerShell コマンドレットを呼び出します。
+```azurepowershell-interactive
+ 
+$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
+
+foreach($vmSize in $vmSizes)
+{
+   foreach($capability in $vmSize.capabilities)
+   {
+       if($capability.Name -eq 'EphemeralOSDiskSupported' -and $capability.Value -eq 'true')
+       {
+           $vmSize
+       }
+   }
+}
+```
  
 **Q:エフェメラル OS ディスクを既存の VM およびスケール セットに適用できますか?**
 

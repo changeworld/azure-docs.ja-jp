@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/07/2019
+ms.date: 06/24/2020
 ms.author: abnarain
-ms.openlocfilehash: 94e214c55a0109beb85cd08ce87303e5bd0f8016
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315140"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -22,7 +22,9 @@ ms.locfileid: "83835429"
 
 ## <a name="common-errors-and-resolutions"></a>よくあるエラーと解決方法
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>エラー メッセージ:Self-hosted integration runtime can't connect to cloud service (セルフホステッド統合ランタイムはクラウド サービスに接続できません)
+### <a name="error-message"></a>エラー メッセージ: 
+
+`Self-hosted integration runtime can't connect to cloud service`
 
 ![セルフホステッド IR の接続問題](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
@@ -30,7 +32,7 @@ ms.locfileid: "83835429"
 
 セルフホステッド統合ランタイムが Data Factory サービス (バックエンド) に接続できません。 この問題は、通常、ファイアウォールのネットワーク設定によって発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解決方法
 
 1. 統合ランタイム サービスが実行されているかどうかを確認します。
     
@@ -86,7 +88,8 @@ ms.locfileid: "83835429"
 > *    TLS/SSL 証明書 "wu2.frontend.clouddatahub.net/" がプロキシ サーバー上で信頼されているかどうかを確認します。
 > *    プロキシで Active Directory 認証を使用している場合は、サービス アカウントを、"Integration Runtime サービス" としてプロキシにアクセスできるユーザー アカウントに変更してください。
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>エラー メッセージ:セルフホステッド統合ランタイム ノード/論理 SHIR が非アクティブ/ "実行中 (制限あり)" の状態です
+### <a name="error-message"></a>エラー メッセージ: 
+`Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" state`
 
 #### <a name="cause"></a>原因 
 
@@ -96,46 +99,190 @@ ms.locfileid: "83835429"
 
 この動作は、ノードが相互に通信できない場合に発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解決方法
 
 1. ノードでホストされている VM にログインします。 イベント ビューアーを開き、 **[アプリケーションとサービス ログ]**  >  **[統合ランタイム]** 以下のすべてのエラー ログをフィルター処理します。
 
 1. エラー ログに次のエラーが含まれているかどうかを確認します。 
     
-    ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
+    ```
+    System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
     System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 
     10.2.4.10:8060
-        
     at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
-               
     at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
-               
     at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+    ```
        
-1. If you see this error, run the following on a command line: 
+1. このエラーが表示されている場合は、コマンド ラインで次を実行します。 
 
-   **telnet 10.2.4.10 8060**.
-1. If you receive the following error, contact your IT department for help with fixing this issue. After you can successfully telnet, contact Microsoft Support if you still have issues with the integrative runtime node status.
+   ```
+   telnet 10.2.4.10 8060
+   ```
+   
+1. 次のエラーが発生した場合は、IT 部門に連絡して、この問題の解決の支援を依頼してください。 telnet が正常に実行された後も、引き続き統合ランタイム ノードの状態に問題がある場合は、Microsoft サポートに問い合わせてください。
         
-   ![Command-line error](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   ![コマンド ライン エラー](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-1.    Check whether the error log contains the following:
+1. エラー ログに次が含まれているかどうかを確認します。
 
-    ```Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)```
+    ```
+    Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)
+    ```
     
-1. To resolve the issue, try one or both of the following methods:
-    - Put all the nodes in the same domain.
-    - Add the IP to host mapping in all the hosted VM's host files.
+1. この問題を解決するには、次の方法のいずれかまたは両方を試してください。
+    - すべてのノードを同じドメインに配置する。
+    - ホストされているすべての VM のホスト ファイルで、IP と ホストのマッピングを追加する。
 
 
-## Next steps
+## <a name="troubleshoot-connectivity-issue"></a>接続の問題のトラブルシューティング
 
-For more help with troubleshooting, try the following resources:
+### <a name="troubleshoot-connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>セルフホステッド IR と Data Factory 間、またはセルフホステッド IR とデータソース/シンク間の接続に関する問題のトラブルシューティング
 
-*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft Q&A question page](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
-*  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
-*  [Mapping data flows performance guide](concepts-data-flow-performance.md)
+ネットワーク接続の問題のトラブルシューティングを行うには、[ネットワーク トレースの収集](#how-to-collect-netmon-trace)方法を確認して、その使用方法を理解し、[Netmon トレースを分析](#how-to-analyze-netmon-trace)してから、実際のケースでセルフホステッド IR から Netmon ツールを適用する必要があります。
+
+接続の問題のトラブルシューティングを行う場合 (セルフホステッド IR と Data Factory 間、 
+
+![HTTP 要求に失敗しました](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+
+またはセルフホステッド IR とデータソース/シンク間など)、次のエラーが発生することがあります。
+
+**エラー メッセージ:** 
+`Copy failed with error:Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server: ‘IP address’`
+
+**エラー メッセージ:** 
+`One or more errors occurred. An error occurred while sending the request. The underlying connection was closed: An unexpected error occurred on a receive. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. An existing connection was forcibly closed by the remote host Activity ID.`
+
+**解決策:** 上記の問題が発生した場合は、次の手順に従ってトラブルシューティングを行うことができます。
+
+Netmon トレースを取得して、さらに分析します。
+- まず、フィルターを設定して、サーバーからクライアント側へのリセットをすべて表示することができます。 次の例では、サーバー側が Data Factory サーバーであることがわかります。
+
+    ![Data factory サーバー](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+
+- リセット パッケージを取得したら、TCP を追跡してメッセージ交換を見つけることができます。
+
+    ![メッセージ交換の検索](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+
+- 次に、フィルターを削除することにより、次のクライアントと Data Factory サーバー間の変換を取得できます。
+
+    ![メッセージ交換の取得](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+- 収集された netmon トレースに基づき、TTL (TimeToLive) の合計が 64 であることがわかります。 [この記事](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)に記載されている「**既定の TTL とホップの制限値**」(下に抜粋) によると、パッケージをリセットして切断を発生させたのは Linux システムであることがわかります。
+
+    既定の TTL とホップの制限値は、オペレーティング システムによって異なります。既定値の一部を次に示します。
+    - Linux カーネル 2.4 (2001 年ごろ):TCP、UDP、および ICMP の場合は 255
+    - Linux カーネル 4.10 (2015):TCP、UDP、および ICMP の場合は 64
+    - Windows XP (2001):TCP、UDP、および ICMP の場合は 128
+    - Windows 10 (2015):TCP、UDP、および ICMP の場合は 128
+    - Windows Server 2008:TCP、UDP、および ICMP の場合は 128
+    - Windows Server 2019 (2018):TCP、UDP、および ICMP の場合は 128
+    - MacOS (2001):TCP、UDP、および ICMP の場合は 64
+
+    ![TTL 61](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    
+    ただし、上記の例では 64 ではなく 61 と表示されています。これは、ネットワーク パッケージが宛先に到達すると、ルーターやネットワーク デバイスなどのさまざまなホップを経由する必要があるためです。 最終的な TTL では、ルーター/ネットワーク デバイスの数が差し引かれます。
+    この場合は、リセットが Linux システムから TTL 64 で送信された可能性があることがわかります。
+
+- リセット デバイスの発信元を確認するには、セルフホステッド IR から 4 番目のホップを確認する必要があります。
+ 
+    *Linux システム A からの TTL 64 のネットワーク パッケージ -> B TTL 64-1 = 63 -> C TTL 63-1 = 62 -> TTL 62-1 = 61 セルフホステッド IR*
+
+- 理想的な状況では、TTL は 128 になります。これは、Windows システムで Data Factory が実行されていることを意味します。 次の例に示すように、*128 – 107 = 21 ホップ*になります。つまり、TCP 3 ハンドシェイク中に、そのパッケージに関して 21 ホップが Data Factory からセルフホステッド IR に送信されたことを意味します。
+ 
+    ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+
+    このため、セルフホステッド IR からの 4 番目のホップを確認するには、ネットワーク チームと協力する必要があります。 Linux システムのファイアウォールである場合は、TCP 3 ハンドシェイクの後にそのデバイスがパッケージをリセットした理由をログで確認します。 ただし、調査する場所がわからない場合は、セルフホステッド IR とファイアウォールから問題が発生したときの netmon トレースを取得して、どのデバイスによってこのパッケージがリセットされて切断されるのかを特定してください。 この場合も、ネットワーク チームと協力して作業を進める必要があります。
+
+### <a name="how-to-collect-netmon-trace"></a>Netmon トレースを収集する方法
+
+1.  [この Web サイト](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)から Netmon ツールをダウンロードし、サーバー マシン (問題が発生しているサーバー) とクライアント (セルフホステッド IR など) にインストールします。
+
+2.  フォルダーを作成します (たとえば、*D:\netmon* というパスに作成します)。 ログを保存するための十分な領域があることを確認します。
+
+3.  IP とポートの情報をキャプチャします。 
+    1. コマンド プロンプトを起動します。
+    2. [管理者として実行] を選択し、次のコマンドを実行します。
+       
+        ```
+        Ipconfig /all >D:\netmon\IP.txt
+        netstat -abno > D:\netmon\ServerNetstat.txt
+        ```
+
+4.  Netmon トレース (ネットワーク パッケージ) をキャプチャします。
+    1. コマンド プロンプトを起動します。
+    2. [管理者として実行] を選択し、次のコマンドを実行します。
+        
+        ```
+        cd C:\Program Files\Microsoft Network Monitor 3
+        ```
+    3. 次の 3 種類のコマンドを使用して、ネットワーク ページをキャプチャできます。
+        - オプション A: ラウンドロビン ファイル コマンド (ファイルが 1 つだけキャプチャされ、古いログが上書きされます)。
+
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
+            ```         
+        - オプション B: チェーン ファイル コマンド (200 MB に達すると、新しいファイルが作成されます)。
+        
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
+            ```          
+        - オプション C:スケジュール ファイル コマンド。
+
+            ```
+            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
+            ```  
+
+5.  Netmon トレースのキャプチャを停止するには、**Ctrl + C** を押します。
+ 
+> [!NOTE]
+> クライアント コンピューターでのみ netmon トレースを収集できる場合は、サーバーの IP アドレスを取得してトレースの分析に役立ててください。
+
+### <a name="how-to-analyze-netmon-trace"></a>Netmon トレースを分析する方法
+
+上記で収集された netmon トレースを使用して telnet **8.8.8.8 888** を実行しようとすると、次のトレースが表示されます。
+
+![Netmon トレース 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+
+![Netmon トレース 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+ 
+
+これは、ポート **888** で **8.8.8.8** のサーバー側に TCP 接続を確立できなかったことを意味し、2 つの **SynReTransmit** 追加パッケージが表示されています。 最初のパッケージでソース **SELF-HOST2** が **8.8.8.8**に接続できなかったため、接続の試行が継続されます。
+
+> [!TIP]
+> - **[フィルターの読み込み]**  ->  **[標準フィルター]**  ->  **[アドレス]**  ->  **[IPv4 アドレス]** をクリックします。
+> - フィルターとして **IPv4.Address == 8.8.8.8** を入力し、 **[適用]** をクリックします。 その後は、ローカル コンピューターから宛先 **8.8.8.8** への通信のみが表示されます。
+
+![フィルター アドレス 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+        
+![フィルター アドレス 2](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+
+次の例は、良好な場合のシナリオを示しています。 
+
+- Telnet **8.8.8.8 53** が問題なく動作している場合は、TCP 3 ハンドシェイクが行われ、その後、TCP 4 ハンドシェイクでセッションが終了したことを確認できます。
+
+    ![良好なシナリオの例 1](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+     
+    ![良好なシナリオの例 2](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+
+- 上記の TCP 3 ハンドシェイクに基づき、次のワークフローを確認できます。
+
+    ![TCP 3 ハンドシェイクのワークフロー](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+ 
+- セッションを完了するための TCP 4 ハンドシェイクとそのフローは、次のようになります。
+
+    ![TCP 4 ハンドシェイク](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+
+    ![TCP 4 ハンドシェイクのワークフロー](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
+
+
+## <a name="next-steps"></a>次のステップ
+
+トラブルシューティングの詳細について、次のリソースを参照してください。
+
+*  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Data Factory に関する Stack overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
+*  [マッピング データ フローのパフォーマンス ガイド](concepts-data-flow-performance.md)

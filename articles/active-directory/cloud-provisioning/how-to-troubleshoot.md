@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: daveba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75549487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360794"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>クラウド プロビジョニングのトラブルシューティング
 

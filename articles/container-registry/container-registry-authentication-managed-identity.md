@@ -3,12 +3,12 @@ title: マネージド ID による認証
 description: ユーザー割り当てまたはシステム割り当て Azure マネージド ID を使用して、プライベート コンテナー レジストリ内のイメージへのアクセス権を付与します。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456497"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259102"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
 
@@ -239,7 +239,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 > * ID に Azure コンテナー レジストリへのアクセス権を付与する
 > * マネージド ID を使用してレジストリにアクセスし、コンテナー イメージをプルする
 
-* 詳細については、「[Azure リソースの管理 ID について](/azure/active-directory/managed-identities-azure-resources/)」を参照してください。
+* 詳細については、「[Azure リソースの管理 ID について](../active-directory/managed-identities-azure-resources/index.yml)」を参照してください。
 
 
 <!-- LINKS - external -->

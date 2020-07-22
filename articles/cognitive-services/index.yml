@@ -11,17 +11,20 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 03/24/2020
-  ms.openlocfilehash: 3c68051c0df1cb2d15a1ef2bac6ea74fbf671f77
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 18c854389122c7e05a84ea0fd42b0cd2fd0c4c1c
+  ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83591796"
+  ms.lasthandoff: 07/10/2020
+  ms.locfileid: "86224368"
 highlightedContent:
   items:
   - title: Cognitive Services とは
     itemType: overview
     url: ./welcome.md
+  - title: ドキュメントの最新情報
+    itemType: whats-new
+    url: whats-new-docs.md
   - title: Cognitive Services と機械学習
     itemType: concept
     url: ./cognitive-services-and-machine-learning.md
@@ -37,9 +40,6 @@ highlightedContent:
   - title: Cognitive Services の仮想ネットワーク
     itemType: architecture
     url: cognitive-services-virtual-networks.md
-  - title: Cognitive Services のカスタム サブドメイン
-    itemType: how-to-guide
-    url: cognitive-services-custom-subdomains.md
   - title: Cognitive Services のセキュリティ
     itemType: concept
     url: cognitive-services-security.md
@@ -59,7 +59,7 @@ conceptualContent:
       text: Face
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: Form Recognizer (プレビュー)
+      text: Form Recognizer
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Ink Recognizer (プレビュー)
@@ -90,9 +90,6 @@ conceptualContent:
     - url: ./speech-service/index.yml
       itemType: overview
       text: Speech サービス
-    - url: ./speaker-recognition/home.md
-      itemType: overview
-      text: Speaker Recognition (プレビュー)
   - title: 決定
     summary: 情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。
     links:

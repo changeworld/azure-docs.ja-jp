@@ -8,19 +8,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582698"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611290"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -120,7 +120,7 @@ Exchange Online を使用する場合は、組織内の一部のユーザーが�
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>監査ログの LicenseAssignmentAttributeConcurrencyException
 
 **問題**:ライセンス割り当ての LicenseAssignmentAttributeConcurrencyException がユーザーの監査ログに記録されています。
-グループベースのライセンスで、ユーザーに対する同じライセンスの同時ライセンス割り当てを処理しようとすると、この例外がユーザーに記録されます。 これは通常、同じライセンスが割り当てられた複数のグループにユーザーが属している場合に発生します。 AZure AD はユーザー ライセンスの処理を再試行し、問題を解決します。 この問題を解決するためにお客様の対処は必要ありません。
+グループベースのライセンスで、ユーザーに対する同じライセンスの同時ライセンス割り当てを処理しようとすると、この例外がユーザーに記録されます。 これは通常、同じライセンスが割り当てられた複数のグループにユーザーが属している場合に発生します。 Azure AD ではユーザー ライセンスの処理が再試行され、問題が解決されます。 この問題を解決するためにお客様の対処は必要ありません。
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>1 つのグループに割り当てられた複数の製品ライセンス
 

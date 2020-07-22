@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010224"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185009"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -20,7 +20,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
 * この FAQ の最後に掲載されているコメントに質問を投稿し、Azure Cache チームや他のコミュニティ メンバーとこの記事についてやり取りすることができます。
-* さらに多くの人と情報交換する場合は、 [Azure Cache MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
+* さらに多くの人と情報交換する場合は、[Azure Cache に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cache-redis.html)に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
 * 機能要求を作成する場合は、要求とアイデアを [Azure Redis Cache のユーザーの声](https://feedback.azure.com/forums/169382-cache)に送信することができます。
 * また、 [Azure Cache 外部フィードバック](mailto:azurecache@microsoft.com)にメールをお送りいただくこともできます。
 
@@ -41,6 +41,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [Azure Cache for Redis のサービス内容と適切なサイズの選択](#what-azure-cache-for-redis-offering-and-size-should-i-use)
 * [Azure Cache for Redis のパフォーマンス](#azure-cache-for-redis-performance)
 * [キャッシュを配置するリージョン](#in-what-region-should-i-locate-my-cache)
+* [キャッシュ データが存在する場所](#where-do-my-cached-data-reside)
 * [Azure Cache for Redis の課金方法](#how-am-i-billed-for-azure-cache-for-redis)
 * [Azure Cache for Redis を Azure Government Cloud、Azure China Cloud、または Microsoft Azure Germany で使用できるか](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
@@ -100,7 +101,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * **ネットワーク パフォーマンス**:高いスループットを必要とするワークロードがある場合、Premium レベルでは、Standard や Basic と比較してより広い帯域幅が提供されます。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、[次の表](#cache-performance)を参照してください。
 * **スループット**:Premium レベルでは、提供されているうちで最大のスループットが提供されます。 キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生する場合があります。 詳細については、後の表を参照してください。
 * **高可用性/SLA**:Azure Cache for Redis では、Standard/Premium キャッシュについて、少なくとも 99.9% の可用性を保証しています。 SLA の詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)についてのページを参照してください。 SLA は、Cache エンドポイントへの接続のみをカバーします。 SLA は、データ損失からの保護には対応していません。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
-* **Redis データの永続化**:Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基になるインフラストラクチャで問題が発生すると、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、Redis 永続化の RDB オプションと AOF オプション (近日提供予定) が用意されています。 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
+* **Redis データの永続化**:Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基になるインフラストラクチャで問題が発生すると、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、Redis 永続化の RDB オプションと AOF オプション (プレビュー) が用意されています。 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
 * **Redis クラスター**:Premium サービス レベルで利用可能な Redis クラスタリングを使用すると、120 GB を超えるキャッシュを作成したり、複数の Redis ノード間でデータをシャード化したりできます。 各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 詳細については、「[How to configure clustering for a Premium Azure Cache for Redis](cache-how-to-premium-clustering.md)」 (Premium Azure Cache for Redis のクラスタリングの構成方法) を参照してください。
 * **セキュリティとネットワークの分離の強化**:Azure Virtual Network (VNET) のデプロイにより、Azure Cache for Redis のセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。 詳細については、[Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)に関するページを参照してください。
 * **Redis の構成**:Standard レベルと Premium レベルのどちらでも、キースペース通知のために Redis を構成できます。
@@ -148,6 +149,13 @@ stunnel の設定や `redis-benchmark.exe` などの Redis ツールのダウン
 
 ### <a name="in-what-region-should-i-locate-my-cache"></a>キャッシュを配置するリージョン
 最大限のパフォーマンスと最短の待機時間を実現するには、キャッシュ クライアント アプリケーションと同じリージョンに Azure Cache for Redis を配置します。
+
+### <a name="where-do-my-cached-data-reside"></a>キャッシュ データが存在する場所
+Azure Cache for Redis は、レベルに応じて、キャッシュをホストする VM の RAM にアプリケーション データを格納します。 データは、既定で選択した Azure リージョンに厳密に格納されます。 データがリージョンの外に出る可能性があるケースが 2 つあります。
+  1. キャッシュでの永続化を有効にすると、Azure Cache for Redis によって、自分が所有している Azure Storage アカウントにデータがバックアップされます。 指定したストレージ アカウントがたまたま別のリージョンにある場合、データのコピーは最終的にはそこに格納されます。
+  1. geo レプリケーションを設定し、セカンダリ キャッシュが別のリージョンにある場合 (通常はこのケース)、データはそのリージョンにレプリケートされます。
+
+これらの機能を使用するように、Azure Cache for Redis を明示的に構成する必要があります。 また、ストレージ アカウントまたはセカンダリ キャッシュが配置されているリージョンを完全に制御することもできます。
 
 <a name="cache-billing"></a>
 
@@ -213,22 +221,23 @@ Redis のメリットの 1 つが、クライアントが多数存在してお�
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Azure Cache for Redis のローカル エミュレーターの有無について
 Azure Cache for Redis のローカル エミュレーターがなくても、ローカル コンピューターの [Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)から、redis-server.exe の MSOpenTech のバージョンを実行して接続し、以下の例のように、ローカル キャッシュ エミュレーターと同じような使い心地を得ることができます。
 
-    private static Lazy<ConnectionMultiplexer>
-          lazyConnection = new Lazy<ConnectionMultiplexer>
-        (() =>
-        {
-            // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
-            return ConnectionMultiplexer.Connect("127.0.0.1:6379");
-        });
+```csharp
+private static Lazy<ConnectionMultiplexer>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
+    {
+        // Connect to a locally running instance of Redis to simulate
+        // a local cache emulator experience.
+        return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+    });
 
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
-        }
-
+public static ConnectionMultiplexer Connection
+{
+    get
+    {
+        return lazyConnection.Value;
+    }
+}
+```
 
 必要に応じて、オンラインの Azure Cache for Redis の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより正確に一致するように、[redis.conf](https://redis.io/topics/config) ファイルを構成します。
 
@@ -289,7 +298,7 @@ Redis サーバーはネイティブで TLS をサポートしませんが、Azu
 >
 >
 
-`redis-cli` などの Redis ツールは TLS ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを TLS ポートに安全に接続することができます。詳細については、[Redis のプレビュー リリース用の ASP.NET セッション状態プロバイダーの発表](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
+`redis-cli` などの Redis ツールは TLS ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを TLS ポートに安全に接続することができます。詳細については、[Redis のプレビュー リリース用の ASP.NET セッション状態プロバイダーの発表](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)に関するブログ記事を参照してください。
 
 Redis ツールのダウンロードの詳細については、「 [Redis コマンドの実行方法](#cache-commands) 」セクションを参照してください。
 
@@ -366,10 +375,12 @@ CLR ThreadPool には、"Worker" スレッドと "I/O Completion Port" (IOCP) �
 
 StackExchange.Redis (ビルド 1.0.450 以降) からのエラー メッセージの例を見れば、ThreadPool の統計情報が出力されていることがわかります (IOCP と WORKER に関する下記の詳細を参照)。
 
-    System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
-    queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
-    IOCP: (Busy=6,Free=994,Min=4,Max=1000),
-    WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
+System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
+queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
+IOCP: (Busy=6,Free=994,Min=4,Max=1000),
+WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
 
 前の例では、IOCP スレッドについて、6 つのビジー スレッドが存在し、システムは 4 つの最小スレッドを許容するように構成されていることがわかります。 この場合、6 > 4 であることから、クライアントは 500 ミリ秒の遅延を 2 回検出している可能性があります。
 
@@ -383,20 +394,20 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 * この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 次に例を示します。
 
-```cs
-private readonly int minThreads = 200;
-void Application_Start(object sender, EventArgs e)
-{
-    // Code that runs on application startup
-    AreaRegistration.RegisterAllAreas();
-    RouteConfig.RegisterRoutes(RouteTable.Routes);
-    BundleConfig.RegisterBundles(BundleTable.Bundles);
-    ThreadPool.SetMinThreads(minThreads, minThreads);
-}
-```
+    ```csharp
+    private readonly int minThreads = 200;
+    void Application_Start(object sender, EventArgs e)
+    {
+        // Code that runs on application startup
+        AreaRegistration.RegisterAllAreas();
+        RouteConfig.RegisterRoutes(RouteTable.Routes);
+        BundleConfig.RegisterBundles(BundleTable.Bundles);
+        ThreadPool.SetMinThreads(minThreads, minThreads);
+    }
+    ```
 
-  > [!NOTE]
-  > このメソッドによって指定された値はグローバル設定であり、AppDomain 全体に影響を与えます。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minWorkerThreads* および *minIoThreads* を CPU あたり 50 に設定したい場合は、**ThreadPool.SetMinThreads(200, 200)** を使用します。
+    > [!NOTE]
+    > このメソッドによって指定された値はグローバル設定であり、AppDomain 全体に影響を与えます。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minWorkerThreads* および *minIoThreads* を CPU あたり 50 に設定したい場合は、**ThreadPool.SetMinThreads(200, 200)** を使用します。
 
 * 最小スレッド数の設定は、通常、`%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` にある `Machine.config` 内の `<processModel>` 構成要素の下にある [*minIoThreads* または *minWorkerThreads* 構成設定](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx)を使用して指定することもできます。 **この方法で最小スレッド数を設定する方法は、一般的はにお勧めできません。これはシステム全体の設定だからです。**
 
@@ -452,7 +463,7 @@ Azure Cache for Redis の **[リソース] メニュー**にも、キャッシ�
   * 帯域幅のしきい値制限に達した。
   * CPU バインド型の操作の完了に時間がかかった。
 * サーバー側の原因
-  * Standard キャッシュ プランで、Azure Cache for Redis サービスがプライマリ ノードからセカンダリ ノードへのフェールオーバーを開始した。
+  * Standard キャッシュ プランで、Azure Cache for Redis サービスがプライマリ ノードからレプリカ ノードへのフェールオーバーを開始した。
   * Azure により、キャッシュがデプロイされているインスタンスに修正プログラムが適用されていた。
     * Redis サーバーの更新または VM の一般的なメンテナンスの場合もこれに該当します。
 

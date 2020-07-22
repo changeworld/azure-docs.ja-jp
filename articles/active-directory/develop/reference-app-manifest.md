@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81450885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479251"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -153,7 +153,7 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
     "appRoles": [
         {
            "allowedMemberTypes": [
-               "User"
+               "User"
            ],
            "description": "Read-only access to device information",
            "displayName": "Read Only",
@@ -432,7 +432,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 | :--- | :--- |
 | parentalControlSettings | String |
 
-- `countriesBlockedForMinors` は、未成年者に関してアプリがブロックされる国を指定します。
+- `countriesBlockedForMinors` は、未成年者に関してアプリがブロックされる国/地域を指定します。
 - `legalAgeGroupRule` は、アプリのユーザーに適用される法的年齢グループ ルールを指定します。 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids`、`BlockMinors` のいずれかに設定できます。  
 
 例:

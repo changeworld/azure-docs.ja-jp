@@ -2,21 +2,21 @@
 title: チュートリアル - テンプレートの作成とデプロイ
 description: 初めての Azure Resource Manager テンプレートを作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 05/20/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714799"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102089"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>チュートリアル:初めての ARM テンプレートを作成してデプロイする
 
 このチュートリアルでは、Azure Resource Manager (ARM) テンプレートについて取り上げます。 スターター テンプレートを作成して Azure にデプロイする方法を紹介します。 テンプレートの構造のほか、テンプレートを扱う際に必要なツールについても説明します。 このチュートリアルの所要時間は約 **12 分**ですが、実際の時間は、インストールする必要のあるツールの数によって変化します。
 
-これは、シリーズの最初のチュートリアルです。 シリーズを進めながら、最初のテンプレートに少しずつ変更を加えていき、最終的には ARM テンプレートの核となるすべての要素に触れられるようになっています。 それらの要素は、はるかに複雑なテンプレートの構成要素となります。 シリーズの最後には、独自のテンプレートを作成したり、テンプレートを使ってデプロイを自動化したりする自信が持てるようになればさいわいです。
+これは、シリーズの最初のチュートリアルです。 シリーズを進めながら、ARM テンプレートの核となる部分がすべてわかるまで、開始時のテンプレートを段階的に変更していきます。 それらの要素は、はるかに複雑なテンプレートの構成要素となります。 シリーズの最後には、独自のテンプレートを作成したり、テンプレートを使ってデプロイを自動化したりする自信が持てるようになればさいわいです。
 
 テンプレートを使用する利点と、テンプレートを使用してデプロイを自動化すべき理由について知りたい場合は、「[Azure Resource Manager のテンプレート](overview.md)」を参照してください。
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="editor"></a>エディター
 
-テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、[Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ### <a name="command-line-deployment"></a>コマンド ライン デプロイ
 
@@ -37,8 +37,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [Azure PowerShell をインストールするには](/powershell/azure/install-az-ps)
 - [Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)
 - [Linux での Azure CLI のインストール](/cli/azure/install-azure-cli-linux)
+- [macOS での Azure CLI のインストール](/cli/azure/install-azure-cli-macos)
 
 Azure PowerShell または Azure CLI をインストールした後で、初回サインインを行います。 ヘルプ情報については、[PowerShell でのサインイン](/powershell/azure/install-az-ps#sign-in)または [Azure CLI でのサインイン](/cli/azure/get-started-with-azure-cli#sign-in)に関するセクションを参照してください。
+
+> [!IMPORTANT]
+> Azure CLI を使用している場合、バージョン 2.6 以降であることを確認してください。 以前のバージョンを使用している場合、このチュートリアルで示されるコマンドが機能しません。 インストールされているバージョンを確認するには、`az --version` を使用します。
 
 テンプレートについて学習を始める準備が整いました。
 

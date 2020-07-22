@@ -6,15 +6,16 @@ author: trevorbye
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: trbye
 ms.date: 03/05/2020
-ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: 25c0f906cdf8a351d868dcae0b794d4ea833466e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78396143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560238"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning でログ記録を有効にする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

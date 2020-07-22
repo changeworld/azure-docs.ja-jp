@@ -3,15 +3,15 @@ title: ユーザー アクセスを Azure Cosmos DB でのデータ操作のみ�
 description: アクセスを Azure Cosmos DB でのデータ操作のみに制限する方法について説明します
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74980020"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261224"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>ユーザー アクセスをデータ操作のみに制限する
 
@@ -19,7 +19,9 @@ Azure Cosmos DB では、データベース サービスとの対話を認証す
 - Azure portal と対話するときに Azure Active Directory ID を使用する。
 - API および SDK からの呼び出しを発行するときに Azure Cosmos DB の[キー](secure-access-to-data.md#master-keys)または[リソース トークン](secure-access-to-data.md#resource-tokens)を使用する。
 
-各認証方法では、さまざまな操作のセットにアクセスできますが、いくつかの重複があります。![認証の種類ごとの操作の分割](./media/how-to-restrict-user-data/operations.png)
+各認証方法では、さまざまな操作のセットにアクセスできますが、いくつかの重複があります。
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="認証の種類ごとの操作の分割" border="false":::
 
 場合によっては、組織の一部のユーザーに対して、データ操作 (CRUD 要求とクエリ) のみを実行するように制限することができます。 これは、通常、リソースを作成または削除したり、作業中のコンテナーのプロビジョニングされたスループットを変更したりする必要がない開発者の場合に当てはまります。
 

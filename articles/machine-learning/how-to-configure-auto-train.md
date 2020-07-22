@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 自動機械学習は、アルゴリズムを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションについて説明します。
 author: cartacioS
 ms.author: sacartac
-ms.reviewer: sgilley
+ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 03/09/2020
-ms.custom: seodec18
-ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.topic: how-to
+ms.date: 05/20/2020
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833691"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "82993709"
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
-実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。 [タスクの種類](how-to-define-task-type.md)についての詳細情報を参照してください。
+実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。 [タスクの種類](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)についての詳細情報を参照してください。
 
 自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。
 
@@ -58,12 +58,10 @@ ms.locfileid: "82993709"
 [ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN 線形分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[高速線形リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[オンライン勾配降下リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-|[平均化パーセプトロン分類子](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[Linear SVM Classifier](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
+[平均化パーセプトロン分類子](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)|[オンライン勾配降下リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest) |[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[高速線形リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[Linear SVM Classifier](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)*||
 
 `AutoMLConfig` コンストラクターで `task` パラメーターを使用して、実験の種類を指定します。
 
@@ -117,11 +115,13 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="train-and-validation-data"></a>データをトレーニングして検証する
 
-`AutoMLConfig` コンストラクターでは、個別のトレーニングおよび検証セットを直接指定できます。
+`AutoMLConfig` コンストラクターでは、次のオプションを使用して個別のトレーニングおよび検証セットを直接指定できます。 AutoML 実験用に[データの分割とクロス検証を構成する方法](how-to-configure-cross-validation-data-splits.md)に関するページをご確認ください。 
 
 ### <a name="k-folds-cross-validation"></a>K フォールド クロス検証
 
 `n_cross_validations` の設定を使用して、クロス検証の数を指定します。 トレーニング データ セットは、等しいサイズの `n_cross_validations` 個のフォールドにランダムに分割されます。 各クロス検証ラウンドの間に、フォールドの 1 つが、残りのフォールドでトレーニングされたモデルの検証に使用されます。 各フォールドが検証セットとして 1 回使用されるまで、このプロセスが `n_cross_validations` ラウンドに対して繰り返されます。 すべての `n_cross_validations` ラウンドの平均スコアがレポートされ、対応するモデルがトレーニング データ セット全体で再トレーニングされます。
+
+AutoML がクロス検証を適用して、[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-over-fitting)する方法の詳細について説明します。
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>モンテカルロ クロス検証 (反復ランダム サブサンプリング)
 
@@ -135,7 +135,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 次に、モデルをトレーニングする場所を決定します。 自動機械学習のトレーニング実験は、次のコンピューティング オプションで実行できます。
 * ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
-* クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
+* クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。 
 
   ローカルとリモートのコンピューティング先を使用したノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
 
@@ -195,15 +195,15 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>データの特徴付け
 
-すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-use-automated-ml-for-ml-models.md#featurization)から参照してください。
+すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](how-to-configure-auto-features.md#)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。
 
-実験を構成するときに、詳細設定の `featurization` を有効にすることができます。 次の表は、[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)の特徴付けで許可されている設定です。
+`AutoMLConfig` オブジェクトで実験を構成するときに、設定 `featurization` の有効と無効を切り替えることができます。 次の表は、[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)の特徴付けで許可されている設定です。
 
 |特徴付けの構成 | 説明 |
 | ------------- | ------------- |
-|`"featurization":`&nbsp;`'FeaturizationConfig'`| カスタマイズされた特徴付け手順を使用する必要があることを示します。 [特徴付けをカスタマイズする方法の詳細](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴付けの手順](how-to-configure-auto-features.md#featurization)が自動的に実行されることを示します。 **既定の設定**|
 |`"featurization": 'off'`| 特徴付け手順が自動的に実行されないことを示します。|
-|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴付けの手順](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options)が自動的に実行されることを示します。|
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| カスタマイズされた特徴付け手順を使用する必要があることを示します。 [特徴付けをカスタマイズする方法の詳細](how-to-configure-auto-features.md#customize-featurization)。|
 
 > [!NOTE]
 > 自動化された機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。
@@ -250,16 +250,26 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 アンサンブル モデルは既定で有効になっており、自動化された機械学習の実行での最終実行イテレーションとして表示されます。 現在サポートされているアンサンブル法は、投票とスタッキングです。 投票は加重平均を使用したソフト投票として実装され、スタッキング実装は 2 層の実装を使用します。ここでは、第 1 層は投票アンサンブルと同じモデルを持ち、第 2 層のモデルは、第 1 層からのモデルの最適な組み合わせを見つけるために使用されます。 ONNX モデルを使用している場合、**または**モデルの説明を有効にしている場合、スタッキングは無効になり、投票だけが使用されます。
 
-既定のスタッキング アンサンブル動作を変更するために、`AutoMLConfig` オブジェクトに `kwargs` として提供できる既定の引数が複数あります。
+既定のアンサンブル動作を変更するために、`AutoMLConfig` オブジェクトに `kwargs` として提供できる既定の引数が複数あります。
+
+* `ensemble_download_models_timeout_sec`:**VotingEnsemble** と **StackEnsemble** モデルの生成中に、以前の子実行の複数の適合モデルがダウンロードされます。 `AutoMLEnsembleException: Could not find any models for running ensembling` のエラーが発生した場合は、モデルのダウンロードにより長い時間が必要になることがあります。 既定値は、これらのモデルを並列でダウンロードする場合は 300 秒で、タイムアウトの上限はありません。 より長い時間が必要な場合は、このパラメーターを 300 秒より大きい値に設定します。 
+
+  > [!NOTE]
+  >  タイムアウトに達し、ダウンロードしたモデルがある場合は、アンサンブルはダウンロードしたモデルと同じ数だけ処理を続行します。 そのタイムアウト以内にすべてのモデルのダウンロードを終える必要はありません。
+
+次のパラメーターは、**StackEnsemble** モデルにのみ適用されます。 
 
 * `stack_meta_learner_type`: メタ学習器は、個々の異種モデルの出力でトレーニングされたモデルです。 既定のメタ学習器は、分類タスクには `LogisticRegression` (またはクロス検証が有効になっている場合は `LogisticRegressionCV`) で、回帰/予測タスクには `ElasticNet` (またはクロス検証が有効になっている場合は `ElasticNetCV`) です。 このパラメーターは、`LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`、または `LinearRegression` のいずれかの文字列になります。
-* `stack_meta_learner_train_percentage`: メタ学習器のトレーニング用に予約されるトレーニング セットの割合を指定します。(トレーニングと、トレーニングの検証の種類を選択する場合)。 既定値は `0.2` です。
+
+* `stack_meta_learner_train_percentage`: メタ学習器のトレーニング用に予約されるトレーニング セットの割合を指定します。(トレーニングと、トレーニングの検証の種類を選択する場合)。 既定値は `0.2` です。 
+
 * `stack_meta_learner_kwargs`: メタ学習器の初期化子に渡す省略可能なパラメーター。 これらのパラメーターとパラメーターの型は、対応するモデル コンストラクターからのパラメーターとパラメーターの型を反映しており、モデル コンストラクターに転送されます。
 
 次のコードは、`AutoMLConfig` オブジェクトでカスタムのアンサンブル動作を指定する例を示します。
 
 ```python
 ensemble_settings = {
+    "ensemble_download_models_timeout_sec": 600
     "stack_meta_learner_type": "LogisticRegressionCV",
     "stack_meta_learner_train_percentage": 0.3,
     "stack_meta_learner_kwargs": {
@@ -334,6 +344,8 @@ run = experiment.submit(automl_config, show_output=True)
 
 トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-track-experiments.md#view-run-details)に関するセクションをご覧ください。
 
+Web サービスにデプロイするためのモデルをダウンロードまたは登録する方法の詳細については、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
+
 ## <a name="understand-automated-ml-models"></a>自動化された ML モデルを理解する
 
 自動化された ML を使用して生成されたモデルには、次の手順が含まれます。
@@ -350,7 +362,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>自動化された特徴エンジニア リング
 
-`"featurization": 'auto'` の場合に実行される前処理および[自動化された特徴エンジニアリング](concept-automated-ml.md#preprocess)の一覧を参照してください。
+`"featurization": 'auto'` の場合に実行される前処理および[自動化された特徴エンジニアリング]()の一覧を参照してください。
 
 次の例を考えてみましょう。
 + 次の 4 つの入力特徴があります。A (数値)、B (数値)、C (数値)、D (日時)
@@ -419,36 +431,9 @@ best_run, fitted_model = automl_run.get_output()
    |Dropped|入力特徴がドロップされたか、または使用されたかを示す。|
    |EngineeringFeatureCount|自動化された特徴エンジニアリングの変換によって生成された特徴の数。|
    |変換|エンジニアリングされた特徴を生成するために入力特徴に適用される変換の一覧。|
-   
-### <a name="customize-feature-engineering"></a>特徴エンジニアリングをカスタマイズする
-特徴エンジニアリングをカスタマイズするには、 `"featurization": FeaturizationConfig` を指定します。
-
-サポートされているカスタマイズは次のとおりです。
-
-|カスタマイズ|定義|
-|--|--|
-|列の目的の更新|指定した列の特徴の種類をオーバーライドします。|
-|トランスフォーマー パラメーターの更新 |指定したトランスフォーマーのパラメーターを更新します。 現在、Imputer (平均値、最頻値、中央値) と HashOneHotEncoder がサポートされています。|
-|列の削除 |特徴付けされない列です。|
-|ブロック トランスフォーマー| 特徴付けプロセスで使用されるトランスフォーマーをブロックします。|
-
-API 呼び出しを使用して、FeaturizationConfig オブジェクトを作成します。
-```python
-featurization_config = FeaturizationConfig()
-featurization_config.blocked_transformers = ['LabelEncoder']
-featurization_config.drop_columns = ['aspiration', 'stroke']
-featurization_config.add_column_purpose('engine-size', 'Numeric')
-featurization_config.add_column_purpose('body-style', 'CategoricalHash')
-#default strategy mean, add transformer param for for 3 columns
-featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
-featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
-```
-
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム:
 
-パイプラインのスケーリング/正規化およびアルゴリズム/ハイパーパラメーター値を理解するには、fitted_model.steps を使用します。 [スケーリング/正規化の詳細については、こちらを参照してください](concept-automated-ml.md#preprocess)。 出力例を次に示します。
+パイプラインのスケーリング/正規化およびアルゴリズム/ハイパーパラメーター値を理解するには、fitted_model.steps を使用します。 [スケーリング/正規化の詳細については、こちらを参照してください]()。 出力例を次に示します。
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
@@ -526,8 +511,12 @@ class_prob = fitted_model.predict_proba(X_test)
 
 自動機械学習ではない SDK の他の領域で、モデルの説明と特徴の重要度を有効にする方法の一般情報については、解釈可能性の[概念](how-to-machine-learning-interpretability.md)に関する記事を参照してください。
 
+> [!NOTE]
+> 現在、ForecastTCN モデルは説明クライアントではサポートされていません。 このモデルが最適なモデルとして返された場合、説明ダッシュボードは返されず、オンデマンドでの説明の実行はサポートされません。
+
 ## <a name="next-steps"></a>次のステップ
 
-[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
++ [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 
-[自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。
++ [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。
++ [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010887"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184771"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -59,18 +59,21 @@ Premium 価格レベルを選択すると、キャッシュと同じサブスク
 
 VNet の使用時に Azure Cache for Redis インスタンスに接続するには、次の例に示すように、接続文字列でキャッシュのホスト名を指定します。
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+```csharp
+private static Lazy<ConnectionMultiplexer>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
     {
         return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
     });
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
+```
 
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Azure Cache for Redis VNet の FAQ
 次の一覧は、Azure Cache for Redis のスケーリングに関するよく寄せられる質問への回答です。
@@ -96,7 +99,7 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 
 #### <a name="outbound-port-requirements"></a>送信ポートの要件
 
-送信ポートには 9 個の要件があります。 これらの範囲内の送信要求は、キャッシュが機能するために必要な他のサービスに送信されるか、またはノード間通信のために Redis サブネットの内部に送信されます。 geo レプリケーションの場合は、プライマリ キャッシュとセカンダリ キャッシュのサブネット間の通信のための追加の送信要件が存在します。
+送信ポートには 9 個の要件があります。 これらの範囲内の送信要求は、キャッシュが機能するために必要な他のサービスに送信されるか、またはノード間通信のために Redis サブネットの内部に送信されます。 geo レプリケーションの場合は、プライマリ キャッシュとレプリカ キャッシュのサブネット間の通信のための追加の送信要件が存在します。
 
 | ポート | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |

@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: overview
 ms.workload: identity
 ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db158a50cfc164a0fc839e858cc6e7c46558eb77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551595"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>開発者向け Azure Active Directory (v1.0) の概要
 
@@ -29,11 +29,8 @@ Azure Active Directory (Azure AD) はクラウドの ID サービスです。開
 > [!NOTE]
 > このページの内容の大部分では、v1.0 エンドポイントおよびプラットフォームを重点的に取り上げていますが、このエンドポイントおよびプラットフォームでサポートされるのは、Microsoft の職場または学校アカウントだけです。 コンシューマー用または個人用 Microsoft アカウントでのサインインに対応する必要がある場合は、[v2.0 エンドポイントおよびプラットフォーム](../develop/v2-overview.md)に関する情報を参照してください。 v2.0 エンドポイントでは、Microsoft のすべての ID でサインイン可能なアプリを開発できるように、統合された開発者エクスペリエンスが提供されています。
 
-| | |
-| --- | --- |
-|[認証の基本](v1-authentication-scenarios.md) | Azure AD での認証の概要。 |
-|[アプリケーションの種類](app-types.md) | Azure AD でサポートされる認証シナリオの概要。 |
-| | |
+- [認証の基本](v1-authentication-scenarios.md) Azure AD での認証の概要。
+- [アプリケーションの種類](app-types.md) Azure AD でサポートされる認証シナリオの概要。
 
 ## <a name="get-started"></a>はじめに
 
@@ -47,12 +44,9 @@ v1.0 のクイック スタートおよびチュートリアルでは、Azure AD
 
 次の記事には、Azure AD で使用される API、プロトコル メッセージ、用語に関する詳細な情報が記載されています。
 
-|                                                                                   | |
-| ----------------------------------------------------------------------------------| --- |
-| [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)   | Azure AD が提供するライブラリと SDK の概要。 |
-| [コード サンプル](sample-v1-code.md)                                  | Azure AD のコード サンプルの全一覧。 |
-| [用語集](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | このドキュメント全体で使用されている用語と語句の定義。 |
-|  |  |
+- [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md) Azure AD が提供するライブラリと SDK の概要。
+- [コード サンプル](sample-v1-code.md) Azure AD のコード サンプルの全一覧。
+- [用語集](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) このドキュメント全体で使用されている用語と語句の定義。
 
 ## <a name="videos"></a>ビデオ
 

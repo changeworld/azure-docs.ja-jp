@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
-ms.date: 03/23/2020
-ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.date: 06/16/2020
+ms.openlocfilehash: c9767942c893017e98e3013f92022f058524e13c
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235381"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078999"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics での JavaScript ユーザー定義関数
  

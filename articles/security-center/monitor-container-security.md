@@ -6,30 +6,19 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801378"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>コンテナーのセキュリティを監視する
+# <a name="monitor-the-security-of-your-containers"></a>コンテナーのセキュリティを監視する
 
 このページでは、概要のセクションにある[コンテナーのセキュリティに関する記事](container-security.md)で説明されているコンテナー セキュリティ機能の使用方法について説明します。
 
-Azure Security Center では、コンテナー セキュリティの次の 3 つの側面に対応しています。
-
-- **脆弱性の管理** - Security Center の Standard 価格レベルを使用している場合 ([価格](/azure/security-center/security-center-pricing)に関するページを参照)、新しいイメージがプッシュされるたびに ARM ベースの Azure コンテナー レジストリをスキャンできます。 (Qualys を利用した) スキャナーでは、Security Center の推奨事項として結果が示されます。
-    詳細な手順については、「[コンテナー レジストリの脆弱性をスキャンする](#scanning-your-arm-based-container-registries-for-vulnerabilities)」を参照してください。
-
-- **コンテナーの Docker ホストの強化** - Security Center では、IaaS Linux VM または Docker を実行している他の Linux マシン上でホストされているアンマネージド コンテナーが検出され、コンテナーの構成と Center for Internet Security (CIS) Docker Benchmark が継続的に比較されます。 コンテナーがどのコントロールにも適合していない場合は、Security Center によって警告されます。 誤った構成に起因するセキュリティ リスクの継続的な監視は、セキュリティ プログラムの重要な要素です。 
-    詳細な手順については、後述する「[コンテナーの Docker ホストを強化する](#hardening-your-containers-docker-hosts)」を参照してください。
-
-- **Azure Kubernetes Service クラスターの強化** - Azure Kubernetes Service クラスターの構成内に脆弱性が検出された場合、Security Center では推奨事項を提供します。 表示される可能性のある特定の推奨事項の詳細については、[Kubernetes サービスの推奨事項](recommendations-reference.md#recs-containers)に関する記事を参照してください。
-
-- **ランタイムの保護** - Security Center の Standard 価格レベルを使用している場合は、コンテナー化された環境に対してリアルタイムでの脅威の防止が行われます。 Security Center では、ホストおよび AKS クラスター レベルでの不審なアクティビティに対して、アラートを生成します。 表示される可能性がある関連のセキュリティ アラートの詳細については、アラートの参照テーブルの「[Azure Kubernetes Service クラスターのアラート](alerts-reference.md#alerts-akscluster)」と「[コンテナーのアラート - ホスト レベル](alerts-reference.md#alerts-containerhost)」のセクションを参照してください。
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>ARM ベース コンテナー レジストリの脆弱性をスキャンする 
 

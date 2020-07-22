@@ -4,19 +4,19 @@ description: セキュリティで保護された Azure マネージド ワー�
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252782"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>セキュリティで保護された Azure マネージド ワークステーションのデプロイ
 

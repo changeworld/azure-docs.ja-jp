@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 04/17/2020
-ms.openlocfilehash: 3abec9b0c37e0475e369ce3cd2f91e40a1040b75
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 05/25/2020
+ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628965"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848891"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -51,6 +51,8 @@ ms.locfileid: "82628965"
 
 [参照変換](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
+[参照変換の更新情報とヒント](https://youtu.be/MBskWoeuTLw)
+
 [Pivot transformation (ピボット変換)](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
 [Pivot transformation: mapping drifted columns (ピボット変換: 誤差のある列のマッピング)](https://youtu.be/5MygzCX0wnM)
@@ -58,6 +60,8 @@ ms.locfileid: "82628965"
 [Select transformation (選択変換)](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
 [Select transformation:Rule-based mapping (選択変換: ルールベースのマッピング)](https://youtu.be/5lf1lh1qMwU)
+
+[Select transformation:大規模なデータセット](https://www.youtube.com/watch?v=R5ea2_R0ouc)
 
 [Surrogate key transformation (代理キー変換)](https://www.youtube.com/watch?v=ISpegL9CbTM)
 
@@ -148,6 +152,8 @@ ms.locfileid: "82628965"
 [Logical Models vs. Physical Models (論理モデルと物理モデル)](http://youtu.be/K5tgzLjEE9Q)
 
 [Detect source data changes (ソース データの変更の検出)](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+[ジェネリック型 2 緩やかに変化するディメンション](http://youtu.be/tc283k8CWh8)
 
 ## <a name="data-flow-expressions"></a>データ フローの式
 

@@ -3,16 +3,16 @@ title: Azure Files のパフォーマンスのトラブルシューティング 
 description: Azure ファイル共のパフォーマンスに関する既知の問題と、関連する回避策。
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511962"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング
 

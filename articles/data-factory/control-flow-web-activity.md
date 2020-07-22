@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417897"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017666"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -70,7 +70,7 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 -------- | ----------- | -------------- | --------
 name | Web アクティビティの名前 | String | はい
 type | **WebActivity** に設定する必要があります。 | String | はい
-method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされるタイプ: "GET"、"POST"、"PUT" | はい
+method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされている型"GET"、"POST"、"PUT" | はい
 url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。 | はい
 headers | 要求に送信されるヘッダー。 たとえば、要求で言語と種類を設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列 (または文字列の resultType を含む式) | あり。Content-type ヘッダーが必要です。 `"headers":{ "Content-Type":"application/json"}`
 body | エンドポイントに送信されるペイロードを表します。  | 文字列 (または文字列の resultType を含む式)。 <br/><br/>「[要求ペイロードのスキーマ](#request-payload-schema)」セクションにある要求ペイロードのスキーマを参照してください。 | POST/PUT メソッドには必須です。
@@ -161,7 +161,7 @@ POST/PUT メソッドを使用する場合、body プロパティは、エンド
 ```
 
 ## <a name="example"></a>例
-この例では、パイプライン内の Web アクティビティが REST エンドポイントを呼び出します。 Azure SQL リンクされたサービスと Azure SQL データセットがエンドポイントに渡されます。 REST エンドポイントは、Azure SQL 接続文字列を使用して Azure SQL サーバーに接続し、SQL サーバーのインスタンスの名前を返します。
+この例では、パイプライン内の Web アクティビティが REST エンドポイントを呼び出します。 Azure SQL リンクされたサービスと Azure SQL データセットがエンドポイントに渡されます。 REST エンドポイントは、Azure SQL 接続文字列を使用して論理 SQL サーバーに接続し、SQL サーバーのインスタンスの名前を返します。
 
 ### <a name="pipeline-definition"></a>パイプラインの定義
 

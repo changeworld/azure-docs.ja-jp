@@ -3,17 +3,17 @@ title: Azure Application Insights を使用してライブ ASP.NET Web アプリ
 description: Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミスまたは VM でホストされた ASP.NET Web アプリが対象です。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536830"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166384"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
 > [!IMPORTANT]
-> Status Monitor の使用は推奨されなくなりました。 これは Azure Monitor Application Insights エージェント (旧称 Status Monitor v2) に置き換えられました。 [オンプレミス サーバーのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)または [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)に関するドキュメントを参照してください。
+> Status Monitor の使用は推奨されなくなり、**2021 年 6 月 1 日以降**、このバージョンの Status Monitor はサポートされません。 これは Azure Monitor Application Insights エージェント (旧称 Status Monitor v2) に置き換えられました。 [オンプレミス サーバーのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)または [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)に関するドキュメントを参照してください。
 
 Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 [Microsoft Azure](https://azure.com) サブスクリプションが必要です。
 
@@ -39,14 +39,14 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
 |  | ビルド時 | 実行時 |
 | --- | --- | --- |
-| 要求と例外 |はい |はい |
-| [より詳細な例外](../../azure-monitor/app/asp-net-exceptions.md) | |はい |
-| [依存関係の診断](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
-| [システム パフォーマンス カウンター](../../azure-monitor/app/performance-counters.md) |はい |はい |
-| [カスタム テレメトリの API][api] |はい |いいえ |
-| [トレース ログ統合](../../azure-monitor/app/asp-net-trace-logs.md) |はい |いいえ |
-| [ページ ビューとユーザー データ](../../azure-monitor/app/javascript.md) |はい |いいえ |
-| コードのリビルドが必要 |はい | いいえ |
+| **要求と例外** |はい |はい |
+| **[より詳細な例外](../../azure-monitor/app/asp-net-exceptions.md)** | |はい |
+| **[依存関係の診断](../../azure-monitor/app/asp-net-dependencies.md)** |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
+| **[システム パフォーマンス カウンター](../../azure-monitor/app/performance-counters.md)** |はい |はい |
+| **[カスタム テレメトリの API][api]** |はい |いいえ |
+| **[トレース ログ統合](../../azure-monitor/app/asp-net-trace-logs.md)** |はい |いいえ |
+| **[ページ ビューとユーザー データ](../../azure-monitor/app/javascript.md)** |はい |いいえ |
+| **コードのリビルドが必要** |はい | いいえ |
 
 
 
@@ -92,13 +92,14 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 
 - applicationInsights.config ファイルがターゲット アプリ ディレクトリ内に存在し、お客様の ikey を含んでいることを確認します。
 
-- データがないと思われる場合は、[Analytics](../log-query/get-started-portal.md) で単純なクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
+- データがないと思われる場合は、[Analytics](../log-query/get-started-portal.md) でクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
 - Application Insights が正常にアタッチされたことを確認する必要がある場合は、コマンド ウィンドウで [Sysinternals の Handle](https://docs.microsoft.com/sysinternals/downloads/handle) を実行して、applicationinsights.dll が IIS によって読み込まれたことを確認できます。
-  ```cmd
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
@@ -109,7 +110,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 
 ### <a name="unable-to-login"></a>ログインできない
 
-* Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。
+Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -192,7 +193,9 @@ IIS のサポート:IIS 7、7.5、8、8.5 (IIS は必須)。
 
 最初に Application Insights モジュールをインポートします。
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 監視されているアプリを特定します。
 
@@ -221,12 +224,14 @@ IIS のサポート:IIS 7、7.5、8、8.5 (IIS は必須)。
     最新バージョンをダウンロードするには、Update-ApplicationInsightsVersion を使用してください。
 * 成功すると `ApplicationInsightsApplication` が返されます。 失敗した場合、トレースが stderr に出力されます。
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 
@@ -298,7 +303,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
  * 依存関係の呼び出し (.NET 4.5) と、依存関係の呼び出しの戻り値 (.NET 4.6)。
  * 例外スタック トレースの値。
 
-[詳細情報](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[詳細情報](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>ビデオ
 

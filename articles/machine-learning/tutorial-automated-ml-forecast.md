@@ -1,5 +1,5 @@
 ---
-title: 自動 ML 実験で自転車シェアリング需要を予測する
+title: 'チュートリアル: 需要予測と AutoML'
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Studio で自動機械学習を使用して需要予測モデルをトレーニングおよびデプロイする方法について説明します。
 services: machine-learning
@@ -9,24 +9,27 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 01/27/2020
-ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 06/04/2020
+ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77088326"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433701"
 ---
-# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して自転車シェアリング需要を予測する
+# <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 このチュートリアルでは、Azure Machine Learning Studio で自動機械学習 (自動 ML) を使用して、自転車シェアリング サービスのレンタル需要を予測するための時系列予測モデルを作成します。
+
+分類モデルの例については、「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」を参照してください。
 
 このチュートリアルでは、次のタスクを実施する方法について説明します。
 
 > [!div class="checklist"]
 > * データセットを作成して読み込む。
 > * 自動 ML 実験を構成して実行する。
+> * 予測設定を指定する。
 > * 実験結果を調べる。
 > * 最適なモデルをデプロイする。
 
@@ -121,7 +124,7 @@ ms.locfileid: "77088326"
 
     1. **[次へ]** を選択します。
 
-## <a name="select-task-type-and-settings"></a>タスクの種類と設定を選択する
+## <a name="select-forecast-settings"></a>予測設定を選択する
 
 機械学習のタスクの種類と構成設定を指定して、自動 ML 実験の設定を完了します。
 
@@ -129,7 +132,7 @@ ms.locfileid: "77088326"
 
 1. **[時刻列]** として **[date]** を選択し、 **[グループ化列]** を空白のままにします。 
 
-    1. **[View additional configuration settings]\(追加の構成設定を表示\)** を選択し、次のようにフィールドを設定します。 これらは、トレーニング ジョブをより細かく制御するための設定です。 設定しない場合、実験の選択とデータに基づいて既定値が適用されます。
+    1. **[View additional configuration settings]\(追加の構成設定を表示\)** を選択し、次のようにフィールドを設定します。 これらは、トレーニング ジョブをより細かく制御し、予測の設定を指定するための設定です。 設定しない場合、実験の選択とデータに基づいて既定値が適用されます。
 
   
         追加の構成&nbsp;|説明|チュートリアル用の値&nbsp;&nbsp;
@@ -138,7 +141,7 @@ ms.locfileid: "77088326"
         自動特徴付け| 前処理が有効になります。 これには、合成的特徴を生成するための自動データ クレンジング、準備、変換が含まれます。| 有効化
         最適なモデルの説明 (プレビュー)| 自動 ML で作成された最適なモデルの説明を自動的に表示します。| 有効化
         ブロックされたアルゴリズム | トレーニング ジョブから除外するアルゴリズム| 極端なランダム ツリー
-        その他の予測設定| これらの設定は、モデルの精度を向上させるのに役立ちます <br><br> _**予測期間**_ : 予測する将来の時間の長さ <br> _**予測ターゲットのラグ**_ : ターゲット変数のラグをどの程度さかのぼって作成するか <br> _**ターゲットのローリング ウィンドウ**_ : *max、min*、*sum* などの特徴が生成されるローリング ウィンドウのサイズを指定します。 |予測期間:14 <br> 予測&nbsp;ターゲットの&nbsp;ラグ:なし <br> ターゲットの&nbsp;ローリング&nbsp;ウィンドウ&nbsp;サイズ:なし
+        その他の予測設定| これらの設定は、モデルの精度を向上させるのに役立ちます <br><br> _**予測期間**_: 予測する将来の時間の長さ <br> _**予測ターゲットのラグ**_: ターゲット変数のラグをどの程度さかのぼって作成するか <br> _**ターゲットのローリング ウィンドウ**_: *max、min*、*sum* などの特徴が生成されるローリング ウィンドウのサイズを指定します。 |予測期間:14 <br> 予測&nbsp;ターゲットの&nbsp;ラグ:なし <br> ターゲットの&nbsp;ローリング&nbsp;ウィンドウ&nbsp;サイズ:なし
         終了条件| 条件が満たされると、トレーニング ジョブが停止します。 |トレーニング&nbsp;ジョブ時間 (時間):&nbsp;3 <br> メトリック&nbsp;スコアしきい値:&nbsp;なし
         検証 | クロス検証タイプとテストの回数を選択します。|検証タイプ:<br>&nbsp;k 分割交差検証&nbsp; <br> <br> 検証の数: 5
         コンカレンシー| イテレーションごとに実行される並列イテレーションの最大数| &nbsp;最大同時イテレーション数:&nbsp;6
@@ -178,7 +181,7 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 
 1. **[Deploy a model]\(モデルのデプロイ\)** ペインに次のように入力します。
 
-    フィールド| Value
+    フィールド| 値
     ----|----
     デプロイ名| bikeshare-deploy
     デプロイの説明| 自転車シェアリング需要のデプロイ
@@ -224,6 +227,10 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 > [!div class="nextstepaction"]
 > [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
++ [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
++ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
++ [特徴付け](how-to-configure-auto-features.md#featurization)についてさらに理解を深める。
++ [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。
 
 >[!NOTE]
 > この自転車シェアリング データセットは、このチュートリアル用に変更されています。 このデータセットは、[Kaggle コンテスト](https://www.kaggle.com/c/bike-sharing-demand/data)の一部として提供されており、もともとは [Capital Bikeshare](https://www.capitalbikeshare.com/system-data) を通じて入手可能でした。 また、[UCI Machine Learning データベース](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)にもあります。<br><br>

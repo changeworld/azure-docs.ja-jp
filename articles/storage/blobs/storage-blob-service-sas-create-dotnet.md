@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/20/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f1beea12b33dcc3c0111e26d79daf096c1eedcb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808426"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB のサービス SAS を作成する
 

@@ -3,7 +3,7 @@ title: Angular シングルページ アプリのチュートリアル - Azure
 titleSuffix: Microsoft identity platform
 description: Angular SPA アプリケーションで、Microsoft ID プラットフォーム エンドポイントからのアクセス トークンを必要とする API を呼び出す方法を説明します。
 services: active-directory
-author: hahamil
+author: hamiltonha
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,17 +12,14 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181598"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231694"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
-
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 このチュートリアルでは、Angular シングルページ アプリケーション (SPA) で次のことを行う方法を説明します。
 - 個人用アカウント、職場アカウント、学校アカウントをサインインさせます。
@@ -141,7 +138,7 @@ Azure portal に[シングルページ アプリケーションを登録する�
 3. 次の import ステートメントを `src/app/app.component.ts` の先頭に追加します。
 
     ```javascript
-    import { MsalService } from '@azure/msal-angular';
+    import { MsalService, BroadcastService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
 ## <a name="sign-in-a-user"></a>ユーザーのサインイン
@@ -151,6 +148,8 @@ Azure portal に[シングルページ アプリケーションを登録する�
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+    
+    ngOnInit() { }
 
     login() {
         const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -343,7 +342,6 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 ## <a name="next-steps"></a>次のステップ
 
-引き続き、ユーザーをサインインさせてトークンを取得する方法を Angular のチュートリアルでご覧ください。
+ID とアクセスの管理を初めて体験する方のために、「[認証と承認](authentication-vs-authorization.md)」を手始めに、最新の認証の概念を理解するのに役立つ記事がいくつか用意されています。
 
-> [!div class="nextstepaction"]
-> [Angular チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Microsoft ID プラットフォームでのシングルページ アプリケーションの開発についてさらに詳しく知りたい場合は、複数パートから構成される記事の「[シナリオ: シングルページ アプリケーション](scenario-spa-overview.md)」シリーズが、作業を開始するのに役立ちます。

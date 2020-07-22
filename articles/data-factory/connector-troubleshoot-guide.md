@@ -9,12 +9,12 @@ ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a1b2f74af02db1560dbcdd0bf0c72976dc6dcea8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199008"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022335"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -53,7 +53,7 @@ ms.locfileid: "83199008"
 
 ### <a name="error-message-request-size-is-too-large"></a>エラー メッセージ: 要求のサイズが大きすぎます。
 
-- **現象**: 既定の書き込みバッチ サイズを使用して Azure Cosmos DB にデータをコピーすると、*"**要求のサイズが大きすぎます**"* というエラーが表示されます。
+- **現象**: 既定の書き込みバッチ サイズを使用して Azure Cosmos DB にデータをコピーすると、 *"**要求のサイズが大きすぎます**"* というエラーが表示されます。
 
 - **原因**: Cosmos DB では、単一の要求のサイズが 2 MB に制限されます。 式は、"要求サイズ = 1 つのドキュメント サイズ * 書き込みバッチ サイズ" となります。 ドキュメントのサイズが大きい場合、既定の動作の結果として要求サイズが過度に大きくなります。 書き込みバッチ サイズを調整することができます。
 
@@ -203,7 +203,7 @@ ms.locfileid: "83199008"
 
 - **原因**:"Client with IP address '...' is not allowed to access the server" (IP アドレスが '...' のクライアントはサーバーへのアクセスが許可されていません) という内容がエラー メッセージに含まれており、Azure SQL データベースに接続しようとしている場合、その原因は通常、Azure SQL データベースのファイアウォールの問題です。
 
-- **推奨事項**:Azure SQL Server のファイアウォールの構成で、"Allow Azure services and resources to access this server" (このサーバーへのアクセスを Azure のサービスとリソースに許可する) オプションを有効にします。 参照ドキュメント: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
+- **推奨事項**:論理 SQL サーバーのファイアウォールの構成で、[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する] オプションを有効にします。 参照ドキュメント: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
 
 
 ### <a name="error-code--sqloperationfailed"></a>エラー コード:SqlOperationFailed
@@ -678,7 +678,7 @@ ms.locfileid: "83199008"
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
             

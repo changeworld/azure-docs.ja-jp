@@ -2,20 +2,19 @@
 title: Azure での共有イメージに関する問題のトラブルシューティング
 description: 共有イメージ ギャラリーに関する問題のトラブルシューティングを行う方法について説明します。
 author: axayjo
-manager: gwallace
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.topic: article
+ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 04/17/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: ac0a691c19e0a99471e8bfafedaa6d0332b293ce
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8285bc216b5b06a33d481dbca011e44e77df25de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678785"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>共有イメージ ギャラリーのトラブルシューティング
 

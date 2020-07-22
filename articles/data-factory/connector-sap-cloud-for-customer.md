@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418050"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987552"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,10 +50,10 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **SapCloudForCustomer** に設定する必要があります。 | はい |
+| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomer**。 | はい |
 | url | SAP C4C OData サービスの URL。 | はい |
 | username | SAP C4C に接続するためのユーザー名を指定します。 | はい |
-| パスワード | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
 >[!IMPORTANT]
@@ -90,7 +90,7 @@ SAP Cloud for Customer からデータをコピーするには、データセッ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **SapCloudForCustomerResource** に設定する必要があります。 |はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**SapCloudForCustomerResource** |はい |
 | path | SAP C4C OData エンティティのパスを指定します。 |はい |
 
 **例:**
@@ -122,8 +122,9 @@ SAP Cloud for Customer からデータをコピーするには、コピー ア�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **SapCloudForCustomerSource** に設定する必要があります。  | はい |
+| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSource**  | はい |
 | query | データを読み取るカスタム OData クエリを指定します。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 指定しない場合は、既定値の **00:30:00** (30 分) が使用されます。 | いいえ |
 
 特定の日のデータを取得するサンプル クエリ: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -165,7 +166,7 @@ SAP Cloud for Customer にデータをコピーするには、コピー アク�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **SapCloudForCustomerSink** に設定する必要があります。  | はい |
+| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSink**  | はい |
 | writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | いいえ。 既定値: "Insert"。 |
 | writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | いいえ。 既定値: 10。 |
 

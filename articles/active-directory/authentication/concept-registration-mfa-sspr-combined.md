@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550678"
 ---
 # <a name="combined-security-information-registration-overview"></a>統合されたセキュリティ情報の登録の概要
 
@@ -46,7 +46,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 統合された登録は、次の認証方法とアクションをサポートしています。
 
-|   | [登録] | Change | 削除 |
+| Method | [登録] | Change | 削除 |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | はい (最大 5) | いいえ | はい |
 | その他の認証アプリ | はい (最大 5) | いいえ | はい |

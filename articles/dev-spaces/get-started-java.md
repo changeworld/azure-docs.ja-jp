@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で Java アプリケーションのデバッグと迅速な反復型開発を行う方法を示します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c71471d1a89188a065bafef2c5b6372aeff35851
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 5616e92d64854d145c30aa3fd32bf61d65ca4221
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80240533"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224317"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Java
 
@@ -171,7 +171,7 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 
 このセクションでは、VS Code を使用して、Azure で実行されるコンテナーを直接デバッグします。 編集、実行、テストを高速で繰り返す方法についても説明します。
 
-![](media/common/edit-refresh-see.png)
+![コードの編集、コンテナーの更新、更新の確認サイクルを示す図。](media/common/edit-refresh-see.png)
 
 > [!Note]
 > **問題が発生した場合は**いつでも、「[トラブルシューティング](troubleshooting.md)」セクションを参照するか、このページでコメントを投稿してください。
@@ -183,13 +183,13 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 
 Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追加されます。 このコマンドと、デプロイ用にプロジェクトを構成する `azds prep` コマンドを混同しないでください。
 
-![](media/common/command-palette.png)
+![VS Code のコマンド パレットの Azure Dev Spaces オプションを示すスクリーンショット](media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>AZDS デバッグ構成を選択する
 1. VS Code の左側の**アクティビティ バー**で、[デバッグ] アイコンをクリックしてデバッグ ビューを開きます。
 1. アクティブなデバッグ構成として、 **[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)** を選択します。
 
-![](media/get-started-java/debug-configuration.png)
+![[Launch Java Program]\(Java プログラムの起動\) オプションが赤線で囲まれた、VS Code のデバッグ機能のスクリーンショット。](media/get-started-java/debug-configuration.png)
 
 > [!Note]
 > コマンド パレットに Azure Dev Spaces コマンドが表示されない場合は、Azure Dev Spaces 用 VS Code 拡張機能がインストールされていることを確認してください。 VS Code で開いているワークスペースが、`azds.yaml` が含まれているフォルダーであることを確認します。
@@ -202,7 +202,7 @@ Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追�
 > [!Tip]
 > VS Code のステータス バーが、デバッガーがアタッチされていることを示すオレンジ色に変化します。 また、アプリケーションを開くために使用できるクリック可能な URL も表示されます。
 
-![](media/common/vscode-status-bar-url.png)
+![ステータス バーがオレンジ色に変わった後の VS Code のスクリーンショット。](media/common/vscode-status-bar-url.png)
 
 サーバー側のコード ファイル (たとえば、`src/main/java/com/ms/sample/webfrontend/Application.java` ソース ファイルの `greeting()` 関数内) にブレークポイントを設定します。 ブラウザーのページを更新すると、ブレークポイントに到達します。
 
@@ -220,7 +220,7 @@ public String greeting()
 
 ファイルを保存し、**デバッグ操作ウィンドウ**で **[再起動]** ボタンをクリックします。
 
-![](media/common/debug-action-refresh.png)
+![[再起動] オプションが赤線で囲まれた、VS Code のデバッグ アクション ペインのスクリーンショット。](media/common/debug-action-refresh.png)
 
 コードを編集するたびに新しいコンテナー イメージを再構築して再展開すると、多くの場合、かなりの時間がかかります。Azure Dev Spaces では、代わりに既存のコンテナー内でコードの増分再コンパイルを実行することで、編集/デバッグ ループを高速化します。
 

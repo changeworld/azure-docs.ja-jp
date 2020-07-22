@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409072"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927396"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使用して ML Studio (classic) モデルを更新する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。
+この記事では、Azure Data Factory と ML Studio (classic) の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。
 
 ## <a name="overview"></a>概要
-Azure Machine Learning モデルの運用化プロセスの一環として、モデルのトレーニングと保存が行われます。 その後、このモデルを使用して、予測 Web サービスを作成します。 これによって、Web サイト、ダッシュボード、モバイル アプリでこの Web サービスを使用できます。
+ML Studio (classic) モデルの運用化プロセスの一環として、モデルのトレーニングと保存が行われます。 その後、このモデルを使用して、予測 Web サービスを作成します。 これによって、Web サイト、ダッシュボード、モバイル アプリでこの Web サービスを使用できます。
 
-Machine Learning を使って作成するモデルは、通常、静的ではありません。 新しいデータが使用可能になるか、API のコンシューマーに独自のデータがある場合は、モデルを再トレーニングする必要があります。 Azure Machine Learning でモデルを再トレーニングする方法の詳細については、「[Machine Learning モデルの再トレーニング](../machine-learning/machine-learning-retrain-machine-learning-model.md)」を参照してください。
+Machine Learning を使って作成するモデルは、通常、静的ではありません。 新しいデータが使用可能になるか、API のコンシューマーに独自のデータがある場合は、モデルを再トレーニングする必要があります。 
 
 再トレーニングは頻繁に発生する可能性があります。 バッチ実行アクティビティと更新リソース アクティビティを使用すると、Data Factory を使って予測 Web サービスの再トレーニングと更新を行う Azure Machine Learning モデルを運用可能にできます。
 
@@ -35,9 +35,9 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 
 ![[Web サービス]](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning 更新リソース アクティビティ
+## <a name="ml-studio-classic-update-resource-activity"></a>ML Studio (classic) の更新リソース アクティビティ
 
-次の JSON スニペットは、Azure Machine Learning バッチ実行アクティビティを定義しています。
+次の JSON スニペットは、ML Studio (classic) バッチ実行アクティビティを定義します。
 
 ```json
 {
@@ -130,7 +130,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 次のシナリオで詳細を説明します。 このシナリオでは、Azure Data Factory パイプラインから Azure Machine Learning Studio モデルの再トレーニングと更新を行う例を示します。
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル: Azure Machine Learning モデルの再トレーニングと更新
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル:Azure Machine Learning モデルの再トレーニングと更新
 
 このセクションでは、**Azure Machine Learning Studio バッチ実行アクティビティ**を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、**Azure Machine Learning Studio 更新リソース アクティビティ**を使用したスコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
 

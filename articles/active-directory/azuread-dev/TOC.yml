@@ -6,6 +6,8 @@
   href: sample-v1-code.md
 - name: 概念
   items:
+    - name: Microsoft ID プラットフォームの進化
+      href: about-microsoft-identity-platform.md
     - name: v2.0 に更新する理由
       href: azure-ad-endpoint-comparison.md
     - name: アプリケーションの種類

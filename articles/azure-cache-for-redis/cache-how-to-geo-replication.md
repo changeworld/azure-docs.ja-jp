@@ -6,16 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74129418"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184975"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの設定方法
 
-geo レプリケーションには、レベルが Premium である Azure Cache for Redis の 2 つのインスタンスをリンクするメカニズムが用意されています。 1 つのキャッシュはプライマリ リンク キャッシュとして、もう一方のキャッシュはセカンダリ リンク キャッシュとして選択されます。 セカンダリ リンク キャッシュは読み取り専用になり、プライマリ キャッシュに書き込まれたデータがセカンダリ リンク キャッシュにレプリケートされます。 この機能は、Azure リージョン間でキャッシュをレプリケートする際に使用できます。 この記事では、Premium レベルの Azure Cache for Redis インスタンスの geo レプリケーションを構成するためのガイドを提供します。
+geo レプリケーションには、レベルが Premium である Azure Cache for Redis の 2 つのインスタンスをリンクするメカニズムが用意されています。 1 つのキャッシュはプライマリ リンク キャッシュとして、もう一方のキャッシュはセカンダリ リンク キャッシュとして選択されます。 セカンダリ リンク キャッシュは読み取り専用になり、プライマリ キャッシュに書き込まれたデータがセカンダリ リンク キャッシュにレプリケートされます。 プライマリ キャッシュ インスタンスとセカンダリ キャッシュ インスタンス間のデータ転送は TLS によって保護されます。 geo レプリケーションを使用すると、2 つの Azure リージョンにまたがるキャッシュを設定できます。 この記事では、Premium レベルの Azure Cache for Redis インスタンスの geo レプリケーションを構成するためのガイドを提供します。
+
+> [!NOTE]
+> geo レプリケーションは、ディザスター リカバリー ソリューションとして設計されています。 既定では、アプリケーションはプライマリ リージョンに対して書き込みと読み取りを行います。 必要に応じて、セカンダリ リージョンから読み取るように構成することもできます。 geo レプリケーションでは、アプリケーションの他の部分がプライマリ リージョンに残っている場合に、リージョン間のネットワーク待ち時間が増えるという懸念があるため、自動フェールオーバーは提供されません。 セカンダリ キャッシュのリンクを解除することによって、フェールオーバーを管理および開始する必要があります。 これにより、新しいプライマリ インスタンスに昇格されます。
 
 ## <a name="geo-replication-prerequisites"></a>geo レプリケーションの前提条件
 

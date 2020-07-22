@@ -4,15 +4,16 @@ description: Azure Synapse Analytics のマネージド プライベート エ�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08c6610541d987cddd7cf2aeb71c526cb2359598
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ac62b1706749c4708d804dd2102ad3f2a7132a16
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419556"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193653"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse マネージド プライベート エンドポイント (プレビュー)
 
@@ -30,8 +31,9 @@ Azure Synapse では、プライベート リンクがサポートされます�
 
 >[!IMPORTANT]
 >マネージド プライベート エンドポイントは、マネージド ワークスペース VNet を使用した Azure Synapse ワークスペースでのみサポートされます。
+
 >[!NOTE]
->Azure のデータ ソースとの接続にはすべて、マネージド プライベート エンドポイントを作成することをお勧めします。 マネージド ワークスペース VNet からのアウトバウンド トラフィックは将来すべてブロックされます。
+>マネージド プライベート エンドポイント経由を除き、マネージド ワークスペース VNet からのアウトバウンド トラフィックは将来すべてブロックされます。 Azure のデータ ソースとの接続にはすべて、ワークスペースに外部となるマネージド プライベート エンドポイントを作成することをお勧めします。 
 
 Azure Synapse のマネージド プライベート エンドポイントを作成すると、プライベート エンドポイント接続が "保留" 状態で作成されます。 承認ワークフローが開始されます。 接続を承認または拒否する役割は、プライベート リンク リソースの所有者が担います。
 

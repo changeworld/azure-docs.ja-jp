@@ -9,15 +9,15 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c77e9d0aa4f44f33b1345a6021fc0378459ee85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79296967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675204"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "79296967"
 |リスト|関数:<br>`run.log_list(name, value, description='')`<br><br>例:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 指定した名前で実行に値リストを記録します。|
 |行|関数:<br>`run.log_row(name, description=None, **kwargs)`<br>例:<br>run.log_row("Y over X", x=1, y=0.4) | *log_row* を使用すると、kwargs で記述されているように、複数の列を含むメトリックが作成されます。 各名前付きパラメーターにより、指定した値の列が生成されます。  *log_row* を 1 回呼び出すと任意のタプルを記録でき、ループ内で複数回呼び出すと完全なテーブルを生成できます。|
 |テーブル|関数:<br>`run.log_table(name, value, description='')`<br><br>例:<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 指定した名前で実行にディクショナリ オブジェクトを記録します。 |
-|イメージ|関数:<br>`run.log_image(name, path=None, plot=None)`<br><br>例:<br>`run.log_image("ROC", plot=plt)` | 実行レコードにイメージを記録します。 log_image を使用してイメージ ファイルに記録するか、または matplotlib を使用して実行にプロットします。  これらのイメージは実行レコードで表示して比較できます。|
+|イメージ|関数:<br>`run.log_image(name, path=None, plot=None)`<br><br>例:<br>`run.log_image("ROC", plot=plt)` | 実行レコードにイメージを記録します。 log_image を使用して .PNG イメージ ファイルに記録するか、または matplotlib を使用して実行にプロットします。  これらのイメージは実行レコードで表示して比較できます。|
 |実行にタグを付ける|関数:<br>`run.tag(key, value=None)`<br><br>例:<br>run.tag("selected", "yes") | 文字列キーと省略可能な文字列値で実行にタグを付けます。|
 |ファイルまたはディレクトリをアップロードする|関数:<br>`run.upload_file(name, path_or_stream)`<br> <br> 例:<br>run.upload_file("best_model.pkl", "./model.pkl") | 実行レコードにファイルをアップロードします。 実行は指定された出力ディレクトリ内のファイルを自動的にキャプチャします。ディレクトリの既定値は、ほとんどの実行種類で "./outputs" です。  追加のファイルをアップロードする必要がある場合、または出力ディレクトリが指定されていない場合にのみ、upload_file を使用します。 出力ディレクトリにアップロードされるように、名前に `outputs` を追加することをお勧めします。 `run.get_file_names()` を呼び出すことにより、この実行レコードに関連付けられているすべてのファイルの一覧を取得できます。|
 
@@ -52,6 +52,7 @@ ms.locfileid: "79296967"
 実験を追跡または監視する場合は、実行を送信するときにログ記録を開始するコードを追加する必要があります。 実行の送信をトリガーする方法を以下に示します。
 * __Run.start_logging__ - トレーニング スクリプトにログ関数を追加し、指定した実験で対話型のログ セッションを開始します。 **start_logging** では、ノートブックなどのシナリオで使用するための対話型の実行が作成されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。
 * __ScriptRunConfig__ - トレーニング スクリプトにログ関数を追加し、実行でスクリプト フォルダー全体を読み込みます。  **ScriptRunConfig** は、スクリプト実行の構成をセットアップするためのクラスです。 このオプションでは、監視コードを追加して、完了の通知を受け取るか、または監視するためのビジュアル ウィジェットを取得できます。
+* __デザイナーのログ記録__ - __Python スクリプトの実行__モジュールを使用して、ドラッグ アンド ドロップ デザイナー パイプラインにログ機能を追加します。 Python コードを追加して、デザイナーの実験をログ記録します。 
 
 ## <a name="set-up-the-workspace"></a>ワークスペースを設定する
 ログを追加して実験を送信する前に、ワークスペースを設定する必要があります。
@@ -103,8 +104,35 @@ Azure Machine Learning SDK を使用して実験の追跡を追加し、永続�
 
    [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
+## <a name="option-3-log-designer-experiments"></a>オプション 3:デザイナーの実験をログ記録する
 
+__Python スクリプトの実行__モジュールを使用して、ログ記録のロジックをデザイナーの実験に追加します。 このワークフローを使用して任意の値をログに記録することができますが、__モデルの評価__モジュールからメトリックをログに記録し、さまざまな実行にわたってモデルのパフォーマンスを追跡する場合に特に便利です。
 
+1. __Python スクリプトの実行__モジュールを__モデルの評価__モジュールの出力に接続します。
+
+    ![Python スクリプトの実行モジュールをモデルの評価モジュールに接続する](./media/how-to-track-experiments/designer-logging-pipeline.png)
+
+1. __Python スクリプトの実行__コード エディターに次のコードを貼り付けて、トレーニング済みのモデルの平均絶対誤差をログに記録します。
+
+    ```python
+    # dataframe1 contains the values from Evaluate Model
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+        from azureml.core import Run
+
+        run = Run.get_context()
+
+        # Log the mean absolute error to the current run to see the metric in the module detail pane.
+        run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+
+        # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
+        run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+    
+        return dataframe1,
+    ```
 
 ## <a name="manage-a-run"></a>実行の管理
 
@@ -181,9 +209,11 @@ Azure Machine Learning SDK を使用して実験の追跡を追加し、永続�
 
 実験の実行が完了したら、記録された実験の実行レコードを参照できます。 [Azure Machine Learning Studio](https://ml.azure.com) から履歴にアクセスできます。
 
-[実験] タブに移動し、実験を選択します。 実験実行ダッシュボードが表示されます。ここで、実行ごとにログに記録された、追跡対象のメトリックとグラフを確認できます。 この場合は、MSE とアルファ値を記録しました。
+[実験] タブに移動し、実験を選択します。 実験実行ダッシュボードが表示されます。ここで、実行ごとにログに記録された、追跡対象のメトリックとグラフを確認できます。 
 
-  ![Azure Machine Learning Studio での実行の詳細](./media/how-to-track-experiments/experiment-dashboard.png)
+実行一覧テーブルを編集して、特定の実行に関してログされた直近の値や、最小値、最大値を表示することができます。 実行一覧で複数の実行を選択したり選択解除したりすることができます。また、選択された実行は、グラフのデータに反映されます。 新しいグラフを追加したり、グラフを編集したりして、ログされたメトリック (最小値、最大値、直近の値、すべての値) を複数の実行間で比較することもできます。 効率よくデータを調査するために、グラフを最大化することもできます。
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Azure Machine Learning Studio での実行の詳細":::
 
 また、特定の実行にドリルダウンしてその出力やログを表示したり、送信した実験のスナップショットをダウンロードして他のユーザーと実験フォルダーを共有したりすることもできます。
 

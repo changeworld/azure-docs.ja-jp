@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 981c6f145f0bf06fbe81234d473b9fbcd2235174
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392354"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB の Table API についてよく寄せられる質問
 
@@ -45,10 +45,10 @@ Azure Cosmos DB Table API は [Azure portal](https://portal.azure.com) で利用
 
   | REST メソッド | REST エンドポイント/クエリ オプション | ドキュメントの URL | 説明 |
   | ------------| ------------- | ---------- | ----------- |
-  | GET、PUT | `/?restype=service@comp=properties`| 「[Set Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties)」(Table Service のプロパティを設定する) および「[Get Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties)」(Table Service のプロパティを取得する) | このエンドポイントは、CORS ルールの設定、ストレージ分析の構成、ログ記録の設定に使われます。 CORS は現在サポートされておらず、Azure Cosmos DB での分析とログ記録の処理は Azure Storage Table とは異なります。 |
-  | OPTIONS | `/<table-resource-name>` | 「[Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
-  | GET | `/?restype=service@comp=stats` | 「[Get Table Service Stats](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats)」(Table Service の統計情報を取得する) | プライマリとセカンダリの間でデータがレプリケートされる速度の情報を提供します。 Cosmos DB ではレプリケーションは書き込みの一部なので、これは必要ありません。 |
-  | GET、PUT | `/mytable?comp=acl` | 「[Get Table ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl)」(テーブルの ACL を取得する) および[Set Table ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl)」(テーブルの ACL を設定する) | Shared Access Signature (SAS) の管理に使われる保存されたアクセス ポリシーを取得および設定します。 SAS はサポートされていますが、設定と管理の方法は異なります。 |
+  | GET、PUT | `/?restype=service@comp=properties`| 「[Set Table Service Properties](/rest/api/storageservices/set-table-service-properties)」(Table Service のプロパティを設定する) および「[Get Table Service Properties](/rest/api/storageservices/get-table-service-properties)」(Table Service のプロパティを取得する) | このエンドポイントは、CORS ルールの設定、ストレージ分析の構成、ログ記録の設定に使われます。 CORS は現在サポートされておらず、Azure Cosmos DB での分析とログ記録の処理は Azure Storage Table とは異なります。 |
+  | OPTIONS | `/<table-resource-name>` | 「[Pre-flight CORS table request](/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
+  | GET | `/?restype=service@comp=stats` | 「[Get Table Service Stats](/rest/api/storageservices/get-table-service-stats)」(Table Service の統計情報を取得する) | プライマリとセカンダリの間でデータがレプリケートされる速度の情報を提供します。 Cosmos DB ではレプリケーションは書き込みの一部なので、これは必要ありません。 |
+  | GET、PUT | `/mytable?comp=acl` | 「[Get Table ACL](/rest/api/storageservices/get-table-acl)」(テーブルの ACL を取得する) および[Set Table ACL](/rest/api/storageservices/set-table-acl)」(テーブルの ACL を設定する) | Shared Access Signature (SAS) の管理に使われる保存されたアクセス ポリシーを取得および設定します。 SAS はサポートされていますが、設定と管理の方法は異なります。 |
 
 * Azure Cosmos DB Table API は JSON 形式のみをサポートし、ATOM はサポートしません。
 
@@ -293,7 +293,7 @@ Azure Cosmos DB は、待機時間、スループット、可用性、整合性�
 次のいずれかの方法でフィードバックをお寄せください。
 
 * [ユーザーの声](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。
 
 ## <a name="next-steps"></a>次のステップ

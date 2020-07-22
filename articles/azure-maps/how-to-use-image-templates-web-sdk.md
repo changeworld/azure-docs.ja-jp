@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207092"
 ---
 # <a name="how-to-use-image-templates"></a>イメージ テンプレートの使用方法
 
@@ -104,6 +104,17 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML Marker with built-in icon template (組み込みのアイコン テンプレートを使用した HTML マーカー)</a>」を参照してください。
 </iframe>
 
+
+> [!TIP]
+> 画像テンプレートはマップの外でも使用できます。 getImageTemplate 関数からは `{color}`、`{secondaryColor}`、`{scale}`、`{text}` プレースホルダーのある SVG 文字列が返されます。 これらのプレースホルダーを置換し、有効な SVG 文字列を作成します。 その後、SVG 文字列を HTML DOM に直接追加するか、それをデータ URI に変換し、イメージ タグに挿入できます。 次に例を示します。
+> ```JavaScript
+> //Retrieve an SVG template and replace the placeholder values.
+> var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
+>
+> //Convert to data URI for use in image tags.
+> var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
+> ```
+
 ## <a name="create-custom-reusable-templates"></a>再利用可能なカスタム テンプレートを作成する
 
 アプリケーションで同じアイコンと異なるアイコンを使用する場合、またはさらに画像テンプレートを追加するモジュールを作成する場合、Azure Maps Web SDK からこれらのアイコンを簡単に追加および取得できます。 以下の静的関数は `atlas` 名前空間で使用します。
@@ -175,6 +186,25 @@ SVG 画像テンプレートでは、次のプレースホルダー値がサポ�
 |||||
 | zig-zag | zig-zag-vertical | dots |  |
 | ![zig-zag アイコン](./media/image-templates/zig-zag.png) | ![zig-zag-vertical アイコン](./media/image-templates/zig-zag-vertical.png) | ![dots アイコン](./media/image-templates/dots.png) | |
+
+**事前に読み込まれるイメージ アイコン**
+
+マップによって、`marker`、`pin`、`pin-round` テンプレートを使用し、マップ イメージ スプライトに一連のアイコンが事前読み込みされます。 このようなアイコンの名前と色を下の表にまとめています。
+
+| アイコン名 | color | secondaryColor |
+|-----------|-------|----------------|
+| `marker-black` | `#231f20` | `#ffffff` |
+| `marker-blue` | `#1a73aa` | `#ffffff` |
+| `marker-darkblue` | `#003963` | `#ffffff` |
+| `marker-red` | `#ef4c4c` | `#ffffff` |
+| `marker-yellow` | `#f2c851` | `#ffffff` |
+| `pin-blue` | `#2072b8` | `#ffffff` |
+| `pin-darkblue` | `#003963` | `#ffffff` |
+| `pin-red` | `#ef4c4c` | `#ffffff` |
+| `pin-round-blue` | `#2072b8` | `#ffffff` |
+| `pin-round-darkblue` | `#003963` | `#ffffff` |
+| `pin-round-red` | `#ef4c4c` | `#ffffff` |
+
 
 ## <a name="try-it-now-tool"></a>すぐに試せるツール
 

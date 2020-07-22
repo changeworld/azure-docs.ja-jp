@@ -5,21 +5,19 @@ description: Azure Machine Learning Studio (クラシック) では、Excel か�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 333ed411ab818cff77a7cba6c7de4f42c36f5b6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e0fb900bb3265c6ec79a85fb19efd76e719ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696560"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio (クラシック) Web サービスの使用
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 

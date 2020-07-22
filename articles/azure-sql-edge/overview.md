@@ -2,19 +2,19 @@
 title: Azure SQL Edge (プレビュー) とは
 description: Azure SQL Edge (プレビュー) の詳細
 keywords: SQL Edge の紹介, SQL Edge とは, SQL Edge の概要
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6e5e54f7bf61d933240403ff952c1aa6e162958f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c70950426b2f34d94bd66d2287550e19253874c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84233168"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) とは
 
@@ -33,7 +33,7 @@ Azure SQL Edge は Azure Marketplace で提供されており、[Azure IoT Edge]
 
 ## <a name="editions-of-sql-edge"></a>SQL Edge のエディション
 
-SQL Edge は、3 つの異なるエディション (ソフトウェア プラン) で提供されています。 これらのエディションの機能セットはまったく同じで、使用権限と、サポートされる CPU とメモリの量についてのみ違いがあります。
+SQL Edge は、2 つの異なるエディション (ソフトウェア プラン) で提供されています。 これらのエディションの機能セットはまったく同じで、使用権限と、サポートされる CPU とメモリの量についてのみ違いがあります。
 
    |**プラン**  |**説明**  |
    |---------|---------|
@@ -42,7 +42,7 @@ SQL Edge は、3 つの異なるエディション (ソフトウェア プラン
 
 ## <a name="pricing-and-availability"></a>価格と可用性
 
-Azure SQL Edge は現在プレビュー段階です。 価格と可用性の詳細については、[Azure SQL Edge](https://azure.microsoft.com/services/sql-database-edge/) に関するページを参照してください。
+Azure SQL Edge は現在プレビュー段階です。 価格と可用性の詳細については、[Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) に関するページを参照してください。
 
 > [!IMPORTANT]
 > Azure SQL Edge と SQL Server の機能面の違いや、Azure SQL Edge のさまざまなオプション間の違いについては、[Azure SQL Edge でサポートされる機能](features.md)に関するページを参照してください。

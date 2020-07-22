@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340886"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -19,7 +19,7 @@ Azure Monitor の Log Analytics ワークスペースは、マネージド サ�
 
 特に多くの異なる部署の IT 管理を担当する一元的な IT チームがある大企業では、サービス プロバイダーと多くの類似点を共有します。 このドキュメントでは簡単にするために*サービス プロバイダー* という言葉を使用していますが、企業およびその他のお客様にも同じ機能をご利用いただけます。
 
-[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) プログラムに参加しているパートナーやサービス プロバイダーにとって、Azure Monitor の Log Analytics は Azure CSP サブスクリプションで使用できる Azure サービスの 1 つです。
+[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) プログラムに参加しているパートナーやサービス プロバイダーにとって、Azure Monitor の Log Analytics は Azure CSP サブスクリプションで使用できる Azure サービスの 1 つです。
 
 Azure Monitor の Log Analytics は、[Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) の Azure の委任されたリソース管理機能を使用して顧客のリソースを管理しているサービス プロバイダーが使用することもできます。
 
@@ -64,7 +64,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 中央アーキテクチャの短所は次のとおりです。
 
 * このアーキテクチャは、エージェント ベースの VM データにのみ適用可能で、PaaS、SaaS、Azure ファブリック データ ソースには対応しません。
-* 顧客間のデータは、単一のワークスペースにマージされると、分離することが困難になる可能性があります。 これを行う唯一の適切な方法は、コンピューターの完全修飾ドメイン名 (FQDN) を使用するか、または Azure サブスクリプション ID を介するというものです。 
+* 顧客間のデータは、単一のワークスペースにマージされると、分離することが困難になる可能性があります。 これを行う唯一の適切な方法は、コンピューターの完全修飾ドメイン名 (FQDN) を使用するか、または Azure サブスクリプション ID を介するというものです。
 * すべてのお客様からのすべてのデータは、単一の請求書と、同じ保有期間および構成設定を伴う同じリージョンに格納されます。
 * Microsoft Azure Diagnostics や Azure 監査ログなどの Azure のファブリックおよび PaaS サービスは、ワークスペースがリソースと同じテナントにあることを必要とするため、中央のワークスペースにログを送信することができません。
 * すべての顧客からのすべての VM エージェントは、同じワークスペース ID とキーを使用して中央のワークスペースで認証されます。 他の顧客を中断せずに特定の顧客からのログをブロックする方法はありません。
@@ -77,13 +77,13 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 1. 中央ワークスペース:サービス プロバイダーでは、そのテナント内にワークスペースを作成し、[クエリ API](https://dev.loganalytics.io/) を[データ収集 API](../../azure-monitor/platform/data-collector-api.md) と共に利用して、さまざまなワークスペースからこの中央の場所にデータを移動させるスクリプトを使用できます。 スクリプト以外のもう 1 つのオプションは [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) を使用するというものです。
 
-2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](../../azure-monitor/platform/powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。 
+2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](../../azure-monitor/platform/powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Resource Manager テンプレート](template-workspace-configuration.md)を使用してワークスペースの作成および構成を自動化する
 
-* [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) を使用してワークスペースの作成を自動化する 
+* [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) を使用してワークスペースの作成を自動化する
 
 * [アラート](../../azure-monitor/platform/alerts-overview.md) を使用して既存のシステムと統合する
 

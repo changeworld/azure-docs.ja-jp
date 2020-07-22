@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780625"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261462"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して最初の検索アプリを作成する
 

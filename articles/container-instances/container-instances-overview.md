@@ -4,12 +4,12 @@ description: Azure Container Instances サービスには、仮想マシンを�
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215050"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259505"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -43,7 +43,7 @@ Azure Container Instances では、アプリケーションの開発とトラブ
 
 ## <a name="persistent-storage"></a>永続的ストレージ
 
-Azure Container Instances を使用して状態を取得および保持できるように、Azure Storage によってサポートされる [Azure Files 共有の直接マウント](container-instances-mounting-azure-files-volume.md)が提供されます。
+Azure Container Instances を使用して状態を取得および保持できるように、Azure Storage によってサポートされる [Azure Files 共有の直接マウント](./container-instances-volume-azure-files.md)が提供されます。
 
 ## <a name="linux-and-windows-containers"></a>Linux コンテナーと Windows コンテナー
 

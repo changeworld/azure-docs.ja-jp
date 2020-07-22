@@ -1,21 +1,21 @@
 ---
-title: チュートリアル:初めての ML 実験を作成する
-titleSuffix: Azure Machine Learning
+title: チュートリアル:Jupyter Notebook での実験 (Python)
+titleSuffix: Machine Learning - Azure
 description: このチュートリアルでは、Jupyter Notebook で実行されている Azure Machine Learning Python SDK を初めて使う場合について説明します。  パート 1 では、実験と ML モデルを管理するワークスペースを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: sdgilley
+ms.author: sgilley
 ms.date: 02/10/2020
-ms.openlocfilehash: 3177de6816dd690514620098e79db844077fbaf6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: 8ba6141bddd60c2bdc2fdf17845e8f470dd6ef55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655450"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520529"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>チュートリアル:Python SDK で初めての ML 実験を作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -6,7 +6,7 @@
     - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning と Studio
+    - name: Azure Machine Learning と Studio (クラシック)
       displayName: 'AML, Studio, designer'
       href: compare-azure-ml-to-studio-classic.md
     - name: アーキテクチャと用語
@@ -67,15 +67,18 @@
         - name: 初めての ML 実験を作成する (R)
           href: tutorial-1st-r-experiment.md
     - name: Machine Learning CLI
-      href: tutorial-train-deploy-model-cli.md
+      items:
+        - name: CLI を使用したトレーニングとデプロイ
+          href: tutorial-train-deploy-model-cli.md
+        - name: Resource Manager テンプレートを使用してワークスペースを作成する
+          displayName: Resource Manager
+          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning 拡張機能の設定
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow 画像分類モデルのトレーニングとデプロイ
           href: tutorial-train-deploy-image-classification-model-vscode.md
-    - name: Resource Manager テンプレートを使用したワークスペースの作成
-      href: tutorial-resource-manager-workspace.md
 - name: サンプル
   items:
     - name: Jupyter Notebooks
@@ -90,6 +93,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: 概念
   items:
+    - name: Enterprise およびBasic エディション
+      href: concept-editions.md
     - name: コストの計画と管理
       href: concept-plan-manage-cost.md
     - name: デザイナー (ドラッグアンドドロップ ML)
@@ -125,6 +130,8 @@
           href: concept-data.md
         - name: データ インジェスト
           href: concept-data-ingestion.md
+        - name: データ処理
+          href: concept-optimize-data-processing.md
     - name: モデル トレーニング
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
@@ -143,7 +150,7 @@
       href: concept-ml-pipelines.md
     - name: エンタープライズ対応とセキュリティ
       items:
-        - name: エンタープライズ セキュリティ
+        - name: エンタープライズ セキュリティとガバナンス
           items:
             - name: エンタープライズ セキュリティの概要
               displayName: authorization authentication encryption aad azure active directory
@@ -157,14 +164,17 @@
               displayName: private endpoint
               href: how-to-configure-private-link.md
             - name: TLS を使用して Web サービスをセキュリティで保護する
-              href: how-to-secure-web-service.md
               displayName: ssl
+              href: how-to-secure-web-service.md
             - name: AKS デプロイで Azure AD ID を使用する
               href: how-to-use-azure-ad-identity.md
             - name: ストレージ アクセス キーの再生成
               href: how-to-change-storage-access-key.md
             - name: Azure Firewall の使用
               href: how-to-access-azureml-behind-firewall.md
+            - name: 安全なコーディング
+              href: concept-secure-code-best-practice.md
+              displayName: security threat
         - name: 認証の設定
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md
@@ -267,19 +277,16 @@
               href: how-to-differential-privacy.md
     - name: モデルをトレーニングする
       items:
+        - name: トレーニング環境をセットアップする
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-set-up-training-targets.md
         - name: ML に Estimator を使用する
           items:
             - name: トレーニングでの推定器の作成
               href: how-to-train-ml-models.md
-            - name: トレーニング環境をセットアップする
-              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-              href: how-to-set-up-training-targets.md
             - name: ハイパーパラメーターを調整する
               displayName: parameter
               href: how-to-tune-hyperparameters.md
-            - name: トレーニング時に Key Vault を使用する
-              displayName: secrets keyvault
-              href: how-to-use-secrets-in-runs.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -288,18 +295,36 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: トレーニングの追跡と監視
+          items:
+            - name: 実行の開始、監視、または取り消し
+              displayName: 'cancel, fail, status, child run'
+              href: how-to-manage-runs.md
+            - name: トレーニング実行のメトリックを記録する
+              href: how-to-track-experiments.md
+            - name: MLflow を使用して実験を追跡する
+              displayName: 'log, monitor, metrics, Databricks'
+              href: how-to-use-mlflow.md
+            - name: TensorBoard を使用して実行を視覚化する
+              displayName: 'log, monitor, metrics'
+              href: how-to-monitor-tensorboard.md
+        - name: モデルの解釈と説明
+          displayName: interpretability
+          items:
+            - name: ML モデルを解釈する
+              displayName: 'SDK, interpret, explain, explanability, interpretability'
+              href: how-to-machine-learning-interpretability-aml.md
+            - name: 自動化された ML モデルの説明
+              displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
+              href: how-to-machine-learning-interpretability-automl.md
+        - name: モデルの公平性を評価して軽減する
+          href: how-to-machine-learning-fairness-aml.md
+        - name: トレーニング時に Key Vault を使用する
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
         - name: 強化学習
           href: how-to-use-reinforcement-learning.md
-    - name: モデルの解釈と説明
-      displayName: interpretability
-      items:
-        - name: ML モデルを解釈する
-          displayName: 'SDK, interpret, explain, explanability, interpretability'
-          href: how-to-machine-learning-interpretability-aml.md
-        - name: 自動化された ML モデルの説明
-          displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
-          href: how-to-machine-learning-interpretability-automl.md
-    - name: 機械学習の自動化
+    - name: 自動化された機械学習
       displayName: 'automl, auto ml'
       items:
         - name: 自動化された ML を使用する (Python)
@@ -310,12 +335,12 @@
         - name: リモート コンピューティング ターゲットを使用する
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: ML タスクを定義する
-          displayName: 'machine learning, task type, automl'
-          href: how-to-define-task-type.md
         - name: 予測モデルを自動トレーニングする
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: データの分割とクロス検証 (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-cross-validation-data-splits.md
         - name: 自動 ML での特徴量化 (Python)
           displayName: 'automl, feature engineering, feature importance'
           href: how-to-configure-auto-features.md
@@ -324,19 +349,6 @@
           href: how-to-use-automlstep-in-pipelines.md
         - name: グラフとメトリックを理解する
           href: how-to-understand-automated-ml.md
-    - name: 実験を追跡および監視する
-      items:
-        - name: 実行の開始、監視、または取り消し
-          displayName: 'cancel, fail, status, child run'
-          href: how-to-manage-runs.md
-        - name: トレーニング実行のメトリックを記録する
-          href: how-to-track-experiments.md
-        - name: MLflow を使用して実験を追跡する
-          displayName: 'log, monitor, metrics, Databricks'
-          href: how-to-use-mlflow.md
-        - name: TensorBoard を使用して実行を視覚化する
-          displayName: 'log, monitor, metrics'
-          href: how-to-monitor-tensorboard.md
     - name: モデルをデプロイおよび提供する
       items:
         - name: デプロイする場所と方法
@@ -360,6 +372,8 @@
             - name: Azure Functions
               displayName: functions app
               href: how-to-deploy-functions.md
+            - name: Azure Cognitive Search
+              href: how-to-deploy-model-cognitive-search.md
             - name: Azure IoT Edge デバイス
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
             - name: FPGA 推論
@@ -401,7 +415,6 @@
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Application Insights でパイプラインをデバッグする
-          displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
         - name: デザイナーによるデータの変換
           displayName: pipeline
@@ -430,6 +443,9 @@
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: リソースの管理 (VS Code)
+      displayName: 'vscode,resources'
+      href: how-to-manage-resources-vscode.md
     - name: データをエクスポートおよび削除する
       displayName: GDPR
       href: how-to-export-delete-data.md
@@ -471,7 +487,7 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: ユーザー フォーラム
-      href: 'https://aka.ms/aml-forum-service'
+      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Microsoft の ML 製品の比較
@@ -482,3 +498,6 @@
     - name: デザイナーのユーザー補助機能
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
+    - name: キュレーションされた環境
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md

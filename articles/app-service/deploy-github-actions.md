@@ -6,12 +6,13 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084993"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559587"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -64,7 +65,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
     ```yaml
         - uses: azure/webapps-deploy@v2
           with:
-            creds: ${{ secrets.azureWebAppPublishProfile }}
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
 5. 定義されたシークレットは以下のように表示されます。

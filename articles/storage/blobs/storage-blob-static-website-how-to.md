@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839166"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609932"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -48,7 +48,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-<a id="cli" />
+<a id="cli"></a>
 
 [Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、静的な Web サイトのホスティングを有効にすることができます。
 
@@ -76,7 +76,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-<a id="powershell" />
+<a id="powershell"></a>
 
 Azure PowerShell モジュールを使用して、静的な Web サイトのホスティングを有効にできます。
 
@@ -153,13 +153,10 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 
 ソース ディレクトリから *$web* コンテナーにオブジェクトをアップロードします。
 
-> [!NOTE]
-> Azure Cloud Shell を使用している場合は、`$web` コンテナーを参照するときに、必ず `\` エスケープ文字を追加してください (例: `\$web`)。 Azure CLI のローカル インストールを使用している場合は、エスケープ文字を使用する必要はありません。
-
 この例では、Azure Cloud Shell セッションからコマンドを実行していることを前提としています。
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 
@@ -195,21 +192,19 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 ---
 
-## <a name="find-the-website-url-by-using-the-azure-portal"></a>Azure portal を使用して Web サイトの URL を見つける
+<a id="portal-find-url"></a>
+
+## <a name="find-the-website-url"></a>Web サイトの URL を検索する
 
 Web サイトのパブリック URL を使用して、ブラウザーからお使いのサイトのページを表示できます。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-<a id="portal-find-url" />
 
 ストレージ アカウントの概要ページの横に表示されるウィンドウで、 **[静的な Web サイト]** を選択します。 サイトの URL が、 **[プライマリ エンドポイント]** フィールドに表示されます。
 
 ![Azure Storage 静的 Web サイトのメトリック: メトリック](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-<a id="cli-find-url" />
 
 次のコマンドを使用して、静的な Web サイトのパブリック URL を検索します。
 
@@ -222,8 +217,6 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 * `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-<a id="powershell-find-url" />
 
 次のコマンドを使用して、静的な Web サイトのパブリック URL を検索します。
 
@@ -238,7 +231,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 ---
 
-<a id="metrics" />
+<a id="metrics"></a>
 
 ## <a name="enable-metrics-on-static-website-pages"></a>静的な Web サイトのページでメトリックを有効にする
 

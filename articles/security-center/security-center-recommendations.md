@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791386"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
 このトピックでは、Azure Security Center で推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
@@ -53,7 +53,7 @@ Security Center はリソースのセキュリティの状態を分析して、�
     推奨事項をフィルター処理できます。 推奨事項をフィルター処理するには、 **[推奨事項]** ブレードで **[フィルター]** を選択します。 **[フィルター]** ブレードが開いたら、確認する重要度と状態の値を選択します。
 
    * **[推奨事項]** : 推奨事項。
-   * **[セキュリティ スコアの影響]** : セキュリティに関する推奨事項を使用し、各推奨事項の重要度を判断する高度なアルゴリズムを適用することで Security Center で生成されるスコア。 詳細については、「[セキュリティ スコアの計算](security-center-secure-score.md#secure-score-calculation)」をご覧ください。
+   * **[セキュリティ スコアの影響]** : セキュリティに関する推奨事項を使用し、各推奨事項の重要度を判断する高度なアルゴリズムを適用することで Security Center で生成されるスコア。 詳細については、「[セキュリティ スコアの計算](secure-score-security-controls.md#how-your-secure-score-is-calculated)」をご覧ください。
    * **リソース**: この推奨事項が適用されるリソースの一覧を表示します。
    * **ステータス バー**: 特定の推奨事項の重要度を示します。
        * **高 (赤)** : 重要なリソース (アプリケーション、VM、ネットワーク セキュリティ グループなど) に脆弱性が存在しており、注意が必要です。

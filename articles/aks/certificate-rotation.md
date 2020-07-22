@@ -2,16 +2,14 @@
 title: Azure Kubernetes Service (AKS) での証明書のローテーション
 description: Azure Kubernetes Service (AKS) クラスターで証明書をローテーションする方法について説明します。
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: zarhoads
-ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2e48a05a36fdbd56fb78cd1394c512485b521e50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549069"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255355"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -41,8 +39,7 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 > 
 > また、クラスターの証明書の有効期限を確認することもできます。 たとえば、次のコマンドは *myAKSCluster* クラスターの証明書の詳細を表示します。
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
-> openssl x509 -in my-cert.crt -text
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
 
 ## <a name="rotate-your-cluster-certificates"></a>クラスター証明書をローテーションする
@@ -97,5 +94,5 @@ kubectl get no
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
-[dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[dev-spaces]: ../dev-spaces/index.yml
 [dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

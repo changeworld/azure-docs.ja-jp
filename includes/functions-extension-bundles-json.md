@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878249"
 ---
 ```json

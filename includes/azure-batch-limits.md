@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: batch
-author: LauraBrenner
+author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 05/28/2019
-ms.author: labrenne
+ms.date: 06/03/2020
+ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: a0d74aa38dffdd41fbe617066391ef271a507349
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 8d23da1c3a45ed12193dfd4c1fc2ede453fc6ac7
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81737184"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323886"
 ---
 | **リソース** | **既定の制限** | **上限** |
 | --- | --- | --- |
@@ -24,6 +24,9 @@ ms.locfileid: "81737184"
 | Batch アカウントあたりのプール数 | 20 から 100 | 500<sup>1</sup> |
 
 <sup>1</sup>この制限を超えた引き上げを要求する場合は、Azure サポートにお問い合わせください。
+
+> [!IMPORTANT]
+> 専用クォータをリクエストおよび管理する方法を変更しています。  合計専用 vCPU が現在適用されている値ですが、間もなく VM シリーズごとの専用クォータを適用します。 優先度の低いクォータは、合計の制限に基づいて引き続き適用されます。VM シリーズ別に適用されることはありません。
 
 > [!NOTE]
 > 既定の制限は、Batch アカウントの作成に使用するサブスクリプションの種類によって異なります。 表示されるコア クォータは、Batch サービス モードの Batch アカウント用です。 [Batch アカウントのクォータを確認してください](../articles/batch/batch-quota-limit.md#view-batch-quotas)。

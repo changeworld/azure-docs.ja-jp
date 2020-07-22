@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: cf259dfa0b00393cf0fee259b199527569ba1792
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42421f745759d9aee75b285c3fbc6ea7217ba5c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112703"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
 
@@ -30,7 +30,7 @@ Azure Cosmos アカウント内にリソースを作成する前に、[Azure Cos
 
 次のスクリーンショットは、Capacity Calculator の利用によるスループットとコストの見積もりを示しています。
 
-![Azure Cosmos DB Capacity Calculator でのコスト見積もり](./media/plan-manage-costs/capacity-calculator-cost-estimate.png)
+:::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Azure Cosmos DB Capacity Calculator でのコスト見積もり":::
 
 ## <a name="review-estimated-costs-from-the-azure-portal"></a>Azure portal から推定コストを確認する
 
@@ -41,7 +41,7 @@ Azure portal から Azure Cosmos DB リソースを作成するときに、推�
 1. グラフ コンテナーなどの新しいコンテナーを作成します。
 1. 400 RU/秒など、ワークロードのために必要なスループットを入力します。 スループット値を入力すると、次のスクリーンショットに示すように、料金見積もりを表示できます。
 
-   ![Azure portal でのコスト見積り](./media/plan-manage-costs/cost-estimate-portal.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure portal でのコスト見積もり":::
 
 Azure サブスクリプションに使用制限がある場合は、Azure により、クレジット額を超える支出が防止されます。 Azure リソースを作成して使用するときに、クレジットが使用されます。 クレジットの上限に達すると、その請求期間の残りの期間は、デプロイしたリソースが無効にされます。 クレジットの上限は変更できませんが、上限の削除は可能です。 使用制限の詳細については、「[Azure の使用制限](../billing/billing-spending-limit.md)」を参照してください。
 
@@ -63,7 +63,7 @@ Azure Cosmos DB でリソースを使用するとコストが発生します。 
 
 1. Azure Cosmos DB など、1 つのサービスのコストを絞り込むには、 **[フィルターの追加]** を選択してから、 **[サービス名]** を選択します。 次に、一覧から **[Azure Cosmos DB]** を選択します。 次に、Azure Cosmos DB だけのコストを示す例を示します。
  
-   ![[コスト分析] ペインを使用してコストを監視する](./media/plan-manage-costs/cost-analysis-pane.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="[コスト分析] ペインを使用してコストを監視する":::
 
 前の例では、2月について、Azure Cosmos DB の現在のコストが表示されています。グラフには、場所別とリソース グループ別の Azure Cosmos DB コストも含まれています。
 

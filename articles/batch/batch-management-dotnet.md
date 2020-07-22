@@ -4,12 +4,12 @@ description: Batch Management .NET ライブラリを使用して Azure Batch �
 ms.topic: how-to
 ms.date: 04/24/2017
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 05bc0c8a377517c4ab883e08a5a4848eb0042dcb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1684a177f139a3acff8a4957c0c1e89f46d8848d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145033"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>.NET 用の Batch 管理クライアント ライブラリを使用した Batch アカウントとクォータの管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "83726538"
 * **Batch アカウントを作成および削除します** 。 たとえば、独立系ソフトウェア ベンダー (ISV) が課金のためにクライアントごとに異なる Batch アカウントを割り当てる場合、顧客ポータルにアカウントの作成および削除機能を追加できます。
 * **アカウント キーを取得および再生成します** 。 これは、アカウント キーの定期的なロールオーバーまたは失効を実施するセキュリティ ポリシーに準拠するうえで役に立ちます。 さまざまな Azure リージョンに複数の Batch アカウントがある場合、このロールオーバー プロセスを自動化するとソリューションの効率が向上します。
 * **アカウントのクォータを確認し** 、Batch アカウントに対する制限の決定から試行錯誤の当て推量を排除します。 ジョブ開始前にアカウントのクォータをチェックしたり、プールを作成したり、コンピューティング ノードを追加したりすることで、いつどこでコンピューティング リソースが作成されるのかを事前に調整できます。 アカウントに追加リソースを割り当てる前に、クォータの増量が必要なアカウントを特定できます。
-* Batch Management .NET、**Azure Active Directory**、[Azure Resource Manager][aad_about] を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために[他の Azure サービスの機能を組み合わせます][resman_overview]。 これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
+* Batch Management .NET、[Azure Active Directory][aad_about]、[Azure Resource Manager][resman_overview] を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせます**。 これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
 
 > [!NOTE]
 > この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure portal][azure_portal] を使用して実行できます。 詳細については、「[Azure Portal を使用して Azure Batch アカウントを作成する](batch-account-create-portal.md)」と「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
@@ -79,7 +79,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> 管理アプリケーションのための効率化された接続ワークフローを作成できます。 まず、管理対象の Batch アカウントのアカウント キーを [ListKeysAsync][net_list_keys] で取得します。 次に、このキーを使用して、[BatchClient][net_sharedkeycred] を初期化するときに使用される Batch .NET ライブラリの [BatchSharedKeyCredentials][net_batch_client] クラスを初期化します。
+> 管理アプリケーションのための効率化された接続ワークフローを作成できます。 まず、管理対象の Batch アカウントのアカウント キーを [ListKeysAsync][net_list_keys] で取得します。 次に、このキーを使用して、[BatchClient][net_batch_client] を初期化するときに使用される Batch .NET ライブラリの [BatchSharedKeyCredentials][net_sharedkeycred] クラスを初期化します。
 > 
 > 
 
@@ -165,28 +165,28 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD の認証シナリオ"
 [aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Azure Active Directory とアプリケーションの統合"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_mgmt_net]: /dotnet/api/overview/azure/batch
 [azure_portal]: https://portal.azure.com
 [azure_storage]: https://azure.microsoft.com/services/storage/
-[azure_tokencreds]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.tokencloudcredentials.aspx
+[azure_tokencreds]: /previous-versions/azure/reference/mt167728(v=azure.100)
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_list_keys]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.listkeysasync.aspx
-[net_create]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.createasync.aspx
-[net_delete]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.deleteasync.aspx
-[net_regenerate_keys]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.regeneratekeyasync.aspx
-[net_sharedkeycred]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.auth.batchsharedkeycredentials.aspx
-[net_mgmt_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.batchmanagementclient.aspx
-[net_mgmt_subscriptions]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.batchmanagementclient.subscriptions.aspx
-[net_mgmt_listaccounts]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.iaccountoperations.listasync.aspx
-[resman_api]: https://msdn.microsoft.com/library/azure/mt418626.aspx
-[resman_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspx
-[resman_subclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.subscriptions.subscriptionclient.aspx
+[net_batch_client]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_list_keys]: /previous-versions/azure/mt463199(v=azure.100)
+[net_create]: /previous-versions/azure/mt463210(v=azure.100)
+[net_delete]: /previous-versions/azure/mt463128(v=azure.100)
+[net_regenerate_keys]: /previous-versions/azure/mt463213(v=azure.100)
+[net_sharedkeycred]: /dotnet/api/microsoft.azure.batch.auth.batchsharedkeycredentials
+[net_mgmt_client]: /dotnet/api/microsoft.azure.management.batch.batchmanagementclient
+[net_mgmt_subscriptions]: /previous-versions/azure/mt592937(v=azure.100)
+[net_mgmt_listaccounts]: /previous-versions/azure/mt463134(v=azure.100)
+[resman_api]: /previous-versions/azure/mt463134(v=azure.100)
+[resman_client]: /dotnet/api/microsoft.azure.management.resourcemanager
+[resman_subclient]: /dotnet/api/microsoft.azure.management.resourcemanager
 [resman_overview]: ../azure-resource-manager/management/overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png

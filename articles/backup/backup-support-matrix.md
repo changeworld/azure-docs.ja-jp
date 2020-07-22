@@ -3,12 +3,12 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655624"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -56,7 +56,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 **制限** | **詳細**
 --- | ---
-**Azure VM のデータ ディスク数** | 最大 16 個 <br> 16 台以上のディスク (最大 32 ディスク) を搭載した VM の限定プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com に記載されている連絡先にご連絡ください
+**Azure VM のデータ ディスク数** | [Azure VM バックアップのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)を確認してください。
 **Azure VM のデータ ディスク サイズ** | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM のバックアップ オプション
@@ -101,14 +101,14 @@ Azure Backup では、転送中のデータと保存データの暗号化をサ�
 
 - サーバーから Recovery Services コンテナーへのバックアップ トラフィックは、Advanced Encryption Standard 256 を使用して暗号化されます。
 - バックアップ データは、セキュリティで保護された HTTPS リンク経由で送信されます。
+
+### <a name="data-security"></a>データのセキュリティ
+
 - バックアップ データは、暗号化された形式で Recovery Services コンテナーに格納されます。
 - このデータのロックを解除するパスフレーズを持っているのはお客様だけです。 Microsoft は、どの時点でも、バックアップ データの暗号化を解除できません。
 
     > [!WARNING]
     > コンテナーの設定後、お客様だけが暗号化キーにアクセスできます。 Microsoft がコピーを保持することはなく、キーにアクセスすることもできません。 キーを紛失した場合、Microsoft はバックアップ データを復旧できません。
-
-### <a name="data-security"></a>データのセキュリティ
-
 - Azure VM をバックアップする場合は、仮想マシン*内*で暗号化を設定する必要があります。
 - Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。
 - Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。

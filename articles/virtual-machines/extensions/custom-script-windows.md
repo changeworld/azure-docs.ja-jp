@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478486"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -30,7 +30,17 @@ ms.locfileid: "80478151"
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS 上で動作します。詳細については、こちらの [Azure 拡張機能でサポートされているオペレーティング システム](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)に関する記事を参照してください。
+Windows 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS で動作します。
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 Core
+* Windows Server 2019
+* Windows Server 2019 Core
 
 ### <a name="script-location"></a>スクリプトの場所
 
@@ -56,6 +66,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 * カスタム スクリプト拡張機能では、プロキシ サーバーはネイティブではサポートされていませんが、*Curl* などの、プロキシ サーバーをサポートするファイル転送ツールをスクリプト内で使用することができます。
 * スクリプトまたはコマンドで使用している既定以外のディレクトリの場所に注意し、この状況を処理するロジックを用意してください。
 * カスタム スクリプト拡張機能は LocalSystem アカウントで実行されます
+* *storageAccountName* プロパティと *storageAccountKey* プロパティの使用を計画している場合は、これらのプロパティを *protectedSettings* に併置する必要があります。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 

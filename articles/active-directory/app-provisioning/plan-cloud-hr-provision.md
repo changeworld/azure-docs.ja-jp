@@ -2,21 +2,21 @@
 title: Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 description: この記事では、Workday や SuccessFactors などのクラウド人事システムを Azure Active Directory と統合するデプロイ プロセスについて説明します。 Azure AD とクラウド人事システムを統合することで、完全な ID ライフサイクル管理システムが実現します。
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593303"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781601"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -81,10 +81,11 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure AD Connect プロビジョニング エージェントを構成するための Azure AD グローバル管理者アクセス。
+- Azure AD Connect プロビジョニング エージェントを構成するための [Azure AD ハイブリッド ID 管理者](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)。
+- Azure portal でプロビジョニング アプリを構成する[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)ロール
 - クラウド人事アプリのテストおよび運用インスタンス。
 - クラウド人事アプリの管理者権限。システム統合ユーザーを作成したり、テスト目的でテスト用社員データを変更したりするために必要です。
-- Active Directory へのユーザー プロビジョニングの場合、[Azure AD Connect プロビジョニング エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、.NET 4.7.1 以降のランタイムがインストールされた Windows Server 2012 以降を実行しているサーバーが必要です。
+- Active Directory へのユーザー プロビジョニングの場合、Azure AD Connect プロビジョニング エージェントをホストするために、.NET 4.7.1 以降のランタイムがインストールされた Windows Server 2012 以降を実行しているサーバーが必要です
 - Active Directory と Azure AD 間でユーザーを同期する [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)。
 
 ### <a name="training-resources"></a>トレーニング リソース
@@ -248,7 +249,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 
 複数の一致属性を設定し、一致の優先順位を割り当てることができます。 一致の優先順位に従って評価が行われます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 
-また、既存の属性マッピングの変更や削除など、[既定の属性マッピングをカスタマイズ](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)することもできます。 また、ビジネスのニーズに合わせて新しい属性マッピングを作成できます。 マップするカスタム属性の一覧に関する詳細については、クラウド人事アプリのチュートリアル ([Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations) など) を参照してください。
+また、既存の属性マッピングの変更や削除など、[既定の属性マッピングをカスタマイズ](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)することもできます。 また、ビジネスのニーズに合わせて新しい属性マッピングを作成できます。 マップするカスタム属性の一覧に関する詳細については、クラウド人事アプリのチュートリアル ([Workday](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration) など) を参照してください。
 
 ### <a name="determine-user-account-status"></a>ユーザー アカウントの状態の決定
 
@@ -285,7 +286,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 | | ユーザーの退職の処理にあたり、どのような発効日が考慮されるか。 |
 | | 社員および臨時社員の変換は、既存の Active Directory アカウントにどのように影響するか。 |
 
-要件に応じて、統合の目標を満たすようにマッピングを変更できます。 マップするカスタム属性の一覧に関する詳細については、特定のクラウド人事アプリのチュートリアル ([Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations) など) を参照してください。
+要件に応じて、統合の目標を満たすようにマッピングを変更できます。 マップするカスタム属性の一覧に関する詳細については、特定のクラウド人事アプリのチュートリアル ([Workday](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings) など) を参照してください。
 
 ### <a name="generate-a-unique-attribute-value"></a>一意の属性値の生成
 
@@ -365,7 +366,9 @@ Azure AD プロビジョニング サービスを初めて実行すると、ク�
 
 ソリューションの要件に合ったクラウド人事アプリを選択します。
 
-**Workday**:Workday から Active Directory および Azure AD に従業員プロファイルをインポートするには、「[チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)」を参照してください。 必要に応じて、メール アドレスとユーザー名を Workday に書き戻すことができます。
+**Workday**:Workday から Active Directory および Azure AD に従業員プロファイルをインポートするには、「[チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)」を参照してください。 必要に応じて、メール アドレス、ユーザー名、電話番号を Workday に書き戻すことができます。
+
+**SAP SuccessFactors**:SuccessFactors から Active Directory および Azure AD に従業員プロファイルをインポートするには、「[チュートリアル:SAP SuccessFactors を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)」をご覧ください。 必要に応じて、メール アドレスとユーザー名を SuccessFactors に書き戻すことができます。
 
 ## <a name="manage-your-configuration"></a>構成の管理
 

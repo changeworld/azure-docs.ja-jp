@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8d0e8301fe5443e548dd35a6b6058e8c7a409d0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65137828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849901"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 
@@ -58,10 +58,14 @@ AD FS サーバーで Azure AD PowerShell (MSOnline モジュールがインス�
  
 Azure AD PowerShell セッションで、次の手順を実行します。まず、ドメイン fabrikam.com を含んだ Azure Active Directory に接続します。
 
-    Connect-MsolService
+```powershell
+Connect-MsolService
+```
 fabrikam.com のマネージド ドメインをフェデレーション ドメインに変換します。
 
-    Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```powershell
+Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```
  
 上記の操作によって、同じ AD FS との間で fabrikam.com ドメインが認証連携されます。 両方のドメインに Get-MsolDomainFederationSettings を使用してその設定を検証できます。
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e2e511a8c3cd9f474d3cfb71d9ebdee9cfc48826
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77121489"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253662"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>クイック スタート:Azure Service Fabric 上に Java Spring Boot アプリをデプロイする
 
@@ -21,14 +21,14 @@ ms.locfileid: "77121489"
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
-- [Java 環境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)と [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-- [Service Fabric SDK および Service Fabric コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Java 環境](./service-fabric-get-started-linux.md#set-up-java-development)と [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK および Service Fabric コマンド ライン インターフェイス (CLI)](./service-fabric-get-started-linux.md#installation-methods)
 - [Git](https://git-scm.com/downloads)
 
 #### <a name="macos"></a>[MacOS](#tab/macos)
 
-- [Java 環境と Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-- [Service Fabric SDK および Service Fabric コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Java 環境と Yeoman](./service-fabric-get-started-mac.md#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK および Service Fabric コマンド ライン インターフェイス (CLI)](./service-fabric-cli.md#cli-mac)
 - [Git](https://git-scm.com/downloads)
 
 --- 
@@ -61,7 +61,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     #!/bin/bash
     BASEDIR=$(dirname $0)
     cd $BASEDIR
-    java -jar gs-spring-boot-0.1.0.jar
+    java -jar *spring-boot*.jar
     ```
 
 1. **Endpoints** リソースを *gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml* ファイルに追加する
@@ -113,7 +113,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-    Mac を使用する場合、Docker イメージからローカル クラスターを開始します ([前提条件](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric)に従って Mac のローカル クラスターをセットアップした場合)。 
+    Mac を使用する場合、Docker イメージからローカル クラスターを開始します ([前提条件](./service-fabric-get-started-mac.md#create-a-local-container-and-set-up-service-fabric)に従って Mac のローカル クラスターをセットアップした場合)。 
 
     ```bash
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster

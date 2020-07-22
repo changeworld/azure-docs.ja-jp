@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772073"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234894"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する
 
@@ -55,9 +55,10 @@ Microsoft の[アダプティブ ストリーミング](autogen-bitrate-ladder.m
 
 次のようにこのプリセットを使用する変換を作成することができます。 
 
-> [!TIP]
-> 変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」 セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
+変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」 セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
 
+> [!NOTE]
+> ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** プリセットを使用してください。
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -77,7 +78,7 @@ TransformOutput[] output = new TransformOutput[]
 
 > [!NOTE]
 > `ContentAwareEncoding` プリセットを使用したエンコード ジョブは、出力時間 (分) に基づいて課金されます。 
-
+  
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Media Services v3 を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)

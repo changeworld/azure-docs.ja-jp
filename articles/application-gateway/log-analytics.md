@@ -5,15 +5,15 @@ description: この記事では、Azure Log Analytics を使用して Applicatio
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 072640f5ba34b2782f75bbe4169567ade823f406
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74048089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806687"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる
 

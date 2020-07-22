@@ -68,9 +68,9 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
     | source                    | Type  | 宛先                     |
     |---------------------------|-------|---------------------------------|
-    | cdnverify. www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
+    | cdnverify.www\.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - ソース:cdnverify サブドメインを含めて、カスタム ドメイン名を cdnverify.&lt;カスタム ドメイン名&gt; 形式で入力します。 たとえば、cdnverify. www.contoso.com とします。
+    - ソース:cdnverify サブドメインを含めて、カスタム ドメイン名を cdnverify.&lt;カスタム ドメイン名&gt; 形式で入力します。 たとえば、cdnverify.www\.contoso.com とします。
 
     - 型: 「*CNAME*」と入力します。
 

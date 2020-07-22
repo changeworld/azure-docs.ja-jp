@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 868bcfc898fc6bc804f36516f2cc01a52ad2db47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879447"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414336"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証
 
@@ -158,7 +158,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>VPN クライアントに DNS サフィックスを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** タグを追加できます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** タグを追加することができます
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>VPN クライアントにカスタム DNS サーバーを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加できます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加することができます
 
 ```
 <azvpnprofile>
@@ -197,7 +197,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>VPN クライアントにカスタム ルートを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加できます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route> \<destination>\<mask>\</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます
 
 ```
 <azvpnprofile>
@@ -215,7 +215,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN クライアントからルートをブロック (除外) する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** タグを追加できます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<excluderoutes>\<route> \<destination>\<mask>\</destination>\</mask>\</route>\</excluderoutes>** タグを追加することができます
 
 ```
 <azvpnprofile>

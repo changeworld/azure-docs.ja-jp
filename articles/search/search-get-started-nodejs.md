@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/25/2020
-ms.openlocfilehash: 8761a8f6daf0e15a00dc989e77339fea9536b330
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.date: 06/23/2020
+ms.openlocfilehash: bd64faf46f91c3b73d58f7c226748cd0ac083701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801282"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562139"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>クイック スタート:REST API を使用して Node.js で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -280,7 +280,7 @@ class AzureSearchClient {
         // The query key is used for read-only requests and so can be distributed with less risk of abuse.
         this.queryKey = queryKey;
         this.indexName = indexName;
-        this.apiVersion = '2019-05-06';
+        this.apiVersion = '2020-06-30';
     }
 
     // All methods go inside class body here!
@@ -289,7 +289,7 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-このクラスの最初の役割は、さまざまな要求の送信先となる URL の構築方法を認識することです。 これらの URL は、クラス コンストラクターに渡された構成データを使用するインスタンス メソッドによって構築します。 ここで構築する URL は API バージョンごとに異なり、そのバージョンを指定する引数が必要であることに注意してください (このアプリケーションでは `2019-05-06`)。 
+このクラスの最初の役割は、さまざまな要求の送信先となる URL の構築方法を認識することです。 これらの URL は、クラス コンストラクターに渡された構成データを使用するインスタンス メソッドによって構築します。 ここで構築する URL は API バージョンごとに異なり、そのバージョンを指定する引数が必要であることに注意してください (このアプリケーションでは `2020-06-30`)。 
 
 これらのメソッドの 1 つ目は、インデックス自体の URL を返します。 クラス本文内に次のメソッドを追加します。
 

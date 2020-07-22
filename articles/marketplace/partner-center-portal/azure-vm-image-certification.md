@@ -1,18 +1,18 @@
 ---
 title: Azure 仮想マシンの認定 - Azure Marketplace
 description: 商業マーケットプレースで仮想マシン オファーをテストして送信する方法について説明します。
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d3b89945c077b9c26bab1709bd6d1def20959e33
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726147"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110047"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure 仮想マシン (VM) のイメージの認定
 
@@ -649,4 +649,4 @@ Azure 認定用の認定テスト ツールはローカルの Windows マシン�
 
 ## <a name="next-step"></a>次のステップ
 
-- [VHD ごとに Uniform Resource Identifier (URI) を生成する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [SAS URI に関する一般的な問題と解決策](common-sas-uri-issues.md)

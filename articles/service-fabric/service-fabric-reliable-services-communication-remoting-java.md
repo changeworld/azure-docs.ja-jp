@@ -5,12 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2942c015ba9265d7f2c597ced2321a7789c28576
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426630"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253391"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Java での Reliable Services を使用したサービスのリモート処理
 > [!div class="op_single_selector"]
@@ -83,8 +83,8 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 ServiceProxy の作成は負荷の低い処理であり、必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシ インスタンスは、それらが必要とされる間、再利用することができます。 リモート プロシージャ コールから例外がスローされても、同じプロキシ インスタンスを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 リモート呼び出しが実行されると、通信クライアントが有効かどうかを調べる内部チェックが実行されます。 それらのチェックの結果に基づき、必要に応じて通信クライアントが再作成されます。 したがって例外が発生しても、`ServiceProxy` を自分で再作成する必要はありません。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory の有効期間
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシを作成するファクトリです。 プロキシの作成に API `ServiceProxyBase.create` を使っている場合、フレームワークは `FabricServiceProxyFactory` を作成します。
-手動での作成は、[ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
+[FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシを作成するファクトリです。 プロキシの作成に API `ServiceProxyBase.create` を使っている場合、フレームワークは `FabricServiceProxyFactory` を作成します。
+手動での作成は、[ServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
 ファクトリは負荷の高い操作です。 `FabricServiceProxyFactory` は通信クライアントのキャッシュを保持します。
 ベスト プラクティスは `FabricServiceProxyFactory` をできるだけ長くキャッシュすることです。
 
@@ -94,7 +94,7 @@ ServiceProxy の作成は負荷の低い処理であり、必要に応じてい�
 ServiceProxy は、それが作成されたサービス パーティションのすべてのフェールオーバー例外を処理します。 フェールオーバー例外 (一時的ではない例外) が発生した場合、エンドポイントを再度解決し、正しいエンドポイントでの呼び出しを再試行します。 フェールオーバー例外の再試行回数に上限はありません。
 一時的な例外の場合は、単に呼び出しが再試行されます。
 
-既定の再試行パラメーターは、[OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。
+既定の再試行パラメーターは、[OperationRetrySettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。
 ユーザーは、ServiceProxyFactory コンストラクターに OperationRetrySettings オブジェクトを渡すことによって、これらの値を構成できます。
 
 ## <a name="next-steps"></a>次のステップ

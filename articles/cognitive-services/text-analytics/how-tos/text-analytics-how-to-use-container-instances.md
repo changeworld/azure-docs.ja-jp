@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: e4b61c6fe2f62745d0f5268221cbb5c84803eb10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1dde59456126ce1221bdb71f09957c0fd3609427
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876437"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108713"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics コンテナーを Azure Container Instances にデプロイする
 
@@ -40,6 +40,10 @@ Cognitive Services の [Text Analytics][install-and-run-containers] コンテナ
 #### <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
+
+#### <a name="text-analytics-for-health"></a>[Text Analytics for Health](#tab/health)
+
+[!INCLUDE [Verify the health container instance](../includes/verify-health-container.md)]
 
 ***
 

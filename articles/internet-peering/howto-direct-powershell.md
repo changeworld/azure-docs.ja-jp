@@ -5,15 +5,15 @@ description: PowerShell を使用して Direct ピアリングを作成または
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7639499aaef8d479c2552849b2124e709c46fd36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 076332ac61359bc793615c2f7c9ea0e22c667bcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680747"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700299"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>PowerShell を使用して Direct ピアリングを作成または変更する
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678768"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>"再起動中"、"シャットダウン中"、または "サービスの停止中" に Azure Windows VM のシャットダウンが停止する
 
@@ -43,25 +43,25 @@ Windows では、シャットダウン プロセスを使用してシステム �
 
 [シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)を使用して、次の手順を完了します。
 
-1. 管理 PowerShell を開き、停止中にハングしたサービスを確認します。
+1. 管理 PowerShell を開き、停止時に応答が停止されたサービスを確認します。
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. 管理 CMD で、ハングしたサービスの PID を取得します。
+2. 管理 CMD 上で、応答しないサービスの PID を取得します。
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. ハングしたプロセス <STOPPING SERVICE> からメモリ ダンプのサンプルを取得します。
+3. 応答しないプロセス <STOPPING SERVICE> からメモリ ダンプのサンプルを取得します。
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. ここでハングしたプロセスを中止して、シャット ダウン プロセスのロックを解除します。
+4. ここで、応答しないプロセスを中止して、シャットダウン プロセスのロックを解除します。
 
    ``
    taskkill /PID <PID> /t /f

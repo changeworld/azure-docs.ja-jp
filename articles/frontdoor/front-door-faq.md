@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809478"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -46,7 +46,7 @@ Front Door の背後で Application Gateway を使用するべき主要なシナ
 
 - Front Door は、パス ベースの負荷分散をグローバル レベルでしか実行できません。仮想ネットワーク (VNET) 内でトラフィックをさらに負荷分散したい場合は、Application Gateway を使用する必要があります。
 - Front Door は VM/コンテナー レベルで機能しないので、接続のドレインは実行できません。 ただし、Application Gateway を使用すると、接続のドレインを実行できます。 
-- AFD の背後で Application Gateway を使用すると、100% の TLS/SSL オフロードを実現し、その仮想ネットワーク (VNET) 内で HTTP 要求のみをルーティングできます。
+- Front Door の内側で Application Gateway を使用すると、100% の TLS/SSL オフロードを実現し、その仮想ネットワーク (VNET) 内で HTTP 要求のみをルーティングできます。
 - Front Door と Application Gateway は両方ともセッション アフィニティをサポートします。 Front Door は、後続のトラフィックをユーザー セッションから特定のリージョン内の同じクラスターまたはバックエンドに転送できますが、Application Gateway は、トラフィックをクラスター内の同じサーバーにアフィニタイズ (affinitize) できます。  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Front Door の背後に Azure Load Balancer をデプロイできますか?
@@ -98,7 +98,7 @@ Front Door のルートには順序はなく、特定のルートは最適な一
     > [!WARNING]
     > Front Door のバックエンド IP 空間は後で変更される可能性があります。ただし Microsoft はその前に、[Azure IP 範囲およびサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合が確実に行われるようにします。 変更または更新について知るために、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をサブスクライブすることをお勧めします。
 
--    API バージョン `2020-01-01` 以降を使用して、Front Door で GET 操作を実行します。 API 呼び出しで、`frontdoorID` フィールドを探します。 Front Door からバックエンドに送信された受信ヘッダー "**X-Azure-FDID**" を、フィールド `frontdoorID` の値でフィルター処理します。 
+-    API バージョン `2020-01-01` 以降を使用して、Front Door で GET 操作を実行します。 API 呼び出しで、`frontdoorID` フィールドを探します。 Front Door からバックエンドに送信された受信ヘッダー "**X-Azure-FDID**" を、フィールド `frontdoorID` の値でフィルター処理します。 `Front Door ID` の値は、Front Door ポータル ページの [概要] セクションでも確認できます。 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>エニーキャスト IP は、Front Door の有効期間を通じて変更できますか?
 

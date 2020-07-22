@@ -5,17 +5,17 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2ee5df9f0b09e30212f61e804e24086874f07f5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75466257"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256273"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
 > * [Windows での C#](service-fabric-reliable-actors-get-started.md)
-> * [Linux での Java](service-fabric-reliable-actors-get-started-java.md)
+> * [Linux での Java](./service-fabric-create-your-first-linux-application-with-java.md)
 
 この記事では、Visual Studio で簡単な Reliable Actors アプリケーションを作成およびデバッグする手順について説明します。 Reliable Actors の詳細については、「[Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)」を参照してください。
 

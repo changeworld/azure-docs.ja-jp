@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 06/25/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 96130ea2ac08b51a86c0578fb05b20fadcc74ef8
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 67a3b812fef92b0cee25b6710ff9fdd3b3800ee9
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979678"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391657"
 ---
 # <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>クイック スタート:Language Understanding (LUIS) を使用して、音声、意図、エンティティを認識する
 

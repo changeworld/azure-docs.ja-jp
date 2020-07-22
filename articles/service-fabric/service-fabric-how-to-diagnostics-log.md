@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614368"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247219"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric アプリケーションにログ記録を追加する
 
@@ -96,7 +96,7 @@ internal sealed class ServiceEventSource : EventSource
 
 ASP.NET Core のログ記録 ([Microsoft.Extensions.Logging NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) は、ご利用のアプリケーションに対して標準的なログ記録 API を提供するログ記録フレームワークです。 他のログ記録バックエンドのサポートは、ASP.NET Core のログ記録にプラグインできます。 これにより大きなコード変更を行わなくても、ご自身のアプリケーションを処理しているときに、ログ記録に関するさまざまなサポートを利用することができます。
 
-1. インストルメント化するプロジェクトに、**Microsoft.Extensions.Logging NuGet** パッケージを追加します。 また、すべてのプロバイダーのパッケージを追加します。 詳細については、[ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging)に関する記事をご覧ください。
+1. インストルメント化するプロジェクトに、**Microsoft.Extensions.Logging NuGet** パッケージを追加します。 また、すべてのプロバイダーのパッケージを追加します。 詳細については、[ASP.NET Core のログ記録](/aspnet/core/fundamentals/logging)に関する記事をご覧ください。
 2. **Microsoft.Extensions.Logging** の **using** ディレクティブをサービス ファイルに追加します。
 3. サービス クラス内でプライベート変数を定義します。
 
@@ -167,13 +167,3 @@ ASP.NET Core のログ記録 ([Microsoft.Extensions.Logging NuGet パッケー�
 
 - [Service Fabric での監視アプリケーション](service-fabric-diagnostics-event-generation-app.md)の詳細を確認する。
 - [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) および [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) でのログ記録について確認する。
-
-
-
-
-
-
-
-
-
-

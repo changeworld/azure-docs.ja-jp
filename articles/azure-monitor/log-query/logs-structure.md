@@ -5,19 +5,22 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/22/2019
-ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.date: 05/09/2020
+ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738084"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196282"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor Logs の構造
 [ログ クエリ](log-query-overview.md)を使用して迅速にデータの分析情報が得られるのは、Azure Monitor の強力な機能です。 効率的で便利なクエリを作成するには、目的のデータがどこにあり、どのように構造化されているかなど、いくつかの基本概念を理解する必要があります。 この記事では、作業を始めるために必要な基本概念を提供します。
 
 ## <a name="overview"></a>概要
 Azure Monitor Logs のデータは、Log Analytics ワークスペースまたは Application Insights アプリケーションのどちらかに格納されます。 どちらの場合でも、[Azure Data Explorer](/azure/data-explorer/) の強力なデータ エンジンとクエリ言語が利用できます。
+
+> [!IMPORTANT]
+> [ワークスペース ベースの Application Insights リソース](../app/create-workspace-resource.md)を使用している場合、テレメトリは、その他のすべてのログ データと共に Log Analytics ワークスペースに格納されます。 テーブルは名前が変更されて再構成されていますが、テーブル内の情報は Application Insights アプリケーションのテーブルと同じです。
 
 ワークスペースとアプリケーション両方のデータがテーブルに整理され、それぞれのテーブルはさまざまな種類のデータを格納し、独自かつ一意のプロパティ セットを持ちます。 ほとんどの[データ ソース](../platform/data-sources.md)は Log Analytics ワークスペース内の独自テーブルに書き込みますが、Application Insights は、Application Insights アプリケーション内のあらかじめ定義されたテーブル セットに書き込みます。 ログ クエリは非常に柔軟で、複数のテーブルからのデータを簡単に結合できますし、リソース間クエリを使用すれば、複数のワークスペース内のテーブルからのデータを結合したり、ワークスペースのデータとアプリケーションのデータを結合するクエリを記述したりできます。
 
@@ -48,23 +51,26 @@ union withsource = table *
 ワークスペース内のデータへのアクセスを提供するためのアクセス制御戦略と推奨事項については、「[Azure Monitor ログのデプロイの設計](../platform/design-logs-deployment.md)」を参照してください。 ワークスペース自体へのアクセスを許可することに加えて、[テーブル レベルの RBAC](../platform/manage-access.md#table-level-rbac) を使用して個々のテーブルへのアクセスを制限できます。
 
 ## <a name="application-insights-application"></a>Application Insights アプリケーション
+
+> [!IMPORTANT]
+> [ワークスペース ベースの Application Insights リソース](../app/create-workspace-resource.md)を使用している場合、テレメトリは、その他のすべてのログ データと共に Log Analytics ワークスペースに格納されます。 テーブルは名前が変更されて再構成されていますが、テーブル内の情報は既存の Application Insights リソースのテーブルと同じです。
+
 Application Insights でアプリケーションを作成すると、対応するアプリケーションが自動的に Azure Monitor Logs に作成されます。 データを収集するための構成は不要であり、アプリケーションは、ページ ビュー、要求、例外などの監視データを自動的に書き込みます。
 
 Log Analytics ワークスペースと異なり、Application Insights アプリケーションには固定のテーブル セットがあります。 アプリケーションに書き込むように他のデータ ソースを構成することはできないため、追加のテーブルは作成できません。 
 
 | テーブル | 説明 | 
 |:---|:---|
-| availabilityResults   | 可用性テストの要約データ。
-| browserTimings      |     受信データの処理にかかった時間などのクライアントのパフォーマンスに関するデータ。
-| customEvents        | アプリケーションで作成されたカスタム イベント。
-| customMetrics       | アプリケーションで作成されたカスタム メトリック。
-| dependencies        | TrackDependency () を使用して記録された他のコンポーネント (外部コンポーネントを含む) へのアプリケーションからの呼び出し (REST API、データベース、またはファイル システムへの呼び出しなど)。 
-| exceptions            | アプリケーションのランタイムからスローされた例外。サーバー側とクライアント側 (ブラウザー) の両方の例外がキャプチャされます。
-| pageViews           | 各 Web サイトのビューに関するデータとブラウザー情報。
-| performanceCounters   | Windows のパフォーマンス カウンターなど、アプリケーションをサポートするコンピューティング リソースのパフォーマンス測定結果。
-| requests            | お使いのアプリケーションで受信された要求。 たとえば、お使いの Web アプリが受信する HTTP 要求ごとに、個別の要求レコードがログ記録されます。 
-| traces                | TrackTrace () を使用して記録された、アプリケーション コード/ログ記録フレームワークによって出力された詳細なログ (トレース)。
-
+| availabilityResults | 可用性テストの要約データ。 |
+| browserTimings      | 受信データの処理にかかった時間などのクライアントのパフォーマンスに関するデータ。 |
+| customEvents        | アプリケーションで作成されたカスタム イベント。 |
+| customMetrics       | アプリケーションで作成されたカスタム メトリック。 |
+| dependencies        | TrackDependency () を使用して記録された他のコンポーネント (外部コンポーネントを含む) へのアプリケーションからの呼び出し (REST API、データベース、またはファイル システムへの呼び出しなど)。 |
+| exceptions          | アプリケーションのランタイムからスローされた例外。サーバー側とクライアント側 (ブラウザー) の両方の例外がキャプチャされます。|
+| pageViews           | 各 Web サイトのビューに関するデータとブラウザー情報。 |
+| performanceCounters | Windows のパフォーマンス カウンターなど、アプリケーションをサポートするコンピューティング リソースのパフォーマンス測定結果。 |
+| requests            | お使いのアプリケーションで受信された要求。 たとえば、お使いの Web アプリが受信する HTTP 要求ごとに、個別の要求レコードがログ記録されます。  |
+| traces              | TrackTrace () を使用して記録された、アプリケーション コード/ログ記録フレームワークによって出力された詳細なログ (トレース)。 |
 
 各テーブルのスキーマは、アプリケーションの Log Analytics の **[スキーマ]** タブで確認できます。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0433b7287fc00da09fcf303fbcb8d74bf4e3b196
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897777"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800114"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PureCloud by Genesys の統合
 
@@ -87,35 +87,35 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
     a. **[識別子]** ボックスに、自分のリージョンに対応する URL を入力します。
 
-    | |
-    |--|
-    | `https://login.mypurecloud.com/saml` |
-    | `https://login.mypurecloud.de/saml` |
-    | `https://login.mypurecloud.jp/saml` |
-    | `https://login.mypurecloud.ie/saml` |
-    | `https://login.mypurecloud.au/saml` |
+    ```http
+    https://login.mypurecloud.com/saml
+    https://login.mypurecloud.de/saml
+    https://login.mypurecloud.jp/saml
+    https://login.mypurecloud.ie/saml
+    https://login.mypurecloud.au/saml
+    ```
 
     b. **[応答 URL]** ボックスに、自分のリージョンに対応する URL を入力します。
 
-    | |
-    |--|
-    | `https://login.mypurecloud.com/saml` |
-    | `https://login.mypurecloud.de/saml` |
-    | `https://login.mypurecloud.jp/saml` |
-    | `https://login.mypurecloud.ie/saml` |
-    | `https://login.mypurecloud.com.au/saml`|
+    ```http
+    https://login.mypurecloud.com/saml
+    https://login.mypurecloud.de/saml
+    https://login.mypurecloud.jp/saml
+    https://login.mypurecloud.ie/saml
+    https://login.mypurecloud.com.au/saml
+    ```
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順を実行します。
 
     **[サインオン URL]** ボックスに、自分のリージョンに対応する URL を入力します。
     
-    | |
-    |--|
-    | `https://login.mypurecloud.com` |
-    | `https://login.mypurecloud.de` |
-    | `https://login.mypurecloud.jp` |
-    | `https://login.mypurecloud.ie` |
-    | `https://login.mypurecloud.com.au` |
+    ```http
+    https://login.mypurecloud.com
+    https://login.mypurecloud.de
+    https://login.mypurecloud.jp
+    https://login.mypurecloud.ie
+    https://login.mypurecloud.com.au
+    ```
 
 1. PureCloud by Genesys アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 

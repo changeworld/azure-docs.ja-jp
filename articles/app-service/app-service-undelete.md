@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272493"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146241"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell を使用して、削除された App Service アプリを復元する
 
@@ -18,6 +18,10 @@ Azure App Service で誤ってアプリを削除した場合は、[Az PowerShell
 
 > [!NOTE]
 > 削除されたアプリは、最初の削除から 30 日後にシステムから削除されます。 削除されたアプリは復元できません。
+>
+
+> [!NOTE]
+> 削除の取り消し機能は、従量課金プランではサポートされていません。
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>App Service リソース プロバイダーを再登録します。
@@ -48,6 +52,8 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 - **削除時刻**:アプリが削除された日時  
 
 ## <a name="restore-deleted-app"></a>削除したアプリを復元する
+>[!NOTE]
+> `Restore-AzDeletedWebApp` は、関数アプリではサポートされていません。
 
 復元するアプリが特定されたら、`Restore-AzDeletedWebApp` を使用して復元できます。
 
@@ -64,7 +70,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 - **Name**:アプリの名前。グローバルに一意である必要があります。
 - **TargetAppServicePlanName**:アプリにリンクされている App Service プラン
 
-既定では `Restore-AzDeletedWebApp` によって、アプリの構成とコンテンツの両方が復元されます。 コンテンツのみを復元する場合は、このコマンドレットで `-RestoreContentOnly` フラグを使用します。
+既定では `Restore-AzDeletedWebApp` によって、アプリの構成とすべてのコンテンツの両方が復元されます。 コンテンツのみを復元する場合は、このコマンドレットで `-RestoreContentOnly` フラグを使用します。
 
 > [!NOTE]
 > アプリが App Service Environment 上でホストされ、そこから削除された場合は、対応する App Service Environment が引き続き存在する場合にのみ復元できます。

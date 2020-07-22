@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856672"
 ---
 # <a name="keys-and-values"></a>キーと値
 
@@ -25,13 +25,17 @@ Azure App Configuration では、構成データがキーと値のペアとし�
 
 * コンポーネント サービスに基づく
 
+```aspx
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
+```
 
 * デプロイ リージョンに基づく
 
+```aspx
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+```
 
 キーと値に対する具体的な名前付けスキームは、アプリケーション フレームワークにおける構成データの使われ方で決まる場合があります。 たとえば、Java の Spring Cloud フレームワークでは、Spring アプリケーションの設定を指定する `Environment` リソースを定義します。  これらは、"*アプリケーション名*" と "*プロファイル*" が含まれている変数によってパラメーター化されます。 通常、Spring Cloud に関連した構成データのキーは、区切り記号でつながれた、この 2 つの要素で始まります。
 
@@ -57,9 +61,11 @@ App Configuration のキー値には、必要に応じてラベル属性を割�
 
 ラベルは、キーのバリアントを作成するための便利な手段です。 ラベルは一般に、同じキーに対して複数の環境を指定する場合に使用します。
 
+```aspx
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
+```
 
 ### <a name="version-key-values"></a>キー値のバージョン管理
 

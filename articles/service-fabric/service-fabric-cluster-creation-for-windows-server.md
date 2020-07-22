@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189098"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259284"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
 Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。 Azure 上の従来の Service Fabric クラスターはマネージド サービスとして使用できるのに対して、スタンドアロンの Service Fabric クラスターはセルフサービスです。 違いについては、[Azure とスタンドアロン Service Fabric クラスターの比較](./service-fabric-deploy-anywhere.md)に関する記事をご覧ください。
@@ -25,10 +25,10 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Windows Server 用 Service Fabric パッケージのサポートを受ける
-* Windows Server 用 Service Fabric スタンドアロン パッケージに関するコミュニティへの質問を [Azure Service Fabric フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) で投稿します。
+* Windows Server 用 Service Fabric スタンドアロン パッケージに関するコミュニティへの質問を [Azure Service Fabric の Microsoft Q&A 質問ページ](/answers/topics/azure-service-fabric.html)で投稿します。
 * [Service Fabric の専門家によるサポート](https://support.microsoft.com/oas/default.aspx?prid=16146)については、チケットを申請してください。  Microsoft によるプロフェッショナル サポートの詳細については、[こちら](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)をご覧ください。
 * [Microsoft Premier サポート](https://support.microsoft.com/en-us/premier)の一環として、このパッケージのサポートを受けることもできます。
-* 詳細については、「[Azure Service Fabric のサポート オプション](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)」を参照してください。
+* 詳細については、「[Azure Service Fabric のサポート オプション](./service-fabric-support.md)」を参照してください。
 * サポート目的でログを収集するには、[Service Fabric スタンドアロン ログ コレクター](service-fabric-cluster-standalone-package-contents.md)を実行します。
 
 <a id="downloadpackage"></a>
@@ -216,7 +216,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 * [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
 * [スタンドアロン Service Fabric クラスターでノードを追加または削除する](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [スタンドアロン Service Fabric クラスターのバージョンをアップグレードする](service-fabric-cluster-upgrade-windows-server.md)
-* [Windows を実行する Azure VM を使用してスタンドアロン Service Fabric クラスターを作成する](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Windows を実行する Azure VM を使用してスタンドアロン Service Fabric クラスターを作成する](./service-fabric-cluster-creation-via-arm.md)
 * [Windows 上のスタンドアロン クラスターを Windows セキュリティで保護する](service-fabric-windows-cluster-windows-security.md)
 * [X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 

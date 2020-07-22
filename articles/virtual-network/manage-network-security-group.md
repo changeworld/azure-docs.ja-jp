@@ -6,17 +6,17 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 62972be5b363c0a22a24a9056b6f3f8b11829566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708282"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -65,7 +65,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) |
 | PowerShell | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |
@@ -76,7 +76,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg list](/cli/azure/network/nsg#az-network-nsg-list) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
@@ -101,7 +101,7 @@ Azure の一般的な設定の詳細については、次の記事を参照し�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
@@ -116,7 +116,7 @@ Azure の一般的な設定の詳細については、次の記事を参照し�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update) |
 | PowerShell | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) |
@@ -137,7 +137,7 @@ Azure の一般的な設定の詳細については、次の記事を参照し�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete) |
 | PowerShell | [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup) |
@@ -180,7 +180,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) |
 | PowerShell | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |
@@ -199,7 +199,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
@@ -219,7 +219,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
@@ -235,7 +235,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update) |
 | PowerShell | [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig) |
@@ -251,7 +251,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete) |
 | PowerShell | [Remove-AzNetworkSecurityRuleConfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig) |
@@ -283,7 +283,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network asg create](/cli/azure/network/asg#az-network-asg-create) |
 | PowerShell | [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup) |
@@ -294,7 +294,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network asg list](/cli/azure/network/asg#az-network-asg-list) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
@@ -307,7 +307,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network asg show](/cli/azure/network/asg#az-network-asg-show) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
@@ -327,7 +327,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network asg update](/cli/azure/network/asg#az-network-asg-update) |
 | PowerShell | PowerShell コマンドレットはありません |
@@ -344,7 +344,7 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 #### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network asg delete](/cli/azure/network/asg#az-network-asg-delete) |
 | PowerShell | [Remove-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup) |
@@ -366,9 +366,9 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 
 | アクション                                                        |   名前                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/networkSecurityGroups/rules/read            |   規則の取得                                                            |
-| Microsoft.Network/networkSecurityGroups/rules/write           |   規則の作成または更新                                               |
-| Microsoft.Network/networkSecurityGroups/rules/delete          |   規則の削除                                                         |
+| Microsoft.Network/networkSecurityGroups/securityRules/read            |   規則の取得                                                            |
+| Microsoft.Network/networkSecurityGroups/securityRules/write           |   規則の作成または更新                                               |
+| Microsoft.Network/networkSecurityGroups/securityRules/delete          |   規則の削除                                                         |
 
 ### <a name="application-security-group"></a>アプリケーション セキュリティ グループ
 

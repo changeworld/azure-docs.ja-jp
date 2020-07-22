@@ -3,13 +3,13 @@ title: Azure Monitor と統合するパートナー
 description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/29/2020
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248973"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -106,7 +106,8 @@ Grafana は、時系列のメトリック データを視覚化できるオー�
 
 ![InfluxData のロゴ](./media/partners/Influxdata.png)
 
-InfluxDB の開発元である InfluxData は、DevOps と IoT アプリケーションのメトリックとイベント (時系列データ) の分析用に一から構築された最新のオープン ソース プラットフォームを提供します。 データが人、センサー、マシンのどこから送られてきたものであっても、InfluxData を利用することで、開発者はこれまでより速く、簡単に、大規模な次世代の監視、分析、および IoT アプリケーションを構築し、実際のビジネス価値を迅速に提供できます。 サンフランシスコに本社を置く InfluxData の 420 を超える顧客には、Cisco、eBay、IBM、Siemens が含まれます。
+InfluxData は、オープンソースの時系列データベースである InfluxDB の作成者です。 当社のテクノロジは、IoT デバイス、アプリケーション、ネットワーク、コンテナー、コンピューターによって生成される大量のタイムスタンプ データを処理することに特化しています。 当社の使命は、IBM、Visa、Siemens、Tesla、NASA などの開発者や組織がリアルタイム データを保存して分析することを支援し、革新的な監視、分析、IoT アプリケーションをより迅速に構築し、規模を拡大できるようにすることです。 Microsoft Azure Monitor のメトリックおよびイベント収集機能は、InfluxData の Telegraf エージェントによって拡張できます。これによって Microsoft ユーザーは、最先端の時系列データベース ソリューションの利点を活用し、増えつつある Telegraf へのオープンソースのコントリビューションを利用することができます。
+
 
 [ドキュメントを確認する。][influxdata-doc]
 

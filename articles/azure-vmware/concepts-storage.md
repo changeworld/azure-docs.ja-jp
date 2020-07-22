@@ -3,12 +3,12 @@ title: 概念 - ストレージ
 description: Azure VMware Solution (AVS) プレビューのプライベート クラウドの主なストレージ機能について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84604118"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware Solution (AVS) プレビューのストレージの概念
 
@@ -32,7 +32,7 @@ vSAN データストアでは、既定で保存データの暗号化が使用さ
 
 ## <a name="scaling"></a>Scaling
 
-ネイティブのクラスター ストレージ容量は、クラスターにホストを追加することでスケーリングされます。 HE ホストを使用するクラスターの場合、クラスター全体の生の容量は、ホストが追加されるごとに 15.4 TB ずつ増加します。 GP ホストを使用して構築されたクラスターでは、ホストが追加されるごとに生の容量が 7.7 TB ずつ増加します。 どちらの種類のクラスターでも、クラスターにホストを追加するには約 10 分かかります。 クラスターのスケーリング手順については、[プライベート クラウドのスケーリングに関するチュートリアル][tutorial-scale-private-cloud]を参照してください。
+ネイティブのクラスター ストレージ容量は、クラスターにホストを追加することでスケーリングされます。 HE ホストを使用するクラスターの場合、クラスター全体の生の容量は、ホストが追加されるごとに 15.4 TB ずつ増加します。 GP ホストを使用して構築されたクラスターでは、ホストが追加されるごとに生の容量が 7.7 TB ずつ増加します。 どちらの種類のクラスターでも、クラスターにホストを追加するには約 10 分かかります。 クラスターのスケーリング手順については、[プライベート クラウドのスケーリングに関するチュートリアル][tutorial-scale-private-cloud]のページを参照してください。
 
 ## <a name="azure-storage-integration"></a>Azure ストレージの統合
 
@@ -45,5 +45,5 @@ vSAN データストアでは、既定で保存データの暗号化が使用さ
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

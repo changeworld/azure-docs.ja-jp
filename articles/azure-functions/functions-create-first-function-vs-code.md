@@ -3,14 +3,14 @@ title: Visual Studio Code を使用して Azure で初めての関数を作成�
 description: Visual Studio Code で Azure Functions 拡張機能を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter, seo
+ms.custom: mvc, devcenter, seo, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 64c2e813743a772692efcb1d966c8ab7b52cc66d
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 819fdec23d00929db34942434f66a6ffa5d4a1d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628182"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833742"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して Azure で関数を作成する
 
@@ -134,13 +134,13 @@ ms.locfileid: "82628182"
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください)** : [`HTTP trigger`] を選択します。
     
-    + **Provide a function name (関数名を指定してください)** : [`HttpExample`] を入力します。
+    + **Provide a function name (関数名を指定してください):** 「`HttpExample`.
     ::: zone-end  
     ::: zone pivot="programming-language-csharp"
-    + **Provide a namespace (名前空間を指定してください)** : [`My.Functions`] を入力します。
+    + **Provide a namespace (名前空間を指定してください)** : 「`My.Functions`. 
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **承認レベル**: [`Anonymous`] を選択します。この場合、すべてのユーザーが関数のエンドポイントを呼び出すことができます。 承認レベルについては、「[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。
+    + **承認レベル**: `Anonymous` を選択します。この場合、すべてのユーザーが関数のエンドポイントを呼び出すことができます。 承認レベルについては、「[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。
     ::: zone-end  
     + **Select how you would like to open your project (プロジェクトを開く方法を選択してください)** : [`Add to workspace`] を選択します。
 
@@ -172,7 +172,9 @@ ms.locfileid: "82628182"
 
 1. HTTP 要求の URL をブラウザーのアドレス バーに貼り付け、この URL の最後に `name` クエリ文字列を `?name=Functions` として追加して、要求を実行します。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります。
 
-        http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions 
+    ```http
+    http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
+    ```
         
     関数によって返されたリモート GET 要求に対するブラウザーでの応答を次の例に示します。 
 

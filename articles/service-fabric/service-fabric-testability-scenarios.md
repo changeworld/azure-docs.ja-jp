@@ -5,12 +5,12 @@ author: motanv
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 336cd048704055e07de1a20f0694bd5816265a8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75465538"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245570"
 ---
 # <a name="testability-scenarios"></a>Testability のシナリオ
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。 高品質なサービスのコードを記述するには、開発者はこのような信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。
@@ -124,7 +124,7 @@ class Test
 
 PowerShell
 
-Service Fabric Powershell モジュールでは、2 とおりの方法で混乱シナリオを開始できます。 `Invoke-ServiceFabricChaosTestScenario` はクライアントベースであり、テストの途中でクライアント コンピューターがシャットダウンされた場合、それ以上のエラーは発生しません。 また、コンピューターのシャットダウン時にテストの実行を維持するための一連のコマンドがあります。 `Start-ServiceFabricChaos` では、FaultAnalysisService という名称の、信頼性の高いステートフル サービスが使用され、TimeToRun が起動するまでエラーが引き続き表示されます。 `Stop-ServiceFabricChaos` を使用し、シナリオを手動で停止できます。また、`Get-ServiceFabricChaosReport` でレポートが取得されます。 詳細については、「[Azure Service Fabric Powershell リファレンス](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)」と「[Service Fabric クラスターでの制御された混乱の誘発](service-fabric-controlled-chaos.md)」を参照してください。
+Service Fabric Powershell モジュールでは、2 とおりの方法で混乱シナリオを開始できます。 `Invoke-ServiceFabricChaosTestScenario` はクライアントベースであり、テストの途中でクライアント コンピューターがシャットダウンされた場合、それ以上のエラーは発生しません。 また、コンピューターのシャットダウン時にテストの実行を維持するための一連のコマンドがあります。 `Start-ServiceFabricChaos` では、FaultAnalysisService という名称の、信頼性の高いステートフル サービスが使用され、TimeToRun が起動するまでエラーが引き続き表示されます。 `Stop-ServiceFabricChaos` を使用し、シナリオを手動で停止できます。また、`Get-ServiceFabricChaosReport` でレポートが取得されます。 詳細については、「[Azure Service Fabric Powershell リファレンス](/powershell/module/servicefabric/?view=azureservicefabricps)」と「[Service Fabric クラスターでの制御された混乱の誘発](service-fabric-controlled-chaos.md)」を参照してください。
 
 ```powershell
 $connection = "localhost:19000"

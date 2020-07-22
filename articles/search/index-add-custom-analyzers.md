@@ -2,29 +2,18 @@
 title: 文字列フィールドにカスタム アナライザーを追加する
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のフルテキスト検索クエリで使用されるテキスト トークナイザーと文字フィルターを構成します。
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
-ms.author: jlembicz
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: f0d9576f5275bcfc061ce29740f8d85aff4ccfff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/05/2020
+ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555248"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドにカスタム アナライザーを追加する
 

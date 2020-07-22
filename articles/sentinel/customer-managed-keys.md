@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461635"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674182"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
 
@@ -29,11 +29,13 @@ ms.locfileid: "81461635"
 > [!NOTE]
 > -   Azure Sentinel CMK 機能は、**新規**のお客様にのみ提供され、この機能へのアクセスは Azure 機能の登録によって制御されます。 azuresentinelCMK@microsoft.com に連絡してアクセス権を要求できます。また、容量が使用可能な場合は、保留中の要求が承認されます。
 > -   Azure Sentinel CMK 機能は、米国東部、米国西部 2、および米国中南部リージョンでのみご利用いただけます。
-> -   CMK 機能は、1 日あたり 1 TB 以上を送信しているお客様のみご利用いただけます。 ご利用の Azure サブスクリプションで Microsoft に CMK のプロビジョニングを申請すると、追加料金に関する情報が表示されます。 Log Analytics の課金に関する詳細については、[こちら](../azure-monitor/platform/customer-managed-keys.md#disclaimers)を参照してください。
+> -   CMK 機能は、1 日あたり 1 TB 以上を送信しているお客様のみご利用いただけます。 ご利用の Azure サブスクリプションで Microsoft に CMK のプロビジョニングを申請すると、追加料金に関する情報が表示されます。 詳しくは、[Log Analytics の価格](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters)に関する記事をご覧ください。
 
 ## <a name="how-cmk-works"></a>CMK のしくみ 
 
-Azure Sentinel ソリューションでは、ログの収集と機能に複数のストレージ リソースが使用されます。これには、Log Analytics やその他のストレージ リソースが含まれます。 Azure Sentinel CMK 構成の一部として、関連するストレージ リソースにも CMK 設定を構成する必要があります。 Log Analytics 以外のストレージ リソースに保存されているデータも暗号化されます。
+Azure Sentinel ソリューションでは、ログの収集と機能に複数のストレージ リソースが使用されます (Log Analytics などを含む)。 Azure Sentinel CMK 構成の一部として、関連するストレージ リソースにも CMK 設定を構成する必要があります。 Log Analytics 以外のストレージ リソースに保存されているデータも暗号化されます。
+
+詳細については、[CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview) に関する記事をご覧ください。
 
 > [!NOTE]
 > Azure Sentinel で CMK を有効にすると、CMK をサポートしていないパブリック プレビュー機能は有効になりません。

@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418322"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263247"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -82,9 +82,9 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
   1. データ ファクトリ レベルで**共同作成者**組み込みロールを割り当てます。
   2. **Microsoft.Resources/deployments/** のアクセス許可を使用して、カスタム ロールを作成します。 このカスタム ロールをリソース グループ レベルのユーザーに割り当てます。
 
-- ユーザーがリンクされたサービスでのみ接続をテストできるようにします。
+- ユーザーがリンクされたサービスで接続をテストできるようにします。または、データセットのデータをプレビューできるようにします。
 
-    次のアクションのためのアクセス許可を持つカスタム ロールを作成します。**Microsoft.DataFactory/factories/getFeatureValue/read** および **Microsoft.DataFactory/factories/getDataPlaneAccess/read**。 このカスタム ロールを、ユーザーのデータ ファクトリ リソースに割り当てます。
+    次のアクションのためのアクセス許可を持つカスタム ロールを作成します。**Microsoft.DataFactory/factories/getFeatureValue/read** および **Microsoft.DataFactory/factories/getDataPlaneAccess/action**。 このカスタム ロールを、ユーザーのデータ ファクトリ リソースに割り当てます。
 
 - ユーザーが PowerShell または SDK からデータ ファクトリを更新できるようにし、Azure portal では更新を行えないようにします。
 

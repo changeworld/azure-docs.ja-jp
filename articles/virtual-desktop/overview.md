@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261722"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248613"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -22,7 +22,7 @@ Windows Virtual Desktop は、クラウド上で実行されるデスクトッ�
 Azure 上の Windows Virtual Desktop でできることは次のとおりです。
 
 * マルチセッションの Windows 10 デプロイを設定し、スケーラビリティを備えた完全版の Windows 10 を提供
-* Office 365 ProPlus を仮想化および最適化し、マルチユーザーの仮想シナリオで運用
+* Microsoft 365 Apps for enterprise を仮想化および最適化し、マルチユーザーの仮想シナリオで運用
 * Windows 7 仮想デスクトップに無料の延長セキュリティ更新プログラムを提供
 * 既存のリモート デスクトップ サービス (RDS) と Windows Server のデスクトップやアプリをあらゆるコンピューターで利用
 * デスクトップとアプリの両方を仮想化
@@ -67,8 +67,8 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 
 |OS|必要とされるライセンス|
 |---|---|
-|Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
-|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F3、Business Premium<br>Windows E3、E5、A3、A5|
+|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F3、Business Premium<br>Windows E3、E5、A3、A5|
 |Windows Server 2012 R2、2016、2019|ソフトウェア アシュアランス付きの RDS クライアント アクセス ライセンス (CAL)|
 
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
@@ -87,44 +87,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条�
 >[!NOTE]
 >Azure サブスクリプションが必要な場合には、[1 か月間の無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。 無料試用版の Azure をご利用中の場合には、Windows Server Active Directory が Azure Active Directory と同期した状態を保つことができるよう、Azure AD Domain Services を使用する必要があります。
 
-Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の URL に対するアクセスが必要です。
-
-|Address|アウトバウンド TCP ポート|目的|サービス タグ|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|サービス トラフィック|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|エージェントと SXS スタックの更新|AzureCloud|
-|*.core.windows.net|443|エージェント トラフィック|AzureCloud|
-|*.servicebus.windows.net|443|エージェント トラフィック|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|エージェント トラフィック|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
-|kms.core.windows.net|1688|Windows のライセンス認証|インターネット|
-
->[!IMPORTANT]
->サービスの問題を防ぐために、ほとんどの場合、URL ではなくサービス タグを使用することをお勧めします。 Windows Virtual Desktop を確実にデプロイするためには、これらの URL のブロックを解除することが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、Windows Virtual Desktop のサイトとリソースにのみ対応しており、他のサービス (Azure Active Directory など) の URL は含まれません。
-
-次の表は、Azure 仮想マシンからアクセスできるオプションの URL の一覧です。
-
-|Address|アウトバウンド TCP ポート|目的|サービス タグ|
-|---|---|---|---|
-|*.microsoftonline.com|443|MS オンライン サービスへの認証|なし|
-|*.events.data.microsoft.com|443|テレメトリ サービス|なし|
-|www.msftconnecttest.com|443|OS がインターネットに接続されているかどうかの検出|なし|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|なし|
-|login.windows.net|443|MS オンライン サービス、Office 365 へのログイン|なし|
-|*.sfx.ms|443|OneDrive クライアント ソフトウェアの更新|なし|
-|*.digicert.com|443|証明書失効の確認|なし|
-
-
->[!NOTE]
->現在、Windows Virtual Desktop には、ネットワーク トラフィックを許可するためにホワイトリストに登録できる IP アドレス範囲の一覧がありません。 現時点では、特定の URL のホワイトリスト登録のみがサポートされます。
->
->Office に関連した一連の URL (必須の Azure Active Directory 関連の URL など) については、「[Office 365 の URL と IP アドレスの範囲](/office365/enterprise/urls-and-ip-address-ranges)」を参照してください。
->
->サービス トラフィックに関係した URL にはワイルドカード文字 (*) を使用する必要があります。 エージェント関連のトラフィックに * を使用したくない場合、ワイルドカードを使わずに URL を見つける方法は次のとおりです。
->
->1. Windows Virtual Desktop ホスト プールに仮想マシンを登録します。
->2. **イベント ビューアー**を開き、 **[Windows ログ]**  >  **[アプリケーション]**  >  **[WVD-Agent]** に移動して、イベント ID 3702 を探します。
->3. イベント ID 3702 に見つけた URL をホワイトリストに登録します。 イベント ID 3702 にある URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ホワイトリスト登録プロセスを繰り返す必要があります。
+Windows Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧については、「[安全な URL の一覧](safe-url-list.md)」を参照してください。
 
 Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョン内の仮想マシン (VM) にデプロイでき、これらの VM の管理ソリューションとデータは米国に配置されます。 このため、米国を宛先とするデータ転送が発生することがあります。
 
@@ -138,7 +101,7 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 
 次のリモート デスクトップ クライアントは、Windows Virtual Desktop をサポートします。
 
-* [Windows デスクトップ](connect-windows-7-and-10.md)
+* [Windows デスクトップ](connect-windows-7-10.md)
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
@@ -150,20 +113,7 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 > [!IMPORTANT]
 > Windows Virtual Desktop では、現在、Windows Store のリモート デスクトップ クライアントはサポートされていません。 このクライアントのサポートは、将来のリリースで追加されます。
 
-リモート デスクトップ クライアントから次の URL にアクセスできる必要があります。
-
-|Address|アウトバウンド TCP ポート|目的|クライアント|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|サービス トラフィック|All|
-|*.servicebus.windows.net|443|データのトラブルシューティング|All|
-|go.microsoft.com|443|Microsoft の FWLink|All|
-|aka.ms|443|Microsoft URL 短縮ツール|All|
-|docs.microsoft.com|443|ドキュメント|All|
-|privacy.microsoft.com|443|プライバシー ステートメント|All|
-|query.prod.cms.rt.microsoft.com|443|クライアント更新|Windows デスクトップ|
-
->[!IMPORTANT]
->信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、クライアントのサイトとリソースにのみ対応しており、他のサービス (Azure Active Directory など) の URL は含まれません。
+リモート クライアントを使用するためにブロックを解除する必要がある URL の詳細については、「[安全な URL の一覧](safe-url-list.md)」を参照してください。
 
 ## <a name="supported-virtual-machine-os-images"></a>サポートされている仮想マシン OS イメージ
 
@@ -180,20 +130,22 @@ Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、
 
 利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。 
 
-|オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|Windows Virtual Desktop エージェントの更新|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 マルチセッション、バージョン 1903|はい|はい|はい|はい|自動|
-|Windows 10 マルチセッション、バージョン 1809|はい|はい|いいえ|いいえ|自動|
-|Windows 10 Enterprise、バージョン 1903|はい|はい|はい|はい|自動|
-|Windows 10 Enterprise、バージョン 1809|はい|はい|いいえ|いいえ|自動|
-|Windows 7 Enterprise|はい|はい|いいえ|いいえ|マニュアル|
-|Windows Server 2019|はい|はい|いいえ|いいえ|自動|
-|Windows Server 2016|はい|はい|はい|はい|自動|
-|Windows Server 2012 R2|はい|はい|いいえ|いいえ|自動|
+|オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10 マルチセッション、バージョン 1903|はい|はい|はい|はい|
+|Windows 10 マルチセッション、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 10 Enterprise、バージョン 1903|はい|はい|はい|はい|
+|Windows 10 Enterprise、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 7 Enterprise|はい|はい|いいえ|いいえ|
+|Windows Server 2019|はい|はい|いいえ|いいえ|
+|Windows Server 2016|はい|はい|はい|はい|
+|Windows Server 2012 R2|はい|はい|いいえ|いいえ|
 
 ## <a name="next-steps"></a>次のステップ
 
-まずは、テナントを作成する必要があります。 テナントの作成方法については、テナント作成に関するチュートリアルに進んでください。
+Windows Virtual Desktop Fall 2019 リリースを使用している場合は、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」のチュートリアルを開始できます。
+
+Windows Virtual Desktop Spring 2020 リリースを使用している場合は、代わりにホスト プールを作成する必要があります。 作業を開始するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Windows Virtual Desktop でテナントを作成する](tenant-setup-azure-active-directory.md)
+> [Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)

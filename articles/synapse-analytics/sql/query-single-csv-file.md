@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
-ms.date: 04/15/2020
+ms.subservice: sql
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427559"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214453"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
@@ -29,10 +29,7 @@ ms.locfileid: "81427559"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の残りの部分を読む前に、次の記事を確認してください。
-
-- [初回セットアップ](query-data-storage.md#first-time-setup)
-- [前提条件](query-data-storage.md#prerequisites)
+最初の手順として、テーブルが作成される**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルで使用される外部ファイル形式が作成されます。
 
 ## <a name="windows-style-new-line"></a>Windows スタイルの改行
 
@@ -45,8 +42,9 @@ ms.locfileid: "81427559"
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
@@ -72,8 +70,9 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT = 'CSV',
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a'
     )
@@ -99,8 +98,9 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr/population.csv',
-        FORMAT = 'CSV',
+        BULK 'csv/population-unix-hdr/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         FIRSTROW = 2
     )
@@ -126,8 +126,9 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-quoted/population.csv',
-        FORMAT = 'CSV',
+        BULK 'csv/population-unix-hdr-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
         FIRSTROW = 2,
@@ -158,8 +159,9 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-escape/population.csv',
-        FORMAT = 'CSV',
+        BULK 'csv/population-unix-hdr-escape/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
         FIRSTROW = 2,
@@ -172,11 +174,42 @@ FROM OPENROWSET(
         [population] bigint
     ) AS [r]
 WHERE
-    country_name = 'Slov,enia';
+    country_name = 'Slovenia';
 ```
 
 > [!NOTE]
-> ESCAPECHAR が指定されていない場合、このクエリは失敗します。"Slov,enia" 内のコンマが、国名の一部ではなく、フィールド区切り記号として扱われることがその理由です。 "Slov,enia" は 2 つの列として扱われます。 そのため、特定の行には、他の行よりも列が 1 つ多く存在し、WITH 句で定義した列数より 1 つ多くなります。
+> ESCAPECHAR が指定されていない場合、このクエリは失敗します。"Slov,enia" 内のコンマが、国/地域名の一部ではなく、フィールド区切り記号として扱われることがその理由です。 "Slov,enia" は 2 つの列として扱われます。 そのため、特定の行には、他の行よりも列が 1 つ多く存在し、WITH 句で定義した列数より 1 つ多くなります。
+
+### <a name="escaping-quoting-characters"></a>引用符文字のエスケープ
+
+次のクエリは、ファイル (ヘッダー行があり、Unix スタイルの改行、コンマ区切りの列、および値内のエスケープされた二重引用符文字を含む) を読み取る方法を示しています。 他の例と比較して、ファイルの場所が異なることに注意してください。
+
+ファイル プレビュー:
+
+![次のクエリは、ファイル (ヘッダー行があり、Unix スタイルの改行、コンマ区切りの列、および値内のエスケープされた二重引用符文字を含む) を読み取る方法を示しています。](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+
+```sql
+SELECT *
+FROM OPENROWSET(
+        BULK 'csv/population-unix-hdr-escape-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIELDTERMINATOR =',',
+        ROWTERMINATOR = '0x0a',
+        FIRSTROW = 2
+    )
+    WITH (
+        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+        [year] smallint,
+        [population] bigint
+    ) AS [r]
+WHERE
+    country_name = 'Slovenia';
+```
+
+> [!NOTE]
+> 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
 
 ## <a name="tab-delimited-files"></a>タブ区切りファイル
 
@@ -189,8 +222,9 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-tsv/population.csv',
-        FORMAT = 'CSV',
+        BULK 'csv/population-unix-hdr-tsv/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR ='\t',
         ROWTERMINATOR = '0x0a',
         FIRSTROW = 2
@@ -210,7 +244,7 @@ WHERE
 
 ここまで、WITH を使用し、すべての列をリストして CSV ファイル スキーマを指定してきました。 クエリにおいて実際に必要な列だけを指定するには、必要な各列に対して序数を使用します。 また、関心のない列も省略します。
 
-次のクエリでは、ファイル内の異なる国名の数が返されます。これにより必要な列のみを指定できます。
+次のクエリでは、ファイル内の異なる国/地域名の数が返されます。これにより必要な列のみを指定できます。
 
 > [!NOTE]
 > 次のクエリ内の WITH 句を見てください。 *[country_name]* 列を定義した行の末尾に "2" (引用符はなし) があることがわかります。 これは、 *[country_name]* 列がファイル内の 2 番目の列であることを意味します。 このクエリでは、2 番目の列を除く、ファイル内のすべての列が無視されます。
@@ -219,14 +253,15 @@ WHERE
 SELECT
     COUNT(DISTINCT country_name) AS countries
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
 WITH (
-    --[country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
-    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2 2
+    --[country_code] VARCHAR (5),
+    [country_name] VARCHAR (100) 2
     --[year] smallint,
     --[population] bigint
 ) AS [r]

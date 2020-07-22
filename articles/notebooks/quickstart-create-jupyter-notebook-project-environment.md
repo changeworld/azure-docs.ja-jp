@@ -3,18 +3,19 @@ title: カスタム環境で Azure Notebooks プレビュー プロジェクト�
 description: インストールされているパッケージとスタートアップ スクリプトの特定のセットで構成された新しいプロジェクトを Azure Notebooks プレビューで作成します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78196843"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832901"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>クイック スタート:カスタム環境で Azure Notebooks プレビューのプロジェクトを作成する
 
-Azure Notebooks のプロジェクトは、ノートブック、データ ファイル、ドキュメント、画像などのファイルのコレクションと、特定のセットアップ コマンドで構成できる環境が合わさったものです。 プロジェクトで環境を定義することにより、自分の Azure Notebooks アカウントにプロジェクトを複製すればだれでも、必要な環境を再作成するためのすべての情報が手に入ります。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks のプロジェクトは、ノートブック、データ ファイル、ドキュメント、画像などのファイルのコレクションと、特定のセットアップ コマンドで構成できる環境が合わさったものです。 プロジェクトで環境を定義することにより、自分の Azure Notebooks アカウントにプロジェクトを複製すればだれでも、必要な環境を再作成するためのすべての情報が手に入ります。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
@@ -51,7 +52,7 @@ Azure Notebooks のプロジェクトは、ノートブック、データ ファ
 
 1. **[+ 追加]** コマンドでは、操作とプロジェクト内のファイルから選択されたターゲット ファイルによって定義されるステップが作成されます。 次の操作がサポートされています。
 
-   | Operation | 説明 |
+   | 操作 | 説明 |
    | --- | --- |
    | requirements.txt | Python プロジェクトでは、requirements.txt ファイルで依存関係が定義されています。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択し、表示される追加のドロップダウンで Python のバージョンも選択します。 必要な場合は、 **[キャンセル]** を選択してプロジェクトに戻り、ファイルをアップロードまたは作成してから、 **[Project Settings]\(プロジェクトの設定\)**  >  **[Environment]\(環境\)** タブに戻って、新しいステップを作成します。 このステップを配置した場合、プロジェクトでノートブックを実行すると、`pip install -r <file>` が自動的に実行されます |
    | シェル スクリプト | 環境を初期化するために実行するコマンドが含まれる bash シェル スクリプト (通常は、拡張子が *.sh* のファイル) を指定するために使用します。 |

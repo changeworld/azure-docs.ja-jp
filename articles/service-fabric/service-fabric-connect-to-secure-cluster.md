@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターに安全に接続する
 description: Service Fabric クラスターへのクライアント アクセスを認証する方法、およびクライアントとクラスター間の通信をセキュリティで保護する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229347"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259249"
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -145,7 +145,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>FabricClient API を使用してクラスターに接続する
-Service Fabric SDK によって、クラスター管理用に [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) クラスが提供されます。 FabricClient API を使用するには、Microsoft.ServiceFabric NuGet パッケージを取得します。
+Service Fabric SDK によって、クラスター管理用に [FabricClient](/dotnet/api/system.fabric.fabricclient) クラスが提供されます。 FabricClient API を使用するには、Microsoft.ServiceFabric NuGet パッケージを取得します。
 
 ### <a name="connect-to-an-unsecure-cluster"></a>セキュリティで保護されていないクラスターに接続する
 
@@ -163,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>セキュリティで保護されたクラスターにクライアント証明書を使用して接続する
 
-クラスター内のノードには、[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) で設定された [RemoteCommonNames プロパティ](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials)に共通名または SAN の DNS 名が表示される、有効な証明書が必要です。 このプロセスに従うことで、クライアントとクラスター ノードの間の相互認証が可能になります。
+クラスター内のノードには、[FabricClient](/dotnet/api/system.fabric.fabricclient) で設定された [RemoteCommonNames プロパティ](/dotnet/api/system.fabric.x509credentials)に共通名または SAN の DNS 名が表示される、有効な証明書が必要です。 このプロセスに従うことで、クライアントとクラスター ノードの間の相互認証が可能になります。
 
 ```csharp
 using System.Fabric;
@@ -231,7 +231,7 @@ catch (Exception e)
 
 次の例では、Microsoft.IdentityModel.Clients.ActiveDirectory, Version: 2.19.208020213 を使用しています。
 
-AAD トークンの取得の詳細については、[Microsoft.IdentityModel.Clients.ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx) に関するページを参照してください。
+AAD トークンの取得の詳細については、[Microsoft.IdentityModel.Clients.ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) に関するページを参照してください。
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

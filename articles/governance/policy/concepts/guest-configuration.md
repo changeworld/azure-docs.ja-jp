@@ -1,62 +1,67 @@
 ---
 title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
-ms.date: 11/04/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 89f7cc3931971d70b441490f77b67ace89434c2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025222"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971098"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
-Azure リソースの監査と[修復](../how-to/remediate-resources.md)以外に、Azure Policy ではマシン内の設定を監査することができます。 検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
+Azure Policy では、Azure 内で実行するマシンと [Arc に接続されたマシン](../../../azure-arc/servers/overview.md)の両方に対して、マシン内の設定を監査できます。
+検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
 
 - オペレーティング システムの構成
 - アプリケーションの構成または存在
 - 環境設定
 
-現在、Azure Policy ゲスト構成のほとんどのポリシーでは、マシン内の設定の監査のみが行われます。 構成は適用されません。 例外は、[以下で参照されている](#applying-configurations-using-guest-configuration) 1 つの組み込みポリシーです。
+現在、Azure Policy ゲスト構成のほとんどのポリシーでは、マシン内の設定の監査のみが行われます。
+構成は適用されません。 例外は、[以下で参照されている](#applying-configurations-using-guest-configuration) 1 つの組み込みポリシーです。
+
+## <a name="enable-guest-configuration"></a>ゲスト構成を有効にする
+
+環境内のマシン (Azure 内のマシンと Arc に接続されたマシンを含む) の状態を監査するには、以下の詳細を確認してください。
 
 ## <a name="resource-provider"></a>リソース プロバイダー
 
 ゲストの構成を使用するには、リソース プロバイダーを登録する必要があります。 ポータルを使用してゲスト構成ポリシーを割り当てる場合、リソース プロバイダーは自動的に登録されます。 [ポータル](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)、または [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) を使用して手動で登録できます。
 
-## <a name="extension-and-client"></a>拡張機能とクライアント
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure 仮想マシンの要件をデプロイする
 
-マシン内の設定を監査するには、[仮想マシン拡張機能](../../../virtual-machines/extensions/overview.md)を有効にします。 拡張機能は、適用可能なポリシーの割り当てと、対応する構成定義をダウンロードします。
+マシン内の設定を監査するには、[仮想マシン拡張機能](../../../virtual-machines/extensions/overview.md)を有効にします。また、マシンにはシステム マネージド ID が必要です。 拡張機能は、適用可能なポリシーの割り当てと、対応する構成定義をダウンロードします。 ID は、ゲスト構成サービスに対して読み取りと書き込みを行うときに、マシンを認証するために使用されます。 Arc に接続されたマシンは Arc に接続されたマシンのエージェントに含まれているため、この拡張機能は必要ありません。
 
-> [!Important]
-> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。
-> 拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
->   - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->   - [Linux VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> [!IMPORTANT]
+> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。 
+>  - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>  - [Linux VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>拡張機能に設定されている制限
 
-拡張機能のマシン内で実行されているアプリケーションへの影響を制限するために、ゲスト構成が CPU の 5% を超えることは許可されていません。 この制限は、組み込み定義とカスタム定義の両方に存在します。
+拡張機能のマシン内で実行されているアプリケーションへの影響を制限するために、ゲスト構成が CPU の 5% を超えることは許可されていません。 この制限は、組み込み定義とカスタム定義の両方に存在します。 これは、Arc に接続されたマシンのエージェントのゲスト構成サービスにも当てはまります。
 
 ### <a name="validation-tools"></a>検証ツール
 
 マシン内では、ゲスト構成クライアントによりローカル ツールを使用して監査が実行されます。
 
-次の表では、サポートされている各オペレーティング システムで使用するローカルのツールの一覧を示します。
+次の表では、サポートされている各オペレーティング システム上で使用されるローカル ツールの一覧を示します。 組み込みコンテンツの場合、ゲスト構成によってこれらのツールの読み込みが自動的に処理されます。
 
 |オペレーティング システム|検証ツール|Notes|
 |-|-|-|
-|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby と Python がマシン上にない場合は、ゲスト構成拡張機能によってインストールされます。 |
+|Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| Azure Policy でのみ使用されるフォルダーにサイドローディングされます。 Windows PowerShell DSC と競合しません。 PowerShell Core はシステム パスに追加されません。|
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Chef InSpec バージョン 2.2.61 が既定の場所にインストールされ、システム パスに追加されます。 Ruby と Python を含む InSpec パッケージの依存関係もインストールされます。 |
 
 ### <a name="validation-frequency"></a>検証の頻度
 
-ゲスト構成クライアントは、新しいコンテンツを 5 分ごとにチェックします。 ゲスト割り当てを受信すると、その構成の設定が 15 分間隔でチェックされます。
-監査が完了すると、結果がゲスト構成リソース プロバイダーに送信されます。 ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。 この更新により、Azure Policy によって Azure Resource Manager のプロパティが評価されます。 オンデマンドの Azure Policy 評価により、ゲスト構成リソース プロバイダーから最新の値が取得されます。 ただし、マシン内の構成の新しい監査はトリガーされません。
+ゲスト構成クライアントは、新しいコンテンツを 5 分ごとにチェックします。 ゲスト割り当てを受信すると、その構成の設定が 15 分間隔でチェックされます。 監査が完了すると、結果がゲスト構成リソース プロバイダーに送信されます。 ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。 この更新により、Azure Policy によって Azure Resource Manager のプロパティが評価されます。 オンデマンドの Azure Policy 評価により、ゲスト構成リソース プロバイダーから最新の値が取得されます。 ただし、マシン内の構成の新しい監査はトリガーされません。
 
 ## <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-ゲスト構成ポリシーには、新しいバージョンが含まれます。 ゲスト構成エージェントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
+ゲスト構成ポリシーには、新しいバージョンが含まれます。 ゲスト構成エージェントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。
+次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
 |Publisher|名前|バージョン|
 |-|-|-|
@@ -65,21 +70,16 @@ Azure リソースの監査と[修復](../how-to/remediate-resources.md)以外�
 |Microsoft|Windows Server|2012 以降|
 |Microsoft|Windows クライアント|Windows 10|
 |OpenLogic|CentOS|7.3 以降|
-|Red Hat|Red Hat Enterprise Linux|7.4 以降|
+|Red Hat|Red Hat Enterprise Linux|7.4 - 7.8、9.0 以降|
 |Suse|SLES|12 SP3 以降|
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシーでサポートされます。
 
-### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
-
-Windows Server Nano Server はどのバージョンでもサポートされていません。
-
 ## <a name="guest-configuration-extension-network-requirements"></a>ゲスト構成拡張機能のネットワーク要件
 
-Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。
-[サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
+Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 [サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
 
-## <a name="azure-managed-identity-requirements"></a>Azure マネージド ID の要件
+## <a name="managed-identity-requirements"></a>マネージド ID の要件
 
 仮想マシンに拡張機能を追加する **DeployIfNotExists** ポリシーでは、システム割り当てマネージド ID も有効になります (まで存在しない場合)。
 
@@ -88,7 +88,7 @@ Azure のゲスト構成リソース プロバイダーと通信するには、�
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
-ゲスト構成によって実行される各監査には、**DeployIfNotExists** 定義と **AuditIfNotExists** 定義の 2 つのポリシー定義が必要です。 
+ゲスト構成によって実行される各監査には、**DeployIfNotExists** 定義と **AuditIfNotExists** 定義の 2 つのポリシー定義が必要です。 **DeployIfNotExists** ポリシー定義を使用して、各マシンで監査を実行するための依存関係を管理します。
 
 **DeployIfNotExists** ポリシー定義が検証し、次の項目を修正します。
 
@@ -112,11 +112,12 @@ Azure Policy は、ゲスト構成リソースプロバイダーの **compliance
 
 Azure Policy の 1 つのイニシアティブでは、"ベースライン" に従ってオペレーティング システムの設定を監査する機能が提供されます。 _\[[プレビュー]\]: Azure セキュリティ ベースライン設定と一致しない Windows VM を監査する_という定義には、Active Directory グループ ポリシーに基づく一連の規則が含まれています。
 
-ほとんどの設定は、パラメーターとして使用できます。 パラメーターを使用すると、監査対象をカスタマイズできます。 要件に合わせてポリシーを調整するか、またはポリシーを業界の規制標準などのサード パーティ情報にマップします。
+ほとんどの設定は、パラメーターとして使用できます。 パラメーターを使用すると、監査対象をカスタマイズできます。
+要件に合わせてポリシーを調整するか、またはポリシーを業界の規制標準などのサード パーティ情報にマップします。
 
 一部のパラメーターは、整数の値範囲をサポートしています。 たとえば、[パスワードの有効期間] の設定では、有効なグループ ポリシー設定を監査できます。 "1,70" の範囲では、ユーザーがパスワードを 1 ～ 70 日ごとに変更する必要があることを確認します。
 
-Azure Resource Manager デプロイ テンプレートを使用してポリシーを割り当てる場合は、パラメーター ファイルを使用して例外を管理します。 これらのファイルを Git などのバージョン管理システムにチェックインします。 ファイル変更に関するコメントによって、なぜ割り当てが予測される値の例外であるかの根拠が示されます。
+Azure Resource Manager テンプレート (ARM テンプレート) を使用してポリシーを割り当てる場合は、パラメーター ファイルを使用して例外を管理します。 これらのファイルを Git などのバージョン管理システムにチェックインします。 ファイル変更に関するコメントによって、なぜ割り当てが予測される値の例外であるかの根拠が示されます。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>ゲスト構成を使用して構成を適用する
 

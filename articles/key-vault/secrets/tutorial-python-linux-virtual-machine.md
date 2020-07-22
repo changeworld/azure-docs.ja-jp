@@ -9,13 +9,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: df089f0338a177c08f4d9e88d55b501fd12f88f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 6b3fb07322009134a75621a19cd013e2f967972a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81426361"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561609"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>チュートリアル:Linux VM と Python アプリを使用してシークレットを Azure Key Vault に格納する
 

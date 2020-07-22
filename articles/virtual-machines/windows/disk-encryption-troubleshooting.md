@@ -39,7 +39,7 @@ ms.locfileid: "82085690"
 [Azure AD の資格情報](disk-encryption-windows-aad.md#)を使用して暗号化を有効にする場合、ターゲット VM は、Azure Active Directory のエンドポイントと Key Vault のエンドポイントの両方への接続を許可する必要があります。 現在の Azure Active Directory 認証エンドポイントは、「[Office 365 の URL と IP アドレスの範囲](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)」ドキュメンテーションのセクション 56 と 59 に記載されています。 Key Vault の説明は、「[ファイアウォールの向こう側にある Access Azure Key Vault へのアクセス](../../key-vault/general/access-behind-firewall.md)」方法に関するドキュメンテーションにあります。
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
-VM は、その VM 内からしかアクセスできない既知のルーティング不可能な IP アドレス ([) を使用する ](../windows/instance-metadata-service.md)Azure Instance Metadata サービス`169.254.169.254` エンドポイントにアクセスできる必要があります。  ローカル HTTP トラフィックをこのアドレスに変更する (たとえば X-Forwarded-For ヘッダーを追加する) プロキシ構成はサポートされません。
+VM は、その VM 内からしかアクセスできない既知のルーティング不可能な IP アドレス (`169.254.169.254`) を使用する [Azure Instance Metadata サービス](../windows/instance-metadata-service.md) エンドポイントにアクセスできる必要があります。  ローカル HTTP トラフィックをこのアドレスに変更する (たとえば X-Forwarded-For ヘッダーを追加する) プロキシ構成はサポートされません。
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core のトラブルシューティング
 

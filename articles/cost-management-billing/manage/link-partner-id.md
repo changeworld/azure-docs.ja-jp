@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778823"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743917"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -160,4 +160,17 @@ C:\ az managementpartner delete --partner-id 12345
 **会社で [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) を使用して顧客のリソースにアクセスする場合、どのようにすればパートナー ID をリンクできますか。**
 
 [マネージド サービス プランを Azure Marketplace に発行する](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。 [Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)場合は、Microsoft Partner Network (MPN) ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 サービス プロバイダー テナントでこれを行う必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。 この例では、RBAC 閲覧者ロールが使用されています。これは、パートナー獲得クレジットの対象とならないロールの 1 つです。 ロールの詳細については、[パートナー獲得クレジットのロールとアクセス許可](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2)に関するページを参照してください。
+
+
+**パートナー管理リンク (PAL) については、顧客にどのように説明すればよいでしょうか。**
+
+Microsoft は、お客様のビジネス目標達成とクラウドでの価値実現に寄与しているパートナーを、パートナー管理リンク (PAL) を使用して特定し、評価しています。 お客様は最初に、その Azure リソースへのアクセスをパートナーに提供する必要があります。 アクセスが許可されると、パートナーの Microsoft Partner Network ID (MPN ID) が関連付けられます。 この関連付けによって Microsoft は、IT サービス プロバイダーのエコシステムを把握し、私たちの共通のお客様を最大限にサポートするために必要なツールやプログラムについて詳細をつめることができます。
+
+**PAL によってどのようなデータが収集されますか。**
+
+既存の資格情報に対する PAL の関連付けによって、顧客データが新たに Microsoft に提供されることはありません。 Microsoft に提供されるのは、お客様の Azure 環境にパートナーが積極的に関与している領域のテレメトリのみです。 Microsoft は、お客様からパートナーに提供されたアカウント アクセス許可 (RBAC の役割) とスコープ (管理グループ、サブスクリプション、リソース グループ、リソース) に基づいて、収益 (Azure 使用による収益) や効果に貢献しているパートナー組織をお客様の環境から把握することができます。 
+
+**お客様の Azure 環境のセキュリティに影響はありますか。**
+
+PAL の関連付けによって行われるのは、既にプロビジョニングされている資格情報にパートナーの MPN ID を追加することだけです。アクセス許可 (RBAC の役割) が変更されることはなく、また、別途 Azure サービスのデータがパートナーや Microsoft に提供されることもありません。 
 

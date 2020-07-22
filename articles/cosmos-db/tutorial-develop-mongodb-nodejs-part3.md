@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75444741"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114386"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
 
@@ -51,7 +51,7 @@ ms.locfileid: "75444741"
 
     ターミナル ウィンドウに新しいコンポーネントの確認が表示されます。
 
-    ![hero コンポーネントのインストール](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="hero コンポーネントのインストール":::
 
     作成されたファイルと更新されたファイルを見てみましょう。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "75444741"
 
 4. 同じフォルダーの **app.module.ts** ファイルを開き、`HeroesComponent` が 5 行目の宣言に追加され、10 行目でもインポートされていることを確認します。
 
-    ![app-module.ts ファイルを開く](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="app-module.ts ファイルを開く":::
 
 5. **heroes.component.html** ファイルに戻って、次のコードをコピーします。 `<div>` は、ページ全体のコンテナーです。 いずれかのヒーローをクリックして選択し、UI で編集したり削除したりできるよう、コンテナー内には作成するヒーローのリストが存在します。 またこの HTML には、どの項目が選択されたかを把握できるように、いくつかのスタイルが定義されています。 加えて、新しいヒーローを追加したり既存のヒーローを編集したりするための編集領域も存在します。 
 
@@ -394,7 +394,7 @@ ms.locfileid: "75444741"
 
 5. `Hero` という単語をクリックすると、Visual Studio によってコード ブロックの左側に電球アイコンが表示されます。 
 
-    ![Visual Studio Code の電球アイコン](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code の電球アイコン":::
 
 6. 電球をクリックして **[Import Hero from "/app/hero".]\(Hero を "/app/hero" からインポートします。\)** または **[Import Hero from "./hero".]\(Hero を "./hero" からインポートします。\)** をクリックします (メッセージは実際の設定によって異なります)。
 
@@ -490,7 +490,7 @@ ms.locfileid: "75444741"
 
 3. インターネット ブラウザーを開いて **localhost:3000** に移動すると、アプリがローカルで実行されているようすを確認できます。
 
-     ![ローカルで実行中のヒーロー アプリケーション](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="ローカルで実行中のヒーロー アプリケーション":::
 
 ## <a name="next-steps"></a>次のステップ
 

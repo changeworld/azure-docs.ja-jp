@@ -8,14 +8,14 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565926"
 ---
-# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure Cognitive Search でのフルテキスト検索のしくみ
+# <a name="full-text-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのフルテキスト検索
 
 この記事は、Azure Cognitive Search における Lucene のフルテキスト検索のしくみについて理解を深める必要がある開発者を対象としています。 テキスト クエリに関して、Azure Cognitive Search はほとんどの状況で速やかに適切な結果を返します。しかし一見、間違っているのではないか、と思うような結果が返されることも皆無ではありません。 このような状況では、Lucene による 4 段階から成るクエリ実行 (クエリ解析、字句解析、文書のマッチング、スコア付け) についての背景知識があると、具体的にどのような変更をクエリ パラメーターやインデックス構成に加えれば目的の結果が得られるかが特定しやすくなります。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "79236843"
 次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して Azure Cognitive Search に送信できる検索要求です。  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",
@@ -72,7 +72,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 この記事では主に、"*検索クエリ*" (`"Spacious, air-condition* +\"Ocean view\""`) の処理について取り上げています。 フィルター処理と並べ替えについては取り上げません。 詳細については、[Search API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/searchservice/search-documents)を参照してください。
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>第 1 段階: クエリ解析 
+## <a name="stage-1-query-parsing"></a>ステージ 1:クエリ解析 
 
 前出のとおり、検索要求の最初の行がクエリ文字列です。 
 
@@ -94,7 +94,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
  ![ブール クエリの searchMode は any][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>サポートされるパーサー: Simple と Full Lucene 
+### <a name="supported-parsers-simple-and-full-lucene"></a>サポートされるパーサー:シンプルかつ完全な Lucene 
 
  Azure Cognitive Search では、`simple` (既定) と `full` の 2 種類のクエリ言語が使用されます。 どちらのクエリ言語を使うかは、検索要求で `queryType` パラメーターの設定で指定します。その指定に基づいて、クエリ パーサーが演算子と構文を解釈します。 [Simple クエリ言語](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)は直感的で安定しており、多くの場合、クライアント側の処理を行わなくてもユーザー入力をそのまま解釈するのに適しています。 Web 検索エンジンで多く使われているクエリ演算子がサポートされます。 [Full Lucene クエリ言語](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)は、`queryType=full` を設定することによって利用できます。より多くの演算子やクエリの種類 (ワイルドカード、あいまい一致、正規表現、フィールド指定検索など) がサポートされることで、既定の Simple クエリ言語が拡張されます。 たとえば、Simple クエリ構文で送信された正規表現は、式としてではなくクエリ文字列と解釈されます。 この記事で紹介している要求の例では、Full Lucene クエリ言語を使用しています。
 
@@ -108,7 +108,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)*" です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view *と* spacious *と* air-condition の "すべて" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
+ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)* " です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view *と* spacious *と* air-condition の "すべて" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
 
 既定 (`searchMode=any`) では、検索エンジンはより広く解釈することを想定します。 どちらか一方のフィールドが一致していればよい (*should*) の意味、つまり "or" のセマンティクスで解釈されます。 先ほど例に挙げた、2 つの "should" 演算を含んだクエリ ツリーは既定の動作を示しています。  
 
@@ -126,7 +126,7 @@ Spacious,||air-condition*+"Ocean view"
 > `searchMode=all` より `searchMode=any` を選ぶ場合は、代表的なクエリを実行したうえで判断することをお勧めします。 普段から演算子を指定するユーザー (ドキュメント ストアを検索するときなど) は、`searchMode=all` で得られるブール クエリの構造の方が直感的にわかりやすいかもしれません。 `searchMode` と演算子の相互作用について詳しくは、[Simple クエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)に関するページをご覧ください。
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>第 2 段階: 字句解析 
+## <a name="stage-2-lexical-analysis"></a>ステージ 2:字句解析 
 
 クエリ ツリーが構築された後、"*単語検索*" と "*フレーズ検索*" のクエリがアナライザーによって加工されます。 アナライザーは、パーサーから渡されたテキスト入力を受け取ってそのテキストを加工してから、トークン化した語句をクエリ ツリーに組み入れます。 
 
@@ -188,7 +188,7 @@ Spacious,||air-condition*+"Ocean view"
 
 <a name="stage3"></a>
 
-## <a name="stage-3-document-retrieval"></a>第 3 段階: 文書検索 
+## <a name="stage-3-document-retrieval"></a>ステージ 3:文書検索 
 
 ここでいう文書検索とは、一致する語句がインデックスに存在する文書を見つけることです。 この段階は、例を使用するとよくわかります。 まず、次のような単純なスキーマを使用した hotels というインデックスを考えてみましょう。 
 
@@ -239,7 +239,7 @@ Spacious,||air-condition*+"Ocean view"
 転置インデックスに含める語句を得るために、検索エンジンは、クエリの加工時と同様の字句解析を文書の内容に対して実行します。
 
 1. "*テキスト入力*" はアナライザーに渡され、小文字への変換や句読点の削除など、アナライザーの構成に応じた処理が行われます。 
-2. "*トークン*" はテキスト分析の出力です。
+2. "*トークン*" は字句解析の出力です。
 3. "*用語*" はインデックスに追加されます。
 
 検索語の体裁をインデックスに登録されている語句の体裁と合わせるために、通常は検索操作とインデックス作成操作に同じアナライザーが使用されますが、必ずしも同じである必要はありません。
@@ -286,7 +286,7 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 | shore | 2
 | spacious | 1
 | the | 1、2
-| から | 1
+| to | 1
 | view | 1, 2, 3
 | walking | 1
 | with | 3
@@ -313,7 +313,7 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 
 全体として、この例のクエリの場合、一致する文書は 1、2、3 です。 
 
-## <a name="stage-4-scoring"></a>第 4 段階: スコア付け  
+## <a name="stage-4-scoring"></a>ステージ 4: ポイントの計算  
 
 検索結果セット内のすべての文書には、関連度スコアが割り当てられます。 関連度スコアの機能は、ユーザーからの問い合わせ (検索クエリ) に対して最適解となる文書に対し、相対的に高いランクを与えることです。 このスコアは、一致した語句の統計学的な特性に基づいて計算されます。 スコア付けの式の核となるのは [TF/IDF (Term Frequency-Inverse Document Frequency)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) です。 TF/IDF は、出現頻度の低い語句と高い語句を含んだ検索において、出現頻度の低い語句を含んだ結果に、より高いランクを与えます。 たとえば、Wikipedia の記事をすべて含んだ架空のインデックスでは、*the president* というクエリに一致した文書のうち、*president* で一致した文書の方が *the* で一致した文書よりも関連性が高いと見なされます。
 
@@ -391,7 +391,7 @@ Azure Cognitive Search のすべてのインデックスは自動的に複数の
 
 + 特定のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)します。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

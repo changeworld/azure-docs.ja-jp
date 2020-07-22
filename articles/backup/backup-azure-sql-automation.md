@@ -4,12 +4,12 @@ description: Azure Backup と PowerShell を使用して Azure VM 内の SQL Dat
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 9608b02869b1d41d901ec77a42cfaa6d882040e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 862455175497fe5496c7eea459c32772074671ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255145"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM で SQL データベースをバックアップおよび復元する
 
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>バックアップ項目のポリシーを変更する
 
-ユーザーは既存のポリシーを変更したり、バックアップ対象項目のポリシーを Policy1 から Policy2 に変えたりすることができます。 バックアップ対象項目のポリシーを切り替えるには、該当するポリシーとバックアップ項目をフェッチして、バックアップ項目をパラメーターに指定して [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) コマンドを使用します。
+ユーザーは、バックアップ対象項目のポリシーを Policy1 から Policy2 に変更できます。 バックアップ対象項目のポリシーを切り替えるには、該当するポリシーとバックアップ項目をフェッチして、バックアップ項目をパラメーターに指定して [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) コマンドを使用します。
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -513,6 +513,19 @@ Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetP
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
+```
+
+### <a name="edit-an-existing-backup-policy"></a>既存のバックアップ ポリシーを編集する
+
+既存のポリシーを編集するには、[Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-3.8.0) コマンドを使用します。
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```
+しばらくしてからバックアップジョブを確認し、障害を追跡します。 存在する場合は、問題を解決する必要があります。 その後、**FixForInconsistentItems** パラメーターを指定してポリシー編集コマンドを再実行し、操作が以前に失敗したすべてのバックアップ項目のポリシーの編集を再試行します。
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentItems
 ```
 
 ### <a name="re-register-sql-vms"></a>SQL VM の再登録
@@ -597,4 +610,4 @@ SQL Always On 可用性グループでは、必ず可用性グループ (AG) の
 
 sql-server-0 と sql-server-1 は、[バックアップ コンテナーが一覧表示される](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)ときは "AzureVMAppContainer" としても一覧表示されます。
 
-該当する SQL データベースを単にフェッチして[バックアップを有効に](#configuring-backup)してください。[オンデマンド バックアップ](#on-demand-backup)と[復元の PS コマンドレット](#restore-sql-dbs)は同じです。
+該当するデータベースを単にフェッチして[バックアップを有効に](#configuring-backup)してください。[オンデマンド バックアップ](#on-demand-backup)と[復元の PS コマンドレット](#restore-sql-dbs)は同じです。

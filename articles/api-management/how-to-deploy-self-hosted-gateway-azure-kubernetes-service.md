@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204836"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254386"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイする
 
@@ -36,7 +36,7 @@ ms.locfileid: "82204836"
 5. **[デプロイ スクリプト]** で **[Kubernetes]** が選択されていることを確認します。
 6. **[Deployment]/(デプロイ/)** の横にある **<gateway-name>.yml** ファイルのリンクを選択してファイルをダウンロードします。
 7. 必要に応じて、yml ファイルのポート マッピングとコンテナー名を調整します。
-8. シナリオによっては、[サービスの種類](https://docs.microsoft.com/azure/aks/concepts-network#services)の変更が必要になる場合があります。 既定値は `NodePort` です。
+8. シナリオによっては、[サービスの種類](../aks/concepts-network.md#services)の変更が必要になる場合があります。 既定値は `NodePort` です。
 9. **[Deploy]/(デプロイ/)** テキストボックスの右端にある **[コピー]** アイコンを選択して、`kubectl` コマンドをクリップボードに保存します。
 10. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 コマンドでは、ダウンロードした環境ファイルが現在のディレクトリに存在する必要があることに注意してください。
 ```console
@@ -63,10 +63,6 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 ## <a name="next-steps"></a>次のステップ
 
 * セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください
-* [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes) の詳細を見る
+* [Azure Kubernetes Service](../aks/intro-kubernetes.md) の詳細を見る
 * [クラウドでログを構成して保持する方法](how-to-configure-cloud-metrics-logs.md)について学習する
 * * [ローカルでログを構成して永続化する方法](how-to-configure-local-metrics-logs.md)について学習する
-
-
-
-

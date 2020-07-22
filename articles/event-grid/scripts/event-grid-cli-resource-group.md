@@ -1,22 +1,15 @@
 ---
 title: Azure CLI のサンプル スクリプト - リソース グループのサブスクライブ | Microsoft Docs
 description: この記事では、リソース グループの Azure Event Grid イベントをサブスクライブする方法を示したサンプル Azure CLI スクリプトを紹介しています。
-services: event-grid
-documentationcenter: na
-author: spelluru
-ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: ff5f317bafd5c59ea4bba8bb6a23b60881cd218f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/08/2020
+ms.openlocfilehash: 33f377fc4101aaba34629d94b7bcb2bc9a53f0c3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76720799"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171280"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Azure CLI を使用したリソース グループのイベントのサブスクライブ
 

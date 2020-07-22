@@ -39,7 +39,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、`-InstanceId`Get-AzVmssVM[ に ](/powershell/module/az.compute/get-azvmssvm) パラメーターを追加し、表示するインスタンスを指定します。 次の例では、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示します。 独自の名前を次のように入力します。
+特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加し、表示するインスタンスを指定します。 次の例では、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示します。 独自の名前を次のように入力します。
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"

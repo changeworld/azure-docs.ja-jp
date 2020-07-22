@@ -5,12 +5,13 @@ author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74231255"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165704"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
 
@@ -19,9 +20,6 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 このような障害は 2 とおりの方法で防止できます。 
 - 実行中のオーケストレーション インスタンスがすべて完了するまでデプロイを遅らせます。
 - 実行中のオーケストレーション インスタンスで既存バージョンの関数が使用されていることを確認します。 
-
-> [!NOTE]
-> この記事では、Durable Functions 1.x をターゲットにした関数アプリに関するガイダンスを提供します。 ただし、Durable Functions 2.x で導入された変更については反映されていません。 拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 次の表では、Durable Functions のゼロダウンタイム デプロイを実現するための 3 つの主な戦略を比較します。 
 
@@ -97,7 +95,7 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 [FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient client,
+    [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
     var runtimeStatus = new List<OrchestrationRuntimeStatus>();
@@ -105,8 +103,8 @@ public static async Task<IActionResult> StatusCheck(
     runtimeStatus.Add(OrchestrationRuntimeStatus.Pending);
     runtimeStatus.Add(OrchestrationRuntimeStatus.Running);
 
-    var status = await client.GetStatusAsync(new DateTime(2015,10,10), null, runtimeStatus);
-    return (ActionResult) new OkObjectResult(new Status() {HasRunning = (status.Count != 0)});
+    var result = await client.ListInstancesAsync(new OrchestrationStatusQueryCondition() { RuntimeStatus = runtimeStatus }, CancellationToken.None);
+    return (ActionResult)new OkObjectResult(new { HasRunning = result.DurableOrchestrationState.Any() });
 }
 ```
 

@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609048"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
-この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
+ログ アラートは、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)でサポートされているアラートの種類の 1 つです。 ログ アラートを使用すると、ユーザーは Azure の分析プラットフォームをアラート発信の基盤として使用できます。
 
 ログ アラートは、[Azure Monitor ログ](../../azure-monitor/learn/tutorial-viewdata.md)または [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 用に作成されたログ検索ルールで構成されます。 その使用の詳細については、[Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)に関するページをご覧ください
 

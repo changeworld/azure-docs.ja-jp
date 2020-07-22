@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395736"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141859"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -88,16 +88,16 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 |------------------------|---------------|
 | 1 つのドキュメントの最大サイズ | [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) で測定される 5,120 文字。 |
 | 要求全体の最大サイズ | 1 MB |
-| 1 件の要求での最大ドキュメント数 | 1,000 ドキュメント |
+| 1 件の要求での最大ドキュメント数 | 最大 1,000 ドキュメント ([機能ごとに異なります](concepts/data-limits.md)) |
 
 レート制限は価格レベルによって異なります。
 
 | レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
 |---------------|---------------------|---------------------|
 | S/マルチサービス | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
+| S0/F0         | 100                 | 該当なし                 |
+| S1            | 200                 | 該当なし                 |
+| S2            | 該当なし                 | 該当なし                 |
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 

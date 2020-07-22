@@ -4,15 +4,15 @@ description: Azure Disk Storage の予約を購入して、Premium SSD マネー
 author: roygara
 ms.author: rogarana
 ms.date: 01/30/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 18d10dfa1f45f9f2a669e35d13f94dfbeabd3cee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9eac9ff3eb312d8311b733d9e8334be471f4b65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84657376"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Azure ディスク予約によるコストの削減
 [!INCLUDE [disk-reserved-capacity-shared](../../../includes/disk-reserved-capacity-shared.md)]

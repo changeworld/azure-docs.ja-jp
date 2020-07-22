@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: e7276dcfca6ba033942d62f347ac3a799524cac4
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2760f0d91f7ed1066b0020c4aedc7572af095cfb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519099"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220322"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure クラウド ソリューション プロバイダー向けの Azure Active Directory Domain Services のデプロイと管理
 
@@ -78,11 +78,11 @@ Azure CSP サブスクリプションで Azure AD DS を使用する方法は 2 
 
 Azure CSP サブスクリプションでマネージド ドメインを管理する場合、次の重要な考慮事項が適用されます。
 
-* **CSP 管理エージェントは、その資格情報を使用してマネージド ドメインをプロビジョニングできる。** Azure AD DS では、Azure CSP サブスクリプションがサポートされています。 CSP パートナーの管理エージェント グループに属するユーザーは、新しい Azure AD DS マネージド ドメインをプロビジョニングできます。
+* **CSP 管理エージェントは、その資格情報を使用してマネージド ドメインをプロビジョニングできる。** Azure AD DS では、Azure CSP サブスクリプションがサポートされています。 CSP パートナーの管理エージェント グループに属するユーザーは、新しいマネージド ドメインをプロビジョニングできます。
 
 * **CSP は PowerShell を使用して、その顧客に対する新しいマネージド ドメインの作成をスクリプト化できる。** 詳細については、[PowerShell を使用して Azure AD DS を有効にする方法](powershell-create-instance.md)に関するページを参照してください。
 
-* **CSP 管理エージェントは、その資格情報を使用してマネージド ドメインで継続的な管理タスクを実行することができない。** CSP 管理者ユーザーは、その資格情報を使用してマネージド ドメイン内で日常的な管理タスクを実行することができません。 これらのユーザーは顧客の Azure AD テナントの外部にいるため、顧客の Azure AD テナント内ではその資格情報を使用できません。 Azure AD DS は、これらのユーザーの Kerberos/NTLM パスワード ハッシュにアクセスできないため、Azure AD DS マネージド ドメインではユーザーを認証できません。
+* **CSP 管理エージェントは、その資格情報を使用してマネージド ドメインで継続的な管理タスクを実行することができない。** CSP 管理者ユーザーは、その資格情報を使用してマネージド ドメイン内で日常的な管理タスクを実行することができません。 これらのユーザーは顧客の Azure AD テナントの外部にいるため、顧客の Azure AD テナント内ではその資格情報を使用できません。 Azure AD DS は、これらのユーザーの Kerberos/NTLM パスワード ハッシュにアクセスできないため、マネージド ドメインではユーザーを認証できません。
 
   > [!WARNING]
   > マネージド ドメインで継続的な管理タスクを実行するには、顧客のディレクトリ内にユーザー アカウントを作成する必要があります。

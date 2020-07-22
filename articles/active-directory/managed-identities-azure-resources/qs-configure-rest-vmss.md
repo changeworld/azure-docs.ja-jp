@@ -1,6 +1,6 @@
 ---
-title: Azure VMSS で REST を使用してマネージド ID を構成する - Azure AD
-description: REST API を呼び出す CURL を使用して、Azure VMSS でシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成する方法をステップ バイ ステップで説明します。
+title: REST を使用して Azure 仮想マシン スケール セットでマネージド ID を構成する - Azure AD
+description: REST API を呼び出す CURL を使用して、Azure 仮想マシン スケール セットでシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成するための詳細な手順について説明します。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06bce15dfbd2ccd3ac97f6a4f1e4efb5a24db85d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609103"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API 呼び出しを使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -35,7 +35,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を必ず確認してください**。
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - この記事の管理操作を実行するアカウントには、次の Azure のロール ベースのアクセス制御の割り当てが必要です。
 
@@ -337,7 +337,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ``` 
 
-4. 「[Create a user assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)」(ユーザー割り当てマネージド ID を作成する) に示されている手順を使用して、ユーザー割り当てマネージド ID を作成します。
+4. 次のセクション「[ユーザー割り当てマネージド ID を作成する](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)」の手順を使用して、ユーザー割り当てマネージド ID を作成します。
 
 5. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"UserAssigned"}` からの要求本文で指定されたユーザー割り当てマネージド ID `ID1` を使用して、*myResourceGroup* リソース グループ内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
  

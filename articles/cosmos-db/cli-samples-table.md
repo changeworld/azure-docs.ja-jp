@@ -4,21 +4,21 @@ description: Azure Cosmos DB Table API 用の Azure CLI サンプル
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: sample
-ms.date: 9/25/2019
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: efee7262c0568e269613af26dd7518117d81ead9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8c6456074e29efe47819e4f31235d957bde81cfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71275209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560622"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API 用の Azure CLI サンプル
 
 次の表には、Azure Cosmos DB Table API 用の Azure CLI サンプル スクリプトへのリンクが含まれています。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](/cli/azure/cosmosdb)で確認できます。 Azure Cosmos DB CLI のすべてのサンプル スクリプトについては、[Azure Cosmos DB CLI GitHub リポジトリ](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)をご覧ください。
 
-| |  |
+|タスク | 説明 |
 |---|---|
 | [Azure Cosmos アカウントとテーブルを作成する](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Table API 用の Azure Cosmos DB アカウントとテーブルを作成します。 |
 | [スループットを変更する](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | テーブルの RU/秒を更新します。|
@@ -27,4 +27,5 @@ ms.locfileid: "71275209"
 | [IP ファイアウォールを使用してセキュリティ保護する](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| IP ファイアウォールが構成された Cosmos アカウントを作成します。|
 | [サービス エンドポイントを使用して新しいアカウントをセキュリティ保護する](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Cosmos アカウントを作成し、サービス エンドポイントを使用してセキュリティ保護します。|
 | [サービス エンドポイントを使用して既存のアカウントをセキュリティ保護する](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| サブネットが最終的に構成されるときに、サービス エンドポイントを使用してセキュリティ保護されるように Cosmos アカウントを更新します。|
+| [リソースが削除されないようにロックする](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。|
 |||

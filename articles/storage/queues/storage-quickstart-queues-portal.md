@@ -7,13 +7,13 @@ ms.date: 03/06/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.reviewer: dineshm
+ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74269238"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808968"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>クイック スタート:Azure portal でキューを作成してメッセージを追加する
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターで証明書を管理する
 description: Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458352"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658389"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -35,9 +35,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 
 プライマリとマークされている証明書を削除しようとする場合は、自動ロールオーバーを有効にするために、有効期限がプライマリ証明書よりも先の日付のセカンダリ証明書をデプロイする必要があります。自動ロールオーバーが完了した後で、プライマリ証明書を削除します。
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager PowerShell を使用してセカンダリ証明書を追加する
-> [!TIP]
-> [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) を使用し、よりうまくより簡単に、セカンダリ証明書を追加できるようになりました。 このセクションの残りの手順に従う必要はありません。  また、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用するときは、クラスターの作成およびデプロイに当初使用したテンプレートは必要ありません。
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>Azure Resource Manager を使用してセカンダリ証明書を追加する
 
 以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも 1 つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあることを前提としています。 また、JSON を使いこなせることを前提としています。
 
@@ -106,7 +104,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
          }
     ``` 
 
-4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" にスクロールします。
+4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" までスクロールします。
 
     Service Fabric のパブリッシャーの設定は、次のように表示されます。
     

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c16ba26d1c59bd932e657f41882fbd23dc3a69e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: b1e648058e866be57deaf8dd159c89fc08141b68
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592232"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166673"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -100,14 +100,6 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールが割り当てられたユーザーは、Azure Information Protection サービスのすべてのアクセス許可を持ちます。 このロールでは、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、保護のアクティブ化を行うことができます。 このロールでは、Identity Protection Center、Privileged Identity Management、Office 365 Service Health の監視、および Office 365 のセキュリティ/コンプライアンス センターのアクセス許可は付与されません。
 
-### <a name="b2c-user-flow-administrator"></a>[B2C ユーザー フロー管理者](#b2c-user-flow-administrator-permissions)
-
-このロールが割り当てられたユーザーは、Azure portal で B2C ユーザー フロー ("組み込み" ポリシーとも呼ばれます) を作成および管理することができます。 これらのユーザーは、ユーザー フローを作成または編集することで、ユーザー エクスペリエンスの html/CSS/javascript コンテンツの変更、ユーザー フローごとの MFA 要件の変更、トークンの要求の変更、Azure AD 組織内のすべてのポリシー用のセッション設定の調整を行うことができます。 その一方で、このロールには、ユーザーのデータを確認したり、組織スキーマに含まれている属性を変更したりする機能は含まれていません。 Identity Experience Framework (カスタムとも呼ばれます) ポリシーの変更もこのロールの範囲外です。
-
-### <a name="b2c-user-flow-attribute-administrator"></a>[B2C ユーザー フロー属性管理者](#b2c-user-flow-attribute-administrator-permissions)
-
-このロールが割り当てられたユーザーは、Azure AD 組織内のすべてのユーザー フローで使用可能なカスタム属性を追加または削除できます。 そのため、このロールが割り当てられたユーザーは、エンド ユーザー スキーマを変更、またはエンド ユーザー スキーマに新しい要素を追加して、すべてのユーザー フローの動作に影響を及ぼしたり、エンド ユーザーが求め、最終的には要求としてアプリケーションに送信されるデータを間接的に変更したりできます。 このロールでユーザー フローを編集することはできません。
-
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF キーセット管理者](#b2c-ief-keyset-administrator-permissions)
 
 ユーザーは、トークンの暗号化、トークンの署名、および要求の暗号化/暗号化解除のために、ポリシー キーとシークレットを作成して管理できます。 新しいキーを既存のキー コンテナーに追加すると、この制限付き管理者は、既存のアプリケーションに影響を与えることなく、必要に応じてシークレットをロールオーバーできます。 このユーザーは、これらのシークレットとその有効期限の完全な内容を、シークレットを作成した後でも確認できます。
@@ -181,7 +173,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、デスクトップ Analytics および Office のカスタマイズとポリシーのサービスを管理できます。 デスクトップ Analytics の場合、これには、資産インベントリの表示、デプロイ プランの作成、デプロイと正常性の状態の表示に対する権限が含まれます。 Office のカスタマイズとポリシーのサービスの場合、このロールによりユーザーは Office のポリシーを管理することができます。
 
-### <a name="device-administrator"></a>[デバイス管理者](#device-administrators-permissions)
+### <a name="device-administrators"></a>[デバイス管理者](#device-administrators-permissions)
 
 この役割は、[デバイス設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)の追加のローカル管理者としてのみ割り当て可能です。 このロールのユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル マシン管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。
 
@@ -214,6 +206,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "Exchange サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Exchange 管理者" になります。 [Exchange 管理センター](https://go.microsoft.com/fwlink/p/?LinkID=529144)では "Exchange Online 管理者" になります。
 
+
+### <a name="external-id-user-flow-administrator"></a>[外部 ID ユーザー フロー管理者](#external-id-user-flow-administrator-permissions)
+
+このロールが割り当てられたユーザーは、Azure portal でユーザー フロー ("組み込み" ポリシーとも呼ばれます) を作成および管理することができます。 これらのユーザーは、HTML/CSS/JavaScript コンテンツのカスタマイズ、MFA 要件の変更、トークン内のクレームの選択、API コネクタの管理、および Azure AD 組織内のすべてのユーザー フローのセッション設定の構成を行うことができます。 その一方で、このロールには、ユーザーのデータを確認したり、組織スキーマに含まれている属性を変更したりする機能は含まれていません。 Identity Experience Framework ポリシー (カスタム ポリシーとも呼ばれます) の変更も、このロールの範囲外です。
+
+### <a name="external-id-user-flow-attribute-administrator"></a>[外部 ID ユーザー フロー属性管理者](#external-id-user-flow-attribute-administrator-permissions)
+
+このロールが割り当てられたユーザーは、Azure AD 組織内のすべてのユーザー フローで使用可能なカスタム属性を追加または削除できます。 そのため、このロールが割り当てられたユーザーは、エンド ユーザー スキーマを変更、またはエンド ユーザー スキーマに新しい要素を追加して、すべてのユーザー フローの動作に影響を及ぼしたり、エンド ユーザーが求め、最終的には要求としてアプリケーションに送信されるデータを間接的に変更したりできます。 このロールでユーザー フローを編集することはできません。
+
 ### <a name="external-identity-provider-administrator"></a>[外部 ID プロバイダー管理者](#external-identity-provider-administrator-permissions)
 
 この管理者は、Azure AD 組織と外部 ID プロバイダー間のフェデレーションを管理します。 このロールが割り当てられたユーザーは、新しい ID プロバイダーを追加し、使用可能なすべての設定 (認証パス、サービス ID、割り当てられたキー コンテナーなど) を構成できます。 このユーザーは、Azure AD 組織が外部 ID プロバイダーからの認証を信頼できるようにすることができます。 その結果としてエンド ユーザー エクスペリエンスに及ぼす影響は、組織の種類によって異なります。
@@ -223,7 +224,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="global-administrator--company-administrator"></a>[全体管理者/会社の管理者](#company-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 さらに全体管理者は、[アクセスを昇格させる](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)ことで、すべての Azure サブスクリプションと管理グループを管理できます。 これにより、全体管理者は各 Azure AD テナントを使用して、すべての Azure リソースに対するフル アクセスを取得できます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "社内管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
@@ -237,8 +238,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 > [!NOTE]
 > グローバル閲覧者ロールには現在、制限事項がいくつか与えられています。
 >
->- [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールがサポートされていません。
->- [Azure AD portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - グローバル閲覧者は企業アプリのプロビジョニング モードを閲覧できません。
+>- [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールはサポートされていません。
 >- [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
 >- [Office セキュリティ/コンプライアンス センター](https://sip.protection.office.com/homepage) - グローバル閲覧者は、SCC 監査ログを読み取ることも、コンテンツ検索を実行することも、セキュリティ スコアを確認することもできません。
 >- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
@@ -308,6 +308,21 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
 
+### <a name="modern-commerce-administrator"></a>[Modern Commerce 管理者](#modern-commerce-administrator-permissions)
+使用しないでください。 このロールは、Commerce から自動的に割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。 詳細は以下を参照してください。
+
+Modern Commerce 管理者ロールは、特定のユーザーに Microsoft 365 管理センターにアクセスして、**ホーム**、**課金**、**サポート**の左側のナビゲーション エントリを表示するためのアクセス許可を付与します。 これらの領域で利用可能なコンテンツは、ユーザーが自分自身または組織のために購入した製品を管理するために、ユーザーに割り当てられた[コマース固有のロール](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)によって制御されます。 これには、請求書の支払いや、課金アカウントや課金プロファイルへのアクセスなどのタスクが含まれる場合があります。 
+
+Modern Commerce 管理者ロールを持つユーザーは、通常、他の Microsoft 購入システムの管理権限を持っていますが、管理センターへのアクセスに使用されるグローバル管理者ロールまたは課金管理者ロールは持っていません。 
+
+**Modern Commerce 管理者ロールはいつ割り当てられますか?**
+* **Microsoft 365 管理センターでのセルフサービス購入** – セルフサービス購入により、ユーザーは新製品を自分で購入またはサインアップして、新製品を試す機会が得られます。 これらの製品は管理センターで管理されています。 セルフサービス購入を行うユーザーには、コマース システムでのロールと Modern Commerce 管理者ロールが割り当てられ、これにより、管理センターで購入を管理できるようになります。 管理者は [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) を使用して、(Power BI、Power Apps、Power Automate に対する) セルフサービス購入をブロックできます。 詳細については、「[セルフサービスによる購入に関するよくあるご質問](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)」を参照してください。  
+* **Microsoft コマーシャル マーケットプレースからの購入** - セルフサービス購入と同様に、ユーザーが Microsoft AppSource または Azure Marketplace から製品またはサービスを購入する際に、グローバル管理者ロールまたは課金管理者ロールを持っていない場合は、Modern Commerce 管理者ロールが割り当てられます。 場合によっては、ユーザーがこれらの購入をブロックされる場合があります。 詳細については、[Microsoft コマーシャル マーケットプレース](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)に関するページを参照してください。   
+* **Microsoft からの提案** – 提案は、組織が Microsoft の製品やサービスを購入するための Microsoft からの正式なオファーです。 提案に同意する人が Azure AD でグローバル管理者ロールまたは課金管理者ロールを持っていない場合、提案を完了するためのコマース固有のロールと、管理センターにアクセスするための Modern Commerce 管理者ロールの両方が割り当てられます。 管理センターにアクセスするときは、そのコマース固有のロールによって承認された機能のみを使用できます。 
+* **コマース固有のロール** – 一部のユーザーには、コマース固有のロールが割り当てられます。 ユーザーがグローバル管理者または課金管理者でない場合は、管理センターにアクセスできるように、Modern Commerce 管理者ロールを取得します。  
+
+ユーザーから Modern Commerce 管理者ロールが割り当て解除されると、Microsoft 365 管理センターにアクセスできなくなります。 ユーザーが自身または組織のために製品を管理している場合は、それらを管理できなくなります。 これには、ライセンスの割り当て、支払い方法の変更、請求書の支払い、サブスクリプションを管理するためのその他のタスクが含まれます。 
+
 ### <a name="network-administrator"></a>[ネットワーク管理者](#network-administrator-permissions)
 
 このロールのユーザーは、ユーザーの場所からのネットワーク テレメトリに基づいて、Microsoft によるネットワーク境界アーキテクチャに関する推奨事項を確認できます。 Office 365 のネットワーク パフォーマンスは、通常はユーザーの場所に固有である、企業の顧客の慎重なネットワーク境界アーキテクチャに依存します。 このロールを使用では、検出されたユーザーの場所と、それらの場所に対するネットワーク パラメーターの構成を編集して、テレメトリの測定と設計に関する推奨事項の改善できます。 
@@ -374,7 +389,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="search-administrator"></a>[Search 管理者](#search-administrator-permissions)
 
-このロールのユーザーには、Microsoft 365 管理センター内のすべての Microsoft Search 管理機能へのフル アクセスがあります。 Search 管理者は、Search 管理者ロールと Search エディター ロールをユーザーに委任し、ブックマーク、Q&A、場所のようなコンテンツを作成および管理できます。 さらに、これらのユーザーは、メッセージ センターを表示し、サービス正常性を監視し、サービス要求を作成することができます。
+このロールのユーザーには、Microsoft 365 管理センター内のすべての Microsoft Search 管理機能へのフル アクセスがあります。 さらに、これらのユーザーは、メッセージ センターを表示し、サービス正常性を監視し、サービス要求を作成することができます。
 
 ### <a name="search-editor"></a>[Search エディター](#search-editor-permissions)
 
@@ -382,7 +397,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="security-administrator"></a>[セキュリティ管理者](#security-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft 365 セキュリティ センター、Azure Active Directory Identity Protection、Azure Information Protection、Office 365 セキュリティ/コンプライアンス センターのセキュリティ関連機能を管理するアクセス許可を持ちます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
+このロールが割り当てられたユーザーは、Microsoft 365 セキュリティ センター、Azure Active Directory Identity Protection、Azure Active Directory Authentication、Azure Information Protection、Office 365 セキュリティ/コンプライアンス センターのセキュリティ関連機能を管理するアクセス許可を持ちます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
 場所 | できること
 --- | ---
@@ -396,6 +411,8 @@ Windows Defender ATP および EDR | ロールを割り当てる<br>コンピュ
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 管理者の追加、ポリシーと設定の追加、ログのアップロード、ガバナンス アクションの実行
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます
 [Office 365 サービス正常性](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
+[スマート ロックアウト](../authentication/howto-password-smart-lockout.md) | サインイン イベントが失敗したときのロックアウトのしきい値と期間を定義します。
+[パスワード保護](../authentication/concept-password-ban-bad.md) | カスタムの禁止パスワードの一覧またはオンプレミスのパスワード保護を構成します。
 
 ### <a name="security-operator"></a>[セキュリティ オペレーター](#security-operator-permissions)
 
@@ -433,7 +450,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 このロールが割り当てられたユーザーは、Azure サービスと Office 365 サービスについて Microsoft へのサポート要求を開くことができます。また、[Azure portal](https://portal.azure.com) と [Microsoft 365 管理センター](https://admin.microsoft.com)で、サービス ダッシュボードとメッセージ センターを表示できます。 詳細については、[管理者の役割](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)に関する記事をご覧ください。
 
 > [!NOTE]
-> 以前は、このロールは、[Azure portal](https://portal.azure.com) および [Microsoft 365 管理センター](https://admin.microsoft.com)の「サービス管理者」と呼ばれていました。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell の既存の名前と整合性を図り、このロールの名前を「サービス サポート管理者」に変更しました。 
+> 以前は、このロールは、[Azure portal](https://portal.azure.com) および [Microsoft 365 管理センター](https://admin.microsoft.com)の「サービス管理者」と呼ばれていました。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell の既存の名前と整合性を図り、このロールの名前を「サービス サポート管理者」に変更しました。
 
 ### <a name="sharepoint-administrator"></a>[SharePoint 管理者](#sharepoint-service-administrator-permissions)
 
@@ -441,6 +458,9 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "SharePoint サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"SharePoint 管理者" になります。
+
+> [!NOTE]
+> このロールでは、Microsoft Intune 用の Microsoft Graph API に対するスコープ付きのアクセス許可も付与されます。これにより、Sharepoint リソースと Onedrive リソースに関連するポリシーの管理と構成を行うことができます。
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype for Business/Lync 管理者](#lync-service-administrator-permissions)
 
@@ -469,7 +489,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できる (後述) ほか、パスワードの有効期限ポリシーを更新できます。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 ユーザー管理者には、ほとんどの管理者ロールのユーザーについて、一部のユーザー プロパティを管理するためのアクセス許可が与えられません。 このロールのユーザーには、MFA を管理するためのアクセス許可がありません。 この制限の例外に相当するロールを次の表にまとめています。
 
-| | |
+| 権限 | できること |
 | --- | --- |
 |一般的なアクセス許可|<p>ユーザーとグループを作成する</p><p>ユーザー ビューの作成と管理</p><p>Office サポート チケットの管理<p>パスワードの有効期限ポリシーを更新する|
 |<p>すべての管理者を含むすべてのユーザーに対して</p>|<p>ライセンスを管理する</p><p>ユーザー プリンシパル名を除くすべてのユーザーのプロパティを管理する</p>
@@ -597,22 +617,6 @@ Azure Information Protection サービスのすべての側面を管理できま
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
-
-### <a name="b2c-user-flow-administrator-permissions"></a>B2C ユーザー フロー管理者のアクセス許可
-
-ユーザー フローのすべての側面の作成と管理。
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.b2c/userFlows/allTasks | Azure Active Directory B2C でのユーザー フローの読み取りと構成。 |
-
-### <a name="b2c-user-flow-attribute-administrator-permissions"></a>B2C ユーザー フロー属性管理者のアクセス許可
-
-すべてのユーザー フローに使用可能な属性スキーマの作成と管理。
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.b2c/userAttributes/allTasks | Azure Active Directory B2C でユーザー属性の読み取りと構成。 |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF キーセット管理者のアクセス許可
 
@@ -893,7 +897,7 @@ Microsoft サポートがお客様の組織データにアクセスする要求�
 | microsoft.directory/groupSettingTemplates/basic/read | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
 
 ### <a name="directory-readers-permissions"></a>ディレクトリ閲覧者のアクセス許可
-基本的なディレクトリ情報を読み取ることができます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
+基本的なディレクトリ情報を読み取ることができます ユーザーではなく、アプリケーションへのアクセスを許可する場合。
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -982,7 +986,7 @@ Azure AD Connect サービスでのみ使用されます。
 
 ### <a name="directory-writers-permissions"></a>ディレクトリ ライターのアクセス許可
 
-基本的なディレクトリ情報の読み取りと書き込みを実行できます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
+基本的なディレクトリ情報の読み取りと書き込みを実行できます ユーザーではなく、アプリケーションへのアクセスを許可する場合。
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -1028,6 +1032,22 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+
+### <a name="external-id-user-flow-administrator-permissions"></a>外部 ID ユーザー フロー管理者のアクセス許可
+
+ユーザー フローのすべての側面の作成と管理。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.b2c/userFlows/allTasks | Azure Active Directory B2C でのユーザー フローの読み取りと構成。 |
+
+### <a name="external-id-user-flow-attribute-administrator-permissions"></a>外部 ID ユーザー フロー属性管理者のアクセス許可
+
+すべてのユーザー フローに使用可能な属性スキーマの作成と管理。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.b2c/userAttributes/allTasks | Azure Active Directory B2C でユーザー属性の読み取りと構成。 |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>外部 ID プロバイダー管理者のアクセス許可
 
@@ -1316,6 +1336,22 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+
+### <a name="modern-commerce-administrator-permissions"></a>Modern Commerce 管理者のアクセス許可
+会社、部署、またはチームの商用購入を管理できます。 
+
+> [!NOTE]
+> このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+>
+>
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.commerce.billing/partners/read | O365 課金のパートナー プロパティを読み取ります。 |
+| microsoft.commerce.volumeLicenseServiceCenter/allEntities/allTasks | ボリューム ライセンス サービス センターのすべての側面を管理します。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 独自の Office 365 サポート チケットを作成して表示します。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+
 
 ### <a name="network-administrator-permissions"></a>ネットワーク管理者のアクセス許可
 ネットワークの場所を管理し、Microsoft 365 Software as a Service アプリケーションのエンタープライズ ネットワーク設計の分析情報を確認できます。
@@ -1807,8 +1843,6 @@ Microsoft Teams サービスを管理できます。
 認証管理者 | 認証管理者 | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps 管理者 | Azure DevOps 管理者 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection 管理者 | Azure Information Protection 管理者 | 7495fdc4-34c4-4d15-a289-98788ce399fd
-B2C ユーザー フロー管理者 | B2C ユーザー フロー管理者 | 6e591065-9bad-43ed-90f3-e9424366d2f0
-B2C ユーザー フロー属性管理者 | B2C ユーザー フロー属性管理者 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C IEF キーセット管理者 | B2C IEF キーセット管理者 | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF ポリシー管理者 | B2C IEF ポリシー管理者 | 3edaf663-341e-4475-9f94-5c398ef6c070
 課金管理者 | 課金管理者 | b0f54661-2d74-4c50-afa3-1ec803f12efe
@@ -1829,6 +1863,8 @@ CRM サービス管理者 | Dynamics 365 管理者 | 44367163-eba1-44c3-98af-f57
 ディレクトリ同期アカウント | 使用するべきではないため、表示されません | d29b2b05-8046-44ba-8758-1e26182fcf32
 ディレクトリ ライター | 使用するべきではないため、表示されません | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange サービス管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d097af3e4de
+外部 ID ユーザー フロー管理者 | 外部 ID ユーザー フロー管理者 | 6e591065-9bad-43ed-90f3-e9424366d2f0
+外部 ID ユーザー フロー属性管理者 | 外部 ID ユーザー フロー属性管理者 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 外部 ID プロバイダー管理者 | 外部 ID プロバイダー管理者 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 グローバル閲覧者 | グローバル閲覧者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 グループ管理者 | グループ管理者 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
@@ -1841,6 +1877,7 @@ Kaizala 管理者 | Kaizala 管理者 | 74ef975b-6605-40af-a5d2-b9539d836353
 Lync サービス管理者 | Skype for Business 管理者 | 75941009-915a-4869-abe7-691bff18279e
 メッセージ センターのプライバシー閲覧者 | メッセージ センターのプライバシー閲覧者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 メッセージ センター閲覧者 | メッセージ センター閲覧者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Modern Commerce 管理者 | Modern Commerce 管理者 | d24aef57-1500-4070-84db-2666f29cf966
 ネットワーク管理者 | ネットワーク管理者 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office アプリ管理者 | Office アプリ管理者 | 2b745bdf-0803-4d80-aa65-822c4493daac
 パートナー レベル 1 のサポート | 使用するべきではないため、表示されません | 4ba39ca4-527c-499a-b93d-d9b492c50246
@@ -1905,4 +1942,4 @@ User | 使用できないため、表示されません | NA
 
 * Azure サブスクリプションの管理者としてユーザーを割り当てる方法の詳細については、[Azure のロール (Azure RBAC) を使用したアクセスの管理](../../role-based-access-control/role-assignments-portal.md)に関するページを参照してください
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、[さまざまなロールの概要](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください
-* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* サブスクリプションと Azure AD テナントの関係の詳細、またはサブスクリプションの関連付けまたは追加を行う手順の詳細については、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。

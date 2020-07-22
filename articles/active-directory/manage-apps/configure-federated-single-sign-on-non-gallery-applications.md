@@ -3,8 +3,8 @@ title: ギャラリー以外のアプリケーションのフェデレーショ�
 description: Azure AD と統合する、ギャラリー以外のカスタム アプリケーションのフェデレーション シングル サインオンを構成する方法
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d49ec5ef80b284aa6b1a305b037d19dae34870
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74274590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763552"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法
 

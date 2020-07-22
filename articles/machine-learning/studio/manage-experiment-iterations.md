@@ -5,21 +5,19 @@ description: Azure Machine Learning Studio (classic) で実験の実行を管理
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: d2ace48ff1b2027a95aef2100540edc10aebb4cc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0e6d4312850dc16b76e248c9bbceacd8b5311d5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687397"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で実験の実行を管理する
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
 

@@ -4,16 +4,16 @@ description: Bulk Executor ライブラリを使って、Azure Cosmos DB Gremlin
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260646"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 
@@ -34,7 +34,7 @@ Gremlin API コンテナーに対してデータ移行を使用する大まか�
 
 ### <a name="creating-vertices-and-edges"></a>頂点とエッジの作成
 
-`GraphBulkExecutor` には、`BulkImportAsync` オブジェクトまたは `IEnumerable` オブジェクトの `GremlinVertex` リストを受け取る `GremlinEdge` メソッドがあります。どちらのオブジェクトも `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 名前空間に定義されています。 このサンプルでは、エッジと頂点を 2 つの BulkExecutor インポート タスクに分けています。 次の例を見てください。
+`GraphBulkExecutor` には、`GremlinVertex` オブジェクトまたは `GremlinEdge` オブジェクトの `IEnumerable` リストを受け取る `BulkImportAsync` メソッドがあります。どちらのオブジェクトも `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 名前空間に定義されています。 このサンプルでは、エッジと頂点を 2 つの BulkExecutor インポート タスクに分けています。 次の例を見てください。
 
 ```csharp
 

@@ -3,15 +3,16 @@ title: Azure Cosmos DB でマルチマスターを構成する方法
 description: Azure Cosmos DB で複数の SDK を使用して、お使いのアプリケーション用のマルチマスターを構成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: a07ab3f65fcdeacf37626ad05d0b95ac3f4e7e64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263670"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションでマルチマスターを構成する
 
@@ -55,9 +56,27 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-async-sdk"></a><a id="java"></a>Java Async SDK
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java V4 SDK
 
-アプリケーションでマルチマスターを有効にするには、`policy.setUsingMultipleWriteLocations(true)` を設定し、`policy.setPreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
+アプリケーションでマルチマスターを有効にするには、クライアント ビルダーで `.multipleWriteRegionsEnabled(true)` と `.preferredRegions(preferredRegions)` を呼び出します。このとき、`preferredRegions` は 1 つの要素を含む `List` です。つまり、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンです。
+
+# <a name="async"></a>[非同期](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 非同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ConfigureMultimasterAsync)]
+
+# <a name="sync"></a>[同期](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ConfigureMultimasterSync)]
+
+--- 
+
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a> Async Java V2 SDK
+
+Java V2 SDK では Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) が使用されていました。 アプリケーションでマルチマスターを有効にするには、`policy.setUsingMultipleWriteLocations(true)` を設定し、`policy.setPreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();

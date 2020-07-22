@@ -3,12 +3,12 @@ title: ナレッジ ベースを改善する - QnA Maker
 description: アクティブ ラーニングを使用してナレッジ ベースの質を向上させます。 既存の質問の削除や変更は行わずに、レビュー、承認、却下を行います。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650763"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231779"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
@@ -199,7 +199,7 @@ JSON 本文の例は、次のようになります。
 * クエリをアクティブ ラーニングに使用するかどうかを指定する
 * アクティブ ラーニングのためにクエリを QnA Maker の Train API に送り返す
 
-[Azure Bot のサンプル](https://aka.ms/activelearningsamplebot)では、これらのアクティビティの両方がプログラムされています。
+[Azure Bot のサンプル](https://github.com/microsoft/BotBuilder-Samples)では、これらのアクティビティの両方がプログラムされています。
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Bot Framework 4.x での Train API のための C# コードの例
 

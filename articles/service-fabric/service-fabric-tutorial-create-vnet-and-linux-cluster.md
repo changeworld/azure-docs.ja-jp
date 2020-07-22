@@ -4,12 +4,12 @@ description: Azure CLI を使用して Linux Service Fabric クラスターを�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411004"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260219"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -54,8 +54,8 @@ Ubuntu 18.04 LTS の場合:
 * OS: (Ubuntu 16.04 LTS/Ubuntu 18.04 LTS) (テンプレート パラメーターで構成可能)
 * 証明書の保護 (テンプレート パラメーターで構成可能)
 * [DNS サービス](service-fabric-dnsservice.md)が有効
-* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
-* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
+* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
+* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
 * クライアント接続エンドポイント: 19000 (テンプレート パラメーターで構成可能)
 * HTTP ゲートウェイ エンドポイント: 19080 (テンプレート パラメーターで構成可能)
 
@@ -162,7 +162,7 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](service-fabric-cluster-delete.md)することができます。
+次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](./service-fabric-tutorial-delete-cluster.md)することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

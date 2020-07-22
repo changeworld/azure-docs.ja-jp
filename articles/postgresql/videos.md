@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: de4194671f09bde65bee0a1d0d86ffacdcedfbf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61091611"
 ---
 # <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL のビデオ
 
-[概要: Azure Database for PostgreSQL および Azure Database for MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+[概要:Azure Database for PostgreSQL と Azure Database for MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 

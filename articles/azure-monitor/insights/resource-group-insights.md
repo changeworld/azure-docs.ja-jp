@@ -8,10 +8,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83798124"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)

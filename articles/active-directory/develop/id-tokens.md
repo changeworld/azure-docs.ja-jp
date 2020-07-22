@@ -1,5 +1,6 @@
 ---
-title: Microsoft ID プラットフォームの ID トークン リファレンス
+title: Microsoft ID プラットフォームの ID トークン | Azure
+titleSuffix: Microsoft identity platform
 description: Azure AD v1.0 および Microsoft ID プラットフォーム (v2.0) のエンドポイントによって生成される id_token の使用方法について説明します。
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690181"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926716"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
-`id_tokens` は、[OpenID Connect](v2-protocols-oidc.md) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
+`id_tokens` は、[OpenID Connect](v2-protocols-oidc.md) (OIDC) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
 
 ## <a name="using-the-id_token"></a>id_token を使用する
 
@@ -30,7 +31,7 @@ ID トークンは、ユーザーが本人の主張どおりの人物である�
 
 ## <a name="claims-in-an-id_token"></a>id_token の要求
 
-Microsoft Identity の`id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての要求は v1.0 と v2.0 両方のトークンに出現します。
+Microsoft Identity の `id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) (JSON Web トークン) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての JWT 要求は v1.0 と v2.0 両方のトークンに出現します。
 
 ### <a name="v10"></a>v1.0
 
@@ -52,14 +53,14 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 |要求 | Format | 説明 |
 |-----|--------|-------------|
-|`typ` | 文字列 - 常に "JWT" | トークンが JWT であることを示します。|
+|`typ` | 文字列 - 常に "JWT" | トークンが JWT トークンであることを示します。|
 |`alg` | String | トークンの署名に使用されたアルゴリズムを示します。 例:"RS256" |
 |`kid` | String | このトークンの署名に使用される公開キーの拇印。 v1.0 および v2.0 の `id_tokens` で生成されます。 |
 |`x5t` | String | `kid` と同様 (使用方法および値)。 ただし、これは、互換性のために v1.0 `id_tokens`でのみ生成される従来の要求です。 |
 
 ### <a name="payload-claims"></a>ペイロードのクレーム
 
-この一覧には、(明記されている場合を除き) 既定でほとんどの id_token に含まれる要求が示されます。  ただし、アプリは、[省略可能な要求](active-directory-optional-claims.md)を使用して、id_token で追加の要求を要求することができます。  これらは、`groups` 要求から、ユーザーの名前に関する情報にまで及ぶ場合があります。
+この一覧には、(明記されている場合を除き) 既定でほとんどの id_token に含まれる JWT 要求が示されます。  ただし、アプリは、[省略可能な要求](active-directory-optional-claims.md)を使用して、id_token で追加の JWT 要求を要求することができます。  これらは、`groups` 要求から、ユーザーの名前に関する情報にまで及ぶ場合があります。
 
 |要求 | Format | 説明 |
 |-----|--------|-------------|
@@ -85,23 +86,23 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`uti` | 不透明な文字列 | Azure がトークンの再検証に使用する内部要求。 無視してください。 |
 |`ver` | 文字列、1.0 または 2.0 | id_token のバージョンを示します。 |
 
-
 > [!NOTE]
-> v1 と v2 の id_token は、上記の例に示すように、含まれる情報の量に違いがあります。 基本的に、バージョンによって発行元の Azure AD プラットフォーム エンドポイントが指定されます。 [Azure AD の OAuth 実装](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)は長年にわたって進化してきました。 現在、AzureAD アプリケーション用に 2 つの異なる OAuth エンドポイントがあります。 v2 として分類されている新しいエンドポイントを使用することも、v1 と呼ばれる古いエンドポイントを使用することもできます。 これらの両方で OAuth エンドポイントは異なります。 v2 エンドポイントは、v1 エンドポイントのすべての機能が移行されようとしている新しいエンドポイントであり、新たな開発者の方は v2 エンドポイントを使用することをお勧めします。 
+> v1 と v2 の id_token は、上記の例に示すように、含まれる情報の量に違いがあります。 基本的に、バージョンによって発行元の Azure AD プラットフォーム エンドポイントが指定されます。 [Azure AD の OAuth 実装](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)は長年にわたって進化してきました。 現在、AzureAD アプリケーション用に 2 つの異なる OAuth エンドポイントがあります。 v2 として分類されている新しいエンドポイントを使用することも、v1 と呼ばれる古いエンドポイントを使用することもできます。 これらの両方で OAuth エンドポイントは異なります。 v2 エンドポイントは、v1 エンドポイントのすべての機能が移行されようとしている新しいエンドポイントであり、新たな開発者の方は v2 エンドポイントを使用することをお勧めします。
+>
 > - V1: Azure Active Directory エンドポイント: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - V2: Microsoft ID プラットフォーム エンドポイント: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>id_token の検証
 
-`id_token` の検証は、[アクセス トークンの検証](access-tokens.md#validating-tokens)の最初の手順と似ています。クライアントは、正しい発行者がトークンを返送したことと、改ざんされていないことを検証する必要があります。 `id_tokens` は常に JWT であるため、トークンを検証する多くのライブラリが存在しています。みずから検証するのではなく、これらのライブラリのいずれかを使用することをお勧めします。
+`id_token` の検証は、[アクセス トークンの検証](access-tokens.md#validating-tokens)の最初の手順と似ています。クライアントは、正しい発行者がトークンを返送したことと、改ざんされていないことを検証する必要があります。 `id_tokens` は常に JWT トークンであるため、トークンを検証する多くのライブラリが存在しています。みずから検証するのではなく、これらのライブラリのいずれかを使用することをお勧めします。
 
-トークンを手動で検証するには、[アクセス トークンを検証](access-tokens.md#validating-tokens)する手順の詳細をご覧ください。 トークンの署名を検証した後で、id_token 内の次の要求を検証します (トークン検証ライブラリではこれも行われる場合があります)。
+トークンを手動で検証するには、[アクセス トークンを検証](access-tokens.md#validating-tokens)する手順の詳細をご覧ください。 トークンの署名を検証した後で、id_token 内の次の JWT 要求を検証します (トークン検証ライブラリではこれも行われる場合があります)。
 
-* タイムスタンプ: `iat`、`nbf`、`exp` の各タイムスタンプがすべて、現在の時刻の前か後であることが必要です (該当する場合)。 
+* タイムスタンプ: `iat`、`nbf`、`exp` の各タイムスタンプがすべて、現在の時刻の前か後であることが必要です (該当する場合)。
 * 対象: `aud` 要求がアプリケーションのアプリ ID と一致する必要があります。
 * nonce: ペイロードの `nonce` 要求が、最初の要求で /authorize エンドポイントに渡された nonce パラメーターと一致する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [アクセス トークン](access-tokens.md)の詳細情報
-* [省略可能な要求](active-directory-optional-claims.md)を使用して id_token の要求をカスタマイズする
+* [省略可能な要求](active-directory-optional-claims.md)を使用して id_token の JWT 要求をカスタマイズする

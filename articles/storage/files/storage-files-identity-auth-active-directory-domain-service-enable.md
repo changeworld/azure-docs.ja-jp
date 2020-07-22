@@ -3,16 +3,16 @@ title: Azure AD Domain Services を使用して SMB 経由でファイル デー
 description: Azure Active Directory Domain Services を使用して Azure Files に対する Server Message Block (SMB) 経由の ID ベースの認証を有効にする方法について説明します。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 02/21/2020
+ms.topic: how-to
+ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510394"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
@@ -22,6 +22,7 @@ SMB を使用した Azure ファイル共有への Azure AD 認証の概要に�
 
 > [!NOTE]
 > Azure Files では、Azure AD DS と RC4-HMAC 暗号化を使用した Kerberos 認証がサポートされています。 AES Kerberos 暗号化はまだサポートされていません。
+> Azure Files では、Azure AD と完全に同期する Azure AD DS の認証がサポートされています。 Azure AD DS で範囲指定された同期を有効にし、Azure AD から限定された ID のセットのみを同期する場合、認証と承認はサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,6 +55,10 @@ Azure ファイル共有への SMB 経由の Azure AD を有効にする前に�
 1.  **ストレージ アカウント キーを使用して Azure ファイル共有をマウントすることにより、Azure Files の接続を確認します。**
 
     VM とファイル共有が正しく構成されていることを確認するには、ストレージ アカウント キーを使用してファイル共有をマウントします。 詳細については、「[Windows で Azure ファイル共有をマウントして共有にアクセスする](storage-how-to-use-files-windows.md)」を参照してください。
+
+## <a name="regional-availability"></a>リージョン別の提供状況
+
+Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
 
 ## <a name="overview-of-the-workflow"></a>ワークフローの概要
 

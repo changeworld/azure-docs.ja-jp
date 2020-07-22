@@ -1,23 +1,20 @@
 ---
-title: VM イメージの共有アクセス署名 URI を取得する | Azure Marketplace
-description: この記事では、各仮想ハード ディスク (VHD) の共有アクセス署名 (SAS) URI を取得する方法について説明します。
-author: anbene
+title: VM イメージの Shared Access Signature URI - Azure Marketplace
+description: Azure Marketplace で仮想ハード ディスク (VHD) の Shared Access Signature (SAS) URI を生成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/09/2020
+author: anbene
 ms.author: mingshen
-ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732637"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121726"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
-
-> [!IMPORTANT]
-> Azure 仮想マシン オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、オファーを管理する Cloud パートナー ポータルの [VM イメージの共有アクセス署名 URI の取得](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)に関するページの手順に従ってください。
 
 この記事では、各仮想ハード ディスク (VHD) の共有アクセス署名 (SAS) Uniform Resource Identifier (URI) を生成する方法について説明します。
 
@@ -127,6 +124,6 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
 ## <a name="next-step"></a>次のステップ
 
-SAS URI の作成に問題がある場合は、[SAS URL に関する一般的な問題](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)に関するページを参照してください。 それ以外の場合は、SAS URI を後で使用できるよう安全な場所に保存します。 これは、パートナー センターで VM オファーを発行するために必要になります。
+SAS URI の作成に問題がある場合は、[SAS URL に関する一般的な問題](common-sas-uri-issues.md)に関するページを参照してください。 それ以外の場合は、SAS URI を後で使用できるよう安全な場所に保存します。 これは、パートナー センターで VM オファーを発行するために必要になります。
 
-* [Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Azure 仮想マシン オファーを作成する](azure-vm-create-offer.md)

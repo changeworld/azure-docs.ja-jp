@@ -1,23 +1,23 @@
 ---
-title: データのインポート
+title: デザイナー (プレビュー) にデータをインポートする
 titleSuffix: Azure Machine Learning
-description: さまざまなデータ ソースから Azure Machine Learning デザイナーにデータをインポートする方法について説明します。
+description: さまざまなデータ ソースから Azure Machine Learning デザイナー (プレビュー) にデータをインポートする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7a204310454cb636e26e6366d4ff7375f4faea8d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644564"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207518"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) へデータをインポートする
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) にデータをインポートする
 
 この記事では、デザイナーに独自のデータをインポートして、カスタム ソリューションを作成する方法について説明します。 デザイナーにデータをインポートするには、次の 2 つの方法があります。 
 
@@ -89,6 +89,10 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 ## <a name="data-constraints"></a>データの制約
 
 デザイナーのモジュールは、コンピューティング先のサイズによって制限されます。 大規模なデータセットの場合は、より大きな Azure Machine Learning コンピューティング リソースを使用する必要があります。 Azure Machine Learning コンピューティングの詳細については、「[Azure Machine Learning でのコンピューティング先とは](concept-compute-target.md#azure-machine-learning-compute-managed)」を参照してください。
+
+## <a name="access-data-in-a-virtual-network"></a>仮想ネットワーク内のデータへのアクセス
+
+ワークスペースが仮想ネットワーク内にある場合は、追加の構成手順を実行して、デザイナーでデータを視覚化する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、「[プライベート仮想ネットワークを使用して機械学習のライフサイクルをセキュリティで保護する](how-to-enable-virtual-network.md#machine-learning-studio)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

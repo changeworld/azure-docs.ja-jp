@@ -4,6 +4,8 @@
   items:
     - name: Windows Virtual Desktop とは
       href: overview.md
+    - name: 新機能
+      href: whats-new.md
     - name: Fall 2019 リリースのドキュメント
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: チュートリアル
@@ -21,7 +23,7 @@
     - name: Windows Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Web クライアントに接続する
           href: connect-web.md
         - name: Android クライアントに接続する
@@ -36,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Windows 7 仮想マシンをデプロイする
+          href: deploy-windows-7-virtual-machine.md
         - name: GPU ベースのセッション ホストをデプロイする
           href: configure-vm-gpu.md
         - name: 既存のホスト プールを展開する
@@ -50,6 +54,8 @@
           href: create-fslogix-profile-container.md
         - name: Azure Files と Azure AD DS を使用する
           href: create-profile-container-adds.md
+        - name: Azure Files と AD DS を使用する
+          href: create-file-share.md
     - name: ホスト プール設定を構成する
       items:
         - name: RDP のプロパティ
@@ -80,10 +86,14 @@
       href: teams-on-wvd.md
     - name: Azure Multi-Factor Authentication を設定する
       href: set-up-mfa.md
+    - name: 自動更新を構成する
+      href: configure-automatic-updates.md
     - name: 言語パックをインストールする
       href: language-packs.md
 - name: 概念
   items:
+    - name: 安全な URL リスト
+      href: safe-url-list.md
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
     - name: ユーザー接続の待ち時間の特定
@@ -108,7 +118,7 @@
       href: troubleshoot-set-up-overview.md
     - name: 問題の特定と診断
       href: diagnostics-role-service.md
-    - name: テナントとホスト プールの作成
+    - name: ホスト プールの作成
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md
@@ -134,6 +144,10 @@
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: リソース
   items:
+    - name: PowerShell
+      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+    - name: REST API リファレンス
+      href: /rest/api/desktopvirtualization/
     - name: エクスペリエンス見積もりツール
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 料金計算ツール

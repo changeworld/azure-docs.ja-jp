@@ -21,7 +21,7 @@ ms.locfileid: "81869300"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple ポータルにアクセスする
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117269"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212447"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -89,7 +89,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
+Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
 
 このコマンドについて知っておくべきことがいくつかあります。
 

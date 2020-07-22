@@ -1,14 +1,14 @@
 ---
 title: Personalizer リソースを作成する
 description: サービス構成には、サービスによる報酬の処理方法、サービスによる探索の頻度、モデルの再トレーニング頻度、格納するデータ量などがあります。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: adb97db53d1fc0b6f0cdb14b697c82ec52501b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b56516b5555ca971d7ab1db3caf5b76f252729b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336056"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344375"
 ---
 # <a name="create-a-personalizer-resource"></a>Personalizer リソースを作成する
 

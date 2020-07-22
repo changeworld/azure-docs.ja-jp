@@ -7,19 +7,20 @@ documentationcenter: na
 author: asudbring
 manager: KumudD
 ms.service: virtual-network
+ms.subservice: nat
 Customer intent: As an IT administrator, I want to learn more about Virtual Network NAT, its NAT gateway resources, and what I can use them for.
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549583"
 ---
 # <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 
@@ -143,7 +144,7 @@ Virtual Network NAT と NAT ゲートウェイ リソースは、すべての Az
 
 NAT のサポートは、通常のサポート チャンネルを通じて提供されます。
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 サービスを改善するために、皆様のご意見をお待ちしております。 今後の新機能に関する提案や投票も、[NAT の UserVoice](https://aka.ms/natuservoice) で受け付けております。
 

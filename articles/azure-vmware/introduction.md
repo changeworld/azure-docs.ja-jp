@@ -3,16 +3,16 @@ title: はじめに
 description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution (AVS) の機能とメリットについて学習します。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740993"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749674"
 ---
 # <a name="what-is-azure-vmware-solution-avs-preview"></a>Azure VMware Solution (AVS) プレビューとは
 
-Azure VMware Solution (AVS) は、Azure でプライベート クラウドを提供します。 プライベート クラウドには、専用のベアメタル Azure インフラストラクチャから構築された vSphere クラスターが含まれます。 プライベート クラウド クラスターは、3 台から 16 台のホストに拡張できます。また、1 つのプライベート クラウドに複数のクラスターを含めることができます。 すべてのプライベート クラウドには、vCenter Server、VSAN、vSphere、および NSX-T がプロビジョニングされます。 オンプレミス環境からワークロードを移行し、新しい仮想マシンを作成またはデプロイし、プライベート クラウドから Azure サービスを利用できます。
+Azure VMware Solution (AVS) は、Azure でプライベート クラウドを提供します。 プライベート クラウドには、専用のベアメタル Azure インフラストラクチャから構築された vSphere クラスターが含まれます。 プライベート クラウド クラスターは、3 台から 16 台のホストに拡張できます。また、1 つのプライベート クラウドに複数のクラスターを含めることができます。 すべてのプライベート クラウドには、vCenter Server、vSAN、vSphere、NSX-T がプロビジョニングされます。 オンプレミス環境からワークロードを移行し、新しい仮想マシンを作成またはデプロイし、プライベート クラウドから Azure サービスを利用できます。
 
 AVS は、VMware によって検証されたソリューションで、拡張機能とアップグレードが継続的に検証およびテストされます。 プライベート クラウドのインフラストラクチャとソフトウェアは Microsoft によって管理および保守されるため、ユーザーはプライベート クラウドでのワークロードの開発と実行に専念できます。
 

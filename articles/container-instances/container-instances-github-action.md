@@ -4,12 +4,12 @@ description: コンテナー イメージを構築し、Azure Container Instance
 ms.topic: article
 ms.date: 03/18/2020
 ms.custom: ''
-ms.openlocfilehash: 13397cee8197afc65b93c587ae1505e59cfdebc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744002"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub アクションを構成してコンテナー インスタンスを作成する
 
@@ -53,7 +53,7 @@ ms.locfileid: "80258041"
 
 GitHub ワークフローでは、Azure CLI に対して認証を行うための Azure 資格情報を指定する必要があります。 次の例では、共同作成者のロールを持ち、コンテナー レジストリのリソース グループをスコープとするサービス プリンシパルを作成します。
 
-まず、リソース グループのリソース ID を取得します。 次の [az group show][az-acr-show] コマンドでは、自分のグループの名前に置き換えます。
+まず、リソース グループのリソース ID を取得します。 次の [az group show][az-group-show] コマンドでは、自分のグループの名前に置き換えます。
 
 ```azurecli
 groupId=$(az group show \

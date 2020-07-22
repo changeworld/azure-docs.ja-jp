@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
 ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113449"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Firewall ルール処理ロジック

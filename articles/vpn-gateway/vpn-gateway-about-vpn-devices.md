@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343151"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -141,7 +141,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | IKE のバージョン                   |IKEv1          |IKEv1 および IKEv2                              |
 | 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | SA の有効期間 (時間)            |3,600 秒  |27,000 秒                               |
-| SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
+| SA の有効期間 (バイト)           |102,400,000 KB |102,400,000 KB                               |
 | Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |
 

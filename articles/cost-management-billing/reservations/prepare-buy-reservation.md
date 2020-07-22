@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780642"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807783"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -72,7 +72,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 - [Dedicated Host](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [ソフトウェア プラン](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Storage](../../storage/blobs/storage-blob-reserved-capacity.md)
-- [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
+- [SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure Database for PostgreSQL](../../postgresql/concept-reserved-pricing.md)
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
@@ -85,7 +85,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 Microsoft 顧客契約 (MCA) を使用して予約を購入する場合、毎月の支払金額は、現地通貨に対する当月の市場相場によって異なる場合があります。
 
-Databricks、SUSE Linux の予約、Red Hat プラン、Azure Red Hat OpenShift のコンピューティングは、月払いの対象にはなりません。
+以下は月払いの対象外です。Databricks、SUSE Linux の予約、Red Hat プラン、Azure Red Hat OpenShift のライセンス。
 
 ### <a name="view-payments-made"></a>過去の支払いを確認する
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 545d04bdede76a6ce25c9e4665f39c01ff6caa73
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.date: 07/10/2020
+ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81531985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276653"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -33,6 +33,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ## <a name="cross-region-replication"></a>リージョン間レプリケーション
 マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
 
+>[!NOTE]
+> Basic レベルのサーバーは、同じリージョンのレプリケーションのみをサポートしています。
+
 任意の [Azure Database for PostgreSQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)にマスター サーバーを作成できます。 マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。 次の図は、マスター リージョンに応じて使用できるレプリカ リージョンを示しています。
 
 [ ![読み取りレプリカ リージョン](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
@@ -40,10 +43,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
 マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカをいつでも作成できます。 ユニバーサル レプリカ リージョンは次のとおりです。
 
-オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部。
-
-*米国西部 2 は、リージョン間レプリカの場所として一時的に使用できません。
-
+オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2、米国中西部。
 
 ### <a name="paired-regions"></a>ペアになっているリージョン
 ユニバーサル レプリカ リージョンに加えて、マスター サーバーの Azure のペアになっているリージョンに読み取りレプリカを作成できます。 リージョンのペアがわからない場合は、[Azure のペアになっているリージョンに関する記事](../best-practices-availability-paired-regions.md)を参照してください。
@@ -52,7 +52,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 考慮すべきいくつかの制限があります。 
 
-* リージョン別の提供状況Azure Database for PostgreSQL は、米国西部 2、フランス中部、アラブ首長国連邦北部、およびドイツ中部で利用できます。 ただし、それらのペアになっているリージョンは使用できません。
+* リージョン別の提供状況Azure Database for PostgreSQL は、フランス中部、アラブ首長国連邦北部、およびドイツ中部で利用できます。 ただし、それらのペアになっているリージョンは使用できません。
     
 * 一方向のペア:一部の Azure リージョンは一方向にのみペアになっています。 これらのリージョンには、インド西部とブラジル南部が含まれます。 
    これは、インド西部のマスター サーバーでインド南部のレプリカを作成できることを意味します。 ただし、インド南部のマスター サーバーでインド西部のレプリカを作成することはできません。 この理由は、インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド西部ではないためです。
@@ -147,22 +147,35 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 このセクションでは、読み取りレプリカ機能に関する考慮事項をまとめています。
 
 ### <a name="prerequisites"></a>前提条件
-読み取りレプリカを作成する前に、マスター サーバーで、`azure.replication_support` パラメーターを **REPLICA** に設定する必要があります。 このパラメーターが変更された場合、その変更を有効にするにはサーバーの再起動が必要です。 `azure.replication_support` パラメーターは、汎用レベルおよびメモリ最適化レベルのみに適用されます。
+読み取りレプリカと[論理デコード](concepts-logical.md)はどちらも、情報を Postgres 書き込み先行ログ (WAL) に依存しています。 これらの 2 つの機能には、Postgres とは異なるレベルのログが必要です。 論理デコードには、読み取りレプリカよりも高いレベルのログが必要です。
+
+適切なレベルのログを構成するには、Azure レプリケーション サポート パラメーターを使用します。 Azure レプリケーション サポートには、次の 3 つの設定オプションがあります。
+
+* **オフ** - 最小限の情報を WAL に格納します。 この設定は、ほとんどの Azure Database for PostgreSQL サーバーでは使用できません。  
+* **レプリカ** - **[オフ]** よりも冗長です。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
+* **論理** - **[レプリカ]** よりも冗長です。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカはこの設定でも機能します。
+
+このパラメーターを変更した後、サーバーを再起動する必要があります。 内部的には、このパラメーターによって、Postgres のパラメーター `wal_level`、`max_replication_slots`、および `max_wal_senders` が設定されます。
 
 ### <a name="new-replicas"></a>新しいレプリカ
 読み取りレプリカは、新しい Azure Database for PostgreSQL サーバーとして作成されます。 既存のサーバーをレプリカにすることはできません。 別の読み取りレプリカのレプリカを作成することはできません。
 
 ### <a name="replica-configuration"></a>レプリカ構成
-レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立していくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
+レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカの作成後、ストレージやバックアップの保持期間など、いくつかの設定を変更できます。
+
+次の条件の下では、レプリカ上で仮想コアと価格レベルも変更できます。
+* PostgreSQL では、読み取りレプリカの `max_connections` パラメーターの値をマスターの値以上にする必要があります。そうしないと、レプリカが起動しません。 Azure Database for PostgreSQL で、`max_connections` パラメーター値は、SKU (仮想コアと価格レベル) に基づきます。 詳しくは、「[Azure Database for PostgreSQL の制限事項](concepts-limits.md)」をご覧ください。 
+* Basic 価格レベルとの間のスケーリングはサポートされていません。
 
 > [!IMPORTANT]
 > マスターの設定が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新します。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
 
-PostgreSQL では、読み取りレプリカの `max_connections` パラメーターの値をマスターの値以上にする必要があります。そうしないと、レプリカが起動しません。 Azure Database for PostgreSQL で、`max_connections` パラメーター値は、SKU に基づきます。 詳しくは、「[Azure Database for PostgreSQL の制限事項](concepts-limits.md)」をご覧ください。 
-
 前述のサーバーの値を更新しようとしていて制限に従っていない場合、エラーが表示されます。
 
 ファイアウォール規則、仮想ネットワーク規則、パラメーター設定は、レプリカの作成後、マスター サーバーからレプリカに継承されることはありません。
+
+### <a name="basic-tier"></a>Basic レベル
+Basic レベルのサーバーは、同じリージョンのレプリケーションのみをサポートしています。
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
 読み取りレプリカの `max_prepared_transactions` パラメーターの値をマスターの値以上にすることが [PostgreSQL では必要](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)です。そうしないと、レプリカが起動しません。 マスターで `max_prepared_transactions` を変更する場合、まずレプリカで変更します。

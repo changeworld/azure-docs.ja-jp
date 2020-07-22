@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0b87a9cd0ae29281faad4209f4449d547921835d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67378cd363e22351198389f4480e3f6792e885bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383684"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>方法: Android で ADAL を使用してクロス アプリ SSO を有効にする
 

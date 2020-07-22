@@ -4,16 +4,16 @@ description: Azure Data Lake Storage Gen2 の Hive パフォーマンス チュ�
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 66042568cede364c16302fbd85751de4113bbe0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74327581"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106313"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Hive、HDInsight & Azure Data Lake Storage Gen2
 
@@ -57,17 +57,18 @@ I/O 集中型のワークロードでは、Tez コンテナーのサイズの削
 
 実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- YARN メモリの合計 = ノード数 * ノードごとの YARN メモリ
+- YARN コンテナーの数 = YARN メモリの合計 / Tez コンテナーのサイズ
+
 Data Lake Storage Gen2 を使用してパフォーマンスを向上させる鍵は、コンカレンシーをできるだけ高くすることです。  作成する必要があるタスクの数は Tez が自動的に計算するため、設定する必要はありません。   
 
 ## <a name="example-calculation"></a>計算例
 
 たとえば、8 ノードの D14 クラスターがあるとします。  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- YARN メモリの合計 = ノード数 * ノードごとの YARN メモリ
+- YARN メモリの合計 = 8 ノード * 96 GB = 768 GB
+- YARN コンテナーの数 = 768 GB / 3072 MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>Hive のチューニングに関する他の情報
 

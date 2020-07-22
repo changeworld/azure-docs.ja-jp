@@ -2,13 +2,13 @@
 title: データが存在しない場合のトラブルシューティング - Application Insights for .NET
 description: Auzre Application Insights にデータが表示されない場合は、 ここで解決してください。
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 05/21/2020
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80802588"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221036"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -124,7 +124,7 @@ Application Insights をインストールしているとき、またはログ �
 *アプリを実行し、Microsoft Azure の Application Insights サービスを開きましたが、どのグラフでも、データの収集方法についての説明か、必要な構成が行われていないという内容のメッセージしか表示されません。* または、*ページ ビューとユーザー データだけが表示され、サーバー データが表示されません。*
 
 * Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。 ある程度テレメトリを生成するために、アプリケーションを使用します。 記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![Visual Studio のデバッグ モードでのアプリケーションの実行を示すスクリーンショット。](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Application Insights ポータルで [診断検索](../../azure-monitor/app/diagnostic-search.md)を開きます。 通常、まずここにデータが表示されます。
 * [更新] ボタンをクリックします。 ブレードは周期的に自動で更新されますが、手動でも更新できます。 時間範囲が広いと、更新間隔は長くなります。
 * インストルメンテーション キーが一致していることを確認します。 Application Insights ポータルのアプリのメイン ブレードで、 **[要点]** ボックスの一覧に表示される **[インストルメンテーション キー]** を確認します。 次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、 `<instrumentationkey>`を探します。 2 つのキーが等しいことを確認してください。 等しくない場合は、次の作業を行います。  
@@ -158,7 +158,6 @@ Application Insights をインストールしているとき、またはログ �
 * Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217) がインストールされていることを確認します。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
-* [状態ブログ](https://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
 * データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>予期しているデータがすべて表示されません
@@ -248,9 +247,17 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 - [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
 - [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
+## <a name="collect-logs-with-dotnet-trace"></a>dotnet-trace を使用してログを収集する
+
+Linux ベースの環境で特に役立つ可能性があるトラブルシューティングのためにログを収集する別の方法は、[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace) です
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
+
 ## <a name="how-to-remove-application-insights"></a>Application Insights を削除する方法
 
 削除の[記事](../../azure-monitor/app/remove-application-insights.md)に示されている手順に従って Visual Studio で Application Insights を削除する方法を学習してください。
 
 ## <a name="still-not-working"></a>問題が解決しない場合
-* [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+* [Application Insights に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-monitor.html)

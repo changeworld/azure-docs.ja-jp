@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407174"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826470"
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
 パスワードのリセットについてのあらゆる問題に関するよくあるご質問 (FAQ) を次に示します。
 
-ここで解決できない Azure Active Directory (Azure AD) やセルフサービス パスワード リセット (SSPR) に関する一般的な質問がある場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
+ここで解決できない Azure Active Directory (Azure AD) やセルフサービス パスワード リセット (SSPR) に関する一般的な質問がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
 
 この FAQ は、次のセクションに分かれています。
 

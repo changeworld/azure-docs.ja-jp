@@ -87,7 +87,7 @@
           href: concepts-pricing-tiers.md
         - name: 予約容量の前払い
           href: concept-reserved-pricing.md
-        - name: 制限
+        - name: 制限事項
           href: concepts-limits.md
     - name: データ アクセスとセキュリティ
       items:
@@ -109,6 +109,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD 認証
           href: concepts-azure-ad-authentication.md
+        - name: インフラストラクチャの二重暗号化
+          href: concepts-infrastructure-double-encryption.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: ビジネス継続性
@@ -132,6 +134,8 @@
           href: concepts-query-performance-insight.md
         - name: パフォーマンスに関する推奨事項
           href: concepts-performance-recommendations.md
+        - name: サーバー パラメーター
+          href: concepts-server-parameters.md
     - name: 開発
       items:
         - name: ドライバーとツールの互換性
@@ -190,6 +194,8 @@
           href: howto-connection-string.md
         - name: SSL の構成
           href: howto-configure-ssl.md
+        - name: TLS の構成
+          href: howto-tls-configurations.md
         - name: Web Apps
           href: howto-connect-webapp.md
         - name: リダイレクトによる接続
@@ -272,6 +278,10 @@
           href: howto-data-encryption-cli.md
         - name: データ暗号化の検証
           href: howto-data-encryption-validation.md
+    - name: インフラストラクチャの二重暗号化
+      items:
+        - name: インフラストラクチャの二重暗号化を構成する
+          href: howto-double-encryption.md
     - name: Azure AD との統合
       items:
         - name: Azure AD の統合の構成
@@ -290,6 +300,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: リージョン間の移動
+      items:
+        - name: Azure portal
+          href: howto-move-regions-portal.md
 - name: リファレンス
   items:
     - name: Azure CLI

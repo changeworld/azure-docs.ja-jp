@@ -4,30 +4,31 @@ description: Azure Cosmos DB での SQL システム関数 GetCurrentDateTime �
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 07/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4db2ec7bbd05d982af57c05fd46ef7da7c682e15
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303904"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258809"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- UTC (協定世界時) での現在の日付と時刻を ISO 8601 文字列として返します。
+
+UTC (協定世界時) での現在の日付と時刻を ISO 8601 文字列として返します。
   
 ## <a name="syntax"></a>構文
   
 ```sql
 GetCurrentDateTime ()
 ```
-  
+
 ## <a name="return-types"></a>戻り値の型
   
   UTC での現在の日付と時刻を ISO 8601 文字列値として `YYYY-MM-DDThh:mm:ss.fffffffZ` の形式で返します。
   
-  |||
+  |Format|説明|
   |-|-|
   |YYYY|4 桁の年|
   |mm|2 桁の月 (例: 01 = 1 月)|
@@ -43,7 +44,7 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>解説
 
-  GetCurrentDateTime() は非決定論的関数です。 
+  GetCurrentDateTime() は非決定論的関数です。
   
   返される結果は UTC です。
 

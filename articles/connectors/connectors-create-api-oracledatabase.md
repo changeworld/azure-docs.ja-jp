@@ -3,16 +3,16 @@ title: Oracle Database に接続する
 description: Oracle Database REST API と Azure Logic Apps を使用して、レコードを挿入および管理します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147810"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836279"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -20,6 +20,13 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 * 顧客データベースに新しい顧客を追加するか、注文データベースで注文を更新することで、ワークフローを構築します。
 * データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。 たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Oracle Database に行を挿入します (アクション)。 
+
+このコネクタでは、次の項目はサポートされていません。
+
+* ビュー 
+* 複合キーが含まれるテーブル
+* テーブル内の入れ子になったオブジェクトの種類
+* 非スカラー値を含むデータベース関数
 
 この記事では、ロジック アプリで Oracle Database コネクタを使用する方法について説明します。
 
@@ -108,12 +115,6 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 **原因**:テーブルに主キーがありません。  
 
 **解決方法**:Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
-
-#### <a name="currently-not-supported"></a>以下は現在サポートされていません
-
-* ビュー 
-* 複合キーが含まれるテーブル
-* テーブル内の入れ子になったオブジェクトの種類
  
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
@@ -121,7 +122,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="get-some-help"></a>ヘルプ情報
 
-[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Logic Apps ユーザーがどのようなことを行っているかがわかります。 
+[Microsoft Q&A の Azure Logic Apps に関する質問ページ](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)では、質問の投稿や質問への回答を行うことができるほか、他の Logic Apps ユーザーがどのようなことを行っているかがわかります。 
 
 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) では、Logic Apps やコネクタの機能向上に役立つ皆様の投票や提案をお待ちしています。 
 

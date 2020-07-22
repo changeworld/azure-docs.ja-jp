@@ -6,21 +6,24 @@ ms.author: mhopkins
 ms.date: 09/17/2019
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.custom: seo-javascript-october2019
-ms.openlocfilehash: ca0831fd7554058d21e315b67d6965579af1d38b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.custom: seo-javascript-october2019, tracking-python
+ms.openlocfilehash: 46d144a95708ac834478871ca27763f0ebd3b201
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805252"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Python から Azure Queue storage v2.1 を使用する方法
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 この記事では、Azure Queue ストレージ サービスを使用した一般的なシナリオについて説明します。 キュー メッセージの挿入、ピーク、取得、削除と、キューの作成と削除の各シナリオについて説明します。
+
+> [!IMPORTANT]
+> この記事では、Python 向け Azure Storage クライアント ライブラリのレガシ バージョンについて説明します。 最新バージョンで始めるには、「[クイックスタート: Python 用 Azure Queue storage クライアント ライブラリ](storage-quickstart-queues-python.md)」を参照してください。
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 

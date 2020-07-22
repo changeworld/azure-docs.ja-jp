@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/19/2019
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: 1c1b48d3715d838827f88f99fc0849d25677fdcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3ef633ff0271d74eea7320faadf17685976d3b6
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585739"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970469"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry と Security Center の統合
 
@@ -25,9 +25,22 @@ Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イ
 
 Azure Security Center の 標準レベルを使用している場合には、Container Registries のバンドルを追加できます。 このオプションの機能を使用すると、ARM ベースのレジストリ内のイメージの脆弱性をより詳しく把握できます。 サブスクリプション レベルでバンドルを有効または無効にし、サブスクリプション内のすべてのレジストリをカバーします。 この機能は、[価格のページ](security-center-pricing.md)に示されているように、イメージごとに課金されます。 Container Registries のバンドルを有効にすると、Security Center は、レジストリにプッシュされたイメージをスキャンできるようになります。 
 
+
+## <a name="availability"></a>可用性
+
+- リリース状態: **一般提供**
+- 必要なロール: **セキュリティ閲覧者**と [Azure Container Registry 閲覧者ロール](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- クラウド: 
+    - ✔ 商用クラウド
+    - ✘ 米国政府のクラウド
+    - ✘中国政府のクラウド、その他の政府のクラウド
+
+
+## <a name="when-are-images-scanned"></a>イメージはどのような場合にスキャンされますか。
+
 イメージがレジストリにプッシュされるたびに、Security Center はそのイメージを自動的にスキャンします。 イメージのスキャンをトリガーするには、イメージをリポジトリにプッシュしてください。
 
-スキャンが完了すると (通常は約 10 分後)、次のような Security Center の推奨事項で結果が得られます。
+スキャンが完了すると (通常は約 10 分後ですが、最大で 40 分かかることもあります)、結果が次のような Security Center の推奨事項で表示されます。
 
 [![Azure Container Registry (ACR) でホストされるイメージで検出された脆弱性に関する Azure Security Center の推奨事項のサンプル](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
@@ -40,6 +53,30 @@ Security Center では、サブスクリプション内の ARM ベースの ACR 
 * 既知の脆弱性がある Linux イメージの**セキュリティに関する推奨事項**。 Security Center には、報告された各脆弱性の詳細と、重要度の分類が表示されます。 また、レジストリにプッシュされた各イメージで検出された特定の脆弱性を修復する方法についてのガイダンスも提供されます。
 
 ![Azure Security Center と Azure Container Registry (ACR) の概要](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+
+
+
+
+## <a name="acr-with-security-center-faq"></a>Security Center と ACR のよく寄せられる質問
+
+### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure Security Center ではどのような種類のイメージをスキャンできますか。
+Security Center では、シェル アクセスを与える Linux OS ベースのイメージがスキャンされます。 
+
+Qualys スキャナーでは、[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、OS は含まれない、"ディストリビューションレス" イメージは、サポートされていません。
+
+### <a name="how-does-azure-security-center-scan-an-image"></a>Azure Security Center ではどのような方法でイメージがスキャンされますか。
+イメージがレジストリから抽出されます。 その後、隔離されたサンドボックスの中で、既知の脆弱性の一覧を抽出する Qualys スキャナーによって実行されます。
+
+Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
+
+### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure Security Center ではどのくらいの頻度でイメージがスキャンされますか。
+イメージ スキャンはプッシュのたびにトリガーされます。
+
+### <a name="can-i-get-the-scan-results-via-rest-api"></a>REST API 経由でスキャン結果を取得できますか。
+はい。 結果は [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) の下にあります。 また、Azure Resource Graph (ARG) を利用できます。これはすべてのリソースを対象とする Kusto のような API であり、1 つのクエリで特定のスキャンをフェッチできます。
+ 
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

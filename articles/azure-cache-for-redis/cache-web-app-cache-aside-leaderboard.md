@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75411952"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082779"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル:ASP.NET でキャッシュ アサイド スコアボードを作成する
 
@@ -642,9 +642,9 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
 ## <a name="publish-and-run-in-azure"></a>Azure に発行して実行する
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>アプリの SQL Azure データベースをプロビジョニングする
+### <a name="provision-a-database-for-the-app"></a>アプリのデータベースをプロビジョニングする
 
-このセクションでは、Azure でのホスト中に使用されるアプリの新しい SQL Azure データベースをプロビジョニングします。
+このセクションでは、Azure でホスト中に使用されるアプリ用に SQL Database に新しいデータベースをプロビジョニングします。
 
 1. [Azure Portal](https://portal.azure.com/) で、左上隅にある **[リソースの作成]** をクリックします。
 
@@ -680,8 +680,8 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
     | プレースホルダー | 推奨値 |
     | --- | --- |
-    | *{your_username}* | 作成したばかりのデータベース サーバーの**サーバー管理者ログイン**を使用します。 |
-    | *{your_password}* | 作成したばかりのデータベース サーバーのパスワードを使用します。 |
+    | *{your_username}* | 先ほど作成したサーバーの**サーバー管理者ログイン**を使用します。 |
+    | *{your_password}* | 先ほど作成したサーバーのパスワードを使用します。 |
 
     ユーザー名とパスワードをアプリケーション設定として追加しても、ユーザー名とパスワードがコードに含まれることはありません。 この方法によって、これらの資格情報を保護できます。
 

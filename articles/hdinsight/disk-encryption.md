@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536303"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>お客様が管理するキー ディスクの暗号化
@@ -88,7 +88,7 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
     |プロパティ |説明|
     |---|---|
-    |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除**してから、 **キーをラップ**します。|
+    |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除**してから、 **キーををラップ**します。|
     |シークレットのアクセス許可|**取得**、 **設定**、 **削除**を選択します。|
     |プリンシパルの選択|以前に作成したユーザー割り当てマネージド ID を選択します。|
 

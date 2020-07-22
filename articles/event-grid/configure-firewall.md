@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid のトピックまたはドメインに対して IP ファイアウォールを構成する (プレビュー)
 description: この記事では Event Grid のトピックまたはドメインに対してファイアウォール設定を構成する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.author: spelluru
-ms.openlocfilehash: 0db6c2c346a6eb6ef016340fcfc2974c85958e6c
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 07/07/2020
+ms.openlocfilehash: 1cb285af6a463b2e0f413b1f876df96f82bb7f93
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116473"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Azure Event Grid のトピックまたはドメインに対して IP ファイアウォールを構成する (プレビュー)
 既定では、要求が有効な認証と承認を受けている限り、トピックおよびドメインにはインターネットからアクセスできます。 IP ファイアウォールを使用すると、[CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみにアクセスを制限できます。 他の IP アドレスから発信するパブリッシャーは拒否され、403 (禁止) の応答が返されます。 Event Grid でサポートされるネットワーク セキュリティ機能の詳細については、[Event Grid のネットワーク セキュリティ](network-security.md)に関する記事を参照してください。
@@ -280,3 +276,4 @@ Invoke-RestMethod -Method 'Get'
 * イベント配信の監視について詳しくは、「[Event Grid メッセージ配信の監視](monitor-event-delivery.md)」をご覧ください。
 * 認証キーについて詳しくは、「[Event Grid のセキュリティと認証](security-authentication.md)」をご覧ください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。
+* ネットワーク接続の問題をトラブルシューティングするには、[ネットワーク接続の問題のトラブルシューティング](troubleshoot-network-connectivity.md)に関するページを参照してください。

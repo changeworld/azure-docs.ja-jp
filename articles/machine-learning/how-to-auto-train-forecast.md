@@ -8,19 +8,21 @@ ms.author: trbye
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 05d658c052c5bc12f49d957bb29ad085c269c57b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72b0a3074bfdfb6b6038f6c63eb01a7b33d45ea6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137368"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959128"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+この記事では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) の自動機械学習を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+
+コードの作成経験が少ない場合は、「[チュートリアル:自動機械学習を使用して自転車シェアリング需要を予測する](tutorial-automated-ml-forecast.md)」で [Azure Machine Learning Studio](https://ml.azure.com/) の自動機械学習を使用して、時系列の予測を行う方法について参照してください。
 
 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 
 
@@ -40,7 +42,6 @@ ms.locfileid: "82137368"
 
 ## <a name="time-series-and-deep-learning-models"></a>時系列モデルとディープ ラーニング モデル
 
-
 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
 
 ディープ ラーニング モデルには、3 つの組み込み機能があります。
@@ -52,10 +53,9 @@ ms.locfileid: "82137368"
 
 自動 ML では、レコメンデーション システムの一部として、ネイティブな時系列モデルとディープ ラーニング モデルの両方をユーザーに提供します。 
 
-
 モデル| 説明 | メリット
 ----|----|---
-Prophet (プレビュー)|Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 | 正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。
+Prophet (プレビュー)|Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 このモデルを利用するには、`pip install fbprophet` を使用してローカルにインストールします。 | 正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。
 自動 ARIMA (プレビュー)|自己回帰和分移動平均 (ARIMA) は、データが静的な場合に最適です。 これは、平均や分散などの統計的特性がセット全体で一定であることを意味します。 たとえば、コインを投げた場合、今日、明日、来年のいつ投げても、表が出る確率は 50% です。| 過去の値は将来の値を予測するために使用されるため、単変量系列に最適です。
 ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測タスクに対応するように設計されたニューラル ネットワーク モデルであり、データ内の非線形のローカル傾向とグローバル傾向と、時系列間の関係がキャプチャされます。|データの複雑な傾向を活用し、最大のデータセットに合わせて簡単にスケーリングできます。
 
@@ -68,17 +68,19 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 
 自動化された機械学習内での予測回帰タスクの種類と回帰タスクの種類の最も重要な違いは、有効な時系列を表す機能がデータに含まれるという点です。 通常の時系列には、明確に定義され一貫した頻度があり、連続した期間のすべてのサンプル ポイントで値があります。 ファイル `sample.csv` の次のスナップショットを見てください。
 
-    day_datetime,store,sales_quantity,week_of_year
-    9/3/2018,A,2000,36
-    9/3/2018,B,600,36
-    9/4/2018,A,2300,36
-    9/4/2018,B,550,36
-    9/5/2018,A,2100,36
-    9/5/2018,B,650,36
-    9/6/2018,A,2400,36
-    9/6/2018,B,700,36
-    9/7/2018,A,2450,36
-    9/7/2018,B,650,36
+```output
+day_datetime,store,sales_quantity,week_of_year
+9/3/2018,A,2000,36
+9/3/2018,B,600,36
+9/4/2018,A,2300,36
+9/4/2018,B,550,36
+9/5/2018,A,2100,36
+9/5/2018,B,650,36
+9/6/2018,A,2400,36
+9/6/2018,B,700,36
+9/7/2018,A,2450,36
+9/7/2018,B,650,36
+```
 
 このデータ セットは、A と B の 2 つの異なる店舗を持つある企業の日々の売上データの単純な例です。さらに、モデルで週単位の季節性を検出できるようにする `week_of_year` の機能もあります。 フィールド `day_datetime` は、1 日 1 回の頻度でクリーンな時系列を表し、フィールド `sales_quantity` は、予測を実行するためのターゲット列になります。 Pandas データフレームにデータを読み取ってから `to_datetime` 関数を使用して、時系列が `datetime` 型であることを確認します。
 
@@ -112,7 +114,7 @@ test_labels = test_data.pop(label).values
 
 ![alt text](./media/how-to-auto-train-forecast/ROCV.svg)
 
-この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。 `n_cross_validations` を使用してトレーニング データと検証データを一緒に渡し、クロス検証フォールドの数を設定することで、ROCV が予測タスクに自動的に使用されます。 
+この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。 `n_cross_validations` を使用してトレーニング データと検証データを一緒に渡し、クロス検証フォールドの数を設定することで、ROCV が予測タスクに自動的に使用されます。 自動 ML がクロス検証を適用して、[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-over-fitting)する方法の詳細について説明します。
 
 ```python
 automl_config = AutoMLConfig(task='forecasting',
@@ -271,9 +273,11 @@ rmse
 
 モデル全体の精度は判別しているので、最も現実的な次の手順は、モデルを使用して不明な将来の値を予測することです。 テスト セット `test_data` と同じ形式ですが将来の日時を使用してデータ セットを提供すると、結果の予測セットは時系列手順ごとに予測された値になります。 データ セット内の最後の時系列レコードは 2018 年 12 月 31 日のものだったとします。 次の日 (または予測する必要のある数の期間、< = `max_horizon`) の需要を予測するには、2019 年 1 月 1 日の店舗ごとに 1 つの時系列レコードを作成します。
 
-    day_datetime,store,week_of_year
-    01/01/2019,A,1
-    01/01/2019,A,1
+```output
+day_datetime,store,week_of_year
+01/01/2019,A,1
+01/01/2019,A,1
+```
 
 必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.predict(test_data)` を実行して将来の値を予測します。
 

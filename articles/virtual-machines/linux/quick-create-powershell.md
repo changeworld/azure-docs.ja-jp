@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 397fac7609d9527165a1a0a35215a2e2bac23c6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759223"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510329"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Linux 仮想マシンを作成する
 
@@ -39,11 +39,11 @@ ssh-keygen -t rsa -b 2048
 
 PuTTy の使用を含む SSH キー ペアの作成方法の詳細については、[Windows で SSH キーを使用する方法](ssh-from-windows.md)に関するページを参照してください。
 
-Cloud Shell を使用して SSH キーの組を作成した場合、[Cloud Shell によって自動的に作成されるストレージ アカウント](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)内のコンテナー イメージにキーの組が格納されます。 キーを取得するまでは、ストレージ アカウント (またはその中のファイル共有) を削除しないでください。削除すると、VM にアクセスできなくなります。 
+Cloud Shell を使用して SSH キーの組を作成した場合、[Cloud Shell によって自動的に作成されるストレージ アカウント](../../cloud-shell/persisting-shell-storage.md)内のコンテナー イメージにキーの組が格納されます。 キーを取得するまでは、ストレージ アカウント (またはその中のファイル共有) を削除しないでください。削除すると、VM にアクセスできなくなります。 
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースの展開と管理に使用する論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースの展開と管理に使用する論理コンテナーです。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -111,7 +111,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想ネットワーク インターフェイス カード (NIC) を作成します。 仮想 NIC は、VM をサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
+[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想ネットワーク インターフェイス カード (NIC) を作成します。 仮想 NIC は、VM をサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
@@ -160,7 +160,7 @@ Add-AzVMSshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-これまでに定義した構成を組み合わせて、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して仮想マシンを作成します。
+これまでに定義した構成を組み合わせて、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して仮想マシンを作成します。
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -172,7 +172,7 @@ VM がデプロイされるまでに数分かかります。 デプロイが完�
 
 ## <a name="connect-to-the-vm"></a>VM に接続します
 
-パブリック IP アドレスを使用して VM との SSH 接続を作成します。 VM のパブリック IP アドレスを確認するには、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) コマンドレットを使用します。
+パブリック IP アドレスを使用して VM との SSH 接続を作成します。 VM のパブリック IP アドレスを確認するには、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) コマンドレットを使用します。
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -207,7 +207,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"

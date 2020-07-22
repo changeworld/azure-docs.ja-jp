@@ -1,22 +1,22 @@
 ---
-title: 非公開オファー | Azure Marketplace
-description: アプリとサービスの公開元向けの Azure Marketplace 上のプライベート オファー。
-author: qianw211
+title: Microsoft 商業マーケットプレースでのプライベート オファー
+description: アプリとサービスの公開元向けの Microsoft 商業マーケットプレース上のプライベート オファーです。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/19/2020
-ms.author: dsindona
-ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b558cbc53ba09a86f7277df0ee5d45a9bdac56e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681430"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121012"
 ---
-# <a name="private-offers"></a>プライベート オファー
+# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースでのプライベート オファー
 
-公開元は、[Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) 上でプライベート オファーを使用して、ターゲット顧客のみに表示される SKU を作成できます。
+[Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) 上のプライベート オファーによって、公開元はターゲット顧客のみに表示されるプランを作成できるようになります。 この記事では、プライベート オファーのオプションと利点について学習します。
 
 ## <a name="unlock-enterprise-deals-with-private-offers"></a>プライベート オファーを使用して企業の取引を開放する
 

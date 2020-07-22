@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84698063"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -396,7 +396,7 @@ Azure Functions 用の Visual Studio ツールを使用する場合、エンテ�
 * **GetState\<TState>(initfunction)** : エンティティの現在の状態を取得します。 まだ存在しない場合は、指定された `initfunction` パラメーターを呼び出して作成されます。 `TState` パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。 
 * **SetState(arg)** : エンティティの状態を作成または更新します。 `arg` パラメーターは、JSON にシリアル化できるオブジェクトまたはプリミティブにする必要があります。
 * **DeleteState()** : エンティティの状態を削除します。 
-* **GetInput\<TInput>()** : 現在操作に対する入力を取得します。 `TInput` 型パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。
+* **GetInput\<TInput>()** : 現在の操作に対する入力を取得します。 `TInput` 型パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。
 * **Return(arg)** : 操作を呼び出したオーケストレーションに値を返します。 `arg` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
 * **SignalEntity(EntityId, scheduledTimeUtc, operation, input)** : エンティティに一方向のメッセージを送信します。 `operation` パラメーターは NULL 以外の文字列にする必要があります。オプションの `scheduledTimeUtc` は、操作を呼び出す UTC 日時にする必要があります。`input` パラメーターはプリミティブまたは JSON にシリアル化できるオブジェクトにする必要があります。
 * **CreateNewOrchestration(orchestratorFunctionName, input)** : 新しいオーケストレーションを開始します。 `input` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。

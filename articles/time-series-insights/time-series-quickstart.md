@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/13/2020
-ms.openlocfilehash: a566c55d2ac51efc5ff2650ad682f10dae2bdc31
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5bc160076e6a06c7ddcc99d989eb6d9c7fb3fe0f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272000"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042290"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
 
@@ -23,7 +23,7 @@ ms.locfileid: "81272000"
 
 Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 Azure Time Series Insights は、ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりするために役立ちます。
 
-柔軟性を高めるために、強力な [REST API](./time-series-insights-update-tsq.md) および[クライアント SDK](https://github.com/microsoft/tsiclient) を介して、Azure Time Series Insights を既存のアプリケーションに追加できます。 API を使用すると、時系列データの保存やクエリを行ったり、任意のクライアント アプリケーションで時系列データを使用したりすることができます。 クライアント SDK を使用して、既存のアプリケーションに UI コンポーネントを追加することもできます。
+柔軟性を高めるために、強力な [REST API](./concepts-query-overview.md) および[クライアント SDK](https://github.com/microsoft/tsiclient) を介して、Azure Time Series Insights を既存のアプリケーションに追加できます。 API を使用すると、時系列データの保存やクエリを行ったり、任意のクライアント アプリケーションで時系列データを使用したりすることができます。 クライアント SDK を使用して、既存のアプリケーションに UI コンポーネントを追加することもできます。
 
 この Time Series Insights エクスプローラー クイックスタートでは、現在一般提供されている機能のガイド付きツアーを提供します。
 

@@ -3,16 +3,16 @@ title: Windows VM 向けの Ultra ディスク - Azure Managed Disks
 description: Azure VM 用の Ultra ディスクについて説明します。
 author: roygara
 ms.service: virtual-machines
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dcecd80fce20046b05a3c35b878e33e13001ee86
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 714488329ff760833319e7b39267353a80777c71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84657386"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
 

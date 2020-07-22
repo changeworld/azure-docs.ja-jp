@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587342"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080647"
 ---
 # <a name="long-audio-api-preview"></a>Long Audio API (プレビュー)
 
@@ -48,7 +48,7 @@ Long Audio API のその他の利点は次のとおりです。
   * プレーンテキストの場合は、**Enter/Return** を押すことで各段落が区切られます - [プレーンテキストの入力例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)を参照してください
   * SSML テキストの場合、SSML の各要素は段落と見なされます。 SSML の要素は、異なる段落で区切る必要があります - [SSML テキスト入力の例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)を参照してください
 > [!NOTE]
-> 中国語 (大陸)、中国語 (香港)、中国語 (台湾)、日本語、および韓国語の場合、1 ワードが 2 文字としてカウントされます。 
+> 中国語 (大陸)、中国語 (香港特別行政区)、中国語 (台湾)、日本語、および韓国語の場合、1 ワードが 2 文字としてカウントされます。 
 
 ## <a name="submit-synthesis-requests"></a>合成要求の送信
 
@@ -66,7 +66,7 @@ Long Audio API のその他の利点は次のとおりです。
 |        | 400 | 音声合成では、バイト順マーカー付きのUTF-8 エンコードのテキスト ファイルのみがサポートされます。 | 入力ファイルが、バイト順マーカー付きの UTF-8 エンコードになっていることを確認します。 |
 |        | 400 | 音声合成要求では、有効な SSML 入力のみが許可されます。 | 入力 SSML 式が正しいことを確認してください。 |
 |        | 400 | 入力ファイル内に音声名 {voiceName} が見つかりません。 | 入力 SSML の音声名がモデル ID と一致しません。 |
-|        | 400 | 入力ファイル内の段落の量は、10,000 未満である必要があります。 | ファイル内の段落が 10,000 未満であることを確認してください。 |
+|        | 400 | 入力ファイル内の段落数は 10,000 未満である必要があります。 | ファイル内の段落数が 10,000 未満であることを確認してください。 |
 |        | 400 | 入力ファイルの文字数は 400 文字を越えている必要があります。 | 入力ファイルが 400 文字を超えていることを確認してください。 |
 |        | 404 | 音声合成定義内に宣言されたモデルが見つかりません: {modelID}。 | {modelID} が正しいことを確認してください。 |
 |        | 429 | アクティブな音声合成の制限を超えています。 いくつかの要求が完了するまでお待ちください。 | サーバーでは、Azure アカウントごとに最大 120 個の要求を実行およびキューに登録できます。 いくつかの要求が完了するまで、新しい要求を送信しないでお待ちください。 |

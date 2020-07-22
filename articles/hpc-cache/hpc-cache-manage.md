@@ -3,15 +3,15 @@ title: Azure HPC Cache を管理して更新する
 description: Azure portal を使用して Azure HPC Cache を管理および更新する方法
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: 825b8a34e130286a5772363107311fe4170e8743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515565"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal からキャッシュを管理する
 
@@ -30,6 +30,10 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 * [ **[削除]** ](#delete-the-cache) - キャッシュを完全に破棄します
 
 これらのオプションの詳細については、以下をご覧ください。
+
+キャッシュ管理タスクをデモンストレーションする[ビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)を視聴するには、次の画像をクリックしてください。
+
+[![ビデオのサムネイル:Azure HPC Cache:管理 (クリックしてビデオ ページにアクセス)](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>キャッシュを停止する
 

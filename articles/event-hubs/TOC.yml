@@ -213,14 +213,20 @@
           href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:
-        - name: トラブルシューティング ガイド
+        - name: 接続の問題のトラブルシューティング
           href: troubleshooting-guide.md
+        - name: 認証と承認の問題のトラブルシューティング
+          href: troubleshoot-authentication-authorization.md
+        - name: Event Hubs 用 Kafka トラブルシューティング ガイド
+          href: apache-kafka-troubleshooting-guide.md
         - name: .NET の例外
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager の例外
           href: resource-manager-exceptions.md
 - name: リファレンス
   items:
+    - name: SDK
+      href: sdks.md
     - name: .NET
       items:
         - name: クライアント ライブラリ
@@ -271,6 +277,12 @@
               href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
         - name: 管理ライブラリ
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+    - name: Go
+      items:
+        - name: クライアント ライブラリ
+          href: 'https://pkg.go.dev/github.com/Azure/azure-event-hubs-go?tab=doc'
+        - name: 管理ライブラリ
+          href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/eventhub/mgmt/2017-04-01/eventhub?tab=doc'
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager テンプレート

@@ -9,16 +9,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508505"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 
-Azure ストレージ アカウントでは、アカウント名とキーで構成された資格情報が使用されます。 キーは自動生成され、暗号キーではなくパスワードとして機能します。 Key Vault は、ストレージ アカウント キーを Key Vault のシークレットとして格納して管理します。 
+Azure ストレージ アカウントでは、アカウント名とキーで構成された資格情報が使用されます。 キーは自動生成され、暗号キーではなくパスワードとして機能します。 Key Vault では、ストレージ アカウントでストレージ アカウント キーを定期的に再生成することでそれらのキーの管理が行われることに加え、ストレージ アカウント内のリソースへの委任アクセス用の Shared Access Signature トークンが提供されます。
 
 Key Vault マネージド ストレージ アカウント キー機能を使用して、Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 ストレージ アカウントと従来のストレージ アカウントの両方のキーを管理できます。
 
@@ -125,11 +125,11 @@ az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-
 "se=2020-01-01&sp=***"
 ```
 
-この出力は、次の手順で `--template-id` パラメーターに渡されます。
+この出力は、次の手順で `--template-uri` パラメーターに渡されます。
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Shared Access Signature 定義の生成
 
-Azure CLI の[az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) コマンドを使用して、前の手順の出力を `--template-id` パラメーターに渡し、Shared Access Signature 定義を作成します。  `-n` パラメーターには任意の名前を指定できます。
+Azure CLI の[az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) コマンドを使用して、前の手順の出力を `--template-uri` パラメーターに渡し、Shared Access Signature 定義を作成します。  `-n` パラメーターには任意の名前を指定できます。
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

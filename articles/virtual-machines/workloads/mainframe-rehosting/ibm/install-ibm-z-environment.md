@@ -13,10 +13,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72025943"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure で IBM zD&T 開発/テスト環境をインストールする
@@ -62,7 +62,7 @@ zD&T のすべてのエディションが Windows Server ではなく、x86 Linu
 
 3. **[接続]** ボタンを使用して、VM の **[概要]** ブレードに表示されている SSH 資格情報を取得します。 **[SSH]** タブを選択し、SSH ログオン コマンドをクリップボードにコピーします。
 
-4. ローカル PC から [Bash シェル](/azure/cloud-shell/quickstart)にログオンし、コマンドを貼り付けます。 これは、**ssh\<ユーザー ID\>\@\<IP アドレス\>** という形式になります。 資格情報の入力を求められたら、それを入力してホーム ディレクトリへの接続を確立します。
+4. ローカル PC から [Bash シェル](/azure/cloud-shell/quickstart)にログオンし、コマンドを貼り付けます。 これは、**ssh\<user id\>\@\<IP Address\>** という形式になります。 資格情報の入力を求められたら、それを入力してホーム ディレクトリへの接続を確立します。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>インストール ファイルをサーバーにコピーする
 

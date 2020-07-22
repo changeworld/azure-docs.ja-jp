@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679077"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021332"
 ---
 # <a name="hierarchical-state-override"></a>階層状態のオーバーライド
 
@@ -27,23 +27,23 @@ ms.locfileid: "80679077"
 
 オーバーライドできる一定の状態は次のとおりです。
 
-* **Hidden**: シーン グラフ内の各メッシュが非表示になるか、表示されます。
-* **Tint color**:レンダリングされたオブジェクトに、個別の濃淡の色と濃淡の重みを使用して色合いを付けることができます。 次の画像は、ホイールの縁への色付けを示しています。
+* **`Hidden`** :シーン グラフ内の各メッシュが非表示になるか、表示されます。
+* **`Tint color`** :レンダリングされたオブジェクトに、個別の濃淡の色と濃淡の重みを使用して色合いを付けることができます。 次の画像は、ホイールの縁への色付けを示しています。
   
   ![色付け](./media/color-tint.png)
 
-* **See-through**:オブジェクトの内部部品を見せるなどのために、ジオメトリが半透明にレンダリングされます。 次の画像は、赤のブレーキ キャリパーを除き、透過モードでレンダリングされている車全体を示しています。
+* **`See-through`** :オブジェクトの内部部品を見せるなどのために、ジオメトリが半透明にレンダリングされます。 次の画像は、赤のブレーキ キャリパーを除き、透過モードでレンダリングされている車全体を示しています。
 
   ![透過](./media/see-through.png)
 
   > [!IMPORTANT]
   > *TileBasedComposition* [レンダリング モード](../../concepts/rendering-modes.md)が使用されている場合にのみ、透過効果が働きます。
 
-* **Selected**:ジオメトリが、[選択アウトライン](outlines.md)でレンダリングされます。
+* **`Selected`** :ジオメトリが、[選択アウトライン](outlines.md)でレンダリングされます。
 
   ![選択アウトライン](./media/selection-outline.png)
 
-* **DisableCollision**:ジオメトリには、[空間クエリ](spatial-queries.md)が適用されません。 **Hidden** フラグによって競合が無効になることはないため、これらの 2 つのフラグを同時に設定することがよくあります。
+* **`DisableCollision`** :ジオメトリには、[空間クエリ](spatial-queries.md)が適用されません。 **`Hidden`** フラグによる競合状態フラグへの影響はないため、これらの 2 つのフラグを同時に設定することがよくあります。
 
 ## <a name="hierarchical-overrides"></a>階層のオーバーライド
 
@@ -70,9 +70,24 @@ component.SetState(HierarchicalStates.SeeThrough, HierarchicalEnableState.Inheri
 component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollision, HierarchicalEnableState.ForceOff);
 ```
 
+```cpp
+ApiHandle<HierarchicalStateOverrideComponent> component = ...;
+
+// set one state directly
+component->HiddenState(HierarchicalEnableState::ForceOn);
+
+// set a state with the SetState function
+component->SetState(HierarchicalStates::SeeThrough, HierarchicalEnableState::InheritFromParent);
+
+// set multiple states at once with the SetState function
+component->SetState(
+    (HierarchicalStates)((int32_t)HierarchicalStates::Hidden | (int32_t)HierarchicalStates::DisableCollision), HierarchicalEnableState::ForceOff);
+
+```
+
 ### <a name="tint-color"></a>濃淡の色
 
-濃淡の色のオーバーライドは、オン/オフ/継承状態と濃淡の色プロパティの両方があるため、若干特殊です。 濃淡の色のアルファ部分では、色付け効果の重みを定義します。0.0 に設定した場合、濃淡の色は表示されず、1.0 に設定した場合、オブジェクトは純粋な濃淡の色でレンダリングされます。 中間の値の場合、最終的な色は濃淡の色と混合されます。 濃淡の色は、カラー アニメーションを実現するために、フレームごとに変更できます。
+`tint color` オーバーライドは、オン/オフ/継承状態と濃淡の色プロパティの両方があるため、若干特殊です。 濃淡の色のアルファ部分では、色付け効果の重みを定義します。0.0 に設定した場合、濃淡の色は表示されず、1.0 に設定した場合、オブジェクトは純粋な濃淡の色でレンダリングされます。 中間の値の場合、最終的な色は濃淡の色と混合されます。 濃淡の色は、カラー アニメーションを実現するために、フレームごとに変更できます。
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 

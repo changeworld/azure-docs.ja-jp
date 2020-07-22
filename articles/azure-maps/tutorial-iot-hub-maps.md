@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333975"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318928"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 
@@ -36,7 +36,7 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
 このソリューションは、レンタカー会社が、貸し出した車両に関するイベントの監視と記録を計画するシナリオを例示します。 レンタカー会社は、通常、特定の地域に車両を貸し出します。 貸し出し中は、車両の所在を追跡する必要があります。 選択された地域を車両が離れる事例をログに記録する必要があります。 データをログに記録すれば、ポリシーや料金などのビジネス要素が適切に処理されることにつながるでしょう。
 
-このユース ケースでは、レンタカーには、利用統計情報を Azure IoT Hub に定期的に送信する IoT デバイスが搭載されています。 テレメトリには現在の場所が含まれ、車両のエンジンが作動中であるかどうかが示されます。 デバイスの場所スキーマは、[地理空間データ用の IoT プラグ アンド プレイ スキーマ](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)に準拠しています。 レンタカーのデバイス テレメトリ スキーマは次のようになります。
+このユース ケースでは、レンタカーには、利用統計情報を Azure IoT Hub に定期的に送信する IoT デバイスが搭載されています。 テレメトリには現在の場所が含まれ、車両のエンジンが作動中であるかどうかが示されます。 デバイスの場所スキーマは、[地理空間データ用の IoT プラグ アンド プレイ スキーマ](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md)に準拠しています。 レンタカーのデバイス テレメトリ スキーマは次のようになります。
 
 ```JSON
 {

@@ -2,20 +2,20 @@
 title: スコープ フィルターを使用してアプリをプロビジョニングする | Microsoft Docs
 description: スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのにプロビジョニングされてしまうことを防ぐ方法について説明します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.topic: how-to
+ms.date: 06/08/2020
+ms.author: kenwith
+ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781958"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -29,7 +29,7 @@ ms.locfileid: "82593746"
 * **Azure AD から SaaS アプリケーションへの外向きプロビジョニング**。 Azure AD がソース システムのとき、プロビジョニングに含めるユーザーを決定する方法として最も一般的なものが[ユーザーとグループの割り当て](../manage-apps/assign-user-or-group-access-portal.md)です。 ユーザーとグループの割り当てはシングル サインオンの有効化にも利用され、1 つの方法でアクセスとプロビジョニングを管理できます。 スコープ フィルターを割り当てに加えて (任意で)、あるいは割り当ての代わりに利用し、属性値に基づいてユーザーを絞り込むことができます。
 
     >[!TIP]
-    > エンタープライズ アプリケーションの割り当てに基づいてプロビジョニングを無効にできます。プロビジョニング設定の [[スコープ]](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) を **[すべてのユーザーとグループを同期する]** に設定します。 このオプションと属性基準のスコープ フィルターを利用することで、グループ基準の割り当てよりパフォーマンスが速くなります。  
+    > エンタープライズ アプリケーションの割り当てに基づいてプロビジョニングを無効にできます。プロビジョニング設定の [[スコープ]](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) を **[すべてのユーザーとグループを同期する]** に設定します。 
 
 * **HCM アプリケーションから Azure AD と Active Directory への内向きプロビジョニング**。 [Workday などの HCM アプリケーション](../saas-apps/workday-tutorial.md)がソース システムのとき、HCM アプリケーションから Active Directory または Azure AD にプロビジョニングするユーザーを決定する主要な方法がスコープ フィルターです。
 

@@ -8,13 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 06/12/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 0cb266f512875f588c5bf95e31b207b9c49e4e96
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78194056"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85552606"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:Python と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -91,7 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    接続文字列は、次の例のような URL です。
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. メモ帳に接続文字列を保存します。 これは、後でデータ ソース接続を設定するときに必要になります。
@@ -100,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 AI エンリッチメントは、自然言語と画像の処理のための Text Analytics や Computer Vision など、Cognitive Services によってサポートされています。 実際のプロトタイプまたはプロジェクトを完成させることが目的であれば、この時点で (Azure Cognitive Search と同じリージョンに) Cognitive Services をプロビジョニングして、インデックス作成操作にアタッチできるようにします。
 
-ただし、この演習では、Azure Cognitive Search がバックグラウンドで Cognitive Services に接続し、インデクサーの実行ごとに 20 個の無料トランザクションを提供できるため、リソースのプロビジョニングをスキップできます。 このチュートリアルで使用するトランザクションは 7 個であるため、無料の割り当てで十分です。 より大規模なプロジェクトの場合は、従量課金制の S0 レベルで Cognitive Services をプロビジョニングすることを計画してください。 詳細については、[Cognitive Services のアタッチ](cognitive-search-attach-cognitive-services.md)に関するページを参照してください。
+このチュートリアルで使用するトランザクションは 7 つのみです。Azure Cognitive Search が Cognitive Services に接続して、インデクサーの実行あたり 20 個の無料トランザクションを利用できるため、リソースのプロビジョニングはスキップできます。 無料の割り当てで十分です。 より大規模なプロジェクトの場合は、従量課金制の S0 レベルで Cognitive Services をプロビジョニングすることを計画してください。 詳細については、[Cognitive Services のアタッチ](cognitive-search-attach-cognitive-services.md)に関するページを参照してください。
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -152,7 +153,7 @@ endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
 headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>'}
 params = {
-    'api-version': '2019-05-06'
+    'api-version': '2020-06-30'
 }
 ```
 
@@ -219,12 +220,14 @@ skillset_payload = {
             "defaultLanguageCode": "en",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
                 {
-                    "name": "organizations", "targetName": "organizations"
+                    "name": "organizations", 
+                    "targetName": "organizations"
                 }
             ]
         },
@@ -232,7 +235,8 @@ skillset_payload = {
             "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
@@ -268,10 +272,12 @@ skillset_payload = {
             "context": "/document/pages/*",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/pages/*"
+                    "name": "text", 
+                    "source": "/document/pages/*"
                 },
                 {
-                    "name": "languageCode", "source": "/document/languageCode"
+                    "name": "languageCode", 
+                    "source": "/document/languageCode"
                 }
             ],
             "outputs": [
@@ -377,9 +383,9 @@ print(r.status_code)
 
 これらのオブジェクトをまとめてインデクサーに結び付けるには、フィールド マッピングを定義する必要があります。
 
-+ スキルセットの前に fieldMappings が処理されて、データ ソースのソース フィールドがインデックス内のターゲット フィールドにマッピングされます。 フィールド名と型が両側で共通していれば、マッピングは必要ありません。
++ スキルセットの前に `"fieldMappings"` が処理されて、データ ソースのソース フィールドがインデックス内のターゲット フィールドにマッピングされます。 フィールド名と型が両側で共通していれば、マッピングは必要ありません。
 
-+ outputFieldMappings は、スキルセットの後に処理されます。sourceFieldNames がドキュメント解析またはエンリッチメントによって作成されるまでは、存在しない sourceFieldNames が参照されます。 targetFieldName は、インデックス内のフィールドです。
++ `"outputFieldMappings"` は、スキルセットの後に処理されます。`"sourceFieldNames"` がドキュメント解析またはエンリッチメントによって作成されるまでは、存在しない sourceFieldNames が参照されます。 `"targetFieldName"` は、インデックス内のフィールドです。
 
 入力を出力につなぐことに加え、フィールドのマッピングを使用して、データ構造をフラット化することもできます。 詳細については、「[強化されたフィールドを検索可能なインデックスにマップする方法](cognitive-search-output-field-mapping.md)」を参照してください。
 
@@ -464,7 +470,7 @@ r = requests.get(endpoint + "/indexers/" + indexer_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-応答内で、"lastResult" の "status" と "endTime" の値を確認します。 状態を確認するため、定期的にスクリプトを実行します。 インデクサーが完了すると、状態は "success" に設定され、"endTime" が指定されます。また、応答にはエンリッチメント中に発生したエラーや警告が含まれるようになります。
+応答内で、`"lastResult"` の `"status"` と `"endTime"` の値を確認します。 状態を確認するため、定期的にスクリプトを実行します。 インデクサーが完了すると、状態は "success" に設定され、"endTime" が指定されます。また、応答にはエンリッチメント中に発生したエラーや警告が含まれるようになります。
 
 ![インデクサーが作成された](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "インデクサーが作成された")
 
@@ -504,7 +510,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ![組織のコンテンツを取得するクエリをインデックスに対して実行する](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "組織のコンテンツを取得するクエリをインデックスに対して実行する")
 
-その他のフィールド (この演習では、content、languageCode、keyPhrases、および organizations) でも同様に繰り返します。 コンマ区切りリストを使用して、`$select` を介して複数のフィールドを返すことができます。
+その他のフィールド (この演習では、`content`、`languageCode`、`keyPhrases`、`organizations`) でも同様に繰り返します。 コンマ区切りリストを使用して、`$select` を介して複数のフィールドを返すことができます。
 
 クエリ文字列の複雑さと長さによっては、GET や POST を使用できます。 詳細については、[REST API を使用したクエリ](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページをご覧ください。
 

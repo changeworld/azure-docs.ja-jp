@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672210"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
@@ -42,7 +42,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 ## <a name="sign-in-to-grafana"></a>Grafana にサインインする
 
-1. ブラウザーで、サーバーの IP アドレスを使用して [ログイン] ページを開きます (*http://\<IP アドレス\>:3000* または *\<ドメイン名>\:3000*)。 3000 は既定のポートです。セットアップ中にご自身で別のポートを選択している場合があることに注意してください。 構築した Grafana サーバーのログイン ページが表示されます。
+1. ブラウザーで、サーバーの IP アドレスを使用して [ログイン] ページを開きます (*http://\<IP address\>:3000* または *\<DNSName>\:3000*)。 3000 は既定のポートです。セットアップ中にご自身で別のポートを選択している場合があることに注意してください。 構築した Grafana サーバーのログイン ページが表示されます。
 
     ![Grafana ログイン画面](./media/grafana-plugin/grafana-login-screen.png)
 
@@ -104,7 +104,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
     ![Grafana の 2 つのグラフの例](media/grafana-plugin/grafana6.png)
 
 
-## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>省略可能: 同じ Grafana サーバーでカスタム メトリックを監視する
+## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>省略可能:同じ Grafana サーバーでカスタム メトリックを監視する
 
 Telegraf と InfluxDB をインストールして、同じ Grafana インスタンスでカスタム メトリックとエージェント ベースのメトリックの両方を収集してプロットすることもできます。 これらのメトリックをダッシュボードにまとめて表示するために使用できる多くのデータ ソース プラグインがあります。
 
@@ -120,7 +120,7 @@ Azure Monitor および Application Insights からのメトリックを含む�
 
 ## <a name="advanced-grafana-features"></a>Grafana の高度な機能
 
-### <a name="variables"></a>変数:
+### <a name="variables"></a>変数
 いくつかのクエリの値は、UI のドロップダウン リストから選択してクエリ内で更新できます。 例として次のクエリを検討します。
 ```
 Usage 

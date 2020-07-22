@@ -3,12 +3,12 @@ title: Azure Backup での暗号化
 description: Azure Backup の暗号化機能を利用して、バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たす方法について説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1f7e0f26df0f8bd70a10b36f658dcfebe897b475
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: aafb9868dfb6a63ec9b6a3ae654b88b202a1a145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82761432"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171824"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup での暗号化
 
@@ -26,12 +26,18 @@ ms.locfileid: "82761432"
 
 Azure Virtual Machines のバックアップ時に、ご自身で所有および管理しているキーを使って、データを暗号化できるようになりました。 Azure Backup を使用すると、自分のバックアップの暗号化に、Azure Key Vault に格納されているご自身の RSA キーを使用でききます。 バックアップの暗号化に使用される暗号化キーは、ソースに使用されているものと異なることがあります。 データは、AES 256 ベースのデータ暗号化キー (DEK) を使用して保護され、このキーは、ご自身のキーを使用して保護されます。 これにより、データとキーを完全に制御できます。 暗号化を許可するには、Recovery Services コンテナーに、Azure Key Vault の暗号化キーへのアクセスが許可されている必要があります。 キーの無効化とアクセスの取り消しは、必要に応じていつでも可能です。 ただし、コンテナーに対する項目の保護を試みるには、事前にキーを使って暗号化を有効にしておく必要があります。
 
->[!NOTE]
->この機能の利用は、現在、制限されています。 カスタマー マネージド キーを使用して、ご自身のバックアップ データを暗号化することをご希望の方は、[こちらのアンケート](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u)にご記入のうえ、メール (AskAzureBackupTeam@microsoft.com) でお送りください。 この機能は、Azure Backup サービスが承認した場合に使用できることに注意してください。
+カスタマー マネージド キーを使用してバックアップ データを暗号化する方法の詳細については、[こちら](encryption-at-rest-with-cmk.md)を参照してください。
 
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>カスタマー マネージド キー使用して暗号化されたマネージド ディスク VM のバックアップ
 
-Azure Backup を使用すると、サーバー側の暗号化にキーを使用する Azure VM をバックアップすることもできます。 ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ご自身で管理します。 カスタマー マネージド キーを使用したサーバー側の暗号化 (SSE) は、Azure Disk Encryption (ADE) とは異なります。ADE は BitLocker (Windows の場合) および DM-Crypt (Linux の場合) を利用してゲスト内暗号化を実行する一方で、SSE はストレージ サービス内のデータを暗号化して、VM の任意の OS またはイメージを使用できるようにするからです。 詳細については、[カスタマー マネージド キーを使用したマネージド ディスクの暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)に関するセクションをご覧ください。
+Azure Backup を使用すると、[ストレージ サービス暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)にキーを使用する Azure VM をバックアップすることもできます。 ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ご自身で管理します。 カスタマー マネージド キーを使用した Storage Service Encryption (SSE) は、Azure Disk Encryption (ADE) とは異なります。ADE は BitLocker (Windows の場合) および DM-Crypt (Linux の場合) を利用してゲスト内暗号化を実行する一方で、SSE はストレージ サービス内のデータを暗号化して、VM の任意の OS またはイメージを使用できるようにするからです。 詳細については、[カスタマー マネージド キーを使用したマネージド ディスクの暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)に関するセクションをご覧ください。
+
+## <a name="infrastructure-level-encryption-for-backup-data"></a>バックアップ データのインフラストラクチャ レベルの暗号化
+
+カスタマー マネージド キーを使用して Recovery Services コンテナー内のデータを暗号化するだけでなく、ストレージ インフラストラクチャで追加の暗号化レイヤーを構成することもできます。 このインフラストラクチャの暗号化はプラットフォームによって管理され、これに加えてカスタマー マネージド キーを使用して保存時の暗号化を行うことで、バックアップ データを 2 レイヤーで暗号化することができます。 インフラストラクチャの暗号化は、保存時の暗号化に独自のキーを使用する場合にのみ構成できることに注意してください。 インフラストラクチャの暗号化では、データの暗号化にプラットフォーム マネージド キーを使用します。
+
+>[!NOTE]
+>現在、インフラストラクチャの暗号化は限定プレビュー段階であり、米国東部、米国西部 2、米国中南部、US Gov アリゾナ、および US GOV バージニア リージョンでのみご利用いただけます。 これらのリージョンのいずれかでこの機能を使用する場合は、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u)に記入し、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>ADE を使用して暗号化された VM のバックアップ
 

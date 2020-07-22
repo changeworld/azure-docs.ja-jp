@@ -4,14 +4,14 @@ description: この記事では、Azure Database for PostgreSQL - Single Server 
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f25bda1a450919264c7ddba3886554381009c546
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384349"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119601"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でユーザーを作成する
 

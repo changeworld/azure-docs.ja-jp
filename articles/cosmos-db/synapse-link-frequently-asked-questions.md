@@ -6,12 +6,12 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 36be05f72597ae9864eff812862589cafb1f5b0d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596471"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921195"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 
@@ -29,6 +29,9 @@ Azure Synapse Link for Azure Cosmos DB により、Azure Cosmos DB と Azure Syn
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>複数リージョン アカウント構成内のすべてのリージョンではなく、特定のリージョンに対してのみ Synapse Link を有効にすることを選択できますか?
 プレビュー リリースでは、複数リージョンのアカウントで Synapse Link が有効になっている場合、すべてのリージョンで分析ストアが作成されます。 基になるデータは、トランザクション ストアでのスループットとトランザクションの一貫性を確保するために最適化されます。
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Synapse Link が有効になっているアカウントでは、バックアップと復元はサポートされますか?
+プレビューでは、Synapse Link が有効になっているデータベース アカウントでは、コンテナーのバックアップと復元はサポートされていません。 バックアップと復元の機能を必要とする運用環境のワークロードがある場合、それらのデータベース アカウントでは Synapse Link を有効にしないことをお勧めします。 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Azure Cosmos アカウントで Synapse Link 機能を無効にすることはできますか?
 現時点では、Synapse Link 機能がアカウント レベルで有効になっている場合は、無効にすることはできません。  この機能を無効にする場合は、Azure Cosmos アカウントを削除してから新しいアカウントを再作成する必要があります。
@@ -92,7 +95,7 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 ### <a name="what-is-the-billing-model-of-synapse-link-for-azure-cosmos-db"></a>Synapse Link for Azure Cosmos DB の課金モデルはどのようなものですか?
 [Azure Cosmos DB 分析ストア](analytical-store-introduction.md)は、2020 年 8 月30 日までは、分析ストアに対する料金はかからずにパブリック プレビューで利用できます。 Synapse Spark と Synapse SQL は、[Synapse サービスの使用](https://azure.microsoft.com/pricing/details/synapse-analytics/)を通じて課金されます。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>分析ストアでの認証にはどのような方法がありますか?
 分析ストアでの認証は、トランザクション ストアと同じです。 特定のデータベースに対して、マスター キーまたは読み取り専用キーを使用して認証できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
@@ -118,11 +121,11 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 ### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Synapse Studio では、分析ストアが有効な Azure Cosmos DB コンテナーに接続されていることを確認するにはどうすればよいですか?
 分析ストアが有効な Azure Cosmos DB コンテナーのアイコンは、次のようになっています。
 
-![分析ストアが有効な Azure Cosmos DB コンテナーのアイコン](./media/synapse-link-frequently-asked-questions/analytical-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="分析ストアが有効な Azure Cosmos DB コンテナーのアイコン":::
 
 トランザクション ストア コンテナーは、次のアイコンで表されます。
 
-![トランザクション ストアが有効な Azure Cosmos DB コンテナーのアイコン](./media/synapse-link-frequently-asked-questions/transactional-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="トランザクション ストアが有効な Azure Cosmos DB コンテナーのアイコン":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Synapse Studio から Azure Cosmos DB 資格情報を渡すにはどうすればよいですか?
 現時点では、Azure Cosmos DB 資格情報は、Azure Cosmos DB データベースにアクセスできるユーザーが、リンクされたサービスを作成するときに渡されます。 そのストアへのアクセスは、ワークスペースにアクセスできる他のユーザーが利用できます。

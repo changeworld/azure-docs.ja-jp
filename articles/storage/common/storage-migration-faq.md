@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: f0272d53c5fc4c565baf5d7105bd6e1b4a0ef535
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668549"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114603"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -26,9 +26,11 @@ ms.locfileid: "80668549"
 
 コンテナー間でファイルをコピーするには、AzCopy を使用します。 次の例を参照してください。
 
-    AzCopy /Source:https://xxx.blob.core.windows.net/xxx
-    /Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
-    /S
+```azurepowershell-interactive
+AzCopy /Source:https://xxx.blob.core.windows.net/xxx
+/Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
+/S
+```
 
 AzCopy では、[Copy Blob API](https://docs.microsoft.com/rest/api/storageservices/copy-blob) を使用してコンテナー内の各ファイルをコピーします。  
 
@@ -54,11 +56,15 @@ Azure CLI をご利用いただけます。
 
 - 1 つの BLOB をダウンロードする
 
-      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```azurecli-interactive
+    azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```
 
 - 1 つの BLOB をアップロードする
 
-      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```azurecli-interactive
+    azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```
 
 **2 つのストレージ アカウント間で BLOB を移行するにはどうすればよいですか?**
 
@@ -160,15 +166,19 @@ AzCopy を使用し、タスク スケジューラでタスクを作成できま
 
     ストレージ アカウント内のディスク全体をコピーするには、次のコマンドを実行します。
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     ディスクを 1 つだけコピーするには、**Pattern** にディスクの名前を指定します。
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```
 
 この操作は、完了するまで数時間かかる場合があります。
 
@@ -190,9 +200,11 @@ AzCopy を使用し、タスク スケジューラでタスクを作成できま
 
 3.  次のコマンドを実行して、コンテナーを移動します。 テキストを実際の値に置き換える必要があります。   
 
-            AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-            /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-            /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     - `/Source`:ソース ストレージ アカウントの URI (コンテナーまで) を指定します。  
     - `/Dest`:ターゲット ストレージ アカウントの URI (コンテナーまで) を指定します。  
@@ -215,19 +227,20 @@ AzCopy を使用し、タスク スケジューラでタスクを作成できま
 - ストレージ アカウント内のファイル共有から BLOB コンテナーへ、または別のストレージ アカウントへ。
 
 詳細については、「[AzCopy on Windows を使ったデータの転送](storage-use-azcopy.md)」をご覧ください。
+
 ## <a name="configuration"></a>構成
 
 **ストレージ アカウントのセカンダリ ロケーションからヨーロッパ リージョンに変更するにはどうすればよいですか?**
 
 ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 セカンダリ リージョンの選択はプライマリ リージョンに基づいており、変更することはできません。 詳しくは、「[geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy.md)」をご覧ください。
 
-**Azure Storage Service Encryption (SSE) の詳細はどこで入手できますか?**  
+**Azure Storage 暗号化の詳細はどこで入手できますか?**  
 
 次の記事をご覧ください。
 
--  [Azure Storage セキュリティ ガイド](../blobs/security-recommendations.md)
-
--  [Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)
+- [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
+- [Azure Key Vault で顧客マネージド キーを使用して Azure Storage の暗号化を管理する](encryption-customer-managed-keys.md)
+- [BLOB ストレージに対する要求で暗号化キーを指定する (プレビュー)](encryption-customer-provided-keys.md)
 
 **ストレージ アカウント内のデータを暗号化するにはどうすればよいですか?**
 
@@ -253,19 +266,19 @@ Premium Storage は、Azure ファイル共有では使用できません。
 
 ストレージ リソースに他のユーザーがアクセスできるようにする方法は次のとおりです。
 
--   Shared Access Signature (SAS) トークンを使用して、リソースにアクセスできるようにします。
+- Shared Access Signature (SAS) トークンを使用して、リソースにアクセスできるようにします。
 
--   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウント アクセス キーを管理する](storage-account-keys-manage.md)」を参照してください。
+- ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウント アクセス キーを管理する](storage-account-keys-manage.md)」を参照してください。
 
--   アクセス ポリシーを変更して、匿名アクセスを許可します。 詳細については、「[コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)」をご覧ください。
+- アクセス ポリシーを変更して、匿名アクセスを許可します。 詳細については、「[コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)」をご覧ください。
 
 **AzCopy はどこにインストールされていますか?**
 
--   Microsoft Azure Storage のコマンド ラインから AzCopy はアクセスするには、「**AzCopy**」と入力します。 コマンド ラインは、AzCopy と同時にインストールされます。
+- Microsoft Azure Storage のコマンド ラインから AzCopy はアクセスするには、「**AzCopy**」と入力します。 コマンド ラインは、AzCopy と同時にインストールされます。
 
--   32 ビット バージョンをインストールした場合は、 **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
+- 32 ビット バージョンをインストールした場合は、 **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
 
--   64 ビット バージョンをインストールした場合は、 **%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
+- 64 ビット バージョンをインストールした場合は、 **%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
 
 **ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" を "https:\//www.contoso.com/images/image.gif" と表示するにはどうすればよいですか?**
 
@@ -284,15 +297,15 @@ Azure ファイル共有を使用します。
 
 **レプリケートされたストレージ アカウント (ZRS、GRS、または読み取り GRS など) の場合、セカンダリ リージョンに格納されているデータにアクセスする方法は?**
 
--   ゾーン冗長ストレージまたは geo 冗長ストレージ を使用している場合は、セカンダリ リージョンへのフェールオーバーを開始していない限り、そのリージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、「[Disaster recovery and storage account failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー))](storage-disaster-recovery-guidance.md)」を参照してください。
+- ゾーン冗長ストレージまたは geo 冗長ストレージ を使用している場合は、セカンダリ リージョンへのフェールオーバーを開始していない限り、そのリージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、[ディザスター リカバリーとストレージ アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)に関するページを参照してください。
 
--   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 以下のいずれかの方法を使用します。  
+- 読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 以下のいずれかの方法を使用します。  
 
-    - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 次に例を示します。  
+  - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 次に例を示します。  
 
-      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
+      `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。
+  - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。
 
 **FTP を使用してストレージ アカウント内のデータにアクセスするにはどうすればよいですか?**
 
@@ -300,6 +313,6 @@ FTP を使用してストレージ アカウントに直接アクセスする方
 
 Storage Explorer などのアプリケーションを使用せずに、データのダウンロードのみ実行する場合は、SAS トークンを使用できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

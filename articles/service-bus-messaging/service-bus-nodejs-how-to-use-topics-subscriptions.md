@@ -1,25 +1,17 @@
 ---
 title: Azure Service Bus のトピックを azure/service-bus Node.js パッケージで使用する
 description: azure/service-bus パッケージを使用して Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/16/2020
-ms.author: aschhab
-ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: d4b382a0cf857f9cfe1065815e9b07b8260023a8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330448"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339795"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>クイック スタート:Service Bus のトピックとサブスクリプションを Node.js および azure-sb パッケージで使用する方法
 このチュートリアルでは、[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージを使用して Service Bus トピックにメッセージを送り、Service Bus サブスクリプションからメッセージを受け取る Node.js アプリケーションの作成方法を学習します。 サンプルは JavaScript で記述され、Node.js [Azure モジュール](https://www.npmjs.com/package/azure)を使用し、その内部で `azure-sb` パッケージが使用されています。
@@ -80,7 +72,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>Service Bus 接続の設定
-Azure モジュールは、前の手順の「資格情報の取得」から取得した接続文字列の `AZURE_SERVICEBUS_CONNECTION_STRING` 環境変数を読み取ります。 この環境変数が設定されていない場合は、`createServiceBusService` を呼び出すときにアカウント情報を指定する必要があります。
+Azure モジュールは、[前提条件](#prerequisites)の一部として取得した接続文字列の環境変数 `AZURE_SERVICEBUS_CONNECTION_STRING` を読み取ります。 接続文字列を取得する手順が再度必要な場合は、「[接続文字列を取得する](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)」を参照してください。 この環境変数が設定されていない場合は、`createServiceBusService` を呼び出すときにアカウント情報を指定する必要があります。
 
 Azure Cloud Service の環境変数を設定する例については、「[環境変数の設定](../container-instances/container-instances-environment-variables.md#azure-cli-example)」をご覧ください。
 

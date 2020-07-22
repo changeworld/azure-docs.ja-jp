@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791580"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480492"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
 
@@ -54,7 +54,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="get-the-vm"></a>VM を取得する
 
-リソース グループで利用できる VM は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して一覧表示できます。 VM の名前とリソース グループがわかったら、もう一度 `Get-AzVM` を使用して VM オブジェクトを取得し、後で使用できるよう変数に格納することができます。 この例では、*sourceVM* という名前の VM を "myResourceGroup" リソース グループから取得し、変数 *$vm* に割り当てています。 
+リソース グループで利用できる VM は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して一覧表示できます。 VM の名前とリソース グループがわかったら、もう一度 `Get-AzVM` を使用して VM オブジェクトを取得し、後で使用できるよう変数に格納することができます。 この例では、*sourceVM* という名前の VM を "myResourceGroup" リソース グループから取得し、変数 *$sourceVM* に割り当てています。 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -131,7 +131,7 @@ New-AzGalleryImageVersion `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
-   -Source $vm.Id.ToString() `
+   -Source $sourceVM.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01'
 ```
 
@@ -140,7 +140,7 @@ New-AzGalleryImageVersion `
 
 ## <a name="create-a-vm"></a>VM の作成 
 
-特殊化されたイメージが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットの使用。 このイメージを使用するには、Set-AzVMSourceImage を使用し、-Id をイメージ定義 ID (この場合は $galleryImage.Id) に設定して、常に最新のイメージ バージョンを使用するようにします。 
+特殊化されたイメージが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットの使用。 このイメージを使用するには、`Set-AzVMSourceImage` を使用し、`-Id` をイメージ定義 ID (この場合は $galleryImage.Id) に設定して、常に最新のイメージ バージョンを使用します。 
 
 必要に応じて、この例のリソース名を置き換えてください。 
 

@@ -1,24 +1,25 @@
 ---
-title: Azure Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
+title: Synapse Studio ノートブック
 description: この記事では、データの準備と視覚化を行うために、Azure Synapse Studio (プレビュー) ノートブックを作成および開発する方法について学習します。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 04/15/2020
+ms.subservice: spark
+ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: tracking-python
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427139"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045690"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
 
-Azure Synapse Studio (プレビュー) ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
+Synapse Studio (プレビュー) ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
 
 Azure Synapse Studio ノートブックでは、次のことができます。
 
@@ -55,12 +56,12 @@ Azure Synapse Studio ノートブックでは、次のことができます。
 
 ### <a name="set-a-primary-language"></a>第一言語を設定する
 
-Azure Synapse Studio ノートブックでは、次の 4 つの spark 言語がサポートされます。
+Azure Synapse Studio ノートブックでは、次の 4 つの Apache Spark 言語がサポートされます。
 
-* pyspark (python)
-* spark (Scala)
-* sparkSQL
-* Spark.NET (C#)
+* PySpark (Python)
+* Spark (Scala)
+* SparkSQL
+* .NET for Apache Spark (C#)
 
 上部のコマンド バーにあるドロップダウン リストから、新しく追加されたセルの第一言語を設定できます。
 
@@ -75,9 +76,9 @@ Azure Synapse Studio ノートブックでは、次の 4 つの spark 言語が�
 |%%pyspark| Python | Spark コンテキストに対して、**Python** クエリを実行します。  |
 |%%spark| Scala | Spark コンテキストに対して、**Scala** クエリを実行します。  |  
 |%%sql| SparkSQL | Spark コンテキストに対して、**SparkSQL** クエリを実行します。  |
-|%%csharp | Spark.NET C# | Spark コンテキストに対して、**Spark.NET C#** クエリを実行します。 |
+|%%csharp | .NET for Spark C# | Spark コンテキストに対して、 **.NET for Spark C#** クエリを実行します。 |
 
-次の図は、**Spark(Scala)** ノートブックで、 **%%pyspark** マジック コマンドを使用する PySpark クエリ、または **%%sql** マジック コマンドでの SparkSQL クエリの記述方法の例です。 ノートブックの第一言語が Scala に設定されていることに注目してください。
+次の図は、**Spark(Scala)** ノートブックで、 **%%pyspark** マジック コマンドを使用する PySpark クエリ、または **%%sql** マジック コマンドでの SparkSQL クエリの記述方法の例です。 ノートブックの第一言語が PySpark に設定されていることに注目してください。
 
    ![synapse-spark-magics](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
@@ -109,7 +110,7 @@ Synapse Studio ノートブックでは、異なる言語間でデータや変�
 
 ### <a name="ide-style-intellisense"></a>IDE スタイルの IntelliSense
 
-Azure Synapse Studio ノートブックは、IDE スタイルの IntelliSense をセル エディターに取り込むために、Monaco エディターと統合されています。 構文の強調表示、エラー マーカー、および自動コード補完は、コードを記述して問題をより迅速に特定するのに役立ちます。
+Azure Synapse Studio ノートブックは、IDE スタイルの IntelliSense をセル エディターに取り込むために、Monaco エディターと統合されています。 構文の強調表示、エラー マーカー、および自動コード補完は、コードを記述したり、問題をより迅速に特定したりするために役立ちます。
 
 IntelliSense の機能は、言語によって異なる成熟度レベルにあります。 次の表を使用して、サポートされているものを確認してください。
 
@@ -118,7 +119,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 |PySpark (Python)|はい|はい|はい|はい|はい|はい|はい|はい|
 |Spark (Scala)|はい|はい|はい|はい|-|-|-|はい|
 |SparkSQL|はい|はい|-|-|-|-|-|-|
-|Spark.NET (C#)|はい|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|はい|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>ツールバー ボタンを使用してテキスト セルを書式設定する
 
@@ -343,7 +344,7 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することはできません。 `Enter` キーを押すか、マウスを使用してセルのエディター領域をクリックし、編集モードに入ります。
+2. 編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することができます。 `Enter` キーを押すか、マウスを使用してセルのエディター領域をクリックし、編集モードに入ります。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
@@ -390,5 +391,8 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [.NET for Apache Spark ドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [クイック スタート: Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成する](../quickstart-apache-spark-notebook.md)
+- [Azure Synapse Analytics の Apache Spark とは](apache-spark-overview.md)
+- [Azure Synapse Analytics で .NET for Apache Spark を使用する](spark-dotnet.md)
+- [.NET for Apache Spark のドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

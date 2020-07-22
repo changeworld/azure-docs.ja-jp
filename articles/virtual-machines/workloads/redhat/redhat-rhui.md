@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684444"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85250351"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -28,7 +28,7 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
 > [!IMPORTANT]
-> RHUI は、従量課金制* (PAYG*) イメージ*のみを対象としています。 カスタム イメージおよびゴールド イメージ (別名 Bring-Your-Own-Subscription (BYOS)) の場合、更新プログラムを受信するには、システムを RHSM またはサテライトに接続する必要があります。 詳細については、[Red Hat の記事](https://access.redhat.com/solutions/253273) を参照してください。
+> RHUI は、従量課金制 (PAYG) イメージ のみを対象としています。 カスタム イメージおよびゴールド イメージ (別名 Bring-Your-Own-Subscription (BYOS)) の場合、更新プログラムを受信するには、システムを RHSM またはサテライトに接続する必要があります。 詳細については、[Red Hat の記事](https://access.redhat.com/solutions/253273) を参照してください。
 
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
@@ -83,7 +83,7 @@ Extended Update Support (EUS) リポジトリは、VM をプロビジョニン�
 >[!NOTE]
 > EUS は、RHEL Extras ではサポートされていません。 つまり、通常 RHEL Extras チャネルから利用できるパッケージをインストールする場合、EUS を使用している間はそれを実行できないことになります。 Red Hat Extras の製品ライフサイクルの詳細については、[こちら](https://access.redhat.com/support/policy/updates/extras/)をご覧ください。
 
-本書の執筆時点では、RHEL <= 7.4 の EUS サポートは終了しています。 詳細については、[Red Hat ドキュメント](https://access.redhat.com/support/policy/updates/errata/)の「Red Hat Enterprise Linux の長期サポート アドオン」セクションを参照してください。
+本書の執筆時点では、RHEL <= 7.4 の EUS サポートは終了しています。 詳細については、[Red Hat ドキュメント](https://access.redhat.com/support/policy/updates/errata/#Long_Support)の「Red Hat Enterprise Linux の延長メンテナンス」セクションを参照してください。
 * RHEL 7.4 EUS サポートは、2019 年 8 月 31 日に終了します
 * RHEL 7.5 EUS サポートは、2020 年 4 月 30 日に終了します
 * RHEL 7.6 EUS サポートは、2020 年 10 月 31 日に終了します
@@ -164,6 +164,11 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 51.5.243.77
 51.4.228.145
 ```
+>[!NOTE]
+>新しい Azure US Government のイメージでは、2020 年 1 月現在、上記の「Azure Global」ヘッダーの下に記載されているパブリック IP を使用します。
+
+>[!NOTE]
+>また、Azure Germany はパブリックなドイツ リージョンを優先した結果廃止されたことにも注意してください。 Azure Germany のお客様向けの推奨事項は、[こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)の手順を使用してパブリック RHUI をポイントすることです。
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI インフラストラクチャ
 

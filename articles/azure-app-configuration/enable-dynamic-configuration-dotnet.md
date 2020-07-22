@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7780bdbc92868f62e8d066d171b2a04fe06a981d
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.openlocfilehash: 7b6081e6bad1382ca2b3a8349036234c0c01cb13
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80245805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856511"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>チュートリアル:.NET Framework アプリで動的な構成を使用する
 
@@ -119,11 +119,15 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell を使用する場合は、次のコマンドを実行します。
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. 変更を有効にするために、Visual Studio を再起動します。 
 

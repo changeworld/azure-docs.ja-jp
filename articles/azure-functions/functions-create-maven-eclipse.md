@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756488"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054731"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -39,12 +39,8 @@ Azure Functions を実行およびデバッグするためのローカル環境�
 
 1. Eclipse で、 **[File]\(ファイル\)** メニューを選択し、 **[New]\(新規作成\) &gt; [Maven Project]\(Maven プロジェクト\)** を選択します。 
 1. **[New Maven Project]\(新しい Maven プロジェクト\)** ダイアログを既定値のままにして **[Next]\(次へ\)** を選択します。
-1. **[Add Archetype]\(Archetype の追加\)** を選択し、[azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) のエントリを追加します。
-    - [Archetype Group ID]\(Archetype グループ ID\): com.microsoft.azure
-    - [Archetype Artifact ID]\(Archetype アーティファクト ID\): azure-functions-archetype
-    - バージョン:[中央のリポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)で最新バージョンを調べて、そのバージョンを使用します  
-1. **[OK]** をクリックし、 **[次へ]** をクリックします。  `resourceGroup`、`appName`、`appRegion` を含むすべてのフィールドに値を入力し (**fabrikam-function-20170920120101928** とは異なる appName を使用してください)、最後に **[完了]** をクリックします。
+1. [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) を探して選択し、 **[次へ]** をクリックします。
+1. `resourceGroup`、`appName`、`appRegion` を含むすべてのフィールドに値を入力し (**fabrikam-function-20170920120101928** とは異なる appName を使用してください)、最後に **[完了]** をクリックします。
     ![Eclipse Maven の作成 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven は、_artifactId_ という名前の新しいフォルダーに、プロジェクト ファイルを作成します。 プロジェクトで生成されるコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。

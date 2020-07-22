@@ -4,12 +4,12 @@ description: Azure VM でバックアップおよび Recovery Services を使用
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 439ffeed7f0e37f04eda39380ddcabe1fa4e06c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171730"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653266"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure の仮想マシンにファイルを復元する
 
@@ -117,6 +117,9 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
 ## <a name="restore-file-to-your-vm"></a>VM にファイルを復元する
 
 VM に回復スクリプトをコピーしたら、復旧ポイントを接続してファイルを復元できます。
+
+>[!NOTE]
+> 続行する前に、VM でスクリプトを実行できるかどうかを確認するために、[こちら](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script)をチェックしてください。
 
 1. SSH で VM に接続します。 *publicIpAddress* は、次のように、使用している VM のパブリック IP アドレスに置き換えます。
 

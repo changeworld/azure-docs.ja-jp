@@ -23,6 +23,8 @@
           href: b2b-tutorial-require-mfa.md
     - name: サンプル
       items:
+        - name: セルフサービス サインアップのサンプル
+          href: code-samples-self-service-sign-up.md
         - name: コードと Azure PowerShell のサンプル
           href: code-samples.md
     - name: 概念
@@ -52,6 +54,8 @@
           href: identity-providers.md
         - name: セルフサービス サインアップのユーザー フロー (プレビュー)
           href: self-service-sign-up-overview.md
+        - name: セルフサービス サインアップの API コネクタ (プレビュー)
+          href: api-connectors-overview.md
         - name: Azure AD エンタイトルメント管理
           href: self-service-portal.md
         - name: 現在の制限
@@ -95,6 +99,10 @@
               href: user-flow-add-custom-attributes.md
             - name: ユーザー フローの言語をカスタマイズする
               href: user-flow-customize-language.md
+            - name: API コネクタを追加する
+              href: self-service-sign-up-add-api-connector.md
+            - name: カスタム承認システムを追加する
+              href: self-service-sign-up-add-approvals.md
         - name: ゲスト アカウントの管理
           items:
             - name: B2B ユーザーをロールに追加する
@@ -125,8 +133,8 @@
       items:
         - name: よく寄せられる質問
           href: faq.md
-        - name: B2B のサポートの利用
-          href: get-support.md
+        - name: サポートの利用
+          href: 'https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto'
         - name: Azure フィードバック フォーラム
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure のロードマップ

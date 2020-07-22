@@ -1,22 +1,14 @@
 ---
 title: ハイブリッド接続の診断ログ
 description: この記事では、Azure Relay で使用可能なすべてのアクティビティ ログと診断ログの概要について説明します。
-services: service-bus-messaging
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 04/27/2020
-ms.author: spelluru
-ms.openlocfilehash: b7ac5f1da70352115bf05df1a61120f46a85ec5d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314903"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay ハイブリッド接続の診断ログを有効にする
 Azure Relay ハイブリッド接続の使用を開始するときは、リスナーとセンダーが開かれて閉じられる方法とタイミング、およびハイブリッド接続が作成され、メッセージが送信される方法を監視することが必要な場合があります。 この記事では、Azure Relay サービスで提供されるアクティビティ ログと診断ログの概要について説明します。 
@@ -60,7 +52,7 @@ Azure Relay 名前空間のアクティビティ ログを表示するには、A
 ## <a name="schema-for-hybrid-connections-events"></a>ハイブリッド接続イベントのスキーマ
 ハイブリッド接続イベント ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-| 名前 | 説明 |
+| 名前 | [説明] |
 | ------- | ------- |
 | ResourceId | Azure Resource Manager リソース ID |
 | ActivityId | 指定された操作を識別するために使用される内部 ID。 "TrackingId" と呼ばれることもあります |

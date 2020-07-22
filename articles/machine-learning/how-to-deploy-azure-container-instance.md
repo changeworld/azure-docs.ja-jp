@@ -5,17 +5,17 @@ description: Azure Container Instances を使用して Web サービスとして
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/27/2019
-ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 06/12/2020
+ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475462"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087267"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,6 +48,10 @@ ACI の利用可能なクォータとリージョンについては、[Azure Con
 ## <a name="deploy-to-aci"></a>ACI にデプロイする
 
 Azure Container Instances にモデルをデプロイするには、必要なコンピューティング リソースが記述されている __デプロイ構成__ を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+
+> [!NOTE]
+> * ACI が適しているのは、サイズが 1 GB 未満の小さいモデルのみです。 
+> * より大きいモデルの開発テストには、単一ノードの AKS を使用することをお勧めします。
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 

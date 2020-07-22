@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75430722"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250534"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
 
@@ -34,7 +34,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 このガイドでは、API Management インスタンスの管理者が新しいグループを追加して成果物および開発者に関連付ける方法について説明します。
 
-発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) エンティティを使用してグループを作成および管理することができます。
+発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) エンティティを使用してグループを作成および管理することができます。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -98,7 +98,7 @@ API Management には、次に示すシステム グループが用意されて�
 ## <a name="next-steps"></a><a name="next-steps"> </a>次のステップ
 
 * 開発者をグループに関連付けると、開発者は、グループに関連付けられた成果物を表示してサブスクライブすることができます。 詳細については、「 [Azure API Management で成果物を作成して発行する方法][How create and publish a product in Azure API Management]」をご覧ください。
-* 発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) エンティティを使用してグループを作成および管理することができます。
+* 発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) エンティティを使用してグループを作成および管理することができます。
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a7b2e2b14c6358d0dd9a6f8934e88c0fa89c8bd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585404"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833810"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -51,7 +51,7 @@ Stream Analytics からの Azure Data Lake Storage 出力は現在、Azure China
 
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、SQL Database の既存のテーブルに書き込みます。 テーブル スキーマは、ご自分のジョブの出力内のフィールドとその型に正確に一致する必要があります。 また、SQL Database 出力オプションを使用して、[Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます。 書き込みのスループットを向上させる方法については、[Azure SQL Database を出力として使用する Stream Analytics](stream-analytics-sql-output-perf.md) に関する記事を参照してください。
 
-[Azure SQL Database マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)を出力として使用することもできます。 [Azure SQL Database Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
+[Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) を出力として使用することもできます。 [SQL Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
 
 次の表に、SQL Database の出力を作成するためのプロパティの名前とその説明を示します。
 
@@ -59,7 +59,7 @@ Stream Analytics からの Azure Data Lake Storage 出力は現在、Azure China
 | --- | --- |
 | 出力エイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
 | データベース | ご自分の出力を送信するデータベースの名前です。 |
-| サーバー名 | SQL Database サーバー名です。 Azure SQL Database Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります |
+| サーバー名 | 論理 SQL サーバーの名前またはマネージド インスタンスの名前。 SQL Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります |
 | ユーザー名 | データベースに書き込むためのアクセス権が割り当てられているユーザー名です。 Stream Analytics では、SQL 認証のみがサポートされます。 |
 | Password | データベースに接続するためのパスワード。 |
 | テーブル | 出力の書き込み先のテーブル名です。 テーブル名は、大文字と小文字が区別されます。 このテーブルのスキーマは、ご自分のジョブの出力によって生成されるフィールドの数とその型に正確に一致する必要があります。 |
@@ -80,7 +80,7 @@ Azure Stream Analytics ジョブで、Azure Synapse Analytics 内の SQL プー�
 
 Stream Analytics ジョブに SQL プール テーブルを出力として追加する前に、それが存在している必要があります。 テーブルのスキーマを、使用するジョブの出力内のフィールドとその型と一致させる必要があります。 
 
-Azure Synapse を出力として使用するには、ストレージ アカウントが構成されていることを確認する必要があります。 [ストレージ アカウントの設定] に移動し、ストレージ アカウントを構成します。 テーブルをサポートする次のストレージ アカウントの種類のみを使用できます: 汎用 V2 と汎用 V1。   
+Azure Synapse を出力として使用するには、ストレージ アカウントが構成されていることを確認する必要があります。 [ストレージ アカウントの設定] に移動し、ストレージ アカウントを構成します。 テーブルをサポートする次のストレージ アカウントの種類のみを使用できます: 汎用 V2 と汎用 V1。 Standard レベルのみ選択してください。 Premium レベルはサポートされていません。   
 
 次の表に、Azure Synapse Analytics 出力を作成するためのプロパティの名前とその説明を示します。
 
@@ -107,12 +107,12 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 | ストレージ アカウント     | ご自分の出力を送信するストレージ アカウントの名前です。               |
 | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。                              |
 | ストレージ コンテナー   | Azure Blob service に格納される BLOB の論理グループです。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
-| パスのパターン | 省略可能。 指定したコンテナー内のご自分の BLOB を書き込むために使用されるファイル パス パターンです。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />カスタム BLOB パーティション分割を使用して、イベント データの 1 つのカスタム {field} 名を指定することで、BLOB をパーティション分割できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>フィールド名は大文字小文字が区別されません。 たとえば、このサービスでは列 "ID" と列 "id" を区別できません。</li><li>入れ子になったフィールドは使用できません。 代わりに、ジョブ クエリ内で別名を使用して、フィールドを "フラット化" します。</li><li>式はフィールド名として使用できません。</li></ul> <br />この機能により、パスでカスタム日付/時刻書式指定子の構成を使用できるようになります。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 \<specifier> の使用可能な入力は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタムの日付/時刻の構成を形成するために、パス内で複数回使用できます。 <br /><br />例 : <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3: cluster1/{client_id}/{date}/{time}</li><li>例 4: cluster1/{datetime:ss}/{myField}。この場合、クエリは次のようになります。SELECT data.myField AS myField FROM Input;</li><li>例 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />作成されたフォルダー構造のタイム スタンプは、ローカル時間ではなく、UTC に従います。<br /><br />ファイルの名前付けでは、次の規則を使用します。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />この機能の詳細については、「[Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
+| パスのパターン | 省略可能。 指定したコンテナー内のご自分の BLOB を書き込むために使用されるファイル パス パターンです。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />カスタム BLOB パーティション分割を使用して、イベント データの 1 つのカスタム {field} 名を指定することで、BLOB をパーティション分割できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>フィールド名は大文字小文字が区別されません。 たとえば、このサービスでは列 "ID" と列 "id" を区別できません。</li><li>入れ子になったフィールドは使用できません。 代わりに、ジョブ クエリ内で別名を使用して、フィールドを "フラット化" します。</li><li>式はフィールド名として使用できません。</li></ul> <br />この機能により、パスでカスタム日付/時刻書式指定子の構成を使用できるようになります。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 \<specifier> の使用可能な入力は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 カスタムの日付/時刻の構成を形成するために、パス内で {datetime:\<specifier>} キーワードを複数回使用できます。 <br /><br />例 : <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3: cluster1/{client_id}/{date}/{time}</li><li>例 4: cluster1/{datetime:ss}/{myField}。この場合、クエリは次のようになります。SELECT data.myField AS myField FROM Input;</li><li>例 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />作成されたフォルダー構造のタイム スタンプは、ローカル時間ではなく、UTC に従います。<br /><br />ファイルの名前付けでは、次の規則を使用します。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />この機能の詳細については、「[Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
 | 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例:YYYY/MM/DD |
 | 時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。 JSON、CSV、Avro、Parquet がサポートされています。 |
-|最小行数 (Parquet のみ)|バッチあたりの最小行数。 Parquet では、バッチごとに新しいファイルが作成されます。 現在の既定値は 2,000 行であり、最大許容値は 10,000 行です。|
-|最大時間 (Parquet のみ)|バッチあたりの最大待機時間。 この時間が経過すると、最小行数の要件が満たされていなくても、バッチは出力に書き込まれます。 現在の既定値は 1 分であり、最大許容値は 2 時間です。 BLOB 出力にパス パターンの頻度がある場合は、待機時間をパーティションの時間の範囲より長くすることはできません。|
+|最小行数 |バッチあたりの最小行数。 Parquet では、バッチごとに新しいファイルが作成されます。 現在の既定値は 2,000 行であり、最大許容値は 10,000 行です。|
+|最大時間 |バッチあたりの最大待機時間。 この時間が経過すると、最小行数の要件が満たされていなくても、バッチは出力に書き込まれます。 現在の既定値は 1 分であり、最大許容値は 2 時間です。 BLOB 出力にパス パターンの頻度がある場合は、待機時間をパーティションの時間の範囲より長くすることはできません。|
 | エンコード    | CSV または JSON 形式を使用する場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。 |
 | 区切り記号   | CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV データをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 | Format      | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[改行区切り]** を選択した場合、JSON は一度に 1 オブジェクトずつ読み取られます。 コンテンツ全体は、それ自体では有効な JSON になりません。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。 |

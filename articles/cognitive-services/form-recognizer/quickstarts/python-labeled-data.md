@@ -7,14 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: tracking-python
+ms.openlocfilehash: b177063d4e50a310534ffa4c04557543c3354249
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594170"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028089"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする
 
@@ -28,21 +29,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
 - 同じ種類の少なくとも 6 つのフォームのセット。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
 
+> [!NOTE]
+> このクイックスタートでは、URL によってアクセスされるリモート ドキュメントを使用します。 代わりにローカル ファイルを使用するには、[リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)を参照してください。
+
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="set-up-training-data"></a>トレーニング データを設定する
 
-次に、必要な入力データを設定する必要があります。 ラベル付けデータ機能には、カスタム モデルのトレーニングに必要な入力要件を超える特殊な入力要件があります。 
+次に、必要な入力データを設定する必要があります。 ラベル付けデータ機能には、ラベルなしでのカスタム モデルのトレーニングに必要な入力要件を超える特殊な入力要件があります。
 
 すべてのトレーニング ドキュメントが同じ形式であることを確認します。 複数の形式のフォームがある場合は、共通する形式に基づいてサブフォルダーに分類します。 トレーニング時には、API に対してサブフォルダーを指定する必要があります。
 
 ラベル付けされたデータを使用してモデルをトレーニングするためには、入力として、サブフォルダーに次のファイルが必要となります。 ここでは、以下のファイルの作成方法について説明しています。
 
 * **ソース フォーム** - データの抽出元となるフォーム。 サポートされる種類は、JPEG、PNG、PDF、TIFF です。
-* **OCR レイアウト ファイル** - 各ソース フォームに含まれるすべての読み取り可能テキストのサイズと位置を表す JSON ファイル。 このデータは、Form Recognizer Layout API を使用して生成します。 
-* **ラベル ファイル** - ユーザーが手動で入力したデータ ラベルを表す JSON ファイル。
+* **OCR レイアウト ファイル** - これらは、各ソース フォームに含まれるすべての読み取り可能テキストのサイズと位置を表す JSON ファイルです。 このデータは、Form Recognizer Layout API を使用して生成します。 
+* **ラベル ファイル** - これらは、ユーザーが手動で入力したデータ ラベルを表す JSON ファイルです。
 
 これらのファイルはすべて同じサブフォルダーに、次の形式で格納されている必要があります。
 
@@ -61,8 +65,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ラベルによるトレーニング用として入力ファイルがこのサービスによって認識されるためには、対応する OCR 結果ファイルが必要です。 特定のソース フォームの OCR 結果を取得するには、次の手順に従います。
 
-1. 要求本文に入力ファイルを含めて、読み取りのレイアウト コンテナーに対して **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API を呼び出します。 応答の **Operation-Location** ヘッダーにある ID を保存してください。
-1. 前の手順で得た操作 ID を使用して、 **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API を呼び出します。
+1. 要求本文に入力ファイルを含めて、読み取りのレイアウト コンテナーに対して **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** API を呼び出します。 応答の **Operation-Location** ヘッダーにある ID を保存してください。
+1. 前の手順で得た操作 ID を使用して、 **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API を呼び出します。
 1. 応答を取得し、その内容をファイルに書き込みます。 それぞれのソース フォームに対応する OCR ファイルでは、元のファイル名に `.ocr.json` が追加されています。 OCR の JSON は、次の形式で出力されている必要があります。 完全な例については、[サンプル OCR ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json)を参照してください。 
 
     ```json
@@ -116,7 +120,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-the-label-files"></a>ラベル ファイルを作成する
 
-ラベル ファイルには、ユーザーが手動で入力したキーと値の関連付けが含まれています。 ラベル付けされたデータのトレーニングにはラベル ファイルが必要ですが、すべてのソース ファイルに、対応するラベル ファイルが存在する必要はありません。 ラベルのないソース ファイルは通常のトレーニング ドキュメントとして扱われます。 信頼できるトレーニングには、ラベル付けされたファイルを 5 つ以上お勧めします。
+ラベル ファイルには、ユーザーが手動で入力したキーと値の関連付けが含まれています。 ラベル付けされたデータのトレーニングにはラベル ファイルが必要ですが、すべてのソース ファイルに、対応するラベル ファイルが存在する必要はありません。 ラベルのないソース ファイルは通常のトレーニング ドキュメントとして扱われます。 信頼できるトレーニングには、ラベル付けされたファイルを 5 つ以上お勧めします。 [サンプル ラベル付けツール](./label-tool.md)などの UI ツールを使用して、これらのファイルを生成できます。
 
 ラベル ファイルを作成するとき、必要に応じて領域 (ドキュメントにおける値の正確な位置) を指定できます。 そうすることで、トレーニングの精度がいっそう向上します。 領域は、左上、右上、右下、左下という 4 つの XY 座標に対応する 8 つの値のセットとして書式設定されます。 座標は、ページのサイズに合わせてスケーリングされた 0 から 1 の範囲の値を取ります。
 
@@ -187,13 +191,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
                 ...
 ```
 
-> [!NOTE]
-> 各テキスト要素には 1 つのラベルのみを適用できます。各ラベルは 1 ページにつき 1 回のみ適用できます。 現在、1 つのラベルを複数のページにわたって適用することはできません。
+> [!IMPORTANT]
+> 各テキスト要素には 1 つのラベルのみを適用できます。各ラベルは 1 ページにつき 1 回のみ適用できます。 1 つのラベルを複数のページにわたって適用することはできません。
 
 
 ## <a name="train-a-model-using-labeled-data"></a>ラベル付けされたデータを使用してモデルをトレーニングする
 
-ラベル付けされたデータを使用してモデルをトレーニングするには、以下の Python コードを実行して、 **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API を呼び出します。 コードを実行する前に、次の変更を行います。
+ラベル付けされたデータを使用してモデルをトレーニングするには、以下の Python コードを実行して、 **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API を呼び出します。 コードを実行する前に、次の変更を行います。
 
 1. `<Endpoint>` を、Form Recognizer リソースのエンドポイントの URL に置き換えます。
 1. `<SAS URL>` を Azure Blob ストレージ コンテナーの共有アクセス署名 (SAS) URL に置き換えます。 SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[共有アクセス署名の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
@@ -207,7 +211,7 @@ from requests import get, post
 
 # Endpoint URL
 endpoint = r"<Endpoint>"
-post_url = endpoint + r"/formrecognizer/v2.0-preview/custom/models"
+post_url = endpoint + r"/formrecognizer/v2.0/custom/models"
 source = r"<SAS URL>"
 prefix = "<Blob folder name>"
 includeSubFolders = False
@@ -554,4 +558,7 @@ Microsoft は、お客様にとってこれが不可欠なシナリオである�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Form Recognizer REST API と Python を使用し、手動でラベル付けされたデータを使ってモデルをトレーニングする方法について説明しました。 引き続き [API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)を参照して、Form Recognizer API についての理解を深めましょう。
+このクイックスタートでは、Form Recognizer REST API と Python を使用し、手動でラベル付けされたデータを使ってモデルをトレーニングする方法について説明しました。 引き続き API リファレンス ドキュメントを参照して、Form Recognizer API についての理解を深めましょう。
+
+> [!div class="nextstepaction"]
+> [REST API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

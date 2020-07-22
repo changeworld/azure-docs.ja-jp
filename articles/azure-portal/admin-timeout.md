@@ -6,15 +6,15 @@ keywords: 設定、タイムアウト
 author: mgblythe
 ms.author: mblythe
 ms.date: 02/10/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2efee29ba709607e1e7935215ca7689a39966de1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764164"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>ディレクトリ レベルの非アクティブ タイムアウトの設定
 

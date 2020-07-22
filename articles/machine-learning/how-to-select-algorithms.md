@@ -5,17 +5,17 @@ description: クラスタリング、分類、または回帰の実験で教師�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 03/05/2020
-ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/07/2020
+ms.openlocfilehash: 582d6077a4b84e5b2d8c0d69da7b00b807a355b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433148"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning のアルゴリズムの選択方法
 
@@ -40,7 +40,35 @@ Machine Learning デザイナーは、[多クラス デシジョン フォレス
 
 ソリューションの機械学習アルゴリズムを選択する際には、Azure Machine Learning アルゴリズム チート シートのガイダンスと合わせて、他の要件にも留意してください。 精度、トレーニング時間、線形性、パラメーターの数、特徴の数など、考慮する必要がある追加の要素を次に示します。
 
-## <a name="additional-requirements-for-a-data-science-scenario"></a>データ サイエンス シナリオの追加要件
+## <a name="comparison-of-machine-learning-algorithms"></a>機械学習アルゴリズムの比較
+
+一部の学習アルゴリズムは、データの構造や目的の結果について特定の想定をします。 ニーズに合うものが見つかれば、より役に立つ結果や正確な予測が得られたり、トレーニングが短時間で済みます。
+
+次の表に、分類、回帰、クラスタリングの各ファミリから、アルゴリズムの最も重要な特性をまとめています。
+
+| **アルゴリズム** | **精度** | **トレーニング時間** | **線形性** | **パラメーター** | **メモ** |
+| --- |:---:|:---:|:---:|:---:| --- |
+| **分類ファミリ** | | | | | |
+| [2 クラス ロジスティック回帰](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |[良い]  |速い |はい |4 | |
+| [2 クラス デシジョン フォレスト](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |[非常に良い] |中 |いいえ |5 |スコア付け時間が遅いことを示します。 スコア付け時間が遅くなるのは、蓄積されたツリー予測でスレッドがロックされることに起因するため、One-vs-All Multiclass を使用しないことをお勧めします。 |
+| [2 クラスの増幅デシジョン ツリー](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |[非常に良い] |中 |いいえ |6 |メモリ フットプリントが大きい |
+| [2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |[良い] |中 |いいえ |8 | |
+| [2 クラス平均化パーセプトロン](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |[良い] |中 |はい |4 | |
+| [2 クラス サポート ベクター マシン](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |[良い] |速い |はい |5 |大きい特徴セットに好適 |
+| [多クラスのロジスティック回帰](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |[良い] |速い |はい |4 | |
+| [多クラス デシジョン フォレスト](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |[非常に良い] |中 |いいえ |5 |スコア付け時間が遅いことを示します |
+| [多クラスの増幅デシジョン ツリー](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |[非常に良い] |中 |いいえ |6 | 適用範囲が狭いという小さなリスクがありますが、精度を上げる傾向があります |
+| [多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |[良い] |中 |いいえ |8 | |
+| [One-vs-All Multiclass](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |選択した 2 クラス法のプロパティを参照してください |
+| **回帰ファミリ** | | | | | |
+| [線形回帰](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |[良い] |速い |はい |4 | |
+| [デシジョン フォレスト回帰](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|[非常に良い] |中 |いいえ |5 | |
+| [増幅デシジョン ツリーの回帰](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |[非常に良い] |中 |いいえ |6 |メモリ フットプリントが大きい |
+| [ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |[良い] |中 |いいえ |8 | |
+| **クラスタリング ファミリ** | | | | | |
+| [K-Means クラスタリング](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |[非常に良い] |中 |はい |8 |クラスタリング アルゴリズム |
+
+## <a name="requirements-for-a-data-science-scenario"></a>データ サイエンス シナリオの要件
 
 データを使って何をやりたいかがわかったら、ソリューションの追加要件を決定する必要があります。 
 
@@ -118,9 +146,8 @@ Machine Learning デザイナーでは、機械学習モデルの作成と使用
 
 [順列の特徴量の重要度モジュール](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri)を使用して、データ セットの一連の特徴量の重要度スコアを計算することもできます。 これらのスコアを利用すると、モデルで使用する最適な特徴を決定するのに役立ちます。
 
-
 ## <a name="next-steps"></a>次のステップ
 
- - [Azure Machine Learning デザイナーの詳細](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - [Azure Machine Learning デザイナーの詳細](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
  - Azure Machine Learning デザイナーで使用可能なすべての機械学習アルゴリズムの詳細については、「[Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri)」を参照してください
- - ディープ ラーニング、機械学習、AI の関係を調べるには、「[ディープ ラーニングと機械学習](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)」を参照してください
+ - ディープ ラーニング、機械学習、AI の関係を調べるには、「[ディープ ラーニングと機械学習](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)」を参照してください

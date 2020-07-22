@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856732"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -73,7 +73,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 ### <a name="no-additional-training-data-required"></a>追加のトレーニング データが不要
 
-完全にトレーニングされたモデルを提供するサービスは、"_ブラックボックス_" として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
+完全にトレーニングされたモデルを提供するサービスは、"_不透明のボックス_" として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
 
 ### <a name="some-or-all-training-data-required"></a>トレーニング データが一部または全部必要
 
@@ -139,7 +139,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure portal](cognitive-services-apis-create-account.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) で Cognitive Services のアカウントを作成する。
-* Cognitive Services の[認証](authentication.md)方法を確認する。
+* コグニティブ サービスの[認証](authentication.md)方法を確認する。
 * 問題の特定とデバッグに[診断ログ](diagnostic-logging.md)を使用する。 
 * Docker [コンテナー](cognitive-services-container-support.md)に Cognitive Services をデプロイする。
 * [サービスの更新情報](https://azure.microsoft.com/updates/?product=cognitive-services)で最新情報を入手する。

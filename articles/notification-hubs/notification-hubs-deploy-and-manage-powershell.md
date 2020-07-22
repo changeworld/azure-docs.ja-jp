@@ -50,7 +50,7 @@ Azure Notification Hubs の管理はまだ Azure PowerShell の PowerShell コ�
 
 1. 呼び出されたパスを決定します。
 2. `packages` という名前のフォルダーが見つかるまでパスを走査します。 このフォルダーは Visual Studio プロジェクトで NuGet パッケージをインストールする際に作成されます。
-3. `packages` という名前のアセンブリの `Microsoft.Azure.NotificationHubs.dll` フォルダーを反復的に検索します。
+3. `Microsoft.Azure.NotificationHubs.dll` という名前のアセンブリの `packages` フォルダーを反復的に検索します。
 4. アセンブリを参照するので、タイプは後で利用できるようになります。
 
 次は、こうした手順を PowerShell スクリプトで実装する方法を示しています。
@@ -94,10 +94,10 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 スクリプトのこの部分では 4 つのローカル変数を設定します。
 
-1. `$Namespace`: 通知ハブを作成する名前空間の名前に設定します。
-2. `$Path`: このパスは新しい通知ハブの名前に設定します。  たとえば、「Myhub」のように設定します。
-3. `$WnsPackageSid`: [Windows デベロッパー センター](https://developer.microsoft.com/en-us/windows)からの Windows アプリケーションのパッケージ SID に設定します。
-4. `$WnsSecretkey`: [Windows デベロッパー センター](https://developer.microsoft.com/en-us/windows)からの Windows アプリケーションの秘密キーに設定します。
+1. `$Namespace`:通知ハブを作成する名前空間の名前に設定します。
+2. `$Path`:このパスは新しい通知ハブの名前に設定します。  たとえば、「Myhub」のように設定します。
+3. `$WnsPackageSid`:[Windows デベロッパー センター](https://developer.microsoft.com/en-us/windows)からの Windows アプリケーションのパッケージ SID に設定します。
+4. `$WnsSecretkey`:[Windows デベロッパー センター](https://developer.microsoft.com/en-us/windows)からの Windows アプリケーションの秘密キーに設定します。
 
 これらの変数は、名前空間に接続し、Windows アプリの Windows 通知サービス (WNS) 資格情報を使用して WNS 通知を処理するように構成された新しい通知ハブを作成するために使用します。 パッケージ SID と秘密キーを取得する方法については、「 [Notification Hubs の使用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) 」を参照してください。
 

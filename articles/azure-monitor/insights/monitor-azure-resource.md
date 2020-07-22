@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361957"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -90,7 +90,7 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
  ほとんどの Azure リソースの監視データには、Azure portal のリソースのメニューからアクセスできます。 これにより、標準の Azure Monitor ツールを使用して、1 つのリソースのデータにアクセスできるようになります。 一部の Azure サービスでは異なるオプションが提供されるため、そのサービスのドキュメントで追加情報を参照する必要があります。 すべての監視対象リソースのデータを分析するには、 **[Azure Monitor]** メニューを使用します。 
 
 ### <a name="overview"></a>概要
-多くのサービスでは、その操作をひとめで確認できるように、 **[概要]** ページに監視データが含まれています。 通常、これは Azure Monitor メトリックに格納されているプラットフォーム メトリックのサブセットに基づいています。 他の監視オプションは、通常、サービスの **[監視]** セクションで使用できます。 メニュー。
+多くのサービスでは、その操作をひとめで確認できるように、 **[概要]** ページに監視データが含まれています。 通常、これは Azure Monitor メトリックに格納されているプラットフォーム メトリックのサブセットに基づいています。 他の監視オプションは、通常、サービスのメニューの **[監視]** セクションで使用できます。
 
 ![[概要] ページ](media/monitor-azure-resource/overview-page.png)
 

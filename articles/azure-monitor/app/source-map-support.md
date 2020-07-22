@@ -4,13 +4,13 @@ description: Application Insights を使用して、独自のストレージ ア
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: d5f01bb3034ab060227230071a21284177840e83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249739"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript アプリケーションに対するソース マップのサポート
 
@@ -31,7 +31,9 @@ Application Insights では、独自のストレージ アカウントの BLOB �
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>ソース マップを BLOB コンテナーにプッシュする
 
-構成済みの BLOB コンテナーにソース マップを自動的にアップロードするように構成することで、継続的配置パイプラインをストレージ アカウントと統合する必要があります。 ソース マップを BLOB コンテナー内のサブフォルダーにアップロードすることはできません。現在、ソース マップはルート フォルダーからのみフェッチされます。
+構成済みの BLOB コンテナーにソース マップを自動的にアップロードするように構成することで、継続的配置パイプラインをストレージ アカウントと統合する必要があります。
+
+Blob Storage コンテナーのフォルダー構造がソース マップのコンパイルおよびデプロイ時のフォルダー構造と同じであれば、ソース マップを Blob Storage コンテナーにアップロードできます。 一般的なユース ケースは、`1.2.3/static/js/main.js` のように、デプロイ フォルダーにそのバージョンでプレフィックスを付けることです。 `sourcemaps` という名前の Azure Blob コンテナーでアンミニファイ処理するとき、`sourcemaps/1.2.3/static/js/main.js.map` に置かれているソース マップの取得が試行されます。
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Azure Pipelines 経由でソース マップをアップロードする (推奨)
 

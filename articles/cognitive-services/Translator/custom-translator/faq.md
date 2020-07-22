@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 0413c15c025e554ab8465736dfdb5607149c5ed2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588685"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957598"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>カスタム翻訳ツールに関してよく寄せられる質問
 
@@ -41,7 +41,7 @@ ms.locfileid: "83588685"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>デプロイされたシステムにアクセスする方法を教えてください。
 
-デプロイされたシステムには、Microsoft Translator V3 を介して CategoryID を指定することでアクセスできます。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
+デプロイされたシステムには、Translator を介して CategoryID を指定することでアクセスできます。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)の Web ページを参照してください。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>データに文が既にアラインされている場合に、アラインと文の分割をスキップする方法を教えてください。
 

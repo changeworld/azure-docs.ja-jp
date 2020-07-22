@@ -4,12 +4,12 @@ description: コンテンツの種類には、PDF、DOC、TXT など、多くの
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 7c78f9ea261fa636cce50b69524802d0900e9d7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2569832f7f87ed7b8fccbc44e431fa45495ba67
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650199"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996110"
 ---
 # <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>ナレッジ ベースに追加できるドキュメントのコンテンツの種類
 コンテンツの種類には、PDF、DOC、TXT など、多くの標準的な構造化ドキュメントが含まれています。
@@ -49,4 +49,4 @@ QnA Maker で **URL** を使用して、次の 2 種類のドキュメントを�
 
 ## <a name="next-steps"></a>次のステップ
 
-[質問と回答 (QnA) セット](question-answer-set.md)に格納されている情報について理解します。
+[質問と回答 (QnA) ペア](question-answer-set.md)に格納されている情報について理解します。

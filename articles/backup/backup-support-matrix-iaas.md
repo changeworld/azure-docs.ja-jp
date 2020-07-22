@@ -3,12 +3,12 @@ title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 86141532e0db80f75c6e79277b36060ecb939a53
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 904240e066a83fa1278d663b8614b5b9269ba4d3
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801435"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970673"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -17,7 +17,7 @@ ms.locfileid: "82801435"
 その他のサポート マトリックス:
 
 - Azure Backup の[一般的なサポート マトリックス](backup-support-matrix.md)
-- Azure Backup Server/System Center Data Protection Manager (DPM) を使用したバックアップの[サポート マトリックス](backup-support-matrix-mabs-dpm.md)
+- Azure Backup Server / System Center Data Protection Manager (DPM) を使用したバックアップの[サポート マトリックス](backup-support-matrix-mabs-dpm.md)
 - Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップの[サポート マトリックス](backup-support-matrix-mars-agent.md)
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
@@ -48,7 +48,7 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 リソース グループのロックを有効にした後、マネージド ディスクをバックアップする | サポートされていません。<br/><br/> Azure Backup は古い復元ポイントを削除できないので、復元ポイントの上限に達するとバックアップが失敗するようになります。
 VM のバックアップ ポリシーを変更する | サポートされています。<br/><br/> VM は、新しいポリシーのスケジュールおよびリテンション期間の設定を使用してバックアップされます。 リテンション期間の設定が延長されている場合、既存の復旧ポイントがマークされ、保持されます。 短縮されている場合、既存の復旧ポイントは次のクリーンアップ ジョブで取り除かれ、最終的に削除されます。
 バックアップ ジョブを取り消す| スナップショットの処理中にサポートされます。<br/><br/> スナップショットがコンテナーに転送されているときはサポートされません。
-別のリージョンまたはサブスクリプションに VM をバックアップする |サポートされていません。
+別のリージョンまたはサブスクリプションに VM をバックアップする |サポートされていません。<br><br>正常にバックアップするには、仮想マシンがバックアップ用のコンテナーと同じサブスクリプションに含まれている必要があります。
 1 日あたりのバックアップ回数 (Azure VM 拡張機能を使用した場合) | 1 日あたり 1 回のスケジュール済みバックアップ。<br/><br/>Azure Backup サービスでは、1 日あたり最大 9 回のオンデマンド バックアップがサポートされますが、最高のパフォーマンスを得るためには、1 日ごとのオンデマンド バックアップを 4 回に抑えることをお勧めします。
 1 日あたりのバックアップ回数 (MARS エージェントを使用した場合) | 1 日あたり 3 回のスケジュール済みバックアップ。
 1 日あたりのバックアップ回数 (DPM/MABS を使用した場合) | 1 日あたり 2 回のスケジュール済みバックアップ。
@@ -63,7 +63,7 @@ Windows Azure VM をバックアップする場合にサポートされるオペ
 
 **シナリオ** | **OS のサポート**
 --- | ---
-Azure VM エージェント拡張機能を使用したバックアップ | - Windows 10 クライアント (64 ビットのみ) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)  <br/><br/> - Windows Server 2008 (64 ビットのみ)
+Azure VM エージェント拡張機能を使用したバックアップ | - Windows 10 クライアント (64 ビットのみ) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> Windows Server 2012 (Datacenter /Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)  <br/><br/> - Windows Server 2008 (64 ビットのみ)
 MARS エージェントを使用したバックアップ | [サポートされている](backup-support-matrix-mars-agent.md#supported-operating-systems)オペレーティング システム。
 DPM/MABS を使用したバックアップ | [MABS](backup-mabs-protection-matrix.md) および [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) を使用したバックアップでサポートされるオペレーティング システム。
 
@@ -153,17 +153,18 @@ Azure に移行済みの VM をバックアップする| サポートされて�
 [[診断設定]](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
 ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
 Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元されると、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
+ロックされた Azure VM のバックアップ | アンマネージド VM では、サポートされていません。 <br><br> マネージド VM ではサポートされています。
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。<BR> 16 台以上のディスク (最大 32 ディスク) を搭載した VM の限定プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com に記載されている連絡先にご連絡ください
+Azure VM のデータ ディスク数 | 最大 32 ディスクの Azure VM のバックアップのサポートは、国内クラウド (Azure Government、Azure China、Azure Germany) を除くすべてのリージョンでパブリック プレビュー段階にあります。<br><br> アンマネージド ディスクまたはクラシック VM を使用した Azure VM のバックアップは、最大 16 台のディスクしかサポートされません。
 データ ディスク サイズ | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
 暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイルまたはフォルダー レベルで復旧することはできません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
-書き込みアクセラレータが有効になっているディスク | サポートされていません。<br/><br/> Azure Backup は、バックアップ中に書き込みアクセラレータが有効になっているディスクを自動的に除外します。 これらはバックアップされないため、VM の復旧ポイントからこれらのディスクを復元することはできません。
+書き込みアクセラレータが有効になっているディスク | サポートされていません。<br/><br/> Azure Backup は、バックアップ中に書き込みアクセラレータ (WA) が有効になっているディスクを自動的に除外します。 これらはバックアップされないため、VM の復旧ポイントからこれらのディスクを復元することはできません。 <br><br> **重要な注意**: WA ディスクを使用する仮想マシンは、正常なバックアップを行うためにインターネット接続を必要とします (これらのディスクがバックアップから除外されている場合でも)。
 重複除去された VM/ディスクのバックアップと復元 | Azure Backup では、重複除去はサポートされていません。 詳細については、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support)を参照してください <br/> <br/>  - Azure Backup では、Recovery Services コンテナー内の VM 全体で重複除去されることはありません <br/> <br/>  - 復元中に重複除去状態の VM がある場合、コンテナーで形式が認識されないため、ファイルを復元することはできません。 ただし、完全な VM 復元を正常に実行できるようになります。
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。

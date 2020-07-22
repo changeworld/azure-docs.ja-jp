@@ -4,25 +4,28 @@ description: Azure Active Directory の条件付きアクセスで条件を使�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 11/21/2019
+ms.topic: conceptual
+ms.date: 05/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74380007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253190"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのサービス依存関係の概要 
 
 条件付きアクセス ポリシーを使用すると、Web サイトやサービスに対するアクセス要件を指定できます。 たとえば、アクセス要件に、Multi-Factor Authentication (MFA) または[マネージド デバイス](require-managed-devices.md)の要件を含めることができます。 
 
-サイトまたはサービスに直接アクセスすると、通常、関連するポリシーの影響を簡単に確認できます。 たとえば、SharePoint Online 用の MFA を必要とするポリシーを構成すると、SharePoint Web ポータルにサインインするたびに MFA が適用されます。 ただし、他のクラウド アプリとの依存関係があるクラウド アプリがあるため、ポリシーの影響が常に簡単に確認できるとは限りません。 たとえば、Microsoft Teams では SharePoint Online のリソースへのアクセスを提供できます。 そのため、現在のシナリオで Microsoft Teams にアクセスすると、SharePoint MFA ポリシーの対象にもなります。   
+サイトまたはサービスに直接アクセスすると、通常、関連するポリシーの影響を簡単に確認できます。 たとえば、SharePoint Online に Multi-Factor Authentication (MFA) を必要とするポリシーを構成すると、SharePoint Web ポータルにサインインするたびに MFA が適用されます。 ただし、他のクラウド アプリとの依存関係があるクラウド アプリがあるため、ポリシーの影響が常に簡単に確認できるとは限りません。 たとえば、Microsoft Teams では SharePoint Online のリソースへのアクセスを提供できます。 そのため、現在のシナリオで Microsoft Teams にアクセスすると、SharePoint MFA ポリシーの対象にもなります。 
+
+> [!TIP]
+> [Office 365 (プレビュー)](concept-conditional-access-cloud-apps.md#office-365-preview) アプリの使用は、Office スタック内のサービスの依存関係に関する問題を回避するために、すべての Office アプリが対象となります。
 
 ## <a name="policy-enforcement"></a>ポリシーの適用 
 
@@ -36,6 +39,8 @@ ms.locfileid: "74380007"
 ![MS Teams のサービス依存関係](./media/service-dependencies/01.png)
 
 ベスト プラクティスとして、可能な場合には常に、関連するアプリおよびサービスに対して共通のポリシーを設定することをお勧めします。 一貫性のあるセキュリティ体制によって、最適なユーザー エクスペリエンスが実現します。 たとえば、業務のための Exchange Online、SharePoint Online、Microsoft Teams、Skype に対して共通のポリシーを設定すると、ダウンストリーム サービスに適用されるさまざまなポリシーからのプロンプトが予期せずに生成される回数が大幅に減少します。 
+
+Office スタックでアプリケーションを使用してこれを実現する優れた方法は、個々のアプリケーションを対象にするのではなく、[Office 365 (プレビュー)](concept-conditional-access-cloud-apps.md#office-365-preview) を使用することです。
 
 次の表には、クライアント アプリが満たす必要があるその他のサービス依存関係を示します。  
 

@@ -4,16 +4,16 @@ description: Azure Import/Export サービスのソフトウェアとハード�
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da9490d5d9a876922fb9c2ba5d908db411adb1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512415"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -60,7 +60,7 @@ Azure Import/Export サービスでは、次の一覧のストレージの種類
 |ジョブ  |ストレージ サービス |サポートされています  |サポートされていません  |
 |---------|---------|---------|---------|
 |[インポート]     |  Azure BLOB ストレージ <br><br> Azure File ストレージ       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
-|[エクスポート]     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
+|エクスポート     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
 
 
 ## <a name="supported-hardware"></a>サポートされるハードウェア
@@ -72,17 +72,19 @@ Azure Import/Export サービスでは、データのコピーをサポートし
 Import/Export サービスでは、次のディスクの一覧の使用がサポートされます。
 
 
-|ディスクの種類  |Size  |サポートされています |
+|ディスクの種類  |サイズ  |サポートされています |
 |---------|---------|---------|
 |SSD    |   2.5"      |SATA III          |
 |HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
 次のディスクの種類はサポートされていません。
+
 - USB。
 - USB アダプターが組み込まれた外部 HDD。
 - 外部 HDD のケース内にあるディスク。
 
 1 つのインポート/エクスポート ジョブは、以下を使用できます。
+
 - 最大 10 台の HDD/SSD。
 - 任意のサイズの HDD/SSD の組み合わせ。
 
@@ -90,9 +92,6 @@ Import/Export サービスでは、次のディスクの一覧の使用がサポ
 
 WAImportExport ツールを使用してハード ドライブの準備とデータのコピーを行うときに、外部 USB アダプターを使用できます。 市販の USB 3.0 以降のアダプターの大半が機能します。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-* [WAImportExport ツールを設定する](storage-import-export-tool-how-to.md)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
-* [Azure Import Export REST API サンプル](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

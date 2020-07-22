@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3aeb0369ee4a04dbbe89a4d0684b2a6c97378d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77123142"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343322"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。  これらの仮想マシン サイズは、コンプライアンスや規制上の要件などの要素に関連するワークロードについて、他の顧客からの高いレベルの分離を必要とするワークロードに最適です。  お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。
 
@@ -23,11 +23,11 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
+* Standard_DS15_v2 <sup>*</sup>
+* Standard_D15_v2 <sup>*</sup>
 * Standard_F72s_v2
 
-利用可能な分離されたサイズごとの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)を参照してください。
+<sup>*</sup>分離保証は 2020 年 5 月 15 日までに廃止されます
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-may-15-2020"></a>2020 年 5 月 15 日の D15_v2/DS15_v2 分離の廃止
 **2020 年 2 月 10 日の更新:"分離" の廃止タイムラインは 2020 年 5 月 15 日まで延長されました "**

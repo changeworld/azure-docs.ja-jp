@@ -10,12 +10,13 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f004fe1dae58faaded0b872dcdebdb4e9af66aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193005"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608487"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 

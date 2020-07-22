@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6727a2c45187e0e6bb583bb65e176024067d81e2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80064410"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219991"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>チュートリアル:デバイス機能モデルを使用して IoT プラグ アンド プレイ (プレビュー) デバイスを作成し、IoT Central アプリケーションに接続する
 
@@ -86,7 +86,9 @@ VS Code で Azure IoT Tools 拡張機能パックをインストールするに�
 
 1. **[管理]** ページに移動し、 **[デバイス接続]** を選択します。
 
-1. **[キーの表示]** を選択したときに表示される **ID スコープ**と**プライマリ キー**をメモしておきます。 これらの値を、このチュートリアルで後ほど使用します。
+1. **ID スコープ**を書き留めておきます。 この値は、このチュートリアルで後ほど使用します。
+
+1. **[SAS-IoT-Devices]** 登録グループを選択します。 **主キー**を書き留めておきます。 この値は、このチュートリアルで後ほど使用します。
 
     ![デバイスの接続](./media/tutorial-connect-pnp-device/device-connection.png)
 

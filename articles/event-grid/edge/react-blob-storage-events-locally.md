@@ -5,16 +5,14 @@ author: arduppal
 manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 12/13/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9389e0aff04baa18cb216f2a7ab6da42eb7031f2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086611"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171433"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>チュートリアル:IoT Edge で Blob Storage イベントに対応する (プレビュー)
 この記事では、Azure BLOB ストレージを IoT モジュールにデプロイする方法について説明します。これは、BLOB の作成および削除時に Event Grid にイベントを送信する Event Grid パブリッシャーとして機能します。  
@@ -348,7 +346,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 | contentType | string | BLOB に関して指定されたコンテンツの種類。 |
 | contentLength | 整数 (integer) | BLOB のサイズ (単位: バイト)。 |
 | blobType | string | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
-| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* という構造になります。 <br>クライアントが Data Lake Storage REST API を使用する場合、url は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* という構造になります。 |
+| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url の構造は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* です。 <br>クライアントが Data Lake Storage REST API を使用する場合、url の構造は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* です。 |
 
 
 ## <a name="next-steps"></a>次のステップ

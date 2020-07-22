@@ -1,5 +1,5 @@
 ---
-title: 信頼できる機械学習 (ML)
+title: 信頼できる機械学習 (ML) プレビュー
 titleSuffix: Azure Machine Learning
 description: 信頼できる ML とはどのようなものか、および Azure Machine Learning でそれを使用する方法について説明します
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 05/08/2020
-ms.openlocfilehash: 3cef3c2179019f6d84de5596e61abaf8d7d3182c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/09/2020
+ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595011"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201939"
 ---
-# <a name="responsible-machine-learning-ml"></a>信頼できる機械学習 (ML)
+# <a name="responsible-machine-learning-ml-preview"></a>信頼できる機械学習 (ML) プレビュー
 
 この記事では、信頼できる ML とはどのようなもので、Azure Machine Learning でそれを実践するにはどうすればよいかについて説明します。
 
@@ -36,7 +36,7 @@ AI システムの開発と使用を通して、信頼をその中心にする�
 
 ## <a name="interpret-and-explain-model-behavior"></a>モデルの動作を解釈して説明する
 
-説明するのが難しいシステムやブラックボックス システムは、システムで特定の決定が行われた理由を、システム開発者、規制者、ユーザー、ビジネス意思決定者などの利害関係者が理解するのが困難であるため、問題になる可能性があります。 説明のしやすさは AI システムによって差があり、場合によっては、正確性の高いシステムと説明しやすいシステムの間でトレードオフが発生します。
+説明するのが難しい (オペーク ボックス) システムは、システムで特定の決定が行われた理由を、システム開発者、規制者、ユーザー、ビジネス意思決定者などの利害関係者が理解するのが困難であるため、問題になる可能性があります。 説明のしやすさは AI システムによって差があり、場合によっては、正確性の高いシステムと説明しやすいシステムの間でトレードオフが発生します。
 
 解釈可能な AI システムを構築するには、Microsoft によって構築されたオープンソース パッケージである [InterpretML](https://github.com/interpretml/interpret) を使用します。 [InterpretML を Azure Machine Learning の内部で使用](how-to-machine-learning-interpretability.md)して、[自動化された機械学習モデル](how-to-machine-learning-interpretability-automl.md)など、[機械学習モデルを解釈して説明する](how-to-machine-learning-interpretability-aml.md)ことができます。
 
@@ -61,11 +61,14 @@ AI システムにおける不公平性を減らすための 2 つの重要な�
 
 差分プライバシー システムを実装することは簡単ではありません。 [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) は、グローバルな差分プライバシー システムを構築するためのさまざまなコンポーネントを含んだ、オープンソース プロジェクトです。 差分プライバシーと WhiteNoise プロジェクトの詳細については、[差分プライバシーと WhiteNoise を使用し たデータ プライバシーの保持](./concept-differential-privacy.md)に関する記事を参照してください。
 
+> [!NOTE]
+> ツールキットの名前は変更予定で、今後数週間で新しい名前が導入されることにご注意ください。 
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>データシートで機械学習のライフサイクルを文書化する
 
 機械学習プロセスで適切な情報を文書化することは、各段階で責任ある決定を行ううえで重要なことです。 データシートは、機械学習のライフサイクルの一部として使用および作成される機械学習資産を文書化する手段です。
 
-モデルは、"ブラックボックス" と見なされる傾向があり、多くの場合、それらに関する情報はほとんどありません。 機械学習システムはますます普及し、意思決定に使用されるようになるため、データシートを使用することは、より多くの信頼できる機械学習システムを開発するためのステップです。
+モデルは、"オペーク ボックス" と見なされる傾向があり、多くの場合、それらに関する情報はほとんどありません。 機械学習システムはますます普及し、意思決定に使用されるようになるため、データシートを使用することは、より多くの信頼できる機械学習システムを開発するためのステップです。
 
 データシートの一部としてドキュメント化するモデル情報には次のようなものがあります。
 
@@ -80,4 +83,5 @@ Azure Machine Learning SDK を使用して[モデル用のデータシート](ht
 
 ## <a name="additional-resources"></a>その他のリソース
 
+- 準同型暗号を使用して、[暗号化された推論 Web サービスをデプロイ](how-to-homomorphic-encryption-seal.md)します。
 - 詳細については、機械学習システムのドキュメントに関するガイドラインの [ABOUT ML](https://www.partnershiponai.org/about-ml/) のセットを参照してください。

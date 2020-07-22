@@ -50,7 +50,7 @@ ms.locfileid: "81379826"
 
 1. [プレビューの Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) の環境をプロビジョニングします。
 1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。 
-1. [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) に示されているように [GenerateCode.bat ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md)を実行して、Time Series Insights プレビュー クライアントの依存関係を生成します。
+1. [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) に示されているように [GenerateCode.bat ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat)を実行して、Time Series Insights プレビュー クライアントの依存関係を生成します。
 1. Visual Studio 上で `TSIPreviewDataPlaneclient.sln` ソリューションを開き、`DataPlaneClientSampleApp` を既定のプロジェクトとして設定します。
 1. [以下](#project-dependencies)に示された手順を使用して必要なプロジェクトの依存関係をインストールし、サンプルを実行可能な `.exe` ファイルにコンパイルします。
 1. `.exe` ファイルをダブルクリックして、実行します。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334037"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242102"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps でサポートされているマップ スタイル
 Azure Maps は、次に説明するように、いくつかの異なる組み込みマップ スタイルをサポートしています。
@@ -28,6 +28,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 * [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK マップ コントロール
 * Android マップ コントロール
+* Power BI 視覚エフェクト
 
 ## <a name="blank-and-blank_accessible"></a>blank と blank_accessible
 
@@ -48,6 +49,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 * [衛星タイル](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK マップ コントロール
 * Android マップ コントロール
+* Power BI 視覚エフェクト
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 このマップ スタイルは、衛星画像と航空映像の上に道路とラベルが重ねて表示されたハイブリッドです。
@@ -57,6 +59,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 **該当する API:**
 * Web SDK マップ コントロール
 * Android マップ コントロール
+* Power BI 視覚エフェクト
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **グレースケール ダーク**は、道路マップ スタイルの濃いバージョンです。
@@ -68,6 +71,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 * [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK マップ コントロール 
 * Android マップ コントロール
+* Power BI 視覚エフェクト
 
 
 ## <a name="grayscale_light"></a>grayscale_light
@@ -78,6 +82,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 **該当する API:**
 * Web SDK マップ コントロール
 * Android マップ コントロール
+* Power BI 視覚エフェクト
 
 
 ## <a name="night"></a>night
@@ -88,6 +93,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 **該当する API:**
 * Web SDK マップ コントロール
 * Android マップ コントロール
+* Power BI 視覚エフェクト
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **道路の影付きレリーフ**は、地球の輪郭で完成する、Azure Maps の主要スタイルです。
@@ -98,6 +104,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 * [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK マップ コントロール
 * Android マップ コントロール
+* Power BI 視覚エフェクト
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -107,6 +114,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 **該当する API:**
 * Web SDK マップ コントロール
+* Power BI 視覚エフェクト
 
 ## <a name="next-steps"></a>次のステップ
 

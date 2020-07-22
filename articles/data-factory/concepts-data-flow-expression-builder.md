@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126163"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する
 
@@ -76,16 +76,12 @@ Azure Data Factory ユーザー エクスペリエンスの式編集インター
 
 単一行および複数行コメントの構文を使用して、式にコメントを追加します。
 
-![単一行および複数行のコメントの構文](media/data-flow/comments.png "説明")
-
 有効なコメントの例を次に示します。
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 式の先頭にコメントを配置すると、変換式を文書化するための変換テキスト ボックスにコメントが表示されます。
 
@@ -133,6 +129,10 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 ```toTimestamp(1574127407*1000l)```
 
 前の式の最後にある末尾の "l" は、インライン構文としての long 型への変換を示しています。
+
+## <a name="find-time-from-epoch-or-unix-time"></a>エポックまたは Unix 時刻から時刻を検索する
+
+toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd HH:mm:ss.SSS') ) * 1000l
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 03/31/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 7d1d7ad27c43a0f8b4bbb763a1eb933a63cec58e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607533"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115644"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理できないロール
 
@@ -40,7 +40,7 @@ Privileged Identity Management では、次の従来のサブスクリプショ�
 Exchange 管理者や SharePoint 管理者など、Azure AD ロールと管理者ポータルのエクスペリエンスでは、すべての Office365 ロールがサポートされていますが、Exchange RBAC または SharePoint RBAC 内の特定のロールはサポートされていません。 これらの Office 365 サービスの詳細については、[Office 365 の管理者ロール](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)に関するページを参照してください。
 
 > [!NOTE]
-> SharePoint 管理者ロールの対象ユーザーと、Microsoft セキュリティ センターおよびコンプライアンス センターにアクセスしようとしているすべてのロールでは、ロールをアクティブ化した後、最大で数時間の遅延が発生する可能性があります。 これらのチームと協力して問題の解決に取り組んでいます。
+> SharePoint 管理者ロール、デバイス管理者ロール、および Microsoft セキュリティ センターとコンプライアンス センターにアクセスしようとしているすべてのロールの対象ユーザーは、ロールをアクティブ化した後、最大で数時間の遅延に遭遇する可能性があります。 これらのチームと協力して問題の解決に取り組んでいます。
 
 ## <a name="next-steps"></a>次のステップ
 

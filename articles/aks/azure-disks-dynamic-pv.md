@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) 上で Azure ディスクを含む�
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208144"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751352"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
@@ -38,7 +38,11 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 * *managed-premium* ストレージ クラスは、プレミアムな Azure ディスクをプロビジョニングします。
     * Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 クラスター内の AKS ノードでプレミアム ストレージを使用する場合は、*managed-premium* クラスを選択します。
     
-これらの既定のストレージ クラスでは、作成後のボリューム サイズを更新できません。 この機能を有効にするには、*allowVolumeExpansion: true* 行を既定のストレージ クラスのいずれかに追加するか、独自のカスタム ストレージ クラスを作成します。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS でのアプリケーションのストレージ オプション][storage-class-concepts]に関するページを参照してください。
+既定のストレージ クラスの 1 つを使用している場合、ストレージ クラスの作成後、ボリューム サイズを更新することはできません。 ストレージ クラスの作成後にボリューム サイズを更新できるようにするには、既定のストレージ クラスの 1 つに行 `allowVolumeExpansion: true` を追加します。あるいは、独自のカスタム ストレージ クラスを作成できます。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 
+
+たとえば、サイズ 4 TiB のディスクを使用する場合、[サイズ 4 TiB 以上ではディスク キャッシュがサポートされない](../virtual-machines/windows/premium-storage-performance.md#disk-caching)ため、`cachingmode: None` を定義するストレージ クラスを作成する必要があります。
+
+ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS でのアプリケーションのストレージ オプション][storage-class-concepts]に関するページを参照してください。
 
 事前作成されているストレージ クラスを確認するには、[kubectl get sc][kubectl-get] コマンドを使用します。 次の例は、AKS クラスター内で使用できる事前に作成されたストレージ クラスを示したものです。
 

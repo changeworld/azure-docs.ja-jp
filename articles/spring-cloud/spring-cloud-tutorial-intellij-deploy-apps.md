@@ -1,17 +1,17 @@
 ---
-title: チュートリアル - IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
+title: チュートリアル:IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
 description: IntelliJ を使用してアプリケーションを Azure Spring Cloud にデプロイします。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: ec78b62f15851c41a3b9759f32d9c35c189f72c4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731371"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142037"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
 Azure Spring Cloud の IntelliJ プラグインでは、IntelliJ IDEA からのアプリケーションのデプロイがサポートされています。  

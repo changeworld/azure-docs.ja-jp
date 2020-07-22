@@ -8,20 +8,20 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5e8f5e3939ade4e5344ef586a62b6a19082e34e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809038"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、Azure Active Directory (Azure AD) 資格情報を使用して .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは Blob 用のユーザー委任 SAS を作成する方法について説明します。
+この記事では、Azure Active Directory (Azure AD) 資格情報を使用して バージョン 12 の .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは BLOB のユーザー委任 SAS を作成する方法について説明します。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 

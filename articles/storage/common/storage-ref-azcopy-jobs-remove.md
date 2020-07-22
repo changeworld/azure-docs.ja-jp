@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f544e479dd21b4c1f7f2e289e91b506aab7eff2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034155"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220046"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
@@ -39,7 +39,7 @@ azcopy jobs remove [jobID] [flags]
   azcopy jobs rm e52247de-0323-b14d-4cc8-76e0be2e2d44
 ```
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 **-h, --help**                remove のヘルプを表示します。
 
@@ -49,6 +49,8 @@ azcopy jobs remove [jobID] [flags]
 
 **--output-type** string   コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
 
-## <a name="see-also"></a>参照
+**--trusted-microsoft-suffixes** string   Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。
+
+## <a name="see-also"></a>関連項目
 
 - [azcopy jobs](storage-ref-azcopy-jobs.md)

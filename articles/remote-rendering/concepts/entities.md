@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509204"
 ---
 # <a name="entities"></a>エンティティ
 
@@ -25,6 +25,33 @@ ms.locfileid: "83758726"
 エンティティはその親によって一意に所有されます。つまり、親が `Entity.Destroy()` で破棄されると、その子と、接続されているすべての[コンポーネント](components.md)も破棄されます。 したがって、シーンからモデルを削除するには、`AzureSession.Actions.LoadModelAsync()` またはその SAS バリアント `AzureSession.Actions.LoadModelFromSASAsync()` によって返される、モデルのルート ノードに対して `Destroy` を呼び出します。
 
 エンティティは、サーバーがコンテンツを読み込むとき、またはユーザーがオブジェクトをシーンに追加するときに作成されます。 たとえば、ユーザーがメッシュの内部を視覚化するために切断面を追加する場合は、その面が存在するはずのエンティティを作成して、それに切断面コンポーネントを追加できます。
+
+## <a name="create-an-entity"></a>エンティティの作成
+
+シーンに新しいエンティティを追加する (たとえば、モデルを読み込むためのルート オブジェクトとして渡すか、またはコンポーネントをアタッチするために) には、次のコードを使用します。
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>クエリ関数
 

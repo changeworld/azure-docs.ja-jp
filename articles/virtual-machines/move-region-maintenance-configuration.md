@@ -1,19 +1,18 @@
 ---
 title: メンテナンス構成を別の Azure リージョンに移動する
 description: VM メンテナンス構成を別の Azure リージョンに移動する方法を説明します
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: fe03bead238d3fb7bda3ee685bd5587c3e0dbc58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86343e10f10b51f65764e16bbc1e485136bca162
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78304342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676814"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>メンテナンス コントロール構成を別のリージョンに移動する
 

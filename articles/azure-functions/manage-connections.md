@@ -4,11 +4,11 @@ description: 静的接続クライアントを使用して、Azure Functions の
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846770"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 

@@ -4,10 +4,10 @@ description: Resource Graph クエリ言語を使用してリソースを探索�
 ms.date: 05/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83654490"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する

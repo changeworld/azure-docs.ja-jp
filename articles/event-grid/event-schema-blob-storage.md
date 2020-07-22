@@ -1,18 +1,14 @@
 ---
 title: Event Grid ソースとしての Azure Blob Storage
 description: Blob Storage イベントに関して Azure Event Grid に用意されているプロパティについて説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 8d22f8a2722dc55a13ce8e3752ca69d6e7251070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115127"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113753"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 
@@ -52,8 +48,7 @@ ms.locfileid: "82115127"
 > [!NOTE]
 > ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされることを確認する場合、`FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、この API によって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)」をご覧ください。
 
-<a id="example-event" />
-
+<a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>イベント応答の内容
 
 イベントがトリガーされると、Event Grid サービスにより、そのイベントに関するデータがサブスクライブしているエンドポイントに送信されます。
@@ -318,7 +313,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 | contentOffset | number | イベントをトリガーしたアプリケーションがファイルへの書き込みを完了した時点で実行される書き込み操作のバイト単位のオフセット。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
 | destinationUrl |string | 操作の完了後に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`destinationUrl` プロパティには新しいファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
 | sourceUrl |string | 操作の前に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`sourceUrl` には名前変更操作が行われる前の元のファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
-| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* という構造になります。 <br>クライアントが Data Lake Storage REST API を使用する場合、url は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* という構造になります。 |
+| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url の構造は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* です。 <br>クライアントが Data Lake Storage REST API を使用する場合、url の構造は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* です。 |
 | recursive | string | すべての子ディレクトリに対して操作を実行する場合は `True`、それ以外の場合は `False`。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
 | sequencer | string | 特定の BLOB 名に対するイベントの論理シーケンスを表す非透過的な文字列値です。  ユーザーは、標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。 |
 | storageDiagnostics | object | Azure Storage サービスによって追加されることがある診断データです。 含まれる場合、イベントのコンシューマーは無視する必要があります。 |

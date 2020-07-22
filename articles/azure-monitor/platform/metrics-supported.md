@@ -4,35 +4,41 @@ description: Azure Monitor で使用できるメトリックの一覧 (リソー
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/06/2020
+ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffdfeacad2fcfa7f77f3bcb55e8b1edaea865202
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128449"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145155"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
 > [!NOTE]
-> この一覧は、大部分が Azure Monitor メトリック REST API から自動生成されます。 Github を介してこの一覧に加えられた変更は、警告なしで上書きできます。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
+> この一覧は、大部分が Azure Monitor メトリック REST API から自動生成されます。 GitHub を介してこの一覧に加えられた変更は、警告なしで上書きできます。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
 
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 
 
-この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 このリストの最終更新日は 2020 年 3 月 27 日でした。 この日付の後に変更または追加されたメトリックは一覧にない可能性があります。 プログラムを使ってこのメトリックのクエリを実行し、アクセスするには、[2018-01-01 API バージョン](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)を使用してください。
+この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 このリストの最終更新日は 2020 年 3 月 27 日でした。 この日付の後に変更または追加されたメトリックは一覧にない可能性があります。 プログラムを使ってこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 API バージョン](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)を使用してください。 この一覧にない他のメトリックは、ポータルまたは従来の API で使用できる場合があります。
 
-他のメトリックについては、ポータルや従来の API で使用できる場合があります。 Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システムのメトリックはここのリストに記載されて**いません**。 そのようなメトリックは、そのオペレーティング システムで実行される、あるいはそのオペレーティング システムの一環として実行される 1 つまたは複数のエージェントから収集する必要があります。 現在パブリック プレビューされている[カスタム メトリック](metrics-custom-overview.md) API を使用し、プラットフォーム メトリック データベースにエージェント メトリックを送信できます。 その後、ゲスト OS のメトリックをプラットフォーム メトリックのようにグラフにしたり、アラートを出す対象にしたり、それ以外の場面で利用したりすることができます。 詳細については、[Monitor エージェントの概要](agents-overview.md)に関するページをご覧ください。    
+メトリックは、リソース プロバイダーとリソースの種類別にまとめられます。 サービスとそれらに属するリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。 
 
-メトリックは名前空間別にまとめられます。 サービスとそれらに属する名前空間の一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。 
 
-> [!NOTE]
-> 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
->
-> *例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
->
-> 診断設定を使用してエクスポート可能なプラットフォーム メトリックの一覧については、[この記事](metrics-supported-export-diagnostic-settings.md)を参照してください。
+## <a name="guest-os-metrics"></a>ゲスト OS メトリック
+
+Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システムのメトリックはここのリストに記載されて**いません**。 代わりに、ゲスト OS パフォーマンス メトリックを、ゲスト オペレーティング システムで実行される、あるいはゲスト オペレーティング システムの一環として実行される 1 つ以上のエージェントを使用して収集する必要があります。  ゲストOS メトリックには、ゲストの CPU 使用率またはメモリ使用量を追跡するパフォーマンス カウンターが含まれています。これらは、どちらも自動スケーリングまたはアラートに頻繁に使用されます。  [Azure Diagnostics の拡張機能](diagnostics-extension-overview.md)を使用すると、プラットフォーム メトリックが格納されているデータベースと同じデータベースに、ゲスト OS パフォーマンス メトリックを送信できます。 [カスタム メトリック](metrics-custom-overview.md)の API を使用してゲスト OS メトリックがルーティングされます。 その後、ゲスト OS のメトリックをプラットフォーム メトリックのようにグラフにしたり、アラートを出す対象にしたり、それ以外の場面で利用したりすることができます。 詳細については、[Monitor エージェントの概要](agents-overview.md)に関するページをご覧ください。    
+
+## <a name="routing-platform-metrics-to-other-locations"></a>他の場所へのプラットフォーム メトリックのルーティング
+
+[診断設定](diagnostic-settings.md)を使用して、プラットフォーム メトリックを Azure Storage、Azure Monitor ログ (および Log Analytics)、および Event Hubs にルーティングできます。  
+
+ルーティングできるものと、それが格納される形式には、いくつかの制限があります。 
+- すべてのメトリックが他の場所にエクスポート可能であるとは限りません。 診断設定を使用してエクスポート可能なプラットフォーム メトリックの一覧については、[この記事](metrics-supported-export-diagnostic-settings.md)を参照してください。
+
+- 診断設定を使用して、他の場所に多次元メトリックを送信することは現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
+*例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
@@ -756,7 +762,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ScanFailed|Scan Failed (失敗したスキャン)|Count|合計|失敗したスキャンの数を示します。|なし|
 |ScanTimeTaken|Scan time taken (スキャンの所要時間)|Seconds|合計|スキャンの合計時間を示します (秒単位)。|なし|
 |CatalogActiveUsers|1 日当たりのアクティブ ユーザー数|Count|合計|1 日当たりのアクティブ ユーザーの数|なし|
-|CatalogUsage|Usage Distribution by Operation (操作ごとの使用状況分布)|Count|合計|ユーザーがカタログに対して行う操作 (アクセス、検索、用語集) の数を示します。|Operation|
+|CatalogUsage|Usage Distribution by Operation (操作ごとの使用状況分布)|Count|合計|ユーザーがカタログに対して行う操作 (アクセス、検索、用語集) の数を示します。|操作|
 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
@@ -2007,9 +2013,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |cache_used_percent|使用されたキャッシュの割合|Percent|最大値|使用されたキャッシュの割合。 データ ウェアハウスにのみ適用されます。|なし|
 |sqlserver_process_core_percent<sup>1</sup> |SQL Server プロセス コアの割合|Percent|最大値|オペレーティング システムによって測定された SQL Server プロセスの CPU 使用率 (%)。|なし|
 |sqlserver_process_memory_percent<sup>1</sup> |SQL Server プロセス メモリの割合|Percent|最大値|オペレーティング システムによって測定された SQL Server プロセスのメモリ使用率 (%)。|なし|
-|tempdb_data_size<sup>2</sup> |Tempdb データ ファイル サイズ (KB)|Count|最大値|Tempdb データ ファイル サイズ (KB)。|なし|
-|tempdb_log_size<sup>2</sup> |Tempdb ログ ファイル サイズ (KB)|Count|最大値|Tempdb ログ ファイル サイズ (KB)。|なし|
-|tempdb_log_used_percent<sup>2</sup> |Tempdb ログ使用率|Percent|最大値|Tempdb ログ使用率。|なし|
+|tempdb_data_size<sup>1</sup> |Tempdb データ ファイル サイズ (KB)|Count|最大値|Tempdb データ ファイル サイズ (KB)。|なし|
+|tempdb_log_size<sup>1</sup> |Tempdb ログ ファイル サイズ (KB)|Count|最大値|Tempdb ログ ファイル サイズ (KB)。|なし|
+|tempdb_log_used_percent<sup>1</sup> |Tempdb ログ使用率|Percent|最大値|Tempdb ログ使用率。|なし|
 |local_tempdb_usage_percent|ローカル tempdb の割合|Percent|Average|ローカル tempdb の割合。 データ ウェアハウスにのみ適用されます。|なし|
 |app_cpu_billed|課金されるアプリ CPU|Count|合計|課金されるアプリ CPU。 サーバーレス データベースに適用されます。|なし|
 |app_cpu_percent|アプリ CPU の割合|Percent|Average|アプリ CPU の割合。 サーバーレス データベースに適用されます。|なし|
@@ -2034,9 +2040,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |snapshot_backup_size_bytes|Snapshot backup storage size (スナップショット バックアップ ストレージ サイズ)|バイト|最大値|累積的なスナップショット バックアップ ストレージ サイズ。 ハイパースケール データベースに適用されます。|なし|
 |base_blob_size_bytes|Base blob storage size (ベース Blob ストレージ サイズ)|バイト|最大値|ベース Blob ストレージ サイズ。 ハイパースケール データベースに適用されます。|なし|
 
-<sup>1</sup> このメトリックは、DTU ベースの購入モデルに対して、仮想コア購入モデル (2 仮想コア以上) または 200 DTU 以上を使用しているデータベースで使用できます。 
-
-<sup>1</sup> このメトリックはDTUベースの購入モデルに対して、仮想コア購入モデル（2仮想コア以上）または200DUT以上を使用しているデータベースで使用可能です。 ハイパースケールデータベースおよびデータウェアハウスでは、このメトリックは現在使用できません。
+<sup>1</sup> このメトリックは DTU ベースの購入モデルに対して、仮想コア購入モデル (2 仮想コア以上) または 200 DTU 以上を使用しているデータベースで使用可能です。 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -2068,27 +2072,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |database_cpu_used|使用された CPU|Count|Average|使用された CPU|DatabaseResourceId|
 |sqlserver_process_core_percent<sup>1</sup>|SQL Server プロセス コアの割合|Percent|最大値|オペレーティング システムによって測定された SQL Server プロセスの CPU 使用率 (%)。 エラスティック プールに適用されます。 |なし|
 |sqlserver_process_memory_percent<sup>1</sup>|SQL Server プロセス メモリの割合|Percent|最大値|オペレーティング システムによって測定された SQL Server プロセスのメモリ使用率 (%)。 エラスティック プールに適用されます。 |なし|
-|tempdb_data_size<sup>2</sup>|Tempdb データ ファイル サイズ (KB)|Count|最大値|Tempdb データ ファイル サイズ (KB)。|なし|
-|tempdb_log_size<sup>2</sup>|Tempdb ログ ファイル サイズ (KB)|Count|最大値|Tempdb ログ ファイル サイズ (KB)。 |なし|
-|tempdb_log_used_percent<sup>2</sup>|Tempdb ログ使用率|Percent|最大値|Tempdb ログ使用率。|なし|
+|tempdb_data_size<sup>1</sup>|Tempdb データ ファイル サイズ (KB)|Count|最大値|Tempdb データ ファイル サイズ (KB)。|なし|
+|tempdb_log_size<sup>1</sup>|Tempdb ログ ファイル サイズ (KB)|Count|最大値|Tempdb ログ ファイル サイズ (KB)。 |なし|
+|tempdb_log_used_percent<sup>1</sup>|Tempdb ログ使用率|Percent|最大値|Tempdb ログ使用率。|なし|
 |allocated_data_storage|割り当て済みのデータ領域|バイト|Average|割り当て済みのデータ領域|なし|
 |database_allocated_data_storage|割り当て済みのデータ領域|バイト|Average|割り当て済みのデータ領域|DatabaseResourceId|
 |allocated_data_storage_percent|割り当て済みのデータ領域の割合|Percent|最大値|割り当て済みのデータ領域の割合|なし|
 
-<sup>1</sup> このメトリックは、DTU ベースの購入モデルに対して、仮想コア購入モデル (2 仮想コア以上) または 200 DTU 以上を使用しているデータベースで使用できます。 
-
-<sup>2</sup> このメトリックは、DTU ベースの購入モデルに対して、仮想コア購入モデル (2 仮想コア以上) または 200 DTU 以上を使用しているデータベースで使用できます。 Hyperscale データベースでは現在、このメトリックは利用できません。
-
-
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
-
-|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
-|---|---|---|---|---|---|
-|dtu_consumption_percent|DTU の割合|Percent|Average|DTU の割合|ElasticPoolResourceId|
-|database_dtu_consumption_percent|DTU の割合|Percent|Average|DTU の割合|DatabaseResourceId、ElasticPoolResourceId|
-|storage_used|使用済みのデータ領域|バイト|Average|使用済みのデータ領域|ElasticPoolResourceId|
-|database_storage_used|使用済みのデータ領域|バイト|Average|使用済みのデータ領域|DatabaseResourceId、ElasticPoolResourceId|
-|dtu_used|使用された DTU|Count|Average|使用された DTU|DatabaseResourceId|
+<sup>1</sup> このメトリックは DTU ベースの購入モデルに対して、仮想コア購入モデル (2 仮想コア以上) または 200 DTU 以上を使用しているデータベースで使用可能です。 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 

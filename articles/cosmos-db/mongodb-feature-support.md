@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 94b65b4e7947bc02b1fdaae90c8f774ec216e7bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d525824039c276d0bc8a63256b32afa9cb25445
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80981887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851815"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
 
@@ -56,7 +56,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - dropDatabase
 - listCollections
 - drop
-- 作成
+- create
 - filemd5
 - createIndexes
 - listIndexes
@@ -73,7 +73,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - listDatabases
 - whatsmyuri
 
-<a name="aggregation-pipeline"/>
+<a name="aggregation-pipeline"></a>
 
 ## <a name="aggregation-pipelinea"></a>集計パイプライン</a>
 
@@ -288,7 +288,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
-演算子 | 例 | |
+演算子 | 例 | サポートされています |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |

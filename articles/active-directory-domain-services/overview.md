@@ -8,25 +8,32 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 0f5f890b4f32961e00fb30316a1dc7c88ef93a45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654841"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734556"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
-Azure Active Directory Domain Services (Azure AD DS) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos 認証、NTLM 認証など) が提供されます。 クラウドでドメイン コントローラーのデプロイ、管理、および修正プログラムの適用を行わなくても、これらのドメイン サービスを使用することができます。 Azure AD DS は既存の Azure AD テナントと統合されるので、ユーザーは既存の資格情報を使用してサインインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、リフト アンド シフト方式でオンプレミスのリソースをよりスムーズに Azure に移行できます。
+Azure Active Directory Domain Services (Azure AD DS) では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos/NTLM 認証など) が提供されます。 クラウドでドメイン コントローラー (DC) のデプロイ、管理、修正プログラムの適用を行わなくても、これらのドメイン サービスを使用することができます。
 
-使用を開始するには、[Azure portal を使用して Azure AD DS マネージド ドメインを作成][tutorial-create]します。
+マネージド ドメインは、DNS 名前空間および対応するディレクトリです。 マネージド ドメインは既存の Azure AD テナントと統合されるので、ユーザーは既存の資格情報を使用してサインインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、リフト アンド シフト方式でオンプレミスのリソースをよりスムーズに Azure に移行できます。
+
+Azure AD DS は、既存の Azure AD テナントと統合されます。 この統合により、ユーザーは既存の資格情報を使用して、マネージド ドメインに接続されているサービスおよびアプリケーションにサインインできます。 また、既存のグループとユーザー アカウントを使用して、リソースへのアクセスをセキュリティで保護することもできます。 これらの機能により、オンプレミスのリソースを Azure に円滑にリフトアンドシフトすることができます。
+
+> [!div class="nextstepaction"]
+> [使用を開始するには、Azure portal を使用して Azure AD DS マネージド ドメインを作成します][tutorial-create]
 
 Azure AD DS では、ID 情報が Azure AD からレプリケートされるため、クラウド専用の Azure AD テナント、またはオンプレミスの Active Directory Domain Services (AD DS) 環境と同期される Azure AD テナントとも連携します。 両方の環境に同じ Azure AD DS 機能セットが存在します。
 
-* オンプレミスの AD DS 環境を既に使用している場合は、ユーザー アカウント情報を同期させて、ユーザーに一貫性のある ID を提供できます。
+* オンプレミスの AD DS 環境を既に使用している場合は、ユーザー アカウント情報を同期させて、ユーザーに一貫性のある ID を提供できます。 詳細については、[マネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ][synchronization]に関するページを参照してください。
 * クラウド専用の環境では、従来のオンプレミスの AD DS 環境を必要とすることなく、Azure AD DS で提供される ID の集中管理サービスを利用できます。
+
+マネージド ドメインを管理する方法については、[Azure AD DS でのユーザー アカウント、パスワード、および管理の概念][administration-concepts]に関するページを参照してください。
 
 次のビデオでは、Azure AD DS により、アプリケーションおよびワークロードを統合して、クラウドで ID サービスを提供する方法の概要を説明します。
 
@@ -51,35 +58,14 @@ IT 管理者は、多くの場合、次のいずれかのソリューション�
 
 Azure AD DS では、ID サービスを提供するため、オンプレミスの AD DS 環境への VPN 接続を作成したり、Azure で VM を実行および管理したりする必要のない代替方法が提供されます。 マネージド サービスである Azure AD DS により、ハイブリッドとクラウド専用の両方の環境に使用できる統合された ID ソリューションを作成する複雑さが軽減されます。
 
-## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS の機能とメリット
-
-クラウド内のアプリケーションおよび VM に ID サービスを提供するために、Azure AD DS は従来の AD DS 環境と完全に互換性があり、ドメイン参加、Secure LDAP (LDAPS)、グループ ポリシー、DNS の管理、LDAP バインドおよび読み取りのサポートなどの運用サービスが提供されます。 LDAP 書き込みのサポートは、Azure AD DS マネージド ドメインで作成されたオブジェクトには使用できますが、Azure AD から同期されたリソースには使用できません。
-
-ID オプションの詳細については、[Azure AD DS、Azure AD、Azure VM 上の Active Directory Domain Services、オンプレミスの Active Directory Domain Services の比較][compare]に関するページを参照してください。
-
-Azure AD DS の次の機能により、デプロイ操作と管理操作が簡略化されます。
-
-* **デプロイ操作の簡略化:** Azure portal の単一のウィザードを使用して、Azure AD DS を Azure AD テナントに対して有効にします。
-* **Azure AD との統合:** ユーザー アカウント、グループ メンバーシップ、および資格情報は、ご利用の Azure AD テナントから自動的に利用できるようになります。 Azure AD テナントやオンプレミスの AD DS 環境で新規作成されたユーザーおよびグループ、または変更が加えられた属性は、Azure AD DS に自動的に同期されます。
-    * Azure AD DS では、Azure AD にリンクされている外部ディレクトリのアカウントは使用できません。 これらの外部ディレクトリでは、資格情報を使用できないため、Azure AD DS マネージド ドメインには同期できません。
-* **会社の資格情報とパスワードの使用:** Azure AD DS におけるユーザーのパスワードは、Azure AD テナントと同じです。 ユーザーは、コンピューターのドメイン参加、対話形式またはリモート デスクトップ経由によるサインイン、Azure AD DS マネージド ドメインに対する認証に会社の資格情報を使用できます。
-* **NTLM と Kerberos の認証:** NTLM と Kerberos の認証がサポートされているので、Windows 統合認証を利用するアプリケーションをデプロイできます。
-* **高可用性:** Azure AD DS には複数のドメイン コントローラーが含まれるため、マネージド ドメインの高可用性を実現できます。 この高可用性により、サービスの稼働時間と障害に対する復元性が保証されます。
-    * [Azure Availability Zones][availability-zones] をサポートするリージョンでは、回復性を高めるため、これらのドメイン コントローラは複数のゾーンにも分散されます。
-
-Azure AD DS マネージド ドメインの重要な特徴の一部を以下に示します。
-
-* Azure AD DS マネージド ドメインは、スタンドアロンのドメインです。 オンプレミスのドメインの拡張機能ではありません。
-    * 必要であれば、Azure AD DS からオンプレミス AD DS 環境への一方向の出力方向のフォレストの信頼を作成できます。 詳細については、「[Azure AD DS のリソース フォレストの概念と機能][ forest-trusts]」を参照してください。
-* IT チームが、この Azure AD DS マネージド ドメインのドメイン コントローラーに対して管理、修正プログラムの適用、監視を行う必要はありません。
-
-オンプレミスで AD DS を実行するハイブリッド環境では、Azure AD DS マネージド ドメインへの AD レプリケーションを管理する必要はありません。 オンプレミスのディレクトリからのユーザー アカウント、グループ メンバーシップ、および資格情報は、[Azure AD Connect][azure-ad-connect] を介して Azure AD に同期されます。 これらのユーザー アカウント、グループ メンバーシップ、および資格情報は、Azure AD DS マネージド ドメイン内で自動的に利用できるようになります。
+> [!div class="nextstepaction"]
+> [Azure AD DS を、Azure VM またはオンプレミスにおける Azure AD および自己管理型 AD DS と比較する][compare]
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS のしくみ
 
-Azure では、ID サービスを提供するために、選択した仮想ネットワークで AD DS インスタンスが作成されます。 見えないところで、Azure VM 上で実行される一対の Windows Server ドメイン コントローラーが作成されます。 これらのドメイン コントローラーの管理、構成、更新を自分で行う必要はありません。 ドメイン コントローラーは、Azure プラットフォームが Azure AD DS サービスの一部として管理します。
+Azure では、ID サービスを提供するために、選択した仮想ネットワーク上に AD DS のマネージド ドメインが作成されます。 見えないところで、Azure VM 上で実行される一対の Windows Server ドメイン コントローラーが作成されます。 これらのドメイン コントローラーの管理、構成、更新を自分で行う必要はありません。 ドメイン コントローラーは、Azure プラットフォームが Azure AD DS サービスの一部として管理します。
 
-Azure ADAzure AD DS マネージド ドメインは、Azure AD からの一方向の同期を実行して、集中管理された一連のユーザー、グループ、および資格情報へのアクセスを提供するように構成されます。 Azure AD DS マネージド ドメイン内で直接リソースを作成できますが、それらは Azure AD に同期されません。 この仮想ネットワークに接続される Azure 内のアプリケーション、サービス、および VM は、共通の AD DS 機能 (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) を使用することができます。
+マネージド ドメインは、Azure AD からの一方向の同期を実行して、集中管理された一連のユーザー、グループ、および資格情報へのアクセスを提供するように構成されます。 マネージド ドメイン内で直接リソースを作成できますが、それらは Azure AD に同期されません。 この仮想ネットワークに接続される Azure 内のアプリケーション、サービス、および VM は、共通の AD DS 機能 (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) を使用することができます。
 
 オンプレミスの AD DS 環境とのハイブリッド環境では、[Azure AD Connect][azure-ad-connect] により、ID 情報が Azure AD と同期された後、Azure AD DS と同期されます。
 
@@ -106,7 +92,7 @@ Azure AD DS の実際の動作を確認するために、いくつかの例を�
 * Azure 仮想ネットワーク内にデプロイされたアプリケーションと VM は、ドメイン参加、LDAP 読み取り、LDAP バインド、NTLM 認証、Kerberos 認証、グループ ポリシーなどの Azure AD DS 機能を使用できます。
 
 > [!IMPORTANT]
-> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 オブジェクトを Azure AD に同期するために、Azure AD DS マネージド ドメインに Azure AD Connect をインストールすることはサポートされていません。
+> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 マネージド ドメインに Azure AD Connect をインストールして元の Azure AD にオブジェクトを同期することはサポートされていません。
 
 ### <a name="azure-ad-ds-for-cloud-only-organizations"></a>クラウド専用組織向けの Azure AD DS
 
@@ -120,6 +106,31 @@ Azure AD DS の実際の動作を確認するために、いくつかの例を�
 * Contoso の IT チームは、この仮想ネットワークまたはピアリングされた仮想ネットワーク内の Azure AD テナントに対して Azure AD DS を有効にします。
 * Azure 仮想ネットワーク内にデプロイされたアプリケーションと VM は、ドメイン参加、LDAP 読み取り、LDAP バインド、NTLM 認証、Kerberos 認証、グループ ポリシーなどの Azure AD DS 機能を使用できます。
 
+## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS の機能とメリット
+
+クラウド内のアプリケーションおよび VM に ID サービスを提供するために、Azure AD DS は従来の AD DS 環境と完全に互換性があり、ドメイン参加、Secure LDAP (LDAPS)、グループ ポリシー、DNS の管理、LDAP バインドおよび読み取りのサポートなどの運用サービスが提供されます。 LDAP 書き込みのサポートは、Azure AD DS マネージド ドメインで作成されたオブジェクトには使用できますが、Azure AD から同期されたリソースには使用できません。
+
+ID オプションの詳細については、[Azure AD DS、Azure AD、Azure VM 上の Active Directory Domain Services、オンプレミスの Active Directory Domain Services の比較][compare]に関するページを参照してください。
+
+Azure AD DS の次の機能により、デプロイ操作と管理操作が簡略化されます。
+
+* **デプロイ操作の簡略化:** Azure portal の単一のウィザードを使用して、Azure AD DS を Azure AD テナントに対して有効にします。
+* **Azure AD との統合:** ユーザー アカウント、グループ メンバーシップ、および資格情報は、ご利用の Azure AD テナントから自動的に利用できるようになります。 Azure AD テナントやオンプレミスの AD DS 環境で新規作成されたユーザーおよびグループ、または変更が加えられた属性は、Azure AD DS に自動的に同期されます。
+    * Azure AD DS では、Azure AD にリンクされている外部ディレクトリのアカウントは使用できません。 これらの外部ディレクトリでは、資格情報を使用できないため、Azure AD DS マネージド ドメインには同期できません。
+* **会社の資格情報とパスワードの使用:** Azure AD DS におけるユーザーのパスワードは、Azure AD テナントと同じです。 ユーザーは、コンピューターのドメイン参加、対話形式またはリモート デスクトップ経由によるサインイン、Azure AD DS マネージド ドメインに対する認証に会社の資格情報を使用できます。
+* **NTLM と Kerberos の認証:** NTLM と Kerberos の認証がサポートされているので、Windows 統合認証を利用するアプリケーションをデプロイできます。
+* **高可用性:** Azure AD DS には複数のドメイン コントローラーが含まれるため、マネージド ドメインの高可用性を実現できます。 この高可用性により、サービスの稼働時間と障害に対する復元性が保証されます。
+    * [Azure Availability Zones][availability-zones] をサポートするリージョンでは、回復性を高めるため、これらのドメイン コントローラは複数のゾーンにも分散されます。
+
+Azure AD DS マネージド ドメインの重要な特徴の一部を以下に示します。
+
+* Azure AD DS マネージド ドメインは、スタンドアロンのドメインです。 オンプレミスのドメインの拡張機能ではありません。
+    * 必要であれば、Azure AD DS からオンプレミス AD DS 環境への一方向の出力方向のフォレストの信頼を作成できます。 詳細については、「[Azure AD DS のリソース フォレストの概念と機能][ forest-trusts]」を参照してください。
+* IT チームが、この Azure AD DS マネージド ドメインのドメイン コントローラーに対して管理、修正プログラムの適用、監視を行う必要はありません。
+
+オンプレミスで AD DS を実行するハイブリッド環境では、Azure AD DS マネージド ドメインへの AD レプリケーションを管理する必要はありません。 オンプレミスのディレクトリからのユーザー アカウント、グループ メンバーシップ、および資格情報は、[Azure AD Connect][azure-ad-connect] を介して Azure AD に同期されます。 これらのユーザー アカウント、グループ メンバーシップ、および資格情報は、Azure AD DS マネージド ドメイン内で自動的に利用できるようになります。
+
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure AD DS と他の ID ソリューションとの比較、および同期のしくみの詳細については、次の記事を参照してください。
@@ -127,7 +138,7 @@ Azure AD DS と他の ID ソリューションとの比較、および同期の�
 * [Azure AD DS を Azure AD、Azure VM 上の Active Directory Domain Services、およびオンプレミスの Active Directory Domain Services と比較する][compare]
 * [Azure AD Domain Services を Azure AD ディレクトリと同期させる方法][synchronization]
 
-使用を開始するには、[Azure portal を使用して Azure AD DS マネージド ドメインを作成][tutorial-create]します。
+使用を開始するには、[Azure portal を使用してマネージド ドメインを作成][tutorial-create]します。
 
 <!-- INTERNAL LINKS -->
 [compare]: compare-identity-solutions.md
@@ -137,3 +148,5 @@ Azure AD DS と他の ID ソリューションとの比較、および同期の�
 [password-hash-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md
 [availability-zones]: ../availability-zones/az-overview.md
 [forest-trusts]: concepts-resource-forest.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

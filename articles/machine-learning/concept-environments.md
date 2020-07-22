@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
-ms.date: 03/18/2020
-ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/08/2020
+ms.openlocfilehash: 437db3e1ad367a75d6c8d3a77b138bce79b5f61e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064202"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147134"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,6 +48,7 @@ Python 環境とスクリプトの依存関係を [Conda](https://conda.io/docs/
 * 自分のワークスペースから既存の `Environment` オブジェクトを使用する。 この方法では、依存関係に関して一貫性と再現性を確保できます。
 * 既存の Anaconda 環境定義からインポートする。
 * Azure Machine Learning CLI を使用する
+* [VS Code 拡張機能を使用する](how-to-manage-resources-vscode.md#create-environment)
 
 特定のコード サンプルについては、[トレーニングとデプロイのための環境の再利用](how-to-use-environments.md#create-an-environment)に関するページの」の「環境の作成」セクションを参照してください。 環境はワークスペースから簡単に管理することができます。 これらには次の機能が含まれます。
 

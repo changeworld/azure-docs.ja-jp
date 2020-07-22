@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: d489ed9dbf9b8075951258e0841675877e11be38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506793"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -109,7 +109,7 @@ Web アプリを更新して再デプロイするには、次の手順に従い�
 
 1. `<div>` タグ全体を次のコードに置き換えます。
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
@@ -150,3 +150,11 @@ Web アプリの **[概要]** ページには、参照、停止、開始、再�
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core と SQL Database](app-service-web-tutorial-dotnetcore-sqldb.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

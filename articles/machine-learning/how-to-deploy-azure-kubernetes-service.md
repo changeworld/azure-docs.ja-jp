@@ -1,21 +1,21 @@
 ---
-title: Azure Kubernetes Service にモデルをデプロイする方法
+title: ML モデルを Kubernetes Service にデプロイする
 titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service を使用して Web サービスとして Azure Machine Learning のモデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 01/16/2020
-ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.date: 06/23/2020
+ms.openlocfilehash: 16465ff823fab1b13f43aec33cb41f9b26b5c054
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392558"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -137,6 +137,7 @@ Azure CLI または portal を使用した AKS クラスターの作成の詳細
 
 * [AKS クラスターの作成 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [AKS クラスターの作成 (ポータル)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 次の例では、既存の AKS クラスターをワークスペースにアタッチする方法を示します。
 
@@ -366,6 +367,8 @@ print(token)
 > トークンの `refresh_by` 時刻の後に新しいトークンを要求する必要があります。
 >
 > Azure Machine Learning ワークスペースは、ご利用の Azure Kubernetes Service クラスターと同じリージョンに作成することを強くお勧めします。 トークンを使用して認証するために、Web サービスは、Azure Machine Learning ワークスペースの作成先のリージョンに対して呼び出しを行います。 ワークスペースのリージョンが利用不可になった場合、ワークスペースとは異なるリージョンにクラスターがあったとしても、Web サービスのトークンがフェッチできなくなります。 その場合、ワークスペースのリージョンが利用可能な状態に戻るまで、事実上、トークン ベースの認証が利用できない状態となります。 また、クラスターのリージョンとワークスペースのリージョンとの間の距離が長くなるほど、トークンのフェッチにかかる時間も長くなります。
+>
+> トークンを取得するには、Azure Machine Learning SDK または [az ml service get-access-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) コマンドを使用する必要があります。
 
 ## <a name="update-the-web-service"></a>Web サービスを更新する
 

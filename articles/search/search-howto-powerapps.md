@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: e4afa3c122fa6e21b29b6ad52a386096b20aa055
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184499"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565828"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>チュートリアル:Power Apps から Cognitive Search インデックスに対してクエリを実行する
 
@@ -74,7 +74,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
    * [動詞] は `GET` を選択します
 
-   * [URL] には、検索インデックスに対するサンプル クエリを入力します (`search=*` ではすべてのドキュメントが返され、`$select=` ではフィールドを選択できます)。 API バージョンは必須です。 すべて指定した URL は、`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06` のようになります。
+   * [URL] には、検索インデックスに対するサンプル クエリを入力します (`search=*` ではすべてのドキュメントが返され、`$select=` ではフィールドを選択できます)。 API バージョンは必須です。 すべて指定した URL は、`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30` のようになります。
 
    * [ヘッダー] には、「`Content-Type`」と入力します。 
 
@@ -82,7 +82,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
        :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="[サンプルからのインポート]" border="true":::
 
-1. **[インポート]** をクリックして、要求を自動入力します。 各パラメーターの横にある **[...]** 記号をクリックして、パラメーターのメタデータの設定を 完了します。 各パラメーターの更新後、 **[戻る]** をクリックして、要求ページに戻ります。
+1. **[インポート]** をクリックして、要求を自動入力します。 各パラメータの横にある **...** シンボルをクリックして、パラメーターのメタデータの設定を完了します。 各パラメーターの更新後、 **[戻る]** をクリックして、要求ページに戻ります。
 
    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="サンプル ダイアログからのインポート" border="true":::
 
@@ -94,7 +94,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="バージョン パラメーターのメタデータ" border="true":::
 
-1. *api-version* では: **[既定値]** を `2019-05-06` に設定し、 **[必須]** を *[はい]* に設定して、 **[可視性]** を *[内部]* に設定します。  
+1. *api-version* では: **[既定値]** を `2020-06-30` に設定し、 **[必須]** を *[はい]* に設定して、 **[可視性]** を *[内部]* に設定します。  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="バージョン パラメーターのメタデータ" border="true":::
 
@@ -106,7 +106,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```

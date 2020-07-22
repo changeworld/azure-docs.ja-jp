@@ -2,14 +2,14 @@
 title: リソース ログの収集と分析
 description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892395"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259611"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
@@ -29,7 +29,7 @@ Log Analytics ワークスペースは、Azure リソースからだけでなく
 コンテナー インスタンスでログ記録を有効にするには、次のものが必要です。
 
 * [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](/azure/cloud-shell/overview))
+* [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics の資格情報を取得する
 
@@ -68,7 +68,7 @@ az container create \
 YAML でコンテナー グループをデプロイしたい場合にはこの方法を使用します。 次の YAML は、1 つのコンテナーが含まれたコンテナー グループを定義します。 YAML を新しいファイルにコピーしてから、`LOG_ANALYTICS_WORKSPACE_ID` と `LOG_ANALYTICS_WORKSPACE_KEY` を前の手順で取得した値に置き換えます。 ファイルを **deploy-aci.yaml** として保存します。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: mycontainergroup001
 properties:
@@ -153,7 +153,7 @@ ContainerInstanceLog_CL
 
 Azure Monitor ログでのログのクエリとアラートの構成について詳しくは、以下をご覧ください。
 
-* [Azure Monitor ログでのログ検索について](../log-analytics/log-analytics-log-search.md)
+* [Azure Monitor ログでのログ検索について](../azure-monitor/log-query/log-query-overview.md)
 * [Azure Monitor での統合アラート](../azure-monitor/platform/alerts-overview.md)
 
 

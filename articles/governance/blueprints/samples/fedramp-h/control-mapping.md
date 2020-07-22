@@ -1,14 +1,14 @@
 ---
 title: FedRAMP High ブループリント サンプルのコントロール
 description: FedRAMP High ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 01/31/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77150614"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517203"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルのコントロール マッピング。
 
@@ -118,9 +118,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 監査の確認、分析、および報告 | 統合/スキャンおよび監視機能
 
-このブループリントは、仮想マシン、仮想マシン スケール セット、SQL マネージド インスタンス、SQL サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。
-また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。
-詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も活用することをお勧めします。
+このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も活用することをお勧めします。
 
 - \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
 - \[プレビュー\]:Azure Monitor for VMs の有効化

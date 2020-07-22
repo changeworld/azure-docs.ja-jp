@@ -6,15 +6,18 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457435"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023569"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>カスタマー マネージド キーを使用して App Configuration データを暗号化する
 Azure App Configuration では、[保存されている機密情報を暗号化](../security/fundamentals/encryption-atrest.md)します。 カスタマー マネージド キーを使用すると、暗号化キーを管理できるため、データ保護が強化されます。  マネージド キー暗号化が使用されている場合、App Configuration 内のすべての機密情報が、ユーザー指定の Azure Key Vault キーで暗号化されます。  これにより、必要に応じて暗号化キーを交換することができます。  また、App Configuration インスタンスのキーへのアクセスを取り消すことによって、機密情報への Azure App Configuration のアクセスを取り消すことができます。
+
+> [!NOTE]
+> インド中部を "*除く*" すべてのリージョンで、カスタマー マネージド キーが一般提供されました。 **インド中部**リージョンでは、Azure App Configuration でカスタマー マネージド キーをパブリック プレビューとして使用できます。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。
 
 ## <a name="overview"></a>概要 
 Azure App Configuration では、Microsoft によって提供される 256 ビットの AES 暗号化キーを使用して、保存されている機密情報を暗号化します。 すべての App Configuration インスタンスには、サービスによって管理され、機密情報を暗号化するために使用される独自の暗号化キーがあります。 機密情報には、キーと値のペアで検出された値が含まれます。  カスタマー マネージド キーの機能が有効になっている場合、App Configuration では、App Configuration インスタンスに割り当てられたマネージド ID を使用して Azure Active Directory で認証を行います。 その後、マネージド ID で Azure Key Vault が呼び出され、App Configuration インスタンスの暗号化キーがラップされます。 ラップされた暗号化キーはその後、格納され、ラップされていない暗号化キーは App Configuration 内に 1 時間キャッシュされます。 App Configuration では、ラップされていないバージョンの App Configuration インスタンスの暗号化キーが 1 時間ごとに更新されます。 これにより、通常の運用条件下の可用性が保証されます。 
@@ -75,7 +78,7 @@ Azure App Configuration に対するカスタマー マネージド キー機能
 1. Azure CLI を使用して、システム割り当てマネージド ID を作成します。その際に、前の手順で使用された App Configuration インスタンスとリソース グループの名前に置き換えます。 マネージド ID は、マネージド キーにアクセスするために使用されます。 App Configuration インスタンスの名前を示すために、`contoso-app-config` を使用しています。
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
     このコマンドの出力には、システム割り当て ID のプリンシパル ID ("principalId") とテナント ID ("tenandId") が含まれます。  これは、マネージド キーへの ID によるアクセスを許可するために使用されます。

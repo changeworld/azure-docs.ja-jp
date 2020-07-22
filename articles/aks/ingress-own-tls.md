@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで独自の証明書を使用する NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: dce3cf4e7db45b00b29469524d7576f6065ebaf4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 07/02/2020
+ms.openlocfilehash: b3e844c0c4d4861f7a0a0e12c4ae9d59e23c24e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561932"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251514"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成し、独自の TLS 証明書を使用する
 
@@ -47,6 +47,9 @@ ms.locfileid: "82561932"
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
@@ -57,7 +60,13 @@ helm install nginx-ingress stable/nginx-ingress \
 
 インストールの間に、Azure パブリック IP アドレスがイングレス コントローラーに対して作成されます。 このパブリック IP アドレスは、イングレス コントローラーが存続している間は静的です。 イングレス コントローラーを削除すると、パブリック IP アドレスの割り当てが失われます。 続いてさらに別のイングレス コントローラーを作成すると、新しいパブリック IP アドレスが割り当てられます。 パブリック IP アドレスを使用し続けることを望む場合は、代わりに[静的パブリック IP アドレス][aks-ingress-static-tls]を使用してイングレス コントローラーを作成できます。
 
-パブリック IP アドレスを取得するには、`kubectl get service` コマンドを使います。 IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。
+パブリック IP アドレスを取得するには、`kubectl get service` コマンドを使います。
+
+```console
+kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```
+
+IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -231,6 +240,12 @@ spec:
 
 `kubectl apply -f hello-world-ingress.yaml` コマンドを使用してイングレス リソースを作成します。
 
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+出力例は、イングレス リソースが作成されたことを示しています。
+
 ```
 $ kubectl apply -f hello-world-ingress.yaml
 
@@ -300,7 +315,13 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>リソースを個々に削除する
 
-作成したリソースを個々に削除するという、きめ細かな方法もあります。 `helm list` コマンドを使用して、Helm リリースを一覧表示します。 次の出力例に示すように、*nginx-ingress* という名前のグラフを探します。
+作成したリソースを個々に削除するという、きめ細かな方法もあります。 `helm list` コマンドを使用して、Helm リリースを一覧表示します。 
+
+```console
+helm list --namespace ingress-basic
+```
+
+次の出力例に示すように、*nginx-ingress* という名前のグラフを探します。
 
 ```
 $ helm list --namespace ingress-basic
@@ -309,7 +330,13 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1 
 ```
 
-`helm uninstall` コマンドでリリースをアンインストールします。 次の例では、NGINX イングレスのデプロイをアンインストールします。
+`helm uninstall` コマンドでリリースをアンインストールします。 
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+次の例では、NGINX イングレスのデプロイをアンインストールします。
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic
@@ -357,7 +384,7 @@ kubectl delete namespace ingress-basic
 - Let's Encrypt を使用して、[動的パブリック IP アドレスを指定][aks-ingress-tls]または[静的パブリック IP アドレスを指定][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 [helm]: https://helm.sh/
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm

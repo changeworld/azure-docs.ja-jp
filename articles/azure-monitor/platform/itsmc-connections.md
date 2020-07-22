@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
-ms.date: 05/24/2018
-ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870590"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655895"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](../../azure-monitor/platform/itsmc-overview.md)に関する記事をご覧ください。
@@ -201,8 +201,10 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 > 最後に [update]\(更新\) をクリックします。
 > 2) **接続が維持されるように内部プロシージャを確立することを推奨します:** トークンを更新するための更新トークンの有効期限にしたがってください。 更新トークンの予想される有効期限の前に必ず次の操作を行ってください (更新トークンの有効期限が切れる数日前に行うことをお勧めします)。
 >
->>  1) [ITSM コネクタ構成の手動での同期プロセスを完了します](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) セキュリティ上の理由から古いキーを保持することは推奨されないため、古い更新トークンを取り消します。 ServiceNow ブレードで System OAuth を検索し、[Manage Tokens]\(トークンの管理\) を選択します。 OAuth 名と有効期限の日付にしたがって、一覧から古いトークンを選択します。 [Revoke Access]\(アクセス権の取り消し\)、[Revoke]\(取り消し\) の順にクリックします。
+> 1. [ITSM コネクタ構成の手動での同期プロセスを完了します](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 2. セキュリティ上の理由から古いキーを保持することは推奨されないため、古い更新トークンを取り消します。 ServiceNow ブレードで System OAuth を検索し、[Manage Tokens]\(トークンの管理\) を選択します。 OAuth 名と有効期限の日付にしたがって、一覧から古いトークンを選択します。
+> ![SNOW システムの OAuth 定義](media/itsmc-connections/snow-system-oauth.png)
+> 3. [Revoke Access]\(アクセス権の取り消し\)、[Revoke]\(取り消し\) の順にクリックします。
 
 - Microsoft Log Analytics 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細については、こちらを参照してください](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
 - インストールしたユーザー アプリの統合ユーザー ロールを作成します。 統合ユーザー ロールを作成する方法については、[こちら](#create-integration-user-role-in-servicenow-app)をご覧ください。

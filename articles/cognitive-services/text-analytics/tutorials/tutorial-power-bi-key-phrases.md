@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4bf2f12ef79f8551291316b5446121f2735d9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75378536"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206574"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 
@@ -34,7 +34,7 @@ Microsoft Power BI Desktop は、データへの接続、データの変換、�
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop。 [無料でダウンロードできます](https://powerbi.microsoft.com/get-started/)。
-- Microsoft Azure アカウント。 [無料試用版を開始する](https://azure.microsoft.com/free/)か、[サインイン](https://portal.azure.com/)します。
+- Microsoft Azure アカウント。 [無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)するか、[サインイン](https://portal.azure.com/)してください。
 - Text Analytics API を使用する Cognitive Services API アカウント。 ない場合は、[サインアップ](../../cognitive-services-apis-create-account.md)して、5,000 トランザクション/月の Free レベル ([価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)参照) を使用して、このチュートリアルを完了できます。
 - サインアップ時に生成された [Text Analytics アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - ユーザーのコメント。 [用意されているサンプル データ](https://aka.ms/cogsvc/ta)または自身のデータを使用できます。 このチュートリアルでは、サンプル データを使用することを前提としています。
@@ -91,7 +91,7 @@ Power BI Desktop で、 **[ホーム]** リボンを選択します。 **[外部
 
 Text Analytics サービスの [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) は、HTTP 要求ごとに最大 1,000 個のテキスト ドキュメントを処理できます。 Power BI では一度に 1 レコードずつ処理する方が好まれるため、このチュートリアルでは、API の各呼び出しには 1 つのドキュメントのみが含まれます。 Key Phrases API では、処理されるドキュメントごとに次のフィールドが必要です。
 
-| | |
+| フィールド | 説明 |
 | - | - |
 | `id`  | 要求内のこのドキュメントの一意の識別子。 応答にもこのフィールドが含まれます。 そのため、複数のドキュメントを処理する場合、抽出されたキー フレーズを元のドキュメントと簡単に関連付けることができます。 このチュートリアルでは、要求ごとに 1 つのドキュメントのみを処理するため、各要求の `id` 値が同じになるようにハード コーディングできます。|
 | `text`  | 処理されるテキスト。 このフィールドの値は、[前のセクション](#PreparingData)で作成した `Merged` 列に基づきます。それには、結合された subject の行と comment のテキストが含まれています。 Key Phrases API では、このデータの文字数の上限は約 5,120 文字です。|

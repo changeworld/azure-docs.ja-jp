@@ -7,17 +7,17 @@ documentationcenter: na
 author: steveesp
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60743081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708248"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>帯域幅/スループットのテスト (NTTTCP)
 
@@ -63,7 +63,7 @@ NTTTCP は、独立したフォルダー (C:\\tools など) に配置するこ�
 
 次のように、NTTTCP が Windows ファイアウォールを通過することを許可します。
 
-netsh advfirewall firewall add rule program=\<パス\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall firewall add rule program=\<PATH\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
 たとえば、ntttcp.exe を "c:\\tools" フォルダーにコピーした場合、このコマンドは次のようになります。 
 
@@ -132,13 +132,13 @@ ntttcp -s10.0.0.4 -t 300
 
 #### <a name="from-linux-to-windows"></a>Linux から Windows へ:
 
-受信者 \<Windows>:
+受信者\<Windows>:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-送信者 \<Linux >:
+送信者\<Linux>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +146,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>Windows から Linux へ:
 
-受信者 \<Linux>:
+受信者\<Linux>:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-送信者 \<Windows>:
+送信者\<Windows>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

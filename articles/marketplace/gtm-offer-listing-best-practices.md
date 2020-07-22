@@ -1,68 +1,194 @@
 ---
-title: Go-To-Market Services - オファー掲載のベスト プラクティス | Azure Marketplace
-description: Go-To-Market Services - このセクションでは、オファーの掲載に関するベスト プラクティスについて説明します
-author: qianw211
+title: オファーの掲載のベスト プラクティス - Microsoft 商業マーケットプレース
+description: Microsoft AppSource と Azure Marketplace のオファーを市場に出すための掲載のベスト プラクティスについて説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 95f5083b5f00834e65a8385835635588033bd977
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: keferna
+ms.author: keferna
+ms.date: 07/06/2020
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684573"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118394"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
-このセクションの表は、魅力的なマーケットプレースのオファーを作成するための提案をまとめたものです。 マーケティング素材を作成し、構成するには、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)にアクセスします。 
+この記事では、市販のマーケットプレース オファーを作成し、機能させるためのアイディアを提供します。 次の表は、パートナー センターでオファー情報を完成させるためのベスト プラクティスについてまとめたものです。 オファー実行方法の分析については、パートナー センターの[マーケットプレース分析情報ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)に移動してください。 
 
 ## <a name="storefront-offer-details"></a>ストアフロント オファーの詳細
 
 | ストアフロントの設定 | ベスト プラクティス |
 |:--- |:--- |  
-| プラン名 | 強力なタイトルを付ける:<br> <ul> <li> アプリには、顧客に対する中心的な価値を伝える名前を付けるようにします。 </li> <li> 検索エンジンの結果で高い順位を得られるように、アプリのタイトルに検索キーワードを含めます。 </li> </ul> コンサルティング サービスのリストは、決められたタイトルの形式 <br>[オファー名\]: [期間] [オファーの種類] に従います \(例: *Contoso:2 週間の実装*)。 <br><br> ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
-| オファーの説明 | オファーの明確な説明を入力する:<br> <ul> <li> 説明の先頭の数文で、オファーの価値提案を明確に説明します。 </li> <li> 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。 </li> <li> 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。 </li> <li> できるだけ業界固有の語彙や利益に基づく表現を使用します。</li> <li> さらに、コンサルティング サービスの掲載では、提供するプロフェッショナル サービスを明確に示す必要があります。 </li></ul> 価値提案の中心の要素には、以下の情報を含めるようにします。<ul><li>製品の説明。</li><li>製品から利益を得られるユーザーの種類。</li><li>製品が対応する顧客のニーズや問題。</li></ul> |
+| プラン名 | アプリの場合は、顧客がプランを見つけるのに役立つ検索キーワードを含む明確なタイトルを入力します。 <br> <br> コンサルティング サービスの場合は、[プラン名]: [期間] [オファーの種類] (例: Contoso:2-週間 実装) の形式に従います。 <br> <br> ブランドのガイドラインに従う: Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
+| オファーの説明 | 先頭の数文で、オファーの価値提案を明確に説明します。  検索エンジンの結果でこれらの文が使用される可能性があることに留意してください。 価値提案の中心の要素には、以下を含めるようにします。 <ul> <li>製品またはソリューションの説明。 </li> <li> 製品またはソリューションの恩恵を得られるユーザーのペルソナ。 </li> <li> 製品またはソリューションが対応する顧客のニーズや問題。 </li> </ul> <br> 可能な場合は、業界の標準的な語彙や利益に基づく表現を使用します。  特徴や機能に頼って製品を販売しようとせずに、  提供する価値に焦点を当ててください。 <br> <br> コンサルティング サービスの掲載では、提供するプロフェッショナル サービスを明確に示します。 |
 
-このセクションの表は、魅力的なマーケットプレースのオファーを作成するための提案をまとめたものです。 マーケティング素材を作成し、構成するには、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)にアクセスします。 
+このセクションの表は、魅力的なマーケットプレースのオファーを作成するための提案をまとめたものです。 マーケティング素材を作成し、構成するには、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/)にアクセスします。 
 
 ## <a name="storefront-listing-details"></a>ストアフロントのリストの詳細
 
-| ストアフロントの設定 | ベスト プラクティス |
-|:--- |:--- |  
-| 業界:AppSource アプリとコンサルティング サービスのみ | オファーが業界固有のニーズに対応している場合は、業界を選択する: <ul><li> オファーの説明に業界固有の機能を含めるようにします。</li> </ul> **注**:オプションの最大数は、オファーの種類によって異なり、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)に表示されます。 |
-| Categories | オファーに最も合っているカテゴリを選択する:<br> <ul> <li> カテゴリはお客様が関連アプリを検索するときに使用するので、慎重に選択してください。 </li> <li> オファーがカテゴリ固有のニーズにどのように対応しているかをプランの説明に含めます。 </li> </ul> **注**:オプションの最大数は、オファーの種類によって異なり、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)に表示されます。 |
-| アプリが連携する製品 (最大 3 個):AppSource アプリのみ | ソリューションで使用する、または拡張される追加の製品とテクノロジを列挙します。 たとえば、Azure IoT Hub、Azure Machine Learning などです。 |
-| 検索キーワード (最大 3 個) | 検索キーワードは、ビジネス ユーザーが探しているオファーを見つけるのに役立つことがあります <ul> <li> Azure Marketplace で </li> <li> AppSource で </li> <li> 検索エンジンを使用 </li> </ul> 掲載がこれらの検索に表示されるためには、次のことが必要です。 <ul> <li> オファーの上位 3 つの検索キーワードを明らかにします。 </li> <li> オファーの概要と説明に検索キーワードを組み込みます </li> <li> ここに検索キーワードを列記します。 </li> </ul> |
+さまざまなストアフロントのカテゴリと業界が、さまざまなプランの種類に適用されます。
 
-### <a name="category"></a>カテゴリ
+| ネットショップ | Categories <br>(ネットショップ別) | Categories <br>(ネットショップ別) | 業界 <br> (AppSource 向け) |
+| :------------------- |:----------------:|:------:|:-------------:|
+| **オファリング タイプ**   |  **Azure Marketplace**  | **AppSource**  |
+| Azure アプリ | X | |
+| コンテナー | X | |
+| コンサルティング サービス | | | X |
+| Dynamics 365 for Customer Engagement & Power Platform | | X | X |
+| Dynamics 365 Finance & Supply Chain Management | | X | X | 
+| Dynamics 365 Business Central | | X | X |
+| IoT Edge のモジュール | X | |
+| Power BI | | X | X |
+| SaaS | X | X | X |
+| Azure Virtual Machine |  X |    |
 
-Azure Marketplace と Microsoft AppSource は、さまざまな顧客の固有の要件に対応するネットショップです。 オファーごとに最適なネットショップとカテゴリを選択し、ロール別に顧客をターゲットにします。 
+### <a name="categories"></a>Categories
 
-オファーには最大 2 つのカテゴリと 2 つのサブカテゴリを選択できます。 下の一覧にあるカテゴリとサブカテゴリは両方のネットショップで利用できます。  カテゴリはターゲットにした客層、オファーの説明、オファーの価値提案に合わせて選択してください。
+Microsoft AppSource と Azure Marketplace は、顧客の固有の要件に対応する 2 つの異なるネットショップです。 Azure Marketplace は、Azure 上でソリューションを構築する IT プロフェッショナルと開発者を対象としています。  Microsoft AppSource は、ビジネスや業界の SaaS アプリケーション、Dynamics 365 アドイン、Microsoft 365 アドイン、および Power Platform アプリを探しているビジネス ユーザーを対象としています。
 
-| **業界**    | **下位業界**  | 
-| :------------------- | :-------------------|
-| *自動車     | *自動車 |
-| 農業     | *その他 - 区分なし |
-| Distribution    | *卸売 <br> *小包の発送 |
-| 教育     | *高等教育 <br> *初等、中等教育/K-12 <br> *図書館と美術館 |
-| 金融サービス     | *銀行と証券 <br> *保険 |
-| Government    | *防御とインテリジェンス (以前の "国家安全保障と公安") <br> *公安と司法 <br> *民間政府 |
-| 医療 (以前の "衛生")   | *医療保険 <br> *医療サービス <br> *製薬 |
-| 製造と資源 (以前の "製造")   | *化学と農薬 <br> *ディスクリート型製造業 <br> *エネルギー |
-| 小売と消費財 (以前の "小売")  | *消費財 <br> *小売 |
-| *メディアと通信 (以前の "メディアと娯楽")  | *メディアと娯楽 <br> *遠距離通信 |
-| プロフェッショナル サービス  | *法律 <br> *パートナー専門サービス業 |
-| *建築と建設 (以前の "建築と工学")  | *その他 - 区分なし |
-| *接客と旅行  | *ホテルとレジャー <br> *旅行と輸送 <br> *レストランと食品サービス |
-| *その他の公共セクター産業  | *林業と漁業 <br> *非利益 |
-| *不動産  | *その他 - 区分なし |
+カテゴリとサブカテゴリは、対象ユーザーに基づいて各ストアフロントにマップされています。 プランは、プランの種類、プランのトランザクション機能、カテゴリ/サブカテゴリの選択に応じて、Microsoft AppSource または Azure Marketplace に公開されます。 
+
+プランと対象ユーザーに最適なカテゴリとサブカテゴリを選択します。 選択できるオプションは次のとおりです。
+
+* プライマリ カテゴリとセカンダリ カテゴリを含む、最大 2 つのカテゴリ (省略可能)。
+* プライマリ カテゴリまたはセカンダリ カテゴリごとに最大 2 つのサブカテゴリ。 サブカテゴリを選択しない場合でも、選択したカテゴリのみで検出できます。
+
+| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) (IT プロフェッショナルおよび開発者)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) (ビジネス ユーザー)|
+| :------------------- |:----------------|
+|**Analytics** | **Analytics** |
+| &nbsp;&nbsp;データの分析情報 | &nbsp;&nbsp;高度な分析  |
+| &nbsp;&nbsp;データ分析 |  &nbsp;&nbsp;ビジュアル化 & レポート |
+| &nbsp;&nbsp;ビッグ データ | **AI + 機械学習**  |
+| &nbsp;&nbsp;予測分析 | &nbsp;&nbsp;ビジネス用 AI |
+| &nbsp;&nbsp;リアルタイム/ストリーミング分析 | &nbsp;&nbsp;ボット アプリ |
+| **AI + 機械学習** | **コラボレーション** |
+| &nbsp;&nbsp;ボット サービス | &nbsp;&nbsp;連絡 & ユーザー |
+| &nbsp;&nbsp;コグニティブ サービス | &nbsp;&nbsp;会議の管理 |
+| &nbsp;&nbsp;ML サービス | &nbsp;&nbsp;サイトの設計 & 管理 |
+| &nbsp;&nbsp;自動化された ML | &nbsp;&nbsp;タスク & プロジェクト管理 |
+| &nbsp;&nbsp;ビジネス/ロボット プロセスの自動化 | &nbsp;&nbsp;音声 & ビデオ会議 |
+| &nbsp;&nbsp;データのラベル付け | **コンプライアンス & 法律** |
+| &nbsp;&nbsp;データの準備 | &nbsp;&nbsp;税金 & 監査 |
+| &nbsp;&nbsp;ナレッジ マイニング | &nbsp;&nbsp;法律 |
+| &nbsp;&nbsp;ML 操作 | &nbsp;&nbsp;データ、ガバナンス、プライバシー |
+| **ブロックチェーン**  | &nbsp;&nbsp;正常性 & 安全性 |
+| &nbsp;&nbsp;アプリのアクセラレータ | **カスタマー サービス**  |
+| &nbsp;&nbsp;単一ノード台帳 | &nbsp;&nbsp;Contact Center |
+| &nbsp;&nbsp;マルチノード台帳 | &nbsp;&nbsp;対面サービス |
+| &nbsp;&nbsp;ツール | &nbsp;&nbsp;バック オフィス & 従業員サービス |
+| **Compute**  | &nbsp;&nbsp;ナレッジ & ケース管理 |
+| &nbsp;&nbsp;アプリケーション インフラストラクチャ | &nbsp;&nbsp;ソーシャル メディア & オムニチャネル エンゲージメント |
+| &nbsp;&nbsp;オペレーティング システム | **ファイナンス** |
+| &nbsp;&nbsp;キャッシュ | &nbsp;&nbsp;会計 |
+| **Containers**  | &nbsp;&nbsp;アセット管理 |
+| &nbsp;&nbsp;コンテナーの使用開始 | &nbsp;&nbsp;分析、統合、レポート |
+| &nbsp;&nbsp;コンテナー アプリ | &nbsp;&nbsp;クレジット & コレクション |
+| &nbsp;&nbsp;コンテナー イメージ | &nbsp;&nbsp;コンプライアンス & リスク管理 |
+| **データベース**  | **位置情報** |
+| &nbsp;&nbsp;NoSQL データベース | &nbsp;&nbsp;マップ |
+| &nbsp;&nbsp;リレーショナル データベース | &nbsp;&nbsp;ニュース & 天気 |
+| &nbsp;&nbsp;台帳/ブロックチェーン データベース | **人事** |
+| &nbsp;&nbsp;データ レイク | &nbsp;&nbsp;人材獲得 |
+| &nbsp;&nbsp;データ ウェアハウス | &nbsp;&nbsp;人材管理 |
+| **開発者ツール**  | &nbsp;&nbsp;HR 操作 |
+| &nbsp;&nbsp;ツール | &nbsp;&nbsp;人員の計画 & 分析 |
+| &nbsp;&nbsp;スクリプト | **IT と管理ツール** |
+| &nbsp;&nbsp;開発者サービス | &nbsp;&nbsp;管理ソリューション |
+| **DevOps**  | &nbsp;&nbsp;ビジネス アプリケーション |
+| **統合**  | **モノのインターネット (IoT)** |
+| &nbsp;&nbsp;メッセージング | &nbsp;&nbsp;アセット管理 & 操作 |
+| **IT と管理ツール**  | &nbsp;&nbsp;接続された製品 |
+| &nbsp;&nbsp;管理ソリューション | &nbsp;&nbsp;インテリジェント サプライ チェーン |
+| &nbsp;&nbsp;ビジネス アプリケーション | &nbsp;&nbsp;予測的なメンテナンス |
+| **ID**  | &nbsp;&nbsp;リモート監視 |
+| &nbsp;&nbsp;アクセス管理 | &nbsp;&nbsp;安全性 & セキュリティ |
+| **モノのインターネット (IoT)**  | &nbsp;&nbsp;スマート インフラストラクチャ & リソース |
+| &nbsp;&nbsp;IoT 接続 | &nbsp;&nbsp;車両 & モビリティ |
+| &nbsp;&nbsp;IoT コア サービス | **マーケティング** |
+| &nbsp;&nbsp;IoT Edge のモジュール | &nbsp;&nbsp;広告 |
+| &nbsp;&nbsp;IoT ソリューション | &nbsp;&nbsp;分析 |
+| &nbsp;&nbsp;データ分析 & ビジュアル化 | &nbsp;&nbsp;キャンペーン管理 & 自動化 |
+| **メディア**  | &nbsp;&nbsp;電子メール マーケティング |
+| &nbsp;&nbsp;メディア サービス | &nbsp;&nbsp;イベント & リソース管理 |
+| &nbsp;&nbsp;コンテンツ保護 | &nbsp;&nbsp;調査 & 分析 |
+| &nbsp;&nbsp;ライブ & オンデマンド ストリーミング | &nbsp;&nbsp;ソーシャル メディア |
+| **監視と診断**  | **運営とサプライ チェーン** |
+| **移行**  | &nbsp;&nbsp;アセット & 運用管理 |
+| &nbsp;&nbsp;データ移行 | &nbsp;&nbsp;需要予測 |
+| **複合現実**  | &nbsp;&nbsp;情報管理 & 接続 |
+| **ネットワーク**  | &nbsp;&nbsp;計画、購入、レポート |
+| &nbsp;&nbsp;アプライアンス マネージャー | &nbsp;&nbsp;品質 & サービス管理 |
+| &nbsp;&nbsp;接続 | &nbsp;&nbsp;販売 & 注文管理 |
+| &nbsp;&nbsp;ファイアウォール | &nbsp;&nbsp;輸送 & ウェアハウス管理 |
+| &nbsp;&nbsp;ロード バランサー | **生産性** |
+| **Security**  | &nbsp;&nbsp;コンテンツの作成 & 管理 |
+| &nbsp;&nbsp;ID & アクセス管理 | &nbsp;&nbsp;ドキュメントの管理 |
+| &nbsp;&nbsp;脅威の防止 | &nbsp;&nbsp;電子メール管理 |
+| &nbsp;&nbsp;情報の保護 | &nbsp;&nbsp;言語 & 翻訳 |
+| **Storage**  | &nbsp;&nbsp;検索 & リファレンス |
+| &nbsp;&nbsp;バックアップ & 復旧 | &nbsp;&nbsp;ゲーミフィケーション |
+| &nbsp;&nbsp;エンタープライズ ハイブリッド ストレージ | **営業** |
+| &nbsp;&nbsp;ファイル共有 | &nbsp;&nbsp;テレセールス |
+| &nbsp;&nbsp;データのライフサイクル管理 | &nbsp;&nbsp;構成、価格設定、見積もり (CPQ) |
+| **Web**  | &nbsp;&nbsp;契約管理 |
+| &nbsp;&nbsp;ブログ & CMS | &nbsp;&nbsp;CRM |
+| &nbsp;&nbsp;スターター Web Apps | &nbsp;&nbsp;e コマース |
+| &nbsp;&nbsp;e コマース | &nbsp;&nbsp;ビジネス データ エンリッチメント  |
+| &nbsp;&nbsp;Web アプリ フレームワーク | &nbsp;&nbsp;販売機能  |
+| &nbsp;&nbsp;Web Apps |  |
+
+**重要: SaaS プランと Microsoft 365 アドイン**
+
+マーケットプレースの顧客がプランを表示および購入する方法にトランザクション機能がどのように影響するかについての詳細は、[プランの種類別のガイド](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)を参照してください。 SaaS プランでは、プランのトランザクション機能だけでなく、カテゴリの選択によって、プランが発行されるネットショップが決まります。
+
+| SaaS プラン    | SaaS プラン   | SaaS プラン  | SaaS プラン   | SaaS プラン   | SaaS プラン   | SaaS プラン    | 該当するネットショップ | 該当するネットショップ |
+|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
+| 従量制課金 | Microsoft 365 アドイン | [Contact me (お問い合わせ)] | トランザクション (少なくとも 1 つのプラン) | プライベート専用プラン | パブリック専用プラン | パブリック & プライベート プラン | AppSource | Azure Marketplace |
+|  | X |  |  |  |  |  | X |  |
+| X |  |  | X | X |  |  |  | X |
+| X |  |  | X |  | X |  |  | X |
+| X |  |  | X |  |  | X |  | X<sup>2</sup> |
+|  |  |  | X | X |  |  |  | X |
+|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
+|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1、2</sup> |
+|  |  | X |  |  |  |  | X<sup>1</sup> | X<sup>1</sup> | 
+
+1. カテゴリ/サブカテゴリと業界の選択によって異なります
+2. プライベート プランを含むオファーは Azure portal に発行されます
+
 
 ### <a name="industries"></a>業界
 
-業界の選択は、AppSource に公開されているオファーと Azure Marketplace に公開されているコンサルティング サービスのみに適用されます。 オファーが業界固有のニーズに対応している場合は、業界や業種を選択し、オファーの説明に業界固有の機能を入力します。 最大 2 つの業界を選択し、業界あたり 2 つの業種を選択できます。
+業界の選択は、AppSource に公開されているオファーと Azure Marketplace に公開されているコンサルティング サービスのみに適用されます。  オファーが業界固有のニーズに対応している場合は、業界や業種を選択し、オファーの説明に業界固有の機能を入力します。 最大 2 つの業界を選択し、業界あたり 2 つの業種を選択できます。
+
+>[!Note]
+>Azure Marketplace のコンサルティング サービス プランの場合、業界の業種はありません。
+
+| **業界** |  **業種** |
+| :------------------- | :----------------|
+| **農業** | |
+| **建築 & 建設** | |
+| **自動車** | |
+| **Distribution** | 卸売 <br> 小包の発送 |  
+| **Education** | 高等教育 <br> 初等、中等教育/K-12 <br> 図書館と美術館 |
+| **金融サービス** | 銀行と証券 <br> 保険 | 
+| **政府** |  防衛とインテリジェンス <br> 民間政府 <br> 公安と司法 |
+| **医療** | 医療保険 <br> 医療サービス <br> 製薬 | 
+| **接客と旅行** | 旅行と輸送 <br> ホテルとレジャー <br> レストランと食品サービス | 
+| **製造 & リソース** | 化学と農薬 <br> ディスクリート型製造業 <br> エネルギー | 
+| **メディア & 通信** | メディアと娯楽 <br> 遠距離通信 | 
+| **その他の公共セクター産業** | 林業と漁業 <br> 非営利団体 | 
+| **プロフェッショナル サービス** | パートナー専門サービス業 <br> 法的情報 | 
+| **不動産** | |
+
+Microsoft AppSource のみの業界:
+
+| **業界** |  **業種** |
+| :------------------- | :----------------|
+| **小売 & 一般消費財** | 小売 <br> 消費財 |
 
 ### <a name="applicable-products"></a>適用対象の製品
 
@@ -89,7 +215,7 @@ AppSource で選択した製品に表示されるオファーについて、ア�
 
 次の URL の例には、前述のクエリ パラメーターの両方が含まれています。`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-これらのパラメーターを AppSource の URL に追加すると、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)の分析ダッシュボードでキャンペーンの効果を確認できます。
+これらのパラメーターを AppSource の URL に追加すると、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/)の分析ダッシュボードでキャンペーンの効果を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -97,4 +223,3 @@ AppSource で選択した製品に表示されるオファーについて、ア�
 
 [パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインして、オファーを作成して構成します。
 
----

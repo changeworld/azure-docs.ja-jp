@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 285245e499cfe8a5d7e365044c188191325e4267
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604458"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782859"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 ---
@@ -103,4 +103,4 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
 -   「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 - Azure Security Center の推奨事項をお客様の Azure リソースの保護に役立てる方法について説明しています。
 
--   「[Azure Security Center 上のセキュリティ スコアの向上](security-center-secure-score.md)」 - 脆弱性とセキュリティの推奨事項に優先順位を付けて、お客様のセキュリティ体制を最大限に強化する方法について説明しています。
+-   「[Azure Security Center 上のセキュリティ スコアの向上](secure-score-security-controls.md)」 - 脆弱性とセキュリティの推奨事項に優先順位を付けて、お客様のセキュリティ体制を最大限に強化する方法について説明しています。

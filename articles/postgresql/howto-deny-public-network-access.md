@@ -4,14 +4,14 @@ description: Azure portal を使用して Azure Database for PostgreSQL 単一�
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 4dff2321414721dbd415b468e59aea0ab4b3acee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b51a79027ce834190a4fae5d893e47f2be16abf7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79372733"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102193"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL 単一サーバーでパブリック ネットワーク アクセスを拒否する
 

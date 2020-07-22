@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Windows ファイアウォール データを接続する | Microsoft Docs
-description: Azure Sentinel に Windows ファイアウォール データを接続する方法について説明します。
+description: Azure Sentinel で Windows ファイアウォール コネクタを有効にすると、Log Analytics エージェントがインストールされている Windows マシンからファイアウォール イベントを簡単にストリーミングできます。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559479"
 ---
 # <a name="connect-windows-firewall"></a>Windows ファイアウォールの接続
 

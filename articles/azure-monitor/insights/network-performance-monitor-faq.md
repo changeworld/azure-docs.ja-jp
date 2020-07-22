@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096217"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184550"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -95,43 +95,55 @@ NPM は、ソース エージェントと宛先の間のすべての可能なル
 NPM は確率論的メカニズムを使用して、各ネットワーク パス、ネットワーク セグメント、および構成要素のネットワーク ホップに対し、それらがその一部となる異常なパスの数に基づき障害確率を割り当てます。 ネットワーク セグメントとホップが異常なパスの一部になる場合が多くなるほど、それらに関連付けられる障害確率が増加します。 このアルゴリズムは、NPM エージェントが相互に接続された多くのノードがある場合に最適です。この場合は障害確率を計算するためのデータ ポイントが増加するためです。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>NPM でアラートを作成する方法はありますか。
-詳しい手順については、[ドキュメントのアラート セクション](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts)を参照してください。
+NPM UI からのアラートの作成は、問題が発生したため現在失敗しています。 手動でアラートを作成してください。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>アラート用の既定の Log Analytics クエリはどのようなものですか。
 パフォーマンス モニター クエリ
 
-    NetworkMonitoring 
-     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
-     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
-    
+```kusto
+NetworkMonitoring
+ | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+```
+
 サービス接続モニター クエリ
 
-    NetworkMonitoring                 
-     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
-     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
-    
+```kusto
+NetworkMonitoring
+ | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+```
+
 ExpressRoute モニター クエリ: 回線クエリ
 
-    NetworkMonitoring
-    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+```
 
 プライベート ピアリング
 
-    NetworkMonitoring 
-     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+```
 
 Microsoft ピアリング
 
-    NetworkMonitoring 
-     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+```
 
-一般的なクエリ   
+一般的なクエリ
 
-    NetworkMonitoring
-    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy")
+```
 
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>NPM はルーターとサーバーを個別のデバイスとして監視できますか。
 NPM は、ソース IP と宛先 IP の間の基になるネットワーク ホップ (スイッチ、ルーター、サーバーなど) の IP およびホスト名のみを識別します。 また、識別されたこれらのホップ間の待機時間を識別します。 これらの基になるホップを個別に監視しません。
@@ -147,21 +159,27 @@ NPM は、ソース IP と宛先 IP の間の基になるネットワーク ホ�
 
 MS ピアリング レベル情報については、ログ検索で次に示すクエリを使用します。
 
-    NetworkMonitoring 
-     | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
-    
+```kusto
+NetworkMonitoring
+ | where SubType == "ERMSPeeringUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
+```
+
 プライベート ピアリング レベル情報については、ログ検索で次に示すクエリを使用します。
 
-    NetworkMonitoring 
-     | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
-  
+```kusto
+NetworkMonitoring
+ | where SubType == "ERVNetConnectionUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
+```
+
 回線レベル情報については、ログ検索で次に示すクエリを使用します。
 
-    NetworkMonitoring 
-        | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+```kusto
+NetworkMonitoring
+ | where SubType == "ERCircuitTotalUtilization"
+ | project CircuitName, BitsInPerSecond, BitsOutPerSecond
+```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>NPM のパフォーマンス モニターではどのリージョンがサポートされていますか。
 NPM は、[サポートされるリージョン](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのネットワーク間の接続を監視できます
@@ -190,10 +208,12 @@ NPM は、ソースと宛先の間のエンド ツー エンドの待機時間�
 
 パスが異常であることを検索するサンプル クエリ:
 
-    NetworkMonitoring 
-    | where ( SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
-    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+```kusto
+NetworkMonitoring
+ | where ( SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+ | project SubType, LossHealthState, LatencyHealthState, MedianLatency
+```
 
 ### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>テストに異常が表示されるのに、トポロジには表示されないのはなぜですか 
 NPM は、エンドツーエンドの損失、待ち時間、およびトポロジをさまざまな間隔で監視します。 損失と待ち時間は 5 秒に 1 回測定され、3 分ごとに集計されます (Performance Monitor と Express Route Monitor の場合)。一方、トポロジは、10 分に 1 回 traceroute を使用して計算されます。 たとえば、3 時 44 分から 4 時 04 分までに、トポロジは 3 回 (3 時 44 分、3 時 54 分、4 時 04 分) 更新される可能性がありますが、損失と待ち時間は約 7 回 (3 時 44 分、3 時 47 分、3 時 50 分、3 時 53 分、3 時 56 分、3 時 59 分、4 時 02 分) 更新されます。 3 時 54 分に生成されるトポロジは、3 時 56 分、3 時 59 分、および 4 時 02 分に計算される損失と待ち時間に対してレンダリングされます。 たとえば、3 時 59 分に ER 回線の異常を示すアラートを受け取ったとします。 あなたは、NPM にログオンし、トポロジの時刻を 3 時 59 分に設定します。 NPM には、3 時 54 分に生成されたトポロジがレンダリングされます。 ネットワークの最後の既知のトポロジを理解するには、TimeProcessed (損失と待ち時間が計算された時刻) フィールドと TracerouteCompletedTime (トポロジが計算された時刻) を比較します。 
@@ -209,11 +229,11 @@ HopLatencyValues は、ソースからエンドポイントまでを示します
 これが発生することがあるのは、ホスト ファイアウォールまたは中間ファイアウォール (ネットワーク ファイアウォールまたは Azure NSG) のいずれかが、NPM による監視に使用されているポート経由で (顧客が変更しない場合の既定はポート 8084) ソース エージェントと宛先の間の通信をブロックしている場合です。
 
 * ホスト ファイアウォールが必要なポートの通信をブロックしていないことを確認するには、次のビューからソースと宛先ノードの正常性状態を表示します。[Network Performance Monitor] -> [構成] -> [ノード] 
-  正常でない場合、指示を表示して、是正措置を行います。 ノードが正常である場合は、以下の手順 b に移動します。 をクリックして、ダウンロード、インストール、使用の方法を確認してください。
+  正常でない場合、指示を表示して、是正措置を行います。 ノードが正常である場合は、以下の手順 b に移動します。 設定します。
 * 中間ネットワーク ファイアウォールまたは Azure NSG が必要なポートで通信をブロックしていないことを確認するには、次の手順を使用して、サード パーティ製の PsPing ユーティリティを使用します。
   * psping ユーティリティは[こちら](https://technet.microsoft.com/sysinternals/psping.aspx)からダウンロードできます 
   * ソース ノードから次のコマンドを実行します。
-    * psping -n 15 \<宛先ノードの IPアドレス\>:ポート番号。既定では、8084 ポートを使用します。 この値を EnableRules.ps1 スクリプトを使用して明示的に変更した場合、使用するカスタム ポート番号を入力します。 これは Azure マシンからオンプレミスへの ping です
+    * psping -n 15 \<destination node IPAddress\>:portNumber。既定で NPM には 8084 ポートが使用されます。 この値を EnableRules.ps1 スクリプトを使用して明示的に変更した場合、使用するカスタム ポート番号を入力します。 これは Azure マシンからオンプレミスへの ping です
 * ping が成功したかどうかを確認します。 成功しない場合は、中間ネットワーク ファイアウォールまたは Azure NSG がこのポートでトラフィックをブロックしていることを示しています。
 * ここで、宛先ノードからソース ノード IP にコマンドを実行します。
 
@@ -222,7 +242,7 @@ HopLatencyValues は、ソースからエンドポイントまでを示します
 A から B へのネットワーク パスが B から A へのネットワーク パスと異なる場合があるように、損失と待機時間についても異なる値が観察されることがあります。
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>すべての ExpressRoute 回線とピアリング接続が検出されないのはなぜですか。
-NPM は、ユーザーがアクセスできるすべてのサブスクリプションの ExpressRoute 回線とピアリング接続を検出します。 Express Route リソースがリンクされているすべてのサブスクリプションを選択し、検出された各リソースの監視を有効にします。 NPM はプライベート ピアリングの検出時に、接続オブジェクトを検索するため、VNET がピアリングに関連付けられているかどうかを確認してください。
+NPM は、ユーザーがアクセスできるすべてのサブスクリプションの ExpressRoute 回線とピアリング接続を検出します。 Express Route リソースがリンクされているすべてのサブスクリプションを選択し、検出された各リソースの監視を有効にします。 NPM はプライベート ピアリングの検出時に、接続オブジェクトを検索するため、VNET がピアリングに関連付けられているかどうかを確認してください。 NPM では、Log Analytics ワークスペースとは異なるテナントにある回線とピアリングが検出されません。
 
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER モニター機能で「Traffic is not passing through ANY circuit」という診断メッセージが表示されます。 これはどういう意味でしょうか。
 
@@ -233,6 +253,12 @@ NPM は、ユーザーがアクセスできるすべてのサブスクリプシ�
 * ER 回線がダウンしている。
 * ルート フィルターが、目的の ExpressRoute 回線よりも、他のルート (VPN 接続や他の ExpressRoute 回線) に高い優先順位を与えるように構成されている。 
 * 監視構成で ExpressRoute 回線を監視するように選択されたオンプレミスと Azure ノードが、目的の ExpressRoute 回線経由で相互接続されていない。 監視対象の ExpressRoute 回線経由で相互に接続されている適切なノードを選択してください。
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>回線またはピアリングが使用可能であり、データが渡されている場合でも、ExpressRoute モニターに異常と報告されるのはなぜですか。
+ExpressRoute モニターでは、エージェントまたはサービスから報告されたネットワーク パフォーマンス値 (損失、待機時間、帯域幅の使用率) と、構成時に設定されたしきい値が比較されます。 回線の場合、報告された帯域幅の使用率が構成で設定されたしきい値よりも高い場合、回線は異常とマークされます。 ピアリングの場合、報告された損失、待機時間、または帯域幅の使用率が構成で設定されたしきい値よりも高い場合、ピアリングは異常とマークされます。 NPM には、正常性の状態を判断するためにメトリックやその他の形式のデータが利用されません。
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute モニターの帯域幅の使用率にメトリックのビットの送受信とは異なる値が報告されるのはなぜですか
+ExpressRoute モニターの場合、帯域幅の使用率は、過去 20 分間の受信および送信の帯域幅の平均値であり、ビット/秒で表されます。Express Route メトリックの場合、ビットの送受信は 1 分あたりのデータ ポイントです。内部的に両方に使用されるデータセットは同じですが、集計値は NPM と ER の各メトリックで異なります。 きめ細かい、分単位の監視と高速アラートの場合は、ER メトリックに直接アラートを設定することをお勧めします
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>ExpressRoute 回線の監視を構成中に Azure ノードが検出されません。
 これは Azure ノードが Operations Manager 経由で接続されているときに発生することがあります。 ExpressRoute モニター機能は、直接エージェントとして接続された Azure ノードのみサポートします。

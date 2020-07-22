@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 388f05c2af1516a0477392f37763a0480c7ad413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128832"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243734"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -38,7 +38,7 @@ ms.locfileid: "82128832"
 -   [要求メソッドを設定する](#SetRequestMethod) - 要求の HTTP メソッドを変更できます。
 -   [状態コードを設定する](#SetStatus) - HTTP 状態コードを指定された値に変更します。
 -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付き[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数の値を、後でアクセスできるように保持します。
--   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、リソース ログにカスタム トレースを追加します。
+-   [トレース](#Trace) - [API Inspector](./api-management-howto-api-inspector.md) 出力、Application Insights テレメトリ、リソース ログにカスタム トレースを追加します。
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。
 
 ## <a name="control-flow"></a><a name="choose"></a> 制御フロー
@@ -140,7 +140,7 @@ ms.locfileid: "82128832"
 
 ### <a name="usage"></a><a name="ChooseUsage"></a> 使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -148,7 +148,7 @@ ms.locfileid: "82128832"
 
 ## <a name="forward-request"></a><a name="ForwardRequest"></a> 要求を転送する
 
-`forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに要求を転送します。 バックエンド サービスの URL は API [設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。
+`forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに要求を転送します。 バックエンド サービスの URL は API [設定](./import-and-publish.md)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。
 
 > [!NOTE]
 > このポリシーを削除すると、要求はバックエンド サービスに転送されず、inbound セクションのポリシーが正常に完了した時点で outbound セクションのポリシーが即座に評価されます。
@@ -259,7 +259,7 @@ ms.locfileid: "82128832"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** backend
 -   **ポリシー スコープ:** すべてのスコープ
@@ -288,7 +288,7 @@ ms.locfileid: "82128832"
   <backend>
     <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
-    <limit-concurrency/>
+    </limit-concurrency>
   </backend>
   <outbound>…</outbound>
 </policies>
@@ -309,7 +309,7 @@ ms.locfileid: "82128832"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -320,7 +320,7 @@ ms.locfileid: "82128832"
 `log-to-eventhub` ポリシーは、指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 その名前が示すように、このポリシーは、オンラインまたはオフライン分析のために、選択された要求または応答コンテキスト情報を保存するために使用します。
 
 > [!NOTE]
-> イベント ハブの構成とイベントのログ記録に関する詳細な手順については、[Azure Event Hubs で API Management イベントを記録する方法](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)に関するページを参照してください。
+> イベント ハブの構成とイベントのログ記録に関する詳細な手順については、[Azure Event Hubs で API Management イベントを記録する方法](./api-management-howto-log-event-hubs.md)に関するページを参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -363,7 +363,7 @@ ms.locfileid: "82128832"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -407,7 +407,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、on-error
 
@@ -475,7 +475,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、ポリシーの以下の[セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。 子ポリシーの使用に関する制限がこのポリシーに継承されることに注意してください。
+このポリシーは、ポリシーの以下の[セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。 子ポリシーの使用に関する制限がこのポリシーに継承されることに注意してください。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -525,7 +525,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -550,7 +550,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-このサンプル ポリシーでは、`send-one-way-request` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+このサンプル ポリシーでは、`send-one-way-request` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <choose>
@@ -599,7 +599,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -625,7 +625,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-この例は、承認サーバーを使用して参照トークンを検証する 1 つの方法を示しています。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+この例は、承認サーバーを使用して参照トークンを検証する 1 つの方法を示しています。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <inbound>
@@ -686,7 +686,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -728,7 +728,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 
@@ -747,7 +747,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-このサンプル ポリシーでは、`set-method` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+このサンプル ポリシーでは、`set-method` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <choose>
@@ -783,7 +783,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、on-error
 
@@ -802,7 +802,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-この例は、承認トークンが無効な場合に 401 応答を返す方法を示しています。 詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+この例は、承認トークンが無効な場合に 401 応答を返す方法を示しています。 詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <choose>
@@ -833,7 +833,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** outbound、backend、on-error
 -   **ポリシー スコープ:** すべてのスコープ
@@ -871,7 +871,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 -   **ポリシー スコープ:** すべてのスコープ
@@ -916,9 +916,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 `trace` ポリシーによって、API Inspector の出力、Application Insights テレメトリ、リソース ログにカスタム トレースが追加されます。
 
--   トレースがトリガーされたときに、ポリシーによって [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。
--   [Application Insights の統合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリが作成されます。
--   [リソース ログ](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
+-   トレースがトリガーされたときに、ポリシーによって [API Inspector](./api-management-howto-api-inspector.md) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。
+-   [Application Insights の統合](./api-management-howto-app-insights.md)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](../azure-monitor/app/data-model-trace-telemetry.md) テレメトリが作成されます。
+-   [リソース ログ](./api-management-howto-use-azure-monitor.md#activity-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -946,7 +946,7 @@ status code and media type. If no example or schema found, the content is empty.
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | trace    | ルート要素。                                                                                                                                        | はい      |
 | message  | ログに記録される文字列または式。                                                                                                                 | はい      |
-| metadata | カスタム プロパティを Application Insights の[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリに追加します。 | いいえ       |
+| metadata | カスタム プロパティを Application Insights の[トレース](../azure-monitor/app/data-model-trace-telemetry.md) テレメトリに追加します。 | いいえ       |
 
 ### <a name="attributes"></a>属性
 
@@ -959,7 +959,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、ポリシーの以下の[セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、ポリシーの以下の[セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -1029,7 +1029,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend
 -   **ポリシー スコープ:** すべてのスコープ
@@ -1040,5 +1040,5 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   [API Management のポリシー](api-management-howto-policies.md)
 -   [ポリシー式](api-management-policy-expressions.md)
--   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
+-   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 -   [ポリシーのサンプル](policy-samples.md)

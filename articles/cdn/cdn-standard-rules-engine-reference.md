@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 06/22/2020
 ms.author: allensu
-ms.openlocfilehash: 6d4fa4451c3db3d6f2a506eabd5676d18b0219f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559309"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN の Standard ルール エンジン リファレンス
 
@@ -32,9 +32,16 @@ Azure Content Delivery Network (Azure CDN) の [Standard ルール エンジン]
 
  ![Azure CDN ルールの構造](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
 
-各ルールには、最大で 4 つの一致条件と 3 つのアクションを含めることができます。 各 Azure CDN エンドポイントには、最大 5 つのルールを含めることができます。 
+各ルールには、最大で 10 個の一致条件と 5 つのアクションを含めることができます。 各 Azure CDN エンドポイントには、最大 25 個のルールを含めることができます。 
 
-Azure CDN エンドポイントの現在の 5 ルール制限には既定の*グローバル ルール*が含まれています。 グローバル ルールに一致条件がなく、グローバル ルールに定義されているアクションが常にトリガーされます。
+この制限に含まれるのは、既定の*グローバル ルール*です。 グローバル ルールには一致条件がなく、グローバル ルールに定義されているアクションは常にトリガーされます。
+
+## <a name="limits-and-pricing"></a>制限と価格 
+
+各 Azure CDN エンドポイントには、最大 25 個のルールを含めることができます。 各ルールには、最大で 10 個の一致条件と 5 つのアクションを含めることができます。 ルール エンジンの価格は、次のディメンションに従います。 
+- ルール: ルールごとに 1 か月あたり $1 
+- 処理された要求数: 100 万要求ごとに $0.60
+- 最初の 5 つのルールは無料のまま
 
 ## <a name="syntax"></a>構文
 

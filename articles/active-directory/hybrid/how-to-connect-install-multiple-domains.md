@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849941"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -73,7 +73,9 @@ bmfabrikam.com ドメインの設定は、以下のようになっています�
 
 次の規則は、このロジックを満たすカスタマイズ済みの要求規則です。
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
 
 
 > [!IMPORTANT]
@@ -137,14 +139,16 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 ## <a name="support-for-subdomains"></a>サブドメインのサポート
 サブドメインの追加では、Azure AD がドメインを処理する方法のために、親の設定を継承します。  そのため、IssuerUri は親に一致させる必要があります。
 
-たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、 **`http://bmcontoso.com/adfs/services/trust`** とする必要があります。  しかし、上で Azure AD に適用した標準ルールでは、発行者を **`http://corp.bmcontoso.com/adfs/services/trust`**  としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
+たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、 **`http://bmcontoso.com/adfs/services/trust`** とする必要があります。  しかし、上で Azure AD に適用した標準ルールでは、発行者を **`http://corp.bmcontoso.com/adfs/services/trust`** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>サブドメインのサポートを有効にする方法
 この動作を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。  そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。
 
 次の要求で実行します。
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```    
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```
 
 [!NOTE]
 正規表現セットの最後の数字は、ルート ドメインにある親ドメインの数です。 ここでは bmcontoso.com が使用されているので、2 つの親ドメインが必要です。 3 つの親ドメインを保持する (つまり corp.bmcontoso.com) 場合、この数字は 3 になります。 範囲を指示できますが、常にドメインの最大数と一致させるための突き合わせが行われます。 "{2,3}" は、2 ～ 3 つのドメインと一致します (つまり、bmfabrikam.com と corp.bmcontoso.com)。
@@ -156,11 +160,14 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 3. 3 番目の要求規則を選択し、置き換えます。![Edit claim](./media/how-to-connect-install-multiple-domains/sub1.png)
 4. 現在の要求:
 
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+    with
 
-       with
-
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
 
     ![Replace claim](./media/how-to-connect-install-multiple-domains/sub2.png)
 

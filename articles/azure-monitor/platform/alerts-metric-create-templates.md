@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677001"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187576"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -1521,7 +1521,9 @@ az group deployment create \
 
 > [!NOTE]
 >
-> 複数のリソースを監視するメトリック アラート ルールの場合、許可される条件は 1 つだけです。
+> 複数のリソースを監視するメトリック アラート ルールでは、次の制限事項が適用されます。
+> - アラート ルールのスコープには、選択したリソースの種類のリソースが少なくとも 1 つ含まれている必要があります。
+> - アラート ルールに含めることができる条件は 1 つだけです。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>1 つまたは複数のリソース グループ内のすべての仮想マシンの静的しきい値アラート
 
@@ -3549,7 +3551,6 @@ az group deployment create \
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",

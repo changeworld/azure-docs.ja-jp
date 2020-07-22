@@ -3,16 +3,16 @@ title: Azure Data Box を使用して Azure File Sync にデータを移行す�
 description: Azure File Sync と互換性のある方法で大量のデータを移行します。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514393"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure Data Box を使用して Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
@@ -51,7 +51,7 @@ Data Box などの転送ツールをオフライン移行に使用する主な�
 
 | 手順 | Detail |
 |---|---------------------------------------------------------------------------------------|
-| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、ドキュメントの記載に従って Data Box 上の次の UNC パスに[データをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します: *\\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>* 。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
+| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、Data Box 上の UNC パス ( *\\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>* ) に、[ドキュメントの記載に従ってデータをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
 | ![手順 2.](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 一時的なステージング共有として選択した Azure ファイル共有にファイルが表示されるまで待ちます。 *それらの共有への同期を有効にしないでください。* |
 | ![手順 3.](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Data Box によって作成されたファイル共有ごとに、空の新しい共有を作成します。 この新しい共有は Data Box 共有と同じストレージ アカウントにある必要があります。 [新しい Azure ファイル共有を作成する方法](storage-how-to-create-file-share.md)。</li><li>ストレージ同期サービスで[同期グループを作成](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)します。 空の共有をクラウド エンドポイントとして参照します。 Data Box のファイル共有ごとにこの手順を繰り返します。 [Azure File Sync を設定します](storage-sync-files-deployment-guide.md)。</li></ul> |
 | ![手順 4.](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [ライブ サーバー ディレクトリをサーバー エンドポイントとして追加](storage-sync-files-deployment-guide.md#create-a-server-endpoint)します。 このプロセスでは、Azure にファイルを移動したことを指定し、ステージング共有を参照します。 必要に応じて、クラウドの階層化を有効または無効にできます。 ライブ サーバー上でサーバー エンドポイントを作成している間は、ステージング共有を参照します。 **[サーバー エンドポイントの追加]** ブレードの **[オフラインのデータ転送]** で、 **[有効]** を選択し、クラウド エンドポイントと同じストレージ アカウントに存在する必要があるステージング共有を選択します。 ここで、利用可能な共有の一覧は、まだ同期されていないストレージ アカウントと共有によってフィルター処理されます。 この表の後のスクリーンショットでは、Azure portal でサーバー エンドポイントを作成するときに、DataBox 共有を参照する方法を示します。 |

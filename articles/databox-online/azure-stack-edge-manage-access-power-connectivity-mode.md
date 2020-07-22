@@ -5,21 +5,21 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568700"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339724"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Azure Stack Edge のアクセス、電源、接続モードを管理する
 
 この記事では、Azure Stack Edge のアクセス、電源、接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * デバイスのアクセスを管理する
@@ -80,7 +80,7 @@ Microsoft Graph API へのアクセスをユーザーに提供する方法の詳
 
 何らかのリソースを作成しようとする前に、サブスクリプションにリソース プロバイダーが登録されていることを確認してください。 リソース プロバイダーが登録されていない場合、新しいリソースを作成しようとしているユーザーが、必要なリソース プロバイダーをサブスクリプション レベルで登録するための十分な権限を持っていることを確認する必要があります。 これも行われていない場合、次のエラーが表示されます。
 
-"*次のリソース プロバイダーを登録するためのアクセス許可がサブスクリプション \<サブスクリプション名> にありません": Microsoft.DataBoxEdge*
+*次のリソース プロバイダーを登録するためのアクセス許可がサブスクリプション \<Subscription name> にありません:Microsoft.DataBoxEdge*
 
 
 現在のサブスクリプションに登録されているリソース プロバイダーの一覧を取得するには、次のコマンドを実行します。

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474832"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057298"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -27,7 +27,7 @@ ms.locfileid: "80474832"
 > [!NOTE]
 > Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム]に投稿してください。 
+お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム] に投稿してください。 
 
 ## <a name="known-issues"></a><a id="issues"/>既知の問題
 ### <a name="media-services-general-issues"></a><a id="general_issues"/>Media Services の全般的な問題
@@ -191,12 +191,14 @@ Media Services を使用して、Apple FairPlay で HTTP ライブ ストリー�
 ## <a name="february-2016-release"></a><a id="feb_changes16"></a>2016 年 2 月のリリース
 最新バージョンの Media Services SDK for .NET (3.5.3) には、Google Widevine 関連のバグ修正が含まれています。 Widevine で暗号化された複数の資産で AssetDeliveryPolicy を再利用できませんでした。 このバグ修正の一環として、WidevineBaseLicenseAcquisitionUrl プロパティが SDK に追加されました。
 
-    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-    {
-        {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+```csharp
+Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+{
+    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
 
-    };
+};
+```
 
 ## <a name="january-2016-release"></a><a id="jan_changes_16"></a>2016 年 1 月のリリース
 エンコード予約ユニットは、エンコーダー名と混同しないように名前が変更されました。
@@ -323,7 +325,9 @@ Media Services .NET SDK が 3.1.0.1 にバージョン アップしました。
 
 このリリースでは、既定の Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization.TokenRestrictionTemplate コンストラクターが旧式としてマークされています。 新しいコンス トラクターは、TokenType を引数として受け取ります。
 
-    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```csharp
+TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```
 
 
 ## <a name="december-2014-release"></a><a id="december_changes_14"></a>2014 年 12 月のリリース
@@ -573,7 +577,7 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
 <!-- Images. -->
 
 <!--- URLs. --->
-[Azure Media Services MSDN フォーラム]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Microsoft Q&A question page for Azure Media Services]: https://docs.microsoft.com/answers/topics/azure-media-services.html
 [Azure Media Services REST API リファレンス]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [入力メタデータ]: https://msdn.microsoft.com/library/azure/dn783120.aspx

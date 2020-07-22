@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 62188aefffd05af49bb00c242b266e808b991c84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbc421baddf03068ac72907aaa88a71a81d208d0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188176"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041321"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 用の Azure セキュリティ ベースライン
 
@@ -881,7 +881,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
-**ガイダンス**: 次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
+**ガイダンス**:次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
 
 - 許可されないリソースの種類
 
@@ -1288,7 +1288,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **ガイダンス**:侵入テストが Microsoft のポリシーに違反しないようにするために、Microsoft の活動規則に従ってください。
 
-https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 

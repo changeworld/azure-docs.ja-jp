@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 625a1a256ec5f1668c97e74c37e567a4ceb3612f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75465146"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871150"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin iOS アプリを作成する
 
@@ -54,6 +54,10 @@ Visual Studio で `Xamarin/SampleXamarin.sln` を開きます。
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
+
+`Xamarin/SampleXamarin.iOS/ViewControllers/DemoViewControllerBase.cs` を開きます。
+
+`StartSession()` を見つけ、`this.cloudSession.Configuration.AccountDomain = "MyAccountDomain";` を追加し、前のアカウント ドメインを置き換えます。
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
 

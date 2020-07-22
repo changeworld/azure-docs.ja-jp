@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 02/17/2020
+ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 58cf3358a9e908070ce9003d05dd0b576b1d2d3f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5433d9746cd64d0e942e056cfcd1940eba35c77d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417924"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
 
@@ -33,11 +33,14 @@ HSM で保護されたキーの Key Vault への転送は、使用する HSM に
 
 |ベンダー名|ベンダーの種類|サポートされている HSM モデル|サポートされている HSM キーの転送方法|
 |---|---|---|---|
-|nCipher|Manufacturer|<ul><li>HSM の nShield ファミリ</li></ul>|[従来の BYOK の方法を使用する](hsm-protected-keys-legacy.md)|
-|Thales|Manufacturer|<ul><li>ファームウェアのバージョンが 7.3 以降の SafeNet Luna HSM 7 ファミリ</li></ul>| [新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Fortanix|サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li></ul>|[新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|製造元、<br/>サービスとしての HSM|<ul><li>HSM の nShield ファミリ</li><li>サービスとしての nShield</ul>|**方法 1:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (キー インポートおよび HSM 検証用の強力な構成証明を使用)<br/>**方法 2:** [新しい BYOK の方法を使用する](hsm-protected-keys-byok.md) |
+|Thales|Manufacturer|<ul><li>ファームウェア バージョンが 7.3 以降の Luna HSM 7 ファミリ</li></ul>| [新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
+|Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
+|Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
+|Cryptomathic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>詳細については、[Cryptomathic のサイト](https://www.cryptomathic.com/azurebyok)を参照してください|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 
 
 ## <a name="next-steps"></a>次のステップ
 
-[Key Vault のベスト プラクティス](../general/best-practices.md)に従って、キーのセキュリティ、持続性および監視を確実にします。
+* [Key Vault のベスト プラクティス](../general/best-practices.md)に従って、キーのセキュリティ、持続性および監視を確実にします。
+* 新しい BYOK の方法の詳細については、[BYOK の仕様](https://docs.microsoft.com/azure/key-vault/keys/byok-specification)に関するページを参照してください

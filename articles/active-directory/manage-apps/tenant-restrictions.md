@@ -3,8 +3,8 @@ title: テナント制限を使用して SaaS アプリへのアクセスを管�
 description: テナント制限を使用して、どのユーザーが自分の Azure AD テナントに基づいてアプリにアクセスできるかを管理する方法。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763025"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -74,7 +74,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各受
 
 これらのヘッダーには、次の要素を含める必要があります。
 
-- *Restrict-Access-To-Tenants* には、ユーザーにアクセスを許可するテナントのコンマ区切りリストである、\<許可されているテナントのリスト\>の値を使用します。 テナントに登録されているドメインを使用して、このリストのテナントを識別できます。 たとえば、Contoso と Fabrikam の両方のテナントへのアクセスを許可する場合、名前と値のペアは  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` のようになります。
+- *Restrict-Access-To-Tenants* には、ユーザーにアクセスを許可するテナントのコンマ区切りリストである、\<permitted tenant list\> の値を使用します。 テナントに登録されているドメインを使用して、このリストのテナントを識別できます。 たとえば、Contoso と Fabrikam の両方のテナントへのアクセスを許可する場合、名前と値のペアは  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` のようになります。
 
 - *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは  `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  
 

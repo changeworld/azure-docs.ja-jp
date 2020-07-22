@@ -1,18 +1,18 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
-ms.date: 02/03/2020
-ms.topic: conceptual
-ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.openlocfilehash: 3be7494f929fc91e2b01bde0b4f26f7c2e4b907b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985203"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133473"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
-サービス プロバイダーは、Azure の委任されたリソース管理のために、複数の顧客テナントをオンボードしてきたかもしれません。 [Azure Lighthouse](../overview.md) を使用すると、サービス プロバイダーは一度に複数のテナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
+サービス プロバイダーは、[Azure Lighthouse](../overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、サービス プロバイダーは一度に複数のテナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
 
 このトピックでは、管理下にある顧客テナント全体を対象に、スケーラブルな方法で [Azure Monitor ログ](../../azure-monitor/platform/data-platform-logs.md)を使用する方法について説明します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "80985203"
 
 これらのワークスペースは、直接顧客テナントに作成することをお勧めします。 そうすることで、データを自分の環境にエクスポートするのではなく、各顧客のテナント内に留めることができます。 また、Log Analytics でサポートされるリソースまたはサービスの監視を一元化し、監視対象となるデータの種類について、より柔軟な運用が可能となります。
 
-Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)、[Azure PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md) のいずれかを使用して作成できます。
+Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)、[Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) のいずれかを使用して作成できます。
 
 ## <a name="deploy-policies-that-log-data"></a>データのログ記録ポリシーをデプロイする
 

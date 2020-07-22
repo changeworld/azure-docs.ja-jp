@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 9257a87c69e98db1107528551fe9ce0553c50f75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858157"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114692"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 
@@ -84,7 +84,7 @@ ms.locfileid: "82858157"
 
 1. ブラウザーで `http://localhost:3000` に移動すると、新しいアプリケーションを表示できます。
    
-   ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーンショット":::
 
    ターミナル ウィンドウで Ctrl キーを押しながら C キーを押してアプリケーションを停止し、 **[y]** を選択してバッチ ジョブを終了します。
 
@@ -438,7 +438,7 @@ ms.locfileid: "82858157"
 
 1. お客様のローカル コンピューター上でアプリケーションをテストするには、ターミナルで `npm start` を実行してお客様のアプリケーションを起動し、`http://localhost:3000` ブラウザー ページを更新します。 これで、ページは次のスクリーンショットのように表示されているはずです。
    
-    ![ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーンショット":::
 
     > [!TIP]
     > layout.jade ファイルまたは index.jade ファイルのインデントについてのエラーが表示される場合は、両ファイルの最初の 2 行がスペースなしで左揃えになっていることを確認してください。 最初の 2 行の前にスペースがある場合は、それらを削除し、両方のファイルを保存してから、ブラウザー ウィンドウを更新します。 
@@ -447,7 +447,7 @@ ms.locfileid: "82858157"
 
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
-    ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="ToDo リストに新しい項目があるアプリケーションのスクリーンショット":::
 
 4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]** を選択します。 既に作成したドキュメントが更新され、ビューから削除されます。
 

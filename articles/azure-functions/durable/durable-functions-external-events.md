@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で外部イベ�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262964"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165551"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -20,7 +20,7 @@ ms.locfileid: "76262964"
 
 ## <a name="wait-for-events"></a>イベントを待つ
 
-[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の `WaitForExternalEvent` (.NET) および `waitForExternalEvent` (JavaScript) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
+[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET) および `waitForExternalEvent` (JavaScript) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -173,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>送信イベント
 
-[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)の `RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) メソッドからは、`WaitForExternalEvent` (.NET) または `waitForExternalEvent` (JavaScript) で待機するイベントが送信されます。  `RaiseEventAsync` メソッドでは、*eventName* と *eventData* がパラメーターとして使用されます。 イベント データは、JSON でシリアル化できる必要があります。
+外部のイベントは、[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.NET) メソッドまたは `raiseEventAsync` (JavaScript) メソッドを使用してオーケストレーションに送信できます。 これらのメソッドは、[オーケストレーション クライアント](durable-functions-bindings.md#orchestration-client) バインディングによって公開されています。 組み込みの [raise event HTTP API](durable-functions-http-api.md#raise-event) を使用して、外部のイベントをオーケストレーションに送信することもできます。
+
+生成されたイベントには、*instance ID*、*eventName*、*eventData* パラメーターとして含まれます。 オーケストレーター関数は、`WaitForExternalEvent` (.NET) API または `waitForExternalEvent` (JavaScript) API を使用してそれらのイベントを処理します。 イベントが処理されるためには、送信側と受信側の両方で、*eventName* が一致している必要があります。 また、イベント データは、JSON でシリアル化できる必要があります。
+
+内部的には、"raise event" のメカニズムが、待機オーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
+
+> [!NOTE]
+> 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。
 
 次の例は、キューによってトリガーされる関数で、"承認" イベントをオーケストレーター関数インスタンスに送信します。 オーケストレーション インスタンス ID は、キュー メッセージの本文から取得されます。
 
@@ -209,6 +216,19 @@ module.exports = async function(context, instanceId) {
 
 > [!NOTE]
 > 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。
+
+### <a name="http"></a>HTTP
+
+次に示したのは、オーケストレーション インスタンスに "Approval" イベントを発生させる HTTP 要求の例です。 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+このケースでは、インスタンス ID が *MyInstanceId* としてハードコーディングされています。
 
 ## <a name="next-steps"></a>次のステップ
 

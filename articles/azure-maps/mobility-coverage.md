@@ -1,28 +1,27 @@
 ---
-title: モビリティ (輸送) の対象範囲 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps のモビリティの対象範囲について説明します
-author: philmea
-ms.author: philmea
-ms.date: 06/05/2019
+title: モビリティ (輸送) 範囲
+description: この記事では、Microsoft Azure Maps Mobility サービスの公共輸送機関範囲について説明します。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2959a930ef2b3683cbd822eaee61a037fa0e9e29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673644"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps のモビリティ範囲
 
-Azure Maps では [Mobility Service](https://aka.ms/AzureMapsMobilityService) を利用することができます。 Mobility Service を使用すると、公共輸送機関、自転車シェアリング、スクーター シェアリングの機能を備えたアプリケーションの開発期間を短縮することができます。 たとえば、公共輸送機関に関して、近くの駅や停留所、路線を検索したり、時刻表情報を取得したり、到着時刻をリアルタイムで取得したり、停留所を一覧表示したり、ルート案内を一覧表示したりする機能が利用できます。 このサービスは、自動車、バイク、スクーターなど、シェアリングされた車両の静的な空き状況についての情報をリアルタイムに返します。 さらに、Mobility Service は、マルチモーダルな旅行計画オプションでルーティング機能を提供します。 マルチモーダルな旅行計画には、サイクリング、配車、および輸送のオプションがすべて 1 回の旅行に組み込まれています。 ユーザーは、詳細でマルチモーダルなステップ バイ ステップの旅程とサービス アラートにアクセスすることができます。
+Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) では、輸送経路を指定したり、公共輸送機関の最寄りの停留所を検索したりするなど、公共輸送機関機能を利用できるため、アプリケーションの開発時間が短縮されます。 ユーザーは、輸送の停留所、路線、スケジュールに関する詳細情報を取得できます。 Mobility Service では、ユーザーは停留所や路線の配置、停留所、路線、サービス エリアのアラート、公共輸送機関のリアルタイム到着アラートやサービス アラートを取得することもできます。 さらに、Mobility Service は、マルチモーダルな旅行計画オプションでルーティング機能を提供します。 マルチモードの旅行計画では、徒歩、自転車、公共輸送機関の選択肢がすべて 1 つの旅行に組み込まれます。 ユーザーはまた、段階式で詳しいマルチモードの旅程にアクセスできます。 
 
-Azure Maps は、すべての都市と国 (または地域) に対して同じレベルの情報と精度を備えているわけではありません。 輸送データを呼び出す機能は、都市によって異なります。 また、データには都市にサービスを提供するすべての公共輸送機関のオプションと機関が含まれているとは限りません。
+Azure Maps は、すべての都市と国 (または地域) に対して同じレベルの情報と精度を備えているわけではありません。 公共輸送データを呼び出す機能は、都市圏によって異なります。 また、地図データには、都市圏にサービスを提供する公共輸送の選択肢と代理店がすべて含まれているとは限りません。
 
 次の表は、Azure Maps Mobility サービスの対象範囲情報を提供しています。
-
 
 | Symbol | 意味 |
 |--------|---------|

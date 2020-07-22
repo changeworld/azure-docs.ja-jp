@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: c6e15c9a99a78f0f3637f718b35462fe49fd5ee6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: 56c11c2ae867769eb5eab00a2a6a3ecb616449b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560016"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の出力バインド
 

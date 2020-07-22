@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84634644"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -65,10 +65,11 @@ ms.locfileid: "76908736"
 
 組織の既存の条件付きアクセス ポリシーに次のアクセス制御を組み込みます。
 
-1. さまざまな通信チャネルに依存するユーザーごとに、複数の認証方法をプロビジョニングします (たとえば、Microsoft Authenticator アプリ (インターネット ベース)、OATH トークン (デバイス上で生成)、SMS (電話))。
+1. さまざまな通信チャネルに依存するユーザーごとに、複数の認証方法をプロビジョニングします (たとえば、Microsoft Authenticator アプリ (インターネット ベース)、OATH トークン (デバイス上で生成)、SMS (電話))。 次の PowerShell スクリプトを使用すると、ユーザーが登録する追加の方法を事前に識別できます。[Azure MFA 認証方法の分析するためのスクリプト](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
 2. Windows 10 デバイスに Windows Hello for Business を展開し、デバイスのサインインから直接 MFA 要件を満たします。
 3. [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/overview) または [Microsoft Intune マネージド デバイス](https://docs.microsoft.com/intune/planning-guide)によって、信頼済みデバイスを使用します。 信頼済みデバイスを使用すると、信頼済みデバイス自体でポリシーの強力な認証要件を満たすことができ、ユーザーに MFA チャレンジを行う必要がないので、ユーザー エクスペリエンスが向上します。 その場合、新しいデバイスを登録するとき、および信頼されていないデバイスからアプリやリソースにアクセスするときに、MFA が必要になります。
 4. 固定の MFA ポリシーの代わりに、ユーザーまたはサインインにリスクがあるときにアクセスを禁止する Azure AD Identity Protection のリスクに基づくポリシーを使用します。
+5. Azure MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
 
 >[!NOTE]
 > リスクに基づくポリシーを使用するには、[Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
@@ -91,8 +92,9 @@ ms.locfileid: "76908736"
 
 ### <a name="contingencies-for-user-lockout"></a>ユーザー ロックアウトのコンティンジェンシー
 
-または、組織でコンティンジェンシー ポリシーを作成することもできます。 コンティンジェンシー ポリシーを作成するには、ビジネス継続性、運用コスト、財務コスト、セキュリティ リスクの間のトレードオフ条件を定義する必要があります。 たとえば、ユーザーのサブセット、アプリのサブセット、クライアントのサブセット、または場所のサブセットに対してのみ、コンティンジェンシー ポリシーをアクティブにする場合があります。 コンティンジェンシー ポリシーでは、軽減策が実装されていないときの中断中に、管理者とエンド ユーザーに対して、アプリとリソースへのアクセス権が付与されます。
-中断中の危険な状態を理解することは、リスクを軽減するのに役立ち、計画プロセスの重要な一部です。 コンティンジェンシー計画を作成するには、まず、組織での次のビジネス要件を決定します。
+または、組織でコンティンジェンシー ポリシーを作成することもできます。 コンティンジェンシー ポリシーを作成するには、ビジネス継続性、運用コスト、財務コスト、セキュリティ リスクの間のトレードオフ条件を定義する必要があります。 たとえば、ユーザーのサブセット、アプリのサブセット、クライアントのサブセット、または場所のサブセットに対してのみ、コンティンジェンシー ポリシーをアクティブにする場合があります。 コンティンジェンシー ポリシーでは、軽減策が実装されていないときの中断中に、管理者とエンド ユーザーに対して、アプリとリソースへのアクセス権が付与されます。 Microsoft では、コンティンジェンシー ポリシーを使用しない場合は[レポート専用モード](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only)で有効にしておき、ポリシーをオンにすることが必要になった場合に備えて、管理者がそれらの潜在的な影響を監視できるようにすることをお勧めしています。
+
+ 中断中の危険な状態を理解することは、リスクを軽減するのに役立ち、計画プロセスの重要な一部です。 コンティンジェンシー計画を作成するには、まず、組織での次のビジネス要件を決定します。
 
 1. 事前にミッション クリティカルなアプリを決定します。低いリスク/セキュリティ体制であっても、アクセス権を付与する必要があるアプリは何ですか。 そのようなアプリの一覧を作成し、すべてのアクセス制御が失われた場合であってもそれらのアプリの実行を継続する必要があることを、他の利害関係者 (ビジネス、セキュリティ、法律、リーダーシップ) が全員同意していることを確認します。 最終的に以下のカテゴリになる可能性があります。
    * **カテゴリ 1: ミッション クリティカルなアプリ**: 数分より長く使用不可能になることはできません。たとえば、組織の収益に直接影響するアプリなどです。
@@ -110,12 +112,12 @@ ms.locfileid: "76908736"
 
 #### <a name="microsoft-recommendations"></a>Microsoft の推奨事項
 
-コンティンジェンシー条件付きアクセス ポリシーは、Azure MFA、サード パーティの MFA、リスクに基づく制御、またはデバイスに基づく制御を省略する**無効化されたポリシー**です。 その場合、組織でコンティンジェンシー計画の有効化が決定されると、管理者はそのポリシーを有効にして、通常の制御に基づくポリシーを無効にできます。
+コンティンジェンシー条件付きアクセス ポリシーは、Azure MFA、サードパーティの MFA、リスクに基づく制御、またはデバイスに基づく制御を省略する**バックアップ ポリシー**です。 コンティンジェンシー ポリシーが有効になっている場合の予期しない中断を最小限に抑えるために、ポリシーを使用しないときはレポート専用モードのままにしておく必要があります。 管理者は、条件付きアクセスに関する分析情報のブックを使用して、コンティンジェンシー ポリシーの潜在的な影響を監視できます。 組織でコンティンジェンシー計画の有効化が決定されたときに、管理者はそのポリシーを有効にし、通常の制御に基づくポリシーを無効にできます。
 
 >[!IMPORTANT]
 > ユーザーにセキュリティを強制するポリシーを無効にすると、一時的であっても、コンティンジェンシー計画が実施されている間は、セキュリティ体制が低下します。
 
-* 1 つの資格情報の種類または 1 つのアクセス制御メカニズムの中断によってアプリへのアクセスが影響を受ける場合は、フォールバック ポリシーのセットを構成します。 サード パーティの MFA プロバイダーを必要とするアクティブなポリシーに対するバックアップとして、制御としてのドメイン参加が必要なポリシーを無効化された状態で構成します。
+* 1 つの資格情報の種類または 1 つのアクセス制御メカニズムの中断によってアプリへのアクセスが影響を受ける場合は、フォールバック ポリシーのセットを構成します。 サードパーティの MFA プロバイダーを必要とするアクティブなポリシーに対するバックアップとして、制御としてドメイン参加を必要とするポリシーをレポート専用状態で構成します。
 * [パスワードのガイダンス](https://aka.ms/passwordguidance)に関するホワイト ペーパーでの方法に従って、MFA が必要ないときに、パスワードを推測する悪意のあるユーザーのリスクを軽減します。
 * [Azure AD のセルフサービス パスワード リセット (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) および [Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)を展開し、ユーザーが禁止されているありふれたパスワードや条件を使用しないようにします。
 * 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 次に例を示します。
@@ -146,28 +148,28 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:Any
   * 許可の制御:ドメインへの参加が必要
-  * 状態:無効
+  * 状態:レポート専用
 * ポリシー 2:Windows 以外のプラットフォームをブロック
   * 名前:EM002 - ENABLE IN EMERGENCY:MFA Disruption[2/4] - Exchange SharePoint - Block access except Windows
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:デバイス プラットフォームは、Windows 以外のすべてのプラットフォームを含む
   * 許可の制御:ブロック
-  * 状態:無効
+  * 状態:レポート専用
 * ポリシー 3:CorpNetwork 以外のネットワークをブロック
   * 名前:EM003 - ENABLE IN EMERGENCY:MFA Disruption[3/4] - Exchange SharePoint - Block access except Corporate Network
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:場所は、CorpNetwork 以外のすべての場所を含む
   * 許可の制御:ブロック
-  * 状態:無効
+  * 状態:レポート専用
 * ポリシー 4:EAS を明示的にブロックする
   * 名前:EM004 - ENABLE IN EMERGENCY:MFA Disruption[4/4] - Exchange - Block EAS for all users
   * ユーザーとグループ:すべてのユーザーを含める
   * クラウド アプリ:Exchange Online を含める
   * 条件:クライアント アプリ:Exchange Active Sync
   * 許可の制御:ブロック
-  * 状態:無効
+  * 状態:レポート専用
 
 アクティブ化の順序:
 
@@ -188,14 +190,14 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * クラウド アプリ:Salesforce。
   * 条件:なし
   * 許可の制御:ブロック
-  * 状態:無効
+  * 状態:レポート専用
 * ポリシー 2:(攻撃対象領域を減らすため) モバイル以外の任意のプラットフォームからのセールス チームをブロックする
   * 名前:EM002 - ENABLE IN EMERGENCY:Device Compliance Disruption[2/2] - Salesforce - Block All platforms except iOS and Android
   * ユーザーとグループ:SalesforceContingency を含める。 SalesAdmins を除外する
   * クラウド アプリ:Salesforce
   * 条件:デバイス プラットフォームは、iOS と Android 以外のすべてのプラットフォームを含む
   * 許可の制御:ブロック
-  * 状態:無効
+  * 状態:レポート専用
 
 アクティブ化の順序:
 
@@ -203,6 +205,26 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 2. ポリシー 1 を有効にします:SalesContingency に含まれないユーザーが Salesforce にアクセスできないことを確認します。 SalesAdmins と SalesforceContingency に含まれるユーザーが Salesforce にアクセスできることを確認します。
 3. ポリシー 2 を有効にします:SalesContingency グループに含まれるユーザーが、Windows/Mac のラップトップからは Salesforce にアクセスできないが、自分のモバイル デバイスからはアクセスできることを確認します。 SalesAdmin が任意のデバイスから Salesforce にアクセスできることを確認します。
 4. Salesforce に対する既存のデバイス コンプライアンス ポリシーを無効にします。
+
+### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>オンプレミスのリソースからのユーザー ロックアウト用のコンティンジェンシー (NPS 拡張機能)
+
+Azure MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
+
+VPN やリモート デスクトップ ゲートウェイなどのオンプレミス リソースを MFA を使用して保護するために Azure AD MFA NPS 拡張機能をデプロイしている場合は、緊急時に MFA を無効にする準備ができているかどうかを事前に検討する必要があります。
+
+この場合、NPS 拡張機能を無効にすることができ、その結果、NPS サーバーではプライマリ認証のみが検証され、ユーザーに MFA は適用されません。
+
+NPS 拡張機能を無効にする: 
+-   HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters レジストリ キーをバックアップとしてエクスポートします。 
+-   Parameters キーではなく、"AuthorizationDLLs" と "ExtensionDLLs" のレジストリ値を削除します。 
+-   ネットワーク ポリシー サービス (IAS) を再起動して変更を有効にします。 
+-   VPN のプライマリ認証が成功するかどうかを確認します。
+
+サービスが回復し、ユーザーに再び MFA を適用する準備ができたら、NPS 拡張機能を有効にします。 
+-   バックアップの HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters からレジストリ キーをインポートします。 
+-   ネットワーク ポリシー サービス (IAS) を再起動して変更を有効にします。 
+-   VPN のプライマリ認証とセカンダリ認証が正常に行われるかどうかを確認します。
+-   NPS サーバーと VPN ログを見直して、緊急期間中にサインインしたユーザーを特定します。
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>フェデレーションされている場合またはパススルー認証を使用している場合でも、パスワード ハッシュ同期を展開する
 
@@ -240,7 +262,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 中断の原因となったサービスが復元された後、アクティブ化されたコンティンジェンシー計画の一部として行われた変更を元に戻します。 
 
 1. 通常のポリシーを有効にします
-2. コンティンジェンシー ポリシーを無効にします。 
+2. コンティンジェンシー ポリシーをレポート専用モードに戻すことができないようにします。 
 3. 中断中に行って文書化した他のすべての変更をロールバックします。
 4. 緊急アクセス用アカウントを使用した場合は、緊急アクセス用アカウントの手順の一部として、忘れずに資格情報を再生成し、新しい資格情報の詳細を物理的にセキュリティ保護します。
 5. 不審なアクティビティのため、中断後も引き続き[報告されたすべてのリスク検出をトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
@@ -271,3 +293,4 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * [パスワードのガイダンス - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Azure Active Directory 条件付きアクセスの条件の概要](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Azure Active Directory 条件付きアクセスによるアクセス制御の概要](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+* [条件付きアクセスのレポート専用モードとは](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)

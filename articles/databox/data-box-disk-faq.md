@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918939"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745791"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -56,8 +56,8 @@ A.  Data Box Disk が現在使用できる場所については、「[利用可�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
 A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
-### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>Q. Data Box Disk は配送中に国境を越えますか?
-A. Data Box Disk は宛先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもディスクを配送できます。
+### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Q. Data Box Disk は配送中に国/地域の境界を越えますか?
+A. Data Box Disk は宛先と同じ国内から出荷され、国/地域の境界を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国/地域からもディスクを配送できます。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)てください。

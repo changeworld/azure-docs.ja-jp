@@ -5,23 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 06/01/2020
 ms.author: victorh
-ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597280"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267700"
 ---
-# <a name="azure-firewall-forced-tunneling-preview"></a>Azure Firewall の強制トンネリング (プレビュー)
+# <a name="azure-firewall-forced-tunneling"></a>Azure Firewall の強制トンネリング
 
-インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングするように、Azure Firewall を構成することができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。
-
-> [!IMPORTANT]
-> 現在、Azure Firewall の強制トンネリングはパブリック プレビュー段階にあります。
->
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+新しい Azure ファイアウォールを構成するときに、インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングすることができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。 ただし、既存のファイアウォールを強制トンネリング用に構成することはできません。
 
 既定では、すべての送信 Azure 依存関係が満たされるようにするため、Azure Firewall では強制トンネリングは許可されていません。 既定でインターネットに直接ルーティングされないユーザー定義ルート (UDR) を *AzureFirewallSubnet* で構成することはできません。
 
@@ -36,6 +31,10 @@ ms.locfileid: "77597280"
 たとえば、お使いのオンプレミスのデバイスに到達するための次ホップとして VPN ゲートウェイを使用して、*AzureFirewallSubnet* に既定のルートを作成できます。 または、**仮想ネットワーク ゲートウェイのルート伝達**を有効にして、オンプレミス ネットワークへの適切なルートを取得することもできます。
 
 ![仮想ネットワーク ゲートウェイのルート伝達](media/forced-tunneling/route-propagation.png)
+
+強制トンネリングを有効にすると、SNAT によってインターネットへのトラフィックに AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスが適用され、オンプレミスのファイアウォールからソースが隠されます。
+
+組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 ただし、パブリック IP アドレス範囲の SNAT が**行われない**ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
 
 強制トンネリングをサポートするように Azure Firewall を構成した後は、構成を元に戻すことはできません。 ファイアウォールで他のすべての IP 構成を削除すると、管理 IP 構成も削除され、ファイアウォールの割り当てが解除されます。 管理 IP 構成に割り当てられているパブリック IP アドレスを削除することはできませんが、異なるパブリック IP アドレスを割り当てることはできます。
 

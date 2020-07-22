@@ -4,16 +4,16 @@ description: Azure Resource Manager テンプレートを使用して Windows Vi
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c24e212f901f0af38a24ab203070f637de860fc7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204763"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してホスト プールを作成する
 

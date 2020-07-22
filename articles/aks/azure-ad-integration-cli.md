@@ -2,26 +2,28 @@
 title: Azure Active Directory と Azure Kubernetes Service を統合する
 description: Azure CLI を使用して Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法を学習する
 services: container-service
+author: TomGeske
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779945"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252081"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
 Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにログインできます。 また、クラスター オペレーターが、ユーザーの ID またはディレクトリ グループ メンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成することもできます。
 
-この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。 [これらの手順は、Azure portal を使用して完了][azure-ad-portal]することもできます。
+この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。
 
 この記事で使用されているサンプル スクリプトの完成版については、[Azure CLI のサンプルの AKS と Azure AD の統合][complete-script]に関するページを参照してください。
 
-次の制限事項が適用されます。
+## <a name="the-following-limitations-apply"></a>次の制限事項が適用されます。
 
-- Azure AD は、RBAC が有効なクラスターを新しく作成するときにのみ有効にできます。 既存の AKS クラスターで Azure AD を有効にすることはできません。
+- Azure AD は、RBAC が有効なクラスターでのみ有効にすることができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -261,7 +263,7 @@ ID とリソース管理に関するベスト プラクティスについては�
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
 [az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update
@@ -273,9 +275,8 @@ ID とリソース管理に関するベスト プラクティスについては�
 [az-group-create]: /cli/azure/group#az-group-create
 [az-account-show]: /cli/azure/account#az-account-show
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
-[azure-ad-portal]: azure-ad-integration.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

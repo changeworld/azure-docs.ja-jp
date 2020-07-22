@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227091"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956715"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ  
 
@@ -120,9 +120,11 @@ ms.locfileid: "79227091"
 - エンコード ジョブを作成します。
 - Media Encoder Standard エンコーダーの参照を取得します。
 - 前のセクションで作成したカスタム JSON プリセットを読み込みます。 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - エンコード タスクをジョブに追加します。 
 - エンコードする入力資産を指定します。

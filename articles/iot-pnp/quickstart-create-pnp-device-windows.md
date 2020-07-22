@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4f9b8f3edc475ec50eaf11080020aa9f62a0d2c1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b02455c153c6205b87a64a388d5588c3c431e0c9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700881"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963514"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ プレビュー デバイスを作成する (Windows)
 
@@ -78,7 +78,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 1. Azure IoT C device SDK の Vcpkg をインストールします。
 
     ```cmd
-    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use-prov-client]
     ```
 
 ## <a name="author-your-model"></a>モデルを作成する
@@ -87,7 +87,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. お使いのローカル ドライブに `pnp_app` フォルダーを作成します。 デバイス モデル ファイルとデバイス コード スタブには、このフォルダーを使用します。
 
-1. [デバイス機能モデルとインターフェイスのサンプル ファイル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.model.json)と[インターフェイスのサンプル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)をダウンロードし、ファイルを `pnp_app` フォルダーに保存します。
+1. [デバイスの機能モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/SampleDevice.capabilitymodel.json)と[インターフェイスのサンプル](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensor.interface.json) ファイルをダウンロードして `pnp_app` フォルダーに保存します。
 
     > [!TIP]
     > GitHub からファイルをダウンロードするには、該当するファイルに移動して **[Raw]** を右クリックし、次に **[名前を付けてリンク先を保存]** を選択します。

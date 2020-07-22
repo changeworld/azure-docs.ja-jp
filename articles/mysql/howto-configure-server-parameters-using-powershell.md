@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurepowershell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/29/2020
-ms.openlocfilehash: 0de816d25bbc1563885413d8dbd52dc7bda7d538
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8f21b4daff6f5e30fdbb109e683ad7a3e75c8ad6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614164"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101615"
 ---
-# <a name="customize-azure-database-for-mysql-server-parameters-using-powershell"></a>PowerShell を使用して Azure Database for MySQL サーバー パラメーターをカスタマイズする
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>PowerShell を使用して Azure Database for MySQL のサーバー パラメーターを構成する
 
 PowerShell を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。
 

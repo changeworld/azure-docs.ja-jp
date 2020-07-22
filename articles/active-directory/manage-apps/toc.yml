@@ -3,22 +3,26 @@
 - name: 概要
   expanded: true
   items:
-    - name: クラウド アプリの管理とシングル サインオンとは
+    - name: アプリケーション管理とは
       href: what-is-application-management.md
-    - name: オンプレミス アプリ用のアプリケーション プロキシとは
-      href: what-is-application-proxy.md
-    - name: 一般的なアプリ管理シナリオ
-      href: common-scenarios.md
-    - name: アプリケーションのプロビジョニングとは
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
+    - name: シングル サインオン (SSO) とは
+      href: what-is-single-sign-on.md
 - name: クイックスタート
   items:
-    - name: ギャラリーからのクラウド アプリの追加
-      href: add-application-portal.md
-    - name: エンタープライズ アプリケーションの表示
+    - name: アプリを表示する
       href: view-applications-portal.md
+    - name: アプリを追加する
+      href: add-application-portal.md
+    - name: アプリを構成する
+      href: add-application-portal-configure.md
+    - name: シングル サインオンを設定する
+      href: add-application-portal-setup-sso.md
+    - name: アプリを削除する
+      href: delete-application-portal.md
 - name: チュートリアル
   items:
+    - name: ギャラリーに記載されていないアプリの追加
+      href: add-non-gallery-app.md
     - name: 統合されたギャラリー アプリ (ServiceNow、Salesforce、Dropbox など)
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
@@ -32,6 +36,8 @@
   items:
     - name: アプリ管理のベスト プラクティス
       href: application-management-fundamentals.md
+    - name: 一般的なアプリ管理シナリオ
+      href: common-scenarios.md
     - name: クラウド アプリとシングル サインオン
       items:
         - name: クラウド アプリの統合の計画
@@ -44,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: シングル サインオン
           items:
-            - name: シングル サインオンとは
-              href: what-is-single-sign-on.md
             - name: マルチテナント アプリケーションの SSO を有効にする
               href: isv-sso-content.md
             - name: マルチテナント アプリケーション用に Azure テナントを作成する
@@ -80,13 +84,15 @@
       items:
         - name: アプリケーション プロキシ
           href: application-proxy.md
+        - name: オンプレミス アプリ用のアプリケーション プロキシとは
+          href: what-is-application-proxy.md
         - name: アプリケーション プロキシのデプロイ計画
           href: application-proxy-deployment-plan.md
         - name: Connectors
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: Security
+        - name: セキュリティ
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -99,14 +105,6 @@
   items:
     - name: クラウド アプリとシングル サインオン
       items:
-        - name: クラウド アプリの追加
-          items:
-            - name: ギャラリー アプリの追加
-              href: add-gallery-app.md
-            - name: ギャラリー以外のアプリの追加
-              href: add-non-gallery-app.md
-            - name: アプリ名またはロゴの変更
-              href: change-name-or-logo-portal.md
         - name: Configure single sign-on
           items:
             - name: SAML ベースのシングル サインオンの構成
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: ユーザーまたはグループをアプリに割り当てる
               href: assign-user-or-group-access-portal.md
+            - name: アプリに付与されるアクセス許可の確認
+              href: manage-application-permissions.md
             - name: マイ アプリでのコレクションの作成
               href: access-panel-collections.md
             - name: セルフサービス アプリ アクセスの使用
@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: アプリケーション ページ上のリンクが動作しない
               href: application-proxy-page-links-broken-problem.md
-            - name: アプリに対して開く必要のあるポート
-              href: application-proxy-connectivity-ports-how-to.md
             - name: アプリのコネクタ グループに動作するコネクタがない
               href: application-proxy-connectivity-no-working-connector.md
             - name: 管理ポータルでの構成

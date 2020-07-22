@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9a2bb636ba749cae50195cefeb8e7237d382fb99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82182346"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134088"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "82182346"
 > * VM のレプリケーションを有効にします。
 
 > [!NOTE]
-> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、「[Site Recovery のドキュメント](https://docs.microsoft.com/azure/site-recovery)」の**ハウツー ガイド** セクションにある記事を確認してください。
+> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、「[Site Recovery のドキュメント](./index.yml)」の**ハウツー ガイド** セクションにある記事を確認してください。
 
 
 
@@ -39,7 +39,7 @@ ms.locfileid: "82182346"
 これは、シリーズ 3 番目のチュートリアルです。 前のチュートリアルで以下のタスクが既に完了していることが前提となります。
 
 1. [Azure を準備する](tutorial-prepare-azure.md)
-2. [オンプレミスの Hyper-V を準備する](tutorial-prepare-on-premises-hyper-v.md)
+2. [オンプレミスの Hyper-V を準備する](./hyper-v-prepare-on-premises-tutorial.md)
 
 ## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
 

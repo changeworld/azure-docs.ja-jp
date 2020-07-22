@@ -1,18 +1,18 @@
 ---
-title: Azure Automation Update Management で更新プログラムの評価を表示する
-description: この記事では、更新プログラムの展開に関して、更新プログラムの評価を表示する方法について説明します。
+title: Azure Automation 更新プログラムの評価を表示する
+description: この記事では、Update Management のデプロイに関して、更新プログラムの評価を表示する方法について説明します。
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 321146364897d46a403bdfd6789fcb219179d88c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617395"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830601"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Azure Automation Update Management で更新プログラムの評価を表示する
+# <a name="view-update-assessments"></a>更新の評価を表示する
 
 Azure Automation アカウントで **[Update Management]** をクリックすると、使用しているマシンの状態が表示されます。
 
@@ -28,7 +28,7 @@ Azure Automation アカウントで **[Update Management]** をクリックす�
 
 ![不足している更新プログラム](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>更新プログラムの分類
+## <a name="work-with-update-classifications"></a>更新プログラムの分類の操作
 
 次の表は、Update Management のサポートされる更新プログラムの分類と、各分類の定義を示します。
 
@@ -52,7 +52,7 @@ Azure Automation アカウントで **[Update Management]** をクリックす�
 |緊急更新プログラムとセキュリティ更新プログラム     | 特定の問題または製品固有のセキュリティに関連する問題に対する更新プログラムです。         |
 |他の更新プログラム     | 本質的に重要ではない、またはセキュリティ更新プログラムではない、他のすべての更新プログラムです。        |
 
-Linux の場合、Update Management は、評価データを表示する一方で、クラウド内での重要な更新プログラムとセキュリティ更新プログラムを識別できます  (クラウドでのデータ エンリッチメントに起因して、この詳細レベルになる可能性があります)。修正プログラムの場合、Update Management はマシン上にある分類データを使用します。 他のディストリビューションとは異なり、製品の RTM バージョンにおいては、CentOS はこの情報を使用できません。 CentOS マシン上で、次のコマンドに対してセキュリティ データを返すように構成されている場合、Update Management は分類に基づいて修正プログラムを適用できます。
+Linux の場合、Update Management は、評価データを表示する一方で、クラウド内での重要な更新プログラムとセキュリティ更新プログラムを識別できます (クラウドでのデータ エンリッチメントに起因して、この詳細レベルになる可能性があります)。修正プログラムの場合、Update Management はマシン上にある分類データを使用します。 他のディストリビューションとは異なり、製品の RTM バージョンにおいては、CentOS はこの情報を使用できません。 CentOS マシン上で、次のコマンドに対してセキュリティ データを返すように構成されている場合、Update Management は分類に基づいて修正プログラムを適用できます。
 
 ```bash
 sudo yum -q --security check-update
@@ -64,4 +64,4 @@ Red Hat Enterprise バージョン 6 の更新プログラムを分類するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-更新プログラムの評価を閲覧した後、[Azure VM 用の更新プログラムと修正プログラムの管理](automation-tutorial-update-management.md)に関するページの手順に従って、更新プログラムの展開をスケジュールできます。
+全般情報については、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」を参照してください。

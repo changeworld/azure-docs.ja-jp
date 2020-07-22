@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144153"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190732"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) には、オンプレミスの SQL Server または SAP から Azure Cognitive Services まで、[すぐに使用できるコネクタが数百個](../connectors/apis-list.md)用意されているため、さまざまなサービスの調整と統合に使用できます。 Logic Apps サービスは "サーバーレス" なので、スケールやインスタンスに関する心配は不要です。 必要なことは、ワークフローが実行するトリガーとアクションに関するワークフローの定義のみです。 拡張性、可用性、およびパフォーマンスは、基になるプラットフォームによって処理されます。 Logic Apps は、複数のシステムとサービス全体でアクションを調整する必要があるユース ケースやシナリオに特に適しています。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) には、SQL Server または SAP から Azure Cognitive Services まで、[すぐに使用できるコネクタが数百個](../connectors/apis-list.md)用意されているため、さまざまなサービスの調整と統合に使用できます。 Logic Apps サービスは "サーバーレス" なので、スケールやインスタンスに関する心配は不要です。 必要なことは、ワークフローが実行するトリガーとアクションに関するワークフローの定義のみです。 拡張性、可用性、およびパフォーマンスは、基になるプラットフォームによって処理されます。 Logic Apps は、複数のシステムとサービス全体でアクションを調整する必要があるユース ケースやシナリオに特に適しています。
 
 Azure Logic Apps がサポートする機能とパターンについて学習するために、この記事では、一般的な出発点、例、およびシナリオについて説明します。
 

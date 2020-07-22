@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425371"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043004"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -95,7 +95,7 @@ PowerShell を適切なサブスクリプションにポイントすることは
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>ログの有効化
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Azure PowerShell を使用してログ記録を有効にする
 
 Key Vault のログ記録を有効にするために、**Set-AzDiagnosticSetting** コマンドレットを、新しいストレージ アカウントおよび Key Vault 用に作成した変数と組み合わせて使用します。 また、 **-Enabled** フラグを **$true** に設定し、カテゴリを **AuditEvent** (Key Vault ログ記録の唯一のカテゴリ) に設定します。
 
@@ -105,15 +105,17 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 出力は次のようになります。
 
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+```output
+StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
+ServiceBusRuleId   :
+StorageAccountName :
+    Logs
+    Enabled           : True
+    Category          : AuditEvent
+    RetentionPolicy
+    Enabled : False
+    Days    : 0
+```
 
 この出力を見れば、ログ記録がキー コンテナーに対して有効になっていることと、ストレージ アカウントに情報が保存されることを確認できます。
 
@@ -131,6 +133,25 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
   * これらのキーまたはシークレットの作成、変更、または削除。
   * 署名、確認、暗号化、復号化、キーのラップとラップ解除、シークレットの取得、およびキーとシークレット (およびそのバージョン) の一覧表示。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。  
+
+## <a name="enable-logging-using-azure-cli"></a>Azure CLI を使用してログ記録を有効にする
+
+```azurecli
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>ログへのアクセス
 
@@ -214,15 +235,10 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 * Key Vault リソースの診断設定の状態のクエリを実行するためのパラメーター: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Key Vault リソースのログ記録を無効にするためのパラメーター: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
+
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>Key Vault のログを解釈する
 
-個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 ログ エントリの例を見てみましょう。 次のコマンドを実行します。
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-次のようなログ エントリが返されます。
+個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 ログ エントリの例を見てみましょう。 
 
 ```json
     {
@@ -316,5 +332,3 @@ Azure Monitor ログの Key Vault ソリューションを使用して、Key Vau
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](developers-guide.md)」を参照してください。
 
 Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、[Azure Key Vault コマンドレット](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)に関するページを参照してください。
-
-Azure Key Vault を使用したキーのローテーションとログの監査のチュートリアルについては、[エンド ツー エンドのキー ローテーションと監査での Key Vault の設定](../secrets/key-rotation-log-monitoring.md)に関するページを参照してください。

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c2b67989cbffb03eb182b4de2bf471a02ee33e7b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 09eba483a258c1e88b15a5795d32b3b4a029a175
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627995"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232714"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -23,22 +23,49 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 > [!NOTE]
 > Form Recognizer のクイックスタートとガイドでは、特に指定がない限り、常に最新バージョンの API が使用されます。
 
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="new-features"></a>新機能
+* **v2.0 リファレンスが使用可能** [v2.0 API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)と、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)、[Python](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)、[Java](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)、および [JavaScript](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/) 用のアップデートされた SDK を参照できます。
+* **テーブルの機能強化と抽出の機能強化**には、精度の向上とテーブル抽出の機能強化が含まれています。特に、ラベルのないカスタム トレーニングでテーブルのヘッダーと構造を学習する機能が追加されています。 
+* **通貨のサポート** グローバル通貨記号の検出と抽出。
+* **Azure Gov** Form Recognizer が、Azure Gov でも使用できるようになりました。
+*    **強化されたセキュリティ機能**: 
+    *    **Bring Your Own Key** Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (CMK、Bring Your Own Key (BYOK) とも呼ばれます)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest
+) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。  
+    *    **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、[Private Link を介してデータに安全にアクセスできるようになります。](https://docs.microsoft.com/azure/private-link/private-link-overview)
+
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="new-features"></a>新機能
+* **クライアント SDK への CopyModel API の追加** クライアント SDK を使用して、サブスクリプション間でモデルをコピーできるようになりました。 この機能の全般的な情報については、[モデルのバックアップと復旧](./disaster-recovery.md)に関する記事を参照してください。
+* **Azure Active Directory の統合** AAD の資格情報を使用して、SDK で Form Recognizer クライアント オブジェクトを認証できるようになりました。
+* **SDK 固有の変更** これには、小さな機能追加と破壊的な変更の両方が含まれます。 詳細については、SDK の変更ログを参照してください。
+  * [C# SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
+  * [Python SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [Java SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [JavaScript SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-js/blob/%40azure/ai-form-recognizer_1.0.0-preview.3/sdk/formrecognizer/ai-form-recognizer/CHANGELOG.md)
+
 ## <a name="april-2020"></a>2020 年 4 月
 
 ### <a name="new-features"></a>新機能
 * **Form Recognizer API v2.0 パブリック プレビューの SDK サポート** 今月、サービス サポートが拡張され、Form Recognizer v2.0 (プレビュー) リリースのプレビュー SDK が含まれるようになりました。 以下のリンクを使用して、任意の言語で作業を開始してください。 
-   * [.NET SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer)
-   * [Java SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer)
-
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)
+   * [Python SDK](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)
+   * [JavaScript SDK](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)
 
   新しい SDK では、Form Recognizer 用の v2.0 REST API のすべての機能がサポートされています。 たとえば、モデルをラベルの有無にかかわらずトレーニングしたり、フォームからテキスト、キーと値のペア、およびテーブルを抽出したり、事前構築済みの領収書サービスを使用してレシートからデータを抽出したり、レイアウト サービスを使用してドキュメントからテキストやテーブルを抽出したりすることができます。 SDK に関するフィードバックは、[SDK フィードバック フォーム](https://aka.ms/FR_SDK_v1_feedback)を通じて共有できます。
  
 * **カスタム モデルのコピー** 新しいカスタム モデルのコピー機能を使用して、リージョン間やサブスクリプション間でモデルをコピーできるようになりました。 Copy Custom Model API を呼び出す前に、ターゲット リソース エンドポイントに対してコピー承認操作を呼び出して、ターゲット リソースにコピーするための承認を取得する必要があります。
-   * [コピー承認を生成する](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization) REST API
-   * [カスタム モデルをコピーする](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel) REST API 
+   * [コピー承認を生成する](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
+   * [カスタム モデルをコピーする](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
 
+### <a name="security-improvements"></a>セキュリティの強化
+
+* FormRecognizer でカスタマー マネージド キーが利用できるようになりました。 詳細については、[Form Recognizer による保存データの暗号化](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)に関するページを参照してください。
+* Azure Active Directory を使用した Azure リソースへのアクセスにマネージド ID を使用します。 詳細については、[マネージド ID に対するアクセスの承認](https://docs.microsoft.com/azure/cognitive-services/authentication#authorize-access-to-managed-identities)に関するページを参照してください。
 
 ## <a name="march-2020"></a>2020 年 3 月 
 
@@ -123,4 +150,4 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 
 ## <a name="next-steps"></a>次のステップ
 
-[クイック スタート](quickstarts/curl-train-extract.md)をすべて終え、[Form Recognizer API シリーズ](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)の使用を開始します。
+[クイック スタート](quickstarts/curl-train-extract.md)をすべて終え、[Form Recognizer API シリーズ](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)の使用を開始します。

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: e6456c79dbce1f8bb874ce4c88b932e592235a82
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9365a71d7e5bab86b5c1d58a32510b9c5c5f15d1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80244428"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964534"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
 
@@ -154,13 +154,13 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![Azure portal の [概要] ページでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
+    :::image type="content" source="./media/create-graph-nodejs/gremlin-uri.png" alt-text="Azure portal の [概要] ページでアクセス キーを表示およびコピーする":::
 
 3. *config.js* で、config.primaryKey の値として、Azure portal の Cosmos DB アカウントの **[キー]** ページから **[プライマリ キー]** の値を入力します。 
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   ![Azure Portal の [キー] ブレード](./media/create-graph-nodejs/keys.png)
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal キー ブレード":::
 
 4. データベース名とグラフ (コンテナー) 名を config.database と config.collection の値として入力します。 
 

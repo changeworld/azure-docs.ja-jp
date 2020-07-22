@@ -3,17 +3,17 @@ title: Azure Maps Drawing Error Visualizer を使用する
 description: この記事では、Creator Conversion API から返された警告とエラーを視覚化する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791123"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure Maps Drawing Error Visualizer の使用
 
@@ -78,15 +78,15 @@ _VisualizationTool.zip_ フォルダーを展開します。 次の項目が含�
 
 Drawing Error Visualizer ツールを起動すると、アップロード ページが表示されます。 アップロード ページには、ドラッグ アンド ドロップ ボックスがあります。 ドラッグ アンド ドロップ ボックスは、エクスプローラー ダイアログを起動するボタンとしても機能します。
 
-![Drawing Error Visualizer アプリ - スタート ページ](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Drawing Error Visualizer アプリ - スタート ページ":::
 
 _ConversionWarningsAndErrors.json_ ファイルは、ダウンロードしたディレクトリのルートに配置されています。 _ConversionWarningsAndErrors.json_ を読み込むには、ファイルをボックスにドラッグ アンド ドロップするか、ボックスをクリックして、エクスプローラー ダイアログでファイルを見つけ、ファイルをアップロードします。
 
-![Drawing Error Visualizer アプリ - ドラッグ アンド ドロップでデータを読み込む](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Drawing Error Visualizer アプリ - ドラッグ アンド ドロップでデータを読み込む":::
 
-_ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawing パッケージのエラーと警告の一覧が表示されます。 各エラーまたは警告には、レイヤー、レベル、および詳細メッセージが指定されています。 各エラーに移動して、エラーの解決方法の詳細を確認できます。  
+_ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawing パッケージのエラーと警告の一覧が表示されます。 各エラーまたは警告には、レイヤー、レベル、および詳細メッセージが指定されています。 エラーまたは警告に関する詳細情報を表示するには、 **[Details]\(詳細\)** リンクをクリックします。 操作できないセクションが一覧の下に表示されます。 各エラーに移動して、エラーの解決方法の詳細を確認できます。
 
-![Drawing Error Visualizer アプリ - エラーと警告](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Drawing Error Visualizer アプリ - エラーと警告":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92acb1a475fbd41bfb7351d73c61db866ce2bbc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154935"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738049"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) の条件付きアクセス機能では、ア�
 * Intune 登録されているデバイスのみに特定のサービスへのアクセスを許可します。
 * ユーザーの場所と IP 範囲を制限します。
 
-条件付きアクセスのすべての機能について詳しくは、[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)に関するページをご覧ください。
+条件付きアクセスのすべての機能の詳細については、「[条件付きアクセスとは](../conditional-access/overview.md)」を参照してください。
 
 Azure AD のアプリをビルドしている開発者のために、この記事では、条件付きアクセスを使用する方法について示し、条件付きアクセス ポリシーが適用される可能性のある制御不能なリソースにアクセスした場合の影響についても学習します。 この記事では、On-Behalf-Of フロー、Web アプリ、Microsoft Graph へのアクセス、API の呼び出しに対し条件付きアクセスが与える影響についても説明します。
 
@@ -49,7 +49,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 * ADAL.js を使用するシングル ページ アプリ
 * リソースを呼び出す Web Apps
 
-条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーを構成する方法の詳細については、「[クイック スタート: Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../conditional-access/app-based-mfa.md)」を参照してください。
+条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法の詳細については、「[一般的な条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)」を参照してください。
 
 シナリオによっては、エンタープライズのお客様は、条件付きアクセス ポリシーをいつでも適用および削除することができます。 新しいポリシーが適用されたときにアプリの機能を継続するためには、"チャレンジ" 処理を実装する必要があります。 チャレンジ処理の例は次のとおりです。
 

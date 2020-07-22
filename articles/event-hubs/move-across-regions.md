@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs 名前空間を別のリージョンに移動する | Microsoft Docs
 description: この記事では、Azure Event Hubs 名前空間を現在のリージョンから別のリージョンに移動する方法について説明します。
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.custom: subject-moving-resources
-ms.date: 04/14/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312964"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs 名前空間を別のリージョンに移動する
 既存の Event Hubs 名前空間をあるリージョンから別のリージョンに移動するには、さまざまなシナリオがあります。 たとえば、テスト用に同じ構成で名前空間を作成することができます。 [ディザスター リカバリー計画](event-hubs-geo-dr.md#setup-and-failover-flow)の一部として、別のリージョンにセカンダリ名前空間を作成することもできます。

@@ -4,28 +4,27 @@ description: Windows を実行している Azure VM への Azure AD サインイ
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554881"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
 組織は、**Windows Server 2019 Datacenter エディション** または **Windows 10 1809** 以降を実行している Azure 仮想マシン (VM) に Azure Active Directory (AD) 認証を利用できるようになりました。 Azure AD を使用して VM を認証することにより、ポリシーを一元的に管理し、適用することができます。 Azure のロール ベースのアクセス制御 (RBAC) や Azure AD 条件付きアクセスなどのツールを使用すると、VM にアクセスできるユーザーを制御することができます。 この記事では、Azure AD 認証を使用できるように Windows Server 2019 VM を作成して構成する方法について説明します。
 
-|     |
-| --- |
-| Azure Windows VM への Azure AD サインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+> [!NOTE]
+> Azure Windows VM への Azure AD サインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Azure AD 認証を使用して、Azure 内の Windows VM にログインすると、次のような数多くのメリットがあります。
 

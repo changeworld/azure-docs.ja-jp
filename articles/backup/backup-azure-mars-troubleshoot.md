@@ -4,12 +4,12 @@ description: この記事では、Azure Backup エージェントのインスト
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598013"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056611"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -91,7 +91,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 - バックアップ サービスでは、次の名前付け規則に従って、これらのファイルは失敗としてログ ファイルにマークされます。*C:\Program Files\Microsoft Azure Recovery Service Agent\temp* フォルダー下の *LastBackupFailedFilesxxxx.txt*。
 - この問題を解決するには、ログ ファイルを確認して、問題の性質を理解します。
 
-  | エラー コード             | 理由                                             | Recommendations                                              |
+  | エラー コード             | 理由                                             | 推奨事項                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | ファイルまたはディレクトリが壊れているため、読み取ることができません。 | ソース ボリュームで **chkdsk** を実行します。                             |
   | 0x80070002、0x80070003 | 指定されたファイルが見つかりません。         | [スクラッチ フォルダーがいっぱいになっていないことを確認します](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  スクラッチ領域が構成されているボリュームが存在するかどうか (削除されていないかどうか) を確認します  <br><br>   [マシンにインストールされているウイルス対策から MARS エージェントが除外されていることを確認します](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
@@ -165,6 +165,25 @@ Set-ExecutionPolicy Unrestricted
 エラー | 考えられる原因 | 推奨アクション
 --- | --- | ---
 現在の操作は、内部サービス エラー "サービス スタンプにプロビジョニングされていないリソース" が原因で失敗しました。 しばらくしてから、操作を再試行してください。 (ID: 230006) | 保護されたサーバーの名前が変更されました。 | <li> サーバーの名前を、コンテナーに登録されている元の名前に戻します。 <br> <li> 新しい名前を使用して、サーバーをコンテナーに再登録します。
+
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>別のジョブが進行中であったため、ジョブを開始できませんでした
+
+**MARS コンソール** >  **[ジョブ履歴]** に "別のジョブが進行中であったため、ジョブを開始できませんでした" という警告メッセージが表示された場合は、タスク スケジューラによってトリガーされたジョブのインスタンスが重複している可能性があります。
+
+![別のジョブが進行中であったため、ジョブを開始できませんでした](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+この問題を解決するには、次の手順を実行します。
+
+1. [ファイル名を指定して実行] ウィンドウで *taskschd.msc* と入力して、タスク スケジューラ スナップインを起動します。
+1. 左側のペインで、 **[タスク スケジューラ ライブラリ]**  ->  **[Microsoft]**  ->  **[OnlineBackup]** に移動します。
+1. このライブラリ内の各タスクについて、タスクをダブルクリックしてプロパティを開き、次の手順を実行します。
+    1. **[設定]** タブに切り替えます。
+
+         ![Settings tab](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. **[タスクが既に実行中の場合に適用される規則]** のオプションを選択します。 **[新しいインスタンスを開始しない]** を選択します。
+
+         ![新しいインスタンスを開始しないように規則を変更する](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
 ## <a name="troubleshoot-restore-problems"></a>復元の問題のトラブルシューティング
 

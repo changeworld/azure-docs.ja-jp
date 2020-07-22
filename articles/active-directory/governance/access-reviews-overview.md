@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.subservice: compliance
-ms.date: 01/10/2020
+ms.date: 06/17/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22a7cafbf8223c3d9e7641851d02f61bc2ad16ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078905"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -78,6 +78,12 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 
    ![アクセス レビューの開始ページ](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
+### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Azure AD ロールに割り当て可能なグループに対するアクセス レビューの作成
+最新バージョンのアクセス レビューを使用している場合 (レビュー担当者には既定で **[マイ アクセス]** が表示されます) は、全体管理者のみがロール割り当て可能なグループにアクセス レビューを作成できます。 しかし、以前のバージョンのアクセス レビューを使用している場合 (レビュー担当者には既定で **[アクセス パネル]** が表示されます)、全体管理者とユーザーの管理者がロール割り当て可能なグループにアクセス レビューを作成できます。  
+
+新しいエクスペリエンスは、2020 年 8 月 1 日にすべての顧客にロールアウトされますが、すぐにアップグレードする場合は、「[Azure AD アクセス レビュー - マイ アクセス サインアップのレビュー担当者エクスペリエンスの更新](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u)」でリクエストを作成してください。
+
+[グループを Azure AD ロールに割り当てる方法について詳しく確認します](https://go.microsoft.com/fwlink/?linkid=2103037)。
 
 ## <a name="learn-about-access-reviews"></a>アクセス レビューの詳細情報
 

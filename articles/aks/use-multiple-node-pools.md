@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250857"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -42,7 +42,7 @@ Azure CLI バージョン 2.2.0 以降がインストールされて構成され
 > [!Important]
 > 運用環境内のお使いの AKS クラスターで 1 つのシステム ノード プールを実行する場合、そのノード プールには少なくとも 3 つのノードを使用することをお勧めします。
 
-まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 次の手順では、*1.15.7* の *--kubernetes-version* を使用してノード プールを更新する方法を示しています。 [Kubernetes のサポートされている任意のバージョン][supported-versions]を指定できます。
+まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。
 
 > [!NOTE]
 > 複数のノード プールを使用する場合、*Basic* ロード バランサー SKU は**サポートされません**。 既定では、AKS クラスターが、Azure CLI および Azure portal から *Standard* ロード バランサー SKU で作成されます。
@@ -58,7 +58,6 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.15.7 \
     --load-balancer-sku standard
 ```
 
@@ -82,8 +81,7 @@ az aks nodepool add \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --node-count 3 \
-    --kubernetes-version 1.15.5
+    --node-count 3
 ```
 
 > [!NOTE]
@@ -104,7 +102,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.5",
+    "orchestratorVersion": "1.15.7",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -123,7 +121,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 ```
 
 > [!TIP]
-> ノード プールを追加するときに *VmSize* を指定しなかった場合、既定のサイズは、Windows ノード プールの場合は *Standard_DS2_v3*、Linux ノード プールの場合は *Standard_DS2_v2* になります。 *OrchestratorVersion* が指定されていない場合、コントロール プレーンと同じバージョンが既定値になります。
+> ノード プールを追加するときに *VmSize* を指定しなかった場合、既定のサイズは、Windows ノード プールの場合は *Standard_D2s_v3*、Linux ノード プールの場合は *Standard_DS2_v2* になります。 *OrchestratorVersion* が指定されていない場合、コントロール プレーンと同じバージョンが既定値になります。
 
 ### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>一意なサブネットを持つノード プールを追加する (プレビュー)
 
@@ -144,7 +142,6 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --name mynodepool \
     --node-count 3 \
-    --kubernetes-version 1.15.5
     --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
 ```
 
@@ -153,25 +150,29 @@ az aks nodepool add \
 > [!NOTE]
 > クラスターまたはノード プールでは、アップグレードやスケーリングの操作を同時に実行することはできず、実行を試みた場合には、エラーが返されます。 代わりに、ターゲット リソースに対する次の要求を行う前に、各操作の種類をその同じリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](https://aka.ms/aks-pending-upgrade)を参照してください。
 
-最初の手順で AKS クラスターを初回作成したとき、`--kubernetes-version` として *1.15.7* を指定しました。 これにより、コントロール プレーンと既定ノード プールの両方の Kubernetes バージョンが設定されます。 このセクションのコマンドからは、1 つの特定のノード プールをアップグレードする方法が説明されます。
-
-コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするとき、両者の関係については、[下のセクション](#upgrade-a-cluster-control-plane-with-multiple-node-pools)で説明します。
+このセクションのコマンドからは、1 つの特定のノード プールをアップグレードする方法が説明されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするとき、両者の関係については、[下のセクション](#upgrade-a-cluster-control-plane-with-multiple-node-pools)で説明します。
 
 > [!NOTE]
 > ノード プールの OS イメージのバージョンは、クラスターの Kubernetes バージョンに関連付けられています。 OS イメージは、クラスターのアップグレードの後でのみアップグレードされます。
 
-この例には 2 つのノード プールがあるため、[az aks nodepool upgrade][az-aks-nodepool-upgrade] を使用してノード プールをアップグレードする必要があります。 *mynodepool* を Kubernetes *1.15.7* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
+この例には 2 つのノード プールがあるため、[az aks nodepool upgrade][az-aks-nodepool-upgrade] を使用してノード プールをアップグレードする必要があります。 使用可能なアップグレードを確認するには、[az aks get-upgrades][az-aks-get-upgrades] を使用します。
+
+```azurecli-interactive
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
+```
+
+*mynodepool* をアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.15.7 \
+    --kubernetes-version KUBERNETES_VERSION \
     --no-wait
 ```
 
-[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、*mynodepool* が *1.15.7* への *Upgrading* 状態であることを示しています。
+[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、*mynodepool* が *KUBERNETES_VERSION* への *Upgrading* 状態であることを示しています。
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -184,7 +185,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.7",
+    "orchestratorVersion": "KUBERNETES_VERSION",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -812,6 +813,8 @@ az group delete --name myResourceGroup2 --yes --no-wait
 
 Windows Server コンテナー ノード プールを作成して使用するには、[AKS での Windows Server コンテナーの作成][aks-windows]に関する記事を参照してください。
 
+[近接配置グループ][reduce-latency-ppg]を使用して、AKS アプリケーションの待機時間を短縮します。
+
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -824,6 +827,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
 [az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
 [az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
@@ -840,7 +844,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [quotas-skus-regions]: quotas-skus-regions.md
 [supported-versions]: supported-kubernetes-versions.md
-[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
@@ -848,3 +852,4 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips
+[reduce-latency-ppg]: reduce-latency-ppg.md

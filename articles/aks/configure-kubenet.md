@@ -3,20 +3,20 @@ title: Azure Kubernetes Service (AKS) で kubenet ネットワークを構成す
 description: Azure Kubernetes Service (AKS) で kubenet (基本) ネットワークを構成して、既存の仮想ネットワークおよびサブネットに AKS クラスターをデプロイする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 09fd5326c2532e115dbab0752af31a809488f04c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559689"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055496"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
 既定では、AKS クラスターでは [kubenet][kubenet] が使用されて、Azure 仮想ネットワークとサブネットが自動的に作成されます。 *kubenet* を使用すると、ノードでは Azure 仮想ネットワーク サブネットから IP アドレスが取得されます。 ポッドでは、ノードの Azure 仮想ネットワーク サブネットとは論理的に異なるアドレス空間から IP アドレスを受け取ります。 その後、ポッドで Azure 仮想ネットワークのリソースに到達できるように、ネットワーク アドレス変換 (NAT) が構成されます。 トラフィックの発信元 IP アドレスは、ノードのプライマリ IP アドレスに NAT 変換されます。 この方法では、ポッド用にネットワーク空間で予約する必要がある IP アドレスの数が大幅に減ります。
 
-[Azure Container Networking Interface (CNI)][cni-networking] では、すべてのポッドにサブネットから IP アドレスが割り当てられ、すべてのポッドに直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 ノードごとにそれと同じ数の IP アドレスが、そのノードに対して事前に予約されます。 この方法では詳細な計画が必要であり、多くの場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になります。
+[Azure Container Networking Interface (CNI)][cni-networking] では、すべてのポッドにサブネットから IP アドレスが割り当てられ、すべてのポッドに直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 ノードごとにそれと同じ数の IP アドレスが、そのノードに対して事前に予約されます。 この方法では詳細な計画が必要であり、多くの場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になります。 クラスターの作成時、または新しいノード プールを作成するときに、ノードに展開できる最大ポッド数を構成できます。 新しいノード プールを作成するときに maxPods を指定しない場合は、kubenet の既定値 110 を受け取ります。
 
 この記事では、 *kubenet* ネットワークを使用して、AKS クラスター用の仮想ネットワーク サブネットを作成して使用する方法を示します。 ネットワークのオプションと考慮事項について詳しくは、[Kubernetes および AKS のネットワークの概念][aks-network-concepts]に関する記事をご覧ください。
 
@@ -40,7 +40,7 @@ Azure CLI バージョン 2.0.65 以降がインストールされて構成さ�
 
 多くの環境では、割り当て済みの IP アドレス範囲を使用して仮想ネットワークとサブネットを定義します。 これらの仮想ネットワーク リソースは、複数のサービスとアプリケーションをサポートするために使用されます。 ネットワーク接続を提供するため、AKS クラスターでは *kubenet* (基本的なネットワーク) または Azure CNI ("*高度なネットワーク*) を使用できます。
 
-*kubenet* では、ノードだけが仮想ネットワーク サブネットの IP アドレスを受け取ります。 ポッドが相互に直接通信することはできません。 代わりに、複数のノードにまたがるポッド間の接続には、ユーザー定義ルーティング (UDR) と IP 転送が使用されます。 割り当て済み IP アドレスを受け取ってアプリケーションに対するトラフィックを負荷分散するサービスの背後に、ポッドをデプロイすることもできます。 次の図では、ポッドではなく AKS ノードが仮想ネットワーク サブネットの IP アドレスを受け取る方法を示します。
+*kubenet* では、ノードだけが仮想ネットワーク サブネットの IP アドレスを受け取ります。 ポッドが相互に直接通信することはできません。 代わりに、複数のノードにまたがるポッド間の接続には、ユーザー定義ルーティング (UDR) と IP 転送が使用されます。 既定では、UDR と IP 転送の構成は AKS サービスによって作成および管理されますが、[カスタム ルート管理用に独自のルートテーブルを用意する][byo-subnet-route-table]オプションがあります。 割り当て済み IP アドレスを受け取ってアプリケーションに対するトラフィックを負荷分散するサービスの背後に、ポッドをデプロイすることもできます。 次の図では、ポッドではなく AKS ノードが仮想ネットワーク サブネットの IP アドレスを受け取る方法を示します。
 
 ![AKS クラスターでの kubenet ネットワーク モデル](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 - 使用可能な IP アドレス空間が十分にある。
 - ポッドの通信のほとんどが、クラスターの外部にあるリソースに対するものである。
-- UDR を管理したくない。
+- ポッド接続用にユーザー定義ルートを管理したくない。
 - 仮想ノードや Azure ネットワーク ポリシーなどの高度な AKS 機能を使用する必要がある。  [Calico ネットワーク ポリシー][calico-network-policies] を使用している。
 
 どのネットワーク モデルを使用するかの決定に役立つ詳細については、[ネットワーク モデルとそのサポート範囲の比較][network-comparisons]に関するページを参照してください。
@@ -139,10 +139,10 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-次に、[az role assignment create][az-role-assignment-create] コマンドを使用して、AKS クラスターのサービス プリンシパルに、仮想ネットワークでの "*共同作成者*" アクセス許可を割り当てます。 前のサービス プリンシパル作成コマンドの出力で示されている独自の *\<appId>* を指定します。
+次に、[az role assignment create][az-role-assignment-create] コマンドを使用して、AKS クラスターのサービス プリンシパルに、仮想ネットワークでの "*ネットワーク共同作成者*" アクセス許可を割り当てます。 前のサービス プリンシパル作成コマンドの出力で示されている独自の *\<appId>* を指定します。
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>仮想ネットワークに AKS クラスターを作成する
@@ -195,7 +195,43 @@ az aks create \
     --client-secret <password>
 ```
 
-AKS クラスターを作成すると、ネットワーク セキュリティ グループとルート テーブルが作成されます。 これらのネットワーク リソースは、AKS コントロール プレーンによって管理されます。 ネットワーク セキュリティ グループは、ノードの仮想 NIC と自動的に関連付けられます。 ルート テーブルは、仮想ネットワーク サブネットと自動的に関連付けられます。 サービスを作成して公開すると、ネットワーク セキュリティ グループ規則とルート テーブルが自動的に更新されます。
+AKS クラスターを作成すると、ネットワーク セキュリティ グループとルート テーブルが自動的に作成されます。 これらのネットワーク リソースは、AKS コントロール プレーンによって管理されます。 ネットワーク セキュリティ グループは、ノードの仮想 NIC と自動的に関連付けられます。 ルート テーブルは、仮想ネットワーク サブネットと自動的に関連付けられます。 サービスを作成して公開すると、ネットワーク セキュリティ グループ規則とルート テーブルが自動的に更新されます。
+
+## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>kubenet で独自のサブネットとルート テーブルを使用する
+
+kubenet では、ルート テーブルがクラスター サブネット上に存在している必要があります。 AKS では、独自の既存のサブネットとルート テーブルを使用することがサポートされています。
+
+カスタム サブネットにルート テーブルが含まれていない場合は、AKS によって作成され、クラスターのライフサイクル全体にわたってそれにルールが追加されます。 クラスターを作成するときにカスタム サブネットにルートテーブルが含まれている場合、クラスターの操作中に既存のルート テーブルが AKS で認識され、クラウド プロバイダーの操作に応じてルールが追加または更新されます。
+
+> [!WARNING]
+> カスタム ルールをカスタム ルート テーブルに追加し、更新することができます。 ただし、Kubernetes クラウド プロバイダーによって追加されたルールは、更新または削除してはなりません。 0\.0.0.0/0 などのルールは、特定のルート テーブルに常に存在し、NVA や他のエグレス ゲートウェイなどのインターネット ゲートウェイのターゲットにマップされている必要があります。 ルールの更新でカスタム ルールのみが変更されている場合は注意が必要です。
+
+[カスタム ルート テーブル][custom-route-table]のセットアップに関する詳細を参照してください。
+
+Kubernet ネットワークで要求を正常にルーティングするには、整理されたルート テーブル ルールが必要です。 この設計のため、ルート テーブルはそれに依存するクラスターごとに慎重に保守する必要があります。 異なるクラスターからのポッド CIDR が重複し、予期しないルーティングや壊れたルーティングが発生する可能性があるため、複数のクラスターでルート テーブルを共有することはできません。 同じ仮想ネットワークで複数のクラスターを構成する場合、または仮想ネットワークを各クラスター専用にする場合は、次の制限事項を考慮してください。
+
+制限事項:
+
+* クラスターを作成する前にアクセス許可を割り当てる必要があります。対象のカスタム サブネットおよびカスタム ルート テーブルへの書き込みアクセス許可を持つサービス プリンシパルを使用していることを確認してください。
+* マネージド ID は、kubenet のカスタム ルート テーブルでは現在サポートされていません。
+* AKS クラスターを作成する前に、カスタム ルート テーブルをサブネットに関連付ける必要があります。
+* クラスターを作成した後で、関連付けられているルート テーブル リソースを更新することはできません。 ルート テーブル リソースは更新できませんが、カスタム ルールはルート テーブルで変更できます。
+* 各 AKS クラスターでは、クラスターに関連付けられているすべてのサブネットに対して、一意のルート テーブルを 1 つだけ使用する必要があります。 ポッドの CIDR が重複してルーティング規則が競合する可能性があるため、複数のクラスターでルート テーブルを再利用することはできません。
+
+カスタム ルート テーブルを作成し、仮想ネットワーク内のサブネットにそれを関連付けた後は、ルート テーブルを使用する新しい AKS クラスターを作成できます。
+AKS クラスターをデプロイする予定の場所に対するサブネット ID を使用する必要があります。 このサブネットは、カスタム ルート テーブルに関連付けられている必要もあります。
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -217,9 +253,11 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md

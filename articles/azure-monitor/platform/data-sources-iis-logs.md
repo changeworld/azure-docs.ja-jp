@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670578"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
@@ -43,7 +43,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | csUserName |サーバーにアクセスした認証されたユーザーの名前。 匿名ユーザーはハイフンで示されます。 |
 | csUriStem |要求のターゲット (Web ページなど) |
 | csUriQuery |クライアントが実行を試行していたクエリ (存在する場合) |
-| ManagementGroupName |Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
+| ManagementGroupName |Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です |
 | RemoteIPCountry |クライアントの IP アドレスの国や地域。 |
 | RemoteIPLatitude |クライアントの IP アドレスの緯度。 |
 | RemoteIPLongitude |クライアントの IP アドレスの経度。 |

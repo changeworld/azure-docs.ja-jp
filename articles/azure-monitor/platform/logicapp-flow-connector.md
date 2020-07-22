@@ -7,17 +7,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480013"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248738"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps および Flow 用の Azure Monitor Logs コネクタ
 [Azure Logic Apps](/azure/logic-apps/) と [Power Automate](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
 
 たとえば、ロジック アプリを作成して、Office 365 からの電子メール通知の Azure Monitor ログ データを使用したり、Azure DevOps でバグを作成したり、Slack メッセージを投稿したりできます。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。 
+
+## <a name="connector-limits"></a>コネクタの制限
+Azure Monitor Logs コネクタには次の制限があります。
+* 最大データ サイズ:16 MB
+* クエリ応答の最大サイズ 100 MB
+* レコードの最大数:500,000
+* クエリの最大タイムアウト 110 秒。
+
+使用するデータとクエリのサイズによっては、コネクタがその上限に達し、エラーが発生することがあります。 このような問題は、実行頻度を増やし、照会するデータを減らすようにトリガーの繰り返しを調整することで回避できます。 返すレコードと列が少なくなるようにデータを集計するクエリを使用できます。
 
 ## <a name="actions"></a>Actions
 次の表では、Azure Monitor Logs コネクタに含まれるアクションについて説明します。 両方とも、Log Analytics ワークスペースまたは Application Insights アプリケーションに対してログ クエリを実行できます。 違いは、データが返される方法です。

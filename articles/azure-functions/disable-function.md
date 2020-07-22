@@ -2,13 +2,13 @@
 title: Azure Functions で関数を無効にする方法
 description: Azure Functions で関数を無効または有効にする方法を学びます。
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/08/2020
+ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686882"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848741"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
@@ -39,7 +39,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>ポータルを使用する
 
-関数の **[管理]** タブにある **[関数の状態]** スイッチを使用することもできます。このスイッチを機能させるには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定を作成および削除します。
+関数の **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用することもできます。 これらのボタンを機能させるには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定を作成および削除します。
 
 ![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
 
@@ -122,9 +122,9 @@ or
 
 2 つ目の例では、`true` または 1 に設定されている IS_DISABLED という名前のアプリ設定がある場合に関数が無効になります。
 
-Azure Portal でファイルを編集するか、または関数の **[管理]** タブで **[関数の状態]** スイッチを使用できます。ポータルのスイッチを機能させるには、*function.json* ファイルを変更します。
+>[!IMPORTANT]  
+>ポータルでは、アプリケーション設定を使用して v1.x 関数を無効にするようになりました。 アプリケーション設定が function.json ファイルと競合するとき、エラーが発生することがあります。 エラーを回避するには、function.json ファイルから `disabled` プロパティを削除してください。 
 
-![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>次のステップ
 

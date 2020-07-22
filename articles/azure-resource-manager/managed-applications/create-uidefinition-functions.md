@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226231"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980815"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 関数
 このセクションには、サポートされているすべての CreateUiDefinition 関数の署名が含まれています。
 
-関数を使用するには、角かっこで宣言を囲みます。 次に例を示します。
+関数を使用するには、呼び出しを角かっこで囲みます。 次に例を示します。
 
 ```json
 "[function()]"
@@ -48,7 +48,7 @@ ms.locfileid: "79226231"
 ### <a name="steps"></a>steps
 指定したステップで定義されている要素の出力値が返されます。 基本ステップの要素の出力値を取得するには、代わりに `basics()` を使用します。
 
-次の例は、`bar` という名前のステップの、`foo` という名前の要素の出力を返します。
+次の例は、`foo` という名前のステップの、`bar` という名前の要素の出力を返します。
 
 ```json
 "[steps('foo').bar]"
@@ -462,7 +462,7 @@ ms.locfileid: "79226231"
 ```
 
 ### <a name="not"></a>not
-パラメーターが `true` に評価される場合、`false` が返されます。 この関数は、ブール型のパラメーターのみをサポートしています。
+パラメーターが `false` に評価される場合、`true` が返されます。 この関数は、ブール型のパラメーターのみをサポートしています。
 
 次の例は、 `true`を返します。
 
@@ -484,6 +484,45 @@ ms.locfileid: "79226231"
 ```json
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
+
+この関数は、ページが読み込まれた後にユーザーのアクションによって発生するオプションの呼び出しのコンテキストで特に役立ちます。 たとえば、UI 内の 1 つのフィールドに設定されている制約が、**最初は非表示**の別のフィールドの、現在選択されている値に依存している場合です。 この場合、`coalesce()` を使用して、ユーザーがフィールドと対話するときに望ましい効果を保持しながら、ページの読み込み時に関数を構文的に有効にすることができます。
+
+ユーザーが複数の異なるデータベースの種類から選択できるようにするこの `DropDown` を検討してください。
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+このフィールドの現在選択されている値に対して別のフィールドのアクションを条件付けするには、次のように `coalesce()` を使用します。
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+これは必要です。`databaseType` が最初は表示されず、値を持たないためです。 これにより、式全体が正しく評価されません。
 
 ## <a name="conversion-functions"></a>変換関数
 次の関数を使用すると、JSON データ型とエンコーディングの間で値を変換できます。

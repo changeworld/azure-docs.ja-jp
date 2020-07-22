@@ -4,15 +4,15 @@ description: この記事では、アプリケーション ゲートウェイの
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 90b3c3fd18bc9211c731ccf16dd646a64a4a1116
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133090"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186760"
 ---
 # <a name="application-gateway-components"></a>アプリケーション ゲートウェイのコンポーネント
 
@@ -144,7 +144,7 @@ Application Gateway バックエンド プールのメンバーは、可用性�
 
 既定では、アプリケーション ゲートウェイによりそのバック エンド プールにあるすべてのリソースの状態が監視され、異常なリソースがプールから自動的に削除されます。 その後、異常なインスタンスが監視され、それらのインスタンスが利用可能になって、正常性プローブに応答するようになったら、それらが正常なバックエンド プールに追加しなおされます。
 
-既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。 カスタム プローブを使用すると、正常性監視をより細かく制御できます。 カスタム プローブを使用すると、プローブの間隔やテスト対象となる URL とパスを構成したり、バックエンド プール インスタンスを異常と判断する基準とする応答失敗回数を構成したりすることができます。 カスタム プローブでは、各バックエンド プールの正常性を監視するように構成することをお勧めします。
+既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。 カスタム プローブを使用すると、正常性監視をより細かく制御できます。 カスタム プローブを使用する場合、カスタム ホスト名、URL パス、プローブ間隔、バックエンド プール インスタンスを異常としてマークするまでの応答の失敗回数、カスタム ステータス コード、応答本文の一致などを構成することができます。カスタム プローブでは、各バックエンド プールの正常性を監視するように構成することをお勧めします。
 
 詳しくは、[アプリケーション ゲートウェイの正常性の監視](../application-gateway/application-gateway-probe-overview.md)に関する記事をご覧ください。
 

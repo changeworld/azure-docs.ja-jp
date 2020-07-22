@@ -8,19 +8,19 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361169"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)を参照してください。
 >
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Windows Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
@@ -37,7 +37,8 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>エラー:サービスにアクセスすると、[無料アカウントの作成] が表示される
 
-!["無料アカウントの作成" メッセージが表示された Azure portal を示す画像](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> !["無料アカウントの作成" メッセージが表示された Azure portal を示す画像](media/create-new-account.png)
 
 **原因**:Azure にサインインしたアカウントにアクティブなサブスクリプションがないか、アカウントにサブスクリプションを表示するアクセス許可がありません。 
 
@@ -60,9 +61,10 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<ホスト名>/joindomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<hostname>/joindomain
 
-![デプロイ失敗のスクリーンショット。](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![デプロイ失敗のスクリーンショット。](media/failure-joindomain.png)
 
 未処理エラーの例:
 
@@ -103,7 +105,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vmextensionprovisioningerror"></a>エラー:VMExtensionProvisioningError
 
-![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](media/failure-vmextensionprovisioning.png)
 
 **原因 1:** Windows Virtual Desktop 環境の一時的なエラーです。
 
@@ -113,7 +116,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>エラー:指定した管理者のユーザー名は許可されません
 
-![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](media/failure-username.png)
 
 未処理エラーの例:
 
@@ -130,7 +134,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>エラー:拡張機能を処理しているときに VM がエラーを報告しました
 
-![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](media/failure-processing.png)
 
 未処理エラーの例:
 
@@ -149,7 +154,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>エラー:DeploymentFailed – PowerShell DSC 構成 'FirstSessionHost' がエラーで完了しました
 
-![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](media/failure-dsc.png)
 
 未処理エラーの例:
 

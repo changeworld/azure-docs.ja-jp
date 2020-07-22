@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a9a8239e2997335f5123d63cfc664027cffa02
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 582bb3e0f98535ccdc7be059de904e152db6ac77
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75376360"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870981"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>クイック スタート:Azure Spatial Anchors を使用して HoloLens アプリを C++/WinRT と DirectX で作成する
 
@@ -53,6 +53,8 @@ Visual Studio で `HoloLens\DirectX\SampleHoloLens.sln` を開きます。
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
+
+`case DemoStep::ConfigSession:` を見つけ、`configuration.AccountDomain("MyAccountDomain");` を追加し、前のアカウント ドメインを置き換えます。
 
 ## <a name="deploy-the-app-to-your-hololens"></a>アプリを HoloLens にデプロイする
 

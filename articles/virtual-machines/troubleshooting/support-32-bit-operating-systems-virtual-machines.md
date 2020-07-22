@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71846395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856947"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート
 
-Microsoft Azure をご利用のユーザーは、32 ビットの Windows オペレーティング システムを Azure で利用できるようになりました。 これらのオペレーティング システムの一部は既にサポート有効期間が終了しているため、Microsoft では追加サポートを提供しない場合があります。 Microsoft Azure 仮想マシン (VM) 上で実行される Linux ベースまたは Berkeley ソフトウェア配布 (BSD) ベースのオペレーティング システムに対しても、サポートは提供されません。
+Microsoft Azure をご利用のユーザーは、32 ビットの Windows オペレーティング システムを Azure で利用できるようになりました。 特殊化された VHD のみがサポートされ、一般化されたイメージは Azure では機能しません。 これらのオペレーティング システムの一部は既にサポート有効期間が終了しているため、Microsoft では追加サポートを提供しない場合があります。 Microsoft Azure 仮想マシン (VM) 上で実行される Linux ベースまたは Berkeley ソフトウェア配布 (BSD) ベースのオペレーティング システムに対しても、サポートは提供されません。
 
 ## <a name="more-information"></a>詳細情報
 

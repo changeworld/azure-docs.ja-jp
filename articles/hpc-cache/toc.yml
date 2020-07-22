@@ -38,6 +38,10 @@
       href: hpc-cache-manage.md
     - name: オプション設定を構成する
       href: configuration.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: リソース
   items:
     - name: サポート チケットを開く
@@ -52,3 +56,5 @@
       href: customer-keys.md
     - name: Azure HPC Cache で Azure NetApp Files を使用する
       href: hpc-cache-netapp.md
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'

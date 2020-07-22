@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
+ms.topic: how-to
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77185550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358244"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -76,6 +76,9 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 - 認証エージェント アプリケーション自体。 このアプリケーションは [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 権限で実行されます。
 - 認証エージェントの自動更新で使用されるアップデーター アプリケーション。 このアプリケーションは [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 権限で実行されます。
 
+>[!IMPORTANT]
+>セキュリティの観点から、管理者は PTA エージェントを実行しているサーバーをドメイン コントローラーとして扱う必要があります。  PTA エージェント サーバーは、「[攻撃に対してドメイン コントローラーをセキュリティで保護する](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)」で説明されている内容に沿って強化する必要があります。
+
 ### <a name="authentication-agent-registration"></a>認証エージェントの登録
 
 認証エージェントをインストールしたら、それ自体を Azure AD に登録する必要があります。 Azure AD は、セキュリティで保護された Azure AD との通信で使用できる一意のデジタル ID 証明書を各認証エージェントに割り当てます。
@@ -103,7 +106,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
     - この CA はパススルー認証機能でのみ使用されます。 この CA は、認証エージェントを登録するときの CSR への署名でのみ使用されます。
     -  その他の Azure AD サービスはこの CA を使用しません。
     - 証明書の件名 (識別名または DN) はテナント ID に設定されます。 この DN はテナントを一意に識別する GUID です。 この DN により、証明書の範囲がテナントのみでの使用に限定されます。
-6. Azure AD は、Azure AD のみがアクセス可能な、Azure SQL データベースに認証エージェントの公開キーを格納します。
+6. Azure AD では、Azure AD のみがアクセス可能な、Azure SQL Database 内のデータベースに認証エージェントの公開キーが格納されます。
 7. この証明書 (手順 5 で発行されたもの) は、オンプレミス サーバーの Windows 証明書ストア ([CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) などの場所) に格納されます。 認証エージェントとアップデーター アプリケーションの両方で使用されます。
 
 ### <a name="authentication-agent-initialization"></a>認証エージェントの初期化
@@ -136,7 +139,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 4. ユーザーが **[ユーザー サインイン]** ページにユーザー名を入力し、 **[次へ]** ボタンを選択します。
 5. ユーザーが **[ユーザー サインイン]** ページにパスワードを入力し、 **[サインイン]** ボタンを選択します。
 6. ユーザー名とパスワードが HTTPS POST 要求で Azure AD STS に送信されます。
-7. Azure AD STS が、Azure SQL データベースから、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。
+7. Azure AD STS によって、Azure SQL Database から、テナントで登録されたすべての認証エージェントの公開キーが取得され、それらを使用してパスワードが暗号化されます。
     - テナントで登録された "N" 個の認証エージェントに対し、"N" 個の暗号化されたパスワード値が生成されます。
 8. Azure AD STS が、ユーザー名と暗号化されたパスワードの値で構成されるパスワード検証要求を、テナントに固有の Service Bus キューに配置します。
 9. 初期化された認証エージェントは Service Bus キューに永続的に接続されるため、使用可能な認証エージェントのいずれかがパスワード検証要求を取得します。
@@ -175,7 +178,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 6. 既存の証明書の有効期限が切れている場合、Azure AD は登録されている認証エージェントのテナントの一覧から認証エージェントを削除します。 その後、全体管理者は手動で新しい認証エージェントをインストールして登録する必要があります。
     - Azure AD ルート CA を使用して、証明書に署名します。
     - 証明書の件名 (識別名または DN) を、テナントを一意に識別する GUID であるテナント ID に設定します。 この DN により、証明書の範囲がテナントのみに限定されます。
-6. Azure AD は、Azure AD のみがアクセス可能な Azure SQL データベースに認証エージェントの新しい公開キーを格納します。 また、認証エージェントに関連付けられた古い公開キーを無効にします。
+6. Azure AD では、それのみがアクセス可能な Azure SQL Database 内のデータベースに認証エージェントの公開キーが格納されます。 また、認証エージェントに関連付けられた古い公開キーを無効にします。
 7. その後、新しい証明書 (手順 5 で発行されたもの) はサーバーの Windows 証明書ストア ([CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) などの場所) に格納されます。
     - 信頼関係の更新手順は (全体管理者の関与なしで) 非対話形式に行われるため、認証エージェントは CERT_SYSTEM_STORE_LOCAL_MACHINE の場所の既存の証明書を更新するためにアクセスできなくなります。 
     

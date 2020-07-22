@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736936"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -92,7 +92,7 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 4. Psping を使用して、KMS サーバーへの接続があることを確認します。 ダウンロードした Pstools.zip を展開したフォルダーに移動し、次のコマンドを実行します。
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    出力の最後から 2 番目の行が次のようになっていることを確認します:Sent = 4, Received = 4, Lost = 0 (0% loss)。
 

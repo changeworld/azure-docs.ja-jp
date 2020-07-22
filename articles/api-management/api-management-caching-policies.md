@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 06c4ede12f939e48973d3e0b502d90b848d199bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e58cd8f19ab98601d37df185656038dbd5679eb2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236031"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255049"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -114,11 +114,11 @@ ms.locfileid: "79236031"
 | caching-type               | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
 | downstream-caching-type        | この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。                                                                                                          | いいえ       | なし              |
 | must-revalidate                | ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。                                                                                                                                                                                                                      | いいえ       | true              |
-| vary-by-developer              | `true` に設定すると、[サブスクリプション キー](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | はい      |         False          |
-| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | はい      |       False            |
+| vary-by-developer              | `true` に設定すると、[サブスクリプション キー](./api-management-subscriptions.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | はい      |         False          |
+| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](./api-management-howto-create-groups.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | はい      |       False            |
 
 ### <a name="usage"></a>使用法
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound
 - **ポリシー スコープ:** すべてのスコープ
@@ -190,7 +190,7 @@ ms.locfileid: "79236031"
 | duration         | キャッシュに格納されたエントリの有効期間 (秒単位)。                                                                                                                                                                                                                                                                                                   | はい      | 該当なし               |
 
 ### <a name="usage"></a>使用法
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** outbound
 - **ポリシー スコープ:** すべてのスコープ
@@ -211,7 +211,7 @@ ms.locfileid: "79236031"
 ```
 
 ### <a name="example"></a>例
-このポリシーの詳細と例については、「[Custom caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/)」(Azure API Management でのカスタム キャッシュ) を参照してください。
+このポリシーの詳細と例については、「[Custom caching in Azure API Management](./api-management-sample-cache-by-key.md)」(Azure API Management でのカスタム キャッシュ) を参照してください。
 
 ```xml
 <cache-lookup-value
@@ -236,7 +236,7 @@ ms.locfileid: "79236031"
 | variable-name    | 検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。                                       | はい      | 該当なし               |
 
 ### <a name="usage"></a>使用法
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound、outbound、backend、on-error
 - **ポリシー スコープ:** すべてのスコープ
@@ -254,7 +254,7 @@ ms.locfileid: "79236031"
 ```
 
 ### <a name="example"></a>例
-このポリシーの詳細と例については、「[Custom caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/)」(Azure API Management でのカスタム キャッシュ) を参照してください。
+このポリシーの詳細と例については、「[Custom caching in Azure API Management](./api-management-sample-cache-by-key.md)」(Azure API Management でのカスタム キャッシュ) を参照してください。
 
 ```xml
 <cache-store-value
@@ -278,7 +278,7 @@ ms.locfileid: "79236031"
 | key              | 値が格納されるキャッシュのキー。                                                                                                                                                                                                                                                                                                                   | はい      | 該当なし               |
 | value            | キャッシュされる値。                                                                                                                                                                                                                                                                                                                                     | はい      | 該当なし               |
 ### <a name="usage"></a>使用法
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound、outbound、backend、on-error
 - **ポリシー スコープ:** すべてのスコープ
@@ -316,7 +316,7 @@ ms.locfileid: "79236031"
 | key              | キャッシュから削除される、前にキャッシュされた値のキー。                                                                                                                                                                                                                                                                                        | はい      | 該当なし               |
 
 #### <a name="usage"></a>使用法
-このポリシーは、ポリシーの以下の[セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、ポリシーの以下の[セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound、outbound、backend、on-error
 - **ポリシー スコープ:** すべてのスコープ
@@ -327,5 +327,5 @@ ms.locfileid: "79236031"
 
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 + [ポリシーのサンプル](policy-samples.md)

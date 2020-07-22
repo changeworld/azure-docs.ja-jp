@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcc9e748cb5f88084b9cd3254654f9dc0fbc8aa1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 3cdd39ea9581384e7dd37ed67c641849f2696e1c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115569"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558334"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -107,7 +107,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 マネージド サービスである Azure Machine Learning コンピューティングを使用することにより、データ サイエンティストは Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできます。 たとえば、GPU がサポートされている VM などです。 このチュートリアルでは、トレーニング環境として Azure Machine Learning コンピューティングを作成します。 その VM 上で実行する Python コードは、後でこのチュートリアルの中で送信します。 
 
-以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。
+以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。 使用されていないときに 0 にスケールダウンするクラスターが設定されますが、最大 4 ノードにスケールアップできます。 
 
  **コンピューティング先の作成には約 5 分かかります。** ワークスペース内にコンピューティング リソースが既にある場合は、それが使用され、作成プロセスはスキップされます。
 

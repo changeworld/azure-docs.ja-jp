@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371988"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653653"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker での保存データの暗号化
 
@@ -52,6 +52,11 @@ QnA Maker サービスでは、Azure Search サービスから CMK が使用さ�
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
 カスタマー マネージド キーは、すべての Azure Search リージョンで使用できます。
+
+## <a name="encryption-of-data-in-transit"></a>転送中のデータの暗号化
+
+QnA Maker ポータルは、ユーザーのブラウザー上で実行されます。 どのアクションでも、各コグニティブ サービス API への直接呼び出しがトリガーされます。 そのため、QnA Maker では転送中のデータに対応しています。
+ただし、QnA Maker ポータル サービスは米国西部でホストされており、まだ米国以外のお客様にとっては最適な状況ではありません。 
 
 ## <a name="next-steps"></a>次のステップ
 

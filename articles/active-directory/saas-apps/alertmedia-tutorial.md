@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6aaaa24535c95e0a0d3f2b67709374c083ab738
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: bc8a416ac930de24e694107bec4f7ac287e15437
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725216"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608893"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AlertMedia の統合
 
@@ -96,12 +96,12 @@ AlertMedia で Azure AD SSO を構成してテストするには、次の構成�
     ![image](common/default-attributes.png)
 
 1. その他に、AlertMedia アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
-    
-    | 名前 |   |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | email |  | user.userprincipalname |
-    | firstname |  | User.givenname |
-    | lastname |  | User.surname |
+
+| 名前 | ソース属性|
+| ---- | --------------- |
+| email | user.userprincipalname |
+| firstname | User.givenname |
+| lastname | User.surname |
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 

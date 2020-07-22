@@ -4,14 +4,14 @@ description: Azure Data Share でデータ共有の受信者への招待を削�
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: 97068ce652881818527557dd63a186b5d63a9363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 040e1c02913291c31865a0b2e1e03e28040b8d40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73490494"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120213"
 ---
 # <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share"></a>Azure Data Share で受信者への招待を削除する方法
 

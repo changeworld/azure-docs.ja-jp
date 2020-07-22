@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456966"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961117"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>テンプレートを使用した内部ロード バランサーの作成
 
@@ -27,8 +27,6 @@ ms.locfileid: "79456966"
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [テンプレート](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -66,7 +64,9 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
     上記のコマンドで想定される出力を次に示します。
 
-        info:    New mode is arm
+    ```output
+    info:    New mode is arm
+    ```
 
 3. パラメーター ファイルを開いて内容を選択し、コンピューター内のファイルに保存します。 この例では、パラメーター ファイルを *parameters.json*に保存しました。
 4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用し、 **azure group deployment create** コマンドを実行して、新しい内部ロード バランサーをデプロイします。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。

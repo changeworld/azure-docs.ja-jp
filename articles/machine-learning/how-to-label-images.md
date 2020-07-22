@@ -2,19 +2,20 @@
 title: ラベル付けプロジェクトで画像にタグを付ける
 title.suffix: Azure Machine Learning
 description: Azure Machine Learning のラベル付けプロジェクトでデータのタグ付けツールを使用する方法について説明します。
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204323"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147022"
 ---
-# <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける
+# <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
 プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)されたら、ラベル付けツール (パブリック プレビュー) を使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
 
@@ -63,13 +64,15 @@ Azure では、ページ上のすべての画像にタグを付け終わると�
 
 手元にあるデータのタグを送信すると、Azure によって作業キューの新しい画像セットを使ってページが更新されます。
 
-### <a name="assisted-machine-learning"></a>支援型機械学習 
+### <a name="assisted-machine-learning-preview"></a>支援型機械学習 (プレビュー) 
 
-多クラス分類タスクまたは複数ラベル分類タスクの実行時に、機械学習アルゴリズムがトリガーされることがあります。 プロジェクトでこれらのアルゴリズムを有効にした場合、次のメッセージが表示されることがあります。
+機械学習アルゴリズムがトリガーされる可能性があります。 プロジェクトでこれらのアルゴリズムを有効にした場合、次のメッセージが表示されることがあります。
 
 * ある程度の量の画像についてラベル付けが完了すると、画面上部のプロジェクト名の横に "**Tasks clustered (クラスタリング付きのタスク)** " と表示されることがあります。  つまり、似ている画像を同じページに表示するために画像はグループ化されます。  その場合、そのグループ化を活かすためには、複数の画像ビューのいずれかに切り替えます。  
 
 * 後で、プロジェクト名の横に "**Tasks prelabeled (事前ラベル付きのタスク)** " と表示されることがあります。  その場合、機械学習の分類モデルによって提案されたラベルと共に画像が表示されます。 100% の精度を持つ機械学習モデルはありません。 使用するのはモデルの信頼度が高い画像だけですが、それらの画像であっても、ラベル付けが正しくない可能性があります。  そうしたラベルを見つけたら、ページを送信する前に、間違ったラベルを修正してください。  
+
+* オブジェクト検出モデルの場合、境界ボックスとラベルが既に表示されている可能性があります。  ページを送信する前に、間違っているものを修正してください。
 
 特に、ラベル付けプロジェクトの初期の段階では、機械学習モデルに、ほんの一部の画像に対して事前ラベル付けするだけの精度しかない、ということがあります。 これらの画像のラベル付けが完了すると、次のラウンドのモデル トレーニング用にさらに多くのデータを収集するため、ラベル付けプロジェクトは手動でのラベル付けに戻ります。 やがて、さらに多くの割合の画像について、モデルの信頼度が上がっていき、後でプロジェクトで行う事前ラベル付けタスクが蓄積されていきます。
 

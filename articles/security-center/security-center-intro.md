@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: a02abd931dddd410882dd67a73a5b5fab6dc8cf9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82194892"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044279"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -41,13 +41,13 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 -   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項とセキュリティ アラートが生成されます。
 
--   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスによる自動プロビジョニングと保護が提供されます。
+-   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスを自動的にプロビジョニングしたり、保護できます。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
-Security Center はネイティブで Azure の一部なので、Service Fabric、SQL Database、ストレージ アカウントなどの Azure に含まれる PaaS サービスは、デプロイすることなく Security Center で監視および保護されます。
+Security Center はネイティブで Azure の一部なので、Service Fabric、SQL Database、SQL Managed Instance、ストレージ アカウントなどの Azure に含まれる PaaS サービスは、デプロイすることなく Security Center で監視および保護されます。
 
 さらに、Security Center は、Log Analytics エージェントをインストールすることにより、Windows と Linux の両方のサーバーで、クラウドまたはオンプレミスにある Azure 以外のサーバーと仮想マシンを保護します。 Azure 仮想マシンは、Security Center 内に自動プロビジョニングされます。
 
@@ -111,7 +111,7 @@ Security Center の脅威の防止機能には、サイバー キルチェーン
 
 Security Center には、Microsoft Defender Advanced Threat Protection との自動ネイティブ統合機能が備わっています。 つまり、Windows マシンと Linux マシンは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。
 
-さらに、Security Center では、サーバー環境のアプリケーション制御ポリシーを自動化することができます。 Security Center の適応型アプリケーション制御を使用すると、Windows サーバー全体の包括的なアプリのホワイトリストを作成できます。 ルールを作成して違反を確認する必要はありません。すべて自動的に行われます。
+さらに、Security Center では、サーバー環境のアプリケーション制御ポリシーを自動化することができます。 Security Center の適応型アプリケーション制御を使用すると、Windows サーバー全体の包括的なアプリの承認リストを作成できます。 ルールを作成して違反を確認する必要はありません。すべて自動的に行われます。
 
 ### <a name="protect-paas"></a>PaaS の保護
 

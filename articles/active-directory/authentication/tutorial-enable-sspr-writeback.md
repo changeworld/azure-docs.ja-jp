@@ -10,12 +10,13 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4815187e829cff56893988874e4dcac3b8985e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: contperfq4
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143744"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202549"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
@@ -34,7 +35,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P1 または P2 試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 詳細については、[Azure AD SSPR のライセンス要件](concept-sspr-licensing.md)に関するページを参照してください。
 * "*グローバル管理者*" 特権を持つアカウント。
@@ -42,7 +43,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
     * 必要に応じて、[前のチュートリアルを完了して Azure AD SSPR を有効にしてください](tutorial-enable-sspr.md)。
 * Azure AD Connect の現在のバージョンを使用して構成された既存のオンプレミスの AD DS 環境。
     * 必要に応じて、[簡易](../hybrid/how-to-connect-install-express.md)または[カスタム](../hybrid/how-to-connect-install-custom.md)設定を使用して Azure AD Connect を構成してください。
-    * パスワード ライトバックを使用するためには、ドメイン コントローラーが Windows Server 2008 R2 以降である必要があります。
+    * パスワード ライトバックを使用するためには、ドメイン コントローラーが Windows Server 2012 以降である必要があります。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Azure AD Connect に対するアカウントのアクセス許可を構成する
 
@@ -58,6 +59,10 @@ SSPR のライトバックを正しく操作するには、Azure AD Connect で�
    * SSPR の範囲内にしたいユーザー組織単位 (OU)
 
 これらのアクセス許可を割り当てないと、ライトバックが正しく構成されているように見えても、ユーザーがクラウドからオンプレミスのパスワードを管理するときにエラーが発生します。 "期限切れではないパスワード" が表示されるためには、 **[このオブジェクトとすべての子オブジェクト]** にアクセス許可が割り当てられている必要があります。  
+
+> [!TIP]
+>
+> 一部のユーザー アカウントのパスワードがオンプレミスのディレクトリに書き戻されない場合は、オンプレミスの AD DS 環境でそのアカウントの継承が無効になっていないことを確認してください。 この機能を正常に動作させるには、パスワードの書き込みアクセス許可を子孫オブジェクトに適用する必要があります。
 
 パスワード ライトバックを行うための適切なアクセス許可を設定するには、以下の手順を完了します。
 

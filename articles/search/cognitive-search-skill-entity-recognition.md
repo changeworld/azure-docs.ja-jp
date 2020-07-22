@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080859"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
 
@@ -22,7 +22,7 @@ ms.locfileid: "80297805"
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -37,18 +37,18 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| categories    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
-|defaultLanguageCode |    入力テキストの言語コード。 次の言語がサポートされます。`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` すべての言語ですべてのエンティティ カテゴリがサポートされているわけではありません。以下の注意事項を参照してください。|
-|minimumPrecision | 0 から 1 の値。 (`namedEntities` 出力の) 信頼度スコアがこの値よりも小さい場合は、エンティティは返されません。 既定値は 0 です。 |
-|includeTypelessEntities | 現在のカテゴリに当てはまらない既知のエンティティを認識するには、`true` に設定します。 認識されたエンティティは、`entities` 複合出力フィールドに返されます。 たとえば、"Windows 10" は既知のエンティティ (製品) ですが、"製品" はサポートされているカテゴリではないため、このエンティティはエンティティ出力フィールドに含まれます。 既定値は `false` です |
+| `categories`    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
+| `defaultLanguageCode` |    入力テキストの言語コード。 次の言語がサポートされます。`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` すべての言語ですべてのエンティティ カテゴリがサポートされているわけではありません。以下の注意事項を参照してください。|
+| `minimumPrecision` | 0 から 1 の値。 (`namedEntities` 出力の) 信頼度スコアがこの値よりも小さい場合は、エンティティは返されません。 既定値は 0 です。 |
+| `includeTypelessEntities` | 現在のカテゴリに当てはまらない既知のエンティティを認識するには、`true` に設定します。 認識されたエンティティは、`entities` 複合出力フィールドに返されます。 たとえば、"Windows 10" は既知のエンティティ (製品) ですが、"製品" はサポートされているカテゴリではないため、このエンティティはエンティティ出力フィールドに含まれます。 既定値は `false` です |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 | 入力名      | 説明                   |
 |---------------|-------------------------------|
-| languageCode    | 省略可能。 既定値は `"en"` です。  |
-| text          | 分析するテキスト。          |
+| `languageCode`    | 省略可能。 既定値は `"en"` です。  |
+| `text`          | 分析するテキスト。          |
 
 ## <a name="skill-outputs"></a>スキルの出力
 
@@ -57,15 +57,15 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 出力名      | 説明                   |
 |---------------|-------------------------------|
-| persons       | 各文字列が人物の名前を表す文字列の配列。 |
-| locations  | 各文字列が場所を表す文字列の配列。 |
-| organizations  | 各文字列が組織を表す文字列の配列。 |
-| quantities  | 各文字列が数量を表す文字列の配列。 |
-| dateTimes  | 各文字列が DateTime (テキストに表示される) 値を表す文字列の配列。 |
-| urls | 各文字列が URL を表す文字列の配列。 |
-| emails | 各文字列が電子メールを表す文字列の配列。 |
-| namedEntities | 次のフィールドが含まれる複合型の配列。 <ul><li>category</li> <li>value (実際のエンティティ名)</li><li>offset (テキスト内で見つかった場所)</li><li>confidence (値が高いほど、実際のエンティティに近づきます)</li></ul> |
-| entities | 複合型の配列。テキストから抽出されたエンティティに関する豊富な情報と次のフィールドが含まれます。 <ul><li> name (実際のエンティティ名。 これは "正規化" フォームです)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (エンティティの Wikipedia ページのリンク)</li><li>bingId</li><li>type (認識されたエンティティのカテゴリ)</li><li>subType (特定のカテゴリのみで利用可能。エンティティ型がより詳しく表示されます)</li><li> matches (次を含む複合コレクション)<ul><li>text (エンティティの未加工テキスト)</li><li>offset (それが見つかった場所)</li><li>length (未加工エンティティ テキストの長さ)</li></ul></li></ul> |
+| `persons`       | 各文字列が人物の名前を表す文字列の配列。 |
+| `locations`  | 各文字列が場所を表す文字列の配列。 |
+| `organizations`  | 各文字列が組織を表す文字列の配列。 |
+| `quantities`  | 各文字列が数量を表す文字列の配列。 |
+| `dateTimes`  | 各文字列が DateTime (テキストに表示される) 値を表す文字列の配列。 |
+| `urls` | 各文字列が URL を表す文字列の配列。 |
+| `emails` | 各文字列が電子メールを表す文字列の配列。 |
+| `namedEntities` | 次のフィールドが含まれる複合型の配列。 <ul><li>category</li> <li>value (実際のエンティティ名)</li><li>offset (テキスト内で見つかった場所)</li><li>confidence (値が高いほど、実際のエンティティに近づきます)</li></ul> |
+| `entities` | 複合型の配列。テキストから抽出されたエンティティに関する豊富な情報と次のフィールドが含まれます。 <ul><li> name (実際のエンティティ名。 これは "正規化" フォームです)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (エンティティの Wikipedia ページのリンク)</li><li>bingId</li><li>type (認識されたエンティティのカテゴリ)</li><li>subType (特定のカテゴリのみで利用可能。エンティティ型がより詳しく表示されます)</li><li> matches (次を含む複合コレクション)<ul><li>text (エンティティの未加工テキスト)</li><li>offset (それが見つかった場所)</li><li>length (未加工エンティティ テキストの長さ)</li></ul></li></ul> |
 
 ##    <a name="sample-definition"></a>定義例
 

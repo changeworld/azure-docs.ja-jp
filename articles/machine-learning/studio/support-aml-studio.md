@@ -5,16 +5,16 @@ description: Azure Machine Learning Studio (クラシック) のサポートと�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213178"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用する
 
@@ -38,7 +38,7 @@ ms.locfileid: "82209436"
 
 + **Azure ユーザー向けテクニカル サポート**:Azure portal による[サポート要求の作成と管理](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
-+ **ユーザー フォーラム**:[MSDN の Azure Machine Learning Studio (クラシック) サポート フォーラム](https://aka.ms/aml-forum-studio)では、質問したり質問に回答したりして他のユーザーとつながることができます。
++ **ユーザー フォーラム**:[Azure Machine Learning Studio (クラシック) サポート フォーラム](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)では、質問したり質問に回答したりして他のユーザーとつながることができます。
 
 + **Stack Overflow**:"Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
 

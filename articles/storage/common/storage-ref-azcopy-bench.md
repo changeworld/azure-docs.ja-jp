@@ -8,22 +8,22 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ff6c6c76e255945681e678ef296ffcf9978f61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72518127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485186"
 ---
-# <a name="azcopy-bench"></a>azcopy bench
+# <a name="azcopy-benchmark"></a>azcopy ベンチマーク
 
 指定した宛先にテスト データをアップロードすることで、パフォーマンス ベンチマークを実行します。 テスト データは自動的に生成されます。
 
 このベンチマーク コマンドは、次の点を除いて、'copy' と同じアップロード プロセスを実行します。
 
-  - ソース パラメーターはありません。  コマンドには、宛先 URL のみが必要です。 現在のリリースでは、この宛先 URL は BLOB コンテナーを参照する必要があります。
+  - ソース パラメーターはありません。  コマンドには、宛先 URL のみが必要です。 
   
-  - ペイロードは、自動生成されるファイルの数とサイズを制御するコマンド ライン パラメーターによって記述されます。 生成プロセスは、すべてメモリ内で行われます。 ディスクは使用されません。
+  - ペイロードは、自動的に生成されるファイルの数とそれらのサイズを制御するコマンド ライン パラメーターによって記述されます。 生成プロセスは、すべてメモリ内で行われます。 ディスクは使用されません。
   
   - copy コマンドで使用できるオプションのパラメーターの一部のみがサポートされています。
   
@@ -31,14 +31,14 @@ ms.locfileid: "72518127"
   
   - 既定では、転送されたデータはテスト実行の終了時に削除されます。
 
-ベンチマーク モードは、最大スループットを提供する並列 TCP 接続の数に自動的に調整されます。 最後にその数値が表示されます。 自動チューニングを行わないようにするには、AZCOPY_CONCURRENCY_VALUE 環境変数を特定の数の接続に設定します。
+ベンチマーク モードは、最大スループットを提供する並列 TCP 接続の数に自動的に調整されます。 最後にその数値が表示されます。 自動調整が行われないようにするには、AZCOPY_CONCURRENCY_VALUE 環境変数を特定の数の接続に設定します。
 
 一般的な認証の種類がすべてサポートされています。 ただし、ベンチマークを行うための最も便利な方法は、通常、SAS トークン付きの空のコンテナーを作成し、SAS 認証を使用することです。
 
 ## <a name="examples"></a>例
 
 ```azcopy
-azcopy bench [destination] [flags]
+azcopy benchmark [destination] [flags]
 ```
 
 既定のパラメーターを使用してベンチマーク テストを実行します (最大 1 Gbps のネットワークのベンチマークに適しています)。
@@ -47,9 +47,9 @@ azcopy bench [destination] [flags]
 
 サイズがそれぞれ 2 GiB の 100 個のファイルをアップロードするベンチマーク テストを実行します (10 Gbps などの高速ネットワークでのベンチマークに適しています)。
 
-- azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 100 --size-per-file 2G
+- azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"--file-count 100 --size-per-file 2G
 
-上記と同じですが、サイズがそれぞれ 8 MiB の 5 万個のファイルを使用し、それらの MD5 ハッシュを計算します (--put-md5 フラグが copy コマンドでこれを行うのと同じ方法を使用します)。 ベンチマーク時の --put-md5 の目的は、MD5 の計算が、選択したファイルの数とサイズのスループットに影響するかどうかをテストすることです。
+ベンチマーク テストを実行しますが、サイズがそれぞれ 8 MiB の 50,000 個のファイルを使用し、それらの MD5 ハッシュを計算します (copy コマンドで `--put-md5` フラグが行う方法と同じです)。 ベンチマーク時の `--put-md5` の目的は、MD5 の計算が、選択されたファイルの数とサイズのスループットに影響を与えるかどうかをテストすることです。
 
 - azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 50000 --size-per-file 8M --put-md5
 
@@ -76,6 +76,8 @@ azcopy bench [destination] [flags]
 **--cap-mbps uint32**  転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
 
 **--output-type** string  コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値 "text")。
+
+**--trusted-microsoft-suffixes** string   Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。
 
 ## <a name="see-also"></a>関連項目
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687006"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -27,7 +27,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * カスタマー マネージド キーは、 "*ISE を作成するときにのみ*" 指定でき、その後には指定できません。 ISE を作成した後に、このキーを無効にすることはできません。 現時点では、ISE でのカスタマー マネージド キーのローテーションはサポートされていません。
 
-* カスタマー マネージド キーをサポートするには、ISE で[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) が有効になっている必要があります。 この ID により、ISE は他の Azure Active Directory (Azure AD) テナントのリソースへのアクセスを認証できるため、ユーザーは自分の資格情報でサインインする必要がありません。
+* カスタマー マネージド キーをサポートするには、ISE で[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) が有効になっている必要があります。 この ID により、ISE は他の Azure Active Directory (Azure AD) テナントのリソースへのアクセスを認証できるため、ユーザーは自分の資格情報でサインインする必要がありません。
 
 * 現在、カスタマー マネージド キーをサポートし、システム割り当て ID を有効にする ISE を作成するには、HTTPS PUT 要求を使用して Logic Apps REST API を呼び出す必要があります。
 

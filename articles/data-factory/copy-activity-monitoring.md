@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249705"
 ---
 # <a name="monitor-copy-activity"></a>コピー アクティビティを監視する
 
@@ -58,8 +58,8 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | filesWritten | ファイル ベースのシンクに書き込まれてコミットされたファイルの数。 | Int64 値 (単位なし) |
 | sourcePeakConnections | コピー アクティビティの実行中にソース データ ストアに対して確立されたコンカレント接続の最大数。 | Int64 値 (単位なし) |
 | sinkPeakConnections | コピー アクティビティの実行中にシンク データ ストアに対して確立されたコンカレント接続の最大数。 | Int64 値 (単位なし) |
-| rowsRead | ソースから読み取られた行の数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
-| rowsCopied | シンクにコピーされた行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
+| rowsRead | ソースから読み取られた行の数。 このメトリックは、ファイルを解析せずにそのままコピーする場合には適用されません (たとえば、ソースとシンクのデータセットがバイナリ形式の場合や、同じ設定を持つ他の形式の種類の場合)。 | Int64 値 (単位なし) |
+| rowsCopied | シンクにコピーされた行の数。 このメトリックは、ファイルを解析せずにそのままコピーする場合には適用されません (たとえば、ソースとシンクのデータセットがバイナリ形式の場合や、同じ設定を持つ他の形式の種類の場合)。  | Int64 値 (単位なし) |
 | rowsSkipped | スキップされた互換性のない行の数。 `enableSkipIncompatibleRow` を true に設定することにより、互換性のない行をスキップすることができます。 | Int64 値 (単位なし) |
 | copyDuration | コピーの実行の持続期間。 | Int32 値 (秒単位) |
 | throughput | データ転送率。 | 浮動小数点数 (KB/秒単位) |

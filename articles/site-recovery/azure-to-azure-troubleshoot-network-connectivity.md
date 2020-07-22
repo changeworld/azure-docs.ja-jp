@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884870"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132723"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
@@ -51,7 +51,7 @@ VM がカスタム DNS 設定を使用するかどうかを確認するには、
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2:Site Recovery の構成に失敗しました (151196)
 
 > [!NOTE]
-> VM が **Standard** 内部ロード バランサーの背後にある場合、既定では、`login.microsoftonline.com` などの Office 365 IP にアクセスすることはできません。 記事「[Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](/azure/load-balancer/configure-load-balancer-outbound-cli)」の説明に従って、内部ロード バランサーの種類を **Basic** に変更するか、発信アクセスを作成します。
+> VM が **Standard** 内部ロード バランサーの背後にある場合、既定では、`login.microsoftonline.com` などの Office 365 IP にアクセスすることはできません。 記事「[Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](../load-balancer/configure-load-balancer-outbound-cli.md)」の説明に従って、内部ロード バランサーの種類を **Basic** に変更するか、発信アクセスを作成します。
 
 #### <a name="possible-cause"></a>考えられる原因
 
@@ -60,7 +60,7 @@ Office 365 認証と ID IP4 エンドポイントへの接続を確立できま�
 #### <a name="resolution"></a>解決策
 
 - Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要があります。
-- VM での発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) のルールやファイアウォール プロキシを使用している場合は、Office 365 の IP 範囲への通信を確実に許可します。 Azure Active Directory (Azure AD) に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (Azure AD) サービス タグ](/azure/virtual-network/security-overview#service-tags) ベースの NSG 規則を作成します。
+- VM での発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) のルールやファイアウォール プロキシを使用している場合は、Office 365 の IP 範囲への通信を確実に許可します。 Azure Active Directory (Azure AD) に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (Azure AD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG 規則を作成します。
 - 今後、新しいアドレスが Azure AD に追加された場合は、新しい NSG 規則を作成する必要があります。
 
 ### <a name="example-nsg-configuration"></a>NSG 構成の例
@@ -143,7 +143,7 @@ Azure Site Recovery では、リージョンに基づいて [Site Recovery の I
 
 ### <a name="fix-the-problem"></a>問題の解決
 
-[必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または[必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)を許可するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
+[必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または[必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)を許可するには、[ネットワーク ガイダンスのドキュメント](./azure-to-azure-about-networking.md)の次の手順に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

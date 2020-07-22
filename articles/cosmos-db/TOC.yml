@@ -123,7 +123,7 @@
           href: partitioning-overview.md
         - name: パーティション分割と水平スケーリング
           href: partition-data.md
-        - name: 合成パーティション キーの作成
+        - name: 合成パーティション キー
           href: synthetic-partition-keys.md
     - name: プロビジョニング スループット
       items:
@@ -229,6 +229,15 @@
                     - name: GetCurrentTimestamp
                       displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
                       href: sql-query-getcurrenttimestamp.md
+                    - name: DateTimeFromParts
+                      displayName: 'DateTimeFromParts, date time from parts, date and time functions, datetime'
+                      href: sql-query-datetimefromparts.md
+                    - name: DateTimeAdd
+                      displayName: 'DateTimeAdd, date time add, timestamp, date and time functions, datetime'
+                      href: sql-query-datetimeadd.md
+                    - name: DateTimeDiff
+                      displayName: 'DateTimeDiff, date time diff, date and time functions, datetime'
+                      href: sql-query-datetimediff.md
                 - name: 数学関数
                   items:
                     - name: 数学関数
@@ -544,7 +553,7 @@
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: database-security.md
@@ -592,12 +601,18 @@
           items:
             - name: .NET
               href: create-cassandra-dotnet.md
-            - name: Java
+            - name: .NET Core
+              href: create-cassandra-dotnet-core.md
+            - name: Java v3
               href: create-cassandra-java.md
+            - name: Java v4
+              href: create-cassandra-java-v4.md
             - name: Node.js
               href: create-cassandra-nodejs.md
             - name: Python
               href: create-cassandra-python.md
+            - name: Golang
+              href: create-cassandra-go.md
         - name: チュートリアル
           items:
             - name: 1 - データの作成と管理
@@ -615,6 +630,8 @@
               href: cassandra-faq.md
             - name: エラスティック スケール
               href: manage-scale-cassandra.md
+            - name: パーティション分割
+              href: cassandra-partitioning.md
             - name: セカンダリ インデックス
               href: cassandra-secondary-index.md
         - name: 操作方法ガイド
@@ -857,7 +874,7 @@
               href: table-storage-how-to-use-c-plus.md
             - name: Ruby
               href: table-storage-how-to-use-ruby.md
-            - name: 'F#'
+            - name: F#
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
         - name: 概念
@@ -971,41 +988,40 @@
           href: how-to-manage-indexing-policy.md
         - name: 一意のキーの定義
           href: how-to-define-unique-keys.md
-    - name: ベスト プラクティス
+    - name: パフォーマンスとトラブルシューティング
       items:
-        - name: パフォーマンスに関するヒント
+        - name: クエリ
           items:
             - name: クエリ実行メトリックの取得
-              displayName: 'query profile, profile'
               href: profile-sql-api-query.md
             - name: クエリ パフォーマンスの調整
               href: sql-api-query-metrics.md
-            - name: .NET SDK のパフォーマンスに関するヒント
+            - name: クエリ パフォーマンスのトラブルシューティング
+              href: troubleshoot-query-performance.md
+        - name: .NET
+          items:
+            - name: .NET SDK v3 のパフォーマンスに関するヒント
+              href: performance-tips-dotnet-sdk-v3-sql.md
+            - name: .NET SDK v2 のパフォーマンスに関するヒント
               href: performance-tips.md
+            - name: .NET SDK のトラブルシューティング
+              href: troubleshoot-dot-net-sdk.md
+        - name: Java
+          items:
             - name: Java SDK v4 のパフォーマンスに関するヒント
               href: performance-tips-java-sdk-v4-sql.md
-            - name: 以前の Java SDK のパフォーマンスに関するヒント
-              items:
-                - name: 非同期の Java SDK v2
-                  href: performance-tips-async-java.md
-                - name: 同期の Java SDK v2
-                  href: performance-tips-java.md
-            - name: パフォーマンス テスト - サンプル アプリ
-              href: performance-testing.md
+            - name: Java SDK v4 のトラブルシューティング
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: 非同期の Java SDK v2
+              href: performance-tips-async-java.md
+            - name: 同期の Java SDK v2
+              href: performance-tips-java.md
+            - name: トラブルシューティング - Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
+        - name: パフォーマンス テスト - サンプル アプリ
+          href: performance-testing.md
         - name: コスト効率の優れた読み取りと書き込み
           href: key-value-store-cost.md
-    - name: トラブルシューティング
-      items:
-        - name: クエリ パフォーマンスのトラブルシューティング
-          href: troubleshoot-query-performance.md
-        - name: Java SDK v4 のトラブルシューティング
-          href: troubleshoot-java-sdk-v4-sql.md
-        - name: 以前の Java SDK のトラブルシューティング
-          items:
-            - name: 非同期の Java SDK v2
-              href: troubleshoot-java-async-sdk.md
-        - name: .NET SDK のトラブルシューティング
-          href: troubleshoot-dot-net-sdk.md
     - name: 新しい SDK への移行
       items:
         - name: Java V4 SDK への移行
@@ -1050,7 +1066,7 @@
           href: import-github-notebooks.md
         - name: 組み込みの Python ノートブック コマンドを使用する
           href: use-python-notebook-features-and-commands.md
-        - name: '組み込みの C# ノートブック コマンドを使用する'
+        - name: 組み込みの C# ノートブック コマンドを使用する
           href: use-csharp-notebook-features-and-commands.md
     - name: サーバー側プログラミング
       items:
@@ -1060,7 +1076,7 @@
           href: how-to-write-javascript-query-api.md
         - name: ストアド プロシージャ、トリガー、UDF の使用
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: IP ファイアウォールの構成
           href: how-to-configure-firewall.md
@@ -1150,6 +1166,8 @@
           href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Stream Analytics
           href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Azure Data Explorer
+          href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
         - name: Azure Event Hubs と Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Starter の使用
@@ -1188,28 +1206,30 @@
           href: how-to-migrate-from-bulk-executor-library.md
         - name: Bulk Executor - Java ライブラリ
           href: bulk-executor-java.md
-- name: リファレンス
+- name: SQL API SDK のリファレンス
   items:
-    - name: .NET
-      href: sql-api-sdk-dotnet.md
-    - name: .NET Core
-      href: sql-api-sdk-dotnet-core.md
-    - name: .NET Standard
-      href: sql-api-sdk-dotnet-standard.md
-    - name: .NET 変更フィード ライブラリ
-      href: sql-api-sdk-dotnet-changefeed.md
-    - name: .NET Bulk Executor ライブラリ
-      href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java Bulk Executor ライブラリ
-      href: sql-api-sdk-bulk-executor-java.md
-    - name: Core 用 Java SDK v4
-      href: sql-api-sdk-java-v4.md
-    - name: 以前の Core 用 Java SDK
+    - name: .NET SDK
       items:
+        - name: .NET SDK v3
+          href: sql-api-sdk-dotnet-standard.md
+        - name: .NET SDK v2
+          href: sql-api-sdk-dotnet.md
+        - name: .NET Core SDK v2
+          href: sql-api-sdk-dotnet-core.md
+        - name: .NET 変更フィード ライブラリ v2
+          href: sql-api-sdk-dotnet-changefeed.md
+        - name: .NET バルク エグゼキューター ライブラリ v2
+          href: sql-api-sdk-bulk-executor-dot-net.md
+    - name: Java SDK
+      items:
+        - name: Java SDK v4
+          href: sql-api-sdk-java-v4.md
         - name: 非同期の Java SDK v2
           href: sql-api-sdk-async-java.md
         - name: 同期の Java SDK v2
           href: sql-api-sdk-java.md
+        - name: Java バルク エグゼキューター ライブラリ v2
+          href: sql-api-sdk-bulk-executor-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python
@@ -1237,6 +1257,8 @@
       href: whitepapers.md
     - name: パートナー
       href: partners-migration-cosmosdb.md
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-cosmos-db.html'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Azure のロードマップ

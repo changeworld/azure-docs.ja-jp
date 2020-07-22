@@ -4,15 +4,15 @@ description: Azure 上でアプリケーションのベンチマークを実行�
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 77e542e9bff399e58b433286385864478bcb5076
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a9089bb13a9b2d7f091d209240bcd7a9e02e148
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75719547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660742"
 ---
 # <a name="benchmarking-a-disk"></a>ディスクのベンチマーク
 

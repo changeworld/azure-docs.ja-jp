@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969052"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141740"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
@@ -65,10 +65,16 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 公開キー ファイルの内容をコピーし、Azure portal または Resource Manager テンプレートに貼り付けて使用する場合は、行末の空白スペースをコピーしないように注意してください。 macOS で公開キーをコピーするには、公開キー ファイルを `pbcopy` にパイプすることができます。 Linux と同様に、`xclip` などのプログラムに公開キー ファイルをパイプすることができます。
 
-キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-values` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドで、*VMname*、*RGname*、*keyFile* を独自の値に置き換えます。
+キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-values` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドでは、*myVM*、*myResourceGroup*、*UbuntuLTS*、*azureuser*、*mysshkey.pub* を実際の値に置き換えます。
+
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --ssh-key-values mysshkey.pub
 ```
 
 VM で複数の SSH キーを使用する場合は、この `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` のように、スペース区切りの一覧で入力できます。

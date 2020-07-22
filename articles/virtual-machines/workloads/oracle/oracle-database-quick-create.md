@@ -3,8 +3,8 @@ title: Azure VM での Oracle データベースの作成 | Microsoft Docs
 description: Azure 環境で Oracle Database 12c データベースをすばやく起動して実行します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.author: rogardle
+ms.openlocfilehash: 6705d4d1edebe88a577c71b3e48cd837fa7882c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683638"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86222991"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -85,7 +85,7 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
 1.  *oracle* スーパーユーザーに切り替え、ログ用にリスナーを初期化します。
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 

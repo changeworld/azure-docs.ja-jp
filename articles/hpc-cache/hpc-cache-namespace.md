@@ -1,17 +1,17 @@
 ---
-title: Azure HPC キャッシュを作成する
+title: Azure HPC Cache インスタンスを作成する
 description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73582188"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045809"
 ---
 # <a name="plan-the-aggregated-namespace"></a>集約された名前空間を計画する
 
@@ -29,14 +29,14 @@ Azure HPC Cache を使用すると、バックエンド ストレージ シス�
 
 テンプレート データはデータセンターに格納され、このジョブに必要な情報は次のサブディレクトリに格納されています。
 
-    /goldline/templates/acme2017/sku798
-    /goldline/templates/acme2017/sku980 
+* */goldline/templates/acme2017/sku798*
+* */goldline/templates/acme2017/sku980* 
 
 データセンターのストレージ システムは、次のエクスポートを公開します。
 
-    /
-    /goldline
-    /goldline/templates
+* */*
+* */goldline*
+* */goldline/templates*
 
 分析の対象となるデータは、[CLFSLoad ユーティリティ](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)を使用して、"sourcecollection" という名前の Azure Blob Storage コンテナーにコピーされています。
 

@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3e1c67ee91298b9e8d0c3c427988c9966771aeaa
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920567"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure の Computer Vision サービスを使用すると、開発者は、関心のあるビジュアル機能に応じて、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 たとえば、Computer Vision では、成人向けコンテンツが画像に含まれているかどうかを判断したり、画像内の人物の顔をすべて検出したりすることができます。
+Azure の Computer Vision サービスを使用すると、開発者は、関心のあるビジュアル機能に応じて、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 たとえば、Computer Vision では、成人向けコンテンツが画像に含まれているかどうかを判断したり、特定のブランドや物体、人の顔を検出したりすることができます。
 
-Computer Vision は、ネイティブ SDK を通じてアプリケーション内で、または REST API を直接呼び出すことで使用できます。 このページでは、Computer Vision でできることを大まかに取り上げます。
+Computer Vision は、クライアント ライブラリ SDK を通じてアプリケーション内で、または REST API を直接呼び出すことで使用できます。 このページでは、Computer Vision でできることを大まかに取り上げます。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>デジタル資産管理用の Computer Vision
 
@@ -32,7 +32,7 @@ Computer Vision は、多くのデジタル資産管理 (DAM) シナリオに活
 
 ## <a name="analyze-images-for-insight"></a>画像を分析して分析情報を得る
 
-画像を分析し、その視覚的特徴や性質に関する分析情報を検出して提示できます。 次の表に示したすべての機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に備わっています。
+画像を分析し、その視覚的特徴や性質に関する分析情報を提示できます。 次の表に示したすべての機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に備わっています。
 
 | アクション | 説明 |
 | ------ | ----------- |
@@ -48,11 +48,9 @@ Computer Vision は、多くのデジタル資産管理 (DAM) シナリオに活
 |**[サムネイルの生成](concept-generating-thumbnails.md)**|イメージのコンテンツを分析して、そのイメージの適切なサムネイルを生成します。 Computer Vision では、最初に高品質のサムネイルを生成した後、画像内のオブジェクトを分析して "*関心領域*" を特定します。 Computer Vision では、その後、関心領域の要件に合わせて、画像がトリミングされます。 ユーザーのニーズに応じて、元のイメージの縦横比とは異なる縦横比を使用して、生成されたサムネイルを表示することができます。|
 |**[関心領域を取得する](concept-generating-thumbnails.md#area-of-interest)**|画像の内容が分析され、"*関心領域*" の座標が返されます。 画像をクロップしたり、サムネイルを生成したりする代わりに、Computer Vision では領域の境界ボックスの座標が返されるため、呼び出し元のアプリケーションで必要に応じて元の画像を変更できます。|
 
-## <a name="extract-text-from-images"></a>画像からテキストを抽出する
+## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
-Computer Vision の [Read](concept-recognizing-text.md#read-api) API を使用して、画像から印刷されたテキストと手書きのテキストをマシンで読み取り可能な文字ストリームに抽出できます。 読み取り API では、最新モデルを使用し、レシート、ポスター、名刺、手紙、ホワイトボードなど、さまざまなサーフェスや背景でテキストを使用します。 現在、サポートされている言語は英語とスペイン語のみです。
-
-また、[光学文字認識 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API を使用して、複数の言語で印刷されたテキストを抽出することもできます。 必要に応じて、OCR では、認識されたテキストの回転を修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、認識されたテキストの言語を自動的に検出します。
+Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.md) 機能が含まれています。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを画像やドキュメントから抽出することができます。 最新のモデルを使用して、さまざまなサーフェスや背景でテキストを操作します。 これらには、レシート、ポスター、名刺、レター、ホワイトボードが含まれます。 2 つの OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。
 
 ## <a name="moderate-content-in-images"></a>画像内のコンテンツを調整する
 

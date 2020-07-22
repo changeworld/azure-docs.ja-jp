@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84338568"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -109,7 +109,7 @@ Azure Active Directory はユーザーごとのライセンスであり、機能
 
 SSPR と共に別の一般的なアプリケーションまたはサービスを組織にデプロイすることで、ユーザーがすばやく登録できるようにすることができます。 このアクションでは、大量のサインインが生成され、登録が促進されます。
 
-SSPR をデプロイする前に、各パスワード リセット呼び出しの数と平均コストを決定することも選択できます。 このデータ投稿のデプロイを使用して、SSPR によって組織にもたらされる価値を示すことができます。
+SSPR をデプロイする前に、各パスワード リセット呼び出しの数と平均コストを決定することも選択できます。 このデプロイ後のデータを使用して、SSPR によって組織にもたらされる価値を示すことができます。
 
 #### <a name="enable-combined-registration-for-sspr-and-mfa"></a>SSPR と MFA に対する統合された登録を有効にする
 

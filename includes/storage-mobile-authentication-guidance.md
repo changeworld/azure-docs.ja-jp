@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67673410"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Azure Storage にアクセスするようにアプリケーションを構成する
 Storage サービスにアクセスできるようにアプリケーションを認証するには、次の 2 つの方法があります。
 
-* 共有キー: テスト目的のみに共有キーを使用します
-* Shared Access Signature (SAS): 運用アプリケーション用に SAS を使用します
+* 共有キー:テスト目的のみに共有キーを使用します
+* Shared Access Signature (SAS):運用アプリケーション用に SAS を使用します
 
 ### <a name="shared-key"></a>共有キー
 共有キー認証の場合、アプリケーションは Storage サービスへのアクセスにアカウント名とアカウント キーを使用します。 このライブラリを使用する方法を簡単に説明するため、ここでは共有キー認証を使用します。
@@ -49,5 +49,5 @@ Storage サービスにアクセスできるようにアプリケーションを
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-ご覧のように、SAS を使用する場合、アプリケーションでアカウント キーを公開することはありません。 SAS の詳細および SAS 使用のベスト プラクティスについては、 [Shared Access Signature: SAS モデルの説明](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
+ご覧のように、SAS を使用する場合、アプリケーションでアカウント キーを公開することはありません。 SAS の詳細および SAS 使用のベスト プラクティスについては、[Shared Access Signature:SAS モデルの説明](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
 

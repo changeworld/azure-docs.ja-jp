@@ -4,12 +4,12 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757588"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170311"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -20,7 +20,7 @@ Azure AD 認証に Azure Batch を使用する場合は、次の 2 つの方法�
 - **統合認証**を使用して、アプリケーションと対話するユーザーを認証します。 統合認証を使用するアプリケーションでは、ユーザーの資格情報を収集し、それらの資格情報を使用して Batch リソースへのアクセスを認証します。
 - **サービス プリンシパル**を使用して無人のアプリケーションを認証します。 サービス プリンシパルは、実行時のリソースへのアクセスの際にアプリケーションを表すための、アプリケーション用のポリシーとアクセス許可を定義します。
 
-Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。
+Azure AD の詳細については、「[Azure Active Directory のドキュメント](../active-directory/index.yml)」を参照してください。
 
 ## <a name="endpoints-for-authentication"></a>認証のためのエンドポイント
 
@@ -57,13 +57,13 @@ Azure AD を使用して認証する最初の手順は、アプリケーショ�
 
 アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID (*クライアント ID とも呼ばれます*) が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-Batch アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-register-app.md)」の「[アプリケーションの追加][aad_integrate]」の手順に従います。 ネイティブ アプリケーションとしてアプリケーションを登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 実際のエンドポイントである必要はありません。
+Batch アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/develop/quickstart-register-app.md)」の手順に従います。 ネイティブ アプリケーションとしてアプリケーションを登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 実際のエンドポイントである必要はありません。
 
 アプリケーションを登録すると、次のようにアプリケーション ID が表示されます。
 
 ![Azure AD に Batch アプリケーションを登録する](./media/batch-aad-auth/app-registration-data-plane.png)
 
-Azure AD にアプリケーションを登録する詳細については、「[Azure AD の認証シナリオ](../active-directory/develop/authentication-scenarios.md)」を参照してください。
+Azure AD にアプリケーションを登録する詳細については、「[Azure AD の認証シナリオ](../active-directory/develop/authentication-vs-authorization.md)」を参照してください。
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>Active Directory のテナント ID を取得する
 
@@ -217,7 +217,7 @@ Azure Portal で次の手順に従います。
 >
 >
 
-### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>コード例: Azure AD 統合認証を Batch .NET で使用する
+### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>コード例:Azure AD 統合認証を Batch .NET で使用する
 
 Batch .NET の統合認証で認証するには、[Azure Batch .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch/) パッケージと [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) パッケージを参照します。
 
@@ -290,7 +290,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>コード例: Azure AD サービス プリンシパルを Batch .NET で使用する
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>コード例:Azure AD サービス プリンシパルを Batch .NET で使用する
 
 Batch .NET からサービス プリンシパルで認証するには、[Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) パッケージと [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) パッケージを参照します。
 
@@ -358,7 +358,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>コード例: Azure AD サービス プリンシパルを Batch Python で使用する
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>コード例:Azure AD サービス プリンシパルを Batch Python で使用する
 
 Batch Python からサービス プリンシパルで認証するには、[azure-batch](https://pypi.org/project/azure-batch/) モジュールと [azure-common](https://pypi.org/project/azure-common/) モジュールをインストールして参照します。
 
@@ -419,7 +419,7 @@ credentials = ServicePrincipalCredentials(
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。 ADAL の使用方法の詳細な例については、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory) ライブラリを参照してください。
+- Azure AD の詳細については、「[Azure Active Directory のドキュメント](../active-directory/index.yml)」を参照してください。 ADAL の使用方法の詳細な例については、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory) ライブラリを参照してください。
 
 - サービス プリンシパルの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Portal を使用してサービス プリンシパルを作成するには、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」を参照してください。 PowerShell または Azure CLI を使用してサービス プリンシパルを作成することもできます。
 
@@ -427,8 +427,8 @@ credentials = ServicePrincipalCredentials(
 
 - Azure AD トークンを使用して認証される Batch クライアントを作成する方法を示す Python の例については、サンプルの「[Python スクリプトを使用して Azure Batch のカスタム イメージをデプロイする](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)」を参照してください。
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Azure AD の認証シナリオ"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Azure Active Directory とアプリケーションの統合"
+[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
+[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Azure AD の認証シナリオ"
+[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Azure Active Directory とアプリケーションの統合"
 [azure_portal]: https://portal.azure.com

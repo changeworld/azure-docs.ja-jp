@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298958"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -49,17 +49,37 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 ダウンロード可能な構成は単なる例です。自分のニーズに合わせて変更してください。
 
+### <a name="supported-linux-distributions"></a>サポートされている Linux ディストリビューション
+
+Linux Diagnostic Extension では、次のディストリビューションとバージョンがサポートされています。 ディストリビューションとバージョンの一覧は、Azure で動作保証済みの Linux ベンダーのイメージにのみ適用されます。 通常、Linux Diagnostic Extension では、サード パーティの BYOL および BYOS イメージ (アプライアンスなど) はサポートされていません。
+
+Debian 7 などのメジャー バージョンのみを示しているディストリビューションは、すべてのマイナー バージョンでもサポートされています。 特定のマイナー バージョンが指定されている場合、その特定のバージョンのみがサポートされ、"+" が追加されている場合は、指定したバージョン以降のマイナー バージョンがサポートされます。
+
+サポートされているディストリビューションとバージョン:
+
+- Ubuntu 18.04、16.04、14.04
+- CentOS 7、6.5+
+- Oracle Linux 7、6.4+
+- OpenSUSE 13.1+
+- SUSE Linux Enterprise Server 12
+- Debian 9、8、7
+- RHEL 7、6.7+
+
 ### <a name="prerequisites"></a>前提条件
 
 * **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)に従って更新します。
 * **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
 * 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。
-* サポートされている Linux ディストリビューションのリストは、 https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions にあります。
 
 ### <a name="sample-installation"></a>サンプル インストール
 
-実行前に、最初のセクションに変数の正しい値を入力します。
+> [!NOTE]
+> いずれのサンプルの場合でも、実行前に、最初のセクションに変数の正しい値を入力します。 
+
+これらの例でダウンロードしたサンプル構成では、一連の標準データが収集され、それらがテーブル ストレージに送信されます。 サンプル構成の URL と内容は変更される可能性があります。 ほとんどの場合、毎回その URL をダウンロードするのではなく、ポータル設定 JSON ファイルのコピーをダウンロードし、ニーズに合わせてカスタマイズし、自分で作るテンプレートやオートメーションでは独自のバージョンの構成ファイルを使用するようにします。
+
+#### <a name="azure-cli-sample"></a>Azure CLI のサンプル
 
 ```azurecli
 # Set your Azure VM diagnostic variables correctly below
@@ -88,8 +108,6 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finallly tell Azure to install and enable the extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-
-これらの例でダウンロードしたサンプル構成では、一連の標準データが収集され、それらがテーブル ストレージに送信されます。 サンプル構成の URL と内容は変更される可能性があります。 ほとんどの場合、毎回その URL をダウンロードするのではなく、ポータル設定 JSON ファイルのコピーをダウンロードし、ニーズに合わせてカスタマイズし、自分で作るテンプレートやオートメーションでは独自のバージョンの構成ファイルを使用するようにします。
 
 #### <a name="powershell-sample"></a>PowerShell のサンプル
 
@@ -424,6 +442,9 @@ sinks | (省略可能) メトリック結果の生のサンプルが発行され
 
 ログ ファイルのキャプチャを制御します。 LAD は、新しいテキスト行がファイルに書き込まれるときにそれをキャプチャし、テーブル行や任意の指定されたシンク (JsonBlob または EventHub) に書き込みます。
 
+> [!NOTE]
+> fileLogs は `omsagent` という名前の LAD のサブコンポーネントによってキャプチャされます。 fileLogs を収集するには、`omsagent` ユーザーに、自分が指定するファイルの読み取りアクセス許可と、そのファイルへのパスに含まれるあらゆるディレクトリの実行アクセス許可を確実に保持しているように必要があります。 これは LAD のインストール後に `sudo su omsagent -c 'cat /path/to/file'` を実行すると確認できます。
+
 ```json
 "fileLogs": [
     {
@@ -436,7 +457,7 @@ sinks | (省略可能) メトリック結果の生のサンプルが発行され
 
 要素 | 値
 ------- | -----
-file | 監視され、キャプチャされるログ ファイルの完全なパス名。 パス名は単一のファイルを指定する必要があります。ディレクトリを指定したり、ワイルドカードを含めたりすることはできません。
+file | 監視され、キャプチャされるログ ファイルの完全なパス名。 パス名は単一のファイルを指定する必要があります。ディレクトリを指定したり、ワイルドカードを含めたりすることはできません。 "omsagent" ユーザー アカウントには、ファイル パスの読み取りアクセスを与える必要があります。
 table | (省略可能) 指定されたストレージ アカウント (保護された構成で指定) の Azure ストレージ テーブル。file の "末尾" から新しい行が書き込まれます。
 sinks | (省略可能) ログ行が送信される追加のシンクの名前をコンマで区切ったリスト。
 
@@ -549,23 +570,36 @@ BytesPerSecond | 1 秒あたりの読み取りまたは書き込みバイト数
 
 すべてのディスクの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 特定のデバイス (たとえば、dev/sdf1) の情報を取得するには、`"condition": "Name=\\"/dev/sdf1\\""` のように設定します。
 
-## <a name="installing-and-configuring-lad-30-via-cli"></a>CLI を経由した LAD 3.0 のインストールと設定
+## <a name="installing-and-configuring-lad-30"></a>LAD 3.0 のインストールと構成
 
-保護された設定が PrivateConfig.json ファイルにあり、パブリック構成情報が PublicConfig.json にあると仮定して、このコマンドを実行します。
+### <a name="azure-cli"></a>Azure CLI
+
+保護された設定が ProtectedSettings.json ファイルにあり、パブリック構成情報が PublicSettings.json にあると仮定して、このコマンドを実行します。
 
 ```azurecli
-az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-このコマンドは、Azure CLI の Azure Resource Management モード (arm) を使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](https://docs.microsoft.com/azure/xplat-cli-connect)をご覧ください。
+このコマンドは、Azure CLI の Azure Resource Management (ARM) モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](https://docs.microsoft.com/azure/xplat-cli-connect)をご覧ください。
+
+### <a name="powershell"></a>PowerShell
+
+保護された設定が `$protectedSettings` 変数にあり、パブリック構成情報が `$publicSettings` 変数にあると仮定して、このコマンドを実行します。
+
+```powershell
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+```
 
 ## <a name="an-example-lad-30-configuration"></a>LAD 3.0 の構成例
 
 前述の定義に基づき、以下に LAD 3.0 拡張機能の構成例を示し、説明を加えます。 このサンプルを特定のケースに適用するには、独自のストレージ アカウント名、アカウント SAS トークン、EventHubs SAS トークンを使用する必要があります。
 
-### <a name="privateconfigjson"></a>PrivateConfig.json
+> [!NOTE]
+> 設定を公開する方法と保護する方法は、LAD のインストールに Azure CLI を使用するのか、PowerShell を使用するのかによって異なります。 Azure CLI を使用する場合、次の設定を ProtectedSettings.json と PublicSettings.json に保存し、上のサンプル コマンドで使用します。 PowerShell を使用する場合、`$protectedSettings = '{ ... }'` を実行して `$protectedSettings` と `$publicSettings` に設定を保存します。
 
-これらのプライベート設定では、次の項目を構成します。
+### <a name="protected-settings"></a>保護された設定
+
+これらの保護された設定で次が構成されます。
 
 * ストレージ アカウント
 * 一致するアカウント SAS トークン
@@ -613,7 +647,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig.json
+### <a name="public-settings"></a>Public 設定
 
 これらの Public 設定により、LAD は次の操作を行います。
 

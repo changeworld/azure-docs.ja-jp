@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/28/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9d259c6e2a6ac9ced5f9a1c29d4aec08010f4dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72a9dc504edac01654fb21ec3386a596e03492c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190553"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077785"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理での一般的なシナリオ
 

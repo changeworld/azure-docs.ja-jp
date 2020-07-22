@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 632cd7b09462ae8ad1fd142c2946833781b53dd1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75370461"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253526"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors のバックアップと復元を実装する
 
@@ -112,7 +112,7 @@ myActorServiceProxy.backupActorsAsync();
 Reliable Actors について詳しくは、以下の記事をご覧ください。
 * [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
-* [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [アクターの API リファレンス ドキュメント](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET サンプル コード](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java サンプル コード](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

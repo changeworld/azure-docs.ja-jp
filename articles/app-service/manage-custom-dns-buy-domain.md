@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535708"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220722"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 
@@ -78,11 +78,11 @@ Azure App Service ドメインの料金については、[App Service の価格�
 ### <a name="launch-buy-domains"></a>ドメインの購入を開始する
 **[App Services]** タブで、アプリの名前をクリックし、 **[設定]** 、 **[カスタム ドメイン]** の順に選択します
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![カスタム ドメインが強調表示されているスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 **[カスタム ドメイン]** ページで **[ドメインの購入]** をクリックします。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![[ドメインの購入] が強調表示されているスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > **[App Service ドメイン]** セクションが表示されていない場合は、Azure アカウントの使用制限を削除する必要があります (「[前提条件](#prerequisites)」をご覧ください)。
@@ -93,7 +93,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 **[App Service ドメイン]** ページの **[ドメインの検索]** ボックスに購入するドメイン名を入力して、`Enter` キーを押します。 推奨される使用可能なドメインがテキスト ボックスの下に表示されます。 購入するドメインを 1 つ以上選びます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![[ドメインの検索] 検索ボックスを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > App Service ドメインでは、_com_、_net_、_co.uk_、_org_、_nl_、_in_、_biz_、_org.uk_、_co.in_ の各[トップレベル ドメイン](https://wikipedia.org/wiki/Top-level_domain)がサポートされています。
@@ -122,19 +122,19 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 **[App Service ドメイン]** ページに戻り、 **[OK]** をクリックします。 操作が進行している間、次の通知が表示されます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![検証進行中のメッセージを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![購入が正常に完了したことを知らせる通知を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>ホスト名をテストする
 
 アプリに既定のホスト名を割り当てた場合、選択した各ホスト名に対する成功通知も表示されます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![選択された各ホスト名の成功通知を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 選択したホスト名は、 **[カスタム ドメイン]** ページの **[カスタム ホスト名]** セクションにも表示されます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![[カスタム ドメイン] ページの [カスタム ホスト名] セクションで選択されたホスト名を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ TLS/SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 TLS バインドを構成するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
@@ -154,11 +154,11 @@ Azure App Service ドメインの料金については、[App Service の価格�
 ### <a name="launch-add-hostname"></a>ホスト名の追加を開始する
 **[App Services]** ページで、ホスト名を割り当てるアプリの名前を選び、 **[設定]** 、 **[カスタム ドメイン]** の順に選びます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![カスタム ドメインが強調表示されているスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 購入したドメインが **[App Service ドメイン]** セクションの一覧に表示されていることを確認します。ただし、まだ選択しないでください。 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![[App Service ドメイン] セクション内の購入したドメインを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > 同じサブスクリプションに含まれるすべての App Service ドメインが、アプリの **[カスタム ドメイン]** ページに表示されます。 ドメインがアプリのサブスクリプションに含まれるのに、アプリの **[カスタム ドメイン]** ページに表示されない場合は、 **[カスタム ドメイン]** ページを開きなおすか、Web ページを更新してみてください。 また、Azure Portal の上部にある通知ベルで、進捗状況または作成エラーを確認してください。
@@ -180,14 +180,14 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 操作が終わると、割り当てられたホスト名の成功通知が表示されます。  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![割り当てられたホスト名の成功通知を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>ホスト名の追加を閉じる
 **[ホスト名の追加]** ページで、必要に応じて他のホスト名をアプリに割り当てます。 終わったら、 **[ホスト名の追加]** ページを閉じます。
 
 新しく割り当てたホスト名がアプリの **[カスタム ドメイン]** ページに表示されます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![アプリの [カスタム ドメイン] ページの新しく割り当てられたホスト名を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>ホスト名をテストする
 
@@ -201,15 +201,15 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 **[App Services]** タブで、アプリの名前をクリックし、 **[設定]** 、 **[カスタム ドメイン]** の順に選択します。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![カスタム ドメインが強調表示されているスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 **[App Service ドメイン]** セクションで、構成するドメインを選択します。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![[App Service ドメイン] セクション内の購入したドメインを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 ドメインの左側のナビゲーションで、 **[ドメインの更新]** を選択します。 ドメインの自動更新を停止するには、 **[オフ]** 、 **[保存]** の順に選択します。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![ドメインを自動的に更新するオプションを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 ドメインを手動で更新するには、 **[ドメインの更新]** を選択します。 ただし、このボタンは、[ドメインの有効期限の 90 日前](#when-domain-expires)になるまではアクティブになりません。
 
@@ -237,7 +237,7 @@ Azure では、App Service ドメインの DNS レコードは [Azure DNS](https
 
 Azure Portal の左側のメニューから、 **[すべてのサービス]**  >  **[App Service ドメイン]** の順に選びます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![App Service ドメインにアクセスする場所を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 管理するドメインを選びます。 
 
@@ -245,7 +245,7 @@ Azure Portal の左側のメニューから、 **[すべてのサービス]**  >
 
 ドメインの左側のメニューで、 **[DNS ゾーン]** を選びます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![DNS ゾーンを選択する場所を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 Azure DNS に格納されている App Service ドメインの [[DNS ゾーン]](../dns/dns-zones-records.md) ページが開きます。 DNS レコードの編集方法について詳しくは、「[Azure Portal で DNS ゾーンを管理する方法](../dns/dns-operations-dnszones-portal.md)」をご覧ください。
 
@@ -257,7 +257,7 @@ App Service ドメイン購入後 5 日間は、購入をキャンセルでき�
 
 Azure Portal の左側のメニューから、 **[すべてのサービス]**  >  **[App Service ドメイン]** の順に選びます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![App Service ドメインにアクセスする場所を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 キャンセルまたは削除するドメインを選びます。 
 
@@ -265,13 +265,13 @@ Azure Portal の左側のメニューから、 **[すべてのサービス]**  >
 
 ドメインの左側のメニューで、 **[ホスト名のバインド]** を選びます。 すべての Azure サービスのホスト名のバインドが一覧表示されます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![[ホスト名のバインド] ページを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 ホスト名のバインドをすべて削除するまで、App Service ドメインを削除することはできません。
 
 **[...]**  >  **[削除]** の順に選んで、ホスト名のバインドを削除します。 すべてのバインドを削除した後、 **[保存]** を選びます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![ホスト名のバインドを削除する場所を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>キャンセルまたは削除する
 
@@ -279,7 +279,7 @@ Azure Portal の左側のメニューから、 **[すべてのサービス]**  >
 
 購入したドメインのキャンセル期間が経過していない場合は、 **[購入の取り消し]** を選びます。 経過している場合は、代わりに **[削除]** ボタンが表示されます。 返金を受け取らないでドメインを削除するには、 **[削除]** を選びます。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![購入したドメインを削除またはキャンセルする場所を示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 **[はい]** を選択して操作を確定します。
 

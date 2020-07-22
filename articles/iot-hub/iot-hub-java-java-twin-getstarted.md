@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt
 ms.openlocfilehash: 3ea2f0eec12d756a898f1761f6b22fd034c1bc3e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732453"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
@@ -79,7 +79,7 @@ ms.locfileid: "81732453"
     ```
 
     > [!NOTE]
-    > **Maven 検索**を使用して、[iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
 5. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
@@ -239,9 +239,9 @@ ms.locfileid: "81732453"
     ```
 
     > [!NOTE]
-    > **Maven 検索**を使用して、[iot-device-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
 
-4. **dependencies** ノードに、次の依存関係を追加します。 この依存関係によって、Apache [SLF4J](https://www.slf4j.org/) ログ記録ファサード用の NOP が構成され、ログ記録を実装するためにデバイス クライアント SDK によって使用されます。 この構成は省略可能ですが、省略した場合、アプリの実行時にコンソールに警告が表示される可能性があります。 デバイス クライアント SDK でのログ記録の詳細については、[Samples for the Azure IoT device SDK for Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) readme ファイルに含まれている*ログ記録*を参照してください。
+4. **dependencies** ノードに、次の依存関係を追加します。 この依存関係によって、Apache [SLF4J](https://www.slf4j.org/) ログ記録ファサード用の NOP が構成され、ログ記録を実装するためにデバイス クライアント SDK によって使用されます。 この構成は省略可能ですが、省略した場合、アプリの実行時にコンソールに警告が表示される可能性があります。 デバイス クライアント SDK でのログ記録の詳細については、*Samples for the Azure IoT device SDK for Java* readme ファイルに含まれている[ログ記録](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)を参照してください。
 
     ```xml
     <dependency>

@@ -1,6 +1,6 @@
 ---
-title: バックアップを復元する CLI の例 - Azure SQL データベース
-description: 単一の Azure SQL データベースを自動バックアップから以前の時点に復元する Azure CLI サンプル スクリプト
+title: Azure CLI:バックアップを復元する
+description: Azure SQL Database のデータベースを自動バックアップから以前の時点に復元する Azure CLI サンプル スクリプト
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: efb73bc04e3c79740651fecdd98258b8101f84b1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c33191097afc54189df1099a2d13f606e1516e54
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774270"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022626"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>CLI を使用して単一の Azure SQL データベースを以前の時点に復元する
+# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>CLI を使用して Azure SQL Database の単一データベースを以前の時点に復元する
 
-この Azure CLI サンプルでは、Azure SQL データベースを特定の時点に復元します。  
+この Azure CLI サンプルでは、Azure SQL Database の単一データベースを特定の時点に復元します。  
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -60,4 +60,4 @@ az group delete --name $resource
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../sql-database-cli-samples.md)のページにあります。
+その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../../azure-sql/database/az-cli-script-samples-content-guide.md)のページにあります。

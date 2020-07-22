@@ -38,7 +38,7 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 
 | プロパティ                 | 説明                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | はい                                      |
+| **type**                 | type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 | はい                                      |
 | **accountName**          | Azure Data Lake Analytics アカウント名。  | はい                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                       |
 | **subscriptionId**       | Azure サブスクリプション ID                    | いいえ                                       |
@@ -61,7 +61,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | **servicePrincipalKey** | アプリケーションのキーを取得します。           | はい      |
 | **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい      |
 
-**例: サービス プリンシパル認証**
+**例:サービス プリンシパルの認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -131,7 +131,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ       |
 | parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ       |
 | runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ       |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ |
 
 スクリプト定義については、[SearchLogProcessing.txt](#sample-u-sql-script) をご覧ください。 
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workstars の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workstars の統合 | Microsoft Docs
 description: Azure Active Directory と Workstars の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -22,7 +22,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81867911"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workstars"></a>チュートリアル: Azure Active Directory と Workstars の統合
+# <a name="tutorial-azure-active-directory-integration-with-workstars"></a>チュートリアル:Azure Active Directory と Workstars の統合
 
 このチュートリアルでは、Workstars を Azure Active Directory (Azure AD) と統合する方法について説明します。
 Workstars と Azure AD の統合には、次の利点があります。

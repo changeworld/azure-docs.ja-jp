@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d397e481fcd11e534e4bb5cf98f8c402435e890e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72675466"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997079"
 ---
 # <a name="what-are-parallel-documents"></a>並列ドキュメントとは
 
@@ -25,7 +25,7 @@ ms.locfileid: "72675466"
 
 システムをトレーニングするには、10,000 以上の一意のアラインされた並列文が必要です。 この制限は、翻訳モデルのトレーニングを成功させるために、並列文に十分な一意のボキャブラリが確実に含まれるようにするための安全策です。 翻訳システムの品質を向上させるために、並列コンテンツを継続的に追加して保持することをお勧めします。 [文のアライン](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)に関するページを参照してください。
 
-Microsoft では、Custom Translator にアップロードするドキュメントが、第三者の著作権または知的財産に違反していないことを必須にしています。 詳細については、[使用条件](https://azure.microsoft.com/support/legal/cognitive-services-terms/)に関するページを参照してください。
+Microsoft では、カスタム翻訳ツールにアップロードするドキュメントが、第三者の著作権または知的財産に違反していないことを必須にしています。 詳細については、[使用条件](https://azure.microsoft.com/support/legal/cognitive-services-terms/)に関するページを参照してください。
 ポータルを使用してドキュメントをアップロードしても、ドキュメント自体の知的財産の所有権は変わりません。
 
 ## <a name="use-of-parallel-documents"></a>並列ドキュメントの使用

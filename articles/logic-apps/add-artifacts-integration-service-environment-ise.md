@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79140896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830028"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) にリソースを追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "79140896"
 
 * ロジック アプリを実行するために作成した ISE。 ISE がない場合は、[まず ISE を作成します](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
-* ISE にデプロイされたリソースを更新したり、そのようなリソースを作成または追加したりするには、その ISE における所有者または共同作成者のロールが割り当てられているか、ISE に関連付けられている Azure リソース グループまたは Azure サブスクリプションからアクセス許可が継承されている必要があります。 所有者、共同作成者、継承されたアクセス許可のいずれも持たないユーザーには、統合サービス環境の共同作成者ロールまたは統合サービス環境の開発者ロールを割り当てることができます。 ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure リソースのロールベースのアクセス制御 (RBAC) の概要](../role-based-access-control/overview.md)」を参照してください。
+* ISE にデプロイされたリソースを更新したり、そのようなリソースを作成または追加したりするには、その ISE における所有者または共同作成者のロールが割り当てられているか、ISE に関連付けられている Azure リソース グループまたは Azure サブスクリプションからアクセス許可が継承されている必要があります。 所有者、共同作成者、継承されたアクセス許可のいずれも持たないユーザーには、統合サービス環境の共同作成者ロールまたは統合サービス環境の開発者ロールを割り当てることができます。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 
 <a name="create-logic-apps-environment"></a>
 

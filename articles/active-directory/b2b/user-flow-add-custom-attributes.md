@@ -1,37 +1,37 @@
 ---
-title: Azure AD ユーザー フローのカスタム属性を追加する
+title: セルフサービス サインアップ フローにカスタム属性を追加する - Azure AD
 description: セルフサービス サインアップのユーザー フローの属性をカスタマイズする方法について説明します。
 services: active-directory
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: mimart
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f187cc47d9c64c8257cc097734fa41e10629f1c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a186b682a3a506f0f373776dd66e6592bc6036ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551165"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>ユーザー フローのカスタム属性を定義する (プレビュー)
-|     |
-| --- |
-| カスタム ユーザー属性の機能は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+
+> [!NOTE]
+> カスタム ユーザー属性の機能は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 アプリケーションごとに、サインアップ中に収集する情報の要件が異なる場合があります。 Azure AD には、名、姓、市区町村、郵便番号など、属性に格納された一連の情報が組み込みで用意されています。 Azure AD では、外部ユーザーがユーザー フローを通じてサインアップするときにゲスト アカウントに格納される一連の属性を拡張できます。
 
-Azure portal でカスタム属性を作成し、セルフサービス サインアップのユーザー フローでそれらを使用できます。 また、[Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api) を使用してこれらの属性を読み書きすることもできます。 Microsoft Graph API では、拡張属性を使用したユーザーの作成と更新がサポートされています。 Graph API の拡張属性には、`extension_<Application-client-id>_attributename` という規則を使って名前が付けられます。 次に例を示します。
+Azure portal でカスタム属性を作成し、セルフサービス サインアップのユーザー フローでそれらを使用できます。 また、[Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api) を使用してこれらの属性を読み書きすることもできます。 Microsoft Graph API では、拡張属性を使用したユーザーの作成と更新がサポートされています。 Graph API の拡張属性には、`extension_<extensions-app-id>_attributename` という規則を使って名前が付けられます。 次に例を示します。
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-`<Application-client-id>` は、 **[アプリの登録]** ページの **[アプリケーション (クライアント) ID]** の横で確認できます。 この ID は、ご自身のテナントに固有のものです。
+`<extensions-app-id>` は、ご自身のテナントに固有です。 この識別子を調べるには、[Azure Active Directory] > [アプリの登録] > [すべてのアプリケーション] の順に移動します。 "aad-extensions-app" で開始されるアプリを検索して、それを選択します。 アプリの [概要] ページの [アプリケーション (クライアント) ID] を書き留めます。
 
 ## <a name="create-a-custom-attribute"></a>カスタム属性を作成する
 
@@ -55,7 +55,7 @@ Azure portal でカスタム属性を作成し、セルフサービス サイン
 
 これで、このカスタム属性がユーザー属性の一覧やユーザー フローで使用できるようになります。 カスタム属性が作成されるのは、いずれかのユーザー フローで初めて使用されるときだけであり、ユーザー属性の一覧に追加するときではありません。
 
-新しく作成したカスタム属性を使用するユーザー フローを使用して新しいユーザーを作成したら、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) でそのオブジェクトを照会できます。 これで、**ShoeSize** がサインアップ中に収集される属性の一覧や、アプリケーションに送り返されるトークンに表示されるようになります。 アプリケーションに返されるトークンにこれらの要求を含める方法の詳細については、「[ディレクトリ拡張機能の省略可能な要求の構成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims#configuring-directory-extension-optional-claims)」をご覧ください
+新しく作成したカスタム属性を使用するユーザー フローを使用して新しいユーザーを作成したら、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) でそのオブジェクトを照会できます。 これで、ユーザー オブジェクト上でサインアップ中に収集される属性の一覧に、**ShoeSize** が表示されるようになります。 ユーザー オブジェクトにこの属性が追加された後は、アプリケーションから Graph API を呼び出して、そこからデータを取得することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

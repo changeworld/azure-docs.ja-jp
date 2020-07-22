@@ -2,23 +2,23 @@
 title: オンプレミスのアプリへのリモート アクセス - Azure AD アプリケーション プロキシ
 description: Azure Active Directory アプリケーション プロキシは、オンプレミス Web アプリケーションへのセキュリティ保護されたリモート アクセスを提供します。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部のアプリケーション ポータルから、クラウド アプリケーションとオンプレミス アプリケーションの両方にアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint、Teams、Tableau、Qlik、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318030"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス
 
@@ -41,7 +41,7 @@ Azure AD アプリケーション プロキシの特徴:
 * フォーム ベースまたは[ヘッダー ベース](application-proxy-configure-single-sign-on-with-ping-access.md)のアクセスを使用する Web アプリ
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API
 * [リモート デスクトップ ゲートウェイ](application-proxy-integrate-with-remote-desktop-services.md)の背後でホストされているアプリケーション
-* Active Directory Authentication Library (ADAL) と統合されるリッチ クライアント アプリ
+* Microsoft Authentication Library (MSAL) と統合されるリッチ クライアント アプリ
 
 アプリケーション プロキシは、シングル サインオンをサポートします。 サポートされている方法の詳細については、「[シングル サインオンの方法の選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)」を参照してください。
 
@@ -72,4 +72,3 @@ Azure AD アプリケーション プロキシの特徴:
 ## <a name="next-steps"></a>次のステップ
 アプリケーション プロキシの使用を開始するには、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](application-proxy-add-on-premises-application.md)を参照してください。
 
-最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](https://blogs.technet.com/b/applicationproxyblog/)を参照してください。

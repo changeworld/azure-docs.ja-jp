@@ -3,12 +3,12 @@ title: Azure に移行するために Azure Migrate Server Assessment を使用�
 description: Azure Migrate Server Assessment を使用して、Azure に移行するためにオンプレミスの物理サーバーを評価する方法について説明します。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535436"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080770"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure Migrate:Server Assessment を使用して物理サーバーを評価する
 
@@ -80,7 +80,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
     - ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
     - PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
     - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
-- 1 つの Azure Migrate プロジェクトに対して、複数のアプライアンスを設定できます。 すべてのアプライアンスで多数の物理サーバーを検出できます。 アプライアンスごとに最大 250 台のサーバーを検出できます。
+- 1 つの Azure Migrate プロジェクトに対して、複数のアプライアンスを設定できます。 すべてのアプライアンスで多数の物理サーバーを検出できます。 アプライアンスごとに最大 1000 台のサーバーを検出できます。
 
 ### <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
 
@@ -101,21 +101,19 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  ハッシュ値を確認します。
- 
-    - パブリック クラウドの場合 (最新のアプライアンス バージョン):
+    - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
+3.  最新のアプライアンス バージョンとハッシュ値を確認します。
+    - パブリック クラウドの場合:
 
-        **アルゴリズム** | **ハッシュ値**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **シナリオ** | **ダウンロード*** | **ハッシュ値**
+        --- | --- | ---
+        物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Azure Government の場合 (最新のアプライアンス バージョン):
+    - Azure Government の場合:
 
-        **アルゴリズム** | **ハッシュ値**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **シナリオ** | **ダウンロード*** | **ハッシュ値**
+        --- | --- | ---
+        物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
 
@@ -182,7 +180,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 
 1. **[資格情報の追加]** をクリックして、アプライアンスがサーバーの検出に使用するアカウント資格情報を指定します。  
 2. **オペレーティング システム**、資格情報のフレンドリ名、ユーザー名、パスワードを指定します。 **[追加]** をクリックします。
-Windows および Linux サーバーごとに 1 セットの資格情報を追加できます。
+Windows および Linux サーバーの複数の資格情報を追加できます。
 4. **[サーバーの追加]** をクリックし、サーバーの詳細 (FQDN/IP アドレスと資格情報のフレンドリ名 (行ごとに 1 つのエントリ)) を指定してサーバーに接続します。
 3. **[検証]** をクリックします。 検証後、検出可能なサーバーの一覧が表示されます。
     - サーバーの検証が失敗した場合は、 **[状態]** 列のアイコンをポイントしてエラーを確認します。 問題を修正し、もう一度検証します。

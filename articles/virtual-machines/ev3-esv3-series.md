@@ -1,26 +1,26 @@
 ---
-title: Ev3 シリーズと Esv3 シリーズ - Azure Virtual Machines
+title: Ev3 シリーズと Esv3 シリーズ
 description: Ev3 および Esv3 シリーズ VM の仕様。
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fcb714e68548b95ed6d32bb16fb08c43ff0e5fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707635"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
 
-Ev3 と Esv3 シリーズは、ハイパースレッド構成の Intel® Xeon® 8171M 2.1 GHz (Skylake) または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサを備えることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。 Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
+Ev3 と Esv3 シリーズは、ハイパースレッド構成の Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake)、または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサで実行されることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。 Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
 
 ## <a name="ev3-series"></a>Ev3 シリーズ
 
-Ev3 シリーズのインスタンスは、Intel® Xeon® 8171M 2.1 GHz (Skylake) または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサと、Intel Turbo Boost Technology 2.0 に基づいています。 Ev3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
+Ev3 シリーズのインスタンスは、Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake)、または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサで実行され、Intel Turbo Boost Technology 2.0 を搭載しています。 Ev3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、ESv3 サイズを使用してください。 ESv3 サイズの料金および課金の計算方法は、Ev3 シリーズと同じです。
 
@@ -54,7 +54,7 @@ Premium Storage キャッシュ:サポートされていません
 
 ## <a name="esv3-series"></a>Esv3-series
 
-Esv3 シリーズのインスタンスは、Intel® Xeon® 8171M 2.1 GHz (Skylake) または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサと、Intel Turbo Boost Technology 2.0 に基づいており、Premium Storage を使用します。 Esv3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
+Ev3 シリーズのインスタンスは、Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake)、または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサで実行され、Intel Turbo Boost Technology 2.0 を搭載し、Premium Storage を使用しています。 Esv3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
 Esv3 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています。
 

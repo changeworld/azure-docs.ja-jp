@@ -1,12 +1,12 @@
 ---
-title: ユーザー、グループ、ライセンス、およびロールの概要 - Azure AD | Microsoft Docs
+title: Azure Active Directory でのユーザー、グループ、ライセンス、およびロールの概要
 description: Azure Active Directory における割り当てライセンス、管理者ロール、グループ メンバーシップとユーザーとの関係
 keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 11/08/2019
+ms.date: 06/16/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,14 +14,14 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583023"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223824"
 ---
-# <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大規模組織のユーザー、グループ、ライセンス、ロール
+# <a name="what-is-enterprise-user-management"></a>エンタープライズ ユーザー管理の概要
 
 この記事では、Azure AD 管理者向けに、グループ、ライセンス、デプロイされているエンタープライズ アプリ、管理者ロールの観点から、ユーザーを対象とする主要な [ID 管理](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context)タスク間の関係について説明します。 Azure AD のグループと管理者ロールを使うことにより、組織の規模の拡大に伴って次のことを行えます。
 

@@ -7,12 +7,13 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84551977"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -164,7 +165,7 @@ compute_client = ComputeManagementClient(
     input('Availability set created. Press enter to continue...')
     ```
 
-仮想マシンと通信するには、[パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)が必要です。
+仮想マシンと通信するには、[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)が必要です。
 
 1. 仮想マシンのパブリック IP アドレスを作成するには、.py ファイルの変数の後に次の関数を追加します。
 

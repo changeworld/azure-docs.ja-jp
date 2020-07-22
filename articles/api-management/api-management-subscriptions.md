@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70073424"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243292"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 
@@ -33,7 +33,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 > API Management では、API へのアクセスをセキュリティで保護するための他のメカニズムもサポートしています。たとえば、以下があります。
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [クライアント証明書](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP ホワイトリスト登録](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP ホワイトリスト登録](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>サブスクリプションの範囲
 

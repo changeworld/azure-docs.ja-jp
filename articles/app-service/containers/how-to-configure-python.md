@@ -4,13 +4,13 @@ description: アプリ用に事前構築済みの Python コンテナーを構�
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 94398c90f820b0e08ea8d4f0a492d96ba8039631
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046021"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905624"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -143,7 +143,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-また、`--workers=4` のように、Gunicorn の追加の引数を *\<custom-command>* に追加することもできます。 詳細については、「[Running Gunicorn (Gunicorn の実行)」](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org) を参照してください。
+また、`--workers=4` のように、Gunicorn の追加の引数を *\<custom-command>* に指定することもできます。 詳細については、「[Running Gunicorn (Gunicorn の実行)」](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org) を参照してください。
 
 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html) のような Gunicorn 以外のサーバーを使用するには、 *\<custom-command>* を次のように置き換えることができます。
 
@@ -175,7 +175,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>ブラウザーで SSH セッションを開く
 

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587242"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962953"
 ---
 # <a name="how-to-manage-settings"></a>設定を管理する方法
 
@@ -27,7 +27,7 @@ Custom Translator の設定ページでは、新しいワークスペースを�
 
     ![リンクの設定](media/how-to/how-to-settings.png)
 
-## <a name="associating-microsoft-translator-subscription"></a>Microsoft Translator サブスクリプションの関連付け
+## <a name="associating-translator-subscription"></a>Translator サブスクリプションの関連付け
 
 モデルをトレーニングまたはデプロイするには、ワークスペースに関連付けられた Translator サブスクリプション キーが必要です。
 
@@ -39,17 +39,17 @@ Custom Translator の設定ページでは、新しいワークスペースを�
 
 ### <a name="add-existing-key"></a>既存のキーを追加する
 
-1.  ワークスペースの [設定] ページに移動します。
-2.  [Add Key]\(キーの追加\) をクリックします
+1.    ワークスペースの [設定] ページに移動します。
+2.    [Add Key]\(キーの追加\) をクリックします
 
-    ![サブスクリプション キーを追加する方法](media/how-to/how-to-add-subscription-key.png)
+   ![サブスクリプション キーを追加する方法](media/how-to/how-to-add-subscription-key.png)
 
 3. ダイアログに翻訳者のサブスクリプション用キーを入力し、[追加] ボタンをクリックします。
 
     ![サブスクリプション キーを追加する方法](media/how-to/how-to-add-subscription-key-dialog.png)
-4.  キーを追加した後は、いつでもキーを変更または削除できます。
+4.    キーを追加した後は、いつでもキーを変更または削除できます。
 
-    ![追加後のサブスクリプション キー](media/how-to/subscription-key-after-add.png)
+   ![追加後のサブスクリプション キー](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>ワークスペースを管理する
 
@@ -59,47 +59,47 @@ Custom Translator の設定ページでは、新しいワークスペースを�
 
 ## <a name="create-a-new-workspace"></a>新しいワークスペースを作成する
 
-1.  ワークスペースの [設定] ページに移動します。
-2.  [新しいワークスペースの作成] セクションの [新しいワークスペース] ボタンをクリックします。
+1.    ワークスペースの [設定] ページに移動します。
+2.    [新しいワークスペースの作成] セクションの [新しいワークスペース] ボタンをクリックします。
 
-    ![新しいワークスペースの作成](media/how-to/create-new-workspace.png)
+   ![新しいワークスペースの作成](media/how-to/create-new-workspace.png)
 
-4.  ダイアログに新しいワークスペースの名前を入力します。
-5.  [作成] をクリックします。
+4.    ダイアログに新しいワークスペースの名前を入力します。
+5.    [作成] をクリックします。
 
-    ![[新しいワークスペースの作成] ダイアログ](media/how-to/create-new-workspace-dialog.png)
+   ![[新しいワークスペースの作成] ダイアログ](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>ワークスペースを共有する
 
 作業のさまざまな部分を異なる相手と共有する必要がある場合は、Custom Translator で、ワークスペースを他のユーザーと共有することができます。
 
-1.  ワークスペースの [設定] ページに移動します。
-2.  [共有の設定] セクションの [共有] ボタンをクリックします。
+1.    ワークスペースの [設定] ページに移動します。
+2.    [共有の設定] セクションの [共有] ボタンをクリックします。
 
-    ![ワークスペースを共有する](media/how-to/share-workspace.png)
+   ![ワークスペースを共有する](media/how-to/share-workspace.png)
 
-3.  ダイアログに、このワークスペースを共有する相手のメール アドレスの一覧をコンマ区切りで入力します。 相手が Custom Translator へのサインインに使用しているメール アドレスと共有する必要があります。 次に、適切なレベルの共有アクセス許可を選択します。
+3.    ダイアログに、このワークスペースを共有する相手のメール アドレスの一覧をコンマ区切りで入力します。 相手が Custom Translator へのサインインに使用しているメール アドレスと共有する必要があります。 次に、適切なレベルの共有アクセス許可を選択します。
 
-4.  ワークスペース名が既定の "マイ ワークスペース" のままの場合は、ワークスペースを共有する前に変更する必要があります。
-5.  [保存] をクリックします。
+4.    ワークスペース名が既定の "マイ ワークスペース" のままの場合は、ワークスペースを共有する前に変更する必要があります。
+5.    [保存] をクリックします
 
 ## <a name="sharing-permissions"></a>共有アクセス許可
 
-1.  **閲覧者:** ワークスペースの閲覧者は、ワークスペースのすべての情報を表示できます。
+1.    **閲覧者:** ワークスペースの閲覧者は、ワークスペースのすべての情報を表示できます。
 
-2.  **編集者:** ワークスペースの編集者は、ドキュメントの追加、モデルのトレーニング、ドキュメントとプロジェクトの削除を行うことができます。 サブスクリプション キーを追加できますが、ワークスペースの共有相手の変更、ワークスペースの削除、またはワークスペース名の変更を行うことはできません。
+2.    **編集者:** ワークスペースの編集者は、ドキュメントの追加、モデルのトレーニング、ドキュメントとプロジェクトの削除を行うことができます。 サブスクリプション キーを追加できますが、ワークスペースの共有相手の変更、ワークスペースの削除、またはワークスペース名の変更を行うことはできません。
 
-3.  **所有者:** 所有者は、ワークスペースに対する完全なアクセス許可を持っています。
+3.    **所有者:** 所有者は、ワークスペースに対する完全なアクセス許可を持っています。
 
 ## <a name="change-sharing-permission"></a>共有アクセス許可を変更する
 
 ワークスペースを共有すると、[共有の設定] セクションに、このワークスペースが共有されるすべてのメール アドレスが表示されます。 ワークスペースに対して所有者アクセス権を持っている場合は、各メール アドレスの既存の共有アクセス許可を変更できます。
 
-1.  各メールの [共有の設定] セクションのドロップダウン メニューには、現在のアクセス許可レベルが表示されます。
+1.    各メールの [共有の設定] セクションのドロップダウン メニューには、現在のアクセス許可レベルが表示されます。
 
-2.  ドロップダウン メニューをクリックし、そのメール アドレスに割り当てる新しいアクセス許可レベルを選択します。
+2.    ドロップダウン メニューをクリックし、そのメール アドレスに割り当てる新しいアクセス許可レベルを選択します。
 
-    ![共有アクセス許可の設定](media/how-to/sharing-permission-settings.png)
+   ![共有アクセス許可の設定](media/how-to/sharing-permission-settings.png)
 
 ## <a name="next-steps"></a>次のステップ
 

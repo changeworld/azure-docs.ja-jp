@@ -8,14 +8,15 @@ ms.author: roastala
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 03/18/2020
-ms.openlocfilehash: dc30318027962247f7504b734385d7642550ec87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 07/08/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 18aa02f67112bb3f499c4a7098f422f116075f2f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536354"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146372"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための環境を再利用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,6 +50,8 @@ Azure Machine Learning の環境のしくみの概要については、[ML 環�
 * _AzureML-Minimal_ 環境には、実行追跡とアセット アップロードを可能にする最小限のパッケージ セットが含まれています。 それを独自の環境の開始点として利用できます。
 
 * _AzureML-Tutorial_ 環境には、一般的なデータ サイエンス パッケージが含まれています。 これらのパッケージには、Scikit-Learn、Pandas、Matplotlib、およびより大きな azureml-sdk パッケージのセットが含まれます。
+
+キュレーションされた環境の一覧については、[キュレーションされた環境](resource-curated-environments.md)に関する記事を参照してください。
 
 選別された環境は、キャッシュされた Docker イメージによってバックアップされます。 このバックアップにより、実行準備コストが削減されます。
 

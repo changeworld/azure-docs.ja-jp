@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418866"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019896"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -135,7 +135,7 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
 | webServiceOutputs | Azure Machine Learning Web サービスの出力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている出力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、出力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ       |
 | globalParameters  | Azure Machine Learning Studio (クラシック) バッチ実行サービス エンドポイントに渡されるキーと値のペア。 キーは、公開済みの Azure Machine Learning Studio (クラシック) Web サービスで定義されている、Web サービスのパラメーターの名前と一致する必要があります。 値は、Azure Machine Learning Studio (クラシック) バッチ実行要求の GlobalParameters プロパティに渡されます | いいえ       |
 
-### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ1: Azure Blob Storage のデータを参照する Web サービスの入力/出力を使用する
+### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ 1:Azure Blob Storage のデータを参照する Web サービスの入力/出力の使用を実験する
 
 このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 Azure Blog Storage の入出力データは、LinkedName と FilePath のペアを使用して参照されます。 サンプルのリンクされたサービスが入力と出力で異なる場合は、Data Factory が適切なファイルを選択して Azure Machine Learning Studio (クラシック) Web サービスに送信できるように、入力と出力にそれぞれ異なるリンクされたサービスをご利用いただけます。
 
@@ -189,10 +189,10 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
     }
 }
 ```
-### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>シナリオ2: リーダー/ライター モジュールを使用してさまざまなストレージのデータを参照する
+### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>シナリオ 2: リーダー/ライター モジュールを使用したさまざまなストレージのデータの参照を実験する
 Azure Machine Learning Studio (クラシック) の実験を作成するときのもう 1 つの一般的なシナリオは、データ インポート モジュールとデータ出力モジュールを使用することです。 データ インポート モジュールは実験にデータを読み込むために使用し、データ出力モジュールは実験からデータを保存するために使用します。 データ インポート モジュールとデータ出力モジュールの詳細については、MSDN ライブラリの[データのインポート](https://msdn.microsoft.com/library/azure/dn905997.aspx)に関するトピックおよび[データの出力](https://msdn.microsoft.com/library/azure/dn905984.aspx)に関するトピックをご覧ください。
 
-データ インポート モジュールとデータ出力モジュールを使用するときは、これらのモジュールの各プロパティに Web サービスのパラメーターを使用することをお勧めします。 これらの Web パラメーターを使用すると、実行時に値を構成できます。 たとえば、Azure SQL Database: XXX.database.windows.net を使用するデータ インポート モジュールで実験を作成できます。 Web サービスをデプロイしたら、Web サービスのコンシューマーが `YYY.database.windows.net` という別の Azure SQL Server を指定できるようにします。 Web サービスのパラメーターを使用して、この値を構成できます。
+データ インポート モジュールとデータ出力モジュールを使用するときは、これらのモジュールの各プロパティに Web サービスのパラメーターを使用することをお勧めします。 これらの Web パラメーターを使用すると、実行時に値を構成できます。 たとえば、次の Azure SQL Database を使用するデータ インポート モジュールで実験を作成できます: XXX.database.windows.net。 Web サービスをデプロイしたら、Web サービスのコンシューマーが `YYY.database.windows.net` という別の論理 SQL サーバーを指定できるようにします。 Web サービスのパラメーターを使用して、この値を構成できます。
 
 > [!NOTE]
 > Web サービスの入力と出力は、Web サービスのパラメーターとは異なるものです。 最初のシナリオでは、Azure Machine Learning Studio (クラシック) Web サービスに対して入力と出力を指定する方法を説明しました。 このシナリオでは、データ インポート/データ出力モジュールのプロパティに対応する Web サービスのパラメーターを渡します。

@@ -1,33 +1,34 @@
 ---
-title: SaaS オファー作成のチェックリスト - Azure 向けの Commercial Marketplace
-description: SaaS オファー作成プロセスで指定できる詳細。 - Azure 向けの Commercial Marketplace
-author: dsindona
-ms.author: dsindona
+title: Microsoft の商用マーケットプレースでの SaaS オファー作成のチェックリスト
+description: パートナー センターでの SaaS オファー作成プロセスで指定できる詳細。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/08/2020
+ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281342"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101710"
 ---
-# <a name="saas-offer-creation-checklist"></a>SaaS オファー作成のチェックリスト
+# <a name="saas-offer-creation-checklist-in-partner-center"></a>パートナー センターでの SaaS オファー作成のチェックリスト
 
-SaaS オファー作成プロセスでは、複数のページを使用します。 ここでは、各ページで指定できる詳細と、各項目の詳細へのリンクを示します。
+SaaS オファー作成プロセスでは、複数のページを使用します。  ここでは、各ページで指定できる詳細と、各項目の詳細へのリンクを示します。
 
-入力または指定する必要がある項目を以下に示します。 省略可能な領域や、既定値が指定されている領域もありますが、必要に応じて変更できます。 これらのセクションについて、記載されている順序で作業する必要はありません。
+入力または指定する必要がある項目を以下に示します。  省略可能な領域や、既定値が指定されている領域もありますが、必要に応じて変更できます。  これらのセクションについて、記載されている順序で作業する必要はありません。
+
+>[!Note]
+>取引可能な SaaS オファーを作成する場合は、[SaaS fulfillment API](./pc-saas-fulfillment-apis.md) との統合を実装していることを確認してください。  API との統合は、マーケットプレースでの取引を正常に機能させるための唯一の方法です。
 
 | **Item**    | **目的**  |
 | :---------- | :-------------------|
 | [ **[新しいオファー] モーダル**](#new-offer-modal) | オファーの ID 情報を収集します。  |
 | [[オファーのセットアップ] ページ](#offer-setup-page) | 使用する主要な機能と、Microsoft を介してオファーを販売する方法を選択できます。  |
 | [[プロパティ] ページ](#properties-page) | マーケットプレース上でのオファーのグループ分けに使用するカテゴリと業界、オファーをサポートする法的契約、アプリのバージョンを定義します。 |
-| [[オファー登録情報] ページ](#offer-listing-page) | マーケットプレースに表示するオファーの詳細 (オファーの説明、マーケティング資産など) を定義します。 |
-| [[プレビュー] ページ](#preview-page) | マーケットプレースの幅広い対象ユーザーに公開する前にオファーをリリースするために、限定のプレビュー対象ユーザーを定義します。 |
-| [オファーの [技術的な構成] ページ](#technical-configuration-page)  | Microsoft を介してオファーを販売することにした場合にのみ、使用可能です。 オファーへの接続に使用される技術的な詳細 (URL パス、Webhook、テナント ID、アプリ ID) を定義します。 |
+| [[オファー登録情報] ページ](#offer-listing-page) | マーケットプレースに表示するオファーの詳細 (オファーの説明、マーケティング資産など) を定義します。|
+| [[プレビュー] ページ](#preview-page) | マーケットプレースの幅広い対象ユーザーに公開する前にオファーをリリースするために、限定のプレビュー対象ユーザーを定義します。|
+| [オファーの [技術的な構成] ページ](#technical-configuration-page)  |  Microsoft を介してオファーを販売することにした場合にのみ、使用可能です。  マーケットプレースでオファーに接続するために使用される技術的な詳細 (ランディングページの URL、接続 Webhook の URL、Azure AD テナント ID、および Azure AD アプリ ID) を定義します。  SaaS Fulfillment とマーケットプレースの従量制課金 API に正しく統合するには、これらのパラメーターが必要です。|
 | [ **[新しいプラン] モーダル**](#plan-identity-modal) | プランの ID 情報を収集します。  |
 | [[プランのリスト] ページ](#plan-listing-page)  | Microsoft を介してオファーを販売することにした場合にのみ、使用可能です。 マーケットプレースでのプランの一覧表示に使用される詳細を定義します。  |
 | [[Plan Pricing & Availability]\(プランの価格と提供状況\) ページ](#plan-pricing--availability-page)  | Microsoft を介してオファーを販売することにした場合にのみ、使用可能です。  オファーのプラン (バージョン) ごとに、ビジネスの特性 (価格モデル)、対象ユーザー、市場提供状況を収集します。  |
@@ -58,7 +59,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 | チャンネル  | 省略可能。 既定値は[Not opted into the CSP (reseller) channel.]\(CSP (リセラー) チャネルに選ばれていません。\)  |
 | 体験版 | 省略可能。 既定値は[No test drive enabled.]\(有効になっている体験版がありません。\)  |
 | Type of Test Drive (体験版の種類) | 体験版が有効になっている場合は必須。 既定値は選択されていません。 オプション:Azure Resource Manager、Dynamics 365 for Business Central、Dynamics 365 for Customer Engagement、Dnamics 365 for Operations、ロジック アプリ、Power BI。  |
-| [Lead Management – connect to a CRM system]\(リード管理 - CRM システムに接続する\) | Microsoft を介して販売する場合、または登録オファーが [Contact me]\(問い合わせ\) で提供される場合は必須。 既定値: [CRM システムが接続されていません]。 CRM オプション: Azure テーブル、Azure Blob、Dynamics CRM Online、HTTPs のエンドポイント、Marketo、Salesforce  |
+| 潜在顧客 - CRM システムへの接続 | Microsoft を介して販売する場合、または登録オファーが [Contact me]\(問い合わせ\) で提供される場合は必須。 既定値: [CRM システムが接続されていません]。 CRM オプション: Azure テーブル、Azure Blob、Dynamics CRM Online、HTTPs のエンドポイント、Marketo、Salesforce  |
 
 ## <a name="properties-page"></a>[プロパティ] ページ
 
@@ -89,7 +90,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 | [Useful links Title + URL]\(役に立つリンクのタイトルと URL\)  | 省略可能。 |
 | [Supporting Documents Title + File]\(サポート ドキュメントのタイトルとファイル\)  | 必須。最小 1 個、最大 3 個。 PDF ファイル形式にする必要があります。 |
 | Screenshots (スクリーンショット)  | 必須。最小 1 個、最大 5 個のスクリーンショット (4 個以上を推奨)。 1280 x 720 の PNG 形式にする必要があります。 |
-| [Store logos (Small, Medium, Large, Wide, Hero)]\(ストア ロゴ (小、中、大、ワイド、ヒーロー)\)  | 小 (48 x 48) と大 (216 x 216) は必須。他のサイズは省略可能だが、推奨: 中 (90 x 90)、ワイド (255 x 115)、ヒーロー (815 x 290)。 PNG 形式である必要があります。 |
+| ストア ロゴ (小、中、大、ワイド)  | 小 (48 x 48) と大 (216 x 216) は必須。他のサイズは省略可能だが、推奨: 中 (90 x 90)、ワイド (255 x 115)。 .PNG 形式である必要があります。 |
 | [Videos name + URL + thumbnail]\(ビデオ名 + URL + サムネイル\)  | 省略可能。指定を推奨。最大 4 個のビデオ。 サムネイルは 1280 x 720 の PNG 形式にする必要があります。 ビデオは YouTube または Vimeo にホストする必要があります。 |
 | [Contacts (CSP Program, Engineering, Support)]\(連絡先 (CSP プログラム、エンジニアリング、サポート)\)  | エンジニアリングとサポートの連絡先は必須 (名前、メール、電話番号)。CSP プログラムの連絡先は省略可能だが、推奨。 |
 | サポート URL  | 必須。 |

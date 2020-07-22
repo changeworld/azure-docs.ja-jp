@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553288"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 内のユーザーが管理するキーを使用した Azure Cognitive Search でのコンテンツの保存時の暗号化
 
@@ -26,7 +26,7 @@ ms.locfileid: "76899951"
 キーは、同じ Key Vault に配置する必要はありません。 1つの検索サービスで、暗号化された複数のインデックスや、独自のカスタマー マネージドの暗号化キーで暗号化されてそれぞれ異なる Key Vault に格納されている複数のシノニム マップをホストすることができます。  また、カスタマー マネージドのキーを使用して暗号化されていない同じサービス内に、インデックスとシノニム マップを置くこともできます。 
 
 > [!IMPORTANT] 
-> この機能は、[REST API バージョン 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) および [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md)で利用できます。 現在 Azure portal では、カスタマー マネージドの暗号化キーの構成はサポートしていません。 検索サービスは、2019年1月以降に作成することが必要で、無料 (共有) サービスにはできません。
+> この機能は、[REST API](https://docs.microsoft.com/rest/api/searchservice/) および [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md) で利用できます。 現在 Azure portal では、カスタマー マネージドの暗号化キーの構成はサポートしていません。 検索サービスは、2019年1月以降に作成することが必要で、無料 (共有) サービスにはできません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "76899951"
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を構成タスクに使用します。
 
-+ [Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md) および [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) を使用して REST API を呼び出せます。 現時点では、カスタマー マネージドの暗号化はポータルでサポートされていません。
++ REST API の呼び出しには、[Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md)、および [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview)を使用できます。 現時点では、カスタマー マネージドの暗号化はポータルでサポートされていません。
 
 >[!Note]
 > カスタマー マネージドのキー フィーチャーを使用した暗号化の性質上、Aｚure Key vault キーが削除されている場合には、Azure Cognitive Search はデータを取得できません。 Key Vault キーを誤って削除しデータが損失することを防ぐため、使用前に Key Vault の「論理的な削除」および「消去データ保護」を**必ず**有効にしてください。 詳細については、[Azure Key Vault の論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)に関する記事を参照してください。   

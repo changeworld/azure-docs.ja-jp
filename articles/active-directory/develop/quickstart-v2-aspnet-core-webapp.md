@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112713"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554136"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 このクイックスタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
@@ -145,7 +145,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `.AddAzureAd` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 次に、Microsoft ID プラットフォーム エンドポイントを使用してサインインするように構成されます。
 
-> |Where  |  |
+> |Where | 説明 |
 > |---------|---------|
 > | ClientId  | Azure portal に登録されているアプリケーションのアプリケーション (クライアント) ID。 |
 > | Authority | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は <https://login.microsoftonline.com/{tenant}/v2.0>。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
@@ -156,7 +156,7 @@ public void ConfigureServices(IServiceCollection services)
 > `ValidateIssuer = false` の設定は、このクイック スタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証する必要があります。
 > その方法については、サンプルを参照してください。
 >
-> また、`app.UserCookiePolicy()` と `app.UseAuthentication()` という 2 つの重要なメソッドを含んだ `Configure` メソッドにも注目してください。
+> また、`app.UseCookiePolicy()` と `app.UseAuthentication()` という 2 つの重要なメソッドを含んだ `Configure` メソッドにも注目してください。
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

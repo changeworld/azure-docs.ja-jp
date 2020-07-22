@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d28d7bd85326e8a4cf27dba1f3f605b64477c5aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83829939"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux VM に対する Azure Disk Encryption に関する FAQ
 
@@ -158,7 +158,7 @@ Azure Backup には、同じサブスクリプションおよびリージョン�
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>質問したり、フィードバックを提供したりするにはどこに移動すればよいですか。
 
-[Azure Disk Encryption フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption)で質問したり、フィードバックを提供したりできます。
+ご質問やフィードバックは、[Azure Disk Encryption についての Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)に投稿してください。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。

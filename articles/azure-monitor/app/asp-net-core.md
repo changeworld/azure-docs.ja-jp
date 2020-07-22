@@ -3,18 +3,18 @@ title: ASP.NET Core アプリケーション用の Azure Application Insights | 
 description: ASP.NET Core Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 7e575bf0d1fe138ae9dd4160b55be4f2c8ea5bea
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652781"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082201"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
 この記事では、[ASP.NET Core](https://docs.microsoft.com/aspnet/core) アプリケーションで Application Insights を有効にする方法について説明します。 この記事の手順を完了すると、Application Insights で、ASP.NET Core アプリケーションから要求、依存関係、例外、パフォーマンス カウンター、ハートビート、ログが収集されます。
 
-ここで使用する例は、`netcoreapp3.0` を対象とする [MVC アプリケーション](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)です。 これらの手順は、すべての ASP.NET Core アプリケーションに適用できます。
+ここで使用する例は、`netcoreapp3.0` を対象とする [MVC アプリケーション](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)です。 これらの手順は、すべての ASP.NET Core アプリケーションに適用できます。 [ワーカー サービス](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services#worker-service-template)を使っている場合は、[こちら](./worker-service.md)の手順を使用してください。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -56,7 +56,7 @@ ms.locfileid: "82652781"
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>Application Insights のサーバー側テレメトリを有効にする (Visual Studio なし)
 
-1. [ASP.NET Core 用の Application Insights SDK NuGet パッケージ](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)をインストールします。 常に最新の安定バージョンを使用することをお勧めします。 [オープンソースの GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-aspnetcore/releases)で、SDK の完全なリリース ノートを探します。
+1. [ASP.NET Core 用の Application Insights SDK NuGet パッケージ](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)をインストールします。 常に最新の安定バージョンを使用することをお勧めします。 [オープンソースの GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet/releases)で、SDK の完全なリリース ノートを探します。
 
     次のコード サンプルでは、プロジェクトの `.csproj` ファイルに追加される変更が示されています。
 
@@ -225,7 +225,7 @@ Application Insights SDK for ASP.NET Core では、固定レートとアダプ�
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers の追加
 
-すべてのテレメトリで送信されるグローバル プロパティを定義するときは、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)を使います。
+追加の情報でテレメトリをエンリッチするには、[TelemetryInitializers](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) を使用します。
 
 次のコードで示すように、新しい `TelemetryInitializer` を `DependencyInjection` コンテナーに追加します。 `DependencyInjection` コンテナーに追加した `TelemetryInitializer` は、SDK によって自動的に取得されます。
 
@@ -282,7 +282,7 @@ Application Insights では、テレメトリ モジュールを使用して、�
 次の自動収集モジュールが既定で有効になります。 これらのモジュールでは、自動的にテレメトリが収集されます。 それらを無効にするか構成して、既定の動作を変更できます。
 
 * `RequestTrackingTelemetryModule` - 受信 Web 要求から RequestTelemetry を収集します。
-* `DependencyTrackingTelemetryModule` - 送信 http 呼び出しと sql 呼び出しから DependencyTelemetry を収集します。
+* `DependencyTrackingTelemetryModule` - 送信 HTTP 呼び出しと SQL 呼び出しから [DependencyTelemetry](./asp-net-dependencies.md) を収集します。
 * `PerformanceCollectorModule` - Windows PerformanceCounters を収集します。
 * `QuickPulseTelemetryModule` - Live Metrics ポータルで表示するテレメトリを収集します。
 * `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
@@ -329,7 +329,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="configuring-a-telemetry-channel"></a>テレメトリ チャネルを構成する
 
-既定のチャネルは `ServerTelemetryChannel` です。 次の例のようにしてオーバーライドできます。
+既定の[テレメトリ チャネル](./telemetry-channels.md)は `ServerTelemetryChannel` です。 次の例のようにしてオーバーライドできます。
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -398,7 +398,7 @@ public class HomeController : Controller
     }
 ```
 
-Application Insights でのカスタム データ レポートについては、[Application Insights カスタム メトリック API リファレンス](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/)に関するページを参照してください。
+Application Insights でのカスタム データ レポートについては、[Application Insights カスタム メトリック API リファレンス](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/)に関するページを参照してください。 同様の方法を使用して、[GetMetric API](./get-metric.md) を使用して Application Insights にカスタム メトリックを送信することもできます。
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>一部の Visual Studio テンプレートでは、Application Insights を有効にする目的で UseApplicationInsights() 拡張メソッドが IWebHostBuilder で使用されていました。 この使用方法は今でも有効ですか?
 

@@ -3,24 +3,24 @@ title: Azure AD アプリケーション プロキシに関してよく寄せら
 description: Azure AD アプリケーション プロキシを使用して内部のオンプレミス アプリケーションをリモート ユーザーに公開する方法についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386285"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -71,6 +71,13 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Azure AD アプリケーション プロキシ コネクタは、リソースと同じサブネット上にある必要がありますか。
 
 コネクタは、同じサブネット上に存在している必要はありません。 ただし、リソースへの名前解決 (DNS、ホスト ファイル) と必要なネットワーク接続 (リソースへのルーティング、リソースのポート開放など) が必要です。 推薦事項に関しては、「[Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項](application-proxy-network-topology.md)」を参照してください。
+
+### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>コネクタをインストールできる Windows Server のバージョンを教えてください。
+アプリケーション プロキシには、Windows Server 2012 R2 以降が必要です。 現時点、Windows Server 2019 では HTTP2 に対して制限があります。 Windows Server 2019 でコネクタを正常に使用するには、次のレジストリ キーを追加し、サーバーを再起動する必要があります。
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
+
 
 ## <a name="application-configuration"></a>アプリケーションの構成
 

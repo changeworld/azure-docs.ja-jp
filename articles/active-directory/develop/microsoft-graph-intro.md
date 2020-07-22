@@ -6,17 +6,17 @@ services: active-directory
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479514"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 

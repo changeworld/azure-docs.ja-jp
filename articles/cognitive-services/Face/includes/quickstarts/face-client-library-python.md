@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7270d05fa7668278db285336c45b5d5c1fb39c77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b4cc6e046b3d6442526df40cad574dbdb9159d5f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148395"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073210"
 ---
 Python 用 Face クライアント ライブラリの概要。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -31,16 +31,14 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* キーとエンドポイントを取得したら、キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FACE_SUBSCRIPTION_KEY` および `FACE_ENDPOINT` という名前を付けます。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-face-azure-resource"></a>Face Azure リソースを作成する
-
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用してローカル マシン上に Face 用のリソースを作成します。 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手することもできます。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
-
-試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FACE_SUBSCRIPTION_KEY` および `FACE_ENDPOINT` という名前を付けます。
  
 ### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
@@ -211,7 +209,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
 
-スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料試用版サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行することが必要になった場合などです。 スナップショット機能の広範な概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
+スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行する場合です。 スナップショット機能の広範な概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
 
 この例では、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」で作成した **PersonGroup** を移行します。 先にそのセクションを完了することも、独自の Face データ コンストラクトを使用することもできます。
 

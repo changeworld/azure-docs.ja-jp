@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure portal でコグニティブ スキルセットを作成する
+title: Azure portal でコグニティブ スキルセットを作成する
 titleSuffix: Azure Cognitive Search
 description: このポータル クイックスタートでは、データ インポート ウィザードを使用して、コグニティブ スキルを Azure Cognitive Search のインデックス作成パイプラインに追加する方法について説明します。 スキルには、光学式文字認識 (OCR) と自然言語処理が含まれます。
 manager: nitinme
@@ -7,35 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/20/2019
-ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/07/2020
+ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77472419"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488955"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
 
-スキルセットとは、構造化されていない大量のテキストや画像ファイルから情報や構造を抽出し、Azure Cognitive Search でフルテキスト検索クエリを実行できるよう、インデックスを作成して検索できるようにする AI の機能です。 
+スキルセットとは、構造化されていない大量のテキストまたは画像ファイルから情報や構造を抽出し、Azure Cognitive Search でコンテンツをインデックス可能かつ検索可能にする AI ベースの機能です。 
 
-このクイックスタートでは、Azure クラウドのサービスとデータを組み合わせてスキルセットを作成します。 すべての準備が整ったら、ポータルの**データ インポート** ウィザードを実行して、それらを 1 つにまとめます。 最終的な成果物は、AI 処理によって作成されたデータを投入した検索可能なインデックスで、ポータル ([Search エクスプローラー](search-explorer.md)) から照会することができます。
+このクイックスタートでは、Azure クラウドのサービスとデータを組み合わせてスキルセットを作成します。 すべての準備が整ったら、Azure portal の **[データ インポート]** ウィザードを実行して、それをすべてまとめてプルします。 最終的な成果物は、AI 処理によって作成されたデータを投入した検索可能なインデックスで、ポータル ([Search エクスプローラー](search-explorer.md)) から照会することができます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="create-services-and-load-data"></a>サービスを作成してデータを読み込む
+開始する前に、次の項目を用意する必要があります。
 
-このクイックスタートでは、Azure Cognitive Search、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
 
-ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使うことができる Cognitive Services を内部で利用しています。 そのような小さいデータ セットでは、Cognitive Services リソースの作成またはアタッチはスキップしてかまいません。
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
+
++ [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/) を持つ Azure ストレージ アカウント。
+
+> [!NOTE]
+> また、このクイックスタートでは [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使用するために Cognitive Services を内部で利用しています。 つまり、追加の Cognitive Services リソースを作成しなくても、この演習を完了できるということです。
+
+## <a name="set-up-your-data"></a>自分のデータを設定する
+
+次の手順では、異種コンテンツ ファイルを格納するために Azure Storage で BLOB コンテナーを設定します。
 
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 .zip ファイルを解凍します
 
 1. [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 
 
-   帯域幅の料金を避けるため、リージョンは、Azure Cognitive Search と同じものを選択してください。 
-   
-   後で別のチュートリアルのナレッジ ストア機能を試してみたい場合は、アカウントの種類として StorageV2 (General Purpose V2) を選択してください。 それ以外の場合、種類はどれでもかまいません。
+   + 帯域幅の料金を避けるため、リージョンは、Azure Cognitive Search と同じものを選択してください。 
+
+   + 後で別のチュートリアルのナレッジ ストア機能を試してみたい場合は、アカウントの種類として StorageV2 (General Purpose V2) を選択してください。 それ以外の場合、種類はどれでもかまいません。
 
 1. Blob service ページを開き、コンテナーを作成します。 既定のパブリック アクセス レベルを使用できます。 
 
@@ -43,15 +52,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
-
 これでデータ インポート ウィザードに進む準備が整いました。
 
 ## <a name="run-the-import-data-wizard"></a>データ インポート ウィザードを実行する
 
-Search サービスの概要ページにあるコマンド バーの **[データのインポート]** をクリックし、4 つの手順でコグニティブ エンリッチメントを設定します。
+1. Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
 
-  ![[データのインポート] コマンド](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページにあるコマンド バーの **[データのインポート]** をクリックして、4 つの手順でコグニティブ エンリッチメントを設定します。
+
+   ![[データのインポート] コマンド](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1---create-a-data-source"></a>手順 1 - データ ソースを作成する
 

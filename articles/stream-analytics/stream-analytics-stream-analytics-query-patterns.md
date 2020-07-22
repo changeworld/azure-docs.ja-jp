@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982313"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832964"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics での一般的なクエリ パターン
 
@@ -708,7 +708,7 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 **入力**:  
 
-| deviceId | Time | Attribute | 値 |
+| deviceId | Time | 属性 | 値 |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |気温 |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |気温 |50 |
@@ -930,7 +930,7 @@ JOIN
 
 ## <a name="get-help"></a>ヘルプの参照
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

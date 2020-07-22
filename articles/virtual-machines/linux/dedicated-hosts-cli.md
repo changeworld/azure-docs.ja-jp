@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127701"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714850"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストに VM をデプロイする
  
@@ -25,13 +25,21 @@ Azure CLI バージョン2.0.70 以降がインストールされていること
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
 - 専用ホストで使用できるサイズとハードウェアの種類は、リージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
- 
 
 ## <a name="create-resource-group"></a>リソース グループの作成 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 az group create で、リソース グループを作成します。 次の例では、*myDHResourceGroup* という名前のリソース グループを "*米国東部*" の場所に作成します。
 
 ```bash
 az group create --name myDHResourceGroup --location eastus 
+```
+ 
+## <a name="list-available-host-skus-in-a-region"></a>リージョンで利用可能なホスト SKU を一覧表示する
+すべてのホスト SKU がすべてのリージョンおよび可用性ゾーンで使用できるわけではありません。 
+
+専用ホストのプロビジョニングを開始する前に、ホストの可用性とオファーの制限事項を一覧表示します。 
+
+```bash
+az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
 ## <a name="create-a-host-group"></a>ホスト グループを作成する 

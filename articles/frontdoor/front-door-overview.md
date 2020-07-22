@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879124"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322296"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 Azure Front Door では、高可用性のために最大限のパフォーマンスと即時グローバル フェールオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。

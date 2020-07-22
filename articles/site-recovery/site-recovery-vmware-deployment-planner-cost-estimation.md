@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132196"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Deployment Planner のコスト見積もりを確認する 
 
@@ -162,4 +162,4 @@ Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコ�
 |TRY|トルコ リラ (TL)||USD| 米ドル ($)||ZAR|南アフリカ ランド (R)|
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Site Recovery を使用して VMware から Azure に VM](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure) をレプリケートして保護する方法について詳しく調べてみましょう。
+[Azure Site Recovery を使用して VMware から Azure に VM](./vmware-azure-tutorial.md) をレプリケートして保護する方法について詳しく調べてみましょう。

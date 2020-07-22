@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0b5fbb49e2f60f101f16988538af86c2caf550eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 38b723cb823547d4737a68576575c2b629f5eb67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202854"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206281"
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Splunk Enterprise and Splunk Cloud の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Splunk Enterprise and Splunk Cloud の統合 | Microsoft Docs
 description: Azure Active Directory と Splunk Enterprise and Splunk Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -23,7 +23,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81867305"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>チュートリアル: Azure Active Directory と Splunk Enterprise and Splunk Cloud の統合
+# <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>チュートリアル:Azure Active Directory と Splunk Enterprise and Splunk Cloud の統合
 
 このチュートリアルでは、Splunk Enterprise and Splunk Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Splunk Enterprise and Splunk Cloud と Azure AD の統合には、次の利点があります。

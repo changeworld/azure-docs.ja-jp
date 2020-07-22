@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e40b74cc5bf995e943b20ddcd21127ed4f7d7ead
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677349"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184193"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -98,6 +98,14 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 * ```net stop serviceName```
 * ```net start serviceName```
 
+また、管理者特権でのコマンド プロンプトから (管理者として) 次のコマンドを実行する方法も役立ちます。
+
+```CMD
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
+```
+
+このレジストリ キーを追加すると、BLOB スナップショット用にスレッドが作成されず、タイムアウトが発生しなくなります。
+
 ## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - バックアップ拡張機能の構成の解析に失敗しました
 
 エラー コード:ExtensionConfigParsingFailure<br/>
@@ -178,19 +186,58 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **手順 3**:[VM のサイズの増加](https://azure.microsoft.com/blog/resize-virtual-machines/)を試み、操作を再試行します。
 
-## <a name="common-vm-backup-errors"></a>一般的な VM バックアップのエラー
 
-| エラーの詳細 | 回避策 |
-| ------ | --- |
-| **エラー コード**:320001、ResourceNotFound <br/> **エラー メッセージ**:VM が存在しないため、操作を実行できませんでした。 <br/> <br/> **エラー コード**:400094、BCMV2VMNotFound <br/> **エラー メッセージ**:仮想マシンが存在しません <br/> <br/>  Azure 仮想マシンが見つかりませんでした。  |このエラーは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が引き続き検索される場合に発生します。 このエラーを解決するには、次の手順を実行します。 <ol><li> 同じ名前と同じリソース グループ名、**クラウド サービス名**を持つ仮想マシンを作成し直します。<br>**or**</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 詳細については、「[仮想マシンの保護を停止する](backup-azure-manage-vms.md#stop-protecting-a-vm)」を参照してください。</li></ol>|
-|**エラー コード**:UserErrorBCMPremiumStorageQuotaError<br/> **エラー メッセージ**:ストレージ アカウント内の空き領域の不足のために、仮想マシンのスナップショットをコピーできませんでした | VM バックアップ スタック V1 の Premium VM の場合、スナップショットはストレージ アカウントにコピーされます。 この手順により、スナップショット上で動作するバックアップ管理トラフィックが、プレミアム ディスクを使用するアプリケーションで利用できる IOPS の数を制限しないようになります。 <br><br>ストレージ アカウントの合計領域の 50% (17.5 TB) のみを割り当てることをお勧めします。 これにより、Azure Backup サービスが、スナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送することができます。 |
-| **エラー コード**:380008、AzureVmOffline <br/> **エラー メッセージ**:仮想マシンが実行されていないため、Microsoft Recovery Services の拡張機能をインストールできませんでした | VM エージェントは、Azure Recovery Services 拡張機能の前提条件です。 Azure 仮想マシン エージェントをインストールしてから、登録操作をやり直してください。 <br> <ol> <li>VM エージェントが正しくインストールされていることを確認します。 <li>VM 構成のフラグが正しく設定されていることを確認します。</ol> VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法に関するセクションを参照してください。 |
-| **エラー コード**:ExtensionSnapshotBitlockerError <br/> **エラー メッセージ**:スナップショットの操作は、**このドライブは、BitLocker ドライブ暗号化でロックされています。コントロール パネルからドライブのロックを解除してください。** というボリューム シャドウ コピー サービス (VSS) 操作エラーで失敗しました。 |VM 上のすべてのドライブで BitLocker をオフにして、VSS の問題が解決されたかどうかを確認します。 |
-| **エラー コード**:VmNotInDesirableState <br/> **エラー メッセージ**:VM はバックアップできる状態ではありません。 |<ul><li>VM が**実行**と**シャットダウン**の間の一時的な状態である場合は、状態が変わるのを待ちます。 その後、バックアップ ジョブをトリガーします。 <li> VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。  |
-| VM エージェントが仮想マシンに存在しません: <br>前提条件と VM エージェントをインストールします。 その後、操作を再開します。 |VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
-| **エラー コード**:ExtensionSnapshotFailedNoSecureNetwork <br/> **エラー メッセージ**:セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
-| **エラー コード**:ExtensionVCRedistInstallationFailure <br/> **エラー メッセージ**:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
-| **エラー コード**:UserErrorRequestDisallowedByPolicy <BR> **エラー メッセージ**:VM に無効なポリシーが構成されており、スナップショット操作が妨げられています。 | [環境内のタグを管理する](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags) Azure Policy がある場合は、ポリシーを [Deny 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)から [Modify 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)に変更することを検討するか、[Azure Backup で要求される名前付けスキーマ](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)に従って手動でリソース グループを作成してください。
+## <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001、ResourceNotFound - VM が存在しないため、操作を実行できませんでした / 400094、BCMV2VMNotFound - 仮想マシンが存在しません / Azure 仮想マシンが見つかりませんでした
+
+エラー コード:320001、ResourceNotFound <br/> エラー メッセージ:VM が存在しないため、操作を実行できませんでした。 <br/> <br/> エラー コード:400094、BCMV2VMNotFound <br/> エラー メッセージ:仮想マシンが存在しません <br/>
+Azure 仮想マシンが見つかりませんでした。
+
+このエラーは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が引き続き検索される場合に発生します。 このエラーを解決するには、次の手順を実行します。
+- 同じ名前と同じリソース グループ名、**クラウド サービス名**を持つ仮想マシンを作成し直します。<br>or
+- バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 詳細については、「[仮想マシンの保護を停止する](backup-azure-manage-vms.md#stop-protecting-a-vm)」を参照してください。</li></ol>
+
+## <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError - ストレージ アカウント内の空き領域の不足のために、仮想マシンのスナップショットをコピーできませんでした
+
+エラー コード:UserErrorBCMPremiumStorageQuotaError<br/> エラー メッセージ:ストレージ アカウント内の空き領域の不足のために、仮想マシンのスナップショットをコピーできませんでした
+
+ VM バックアップ スタック V1 の Premium VM の場合、スナップショットはストレージ アカウントにコピーされます。 この手順により、スナップショット上で動作するバックアップ管理トラフィックが、プレミアム ディスクを使用するアプリケーションで利用できる IOPS の数を制限しないようになります。 <br><br>ストレージ アカウントの合計領域の 50% (17.5 TB) のみを割り当てることをお勧めします。 これにより、Azure Backup サービスが、スナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送することができます。
+
+
+## <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008、AzureVmOffline - 仮想マシンが実行されていないため、Microsoft Recovery Services の拡張機能をインストールできませんでした
+エラー コード:380008、AzureVmOffline <br/> エラー メッセージ:仮想マシンが実行されていないため、Microsoft Recovery Services の拡張機能をインストールできませんでした
+
+VM エージェントは、Azure Recovery Services 拡張機能の前提条件です。 Azure 仮想マシン エージェントをインストールしてから、登録操作をやり直してください。 <br> <ol> <li>VM エージェントが正しくインストールされていることを確認します。 <li>VM 構成のフラグが正しく設定されていることを確認します。</ol> VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法に関するセクションを参照してください。
+
+## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError - スナップショットの操作が、ボリューム シャドウ コピー サービス (VSS) の操作エラーで失敗しました。
+エラー コード:ExtensionSnapshotBitlockerError <br/> エラー メッセージ:スナップショットの操作は、**このドライブは、BitLocker ドライブ暗号化でロックされています。コントロール パネルからドライブのロックを解除してください。** というボリューム シャドウ コピー サービス (VSS) 操作エラーで失敗しました。
+
+VM 上のすべてのドライブで BitLocker をオフにして、VSS の問題が解決されたかどうかを確認します。
+
+## <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState - VM はバックアップが可能な状態にありません
+エラー コード:VmNotInDesirableState <br/> エラー メッセージ:VM はバックアップできる状態ではありません。
+- VM が**実行**と**シャットダウン**の間の一時的な状態である場合は、状態が変わるのを待ちます。 その後、バックアップ ジョブをトリガーします。
+- VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。
+
+- VM エージェントが仮想マシンに存在しません: <br>前提条件と VM エージェントをインストールします。 その後、操作を再開します。 VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。
+
+
+## <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork - セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました
+エラー コード:ExtensionSnapshotFailedNoSecureNetwork <br/> エラー メッセージ:セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。
+- 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。
+- お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。
+- レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>
+
+
+## <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure - Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました
+エラー コード:ExtensionVCRedistInstallationFailure <br/> エラー メッセージ:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。
+- `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。
+- イベント ログを確認して、アクセス関連の問題が発生しているかどうかを確認します。 次に例を示します。*製品:Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- エラー 1401。キー Software\Classes を作成できませんでした。システム エラー 5。このキーへの十分なアクセス権があることを確認するか、またはサポート担当者に問い合わせてください。* <br><br> 管理者またはユーザーのアカウントに、レジストリ キー **HKEY_LOCAL_MACHINE\SOFTWARE\Classes** を更新するための十分なアクセス許可があることを確認します。 十分なアクセス許可を付与し、Windows Azure ゲスト エージェントを再起動します。<br><br> <li> ウイルス対策製品を使用している場合は、インストールを許可する適切な除外ルールがあることを確認します。
+
+
+## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy - VM に無効なポリシーが構成されており、スナップショット操作が妨げられています
+エラー コード:UserErrorRequestDisallowedByPolicy <BR> エラー メッセージ:VM に無効なポリシーが構成されており、スナップショット操作が妨げられています。
+
+[環境内のタグを管理する](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags) Azure Policy がある場合は、ポリシーを [Deny 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)から [Modify 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)に変更することを検討するか、[Azure Backup で要求される名前付けスキーマ](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)に従って手動でリソース グループを作成してください。
 
 ## <a name="jobs"></a>ジョブ
 

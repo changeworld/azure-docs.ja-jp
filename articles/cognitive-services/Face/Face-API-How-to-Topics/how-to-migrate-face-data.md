@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120812"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986669"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>顔データを別の Face サブスクリプションに移行する
 
-このガイドでは、顔データ (顔と一緒に保存した PersonGroup オブジェクトなど) を別の Azure Cognitive Services Face サブスクリプションに移動する方法について説明します。 データを移動するには、スナップショット機能を使用します。 これにより、運用を移行または拡張するときに、PersonGroup または FaceList オブジェクトを繰り返し構築およびトレーニングする必要がなくなります。 たとえば、無料試用版サブスクリプションを使用して PersonGroup オブジェクトを作成し、それを有料サブスクリプションに移行することが必要になる場合があります。 または、大規模なエンタープライズ運用のために異なるリージョンのサブスクリプション間で顔データを同期することが必要な場合もあります。
+このガイドでは、顔データ (顔と一緒に保存した PersonGroup オブジェクトなど) を別の Azure Cognitive Services Face サブスクリプションに移動する方法について説明します。 データを移動するには、スナップショット機能を使用します。 これにより、運用を移行または拡張するときに、PersonGroup または FaceList オブジェクトを繰り返し構築およびトレーニングする必要がなくなります。 たとえば、無料サブスクリプションを使用して PersonGroup オブジェクトを作成し、それを有料サブスクリプションに移行することが必要になる場合があります。 または、大規模なエンタープライズ運用のために異なるリージョンのサブスクリプション間で顔データを同期することが必要な場合もあります。
 
 この同じ移行戦略は、LargePersonGroup オブジェクトと LargeFaceList オブジェクトにも適用されます。 このガイドの概念についてよくわからない場合は、「[顔認識の概念](../concepts/face-recognition.md)」ガイドにあるそれらの定義を参照してください。 このガイドでは、C# と共に Face .NET クライアント ライブラリを使用しています。
 
@@ -41,7 +41,7 @@ ms.locfileid: "83120812"
 
 ## <a name="create-face-clients"></a>顔クライアントを作成する
 
-**Program.cs** の *Main* メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 
+*Program.cs* の **Main** メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

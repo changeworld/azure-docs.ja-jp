@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: f0c21626c664f2d72b534ebae7f0a257620be07d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767070"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
@@ -24,7 +24,7 @@ IoT プラグ アンド プレイに関する記事で使用される一般的�
 
 [Azure Certified for IoT ポータル](https://aka.ms/ACFI) Web サイトを使用すると、次のことができます。
 
-- [IoT プラグ アンド プレイ デバイス](#device-certification)の[認定プロセス](#iot-plug-and-play-device)を完了する。
+- [IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)の[認定プロセス](#device-certification)を完了する。
 - [デバイス機能モデル](#device-capability-model)を検索する。
 - デバイス機能モデルを[パブリック モデル リポジトリ](#public-model-repository)に公開する。
 
@@ -44,7 +44,7 @@ Azure IoT Central は、[IoT プラグ アンド プレイ デバイス](#iot-pl
 
 ## <a name="azure-iot-certification-service"></a>Azure IoT 認定サービス
 
-Azure IoT 認定サービスにより、[Azure Certified for IoT ポータル](#iot-plug-and-play-device)を通じて認定を受けるために [IoT プラグ アンド プレイ デバイス](#azure-certified-for-iot-portal)を送信すると、一連の認定テストが実行されます。 [Certified for IoT デバイス カタログ](#certified-for-iot-device-catalog)にデバイスを追加するには、デバイスが認定されている必要があります。
+Azure IoT 認定サービスにより、[Azure Certified for IoT ポータル](#azure-certified-for-iot-portal)を通じて認定を受けるために [IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)を送信すると、一連の認定テストが実行されます。 [Certified for IoT デバイス カタログ](#certified-for-iot-device-catalog)にデバイスを追加するには、デバイスが認定されている必要があります。
 
 ## <a name="azure-iot-tools-extension"></a>Azure IoT Tools 拡張機能
 
@@ -77,7 +77,7 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 ## <a name="certified-for-iot-device-catalog"></a>Certified for IoT デバイス カタログ
 
-[Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)には、[デバイス認定](#iot-plug-and-play-device)テストに合格した [IoT プラグ アンド プレイ デバイス](#device-certification)が一覧表示されています。 カタログにある IoT プラグ アンド プレイ デバイスの[デバイス機能モデル](#device-capability-model)は、パブリック モデル リポジトリで公開されます。
+[Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)には、[デバイス認定](#device-certification)テストに合格した [IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)が一覧表示されています。 カタログにある IoT プラグ アンド プレイ デバイスの[デバイス機能モデル](#device-capability-model)は、パブリック モデル リポジトリで公開されます。
 
 ## <a name="commands"></a>コマンド
 
@@ -137,11 +137,11 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 ## <a name="digital-twin-definition-language"></a>デジタル ツイン定義言語
 
-[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)用のモデルとインターフェイスを記述する言語です。 [デジタル ツイン](https://aka.ms/DTDL)の機能を記述したり、IoT プラットフォームと IoT ソリューションでエンティティのセマンティクスを活用できるようにしたりするには、[デジタル ツイン定義言語](#digital-twin)を使用します。
+[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)用のモデルとインターフェイスを記述する言語です。 [デジタル ツイン](#digital-twin)の機能を記述したり、IoT プラットフォームと IoT ソリューションでエンティティのセマンティクスを活用できるようにしたりするには、[デジタル ツイン定義言語](https://aka.ms/DTDL)を使用します。
 
 ## <a name="digital-twin-route"></a>デジタル ツイン ルート
 
-[デジタル ツインの変更イベント](#azure-iot-hub)を Service Bus キューなどのエンドポイントに配信するために [IoT ハブ](#digital-twin-change-events)で設定されたルート。
+[デジタル ツインの変更イベント](#digital-twin-change-events)を Service Bus キューなどのエンドポイントに配信するために [IoT ハブ](#azure-iot-hub)で設定されたルート。
 
 ## <a name="interface"></a>インターフェイス
 
@@ -157,7 +157,7 @@ IoT プラグ アンド プレイ デバイスは、データの収集や他の�
 
 ## <a name="microsoft-partner-center"></a>Microsoft パートナー センター
 
-[Microsoft パートナー センター](https://docs.microsoft.com/partner-center/)とは、組織がその Microsoft とのエンドツーエンドの関係を管理する場所です。 [Azure Certified for IoT ポータル](#iot-plug-and-play-device)でお使いの [IoT プラグ アンド プレイ デバイス](#azure-certified-for-iot-portal)の認定を受けるには、Microsoft パートナー センターのアカウントが必要です。
+[Microsoft パートナー センター](https://docs.microsoft.com/partner-center/)とは、組織がその Microsoft とのエンドツーエンドの関係を管理する場所です。 [Azure Certified for IoT ポータル](#azure-certified-for-iot-portal)でお使いの [IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)の認定を受けるには、Microsoft パートナー センターのアカウントが必要です。
 
 ## <a name="model-discovery"></a>モデル検出
 
@@ -177,7 +177,7 @@ IoT プラグ アンド プレイ デバイスは、データの収集や他の�
 
 ## <a name="public-model-repository"></a>パブリック モデル リポジトリ
 
-[認定デバイス](#device-capability-model)の[デバイス機能モデル](#interface)と[インターフェイス](#device-certification)が格納されるパブリック モデル リポジトリは 1 つあります。 このパブリック モデル リポジトリには、[共通インターフェイス](#common-interface)の定義も格納されます。
+[認定デバイス](#device-certification)の[デバイス機能モデル](#device-capability-model)と[インターフェイス](#interface)が格納されるパブリック モデル リポジトリは 1 つあります。 このパブリック モデル リポジトリには、[共通インターフェイス](#common-interface)の定義も格納されます。
 
 ## <a name="registration-id"></a>登録 ID
 

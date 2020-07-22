@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
-ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 957931407987e116924677341df4effe5347590e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298787"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187644"
 ---
 # <a name="az-spring-cloud"></a>az spring-cloud
 
@@ -20,7 +20,7 @@ ms.locfileid: "80298787"
 >[!Note]
 > Azure Spring Cloud は、現在プレビューの段階です。  これらのコマンドは、今後のリリースで変更または削除される可能性があります。
 
-| az spring-cloud |  |
+| az spring-cloud | コマンド |
 |------|------:|
 | [az spring-cloud create](#az-spring-cloud-create) | Azure Spring Cloud のインスタンスを作成します。 |
 | [az spring-cloud delete](#az-spring-cloud-delete) | Azure Spring Cloud のインスタンスを削除します。 |
@@ -89,13 +89,13 @@ az spring-cloud create  --name -n
                         --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | この Azure Spring Cloud インスタンスの名前。 |
 | --resource-group -g | このアプリのリソース グループを指定します。  `az configure --defaults group=<name>` を使用して、既定のグループを構成します。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --location -l | このアプリのサーバーの場所を指定します。  有効な場所を探すには `az account list-locations` を使用します |
 | --no-wait | 実行時間の長い操作の完了を待機しません。
 
@@ -117,13 +117,13 @@ az spring cloud --name -n
                 --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | 削除する Azure Spring Cloud インスタンスの名前。 |
 | --resource-group -g | Azure Spring Cloud が属するリソース グループの名前。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | -no-wait | 実行時間の長い操作の完了を待機しません。 |
 
 ### <a name="example"></a>例
@@ -142,8 +142,8 @@ az spring-cloud delete -n MyService -g MyResourceGroup
 az spring-cloud list --resource-group -g
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --resource-group -g | リソース グループの名前。 |
 
 ## <a name="az-spring-cloud-show"></a>az spring-cloud show
@@ -155,8 +155,8 @@ az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | Azure Spring Cloud インスタンスの名前。 |
 | --resource-group -g | Azure Spring Cloud インスタンスが属するリソース グループの名前。
 
@@ -175,14 +175,14 @@ az spring-cloud app create --name -n
                             --memory
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --cpu | インスタンスあたりの仮想コアの数。  既定値は1. |
 | --enable-persistent-storage | ブール値。  true の場合、既定のパスに 50 GB のディスクをマウントします。 |
 | --instance-count | インスタンスの数。  既定値は1. |
@@ -213,8 +213,8 @@ az spring cloud app delete  --name -n
                             --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
@@ -240,14 +240,14 @@ az spring cloud app deploy  --name -n
                             --version
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --cpu | インスタンスあたりの仮想 CPI コアの数。 |
 | --deployment -d | 既存のアプリのデプロイの名前。  指定しないと、既定で運用環境のデプロイになります。 |
 | --env | スペースで区切られた "key[=value]" 形式の環境変数。 |
@@ -289,8 +289,8 @@ az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
-|必須のパラメーター | |
-| --- | ---: |
+|必須のパラメーター | 説明 |
+| --- | :--- |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
@@ -306,14 +306,14 @@ az spring-cloud app restart --name -n
                             --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --deployment -d | アプリの既存のデプロイの名前。  指定しないと、既定で運用環境のデプロイになります。 |
 | --no-wait | 実行時間の長い操作の完了を待機しません。 |
 
@@ -332,14 +332,14 @@ az spring-cloud app scale --name -n
                           --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --cpu | アプリ インスタンスあたりの仮想 CPU コアの数。 |
 | --deployment -d | アプリの既存のデプロイの名前。  指定しないと、既定で運用環境のデプロイになります。 |
 | --instance-count | このアプリのインスタンスの数。 |
@@ -372,15 +372,15 @@ az spring-cloud app set-deployment --deployment -d
                                    --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --deployment -d | アプリの既存のデプロイの名前。 |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --no-wait | 実行時間の長い操作の完了を待機しません。 |
 
 ### <a name="examples"></a>例
@@ -401,8 +401,8 @@ az spring-cloud app show --name -n
                          --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
@@ -418,14 +418,14 @@ az spring-cloud app show-deploy-log --name -n
                                     --deployment -d
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --deployment -d | アプリの既存のデプロイの名前。  既定値は運用環境です。 |
 
 ## <a name="az-spring-cloud-app-start"></a>az spring-cloud app start
@@ -440,14 +440,14 @@ az spring-cloud app start --name -n
                           --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --deployment -d | アプリの既存のデプロイの名前。  既定値は運用環境です。 |
 | --no-wait | 実行時間の長い操作の完了を待機しません。 |
 
@@ -463,14 +463,14 @@ az spring-cloud app stop --name -n
                          --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --deployment -d | アプリの既存のデプロイの名前。  既定値は運用環境です。 |
 | --no-wait | 実行時間の長い操作の完了を待機しません。 |
 
@@ -491,14 +491,14 @@ az spring-cloud app update --name -n
                            --runtime-version
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name -n | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --deployment -d | アプリの既存のデプロイの名前。  既定値は運用環境です。 |
 | --enable-persistent-storage | Boolean です。  true の場合、既定のパスに 50 GB のディスクをマウントします。 |
 | --env | スペースで区切られた "key[=value]" 形式の環境変数。 |
@@ -525,8 +525,8 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
@@ -542,8 +542,8 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | 削除するサービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
@@ -560,8 +560,8 @@ az spring-cloud app binding show --app
                                  --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
@@ -590,16 +590,16 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --api-type | 次のいずれかの値を使用して、API の種類を指定します: cassandra、gremlin、mongo、sql、table。 |
 | --app | アプリの名前。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-|省略可能なパラメーター | |
-| --- | ---: |
+|省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --collection-name | コレクションの名前。  Gremlin を使用するときに必要です。 |
 | --database-name | データベースの名前です。  Mongo、SQL、Gremlin を使用するときに必要です。 |
 | --key-space | Cassandra のキー スペース。  Cassandra を使用するときに必要です。 |
@@ -616,15 +616,15 @@ az spring-cloud app binding cosmos update --app
                                           --key-space
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-|省略可能なパラメーター | |
-| --- | ---: |
+|省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --collection-name | コレクションの名前。  Gremlin を使用するときに必要です。 |
 | --database-name | データベースの名前です。  Mongo、SQL、Gremlin を使用するときに必要です。 |
 | --key-space | Cassandra のキー スペース。  Cassandra を使用するときに必要です。 |
@@ -641,8 +641,8 @@ az spring-cloud app binding mysql add --app
                                       --username
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --database-name | データベースの名前です。 |
 | --key | サービスの API キー。 |
@@ -666,15 +666,15 @@ az spring-cloud app binding mysql update --add
                                          --username
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --database-name | データベースの名前です。 |
 | --key | サービスの API キー。 |
 | --username | データベース アクセスのユーザー名。 |
@@ -692,31 +692,31 @@ az spring-cloud app binding redis add --app
                                       --disable-ssl
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --resource-id | バインドするサービスの Azure リソース ID。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --disable-ssl | TLS を無効にする。 |
 
 ## <a name="az-spring-cloud-app-binding-redis-update"></a>az spring-cloud app binding redis update
 
 Azure Cache for Redis に対するサービス バインドを更新します。
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --disable-ssl | TLS を無効にする。 |
 
 ## <a name="az-spring-cloud-app-deployment-create"></a>az spring-cloud app deployment create
@@ -725,15 +725,15 @@ Azure Cache for Redis に対するサービス バインドを更新します。
 
 コードをデプロイしたり、既存のデプロイの設定を更新したりするには、`az spring-cloud app deploy --deployment <staging-deployment>` または "az spring-cloud app update --deployment <staging deployment>" を使用します。
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --cpu | インスタンスあたりの仮想 CPU コアの数。  既定値は1 |
 | --env | スペースで区切られた "key[=value]" 形式の環境変数。 |
 | --instance-count | インスタンスの数。 既定値は1. |
@@ -771,8 +771,8 @@ az spring-cloud app deployment delete --app
                                       --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | デプロイの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
@@ -788,8 +788,8 @@ az spring-cloud app deployment list --app
                                     --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --service -s | Azure Spring Cloud の名前。  `az configure --defaults spring-cloud=<name>` を使用すると、既定のサービスを構成できます。 |
@@ -805,8 +805,8 @@ az spring-cloud app deployment show --app
                                     --service -s
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --name | デプロイの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
@@ -821,8 +821,8 @@ az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
@@ -837,14 +837,14 @@ az spring-cloud config-server set --config-file
                                   --no-wait
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --config-file | 構成サーバーの構成に対する YAML マニフェストへのファイル パス。 |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --no-wait | 実行時間の長い操作の完了を待機しません。
 
 ## <a name="az-spring-cloud-config-server-show"></a>az spring-cloud config-server show
@@ -856,8 +856,8 @@ az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
@@ -880,14 +880,14 @@ az spring-cloud config-server git set --name -n
                                       --username
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --uri | 追加される構成の URI。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --defer | オブジェクトを Azure に送信するのではなく、ローカル キャッシュに一時的に格納します。  表示/クリアするには `az cache` を使用します。 |
 | --host-key | 追加される構成のホスト キー。 |
 | --host-key-algorithm | 追加される構成のホスト キー アルゴリズム。 |
@@ -917,15 +917,15 @@ az spring-cloud config-server git repo add --name -n
                                            --username
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --repo-name | リポジトリの URI。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --uri | 追加される構成の URI。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --defer | オブジェクトを Azure に送信するのではなく、ローカル キャッシュに一時的に格納します。  表示/クリアするには `az cache` を使用します。 |
 | --host-key | 追加される構成のホスト キー。 |
 | --host-key-algorithm | 追加される構成のホスト キー アルゴリズム。 |
@@ -947,13 +947,13 @@ az spring-cloud config-server git repo list --name -n
                                        --defer
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --defer | オブジェクトを Azure に送信するのではなく、ローカル キャッシュに一時的に格納します。  表示/クリアするには `az cache` を使用します。 |
 
 ## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az spring-cloud config-server git repo remove
@@ -967,14 +967,14 @@ az spring-cloud config-server git repo remove --name -n
                                          --defer
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --repo-name | リポジトリの URI。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --defer | オブジェクトを Azure に送信するのではなく、ローカル キャッシュに一時的に格納します。  表示/クリアするには `az cache` を使用します。 |
 
 ## <a name="az-spring-cloud-test-endpoint-disable"></a>az spring-cloud test-endpoint disable
@@ -986,8 +986,8 @@ az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
@@ -1000,8 +1000,8 @@ az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
@@ -1016,13 +1016,13 @@ az spring-cloud test-endpoint list --name -n
                                    --deployment -d
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 
-| 省略可能なパラメーター | |
-| --- | ---: |
+| 省略可能なパラメーター | 説明 |
+| --- | :--- |
 | --app | アプリの名前。 |
 | --deployment -d | アプリの既存のデプロイの名前。  指定しない場合、既定値は運用環境です。 |
 
@@ -1036,8 +1036,8 @@ az spring-cloud test-endpoint renew-key --name -n
                                         --type
 ```
 
-| 必須のパラメーター | |
-| --- | ---: |
+| 必須のパラメーター | 説明 |
+| --- | :--- |
 | --name | Azure Spring Cloud の名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | --type | テスト エンドポイント キーの種類。  使用できる値は以下の通りです。Primary、Secondary。 |

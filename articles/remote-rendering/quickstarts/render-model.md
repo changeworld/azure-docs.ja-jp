@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677687"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565520"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>クイック スタート:Unity によるモデルのレンダリング
 
 このクイックスタートでは、Azure Remote Rendering (ARR) サービスを使用して、組み込みモデルをリモートでレンダリングする Unity サンプルを実行する方法について説明します。
 
-ARR API 自体、または新しい Unity プロジェクトの設定方法については詳しく説明しません。 これらのトピックについては、次のページで説明しています: 「[チュートリアル: Unity プロジェクトをゼロから設定する](../tutorials/unity/project-setup.md)」。
+ARR API 自体、または新しい Unity プロジェクトの設定方法については詳しく説明しません。 これらのトピックについては、次のページで説明しています: 「[チュートリアル: リモートでレンダリングされたモデルの表示](../tutorials/unity/view-remote-models/view-remote-models.md)」。
 
 このクイックスタートでは、次の方法について説明します。
 > [!div class="checklist"]
@@ -33,13 +33,16 @@ Azure Remote Rendering サービスにアクセスするには、まず[アカ�
 
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* Git [(ダウンロード)](https://git-scm.com/downloads)
+* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 特に、次の*ワークロード*のインストールは必須です。
+  * **C++ によるデスクトップ開発**
+  * **ユニバーサル Windows プラットフォーム (UWP) の開発**
+* Git ([ダウンロード](https://git-scm.com/downloads))
 * Unity 2019.3.1 [(ダウンロード)](https://unity3d.com/get-unity/download)
   * 次のモジュールを Unity にインストールします。
     * **UWP** - ユニバーサル Windows プラットフォーム Build Support
     * **IL2CPP** - Windows Build Support (IL2CPP)
 
-## <a name="clone-the-sample-app"></a>サンプル アプリのクローン
+## <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
 コマンド プロンプトを開き (Windows の [スタート] メニューで「`cmd`」と入力します)、ARR サンプル プロジェクトを格納するディレクトリに移動します。
 
@@ -66,7 +69,7 @@ Unity Hub を開き、*ARR\azure-remote-rendering\Unity\Quickstart* フォルダ
 
 1. Unity アセット ブラウザーで、 *[Scenes]\(シーン\)* フォルダーに移動し、 **[Quickstart]\(クイックスタート\)** シーンを開きます。
 1. *[Hierarchy]\(階層\)* で、**RemoteRendering** ゲーム オブジェクトを選択します。
-1. *[Inspector]\(インスペクター\)* に、自分の[アカウント資格情報](../how-tos/create-an-account.md)を入力します。
+1. *[Inspector]\(インスペクター\)* に、自分の[アカウント資格情報](../how-tos/create-an-account.md)を入力します。 アカウントをお持ちでない場合は、[1 つ作成します](../how-tos/create-an-account.md)。
 
 ![ARR アカウント情報](./media/arr-sample-account-info.png)
 

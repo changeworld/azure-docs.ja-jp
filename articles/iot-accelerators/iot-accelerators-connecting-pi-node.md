@@ -10,10 +10,10 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683944"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)
@@ -46,7 +46,7 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
 まだインストールしていない場合は、Raspberry Pi に Node.js 4.0.0 以上をインストールします。 次の手順では、Node.js v6 を Raspberry Pi にインストールする方法を示します。
 
-1. `ssh` を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)の [SSH (Secure Shell)](https://www.raspberrypi.org/) のセクションを参照してください。
+1. `ssh` を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/)の [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) のセクションを参照してください。
 
 1. 次のコマンドを使用して Raspberry Pi を更新します。
 

@@ -1,23 +1,20 @@
 ---
 title: Azure での Update Management のデプロイで事前スクリプトと事後スクリプトを管理する
-description: この記事では、更新プログラムの展開のための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
+description: この記事では、更新プログラムのデプロイのための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 246fcdb27737e99bb677e23216f0305037f54526
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855326"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187457"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
 事前スクリプトと事後スクリプトは、更新プログラムのデプロイの前 (事前タスク) と後 (事後タスク) に Azure Automation アカウントで実行する Runbook です。 事前スクリプトと事後スクリプトは、ローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 事後スクリプトは、展開の最後に、構成されているすべての再起動の後で実行されます。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="pre-script-and-post-script-requirements"></a>事前スクリプトと事後スクリプトの要件
 
@@ -94,7 +91,10 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext` オブジェクトには、マシン用の重複するエントリを含めることができます。 これにより、同じマシンで事前スクリプトと事後スクリプトが複数回実行される可能性があります。 この動作を回避するには、`Sort-Object -Unique` を使用して一意の VM 名だけを選択します。
 
-## <a name="using-a-pre-script-or-post-script-in-a-deployment"></a>デプロイでの事前スクリプトまたは事後スクリプトの使用
+> [!NOTE]
+> 現時点では、PowerShell Runbook のみが事前および事後スクリプトとしてサポートされています。 Python、グラフィカル、PowerShell ワークフロー、グラフィカル PowerShell ワークフローなどの他の種類の Runbook は、現在、事前スクリプトまたは事後スクリプトとしてサポートされていません。
+
+## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>デプロイで事前スクリプトまたは事後スクリプトを使用する
 
 更新プログラムの展開において事前スクリプトまたは事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[事前スクリプトと事後スクリプト]** を選択します。 この操作で、 **[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。
 
@@ -118,9 +118,8 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 
 ![展開の実行の結果](./media/pre-post-scripts/deployment-run.png)
 
-スクリプト内。
 
-## <a name="stopping-a-deployment"></a>デプロイの停止
+## <a name="stop-a-deployment"></a>デプロイを停止する
 
 事前スクリプトに基づくデプロイを停止する場合は、例外を[スロー](automation-runbook-execution.md#throw)する必要があります。 そうしないと、デプロイと事後スクリプトが引き続き実行されます。 次のコード スニペットは、例外をスローする方法を示しています。
 
@@ -137,9 +136,7 @@ foreach($summary in $finalStatus)
 }
 ```
 
-
-
-## <a name="interacting-with-machines"></a>マシンの操作
+## <a name="interact-with-machines"></a>マシンを操作する
 
 事前スクリプトと事後タスクは、デプロイ内のマシンで直接実行されるのではなく、Automation アカウント内で Runbook として実行されます。 事前タスクと事後タスクは Azure コンテキストでも実行され、Azure 以外のマシンにはアクセスできません。 以降のセクションでは、Azure VM であるか Azure 以外のマシンであるかにかかわらず、それらのマシンと直接対話できる方法について説明します。
 
@@ -150,7 +147,7 @@ foreach($summary in $finalStatus)
 * 実行アカウント
 * 実行する Runbook
 
-Azure マシンを操作するには、[Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - Run Script with Run Command (更新管理 - スクリプトを実行コマンドで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)」にある Runbook の例を参照してください。
+Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - Run Script with Run Command (更新管理 - スクリプトを実行コマンドで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)」にある Runbook の例を参照してください。
 
 ### <a name="interact-with-non-azure-machines"></a>Azure 以外のマシンの操作
 
@@ -161,9 +158,9 @@ Azure マシンを操作するには、[Invoke-AzVMRunCommand](https://docs.micr
 * ローカルで実行する Runbook
 * 親 Runbook
 
-Azure 以外のマシンと対話するためには、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) コマンドレットを使用して子 Runbook を呼び出します。 `RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。 Runbook の例「[Update Management - スクリプトをローカルで実行する](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)」を参照してください。
+Azure 以外のマシンと対話するためには、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) コマンドレットを使用して子 Runbook を呼び出します。 `RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。 Runbook の例「[Update Management - スクリプトをローカルで実行する](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)」を参照してください。
 
-## <a name="aborting-patch-deployment"></a>修正プログラムのデプロイの中止
+## <a name="abort-patch-deployment"></a>修正プログラムのデプロイを中止する
 
 事前スクリプトからエラーが返されたときに、展開を中止したい場合があります。 それを行うには、スクリプト内で障害を起こしているロジックのエラーを[スロー](/powershell/module/microsoft.powershell.core/about/about_throw)する必要があります。
 
@@ -246,11 +243,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-使用している Windows 仮想マシンの更新プログラムの管理方法を学習するには、以下のチュートリアルに進みます。
-
-> [!div class="nextstepaction"]
-> [Azure Windows VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)
+* Update Management の詳細については、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」を参照してください。

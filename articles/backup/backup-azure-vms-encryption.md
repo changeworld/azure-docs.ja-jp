@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: ea4d2830fb9db9f95ba8ab87626a79d94aaecb8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0800a15b215b37ceb75abc0d6480331d642dc746
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124505"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -132,7 +132,9 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 
 ## <a name="restore-an-encrypted-vm"></a>暗号化された VM を復元する
 
-次のように暗号化された VM を復元します。
+暗号化された VM は、下の説明のとおり、VM ディスクを復元することでのみ復元できます。 **既存の置換**と **VM の復元**はサポートされていません。
+
+暗号化された VM を次のように復元します。
 
 1. [VM ディスクを復元します](backup-azure-arm-restore-vms.md#restore-disks)。
 2. 以下のいずれかを行って、仮想マシン インスタンスを再作成します。

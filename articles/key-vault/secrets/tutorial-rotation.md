@@ -1,6 +1,6 @@
 ---
-title: シングル ユーザーまたはシングル パスワードのローテーションのチュートリアル
-description: このチュートリアルを使用して、シングル ユーザーまたはシングル パスワードの認証を使用するリソースで、シークレットのローテーションを自動化する方法について学習します。
+title: 1 セットの認証資格情報を使用したリソースのローテーションのチュートリアル
+description: このチュートリアルでは、1 セットの認証資格情報を使用するリソースを対象に、シークレットのローテーションを自動化する方法について学習します。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183213"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801446"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>シングル ユーザーまたはシングル パスワードの認証を使用するリソースのシークレットのローテーションを自動化する
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
 Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/managed-identity.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはシークレットが使用されます。 アクセス キーやシークレットは定期的にローテーションする必要があります。
 
-このチュートリアルでは、シングル ユーザーまたはシングル パスワードの認証を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、このチュートリアルでは Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault に格納されている SQL Server のパスワードをローテーションします。
+このチュートリアルでは、1 セットの認証資格情報を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、このチュートリアルでは Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault に格納されている SQL Server のパスワードをローテーションします。
 
 ![ローテーション ソリューションの図](../media/rotate1.png)
 

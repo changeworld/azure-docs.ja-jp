@@ -3,16 +3,16 @@ title: Azure Government で Azure Migrate アプライアンスを設定する
 description: Azure Government で Azure Migrate アプライアンスを設定する方法について説明します
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: fd97161ffa075a6165ea963ef80bfabf8904576e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725744"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109979"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 
-VMware VM、Hyper-V VM、物理サーバー用の [Azure Migrate アプライアンス](deploy-appliance.md)を Azure Government クラウドにデプロイするには、この記事に従ってください。 スクリプトを実行してアプライアンスを作成し、アプライアンスから Azure に接続可能であることを確認します。 パブリック クラウドでアプライアンスを設定する場合は、[こちらの記事](deploy-appliance-script.md)に従ってください。
+VMware VM、Hyper-V VM、物理サーバー用の [Azure Migrate アプライアンス](./migrate-appliance-architecture.md)を Azure Government クラウドにデプロイするには、この記事に従ってください。 スクリプトを実行してアプライアンスを作成し、アプライアンスから Azure に接続可能であることを確認します。 パブリック クラウドでアプライアンスを設定する場合は、[こちらの記事](deploy-appliance-script.md)に従ってください。
 
 
 > [!NOTE]
@@ -45,14 +45,14 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
-3. 生成されたハッシュ値を確認します。 最新のアプライアンス バージョンの場合: 
+3. 最新のアプライアンス バージョンとハッシュ値を確認します。
 
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
+    **アルゴリズム** | **ダウンロード** | **SHA256**
+    --- | --- | ---
+    VMware (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
@@ -97,13 +97,14 @@ Hyper-V のアプライアンスを設定するには、Azure portal から ZIP 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
-3. 生成されたハッシュ値を確認します。 最新のアプライアンス バージョンの場合: 
+3. 最新のアプライアンス バージョンとハッシュ値を確認します。
 
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | 717f8b9185f565006b5aff0215ecadac
+    **シナリオ** | **ダウンロード** | **SHA256**
+    --- | --- | ---
+    Hyper-V (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
           
 
 ### <a name="run-the-script"></a>スクリプトを実行する
@@ -149,13 +150,13 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
-3. 生成されたハッシュ値を確認します。 最新のアプライアンス バージョンの場合: 
+3. 最新のアプライアンス バージョンとハッシュ値を確認します。
 
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | f81c155fc4a1409901caea948713913f
+    **シナリオ** | **ダウンロード*** | **ハッシュ値**
+    --- | --- | ---
+    物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
           
 
 ### <a name="run-the-script"></a>スクリプトを実行する

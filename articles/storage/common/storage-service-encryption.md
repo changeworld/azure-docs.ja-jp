@@ -4,17 +4,17 @@ description: Azure Storage では、クラウドに永続化される前にデ�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 04/10/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 8b4236e40e8dfbe6ce67bca007be0b6737a6e0c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945581"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -51,6 +51,8 @@ Azure Storage 暗号化の基になっている暗号化モジュールについ
 
 <sup>1</sup> Queue storage でのカスタマー マネージド キーの使用をサポートするアカウントの作成については、[キューのカスタマー マネージド キーをサポートするアカウントの作成](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)に関するページを参照してください。<br />
 <sup>2</sup> Table Storage でのカスタマー マネージド キーの使用をサポートするアカウントの作成については、[テーブルのカスタマー マネージド キーをサポートするアカウントの作成](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)に関するページを参照してください。
+
+Azure マネージド ディスクの暗号化とキー管理に関する詳細については、「Azure Managed Disks のサーバー側暗号化」のページを参照してください。Windows VM の場合は[こちら](../../virtual-machines/windows/disk-encryption.md)を、Linux VM の場合は[こちら](../../virtual-machines/linux/disk-encryption.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

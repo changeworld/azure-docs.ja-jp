@@ -54,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、*Get-AzVirtualNetwork* を使用して、*myVnet* という名前の既存の仮想ネットワークを [$vnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 変数に割り当てます。
+ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、[Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) を使用して、*myVnet* という名前の既存の仮想ネットワークを *$vnet* 変数に割り当てます。
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `

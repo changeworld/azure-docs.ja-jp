@@ -8,17 +8,17 @@ author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38db681655a839983ebf38e94ec28eb05ed65d1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456830"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808571"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer の TCP アイドル タイムアウト設定を構成する
 
@@ -42,6 +42,10 @@ TCP keep-alive は、バッテリーの寿命に制約がないシナリオに�
 ![TCP タイムアウト](./media/load-balancer-tcp-idle-timeout/image1.png)
 
 次のセクションでは、パブリック IP とロード バランサー リソースのアイドル タイムアウト設定を変更する方法について説明します。
+
+>[!NOTE]
+> TCP アイドル タイムアウトは、UDP プロトコルの負荷分散規則には影響しません。
+
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>インスタンスレベル パブリック IP の TCP タイムアウトを 15 分で構成します。
 

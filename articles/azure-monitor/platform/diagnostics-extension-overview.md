@@ -6,18 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672380"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635948"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics 拡張機能の概要
 Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピューティング リソースのゲスト オペレーティング システムから監視データを収集する、[Azure Monitor のエージェント](agents-overview.md)です。 この記事では、Azure Diagnostics 拡張機能の概要と、サポートされている特定の機能、およびインストールと構成のオプションについて説明します。 
 
 > [!NOTE]
 > Azure Diagnostics 拡張機能は、コンピューティング リソースのゲスト オペレーティング システムから監視データを収集するために使用できるエージェントの 1 つです。 さまざまなエージェントの説明と、要件に適したエージェントを選択するためのガイダンスについては、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
+
+## <a name="primary-scenarios"></a>主なシナリオ
+Diagnostics 拡張機能によって解決される主なシナリオは次のとおりです。
+
+- Azure Monitor メトリックへのゲストのメトリックを収集する。
+- ゲストのログおよびメトリックをアーカイブ用に Azure Storage に送信する。
+- ゲストのログおよびメトリックを Azure の外部に送信するために Azure Event Hubs に送信する。
+
 
 ## <a name="comparison-to-log-analytics-agent"></a>Log Analytics エージェントとの比較
 Azure Monitor の Log Analytics エージェントは、仮想マシンのゲスト オペレーティング システムから監視データを収集することにも使用できます。 ご自分の要件に応じて、いずれかまたは両方を選択できます。 Azure Monitor エージェントの詳細な比較については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。 

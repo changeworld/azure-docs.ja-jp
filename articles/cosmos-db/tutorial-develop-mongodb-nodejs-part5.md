@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: fb0e08c9d85f4472a2fa13001e71edd12149d430
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1bed17084af39fa75fe01d68fbdd33c586d48e67
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858740"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114284"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
 
@@ -234,7 +234,7 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 1. ここでブラウザーに切り替えます。 **開発者ツール**を開き、 **[ネットワーク]** タブを開きます。`http://localhost:3000` に移動すると、このアプリケーションが表示されます。
 
-    ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Azure portal の新しい Azure Cosmos DB アカウント":::
 
 アプリにはヒーローがまだ格納されていません。 このチュートリアルの次のパートでは、プット、プッシュ、削除の機能を追加します。 そうすれば、Azure Cosmos データベースへの Mongoose 接続を使用して、UI からヒーローを追加、更新、削除することができます。 
 

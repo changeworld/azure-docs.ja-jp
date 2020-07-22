@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: dfdfcda0ce466299d57f79ba1e60a96309078587
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778466"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014351"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
@@ -36,7 +36,7 @@ ms.locfileid: "82778466"
 - [Office 365 (プレビュー)](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
-- [Azure SQL Database と Data Warehouse](../../sql-database/sql-database-conditional-access.md)
+- [Azure SQL Database と Data Warehouse](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Microsoft Application Insights Analytics
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
@@ -117,6 +117,10 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 - [ギャラリーから追加されたアプリケーション](../manage-apps/add-application-portal.md)
 - [ギャラリーにないカスタム アプリケーション](../manage-apps/add-non-gallery-app.md)
 - [アプリ配信コントローラーとネットワーク経由で公開されるレガシ アプリケーション](../manage-apps/secure-hybrid-access.md)
+
+> [!NOTE]
+> 条件付きアクセス ポリシーでは、サービスにアクセスするための要件が設定されるため、クライアント (パブリック/ネイティブ) アプリケーションにそれを適用することはできません。 つまり、ポリシーはクライアント (パブリック/ネイティブ) アプリケーションに直接設定されるのではなく、クライアントがサービスを呼び出すときに適用されます。 たとえば、SharePoint サービスで設定したポリシーは、SharePoint を呼び出すクライアントに適用されます。 Exchange で設定されたポリシーは、Outlook クライアントを使用して電子メールにアクセスしようとしたときに適用されます。 このため、クラウド アプリの選択で、クライアント (パブリック/ネイティブ) アプリケーションを選択できず、テナントに登録されているクライアント (パブリック/ネイティブ) アプリケーションのアプリケーション設定で、[条件付きアクセス] オプションを選択できません。 
+
 
 ## <a name="user-actions"></a>ユーザー操作
 

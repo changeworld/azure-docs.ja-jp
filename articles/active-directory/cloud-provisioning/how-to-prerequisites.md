@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332082"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373864"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -26,8 +26,8 @@ ms.locfileid: "80332082"
 ## <a name="cloud-provisioning-agent-requirements"></a>クラウド プロビジョニング エージェントの要件
 Azure AD Connect クラウド プロビジョニングを使用するには、次のものが必要です。
     
-- ゲスト ユーザーではない、Azure AD テナントの全体管理者アカウント。
-- Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー
+- ゲスト ユーザーではない、Azure AD テナントのハイブリッド ID 管理者アカウント。
+- Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー  このサーバーは、[Active Directory 管理層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
 - オンプレミスのファイアウォールの構成
 
 >[!NOTE]
@@ -37,7 +37,7 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センター
 
-1. Azure AD テナントで、クラウド専用のグローバル管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなった場合にテナントの構成を管理できます。 クラウド専用のグローバル管理者アカウントを追加する方法については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 テナントからロックアウトされないようにするには、この手順を実行する必要があります。
+1. Azure AD テナントで、クラウド専用のハイブリッド ID 管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなった場合にテナントの構成を管理できます。 [クラウド専用のハイブリッド ID 管理者アカウントを追加する](../active-directory-users-create-azure-portal.md)方法について確認してください。 テナントからロックアウトされないようにするには、この手順を実行する必要があります。
 1. 1 つ以上の[カスタム ドメイン名](../active-directory-domains-add-azure-portal.md)を Azure AD テナントに追加します。 ユーザーは、このドメイン名のいずれかを使用してサインインできます。
 
 ### <a name="in-your-directory-in-active-directory"></a>Active Directory のディレクトリ内
@@ -47,6 +47,8 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
 1. 4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを搭載した、Windows Server 2012 R2 以降が実行されているドメイン参加済みホスト サーバーを特定します。
+
+1. ローカル サーバーの PowerShell 実行ポリシーを、Undefined または RemoteSigned に設定する必要があります。
 
 1. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
    - エージェントが次のポートを介して Azure AD に "*送信*" 要求を発行できるようにします。
@@ -62,14 +64,9 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
    - エージェントは、初期登録のために login.windows.net と login.microsoftonline.com にアクセスする必要があります。 これらの URL にもファイアウォールを開きます。
    - 証明書の検証のために、URL mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80、www\.microsoft.com:80 のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 
-### <a name="verify-the-port"></a>ポートを確認する
-Azure によってポート 443 がリッスンされていて、エージェントとこのポートとの通信が可能であることを確認するには、次の URL を使用します。
+>[!NOTE]
+> Windows Server Core へのクラウド プロビジョニング エージェントのインストールはサポートされていません。
 
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
-
-このテストでは、ポート 443 を介してエージェントと Azure との通信が可能であることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから前の URL に移動します。
-
-![ポートの到達可能性の確認](media/how-to-install/verify2.png)
 
 ### <a name="additional-requirements"></a>その他の要件
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 

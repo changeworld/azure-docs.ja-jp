@@ -1,18 +1,16 @@
 ---
 title: SaaS Fulfillment API に関する FAQ - Microsoft コマーシャル マーケットプレース
 description: Azure ユーザーが SaaS オファーにサブスクライブできるようにするための Microsoft コマーシャル マーケットプレースの統合要件をいくつか説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 97359083698e92f39ca854972c864ef769bda730
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792906"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109248"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS Fulfillment API についてよく寄せられる質問
 
@@ -46,7 +44,7 @@ Azure ユーザーがランディング ページにリダイレクトされる�
 
 ![ユーザーのサブスクリプション フロー](media/saas-metering-service-integration-flow-a.png)
 
-SaaS オファーのライフサイクルでトランザクション シナリオを処理するための API コントラクトの詳細については、[SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) に関するページを参照してください。
+SaaS オファーのライフサイクルでトランザクション シナリオを処理するための API コントラクトの詳細については、[SaaS Fulfillment API](pc-saas-fulfillment-api-v2.md) に関するページを参照してください。
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>ユーザーが Azure でサブスクライブする SaaS オファーはどのように確認しますか?
 

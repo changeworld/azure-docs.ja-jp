@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201348"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509374"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
 
@@ -88,13 +88,12 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
     ![image](common/edit-attribute.png)
 
-1. その他に、Sage Intacct アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
+1. その他に、Sage Intacct アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[User Attributes & Claims]\(ユーザーの属性と要求\)** ダイアログで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 名前  |  ソース属性|
+    | 属性名  |  ソース属性|
     | ---------------| --------------- |
     | 会社名 | **Sage Intacct の会社 ID** |
     | name | 値は、Sage Intacct の **[User ID]\(ユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | 値は、Sage Intacct の **[Federated SSO User ID]\(フェデレーション SSO のユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -104,7 +103,7 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
     d. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力または選択します。
 
     f. **[OK]** をクリックします。
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.date: 05/15/2020
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807708"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -96,6 +96,11 @@ Azure Monitor によって収集されたすべてのログ データは、Log A
 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>VM から Log Analytics を開くときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 VM ログを表示するには、VM ログを格納するワークスペースに対する読み取りアクセス許可が付与される必要があります。 このような場合、管理者が Azure でのアクセス許可を付与する必要があります。
+
+## <a name="metrics"></a>メトリック
+
+### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Azure 仮想マシンのゲスト OS のメトリックがメトリックス エクスプローラーに表示されないのはなぜですか?
+[プラットフォーム メトリック](insights/monitor-azure-resource.md#monitoring-data)は、Azure リソースについて自動的に収集されます。 ただし、仮想マシンのゲスト OS からメトリックを収集するには、いくつかの構成を実行する必要があります。 Windows VM の場合は、「[Install and configure Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](platform/diagnostics-extension-windows-install.md)」の説明に従って、診断拡張機能をインストールし、Azure Monitor シンクを構成します。 Linux の場合は、「[Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](platform/collect-custom-metrics-linux-telegraf.md)」の説明に従って、Telegraf エージェントをインストールします。
 
 ## <a name="alerts"></a>警告
 
@@ -202,6 +207,10 @@ WireData
 * [ASP.NET サーバーのセットアップ](app/monitor-performance-live-website-now.md)
 * [Java サーバーのセットアップ](app/java-agent.md)
 
+*Application Insights をいくつデプロイすればよいでしょうか?*
+
+* [Application Insights のデプロイを設計する方法:1 つまたは多数の Application Insights リソース](app/separate-resources.md)
+
 ### <a name="can-i-use-application-insights-with-"></a>Application Insights と共に使用できるもの
 
 * [Azure VM または Azure 仮想マシン スケール セットの IIS サーバー上の Web アプリ](app/azure-vm-vmss-apps.md)
@@ -255,6 +264,10 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、 **[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
 
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Azure Resource Manager のデプロイで `providers('Microsoft.Insights', 'components').apiVersions[0]` を使用できますか?
+
+API バージョンの設定に、この方法を使用することは推奨されません。 最新バージョンは、破壊的変更を含んでいる可能性があるプレビュー リリースを表す場合があります。 新しいプレビュー以外のリリースでも、API バージョンが必ずしも既存のテンプレートと下位互換性を持っているとは限りません。場合によっては、API バージョンがすべてのサブスクリプションで使用できない可能性もあります。
+
 ### <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
 
 IIS Web サーバーで Web アプリ内の Application Insights を構成するために使用できるデスクトップ アプリです。 テレメトリは収集されないので、アプリの構成中以外は停止しておくことができます。 
@@ -305,7 +318,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 * Application Insights で IP アドレスと geo ロケーション データが収集される方法の詳細については、こちらの[記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)を参照してください。
 
 
-別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細については、こちらを参照してください](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
+別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細については、こちらを参照してください](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
 
 [Power BI を使用する](app/export-power-bi.md )と、要求テレメトリを地図上に表示できます。
 
@@ -354,7 +367,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 ### <a name="what-are-the-user-and-session-counts"></a>ユーザー数とセッション数とは何ですか?
 
 * JavaScript SDK では、Web クライアントにユーザー Cookie を設定することで戻ってきたユーザーを識別し、セッション Cookie を設定することでグループ アクティビティを識別します。
-* クライアント側のスクリプトがない場合は、[サーバーで Cookie を設定](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)できます。
+* クライアント側のスクリプトがない場合は、[サーバーで Cookie を設定](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/)できます。
 * 1 人の実在するユーザーが、複数の異なるブラウザーや、プライベート/シークレット ブラウズ、または複数のコンピューターでサイトを利用した場合、それらは複数のユーザーとしてカウントされます。
 * 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
 
@@ -412,7 +425,7 @@ Azure アラートはメトリックにのみ設定できます。 イベント�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>テレメトリを Application Insights ポータルに送信できますか?
 
-Microsoft の SDK と [SDK API](app/api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](app/platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
+Microsoft の SDK と [SDK API](app/api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](app/platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>イントラネット Web サーバーを監視できますか?
 
@@ -500,6 +513,10 @@ Application Insights のほとんどのデータは、待ち時間が 5 分未�
 ## <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
 
 この Microsoft FAQ では、コンテナーの Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+
+### <a name="health-feature-is-in-private-preview"></a>正常性機能 (プライベート プレビュー)
+
+機能を追加するための一連の変更を行い、お客様からのフィードバックに対処する予定です。 正常性機能は、2020 年 6 月末にプライベート プレビューに移行します。詳細については、[Azure 更新プログラムに関するお知らせ](https://azure.microsoft.com/updates/ci-health-limited-preview/)を参照してください。
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>ノード ビューで *[その他のプロセス]* は何を表していますか?
 
@@ -718,7 +735,7 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 ## <a name="next-steps"></a>次のステップ
 質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。
 
-- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
-- [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
 
 Azure Monitor に関する一般的なフィードバックについては、[フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスしてください。

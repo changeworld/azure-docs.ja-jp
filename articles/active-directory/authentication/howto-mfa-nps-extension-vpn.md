@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848704"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -228,9 +228,9 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 2. サーバー マネージャーで **[ツール]** を選択し、 **[ルーティングとリモート アクセス]** を選択します。
 
-3. **[ルーティングとリモート アクセス]** ウィンドウで、 **[\<サーバー名> (ローカル)]** を右クリックし、 **[プロパティ]** を選択します。
+3. **[ルーティングとリモート アクセス]** ウィンドウで、 **[\<server name> (ローカル)]** を右クリックし、 **[プロパティ]** を選択します。
 
-4. **[\<サーバー名> (ローカル) のプロパティ]** ウィンドウで、 **[セキュリティ]** タブを選択します。
+4. **[\<server name> (ローカル) のプロパティ]** ウィンドウで、 **[セキュリティ]** タブを選択します。
 
 5. **[セキュリティ]** タブで、 **[認証プロバイダー]** の **[RADIUS 認証]** を選択し、 **[構成]** を選択します。
 
@@ -245,9 +245,9 @@ NPS ロールがメンバー サーバーにインストールされている場
     b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
 
     c. **[タイムアウト (秒)]** ボックスで、値として「**30**」を入力します。  
-    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。
+    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。 VPN やリージョンによっては、ユーザーが複数の通話を受けられないように、タイムアウト設定が 30 秒を超える必要があります。 この問題が発生した場合は、問題が再発しなくなるまで **[タイムアウト (秒)]** 値を 30 秒単位で増やします。
 
-    ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
 8. **[OK]** を選択します。
 
@@ -320,19 +320,15 @@ _HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新�
 
 値が *True* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *False* に設定されている場合は、Azure Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *False* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>Azure Active Directory GUID ID の取得
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>Azure Active Directory テナント ID を取得する
 
-NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの ID を入力する必要があります。 次の手順で ID を取得します。
+NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの ID を入力する必要があります。 テナント ID を取得するには、次の手順を実行します。
 
 1. Azure テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
+1. Azure portal のメニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
+1. **[概要]** ページに、"*テナント情報*" が表示されます。 次のスクリーンショットの例に示すように、 *[テナント ID]* の横にある **[コピー]** アイコンを選択します。
 
-2. Azure portal のメニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
-
-3. **[プロパティ]** を選択します。
-
-4. Azure AD ID をコピーするには、 **[コピー]** ボタンを選択します。
-
-    ![Azure portal での Azure AD ディレクトリ ID](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![Azure portal からのテナント ID の取得](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
@@ -386,7 +382,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 5. コマンド プロンプトに先ほどコピーしたテナント ID を貼り付け、Enter キーを押します。
 
-    ![以前にコピーした Azure AD ディレクトリ ID を入力する](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![前にコピーした Azure AD テナント ID の入力](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     スクリプトによって自己署名証明書が作成され、他の構成変更が実行されます。 出力は次の図のようになります。
 
@@ -412,7 +408,9 @@ Azure MFA で以前に構成したセカンダリ検証方法で認証に成功�
 
 Windows イベント ビューアーのログで成功したサインイン イベントを表示するには、次の PowerShell コマンドを入力して、NPS サーバーの Windows セキュリティ ログを照会します。
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![PowerShell セキュリティ イベント ビューアー](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +420,9 @@ Windows イベント ビューアーのログで成功したサインイン イ�
 
 Azure Multi-Factor Authentication の NPS 拡張機能がインストールされているサーバーで、拡張機能に固有のイベント ビューアーのアプリケーション ログ (*アプリケーションとサービス ログ\Microsoft\AzureMfa*) を確認できます。
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![イベント ビューアー AuthZ ログ ウィンドウの例](./media/howto-mfa-nps-extension-vpn/image46.png)
 

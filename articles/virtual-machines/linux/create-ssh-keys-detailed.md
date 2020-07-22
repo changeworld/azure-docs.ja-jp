@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969533"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119210"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する 
 Secure Shell (SSH) のキー ペアを使用すると、既定で認証に SSH キーを使う Linux 仮想マシンを Azure 上に作成でき、サインインするためのパスワードが不要になります。 Azure Portal、Azure CLI、Resource Manager テンプレート、他のツールで作成された VM は、展開の一部として SSH 公開キーを含むことができ、SSH 接続用に SSH キー認証が設定されます。 
 
 この記事では、SSH クライアント接続用の SSH RSA 公開/秘密キー ファイル ペアの作成と管理について、詳細な背景と手順を説明します。 すぐに使用できるコマンドについては、[Azure での Linux VM 用の SSH 公開/秘密キー ペアの作成方法](mac-create-ssh-keys.md)に関する記事をご覧ください。
 
-Windows コンピューター上で、SSH キーを生成して使用するその他の方法については、「[Azure 上の Windows で SSH キーを使用する方法](ssh-from-windows.md)」を参照してください。
+SSH キーを生成し、それを使って **Windows** コンピューターと接続する方法については、「[Azure 上の Windows で SSH キーを使用する方法](ssh-from-windows.md)」を参照してください。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -35,13 +35,13 @@ SSH キーを使用したくない場合は、パスワード認証を使うよ�
 
 ## <a name="generate-keys-with-ssh-keygen"></a>ssh-keygen でキーを生成する
 
-キーを作成するための推奨されるコマンドは `ssh-keygen` です。このコマンドは、Azure Cloud Shell、macOS、Linux ホスト上の OpenSSH ユーティリティや、[Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about)、および他のツールで利用できます。 `ssh-keygen` では、一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 
+キーを作成するための推奨されるコマンドは `ssh-keygen` です。このコマンドは、Azure Cloud Shell、macOS、Linux ホスト上の OpenSSH ユーティリティや、Windows 10 で利用できます。 `ssh-keygen` では、一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 
 
 SSH キーは既定で `~/.ssh` ディレクトリに保持されます。  `~/.ssh` ディレクトリがない場合、`ssh-keygen` コマンドによって、適切なアクセス許可で作成されます。
 
 ### <a name="basic-example"></a>基本的な例
 
-次の `ssh-keygen` コマンドは、既定で、2048 ビットの SSH RSA 公開および秘密キー ファイルを `~/.ssh` ディレクトリに生成します。 SSH キー ペアが現在の場所にある場合、それらのファイルは上書きされます。
+次の `ssh-keygen` コマンドは、既定で、4096 ビットの SSH RSA 公開および秘密キー ファイルを `~/.ssh` ディレクトリに生成します。 SSH キー ペアが現在の場所にある場合、それらのファイルは上書きされます。
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096

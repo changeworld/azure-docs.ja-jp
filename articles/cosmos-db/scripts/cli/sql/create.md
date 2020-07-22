@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB 用の SQL (Core) API のデータベースとコンテナーを作成する
-description: Azure Cosmos DB 用の SQL (Core) API のデータベースとコンテナーを作成する
+title: Azure Cosmos DB 用の Core (SQL) API のデータベースとコンテナーを作成する
+description: Azure Cosmos DB 用の Core (SQL) API のデータベースとコンテナーを作成する
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: ae958c7e48b1c4a93a09c607d5a2e51abf49a8ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/03/2020
+ms.openlocfilehash: 416da39df9bfb49d6323ee789d5e67b1743a1cd7
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71275029"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509391"
 ---
-# <a name="create-an-azure-cosmos-sql-core-api-account-database-and-container-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos SQL (Core) API のアカウント、データベース、およびコンテナーを作成する
+# <a name="create-an-azure-cosmos-core-sql-api-account-database-and-container-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos Core (SQL) API のアカウント、データベース、およびコンテナーを作成する
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +36,7 @@ az group delete --name $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |

@@ -3,12 +3,13 @@ title: Azure VM バックアップからファイルとフォルダーを回復�
 description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: references_regions
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233879"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027167"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -53,7 +54,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
     ![生成されたパスワード](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. ダウンロードの場所 (通常は [ダウンロード] フォルダー) で、実行可能ファイルまたはスクリプトを右クリックし、管理者の資格情報を使用して実行します。 メッセージが表示されたら、パスワードを入力するか、またはメモリからのパスワードを貼り付けて、**Enter** キーを押します。 有効なパスワードが入力されると、スクリプトが復旧ポイントに接続されます。
+7. スクリプトを実行するための[適切なマシンがある](#selecting-the-right-machine-to-run-the-script)ことを確認します。 適切なマシンが、スクリプトをダウンロードしたマシンと同じである場合は、ダウンロード セクションに進むことができます。 ダウンロードの場所 (通常は *Downloads* フォルダー) で、実行可能ファイルまたはスクリプトを右クリックし、管理者の資格情報を使用して実行します。 メッセージが表示されたら、パスワードを入力するか、またはメモリからのパスワードを貼り付けて、**Enter** キーを押します。 有効なパスワードが入力されると、スクリプトが復旧ポイントに接続されます。
 
     ![[ファイルの回復] メニュー](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -84,6 +85,23 @@ Linux では、復旧ポイントのボリュームはスクリプトが実行�
 ディスクがマウント解除されると、メッセージが表示されます。 接続を更新してディスクを解除できるようになるまで数分かかることがあります。
 
 Linux では、復旧ポイントへの接続が切断された後、OS によって対応するマウント パスが自動的に削除されるわけではありません。 マウント パスは "孤立" ボリュームとして存在し、表示されていますが、ファイルへのアクセスや書き込みを行うと、エラーがスローされます。 マウント パスは手動で削除できます。 実行時に、スクリプトは以前の復旧ポイントから存在するこのようなボリュームを特定し、同意を得たうえでクリーンアップします。
+
+## <a name="selecting-the-right-machine-to-run-the-script"></a>スクリプトを実行するための適切マシンの選択
+
+スクリプトが正常にダウンロードされたら、次の手順は、スクリプトを実行するマシンが適切なマシンであるかどうかを確認することです。 以下に、マシンで満たされる必要がある要件を示します。
+
+### <a name="original-backed-up-machine-versus-another-machine"></a>元のバックアップ マシンと別のマシン
+
+1. バックアップされるマシンが大規模なディスク VM である場合 (ディスクの数が 16 ディスクを超えている場合、または各ディスクが 4 TB を超えている場合) は、**別のマシンでスクリプトを実行する必要があり**、[これらの要件](#file-recovery-from-virtual-machine-backups-having-large-disks)を満たす必要があります。
+1. バックアップされるマシンが大規模なディスク VM ではない場合でも、[これらのシナリオ](#special-configurations)では、同じバックアップ VM でスクリプトを実行することはできません。
+
+### <a name="os-requirements-on-the-machine"></a>マシンの OS 要件
+
+スクリプトを実行する必要があるマシンは、[これらの OS 要件](#system-requirements)を満たしている必要があります。
+
+### <a name="access-requirements-for-the-machine"></a>マシンのアクセス要件
+
+スクリプトを実行する必要があるマシンは、[これらのアクセス要件](#access-requirements)を満たしている必要があります。
 
 ## <a name="special-configurations"></a>特殊な構成
 
@@ -125,14 +143,23 @@ pvs <volume name as shown above in the script output>
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command's results>
+lvdisplay <volume-group-name from the pvs commands results>
 ```
+
+```lvdisplay``` コマンドでは、ボリューム グループがアクティブかどうかも表示されます。 ボリューム グループが非アクティブとしてマークされている場合は、再度アクティブ化してマウントする必要があります。 ボリューム グループが非アクティブとして表示されている場合は、次のコマンドを使用してアクティブにします。
+
+```bash
+#!/bin/bash
+vgchange –a y  <volume-group-name from the pvs commands results>
+```
+
+ボリューム グループ名がアクティブになったら、```lvdisplay``` コマンドをもう一度実行して、関連するすべての属性を確認します。
 
 論理ボリュームを任意のパスにマウントするには、次のようにします。
 
 ```bash
 #!/bin/bash
-mount <LV path> </mountpath>
+mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>RAID アレイの場合
@@ -202,7 +229,7 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 - `download.microsoft.com`
 - リカバリ サービスの URL (geo 名はリカバリ サービス コンテナーが存在するリージョンを表します)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure の パブリック地域用)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (すべての Azure パブリック リージョン)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure China 21Vianet 用)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure US Government 用)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Germany 用)
@@ -210,7 +237,7 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 > [!NOTE]
 >
-> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 例: ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' で始まります (*ContosoVM_wcus_12345678* など)
+> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 次に例を示します。ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' で始まります (*ContosoVM_wcus_12345678* など)
 > - URL は <https://pod01-rec2.wcus.backup.windowsazure.com>" になります
 >
 
@@ -218,13 +245,11 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 
 スクリプトを実行するコンピューターと復旧ポイントのデータの間にセキュリティで保護されたチャネルを構築するために使われるコンポーネントをダウンロードするには、`download.microsoft.com` へのアクセスが必要です。
 
-バックアップされた VM と同じ (または互換性のある) オペレーティング システムを使用する任意のマシンでスクリプトを実行できます。 互換性のあるオペレーティング システムについては、「[互換性のある OS](backup-azure-restore-files-from-vm.md#system-requirements)」の表を参照してください。 保護されている Azure 仮想マシンで Windows 記憶域スペース (Windows Azure VM の場合) または LVM/RAID アレイ (Linux VM の場合) を使用している場合、その仮想マシンで実行可能ファイルまたはスクリプトを実行することはできません。 代わりに、互換性のあるオペレーティング システムを使用する他のマシンで実行可能ファイルまたはスクリプトを実行します。
-
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>大容量ディスクを含む仮想マシンのバックアップからのファイルの回復
 
-このセクションでは、16 を超える数のディスクがあり、かつ各ディスク サイズが 32 TB を超える Azure 仮想マシンのバックアップからファイルの回復を実行する方法について説明します。
+このセクションでは、16 を超える数のディスクがあるか、各ディスク サイズが 4 TB を超える Azure 仮想マシンのバックアップからファイルの回復を実行する方法について説明します。
 
-ファイルの回復プロセスではバックアップのすべてのディスクがアタッチされるため、多数のディスク (16 を超える) または大容量ディスク (それぞれ 32 TB を超える) が使用されている場合は、次のアクション ポイントが推奨されます。
+ファイルの回復プロセスではバックアップのすべてのディスクがアタッチされるため、多数のディスク (16 を超える) または大容量ディスク (それぞれ 4 TB を超える) が使用されている場合は、次のアクション ポイントが推奨されます。
 
 - ファイルの回復のために個別の復元サーバー (Azure VM D2v3 VM) を保持します。 それはファイルの回復にのみ使用でき、必要がないときはシャットダウンできます。 元のコンピューターへの復元は、VM 自体に大きな影響を与えるためお勧めできません。
 - 次に、ファイルの回復操作が成功するかどうかを確認するために、スクリプトを 1 回実行します。
@@ -246,7 +271,7 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
   - ファイル /etc/iscsi/iscsid.conf で、設定を次のように変更します。
     - node.conn[0].timeo.noop_out_timeout = 5 から node.conn[0].timeo.noop_out_timeout = 30 に
 - 上記の変更を行った後、スクリプトをもう一度実行します。 これらの変更により、ファイルの回復が成功する可能性が高くなります。
-- ユーザーがスクリプトをダウンロードするたびに、Azure Backup は、ダウンロード用に復旧ポイントを準備するプロセスを開始します。 大容量ディスクでは、このプロセスにかなりの時間がかかります。 要求の連続したバーストが発生すると、ターゲットの準備がダウンロードのスパイラルに陥ります。 そのため、ポータル、PowerShell、または CLI からスクリプトをダウンロードするには、20 分から 30 分 (ヒューリスティック) 待ってから実行することをお勧めします。 この時間までに、ターゲットは、スクリプトからの接続に対して準備できると予測されます。
+- ユーザーがスクリプトをダウンロードするたびに、Azure Backup は、ダウンロード用に復旧ポイントを準備するプロセスを開始します。 大容量ディスクでは、このプロセスにかなりの時間がかかります。 要求の連続したバーストが発生すると、ターゲットの準備がダウンロードのスパイラルに陥ります。 そのため、ポータル、PowerShell、または CLI からスクリプトをダウンロードし、20 分から 30 分 (ヒューリスティック) 待ってから実行することをお勧めします。 この時間までに、ターゲットは、スクリプトからの接続に対して準備できると予測されます。
 - ファイルの回復の後、ポータルに戻り、ボリュームをマウントできなかった復旧ポイントのために **[ディスクのマウント解除]** をクリックするようにしてください。 基本的には、この手順によって既存のプロセス/セッションがすべて消去され、回復の可能性が向上します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -263,7 +288,7 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 | Linux 固有:目的のボリュームを表示できない | スクリプトを実行するマシンの OS が、保護された VM の基になるファイル システムを認識していない可能性があります | 復旧ポイントがクラッシュ整合性とファイル整合性のどちらであるかを確認します。 ファイル整合性の場合、保護された VM のファイル システムが OS で認識される別のマシンでスクリプトを実行します。 |
 | Windows 固有:目的のボリュームを表示できない | ディスクはアタッチされている可能性がありますが、ボリュームが構成されていません | ディスクの管理画面から、復旧ポイントに関連する追加のディスクを識別します。 これらのディスクのいずれかがオフライン状態の場合は、そのディスクを右クリックし、 **[オンライン]** をクリックしてオンライン状態にします。|
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 このセクションでは、Azure VM バックアップからのファイル回復を実装するために講じるさまざまなセキュリティ対策について説明します。
 
@@ -304,6 +329,6 @@ Microsoft では、各コンポーネントの相互の認証ができるよう�
 ## <a name="next-steps"></a>次のステップ
 
 - ファイルの復元中に発生する問題については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
-- [PowerShell を使用してファイルを復元する](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup)方法を確認します。
+- [PowerShell を使用してファイルを復元する](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup)方法を確認します
 - [Azure CLI を使用してファイルを復元する](https://docs.microsoft.com/azure/backup/tutorial-restore-files)方法を確認します。
 - VM が復元された後、[バックアップを管理する](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms)方法について説明します。

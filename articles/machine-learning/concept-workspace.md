@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/27/2019
-ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/08/2020
+ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505582"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147026"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -53,6 +53,7 @@ ms.locfileid: "77505582"
 + [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用したすべての Python 環境で。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用したすべての R 環境で。
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)を使用
++ [Azure Machine Learning VS Code 拡張機能](how-to-manage-resources-vscode.md#workspaces)
 
 ## <a name="machine-learning-with-a-workspace"></a>ワークスペースを使用した機械学習
 
@@ -70,13 +71,13 @@ ms.locfileid: "77505582"
 
 次のワークスペース管理タスクを実行することもできます。
 
-| ワークスペース管理タスク   | ポータル              | スタジオ | Python SDK/R SDK       | CLI        |
-|---------------------------|---------|---------|------------|------------|
-| ワークスペースの作成        | **&check;**     | | **&check;** | **&check;** |
-| ワークスペース アクセスの管理    | **&check;**   || |  **&check;**    |
-| Enterprise Edition へのアップグレード    | **&check;** | **&check;**  | |     |
-| コンピューティング リソースを作成して管理する    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
-| ノートブック VM を作成する |   | **&check;** | |     |
+| ワークスペース管理タスク   | ポータル              | スタジオ | Python SDK/R SDK       | CLI        | VS Code
+|---------------------------|---------|---------|------------|------------|------------|
+| ワークスペースの作成        | **&check;**     | | **&check;** | **&check;** | **&check;** |
+| ワークスペース アクセスの管理    | **&check;**   || |  **&check;**    ||
+| Enterprise Edition へのアップグレード    | **&check;** | **&check;**  | |     ||
+| コンピューティング リソースを作成して管理する    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
+| ノートブック VM を作成する |   | **&check;** | |     ||
 
 > [!WARNING]
 > Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
@@ -90,7 +91,7 @@ ms.locfileid: "77505582"
 * ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md) を使用します。
 * Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
-* Visual Studio Code で作業する場合は、[VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用します。
+* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-manage-resources-vscode.md#create-a-workspace)を使用します。
 
 > [!NOTE]
 > ワークスペース名では、大文字と小文字は区別されません。

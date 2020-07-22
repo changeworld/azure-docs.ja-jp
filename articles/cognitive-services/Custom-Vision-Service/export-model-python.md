@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6fcbd84b3cda4adace9c1229f5ed03c3dce68fc0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 46ed55e5d6a9156d9ea7909925e92d6c39c8e89d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404134"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609575"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
 

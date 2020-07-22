@@ -3,12 +3,12 @@ title: Azure portal を使用してリソースをデプロイする
 description: Azure portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255264"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure portal でリソースをデプロイする
 
@@ -86,7 +86,7 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 1. テンプレートを作成するためのいくつかのオプションが表示されます。
 
     - **エディターで独自のテンプレートを作成する**:ポータル テンプレート エディターを使用してテンプレートを作成します。  エディターには、リソース テンプレート スキーマを追加する機能があります。
-    - **一般的なテンプレート**:Linux 仮想マシン、Windows 仮想マシン、Web アプリケーション、および Azure SQL データベースを作成するための 4 つの一般的なテンプレートがあります。
+    - **一般的なテンプレート**:Linux 仮想マシン、Windows 仮想マシン、Web アプリケーション、および Azure SQL Database のデータベースを作成するための 4 つの一般的なテンプレートがあります。
     - **GitHub クイックスタート テンプレートを読み込む**: 既存の[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
 
    ![オプションの表示](./media/deploy-portal/see-options.png)

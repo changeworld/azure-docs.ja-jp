@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536150"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339584"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
@@ -30,7 +30,7 @@ ms.locfileid: "81536150"
 
 * Visual Studio 2017 または 2019。  [Visual Studio を無料で](https://www.visualstudio.com/downloads/)ダウンロードします。
 
-* [Microsoft アカウント](https://www.outlook.com)または [Office 365 Developer Program](/office/developer-program/office-365-developer-program)
+* [Microsoft アカウント](https://www.outlook.com)または [Microsoft 365 Developer Program](/office/developer-program/office-365-developer-program)
 
 ## <a name="download-or-clone-this-sample"></a>このサンプルをダウンロードまたは複製する
 

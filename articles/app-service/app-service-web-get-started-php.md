@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 05/25/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: d9ee9ac3abd7dada8e87bdf5a4385185933fc4ae
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dbaf4055da4e526ecf1c431816038f14f52fd887
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847866"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906029"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -198,3 +198,6 @@ git push azure master
 
 > [!div class="nextstepaction"]
 > [PHP と MySQL](app-service-web-tutorial-php-mysql.md)
+
+> [!div class="nextstepaction"]
+> [PHP アプリの構成](configure-language-php.md)

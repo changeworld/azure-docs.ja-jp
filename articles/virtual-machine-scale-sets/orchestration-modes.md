@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737004"
 ---
-# <a name="orchestration-mode-preview"></a>オーケストレーション モード (プレビュー)
+# <a name="orchestration-modes-preview"></a>オーケストレーション モード (プレビュー)
+
+> [!CAUTION]
+> このパブリック プレビューに参加したすべてのユーザーに感謝します。 弊社のコミュニティから貴重なフィードバックを収集できました。 このプレビューは、フィードバックを統合するために、新しい参加者に対しては**クローズ**されました。 このスペースは新しい情報で更新されます。
 
 仮想マシン スケール セットは、プラットフォームによって管理される仮想マシンの論理グループを提供します。 スケール セットを使用して、仮想マシン構成モデルを作成し、CPU またはメモリの負荷に基づいて追加のインスタンスを自動的に追加または削除し、最新の OS バージョンに自動的にアップグレードします。 従来、スケール セットでは、スケール セットの作成時に提供された VM 構成モデルを使用して仮想マシンを作成できます。スケール セットで管理できるのは、構成モデルに基づいて暗黙的に作成された仮想マシンのみです。
 

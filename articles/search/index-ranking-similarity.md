@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565283"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure Cognitive Search のランク付けアルゴリズム
 
 > [!IMPORTANT]
 > 2020 年 7 月 15 日より、新しく作成された検索サービスでは BM25 ランク付け関数が自動的に使用されます。この関数はほとんどの場合、現行の既定のランク付けよりもユーザーの予測に沿った検索ランク付けを与えることが証明されています。 ランク付けで優れている以外に、BM25 では、ドキュメントのサイズなどの要素に基づいて結果を調整する構成オプションを使用できます。  
 >
-> 今回の変更では、おそらく、検索結果の順序にわずかな変化が見られるでしょう。 この変更の影響をテストする必要がある場合は、API バージョン 2019-05-06-Preview で BM25 アルゴリズムを使用できます。  
+> 今回の変更では、おそらく、検索結果の順序にわずかな変化が見られるでしょう。 この変更の影響をテストする必要がある場合は、api-version 2019-05-06-Preview および 2020-06-30 で BM25 アルゴリズムを使用できます。  
 
 この記事では、Preview API を使用して作成およびクエリされた新しいインデックスに対して、既存の検索サービスで新しい BM25 ランク付けアルゴリズムを使用する方法について説明します。
 
@@ -30,7 +30,7 @@ Azure Cognitive Search では、Okapi BM25 アルゴリズムの公式 Lucene �
 
 ## <a name="how-to-test-bm25-today"></a>今すぐ BM25 をテストする方法
 
-新しいインデックスを作成するとき、**similarity** プロパティを設定してアルゴリズムを指定できます。 次に示すように、`api-version=2019-05-06-Preview` を使用する必要があります。
+新しいインデックスを作成するとき、**similarity** プロパティを設定してアルゴリズムを指定できます。 次に示すように `api-version=2019-05-06-Preview` を使用するか、`api-version=2020-06-30` を使用することができます。
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview

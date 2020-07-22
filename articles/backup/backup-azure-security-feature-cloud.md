@@ -3,12 +3,12 @@ title: Azure Backup の論理的な削除
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7831488482ef154ce00685e513b36ed235e335e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791393"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116414"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup の論理的な削除
 
@@ -16,7 +16,10 @@ ms.locfileid: "82791393"
 
 このような機能の 1 つに、論理的な削除があります。 論理的な削除を使用すると、悪意のあるアクターによってバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。
 
-[Azure 仮想マシンでの論理的な削除の保護](soft-delete-virtual-machines.md)、および [Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除](soft-delete-sql-saphana-in-azure-vm.md)は、すべてのユーザーが利用できます。
+次のサービスでは、論理的な削除による保護を利用できます。
+
+- [Azure 仮想マシンの論理的な削除](soft-delete-virtual-machines.md)
+- [Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除](soft-delete-sql-saphana-in-azure-vm.md)
 
 このフロー チャートは、論理的な削除が有効にされているときのバックアップ項目のさまざまな手順と状態を示しています。
 
@@ -32,8 +35,8 @@ ms.locfileid: "82791393"
 
 論理的な削除を無効にするには、次の手順に従います。
 
-1. Azure portal で、ご利用のコンテナーに移動して、 **[設定] ->  **[プロパティ]**** に移動します。
-2. プロパティ ウィンドウで、 **[セキュリティ設定] **[更新]**  -> ** を選択します。  
+1. Azure portal で、ご利用のコンテナーに移動して、 **[設定]**  ->  **[プロパティ]** に移動します。
+2. プロパティ ウィンドウで、 **[セキュリティ設定]**  ->  **[更新]** を選択します。  
 3. [セキュリティ設定] ウィンドウの **[論理的な削除]** で、 **[無効にする]** を選択します。
 
 ![論理的な削除の無効化](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)

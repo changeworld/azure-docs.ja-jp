@@ -3,13 +3,13 @@ title: 一般的なデプロイ エラーのトラブルシューティング
 description: Azure Resource Manager を使用した Azure へのリソースのデプロイ時に発生する一般的なエラーの解決方法について説明します。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/25/2020
+ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460383"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055666"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "79460383"
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | ストレージ アカウントの名前付けの制限に従ってください。 | [ストレージ アカウント名の解決](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 使用可能なストレージ アカウント プロパティを確認してください。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできません。 後で要求を再試行するか、別の VM サイズを要求します。 | [Linux のプロビジョニングと割り当ての問題](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows のプロビジョニングと割り当ての問題](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md)、[割り当てエラーのトラブルシューティング](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできません。 後で要求を再試行するか、別の VM サイズを要求します。 | [Linux のプロビジョニングと割り当ての問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows のプロビジョニングと割り当ての問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)、[割り当てエラーのトラブルシューティング](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 同時実行操作の完了を待ちます。 | |
 | AuthorizationFailed | お客様のアカウントまたはサービス プリンシパルには、デプロイを完了するために十分なアクセス権がありません。 自分のアカウントが属するロールと、デプロイの範囲に対するアクセス権を確認してください。<br><br>必要なリソース プロバイダーが登録されていないと、このエラーを受け取ることがあります。 | [Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)<br><br>[登録を解決する](error-register-resource-provider.md) |
 | BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-location.md) |
@@ -62,8 +62,8 @@ ms.locfileid: "79460383"
 | OperationNotAllowed | デプロイで、サブスクリプション、リソース グループ、またはリージョンのクォータを超過する操作が試みられています。 可能であれば、クォータ内に収まるようにデプロイを修正してください。 修正できない場合は、クォータの変更を要求することを検討してください。 | [クォータを解決する](error-resource-quota.md) |
 | ParentResourceNotFound | 子リソースを作成する前に親リソースが存在することを確認してください。 | [親リソースを解決する](error-parent-resource.md) |
 | PasswordTooLong | 文字数の多すぎるパスワードを選択したか、パスワードの値をパラメーターとして渡す前にセキュリティで保護された文字列に変換した可能性があります。 テンプレートに **secure string** パラメーターが含まれている場合、値をセキュリティで保護された文字列に変換する必要はありません。 パスワードの値はテキストとして指定してください。 |  |
-| PrivateIPAddressInReservedRange | 指定した IP アドレスは、Azure で必要なアドレス範囲に含まれます。 予約済みの範囲を避けるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | 指定した IP アドレスがサブネットの範囲外です。 サブネットの範囲に収まるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressInReservedRange | 指定した IP アドレスは、Azure で必要なアドレス範囲に含まれます。 予約済みの範囲を避けるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | 指定した IP アドレスがサブネットの範囲外です。 サブネットの範囲に収まるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | デプロイ済みのリソースで、一部のプロパティを変更できません。 リソースを更新する際は、許可されているプロパティに変更を制限してください。 | [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | デプロイ時に実行しようとしているアクションを禁止するリソース ポリシーがサブスクリプションに含まれます。 アクションをブロックしているポリシーを見つけてください。 可能であれば、ポリシーの制限を満たすようにデプロイを変更してください。 | [ポリシーを解決する](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 予約された名前が含まれていないリソース名を指定します。 | [予約されたリソース名](error-reserved-resource-name.md) |
@@ -114,7 +114,7 @@ PowerShell でデプロイ エラー コードとメッセージを表示する�
 Azure CLI でデプロイ エラー コードとメッセージを表示するには、以下を使用します。
 
 ```azurecli-interactive
-az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment operation group list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 ポータルで通知を選択します。
@@ -172,7 +172,7 @@ New-AzResourceGroupDeployment `
 次のコマンドでデプロイ操作を確認します。
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az deployment group operation list \
 次のコマンドを使用して、要求の内容を確認します。
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az deployment group operation list \
 次のコマンドを使用して、応答の内容を確認します。
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response
@@ -223,7 +223,7 @@ az deployment group operation list \
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "storageName": {

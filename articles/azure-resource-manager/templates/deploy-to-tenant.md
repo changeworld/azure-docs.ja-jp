@@ -2,13 +2,13 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/08/2020
+ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945445"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>テナント レベルでリソースを作成する
 
@@ -72,7 +72,7 @@ Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/ten
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Azure PowerShell の場合は [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
@@ -81,7 +81,7 @@ Azure PowerShell の場合は [New-AzTenantDeployment](/powershell/module/az.res
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 REST API の場合は、「[デプロイ - テナントのスコープでの作成または更新](/rest/api/resources/deployments/createorupdateattenantscope)」を使用します。
@@ -117,7 +117,7 @@ REST API の場合は、「[デプロイ - テナントのスコープでの作�
 
 ## <a name="create-management-group"></a>管理グループの作成
 
-[次のテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg)を使うと、管理グループを作成できます。
+[次のテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg)を使うと、管理グループを作成できます。
 
 ```json
 {
@@ -143,7 +143,7 @@ REST API の場合は、「[デプロイ - テナントのスコープでの作�
 
 ## <a name="assign-role"></a>ロールを割り当てる
 
-[次のテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment)を使うと、テナントのスコープでロールを割り当てることができます。
+[次のテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment)を使うと、テナントのスコープでロールを割り当てることができます。
 
 ```json
 {

@@ -1,17 +1,17 @@
 ---
 title: Cosmos DB の移行オプション
 description: このドキュメントでは、オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのさまざまなオプションについて説明します
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
-ms.author: bharathb
-ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1b8ddba84920d8d3b6871ab404081d3b24c72e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261972"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのオプション
 
@@ -22,7 +22,7 @@ ms.locfileid: "80984897"
 移行ツールの選択は次の要因によって決定されます。
 * **オンライン移行かオフライン移行:** 移行ツールの多くで、1 回限りの移行を行うためのパスが与えられます。 これは、データベースにアクセスしているアプリケーションに一定時間のダウンタイムが発生する可能性を意味します。 一部の移行ソリューションでは、ライブ移行の手段が与えられます。ライブ移行では、移行元と移行先の間にレプリケーション パイプラインが設定されます。
 
-* **データ ソース**:既存のデータは、Oracle DB2、Datastax Cassandra、Azure SQL Server、PostgreSQL など、さまざまなデータ ソースに含まれています。データは既存の Azure Cosmos DB アカウントに含まれていることもあります。データ モデルを変更することや、パーティション キーの異なるコンテナーに含まれるデータを再パーティションすることが移行の意図になることもあります。
+* **データ ソース**:既存のデータは、Oracle DB2、Datastax Cassandra、Azure SQL Database、PostgreSQL など、さまざまなデータ ソースに含まれています。データは既存の Azure Cosmos DB アカウントに含まれていることもあります。データ モデルを変更することや、パーティション キーの異なるコンテナーに含まれるデータを再パーティションすることが移行の意図になることもあります。
 
 * **Azure Cosmos DB API**:Azure Cosmos DB の SQL API に対しては、さまざまな移行シナリオを支援するさまざまなツールが Azure Cosmos DB チームによって開発されています。 他の API にはすべて、コミュニティによって開発され、保守されている独自の特別なツール セットが含まれています。 Azure Cosmos DB ではそのような API がワイヤ プロトコル レベルでサポートされているため、Azure Cosmos DB にデータを移行する間、それらのツールもそのまま動作するはずです。 ただし、この概念は Azure Cosmos DB に固有であるため、スロットルのカスタム処理が必要になることがあります。
 

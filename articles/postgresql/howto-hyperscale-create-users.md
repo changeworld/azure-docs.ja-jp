@@ -5,14 +5,14 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584089"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116966"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する
 
@@ -66,16 +66,11 @@ Hyperscale はマネージド PaaS サービスであるため、Microsoft だ�
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Hyperscale (Citus) で、単一テーブルの GRANT ステートメントがクラスター全体に伝達され、すべてのワーカー ノードに適用されます。 ただし、システム全体 (スキーマ内のすべてのテーブルなど) の GRANT の場合は、すべての日付ノード上で実行する必要があります。  ヘルパー関数 `run_command_on_workers()` を使用します。
+Hyperscale (Citus) で、単一テーブルの GRANT ステートメントがクラスター全体に伝達され、すべてのワーカー ノードに適用されます。 また、システム全体の (たとえば、スキーマ内のすべてのテーブルに対する) GRANT も伝達されます。
 
 ```sql
--- applies to the coordinator node
+-- applies to the coordinator node and propagates to workers
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-
--- make it apply to workers as well
-SELECT run_command_on_workers(
-  'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
-);
 ```
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>ユーザー ロールの削除またはパスワードの変更方法

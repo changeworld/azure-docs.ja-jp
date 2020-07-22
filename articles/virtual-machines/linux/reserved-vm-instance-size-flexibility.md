@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
 ms.openlocfilehash: 0dda27c5de3fd7f2d372705d9f6acadb5c0fb5b5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758617"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Reserved VM Instances での仮想マシン サイズの柔軟性

@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6189e2bc6c3c8f28b767902b525b03cb72968bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652895"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845442"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
 
 Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクションを使用して、IIS 認証を有効にし、Microsoft IIS Web アプリケーションと統合するように構成できます。 Azure MFA Server では、Azure Multi-Factor Authentication を追加するために、IIS Web サーバーに対して行われる要求をフィルター処理できるプラグインがインストールされます。 IIS プラグインは、フォームベースの認証と統合 Windows HTTP 認証のサポートを提供します。 さらに、信頼できる IP を構成して、内部 IP アドレスを 2 要素認証から除外できます。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。 クラウドベースの Azure Multi-Factor Authentication を使用する場合、Azure Multi-Factor Authentication (MFA) Server によって提供される IIS プラグインに代わる方法はありません。 代わりに、Web アプリケーション プロキシ (WAP) を Active Directory フェデレーション サービス (AD FS) または Azure Active Directory のアプリケーション プロキシと共に使用します。
 
 ![MFA Server での IIS 認証](./media/howto-mfaserver-iis/iis.png)
 

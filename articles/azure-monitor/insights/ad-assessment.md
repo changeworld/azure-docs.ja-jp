@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667229"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651862"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Monitor で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -36,7 +36,7 @@ Active Directory 正常性チェック ソリューションを使用して、�
 ## <a name="prerequisites"></a>前提条件
 
 * Active Directory 正常性チェック ソリューションを使用するには、各コンピューターに (Microsoft Monitoring Agent (MMA) とも呼ばれる) Windows 用の Log Analytics エージェントがインストールされ、4.6.2 以降のサポートされているバージョンの .NET Framework がインストールされている必要があります。  このエージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。
-* このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、および Windows Server 2016 を実行するドメイン コントローラーをサポートしています。
+* このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、Windows Server 2016、および Windows Server 2019 を実行するドメイン コントローラーをサポートしています。
 * Azure Portal で Azure Marketplace から Active Directory 正常性チェック ソリューションを追加する Log Analytics ワークスペース。 追加の構成は必要ありません。
 
   > [!NOTE]

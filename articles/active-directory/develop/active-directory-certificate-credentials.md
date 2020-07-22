@@ -41,12 +41,12 @@ Microsoft ID プラットフォームでは、アサーションを計算する�
 
 | パラメーター |  解説 |
 | --- | --- |
-| `aud` | 対象ユーザー: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** である必要があります。 |
+| `aud` | Audience: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** でなければなりません |
 | `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
 | `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
 | `jti` | GUID: JWT ID |
 | `nbf` | 期間の開始時刻: トークンの使用開始日。 日時は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、トークンが発行された日時までの秒数で表されます。 |
-| `sub` | 件名: `iss` の場合は、client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
+| `sub` | 件名:`iss` の場合は、client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
 
 ### <a name="signature"></a>署名
 
@@ -130,4 +130,4 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 > [!NOTE]
 > X5T ヘッダーを計算するには、証明書のハッシュを使用してベース 64 文字列に変換する必要があります。 これを C# で実行する場合のコードは、`System.Convert.ToBase64String(cert.GetCertHash());` です。
 
-「[Microsoft ID プラットフォームを使用した .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)」のコード サンプルには、独自の資格情報がアプリケーションによって認証に使用される方法が示されています。 それは、[ Powershell コマンドを使用した](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)自己証明書の作成`New-SelfSignedCertificate`方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。
+「[Microsoft ID プラットフォームを使用した .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)」のコード サンプルには、独自の資格情報がアプリケーションによって認証に使用される方法が示されています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。

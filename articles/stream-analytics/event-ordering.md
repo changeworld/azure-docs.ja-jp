@@ -5,18 +5,18 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2019
-ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75461196"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044568"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics 用のイベント順序ポリシーの構成
 
-この記事では、Azure Stream Analytics で遅延到着と順不同のイベント ポリシーを設定し、使用する方法について説明します。 クエリで [Timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 句を使用する場合のみ、これらのポリシーが適用されます。
+この記事では、Azure Stream Analytics で遅延到着と順不同のイベント ポリシーを設定し、使用する方法について説明します。 クエリで [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 句を使用する場合のみ、これらのポリシーが適用されます。また、これらはクラウド入力ソースにのみ適用されます。
 
 ## <a name="event-time-and-arrival-time"></a>イベント時間と到着時間
 

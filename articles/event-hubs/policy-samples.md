@@ -1,24 +1,21 @@
 ---
 title: Azure Event Hubs 用の組み込みポリシー定義
 description: Azure Event Hubs 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/13/2020
+ms.date: 07/10/2020
 ms.topic: sample
-author: spelluru
-ms.author: spelluru
-ms.service: event-hubs
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 8ad3630502daf8df1edfb9ed4eeef9eb957d6c7c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 51c7a8d1c6659ccc17a848fc2608c205f66ee1bc
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275999"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-event-hubs"></a>Azure Event Hubs 用の Azure Policy 組み込みポリシー定義
+# <a name="azure-policy-built-in-definitions-for-azure-event-hubs"></a>Azure Event Hubs 用の Azure Policy 組み込み定義
 
 このページは、Azure Event Hubs 用の [Azure Policy](../governance/policy/overview.md) 組み込みポリシー定義のインデックスです。 他のサービス用の Azure Policy 組み込みについては、[Azure Policy 組み込み定義](../governance/policy/samples/built-in-policies.md)に関するページをご覧ください。
 
-各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[GitHub]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
+各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[バージョン]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
 
 ## <a name="azure-event-hubs"></a>Azure Event Hubs
 

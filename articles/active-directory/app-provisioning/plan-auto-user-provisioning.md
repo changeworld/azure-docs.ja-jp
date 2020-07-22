@@ -2,21 +2,21 @@
 title: Azure Active Directory の自動ユーザー プロビジョニングのデプロイを計画する
 description: 自動ユーザー プロビジョニングの計画と実行に関するガイダンス
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781635"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 

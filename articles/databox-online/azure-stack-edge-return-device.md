@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743632"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339367"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを返却または交換する
 
@@ -22,6 +22,7 @@ ms.locfileid: "83743632"
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * デバイス上のデータ ディスクのデータを削除する
 > * サポート チケットを開いてデバイスを返却する
 > * デバイスを選択して集荷をスケジュールする

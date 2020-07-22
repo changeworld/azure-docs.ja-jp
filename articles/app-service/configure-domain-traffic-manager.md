@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610243"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager 統合を使用して Azure App Service 内のカスタム ドメイン名を構成する
@@ -19,7 +19,7 @@ ms.locfileid: "82610243"
 > [!NOTE]
 > Cloud Services については、「[Azure クラウド サービスのカスタム ドメイン名の構成](../cloud-services/cloud-services-custom-domain-name.md)」を参照してください。
 
-[Azure Traffic Manager](/azure/traffic-manager/) を使用して [Azure App Service](overview.md)へのトラフィックを負荷分散する場合、 **\<traffic-manager-endpoint>.trafficmanager.net** を使用して App Service にアクセスできます。 ユーザーにわかりやすいドメイン名を付けるために、www\.contoso.com のようなカスタム ドメイン名を App Service に割り当てることができます。
+[Azure Traffic Manager](/azure/traffic-manager/) を使用してトラフィックを [Azure App Service](overview.md) に負荷分散する場合、App Service アプリには **\<traffic-manager-endpoint>.trafficmanager.net** を使用してアクセスできます。 ユーザーにわかりやすいドメイン名を付けるために、www\.contoso.com のようなカスタム ドメイン名を App Service に割り当てることができます。
 
 この記事では、[Traffic Manager](../traffic-manager/traffic-manager-overview.md)と統合された App Service アプリを使用してカスタム ドメイン名を構成する方法について説明します。
 

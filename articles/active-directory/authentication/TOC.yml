@@ -36,6 +36,8 @@
       items:
         - name: MFA のしくみ
           href: concept-mfa-howitworks.md
+        - name: プロンプトとセッションの有効期間
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: データの保存場所
           href: concept-mfa-data-residency.md
         - name: ライセンス
@@ -80,6 +82,8 @@
           href: howto-mfa-userstates.md
         - name: 認証プロバイダーの構成
           href: concept-mfa-authprovider.md
+        - name: アプリ パスワードの使用
+          href: howto-mfa-app-passwords.md
         - name: ディレクトリ フェデレーション
           items:
             - name: Windows Server 2016 AD FS アダプター
@@ -169,6 +173,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: モバイル アプリ Web サービス
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: 設定の構成
+          href: howto-mfa-server-settings.md
         - name: 高可用性の構成
           href: howto-mfaserver-deploy-ha.md
         - name: MFA サーバーをアップグレードする
@@ -219,6 +225,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell コマンドレット
       href: /powershell/azure/overview
+    - name: Microsoft Graph REST API ベータ版
+      href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: サービスの制限と制約
       href: ../users-groups-roles/directory-service-limits-restrictions.md
 - name: リソース

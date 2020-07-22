@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ffc7c289fd675a68c8b02af1777fea3d4530e17a
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 496f519ba5e4eb17060ee35ed86fba45c85336d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889491"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905733"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
@@ -44,13 +44,16 @@ FTP を使用して .war や .jar をデプロイしないでください。 FTP
 
 ### <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 詳細については、[Cloud Shell でのログのストリーミング](../troubleshoot-diagnostic-logs.md#in-cloud-shell)に関する記事をご覧ください。
 
 ### <a name="app-logging"></a>アプリのログ記録
 
 Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](../troubleshoot-diagnostic-logs.md?toc=/azure/app-service/containers/toc.json#enable-application-logging-windows)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */home/LogFiles/Application/* ディレクトリにあります。
+
+>[!NOTE]
+>App Service のローカル ファイル システムへのログ記録が 12 時間後に無効になるというのは、Window ベースの App Services にのみ適用されます。 Linux ベースの App Services の Azure Blob Storage のログ記録は [Azure Monitor (プレビュー) を使用してのみ構成できます](/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) 
 
 アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](/azure/application-insights/app-insights-java-trace-logs)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。
 

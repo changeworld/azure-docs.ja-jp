@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583200"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024457"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -28,7 +28,7 @@ ms.locfileid: "82583200"
 
 ブロックは、割り当てを考慮して、条件付きアクセス ポリシーの構成に基づいてアクセスを禁止します。
 
-ブロックは強力なコントロールであるため、適切な知識を習得したうえで扱う必要があります。 管理者は、有効化する前に[レポート専用モード](concept-conditional-access-report-only.md)を使用してそれをテストする必要があります。
+ブロックは強力なコントロールであるため、適切な知識を習得したうえで扱う必要があります。 ブロック ステートメントのあるポリシーには予想外の副作用が含まれることがあります。 大規模で有効にする前に、適切なテストと検証が不可欠です。 管理者は、変更を行うにあたり、[条件付きアクセスのレポート専用モード](concept-conditional-access-report-only.md)や[条件付きアクセスの What If ツール](what-if-tool.md)などのツールを利用する必要があります。
 
 ## <a name="grant-access"></a>アクセス権の付与
 
@@ -39,6 +39,7 @@ ms.locfileid: "82583200"
 - [ハイブリッド Azure AD 参加済みのデバイスを必要とする](../devices/concept-azure-ad-join-hybrid.md)
 - [承認済みクライアント アプリを必須にする](app-based-conditional-access.md)
 - [アプリの保護ポリシーを必須にする](app-protection-based-conditional-access.md)
+- [パスワードの変更を必須にする](#require-password-change)
 
 これらのオプションを組み合わせることを選択する場合、管理者は次の方法を選択できます。
 
@@ -62,6 +63,8 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 ### <a name="require-hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みのデバイスを必要とする
 
 組織は、条件付きアクセス ポリシーの一部としてデバイス ID を使用することを選択できます。 組織は、このチェックボックスを使用して、デバイスがハイブリッド Azure AD 参加済みであることを必須にすることができます。 デバイス ID の詳細については、「[デバイス ID とは](../devices/overview.md)」の記事を参照してください。
+
+[デバイスコードの OAuth フロー](../develop/v2-oauth2-device-code.md)を使用する場合、マネージド デバイスを要求する許可コントロールや、デバイスの状態の条件は、サポートされません。 これは、認証を実行するデバイスがそのデバイスの状態を、コードを提供するデバイスに提供できず、トークン内のデバイスの状態が、認証を行うデバイスにロックされるためです。 代わりに、多要素認証を要求する許可コントロールを使用してください。
 
 ### <a name="require-approved-client-app"></a>承認済みクライアント アプリを必須にする
 
@@ -132,6 +135,21 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
     - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
 
 「[方法: 条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする](app-protection-based-conditional-access.md)」を参照して構成の例を確認してください。
+
+### <a name="require-password-change"></a>パスワードの変更を必須とする 
+
+ユーザー リスクが検出されると、ユーザー リスク ポリシーの条件で、管理者が Azure AD セルフサービス パスワード リセットを使用して、ユーザーがパスワードを安全に変更できるようにすることができます。 ユーザー リスクが検出された場合、ユーザーは、セルフサービス パスワード リセットを実行して自己修復し、ユーザーのリスク イベントを閉じて、管理者に対する不要なノイズが発生しないようにすることができます。 
+
+ユーザーにパスワードの変更が求められた場合は、まず多要素認証を完了する必要があります。 アカウントのリスクが検出された場合に備えて、すべてのユーザーが多要素認証に登録されていることを確認する必要があります。  
+
+> [!WARNING]
+> ユーザー リスク ポリシーをトリガーする前に、ユーザーがセルフサービス パスワード リセット に登録済みである必要があります。 
+
+パスワード変更制御を使用してポリシーを構成する場合、いくつかの制限があります。  
+
+1. ポリシーは 'すべてのクラウド アプリ' に割り当てる必要があります。 これにより、攻撃者は、別のアプリにサインインするだけで別のアプリを使用してユーザーのパスワードを変更し、アカウントのリスクをリセットすることができなくなります。 
+1. パスワードの変更要求は、準拠デバイスの要求など、他のコントロールと共に使用することができません。  
+1. パスワード変更のコントロールは、ユーザーとグループの割り当て条件、クラウド アプリの割り当て条件 ([すべて] に設定する必要があります)、およびユーザー リスク条件でのみ使用できます。 
 
 ### <a name="terms-of-use"></a>使用条件
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411124"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300608"
 ---
 # <a name="system-requirements"></a>システム要件
 
@@ -69,6 +69,9 @@ ms.locfileid: "81411124"
 次のソフトウェアがインストールされている必要があります。
 
 * 最新バージョンの **Visual Studio 2019** [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 特に、次の*ワークロード*のインストールは必須です。
+  * **C++ によるデスクトップ開発**
+  * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * **Windows SDK 10.0.18362.0** [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **GIT** [(ダウンロード)](https://git-scm.com/downloads)
 * 省略可能:デスクトップ PC のサーバーからビデオ ストリームを表示するには、**HEVC ビデオ拡張機能** [(Microsoft Store リンク)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7) が必要です。

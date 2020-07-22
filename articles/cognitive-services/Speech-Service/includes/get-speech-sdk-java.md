@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 3a4a68d45d633caf9a318cd17f1e8d94752ecfe9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 64a6bf1fec61871d2787966a5b0af24d4f012032
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673069"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637465"
 ---
 :::row:::
     :::column span="3":::
-        Android用Java SDKは、必要なライブラリとAndroid許可を含む <a href="https://developer.android.com/studio/projects/android-library" target="_blank">AAR　(Android ライブラリ） <span class="docon docon-navigate-external x-hidden-focus"></span></a>としてパッケージ化されています。 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.12.0` としてホストされます。
+        Android用Java SDKは、必要なライブラリとAndroid許可を含む <a href="https://developer.android.com/studio/projects/android-library" target="_blank">AAR　(Android ライブラリ） <span class="docon docon-navigate-external x-hidden-focus"></span></a>としてパッケージ化されています。 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.12.1` としてホストされます。
     :::column-end:::
     :::column:::
         <br>
@@ -32,7 +32,7 @@ ms.locfileid: "83673069"
 
 2. モジュールレベルでの*build.grandle*ファイルで、`dependencies` セクションに次のものを追加します：
   ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
   ```
 
 Java SDK は [Speech Devices SDK](../speech-devices-sdk.md) の一部でもあります。

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ec117172a367d014f634106b5d2405892b80ffa7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689267"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 

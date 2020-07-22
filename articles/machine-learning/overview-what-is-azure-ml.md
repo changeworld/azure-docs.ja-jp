@@ -8,12 +8,13 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: tracking-python
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593020"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738296"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -45,6 +46,8 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 + Jupyter Notebook: [サンプル ノートブック](https://aka.ms/aml-notebooks)を使用するか、独自のノートブックを作成して、<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
 
 + R スクリプトまたはノートブックでは、<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK for R</a> を使用して独自のコードを書いたり、デザイナーで R モジュールを使用したりします。
+
++ + [多くのモデルのソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
 + [Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)
 
@@ -121,16 +124,11 @@ Azure Storage アカウントやコンピューティング先などのリソー
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic Edition と Enterprise Edition
 
 Azure Machine Learning には、機械学習のニーズに合わせて調整された 2 つのエディションがあります。
-+ Basic (一般公開)
-+ Enterprise (プレビュー)
++ **Basic**:コードファースト エクスペリエンスによるクラウド規模のオープンソース開発に最適です。
 
-これらのエディションによって、開発者やデータ科学者が自分のワークスペースから利用可能な機械学習ツールはどれかが決定します。   
++ **エンタープライズ**:Basic の全機能に加え、Web インターフェイス (Studio) およびすべてのスキル レベルに対応する安全で包括的な ML ライフサイクル管理が利用できます。
 
-Basic のワークスペースでは、Azure Machine Learning を継続して使用し、機械学習プロセス中に使用した Azure リソースに対してのみ料金を支払うことができます。 Enterprise Edition のワークスペースでは、エディションがプレビュー段階にある間は、Azure の使用量に対してのみ課金されます。 Azure Machine Learning で何が利用可能かについては、[エディションの概要と価格のページ](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。 
-
-ワークスペースを作成するときは必ずエディションを割り当てます。 また、既存のワークスペースは自動的に Basic Edition に変換されています。 Basic Edition には、2019 年 10 月の時点で一般公開されていたすべての機能が含まれています。 それらのワークスペースで Enterprise Edition の機能を使用して構築された実験は、Enterprise にアップグレードするまで、読み取り専用で引き続き使用できます。 Basic のワークスペースを Enterprise Edition にアップグレードする方法については、[こちら](how-to-manage-workspace.md#upgrade)を参照してください。 
-
-この期間中、コンピューティングやその他の Azure リソースで発生するコストは、お客様の負担になります。
+これらのエディションと提供される機能の詳細については、["Azure Machine Learning のエディション" に関する記事](concept-editions.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

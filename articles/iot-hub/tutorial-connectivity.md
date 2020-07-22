@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770036"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル: シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
 このチュートリアルでは、Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイスの接続をテストします。 このチュートリアルでは、デスクトップ マシンで実行する単純なデバイス シミュレーターも使用します。
 

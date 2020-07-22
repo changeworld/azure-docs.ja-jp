@@ -2,14 +2,14 @@
 title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234963"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252728"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -572,9 +572,6 @@ Functions ランタイムのバージョン 2.x を対象とする場合、[Visu
 生成された `.funcignore` ファイルは、プロジェクトが Azure に発行されるときに除外するファイルを指定するために使用します。  
 
 TypeScript ファイル (.ts) は、`dist` 出力ディレクトリ内の JavaScript ファイル (.js) にトランスパイルされます。 TypeScript テンプレートは、`function.json` の [`scriptFile` パラメーター](#using-scriptfile)を使用して `dist` フォルダー内の対応する .js ファイルの場所を示します。 出力場所は、`tsconfig.json` ファイルの `outDir` パラメーターを使用することで、テンプレートによって設定されます。 この設定またはフォルダーの名前を変更した場合、ランタイムは実行するコードを見つけることができません。
-
-> [!NOTE]
-> TypeScript の試験的サポートは、Functions ランタイムのバージョン 1.x に含まれます。 試験版は、関数が呼び出されるときに TypeScript ファイルを JavaScript ファイルにトランスパイルします。 バージョン 2.x では、この試験的なサポートは、ホストが初期化される前およびデプロイ プロセス中にトランスパイルを実行するツール駆動方式に置き換えられています。
 
 TypeScript プロジェクトからローカルで開発およびデプロイする方法は、開発ツールによって異なります。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d151deb3b8f7a5784cd9c22bd124145be092489
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aed7c6ece045ab75571c9146c235c69f5c8d19a0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158908"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
 
@@ -108,10 +108,10 @@ Ariba で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     
-    | |
-    |--|
-    | `https://<subdomain>.sourcing.ariba.com` |
-    | `https://<subdomain>.supplier.ariba.com` |
+    ```http
+    https://<subdomain>.sourcing.ariba.com
+    https://<subdomain>.supplier.ariba.com
+    ```
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`http://<subdomain>.procurement-2.ariba.com`
 

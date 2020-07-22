@@ -7,14 +7,14 @@ author: guyhay
 ms.author: guyhay
 ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 4689714073047e383a53a04bd0069a8a27afdf9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c36b298593bf8834824f81672d754f9864a253f2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72966126"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117595"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>アカウント ポリシーを使用して Azure Data Lake Analytics を管理する
 

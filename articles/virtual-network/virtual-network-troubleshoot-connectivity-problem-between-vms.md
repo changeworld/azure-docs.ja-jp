@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83841349ec7563231653cd063791e19ae2af4857
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71056810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130672"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 
@@ -81,11 +81,15 @@ VM のアプリまたはサービスがポートをリッスンしているか�
 
 **Windows VM**
 
-    netstat –ano
+```console
+netstat –ano
+```
 
 **Linux VM**
 
-    netstat -l
+```console
+netstat -l
+```
 
 - 仮想マシン自体で **telnet** コマンドを実行して、ポートをテストします。 テストが失敗する場合は、アプリケーションまたはサービスがポートをリッスンするように構成されていません。
 

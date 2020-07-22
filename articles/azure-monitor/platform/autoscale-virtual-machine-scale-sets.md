@@ -1,15 +1,20 @@
 ---
 title: Azure Virtual Machines を使用した高度な自動スケール
-description: Resource Manager および VM Scale Sets を使用して、スケール アクション時に電子メール送信と webhook URL の呼び出しを行う複数のルールおよびプロファイルを利用します。
+description: 複数のルールおよびプロファイルと共に Resource Manager および VM スケール セットを使用して、スケール アクション時に電子メール送信と Webhook URL の呼び出しを行います。
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.date: 02/22/2016
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/25/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75364222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373881"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。

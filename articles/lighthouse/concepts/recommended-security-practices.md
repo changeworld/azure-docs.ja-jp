@@ -1,18 +1,18 @@
 ---
 title: 推奨セキュリティ プラクティス
-description: Azure の委任されたリソース管理を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。
-ms.date: 03/24/2020
+description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c620feabf5bcedc35a36104c3ba305ac9337ff0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246910"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105423"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
-[Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。 テナント内のユーザーは、顧客のサブスクリプションとリソース グループに直接アクセスできるようになるため、テナントのセキュリティを確保するための手順を実行する必要があります。 また許可の対象も、顧客のリソースを効果的に管理するうえで必要なアクセス権に限定することが必要です。 このトピックでは、そのために役立つ推奨事項を紹介しています。
+[Azure Lighthouse](../overview.md) を使用する場合、セキュリティとアクセス制御を考慮することが重要です。 テナント内のユーザーは、顧客のサブスクリプションとリソース グループに直接アクセスできるようになるため、テナントのセキュリティを確保するための手順を実行する必要があります。 また許可の対象も、顧客のリソースを効果的に管理するうえで必要なアクセス権に限定することが必要です。 このトピックでは、そのために役立つ推奨事項を紹介しています。
 
 ## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を必須とする
 
@@ -36,7 +36,7 @@ ms.locfileid: "80246910"
 |Architects     |ユーザー グループ         |\<principalId\>         |Contributor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |評価     |ユーザー グループ         |\<principalId\>         |Reader         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |VM Specialists     |ユーザー グループ         |\<principalId\>         |VM 共同作成者         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |サービス プリンシパル名 (SPN)         |\<principalId\>         |Contributor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|オートメーション     |サービス プリンシパル名 (SPN)         |\<principalId\>         |Contributor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 これらのグループを作成したら、必要に応じてユーザーを割り当てることができます。 追加するのは、本当にアクセスを必要とするユーザーに限定します。 グループ メンバーシップを定期的に見直し、メンバーに含めることへの妥当性や必要性を失ったユーザーがいれば削除してください。
 

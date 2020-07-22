@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099820"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>仮想ネットワーク サービス エンドポイントと規則を Azure Database for MariaDB に対して使用する
 
@@ -24,7 +24,7 @@ ms.locfileid: "79532112"
 > [!NOTE]
 > この機能は、Azure Database for MariaDB が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>用語と説明
 
@@ -44,7 +44,7 @@ ms.locfileid: "79532112"
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>仮想ネットワーク規則の利点
 
@@ -68,7 +68,7 @@ Azure Database for MariaDB のファイアウォールでは、Azure Database fo
 
 しかし、2018 年 8 月時点ではまだ、Azure Database for MariaDB サービスは、サブネットに直接割り当て可能なサービスの範囲には含まれていません。
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>仮想ネットワーク規則の詳細
 
@@ -101,7 +101,7 @@ Azure Database for MariaDB のファイアウォールでは、Azure Database fo
 > Azure Database for MariaDB と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
 > - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
 > - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
-> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
+> - 両方のサブスクリプションに **Microsoft.Sql** および **Microsoft.DBforMariaDB** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="limitations"></a>制限事項
 

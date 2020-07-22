@@ -4,16 +4,16 @@ description: Azure Import/Export サービスについてよく寄せられる�
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
-ms.date: 03/12/2020
+ms.topic: conceptual
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512399"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問
 
@@ -153,7 +153,7 @@ Azure ストレージ アカウントのデータにアクセスするには、A
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure Import/Export は AES-256 暗号化をサポートしていますか?
 
-いいえ。 Azure Import/Export サービスでは、AES-128 BitLocker 暗号化が既定で使用されます。
+はい。 Azure Import/Export サービスでは、AES-256 BitLocker 暗号化が既定で使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,11 +9,11 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84695829"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -41,7 +41,7 @@ TCP トンネリングを使用して、認証済みの WebSocket 接続経由�
 
 最初に、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。 
 
-[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 お使いのアプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
+[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

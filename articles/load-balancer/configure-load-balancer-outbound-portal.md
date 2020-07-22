@@ -5,15 +5,15 @@ description: この記事では、Azure portal を使用して Standard Load Bal
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589694"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367395"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Azure portal を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-load-balancer"></a>ロード バランサーの作成
 
@@ -42,10 +42,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「**myResourceGroupSLB**」と入力します。|
-    | Name                   | **myLoadBalancer**                                   |
+    | 名前                   | **myLoadBalancer**                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | 種類          | **[パブリック]** を選択します。                                        |
-    | SKU           | **[Standard]** または **[Basic]** を選択します。 Microsoft では、運用環境のワークロードに Standard をお勧めします。 |
+    | Type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** を選択します。 |
     | パブリック IP アドレス | **[新規作成]** を選択します。 使用したいパブリック IP が既にある場合は、 **[既存のものを使用]** を選択します。  既存のパブリック IP は **[Standard]** SKU である必要があります。  [Basic] パブリック IP には、 **[Standard]** SKU ロード バランサーとの互換性がありません。  |
     | パブリック IP アドレス名              | テキスト ボックスに「**myPublicIP**」と入力します。|
     | 可用性ゾーン | 回復性があるロード バランサーを作成するには、 **[ゾーン冗長]** を選択します。 ゾーンのロード バランサーを作成するには、1、2、3 の中から特定のゾーンを選択します。 |
@@ -81,7 +81,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     
     | 設定 | 値 |
     | ------- | ----- |
-    | Name | 「**myHealthProbe**」と入力します。 |
+    | 名前 | 「**myHealthProbe**」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
     | Port | 「**80**」と入力します。|
     | Interval | プローブの試行の**間隔**を示す秒数として、「**15**」を入力します。 |
@@ -108,7 +108,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     
     | 設定 | 値 |
     | ------- | ----- |
-    | Name | 「**myHTTPRule**」と入力します。 |
+    | 名前 | 「**myHTTPRule**」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
     | Port | 「**80**」と入力します。|
     | バックエンド ポート | 「**80**」と入力します。 |
@@ -130,7 +130,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     | 設定 | 値 |
     | ------- | ----- |
-    | Name | 「**LoadBalancerFrontEndOutbound**」と入力します。 |
+    | 名前 | 「**LoadBalancerFrontEndOutbound**」と入力します。 |
     | IP バージョン | **[IPv4]** を選択します。 |
     | IP の種類 | **[IP アドレス]** を選択します。|
     | パブリック IP アドレス | **[新規作成]** を選択します。 **[パブリック IP アドレスの追加]** で「**myPublicIPOutbound**」と入力します。  **[OK]** を選択します。 |
@@ -155,7 +155,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     | 設定 | 値 |
     | ------- | ----- |
-    | Name | 「**myOutboundRule**」と入力します。 |
+    | 名前 | 「**myOutboundRule**」と入力します。 |
     | フロントエンド IP アドレス | **[LoadBalancerFrontEndOutbound]** を選択します。 |
     | アイドル タイムアウト (分) | スライダーを **15 分に移動します。|
     | TCP リセット | **[Enabled]** を選択します。|

@@ -4,26 +4,25 @@ description: ご自身の Azure AD アプリにゲストがサインインでき
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551536"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
-|     |
-| --- |
-| 直接フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+
+> [!NOTE]
+>  直接フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 この記事では、B2B コラボレーションのために別の組織との直接フェデレーションを設定する方法について説明します。 任意の組織の ID プロバイダー (IdP) が SAML 2.0 または WS-Fed プロトコルをサポートしていれば、その組織との直接フェデレーションを設定することができます。
 パートナーの IdP との直接フェデレーションを設定すると、そのドメインに属する新しいゲスト ユーザーがご自身の Azure AD テナントに、そのユーザー自身の組織アカウント (IdP が管理する) を使用してサインインし、コラボレーションを開始できます。 ゲスト ユーザーが別個の Azure AD アカウントを作成する必要はありません。
@@ -221,3 +220,7 @@ PowerShell を使用して ID プロバイダーとの直接フェデレーシ�
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>次のステップ
+
+外部ユーザーがさまざまな ID プロバイダーでサインインするときの[招待の利用エクスペリエンス](redemption-experience.md)を確認します。

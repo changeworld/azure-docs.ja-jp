@@ -8,16 +8,16 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79140836"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104012"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする方法
 
-[Windows PowerShell Desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) を使用して、Windows コンピューターのソフトウェアのインストールと構成を自動化できます。 この記事では、DSC を使用して Azure Arc for servers Connected Machine エージェントをハイブリッド Windows マシンにインストールする方法について説明します。
+[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) を使用して、Windows コンピューターのソフトウェアのインストールと構成を自動化できます。 この記事では、DSC を使用して Azure Arc for servers Connected Machine エージェントをハイブリッド Windows マシンにインストールする方法について説明します。
 
 ## <a name="requirements"></a>必要条件
 
@@ -73,7 +73,7 @@ PowerShell スクリプトに渡して使用するパラメーターを次に示
 
 1. PowerShell コンソールで、`.ps1` ファイルを保存したフォルダーに移動します。
 
-2. 次の PowerShell コマンドを実行して、MOF ドキュメントをコンパイルします (DSC 構成のコンパイルについては、「[DSC 構成](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7)」をご覧ください):
+2. 次の PowerShell コマンドを実行して、MOF ドキュメントをコンパイルします (DSC 構成のコンパイルについては、「[DSC 構成](/powershell/scripting/dsc/configurations/configurations?view=powershell-7)」をご覧ください):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -87,7 +87,7 @@ PowerShell スクリプトに渡して使用するパラメーターを次に示
 
 このリソースを既存の DSC 構成に追加して、コンピューターのエンドツーエンドの構成を表すことができます。 たとえば、セキュリティで保護されたオペレーティング ステムの設定を行う構成に、このリソースを追加できます。
 
-PowerShell ギャラリーの [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) モジュールを使用して、構成例の[複合リソース](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7)を作成して、構成の組み合わせをさらにシンプルにすることができます。
+PowerShell ギャラリーの [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) モジュールを使用して、構成例の[複合リソース](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7)を作成して、構成の組み合わせをさらにシンプルにすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

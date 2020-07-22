@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/09/2020
-ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 06/15/2020
+ms.openlocfilehash: dfd439affe488805b4645211477c6d32bbbe7489
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770936"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
@@ -82,7 +82,7 @@ ms.locfileid: "81414183"
 
 並列コピーは、[データ統合ユニット](#data-integration-units) または [セルフホステッド IR ノード](#self-hosted-integration-runtime-scalability) に直交します。 すべての DIU またはセルフホステッド IR ノードでカウントされます。
 
-コピー アクティビティが実行されるたびに、Azure Data Factory は規定で、ソースシンク ペアとデータ パターンに基づいて最適な並列コピー設定を動的に適用する。 
+コピー アクティビティが実行されるたびに、Azure Data Factory では、既定で、ソースとシンクのペアおよびデータ パターンに基づいて、最適な並列コピー設定が動的に適用されます。 
 
 > [!TIP]
 > 通常、並列コピーの既定の動作では、ソースシンク ペア、データパターン、DIU の数、またはセルフホステッド IR の CPU/メモリ/ノード数に基づいて ADF によって自動決定される最適なスループットが得られます。 並列コピーを調整するタイミングについては、「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。
@@ -126,9 +126,9 @@ ms.locfileid: "81414183"
 
 ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間のステージング ストアとして Blob Storage を使用できます。 ステージングは、特に次のような場合に役立ちます。
 
-- **PolyBase を使ってさまざまなデータ ストアから SQL Data Warehouse にデータを取り込む。** SQL Data Warehouse は、大量のデータを読み込むための高スループットのメカニズムとして PolyBase を使用します。 ソース データが Blob Storage または Azure Data Lake Store にあることと追加の条件を満たすことが必要です。 Blob Storage または Azure Data Lake Store 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Azure Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用して、効率的にデータを SQL Data Warehouse に読み込みます。 詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」を参照してください。
+- **PolyBase を使用して、さまざまなデータ ストアから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを取り込む。** Azure Synapse Analytics では、大量のデータを Azure Synapse Analytics に読み込むための高スループットのメカニズムとして、PolyBase が使用されます。 ソース データが Blob Storage または Azure Data Lake Store にあることと追加の条件を満たすことが必要です。 Blob Storage または Azure Data Lake Store 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Azure Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用して、データが Azure Synapse Analytics に効率的に読み込まれます。 詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」を参照してください。
 - **ネットワーク接続が遅い場合、ハイブリッド データ移動 (オンプレミス データ ストアからクラウド データ ストアへのコピー) の実行に少し時間がかかる場合がある。** パフォーマンスを向上させるため、ステージング コピーを使用してオンプレミスのデータを圧縮することで、クラウド内のステージング データ ストアにデータを移動する時間を短縮できます。 その後、データは、ターゲット データ ストアに読み込む前に、ステージング ストアで圧縮を解除できます。
-- **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない。** たとえば、オンプレミス データ ストアから Azure SQL Database シンクまたは SQL Data Warehouse シンクにデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ステージング コピーは、セルフホステッド統合ランタイムを利用して、まずポート 443 で HTTP または HTTPS 経由で Blob Storage ステージング インスタンスにデータをコピーします。 次に、Blob Storage ステージングから SQL Database または SQL Data Warehouse にデータを読み込みます。 このフローでは、ポート 1433 を有効にする必要はありません。
+- **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない。** たとえば、オンプレミスのデータ ストアから Azure SQL Database シンクまたは Azure Synapse Analytics シンクにデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ステージング コピーは、セルフホステッド統合ランタイムを利用して、まずポート 443 で HTTP または HTTPS 経由で Blob Storage ステージング インスタンスにデータをコピーします。 次に、Blob Storage ステージングから SQL Database または Azure Synapse Analytics にデータを読み込みます。 このフローでは、ポート 1433 を有効にする必要はありません。
 
 ### <a name="how-staged-copy-works"></a>ステージング コピーのしくみ
 
@@ -147,7 +147,7 @@ ms.locfileid: "81414183"
 | プロパティ | 説明 | 既定値 | 必須 |
 | --- | --- | --- | --- |
 | enableStaging |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
-| linkedServiceName |[AzureStorage ](connector-azure-blob-storage.md#linked-service-properties) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスを表します。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
+| linkedServiceName |[AzureStorage ](connector-azure-blob-storage.md#linked-service-properties) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスを表します。 <br/><br/> PolyBase を使用してデータを Azure Synapse Analytics に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
 | path |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/> パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
 | enableCompression |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ |
 

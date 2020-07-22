@@ -4,18 +4,18 @@ description: Azure App Service にカスタムの Windows コンテナーを移�
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f2f4f707300e3ebe31f059c65492247befe324a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80046613"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169954"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する
 
 [Azure App Service](overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 Windows 環境があらかじめ構成されていることで、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます (「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照)。 ただし、App Service でカスタム Windows コンテナーを使用するとアプリで必要な OS の変更を行うことができるので、カスタム OS とソフトウェアの構成が必要なオンプレミスのアプリを簡単に移行できます。 このチュートリアルでは、Windows フォント ライブラリにインストールされているカスタム フォントを使用する ASP.NET アプリを App Service に移行する方法を示します。 Visual Studio からカスタム構成の Windows イメージを [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) に展開した後、App Service でそれを実行します。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Windows コンテナーで実行中の Web アプリを示します。](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,13 +69,13 @@ ms.locfileid: "80046613"
 
 [サポートされている親イメージ](app-service-web-get-started-windows-container.md#use-a-different-parent-image)を使用する必要があります。 `FROM` 行を次のコードに置き換えることで、親イメージを変更します。
 
-```Dockerfile
+```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 ファイルの末尾に次の行を追加し、ファイルを保存します。
 
-```Dockerfile
+```dockerfile
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
@@ -146,7 +146,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 **[基本]** タブは、次のように表示されます。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
+![Web アプリの構成に使用する [基本] タブを示します。](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Windows コンテナーを構成する
 
@@ -167,7 +167,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 Azure の処理が完了すると、通知ボックスが表示されます。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
+![Azure の処理が完了したことを示します。](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
 
 1. **[リソースに移動]** をクリックします。
 
@@ -175,17 +175,17 @@ Azure の処理が完了すると、通知ボックスが表示されます。
 
 新しいブラウザー ページが開いて次のページが表示されます。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
+![Web アプリの新しいブラウザー ページを示します。](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
 期待した美しいフォントでホーム ページが表示されるまで、数分待ってからもう一度試します。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![構成したフォントでホームページを表示します。](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 **お疲れさまでした。** Windows コンテナーで Azure App Service に ASP.NET アプリケーションを移行しました。
 
 ## <a name="see-container-start-up-logs"></a>コンテナーの起動ログの表示
 
-Windows コンテナーが読み込まれるまでにしばらく時間がかかる場合があります。 進行状況を確認するには、 *\<app_name>* をアプリの名前に置き換えて次の URL に移動します。
+Windows コンテナーが読み込まれるまでにしばらく時間がかかる場合があります。 進行状況を確認するには、 *\<app-name>* をアプリの名前に置き換えて次の URL に移動します。
 ```
 https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
@@ -201,4 +201,3 @@ https://<app-name>.scm.azurewebsites.net/api/logstream
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container ready
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container start-up and configuration completed successfully
 ```
-

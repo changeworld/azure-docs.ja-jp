@@ -74,9 +74,9 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -112,8 +112,14 @@
       items:
         - name: 共通設定の構成
           href: configure-common.md
+        - name: ASP.NET の構成
+          href: configure-language-dotnet-framework.md
+        - name: ASP.NET Core の構成
+          href: configure-language-dotnetcore.md
+        - name: Node.js の構成
+          href: configure-language-nodejs.md
         - name: PHP の構成
-          href: web-sites-php-configure.md
+          href: configure-language-php.md
         - name: Java を構成する
           href: configure-language-java.md
         - name: オンプレミスのリソースへの接続
@@ -170,6 +176,8 @@
               href: configure-authentication-provider-microsoft.md
             - name: Twitter による認証
               href: configure-authentication-provider-twitter.md
+            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+              href: configure-authentication-provider-openid-connect.md
         - name: 高度な認証
           href: app-service-authentication-how-to.md
         - name: アクセスを制限する
@@ -216,12 +224,14 @@
           href: app-service-web-app-cloning.md
         - name: 削除された App Service を復元する
           href: app-service-undelete.md
+        - name: 停止したリージョンからの復元
+          href: manage-disaster-recovery.md
     - name: アプリの移動
       items:
         - name: リージョン間の移動
           href: manage-move-across-regions.md
         - name: サブスクリプションの移動
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources'
+          href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources
     - name: バックグラウンド タスクの実行
       items:
         - name: Web ジョブの作成
@@ -237,7 +247,7 @@
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
-      href: '/powershell/module/az.websites/#app_service'
+      href: /powershell/module/az.websites/#app_service
     - name: REST API
       href: /rest/api/appservice/
     - name: Resource Manager テンプレート
@@ -253,7 +263,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: クォータの情報
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Migration Assistant のガイド

@@ -13,10 +13,10 @@ ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: c7e2b522d475a49f694a8cb57bf57f62900948b0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743185"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法

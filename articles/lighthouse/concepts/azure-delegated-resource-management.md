@@ -1,18 +1,18 @@
 ---
 title: Azure の委任されたリソース管理
-description: マネージド サービス オファーにより、サービス プロバイダーは、Azure Marketplace で顧客にリソース管理オファーを販売することができます。
-ms.date: 04/01/2020
+description: Azure の委任されたリソース管理は Azure Lighthouse の重要な部分であり、サービス プロバイダーは機敏かつ正確に、委任されたリソースを大規模に管理できます。
+ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bbe3c28cdcd252755b8350eaa5d2e72044981174
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548417"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120893"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
 
-Azure の委任されたリソース管理は、Azure Lighthouse の主要なコンポーネントの 1 つです。 Azure の委任されたリソース管理を使用すると、サービス プロバイダーは顧客のエンゲージメントとオンボードのエクスペリエンスを簡略化しながら、機敏かつ正確に委任されたリソースを大規模に管理できます。
+Azure の委任されたリソース管理は、[Azure Lighthouse](../overview.md) の主要なコンポーネントの 1 つです。 Azure の委任されたリソース管理を使用すると、サービス プロバイダーは顧客のエンゲージメントとオンボードのエクスペリエンスを簡略化しながら、機敏かつ正確に委任されたリソースを大規模に管理できます。
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Azure の委任されたリソース管理とは
 
@@ -25,7 +25,7 @@ Azure の委任されたリソース管理を使用すると、承認された�
 
 [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)により、Azure Policy、Azure Security Center などの Azure 管理サービスで、より効率的に作業を行うことができます。 サービス プロバイダーのすべてのアクティビティがアクティビティ ログに追跡され、顧客のテナントに格納されます (管理テナントのユーザーが表示できます)。 これは、顧客とサービス プロバイダーの両方が、変更に関連付けられたユーザーを簡単に識別できることを意味します。
 
-顧客を Azure の委任されたリソース管理にオンボードすると、顧客は Azure portal の新しい **[サービスプロバイダー]** ページにアクセスできるようになります。そこで、[オファー、サービス プロバイダー、委任されたリソースを確認して管理する](../how-to/view-manage-service-providers.md)ことができます。 顧客がサービス プロバイダーへのアクセスを取り消したい場合は、いつでもここでそれを行うことができます。
+顧客を Azure の委任されたリソース管理にオンボードすると、顧客は Azure portal の **[サービスプロバイダー]** ページにアクセスできるようになります。そこで、[オファー、サービス プロバイダー、委任されたリソースを確認して管理する](../how-to/view-manage-service-providers.md)ことができます。 顧客がサービス プロバイダーへのアクセスを取り消したい場合は、いつでもここでそれを行うことができます。
 
 [新しいマネージド サービス オファーの種類を Azure Marketplace に発行する](../how-to/publish-managed-services-offers.md)ことで、顧客を Azure の委任されたリソース管理に簡単にオンボードできます。 または、[Azure Resource Manager テンプレートをデプロイして、オンボード プロセスを完了する](../how-to/onboard-customer.md)こともできます。
 
@@ -40,7 +40,7 @@ Azure の委任されたリソース管理を使用すると、承認された�
 3. 顧客がオンボードされたら、承認されたユーザーは、定義されたアクセス権に基づいて、特定の顧客のスコープで、サービス プロバイダーのテナントにサインインして管理タスクを実行できます。
 
 > [!NOTE]
-> 異なるクラウド間での 2 つのテナント間のサブスクリプションの委任はサポートされていません。
+> 別の[リージョン](../../availability-zones/az-overview.md#regions)にある委任されたリソースを管理することができます。 ただし、[各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure の委任されたリソース管理のサポート
 

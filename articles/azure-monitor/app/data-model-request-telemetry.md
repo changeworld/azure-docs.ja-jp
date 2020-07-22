@@ -4,12 +4,12 @@ description: 要求テレメトリ用の Application Insights データ モデ�
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807657"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ:Application Insights データ モデル
 
@@ -21,7 +21,7 @@ ms.locfileid: "77671904"
 
 要求の名前は、要求を処理するために使用されたコード パスを表します。 小さなカーディナリティの値を使用すると、要求をより適切にグループ化できます。 HTTP 要求では、これは、実際の `id` 値ではなく、`GET /values/{id}`のような HTTP メソッドとURL パス テンプレートを表します。
 
-Application Insights Web SDK は、要求の名前の大文字小文字を "そのまま" 送信します。 UI では大文字と小文字を区別してグループ化されるため、`GET /Home/Index` と `GET /home/INDEX` は別々にカウントされます (多くの場合、これらは同じコントローラーとアクションの実行に至ります)。 区別する理由は、URL では一般的に[大文字と小文字が区別](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)されるためです。 大文字で入力した URL で `404` が発生するかどうかを確認できます。 ASP.NET Web SDK による要求名のコレクションについては、[ブログの投稿](https://apmtips.com/blog/2015/02/23/request-name-and-url/)で詳細を確認できます。
+Application Insights Web SDK は、要求の名前の大文字小文字を "そのまま" 送信します。 UI では大文字と小文字を区別してグループ化されるため、`GET /Home/Index` と `GET /home/INDEX` は別々にカウントされます (多くの場合、これらは同じコントローラーとアクションの実行に至ります)。 区別する理由は、URL では一般的に[大文字と小文字が区別](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)されるためです。 大文字で入力した URL で `404` が発生するかどうかを確認できます。 ASP.NET Web SDK による要求名のコレクションについては、[ブログの投稿](https://apmtips.com/posts/2015-02-23-request-name-and-url/)で詳細を確認できます。
 
 最大長:1024 文字
 
@@ -61,7 +61,7 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 
 コンテンツを一部受け入れる `206` が、要求全体のエラーを示していることがあります。 たとえば、Application Insights のエンドポイントがテレメトリ項目のバッチを 1 つの要求として受信している場合です。 バッチ内の一部の項目が正常に処理されなかった場合、`206` が返されます。 `206` の割合の上昇は、調査する必要がある問題の存在を示唆しています。 同様のロジックが `207` マルチステータスにも適用され、複数の応答コードの中で、最も悪いステータスが "成功" である場合があります。
 
-要求の結果コードと状態コードの詳細については、[ブログの投稿](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/)で確認できます。
+要求の結果コードと状態コードの詳細については、[ブログの投稿](https://apmtips.com/posts/2016-12-03-request-success-and-response-code/)で確認できます。
 
 ## <a name="custom-properties"></a>カスタム プロパティ
 

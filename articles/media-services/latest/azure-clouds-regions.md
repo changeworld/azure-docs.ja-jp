@@ -3,20 +3,21 @@ title: Azure Media Services v3 を使用できるクラウドとリージョン
 description: この記事では、Azure Media Services v3 を使用できる Azure クラウドとリージョンについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 5/28/2020
+ms.author: inhenkel
+ms.custom: references_regions
+ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382972"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196235"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 が存在するクラウドとリージョン
 
@@ -32,6 +33,19 @@ Azure Media Services v3 は、Azure Resource Manager マニフェストを通し
 | [StandardEncoderPreset](encoding-concept.md) | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
 | [LiveEvents](live-streaming-overview.md) | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
+
+## <a name="feature-availability-in-preview"></a>プレビューで使用できる機能
+
+[LiveTranscription](live-transcription.md) は、次のリージョンで使用できます。
+
+- 東南アジア
+- 西ヨーロッパ
+- 北ヨーロッパ
+- 米国東部
+- 米国中部
+- 米国中南部
+- 米国西部 2
+- ブラジル南部
 
 ## <a name="regionsgeographieslocations"></a>リージョン/地域/場所
 

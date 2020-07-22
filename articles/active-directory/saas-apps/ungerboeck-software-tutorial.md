@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c7a7a8fe0ef346cb26e3b0b4f14d3dae7211b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 654abe0900cd1cecd4964c344a01dafe40caeb85
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67372635"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166980"
 ---
 # <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>チュートリアル:Ungerboeck Software と Azure Active Directory の統合
 
@@ -84,23 +84,17 @@ Ungerboeck Software を使用して Azure AD の SSO を構成してテストす
 
     1. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
-       **運用環境の場合**:
+    *  **運用環境の場合**:
 
-       | |
-       |-|
-       | `https://<SUBDOMAIN>.ungerboeck.com/prod` |
-       | `https://<SUBDOMAIN>.ungerboeck.net/prod` |
-       | `https://<SUBDOMAIN>.ungerboeck.io/prod` |
-       | |
+       - `https://<SUBDOMAIN>.ungerboeck.com/prod`
+       - `https://<SUBDOMAIN>.ungerboeck.net/prod`
+       - `https://<SUBDOMAIN>.ungerboeck.io/prod`
 
-        **テスト環境の場合**:
+   * **テスト環境の場合**:
 
-       | |
-       |-|
-       | `https://<SUBDOMAIN>.ungerboeck.com/test` |
-       | `https://<SUBDOMAIN>.ungerboeck.net/test` |
-       | `https://<SUBDOMAIN>.ungerboeck.io/test` |
-       | |
+     - `https://<SUBDOMAIN>.ungerboeck.com/test`
+     - `https://<SUBDOMAIN>.ungerboeck.net/test`
+     - `https://<SUBDOMAIN>.ungerboeck.io/test`
 
    > [!NOTE]
    > これらは実際の値ではありません。 これらの値を実際のサインオン URL と識別子に更新します。これについては、このチュートリアルの「**Ungerboeck Software のシングル サインオンの構成**」セクションで後述します。

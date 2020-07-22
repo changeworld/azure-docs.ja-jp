@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976067"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
 
@@ -78,8 +78,6 @@ spec:
 
 Azure Dev Spaces を使用して、AKS クラスターに対して直接アプリケーションを開発、デバッグ、テストします。 チーム内の開発者は連携して、アプリケーション ライフサイクル全体を通してビルドとテストを行います。 Visual Studio または Visual Studio Code などの既存のツールを引き続き使用することができます。 Dev Spaces 用に拡張機能がインストールされ、AKS クラスターでのアプリケーションの実行およびデバッグのオプションが提供されます。
 
-![AKS クラスターで Dev Spaces を使用してアプリケーションをデバッグする](media/developer-best-practices-resource-management/dev-spaces-debug.png)
-
 Dev Spaces を使用するこの統合開発およびテスト プロセスにより、[minikube][minikube] などのローカル テスト環境の必要性が軽減されます。 代わりに、AKS クラスターに対する開発およびテストを行います。 クラスターを論理的に分離するための名前空間の使用に関する前のセクションで説明したように、このクラスターをセキュリティで保護し、分離することができます。 アプリを運用環境にデプロイする準備ができたら、開発は実際の AKS クラスターに対してすべて行われているため、自信を持ってデプロイできます。
 
 Azure Dev Spaces は、Linux ポッドおよびノード上で実行されるアプリケーションで使用することを目的としています。
@@ -119,7 +117,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

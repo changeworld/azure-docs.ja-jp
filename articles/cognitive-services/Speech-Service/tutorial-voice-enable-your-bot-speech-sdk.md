@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732373"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753198"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -178,7 +178,7 @@ Speech リソースを作成するには、以下の手順に従います。
 次の手順は、Azure へのエコー ボットのデプロイです。 ボットをデプロイするにはいくつかの方法がありますが、このチュートリアルでは、Visual Studio から直接発行する方法に重点を置いて説明します。
 
 > [!NOTE]
-> または、[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) と[デプロイ テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates)を使用してボットをデプロイすることもできます。
+> または、[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) と[デプロイ テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot)を使用してボットをデプロイすることもできます。
 
 1. Visual Studio から、Direct Line Speech チャネルで使用するように構成されているエコー ボットを開きます。
 
@@ -196,7 +196,8 @@ Speech リソースを作成するには、以下の手順に従います。
    * **[リソース グループ]** で、 **[SpeechEchoBotTutorial-ResourceGroup]** を選択します
    * **[ホスティング プラン]** では、 **[SpeechEchoBotTutorial-AppServicePlan]** を選択します
    * **[Application Insights]** は、 **[なし]** のままにします
-1. **[作成]**
+1. **[作成]** をクリックします。
+1. 新しく作成したプロファイルの右側の **[発行]** をクリックします
 1. Visual Studio に、次のような成功メッセージが表示されます。
 
    ```
@@ -236,7 +237,7 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure ボット チャンネル登録を作成します <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. いくつかの情報を指定するよう求められます。
-   * **[ボット ハンドル]** では、「**SpeechEchoBotTutorial-BotRegistration**」と入力します。
+   * **[ボット ハンドル]** には「**SpeechEchoBotTutorial-BotRegistration-####** 」と入力し、 **####** を任意の数に置き換えます。 ボット ハンドルはグローバルに一意である必要があることに注意してください。 ボット ハンドルを入力しても、_要求されたボット ID は使用できません_というエラー メッセージが表示された場合は、別の番号を選択します。 次の例では、8726 を使用しました
    * **[サブスクリプション]** では **[無料試用版]** を選択します。
    * **[リソース グループ]** で、 **[SpeechEchoBotTutorial-ResourceGroup]** を選択します。
    * **[場所]** では **[米国西部]** を選択します。
@@ -252,21 +253,43 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | 米国西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service プラン | 米国西部 |
-| SpeechEchoBotTutorial-BotRegistration | ボット チャネル登録 | グローバル |
+| SpeechEchoBotTutorial-BotRegistration-8726 | ボット チャネル登録 | グローバル |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | 米国西部 |
 
 > [!IMPORTANT]
 > [米国西部] を選択した場合でも、ボット チャネル登録リソースにはグローバル リージョンが表示されます。 これは予期されることです。
 
+## <a name="optional-test-in-web-chat"></a>省略可能:Web チャットでのテスト
+
+Azure ボット チャネル登録ページには、 **[ボット管理]** の下に **[Web チャットでテスト]** オプションがあります。 Web チャットはボットに対して認証する必要があるため、既定でボットでは機能しません。 テキスト入力でデプロイ済みのボットをテストする場合は、次の手順に従います。 これらの手順は省略可能であり、チュートリアルの次のステップに進むために必須ではありません。 
+
+1. [Azure portal](https://portal.azure.com) で、**EchoBotTutorial-BotRegistration-####** リソースを特定して開きます
+1. **[ボット管理]** ナビゲーションで、 **[設定]** を選択します。 **[Microsoft App ID]** の下の値をコピーします
+1. Visual Studio EchoBot ソリューションを開きます。 ソリューション エクスプローラーで、**appsettings.json** を見つけてダブルクリックします
+1. JSON ファイルの **MicrosoftAppId** の横の空の文字列を、コピーした ID 値に置き換えます
+1. Azure portal に戻って、 **[ボット管理]** ナビゲーションで、 **[設定]** を選択し、 **[Microsoft App ID]** の横にある **[(管理)]** をクリックします
+1. **[新しいクライアント シークレット]** をクリックします。 説明 (例: "web chat") を追加し、 **[追加]** をクリックします。 新しいシークレットをコピーします
+1. JSON ファイルの **MicrosoftAppPassword** の横の空の文字列を、コピーしたシークレット値に置き換えます
+1. JSON ファイルを保存します。 次のように表示されます。
+```json
+{
+  "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
+  "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
+}
+```
+9. アプリを再発行します (Visual Studio ソリューション エクスプローラーで **[EchoBot]** プロジェクトを右クリックし、 **[発行...]** を選択し、 **[発行]** ボタンをクリックします)
+10. これで、Web チャットでボットをテストする準備が整いました。
+
 ## <a name="register-the-direct-line-speech-channel"></a>Direct Line Speech チャネルを登録する
 
 次は、ボットを Direct Line Speech チャネルに登録します。 このチャネルは、エコー ボットと Speech SDK を使用してコンパイルされたクライアント アプリとの間の接続を作成するために使用されます。
 
-1. [Azure portal](https://portal.azure.com) 内で、**SpeechEchoBotTutorial-BotRegistration** リソースを特定して開きます。
-1. **[Azure サービス]** ナビゲーションで **[チャンネル]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、**SpeechEchoBotTutorial-BotRegistration-####** リソースを見つけて開きます。
+1. **[ボット管理]** ナビゲーションで、 **[チャネル]** を選択します。
    * **[その他のチャネル]** を検索し、 **[Direct Line Speech]** を特定してクリックします。
    * **[Configure Direct line Speech]\(Direct line Speech の構成\)** というページのテキストを確認し、[Cognitive service account]\(Cognitive Service アカウント\) ドロップダウン メニューを展開します。
    * 前に作成した音声リソース (例: **SpeechEchoBotTutorial-Speech**) をメニューから選択して、Speech のサブスクリプション キーにボットを関連付けます。
+   * 残りの省略可能なフィールドを無視します。
    * **[保存]** をクリックします。
 
 1. **[ボット管理]** ナビゲーションで、 **[設定]** をクリックします。
@@ -289,7 +312,7 @@ Windows 音声アシスタント クライアントには、ボットへの接�
    * 実行可能ファイルを含む ZIP パッケージをダウンロードして実行するか、または
    * リポジトリを複製し、プロジェクトをビルドすることにより実行可能ファイルを自分でビルドします。
 
-1. クライアント アプリケーションを起動して構成します。
+1. GitHub リポジトリの手順に基づいて、クライアント アプリケーションを起動し、ボットに接続するように構成します。
 1. **[再接続]** をクリックし、"**Press the mic button, or type to start talking to your bot**" (マイク ボタンを押すか、入力してボットとの対話を開始します) というメッセージが表示されることを確認します。
 1. これをテストしてみましょう。マイク ボタンをクリックし、英語でいくつかの単語を話します。 話すと、認識されたテキストが表示されます。 話し終わると、ボットは認識した単語を "エコー" に続けて独自の声で読み上げて応答します。
 1. テキストを使用してボットと通信することもできます。 下部のバーにテキストを入力するだけです。 
@@ -300,13 +323,16 @@ Windows 音声アシスタント クライアントには、ボットへの接�
 
 | エラー | 対策 |
 |-------|----------------------|
-|エラー AuthenticationFailure:認証エラー (401) で WebSocket をアップグレードできませんでした。 Check for correct subscription key (or authorization token) and region name (正しいサブスクリプション キー (または認証トークン) とリージョン名があることを確認してください)| アプリの [設定] ページで、Speech サブスクリプション キーとそのリージョンが正しく入力されていることを確認します。<br>音声キーとキーのリージョンが正しく入力されていることを確認します。 |
-|エラー ConnectionFailure:Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:We could not connect to the bot before sending a message (メッセージを送信する前にボットに接続できませんでした) | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
-|エラー ConnectionFailure:Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)」をご覧ください。|
-|エラー ConnectionFailure:Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1000。 エラーの詳細:Exceeded maximum web socket connection idle duration(> 300000 ms) (Web ソケット接続アイドル期間の最大値 (> 30 万ミリ秒) を超えました)| これは、チャネルへの接続が開いたまま、5 分より長く非アクティブになっている場合に予期されるエラーです。 |
+|エラー (AuthenticationFailure) :認証エラー (401) で WebSocket をアップグレードできませんでした。 Check for correct subscription key (or authorization token) and region name (正しいサブスクリプション キー (または認証トークン) とリージョン名があることを確認してください)| アプリの [設定] ページで、Speech サブスクリプション キーとそのリージョンが正しく入力されていることを確認します。<br>音声キーとキーのリージョンが正しく入力されていることを確認します。 |
+|エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:We could not connect to the bot before sending a message (メッセージを送信する前にボットに接続できませんでした) | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
+|エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1002。 エラーの詳細:サーバーが状態コード '101' を返すはずが、状態コード '503' を返しました | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
+|エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)」をご覧ください。|
 
-発生している問題が表に記載されていない場合は、「[音声アシスタント: よく寄せられる質問](faq-voice-assistants.md)」をご覧ください。
+発生している問題が表に記載されていない場合は、「[音声アシスタント: よく寄せられる質問](faq-voice-assistants.md)」をご覧ください。 このチュートリアルのすべての手順を実行しても問題が解決しない場合は、[Voice Assistant の GitHub ページ](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)で新しい問題を入力してください。
 
+#### <a name="a-note-on-connection-time-out"></a>接続タイムアウトに関する注意事項
+
+ボットに接続していて、最後の 5 分間にアクティビティが発生していない場合、サービスはクライアントおよびボットとの websocket 接続を自動的に閉じます。 これは仕様です。 下部のバーにメッセージが表示されます。 *"Active connection timed out but ready to reconnect on demand (アクティブな接続がタイムアウトしましたが、必要に応じて再接続できます)"* . [再接続] ボタンを押す必要はありません。マイクのボタンを押して会話を開始するか、テキスト メッセージを入力するか、キーワード (有効になっている場合) を発声してください。 接続は自動的に再確立されます。  
 ### <a name="view-bot-activities"></a>ボット アクティビティの表示
 
 すべてのボットでは、**アクティビティ** メッセージが送受信されます。 Windows 音声アシスタント クライアントの **[Activity Log]\(アクティビティ ログ\)** ウィンドウには、クライアントがボットから受信した各アクティビティのタイムスタンプ付きログが表示されます。 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) メソッドを使用して、クライアントからボットに送信されたアクティビティを確認することもできます。 ログ項目を選択すると、関連付けられているアクティビティの詳細が JSON として表示されます。
@@ -331,7 +357,7 @@ Windows 音声アシスタント クライアントには、ボットへの接�
     },
     "entities":[],
     "from":{
-        "id":"SpeechEchoBotTutorial-BotRegistration"
+        "id":"SpeechEchoBotTutorial-BotRegistration-8726"
     },
     "id":"89841b4d-46ce-42de-9960-4fe4070c70cc",
     "inputHint":"acceptingInput",

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3db3d619118be74ec1429ace70f580558c0a6c9d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368725"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134368"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリー
 
@@ -140,4 +140,4 @@ Azure Site Recovery Deployment Planner ツールの最新バージョンは 2.5 
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Deployment Planner の実行](site-recovery-hyper-v-deployment-planner-run.md)。
+* [Deployment Planner の実行](./hyper-v-deployment-planner-run.md)。

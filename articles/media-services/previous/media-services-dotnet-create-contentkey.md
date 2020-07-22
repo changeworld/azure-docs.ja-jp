@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712362"
 ---
 # <a name="create-contentkeys-with-net"></a>.NET を使用したコンテンツ キーの作成 
 > [!div class="op_single_selector"]

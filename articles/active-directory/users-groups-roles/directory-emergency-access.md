@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74028127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338281"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -44,7 +44,7 @@ ms.locfileid: "74028127"
 これらのアカウントを構成するときに、次の要件が満たされている必要があります。
 
 - 緊急アクセス用アカウントを組織内の個別ユーザーと関連付けることはできません。 アカウントが、従業員が所有する携帯電話、従業員が出張で持ち歩くハードウェア トークン、またはその他の従業員固有の資格情報と結び付けられていないことを確認します。 この予防策には、資格情報が必要なときに従業員がそれを入手できないような状況が該当します。 Azure AD との複数の通信手段がある既知の安全な場所に、登録済みのデバイスを保管しておくことが重要です。
-- 緊急アクセス用アカウントを使用する認証メカニズムは、他の緊急アクセス用アカウントを含むその他の管理アカウントで使用する認証メカニズムと別のものにする必要があります。  たとえば、通常の管理者のサインインがオンプレミスの MFA を使用する場合、Azure MFA が別のメカニズムになります。  ただし、Azure MFA が管理者アカウントの認証の主要な部分である場合は、これらには、サードパーティの MFA プロバイダーによる条件付きアクセスの使用などの別のアプローチを検討してください。
+- 緊急アクセス用アカウントを使用する認証メカニズムは、他の緊急アクセス用アカウントを含むその他の管理アカウントで使用する認証メカニズムと別のものにする必要があります。  たとえば、通常の管理者のサインインがオンプレミスの MFA を使用する場合、Azure MFA が別のメカニズムになります。  ただし、Azure MFA が管理者アカウントの認証の主要な部分である場合は、これらには、[カスタム コントロール](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)を介したサードパーティの MFA プロバイダーによる条件付きアクセスの使用などの別のアプローチを検討してください。
 - デバイスまたは資格情報は、有効期限が切れておらず、使用不足による自動クリーンアップの対象になっていないことが必要です。  
 - グローバル管理者ロールの割り当てを、緊急アクセス用アカウントに対して永続的にする必要があります。 
 
@@ -156,5 +156,5 @@ AD Domain Services および ADFS または同様の ID プロバイダーを使
 - [Azure AD を使用してユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)、および[新しいユーザーをグローバル管理者ロールに割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [Azure AD Premium へのサインアップ](../fundamentals/active-directory-get-started-premium.md) (まだサインアップしていない場合)
 - [ユーザーに 2 段階認証を要求する方法](../authentication/howto-mfa-userstates.md)
-- [Office 365 のグローバル管理者に追加の保護を構成する](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts) (Office 365 を使っている場合)
+- [Microsoft 365 のグローバル管理者に追加の保護を構成する](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts) (Microsoft 365 を使っている場合)
 - [グローバル管理者のアクセス レビューを開始する](../privileged-identity-management/pim-how-to-start-security-review.md)、および[既存のグローバル管理者をより明確な管理者ロールに移行する](directory-assign-admin-roles.md)

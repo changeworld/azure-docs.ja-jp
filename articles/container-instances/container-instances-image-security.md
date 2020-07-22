@@ -1,15 +1,15 @@
 ---
-title: コンテナー インスタンスのセキュリティ
+title: コンテナー インスタンスのセキュリティに関する考慮事項
 description: Azure Container Instances のイメージとシークレットをセキュリティで保護する推奨事項、およびコンテナー プラットフォームに関する一般的なセキュリティの考慮事項です
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457996"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907025"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
@@ -18,6 +18,9 @@ ms.locfileid: "81457996"
 > [!div class="checklist"]
 > * Azure Container Instances のイメージとシークレットの管理に関する**セキュリティについての推奨事項**
 > * 任意のコンテナー プラットフォームのコンテナー ライフサイクル全体に関する**コンテナー エコシステムの考慮事項**
+
+デプロイのセキュリティ体制を改善するために役立つ包括的な推奨事項については、「[Container Instances の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する推奨事項
 
@@ -140,6 +143,8 @@ ms.locfileid: "81457996"
 * [Azure Container Instances](container-instances-log-analytics.md) および [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) のリソース ログ
 
 ## <a name="next-steps"></a>次のステップ
+
+* デプロイのセキュリティ体制を改善するために役立つ包括的な推奨事項については、「[Container Instances の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
 
 * [Azure Security Center](../security-center/container-security.md) を使用して、コンテナー化された環境でリアルタイムの脅威検出を行う方法について詳しく学習します。
 

@@ -5,17 +5,17 @@ description: .NET クライアント ライブラリを使用して、アカウ�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 9da27cef7bafa94715a42db86fc5a5675a049eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75f4a3c835a843e824c2ac0b437843cd91824bfa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512726"
 ---
 # <a name="create-an-account-sas-with-net"></a>.NET を使用してアカウント SAS を作成する
 

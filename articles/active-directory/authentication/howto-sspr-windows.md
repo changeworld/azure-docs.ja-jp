@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743348"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826606"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>方法:Windows のログイン画面からパスワードをリセットできるようにする
 
@@ -30,7 +30,7 @@ Windows 7、8、8.1、および 10 を実行中のコンピューターでは、
 - サードパーティの一部の資格情報プロバイダーでは、この機能に関する問題が発生することがわかっています。
 - [EnableLUA レジストリ キー](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec)を変更することによって UAC を無効にすると、問題が発生することが確認されています。
 - この機能は、802.1x ネットワーク認証がデプロイされ、[ユーザー ログオンの直前に実行する] オプションが有効になっているネットワークでは動作しません。 802.1x ネットワーク認証がデプロイされているネットワークでこの機能を有効にするには、マシン認証を使用することをお勧めします。
-- ハイブリッド Azure AD 参加済みコンピューターでは、新しいパスワードの使用とキャッシュされた資格情報の更新を行うために、ドメイン コントローラーへの ネットワーク接続経路が必要です。
+- ハイブリッド Azure AD 参加済みコンピューターでは、新しいパスワードの使用とキャッシュされた資格情報の更新を行うために、ドメイン コントローラーへの ネットワーク接続経路が必要です。 これは、デバイスを組織の内部ネットワークに配置するか、オンプレミスのドメイン コントローラーにネットワーク アクセスできる VPN に配置する必要があることを意味します。 
 - イメージを使用する場合は、sysprep を実行する前に、CopyProfile 手順の実行に先立ってビルトイン Administrator に対する Web キャッシュがクリアされることを確認してください。 この手順の詳細については、[カスタムの既定のユーザー プロファイルを使用した場合のパフォーマンスの低下](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)に関するサポート記事を参照してください。
 - Windows 10 デバイスでは、以下の設定によって、パスワードの使用とリセットを行う機能が干渉されることがわかっています。
     - v1809 より前のバージョンの Windows 10 のポリシーで Ctrl + Alt + Del が求められる場合、**パスワードのリセット**は機能しません。

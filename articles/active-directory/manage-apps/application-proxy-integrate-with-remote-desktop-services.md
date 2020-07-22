@@ -3,25 +3,25 @@ title: Azure AD アプリ プロキシを使用したリモート デスクト�
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67108459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764521"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -91,7 +91,7 @@ RDS デプロイに管理者として接続し、デプロイの RD ゲートウ
 
    ![RDS の [展開プロパティ] 画面](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. 各コレクションに対してこのコマンドを実行します。 *\<yourcollectionname\>* と *\<proxyfrontendurl\>* は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
+8. 各コレクションに対してこのコマンドを実行します。 " *\<yourcollectionname\>* " と " *\<proxyfrontendurl\>* " は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

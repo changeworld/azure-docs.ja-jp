@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 6435535ee14450c590a79ea68c8855c29df8bd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637880"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539637"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Monitor を使用してハイブリッド環境の Windows コンピューターからデータを収集する
 
@@ -165,4 +165,4 @@ Azure Monitor では、指定されたイベントを Windows イベント ロ�
 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics でのデータの表示と分析](tutorial-viewdata.md)
+> [Log Analytics でのデータの表示と分析](../log-query/get-started-portal.md)

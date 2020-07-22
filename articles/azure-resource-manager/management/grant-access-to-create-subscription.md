@@ -6,16 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: b77efd7e5cf7ff016605e0ba2e74cff9ea8dab89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75474645"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057621"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
 
-[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)を結んでいる Azure の顧客は、自分のアカウントに課金されるサブスクリプションを別のユーザーまたはサービス プリンシパルが作成することを許可できます。 この記事では、[ロール ベースのアクセス制御 (RBAC)](../../active-directory/role-based-access-control-configure.md) を使用して、サブスクリプションの作成機能を共有する方法と、サブスクリプションの作成を監査する方法について説明します。 共有するアカウントに所有者ロールが必要です。
+[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)を結んでいる Azure の顧客は、自分のアカウントに課金されるサブスクリプションを別のユーザーまたはサービス プリンシパルが作成することを許可できます。 この記事では、[ロール ベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用して、サブスクリプションの作成機能を共有する方法と、サブスクリプションの作成を監査する方法について説明します。 共有するアカウントに所有者ロールが必要です。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -158,7 +158,7 @@ ms.locfileid: "75474645"
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
-    ```<enrollmentAccountObjectId>``` を最初の手順で収集した `ObjectId` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えて、次の [New-AzRoleAssignment](../../active-directory/role-based-access-control-manage-access-powershell.md) コマンドを実行します。 ```<userObjectId>``` は、2 番目の手順で収集したオブジェクト ID で置き換えます。
+    ```<enrollmentAccountObjectId>``` を最初の手順で収集した `ObjectId` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えて、次の [New-AzRoleAssignment](../../role-based-access-control/role-assignments-powershell.md) コマンドを実行します。 ```<userObjectId>``` は、2 番目の手順で収集したオブジェクト ID で置き換えます。
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -166,7 +166,7 @@ ms.locfileid: "75474645"
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-2)
 
-    ```<enrollmentAccountObjectId>``` を最初の手順でコピーした `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えて、次の [az role assignment create](../../active-directory/role-based-access-control-manage-access-azure-cli.md) コマンドを実行します。 ```<userObjectId>``` は、2 番目の手順で収集したオブジェクト ID で置き換えます。
+    ```<enrollmentAccountObjectId>``` を最初の手順でコピーした `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えて、次の [az role assignment create](../../role-based-access-control/role-assignments-cli.md) コマンドを実行します。 ```<userObjectId>``` は、2 番目の手順で収集したオブジェクト ID で置き換えます。
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -180,7 +180,7 @@ ms.locfileid: "75474645"
 
 この API を使用して作成されたサブスクリプションを追跡するには、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を使用します。 現時点では、PowerShell、CLI、または Azure Portal を使用してサブスクリプションの作成を追跡することはできません。
 
-1. Azure AD テナントのテナント管理者は、[アクセス権限を昇格](../../active-directory/role-based-access-control-tenant-admin-access.md)してから、スコープ内の監査ユーザーに閲覧者ロールを割り当てます`/providers/microsoft.insights/eventtypes/management`。
+1. Azure AD テナントのテナント管理者は、[アクセス権限を昇格](../../role-based-access-control/elevate-access-global-admin.md)してから、スコープ内の監査ユーザーに閲覧者ロールを割り当てます`/providers/microsoft.insights/eventtypes/management`。
 1. 監査ユーザーは、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を呼び出して、サブスクリプションの作成活動を確認します。 例:
 
     ```

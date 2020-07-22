@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 16e1dba8c430a5c1e1d1d69910b8ed2c8d0b8138
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5aeae50c9cb7497c20f785f2a32c96f5a4fdec1e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262844"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186981"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする
 
@@ -31,11 +31,13 @@ Azure Resource Manager デプロイ モデルを使用して Windows VM を作�
 
 Resource Manager デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、下に示すように、[Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) PowerShell コマンドレットを使用できます。
 
-    $vm_resourcegroup = "myvmresourcegroup"
-    $vm_name = "myvm"
-    $diagnosticsconfig_path = "DiagnosticsPubConfig.xml"
+```azurepowershell
+$vm_resourcegroup = "myvmresourcegroup"
+$vm_name = "myvm"
+$diagnosticsconfig_path = "DiagnosticsPubConfig.xml"
 
-    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
+Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
+```
 
 
 *$diagnosticsconfig_path* は、後の[サンプル](#sample-diagnostics-configuration)で説明するように、XML での診断構成が含まれているファイルへのパスです。  
@@ -46,18 +48,24 @@ Resource Manager デプロイ モデルを使用して作成された既存の V
 
 診断ストレージ アカウントが VM と異なるサブスクリプションに属している場合は、*StorageAccountName* パラメーターと *StorageAccountKey* パラメーターをコマンドレットに明示的に渡す必要があります。 診断ストレージ アカウントが同じサブスクリプションに属している場合、診断拡張機能を有効にすると、コマンドレットによってキー値が自動的に照会され、設定されるので、 *StorageAccountKey* パラメーターは不要です。 ただし、診断ストレージ アカウントが別のサブスクリプションに属している場合は、コマンドレットでキーを自動的に取得できないので、 *StorageAccountKey* パラメーターでキーを明示的に指定する必要があります。  
 
-    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
+```azurepowershell
+Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
+```
 
 VM で診断拡張機能が有効になったら、[Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) コマンドレットを使用して現在の設定を取得できます。
 
-    Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
+```azurepowershell
+Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
+```
 
 コマンドレットから返される *PublicSettings* には診断構成が含まれます。 サポートされている構成は WadCfg と xmlCfg の 2 種類です。 WadCfg は JSON 構成で、xmlCfg は Base64 でエンコードされた形式の XML 構成です。 XML を読み取るには、デコードする必要があります。
 
-    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
-    $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
-    $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
-    Write-Host $xmlconfig
+```azurepowershell
+$publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
+$encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
+$xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
+Write-Host $xmlconfig
+```
 
 [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) コマンドレットを使用すると、VM から診断拡張機能を削除できます。  
 
@@ -67,16 +75,20 @@ VM で診断拡張機能が有効になったら、[Get-AzVmDiagnosticsExtension
 
 クラシック デプロイ モデルを使用して作成した VM で診断拡張機能を有効にするには、 [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) コマンドレットを使用します。 次の例は、診断拡張機能を有効にしたクラシック デプロイ モデルを使用して、新しい VM を作成する方法を示しています。
 
-    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
-    $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
+```azurepowershell
+$VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+$VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
+$VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
+```
 
 クラシック デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、まず、 [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) コマンドレットを使用して VM 構成を取得します。 次に、 [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) コマンドレットを使用して、診断拡張機能を含めるように VM 構成を更新します。 最後に、 [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)を使用して、更新された構成を VM に適用します。
 
-    $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
-    $VM_Update = Set-AzureVMDiagnosticsExtension  -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
+```azurepowershell
+$VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
+$VM_Update = Set-AzureVMDiagnosticsExtension  -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
+```
 
 ## <a name="sample-diagnostics-configuration"></a>サンプルの診断構成
 上記のスクリプトを使用した診断パブリック構成には、以下の XML を使用できます。 このサンプル構成では、各種パフォーマンス カウンターが診断ストレージ アカウントに転送されます。また、Windows イベント ログのアプリケーション、セキュリティ、およびシステム チャネルのエラーと、診断インフラストラクチャ ログのエラーも転送されます。

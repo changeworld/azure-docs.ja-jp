@@ -5,15 +5,16 @@ services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 712dc62e29229f03dec12afdf18edbf55667dbdf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 16400d7f292ad5844add3d4a5fc019e84bd27127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427311"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194894"
 ---
 # <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Azure Synapse Studio を使用してワークスペースのパイプラインの実行を監視する
 

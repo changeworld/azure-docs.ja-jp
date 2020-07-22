@@ -2,21 +2,21 @@
 title: Azure AD プロビジョニングのしくみについて | Microsoft Docs
 description: Azure AD プロビジョニングのしくみについて
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
-ms.author: mimart
+ms.date: 05/20/2020
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593728"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781652"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -63,7 +63,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 Azure AD から SaaS アプリケーションへの送信プロビジョニングでは、[ユーザーまたはグループの割り当て](../manage-apps/assign-user-or-group-access-portal.md)に依存することが、プロビジョニングの対象となるユーザーを特定する最も一般的な方法です。 ユーザー割り当てはシングル サインオンの有効化にも使用されるため、アクセスとプロビジョニングの両方を管理するのに同じ方法を使用できます。 割り当てベースのスコープは、Workday や Successfactors などの受信プロビジョニング シナリオには適用されません。
 
-* **[グループ]。** Azure AD Premium ライセンス プランを利用すると、グループを使用して SaaS アプリケーションにアクセスを割り当てることができます。 プロビジョニング スコープが、**割り当てられているユーザーおよびグループのみを同期する**ように設定されている場合、Azure AD プロビジョニング サービスでは、アプリケーションに割り当てられているグループのメンバーであるかどうかに基づいてユーザーがプロビジョニングまたはプロビジョニング解除されます。 アプリケーションでグループ オブジェクトがサポートされていない場合、グループ オブジェクト自体はプロビジョニングされません。 アプリケーションに割り当てられているグループで、プロパティ "SecurityEnabled" が "False" に設定されていることを確認します。
+* **[グループ]。** Azure AD Premium ライセンス プランを利用すると、グループを使用して SaaS アプリケーションにアクセスを割り当てることができます。 プロビジョニング スコープが、**割り当てられているユーザーおよびグループのみを同期する**ように設定されている場合、Azure AD プロビジョニング サービスでは、アプリケーションに割り当てられているグループのメンバーであるかどうかに基づいてユーザーがプロビジョニングまたはプロビジョニング解除されます。 アプリケーションでグループ オブジェクトがサポートされていない場合、グループ オブジェクト自体はプロビジョニングされません。 アプリケーションに割り当てられているグループで、プロパティ "SecurityEnabled" が "True" に設定されていることを確認します。
 
 * **動的グループ。** Azure AD ユーザー プロビジョニング サービスでは、[動的グループ](../users-groups-roles/groups-create-rule.md)のユーザーの読み取りとプロビジョニングを行うことができます。 次の注意事項と推奨事項に留意してください。
 

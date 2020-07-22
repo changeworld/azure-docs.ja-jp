@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d26e8a21865304b2065a28da5e241f58cb5ab34c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 76ded60421c1f6d39328ec88e964876e3eb64d78
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68383224"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>チュートリアル: Azure Active Directory と Reflektive の統合
 
@@ -107,11 +107,8 @@ Reflektive で Azure AD シングル サインオンを構成するには、次�
 
     **[識別子]** ボックスには、Reflektive サポート チームに確認した上で、次の URL のいずれかを使用します。
 
-    | |
-    |--|
-    | `reflektive.com` |
-    | `https://www.reflektive.com/saml/metadata` |
-    | |
+    - `reflektive.com`
+    - `https://www.reflektive.com/saml/metadata`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 

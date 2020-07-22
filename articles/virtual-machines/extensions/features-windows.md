@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066849"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045911"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -150,7 +150,7 @@ VM 拡張機能は、Azure Portal から既存の VM に適用できます。 �
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
-VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は、負荷分散された一連の VM と Azure SQL データベースをデプロイし、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
+VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は、負荷分散された一連の VM と Azure SQL Database をデプロイし、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
 
 詳しくは、[Resource Manager テンプレート](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)全体をご覧ください。
 
@@ -252,7 +252,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 }
 ```
 
-拡張機能を使用する Azure IaaS VM の証明書コンソールには、 **_Windows Azure CRP Certificate Generator_** という件名の証明書が表示されることがあります。 クラシック RDFE VM の場合、証明書の件名は **_Windows Azure Service Management for Extensions_** になります。
+拡張機能を使用する Azure IaaS VM の証明書コンソールには、**_Windows Azure CRP Certificate Generator_** という件名の証明書が表示されることがあります。 クラシック RDFE VM の場合、証明書の件名は **_Windows Azure Service Management for Extensions_** になります。
 
 これらの証明書により、拡張機能によって使用される保護された設定 (パスワードやその他の資格情報) の転送中、VM とそのホストの間の通信がセキュリティで保護されます。 証明書は Azure ファブリック コントローラーによって作られ、VM エージェントに渡されます。 VM を毎日起動し、停止する場合、ファブリック コントローラーによって新しい証明書が作成されることがあります。 証明書はコンピューターの個人用証明書ストアに保存されます。 これらの証明書は削除できます。 必要に応じて、VM エージェントにより証明書が再作成されます。
 
@@ -355,7 +355,7 @@ AutoUpgradeMinorVersion     : True
 
 1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
-2. *C:\WindowsAzure\Logs\Plugins\<extensionName>* で、実際の拡張機能ログの詳細を確認します。
+2. *C:\WindowsAzure\Logs\Plugins\<extensionName>* で、実際の拡張機能ログの詳細を確認します
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。
 

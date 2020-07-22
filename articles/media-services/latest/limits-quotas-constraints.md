@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: e9855a02a57d71793f3a5d6c5ce01cbfda341b70
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 055f651552313732c000a2e91d2862cda22a9c26
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632225"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995876"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
@@ -78,7 +78,7 @@ ms.locfileid: "80632225"
 | --- | --- | 
 | Media Services アカウントあたりの[ライブ イベント数](live-events-outputs-concept.md) <sup>(4)</sup> |5|
 | ライブ イベントあたりのライブ出力 |3 <sup>(5)</sup> |
-| ライブ出力の最大期間 | 25 時間 |
+| ライブ出力の最大期間 | [DVR ウィンドウのサイズ](live-event-cloud-dvr.md) |
 
 <sup>4</sup> ライブイベントの制限の詳細については、[ライブ イベントの種類の比較と制限](live-event-types-comparison.md)に関する記事を参照してください。
 

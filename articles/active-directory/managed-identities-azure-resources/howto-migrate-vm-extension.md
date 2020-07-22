@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848391"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法
 
@@ -44,26 +44,26 @@ ms.locfileid: "80049065"
 
 以下の JSON をテンプレートの `resources` セクションに追加することで (Linux バージョンの場合、名前と型の要素に `ManagedIdentityExtensionForLinux` を使用します)、Azure Resource Manager デプロイ テンプレートを使用して、VM 拡張機能をプロビジョニングすることもできます。
 
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
+```json
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+    "apiVersion": "2018-06-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.ManagedIdentity",
+        "type": "ManagedIdentityExtensionForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "port": 50342
         }
     }
-    ```
+}
+```
     
     
 仮想マシン スケール セットを使用している場合、[Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) コマンドレットを使用して、Azure リソースのマネージド ID 仮想マシン スケール セット拡張機能をプロビジョニングすることもできます。 仮想マシン スケール セットのタイプに応じて `ManagedIdentityExtensionForWindows` または `ManagedIdentityExtensionForLinux` を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。
@@ -75,23 +75,23 @@ ms.locfileid: "80049065"
    ```
 Azure Resource Manager デプロイ テンプレートを使用して、仮想マシン スケール セット拡張機能をプロビジョニングするには、以下の JSON をテンプレートの `extensionpProfile` セクションに追加します (Linux バージョンの場合、名前と型の要素に `ManagedIdentityExtensionForLinux` を使用します)。
 
-    ```json
-    "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
+```json
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "ManagedIdentityWindowsExtension",
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                },
+                "protectedSettings": {}
             }
-    ```
+        }
+```
 
 仮想マシン拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 この場合、仮想マシンを再起動してからやり直してください。 
 
