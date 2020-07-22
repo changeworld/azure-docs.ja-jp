@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648580"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242374"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 
@@ -46,6 +46,7 @@ Azure Maps Web SDK には、次のような多くのユーザー補助機能が�
 - マップにフォーカスがある状態でマイナス記号、ハイフン (`-`)、またはアンダースコア (`_`) を使用して、1 レベル分縮小します。
 - マウス、タッチ、またはキーボードの Tab キーか Enter キーでズーム コントロールを使用します。
 - マップ上で、`Shift` ボタンを押したままマウスの左ボタンを押しながらドラッグし、マップを拡大する領域を描きます。
+- 一部のマルチタッチ パッドを使用して、2 本の指を上にドラッグしてズームアウトするか、下にドラッグしてズームインします。
 
 **マップをパンする**
 

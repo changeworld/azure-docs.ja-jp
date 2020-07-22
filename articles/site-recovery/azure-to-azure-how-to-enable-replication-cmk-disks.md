@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 07/10/2020
 ms.author: mayg
-ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92b35284fd7bbb3d4f1196ee0d9bae4ce42d7c9e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135743"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224113"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>カスタマー マネージド キー (CMK) 対応ディスクを含むコンピューターをレプリケートする
 
@@ -81,3 +81,8 @@ Site Recovery の既定のターゲット設定を変更するには、次の手
 * レプリケートされたアイテムに新しい CMK 対応ディスクを追加しました。 Azure Site Recovery でこのディスクをレプリケートするにはどうすればよいですか?
 
     既存のレプリケートされたアイテムへの新しい CMK 対応ディスクの追加はサポートされていません。 レプリケーションを無効にし、仮想マシンのレプリケーションを再度有効にしてください。
+
+* プラットフォーム キーとカスタマー マネージド キーの両方を有効にした場合、どのようにしてディスクを保護できますか?
+
+    Site Recovery では、プラットフォーム キーとカスタマー マネージド キーの両方を使用した二重暗号化の有効化がサポートされています。 コンピューターを保護するには、この記事の手順に従ってください。 二重暗号化を有効にした DES を、ターゲット リージョンに事前に作成しておく必要があります。 このような VM のレプリケーションを有効にするときに、この DES を Site Recovery に渡すことができます。
+

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196382"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200538"
 ---
 # <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
  
@@ -32,9 +32,9 @@ ms.locfileid: "83196382"
 
 ディレクトリでレガシ認証をブロックするには、その前にまず、レガシ認証を使用するアプリをユーザーが保有しているかどうかや、それがディレクトリ全体にどのような影響を与えるかを把握する必要があります。 Azure AD のサインイン ログを使用すると、レガシ認証を使用しているかどうかを把握できます。
 
-1.  **[Azure portal]**  > **[Azure Active Directory]**  > **[サインイン]** に移動します。
+1. **[Azure portal]**  >  **[Azure Active Directory]**  >  **[サインイン]** に移動します。
 1. **[クライアント アプリ]** 列が表示されていない場合は、 **[列]**  > **[クライアント アプリ]** をクリックして追加します。
-1.  **[クライアント アプリ]**   でフィルター処理し、すべての **[Legacy Authentication Clients]\(レガシ認証クライアント\)** オプションが表示されることを確認します。
+1. **[クライアント アプリ]** でフィルター処理し、すべての **[Legacy Authentication Clients]\(レガシ認証クライアント\)** オプションが表示されることを確認します。
 1. **[状態]**  >  **[成功]** でフィルター処理します。 
 1. 必要に応じて **[日付]** フィルターを使用して、日付範囲を拡張します。
 

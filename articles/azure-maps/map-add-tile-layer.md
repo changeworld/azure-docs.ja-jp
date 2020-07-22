@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988602"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242306"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
@@ -37,6 +37,7 @@ ms.locfileid: "76988602"
 * `{quadkey}` - Bing Maps タイル システムの名前付け規則に基づくタイルの quadkey 識別子。
 * `{bbox-epsg-3857}` - EPSG 3857 空間参照系の `{west},{south},{east},{north}` 形式の境界ボックス文字列。
 * `{subdomain}` - サブドメインの値のプレースホルダー。この値が指定されると、`subdomain` が追加されます。
+* `{azMapsDomain}` - タイル要求のドメインと認証を、マップで使用されているものと同じ値に合わせるためのプレースホルダー。
 
 ## <a name="add-a-tile-layer"></a>タイル レイヤーを追加する
 

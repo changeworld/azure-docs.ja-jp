@@ -1,5 +1,5 @@
 ---
-title: Python で ML モデルを解釈して説明する
+title: Python で ML モデルを解釈して説明する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用している場合に、機械学習モデルがどのように特徴量の重要度を判定して予測を行うかに関する説明を取得する方法について説明します。
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/12/2020
+ms.date: 07/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3830f65a3435c1db0291811c6306ea579bf1d896
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560200"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207141"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

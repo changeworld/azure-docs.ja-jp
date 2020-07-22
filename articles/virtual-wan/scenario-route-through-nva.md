@@ -8,16 +8,22 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0716ca8f0457ca801098c97dd7a5e68751822d4d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848104"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142973"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>シナリオ:NVA を経由するトラフィックのルーティング
 
 Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 この NVA シナリオでの目標は、NVA (ネットワーク仮想アプライアンス) を経由するブランチへのトラフィックを VNet にルーティングし、VNet へのトラフィックをブランチにルーティングすることです。 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+
+> [!NOTE]
+> これらのルーティング機能の一部は、まだロールアウト中の可能性があります。お客様のリージョンでロールアウトがまだの場合は、当面、以下の版の記事にある手順を使用してください。
+>* [Azure portal に関する記事](virtual-wan-route-table-nva-portal.md)
+>* [PowerShell に関する記事](virtual-wan-route-table-nva.md)
+>
 
 ## <a name="scenario-architecture"></a><a name="architecture"></a>シナリオのアーキテクチャ
 

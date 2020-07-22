@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733400"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223042"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
@@ -32,8 +32,8 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要に応じて、[Azure Active Directory Domain Services マネージド ドメインを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
-* Log Analytics ワークスペースにデータをストリーミングする、Azure Active Directory Domain Services マネージド ドメインに対して有効にされたセキュリティ監査イベント。
-    * 必要な場合は、[Azure Active Directory Domain Services でセキュリティ監査を有効にします][enable-security-audits]。
+* Log Analytics ワークスペースにデータをストリーミングする、マネージド ドメインに対して有効にされたセキュリティ監査イベント。
+    * 必要な場合、[Azure AD DS でセキュリティ監査を有効にします][enable-security-audits]。
 
 ## <a name="azure-monitor-workbooks-overview"></a>Azure Monitor ブックの概要
 
@@ -61,7 +61,9 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
     ![Azure portal で [ブック] メニュー オプションを選択する](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. **[Security Overview Report]\(セキュリティの概要レポート\)** を選択します。
-1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。 "*過去 7 日間*" など、 **[時間の範囲]** を選択します。
+1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。
+
+    次の例のスクリーンショットに示すように、"*Last 7 days*" (過去 7 日) などの **[時間の範囲]** を選択します。
 
     ![Azure portal で [ブック] メニュー オプションを選択する](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
@@ -85,7 +87,11 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com*)。
 1. 左側のメニューで、 **[監視] > [ブック]** を選択します。
 1. **[Account Activity Report]\(アカウント アクティビティ レポート\)** を選択します。
-1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。 "*過去 30 日*" などの **[時間の範囲]** と、 **[Tile view]\(タイル ビュー\)** でデータを表示する方法を選択します。 次のレポートの例に示すように、**アカウントのユーザー名** (*felix* など) でフィルター処理できます。
+1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。
+
+    "*過去 30 日*" などの **[時間の範囲]** と、 **[Tile view]\(タイル ビュー\)** でデータを表示する方法を選択します。
+
+    次のレポートの例に示すように、**アカウントのユーザー名** (*felix* など) でフィルター処理できます。
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

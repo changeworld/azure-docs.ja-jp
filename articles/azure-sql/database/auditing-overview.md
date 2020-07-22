@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 26569606ce2aeb9d645f82e474b728cc4044ca93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250946"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276313"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -116,6 +116,8 @@ Log Analytics ワークスペースへの監査ログの書き込みを構成す
 
    ![Log Analytics ワークスペース](./media/auditing-overview/auditing_select_oms.png)
 
+Azure Monitor ログ ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)」を参照してください。
+   
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
 
 > [!WARNING]

@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111348"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224062"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web アプリケーション ファイアウォールと Azure Policy
 
@@ -38,10 +38,12 @@ WAF リソースを管理するための組み込みの Azure Policy がいく�
 
 2.  Azure Policy サービスで、 **[作成]** の下で **[割り当て]** を選択します。
 
+[!div class="mx-imgBorder"]
 ![Azure Web アプリケーション ファイアウォール](../media/waf-azure-policy/policy-home.png)
 
 3.  [割り当て] ページで、上部にある **[ポリシーの割り当て]** アイコンを選択します。
 
+[!div class="mx-imgBorder"]
 ![Azure Web アプリケーション ファイアウォール](../media/waf-azure-policy/assign-policy.png)
 
 4.  [ポリシーの割り当て] ページの [基本] タブで、次のフィールドを更新します。
@@ -49,6 +51,7 @@ WAF リソースを管理するための組み込みの Azure Policy がいく�
     2.  **除外**:ポリシーから除外するリソースをスコープから選択します 
     3.  **ポリシーの定義**:除外対象のスコープに適用する Azure Policy を選択します。 検索バーに「Web アプリケーション ファイアウォール」と入力して、関連する Web アプリケーション ファイアウォール Azure Policy を選択します。
 
+[!div class="mx-imgBorder"]
 ![Azure Web アプリケーション ファイアウォール](../media/waf-azure-policy/policy-listing.png)
 
 

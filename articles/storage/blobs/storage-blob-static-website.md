@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccad51d18a5e76f68633103af64e9ba6cc3f19c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833348"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203380"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -76,13 +76,15 @@ ms.locfileid: "85833348"
 
 次のスクリーンショットは、Azure Portal のパブリック アクセス レベル設定を示しています。
 
-![ポータルでパブリック アクセス レベルを設定する方法を示すスクリーンショット](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![ポータルでパブリック アクセス レベルを設定する方法を示すスクリーンショット](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
 プライマリ静的 Web サイト エンドポイントは影響を受けませんが、パブリック アクセス レベルの変更は、プライマリ BLOB サービス エンドポイントには有効です。
 
 **$web** コンテナーのパブリック アクセス レベルを**プライベート (匿名アクセスなし)** から **BLOB (BLOB 専用の匿名読み取りアクセス)** に変更した場合、プライマリ静的 Web サイト エンドポイント `https://contosoblobaccount.z22.web.core.windows.net/index.html` へのパブリック アクセスのレベルは変更されません。
 
 しかし、プライマリ BLOB サービス エンドポイント `https://contosoblobaccount.blob.core.windows.net/$web/index.html` へのパブリック アクセスは、プライベートからパブリックに変更されます。 ユーザーはこれらの 2 つのエンドポイントのいずれかを使用して、このファイルを開けるようになりました。
+
+ストレージ アカウントでパブリック アクセスを無効にしても、そのストレージ アカウントでホストされている静的な Web サイトには影響しません。 詳細については、[コンテナーと BLOB の匿名パブリック読み取りアクセスの構成](anonymous-read-access-configure.md)に関するページを参照してください。
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>カスタム ドメインを静的 Web サイトの URL にマップする
 

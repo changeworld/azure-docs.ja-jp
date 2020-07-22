@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 35f92afea9f9e8da3cf1eeefa81cac0cb712843a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2802445bbb80a4412787362a3ee9aaee4adcd40
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734624"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223501"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure Active Directory Domain Services の移行
 
@@ -98,13 +98,15 @@ Azure Active Directory Domain Services (Azure AD DS) では、現在クラシッ
 
 移行後に、マネージド ドメインのドメイン コントローラーの IP アドレスが変更されます。 この変更には、Secure LDAP エンドポイントのパブリック IP アドレスが含まれます。 新しい IP アドレスは、Resource Manager 仮想ネットワークの新しいサブネットのアドレス範囲内にあります。
 
-ロールバックの場合、IP アドレスはロールバック後に変更される可能性があります。
+ロールバックする必要がある場合、IP アドレスはロールバック後に変更される可能性があります。
 
 Azure AD DS では通常、アドレス範囲内の最初の 2 つの使用可能な IP アドレスが使用されますが、これは保証されません。 現時点では、移行後に使用する IP アドレスを指定することはできません。
 
 ### <a name="downtime"></a>ダウンタイム
 
-移行プロセスでは、ドメイン コントローラーが一定の期間オフラインになります。 Azure AD DS が Resource Manager のデプロイ モデルと仮想ネットワークに移行されている間は、ドメイン コントローラーにアクセスできません。 平均して、ダウンタイムは約 1 時間から 3 時間です。 この期間は、ドメイン コントローラーがオフラインになってから、最初のドメイン コントローラーがオンラインに戻った時点までです。 この平均には、2 番目のドメイン コントローラーがレプリケートされるまでにかかる時間や、Resource Manager デプロイ モデルへの追加リソースの移行にかかる時間は含まれていません。
+移行プロセスでは、ドメイン コントローラーが一定の期間オフラインになります。 Azure AD DS が Resource Manager のデプロイ モデルと仮想ネットワークに移行されている間は、ドメイン コントローラーにアクセスできません。
+
+平均して、ダウンタイムは約 1 時間から 3 時間です。 この期間は、ドメイン コントローラーがオフラインになってから、最初のドメイン コントローラーがオンラインに戻った時点までです。 この平均には、2 番目のドメイン コントローラーがレプリケートされるまでにかかる時間や、Resource Manager デプロイ モデルへの追加リソースの移行にかかる時間は含まれていません。
 
 ### <a name="account-lockout"></a>アカウントのロックアウト
 
@@ -207,7 +209,7 @@ Azure PowerShell を使用して、マネージド ドメインを移行用に�
 
 ## <a name="migrate-the-managed-domain"></a>マネージド ドメインを移行する
 
-マネージド ドメインを準備してバックアップしたら、ドメインを移行できます。 この手順では、Resource Manager デプロイ モデルを使用して Azure AD Domain Services ドメイン コントローラー VM を再作成します。 この手順を完了するには、1 時間から 3 時間かかることがあります。
+マネージド ドメインを準備してバックアップしたら、ドメインを移行できます。 この手順では、Resource Manager デプロイ モデルを使用して Azure AD DS ドメイン コントローラー VM を再作成します。 この手順を完了するには、1 時間から 3 時間かかることがあります。
 
 *-Commit* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *aaddscontoso.com* など、前のセクションで準備したご自身のマネージド ドメインの *-ManagedDomainFqdn* を指定します。
 
@@ -248,7 +250,9 @@ Resource Manager デプロイ モデルでは、マネージド ドメインの�
 
 少なくとも 1 つのドメイン コントローラーが使用可能なときに、VM とのネットワーク接続について次の構成手順を行います。
 
-* **DNS サーバー設定の更新** - Resource Manager 仮想ネットワーク上の他のリソースでマネージド ドメインを解決して使用できるようにするには、新しいドメイン コントローラーの IP アドレスを使用して DNS 設定を更新します。 これらの設定は、Azure portal によって自動的に構成されます。 Resource Manager 仮想ネットワークを構成する方法の詳細については、「[Azure 仮想ネットワークの DNS 設定を更新する][update-dns]」を参照してください。
+* **DNS サーバー設定の更新** - Resource Manager 仮想ネットワーク上の他のリソースでマネージド ドメインを解決して使用できるようにするには、新しいドメイン コントローラーの IP アドレスを使用して DNS 設定を更新します。 これらの設定は、Azure portal によって自動的に構成されます。
+
+    Resource Manager 仮想ネットワークを構成する方法の詳細については、「[Azure 仮想ネットワークの DNS 設定を更新する][update-dns]」を参照してください。
 * **ドメインに参加している VM の再起動** - Azure AD DS ドメイン コントローラーの DNS サーバー IP アドレスが変わったため、ドメインに参加している VM を再起動します。これにより、それらの VM で新しい DNS サーバーの設定が使用されるようになります。 アプリケーションまたは VM の DNS 設定が手動で構成されている場合は、Azure portal に表示されるドメイン コントローラーの新しい DNS サーバー IP アドレスに手動で更新します。
 
 次に、仮想ネットワーク接続と名前解決をテストします。 Resource Manager 仮想ネットワークに接続またはピアリングされている VM で、次のネットワーク通信テストを行います。
@@ -270,7 +274,7 @@ Azure AD DS では、ドメイン コントローラーのイベントのトラ�
 
 テンプレートを使用して、ログで公開される重要な情報を監視できます。 たとえば、監査ログ ブック テンプレートでは、マネージド ドメインで発生する可能性があるアカウントのロックアウトを監視できます。
 
-### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services の電子メールによる通知を構成する
+### <a name="configure-email-notifications"></a>電子メール通知の構成
 
 マネージド ドメインで問題が検出されたときに通知を受けるには、Azure portal で電子メールによる通知の設定を更新します。 詳細については、[通知設定の構成][notifications]に関するページを参照してください。
 
@@ -297,7 +301,7 @@ Azure AD DS には、マネージド ドメインに必要なポートをセキ�
 
 ### <a name="roll-back"></a>ロールバック
 
-手順 2 で移行用に準備するため、または手順 3 で移行自体を行うために PowerShell コマンドレットを実行したときにエラーが発生した場合、マネージド ドメインを元の構成にロールバックできます。 このロールバックを行うには、元のクラシック仮想ネットワークが必要です。 ロールバック後も IP アドレスが変更される可能性があることに注意してください。
+手順 2 で移行用に準備するため、または手順 3 で移行自体を行うために PowerShell コマンドレットを実行したときにエラーが発生した場合、マネージド ドメインを元の構成にロールバックできます。 このロールバックを行うには、元のクラシック仮想ネットワークが必要です。 ロールバック後も IP アドレスが変更される可能性があります。
 
 *-Abort* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *aaddscontoso.com* など、前述のセクションで準備したご自身のマネージド ドメインの *-ManagedDomainFqdn* と、*myClassicVnet* など、クラシック仮想ネットワークの名前を指定します。
 

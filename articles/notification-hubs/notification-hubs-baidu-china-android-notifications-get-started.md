@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536991"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223960"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
@@ -415,8 +415,8 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 以下の画面に示すように、通知ハブの構成画面にある **[送信]** ボタンを使用して、[Azure Portal] から通知の受信テストをすばやく行うことができます。
 
-![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
-![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![赤の矢印の先に [テスト送信] オプションが赤枠で囲まれた Azure portal のスクリーンショット。](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+![Baidu の [テスト送信] ページを示す Azure portal のスクリーンショット。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。 バックエンドでライブラリを利用できない場合、REST API を直接使用して通知メッセージを送信できます。
 
@@ -436,7 +436,7 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 1. Visual C# の新しいコンソール アプリケーションを作成します。
 
-    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![[コンソール アプリケーション] Visual C# オプションが強調表示されている [新しいプロジェクト] ダイアログ ボックスのスクリーンショット。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
 
@@ -446,7 +446,7 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
     この手順により、[Microsoft.Azure.Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を利用して Azure Notification Hubs SDK に参照が追加されます。
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![[SendToNotificationHub] オプションが赤の楕円で囲まれた [パッケージ マネージャー コンソール] ダイアログ ボックスのスクリーンショット。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. `Program.cs` ファイルを開き、次の using ステートメントを追加します。
 

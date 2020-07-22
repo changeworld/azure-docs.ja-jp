@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229771"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200295"
 ---
 # <a name="azure-data-box-system-requirements"></a>Data Box のシステム要件
 
@@ -33,13 +33,19 @@ ms.locfileid: "79229771"
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Linux クライアントでサポートされるファイル システム
+
+### <a name="supported-filesystems-for-linux-clients"></a>Linux クライアントでサポートされるファイル システム
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
+
+
+> [!IMPORTANT] 
+> エクスポート注文については、Data Box 共有への接続は REST 経由でサポートされていません。 
 
 ### <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
+
 
 ### <a name="supported-storage-types"></a>サポートされているストレージの種類
 

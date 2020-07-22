@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076574"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252268"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのビジネス継続性を理解する
 
@@ -51,6 +51,10 @@ Azure Database for MariaDB で提供されるビジネス継続性機能には�
 ## <a name="cross-region-read-replicas"></a>リージョンにまたがる読み取りレプリカ
 
 リージョンにまたがる読み取りレプリカを使用すると、事業継続とディザスター リカバリーの計画を強化できます。 読み取りレプリカは、MariaDB のバイナリ ログ レプリケーション テクノロジを使用して非同期的に更新されます。 読み取りレプリカ、利用可能なリージョン、フェールオーバーする方法については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
+
+## <a name="faq"></a>よく寄せられる質問
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Azure Database for MariaDB は顧客データをどこに格納しますか?
+既定では、Azure Database for MariaDB によって、デプロイされているリージョン外に顧客データが移動または格納されることはありません。 ただし、顧客は必要に応じて、[地理冗長バックアップ](concepts-backup.md#backup-redundancy-options)を有効にするか、別のリージョンにデータを格納するための[クロスリージョン読み取りレプリカ](concepts-read-replicas.md#cross-region-replication)を作成することを選択できます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a400ae798245cc4912724c16840421d5282b3a0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112071"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277707"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保存されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションは個々の VM 障害を許容しますが、VM のデプロイ時間または個々の VM インスタンスの再イメージ化によって影響をより強く受けます。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 
  
@@ -30,17 +30,17 @@ ms.locfileid: "85112071"
  
 永続 OS ディスクとエフェメラル OS ディスクの主な違いは、次のとおりです。
 
-|                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |    |
+|                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| OS ディスクのサイズ制限      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ**については、[DS](../articles/virtual-machines/linux/sizes-general.md)、[ES](../articles/virtual-machines/linux/sizes-memory.md)、[M](../articles/virtual-machines/linux/sizes-memory.md)、[FS](../articles/virtual-machines/linux/sizes-compute.md)、および [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series) に関するページを参照してください              |
-| サポート対象の VM サイズ          | All                                                                                          | DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
-| サポート対象のディスクの種類           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
-| リージョンのサポート              | すべてのリージョン                                                                                  | すべてのリージョン                              |
-| データの永続化            | 書き込まれた OS ディスク データは Azure Storage に格納                                  | OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage に保持されない |
-| 停止と割り当て解除      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
-| 特殊化された OS ディスクのサポート | はい                                                                                          | いいえ                                                                                 |
-| OS ディスクのサイズ変更              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成時のみ変更可能                                                  |
-| VM サイズ変更時の動作   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング                                      |
+| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ**については、[DS](../articles/virtual-machines/linux/sizes-general.md)、[ES](../articles/virtual-machines/linux/sizes-memory.md)、[M](../articles/virtual-machines/linux/sizes-memory.md)、[FS](../articles/virtual-machines/linux/sizes-compute.md)、および [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series) に関するページを参照してください              |
+| **サポート対象の VM サイズ**          | All                                                                                          | Premium ストレージをサポートしている DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、LSv2、M などの VM サイズ                                               |
+| **サポート対象のディスクの種類**           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
+| **リージョンのサポート**              | すべてのリージョン                                                                                  | すべてのリージョン                              |
+| **データの永続化**            | 書き込まれた OS ディスク データは Azure Storage に格納                                  | OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage に保持されない |
+| **停止と割り当て解除**      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
+| **特殊化された OS ディスクのサポート** | はい                                                                                          | いいえ                                                                                 |
+| **OS ディスクのサイズ変更**              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成時のみ変更可能                                                  |
+| **VM サイズ変更時の動作**   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング                                      |
 
 ## <a name="size-requirements"></a>サイズの要件
 

@@ -1,5 +1,5 @@
 ---
-title: 信頼できる機械学習 (ML)
+title: 信頼できる機械学習 (ML) プレビュー
 titleSuffix: Azure Machine Learning
 description: 信頼できる ML とはどのようなものか、および Azure Machine Learning でそれを使用する方法について説明します
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 05/08/2020
-ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.date: 07/09/2020
+ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920362"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201939"
 ---
-# <a name="responsible-machine-learning-ml"></a>信頼できる機械学習 (ML)
+# <a name="responsible-machine-learning-ml-preview"></a>信頼できる機械学習 (ML) プレビュー
 
 この記事では、信頼できる ML とはどのようなもので、Azure Machine Learning でそれを実践するにはどうすればよいかについて説明します。
 

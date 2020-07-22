@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134038"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201212"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -120,7 +120,7 @@ Site Recovery を使用することで、同じ地理クラスター内の 2 つ
 レプリケーション ポリシーによって、復旧ポイントの保持履歴設定が定義されます。 このポリシーでは、アプリ整合性スナップショットの頻度も定義されます。 既定では、次のような既定の設定の新しいレプリケーション ポリシーが Azure Site Recovery で作成されます。
 
 - 復旧ポイントの保持履歴は 24 時間。
-- アプリ整合性スナップショットの頻度は 60 分。
+- アプリ整合性スナップショットの頻度は 4 時間。
 
 [レプリケーション設定についてはこちらをご覧ください](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
 
@@ -311,7 +311,7 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 
 はい、ディザスター リカバリー リージョンで[予約 Azure VM](https://azure.microsoft.com/pricing/reserved-vm-instances/) を購入することができます。Site Recovery のフェールオーバー操作でその VM が使用されます。 追加の構成は必要ありません。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 

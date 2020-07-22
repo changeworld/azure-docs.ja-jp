@@ -1,7 +1,7 @@
 ---
 title: 言語サポート - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: この記事では、Computer Vision の機能 (OCR、テキスト認識、読み取り) でサポートされる自然言語の一覧を示します。
+description: この記事では、Computer Vision の機能 (OCR、画像分析) でサポートされる自然言語の一覧を示します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560181"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205289"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
 Computer Vision の一部の機能では、複数の言語がサポートされています。ここに記載されていない機能では、英語だけがサポートされています。
 
-## <a name="text-detection-ocr"></a>テキストの検出 (OCR)
+## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
-Computer Vision では、さまざまな言語のテキストを検出できます。 Read API と OCR API では、言語コードを指定する必要はありません。 この機能および各 API の利点の詳細については、[画像やドキュメントからのテキストの読み取り](concept-recognizing-text.md)に関する記事を参照してください。
+Computer Vision の OCR API では複数の言語をサポートしています。 言語コードを指定する必要はありません。 詳細については、「[光学式文字認識 (OCR)](concept-recognizing-text.md)」を参照してください。
 
 |Language| 言語コード | OCR API | Read API |
 |:-----|:----:|:-----:|:---:|

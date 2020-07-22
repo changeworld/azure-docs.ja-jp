@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ca7aca1c11158e396c27d3f0ac37e18a9cbea361
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182731"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259982"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
-この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
+この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Azure ファイル共有をマウントするときに、エラー 5 が発生する
@@ -65,7 +65,7 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 ポート 445 から Azure Files データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
 
-ファイアウォールまたは ISP がポート 445 をブロックしているかどうかを確認するには、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ツールまたは `Test-NetConnection` コマンドレットを使用してください。 
+ファイアウォールまたは ISP がポート 445 をブロックしているかどうかを確認するには、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ツールまたは `Test-NetConnection` コマンドレットを使用してください。 
 
 `Test-NetConnection` コマンドレットを使用するには、Azure PowerShell モジュールがインストール済みである必要があります。詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
@@ -131,11 +131,11 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>Azure ファイル共有にコピーすると、エラー 1816 "このコマンドを実行するための十分なクォータがありません" が発生する
+## <a name="error-1816---not-enough-quota-is-available-to-process-this-command"></a>エラー 1816 - このコマンドを実行するのに十分なクォータがありません
 
 ### <a name="cause"></a>原因
 
-エラー 1816 は、ファイル共有がマウントされているコンピューター上のファイルに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。
+エラー 1816 は、Azure ファイル共有上のファイルまたはディレクトリに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。 詳細については、「[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)」をご覧ください。
 
 ### <a name="solution"></a>解決策
 
@@ -334,7 +334,7 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 ### <a name="self-diagnostics-steps"></a>自己診断の手順
 最初に、[Azure Files AD 認証を有効にする](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)ための 4 つのステップをすべて実行していることを確認します。
 
-次に、[ストレージ アカウント キーを使用して Azure ファイル共有をマウント](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)してみます。 マウントできない場合は、[AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) をダウンロードして、クライアントの実行環境を検証し、自己修正に関する規範的なガイダンスが提供される、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出し、診断トレースを収集します。
+次に、[ストレージ アカウント キーを使用して Azure ファイル共有をマウント](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)してみます。 マウントできない場合は、[AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) をダウンロードして、クライアントの実行環境を検証し、自己修正に関する規範的なガイダンスが提供される、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出し、診断トレースを収集します。
 
 その後、Debug-AzStorageAccountAuth コマンドレットを実行し、ログオンした AD ユーザーで AD の構成に対する一連の基本的なチェックを実行します。 このコマンドレットは、[AzFilesHybrid バージョン 0.1.2 以降](https://github.com/Azure-Samples/azure-files-samples/releases)でサポートされています。 このコマンドレットは、対象のストレージ アカウントに対する所有者アクセス許可を持っている AD ユーザーで実行する必要があります。  
 ```PowerShell

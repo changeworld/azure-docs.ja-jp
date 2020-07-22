@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning でのモデルの解釈可能性
+title: Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用して、モデルから得られる予測の理由を説明する方法について説明します。 トレーニング中と推論中に、モデルで予測が行われる方法を理解するために使用できます。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601685"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201452"
 ---
-# <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning でのモデルの解釈可能性
+# <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 ## <a name="overview-of-model-interpretability"></a>モデルの解釈可能性の概要

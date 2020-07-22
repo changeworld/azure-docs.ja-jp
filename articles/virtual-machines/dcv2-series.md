@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: e5a4c9d1afcc4caa0f9ac0db8b59274006ab3097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676558"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207431"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
@@ -41,7 +41,7 @@ Premium Storage キャッシュ:サポート対象*
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16,000/128                                                                                         | 2   | 168                                         |
 
 - DCsv2 シリーズの VM は、[第 2 世代の VM](./linux/generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみをサポートしています。
-- 現在、英国南部、カナダ中部、および米国東部のみでご利用いただけます。
+- 現在は、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)の一覧にあるリージョンで提供されています。
 - 前世代の機密コンピューティング VM:[DC シリーズ](sizes-previous-gen.md#preview-dc-series)
 - [Azure portal](./linux/quick-create-portal.md) または [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) を使用して DCsv2 VM を作成します
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099073"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203512"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -60,11 +60,11 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 
 ## <a name="azure-storage-account-size-limits"></a>Azure ストレージ アカウントのサイズ制限
 
-ここでは、ストレージ アカウントにコピーするデータのサイズ制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 これらの制限の最新情報については、「[Azure Blob Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)」および「[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)」をご覧ください。
+ここでは、ストレージ アカウントにコピーできるデータのサイズに関する制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 
 
-| Azure ストレージ アカウントにコピーするデータのサイズ                      | 既定の制限          |
-|---------------------------------------------------------------------|------------------------|
-| ブロック BLOB とページ BLOB                                            | ストレージ アカウントあたり 500 TB。 <br> これには、Data Box Disk を含むすべてのソースのデータが含まれます。|
+| データの種類             | 既定の制限          |
+|--------------------------|------------------------|
+| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure オブジェクトのサイズ制限

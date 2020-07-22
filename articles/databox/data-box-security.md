@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817714"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200407"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -30,11 +30,14 @@ Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 �
 - **デバイスに接続されるクライアント/ホスト** – お客様のインフラストラクチャにおいて保護の対象となるデータを格納しているクライアント。Data Box デバイスに接続されます。
 - **クラウド ストレージ** – Azure クラウド内のデータの保存先となる場所。 通常は、お客様が作成した Azure Data Box リソースにリンクされたストレージ アカウントです。
 
-次の図は、Azure Data Box ソリューションを通じてオンプレミスから Azure に向かうデータのフローを示します。
+次の図は、Azure Data Box ソリューションを通じてオンプレミスから Azure に向かうデータのフローを示します。 このフローは Data Box のインポート注文に関するものです。
 
 ![Data Box のセキュリティ](media/data-box-security/data-box-security-2.png)
 
-データがこのソリューションを通過すると、イベントがログに記録され、ログが生成されます。 詳細については、[Azure Data Box の追跡とイベントのログ記録](data-box-logs.md)に関する記事を参照してください。
+データがこのソリューションを通過すると、イベントがログに記録され、ログが生成されます。 詳細については、次を参照してください。
+
+- [Azure Data Box インポート注文の追跡とイベントのログ記録](data-box-logs.md)に関するページ
+- [Azure Data Box エクスポート注文の追跡とイベントのログ記録](data-box-export-logs.md)に関するページ
 
 ## <a name="security-features"></a>セキュリティ機能
 
