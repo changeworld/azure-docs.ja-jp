@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 89450e5518d854fbc31b43324ecb05f47e1ab5ac
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.date: 07/10/2020
+ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970996"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276636"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、サーバーの動作の分析情報を提供する各種の監視オプションが用意されています。
@@ -34,7 +34,7 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 |serverlog_storage_usage|サーバー ログ ストレージの使用量|バイト|使用されているサーバー ログ ストレージの量。|
 |serverlog_storage_limit|サーバー ログ ストレージの上限|バイト|このサーバーの最大サーバー ログ ストレージ。|
 |active_connections|アクティブな接続|Count|サーバーへのアクティブな接続の数|
-|connections_failed|失敗した接続|Count|サーバーへの失敗した接続の数|
+|connections_failed|失敗した接続|Count|確立後、失敗した接続の数。|
 |network_bytes_egress|Network Out|バイト|アクティブな接続全体のネットワーク送信。|
 |network_bytes_ingress|Network In|バイト|アクティブな接続全体のネットワーク受信。|
 |backup_storage_used|使用済みバックアップ ストレージ|バイト|使用されているバックアップ ストレージの量。|

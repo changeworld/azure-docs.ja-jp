@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601389"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206156"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -413,6 +413,8 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - "マウント ポイントが入れ子になっている"、つまり、1 つのパスに複数のマウント ポイントがある ("/1stmountpoint/data/2stmountpoint" など) VM。
 - OS フォルダーの上にデータ ドライブがマウントされている VM。
 - 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
+- [ユーザーが管理するキーを使用して実行するサーバー側の暗号化](disk-encryption.md)を、ADE によって暗号化された VM に適用する (その逆も同様)。
+- ADE を使用して暗号化された VM を[ユーザーが管理するキーを使用して実行するサーバー側の暗号化](disk-encryption.md)に移行する。
 
 ## <a name="next-steps"></a>次のステップ
 

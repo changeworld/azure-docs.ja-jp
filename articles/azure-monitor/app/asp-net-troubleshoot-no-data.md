@@ -3,12 +3,12 @@ title: データが存在しない場合のトラブルシューティング - A
 description: Auzre Application Insights にデータが表示されない場合は、 ここで解決してください。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485163"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221036"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -124,7 +124,7 @@ Application Insights をインストールしているとき、またはログ �
 *アプリを実行し、Microsoft Azure の Application Insights サービスを開きましたが、どのグラフでも、データの収集方法についての説明か、必要な構成が行われていないという内容のメッセージしか表示されません。* または、*ページ ビューとユーザー データだけが表示され、サーバー データが表示されません。*
 
 * Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。 ある程度テレメトリを生成するために、アプリケーションを使用します。 記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![Visual Studio のデバッグ モードでのアプリケーションの実行を示すスクリーンショット。](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Application Insights ポータルで [診断検索](../../azure-monitor/app/diagnostic-search.md)を開きます。 通常、まずここにデータが表示されます。
 * [更新] ボタンをクリックします。 ブレードは周期的に自動で更新されますが、手動でも更新できます。 時間範囲が広いと、更新間隔は長くなります。
 * インストルメンテーション キーが一致していることを確認します。 Application Insights ポータルのアプリのメイン ブレードで、 **[要点]** ボックスの一覧に表示される **[インストルメンテーション キー]** を確認します。 次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、 `<instrumentationkey>`を探します。 2 つのキーが等しいことを確認してください。 等しくない場合は、次の作業を行います。  

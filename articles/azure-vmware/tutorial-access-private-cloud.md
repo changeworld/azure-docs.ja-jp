@@ -3,12 +3,12 @@ title: チュートリアル - プライベート クラウドにアクセスす
 description: Azure VMware Solution (AVS) プライベート クラウドにアクセスする方法を学習する
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32dc5c173789996d2559eda1153b1509e10e5984
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873599"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497966"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>チュートリアル:Azure VMware Solution (AVS) プライベート クラウドにアクセスする方法を学習する
 
@@ -43,7 +43,7 @@ ms.locfileid: "83873599"
 | **ユーザー名** | VM にログオンするためのユーザー名を入力します。 |
 | **パスワード** | VM にログオンするためのパスワードを入力します。 |
 | **[パスワードの確認入力]** | VM にログオンするためのパスワードを入力します。 |
-| **パブリック インバウンド ポート** | **[なし]** を選択します。 [なし] を選択した場合は、[JIT アクセス](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-)を使用して、VM にアクセスする必要があるときにのみ VM へのアクセスを制御できます。  |
+| **パブリック インバウンド ポート** | **[なし]** を選択します。 [なし] を選択した場合は、[JIT アクセス](../security-center/security-center-just-in-time.md#jit-configure)を使用して、VM にアクセスする必要があるときにのみ VM へのアクセスを制御できます。  |
 
 適切な情報を入力したら、 **[確認および作成]** をクリックします。 検証に合格したら、 **[作成]** を選択して仮想マシンの作成プロセスを開始します。
 

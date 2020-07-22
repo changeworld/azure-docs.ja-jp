@@ -1,5 +1,5 @@
 ---
-title: 自動 ML での説明可能性
+title: 自動 ML での説明可能性 (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用している場合に、自動 ML モデルがどのように特徴量の重要度を判定して予測を行うかに関する説明を取得する方法について説明します。
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: mesameki
 author: mesameki
-ms.date: 03/11/2020
-ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430532"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206593"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>解釈可能性: 自動機械学習のモデルの説明
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>解釈可能性: 自動機械学習のモデルの説明 (プレビュー)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "84430532"
 
 1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `AutoMLConfig` オブジェクトに `model_explainability=True` を設定する必要があります。 
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 - 最良のモデルまたは任意のモデルのトレーニング中の解釈可能性を実行する。
 - データや説明のパターンを確認するのに役立つ視覚化を有効にする。

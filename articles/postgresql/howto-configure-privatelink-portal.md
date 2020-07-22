@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 6986d5882e4d62ffc2e25b7ea998f46f41c67330
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f05b70c8197283d9fa576d6ea464aa08554dd773
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102465"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206770"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
@@ -164,7 +164,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
-    | Subnet |  *[mySubnet]* を選択します。 |
+    | Subnet | *[mySubnet]* を選択します。 |
     |**プライベート DNS 統合**||
     |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
     |プライベート DNS ゾーン |*[(New)privatelink.postgres.database.azure.com]\((新規)privatelink.postgres.database.azure.com\)* を選択します |
@@ -209,7 +209,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>VM から PostgreSQL サーバーにプライベートにアクセスする
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
 2. 「 `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`」と入力します。 
 
@@ -246,7 +246,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、PostgreSQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
 
-1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。
+1. ポータルの上部にある**検索**ボックスに「*myResourceGroup*」と入力し、検索結果から  *myResourceGroup*  を選択します。
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 

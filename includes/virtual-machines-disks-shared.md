@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868053"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277946"
 ---
 Azure 共有ディスク (プレビュー) は、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
 
@@ -41,7 +41,7 @@ WSFC (クラスター ノード通信のすべてのコア インフラストラ
 
 WSFC で実行される一般的なアプリケーションには、次のようなものがあります。
 
-- SQL Server フェールオーバー クラスター インスタンス (FCI)
+- [Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - スケールアウト ファイル サーバー (SoFS)
 - 汎用のファイル サーバー (IW ワークロード)
 - リモート デスクトップ サーバー ユーザー プロファイル ディスク (RDS UPD)
@@ -87,7 +87,12 @@ Ultra ディスクから追加のスロットルが与えられ、スロット�
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="予約所有者、登録済み、その他に対する読み取り専用または読み取り/書き込みのアクセス権を示すテーブルの画像。":::
 
-## <a name="ultra-disk-performance-throttles"></a>Ultra ディスク パフォーマンス スロットル
+## <a name="performance-throttles"></a>パフォーマンス スロットル
+
+### <a name="premium-ssd-performance-throttles"></a>Premium SSD パフォーマンス スロットル
+Premium SSD では、ディスクの IOPS とスループットが固定になります。たとえば、P30 の IOPS は 5000 です。 ディスクが 2 つの VM 間で共有される場合でも、5 つの VM 間で共有される場合でも、この値は変わりません。 ディスク上限に 1 つの VM で到達することもあれば、ディスク上限が 2 つ以上の VM 間で分割されることもあります。 
+
+### <a name="ultra-disk-performance-throttles"></a>Ultra ディスク パフォーマンス スロットル
 
 Ultra ディスクには、変更可能な属性を公開して変更を許可するという方法でパフォーマンス設定をユーザーに許可する独特の機能があります。 既定では変更可能な属性は 2 つだけですが、共有 Ultra ディスクには 2 つの属性が追加されています。
 
@@ -111,23 +116,23 @@ Ultra ディスクには、変更可能な属性を公開して変更を許可�
     - ディスク 1 つのスループット上限はプロビジョニングされた IOPS ごとに毎秒 256 KiB であり、ディスクあたり最大 2,000 MBps となる
     - ディスクあたりで保証される最小スループットはプロビジョニングされた IOPS ごとに毎秒 4 KiB であり、全体的ベースラインは最小 1 MBps となる
 
-### <a name="examples"></a>例
+#### <a name="examples"></a>例
 
 次の例で取り上げるシナリオからは、共有 Ultra ディスクを具体的にどのように調整できるかわかります。
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>クラスター共有ボリュームを使用する 2 つのノード クラスター
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>クラスター共有ボリュームを使用する 2 つのノード クラスター
 
 次は、クラスター化された共有ボリュームを使用する 2 ノード WSFC の例です。 この構成では、両方の VM でディスクに同時に書き込みアクセスできます。その結果、2 つの VM 間で ReadWrite スロットルが分割され、ReadOnly スロットルは使用されません。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 2 ノード Ultra の例":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>クラスター共有ボリュームのない 2 つのノード クラスター
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>クラスター共有ボリュームのない 2 つのノード クラスター
 
 次は、クラスター化された共有ボリュームを使用しない 2 ノード WSFC の例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に ReadWrite スロットルが使用され、ReadOnly スロットルはセカンダリでのみ使用されます。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 2 ノードで CSV Ultra ディスクなしの例":::
 
-#### <a name="four-node-linux-cluster"></a>4 ノード Linux クラスター
+##### <a name="four-node-linux-cluster"></a>4 ノード Linux クラスター
 
 次は、シングル ライターが 1 つ、スケールアウト リーダーが 3 つ与えられた 4 ノード Linux クラスターの例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に ReadWrite スロットルが使用され、ReadOnly スロットルはセカンダリ VM によって分割されます。
 

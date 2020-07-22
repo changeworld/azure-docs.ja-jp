@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/10/2020
-ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: add2e0cc2852f9ab0b63565841f670ed6c53d9a7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669530"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206122"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用した単一データベースに対するリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -126,12 +126,12 @@ ms.locfileid: "84669530"
 |列ストアをサポート|はい|はい|はい|はい|はい|はい|
 |インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |最大データ サイズ (TB)|100 |100 |100 |100 |100 |100|
-|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |
+|最大ログ サイズ (TB)|無制限 |無制限 |無制限 |無制限 |無制限 |無制限 |
 |TempDB の最大データ サイズ (GB)|32|64|96|128|160|192|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
-|最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ローカル SSD IOPS *|4000 |8000 |12000 |16000 |20000 |24000 |
 |最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |
-|IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
+|IO 待機時間 (概算)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
 |最大同時実行ワーカー (要求) 数|200|400|600|800|1000|1200|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|
 |セカンダリ レプリカ|0-4|0-4|0-4|0-4|0-4|0-4|
@@ -139,6 +139,8 @@ ms.locfileid: "84669530"
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|
 |バックアップ ストレージのリテンション期間|7 日|7 日|7 日|7 日|7 日|7 日|
 |||
+
+\* ローカル SSD IO に加えて、ワークロードでは、リモート [ページ サーバー](service-tier-hyperscale.md#page-server) IO が使用されます。 有効な IOPS はワークロードによって異なります。 詳細については、[データ IO ガバナンス](resource-limits-logical-server.md#resource-governance)に関する記事、および「[リソース使用率の統計でのデータ IO](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)」を参照してください。
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 コンピューティング世代 (パート 2)
 
@@ -151,12 +153,12 @@ ms.locfileid: "84669530"
 |列ストアをサポート|はい|はい|はい|はい|はい|はい|
 |インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |
-|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |
+|最大ログ サイズ (TB)|無制限 |無制限 |無制限 |無制限 |無制限 |無制限 |
 |TempDB の最大データ サイズ (GB)|224|256|288|320|512|768|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
-|最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ローカル SSD IOPS *|28000 |32000 |36000 |40000 |64000 |76800 |
 |最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |
-|IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
+|IO 待機時間 (概算)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
 |最大同時実行ワーカー (要求) 数|1400|1600|1800|2000|3200|4800|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|
 |セカンダリ レプリカ|0-4|0-4|0-4|0-4|0-4|0-4|
@@ -165,7 +167,7 @@ ms.locfileid: "84669530"
 |バックアップ ストレージのリテンション期間|7 日|7 日|7 日|7 日|7 日|7 日|
 |||
 
-\* IO サイズの最大値。範囲は 8 KB ～ 64 KB。 実際の IOPS はワークロードに依存します。 詳細については、[データ IO のガバナンス](resource-limits-logical-server.md#resource-governance)に関するページを参照してください。
+\* ローカル SSD IO に加えて、ワークロードでは、リモート [ページ サーバー](service-tier-hyperscale.md#page-server) IO が使用されます。 有効な IOPS はワークロードによって異なります。 詳細については、[データ IO ガバナンス](resource-limits-logical-server.md#resource-governance)に関する記事、および「[リソース使用率の統計でのデータ IO](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)」を参照してください。
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>Hyperscale - プロビジョニング済みコンピューティング - Gen5
 
@@ -180,12 +182,12 @@ ms.locfileid: "84669530"
 |列ストアをサポート|はい|はい|はい|はい|はい|はい|はい|
 |インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |100|
-|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |1 |
+|最大ログ サイズ (TB)|無制限 |無制限 |無制限 |無制限 |無制限 |無制限 |無制限 |
 |TempDB の最大データ サイズ (GB)|64|128|192|256|320|384|448|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
-|最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ローカル SSD IOPS *|8000 |16000 |24000 |32000 |40000 |48000 |56000 |
 |最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |100 |
-|IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
+|IO 待機時間 (概算)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
 |最大同時実行ワーカー (要求) 数|200|400|600|800|1000|1200|1400|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |セカンダリ レプリカ|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
@@ -194,7 +196,7 @@ ms.locfileid: "84669530"
 |バックアップ ストレージのリテンション期間|7 日|7 日|7 日|7 日|7 日|7 日|7 日|
 |||
 
-\* IO サイズの最大値。範囲は 8 KB ～ 64 KB。 実際の IOPS はワークロードに依存します。 詳細については、[データ IO のガバナンス](resource-limits-logical-server.md#resource-governance)に関するページを参照してください。
+\* ローカル SSD IO に加えて、ワークロードでは、リモート [ページ サーバー](service-tier-hyperscale.md#page-server) IO が使用されます。 有効な IOPS はワークロードによって異なります。 詳細については、[データ IO ガバナンス](resource-limits-logical-server.md#resource-governance)に関する記事、および「[リソース使用率の統計でのデータ IO](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)」を参照してください。
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 コンピューティング世代 (パート 2)
 
@@ -207,12 +209,12 @@ ms.locfileid: "84669530"
 |列ストアをサポート|はい|はい|はい|はい|はい|はい|はい|
 |インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |100 |
-|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |1 |
+|最大ログ サイズ (TB)|無制限 |無制限 |無制限 |無制限 |無制限 |無制限 |無制限 |
 |TempDB の最大データ サイズ (GB)|512|576|640|768|1024|1280|2560|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
-|最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ローカル SSD IOPS *|64000 |72000 |80000 |96000 |160000 |192000 |204800 |
 |最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |100 |
-|IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
+|IO 待機時間 (概算)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
 |最大同時実行ワーカー (要求) 数|1600|1800|2000|2400|3200|4000|8000|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |セカンダリ レプリカ|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
@@ -221,15 +223,13 @@ ms.locfileid: "84669530"
 |バックアップ ストレージのリテンション期間|7 日|7 日|7 日|7 日|7 日|7 日|7 日|
 |||
 
-\* IO サイズの最大値。範囲は 8 KB ～ 64 KB。 実際の IOPS はワークロードに依存します。 詳細については、[データ IO のガバナンス](resource-limits-logical-server.md#resource-governance)に関するページを参照してください。
+\* ローカル SSD IO に加えて、ワークロードでは、リモート [ページ サーバー](service-tier-hyperscale.md#page-server) IO が使用されます。 有効な IOPS はワークロードによって異なります。 詳細については、[データ IO ガバナンス](resource-limits-logical-server.md#resource-governance)に関する記事、および「[リソース使用率の統計でのデータ IO](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)」を参照してください。
 
 #### <a name="notes"></a>Notes
 
 **注 1**: Hyperscale は、個別のコンピューティングとストレージ コンポーネントを含む多層アーキテクチャです。[Hyperscale サービス レベルのアーキテクチャ](service-tier-hyperscale.md#distributed-functions-architecture)
 
-**注 2**: Hyperscale 多層アーキテクチャには、複数のレベルのキャッシュが存在します。 有効な IOPS はワークロードによって異なります。
-
-**注 3**: コンピューティング レプリカの RBPEX SSD ベースでキャッシュされるデータについては、待機時間は 1 から 2 ミリ秒です。これにより、最も使用されているデータ ページがキャッシュされます。 ページ サーバーから取得したデータは、待機時間が長くなります。
+**注 2**: ローカル コンピューティング レプリカ SSD 上にあるデータの待機時間は 1 から 2 ミリ秒です。これにより、最も使用されているデータ ページがキャッシュされます。 ページ サーバーから取得したデータは、待機時間が長くなります。
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>General Purpose - プロビジョニング済みコンピューティング - Gen4
 

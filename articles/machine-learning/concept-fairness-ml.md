@@ -1,5 +1,5 @@
 ---
-title: 機械学習モデルでの公平性に関する問題を評価して軽減する
+title: 機械学習モデルでの公平性に関する問題を評価して軽減する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: 機械学習モデルでの公平性と、Fairlearn Python パッケージを使用してより公平なモデルを構築する方法について説明します。
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: c4e9b8386c8341d076a69e2e81b5e92f296153ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611783"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207296"
 ---
-# <a name="build-fairer-machine-learning-models"></a>公平な機械学習モデルを構築する
+# <a name="build-fairer-machine-learning-models-preview"></a>公平な機械学習モデルを構築する (プレビュー)
 
 機械学習での公平性と、[Fairlearn](https://fairlearn.github.io/) オープンソース Python パッケージを使用してより公平なモデルを構築する方法について説明します。 機械学習モデルを構築するとき、公平性の問題を理解し公平性を評価するよう努力しなかった場合、不公平な結果を生成するモデルが構築されることがあります。 
 

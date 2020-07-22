@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3cf2603dec7e921159824f565336cd91a575731
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537212"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205670"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -45,14 +45,14 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 
 |                                     | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| 作成、更新、読み取り、書き込み、削除 | X | X | X |
-| SSL 接続 | X | X | X |
-| SQL クエリのオート コンプリート | X | X |  |
-| データのインポートとエクスポート | X | X | X | 
-| 複数の形式へのエクスポート | X | X | X |
-| バックアップと復元 |  | X |  |
-| サーバー パラメーターの表示 | X | X | X |
-| クライアント接続の表示 | X | X | X |
+| **作成、更新、読み取り、書き込み、削除** | X | X | X |
+| **SSL 接続** | X | X | X |
+| **SQL クエリのオート コンプリート** | X | X |  |
+| **データのインポートとエクスポート** | X | X | X |
+| **複数の形式へのエクスポート** | X | X | X |
+| **バックアップと復元** |  | X |  |
+| **サーバー パラメーターの表示** | X | X | X |
+| **クライアント接続の表示** | X | X | X |
 
 ## <a name="next-steps"></a>次のステップ
 

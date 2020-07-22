@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/27/2020
+ms.date: 7/10/2020
 ms.author: raynew
-ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132414"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219880"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -76,6 +76,7 @@ HTTPS プロキシ | いいえ | いいえ
 
 
 
+
 ## <a name="azure-vm-network-configuration-after-failover"></a>Azure VM ネットワーク構成 (フェールオーバー後)
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
@@ -136,11 +137,13 @@ geo 冗長ストレージ | はい | はい
 ブロック blob | いいえ | いいえ
 保存時の暗号化 (SSE)| はい | はい
 保存時の暗号化 (CMK) <br></br> (マネージド ディスクへのフェールオーバーの場合のみ)| はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
+保存時の二重暗号化 <br></br> (マネージド ディスクへのフェールオーバーの場合のみ) <br></br> [Windows](../virtual-machines/windows/disk-encryption.md) および [Linux](../virtual-machines/linux/disk-encryption.md) でサポートされているリージョンの詳細について参照してください | はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
 Premium Storage | はい | はい
 Standard Storage | はい | はい
 Import/Export サービス | いいえ | いいえ
 ファイアウォールが有効になっている Azure Storage アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
 ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure Storage アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
+転送オプションのセキュリティ保護 | はい
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能

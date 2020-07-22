@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 3efccc44255067b7e47c468c9a35853def2fce69
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085856"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221019"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -37,6 +37,9 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 * Hive ストリーミングを使用して DataFrame または Spark ストリームを Hive に書き込む
 
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector の設定
+
+> [!IMPORTANT]
+> Spark 2.4 Enterprise セキュリティ パッケージ クラスターにインストールされている HiveServer2 Interactive インスタンスは、Hive Warehouse Connector での使用がサポートされていません。 代わりに、HiveServer2 Interactive ワークロードをホストするために、別の HiveServer2 Interactive クラスターを構成する必要があります。 単一の Spark 2.4 クラスターを利用する Hive Warehouse Connector の構成はサポートされていません。
 
 Hive Warehouse Connector には、Spark ワークロードと Interactive Query ワークロード用に、個別のクラスターが必要です。 次の手順に従って、Azure HDInsight にこれらのクラスターを設定します。
 
@@ -72,7 +75,7 @@ Hive Warehouse Connector には、Spark ワークロードと Interactive Query 
 
     | 構成 | 値 |
     |----|----|
-    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` <br> HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるように、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。 |
+    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるように、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。 |
     |`spark.sql.hive.hiveserver2.jdbc.url`| **HiveServer2 Interactive JDBC URL** から先ほど取得した値 |
     |`spark.datasource.hive.warehouse.metastoreUri`| **hive.metastore.uris** から先ほど取得した値。 |
     |`spark.security.credentials.hiveserver2.enabled`|YARN クラスター モードの場合は `true`、YARN クライアント モードの場合は `false`。 |
@@ -95,11 +98,11 @@ Enterprise セキュリティ パッケージ (ESP) を使用すると、Active 
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    * Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` に移動します。ここで、CLUSTERNAME は Interactive Query クラスターの名前です。 **[HiveServer2 Interactive]** クリックします。 スクリーンショットに示されているように、LLAP が実行されているヘッド ノードの完全修飾ドメイン名 (FQDN) が表示されます。 `<llap-headnode>` をこの値と置き換えます。
+    * Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` に移動します。ここで、CLUSTERNAME は Interactive Query クラスターの名前です。 **[HiveServer2 Interactive]** をクリックします。 スクリーンショットに示したように、LLAP を実行しているヘッド ノードの完全修飾ドメイン名 (FQDN) が表示されます。 `<llap-headnode>` は、この値に置き換えます。
 
         ![Hive Warehouse Connector のヘッド ノード](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
-    * [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して Interactive Query クラスターに接続します。 `/etc/krb5.conf` ファイルで `default_realm` パラメーターを探します。 `<AAD-DOMAIN>` を、この値を大文字の文字列にして置き換えます。そうしないと、資格情報が見つかりません。
+    * [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して Interactive Query クラスターに接続します。 `/etc/krb5.conf` ファイルで `default_realm` パラメーターを探します。 `<AAD-DOMAIN>` は、その値に置き換えます。値の文字列は大文字にしてください。そうしないと、資格情報が見つからなくなります。
 
         ![Hive Warehouse Connector の AAD ドメイン](./media/apache-hive-warehouse-connector/aad-domain.png)
 

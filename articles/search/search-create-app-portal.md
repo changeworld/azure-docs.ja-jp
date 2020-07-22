@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955694"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496754"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルでデモ アプリを作成する (Azure Cognitive Search)
 
@@ -31,7 +31,7 @@ ms.locfileid: "85955694"
 
 + [Microsoft Edge (最新バージョン)](https://www.microsoft.com/edge) または Google Chrome。
 
-+ 生成されるアプリケーションの基礎として使用する[検索インデックス](search-create-index-portal.md)。 
++ 生成されるアプリケーションの基礎として使用する[検索インデックス](search-what-is-an-index.md)。 
 
   このクイックスタートでは、縮小版画像を含んだ組み込みの不動産サンプル データとインデックスを使用します (このウィザードでは、結果ページへの画像の追加がサポートされます)。 この演習で使用するインデックスを作成するには、**データのインポート** ウィザードを実行します。その際、データ ソースとして *realestate-us-sample* を選択してください。
 

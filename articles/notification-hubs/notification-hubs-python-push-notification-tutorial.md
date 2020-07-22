@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561193"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220067"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 
@@ -383,7 +383,7 @@ Python コードを実行すると、ターゲット デバイスに表示され
 
 NotificationHub の初期化中にデバッグ フラグを有効にすると、次のように詳細な HTTP 要求や応答ダンプ、さらには NotificationOutcome が表示されます。これにより、要求でどのような HTTP ヘッダーが渡され、Notification Hub からどのような HTTP 応答が受信されたかを理解できます。
 
-![][1]
+![HTTP 要求や HTTP 応答のダンプ、および Notification Outcome メッセージの詳細が赤色の枠線で囲まれているコンソールのスクリーンショット。][1]
 
 たとえば、Notification Hub の詳細な結果が表示されます。
 
@@ -404,7 +404,7 @@ NotificationHub の初期化中にデバッグ フラグを有効にすると、
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![HTTP 要求、および Service Bus Notification 形式と X-WNS 型の各値の詳細が赤色の枠線で囲まれているコンソールのスクリーンショット。][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>タグ (またはタグ式) を指定して通知を送信する
 
@@ -414,7 +414,7 @@ HTTP 要求に追加される Tags HTTP ヘッダーに注意してください 
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![HTTP 要求、および Service Bus Notification 形式、Service Bus Notification タグ、X-WNS 型の各値の詳細が赤色の枠線で囲まれているコンソールのスクリーンショット。][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>複数のタグを指定すて通知を送信する
 
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![HTTP 要求、および Service Bus Notification 形式、Service Bus Notification タグ、X-WNS 型の各値の詳細が赤色の枠線で囲まれているコンソールのスクリーンショット。][4]
 
 ### <a name="templated-notification"></a>テンプレート化された通知
 
@@ -444,7 +444,7 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![HTTP 要求、およびコンテンツの種類、Service Bus Notification 形式の各値の詳細が赤色の枠線で囲まれているコンソールのスクリーンショット。][5]
 
 ## <a name="next-steps"></a>次の手順
 

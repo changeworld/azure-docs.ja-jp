@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77656264"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505875"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
 
@@ -28,7 +28,7 @@ Azure Application Insights を使用すると、ご利用のアプリケーシ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-[Application Insights のリソース](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)を作成します。
+[Application Insights のリソース](./dotnetcore-quick-start.md#enable-application-insights)を作成します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -56,7 +56,7 @@ Application Insights の可用性テストを使用して、世界中のさま�
 
     ![アラートの編集](media/tutorial-alert/edit-alert-001.png)
 
-6. 失敗した場所を 3 以上に設定します。 アラートしきい値に違反したときに通知を受けるユーザーを構成するために[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)を作成します。
+6. 失敗した場所を 3 以上に設定します。 アラートしきい値に違反したときに通知を受けるユーザーを構成するために[アクション グループ](../platform/action-groups.md)を作成します。
 
     ![アラートの UI の保存](media/tutorial-alert/save-alert-001.png)
 

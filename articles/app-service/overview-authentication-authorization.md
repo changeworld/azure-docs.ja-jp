@@ -3,15 +3,15 @@ title: 認証と権限承認
 description: Azure App Service および Azure Functions での組み込みの認証と認可のサポート、およびそれが認可されていないアクセスからアプリを保護するのにどのように役立つかについて説明します。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196431"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206753"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service および Azure Functions での認証と承認
 
@@ -35,7 +35,7 @@ Azure App Service は組み込みの認証と認可のサポートを提供す�
 
 認証と認可のモジュールは、アプリケーションのコードと同じサンドボックスで実行します。 有効になっている場合、すべての受信 HTTP 要求は、アプリケーション コードによって処理される前に、認証と認可のモジュールを通過します。
 
-![](media/app-service-authentication-overview/architecture.png)
+![デプロイされたサイトへのトラフィックを許可する前に、ID プロバイダーと対話するサイト サンドボックス内のプロセスによってインターセプトされる要求を示すアーキテクチャ図](media/app-service-authentication-overview/architecture.png)
 
 このモジュールは、アプリのためにいくつかの処理を行います。
 
@@ -82,8 +82,11 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| 任意の [OpenID Connect](https://openid.net/connect/) プロバイダー (プレビュー) | `/.auth/login/<providerName>` |
 
-これらのプロバイダーのいずれかで認証と認可を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。 任意の数のサインイン オプションを、ユーザーに対して簡単に提供できます。 別の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合することもできます。
+これらのプロバイダーのいずれかで認証と認可を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。 任意の数のサインイン オプションを、ユーザーに対して簡単に提供できます。
+
+他の ID プロバイダーやカスタム認証ソリューションと統合するために[レガシ拡張性パス][custom-auth]が存在しますが、これはお勧めしません。 代わりに、OpenID Connect サポートの使用を検討してください。
 
 ## <a name="authentication-flow"></a>Authentication flow
 
@@ -113,7 +116,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 [Azure portal](https://portal.azure.com) では、受信要求が認証されていない場合、複数の動作で App Service の認可を構成することができます。
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![[要求が認証されない場合に実行するアクション] ドロップダウンを示すスクリーンショット](media/app-service-authentication-overview/authorization-flow.png)
 
 以下の見出しではそれらのオプションを説明します。
 
@@ -151,13 +154,14 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 * [Google ログインを使用するようにアプリを構成する方法][Google]
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法][MSA]
 * [Twitter ログインを使用するようにアプリを構成する方法][Twitter]
-* [方法: アプリケーションにカスタム認証を使用する][custom-auth]
+* [ログインに OpenID Connect プロバイダーを使用するようにアプリを構成する方法 (プレビュー)][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

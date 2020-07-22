@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 54f61825f25e8909ef3909c08b177b0adc1b58d9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 06fccd410f3edf5dbd63fa9959aad2d65a626a0d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023923"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503789"
 ---
-<Token>**適用対象:** ![はい](../media/applies-to/yes.png)Azure VM 上の SQL Server</Token>
+<Token>**適用対象:** ![はい](../media/applies-to/yes.png)Azure VM 上の SQL Server</Token> 
 

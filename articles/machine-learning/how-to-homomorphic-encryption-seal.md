@@ -1,23 +1,23 @@
 ---
-title: 暗号化された推論サービスをデプロイする
+title: 暗号化された推論サービスをデプロイする (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Microsoft SEAL を使用して、イメージ分類のための暗号化された予測サービスをデプロイする方法について説明します。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/18/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: tracking-python
-ms.openlocfilehash: b92293973ac9b5027a9f1a10c2d19fd164c41e3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c67ddf2d82a1cebaaa43a90111f4a42edb20058e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560192"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206787"
 ---
-# <a name="how-to-deploy-an-encrypted-inferencing-web-service"></a>暗号化された推論 Web サービスをデプロイする方法
+# <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>暗号化された推論 Web サービスをデプロイする方法 (プレビュー)
 
 [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) で、イメージ分類モデルを暗号化された推論 Web サービスとしてデプロイする方法について説明します。 この Web サービスは、モデルとスコアリング ロジックを含む Docker コンテナー イメージです。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/18/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735032"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220254"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services の Secure LDAP アラート
 
@@ -36,7 +36,7 @@ Secure LDAP を有効にする場合は、特定の IP アドレスへの受信 
 
 1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
 1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択し、次に **[受信セキュリティ規則]** を選択します。
-1. **[+ 追加]** を選択して TCP ポート 636 用の規則を追加します。 必要に応じて、ウィンドウで **[詳細]** を選択して規則を作成します。
+1. **[+ 追加]** を選択して、TCP ポート 636 のルールを作成します。 必要に応じて、ウィンドウで **[詳細]** を選択して規則を作成します。
 1. **[Source]\(ソース\)** には、ドロップダウン メニューから *[IP アドレス]* を選択します。 Secure LDAP トラフィックのアクセス権を付与するソース IP アドレスを入力します。
 1. **[宛先]** として *[Any]\(任意\)* を選択し、 **[宛先ポート範囲]** に「*636*」を入力します。
 1. **[プロトコル]** を *[TCP]* と設定し、 **[アクション]** を *[許可]* と設定します。

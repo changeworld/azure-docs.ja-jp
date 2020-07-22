@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8aa53d4b08a4a0bdaa4e1f12169811ae88edbd2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76988330"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501876"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "76988330"
 
 Azure Pipelines では、オンプレミスまたは任意のクラウド上の仮想マシンにデプロイするための機能が完備された CI/CD 自動化ツールのセットが提供されます。
 
-このチュートリアルで設定する YAML ベースの CI/CD パイプラインでは、それぞれがアプリを実行する Web サーバーとして機能する Linux 仮想マシンがリソースとして含まれる Azure Pipelines [環境](https://docs.microsoft.com/azure/devops/pipelines/process/environments?view=azure-devops)に、アプリをデプロイします。
+このチュートリアルで設定する YAML ベースの CI/CD パイプラインでは、それぞれがアプリを実行する Web サーバーとして機能する Linux 仮想マシンがリソースとして含まれる Azure Pipelines [環境](/azure/devops/pipelines/process/environments?view=azure-devops)に、アプリをデプロイします。
 
 学習内容は次のとおりです。
 
@@ -41,11 +41,11 @@ Azure Pipelines では、オンプレミスまたは任意のクラウド上の�
   [無料の Azure DevOps Services 組織](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)を取得できます。
 
   > [!NOTE]
-  > 詳細については、[Azure DevOps Services への接続](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts)に関する記事をご覧ください。
+  > 詳細については、[Azure DevOps Services への接続](/azure/devops/organizations/projects/connect-to-projects?view=vsts)に関する記事をご覧ください。
 
-*  デプロイ ターゲットの Linux 仮想マシンが必要です。  詳細については、「[Azure CLI を使用した Linux VM の作成と管理](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)」をご覧ください。
+*  デプロイ ターゲットの Linux 仮想マシンが必要です。  詳細については、「[Azure CLI を使用した Linux VM の作成と管理](./tutorial-manage-vm.md)」をご覧ください。
 
-*  仮想マシンの受信ポート 80 を開きます。 詳細については、「[Azure Portal を使用したネットワーク セキュリティ グループの作成](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)」をご覧ください。
+*  仮想マシンの受信ポート 80 を開きます。 詳細については、「[Azure Portal を使用したネットワーク セキュリティ グループの作成](../../virtual-network/tutorial-filter-network-traffic.md)」をご覧ください。
 
 ## <a name="get-your-sample-app-code"></a>サンプル アプリのコードを入手する
 
@@ -91,13 +91,13 @@ https://github.com/azure-devops/fabrikam-node
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 JavaScript アプリまたは Node.js アプリをインストールするには、アプリをデプロイするための Nginx Web サーバーを含む Linux VM が必要です。
-Nginx を含む Linux VM がまだない場合は、[こちらの例](/azure/virtual-machines/linux/quick-create-cli)の手順を使用してここで Azure に作成します。
+Nginx を含む Linux VM がまだない場合は、[こちらの例](./quick-create-cli.md)の手順を使用してここで Azure に作成します。
 
 * * * 
 
 ## <a name="create-an-azure-pipelines-environment-with-azure-virtual-machines"></a>Azure 仮想マシンで Azure Pipelines 環境を作成する
 
-仮想マシンを[環境](https://docs.microsoft.com/azure/devops/pipelines/process/environments)内のリソースとして追加し、複数マシンのデプロイのターゲットにすることができます。 環境内のデプロイ履歴ビューを使うと、VM からパイプラインに、そこからさらにコミットまで、追跡できます。
+仮想マシンを[環境](/azure/devops/pipelines/process/environments)内のリソースとして追加し、複数マシンのデプロイのターゲットにすることができます。 環境内のデプロイ履歴ビューを使うと、VM からパイプラインに、そこからさらにコミットまで、追跡できます。
 
 **[パイプライン]** セクション内の **[環境]** ハブで環境を作成できます。
 1.  Azure DevOps 組織にサインインし、プロジェクトに移動します。
@@ -163,7 +163,7 @@ Web アプリケーションを発行する継続的インテグレーション 
     artifact: drop
 ```
 
-詳しくは、[Maven での Java アプリのビルド](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)に関する記事に記載されている手順に従ってください。
+詳しくは、[Maven での Java アプリのビルド](/azure/devops/pipelines/ecosystems/java)に関する記事に記載されている手順に従ってください。
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
@@ -196,7 +196,7 @@ Web アプリケーションを発行する継続的インテグレーション 
       artifact: drop
 ```
 
-詳しくは、[gulp での Node.js アプリのビルド](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript)に関する記事の手順に従ってください。
+詳しくは、[gulp での Node.js アプリのビルド](/azure/devops/pipelines/ecosystems/javascript)に関する記事の手順に従ってください。
 
 - パイプラインを調べて、何が行われているかを確認します。 すべての既定の入力が自分のコードに適していることを確認します。
 
@@ -208,7 +208,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Linux VM にデプロイするための CD 手順を定義する
 
-1. 上記のパイプラインを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
+1. 上記のパイプラインを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
 
    ```YAML
    jobs:  
@@ -221,7 +221,7 @@ Web アプリケーションを発行する継続的インテグレーション 
      strategy:
    ```
 2. 環境内の各仮想マシンに対して定義した**タグ**を指定することにより、デプロイを受け取る特定の仮想マシンのセットを環境から選択できます。
-デプロイ ジョブの完全な YAML スキーマについては、[こちら](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)をご覧ください。
+デプロイ ジョブの完全な YAML スキーマについては、[こちら](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)をご覧ください。
 
 3. デプロイ方法として、`runOnce` または `rolling` を指定できます。 
 
@@ -295,8 +295,8 @@ Web アプリケーションを発行する継続的インテグレーション 
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
 ## <a name="next-steps"></a>次のステップ
-- 作成した[パイプラインのカスタマイズ](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline)に進むことができます。
-- YAML パイプラインで他にできることについては、[YAML スキーマのリファレンス](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema)を参照してください。
+- 作成した[パイプラインのカスタマイズ](/azure/devops/pipelines/customize-pipeline)に進むことができます。
+- YAML パイプラインで他にできることについては、[YAML スキーマのリファレンス](/azure/devops/pipelines/yaml-schema)を参照してください。
 - LAMP (Linux、Apache、MySQL、および PHP) スタックをデプロイする方法の詳細については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

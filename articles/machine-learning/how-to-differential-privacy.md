@@ -1,5 +1,5 @@
 ---
-title: WhiteNoise パッケージを使用してデータのプライバシーを維持する方法
+title: WhiteNoise パッケージを使用してデータのプライバシーを維持する方法 (プレビュー)
 titleSuffix: Azure Machine Learning
 description: WhiteNoise パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 05/17/2020
-ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981848"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206344"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning"></a>Azure Machine Learning で差分プライバシーを使用する
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning で差分プライバシーを使用する (プレビュー)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

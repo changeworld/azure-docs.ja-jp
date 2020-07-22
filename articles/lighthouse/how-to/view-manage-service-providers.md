@@ -1,14 +1,14 @@
 ---
 title: サービス プロバイダーを表示し、管理する
 description: サービス プロバイダー、サービス プロバイダーのオファー、委任したリソースに関する情報は、顧客が Azure portal の [サービス プロバイダー] ページを使用して確認できます。
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111628"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273780"
 ---
 # <a name="view-and-manage-service-providers"></a>サービス プロバイダーを表示し、管理する
 
@@ -19,7 +19,7 @@ Azure portal の **[サービス プロバイダー]** ページにアクセス�
 > [!NOTE]
 > **[サービス プロバイダー]** ページを表示するには、顧客のテナントのユーザーが[閲覧者組み込みロール](../../role-based-access-control/built-in-roles.md#reader) (あるいは、閲覧者アクセスが含まれる別の組み込みロール) を保持している必要があります。
 >
-> オファーの追加、リソースの委任、オファーの削除を行うには、ユーザーがサブスクリプションの[所有者組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を保持している必要があります。
+> オファーの追加または更新、リソースの委任、オファーの削除を行うには、ユーザーがサブスクリプションの[所有者組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を保持している必要があります。
 
 **[サービス プロバイダー]** ページに表示されるのは、Azure Lighthouse を通じて、顧客のサブスクリプションまたはリソース グループにアクセスできるサービス プロバイダーの情報だけである点に留意してください。 顧客がさらに別のサービス プロバイダーと連携する場合でも、そのサービス プロバイダーが顧客のリソースにアクセスするために Azure Lighthouse を使用していなければ、ここにそれらのサービス プロバイダーに関する情報は表示されません。
 

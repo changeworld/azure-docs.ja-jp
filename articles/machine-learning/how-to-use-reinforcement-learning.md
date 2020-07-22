@@ -1,7 +1,7 @@
 ---
-title: 強化学習モデルをトレーニングしてデプロイする
+title: 強化学習モデルをトレーニングしてデプロイします (プレビュー)。
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の強化学習 (RL) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
+description: Azure Machine Learning の強化学習 (プレビュー) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556938"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203274"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -419,7 +419,7 @@ run.wait_for_completion()
 1. ウィジェットが読み込まれるまで待ちます。
 1. 実行の一覧でヘッドの実行を選択します。
 
-スタジオで実行の追加情報を表示するには、**[Click here to see the run in Azure Machine Learning studio]\(Azure Machine Learning スタジオで実行を表示するには、ここをクリックしてください\)** を選択します。 この情報には、実行の進行中、または完了後にアクセスできます。
+スタジオで実行の追加情報を表示するには、 **[Click here to see the run in Azure Machine Learning studio]\(Azure Machine Learning スタジオで実行を表示するには、ここをクリックしてください\)** を選択します。 この情報には、実行の進行中、または完了後にアクセスできます。
 
 ![実行の詳細を示す折れ線グラフのウィジェット](./media/how-to-use-reinforcement-learning/pong-run-details-widget.png)
 

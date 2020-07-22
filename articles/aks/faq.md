@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300928"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275718"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -137,7 +137,7 @@ AKS エージェント ノードは、標準の Azure 仮想マシンとして�
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Azure テナント間でクラスターを移動/移行することはできますか?
 
-`az aks update-credentials` コマンドを使用して、Azure テナント間で AKS クラスターを移動できます。 「[サービス プリンシパルの更新または作成の選択](https://docs.microsoft.com/azure/aks/update-credentials)」の指示に従って、[AKS クラスターを新しい資格情報で更新します](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)。
+`az aks update-credentials` コマンドを使用して、Azure テナント間で AKS クラスターを移動できます。 「[サービス プリンシパルの更新または作成の選択](./update-credentials.md)」の指示に従って、[AKS クラスターを新しい資格情報で更新します](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials)。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>サブスクリプション間でクラスターを移動/移行することはできますか?
 
@@ -146,6 +146,10 @@ AKS エージェント ノードは、標準の Azure 仮想マシンとして�
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS クラスターを現在の Azure サブスクリプションから別のサブスクリプションへ移動することはできますか? 
 
 Azure サブスクリプション間での AKS クラスターおよびそれに関連付けられているリソースの移動はサポートされていません。
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>AKS クラスターまたは AKS インフラストラクチャ リソースをその他のリソース グループに移動したり、名前を変更したりできますか。
+
+AKS クラスターやその関連リソースを移動したり、名前を変更したりすることはできません。
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>クラスターの削除に時間がかかるのはなぜですか? 
 
@@ -165,11 +169,11 @@ Azure サブスクリプション間での AKS クラスターおよびそれに
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>アップグレードを実行しましたが、ポッドがクラッシュ ループの状態になりました。準備プローブが失敗していますか?
 
-サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)と [AKS の資格情報の更新](https://docs.microsoft.com/azure/aks/update-credentials)に関するページを参照してください。
+サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](./kubernetes-service-principal.md)と [AKS の資格情報の更新](./update-credentials.md)に関するページを参照してください。
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>クラスターは動作していましたが、突然、LoadBalancers のプロビジョニングや PVC のマウントなどができなくなりました。 
 
-サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)と [AKS の資格情報の更新](https://docs.microsoft.com/azure/aks/update-credentials)に関するページを参照してください。
+サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](./kubernetes-service-principal.md)と [AKS の資格情報の更新](./update-credentials.md)に関するページを参照してください。
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>仮想マシン スケール セット API を使用して手動でスケーリングできますか?
 
@@ -190,9 +194,9 @@ AKS には、このような構成に耐え、そこから復旧するための�
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

@@ -4,24 +4,27 @@ description: Azure Private Link を使用して、ネットワークを Azure Au
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: fa473591355ef9e1ee582dd9c9b820dfa2f93f36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268724"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207281"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する (プレビュー)
 
 Azure プライベート エンドポイントは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、Automation サービスを実質的に VNet に取り込みます。 VNet 上のマシンと Automation アカウントの間のネットワーク トラフィックは、VNet と Microsoft バックボーン ネットワーク上のプライベート リンクを経由することで、パブリック インターネットからの露出を排除します。
 
-たとえば、発信インターネット アクセスを無効にした VNet があるとします。 ただし、Automation アカウントにプライベートにアクセスし、Hybrid Runbook Worker 上で Webhook、State Configuration、runbook ジョブなどの Automation 機能を使用する必要があります。 さらに、VNET を通じてのみユーザーが Automation アカウントにアクセスできるようにしたいと考えています。 これは、プライベート エンドポイントをデプロイすることで実現できます。
+たとえば、発信インターネット アクセスを無効にした VNet があるとします。 ただし、Automation アカウントにプライベートにアクセスし、Hybrid Runbook Worker 上で Webhook、State Configuration、runbook ジョブなどの Automation 機能を使用する必要があります。 さらに、VNET を通じてのみユーザーが Automation アカウントにアクセスできるようにしたいと考えています。  プライベート エンドポイントをデプロイすると、これらの目標を達成することができます。
 
-この記事では、Automation アカウントでプライベート エンドポイントを使用する場合および設定する方法について説明します。
+この記事では、Automation アカウントでプライベート エンドポイントを使用するタイミングとその設定方法 (プレビュー) について説明します。
 
 ![Azure Automation のプライベート リンクの概念の概要](./media/private-link-security/private-endpoints-automation.png)
+
+>[!NOTE]
+> Azure Automation でのプライベート リンクのサポート (プレビュー) は、Azure Commercial クラウドと Azure US Government クラウドでのみご利用いただけます。
 
 ## <a name="advantages"></a>長所
 
@@ -46,25 +49,27 @@ Azure Automation プライベート リンクは、1 つまたは複数のプラ
 
 Automation のプライベート エンドポイントを作成した後で、公開される Automation URL (ユーザーつまりコンピューターが直接アクセスできる) のそれぞれが、VNet の 1 つのプライベート エンドポイントにマップされます。
 
+プレビュー リリースの一部として、Automation アカウントは、プライベート エンドポイントを使用してセキュリティ保護された Azure リソースにはアクセスできません。 たとえば、Azure Key Vault、Azure SQL、Azure Storage アカウントなどです。
+
 ### <a name="webhook-scenario"></a>Webhook のシナリオ
 
-Webhook URL に対して POST を行うことで、Runbook を開始できます。 たとえば、URL は `https://<automationAccountId>.webhooks. <region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d` のようになります。
+Webhook URL に対して POST を行うことで、Runbook を開始できます。 たとえば、URL は `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d` のようになります。
 
 ### <a name="state-configuration-agentsvc-scenario"></a>State Configuration (agentsvc) のシナリオ
 
 State Configuration は、任意のクラウドまたはオンプレミスのデータセンターのノードについて PowerShell Desired State Configuration (DSC) の構成を記述、管理、およびコンパイルできる Azure 構成管理サービスを提供します。
 
-コンピューター上のエージェントは DSC サービスに登録され、サービス エンドポイントを使用して DSC 構成をプルします。 エージェント サービス エンドポイントは、`https://<automationAccountId>.agentsvc.<region>.azure-automation.net` のようになります。
+コンピューター上のエージェントは DSC サービスに登録され、サービス エンドポイントを使用して DSC 構成をプルします。 エージェント サービス エンドポイントは `https://<automationAccountId>.agentsvc.<region>.azure-automation.net` のようになります。
 
 パブリック エンドポイントとプライベート エンドポイントの URL は同じですが、プライベート リンクが有効になっている場合は、プライベート IP アドレスにマップされます。
 
 ## <a name="planning-based-on-your-network"></a>ネットワークに基づく計画
 
-Automation アカウント リソースを設定する前に、ネットワークの分離要件を検討してください。 パブリック インターネットへの仮想ネットワークへのアクセスと、Automation アカウントに対するアクセス制限を評価します (Automation アカウントと統合されている場合は、Azure Monitor ログに対するプライベート リンク グループ スコープの設定も含みます)。
+Automation アカウント リソースを設定する前に、ネットワークの分離要件を検討してください。 パブリック インターネットへの仮想ネットワークへのアクセスと、Automation アカウントに対するアクセス制限を評価します (Automation アカウントと統合されている場合は、Azure Monitor ログに対するプライベート リンク グループ スコープの設定も含みます)。 また、サポートされている機能が問題なく動作することを確保するためのプランの一部として、Automation サービス [DNS レコード](./automation-region-dns-records.md)のレビューも含みます。
 
 ### <a name="connect-to-a-private-endpoint"></a>プライベート エンドポイントへの接続
 
-ネットワークに接続するためのプライベート エンドポイントを作成します。 このタスクは、[Azure portal Private Link センター](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)で実行できます。 PublicNetworkAccess とプライベート リンクに対する変更が適用されてから、有効になるまでに最大 35 分かかることがあります。
+ネットワークに接続するためのプライベート エンドポイントを作成します。 これは、[Azure portal プライベート リンク センター](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)で作成できます。 PublicNetworkAccess とプライベート リンクに対する変更が適用されてから、有効になるまでに最大 35 分かかることがあります。
 
 このセクションでは、Automation アカウントのプライベート エンドポイントを作成します。
 
@@ -72,7 +77,7 @@ Automation アカウント リソースを設定する前に、ネットワー�
 
 2. **[プライベート リンク センター - 概要]** の **[サービスへのプライベート接続を構築する]** オプションで、 **[開始]** を選択します。
 
-3. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
+3. **[仮想マシンの作成 - 基本]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
@@ -99,7 +104,7 @@ Automation アカウント リソースを設定する前に、ネットワー�
 
 6. **[Next:構成]** を選択します。
 
-7. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
+7. **[プライベート エンドポイントの作成 - 構成]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
@@ -141,7 +146,7 @@ $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 
 ## <a name="dns-configuration"></a>DNS の構成
 
-接続文字列の一部として FQDN を使用してプライベート リンク リソースに接続する場合は、割り当てられたプライベート IP アドレスに解決されるように DNS 設定を正しく構成することが重要です。 既存の Azure サービスには、パブリック エンドポイント経由で接続するときに使用する DNS 構成が既に存在している場合があります。 プライベート エンドポイントを使用して接続するには、これをオーバーライドする必要があります。
+接続文字列の一部として完全修飾ドメイン名 (FQDN) を使用してプライベート リンク リソースに接続する場合は、割り当てられたプライベート IP アドレスに解決されるように DNS 設定を正しく構成することが重要です。 既存の Azure サービスには、パブリック エンドポイント経由で接続するときに使用する DNS 構成が既に存在している場合があります。 プライベート エンドポイントを使用して接続するには、DNS 構成を確認して更新する必要があります。
 
 プライベート エンドポイントに関連付けられたネットワーク インターフェイスには、特定のプライベート リンク リソースに割り当てられた FQDN やプライベート IP アドレスなど、DNS を構成するために必要な情報の完全なセットが含まれています。
 

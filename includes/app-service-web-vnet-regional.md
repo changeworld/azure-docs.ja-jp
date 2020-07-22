@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488794"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218219"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -41,7 +41,7 @@ ms.locfileid: "84488794"
 同じリージョンの VNet との VNet 統合を使用する場合、いくつかの制限があります。
 
 * グローバル ピアリング接続にまたがるリソースには到達できません。
-* この機能は、PremiumV2 の App Service プランをサポートするより新しい Azure App Service スケール ユニットからのみ使用できます。
+* この機能は、PremiumV2 の App Service プランをサポートするより新しい Azure App Service スケール ユニットからのみ使用できます。 "*これは、アプリを PremiumV2 価格レベルで実行しなければならないということではなく*"、単に PremiumV2 オプションを使用できる App Service プランでアプリを実行する必要があるということにご注意ください (これは、この VNet 統合機能も使用可能な新しいスケール ユニットであることを意味します)。
 * 統合サブネットは、1 つの App Service プランでしか使用できません。
 * この機能は、App Service Environment にある Isolated プランのアプリでは使用できません。
 * この機能には、Azure Resource Manager VNet 内に 32 個以上のアドレスを含む /27 である未使用のサブネットが必要です。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135076"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221206"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -150,6 +150,9 @@ API ではイメージ ビルド用のソースを定義する "SourceType" が�
 - PlatformImage - ソース イメージが Marketplace イメージであることを示します。
 - ManagedImage - 標準のマネージド イメージから始めるときは、これを使います。
 - SharedImageVersion - ソースとして共有イメージ ギャラリー内のイメージのバージョンを使うときは、これを使います。
+
+> [!NOTE]
+> 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
 
 ### <a name="iso-source"></a>ISO ソース
 現在 [RHEL 持ち込みサブスクリプション イメージ](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)があるため、Image Builder では、この機能を非推奨にしています。以下のタイムラインをご確認ください。
@@ -468,7 +471,10 @@ Azure Image Builder では、次の 3 つの配布ターゲットがサポート
 - **sharedImage** - 共有イメージ ギャラリー。
 - **VHD** - ストレージ アカウント内の VHD。
 
-すべてのターゲットの種類に同じ構成でイメージを配布できます。[例](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)をご覧ください。
+すべてのターゲットの種類に同じ構成でイメージを配布できます。
+
+> [!NOTE]
+> 既定の AIB sysprep コマンドには、"/mode:vm" は含まれていませんが、HyperV ロールがインストールされるイメージを作成するときに必要になる場合があります。 このコマンド引数を追加する場合は、sysprep コマンドをオーバーライドする必要があります。
 
 複数のターゲットに配布できるので、Image Builder ではすべての配布ターゲットの状態が維持されており、`runOutputName` のクエリを実行することによってアクセスできます。  配布の後で `runOutputName` オブジェクトのクエリを実行して、その配布に関する情報を取得できます。 たとえば、VHD の場所、イメージ バージョンがレプリケートされたリージョン、または作成された SIG イメージのバージョンのクエリを実行できます。 これは、すべての配布ターゲットのプロパティです。 `runOutputName` は配布ターゲットごとに一意である必要があります。 次に例を示します。これは、Shared Image Gallery の配布に対するクエリです。
 

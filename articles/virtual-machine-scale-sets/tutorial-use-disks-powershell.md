@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198238"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495033"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
 
@@ -44,12 +44,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 | 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
-| [汎用](../virtual-machines/windows/sizes-general.md) | A、B、D シリーズ | 1600 |
-| [コンピューティングの最適化](../virtual-machines/windows/sizes-compute.md) | F シリーズ | 576 |
-| [メモリの最適化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M シリーズ | 6144 |
-| [ストレージの最適化](../virtual-machines/windows/sizes-storage.md) | L シリーズ | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N シリーズ | 1440 |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | A および H シリーズ | 2000 |
+| [汎用](../virtual-machines/sizes-general.md) | A、B、D シリーズ | 1600 |
+| [コンピューティングの最適化](../virtual-machines/sizes-compute.md) | F シリーズ | 576 |
+| [メモリの最適化](../virtual-machines/sizes-memory.md) | D、E、G、M シリーズ | 6144 |
+| [ストレージの最適化](../virtual-machines/sizes-storage.md) | L シリーズ | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N シリーズ | 1440 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A および H シリーズ | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure データ ディスク
@@ -58,12 +58,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
 | 種類 | 一般的なサイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
-| [汎用](../virtual-machines/windows/sizes-general.md) | A、B、D シリーズ | 64 |
-| [コンピューティングの最適化](../virtual-machines/windows/sizes-compute.md) | F シリーズ | 64 |
-| [メモリの最適化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M シリーズ | 64 |
-| [ストレージの最適化](../virtual-machines/windows/sizes-storage.md) | L シリーズ | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N シリーズ | 64 |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | A および H シリーズ | 64 |
+| [汎用](../virtual-machines/sizes-general.md) | A、B、D シリーズ | 64 |
+| [コンピューティングの最適化](../virtual-machines/sizes-compute.md) | F シリーズ | 64 |
+| [メモリの最適化](../virtual-machines/sizes-memory.md) | D、E、G、M シリーズ | 64 |
+| [ストレージの最適化](../virtual-machines/sizes-storage.md) | L シリーズ | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N シリーズ | 64 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A および H シリーズ | 64 |
 
 
 ## <a name="vm-disk-types"></a>VM ディスクの種類
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>データ ディスクの準備
 作成されてスケール セット VM インスタンスに接続されたディスクは、未フォーマット ディスクです。 これらのディスクをデータおよびアプリケーション用に使用するには、ディスクを準備する必要があります。 ディスクを準備するには、パーティションを作成し、ファイルシステムを作成した後、マウントします。
 
-スケール セット内の複数の VM インスタンスにわたってこのプロセスを自動化するには、Azure カスタム スクリプト拡張機能を使用できます。 この拡張機能を使用すると、各 VM インスタンス上でローカルにスクリプトを実行して、接続されたデータ ディスクの準備などの操作を実行できます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/windows/extensions-customscript.md)」を参照してください。
+スケール セット内の複数の VM インスタンスにわたってこのプロセスを自動化するには、Azure カスタム スクリプト拡張機能を使用できます。 この拡張機能を使用すると、各 VM インスタンス上でローカルにスクリプトを実行して、接続されたデータ ディスクの準備などの操作を実行できます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/extensions/custom-script-windows.md)」を参照してください。
 
 
 次の例では、すべての未フォーマットの接続されたデータ ディスクを準備する [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) を使用して、GitHub サンプル リポジトリにあるスクリプトを各 VM インスタンス上で実行します。

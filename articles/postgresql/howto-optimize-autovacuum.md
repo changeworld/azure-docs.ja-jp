@@ -5,18 +5,20 @@ author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116355"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274511"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
+
 この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを効率的に最適化する方法について説明します。
 
 ## <a name="overview-of-autovacuum"></a>自動バキュームの概要
+
 PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、データベースの同時実行の強化を実現しています。 すべての更新は結果として挿入と削除になり、すべての削除は結果として、削除対象のためにソフト マークされている行になります。 ソフトマークによって、後で消去される使用不能タプルが識別されます。 このようなタスクを実行するために、PostgreSQL ではバキューム ジョブを実行します。
 
 バキューム ジョブは、手動または自動でトリガーできます。 データベースで更新や削除の操作が大量に発生している場合、使用不能タプルの数は多くなります。 データベースがアイドル状態の場合、使用不能タプルの数は少なくなります。 データベースの負荷が高くなると、バキュームを頻繁に実行する必要があります。このような場合、バキューム ジョブの "*手動*" 実行は不便になります。
@@ -36,6 +38,7 @@ PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、デ�
 - I/O の増加。
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>自動バキューム クエリによる肥大化を監視する
+
 次のサンプル クエリは、XYZ という名前のテーブルで、使用不能タプルとライブ タプルの数を識別するために設計されています。
 
 ```sql
@@ -43,7 +46,9 @@ SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRa
 ```
 
 ## <a name="autovacuum-configurations"></a>自動バキュームの構成
+
 自動バキュームを制御する構成パラメーターは、次の 2 つの重要な問いに基づいています。
+
 - いつ開始する必要があるか。
 - 開始後にどれだけ消去する必要があるか。
 
@@ -55,10 +60,10 @@ autovacuum_vacuum_threshold|任意の 1 つのテーブルでバキューム操�
 autovacuum_vacuum_scale_factor|バキューム操作をトリガーするかどうかを決定する際に、autovacuum_vacuum_threshold に追加するテーブル サイズの割合を指定します。 既定値は 0.2 (テーブル サイズの 20%) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|0.2
 autovacuum_vacuum_cost_limit|自動バキューム操作で使用されるコストの上限値を指定します。 -1 (既定値) が指定されている場合は、通常の vacuum_cost_limit 値が使用されます。 複数の worker がある場合、この値は実行中の自動バキューム worker 間で均等に配分されます。 各 worker での上限の合計は、この変数の値を超えません。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|-1
 autovacuum_vacuum_cost_delay|自動バキューム操作で使用されるコストの遅延値を指定します。 -1 が指定された場合は、通常の vacuum_cost_delay 値が使用されます。 既定値は 20 ミリ秒です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|20 ミリ秒
-autovacuum_nap_time|特定のデータベースに対する自動バキューム実行の間隔の最小遅延を指定します。 各ラウンドで、デーモンがデータベースを調査し、そのデータベースのテーブルに対して、必要に応じて VACUUM コマンドと ANALYZE コマンドを発行します。 遅延は秒単位で測定され、既定値は 1 分 (1 min) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。|15 s
-autovacuum_max_workers|任意の時点で実行できる (自動バキューム ランチャー以外の) 自動バキューム プロセスの最大数を指定します。 既定値は 3 です。 このパラメーターは、サーバー起動時にのみ設定します。|3
+autovacuum_naptime | 特定のデータベースに対する自動バキューム実行の間隔の最小遅延を指定します。 各ラウンドで、デーモンがデータベースを調査し、そのデータベースのテーブルに対して、必要に応じて VACUUM コマンドと ANALYZE コマンドを発行します。 遅延は秒単位で計測されます。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。| 15 s
+autovacuum_max_workers | 任意の時点で実行できる (自動バキューム ランチャー以外の) 自動バキューム プロセスの最大数を指定します。 既定値は 3 です。 このパラメーターは、サーバー起動時にのみ設定します。|3
 
-個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。 
+個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。
 
 ## <a name="autovacuum-cost"></a>自動バキュームのコスト
 
@@ -82,12 +87,14 @@ autovacuum_max_workers|任意の時点で実行できる (自動バキューム 
 PostgreSQL では、テーブル レベルまたはインスタンス レベルでこれらのパラメーターを設定できます。 Azure Database for PostgreSQL では、現在、これらのパラメーターはテーブル レベルでのみ設定できます。
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>自動バキュームのコストを見積もる
+
 自動バキュームの実行は "コスト高" で、バキューム操作の実行時間を制御するためのパラメーターがあります。 以下のパラメーターが、バキューム実行コストの見積りの際に役立ちます。
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-バキューム プロセスは、物理ページを読み取り、使用不能タプルがないか調べます。 shared_buffers 内のページはそれぞれ、コスト 1 (vacuum_cost_page_hit) であると見なされます。 その他のページはすべて、使用不能タプルが存在する場合はコスト 20 (vacuum_cost_page_dirty)、使用不能タプルが存在しない場合はコスト 10 (vacuum_cost_page_miss) と見なされます。 プロセスが autovacuum_vacuum_cost_limit を超過するとバキューム操作は停止されます。 
+バキューム プロセスは、物理ページを読み取り、使用不能タプルがないか調べます。 shared_buffers 内のページはそれぞれ、コスト 1 (vacuum_cost_page_hit) であると見なされます。 その他のページはすべて、使用不能タプルが存在する場合はコスト 20 (vacuum_cost_page_dirty)、使用不能タプルが存在しない場合はコスト 10 (vacuum_cost_page_miss) と見なされます。 プロセスが autovacuum_vacuum_cost_limit を超過するとバキューム操作は停止されます。
 
 上限に達すると、プロセスは autovacuum_vacuum_cost_delay パラメーターで指定された期間の間、スリープ状態になり、その後再度開始されます。 上限に達しない場合、自動バキュームは、autovacuum_nap_time パラメーターで指定された値の後に開始されます。
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131087"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206392"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -27,14 +27,13 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 [ロールアップ 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [ロールアップ 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [ロールアップ 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
-[ロールアップ 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
 > [!NOTE]
 > 更新プログラムの ロールアップ 44 は、Site Recovery プロバイダーおよびエージェントの更新プログラムが含まれていなかったため、表には表示されていません。
 
-## <a name="updates-june-2020"></a>更新プログラム (2020 年 6 月)
+## <a name="updates-july-2020"></a>更新 (2020 年 7 月)
 
 ### <a name="update-rollup-47"></a>更新プログラム ロールアップ 47
 

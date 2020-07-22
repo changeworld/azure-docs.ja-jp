@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970962"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206112"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 
@@ -53,6 +53,8 @@ ms.locfileid: "85970962"
 
 このシナリオでは、関数アプリによって水族館の気温が読み取られ、Azure Cosmos DB のコンテナーにそのデータが書き戻されます。 関数アプリによってデータを書き込む必要があるため、**DocumentDB アカウント共同作成者**ロールを割り当てる必要があります。 
 
+### <a name="assign-the-role-using-azure-portal"></a>Azure portal を使用してロールを割り当てる
+
 1. Azure portal にサインインし、Azure Cosmos DB アカウントに移動します。 **[アクセス管理 (IAM)]** ウィンドウ、 **[ロールの割り当て]** タブの順に開きます。
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="[アクセス制御] ウィンドウと [ロールの割り当て] タブを示すスクリーンショット。":::
@@ -70,6 +72,18 @@ ms.locfileid: "85970962"
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="例が表示された [ロールの割り当ての追加] ウィンドウを示すスクリーンショット。":::
 
 1. 関数アプリを選択したら、 **[保存]** を選択します。
+
+### <a name="assign-the-role-using-azure-cli"></a>Azure CLI を使用してロールを割り当てる
+
+Azure CLI を使用してロールを割り当てるには、次のコマンドを使用します。
+
+```azurecli-interactive
+$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+
+$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>プログラムを使用して Azure Cosmos DB キーにアクセスする
 

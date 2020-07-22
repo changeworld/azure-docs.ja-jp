@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fd83cd164415f45929049541a8731f80a4ba146d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774061"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273508"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure の施設、建物、および物理上のセキュリティ
 この記事では Azure インフラストラクチャを保護するための Microsoft の取り組みについて説明します。
@@ -30,7 +30,7 @@ Azure は、何千ものオンライン サービスをサポートし、世界�
 
 このインフラストラクチャは、世界中のユーザーの傍にアプリケーションを届けるように設計されています。また、データの保存場所を確保し、お客様に包括的なコンプライアンスと回復性のオプションを提供します。 Azure は世界中に 58 のリージョンを備え、140 の国/地域で利用できます。
 
-リージョンとは、大規模かつ回復性の高いネットワーを経由して、相互に接続された一連のデータセンターです。 ネットワークは既定で、コンテンツの配布、負荷分散、冗長性、および暗号化を備えています。 他のどのクラウド プロバイダーよりも多くのグローバル リージョンを提供している Azure では、必要に応じてアプリケーションを自在にデプロイできます。
+リージョンとは、大規模かつ回復性の高いネットワーを経由して、相互に接続された一連のデータセンターです。 ネットワークには、コンテンツ配信、負荷分散、冗長性、リージョン内またはリージョン間を移動するあらゆる Azure トラフィックに対して既定となる[データリンク層の暗号化](encryption-overview.md#encryption-of-data-in-transit)が含まれます。 他のどのクラウド プロバイダーよりも多くのグローバル リージョンを提供している Azure では、必要に応じてアプリケーションを自在にデプロイできます。
 
 Azure リージョンは地域に分かれています。 Azure の地域では、データの保存場所、主権、コンプライアンス、回復性に関する要件が地域的な境界内で確実に遵守されます。
 

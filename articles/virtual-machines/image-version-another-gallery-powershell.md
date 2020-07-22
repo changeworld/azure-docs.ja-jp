@@ -1,5 +1,5 @@
 ---
-title: 別のギャラリーからイメージをコピーする
+title: PowerShell を使用して別のギャラリーからイメージをコピーする
 description: Azure PowerShell を使用して別のギャラリーからイメージをコピーします。
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793943"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221223"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>別のギャラリーからイメージをコピーする
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell を使用して別のギャラリーからイメージをコピーする
 
 組織内に複数のギャラリーがある場合は、他のギャラリーに保存されているイメージからイメージを作成できます。 たとえば、新しいイメージを作成してテストするための開発およびテスト ギャラリーがあるとします。 運用環境で使用する準備ができたら、この例を使用して、それらのイメージを運用環境ギャラリーにコピーできます。 また、[Azure CLI](image-version-another-gallery-cli.md) を使用して、別のギャラリーのイメージからイメージを作成することもできます。
 
@@ -165,3 +165,5 @@ $job.State
 [一般化された](vm-generalized-image-version-powershell.md)イメージ バージョンまたは[特殊化された](vm-specialized-image-version-powershell.md)イメージ バージョンから VM を作成します。
 
 [Azure Image Builder (プレビュー)](./linux/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
+
+購入プラン情報を提供する方法については、「[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)」を参照してください。

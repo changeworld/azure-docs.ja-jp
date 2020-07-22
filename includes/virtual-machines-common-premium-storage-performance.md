@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017608"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218208"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -119,10 +119,10 @@ Premium Storage で実行されるアプリケーションのパフォーマン�
 
 VM のサイズと、各種 VM で利用できる IOPS、スループット、待機時間に関する詳細については、[Linux VM サイズ](../articles/virtual-machines/linux/sizes.md)に関するページまたは [Windows VM サイズ](../articles/virtual-machines/windows/sizes.md)に関するページを参照してください。
 
-| &nbsp; | **IOPS** | **スループット** | **待機時間** |
+| | **IOPS** | **スループット** | **待機時間** |
 | --- | --- | --- | --- |
 | **サンプル シナリオ** |1 秒あたりに非常に多くのトランザクションを必要とするエンタープライズ OLTP アプリケーション。 |大量のデータを処理するエンタープライズ データ ウェアハウス アプリケーション。 |オンライン ゲームなど、ユーザー要求にすぐに応答する必要があるほぼリアルタイムのアプリケーション。 |
-| パフォーマンスの要素 | &nbsp; | &nbsp; | &nbsp; |
+| **パフォーマンスの要素** | &nbsp; | &nbsp; | &nbsp; |
 | **IO サイズ** |IO サイズが小さいほど、IOPS が向上します。 |IO サイズが大きいほど、スループットが向上します。 | &nbsp;|
 | **VM サイズ** |アプリケーションの要件よりも高い IOPS を提供する VM サイズを使用します。 |スループットの上限がアプリケーションの要件よりも高い VM サイズを使用します。 |スケールの上限がアプリケーションの要件よりも高い VM サイズを使用します。 |
 | **ディスク サイズ** |アプリケーションの要件よりも高い IOPS を提供するディスク サイズを使用します。 |スループットの上限がアプリケーションの要件よりも高いディスク サイズを使用します。 |スケールの上限がアプリケーションの要件よりも高いディスク サイズを使用します。 |

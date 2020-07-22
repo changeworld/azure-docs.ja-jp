@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367999"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276653"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -161,12 +161,14 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 読み取りレプリカは、新しい Azure Database for PostgreSQL サーバーとして作成されます。 既存のサーバーをレプリカにすることはできません。 別の読み取りレプリカのレプリカを作成することはできません。
 
 ### <a name="replica-configuration"></a>レプリカ構成
-レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立していくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
+レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカの作成後、ストレージやバックアップの保持期間など、いくつかの設定を変更できます。
+
+次の条件の下では、レプリカ上で仮想コアと価格レベルも変更できます。
+* PostgreSQL では、読み取りレプリカの `max_connections` パラメーターの値をマスターの値以上にする必要があります。そうしないと、レプリカが起動しません。 Azure Database for PostgreSQL で、`max_connections` パラメーター値は、SKU (仮想コアと価格レベル) に基づきます。 詳しくは、「[Azure Database for PostgreSQL の制限事項](concepts-limits.md)」をご覧ください。 
+* Basic 価格レベルとの間のスケーリングはサポートされていません。
 
 > [!IMPORTANT]
 > マスターの設定が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新します。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
-
-PostgreSQL では、読み取りレプリカの `max_connections` パラメーターの値をマスターの値以上にする必要があります。そうしないと、レプリカが起動しません。 Azure Database for PostgreSQL で、`max_connections` パラメーター値は、SKU に基づきます。 詳しくは、「[Azure Database for PostgreSQL の制限事項](concepts-limits.md)」をご覧ください。 
 
 前述のサーバーの値を更新しようとしていて制限に従っていない場合、エラーが表示されます。
 

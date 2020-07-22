@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262227"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203162"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
 
@@ -233,7 +233,7 @@ df
 Azure Databricks ガイドのガイダンスで [Azure Cosmos DB Spark コネクタの使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)に関する記事に従って、Databricks ワークスペースでライブラリを作成します
 
 > [!NOTE]
-> **Azure Cosmos DB Spark コネクタの使用**に関するページは現在最新ではありませんのでご注意ください。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、 https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
+> **Azure Cosmos DB Spark コネクタの使用**に関するページは、現在最新ではありません。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、[azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
 > 
 
 ### <a name="using-spark-cli"></a>spark-cli の使用

@@ -5,18 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560910"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506385"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
 このチュートリアルでは、コードを作成し、Linux の基本イメージを使用したカスタム Docker コンテナーとして Azure Functions にデプロイします。 カスタム イメージを使用するのは通常、特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときです。
 
-[Linux でホストされる初めての関数の作成](functions-create-first-azure-function-azure-cli-linux.md)に関するページで説明されている既定の Azure App Service コンテナーを使用することもできます。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
+[Linux でホストされる初めての関数の作成](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)に関するページで説明されている既定の Azure App Service コンテナーを使用することもできます。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -409,9 +409,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
     ```
     ::: zone-end
-
-    基本イメージ間の違いは、[App Services のカスタム Docker イメージに関するチュートリアル](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)で説明されています。
-
+    
 1. もう一度 `docker build` コマンドを使用してイメージをリビルドします。`<docker_id>` は、実際の Docker ID に置き換えてください。
 
     ```

@@ -2,22 +2,22 @@
 title: Azure 上の Oracle データベース用リファレンス アーキテクチャ | Microsoft Docs
 description: Oracle Database Enterprise Edition データベースを Microsoft Azure Virtual Machines 上で実行するためのリファレンス アーキテクチャ。
 services: virtual-machines-linux
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 tags: ''
 ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: borisb
+ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9125d8d2177b9bc40bb280f414cdfb2797ccf8fe
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683485"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221614"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
 
@@ -41,7 +41,7 @@ Oracle は、クラウドネイティブのツールとオファリングに加�
 
 ### <a name="oracle-rac-in-the-cloud"></a>クラウド内の Oracle RAC
 
-Oracle Real Application Cluster (RAC) は、多くのインスタンスが 1 つのデータベース ストレージにアクセスするようにすることにより高スループットの実現を支援する (全共有型アーキテクチャ パターン)、Oracle が提供するソリューションです。 Oracle RAC は、オンプレミスの高可用性にも使用できますが、Oracle RAC のみを使用してクラウドの高可用性を実現することはできません。これは、Oracle RAC がインスタンス レベルの障害に対してのみ保護を提供し、ラック レベルやデータセンター レベルの障害には保護を提供しないためです。 このため、Oracle では、高可用性を実現するため、データベース (単一インスタンスであれ RAC であれ) と Oracle Data Guard を併用することを推奨しています。 一般に、ミッション クリティカルなアプリケーションを実行する目的で高い SLA が必要とされます。 Oracle RAC は、現時点では、Oracle on Azure の認定やサポートの対象になっていません。 ただし、Azure では、インスタンスレベルの障害に対する保護に役立つ、Availability Zones や計画メンテナンス ウィンドウなどの機能を提供しています。 また、Oracle Data Guard、Oracle GoldenGate、Oracle Sharding などのテクノロジを使用して、ラックレベルやデータセンターレベルの障害、および地政学的な障害からデータベースを保護することにより、ハイ パフォーマンスと回復性を実現できます。
+Oracle Real Application Cluster (RAC) は、多くのインスタンスが 1 つのデータベース ストレージにアクセスするようにすることにより高スループットの実現を支援する (全共有型アーキテクチャ パターン)、Oracle が提供するソリューションです。 Oracle RAC は、オンプレミスの高可用性にも使用できますが、Oracle RAC のみを使用してクラウドの高可用性を実現することはできません。これは、Oracle RAC がインスタンス レベルの障害に対してのみ保護を提供し、ラック レベルやデータセンター レベルの障害には保護を提供しないためです。 このため、Oracle では、高可用性を実現するため、データベース (単一インスタンスであれ RAC であれ) と Oracle Data Guard を併用することを推奨しています。 一般に、ミッション クリティカルなアプリケーションを実行する目的で高い SLA が必要とされます。 Oracle RAC は、現時点では、Oracle on Azure の認定やサポートの対象になっていません。 ただし、Azure では、インスタンスレベルの障害に対する保護に役立つ、Availability Zones や計画メンテナンス ウィンドウなどの機能を提供しています。 これに加えて、顧客は Oracle Data Guard、Oracle GoldenGate、Oracle Sharding などのテクノロジを使用して、ラック レベルやデータセンター レベルの障害、地政学的な障害からデータベースを保護することにより、ハイ パフォーマンスと回復性を実現できます。
 
 複数の[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で Oracle Database を Oracle Data Guard や GoldenGate と組み合わせて実行すると、99.99% のアップタイム SLA を実現できます。 可用性ゾーンがまだ存在しない Azure リージョンでは、[可用性セット](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を利用して、99.95% のアップタイム SLA を実現できます。
 

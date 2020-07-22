@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ac76ef5eeebd278dc10e03d661bb21469c8f4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610569"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203668"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM での Azure Disk Encryption シナリオ
 
@@ -238,6 +238,9 @@ Azure Disk Encryption は、次のシナリオ、機能、およびテクノロ�
 - Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)
 - Lsv2 シリーズ VM (「[Lsv2 シリーズ](../lsv2-series.md)」を参照)
 - 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
+- [ユーザーが管理するキーを使用して実行するサーバー側の暗号化](disk-encryption.md)を、ADE によって暗号化された VM に適用する (その逆も同様)。
+- ADE を使用して暗号化された VM を[ユーザーが管理するキーを使用して実行するサーバー側の暗号化](disk-encryption.md)に移行する。
+
 
 ## <a name="next-steps"></a>次のステップ
 
