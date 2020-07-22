@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450006"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170260"
 ---
 # <a name="train-pytorch-model"></a>PyTorch モデルのトレーニング
 
@@ -27,7 +27,7 @@ ms.locfileid: "84450006"
 2. **PyTorch モデルのトレーニング** モジュールをパイプラインに追加します。 このモジュールは、 **[モデル トレーニング]** カテゴリにあります。 **[Train]\(トレーニング\)** を展開し、**PyTorch モデルのトレーニング** モジュールをパイプラインにドラッグします。
 
    > [!NOTE]
-   > **PyTorch モデルのトレーニング** モジュールは **GPU** 型のコンピューティングでのみ実行できます。それ以外の場合、パイプラインは失敗します。 モジュールの右側のウィンドウで特定のモジュールを計算するよう選択するには、 **[Use other compute target]\(その他のコンピューティング先を使用する\)** を設定します。
+   > **PyTorch モデルのトレーニング** モジュールは、大規模なデータセットについては **GPU** 型のコンピューティングで実行することが推奨されます。それ以外の場合、パイプラインは失敗します。 モジュールの右側のウィンドウで特定のモジュールを計算するよう選択するには、 **[Use other compute target]\(その他のコンピューティング先を使用する\)** を設定します。
 
 3.  左側の入力に、未トレーニングのモードをアタッチします。 トレーニング データセットと検証データセットを **PyTorch モデルのトレーニング**の中央および右側の入力にアタッチします。
 

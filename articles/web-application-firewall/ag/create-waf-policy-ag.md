@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146600"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
 
@@ -23,7 +23,7 @@ WAF ポリシーをリスナーに関連付けると、1 つの WAF の背後に
 アプリケーション ゲートウェイにポリシーが適用されていて、そのアプリケーション ゲートウェイの 1 つのリスナーに別のポリシーを適用した場合、リスナーのポリシーは有効になりますが、割り当てられているリスナーに対してのみ有効になります。 特定のポリシーが割り当てられていない他のすべてのリスナーには、依然として Application Gateway ポリシーが適用されます。 
 
    > [!NOTE]
-   > サイトごとおよび URI ごとの WAF ポリシーはパブリック プレビュー段階です。 つまり、この機能には、Microsoft の追加使用条件が適用されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+   > URI ごとの WAF ポリシーはパブリック プレビュー段階です。 つまり、この機能には、Microsoft の追加使用条件が適用されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
    > [!NOTE]
    > ファイアウォール ポリシーが WAF に関連付けられている場合は、その WAF に関連付けられているポリシーが常に存在している必要があります。 このポリシーは上書きできますが、WAF からのポリシーの関連付け解除は完全にはサポートされていません。 
 

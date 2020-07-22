@@ -3,12 +3,12 @@ title: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
 description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248806"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170328"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 
@@ -30,7 +30,7 @@ ms.locfileid: "84248806"
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>今後作成されるデータベースはバックアップに自動的に追加されますか?
 
-いいえ、これは現在サポートされていません。
+いいえ。これは現在サポートされていません。
 
 ### <a name="if-i-delete-a-database-from-an-instance-what-will-happen-to-the-backups"></a>インスタンスからデータベースを削除した場合、バックアップはどうなりますか?
 
@@ -45,7 +45,7 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」セクションと[事前登録スクリプトの内容](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)に関するセクションを参照してください。
 
-### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Azure で SAP HANA データベースをバックアップできるようにするには、どのようなアクセス許可を設定する必要がありますか?
+### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>Azure で SAP HANA データベースをバックアップできるようにするには、どのようなアクセス許可を設定する必要がありますか?
 
 事前登録スクリプトを実行すると、Azure で SAP HANA データベースをバックアップできるようにするために必要なアクセス許可が設定されます。 事前登録スクリプトで実行される処理の詳細については、[こちら](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)をご覧ください。
 
@@ -57,21 +57,55 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 現時点では、仮想 IP のみに対してソリューションを設定することはできません。 ソリューションを実行するには、仮想マシンが必要です。
 
-### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>SAP HANA システム レプリケーション (HSR) を使用しています。この設定のバックアップはどのように構成すればよいですか?
-
-HSR のプライマリおよびセカンダリのノードは、関連のない 2 つの個別の VM として扱われます。 バックアップはプライマリ ノードで構成する必要があります。また、フェールオーバーが発生したときに、セカンダリ ノード (これがプライマリ ノードになります) でバックアップを構成する必要があります。 他のノードに対するバックアップの自動 "フェールオーバー" はありません。
-
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>オンデマンド バックアップを Azure コンテナーではなくローカル ファイル システムに移動する方法はありますか?
 
-1. 目的のデータベースで現在実行中のバックアップが完了するまで待ちます (完了は Studio で確認します)
+1. 目的のデータベースで現在実行中のバックアップが完了するまで待ちます (完了は Studio で確認します)。
 1. 次の手順を使用して、目的の DB のログ バックアップを無効にし、カタログ バックアップを **[Filesystem]\(ファイルシステム\)** に設定します。
 1. **[SYSTEMDB]**  ->  **[構成]**  ->  **[データベースの選択]**  ->  **[Filter (log)]\(フィルター (ログ)\)** の順にダブルクリックします
     1. [enable_auto_log_backup] を **[no]** に設定します
-    1. [log_backup_using_backint] を **[false]** に設定します
-1. 目的のデータベースでオンデマンド バックアップを実行し、バックアップとカタログ バックアップが完了するまで待ちます。
+    1. [catalog_backup_using_backint] を **[false]** に設定します
+1. 目的のデータベースでオンデマンド バックアップ (完全/差分/増分) を実行し、バックアップとカタログ バックアップが完了するまで待ちます。
+1. ログ バックアップもファイルシステムに移動する場合は、[enable_auto_log_backup] を **[yes]** に設定します。
 1. 以前の設定に戻して、バックアップが Azure コンテナーにフローできるようにします。
     1. [enable_auto_log_backup] を **[yes]** に設定します
-    1. [log_backup_using_backint] を **[true]** に設定します
+    1. [catalog_backup_using_backint] を **[true]** に設定します
+
+>[!NOTE]
+>バックアップをローカル ファイルシステムに移動し、再度 Azure コンテナーに切り替えると、コンテナー内のログ バックアップでログ チェーンが切断される場合があります。 これにより完全バックアップがトリガーされます。正常に完了すると、ログのバックアップが開始されます。
+
+### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>HANA レプリケーションの設定で SAP HANA バックアップを使用するにはどうすればよいですか?
+
+現時点では、Azure Backup は HSR の設定を理解する機能を備えていません。 つまり、HSR のプライマリおよびセカンダリのノードは、関連のない 2 つの個別の VM として扱われます。 最初に、プライマリ ノードでバックアップを構成する必要があります。 フェールオーバーが発生した場合は、セカンダリ ノード (こちらがプライマリ ノードになります) でバックアップを構成する必要があります。 他のノードに対するバックアップの自動フェールオーバーはありません。
+
+任意の時点のアクティブ (プライマリ) ノードからデータをバックアップするには、フェールオーバー後にプライマリになったセカンダリ ノードに**保護を切り替える**ことができます。
+
+この**保護の切り替え**を実行するには、次の手順に従います。
+
+- プライマリで (データを保持して) [保護を停止](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)します
+- セカンダリ ノードで[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行します
+- セカンダリ ノードで[データベースを検出](tutorial-backup-sap-hana-db.md#discover-the-databases)し、それらに[バックアップを構成](tutorial-backup-sap-hana-db.md#configure-backup)します
+
+これらの手順は、フェールオーバー終了のたびに手動で実行する必要があります。 これらの手順は、Azure portal に加えて、コマンド ライン/HTTP REST を使用して実行できます。 これらの手順を自動化するには、Azure Runbook を使用します。
+
+**保護の切り替え**を実行する方法の詳細な例を次に示します。
+
+この例では、HSR セットアップにノード 1 (プライマリ) とノード 2 (セカンダリ) の 2 つのノードがあります。  バックアップはノード 1 で構成されています。 前述のように、まだノード 2 でバックアップを構成しないようにしてください。
+
+最初のフェールオーバーが発生すると、ノード 2 がプライマリになります。 このとき、次のようになります。
+
+1. [データの保持] オプションを使用して、ノード 1 (前のプライマリ) の保護を停止します。
+1. ノード 2 (現在のプライマリ) で事前登録スクリプトを実行します。
+1. ノード 2 のデータベースを検出し、バックアップ ポリシーを割り当て、バックアップを構成します。
+
+その後、ノード 2 で最初の完全バックアップがトリガーされ、その完了後にログ バックアップが開始されます。
+
+次のフェールオーバーが発生すると、ノード 1 が再びプライマリになり、ノード 2 がセカンダリになります。 ここで、手順を繰り返します。
+
+1. [データの保持] オプションを使用して、ノード 2 の保護を停止します。
+1. ノード 1 (再びプライマリになっています) で事前登録スクリプトを実行します。
+1. 次に、必要なポリシーを使用してノード 1 で[バックアップを再開](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)します (前にノード 1 でバックアップが停止されているため)。
+
+その後、ノード 1 で完全バックアップが再度トリガーされ、その完了後にログ バックアップが開始されます。
 
 ## <a name="restore"></a>復元
 
@@ -87,7 +121,7 @@ HSR のプライマリおよびセカンダリのノードは、関連のない 
 
 SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照し、現在サポートされている復元の種類を確認してください。
 
-### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>SLES で実行されているデータベースのバックアップを使用して RHEL HANA システムを復元できますか? また、その逆は可能ですか?
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>SLES で実行されているデータベースのバックアップを使用して RHEL HANA システムを復元できますか? また、その逆は可能ですか?
 
 はい。SLES で実行されている HANA データベースでトリガーされたストリーミング バックアップを使用して、RHEL HANA システムに復元できます。また、その逆も可能です。 つまり、ストリーミング バックアップを使用すると、OS を跨いだ復元が可能になります。 ただし、復元先の HANA システムと復元に使用する HANA システムの両方が、SAP による復元に互換性があることを確認する必要があります。 互換性のある復元の種類については、SAP HANA メモ [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照してください。
 

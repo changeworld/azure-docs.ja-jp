@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765099"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224861"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -80,6 +80,9 @@ ms.locfileid: "84765099"
 [証明書の取得操作](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   状態: 完了、エラー情報ありで失敗、またはキャンセル済み  
       -   作成の遅延のため、キャンセル操作を開始できます。 キャンセルは、有効な場合と有効でない場合とがあります。  
+
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>統合 CA に関連付けられたネットワーク セキュリティとアクセス ポリシー
+Key Vault サービスは要求を CA に送信します (送信トラフィック)。 したがって、ファイアウォール対応のキー コンテナーと完全に互換性があります。 Key Vault はアクセス ポリシーを CA と共有しません。 署名要求を個別に受け入れるように CA を構成する必要があります。 [信頼された CA の統合に関するガイド](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 
 ## <a name="import-a-certificate"></a>証明書のインポート  
  代わりに、証明書を Key Vault にインポートできます (PFX または PEM)。  

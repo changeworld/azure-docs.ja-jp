@@ -3,14 +3,14 @@ title: Azure Automation で Runbook を管理する
 description: この記事では、Azure Automation で Runbook を管理する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834698"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185247"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -35,7 +35,7 @@ Azure portal または Windows PowerShell を使用して、Azure Automation に
 
 ### <a name="create-a-runbook-with-powershell"></a>PowerShell で Runbook を作成する
 
-空の Runbook を作成するには、[New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) コマンドレットを使用します。 `Type` パラメーターを使用して、`New-AzAutomationRunbook` に対して定義されている Runbook の種類の 1 つを指定します。
+空の Runbook を作成するには、[New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) コマンドレットを使用します。 `Type` パラメーターを使用して、`New-AzAutomationRunbook` に対して定義されている Runbook の種類の 1 つを指定します。
 
 次の例は、新しい空の Runbook を作成する方法を示しています。
 
@@ -46,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook をインポートする
 
-PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト、グラフィカル Runbook ( **.graphrunbook**)、Python 2 スクリプト ( **.py**) をインポートして独自の Runbook を作成することができます。  以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
+PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト、グラフィカル Runbook ( **.graphrunbook**)、Python 2 スクリプト ( **.py**) をインポートして独自の Runbook を作成することができます。 以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
 
 * ワークフローが含まれていない **.ps1** ファイルは、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートすることができます。 それを PowerShell ワークフロー Runbook にインポートすると、ワークフローに変換されます。 この場合、Runbook には、加えられた変更を説明するコメントが追加されます。
 
@@ -54,7 +54,7 @@ PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト�
 
 * PowerShell ワークフローを含む **.ps1** ファイルは PowerShell スクリプト エンジンでは認識できないため、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) にインポートしないでください。
 
-* **.graphrunbook** ファイルは、新しい[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) にのみインポートします。 
+* **.graphrunbook** ファイルは、新しい[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) にのみインポートします。
 
 ### <a name="import-a-runbook-from-the-azure-portal"></a>Azure portal から Runbook をインポートする
 
@@ -77,7 +77,7 @@ PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト�
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>Windows PowerShell を使用して Runbook をインポートする
 
-Runbook のドラフトとしてスクリプト ファイルをインポートするには、[Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) コマンドレットを使用します。 Runbook が既に存在する場合、コマンドレットで `Force` パラメーターを使用しないと、インポートは失敗します。
+Runbook のドラフトとしてスクリプト ファイルをインポートするには、[Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) コマンドレットを使用します。 Runbook が既に存在する場合、コマンドレットで `Force` パラメーターを使用しないと、インポートは失敗します。
 
 次の例では、スクリプト ファイルを Runbook にインポートする方法を示します。
 
@@ -161,7 +161,7 @@ $connection = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 
-$AzContext = Select-AzSubscription -SubscriptionId $connection.SubscriptionID
+$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
 $runbookName = "<RunbookName>"
@@ -192,7 +192,7 @@ Runbook が時間制約内で普通に実行される場合は、スクリプト
 
 ## <a name="work-with-multiple-subscriptions"></a>複数のサブスクリプションの操作
 
-Runbook は、[サブスクリプション](automation-runbook-execution.md#subscriptions)を操作できることが必要です。 たとえば、複数のサブスクリプションを処理するために、Runbook には [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) コマンドレットが使用されます。 このコマンドレットを使用するのは、同じサンドボックスで実行されている別の Runbook から認証コンテキストが取得されないようにするためです。 また、Runbook は、Az モジュール コマンドレットで `AzContext` パラメーターを使用して、適切なコンテキストを渡します。
+Runbook は、[サブスクリプション](automation-runbook-execution.md#subscriptions)を操作できることが必要です。 たとえば、複数のサブスクリプションを処理するために、Runbook には [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) コマンドレットが使用されます。 このコマンドレットを使用するのは、同じサンドボックスで実行されている別の Runbook から認証コンテキストが取得されないようにするためです。 また、Runbook は `Get-AzContext` コマンドレットを使用して現在のセッションのコンテキストを取得し、変数 `$AzureContext` に割り当てます。
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -204,7 +204,7 @@ Connect-AzAccount -ServicePrincipal `
 -ApplicationId $Conn.ApplicationID `
 -CertificateThumbprint $Conn.CertificateThumbprint
 
-$context = Get-AzContext
+$AzureContext = Get-AzContext
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
@@ -214,7 +214,7 @@ Start-AzAutomationRunbook `
     -ResourceGroupName $ResourceGroupName `
     -AutomationAccountName $AutomationAccountName `
     -Name $ChildRunbookName `
-    -DefaultProfile $context
+    -DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>カスタム スクリプトを使用する
@@ -257,7 +257,7 @@ Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook)
 
 ### <a name="publish-a-runbook-using-powershell"></a>PowerShell を使用して Runbook を発行する
 
-[Publish-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) コマンドレットを使用して Runbook を発行します。 
+[Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) コマンドレットを使用して Runbook を発行します。 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -305,7 +305,7 @@ Azure Automation におけるジョブの処理について詳しくは、「[�
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>PowerShell を使用してジョブの状態を取得する
 
-Runbook 用に作成されたジョブと、特定のジョブの詳細を取得するには、[Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) コマンドレットを使用します。 `Start-AzAutomationRunbook` を使用して Runbook を開始すると、結果として作成されたジョブが返されます。 ジョブの出力を取得するには [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) を使用します。
+Runbook 用に作成されたジョブと、特定のジョブの詳細を取得するには、[Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) コマンドレットを使用します。 `Start-AzAutomationRunbook` を使用して Runbook を開始すると、結果として作成されたジョブが返されます。 ジョブの出力を取得するには [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) を使用します。
 
 次の例では、サンプル Runbook の最後のジョブが取得されて、その状態、Runbook パラメーターに指定された値、およびジョブの出力が表示されます。
 

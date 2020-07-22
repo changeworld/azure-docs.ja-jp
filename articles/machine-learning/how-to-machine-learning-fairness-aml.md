@@ -1,5 +1,5 @@
 ---
-title: Python で ML モデルの公平性を評価する
+title: Python で ML モデルの公平性を評価する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning でモデルの公平性を評価する方法について説明します
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: luquinta
-ms.date: 06/30/2020
+ms.date: 07/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 9e88b87a7f6471f6c7344cc5548c37e947f18791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f791ef9e18032ce6773f4262586431e693b43b2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85656763"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206728"
 ---
-# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models"></a>Azure Machine Learning と Fairlearn オープンソース パッケージを使用して ML モデルの公平性を評価する  
+# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning と Fairlearn オープンソース パッケージを使用して ML モデルの公平性を評価する (プレビュー)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

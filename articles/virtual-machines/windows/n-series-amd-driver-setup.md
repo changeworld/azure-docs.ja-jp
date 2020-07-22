@@ -1,19 +1,19 @@
 ---
 title: Windows 用 Azure N シリーズ AMD GPU ドライバーのセットアップ
 description: Azure で Windows Server または Windows を実行する N シリーズ VM 用の AMD GPU ドライバーの設定方法
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 4693ad8b168ce1ddd7c07afe650a89fc1888ccd7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799881"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183326"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 
@@ -31,16 +31,18 @@ NVv4 VM では、Microsoft によって公開された GPU ドライバーのみ
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 10 EVD - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+| Windows 10 Enterprise マルチセッション - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
 
 
 ## <a name="driver-installation"></a>ドライバーのインストール
 
 1. リモートデスクトップで、各 NVv4 シリーズ VM に接続します。
 
-2. 最新のドライバーをダウンロードしてインストールします。
+2. 以前のバージョンのドライバーをアンインストールする必要がある場合は、[こちら](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)から AMD クリーンアップ ユーティリティをダウンロードします。以前のバージョンのドライバーに付属しているユーティリティは使用しないでください。
 
-3. VM を再起動してください。
+3. 最新のドライバーをダウンロードしてインストールします。
+
+4. VM を再起動してください。
 
 ## <a name="verify-driver-installation"></a>ドライバーのインストールの確認
 
@@ -50,7 +52,7 @@ NVv4 VM では、Microsoft によって公開された GPU ドライバーのみ
 
 dxdiag を使用して、ビデオ RAM などの GPU 表示プロパティを確認できます。 次の例は、Azure NVv4 VM での Radeon Instinct MI25 カードの 1/2 パーティションを示しています。
 <br />
-![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/dxdiag-output.png)
+![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Windows 10 ビルド1903 以降を実行している場合、dxdiag では [表示] タブに情報が表示されません。下部にある [すべての情報を保存する] オプションを使用してください。出力ファイルには、AMD MI25 GPU に関連する情報が表示されます。
 

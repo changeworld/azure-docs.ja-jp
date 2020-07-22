@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253870"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223314"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
@@ -44,11 +44,11 @@ ms.locfileid: "85253870"
 
      この時点で、ストーリーボードは次のようになります。
 
-     ![][0]
+     ![コンポーネントが追加された MainStoryboard_iPhone.storyboard アプリのスクリーンショット。][0]
 
 2. アシスタント エディターで、すべての switched コントロールのアウトレットを作成してそれらを呼び出し、テキスト フィールドとビュー コントローラー (デリゲート) を接続して、**ログイン** ボタンの**アクション**を作成します。
 
-    ![][1]
+    ![MainStoryboard_iPhone.storyboard アプリのアシスタント エディターのスクリーンショット][1]
 
     この時点で、BreakingNewsViewController.h ファイルには次のコードが含まれています。
 

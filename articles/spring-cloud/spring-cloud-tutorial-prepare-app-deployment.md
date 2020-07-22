@@ -1,17 +1,17 @@
 ---
-title: 方法 - Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
-description: このトピックでは、Java Spring アプリケーションを Azure Spring Cloud にデプロイできるように準備します。
+title: Azure Spring Cloud にデプロイするように Java Spring アプリケーションを準備する方法
+description: Azure Spring Cloud にデプロイするように Java Spring アプリケーションを準備する方法について説明します。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1840979fc1380f1e0d14f3a0a74eef5fa6df6538
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833385"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141856"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
@@ -253,7 +253,7 @@ pom.xml ファイルの依存関係セクションに次の `spring-cloud-starte
 </dependency>
 ```
 
- さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Application Insights と Azure Spring Cloud を使用する方法については、[分散トレースに関するチュートリアル](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
+ さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
 
 ## <a name="see-also"></a>関連項目
 * [アプリケーションのログとメトリックを分析する](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
@@ -264,9 +264,6 @@ pom.xml ファイルの依存関係セクションに次の `spring-cloud-starte
 
 ## <a name="next-steps"></a>次のステップ
 
-このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、次の記事を参照してください。
-
-> [!div class="nextstepaction"]
-> [Config Server インスタンスを設定する方法を確認する](spring-cloud-tutorial-config-server.md)
+このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、[Config Server インスタンスの設定](spring-cloud-tutorial-config-server.md)に関するページを参照してください。
 
 その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples))。

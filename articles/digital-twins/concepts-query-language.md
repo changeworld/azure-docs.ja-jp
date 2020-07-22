@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985243"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187117"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
@@ -30,10 +30,10 @@ Azure Digital Twins クエリ ストア言語で使用できる操作は次の�
 * リレーションシップのプロパティでツインを取得します。
 * 複数のリレーションシップの種類に対してツインを取得します (`JOIN` クエリ)。 許可される `JOIN` の数には制限があります (パブリック プレビューの場合は 1 レベル)。
 * カスタム関数 `IS_OF_MODEL(twinCollection, twinTypeName)` を使用します。これにより、ツインの[モデル](concepts-models.md)に基づいてフィルター処理を行うことができます。 継承がサポートされています。
-* 上記の任意の組み合わせ (`AND`、`OR`、`NOT` 演算子) を使用します。
 * スカラー関数を使用します: `IS_BOOL`、`IS_DEFINED`、`IS_NULL`、`IS_NUMBER`、`IS_OBJECT`、`IS_PRIMITIVE`、`IS_STRING`、`STARTS_WITH`、`ENDS_WITH`。
-* クエリ比較演算子を使用します: `AND`/`OR`/`NOT`、`IN`/`NOT IN`、`STARTSWITH`/`ENDSWITH`、`=`、`!=`、`<`、`>`、`<=`、`>=`。
-* 継続を使用します: クエリ オブジェクトは、ページ サイズ (最大 100) を使用してインスタンス化されます。 `nextAsTwin` メソッドの呼び出しを繰り返すことにより、一度に 1 ページずつデジタル ツインを取得できます。
+* クエリ比較演算子を使用します: `IN`/`NIN`、`=`、`!=`、`<`、`>`、`<=`、`>=`。
+* 上記の任意の組み合わせ (`AND`、`OR`、`NOT` 演算子) を使用します。
+* 継続を使用します: クエリ オブジェクトは、ページ サイズ (最大 100) を使用してインスタンス化されます。 API の後続の呼び出しに継続トークンを指定することで、デジタル ツインを一度に 1 ページずつ取得できます。
 
 ## <a name="next-steps"></a>次のステップ
 

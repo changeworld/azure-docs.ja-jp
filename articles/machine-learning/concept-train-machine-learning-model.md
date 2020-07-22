@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985737"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147057"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -131,6 +131,10 @@ R SDK を使用すると、Azure Machine Learning で R 言語を使用できま
 
 * [Azure Machine Learning 用の CLI 拡張機能を使用する](reference-azure-machine-learning-cli.md)
 * [Azure 上の MLOps](https://github.com/microsoft/MLOps)
+
+## <a name="vs-code"></a>VS Code
+
+VS Code 拡張機能を使用して、トレーニング ジョブを実行および管理できます。 詳細については、[VS Code リソース管理の攻略ガイド](how-to-manage-resources-vscode.md#experiments)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

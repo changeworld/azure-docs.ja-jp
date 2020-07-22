@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708419"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206197"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,11 +33,11 @@ SQL Managed Instance には、基になるインフラストラクチャとア�
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| ハードウェア | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3-GHz および Intel SP-8160 (Skylake) プロセッサ、高速 NVMe SSD、仮想コア = 1 LP (ハイパー スレッド) |
-| 仮想コアの数 | 8、16、24 の仮想コア | 4、8、16、24、32、40、64、80 の仮想コア |
-| 最大メモリ (メモリ/コア比) | 仮想コアあたり 7 GB<br/>メモリ量を増やすには、仮想コアを追加します。 | 仮想コアあたり 5.1 GB<br/>メモリ量を増やすには、仮想コアを追加します。 |
-| 最大インメモリ OLTP メモリ | インスタンスの制限:仮想コアあたり 1 から 1.5 GB| インスタンスの制限:仮想コアあたり 0.8 から 1.65 GB |
-| インスタンスの予約済み最大ストレージ |  汎用:8 TB<br/>Business Critical:1 TB (テラバイト) | 汎用:8 TB<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
+| **ハードウェア** | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3-GHz および Intel SP-8160 (Skylake) プロセッサ、高速 NVMe SSD、仮想コア = 1 LP (ハイパー スレッド) |
+| **仮想コアの数** | 8、16、24 の仮想コア | 4、8、16、24、32、40、64、80 の仮想コア |
+| **最大メモリ (メモリ/コア比)** | 仮想コアあたり 7 GB<br/>メモリ量を増やすには、仮想コアを追加します。 | 仮想コアあたり 5.1 GB<br/>メモリ量を増やすには、仮想コアを追加します。 |
+| **最大インメモリ OLTP メモリ** | インスタンスの制限:仮想コアあたり 1 から 1.5 GB| インスタンスの制限:仮想コアあたり 0.8 から 1.65 GB |
+| **インスタンスの予約済み最大ストレージ** |  汎用:8 TB<br/>Business Critical:1 TB (テラバイト) | 汎用:8 TB<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
 
 > [!IMPORTANT]
 > - Gen4 ハードウェアは段階的に廃止中であり、新しいデプロイでは利用できなくなりました。 SQL Managed Instance の新しいインスタンスはすべて、Gen5 ハードウェアにデプロイする必要があります。

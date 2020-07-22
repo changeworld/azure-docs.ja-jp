@@ -3,12 +3,12 @@ title: DPM と Azure Backup Server のオフライン バックアップ
 description: Azure Backup では、Azure Import/Export サービスを使用してネットワークからデータを送信できます。 この記事では、DPM と Azure Backup Server でのオフライン バックアップ ワークフローについて説明します。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921258"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187797"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM と Azure Backup Server (MABS) のオフライン バックアップのワークフロー
 
@@ -124,7 +124,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
     | パラメーター | 説明 |
     | --- | --- |
     | s:&lt;*ステージング場所のパス*&gt; |必須の入力。「オフライン バックアップの開始」セクションのワークフローで入力したステージング場所へのパスを指定します。 |
-    | p:&lt;*PublishSettingsFile へのパス*&gt; |省略可能。「オフライン バックアップの開始」セクションのワークフローで入力した Azure 発行設定ファイルへのパスを指定します。 |
+    | p:&lt;*PublishSettingsFile へのパス*&gt; |この省略可能な入力は、Azure 発行設定ファイルへのパスを指定するために使用されます。 |
 
     コマンドを実行すると、準備する必要があるドライブに対応する Azure インポート ジョブを選択するよう求められます。 指定されたステージング場所に関連付けられているインポート ジョブが 1 つのみの場合は、次のような画面が表示されます。
 

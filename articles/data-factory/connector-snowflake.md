@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 347f37fb999656a1c4951f01a75a392887b5b882
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/09/2020
+ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045673"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220305"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake との間でデータをコピーする
 
@@ -60,7 +60,7 @@ Snowflake のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>(optional)"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ Snowflake のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>(optional)",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 
@@ -147,7 +147,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 | exportSettings | Snowflake からデータを取得するために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ       |
 | ***`exportSettings` の下:*** |  |  |
 | type | エクスポート コマンドの type を **SnowflakeExportCopyCommand** に設定します。 | はい |
-| additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして提供されます。 例 :MAX_FILE_SIZE、OVERWRITE。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)」を参照してください。 | いいえ |
+| additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして指定されます。 例 :MAX_FILE_SIZE、OVERWRITE。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)」を参照してください。 | いいえ |
 | additionalFormatOptions | キーと値のペアのディクショナリとして COPY コマンドに指定される、追加のファイル形式オプション。 例 :DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 詳細については、「[Snowflake 形式の種類のオプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)」を参照してください。 | いいえ |
 
 #### <a name="direct-copy-from-snowflake"></a>Snowflake から直接コピーする
@@ -156,15 +156,20 @@ Snowflake からデータをコピーするために、コピー アクティビ
 
 - **シンクのリンクされたサービス**が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
 
-- **シンク データ形式**が、次のように構成された **Parquet** または**区切りテキスト**です。
+- **シンク データ形式**が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
 
-   - **Parquet** 形式の場合は、圧縮コーデックが **None**、**Snappy**、または **Lzo** です。
-   - **区切りテキスト**形式の場合:
-     - `rowDelimiter` が **\r\n** または任意の 1 文字です。
-     - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
-     - `encodingName` が既定値のままか、**utf-8** に設定されている。
-     - `quoteChar` が、**double quote**、**single quote**、または **empty string** (引用符なし) です。
-- コピー アクティビティ ソースでは、`additionalColumns` が指定されていません。
+    - **Parquet** 形式の場合は、圧縮コーデックが **None**、**Snappy**、または **Lzo** です。
+    - **区切りテキスト**形式の場合:
+        - `rowDelimiter` が **\r\n** または任意の 1 文字です。
+        - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
+        - `encodingName` が既定値のままか、**utf-8** に設定されている。
+        - `quoteChar` が、**double quote**、**single quote**、または **empty string** (引用符なし) です。
+    - **JSON** 形式の場合、直接コピーでは、ソースの Snowflake テーブルまたはクエリ結果に 1 つの列しかなく、この列のデータ型が **VARIANT**、**OBJECT**、または **ARRAY** であるケースのみがサポートされます。
+        - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
+        - `encodingName` が既定値のままか、**utf-8** に設定されている。
+        - コピー アクティビティのシンクでは、`filePattern` は既定値のままにするか、**setOfObjects** に設定します。
+
+- コピー アクティビティのソースでは、`additionalColumns` は指定しません。
 - 列マッピングが指定されていません。
 
 **例:**
@@ -282,15 +287,19 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 
 - **ソースのリンクされたサービス**が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
 
-- **ソース データ形式**が、次のように構成された **Parquet** または**区切りテキスト**です。
+- **ソース データ形式**が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
 
-   - **Parquet** 形式の場合は、圧縮コーデックが **None** または**Snappy**です。
+    - **Parquet** 形式の場合は、圧縮コーデックが **None** または**Snappy**です。
 
-   - **区切りテキスト**形式の場合:
-     - `rowDelimiter` が **\r\n** または任意の 1 文字です。 行区切りが "\r\n" でない場合、`firstRowAsHeader` を **false** に指定する必要があります。`skipLineCount` は指定されません。
-     - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
-     - `encodingName` が既定値のままになっているか、"UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB18030"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255" に設定されています。
-     - `quoteChar` が、**double quote**、**single quote**、または **empty string** (引用符なし) です。
+    - **区切りテキスト**形式の場合:
+        - `rowDelimiter` が **\r\n** または任意の 1 文字です。 行区切りが "\r\n" でない場合、`firstRowAsHeader` を **false** に指定する必要があります。`skipLineCount` は指定されません。
+        - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
+        - `encodingName` が既定値のままになっているか、"UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB18030"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255" に設定されています。
+        - `quoteChar` が、**double quote**、**single quote**、または **empty string** (引用符なし) です。
+    - **JSON** 形式の場合、直接コピーでは、シンクの Snowflake テーブルに 1 つの列しかなく、この列のデータ型が **VARIANT**、**OBJECT**、または **ARRAY** であるケースのみがサポートされます。
+        - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
+        - `encodingName` が既定値のままか、**utf-8** に設定されている。
+        - 列マッピングが指定されていません。
 
 - コピー アクティビティ ソース内: 
 

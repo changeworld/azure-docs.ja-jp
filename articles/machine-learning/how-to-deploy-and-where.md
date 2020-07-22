@@ -5,18 +5,18 @@ description: Azure Container Instances、Azure Kubernetes Service、Azure IoT Ed
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/28/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: f9558431d65a9c0f4fecf34141d9148afa514d86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 07/08/2020
+ms.custom: seoapril2019, tracking-python
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208569"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146557"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 
 + **Visual Studio Code の使用**
 
-   Visual Studio Code を使用する場合は、グラフィカル インターフェイスを使用してワークスペースを選択します。 詳しくは、Visual Studio Code 拡張機能のドキュメントの「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」をご覧ください。
+   Visual Studio Code を使用する場合は、グラフィカル インターフェイスを使用してワークスペースを選択します。 詳しくは、Visual Studio Code 拡張機能のドキュメントの「[モデルを展開して管理する](how-to-manage-resources-vscode.md#endpoints)」をご覧ください。
 
 ## <a name="register-your-model"></a><a id="registermodel"></a> モデルを登録する
 
@@ -255,9 +255,34 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 ```
 
 **複数のモデルの例**
+
+このシナリオでは、2 つのモデルがワークスペースに登録されます。
+
+* `my_first_model`:1 つのファイル (`my_first_model.pkl`) が含まれており、バージョンは 1 つ (`1`) のみです。
+* `my_second_model`:1 つのファイル (`my_second_model.pkl`) が含まれており、2 つのバージョン `1` と `2` があります。
+
+サービスがデプロイされた場合、両方のモデルがデプロイ操作で提供されます。
+
+```python
+first_model = Model(ws, name="my_first_model", version=1)
+second_model = Model(ws, name="my_second_model", version=2)
+service = Model.deploy(ws, "myservice", [first_model, second_model], inference_config, deployment_config)
+```
+
+サービスをホストする Docker イメージでは、`AZUREML_MODEL_DIR` 環境変数に、モデルが配置されているディレクトリが格納されます。
+このディレクトリで、各モデルは `MODEL_NAME/VERSION` のディレクトリ パスに配置されます。 ここで、`MODEL_NAME` は登録されているモデルの名前で、`VERSION` はモデルのバージョンです。 登録されたモデルを構成するファイルは、これらのディレクトリに格納されます。
+
+この例で、パスは `$AZUREML_MODEL_DIR/my_first_model/1/my_first_model.pkl` と `$AZUREML_MODEL_DIR/my_second_model/2/my_second_model.pkl` です。
+
+
 ```python
 # Example when the model is a file, and the deployment contains multiple models
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
+first_model_name = 'my_first_model'
+first_model_version = '1'
+first_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), first_model_name, first_model_version, 'my_first_model.pkl')
+second_model_name = 'my_second_model'
+second_model_version = '2'
+second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_name, second_model_version, 'my_second_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -322,6 +347,8 @@ def run(data):
         return error
 ```
 
+##### <a name="power-bi-compatible-endpoint"></a>Power BI 互換エンドポイント 
+
 次の例では、DataFrame を使用して、`<key: value>` ディクショナリとして入力データを定義する方法を示しています。 このメソッドは、Power BI からデプロイされた Web サービスを使用するためにサポートされています。 ([詳細については、Power BI から Web サービスを使用する方法に関するページを参照してください](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。)
 
 ```python
@@ -358,8 +385,9 @@ input_sample = pd.DataFrame(data=[{
 # This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
-
-@input_schema('data', PandasParameterType(input_sample))
+# To indicate that we support a variable length of data input,
+# set enforce_shape=False
+@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
@@ -516,6 +544,10 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 次のコンピューティング ターゲット、またはコンピューティング リソースを使用して、Web サービスのデプロイをホストできます。
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+> [!NOTE]
+> * ACI が適しているのは、サイズが 1 GB 未満の小さいモデルのみです。 
+> * より大きいモデルの開発テストには、単一ノードの AKS を使用することをお勧めします。
 
 ### <a name="define-your-deployment-configuration"></a>デプロイ構成を定義する
 
@@ -925,13 +957,18 @@ output = service.run(input_payload)
 print(output)
 ```
 
-注:事前構築済みの sklearn 推論コンテナーには次の依存関係が含まれています。
+注:事前に構築された scikit-learn 推論コンテナーには、次の依存関係が含まれています。
 
 ```yaml
+    - dill
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
     - numpy
+    - joblib
+    - pandas
+    - scipy
+    - sklearn_pandas
 ```
 
 ## <a name="package-models"></a>モデルのパッケージ化
@@ -963,7 +1000,7 @@ package.wait_for_creation(show_output=True)
 
 パッケージを作成した後、`package.pull()` を使用して、ローカルの Docker 環境にイメージをプルできます。 このコマンドの出力には、イメージの名前が表示されます。 次に例を示します。 
 
-`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338` 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
 モデルをダウンロードした後、`docker images` コマンドを使用してローカル イメージを一覧表示します。
 
@@ -1129,7 +1166,7 @@ import requests
 # Load image data
 data = open('example.jpg', 'rb').read()
 # Post raw data to scoring URI
-res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
 ```
 
 <a id="cors"></a>
