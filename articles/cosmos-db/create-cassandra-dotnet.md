@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e274db2983c476c2428fdd0d25f3dff9bbc5e6ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118425"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523878"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
@@ -120,7 +120,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 1. [Azure portal](https://portal.azure.com/) で **[接続文字列]** を選択します。
 
-1. 画面右側の ![コピー ボタン](./media/create-cassandra-dotnet/copy.png) を使用してユーザー名の値をコピーします。
+1. 画面の右側にある :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: ボタンを使用して USERNAME の値をコピーします。
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Azure portal の [接続文字列] ページでアクセス キー名を表示してコピー":::
 

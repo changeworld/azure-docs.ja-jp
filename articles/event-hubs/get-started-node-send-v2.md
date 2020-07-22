@@ -3,12 +3,12 @@ title: JavaScript を使用して Azure Event Hubs との間でイベントを�
 description: この記事では、最新の azure/event-hubs バージョン 5 パッケージを使用して、Azure Event Hubs との間でイベントを送受信する JavaScript アプリケーションを作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ad9a78aa48ee0d4c01e2748b8b52192e259add7b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 7ec97d07843a9844387ad1038c075ed55e304a2c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521889"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>JavaScript を使用して Event Hubs との間でイベントを送受信する (azure/event-hubs バージョン 5)
 このクイックスタートでは、**azure/event-hubs バージョン 5** JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -106,7 +106,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 このセクションでは、JavaScript アプリケーション内で Azure Blob Storage チェックポイント ストアを使用して、イベント ハブからイベントを受信します。 これにより、Azure Storage Blob 内で定期的に受信したメッセージのメタデータ チェックポイントが実行されます。 この手法によって、後で前回終了したところからメッセージを継続して受信しやすくなります。
 
 > [!NOTE]
-> Azure Stack Hub 上で実行する場合、そのプラットフォームでサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なります。 たとえば、[Azure Stack Hub バージョン 2002 上で](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、このセクションの手順に従うことに加え、Storage Service API バージョン 2017-11-09 を対象にするコードを追加する必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub にある [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) サンプルと [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) サンプルを参照してください。 Azure Stack Hub でサポートされる Azure Storage サービスのバージョンについて詳しくは、「[Azure Stack Hub のストレージ: 違いと考慮事項](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)」をご覧ください。
+> Azure Stack Hub 上で実行する場合、そのプラットフォームでサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なります。 たとえば、[Azure Stack Hub バージョン 2002 上で](/azure-stack/user/event-hubs-overview)実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、このセクションの手順に従うことに加え、Storage Service API バージョン 2017-11-09 を対象にするコードを追加する必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub にある [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) サンプルと [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) サンプルを参照してください。 Azure Stack Hub でサポートされる Azure Storage サービスのバージョンについて詳しくは、「[Azure Stack Hub のストレージ: 違いと考慮事項](/azure-stack/user/azure-stack-acs-differences)」をご覧ください。
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure Storage アカウントと BLOB コンテナーを作成する

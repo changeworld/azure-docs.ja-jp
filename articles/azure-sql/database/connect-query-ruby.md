@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: c297a40a5452938d8e706bf2e0791e4a7d03210c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 57e364d8cbd3cb9e1e2996786ee6414b7d7e04a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267292"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504957"
 ---
 # <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Ruby を使用して Azure SQL Database または Azure SQL Managed Instance のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84267292"
 
 - データベース。 以下のいずれかのクイックスタートを使用すると、データベースを作成し、構成できます。
 
-  || SQL Database | SQL Managed Instance | Azure VM 上の SQL Server |
+  | アクション | SQL Database | SQL Managed Instance | Azure VM 上の SQL Server |
   |:--- |:--- |:---|:---|
   | 作成| [ポータル](single-database-create-quickstart.md) | [ポータル](../managed-instance/instance-create-quickstart.md) | [ポータル](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |

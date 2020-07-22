@@ -7,18 +7,23 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 18afd9faf21e5de4831d54d0870b64e79d29cb0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72d1048af5f1d6d812228d8928224b2104958300
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528572"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
 
 このクイックスタートでは、Node.js を使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 ここでは、BLOB のアップロード、ダウンロード、一覧表示のほか、コンテナーの作成と削除を行います。
 
-[API のリファレンスのドキュメント](/javascript/api/@azure/storage-blob) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [パッケージ (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+* [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-blob)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 

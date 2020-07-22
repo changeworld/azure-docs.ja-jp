@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2 
-ms.openlocfilehash: 6860aa07d7547df6eeebf5d35fa9a921f0f9dada
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7135b3630d7b780d2c5d18f22b2a05ee6aedf8ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267377"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504541"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Node.js を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84267377"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-  || SQL Database | SQL Managed Instance | Azure VM 上の SQL Server |
+  | アクション | SQL Database | SQL Managed Instance | Azure VM 上の SQL Server |
   |:--- |:--- |:---|:---|
   | 作成| [ポータル](single-database-create-quickstart.md) | [ポータル](../managed-instance/instance-create-quickstart.md) | [ポータル](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -64,7 +64,7 @@ ms.locfileid: "84267377"
 > [!NOTE]
 > 必要に応じて、Azure SQL Managed Instance を使用することを選択できます。
 >
-> 作成して構成するには、[Azure portal](../managed-instance/instance-create-quickstart.md)、[PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) を使用し、[オンプレミス](../managed-instance/point-to-site-p2s-configure.md)または [VM](../managed-instance/connect-vm-instance-configure.md) 接続を設定します。
+> 作成して構成するには、[Azure portal](../managed-instance/instance-create-quickstart.md)、[PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) を使用してから、[オンプレミス](../managed-instance/point-to-site-p2s-configure.md)または [VM](../managed-instance/connect-vm-instance-configure.md) 接続を設定します。
 >
 > データを読み込む方法については、[Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) ファイルの [BACPAC を使用した復元](database-import.md)に関するページを参照するか、[Wide World Importers データベースの復元](../managed-instance/restore-sample-database-quickstart.md)に関するページを参照してください。
 

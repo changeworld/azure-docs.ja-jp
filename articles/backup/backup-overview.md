@@ -4,12 +4,12 @@ description: Azure Backup サービスの概要を紹介し、このサービス
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513525"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -43,8 +43,8 @@ Azure Backup には、以下のような主な利点があります。
 - **短期および長期のデータの保持**:短期および長期のデータ保持のために、[Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)を使用することができます。
 - **ストレージ管理の自動化** - ハイブリッド環境では、多くの場合、異種混在のストレージが必要です。つまり、ストレージの一部はオンプレミスに、一部はクラウドに存在していなければなりません。 Azure Backup では、オンプレミスのストレージ デバイスを使用するためのコストはありません。 Azure Backup は、従量制課金モデルを使用して、バックアップ ストレージを自動的に割り当てて管理します。 そのため支払いは、使用した分のストレージについてのみ発生します。 価格に関して詳しくは、[こちら](https://azure.microsoft.com/pricing/details/backup)をご覧ください。
 - **複数のストレージ オプション** - Azure Backup では、ストレージ/データの高可用性を維持するため、2 種類のレプリケーションが提供されています。
-  - [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) では、データセンターのストレージ スケール ユニットにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
-  - [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
+  - [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md) では、データセンターのストレージ スケール ユニットにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
+  - [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
 
 ## <a name="next-steps"></a>次のステップ
 

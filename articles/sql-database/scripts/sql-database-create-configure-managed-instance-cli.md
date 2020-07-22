@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: fd2c7a33c0747aa21a8bda53ad5437c9e79a6557
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9d0058fd90590b10a0d5745bce1875db9ad35745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115410"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518896"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>CLI を使用して Azure SQL Managed Instance を作成する
 
@@ -49,7 +49,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| コマンド | 説明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 仮想ネットワークのコマンド。 |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 仮想ネットワーク サブネットのコマンド。 |

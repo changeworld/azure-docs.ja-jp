@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d489ed9dbf9b8075951258e0841675877e11be38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205797"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506793"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -153,3 +153,8 @@ Web アプリの **[概要]** ページには、参照、停止、開始、再�
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

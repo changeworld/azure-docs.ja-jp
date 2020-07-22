@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e13e7c1057d5a01867b561fc7ee7d1eed1a97ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220152"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530492"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 
@@ -51,7 +51,7 @@ ms.locfileid: "86220152"
 このチュートリアルは、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」のチュートリアルで完成したプロジェクト内のコードを更新します。 そのため、このチュートリアルを開始する前に、それを完了してください。
 
 > [!NOTE]
-> バックエンド サービスとして Azure App Service で Mobile Apps を使用している場合は、このチュートリアルの [Mobile Apps バージョン](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)に関するページをご覧ください。
+> バックエンド サービスとして Azure App Service で Mobile Apps を使用している場合は、このチュートリアルの [Mobile Apps バージョン](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)に関するページをご覧ください。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ ms.locfileid: "86220152"
     ```
 13. **[WindowsApp]** プロジェクトを右クリックし、 **[追加]** をクリックしてから、 **[クラス]** をクリックします。 クラスに `RegisterClient.cs` という名前を付け、 **[OK]** をクリックしてクラスを生成します。
 
-    このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](https://msdn.microsoft.com/library/dn743807.aspx)もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
+    このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](/previous-versions/azure/azure-services/dn743807(v=azure.100))もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
 14. 次の `using` ステートメントを、RegisterClient.cs file ファイルの先頭に追加します。
 
     ```csharp
@@ -357,4 +357,4 @@ ms.locfileid: "86220152"
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525173"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -51,21 +51,7 @@ ms.locfileid: "86220608"
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>仮想 WAN を作成する
 
-ブラウザーから Azure portal に移動し、Azure アカウントでサインインします。
-
-1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、Enter キーを押します。
-2. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** をクリックして [WAN の作成] ページを開きます。
-3. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
-
-   ![Virtual WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
-
-   * **[サブスクリプション]** - 使用するサブスクリプションを選択します。
-   * **[リソース グループ]** - 新規作成するか、または既存のものを使用します。
-   * **[リソース グループの場所]** - ドロップダウンからリソースの場所を選択します。 WAN はグローバルなリソースであり、特定のリージョンに存在するものではありません。 ただし、作成する WAN リソースをより簡単に管理および検索するために、リージョンを選択する必要があります。
-   * **[名前]** - WAN に付ける名前を入力します。
-   * **種類:** Basic または Standard。 Basic WAN を作成する場合は、Basic ハブのみを作成できます。 Basic ハブでは、VPN サイト間接続のみが可能です。
-4. フィールドへの入力を完了したら、 **[確認および作成]** を選択します。
-5. 検証に合格したら、 **[作成]** を選択して仮想 WAN を作成します。
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
 ## <a name="create-a-hub"></a><a name="hub"></a>ハブを作成する
 

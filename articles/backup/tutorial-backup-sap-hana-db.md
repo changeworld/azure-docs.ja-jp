@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8f6fa00f65a99798ee105852a269247d717ad75d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513270"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -23,7 +23,7 @@ ms.locfileid: "84770732"
 現在サポートされているすべてのシナリオについては、[こちら](sap-hana-backup-support-matrix.md#scenario-support)を参照してください。
 
 >[!NOTE]
->RHEL (7.4、7.6、7.7、または 8.1) の SAP HANA バックアップ プレビューの[使用を開始](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)します。 その他のクエリについては、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
+>RHEL (7.4、7.6、7.7、または 8.1) の SAP HANA バックアップ プレビューの[使用を開始]()します。 その他のクエリについては、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,13 +53,13 @@ ms.locfileid: "84770732"
 
 ### <a name="allow-access-using-nsg-tags"></a>NSG タグを使用してアクセスを許可する
 
-NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して Azure Backup への発信アクセスを許可する必要があります。 さらに、Azure AD と Azure Storage に対して[規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用することで、認証とデータ転送のための接続を許可する必要もあります。 これは、Azure portal または PowerShell から実行できます。
+NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して Azure Backup への発信アクセスを許可する必要があります。 さらに、Azure AD と Azure Storage に対して[規則](../virtual-network/security-overview.md#service-tags)を使用することで、認証とデータ転送のための接続を許可する必要もあります。 これは、Azure portal または PowerShell から実行できます。
 
 ポータルを使用して規則を作成するには、次のようにします。
 
   1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
   2. **[設定]** で **[送信セキュリティ規則]** を選択します。
-  3. **[追加]** を選択します。 [セキュリティ規則の設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が **[サービス タグ]** に、 **[宛先サービス タグ]** が **[AzureBackup]** に設定されていることを確認します。
+  3. **[追加]** を選択します。 [セキュリティ規則の設定](../virtual-network/manage-network-security-group.md#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が **[サービス タグ]** に、 **[宛先サービス タグ]** が **[AzureBackup]** に設定されていることを確認します。
   4. **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
 
 PowerShell を使用してルールを作成するには、次のようにします。
@@ -85,7 +85,7 @@ PowerShell を使用してルールを作成するには、次のようにしま
  7. NSG を保存する<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 
-**Azure Firewall タグを使用してアクセスを許可する**。 Azure Firewall を使用している場合は、AzureBackup [FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を使用してアプリケーション規則を作成します。 これにより、Azure Backup への発信アクセスを許可します。
+**Azure Firewall タグを使用してアクセスを許可する**。 Azure Firewall を使用している場合は、AzureBackup [FQDN タグ](../firewall/fqdn-tags.md)を使用してアプリケーション規則を作成します。 これにより、Azure Backup への発信アクセスを許可します。
 
 **トラフィックをルーティングするために HTTP プロキシ サーバーをデプロイする**。 Azure VM 上の SAP HANA データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 パブリック インターネットにアクセスできるように構成されたコンポーネントはバックアップ拡張機能のみです。
 
@@ -153,7 +153,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    * **Name**:この名前は、Recovery Services コンテナーを識別するために使用されるため、Azure サブスクリプションに対して一意である必要があります。 2 文字以上で、50 文字以下の名前を指定します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。 このチュートリアルでは、**SAPHanaVault** という名前を使用しています。
    * **サブスクリプション**:使用するサブスクリプションを選択します。 1 つのサブスクリプションのみのメンバーの場合は、その名前が表示されます。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (推奨) のサブスクリプションを使用してください。 職場または学校アカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。 ここでは、**SAP HANA solution lab subscription** サブスクリプションを使用しています。
    * **[リソース グループ]** :既存のリソース グループを使用するか、新しいリソース グループを作成します。 ここでは、**SAPHANADemo** を使用しています。<br>
-   サブスクリプションの使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン リスト ボックスからリソースを選択します。 新しいリソース グループを作成するには、 **[新規作成]** を選択し、名前を入力します。 リソース グループの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。
+   サブスクリプションの使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン リスト ボックスからリソースを選択します。 新しいリソース グループを作成するには、 **[新規作成]** を選択し、名前を入力します。 リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」を参照してください。
    * **[場所]** :コンテナーの地理的リージョンを選択します。 このコンテナーは、SAP HANA を実行している仮想マシンと同じリージョンにある必要があります。 ここでは、 **[米国東部 2]** を使用しています。
 
 5. **[確認および作成]** を選択します。

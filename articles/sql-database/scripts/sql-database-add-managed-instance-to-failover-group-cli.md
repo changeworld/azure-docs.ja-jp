@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: e9efb4e222e74f97a4f3d88639b02a86a3a6d660
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f196db537ef0a64d14930ed6bc67696ee4614c23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528907"
 ---
 # <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI を使用して Azure SQL Managed Instance をフェールオーバー グループに追加する
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| コマンド | 説明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 仮想ネットワークのコマンド。  |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 仮想ネットワーク サブネットのコマンド。 |

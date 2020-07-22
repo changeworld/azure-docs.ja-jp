@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746055"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517554"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "83746055"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、まず Azure Maps アカウントを作成して、主キー (サブスクリプション キー) を取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで 作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+このチュートリアルの手順を完了するには、まず Azure Maps アカウントを作成して、主キー (サブスクリプション キー) を取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで 作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="design"></a>デザイン
 

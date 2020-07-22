@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521651"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Firewall Manager ポリシーの概要
 
@@ -47,8 +47,8 @@ NAT ルール コレクションは、特定のファイアウォールに固有
 Azure Firewall では、従来のルールとポリシーの両方がサポートされます。 ポリシーとルールを比較した表を次に示します。
 
 
-|         |ポリシー  |ルール  |
-|---------|---------|---------|
+| サブジェクト | ポリシー  | ルール |
+| ------- | ------- | ----- |
 |Contains     |NAT、ネットワーク、アプリケーションの規則、カスタム DNS と DNS プロキシ設定、IP グループ、脅威インテリジェンスの設定 (許可リストを含む)|NAT、ネットワーク、アプリケーションの規則、カスタム DNS と DNS プロキシ設定、IP グループ、脅威インテリジェンスの設定 (許可リストを含む)|
 |保護     |仮想ハブと仮想ネットワーク|仮想ネットワークのみ|
 |ポータルでの操作     |Firewall Manager を使用した一元管理|スタンドアロンのファイアウォール エクスペリエンス|

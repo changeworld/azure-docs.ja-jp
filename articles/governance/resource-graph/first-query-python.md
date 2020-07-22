@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:初めての Python クエリ
 description: このクイックスタートでは、手順に従って、Python 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
-ms.date: 05/27/2020
+ms.date: 07/15/2020
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 58ba931f5d222df8d863a11a25af6563192ef453
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f7ca6ce5fab687e26007949898ad72c75d036782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609949"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511922"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>クイック スタート:Python を使用して初めての Resource Graph クエリを実行する
 
@@ -99,7 +99,7 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
        # Run query
        argResults = argClient.resources(argQuery)
    
-       # Show JSON results
+       # Show Python object
        print(argResults)
    
    getresources("Resources | project name, type | limit 5")

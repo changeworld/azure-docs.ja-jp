@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a272564684671e38100e5390e95129121fcbd0f8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8d0860cc5a4ee60cbf60d7b55789c518049dfb90
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019385"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528776"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Azure SQL Database のプールされたデータベースに対して CLI を使用してアクティブ geo レプリケーションを構成する
 
@@ -53,7 +53,7 @@ az group delete --name $secondaryResource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| コマンド | 説明 |
 |---|---|
 | [az sql elastic-pool](/cli/azure/sql/elastic-pool) | エラスティック プールのコマンド。 |
 | [az sql db replica](/cli/azure/sql/db/replica) | データベースのレプリケーション コマンド。 |

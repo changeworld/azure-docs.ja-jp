@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a922d6d859fab808b5100090cda40b5d14aaaee9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4484322370e07f2d1c17cc5c519b9b1d97564402
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458949"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526786"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>VHD を Azure にアップロードし新しい VM を作成するサンプル スクリプト
 
@@ -130,26 +130,26 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 | command                                                                                                             | メモ                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)                           | すべてのリソースを格納するリソース グループを作成します。                                                                                                                          |
-| [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)                         | ストレージ アカウントを作成します。                                                                                                                                                           |
-| [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)                                               | Azure のクラウド ストレージ アカウントの BLOB に、オンプレミスの仮想マシンから仮想ハード ディスクをアップロードします。                                                                       |
-| [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig)                               | 構成可能なイメージ オブジェクトを作成します。                                                                                                                                                 |
-| [Set-AzImageOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azimageosdisk)                               | イメージ オブジェクトのオペレーティング システム ディスクのプロパティを設定します。                                                                                                                        |
-| [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage)                                           | 新しいイメージを作成します。                                                                                                                                                                 |
-| [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | サブネット構成を作成します。 この構成は、仮想ネットワークの作成プロセスで使用されます。                                                                                |
-| [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)                         | 仮想ネットワークを作成します。                                                                                                                                                           |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress)                       | パブリック IP アドレスを作成します。                                                                                                                                                         |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)                     | ネットワーク インターフェイスを作成します。                                                                                                                                                         |
-| [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig)   | ネットワーク セキュリティ グループ規則の構成を作成します。 この構成は、NSG の作成時に NSG 規則を作成するために使用されます。                                                       |
-| [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup)             | ネットワーク セキュリティ グループを作成します。                                                                                                                                                    |
-| [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)                         | リソース グループ内の仮想ネットワークを取得します。                                                                                                                                          |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig)                                     | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
-| [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage)                           | 仮想マシンのイメージを指定します。                                                                                                                                            |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)                                     | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
-| [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem)                   | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
-| [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)                 | 仮想マシンにネットワーク インターフェイスを追加します。                                                                                                                                       |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)                                                 | 仮想マシンを作成します。                                                                                                                                                            |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup)                     | リソース グループと、それに含まれているすべてのリソースを削除します。                                                                                                                         |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)                           | すべてのリソースを格納するリソース グループを作成します。                                                                                                                          |
+| [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)                         | ストレージ アカウントを作成します。                                                                                                                                                           |
+| [Add-AzVhd](/powershell/module/az.compute/add-azvhd)                                               | Azure のクラウド ストレージ アカウントの BLOB に、オンプレミスの仮想マシンから仮想ハード ディスクをアップロードします。                                                                       |
+| [New-AzImageConfig](/powershell/module/az.compute/new-azimageconfig)                               | 構成可能なイメージ オブジェクトを作成します。                                                                                                                                                 |
+| [Set-AzImageOsDisk](/powershell/module/az.compute/set-azimageosdisk)                               | イメージ オブジェクトのオペレーティング システム ディスクのプロパティを設定します。                                                                                                                        |
+| [New-AzImage](/powershell/module/az.compute/new-azimage)                                           | 新しいイメージを作成します。                                                                                                                                                                 |
+| [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | サブネット構成を作成します。 この構成は、仮想ネットワークの作成プロセスで使用されます。                                                                                |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)                         | 仮想ネットワークを作成します。                                                                                                                                                           |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)                       | パブリック IP アドレスを作成します。                                                                                                                                                         |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)                     | ネットワーク インターフェイスを作成します。                                                                                                                                                         |
+| [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)   | ネットワーク セキュリティ グループ規則の構成を作成します。 この構成は、NSG の作成時に NSG 規則を作成するために使用されます。                                                       |
+| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)             | ネットワーク セキュリティ グループを作成します。                                                                                                                                                    |
+| [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)                         | リソース グループ内の仮想ネットワークを取得します。                                                                                                                                          |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)                                     | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
+| [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)                           | 仮想マシンのイメージを指定します。                                                                                                                                            |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk)                                     | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
+| [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)                   | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
+| [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)                 | 仮想マシンにネットワーク インターフェイスを追加します。                                                                                                                                       |
+| [New-AzVM](/powershell/module/az.compute/new-azvm)                                                 | 仮想マシンを作成します。                                                                                                                                                            |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)                     | リソース グループと、それに含まれているすべてのリソースを削除します。                                                                                                                         |
 
 ## <a name="next-steps"></a>次のステップ
 

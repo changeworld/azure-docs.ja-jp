@@ -3,12 +3,12 @@ title: チュートリアル - Azure への SQL Server データベースのバ�
 description: このチュートリアルでは、Azure VM 上で稼働している SQL Server データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680730"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513332"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -64,7 +64,7 @@ SQL Server VM を Azure Marketplace から作成しなかった場合、エラ�
 * 右大かっこ "]"
 * "F:\" で始まるデータベース名
 
-Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 [詳細については、こちらを参照してください](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 [詳細については、こちらを参照してください](/rest/api/storageservices/understanding-the-table-service-data-model)。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

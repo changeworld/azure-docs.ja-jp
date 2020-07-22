@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203762"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498510"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -67,21 +67,21 @@ ms.locfileid: "86203762"
 - [Azure Resource Manager テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する](learn/quick-collect-activity-log-arm.md) - 新しい記事。
 
 #### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>プラットフォーム ログ コンテンツの再構築と統合による新規および更新された記事
-- [Azure リソース ログをストレージ アカウントにアーカイブする](platform/resource-logs-collect-storage.md)
+- [Azure リソース ログをストレージ アカウントにアーカイブする](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure アクティビティ ログのイベント スキーマ](platform/activity-log-schema.md)
 - [Azure アクティビティ ログ](platform/activity-log.md)
 - [Azure Monitor CLI のサンプル](samples/cli-samples.md)
 - [Azure Monitor PowerShell のサンプル](samples/powershell-samples.md)
 - [Azure 監視 REST API のチュートリアル](platform/rest-api-walkthrough.md)
-- [Azure リソース ログでサポートされているサービスとスキーマ](platform/diagnostic-logs-schema.md)
+- [Azure リソース ログでサポートされているサービスとスキーマ](./platform/resource-logs-schema.md)
 - [Azure リソース ログ](platform/resource-logs.md)
-- [Azure Monitor での Azure アクティビティ ログの収集と分析](platform/activity-log-collect.md)
-- [Log Analytics ワークスペースで Azure リソース ログを収集する](platform/resource-logs-collect-workspace.md)
+- [Azure Monitor での Azure アクティビティ ログの収集と分析](./platform/activity-log.md)
+- [Log Analytics ワークスペースで Azure リソース ログを収集する](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](platform/diagnostic-settings.md)
-- [Azure アクティビティ ログをエクスポートする](platform/activity-log-export.md)
+- [Azure アクティビティ ログをエクスポートする](./platform/activity-log.md#legacy-collection-methods)
 - [Azure プラットフォーム ログの概要](platform/platform-logs-overview.md)
-- [Azure プラットフォーム ログをイベント ハブにストリーム配信する](platform/resource-logs-stream-event-hubs.md)
-- [Azure Monitor で Azure アクティビティ ログ イベントを表示する](platform/activity-log-view.md)
+- [Azure プラットフォーム ログをイベント ハブにストリーム配信する](./platform/resource-logs.md#send-to-azure-event-hubs)
+- [Azure Monitor で Azure アクティビティ ログ イベントを表示する](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>仮想マシン
 - [Azure portal で Azure Monitor for VMs を有効にする](insights/vminsights-enable-single-vm.md) - Azure Arc を含めるように更新しました。
@@ -155,7 +155,7 @@ ms.locfileid: "86203762"
 
 ### <a name="insights"></a>洞察
 - [Azure Monitor for Azure Cache for Redis (プレビュー)](insights/redis-cache-insights-overview.md) - 新しい記事。
-- [Azure Monitor for Key Vault (プレビュー) によるキー コンテナーの監視](insights/key-vaults-insights-overview.md) - 新しい記事。
+- [Azure Monitor for Key Vault (プレビュー) によるキー コンテナーの監視](./insights/key-vault-insights-overview.md) - 新しい記事。
 
 ### <a name="logs"></a>ログ
 - [PowerShell を使用して Log Analytics を作成および構成する](platform/powershell-workspace-configuration.md) - トラブルシューティング セクションを追加しました。
@@ -280,7 +280,7 @@ ms.locfileid: "86203762"
 
 ### <a name="platform-logs"></a>プラットフォーム ログ
 
-- [Azure Monitor での Azure アクティビティ ログの収集と分析](platform/activity-log-collect.md) - 診断設定を使用したアクティビティ ログの収集をより適切に説明するために書き直しました。
+- [Azure Monitor での Azure アクティビティ ログの収集と分析](./platform/activity-log.md) - 診断設定を使用したアクティビティ ログの収集をより適切に説明するために書き直しました。
 
 ### <a name="virtual-machines"></a>仮想マシン
 
@@ -326,7 +326,7 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
 
-- [Azure Active Directory と Azure Kubernetes Service を統合する](../aks/azure-ad-integration.md) - コンテナーの Azure Monitor をサポートするために RBAC 対応クラスターをサポートするクライアント アプリケーションを作成するためのメモを追加しました。
+- [Azure Active Directory と Azure Kubernetes Service を統合する](../aks/azure-ad-integration-cli.md) - コンテナーの Azure Monitor をサポートするために RBAC 対応クラスターをサポートするクライアント アプリケーションを作成するためのメモを追加しました。
 
 #### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
 
@@ -412,8 +412,8 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 ### <a name="platform-logs"></a>プラットフォーム ログ
 
-- [診断設定を使用して Azure アクティビティ ログを収集する - Azure Monitor](platform/diagnostic-settings-legacy.md) - 変更されたプロパティについての情報を追加しました。
-- [Azure アクティビティ ログをエクスポートする](platform/activity-log-export.md) - UI の変更に合わせて更新しました。 
+- [診断設定を使用して Azure アクティビティ ログを収集する - Azure Monitor](./platform/activity-log.md) - 変更されたプロパティについての情報を追加しました。
+- [Azure アクティビティ ログをエクスポートする](./platform/activity-log.md#legacy-collection-methods) - UI の変更に合わせて更新しました。 
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -450,7 +450,7 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション
 
-- [Azure Monitor for containers についてよく寄せられる質問](insights/container-insights-faq.md) - Image フィールドと Name フィールドに関する質問を追加しました。
+- [Azure Monitor for containers についてよく寄せられる質問](./faq.md) - Image フィールドと Name フィールドに関する質問を追加しました。
 - [Azure Monitor の Azure SQL Analytics ソリューション](insights/azure-sql.md) - 「データベース待機」の「マネージド インスタンスのサポート」を更新しました。
 - [Azure Monitor for containers エージェントのデータ収集を構成する](insights/container-insights-agent-config.md) - enrich_container_logs の設定を追加しました。
 - [ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する](insights/container-insights-hybrid-setup.md) - トラブルシューティング セクションを追加しました。
@@ -474,19 +474,19 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 プラットフォーム ログのコンテンツ再編成の一環として、診断設定を使用してアクティビティ ログを構成するための新機能に基づいて複数の記事を更新しました。
 
-- [Azure リソース ログをストレージ アカウントにアーカイブする](platform/resource-logs-collect-storage.md)
+- [Azure リソース ログをストレージ アカウントにアーカイブする](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure アクティビティ ログのイベント スキーマ](platform/activity-log-schema.md)
 - [Azure Monitor サービスの制限](service-limits.md)
-- [Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する](platform/activity-log-collect.md)
-- [診断設定を使用して Azure アクティビティ ログを収集する (プレビュー) - Azure Monitor](platform/diagnostic-settings-legacy.md)
+- [Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する](./platform/activity-log.md)
+- [診断設定を使用して Azure アクティビティ ログを収集する (プレビュー) - Azure Monitor](./platform/activity-log.md)
 - [Azure テナントにまたがる Log Analytics ワークスペースに Azure アクティビティ ログを収集する](platform/activity-log-collect-tenants.md)
-- [Log Analytics ワークスペースで Azure リソース ログを収集する](platform/resource-logs-collect-workspace.md)
+- [Log Analytics ワークスペースで Azure リソース ログを収集する](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Azure で Resource Manager テンプレートを使用して診断設定を作成する](platform/diagnostic-settings-template.md)
 - [Azure でログとメトリックを収集するための診断設定を作成する](platform/diagnostic-settings.md)
-- [Azure アクティビティ ログをエクスポートする](platform/activity-log-export.md)
+- [Azure アクティビティ ログをエクスポートする](./platform/activity-log.md#legacy-collection-methods)
 - [Azure プラットフォーム ログの概要](platform/platform-logs-overview.md)
 - [イベント ハブへの Azure 監視データのストリーム配信](platform/stream-monitoring-data-event-hubs.md)
-- [Azure プラットフォーム ログをイベント ハブにストリーム配信する](platform/resource-logs-stream-event-hubs.md)
+- [Azure プラットフォーム ログをイベント ハブにストリーム配信する](./platform/resource-logs.md#send-to-azure-event-hubs)
 
 ### <a name="quickstarts-and-tutorials"></a>クイック スタートとチュートリアル
 

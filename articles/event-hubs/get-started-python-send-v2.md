@@ -3,12 +3,12 @@ title: Python を使用して Azure Event Hubs との間でイベントを送受
 description: この記事では、最新の azure-eventhub バージョン 5 パッケージを使用して、Azure Event Hubs との間でイベントを送受信する Python アプリケーションを作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: f47a770975caac7f07e0bfa3181e50a94b6e59ba
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2203b76d22f2a90e89d6e2c4a849b2c8016df89a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321685"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521838"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python を使用して Event Hubs との間でイベントを送受信する (azure-eventhub バージョン 5)
 このクイックスタートでは、**azure-eventhub バージョン 5** Python パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。
@@ -80,7 +80,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 このクイックスタートでは、Azure Blob Storage をチェックポイント ストアとして使用します。 チェックポイント ストアは、チェックポイント (最後の読み取り位置) を保持するために使用されます。  
 
 > [!NOTE]
-> Azure Stack Hub 上で実行する場合、そのプラットフォームでサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なります。 たとえば、[Azure Stack Hub バージョン 2002 上で](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、このセクションの手順に従うことに加え、Storage Service API バージョン 2017-11-09 を対象にするコードを追加する必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の[同期版](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)のサンプルと[非同期版](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)のサンプルを参照してください。 Azure Stack Hub でサポートされる Azure Storage サービスのバージョンについて詳しくは、「[Azure Stack Hub のストレージ: 違いと考慮事項](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)」をご覧ください。
+> Azure Stack Hub 上で実行する場合、そのプラットフォームでサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なります。 たとえば、[Azure Stack Hub バージョン 2002 上で](/azure-stack/user/event-hubs-overview)実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、このセクションの手順に従うことに加え、Storage Service API バージョン 2017-11-09 を対象にするコードを追加する必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の[同期版](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)のサンプルと[非同期版](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)のサンプルを参照してください。 Azure Stack Hub でサポートされる Azure Storage サービスのバージョンについて詳しくは、「[Azure Stack Hub のストレージ: 違いと考慮事項](/azure-stack/user/azure-stack-acs-differences)」をご覧ください。
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure Storage アカウントと BLOB コンテナーを作成する

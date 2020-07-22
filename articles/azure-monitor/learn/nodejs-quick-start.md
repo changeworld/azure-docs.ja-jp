@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77660225"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516500"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -36,7 +36,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    ![Azure Application Insights リソースを追加する](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
-   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
+   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](../app/create-new-resource.md)」のドキュメントにアクセスして詳細を確認できます。
 
    構成ページが表示されたら、次の表を使用して入力フィールドに入力します。 
 
@@ -60,7 +60,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーションのインストルメンテーション キーに置き換えます。 
+3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/app-service-web-get-started-nodejs.md)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーションのインストルメンテーション キーに置き換えます。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -131,4 +131,4 @@ Node.js の監視に関する詳細については、[AppInsights Node.js の追
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [パフォーマンスの問題の特定と診断](../log-query/log-query-overview.md)
