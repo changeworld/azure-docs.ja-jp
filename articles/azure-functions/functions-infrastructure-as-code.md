@@ -694,8 +694,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 Azure Functions を開発および構成する方法について学習します。
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
-* [Azure 関数アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
-* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
+* Azure Functions アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
+* [初めての Azure Functions の作成](functions-create-first-azure-function.md)
 
 <!-- LINKS -->
 

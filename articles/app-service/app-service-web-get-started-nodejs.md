@@ -23,9 +23,9 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
 - [Visual Studio Code](https://code.visualstudio.com/)。
 - Visual Studio Code 用の [Azure App Service 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。
 
-## <a name="clone-and-run-a-local-nodejs-application"></a>ローカル Node.js アプリケーションを複製して実行する
+## <a name="clone-and-run-a-local-nodejs-application"></a>ローカル Node.js アプリケーションをクローンして実行する
 
-1. お使いのローカル コンピューターで、ターミナルを開き、サンプル リポジトリを複製します。
+1. お使いのローカル コンピューターで、ターミナルを開き、サンプル リポジトリをクローンします。
 
     ```bash
     git clone https://github.com/Azure-Samples/nodejs-docs-hello-world

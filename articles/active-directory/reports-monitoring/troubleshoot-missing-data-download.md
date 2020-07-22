@@ -36,7 +36,7 @@ ms.locfileid: "85608077"
 
 Azure portal でアクティビティ ログをダウンロードする場合は、新しい順に並べ替えられた最新の 250,000 件のレコードに制限されます。 
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 [Azure AD Reporting API](concept-reporting-api.md) を利用すると、任意の時点のレコードを最大 100 万件取得できます。
 

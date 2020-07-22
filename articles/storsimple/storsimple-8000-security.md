@@ -47,7 +47,7 @@ StorSimple デバイス マネージャー サービスは、Microsoft Azure で
 
 StorSimple デバイス マネージャー サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを組織が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。 Azure サブスクリプションを組織が保有していない場合は、「[Azure への組織としてのサインアップ](../active-directory/fundamentals/sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
-StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
+StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
 ## <a name="storsimple-device-protection"></a>StorSimple デバイスの保護
 

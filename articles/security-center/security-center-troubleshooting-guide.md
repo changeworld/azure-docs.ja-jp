@@ -138,7 +138,7 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 
 ## <a name="see-also"></a>関連項目
 
-このドキュメントでは、Azure セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
+このドキュメントでは、Azure Security Center でのセキュリティ ポリシーの構成方法について説明しました。 Azure Security Center の詳細については、次を参照してください。
 
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md) 」 -- Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。

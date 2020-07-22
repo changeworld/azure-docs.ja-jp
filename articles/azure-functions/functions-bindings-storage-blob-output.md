@@ -1,6 +1,6 @@
 ---
 title: Azure Functions における Azure Blob Storage の出力バインド
-description: Azure 関数に Azure Blob Storage データを提供する方法について説明します。
+description: Azure Functions に Azure Blob Storage データを提供する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
@@ -15,7 +15,7 @@ ms.locfileid: "84560016"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の出力バインド
 
-出力バインドを使用すると、Azure 関数内で Blob Storage データを変更および削除できます。
+出力バインドを使用すると、Azure Functions 内で Blob Storage データを変更および削除できます。
 
 セットアップと構成の詳細については、[概要](./functions-bindings-storage-blob.md)を参照してください。
 

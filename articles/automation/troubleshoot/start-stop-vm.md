@@ -64,7 +64,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 - Log Analytics ワークスペースがロックされている。
 - AzureRM モジュールまたは Start/Stop VMs during off-hours 機能のバージョンが古い。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 考えられる解決策について、次の修正を確認してください。
 
@@ -95,7 +95,7 @@ Start/Stop VMs during off-hours を構成したが、すべての VM が起動�
 - Runbook でエラーが発生した可能性がある。
 - VM が除外されている可能性がある。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 考えられる解決策について、次の一覧を確認してください。
 
@@ -136,7 +136,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
 - 実行アカウントが、VM に対する十分なアクセス許可を持っていない可能性がある。
 - VM の起動または停止を妨げる問題が発生している可能性がある。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 考えられる解決策について、次の一覧を確認してください。
 
@@ -166,7 +166,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
 
 このエラーには多くの原因が考えられます。 Azure portal で Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、Runbook のジョブを検索してジョブのエラーを表示します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 推奨事項は次のとおりです。
 
@@ -183,7 +183,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
 
 この問題は、VM でのタグ付けが正しく行われていないことが原因で発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次の手順に従い、機能が正しく有効になっていることを確認してください。
 
@@ -201,7 +201,7 @@ Start/Stop VMs during off-hours Runbook に対してジョブが `403 forbidden`
 
 この問題は、実行アカウントが正しく構成されていないか、有効期限が切れている場合に発生する可能性があります。 また、実行アカウントによる VM リソースへのアクセス許可が不十分であることが原因である場合もあります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 実行アカウントが正しく構成されていることを確認するには、Azure portal で Automation アカウントにアクセスし、 **[アカウント設定]** の下で **[実行アカウント]** を選択します。 実行アカウントが正しく構成されていないか、有効期限が切れている場合、状態にその状況が表示されます。
 
@@ -224,7 +224,7 @@ Start/Stop VMs during off-hours を使用しているときに、このページ
 > [!NOTE]
 > Start/Stop VMs during off-hours 機能は、この機能を VM にデプロイするときに、お使いの Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 この機能は現在、Azure モジュールの新しいバージョンでは動作しません。 この制約は、Start/Stop VMs during off-hours の実行に使用している Automation アカウントのみに影響します。 「[Azure PowerShell モジュールの更新](../automation-update-azure-modules.md)」で説明されているように、他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 何度も発生するエラーを解決するには、[Start/Stop VMs during off-hours を削除して更新](../automation-solution-vm-management.md#update-the-feature)します。 また、[ジョブ ストリーム](../automation-runbook-execution.md#job-statuses)を確認してエラーがないか探します。 
 

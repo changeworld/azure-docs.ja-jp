@@ -33,7 +33,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順に従います。
 

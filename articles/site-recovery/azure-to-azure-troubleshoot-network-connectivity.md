@@ -33,7 +33,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 
 ドメイン ネーム システム (DNS) を解決できないため、Site Recovery エンドポイントとの接続を確立できません。 この問題が頻繁に発生するのは、VM をフェールオーバーして再保護を行っているときに、ディザスター リカバリー (DR) リージョンから DNS サーバーに到達できない場合です。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 カスタム DNS を使っている場合は、ディザスター リカバリー リージョンから DNS サーバーにアクセスできることを確認します。
 
@@ -57,7 +57,7 @@ VM がカスタム DNS 設定を使用するかどうかを確認するには、
 
 Office 365 認証と ID IP4 エンドポイントへの接続を確立できません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 - Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要があります。
 - VM での発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) のルールやファイアウォール プロキシを使用している場合は、Office 365 の IP 範囲への通信を確実に許可します。 Azure Active Directory (Azure AD) に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (Azure AD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG 規則を作成します。
@@ -112,7 +112,7 @@ Office 365 認証と ID IP4 エンドポイントへの接続を確立できま�
 
 Azure Site Recovery サービスのエンドポイントに対する接続を確立できません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 Azure Site Recovery では、リージョンに基づいて [Site Recovery の IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)にアクセスする必要がありました。 必要な IP 範囲に VM からアクセスできることを確認します。
 
@@ -122,7 +122,7 @@ Azure Site Recovery では、リージョンに基づいて [Site Recovery の I
 
 カスタム プロキシ設定が無効であり、Azure Site Recovery Mobility Service エージェントが Internet Explorer (IE) からプロキシ設定を自動検出しませんでした。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 1. モビリティ サービス エージェントは、Windows では IE から、Linux では `/etc/environment` からプロキシ設定を検出します。
 1. プロキシを Azure Site Recovery Mobility Service にのみ設定する場合は、次の場所にある _ProxyInfo.conf_ 内にプロキシの詳細を指定できます。

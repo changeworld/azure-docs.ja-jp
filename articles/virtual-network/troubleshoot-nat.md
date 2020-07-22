@@ -35,7 +35,7 @@ ms.locfileid: "84688283"
 
 これらの問題を解決するには、次のセクションの手順に従ってください。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 ### <a name="snat-exhaustion"></a>SNAT の枯渇
 

@@ -294,10 +294,10 @@ Log Analytics エージェントを手動でインストールして、Security 
 
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、Security Center のデータ収集と自動プロビジョニングのしくみについて説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
+この記事では、Security Center のデータ収集と自動プロビジョニングのしくみについて説明しました。 Security Center の詳細については、次のページを参照してください。
 
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+* 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
 
 
 

@@ -96,9 +96,9 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | フィールド | 説明 |
 |:---|:---|
 | Count| 取得される結果の数|
-| ソース | ソース言語|
+| From | ソース言語|
 | Rating| AddTranslation() メソッド呼び出しで送信者により適用される評価|
-| ターゲット| 対象言語|
+| To| 対象言語|
 | Uri| AddTranslation() メソッド呼び出しで適用される URI|
 | User| ユーザー名|
 
@@ -167,10 +167,10 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | フィールド | 説明 |
 |:---|:---|
 | CreatedDateUtc| AddTranslation() を使用したエントリの作成日|
-| ソース| ソース言語|
+| From| ソース言語|
 | OriginalText| 要求を送信するときに使用されるソース言語のテキスト|
 |Rating |AddTranslation() メソッド呼び出しで送信者により適用される評価|
-|ターゲット|    対象言語|
+|To|    対象言語|
 |TranslatedText|    AddTranslation() メソッド呼び出しで送信される翻訳|
 |Uri|   AddTranslation() メソッド呼び出しで適用される URI|
 |User   |ユーザー名|

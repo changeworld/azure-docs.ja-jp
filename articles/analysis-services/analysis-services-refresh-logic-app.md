@@ -23,7 +23,7 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 
 すべての呼び出しを、有効な Azure Active Directory (OAuth 2) トークンで認証する必要があります。  この記事の例では、サービス プリンシパル (SPN) を使用して Azure Analysis Services を認証します。 詳細については、[Azure portal を使用したサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 
-## <a name="design-the-logic-app"></a>ロジック アプリを設計する
+## <a name="design-the-logic-app"></a>Logic Apps を設計する
 
 > [!IMPORTANT]
 > 次の例では、Azure Analysis Services ファイアウォールが無効になっていることを前提としています。 ファイアウォールが有効になっている場合は、要求イニシエーターのパブリック IP アドレスが、Azure Analysis Services ファイアウォールでホワイトリストに登録されている必要があります。 リージョンごとの Azure Logic Apps の IP 範囲の詳細については、「[Azure Logic Apps の制限と構成情報](../logic-apps/logic-apps-limits-and-config.md#configuration)」を参照してください。
@@ -38,17 +38,17 @@ Azure Analysis Services での REST API の使用に関する詳細について�
  
 作成するサービス プリンシパルには、サーバーでのサーバー管理者のアクセス許可が必要です。 詳細については、「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。
 
-### <a name="configure-the-logic-app"></a>ロジック アプリを構成する
+### <a name="configure-the-logic-app"></a>Logic Apps を構成する
 
-この例では、HTTP 要求を受信したときにトリガーするようにロジック アプリが設計されています。 これにより、Azure Analysis Services モデルの更新をトリガーするため、Azure Data Factory などのオーケストレーション ツールの使用が有効になります。
+この例では、HTTP 要求を受信したときにトリガーするように Logic Apps が設計されています。 これにより、Azure Analysis Services モデルの更新をトリガーするため、Azure Data Factory などのオーケストレーション ツールの使用が有効になります。
 
-ロジック アプリを作成したら、次を実行します。
+Logic Apps を作成したら、次を実行します。
 
-1. ロジック アプリ デザイナーで、 **[HTTP 要求の受信時]** の最初のアクションを選択します。
+1. Logic Apps デザイナーで、 **[HTTP 要求の受信時]** の最初のアクションを選択します。
 
    ![受信した HTTP アクティビティを追加する](./media/analysis-services-async-refresh-logic-app/1.png)
 
-ロジック アプリを保存すると、このステップに HTTP POST URL が入力されます。
+Logic Apps を保存すると、このステップに HTTP POST URL が入力されます。
 
 2. 新しいステップを追加し、**HTTP** を検索します。  
 
@@ -79,21 +79,21 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 
 ![完了した HTTP アクティビティ](./media/analysis-services-async-refresh-logic-app/7.png)
 
-ここでロジック アプリをテストします。  ロジック アプリ デザイナーで **[実行]** をクリックします。
+ここで Logic Apps をテストします。  Logic Apps デザイナーで **[実行]** をクリックします。
 
 ![ロジック アプリをテストする](./media/analysis-services-async-refresh-logic-app/8.png)
 
-## <a name="consume-the-logic-app-with-azure-data-factory"></a>Azure Data Factory でロジック アプリを使用する
+## <a name="consume-the-logic-app-with-azure-data-factory"></a>Azure Data Factory で Logic Apps を使用する
 
-ロジック アプリを保存したら、**HTTP 要求の受信時** アクティビティを確認してから、生成されたばかりの **HTTP POST URL** をコピーします。  Azure Data Factory でこの URL を使用して、ロジック アプリをトリガーする非同期呼び出しを実行できます。
+Logic Apps を保存したら、**HTTP 要求の受信時** アクティビティを確認してから、生成されたばかりの **HTTP POST URL** をコピーします。  Azure Data Factory でこの URL を使用して、Logic Apps をトリガーする非同期呼び出しを実行できます。
 
 この操作を実行する Azure Data Factory Web アクティビティの例を次に示します。
 
 ![Data Factory Web アクティビティ](./media/analysis-services-async-refresh-logic-app/11.png)
 
-## <a name="use-a-self-contained-logic-app"></a>自己完結型のロジック アプリを使用する
+## <a name="use-a-self-contained-logic-app"></a>自己完結型の Logic Apps を使用する
 
-Data Factory などのオーケストレーション ツールを使用してモデルの更新をトリガーする予定がない場合は、スケジュールに基づいて更新をトリガーするようにロジック アプリを設定できます。
+Data Factory などのオーケストレーション ツールを使用してモデルの更新をトリガーする予定がない場合は、スケジュールに基づいて更新をトリガーするように Logic Apps を設定できます。
 
 上記の例を使用して、最初のアクティビティを削除して、それを**スケジュール**アクティビティに置き換えます。
 
@@ -111,7 +111,7 @@ Data Factory などのオーケストレーション ツールを使用してモ
 
 ![スケジュール アクティビティ](./media/analysis-services-async-refresh-logic-app/15.png)
 
-ロジック アプリを保存します。
+Logic Apps を保存します。
 
 ## <a name="next-steps"></a>次のステップ
 

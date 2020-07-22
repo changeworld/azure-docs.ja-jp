@@ -101,7 +101,7 @@ ConnectionsQuotaExceeded for namespace xxx.
   * ロック タイマーが、クライアント アプリケーションによって更新される前に期限切れになっている。
   * クライアント アプリケーションがロックを取得し、永続ストアにそれを保存してから再起動した。 再起動後、クライアント アプリケーションが、配信中のメッセージを調べて、これらを完了しようとした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 **MessageLockLostException** が発生した場合、クライアント アプリケーションはメッセージを処理できなくなります。 クライアント アプリケーションでは、必要に応じて、分析のために例外をログに記録することもできますが、クライアントはメッセージを破棄する "*必要があります*"。
 
@@ -120,7 +120,7 @@ ConnectionsQuotaExceeded for namespace xxx.
   * ロック タイマーが、クライアント アプリケーションによって更新される前に期限切れになっている。
   * クライアント アプリケーションがロックを取得し、永続ストアにそれを保存してから再起動した。 再起動後、クライアント アプリケーションが、転送中のセッションを調べて、これらのセッション内のメッセージを処理しようとした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 **SessionLockLostException** が発生した場合、クライアント アプリケーションがセッションでメッセージを処理できなくなります。 クライアント アプリケーションでは、分析のために例外をログに記録することもできますが、クライアントはメッセージを破棄する "*必要があります*"。
 
@@ -136,7 +136,7 @@ ConnectionsQuotaExceeded for namespace xxx.
    * メッセージの処理中にエラーが発生したか、リモート ホストがタイムアウトを超えた場合。
    * 基になるネットワーク リソースの問題。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 **SocketException** エラーは、アプリケーションをホストしている VM が名前 `<mynamespace>.servicebus.windows.net` を対応する IP アドレスに変換できないことを示します。 
 
@@ -173,7 +173,7 @@ Aliases:  <mynamespace>.servicebus.windows.net
 > [!NOTE]
 > 上記の例外の一覧はすべてを網羅しているわけではありません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 解決手順は、**MessagingException** がスローされる原因によって異なります。
 

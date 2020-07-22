@@ -95,7 +95,7 @@ Cookie ベースのアフィニティ設定を有効にしており、Internet E
 
 Internet Explorer や他のブラウザーが、短縮名 URL で Cookie を格納することも使用することもできないので、この問題が発生します。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 この問題を解決するには、FQDN を使用して Application Gateway にアクセスする必要があります。 たとえば、[http://website.com](https://website.com/) または [http://appgw.website.com](http://website.com/) を使用します。
 

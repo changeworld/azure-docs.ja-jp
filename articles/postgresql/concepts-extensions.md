@@ -1,5 +1,5 @@
 ---
-title: 拡張子 - Azure Database for PostgreSQL - Single Server
+title: 拡張機能 - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server での PostgreSQL 拡張機能の使用の可用性について学びます。
 author: rachel-msft
 ms.author: raagyema
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL でサポートされる主要な拡張機能の�
 Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。 
 
 > [!div class="mx-tableFixed"]
-> | **拡張子**| **拡張機能のバージョン** | **説明** |
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
@@ -71,7 +71,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張子**| **拡張機能のバージョン** | **説明** |
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
@@ -117,7 +117,7 @@ Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サー
 Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張子**| **拡張機能のバージョン** | **説明** |
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US データセットの例|
@@ -163,7 +163,7 @@ Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サ�
 Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張子**| **拡張機能のバージョン** | **説明** |
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US データセットの例|

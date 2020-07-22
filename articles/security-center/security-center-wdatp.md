@@ -70,7 +70,7 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Microsoft Defender ATP の統合を有効にする
 
-Microsoft Defender ATP の統合が有効になっているかどうかを確認するには、 **[セキュリティ センター]**  >  **[Pricing & settings]\(価格と設定\)** を選択し、ご利用のサブスクリプションをクリックします。
+Microsoft Defender ATP の統合が有効になっているかどうかを確認するには、 **[Security Center]\(セキュリティ センター\)**  >  **[Pricing & settings]\(価格と設定\)** を選択し、ご利用のサブスクリプションをクリックします。
 ここでは、現在有効になっている統合を確認できます。
 
   ![Microsoft Defender ATP の統合が有効になっている Azure Security Center の脅威検出設定ページ](media/security-center-wdatp/enable-integrations.png)
@@ -115,5 +115,5 @@ Microsoft Defender ATP で無害なテスト アラートを生成するには:
 
 - [Azure Security Center でサポートされている機能とプラットフォーム](security-center-os-coverage.md)
 - [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
-- [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md):推奨事項を Azure リソースの保護に活かす方法について説明します。
+- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md):推奨事項を Azure リソースの保護に活かす方法について説明します。
 - [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md):Azure リソースの正常性を監視する方法について説明しています。

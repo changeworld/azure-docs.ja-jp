@@ -44,7 +44,7 @@ ms.locfileid: "86120009"
 | ブルネイ                              | BN        | USD          |
 | ブルガリア                            | BG        | EUR          |
 | カメルーン                            | CM        | USD          |
-| Canada                              | CA        | CAD          |
+| カナダ                              | CA        | CAD          |
 | カーボベルデ                          | CV        | USD          |
 | ケイマン諸島                      | KY        | USD          |
 | チリ                               | CL        | USD          |
@@ -154,7 +154,7 @@ ms.locfileid: "86120009"
 | ウクライナ                             | UA        | USD          |
 | アラブ首長国連邦                | AE        | USD          |
 | イギリス                      | GB        | GBP          |
-| United States                       | US        | USD          |
+| 米国                       | US        | USD          |
 | ウルグアイ                             | UY        | USD          |
 | ウズベキスタン                          | UZ        | USD          |
 | ベネズエラ                           | VE        | USD          |

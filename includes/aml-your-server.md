@@ -22,13 +22,13 @@ ms.locfileid: "79486146"
 
 1. [構成ファイル](../articles/machine-learning/how-to-configure-environment.md#workspace)  (**aml_config/config.json**) を記述します。
 
-1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)をクローンします。
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. 複製したディレクトリから、Notebook サーバーを起動します。
+1. クローンしたディレクトリから、Notebook サーバーを起動します。
 
     ```bash
     jupyter notebook
