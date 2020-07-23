@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4959d530e1f7a3c777aa3db21fe577c853fbca13
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855991"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230827"
 ---
 # <a name="key-vault-versions"></a>Key Vault のバージョン
 
@@ -64,7 +64,7 @@ Key Vault の "Bring Your Own Key" (BYOK) が一般提供されるようにな�
 - キーの復元 - "use" フィールドが削除されました。     
 - RSA アルゴリズムの "RSA_OAEP" が "RSA-OAEP" に変更されました。 「[About keys, secrets, and certificates](about-keys-secrets-certificates.md)」(キー、シークレット、証明書について) をご覧ください。    
  
-2 番目のプレビュー バージョン (バージョン 2015-02-01-preview) が、2015 年 4 月 20 日に発表されました。 詳しくは、[REST API の更新](https://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx)に関するブログ記事をご覧ください。 次のタスクが更新されました。
+2 番目のプレビュー バージョン (バージョン 2015-02-01-preview) が、2015 年 4 月 20 日に発表されました。 詳しくは、[REST API の更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update)に関するブログ記事をご覧ください。 次のタスクが更新されました。
  
 - コンテナー内のキーの一覧表示 - 改ページ位置の自動修正のサポートが操作に追加されました。
 - キーのバージョンの一覧表示 - キーのバージョンを一覧表示する操作が追加されました。  

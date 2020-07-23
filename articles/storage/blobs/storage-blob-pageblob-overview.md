@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: f54adb54ca842ea389b0d3ea203d747df0071ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792032"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223297"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -123,7 +123,7 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 下の図は、2 つの別個の書き込みの操作を示しています。
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![2 つの別個の書き込みの操作を示す図。](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  長さ 1024 バイトのオフセット 0 で開始する書き込み操作 
 2.  長さ 1024 のオフセット 4096 で開始する書き込み操作 
@@ -151,7 +151,7 @@ pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSiz
 
 次の図は、オフセットが 256 で範囲のサイズが 4352 の読み取り操作を示しています。 返されるデータはオレンジ色で強調表示されています。 NUL ページの場合はゼロが返されます。
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![オフセットが 256 で範囲のサイズが 4352 の読み取り操作を示す図](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 データがほとんど設定されていない BLOB がある場合は、0 バイトの送信に対する支払いを回避したり、ダウンロードの待機時間を短縮したりするために、有効なページ領域だけをダウンロードすることもできます。  
 

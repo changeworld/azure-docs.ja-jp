@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/27/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358720"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223926"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -48,34 +48,35 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * [Active Directory のごみ箱を有効にする](how-to-connect-sync-recycle-bin.md)ことをお勧めします。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect サーバー
->[!IMPORTANT]
->Azure AD Connect サーバーは、重要な ID データを格納するため、[Active Directory 管理階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。
+Azure AD Connect サーバーには、重要な ID データが含まれています。 「[特権アクセスの保護](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)」に記載されているガイドラインに従って、このサーバーへの管理者アクセスを適切に保護することが重要です。 
 
-* Small Business Server または 2019 より前の Windows Server Essentials には、Azure AD Connect をインストールできません (Windows Server Essentials 2019 はサポートされます)。 サーバーは Windows Server Standard 以上を使用する必要があります。
-* Azure AD Connect をドメイン コントローラーにインストールすることはお勧めできません。これは、セキュリティの慣例上の理由に加え、設定に通常よりも厳しい制限があるために、Azure AD Connect を正しくインストールできないためです。
-* Azure AD Connect サーバーには、完全な GUI がインストールされている必要があります。 サーバー コアにインストールすることは**できません**。
->[!IMPORTANT]
->Small Business Server、Server Essentials、または Server Core への Azure AD Connect のインストールはサポートされていません。
+Azure AD Connect サーバーは、「[Active Directory 管理階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)」の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。  
 
-* Azure AD Connect は、Windows Server 2012 以降にインストールする必要があります。 このサーバーは、ドメインに参加させる必要があります。また、ドメイン コントローラーまたはメンバー サーバーにすることができます。
-* Azure AD Connect ウィザードを使用して ADFS 構成を管理している場合、Azure AD Connect サーバーで PowerShell トランスクリプション グループ ポリシーを有効にしてはなりません。 Azure AD Connect ウィザードを使用して同期構成を管理している場合は、PowerShell トランスクリプションを有効にすることができます。
-* Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 [Windows リモート管理](#windows-remote-management) を有効にする必要があります。
-* Active Directory フェデレーション サービス (AD FS) がデプロイされている場合は、[TLS/SSL 証明書](#tlsssl-certificate-requirements)が必要です。
-* Active Directory フェデレーション サービス (AD FS) がデプロイされている場合は、 [名前解決](#name-resolution-for-federation-servers)を構成する必要があります。
-* 全体管理者が、MFA を有効にしている場合は、URL **https://secure.aadcdn.microsoftonline-p.com** は信頼済みサイトの一覧になければなりません。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
-* Microsoft では、Azure AD Connect サーバーを強化して、お客様の IT 環境に含まれるこの重要なコンポーネントに対する、セキュリティ攻撃の対象領域を縮小することをお勧めしています。  以下の推奨事項に従うと、お客様の組織に対するセキュリティ リスクが低下します。
+Active Directory 環境のセキュリティ保護の詳細については、[Active Directory を保護するためのベスト プラクティス](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)に関する記事を参照してください。
 
-* ドメイン参加しているサーバー上に Azure AD Connect をデプロイし、管理アクセス権を、ドメイン管理者やその他の厳格に管理されたセキュリティ グループに制限します。
+#### <a name="installation-prerequisites"></a>設置の前提条件 
 
-詳細については、次を参照してください。 
+- Azure AD Connect は、ドメイン参加済みの Windows Server 2012 以降にインストールする必要があります。 このサーバーにはドメイン コントローラーを使用することを強くお勧めします。 
+- Small Business Server または 2019 より前の Windows Server Essentials には、Azure AD Connect をインストールできません (Windows Server Essentials 2019 はサポートされます)。 サーバーは Windows Server Standard 以上を使用する必要があります。  
+- Azure AD Connect サーバーには、完全な GUI がインストールされている必要があります。 Windows Server Core への Azure AD Connect のインストールはサポートされていません。 
+- Azure AD Connect ウィザードを使用して ADFS 構成を管理している場合、Azure AD Connect サーバーで PowerShell トランスクリプション グループ ポリシーを有効にしてはなりません。 Azure AD Connect ウィザードを使用して同期構成を管理している場合は、PowerShell トランスクリプションを有効にすることができます。 
+- Active Directory フェデレーション サービス (AD FS) がデプロイされる場合: 
+    - AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 リモート インストールを行うには、これらのサーバーで Windows リモート管理を有効にする必要があります。 
+    - TLS/SSL 証明書を構成する必要があります。  詳細については、[AD FS の SSL/TLS プロトコルおよび暗号スイートの管理](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)および [AD FS での SSL 証明書の管理](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)に関する記事を参照してください。
+    - 名前解決を構成する必要があります。 
+- 全体管理者が MFA を有効にしている場合、URL https://secure.aadcdn.microsoftonline-p.com は信頼済みサイトの一覧に**なければなりません**。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。  
 
-* [管理者グループのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+#### <a name="hardening-your-azure-ad-connect-server"></a>Azure AD Connect サーバーの強化 
+Microsoft では、Azure AD Connect サーバーを強化して、お客様の IT 環境に含まれるこの重要なコンポーネントに対する、セキュリティ攻撃の対象領域を縮小することをお勧めしています。 以下の推奨事項に従うことで、組織に対するセキュリティ上のリスクを軽減することができます。
 
-* [ビルトイン Administrator アカウントのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+- Azure AD Connect は、ドメイン コントローラーやその他の階層 0 のリソースと同じように扱う必要があります: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material 
+- Azure AD Connect サーバーへの管理アクセスを、ドメイン管理者またはその他の厳重に管理されたセキュリティ グループのみに制限する必要があります。
+- [特権アクセスがあるすべてのユーザーに対して専用アカウント](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)を作成する必要があります。 管理者は、高い特権を持つアカウントを使用して Web を閲覧したり、メールをチェックしたり、日常業務を実行したりしないでください。
+- 「[特権アクセスの保護](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)」に記載されているガイダンスに従う必要があります。 
+- すべてのマシンに一意のローカル管理者パスワードが構成されていることを確認する必要があります。 [ローカル管理者パスワード ソリューション (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) では、ワークステーションおよびサーバーごとに一意のランダム パスワードを構成し、ACL によって保護された Active Directory (AD) に保存することができます。 資格のある許可されているユーザーのみが、これらのローカル管理者アカウントのパスワードの読み取りまたはリセットの要求を行うことができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)から、ワークステーションとサーバーで使用する LAPS を取得できます。 LAPS と PAW を使用して環境を運用するための追加のガイダンスについては、「[クリーン ソースの原則に基づく運用基準](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)」を参照してください。 
+- 組織の情報システムへの特権アクセスを持つすべての担当者に対して、専用の [Privileged Access Workstation (PAW)](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) を実装する必要があります。 
+- Active Directory 環境の攻撃面を減らすには、これらの[追加のガイドライン](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)に従う必要があります。
 
-* [攻撃対象領域の縮小によるセキュリティの向上と維持](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
-
-* [Active Directory の攻撃対象領域の縮小](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect で使用される SQL Server
 * Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされています。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。 SQL Server のインストールの種類により、[Azure AD Connect のパフォーマンス](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)に影響することがあります。

@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086893"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260067"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Azure Edge Zone プレビューについて
 
@@ -75,6 +75,8 @@ Azure Edge Zone with Carrier は携帯電話会社のデータセンターにデ
 Edge Zone は次の事業者と連携して提供されます。
 
 - AT&T (アトランタ、ダラス、およびロサンゼルス) 
+
+5G ネットワークに接続する最適化されたスケーラブルなアプリケーションを開発している ISV は、超低待機時間のプラットフォーム、モバイル、および接続されたシナリオをビルドして実験するときに、AT&T で Azure Edge Zones の新しいロサンゼルス プレビューの場所を使用できるようになりました。 セキュリティで保護された高帯域幅の接続を利用するには、早期導入者プログラムに登録します。
 
 詳細については、[Edge Zone チームにお問い合わせください](https://aka.ms/EdgeZones)。
 

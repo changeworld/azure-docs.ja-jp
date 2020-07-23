@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081107"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230759"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
 
@@ -43,12 +43,12 @@ Azure Cognitive Search には数種類の[価格レベル](https://azure.microso
 
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| サービスあたりの最大レプリカ数 |3 |12 |12 |12 |12 |
-| サービスあたりの最大パーティション数 |1 |12 |12 |12 |3 |
-| サービスあたりの最大検索ユニット数 (レプリカ * パーティション) |3 |36 |36 |36 |36 (最大 3 個のパーティション) |
-| サービスあたりの最大ストレージ容量 |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
-| パーティションあたりの最大ストレージ容量 |2 GB |25 GB |100 GB |200 GB |200 GB |
-| サービスあたりの最大インデックス数 |5 |50 |200 |200 |3000 (最大 1000 個のインデックス/パーティション) |
+| **サービスあたりの最大レプリカ数** |3 |12 |12 |12 |12 |
+| **サービスあたりの最大パーティション数** |1 |12 |12 |12 |3 |
+| **サービスあたりの最大検索ユニット数 (レプリカ * パーティション)** |3 |36 |36 |36 |36 (最大 3 個のパーティション) |
+| **サービスあたりの最大ストレージ容量** |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
+| **パーティションあたりの最大ストレージ容量** |2 GB |25 GB |100 GB |200 GB |200 GB |
+| **サービスあたりの最大インデックス数** |5 |50 |200 |200 |3000 (最大 1000 個のインデックス/パーティション) |
 
 #### <a name="s3-high-density"></a>S3 高密度
 Azure Cognitive Search の S3 価格レベルには、マルチテナント シナリオ専用に設計された高密度 (HD) モードのオプションがあります。 多くの場合、1 つのサービスで小さなテナントを多数サポートして、簡潔性とコスト効率のメリットを実現する必要があります。

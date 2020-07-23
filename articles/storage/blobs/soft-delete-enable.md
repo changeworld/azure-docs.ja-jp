@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463724"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224895"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>BLOB の論理的な削除の有効化と管理
 
@@ -40,31 +40,31 @@ Azure portal を使用して、ストレージアカウントの BLOB の論理�
 
 5. **[保存]** ボタンを選択して [データ保護] 設定を確認します。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![Azure portal のスクリーンショット。データ保護 BLOB サービスが選択されています。](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 論理的に削除された BLOB を表示するには、 **[Show deleted blobs]\(削除された BLOB を表示する\)** チェック ボックスをオンにします。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![データ保護 BLOB サービス ページのスクリーンショット。[Show deleted blobs]\(削除された BLOB を表示する\) オプションが強調表示されています。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 特定の BLOB の論理的に削除されたスナップショットを表示するには、BLOB を選んで、 **[スナップショットの表示]** をクリックします。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![データ保護 BLOB サービス ページのスクリーンショット。[スナップショットの表示] オプションが強調表示されています。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 **[Show deleted snapshots]\(削除されたスナップショットを表示する\)** チェック ボックスがオンになっていることを確認します。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![[スナップショットの表示] ページのスクリーンショット。[Show deleted blobs]\(削除された BLOB を表示する\) オプションが強調表示されています。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 論理的に削除された BLOB またはスナップショットをクリックしたら、新しい BLOB のプロパティを確認します。 プロパティでは、オブジェクトが削除された日時と、BLOB または BLOB のスナップショットが完全に期限切れになるまでの残り日数が示されます。 論理的に削除されたオブジェクトがスナップショットではない場合は、削除を取り消すこともできます。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![論理削除されたオブジェクトの詳細のスクリーンショット。](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 BLOB の削除を取り消すと、関連付けられているすべてのスナップショットの削除も取り消されることに注意してください。 アクティブな BLOB の論理的に削除されたスナップショットの削除を取り消すには、BLOB をクリックして、 **[Undelete all snapshots]\(すべてのスナップショットの削除を取り消す\)** を選びます。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![論理削除された BLOB の詳細のスクリーンショット。](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 BLOB のスナップショットの削除を取り消した後は、 **[レベル上げ]** をクリックしてスナップショットをベース BLOB にコピーすることで、BLOB をスナップショットに復元できます。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![[スナップショットの表示] ページのスクリーンショット。[レベル上げ] オプションが強調表示されています。](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

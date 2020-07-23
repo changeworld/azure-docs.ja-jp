@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782026"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203008"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 
@@ -77,12 +77,11 @@ Azure portal でプロビジョニング ログを確認する方法の詳細に
 | Azure AD のすべてのユーザーを同期する|  1,000 未満  | 30 分未満 | 30 分未満 |
 | Azure AD のすべてのユーザーを同期する | 1,000 ～ 10,000  | 43 ～ 86 分 | 30 分未満 |
 
-
 **割り当てられたユーザーとグループのみを同期する**構成では、次の式を使用して**初回サイクル**のおよその最小予測時間と最大予測時間を確認できます。
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- 最小時間 (分) = 0.01 x [割り当てられたユーザー、グループ、およびグループ メンバーの数]
+- 最大時間 (分) = 0.08 x [割り当てられたユーザー、グループ、およびグループ メンバーの数]
+
 **初回サイクル**の完了に要する時間に影響する要因のまとめ:
 
 - プロビジョニングのスコープ内のユーザーとグループの合計数。

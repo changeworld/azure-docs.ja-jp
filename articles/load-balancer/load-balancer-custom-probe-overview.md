@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809404"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207559"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -29,8 +29,8 @@ Azure Load Balancer で負荷分散規則を使用する場合は、Load Balance
 
 | | Standard SKU | Basic SKU |
 | --- | --- | --- |
-| [プローブの種類](#types) | TCP、HTTP、HTTPS | TCP、HTTP |
-| [プローブのダウン動作](#probedown) | すべてのプローブがダウンすると、すべての TCP フローは続行します。 | すべてのプローブがダウンすると、すべての TCP フローは終了します。 | 
+| **[プローブの種類](#types)** | TCP、HTTP、HTTPS | TCP、HTTP |
+| **[プローブのダウン動作](#probedown)** | すべてのプローブがダウンすると、すべての TCP フローは続行します。 | すべてのプローブがダウンすると、すべての TCP フローは終了します。 | 
 
 
 >[!IMPORTANT]
@@ -92,8 +92,8 @@ Azure Load Balancer で負荷分散規則を使用する場合は、Load Balance
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
-| Standard SKU |    &#9989; |   &#9989; |   &#9989; |
-| Basic SKU |   &#9989; |   &#9989; | &#10060; |
+| **Standard SKU** |    &#9989; |   &#9989; |   &#9989; |
+| **Basic SKU** |   &#9989; |   &#9989; | &#10060; |
 
 ### <a name="tcp-probe"></a><a name="tcpprobe"></a> TCP プローブ
 

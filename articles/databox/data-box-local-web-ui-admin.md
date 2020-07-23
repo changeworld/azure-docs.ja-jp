@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608249"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202541"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
@@ -28,6 +28,8 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 - BOM またはマニフェスト ファイルのダウンロード
 - デバイスの使用可能な容量の表示
 - チェックサム検証のスキップ
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>サポート パッケージの生成
 
@@ -80,9 +82,9 @@ Data Box を再起動するには、次の手順を実行します。
 
 ## <a name="download-bom-or-manifest-files"></a>BOM またはマニフェスト ファイルのダウンロード
 
-部品表 (BOM) またはマニフェスト ファイルには、Data Box または Data Box Heavy にコピーされるファイルの一覧が含まれています。 これらのファイルは、発送するデバイスを準備するときに生成されます。
+部品表 (BOM) またはマニフェスト ファイルには、Data Box または Data Box Heavy にコピーされるファイルの一覧が含まれています。 これらのファイルは、発送するデバイスを準備するときにインポート注文用に生成されます。
 
-開始する前に、ご自分のデバイスの**発送準備**手順が完了していることを確認します。 次の手順に従って、BOM またはマニフェスト ファイルをダウンロードします。
+開始する前に、ご自分のデバイスの**発送準備**手順が完了していることを確認します。 次の手順に従って、インポート注文の BOM またはマニフェスト ファイルをダウンロードします。
 
 1. ご自分のデバイスのローカル Web UI に移動します。 デバイスの発送準備が完了したことが表示されます。 デバイスの準備が完了すると、デバイスの状態が **[発送する準備ができました]** と表示されます。
 
@@ -168,6 +170,8 @@ Data Box を再起動するには、次の手順を実行します。
 
 既定では、発送の準備をするときにデータのチェックサムが生成されます。 特定のまれなケースにおいて、データ型 (小さいファイル サイズ) によっては、パフォーマンスが低下することがあります。 このような場合は、チェックサムをスキップできます。
 
+発送準備中のチェックサム計算は、エクスポート注文ではなく、インポート注文に対してのみ実行されます。 
+
 パフォーマンスに重大な影響がない限り、チェックサムを無効にしないことを強くお勧めします。
 
 1. デバイスのローカル Web UI の右上隅にある **[設定]** に移動します。
@@ -177,7 +181,8 @@ Data Box を再起動するには、次の手順を実行します。
 2. **[無効]** をクリックしてチェックサム検証を無効にします
 3. **[Apply]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+> [!NOTE]
+> チェックサム計算のスキップ オプションは、Azure Data Box がロック解除されている場合にのみ使用できます。 デバイスがロックされている場合、このオプションは表示されません。
 
 - [Azure portal を使用して Data Box と Data Box Heavy を管理する](data-box-portal-admin.md)方法について学習します。
 

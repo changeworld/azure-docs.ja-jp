@@ -3,12 +3,12 @@ title: Azure Application Insights からの Stream Analytics のエクスポー�
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110489"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224521"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -60,7 +60,7 @@ ms.locfileid: "86110489"
     また、データはストレージにもエクスポートされます。 
 2. エクスポートされたデータを検査します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![表示するイベントの種類を設定する方法を示すスクリーンショット。](./media/export-stream-analytics/04-data.png)
    
     パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。 
 
@@ -69,21 +69,21 @@ ms.locfileid: "86110489"
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
 [Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
 
-![](./media/export-stream-analytics/SA001.png)
+![Azure portal で Stream Analytics ジョブを作成するためのメイン ページを示すスクリーンショット。](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![新しい Stream Analytics ジョブを作成するときに必要な詳細を示すスクリーンショット。](./media/export-stream-analytics/SA002.png)
 
 新しいジョブが作成されたら、 **[リソースに移動]** を選びます。
 
-![](./media/export-stream-analytics/SA003.png)
+![新しい Stream Analytics ジョブのデプロイが成功したときに受信するメッセージを示すスクリーンショット。](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>新しい入力を追加する
 
-![](./media/export-stream-analytics/SA004.png)
+![Stream Analytics ジョブに入力を追加する方法を示すスクリーンショット。](./media/export-stream-analytics/SA004.png)
 
 連続エクスポート BLOB から入力を取るよう設定します。
 
-![](./media/export-stream-analytics/SA0005.png)
+![連続エクスポート BLOB から入力を取得する Stream Analytics ジョブの構成を示すスクリーンショット。](./media/export-stream-analytics/SA0005.png)
 
 ここで、ストレージ アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。 ストレージ アカウント キーとしてこれを設定します。
 
@@ -109,7 +109,7 @@ ms.locfileid: "86110489"
 ## <a name="add-new-output"></a>新しい出力を追加する
 ジョブを選んでから、 **[出力]**  >  **[追加]** の順に選びます。
 
-![](./media/export-stream-analytics/SA006.png)
+![新しい出力を追加するための Stream Analytics ジョブの選択を示すスクリーンショット。](./media/export-stream-analytics/SA006.png)
 
 
 ![新しいチャネルを選択して、[出力]、[追加]、[Power BI] をクリックします。](./media/export-stream-analytics/SA010.png)

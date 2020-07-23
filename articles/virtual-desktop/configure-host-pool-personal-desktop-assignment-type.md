@@ -5,22 +5,22 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 158ac92a930b53e02ee81570c62711ca27dc4ae8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200394"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260810"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md)を参照してください。
 >
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ニーズに合わせて、個人用デスクトップ ホスト プールの割り当ての種類を構成して Windows Virtual Desktop 環境を調整することができます。 このトピックでは、ユーザーの自動割り当てまたは直接割り当てを構成する方法について説明します。
@@ -72,11 +72,26 @@ New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtuali
 Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -ResourceGroupName <resourcegroupname> -AssignedUser <userupn>
 ```
 
+ユーザーを Azure portal のセッション ホストに直接割り当てるには、次の手順を実行します。
+
+1. Azure Portal ( <https://portal.azure.com> ) にサインインします。
+2. 検索バーに「**Windows Virtual Desktop**」と入力します。
+3. **[サービス]** の下で **[Windows Virtual Desktop]** を選択します。
+4. [Windows Virtual Desktop] ページで、ウィンドウの左側にあるメニューの **[ホスト プール]** を選択します。
+5. 更新するホスト プールの名前を選択します。
+6. 次に、ウィンドウの左側にあるメニューに移動し、 **[アプリケーション グループ]** を選択します。
+7. 編集するデスクトップ アプリ グループの名前を選択し、ウィンドウの左側にあるメニューの **[割り当て]** を選択します。
+8. **[+ 追加]** を選択し、このデスクトップ アプリ グループの公開先となるユーザーまたはユーザー グループを選択します。
+9. **[Assign VM]\(VM の割り当て\)** を選択して、セッション ホストをユーザーに割り当てます。
+10. ユーザーに割り当てるセッション ホストを選択し、 **[割り当てる]** を選択します。
+11. 選択可能なユーザーの一覧から、セッション ホストを割り当てるユーザーを選択します。
+12. 終了したら、 **[選択]** を選択します。
+
 ## <a name="next-steps"></a>次のステップ
 
 個人用デスクトップ割り当ての種類を構成したので、次は Windows Virtual Desktop クライアントにサインインしてユーザー セッションの一部としてテストすることができます。 次の 2 つの手順では、任意のクライアントを使用してセッションに接続する方法を説明します。
 
-- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-and-10.md)
+- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10.md)
 - [Web クライアントに接続する](connect-web.md)
 - [Android クライアントに接続する](connect-android.md)
 - [iOS クライアントに接続する](connect-ios.md)

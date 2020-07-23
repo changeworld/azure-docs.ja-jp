@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078427"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232085"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -223,3 +223,7 @@ TCP ping は実際にはターゲット FQDN に接続していません。 Azur
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>パブリック IP アドレスを使用せずに Azure Firewall をデプロイできますか。
 
 いいえ。現時点では、Azure Firewall はパブリック IP アドレスを使用してデプロイする必要があります。
+
+## <a name="where-does-azure-firewall-store-customer-data"></a>顧客データは Azure Firewall によってどこに格納されますか?
+
+Azure Firewall によって、顧客データがデプロイされているリージョン外に移動または格納されることはありません。

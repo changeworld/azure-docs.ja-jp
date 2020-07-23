@@ -3,12 +3,12 @@ title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110234"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224470"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -18,7 +18,7 @@ ms.locfileid: "86110234"
 ### <a name="email-if-my-site-is-overloaded"></a>サイトが過負荷になっている場合の電子メール
 [サーバー応答時間](../../azure-monitor/platform/alerts-log.md) の **アラート**を設定します。 1 ～ 2 秒の間のしきい値で機能する必要があります。
 
-![](./media/how-do-i/030-server.png)
+![サーバーの応答時間にアラートを設定する方法を示すスクリーンショット。](./media/how-do-i/030-server.png)
 
 アプリがエラー コードを返すことによって負荷の兆候を示す場合もあります。 **[失敗した要求]** でアラートを設定します。
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 アラームを表示するには [メトリック エクスプローラー](../../azure-monitor/platform/metrics-charts.md) でグラフを作成します。
 
-![](./media/how-do-i/010-alarm.png)
+![メトリック エクスプローラーでアラームを表示するためのグラフを作成する方法を示すスクリーンショット。](./media/how-do-i/010-alarm.png)
 
 メトリックが短時間中間値を超えたら発生するようにアラートを設定します。
 
-![](./media/how-do-i/020-threshold.png)
+![メトリックが短時間、中間値を超えたら発生するようにアラートを設定する方法を示すスクリーンショット。](./media/how-do-i/020-threshold.png)
 
 平均計算期間を最小に設定します。
 
@@ -106,11 +106,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 * 特定のユーザー ID で検索
 
-![](./media/how-do-i/110-search.png)
+![特定のユーザー ID で検索するオプションを示すスクリーンショット。](./media/how-do-i/110-search.png)
 
 * 匿名ユーザーまたは認証済みユーザーに対するメトリックのフィルター処理
 
-![](./media/how-do-i/115-metrics.png)
+![匿名ユーザーまたは認証済みユーザーに対するメトリックのフィルター処理を示すスクリーンショット。](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>プロパティ名または値を変更する
 [フィルター](../../azure-monitor/app/api-filtering-sampling.md#filtering)を作成します。 これにより、アプリから Application Insights にテレメトリが送信される前に、テレメトリの変更またはフィルター処理ができるようになります。

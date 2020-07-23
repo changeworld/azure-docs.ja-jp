@@ -1,22 +1,22 @@
 ---
-title: WhiteNoise パッケージを使用して差分プライバシーを実装する
+title: WhiteNoise パッケージを使用して差分プライバシーを実装する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: 差分プライバシーとは何かについて説明すると共に、データのプライバシーを維持する差分プライバシー システムを実装するうえで、WhiteNoise パッケージがいかに役立つかについて説明します。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/03/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982664"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199804"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>差分プライバシーと WhiteNoise パッケージを使用してデータのプライバシーを維持する
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>差分プライバシーと WhiteNoise パッケージを使用してデータのプライバシーを維持する (プレビュー)
 
 差分プライバシーとは何かについて説明すると共に、差分プライバシー システムを実装するうえで WhiteNoise パッケージがいかに役立つかについて説明します。
 

@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 52a4a7131c85231107a2a23a1916016776b219fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367429"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255627"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
 
@@ -75,5 +75,5 @@ A:この記事の「[移行ガイダンス](#migration-guidance)」を参照し�
 ## <a name="next-steps"></a>次のステップ
 
 - [Microsoft 認証ライブラリと Microsoft Graph API を使用するようにアプリケーションを更新する](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
-- [Microsoft ID プラットフォーム (MSAL) の詳細を確認する](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
-- [MSAL コード サンプルを確認する](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)
+- [Microsoft ID プラットフォームの概要](v2-overview.md)
+- [MSAL コード サンプルを確認する](sample-v2-code.md)

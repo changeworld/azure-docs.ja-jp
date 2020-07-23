@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918335"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231847"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する  
 
@@ -67,10 +67,10 @@ ms.locfileid: "77918335"
 
 次の表に、 **maxMotionThumbnailInSecs** が使用されていない場合の既定の再生時間を示します。
 
-|  |  |  |
+|  | Small | Larger |
 | --- | --- | --- |
-| ビデオの再生時間 |d < 3 分 |3 分 < d < 15 分 |
-| サムネイルの再生時間 |15 秒 (2 ～ 3 シーン) |30 秒 (3 ～ 5 シーン) |
+| **ビデオの再生時間** |d < 3 分 |3 分 < d < 15 分 |
+| **サムネイルの再生時間** |15 秒 (2 ～ 3 シーン) |30 秒 (3 ～ 5 シーン) |
 
 次の JSON では、使用可能なパラメーターを設定します。
 

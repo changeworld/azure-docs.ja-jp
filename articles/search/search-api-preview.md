@@ -8,23 +8,24 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b0c6672dcc9340e727c36b0bcf03fc8a8b176a3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830130"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246958"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
-この記事では、実稼働コードで使用するかどうかを判断できるよう、プレビュー段階にあるすべての機能を一覧表示しています。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+この記事では、プレビュー段階にあるすべての機能を一覧表示しています。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 プレビュー機能が一般公開に切り替えられると、この一覧から削除されます。 以下に記載されていない機能は、一般公開されているとお考えください。 一般公開については、[サービスの更新情報](https://azure.microsoft.com/updates/?product=search)、または[新機能](whats-new.md)に関するページでご確認いただけます。
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [**featuresMode パラメーター**](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/search-documents#featuresmode) | 関連性 (スコアリング) | 関連性のスコアリングで、フィールドごとの類似性スコア、フィールドごとの用語の頻度、およびフィールドごとの一致した一意のトークン数の詳細が含まれ強化されました。 これらのデータ ポイントは、[カスタム スコアリング ソリューション](https://github.com/Azure-Samples/search-ranking-tutorial)で使用できます。 | このクエリ パラメーターを、api-version=2020-06-30-Preview または 2019-05-06-Preview の [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して追加します。 |
-| [**マネージド サービス ID**](search-howto-managed-identities-data-sources.md) | インデクサー、セキュリティ| Azure Active Directory に検索サービスを登録してそれを信頼されたサービスにし、Azure データ ソースに対する RBAC アクセス許可を使用して、インデクサーによる読み取り専用アクセスを許可します。 | この機能にアクセスするには、ポータルを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-datasource) を使用します。 |
+| [**Azure Machine Learning (AML) スキル**](cognitive-search-aml-skill.md) | AI エンリッチメント| Azure Machine Learning からの推論エンドポイントを統合するための新しいスキルの種類です。 [このチュートリアル](cognitive-search-tutorial-aml-custom-skill.md)で作業を開始します。 | [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/) または 2019-05-06-Preview を使用します。 また、Cognitive Search と Azure ML サービスが同じサブスクリプションにデプロイされていることを前提として、ポータル (スキルセットの設計) でも利用できます。 |
+| [**featuresMode パラメーター**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | 関連性 (スコアリング) | 関連性のスコアリングで、フィールドごとの類似性スコア、フィールドごとの用語の頻度、およびフィールドごとの一致した一意のトークン数の詳細が含まれ強化されました。 これらのデータ ポイントは、[カスタム スコアリング ソリューション](https://github.com/Azure-Samples/search-ranking-tutorial)で使用できます。 | このクエリ パラメーターを、api-version=2020-06-30-Preview または 2019-05-06-Preview の [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して追加します。 |
+| [**マネージド サービス ID**](search-howto-managed-identities-data-sources.md) | インデクサー、セキュリティ| Azure Active Directory に検索サービスを登録してそれを信頼されたサービスにし、Azure データ ソースに対する RBAC アクセス許可を使用して、インデクサーによる読み取り専用アクセスを許可します。 | この機能にアクセスするには、ポータルを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用します。 |
 | [**デバッグ セッション**](cognitive-search-debug-session.md) | ポータル、AI エンリッチメント (スキルセット) | スキルセットの問題を調査して解決するために使用する、セッション内スキルセット エディター。 デバッグ セッション中に適用された修正は、サービス内のスキルセットに保存できます。 | ポータルのみで、デバッグ セッションを開くための [概要] ページの中間ページのリンクを使用します。 |
 | [**ネイティブ BLOB の論理的な削除**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | インデクサー、Azure BLOB| Azure Cognitive Search の Azure Blob Storage インデクサーは、論理的に削除された状態にある BLOB を認識し、インデックス作成時に対応する検索ドキュメントを削除します。 | この構成設定を追加するには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の[Create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) を使用します。 |
 | [**カスタム エンティティの参照スキル**](cognitive-search-skill-custom-entity-lookup.md ) | AI エンリッチメント (スキルセット) | ユーザーが定義したカスタムの単語と語句のリストからテキストを検索するコグニティブ スキル。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルでは、ある程度のあいまい一致もサポートされており、類似しているが完全一致ではない一致を見つけるために適用できます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) を使用します。 |

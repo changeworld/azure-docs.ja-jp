@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855073"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232612"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -226,17 +226,20 @@ Azure App Service 上またはマネージド ID が有効な Azure VM 上でコ
 
 ## <a name="connection-string-support"></a>接続文字列のサポート
 
-既定では、`AzureServiceTokenProvider` は複数の方法を使用してトークンを取得します。
+既定では、トークンを取得するために、`AzureServiceTokenProvider` によって、次の認証方法が順番に試行されます。
 
-プロセスを制御するには、接続文字列を `AzureServiceTokenProvider` のコンストラクターに渡すか、*AzureServicesAuthConnectionString* 環境変数に指定して、使用します。
+- [Azure リソースのマネージド ID](../..//active-directory/managed-identities-azure-resources/overview.md)
+- Visual Studio の認証
+- [Azure CLI 認証](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [統合 Windows 認証](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
-次のオプションがサポートされています。
+プロセスを制御するには、接続文字列を `AzureServiceTokenProvider` のコンストラクターに渡すか、*AzureServicesAuthConnectionString* 環境変数に指定して、使用します。  次のオプションがサポートされています。
 
 | 接続文字列のオプション | シナリオ | 説明|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | ローカル開発 | `AzureServiceTokenProvider` では、AzureCli を使用してトークンを取得します。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | ローカル開発 | `AzureServiceTokenProvider` では、Visual Studio を使用してトークンを取得します。 |
-| `RunAs=CurrentUser` | ローカル開発 | `AzureServiceTokenProvider` では、Azure AD 統合認証を使用してトークンを取得します。 |
+| `RunAs=CurrentUser` | ローカル開発 | .NET Core ではサポートされていません。 `AzureServiceTokenProvider` では、Azure AD 統合認証を使用してトークンを取得します。 |
 | `RunAs=App` | [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` では、マネージド ID を使用してトークンを取得します。 |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure リソースのユーザー割り当て ID](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider` では、ユーザー割り当て ID を使用してトークンを取得します。 |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | カスタム サービスの認証 | `KeyVaultCertificateSecretIdentifier` は証明書のシークレット識別子です。 |

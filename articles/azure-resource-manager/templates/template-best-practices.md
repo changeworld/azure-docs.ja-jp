@@ -2,13 +2,13 @@
 title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/10/2020
+ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058063"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248919"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
@@ -160,7 +160,7 @@ ms.locfileid: "86058063"
 
 どのような[依存関係](define-resource-dependency.md)を設定するかを決めるときは、次のガイドラインを使用してください。
 
-* プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定するには、**reference** 関数を使用して、リソース名を渡します。 暗黙的な依存関係を既に定義してある場合は、明示的な `dependsOn` 要素を追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。
+* プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定するには、**reference** 関数を使用して、リソース名を渡します。 暗黙的な依存関係を既に定義してある場合は、明示的な `dependsOn` 要素を追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。 暗黙の依存関係を設定する例については、[暗黙の依存関係](define-resource-dependency.md#reference-and-list-functions)に関するページを参照してください。
 
 * 子リソースは、その親リソースに依存するように設定します。
 

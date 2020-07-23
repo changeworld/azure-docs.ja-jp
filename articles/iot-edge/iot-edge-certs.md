@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982730"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247015"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge での証明書の使用方法について理解する
 
@@ -25,6 +25,9 @@ IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デ
 ## <a name="iot-edge-certificates"></a>IoT Edge 証明書
 
 通常、製造元は IoT Edge デバイスのエンド ユーザーではありません。 両者の間の関係は、エンドユーザー (つまり操作者) が、製造元によって製造された汎用のデバイスを購入するときのみである場合があります。 その他のときには、操作者に代わってカスタム デバイスを構築する契約の下で、製造業者が作業を行います。 IoT Edge 証明書の設計では、両方のシナリオの考慮を試みています。
+
+> [!NOTE]
+> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。 この制限は、デバイス CA 証明書、信頼バンドル内のすべての証明書、x.509 のプロビジョニング方法に使用されるデバイス ID 証明書に適用されます。
 
 次の図は、IoT Edge での証明書の使用方法を示しています。 ルート CA 証明書とデバイス CA 証明書の間には、関係しているエンティティの数に応じて、0 個、1 個、または多数の中間証明書が存在する可能性があります。 ここで、1 つの場合を示します。
 

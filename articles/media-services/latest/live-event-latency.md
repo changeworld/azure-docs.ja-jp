@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199650"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232459"
 ---
 # <a name="live-event-low-latency-settings"></a>ライブ イベントの低待機時間設定
 
@@ -62,15 +62,15 @@ LiveEvent liveEvent = new LiveEvent(
 
 ||2 秒 GOP の低待機時間が有効|1 秒 GOP の低待機時間が有効|
 |---|---|---|
-|AMP での DASH|10 秒|8 秒|
-|ネイティブ iOS プレーヤーでの HLS|14 秒|10 秒|
+|**AMP での DASH**|10 秒|8 秒|
+|**ネイティブ iOS プレーヤーでの HLS**|14 秒|10 秒|
 
 ### <a name="live-encoding"></a>ライブ エンコード
 
 ||2 秒 GOP の低待機時間が有効|1 秒 GOP の低待機時間が有効|
 |---|---|---|
-|AMP での DASH|14 秒|10 秒|
-|ネイティブ iOS プレーヤーでの HLS|18 秒|13 秒|
+|**AMP での DASH**|14 秒|10 秒|
+|**ネイティブ iOS プレーヤーでの HLS**|18 秒|13 秒|
 
 > [!NOTE]
 > エンドツーエンドの待機時間は、ローカル ネットワークの状態や、CDN キャッシュ レイヤーの導入によって変動する可能性があります。 正しい構成でテストする必要があります。

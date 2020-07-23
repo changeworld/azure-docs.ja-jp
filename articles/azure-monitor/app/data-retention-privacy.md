@@ -3,12 +3,12 @@ title: Azure Application Insights でのデータ保持と保存 | Microsoft Doc
 description: データ保持およびプライバシー ポリシー ステートメント
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601362"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224487"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -62,7 +62,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 ## <a name="how-can-i-verify-whats-being-collected"></a>収集された内容はどのような方法で検証しますか。
 Visual Studio でアプリを開発している場合、デバッグ モードでアプリを実行してください (F5)。 製品利用統計情報は出力ウィンドウに表示されます。 そこから、それをコピーし、JSON として書式設定すれば、調査が簡単になります。 
 
-![](./media/data-retention-privacy/06-vs.png)
+![Visual Studio のデバッグ モードでのアプリの実行を示すスクリーンショット。](./media/data-retention-privacy/06-vs.png)
 
 [診断] ウィンドウには、さらに読みやすいビューもあります。
 

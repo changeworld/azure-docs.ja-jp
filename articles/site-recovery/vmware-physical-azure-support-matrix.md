@@ -2,13 +2,13 @@
 title: Azure Site Recovery における VMware/物理ディザスター リカバリーのサポート マトリックス
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/10/2020
+ms.openlocfilehash: 86aed87be2d65a78b2485d0ce71ce1f674ea9407
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131874"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224640"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -59,9 +59,6 @@ Port | コントロール チャネルのオーケストレーションに使用
 ## <a name="replicated-machines"></a>レプリケートされるマシン
 
 Site Recovery は、サポートされているマシンで実行されているすべてのワークロードのレプリケーションをサポートします。
-
-> [!Note]
-> 次の表は、コンピューターの BIOS ブート サポートを一覧にしたものです。 UEFI ベースのコンピューターのサポートについては、「[ストレージ](#storage)」セクションを参照してください。
 
 **コンポーネント** | **詳細**
 --- | ---
@@ -181,6 +178,7 @@ BTRFS | \- BTRFS は[更新プログラム ロールアップ 34](https://suppor
 ゲスト/サーバー ネットワークのマルチ NIC | はい。
 
 
+
 ## <a name="azure-vm-network-after-failover"></a>Azure VM ネットワーク (フェールオーバー後)
 
 **コンポーネント** | **サポートされています**
@@ -224,7 +222,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー GPT パーティション | \- 5 個のパーティションが[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) (モビリティ サービスのバージョン 9.25) 以降でサポートされています。 以前は 4 個までサポートしていました。
 ReFS | Resilient File System は、モビリティ サービスのバージョン 9.23 以降でサポートされています。
-ゲスト/サーバー EFI/UEFI ブート | - Windows Server 2012 以降、SLES 12 SP4、モビリティ エージェント バージョン 9.30 以降を使用する RHEL 8.0 でサポートされています<br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 [詳細情報。](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
+ゲスト/サーバー EFI/UEFI ブート | - Site Recovery モビリティ エージェント バージョン 9.30 以降のすべての [Azure Marketplace UEFI OS](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-images-in-azure-marketplace) でサポートされています。 <br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 [詳細情報。](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>レプリケーション チャネル
 
@@ -246,7 +244,9 @@ geo 冗長ストレージ | はい
 ブロック blob | いいえ
 保存時の暗号化 (SSE)| はい
 保存時の暗号化 (CMK)| はい (PowerShell Az 3.3.0 モジュール以降を使用)
+保存時の二重暗号化 | はい (PowerShell Az 3.3.0 モジュール以降を使用)。 [Windows](../virtual-machines/windows/disk-encryption.md) および [Linux](../virtual-machines/linux/disk-encryption.md) でサポートされているリージョンの詳細について参照してください。
 Premium Storage | はい
+転送オプションのセキュリティ保護 | はい
 インポート/エクスポート サービス | いいえ
 VNet 用 Azure Storage ファイアウォール | はい。<br/> ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成されたもの。
 汎用目的 V2 ストレージ アカウント (ホット層とクール層) | はい (V1 に比べて V2 のトランザクション コストは非常に大きくなります)

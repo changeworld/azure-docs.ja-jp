@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392303"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258272"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -29,7 +29,7 @@ Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) �
 > [!TIP] 
 > DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。 Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
 
-DTDL 全般の詳細については、GitHub の仕様ドキュメント「[Digital Twins Definition Language (DTDL) - バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)」を参照してください。
+DTDL 全般の詳細については、GitHub で次の仕様ドキュメントを参照してください。[Digital Twins Definition Language (DTDL) - バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 ## <a name="elements-of-a-model"></a>モデルの要素
 
@@ -197,9 +197,14 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 ## <a name="validating-models"></a>モデルの検証
 
-DTDL が有効であることを確認するために、モデル ドキュメントを検証するためのサンプルが用意されています。 これは、DTDL パーサー ライブラリに基づいて構築されており、言語に依存しません。 こちらから入手いただけます ([DTDL 検証ツールのサンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator))。
+> [!TIP]
+> ご自分のモデルは、ご自分の Azure Digital Twins インスタンスにアップロードする前に、オフラインで検証することをお勧めします。
 
-また、直接使用する方法の例を含むパーサー ライブラリの詳細については、[方法: モデルの解析および検証](how-to-use-parser.md)に関するページを参照してください。
+モデル ドキュメントを検証して、DTDL が正しいことを確認するために、言語に依存しないサンプルが用意されています。 これはこちらにあります。[**DTDL 検証ツール サンプル**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)
+
+DTDL 検証ツールのサンプルは、NuGet でクライアント側ライブラリとして提供されている .NET DTDL パーサー ライブラリに基づいて構築されています。[**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). また、このライブラリを直接使用し、自分独自の検証ソリューションを設計することもできます。 パーサー ライブラリを使用する場合は、Azure Digital Twins が実行されているバージョンと互換性のあるバージョンを使用するようにしてください。 プレビュー期間中のこれのバージョンは、*3.7.0* です。
+
+使用例を含むパーサー ライブラリの詳細については、[方法:モデルの解析および検証](how-to-use-parser.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

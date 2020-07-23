@@ -2,13 +2,13 @@
 title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981658"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248985"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
@@ -23,16 +23,18 @@ Azure Resource Manager では、上限に近づくとすぐに履歴からデプ
 
 ## <a name="when-deployments-are-deleted"></a>デプロイが削除されるタイミング
 
-790 件のデプロイに達すると、デプロイはデプロイ履歴から削除されます。 Azure Resource Manager では、将来のデプロイのために容量を空ける目的で、最も古いデプロイの小集合が削除されます。 履歴の大部分は変更されません。 常に、最も古いデプロイが先に削除されます。
+デプロイが 775 件に達すると、ご自分の履歴からデプロイが削除されます。 Azure Resource Manager では、履歴が 750 に減るまでデプロイを削除します。 常に、最も古いデプロイが先に削除されます。
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="デプロイ履歴からの削除":::
+
+> [!NOTE]
+> 開始番号 (775) と終了番号 (750) は変わる場合もあります。
+>
+> リソース グループが既に 800 の上限に達している場合、次回のデプロイはエラーで失敗します。 自動削除プロセスがすぐに開始されます。 少し待つと、 デプロイを再試行できます。
 
 デプロイに加え、[what-if 操作](template-deploy-what-if.md)の実行時またはデプロイの検証時にも削除を始動させることができます。
 
 履歴に含まれるものと同じ名前をデプロイに付けると、履歴のその場所をリセットすることになります。 そのデプロイは履歴の中で最も新しい場所に移動します。 エラー後、[そのデプロイまでロールバック](rollback-on-error.md)した場合もデプロイの場所がリセットされます。
-
-> [!NOTE]
-> リソース グループが既に 800 の上限に達している場合、次回のデプロイはエラーで失敗します。 自動削除プロセスがすぐに開始されます。 少し待つと、 デプロイを再試行できます。
 
 ## <a name="opt-out-of-automatic-deletions"></a>自動削除のオプトアウト
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738653"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207357"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
@@ -25,7 +25,7 @@ ms.locfileid: "84738653"
 
 ![ポータル][2]
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 返される暫定結果では、リソースの正常性の概要が示されます。 次のセクションに示すように、リソースに関するより詳細な情報を得ることもできます。
 
@@ -82,7 +82,7 @@ ms.locfileid: "84738653"
 
 次の表は、Network Watcher のトラブルシューティングでサポートされるゲートウェイと接続の一覧を示しています。
 
-|  |  |
+| ゲートウェイまたは接続 | サポートされています  |
 |---------|---------|
 |**ゲートウェイの種類**   |         |
 |VPN      | サポートされています        |
@@ -105,7 +105,7 @@ ms.locfileid: "84738653"
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](https://storageexplorer.com/)に関するページを参照してください。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

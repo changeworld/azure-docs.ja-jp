@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360794"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256868"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>クラウド プロビジョニングのトラブルシューティング
 
@@ -55,9 +55,7 @@ ms.locfileid: "85360794"
 
 ### <a name="verify-the-port"></a>ポートを確認する
 
-Azure によってポート 443 がリッスンされていて、エージェントとこのポートとの通信が可能であることを確認するには、次のツールを使用します。
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+Azure がポート 443 でリッスンしていて、お使いのエージェントがそれと通信できることを確認します。 
 
 このテストでは、エージェントがポート 443 を介して Azure と通信できることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから前の URL に移動します。
 

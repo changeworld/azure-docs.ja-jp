@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076370"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207716"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して MapReduce ジョブを実行する
 
@@ -61,7 +61,7 @@ HDInsight クラスター上の Apache Hadoop で Apache Hive WebHCat REST API �
 
     次の JSON のような応答を受け取ります。
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,9 +83,7 @@ HDInsight クラスター上の Apache Hadoop で Apache Hive WebHCat REST API �
      * **class**: MapReduce ロジックを含むクラス
      * **arg**: MapReduce ジョブに渡される引数。 この場合、入力テキスト ファイルと出力に使用するディレクトリです
 
-    このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
-
-       job_1415651640909_0026
+    このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します: `job_1415651640909_0026`。
 
 1. ジョブのステータスを確認するには、次のコマンドを使用します。 `JOBID` の値を、前の手順で返された**実際の**値に置き換えます。 必要に応じて **jq** の場所を変更します。
 
@@ -116,7 +114,7 @@ HDInsight クラスター上の Apache Hadoop で Apache Hive WebHCat REST API �
 
     次の JSON のような応答を受け取ります。
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ HDInsight クラスター上の Apache Hadoop で Apache Hive WebHCat REST API �
     * **class**: MapReduce ロジックを含むクラス
     * **arg**: MapReduce ジョブに渡される引数。 この場合、入力テキスト ファイルと出力に使用するディレクトリです
 
-   このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
-
-       job_1415651640909_0026
+   このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します: `job_1415651640909_0026`。
 
 1. ジョブのステータスを確認するには、次のコマンドを使用します。
 

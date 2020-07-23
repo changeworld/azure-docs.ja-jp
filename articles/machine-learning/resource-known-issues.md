@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610067"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223460"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -181,7 +181,27 @@ ms.locfileid: "85610067"
 |画像をレビューする際に、新しくラベル付けされた画像が表示されない。     |   ラベル付けされたすべての画像を読み込むには、 **[First]\(1 番目\)** ボタンを選択します。 **[First]\(1 番目\)** ボタンを選択すると、リストの先頭に戻りますが、ラベル付けされたデータはすべて読み込まれます。      |
 |オブジェクト検出のラベル付け中に Esc キーを押すと、左上隅にゼロ サイズのラベルが作成されます。 この状態でラベルを送信することはできません。     |   ラベルの横にある交差マークをクリックして、ラベルを削除してください。  |
 
-### <a name="data-drift-monitors"></a>データ ドリフト モニター
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> データ ドリフト モニター
+
+データ ドリフト モニターに関する制限事項と既知の問題
+
+* 履歴データ分析時の時間範囲は、モニターの頻度設定の 31 間隔までに制限されます。 
+* 特徴一覧が指定されていない (すべての特徴を使用する) 場合、200 の特徴に制限されます。
+* コンピューティング サイズは、データを処理できる十分な大きさにする必要があります。
+* 特定のモニターの実行について、開始日と終了日の範囲に該当するデータがデータセットに存在することを確認します。
+* データセット モニターは、50 行以上を含むデータセットでのみ機能します。
+* データセット内の列、つまり特徴は、次の表の条件に基づいてカテゴリまたは数値として分類されます。 特徴がこれらの条件を満たしていない場合 (たとえば、string 型の列に一意の値が 100 個以上含まれる場合)、その特徴はデータ ドリフト アルゴリズムから削除されますが、プロファイリングは引き続き行われます。 
+
+    | 特徴の種類 | データ型 | 条件 | 制限事項 | 
+    | ------------ | --------- | --------- | ----------- |
+    | Categorical | string、bool、int、float | 特徴内の一意の値の数は、100 個未満であり、かつ行数の 5% 未満であること。 | null 値は独自のカテゴリとして扱われます。 | 
+    | 数値 | int、float | 特徴内の値は数値データ型で、カテゴリの特徴の条件を満たしていません。 | 値の数の 15% を超える null が含まれる場合、その特徴は削除されます。 | 
+
+* [データ ドリフト モニターを作成](how-to-monitor-datasets.md)したが、Azure Machine Learning Studio の **[データセット モニター]** ページにデータが表示されない場合、次を試してください。
+
+    1. ページの一番上で正しい日付範囲が選択されているかどうかを確認します。  
+    1. **[データセット モニター]** タブで、実験リンクを選択し、実行状態を確認します。  このリンクはテーブルの右端にあります。
+    1. 実行が正常に完了したら、生成されているメトリックの数や警告メッセージがあるかどうかをドライバー ログで確認します。  実験をクリックしたら、 **[出力 + ログ]** タブでドライバー ログを見つけます。
 
 * SDK の `backfill()` 関数で予期された出力が生成されない場合は、認証の問題が原因である可能性があります。  この関数に渡す計算を作成するときに、`Run.get_context().experiment.workspace.compute_targets` を使用しないでください。  代わりに、次のような [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) を使用して、その `backfill()` 関数に渡す計算を作成します。 
 

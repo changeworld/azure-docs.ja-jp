@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550132"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230385"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -47,6 +47,22 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >Azure AD Connect for sync を有効にした場合、以前のバージョンのいずれかを実行していると近々非推薦になる旨について警告する正常性通知の受信が自動的に開始されます。
 >
 >Azure AD Connect を最新バージョンにアップグレードする方法の詳細については、[この記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)を参照してください。
+
+## <a name="15420"></a>1.5.42.0
+
+### <a name="release-status"></a>リリースの状態
+07/10/2020:ダウンロード対象としてリリース済み
+
+### <a name="functional-changes"></a>機能の変更点
+このリリースには、既存の Azure AD Connect サーバーの構成を .JSON ファイルにエクスポートする機能のパブリック プレビューが含まれています。ファイルはその後、新しい Azure AD Connect サーバーをインストールして元のサーバーのコピーを作成するときに使用できます。
+
+この新機能の詳細については、[この記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config)を参照してください。
+
+### <a name="fixed-issues"></a>修正された問題
+- アップグレード中、ローカライズされたビルドのローカル DB サイズに関する警告が誤って発生するバグを修正しました。
+- アカウント名とドメイン名の入れ替えで、アプリ イベントに誤ってエラーが発生するバグを修正しました。
+- DC に Azure AD Connect をインストールできず、"メンバーが見つかりませんでした" というエラーが表示されるエラーを修正しました。
+
 
 ## <a name="15300"></a>1.5.30.0
 

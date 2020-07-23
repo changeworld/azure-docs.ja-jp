@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 565d98bd5f27351f16ff523aa017c4b980fbdd53
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827268"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232663"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
 
@@ -39,7 +39,7 @@ ms.locfileid: "83827268"
 > [!NOTE]
 > 最初の仮想マシンのサイズによっては、スケーリングできるサイズが制限される場合があります。これは、その仮想マシンがデプロイされているクラスターの空き容量によるものです。 この記事で使用される公開済みの Automation Runbook では、このケースのみを扱い、VM のサイズ ペアを超えない範囲でのみスケーリングします。 つまり、Standard_D1v2 仮想マシンが急に Standard_G5 にスケールアップしたり、Basic_A0 にスケールダウンしたりすることはありません。 また、制約付きの仮想マシンのサイズのスケールアップ/スケールダウンはサポートされていません。 次のようなサイズのペアの間でスケールの設定を選択できます。
 > 
-> | VM サイズのスケーリングのペア |  |
+> | VM サイズのスケーリング ペアのメンバー | メンバー |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |

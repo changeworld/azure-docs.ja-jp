@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649124"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223858"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
@@ -40,17 +40,17 @@ Azure portal で、[デプロイ資格情報] ページにアクセスするに�
 
 1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]**  >  **\<any_app>**  >  **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** を選択します。
 
-    ![](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Azure App Services のデプロイ センターから FTP ダッシュボードを選択する方法を示します。](./media/app-service-deployment-credentials/access-no-git.png)
 
     あるいは、Git デプロイを既に構成している場合、 **[App Services]** 、 **[&lt;任意のアプリ>]** 、 **[デプロイ センター]** 、 **[FTP/資格情報]** を選択します。
 
-    ![](./media/app-service-deployment-credentials/access-with-git.png)
+    ![構成済み Git デプロイのために Azure App Services のデプロイ センターから FTP ダッシュボードを選択する方法を示します。](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. **[ユーザーの資格情報]** を選択し、ユーザー名とパスワードを構成してから、 **[資格情報の保存]** を選択します。
 
 デプロイ資格情報を設定すると、*Git* デプロイのユーザー名がアプリの **[概要]** ページに表示されます。
 
-![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![アプリの [概要] ページで Git デプロイ ユーザー名を見つける方法を示します。](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 Git デプロイが構成されている場合、ページに **Git/デプロイ ユーザー名**が表示されます。構成されていない場合、**FTP/デプロイ ユーザー名**が表示されます。
 

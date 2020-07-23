@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d8a2488e16031a4d960d039d646d9da5de1c1c2e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134991"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223705"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -162,7 +162,7 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 
 オペレーティング システムのディスク数 | 1 
 データ ディスク数 | 64 以下。 
-データ ディスク サイズ | 最大 4,095 GB 
+データ ディスク サイズ | 最大 8,095 GB
 ネットワーク アダプター | 複数のアダプターがサポートされます。
 共有 VHD | サポートされていません。 
 FC ディスク | サポートされていません。 

@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508796"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247134"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -28,7 +28,7 @@ geo レプリケートされたレジストリには次の利点があります�
 >
 
 ## <a name="example-use-case"></a>ユース ケースの例
-Contoso では、米国、カナダ、ヨーロッパにまたがる パブリック プレゼンスの Web サイトを運用しています。 Contoso は、ネットワーク上の近い場所にあるローカルのコンテンツでこれらの市場に対応するために、米国西部、米国東部、カナダ中部、西ヨーロッパで [Azure Kubernetes Service](/azure/aks/) (AKS) クラスターを実行しています。 Docker イメージとしてデプロイされた Web サイト アプリケーションでは、すべてのリージョンで同じコードとイメージを使用します。 リージョンのローカルのコンテンツは、各リージョンに独自にプロビジョニングされたデータベースから取得されます。 各リージョン デプロイには、ローカル データベースなどのリソースの独自の構成があります。
+Contoso では、米国、カナダ、ヨーロッパにまたがる パブリック プレゼンスの Web サイトを運用しています。 Contoso は、ネットワーク上の近い場所にあるローカルのコンテンツでこれらの市場に対応するために、米国西部、米国東部、カナダ中部、西ヨーロッパで [Azure Kubernetes Service](../aks/index.yml) (AKS) クラスターを実行しています。 Docker イメージとしてデプロイされた Web サイト アプリケーションでは、すべてのリージョンで同じコードとイメージを使用します。 リージョンのローカルのコンテンツは、各リージョンに独自にプロビジョニングされたデータベースから取得されます。 各リージョン デプロイには、ローカル データベースなどのリソースの独自の構成があります。
 
 開発チームは、米国西部データ センターを利用するワシントン州シアトルを拠点としています。
 
@@ -95,7 +95,7 @@ ACR は、構成済みのレプリカ間でイメージの同期を開始しま�
 * geo レプリケーションされたレジストリからイメージをプッシュまたはプルすると、バックグラウンドの Azure Traffic Manager は、ネットワーク待機時間の観点から最も近いリージョンにあるレジストリに要求を送信します。
 * イメージまたはタグの更新を最も近いリージョンにプッシュした後、Azure Container Registry がマニフェストとレイヤーを、選択された残りのリージョンにレプリケートするまでに、少し時間がかかります。 大きいイメージは、小さいイメージよりもレプリケートに時間がかかります。 イメージとタグは、最終的な整合性モデルを使用して、レプリケーションのリージョン間で同期されます。
 * geo レプリケーションされたレジストリへのプッシュ更新に依存するワークフローを管理するには、プッシュ イベントに応答するように [Webhook](container-registry-webhook.md) を構成することをお勧めします。 geo レプリケーションされたレジストリ内にリージョンの Webhook を設定して、geo レプリケーションされたすべてのリージョンにわたってプッシュ イベントが完了したときにそれを追跡できます。
-* コンテンツ レイヤーを表す BLOB にサービスを提供するために、Azure Container レジストリではデータ エンドポイントを使用します。 各レジストリの geo レプリケートされたリージョンで、レジストリの[専用データ エンドポイント](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)を有効にすることができます。 これらのエンドポイントを使用すると、スコープが厳密に設定されたファイアウォール アクセス規則を構成できます。
+* コンテンツ レイヤーを表す BLOB にサービスを提供するために、Azure Container Registry ではデータ エンドポイントを使用します。 各レジストリの geo レプリケートされたリージョンで、レジストリの[専用データ エンドポイント](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)を有効にすることができます。 これらのエンドポイントを使用すると、スコープが厳密に設定されたファイアウォール アクセス規則を構成できます。
 * 仮想ネットワークのプライベート エンドポイントを使用して、レジストリの [Private Link](container-registry-private-link.md) を構成した場合、geo レプリケートされた各リージョンの専用データ エンドポイントが既定で有効になります。 
 
 ## <a name="delete-a-replica"></a>レプリカの削除

@@ -3,8 +3,8 @@ title: Azure での Oracle データベースの設計と実装 | Microsoft Docs
 description: ご利用の Azure 環境で Oracle データベースを設計および実装します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687535"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224572"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -211,7 +211,7 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 
 データ ディスクの設定が保存された後に、OS レベルでドライブのマウントを解除し、変更後に再マウントするまでは、ホストのキャッシュ設定を変更できません。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 Azure 環境のセットアップと構成が完了した後に、今度はネットワークをセキュリティ保護します。 以下に、推奨事項をいくつか示します。
 

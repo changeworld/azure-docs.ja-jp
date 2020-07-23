@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/6/2020
-ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045962"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206943"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -324,6 +324,19 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 - **レポート頻度**: 1 分あたり
 
 この量が 1 秒ごとに計算され、1 分間について集計されます。
+
+### <a name="minimum-compute-bill"></a>最小コンピューティング料金
+
+サーバーレス データベースが一時停止された場合、コンピューティング料金は 0 になります。  サーバーレス データベースが一時停止されていない場合、最小コンピューティング料金は、最大に基づく仮想コア以上になります (最少仮想コア、最少メモリ GB * 1/3)。
+
+例 :
+
+- サーバーレス データベースが一時停止しておらず、3.0 GB の最小メモリに対応して最大仮想コア数に 8、最少仮想コア数に 1 が構成されているとします。  この場合、最小コンピューティング料金は、最大 (1 仮想コア、3.0 GB * 1 仮想コア/3 GB) = 1 仮想コアに基づきます。
+- サーバーレス データベースが一時停止しておらず、2.1 GB の最小メモリに対応して最大仮想コア数に 4、最少仮想コア数に 0.5 が構成されているとします。  この場合、最小コンピューティング料金は、最大 (0.5 仮想コア、2.1 GB * 1 仮想コア/3 GB) = 0.7 仮想コアに基づきます。
+
+サーバーレス用の [Azure SQL Database 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用すると、構成された最大および最小の仮想コア数に基づいて構成可能な最小メモリを決定できます。  ルールとして、構成された最小仮想コア数が 0.5 仮想コアを超える場合、最小コンピューティング料金は構成されている最小メモリには依存せず、構成された最小仮想コア数のみに基づいて計算されます。
+
+### <a name="example-scenario"></a>サンプル シナリオ
 
 最小仮想コア数に 1、最大仮想コア数に 4 が指定されているサーバーレス データベースについて考えてみます。  この場合、最小メモリは約 3 GB、最大メモリは約 12 GB です。  自動一時停止遅延が 6 時間に設定され、24 時間のうち最初の 2 時間だけデータベースのワークロードがアクティブで、それ以外の時間は非アクティブだとすると、    
 
