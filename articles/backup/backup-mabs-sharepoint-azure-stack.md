@@ -3,12 +3,12 @@ title: Azure Stack 上の SharePoint ファームのバックアップ
 description: Azure Backup Server を使用して、Azure Stack 上の SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 8b9257c1d175c350df06f9421b31a9e7b8e2bb80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84657929"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538787"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
 
@@ -102,7 +102,7 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 
 1. **[オンライン保持ポリシーの指定]** では、毎日、毎週、毎月、毎年のバックアップから作成される回復ポイントを Azure に保持する方法を指定できます。
 
-1. **[オンライン レプリケーションの選択]** で、最初の全データのレプリケーションを実行する方法を指定します。 ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、[こちら](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/)を参照してください。
+1. **[オンライン レプリケーションの選択]** で、最初の全データのレプリケーションを実行する方法を指定します。 ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、[こちら](./backup-azure-backup-import-export.md)を参照してください。
 
 1. **[概要]** ページで、設定を確認します。 **[グループの作成]** をクリックすると、データの初期レプリケーションが実行されます。 終了すると、 **[状態]** ページに保護グループの状態が **[OK]** と表示されます。 保護グループの設定に沿ってバックアップが実行されます。
 

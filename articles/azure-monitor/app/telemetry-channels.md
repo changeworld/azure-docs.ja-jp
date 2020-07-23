@@ -4,12 +4,12 @@ description: .NET および .NET Core 用の Azure Application Insights SDK で�
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539790"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 
@@ -17,7 +17,7 @@ ms.locfileid: "84691953"
 
 ## <a name="what-are-telemetry-channels"></a>テレメトリ チャネルとは
 
-テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
+テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
 
 テレメトリ チャネルの `Send(ITelemetry item)` メソッドは、テレメトリ初期化子とテレメトリ プロセッサがすべて呼び出された後に呼び出されます。 つまり、テレメトリ プロセッサによって削除された項目はチャネルに到達しません。 通常であれば、`Send()` が項目をすぐにバックエンドに送信することはありません。 通常はメモリ内でバッファー処理されてから、バッチ単位で効率的に送信されます。
 
@@ -31,7 +31,7 @@ Application Insights の .NET SDK と .NET Core SDK には、2 つのチャネ�
 
     このチャネルは、これよりも大きな Microsoft.ApplicationInsights NuGet パッケージの一部であり、他に何も構成されていないときに SDK が使用する既定のチャネルです。
 
-* `ServerTelemetryChannel`:再試行ポリシーとローカル ディスクへのデータ保存機能を備えたより高度なチャネルです。 このチャネルでは、一時的なエラーが発生すると、テレメトリの送信が再試行されます。 また、このチャネルは、ネットワーク障害時またはテレメトリが大量にある場合に、ローカル ディスク ストレージを使用してディスク上に項目を保持します。 このように再試行メカニズムとローカル ディスクへの保存機能を備えているため、このチャネルは信頼性が高いと考えられ、あらゆる運用環境のシナリオに推奨されています。 公式ドキュメントに従って構成した [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) および [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) アプリケーションでは、このチャネルが既定となっています。 このチャネルは、実行時間の長いプロセスがあるサーバーのシナリオに最適です。 このチャネルによって実装される [`Flush()`](#which-channel-should-i-use) メソッドは同期的ではありません。
+* `ServerTelemetryChannel`:再試行ポリシーとローカル ディスクへのデータ保存機能を備えたより高度なチャネルです。 このチャネルでは、一時的なエラーが発生すると、テレメトリの送信が再試行されます。 また、このチャネルは、ネットワーク障害時またはテレメトリが大量にある場合に、ローカル ディスク ストレージを使用してディスク上に項目を保持します。 このように再試行メカニズムとローカル ディスクへの保存機能を備えているため、このチャネルは信頼性が高いと考えられ、あらゆる運用環境のシナリオに推奨されています。 公式ドキュメントに従って構成した [ASP.NET](./asp-net.md) および [ASP.NET Core](./asp-net-core.md) アプリケーションでは、このチャネルが既定となっています。 このチャネルは、実行時間の長いプロセスがあるサーバーのシナリオに最適です。 このチャネルによって実装される [`Flush()`](#which-channel-should-i-use) メソッドは同期的ではありません。
 
     このチャネルは、Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel NuGet パッケージとして提供されるものであり、Microsoft.ApplicationInsights.Web または Microsoft.ApplicationInsights.AspNetCore NuGet パッケージを使用している場合には自動的に取得されます。
 

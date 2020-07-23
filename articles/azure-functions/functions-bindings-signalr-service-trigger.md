@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830708"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540232"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions における SignalR Service のトリガー バインド
 
@@ -43,7 +43,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>従来のモデルの使用
 
-従来のモデルは、C# で開発された Azure 関数の規則に従います。 これに慣れていない場合は、[ドキュメント](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library)を参照してください。
+従来のモデルは、C# で開発された Azure 関数の規則に従います。 これに慣れていない場合は、[ドキュメント](./functions-dotnet-class-library.md)を参照してください。
 
 ```cs
 [FunctionName("SignalRTest")]

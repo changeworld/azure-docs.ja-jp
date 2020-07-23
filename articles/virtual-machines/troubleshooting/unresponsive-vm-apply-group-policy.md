@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629260"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526012"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>グループ ポリシーの [ローカル ユーザーとグループ] ポリシーの適用時に VM が応答しない
 
@@ -27,7 +27,7 @@ ms.locfileid: "84629260"
 
 ## <a name="symptoms"></a>現象
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、読み込み中に画面が停止して次のメッセージが表示されます:"グループ ポリシーの [ローカル ユーザーとグループ] ポリシーの適用中"。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、読み込み中に画面が停止して次のメッセージが表示されます:"グループ ポリシーの [ローカル ユーザーとグループ] ポリシーの適用中"。
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中 の読み込みの画面 (Windows Server 2012 R2)。":::
 
@@ -58,7 +58,7 @@ ms.locfileid: "84629260"
 
 ### <a name="step-1-create-and-access-a-repair-vm"></a>手順 1:修復 VM を作成してアクセスする
 
-1. [仮想マシンの修復コマンドの手順 1 から 3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、修復 VM を準備します。
+1. [仮想マシンの修復コマンドの手順 1 から 3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、修復 VM を準備します。
 2. リモート デスクトップ接続を使用して、修復 VM に接続します。
 
 ### <a name="step-2-disable-the-policy"></a>手順 2:ポリシーを無効にする
@@ -140,7 +140,7 @@ ms.locfileid: "84629260"
 
 ### <a name="step-4-rebuild-the-vm"></a>手順 4:VM を再構築する
 
-[VM 修復コマンドのステップ 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使って、VM を再構成します。
+[VM 修復コマンドのステップ 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使って、VM を再構成します。
 
 問題が解決された場合、ポリシーはローカルで無効になっています。 永続的な解決策としては、VM で CleanupProfiles ポリシーを使用しないでください。 別の方法を使用してプロファイルのクリーンアップを実行してください。
 
@@ -150,4 +150,4 @@ ms.locfileid: "84629260"
 
 ## <a name="next-steps"></a>次のステップ
 
-Windows Update の適用時に問題が発生した場合は、「[Windows Update の適用時に、Azure VM が C01A001D エラーで応答しません](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update)」を参照してください。
+Windows Update の適用時に問題が発生した場合は、「[Windows Update の適用時に、Azure VM が C01A001D エラーで応答しません](./unresponsive-vm-apply-windows-update.md)」を参照してください。

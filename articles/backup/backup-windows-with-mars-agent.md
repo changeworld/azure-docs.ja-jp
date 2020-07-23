@@ -3,12 +3,12 @@ title: MARS エージェントを使用して Windows マシンをバックア�
 description: Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップします。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604847"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538634"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server ファイルおよびフォルダーを Azure にバックアップする
 
@@ -104,7 +104,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 1. ステージングの場所にバックアップ データを書き込みます。
 1. AzureOfflineBackupDiskPrep ツールを使用して、ステージングの場所から 1 つまたは複数の SATA ディスクにデータをコピーします。
 
-    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)」を参照してください。
+    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](../storage/common/storage-import-export-service.md)」を参照してください。
 1. SATA ディスクを Azure データセンターに送信します。
 
     Azure データセンターでは、ディスク データが Azure ストレージ アカウントにコピーされます。 Azure Backup によってストレージ アカウントからコンテナーにデータがコピーされ、増分バックアップがスケジュールされます。
@@ -115,7 +115,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 
 ネットワーク調整を有効にすることで、MARS エージェントがネットワーク帯域幅を使用する方法を制御できます。 調整は、作業時間中にデータをバックアップする必要がある一方で、バックアップと復元のアクティビティに使用される帯域幅の量を制御したい場合に便利です。
 
-Azure Backup のネットワーク調整では、ローカル オペレーティング システムの[サービス品質 (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) が使用されます。
+Azure Backup のネットワーク調整では、ローカル オペレーティング システムの[サービス品質 (QoS)](/windows-server/networking/technologies/qos/qos-policy-top) が使用されます。
 
 バックアップのネットワーク調整は、Windows Server 2012 以降と、Windows 8 以降で利用できます。 オペレーティング システムでは、最新の Service Pack が実行されている必要があります。
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224453"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525604"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンでの Oracle Database 12c データベースのバックアップと回復
 
 Azure CLI を使用すると、コマンド プロンプトで、またはスクリプトを使用して Azure リソースを作成および管理できます。 この記事では、Azure CLI スクリプトを使用して、Azure Marketplace ギャラリー イメージから Oracle Database 12c データベースをデプロイします。
 
-始める前に、Azure CLI がインストールされていることを確認します。 詳細については、[Azure CLI のインストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
+始める前に、Azure CLI がインストールされていることを確認します。 詳細については、[Azure CLI のインストール ガイド](/cli/azure/install-azure-cli)を参照してください。
 
 ## <a name="prepare-the-environment"></a>環境の準備
 
@@ -33,7 +33,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 *   バックアップと回復プロセスを実行するには、インストール済みの Oracle Database 12c のインスタンスを使用して、Linux VM を作成する必要があります。 VM の作成に使用する Marketplace イメージは、*Oracle:Oracle-Database-Ee:12.1.0.2:latest* と呼ばれます。
 
-    Oracle データベースの作成手順については、[Oracle データベースのクイック作成ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)のページを参照してください。
+    Oracle データベースの作成手順については、[Oracle データベースのクイック作成ガイド](./oracle-database-quick-create.md)のページを参照してください。
 
 
 ### <a name="step-2-connect-to-the-vm"></a>手順 2: 仮想マシンに接続する
@@ -572,6 +572,3 @@ az group delete --name myResourceGroup
 [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
 
 [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
-
-
-

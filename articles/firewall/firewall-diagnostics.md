@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: e55f92c624ec338005cd23ba5e6063a9ca7f82c4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 82202705c5dbd4539eec4775d0844a749fd405f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537005"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリックを監視する
 
@@ -97,5 +97,4 @@ Azure Firewall に移動し、 **[監視]** の **[メトリック]** を選択�
 
 ログを収集するようにファイアウォールを構成した後、Azure Monitor ログを使用してデータを表示できます。
 
-> [!div class="nextstepaction"]
-> [Azure Monitor ログのネットワーク監視ソリューション](../azure-monitor/insights/azure-networking-analytics.md)
+[Azure Monitor ログのネットワーク監視ソリューション](../azure-monitor/insights/azure-networking-analytics.md)

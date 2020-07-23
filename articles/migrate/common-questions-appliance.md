@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078987"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530119"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -61,7 +61,7 @@ Azure Migrate アプライアンスでは、パフォーマンス データを�
 
 Azure Migrate アプライアンスが VM 上で収集するデータの詳細については、次の記事を参照してください。
 
-- **VMware VM**:収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。 [
+- **VMware VM**:収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。
 - **Hyper-V VM**:収集データを[レビュー](migrate-appliance.md#collected-data---hyper-v)します。
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか

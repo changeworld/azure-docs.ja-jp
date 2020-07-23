@@ -3,12 +3,12 @@ title: VM の設定から Azure VM をバックアップする
 description: この記事では、Azure Backup サービスを使用して単一の Azure VM または複数の Azure VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705447"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538889"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM の設定から Azure VM をバックアップする
 
@@ -26,7 +26,7 @@ ms.locfileid: "76705447"
 
 Azure VM をバックアップするため、Azure Backup ではマシンで実行されている VM エージェントの拡張機能がインストールされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントが実行されます。 カスタム VM を作成するときや、オンプレミスからマシンを移行するときなど、場合によっては、 エージェントの手動インストールが必要になることがあります。
 
-- VM エージェントを手動でインストールする必要がある場合は、[Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) VM または [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) VM の指示に従ってください。
+- VM エージェントを手動でインストールする必要がある場合は、[Windows](../virtual-machines/extensions/agent-windows.md) VM または [Linux](../virtual-machines/extensions/agent-linux.md) VM の指示に従ってください。
 - エージェントがインストールされた後、バックアップを有効にすると、Azure Backup によってエージェントにバックアップ拡張機能がインストールされます。 ユーザーが何もしなくても、拡張機能に更新プログラムと修正プログラムが適用されます。
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM の設定からバックアップする

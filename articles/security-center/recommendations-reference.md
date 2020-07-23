@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 92df0a7919a7d01b062356bfa4d32cc701e1e6f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff988dd382c5df5d764c7ab29e8a469f510ba7f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341295"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529337"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -140,8 +140,8 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 |推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|リソースの種類|
 |----|----|----|----|----|
 |**ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要がある**|ストレージ アカウントのファイアウォール設定で無制限のネットワーク アクセスを監査します。 代わりに、許可されているネットワークからのアプリケーションのみがストレージ アカウントにアクセスできるように、ネットワーク ルールを構成します。 インターネットまたはオンプレミスの特定のクライアントからの接続を許可するには、特定の Azure 仮想ネットワークからのトラフィックまたはパブリック インターネット IP アドレス範囲に、アクセス権を付与できます。<br>(関連ポリシー:ストレージ アカウントに対する制限のないネットワーク アクセスの監査)|低|N|ストレージ アカウント|
-|**SQL Managed Instance で Advanced Data Security を有効にする必要がある**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、マネージド インスタンスあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Managed Instance で Advanced Data Security を有効にする必要がある)|高|**Y**|SQL|
-|**SQL Database で Advanced Data Security を有効にする必要がある**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、SQL サーバーあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Server で Advanced Data Security を有効にする必要があります)|高|**Y**|SQL|
+|**Advanced Data Security を、マネージド インスタンス上で有効にする必要があります**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、マネージド インスタンスあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Managed Instance で Advanced Data Security を有効にする必要がある)|高|**Y**|SQL|
+|**SQL Server で Advanced Data Security を有効にする必要がある**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、SQL サーバーあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Server で Advanced Data Security を有効にする必要があります)|高|**Y**|SQL|
 |**SQL Database に対して Azure Active Directory 管理者をプロビジョニングする必要がある**|自分の SQL データベースに Azure AD 管理者をプロビジョニングして、Azure AD 認証を有効にします。 Azure AD 認証を使用して、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。<br>(関連ポリシー:SQL Server 向けの Azure Active Directory 管理者のプロビジョニングの監査)|高|N|SQL|
 |**SQL Database の監査を有効にする必要がある**|SQL Database の監査を有効にします。 <br>(関連ポリシー:サーバーの高度なデータ セキュリティ設定で SQL Database の監査を有効にする必要がある)|低|**Y**|SQL|
 |**Azure Data Lake Store の診断ログを有効にする必要があります**|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br>(関連ポリシー:Azure Data Lake Store の診断ログを有効にする必要があります)|低|**Y**|Data Lake Store|

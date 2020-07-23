@@ -4,12 +4,12 @@ description: Azure Application Insights .NET SDK でカスタム操作を追跡�
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690859"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540045"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -346,7 +346,7 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>依存関係の種類
 
-Application Insights では、依存関係の種類を使用して UI エクスペリエンスがカスタマイズされます。 キューの場合、[トランザクションの診断エクスペリエンス](/azure/azure-monitor/app/transaction-diagnostics)を向上させる次の種類の `DependencyTelemetry` が認識されます。
+Application Insights では、依存関係の種類を使用して UI エクスペリエンスがカスタマイズされます。 キューの場合、[トランザクションの診断エクスペリエンス](./transaction-diagnostics.md)を向上させる次の種類の `DependencyTelemetry` が認識されます。
 - Azure Storage キューの `Azure queue`
 - Azure Event Hubs の`Azure Event Hubs`
 - Azure Service Bus の `Azure Service Bus`
@@ -425,7 +425,7 @@ public async Task RunMyTaskAsync()
 
 操作を破棄すると操作が停止されるため、`StopOperation` を呼び出す代わりに実行することもできます。
 
-*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
+*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>並列操作の処理と追跡
 

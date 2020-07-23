@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: f950c7be28a4ff0dd0caa12d1327c2a0e2ac4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677323"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538736"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 
@@ -54,7 +54,7 @@ MABS v3 UR1 には次のマトリックスを使用します。
 
 | **[ワークロード]** | **Version**                               | **Azure Backup Server のインストール**                      | **サポートされる Azure Backup Server** | **保護と回復**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Hyper-V または VMware ゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2 または Windows Server 2016 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)に関するページを参照してください。 |
+| Linux        | Hyper-V または VMware ゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2 または Windows Server 2016 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)に関するページを参照してください。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 
@@ -74,7 +74,7 @@ Microsoft ピアリングの使用時には、サービス、リージョン、�
 * Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
 * Azure Storage (Recovery Services コンテナーの場所による)
 
-詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
 
 >[!NOTE]
 >パブリック ピアリングは、新しい回線では非推奨です。

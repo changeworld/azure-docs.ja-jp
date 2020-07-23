@@ -3,12 +3,12 @@ title: 概念 - ネットワークの相互接続性
 description: Azure VMware Solution (AVS) でのネットワークと相互接続性の主要な側面とユース ケースについて説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2378ad56e2754b2d2fde7f895f6673e7d7d561c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629204"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539144"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Preview のネットワークと相互接続性の概念
 
@@ -80,7 +80,6 @@ Global Reach にリンクされると、2 つの ExpressRoute 回線によって
 次のステップでは、[プライベート クラウド ストレージの概念](concepts-storage.md)について説明します。
 
 <!-- LINKS - external -->
-[enable Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
+[enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md
 
 <!-- LINKS - internal -->
-

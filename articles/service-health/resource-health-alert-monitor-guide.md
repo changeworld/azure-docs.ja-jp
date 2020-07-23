@@ -3,12 +3,12 @@ title: Azure portal を使用してリソースの正常性アラートを作成
 description: Azure リソースが利用不可になったときに通知するアラートを Azure portal を使用して作成します。
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85217943"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529218"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portal を使用してリソースの正常性アラートを構成する
 
@@ -19,7 +19,7 @@ Azure Resource Health では、Azure リソースの現在および過去の正�
 > [!NOTE]
 > Resource Health アラートは、現在プレビュー段階です。
 
-リソース正常性通知は、[Azure アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)に保存されます。アクティビティ ログには大量の情報が保存される可能性があるため、リソース正常性通知のアラートの表示と設定を容易にするための別のユーザー インターフェイスがあります。
+リソース正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に保存されます。アクティビティ ログには大量の情報が保存される可能性があるため、リソース正常性通知のアラートの表示と設定を容易にするための別のユーザー インターフェイスがあります。
 Azure リソースでリソース正常性通知を Azure サブスクリプションに送信するときに、アラートを受け取ることができます。 次の情報に基づくアラートを構成できます。
 
 * 影響を受けたサブスクリプション。
@@ -35,9 +35,9 @@ Azure リソースでリソース正常性通知を Azure サブスクリプシ�
 * 既存のアクション グループを選択します。
 * 新しいアクション グループを作成します (将来のアラートで使用できます)。
 
-アクション グループの詳細については、[アクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)に関するページを参照してください。
+アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
 
-Azure Resource Manager テンプレートを使用したリソース正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)に関するページを参照してください。
+Azure Resource Manager テンプレートを使用したリソース正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](./resource-health-alert-arm-template-guide.md)に関するページを参照してください。
 Azure portal を使用したリソースの正常性アラート
 
 ## <a name="resource-health-alert-using-azure-portal"></a>Azure portal を使用したリソースの正常性アラート
@@ -59,12 +59,12 @@ Azure portal を使用したリソースの正常性アラート
     1. **アラート ルール名**:新しいアラート ルールの名前。
     2. **説明**:新しいアラート ルールの説明。
     3. **リソース グループにアラートを保存します**:この新しいルールを保存するリソース グループを選択します。
-7. **[アクション グループ]** のドロップダウン メニューから、この新しいアラート ルールに割り当てるアクション グループを指定します。 または、[新しいアクション グループを作成](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)して、新しいルールに割り当てます。 新しいグループを作成するには、 **[+ 新しいグループ]** を選択します。
+7. **[アクション グループ]** のドロップダウン メニューから、この新しいアラート ルールに割り当てるアクション グループを指定します。 または、[新しいアクション グループを作成](../azure-monitor/platform/action-groups.md)して、新しいルールに割り当てます。 新しいグループを作成するには、 **[+ 新しいグループ]** を選択します。
 8. ルールを作成後に有効にするには、 **[ルールの作成時に有効にする]** オプションの **[はい]** を選択します。
 9. **[アラート ルールの作成]** を選択します。
 
 アクティビティ ログの新しいアラート ルールが作成され、ウィンドウの右上隅に確認メッセージが表示されます。
-ルールは、有効化、無効化、編集、または削除することができます。 [アクティビティ ログ ルールを管理する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#view-and-manage-in-the-azure-portal)を確認してください。
+ルールは、有効化、無効化、編集、または削除することができます。 [アクティビティ ログ ルールを管理する方法](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal)を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -75,6 +75,6 @@ Resource Health に関する詳細情報を参照してください。
 
 Service Health アラートを作成します。
 
-* [Service Health のアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+* [Service Health のアラートの構成](./alerts-activity-log-service-notifications-portal.md) 
 * [Azure アクティビティ ログのイベント スキーマ](../azure-monitor/platform/activity-log-schema.md)
-* [Resource Manager テンプレートを使用して Resource Health アラートを構成する](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Resource Manager テンプレートを使用して Resource Health アラートを構成する](./resource-health-alert-arm-template-guide.md)

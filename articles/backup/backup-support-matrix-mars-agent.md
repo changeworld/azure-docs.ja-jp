@@ -3,12 +3,12 @@ title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709880"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538651"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -30,7 +30,7 @@ Azure Backup は、MARS エージェントを使用して、オンプレミス�
 **インストール** | **詳細**
 --- | ---
 最新の MARS エージェントをダウンロードする | 最新バージョンのエージェントはコンテナーからダウンロードするか、または[直接ダウンロード](https://aka.ms/azurebackup_agent)できます。
-コンピューターに直接インストールする | MARS エージェントは、オンプレミスの Windows サーバー、またはいずれかの[サポートされるオペレーティング システム](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)を実行している Windows VM に直接インストールできます。
+コンピューターに直接インストールする | MARS エージェントは、オンプレミスの Windows サーバー、またはいずれかの[サポートされるオペレーティング システム](./backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)を実行している Windows VM に直接インストールできます。
 バックアップ サーバーにインストールする | Azure にバックアップするように DPM または MABS を設定する場合は、そのサーバーに MARS エージェントをダウンロードしてインストールします。 バックアップ サーバーのサポート マトリックス内の[サポートされるオペレーティング システム](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)にエージェントをインストールできます。
 
 > [!NOTE]
@@ -85,7 +85,7 @@ Microsoft ピアリングを使用して、次のサービスまたはリージ�
 - Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
 - Azure Storage (Recovery Services コンテナーの場所による)
 
-詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
 
 >[!NOTE]
 >パブリック ピアリングは、新しい回線では非推奨です。
@@ -128,7 +128,7 @@ Windows Server 2019 (Standard、Datacenter、Essentials) | はい | はい | - .
 
 既存のコミットメントによってオペレーティング システムをアップグレードできない場合は、Windows Server を Azure VM に移行し、Azure VM バックアップを利用して、保護された状態を継続することを検討してください。 Windows Server の移行の詳細については、[こちらの移行に関するページ](https://azure.microsoft.com/migration/windows-server/)を参照してください。
 
-オペレーティング システムをアップグレードしたり、Azure に移行したりすることができないオンプレミスまたはホストされた環境の場合は、保護およびサポートされた状態を継続するために、マシンに対する拡張セキュリティ更新プログラムをアクティブにしてください。 拡張セキュリティ更新プログラムの対象となるのは、特定のエディションのみであること注意してください。 詳細については、[FAQ ページ](https://www.microsoft.com/cloud-platform/extended-security-updates)を参照してください。
+オペレーティング システムをアップグレードしたり、Azure に移行したりすることができないオンプレミスまたはホストされた環境の場合は、保護およびサポートされた状態を継続するために、マシンに対する拡張セキュリティ更新プログラムをアクティブにしてください。 拡張セキュリティ更新プログラムの対象となるのは、特定のエディションのみであること注意してください。 詳細については、[FAQ ページ](https://www.microsoft.com/windows-server/extended-security-updates)を参照してください。
 
 | **オペレーティング システム**                                       | **ファイル/フォルダー** | **システム状態** | **ソフトウェア/モジュールの要件**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |

@@ -3,16 +3,16 @@ title: REST API を使用して Azure ファイル共有を復元する
 description: REST API を使用して、Azure Backup によって作成された復元ポイントから Azure ファイル共有または特定のファイルを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710577"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538158"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>REST API を使用して Azure ファイル共有を復元する
 
-この記事では、REST API を使用して、[Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
+この記事では、REST API を使用して、[Azure Backup](./backup-overview.md) によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
 
 この記事を最後まで読むと、REST API を使用して以下の操作を実行する方法がわかります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "84710577"
 
 ## <a name="fetch-containername-and-protecteditemname"></a>ContainerName と ProtectedItemName をフェッチする
 
-復元関連の API 呼び出しのほとんどでは、{containerName} と {protectedItemName} の URI パラメーターに値を渡す必要があります。 これらのパラメーターの値を取得するには、[GET backupprotectableitems](https://docs.microsoft.com/rest/api/backup/protecteditems/get) 操作の応答本文の ID 属性を使用します。 この例では、保護するファイル共有の ID は次のとおりです。
+復元関連の API 呼び出しのほとんどでは、{containerName} と {protectedItemName} の URI パラメーターに値を渡す必要があります。 これらのパラメーターの値を取得するには、[GET backupprotectableitems](/rest/api/backup/protecteditems/get) 操作の応答本文の ID 属性を使用します。 この例では、保護するファイル共有の ID は次のとおりです。
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -44,7 +44,7 @@ ms.locfileid: "84710577"
 
 ## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>バックアップされた Azure ファイル共有の復旧ポイントをフェッチする
 
-バックアップされたファイル共有またはファイルを復元するには、最初に復元操作を実行するための復旧ポイントを選択します。 バックアップされた項目の使用可能な復旧ポイントの一覧は、[復旧ポイント - 一覧取得](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API の呼び出しを使用して取得できます。 関連するすべての値が含まれる GET 操作です。
+バックアップされたファイル共有またはファイルを復元するには、最初に復元操作を実行するための復旧ポイントを選択します。 バックアップされた項目の使用可能な復旧ポイントの一覧は、[復旧ポイント - 一覧取得](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API の呼び出しを使用して取得できます。 関連するすべての値が含まれる GET 操作です。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
@@ -144,7 +144,7 @@ HTTP/1.1" 200 None
 ## <a name="full-share-recovery-using-rest-api"></a>REST API を使用した完全な共有の復旧
 
 元の場所または別の場所に完全なファイル共有を復元するには、この復元オプションを使用します。
-復元のトリガーは POST 要求であり、[復元のトリガー](https://docs.microsoft.com/rest/api/backup/restores/trigger) REST API を使用してこの操作を実行できます。
+復元のトリガーは POST 要求であり、[復元のトリガー](/rest/api/backup/restores/trigger) REST API を使用してこの操作を実行できます。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -164,7 +164,7 @@ Azure ファイル共有の復元をトリガーする場合、要求本文の�
 --- | ---- | ----
 Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパティ
 
-要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)をご覧ください。
+要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](/rest/api/backup/restores/trigger#request-body)をご覧ください。
 
 ### <a name="restore-to-original-location"></a>元の場所に復元する
 
@@ -219,7 +219,7 @@ Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパテ�
 
 ### <a name="response"></a>Response
 
-復元操作のトリガーは、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 この操作では、個別に追跡する必要がある別の操作が作成されます。
+復元操作のトリガーは、[非同期操作](../azure-resource-manager/management/async-operations.md)です。 この操作では、個別に追跡する必要がある別の操作が作成されます。
 これにより、2 つの応答が返されます。別の操作が作成されたときに 202 (Accepted)、その操作が完了したときに 200 (OK)。
 
 #### <a name="response-example"></a>応答の例
@@ -350,7 +350,7 @@ HTTP/1.1" 200
 }
 ```
 
-バックアップ ジョブは実行時間の長い操作のため、[REST API を使用したジョブの監視に関するドキュメント](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)で説明されているように追跡する必要があります。
+バックアップ ジョブは実行時間の長い操作のため、[REST API を使用したジョブの監視に関するドキュメント](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明されているように追跡する必要があります。
 
 ## <a name="item-level-recovery-using-rest-api"></a>REST API を使用した項目レベルの復旧
 
@@ -374,7 +374,7 @@ Azure ファイル共有の復元をトリガーする場合、要求本文の�
 --- | ---- | ----
 Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパティ
 
-要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)をご覧ください。
+要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](/rest/api/backup/restores/trigger#request-body)をご覧ください。
 
 ### <a name="restore-to-original-location"></a>元の場所に復元する
 

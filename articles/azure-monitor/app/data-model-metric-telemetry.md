@@ -4,12 +4,12 @@ description: メトリック テレメトリ用の Application Insights デー�
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671972"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540011"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
@@ -24,7 +24,7 @@ Application Insights でサポートされているよく知られているい�
 | **.NET の名前**             | **プラットフォームに依存しない名前** | **REST API の名前** | **説明**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 作業中... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | コンピューターの CPU の合計
-| `\Memory\Available Bytes`                 | 作業中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | コンピューターで実行されているプロセスが利用できる物理メモリの量をバイト単位で表示します。 これは、ゼロ メモリ、空きメモリ、スタンバイ メモリの一覧の領域を合計することで計算されます。 空きメモリはメモリを使用する準備が整っているメモリです。ゼロ メモリはゼロで満たされたメモリのページで構成されており、後続のプロセスが、前のプロセスによって使用されたデータを見ることができないようにします。スタンバイ メモリは、ディスクへのルート上でプロセスのワーキング セット (プロセスの物理メモリ) から削除されたメモリですが、引き続き再度呼び出すことができます。 「[Memory Object (メモリ オブジェクト)](https://msdn.microsoft.com/library/ms804008.aspx)」を参照してください
+| `\Memory\Available Bytes`                 | 作業中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | コンピューターで実行されているプロセスが利用できる物理メモリの量をバイト単位で表示します。 これは、ゼロ メモリ、空きメモリ、スタンバイ メモリの一覧の領域を合計することで計算されます。 空きメモリはメモリを使用する準備が整っているメモリです。ゼロ メモリはゼロで満たされたメモリのページで構成されており、後続のプロセスが、前のプロセスによって使用されたデータを見ることができないようにします。スタンバイ メモリは、ディスクへのルート上でプロセスのワーキング セット (プロセスの物理メモリ) から削除されたメモリですが、引き続き再度呼び出すことができます。 「[Memory Object (メモリ オブジェクト)](/previous-versions/ms804008(v=msdn.10))」を参照してください
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | 作業中... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | アプリケーションをホストするプロセスの CPU
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | 作業中... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | アプリケーションをホストするプロセスで使用されるメモリ
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | 作業中... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | アプリケーションをホストしているプロセスで実行される I/O 操作の速度

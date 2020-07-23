@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b25d6c33aa2bd50cbf96fb09f0de03354d24f2da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057298"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530372"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -29,8 +29,8 @@ ms.locfileid: "86057298"
 
 お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム] に投稿してください。 
 
-## <a name="known-issues"></a><a id="issues"/>既知の問題
-### <a name="media-services-general-issues"></a><a id="general_issues"/>Media Services の全般的な問題
+## <a name="known-issues"></a><a name="issues"></a>既知の問題
+### <a name="media-services-general-issues"></a><a name="general_issues"></a>Media Services の全般的な問題
 
 | 問題 | 説明 |
 | --- | --- |
@@ -43,7 +43,7 @@ ms.locfileid: "86057298"
 | Media Services .NET SDK オブジェクトをシリアル化できないため、Azure Cache for Redis と連携しない。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache for Redis に追加しようとすると、例外がスローされます。 |
 |資産またはアカウント レベルのフィルターを取得しようとすると、REST API からの応答として、"The filter cannot be accessed by this version of REST API (このバージョンの REST API ではフィルターにアクセスできません)" というエラー メッセージが表示されます。|フィルターを取得するために使用されている API バージョンよりも新しいバージョンを使用してフィルターが作成または変更されました。 この状態は、ユーザーに利用されているコードまたはツールによって 2 つの API バージョンが使用されている場合に発生する可能性があります。  この場合の最適な解決策は、コードまたはツールをアップグレードして、2 つの API バージョンのうちの新しい方の API バージョンを使用することです。|
 
-## <a name="rest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
+## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
 
 ## <a name="february-2020"></a>2020 年 2 月
@@ -159,7 +159,7 @@ Media Services では、ストリーミング エンドポイントは、コン�
 
  Media Services を使用して、サービスのテレメトリ/メトリック データにアクセスできるようになりました。 現在のバージョンの Media Services を使用して、ライブ チャネル エンティティ、ストリーミング エンドポイント エンティ、およびアーカイブ エンティティのテレメトリ データを取得できます。 詳細については、[Media Services テレメトリ](media-services-telemetry-overview.md)に関するページをご覧ください。
 
-## <a name="july-2016-release"></a><a id="july_changes16"/>2016 年 7 月のリリース
+## <a name="july-2016-release"></a><a name="july_changes16"></a>2016 年 7 月のリリース
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>エンコード タスクによって生成されたマニフェスト ファイル (* ISM) への更新
 エンコード タスクが Media Encoder Standard または Media Encoder Premium に送信されると、そのエンコード タスクによって、[ストリーミング マニフェスト ファイル](media-services-deliver-content-overview.md) (*.ism) が出力アセットに生成されます。 最新のサービス リリースでは、このストリーミング マニフェスト ファイルの構文が更新されました。
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683904"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538056"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
@@ -41,7 +41,7 @@ ms.locfileid: "83683904"
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>パターンは意図を保証するものではない
 パターンは、さまざまな予測テクノロジを使用します。 パターンにテンプレートの発話の意図を設定することは、意図の予測を保証するものではありませんが、強力なシグナルになります。
 
-<a name="patterns-do-not-improve-entity-detection"/></a>
+<a name="patterns-do-not-improve-entity-detection"></a>
 
 ## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>パターンでは機械学習エンティティの検出は改善されない
 

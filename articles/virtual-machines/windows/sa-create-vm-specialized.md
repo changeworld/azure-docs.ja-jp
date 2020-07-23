@@ -9,12 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dc671e3aab7568da61e5dab870967d7fd2bb90f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232821"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525740"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
 
@@ -64,7 +64,7 @@ Get-AzStorageAccount
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、このリソース グループに **mystorageaccount** というストレージ アカウントを作成します。
+2. [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、このリソース グループに **mystorageaccount** というストレージ アカウントを作成します。
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -72,7 +72,7 @@ Get-AzStorageAccount
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする
-[Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーにイメージをアップロードします。 この例では、ファイル **myVHD.vhd** を`"C:\Users\Public\Documents\Virtual hard disks\"`から **myResourceGroup** リソース グループの **mystorageaccount** というストレージ アカウントにアップロードします。 ファイルは **mycontainer** というコンテナーに配置され、新しいファイル名は **myUploadedVHD.vhd** になります。
+[Add-AzVhd](/powershell/module/az.compute/add-azvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーにイメージをアップロードします。 この例では、ファイル **myVHD.vhd** を`"C:\Users\Public\Documents\Virtual hard disks\"`から **myResourceGroup** リソース グループの **mystorageaccount** というストレージ アカウントにアップロードします。 ファイルは **mycontainer** というコンテナーに配置され、新しいファイル名は **myUploadedVHD.vhd** になります。
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -106,14 +106,14 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 ### <a name="before-you-begin"></a>開始する前に
 次のことを確認してください。
 
-* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する ( **[すべてのサービス]** 、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、作成できます。 
-* [AzCopy ツール](../../storage/common/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
+* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する ( **[すべてのサービス]** 、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、作成できます。 
+* [AzCopy ツール](../../storage/common/storage-use-azcopy-v10.md)をダウンロードしてインストール済みであること。 
 
 ### <a name="deallocate-the-vm"></a>VM の割り当てを解除する
 VM の割り当てを解除して、コピーする VHD を解放します。 
 
 * **ポータル**: **[仮想マシン]**  >  **[myVM]** > [停止] の順にクリックします。
-* **Powershell**:[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM を停止 (割り当て解除) します。
+* **Powershell**:[Stop-AzVM](/powershell/module/az.compute/stop-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM を停止 (割り当て解除) します。
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -127,17 +127,17 @@ Azure Portal で VM の **[状態]** が **[停止済み]** から **[停止済�
 Azure Portal または Azure PowerShell を使用して URL を取得できます。
 
 * **ポータル**: **>** **[すべてのサービス]**  >  **[ストレージ アカウント]**  >  *[ストレージ アカウント]*  >  **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
-* **Powershell**:[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM に関する情報を取得します。 その結果の **Storage profile** セクションで **Vhd Uri** を探します。 URI の最初の部分はコンテナーの URL、最後の部分は VM の OS VHD 名です。
+* **Powershell**:[Get-AzVM](/powershell/module/az.compute/get-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM に関する情報を取得します。 その結果の **Storage profile** セクションで **Vhd Uri** を探します。 URI の最初の部分はコンテナーの URL、最後の部分は VM の OS VHD 名です。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
 ## <a name="get-the-storage-access-keys"></a>ストレージ アクセス キーを取得する
-コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
+コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-account-create.md)」を参照してください。
 
 * **ポータル**: **[すべてのサービス]**  >  **[ストレージ アカウント]**  >  *[ストレージ アカウント]*  >  **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
-* **Powershell**:[Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) を使用して、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1** のラベルが付いているキーをコピーします。
+* **Powershell**:[Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) を使用して、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1** のラベルが付いているキーをコピーします。
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -309,4 +309,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>次のステップ
 新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
-

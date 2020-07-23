@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539365"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
@@ -21,7 +21,7 @@ ms.locfileid: "77655258"
 Azure Monitor では、Configuration Manager の現在のブランチ バージョン 1606 以降がサポートされます。
 
 >[!NOTE]
->Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 この機能は、使用する前に有効にする必要があります。 詳細については、「[Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)」 (更新プログラムのオプション機能の有効化) を参照してください。
+>Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 この機能は、使用する前に有効にする必要があります。 詳細については、「[Enable optional features from updates](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)」 (更新プログラムのオプション機能の有効化) を参照してください。
 
 ## <a name="configuration-overview"></a>構成の概要
 
@@ -66,7 +66,7 @@ Azure Monitor では、Configuration Manager の現在のブランチ バージ�
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager を Log Analytics ワークスペースに接続する
 
 >[!NOTE]
-> Log Analytics 接続を追加するには、Configuration Manager 環境でオンライン モード用に[サービス接続ポイント](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point)を構成しておく必要があります。
+> Log Analytics 接続を追加するには、Configuration Manager 環境でオンライン モード用に[サービス接続ポイント](/configmgr/core/servers/deploy/configure/about-the-service-connection-point)を構成しておく必要があります。
 
 > [!NOTE]
 > 階層の最上層サイトを Azure Monitor に接続する必要があります。 スタンドアロン プライマリ サイトを Azure Monitor に接続した後で、環境に中央管理サイトを追加する場合は、接続を削除し、新しい階層内で接続を再作成する必要があります。

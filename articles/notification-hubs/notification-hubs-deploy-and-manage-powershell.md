@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: d45b98f291a7524dac2927fc74c5dc52400209f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529983"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell を使用した Notification Hubs のデプロイと管理
 
@@ -32,7 +32,7 @@ ms.locfileid: "82891196"
 - 通知ハブの作成
 - 資格情報の設定
 
-通知ハブに新しい Service Bus 名前空間を作成する必要がある場合は、「[PowerShell で Service Bus を管理する](../service-bus-messaging/service-bus-powershell-how-to-provision.md)」をご覧ください。
+通知ハブに新しい Service Bus 名前空間を作成する必要がある場合は、「[PowerShell で Service Bus を管理する](../service-bus-messaging/service-bus-manage-with-ps.md)」をご覧ください。
 
 Notification Hubs は Azure PowerShell に含まれているコマンドレットを使用して直接管理することはできません。 PowerShell からの最良のアプローチは、Microsoft.ServiceBus.dll アセンブリを参照することです。 このアセンブリは、 [Microsoft Azure Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)で配布されます。
 
@@ -148,9 +148,9 @@ else
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [PowerShell で Service Bus を管理する](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-- [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+- [PowerShell で Service Bus を管理する](../service-bus-messaging/service-bus-manage-with-ps.md)
+- [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+- [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 
 既製のスクリプトも次のページからダウンロードできます。
 
@@ -160,7 +160,7 @@ else
 [メンバー オファー]: https://azure.microsoft.com/pricing/member-offers/
 [無料試用版]: https://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell のインストールおよび構成]: /powershell/azureps-cmdlets-docs
-[.NET API for Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
-[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
-[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule
+[.NET API for Notification Hubs]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure/get-azuresbnamespace
+[New-AzureSBNamespace]: /powershell/module/servicemanagement/azure/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: /powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

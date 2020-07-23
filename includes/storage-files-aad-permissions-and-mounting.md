@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792983"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544461"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2\. ID にアクセス許可を割り当てる
 
@@ -92,7 +92,16 @@ Azure Files では、NTFS の基本的なアクセス許可と詳細なアクセ
 Windows の **net use** コマンドを使用して Azure ファイル共有をマウントします。 次の例では、プレースホルダーをお客様独自の値に置き換えてください。 ファイル共有のマウントの詳細については、「[Windows で Azure ファイル共有を使用する](../articles/storage/files/storage-how-to-use-files-windows.md)」を参照してください。 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)を参照してください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
@@ -130,5 +139,13 @@ icacls を使用して NTFS アクセス許可を設定する方法や、サポ�
 以下のコマンドを使用して Azure ファイル共有をマウントします。 プレースホルダーをお客様独自の値に置き換えてください。 認証済みなので、ストレージ アカウント キー、オンプレミスの AD DS の資格情報、または Azure AD DS の資格情報を指定する必要はありません。 オンプレミスの AD DS または Azure AD DS のいずれかを使用した認証では、シングル サインオン エクスペリエンスがサポートされています。 AD DS の資格情報を使用したマウントで問題が発生した場合は、「[Windows での Azure Files に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)」を参照してください。
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
 ```

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 782e03f572f007b8523c3ae797dd626c383a01f4
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: b897de94ad8cdb628520f9386b076f762a5cc230
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310718"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537954"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Form Recognizer による保存データの暗号化
 
@@ -24,8 +24,6 @@ Azure Form Recognizer では、クラウドに永続化されるときにデー�
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、2020年 5 月 11 日より後に作成されたリソースのみに使用できます。 Form Recognizer と共に CMK を使用するには、新しい Form Recognizer リソースを作成する必要があります。 リソースが作成されたら、Azure Key Vault を使用してマネージド ID を設定できます。
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

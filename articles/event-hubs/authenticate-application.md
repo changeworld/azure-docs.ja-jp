@@ -3,12 +3,12 @@ title: Azure Event Hubs リソースにアクセスするためのアプリケ�
 description: この記事では、Azure Active Directory を使用して Azure Event Hubs リソースにアクセスするためのアプリケーションを認証する方法について説明します
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 50566c9405eb203778068b61a03cb9a2d22209b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cf51daef7298ff0ad487d5a072b6126557578c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318183"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537294"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する
 Microsoft Azure では、Azure Active Directory (Azure AD) を利用して、リソースとアプリケーションの統合されたアクセス制御管理が提供されています。 Azure Event Hubs で Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` です (Kafka クライアントの場合、トークンを要求するリソースは `https://<namespace>.servicebus.windows.net` です)。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Event Hubs リソースへの要求を承認できます。
@@ -78,7 +78,7 @@ Azure AD を使用して Event Hubs リソースを承認する最初の手順�
 
 ![登録されたアプリケーションのアプリケーション ID](./media/authenticate-application/application-id.png)
 
-Azure AD へのアプリケーションの登録について詳しくは、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-v2-register-an-app.md)」を参照してください。
+Azure AD へのアプリケーションの登録について詳しくは、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-register-app.md)」を参照してください。
 
 
 ### <a name="create-a-client-secret"></a>クライアント シークレットの作成   
@@ -119,4 +119,3 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 - [Shared Access Signature を使用して Azure Event Hubs に対する要求を認証する](authenticate-shared-access-signature.md)
 - [Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する](authorize-access-azure-active-directory.md)
 - [Shared Access Signature を使用して Event Hubs リソースへのアクセスを承認する](authorize-access-shared-access-signature.md)
-

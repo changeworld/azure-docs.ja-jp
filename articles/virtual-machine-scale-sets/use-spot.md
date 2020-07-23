@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310565"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527457"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure スポット VM 
 
@@ -115,12 +115,12 @@ $vmssConfig = New-AzVmssConfig `
 
 **質問:** スポットのクォータはどのように管理されますか。
 
-**A:** スポット インスタンスと標準のインスタンスは、別々のクォータ プールを持ちます。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
+**A:** スポット インスタンスと標準のインスタンスは、別々のクォータ プールを持ちます。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
 
 **質問:** スポットに追加のクォータを要求することはできますか。
 
-**A:** はい。[標準のクォータ要求プロセス](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)を通じて、スポット VM のクォータを増やす要求を送信することができます。
+**A:** はい。[標準のクォータ要求プロセス](../azure-portal/supportability/per-vm-quota-requests.md)を通じて、スポット VM のクォータを増やす要求を送信することができます。
 
 
 **質問:** 既存のスケール セットをスポット スケール セットに変換できますか。
@@ -158,7 +158,7 @@ $vmssConfig = New-AzVmssConfig `
 |------------------------------|-----------------------------------|
 | Enterprise Agreement         | はい                               |
 | 従量課金制                | はい                               |
-| クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](/partner-center/azure-plan-get-started) |
 | メリット                     | 使用不可                     |
 | スポンサー                    | はい                               |
 | 無料試用版                   | 使用不可                     |
@@ -166,7 +166,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **質問:** どこで質問を投稿できますか。
 
-**A:** [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
+**A:** [Q&A](/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
 
 ## <a name="next-steps"></a>次のステップ
 

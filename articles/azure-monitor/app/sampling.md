@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319636"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539824"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -21,7 +21,7 @@ ms.locfileid: "85319636"
 ## <a name="brief-summary"></a>簡単な概要
 
 * サンプリングには、アダプティブ サンプリング、固定レート サンプリング、インジェスト サンプリングの 3 種類があります。
-* アダプティブ サンプリングは、Application Insights ASP.NET および ASP.NET Core ソフトウェア開発キット (SDK) のすべての最新バージョンで既定で有効になっています。 また、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) でも使用されます。
+* アダプティブ サンプリングは、Application Insights ASP.NET および ASP.NET Core ソフトウェア開発キット (SDK) のすべての最新バージョンで既定で有効になっています。 また、[Azure Functions](../../azure-functions/functions-overview.md) でも使用されます。
 * 固定レート サンプリングは、ASP.NET、ASP.NET Core、Java (エージェントと SDK の両方)、および Python 用の Application Insights SDK の最近のバージョンで使用できます。
 * インジェスト サンプリングは、Application Insights サービス エンドポイントで機能します。 これは、他のサンプリングが有効になっていない場合にのみ適用されます。 SDK でテレメトリがサンプリングされると、インジェスト サンプリングは無効になります。
 * Web アプリケーションの場合、カスタム イベントを記録しており、一連のイベントが確実にまとめて保持または破棄されるようにする必要がある場合は、それらのイベントに同じ `OperationId` 値を割り当てる必要があります。
@@ -36,6 +36,7 @@ ms.locfileid: "85319636"
 | ASP.NET Core | [はい (既定でオン)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [はい](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 他のサンプリングが有効になっていない場合のみ |
 | Azure Functions | [はい (既定でオン)](#configuring-adaptive-sampling-for-azure-functions) | いいえ | 他のサンプリングが有効になっていない場合のみ |
 | Java | いいえ | [はい](#configuring-fixed-rate-sampling-for-java-applications) | 他のサンプリングが有効になっていない場合のみ |
+| Node.JS | いいえ | [はい](./nodejs.md#sampling) | 他のサンプリングが有効になっていない場合のみ
 | Python | いいえ | [はい](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 他のサンプリングが有効になっていない場合のみ |
 | その他すべて | いいえ | いいえ | [はい](#ingestion-sampling) |
 
@@ -209,7 +210,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Azure Functions 用のアダプティブ サンプリングの構成
 
-Azure Functions で実行されているアプリに対してアダプティブ サンプリングを構成するには、[こちらのページ](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)の手順に従います。
+Azure Functions で実行されているアプリに対してアダプティブ サンプリングを構成するには、[こちらのページ](../../azure-functions/functions-monitoring.md#configure-sampling)の手順に従います。
 
 ## <a name="fixed-rate-sampling"></a>固定レート サンプリング
 
@@ -481,7 +482,7 @@ JavaScript ベースの Web ページは、Application Insights を使用する�
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>サンプリングが動作しているかどうかを把握する
 
-適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](../../azure-monitor/app/analytics.md) を使用します。
+適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](../log-query/log-query-overview.md) を使用します。
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -586,4 +587,4 @@ ASP.NET SDK の v2.5.0-beta2 および ASP.NET Core SDK の v2.2.0-beta3 より�
 ## <a name="next-steps"></a>次のステップ
 
 * [フィルター](../../azure-monitor/app/api-filtering-sampling.md) を使用して、SDK から送信される情報についてさらに厳密に制御できます。
-* [Application Insights によるテレメトリの最適化](https://msdn.microsoft.com/magazine/mt808502.aspx)に関する Developer Network の記事を読みます。
+* [Application Insights によるテレメトリの最適化](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)に関する Developer Network の記事を読みます。

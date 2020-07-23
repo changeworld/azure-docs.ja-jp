@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361940"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539858"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>BYOS (Bring Your Own Storage) を Application Insights Profiler および Visual Studio スナップショット デバッガー用に構成する
 
@@ -21,9 +21,9 @@ Application Insights Profiler または Visual Studio スナップショット �
 Bring Your Own Storage を使用すると、これらの成果物は、ユーザーが制御するストレージ アカウントにアップロードされます。 つまり、保存時の暗号化ポリシー、有効期間の管理ポリシー、ネットワーク アクセスをユーザーが制御することになります。 ただし、そのストレージ アカウントに関連するコストについては、お客様が責任を負うものとします。
 
 > [!NOTE]
-> Private Link を有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用の Private Link の詳細については、[こちらのドキュメントを参照してください。](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
+> Private Link を有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用の Private Link の詳細については、[こちらのドキュメントを参照してください。](../platform/private-link-security.md)
 >
-> カスタマー マネージド キーを有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用のカスタマー マネージド キーの詳細については、[こちらのドキュメントを参照してください。](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
+> カスタマー マネージド キーを有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用のカスタマー マネージド キーの詳細については、[こちらのドキュメントを参照してください。](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>ストレージ アカウントにアクセスする方法
 1. Virtual Machines または App Service 内で実行されるエージェントでは、成果物 (プロファイル、スナップショット、シンボル) をご使用のアカウント内の BLOB コンテナーにアップロードします。 このプロセスでは、Application Insights Profiler または Visual Studio スナップショット デバッガーに接続して、ご使用のストレージ アカウント内の新しい BLOB の SAS (Shared Access Signature) トークンを取得する必要があります。
@@ -60,7 +60,7 @@ _図 1.0_
 _![図 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 _図 1.1_ 
 
-Private Link も使用する場合、Virtual Network から信頼された Microsoft サービスへの接続を許可するための 1 つの追加構成が必要です。 [ストレージ ネットワーク セキュリティに関するドキュメント](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)を参照してください。
+Private Link も使用する場合、Virtual Network から信頼された Microsoft サービスへの接続を許可するための 1 つの追加構成が必要です。 [ストレージ ネットワーク セキュリティに関するドキュメント](../../storage/common/storage-network-security.md#trusted-microsoft-services)を参照してください。
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>ストレージ アカウントを Application Insights リソースにリンクする
 BYOS をコードレベルの診断 (Profiler またはデバッガー) 用に構成するには、次の 2 つのオプションがあります。
@@ -73,7 +73,7 @@ BYOS をコードレベルの診断 (Profiler またはデバッガー) 用に�
 
 1. Az PowerShell 4.2.0 以上がインストールされていることを確認します。
 
-    Azure PowerShell をインストールするには、[Azure PowerShell の公式ドキュメント](https://docs.microsoft.com/powershell/azure/install-az-ps)を参照してください。
+    Azure PowerShell をインストールするには、[Azure PowerShell の公式ドキュメント](/powershell/azure/install-az-ps)を参照してください。
 
 1. Application Insights PowerShell 拡張機能をインストールします。
     ```powershell
@@ -85,7 +85,7 @@ BYOS をコードレベルの診断 (Profiler またはデバッガー) 用に�
     Connect-AzAccount -Subscription "{subscription_id}"
     ```
 
-    サインイン方法の詳細については、[Connect-AzAccount に関するドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
+    サインイン方法の詳細については、[Connect-AzAccount に関するドキュメント](/powershell/module/az.accounts/connect-azaccount)を参照してください。
 
 1. Application Insights リソースにリンクされている以前のストレージ アカウントを削除します。
 
@@ -121,7 +121,7 @@ BYOS をコードレベルの診断 (Profiler またはデバッガー) 用に�
 
 1. Azure CLI がインストールされていることを確認します。
 
-    Azure CLI をインストールするには、[Azure CLI の公式ドキュメント](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
+    Azure CLI をインストールするには、[Azure CLI の公式ドキュメント](/cli/azure/install-azure-cli)を参照してください。
 
 1. Application Insights CLI 拡張機能をインストールします。
     ```powershell
@@ -152,7 +152,7 @@ BYOS をコードレベルの診断 (Profiler またはデバッガー) 用に�
     ```
 
     > [!NOTE]
-    > Application Insights リソースにリンクするストレージ アカウントの更新を実行するには、[Application Insights CLI に関するドキュメント](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)を参照してください。
+    > Application Insights リソースにリンクするストレージ アカウントの更新を実行するには、[Application Insights CLI に関するドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)を参照してください。
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して構成する
 

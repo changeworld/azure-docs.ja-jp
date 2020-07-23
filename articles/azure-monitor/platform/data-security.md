@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80333356"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539348"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
-このドキュメントでは、[Azure Security Center](../../security/fundamentals/trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
+このドキュメントでは、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
 
 この記事は、Log Analytics によるデータの収集、処理、および保護の方法について説明します。 エージェントを使用して Web サービスに接続し、System Center Operations Manager を使用して運用データを収集し、Azure Diagnostics からデータを取得して Log Analytics に使用することができます。 
 
@@ -42,9 +42,9 @@ Log Analytics へのデータの転送時のセキュリティを保証するた
 |プラットフォーム/言語 | サポート | 詳細情報 |
 | --- | --- | --- |
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
-| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
-| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
-| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
+| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
+| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
+| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
 
 ## <a name="data-segregation"></a>データの分離
 Log Analytics サービスによってデータが取り込まれた後、データはサービス全体のコンポーネントごとに論理的に分離されます。 すべてのデータはワークスペースごとにタグ付けされます。 このタグ付けはデータのライフ サイクルにおいて継続され、サービスの各層で強制されます。 データは、選択したリージョンのストレージ クラスター内の専用データベースに格納されます。
@@ -103,7 +103,7 @@ Log Analytics には、すべての Microsoft サービスが準拠するイン�
 Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
 
 ## <a name="compliance"></a>コンプライアンス
-Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/) と [Microsoft Security Center のコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
+Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 
@@ -124,7 +124,7 @@ Azure Log Analytics は、次の要件を満たしています。
 * [HIPAA および HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) (HIPAA Business Associate Agreement を締結している企業向け)
 * Windows の一般的なエンジニアリング条件
 * Microsoft の信頼できるコンピューティング
-* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft Security Center のコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
+* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
 
 > [!NOTE]
 > Log Analytics は、一部の認定および認証において、以前の名前である *Operational Insights* として表示されています。
@@ -175,4 +175,3 @@ Log Analytics ワークスペースにアクセスするには、設定済みの
 * Log Analytics で Azure VM のデータを収集する方法については、[Azure VM のクイック スタート](../../azure-monitor/learn/quick-collect-azurevm.md)に関するページをご覧ください。  
 
 *  環境内の物理または仮想の Windows または Linux コンピューターからデータを収集する場合は、[Linux コンピューターのクイック スタート](../../azure-monitor/learn/quick-collect-linux-computer.md)または [Windows コンピューターのクイック スタート](../../azure-monitor/learn/quick-collect-windows-computer.md)に関するページをご覧ください
-

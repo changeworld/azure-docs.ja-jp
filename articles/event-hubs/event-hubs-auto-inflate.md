@@ -3,12 +3,12 @@ title: スループットユニットを自動的にスケールアップする 
 description: 名前空間の自動インフレを有効にしてスループット単位を自動的にスケールアップします
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 382d407bde61a4ca24ab5833ea51d540c8904adc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322553"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537243"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
 Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-scalability.md#throughput-units)を増やす必要があります。 Event Hubs の**自動インフレ**機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
@@ -114,5 +114,4 @@ Azure Resource Manager テンプレートのデプロイ時に自動インフレ
 
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-
+* [Event Hubs の概要](./event-hubs-about.md)

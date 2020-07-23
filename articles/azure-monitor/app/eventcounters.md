@@ -3,16 +3,16 @@ title: Application Insights のイベント カウンター | Microsoft Docs
 description: Application Insights でシステムとカスタムの .NET/.NET Core EventCounter を監視します。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539943"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
-`EventCounter` は、カウンターまたは統計情報を発行および使用するための .NET/.NET Core メカニズムです。 `EventCounters` の概要と、それらを発行および使用する方法の例は、[こちらの](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)ドキュメントで説明しています。 EventCounter は、Windows、Linux、および macOS のすべての OS プラットフォームでサポートされています。 これは、Windows システムでのみサポートされている [PerformanceCounter](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) のクロスプラットフォームの同等のものと考えることができます。
+`EventCounter` は、カウンターまたは統計情報を発行および使用するための .NET/.NET Core メカニズムです。 `EventCounters` の概要と、それらを発行および使用する方法の例は、[こちらの](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)ドキュメントで説明しています。 EventCounter は、Windows、Linux、および macOS のすべての OS プラットフォームでサポートされています。 これは、Windows システムでのみサポートされている [PerformanceCounter](/dotnet/api/system.diagnostics.performancecounter) のクロスプラットフォームの同等のものと考えることができます。
 
 ユーザーは必要に応じてカスタムの `EventCounters` を発行できますが、.NET Core 3.0 ランタイムによってこれらのカウンターのセットが既定で発行されます。 このドキュメントでは、Azure Application Insights での (システム定義またはユーザー定義の) `EventCounters` の収集および表示に必要な手順について説明します。
 
@@ -91,14 +91,14 @@ Application Insights では、その `EventCounterCollectionModule` (新しく�
 
 ## <a name="event-counters-in-metric-explorer"></a>メトリック エクスプローラーのイベント カウンター
 
-[メトリック エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)で EventCounter メトリックを表示するには、Application Insights リソースを選択し、メトリック名前空間として [ログベースのメトリック] を選択します。 これにより、EventCounter メトリックがカスタム カテゴリの下に表示されます。
+[メトリック エクスプローラー](../platform/metrics-charts.md)で EventCounter メトリックを表示するには、Application Insights リソースを選択し、メトリック名前空間として [ログベースのメトリック] を選択します。 これにより、EventCounter メトリックがカスタム カテゴリの下に表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights で報告されるイベント カウンター](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analytics のイベント カウンター
 
-また、[Analytics](../../azure-monitor/app/analytics.md) 内で **customMetrics** テーブルのイベント カウンター レポートを検索して表示することもできます。
+また、[Analytics](../log-query/log-query-overview.md) 内で **customMetrics** テーブルのイベント カウンター レポートを検索して表示することもできます。
 
 たとえば、次のクエリを実行して、どのカウンターが収集され、クエリに使用できるかを確認します。
 
@@ -144,7 +144,7 @@ EventCounter には特別なアクセス許可は必要なく、.NET Core 3.0 �
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Azure Web アプリ ポータルから Application Insights を有効にしました。 それでも、EventCounter を表示できません。
 
- この機能は、ASP.NET Core 向けの [Application Insights 拡張機能](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) ではまだサポートされていません。 この機能がサポートされるようになりましたら、このドキュメントは更新されます。
+ この機能は、ASP.NET Core 向けの [Application Insights 拡張機能](./azure-web-apps.md) ではまだサポートされていません。 この機能がサポートされるようになりましたら、このドキュメントは更新されます。
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 

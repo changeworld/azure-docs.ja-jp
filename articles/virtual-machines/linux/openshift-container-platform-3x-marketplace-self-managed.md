@@ -10,16 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759577"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527236"
 ---
 # <a name="configure-prerequisites"></a>構成の前提条件
 
-Marketplace オファーを使用して自己管理型 OpenShift Container Platform 3.11 クラスターを Azure にデプロイする前に、いくつかの前提条件を構成する必要があります。  SSH キー (パスフレーズなし)、Azure Key Vault、Key Vault シークレット、およびサービス プリンシパルを作成する手順については、[OpenShift の前提条件](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites)に関する記事を参照してください。
+Marketplace オファーを使用して自己管理型 OpenShift Container Platform 3.11 クラスターを Azure にデプロイする前に、いくつかの前提条件を構成する必要があります。  SSH キー (パスフレーズなし)、Azure Key Vault、Key Vault シークレット、およびサービス プリンシパルを作成する手順については、[OpenShift の前提条件](./openshift-container-platform-3x-prerequisites.md)に関する記事を参照してください。
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Marketplace オファーを使用してデプロイする

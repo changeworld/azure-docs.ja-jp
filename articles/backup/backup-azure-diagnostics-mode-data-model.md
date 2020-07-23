@@ -3,12 +3,12 @@ title: Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor Log Analytics データ モデルの詳細について説明します。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854759"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539076"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 
@@ -18,7 +18,7 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 > [!NOTE]
 >
-> このデータ モデルは、Log Analytics (LA) に診断イベントを送信する Azure Diagnostics モードを参照しています。 新しいリソース固有モード用のデータ モデルについては、次の記事を参照してください。[Azure Backup 診断イベントのデータ モデル](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+> このデータ モデルは、Log Analytics (LA) に診断イベントを送信する Azure Diagnostics モードを参照しています。 新しいリソース固有モード用のデータ モデルについては、次の記事を参照してください。[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup データ モデルを使用する
 
@@ -465,7 +465,7 @@ Azure Diagnostics テーブルにある Azure Backup データのクエリを作
 
 旧バージョンとの互換性の理由により、Azure Backup エージェントと Azure VM のバックアップの診断データは、現在、V1 スキーマと V2 スキーマの両方の Azure Diagnostics テーブルに送信されます (V1 スキーマは非推奨のパスになりました)。 ログ クエリで SchemaVersion_s=="V1" のレコードをフィルター処理すると、Log Analytics のどのレコードが V1 スキーマのものであるかを識別できます。 
 
-V1 スキーマのみに属する列を特定するには、上記で説明した[データ モデル](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model)の 3 列目にある「説明」を参照してください。
+V1 スキーマのみに属する列を特定するには、上記で説明した[データ モデル](#using-azure-backup-data-model)の 3 列目にある「説明」を参照してください。
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>V2 スキーマを使用するようにクエリを変更する
 V1 スキーマは非推奨になる予定であるため、Azure Backup 診断データに対するすべてのカスタム クエリで V2 スキーマのみを使用することをお勧めします。 以下に、V1 スキーマへの依存関係を削除するようにクエリを更新する方法の例を示します。

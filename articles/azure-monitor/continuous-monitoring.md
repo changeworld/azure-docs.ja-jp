@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797599"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539688"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -38,7 +38,7 @@ ms.locfileid: "83797599"
 - お客様のほとんどの Azure リソースから[プラットフォーム メトリック、アクティビティ ログ、診断ログ](platform/data-sources.md)が構成なしで自動的に得られます。
 - [Azure Monitor for VMs](insights/vminsights-overview.md) を使用して、VM に対してより高度な監視を有効にします。
 -  [コンテナー用 Azure Monitor](insights/container-insights-overview.md) を使用して、AKS クラスターに対してより高度な監視を有効にします。
-- お客様の環境内のさまざまなアプリケーションおよびサービス用に[監視ソリューション](insights/solutions-inventory.md)を追加します。
+- お客様の環境内のさまざまなアプリケーションおよびサービス用に[監視ソリューション](./monitor-reference.md)を追加します。
 
 
 [Infrastructure as Code](/azure/devops/learn/what-is-infrastructure-as-code) は、DevOps チームがソース コードに使用するのと同じバージョン管理を使用し、記述的モデルでインフラストラクチャを管理するものです。 これにより、お客様の環境の信頼性とスケーラビリティが高まり、お客様のアプリケーションの管理に使用されるものと同様のプロセスを利用できるようになります。

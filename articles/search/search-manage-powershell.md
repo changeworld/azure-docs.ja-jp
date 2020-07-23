@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08b59464855b805173fa76d696107f8a7673d39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77209298"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529570"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -252,7 +252,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 ポータル、REST API、または .NET SDK を使用して、[インデックス](search-what-is-an-index.md)を作成し、[インデックスのクエリを実行](search-query-overview.md)します。
 
-* [Azure portal で Azure Cognitive Search インデックスを作成する](search-create-index-portal.md)
+* [Azure portal で Azure Cognitive Search インデックスを作成する](search-get-started-portal.md)
 * [インデクサーをセットアップして他のサービスからデータを読み込む](search-indexer-overview.md)
 * [Azure Portal の Search エクスプローラーを使用して Azure Cognitive Search インデックスを照会する](search-explorer.md)
 * [.NET での Azure Cognitive Search の使用方法](search-howto-dotnet-sdk.md)

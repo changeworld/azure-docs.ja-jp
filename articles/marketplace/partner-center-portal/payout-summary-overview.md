@@ -1,18 +1,18 @@
 ---
 title: 支払いの概要の概説 - Azure Marketplace
 description: '[支払いの概要] には、プランで獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払われる金額を確認することもできます。'
-ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.service: marketplace
+ms.topic: article
 author: mingshen
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118479"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535962"
 ---
 # <a name="payout-summary-overview"></a>支払いの概要の概説
 
@@ -42,19 +42,6 @@ Azure Marketplace でオファリングを販売している場合は、[支払�
 | 税プロファイル | 更新可能 | アクセス権なし | アクセス権なし | アクセス権なし | 更新可能 | アクセス権なし |
 | 支払いの概要 | 表示可能 | アクセス権なし | アクセス権なし | アクセス権なし | 表示可能 | アクセス権なし  |
 | | | | | | | |
-
-## <a name="payout-report-differences"></a>支払いレポートの相違点
-
-Cloud パートナー ポータル (旧) とパートナー センター (新) での支払いレポートの相違点は次のとおりです。
-
-| クラウド パートナー ポータル | パートナー センター |
-| --- | --- |
-| **リンク**: https://cloudpartner.azure.com/ | **リンク**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory と https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **ナビゲーション**: 分析情報の支払いで提供される支払いレポート | **ナビゲーション**: パートナー センターで提供される支払いレポート – [支払い] アイコン |
-| **[スコープ]** :<ul><li>進行中の回収、回収済み、および支払い済みを対象に、品目ごとの取引が表示されます。</li><li>レポート - 発注書が作成された後のすべての品目が表示されます。これには、進行中の回収と進行中の課金、および回収の状態とまだ支払いの対象となっていない品目が含まれます。</li></ul> | **[スコープ]** :<ul><li>対象となる収益と見なされると品目が表示されます。</li><li>顧客が最初に Microsoft に支払いをすると、ISV に支払いレポートの開始が表示されます。</li><li>支払いレポートには、進行中の回収と進行中の課金は表示されません。</li></ul> |
-| **支払いの準備ができていない取引**:進行中の課金 | **支払いの準備ができていない取引**:次の見積支払: 支払いの状態は未処理の状態です。 |
-| **支払いの状態:** 該当なし | **支払いの状態:**<ul><li>未処理:収益は支払いの対象となります。</li><li>近日中:収益は、次回の月次支払いで発行元に送信されます。</li><li>送信済み:支払いが銀行に送信されました。</li></ul> |
-| | |
 
 ## <a name="payment-schedules"></a>支払いスケジュール
 

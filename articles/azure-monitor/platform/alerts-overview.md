@@ -4,12 +4,12 @@ description: Azure でのアラートの概要です。 アラート、クラシ
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c4432300319c02cd7b1e31dec566f6e65ea9580
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539569"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -68,7 +68,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 | **モニター ソース** | **シグナルの種類**  | **説明** |
 |-------------|----------------|-------------|
-| サービス正常性 | アクティビティ ログ  | サポートされていません。 「[サービス通知のアクティビティ ログ アラートを作成する](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)」をご覧ください。  |
+| サービス正常性 | アクティビティ ログ  | サポートされていません。 「[サービス通知のアクティビティ ログ アラートを作成する](../../service-health/alerts-activity-log-service-notifications-portal.md)」をご覧ください。  |
 | Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../../azure-monitor/app/monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
 
 ## <a name="manage-alerts"></a>Manage alerts
@@ -178,7 +178,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>アラート インスタントのロールベースのアクセス制御 (RBAC)
 
-アラート インスタンスを使用および管理するには、ユーザーに[監視共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)または[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)のいずれかの組み込み RBAC ロールが必要です。 これらのロールは、サブスクリプション レベルからリソース レベルでの詳細な割り当てまで、Azure Resource Manager のすべてのスコープでサポートされています。 たとえば、ユーザーが仮想マシン `ContosoVM1` に対する "監視共同作成者" アクセス権のみを持っている場合は、`ContosoVM1` で生成されたアラートのみを使用および管理できます。
+アラート インスタンスを使用および管理するには、ユーザーに[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)または[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)のいずれかの組み込み RBAC ロールが必要です。 これらのロールは、サブスクリプション レベルからリソース レベルでの詳細な割り当てまで、Azure Resource Manager のすべてのスコープでサポートされています。 たとえば、ユーザーが仮想マシン `ContosoVM1` に対する "監視共同作成者" アクセス権のみを持っている場合は、`ContosoVM1` で生成されたアラートのみを使用および管理できます。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>プログラムによるアラート インスタンスの管理
 
@@ -212,9 +212,3 @@ Azure Resource Graph Explorer を使用して、ポータルでこの Resource G
 - [Azure でのアラート インスタンスの管理](https://aka.ms/managing-alert-instances)
 - [スマート グループの管理](https://aka.ms/managing-smart-groups)
 - [Azure アラートの価格についての詳細](https://azure.microsoft.com/pricing/details/monitor/)
-
-
-
-
-
-

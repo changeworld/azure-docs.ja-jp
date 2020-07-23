@@ -3,12 +3,12 @@ title: Azure Event Hubs 保存データの暗号化用に独自のキーを構�
 description: この記事では、Azure Event Hubs の保存データを暗号化するために独自のキーを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479829"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537260"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する
 Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -41,7 +41,7 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 ## <a name="set-up-a-key-vault-with-keys"></a>キーを使用したキー コンテナーの設定
 カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Event Hubs 名前空間に関連付ける必要があります。 Event Hubs では Azure Key Vault のみがサポートされています。 前のセクションで**カスタマー マネージド キーによる暗号化**のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/soft-delete-powershell.md) または [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) を使用して構成できます。
 
-1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/about-keys-secrets-and-certificates.md)」を参照してください。
+1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/general/about-keys-secrets-certificates.md)」を参照してください。
 1. コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
 
     ```azurecli-interactive
@@ -419,7 +419,3 @@ BYOK 暗号化が有効になっている場合に調べる一般的なエラー
 次の記事をご覧ください。
 - [Event Hubs の概要](event-hubs-about.md)
 - [Key Vault の概要](../key-vault/general/overview.md)
-
-
-
-

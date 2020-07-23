@@ -3,12 +3,12 @@ title: Azure VM での SQL Server の論理的な削除、および Azure VM ワ
 description: Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードでの SAP HANA の論理的な削除について説明します。これにより、バックアップのセキュリティが強化されます。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791376"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538192"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除
 
@@ -99,7 +99,7 @@ Azure PowerShell を使用するための一連の手順は、上記で説明し
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Azure PowerShell を使用したバックアップ項目の削除
 
-[Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS コマンドレットを使用してバックアップ項目を削除します。
+[Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS コマンドレットを使用してバックアップ項目を削除します。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -117,7 +117,7 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadTy
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID -Name AppVM1
 ```
 
-次に、[Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.8.0) PS コマンドレットで削除操作を元に戻します。
+次に、[Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS コマンドレットで削除操作を元に戻します。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

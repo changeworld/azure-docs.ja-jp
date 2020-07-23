@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184550"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539671"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -19,11 +19,11 @@ ms.locfileid: "86184550"
 
 この記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) は、クラウド ベースの[ハイブリッド ネットワーク監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](../../azure-monitor/insights/network-performance-monitor-expressroute.md)にも利用できます。 
+[Network Performance Monitor](../../networking/network-monitoring-overview.md) は、クラウド ベースの[ハイブリッド ネットワーク監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](../../azure-monitor/insights/network-performance-monitor-expressroute.md)にも利用できます。 
 
 トラフィックのブラックホール、ルーティング エラーなどのネットワークの問題のほか、従来のネットワーク監視手法では検出されない問題を検出します。 ネットワーク リンクに関するしきい値を超えた場合、このソリューションはアラートと通知を生成します。 また、ネットワーク パフォーマンスの問題をタイムリーに検出できるほか、問題の原因を特定のネットワーク セグメントまたはデバイスに限定できます。 
 
-[Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) がサポートするさまざまな機能の詳細は、オンラインで参照できます。
+[Network Performance Monitor](../../networking/network-monitoring-overview.md) がサポートするさまざまな機能の詳細は、オンラインで参照できます。
 
 ## <a name="set-up-and-configure-agents"></a>エージェントのセットアップと構成
 
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM は、ソース IP と宛先 IP の間の基になるネットワーク ホップ (スイッチ、ルーター、サーバーなど) の IP およびホスト名のみを識別します。 また、識別されたこれらのホップ間の待機時間を識別します。 これらの基になるホップを個別に監視しません。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>NPM を使用して Azure と AWS の間のネットワーク接続を監視できますか。
-はい。 詳細については、[NPM を使用した Azure、AWS、およびオンプレミス ネットワークの監視](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)に関するページを参照してください。
+はい。 詳細については、[NPM を使用した Azure、AWS、およびオンプレミス ネットワークの監視](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)に関するページを参照してください。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute の帯域幅使用量は着信または発信のどちらですか。
 帯域幅使用量は着信および発信の帯域幅の合計です。 これはビット/秒で表されます。
@@ -188,7 +188,7 @@ NPM は、[サポートされるリージョン](../../azure-monitor/insights/ne
 NPM は、[サポートされるリージョン](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのサービスへの接続を監視できます
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM の ExpressRoute モニターではどのリージョンがサポートされていますか。
-NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](/azure/expressroute/how-to-npm)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
+NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](../../expressroute/how-to-npm.md)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
@@ -231,7 +231,7 @@ HopLatencyValues は、ソースからエンドポイントまでを示します
 * ホスト ファイアウォールが必要なポートの通信をブロックしていないことを確認するには、次のビューからソースと宛先ノードの正常性状態を表示します。[Network Performance Monitor] -> [構成] -> [ノード] 
   正常でない場合、指示を表示して、是正措置を行います。 ノードが正常である場合は、以下の手順 b に移動します。 設定します。
 * 中間ネットワーク ファイアウォールまたは Azure NSG が必要なポートで通信をブロックしていないことを確認するには、次の手順を使用して、サード パーティ製の PsPing ユーティリティを使用します。
-  * psping ユーティリティは[こちら](https://technet.microsoft.com/sysinternals/psping.aspx)からダウンロードできます 
+  * psping ユーティリティは[こちら](/sysinternals/downloads/psping)からダウンロードできます 
   * ソース ノードから次のコマンドを実行します。
     * psping -n 15 \<destination node IPAddress\>:portNumber。既定で NPM には 8084 ポートが使用されます。 この値を EnableRules.ps1 スクリプトを使用して明示的に変更した場合、使用するカスタム ポート番号を入力します。 これは Azure マシンからオンプレミスへの ping です
 * ping が成功したかどうかを確認します。 成功しない場合は、中間ネットワーク ファイアウォールまたは Azure NSG がこのポートでトラフィックをブロックしていることを示しています。

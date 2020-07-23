@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539178"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 
 コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、「[DTU ベースの購入モデル](purchasing-models.md#dtu-based-purchasing-model)」を参照してください。
 
-||Basic|Standard|Premium|
+|Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | 
@@ -70,7 +70,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>エラスティック プールの eDTU、ストレージ、プールされたデータベースの上限
 
-| | **Basic** | **Standard** | **Premium** |
+| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | データベースあたりの最大ストレージ サイズ  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) |
 | プールあたりの最大ストレージ サイズ | 156 GB | 4 TB | 4 TB |

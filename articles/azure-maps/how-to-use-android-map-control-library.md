@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 241f107f0bb2163951104067cb82d6e6a967ad3e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648220"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540130"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -24,7 +24,7 @@ Azure Maps Android SDK は、Android 用のベクター マップ ライブラ�
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
 
-この記事の手順を完了するには、まず、S1 価格レベルで [Azure Maps アカウントを作成](quick-demo-map-app.md#create-an-account-with-azure-maps)し、アカウントの[主キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)する必要があります。
+この記事の手順を完了するには、まず、S1 価格レベルで [Azure Maps アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、アカウントの[主キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)する必要があります。
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 

@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320585"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537182"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -261,7 +261,7 @@ Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診�
 
 ### <a name="support-and-sla"></a>サポートと SLA
 
-Event Hubs のテクニカル サポートについては、[Microsoft Q&A の Azure Service Bus に関する質問ページ](https://docs.microsoft.com/answers/topics/azure-service-bus.html)を参照してください。 課金とサブスクリプション管理のサポートは無料で提供されます。
+Event Hubs のテクニカル サポートについては、[Microsoft Q&A の Azure Service Bus に関する質問ページ](/answers/topics/azure-service-bus.html)を参照してください。 課金とサブスクリプション管理のサポートは無料で提供されます。
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
 
@@ -269,6 +269,6 @@ SLA の詳細については、「 [サービス レベル アグリーメント
 
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+* [Event Hubs の概要](./event-hubs-about.md)
 * [Event Hub を作成する](event-hubs-create.md)
 * [Event Hubs の自動インフレ](event-hubs-auto-inflate.md)

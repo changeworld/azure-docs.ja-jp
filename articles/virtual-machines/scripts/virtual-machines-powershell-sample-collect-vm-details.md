@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: 27e88966759eaa158ffe86efce9905b1709ddbbe
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a45f0a882c58c7035badcc1270c66bd9c6fb252a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848724"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526913"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する
 
 このスクリプトでは、指定されたサブスクリプション内の VM の VM 名、リソース グループ名、リージョン、VM サイズ、仮想ネットワーク、サブネット、プライベート IP アドレス、OS タイプ、およびパブリック IP アドレスを含む csv が作成されます。
 
-[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
+[Azure サブスクリプション](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -75,15 +75,13 @@ $report | Export-CSV "$home/$reportName"
 
 |コマンド|Notes|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|現在のセッションで使用するコマンドレットのテナント、サブスクリプション、および環境を設定します。|
-|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|仮想マシンのプロパティを取得します。|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|パブリック IP アドレスを取得します。|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|ネットワーク インターフェイスを取得します。|
+|[Select-AzSubscription](/powershell/module/az.accounts/set-azcontext)|現在のセッションで使用するコマンドレットのテナント、サブスクリプション、および環境を設定します。|
+|[Get-AzVM](/powershell/module/az.compute/get-azvm)|仮想マシンのプロパティを取得します。|
+|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)|パブリック IP アドレスを取得します。|
+|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface)|ネットワーク インターフェイスを取得します。|
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
-その他の仮想マシン用の PowerShell サンプル スクリプトは、[Azure Windows VM のドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples?toc=/azure/virtual-machines/windows/toc.json)にあります。
-
-
+その他の仮想マシン用の PowerShell サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/powershell-samples.md?toc=/azure/virtual-machines/windows/toc.json)にあります。

@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253339"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529303"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services での ASP.NET Core
 
@@ -470,8 +470,8 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
  
 インターネットに公開されるステートレス サービスでは、ロード バランサーを介して到達できる、安定した一般的なエンドポイントを使用する必要があります。 アプリケーションのユーザーにこの URL を提供します。 次の構成をお勧めします。
 
-|  |  | **メモ** |
-| --- | --- | --- |
+| Type | 推奨 | Notes |
+| ---- | -------------- | ----- |
 | Web サーバー | Kestrel | Kestrel は Windows と Linux でサポートされているため、好まれている Web サーバーです。 |
 | ポート構成 | 静的 | 一般的な静的ポートを ServiceManifest.xml の `Endpoints` 構成で構成する必要があります (HTTP の場合は 80、HTTPS の場合は 443 など)。 |
 | ServiceFabricIntegrationOptions | なし | Service Fabric 統合ミドルウェアを構成するときに `ServiceFabricIntegrationOptions.None` オプションを使用し、サービスによって受信要求で一意の識別子が検証されないようにします。 アプリケーションの外部ユーザーは、ミドルウェアで使用される一意の識別情報を知りません。 |
@@ -495,8 +495,8 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
 ### <a name="internal-only-stateless-aspnet-core-service"></a>内部専用のステートレス ASP.NET Core サービス
 クラスター内からのみ呼び出されるステートレス サービスでは、複数のサービス間の協調動作を保証するために、一意の URL と動的に割り当てられたポートを使用する必要があります。 次の構成をお勧めします。
 
-|  |  | **メモ** |
-| --- | --- | --- |
+| Type | 推奨 | Notes |
+| ---- | -------------- | ----- |
 | Web サーバー | Kestrel | 内部のステートレス サービスに HTTP.sys を使用することもできますが、サーバーで複数のサービス インスタンスがホストを共有できるようにするには、Kestrel が推奨されます。  |
 | ポート構成 | 動的割り当て | ステートフル サービスの複数のレプリカでは、ホスト プロセスまたはホスト オペレーティング システムを共有できるため、一意のポートが必要になります。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 動的なポート割り当てでこの設定を行うことにより、前述の誤った ID に関する問題を防ぐことができます。 |
@@ -505,8 +505,8 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
 ### <a name="internal-only-stateful-aspnet-core-service"></a>内部専用のステートフル ASP.NET Core サービス
 クラスター内からのみ呼び出されるステートフル サービスでは、複数のサービス間の協調動作を保証するために、動的に割り当てられたポートを使用する必要があります。 次の構成をお勧めします。
 
-|  |  | **メモ** |
-| --- | --- | --- |
+| Type | 推奨 | Notes |
+| ---- | -------------- | ----- |
 | Web サーバー | Kestrel | `HttpSysCommunicationListener` は、レプリカがホスト プロセスを共有するステートフル サービス向けに設計されていません。 |
 | ポート構成 | 動的割り当て | ステートフル サービスの複数のレプリカでは、ホスト プロセスまたはホスト オペレーティング システムを共有できるため、一意のポートが必要になります。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 動的なポート割り当てでこの設定を行うことにより、前述の誤った ID に関する問題を防ぐことができます。 |

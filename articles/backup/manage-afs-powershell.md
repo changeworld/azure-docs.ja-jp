@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure ファイル共有のバックアップ�
 description: PowerShell を使用して、Azure Backup サービスによってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538595"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>PowerShell を使用して Azure ファイル共有のバックアップを管理する
 
@@ -19,7 +19,7 @@ ms.locfileid: "83201969"
 
 ## <a name="modify-the-protection-policy"></a>保護ポリシーを変更する
 
-Azure ファイル共有のバックアップに使用するポリシーを変更するには、[Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0) を使用します。 関連するバックアップ項目と新しいバックアップ ポリシーを指定します。
+Azure ファイル共有のバックアップに使用するポリシーを変更するには、[Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) を使用します。 関連するバックアップ項目と新しいバックアップ ポリシーを指定します。
 
 次の例では、**testAzureFS** の保護ポリシーを **dailyafs** から **monthlyafs** に変更します。
 
@@ -32,7 +32,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="track-backup-and-restore-jobs"></a>バックアップ ジョブと復元ジョブを追跡する
 
-オンデマンドのバックアップ操作や復元操作では、[オンデマンド バックアップの実行](backup-azure-afs-automation.md#trigger-an-on-demand-backup)で示したように、ID と共にジョブが返されます。 ジョブの進行状況と詳細を追跡するには、[Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) コマンドレットを使用します。
+オンデマンドのバックアップ操作や復元操作では、[オンデマンド バックアップの実行](backup-azure-afs-automation.md#trigger-an-on-demand-backup)で示したように、ID と共にジョブが返されます。 ジョブの進行状況と詳細を追跡するには、[Get-AzRecoveryServicesBackupJobDetails](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) コマンドレットを使用します。
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -71,7 +71,7 @@ Azure Backup によって作成された基になるスナップショットが�
 
 ## <a name="stop-protection-and-retain-recovery-points"></a>保護を停止して復旧ポイントを保持する
 
-データを保持したまま保護を停止するには、[Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) コマンドレットを使用します。
+データを保持したまま保護を停止するには、[Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) コマンドレットを使用します。
 
 次の例では、すべての回復ポイントを保持しつつ、*afsfileshare* ファイル共有の保護を停止します。
 
@@ -87,11 +87,11 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-出力の Job ID 属性は、"保護停止" 操作のためにバックアップ サービスによって作成されたジョブの ID に対応しています。 ジョブの状態を追跡するには、[Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-3.3.0) コマンドレットを使用します。
+出力の Job ID 属性は、"保護停止" 操作のためにバックアップ サービスによって作成されたジョブの ID に対応しています。 ジョブの状態を追跡するには、[Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) コマンドレットを使用します。
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>復旧ポイントを保持しないで保護を停止する
 
-回復ポイントを保持しないで保護を停止するには、[Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) コマンドレットを使用して、 **-RemoveRecoveryPoints** パラメーターを追加します。
+回復ポイントを保持しないで保護を停止するには、[Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) コマンドレットを使用して、 **-RemoveRecoveryPoints** パラメーターを追加します。
 
 次の例では、復旧ポイントを保持しないで、*afsfileshare* ファイル共有の保護を停止します。
 

@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの概要
 description: Recovery Services コンテナーの概要と Azure Backup コンテナーとの比較。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 11a218badfab141c41430c3f48a5e930bfa1af8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248908"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539042"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -36,9 +36,9 @@ Recovery Services コンテナーが Azure の Azure Resource Manager モデル�
 
 Recovery Services コンテナーは、経時的に作成されたバックアップと復旧ポイントを格納するエンティティです。 Recovery Services コンテナーには、保護される仮想マシンに関連付けられたバックアップ ポリシーも含まれます。
 
-Azure Backup では、コンテナーのストレージが自動的に処理されます。 [ストレージ設定の変更](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)方法を確認してください。
+Azure Backup では、コンテナーのストレージが自動的に処理されます。 [ストレージ設定の変更](./backup-create-rs-vault.md#set-storage-redundancy)方法を確認してください。
 
-ストレージの冗長性の詳細については、[geo](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) と[ローカル](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)の冗長性に関する記事を参照してください。
+ストレージの冗長性の詳細については、[geo](../storage/common/storage-redundancy.md) と[ローカル](../storage/common/storage-redundancy.md)の冗長性に関する記事を参照してください。
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>ポータルでの Recovery Services コンテナーの管理
 
@@ -62,7 +62,7 @@ VM にバックアップが構成されていない場合、バックアップ�
 ### <a name="back-up-data"></a>データのバックアップ
 
 - [Azure VM のバックアップ](backup-azure-vms-first-look-arm.md)
-- [Windows Server または Windows ワークステーションのバックアップ](backup-try-azure-backup-in-10-mins.md)
+- [Windows Server または Windows ワークステーションのバックアップ](./backup-windows-with-mars-agent.md)
 - [Azure への DPM ワークロードのバックアップ](backup-azure-dpm-introduction.md)
 - [Azure Backup Server を使用してワークロードをバックアップするための準備](backup-azure-microsoft-azure-backup.md)
 
@@ -82,9 +82,9 @@ VM にバックアップが構成されていない場合、バックアップ�
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](https://docs.microsoft.com/azure/advisor/) は、Azure の使用を最適化するのに役立つ、カスタマイズされたクラウド コンサルタントです。 Azure の使用状況を分析し、デプロイを最適化してセキュリティで保護するためのタイムリーな推奨事項を提供します。 提供される推奨事項には、高可用性、セキュリティ、パフォーマンス、コストの 4 つのカテゴリがあります。
+[Azure Advisor](../advisor/index.yml) は、Azure の使用を最適化するのに役立つ、カスタマイズされたクラウド コンサルタントです。 Azure の使用状況を分析し、デプロイを最適化してセキュリティで保護するためのタイムリーな推奨事項を提供します。 提供される推奨事項には、高可用性、セキュリティ、パフォーマンス、コストの 4 つのカテゴリがあります。
 
-Azure Advisor では、バックアップされていない VM についての[推奨事項](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)が 1 時間ごとに提供されるため、もう重要な VM のバックアップを忘れることはありません。 また、再通知を使用して推奨事項を制御することができます。  推奨事項をクリックすると、コンテナー (バックアップが格納される場所) とバックアップ ポリシー (バックアップのスケジュールとバックアップ コピーの保持期間) を指定することによって、インラインで VM のバックアップを有効にすることができます。
+Azure Advisor では、バックアップされていない VM についての[推奨事項](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion)が 1 時間ごとに提供されるため、もう重要な VM のバックアップを忘れることはありません。 また、再通知を使用して推奨事項を制御することができます。  推奨事項をクリックすると、コンテナー (バックアップが格納される場所) とバックアップ ポリシー (バックアップのスケジュールとバックアップ コピーの保持期間) を指定することによって、インラインで VM のバックアップを有効にすることができます。
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 

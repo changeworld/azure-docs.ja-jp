@@ -3,12 +3,12 @@ title: Azure Backup Server V3 RTM でバックアップできる内容
 description: この記事では、Azure Backup Server V3 RTM によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示した保護のマトリックスを示します。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84631678"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538568"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM の保護マトリックス
 
@@ -98,7 +98,7 @@ Microsoft ピアリングを使用して、次のサービスまたはリージ�
 * Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
 * Azure Storage (Recovery Services コンテナーの場所による)
 
-詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
 
 >[!NOTE]
 >パブリック ピアリングは、新しい回線では非推奨です。

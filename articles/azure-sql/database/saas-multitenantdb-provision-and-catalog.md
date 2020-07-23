@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027653"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539195"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL Database を使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84027653"
 - プロビジョニングとカタログ化を実現する PowerShell スクリプト コードに注目した[チュートリアル](#goto_1_tutorial)。
   - チュートリアルでは、マルチテナント シャード データベース パターンに適合する Wingtip Tickets SaaS アプリケーションを使用します。
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>データベース パターン
 
@@ -111,7 +111,7 @@ SaaS アプリケーションにより、これらの変更は、大容量にな
 
 次に、テナント データは初期化され、カタログ シャード マップに登録されます。 サンプル アプリでは、複数のテナントを含むデータベースには、汎用的な名前 (*tenants1* や *tenants2* など) が付けられます。 1 つのテナントを含むデータベースには、テナントの名前が付けられます。 カタログを使用すればデータベースに任意の名前を割り当てることができるため、このサンプルで使用されている名前付け規則は、このパターンの重要事項ではありません。
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>チュートリアルを開始する
 

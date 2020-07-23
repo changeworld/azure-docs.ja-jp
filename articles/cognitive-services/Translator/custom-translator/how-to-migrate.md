@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958924"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537988"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -130,13 +130,13 @@ Hub からワークスペースまたはプロジェクトの移行を要求す�
 
 これは、Microsoft Translator Hub と Custom Translator の機能を比較する表です。
 
-|   | ハブ | Custom Translator |
-|:-----|:----:|:----:|
-|カスタマイズ機能の状態    | 一般公開    | 一般公開 |
+| 特徴量 | ハブ | Custom Translator |
+| ------- | :-: | :---------------: |
+| カスタマイズ機能の状態    | 一般公開    | 一般公開 |
 | Text API バージョン    | V2     | V3  |
 | SMT のカスタマイズ    | はい    | いいえ |
 | NMT のカスタマイズ    | いいえ    | はい |
-| 新しい統合 Speech Services のカスタマイズ    | いいえ    | はい |
+| 新しい統合 Speech Services のカスタマイズ    | いいえ    | ○ |
 | トレースなし | はい | はい |
 
 ## <a name="new-languages"></a>新しい言語

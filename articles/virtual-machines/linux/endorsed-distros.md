@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: e51eeb32ecd306986dc22d6bfa09ee95b8b87852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658701"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527389"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 
-パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft では、さまざまな Linux コミュニティと連携して動作保証済みディストリビューション リストを拡充しています。 Marketplace から入手できないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)」のガイドラインに従って、お使いの Linux をいつでも持ち込んで使用できます。
+パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft では、さまざまな Linux コミュニティと連携して動作保証済みディストリビューション リストを拡充しています。 Marketplace から入手できないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](./create-upload-generic.md)」のガイドラインに従って、お使いの Linux をいつでも持ち込んで使用できます。
 
 ## <a name="supported-distributions-and-versions"></a>サポートされているディストリビューションとバージョン
 
@@ -46,7 +46,7 @@ Azure Linux エージェントは、Azure Marketplace のイメージにあら�
 
 ## <a name="image-update-cadence"></a>イメージの更新頻度
 
-Azure の場合、動作保証済み Linux ディストリビューションのパブリッシャーは、四半期ごとまたはそれより短い頻度で最新のパッチとセキュリティ修正プログラムを適用して、Azure Marketplace 内のイメージを定期的に更新する必要があります。 Azure Marketplace 内の更新されたイメージは、新しいバージョンのイメージ SKU として、自動的に顧客に提供されます。 Linux イメージの検索方法の詳細については、[Azure Marketplace 内の Linux VM イメージの検索に関するページ](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)を参照してください。
+Azure の場合、動作保証済み Linux ディストリビューションのパブリッシャーは、四半期ごとまたはそれより短い頻度で最新のパッチとセキュリティ修正プログラムを適用して、Azure Marketplace 内のイメージを定期的に更新する必要があります。 Azure Marketplace 内の更新されたイメージは、新しいバージョンのイメージ SKU として、自動的に顧客に提供されます。 Linux イメージの検索方法の詳細については、[Azure Marketplace 内の Linux VM イメージの検索に関するページ](./cli-ps-findimage.md)を参照してください。
 
 ## <a name="azure-tuned-kernels"></a>Azure で調整されたカーネル
 

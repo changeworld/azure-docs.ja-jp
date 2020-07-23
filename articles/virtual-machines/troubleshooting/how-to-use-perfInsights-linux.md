@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231935"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526802"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -44,7 +44,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 - ストレージ情報
 
-- Azure 仮想マシンの構成 ([Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service) を使用して収集)
+- Azure 仮想マシンの構成 ([Azure Instance Metadata Service](../windows/instance-metadata-service.md) を使用して収集)
 
 - 実行中のプロセス、ディスク、メモリ、CPU 使用率の一覧
 
@@ -109,7 +109,7 @@ Linux 仮想マシン、オペレーティング システム、ブロック デ
   - /etc/waagent.config
   - 過去 5 日間の journalctl の出力
 
-- [Azure 仮想マシン インスタンスのメタデータ](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Azure 仮想マシン インスタンスのメタデータ](../windows/instance-metadata-service.md)
 
 >[!Note]
 >[`*`] Debian と SLES のディストリビューションでは、まだ PCI 情報が収集されません

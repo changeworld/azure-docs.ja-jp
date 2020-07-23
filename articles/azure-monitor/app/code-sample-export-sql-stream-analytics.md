@@ -3,12 +3,12 @@ title: Azure Application Insights から SQL へのエクスポート | Microsof
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087232"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540096"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法について説明します。 
@@ -82,7 +82,7 @@ ms.locfileid: "86087232"
 ![[参照]、[サーバー]、[使用するサーバー]、[設定]、[ファイアウォール]、[Azure へのアクセスの許可]](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Azure SQL Database にテーブルを作成する
-任意の管理ツールを使って前のセクションで作成したデータベースに接続します。 このチュートリアルでは、 [SQL Server Management Tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS) を使用します。
+任意の管理ツールを使って前のセクションで作成したデータベースに接続します。 このチュートリアルでは、 [SQL Server Management Tools](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) を使用します。
 
 ![Azure SQL Database に接続する](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -255,4 +255,3 @@ FROM [dbo].[PageViewsTable]
 [metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

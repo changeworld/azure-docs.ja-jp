@@ -3,17 +3,16 @@ title: マッピング データ フローのピボット解除変換
 description: Azure Data Factory のマッピング データ フローのピボット解除変換
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537716"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory のピボット解除変換
 
@@ -22,6 +21,8 @@ ms.locfileid: "81606240"
 ADF のマッピング データ フローで、正規化されていないデータセットをより正規化されたバージョンに変換するための方法としてピボット解除を使用して、単一のレコード内の複数の列の値を、単一の列内に同じ値を持つ複数のレコードに展開します。
 
 ![ピボット解除変換](media/data-flow/unpivot1.png "ピボット解除オプション 1")
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B1RR]
 
 ## <a name="ungroup-by"></a>グループ化解除
 

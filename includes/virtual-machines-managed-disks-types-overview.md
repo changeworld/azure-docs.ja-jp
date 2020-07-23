@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca8798af83108ca5e8bdfe5918a25423fd934d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84436085"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544351"
 ---
 現在、Azure マネージド ディスクには 4 種類のディスクがあり、それぞれの種類は特定の顧客シナリオを対象としています。
 
@@ -21,8 +21,8 @@ ms.locfileid: "84436085"
 
 次の表では、使用するものを決定するときの参考に、マネージド ディスクの Ultra Disk、Premium ソリッド ステート ドライブ (SSD)、Standard SSD、Standard HDD (ハード ディスク ドライブ) を比較します。
 
-|   | Ultra Disk   | Premium SSD   | Standard SSD   | Standard HDD   |
-|---------|---------|---------|---------|---------|
+| Detail | Ultra ディスク | Premium SSD | Standard SSD | Standard HDD |
+| ------ | ---------- | ----------- | ------------ | ------------ |
 |ディスクの種類   |SSD   |SSD   |SSD   |HDD   |
 |シナリオ   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md) やトップ レベルのデータベース (たとえば SQL や Oracle) などの I/O 集約型のワークロードと、その他のトランザクションが多いワークロード。   |運用環境のワークロードやパフォーマンスに影響されやすいワークロード   |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト   |バックアップ、重要ではない、不定期に起こるアクセス   |
 |最大ディスク サイズ   |65,536 ギビバイト (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |

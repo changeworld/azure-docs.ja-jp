@@ -3,17 +3,17 @@ title: Application Insights で Docker アプリケーションを監視する |
 description: Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539926"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights で Docker アプリケーションを監視する (非推奨)
 
 > [!NOTE]
-> このソリューションは非推奨になっています。 コンテナー監視の現状について詳しくは、[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) に関する記事を確認することをお勧めします。
+> このソリューションは非推奨になっています。 コンテナー監視の現状について詳しくは、[コンテナーに対する Azure Monitor](../insights/container-insights-overview.md) に関する記事を確認することをお勧めします。
 
 [Docker](https://www.docker.com/) コンテナーから取得したライフサイクル イベントとパフォーマンス カウンターを Application Insights でグラフ化できます。 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) イメージをホストのコンテナーにインストールすると、ホストとその他のイメージのパフォーマンス カウンターが表示されます。
 

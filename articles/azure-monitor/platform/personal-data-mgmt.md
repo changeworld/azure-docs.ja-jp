@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740452"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539331"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -67,8 +67,8 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *メモリ内および転送中のデータ*:Application Insights では、例外、要求、依存関係の呼び出し、およびトレースが追跡されます。 プライベート データは、多くの場合、コードや HTTP 呼び出しのレベルで収集できます。 例外、要求、依存関係、およびトレース テーブルを確認して、このようなデータをすべて識別します。 可能な場所では[テレメトリ初期化子](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)を使用してこのデータを難読化します。
-* *スナップショット デバッガーのキャプチャ*:Application Insights の[スナップショット デバッガー](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)機能では、アプリケーションの実稼働インスタンスで例外がキャッチされるたびにデバッグのスナップショットを収集できます。 スナップショットでは、例外と、スタックに含まれるすべてのステップのローカル変数の値にたどり着く完全なスタック トレースが公開されます。 残念ながら、この機能では、スナップ ポイントを選択的に削除したり、スナップショット内のデータにプログラムからアクセスしたりすることができません。 そのため、既定のスナップショット保有期間のペースではお客様のコンプライアンス要件が満たされない場合は、この機能を無効にすることをお勧めします。
+* *メモリ内および転送中のデータ*:Application Insights では、例外、要求、依存関係の呼び出し、およびトレースが追跡されます。 プライベート データは、多くの場合、コードや HTTP 呼び出しのレベルで収集できます。 例外、要求、依存関係、およびトレース テーブルを確認して、このようなデータをすべて識別します。 可能な場所では[テレメトリ初期化子](../app/api-filtering-sampling.md)を使用してこのデータを難読化します。
+* *スナップショット デバッガーのキャプチャ*:Application Insights の[スナップショット デバッガー](../app/snapshot-debugger.md)機能では、アプリケーションの実稼働インスタンスで例外がキャッチされるたびにデバッグのスナップショットを収集できます。 スナップショットでは、例外と、スタックに含まれるすべてのステップのローカル変数の値にたどり着く完全なスタック トレースが公開されます。 残念ながら、この機能では、スナップ ポイントを選択的に削除したり、スナップショット内のデータにプログラムからアクセスしたりすることができません。 そのため、既定のスナップショット保有期間のペースではお客様のコンプライアンス要件が満たされない場合は、この機能を無効にすることをお勧めします。
 
 ## <a name="how-to-export-and-delete-private-data"></a>プライベート データをエクスポートして削除する方法
 
@@ -101,7 +101,7 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 
 #### <a name="log-data"></a>ログ データ
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します 
+* [POST purge](/rest/api/loganalytics/workspacepurge/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します 
 * 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 次に例を示します。
 
     ```
@@ -113,7 +113,7 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 
 #### <a name="application-data"></a>アプリケーション データ
 
-* [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します
+* [POST purge](/rest/api/application-insights/components/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します
 * 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 次に例を示します。
 
    ```

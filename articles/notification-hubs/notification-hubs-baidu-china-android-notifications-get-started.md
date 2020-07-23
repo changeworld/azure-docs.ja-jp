@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a605a11b1effd5d272dc8123f7e9c5c44262a3e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223960"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530204"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
@@ -424,10 +424,10 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 通知を送信するためのさまざまな手法を次に示します。
 
-* **REST インターフェイス**: [REST インターフェイス](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用すると、任意のバックエンド プラットフォームの通知をサポートできます。
+* **REST インターフェイス**: [REST インターフェイス](/previous-versions/azure/reference/dn223264(v=azure.100))を使用すると、任意のバックエンド プラットフォームの通知をサポートできます。
 * **Microsoft Azure Notification Hubs .NET SDK**: Visual Studio 用の NuGet パッケージ マネージャーで、[Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を実行します。
 * **Node.js**:[Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
-* **Mobile Apps**: Notification Hubs に統合されている Azure App Service Mobile Apps のバックエンドから通知を送信する方法の例については、[モバイル アプリにプッシュ通知を追加](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)する方法を説明したページを参照してください。
+* **Mobile Apps**: Notification Hubs に統合されている Azure App Service Mobile Apps のバックエンドから通知を送信する方法の例については、[モバイル アプリにプッシュ通知を追加](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)する方法を説明したページを参照してください。
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(省略可能) .NET コンソール アプリケーションから通知を送信する

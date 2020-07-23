@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361957"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539739"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -79,9 +79,9 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
 ## <a name="diagnostic-settings"></a>診断設定
 診断設定では、特定のリソースのリソース ログとメトリックを送信する場所を定義します。 使用できる送信先は次のとおりです。
 
-- [Log Analytics ワークスペース](../platform/resource-logs-collect-workspace.md) - 強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせてデータを分析でき、ログ アラートや視覚化などの Azure Monitor の他の機能を利用することもできます。 
-- [イベント ハブ](../platform/resource-logs-stream-event-hubs.md) - サードパーティの SIEM や他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。 
-- [Azure ストレージ アカウント](../platform/resource-logs-collect-storage.md)- 監査、スタティック分析、またはバックアップに役立ちます。
+- [Log Analytics ワークスペース](../platform/resource-logs.md#send-to-log-analytics-workspace) - 強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせてデータを分析でき、ログ アラートや視覚化などの Azure Monitor の他の機能を利用することもできます。 
+- [イベント ハブ](../platform/resource-logs.md#send-to-azure-event-hubs) - サードパーティの SIEM や他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。 
+- [Azure ストレージ アカウント](../platform/resource-logs.md#send-to-azure-storage)- 監査、スタティック分析、またはバックアップに役立ちます。
 
 「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../platform/diagnostic-settings.md)」の手順に従って、Azure portal で診断設定を作成および管理します。 テンプレートで診断設定を定義し、作成時にリソースの完全な監視を有効にするには、「[Azure で Resource Manager テンプレートを使用して診断設定を作成する](../platform/diagnostic-settings-template.md)」を参照してください。
 
@@ -114,7 +114,7 @@ Azure portal でメトリックを分析するには、ほとんどのサービ�
 ### <a name="activity-log"></a>アクティビティ ログ 
 Azure portal でアクティビティ ログのエントリを表示します。初期フィルターは現在のリソースに設定されています。 アクティビティ ログにアクセスしてログ クエリやブックで使用するには、アクティビティ ログを Log Analytics ワークスペースにコピーします。 
 
-- さまざまな方法を使用したアクティビティ ログの表示とエントリの取得について詳しくは、「[Azure アクティビティ ログ イベントを表示して取得する](../platform/activity-log-view.md)」を参照してください。
+- さまざまな方法を使用したアクティビティ ログの表示とエントリの取得について詳しくは、「[Azure アクティビティ ログ イベントを表示して取得する](../platform/activity-log.md#view-the-activity-log)」を参照してください。
 - ログに記録される特定のイベントについては、お使いの Azure サービスのドキュメントを参照してください。
 
 ![アクティビティ ログ](media/monitor-azure-resource/activity-log.png)
@@ -125,8 +125,8 @@ Azure Monitor ログを使用すると、複数のサービスや他のデータ
 [Log Analytics](../log-query/get-started-portal.md) では[ログ クエリ](../log-query/log-query-overview.md)を使用できます。これは、すべての機能を備えたクエリ言語を使用してログ データの高度な分析を実行できる、Azure Monitor の強力な機能です。 [クエリ スコープ](../log-query/scope.md#query-scope)としてリソースを使用してログ クエリを操作するには、Azure リソースの **[監視]** メニューの **[ログ]** から Log Analytics を開きます。 これにより、そのリソースだけについて複数のテーブルのデータを分析できます。 すべてのリソースのログにアクセスするには、Azure Monitor のメニューから **[ログ]** を使用します。 
 
 - ログ クエリの記述に使用されるクエリ言語の使用に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../log-query/get-started-queries.md)」を参照してください。
-- Azure Monitor ログでのリソース ログの収集方法と、クエリでそれらにアクセスする方法の詳細については、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](../platform/resource-logs-collect-workspace.md)」を参照してください。
-- Azure Monitor ログでのリソース ログ データの構造については、「[収集モード](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode)」を参照してください。
+- Azure Monitor ログでのリソース ログの収集方法と、クエリでそれらにアクセスする方法の詳細については、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](../platform/resource-logs.md#send-to-log-analytics-workspace)」を参照してください。
+- Azure Monitor ログでのリソース ログ データの構造については、「[収集モード](../platform/resource-logs.md#send-to-log-analytics-workspace)」を参照してください。
 - Azure Monitor ログでのそのテーブルの詳細については、各 Azure サービスのドキュメントを参照してください。
 
 ![ログ](media/monitor-azure-resource/logs.png)
@@ -163,4 +163,4 @@ REST API を使用して、リソースから収集された監視データを�
 
 ## <a name="next-steps"></a>次のステップ
 
-* さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/diagnostic-logs-schema.md)」を参照してください。  
+* さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/resource-logs-schema.md)」を参照してください。  

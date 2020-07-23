@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 0800a15b215b37ceb75abc0d6480331d642dc746
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124505"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538906"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -30,8 +30,8 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 **アンマネージド** | はい | はい
 **マネージド**  | はい | はい
 
-- [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/general/overview.md)、[KEK](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek) に関する詳細を参照してください。
-- Azure VM ディスクの暗号化については、[よくあるご質問](../security/azure-security-disk-encryption-faq.md)に関するページを参照してください。
+- [ADE](../security/fundamentals/azure-disk-encryption-vms-vmss.md)、[Key Vault](../key-vault/general/overview.md)、[KEK](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek) に関する詳細を参照してください。
+- Azure VM ディスクの暗号化については、[よくあるご質問](../security/fundamentals/azure-disk-encryption-vms-vmss.md)に関するページを参照してください。
 
 ### <a name="limitations"></a>制限事項
 
@@ -45,7 +45,7 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 開始する前に、以下を行います。
 
-1. ADE が有効にされた 1 つまたは複数の [Windows](../security/azure-security-disk-encryption-windows.md) または [Linux](../virtual-machines/linux/disk-encryption-overview.md) の VM があることを確認します。
+1. ADE が有効にされた 1 つまたは複数の [Windows](../virtual-machines/linux/disk-encryption-overview.md) または [Linux](../virtual-machines/linux/disk-encryption-overview.md) の VM があることを確認します。
 2. Azure VM バックアップの[サポート マトリックスを確認](backup-support-matrix-iaas.md)します。
 3. Recovery Services のバックアップ コンテナーをまだお持ちでない場合は、[作成](backup-azure-arm-vms-prepare.md#create-a-vault)します。
 4. 既にバックアップが有効になっている VM に対して暗号化を有効にしている場合、中断せずにバックアップを継続できるように、Key Vault へのアクセス許可を Backup に提供する必要があるだけです。 これらのアクセス許可に関する[詳細](#provide-permissions)を参照してください。

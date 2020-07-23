@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77115615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525825"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Azure サービスの中断が Azure VM に影響を与える場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
@@ -35,7 +35,7 @@ VM に Azure Site Recovery を構成して、1 回のクリックによってわ
 
 
 > [!NOTE]
-> ユーザーはこのプロセスを制御できないこと、およびリージョン全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、 [ディザスター リカバリーのためのデータ戦略](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)に関するセクションをご覧ください。
+> ユーザーはこのプロセスを制御できないこと、およびリージョン全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、 [ディザスター リカバリーのためのデータ戦略](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)に関するセクションをご覧ください。
 >
 >
 
@@ -45,7 +45,7 @@ VM に Azure Site Recovery を構成して、1 回のクリックによってわ
 
 - ディザスター リカバリーと高可用性戦略を実装する方法の詳細については、[Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。
 
-- クラウド プラットフォームの機能の詳細な技術について理解を深めるには、「 [Azure の回復性技術ガイダンス](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)」を参照してください。
+- クラウド プラットフォームの機能の詳細な技術について理解を深めるには、「 [Azure の回復性技術ガイダンス](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)」を参照してください。
 
 
 - 不明な点がある場合、または Microsoft による代理操作をご希望の場合は、 [カスタマー サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)までご連絡ください。

@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864404"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538821"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -28,7 +28,7 @@ Azure VM エージェントが停止しているか、古くなっているか�
 - **Azure portal から [VM] > [設定] > [プロパティ] ペインを開いて**、VM の **[状態]** が **[実行中]** であること、また、 **[エージェントの状態]** が **[準備完了]** になっていることを確認します。 VM エージェントが停止しているか、不整合な状態になっている場合は、エージェントを再起動する<br>
   - Windows VM の場合は、次の[手順](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)を実行して、ゲスト エージェントを再起動します。<br>
   - Linux VM の場合は、次の[手順](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)を実行して、ゲスト エージェントを再起動します。
-- **Azure portal を開いて [VM] > [設定] > [拡張機能]** に移動し、すべての拡張機能が **[プロビジョニング成功]** 状態になっていることを確認します。 そうでない場合は、こちらの[手順](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)に従って問題を解決してください。
+- **Azure portal を開いて [VM] > [設定] > [拡張機能]** に移動し、すべての拡張機能が **[プロビジョニング成功]** 状態になっていることを確認します。 そうでない場合は、こちらの[手順](#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)に従って問題を解決してください。
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - Could not communicate with the VM agent for snapshot status (スナップショットの状態について VM エージェントと通信できませんでした)
 
@@ -52,7 +52,7 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 **エラー コード**:UserErrorVmProvisioningStateFailed<br>
 **エラー メッセージ**:VM がプロビジョニングに失敗した状態<br>
 
-このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)」を参照してください。
+このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)」を参照してください。
 
 - VMSnapshot 拡張機能が失敗の状態になっている場合は、失敗した拡張機能を右クリックして削除します。 オンデマンド バックアップをトリガーする。 このアクションにより、拡張機能が再インストールされ、バックアップ ジョブが実行されます。  <br>
 - 他の拡張機能が失敗状態にあると、バックアップが干渉される可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。
@@ -80,7 +80,7 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 **エラー コード**:UserErrorKeyvaultPermissionsNotConfigured <br>
 **エラー メッセージ**:Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。 <br>
 
-暗号化された VM のバックアップ操作を正常に完了するには、キー コンテナーへのアクセス許可が必要です。 アクセス許可は、[Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) または [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) を使用して設定できます。
+暗号化された VM のバックアップ操作を正常に完了するには、キー コンテナーへのアクセス許可が必要です。 アクセス許可は、[Azure portal](./backup-azure-vms-encryption.md) または [PowerShell](./backup-azure-vms-automation.md#enable-protection) を使用して設定できます。
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - Snapshot operation failed due to no network connectivity on the virtual machine (仮想マシンがネットワークに接続していないためにスナップショット操作が失敗しました)
 
@@ -130,9 +130,9 @@ VM をバックアップするときにディスク サイズが 32 TB よりも
 2. Recovery Services コンテナーの一覧から、バックアップの構成先のコンテナーを選択します。
 3. コンテナーのダッシュボード メニューの **[バックアップ ジョブ]** をクリックすると、すべてのバックアップ ジョブが表示されます。
    - バックアップ ジョブが進行中の場合は、そのジョブが完了するまで待機する、そのバックアップ ジョブを取り消します。
-     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) を使用します。
+     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) を使用します。
    - 別のコンテナー内でバックアップを再構成した場合は、古いコンテナー内で実行されているバックアップ ジョブがないことを確認します。 存在する場合は、バックアップ ジョブを取り消します。
-     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) を使用します
+     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) を使用します
 4. バックアップ操作を再試行してください。
 
 スケジュールしたバックアップ操作に長い時間がかかり、次のバックアップの構成と競合している場合は、[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)、[バックアップ パフォーマンス](backup-azure-vms-introduction.md#backup-performance)、および[復元に関する考慮事項](backup-azure-vms-introduction.md#backup-and-restore-considerations)について確認してください。
@@ -167,7 +167,7 @@ VM エージェントが破損しているまたはサービスが停止して�
 6. オンデマンド バックアップを実行します。
    - ポータルの **[今すぐバックアップ]** を選択します。
 
-さらに、VM に [Microsoft .NET 4.5 がインストールされていること](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)を確認します。 VM エージェントがサービスと通信するためには .NET 4.5 が必要です。
+さらに、VM に [Microsoft .NET 4.5 がインストールされていること](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)を確認します。 VM エージェントがサービスと通信するためには .NET 4.5 が必要です。
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM にインストールされているエージェントが古くなっている (Linux VM の場合)
 
@@ -175,7 +175,7 @@ VM エージェントが破損しているまたはサービスが停止して�
 
 Linux VM の場合、エージェントに関連するエラーまたは拡張機能に関連するエラーのほとんどは、古い VM エージェントに影響する問題が原因で発生します。 この問題のトラブルシューティングを行うには、次の一般的なガイドラインに従います。
 
-1. [Linux VM エージェントを更新](../virtual-machines/linux/update-agent.md)する手順に従います。
+1. [Linux VM エージェントを更新](../virtual-machines/extensions/update-linux-agent.md)する手順に従います。
 
    > [!NOTE]
    > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
@@ -207,7 +207,7 @@ VM エージェント構成ファイルのオプションの完全な一覧に�
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>アプリケーション制御ソリューションが IaaSBcdrExtension.exe をブロックしている
 
-[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (または別のアプリケーション制御ソリューション) を実行しており、規則が発行元またはパス ベースの場合、**IaaSBcdrExtension.exe** 実行可能ファイルの実行がブロックされる可能性があります。
+[AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (または別のアプリケーション制御ソリューション) を実行しており、規則が発行元またはパス ベースの場合、**IaaSBcdrExtension.exe** 実行可能ファイルの実行がブロックされる可能性があります。
 
 #### <a name="solution"></a>解決策
 

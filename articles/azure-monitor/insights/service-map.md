@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203130"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539773"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -241,7 +241,7 @@ Service Map で関連するアラートを表示できるようにするには�
 
 ## <a name="service-desk-integration"></a>サービス デスクとの統合
 
-Service Map と IT Service Management Connector との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)に関するページを参照してください。
+Service Map と IT Service Management Connector との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](../platform/itsmc-overview.md)に関するページを参照してください。
 
 **[Machine Service Desk]\(マシン サービス デスク\)** ウィンドウでは、選択した時間範囲内で選択したサーバーの IT Service Management イベントすべてが一覧表示されます。 進行中の項目がある場合はサーバーにアイコンが表示され、[Machine Service Desk]\(マシン サービス デスク\) ウィンドウにはそれらの項目が一覧表示されます。
 
@@ -270,7 +270,7 @@ Service Map と Change Tracking との統合は、両方のソリューション
 
 ![[Machine Performance]\(マシンのパフォーマンス\) ウィンドウ](media/service-map/machine-performance.png)
 
-パフォーマンス データを表示するには、[適切な Log Analytics パフォーマンス カウンターを有効](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)にする必要があります。  有効にするカウンターは次のとおりです。
+パフォーマンス データを表示するには、[適切な Log Analytics パフォーマンス カウンターを有効](../platform/data-sources-performance-counters.md)にする必要があります。  有効にするカウンターは次のとおりです。
 
 Windows:
 - Processor(*)\\% Processor Time
@@ -540,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST API
 
-サービス マップのすべてのサーバー、プロセス、および依存関係データは、[サービス マップ REST API](https://docs.microsoft.com/rest/api/servicemap/) を使用して取得できます。
+サービス マップのすべてのサーバー、プロセス、および依存関係データは、[サービス マップ REST API](/rest/api/servicemap/) を使用して取得できます。
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 

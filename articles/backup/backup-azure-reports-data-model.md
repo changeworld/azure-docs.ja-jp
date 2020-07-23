@@ -3,12 +3,12 @@ title: Azure Backup 診断イベントのデータ モデル
 description: このデータ モデルは、Log Analytics (LA) に診断イベントを送信するリソース固有モードを参照しています。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484498"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538872"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup 診断イベントのデータ モデル
 
@@ -220,5 +220,5 @@ ms.locfileid: "84484498"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Log Analytics に診断データを送信する方法について学習してください](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
-- [リソース固有のテーブルにクエリを記述する方法について説明します](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)
+- [Log Analytics に診断データを送信する方法について学習してください](./backup-azure-diagnostic-events.md)
+- [リソース固有のテーブルにクエリを記述する方法について説明します](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)

@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/13/2020
+ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134668"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539229"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -2188,7 +2188,7 @@ ms.locfileid: "86134668"
 > | locations / usages | いいえ | いいえ |
 > | locations / validateresourceownership | いいえ | いいえ |
 > | locations / virtualnetworkavailableendpointservices | いいえ | いいえ |
-> | natgateways | はい | はい |
+> | natgateways | いいえ | × |
 > | networkexperimentprofiles | いいえ | いいえ |
 > | networkintentpolicies | はい | はい |
 > | networkinterfaces | はい | はい |

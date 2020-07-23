@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 978cb7ece1f8b3e16815c1dc49e4983dc393cbfc
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937470"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539722"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Application Insights 用 Azure Web アプリ拡張機能のリリース ノート
 
@@ -21,7 +21,7 @@ Application Insights 用 Azure Web アプリ拡張機能の詳細については
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 - 現在使用している拡張機能のバージョンは、どうすれば確認できますか?
-    - `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` にアクセスします。 詳細については、[拡張機能またはエージェント ベースの監視に関するステップ バイ ステップ トラブルシューティング ガイド](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net#troubleshooting)を参照してください。
+    - `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` にアクセスします。 詳細については、[拡張機能またはエージェント ベースの監視に関するステップ バイ ステップ トラブルシューティング ガイド](./azure-web-apps.md?tabs=net#troubleshooting)を参照してください。
 
 - プライベート拡張機能を使用している場合はどうすればよいですか?
     - プライベート サイト拡張機能は現在サポートされていないため、アンインストールしてください。
