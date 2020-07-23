@@ -3,12 +3,12 @@ title: Windows デスクトップ アプリでの使用状況とパフォーマ�
 description: Application Insights を使用して、Windows デスクトップ アプリの使用状況とパフォーマンスを分析します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718786"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499190"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
@@ -73,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 既定では、この SDK を使うと、テレメトリを出力するシステムのコンピューター名が収集されて保存されます。
 
-コンピューター名は、内部課金の目的で Application Insights の[従来の Enterprise (Per Node) 価格レベル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)によって使用されます。 既定では、テレメトリ初期化子を使用して `telemetry.Context.Cloud.RoleInstance` をオーバーライドする場合、別のプロパティ `ai.internal.nodeName` が送信されますが、これにはまだコンピューター名の値が含まれています。 この値は Application Insights のテレメトリでは保存されませんが、従来のノード ベースの課金モデルとの下位互換性を確保するために、取り込み時に内部的に使用されます。
+コンピューター名は、内部課金の目的で Application Insights の[従来の Enterprise (Per Node) 価格レベル](./pricing.md#legacy-enterprise-per-node-pricing-tier)によって使用されます。 既定では、テレメトリ初期化子を使用して `telemetry.Context.Cloud.RoleInstance` をオーバーライドする場合、別のプロパティ `ai.internal.nodeName` が送信されますが、これにはまだコンピューター名の値が含まれています。 この値は Application Insights のテレメトリでは保存されませんが、従来のノード ベースの課金モデルとの下位互換性を確保するために、取り込み時に内部的に使用されます。
 
-[従来の Enterprise (Per Node) 価格レベル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)を使用していて、単にコンピューター名のストレージをオーバーライドする必要がある場合は、テレメトリ初期化子を使用します。
+[従来の Enterprise (Per Node) 価格レベル](./pricing.md#legacy-enterprise-per-node-pricing-tier)を使用していて、単にコンピューター名のストレージをオーバーライドする必要がある場合は、テレメトリ初期化子を使用します。
 
 **以下のようにカスタム TelemetryInitializer を作成します。**
 
@@ -116,7 +116,7 @@ namespace CustomInitializer.Telemetry
 
 ## <a name="override-transmission-of-computer-name"></a>コンピューター名の転送をオーバーライドする
 
-[従来の Enterprise (Per Node) 価格レベル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)を利用しておらず、コンピューター名を含むテレメトリが一切送信されないようにするには、テレメトリ プロセッサを使用する必要があります。
+[従来の Enterprise (Per Node) 価格レベル](./pricing.md#legacy-enterprise-per-node-pricing-tier)を利用しておらず、コンピューター名を含むテレメトリが一切送信されないようにするには、テレメトリ プロセッサを使用する必要があります。
 
 ### <a name="telemetry-processor"></a>テレメトリ プロセッサ
 
@@ -172,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> [従来の Enterprise (Per Node) 価格レベル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)を使用している場合でも、技術的には前述のテレメトリ プロセッサを使用できますが、ノードのノードあたりの料金を適切に区別できないため、課金が過剰になる可能性があります。
+> [従来の Enterprise (Per Node) 価格レベル](./pricing.md#legacy-enterprise-per-node-pricing-tier)を使用している場合でも、技術的には前述のテレメトリ プロセッサを使用できますが、ノードのノードあたりの料金を適切に区別できないため、課金が過剰になる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 * [ダッシュボードを作成する](../../azure-monitor/app/overview-dashboard.md)
 * [診断検索](../../azure-monitor/app/diagnostic-search.md)
 * [メトリックを探索する](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics クエリを作成する](../../azure-monitor/app/analytics.md)
-
+* [Analytics クエリを作成する](../log-query/log-query-overview.md)

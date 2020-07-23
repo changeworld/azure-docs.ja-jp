@@ -3,12 +3,12 @@ title: Azure Kubernetes Service クラスターの監視を停止する方法 | 
 description: この記事では、コンテナー用の Azure Monitor で Azure AKS クラスターの監視を中断する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa932815ea46da2603c2621bef40e467fdf16c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691936"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499054"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
 
@@ -17,7 +17,7 @@ AKS クラスターの監視を有効にした後、監視する必要がなく�
 
 ## <a name="azure-cli"></a>Azure CLI
 
-コンテナーに対して Azure Monitor を無効にするには、[az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) コマンドを使用します。 このコマンドでは、クラスター ノードからエージェントが削除されます。ソリューションや、既に収集されて Azure Monitor リソースに格納されているデータは削除されません。  
+コンテナーに対して Azure Monitor を無効にするには、[az aks disable-addons](/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) コマンドを使用します。 このコマンドでは、クラスター ノードからエージェントが削除されます。ソリューションや、既に収集されて Azure Monitor リソースに格納されているデータは削除されません。  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -37,7 +37,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 >テンプレートはクラスターの同じリソース グループ内にデプロイする必要があります。 このテンプレートの使用時にその他のいずれかのプロパティまたはアドオンを省略すると、それらがクラスターから削除される場合があります。 たとえば、ご利用のクラスターに実装されている RBAC ポリシーの "*enableRBAC*" が挙げられるほか、AKS クラスターにタグが指定されている場合は "*aksResourceTagValues*" が該当します。  
 >
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ### <a name="create-template"></a>テンプレートの作成
 
@@ -164,4 +164,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、「[Azure Portal で Azure Log Analytics ワークスペースを削除する](../../log-analytics/log-analytics-manage-del-workspace.md)」を参照してください。 上記の手順 4 でコピーした、**ワークスペース リソース ID** は、この後の手順で必要になります。
+クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、「[Azure Portal で Azure Log Analytics ワークスペースを削除する](../platform/delete-workspace.md)」を参照してください。 上記の手順 4 でコピーした、**ワークスペース リソース ID** は、この後の手順で必要になります。

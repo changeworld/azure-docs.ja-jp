@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494668"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
@@ -98,7 +98,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 \* Log Analytics API では、workspaceId は consumerId という名称になります。
 
 > [!NOTE]
-> その他のプロパティについては、Azure の「[Windows コンピューターを Azure Monitor に接続する](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)」を参照してください。
+> その他のプロパティについては、Azure の「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/agent-windows.md)」を参照してください。
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 

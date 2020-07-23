@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44fbbbdb1c36f74a4131d4e5a82de6ef058381f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508754"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>特殊化されたイメージを使用して VM を作成する 
 
 共有イメージ ギャラリーに格納されている特殊化されたイメージ バージョンから VM を作成します。 一般化されたイメージ バージョンを使用して VM を作成する場合は、「[一般化されたイメージを使用して VM を作成する](vm-generalized-image-version-powershell.md)」を参照してください。
 
-特殊化されたイメージ バージョンが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットの使用。 
+特殊化されたイメージ バージョンが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](/powershell/module/az.compute/new-azvm) コマンドレットの使用。 
 
 この例では、イメージ定義 ID を使用して、新しい VM で最新バージョンのイメージが使用されるようにしています。 `Set-AzVMSourceImage -Id` にイメージ バージョン ID を使用して、特定のバージョンを使用することも可能です。 たとえば、イメージ バージョン *1.0.0* を使用するには、次のように入力します: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
 

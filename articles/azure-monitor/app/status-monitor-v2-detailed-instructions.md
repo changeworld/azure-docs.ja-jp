@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c74d4f0b2e0b2d8ca09c9b2c1f1091594f5657dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111016"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499326"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -29,9 +29,7 @@ ms.locfileid: "86111016"
 PowerShell でコンピューターに対して変更を行うには、管理者レベルのアクセス許可が必要です。
 ### <a name="execution-policy"></a>実行ポリシー
 - 説明:既定では、PowerShell スクリプトの実行は無効になっています。 RemoteSigned スクリプトは現在のスコープに対してのみ許可することをお勧めします。
-- リファレンス: 「[About Execution Policies (実行ポリシーの概要)](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)」と「[Set-ExecutionPolicy](
-https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
-)」
+- リファレンス: 「[About Execution Policies (実行ポリシーの概要)](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)」と「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)」
 - コマンド: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
 - 省略可能なパラメーター:
     - `-Force` 確認プロンプトをバイパスします。
@@ -80,7 +78,7 @@ SerializationVersion           1.1.0.1
 1. 管理者として昇格された実行ポリシーで PowerShell を実行します。
 2. NuGet パッケージ プロバイダーをインストールします。
     - 説明:PowerShellGallery などの NuGet ベースのリポジトリとやり取りするには、このプロバイダーが必要です
-    - リファレンス: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
+    - リファレンス: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
     - コマンド: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
     - 省略可能なパラメーター:
         - `-Proxy` 要求用のプロキシ サーバーを指定します。
@@ -100,7 +98,7 @@ SerializationVersion           1.1.0.1
 
 3. PowerShell ギャラリーを信頼できるリポジトリとして構成します。
     - 説明:既定では、PowerShell ギャラリーは信頼されていないリポジトリです。
-    - リファレンス: [Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6)。
+    - リファレンス: [Set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6)。
     - コマンド: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
     - 省略可能なパラメーター:
         - `-Proxy` 要求用のプロキシ サーバーを指定します。
@@ -146,7 +144,7 @@ SerializationVersion           1.1.0.1
 1. PowerShell ギャラリーのすべての前提条件が満たされていることを確認します。
 2. 管理者として昇格された実行ポリシーで PowerShell を実行します。
 3. Az.ApplicationMonitor モジュールをインストールします。
-    - リファレンス: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6)。
+    - リファレンス: [Install-Module](/powershell/module/powershellget/install-module?view=powershell-6)。
     - コマンド: `Install-Module -Name Az.ApplicationMonitor`。
     - 省略可能なパラメーター:
         - `-Proxy` 要求用のプロキシ サーバーを指定します。
@@ -172,7 +170,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Archive (v1.0.1.0) を使用して zip ファイルとして nupkg を解凍する
 
 - 説明:Microsoft.PowerShell.Archive (v1.0.1.0) の基本バージョンでは、nupkg ファイルを解凍できません。 ファイル名を .zip 拡張子に変更します。
-- リファレンス: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
+- リファレンス: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
 - コマンド:
 
     ```console
@@ -186,7 +184,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Expand-Archive (v1.1.0.0) を使用して nupkg を解凍する
 
 - 説明:拡張子を変更せずに nupkg ファイルを解凍するには、最新バージョンの Expand-Archive を使用します。
-- リファレンス: 「[Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)」と「[Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)」。
+- リファレンス: 「[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)」と「[Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)」。
 - コマンド:
 
     ```console
@@ -199,7 +197,7 @@ SerializationVersion           1.1.0.1
 手動でダウンロードした PowerShell モジュールを PowerShell ディレクトリにインストールし、PowerShell セッションで検出されるようにします。
 詳細については、「[PowerShell モジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module)」を参照してください。
 
-他のディレクトリにモジュールをインストールする場合は、[Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) を使ってモジュールを手動でインポートします。
+他のディレクトリにモジュールをインストールする場合は、[Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) を使ってモジュールを手動でインポートします。
 
 > [!IMPORTANT] 
 > DLL は相対パスでインストールされます。
@@ -218,14 +216,14 @@ SerializationVersion           1.1.0.1
 Az.ApplicationMonitor を PowerShell ギャラリーからダウンロードしてインストールする PowerShell コマンドでは、`-Proxy` パラメーターがサポートされています。
 インストール スクリプトを作成するときは、上記の手順を確認します。
 
-Application Insights SDK では、アプリのテレメトリを Microsoft に送信する必要があります。 web.config ファイルでアプリのプロキシ設定を構成することをお勧めします。 詳細については、「[Application Insights の FAQ」の「プロキシのパススルー](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)」を参照してください。
+Application Insights SDK では、アプリのテレメトリを Microsoft に送信する必要があります。 web.config ファイルでアプリのプロキシ設定を構成することをお勧めします。 詳細については、「[Application Insights の FAQ」の「プロキシのパススルー](../faq.md#proxy-passthrough)」を参照してください。
 
 
 ## <a name="enable-monitoring"></a>監視を有効にする
 
 モニターを有効にするには `Enable-ApplicationInsightsMonitoring` コマンドを使用します。
 
-このコマンドレットの使用方法の詳細については、[API リファレンス](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)に関する記事を参照してください。
+このコマンドレットの使用方法の詳細については、[API リファレンス](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring)に関する記事を参照してください。
 
 
 
@@ -235,7 +233,7 @@ Application Insights SDK では、アプリのテレメトリを Microsoft に�
 
 - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します。
 - 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
-- より高度なクエリのために[分析を使用](../../azure-monitor/app/analytics.md)します。
+- より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
 - [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
 
  テレメトリの追加:

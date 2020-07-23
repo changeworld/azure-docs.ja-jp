@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 76ff9ff9479351eb3ec2a0e973fe3c44562adf55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653599"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508425"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "83653599"
 
 ## <a name="benefits"></a>メリット
 
-仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Windows VM 用の [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) から使用します。
+仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Windows VM 用の [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) から使用します。
 
 この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで役立ちます。 これは、ネットワークまたは管理ユーザーの構成が正しくないために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する、限られた方法の 1 つです。
 
@@ -94,7 +94,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="powershell"></a>PowerShell
 
-次の例では、[Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して Azure VM 上で PowerShell スクリプトを実行します。 このコマンドレットは、`-ScriptPath` パラメーターで参照されるスクリプトが、このコマンドレットの実行場所に対してローカルであることを想定しています。
+次の例では、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して Azure VM 上で PowerShell スクリプトを実行します。 このコマンドレットは、`-ScriptPath` パラメーターで参照されるスクリプトが、このコマンドレットの実行場所に対してローカルであることを想定しています。
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -102,9 +102,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>実行コマンドへのアクセスの制限
 
-実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、`Microsoft.Compute/locations/runCommands/read` アクセス許可が必要になります。 組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上のレベルには、このアクセス許可があります。
+実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、`Microsoft.Compute/locations/runCommands/read` アクセス許可が必要です。 組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上のレベルには、このアクセス許可があります。
 
-コマンドの実行には、`Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可が必要になります。 [仮想マシンの共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上のレベルには、このアクセス許可があります。
+コマンドの実行には、`Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可が必要です。 [仮想マシンの共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上のレベルには、このアクセス許可があります。
 
 実行コマンドを使用するには、いずれかの[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用するか、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成します。
 

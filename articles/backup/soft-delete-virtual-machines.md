@@ -3,12 +3,13 @@ title: 仮想マシンの論理的な削除
 description: 仮想マシンの論理的な削除によって、バックアップの安全性が向上するしくみについて説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: ba00b235ea70bcc2dabbd5a91a3f7003f9bbed49
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.custom: references_regions
+ms.openlocfilehash: e447db2c3f862d2f577a9e7d8767946375abf4e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82761424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503542"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>仮想マシンの論理的な削除
 
@@ -67,7 +68,7 @@ Azure portal に関する上記の説明にあるように、Azure PowerShell �
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Azure PowerShell を使用したバックアップ項目の削除
 
-[Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS コマンドレットを使用してバックアップ項目を削除します。
+[Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS コマンドレットを使用してバックアップ項目を削除します。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -94,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-次に、[Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS コマンドレットで削除操作を元に戻します。
+次に、[Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS コマンドレットで削除操作を元に戻します。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -104,7 +105,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 [バックアップを再開](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)して、保護を再び有効にします。
+バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 [バックアップを再開](./backup-azure-vms-automation.md#change-policy-for-backup-items)して、保護を再び有効にします。
 
 ## <a name="soft-delete-for-vms-using-rest-api"></a>REST API を使用した VM の論理的な削除
 

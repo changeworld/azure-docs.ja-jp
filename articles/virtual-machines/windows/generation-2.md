@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500312"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -21,30 +21,30 @@ ms.locfileid: "86144848"
 
 第 2 世代 VM では、第 1 世代 VM ではサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。 オンプレミスで実行される第 2 世代 VM には、Azure ではまだサポートされていない機能がいくつかあります。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。
 
-第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。 第 1 世代 VM と比較して、第 2 世代 VM ではブート時間やインストール時間が改善されている可能性があります。 第 2 世代 VM の概要、および第 1 世代と第 2 世代のいくつかの違いについては、「[Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」(Hyper-V で第 1 世代または第 2 世代のどちらの仮想マシンを作成すべきか) をご覧ください。
+第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。 第 1 世代 VM と比較して、第 2 世代 VM ではブート時間やインストール時間が改善されている可能性があります。 第 2 世代 VM の概要、および第 1 世代と第 2 世代のいくつかの違いについては、「[Should I create a generation 1 or 2 virtual machine in Hyper-V?](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」(Hyper-V で第 1 世代または第 2 世代のどちらの仮想マシンを作成すべきか) をご覧ください。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
-* [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [B シリーズ](../sizes-b-series-burstable.md)
 * [DCsv2 シリーズ](../dcv2-series.md)
 * [DSv2 シリーズ](../dv2-dsv2-series.md)および[Dsv3 シリーズ](../dv3-dsv3-series.md)
-* [Dasv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
+* [Dasv4 シリーズ](../dav4-dasv4-series.md)
 * [Esv3 シリーズ](../ev3-esv3-series.md)
-* [Easv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
+* [Easv4 シリーズ](../eav4-easv4-series.md)
 * [Fsv2 シリーズ](../fsv2-series.md)
-* [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [GS シリーズ](../sizes-previous-gen.md#gs-series)
 * [HB シリーズ](../hb-series.md)
 * [HC シリーズ](../hc-series.md)
-* [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](../lsv2-series.md)
+* [Ls シリーズ](../sizes-previous-gen.md#ls-series)と [Lsv2 シリーズ](../lsv2-series.md)
 * [M シリーズ](../m-series.md)
 * [Mv2 シリーズ](../mv2-series.md)<sup>1</sup>
 * [NCv2 シリーズ](../ncv2-series.md)と [NCv3 シリーズ](../ncv3-series.md)
 * [ND シリーズ](../nd-series.md)
 * [NVv3 シリーズ](../nvv3-series.md)
 
-<sup>1</sup> Mv2 シリーズは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](https://docs.microsoft.com/azure/virtual-machines/mv2-series)を参照してください。
+<sup>1</sup> Mv2 シリーズは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](../mv2-series.md)を参照してください。
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 
@@ -213,6 +213,6 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Hyper-V の第 2 世代仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)について学習します。
+* [Hyper-V の第 2 世代仮想マシン](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)について学習します。
 
 * オンプレミス システムから Azure にアップロードする [VHD を準備する](prepare-for-upload-vhd-image.md)方法を学習します。

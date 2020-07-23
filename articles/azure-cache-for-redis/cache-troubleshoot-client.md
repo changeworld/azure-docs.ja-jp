@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 9317999f8862cd9930870fecaf5be44d291c07a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829671"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506436"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 
@@ -84,12 +84,14 @@ Azure Portal で使用可能なメトリックか、またはコンピュータ�
 
 次の例では、要求 'A' と 'B' がすばやくサーバーに送信されます。 サーバーは、すばやく応答 'A' と 'B' を送信し始めます。 データ転送時間のため、サーバーがすばやく応答したとしても、応答 'B' は応答 'A' が終了するまで待つ必要があります。
 
-    |-------- 1 Second Timeout (A)----------|
-    |-Request A-|
-         |-------- 1 Second Timeout (B) ----------|
-         |-Request B-|
-                |- Read Response A --------|
-                                           |- Read Response B-| (**TIMEOUT**)
+```console
+|-------- 1 Second Timeout (A)----------|
+|-Request A-|
+     |-------- 1 Second Timeout (B) ----------|
+     |-Request B-|
+            |- Read Response A --------|
+                                       |- Read Response B-| (**TIMEOUT**)
+```
 
 この要求/応答を測定するのは困難です。 大きい要求や応答を追跡するように、クライアント コードをインストルメント化する必要があります。
 

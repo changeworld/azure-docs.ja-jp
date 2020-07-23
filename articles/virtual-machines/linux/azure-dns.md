@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135317"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494736"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。
@@ -121,7 +121,7 @@ DNS 転送は、仮想ネットワーク間の DNS 解決も可能にし、オ�
 
 Azure が提供する名前解決を使用すると、内部 DNS サフィックスが DHCP を使用して各仮想マシンに提供されます。 独自の名前解決のソリューションを使用している場合、このサフィックスは他の DNS アーキテクチャに干渉するため、仮想マシンには提供されません。 FQDN を使用してマシンを参照するか、VM でサフィックスを構成するために、次の PowerShell または API を使用して、サフィックスを決定することができます。
 
-* Azure Resource Manager によって管理される仮想ネットワークでは、サフィックスは[ネットワーク インターフェイス カード](https://msdn.microsoft.com/library/azure/mt163668.aspx) リソースから入手できます。 `azure network public-ip show <resource group> <pip name>` コマンドを実行して、NIC の FQDN が含まれているパブリック IP の詳細を表示することもできます。
+* Azure Resource Manager によって管理される仮想ネットワークでは、サフィックスは[ネットワーク インターフェイス カード](/rest/api/virtualnetwork/networkinterfaces) リソースから入手できます。 `azure network public-ip show <resource group> <pip name>` コマンドを実行して、NIC の FQDN が含まれているパブリック IP の詳細を表示することもできます。
 
 Azure へのクエリの転送がニーズに合わない場合は、独自の DNS ソリューションを提供する必要があります。  DNS 解決では次を行う必要があります。
 
@@ -131,6 +131,6 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 * 外部エージェントによる脅威を軽減するために、インターネットからのアクセスをセキュリティ保護する。
 
 > [!NOTE]
-> 最適なパフォーマンスのため、Azure DNS サーバーで仮想マシンを使用する場合は、IPv6 を無効にし、各 DNS サーバー仮想マシンに[インスタンスレベル パブリック IP](../../virtual-network/virtual-networks-instance-level-public-ip.md) を割り当てます。  
+> 最適なパフォーマンスのため、Azure DNS サーバーで仮想マシンを使用する場合は、IPv6 を無効にし、各 DNS サーバー仮想マシンに[インスタンスレベル パブリック IP](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) を割り当てます。  
 >
 >

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027903"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504334"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>テナント単位データベース SaaS アプリケーションで、シングル テナントを復元します。
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84027903"
 > * データベースを並列データベース (サイド バイ サイド) に復元する。
 > * 特定の場所にデータベースを復元し、既存のデータベースと置換する。
 
-|||
+| Pattern | 説明 |
 |:--|:--|
 | 並列データベースに復元する | このパターンは、レビュー、監査、コンプライアンスなどのタスクに使用され、テナントで以前の時点からのデータを調査できるようにします。 テナントの現在のデータベースはオンラインのままで、変化しません。 |
 | 特定の場所に復元する | このパターンは通常、テナントのデータを誤って削除または破損した後で、以前の特定の時点にテナントを回復するために使用されます。 元のデータベースはオフラインになり、復元されたデータベースに置き換えられます。 |

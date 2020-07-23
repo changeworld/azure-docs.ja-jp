@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807708"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499224"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -30,7 +30,7 @@ ms.locfileid: "85807708"
 メトリックやアクティビティ ログの収集など、自動的に有効になる Azure Monitor の機能は、無料で提供されます。 ログ クエリやアラートなどの他の機能については、関連コストが発生します。 詳細な価格については、[Azure Monitor の価格に関するページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Azure Monitor を有効にするにはどうすればよいですか?
-Azure Monitor は新しい Azure サブスクリプションを作成した時点で有効になり、[アクティビティ ログ](platform/activity-logs-overview.md)とプラットフォーム [メトリック](platform/data-platform-metrics.md)が自動的に収集されます。 Azure リソースの動作に関するさらに詳細な情報を収集するには[診断設定](platform/diagnostic-settings.md)を作成し、特定のサービスについて収集されたデータについて追加の分析を提供するには[監視ソリューション](insights/solutions.md)と[分析情報](insights/insights-overview.md)を追加します。 
+Azure Monitor は新しい Azure サブスクリプションを作成した時点で有効になり、[アクティビティ ログ](./platform/platform-logs-overview.md)とプラットフォーム [メトリック](platform/data-platform-metrics.md)が自動的に収集されます。 Azure リソースの動作に関するさらに詳細な情報を収集するには[診断設定](platform/diagnostic-settings.md)を作成し、特定のサービスについて収集されたデータについて追加の分析を提供するには[監視ソリューション](insights/solutions.md)と[分析情報](insights/insights-overview.md)を追加します。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Azure Monitor にアクセスするにはどうすればよいですか?
 Azure Monitor のすべての機能とデータには、Azure portal の **[モニター]** メニューからアクセスします。 さまざまな Azure サービスのメニューの **[監視]** セクションでは、特定のリソースに対してフィルター処理されたデータを使用して、同じツールにアクセスできます。 Azure Monitor データには、CLI、PowerShell、REST API を使用したさまざまなシナリオでもアクセスできます。
@@ -315,7 +315,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 * ブラウザー テレメトリ:送信者の IP アドレスを収集します。
 * サーバー テレメトリ:Application Insights モジュールでクライアントの IP アドレスが収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
-* Application Insights で IP アドレスと geo ロケーション データが収集される方法の詳細については、こちらの[記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)を参照してください。
+* Application Insights で IP アドレスと geo ロケーション データが収集される方法の詳細については、こちらの[記事](./app/ip-collection.md)を参照してください。
 
 
 別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細については、こちらを参照してください](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
@@ -328,7 +328,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>サーバーまたはデバイスが Azure との接続を失った場合、Application insights のテレメトリはどうなりますか?
 
-Web SDK を含むすべての SDK には、"信頼できるトランスポート" または "堅牢なトランスポート" が含まれています。 サーバーまたはデバイスが Azure との接続を失った場合、テレメトリは[ローカルにファイル システム](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (サーバー SDK) に、または HTML5 セッション ストレージ (Web SDK) に格納されます。 SDK は、インジェスト サービスが "古い" と見なすまで (ログの場合は 48 時間、メトリックの場合は 30 分)、このテレメトリの送信を定期的に再試行します。 古いテレメトリは削除されます。 ローカル ストレージがいっぱいになった場合など、場合によっては再試行は行われません。
+Web SDK を含むすべての SDK には、"信頼できるトランスポート" または "堅牢なトランスポート" が含まれています。 サーバーまたはデバイスが Azure との接続を失った場合、テレメトリは[ローカルにファイル システム](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) (サーバー SDK) に、または HTML5 セッション ストレージ (Web SDK) に格納されます。 SDK は、インジェスト サービスが "古い" と見なすまで (ログの場合は 48 時間、メトリックの場合は 30 分)、このテレメトリの送信を定期的に再試行します。 古いテレメトリは削除されます。 ローカル ストレージがいっぱいになった場合など、場合によっては再試行は行われません。
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>テレメトリで個人データが送信されることはありますか?
@@ -410,7 +410,7 @@ Azure Resource Monitor を使用して [PowerShell スクリプトを記述す�
 
 #### <a name="querying-the-telemetry"></a>テレメトリに対するクエリの実行
 
-[REST API](https://dev.applicationinsights.io/) を使用して [Analytics](app/analytics.md) クエリを実行します。
+[REST API](https://dev.applicationinsights.io/) を使用して [Analytics](./log-query/log-query-overview.md) クエリを実行します。
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>イベントにアラートを設定するには、どうすればよいですか?
 
@@ -477,7 +477,7 @@ Microsoft の SDK と [SDK API](app/api-custom-events-metrics.md) を使用す�
 #### <a name="proxy-passthrough"></a>プロキシのパススルー
 
 プロキシのパススルーは、マシン レベルとアプリケーション レベルのどちらかのプロキシを構成することで実現できます。
-詳細については、[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) に関する dotnet の記事を参照してください。
+詳細については、[DefaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) に関する dotnet の記事を参照してください。
  
  Web.config の例:
  ```xml
@@ -735,7 +735,7 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 ## <a name="next-steps"></a>次のステップ
 質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。
 
-- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
-- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Application Insights](/answers/topics/azure-monitor.html)
 
 Azure Monitor に関する一般的なフィードバックについては、[フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスしてください。

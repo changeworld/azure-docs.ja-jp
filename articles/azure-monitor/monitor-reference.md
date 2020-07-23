@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085499"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505722"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -32,7 +32,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 [Azure Monitor for Resource Groups (プレビュー)](insights/resource-group-insights.md) |  個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 |
 | [Azure Monitor for Storage](insights/storage-insights-overview.md) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
 | [Azure Monitor for VMs](insights/vminsights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
-| [Azure Monitor for Key Vault (プレビュー)](insights/key-vaults-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 |
+| [Azure Monitor for Key Vault (プレビュー)](./insights/key-vault-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 |
 | [Azure Monitor for Azure Cache for Redis (プレビュー)](insights/redis-cache-insights-overview.md) |  全体のパフォーマンス、エラー、容量、および操作の正常性を、統一された対話形式で表示できます。 |
 
 
@@ -118,7 +118,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |Intune | いいえ | はい | いいえ |  |
 |IoT Central | いいえ | いいえ | いいえ |  |
 |IoT Hub | はい | はい | いいえ |  |
-|Key Vault | はい | はい | [はい](insights/key-vaults-insights-overview.md) |  |
+|Key Vault | はい | はい | [はい](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes サービス (AKS) | いいえ | いいえ | [はい](insights/container-insights-overview.md)  |  |
 |Load Balancer | はい | はい | いいえ |  |
 |Logic Apps | はい | はい | いいえ |  |
@@ -176,20 +176,19 @@ Insights は、特定のアプリケーションやサービスを監視する�
 
 | 製品/サービス | 説明 |
 |:---|:---|
-| [Azure Automation](/azure/automation/) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking.md) と [Update Management](../automation/automation-update-management.md) に関する記事を参照してください。 |
-| [Azure Information Protection ](https://docs.microsoft.com/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
-| [Azure Security Center](/azure/security-center/) | セキュリティ イベントを収集して分析し、脅威分析を実行します。 「[Azure Security Center でのデータ収集](/azure/security-center/security-center-enable-data-collection)」を参照してください。 |
-| [Azure Sentinel](/azure/sentinel/) | Office 365 やアマゾン ウェブ サービスの Cloud Trail などのさまざまなソースに接続します。 「[データ ソースの接続](/azure/sentinel/connect-data-sources)」のページを参照してください。 |
-| [Key Vault Analytics](insights/azure-key-vault.md) | Azure Key Vault の AuditEvent ログを分析します。 |
-| [Microsoft Intune](https://docs.microsoft.com/intune/) | Azure Monitor にログを送信するための診断設定を作成します。 「[Intune でストレージ、イベント ハブ、または Log Analytics にログ データを送信する (プレビュー)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)」を参照してください。  |
-| ネットワーク  | [Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
+| [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking.md) と [Update Management](../automation/automation-update-management.md) に関する記事を参照してください。 |
+| [Azure Information Protection ](/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
+| [Azure Security Center](../security-center/index.yml) | セキュリティ イベントを収集して分析し、脅威分析を実行します。 「[Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md)」を参照してください。 |
+| [Azure Sentinel](../sentinel/index.yml) | Office 365 やアマゾン ウェブ サービスの Cloud Trail などのさまざまなソースに接続します。 「[データ ソースの接続](../sentinel/connect-data-sources.md)」のページを参照してください。 |
+| [Microsoft Intune](/intune/) | Azure Monitor にログを送信するための診断設定を作成します。 「[Intune でストレージ、イベント ハブ、または Log Analytics にログ データを送信する (プレビュー)](/intune/fundamentals/review-logs-using-azure-monitor)」を参照してください。  |
+| ネットワーク  | [Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](../network-watcher/traffic-analytics.md) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
 | [Office 365](insights/solution-office-365.md) | Office 365 環境を監視します。 Azure Sentinel から使用できる改善されたオンボード機能を備えた更新バージョンです。 |
 | [SQL Analytics](insights/azure-sql.md) | Azure SQL データベースと SQL マネージド インスタンスのパフォーマンスを、複数のサブスクリプションにわたって大規模に監視します。 |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub デバイスの正常性と使用状況を追跡します。 |
-| [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | 管理グループを Azure Monitor に接続して Operations Manager エージェントからデータを収集します。 「[Operations Manager を Azure Monitor に接続する](platform/om-agents.md)」を参照してください。<br> [Operations Manager Assessment](insights/scom-assessment.md) ソリューションを使用して、System Center Operations Manager 管理グループのリスクと正常性を評価します。 |
-| [Microsoft Teams ミーティング](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft Teams ミーティング デバイスの統合されたエンドツーエンド管理。 |
-| [Visual Studio App Center](https://docs.microsoft.com/appcenter/) | アプリケーションをビルド、テスト、および配布し、その状態と使用状況を監視します。 「[App Center と Application Insights によるモバイル アプリの分析の開始](learn/mobile-center-quickstart.md)」を参照してください。 |
-| Windows | [Windows Update Compliance](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started) - Windows デスクトップのアップグレードを評価します。<br>[Desktop Analytics](https://docs.microsoft.com/configmgr/desktop-analytics/overview) - Configuration Manager と統合して、Windows クライアントの更新準備について、より多くの情報に基づいて意思決定を行うための分析情報とインテリジェンスを提供します。 |
+| [System Center Operations Manager](/system-center/scom) | 管理グループを Azure Monitor に接続して Operations Manager エージェントからデータを収集します。 「[Operations Manager を Azure Monitor に接続する](platform/om-agents.md)」を参照してください。<br> [Operations Manager Assessment](insights/scom-assessment.md) ソリューションを使用して、System Center Operations Manager 管理グループのリスクと正常性を評価します。 |
+| [Microsoft Teams ミーティング](/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft Teams ミーティング デバイスの統合されたエンドツーエンド管理。 |
+| [Visual Studio App Center](/appcenter/) | アプリケーションをビルド、テスト、および配布し、その状態と使用状況を監視します。 「[App Center と Application Insights によるモバイル アプリの分析の開始](learn/mobile-center-quickstart.md)」を参照してください。 |
+| Windows | [Windows Update Compliance](/windows/deployment/update/update-compliance-get-started) - Windows デスクトップのアップグレードを評価します。<br>[Desktop Analytics](/configmgr/desktop-analytics/overview) - Configuration Manager と統合して、Windows クライアントの更新準備について、より多くの情報に基づいて意思決定を行うための分析情報とインテリジェンスを提供します。 |
 
 
 
@@ -204,7 +203,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [DNS Analytics (プレビュー)](insights/dns-analytics.md) | Windows DNS の分析ログと監査ログおよび他の関連データを DNS サーバーから収集して分析し、関連付けます。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 複数のデプロイにわたって Cloud Foundry システムの正常性とパフォーマンスのメトリックを収集、表示、および分析します。 |
 | [Containers](insights/containers.md) | Docker と Windows のコンテナー ホストを表示および管理します。 |
-| [オンデマンド評価](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | オンプレミス、ハイブリッド、クラウドの Microsoft テクノロジ環境の可用性、セキュリティ、およびパフォーマンスを評価し、最適化します。 |
+| [オンデマンド評価](/services-hub/health/getting_started_with_on_demand_assessments) | オンプレミス、ハイブリッド、クラウドの Microsoft テクノロジ環境の可用性、セキュリティ、およびパフォーマンスを評価し、最適化します。 |
 | [SQL 正常性チェック](insights/sql-assessment.md) | SQL Server 環境のリスクと正常性を評価します。  |
 | [ワイヤ データ](insights/wire-data.md) | Log Analytics エージェントを使用して、Windows に接続されたコンピューターおよび Linux に接続されたコンピューターから収集したネットワークとパフォーマンスのデータを統合したものです。 |
 
@@ -220,7 +219,7 @@ Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリ
 
 | リソース | Method |
 |:---|:---|
-| アプリケーション | Application Insights を使用して、Azure 外部の Web アプリケーションを監視します。 「[Application Insights とは何か?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)」を参照してください。 |
+| アプリケーション | Application Insights を使用して、Azure 外部の Web アプリケーションを監視します。 「[Application Insights とは何か?](./app/app-insights-overview.md)」を参照してください。 |
 | 仮想マシン | Log Analytics エージェントを使用して、他のクラウド環境やオンプレミスにある仮想マシンのゲスト オペレーティング システムからデータを収集します。 「[Log Analytics エージェントを使用してログ データを収集する](platform/log-analytics-agent.md)」を参照してください。 |
 | REST API クライアント | 別の API を使用して、任意の REST API クライアントから Azure Monitor ログとメトリックにデータを書き込むことができます。 ログについては、「[HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する](platform/data-collector-api.md)」を参照し、メトリックについては、「[REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する](platform/metrics-store-custom-rest-api.md)」を参照してください。 |
 

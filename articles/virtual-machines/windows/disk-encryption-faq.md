@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 78d4ffda62b98ca57a8204e6037f8ccd8c470924
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848840"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508544"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
 
@@ -134,11 +134,11 @@ Azure Backup には、同じサブスクリプションおよびリージョン�
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>質問したり、フィードバックを提供したりするにはどこに移動すればよいですか。
 
-ご質問やフィードバックは、[Azure Disk Encryption についての Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)に投稿してください。
+ご質問やフィードバックは、[Azure Disk Encryption についての Microsoft Q&A 質問ページ](/answers/topics/azure-disk-encryption.html)に投稿してください。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。
 
 - [Azure Disk Encryption の概要](disk-encryption-overview.md)
-- [Azure Security Center でディスクの暗号化を適用する](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
+- [Azure Security Center でディスクの暗号化を適用する](../../security-center/security-center-virtual-machine-protection.md)
 - [保存時の Azure データの暗号化](../../security/fundamentals/encryption-atrest.md)

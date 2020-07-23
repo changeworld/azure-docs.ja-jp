@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fc411d3833fcd47477e7e0fe11c6da9e2114143
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390229"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502029"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "85390229"
 ## <a name="windows-packages-and-ssh-clients"></a>Windows パッケージと SSH クライアント
 Azure の Linux VM に接続して管理するには、*SSH クライアント*を使用します。 Linux または macOS を実行しているコンピューターには、通常、SSH キーを生成して管理し、SSH 接続を行うための、SSH コマンドのスイートがあります。 
 
-Windows コンピューターでは、それに相当する SSH コマンドが常にインストールされることはありません。 最近のバージョンの Windows 10 には、コマンド プロンプトから SSH キーを作成および管理し、SSH 接続を行うことができる [OpenSSH クライアント コマンド](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)が用意されています。 最近の Windows 10 バージョンには、SSH クライアントなどのユーティリティを Bash シェル内でネイティブに実行し、アクセスすることができる [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about) も含まれています。 
+Windows コンピューターでは、それに相当する SSH コマンドが常にインストールされることはありません。 最近のバージョンの Windows 10 には、コマンド プロンプトから SSH キーを作成および管理し、SSH 接続を行うことができる [OpenSSH クライアント コマンド](https://devblogs.microsoft.com/commandline/windows10v1803/)が用意されています。 最近の Windows 10 バージョンには、SSH クライアントなどのユーティリティを Bash シェル内でネイティブに実行し、アクセスすることができる [Windows Subsystem for Linux](/windows/wsl/about) も含まれています。 
 
 ローカルにインストールできるその他の一般的な Windows SSH クライアントは、次のパッケージに含まれています。
 
@@ -123,4 +123,4 @@ VM が Just-In-Time アクセス ポリシーを使用している場合、VM �
 
 * Azure Cloud Shell 内で PowerShell を使用して SSH キーを生成し、Linux VM に SSH 接続することもできます。 [PowerShell のクイック スタート](../../cloud-shell/quickstart-powershell.md#ssh)に関するページをご覧ください。
 
-* Linux VM に対する SSH 接続に問題がある場合は、[Azure Linux VM に対する SSH 接続のトラブルシューティング](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するトピックを参照してください。
+* Linux VM に対する SSH 接続に問題がある場合は、[Azure Linux VM に対する SSH 接続のトラブルシューティング](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)に関するトピックを参照してください。

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086400"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504069"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,11 +104,10 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>データ同期とトランザクション レプリケーションの比較
 
-| | データ同期 | トランザクション レプリケーション |
+| カテゴリ | データ同期 | トランザクション レプリケーション |
 |---|---|---|
 | 長所 | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 |
 | 短所 | - 5 分以上の待機時間<br/>- トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
-| | | |
 
 ## <a name="common-configurations"></a>一般的な構成
 

@@ -3,12 +3,12 @@ title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v4.x
 description: この記事では、Azure Red Hat OpenShift バージョン 4 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 49097d96ecf58d7c5bf7d1a60ff01fc7182587c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b5644c13ac560910703454c4052e223f958014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801480"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499173"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v4.x を構成する
 
@@ -20,7 +20,7 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エン
 
 この記事に記載されているサポートされている方法を使用して、1 つ以上の既存の Azure Red Hat OpenShift v4.x のデプロイに対して Azure Monitor for containers を有効にできます。
 
-既存のクラスターの場合は、[Azure CLI でこの Bash スクリプト](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)を実行します。
+既存のクラスターの場合は、[Azure CLI でこの Bash スクリプト](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)を実行します。
 
 ## <a name="supported-and-unsupported-features"></a>サポートされている機能とサポートされていない機能
 
@@ -172,4 +172,4 @@ Azure Monitor for containers のマルチクラスター ビューでは、 **[�
 
 - クラスターから Prometheus メトリックをスクレイピングして分析するには、[Prometheus メトリックのスクレイピングの構成](container-insights-prometheus-integration.md)に関するページをご確認ください。
 
-- Azure Monitor for containers を使用してクラスターの監視を停止する方法については、「[お使いの Azure Red Hat OpenShift クラスターの監視を停止する方法](container-insights-optout-openshift.md)」を参照してください。
+- Azure Monitor for containers を使用してクラスターの監視を停止する方法については、「[お使いの Azure Red Hat OpenShift クラスターの監視を停止する方法](./container-insights-optout-openshift-v3.md)」を参照してください。

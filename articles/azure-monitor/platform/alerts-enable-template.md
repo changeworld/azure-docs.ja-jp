@@ -6,12 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505450"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
 > [!WARNING]
@@ -176,7 +176,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
 }
 ```
 
-アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](https://msdn.microsoft.com/library/azure/dn933805.aspx)。
+アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](/rest/api/monitor/alertrules)。
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>クラシック メトリック アラートを含むリソース向けの Resource Manager テンプレート
 Resource Manager テンプレートのアラートは、多くの場合、リソースを作成しながらアラートを作成するときに役に立ちます。 たとえば、仮想マシンをデプロイするたびに "CPU % > 80" ルールを設定する必要があるとします。 これを行うには、VM テンプレートのリソース配列にリソースとしてアラート ルールを追加し、 `dependsOn` プロパティを使用して依存関係を VM リソース ID に追加します。 次の例は、Windows VM を作成し、CPU 使用率が 80% を超えたときにサブスクリプション管理者に通知するアラートを追加しています。
@@ -402,4 +402,3 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 * [アラートの詳細を確認します](alerts-overview.md)
 * [診断の設定を追加](../../azure-monitor/platform/diagnostic-settings-template.md) します
 * JSON の構文とプロパティについては、[Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) テンプレート リファレンスをご覧ください。
-

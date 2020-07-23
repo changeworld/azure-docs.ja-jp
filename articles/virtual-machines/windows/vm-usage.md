@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d480b9309c9028d8f55ab50c72a86889f320810b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773786"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500117"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
 Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../../cost-management-billing/understand/review-individual-bill.md)に関するページをご覧ください。
@@ -138,10 +138,9 @@ Premium Storage 対応の VM の料金は、Premium Storage 非対応の VM と�
 
 API には、VM で実行されているオペレーティング システムが返される可能性のある場所が 3 つあります。
 
-1) ゲスト エージェントを含む VM (すべての Linux VM とほとんどの Windows VM) を実行すると、VM インスタンス ビューに OS 名と OS バージョンが表示されます。 これは常に正確ですが、この情報はゲスト エージェントから取得されるため、すべての VM で利用できるわけではありません。 [こちら](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)の API ドキュメントをご覧ください。
-2) プラットフォーム イメージからデプロイされた VM にはイメージの詳細が含まれ、オファーまたは SKU の発行元が選択した名前に OS バージョンが示されている場合があります。 ただし、これらは発行元が選択したものであるため、この名前で OS が検出可能であるという保証はありません。 [こちら](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes)の API ドキュメントをご覧ください。
-3) 各 OS ディスクには、Windows または Linux の指定された値があります。 OS ディスクがイメージから作成された場合、この値はそのイメージから継承されます。 OS ディスクがプラットフォームに直接アップロードされる場合、OS 値は OS ディスクの作成時に設定されます。 この値は常に存在しますが、Azure プラットフォームはそれが正しいことを保証するわけではありません。 [こちら](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)の API ドキュメントをご覧ください。
+1) ゲスト エージェントを含む VM (すべての Linux VM とほとんどの Windows VM) を実行すると、VM インスタンス ビューに OS 名と OS バージョンが表示されます。 これは常に正確ですが、この情報はゲスト エージェントから取得されるため、すべての VM で利用できるわけではありません。 [こちら](/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)の API ドキュメントをご覧ください。
+2) プラットフォーム イメージからデプロイされた VM にはイメージの詳細が含まれ、オファーまたは SKU の発行元が選択した名前に OS バージョンが示されている場合があります。 ただし、これらは発行元が選択したものであるため、この名前で OS が検出可能であるという保証はありません。 [こちら](/rest/api/compute/images/get#operatingsystemtypes)の API ドキュメントをご覧ください。
+3) 各 OS ディスクには、Windows または Linux の指定された値があります。 OS ディスクがイメージから作成された場合、この値はそのイメージから継承されます。 OS ディスクがプラットフォームに直接アップロードされる場合、OS 値は OS ディスクの作成時に設定されます。 この値は常に存在しますが、Azure プラットフォームはそれが正しいことを保証するわけではありません。 [こちら](/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)の API ドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。
-

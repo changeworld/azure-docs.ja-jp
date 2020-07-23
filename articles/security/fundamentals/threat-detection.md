@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653625"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503287"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -340,14 +340,13 @@ API に基づいた機械学習では、次のことができます。
 
 企業は、shadow IT の発見、リスクの評価、ポリシーの適用、アクティビティの調査、および驚異の停止に役立つツールを使用して、重要なデータの制御を維持しながらもより安全にクラウドに移行できるようにします。
 
-| | |
-|---|---|
+| カテゴリ | 説明 |
+| -------- | ----------- |
 | 発見 | Cloud App Security を使用して shodow IT を発見します。 クラウド環境でアプリ、アクティビティ、ユーザー、データ、およびファイルを発見して可視性を獲得します。 クラウドに接続しているサード パーティのアプリを検出します。|
 |調査 | クラウド フォレンジック ツールを使用してクラウド アプリケーションを調査します。具体的には、ネットワーク内の高リスク アプリケーション、特定のユーザー、およびファイルに関する詳しい調査を行います。 クラウドから収集されたデータのパターンを検索します。 クラウドを監視するレポートを生成します。 |
 | コントロール | ネットワーク クラウドのトラフィック全体を最大限に制御するためのポリシーとアラートを設定してリスクを軽減します。 Cloud App Security を使用して、安全で承認された代替クラウド アプリにユーザーが移行できるようにします。 |
 | 保護 | Cloud App Security を使用して、アプリケーションの承認と禁止、データ損失の防止、アクセスと共有の制御、およびカスタム レポートやアラートの生成を行います。 |
 | コントロール | ネットワーク クラウドのトラフィック全体を最大限に制御するためのポリシーとアラートを設定してリスクを軽減します。 Cloud App Security を使用して、安全で承認された代替クラウド アプリにユーザーが移行できるようにします。 |
-| | |
 
 
 ![Cloud App Security の図](./media/threat-detection/azure-threat-detection-fig14.png)

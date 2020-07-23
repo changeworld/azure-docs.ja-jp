@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561067"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507898"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする
 
@@ -42,7 +42,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
     > [!Note]
     > 以下のように、VM へのアクセスを制御するためのオプションはいくつかあります。
     > -   [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) を設定することをお勧めします。
-    > -   [サイト間仮想プライベート ネットワーク (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell) トンネル。
+    > -   [サイト間仮想プライベート ネットワーク (VPN)](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) トンネル。
     > -   ジャンプボックス VM。
 
 ## <a name="install-enterprise-server"></a>Enterprise Server をインストールする
@@ -125,8 +125,8 @@ Enterprise Developer が読み込まれたら、Azure への Micro Focus 開発�
 
 **次の手順**
 
--   [銀行デモ アプリケーションを設定する](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+-   [銀行デモ アプリケーションを設定する](./demo.md)
 
--   [Docker コンテナーで Enterprise Server を実行する](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+-   [Docker コンテナーで Enterprise Server を実行する](./run-enterprise-server-container.md)
 
--   [メインフレーム アプリケーションの移行](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [メインフレーム アプリケーションの移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847392"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505297"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら、Azure Monitor のログを利用することができます。
+Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら、Azure Monitor のログを利用することができます。
 
 * Operations Manager で IT サービスの正常性を監視する
 * インシデントおよび問題の管理をサポートする ITSM ソリューションとの統合を維持する
@@ -47,7 +47,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
     - 米国中西部
     - オーストラリア東南部
     - 西ヨーロッパ
-    - 米国東部
+    - East US
     - 東南アジア
     - 東日本
     - 英国南部
@@ -154,7 +154,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
 1. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
-1. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](https://technet.microsoft.com/library/hh321655.aspx) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
+1. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
 1. 管理するアカウントを設定するには、 **[選択したクラス、グループ、またはオブジェクト]** を選択し、 **[選択...]** をクリックします。 次に、 **[グループ...]** をクリックし、 **[グループの検索]** ボックス開きます。
 1. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。 グループを選択したら、 **[OK]** をクリックして、 **[グループ検索]** ボックスを閉じます。
 1. **[OK]** をクリックして、 **[実行アカウントの追加]** ボックスを閉じます。
@@ -173,7 +173,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - ベース Azure Monitor 管理パックを更新します。 既定では 12 時間おきに実行されます。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - ワークスペースで有効にされたソリューション管理パックを更新します。 既定では 5 分おきに実行されます。
 
-この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと Azure Monitor の同期の頻度を変更することもできます。 秒単位の値で **Frequency** パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「[How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)](https://technet.microsoft.com/library/hh212869.aspx)」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
+この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと Azure Monitor の同期の頻度を変更することもできます。 秒単位の値で **Frequency** パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「[How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12))」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
 
 引き続き既存の変更管理プロセスに従って運用管理グループにおける管理パックのリリースを制御する場合は、ルールを無効にし、更新が許可されている特定の期間中にルールを有効にすることができます。 環境内に開発または QA 管理グループがあり､その管理グループがインターネットと接続できる場合は､Log Analytics ワークスペースを使ってその管理グループがそのシナリオをサポートするように設定できます｡ そうすることによって、Azure Monitor 管理パックを生産管理グループにリリースする前に、その都度､管理パックをレビューし、評価することができます。
 

@@ -5,21 +5,21 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770959"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499275"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
 > [!IMPORTANT]
-> このガイダンスは、Application Insights エージェントのオンプレミスと Azure 以外のクラウド デプロイに推奨されます。 [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)に推奨される方法を次に示します。
+> このガイダンスは、Application Insights エージェントのオンプレミスと Azure 以外のクラウド デプロイに推奨されます。 [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](./azure-vm-vmss-apps.md)に推奨される方法を次に示します。
 
 Application Insights エージェント (旧称 Status Monitor V2) は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)に公開されている PowerShell モジュールです。
-これは [Status Monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) を置き換えるものです。
-テレメトリが Azure portal に送信され、そこでアプリを[監視](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)できます。
+これは [Status Monitor](./monitor-performance-live-website-now.md) を置き換えるものです。
+テレメトリが Azure portal に送信され、そこでアプリを[監視](./app-insights-overview.md)できます。
 
 > [!NOTE]
 > このモジュールでは、現在、IIS でホストされる .NET Web アプリのコード不要のインストルメンテーションのみがサポートされます。 SDK を使用して、ASP.NET Core、Java、および Node.js アプリケーションをインストルメント化します。
@@ -36,14 +36,14 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 - 開始する方法の詳細については、[詳細な手順](status-monitor-v2-detailed-instructions.md)に関する記事を参照してください。
 
 ## <a name="powershell-api-reference"></a>PowerShell API リファレンス
-- [Disable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
-- [Disable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
-- [Enable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
-- [Enable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
-- [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
-- [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
-- [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
-- [Start-ApplicationInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
+- [Disable-ApplicationInsightsMonitoring](./status-monitor-v2-api-reference.md#disable-applicationinsightsmonitoring)
+- [Disable-InstrumentationEngine](./status-monitor-v2-api-reference.md#disable-instrumentationengine)
+- [Enable-ApplicationInsightsMonitoring](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring)
+- [Enable-InstrumentationEngine](./status-monitor-v2-api-reference.md#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringconfig)
+- [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#set-applicationinsightsmonitoringconfig)
+- [Start-ApplicationInsightsMonitoringTrace](./status-monitor-v2-api-reference.md#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 - [トラブルシューティング](status-monitor-v2-troubleshoot.md)
@@ -60,12 +60,12 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 
 - Status Monitor v2 では ASP.NET Core アプリケーションはサポートされていますか?
 
-  *いいえ*。 ASP.NET Core アプリケーションの監視を有効にする手順については、「[Application Insights for ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)」を参照してください。 ASP.NET Core アプリケーション用に Status Monitor をインストールする必要はありません。 これは、ASP.NET Core アプリケーションが IIS でホストされている場合にも当てはまります。
+  *いいえ*。 ASP.NET Core アプリケーションの監視を有効にする手順については、「[Application Insights for ASP.NET Core アプリケーション](./asp-net-core.md)」を参照してください。 ASP.NET Core アプリケーション用に Status Monitor をインストールする必要はありません。 これは、ASP.NET Core アプリケーションが IIS でホストされている場合にも当てはまります。
 
 - 有効化が成功したことを確認する方法を教えてください。
 
-  - [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) コマンドレットは、有効化が成功したことを確認するために使用できます。
-  - アプリからテレメトリが送信されているかどうかをすばやく判断するには、[Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) を使用することをお勧めします。
+  - [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) コマンドレットは、有効化が成功したことを確認するために使用できます。
+  - アプリからテレメトリが送信されているかどうかをすばやく判断するには、[Live Metrics](./live-stream.md) を使用することをお勧めします。
 
   - [Log Analytics](../log-query/get-started-portal.md) を使用して、現在テレメトリを送信しているすべてのクラウド ロールを一覧表示することもできます。
       ```Kusto
@@ -78,7 +78,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 
 * パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します。
 * 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
-* より高度なクエリのために[分析を使用](../../azure-monitor/app/analytics.md)します。
+* より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
 * [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
 
 テレメトリの追加:
@@ -86,4 +86,3 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 * サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
 * Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 * トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
-

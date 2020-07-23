@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: cf8d4cd3c70e28a6c70ab9321a8f55271ead754f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807504"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508799"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
@@ -24,9 +24,9 @@ ms.locfileid: "85807504"
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
-Sysprep はすべての個人アカウント情報とセキュリティ情報を削除して、マシンをイメージとして使用できるように準備します。 Sysprep については、[Sysprep の概要](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)を参照してください。
+Sysprep はすべての個人アカウント情報とセキュリティ情報を削除して、マシンをイメージとして使用できるように準備します。 Sysprep については、[Sysprep の概要](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)を参照してください。
 
-コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳細については、「[サーバーの役割の Sysprep サポート](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)」と「[サポートされていないシナリオ](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)」を参照してください。 Sysprep では、実行前にドライブを完全に復号化する必要があります。 VM で暗号化を有効にしている場合は、Sysprep を実行する前に暗号化を無効にしてください。
+コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳細については、「[サーバーの役割の Sysprep サポート](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)」と「[サポートされていないシナリオ](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)」を参照してください。 Sysprep では、実行前にドライブを完全に復号化する必要があります。 VM で暗号化を有効にしている場合は、Sysprep を実行する前に暗号化を無効にしてください。
 
 > [!IMPORTANT]
 > VM で Sysprep を実行すると、その VM は*一般化されている*と見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、そのコピーを一般化してください。 
@@ -52,7 +52,7 @@ Windows VM を一般化するには、次の手順に従います。
 6. Sysprep は完了時に VM をシャットダウンします。 VM は再起動しないでください。
 
 > [!TIP]
-> **オプション**[DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) を使用してイメージを最適化し、VM の初回起動時間を短縮します。
+> **オプション**[DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) を使用してイメージを最適化し、VM の初回起動時間を短縮します。
 >
 > イメージを最適化するには、Windows エクスプローラーで VHD をダブルクリックして VHD をマウントし、`/optimize-image` パラメーターを指定して DISM を実行します。
 >
@@ -247,4 +247,3 @@ OS ディスクのみのイメージを作成する場合は、OS ディスク�
     
 ## <a name="next-steps"></a>次のステップ
 - [管理イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
-

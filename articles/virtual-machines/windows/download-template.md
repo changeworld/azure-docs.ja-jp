@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a648fd7f2835ca23285b69d5fed7156507b2ace
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085384"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500567"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM のテンプレートをダウンロードする
 Azure でポータルまたは PowerShell を使用して VM を作成する際に、Resource Manager テンプレートが自動的に作成されます。 このテンプレートを使用すると、デプロイを簡単に複製できます。 テンプレートには、リソース グループ内のすべてのリソースに関する情報が含まれています。 仮想マシンの場合、これはそのリソース グループ内の VM をサポートするために作成されたすべてのもの (ネットワーク リソースなど) がテンプレートに含まれていることを意味します。
@@ -32,12 +32,11 @@ Azure でポータルまたは PowerShell を使用して VM を作成する際�
 template.json ファイルはテンプレートです。
 
 ## <a name="download-the-template-using-powershell"></a>PowerShell を使用してテンプレートをダウンロードする
-.json 形式のテンプレート ファイルは、[Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) コマンドレットを使用してダウンロードすることもできます。 `-path` パラメーターを使用して、.json ファイルのファイル名とパスを指定できます。 この例では、**myResourceGroup** という名前のリソース グループのテンプレートをローカル コンピューターの **C:\users\public\downloads** フォルダーにダウンロードする方法を示します。
+.json 形式のテンプレート ファイルは、[Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) コマンドレットを使用してダウンロードすることもできます。 `-path` パラメーターを使用して、.json ファイルのファイル名とパスを指定できます。 この例では、**myResourceGroup** という名前のリソース グループのテンプレートをローカル コンピューターの **C:\users\public\downloads** フォルダーにダウンロードする方法を示します。
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
 ## <a name="next-steps"></a>次のステップ
-テンプレートを使用してリソースをデプロイする方法について詳しくは、「[Resource Manager template walkthrough](../../azure-resource-manager/resource-manager-template-walkthrough.md)」(Resource Manager テンプレートのチュートリアル) をご覧ください。
-
+テンプレートを使用してリソースをデプロイする方法について詳しくは、「[Resource Manager template walkthrough](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」(Resource Manager テンプレートのチュートリアル) をご覧ください。

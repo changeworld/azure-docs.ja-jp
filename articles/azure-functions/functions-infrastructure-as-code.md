@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170396"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506232"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -309,7 +309,7 @@ Premium プランでは、従量課金プランと同じスケーリングが提
 
 ### <a name="create-a-premium-plan"></a>Premium プランを作成する
 
-Premium プランは、特殊なタイプの "serverfarm" リソースです。 これは、`sku` [説明オブジェクト](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)の `Name` プロパティ値に `EP1`、`EP2`、または `EP3` のいずれかを使用することで指定できます。
+Premium プランは、特殊なタイプの "serverfarm" リソースです。 これは、`sku` [説明オブジェクト](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)の `Name` プロパティ値に `EP1`、`EP2`、または `EP3` のいずれかを使用することで指定できます。
 
 ```json
 {
@@ -516,7 +516,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 }
 ```
 
-[カスタム コンテナー イメージをデプロイ](./functions-create-function-linux-custom-image.md)している場合は、それを `linuxFxVersion` で指定し、[Web App for Containers](/azure/app-service/containers) のように、イメージをプルできるようにする構成を含める必要があります。 また、アプリのコンテンツはコンテナー自体で提供されるため、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` を `false` に設定します。
+[カスタム コンテナー イメージをデプロイ](./functions-create-function-linux-custom-image.md)している場合は、それを `linuxFxVersion` で指定し、[Web App for Containers](../app-service/containers/index.yml) のように、イメージをプルできるようにする構成を含める必要があります。 また、アプリのコンテンツはコンテナー自体で提供されるため、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` を `false` に設定します。
 
 ```json
 {
@@ -694,8 +694,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 Azure Functions を開発および構成する方法について学習します。
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
-* Azure Functions アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
-* [初めての Azure Functions の作成](functions-create-first-azure-function.md)
+* [Azure 関数アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
+* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
 
 <!-- LINKS -->
 

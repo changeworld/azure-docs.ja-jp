@@ -4,16 +4,16 @@ description: Azure Functions を使用して、Azure SQL Database に接続し�
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254278"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506079"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
-この記事では、Azure Functions を使用して Azure SQL Database または Azure SQL Managed Instance に接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 Azure SQL Managed Instance の場合は、Azure Functions から接続できるように[パブリック エンドポイントを有効にする](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)必要があります。 このシナリオではデータベースに対する一括操作を使用しています。 
+この記事では、Azure Functions を使用して Azure SQL Database または Azure SQL Managed Instance に接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 Azure SQL Managed Instance の場合は、Azure Functions から接続できるように[パブリック エンドポイントを有効にする](../azure-sql/managed-instance/public-endpoint-configure.md)必要があります。 このシナリオではデータベースに対する一括操作を使用しています。 
 
 C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)をお読みください。
 
@@ -23,7 +23,7 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 + この記事では、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、[Azure portal を使用して Azure SQL Database でデータベースを作成する方法](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順を実行します。
 
-+ このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](../sql-database/sql-database-get-started-portal-firewall.md)を追加している必要があります。 このルールは、ローカル コンピューターから SQL Database インスタンスにアクセスできるようにするために必要です。  
++ このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)を追加している必要があります。 このルールは、ローカル コンピューターから SQL Database インスタンスにアクセスできるようにするために必要です。  
 
 ## <a name="get-connection-information"></a>接続情報の取得
 

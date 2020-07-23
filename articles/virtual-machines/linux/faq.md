@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: cda729779c333064c91152e8427ce1a05227396e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 09f34eec84deeaf76d62ae0aff881e53bf5dd13f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201970"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502403"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -30,7 +30,7 @@ Azure のストレージ アカウントでは、オペレーティング シス
 ## <a name="how-can-i-access-my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
 Secure Shell (SSH) を使用して、仮想マシンにサインオンするためのリモート接続を確立します。 [Windows から](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)接続する手順、または [Linux および Mac から](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)接続する手順を参照します。 SSH では、既定で最大 10 のコンカレント接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
 
-問題がある場合は、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+問題がある場合は、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)」を参照してください。
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>データの格納時に一時ディスク (/dev/sdb1) を使用できますか。
 データの格納に一時ディスク (/dev/sdb1) を使用しないでください。 一時ディスクは一時的なストレージでしかなく、 データ損失の発生時にデータを復旧できない恐れがあります。

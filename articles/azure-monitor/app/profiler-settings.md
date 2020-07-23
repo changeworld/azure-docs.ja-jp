@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499411"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
@@ -41,7 +41,7 @@ Azure Application Insights Profiler の設定ウィンドウを開くには、Ap
 ## <a name="profile-now"></a>今すぐプロファイル
 このオプションを使用すると、必要に応じてプロファイリング セッションを開始できます。 このリンクをクリックすると、この Application Insights インスタンスにデータを送信しているすべてのプロファイラー エージェントがプロファイルのキャプチャを開始します。 5 分から 10 分後に、プロファイル セッションが下の一覧に表示されます。
 
-プロファイラー セッションをユーザーが手動でトリガーするためには、そのロールに最低でも、Application Insights コンポーネントの "書き込み" アクセス権が必要です。 ほとんどの場合、このアクセス権は自動的に与えられており、追加の作業は必要ありません。 問題が発生している場合、追加するサブスクリプション スコープ ロールは "Application Insights コンポーネント共同作成者" ロールになります。 [Azure Monitoring でのロール アクセス制御に関する詳細情報を参照してください](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
+プロファイラー セッションをユーザーが手動でトリガーするためには、そのロールに最低でも、Application Insights コンポーネントの "書き込み" アクセス権が必要です。 ほとんどの場合、このアクセス権は自動的に与えられており、追加の作業は必要ありません。 問題が発生している場合、追加するサブスクリプション スコープ ロールは "Application Insights コンポーネント共同作成者" ロールになります。 [Azure Monitoring でのロール アクセス制御に関する詳細情報を参照してください](./resources-roles-access-control.md)。
 
 ## <a name="trigger-settings"></a>トリガーの設定
 ![[トリガーの設定] のポップアップ][trigger-settings-flyout]

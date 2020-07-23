@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830062"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505484"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>ターゲット リソースが別の Azure リージョンに移動されるときにアラート ルールまたはアクション ルールを更新する方法
 
-この記事では、他の Azure リソースをリージョン間で移動するときに、既存の[アラート ルール](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)と[アクション ルール](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)が影響を受ける可能性がある理由と、それらの問題を特定して解決する方法について説明します。 主要な[リソースの移動に関するドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/management/move-region)を参照して、リージョン間のリソースの移動が有用な場合と、移動プロセスを設計する際のチェックリストに関する追加情報を確認してください。
+この記事では、他の Azure リソースをリージョン間で移動するときに、既存の[アラート ルール](./alerts-overview.md)と[アクション ルール](./alerts-action-rules.md)が影響を受ける可能性がある理由と、それらの問題を特定して解決する方法について説明します。 主要な[リソースの移動に関するドキュメント](../../azure-resource-manager/management/move-region.md)を参照して、リージョン間のリソースの移動が有用な場合と、移動プロセスを設計する際のチェックリストに関する追加情報を確認してください。
 
 ## <a name="why-the-problem-exists"></a>問題が存在する理由
 
-アラート ルールとアクション ルールでは、他の Azure リソースが参照されます。 例としては、[Azure VM](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)、[Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-move-resources-across-regions)、および [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-move) があります。 これらのルールで参照されているリソースを移動すると、ルールは、参照しているリソースを見つけることができないため、正常に動作しなくなる可能性があります。
+アラート ルールとアクション ルールでは、他の Azure リソースが参照されます。 例としては、[Azure VM](../../site-recovery/azure-to-azure-tutorial-migrate.md)、[Azure SQL](../../azure-sql/database/move-resources-across-regions.md)、および [Azure Storage](../../storage/common/storage-account-move.md) があります。 これらのルールで参照されているリソースを移動すると、ルールは、参照しているリソースを見つけることができないため、正常に動作しなくなる可能性があります。
 
 ターゲット リソースの移動後にルールが動作を停止する主な理由は 2 つあります。
 
@@ -94,20 +94,20 @@ Azure リソースによって出力されるメトリックはリージョン�
 
 ### <a name="change-scope-of-a-rule-using-rest-api"></a>REST API を使用してルールのスコープを変更する
 
-1. 既存のルールを取得します ([メトリック アラート](https://docs.microsoft.com/rest/api/monitor/metricalerts/get)、[アクティビティ ログ アラート](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/get))
-2. スコープを変更します ([アクティビティ ログ アラート](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/update))
-3. ルールを再デプロイします ([メトリック アラート](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)、[アクティビティ ログ アラート](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/createorupdate))
+1. 既存のルールを取得します ([メトリック アラート](/rest/api/monitor/metricalerts/get)、[アクティビティ ログ アラート](/rest/api/monitor/activitylogalerts/get))
+2. スコープを変更します ([アクティビティ ログ アラート](/rest/api/monitor/activitylogalerts/update))
+3. ルールを再デプロイします ([メトリック アラート](/rest/api/monitor/metricalerts/createorupdate)、[アクティビティ ログ アラート](/rest/api/monitor/activitylogalerts/createorupdate))
 
 ### <a name="change-scope-of-a-rule-using-powershell"></a>PowerShell を使用してルールのスコープを変更する
 
-1. 既存のルールを取得します ([メトリック アラート](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2)、[アクティビティ ログ アラート](https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert)、[アクション ルール](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Get-AzActionRule))。
+1. 既存のルールを取得します ([メトリック アラート](/powershell/module/az.monitor/get-azmetricalertrulev2)、[アクティビティ ログ アラート](/powershell/module/az.monitor/get-azactivitylogalert)、[アクション ルール](/powershell/module/az.alertsmanagement/get-azactionrule))。
 2. スコープを変更します。 必要に応じて、2 つのルールに分割します (前述のようなメトリック アラートの一部のケースに関連します)。
-3. ルールを再デプロイします ([メトリック アラート](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)、[アクティビティ ログ アラート](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert)、[アクション ルール](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule))。
+3. ルールを再デプロイします ([メトリック アラート](/powershell/module/az.monitor/add-azmetricalertrulev2)、[アクティビティ ログ アラート](/powershell/module/az.monitor/enable-azactivitylogalert)、[アクション ルール](/powershell/module/az.alertsmanagement/set-azactionrule))。
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Azure CLI を使用してルールのスコープを変更する
 
-1.  既存のルールを取得します ([メトリック アラート](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[アクティビティ ログ アラート](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list))。
-2.  ルールのスコープを直接更新します ([メトリック アラート](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[アクティビティ ログ アラート](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope))
+1.  既存のルールを取得します ([メトリック アラート](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[アクティビティ ログ アラート](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list))。
+2.  ルールのスコープを直接更新します ([メトリック アラート](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[アクティビティ ログ アラート](/cli/azure/monitor/activity-log/alert/scope))
 3.  必要に応じて、2 つのルールに分割します (前述のようなメトリック アラートの一部のケースに関連します)。
 
 ## <a name="next-steps"></a>次のステップ

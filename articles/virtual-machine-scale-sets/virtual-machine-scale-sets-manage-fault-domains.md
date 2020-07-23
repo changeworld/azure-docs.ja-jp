@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: f1d8bad3d0d3e73a387bdc76131461e5061bafce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf55c1f7de751f03fb804eb263cf0810a48378e1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263179"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494889"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>仮想マシン スケール セットに対する障害ドメインの適切な数を選択する
 ゾーンのない Azure リージョンで仮想マシン スケール セットに対して既定で作成される障害ドメインの数は 5 個です。 仮想マシン スケール セットのゾーン展開がサポートされるリージョンで、このオプションが選択されている場合、障害ドメインの数の既定値はゾーンごとに 1 個です。 この場合の FD = 1 とは、スケール セットに属する VM インスタンスがベスト エフォートで多くのラックに分散されることを意味します。
@@ -22,10 +22,10 @@ ms.locfileid: "85263179"
 スケール セットの障害ドメインの数を Managed Disks の障害ドメインの数と一致させることを検討することもできます。 これを一致させると、Managed Disks の障害ドメイン全体がダウンした場合に、クォーラムが失われるのを防ぐのに役立ちます。 FD の数は、各リージョンで使用可能な Managed Disks 障害ドメインの数以下に設定できます。 リージョンごとの Managed Disks 障害ドメインの数については、こちらの[ドキュメント](../virtual-machines/windows/manage-availability.md)をご覧ください。
 
 ## <a name="rest-api"></a>REST API
-プロパティ `properties.platformFaultDomainCount` を、1、2、または 3 に設定できます (指定しない場合の既定値は 3)。 REST API のドキュメントについては、[こちら](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください。
+プロパティ `properties.platformFaultDomainCount` を、1、2、または 3 に設定できます (指定しない場合の既定値は 3)。 REST API のドキュメントについては、[こちら](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください。
 
 ## <a name="azure-cli"></a>Azure CLI
-パラメーター `--platform-fault-domain-count` を、1、2、または 3 に設定できます (指定しない場合の既定値は 3)。 Azure CLI のドキュメントについては、[こちら](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)をご覧ください。
+パラメーター `--platform-fault-domain-count` を、1、2、または 3 に設定できます (指定しない場合の既定値は 3)。 Azure CLI のドキュメントについては、[こちら](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)をご覧ください。
 
 ```azurecli-interactive
 az vmss create \

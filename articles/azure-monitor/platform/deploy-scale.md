@@ -4,12 +4,12 @@ description: Azure Policy を使用して大規模に Azure Monitor 機能をデ
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678700"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505212"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Policy を使用して大規模に Azure Monitor をデプロイする
 Azure Monitor の一部の機能は構成を 1 回または限られた回数行うだけで済みますが、それ以外の機能については監視するリソースごとに繰り返す必要があります。 この記事では、Azure Policy を使用して Azure Monitor を大規模に実装し、監視がすべての Azure リソースに対して確実に一貫して正確に構成されるようにする方法について説明します。
@@ -31,7 +31,7 @@ Azure Policy は、次の表に示されるオブジェクトで構成されま�
 | 割り当て | ポリシー定義またはイニシアティブは、スコープに割り当てられるまで有効になりません。 たとえば、ポリシーをリソース グループに割り当てて、そのリソースに作成されたすべてのリソースに適用するか、サブスクリプションに適用してそのサブスクリプションのすべてのリソースに適用します。  詳細については、「[Azure Policy の割り当ての構造](../../governance/policy/concepts/assignment-structure.md)」を参照してください。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 用の組み込みポリシー定義
-Azure Policy には、Azure Monitor に関連するいくつかの定義があらかじめ組み込まれています。 これらのポリシー定義は、既存のサブスクリプションに割り当てることも、独自のカスタム定義を作成するための基礎として使用することもできます。 **[監視]** カテゴリの組み込みポリシーの完全な一覧については、[Azure Monitor 用の Azure Policy 組み込みポリシー定義](../policy-samples.md)に関するページを参照してください。
+Azure Policy には、Azure Monitor に関連するいくつかの定義があらかじめ組み込まれています。 これらのポリシー定義は、既存のサブスクリプションに割り当てることも、独自のカスタム定義を作成するための基礎として使用することもできます。 **[監視]** カテゴリの組み込みポリシーの完全な一覧については、[Azure Monitor 用の Azure Policy 組み込みポリシー定義](../samples/policy-samples.md)に関するページを参照してください。
 
 監視に関連する組み込みポリシー定義を表示するには、次の手順を実行します。
 
@@ -60,7 +60,7 @@ Azure リソースの種類にはそれぞれ、診断設定に一覧表示す�
 [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) スクリプトを使用すると、PowerShell または CLI を使用してインストールできる特定のリソースの種類用ポリシー ファイルを作成できます。 診断設定のカスタム ポリシー定義を作成するには、次の手順を使用します。
 
 
-1. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) がインストールされていることを確認します。
+1. [Azure PowerShell](/powershell/azure/install-az-ps) がインストールされていることを確認します。
 2. 次のコマンドを使用して、スクリプトをインストールします。
   
     ```azurepowershell

@@ -3,12 +3,12 @@ title: SAP HANA データベースのバックアップ エラーのトラブル
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503610"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -46,14 +46,14 @@ ms.locfileid: "83697069"
 | エラー メッセージ      | <span style="font-weight:normal">指定された SAP HANA 操作はサポートされていません</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **考えられる原因**    | SAP HANA 用 Azure Backup は、SAP HANA ネイティブ クライアント (Studio/ Cockpit/ DBA Cockpit) で実行される増分バックアップやアクションをサポートしていません |
-| **推奨される操作** | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
+| **推奨される操作** | 詳しくは、[こちら](./sap-hana-backup-support-matrix.md#scenario-support)を参照してください。 |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
 | エラー メッセージ      | <span style="font-weight:normal">この SAP HANA データベースは、要求されたバックアップの種類をサポートしていません</span>  |
 | ------------------ | ------------------------------------------------------------ |
 | **考えられる原因**    | Azure Backup は、増分バックアップやスナップショットを使用したバックアップをサポートしていません |
-| **推奨される操作** | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
+| **推奨される操作** | 詳しくは、[こちら](./sap-hana-backup-support-matrix.md#scenario-support)を参照してください。 |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
@@ -67,14 +67,14 @@ ms.locfileid: "83697069"
 | エラー メッセージ      | <span style="font-weight:normal">SDC から MDC へのアップグレードが検出されました</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **考えられる原因**    | SAP HANA インスタンスが、SDC から MDC にアップグレードされました。 更新すると、バックアップは失敗します。 |
-| **推奨される操作** | [SDC から MDC にアップグレード](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid)するための手順に従って、問題を解決します |
+| **推奨される操作** | [SDC から MDC にアップグレード](#sdc-to-mdc-upgrade-with-a-change-in-sid)するための手順に従って、問題を解決します |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
 | エラー メッセージ      | <span style="font-weight:normal">無効な backint 構成が検出されました</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **考えられる原因**    | バッキング パラメーターが Azure Backup に対して正しく指定されていません |
-| **推奨される操作** | 次の (backint) パラメーターが設定されているかどうかを確認します。<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>backint ベースのパラメーターが HOST に存在する場合は、それらを削除します。 パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、それらを既に説明した適切な値に戻します。 または、Azure portal から [[保護を停止してバックアップ データを保持する]](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) を実行してから、 **[バックアップの再開]** を選択します。 |
+| **推奨される操作** | 次の (backint) パラメーターが設定されているかどうかを確認します。<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>backint ベースのパラメーターが HOST に存在する場合は、それらを削除します。 パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、それらを既に説明した適切な値に戻します。 または、Azure portal から [[保護を停止してバックアップ データを保持する]](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) を実行してから、 **[バックアップの再開]** を選択します。 |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
@@ -204,4 +204,4 @@ SID が変更される SDC から MDC へのアップグレードは、次のよ
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure VM 上の SAP HANA データベースのバックアップに関する[よく寄せられる質問](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm)を確認する。
+- Azure VM 上の SAP HANA データベースのバックアップに関する[よく寄せられる質問](./sap-hana-faq-backup-azure-vm.md)を確認する。

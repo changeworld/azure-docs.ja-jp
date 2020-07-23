@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505092"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -52,7 +52,7 @@ Azure portal の Azure Monitor **[概要]** ページにビューが表示され
 | オプション | 説明 |
 |:--|:--|
 | 更新   | 最新データで表示を更新します。 | 
-| ログ      | ログ クエリを使用してデータを分析するための [Log Analytics](../log-query/portals.md) が開きます。 |
+| ログ      | ログ クエリを使用してデータを分析するための [Log Analytics](../log-query/log-query-overview.md) が開きます。 |
 | [編集]       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
 | 複製      | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 | 期間 | ビューに含まれるデータの日付と時間範囲のフィルターを設定します。 この日付範囲は、ビューのクエリで設定されたすべての日付範囲の前に適用されます。  |

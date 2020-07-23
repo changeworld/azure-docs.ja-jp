@@ -3,16 +3,16 @@ title: Azure VM での SAP HANA データベースバックアップについて
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースをバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 52c235c95cea73a0c51c62fcb55f7f711d2eff21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476459"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503508"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM での SAP HANA データベースバックアップについて
 
-SAP HANA データベースは、復旧ポイント目標 (RPO) と目標復旧時間を (RTO) の必要性が低い極めて重要なワークロードです。 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) を使用して、[Azure VM 上で実行されている SAP HANA データベースをバックアップ](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)できるようになりました。
+SAP HANA データベースは、復旧ポイント目標 (RPO) と目標復旧時間を (RTO) の必要性が低い極めて重要なワークロードです。 [Azure Backup](./backup-overview.md) を使用して、[Azure VM 上で実行されている SAP HANA データベースをバックアップ](./tutorial-backup-sap-hana-db.md)できるようになりました。
 
 Azure Backup は、SAP による [Backint 認定](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)がされています。これにより、SAP HANA のネイティブ API を活用してネイティブ バックアップ サポートを提供します。 Azure Backup からのこのオファリングは、Azure Backup の**ゼロインフラストラクチャ** バックアップの理念に沿っており、バックアップ インフラストラクチャのデプロイと管理を不要にします。 Azure VＭ 上で実行されている SAP HANA データベースをシームレスにバックアップおよび復元できるようになりました ([M シリーズの VM](../virtual-machines/m-series.md) もサポートされるようになりました！)。また、Azure Backup が提供するエンタープライズ管理機能を活用できます。
 
@@ -25,18 +25,18 @@ Azure Backup を使用して SAP HANA データベースをバックアップお
 * **長期保存**：厳格な準拠と監査のニーズに対応しています。 保有期間に基づいてバックアップを何年も保持し、復旧期間を超えると、組み込みのライフサイクル管理機能によって、自動的に削除されます。
 * **Azure からのバックアップ管理サーバー**：Azure Backup の管理および監視機能を使用して、管理エクスペリエンスを向上させます。 Azure CLI もサポートされています。
 
-現在サポートされているバックアップと復元のシナリオを確認するには、[SAP HANA シナリオのサポートマトリックス](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support) を参照してください。
+現在サポートされているバックアップと復元のシナリオを確認するには、[SAP HANA シナリオのサポートマトリックス](./sap-hana-backup-support-matrix.md#scenario-support) を参照してください。
 
 ## <a name="backup-architecture"></a>Backup のアーキテクチャ
 
 ![Backup アーキテクチャの図](./media/sap-hana-db-about/backup-architecture.png)
 
-* バックアッププロセスは、Azure で [Recovery services コンテナー](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) を作成することによって開始されます。 このコンテナーは、時間の経過と共に作成されたバックアップと復元ポイントを格納するために使用されます。
-* SAP HANA サーバーを実行している Azure VM がコンテナーに登録されており、バックアップされるデータベースが [検出](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases) されます。 Azure Backup サービスでデータベースを検出できるようにするには、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana) を HANA サーバーで、root ユーザーとして実行する必要があります。
+* バックアッププロセスは、Azure で [Recovery services コンテナー](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) を作成することによって開始されます。 このコンテナーは、時間の経過と共に作成されたバックアップと復元ポイントを格納するために使用されます。
+* SAP HANA サーバーを実行している Azure VM がコンテナーに登録されており、バックアップされるデータベースが [検出](./tutorial-backup-sap-hana-db.md#discover-the-databases) されます。 Azure Backup サービスでデータベースを検出できるようにするには、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana) を HANA サーバーで、root ユーザーとして実行する必要があります。
 * このスクリプトは **AZUREWLBACKUPHANAUSER** DB ユーザー　を作成し、**hdbuserstore**に同じ名前の対応するキーを作成します。 スクリプトで実行される処理の詳細の解釈については、「[事前登録スクリプトで実行される処理](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)」セクションをご参照ください。
 * Azure Backup サービスは、登録されている SAP HANA サーバー上に、 **HANA 用の Azure Backup Plugin** をインストールするようになりました。
 * 事前登録スクリプトによって作成された **AZUREWLBACKUPHANAUSER** DB ユーザーは、**HANA の Microsoft Azure Backup プラグイン**によって使用され、すべてのバックアップおよび復元操作を実行するために使用されます。 このスクリプトを実行せずに SAP HANA Db のバックアップを構成しようとすると、次のエラーが表示される場合があります：**UserErrorHanaScriptNotRun**.
-* 検出されたデータベースで [バックアップを構成](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup) するには、必要なバックアップポリシーを選択し、バックアップを有効にする必要があります。
+* 検出されたデータベースで [バックアップを構成](./tutorial-backup-sap-hana-db.md#configure-backup) するには、必要なバックアップポリシーを選択し、バックアップを有効にする必要があります。
 
 * バックアップが構成されると、Azure Backup サービスは、保護された SAP HANA サーバーの DATABASE レベルで、次の Backint パラメーターを設定します：
   * [catalog_backup_using_backint:true]
@@ -74,5 +74,5 @@ SAP HANA を実行している VM を復元するには、次の手順に従い�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure VM で稼働している SAP HANA データベースを復元する](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)方法について学習する
-* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)方法を学習する
+* [Azure VM で稼働している SAP HANA データベースを復元する](./sap-hana-db-restore.md)方法について学習する
+* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](./sap-hana-db-manage.md)方法を学習する

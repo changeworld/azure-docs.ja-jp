@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0b4083bdc896ce2f78484fe4ab083b234c4c5d12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508578"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 
@@ -35,11 +35,11 @@ Azure portal または PowerShell を使用して、Azure 管理 VM イメージ
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
-PowerShell を使用すると、[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットに対して設定された簡略化されたパラメーターを使用して、イメージから VM を作成できます。 このイメージは、VM を作成する同じリソース グループに存在する必要があります。
+PowerShell を使用すると、[New-AzVm](/powershell/module/az.compute/new-azvm) コマンドレットに対して設定された簡略化されたパラメーターを使用して、イメージから VM を作成できます。 このイメージは、VM を作成する同じリソース グループに存在する必要があります。
 
  
 
-[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) の簡易なパラメーター セットでは、イメージから VM を作成するための名前、リソース グループ、およびイメージ名を指定する必要があります。 New-AzVm には、自動的に作成するすべてのリソースの名前として **-Name** パラメーターの値が使用されます。 この例では、各リソースのより詳細な名前を指定しますが、それらがコマンドレットで自動的に作成されるようにしてください。 また、仮想ネットワークなどのリソースを事前に作成し、そのリソース名をコマンドレットに渡すこともできます。 New-AzVm では、一致する名前の既存のリソースが見つかった場合は、それが使用されます。
+[New-AzVm](/powershell/module/az.compute/new-azvm) の簡易なパラメーター セットでは、イメージから VM を作成するための名前、リソース グループ、およびイメージ名を指定する必要があります。 New-AzVm には、自動的に作成するすべてのリソースの名前として **-Name** パラメーターの値が使用されます。 この例では、各リソースのより詳細な名前を指定しますが、それらがコマンドレットで自動的に作成されるようにしてください。 また、仮想ネットワークなどのリソースを事前に作成し、そのリソース名をコマンドレットに渡すこともできます。 New-AzVm では、一致する名前の既存のリソースが見つかった場合は、それが使用されます。
 
 次の例では、*myImage* という名前のイメージから *myVMFromImage* という名前の VM を (*myResourceGroup* リソース グループ内に) 作成します。 
 
@@ -61,4 +61,3 @@ New-AzVm `
 
 ## <a name="next-steps"></a>次のステップ
 [Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

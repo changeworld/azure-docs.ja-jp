@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f73abe108ca9c33a8ec6865a760400d16393e51
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232966"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508493"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -465,5 +465,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure の Java ライブラリ](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)の使用方法について詳しく学習します。
-
+* [Azure の Java ライブラリ](/java/azure/java-sdk-azure-overview)の使用方法について詳しく学習します。

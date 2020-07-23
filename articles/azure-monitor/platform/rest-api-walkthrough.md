@@ -5,28 +5,28 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945343"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505127"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、コードが [Microsoft Azure Monitor REST API リファレンス](https://docs.microsoft.com/rest/api/monitor/)を使用できるように、認証を実行する方法について説明します。
+この記事では、コードが [Microsoft Azure Monitor REST API リファレンス](/rest/api/monitor/)を使用できるように、認証を実行する方法について説明します。
 
 Azure Monitor API では、使用可能な既定のメトリック定義、粒度、およびメトリック値をプログラムによって取得できます。 データは、Azure SQL Database、Azure Cosmos DB、Azure Data Lake など、別のデータ ストアに保存し、 そこで、必要に応じて追加の分析を実行できます。
 
-Monitor API では、さまざまなメトリック データ ポイントを処理するだけでなく、アラート規則の一覧表示、アクティビティ ログの表示などを行うこともできます。 使用可能な操作の一覧については、 [Microsoft Azure Monitor REST API リファレンス](https://docs.microsoft.com/rest/api/monitor/)を参照してください。
+Monitor API では、さまざまなメトリック データ ポイントを処理するだけでなく、アラート規則の一覧表示、アクティビティ ログの表示などを行うこともできます。 使用可能な操作の一覧については、 [Microsoft Azure Monitor REST API リファレンス](/rest/api/monitor/)を参照してください。
 
 ## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor 要求の認証
 
 まず、要求を認証します。
 
-Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../../active-directory/develop/howto-create-service-principal-portal.md)することもできます。
+Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](/powershell/azure/create-azure-service-principal-azureps)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../../active-directory/develop/howto-create-service-principal-portal.md)することもできます。
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -85,13 +85,13 @@ $authHeader = @{
 2. メトリック値を取得する
 
 > [!NOTE]
-> Azure REST API を使用した認証に関する追加情報については、「[Azure REST API Reference (Azure REST API リファレンス)](https://docs.microsoft.com/rest/api/azure/)」を参照してください。
+> Azure REST API を使用した認証に関する追加情報については、「[Azure REST API Reference (Azure REST API リファレンス)](/rest/api/azure/)」を参照してください。
 >
 >
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>メトリック定義の取得 (多次元 API)
 
-[Azure Monitor メトリック定義 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
+[Azure Monitor メトリック定義 REST API](/rest/api/monitor/metricdefinitions) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
 
 **メソッド**: GET
 
@@ -228,7 +228,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>ディメンションの値の取得 (多次元 API)
 
-使用可能なメトリック定義が判明した時点で、一部のメトリックにディメンションがある場合があります。 メトリックのクエリを実行する前に、ディメンションの値の範囲を調べます。 これらのディメンション値に基づいて、メトリックのクエリの実行中にメトリックをフィルター処理するか、分割するかを選択できます。  [Azure Monitor メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics) を使用して、それを達成します。
+使用可能なメトリック定義が判明した時点で、一部のメトリックにディメンションがある場合があります。 メトリックのクエリを実行する前に、ディメンションの値の範囲を調べます。 これらのディメンション値に基づいて、メトリックのクエリの実行中にメトリックをフィルター処理するか、分割するかを選択できます。  [Azure Monitor メトリック REST API](/rest/api/monitor/metrics) を使用して、それを達成します。
 
 すべてのフィルター処理の要求にメトリックの名前 'value' ('localizedValue' ではありません) を使用します。 フィルターが指定されていない場合は、既定のメトリックが返されます。 この API の使用法では、1 つのディメンションでのみ、ワイルドカード フィルターを使用できます。
 
@@ -301,7 +301,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>メトリックの値の取得 (多次元 API)
 
-使用可能なメトリック定義と考えられるディメンションの値がわかったら、関連するメトリック値を取得できます。  [Azure Monitor メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics) を使用して、それを達成します。
+使用可能なメトリック定義と考えられるディメンションの値がわかったら、関連するメトリック値を取得できます。  [Azure Monitor メトリック REST API](/rest/api/monitor/metrics) を使用して、それを達成します。
 
 すべてのフィルター処理の要求にメトリックの名前 'value' ('localizedValue' ではありません) を使用します。 ディメンション フィルターが指定されていない場合、ロール アップされた集計メトリックが返されます。 メトリックのクエリが複数の時系列を返す場合、'Top' および 'OrderBy' クエリ パラメーターを使用して、制限付きかつ順序付きの時系列のリストを返すことができます。
 
@@ -387,7 +387,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-metric-definitions"></a>メトリック定義の取得
 
-[Azure Monitor メトリック定義 REST API](https://msdn.microsoft.com/library/mt743621.aspx) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
+[Azure Monitor メトリック定義 REST API](/rest/api/monitor/metricdefinitions) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
 
 **メソッド**: GET
 
@@ -451,7 +451,7 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-詳細については、「 [List the metric definitions for a resource in Azure Monitor REST API (Azure Monitor REST API でリソースのメトリック定義を一覧表示)](https://msdn.microsoft.com/library/azure/mt743621.aspx) 」を参照してください。
+詳細については、「 [List the metric definitions for a resource in Azure Monitor REST API (Azure Monitor REST API でリソースのメトリック定義を一覧表示)](/rest/api/monitor/metricdefinitions) 」を参照してください。
 
 ## <a name="retrieve-metric-values"></a>メトリック値の取得
 
@@ -594,7 +594,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 ## <a name="retrieve-the-resource-id"></a>リソース ID の取得
 
-REST API を使用すると、使用可能なメトリック定義、粒度、および関連する値について理解しやすくなります。 この情報は、 [Azure 管理ライブラリ](https://msdn.microsoft.com/library/azure/mt417623.aspx)を使用するときに役立ちます。
+REST API を使用すると、使用可能なメトリック定義、粒度、および関連する値について理解しやすくなります。 この情報は、 [Azure 管理ライブラリ](/previous-versions/azure/reference/mt417623(v=azure.100))を使用するときに役立ちます。
 
 前のコードの場合、使用するリソース ID は、目的の Azure リソースへの完全パスです。 たとえば、Azure Web アプリに対してクエリを実行する場合、リソース ID は次のようになります。
 
@@ -705,7 +705,7 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 
 ## <a name="retrieve-activity-log-data"></a>アクティビティ ログ データの取得
 
-メトリック定義と関連する値だけでなく、Azure Monitor REST API を使用して Azure リソースに関連するその他の興味深い分析情報を取得することもできます。 たとえば、 [アクティビティ ログ](https://msdn.microsoft.com/library/azure/dn931934.aspx) データにクエリを実行できます。 次のサンプル要求では、Azure Monitor REST API を使用し、アクティビティ ログにクエリを実行します。
+メトリック定義と関連する値だけでなく、Azure Monitor REST API を使用して Azure リソースに関連するその他の興味深い分析情報を取得することもできます。 たとえば、 [アクティビティ ログ](/rest/api/monitor/activitylogs) データにクエリを実行できます。 次のサンプル要求では、Azure Monitor REST API を使用し、アクティビティ ログにクエリを実行します。
 
 フィルターを使用してアクティビティ ログを取得します。
 
@@ -735,5 +735,5 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 * [監視の概要](../../azure-monitor/overview.md)に関するページを確認します。
 * [Azure Monitor のサポートされるメトリック](metrics-supported.md)を表示します。
-* [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を確認します。
-* [Azure 管理ライブラリ](https://msdn.microsoft.com/library/azure/mt417623.aspx)を確認します。
+* [Microsoft Azure Monitor REST API リファレンス](/rest/api/monitor/)を確認します。
+* [Azure 管理ライブラリ](/previous-versions/azure/reference/mt417623(v=azure.100))を確認します。

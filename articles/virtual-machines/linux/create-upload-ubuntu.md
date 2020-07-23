@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: c70a6049596aa38e9ae6118517fc471becbc1676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a0d4d0a1c36f901ea38c5c73d3aa7a2cf49e02f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134636"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502692"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
 
@@ -22,7 +22,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 * Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、既に Ubuntu Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](https://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
+この記事では、既に Ubuntu Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))」を参照してください。
 
 **Ubuntu のインストールに関する注記**
 
@@ -176,9 +176,8 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 
 13. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。
 
-14. Azure では、固定サイズの VHD のみが許容されます。 VM の OS ディスクが固定サイズの VHD でない場合は、`Convert-VHD` PowerShell コマンドレットを使用して `-VHDType Fixed` オプションを指定します。 `Convert-VHD` については、次のドキュメントを参照してください:「[Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd?view=win10-ps)」。
+14. Azure では、固定サイズの VHD のみが許容されます。 VM の OS ディスクが固定サイズの VHD でない場合は、`Convert-VHD` PowerShell コマンドレットを使用して `-VHDType Fixed` オプションを指定します。 `Convert-VHD` については、次のドキュメントを参照してください:「[Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)」。
 
 
 ## <a name="next-steps"></a>次のステップ
 これで、Ubuntu Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「[Create a Linux VM from a custom disk (カスタム ディスクから Linux VM を作成する)](upload-vhd.md#option-1-upload-a-vhd)」を参照してください。
-

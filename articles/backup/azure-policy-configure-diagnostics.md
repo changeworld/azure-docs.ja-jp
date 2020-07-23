@@ -3,20 +3,20 @@ title: 大規模なコンテナーの診断設定を構成する
 description: Azure Policy を使用して、特定のスコープ内のすべてのコンテナーに対してログ分析診断設定を構成します
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e6ba8eb98ca1d6af9fc745d9baf3840ccd1ac224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195708"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498051"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模なコンテナーの診断設定を構成する
 
-Azure Backup によって提供されるレポート作成ソリューションは、ログ分析 (LA) を活用します。 特定のコンテナーのデータを LA に送信するには、そのコンテナーに対して [診断設定](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) を作成する必要があります。
+Azure Backup によって提供されるレポート作成ソリューションは、ログ分析 (LA) を活用します。 特定のコンテナーのデータを LA に送信するには、そのコンテナーに対して [診断設定](./backup-azure-diagnostic-events.md) を作成する必要があります。
 
 多くの場合、資格情報コンテナーごとに手動で診断設定を追加することは面倒なタスクです。 また、作成された新しいコンテナーでも、このコンテナーのレポートを表示するには、診断設定を有効にする必要があります。
 
-(同期先としての LA を使用した) 大規模な診断設定の作成を簡単にするために、Azure Backup には、組み込みの [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)が用意されています。 このポリシーは、特定のサブスクリプションまたはリソース グループ内のすべてのコンテナーにLA診断設定を追加します。 次のセクションでは、このポリシーの使用方法について説明します。
+(同期先としての LA を使用した) 大規模な診断設定の作成を簡単にするために、Azure Backup には、組み込みの [Azure Policy](../governance/policy/index.yml)が用意されています。 このポリシーは、特定のサブスクリプションまたはリソース グループ内のすべてのコンテナーにLA診断設定を追加します。 次のセクションでは、このポリシーの使用方法について説明します。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -70,7 +70,7 @@ Azure Backup によって提供されるレポート作成ソリューション�
 * コンテナーの診断設定が存在しない。
 * コンテナーの診断設定は存在するが、いずれの設定も、同期先として LA で有効にされた**すべての**のリソース固有イベントと、トグルの**リソース固有**が選択されていない。
 
-したがって、AzureDiagnostics モード (バックアップ レポートでサポートされています) で AzureBackupReport イベントが有効になっているコンテナーをユーザーが持っている場合でも、このコンテナーには修復タスクが適用されます。これは、 [今後も](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)リソース固有のモードが診断設定を作成するための推奨される方法です。
+したがって、AzureDiagnostics モード (バックアップ レポートでサポートされています) で AzureBackupReport イベントが有効になっているコンテナーをユーザーが持っている場合でも、このコンテナーには修復タスクが適用されます。これは、 [今後も](./backup-azure-diagnostic-events.md#legacy-event)リソース固有のモードが診断設定を作成するための推奨される方法です。
 
 さらに、6 つのリソース固有のイベントのサブセットのみが有効になっているコンテナーをユーザーが持っている場合、このコンテナーには修復タスクが適用されます。これは、6 つのリソース固有のイベントがすべて有効になっている場合にのみバックアップ レポートが期待どおりに動作するためです。
 
@@ -84,6 +84,6 @@ Azure Backup によって提供されるレポート作成ソリューション�
 
 ## <a name="next-steps"></a>次の手順
 
-* [バックアップ レポートの使用方法](https://docs.microsoft.com/azure/backup/configure-reports)
-* [Azure Policy に関する詳細情報](https://docs.microsoft.com/azure/governance/policy/)
-* [Azure Policy を使用して、指定したスコープ内のすべての VM のバックアップを自動的に有効にします。](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+* [バックアップ レポートの使用方法](./configure-reports.md)
+* [Azure Policy に関する詳細情報](../governance/policy/index.yml)
+* [Azure Policy を使用して、指定したスコープ内のすべての VM のバックアップを自動的に有効にします。](./backup-azure-auto-enable-backup.md)

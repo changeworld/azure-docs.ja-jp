@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631792"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505739"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor ログ クエリ
 
@@ -27,7 +27,7 @@ Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azur
 ## <a name="concepts"></a>概念
 
 - 「[Analyze log data in Azure Monitor (Azure Monitor でログ データを分析する)](../../azure-monitor/log-query/log-query-overview.md)」では、ログ クエリの概要と、Azure Monitor ログ データがどのように構成されているかについて説明しています。
-- 「[Viewing and analyzing log data in Azure Monitor (Azure Monitor でのログ データの表示と分析)](../../azure-monitor/log-query/portals.md)」では、ログ クエリを作成して実行するポータルについて説明しています。
+- 「[Viewing and analyzing log data in Azure Monitor (Azure Monitor でのログ データの表示と分析)](./log-query-overview.md)」では、ログ クエリを作成して実行するポータルについて説明しています。
 
 ## <a name="reference"></a>リファレンス
 

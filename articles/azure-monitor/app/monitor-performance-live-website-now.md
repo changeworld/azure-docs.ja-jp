@@ -3,17 +3,17 @@ title: Azure Application Insights を使用してライブ ASP.NET Web アプリ
 description: Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミスまたは VM でホストされた ASP.NET Web アプリが対象です。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166384"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499530"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
 > [!IMPORTANT]
-> Status Monitor の使用は推奨されなくなり、**2021 年 6 月 1 日以降**、このバージョンの Status Monitor はサポートされません。 これは Azure Monitor Application Insights エージェント (旧称 Status Monitor v2) に置き換えられました。 [オンプレミス サーバーのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)または [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)に関するドキュメントを参照してください。
+> Status Monitor の使用は推奨されなくなり、**2021 年 6 月 1 日以降**、このバージョンの Status Monitor はサポートされません。 これは Azure Monitor Application Insights エージェント (旧称 Status Monitor v2) に置き換えられました。 [オンプレミス サーバーのデプロイ](./status-monitor-v2-overview.md)または [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](./azure-vm-vmss-apps.md)に関するドキュメントを参照してください。
 
 Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 [Microsoft Azure](https://azure.com) サブスクリプションが必要です。
 
@@ -97,7 +97,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Application Insights が正常にアタッチされたことを確認する必要がある場合は、コマンド ウィンドウで [Sysinternals の Handle](https://docs.microsoft.com/sysinternals/downloads/handle) を実行して、applicationinsights.dll が IIS によって読み込まれたことを確認できます。
+- Application Insights が正常にアタッチされたことを確認する必要がある場合は、コマンド ウィンドウで [Sysinternals の Handle](/sysinternals/downloads/handle) を実行して、applicationinsights.dll が IIS によって読み込まれたことを確認できます。
 
   ```console
   handle.exe /p w3wp.exe
@@ -145,7 +145,7 @@ Application Insights を有効にした後にこのエラーが発生する場�
 * 詳細ログを出力するには、構成ファイル `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` を修正し、`<add key="TraceLevel" value="All" />` を `appsettings` に追加します。
 次に、Status Monitor を再起動します。
 
-* Status Monitor は .NET アプリケーションであるため、[適切な診断を構成ファイルに追加することによる .net トレース](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)の有効化も実行できます。 たとえば、いくつかのシナリオでは、[ネットワーク トレースを構成する](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)ことで、ネットワーク レベルで何が起こるかを確認するのに役立つ可能性があります。
+* Status Monitor は .NET アプリケーションであるため、[適切な診断を構成ファイルに追加することによる .net トレース](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)の有効化も実行できます。 たとえば、いくつかのシナリオでは、[ネットワーク トレースを構成する](/dotnet/framework/network-programming/how-to-configure-network-tracing)ことで、ネットワーク レベルで何が起こるかを確認するのに役立つ可能性があります。
 
 ### <a name="insufficient-permissions"></a>アクセス許可が不十分である
   
@@ -311,7 +311,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 ## <a name="download-status-monitor"></a><a name="download"></a>Status Monitor のダウンロード
 
-- 新しい[PowerShell モジュール](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)を使用します
+- 新しい[PowerShell モジュール](./status-monitor-v2-overview.md)を使用します
 - [Status Monitor インストーラー](https://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
 - または、[Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、その中で Application Insights Status Monitor を検索します。
 
@@ -321,7 +321,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 * パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します
 * 問題を診断するために[イベントとログを検索][diagnostic]します
-* より高度なクエリのために [Analytics](../../azure-monitor/app/analytics.md) を使用します
+* より高度なクエリのために [Analytics](../log-query/log-query-overview.md) を使用します
 
 テレメトリの追加:
 
@@ -336,6 +336,6 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

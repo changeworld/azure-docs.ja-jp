@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: a7a8af505394b5bf860778b9872434cdacf54210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54aac9fda42a867ab66d631279efbca4f812b01a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887012"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497619"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,7 +81,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 |:--- |:--- |:--- |
 | type | type プロパティは、"Dynamics"、"DynamicsCrm"、"CommonDataServiceForApps" のいずれかに設定する必要があります。 | はい |
 | deploymentType | Dynamics インスタンスの展開の種類。 オンライン Dynamics の場合、値を "Online" にする必要があります。 | はい |
-| serviceUri | Dynamics インスタンスのサービス URL。 たとえば https://adfdynamics.crm.dynamics.com です。 | はい |
+| serviceUri | Dynamics インスタンスのサービス URL。 たとえば https://www.crmdynamics.com です。 | はい |
 | authenticationType | Dynamics サーバーに接続する認証の種類。 有効な値は "AADServicePrincipal" と "Office365" です。 | はい |
 | servicePrincipalId | Azure AD アプリケーションのクライアント ID。 | はい (認証が "AADServicePrincipal" の場合) |
 | servicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類。 有効な値は "ServicePrincipalKey" と "ServicePrincipalCert" です。 | はい (認証が "AADServicePrincipal" の場合) |
@@ -102,7 +102,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
         "type": "Dynamics",  
         "typeProperties": {  
             "deploymentType": "Online",  
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
+            "serviceUri": "https://www.crmdynamics.com",  
             "authenticationType": "AADServicePrincipal",  
             "servicePrincipalId": "<service principal id>",  
             "servicePrincipalCredentialType": "ServicePrincipalKey",  
@@ -124,7 +124,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
         "type": "Dynamics", 
         "typeProperties": { 
             "deploymentType": "Online", 
-            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
+            "serviceUri": "https://www.crmdynamics.com", 
             "authenticationType": "AADServicePrincipal", 
             "servicePrincipalId": "<service principal id>", 
             "servicePrincipalCredentialType": "ServicePrincipalCert", 
@@ -154,7 +154,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
         "type": "Dynamics",
         "typeProperties": {
             "deploymentType": "Online",
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",
+            "serviceUri": "https://www.crmdynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {

@@ -3,25 +3,25 @@ title: Azure Monitor for containers を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンス、および明らかになっているパフォーマンスに関する問題を把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800632"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499037"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする
 
 この記事では、Kubernetes 環境にデプロイされ、以下の上でホストされているワークロードのパフォーマンスを監視することを目的として、Azure Monitor for containers を設定するために使用できるオプションの概要について説明します。
 
-- [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/)  
+- [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3.x、4.x  
 - [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4.x  
 - [Arc 対応 Kubernetes クラスター](../../azure-arc/kubernetes/overview.md)
 
 また、以下でホストされている自己管理型 Kubernetes クラスターにデプロイされているワークロードのパフォーマンスを監視することもできます。
 - Azure ([AKS エンジン](https://github.com/Azure/aks-engine)を使用)
-- [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) またはオンプレミス (AKS エンジンを使用)。
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) またはオンプレミス (AKS エンジンを使用)。
 
 次のいずれかのサポートされている方法を使用して、Kubernetes の新しいデプロイまたは 1 つ以上の既存のデプロイに対して、Azure Monitor for containers を有効にできます。
 
@@ -63,7 +63,7 @@ ms.locfileid: "85800632"
 
 Azure Monitor for containers では、以下の構成が公式にサポートされています。
 
-- 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure および Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
+- 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure および Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
 - Kubernetes のバージョンとサポート ポリシーは、[Azure Kubernetes Service (AKS) でサポートされている](../../aks/supported-kubernetes-versions.md)ものと同じです。 
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
@@ -117,7 +117,7 @@ Azure Monitor for containers を有効にするには、次の表で説明され
 | 新しい Kubernetes クラスター | [Azure CLI を使用して AKS クラスターを作成する](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Terraform を使用して AKS クラスターを作成する](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Azure Resource Manager テンプレートを使用して OpenShift クラスターを作成する](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して作成した新しい OpenShift クラスターの監視を有効にできます。 |
-| | [Azure CLI を使用して OpenShift クラスターを作成する](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Azure CLI を使用して新しい OpenShift クラスターをデプロイするときに、監視を有効にすることができます。 |
+| | [Azure CLI を使用して OpenShift クラスターを作成する](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Azure CLI を使用して新しい OpenShift クラスターをデプロイするときに、監視を有効にすることができます。 |
 | 既存の Kubernetes クラスター | [Azure CLI を使用して AKS クラスターの監視を有効にする](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLI を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | |[Terraform を使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-terraform) | オープンソースのツールである Terraform を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | | [Azure Monitor から AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Monitor のマルチクラスター ページから、既にデプロイされている 1 つまたは複数の AKS クラスターの監視を有効にできます。 |

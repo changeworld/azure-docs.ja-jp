@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201039"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494753"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM 拡張機能を含むリソース グループのエクスポート
 
@@ -137,7 +137,7 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 }
 ```
 
-テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureString` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を参照してください。
+テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureString` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照してください。
 
 この `IaasDiagnostic` 拡張機能の例では、Resource Manager テンプレートのパラメーター セクションに次のパラメーターが作成されます。
 

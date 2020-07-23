@@ -3,18 +3,18 @@ title: Azure VM 上の SAP HANA データベースの復元
 description: この記事では、Azure Virtual Machines 上で実行されている SAP HANA データベースを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a3db88ca3c995c3c190da051dbf9df6ae5e29530
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503593"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元
 
 この記事では、Azure 仮想マシン (VM) 上で実行されていて、Azure Backup サービスによって Recovery Services コンテナーにバックアップされた SAP HANA データベースを復元する方法について説明します。 復元を使用すると、開発/テスト シナリオ用にデータのコピーを作成することや、以前の状態に戻すことができます。
 
-SAP HANA データベースのバックアップ方法について詳しくは、「[Azure VM 上の SAP HANA データベースのバックアップ](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)」を参照してください。
+SAP HANA データベースのバックアップ方法について詳しくは、「[Azure VM 上の SAP HANA データベースのバックアップ](./backup-azure-sap-hana-database.md)」を参照してください。
 
 ## <a name="restore-to-a-point-in-time-or-to-a-recovery-point"></a>特定の時点 (ポイントインタイム) または復旧ポイントに復元する
 

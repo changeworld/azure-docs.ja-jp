@@ -3,12 +3,12 @@ title: ハイブリッド Kubernetes クラスターに Azure Monitor for contai
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801463"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498901"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -22,7 +22,7 @@ Azure Monitor for containers では、次の構成が公式にサポートされ
 
     - オンプレミスの Kubernetes
     
-    - Azure と Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください
+    - Azure と Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください
     
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4 以降、オンプレミスまたはその他のクラウド環境。
 
@@ -85,7 +85,7 @@ Hybrid Kubernetes クラスターに対して Azure Monitor for containers を�
 
 - [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 この方法には、2 つの JSON テンプレートが含まれます。 1 つのテンプレートでは監視を有効にする構成が指定され、もう 1 つのテンプレートには、次を指定するために構成するパラメーター値が含まれています。
 
@@ -202,7 +202,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     }
     ```
 
-7. 値を編集します。**workspaceResourceId** には手順 3 でコピーした値を使用し、**workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list) を実行して得られる**リージョン**の値をコピーします。
+7. 値を編集します。**workspaceResourceId** には手順 3 でコピーした値を使用し、**workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list) を実行して得られる**リージョン**の値をコピーします。
 
 8. このファイルを containerSolutionParams.json という名前でローカル フォルダーに保存します。
 

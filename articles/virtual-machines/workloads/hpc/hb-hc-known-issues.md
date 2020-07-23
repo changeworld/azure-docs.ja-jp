@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67707794"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500020"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB シリーズおよび HC シリーズの VM に関する既知の問題
 
@@ -89,4 +89,4 @@ Linux で HB シリーズの VM を起動すると、次のようなカーネル
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure 上の[ハイ パフォーマンス コンピューティング](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)に関する詳細を確認する。
+Azure 上の[ハイ パフォーマンス コンピューティング](/azure/architecture/topics/high-performance-computing/)に関する詳細を確認する。

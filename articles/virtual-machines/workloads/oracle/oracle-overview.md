@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: rogardle
-ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507864"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
@@ -55,13 +55,13 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 
 * [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) を使用して、Azure 内の Oracle Linux VM と、物理サーバーのディザスター リカバリーを調整および管理します。 
 
-* [Azure VMware Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
+* [Azure VMware Solution](../../../vmware-cloudsimple/oracle-real-application-clusters.md) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
 
 ## <a name="backup-oracle-workloads"></a>Oracle ワークロードのバックアップ
 
-* [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) を使用して Oracle VM をバックアップします。
+* [Azure Backup](../../../backup/backup-overview.md) を使用して Oracle VM をバックアップします。
 
-* Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) を使用して、[冗長性の高い Azure Blob Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-redundancy)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
+* Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](../../../storage/blobs/storage-how-to-mount-container-linux.md) を使用して、[冗長性の高い Azure Blob Storage アカウント](../../../storage/common/storage-redundancy.md)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
 
 ## <a name="integration-of-azure-with-oci"></a>Azure と OCI の統合
 

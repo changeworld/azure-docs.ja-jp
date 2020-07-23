@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67707776"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508034"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB シリーズ仮想マシンの概要
 
@@ -65,6 +65,6 @@ VM 自体は、pNUMA 0 がそれに与えられなかったことを知りませ
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure での [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) の HPC VM サイズの詳細を確認する。
+* Azure での [Linux](../../sizes-hpc.md) および [Windows](../../sizes-hpc.md) の HPC VM サイズの詳細を確認する。
 
-* Azure での [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) の詳細を確認する。
+* Azure での [HPC](/azure/architecture/topics/high-performance-computing/) の詳細を確認する。

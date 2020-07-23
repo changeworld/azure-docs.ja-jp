@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 102808d716c080102cce4c02921637101da9fab7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 071baacd375cb5595bc99eeead7e818a35c4539b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553078"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500414"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
 Azure Instance Metadata Service (IMDS) は、現在実行中の仮想マシン インスタンスに関する情報を提供し、仮想マシンの管理と構成に使用できます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、「[メタデータ API](#metadata-apis)」を参照してください。
-Instance Metadata Service は、VM と仮想マシン スケール セット インスタンスの両方で使用できます。 [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) を使用して作成/管理されている実行中の VM でのみ使用できます。
+Instance Metadata Service は、VM と仮想マシン スケール セット インスタンスの両方で使用できます。 [Azure Resource Manager](/rest/api/resources/) を使用して作成/管理されている実行中の VM でのみ使用できます。
 
 Azure の IMDS は、既知のルーティング不可能な IP アドレス (`169.254.169.254`) で利用できる REST エンドポイントです。VM 内からのみアクセスできます。 VM と IMDS 間の通信がホストから離れることはありません。
-IMDS に対してクエリを実行する場合は、HTTP クライアントから VM 内の Web プロキシをバイパスし、`169.254.169.254` を [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) と同じように扱うことがベスト プラクティスです。
+IMDS に対してクエリを実行する場合は、HTTP クライアントから VM 内の Web プロキシをバイパスし、`169.254.169.254` を [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) と同じように扱うことがベスト プラクティスです。
 
 ## <a name="security"></a>セキュリティ
 
@@ -39,7 +39,7 @@ Instance Metadata Service エンドポイントには、実行中の仮想マシ
 
 ### <a name="accessing-azure-instance-metadata-service"></a>Azure Instance Metadata Service へのアクセス
 
-Instance Metadata Service にアクセスするには、[Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) または [Azure ポータル](https://portal.azure.com)から VM を作成し、以下のサンプルに従います。
+Instance Metadata Service にアクセスするには、[Azure Resource Manager](/rest/api/resources/) または [Azure ポータル](https://portal.azure.com)から VM を作成し、以下のサンプルに従います。
 IMDS のクエリ方法のその他の例については、[Azure Instance Metadata のサンプル](https://github.com/microsoft/azureimds)を参照してください。
 
 インスタンスのすべてのメタデータを取得するサンプルコードを次に示します。特定のデータ ソースにアクセスするには、「[メタデータ API](#metadata-apis)」セクションを参照してください。 
@@ -246,14 +246,14 @@ name | VM の名前 | 2017-04-02
 offer | VM イメージのオファーの情報。Azure イメージ ギャラリーからデプロイされるイメージについてのみ存在します。 | 2017-04-02
 osType | Linux または Windows | 2017-04-02
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-plan | VM が Azure Marketplace イメージである場合、[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)にはその名前、製品、および発行元が含まれています | 2018-04-02
+plan | VM が Azure Marketplace イメージである場合、[プラン](/rest/api/compute/virtualmachines/createorupdate#plan)にはその名前、製品、および発行元が含まれています | 2018-04-02
 platformUpdateDomain |  VM を実行中の[更新ドメイン](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability.md) | 2017-04-02
 provider | VM のプロバイダー | 2018-10-01
-publicKeys | VM とパスに割り当てられた[公開キーのコレクション](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
+publicKeys | VM とパスに割り当てられた[公開キーのコレクション](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM イメージの発行元 | 2017-04-02
 resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/management/overview.md) | 2017-08-01
-resourceId | リソースの[完全修飾](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID | 2019-03-11
+resourceId | リソースの[完全修飾](/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM イメージの特定の SKU | 2017-04-02
 storageProfile | [ストレージ プロファイル](#storage-metadata)を参照してください | 2019-06-01
 subscriptionId | 仮想マシンの Azure サブスクリプション | 2017-08-01
@@ -261,7 +261,7 @@ tags | お使いの仮想マシンの[タグ](../../azure-resource-manager/manag
 tagsList | プログラムによる解析を簡単にするために JSON 配列として書式設定されたタグ  | 2019-06-04
 version | VM イメージのバージョン | 2017-04-02
 vmId | VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
-vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
+vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
 vmSize | [VM サイズ](sizes.md) | 2017-04-02
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01
 
@@ -686,7 +686,7 @@ signature BLOB は、ドキュメントの [pkcs7](https://aka.ms/pkcs7) で署�
 Data | 説明
 -----|------------
 nonce | 必要に応じて、要求で指定できる文字列。 nonce が指定されなかった場合、現在の UTC タイムスタンプが使用されます
-plan | [Azure Marketplace イメージ プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)。 プラン ID (名前)、製品イメージまたはオファー (製品)、およびパブリッシャー ID (パブリッシャー) が含まれます。
+plan | [Azure Marketplace イメージ プラン](/rest/api/compute/virtualmachines/createorupdate#plan)。 プラン ID (名前)、製品イメージまたはオファー (製品)、およびパブリッシャー ID (パブリッシャー) が含まれます。
 timestamp/createdOn | 署名されたドキュメントが作成されたときの UTC タイムスタンプ
 timestamp/expiresOn | 署名されたドキュメントの有効期限が切れるときの UTC タイムスタンプ
 vmId |  VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
@@ -852,7 +852,7 @@ HTTP 状態コード | 理由
 1. 新しいバージョンに入力されたすべてのデータが表示されません。
    * 2016 年 9 月以降に作成されたすべての VM については、[タグ](../../azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 それよりも古い VM (2016 年 9 月よりも前に作成された VM) については、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除してメタデータを更新してください。
 1. エラー `500 Internal Server Error` または `410 Resource Gone` が発生するのはなぜですか。
-   * 指数バック オフ システムまたは「[一時的な障害の処理](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults)」で説明されているその他の方法に基づいて、要求を再試行してください。 問題が解決しない場合は、VM の Azure portal でサポートの問題を作成してください。
+   * 指数バック オフ システムまたは「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」で説明されているその他の方法に基づいて、要求を再試行してください。 問題が解決しない場合は、VM の Azure portal でサポートの問題を作成してください。
 1. このサービスは仮想マシン スケール セット インスタンスで機能しますか。
    * はい。Metadata Service は、スケール セット インスタンスで利用できます。
 1. Virtual Machine Scale Sets でタグを更新しましたが、単一インスタンスの VM とは異なり、インスタンスにタグが表示されません。
@@ -894,7 +894,7 @@ HTTP 状態コード | 理由
                Subnet Mask . . . . . . . . . . . : 255.255.255.0
             ... (continues) ...
             ```
-        1. インターフェイスが VM のプライマリ NIC とプライマリ IP に対応していることを確認します。 プライマリ NIC/IP を見つけるには、Azure portal でネットワーク構成を確認するか、[Azure CLI](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show) を使用して探します。 パブリック IP とプライベート IP (CLI を使用している場合は MAC アドレス) をメモします。 PowerShell CLI の例:
+        1. インターフェイスが VM のプライマリ NIC とプライマリ IP に対応していることを確認します。 プライマリ NIC/IP を見つけるには、Azure portal でネットワーク構成を確認するか、[Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show) を使用して探します。 パブリック IP とプライベート IP (CLI を使用している場合は MAC アドレス) をメモします。 PowerShell CLI の例:
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'

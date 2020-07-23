@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499462"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python を使用した依存関係の追跡
 
@@ -86,7 +86,7 @@ conn.close()
 OpenCensus の `django` 統合を使用して、送信 Diango 要求を追跡します。
 
 > [!NOTE]
-> 追跡される送信 Django 要求は、データベースに対して行われた呼び出しのみです。 Django アプリケーションに対して行われた要求については、[受信要求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications)に関する記事を参照してください。
+> 追跡される送信 Django 要求は、データベースに対して行われた呼び出しのみです。 Django アプリケーションに対して行われた要求については、[受信要求](./opencensus-python-request.md#tracking-django-applications)に関する記事を参照してください。
 
 [PyPI](https://pypi.org/project/opencensus-ext-django/) から `opencensus-ext-django` をダウンロードしてインストールし、次の行を Django `settings.py` ファイルの `MIDDLEWARE` セクションに追加します。
 

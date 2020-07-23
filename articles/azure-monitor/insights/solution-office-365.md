@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498799"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -228,7 +228,7 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
 
 ## <a name="data-collection"></a>データ コレクション
 
-最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Azure Monitor に送信します。 このレコードは、受信した後、数分以内に Azure Monitor で使用できます。
+最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](/office/office-365-management-api/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Azure Monitor に送信します。 このレコードは、受信した後、数分以内に Azure Monitor で使用できます。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 

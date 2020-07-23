@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
-ms.openlocfilehash: 20e7e0dd7df469aa797100bd9d2df3cd6d633dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 213d9fe2db148c6260a1271c3c2b22978b98a8f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260901"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508204"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -39,7 +39,7 @@ Linux のスケジュールされたイベントの詳細については、[Linu
 
 スケジュールされたイベントは、次のユース ケースでイベントを提供します。
 
-- [プラットフォームで開始されるメンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (例: VM の再起動、ライブ マイグレーション、ホストの更新を保持するメモリ)
+- [プラットフォームで開始されるメンテナンス](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json) (例: VM の再起動、ライブ マイグレーション、ホストの更新を保持するメモリ)
 - 仮想マシンは、じきに故障することが予測されている[劣化したホスト ハードウェア](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)で実行されています。
 - ユーザーが開始するメンテナンス (たとえば、ユーザーによる再起動や VM の再デプロイ)
 - [スポット VM](spot-vms.md) および[スポット スケール セット](../../virtual-machine-scale-sets/use-spot.md) インスタンスの削除。
@@ -187,7 +187,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
 
@@ -231,4 +231,4 @@ if __name__ == '__main__':
 - [Azure Friday でのスケジュールされたイベント](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)のデモをご覧ください。 
 - スケジュールされたイベントのコード サンプルは、[Azure Instance Metadata Scheduled Events の GitHub リポジトリ](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)をご覧ください。
 - 「[インスタンス メタデータ サービス](instance-metadata-service.md)」で使用可能な API の詳細についてご覧ください。
-- [Azure での Windows 仮想マシンの計画メンテナンス](planned-maintenance.md)に関するページをご覧ください。
+- [Azure での Windows 仮想マシンの計画メンテナンス](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)に関するページをご覧ください。

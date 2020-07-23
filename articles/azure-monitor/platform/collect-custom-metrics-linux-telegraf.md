@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186443"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505348"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -25,7 +25,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
  ![Telegraph エージェントの概要](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> カスタム メトリックは、すべてのリージョンでサポートされているわけではありません。 サポートされているリージョンについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions)の一覧を参照してください
+> カスタム メトリックは、すべてのリージョンでサポートされているわけではありません。 サポートされているリージョンについては、[こちら](./metrics-custom-overview.md#supported-regions)の一覧を参照してください
 
 ## <a name="send-custom-metrics"></a>カスタム メトリックを送信する 
 
@@ -137,6 +137,3 @@ sudo systemctl start telegraf
 
 ## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
-
-
-

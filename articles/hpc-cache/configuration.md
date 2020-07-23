@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505309"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497201"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Azure HPC Cache の追加設定を構成する
 
@@ -51,7 +51,7 @@ Azure 仮想ネットワークの MTU 設定の詳細については、「[Azure
 
 ルート スカッシュが無効になっている場合は、クライアント ルート ユーザー (UID 0) からの要求は、バックエンド NFS ストレージ システムにルートとして渡されます。 この構成では、不適切なファイル アクセスが許可される可能性があります。
 
-キャッシュでルート スカッシュを設定すると、ストレージ ターゲットとして使用される NAS システムで必要な ``no_root_squash`` の設定を補うのに役立ちます。 (詳細については [NFS ストレージ ターゲットの前提条件](hpc-cache-prereqs.md#nfs-storage-requirements)に関するセクションを参照してください)。また、Azure Blob ストレージ ターゲットと共に使用すると、セキュリティを向上させることもできます。
+キャッシュでルート スカッシュを設定すると、ストレージ ターゲットとして使用される NAS システムで必要な ``no_root_squash`` の設定を補うのに役立ちます。 (詳細については [NFS ストレージ ターゲットの前提条件](hpc-cache-prerequisites.md#nfs-storage-requirements)に関するセクションを参照してください)。また、Azure Blob ストレージ ターゲットと共に使用すると、セキュリティを向上させることもできます。
 
 既定の設定は **[はい]** です (2020 年 4 月より前に作成されたキャッシュでは、既定の設定が **[いいえ]** になっている場合があります)。
 

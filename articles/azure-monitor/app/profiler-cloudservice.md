@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eba250f3ca6a7af8480d24a99e6c3e8278009b82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671666"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499445"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure Cloud Services をプロファイリングする
 
@@ -23,7 +23,7 @@ Application Insights Profiler を次のサービスにデプロイすること�
 Application Insights Profiler は、Azure Diagnostics 拡張機能と共にインストールされています。 必要な作業は、Profiler をインストールして Application Insights リソースにプロファイルを送信するように、Azure Diagnostics を構成することだけです。
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Azure Cloud Services に対して Profiler を有効にする
-1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降を使用していることを確認します。 OS ファミリ 4 を使用している場合は、[スタートアップ タスク](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet)を使用して、.NET Framework 4.6.1 以降をインストールする必要があります。 OS ファミリ 5 には、互換性のあるバージョンの .NET Framework が既定で含まれています。 
+1. [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降を使用していることを確認します。 OS ファミリ 4 を使用している場合は、[スタートアップ タスク](../../cloud-services/cloud-services-dotnet-install-dotnet.md)を使用して、.NET Framework 4.6.1 以降をインストールする必要があります。 OS ファミリ 5 には、互換性のあるバージョンの .NET Framework が既定で含まれています。 
 
 1. [Application Insights SDK を Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) に追加します。
 
@@ -37,11 +37,11 @@ Application Insights Profiler は、Azure Diagnostics 拡張機能と共にイ�
 
 1. Profiler を有効にするために Azure Diagnostics 拡張機能を次のように構成します。
 
-    a. アプリケーション ロールで、次に示すように [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) の *diagnostics.wadcfgx* ファイルを探します。  
+    a. アプリケーション ロールで、次に示すように [Azure Diagnostics](../platform/diagnostics-extension-overview.md) の *diagnostics.wadcfgx* ファイルを探します。  
 
       ![診断構成ファイルの場所](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      ファイルが見つからない場合は、「[Set up diagnostics for Azure Cloud Services and Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」(Azure クラウド サービスと仮想マシンに対する診断を設定する) をご覧ください。
+      ファイルが見つからない場合は、「[Set up diagnostics for Azure Cloud Services and Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」(Azure クラウド サービスと仮想マシンに対する診断を設定する) をご覧ください。
 
     b. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。  
 

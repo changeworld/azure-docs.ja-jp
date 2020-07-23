@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3caf8b63cbd86338bbef653e9be9916907578627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675881"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501706"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -77,7 +77,7 @@ Azure Machine Learning アルゴリズムでハードウェア障害の発生が
 
 #### <a name="paired-regions"></a>ペアになっているリージョン
 
-各 Azure リージョンは、同じ地理的近傍内の別のリージョンとペアになっています。 それらは合わせて 1 つのリージョン ペアになります。 予定メンテナンス フェーズの間、Azure はリージョン ペアの一方のリージョンの VM だけを更新します。 たとえば、Azure は米国中北部の VM の更新中、同時に米国中南部の VM を更新することはありません。 ただし、北ヨーロッパなどのその他のリージョンは、米国東部と同時にメンテナンスされる可能性があります。 各リージョンに対して適切に VM を分散させるためには、リージョン ペアの動作を理解することが大切です。 詳細については、[Azure リージョン ペア](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)に関するページを参照してください。
+各 Azure リージョンは、同じ地理的近傍内の別のリージョンとペアになっています。 それらは合わせて 1 つのリージョン ペアになります。 予定メンテナンス フェーズの間、Azure はリージョン ペアの一方のリージョンの VM だけを更新します。 たとえば、Azure は米国中北部の VM の更新中、同時に米国中南部の VM を更新することはありません。 ただし、北ヨーロッパなどのその他のリージョンは、米国東部と同時にメンテナンスされる可能性があります。 各リージョンに対して適切に VM を分散させるためには、リージョン ペアの動作を理解することが大切です。 詳細については、[Azure リージョン ペア](../best-practices-availability-paired-regions.md)に関するページを参照してください。
 
 #### <a name="availability-sets-and-scale-sets"></a>可用性セットとスケール セット
 

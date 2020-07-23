@@ -4,22 +4,18 @@ description: さまざまな複製の種類と用途、および StorSimple 8000
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496147"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してボリュームを複製する
 
@@ -51,7 +47,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 
 複製は、ローカル スナップショットまたはクラウド スナップショットを使用して、同じデバイスや別のデバイス上に作成できるほか、クラウド アプライアンス上に作成することもできます。
 
-次の手順は、バックアップ カタログから複製を作成する方法について説明しています。  複製を開始する別の方法があります。 **[ボリューム]** に移動し、ボリュームを選択し、右クリックしてコンテキスト メニューを呼び出し、 **[複製]** を選択します。
+次の手順は、バックアップ カタログから複製を作成する方法について説明しています。  
 
 バックアップ カタログからボリュームの複製を作成するには、次の手順を実行します。
 

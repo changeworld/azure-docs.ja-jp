@@ -3,18 +3,18 @@ title: Azure portal を使用して新しい推奨事項に合わせて Azure Ad
 description: 新しい推奨事項に合わせて Azure Advisor アラートを作成する
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567580"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507218"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure portal を使用して新しい推奨事項に合わせて Azure Advisor アラートを作成する 
 
 この記事では、Azure portal を使用して Azure Advisor から新しい推奨事項に合わせてアラートを設定する方法について説明します。 
 
-Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出されるたびに、イベントが [Azure アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)に格納されます。 これらのイベントのアラートは、Azure Advisor から推奨事項固有のアラート作成操作を使用して設定できます。 サブスクリプションを選択し、必要に応じてリソース グループを選択して、アラートを受信するリソースを指定することができます。 
+Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出されるたびに、イベントが [Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に格納されます。 これらのイベントのアラートは、Azure Advisor から推奨事項固有のアラート作成操作を使用して設定できます。 サブスクリプションを選択し、必要に応じてリソース グループを選択して、アラートを受信するリソースを指定することができます。 
 
 また、次のプロパティを使用して、推奨事項の種類を指定することもできます。
 
@@ -57,7 +57,7 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
 
     ![Advisor アラートのアクション グループ](./media/advisor-alerts/create6.png)
 
-7. **[アクション グループ]** セクションで、 **[Add existing]\(既存の追加\)** を選択して既に作成したアクション グループを使用するか、 **[Create new]\(新規作成\)** を選択して新しい[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)を設定します。 
+7. **[アクション グループ]** セクションで、 **[Add existing]\(既存の追加\)** を選択して既に作成したアクション グループを使用するか、 **[Create new]\(新規作成\)** を選択して新しい[アクション グループ](../azure-monitor/platform/action-groups.md)を設定します。 
 
     ![Advisor アラートの既存の追加](./media/advisor-alerts/create7.png)
 

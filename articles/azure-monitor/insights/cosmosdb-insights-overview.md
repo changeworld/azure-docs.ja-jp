@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945496"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498918"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB の探索
 
@@ -78,7 +78,7 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 | `201 Created` | リソースを作成するための POST 操作が成功しました。 |
 | `404 Not Found` | もう存在していないリソースを操作しようとしています。 たとえば、リソースは既に削除されている可能性があります。 |
 
-詳細な状態コード一覧については、[Azure Cosmos DB HTTP 状態コードに関する記事](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)を参照してください。
+詳細な状態コード一覧については、[Azure Cosmos DB HTTP 状態コードに関する記事](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)を参照してください。
 
 ### <a name="capacity"></a>容量
 
@@ -98,7 +98,7 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ## <a name="pin-export-and-expand"></a>ピン留め、エクスポート、展開
 
-セクションの右上にある画びょうアイコンを選択すると、メトリックのどのセクションでも [Azure ダッシュボード](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)にピン留めできます。
+セクションの右上にある画びょうアイコンを選択すると、メトリックのどのセクションでも [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めできます。
 
 ![メトリック セクションのダッシュボードへのピン留めの例](./media/cosmosdb-insights-overview/pin.png)
 
@@ -126,6 +126,6 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
 * ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。

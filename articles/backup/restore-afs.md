@@ -3,16 +3,16 @@ title: Azure ファイル共有を復元する
 description: Azure portal を使用して、Azure Backup によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 5668328637ae9b5a5dd3db02085a7f15de2a2456
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980664"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503644"
 ---
 # <a name="restore-azure-file-shares"></a>Azure ファイル共有を復元する
 
-この記事では、Azure portal を使用して、[Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
+この記事では、Azure portal を使用して、[Azure Backup](./backup-overview.md) によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
 
 この記事では、次の方法について学習します。
 

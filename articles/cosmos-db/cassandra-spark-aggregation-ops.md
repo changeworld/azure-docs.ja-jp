@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: a3851eb9e7439d7a40994240240cd221d616cb3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5db5cc515e2fbecfaeb58b9e1c02dd0bc6eda375
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503355"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API テーブルに対する集計操作 
 
@@ -77,7 +77,7 @@ sc.cassandraTable("books_ks", "books").count
 ```
 
 **出力:**
-```
+```bash
 res48: Long = 5
 ```
 

@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081062"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497915"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -24,7 +24,7 @@ ms.locfileid: "86081062"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- バックアップに対してサポートされている vCenter または ESXi のバージョンを実行していることを確認します。 [こちら](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)のサポート マトリックスを参照してください。
+- バックアップに対してサポートされている vCenter または ESXi のバージョンを実行していることを確認します。 [こちら](./backup-mabs-protection-matrix.md)のサポート マトリックスを参照してください。
 - Azure Backup Server がセットアップされていることを確認します。 まだの場合は、始める前に[行います](backup-azure-microsoft-azure-backup.md)。 Azure Backup Server が最新の更新プログラムで実行されている必要があります。
 - 確実に、次のネットワーク ポートを開いた状態にします。
   - MABS と vCenter 間の TCP 443
@@ -41,7 +41,7 @@ ms.locfileid: "86081062"
 - Azure Backup Server がバックアップを処理する方法を理解しておくことが重要です。
   - 最初のステップとして、Azure Backup Server はローカル ディスク ストレージにデータをバックアップします。 Azure Backup Server ではストレージ プールが使用されます。ストレージ プールとは、保護対象データに対するディスク復旧ポイントを Azure Backup Server が格納するディスクとボリュームのセットです。 ストレージ プールには、直接接続ストレージ (DAS)、ファイバー チャネル SAN、iSCSI ストレージ デバイスまたは SAN を使用できます。 VMware VM データのローカル バックアップ用に十分なストレージがあることを確認することが重要です。
   - その後、ローカル ディスク ストレージから Azure にバックアップが行われます。
-  - 必要なストレージ容量を確認するには、[こちらをご覧ください](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need)。 情報は DPM に対するものですが、Azure Backup Server にも使用できます。
+  - 必要なストレージ容量を確認するには、[こちらをご覧ください](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need)。 情報は DPM に対するものですが、Azure Backup Server にも使用できます。
 
 ### <a name="set-up-the-certificate"></a>証明書を設定する
 

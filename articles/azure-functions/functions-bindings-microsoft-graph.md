@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322517"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506538"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -59,7 +59,7 @@ Visual Studio を使用している場合は、[この記事の前半で説明�
 
 ### <a name="configuring-authentication--authorization"></a>認証と承認の構成
 
-この記事で説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)を設定します。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
+この記事で説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を設定します。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
 
 > [!Note] 
 > Microsoft Graph の拡張機能は、Azure AD 認証のみをサポートします。 ユーザーは、職場または学校のアカウントでログインする必要があります。
@@ -983,7 +983,7 @@ Webhook を使用すると、Microsoft Graph でのイベントに応答でき�
 - [Microsoft Graph webhook サブスクリプションの入力バインド](#webhook-input)を使用すると、既存のサブスクリプションを一覧表示し、必要に応じて更新できます。
 - [Microsoft Graph webhook サブスクリプションの出力バインド](#webhook-output)を使用すると、webhook サブスクリプションを作成または削除できます。
 
-バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)をご覧ください。
+バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)をご覧ください。
 
 webhook について詳しくは、「[Microsoft Graph の Webhooks での作業]」をご覧ください。
 

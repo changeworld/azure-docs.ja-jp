@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670136"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505807"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics のログ検索から Azure Monitor のログに移行する
 最近、Log Analytics のログ検索の後継として、Azure Monitor のログを分析するための新しいエクスペリエンスが導入されました。 現在もログ検索ページには、Azure portal の **[Log Analytics ワークスペース]** ページにある **[ログ (クラシック)]** メニュー項目からアクセスできますが、このページは 2019 年 2 月 15 日をもって削除されます。 この記事では、ログ検索から円滑に移行できるよう、2 つのエクスペリエンスの違いについて説明しています。 
@@ -58,7 +58,7 @@ Azure Monitor のログで、これらのレコードを返すクエリを変更
 ![Azure Monitor ログのドリルダウン](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>アクションの実行
-ログ検索では、 **[アクションの実行]** を選択することにより、検索結果から [Runbook を開始](take-action.md)できます。
+ログ検索では、 **[アクションの実行]** を選択することにより、検索結果から [Runbook を開始](../platform/action-groups.md)できます。
 
 ![アクションの実行](media/log-search-transition/take-action-log-search.png)
 

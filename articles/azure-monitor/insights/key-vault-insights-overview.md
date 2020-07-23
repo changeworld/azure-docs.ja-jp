@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945462"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498955"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Azure Monitor for Key Vault (プレビュー) によるキー コンテナーの監視
 Azure Monitor Key Vault (プレビュー) では、Key Vault の要求、パフォーマンス、エラー、待機時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
@@ -24,7 +24,7 @@ Azure Monitor Key Vault (プレビュー) では、Key Vault の要求、パフ�
 -   **ドリルダウン分析**: 特定のキー コンテナーの詳細な分析を実行します。
 -    **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。
 
-Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 すべてのユーザーがメトリックベースの監視データにアクセスできますが、ログベースの視覚化を含めた場合、ユーザーは [Azure Key Vault のログ記録を有効](https://docs.microsoft.com/azure/key-vault/key-vault-logging)にする必要があります。
+Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 すべてのユーザーがメトリックベースの監視データにアクセスできますが、ログベースの視覚化を含めた場合、ユーザーは [Azure Key Vault のログ記録を有効](../../key-vault/general/logging.md)にする必要があります。
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>監視用のキー コンテナーの構成
 
@@ -39,7 +39,7 @@ Azure Monitor for Key Vault では、ログとメトリックの組み合わせ�
 
 3. 診断設定が保存されると、Key Vault 分析情報の下ですべてのログベースのグラフと視覚化を表示できるようになります。 ログの作成が開始されるまでに数分から数時間かかる場合があることに注意してください。
 
-4. Key Vault サービスの診断ログを有効にする方法の詳細については、[完全なガイド](https://docs.microsoft.com/azure/key-vault/key-vault-logging)をご覧ください。
+4. Key Vault サービスの診断ログを有効にする方法の詳細については、[完全なガイド](../../key-vault/general/logging.md)をご覧ください。
 
 ## <a name="view-from-azure-monitor"></a>Azure Monitor から表示する
 
@@ -75,7 +75,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 ブックには、成功 (2xx 状態コード)、認証エラー (401/403 状態コード)、スロットリング (429 状態コード)、およびその他のエラー (4xx 状態コード) が表示されます。
 
-各ステータス コードが表す意味について理解を深めるには、[Azure Key Vault の状態と応答コード](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses)に関するドキュメントを参照することをお勧めします。
+各ステータス コードが表す意味について理解を深めるには、[Azure Key Vault の状態と応答コード](../../key-vault/general/authentication-requests-and-responses.md)に関するドキュメントを参照することをお勧めします。
 
 ## <a name="operations--latency-workbook"></a>[操作と待機時間] ブック
 
@@ -120,7 +120,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 ユーザーはまた、上部のテーブルで特定のトランザクションの種類に基づいてビューを詳しく調べることもできます。この上部のテーブルに従って下部のテーブルは動的に更新され、ユーザーはこのテーブルのポップアップ コンテキスト ウィンドウで操作の完全な詳細を確認できます。
 
 >[!NOTE]
-> このブックを表示するには、診断設定を有効にしている必要があることに注意してください。 診断設定の有効化の詳細については、「[Azure Key Vault のログ記録](https://docs.microsoft.com/azure/key-vault/general/logging)」をご覧ください。
+> このブックを表示するには、診断設定を有効にしている必要があることに注意してください。 診断設定の有効化の詳細については、「[Azure Key Vault のログ記録](../../key-vault/general/logging.md)」をご覧ください。
 
 ## <a name="pin-and-export"></a>ピン留めとエクスポート
 
@@ -164,7 +164,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 ### <a name="resolving-performance-issues-or-failures"></a>パフォーマンスの問題またはエラーの解決
 
-Azure Monitor for Key Vault (プレビュー) で発生するキー コンテナー関連の問題のトラブルシューティングについては、[Azure Key Vault のドキュメント](https://docs.microsoft.com/azure/key-vault/)をご覧ください。
+Azure Monitor for Key Vault (プレビュー) で発生するキー コンテナー関連の問題のトラブルシューティングについては、[Azure Key Vault のドキュメント](../../key-vault/index.yml)をご覧ください。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>200 個のキー コンテナーしか表示できないのはなぜですか
 
@@ -208,4 +208,4 @@ Azure Monitor for Key Vault (プレビュー) で発生するキー コンテナ
 
 ## <a name="next-steps"></a>次のステップ
 
-ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)」で学習してください。
+ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。

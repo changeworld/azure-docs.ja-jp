@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084329"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508884"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
@@ -218,7 +218,7 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>復旧 VM に OS ディスクを接続する
 
-1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。 接続したディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 3. 管理者特権でのコマンド プロンプト インスタンス ( **[管理者として実行]** ) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
 
@@ -234,7 +234,7 @@ VM に接続しようとすると、次のシナリオが発生します。
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [OS ディスクを切断して、VM を再作成します](../windows/troubleshoot-recovery-disks-portal.md)。 その後、問題が解決されているかどうかを確認します。
+4. [OS ディスクを切断して、VM を再作成します](./troubleshoot-recovery-disks-portal-windows.md)。 その後、問題が解決されているかどうかを確認します。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

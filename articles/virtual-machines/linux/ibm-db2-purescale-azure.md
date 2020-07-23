@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945052"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502335"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上の IBM DB2 pureScale
 
@@ -67,7 +67,7 @@ Azure 上での高可用性とスケーラビリティをサポートするた�
 
 -   DB2 pureScale クラスター。 Azure 上で必要なコンピューティング リソースの種類は、設定に依存します。 一般的には、次の 2 つの方法を使用できます。
 
-    -   マルチノードの、ハイパフォーマンス コンピューティング (HPC) 形式のネットワークを使用する。この場合、小規模から中規模サイズのインスタンスから共有ストレージにアクセスします。 この HPC タイプの構成では、Azure のメモリ最適化 E シリーズまたはストレージ最適化 L シリーズの[仮想マシン](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)によって、必要なコンピューティング性能が提供されます。
+    -   マルチノードの、ハイパフォーマンス コンピューティング (HPC) 形式のネットワークを使用する。この場合、小規模から中規模サイズのインスタンスから共有ストレージにアクセスします。 この HPC タイプの構成では、Azure のメモリ最適化 E シリーズまたはストレージ最適化 L シリーズの[仮想マシン](../windows/sizes.md)によって、必要なコンピューティング性能が提供されます。
 
     -   データ エンジンに使用する大規模な仮想マシン インスタンスの数を減らす。 大規模なインスタンスの場合、大量のメモリ内ワークロードには最大のメモリ最適化 [M シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/series/)の仮想マシンが理想的です。 DB2 の実行に使用される論理パーティション (LPAR) のサイズによっては、専用のインスタンスが必要になる場合があります。
 
@@ -96,11 +96,11 @@ DB2 pureScale では、あらゆるものを共有するアーキテクチャを
 
 IBM は、DB2 pureScale クラスター内のすべてのメンバーに対して InfiniBand ネットワークを推奨しています。 DB2 pureScale では、利用可能な場合は CF にリモート ダイレクト メモリ アクセス (RDMA) も使用されます。
 
-セットアップ中に、Azure [リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成してすべての仮想マシンを含めます。 一般には、リソースの有効期間や管理者に基づいて、リソースをグループ化します。 このアーキテクチャ内の仮想マシンには、[高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が必要です。 これは、1 つの仮想マシンに対してシングルルート I/O 仮想化 (SR-IOV) を介して、一貫性のある超低ネットワーク待ち時間を提供する Azure 機能です。
+セットアップ中に、Azure [リソース グループ](../../azure-resource-manager/management/overview.md)を作成してすべての仮想マシンを含めます。 一般には、リソースの有効期間や管理者に基づいて、リソースをグループ化します。 このアーキテクチャ内の仮想マシンには、[高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が必要です。 これは、1 つの仮想マシンに対してシングルルート I/O 仮想化 (SR-IOV) を介して、一貫性のある超低ネットワーク待ち時間を提供する Azure 機能です。
 
-どの Azure 仮想マシンも、メイン、Gluster FS フロントエンド (gfsfe)、Gluster FS バックエンド (bfsbe)、DB2 pureScale (db2be)、DB2 pureScale フロントエンド (db2fe) というサブネットを含む仮想ネットワークにデプロイされます。 また、インストール スクリプトは、メイン サブネットの仮想マシン上にプライマリ [NIC](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) を作成します。
+どの Azure 仮想マシンも、メイン、Gluster FS フロントエンド (gfsfe)、Gluster FS バックエンド (bfsbe)、DB2 pureScale (db2be)、DB2 pureScale フロントエンド (db2fe) というサブネットを含む仮想ネットワークにデプロイされます。 また、インストール スクリプトは、メイン サブネットの仮想マシン上にプライマリ [NIC](./multiple-nics.md) を作成します。
 
-仮想ネットワーク内のネットワーク トラフィックを制限したり、サブネットを分離したりするには、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)を使用します。
+仮想ネットワーク内のネットワーク トラフィックを制限したり、サブネットを分離したりするには、[ネットワーク セキュリティ グループ](../../virtual-network/virtual-network-vnet-plan-design-arm.md)を使用します。
 
 Azure では、DB2 pureScale は、ストレージのネットワーク接続として TCP/IP を使用する必要があります。
 

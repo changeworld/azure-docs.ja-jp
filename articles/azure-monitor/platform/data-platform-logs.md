@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 17536f49e24da8c508da17c4c2ff5fb2f9bead62
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4e5d4af74ab54479a49963369cb99dbc19fca848
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200892"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505279"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 
@@ -41,10 +41,10 @@ Azure Monitor のログには、種類ごとに異なるプロパティ セッ�
 
 |  | 説明 |
 |:---|:---|
-| **分析** | Azure portal で [Log Analytics](../log-query/get-started-portal.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力なデータ エクスプローラー分析エンジンを使用してログ データを対話形式で分析します。<br>Azure portal で [Application Insights 分析コンソール](../app/analytics.md)を使用してログ クエリを記述し、Application Insights からログ データを対話形式で分析します。 |
+| **分析** | Azure portal で [Log Analytics](../log-query/get-started-portal.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力なデータ エクスプローラー分析エンジンを使用してログ データを対話形式で分析します。<br>Azure portal で [Application Insights 分析コンソール](../log-query/log-query-overview.md)を使用してログ クエリを記述し、Application Insights からログ データを対話形式で分析します。 |
 | **視覚化** | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](../platform/workbooks-overview.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
 | **Alert** | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](action-groups.md)を実行する、[ログ警告ルール](alerts-log.md)を構成します。<br>メトリックとして抽出された特定のログ データ ログに対して[メトリック警告ルール](alerts-metric-logs.md)を構成します。 |
-| **取得** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
+| **取得** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
 | **エクスポート** | [Logic Apps](~/articles/logic-apps/index.yml) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |
 
 
@@ -58,11 +58,11 @@ Application Insights からのログ データではワークスペースと同�
 ![Workspaces](media/data-platform-logs/workspaces.png)
 
 ## <a name="log-queries"></a>ログ クエリ
-Azure Monitor ログのデータは、[Kusto クエリ言語](../log-query/get-started-queries.md)で書かれた[ログ クエリ](../log-query/log-query-overview.md)を使用して取得できます。これにより、収集されたデータを迅速に取得、統合、および分析できます。 [Log Analytics](../log-query/portals.md) を使用して、Azure portal でログ クエリを記述してテストします。 結果は、対話形式で操作したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。
+Azure Monitor ログのデータは、[Kusto クエリ言語](../log-query/get-started-queries.md)で書かれた[ログ クエリ](../log-query/log-query-overview.md)を使用して取得できます。これにより、収集されたデータを迅速に取得、統合、および分析できます。 [Log Analytics](../log-query/log-query-overview.md) を使用して、Azure portal でログ クエリを記述してテストします。 結果は、対話形式で操作したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。
 
 ![Log Analytics](media/data-platform-logs/log-analytics.png)
 
-Application Insights のデータを分析するには、[Application Insights から Log Analytics](../app/analytics.md) を開きます。
+Application Insights のデータを分析するには、[Application Insights から Log Analytics](../log-query/log-query-overview.md) を開きます。
 
 ![Application Insights Analytics](media/data-platform-logs/app-insights-analytics.png)
 
@@ -77,15 +77,15 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 | Data | 説明 |
 |:---|:---|
 | Azure Active Directory 監査ログ | 各ディレクトリの診断設定によって構成されます。 「[Azure AD ログを Azure Monitor ログと統合する](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)」をご覧ください。  |
-| アクティビティ ログ | 既定では個別に格納され、ほぼリアルタイムのアラートに使用できます。 Log Analytics ワークスペースに書き込むには、Activity Log Analytics ソリューションをインストールします。 「[Log Analytics での Azure アクティビティ ログの収集と分析](activity-log-collect.md)」をご覧ください。 |
+| アクティビティ ログ | 既定では個別に格納され、ほぼリアルタイムのアラートに使用できます。 Log Analytics ワークスペースに書き込むには、Activity Log Analytics ソリューションをインストールします。 「[Log Analytics での Azure アクティビティ ログの収集と分析](./activity-log.md)」をご覧ください。 |
 
 ### <a name="azure-resources"></a>Azure リソース
 
 | Data | 説明 |
 |:---|:---|
-| リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 [Azure リソース ログの Log Analytics へのストリーミング](resource-logs-collect-workspace.md)に関するページを参照してください。 |
-| 監視ソリューション | 監視ソリューションにより収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
-| メトリック | ログ データを長期間保持し、[Kusto クエリ言語](/azure/kusto/query/)を使用して他のデータの種類と共に複雑な分析を実行するために、Azure Monitor リソース用のプラットフォーム メトリックを Log Analytics ワークスペースに送信します。 [Azure リソース ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)に関するページを参照してください。 |
+| リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 [Azure リソース ログの Log Analytics へのストリーミング](./resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。 |
+| 監視ソリューション | 監視ソリューションにより収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../monitor-reference.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
+| メトリック | ログ データを長期間保持し、[Kusto クエリ言語](/azure/kusto/query/)を使用して他のデータの種類と共に複雑な分析を実行するために、Azure Monitor リソース用のプラットフォーム メトリックを Log Analytics ワークスペースに送信します。 [Azure リソース ログの Log Analytics へのストリーミング](./resource-logs.md#send-to-azure-storage)に関するページを参照してください。 |
 | Azure Table Storage | 一部の Azure リソースによて監視データが書き込まれる Azure Storage からデータを収集します。 「[Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する](diagnostics-extension-logs.md)」をご覧ください。 |
 
 ### <a name="virtual-machines"></a>Virtual Machines
@@ -93,7 +93,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 | Data | 説明 |
 |:---|:---|
 |  エージェントのデータ ソース | [Windows](agent-windows.md) と [Linux](../learn/quick-collect-linux-computer.md) のエージェントから収集されるデータ ソースには、イベント、パフォーマンス データ、カスタム ログが含まれます。 データ ソースの一覧と構成の詳細については、「[Azure Monitor のエージェント データ ソース](data-sources.md)」をご覧ください。 |
-| 監視ソリューション | 監視ソリューションによりエージェントから収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
+| 監視ソリューション | 監視ソリューションによりエージェントから収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../monitor-reference.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
 | System Center Operations Manager | Operations Manager の管理グループを Azure Monitor に接続し、オンプレミスのエージェントからログにイベントおよびパフォーマンス データを収集します。 この構成について詳しくは、「[Operations Manager を Log Analytics に接続する](om-agents.md)」をご覧ください。 |
 
 
@@ -124,8 +124,8 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 | Data | 説明 |
 |:---|:---|
-| Azure Security Center | [Azure Security Center](/azure/security-center/) には、Log Analytics ワークスペースで収集されたデータが格納され、他のログ データと共に分析できます。 ワークスペースの構成について詳しくは、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」をご覧ください。 |
-| Azure Sentinel | [Azure Sentinel](/azure/sentinel/) には、データ ソースから Log Analytics ワークスペースへのデータが格納されます。 「[データ ソースの接続](/azure/sentinel/connect-data-sources)」のページを参照してください。  |
+| Azure Security Center | [Azure Security Center](../../security-center/index.yml) には、Log Analytics ワークスペースで収集されたデータが格納され、他のログ データと共に分析できます。 ワークスペースの構成について詳しくは、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」をご覧ください。 |
+| Azure Sentinel | [Azure Sentinel](../../sentinel/index.yml) には、データ ソースから Log Analytics ワークスペースへのデータが格納されます。 「[データ ソースの接続](../../sentinel/connect-data-sources.md)」のページを参照してください。  |
 
 
 ## <a name="next-steps"></a>次のステップ

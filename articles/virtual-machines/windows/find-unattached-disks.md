@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ea3a4452b87fbb1c8663a66ef29c4e9fb891a6b3
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 8d57b4499f3f1b2f22c14cc912e81b709ec4054c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300639"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500329"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 
@@ -87,4 +87,4 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[ストレージ アカウントを削除する](../../storage/common/storage-account-create.md#delete-a-storage-account)」および [PowerShell を使用した孤立したディスクの特定](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)に関するページを参照してください。
+詳細については、「[ストレージ アカウントを削除する](../../storage/common/storage-account-create.md#delete-a-storage-account)」および [PowerShell を使用した孤立したディスクの特定](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell)に関するページを参照してください。

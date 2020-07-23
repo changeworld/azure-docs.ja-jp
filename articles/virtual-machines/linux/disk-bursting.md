@@ -7,14 +7,14 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: f92fae38d49c51dfe87a68b023ba779e89b0e0bc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 4408b7d442ce3f4fbb1ea61031295375ae036493
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295458"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494549"
 ---
-# <a name="disk-bursting"></a>ディスク バースト
+# <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 
 ## <a name="virtual-machine-level-bursting"></a>仮想マシン レベルでのバースト

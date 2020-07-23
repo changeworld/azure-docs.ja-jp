@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564025"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507575"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
@@ -80,7 +80,7 @@ Active Directory ドメインを設定するときは、次の表の情報を使
 * 新しい Active Directory フォレストとドメインのドメイン コントローラーとして使用する、Microsoft Windows Server を実行している 1 つ以上の仮想マシン。
 * 名前解決用の DNS サービスを実行している 1 つ以上の仮想マシン。
 
-詳細な手順については、「[Windows Server 2012 の新しい Active Directory フォレストをインストールする](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)」を参照してください。
+詳細な手順については、「[Windows Server 2012 の新しい Active Directory フォレストをインストールする](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)」を参照してください。
 
 > [!TIP]
 > サービスの可用性を高めるために、複数のドメイン コントローラーと DNS サーバーを設定することをお勧めします。
@@ -94,7 +94,7 @@ Active Directory フォレストとドメインを設定した後、新しい Ac
 * Active Directory フォレストの場所へのサイト間 VPN 接続。
 * 既存の Active Directory フォレストの名前を解決するための DNS サーバー。
 
-詳細な手順については、「[Windows Server 2012 の新しい Active Directory 子ドメインまたはツリー ドメインをインストールする](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)」を参照してください。
+詳細な手順については、「[Windows Server 2012 の新しい Active Directory 子ドメインまたはツリー ドメインをインストールする](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)」を参照してください。
 
 Active Directory ドメインを設定した後、新しい Active Directory に対する [vCenter 上の ID ソースを追加](#add-an-identity-source-on-vcenter)することができます。
 

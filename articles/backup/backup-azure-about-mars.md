@@ -4,12 +4,12 @@ description: MARS エージェントでサポートされるバックアップ �
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134977"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497949"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントについて
 
@@ -40,10 +40,10 @@ MARS エージェントでは、次の復元シナリオがサポートされて
 ## <a name="backup-process"></a>バックアップ プロセス
 
 1. Azure portal から [Recovery Service コンテナー](install-mars-agent.md#create-a-recovery-services-vault)を作成し、 **[Backup goals]\(バックアップの目標\)** からファイル、フォルダー、システム状態を選択します。
-2. オンプレミスのマシンに [Recovery Service コンテナーの資格情報とエージェント インストーラーをダウンロードします](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)。
+2. オンプレミスのマシンに [Recovery Service コンテナーの資格情報とエージェント インストーラーをダウンロードします](./install-mars-agent.md#download-the-mars-agent)。
 
-3. [エージェントをインストール](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)して、ダウンロードしたコンテナーの資格情報を使用し、マシンを Recovery Services コンテナーに登録します。
-4. クライアントのエージェント コンソールから[バックアップを構成](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)して、バックアップの対象、バックアップのタイミング (スケジュール)、Azure にバックアップを保持する期間 (保持ポリシー) を指定し、保護を開始します。
+3. [エージェントをインストール](./install-mars-agent.md#install-and-register-the-agent)して、ダウンロードしたコンテナーの資格情報を使用し、マシンを Recovery Services コンテナーに登録します。
+4. クライアントのエージェント コンソールから[バックアップを構成](./backup-windows-with-mars-agent.md#create-a-backup-policy)して、バックアップの対象、バックアップのタイミング (スケジュール)、Azure にバックアップを保持する期間 (保持ポリシー) を指定し、保護を開始します。
 
 ![Azure Backup エージェントの図](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
@@ -57,12 +57,12 @@ MARS エージェントでは、次の復元シナリオがサポートされて
 
 ### <a name="additional-scenarios"></a>その他のシナリオ
 
-- **Azure 仮想マシン内の特定のファイルやフォルダーをバックアップ**:Azure 仮想マシン (VM) をバックアップする主な方法は、VM 上で Azure Backup 拡張機能を使用することです。 この拡張機能は、VM 全体をバックアップします。 VM 内の特定のファイルやフォルダーをバックアップする場合は、Azure VM に MARS エージェントをインストールできます。 詳細については、「[アーキテクチャ:組み込みの Azure VM バックアップ](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup)」を参照してください。
+- **Azure 仮想マシン内の特定のファイルやフォルダーをバックアップ**:Azure 仮想マシン (VM) をバックアップする主な方法は、VM 上で Azure Backup 拡張機能を使用することです。 この拡張機能は、VM 全体をバックアップします。 VM 内の特定のファイルやフォルダーをバックアップする場合は、Azure VM に MARS エージェントをインストールできます。 詳細については、「[アーキテクチャ:組み込みの Azure VM バックアップ](./backup-architecture.md#architecture-built-in-azure-vm-backup)」を参照してください。
 
 - **オフライン シード処理**:通常、Azure へのデータの初回完全バックアップでは大量のデータが転送されるため、より広いネットワーク帯域幅が必要になります。 後続のバックアップでは、差分または増分のデータ量のみが転送されます。 Azure Backup では、初回バックアップが圧縮されます。 *オフライン シード処理*プロセスによって、Azure Backup ではディスクを使用して、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。 詳細については、「[Azure Data Box を使用した Azure Backup オフライン バックアップ](offline-backup-azure-data-box.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[MARS エージェントのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
+[MARS エージェントのサポート マトリックス](./backup-support-matrix-mars-agent.md)
 
-[MARS エージェントに関する FAQ](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
+[MARS エージェントに関する FAQ](./backup-azure-file-folder-backup-faq.md)

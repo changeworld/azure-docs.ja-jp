@@ -3,12 +3,12 @@ title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 88e7be7e2238637f1e6d5ac84abebdca0b9e1674
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727014"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497932"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -67,10 +67,10 @@ ms.locfileid: "83727014"
 
 ### <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
 
-既定では、コンテナーには [geo 冗長ストレージ (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) が使用されます。
+既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。
 
 * コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
-* コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) を使用できます。
+* コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) を使用できます。
 
 ストレージ レプリケーションの種類を変更にするには、次の手順に従います。
 
@@ -189,7 +189,7 @@ Azure Backup では、マシンで実行されている Azure VM エージェン
 **VM** | **詳細**
 --- | ---
 **Windows** | 1.エージェント MSI ファイルを[ダウンロードしてインストール](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)します。<br/><br/> 2.マシンでの管理者権限でインストールします。<br/><br/> 3.インストールを確認します。 VM 上の *C:\WindowsAzure\Packages* で、**WaAppAgent.exe** >  を右クリックして、 **[プロパティ]** を選択します。 **[詳細]** タブで、 **[製品バージョン]** が 2.6.1198.718 以降であることを確認します。<br/><br/> エージェントを更新する場合は、バックアップ操作が実行されていないことを確認し、[エージェントを再インストール](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)します。
-**Linux** | ディストリビューションのパッケージのリポジトリから、RPM または DEB パッケージを使用してインストールします。 これは、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。 エージェントは [GitHub](https://github.com/Azure/WALinuxAgent) から入手できますが、そこからインストールすることはお勧めできません。<br/><br/> エージェントを更新する場合は、バックアップ操作が実行されていないことを確認し、バイナリを更新します。
+**Linux** | ディストリビューションのパッケージのリポジトリから、RPM または DEB パッケージを使用してインストールします。 これは、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](../virtual-machines/linux/endorsed-distros.md)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。 エージェントは [GitHub](https://github.com/Azure/WALinuxAgent) から入手できますが、そこからインストールすることはお勧めできません。<br/><br/> エージェントを更新する場合は、バックアップ操作が実行されていないことを確認し、バイナリを更新します。
 
 >[!NOTE]
 > **Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。**

@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045758"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494515"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>VM とイメージの Linux エージェントを無効化または削除する
 
 Linux エージェントを削除する前に、Linux エージェントの削除後に VM で実行できなくなる処理について理解しておく必要があります。
 
-Azure 仮想マシン (VM) [拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)は、Azure VM のデプロイ後に構成および自動化タスクを実行できるようにする複数の小さなアプリケーションです。拡張機能は Azure コントロール プレーンによってインストールされ、管理されます。 [Azure Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)の役割は、プラットフォーム拡張機能コマンドを処理し、VM 内で拡張機能の状態を適切に維持することです。
+Azure 仮想マシン (VM) [拡張機能](../extensions/overview.md)は、Azure VM のデプロイ後に構成および自動化タスクを実行できるようにする複数の小さなアプリケーションです。拡張機能は Azure コントロール プレーンによってインストールされ、管理されます。 [Azure Linux エージェント](../extensions/agent-linux.md)の役割は、プラットフォーム拡張機能コマンドを処理し、VM 内で拡張機能の状態を適切に維持することです。
 
 Azure プラットフォームでは、VM の構成、監視、セキュリティ、およびユーティリティというさまざまなアプリケーションの多くの拡張機能をホストします。 ファーストパーティとサードパーティの拡張機能は多数用意されています。拡張機能が使用される主なシナリオの例としては次のようなものがあります。
 * ファーストパーティである Azure のサービス (Azure Backup、Monitoring、Disk Encryption、Security、Site Replication など) をサポートします。
@@ -31,7 +31,7 @@ Azure プラットフォームでは、VM の構成、監視、セキュリテ�
 
 ## <a name="disabling-extension-processing"></a>拡張機能の処理の無効化
 
-必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する**必要があります**。たとえば、AZ CLI を使用すると、[一覧を表示](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list)して[削除](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)できます。
+必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する**必要があります**。たとえば、AZ CLI を使用すると、[一覧を表示](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list)して[削除](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)できます。
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ Linux エージェントが含まれていないイメージから VM を作成�
 > 
 > 上記の操作を行わないと、プラットフォームは拡張機能の構成を送信しようと試み、40 分後にタイムアウトします。
 
-拡張機能が無効になっている VM をデプロイする場合は、[--enable-agent](https://docs.microsoft.com/cli/azure/vm#az-vm-create) を指定して Azure CLI を実行できます。
+拡張機能が無効になっている VM をデプロイする場合は、[--enable-agent](/cli/azure/vm#az-vm-create) を指定して Azure CLI を実行できます。
 
 ```bash
 az vm create \
