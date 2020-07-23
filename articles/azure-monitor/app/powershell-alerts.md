@@ -3,12 +3,12 @@ title: PowerShell を使用して Application Insights のアラートを設定�
 description: Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: ea33ecfbc02bfed75a66e751ce1788474a6d0e8f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111305"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516959"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
@@ -139,7 +139,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
 [アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
 
 ## <a name="see-also"></a>参照
-* [Application Insights を構成するスクリプト](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [Application Insights を構成するスクリプト](./create-new-resource.md#creating-a-resource-automatically)
 * [テンプレートから Application Insights と Web テスト リソースを作成する](powershell.md)
 * [Microsoft Azure Diagnostics の Application Insights への結合を自動化する](powershell-azure-diagnostics.md)
 * [アラートへの対応を自動化する](../../azure-monitor/platform/alerts-webhooks.md)

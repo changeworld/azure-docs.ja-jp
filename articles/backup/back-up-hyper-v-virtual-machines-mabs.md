@@ -3,12 +3,12 @@ title: MABS で Hyper-V 仮想マシンをバックアップする
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用した仮想マシンのバックアップと回復の手順について説明します。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420414"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514555"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Server を使用して Hyper-V 仮想マシンをバックアップする
 
@@ -155,4 +155,4 @@ Windows Server 2012 R2 以降で MABS が実行されている場合は、レプ
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Backup Server からのデータ復旧](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)
+[Azure Backup Server からのデータ復旧](./backup-azure-alternate-dpm-server.md)

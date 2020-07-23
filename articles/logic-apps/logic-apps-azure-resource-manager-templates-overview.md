@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641829"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520971"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -39,7 +39,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 * このトピックのサンプルで使用されている[完全なテンプレート](#full-example-template)
 * GitHub にある[サンプルのクイックスタート ロジック アプリ テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
 
-ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)」をご覧ください。
+ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](/azure/templates/microsoft.logic/allversions)」をご覧ください。
 
 <a name="template-structure"></a>
 
@@ -328,7 +328,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 | `accessControl` | いいえ | Object | 要求トリガーまたは実行履歴の入出力に対する IP アクセスの制限など、ロジック アプリのセキュリティ属性を指定します。 詳細については、[ロジック アプリへのアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)に関するページをご覧ください。 |
 ||||
 
-ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)」をご覧ください。
+ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](/azure/templates/microsoft.logic/allversions)」をご覧ください。
 
 <a name="workflow-definition-parameters"></a>
 
@@ -910,7 +910,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 
 ### <a name="authenticate-connections"></a>接続の認証
 
-デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。 ただし、引き続き OAuth 接続を承認し、[資格情報を認証する](../active-directory/develop/authentication-scenarios.md)ための有効なアクセス トークンを生成する必要があります。 詳しくは、「[Authorize OAuth connections (OAuth 接続の承認)](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)」をご覧ください。
+デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。 ただし、引き続き OAuth 接続を承認し、[資格情報を認証する](../active-directory/develop/authentication-vs-authorization.md)ための有効なアクセス トークンを生成する必要があります。 詳しくは、「[Authorize OAuth connections (OAuth 接続の承認)](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)」をご覧ください。
 
 一部の接続では、[Azure AD に登録](../active-directory/develop/quickstart-register-app.md)されているロジック アプリの接続を承認するために、Azure Active Directory (Azure AD) [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の使用がサポートされています。 たとえば、この Azure Data Lake 接続リソース定義は、サービス プリンシパルの情報を扱うテンプレート パラメーターを参照する方法と、テンプレートでこれらのパラメーターを宣言する方法を示しています。
 
@@ -1006,7 +1006,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 サービス プリンシパルの使用方法について詳しくは、次のトピックをご覧ください。
 
 * [Azure Portal を使用してサービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Azure PowerShell を使用して Azure サービス プリンシパルを作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Azure PowerShell を使用して Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)
 * [Azure PowerShell を使用して証明書でのサービス プリンシパルを作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>

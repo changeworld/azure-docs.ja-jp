@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a37f57bc12e5756b493bb009268beb067e7faaab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520648"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps 用の Azure セキュリティ ベースライン
 
 Logic Apps 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -36,25 +36,25 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 
 お使いの ISE に関連するすべての Virtual Network サブネット デプロイに、アプリケーションの信頼されたポートとソースに固有のネットワーク アクセス制御が適用されたネットワーク セキュリティ グループがあることを確認してください。 ISE でロジック アプリをデプロイする場合は、Private Link を使用します。 Azure Private Link を使用すると、お使いの仮想ネットワーク内のプライベート エンドポイント経由で、Azure PaaS サービスと Azure でホストされている顧客所有のサービスまたはパートナー サービスにアクセスできます。 または、特定のユース ケースがある場合は、Azure Firewall を実装することでこの要件を満たすことができます。 セキュリティ規則を設定する際の複雑さを軽減するには、特定の Azure サービスの IP アドレス プレフィックスのグループを表すサービス タグを使用します。
 
-* [Logic Apps のコネクタについて](https://docs.microsoft.com/azure/connectors/apis-list)
+* [Logic Apps のコネクタについて](../connectors/apis-list.md)
 
-* [Azure のサービス タグについて](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Azure のサービス タグについて](../virtual-network/service-tags-overview.md)
 
-* [統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network リソースにアクセスする方法について](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview)
+* [統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network リソースにアクセスする方法について](./connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* [仮想ネットワーク サービス エンドポイントについて](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+* [仮想ネットワーク サービス エンドポイントについて](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-* [Azure Private Link について](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [Azure Private Link について](../private-link/private-link-overview.md)
 
-* [ISE エンドポイント アクセスについて](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [ISE エンドポイント アクセスについて](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイして構成する方法](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイして構成する方法](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [ISE のアクセスを有効にする方法](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment#enable-access-for-ise)
+* [ISE のアクセスを有効にする方法](./connect-virtual-network-vnet-isolated-environment.md#enable-access-for-ise)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -64,11 +64,11 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 
 **ガイダンス**:外部アクセス ポイントを使用する統合サービス環境 (ISE) でロジック アプリを実行する場合は、ネットワーク セキュリティ グループ (NSG) を使用して、データ流出のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-* [ISE エンドポイント アクセスについて](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [ISE エンドポイント アクセスについて](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -94,19 +94,19 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化を使用して、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨します。
 
-* [Logic Apps への受信呼び出しをセキュリティで保護する方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [Logic Apps への受信呼び出しをセキュリティで保護する方法](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
-* [受信 IP アドレスを制限する方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#restrict-inbound-ip-addresses)
+* [受信 IP アドレスを制限する方法](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
-* [DDoS 保護を構成する方法](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
 
-* [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Azure Security Center の Just In Time ネットワーク アクセス制御について](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Azure Security Center の Just In Time ネットワーク アクセス制御について](../security-center/security-center-just-in-time.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -120,15 +120,15 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 それ以外の場合は、マーケットプレースのサードパーティ製ソリューションを利用して、この要件を満たすことができます。
 
-* [ISE エンドポイント アクセスについて](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [ISE エンドポイント アクセスについて](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
-* [内部 VNET 内の API Management と Application Gateway を統合する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [内部 VNET 内の API Management と Application Gateway を統合する方法](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [WAF アクセス ログを理解する方法](https://docs.microsoft.com/azure/web-application-firewall/ag/web-application-firewall-logs#access-log)
+* [WAF アクセス ログを理解する方法](../web-application-firewall/ag/web-application-firewall-logs.md#access-log)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -142,9 +142,9 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートを構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートを構成する方法](../firewall/threat-intel.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -154,11 +154,11 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 **ガイダンス**: 統合サービス環境 (ISE) でロジック アプリを実行している場合は、Azure Application Gateway をデプロイします。
 
-* [内部 VNet 内の API Management と Application Gateway を統合する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [内部 VNet 内の API Management と Application Gateway を統合する方法](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [HTTPS を使用するように Application Gateway を構成する方法](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [HTTPS を使用するように Application Gateway を構成する方法](../application-gateway/create-ssl-portal.md)
 
-* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](../application-gateway/overview.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -168,7 +168,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 **ガイダンス**: Azure Logic Apps インスタンスへのアクセスが必要なリソースについては、仮想ネットワーク サービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (LogicApps、LogicAppsManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
-* [サービス タグの使用に関する詳細](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [サービス タグの使用に関する詳細](../virtual-network/service-tags-overview.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -184,9 +184,9 @@ DDoS Protection Standard を有効にする必要がある
 
 また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -200,13 +200,13 @@ DDoS Protection Standard を有効にする必要がある
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Logic Apps の Azure Policy 定義の一覧](https://docs.microsoft.com/azure/logic-apps/policy-samples)
+* [Logic Apps の Azure Policy 定義の一覧](./policy-samples.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -216,9 +216,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、対象の Azure Logic Apps インスタンスに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -226,7 +226,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -242,11 +242,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](./monitor-logic-apps-log-analytics.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -258,11 +258,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](./monitor-logic-apps-log-analytics.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -282,9 +282,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 Azure Monitor で、組織のコンプライアンス規則に従って、Azure Logic Apps インスタンスに関連付けられているログの保持期間を設定します。
 
-* [Azure Logic Apps で実行状態の監視、トリガー履歴の確認、アラートの設定を行う方法](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps)
+* [Azure Logic Apps で実行状態の監視、トリガー履歴の確認、アラートの設定を行う方法](./monitor-logic-apps.md)
 
-* [ログ保持期間のパラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -298,13 +298,13 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](./monitor-logic-apps-log-analytics.md)
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Monitor の Log Analytics で Azure アクティビティ ログを収集して分析する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+* [Azure Monitor の Log Analytics で Azure アクティビティ ログを収集して分析する方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -316,11 +316,11 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 または、Azure Sentinel に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Security Center でアラートを管理する方法](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -352,7 +352,7 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -362,13 +362,13 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 ロジック アプリのすべての要求エンドポイントは、エンドポイントの URL に Shared Access Signature (SAS) を含みます。 要求ベースのトリガーのエンドポイント URL を他のパーティと共有する場合は、特定のキーを使用する有効期限付きのコールバック URL を生成できます。 そうすることで、キーをシームレスに交換したり、ロジック アプリのトリガーに対するアクセスを特定の期間に基づいて制限したりできます。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する](./create-managed-service-identity.md)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [SAS を使用して Azure Logic Apps のアクセスとデータをセキュリティで保護する方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [SAS を使用して Azure Logic Apps のアクセスとデータをセキュリティで保護する方法](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -382,9 +382,9 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 コードとしてのインフラストラクチャを使用している場合は、パスワードをコードに格納せずに、Azure Key Vault を使用して資格情報の格納と取得を行います。
 
-* [Logic Apps のデータをセキュリティで保護してアクセスする方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
+* [Logic Apps のデータをセキュリティで保護してアクセスする方法](./logic-apps-securing-a-logic-app.md)
 
-* [Azure Key Vault との間でシークレットの設定と取得を行う方法](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal)
+* [Azure Key Vault との間でシークレットの設定と取得を行う方法](../key-vault/secrets/quick-create-portal.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -399,9 +399,9 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](../security-center/security-center-identity-access.md)
 
-* [Azure Policy を使用する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を使用する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -415,13 +415,13 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、接続の作成は、Office 365、Salesforce、GitHub などのサービスへのサインインを意味し、そこでアクセス トークンが暗号化され、Azure シークレット ストアに安全に保存されます。 FTP や SQL などのその他のコネクタでは、サーバーのアドレス、ユーザー名、およびパスワードなどの構成の詳細を含む接続が必要です。 これらの接続構成の詳細も暗号化され、安全に保存されます。
 
-* [Azure REST API を呼び出す方法](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [Azure REST API を呼び出す方法](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [クライアント アプリケーション (サービス プリンシパル) を Azure AD に登録する方法](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [クライアント アプリケーション (サービス プリンシパル) を Azure AD に登録する方法](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [ワークフロー トリガー API 情報](https://docs.microsoft.com/rest/api/logic/workflowtriggers)
+* [ワークフロー トリガー API 情報](/rest/api/logic/workflowtriggers)
 
-* [コネクタの構成について](https://docs.microsoft.com/azure/connectors/apis-list])
+* [コネクタの構成について](../connectors/apis-list.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -431,9 +431,9 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 
 **ガイダンス**: Azure Active Directory (AD) Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -443,9 +443,9 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -457,9 +457,9 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 
 また、Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
-* [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出の概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -471,9 +471,9 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 
 さらに、ロジック アプリのすべての要求エンドポイントは、エンドポイントの URL に Shared Access Signature (SAS) を含みます。 特定の IP アドレスからの要求のみを受け入れるようにロジック アプリを制限できます。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [Logic Apps で受信 IP アドレスを制限する方法について](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#restrict-inbound-ip-addresses)
+* [Logic Apps で受信 IP アドレスを制限する方法について](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -491,9 +491,9 @@ Azure Logic Apps では、システム割り当てとユーザー割り当ての
 - Azure API Management
 - Azure App Service
 
-* [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する](./create-managed-service-identity.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -503,9 +503,9 @@ Azure Logic Apps では、システム割り当てとユーザー割り当ての
 
 **ガイダンス**: Azure Active Directory (AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-* [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -519,9 +519,9 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -531,11 +531,11 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **ガイダンス**: Azure AD のリスクおよび ID Protectoin 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -545,7 +545,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **ガイダンス**:現時点では利用できません。Azure Logic Apps では、カスタマー ロックボックスはまだサポートされていません。
 
-* [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -553,13 +553,13 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -575,15 +575,15 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 
 さらに、環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを制御できます。
 
-* [Logic Apps のコネクタについて](https://docs.microsoft.com/azure/connectors/apis-list)
+* [Logic Apps のコネクタについて](../connectors/apis-list.md)
 
-* [統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview)
+* [統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする](./connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -597,7 +597,7 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 
 Microsoft では、Azure Logic Apps 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -611,17 +611,17 @@ Request トリガーでは、受信要求に対してトランスポート層セ
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
-* [Azure Logic Apps におけるアクセスとデータのセキュリティ保護](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
+* [Azure Logic Apps におけるアクセスとデータのセキュリティ保護](./logic-apps-securing-a-logic-app.md)
 
-* [Azure Logic Apps で受信 HTTPS 要求を受信して応答する](https://docs.microsoft.com/azure/connectors/connectors-native-reqres#tls-support)
+* [Azure Logic Apps で受信 HTTPS 要求を受信して応答する](../connectors/connectors-native-reqres.md#tls-support)
 
-* [Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
+* [Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す](../connectors/connectors-native-http.md#tls-support)
 
-* [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure を使用した保存時のデータの暗号化について](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Azure を使用した保存時のデータの暗号化について](../security/fundamentals/encryption-atrest.md)
 
-* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](./customer-managed-keys-integration-service-environment.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -633,9 +633,9 @@ Request トリガーでは、受信要求に対してトランスポート層セ
 
 Microsoft では、Azure Logic Apps 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [実行履歴データへのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-run-history-data)
+* [実行履歴データへのアクセスをセキュリティで保護する](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -649,7 +649,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、Azure のリソース ロックを使用できます。 この機能を使用すると、他のユーザーは運用リソースを変更または削除できなくなります。
 
-* [Azure Logic Apps 操作へのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-logic-app-operations)
+* [Azure Logic Apps 操作へのアクセスをセキュリティで保護する](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -659,7 +659,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 **ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。 Microsoft では、Azure Logic Apps 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -671,7 +671,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 対象のロジック アプリをホストするための統合サービス環境 (ISE) を作成し、Azure Storage で使用される暗号化キーをより詳細に制御したい場合は、Azure Key Vault を使用して、独自のキーを設定、使用、管理することができます。 この機能は "Bring Your Own Key" (BYOK) とも呼ばれ、キーは "カスタマー マネージド キー" と呼ばれます。
 
-* [Azure Logic Apps の統合サービス環境の保存データを暗号化する](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Azure Logic Apps の統合サービス環境の保存データを暗号化する](./customer-managed-keys-integration-service-environment.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -681,7 +681,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 **ガイダンス**: Azure Logic Apps およびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -689,7 +689,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -733,19 +733,19 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -755,7 +755,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -769,11 +769,11 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -785,11 +785,11 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 注:Google のデータおよびプライバシー ポリシーにより、Gmail コネクタは Google によって承認されたサービスでのみ使用できます。 この状況は進展しており、将来的に他の Google コネクタに影響を与える可能性があります。
 
-* [すべての Logic Apps コネクタの一覧](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)
+* [すべての Logic Apps コネクタの一覧](/connectors/connector-reference/connector-reference-logicapps-connectors)
 
-* [Gmail コネクタの問題と制限について](https://docs.microsoft.com/connectors/gmail/#known-issues-and-limitations)
+* [Gmail コネクタの問題と制限について](/connectors/gmail/#known-issues-and-limitations)
 
-* [Google のプライバシー ポリシーの詳細](https://docs.microsoft.com/azure/connectors/connectors-google-data-security-privacy-policy)
+* [Google のプライバシー ポリシーの詳細](../connectors/connectors-google-data-security-privacy-policy.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -801,9 +801,9 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -839,9 +839,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -859,7 +859,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -879,13 +879,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 業務に必要であっても、組織のリスクが高くなる可能性があるロジック アプリは、特定のアクセス許可と RBAC 境界を持つ個別のリソース グループを使用して、可能な限り分離する必要があります。
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [RBAC を使用してロジック アプリへのアクセスをセキュリティで保護する方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-logic-app-operations)
+* [RBAC を使用してロジック アプリへのアクセスをセキュリティで保護する方法](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -893,7 +893,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -903,19 +903,19 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 また、セキュリティで保護されたパラメーターを使用して、機密データやシークレットを保護します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Logic Apps のコネクタによって作成された接続をブロックする](https://docs.microsoft.com/azure/logic-apps/block-connections-connectors)
+* [Azure Logic Apps のコネクタによって作成された接続をブロックする](./block-connections-connectors.md)
 
-* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates)
+* [Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする方法](./logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [セキュリティで保護されたアクション パラメーターについて](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-action-parameters)
+* [セキュリティで保護されたアクション パラメーターについて](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-* [パラメーターに関するセキュリティの推奨事項](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -939,21 +939,21 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 また、難読化を使用して実行履歴のデータをセキュリティで保護していることを確認します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
-* [Azure Logic Apps のコネクタによって作成された接続をブロックする](https://docs.microsoft.com/azure/logic-apps/block-connections-connectors)
+* [Azure Logic Apps のコネクタによって作成された接続をブロックする](./block-connections-connectors.md)
 
-* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates)
+* [Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする方法](./logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [実行履歴の入力と出力へのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [実行履歴の入力と出力へのアクセスをセキュリティで保護する](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [パラメーター入力へのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-action-parameters)
+* [パラメーター入力へのアクセスをセキュリティで保護する](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-* [パラメーターに関するセキュリティの推奨事項](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -973,11 +973,11 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 さらに、Azure Resource Manager には、テンプレートを JavaScript Object Notation (JSON) でエクスポートする機能があります。構成が組織のセキュリティ要件を満たしているか超えていることを確認するためにはこれを確認する必要があります。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
-* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -995,7 +995,7 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 **ガイダンス**: 組み込みの Azure Policy 定義と "Microsoft.Logic" 名前空間の Azure Policy エイリアスを使用して、システム構成のアラート、監査、適用を行うカスタム ポリシーを作成します。 ご利用の Azure リソースのネットワーク構成を監査または適用するには、Azure Policy エイリアスを使用してカスタム ポリシーを作成します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1013,7 +1013,7 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 **ガイダンス**: 組み込みの Azure Policy 定義と "Microsoft.Logic" 名前空間の Azure Policy エイリアスを使用して、システム構成のアラート、監査、適用を行うカスタム ポリシーを作成します。 Azure リソースの構成を自動的に適用するには、Azure Policy の [audit]、[deny]、[deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1033,15 +1033,15 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 対象のロジック アプリをホストするための統合サービス環境 (ISE) を作成し、Azure Storage で使用される暗号化キーをより詳細に制御したい場合は、Azure Key Vault を使用して、独自のキーを設定、使用、管理することができます。 この機能は "Bring Your Own Key" (BYOK) とも呼ばれ、キーは "カスタマー マネージド キー" と呼ばれます。
 
-* [Azure Logic Apps の実行履歴の入力と出力をセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Azure Logic Apps の実行履歴の入力と出力をセキュリティで保護する](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [パラメーターに関するセキュリティの推奨事項](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Azure Logic Apps のパラメーター入力へのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-parameter-inputs)
+* [Azure Logic Apps のパラメーター入力へのアクセスをセキュリティで保護する](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
-* [Azure Key Vault を使用して、デプロイ時にセキュリティで保護されたパラメーター値を渡す](https://docs.microsoft.com/azure/azure-resource-manager/templates/key-vault-parameter)
+* [Azure Key Vault を使用して、デプロイ時にセキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](./customer-managed-keys-integration-service-environment.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1057,7 +1057,7 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 - Azure API Management
 - Azure App Service
 
-* [Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する方法](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する方法](./create-managed-service-identity.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1069,13 +1069,13 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 また、コード内で資格情報を特定する資格情報スキャナーを実装することもできます。 また、資格情報スキャナーを使うと、検出された資格情報を、Azure Key Vault などのより安全な場所に移動しやすくなります。
 
-* [Azure Logic Apps の実行履歴の入力と出力をセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Azure Logic Apps の実行履歴の入力と出力をセキュリティで保護する](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [パラメーターに関するセキュリティの推奨事項](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Azure Logic Apps のパラメーター入力へのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-parameter-inputs)
+* [Azure Logic Apps のパラメーター入力へのアクセスをセキュリティで保護する](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
-* [Azure Key Vault を使用して、デプロイ時にセキュリティで保護されたパラメーター値を渡す](https://docs.microsoft.com/azure/azure-resource-manager/templates/key-vault-parameter)
+* [Azure Key Vault を使用して、デプロイ時にセキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1085,7 +1085,7 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -1103,9 +1103,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 データ サービス向けの Azure Security Center の脅威検出を使用して、ストレージ アカウントにアップロードされたマルウェアを検出します。
 
-* [Azure Cloud Services および Virtual Machines 向けの Microsoft Anti-malware について](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Azure Cloud Services および Virtual Machines 向けの Microsoft Anti-malware について](../security/fundamentals/antimalware.md)
 
-* [データ サービスに対する Azure Security Center の脅威検出について](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [データ サービスに対する Azure Security Center の脅威検出について](../security-center/threat-protection.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1113,7 +1113,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>手順 8.3:マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
-**ガイダンス**:適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1121,7 +1121,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -1131,9 +1131,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 さらに、ロジック アプリの基になるワークフロー定義を Azure Resource Manager テンプレートに拡張する必要があります。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。
 
-* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](./business-continuity-disaster-recovery-guidance.md)
 
-* [Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+* [Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する方法](./logic-apps-azure-resource-manager-templates-overview.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1149,13 +1149,13 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ロジック アプリのすべての要求エンドポイントは、エンドポイントの URL に Shared Access Signature (SAS) を含みます。 シークレットを格納するために Azure Key Vault を使用している場合は、必ずキーと URL の定期的な自動バックアップを実行してください。
 
-* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](./business-continuity-disaster-recovery-guidance.md)
 
-* [Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+* [Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する方法](./logic-apps-azure-resource-manager-templates-overview.md)
 
-* [SAS を使用して Azure Logic Apps のアクセスとデータをセキュリティで保護する方法](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [SAS を使用して Azure Logic Apps のアクセスとデータをセキュリティで保護する方法](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
-* [Key Vault のキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+* [Key Vault のキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1167,11 +1167,11 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 バックアップされたカスタマー マネージド キーの復元をテストします。 これは、統合サービス環境 (ISE) で実行されている Logic Apps にのみ適用されることに注意してください。
 
-* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](./business-continuity-disaster-recovery-guidance.md)
 
-* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](./customer-managed-keys-integration-service-environment.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1185,11 +1185,11 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。
 
-* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Azure Logic Apps の事業継続とディザスター リカバリーの詳細情報](./business-continuity-disaster-recovery-guidance.md)
 
-* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](./customer-managed-keys-integration-service-environment.md)
 
-* [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Key Vault で論理的な削除と消去保護を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1197,7 +1197,7 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1219,9 +1219,9 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-* [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1229,7 +1229,7 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**: ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 * [NIST の出版物 - IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -1241,7 +1241,7 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1249,11 +1249,11 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
+**ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1261,9 +1261,9 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-**ガイダンス**:Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
+**ガイダンス**: Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1271,11 +1271,11 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
-**ガイダンス**:お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の実施ルールに確実に従ってください。 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施を活用してください。
+**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の実施ルールに確実に従ってください。 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施を活用してください。
 
 * [侵入テストの実施ルール](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -1287,5 +1287,5 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

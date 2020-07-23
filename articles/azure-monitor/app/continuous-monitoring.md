@@ -3,12 +3,12 @@ title: Azure Pipelines と Azure Application Insights による DevOps リリー
 description: Application Insights で行う継続的な監視を迅速にセットアップする手順を説明します
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652766"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517129"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>リリース パイプラインに継続的監視を追加する
 
@@ -101,4 +101,4 @@ az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Pipelines の詳細については、[Azure Pipelines のドキュメント](https://docs.microsoft.com/azure/devops/pipelines)を参照してください。
+Azure Pipelines の詳細については、[Azure Pipelines のドキュメント](/azure/devops/pipelines)を参照してください。

@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 536918e1b1db88dcae6985b853b3cb0a6c91a52a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522280"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces のしくみ
 
@@ -49,7 +49,7 @@ Azure Dev Spaces を使用すると、チームは、クラウド ネイティ�
 チーム開発のために Azure Dev Spaces の使用を開始するには、[Azure Dev Spaces でのチーム開発][quickstart-team]に関するクイックスタートを参照してください。
 
 [connect]: how-to/local-process-kubernetes-vs-code.md
-[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
+[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

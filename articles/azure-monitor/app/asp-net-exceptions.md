@@ -3,12 +3,12 @@ title: Azure Application Insights を利用して障害と例外を診断する
 description: 要求テレメトリと共に ASP.NET アプリから例外を取り込みます。
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892344"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517214"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](../../azure-monitor/app/app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -19,7 +19,7 @@ ms.locfileid: "80892344"
   * Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ:[アプリケーション監視拡張機能](../../azure-monitor/app/azure-vm-vmss-apps.md)を追加する
   * [Application Insights SDK](../../azure-monitor/app/asp-net.md) をアプリ コードにインストールする
   * IIS Web サーバー:[Application Insights エージェント](../../azure-monitor/app/monitor-performance-live-website-now.md)を実行する
-  * Java Web アプリ:[Java エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)を有効にする
+  * Java Web アプリ:[Java エージェント](./java-in-process-agent.md)を有効にする
 * ブラウザー例外をキャッチする [JavaScript スニペット](../../azure-monitor/app/javascript.md)を Web ページにインストールします。
 * 一部のアプリケーション フレームワークまたは一部の設定では、より多くの例外をキャッチするために余分の手順を実行する必要があります。
   * [Web フォーム](#web-forms)
@@ -28,7 +28,7 @@ ms.locfileid: "80892344"
   * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
-  この記事では、コード例の観点から .NET Framework アプリに特に焦点を絞って説明します。 .NET Framework に対して機能するメソッドの一部は、.NET Core SDK では廃止されています。 .NET Core アプリがある場合は、[.NET Core SDK のドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)を参照してください。
+  この記事では、コード例の観点から .NET Framework アプリに特に焦点を絞って説明します。 .NET Framework に対して機能するメソッドの一部は、.NET Core SDK では廃止されています。 .NET Core アプリがある場合は、[.NET Core SDK のドキュメント](./asp-net-core.md)を参照してください。
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Visual Studio を使用して例外を診断する
 デバッグに役立てるため、Visual Studio でアプリ ソリューションを開きます。
@@ -214,7 +214,7 @@ Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Applica
 ### <a name="prior-versions-support"></a>以前のバージョンのサポート
 Application Insights Web SDK 2.5 (および以前) の MVC 4 (および以前) を使用する場合は、次の例を参照して例外を追跡します。
 
-[CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) 構成が `Off` の場合、[HTTP モジュール](https://msdn.microsoft.com/library/ms178468.aspx)で例外を収集できます。 ただし、`RemoteOnly` (既定) または `On` の場合、例外は消去され、Application Insights が自動回収する例外はなくなります。 これを解決するには、[System.Web.Mvc.HandleErrorAttribute クラス](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)をオーバーライドし、次のようにオーバーライドしたクラスを異なる MVC バージョンに適用します ([GitHub ソース](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs))。
+[CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) 構成が `Off` の場合、[HTTP モジュール](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85))で例外を収集できます。 ただし、`RemoteOnly` (既定) または `On` の場合、例外は消去され、Application Insights が自動回収する例外はなくなります。 これを解決するには、[System.Web.Mvc.HandleErrorAttribute クラス](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)をオーバーライドし、次のようにオーバーライドしたクラスを異なる MVC バージョンに適用します ([GitHub ソース](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs))。
 
 ```csharp
     using System;

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f386cbf09bb2b62e0c54826affc50a050c095fa6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335513"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524592"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -29,7 +29,7 @@ ms.locfileid: "80335513"
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
 
-この記事の手順を完了するには、まず Azure Maps アカウントを作成し、マップのアカウント キーを取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
+この記事の手順を完了するには、まず Azure Maps アカウントを作成し、マップのアカウント キーを取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>ラベルとカスタム画像を使ってプッシュピンをレンダリングする

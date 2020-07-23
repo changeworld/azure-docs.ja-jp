@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d424cccc0a50198f3ca8c6c040afb87f44282d47
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086774"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508901"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>VM がセーフ モードで起動するため VM に RDP 接続できない
 
@@ -79,7 +79,7 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>復旧 VM に OS ディスクを接続する
 
-1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。
 3. ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 
@@ -143,4 +143,4 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
     bcdedit /store F:\boot\bcd /enum
     ```
 
-5. [OS ディスクを切断して、VM を再作成します](../windows/troubleshoot-recovery-disks-portal.md)。 その後、問題が解決されているかどうかを確認します。
+5. [OS ディスクを切断して、VM を再作成します](./troubleshoot-recovery-disks-portal-windows.md)。 その後、問題が解決されているかどうかを確認します。

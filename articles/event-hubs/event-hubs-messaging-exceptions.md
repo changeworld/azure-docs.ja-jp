@@ -3,12 +3,12 @@ title: Azure Event Hubs - 例外
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a93daa88c468a22838a6f9012f0c4622447f5555
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314619"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512369"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs メッセージングの例外 - .NET
 このセクションでは、.NET Framework API によって生成される .NET 例外を示します。 
@@ -19,10 +19,10 @@ Event Hubs の API .NET で生成される例外をカテゴリ別に分類し�
 
  - ユーザー コードのエラー: 
  
-   - [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)
-   - [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)
-   - [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)
-   - [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)
+   - [System.ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)
+   - [System.InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1)
+   - [System.OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1)
+   - [System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)
    
    一般的なアクション:処理を続行する前にコードの修正を試みます。
  
@@ -30,7 +30,7 @@ Event Hubs の API .NET で生成される例外をカテゴリ別に分類し�
  
    - [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
    - [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
-   - [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)
+   - [System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)
    
    一般的なアクション:構成を確認し、必要に応じて変更します。
    
@@ -45,7 +45,7 @@ Event Hubs の API .NET で生成される例外をカテゴリ別に分類し�
  
  - その他の例外: 
  
-   - [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)
+   - [System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)
    - [System.TimeoutException](#timeoutexception)
    - [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
    - [Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
@@ -57,11 +57,11 @@ Event Hubs の API .NET で生成される例外をカテゴリ別に分類し�
 
 | 例外の種類 | 説明/原因/例 | 推奨アクション | 自動/即時再試行に関する注意 |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |サーバーは、[OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) によって制御される指定された時間内に、要求された操作に対して応答しませんでした。 サーバーで、要求された操作が完了した可能性があります。 この例外は、ネットワークや他のインフラストラクチャの遅延が原因で発生することがあります。 |システム状態の整合性をチェックして、必要な場合は再試行してください。<br /> 「[TimeoutException](#timeoutexception)」を参照してください。 | 再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |要求されたユーザー操作は、サーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 たとえば、 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) は、 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでメッセージを受信した場合に、この例外を生成します。 | コードとドキュメントを確認します。 要求した操作が有効なことを確かめてください。 | 再試行によって解決することはありません。 |
-| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | 既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 | コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確認します。 | 再試行によって解決することはありません。 |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 | トークン プロバイダーが正しい値を使用して作成されていることを確認します。 Access Control Service の構成を確認します。 | 再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
-| [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | メソッドに指定された 1 つまたは複数の引数が無効です。 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI にパス セグメントが含まれています。 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI スキームが無効です。 プロパティ値が 32 KB を超えています。 | 呼び出し元のコードを確認し、引数が正しいことを確かめます。 | 再試行によって解決することはありません。 |
+| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) |サーバーは、[OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) によって制御される指定された時間内に、要求された操作に対して応答しませんでした。 サーバーで、要求された操作が完了した可能性があります。 この例外は、ネットワークや他のインフラストラクチャの遅延が原因で発生することがあります。 |システム状態の整合性をチェックして、必要な場合は再試行してください。<br /> 「[TimeoutException](#timeoutexception)」を参照してください。 | 再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |要求されたユーザー操作は、サーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 たとえば、 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) は、 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでメッセージを受信した場合に、この例外を生成します。 | コードとドキュメントを確認します。 要求した操作が有効なことを確かめてください。 | 再試行によって解決することはありません。 |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) | 既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 | コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確認します。 | 再試行によって解決することはありません。 |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 | トークン プロバイダーが正しい値を使用して作成されていることを確認します。 Access Control Service の構成を確認します。 | 再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) | メソッドに指定された 1 つまたは複数の引数が無効です。 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI にパス セグメントが含まれています。 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI スキームが無効です。 プロパティ値が 32 KB を超えています。 | 呼び出し元のコードを確認し、引数が正しいことを確かめます。 | 再試行によって解決することはありません。 |
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | 操作に関連付けられているエンティティが存在しないか、削除されました。 | エンティティが存在することを確認します。 | 再試行によって解決することはありません。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | クライアントから Event Hub への接続を確立できません。 |指定されたホスト名が正しく、ホストが到達可能なことを確認してください。 | 断続的な接続の問題がある場合は、再試行によって解決することがあります。 |
 | [Microsoft.ServiceBus.Messaging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | この時点では、このサービスで要求を処理できません。 | クライアントは、しばらく待機してから操作をやり直すことができます。 <br /> 「[ServerBusyException](#serverbusyexception)」を参照してください。 | クライアントは、一定の間隔をおいてから再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
@@ -80,7 +80,7 @@ Event Hubs の API .NET で生成される例外をカテゴリ別に分類し�
 Event Hubs には、Event Hub あたり 20 個のコンシューマー グループという上限があります。 それ以上作成しようとすると、 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)が発生します。 
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
+[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
 
 Event Hubs では、タイムアウトは接続文字列の一部として、または [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder)を通じて指定されます。 エラー メッセージ自体はさまざまですが、これには常に現在の操作に指定されたタイムアウト値が含まれます。 
 
@@ -120,6 +120,6 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+* [Event Hubs の概要](./event-hubs-about.md)
 * [Event Hub を作成する](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

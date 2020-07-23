@@ -3,12 +3,12 @@ title: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
 description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170328"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513508"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 
@@ -22,11 +22,11 @@ ms.locfileid: "86170328"
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>成功したバックアップ ジョブでアラートが作成されますか?
 
-いいえ。 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor) を使用できます。
+いいえ。 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](./backup-azure-monitoring-built-in-monitor.md)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md) を使用できます。
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
 
-[バックアップ ジョブ] メニューには、アドホック バックアップ ジョブしか表示されません。 スケジュールされたジョブの場合は、[Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor) を使用します。
+[バックアップ ジョブ] メニューには、アドホック バックアップ ジョブしか表示されません。 スケジュールされたジョブの場合は、[Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md) を使用します。
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>今後作成されるデータベースはバックアップに自動的に追加されますか?
 
@@ -51,7 +51,7 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>SAP HANA を SDC から MDC に移行した後、バックアップは機能しますか?
 
-トラブルシューティング ガイドの[こちらのセクション](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid)をご覧ください。
+トラブルシューティング ガイドの[こちらのセクション](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid)をご覧ください。
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>仮想マシンではなく、仮想 IP (ロード バランサー) に対して Azure HANA バックアップを設定できますか?
 
@@ -111,7 +111,7 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 ### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>データベースの復元先の HANA システムが表示されないのはなぜですか?
 
-ターゲットの SAP HANA インスタンスに復元するためのすべての前提条件が満たされているかどうかを確認してください。 詳しくは、[Azure VM の SAP HANA データベースの復元の前提条件](https://docs.microsoft.com/azure/backup/sap-hana-db-restore#prerequisites)に関する記事をご覧ください。
+ターゲットの SAP HANA インスタンスに復元するためのすべての前提条件が満たされているかどうかを確認してください。 詳しくは、[Azure VM の SAP HANA データベースの復元の前提条件](./sap-hana-db-restore.md#prerequisites)に関する記事をご覧ください。
 
 ### <a name="why-is-the-overwrite-db-restore-failing-for-my-database"></a>データベースで DB の上書き復元が失敗するのはなぜですか?
 
@@ -127,4 +127,4 @@ SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure VM で実行されている [SAP HANA データベースをバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)方法を学習します。
+Azure VM で実行されている [SAP HANA データベースをバックアップする](./backup-azure-sap-hana-database.md)方法を学習します。

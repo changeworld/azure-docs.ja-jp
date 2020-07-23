@@ -3,16 +3,16 @@ title: Azure Backup Server を使用して VMware VM を復元する
 description: Azure Backup Server (MABS) を使用して、VMware vCenter/ESXi サーバー上で実行している VMware VM を復元します。
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77212344"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524524"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware 仮想マシンの復元
 
-この記事では、Microsoft Azure Backup Server (MABS) を使用して VMware VM の復旧ポイントを復元する方法について説明します。 MABS を使用したデータ復旧の概要については、[保護されたデータの復旧](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)に関する記事を参照してください。 MABS 管理者コンソールでは、検索またはブラウズの 2 つの方法で復旧可能なデータを見つけることができます。 データを復旧するとき、データまたは VM を同じ場所に復元したい場合と、そうでない場合があります。 そのため、MABS では、VMware VM のバックアップに関して 3 つの復旧オプションがサポートされています。
+この記事では、Microsoft Azure Backup Server (MABS) を使用して VMware VM の復旧ポイントを復元する方法について説明します。 MABS を使用したデータ復旧の概要については、[保護されたデータの復旧](./backup-azure-alternate-dpm-server.md)に関する記事を参照してください。 MABS 管理者コンソールでは、検索またはブラウズの 2 つの方法で復旧可能なデータを見つけることができます。 データを復旧するとき、データまたは VM を同じ場所に復元したい場合と、そうでない場合があります。 そのため、MABS では、VMware VM のバックアップに関して 3 つの復旧オプションがサポートされています。
 
 * **元の場所に復旧 (OLR)** - 保護された VM を元の場所に復元するには、OLR を使用します。 VM を元の場所に復元できるのは、バックアップが実行されてからディスクが追加も削除もされていない場合だけです。 ディスクが追加または削除されている場合は、"別の場所に復旧" を使用する必要があります。
 

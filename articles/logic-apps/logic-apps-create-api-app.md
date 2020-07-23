@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834494"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520802"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -54,8 +54,8 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 カスタム コネクタの詳細については、次のトピックを参照してください 
 
 * [カスタム コネクタの概要](../logic-apps/custom-connector-overview.md)
-* [Web API からのカスタム コネクタの作成](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Register custom connectors in Azure Logic Apps (Azure Logic Apps でのカスタム コネクタの登録)](../logic-apps/logic-apps-custom-connector-register.md)
+* [Web API からのカスタム コネクタの作成](/connectors/custom-connectors/create-web-api-connector)
+* [Register custom connectors in Azure Logic Apps (Azure Logic Apps でのカスタム コネクタの登録)](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>便利なツール
 
@@ -228,7 +228,7 @@ Logic Apps、Power Automate、および Microsoft Power Apps のすべてのユ�
 
 * カスタム API に関するサポートが必要な場合、[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) にお問い合わせください。
 
-* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)を参照してください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 
 * [Logic Apps ユーザー フィードバック サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
 

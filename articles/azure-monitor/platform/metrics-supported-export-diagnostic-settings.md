@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f0a8fd186862cf95ebdbb2d5bd92d8ff860b3ba1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680694"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515480"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 
-Azure Monitor には、構成なしの[プラットフォーム メトリック](data-platform-metrics.md)が既定で用意されています。 これにより、複数の方法を使用してプラットフォーム メトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 Azure Monitor の統合メトリック パイプラインで現在利用可能なプラットフォーム メトリックの完全な一覧については、[サポートされるメトリック](metrics-supported.md)に関するページを参照してください。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。
+Azure Monitor には、構成なしの[プラットフォーム メトリック](data-platform-metrics.md)が既定で用意されています。 これにより、複数の方法を使用してプラットフォーム メトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 Azure Monitor の統合メトリック パイプラインで現在利用可能なプラットフォーム メトリックの完全な一覧については、[サポートされるメトリック](metrics-supported.md)に関するページを参照してください。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](/rest/api/monitor/metricdefinitions) を使ってください。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。
 
 次の 2 つの方法のいずれかで、プラットフォーム メトリックを Azure Monitor パイプラインから他の場所にエクスポートできます。
 1. [診断設定](diagnostic-settings.md)を使用して、Log Analytics、Event Hubs または Azure Storage に送信します。
-2. [メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) を使用します。
+2. [メトリック REST API](/rest/api/monitor/metrics/list) を使用します。
 
 Azure Monitor バックエンドの複雑さにより、すべてのメトリックが診断設定を使用してエクスポート可能であるとは限りません。 次の表に、診断設定を使用したエクスポートが可能か不可能かに関する一覧を示します。
 

@@ -4,12 +4,12 @@ description: この記事では、REST API を使用してコンテナーの構�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248228"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513117"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーの構成を更新する
 
@@ -25,7 +25,7 @@ ms.locfileid: "84248228"
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API を使用した論理的な削除状態の取得
 
-既定では、新しく作成されたあらゆる Recovery Services コンテナーに対して、論理的な削除状態が有効になります。 コンテナーの論理的な削除状態を取得/更新するには、バックアップ コンテナーの構成に関連する [REST API ドキュメント](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs)を使用します
+既定では、新しく作成されたあらゆる Recovery Services コンテナーに対して、論理的な削除状態が有効になります。 コンテナーの論理的な削除状態を取得/更新するには、バックアップ コンテナーの構成に関連する [REST API ドキュメント](/rest/api/backup/backupresourcevaultconfigs)を使用します
 
 コンテナーの現在の論理的な削除状態を取得するには、次の *GET* 操作を使用します
 
@@ -45,7 +45,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 
 ##### <a name="example-response"></a>応答の例
 
@@ -81,13 +81,13 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 要求本文を作成するには、以下の一般的な定義が使用されます
 
-詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)を参照してください
+詳細については、[REST API のドキュメント](/rest/api/backup/backupresourcevaultconfigs/update#request-body)を参照してください
 
 |名前  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  省略可能な eTag       |
 |location     |  true       |String         |   リソースの場所      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  コンテナーのプロパティ       |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  コンテナーのプロパティ       |
 |tags     |         | Object        |     リソース タグ    |
 
 #### <a name="example-request-body"></a>要求本文の例
@@ -109,7 +109,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 
 ##### <a name="example-response"></a>応答の例
 

@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4235e948dba76c0b2926d9965ccd2fcb072cad62
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248477"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520785"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
-この記事では、Azure Logic Apps で自動ワークフローを作成および実行するための制限と構成の詳細について説明します。 Power Automate については、[Power Automate の制限と構成](https://docs.microsoft.com/flow/limits-and-config)に関するページを参照してください。
+この記事では、Azure Logic Apps で自動ワークフローを作成および実行するための制限と構成の詳細について説明します。 Power Automate については、[Power Automate の制限と構成](/flow/limits-and-config)に関するページを参照してください。
 
 <a name="definition-limits"></a>
 
@@ -129,7 +129,7 @@ ms.locfileid: "86248477"
 
 ## <a name="gateway-limits"></a>ゲートウェイの制限
 
-Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
+Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
 
 <a name="request-limits"></a>
 
@@ -154,7 +154,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 | 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
 |------|--------------------|---------------------------------------|-------|
 | メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 <p><p>- AS2、X12、EDIFACT などのコネクタには、独自の [B2B メッセージ制限](#b2b-protocol-limits)があります。 <br>- ISE コネクタは、ISE 以外のコネクタの制限ではなく、ISE の制限を使用します。 |
-| チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p><p>ISE を使用している場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](https://docs.microsoft.com/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
+| チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p><p>ISE を使用している場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
 |||||
 
 #### <a name="character-limits"></a>文字制限
@@ -180,7 +180,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 ### <a name="authentication-limits"></a>認証制限
 
-以下に、Request トリガーで開始され、[Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認するロジック アプリの制限を示します。
+以下に、Request トリガーで開始され、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認するロジック アプリの制限を示します。
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
@@ -216,7 +216,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 各 Azure サブスクリプションには、次の統合アカウントの制限があります。
 
-* Azure リージョンごとに 1 つの [Free レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)の統合アカウント このレベルは、米国西部や東南アジアなどの Azure のパブリック リージョンのみで利用できますが、[Azure China 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) または [Azure Government](../azure-government/documentation-government-welcome.md) で利用することはできません。
+* Azure リージョンごとに 1 つの [Free レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)の統合アカウント このレベルは、米国西部や東南アジアなどの Azure のパブリック リージョンのみで利用できますが、[Azure China 21Vianet](/azure/china/overview-operations) または [Azure Government](../azure-government/documentation-government-welcome.md) で利用することはできません。
 
 * [Developer SKU と Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) の両方にわたる任意の[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内の統合アカウントを含む、合計 1,000 個の統合アカウント。
 
@@ -258,7 +258,7 @@ ISE に含まれている統合アカウント以外に追加する統合アカ�
 | アーティファクト | 制限 | Notes |
 | -------- | ----- | ----- |
 | アセンブリ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 |
-| マップ (XSLT ファイル) | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure Logic Apps REST API - Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate) を使用します。 <p><p>**注**:マップで正常に処理できるデータまたはレコードの量は、Azure Logic Apps のメッセージ サイズとアクション タイムアウトの制限に基づいています。 たとえば、HTTP アクションを使用する場合、[HTTP メッセージ サイズとタイムアウトの制限](#request-limits)に基づき、マップでは、HTTP タイムアウトの制限内で操作が完了するのであれば、HTTP メッセージ サイズの制限までデータを処理できます。 |
+| マップ (XSLT ファイル) | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure Logic Apps REST API - Maps](/rest/api/logic/maps/createorupdate) を使用します。 <p><p>**注**:マップで正常に処理できるデータまたはレコードの量は、Azure Logic Apps のメッセージ サイズとアクション タイムアウトの制限に基づいています。 たとえば、HTTP アクションを使用する場合、[HTTP メッセージ サイズとタイムアウトの制限](#request-limits)に基づき、マップでは、HTTP タイムアウトの制限内で操作が完了するのであれば、HTTP メッセージ サイズの制限までデータを処理できます。 |
 | スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 |
 ||||
 
@@ -299,7 +299,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>ファイアウォールの構成:IP アドレスとサービス タグ
 
-着信および発信で Azure Logic Apps が使用する IP アドレスは、ご利用のロジック アプリが置かれているリージョンによって異なります。 同じリージョン内の*すべての*ロジック アプリは、同じ IP アドレス範囲を使用します。 **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の [Power Automate](https://docs.microsoft.com/power-automate/getting-started) 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate での制限事項と構成](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
+着信および発信で Azure Logic Apps が使用する IP アドレスは、ご利用のロジック アプリが置かれているリージョンによって異なります。 同じリージョン内の*すべての*ロジック アプリは、同じ IP アドレス範囲を使用します。 **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の [Power Automate](/power-automate/getting-started) 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate での制限事項と構成](/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
 
 > [!TIP]
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、このセクションの後半で説明する各リージョンの Logic Apps IP アドレスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md)を使用することもできます。
@@ -308,7 +308,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 > * **LogicAppsManagement**:Logic Apps サービスの受信 IP アドレスのプレフィックスを表します。
 > * **LogicApps**:Logic Apps サービスの送信 IP アドレスのプレフィックスを表します。
 
-* [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) については、Azure Storage, SQL Server や Office 365 Outlook など、[カスタム コネクタ](../logic-apps/custom-connector-overview.md)や[マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)で固定または予約済みの IP アドレスを利用できません。
+* [Azure China 21Vianet](/azure/china/) については、Azure Storage, SQL Server や Office 365 Outlook など、[カスタム コネクタ](../logic-apps/custom-connector-overview.md)や[マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)で固定または予約済みの IP アドレスを利用できません。
 
 * ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、Logic Apps サービスで使用されるすべての[受信](#inbound) "*および*" [送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**受信**と**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
 

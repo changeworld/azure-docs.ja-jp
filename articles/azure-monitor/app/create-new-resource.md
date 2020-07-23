@@ -3,12 +3,12 @@ title: 新しい Azure Application Insights リソースの作成 | Microsoft Do
 description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cb47453140c7659ca2f5e6da2e40d9d78405f8e7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200660"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517095"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **リソース モード** | `Classic` または `Workspace-based` | ワークスペースベースのリソースは現在パブリック プレビューの段階にあります。これを使用すれば、Application Insightsテレメトリを共通のLog Analyticsワークスペースに送信できます。 詳細については、[ワークスペースベースのリソースに関する記事](create-workspace-resource.md)を参照してください。
 
 > [!NOTE]
-> 異なるリソースグループ間で同じリソース名を使用できますが、グローバルに一意の名前を使用すると便利です。 これは、必要な構文が簡略化するため、 [クロスリソース クエリを実行するする](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)場合に便利です。
+> 異なるリソースグループ間で同じリソース名を使用できますが、グローバルに一意の名前を使用すると便利です。 これは、必要な構文が簡略化するため、 [クロスリソース クエリを実行するする](../log-query/cross-workspace-query.md#identifying-an-application)場合に便利です。
 
 必須フィールドに適切な値を入力し、 **[確認と作成]** を選択します。
 
@@ -93,7 +93,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-このコマンドレットの詳細な PowerShell ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)を参照してください。
+このコマンドレットの詳細な PowerShell ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure PowerShell のドキュメント](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)を参照してください。
 
 ### <a name="azure-cli-preview"></a>Azure CLI (プレビュー)
 
@@ -150,12 +150,12 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-このコマンドの詳細な Azure CLI ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
+このコマンドの詳細な Azure CLI ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [診断検索](../../azure-monitor/app/diagnostic-search.md)
 * [メトリックを探索する](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics クエリを作成する](../../azure-monitor/app/analytics.md)
+* [Analytics クエリを作成する](../log-query/log-query-overview.md)
 
 <!--Link references-->
 

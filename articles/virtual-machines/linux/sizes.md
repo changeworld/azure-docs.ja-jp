@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 568f4189c55b49aa6f3e2d4e86582165a4a89cdd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: eef0304248c7cc9a1bf63e06247f86d607afce46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201105"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510108"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシンのサイズ
 
@@ -31,16 +31,16 @@ ms.locfileid: "86201105"
 
 - さまざまなサイズの価格について詳しくは、「 [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)」を参照してください。 
 - 各 Azure リージョンで利用可能な VM サイズについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
-- Azure VM の一般的な制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)」を参照してください。
+- Azure VM の一般的な制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
 - [Azure コンピューティング ユニット (ACU)](../acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
 ## <a name="rest-api"></a>REST API
 
 VM サイズを照会するための REST API の使用については、以下を参照してください。
 
-- [サイズ変更に使用可能な仮想マシンを一覧表示](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
-- [サブスクリプションに使用可能な仮想マシンのサイズを一覧表示](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
-- [可用性セットに使用可能な仮想マシンのサイズを一覧表示](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+- [サイズ変更に使用可能な仮想マシンを一覧表示](/rest/api/compute/virtualmachines/listavailablesizes)
+- [サブスクリプションに使用可能な仮想マシンのサイズを一覧表示](/rest/api/compute/resourceskus/list)
+- [可用性セットに使用可能な仮想マシンのサイズを一覧表示](/rest/api/compute/availabilitysets/listavailablesizes)
 
 ## <a name="acu"></a>ACU
 

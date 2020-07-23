@@ -3,12 +3,12 @@ title: Azure Stack への Azure Backup Server のインストール
 description: この記事では、Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 634f560174413dd75bebdee6513160a3700df9a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747449"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513899"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -89,9 +89,9 @@ Azure Backup Server の仮想マシンは、ドメインに参加させる必要
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Azure Stack で IaaS VM を使用する
 
-Azure Backup Server のサーバーを選ぶときは、Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージから開始します。 推奨される仮想マシンの作成方法については、[Azure Portal で初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 サーバー仮想マシン (VM) に推奨される最小要件はA2 Standard (2 コア、3.5 GB RAM) です。
+Azure Backup Server のサーバーを選ぶときは、Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージから開始します。 推奨される仮想マシンの作成方法については、[Azure Portal で初めての Windows 仮想マシンを作成する方法](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json)に関する記事をご覧ください。 サーバー仮想マシン (VM) に推奨される最小要件はA2 Standard (2 コア、3.5 GB RAM) です。
 
-Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、[MABS の保護マトリックス](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)に関するページで説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、[MABS の保護マトリックス](./backup-mabs-protection-matrix.md)に関するページで説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 > [!NOTE]
 > Azure Backup Server は、単一目的の専用の仮想マシンで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
@@ -107,7 +107,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 ### <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
 
-Recovery Services コンテナーのストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、Recovery Services コンテナーは geo 冗長ストレージを使用します。 このコンテナーがプライマリ コンテナーの場合は、ストレージ オプションの設定を geo 冗長ストレージのままにします。 永続性を多少犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy-grs.md)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy-lrs.md)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
+Recovery Services コンテナーのストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、Recovery Services コンテナーは geo 冗長ストレージを使用します。 このコンテナーがプライマリ コンテナーの場合は、ストレージ オプションの設定を geo 冗長ストレージのままにします。 永続性を多少犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy.md)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy.md)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
@@ -243,7 +243,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)」を参照してください。
+    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)」を参照してください。
 
 6. **[セキュリティの設定]** で、制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** をクリックします。
 
@@ -309,7 +309,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
 ## <a name="add-backup-storage"></a>Backup ストレージの追加
 
-一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクの追加の詳細については、[Modern Backup Storage の追加](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801)に関するページを参照してください。
+一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクの追加の詳細については、[Modern Backup Storage の追加](/system-center/dpm/add-storage)に関するページを参照してください。
 
 > [!NOTE]
 > Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。 Azure Backup Server のアーキテクチャでは、Azure Backup コンテナーにはデータの " *2 番目の* " コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
@@ -359,10 +359,10 @@ Microsoft Azure Backup Server がセットアップ段階 (またはバックア
 
 ## <a name="next-steps"></a>次のステップ
 
-[DPM 環境の準備](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)の関する記事には、サポートされている Azure Backup Server の構成についての情報が含まれています。
+[DPM 環境の準備](/system-center/dpm/prepare-environment-for-dpm)の関する記事には、サポートされている Azure Backup Server の構成についての情報が含まれています。
 
 次の記事を確認して、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 
-- [SQL Server のバックアップ](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
-- [SharePoint サーバーのバックアップ](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server のバックアップ](./backup-mabs-sql-azure-stack.md)
+- [SharePoint サーバーのバックアップ](./backup-mabs-sharepoint-azure-stack.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)

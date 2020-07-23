@@ -4,12 +4,12 @@ description: この記事では、コンテナー用 Azure Monitor で kubectl �
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d60836af350e9af99355db9a7cc140a949d1492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337935"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516466"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) クラスターから、コンテナー用 Azure 
 
 - Kubernetes RBAC 認証なしの AKS が有効
 - Kubernetes RBAC 認証を使って AKS が有効
-    - クラスタロールのバインディング **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** で構成された AKS
+    - クラスタロールのバインディング **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** で構成された AKS
 - Azure Active Directory (AD) SAML ベースのシングル サインオンを使って AKS が有効
 
 これらの手順では、Kubernetes クラスターへの管理アクセスと、Azure Active Directory (AD) への管理アクセス (ユーザー認証に Azure AD を使用するように構成する場合) が必要です。
@@ -108,7 +108,7 @@ Azure portal が信頼されたリダイレクト URL として承認ページ�
 Kubernetes での高度なセキュリティ設定の詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)をご覧ください。
 
 >[!NOTE]
->新しい RBAC 対応クラスターを作成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration.md)」を参照し、手順に従って Azure AD 認証を構成してください。 クライアント アプリケーションを作成する手順の該当するセクションの注で、コンテナー用 Azure Monitor 用に作成する必要がある、以下の手順 3 で指定するものと一致する 2 つのリダイレクト URL が強調されています。
+>新しい RBAC 対応クラスターを作成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration-cli.md)」を参照し、手順に従って Azure AD 認証を構成してください。 クライアント アプリケーションを作成する手順の該当するセクションの注で、コンテナー用 Azure Monitor 用に作成する必要がある、以下の手順 3 で指定するものと一致する 2 つのリダイレクト URL が強調されています。
 
 ### <a name="client-registration-reconfiguration"></a>クライアント登録の再構成
 

@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイまたはプロビジョニングの
 description: Azure VMware Solution (AVS) プライベート クラウドから必要な情報を取得して、AVS デプロイまたはプロビジョニングのエラーに対するサービス要求をファイルに取り込む方法について説明します。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 3032c01d48617347c454d71498571b0e6b789e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986916"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514579"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するヘルプを表示する
 
@@ -72,7 +72,7 @@ ExpressRoute ID を新しいサポート リクエストの適切なフィール
 
 ## <a name="create-your-support-request"></a>サポート リクエストの作成
 
-サポート リクエストを作成するための一般的なガイダンスについては、[Azure サポート リクエストを作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)に関する記事を参照してください。 
+サポート リクエストを作成するための一般的なガイダンスについては、[Azure サポート リクエストを作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)に関する記事を参照してください。 
 
 ここでは、AVS デプロイまたはプロビジョニング エラーのための SR の作成に固有の追加のガイダンスを示します。
 

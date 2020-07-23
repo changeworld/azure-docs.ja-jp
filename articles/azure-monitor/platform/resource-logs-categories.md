@@ -4,12 +4,12 @@ description: Azure Monitor のリファレンス - Azure リソース ログで�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418592"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515395"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
@@ -712,6 +712,6 @@ ms.locfileid: "84418592"
 ## <a name="next-steps"></a>次の手順
 
 * [リソース ログの詳細を確認する](../../azure-monitor/platform/platform-logs-overview.md)
-* [リソースのリソース ログを **Event Hubs** にストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Azure Monitor REST API を使用してリソース ログの診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [リソースのリソース ログを **Event Hubs** にストリーミングする](./resource-logs.md#send-to-azure-event-hubs)
+* [Azure Monitor REST API を使用してリソース ログの診断設定を変更する](/rest/api/monitor/diagnosticsettings)
+* [Log Analytics を使用した、Azure ストレージからのログの分析](./resource-logs.md#send-to-log-analytics-workspace)

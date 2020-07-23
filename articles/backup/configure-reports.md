@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484973"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513627"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "84484973"
 - バックアップおよび復元の監査。
 - さまざまな細分性レベルで主要な傾向を特定する。
 
-現在、Azure Backup では、[Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)と [Azure ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
+現在、Azure Backup では、[Azure Monitor ログ](../azure-monitor/log-query/get-started-portal.md)と [Azure ブック](../azure-monitor/platform/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -26,7 +26,7 @@ ms.locfileid: "84484973"
 - DPM ワークロードの場合、バックアップ レポートは DPM バージョン 5.1.363.0 以降、およびエージェント バージョン 2.0.9127.0 以降でサポートされています。
 - MABS ワークロードの場合、バックアップ レポートは MABS バージョン 13.0.415.0 以降、およびエージェント バージョン 2.0.9170.0 以降でサポートされています。
 - バックアップ レポートは、ユーザーがアクセスできる Log Analytics ワークスペースにデータが送信されている限り、すべてのバックアップ項目、コンテナー、サブスクリプション、およびリージョンにわたって表示できます。 一連のコンテナーのレポートを表示するには、コンテナーがデータを送信している Log Analytics ワークスペースへの閲覧者アクセス権のみが必要です。 個々のコンテナーへのアクセス権は必要ありません。
-- お客様が、ご自分の顧客のサブスクリプションへの委任アクセス権を持つ [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) ユーザーである場合は、Azure Lighthouse でこれらのレポートを使用して、ご利用のすべてのテナントにわたってレポートを表示することができます。
+- お客様が、ご自分の顧客のサブスクリプションへの委任アクセス権を持つ [Azure Lighthouse](../lighthouse/index.yml) ユーザーである場合は、Azure Lighthouse でこれらのレポートを使用して、ご利用のすべてのテナントにわたってレポートを表示することができます。
 - 現時点では、データは最大で 100 個の Log Analytics ワークスペースにわたって (複数のテナントにわたって) バックアップ レポートで表示できます。
 - ログ バックアップ ジョブのデータは、現在レポートに表示されません。
 
@@ -38,22 +38,22 @@ ms.locfileid: "84484973"
 
 バックアップ レポート データを格納するために、1 つ以上の Log Analytics ワークスペースを設定します。 この Log Analytics ワークスペースを作成できる場所とサブスクリプションは、コンテナーが存在する場所とサブスクリプションとは関係ありません。
 
-Log Analytics ワークスペースを設定する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)」を参照してください。
+Log Analytics ワークスペースを設定する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
 
-既定では、Log Analytics ワークスペースのデータは 30 日間保持されます。 より長期間のデータを表示するには、Log Analytics ワークスペースの保持期間を変更します。 保持期間を変更するには、「[Azure Monitor ログで使用量とコストを管理する](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)」を参照してください。
+既定では、Log Analytics ワークスペースのデータは 30 日間保持されます。 より長期間のデータを表示するには、Log Analytics ワークスペースの保持期間を変更します。 保持期間を変更するには、「[Azure Monitor ログで使用量とコストを管理する](../azure-monitor/platform/manage-cost-storage.md)」を参照してください。
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2.コンテナーの診断設定を構成する
 
 Recovery Services コンテナーなどの Azure Resource Manager リソースは、スケジュールされた操作およびユーザーがトリガーした操作に関する情報を診断データとして記録します。
 
-Recovery Services コンテナーの監視セクションで **[診断設定]** を選択し、Recovery Services コンテナーの診断データのターゲットを指定します。 診断イベントの使用方法の詳細については、「[Recovery Services コンテナーの診断設定を使用する](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)」を参照してください。
+Recovery Services コンテナーの監視セクションで **[診断設定]** を選択し、Recovery Services コンテナーの診断データのターゲットを指定します。 診断イベントの使用方法の詳細については、「[Recovery Services コンテナーの診断設定を使用する](./backup-azure-diagnostic-events.md)」を参照してください。
 
 ![[診断設定] ウィンドウ](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup には、特定のスコープ内のすべてのコンテナーに対する診断設定の構成を自動化する組み込みの Azure ポリシー定義も用意されています。 このポリシーの使用方法については、「[大規模なコンテナーの診断設定を構成する](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)」を参照してください。
+Azure Backup には、特定のスコープ内のすべてのコンテナーに対する診断設定の構成を自動化する組み込みの Azure ポリシー定義も用意されています。 このポリシーの使用方法については、「[大規模なコンテナーの診断設定を構成する](./azure-policy-configure-diagnostics.md)」を参照してください。
 
 > [!NOTE]
-> 診断を構成した後、最初のデータ プッシュが完了するまでに最大 24 時間かかることがあります。 Log Analytics ワークスペースへのデータの送信が開始された後、レポートのデータがすぐに表示されない場合があります。まだ終わっていない現在日のデータはレポートに表示されないためです。 詳細については、「[バックアップ レポートで使用される規則](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)」を参照してください。 Log Analytics にデータを送信するようにコンテナーを構成した 2 日後からレポートの表示を開始することをお勧めします。
+> 診断を構成した後、最初のデータ プッシュが完了するまでに最大 24 時間かかることがあります。 Log Analytics ワークスペースへのデータの送信が開始された後、レポートのデータがすぐに表示されない場合があります。まだ終わっていない現在日のデータはレポートに表示されないためです。 詳細については、「[バックアップ レポートで使用される規則](#conventions-used-in-backup-reports)」を参照してください。 Log Analytics にデータを送信するようにコンテナーを構成した 2 日後からレポートの表示を開始することをお勧めします。
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3.Azure portal でレポートを表示する
 
@@ -103,7 +103,7 @@ Log Analytics にデータを送信するようにコンテナーを構成した
 
 ## <a name="cross-tenant-reports"></a>テナント間のレポート
 
-複数のテナント環境にわたるサブスクリプションへの委任アクセス権を持つ [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) を使用する場合は、既定のサブスクリプション フィルターを使用できます。 Azure portal の右上隅にある フィルター ボタンを選択して、データを表示するすべてのサブスクリプションを選択します。 これにより、テナント全体で Log Analytics ワークスペースを選択して、マルチテナント レポートを表示できます。
+複数のテナント環境にわたるサブスクリプションへの委任アクセス権を持つ [Azure Lighthouse](../lighthouse/index.yml) を使用する場合は、既定のサブスクリプション フィルターを使用できます。 Azure portal の右上隅にある フィルター ボタンを選択して、データを表示するすべてのサブスクリプションを選択します。 これにより、テナント全体で Log Analytics ワークスペースを選択して、マルチテナント レポートを表示できます。
 
 ## <a name="conventions-used-in-backup-reports"></a>バックアップ レポートで使用される規則
 
@@ -131,8 +131,8 @@ Log Analytics にデータを送信するようにコンテナーを構成した
 
 - レポート作成用の以前の Power BI テンプレート アプリ (Azure ストレージ アカウントのデータをソースとしていました) は、非推奨となる予定です。 レポートを表示するために、Log Analytics へのコンテナーの診断データの送信を開始することをお勧めします。
 
-- また、ストレージ アカウントまたは LA ワークスペースに診断データを送信する [V1 スキーマ](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema)も、非推奨のパスにあります。 つまり、V1 スキーマに基づいてカスタム クエリまたは自動化を記述した場合は、現在サポートされている V2 スキーマを使用するようにクエリを更新することをお勧めします。
+- また、ストレージ アカウントまたは LA ワークスペースに診断データを送信する [V1 スキーマ](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema)も、非推奨のパスにあります。 つまり、V1 スキーマに基づいてカスタム クエリまたは自動化を記述した場合は、現在サポートされている V2 スキーマを使用するようにクエリを更新することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 
-[監視とレポート作成の詳細については、Azure Backup をご参照ください。](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[監視とレポート作成の詳細については、Azure Backup をご参照ください。](./backup-azure-monitor-alert-faq.md)

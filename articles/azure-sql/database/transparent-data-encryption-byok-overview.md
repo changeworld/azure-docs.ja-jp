@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985311"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514725"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ Azure SQL Database と Azure Synapse Analytics の場合、TDE 保護機能は�
 
 - **unwrapKey** - DEK を保護解除 (復号化) できるようにします
 
-キー コンテナー管理者は、後で監査できるように、[キー コンテナーの監査イベントのログ記録を有効](../../azure-monitor/insights/azure-key-vault.md)にすることもできます。
+キー コンテナー管理者は、後で監査できるように、[キー コンテナーの監査イベントのログ記録を有効](../../azure-monitor/insights/key-vault-insights-overview.md)にすることもできます。
 
 AKV の TDE 保護機能を使用するようにサーバーを構成すると、そのサーバーから各 TDE 対応データベースの DEK が暗号化のためキー コンテナーに送信されます。 キー コンテナーから、暗号化された DEK が返され、その後、ユーザー データベースに格納されます。
 

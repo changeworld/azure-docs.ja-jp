@@ -3,16 +3,17 @@ title: デプロイされている Azure Kubernetes Service (AKS) クラスタ�
 description: Azure Monitor for containers を使用して、自分のサブスクリプションに既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 438e9cfeebc561815c5c0cdbc70123fab718fed1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337973"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516653"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
-この記事では、既に自分のサブスクリプションにデプロイされている、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) でホストされているマネージド Kubernetes クラスターを監視するように Azure Monitor for containers を設定する方法について説明します。
+この記事では、既に自分のサブスクリプションにデプロイされている、[Azure Kubernetes Service](../../aks/index.yml) でホストされているマネージド Kubernetes クラスターを監視するように Azure Monitor for containers を設定する方法について説明します。
 
 サポートされている次のいずれかの方法を使用して、既にデプロイされている AKS クラスターの監視を有効にすることができます。
 
@@ -167,7 +168,7 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ### <a name="create-and-execute-a-template"></a>テンプレートを作成して実行する
 

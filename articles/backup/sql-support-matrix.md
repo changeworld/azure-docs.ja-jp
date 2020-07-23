@@ -3,12 +3,13 @@ title: Azure VM 内の SQL Server のバックアップに関する Azure Backup
 description: Azure Backup サービスを使用して Azure VM 内の SQL Server をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.custom: references_regions
+ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234245"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513185"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 内の SQL Server のバックアップに関するサポート マトリックス
 
@@ -27,7 +28,7 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 ## <a name="feature-consideration-and-limitations"></a>機能の考慮事項と制限事項
 
 * SQL Server のバックアップは、Azure portal または **PowerShell** を使用して構成できます。 CLI はサポートされていません。
-* このソリューションは、Azure Resource Manager VM とクラシック VM のどちらの種類の[デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)でもサポートされます。
+* このソリューションは、Azure Resource Manager VM とクラシック VM のどちらの種類の[デプロイ](../azure-resource-manager/management/deployment-models.md)でもサポートされます。
 * SQL Server を稼働している VM では、Azure パブリック IP アドレスにアクセスするためにインターネット接続を必要とします。
 * SQL Server **フェールオーバー クラスター インスタンス (FCI)** はサポートされていません。
 * ミラー データベースおよびデータベース スナップショットのバックアップ操作および復元操作はサポートされていません。

@@ -4,19 +4,19 @@ description: Log Analytics のアラート REST API は、Log Analytics の一�
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38f2f671ecf426f6544f6faf934aec7071451b0d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112053"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515752"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する 
 
 Log Analytics のアラート REST API は、Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
 
 > [!IMPORTANT]
-> [前に発表](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)したように、*2019 年 6 月 1 日*以降に作成された Log Analytics ワークスペースでは、Azure scheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)、[Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)、および [PowerShell コマンドレット](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)を使用することによって**のみ**、アラート ルールを管理できます。 お客様は、Azure Monitor scheduledQueryRules が既定として使われるように古いワークスペースに対する[アラート ルール管理の優先的手段を切り替え](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)、ネイティブ PowerShell コマンドレットを使う機能、ルールで長くなったルックバック期間、別のリソース グループまたはサブスクリプションでのルールの作成など、多くの[新しいメリット](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)を利用できます。
+> [前に発表](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)したように、*2019 年 6 月 1 日*以降に作成された Log Analytics ワークスペースでは、Azure scheduledQueryRules [REST API](/rest/api/monitor/scheduledqueryrules/)、[Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)、および [PowerShell コマンドレット](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)を使用することによって**のみ**、アラート ルールを管理できます。 お客様は、Azure Monitor scheduledQueryRules が既定として使われるように古いワークスペースに対する[アラート ルール管理の優先的手段を切り替え](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)、ネイティブ PowerShell コマンドレットを使う機能、ルールで長くなったルックバック期間、別のリソース グループまたはサブスクリプションでのルールの作成など、多くの[新しいメリット](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)を利用できます。
 
 Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 これらのツールを使用すると、RESTful Azure Resource Manager API を使用して Log Analytics のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
 
@@ -265,7 +265,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="action-groups"></a>Action Groups
 Azure のすべてのアラートは、アクションを管理する既定のメカニズムとして、アクション グループを使用します。 アクション グループを使用すると、一度に複数のアクションを指定し、そのアクション グループを Azure 全体にわたって複数のアラートに関連付けることができます。 繰り返し宣言することなく、同じアクションを繰り返し実行できます。 アクション グループは、電子メール、SMS、音声通話、ITSM Connection、Automation Runbook、Webhook URI など、複数のアクションに対応しています。 
 
-アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../../azure-monitor/platform/action-groups.md)を作成するか、[アクション グループ API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用できます。
+アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../../azure-monitor/platform/action-groups.md)を作成するか、[アクション グループ API](/rest/api/monitor/actiongroups) を使用できます。
 
 アラートにアクション グループの関連付けを追加するには、アラートの定義にそのアクション グループの一意の Azure Resource Manager ID を指定します。 以下にサンプル図を示します。
 
@@ -390,4 +390,3 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 * Log Analytics で [ログ検索を実行するための REST API](../../azure-monitor/log-query/log-query-overview.md) を使用します。
 * [Azure Monitor でのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します
 * [Azure Monitor でログ アラート ルールを作成、編集、または管理する](../../azure-monitor/platform/alerts-log.md)方法
-

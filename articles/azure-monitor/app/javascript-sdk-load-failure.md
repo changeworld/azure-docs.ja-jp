@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a76ed65ebc1c56232d4fa42c6df20f619fe14ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229535"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517061"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web アプリの SDK 読み込みエラーのトラブルシューティング
 
@@ -63,7 +63,7 @@ NPM パッケージ ソリューション経由で SDK を使用する場合に�
 
 [NPM パッケージ](#use-npm-packages-to-embed-the-application-insight-sdk)を使用して、Application Insights SDK を埋め込むことも試すことができます。
 
-間欠的なネットワーク接続エラーを最小限に抑えるため、すべての CDN ファイルに Cache-Control ヘッダーが実装されています。この結果、エンド ユーザーのブラウザーで SDK の現在のバージョンがダウンロードされると、再びダウンロードする必要はなくなり、ブラウザーは以前に取得したコピーを再利用します (「[キャッシュのしくみ](https://docs.microsoft.com/azure/cdn/cdn-how-caching-works)」を参照)。 キャッシュ チェックが失敗するか新しいリリースが存在する場合は、エンド ユーザーのブラウザーは更新されたバージョンをダウンロードする必要があります。 このため、新しいリリースが作成されて一般提供 (CDN にデプロイ) されると、チェック エラー シナリオでのバックグラウンド レベルの "_ノイズ_" や、一時的なスパイクが確認される場合があります。
+間欠的なネットワーク接続エラーを最小限に抑えるため、すべての CDN ファイルに Cache-Control ヘッダーが実装されています。この結果、エンド ユーザーのブラウザーで SDK の現在のバージョンがダウンロードされると、再びダウンロードする必要はなくなり、ブラウザーは以前に取得したコピーを再利用します (「[キャッシュのしくみ](../../cdn/cdn-how-caching-works.md)」を参照)。 キャッシュ チェックが失敗するか新しいリリースが存在する場合は、エンド ユーザーのブラウザーは更新されたバージョンをダウンロードする必要があります。 このため、新しいリリースが作成されて一般提供 (CDN にデプロイ) されると、チェック エラー シナリオでのバックグラウンド レベルの "_ノイズ_" や、一時的なスパイクが確認される場合があります。
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN の停止
 

@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ce6d8a43b48be5189f0459c9f82c69354f40689f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653788"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513203"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -16,17 +16,17 @@ ms.locfileid: "83653788"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>ID とユーザー アクセスの管理と制御
 
-Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 Azure Backup では、[Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault) を使用して、マネージド運用をきめ細かく管理できます。 RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
+Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 Azure Backup では、[Azure のロールベースのアクセス制御 (RBAC)](./backup-rbac-rs-vault.md) を使用して、マネージド運用をきめ細かく管理できます。 RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
 
-Azure Backup では、バックアップの管理操作を制御する 3 つの[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)が提供されます。
+Azure Backup では、バックアップの管理操作を制御する 3 つの[組み込みロール](../role-based-access-control/built-in-roles.md)が提供されます。
 
 * バックアップ共同作成者 - Recovery Services コンテナーの削除と他のユーザーへのアクセス権の付与を除き、バックアップの作成と管理を行います
 * バックアップ オペレーター - バックアップの削除とバックアップ ポリシーの管理を除き、共同作成者が行うすべての操作を行います
 * バックアップ リーダー - すべてのバックアップ管理操作を表示するアクセス許可
 
-[Azure Backup を管理するためのロールベースのアクセス制御](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)について確認してください。
+[Azure Backup を管理するためのロールベースのアクセス制御](./backup-rbac-rs-vault.md)について確認してください。
 
-Azure Backup には、セキュリティ脆弱性の防止、検出、および対応を行うための、サービスに組み込まれているセキュリティ コントロールがいくつかあります。 [Azure Backup のセキュリティ コントロール](https://docs.microsoft.com/azure/backup/backup-security-controls)について確認してください。
+Azure Backup には、セキュリティ脆弱性の防止、検出、および対応を行うための、サービスに組み込まれているセキュリティ コントロールがいくつかあります。 [Azure Backup のセキュリティ コントロール](./backup-security-controls.md)について確認してください。
 
 ## <a name="separation-between-guest-and-azure-storage"></a>ゲストと Azure ストレージの分離
 
@@ -38,9 +38,9 @@ Azure VM のバックアップを行うには、お使いの仮想マシンの�
 
 ## <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
-[プライベート エンドポイント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)を使用して、仮想ネットワーク内のサーバーから Recovery Services コンテナーにデータを安全にバックアップできるようになりました。 プライベート エンドポイントでは、お使いのコンテナーに対する VNET アドレス空間からの IP が使用されるため、仮想ネットワークをパブリック IP に公開する必要はありません。 プライベート エンドポイントを使用して、お使いの Azure VM 内で実行される SQL データベースと SAP HANA データベースのバックアップと復元を行うことができます。 また、MARS エージェントを使用して、オンプレミス サーバーでも使用できます。
+[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用して、仮想ネットワーク内のサーバーから Recovery Services コンテナーにデータを安全にバックアップできるようになりました。 プライベート エンドポイントでは、お使いのコンテナーに対する VNET アドレス空間からの IP が使用されるため、仮想ネットワークをパブリック IP に公開する必要はありません。 プライベート エンドポイントを使用して、お使いの Azure VM 内で実行される SQL データベースと SAP HANA データベースのバックアップと復元を行うことができます。 また、MARS エージェントを使用して、オンプレミス サーバーでも使用できます。
 
-[こちら](https://docs.microsoft.com/azure/backup/private-endpoints)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
+[こちら](./private-endpoints.md)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
 
 ## <a name="encryption-of-data-in-transit-and-at-rest"></a>転送中および保存中のデータの暗号化
 
@@ -48,7 +48,7 @@ Azure VM のバックアップを行うには、お使いの仮想マシンの�
 
 * バックアップ データは、Microsoft マネージド キーを使用して自動的に暗号化されます。 また、Azure Key Vault に格納されている[カスタマー マネージド キー](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)を使用して、Recovery Services コンテナー内のバックアップされたマネージド ディスク VM を暗号化することもできます。 この暗号化を有効にするために明示的な操作を行う必要はありません。 これは、Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。
 
-* Azure Backup では、OS またはデータ ディスクを Azure Disk Encryption (ADE) で暗号化している Azure VM のバックアップと復元をサポートしています。 [暗号化された Azure VM および Azure Backup の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。
+* Azure Backup では、OS またはデータ ディスクを Azure Disk Encryption (ADE) で暗号化している Azure VM のバックアップと復元をサポートしています。 [暗号化された Azure VM および Azure Backup の詳細については、こちらを参照してください](./backup-azure-vms-encryption.md)。
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>意図しない削除からのバックアップ データの保護
 
@@ -56,15 +56,15 @@ Azure Backup には、削除後もバックアップ データを保護するた
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>疑わしいアクティビティの監視とアラート
 
-Azure Backup には、Azure Backup に関連するイベントのアクションを表示および構成する[組み込みの監視とアラートの機能](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)が用意されています。 [バックアップ レポート](https://docs.microsoft.com/azure/backup/configure-reports)は、使用状況の追跡、バックアップと復元の監査、およびさまざまな細分性レベルでの主要な傾向の特定を行うための、ワンストップの宛先として機能します。 Azure Backup の監視およびレポート ツールを使用すると、承認されていない、疑わしい、または悪意のあるアクティビティが発生した場合に直ちにアラートを受け取ることができます。
+Azure Backup には、Azure Backup に関連するイベントのアクションを表示および構成する[組み込みの監視とアラートの機能](./backup-azure-monitoring-built-in-monitor.md)が用意されています。 [バックアップ レポート](./configure-reports.md)は、使用状況の追跡、バックアップと復元の監査、およびさまざまな細分性レベルでの主要な傾向の特定を行うための、ワンストップの宛先として機能します。 Azure Backup の監視およびレポート ツールを使用すると、承認されていない、疑わしい、または悪意のあるアクティビティが発生した場合に直ちにアラートを受け取ることができます。
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>ハイブリッド バックアップを保護するためのセキュリティ機能
 
 Azure Backup サービスは、Microsoft Azure Recovery Services (MARS) エージェントを使用して、ファイル、フォルダー、およびボリュームまたはシステム状態をオンプレミスのコンピューターから Azure にバックアップおよび復元します。 MARS では、ハイブリッド バックアップの保護に役立つセキュリティ機能が提供されるようになりました。 次のような機能が該当します。
 
-* パスフレーズの変更など、重要な操作を実行するたびに、認証レイヤーが追加されます。 この検証により、有効な Azure 資格情報を持つユーザーのみがそのような操作を実行できるようになります。 [攻撃を防ぐ機能の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks)。
+* パスフレーズの変更など、重要な操作を実行するたびに、認証レイヤーが追加されます。 この検証により、有効な Azure 資格情報を持つユーザーのみがそのような操作を実行できるようになります。 [攻撃を防ぐ機能の詳細については、こちらを参照してください](./backup-azure-security-feature.md#prevent-attacks)。
 
-* 削除されたバックアップ データは、削除日から追加で 14 日間保持されます。 これにより、特定の期間内のデータの復旧性が確保され、攻撃が行われてもデータが失われることはありません。 また、保持される最小復旧ポイントの数が非常に増えたため、データの破損を防ぐことができます。 [削除されたバックアップ データの復旧の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data)。
+* 削除されたバックアップ データは、削除日から追加で 14 日間保持されます。 これにより、特定の期間内のデータの復旧性が確保され、攻撃が行われてもデータが失われることはありません。 また、保持される最小復旧ポイントの数が非常に増えたため、データの破損を防ぐことができます。 [削除されたバックアップ データの復旧の詳細については、こちらを参照してください](./backup-azure-security-feature.md#recover-deleted-backup-data)。
 
 * Microsoft Azure Recovery Services (MARS) エージェントを使用してバックアップされたデータの場合は、Azure Backup にアップロードする前にデータが暗号化され、Azure Backup からダウンロードした後にのみ暗号化が解除されるようにするために、パスフレーズが使用されます。 パスフレーズの詳細は、パスフレーズを作成したユーザーと、それを使用して構成されたエージェントでのみ使用できます。 そのサービスとの間で転送または共有されるものはありません。 これにより、 (ネットワークでの中間者攻撃などで) 誤って公開されたデータは、パスフレーズなしでは使用できず、パスフレーズはネットワークで送信されないため、データの完全なセキュリティが確保されます。
 

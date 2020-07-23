@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 110e8d3be88fb2e1bd958f40d5defa23f8c679f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525400"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 
@@ -26,7 +26,7 @@ IBM Db2 for LUW での SAP Business Suite の実行に関する一般的な情�
 
 Azure での SAP on Db2 for LUW に関するその他の情報および更新については、SAP Note [2233094] を参照してください。 
 
-Azure 上の SAP ワークロードに関するさまざまな記事が公開されています。  [Azure での SAP ワークロード作業の開始](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)に関する記事の関心のある分野を選択することをお勧めします。
+Azure 上の SAP ワークロードに関するさまざまな記事が公開されています。  [Azure での SAP ワークロード作業の開始](./get-started.md)に関する記事の関心のある分野を選択することをお勧めします。
 
 次の SAP Note は、このドキュメントで扱う領域に関する SAP on Azure に関連します。
 
@@ -44,7 +44,7 @@ Azure 上の SAP ワークロードに関するさまざまな記事が公開さ
 | [2002167] |Red Hat Enterprise Linux 7.x:Installation and Upgrade (Red Hat Enterprise Linux 7.x: インストールとアップグレード) |
 | [1597355] |Linux のスワップ領域に関する推奨事項 |
 
-このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 
+このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](./get-started.md)の中の他のガイドを読んでいる必要があります。 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM Db2 for Linux, UNIX, and Windows バージョンのサポート
@@ -73,7 +73,7 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM Db2 for LUW 
 
 Sapdata と saptmp ディレクトリに対する Db2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
 
-Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、トランザクション ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Db2 のトランザクション ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)」を参照してください。
+Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、トランザクション ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Db2 のトランザクション ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](../../windows/how-to-enable-write-accelerator.md)」を参照してください。
 
 ### <a name="backuprestore"></a>バックアップ/復元
 IBM Db2 for LUW のバックアップ/復元機能は、標準の Windows Server オペレーティング システムと Hyper-V と同じ方法でサポートされています。

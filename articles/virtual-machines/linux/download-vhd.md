@@ -6,18 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14beeebe15193cbe2ef4684f97e4783810ad77a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968793"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510554"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
 この記事では、Azure CLI と Azure portal を使用して、Azure から Linux 仮想ハード ディスク (VHD) ファイルをダウンロードする方法を説明します。 
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) をまだインストールしていない場合はインストールします。
+[Azure CLI](/cli/azure/install-az-cli2) をまだインストールしていない場合はインストールします。
 
 ## <a name="stop-the-vm"></a>VM を停止する
 
@@ -25,7 +25,7 @@ VHD は、実行中の VM に接続されている場合、Azure からダウン
 
 VHD をイメージとして使用して他の VM を作成するには、次の手順を実行します。
 
-1. SSH、アカウント名、および VM のパブリック IP アドレスを使用して VM に接続し、プロビジョニング解除します。 パブリック IP アドレスは、[az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show) で検索できます。 +user パラメーターにより、前回プロビジョニングされたユーザー アカウントも削除されます。 アカウントの資格情報を VM に組み込む場合は、この +user パラメーターを指定しないでください。 次の例では、前回プロビジョニングされたユーザー アカウントを削除します。
+1. SSH、アカウント名、および VM のパブリック IP アドレスを使用して VM に接続し、プロビジョニング解除します。 パブリック IP アドレスは、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) で検索できます。 +user パラメーターにより、前回プロビジョニングされたユーザー アカウントも削除されます。 アカウントの資格情報を VM に組み込む場合は、この +user パラメーターを指定しないでください。 次の例では、前回プロビジョニングされたユーザー アカウントを削除します。
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -33,7 +33,7 @@ VHD をイメージとして使用して他の VM を作成するには、次の
     exit 
     ```
 
-2. [az login](https://docs.microsoft.com/cli/azure/reference-index) で Azure アカウントにサインインします。
+2. [az login](/cli/azure/reference-index) で Azure アカウントにサインインします。
 3. VM を停止し、割り当てを解除します。
 
     ```azurecli
@@ -57,7 +57,7 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 
 ## <a name="generate-sas-url"></a>SAS URL の生成
 
-VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
+VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
 1.  VM に対するページのメニューで、 **[ディスク]** を選択します。
 2.  VM 用のオペレーティング システム ディスクを選択して、 **[ディスクのエクスポート]** を選択します。
@@ -79,4 +79,3 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 
 - [Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法を学習します。 
 - [Azure CLI を使用した Azure ディスクの管理](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-

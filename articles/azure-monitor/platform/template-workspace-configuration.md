@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 240a261f8dd401f36ef763e4c1274a1c0760f2dd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768119"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515650"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -39,10 +39,10 @@ ms.locfileid: "81768119"
 
 | リソース | リソースの種類 | API バージョン |
 |:---|:---|:---|
-| Workspace   | workspaces    | 2017-03-15-preview |
-| Search      | savedSearches | 2015-03-20 |
-| Data source | datasources   | 2015-11-01-preview |
-| Solution    | solutions     | 2015-11-01-preview |
+| ワークスペース   | workspaces    | 2017-03-15-preview |
+| 検索      | savedSearches | 2015-03-20 |
+| データ ソース | datasources   | 2015-11-01-preview |
+| 解決策    | solutions     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
@@ -153,7 +153,7 @@ ms.locfileid: "81768119"
    >* "name":"CapacityReservation",
    >* "capacityReservationLevel":100
 
-2. 要件に合わせてテンプレートを編集します。 パラメーターをインライン値として渡す代わりに、[Resource Manager パラメーター ファイル](../../azure-resource-manager/templates/parameter-files.md)を作成することを検討してください。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)のリファレンスを参照してください。 
+2. 要件に合わせてテンプレートを編集します。 パラメーターをインライン値として渡す代わりに、[Resource Manager パラメーター ファイル](../../azure-resource-manager/templates/parameter-files.md)を作成することを検討してください。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)のリファレンスを参照してください。 
 
 3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。
 

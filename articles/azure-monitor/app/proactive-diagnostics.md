@@ -3,12 +3,12 @@ title: Azure Application Insights のスマート検出 | Microsoft Docs
 description: Application Insights は、アプリのテレメトリの詳細な分析を自動的に実行し、潜在的なパフォーマンスの問題について警告します。
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700841"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516874"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
  スマート検出により、Web アプリケーションの潜在的なパフォーマンスの問題と失敗の異常について警告を自動的に受け取ることができます。 スマート検出では、アプリから [Application Insights](../../azure-monitor/app/app-insights-overview.md) に送信されるテレメトリがプロアクティブに分析されます。 障害発生率が急激に上昇したり、クライアントまたはサーバーのパフォーマンスに異常なパターンが発生したりした場合に、アラートが表示されます。 この機能には構成は不要です。 アプリケーションから適切なテレメトリが送信されていれば動作します。
@@ -34,7 +34,7 @@ ms.locfileid: "83700841"
 
 * [スマート検出 - 失敗の異常](../../azure-monitor/app/proactive-failure-diagnostics.md)。 機械学習を使用して、負荷などの要因と関連付けて、アプリの要求が失敗すると予想される率を設定します。 障害発生率が、予想の包絡線を超えた場合、アラートが送信されます。
 * [スマート検出 - パフォーマンスの異常](../../azure-monitor/app/proactive-performance-diagnostics.md)。 操作の応答時間または依存関係の継続期間が過去の基準と比較して低下している場合や、応答時間またはページの読み込み時間に異常なパターンが特定された場合は、通知を受信します。   
-* [トレースの低下](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)、[メモリ リーク](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak)、[例外数の異常な上昇](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume)、[セキュリティ アンチ パターン](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack)など、一般的な低下および問題。
+* [トレースの低下](./proactive-trace-severity.md)、[メモリ リーク](./proactive-potential-memory-leak.md)、[例外数の異常な上昇](./proactive-exception-volume.md)、[セキュリティ アンチ パターン](./proactive-application-security-detection-pack.md)など、一般的な低下および問題。
 
 (各通知のヘルプ リンクをクリックすると関連する記事が表示されます)。
 
@@ -44,7 +44,7 @@ _プレビュー_ とマークされているルールを除く、すべての�
 
 特定のスマート検出ルールの電子メール通知を構成するには、スマート検出の **[設定]** ブレードを開き、ルールを選択すると、 **[ルールの編集]** ブレードが開きます。
 
-または、Azure Resource Manager テンプレートを使用して、構成を変更できます。 [詳細については、「Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する」](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) を参照してください。
+または、Azure Resource Manager テンプレートを使用して、構成を変更できます。 [詳細については、「Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する」](./proactive-arm-config.md) を参照してください。
 
 ## <a name="video"></a>ビデオ
 
@@ -61,4 +61,3 @@ _プレビュー_ とマークされているルールを除く、すべての�
 
 * [手動で構成するメトリックのアラート](../../azure-monitor/platform/alerts-log.md)
 * [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) 
-

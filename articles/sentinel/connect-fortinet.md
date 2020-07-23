@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555960"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511332"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Azure Sentinel に Fortinet を接続する
 
@@ -36,12 +36,14 @@ Syslog エージェントを介して、CEF 形式で Syslog メッセージを 
 
 1. お使いの Fortinet アプライアンスで CLI を開き、次のコマンドを実行します。
 
-        config log syslogd setting
-        set format cef
-        set port 514
-        set server <ip_address_of_Receiver>
-        set status enable
-        end
+    ```console
+    config log syslogd setting
+    set format cef
+    set port 514
+    set server <ip_address_of_Receiver>
+    set status enable
+    end
+    ```
 
     - サーバーの **IP アドレス**を、エージェントの IP アドレスに置き換えます。
     - **syslog のポート**を **514** に設定するか、エージェントに設定されているポートに設定します。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791123"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524745"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure Maps Drawing Error Visualizer の使用
 
@@ -23,7 +23,7 @@ Drawing Error Visualizer は、変換プロセス中に検出された [Drawing 
 
 Drawing Error Visualizer をダウンロードする前に、次のことを行う必要があります。
 
-1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 3. [Creator リソースを作成します](how-to-manage-creator.md)
 

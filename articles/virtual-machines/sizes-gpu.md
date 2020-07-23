@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bbd81730ea822381f1d0f0e15011fb4ed0c29e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735916"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509316"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最適化済み仮想マシンのサイズ
 
@@ -31,11 +31,11 @@ GPU 最適化済み VM サイズは、単一の GPU、複数の GPU、または�
 
 Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA または AMD GPU ドライバーをインストールする必要があります。
 
-- NVIDIA GPU によってバックアップされる VM では、[NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)によって、適切な NVIDIA CUDA または GRID ドライバーがインストールされます。 この拡張機能は、Azure Portal または Azure PowerShell や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるオペレーティング システムおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を参照してください。 VM 拡張機能の一般情報については、「[Azure 仮想マシンの拡張機能と機能](/azure/virtual-machines/extensions/overview)」をご覧ください。
+- NVIDIA GPU によってバックアップされる VM では、[NVIDIA GPU ドライバー拡張機能](./extensions/hpccompute-gpu-windows.md)によって、適切な NVIDIA CUDA または GRID ドライバーがインストールされます。 この拡張機能は、Azure Portal または Azure PowerShell や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるオペレーティング システムおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](./extensions/hpccompute-gpu-windows.md)を参照してください。 VM 拡張機能の一般情報については、「[Azure 仮想マシンの拡張機能と機能](./extensions/overview.md)」をご覧ください。
 
-   または、NVIDIA GPU ドライバーを手動でインストールできます。 サポートされているオペレーティング システム、ドライバー、インストール手順、および検証手順については、「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](/azure/virtual-machines/windows/n-series-driver-setup)」または「[Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](/azure/virtual-machines/linux/n-series-driver-setup)」を参照してください。
+   または、NVIDIA GPU ドライバーを手動でインストールできます。 サポートされているオペレーティング システム、ドライバー、インストール手順、および検証手順については、「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](./windows/n-series-driver-setup.md)」または「[Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](./linux/n-series-driver-setup.md)」を参照してください。
 
-- AMD GPU によってバックアップされる VM のサポートされているオペレーティング システム、ドライバー、インストール手順、および確認手順については、「[Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする](/azure/virtual-machines/windows/n-series-amd-driver-setup)」を参照してください。
+- AMD GPU によってバックアップされる VM のサポートされているオペレーティング システム、ドライバー、インストール手順、および確認手順については、「[Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする](./windows/n-series-amd-driver-setup.md)」を参照してください。
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 

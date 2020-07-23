@@ -3,12 +3,12 @@ title: MABS を使用して SharePoint ファームを Azure にバックアッ�
 description: Azure Backup Server を使用して SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514239"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS を使用して SharePoint ファームを Azure にバックアップする
 
@@ -18,7 +18,7 @@ MABS を使用して SharePoint を Azure にバックアップするプロセ�
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint のサポートされるバージョンと関連する保護シナリオ
 
-サポートされている SharePoint のバージョンと、それらのバックアップに必要な MABS のバージョンの一覧については、[MABS 保護マトリックス](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)に関するページを参照してください
+サポートされている SharePoint のバージョンと、それらのバックアップに必要な MABS のバージョンの一覧については、[MABS 保護マトリックス](./backup-mabs-protection-matrix.md)に関するページを参照してください
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -100,7 +100,7 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 
 1. **[オンライン保持ポリシーの指定]** では、毎日、毎週、毎月、毎年のバックアップから作成される回復ポイントを Azure に保持する方法を指定できます。
 
-1. **[オンライン レプリケーションの選択]** で、最初の全データのレプリケーションを実行する方法を指定します。 ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、[こちら](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/)を参照してください。
+1. **[オンライン レプリケーションの選択]** で、最初の全データのレプリケーションを実行する方法を指定します。 ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、[こちら](./backup-azure-backup-import-export.md)を参照してください。
 
 1. **[概要]** ページで、設定を確認します。 **[グループの作成]** をクリックすると、データの初期レプリケーションが実行されます。 終了すると、 **[状態]** ページに保護グループの状態が **[OK]** と表示されます。 保護グループの設定に沿ってバックアップが実行されます。
 

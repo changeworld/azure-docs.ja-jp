@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920187"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510074"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init 構成は、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
 
 VM のプロビジョニングとは、指定した VM Create のパラメーター値 (ホスト名、ユーザー名、パスワードなど) が Azure によって渡され、VM の起動時に使用できるようにするプロセスのことです。 "プロビジョニング エージェント" によって、これらの値を使用して VM が構成され、完了時に報告されます。 
 
-Azure では、2 つのプロビジョニング エージェント [cloud-init](https://cloudinit.readthedocs.io) と [Azure Linux エージェント (WALA)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) がサポートされています。
+Azure では、2 つのプロビジョニング エージェント [cloud-init](https://cloudinit.readthedocs.io) と [Azure Linux エージェント (WALA)](../extensions/agent-linux.md) がサポートされています。
 
 ## <a name="cloud-init-overview"></a>cloud-init の概要
 [cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されている手法です。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 cloud-init は初回起動プロセスの間に呼び出されるので、構成を適用するために追加の手順や必要なエージェントはありません。  `#cloud-config` ファイルやその他の入力の形式を正しく設定する方法について詳しくは、[cloud-init のドキュメント サイト](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)をご覧ください。  `#cloud-config` ファイルは、base64 でエンコードされたテキスト ファイルです。
@@ -106,7 +106,7 @@ cloud-init が Azure 上の動作保証済み Linux ディストリビューシ�
 現在、Azure Stack では、cloud-init 対応のイメージのプロビジョニングがサポートされます。
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init と Linux エージェント (WALA) の相違点
-WALA は、VM のプロビジョニングと構成および [Azure 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)の処理に使われる、Azure プラットフォーム固有のエージェントです。 
+WALA は、VM のプロビジョニングと構成および [Azure 拡張機能](../extensions/features-linux.md)の処理に使われる、Azure プラットフォーム固有のエージェントです。 
 
 既存の cloud-init のお客様が各自の現在の cloud-init スクリプトを使用したり、新しいお客様が cloud-init の豊富な構成機能を利用したりできるようにするために、Linux エージェントではなく cloud-init を使うように VM 構成タスクの強化が行われています。 Linux システム構成用の cloud-init スリプトが既にある場合、cloud-init でそれらを処理できるようにするために**追加の設定は必要ありません**。 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696968"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515497"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
 この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -50,7 +50,7 @@ ms.locfileid: "84696968"
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>メトリック データが Azure ポータルに表示されない
-Azure Diagnostics には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでのデータの表示に問題がある場合は、Azure Diagnostics ストレージ アカウントの WADMetrics\* テーブルを調べて、対応するメトリック レコードがそこにあるかどうかを確認し、[リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) Microsoft.Insights を確実に登録します。
+Azure Diagnostics には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでのデータの表示に問題がある場合は、Azure Diagnostics ストレージ アカウントの WADMetrics\* テーブルを調べて、対応するメトリック レコードがそこにあるかどうかを確認し、[リソース プロバイダー](../../azure-resource-manager/management/resource-providers-and-types.md) Microsoft.Insights を確実に登録します。
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
@@ -297,4 +297,3 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 - ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合、ポータルのメトリック グラフは名前を認識できません。 **対応策**:システム アカウント用に、マシンの言語を英語に変更します。 **[コントロール パネル]**  >  **[地域と言語]**  >  **[管理]**  >  **[設定のコピー]** の順に選択します。 次に、 **[ようこそ画面とシステム アカウント]** の選択を解除し、カスタム言語がシステム アカウントに適用されないようにします。
 
 - パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、パフォーマンス カウンターが Azure Storage シンクに送られるときに、構成済みのカウンターと収集されたカウンターをポータルが関連付けることができなくなります。 **対応策**:ワイルドカードを使用でき、ポータルで (\*) を展開できることを確認するために、ご自分のパフォーマンス カウンターを Azure Monitor シンクにルーティングします。
-

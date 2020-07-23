@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027167"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514086"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -329,6 +329,6 @@ Microsoft では、各コンポーネントの相互の認証ができるよう�
 ## <a name="next-steps"></a>次のステップ
 
 - ファイルの復元中に発生する問題については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
-- [PowerShell を使用してファイルを復元する](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup)方法を確認します
-- [Azure CLI を使用してファイルを復元する](https://docs.microsoft.com/azure/backup/tutorial-restore-files)方法を確認します。
-- VM が復元された後、[バックアップを管理する](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms)方法について説明します。
+- [PowerShell を使用してファイルを復元する](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)方法を確認します
+- [Azure CLI を使用してファイルを復元する](./tutorial-restore-files.md)方法を確認します。
+- VM が復元された後、[バックアップを管理する](./backup-azure-manage-vms.md)方法について説明します。

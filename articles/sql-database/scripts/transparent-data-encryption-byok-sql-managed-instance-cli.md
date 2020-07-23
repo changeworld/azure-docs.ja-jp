@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 271f68a57a4490032e318da57b4b37aac09a1410
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 08f0531a99a7e0af42332e349989ce12722be42c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019350"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518794"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Key Vault の独自のキーを使用して Managed Instance で Transparent Data Encryption を管理する
 
@@ -56,7 +56,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| コマンド | 説明 |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | データベースのコマンド。 |
 | [az sql failover-group](/cli/azure/sql/failover-group) | フェールオーバー グループのコマンド。 |

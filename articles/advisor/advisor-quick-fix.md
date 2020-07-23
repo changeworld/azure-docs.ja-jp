@@ -4,12 +4,12 @@ description: Advisor でクイック修正を使って一括修復を実行す�
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79503927"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518064"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Advisor のクイック修正
 **クイック修正** を使用すると、複数のリソースに対するレコメンデーションの修復をすばやく簡単に実行できます。 リソースの一括修復を行う機能が用意され、リソースの大規模修復によってサブスクリプションをより迅速に最適化できます。
@@ -50,4 +50,4 @@ Advisor の推奨事項について詳しくは、以下を参照してくださ
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

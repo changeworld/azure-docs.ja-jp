@@ -3,12 +3,12 @@ title: Application Insights のデプロイを設計する方法 - 1 つまた�
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516721"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>デプロイする必要がある Application Insights リソースの数
 
@@ -35,7 +35,7 @@ Web アプリに対する Application Insights の監視を設定するときは
 
 ### <a name="other-things-to-keep-in-mind"></a>その他の注意点
 
--   [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) 属性に意味のある値が設定されるようにするには、カスタム コードを追加することが必要になる場合があります。 この属性に対して意味のある値が設定されていないと、どのポータル エクスペリエンスも機能 "*しません*"。
+-   [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) 属性に意味のある値が設定されるようにするには、カスタム コードを追加することが必要になる場合があります。 この属性に対して意味のある値が設定されていないと、どのポータル エクスペリエンスも機能 "*しません*"。
 - Service Fabric アプリケーションと従来のクラウド サービスについては、SDK によって Azure ロール環境から自動的に読み取られ、これらが設定されます。 他のすべての種類のアプリでは、これを明示的に設定する必要があります。
 -   Live Metrics エクスペリエンスでは、ロール名による分割はサポートされていません。
 
@@ -76,7 +76,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="create-additional-application-insights-resources"></a>追加の Application Insights リソースを作成する
 
-Application Insights リソースを作成するには、[リソース作成ガイド](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)に従います。
+Application Insights リソースを作成するには、[リソース作成ガイド](./create-new-resource.md)に従います。
 
 ### <a name="getting-the-instrumentation-key"></a>インストルメンテーション キーの取得
 インストルメンテーション キーは作成したリソースを識別します。

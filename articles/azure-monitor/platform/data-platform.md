@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457265"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515531"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor データ プラットフォーム
 
@@ -49,7 +49,7 @@ Azure Monitor のログは、強力な分析エンジンと[豊富なクエリ�
 > Azure Monitor のログと Azure 上のログ データのソースを区別することが重要です。 たとえば、Azure のサブスクリプション レベルのイベントは、Azure Monitor のメニューから表示できる[アクティビティ ログ](platform-logs-overview.md)に書き込まれます。 ほとんどのリソースでは、別の場所に転送できる[リソース ログ](platform-logs-overview.md)に運用情報が書き込まれます。 Azure Monitor Logs は、アクティビティ データとリソース ログと共に他の監視データを収集して、リソース全体を深く分析するためのログ データ プラットフォームです。
 
 
- Azure portal の [Log Analytics](../log-query/portals.md)で [ログ クエリ](../log-query/log-query-overview.md)を対話式で操作したり、結果を [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)に追加して、他のデータと組み合わせて視覚化したりできます。 スケジュール クエリの結果に基づいてアラートをトリガーする[ログ アラート](alerts-log.md)を作成することもできます。
+ Azure portal の [Log Analytics](../log-query/log-query-overview.md)で [ログ クエリ](../log-query/log-query-overview.md)を対話式で操作したり、結果を [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)に追加して、他のデータと組み合わせて視覚化したりできます。 スケジュール クエリの結果に基づいてアラートをトリガーする[ログ アラート](alerts-log.md)を作成することもできます。
 
 データのソースを含む Azure Monitor のログの詳細については、「[Logs in Azure Monitor (Azure Monitor のログ)](data-platform-logs.md)」を参照してください。
 
@@ -81,7 +81,7 @@ Azure Monitor の分散トレースは、[Application Insights SDK](../app/distr
 
 
 ## <a name="stream-data-to-external-systems"></a>外部システムにデータをストリーム配信する
-Azure のツールを使用した監視データの分析に加え、監視データをセキュリティ情報およびイベントの管理 (SIEM) 製品などの外部ツールに転送する要件がある場合もあります。 この転送は一般に、[Azure Event Hubs](/azure/event-hubs/) を介して、監視対象リソースから直接行われます。 一部のソースはデータをイベント ハブに直接送信するように構成でき、Logic App などの別のプロセスを使用して必要なデータを取得できます。 詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](stream-monitoring-data-event-hubs.md)」を参照してください。
+Azure のツールを使用した監視データの分析に加え、監視データをセキュリティ情報およびイベントの管理 (SIEM) 製品などの外部ツールに転送する要件がある場合もあります。 この転送は一般に、[Azure Event Hubs](../../event-hubs/index.yml) を介して、監視対象リソースから直接行われます。 一部のソースはデータをイベント ハブに直接送信するように構成でき、Logic App などの別のプロセスを使用して必要なデータを取得できます。 詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](stream-monitoring-data-event-hubs.md)」を参照してください。
 
 
 

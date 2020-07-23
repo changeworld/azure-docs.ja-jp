@@ -3,15 +3,15 @@ title: サンプル - Azure Event Hubs | Microsoft Docs
 description: この記事では、GitHub にある Azure Event Hubs のサンプルの一覧を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9529b11d15460c713a0ae14f3bccfa1c2684a3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d7a40e399482af0ad3a501918a7e3307d724c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315508"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512301"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Azure Event Hubs のサンプルが含まれる Git リポジトリ 
-Event Hubs サンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) で見つけることができます。 これらのサンプルは [Azure Event Hubs](/azure/event-hubs/) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
+Event Hubs サンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) で見つけることができます。 これらのサンプルは [Azure Event Hubs](./index.yml) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
 ## <a name="net-samples"></a>.NET のサンプル
 
@@ -57,6 +57,6 @@ Apache Kafka 用の Event Hubs 機能のサンプルは、[azure-event-hubs-for-
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次の記事を参照してください。
 
-- [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+- [Event Hubs の概要](./event-hubs-about.md)
 - [Event Hubs の機能](event-hubs-features.md)
 - [Event Hubs の FAQ](event-hubs-faq.md)

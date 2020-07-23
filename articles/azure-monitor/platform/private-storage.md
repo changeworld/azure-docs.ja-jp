@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184499"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515429"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor におけるログ取り込み用の顧客所有のストレージ アカウント
 
-Azure Monitor では、[カスタム ログ](data-sources-custom-logs.md)や [Azure ログ](azure-storage-iis-table.md)などの一部のデータ型の取り込みプロセスでストレージ アカウントを使用します。 取り込みプロセス中、ログはまずストレージ アカウントに送信され、その後 Log Analytics または Application Insights に取り込まれます。 取り込み中にデータを制御する場合は、サービスで管理されたストレージの代わりに独自のストレージ アカウントを使用します。 独自のストレージ アカウントを使用すると、取り込み中にログのアクセス、コンテンツ、暗号化、リテンション期間を制御できます。 これは、"独自ストレージの持ち込み" または "BYOS" と呼ばれています。 
+Azure Monitor では、[カスタム ログ](data-sources-custom-logs.md)や [Azure ログ](./diagnostics-extension-logs.md)などの一部のデータ型の取り込みプロセスでストレージ アカウントを使用します。 取り込みプロセス中、ログはまずストレージ アカウントに送信され、その後 Log Analytics または Application Insights に取り込まれます。 取り込み中にデータを制御する場合は、サービスで管理されたストレージの代わりに独自のストレージ アカウントを使用します。 独自のストレージ アカウントを使用すると、取り込み中にログのアクセス、コンテンツ、暗号化、リテンション期間を制御できます。 これは、"独自ストレージの持ち込み" または "BYOS" と呼ばれています。 
 
 BYOS を必要とするシナリオの 1 つが、 Private Link によるネットワークの分離です。 VNet を使用する場合、ネットワークの分離は多くの場合要件であり、パブリック インターネットへのアクセスは制限されています。 このような場合、ログ取り込みのために Azure Monitor サービス ストレージにアクセスすることは完全にブロックされるか、または不適切な方法と考えられます。 代わりに、VNet 内の顧客所有のストレージ アカウント経由で取り込むか、または簡単にアクセスできるログを取り込む必要があります。
 
@@ -23,7 +23,7 @@ BYOS を必要とするシナリオの 1 つが、 Private Link によるネッ�
 
 ## <a name="data-types-supported"></a>サポートされているデータ型
 
-ストレージ アカウントから取り込まれるデータ型には、次のものがあります。 これらの型の取り込みの詳細については、「[Azure Diagnostics 拡張機能から Azure Monitor ログにデータを収集する](azure-storage-iis-table.md)」を参照してください。
+ストレージ アカウントから取り込まれるデータ型には、次のものがあります。 これらの型の取り込みの詳細については、「[Azure Diagnostics 拡張機能から Azure Monitor ログにデータを収集する](./diagnostics-extension-logs.md)」を参照してください。
 
 | Type | テーブル情報 |
 |:-----|:------------------|
@@ -54,7 +54,7 @@ BYOS を必要とするシナリオの 1 つが、 Private Link によるネッ�
 ## <a name="command-line-and-rest-api"></a>コマンド ラインと REST API
 
 ### <a name="command-line"></a>コマンド ライン
-リンクされたストレージ アカウントを作成および管理するには、[az monitor log-analytics workspace linked-storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) を使用します。 このコマンドでは、ワークスペースからストレージ アカウントをリンクおよびリンク解除したり、リンクされたストレージ アカウントを一覧表示したりできます。
+リンクされたストレージ アカウントを作成および管理するには、[az monitor log-analytics workspace linked-storage](/cli/azure/monitor/log-analytics/workspace/linked-storage) を使用します。 このコマンドでは、ワークスペースからストレージ アカウントをリンクおよびリンク解除したり、リンクされたストレージ アカウントを一覧表示したりできます。
 
 ### <a name="request-and-cli-values"></a>要求と CLI の値
 

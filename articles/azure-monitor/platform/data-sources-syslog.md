@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: cce74358a206c7103d537ba80c62d6561606b818
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242034"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515514"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
@@ -90,7 +90,6 @@ local7.warning     @127.0.0.1:25224
 user.error    @127.0.0.1:25224
 ```
 
-
 #### <a name="syslog-ng"></a>syslog-ng
 syslog-ng の構成ファイルは、 **/etc/syslog-ng/syslog-ng.conf** にあります。  既定の内容を以下に示します。 これは、ローカル エージェントから送信された、すべてのファシリティのすべての重大度の syslog メッセージを収集します。   
 
@@ -163,17 +162,16 @@ Log Analytics エージェントは、ポート 25224 でローカル クライ�
 
 * FluentD 構成ファイルは `/etc/opt/microsoft/omsagent/conf/omsagent.d` にある新しいファイルです。**port** エントリの値をカスタム ポート番号に変更します。
 
-    ```config
+    ```xml
     <source>
-      type syslog
-      port %SYSLOG_PORT%
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
+        type syslog
+        port %SYSLOG_PORT%
+        bind 127.0.0.1
+        protocol_type udp
+        tag oms.syslog
     </source>
     <filter oms.syslog.**>
-      type filter_syslog
-    </filter>
+        type filter_syslog
     ```
 
 * rsyslog の場合、`/etc/rsyslog.d/` に新しい構成ファイルを作成し、値 %SYSLOG_PORT% をカスタム ポート番号に変更する必要があります。  

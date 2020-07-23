@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945632"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510448"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 
@@ -34,7 +34,7 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 
 この種類のマネージド ディスクには、2 つの固有の状態があります。
 
-- ReadToUpload。ディスクはアップロードを受け取る準備ができていますが、[Secure Access Signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) が生成されていないことを意味します。
+- ReadToUpload。ディスクはアップロードを受け取る準備ができていますが、[Secure Access Signature](../../storage/common/storage-sas-overview.md) (SAS) が生成されていないことを意味します。
 - ActiveUpload。ディスクはアップロードを受け取る準備ができており、SAS が生成済みであることを意味します。
 
 > [!NOTE]
@@ -132,4 +132,3 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 ## <a name="next-steps"></a>次のステップ
 
 これでマネージド ディスクに VHD が正常にアップロードされたので、ディスクを[既存の VM にデータ ディスク](add-disk.md)として接続するか、[ディスクを OS ディスクとして VM に接続](upload-vhd.md#create-the-vm)して、新しい VM を作成することができます。 
-

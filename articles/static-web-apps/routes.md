@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056788"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518777"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのルート
 
@@ -295,7 +295,7 @@ MIME の種類を使用するときは、次の考慮事項が重要です。
 | _/unknown-folder_ | _/custom-404.html_ ファイルが提供されます。 |
 | `.custom` 拡張子のファイル | MIME の種類 `text/html` で提供されます |
 
-- すべての応答には、値が `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` である `content-security-policy` ヘッダーが含まれます。
+すべての応答には、値が `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` である `content-security-policy` ヘッダーが含まれます。
 
 <sup>1</sup> API 関数のルート規則では、[リダイレクト](#redirects)と[ロールによるルートのセキュリティ保護](#securing-routes-with-roles)のみがサポートされます。
 

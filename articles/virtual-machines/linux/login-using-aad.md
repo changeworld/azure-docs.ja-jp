@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366496"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510431"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-VM に拡張機能が正常にインストールされると、*provisioningState* に *Succeeded* が表示されます。 拡張機能をインストールするには、VM には実行中の VM エージェントが必要です。 詳細については、[VM エージェントの概要](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)に関する記事をご覧ください。
+VM に拡張機能が正常にインストールされると、*provisioningState* に *Succeeded* が表示されます。 拡張機能をインストールするには、VM には実行中の VM エージェントが必要です。 詳細については、[VM エージェントの概要](../extensions/agent-windows.md)に関する記事をご覧ください。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>仮想マシン ロールの割り当てを構成する
 
@@ -138,7 +138,7 @@ az role assignment create \
 
 RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure portal](../../role-based-access-control/role-assignments-portal.md)、または [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) の使用に関する記事を参照してください。
 
-Linux 仮想マシンにサインインする特定のユーザーに対して多要素認証を要求するように Azure AD を構成することもできます。 詳細については、「[クラウドでの Azure Multi-Factor Authentication の概要](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
+Linux 仮想マシンにサインインする特定のユーザーに対して多要素認証を要求するように Azure AD を構成することもできます。 詳細については、「[クラウドでの Azure Multi-Factor Authentication の概要](../../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Linux 仮想マシンにログインする
 

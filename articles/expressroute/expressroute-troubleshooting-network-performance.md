@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738245"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521668"
 ---
 # <a name="troubleshooting-network-performance"></a>ネットワーク パフォーマンスのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -177,9 +177,8 @@ Azure では、可能な限り詳しく問題を特定したら、[Azure ネッ�
 >
 >
 
-| | | | | | |
-|-|-|-|-|-|-|
-|ExpressRoute<br/>場所|Azure<br/>リージョン|推定<br/>距離 (km)|Latency|1 セッションの<br/>帯域幅|最大値<br/>帯域幅|
+| ExpressRoute<br/>場所|Azure<br/>リージョン | 推定<br/>距離 (km) | Latency|1 セッションの<br/>帯域幅 | 最大値<br/>帯域幅 |
+| ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | 米国西部 2        |    191 km |   5 ミリ秒 | 262.0 メガビット/秒 |  3.74 ギガビット/秒 |
 | Seattle | 米国西部          |  1,094 km |  18 ミリ秒 |  82.3 メガビット/秒 |  3.70 ギガビット/秒 |
 | Seattle | 米国中部       |  2,357 km |  40 ミリ秒 |  38.8 メガビット/秒 |  2.55 ギガビット/秒 |

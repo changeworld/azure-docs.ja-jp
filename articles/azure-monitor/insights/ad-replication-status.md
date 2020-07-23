@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055895"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516789"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 
@@ -61,7 +62,7 @@ AD レプリケーションの状態ソリューションは、レプリケー�
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-AD Replication Status タイルには、現在発生しているレプリケーション エラーの数が表示されます。 **重大なレプリケーション エラー**は、Active Directory フォレストの[廃棄 (tombstone) の有効期間](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)が 75% 以上のエラーです。
+AD Replication Status タイルには、現在発生しているレプリケーション エラーの数が表示されます。 **重大なレプリケーション エラー**は、Active Directory フォレストの[廃棄 (tombstone) の有効期間](/previous-versions/windows/it-pro/windows-server-2003/cc784932(v=ws.10))が 75% 以上のエラーです。
 
 ![AD レプリケーションの状態タイル](./media/ad-replication-status/oms-ad-replication-tile.png)
 

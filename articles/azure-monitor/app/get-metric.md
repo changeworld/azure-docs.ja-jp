@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927906"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517146"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET および .NET Core でのカスタム メトリックの収集
 
@@ -22,7 +22,7 @@ Azure Monitor Application Insights の .NET および .NET Core SDK には、カ
 
 `TrackMetric()` では、メトリックを示す未加工のテレメトリを送信します。 値ごとに単一のテレメトリ項目を送信することは、非効率的です。 また、すべての `TrackMetric(item)` がテレメトリ初期化子とプロセッサの完全な SDK パイプラインを通過するため、`TrackMetric()` はパフォーマンスの点でも非効率的です。 `TrackMetric()` とは異なり、`GetMetric()` ではローカル事前集計が自動的に処理され、1 分の一定間隔で集計されたサマリー メトリックのみが送信されます。 したがって、一部のカスタム メトリックを秒またはミリ秒単位で厳密に監視する必要がある場合、1 分ごとに監視するだけのストレージとネットワーク トラフィックのコストのみが発生している間にそのようにすることができます。 また、これにより、集計されたメトリックに対して送信する必要があるテレメトリ項目の合計数が大幅に減少するため、調整が発生するリスクが大幅に軽減されます。
 
-Application Insights では、`TrackMetric()` と `GetMetric()` を介して収集されたカスタム メトリックは[サンプリング](https://docs.microsoft.com/azure/azure-monitor/app/sampling)の対象にはなりません。 重要なメトリックをサンプリングすると、これらのメトリックに基づいて作成した可能性のあるアラートの信頼性が低下する場合があるシナリオにつながることがあります。 カスタム メトリックをサンプリングしないようにすることで、一般に、アラートのしきい値違反が発生した場合にアラートが起動するという確信を得ることができます。  しかし、カスタム メトリックはサンプリングされないため、潜在的な懸念事項がいくつかあります。
+Application Insights では、`TrackMetric()` と `GetMetric()` を介して収集されたカスタム メトリックは[サンプリング](./sampling.md)の対象にはなりません。 重要なメトリックをサンプリングすると、これらのメトリックに基づいて作成した可能性のあるアラートの信頼性が低下する場合があるシナリオにつながることがあります。 カスタム メトリックをサンプリングしないようにすることで、一般に、アラートのしきい値違反が発生した場合にアラートが起動するという確信を得ることができます。  しかし、カスタム メトリックはサンプリングされないため、潜在的な懸念事項がいくつかあります。
 
 1 秒ごとに、あるいはさらに細かい間隔でメトリックの傾向を追跡する必要がある場合、次のようになることがあります。
 
@@ -30,16 +30,16 @@ Application Insights では、`TrackMetric()` と `GetMetric()` を介して収�
 - ネットワーク トラフィックやパフォーマンスのオーバーヘッドが増加する (一部のシナリオでは、金銭的およびアプリケーション パフォーマンスの両方のコストがかかる可能性があります)。
 - インジェスト調整のリスク (アプリで短期間に非常に高いレートのテレメトリを送信すると、Azure Monitor サービスによってデータ ポイントが削除 ("調整") されます)。
 
-調整は、サンプリングと同様に特に懸念されます。アラートをトリガーする条件がローカルで発生し、送信されるデータが多すぎるためにインジェスト エンドポイントで削除される可能性があるため、調整によりアラートが起動しなくなる場合があります。 このため、.NET and .NET Core では、独自のローカル集計ロジックを実装していない限り、`TrackMetric()` を使用しないことをお勧めします。 すべてのインスタンスを追跡しようとしたときに、特定の期間にわたってイベントが発生した場合は、[`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) の方が適していることがわかります。 しかし、カスタム メトリックとは異なり、カスタム イベントはサンプリングの対象となる場合があることに注意してください。 もちろん、独自のローカル事前集計を記述しなくても `TrackMetric()` を引き続き使用することはできますが、その場合は落とし穴に注意してください。
+調整は、サンプリングと同様に特に懸念されます。アラートをトリガーする条件がローカルで発生し、送信されるデータが多すぎるためにインジェスト エンドポイントで削除される可能性があるため、調整によりアラートが起動しなくなる場合があります。 このため、.NET and .NET Core では、独自のローカル集計ロジックを実装していない限り、`TrackMetric()` を使用しないことをお勧めします。 すべてのインスタンスを追跡しようとしたときに、特定の期間にわたってイベントが発生した場合は、[`TrackEvent()`](./api-custom-events-metrics.md#trackevent) の方が適していることがわかります。 しかし、カスタム メトリックとは異なり、カスタム イベントはサンプリングの対象となる場合があることに注意してください。 もちろん、独自のローカル事前集計を記述しなくても `TrackMetric()` を引き続き使用することはできますが、その場合は落とし穴に注意してください。
 
 つまり、`GetMetric()` は、事前集計を行い、すべての Track() 呼び出しからの値を蓄積し、1 分ごとにサマリーや集計を送信するため、推奨される方法です。 これにより、すべての関連情報を引き続き収集しながら、送信するデータ ポイントを少なくすることによって、コストとパフォーマンスのオーバーヘッドを大幅に削減できます。
 
 > [!NOTE]
-> GetMetric() メソッドがあるのは、.NET および .NET Core SDK のみです。 Java を使用している場合は、[Micrometer メトリック](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java)または `TrackMetric()` を利用できます。 Python の場合は、[OpenCensus.stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) を使用して、カスタム メトリックを送信できます。 JavaScript と Node.js の場合は、引き続き `TrackMetric()` を使用しますが、前のセクションで概説した注意事項に留意してください。
+> GetMetric() メソッドがあるのは、.NET および .NET Core SDK のみです。 Java を使用している場合は、[Micrometer メトリック](./micrometer-java.md)または `TrackMetric()` を利用できます。 Python の場合は、[OpenCensus.stats](./opencensus-python.md#metrics) を使用して、カスタム メトリックを送信できます。 JavaScript と Node.js の場合は、引き続き `TrackMetric()` を使用しますが、前のセクションで概説した注意事項に留意してください。
 
 ## <a name="getting-started-with-getmetric"></a>GetMetric の使用の開始
 
-この例では、基本的な .NET Core 3.1 ワーカー サービス アプリケーションを使用します。 これらの例で使用されたテスト環境を正確にレプリケートする場合は、[ワーカー サービスの監視に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/worker-service#net-core-30-worker-service-application)の手順 1 から 6 に従って、基本的なワーカー サービス プロジェクト テンプレートに Application Insights を追加します。 これらの概念は、Web アプリやコンソール アプリを含め、SDK を使用できる一般的なアプリケーションに適用されます。
+この例では、基本的な .NET Core 3.1 ワーカー サービス アプリケーションを使用します。 これらの例で使用されたテスト環境を正確にレプリケートする場合は、[ワーカー サービスの監視に関する記事](./worker-service.md#net-core-30-worker-service-application)の手順 1 から 6 に従って、基本的なワーカー サービス プロジェクト テンプレートに Application Insights を追加します。 これらの概念は、Web アプリやコンソール アプリを含め、SDK を使用できる一般的なアプリケーションに適用されます。
 
 ### <a name="sending-metrics"></a>メトリックの送信
 
@@ -111,7 +111,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 > [!NOTE]
 > 取り込み後に未加工のテレメトリ項目に明示的な sum プロパティやフィールドは含まれませんが、ここでは 1 つ作成します。 この場合、`value` と `valueSum` の両方のプロパティは同じことを表します。
 
-また、ポータルの [ _[メトリック]_ ](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) セクションで、カスタム メトリック テレメトリにアクセスすることもできます。 [ログベース、およびカスタム メトリック](pre-aggregated-metrics-log-metrics.md)の両方があります (以下のスクリーンショットはログベースの例です)。![メトリックス エクスプローラー ビュー](./media/get-metric/metrics-explorer.png)
+また、ポータルの [ _[メトリック]_ ](../platform/metrics-charts.md) セクションで、カスタム メトリック テレメトリにアクセスすることもできます。 [ログベース、およびカスタム メトリック](pre-aggregated-metrics-log-metrics.md)の両方があります (以下のスクリーンショットはログベースの例です)。![メトリックス エクスプローラー ビュー](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>高スループット使用率のメトリック参照のキャッシュ
 
@@ -302,8 +302,8 @@ SeverityLevel.Error);
 
 ## <a name="next-steps"></a>次のステップ
 
-* ワーカー サービス アプリケーションの監視の詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)を参照してください。
-* ログベースおよび事前集計メトリックの詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)を参照してください。
-* [メトリックス エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* ワーカー サービス アプリケーションの監視の詳細については、[こちら](./worker-service.md)を参照してください。
+* ログベースおよび事前集計メトリックの詳細については、[こちら](./pre-aggregated-metrics-log-metrics.md)を参照してください。
+* [メトリックス エクスプローラー](../platform/metrics-getting-started.md)
 * [ASP.NET Core アプリケーション](asp-net-core.md)用の Application Insights を有効にする方法
 * [ASP.NET アプリケーション](asp-net.md)用の Application Insights を有効にする方法

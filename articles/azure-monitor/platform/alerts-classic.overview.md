@@ -4,17 +4,17 @@ description: クラシック アラートは非推奨になります。 アラ�
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114495"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515956"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
 > [!NOTE]
-> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 従来のアラートは[廃止](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。 
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 従来のアラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。 
 >
 
 アラートを使用してデータに対する条件を構成し、その条件が最新の監視データと一致したときに通知を受け取ることができます。
@@ -89,7 +89,7 @@ Azure Monitor に、*アクション グループ*という再利用可能な通
 * [Azure Portal からの従来のメトリック アラート](alerts-classic-portal.md)を構成する
 * [従来のメトリック アラートの PowerShell](alerts-classic-portal.md) を構成する
 * [従来のメトリック アラートのコマンド ライン インターフェイス (CLI)](alerts-classic-portal.md) を構成する
-* [従来のメトリック アラートの Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) を構成する
+* [従来のメトリック アラートの Azure Monitor REST API](/rest/api/monitor/alertrules) を構成する
 * [アクティビティ ログ](platform-logs-overview.md) の詳細
 * [Azure Portal からのアクティビティ ログ アラート](activity-log-alerts.md)の構成
 * [Resource Manager からのアクティビティ ログ アラート](alerts-activity-log.md)の構成

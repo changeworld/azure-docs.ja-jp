@@ -3,16 +3,17 @@ title: 新しい Azure Kubernetes Service (AKS) クラスターを監視する |
 description: Azure Monitor for containers サブスクリプションによって、新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847209"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516636"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
-この記事では、サブスクリプションへのデプロイを準備している、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) でホストされているマネージド Kubernetes クラスターを監視するように Azure Monitor for containers を設定する方法について説明します。
+この記事では、サブスクリプションへのデプロイを準備している、[Azure Kubernetes Service](../../aks/index.yml) でホストされているマネージド Kubernetes クラスターを監視するように Azure Monitor for containers を設定する方法について説明します。
 
 サポートされている次のいずれかの方法を使用して、AKS クラスターの監視を有効にすることができます。
 
@@ -24,7 +25,7 @@ ms.locfileid: "85847209"
 Azure CLI で作成した新しい AKS クラスターの監視を有効にするには、クイック スタート記事の「[AKS クラスターの作成](../../aks/kubernetes-walkthrough.md#create-aks-cluster)」セクションの手順に従ってください。  
 
 >[!NOTE]
->Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.74 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 aks-preview CLI 拡張機能バージョン 0.4.12 以降をインストールしている場合は、プレビュー拡張機能を有効にするために行ったすべての変更を削除します。これは、AKS プレビュー機能が Azure US Government クラウドでは利用できないので、既定の Azure CLI 動作をオーバーライドできるためです。
+>Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.74 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 aks-preview CLI 拡張機能バージョン 0.4.12 以降をインストールしている場合は、プレビュー拡張機能を有効にするために行ったすべての変更を削除します。これは、AKS プレビュー機能が Azure US Government クラウドでは利用できないので、既定の Azure CLI 動作をオーバーライドできるためです。
 
 ## <a name="enable-using-terraform"></a>Terraform を使用して有効にする
 

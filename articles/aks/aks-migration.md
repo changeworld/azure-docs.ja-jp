@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518047"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -51,7 +51,7 @@ AKS は、管理オーバーヘッドが少ない独自の機能を提供する�
 
 [複数のノード プール](./use-multiple-node-pools.md)、[Availability Zones](../availability-zones/az-overview.md)、[承認済み IP 範囲](./api-server-authorized-ip-ranges.md)、[クラスター オートスケーラー](./cluster-autoscaler.md)、[AKS 用の Azure Policy](../governance/policy/concepts/policy-for-kubernetes.md)、およびリリースされたその他の新機能などをそのまま確実に利用できるように、[Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) および [Azure Standard Load Balancer](./load-balancer-standard.md) によって支援された AKS クラスターを使用することをお勧めします。
 
-[仮想マシン可用性セット](../virtual-machine-scale-sets/availability.md#availability-sets)によって支援された AKS クラスターでは、これらの機能の多くがサポートされません。
+[仮想マシン可用性セット](../virtual-machines/availability.md#availability-sets)によって支援された AKS クラスターでは、これらの機能の多くがサポートされません。
 
 次の例では、仮想マシンのスケール セットによって戻された 1 つのノード プールを使用して、AKS クラスターを作成します。 これは、Standard Load Balancer を使用しています。 また、クラスターのノードプール上でクラスター オートスケーラーを有効にし、最小値を *1* ノード、最大値を *3* ノードに設定します。
 

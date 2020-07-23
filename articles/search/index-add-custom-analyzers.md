@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555248"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511400"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドにカスタム アナライザーを追加する
 
@@ -200,16 +200,16 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 #### <a name="predefined-analyzers"></a>定義済みアナライザー
 
-|||  
-|-|-|  
+| Type | 説明 |
+| ---- | ----------- |  
 |名前|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているアナライザーの一覧に含まれるアナライザーの種類です。 下記の[アナライザー](#AnalyzerTable)の表の **analyzer_type** 列をご覧ください。|  
 |Options|下記の[アナライザー](#AnalyzerTable)の表に列記されている定義済みアナライザーの有効なオプションを指定する必要があります。|  
 
 #### <a name="custom-analyzers"></a>カスタム アナライザー
 
-|||  
-|-|-|  
+| Type | 説明 |
+| ---- | ----------- |  
 |名前|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|"#Microsoft.Azure.Search.CustomAnalyzer" を指定する必要があります。|  
 |CharFilters|[文字フィルター](#char-filters-reference)の表に列記されている定義済みの文字フィルターのいずれか、またはインデックスの定義で指定されているカスタム文字フィルターに設定します。|  
@@ -225,8 +225,8 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
  文字フィルターは、トークナイザーによって処理される前に、入力テキストを準備するために使用します。 たとえば、それらを使用して、特定の文字や記号を置き換えることができます。 1 つのカスタム アナライザーで、複数の文字フィルターを割り当てることができます。 文字フィルターは、その指定順に実行されます。  
 
-|||  
-|-|-|  
+| Type | 説明 |
+| ---- | ----------- | 
 |名前|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
 |Options|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
@@ -238,8 +238,8 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
  指定できるトークナイザーは、カスタム アナライザーごとに 1 つだけです。 複数のトークナイザーが必要な場合は、複数のカスタム アナライザーを作成し、インデックス スキーマのフィールドごとに割り当てます。  
 カスタム アナライザーでは、既定のオプションまたはカスタマイズされたオプションの定義済みトークナイザーを使用できます。  
 
-|||  
-|-|-|  
+| Type | 説明 |
+| ---- | ----------- | 
 |名前|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているトークナイザーの一覧のトークナイザー名を使用します。 下記の[トークナイザー](#Tokenizers)の表の **tokenizer_type** 列をご覧ください。|  
 |Options|下記の[トークナイザー](#Tokenizers)の表で示されている特定のトークナイザーの種類の有効なオプションを指定する必要があります。|  
@@ -249,8 +249,8 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
  トークン フィルターは、トークナイザーによって生成されたトークンを除外したり加工したりする目的で使用されます。 たとえば、すべての文字を小文字に変換する lowercase フィルターを指定することができます。   
 トークン フィルターは、カスタム アナライザーの中で複数割り当てることができます。 トークン フィルターは、その指定順に実行されます。  
 
-|||  
-|-|-|  
+| Type | 説明 |
+| ---- | ----------- |  
 |名前|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているトークン フィルターの一覧のトークン フィルター名を使用します。 下記の[トークン フィルター](#TokenFilters)の表の **token_filter_type** 列をご覧ください。|  
 |Options|特定のトークン フィルターの種類の[トークン フィルター](#TokenFilters)を使用する必要があります。|  

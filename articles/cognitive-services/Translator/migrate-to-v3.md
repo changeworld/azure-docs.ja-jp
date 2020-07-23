@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996212"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523980"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 から V3 への移行
 
@@ -116,10 +116,10 @@ Microsoft Translator V3 では、ニューラル機械翻訳が既定で使用�
 
 V3 テキスト API によるニューラル翻訳では、標準カテゴリ (SMT、speech、tech、generalnn) を使用できません。
 
-| |エンドポイント|    GDPR のプロセッサ準拠|    Translator Hub の使用|    カスタム トランスレーター (プレビュー) の使用|
-|:-----|:-----|:-----|:-----|:-----|
-|Translator バージョン 2|    api.microsofttranslator.com|    いいえ    |はい    |いいえ|
-|Translator バージョン 3|    api.cognitive.microsofttranslator.com|    はい|    いいえ|    はい|
+| Version | エンドポイント | GDPR のプロセッサ準拠 | Translator Hub の使用 | カスタム トランスレーター (プレビュー) の使用 |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
+|Translator バージョン 2|    api.microsofttranslator.com|    いいえ    |○    |いいえ|
+|Translator バージョン 3|    api.cognitive.microsofttranslator.com|    はい|    ×|    はい|
 
 **Translator バージョン 3**
 * 一般提供されており完全にサポートされます。

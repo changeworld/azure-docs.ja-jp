@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997000"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523997"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
@@ -47,14 +47,14 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 ## <a name="custom-translator-versus-hub"></a>Custom Translator と Hub
 
-|   | **ハブ** | **Custom Translator**|
-|:-----|:----:|:----:|
+| 特徴量 | ハブ | Custom Translator |
+| ------- | :-: | :---------------: |
 |カスタマイズ機能の状態    | 一般公開    | 一般公開 |
 | Text API バージョン    | V2 のみ    | V3 のみ |
 | SMT のカスタマイズ    | はい    | いいえ |
 | NMT のカスタマイズ    | いいえ    | はい |
-| 新しい統合 Speech Services のカスタマイズ    | いいえ    | はい |
-| [トレースなし](https://www.aka.ms/notrace) | はい    | はい |
+| 新しい統合 Speech Services のカスタマイズ    | いいえ    | ○ |
+| [トレースなし](https://www.aka.ms/notrace) | はい    | [はい] |
 
 ## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
 

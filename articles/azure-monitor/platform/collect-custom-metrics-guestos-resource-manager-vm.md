@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650545"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515786"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 Azure 仮想マシンのゲスト OS から収集したパフォーマンス データは、他の[プラットフォーム メトリック](../insights/monitor-azure-resource.md#monitoring-data)のように自動的には収集されません。 Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)をインストールして、メトリック データベースにゲスト OS メトリックを収集し、凖リアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなど、Azure Monitor メトリックのすべての機能で使用できるようにします。 この記事では、Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS のパフォーマンス メトリックをメトリック データベースに送信するプロセスについて説明します。 
@@ -25,9 +25,9 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 ## <a name="prerequisites"></a>前提条件
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります
+- サブスクリプションを [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) に登録する必要があります
 
-- [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+- [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](../../cloud-shell/overview.md) がインストールされている必要があります。
 
 - お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](metrics-custom-overview.md#supported-regions)に存在する必要があります。 
 
@@ -286,4 +286,3 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 ## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
-

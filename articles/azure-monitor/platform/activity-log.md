@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082303"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516143"
 ---
 # <a name="azure-activity-log"></a>Azure アクティビティ ログ
 アクティビティ ログは、サブスクリプション レベルのイベントの分析情報を提供する Azure の[プラットフォーム ログ](platform-logs-overview.md)です。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりできます。 その他の機能を使用するには、診断設定を作成して、[Azure Monitor ログ](data-platform-logs.md)、Azure Event Hubs (Azure の外部に転送するため)、または Azure Storage (アーカイブのため) にアクティビティログを送信する必要があります。 この記事では、アクティビティ ログの表示と、別の宛先への送信について詳しく説明します。
@@ -43,9 +43,9 @@ Azure portal のほとんどのメニューから、アクティビティ ログ
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>アクティビティ ログ イベントを取得する他の方法
 次の方法を使用して、アクティビティ ログ イベントにアクセスすることもできます。
 
-- PowerShell からアクティビティ ログを取得するには、[Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) コマンドレットを使用します。 「[Azure Monitor PowerShell のサンプル](../samples/powershell-samples.md#retrieve-activity-log)」を参照してください。
-- CLI からアクティビティ ログ エントリを取得するには、[az monitor activity-log](https://docs.microsoft.com/cli/azure/monitor/activity-log) を使用します。  [Azure Monitor CLI のサンプル](../samples/cli-samples.md#view-activity-log)をご覧ください。
-- REST クライアントからアクティビティ ログを取得するには、[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) を使用します。 
+- PowerShell からアクティビティ ログを取得するには、[Get-AzLog](/powershell/module/az.monitor/get-azlog) コマンドレットを使用します。 「[Azure Monitor PowerShell のサンプル](../samples/powershell-samples.md#retrieve-activity-log)」を参照してください。
+- CLI からアクティビティ ログ エントリを取得するには、[az monitor activity-log](/cli/azure/monitor/activity-log) を使用します。  [Azure Monitor CLI のサンプル](../samples/cli-samples.md#view-activity-log)をご覧ください。
+- REST クライアントからアクティビティ ログを取得するには、[Azure Monitor REST API](/rest/api/monitor/) を使用します。 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>Log Analytics ワークスペースに送信する
@@ -58,9 +58,9 @@ Azure portal のほとんどのメニューから、アクティビティ ログ
 - アクティビティ ログのエントリを 90 日を超えて保存します。
 - Log Analytics ワークスペースに格納されているアクティビティ ログ データのデータ インジェストまたはデータ保持の料金は発生しません。
 
-アクティビティ ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](diagnostic-settings.md)。 任意の 1 つのサブスクリプションから最大 5 つのワークスペースに、アクティビティ ログを送信できます。 テナント間でログを収集するには [Azure Lighthouse](/azure/lighthouse) が必要です。
+アクティビティ ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](diagnostic-settings.md)。 任意の 1 つのサブスクリプションから最大 5 つのワークスペースに、アクティビティ ログを送信できます。 テナント間でログを収集するには [Azure Lighthouse](../../lighthouse/index.yml) が必要です。
 
-Log Analytics ワークスペースでは、アクティビティ ログのデータは *AzureActivity* という名前のテーブルに格納されます。このテーブルは、[Log Analytics](../log-query/get-started-portal.md) の[ログ クエリ](../log-query/log-query-overview.md)で取得できます。 このテーブルの構造は[ログ エントリのカテゴリ](activity-log-schema.md)によって異なります。 テーブルのプロパティの説明については、[Azure Monitor データ リファレンス](https://docs.microsoft.com/azure/azure-monitor/reference/tables/azureactivity)のページを参照してください。
+Log Analytics ワークスペースでは、アクティビティ ログのデータは *AzureActivity* という名前のテーブルに格納されます。このテーブルは、[Log Analytics](../log-query/get-started-portal.md) の[ログ クエリ](../log-query/log-query-overview.md)で取得できます。 このテーブルの構造は[ログ エントリのカテゴリ](activity-log-schema.md)によって異なります。 テーブルのプロパティの説明については、[Azure Monitor データ リファレンス](/azure/azure-monitor/reference/tables/azureactivity)のページを参照してください。
 
 たとえば、各カテゴリのアクティビティ ログ レコードの数を表示するには、次のクエリを使用します。
 
@@ -281,7 +281,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> 場合によっては、これらの列の値がすべて大文字になることがあります。 これらの列を含むクエリがある場合は、[=~ 演算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)を使用して、大文字と小文字を区別しない比較を実行する必要があります。
+> 場合によっては、これらの列の値がすべて大文字になることがあります。 これらの列を含むクエリがある場合は、[=~ 演算子](/azure/kusto/query/datatypes-string-operators)を使用して、大文字と小文字を区別しない比較を実行する必要があります。
 
 更新されたスキーマの *AzureActivity* には、次の列が追加されています。
 
