@@ -3,12 +3,12 @@ title: Azure Application Insights でのデータ保持と保存 | Microsoft Doc
 description: データ保持およびプライバシー ポリシー ステートメント
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224487"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540062"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -74,7 +74,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 [製品利用統計情報プロセッサ プラグイン](../../azure-monitor/app/api-filtering-sampling.md)を記述することで可能です。
 
 ## <a name="how-long-is-the-data-kept"></a>データはどれだけの期間保持されますか。
-生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 730 日間保持されます。 30、60、90、120、180、270、365、550 または 730 日間の[リテンション期間を選択](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)できます。 730 日以上データを保持する必要がある場合は、[連続エクスポート](../../azure-monitor/app/export-telemetry.md)を使用して、データ インジェスト中にストレージ アカウントにコピーすることができます。 
+生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 730 日間保持されます。 30、60、90、120、180、270、365、550 または 730 日間の[リテンション期間を選択](./pricing.md#change-the-data-retention-period)できます。 730 日以上データを保持する必要がある場合は、[連続エクスポート](../../azure-monitor/app/export-telemetry.md)を使用して、データ インジェスト中にストレージ アカウントにコピーすることができます。 
 
 90 日より長く保持されるデータには、追加料金が発生します。 Application Insights の価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
@@ -122,7 +122,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 ローカル ストレージを利用するテレメトリ チャネルは、TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。これらは、アプリケーションを実行している特定のアカウントだけに制限されます。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
 
-この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。
+この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 詳細については、「[プライベート データをエクスポートして削除する方法](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
 顧客がこのディレクトリを特定のセキュリティ要件で構成する必要がある場合は、フレームワークごとに構成できます。 アプリケーションを実行しているプロセスにこのディレクトリへの書き込みアクセス権があることを確認してください。ただし、意図しないユーザーによってテレメトリが読み取られることを防ぐために、このディレクトリが保護されていることも確認してください。
 
@@ -204,14 +204,14 @@ Application Insight エンドポイントへのデータの転送時のセキュ
 | --- | --- | --- |
 | Azure App Service  | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)のお知らせを参照してください。  |
 | Azure Function App | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)のお知らせを参照してください。 |
-|.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
-|Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET 構成](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
+|.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
+|Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](/windows-server/security/tls/tls-registry-settings) + [.NET 構成](/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
 |Node.js |  サポートされています。v10.5.0 では構成が必要な場合があります。 | アプリケーションに固有の構成については、[公式の Node.js TLS/SSL ドキュメント](https://nodejs.org/api/tls.html)を使用してください。 |
 |Java | サポートされています。JDK の TLS 1.2 のサポートは、[JDK 6 更新プログラム 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) および [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) で追加されました。 | JDK 8 では、[既定で TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default) が使用されます。  |
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
-| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
-| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
-| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
+| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
+| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
+| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
 | Windows Server 2008 SP2 | TLS 1.2 のサポートには、更新プログラムが必要です。 | Windows Server 2008 SP2 に [TLS 1.2 のサポートを追加する更新プログラム](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)に関するページを参照してください。 |
 |Windows Vista | サポートされていません。 | 該当なし
 
@@ -286,7 +286,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [ApplicationInsights.config を編集して、データの一部をオフにする][config]ことができます
 
 > [!NOTE]
-> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../../azure-monitor/platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)のオプションについての説明をご覧ください。
+> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../../azure-monitor/platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](./ip-collection.md)のオプションについての説明をご覧ください。
 
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [https://www.maxmind.com](https://www.maxmind.com) から入手できます。

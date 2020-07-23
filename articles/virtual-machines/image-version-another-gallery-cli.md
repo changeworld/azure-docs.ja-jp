@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 764fe98ad20aa29506b4fba723762124e24af245
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f1e3598f2a805dfc2ebf92395db6b7bf6b0b147a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224334"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494685"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Azure CLI を使用して別のギャラリーからイメージをコピーする
 
@@ -154,7 +154,7 @@ az sig image-version create \
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
 >
-> また、イメージ バージョンを作成するときに、`--storage-account-type  premium_lrs` を追加してイメージを Premium ストレージに格納することや、`--storage-account-type  standard_zrs` を追加して[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> また、イメージ バージョンを作成するときに、`--storage-account-type  premium_lrs` を追加してイメージを Premium ストレージに格納することも、`--storage-account-type  standard_zrs` を追加して [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)に格納することもできます。
 >
 
 ## <a name="next-steps"></a>次のステップ
@@ -163,4 +163,4 @@ az sig image-version create \
 
 また、イメージ バージョンの作成の自動化に役立つ [Azure Image Builder (プレビュー)](./linux/image-builder-overview.md) をお試しください。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)にも使用できます。 
 
-購入プラン情報を提供する方法については、[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)に関する記事を参照してください。
+購入プラン情報を提供する方法については、「[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)」を参照してください。

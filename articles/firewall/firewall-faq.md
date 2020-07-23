@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232085"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536971"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -22,15 +22,7 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Azure Firewall ではどのような機能がサポートされていますか?
 
-* サービスとしてのステートフル ファイアウォール
-* 無制限のクラウド スケーラビリティを備えたビルトインの高可用性
-* FQDN フィルタリング
-* FQDN のタグ
-* ネットワーク トラフィックのフィルタリング規則
-* 送信 SNAT サポート
-* 受信 DNAT のサポート
-* Azure サブスクリプションと VNET をまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。
-* Azure Monitor との完全統合によるログ記録と分析
+Azure Firewall の機能の詳細については、「[Azure Firewall の機能](features.md)」を参照してください。
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure Firewall の一般的なデプロイ モデルを教えてください
 
@@ -145,7 +137,7 @@ Azure Firewall には、インターネットへの直接接続が必要です�
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>アプリケーション ルールのターゲット FQDN でワイルドカードはどのように機能しますか。
 
-* **.contoso.com** を構成した場合、これにより、*何らかの値*.contoso.com は許可されますが、contoso.com (ドメインの頂点) は許可されません。 ドメインの頂点を許可する場合は、それをターゲット FQDN として明示的に構成する必要があります。
+\* **.contoso.com** を構成した場合、これにより、*何らかの値*.contoso.com は許可されますが、contoso.com (ドメインの頂点) は許可されません。 ドメインの頂点を許可する場合は、それをターゲット FQDN として明示的に構成する必要があります。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>"*プロビジョニング状態: 失敗*" はどのような意味ですか。
 

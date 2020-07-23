@@ -3,12 +3,12 @@ title: Azure Application Insights からの Stream Analytics のエクスポー�
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224521"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539960"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * export-input は、ストリーム入力に付けたエイリアスです。
 * pbi-output は、定義した出力エイリアスです。
-* イベントの名前は JSON 配列にネストされているため、[OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) を使います。 Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。 [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 句では、1 分の期間内に要素をグループ化します。
+* イベントの名前は JSON 配列にネストされているため、[OUTER APPLY GetElements](/stream-analytics-query/apply-azure-stream-analytics) を使います。 Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。 [Group By](/stream-analytics-query/group-by-azure-stream-analytics) 句では、1 分の期間内に要素をグループ化します。
 
 ### <a name="query-to-display-metric-values"></a>メトリックの値を表示するためのクエリ
 
@@ -212,4 +212,3 @@ Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデ�
 * [連続エクスポート](export-telemetry.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2d37e20ada2d1128f04d2df822da996338e0e6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500873"
 ---
 # <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure PowerShell を使用して Azure Marketplace で VM イメージを検索して使用する
 
@@ -44,13 +44,13 @@ ms.locfileid: "86224249"
 
 ## <a name="navigate-the-images"></a>イメージの移動
 
-特定の場所にあるイメージを検索するための 1 つの方法として、シーケンス内で [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher)、[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer)、および [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) コマンドレットを順に実行します。
+特定の場所にあるイメージを検索するための 1 つの方法として、シーケンス内で [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher)、[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer)、および [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) コマンドレットを順に実行します。
 
 1. イメージの発行元を一覧表示する。
 2. 指定された発行元について、そのプランを一覧表示する。
 3. 指定されたプランについて、その SKU を一覧表示する。
 
-その後、選択された SKU について [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) を実行して、デプロイするバージョンを一覧表示します。
+その後、選択された SKU について [Get-AzVMImage](/powershell/module/az.compute/get-azvmimage) を実行して、デプロイするバージョンを一覧表示します。
 
 1. 発行元を一覧表示します。
 
@@ -168,7 +168,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-これで、選択した発行元、プラン、SKU、およびバージョンを URN (: で区切られた値) へと結合することができます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットで VM を作成するときに、この URN を `--image` パラメーターを使用して渡します。 必要に応じて、URN のバージョン番号を "latest" に置き換えて、最新バージョンのイメージを取得できます。
+これで、選択した発行元、プラン、SKU、およびバージョンを URN (: で区切られた値) へと結合することができます。 [New-AzVM](/powershell/module/az.compute/new-azvm) コマンドレットで VM を作成するときに、この URN を `--image` パラメーターを使用して渡します。 必要に応じて、URN のバージョン番号を "latest" に置き換えて、最新バージョンのイメージを取得できます。
 
 Resource Manager テンプレートを使って VM をデプロイする場合は、`imageReference` プロパティでイメージ パラメーターを個別に設定します。 [テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
 
@@ -235,7 +235,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>使用条件への同意
 
-ライセンス条項を表示するには、[Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) コマンドレットを使用し、購入プラン パラメーターを渡します。 出力には、Marketplace イメージの使用条件へのリンクと、以前その使用条件に同意したかどうかが表示されます。 パラメーターの値は全小文字で入力してください。
+ライセンス条項を表示するには、[Get-AzMarketplaceterms](/powershell/module/az.marketplaceordering/get-azmarketplaceterms) コマンドレットを使用し、購入プラン パラメーターを渡します。 出力には、Marketplace イメージの使用条件へのリンクと、以前その使用条件に同意したかどうかが表示されます。 パラメーターの値は全小文字で入力してください。
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -254,7 +254,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-[Set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) コマンドレットを使用して、使用条件に同意するか、または拒否します。 使用条件に同意する必要があるのは、イメージのサブスクリプションごとに 1 回だけです。 パラメーターの値は全小文字で入力してください。 
+[Set-AzMarketplaceterms](/powershell/module/az.marketplaceordering/set-azmarketplaceterms) コマンドレットを使用して、使用条件に同意するか、または拒否します。 使用条件に同意する必要があるのは、イメージのサブスクリプションごとに 1 回だけです。 パラメーターの値は全小文字で入力してください。 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -278,7 +278,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>購入プラン パラメーターを使用したデプロイ
 
-イメージの使用条件に同意したら、そのサブスクリプション内で VM をデプロイできます。 次のスニペットに示すように、[Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) コマンドレットを使用して、VM オブジェクトの Marketplace プラン情報を設定します。 VM のネットワーク設定を作成し、デプロイを完了するための完全なスクリプトについては、[PowerShell スクリプトの例](powershell-samples.md)をご覧ください。
+イメージの使用条件に同意したら、そのサブスクリプション内で VM をデプロイできます。 次のスニペットに示すように、[Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) コマンドレットを使用して、VM オブジェクトの Marketplace プラン情報を設定します。 VM のネットワーク設定を作成し、デプロイを完了するための完全なスクリプトについては、[PowerShell スクリプトの例](powershell-samples.md)をご覧ください。
 
 ```powershell
 ...
@@ -317,5 +317,3 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 基本イメージ情報を使用し、`New-AzVM` コマンドレットを使って仮想マシンをすばやく作成するには、「[PowerShell で Windows 仮想マシンを作成する](quick-create-powershell.md)」をご覧ください。
 
 Azure Marketplace イメージを使用して Shared Image Gallery にカスタム イメージを作成する方法の詳細については、[イメージ作成時に Azure Marketplace 購入プラン情報を提供する](../marketplace-images.md)方法に関する記事を参照してください。
-
-

@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 14b2e3df6d7ea3f72c1968cfed222a1b9b0d636d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202645"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525859"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Windows ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどの OS およびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
 
-この記事は、2019 年 2 月 21 日に [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps) バージョン 1.3.0 と [Packer](https://www.packer.io/docs/install) バージョン 1.3.4 を使用して最後にテストされました。
+この記事は、2019 年 2 月 21 日に [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 1.3.0 と [Packer](https://www.packer.io/docs/install) バージョン 1.3.4 を使用して最後にテストされました。
 
 > [!NOTE]
 > Azure では、お客様独自のカスタム イメージを定義して作成できるサービス (Azure Image Builder (プレビュー)) が提供されるようになっています。 Azure Image Builder は Packer が基になっているため、既存の Packer シェル プロビジョナー スクリプトを使うこともできます。 Azure Image Builder の概要については、「[Azure Image Builder で Windows VM を作成する](image-builder.md)」をご覧ください。
@@ -26,7 +26,7 @@ Azure の各仮想マシン (VM) は、Windows ディストリビューション
 ## <a name="create-azure-resource-group"></a>Azure リソース グループを作成する
 ビルド プロセス中、Packer はソース VM をビルドする際に一時的な Azure リソースを作成します。 イメージとして使用するためにそのソース VM をキャプチャするには、リソース グループを定義する必要があります。 Packer のビルド プロセスからの出力は、このリソース グループに格納されます。
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure 資格情報の作成
 Packer はサービス プリンシパルを使用して Azure で認証されます。 Azure のサービス プリンシパルは、アプリケーション、サービス、および Packer などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。
 
-[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) を使用してサービス プリンシパルを作成し、そのサービス プリンシパルにアクセス許可を割り当て、[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) を使用してリソースを作成および管理します。 `-DisplayName` の値は一意である必要があります。必要に応じて独自の値に置き換えてください。  
+[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) を使用してサービス プリンシパルを作成し、そのサービス プリンシパルにアクセス許可を割り当て、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用してリソースを作成および管理します。 `-DisplayName` の値は一意である必要があります。必要に応じて独自の値に置き換えてください。  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -54,7 +54,7 @@ $sp.ApplicationId
 ```
 
 
-Azure に対して認証するには、[Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) を使用して Azure のテナントとサブスクリプション ID も取得する必要があります。
+Azure に対して認証するには、[Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) を使用して Azure のテナントとサブスクリプション ID も取得する必要があります。
 
 ```powershell
 Get-AzSubscription
@@ -213,7 +213,7 @@ Packer が VM をビルド、プロビジョナーを実行、およびデプロ
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>Packer イメージから VM を作成する
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して、イメージから VM を作成できるようになりました。 これらが存在しない場合は、サポート ネットワーク リソースが作成されます。 入力を求められたら、VM で作成された管理用のユーザー名とパスワードを入力します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、イメージから VM を作成できるようになりました。 これらが存在しない場合は、サポート ネットワーク リソースが作成されます。 入力を求められたら、VM で作成された管理用のユーザー名とパスワードを入力します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成します。
 
 ```powershell
 New-AzVm `
@@ -228,13 +228,13 @@ New-AzVm `
     -Image "myPackerImage"
 ```
 
-自分の Packer イメージとは異なるリソース グループまたはリージョンで VM を作成する場合は、イメージ名ではなく、イメージ ID を指定します。 [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage) を使用してイメージ ID を取得できます。
+自分の Packer イメージとは異なるリソース グループまたはリージョンで VM を作成する場合は、イメージ名ではなく、イメージ ID を指定します。 [Get-AzImage](/powershell/module/az.compute/get-azimage) を使用してイメージ ID を取得できます。
 
 Packer イメージから VM を作成するには数分かかります。
 
 
 ## <a name="test-vm-and-webserver"></a>VM と Web サーバーのテスト
-VM のパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIP* の IP アドレスを取得しています。
+VM のパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIP* の IP アドレスを取得しています。
 
 ```powershell
 Get-AzPublicIPAddress `
