@@ -224,7 +224,7 @@
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell コマンドレット
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: Microsoft Graph REST API ベータ版
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: サービスの制限と制約

@@ -38,48 +38,44 @@
       href: application-management-fundamentals.md
     - name: 一般的なアプリ管理シナリオ
       href: common-scenarios.md
-    - name: クラウド アプリとシングル サインオン
+    - name: クラウド アプリの統合の計画
       items:
-        - name: クラウド アプリの統合の計画
-          items:
-            - name: アプリ統合の概要
-              href: plan-an-application-integration.md
-            - name: アクセス パネルのデプロイの計画
-              href: access-panel-deployment-plan.md
-            - name: 開発者向けのガイダンス
-              href: developer-guidance-for-integrating-applications.md
-        - name: シングル サインオン
-          items:
-            - name: マルチテナント アプリケーションの SSO を有効にする
-              href: isv-sso-content.md
-            - name: マルチテナント アプリケーション用に Azure テナントを作成する
-              href: isv-tenant-multi-tenant-app.md
-            - name: マルチテナント フェデレーションを選択する
-              href: isv-choose-multi-tenant-federation.md
-            - name: マルチテナント アプリケーション用のドキュメントを作成する
-              href: isv-create-sso-documentation.md
-            - name: シングル サインオンのデプロイを計画する
-              href: plan-sso-deployment.md
-        - name: One Click SSO
-          items:
-            - name: One Click SSO とは
-              href: one-click-sso-tutorial.md
-        - name: アプリケーションのセキュリティ
-          items:
-            - name: アプリのアクセス オプション
-              href: what-is-access-management.md
-            - name: 証明書署名オプション
-              href: certificate-signing-options.md
-            - name: 証明書の管理
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: テナント制限
-              href: tenant-restrictions.md
-            - name: SAML トークン暗号化の構成
-              href: howto-saml-token-encryption.md
-            - name: エンドユーザーのポータル
-              href: end-user-experiences.md
-    - name: クラウド アプリの可視性と制御
-      href: cloud-app-security.md
+        - name: アプリ統合の概要
+          href: plan-an-application-integration.md
+        - name: アクセス パネルのデプロイの計画
+          href: access-panel-deployment-plan.md
+        - name: 開発者向けのガイダンス
+          href: developer-guidance-for-integrating-applications.md
+    - name: シングル サインオン
+      items:
+        - name: マルチテナント アプリケーションの SSO を有効にする
+          href: isv-sso-content.md
+        - name: マルチテナント アプリケーション用に Azure テナントを作成する
+          href: isv-tenant-multi-tenant-app.md
+        - name: マルチテナント フェデレーションを選択する
+          href: isv-choose-multi-tenant-federation.md
+        - name: マルチテナント アプリケーション用のドキュメントを作成する
+          href: isv-create-sso-documentation.md
+        - name: シングル サインオンのデプロイを計画する
+          href: plan-sso-deployment.md
+        - name: ワンクリック SSO
+          href: one-click-sso-tutorial.md
+    - name: アプリケーションのセキュリティ
+      items:
+        - name: アプリのアクセス オプション
+          href: what-is-access-management.md
+        - name: 証明書署名オプション
+          href: certificate-signing-options.md
+        - name: 証明書の管理
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: テナント制限
+          href: tenant-restrictions.md
+        - name: SAML トークン暗号化の構成
+          href: howto-saml-token-encryption.md
+        - name: エンドユーザーのポータル
+          href: end-user-experiences.md
+        - name: クラウド アプリの可視性と制御
+          href: cloud-app-security.md
     - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: アプリケーション プロキシ

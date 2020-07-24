@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure コンテナー サービスのドキュメント | Microsoft Docs
   description: Azure コンテナー サービスを使用して、クラウドベースのコンテナー アプリケーションを管理および開発する方法について説明します。
   ms.topic: hub-page
-  ms.openlocfilehash: c83db23fda2fe5895a8d4400a26be463ec8d2d6a
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.openlocfilehash: 7618bedf711554fbd4428ceb6c88817477b82e6d
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86260697"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87031883"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -41,7 +41,7 @@ conceptualContent:
       text: 詳細情報
   - title: AKS アプリケーションのテストと開発
     links:
-    - url: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
+    - url: /visualstudio/containers/overview-local-process-kubernetes
       itemType: concept
       text: Local Process with Kubernetes のしくみ
     - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
