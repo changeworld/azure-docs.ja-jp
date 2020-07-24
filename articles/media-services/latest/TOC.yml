@@ -52,7 +52,7 @@
   items:
     - name: Media Services v3 のサンプル
       displayName: '.NET, Java'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
+      href: /samples/browse/?products=azure-media-services
     - name: Media Services v3 の REST サンプル
       href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
 - name: 概念
@@ -197,9 +197,6 @@
         - name: ビデオ オン デマンド
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
-        - name: ストリーミング
-          displayName: 'failover, bcdr, HA, high availability'
-          href: media-services-high-availability-streaming.md
     - name: トラブルシューティング
       items:
         - name: よく寄せられる質問
@@ -376,7 +373,7 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
+          href: /javascript/api/overview/azure/mediaservices/management
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager テンプレート
