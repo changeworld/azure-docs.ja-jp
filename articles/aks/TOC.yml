@@ -66,6 +66,9 @@
       items:
         - name: 概要
           href: best-practices.md
+        - name: AKS クラスターのベースライン アーキテクチャ
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          maintainContext: true
         - name: クラスター オペレーター向け
           items:
             - name: マルチ テナントとクラスター分離
