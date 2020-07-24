@@ -21,6 +21,12 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+- name: 概念
+  items:
+    - name: セキュリティ
+      items:
+        - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
+          href: security-baseline.md
 - name: 方法
   items:
     - name: Data Lake Analytics の管理
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: ジョブの参照と表示
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: 'カスタム C# コードのデバッグ'
+            - name: カスタム C# コードのデバッグ
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: 定期的なジョブのトラブルシューティング
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md
