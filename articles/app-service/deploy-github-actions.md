@@ -54,7 +54,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 1. ポータルで **[発行プロファイルの取得]** オプションを使用して、App Service アプリの発行プロファイルをダウンロードします。
 
-2. [GitHub](https://github.com/) でご自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]** \(新しいシークレットの追加\) を選択します。
+2. [GitHub](https://github.com/) でご自分のリポジトリを参照し、 **Settings > Secrets > Add a new secret** \(新しいシークレットの追加\) を選択します。
 
     ![secrets](media/app-service-github-actions/secrets.png)
 
