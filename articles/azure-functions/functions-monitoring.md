@@ -138,12 +138,12 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 |LogLevel    |コード|
 |------------|---|
 |Trace       | 0 |
-|デバッグ       | 1 |
+|Debug       | 1 |
 |Information | 2 |
-|警告     | 3 |
-|エラー       | 4 |
+|Warning     | 3 |
+|Error       | 4 |
 |Critical    | 5 |
-|なし        | 6 |
+|None        | 6 |
 
 ログ レベル `None` については、次のセクションで説明します。 
 
