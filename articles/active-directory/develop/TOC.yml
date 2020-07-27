@@ -618,6 +618,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: 認証時のエラーを診断する
           href: vs-active-directory-error.md
+    - name: アプリを市場に導入する
+      items:
+        - name: App Source に公開する
+          href: v2-howto-get-appsource-certified.md
+        - name: Azure AD アプリ ギャラリーに公開する
+          href: v2-howto-app-gallery-listing.md
+        - name: Office 365 販売者ダッシュボードに公開する
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: リファレンス
   items:
     - name: アプリケーション マニフェスト
