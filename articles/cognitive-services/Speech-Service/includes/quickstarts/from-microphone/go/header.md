@@ -4,11 +4,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: travisw
-ms.openlocfilehash: b1faeb56e10ecdaad34cf2e1890bf8ed9fd38501
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 2be6a022e0d097cd45d325412726ea427d819fae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806261"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544462"
 ---
-すぐに使用できるようにするには、GitHub ですべての [Speech SDK Go サンプル](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)を表示またはダウンロードします。 それ以外の場合は、始めましょう。
+GitHub で、すべての [Speech SDK Go サンプル](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)を表示またはダウンロードできます。 

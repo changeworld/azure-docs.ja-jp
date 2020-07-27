@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:マイクから音声を認識する、Objective-C - Speech サービス
+title: クイック スタート:音声を認識する、Objective-C - Speech サービス (macOS)
 titleSuffix: Azure Cognitive Services
-description: macOS で Objective-C と Speech SDK を使用して音声を認識する方法について説明します
+description: Cognitive Services Speech SDK を使用して macOS コンピューター向けの音声認識アプリを Objective-C で作成する方法について説明します。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: b73925165552fe428be7df465b33701eeed157cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391521"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524235"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
 

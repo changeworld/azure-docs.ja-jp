@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186692"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517622"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway の新着情報
 
@@ -25,9 +25,11 @@ Azure Application Gateway は、継続的に更新されます。 常に最新�
 
 ## <a name="new-features"></a>新機能
 
-|特徴量  |説明  |追加日  |
+|機能  |説明  |追加日  |
 |---------|---------|---------|
-| 正常性プローブ用のカスタム ポート | Application Gateway v2 SKU の正常性プローブの構成で、カスタム ポートを指定できるようになりました。 詳細については、[正常性プローブの概要](application-gateway-probe-overview.md)に関するページを参照してください。 | 2020 年 7 月
+| リスナーにおけるワイルドカードのホスト名 (プレビュー) | マルチサイト リスナーでワイルドカードのホスト名を定義し、リスナー 1 つにつき最大 5 つのホスト名を定義できるようになりました。 詳細については、「[リスナーにおけるワイルドカードのホスト名 (プレビュー)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)」を参照してください。ステップ バイ ステップ ガイドについては、[Azure portal を使用して Application Gateway で複数のサイトをホストする](create-multiple-sites-portal.md)方法に関するページを参照してください。 | 2020 年 7 月 |
+| URL 書き換え (プレビュー) | URL 書き換えを使用して、URL パスとクエリ文字列パラメーターの書き換えができるようになりました。 詳細については、[HTTP ヘッダーと URL の書き換え](rewrite-http-headers-url.md)に関するページを参照してください。ステップ バイ ステップ ガイドについては、[Azure portal を使用して Application Gateway で URL を書き換える](rewrite-url-portal.md)方法に関するページを参照してください。 | 2020 年 7 月 |
+| 正常性プローブ用のカスタム ポート | Application Gateway v2 SKU の正常性プローブの構成で、カスタム ポートを指定できるようになりました。 詳細については、[正常性プローブの概要](application-gateway-probe-overview.md)に関するページを参照してください。 | 2020 年 7 月 |
 | Application Gateway イングレス コントローラー (AGIC) AKS アドオン (プレビュー) |Azure CLI から 1 行で、Application Gateway イングレス コントローラーをネイティブ AKS アドオンとしてデプロイできるようになりました。 AKS アドオンとなったことで、AGIC をご利用の AKS クラスターで実行したまま、フル マネージドのサービスとしてご利用いただけます。 詳細については、[AGIC アドオンの相違点](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)に関するセクションを参照してください。 |2020 年 6 月 |
 | v2 のユーザー定義ルート (UDR) (プレビュー) |Application Gateway v2 SKU では、ユーザー定義ルートが一部のシナリオで新たにサポートされます。 詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。 |2020 年 3 月 |
 |アフィニティ Cookie の変更 |Cookie ベースのアフィニティが有効になっている場合、Application Gateway は、既存の ApplicationGatewayAffinity Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie を挿入します。 *ApplicationGatewayAffinityCORS* には、クロスオリジン要求に対してもスティッキー セッションが維持されるように、2 つの属性が追加されています (*SameSite = None; Secure*)。 詳細については、[Application Gateway の Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)に関するトピックを参照してください。 |2020 年 2 月 |

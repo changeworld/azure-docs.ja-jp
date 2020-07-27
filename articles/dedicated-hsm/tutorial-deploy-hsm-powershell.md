@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512505"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -62,13 +62,7 @@ HSM のプロビジョニングと、ExpressRoute ゲートウェイを介した
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-次のコマンドでは、Dedicated HSM サービスに必須のネットワーク機能を確認します。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-先に進む前に、両方のコマンドで "Registered" の状態が返される必要があります (以下を参照)。  このサービスへの登録が必要な場合は、お客様の Microsoft アカウント担当者にお問い合わせください。
+このコマンドで "Registered" の状態が返されてから先に進む必要があります (以下を参照)。  このサービスへの登録が済んでいない方は、Microsoft アカウント担当者にお問い合わせください。
 
 ![サブスクリプションの状態](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
@@ -190,7 +184,7 @@ New-AzResourceGroupDeployment -ResourceGroupName myRG `
 
 ![プロビジョニング状態](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-"provisioningState": "Succeeded" と表示されて正常に完了したら、既存の仮想マシンにサインインし、SSH を使用して HSM デバイスの可用性を確保できます。
+"provisioningState": "Succeeded" と表示されて正常に完了したら、お客様の既存の仮想マシンにサインインし、SSH を使用して HSM デバイスの可用性を確認できます。
 
 ## <a name="verifying-the-deployment"></a>デプロイの確認
 

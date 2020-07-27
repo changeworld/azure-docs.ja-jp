@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562536"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529626"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -27,11 +27,11 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 ## <a name="before-you-start"></a>開始する前に
 
-次のサービス プロパティはサービスの有効期間中、据え置きとなり、変更するには新しいサービスが必要です。 サービスを作成するとき、その使用方法について考えます。
+次のサービス プロパティは、サービスの有効期間にわたって固定されます。これらのいずれかを変更するには、新しいサービスが必要です。 これらは固定されているため、各プロパティを入力するときに使用の影響を考慮してください。
 
-* 名前 (サービス名については[こちらの推奨事項](#name-the-service)を確認してください)
-* サービス レベル (Free、Basic、Standard [によって料金が変わり](search-sku-tier.md)、容量の上限が設定されます)
-* リージョン (サービスが関連付けられている場所を選択します。 Cognitive Services または Azure Machine Learning との統合の場合、同じリージョンにサービスを併置することが必須となります)
+* サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
+* サービス レベル[によって料金が変わり](search-sku-tier.md)、容量の上限が設定されます。
+* サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 ナレッジ マイニングと AI エンリッチメントに関心がある場合は、Azure Cognitive Search と同じリージョンに、Cognitive Services と、場合によっては Azure Machine Learning が必要になります。
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 

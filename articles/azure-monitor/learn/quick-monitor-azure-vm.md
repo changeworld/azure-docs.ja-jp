@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor を使用して Azure リソースを監視する
-description: Azure Monitor で Azure リソースのデータを収集して分析する方法について説明します。
+title: Azure Monitor を使用して Azure 仮想マシンを監視する
+description: Azure Monitor で Azure 仮想マシンのデータを収集して分析する方法について説明します。
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805116"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516398"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用して Azure 仮想マシンを監視する
 [Azure Monitor](../overview.md) では、作成された時点から、Azure 仮想マシンからのデータ収集が開始されます。 このクイック スタートでは、Azure VM に対して自動的に収集されるデータと、そのデータを Azure portal で表示する方法について簡単に説明します。 次に、VM に対して [Azure Monitor for VMs](../insights/vminsights-overview.md) を有効にします。これにより、VM 上のエージェントでは、プロセスとその依存関係を含むゲスト オペレーティング システムからデータを収集して分析できるようになります。
@@ -107,4 +107,4 @@ Azure リソースから収集される監視データの詳細な説明につ�
 このクイック スタートでは、仮想マシンに対して Azure Monitor for VMs を有効にし、ゲスト オペレーティング システムのイベントを収集するように Log Analytics ワークスペースを構成しました。 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics でのデータの表示と分析](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Log Analytics でのデータの表示と分析](../log-query/get-started-portal.md)

@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b1039bb94626dec35eff040e023a84283d9d3a4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027878"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537422"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure Digital Twins API を使用したコーディング
 
@@ -47,7 +47,7 @@ dotnet new console
 次に、Azure Digital Twins を使用するために必要な 2 つの依存関係を追加します。
 
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
@@ -174,7 +174,7 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 > このチュートリアルのために Visual Studio を使用している場合は、新しく作成した JSON ファイルを選択し、プロパティ インスペクターで *[出力ディレクトリにコピー]* プロパティを *[新しい場合はコピーする]* または *[常にコピーする]* に設定することができます。 これにより、チュートリアルの残りの部分で **F5** キーを使用してプログラムを実行するときに、Visual Studio の既定のパスで JSON ファイルが検出されるようになります。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 DTDL パーサー ライブラリをベースに構築されています。詳細については、[方法:モデルの解析および検証](how-to-use-parser.md)に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-use-parser.md)" に関するページを参照してください。
 
 次に、先ほど作成したモデルを Azure Digital Twins インスタンスにアップロードするためのコードを *Program.cs* に追加します。
 
@@ -185,7 +185,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 ```
 
 次に、C# サービス SDK の非同期メソッドを使用する準備として、非同期実行を許可するように `Main` メソッドのシグネチャを変更します。 
@@ -531,7 +530,7 @@ namespace minimal
 ```
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
  
-このチュートリアルで使用したインスタンスは、[サンプル クライアント アプリを使用して基本事項を確認するチュートリアル](tutorial-command-line-app.md)で再利用できます。 次のチュートリアルに進む場合は、ここで設定した Azure Digital Twins インスタンスを残しておくことができます。
+このチュートリアルで使用したインスタンスは、次に取り組む "[*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 次のチュートリアルに進む場合は、ここで設定した Azure Digital Twins インスタンスを残しておくことができます。
  
 このチュートリアルで作成したリソースがもう必要ない場合は、次の手順に従って削除します。
 
@@ -561,8 +560,8 @@ az ad app delete --id <your-application-ID>
 次のチュートリアルに進み、このようなサンプル クライアント アプリを使用して実行できることを確認してください。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル:サンプル クライアント アプリを使用して基本事項を確認する](tutorial-command-line-app.md)
+> [*チュートリアル:サンプル クライアント アプリを使用した基本事項の確認*](tutorial-command-line-app.md)"
 
 また、このチュートリアルで記述したコードへの追加もできます。そのためには、操作方法に関する記事で管理操作についてさらに学習するか、概念に関するドキュメントの参照を開始して、チュートリアルでの作業に使用した要素の詳細を確認してください。
-* [カスタム モデルを管理する](how-to-manage-model.md)
-* [概念:カスタム モデル](concepts-models.md)
+* "[*方法: カスタム モデルを管理する*](how-to-manage-model.md)"
+* "[*概念: カスタム モデル*](concepts-models.md)"

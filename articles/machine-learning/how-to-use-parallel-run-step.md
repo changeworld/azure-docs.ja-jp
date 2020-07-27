@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023365"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520631"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,6 +33,7 @@ ParallelRunStep では、テラバイト規模の構造化または非構造化�
 > * ご自身の推論スクリプトを記述する。
 > * ParallelRunStep を含む[機械学習パイプライン](concept-ml-pipelines.md)を作成し、MNIST テスト イメージに対してバッチ推論を実行する。 
 > * 新しいデータ入力とパラメーターを使用して、バッチ推論の実行を再送信する。 
+> * 結果を表示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -159,9 +160,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>モデルを準備する
@@ -266,17 +265,17 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ### <a name="prepare-the-environment"></a>環境の準備
 
-最初に、お使いのスクリプトに対する依存関係を指定します。 これにより、pip パッケージをインストールするだけでなく、環境を構成することもできます。 必ず **azureml-core** と **azureml-dataprep[pandas, fuse]** パッケージを含めるようにしてください。
+最初に、お使いのスクリプトに対する依存関係を指定します。 これにより、pip パッケージをインストールするだけでなく、環境を構成することもできます。
 
-カスタム Docker イメージ (user_managed_dependencies=True) を使用する場合は、Conda がインストールされている必要もあります。
+pip パッケージの一覧には、必ず **azureml-core** と **azureml-dataset-runtime[pandas, fuse]** を含めてください。 カスタム Docker イメージ (user_managed_dependencies=True) を使用する場合は、Conda がインストールされている必要もあります。
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -286,7 +285,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>ParallelRunConfig を使用してパラメーターを指定する
 
-`ParallelRunConfig` は、Azure Machine Learning パイプライン内にある `ParallelRunStep` インスタンスの主要な構成です。 これは、お使いのスクリプトをラップし、必要なパラメーターを構成するときに使用します。たとえば、次のようなパラメーターです。
+`ParallelRunConfig` は、Azure Machine Learning パイプライン内にある `ParallelRunStep` インスタンスの主要な構成です。 これは、お使いのスクリプトをラップし、必要なパラメーターを構成するときに使用します。たとえば、次のようなエントリです。
 - `entry_script`:複数のノードで並列で実行されるローカル ファイル パスとしてのユーザー スクリプト。 `source_directory` が存在する場合は、相対パスを使用します。 それ以外の場合は、マシンでアクセス可能な任意のパスを使用します。
 - `mini_batch_size`:1 つの `run()` 呼び出しに渡されたミニバッチのサイズ (省略可能。既定値は、FileDataset の場合は `10` ファイル、TabularDataset の場合は `1MB` です)。
     - `FileDataset` の場合、これはファイル数を示し、最小値は `1` です。 複数のファイルを 1 つのミニバッチに結合できます。
@@ -305,7 +304,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`:`run()` メソッド呼び出しのタイムアウト (秒単位)。 (省略可能、既定値は `60` です)
 - `run_max_try`:ミニバッチに対する `run()` の最大試行回数。 例外がスローされた場合、`run()` は失敗します。`run_invocation_timeout` に到達した場合は何も返されません (省略可能。既定値は `3` です)。 
 
-`mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout`、`run_max_try` を `PipelineParameter` として指定すると、パイプラインの実行を再送信するときに、パラメーターの値を調整できます。 この例では、`mini_batch_size` と `Process_count_per_node` に PipelineParameter を使用し、後で実行を再送信するときに、これらの値を変更します。 
+`mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout`、`run_max_try` を `PipelineParameter` として指定すると、パイプラインの実行を再送信するときに、パラメーターの値を微調整できます。 この例では、`mini_batch_size` と `Process_count_per_node` に PipelineParameter を使用し、後で実行を再送信するときに、これらの値を変更します。 
 
 この例では、前に説明した `digit_identification.py` スクリプトを使用していることを前提としています。 独自のスクリプトを使用する場合は、`source_directory` および `entry_script` パラメーターを適宜変更します。
 
@@ -379,7 +378,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>新しいデータ入力とパラメーターを使用して実行を再送信する
 
-入力と複数の構成を `PipelineParameter` として作成したので、まったく新しいパイプラインを作成しなくても、別のデータセット入力を使用してバッチ推論の実行を再送信し、パラメーターを調整することができます。 同じデータストアを使用しますが、データ入力として使用するのは 1 つのイメージのみです。
+入力と複数の構成を `PipelineParameter` として作成したので、まったく新しいパイプラインを作成しなくても、別のデータセット入力を使用してバッチ推論の実行を再送信し、パラメーターを微調整することができます。 同じデータストアを使用しますが、データ入力として使用するのは 1 つのイメージのみです。
 
 ```python
 path_on_datastore = mnist_blob.path('mnist/0.png')
@@ -392,6 +391,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>結果の確認
+
+上記の実行の結果は、PipelineData オブジェクトに指定したデータストアに出力データとして書き込まれます。この場合、これは "*推論*" と呼ばれます。 結果は既定の BLOB コンテナーに格納されるので、ストレージ アカウントに移動して Storage Explorer を使用して表示できます。ファイル パスは、azureml-blobstore-*GUID*/azureml/*RunId*/*output_dir* です。
+
+また、このデータをダウンロードして結果を確認することもできます。 サンプル コード (最初の 10 行のみ) を次に示します。
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>次のステップ

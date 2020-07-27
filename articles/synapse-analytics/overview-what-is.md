@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808048"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496052"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics (ワークスペース プレビュー) とは
 
@@ -40,7 +40,7 @@ Azure Synapse は、あらゆるサイズのデータについて、エンター
 
 * Synapse SQL には、**サーバーレス**と**プロビジョニング済み**の両方のリソース モデルが用意されており、ユーザーのニーズに合った使用量および課金のオプションが提供されます。 予測可能なパフォーマンスとコストに対しては、プールをプロビジョニングして、SQL テーブルに格納されているデータの処理能力を確保します。 計画外または突発性のワークロードに対しては、サーバーレスの常に使用可能な SQL エンドポイントを使用します。
 * 組み込みの**ストリーミング**機能を使用して、クラウド データ ソースから SQL テーブルにデータを取り込みます
-* **機械学習**モデルを使用し、T-SQL PREDICT 関数を使用してデータをスコア付けすることにより、AI を SQL と統合します
+* **機械学習**モデルを使用し、[T-SQL PREDICT 関数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)を使用してデータをスコア付けすることにより、AI を SQL と統合します
 
 ### <a name="industry-standard-apache-spark"></a>業界標準の Apache Spark
 

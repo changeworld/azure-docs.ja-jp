@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78253122"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518541"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>チュートリアル:Azure Active Directory のパスワードを保護するためのカスタムの禁止パスワードを構成する
 
@@ -36,12 +36,12 @@ ms.locfileid: "78253122"
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
 * パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してパスワード変更イベントをテストします。
-    * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
+    * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)」を参照してください。
     * 禁止パスワードを使用してパスワードの変更操作をテストするには、Azure AD テナントを[セルフサービス パスワード リセット用に構成](tutorial-enable-sspr.md)しておく必要があります。
 
 ## <a name="what-are-banned-password-lists"></a>禁止パスワードの一覧とは
 
-Azure AD には、グローバル禁止パスワードの一覧が用意されています。 グローバル禁止パスワードの一覧の内容は、どの外部データ ソースにも基づいていません。 代わりに、グローバル禁止パスワードの一覧は、Azure AD のセキュリティ テレメトリと分析の継続的な結果に基づいています。 ユーザーまたは管理者が自分の資格情報を変更またはリセットしようとすると、希望するパスワードが禁止パスワードの一覧に照らしてチェックされます。 グローバル禁止パスワードの一覧に一致するものがある場合、パスワードの変更要求はエラーとなります。
+Azure AD には、グローバル禁止パスワードの一覧が用意されています。 グローバル禁止パスワードの一覧の内容は、どの外部データ ソースにも基づいていません。 代わりに、グローバル禁止パスワードの一覧は、Azure AD のセキュリティ テレメトリと分析の継続的な結果に基づいています。 ユーザーまたは管理者が自分の資格情報を変更またはリセットしようとすると、希望するパスワードが禁止パスワードの一覧に照らしてチェックされます。 グローバル禁止パスワードの一覧に一致するものがある場合、パスワードの変更要求はエラーとなります。 この既定のグローバル禁止パスワード リストを編集することはできません。
 
 許可されるパスワードの柔軟性を高めるために、カスタムの禁止パスワードの一覧を定義することもできます。 カスタムの禁止パスワードの一覧とグローバル禁止パスワードの一覧を組み合わせて使用することで、自分の組織内に強力なパスワードを適用できます。 カスタムの禁止パスワードの一覧には、次の例のような組織固有の用語を追加できます。
 
@@ -91,7 +91,7 @@ Azure AD には、グローバル禁止パスワードの一覧が用意され�
 カスタムの禁止パスワードの一覧が機能していることを確認するには、パスワードを、前のセクションで追加したパスワードとわずかに異なるものに変更してみます。 Azure AD でパスワードの変更が処理される際に、そのパスワードがカスタムの禁止パスワードの一覧にあるエントリと照合されます。 すると、エラーがユーザーに表示されます。
 
 > [!NOTE]
-> ユーザーが Web ベースのポータルで自分のパスワードをリセットできるように、あらかじめ Azure AD テナントを[セルフサービス パスワード リセット用に構成](tutorial-enable-sspr.md)しておく必要があります。
+> ユーザーが Web ベースのポータルで自分のパスワードをリセットできるように、あらかじめ Azure AD テナントを[セルフサービス パスワード リセット用に構成](tutorial-enable-sspr.md)しておく必要があります。 ユーザーは、必要に応じて [https://aka.ms/ssprsetup で SSPR に登録する](https://aka.ms/ssprsetup)ことができます。
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) の **[マイ アプリ]** ページに移動します。
 1. 右上隅にあるご自身の名前を選択し、ドロップダウン メニューから **[プロファイル]** を選択します。

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad3e005f65b1660bd843bf2819f41eddbed44e9c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b6829f52cb8aaac6f243d3a4a1fa7f6bc1b150d7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035755"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545049"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "86035755"
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>JavaScript 用 Speech SDK をフォルダーに解凍する
 
-Speech SDK を [.zip パッケージ](https://aka.ms/csspeech/jsbrowserpackage)としてダウンロードし、新しく作成したフォルダーに解凍します。 これにより、`microsoft.cognitiveservices.speech.sdk.bundle.js` と `microsoft.cognitiveservices.speech.sdk.bundle.js.map` の 2 つのファイルが解凍されます。
+Speech SDK を [.zip パッケージ](https://aka.ms/csspeech/jsbrowserpackage)としてダウンロードし、新しく作成したフォルダーに解凍します。 その結果、`microsoft.cognitiveservices.speech.sdk.bundle.js` と `microsoft.cognitiveservices.speech.sdk.bundle.js.map` を含む 5 つのファイルが解凍されます。
 後者のファイルはオプションであり、SDK コードのデバッグに有用です。
 
 ## <a name="create-an-indexhtml-page"></a>index.html ページを作成する

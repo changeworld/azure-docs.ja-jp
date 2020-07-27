@@ -1,6 +1,6 @@
 ---
 title: Azure Private Link でプライベート リンク サービスを作成する
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用してプライベート リンク サービスを作成します。
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してプライベート リンク サービスを作成します。
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: c9ed628501e8fa02b816a1564b91620404dfc379
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 2a3c7245a4e6c69e87791ca3364ad588b82572c6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529609"
 ---
-# <a name="quickstart-create-a-private-link-service-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してプライベート リンク サービスを作成する
+# <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート リンク サービスを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用してプライベート リンク サービスを作成します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してプライベート リンク サービスを作成します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 このクイックスタートは、[Azure portal](create-private-link-service-portal.md)、[Azure PowerShell](create-private-link-service-powershell.md)、または [Azure CLI](create-private-link-service-cli.md) を使用して完了することもできます。
 
-## <a name="prerequisite"></a>前提条件
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>前提条件
 
 アクティブなサブスクリプションを含む Azure アカウントが必要です。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-private-link-service"></a>プライベート リンク サービスを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このテンプレートは、プライベート リンク サービスを作成します。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-privatelink-service/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
@@ -48,13 +50,13 @@ ms.locfileid: "84817615"
 - [**Microsoft.Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses): 2 つのパブリック IP アドレスが存在します (仮想マシンごとに 1 つ)。
 - [**Microsoft.Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints): サービスにアクセスするためのプライベート エンドポイント。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Azure Resource Manager テンプレートを Azure にデプロイする方法を次に示します。
+ARM テンプレートを Azure にデプロイする方法を次に示します。
 
 1. Azure にサインインしてテンプレートを開くために、 **[Azure に配置する]** を選択します。 テンプレートは、仮想マシン、標準ロード バランサー、プライベート リンク サービス、プライベート エンドポイント、ネットワーク、および検証する仮想マシンを作成します。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
 
 2. リソース グループを選択または作成します。
 3. 仮想マシン管理者のユーザー名とパスワードを入力します。
@@ -63,7 +65,7 @@ Azure Resource Manager テンプレートを Azure にデプロイする方法�
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
 > [!NOTE]
-> Azure Resource Manager テンプレートにより、仮想マシン myConsumerVm<b>{uniqueid}</b> リソースの一意の名前が生成されます。 **{uniqueid}** は、実際に生成された値に置き換えてください。
+> ARM テンプレートにより、仮想マシン myConsumerVm<b>{uniqueid}</b> リソースの一意の名前が生成されます。 **{uniqueid}** は、実際に生成された値に置き換えてください。
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
@@ -95,7 +97,7 @@ Azure Resource Manager テンプレートを Azure にデプロイする方法�
 プライベート エンドポイントを使用して VM から HTTP サービスに接続する方法を次に示します。
 
 1.  _myConsumerVm{uniqueid}_ のリモート デスクトップに移動します。
-2.  ブラウザーを開いて、プライベート エンドポイント アドレス http://10.0.0.5/ を入力します。
+2.  ブラウザーを開いて、プライベート エンドポイント アドレス `http://10.0.0.5/` を入力します。
 3.  既定の IIS ページが表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

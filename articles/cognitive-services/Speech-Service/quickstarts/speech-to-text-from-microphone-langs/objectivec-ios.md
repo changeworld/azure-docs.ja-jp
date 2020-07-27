@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:マイクから音声を認識する、Objective-C - Speech サービス
+title: クイック スタート:音声を認識する、Objective-C - Speech サービス (iOS)
 titleSuffix: Azure Cognitive Services
-description: iOS で Objective-C と Speech SDK を使用して音声を認識する方法について説明します
+description: Cognitive Services Speech SDK を使用して iOS デバイス向けの音声認識アプリを Objective-C で作成する方法について説明します。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c355071c4bbaff5ddb22b2db5fc4a3a0fdb561d4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ba12f258ce7b0db60d3e7343bf12ffc28e8548ab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391555"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524286"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
 

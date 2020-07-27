@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Active Directory Domain Services のマネージド ドメインを作成する | Microsoft Docs
+title: チュートリアル - 詳細構成を使用して Azure AD DS マネージド ドメインを作成する
 description: このチュートリアルでは、Azure portal を使用して Azure Active Directory Domain Services のマネージド ドメインを作成、構成し、詳細構成オプションを指定する方法について説明します。
 author: iainfoulds
 manager: daveba
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 78eef9c84bb7610b067855b22a3fa0f51bf08253
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024793"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518523"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services のマネージド ドメインを作成、構成する
 

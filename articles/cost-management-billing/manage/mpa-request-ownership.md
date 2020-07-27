@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 28080517a33f1bbf9bee3436493f178b60c0d161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523606"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>MPA アカウントに Azure サブスクリプションの課金所有権を取得する
 
@@ -155,6 +155,12 @@ SaaS 製品は、サブスクリプションとともには渡されません。
 譲渡される Azure サブスクリプションのディレクトリは、CSP 関係の確立中に選択された顧客のディレクトリと一致する必要があります。
 
 これら 2 つのディレクトリが一致しない場合は、サブスクリプションを譲渡できません。 Azure サブスクリプションのディレクトリを選択して、顧客との新しい CSP リセラー関係を確立するか、Azure サブスクリプションのディレクトリを変更して、顧客の CSP 関係ディレクトリと一致させる必要があります。 詳細については、「[既存のサブスクリプションを Azure AD ディレクトリに関連付けるには](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory)」を参照してください。
+
+### <a name="ea-subscription-in-the-non-orgnization-directory"></a>組織以外のディレクトリ内の EA サブスクリプション
+
+組織以外のディレクトリ内の EA サブスクリプションは、ディレクトリに CSP とのリセラー関係があれば譲渡できます。 ディレクトリにリセラー関係がない場合は、パートナー関係を受け入れることができる "*グローバル管理者*" として、ディレクトリ内に組織ユーザーを確保する必要があります。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名である "[domain name]. onmicrosoft.com" にするか、または検証済みの非フェデレーション カスタム ドメイン名 ("contoso.com" など) にする必要があります。  
+
+ディレクトリに新しいユーザーを追加するには、[Azure Active Directory への新規ユーザー追加による、AAD ディレクトリへの新規ユーザー追加](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)に関するクイックスタートを参照してください。
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft Partner Agreement へのアクセスの確認
 

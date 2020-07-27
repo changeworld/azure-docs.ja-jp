@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: f1d5a5cf6fb23ce3ccf92faf75d80cbe760b9bdc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7b027ead90c0bde8611fc08f19f261c934de2e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038385"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544495"
 ---
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
-このクイックスタートでは、Android アプリを一から作成してイマーシブ リーダーを統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)で入手できます。
+このクイックスタートでは、Android アプリを一から作成してイマーシブ リーダーを統合します。 このクイックスタートの完全なサンプルは [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) で入手できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](../../how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
-* [Git](https://git-scm.com/)
-* [イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](../../how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成する際に、ここで作成した値のいくつかが必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* [Git](https://git-scm.com/).
+* [イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk)。
+* [Android Studio](https://developer.android.com/studio)。
 
 ## <a name="create-an-android-project"></a>Android プロジェクトの作成
 
 Android Studio で新しいプロジェクトを開始する この例のソース コードは、[イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) の一部として提供されています。
 
-![[新しいプロジェクト]](../../media/android/java/android-studio-create-project.png)
+![新しいプロジェクト](../../media/android/java/android-studio-create-project.png)
 
-[Choose your project]\(プロジェクトの選択\) ウィンドウで **[Empty Activity]\(空のアクティビティ\)** を選択して、[次へ] をクリックします。
+**[Choose your project]\(プロジェクトの選択\)** ページで **[Empty Activity]\(空のアクティビティ\)** を選択し、 **[Next]\(次へ\)** を選択します。
 
 ![[Empty Activity]\(空のアクティビティ\) プロジェクト](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>プロジェクトを構成する
 
-プロジェクトに 'QuickstartJava' という名前を付け、保存場所を選択し、プログラミング言語として [Java] を選択して、[完了] をクリックします。
+プロジェクトに「**QuickstartJava**」という名前を付け、保存する場所を選択します。 プログラミング言語として **[Java]** を選択し、 **[完了]** を選択します。
 
 ![プロジェクトを構成する](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>資産と認証を設定する
 
-新しい **/assets** フォルダーを作成する
+新しい **/assets** フォルダーを作成します。
 
-![新しい Assets フォルダーを作成する](../../media/android/java/android-studio-assets-folder.png)
+![新しい assets フォルダーを作成する](../../media/android/java/android-studio-assets-folder.png)
 
- Assets フォルダー内に **env** という名前のファイルを作成します。 以下を追加し、必要に応じて値を指定します。 この env ファイルには公開するべきでない機密情報が含まれているので、ソース管理にはコミットしないでください。
+ Assets フォルダー内に **env** という名前のファイルを作成します。 次の名前と値を追加し、適切な値を指定します。 この env ファイルには公開してはいけないシークレットが含まれているので、ソース管理にコミットしないでください。
 
 ![新しい env ファイルを作成する](../../media/android/java/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
-**build.gradle** ファイル内の既存の依存関係を以下の実装に置き換えます。これにより、env ファイル内に定義されている変数を gson (JSON 解析およびシリアル化) および dotenv で参照することができます。 このクイックスタートの後半でアクティビティを実装するとき、プロジェクトを再度同期することが必要になる場合があります。
+**build.gradle** ファイル内の既存の依存関係を以下の実装で置き換えます。これにより、env ファイル内に定義されている変数を gson (JSON 解析およびシリアル化) および dotenv で参照することができます。 このクイックスタートの後の方でアクティビティを実装するとき、プロジェクトを再度同期することが必要になる場合があります。
 
 ```build.gradle
 dependencies {
@@ -80,11 +80,11 @@ dependencies {
 }
 ```
 
-![アプリ Gradle の実装](../../media/android/java/android-studio-build-gradle.png)
+![アプリ gradle の実装](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>アプリ文字列とレイアウト リソースを更新する
 
-**res/strings/strings.xml** の内容を、アプリで使用される以下の文字列に置き換えます。
+**res/strings/strings.xml** の内容を、アプリで使用される以下の文字列で置き換えます。
 
 ![アプリ strings.xml](../../media/android/java/android-studio-strings.png)
 
@@ -102,7 +102,7 @@ dependencies {
 </resources>
 ```
 
-**res/layout/activity_main.xml** の内容を、アプリで使用される以下の XML に置き換えます。 これはアプリの UI レイアウトです。
+**res/layout/activity_main.xml** の内容を、アプリで使用される以下の XML で置き換えます。 この XML はアプリの UI レイアウトです。
 
 ![アプリ activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
 
@@ -203,7 +203,7 @@ dependencies {
 
 ## <a name="add-the-web-view-layout"></a>Web ビュー レイアウトを追加する
 
-**res/layout/** フォルダーで、新しいレイアウト リソース ファイルを作成し、**activity_immersive_reader** という名前を付けてから、その内容を次の XML に置き換えます。 これにより、後の手順で作成する IRActivity Java コードによって使用される WebView コンポーネントが追加されます。現時点では、これは定義されていないため、エラーが発生します。
+**res/layout/** フォルダーで新しいレイアウト リソース ファイルを作成し、「**activity_immersive_reader**」という名前を付けます。 次に、その内容を下の XML で置き換えます。 この XML により、後の手順で作成する IRActivity Java コードによって使用される WebView コンポーネントが追加されます。 これは現時点では定義されていないため、エラーが発生します。
 
 ![新しいレイアウト リソース ファイルを作成する](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -256,9 +256,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates a new activity, finds its content and the Immersive Reader button
- * when clicked the app sends the content to the Immersive Reader SDK and
- * Launches the Immersive Reader
+ * Creates a new activity, finds its content and the Immersive Reader button.
+ * When clicked, the app sends the content to the Immersive Reader SDK and
+ * launches the Immersive Reader.
  */
 public class MainActivity extends Activity {
 
@@ -287,13 +287,13 @@ public class MainActivity extends Activity {
 }
 ```
 
-**/Java/com.example.quickstartjava** フォルダーに、16 を超える Java クラス ファイルを作成します。 これらの各クラスは、イマーシブ リーダー SDK を統合するためにアプリによって使用されます。 それぞれの新しいファイルに関しては、コード内で参照されるクラスのうちのいくつかはまだ存在しておらず、後で作成します。 すべてのクラスが作成されたら、null 参照エラーは発生しなくなります。
+**/Java/com.example.quickstartjava** フォルダーに、あと 16 の Java クラス ファイルを作成します。 これらの各クラスは、イマーシブ リーダー SDK を統合するためにアプリによって使用されます。 それぞれの新しいファイルに関しては、コード内で参照されるクラスのうちのいくつかはまだ存在しておらず、後で作成します。 すべてのクラスを作成したら、null 参照エラーは発生しなくなります。
 
-新しい **ImmersiveReader.java** Java クラス ファイルを作成するには、Android Studio でフォルダーを右クリックし、[新規] を選択してから、[Java クラス] を選択します。 これと同じ方法を使用して、作成された新しい Java クラス ファイルごとに Java クラス ファイルを作成します。
+新しい **ImmersiveReader.java** Java クラス ファイルを作成するには、Android Studio でフォルダーを右クリックし、 **[新規]** を選択してから、 **[Java クラス]** を選択します。 これと同じ方法を使用して、作成する新しい Java クラスごとに Java クラス ファイルを作成します。
 
 ![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
 
-**ImmersiveReader.java** の内容を次のコードに置き換えます。
+**ImmersiveReader.java** の内容を次のコードで置き換えます。
 
 ```ImmersiveReader.java
 /**
@@ -347,7 +347,7 @@ public class ImmersiveReader {
      * @param dataToRead - Content to be read
      * @return IRError - IRError, with following error codes:
      * a) Error.NONE in case of successful launch of Immersive Reader
-     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token.
+     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token
      * c) Error.INVALID_STATE in case of empty activity
      * d) Error.INVALID_CONTENT in case of empty list of text chunks
      */
@@ -377,7 +377,7 @@ public class ImmersiveReader {
 
 ![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
 
-**IRActivity.java** の内容を次のコードに置き換えます。
+**IRActivity.java** の内容を次のコードで置き換えます。
 
 ```IRActivity.java
 /**
@@ -408,8 +408,8 @@ public class ImmersiveReader {
 
     /**
      * Interface to accept access token from client app.
-     * Note that it is client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
-     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string
+     * Note that it is the client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
+     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string.
      */
     @Keep
     public interface IAuthenticator {
@@ -461,7 +461,7 @@ public class ImmersiveReader {
 
 ![IRError](../../media/android/java/android-studio-irerror-java.png)
 
-**IRError.java** の内容を次のコードに置き換えます。
+**IRError.java** の内容を次のコードで置き換えます。
 
 ```IRError.java
 /**
@@ -540,7 +540,7 @@ public class IRError implements Parcelable {
 
 ![エラー](../../media/android/java/android-studio-error-java.png)
 
-**Error.java** の内容を次のコードに置き換えます。
+**Error.java** の内容を次のコードで置き換えます。
 
 ```Error.java
 /**
@@ -571,7 +571,7 @@ public class Error {
 
 ![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
 
-**ReadableContent.java** の内容を次のコードに置き換えます。
+**ReadableContent.java** の内容を次のコードで置き換えます。
 
 ```ReadableContent.java
 /**
@@ -615,7 +615,7 @@ public class ReadableContent {
 
 ![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
 
-**ReadableTextChunk.java** の内容を次のコードに置き換えます。
+**ReadableTextChunk.java** の内容を次のコードで置き換えます。
 
 ```ReadableTextChunk.java
 /**
@@ -647,7 +647,7 @@ public class ReadableTextChunk {
 
 ![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
 
-**IRDataHolder.java** の内容を次のコードに置き換えます。
+**IRDataHolder.java** の内容を次のコードで置き換えます。
 
 ```IRDataHolder.java
 /**
@@ -663,7 +663,7 @@ import androidx.annotation.Keep;
  * A thin singleton class that is used to hold the Client's IAuthenticator's implementation and the Content to be read.
  * This is required for two reasons:
  * 1) As per Android guidelines, data being passed via intent should be limited to a few KBs. Alternative is to use Singleton holder classes like this one.
- * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios
+ * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios.
  */
 
 @Keep
@@ -712,7 +712,7 @@ public class IRDataHolder {
 
 ![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
 
-**IRAuthenticator.java** の内容を次のコードに置き換えます。
+**IRAuthenticator.java** の内容を次のコードで置き換えます。
 
 ```IRAuthenticator.java
 /**
@@ -739,10 +739,10 @@ import java.net.URL;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
     private static final String LOG_TAG = "IRAuthenticator";
@@ -823,7 +823,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 ![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
 
-**IRLauncher.java** の内容を次のコードに置き換えます。
+**IRLauncher.java** の内容を次のコードで置き換えます。
 
 ```IRLauncher.java
 /**
@@ -853,7 +853,7 @@ import java.util.concurrent.Callable;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Responsible for setting up the web view with appropriate bridging between JS and Java to launch the Immersive reader url for reading the content
+ * Responsible for setting up the web view with appropriate bridging between JavaScript and Java to launch the Immersive Reader url for reading the content.
  */
 
 public class IRLauncher {
@@ -876,7 +876,7 @@ public class IRLauncher {
         // Invoked in case of empty access token or empty content request to be read
         void onFailure(IRError error);
 
-        // Invoked when Immersive reader is exiting (e.g.) user pressed back in the immersive reader experience
+        // Invoked when Immersive Reader is exiting (e.g.) user pressed back in the Immersive Reader experience
         void onExit();
     }
 
@@ -981,7 +981,7 @@ public class IRLauncher {
             }
         });
 
-        // Prepare and set the WebAppInterface to hear back from the JS
+        // Prepare and set the WebAppInterface to hear back from the JavaScript
         WebAppInterface jsInterface = new WebAppInterface(new WebAppInterface.WebAppListener() {
             @Override
             public void onShowToast(String toast) {
@@ -1016,7 +1016,7 @@ public class IRLauncher {
 
 ![IRStore](../../media/android/java/android-studio-irstore-java.png)
 
-**IRStore.java** の内容を次のコードに置き換えます。
+**IRStore.java** の内容を次のコードで置き換えます。
 
 ```IRStore.java
 /**
@@ -1041,7 +1041,7 @@ public final class IRStore {
 
 ![AuthenticationTask](../../media/android/java/android-studio-authenticationtask-java.png)
 
-**AuthenticationTask.java** の内容を次のコードに置き換えます。
+**AuthenticationTask.java** の内容を次のコードで置き換えます。
 
 ```AuthenticationTask.java
 /**
@@ -1098,7 +1098,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 ![チャンク](../../media/android/java/android-studio-chunk-java.png)
 
-**Chunk.java** の内容を次のコードに置き換えます。
+**Chunk.java** の内容を次のコードで置き換えます。
 
 ```Chunk.java
 /**
@@ -1112,8 +1112,8 @@ import androidx.annotation.Keep;
 
 /**
  * The chunk object that will be sent to the Immersive Reader SDK.
- * The content is a string of text, the lang is a string, e.g. 'll-cc'
- * and the mimeType is also a string, e.g. 'text/plain'
+ * The content is a string of text, the lang is a string, e.g. 'll-cc',
+ * and the mimeType is also a string, e.g. 'text/plain'.
  */
 
 @Keep
@@ -1135,7 +1135,7 @@ public class Chunk {
 
 ![コンテンツ](../../media/android/java/android-studio-content-java.png)
 
-**Content.java** の内容を次のコードに置き換えます。
+**Content.java** の内容を次のコードで置き換えます。
 
 ```Content.java
 /**
@@ -1171,7 +1171,7 @@ public class Content {
 
 ![Options](../../media/android/java/android-studio-options-java.png)
 
-**Options.java** の内容を次のコードに置き換えます。
+**Options.java** の内容を次のコードで置き換えます。
 
 ```Options.java
 /**
@@ -1205,7 +1205,7 @@ public class Options {
 
 ![Message](../../media/android/java/android-studio-message-java.png)
 
-**Message.java** の内容を次のコードに置き換えます。
+**Message.java** の内容を次のコードで置き換えます。
 
 ```Message.java
 /**
@@ -1217,7 +1217,7 @@ import androidx.annotation.Keep;
 
 /**
  * The message object that will be sent to the Immersive Reader SDK.
- * This object contains the access token, sub domain, Content and Options.
+ * This object contains the access token, sub domain, Content, and Options.
  */
 
 @Keep
@@ -1243,7 +1243,7 @@ public class Message {
 
 ![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
 
-**WebAppInterface.java** の内容を次のコードに置き換えます。
+**WebAppInterface.java** の内容を次のコードで置き換えます。
 
 ```WebAppInterface.java
 /**
@@ -1257,7 +1257,7 @@ import androidx.annotation.Keep;
 import android.webkit.JavascriptInterface;
 
 /**
- * JavaScript interface implementation passed to the WebView to enable talking between JS and Java
+ * JavaScript interface implementation passed to the WebView to enable talking between JavaScript and Java.
  */
 
 @Keep
@@ -1290,13 +1290,13 @@ public class WebAppInterface {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Web ビューにアプリ HTML を追加する
 
-Web ビューの実装では、HTML が機能する必要があります。 **/assets** フォルダーを右クリックし、新しいファイルを作成して、**immersiveReader.html** という名前を付けます。
+Web ビューの実装では、HTML が機能する必要があります。 **/assets** フォルダーを右クリックし、新しいファイルを作成して、「**immersiveReader.html**」という名前を付けます。
 
 ![新しい html ファイルを作成する](../../media/android/java/android-studio-immersive-reader-html.png)
 
 ![HTML 資産の場所](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
-次の HTML および JavaScript を追加します。 これにより、イマーシブ リーダー SDK がアプリに追加されます。そして、作成済みのアプリ コードを使用してイマーシブ リーダーを起動するために使用されます。
+次の HTML と JavaScript を追加します。 このコードにより、イマーシブ リーダー SDK がアプリに追加されます。そして、作成済みのアプリ コードを使用してイマーシブ リーダーを開くために使用されます。
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1353,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
 
-アプリケーションは、イマーシブ リーダー SDK へのネットワーク呼び出しを行うことで機能するようになるので、ネットワーク アクセスを許可するようにアプリのアクセス許可を確実に構成する必要があります。 **/manifests/AndroidManifest.xml** の内容を次の XML に置き換えます。
+アプリケーションが機能するためには、イマーシブ リーダー SDK へのネットワーク呼び出しを行う必要があるので、ネットワーク アクセスを許可するようにアプリのアクセス許可が構成されていることを確認する必要があります。 **/manifests/AndroidManifest.xml** の内容を次の XML で置き換えます。
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1384,12 +1384,12 @@ Licensed under the MIT License. -->
 </manifest>
 ```
 
-## <a name="running-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
-デバイス エミュレーター上でアプリを実行するには、Android Studio を使用します。 **[Immersive Reader]** ボタンをクリックすると、イマーシブ リーダーが起動し、アプリのコンテンツが表示されます。
+デバイス エミュレーター上でアプリを実行するには、Android Studio を使用します。 **[イマーシブ リーダー]** を選択すると、アプリのコンテンツがイマーシブ リーダーで開きます。
 
 ![Immersive Reader](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](../../reference.md)を探索する
+[イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk) と[イマーシブ リーダー SDK リファレンス](../../reference.md)を確認します。

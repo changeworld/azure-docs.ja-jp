@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:マイクから音声を認識する、Swift - Speech サービス
+title: クイック スタート:音声を認識する、Swift - Speech Service (iOS)
 titleSuffix: Azure Cognitive Services
-description: iOS 上で Swift と Speech SDK を使用して音声を認識する方法について説明します
+description: Cognitive Services Speech SDK を使用して iOS デバイス向けの音声認識アプリを Swift で作成する方法について説明します。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 95c69aad24ff10b49bdc09411553e6ed43bfdccd
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4a66b1581049b90a419a1b62ba837fc832fd748
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512730"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>クイック スタート:iOS 上で Swift と Speech SDK を使用して音声を認識する
 

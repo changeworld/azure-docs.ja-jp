@@ -1,18 +1,18 @@
 ---
-title: Resource Manager テンプレートでのメトリック アラートの作成
-description: Resource Manager テンプレートを使用してメトリック アラートを作成する方法を説明します｡
+title: メトリック アラート用の Resource Manager テンプレートのサンプル
+description: この記事では、Azure Monitor のメトリック アラートを作成するためのサンプル Resource Manager テンプレートを取り上げます。
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853305"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515378"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Monitor のメトリック アラート ルール用の Resource Manager テンプレート サンプル
 
@@ -20,7 +20,7 @@ ms.locfileid: "83853305"
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-メトリック アラート ルールで使用可能なリソース一覧については、「[Azure Monitor のメトリック アラートでサポートされるリソース](../platform/alerts-metric-near-real-time.md)」を参照してください。 アラート ルールのスキーマとプロパティについては、「[メトリック アラート - 作成または更新](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)」を参照してください。
+メトリック アラート ルールで使用可能なリソース一覧については、「[Azure Monitor のメトリック アラートでサポートされるリソース](../platform/alerts-metric-near-real-time.md)」を参照してください。 アラート ルールのスキーマとプロパティについては、「[メトリック アラート - 作成または更新](/rest/api/monitor/metricalerts/createorupdate)」を参照してください。
 
 > [!NOTE]
 > リソースの種類のメトリック アラートを作成するためのリソース テンプレート、つまり Azure Log Analytics ワークスペース `Microsoft.OperationalInsights/workspaces` には、追加の手順が必要です。 詳細については、[ログのメトリック アラート - リソース テンプレート編](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)に関するページを参照してください。
@@ -1094,7 +1094,7 @@ ms.locfileid: "83853305"
 
 次のテンプレートを使用すると、カスタム メトリックに関するより高度な静的しきい値メトリック アラート ルールを作成できます。
 
-Azure Monitor のカスタム メトリックの詳細については、「[Azure Monitor のカスタム メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)」を参照してください。
+Azure Monitor のカスタム メトリックの詳細については、「[Azure Monitor のカスタム メトリック](../platform/metrics-custom-overview.md)」を参照してください。
 
 カスタム メトリックに関するアラート ルールを作成する場合は、メトリック名とメトリック名前空間の両方を指定する必要があります。 まだ存在しないカスタム メトリックに対してアラート ルールを作成することはできないため、カスタム メトリックが既に報告されていることを確認する必要もあります。
 
@@ -1325,7 +1325,7 @@ Azure Monitor のカスタム メトリックの詳細については、「[Azur
 
 >[!NOTE]
 >
-> 特定のカスタム メトリックのメトリック名前空間を確認するには、[Azure portal でカスタム メトリックを参照](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)します。
+> 特定のカスタム メトリックのメトリック名前空間を確認するには、[Azure portal でカスタム メトリックを参照](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)します。
 
 
 ## <a name="multiple-resources"></a>複数のリソース
