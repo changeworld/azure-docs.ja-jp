@@ -124,6 +124,9 @@
           href: network-security.md
         - name: 組み込みのセキュリティ制御
           href: event-hubs-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: AMQP 1.0 プロトコル ガイド
@@ -196,7 +199,7 @@
         - name: 診断ログの設定
           href: event-hubs-diagnostic-logs.md
         - name: Event Hubs を使用して Azure Diagnostics データをストリーミングする
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: スループット単位の自動スケール
           href: event-hubs-auto-inflate.md
         - name: Event Hubs 管理ライブラリ
@@ -289,6 +292,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: Quotas (クォータ)
       href: event-hubs-quotas.md
+    - name: Apache Kafka の構成
+      href: apache-kafka-configurations.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

@@ -1,20 +1,28 @@
 - name: 全般
   href: index.yml
 - name: 概要
-  expanded: true
   items:
     - name: Azure Key Vault について
       href: overview.md
     - name: キー、シークレット、証明書について
       href: about-keys-secrets-certificates.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: ポータル
+      href: quick-create-portal.md
 - name: チュートリアル
   items:
     - name: Azure Virtual Machine
       items:
-        - name: .NET で Windows 仮想マシンを使用して Azure Key Vault を使用する
-          href: tutorial-net-windows-virtual-machine.md
-        - name: Python で Windows 仮想マシンを使用して Azure Key Vault を使用する
-          href: tutorial-python-windows-virtual-machine.md
+        - name: .NET で仮想マシンを使用して Azure Key Vault を使用する
+          href: tutorial-net-virtual-machine.md
+        - name: Python で仮想マシンを使用して Azure Key Vault を使用する
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes Service
       items:
         - name: Azure Key Vault と Kubernetes の統合
@@ -117,15 +125,11 @@
     - name: キー コンテナーを移動する
       items:
         - name: キー コンテナーを別のリソース グループに移動する
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: キー コンテナーを別のサブスクリプションに移動する
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: キー コンテナーを別のリージョンに移動する
-          href: keyvault-moveregion.md
-    - name: トラブルシューティング
-      items:
-        - name: サブスクリプション移行後にキー コンテナー テナント ID を変更する
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: リファレンス
   items:
     - name: REST API のエラー コード - Azure Key Vault

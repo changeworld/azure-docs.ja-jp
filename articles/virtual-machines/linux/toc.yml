@@ -170,7 +170,7 @@
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: リージョン
-      href: regions.md
+      href: ../regions.md
     - name: 拡張機能
       items:
         - name: Azure 拡張機能について
@@ -182,7 +182,7 @@
     - name: 可用性とパフォーマンス
       items:
         - name: 可用性
-          href: availability.md
+          href: ../availability.md
         - name: コロケーション
           href: co-location.md
         - name: ネットワーク パフォーマンス
@@ -290,7 +290,7 @@
             - name: 専用ホストの前払い
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Azure の予約とは
-              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: VM インスタンス サイズの柔軟性
               href: reserved-vm-instance-size-flexibility.md
         - name: スポット VM
@@ -298,10 +298,12 @@
           displayName: 'pre-empt, preempt'
         - name: 一時ディスクを使用しない Azure VM
           href: ../azure-vms-no-temp-disk.md
+        - name: Azure VM のサイズの名前付け規則
+          href: ../vm-naming-conventions.md
         - name: 旧世代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Isolated のサイズ
-          href: isolation.md
+          href: ../isolation.md
         - name: Azure コンピューティング ユニット (ACU)
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU のクォータ
@@ -311,7 +313,7 @@
             - name: VM の前払い
               href: prepay-reserved-vm-instances.md
             - name: Azure の予約とは
-              href: ../../billing/billing-save-compute-costs-reservations.md
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM インスタンス サイズの柔軟性
               href: reserved-vm-instance-size-flexibility.md
         - name: ベンチマーク スコア
@@ -345,17 +347,22 @@
         - name: エフェメラル OS ディスク
           href: ephemeral-os-disks.md
     - name: ネットワーク
-      href: network-overview.md
+      href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: スケール セット
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
-      href: infrastructure-automation.md
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
+          href: security-baseline.md
         - name: 組み込みのセキュリティ制御
           href: virtual-machines-linux-security-controls.md
         - name: Bastion
@@ -367,9 +374,9 @@
     - name: バックアップと回復
       href: backup-recovery.md
     - name: クラウド導入フレームワーク
-      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
+      href: /azure/cloud-adoption-framework/get-started/
     - name: アーキテクチャ センター
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: インフラストラクチャのガイドライン
       href: infrastructure-example.md
 - name: 操作方法ガイド
@@ -427,22 +434,24 @@
           items:
             - name: 一般的な手順
               href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
             - name: CentOS
               href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
             - name: Debian
               href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
             - name: Oracle Linux
               href: oracle-create-upload-vhd.md
             - name: OpenBSD
               href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
         - name: cloud-init を使用する
           items:
             - name: cloud-init の概要
@@ -632,7 +641,7 @@
         - name: 障害復旧
           href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: VM をバックアップする
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
           items:
             - name: 単一の VM のバックアップ
               href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -694,7 +703,7 @@
             - name: 概要
               href: ../extensions/agent-linux.md
             - name: エージェントの更新
-              href: update-agent.md
+              href: ../extensions/update-linux-agent.md
         - name: 予測実行の軽減
           href: mitigate-se.md
         - name: メタデータの監視
@@ -726,7 +735,6 @@
         - name: スケジュールされたイベント
           href: scheduled-events.md
     - name: VM を監視する
-      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
       items:
         - name: エージェント
           items:
@@ -763,7 +771,7 @@
                       href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: カスタム JSON データ
                       href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                    - name: CollectD のパフォーマンス データ
+                    - name: collectd のパフォーマンス データ
                       href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: syslog
                       href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -820,7 +828,7 @@
     - name: 可用性とスケール
       items:
         - name: 自動スケール
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: 高可用性
           href: manage-availability.md
         - name: 可用性セットの変更
@@ -865,7 +873,7 @@
     - name: コンテナーの実行
       items:
         - name: Docker ホストの作成
-          href: dockerextension.md
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
         - name: Docker マシンの使用
           href: docker-machine.md
         - name: Docker Compose の使用
@@ -873,9 +881,9 @@
     - name: アプリケーションの実行
       items:
         - name: Cloud Foundry
-          href: 'https://docs.microsoft.com/azure/cloudfoundry/'
+          href: ../../cloudfoundry/index.yml
         - name: Cassandra
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json'
+          href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: OpenShift
           items:
             - name: OpenShift の概要
@@ -913,7 +921,7 @@
             - name: Linux 上の MS SQL
               href: /sql/linux/sql-server-linux-azure-virtual-machine
         - name: ハイ パフォーマンス コンピューティング (HPC)
-          href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+          href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
             - name: アーキテクチャ
@@ -937,6 +945,10 @@
           href: disks-shared-enable.md
         - name: ディスクに VHD をアップロードする - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
+        - name: ディスクを安全にインポート/エクスポートする - CLI
+          href: disks-export-import-private-links-cli.md
+        - name: ディスクを安全にインポート/エクスポートする - ポータル
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: ディスクのサイズの変更
           href: expand-disks.md
         - name: Storage Explorer を使用してディスクを管理する
@@ -955,12 +967,16 @@
           items:
             - name: ホスト時の暗号化を有効にする - CLI
               href: disks-enable-host-based-encryption-cli.md
+            - name: ホスト時の暗号化を有効にする - ポータル
+              href: disks-enable-host-based-encryption-portal.md
             - name: カスタマー マネージド キーを有効にする - CLI
               href: disks-enable-customer-managed-keys-cli.md
             - name: カスタマー マネージド キーを有効にする - ポータル
               href: disks-enable-customer-managed-keys-portal.md
-            - name: 保存時の二重暗号化を有効にする
+            - name: 保存時の二重暗号化を有効にする - CLI
               href: disks-enable-double-encryption-at-rest-cli.md
+            - name: 保存時の二重暗号化を有効にする - ポータル
+              href: disks-enable-double-encryption-at-rest-portal.md
         - name: 移行と変換
           items:
             - name: Azure Site Recovery を使用した Premium Storage への移行
@@ -996,7 +1012,7 @@
     - name: ネットワークの管理
       items:
         - name: Create virtual network
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../virtual-network/quick-create-cli.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: VM へのポートを開く
           href: nsg-quickstart.md
         - name: パブリック IP アドレスの割り当て
@@ -1017,18 +1033,18 @@
     - name: マネージド ID の構成
       items:
         - name: ポータル
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: CLI
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Resource Manager テンプレート
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure SDK
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM 拡張機能の使用
       items:
         - name: 拡張機能のインストールの制限
@@ -1098,13 +1114,13 @@
             - name: オンプレミスの VM をアップロードする
               href: upload-vhd.md
             - name: Azure Site Recovery を使用する
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/vm
     - name: PowerShell
-      href: /powershell/azureps-cmdlets-docs
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute
     - name: Java
@@ -1121,10 +1137,10 @@
 - name: リソース
   items:
     - name: Q & A
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+      href: /answers/topics/azure-virtual-machines.html
     - name: Resource Manager テンプレートを作成する
       displayName: 'Azure Resource Manager, ARM'
-      href: /azure/azure-resource-manager/
+      href: ../../azure-resource-manager/index.yml
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure のロードマップ

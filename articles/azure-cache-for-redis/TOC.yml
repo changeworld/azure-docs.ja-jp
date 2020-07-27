@@ -44,7 +44,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -59,13 +59,15 @@
     - name: プラン
       items:
         - name: キャッシュ レベルを選択する
-          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
+          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
         - name: クラスタリングによってキャッシュを分散する
           href: cache-how-to-premium-clustering.md
         - name: Redis データ永続化でキャッシュを保持する
           href: cache-how-to-premium-persistence.md
         - name: 仮想ネットワークでキャッシュをセキュリティ保護する
           href: cache-how-to-premium-vnet.md
+        - name: キャッシュに非公開で接続する
+          href: cache-private-link.md
         - name: geo レプリケーションの設定
           href: cache-how-to-geo-replication.md
         - name: 予約容量で保存する
@@ -101,9 +103,9 @@
         - name: データをインポート/エクスポートする
           href: cache-how-to-import-export-data.md
         - name: 再起動
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: 更新のスケジュール
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: redis-cli.exe アクセスの構成
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 および 1.1 の削除
@@ -113,7 +115,7 @@
         - name: Azure Portal での監視
           href: cache-how-to-monitor.md
         - name: 例外のアラートを設定する
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
     - name: 診断とトラブルシューティング
       items:
         - name: Redis サーバーに関するトラブルシューティング

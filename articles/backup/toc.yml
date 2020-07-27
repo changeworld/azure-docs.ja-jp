@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Backup のアーキテクチャ
       href: backup-architecture.md
+    - name: ガイダンスとベスト プラクティス
+      href: guidance-best-practices.md
 - name: ハウツー ガイド
   items:
     - name: Recovery Services コンテナー
@@ -375,6 +377,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: 組み込みのセキュリティ制御
           href: backup-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: トラブルシューティング

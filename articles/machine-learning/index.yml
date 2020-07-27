@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Machine Learning のドキュメント
-summary: Azure Machine Learning を使用して、機械学習モデル、AutoML 実験、およびパイプラインを大規模にトレーニング、デプロイ、管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+summary: Azure Machine Learning を使用した機械学習モデルのトレーニング、デプロイ、管理、AutoML の使用、およびパイプラインの大規模な実行方法について説明します。  チュートリアル、コード例、API リファレンスなどで方法を紹介します。
 metadata:
   title: Azure Machine Learning のドキュメント
-  description: Azure Machine Learning を使用して、機械学習モデル、AutoML 実験、およびパイプラインを大規模にトレーニング、デプロイ、管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+  description: Azure Machine Learning を使用した機械学習モデルのトレーニング、デプロイ、管理、AutoML の使用、およびパイプラインの大規模な実行方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 04/30/2020
-  ms.openlocfilehash: 57a16ca35699f11c55e12c494a4cbb93bac8a334
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.date: 07/30/2020
+  ms.openlocfilehash: 1006874272fa4798d9e56cbc76d7b039e697c413
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83593003"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87047801"
 landingContent:
 - title: 機械学習の概要
   linkLists:
@@ -31,14 +31,14 @@ landingContent:
       url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-- title: スタジオの Web エクスペリエンスを使用する
+- title: スタジオでデザイナーと AutoML を使用する
   linkLists:
   - linkListType: overview
     links:
+    - text: 自動機械学習 (AutoML) とは
+      url: concept-automated-ml.md
     - text: デザイナー (ドラッグ アンド ドロップ) とは
       url: concept-designer.md
-    - text: 自動化された機械学習とは
-      url: concept-automated-ml.md
     - text: アルゴリズムの選択方法
       url: how-to-select-algorithms.md
   - linkListType: tutorial
@@ -51,7 +51,7 @@ landingContent:
       url: tutorial-designer-automobile-price-train-score.md
     - text: イメージのラベル付けプロジェクトを作成する
       url: tutorial-labeling.md
-- title: Python SDK の使用
+- title: Python SDK でトレーニングする
   linkLists:
   - linkListType: tutorial
     links:
@@ -71,19 +71,19 @@ landingContent:
       url: how-to-machine-learning-interpretability.md
     - text: ディープ ラーニングと ML
       url: concept-deep-learning-vs-machine-learning.md
-    - text: Scikit-learn を使ってトレーニングする
+    - text: Scikit-learn モデルをトレーニングして登録する
       url: how-to-train-scikit-learn.md
-    - text: TensorFlow を使ってトレーニングする
+    - text: TensorFlow モデルをトレーニングして登録する
       url: how-to-train-tensorflow.md
-    - text: PyTorch を使ってトレーニングする
+    - text: PyTorch モデルをトレーニングして登録する
       url: how-to-train-pytorch.md
-    - text: Keras を使ってトレーニングする
+    - text: Keras モデルをトレーニングして登録する
       url: how-to-train-keras.md
     - text: 強化学習
       url: how-to-use-reinforcement-learning.md
     - text: ML パイプラインとは
       url: concept-ml-pipelines.md
-- title: モデルの展開と管理 (MLOps)
+- title: MLOps:モデルの展開と管理
   linkLists:
   - linkListType: how-to-guide
     links:

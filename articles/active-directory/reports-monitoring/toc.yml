@@ -84,6 +84,8 @@
           href: troubleshoot-missing-data-download.md
         - name: レポート用の Graph API にアクセスできない
           href: troubleshoot-graph-api.md
+        - name: 検証済みドメインの変更に関する監査データ
+          href: troubleshoot-audit-data-verified-domain.md
 - name: リファレンス
   expanded: true
   items:

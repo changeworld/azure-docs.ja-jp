@@ -60,6 +60,8 @@
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Azure の消費コミットメントのベネフィット
+              href: ./azure-consumption-commitment-benefit.md
             - name: 共同販売のパートナー エンゲージメント
               href: ./marketplace-co-sell.md
             - name: 推奨されるソリューション

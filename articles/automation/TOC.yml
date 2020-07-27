@@ -14,6 +14,9 @@
       href: automation-quickstart-create-runbook.md
     - name: マシンの Desired State Configuration を有効にする
       href: automation-quickstart-dsc-configuration.md
+    - name: Automation アカウントを作成する - ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-create-automation-account-template.md
 - name: チュートリアル
   items:
     - name: グラフィカル Runbook を作成する
@@ -58,7 +61,7 @@
         - name: Azure portal を使って Automation アカウントを作成する
           href: automation-create-standalone-account.md
         - name: Resource Manager テンプレートを使って Automation アカウントを作成する
-          href: automation-create-account-template.md
+          href: quickstart-create-automation-account-template.md
         - name: アマゾン ウェブ サービスで認証を構成する
           href: automation-config-aws-account.md
         - name: Azure AD による認証を構成する
@@ -177,6 +180,18 @@
               href: automation-dsc-extension-history.md
             - name: State Configuration の問題のトラブルシューティング
               href: troubleshoot/desired-state-configuration.md
+            - name: シナリオ
+              items:
+                - name: STIG に基づくデータの構成
+                  href: automation-dsc-configuration-based-on-stig.md
+                - name: 大規模なデータを構成する
+                  href: automation-dsc-config-data-at-scale.md
+                - name: 既存のサーバーから構成を作成する
+                  href: automation-dsc-config-from-server.md
+                - name: 構成を複合リソースに変換する
+                  href: automation-dsc-create-composite.md
+                - name: 準拠していないサーバーを修復する
+                  href: automation-dsc-remediate.md
         - name: 変更履歴とインベントリ
           items:
             - name: 概要

@@ -67,6 +67,8 @@
       href: concepts-app-templates.md
     - name: デバイス テンプレートとは
       href: concepts-device-templates.md
+    - name: メッセージのペイロード
+      href: concepts-telemetry-properties-commands.md
     - name: デバイスの接続性
       href: concepts-get-connected.md
     - name: IoT Edge デバイスへの接続

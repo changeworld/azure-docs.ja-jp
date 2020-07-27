@@ -18,17 +18,19 @@
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: ロード バランサーの作成 - ARM テンプレート
       href: quickstart-load-balancer-standard-public-template.md
-    - name: 内部ロード バランサーの作成 - ポータル
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: 内部ロード バランサーの作成 - Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: 内部ロード バランサーの作成 - Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
-      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: チュートリアル
   items:
+    - name: 内部ロード バランサー
+      items:
+        - name: 内部ロード バランサーの作成 - ポータル
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: 内部ロード バランサーの作成 - Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: 内部ロード バランサーの作成 - Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: 可用性ゾーン間で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: バックエンド プールの管理
       href: backend-pool-management.md
+    - name: Standard Load Balancer と Virtual Machine Scale Sets
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 方法
   items:
     - name: 仮想マシン スケール セット

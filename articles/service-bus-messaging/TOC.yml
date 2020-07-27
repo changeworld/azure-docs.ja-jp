@@ -110,6 +110,9 @@
                   href: authenticate-application.md
         - name: 組み込みのセキュリティ制御
           href: service-bus-messaging-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: ネットワークのセキュリティ
           href: network-security.md
 - name: 操作方法ガイド

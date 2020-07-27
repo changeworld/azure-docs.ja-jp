@@ -33,6 +33,8 @@
           href: storage-files-networking-overview.md
         - name: データの誤削除の防止
           href: storage-files-prevent-file-share-deletion.md
+        - name: ファイル共有をバックアップする
+          href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 保存時の暗号化
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: カスタマー マネージド キーを使用した保存時の暗号化
@@ -83,6 +85,54 @@
           href: storage-files-how-to-create-large-file-share.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
+    - name: データ保護
+      items:
+        - name: 論理的な削除を有効にする
+          href: storage-files-enable-soft-delete.md
+        - name: データのレプリケート方法の変更
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: データの冗長性を管理する
+          items:
+            - name: データのレプリケート方法の変更
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 高可用性アプリケーションの設計
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ディザスター リカバリーの管理
+          items:
+            - name: 最終同期時刻プロパティを確認する
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: アカウントのフェールオーバーを開始する
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ファイル共有をバックアップする
+          items:
+            - name: ポータル
+              href: ../../backup/backup-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/backup-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/backup-azure-afs-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/backup-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ファイル共有を復元する
+          items:
+            - name: ポータル
+              href: ../../backup/restore-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/restore-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/restore-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/restore-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ファイル共有を管理する
+          items:
+            - name: ポータル
+              href: ../../backup/manage-afs-backup.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/manage-afs-backup-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 配置
       items:
         - name: Azure Files のデプロイ
@@ -125,26 +175,10 @@
           href: storage-sync-files-server-registration.md
         - name: Azure File Sync の Server エンドポイントの追加
           href: storage-sync-files-server-endpoint.md
-        - name: 論理的な削除を有効にする
-          href: storage-files-enable-soft-delete.md
         - name: Azure の独立したクラウドでのストレージの管理
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: データのレプリケート方法の変更
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: アカウントのフェールオーバーを開始する
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: データの冗長性を管理する
-          items:
-            - name: データのレプリケート方法の変更
-              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 高可用性アプリケーションの設計
-              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ディザスター リカバリーの管理
-          items:
-            - name: 最終同期時刻プロパティを確認する
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: アカウントのフェールオーバーを開始する
-              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 認証
       items:
         - name: オンプレミスの AD DS 認証と承認の有効化
@@ -243,9 +277,11 @@
           href: storage-sync-files-troubleshoot.md
         - name: Azure Files の削除に関するトラブルシューティング
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: ファイル共有のバックアップに関するトラブルシューティング
+          href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: リファレンス
   items:
-    - name: Azure ファイル共有ストレージのリファレンス
+    - name: Azure Files のリファレンス
       href: ../files/reference.md
     - name: Resource Manager テンプレート
       displayName: arm

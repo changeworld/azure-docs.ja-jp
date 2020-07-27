@@ -1104,6 +1104,8 @@
       items:
         - name: バックアップからデータを復元する
           href: how-to-backup-and-restore.md
+        - name: クォータの増加を要求する
+          href: create-support-request-quota-increase.md
     - name: モニター
       items:
         - name: Cosmos DB を監視する
@@ -1112,6 +1114,8 @@
           items:
             - name: Azure Monitor for Cosmos (プレビュー)
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: 監視するシナリオ
+              href: use-metrics.md
             - name: サーバー側の待機時間を監視する
               href: monitor-server-side-latency.md
             - name: 要求ユニットの使用状況を監視する
@@ -1124,8 +1128,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: コントロール プレーン ログの監査
               href: audit-control-plane-logs.md
-        - name: Cosmos DB アカウントからメトリックを表示する
-          href: use-metrics.md
+        - name: アラートを構成する
+          href: create-alerts.md
         - name: 監視データのリファレンス
           href: monitor-cosmos-db-reference.md
         - name: Logic Apps を使用したアプリケーション ログ記録

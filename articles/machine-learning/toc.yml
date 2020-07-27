@@ -96,6 +96,7 @@
     - name: Enterprise およびBasic エディション
       href: concept-editions.md
     - name: コストの計画と管理
+      displayName: low priority VM
       href: concept-plan-manage-cost.md
     - name: デザイナー (ドラッグアンドドロップ ML)
       items:
@@ -166,6 +167,9 @@
             - name: TLS を使用して Web サービスをセキュリティで保護する
               displayName: ssl
               href: how-to-secure-web-service.md
+            - name: 回復性を高める
+              displayName: 'high availability, disaster recovery'
+              href: how-to-high-availability-machine-learning.md
             - name: AKS デプロイで Azure AD ID を使用する
               href: how-to-use-azure-ad-identity.md
             - name: ストレージ アクセス キーの再生成
@@ -217,6 +221,9 @@
         - name: ソフトウェア環境をセットアップする
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
+        - name: 非公開の Python パッケージを使用する
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-private-python-packages.md
         - name: ログの有効化
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
@@ -356,6 +363,9 @@
           href: how-to-deploy-and-where.md
         - name: デプロイメント シナリオ
           items:
+            - name: 既存のモデルを使用する
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
             - name: Azure ML のコンピューティング インスタンス
               href: how-to-deploy-local-container-notebook-vm.md
             - name: Azure Kubernetes Service
@@ -374,18 +384,15 @@
               href: how-to-deploy-functions.md
             - name: Azure Cognitive Search
               href: how-to-deploy-model-cognitive-search.md
-            - name: Azure IoT Edge デバイス
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
+            - name: カスタム Docker イメージを使用する
+              href: how-to-deploy-custom-docker-image.md
+            - name: IoT Edge
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA 推論
               href: how-to-deploy-fpga-web-service.md
-            - name: カスタム Docker イメージ
-              href: how-to-deploy-custom-docker-image.md
-            - name: Azure 以外の ML モデル
-              displayName: publish existing model
-              href: how-to-deploy-existing-model.md
         - name: トラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
-        - name: サービス エンドポイントを呼び出す
+        - name: クライアントの作成
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: モデルを監視する
@@ -393,8 +400,6 @@
             - name: モデルのデータを収集して評価する
               displayName: track production
               href: how-to-enable-data-collection.md
-            - name: データの誤差を検出する
-              href: how-to-monitor-data-drift.md
             - name: Application Insights での監視
               href: how-to-enable-app-insights.md
         - name: 暗号化された推論サービスをデプロイする

@@ -68,8 +68,8 @@
           href: url-route-overview.md
         - name: リダイレクト
           href: redirect-overview.md
-        - name: HTTP ヘッダーを書き換える
-          href: rewrite-http-headers.md
+        - name: HTTP ヘッダーと URL を書き換える
+          href: rewrite-http-headers-url.md
     - name: SSL
       items:
         - name: SSL ターミネーションとエンド ツー エンド SSL
@@ -198,14 +198,20 @@
               href: redirect-internal-site-cli.md
         - name: Azure PowerShell を使用して Web トラフィックをリダイレクトする
           href: tutorial-url-redirect-powershell.md
-    - name: HTTP ヘッダーを書き換える
+    - name: HTTP ヘッダーと URL を書き換える
       items:
-        - name: Azure portal
-          href: rewrite-http-headers-portal.md
-        - name: Azure PowerShell
-          href: add-http-header-rewrite-rule-powershell.md
-        - name: HTTP ヘッダーを作成して書き換える
-          href: tutorial-http-header-rewrite-powershell.md
+        - name: ヘッダーの書き換え
+          items:
+            - name: Azure portal
+              href: rewrite-http-headers-portal.md
+            - name: Azure PowerShell
+              href: add-http-header-rewrite-rule-powershell.md
+            - name: HTTP ヘッダーを作成して書き換える
+              href: tutorial-http-header-rewrite-powershell.md
+        - name: URL 書き換え
+          items:
+            - name: Azure portal
+              href: rewrite-url-portal.md
     - name: App Service Web アプリとマルチテナント サービスを構成する
       items:
         - name: ポータル
@@ -249,7 +255,7 @@
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api
     - name: Java

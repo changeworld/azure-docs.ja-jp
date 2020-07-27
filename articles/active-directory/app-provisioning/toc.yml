@@ -83,10 +83,10 @@
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM と Graph のシナリオ
       href: scim-graph-scenarios.md
-    - name: プロビジョニング方法を選択する
-      href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: クラウド HR のプロビジョニング
       items:
+        - name: SuccessFactors の統合
+          href: sap-successfactors-integration-reference.md
         - name: SuccessFactors 属性のリファレンス
           href: sap-successfactors-attribute-reference.md
         - name: Workday 属性のリファレンス
