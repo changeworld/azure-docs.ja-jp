@@ -345,7 +345,7 @@
         - name: 共有ディスク
           href: disks-shared.md
         - name: エフェメラル OS ディスク
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: ネットワーク
       href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: スケール セット

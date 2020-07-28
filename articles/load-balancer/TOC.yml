@@ -95,14 +95,6 @@
           href: upgrade-basicInternal-standard.md
         - name: 内部ロード バランサーのアップグレード - 送信接続が必要
           href: upgrade-InternalBasic-To-PublicStandard.md
-    - name: 送信の規則を構成する
-      items:
-        - name: ポータル
-          href: configure-load-balancer-outbound-portal.md
-        - name: Azure CLI
-          href: configure-load-balancer-outbound-cli.md
-        - name: Azure PowerShell
-          href: configure-load-balancer-outbound-powershell.md
     - name: IPv6 を使用してパブリック ロード バランサーを作成する
       items:
         - name: Azure CLI

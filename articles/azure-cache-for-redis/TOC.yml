@@ -44,7 +44,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -72,7 +72,9 @@
           href: cache-how-to-geo-replication.md
         - name: 予約容量で保存する
           href: cache-reserved-pricing.md
-        - name: Managed Cache Service から移行する
+        - name: Azure Cache for Redis への移行
+          href: cache-migration-guide.md
+        - name: Managed Cache Service からの移行 (非推奨)
           href: cache-migrate-to-redis.md
     - name: 自動化
       items:
