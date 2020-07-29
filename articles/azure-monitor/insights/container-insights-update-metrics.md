@@ -2,13 +2,13 @@
 title: メトリックのためのコンテナーの Azure Monitor の更新方法 | Microsoft Docs
 description: この記事では、集計したメトリックの探索とアラートをサポートするカスタム メトリック機能を有効にするために、コンテナーの Azure Monitor を更新する方法について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298263"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498986"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
 
@@ -22,21 +22,23 @@ ms.locfileid: "84298263"
 
 | メトリック名前空間 | メトリック | 説明 |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount | これらは、*ノード* メトリックであり、*ホスト*をディメンションとして含みます。また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
-| insights.container/pods | podCount | これらは、*ポッド* メトリックであり、ControllerName、Kubernetes 名前空間、名前、フェーズをディメンションとして含みます。 |
+| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage | *ノード* メトリックとして、それらは*ホスト*をディメンションとして含みます。 また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
+| Insights.container/pods | podCount、completedJobsCount、restartingContainerCount、oomKilledContainerCount、podReadyPercentage | *ポッド* メトリックとして、それらは ControllerName、Kubernetes 名前空間、名前、フェーズをディメンションとして含みます。 |
+| Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage | |
 
-これらの新しい機能をサポートするための更新は、Azure portal、Azure PowerShell、または Azure CLI で実行できます。 Azure PowerShell と CLI を使用すると、サブスクリプション内のクラスターごとに、またはすべてのクラスターでこれを実行できます。 AKS の新しいデプロイでは、この構成の変更と機能が自動的に含まれます。
+これらの新機能をサポートするために、新しいコンテナー化されたエージェントであるバージョン **microsoft/oms: ciprod02212019** がリリースに含まれています。 AKS の新しいデプロイでは、この構成の変更と機能が自動的に含まれます。 この機能をサポートするためのクラスターの更新は、Azure portal、Azure PowerShell、または Azure CLI で実行できます。 Azure PowerShell と Azure CLI を使用すると、 サブスクリプション内のクラスターごとに、またはすべてのクラスターでこれを実行できます。
 
 エージェントが収集したデータをクラスター リソースにパブリッシュできるように、どちらのプロセスでも、クラスターのサービス プリンシパルまたは監視アドオン用のユーザー割り当て済み MSI に対して**メトリックの発行元の監視**ロールが割り当てられます。 メトリックの発行元の監視は、メトリックをリソースにプッシュする権限のみを持ち、状態の変更、リソースの更新、およびデータの読み取りはできません。 このロールの詳細については、[メトリックの発行元の監視ロール](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、次のことを確認してください。
+クラスターを更新する前に、次のことを確認してください。
 
 * カスタム メトリックは、一部の Azure リージョンでのみ利用できます。 サポートされているリージョンの一覧については、[こちら](../platform/metrics-custom-overview.md#supported-regions)を参照してください。
-* AKS クラスター リソースの **[所有者](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。 
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+* AKS クラスター リソースの **[所有者](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。
+
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Azure portal からクラスターをアップグレードする
 

@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187712"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497065"
 ---
-# <a name="troubleshoot"></a>トラブルシューティング
+# <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats のトラブルシューティング
 
 この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[サポート フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
 
@@ -58,8 +58,8 @@ ms.locfileid: "86187712"
 
 **是正措置**:
 
-1. FarmBeats Datahub リソース グループにアクセスします。
-2. **イベント ハブ** (DatafeedEventHubNamespace) を選択し、受信メッセージの数を確認します。
+1. FarmBeats リソース グループにアクセスします。
+2. **イベント ハブ**名前空間 ("sensor-partner-eh-namespace-xxxx") を選択し、[Event Hubs] をクリックして、パートナーに割り当てられているイベント ハブの受信メッセージの数を確認します
 3. 以下のいずれかを実行します。
 
    - "*受信メッセージがない*" 場合は、デバイス パートナーにお問い合わせください。  

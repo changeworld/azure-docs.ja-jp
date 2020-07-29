@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 1d8261d05f59c7f40ba6b1e2d59d2b15ad56de95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497419"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する
 
@@ -82,6 +82,30 @@ Azure 対応プロジェクトを ADF の SSIS に接続することにより、
    ![Azure Storage を選択する](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
 4. **[接続]** ボタンをクリックして、接続を完了します。  SSDT のソリューション エクスプローラー パネルの **[Linked Azure Resources]\(リンクされた Azure リソース\)** ノードに、選択した Azure-SSIS IR と Azure ストレージ アカウントが表示されます。  また、Azure-SSIS IR の状態も更新されます。ノードを右クリックしてメニューをポップアップ表示し、 **[Start\Stop\Manage]\(開始\停止\管理\)** メニュー項目を選択して ADF ポータル/アプリに移動して、それを管理できます。
+
+## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>Azure で実行する SSIS プロジェクトまたはパッケージを評価する
+### <a name="assess-ssis-project-or-package"></a>SSIS プロジェクトまたはパッケージを評価する
+Azure でパッケージを実行する前に、パッケージを評価して、潜在的な移行ブロックや注意すべき情報があるかどうかを評価することができます。 
+-  プロジェクトのすべてのパッケージまたは単一パッケージを評価できます。
+
+   ![プロジェクトを評価する](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+   ![パッケージを評価する](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+
+-  評価レポートを取得して各評価の問題を確認することができ、各問題には詳細な説明と推奨事項が表示されます。 評価レポートを csv ファイルとしてエクスポートすることもできます。 
+
+   ![プロジェクト結果を評価する](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppress-assessment-rule"></a>評価ルールを抑制する
+パッケージに適用されない評価ルールがある場合は、非表示にすることを選択できます。 
+-  評価レポートの **[Configure Assessment Rule Suppression]\(評価ルール抑制の構成\)** リンクを直接クリックできます。
+
+   ![評価ルール抑制の設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+
+-  **[Azure-Enabled Settings]\(Azure 対応の設定\)** を使用して構成することもできます。
+
+   ![Azure 対応の設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+
+   ![[Azure-Enabled Settings]\(Azure 対応の設定\) を使用した評価ルール抑制の設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>Azure で SSIS パッケージを実行する
 ### <a name="azure-enabled-setting"></a>Azure 対応の設定
@@ -160,6 +184,9 @@ Azure 対応プロジェクトを使用してパッケージ実行環境を切�
 6. このパッケージを Azure で実行します。 現在の Visual Studio の構成を切り替えることにより、環境をローカルの環境に簡単に切り替えることができます。
 
    ![Visual Studio 構成を切り替える](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
+
+## <a name="current-limitations"></a>現在の制限
+-  この SSDT 機能は現在、国内のクラウドをサポートしていません。
 
 ## <a name="next-steps"></a>次のステップ
 SSDT から Azure でのパッケージの実行に問題がなければ、ADF パイプラインに SSIS パッケージ実行アクティビティとしてそれらをデプロイし、実行できます。[ADF パイプラインの SSIS パッケージ実行アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。

@@ -1,14 +1,14 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 06/22/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954151"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497779"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -146,6 +146,10 @@ Batch ノードでタスクをスケジュールするとき、それをタス�
 ### <a name="collect-the-batch-agent-logs"></a>Batch エージェント ログを収集する
 
 ノードまたはノードで実行されているタスクの動作に関連する問題が発生した場合は、該当するノードの割り当てを解除する前に、Batch エージェント ログを収集します。 Batch エージェント ログは、Batch サービス ログのアップロード API を使用して収集できます。 これらのログは、サポート チケットの一部として Microsoft に提供することができ、問題のトラブルシューティングと解決に役立ちます。
+
+### <a name="manage-os-upgrades"></a>OS のアップグレードを管理する
+
+ユーザー サブスクリプション モードの Batch アカウントの場合、実行時間の長いタスクでは特に、OS の自動アップグレードによってタスクの進行が中断される場合があります。 [べき等タスクを構築](#build-durable-tasks)することで、こうした中断によるエラーを減らすことができます。 また、[タスクの実行が予期されない時間に OS イメージのアップグレードをスケジュール設定](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)することもお勧めします。
 
 ## <a name="isolation-security"></a>分離のセキュリティ
 

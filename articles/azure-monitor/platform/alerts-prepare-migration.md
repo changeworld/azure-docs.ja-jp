@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114406"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539551"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>クラシック アラート ルールの移行のためにロジック アプリと Runbook を準備する
 
@@ -28,12 +28,12 @@ ms.locfileid: "81114406"
 
 次の表に、クラシック アラートと新しいアラートの両方のプログラム インターフェイスへの参照を示します。
 
-|         |クラシック アラート  |新しいメトリック アラート |
-|---------|---------|---------|
-|REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [リファレンス](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [リファレンス](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager テンプレート | [クラシック アラート用](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[新しいメトリック アラート用](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| デプロイ スクリプトの種類 | クラシック アラート | 新しいメトリック アラート |
+| ---------------------- | -------------- | ----------------- |
+|REST API     | [microsoft.insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [az monitor alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [リファレンス](/powershell/module/az.monitor/add-azmetricalertrule)       |  [リファレンス](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager テンプレート | [クラシック アラート用](./alerts-enable-template.md)|[新しいメトリック アラート用](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>通知ペイロードの変更
 
@@ -41,8 +41,8 @@ ms.locfileid: "81114406"
 
 次の表は、クラシック形式の Webhook ペイロード フィールドを新しい形式にマッピングするときに使用します。
 
-|  |クラシック アラート  |新しいメトリック アラート |
-|---------|---------|---------|
+| 通知エンドポイントの種類 | クラシック アラート | 新しいメトリック アラート |
+| -------------------------- | -------------- | ----------------- |
 |アラートがアクティブ化または解決されたか    | **status**       | **data.status** |
 |アラートに関するコンテキスト情報     | **context**        | **data.context**        |
 |アラートがアクティブ化または解決された時点のタイム スタンプ     | **context.timestamp**       | **data.context.timestamp**        |
@@ -150,11 +150,11 @@ else {
 
 ```
 
-アラートがトリガーされたときに仮想マシンを停止する Runbook の完全な例については、[Azure Automation のドキュメント](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)を参照してください。
+アラートがトリガーされたときに仮想マシンを停止する Runbook の完全な例については、[Azure Automation のドキュメント](../../automation/automation-create-alert-triggered-runbook.md)を参照してください。
 
 ## <a name="partner-integration-via-webhooks"></a>Webhook を介したパートナー統合
 
-[クラシック アラートと統合しているパートナー](https://docs.microsoft.com/azure/azure-monitor/platform/partners)の大半は、統合によって、新しいメトリック アラートを既にサポートしています。 新しいメトリック アラートで既に機能する既知の統合を次に示します。
+[クラシック アラートと統合しているパートナー](./partners.md)の大半は、統合によって、新しいメトリック アラートを既にサポートしています。 新しいメトリック アラートで既に機能する既知の統合を次に示します。
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
