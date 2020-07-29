@@ -14,6 +14,7 @@ ms.date: 03/18/2020
 ms.author: janutter
 ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
 ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83860054"
