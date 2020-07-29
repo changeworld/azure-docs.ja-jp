@@ -11,12 +11,14 @@ ms.date: 06/28/2019
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 2eec96eee943d6fe291d054e1d73876e38f61d6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: cc5c7193914f02cf52956481f22553dcabdd6520
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769957"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324524"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 

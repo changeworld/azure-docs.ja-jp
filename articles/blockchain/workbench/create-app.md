@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench プレビュー用ブロックチェー�
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
-ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74324818"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073106"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench 用ブロックチェーン アプリケーションを作成する
 
@@ -329,7 +329,7 @@ Blockchain Workbench にブロックチェーン アプリケーションを追�
 ブロックチェーン アプリケーションのデプロイには数分かかります。 デプロイが完了すると、新しいアプリケーションが **[アプリケーション]** に表示されます。 
 
 > [!NOTE]
-> また、[Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) を使用してブロックチェーン アプリケーションを作成することもできます。
+> また、[Azure Blockchain Workbench REST API](/rest/api/azure-blockchain-workbench) を使用してブロックチェーン アプリケーションを作成することもできます。
 
 ## <a name="add-blockchain-application-members"></a>ブロックチェーン アプリケーション メンバーの追加
 

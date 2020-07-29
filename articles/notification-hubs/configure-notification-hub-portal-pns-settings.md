@@ -11,18 +11,18 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: af792ccfe8e00c26abc6aab2e4a96d7ef9ff5122
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077982"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>クイック スタート:通知ハブのプッシュ通知を設定する
 
 Azure Notification Hubs には、使いやすくスケールアウトにも対応したプッシュ エンジンが用意されています。Notification Hubs を使用すると、あらゆるプラットフォーム (iOS、Android、Windows、Baidu) にあらゆるバックエンド (クラウドまたはオンプレミス) から通知を送信することができます。 詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
-このクイック スタートでは、Notification Hubs におけるプラットフォーム通知システム (PNS) の設定を使用して、複数のプラットフォームに対するプッシュ通知を設定します。 このクイック スタートでは、Azure portal での手順を紹介します。  Azure CLI を使用した場合の手順については、「[Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm)」に記載されています。
+このクイック スタートでは、Notification Hubs におけるプラットフォーム通知システム (PNS) の設定を使用して、複数のプラットフォームに対するプッシュ通知を設定します。 このクイック スタートでは、Azure portal での手順を紹介します。  Azure CLI を使用した場合の手順については、「[Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm)」に記載されています。
 
 通知ハブを作成していない場合は、ここで作成します。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」または「[Azure CLI を使用して Azure 通知ハブを作成する](create-notification-hub-azure-cli.md)」を参照してください。
 

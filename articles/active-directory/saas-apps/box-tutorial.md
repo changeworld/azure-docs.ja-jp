@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35f8172d418cb9926ba0be2de945ff559fba14cf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 54964759d9afbacd0e410b713336cdd8d5b2c6c6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018230"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Box の統合
 
@@ -38,6 +38,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Box でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
