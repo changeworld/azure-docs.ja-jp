@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868837"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518276"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
@@ -29,15 +29,15 @@ ms.locfileid: "81868837"
 
 Microsoft ID プラットフォームのエンドポイントでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
 
-承認済みトークンのバージョンは、アプリケーションの作成時に選択した **[サポートされているアカウントの種類]** の値によって異なります。
+API で承認できるトークンのバージョンは、Azure portal で Web API アプリケーションの登録を作成するときの **[サポートされているアカウントの種類]** の選択によって異なります。
 
-- **[サポートされているアカウントの種類]** の値が **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** の場合、承認済みトークンのバージョンは v2.0 です。
-- それ以外の場合、承認済みトークンのバージョンは v1.0 です。
+- **[サポートされているアカウントの種類]** の値が **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** の場合は、承認済みトークンのバージョンを v2.0 にする必要があります。
+- それ以外の場合は、承認済みトークンのバージョンを v1.0 にできます。
 
 アプリケーションを作成した後、これらの手順に従って、承認済みトークンのバージョンを決定または変更できます。
 
 1. Azure portal で、アプリを選択して、 **[マニフェスト]** を選択します。
-1. マニフェストで **accessTokenAcceptedVersion** プロパティを見つけます。 プロパティの既定値は 2 です。
+1. マニフェストで **accessTokenAcceptedVersion** プロパティを見つけます。
 1. その値により、Web API で受け入れられるトークンのバージョンが Azure Active Directory (Azure AD) に対して指定されます。
     - 値が 2 の場合、Web API では v2.0 トークンが受け入れられます。
     - 値が **null** の場合、Web API では v1.0 トークンが受け入れられます。
@@ -52,7 +52,7 @@ Microsoft ID プラットフォームのエンドポイントでは、v1.0 ト�
 
 ## <a name="exposed-api"></a>公開される API
 
-Web API に固有の他の設定は、公開されている API と公開されているスコープです。
+Web API に固有の他の設定は、公開されている API と公開されているスコープまたはアプリのロールです。
 
 ### <a name="application-id-uri-and-scopes"></a>アプリケーション ID の URI とスコープ
 
@@ -64,7 +64,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 - 1 つまたは複数のスコープ
 - 1 つまたは複数のアプリ ロール
 
-既定では、アプリケーションの登録ポータルでは、リソース URI `api://{clientId}` を使用することをお勧めします。 この URI は一意ですが、人間が判読できるものではありません。 URI を変更する場合は、新しい値が一意になるようにしてください。
+既定では、アプリケーションの登録ポータルでは、リソース URI `api://{clientId}` を使用することをお勧めします。 この URI は一意ですが、人間が判読できるものではありません。 URI を変更する場合は、新しい値が一意になるようにしてください。 アプリケーション登録ポータルにより、[構成された発行元ドメイン](howto-configure-publisher-domain.md)が確実に使用されるようになります
 
 クライアント アプリケーションに対して、スコープは Web API に対する "*委任されたアクセス許可*" として表示され、アプリ ロールは "*アプリケーション アクセス許可*" として表示されます。
 
@@ -72,6 +72,8 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 - ユーザーに表示される場合。
 - 管理者の同意を許可できる、テナント管理者に表示される場合。
+
+アプリのロールにはユーザーが同意することはできません (自身の代わりに Web API を呼び出すアプリケーションによって使用されるため)。 テナント管理者は、アプリのロールを公開する Web API のクライアント アプリケーションに同意する必要があります。 詳細については、[管理者の同意](v2-admin-consent.md)に関する記事をご覧ください
 
 ### <a name="exposing-delegated-permissions-scopes"></a>委任されたアクセス許可 (スコープ) の公開
 

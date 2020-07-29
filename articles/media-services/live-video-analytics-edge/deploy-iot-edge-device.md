@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519900"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "86026969"
 * [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国中部、米国中北部、東日本、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
-    * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします。
+    * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Live Video Analytics を使用するための Azure リソースの構成
 
@@ -34,7 +34,7 @@ ms.locfileid: "86026969"
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを設定する
 
-Live Video Analytics を使用してビデオをクラウドに記録し、後でそれを再生する場合は、[Premium ストリーミング エンドポイント](../latest/streaming-endpoint-concept.md#types)を使用するように Media Services を更新する必要があります。  
+Live Video Analytics を使用して、継続的にビデオをクラウドに記録し、後でそれを再生する前に、[クエリ API](playback-recordings-how-to.md#query-api) を使用する場合、[Premium ストリーミング エンドポイント](../latest/streaming-endpoint-concept.md#types)を使用するように Media Service を更新することをお勧めします。  
 
 これは省略可能な手順です。 次の Azure CLI コマンドを使用して、それを行うことができます。
 

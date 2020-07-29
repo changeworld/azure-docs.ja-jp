@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 662520b9e31b4fe9a0925683fd0e661ce179e5b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558786"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518149"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web アプリ: コード構成
 
@@ -33,7 +33,7 @@ Microsoft 認証ライブラリ (MSAL) の次のライブラリでは、Web ア�
 
 | MSAL ライブラリ | 説明 |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework プラットフォームと .NET Core プラットフォームのサポート。 ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、Xamarin.Android の各プラットフォームは、パブリック クライアント アプリケーションの構築に使用されるため、サポートされていません。 ASP.NET Core Web アプリと Web API の場合、MSAL.NET は、Microsoft.Identity.Web という名前の上位レベルのライブラリにカプセル化されます。|
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework プラットフォームと .NET Core プラットフォームのサポート。 ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、Xamarin.Android の各プラットフォームは、パブリック クライアント アプリケーションの構築に使用されるため、サポートされていません。 ASP.NET Core Web アプリと Web API の場合、MSAL.NET は、[Microsoft.Identity.Web](https://aka.ms/ms-identity-web) という名前の上位レベルのライブラリにカプセル化されます。|
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL for Python | Python Web アプリケーションのサポート。 |
 | ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL for Java | Java Web アプリケーションのサポート。 |
 
@@ -49,8 +49,8 @@ public void ConfigureServices(IServiceCollection services)
 {
     // more code here
 
-    services.AddSignIn(Configuration, "AzureAd")
-            .AddWebAppCallsProtectedWebApi(Configuration,
+    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
+            .AddMicrosoftWebAppCallsdWebApi(Configuration,
                                            initialScopes: new string[] { "user.read" })
             .AddInMemoryTokenCaches();
 
@@ -91,7 +91,7 @@ ASP.NET の場合は、ミドルウェアの OIDC イベントをサブスクラ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Microsoft.Identity.Web では、正しい OpenID Connect 設定を設定し、コードの受信イベントをサブスクライブして、コードを引き換えることで、コードを簡単にすることができます。 認証コードを引き換えるために、追加のコードは必要ありません。
+Microsoft.Identity.Web では、正しい OpenID Connect 設定を設定し、コードの受信イベントをサブスクライブして、コードを引き換えることで、コードを簡単にすることができます。 認証コードを引き換えるために、追加のコードは必要ありません。 この仕組みの詳細については、[Microsoft.Identity.Web のソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L140)をご覧ください。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -272,8 +272,8 @@ ASP.NET Core のチュートリアルでは、依存関係の挿入を使用し�
 
 ```csharp
 // Use a distributed token cache by adding:
-    services.AddSignIn(Configuration, "AzureAd")
-            .AddWebAppCallsProtectedWebApi(Configuration,
+    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
+            .AddMicrosoftWebAppCallsWebApi(Configuration,
                                            initialScopes: new string[] { "user.read" })
             .AddDistributedTokenCaches();
 
@@ -297,7 +297,7 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-トークン キャッシュ プロバイダーの詳細については、チュートリアルの [ASP.NET Core Web アプリのチュートリアルのトークン キャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) フェーズも参照してください。
+トークン キャッシュ プロバイダーの詳細については、Microsoft.Identity.Web の[トークン キャッシュのシリアル化](https://aka.ms/ms-id-web/token-cache-serialization)に関する記事、および Web アプリのチュートリアルの [ASP.NET Core Web アプリのチュートリアル | トークンキャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)のフェーズもご覧ください。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

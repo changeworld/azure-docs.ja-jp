@@ -5,12 +5,12 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a86d6f0fe942a72a96c504a61d5030624f161cd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339879"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507014"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -44,7 +44,11 @@ AKS クラスターのマスター ノード (コントロール プレーン) �
 
 ## <a name="what-network-plug-ins-are-supported"></a>どのネットワーク プラグインがサポートされていますか?
 
-Windows ノード プールの AKS クラスターでは、Azure CNI (高度) ネットワーク モデルを使用する必要があります。 Kubenet (基本) ネットワークはサポートされていません。 ネットワーク モデルの違いの詳細については、[AKS のアプリケーションにおけるネットワークの概念][azure-network-models]に関する記事を参照してください。 - Azure CNI ネットワーク モデルでは、IP アドレス管理に関する追加の計画と考慮事項が必要です。 Azure CNI を計画して実装する方法の詳細については、[AKS での Azure CNI ネットワークの構成][configure-azure-cni]に関するページを参照してください。
+Windows ノード プールの AKS クラスターでは、Azure CNI (高度) ネットワーク モデルを使用する必要があります。 Kubenet (基本) ネットワークはサポートされていません。 ネットワーク モデルの違いの詳細については、[AKS のアプリケーションにおけるネットワークの概念][azure-network-models]に関する記事を参照してください。 Azure CNI ネットワーク モデルでは、IP アドレス管理に関する追加の計画と考慮事項が必要です。 Azure CNI を計画して実装する方法の詳細については、[AKS での Azure CNI ネットワークの構成][configure-azure-cni]に関するページを参照してください。
+
+## <a name="is-preserving-the-client-source-ip-supported"></a>クライアント ソース IP の保持はサポートされていますか?
+
+現時点で、[クライアント ソース IP の保持][client-source-ip]は Windows ノードではサポートされていません。
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>ノードあたりのポッドの最大数を変更できますか?
 
@@ -103,6 +107,14 @@ Azure Dev Spaces は現在、Linux ベースのノード プールに対して�
 
 はい。ただし、Windows コンテナーからログ (stdout、stderr) とメトリックを収集するための Azure Monitor はパブリック プレビュー段階です。 また、Windows コンテナーから stdout ログのライブ ストリームにアタッチできます。
 
+## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>Windows ノードを含むクラスター上のサービス数に制限はありますか?
+
+Windows ノードを含むクラスターでは、ポート不足が発生するまで、約 500 個のサービスを設定できます。
+
+## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Windows コンテナーで Kubernetes Web ダッシュボードを使用できますか?
+
+はい。[Kubernetes Web ダッシュボード][kubernetes-dashboard] を使用して Windows コンテナーに関する情報にアクセスできますが、現時点では、Kubernetes Web ダッシュボードから直接、実行中の Windows コンテナーに、*kubectl exec* を実行することはできません。 実行中の Windows コンテナーへの接続の詳細については、「[メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する][windows-rdp]」を参照してください。
+
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>サポートされていない機能が必要な場合はどうすればよいですか?
 
 AKS での Windows に必要なすべての機能を組み込む作業が行われていますが、ギャップに気付かれた場合は、オープンソースのアップストリーム [aks-engine][aks-engine] プロジェクトで、Azure で Kubernetes を実行する簡単で完全にカスタマイズ可能な方法が提供されており、Windows のサポートが含まれます。 [AKS のロードマップ][aks-roadmap]に関するページで今後の機能のロードマップを確認してください。
@@ -132,3 +144,6 @@ AKS で Windows Server コンテナーの使用を開始するには、[AKS で 
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
 [azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[client-source-ip]: concepts-network.md#ingress-controllers
+[kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-rdp]: rdp.md

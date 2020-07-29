@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 24ce0ff2fa5e0b023f2a0d6b92e657299518c044
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120502"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520155"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターにアカウントを移行する方法
 
@@ -27,7 +27,7 @@ CPP で所有者ロールを持っているユーザーの場合は、[発行元
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>アカウントがパートナー センターに移行されている
 
-CPP からパートナー センターへの移行が完了しているすべてのアカウントについては、アカウント管理はパートナー センターで行われます。 ユーザーの追加や削除などの変更は、CPP に同期されます。
+パートナー センターでアカウントを管理するようになりました。 ユーザーの追加や削除などの変更は、CPP に同期されます。
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>アカウントがまだパートナー センターに移行されていない
 
@@ -45,7 +45,7 @@ CPP からパートナー センターへの移行が完了しているすべて
 
 ## <a name="publishers-moving-from-cpp"></a>CPP から移行されている発行元
 
-アカウントを [Cloud パートナー ポータル (CPP)](https://cloudpartner.azure.com) から移行済みの場合は、新しいパートナー センター アカウントを作成する必要はありません。 新しいパートナー センター アカウントへのカスタマイズされたリンクを、電子メールや既存の CPP アカウントへのログイン後のバナー通知で受け取っているはずです。
+アカウントを CPP から移行済みの場合は、新しいパートナー センター アカウントを作成する必要はありません。 新しいパートナー センター アカウントへのカスタマイズされたリンクを、電子メールや既存の CPP アカウントへのログイン後のバナー通知で受け取っているはずです。
 
 このカスタマイズされたリンクにアクセスして、新しいパートナー センター アカウントを有効にした後は、パートナー センターで[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にアクセスして、アカウントに戻ることができます。
 

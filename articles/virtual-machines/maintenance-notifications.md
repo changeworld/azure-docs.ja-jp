@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678513"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510040"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
 
@@ -25,7 +25,7 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 再起動が必要な計画メンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
-- 段階はお客様への通知で始まります。 既定では、通知はサービス管理者と共同管理者に送信されます。 [アクティビティ ログ アラート](../service-health/alerts-activity-log-service-notifications.md)を使用して、通知の受信者や、電子メール、SMS、Webhook などのメッセージング オプションを追加できます。  
+- 段階はお客様への通知で始まります。 既定では、通知はサービス管理者と共同管理者に送信されます。 [アクティビティ ログ アラート](../service-health/alerts-activity-log-service-notifications-portal.md)を使用して、通知の受信者や、電子メール、SMS、Webhook などのメッセージング オプションを追加できます。  
 - 通知が送信されたら、*セルフサービス期間*を確認できます。 この期間中、どの仮想マシンが影響を受けるかを照会し、独自のスケジュールのニーズに基づいてメンテナンスを開始することができます。 セルフサービス期間は通常、約 35 日間です。
 - セルフサービス期間が過ぎると、"*予定メンテナンス期間*" が始まります。 この期間のある時点で、Azure は、仮想マシンに対して必要なメンテナンスをスケジュールし、適用します。 
 
@@ -76,7 +76,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンには、更新ドメイン (UD) の概念があります。 メンテナンスを実行するときに、Azure では UD の制約が遵守され、(同じ可用性セット内の) 別の UD の仮想マシンは再起動されません。  また、Azure は仮想マシンの次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、[Azure の仮想マシンの可用性](./linux/availability.md)に関するページを参照してください。
+高可用性の詳細については、[Azure の仮想マシンの可用性](availability.md)に関するページを参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
@@ -122,4 +122,3 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 ## <a name="next-steps"></a>次のステップ
 
 [Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用して計画メンテナンスを処理できます。
-
