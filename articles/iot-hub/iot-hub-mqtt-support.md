@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c3fa56daee5d2dba98fa9fd420524a9b7e4c60ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726113"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521124"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -304,7 +304,21 @@ IoT Hub からメッセージを受信するには、デバイスで、`devices/
 
 デバイスは、`devices/{device_id}/messages/devicebound/#` トピック フィルターで表されるデバイス固有のエンドポイントへのサブスクライブが成功するまで、IoT Hub からメッセージを受信することはありません。 サブスクリプションが確立した後、デバイスは、サブスクリプション後に送信された cloud-to-device メッセージのみを受信します。 デバイスが **CleanSession** フラグを **0** に設定した状態で接続している場合、サブスクリプションは複数のセッションで保持されます。 この場合、次回 **CleanSession 0** の状態で接続したときに、デバイスは、切断中にデバイスに対して送信された未処理メッセージを受信します。 ただし、デバイスが **CleanSession** フラグを **1** に設定して使用している場合は、デバイス エンドポイントにサブスクライブするまで、デバイスが IoT Hub からメッセージを受信することはありません。
 
-IoT Hub では、メッセージは**トピック名** `devices/{device_id}/messages/devicebound/` で配信されます。メッセージの プロパティがある場合は、`devices/{device_id}/messages/devicebound/{property_bag}` で配信されます。 `{property_bag}` には、メッセージ プロパティの URL でエンコードされた値/キーのペアが含まれています。 プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。 システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
+IoT Hub では、メッセージは**トピック名** `devices/{device_id}/messages/devicebound/` で配信されます。メッセージの プロパティがある場合は、`devices/{device_id}/messages/devicebound/{property_bag}` で配信されます。 `{property_bag}` には、メッセージ プロパティの URL でエンコードされた値/キーのペアが含まれています。 プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。 システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。 プロパティ バッグの形式に関するその他の詳細については、「[デバイスからクラウドへのメッセージの送信](#sending-device-to-cloud-messages)」を参照してください。
+
+クラウドからデバイスへのメッセージでは、プロパティ バッグの値は次の表に示されるように表記します。
+
+| プロパティ値 | [表記] | 説明 |
+|----|----|----|
+| `null` | `key` | プロパティ バッグにキーのみが含まれる |
+| 空の文字列 | `key=` | キーの後に等号が続き、値はない |
+| null 以外の空でない値 | `key=value` | キーの後に等号と値が続く |
+
+以下の例では、次の 3 つのアプリケーション プロパティを含むプロパティ バッグを示します。値が `null` の **prop1**、空の文字列 ("") の **prop2**、"a string" という値の **prop3**。
+
+```mqtt
+/?prop1&prop2=&prop3=a%20string
+```
 
 デバイス アプリが **QoS 2** を使用してトピックをサブスクライブしている場合、IoT Hub は **SUBACK** パケットに最大の QoS レベル 1 を許可します。 その後、IoT Hub は QoS 1 を使用してデバイスにメッセージを配信します。
 
@@ -332,7 +346,7 @@ IoT Hub では、メッセージは**トピック名** `devices/{device_id}/mess
 
 使用できる状態コードは次のとおりです。
 
-|Status | 説明 |
+|Status | Description |
 | ----- | ----------- |
 | 200 | Success |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |

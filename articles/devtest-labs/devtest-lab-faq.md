@@ -2,13 +2,13 @@
 title: Azure DevTest Labs に関する FAQ | Microsoft Docs
 description: この記事では、Azure DevTest Labs に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481665"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537489"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -200,7 +200,7 @@ DevTest Labs で VM を作成すると、その VM にアクセスするため�
 はい。複数のディスクを VM に接続できます。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Gen 2 イメージは DevTest Labs によってサポートされていますか。
-いいえ。 DevTest Labs サービスでは、[Gen 2 イメージ](../virtual-machines/windows/generation-2.md)はサポートされていません。 1 つのイメージに対して Gen 1 と Gen 2 の両方のバージョンを使用できる場合、DevTest Labs では、VM を作成するときに Gen 1 バージョンのイメージのみが表示されます。 使用可能な Gen 2 バージョンのみがある場合、イメージは表示されません。 
+はい。 DevTest Labs サービスでは、[Gen 2 イメージ](../virtual-machines/windows/generation-2.md)がサポートされています。 ただし、1 つのイメージに対して Gen 1 と Gen 2 の両方のバージョンを使用できる場合、DevTest Labs では、VM を作成するときに Gen 1 バージョンのイメージのみが表示されます。 Gen 2 バージョンのみが使用可能な場合は、そのイメージが表示されます。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>テストに Windows OS イメージを使用する場合、MSDN サブスクリプションを購入する必要はありますか。
 Azure でのご自分の開発またはテストに Windows クライアント OS イメージ (Windows 7 以降) を使用するには、次のいずれかの手順を実行します。
@@ -212,7 +212,7 @@ Azure でのご自分の開発またはテストに Windows クライアント O
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>ラボ内の VM をすべて削除するプロセスを自動化するにはどうすればよいですか。
-ラボの所有者として、Azure portal のお使いのラボから VM を削除できます。 また、PowerShell スクリプトを使用して、ラボ内の VM をすべて削除することもできます。 次の例では、**values to change** コメントの下のパラメーター値を変更します。 Azure portal でラボ ウィンドウから、subscriptionId、labResourceGroup、および labName 値を取得できます。
+ラボの所有者として、Azure portal のお使いのラボから VM を削除できます。 また、PowerShell スクリプトを使用して、ラボ内の VM をすべて削除することもできます。 次の例では、**values to change** コメントの下のパラメーター値を変更します。 `subscriptionId`、`labResourceGroup`、`labName` の各値は、Azure Portal のラボ ウィンドウから取得できます。
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -340,9 +340,9 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 ## <a name="networking"></a>ネットワーク
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
-お使いの VM が既存のインフラストラクチャと通信する必要がある場合は、お使いの DevTest Labs 環境内の既存の仮想ネットワークを使用することを検討してください。 ExpressRoute を使用している場合は、サブスクリプションで使用が割り当てられているお使いの IP アドレス空間がフラグメント化されないように、VNet およびサブネットの量を最小限に抑えることが必要な場合があります。
+お使いの VM が既存のインフラストラクチャと通信する必要がある場合は、お使いの DevTest Labs 環境内の既存の仮想ネットワークを使用することを検討してください。 ExpressRoute を使用する場合は、サブスクリプションで使用するために割り当てられた IP アドレス空間をフラグメント化しないように、仮想ネットワークおよびサブネットの数を最小限に抑えることをお勧めします。
 
-また、ここでは ([ハブ - スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke))、VNET ピアリング パターンの使用も検討してください。 このアプローチでは、サブスクリプション間で vnet およびサブネットでの通信が可能になります。 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。
+また、こちら ([ハブ - スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) では、仮想ネットワーク ピアリング パターンの使用も検討してください。 このアプローチでは、サブスクリプション間で vnet およびサブネットでの通信が可能になります。 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。
 
 サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)があります。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
 

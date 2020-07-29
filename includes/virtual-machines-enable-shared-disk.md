@@ -5,19 +5,23 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 29a90b94db5e6e5791361bad004efcf649e1950b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008348"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500604"
 ---
 ## <a name="limitations"></a>制限事項
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
+
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+
+共有ディスクは、複数のオペレーティング システムでサポートされます。 サポートされているオペレーティング システムについては、概念に関する記事の [Windows](../articles/virtual-machines/windows/disks-shared.md#windows) と [Linux](../articles/virtual-machines/linux/disks-shared.md#linux) のセクションを参照してください。
 
 ## <a name="disk-sizes"></a>ディスク サイズ
 
@@ -32,6 +36,23 @@ ms.locfileid: "81008348"
 > [!IMPORTANT]
 > `maxShares` の値は、ディスクがすべての VM からマウント解除されている場合にのみ設定または変更できます。 `maxShares`に使用できる値については、[ディスクのサイズ](#disk-sizes) を参照してください。
 
+#### <a name="cli"></a>CLI
+```azurecli
+
+az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku PremiumSSD_LRS --max-shares 2
+
+```
+
+#### <a name="powershell"></a>PowerShell
+```azurepowershell-interactive
+
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType PremiumSSD_LRS -CreateOption Empty
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+
+```
+
+#### <a name="azure-resource-manager"></a>Azure Resource Manager
 次のテンプレートを使用する前に、`[parameters('dataDiskName')]`、`[resourceGroup().location]`、`[parameters('dataDiskSizeGB')]`、および `[parameters('maxShares')]` を実際の値に置き換えてください。
 
 ```json
@@ -75,13 +96,12 @@ ms.locfileid: "81008348"
 
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Ultra ディスクを共有ディスクとしてデプロイする
 
-#### <a name="cli"></a>CLI
-
 共有ディスク機能が有効になっているマネージド ディスクをデプロイするには、`maxShares` パラメーターを 1 より大きい値に変更します。 これにより、複数の VM 間でディスクを共有できるようになります。
 
 > [!IMPORTANT]
 > `maxShares` の値は、ディスクがすべての VM からマウント解除されている場合にのみ設定または変更できます。 `maxShares`に使用できる値については、[ディスクのサイズ](#disk-sizes) を参照してください。
 
+#### <a name="cli"></a>CLI
 ```azurecli
 #Creating an Ultra shared Disk 
 az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1
@@ -91,6 +111,15 @@ az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-wr
 
 #Show shared disk properties:
 az disk show -g rg1 -n clidisk
+```
+
+#### <a name="powershell"></a>PowerShell
+```azurepowershell-interactive
+
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+
 ```
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
@@ -172,21 +201,12 @@ az disk show -g rg1 -n clidisk
 
 `maxShares>1` を使用して共有ディスクをデプロイしたら、そのディスクを1つ以上の VM にマウントできます。
 
-> [!IMPORTANT]
-> ディスクを共有するすべての VM は、同じ [近接通信配置グループ](../articles/virtual-machines/windows/proximity-placement-groups.md)にデプロイする必要があります。
-
 ```azurepowershell-interactive
 
 $resourceGroup = "myResourceGroup"
 $location = "WestCentralUS"
-$ppgName = "myPPG"
-$ppg = New-AzProximityPlacementGroup `
-   -Location $location `
-   -Name $ppgName `
-   -ResourceGroupName $resourceGroup `
-   -ProximityPlacementGroupType Standard
 
-$vm = New-AzVm -ResourceGroupName $resourceGroup -Name "myVM" -Location $location -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -ProximityPlacementGroup $ppg.Id
+$vm = New-AzVm -ResourceGroupName $resourceGroup -Name "myVM" -Location $location -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"
 
 $dataDisk = Get-AzDisk -ResourceGroupName $resourceGroup -DiskName "mySharedDisk"
 
@@ -239,5 +259,3 @@ PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESERVATION�
 
 
 ## <a name="next-steps"></a>次のステップ
-
-共有ディスクの使用に関心がある場合は、[プレビューにサインアップします](https://aka.ms/AzureSharedDiskPreviewSignUp)。
