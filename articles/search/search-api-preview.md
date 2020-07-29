@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/09/2020
+ms.openlocfilehash: b952d6b6fec9a1ec0dcd8af1a9566e67d3301d77
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246958"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496708"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
-この記事では、プレビュー段階にあるすべての機能を一覧表示しています。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+この記事では、パブリック プレビュー段階にあるすべての機能を一覧表示しています。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 プレビュー機能が一般公開に切り替えられると、この一覧から削除されます。 以下に記載されていない機能は、一般公開されているとお考えください。 一般公開については、[サービスの更新情報](https://azure.microsoft.com/updates/?product=search)、または[新機能](whats-new.md)に関するページでご確認いただけます。
 
@@ -31,8 +31,8 @@ ms.locfileid: "86246958"
 | [**カスタム エンティティの参照スキル**](cognitive-search-skill-custom-entity-lookup.md ) | AI エンリッチメント (スキルセット) | ユーザーが定義したカスタムの単語と語句のリストからテキストを検索するコグニティブ スキル。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルでは、ある程度のあいまい一致もサポートされており、類似しているが完全一致ではない一致を見つけるために適用できます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) を使用します。 |
 | [**PII 検出スキル**](cognitive-search-skill-pii-detection.md) | AI エンリッチメント (スキルセット) | 入力テキストから個人を特定できる情報を抽出する、インデックス作成中に使用されるコグニティブ スキルです。ユーザーには、さまざまな方法でそれをそのテキストからマスクするためのオプションが提供されます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) を使用します。 |
 | [**インクリメンタル エンリッチメント**](cognitive-search-incremental-indexing-conceptual.md) | インデクサーの構成| エンリッチメント パイプラインにキャッシュが追加され、スキルセットや別のオブジェクトに対する更新など、目的の変更によってコンテンツが変更されない場合に既存の出力を再利用できます。 キャッシュは、スキルセットによって生成されるエンリッチされたドキュメントにのみ適用されます。| この構成設定を追加するには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の[Create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) を使用します。 |
-| [**Cosmos DB インデクサー:MongoDB API、Gremlin API、Cassandra API**](search-howto-index-cosmosdb.md) | インデクサー データ ソース | Cosmos DB には、SQL の API が一般公開されていますが、MongoDB、Gremlin、Cassandra 用の API はプレビュー段階です。 | Gremlin と Cassandra のみでは、バックエンドでご自分のサブスクリプションがサポートされるように、[最初にサインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)します。 MongoDB データ ソースは、ポータルで構成できます。 それ以外の場合、3 つのすべての API のデータ ソースは、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-datasource) を使用して構成できます。 |
-|  [**Azure Data Lake Storage Gen2 インデクサー**](search-howto-index-azure-data-lake-storage.md) | インデクサー データ ソース | Azure Data Lake Storage Gen2 の内容とメタデータからインデックスを作成します。| バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-datasource) を使用します。 |
+| [**Cosmos DB インデクサー:MongoDB API、Gremlin API、Cassandra API**](search-howto-index-cosmosdb.md) | インデクサー データ ソース | Cosmos DB には、SQL の API が一般公開されていますが、MongoDB、Gremlin、Cassandra 用の API はプレビュー段階です。 | Gremlin と Cassandra のみでは、バックエンドでご自分のサブスクリプションがサポートされるように、[最初にサインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)します。 MongoDB データ ソースは、ポータルで構成できます。 それ以外の場合、3 つのすべての API のデータ ソースは、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して構成できます。 |
+|  [**Azure Data Lake Storage Gen2 インデクサー**](search-howto-index-azure-data-lake-storage.md) | インデクサー データ ソース | Azure Data Lake Storage Gen2 の内容とメタデータからインデックスを作成します。| バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用します。 |
 | [**moreLikeThis**](search-more-like-this.md) | クエリ | 特定のドキュメントに関連する別のドキュメントを検索します。 この機能は、以前のプレビューからありました。 | このクエリ パラメーターを、api-version=2020-06-30-Preview、2019-05-06-Preview、2016-09-01-Preview または 2017-11-11-Preview の [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) 呼び出しに追加します。 |
 
 ## <a name="calling-preview-rest-apis"></a>プレビューの REST API の呼び出し
