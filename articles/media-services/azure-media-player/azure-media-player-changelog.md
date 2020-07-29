@@ -8,6 +8,7 @@ ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83698311"
