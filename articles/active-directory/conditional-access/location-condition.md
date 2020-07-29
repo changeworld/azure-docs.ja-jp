@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518438"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -194,7 +194,7 @@ Azure AD にプロキシされる IPv6 トラフィックの大部分は、Micro
 
 ### <a name="api-support-and-powershell"></a>API のサポートと PowerShell
 
-ネームド ロケーションでは、API と PowerShell はまだサポートされていません。
+ネームド ロケーションに対して Graph API のプレビュー バージョンを利用できます。詳細については、[namedLocation API](/graph/api/resources/namedlocation?view=graph-rest-beta) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

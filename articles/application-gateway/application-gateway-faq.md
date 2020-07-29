@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982001"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506572"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -336,6 +336,58 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>.pfx ファイルのパスワードに特殊文字を使用できますか?
 
 いいえ、.pfx ファイルのパスワードには英数字のみを使用してください。
+
+### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>EV 証明書は DigiCert によって発行され、中間証明書は失効しています。 Application Gateway で証明書を更新するには、どうすればよいですか?
+
+証明機関 (CA) ブラウザーのメンバーが最近公開したレポートでは、お客様、Microsoft、大規模のテクノロジ コミュニティが使用する CA ベンダーが発行している、公的に信頼されている CA の業界標準に準拠していない複数の証明書について詳しく説明しています。 準拠していない CA に関するレポートは、こちらで確認できます。  
+
+* [バグ 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
+* [バグ 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
+
+業界のコンプライアンス要件に従って、CA ベンダーは非準拠の CA の失効と準拠 CA の発行を開始しました。お客様の証明書を再発行する必要があります。 Microsoft は、Azure サービスへの潜在的な影響を最小限に抑えるために、これらのベンダーと密接に連携しています。**ただし、BYOC ("Bring Your Own Certificate") シナリオで使用される証明書は、今もなお予期せずに失効するリスクがあります。**
+
+アプリケーションによって使用されている証明書が失効しているかどうかを確認するには、[DigiCert の発表](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement)と [Certificate Revocation Tracker](https://misissued.com/#revoked) を参照してください。 証明書が失効している場合、または失効する場合は、アプリケーションで使用されている CA ベンダーから新しい証明書を要求する必要があります。 証明書が予期せず失効していることが原因でアプリケーションの可用性が中断されないようにする場合、または失効した証明書を更新する場合は、BYOC をサポートするさまざまな Azure サービスの修復リンクについて、Azure の最新情報に関する投稿を参照してください。 https://azure.microsoft.com/updates/certificateauthorityrevocation/
+
+Application Gateway 固有の情報については、以下を参照してください。
+
+失効した ICA のいずれかによって発行された証明書を使用している場合、アプリケーションの可用性が中断し、アプリケーションによっては、次のようなさまざまなエラーメッセージが表示されることがあります。 
+
+1.  無効な証明書/失効した証明書
+2.  接続がタイムアウトしました
+3.  HTTP 502
+
+この問題によってアプリケーションが中断されないようにする、または失効した CA を再発行するには、次の操作を行う必要があります。 
+
+1.  証明書を再発行する方法については、証明書プロバイダーに問い合わせてください
+2.  再発行後、完全な[信頼チェーン](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (リーフ、中間、ルート証明書) を使用して、Azure Application Gateway/WAF で証明書を更新します。 証明書を使用している場所に基づいて、Application Gateway のリスナーまたは HTTP 設定で、次の手順に従って証明書を更新します。詳細については、記載されているドキュメントのリンクを確認してください。
+3.  再発行された証明書を使用するようにバックエンド アプリケーション サーバーを更新します。 使用しているバックエンド サーバーによっては、証明書の更新手順が異なる場合があります。 ベンダーからのドキュメントを確認してください。
+
+リスナーで証明書を更新するには、次の操作を行います。
+
+1.  [Azure Portal](https://portal.azure.com/) で、Application Gateway リソースを開きます。
+2.  証明書に関連付けられているリスナー設定を開きます。
+3.  [選択した証明書の更新または編集] をクリックします。
+4.  新しい PFX 証明書をパスワード付きでアップロードし、[保存] をクリックします。
+5.  Web サイトにアクセスして、サイトが想定どおりに動作しているかどうかを確認します。詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/renew-certificates)を参照してください。
+
+Application Gateway リスナーで Azure KeyVault からの証明書を参照している場合は、次の手順に従って簡単な変更を行うことをお勧めします。
+
+1.  [Azure portal](https://portal.azure.com/) で、Application Gateway に関連付けられている Azure KeyVault の設定に移動します。
+2.  再発行された証明書をストアに追加またはインポートします。 詳しくは、[こちらのドキュメントをご覧ください](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)。
+3.  証明書がインポートされたら、Application Gateway リスナー設定に移動し、[キー コンテナーから証明書を選択する] で [証明書] ドロップダウンをクリックし、最近追加した証明書を選択します。
+4.  [保存] をクリックします。キー コンテナー証明書による Application Gateway での TLS 終端の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)を参照してください。
+
+
+HTTP 設定で証明書を更新するには、次の操作を行います。
+
+Application Gateway/WAF サービスの V1 SKU を使用している場合は、バックエンド認証証明書として新しい証明書をアップロードする必要があります。
+1.  [Azure Portal](https://portal.azure.com/) で、Application Gateway リソースを開きます。
+2.  証明書に関連付けられている HTTP 設定を開きます。
+3.  [証明書の追加] をクリックして、再発行された証明書をアップロードし、[保存] をクリックします。
+4.  後で古い証明書を削除できます。[...] [オプション] ボタン (古い証明書の横にある) をクリックし、[削除] を選択して [保存] をクリックします。
+詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)を参照してください。
+
+Application Gateway/WAF サービスの V2 SKU を使用している場合、HTTP 設定で新しい証明書をアップロードする必要はありません。V2 SKU では "信頼されたルート証明書" が使用され、ここでアクションを実行する必要がないためです。
 
 ## <a name="configuration---ingress-controller-for-aks"></a>構成 - AKS のイングレス コントローラー
 

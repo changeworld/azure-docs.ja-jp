@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights での取り込みおよびフラット化ルールの今後の変更 | Microsoft Docs
+title: Azure Time Series Insights Gen2 での取り込みおよびフラット化ルールの今後の変更 | Microsoft Docs
 description: 取り込み規則の変更
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 067244aa40256e3cc76239343790974bc3c06481
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f667ca5ad82182fcf40d5c1fbb325f2ea99a7e08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919035"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495110"
 ---
 # <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>新しい環境における JSON フラット化とエスケープの規則に関する今後の変更
 
-これらの変更は*新しい* Azure Time Series Insights の従量課金制 (PAYG) 環境にのみ適用されます。 これらの変更は、Standard (S) SKU 環境には適用されません。
+**これらの変更は*新しく作成された* Azure Time Series Insights Gen2 環境にのみ適用されます。これらの変更は、Gen1 環境には適用されません。**
 
-Azure Time Series Insights 環境では、特定の名前付け規則に従って、ストレージ列が動的に作成されます。 イベントが取り込まれると、一連のルールが JSON ペイロードとプロパティ名に適用されます。 JSON データのフラット化の方法および格納方法に対する変更は、新しい Azure Time Series Insights の従量課金制環境にて、2020 年 7 月に適用されます。 この変更は、次のような場合に影響を及ぼします。
+Azure Time Series Insights Gen2 環境では、特定の一連の名前付け規則に従って、ストレージ列が動的に作成されます。 イベントが取り込まれると、一連のルールが JSON ペイロードとプロパティ名に適用されます。 JSON データのフラット化の方法および格納方法に対する変更は、新しい Azure Time Series Insights Gen2 環境に、2020 年 7 月に適用されます。 この変更は、次のような場合に影響を及ぼします。
 
 * JSON ペイロードに入れ子になったオブジェクトが含まれている場合
 *  JSON ペイロードに配列が含まれている場合
@@ -45,15 +45,16 @@ Azure Time Series Insights 環境では、特定の名前付け規則に従っ�
 
  #### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>ペイロードに入れ子になった JSON または特殊文字が含まれており、[時系列モデル](.\time-series-insights-update-tsm.md)変数式の作成が自動化されている場合:
 
-*  新しい取り込み規則に一致するように [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch#typesbatchput) を実行しているクライアント コードを更新します。 たとえば、前の `"value": {"tsx": "$event.series_value.Double"}` の[時系列式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)は、次のいずれかのオプションに更新する必要があります。
+*  新しい取り込み規則に一致するように [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) を実行しているクライアント コードを更新します。 たとえば、前の `"value": {"tsx": "$event.series_value.Double"}` の[時系列式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)は、次のいずれかのオプションに更新する必要があります。
     * `"value": {"tsx": "$event.series.value.Double"}`
     * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 
-
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Long データ型のサポートの追加](./time-series-insights-long-data-type.md)」を参照してください。
+- [Azure Time Series Insights Gen2 のストレージとイングレス](./time-series-insights-update-storage-ingress.md)に関するページをご覧ください。
 
-- [Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)に関するページをご覧ください。
+- [タイム シリーズ クエリ API](./concepts-query-overview.md) を使用してデータをクエリする方法の詳細をご覧ください。
+
+- [新しいタイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)の詳細をご覧ください。
 

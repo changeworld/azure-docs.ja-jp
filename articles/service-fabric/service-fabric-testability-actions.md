@@ -5,12 +5,12 @@ author: motanv
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14b2b5bd2577a10ad77a715fb5d20e10da84cf1d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692582"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518981"
 ---
 # <a name="testability-actions"></a>Testability アクション
 Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。 これらは、Testability アクションとして公開されます。 これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。 これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
@@ -79,7 +79,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 次のスクリーンショットは、実行中の **Restart-ServiceFabricNode** Testability コマンドを示しています。
 
-![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
+![PowerShell での Restart-ServiceFabricNode コマンド実行のスクリーンショット。](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
 最初の **Get-ServiceFabricNode** (Service Fabric PowerShell モジュールのコマンドレット) の出力は、ローカル クラスターに 5 つのノードがあることを示しています (Node.1 ～ Node.5)。 Node.4 というノードで Testability アクション (コマンドレット) **Restart-ServiceFabricNode** を実行した後、このノードのアップタイムがリセットされていることが示されます。
 

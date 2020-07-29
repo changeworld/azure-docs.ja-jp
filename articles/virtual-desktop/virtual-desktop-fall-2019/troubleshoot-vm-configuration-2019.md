@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop セッション ホストのトラブルシューティング - Azure
+title: Windows Virtual Desktop セッション ホストのトラブルシューティング Fall 2019 - Azure
 description: Windows Virtual Desktop セッション ホスト仮想マシンを構成しているときに発生する問題を解決する方法。
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527661"
 ---
-# <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
+# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成のトラブルシューティング
 
 >[!IMPORTANT]
 >この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-vm-configuration.md)を参照してください。

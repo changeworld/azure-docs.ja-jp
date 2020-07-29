@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553138"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496419"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -34,26 +34,29 @@ ms.locfileid: "85553138"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure Cognitive Search サービス](https://docs.microsoft.com/azure/search/search-create-service-portal)、および [Azure Cognitive Search インデックス](https://docs.microsoft.com/azure/search/search-create-index-portal)がある前提で説明します。  
+この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure Search Cognitive Search サービス](search-create-service-portal.md)、および [インデックス](search-what-is-an-index.md)がある前提で説明します。  
 
 ## <a name="create-security-field"></a>セキュリティ フィールドを作成する
 
 ドキュメントには、アクセス権を持っているグループを指定するフィールドが含まれている必要があります。 この情報は、発行元に返される結果セットから選択または拒否するドキュメントのフィルター条件になります。
 ここでは、セキュリティで保護されたファイルのインデックスがあり、各ファイルにはさまざまなユーザーがアクセスできると想定して説明します。
+
 1. フィールド `group_ids` (ここでは任意の名前を選択できます) を `Collection(Edm.String)` として追加します。 ユーザーが持っているアクセス権に基づいて検索結果がフィルターされるように、フィールドの `filterable` 属性が `true` に設定されていることを確認します。 たとえば、`file_name` が "secured_file_b" のドキュメントで `group_ids` フィールドを `["group_id1, group_id2"]` に設定した場合、グループ ID "group_id1" または "group_id2" に属するユーザーのみが、このファイルに対して読み取りアクセス権を持ちます。
+   
    検索要求の一部として返されないように、フィールドの `retrievable` 属性が `false` に設定されていることを確認します。
+
 2. この例のために、`file_id` および `file_name` フィールドも追加します。  
 
-```JSON
-{
-    "name": "securedfiles",  
-    "fields": [
-        {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "file_name", "type": "Edm.String"},
-        {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
-    ]
-}
-```
+    ```JSON
+    {
+        "name": "securedfiles",  
+        "fields": [
+            {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+            {"name": "file_name", "type": "Edm.String"},
+            {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
+        ]
+    }
+    ```
 
 ## <a name="pushing-data-into-your-index-using-the-rest-api"></a>REST API を使用してインデックスにデータをプッシュする
   
