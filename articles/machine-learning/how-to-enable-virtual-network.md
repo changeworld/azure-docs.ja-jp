@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/30/2020
+ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186862"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520700"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,24 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 
 __Azure Blob Storage__ では、ワークスペース マネージド ID は [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)としても追加されるため、Blob Storage からデータを読み取ることができます。
 
+
+### <a name="azure-machine-learning-designer-default-datastore"></a>Azure Machine Learning デザイナーの既定のデータストア
+
+既定では、デザイナーはワークスペースにアタッチされているストレージ アカウントを使用して出力を格納します。 ただし、アクセスできる任意のデータストアに出力を格納するように指定することもできます。 お使いの環境で仮想ネットワークが使用されている場合は、これらの制御を使用して、データの安全とアクセス可能な状態を維持できます。
+
+パイプラインの新しい既定のストレージを設定するには:
+
+1. パイプライン ドラフトで、パイプラインのタイトルの近くにある**設定の歯車アイコン**を選択します。
+1. **[Select default datastore]\(既定のデータストアの選択\)** を選択します。
+1. 新しいデータストアを指定します。
+
+また、既定のデータストアをモジュールごとにオーバーライドすることもできます。 これにより、個々のモジュールのストレージの場所を制御できます。
+
+1. 出力を指定するモジュールを選択します。
+1. **[Output settings]\(出力設定\)** セクションを展開します。
+1. **[Override default output settings]\(既定の出力設定のオーバーライド\)** を選択します。
+1. **[Set output settings]\(出力設定の設定\)** を選択します。
+1. 新しいデータストアを指定します。
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 のアクセスの制御
 
@@ -286,8 +304,8 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 - NSG 規則を使用して、アウトバウンドのインターネット接続を拒否します。
 
 - __コンピューティング インスタンス__ または __コンピューティング クラスター__ の場合は、次の項目への送信トラフィックを制限します。
-   - Azure Storage (__Storage.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
-   - Azure Container Registry (__AzureContainerRegistry.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
+   - Azure Storage (__Storage__ の__サービス タグ__を使用)
+   - Azure Container Registry (__AzureContainerRegistry__ の__サービス タグ__を使用)
    - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
    - Azure Resource Manager (__AzureResourceManager__ の __サービス タグ__ を使用)
    - Azure Active Directory (__AzureActiveDirectory__ の __サービス タグ__ を使用)
@@ -326,11 +344,15 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 > run = exp.submit(est)
 > ```
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>強制トンネリングのユーザー定義ルート
+### <a name="forced-tunneling"></a>強制トンネリング
 
-Machine Learning コンピューティングで強制トンネリングを使用している場合は、[ユーザー定義ルート（UDR）](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) を計算リソースを含むサブネットに追加します。
+Azure Machine Learning コンピューティングで[強制トンネリング](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)を使用している場合は、コンピューティング リソースを含むサブネットからのパブリック インターネットを使用した通信を許可する必要があります。 この通信は、タスクのスケジュール設定と Azure Storage へのアクセスに使用されます。
 
-* 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、リソースが存在する Azure Machine Learning service の IP アドレスも追加します。 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
+これを行うには、次の 2 つの方法があります。
+
+* [Virtual Network NAT](../virtual-network/nat-overview.md) を使用する。 NAT ゲートウェイにより、お使いの仮想ネットワーク内の 1 つ以上のサブネットからの送信インターネット接続が提供されます。 詳細については、「[NAT ゲートウェイ リソースを使用した仮想ネットワークの設計](../virtual-network/nat-gateway-resource.md)」を参照してください。
+
+* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、リソースが存在する Azure Machine Learning service の IP アドレスも追加します。 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
 
     * [Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードし、`BatchNodeManagement.<region>` と `AzureMachineLearning.<region>` のファイルを検索する。ここで、`<region>` は Azure リージョンです。
 
@@ -340,14 +362,15 @@ Machine Learning コンピューティングで強制トンネリングを使用
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+    
+    UDR を追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 __[次ホップの種類]__ を __[インターネット]__ に設定します。 次の図に、Azure portal でのこの UDR の例を示します。
 
-* Azure Storage へのアウトバウンド トラフィックは、オンプレミス ネットワーク アプライアンスによってブロックされないようにする必要があります。 具体的には、URL を `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の形式にします。
+    ![アドレス プレフィックスの UDR の例](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-UDR を追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 __[次ホップの種類]__ を __[インターネット]__ に設定します。 次の図に、Azure portal でのこの UDR の例を示します。
+    定義する UDR に加えて、Azure Storage への送信トラフィックがオンプレミスのネットワーク アプライアンス経由で許可されている必要があります。 具体的には、このトラフィックの URL は、`<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、および `<account>.blob.core.windows.net` の形式になります。 
 
-![アドレス プレフィックスの UDR の例](./media/how-to-enable-virtual-network/user-defined-route.png)
+    詳細については、「[仮想ネットワーク内に Azure Batch プールを作成する](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)」を参照してください。
 
-詳細については、「[仮想ネットワーク内に Azure Batch プールを作成する](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)」を参照してください。
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>仮想ネットワーク内にコンピューティング クラスターを作成する
 
@@ -480,6 +503,40 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 プライベート IP アドレスを有効にするには、"_内部ロード バランサー_" を使用するように AKS を構成します。 
 
+#### <a name="network-contributor-role"></a>ネットワーク共同作成者ロール
+
+> [!IMPORTANT]
+> 前に作成した仮想ネットワークを提供して AKS クラスターを作成またはアタッチする場合は、AKS クラスターのサービス プリンシパル (SP) またはマネージド ID に、仮想ネットワークを含むリソース グループに対する_ネットワーク共同作成者_ロールを付与する必要があります。 これは、内部ロード バランサーをプライベート IP に変更する前に行う必要があります。
+>
+> ネットワーク共同作成者として ID を追加するには、次の手順に従います。
+
+1. AKS のサービス プリンシパルまたはマネージド ID を検索するには、次の Azure CLI コマンドを使用します。 `<aks-cluster-name>` をクラスターの名前に置き換えます。 `<resource-group-name>` を、_AKS クラスターが含まれている_リソース グループの名前に置き換えます。
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    このコマンドによって `msi` の値が返された場合は、次のコマンドを使用して、マネージド ID のプリンシパル ID を識別します。
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. 仮想ネットワークが含まれているリソース グループの ID を検索するには、次のコマンドを使用します。 `<resource-group-name>` を、_仮想ネットワークが含まれている_リソース グループの名前に置き換えます。
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. ネットワーク共同作成者としてサービス プリンシパルまたはマネージド ID を追加するには、次のコマンドを使用します。 `<SP-or-managed-identity>` を、サービス プリンシパルまたはマネージド ID 用に返された ID に置き換えます。 `<resource-group-id>` を、仮想ネットワークが含まれているリソース グループ用に返された ID に置き換えます。
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
+AKS での内部ロードバランサーの使用の詳細については、「[Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する](/azure/aks/internal-lb)」を参照してください。
+
+#### <a name="enable-private-ip"></a>プライベート IP を有効にする
+
 > [!IMPORTANT]
 > Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 既存のクラスターの更新として有効にする必要があります。
 
@@ -570,38 +627,6 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-__ネットワーク共同作成者ロール__
-
-> [!IMPORTANT]
-> 前に作成した仮想ネットワークを提供して AKS クラスターを作成またはアタッチする場合は、AKS クラスターのサービス プリンシパル (SP) またはマネージド ID に、仮想ネットワークを含むリソース グループに対する_ネットワーク共同作成者_ロールを付与する必要があります。 これは、内部ロード バランサーをプライベート IP に変更する前に行う必要があります。
->
-> ネットワーク共同作成者として ID を追加するには、次の手順に従います。
-
-1. AKS のサービス プリンシパルまたはマネージド ID を検索するには、次の Azure CLI コマンドを使用します。 `<aks-cluster-name>` をクラスターの名前に置き換えます。 `<resource-group-name>` を、_AKS クラスターが含まれている_リソース グループの名前に置き換えます。
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
-    ``` 
-
-    このコマンドによって `msi` の値が返された場合は、次のコマンドを使用して、マネージド ID のプリンシパル ID を識別します。
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
-    ```
-
-1. 仮想ネットワークが含まれているリソース グループの ID を検索するには、次のコマンドを使用します。 `<resource-group-name>` を、_仮想ネットワークが含まれている_リソース グループの名前に置き換えます。
-
-    ```azurecli-interactive
-    az group show -n <resource-group-name> --query id
-    ```
-
-1. ネットワーク共同作成者としてサービス プリンシパルまたはマネージド ID を追加するには、次のコマンドを使用します。 `<SP-or-managed-identity>` を、サービス プリンシパルまたはマネージド ID 用に返された ID に置き換えます。 `<resource-group-id>` を、仮想ネットワークが含まれているリソース グループ用に返された ID に置き換えます。
-
-    ```azurecli-interactive
-    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
-    ```
-AKS での内部ロードバランサーの使用の詳細については、「[Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する](/azure/aks/internal-lb)」を参照してください。
-
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances (ACI) を使用する
 
 Azure Container Instances は、モデルのデプロイ時に動的に作成されます。 Azure Machine Learning で仮想ネットワーク内に ACI を作成できるようにするには、デプロイで使用されるサブネットに対して__サブネットの委任__を有効にする必要があります。
@@ -630,6 +655,7 @@ Azure Firewall での Azure Machine Learning の使用の詳細については�
 > 仮想ネットワーク内に Azure Container Registry (ACR) を配置できますが、次の前提条件を満たしている必要があります。
 >
 > * お使いの Azure Machine Learning ワークスペースが Enterprise Edition である必要があります。 アップグレードの詳細については、「[Enterprise Edition へのアップグレード](how-to-manage-workspace.md#upgrade)」を参照してください。
+> * Azure Machine Learning ワークスペースのリージョンは、[Private Link が有効なリージョン](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)である必要があります。 
 > * Azure Container Registry が Premium バージョンである必要があります。 アップグレードの詳細については、「[SKU の変更](/azure/container-registry/container-registry-skus#changing-skus)」を参照してください。
 > * トレーニングまたは推論に使用されるストレージ アカウントとコンピューティング ターゲットと同じ仮想ネットワークとサブネット内に Azure Container Registry が存在している必要があります。
 > * Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)が含まれている必要があります。

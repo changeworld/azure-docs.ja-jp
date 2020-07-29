@@ -32,9 +32,9 @@
       href: release-notes.md
 - name: クイックスタート
   items:
-    - name: Azure Synapse ワークスペースを作成する
+    - name: Synapse ワークスペースを作成する
       href: quickstart-create-workspace.md
-    - name: Azure Synapse Studio を使用する
+    - name: Synapse Studio を使用する
       href: quickstart-synapse-studio.md
     - name: Power BI ワークスペースをリンクする
       href: quickstart-power-bi.md
