@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250232"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506555"
 ---
 # <a name="how-an-application-gateway-works"></a>アプリケーション ゲートウェイの動作
 
@@ -62,7 +62,7 @@ ms.locfileid: "85250232"
 
 x-forwarded-proto の有効な値は、HTTP または HTTPS です。 x-forwarded-port には、要求がアプリケーション ゲートウェイに到達したポートが指定されます。 X-original-host ヘッダーには、到着した要求にあった元のホスト ヘッダーが含まれています。 このヘッダーは、トラフィックがバックエンドにルーティングされる前に受信ホスト ヘッダーが変更される Azure Web サイト統合で役立ちます。 オプションとしてセッション アフィニティが有効になっている場合は、ゲートウェイで管理されるアフィニティ Cookie が挿入されます。
 
-[HTTP ヘッダーの書き換え](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)を使用してヘッダーを変更したり、path-override 設定を使用して URI パスを変更したりするようにアプリケーション ゲートウェイを構成できます。 ただし、そのように構成されていない限り、すべての受信要求はバックエンドにプロキシ処理されます。
+[HTTP ヘッダーと URL を書き換える](rewrite-http-headers-url.md)方法に関するページを使用して、要求および応答ヘッダーを変更したり、path-override 設定を使用して、URI パスを変更したりするようにアプリケーション ゲートウェイを構成できます。 ただし、そのように構成されていない限り、すべての受信要求はバックエンドにプロキシ処理されます。
 
 ## <a name="next-steps"></a>次のステップ
 

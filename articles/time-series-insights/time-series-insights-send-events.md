@@ -5,20 +5,20 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037292"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495076"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
+# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>イベント ハブを使用して Azure Time Series Insights Gen1 環境にイベントを送信する
 
 この記事では、Azure Event Hubs でイベント ハブを作成して構成する方法について説明します。 また、サンプル アプリケーションを実行し、Event Hubs から Azure Time Series Insights にイベントをプッシュする方法も説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Azure Time Series Insights](./time-series-insights-update-create-environment.md) で環境を表示してください。
 
@@ -38,10 +38,10 @@ ms.locfileid: "86037292"
 
     [![コンシューマー グループを作成する](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
-1. Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
+1. Azure Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
 
     > [!IMPORTANT]
-    > このコンシューマー グループがその他のサービス (Azure Stream Analytics ジョブや別の Time Series Insights 環境など) で使用されていないことをご確認ください。 コンシューマー グループが他のサービスで使用されている場合、この環境と他のサービスの両方で読み取り操作が悪影響を受けます。 コンシューマー グループとして **$Default** を使用した場合、他の閲覧者がそのコンシューマー グループを再利用する可能性があります。
+    > このコンシューマー グループがその他のサービス (Azure Stream Analytics ジョブや別の Azure Time Series Insights 環境など) で使用されていないことをご確認ください。 コンシューマー グループが他のサービスで使用されている場合、この環境と他のサービスの両方で読み取り操作が悪影響を受けます。 コンシューマー グループとして **$Default** を使用した場合、他の閲覧者がそのコンシューマー グループを再利用する可能性があります。
 
 1. メニューで、 **[設定]** の **[共有アクセス ポリシー]** を選択してから、 **[追加]** を選択します。
 
@@ -53,11 +53,11 @@ ms.locfileid: "86037292"
 
 1. **[要求]** で、 **[送信]** チェック ボックスをオンにします。
 
-## <a name="add-a-time-series-insights-instance"></a>Time Series Insights のインスタンスを追加する
+## <a name="add-an-azure-time-series-insights-instance"></a>Azure Time Series Insights のインスタンスを追加する
 
-Time Series Insights の更新では、インスタンスを使用して、受信したテレメトリ データにコンテキスト データが追加されます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 Time Series Insight のインスタンスと**時系列 ID** について詳しくは、「[時系列 モデル](./concepts-model-overview.md)」をご覧ください。
+Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用し、受信テレメトリにコンテキスト データを追加できます。 TSM では、タグまたはシグナルが "*インスタンス*" と呼ばれており、"*インスタンス フィールド*" にコンテキスト データを格納できます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 インスタンス フィールドにデータを格納する方法の詳細については、[タイム シリーズ モデル](./concepts-model-overview.md)の概要を参照してください。
 
-### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
+### <a name="create-a-azure-time-series-insights-event-source"></a>Azure Time Series Insights のイベント ソースを作成する
 
 1. イベント ソースを作成していない場合は、[イベント ソースを作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)手順を実行します。
 
@@ -81,7 +81,7 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 1. **[Click to start]\(クリックして開始\)** を選択します。 
 
     > [!TIP]
-    > また、風力発電シミュレーターでは、[Time Series Insights GA クエリ API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) でペイロードとして使用できる JSON も作成されます。
+    > また、風力発電シミュレーターでは、[Azure Time Series Insights GA クエリ API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) でペイロードとして使用できる JSON も作成されます。
 
     > [!NOTE]
     > シミュレーターは、ブラウザーのタブが閉じられるまでデータを送信し続けます。
@@ -203,6 +203,6 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Time Series Insights エクスプローラーで[自分の環境を表示](https://insights.timeseries.azure.com)します。
+- Azure Time Series Insights エクスプローラーで[自分の環境を表示](https://insights.timeseries.azure.com)します。
 
 - [IoT Hub デバイス メッセージ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)の詳細を参照してください。

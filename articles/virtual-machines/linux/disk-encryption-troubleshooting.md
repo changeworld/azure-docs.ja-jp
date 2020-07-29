@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970465"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510482"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
+# <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Linux VM の Azure Disk Encryption のトラブルシューティング ガイド
 
 このガイドは、所属組織が Azure Disk Encryption を使用しいる IT プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。 この記事は、ディスクの暗号化に関連する問題のトラブルシューティングを支援することを目的としています。
 
@@ -111,5 +111,5 @@ CLI で Azure Disk Encryption を無効にするには、[az vm encryption disab
 
 このドキュメントでは、Azure Disk Encryption で発生する一般的な問題の詳細と、それらの問題のトラブルシューティング方法について説明しました。 このサービスと機能の詳細については、次の記事を参照してください。
 
-- [Azure Security Center でディスクの暗号化を適用する](../../security-center/security-center-apply-disk-encryption.md)
+- [Azure Security Center でディスクの暗号化を適用する](../../security-center/security-center-virtual-machine-protection.md)
 - [保存時の Azure データの暗号化](../../security/fundamentals/encryption-atrest.md)

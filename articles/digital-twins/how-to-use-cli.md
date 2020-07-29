@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 53b20ded8e4b4a003beff1ef8489ecd9ff3451ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5272babf794529e5e9bd87a3c4a96e6df5758fb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537464"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Azure Digital Twins CLI を使用する
 
@@ -36,4 +36,4 @@ CLI は、インスタンスの一般的な管理だけでなく、デプロイ�
 ## <a name="next-steps"></a>次のステップ
 
 CLI コマンドの代替方法として、API および SDK を使用して Azure Digital Twins インスタンスを管理する方法を参照してください。
-* [Azure Digital Twins の API および SDK を使用する](how-to-use-apis-sdks.md)
+* [*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)

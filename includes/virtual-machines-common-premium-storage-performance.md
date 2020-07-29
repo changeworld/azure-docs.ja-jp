@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218208"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526038"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -138,7 +138,7 @@ VM のサイズと、各種 VM で利用できる IOPS、スループット、�
 IO 要求は、アプリケーションが実行する入力/出力操作の単位です。 IO 要求の特性 (ランダムまたは順次、読み取りまたは書き込み、サイズの大小) を特定すると、アプリケーションのパフォーマンス要件の決定に役立ちます。 アプリケーション インフラストラクチャの設計時に適切な判断を下すには、IO 要求の特性を理解することが重要です。 最適なパフォーマンスを実現するには、IO を均等に分散する必要があります。
 
 IO サイズは、さらに重要な要素の 1 つです。 IO サイズは、アプリケーションによって生成される入力/出力操作の要求のサイズです。 IO サイズはパフォーマンスに影響を及ぼし、特にアプリケーションが実現できる IOPS と帯域幅に大きな影響を及ぼします。 次の式は、IOPS、IO サイズ、帯域幅/スループットの関係を示しています。  
-    ![](media/premium-storage-performance/image1.png)
+    ![IOPS と IO サイズを乗算した結果がスループットになるという等式を示す図。](media/premium-storage-performance/image1.png)
 
 IO サイズを変更できるアプリケーションもあれば、変更できないアプリケーションもあります。 たとえば、SQL Server では最適な IO サイズが自動的に決定され、ユーザーがこれを変更することはできません。 一方、Oracle には、データベースの IO 要求サイズの構成に使用できる [DB\_BLOCK\_SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) というパラメーターが用意されています。
 
@@ -371,13 +371,13 @@ SQL Server の [並列処理の次数](https://technet.microsoft.com/library/ms1
 
 *最適なキューの深さ*  
 キューの深さの値が非常に大きい場合、欠点もあります。 キューの深さの値が大きすぎると、アプリケーションは IOPS を大幅に引き上げようとします。 IOPS が十分にプロビジョニングされた永続ディスクをアプリケーションが使用できる場合を除き、これはアプリケーションの待機時間に悪影響を及ぼす可能性があります。 次の式は、IOPS、待機時間、キューの深さの関係を示しています。  
-    ![](media/premium-storage-performance/image6.png)
+    ![IOPS と待機時間を乗算した結果がキューの深さになるという等式を示す図。](media/premium-storage-performance/image6.png)
 
 キューの深さを大きな値に構成するのではなく、待機時間に影響を及ぼさずにアプリケーションに十分な IOPS を提供できる最適な値に構成します。 たとえば、アプリケーションの待機時間を 1 ミリ秒にする必要がある場合、5,000 IOPS を実現するために必要なキューの深さは、QD = 5000 x 0.001 = 5 になります。
 
 *ストライプ ボリュームのキューの深さ*  
 ストライプ ボリュームの場合、すべてのディスクのキューの深さがそれぞれピーク時のキューの深さになるように、十分なキューの深さを維持します。 たとえば、キューの深さ 2 をプッシュするアプリケーションがあり、ストライプに 4 つのディスクがあるとします。 2 つの IO 要求が 2 つのディスクに送信されると、残りの 2 つのディスクはアイドル状態になります。 そのため、すべてのディスクがビジー状態になるようにキューの深さを構成します。 次の式は、ストライプ ボリュームのキューの深さを決定する方法を示しています。  
-    ![](media/premium-storage-performance/image7.png)
+    ![ディスクあたりの QD とボリュームあたりの列数を乗算した結果がストライプ ボリュームの QD になるという等式を示す図](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Throttling
 

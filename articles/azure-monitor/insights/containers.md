@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14fa6859a16dc173e75091983abee717bf813220
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984626"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499023"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
@@ -45,7 +45,7 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 
 次の表は、Azure Monitor によるコンテナー インベントリ、パフォーマンス、およびログの Docker オーケストレーションとオペレーティング システムの監視サポートの概要を示しています。   
 
-| | ACS | Linux | Windows | コンテナー<br>インベントリ | Image<br>インベントリ | Node<br>インベントリ | コンテナー<br>パフォーマンス | コンテナー<br>Event | Event<br>ログ | コンテナー<br>ログ |
+|Docker オーケストレーション | ACS | Linux | Windows | コンテナー<br>インベントリ | Image<br>インベントリ | Node<br>インベントリ | コンテナー<br>パフォーマンス | コンテナー<br>Event | Event<br>ログ | コンテナー<br>ログ |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -105,11 +105,11 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
        - ｢[Log Analytics Linux エージェント for Kubernetes を構成する](#configure-a-log-analytics-linux-agent-for-kubernetes)｣をお読みください｡
        - ｢[Log Analytics Windows エージェント for Kubernetes を構成する](#configure-a-log-analytics-windows-agent-for-kubernetes)｣をお読みください。
        - Helm を使用して Linux Kubernetes に Log Analytics エージェントをデプロイする方法に関するセクションを参照してください。
-     - Azure Container Service DC/OS クラスターがある場合、詳細については、[Azure Monitor を使用した Azure Container Service DC/OS クラスターの監視](../../container-service/dcos-swarm/container-service-monitoring-oms.md)に関するページを参照してください。
+     - Azure Container Service DC/OS クラスターがある場合、詳細については、[Azure Monitor を使用した Azure Container Service DC/OS クラスターの監視](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms)に関するページを参照してください。
      - Docker Swarm モード環境がある場合、詳細については、「Log Analytics エージェント for Docker Swarm を構成する」を参照してください。
      - Service Fabric クラスターがある場合、詳細については、[Azure Monitor を使用したコンテナーの監視](../../service-fabric/service-fabric-diagnostics-oms-containers.md)に関するページを参照してください。
 
-Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
+Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 > [!IMPORTANT]
 > Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) をインストールする**前**に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
@@ -505,7 +505,7 @@ dockerd --register-service -H npipe:// -H 0.0.0.0:2375
 Start-Service docker
 ```
 
-Windows コンテナーで使用する Docker デーモン構成の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
+Windows コンテナーで使用する Docker デーモン構成の詳細については、「[Windows 上の Docker エンジン](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 #### <a name="install-windows-agents"></a>Windows エージェントのインストール
 
