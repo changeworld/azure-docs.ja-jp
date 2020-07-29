@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537516"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -46,7 +46,7 @@ Azure Digital Twins は、**イベント ルート**を使用して、サービ�
 
 コンピューティング リソースは、セキュリティとアクセス許可を個別に確立する必要もあります。
 
-デジタル ツイン イベントを処理するように Azure 関数を設定する手順については、[方法: データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページを参照してください。
+デジタル ツイン イベントを処理するように Azure 関数を設定する手順については、[*方法:データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)に関するページを参照してください。
 
 ## <a name="create-an-endpoint"></a>エンドポイントの作成
 
@@ -90,7 +90,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 ## <a name="next-steps"></a>次のステップ
 
 イベント ルートを設定および管理する方法を見る:
-* [エンドポイントとルートを管理する](how-to-manage-routes.md)に関するページ
+* [*方法:エンドポイントとルートを管理する*](how-to-manage-routes.md)
 
 または、Azure Functions を使用して Azure Digital Twins 内でイベントをルーティングする方法を見る:
-* [データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページ
+* [*方法:データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: d4ceb25b9b81c831ed1b285a875742ebfaa6d24f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232646"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496997"
 ---
 # <a name="weather-partner-integration"></a>気象パートナーの統合
 
@@ -36,10 +36,10 @@ ms.locfileid: "86232646"
 
 FarmBeats API には、Swagger の技術文書が含まれています。 すべての API とそれに対応する要求または応答については、[FarmBeats Swagger](https://aka.ms/farmbeatsswagger) に関するページを参照してください。 
 
-FarmBeats がインストールされている場合、[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger) で FarmBeats swagger にアクセスできます
+FarmBeats がインストールされている場合、`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger` で FarmBeats swagger にアクセスできます
 
 "-api" は、FarmBeats Web サイト名に追加されることに注意してください。
-API エンドポイントは、[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net) です
+API エンドポイントは、`https://yourfarmbeatswebsitename-api.azurewebsites.net` です
 
 ### <a name="datahub-lib"></a>データ ハブ ライブラリ
 
@@ -134,7 +134,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
 
 ### <a name="details-of-the-objects"></a>オブジェクトの詳細
 
-  **WeatherDataModel** |  |
+  WeatherDataModel | [説明] |
   --- | ---
   名前  | 気象データ モデルの名前 |
   説明  | そのモデルについてのわかりやすい説明を入力します。 |
@@ -147,7 +147,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
   weatherMeasures > AggregationType  | None、Average、Maximum、Minimum、StandardDeviation、Sum、Total のいずれか
   weatherMeasures > Depth  | センサーの深さ (センチメートル単位)。 たとえば、地面より 10 cm 下の湿度。
   weatherMeasures > Description  | そのメジャーについてのわかりやすい説明を入力します。 |
-  **JobType** |  |
+  **JobType** | **説明** |
   名前  | ジョブの名前 (例: Get_Daily_Forecast)。顧客が気象データを取得するために実行するジョブ|
   pipelineDetails > parameters > name  | パラメーターの名前 |
   pipelineDetails > parameters > type | String、Int、Float、Bool、Array |
@@ -156,7 +156,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
   pipelineDetails > parameters > description | パラメーターの説明 |
   Properties  | 製造元から提供されるその他のプロパティ。
   Properties > **programRunCommand** | Docker 実行コマンド - このコマンドは、顧客が気象ジョブを実行するときに実行されます。 |
-  **WeatherDataLocation** |  |
+  **WeatherDataLocation** | **説明** |
   weatherDataModelId  | ブートストラップで作成された対応する WeatherDataModel の ID|
   location  | 緯度、経度、高度を表します |
   名前 | オブジェクトの名前 |

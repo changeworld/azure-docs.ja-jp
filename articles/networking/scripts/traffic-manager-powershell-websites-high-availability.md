@@ -1,5 +1,5 @@
 ---
-title: 高可用性アプリケーションのためのトラフィックのルーティング - Azure PowerShell - Traffic Manager
+title: 高可用性のためのネットワーク トラフィックのルーティング - Azure PowerShell
 description: Azure PowerShell スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 183599fccfad1806faae3cb90de225d388b77da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40f24fa7b37bf5131256287c5f9c74dc7e0dec26
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74049249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530153"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-powershell"></a>高可用性アプリケーションのためのトラフィックのルーティング - Azure PowerShell
 
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -Name myResourceGroup2
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、Web アプリ、Traffic Manager プロファイル、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |

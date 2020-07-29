@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 4cfbc757b33c10ac559e7f8d6b62b9ccdaed404e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099820"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536098"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>仮想ネットワーク サービス エンドポイントと規則を Azure Database for MariaDB に対して使用する
 
@@ -23,6 +23,8 @@ ms.locfileid: "85099820"
 
 > [!NOTE]
 > この機能は、Azure Database for MariaDB が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
+
+また、接続に [Private Link](concepts-data-access-security-private-link.md) の使用を検討することもできます。 Private Link を使用すると、VNet 内のプライベート IP アドレスが Azure Database for MariaDB サーバーに提供されます。
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -62,11 +64,6 @@ Azure Database for MariaDB のファイアウォールでは、Azure Database fo
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
-### <a name="c-cannot-yet-have-azure-database-for-mariadb-on-a-subnet-without-defining-a-service-endpoint"></a>C. サービス エンドポイントを定義せずにサブネット上に Azure Database for MariaDB を保持することは、まだできません
-
-**Microsoft.Sql** サーバーが仮想ネットワーク内のサブネット上のノードであった場合、仮想ネットワーク内のすべてのノードはお使いの Azure Database for MariaDB サーバーと通信できます。 この場合、仮想ネットワーク規則や IP 規則がなくても、VM は Azure Database for MariaDB と通信できます。
-
-しかし、2018 年 8 月時点ではまだ、Azure Database for MariaDB サービスは、サブネットに直接割り当て可能なサービスの範囲には含まれていません。
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -119,6 +116,8 @@ Azure Database for MariaDB の場合、仮想ネットワーク規則機能に�
 
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 
+- サブネットで **Microsoft.Sql** が有効になっている場合は、VNet 規則のみを使用して接続することを指定します。 このサブネット内のリソースの [VNet 以外のファイアウォール規則](concepts-firewall-rules.md)は機能しません。
+
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
     - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
     - [ExpressRoute][expressroute-indexmd-744v] 経由のオンプレミス
@@ -131,7 +130,7 @@ Azure Database for MariaDB の場合、仮想ネットワーク規則機能に�
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
 
-単にファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを**オン**にする必要もあります。 サービス エンドポイントを**オン**にする場合、**オフ**から**オン**への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
+単に VNet ファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを**オン**にする必要もあります。 サービス エンドポイントを**オン**にする場合、**オフ**から**オン**への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
 
 **IgnoreMissingServiceEndpoint** フラグは、Azure CLI またはポータルを使用して設定できます。
 
