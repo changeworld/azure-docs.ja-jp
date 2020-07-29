@@ -10,6 +10,7 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83739534"
