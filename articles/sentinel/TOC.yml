@@ -156,6 +156,8 @@
       href: customer-managed-keys.md
     - name: アラートからのインシデントの作成
       href: create-incidents-from-alerts.md
+    - name: インシデント メトリックを使用して SOC をより適切に管理する
+      href: manage-soc-with-incident-metrics.md
     - name: 検出
       href: hunting.md
       items:

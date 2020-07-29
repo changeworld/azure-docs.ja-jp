@@ -10,19 +10,19 @@
       items:
         - name: はじめに
           href: get-started.md
-        - name: ステップ 1 Synapse ワークスペースを作成する
+        - name: 1 Synapse ワークスペースを作成する
           href: get-started-create-workspace.md
-        - name: ステップ 2 SQL プールを使用して分析する
+        - name: 2 SQL プールを使用して分析する
           href: get-started-analyze-sql-pool.md
-        - name: ステップ 3 Spark を使用して分析する
+        - name: 3 Spark を使用して分析する
           href: get-started-analyze-spark.md
-        - name: ステップ 4 SQL オンデマンドを使用して分析する
+        - name: 4 SQL オンデマンドを使用して分析する
           href: get-started-analyze-sql-on-demand.md
-        - name: ステップ 5 ストレージ アカウント内のデータを分析する
+        - name: 5 ストレージ アカウント内のデータを分析する
           href: get-started-analyze-storage.md
-        - name: ステップ 6 - パイプラインを使用したオーケストレーション
+        - name: 6 パイプラインを使用したオーケストレーション
           href: get-started-pipelines.md
-        - name: ステップ 7 - Power BI で視覚化する
+        - name: 7 Power BI で視覚化する
           href: get-started-visualize-power-bi.md
     - name: チート シート
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 結果セットのキャッシュ
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning 予測
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: テーブル
               items:
                 - name: 概要

@@ -121,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM 技術資産に関する FAQ
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Azure VM イメージを認定する
+                - name: VHD からデプロイされた仮想マシンをテストする
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI
                   items:

@@ -1,4 +1,4 @@
-- name: Windows Virtual Desktop Spring 2020 リリース
+- name: Windows Virtual Desktop
   href: index.yml
 - name: 概要
   items:
@@ -6,7 +6,7 @@
       href: overview.md
     - name: 新機能
       href: whats-new.md
-    - name: Fall 2019 リリースのドキュメント
+    - name: Windows Virtual Desktop (クラシック) のドキュメント
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: チュートリアル
   items:

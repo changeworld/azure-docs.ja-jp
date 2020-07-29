@@ -31,6 +31,8 @@
       href: powershell-create-instance.md
     - name: テンプレートを使用したマネージド ドメインの作成
       href: template-create-instance.md
+    - name: Azure AD PowerShell を使用して範囲指定された同期を構成する
+      href: powershell-scoped-synchronization.md
 - name: 概念
   items:
     - name: 管理の基本

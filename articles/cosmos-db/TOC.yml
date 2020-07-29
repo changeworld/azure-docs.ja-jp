@@ -574,6 +574,9 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: 高度な脅威保護
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: エンタープライズ対応
@@ -988,7 +991,7 @@
           href: how-to-manage-indexing-policy.md
         - name: 一意のキーの定義
           href: how-to-define-unique-keys.md
-    - name: パフォーマンスとトラブルシューティング
+    - name: パフォーマンス
       items:
         - name: クエリ
           items:
@@ -996,28 +999,20 @@
               href: profile-sql-api-query.md
             - name: クエリ パフォーマンスの調整
               href: sql-api-query-metrics.md
-            - name: クエリ パフォーマンスのトラブルシューティング
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: .NET SDK v3 のパフォーマンスに関するヒント
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: .NET SDK v2 のパフォーマンスに関するヒント
               href: performance-tips.md
-            - name: .NET SDK のトラブルシューティング
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: Java SDK v4 のパフォーマンスに関するヒント
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Java SDK v4 のトラブルシューティング
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: 非同期の Java SDK v2
               href: performance-tips-async-java.md
             - name: 同期の Java SDK v2
               href: performance-tips-java.md
-            - name: トラブルシューティング - Async Java SDK v2
-              href: troubleshoot-java-async-sdk.md
         - name: パフォーマンス テスト - サンプル アプリ
           href: performance-testing.md
         - name: コスト効率の優れた読み取りと書き込み
@@ -1026,6 +1021,36 @@
       items:
         - name: Java V4 SDK への移行
           href: migrate-java-v4-sdk.md
+    - name: トラブルシューティング
+      items:
+        - name: 一般的なエラー
+          items:
+            - name: クエリ パフォーマンスのトラブルシューティング
+              href: troubleshoot-query-performance.md
+            - name: サービス要求タイムアウトのトラブルシューティング
+              href: troubleshoot-request-timeout.md
+            - name: 要求率が大きすぎる問題のトラブルシューティング
+              href: troubleshoot-request-rate-too-large.md
+            - name: 見つからない問題のトラブルシューティング
+              href: troubleshoot-not-found.md
+            - name: 承認されていない問題のトラブルシューティング
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: .NET SDK の一般的なトラブルシューティング
+              href: troubleshoot-dot-net-sdk.md
+            - name: 要求ヘッダーが大きすぎる問題のトラブルシューティング
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: 要求タイムアウトのトラブルシューティング
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: サービス利用不可のトラブルシューティング
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: Java SDK v4 のトラブルシューティング
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: トラブルシューティング - Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
     - name: 変更フィード
       items:
         - name: Azure Cosmos DB トリガーのログ

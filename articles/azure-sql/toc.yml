@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: 条件付きアクセス
                   href: database/conditional-access-configure.md
+                - name: サービス プリンシパル (アプリケーション)
+                  href: database/authentication-aad-service-principal.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: 概要
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: セキュリティ
           items:
+            - name: Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する
+              href: database/authentication-aad-guest-users.md
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
             - name: ストレージに脆弱性スキャンを格納する
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: TDE 保護機能の削除
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: サービス プリンシパルを使用してユーザーを作成する
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: データの移動
           items:
             - name: DMS を使用した移行
@@ -805,7 +811,7 @@
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: データベース メール
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
-        - name: セキュリティ
+        - name: Security
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md
