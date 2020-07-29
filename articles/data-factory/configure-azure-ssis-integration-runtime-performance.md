@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255536"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523317"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -104,11 +104,15 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 
 このデータは、1 つの worker ノードでの 1 つのパッケージの実行を表します。 このパッケージは、Azure Blob Storage から名と姓の列を含むレコードを 300 万件読み込み、フル ネームの列を生成して、フル ネームが 20 文字より長いレコードを Azure Blob Storage に書き込みます。
 
+Y 軸は、1 時間に実行が完了したパッケージの数です。 これは、1 つのメモリを消費するパッケージのテスト結果であることに注意してください。 パッケージのスループットを知りたい場合は、自分でテストを実行することをお勧めします。
+
 ![SSIS 統合ランタイム パッケージの実行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>全体的なスループットが上がるように構成する
 
 実行するパッケージの数が多く、全体的なスループットが最も重要な場合は、次の表の情報を使って、シナリオに適した仮想マシンの種類を選びます。
+
+Y 軸は、1 時間に実行が完了したパッケージの数です。 これは、1 つのメモリを消費するパッケージのテスト結果であることに注意してください。 パッケージのスループットを知りたい場合は、自分でテストを実行することをお勧めします。
 
 ![SSIS 統合ランタイムの全体的な最大スループット](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

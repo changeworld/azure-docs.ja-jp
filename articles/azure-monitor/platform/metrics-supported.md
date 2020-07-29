@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: ffdfeacad2fcfa7f77f3bcb55e8b1edaea865202
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: e8bae2062051156d6de378e54bc354b3f785e403
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145155"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515463"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -21,7 +21,7 @@ ms.locfileid: "86145155"
 
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 
 
-この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 このリストの最終更新日は 2020 年 3 月 27 日でした。 この日付の後に変更または追加されたメトリックは一覧にない可能性があります。 プログラムを使ってこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 API バージョン](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)を使用してください。 この一覧にない他のメトリックは、ポータルまたは従来の API で使用できる場合があります。
+この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 このリストの最終更新日は 2020 年 3 月 27 日でした。 この日付の後に変更または追加されたメトリックは一覧にない可能性があります。 プログラムを使ってこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 API バージョン](/rest/api/monitor/metricdefinitions)を使用してください。 この一覧にない他のメトリックは、ポータルまたは従来の API で使用できる場合があります。
 
 メトリックは、リソース プロバイダーとリソースの種類別にまとめられます。 サービスとそれらに属するリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。 
 
@@ -516,7 +516,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |FileShareCount|File Share Count (ファイル共有数)|Count|Average|ストレージ アカウントの File サービス内のファイル共有の数。|なし|
 |FileShareSnapshotCount|ファイル共有のスナップショット数|Count|Average|ストレージ アカウントの Files サービス内の共有に存在するスナップショットの数。|FileShare|
 |FileShareSnapshotSize|ファイル共有のスナップショットのサイズ|バイト|Average|ストレージ アカウントの Files サービスのスナップショットによって使用されている記憶域の容量 (バイト単位)。|FileShare|
-|FileShareQuota|ファイル共有のクォータ サイズ|バイト|Average|Azure Files サービスで使用できる記憶域の容量の上限 (バイト単位)。|FileShare|
+|FileShareCapacityQuota|ファイル共有のクォータ サイズ|バイト|Average|Azure Files サービスで使用できる記憶域の容量の上限 (バイト単位)。|FileShare|
 |トランザクション|トランザクション|Count|合計|ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 別の種類の応答の数には ResponseType ディメンションを使います。|ResponseType、GeoType、ApiName、Authentication、FileShare|
 |イングレス|イングレス|バイト|合計|イングレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。|GeoType、ApiName、Authentication、FileShare|
 |エグレス|エグレス|バイト|合計|エグレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのエグレスおよび Azure 内でのエグレスが含まれます。 したがって、この値には、課金対象のエグレスが反映されません。|GeoType、ApiName、Authentication、FileShare|
@@ -748,21 +748,6 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |BytesUploadedToCloud|クラウドのアップロードされたバイト数 (デバイス)|バイト|Average|レポート期間中にデバイスから Azure にアップロードされるバイトの合計数。|なし|
 |HyperVVirtualProcessorUtilization|Edge コンピューティング - CPU 使用率|Percent|Average|CPU 使用率 (パーセント)|InstanceName|
 |HyperVMemoryUtilization|Edge コンピューティング - メモリ使用量|Percent|Average|使用中の RAM の容量|InstanceName|
-
-
-## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.DataCatalog/datacatalogs
-
-|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
-|---|---|---|---|---|---|
-|AssetDistributionByClassification|Asset distribution by classification (分類別の資産分布)|Count|合計|特定の分類が割り当てられている (つまり、そのラベルで分類されている) 資産の数を示します。|Classification、Source|
-|AssetDistributionByStorageType|Asset distribution by storage type (ストレージの種類別の資産分布)|Count|合計|特定のストレージの種類を持つ資産の数を示します。|StorageType|
-|NumberOfAssetsWithClassifications|Number of assets with at least one classification (少なくとも 1 つの分類を持つ資産の数)|Count|Average|少なくとも 1 つのタグ分類を持つ資産の数を示します。|なし|
-|ScanCancelled|Scan Cancelled (キャンセルされたスキャン)|Count|合計|取り消されたスキャンの数を示します。|なし|
-|ScanCompleted|Scan Completed (完了したスキャン)|Count|合計|正常に完了したスキャンの数を示します。|なし|
-|ScanFailed|Scan Failed (失敗したスキャン)|Count|合計|失敗したスキャンの数を示します。|なし|
-|ScanTimeTaken|Scan time taken (スキャンの所要時間)|Seconds|合計|スキャンの合計時間を示します (秒単位)。|なし|
-|CatalogActiveUsers|1 日当たりのアクティブ ユーザー数|Count|合計|1 日当たりのアクティブ ユーザーの数|なし|
-|CatalogUsage|Usage Distribution by Operation (操作ごとの使用状況分布)|Count|合計|ユーザーがカタログに対して行う操作 (アクセス、検索、用語集) の数を示します。|操作|
 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
@@ -2145,7 +2130,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |FileShareCount|File Share Count (ファイル共有数)|Count|Average|ストレージ アカウントの File サービス内のファイル共有の数。|なし|
 |FileShareSnapshotCount|ファイル共有のスナップショット数|Count|Average|ストレージ アカウントの Files サービス内の共有に存在するスナップショットの数。|FileShare|
 |FileShareSnapshotSize|ファイル共有のスナップショットのサイズ|バイト|Average|ストレージ アカウントの Files サービスのスナップショットによって使用されている記憶域の容量 (バイト単位)。|FileShare|
-|FileShareQuota|ファイル共有のクォータ サイズ|バイト|Average|Azure Files サービスで使用できる記憶域の容量の上限 (バイト単位)。|FileShare|
+|FileShareCapacityQuota|ファイル共有のクォータ サイズ|バイト|Average|Azure Files サービスで使用できる記憶域の容量の上限 (バイト単位)。|FileShare|
 |トランザクション|トランザクション|Count|合計|ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 別の種類の応答の数には ResponseType ディメンションを使います。|ResponseType、GeoType、ApiName、Authentication、FileShare|
 |イングレス|イングレス|バイト|合計|イングレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。|GeoType、ApiName、Authentication、FileShare|
 |エグレス|エグレス|バイト|合計|エグレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのエグレスおよび Azure 内でのエグレスが含まれます。 したがって、この値には、課金対象のエグレスが反映されません。|GeoType、ApiName、Authentication、FileShare|
@@ -2534,4 +2519,3 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 * [Azure Monitor のメトリックを確認します](data-platform.md)
 * [メトリックでアラートを作成します](alerts-overview.md)
 * [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](platform-logs-overview.md)
-

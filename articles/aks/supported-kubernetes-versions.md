@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 886e6cf237df94c056ec7c592e0b535327339871
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243798"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507065"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -131,7 +131,7 @@ az aks get-versions --location eastus --output table
 | 1.17  | 2019 年 12 月 9 日  | 2019 年 1 月   | 2020 年 7 月  | 1.20 GA | 
 | 1.18  | 2020 年 3 月 23 日  | 2020 年 5 月   | 2020 年 8 月  | 1.21 GA | 
 | 1.19  | 2020 年 8 月 4 日  | 2020 年 8 月   | 2020 年 11 月  | 1.22 GA | 
-| 1.20  | *2020 年 11 月    | *2021 年 12 月   | *2021 年 1 月  | 1.23 GA | 
+| 1.20  | *2020 年 11 月    | *2020 年 12 月   | *2021 年 1 月  | 1.23 GA | 
 
 \* アップストリームのリリース日の確定が保留中です。
 
@@ -181,4 +181,4 @@ AKS でサポートされていないマイナー バージョンの場合、ス
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions
-[preview-terms]: /support/legal/preview-supplemental-terms
+[preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

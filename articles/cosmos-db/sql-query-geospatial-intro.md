@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367586"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523521"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB の地理空間データと GeoJSON 位置データ
 
@@ -21,9 +21,19 @@ ms.locfileid: "79367586"
 * Azure Cosmos DB 内の地理空間データを SQL や LINQ で照会する方法
 * Azure Cosmos DB の空間インデックスを有効または無効にする方法
 
+## <a name="spatial-data-use-cases"></a>空間データのユース ケース
+
+地理空間データには、主に近接検索クエリが含まれます (例: "現在地付近に存在するコーヒー ショップをすべて検索")。 一般的なユース ケースは次のとおりです。
+
+* 特定の場所でのマーケティング イニシアチブを促進する位置情報分析。
+* 小売や医療など、複数の業界向けの場所ベースのパーソナル化。
+* 輸送の最適化のための物流強化。
+* 特に保険会社や金融企業向けのリスク分析。
+* アラートと通知に関する状況認識。
+
 ## <a name="introduction-to-spatial-data"></a>空間データの概要
 
-空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、および地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。 代表的な使用例に近接検索クエリがあります (例: "現在地付近に存在するコーヒー ショップをすべて検索")。
+空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、および地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。
 
 Azure Cosmos DB の SQL API では、**geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538175"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -49,19 +49,19 @@ Azure ドライブを使用すると、ファイル システムのナビゲー�
 使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使用してこれらのリソースを管理できます。
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。
 
-![](media/features-powershell/azure-drive.png)
+![初期化中の Azure Cloud Shell とディレクトリ リソースの一覧のスクリーンショット。](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>Manage Exchange Online
 
 Cloud Shell の PowerShell には、Exchange Online モジュールのプライベート ビルドが含まれています。  Exchange コマンドレットを取得するには、`Connect-EXOPSSession`を実行します。
 
-![](media/features-powershell/exchangeonline.png)
+![Connect-EXOPSSession コマンドと Get-User コマンドを実行している Azure Cloud Shell のスクリーンショット。](media/features-powershell/exchangeonline.png)
 
  `Get-Command -Module tmp_*` を実行します。
 > [!NOTE]
 > 同じプレフィックスを持つモジュールをインストールした場合、モジュール名の先頭には`tmp_`が付き、そのコマンドレットも表面化します。 
 
-![](media/features-powershell/exchangeonlinecmdlets.png)
+![Get-Command -Module tmp_* コマンドを実行している Azure Cloud Shell のスクリーンショット。](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>オープンソース ツールとの緊密な統合
 

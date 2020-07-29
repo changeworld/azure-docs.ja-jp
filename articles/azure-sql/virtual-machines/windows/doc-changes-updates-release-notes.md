@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 9f41cb11960dbe9487231f14b005376261075a83
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231507"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503790"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,12 +29,10 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | [変更点] | 詳細 |
 | --- | --- |
 | **Ultra Disk へのログの移行** | ハイ パフォーマンスと低待機時間を活用するために、[ログ ファイルを Ultra Disk に移行する](storage-migrate-to-ultradisk.md)方法について学習します。 | 
-
-
+| **PowerShell を使用して AG を作成する** | [PowerShell](availability-group-az-commandline-configure.md) と Azure CLI を使用して、可用性グループの作成を簡略化できるようになりました。 | 
 
 
 ## <a name="june-2020"></a>2020 年 6 月
-
 
 | [変更点] | 詳細 |
 | --- | --- |

@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 07/09/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187525"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539433"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -120,6 +120,15 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 ルックバック期間と違反の数が大きくなると、大きな偏差の定義に対するアラートのみに、アラートをフィルター処理することもできます。 [動的しきい値の詳細設定オプションについて詳しくはこちらをご覧ください](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)。
 
+> [!NOTE]
+>
+> 以下のような場合に、追加された時系列の最初の評価を見落とす可能性を減らすために、 *[評価の頻度]* よりも頻度が高い *[集計粒度 (期間)]* を選択することをお勧めします。
+> - 複数のディメンションを監視するメトリック アラート ルール – 新しいディメンション値の組み合わせが追加されたとき
+> - 複数のリソースを監視するメトリック アラート ルール – 新しいリソースがスコープに追加されたとき
+> - 連続して生成されないメトリックを監視するメトリック アラート ルール (スパース メトリック) – メトリックが生成されていない 24 時間以上の期間の後に生成されたとき
+
+
+
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートによるスケールの監視
 
 ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor では、同じ Azure リージョンに存在するリソースに対して、メトリック警告ルールが 1 つの (同じ種類の) 複数のリソースの監視をサポートしています。 
@@ -131,7 +140,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 | 仮想マシン  | **はい** | いいえ | いいえ |
 | SQL Server データベース | **はい** | **はい** | いいえ |
 | SQL Server エラスティック プール | **はい** | **はい** | いいえ |
-| Data Box Edge のデバイス | **はい** | **はい** | いいえ |
+| Data Box Edge のデバイス | **はい** | **あり** | いいえ |
 
 1 つのメトリック警告ルールで監視の範囲を指定するには、次の 3 つの方法があります。 たとえば、仮想マシンではスコープを次のように指定できます。  
 
