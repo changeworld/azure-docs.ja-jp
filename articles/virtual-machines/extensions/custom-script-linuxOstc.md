@@ -16,6 +16,7 @@ ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594714"
