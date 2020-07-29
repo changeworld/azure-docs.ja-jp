@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/26/2020
-ms.openlocfilehash: 4bf0acdc774bc41d0bc80c944560f41789584c03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 5810f9b08d914522f1304e238567c06e87872715
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513909"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537733"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータをコピーして変換する
 
@@ -42,7 +42,7 @@ ms.locfileid: "85513909"
 
 - SQL 認証を使って、およびサービス プリンシパルまたは Azure リソースのマネージド ID で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。
-- シンクとして、[PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse) または [COPY ステートメント](#use-copy-statement) (プレビュー)、あるいは一括挿入を使用してデータを読み込む。 コピーのパフォーマンスを向上させるために、PolyBase または COPY ステートメント (プレビュー) をお勧めします。 コネクタでは、送信元スキーマに基づいて、存在しない場合は、宛先テーブルの自動作成もサポートされます。
+- シンクとして、[PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse) または [COPY ステートメント](#use-copy-statement) (プレビュー)、あるいは一括挿入を使用してデータを読み込む。 コピーのパフォーマンスを向上させるために、PolyBase または COPY ステートメント (プレビュー) をお勧めします。 コネクタでは、宛先テーブルが存在しない場合は、送信元スキーマに基づくその自動作成もサポートされています。
 
 > [!IMPORTANT]
 > Azure Data Factory Integration Runtime を使ってデータをコピーする場合は、Azure サービスが[論理 SQL サーバー](../azure-sql/database/logical-servers.md)にアクセスできるように[サーバーレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)を構成します。
@@ -376,7 +376,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 | writeBatchSize    | SQL テーブルに挿入する**バッチあたりの**行数。<br/><br/>使用可能な値は **integer** (行数) です。 既定では、Data Factory により行のサイズに基づいて適切なバッチ サイズが動的に決定されます。 | いいえ。<br/>一括挿入を使用する場合に適用します。     |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ。<br/>一括挿入を使用する場合に適用します。        |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
-| tableOption | ソースのスキーマに基づいて、シンク テーブルが存在しない場合に自動的にシンク テーブルを作成するかどうかを指定します。 コピー アクティビティでステージング コピーが構成されている場合、テーブルの自動作成はサポートされません。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
+| tableOption | シンク テーブルが存在しない場合に、ソースのスキーマに基づいて、[シンク テーブルを自動的に作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します。 コピー アクティビティでステージング コピーが構成されている場合、テーブルの自動作成はサポートされません。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
 | disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションのために、SQL Data Warehouse DWU などのメトリックが収集されます。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse のシンクの例
@@ -690,13 +690,15 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
 
 Azure Synapse Analytics に固有の設定は、ソース変換の **[Source Options]\(ソース オプション\)** タブにあります。
 
-**[Input]:** テーブルにあるソースを指す (```Select * from <table-name>``` に相当) かカスタム SQL クエリを入力するかを選択します。
+**[入力]\(Input\)** : テーブルにあるソースを指す (```Select * from <table-name>``` に相当) かカスタム SQL クエリを入力するかを選択します。
+
+**[Enable Staging]\(ステージングを有効にする\)** Synapse DW ソースを使用する運用ワークロードでは、このオプションを使用することを強くお勧めします。 パイプラインから Synapse ソースを使用してデータ フロー アクティビティを実行すると、ADF によってステージングの場所のストレージ アカウントの入力が求められ、ステージング データの読み込みにそれが使用されます。 Synapse DW からデータを読み込む最も速いメカニズムです。
 
 **Query**: [Input] フィールドで [Query] を選択した場合は、ソースに対する SQL クエリを入力します。 この設定により、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは **Order By** 句はサポートされていませんが、完全な SELECT FROM ステートメントを設定することができます。 ユーザー定義のテーブル関数を使用することもできます。 **select * from udfGetData()** は、テーブルを返す SQL の UDF です。 このクエリでは、お使いのデータ フローで使用できるソース テーブルが生成されます。 テスト対象またはルックアップ対象の行を減らすうえでも、クエリの使用は有効な手段です。
 
 SQL の例: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Batch size**: 大量データを読み取りにまとめるバッチ サイズを入力します。 データ フローでは、ADF はこの設定を使用して Spark の列キャッシュを設定します。 これは、空白のままである場合は Spark の既定値を使用するオプション フィールドです。
+**Batch size**: 大量データを読み取りにまとめるバッチ サイズを入力します。 データ フローでは、ADF はこの設定を使用して Spark の列キャッシュを設定します。 これは省略可能なフィールドであり、空白のままになっている場合は Spark の既定値が使用されます。
 
 **Isolation Level**: マッピング データ フローでの SQL ソースの既定値は [コミットされていないものを読み取り] です。 ここで分離レベルを次のいずれかの値に変更できます。
 
@@ -759,7 +761,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | INT                                   | Int32                          |
 | money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | Decimal                        |
+| numeric                               | Decimal (10 進数型)                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Single                         |
 | rowversion                            | Byte[]                         |
