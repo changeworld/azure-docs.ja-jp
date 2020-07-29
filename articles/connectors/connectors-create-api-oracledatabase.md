@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836279"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524167"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -58,30 +58,30 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 2. ロジック アプリを開始するときに、 **[要求/応答 - 要求]** トリガーを選択します。 
 
-    ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
+    ![ダイアログ ボックスには、すべてのトリガーを検索するボックスがあります。 "要求/応答 - 要求" という単一のトリガーも、選択ボタンと共に表示されます。](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. **[保存]** を選択します。 保存すると、要求 URL が自動的に生成されます。 
 
 4. **[新しいステップ]** 、 **[アクションの追加]** の順に選択します。 「`oracle`」と入力して、使用できるアクションを表示します。 
 
-    ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
+    ![検索ボックスには「oracle」と入力されています。 検索では、"Oracle Database" というラベルが付いた 1 つのヒットが生成されます。 タブ付きページがあり、1 つのタブには "トリガー (0)" と表示され、もう 1 つには "アクション (6)" と表示されます。 一覧には、6 個のアクションがあります。 それらの 1 つ目は、"行の取得のプレビュー" です。](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > この方法を使用すると、すべてのコネクタで使用できるトリガーとアクションを、最も簡単に確認することもできます。 `oracle` など、コネクタ名の一部を入力すると、 その名前に一致するトリガーとアクションの一覧が表示されます。 
 
 5. **[Oracle Database - Get row (Oracle Database - 行を取得する)]** など、アクションのいずれかを選択します。 **[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)]** を選択します。 Oracle サーバー名、認証方法、ユーザー名、パスワードを入力し、ゲートウェイを選択します。
 
-    ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
+    ![ダイアログ ボックスのタイトルは、[Oracle Database - Get row]\(Oracle Database - 行の取得\) です。 [オンプレミスのデータ ゲートウェイ経由で接続] というラベルの、オンになっているボックスがあります。 その下には、他に 5 つのテキスト ボックスがあります。](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
 6. 接続されたら、一覧からテーブルを選択し、テーブルに行 ID を入力します。 テーブルの識別子も必要です。 テーブルの識別子がわからない場合は、Oracle DB の管理者に連絡し、`select * from yourTableName` の出力から取得します。 これにより、操作を続行するために必要な、テーブルを特定できる情報が提供されます。
 
     次の例では、人事データベースからジョブ データが返されました。 
 
-    ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![[Get row (Preview)]\(行の取得 (プレビュー)\) というタイトルのダイアログ ボックスには、次の 2 つのテキスト ボックスがあります。[テーブル名] には "HRJOBS" と表示されていて、ドロップダウン リストがあり、[行 ID] には "SA_REP" と表示されています。](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. この手順では、その他のコネクタのいずれかを使用してワークフローを構築します。 Oracle からデータを取得しているかどうかをテストするには、Office 365 Outlook など、メール送信コネクタのいずれかを使用して、Oracle データを含むメールを自分宛てに送信します。 Oracle テーブルからの動的トークンを使用して、電子メールの `Subject` および `Body` を作成します。
 
-    ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
+    ![2 つのダイアログ ボックスがあります。 [メールの送信] には、電子メールの "本文"、"件名"、および "宛先" アドレスを指定するためのボックスがあります。 [動的なコンテンツの追加] ダイアログ ボックスを使用すると、フローのアプリやサービスの動的コンテンツを検索できます。](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
 8. ロジック アプリを**保存**して、 **[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
 
@@ -90,11 +90,11 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 * oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、 **#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
 
-    ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
+    ![[新しいツイートが投稿されたら] ダイアログ ボックスには、検索テキストとして "hashtag oracle" と表示され、確認の頻度を指定できます。 このダイアログ ボックスの後には、[Oracle Database] ダイアログ ボックスが表示され、アクションを選択できます。](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
 * メッセージが Service Bus キューに送信されます。 そのメッセージを取得し、データベースに入力します。 ロジック アプリで `Service Bus - when a message is received in a queue` トリガーを追加し、キューを選択します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
 
-    ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
+    ![[メッセージを受信したとき] ダイアログ ボックスには、[キュー名] として "orders" と表示され、確認の頻度を指定できます。 このボックスの後には、[Insert row (Preview)]\(行の挿入 (プレビュー)\) ダイアログ ボックスが表示され、[テーブル名] を選択できます。](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>一般的なエラー
 

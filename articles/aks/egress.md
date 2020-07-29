@@ -5,20 +5,22 @@ description: Azure Kubernetes Service (AKS) クラスターでエグレス ト�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205774"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517775"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で *Basic* SKU ロード バランサーと共に、エグレス トラフィックに静的パブリック IP アドレスを使用する
 
-既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 場合によっては､サービスへのアクセスのホワイト リストに登録できる静的 IP アドレスの割り当てが必要なことがあります｡
+既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 代わりに、サービス アクセスの許可リストに追加される静的 IP アドレスを割り当てる必要がある場合があります。
 
 この記事では、AKS クラスターでエグレス トラフィックに使用する静的パブリック IP アドレスを作成して使用する方法を示します。
 
 ## <a name="before-you-begin"></a>開始する前に
+
+この記事では、Azure Basic Load Balancer を使用していることを前提としています。  [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) の使用をお勧めします。より高度な機能を使用して、[AKS エグレス トラフィックを制御](https://docs.microsoft.com/azure/aks/limit-egress-traffic)できます。
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
@@ -105,7 +107,7 @@ kubectl apply -f egress-service.yaml
 基本的な*Debian* pod を起動してアタッチします｡
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 コンテナー内から web サイトにアクセスするには、`apt-get` を使用して､コンテナーに `curl` をインストールします｡

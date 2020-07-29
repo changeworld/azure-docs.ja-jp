@@ -3,14 +3,14 @@ title: コマーシャル マーケットプレース分析でのパートナー
 description: マーケットプレース オファーの注文に関するグラフィカルでダウンロード可能な形式の分析レポートにアクセスする方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536132"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [注文] ダッシュボード
 
@@ -29,12 +29,9 @@ ms.locfileid: "86118360"
 - [地域別注文数](#orders-by-geography)
 - [オファーごとの注文数](#orders-by-offers)
 - [サイトごとおよびシートごとの注文数の傾向](#orders-trend-per-site-versus-per-seat)
-- [SKU 別の注文](#orders-by-skus)
+- [プランごとの注文数](#orders-by-plans)
 - [注文およびシートの傾向](#orders-and-seats-trend)
 - [注文詳細テーブル](#order-details-table)
-
-> [!NOTE]
-> Cloud パートナー ポータル (CPP) と、パートナー センターの新しい [Commercial Marketplace]\(商用マーケットプレース\) プログラムでは、分析レポートの表示方法に違いがあります。 具体的な違いの 1 つとして、CPP の **[Seller Insights]\(販売者分析情報\)** には **[Orders & Usage]\(注文と使用量\)** タブがあり、ここには、使用量ベースのオファーと使用量ベースでないオファーに関するデータが表示されます。 パートナー センターの **[注文]** ページには、SaaS 注文の独立したタブがあります。
 
 ## <a name="order-dashboard-details"></a>[注文] ダッシュボードの詳細
 
@@ -76,16 +73,16 @@ ms.locfileid: "86118360"
 
 **サイトごととシートごとの対比**のドーナツ グラフには、顧客によって購入されたサイトごとの SaaS 注文数とシートごとの SaaS 注文数の内訳が表示されます (このグラフには、キャンセルされた注文が含まれます)。 棒グラフには、顧客によって購入されたサイトごとの SaaS 注文数とシートごとの SaaS 注文数の傾向が表示されます (このグラフには、キャンセルされた注文が含まれます)。
 
-### <a name="orders-by-skus"></a>SKU 別の注文
+### <a name="orders-by-plans"></a>プランごとの注文数
 
-**[SKU 別の注文]** グラフには、すべてのオファーの Stock Keeping Unit (SKU) レベルでの注文数の傾向が表されます (これには、キャンセルされた注文が含まれます)。 ドーナツ グラフには上位 5 つの SKU の注文数の内訳が表され、棒グラフには上位 5 つの SKU の注文数の傾向が表示されます。
+**[プランごとの注文数]** グラフには、すべてのオファーのプラン レベルでの注文数の傾向が表示されます (これには、キャンセルされた注文が含まれます)。 ドーナツ グラフには上位 5 つのプランの注文数の内訳が表され、棒グラフには上位 5 つのプランの注文数の傾向が表示されます。
 
 ### <a name="orders-and-seats-trend"></a>注文およびシートの傾向
 
 **[注文およびシートの傾向]** グラフには、注文数が最も多い上位 50 のオファーが表示されます。 これらはランキングに表示され、最大注文数と注文率で並べ替えられます。
 
-- **[SKU 別の注文]** : グラフ内の上位 5 SKU の注文数の内訳を表示するには、オファーを選択します。
-- **[SKU 別のシート]** : 上位 5 SKU のシート数の月ごとの傾向です。 選択したオファーがシートごとのオファーではない場合、この面グラフにデータは表示されません。
+- **[プランごとの注文数]** – グラフ内の上位 5 つのプランに関する注文数の内訳を表示するには、オファーを選択します。
+- **[プランごとのシート数]** - 上位 5 つのプランに関するシート数の月ごとの傾向です。 選択したオファーがシートごとのオファーではない場合、この面グラフにデータは表示されません。
 
 ### <a name="canceled-orders-by-offers"></a>オファーごとのキャンセルされた注文
 

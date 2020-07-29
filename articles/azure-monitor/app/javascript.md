@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464574"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517112"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -186,14 +186,14 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | isBeaconApiDisabled | true | false の場合、SDK が [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 |
 | onunloadDisableBeacon | false | 既定値は false です。 タブが閉じられると、SDK により [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 |
 | sdkExtension | null | sdk 拡張機能の名前を設定します。 英字のみを使用できます。 拡張機能名はプレフィックスとして ai.internal.sdkVersion タグに付けられます (ext_javascript:2.0.0 など)。 既定値は Null です。 |
-| isBrowserLinkTrackingEnabled | false | 既定値は false です。 true の場合、SDK によってすべての[ブラウザー リンク](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)要求が追跡されます。 |
+| isBrowserLinkTrackingEnabled | false | 既定値は false です。 true の場合、SDK によってすべての[ブラウザー リンク](/aspnet/core/client-side/using-browserlink)要求が追跡されます。 |
 | appId | null | appId は、サーバー側の要求によってクライアント側で発生する AJAX 依存関係の相関関係のために使用されます。 Beacon API が有効になっているとき、これを自動的に使用することはできませんが、構成で手動で設定できます。 既定値は null です。 |
 | enableCorsCorrelation | false | truee の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての CORS 要求に追加され、送信される AJAX 依存関係がサーバー側の対応する要求と関連付けられます。 既定値は false です。 |
 | namePrefix | undefined | localStorage および Cookie 名の接尾語として使用される省略可能な値。
 | enableAutoRouteTracking | false | シングル ページ アプリケーション (SPA) でのルート変更を自動的に追跡します。 true の場合、ルートの変更ごとに Application Insights に新しいページビューが送信されます。 ハッシュ ルート変更 (`example.com/foo#bar`) も新しいページ ビューとして記録されます。
 | enableRequestHeaderTracking | false | true の場合、AJAX と Fetch の要求ヘッダーが追跡されます。既定値は false です。
 | enableResponseHeaderTracking | false | true の場合、AJAX と Fetch の要求の応答ヘッダーが追跡されます。既定値は false です。
-| distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。 [こちら](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)の例を参照してください。
+| distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。 [こちら](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)の例を参照してください。
 | enableAjaxErrorStatusText | false | 既定値は false です。 true の場合、失敗した AJAX 要求の依存関係イベントに応答エラー データ テキストを含めます。
 | enableAjaxPerfTracking | false | 既定値は false です。 ブラウザーの window.performance の追加のタイミングを検索し、レポートされる ajax (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。
 | maxAjaxPerfLookupAttempts | 3 | 既定値は 3 です。 window.performance のタイミング (使用可能な場合) を検索する最大回数。すべてのブラウザーが、XHR 要求の終了をレポートする前に window.performance を設定するわけではないため、これは必須です。fetch 要求の場合、これは要求の完了後に追加されます。
@@ -211,7 +211,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="configuration-autotrackpagevisittime"></a>構成: autoTrackPageVisitTime
 
-`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の[カスタム メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)に表示されます。
+`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の[カスタム メトリック](../platform/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に表示されます。
 
 ## <a name="react-extensions"></a>React の拡張機能
 
@@ -224,21 +224,21 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ブラウザー/クライアント側データを表示するには、 **[メトリック]** に移動して、興味がある個別のメトリックを追加します。
 
-![](./media/javascript/page-view-load-time.png)
+![Web アプリケーションのメトリック データのグラフィック表示を示す、Application Insights の [メトリック] ページのスクリーンショット。](./media/javascript/page-view-load-time.png)
 
 また、JavaScript SDK のデータもポータルのブラウザー エクスペリエンスを使用して表示できます。
 
 **[ブラウザー]** を選択してから、 **[エラー]** または **[パフォーマンス]** を選択します。
 
-![](./media/javascript/browser.png)
+![Web アプリケーションの表示できるメトリックにブラウザーのエラーまたはブラウザーのパフォーマンスを追加する方法を示す、Application Insights の [ブラウザー] ページのスクリーンショット。](./media/javascript/browser.png)
 
 ### <a name="performance"></a>パフォーマンス
 
-![](./media/javascript/performance-operations.png)
+![Web アプリケーションの操作メトリックのグラフィック表示を示す、Application Insights の [パフォーマンス] ページのスクリーンショット。](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>依存関係
 
-![](./media/javascript/performance-dependencies.png)
+![Web アプリケーションの依存関係メトリックのグラフィック表示を示す、Application Insights の [パフォーマンス] ページのスクリーンショット。](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>Analytics
 
@@ -271,7 +271,7 @@ Application Insights リソースを独自の Azure Blob Storage コンテナー
 
 1. Azure portal で例外テレメトリ項目を選択し、[エンド ツー エンド トランザクションの詳細] を表示します。
 2. このコール スタックにどのソース マップが対応しているかを識別します。 ソース マップは、スタック フレームのソース ファイルと同じ名前であることが必要です。接尾辞は `.map` です。
-3. ソース マップを Azure portal のコール スタックにドラッグ アンド ドロップします。![](https://i.imgur.com/Efue9nU.gif)
+3. Azure portal で呼び出し履歴にソース マップをドラッグ アンド ドロップします ![Azure portal でソース マップ ファイルをビルド フォルダーから [呼び出し履歴] ウィンドウにドラッグ アンド ドロップする方法を示す、アニメーション化された画像。](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 

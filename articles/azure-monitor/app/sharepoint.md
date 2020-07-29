@@ -3,15 +3,19 @@ title: Application Insights で SharePoint を監視する
 description: 新しいインストルメンテーション キーで新しいアプリケーションの監視を開始します。
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221053"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516891"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Application Insights で SharePoint を監視する
+
 Azure Application Insights を使うと、アプリの可用性、パフォーマンス、使用状況を監視できます。 ここでは、SharePoint サイトのために Application Insights を設定する方法について学習します。
+
+> [!NOTE]
+> セキュリティ上の問題により、この記事で説明されているスクリプトを SharePoint の最新 UX の Web ページに直接追加することはできません。 別の方法として、[SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) を使用して、SharePoint サイトに Application Insights をインストールするために使用できるカスタム拡張機能を作成することもできます。 詳細については、「[How to create a SPFx extension solution with AppInsights installed from scratch (AppInsights がインストールされた SPFx 拡張機能ソリューションを最初から作成する方法)](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch)」を参照するか、[サンプルを表示](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)してください。 
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 [Azure ポータル](https://portal.azure.com)で、Application Insights の新しいリソースを作成します。 アプリケーションの種類として ASP.NET を選択します。
@@ -137,5 +141,3 @@ function onRequestFail(sender, args) {
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) 。
 
 <!--Link references-->
-
-

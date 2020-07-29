@@ -4,18 +4,20 @@ description: プランの現在の状態を取得するための API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114076"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535877"
 ---
 # <a name="retrieve-offer-status"></a>プランの状態の取得
 
 > [!NOTE]
-> Cloud パートナー ポータル API はパートナー センターと統合されており、プランがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
+> Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 切り替えにより、小さな変更が加えられました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの切り替え後もコードが引き続き動作することを確認してください。 CPP API は、パートナー センターへの切り替え前に既に統合されている既存の製品に対してのみ使用してください。新しい製品では、パートナー センター申請 API を使用する必要があります。
 
 プランの現在の状態が取得されます。
 
@@ -30,7 +32,6 @@ ms.locfileid: "86114076"
 |  api-version    | API の最新バージョン                        |     Date       |
 |  |  |
 
-
 ## <a name="header"></a>ヘッダー
 
 
@@ -41,7 +42,6 @@ ms.locfileid: "86114076"
 |  |  |
 
 ## <a name="body-example"></a>本文の例
-
 
 ### <a name="response"></a>Response
 
@@ -115,7 +115,6 @@ ms.locfileid: "86114076"
       liveLinks": [],
   }
 ```
-
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
