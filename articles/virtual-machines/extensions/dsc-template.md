@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891657"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511162"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
-この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](dsc-overview.md)の Azure Resource Manager テンプレートについて説明します。 多くの例で、Azure Automation を使用してオンボードするために、**RegistrationURL** (文字列として指定) と **RegistrationKey** ([PSCredential](/dotnet/api/system.management.automation.pscredential) として指定) を使用します。 それらの値の取得の詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード - セキュリティで保護された登録](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)」を参照してください。
+この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](dsc-overview.md)の Azure Resource Manager テンプレートについて説明します。 多くの例では、Azure Automation を使用してオンボードするために、**RegistrationURL** (String として指定) と **RegistrationKey** ([PSCredential](/dotnet/api/system.management.automation.pscredential) として指定) を使用しています。 それらの値の取得の詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード - セキュリティで保護された登録](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration)」を参照してください。
 
 > [!NOTE]
 > スキーマの例に若干の違いがある可能性があります。 スキーマの変更は 2016 年 10 月 のリリースで発生しました。 詳しくは、[以前の形式からの更新](#update-from-a-previous-format)に関する記事をご覧ください。

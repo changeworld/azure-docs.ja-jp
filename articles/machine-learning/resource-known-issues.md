@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223460"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536115"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -96,6 +96,22 @@ ms.locfileid: "86223460"
     ```bash
     automl_setup
     ```
+    
+* **KeyError: ローカル コンピューティングまたは Azure Databricks クラスターで AutoML を実行すると、'ブランド' になる**
+
+    SDK 1.7.0 以前を使用して 2020 年 6 月 10 日より後に新しい環境を作成した場合、py-cpuinfo パッケージの更新によって、トレーニングがこのエラーで失敗することがあります。 (2020 年 6 月 10 日以前に作成された環境、およびリモート コンピューティングで実行された実験ではキャッシュされたトレーニング画像が使用されるため、影響を受けません)。この問題を回避するには、次の 2 つの手順のいずれかを実行します。
+    
+    * SDK のバージョンを 1.8.0 以降に更新します (これにより、py-cpuinfo も 5.0.0 にダウングレードされます)。
+    
+      ```bash
+      pip install --upgrade azureml-sdk[automl]
+      ```
+    
+    * インストールされている py-cpuinfo のバージョンを 5.0.0 にダウングレードします。
+    
+      ```bash
+      pip install py-cpuinfo==5.0.0
+      ```
   
 * **エラー メッセージ:"Cannot uninstall 'PyYAML'" ('PyYAML' をアンインストールできません)**
 
@@ -146,6 +162,12 @@ ms.locfileid: "86223460"
 > Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
 
 * **Azure ポータル**:SDK またはポータルで共有リンクからワークスペースを直接表示した場合、拡張機能のサブスクリプション情報を含む通常の **[概要]** ページは表示できません。 また、別のワークスペースに切り替えることもできません。 別のワークスペースを表示する必要がある場合は、[Azure Machine Learning Studio](https://ml.azure.com) に直接移動し、そのワークスペース名を検索してください。
+
+* **Azure Machine Learning スタジオの Web ポータルでサポートされているブラウザー**:オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
+  * Microsoft Edge (新しい Microsoft Edge の最新バージョンです。 Microsoft Edge レガシではありません)。
+  * Safari (最新バージョン、Mac のみ)
+  * Chrome (最新バージョン)
+  * Firefox (最新バージョン)
 
 ## <a name="set-up-your-environment"></a>環境の設定方法
 
@@ -217,9 +239,16 @@ ms.locfileid: "86223460"
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 
-既知の問題:
+* **計算の準備時間が長い:**
 
-* **計算の準備時間が長い**:初回の接続時またはコンピューティング ターゲットの作成時に、数分またはそれ以上の時間がかかることがあります。 
+初回の接続時またはコンピューティング ターゲットの作成時に、数分またはそれ以上の時間がかかることがあります。 
+
+モデル データ コレクターからは、BLOB ストレージ アカウントにデータが到着するまでに最大で 10 分 (通常は 10 分未満) かかることがあります。 次のセルが実行されるように、10 分間待機します。
+
+```python
+import time
+time.sleep(600)
+```
 
 ## <a name="train-models"></a>モデルをトレーニングする
 
