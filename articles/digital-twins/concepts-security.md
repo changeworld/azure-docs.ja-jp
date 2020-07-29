@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833166"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522263"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure Digital Twins をセキュリティで保護する
 
@@ -58,7 +58,7 @@ Azure には、Azure Digital Twins リソースへのアクセスを承認する
 * Azure portal の Azure Digital Twins のアクセス制御 (IAM) ペインを使用する ([Azure RBAC と Azure portal を使用したロールの割り当ての追加または削除](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください)
 * CLI コマンドを使用してロールを追加または削除する
 
-この詳細な実行手順については、[Azure Digital Twins チュートリアルのエンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照してください。
+この詳細な実行手順については、[Azure Digital Twins チュートリアルの*エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)" に関するページを参照してください。
 
 ## <a name="permission-scopes"></a>アクセス許可のスコープ
 
@@ -73,6 +73,6 @@ Azure には、Azure Digital Twins リソースへのアクセスを承認する
 
 ## <a name="next-steps"></a>次のステップ
 
-* サンプル クライアント アプリケーションでこれらの手順を行う方法については、[クライアント アプリケーションの認証方法](how-to-authenticate-client.md)に関するページ) を使用します。
+* サンプル クライアント アプリケーションでこれらの手順を実行する方法については、"[*クライアント アプリケーションの認証方法*](how-to-authenticate-client.md)" に関するページを参照してください。
 
 * 詳細については、「[Azure リソースの RBAC](../role-based-access-control/overview.md)」を参照してください。

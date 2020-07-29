@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501893"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
@@ -23,11 +23,11 @@ SysRq シーケンスが配信されると、以降は、カーネル構成に�
 
 Azure Serial Console は、以下に示すコマンド バーのキーボード アイコンを使用して、SysRq を Azure 仮想マシンに送信するために使用できます。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Azure シリアル コンソールのスクリーンショット。 キーボードのアイコンが強調表示され、そのメニューが表示されます。 そのメニューには、Send SysRq コマンド項目が含まれています。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 "Send SysRq Command"\(SysRq コマンドを送信する\) を選択するとダイアログが開き、一般的な SysRq オプションを指定したり、ダイアログに入力された SysRq コマンドのシーケンスを許可したりできます。  ｌこれにより、`REISUB` を使用して、一連の SysRq コマンドで安全な再起動などの高度な操作を実行できるようになります。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![[ゲストへの SysRq コマンドの送信] ダイアログ ボックスのスクリーンショット。 コマンドを入力するためのオプションが選択されており、コマンド ボックスには REISUB が含まれています。](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態 (カーネル パニックなど) になった仮想マシン上では、使用できません。
 
@@ -96,7 +96,7 @@ SysRq に関するディストリビューション固有のドキュメント�
 
 シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。  Linux オペレーティング システムは、オペレーティング システムが NMI を受信した場合に、クラッシュしてメモリ ダンプを作成するように構成できます。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![シリアル コンソールのスクリーンショット。 キーボードのアイコンが強調表示され、そのメニューが表示されます。 そのメニューには、マスク不可能割り込みを送信する項目が含まれています。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 カーネル パラーメーターを構成するための sysctl をサポートしている Linux システムの場合、次の手順を使用して、この NMI の受信時にパニック状態を有効にできます。
 1. 以下の行を */etc/sysctl.conf* に追加します。 <br>
@@ -121,7 +121,7 @@ SysRq に関するディストリビューション固有のドキュメント�
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>次のステップ
-* 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](serial-console.md)を参照してください。
+* 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](../troubleshooting/serial-console-linux.md)を参照してください。
 * シリアル コンソールを使用して、[GRUB を起動し、シングル ユーザー モードに入る](serial-console-grub-single-user-mode.md)
-* シリアル コンソールは、[Windows](../windows/serial-console.md) VM でも使用可能
-* [ブート診断](boot-diagnostics.md)の詳細を表示する
+* シリアル コンソールは、[Windows](../troubleshooting/serial-console-windows.md) VM でも使用可能
+* [ブート診断](../troubleshooting/boot-diagnostics.md)の詳細を表示する

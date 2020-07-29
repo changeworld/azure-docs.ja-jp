@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップのトラブルシューテ�
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079889"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524490"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
 
@@ -57,6 +57,9 @@ Azure portal で、お使いの**コンテナー** >  **[バックアップ イ�
 >Recovery Services コンテナーは、コンテナーに登録されているすべてのストレージ アカウントの登録を解除した後にのみ削除できます。
 
 ## <a name="common-backup-or-restore-errors"></a>バックアップまたは復元に関する一般的なエラー
+
+>[!NOTE]
+>バックアップ操作または復元操作を実行するための十分なアクセス許可があることを確認するには、[このドキュメント](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup)を参照してください。
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound- ファイル共有が見つからないため、操作が失敗しました
 
@@ -313,7 +316,7 @@ Error Code:UserErrorBackupAFSInDeleteState
 
 エラー メッセージ:関連付けられている Azure ファイル共有が完全に削除されているため、バックアップに失敗しました
 
-バックアップされたファイル共有が完全に削除されているかどうかを確認します。 されている場合は、バックアップ エラーの繰り返しを回避するために、このファイル共有のバックアップを停止してください。 保護を停止する方法については、[Azure ファイル共有の保護の停止](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)に関する記事を参照してください
+バックアップされたファイル共有が完全に削除されているかどうかを確認します。 されている場合は、バックアップ エラーの繰り返しを回避するために、このファイル共有のバックアップを停止してください。 保護を停止する方法については、[Azure ファイル共有の保護の停止](./manage-afs-backup.md#stop-protection-on-a-file-share)に関する記事を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

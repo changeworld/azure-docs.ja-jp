@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655895"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505161"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](../../azure-monitor/platform/itsmc-overview.md)に関する記事をご覧ください。
@@ -39,7 +39,7 @@ ms.locfileid: "83655895"
 - Service Manager Web アプリケーション (Web アプリ) がデプロイされ構成されている。 Web アプリに関する情報については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
 - ハイブリッド接続が作成および構成されている。 詳細情報: [ハイブリッド接続の構成](#configure-the-hybrid-connection)。
 - サポートされている Service Manager のバージョン: 2012 R2 または 2016。
-- ユーザー ロール: [上級オペレーター](https://technet.microsoft.com/library/ff461054.aspx)。
+- ユーザー ロール: [上級オペレーター](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
 
 ### <a name="connection-procedure"></a>接続手順
 
@@ -201,7 +201,7 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 > 最後に [update]\(更新\) をクリックします。
 > 2) **接続が維持されるように内部プロシージャを確立することを推奨します:** トークンを更新するための更新トークンの有効期限にしたがってください。 更新トークンの予想される有効期限の前に必ず次の操作を行ってください (更新トークンの有効期限が切れる数日前に行うことをお勧めします)。
 >
-> 1. [ITSM コネクタ構成の手動での同期プロセスを完了します](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 1. [ITSM コネクタ構成の手動での同期プロセスを完了します](./itsmc-resync-servicenow.md)
 > 2. セキュリティ上の理由から古いキーを保持することは推奨されないため、古い更新トークンを取り消します。 ServiceNow ブレードで System OAuth を検索し、[Manage Tokens]\(トークンの管理\) を選択します。 OAuth 名と有効期限の日付にしたがって、一覧から古いトークンを選択します。
 > ![SNOW システムの OAuth 定義](media/itsmc-connections/snow-system-oauth.png)
 > 3. [Revoke Access]\(アクセス権の取り消し\)、[Revoke]\(取り消し\) の順にクリックします。
@@ -248,6 +248,10 @@ ServiceNow 接続を作成するには、次の手順に従います。
 - この ServiceNow インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
 詳細情報:[Azure アラートから ITSM 作業項目を作成する](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+
+
+> [!NOTE]
+> ServiceNow には、1 時間あたりの要求数のレート制限があります。 この制限を構成するには、ServiceNow インスタンスで "インバウンド REST API レート制限" を定義します。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>ServiceNow アプリで統合ユーザー ロールを作成する
 
