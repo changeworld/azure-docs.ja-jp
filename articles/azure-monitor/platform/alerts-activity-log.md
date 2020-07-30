@@ -4,12 +4,12 @@ description: Azure portal、Azure Resource Manager テンプレート、およ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516058"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322416"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -92,7 +92,7 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
     - **説明**:新しいアラート ルールの説明。
     - **リソース グループにアラートを保存します**:この新しいルールを保存するリソース グループを選択します。
 
-5. **[アクション グループ]** のドロップダウン メニューから、この新しいアラート ルールに割り当てるアクション グループを指定します。 または、[新しいアクション グループを作成](../../azure-monitor/platform/action-groups.md)して、新しいルールに割り当てます。 新しいグループを作成するには、 **[+ 新しいグループ]** を選択します。
+5. **[アクション グループ]** のドロップダウン メニューから、この新しいアラート ルールに割り当てるアクション グループを指定します。 または、[新しいアクション グループを作成](./action-groups.md)して、新しいルールに割り当てます。 新しいグループを作成するには、 **[+ 新しいグループ]** を選択します。
 
 6. ルールを作成後に有効にするには、 **[ルールの作成時に有効にする]** オプションの **[はい]** を選択します。
 7. **[アラート ルールの作成]** を選択します。
@@ -285,7 +285,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アクティビティ ログの Webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md)について学習します。
-- [アクティビティ ログの概要](../../azure-monitor/platform/activity-log-alerts.md)をお読みください。
-- [アクション グループ](../../azure-monitor/platform/action-groups.md)について学習します。  
+- [アクティビティ ログの Webhook スキーマ](./activity-log-alerts-webhook.md)について学習します。
+- [アクティビティ ログの概要](./activity-log-alerts.md)をお読みください。
+- [アクション グループ](./action-groups.md)について学習します。  
 - [サービス正常性の通知](../../service-health/service-notifications.md)について学習します。
+

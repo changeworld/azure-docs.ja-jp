@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cf1ede2db8dbdc7557775cf7b22dde53b69280da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 0e1723854d18172f28a43aacb86ab9c29656cf0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81314236"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322246"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>チュートリアル:Azure Service Fabric 上に Java API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
 

@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory のアプリ マニフェストについて
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory のアプリ マニフェストについて詳しく説明しています。このマニフェストは、Azure AD テナントでのアプリケーションの ID 構成を表しています。また、OAuth 認証、同意エクスペリエンスなどを利用しやすくするために使用されます。
 services: active-directory
 author: rwike77
@@ -12,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479251"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026749"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
-アプリケーション マニフェストには、Microsoft ID プラットフォームにあるアプリケーション オブジェクトのすべての属性の定義が含まれます。 それは、アプリケーション オブジェクトを更新するメカニズムとしても機能します。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)を参照してください。
+アプリケーション マニフェストには、Microsoft ID プラットフォームにあるアプリケーション オブジェクトのすべての属性の定義が含まれます。 それは、アプリケーション オブジェクトを更新するメカニズムとしても機能します。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](/graph/api/resources/application)を参照してください。
 
-Azure portal で、あるいは [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) または [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) を使用してプログラムで、アプリの属性を構成できます。 ただし、一部のシナリオでは、アプリ マニフェストを編集してアプリの属性を構成する必要があります。 これらのシナリオは、次のとおりです。
+Azure portal で、あるいは [REST API](/graph/api/resources/application) または [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) を使用してプログラムで、アプリの属性を構成できます。 ただし、一部のシナリオでは、アプリ マニフェストを編集してアプリの属性を構成する必要があります。 これらのシナリオは、次のとおりです。
 
 * アプリを Azure AD マルチテナントと個人用の Microsoft アカウントとして登録した場合、サポートされる Microsoft アカウントを UI で変更することはできません。 代わりに、アプリケーション マニフェスト エディターを使用して、サポートされるアカウントの種類を変更する必要があります。
 * アプリでサポートされるアクセス許可とロールを定義する必要がある場合は、アプリケーション マニフェストを変更する必要があります。
@@ -433,7 +434,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 | parentalControlSettings | String |
 
 - `countriesBlockedForMinors` は、未成年者に関してアプリがブロックされる国/地域を指定します。
-- `legalAgeGroupRule` は、アプリのユーザーに適用される法的年齢グループ ルールを指定します。 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids`、`BlockMinors` のいずれかに設定できます。  
+- `legalAgeGroupRule` は、アプリのユーザーに適用される法的年齢グループ ルールを指定します。 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids`、`BlockMinors` のいずれかに設定できます。
 
 例:
 
@@ -493,7 +494,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 | :--- | :--- |
 | publicClient | Boolean|
 
-このアプリケーションがパブリック クライアント (モバイル デバイス上で実行されているインストール済みのアプリケーションなど) であるかどうかを指定します。 
+このアプリケーションがパブリック クライアント (モバイル デバイス上で実行されているインストール済みのアプリケーションなど) であるかどうかを指定します。
 
 このプロパティは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`allowPublicClient` に置き換えられます。
 
@@ -669,7 +670,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 
 これらのエラーのいずれかが表示された場合、以下の操作を実行することをお勧めします。
 
-1. 以前にダウンロードしたマニフェストのアップロードではなく、マニフェスト エディターで個別に属性を編集します。 関心のある属性を正常に編集するために、[マニフェスト リファレンス](#manifest-reference)の表を使って新旧の属性の構文とセマンティクスを理解します。 
+1. 以前にダウンロードしたマニフェストのアップロードではなく、マニフェスト エディターで個別に属性を編集します。 関心のある属性を正常に編集するために、[マニフェスト リファレンス](#manifest-reference)の表を使って新旧の属性の構文とセマンティクスを理解します。
 1. ワークフローにおいて、後で使用するためにソース リポジトリ内にマニフェストを保存する必要がある場合は、リポジトリに保存されたマニフェストを、**アプリの登録**エクスペリエンスに表示されているものにリベースすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
