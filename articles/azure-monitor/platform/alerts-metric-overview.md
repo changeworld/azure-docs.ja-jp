@@ -4,16 +4,16 @@ description: メトリック アラートの用途と、Azure Monitor での機�
 ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539433"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327142"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
-Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、[プラットフォーム メトリック](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリック](../../azure-monitor/platform/alerts-metric-logs.md)への変換、Application Insights のメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
+Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、[プラットフォーム メトリック](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[カスタム メトリック](./metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリック](./alerts-metric-logs.md)への変換、Application Insights のメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
 
 ## <a name="how-do-metric-alerts-work"></a>メトリック アラートの機能
 
@@ -152,7 +152,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 >
 > 複数リソースのメトリック アラート ルールのスコープには、選択したリソースの種類に該当するリソースが少なくとも 1 つ含まれている必要があります。
 
-複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 監視対象のリソースごとに個別の通知が届きます。
+複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](./alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 監視対象のリソースごとに個別の通知が届きます。
 
 > [!NOTE]
 >
@@ -164,12 +164,13 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>メトリック アラートでサポートされているリソースの種類
 
-サポートされているリソースの種類の完全な一覧については、こちらの[記事](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
+サポートされているリソースの種類の完全な一覧については、こちらの[記事](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure でメトリック アラートを作成、表示、管理する方法を学習する](alerts-metric.md)
-- [Azure Resource Manager のテンプレートを使ってメトリック アラートを配置する方法を学習する](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Azure Resource Manager のテンプレートを使ってメトリック アラートを配置する方法を学習する](./alerts-metric-create-templates.md)
 - [アクション グループの詳細について学習する](action-groups.md)
 - [動的しきい値の条件タイプの詳細について学習する](alerts-dynamic-thresholds.md)
+

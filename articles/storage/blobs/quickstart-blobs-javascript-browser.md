@@ -3,16 +3,16 @@ title: クイック スタート:Azure Blob Storage ライブラリ v12 - ブラ
 description: このクイックスタートでは、ブラウザーで JavaScript 用の Azure Blob Storage クライアント ライブラリ バージョン 12 を使用する方法について説明します。 Blob Storage にコンテナーとオブジェクトを作成します。 そのうえで、コンテナー内のすべての BLOB を一覧表示する方法について説明します。 最後に、BLOB とコンテナーを削除する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/18/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 039aea76e5e59d43078c2fa884e192922ec50035
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833419"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276994"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -20,10 +20,12 @@ ms.locfileid: "85833419"
 
 Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 BLOB は、テキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 このクイックスタートでは、ブラウザーで JavaScript を使用して BLOB を管理する方法について説明します。 ここでは、BLOB のアップロードと一覧表示のほか、コンテナーの作成と削除を行います。
 
-[API リファレンスのドキュメント](/javascript/api/@azure/storage-blob) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+その他のリソース:
 
-> [!NOTE]
-> 以前の SDK バージョンを使ってみるには、「[クイックスタート: Node.js で JavaScript v10 SDK を使用して BLOB を管理する](storage-quickstart-blobs-nodejs-legacy.md)」を参照してください。
+* [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+* [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 

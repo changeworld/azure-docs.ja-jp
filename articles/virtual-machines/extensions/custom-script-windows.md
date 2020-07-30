@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010939"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -144,7 +144,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
 * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
 * `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー
-* `managedIdentity`: (省略可能、json オブジェクト) ファイルをダウンロードするための[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`: (省略可能、json オブジェクト) ファイルをダウンロードするための[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)
   * `clientId`: (省略可能、文字列) マネージド ID のクライアント ID
   * `objectId`: (省略可能、文字列) マネージド ID のオブジェクト ID
 
@@ -160,9 +160,9 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 > [!NOTE]
 > このプロパティは、保護された設定でのみ指定する**必要があります**。
 
-CustomScript (バージョン 1.10 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ベースの RBAC がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
+CustomScript (バージョン 1.10 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) ベースの RBAC がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
 
-この機能を使用するには、ユーザーが、[システムによって割り当てられたか](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)または[ユーザーが割り当てた](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) ID を CustomScript が実行されると想定される VM または VMSS に追加し、[Azure Storage コンテナーまたは BLOB にマネージド ID のアクセス権を付与する必要があります](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+この機能を使用するには、ユーザーが、[システムによって割り当てられたか](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)または[ユーザーが割り当てた](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) ID を CustomScript が実行されると想定される VM または VMSS に追加し、[Azure Storage コンテナーまたは BLOB にマネージド ID のアクセス権を付与する必要があります](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access)。
 
 ターゲット VM/VMSS でシステムによって割り当てられた ID を使用するには、"managedidentity" フィールドを空の JSON オブジェクトに設定します。 
 
@@ -283,7 +283,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
-カスタム スクリプト拡張機能をスケール セットにデプロイするには、「[Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)」を参照してください。
+カスタム スクリプト拡張機能をスケール セットにデプロイするには、「[Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)」を参照してください。
 
 ## <a name="classic-vms"></a>クラシック VM
 
@@ -301,7 +301,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 ### <a name="powershell"></a>PowerShell
 
-[Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) コマンドレットを使用すると、カスタム スクリプト拡張機能を既存の仮想マシンに追加できます。
+[Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) コマンドレットを使用すると、カスタム スクリプト拡張機能を既存の仮想マシンに追加できます。
 
 ```powershell
 # define your file URI

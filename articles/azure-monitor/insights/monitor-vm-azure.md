@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539705"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326190"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
@@ -134,7 +134,7 @@ az monitor diagnostic-settings create \
 |:---|:---|
 | 概要 | 仮想マシンのホストの[プラットフォームのメトリック](../platform/data-platform-metrics.md)を表示します。 グラフをクリックすると、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)でこのデータを操作することができます。 |
 | アクティビティ ログ | 現在の仮想マシンに対してフィルター処理された[アクティビティ ログ](../platform/activity-log.md#view-the-activity-log)のエントリ。 |
-| 洞察 | 現在選択されている仮想マシンのマップを使用して [Azure Monitor for VMs](../insights/vminsights-overview.md) を開きます。 |
+| 洞察 | 現在選択されている仮想マシンのマップを使用して [Azure Monitor for VMs](./vminsights-overview.md) を開きます。 |
 | 警告 | 現在の仮想マシンの[アラート](../platform/alerts-overview.md)を表示します。  |
 | メトリック | 現在の仮想マシンに設定されているスコープを使用して、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)を開きます。 |
 | 診断設定 | 現在の仮想マシンに対して[診断拡張機能](../platform/diagnostics-extension-overview.md)を有効にして構成します。 |
@@ -242,3 +242,4 @@ System Center Operations Manager (SCOM) を使用すると、仮想マシン上�
 
 * [ログ クエリを使用して Azure Monitor ログのデータを分析する方法について学習する。](../log-query/get-started-queries.md)
 * [Azure Monitor のメトリックとログを使用したアラートについて学習する。](../platform/alerts-overview.md)
+

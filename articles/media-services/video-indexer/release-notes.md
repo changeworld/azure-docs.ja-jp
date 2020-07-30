@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042620"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,18 @@ ms.locfileid: "84325067"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="search-by-topics"></a>トピックで検索
+
+検索 API を使用して、特定のトピックでビデオを検索できるようになりました (API のみ)。
+
+トピックは、`textScope` (省略可能なパラメーター) の一部として追加されます。 詳細については [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) を参照してください。  
+
+### <a name="labels-enhancement"></a>ラベルの機能強化
+
+ラベルのタグ付け機能がアップグレードされました。これにより、特定しやすいより視覚的なラベルが追加されます。
 
 ## <a name="may-2020"></a>2020 年 5 月
 

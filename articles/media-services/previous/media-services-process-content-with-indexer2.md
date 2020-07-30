@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4589e2e923bf4068cc3a707c69f0304a1539745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163796"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011551"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
 
 > [!NOTE]
-> **Azure Media Indexer 2** メディア プロセッサは廃止予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+> **Azure Media Indexer 2** メディア プロセッサは廃止予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
 **Azure Media Indexer 2 プレビュー** メディア プロセッサー (MP) を使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。 前のバージョンの [Azure Media Indexer](media-services-index-content.md)と比較すると、 **Azure Media Indexer 2 プレビュー** は、インデックス作成が高速化され、より多くの言語をサポートします。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (標準、簡体字)、ポルトガル語、アラビア語、ロシア語、日本語などがサポートされています。
 
@@ -301,4 +301,3 @@ namespace IndexContent
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
