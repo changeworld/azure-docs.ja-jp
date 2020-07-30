@@ -4,15 +4,15 @@ description: Cloud パートナー ポータル API を使用するときの一�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bfcee6a6d9a8448315d59009ea8a6ef62fa71da0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: aa4269d68a176db97e36e6fbae4eba32041d7e05
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535996"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271469"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>一般的な認証エラーのトラブルシューティング
 

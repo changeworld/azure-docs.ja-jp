@@ -7,18 +7,22 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081170"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングを使用したディザスター リカバリーの設計
 
 ExpressRoute は、Microsoft リソースへのキャリア グレード プライベート ネットワーク接続を提供する高可用性のために設計されています。 つまり、Microsoft ネットワーク内の ExpressRoute パスには単一障害点はありません。 ExpressRoute 回線の可用性を最大化するための設計に関する考慮事項については、「[Designing for high availability with ExpressRoute][HA]」 (ExpressRoute を使用した高可用性のための設計) を参照してください。
 
 しかし、マーフィーのよく知られている格言 -- *何事であれ失敗する可能性のあるものは、いずれ失敗する* -- を考慮し、この記事では、単一の ExpressRoute 回線を使用して対処できるエラーに留まらず、ソリューションに注目しましょう。 つまり、この記事では、geo 冗長 ExpressRoute 回線を使用した、ディザスター リカバリー用の堅牢なバックエンド ネットワーク接続を構築するためのネットワーク アーキテクチャに関する考慮事項を確認していきます。
+
+>[!NOTE]
+>この記事で説明する概念は、Virtual WAN で、またはその外部で ExpressRoute 回線を作成する場合にも同様に適用されます。
+>
 
 ## <a name="need-for-redundant-connectivity-solution"></a>冗長接続ソリューションの必要性
 

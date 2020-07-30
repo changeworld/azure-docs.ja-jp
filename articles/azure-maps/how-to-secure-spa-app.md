@@ -2,19 +2,20 @@
 title: 非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 titleSuffix: Azure Maps
 description: 非対話型の Azure AD ロールベースのアクセス制御と Azure Maps Web SDK を使用してシングル ページ アプリケーションを構成する方法。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d33fbdf2e95faaa82c13b4fc0d52ea3f188c3f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5b7f26a03c117620be7c16abaf689763e370e5ba
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988444"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285698"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 

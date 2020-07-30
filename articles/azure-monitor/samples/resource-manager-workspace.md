@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 66c62156cec79a65b856a6f4c8f2ad34aa687b05
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d5af288ea564c4118e010c8d0f0f86c5337ce170
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024055"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペース用の Resource Manager テンプレートのサンプル
 この記事には、Azure Monitor で Log Analytics ワークスペースを作成および構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
@@ -609,7 +609,7 @@ ms.locfileid: "83853195"
 
 ### <a name="notes"></a>Notes
 
-- 区切り記号と抽出の構成は複雑になる場合があります。 参考用に、Azure portal を使用してカスタム ログを定義した後、 **-Kind** を **CustomLog** に設定した [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) を使用してその構成を取得できます。
+- 区切り記号と抽出の構成は複雑になる場合があります。 参考用に、Azure portal を使用してカスタム ログを定義した後、 **-Kind** を **CustomLog** に設定した [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) を使用してその構成を取得できます。
 
   
 ### <a name="template-file"></a>テンプレート ファイル

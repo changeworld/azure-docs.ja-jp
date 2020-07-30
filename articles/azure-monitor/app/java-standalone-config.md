@@ -3,12 +3,13 @@ title: 任意の場所の Java アプリケーションを監視する - Azure M
 description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスをコード不要で監視します。 分散トレースとアプリケーション マップを使用して、問題の根本原因を見つけます。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319688"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374288"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>構成オプション - Azure Monitor Application Insights の Java スタンドアロン エージェント
 
@@ -216,7 +217,7 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
-アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.0 Preview を構成できます。
+アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](./ip-addresses.md)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.0 Preview を構成できます。
 
 ```json
 {

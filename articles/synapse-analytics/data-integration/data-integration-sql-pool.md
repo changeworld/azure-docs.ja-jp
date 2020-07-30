@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: f7973030b27de95b8b5dd52bdea99e03aebd675a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63e83e69e5e09c17b2a2ddb5ca7bee6474e2fddd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496113"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386675"
 ---
-# <a name="ingesting-data-into-a-sql-pool"></a>SQL プールへのデータの取り込み
+# <a name="ingest-data-into-a-sql-pool"></a>SQL プールにデータを取り込む
 
 この記事では、Azure Synapse Analytics を使用して、Azure Data Lake Gen 2 ストレージ アカウントから SQL プールにデータを取り込む方法について説明します。
 

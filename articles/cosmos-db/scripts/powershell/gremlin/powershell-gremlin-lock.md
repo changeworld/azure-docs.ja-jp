@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 5e4486bf91742bf815515cf3b349fc9191202edb
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 32b5a02064ec987250f640ab6ea63515bac8385f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039945"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-powershell"></a>Azure PowerShell を使用して Azure Cosmos Gremlin API のデータベースとグラフのためのリソース ロックを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "85127176"
 [!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
 
 > [!IMPORTANT]
-> 先に `disableKeyBasedMetadataWriteAccess` プロパティを有効にして Cosmos DB アカウントをロックしておかないと、ユーザーが Gremlin SDK または Azure portal を使って行った変更に対してリソース ロックが機能しません。 このプロパティを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk)」を参照してください。
+> 先に `disableKeyBasedMetadataWriteAccess` プロパティを有効にして Cosmos DB アカウントをロックしておかないと、ユーザーが Gremlin SDK または Azure portal を使って行った変更に対してリソース ロックが機能しません。 このプロパティを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](../../../role-based-access-control.md#prevent-sdk-changes)」を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

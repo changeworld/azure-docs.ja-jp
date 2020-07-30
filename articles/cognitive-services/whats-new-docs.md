@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 07/09/2020
-ms.openlocfilehash: da09cb8aa112cdf927c1a67401ab3f6a92e85ece
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075185"
 ---
 # <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Cognitive Services ドキュメント:2020 年 6 月 1 日から 2020 年 6 月 30 日までの更新情報
 
@@ -69,16 +69,16 @@ ms.locfileid: "86224997"
 ### <a name="new-articles"></a>新しい記事
 
 - [カスタム コマンドの概念](/azure/cognitive-services/speech-service/custom-commands-references)
-- [コマンドに確認を追加する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-confirmations)
-- [パラメーターを外部カタログ エンティティとして構成する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-external-catalog-string-entity)
+- [コマンドに確認を追加する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
+- [パラメーターを外部カタログ エンティティとして構成する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
 - [音声応答の言語生成テンプレートを使用する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [コマンドで修正を実装する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-one-step-correction)
+- [コマンドで修正を実装する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
 - [コマンドにパラメーターを追加する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [単純なコマンドを追加する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-simple-commands)
-- [カスタム コマンド パラメーターに検証を追加する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-validations)
-- [カスタム コマンド アプリケーションを作成する](/azure/cognitive-services/speech-service/how-to-custom-commands-create-empty-project)
+- [単純なコマンドを追加する](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
+- [カスタム コマンド パラメーターに検証を追加する](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
+- [カスタム コマンド アプリケーションを作成する](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
 - [Custom Speech の CI/CD](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [カスタム コマンドを使用したエンド ツー エンドの音声アシスタントの作成](/azure/cognitive-services/speech-service/quickstart-custom-commands-e2e-application)に関する記事
+- [カスタム コマンドを使用したエンド ツー エンドの音声アシスタントの作成](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)に関する記事
 - [クイック スタート: Speech Studio でオーディオ ファイルを使用してモデルをテストする](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
 - [Speaker Recognition の基礎を学ぶ](/azure/cognitive-services/speech-service/speaker-recognition-basics)
 - [Azure Speaker Recognition サービスとは](/azure/cognitive-services/speech-service/speaker-recognition-overview)
