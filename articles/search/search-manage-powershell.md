@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: a08b59464855b805173fa76d696107f8a7673d39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021904"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure
 
 ## <a name="check-versions-and-load-modules"></a>バージョンの確認とモジュールの読み込み
 
-この記事の例は対話形式で、昇格された権限が必要です。 Azure PowerShell (**Az** モジュール) がインストールされている必要があります。 詳しくは、[Azure PowerShell のインストール](/powershell/azure/overview)に関する記事をご覧ください。
+この記事の例は対話形式で、昇格された権限が必要です。 Azure PowerShell (**Az** モジュール) がインストールされている必要があります。 詳しくは、[Azure PowerShell のインストール](/powershell/azure/)に関する記事をご覧ください。
 
 ### <a name="powershell-version-check-51-or-later"></a>PowerShell のバージョン チェック (5.1 以降)
 

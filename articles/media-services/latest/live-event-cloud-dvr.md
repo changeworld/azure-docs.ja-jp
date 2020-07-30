@@ -14,18 +14,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995821"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000994"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>タイムシフトとライブ出力を使用してオンデマンドのビデオ再生を作成する
 
-Azure Media Services の[ライブ出力](https://docs.microsoft.com/rest/api/media/liveoutputs)オブジェクトは、ライブ ストリームをキャッチして Media Services アカウントのアセットに記録するデジタル ビデオ レコーダーのようなものです。 記録されたコンテンツは、[アセット](https://docs.microsoft.com/rest/api/media/assets) リソースによって定義されたコンテナーに保持されます (コンテナーはアカウントに接続されている Azure Storage アカウントにあります)。 また、ライブ出力を使用すると、アーカイブの記録に残すストリームの量 (たとえば、クラウド DVR の容量) や、視聴者がライブ ストリームの視聴を開始できるタイミングなど、送信ライブ ストリームのいくつかのプロパティを制御することもできます。 ディスク上のアーカイブは、ライブ出力の **archiveWindowLength** プロパティで指定されているコンテンツ量のみを保持する循環アーカイブ "期間" です。 このウィンドウの範囲外のコンテンツは、ストレージ コンテナーから自動的に破棄され、復旧できません。 archiveWindowLength の値は、ISO-8601 形式で表された期間 (PTHH:MM:SS など) であり、DVR の容量を指定します。 その値は、最小 1 分から最大 25 時間までの範囲で設定できます。
+Azure Media Services の[ライブ出力](/rest/api/media/liveoutputs)オブジェクトは、ライブ ストリームをキャッチして Media Services アカウントのアセットに記録するデジタル ビデオ レコーダーのようなものです。 記録されたコンテンツは、[アセット](/rest/api/media/assets) リソースによって定義されたコンテナーに保持されます (コンテナーはアカウントに接続されている Azure Storage アカウントにあります)。 また、ライブ出力を使用すると、アーカイブの記録に残すストリームの量 (たとえば、クラウド DVR の容量) や、視聴者がライブ ストリームの視聴を開始できるタイミングなど、送信ライブ ストリームのいくつかのプロパティを制御することもできます。 ディスク上のアーカイブは、ライブ出力の **archiveWindowLength** プロパティで指定されているコンテンツ量のみを保持する循環アーカイブ "期間" です。 このウィンドウの範囲外のコンテンツは、ストレージ コンテナーから自動的に破棄され、復旧できません。 archiveWindowLength の値は、ISO-8601 形式で表された期間 (PTHH:MM:SS など) であり、DVR の容量を指定します。 その値は、最小 1 分から最大 25 時間までの範囲で設定できます。
 
-ライブ イベントとそのライブ出力との関係は、従来の TV 放送と似ており、チャンネル (ライブ イベント) はビデオの連続したストリームを表し、録画 (ライブ出力) は特定の時間セグメント (たとえば、午後 6 時 30 分から午後 7 時 00 分までの夕方のニュース) を対象としています。 ストリームがライブ イベントに流れ始めると、アセット、ライブ出力、ストリーミング ロケーターを作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。 1 つのライブ イベントに、アーカイブの長さと設定の異なる複数のライブ出力 (最大 3 つ) を作成できます。 ライブ ストリーミング ワークフローの詳細については、「[一般的な手順](live-streaming-overview.md#general-steps)」のセクションを参照してください。
+ライブ イベントとそのライブ出力との関係は、従来の TV 放送と似ており、チャンネル (ライブ イベント) はビデオの連続したストリームを表し、録画 (ライブ出力) は特定の時間セグメント (たとえば、午後 6 時 30 分から午後 7 時 00 分までの夕方のニュース) を対象としています。 ストリームがライブ イベントに流れ始めると、アセット、ライブ出力、ストリーミング ロケーターを作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。 1 つのライブ イベントに、アーカイブの長さと設定の異なる複数のライブ出力 (最大 3 つ) を作成できます。 ライブ ストリーミング ワークフローの詳細については、「[一般的な手順](live-streaming-overview.md#general-steps)」のセクションを参照してください。
 
 ## <a name="using-a-dvr-during-an-event"></a>イベント中の DVR の使用
 
@@ -39,7 +39,7 @@ Azure Media Services の[ライブ出力](https://docs.microsoft.com/rest/api/me
 
 ## <a name="creating-an-archive-for-on-demand-playback"></a>オンデマンド再生用のアーカイブの作成
 
-ライブ出力がアーカイブされるアセットは、ライブ出力が削除されると、自動的にオンデマンド アセットになります。 ライブ イベントを停止するには、すべてのライブ出力を削除する必要があります。 省略可能なフラグ [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) を使用すると、停止時にライブ出力を自動的に削除できます。
+ライブ出力がアーカイブされるアセットは、ライブ出力が削除されると、自動的にオンデマンド アセットになります。 ライブ イベントを停止するには、すべてのライブ出力を削除する必要があります。 省略可能なフラグ [removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) を使用すると、停止時にライブ出力を自動的に削除できます。
 
 イベントを停止して削除した後でも、アセットを削除しない限り、ユーザーはアーカイブされたコンテンツをビデオ オン デマンドとしてストリーム配信できます。 アセットがイベントで使用されている場合は、アセットを削除できません。まずイベントを削除する必要があります。
 

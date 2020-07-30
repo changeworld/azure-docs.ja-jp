@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: eba250f3ca6a7af8480d24a99e6c3e8278009b82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8119477a69771c67db1f1e59c082d5d0d611214b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499445"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305858"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure Cloud Services をプロファイリングする
 
@@ -25,7 +25,7 @@ Application Insights Profiler は、Azure Diagnostics 拡張機能と共にイ�
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Azure Cloud Services に対して Profiler を有効にする
 1. [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降を使用していることを確認します。 OS ファミリ 4 を使用している場合は、[スタートアップ タスク](../../cloud-services/cloud-services-dotnet-install-dotnet.md)を使用して、.NET Framework 4.6.1 以降をインストールする必要があります。 OS ファミリ 5 には、互換性のあるバージョンの .NET Framework が既定で含まれています。 
 
-1. [Application Insights SDK を Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) に追加します。
+1. [Application Insights SDK を Azure Cloud Services](./cloudservices.md?toc=%2fazure%2fazure-monitor%2ftoc.json) に追加します。
 
     **Cloud Services 向けの WAD に付属しているプロファイラーのバグが修正されました。** Cloud Services 向け WAD の最新バージョン (1.12.2.0) は、最近リリースされたすべての App Insights SDK バージョンで動作します。 Cloud Service のホストでは WAD が自動的にアップグレードされますが、即時に行われるわけではありません。 アップグレードを強制するには、サービスを再デプロイするか、ノードを再起動します。
 
@@ -41,7 +41,7 @@ Application Insights Profiler は、Azure Diagnostics 拡張機能と共にイ�
 
       ![診断構成ファイルの場所](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      ファイルが見つからない場合は、「[Set up diagnostics for Azure Cloud Services and Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」(Azure クラウド サービスと仮想マシンに対する診断を設定する) をご覧ください。
+      ファイルが見つからない場合は、「[Set up diagnostics for Azure Cloud Services and Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?view=vs-2019)」(Azure クラウド サービスと仮想マシンに対する診断を設定する) をご覧ください。
 
     b. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。  
 
@@ -73,3 +73,4 @@ Application Insights Profiler は、Azure Diagnostics 拡張機能と共にイ�
 * アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](monitor-web-app-availability.md)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
 * Azure ポータルで [Profiler トレース](profiler-overview.md?toc=/azure/azure-monitor/toc.json)を表示します。
 * プロファイラーの問題のトラブルシューティングについては、[Profiler のトラブルシューティング](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)に関するページをご覧ください。
+
