@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033583"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -22,13 +22,13 @@ ms.locfileid: "84762124"
 
 **履歴**テーブルは、タスク ハブ内のすべてのオーケストレーション インスタンスの履歴イベントを含む Azure Storage テーブルです。 このテーブルの名前は、*TaskHubName*History の形式になります。 インスタンスが実行されると、新しい行がこのテーブルに追加されます。 このテーブルのパーティション キーは、オーケストレーションのインスタンス ID から派生します。 ほとんどの場合、インスタンス ID はランダムであり、Azure Storage での内部パーティションの最適な分散が確保されます。
 
-オーケストレーション インスタンスを実行する必要があるときには、履歴テーブルの適切な行がメモリに読み込まれます。 その後、これらの "*履歴イベント*" がオーケストレーター関数コードに再生され、以前にチェックポイントされた状態に戻されます。 このように実行履歴を使用した状態の再構築は、[イベント ソーシング パターン](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)の影響を受けます。
+オーケストレーション インスタンスを実行する必要があるときには、履歴テーブルの適切な行がメモリに読み込まれます。 その後、これらの "*履歴イベント*" がオーケストレーター関数コードに再生され、以前にチェックポイントされた状態に戻されます。 このように実行履歴を使用した状態の再構築は、[イベント ソーシング パターン](/azure/architecture/patterns/event-sourcing)の影響を受けます。
 
 ## <a name="instances-table"></a>インスタンス テーブル
 
 **インスタンス** テーブルは、タスク ハブ内のすべてのオーケストレーションおよびエンティティ インスタンスの状態を含む別の Azure Storage テーブルです。 インスタンスが作成されると、このテーブルに新しい行が追加されます。 このテーブルのパーティション キーはオーケストレーション インスタンス ID またはエンティティ キーであり、行キーは固定定数です。 オーケストレーションまたはエンティティ インスタンスごとに 1 行があります。
 
-このテーブルは、`GetStatusAsync` (.NET) API と `getStatus` (JavaScript) API の他に、[status query HTTP API](durable-functions-http-api.md#get-instance-status) からのインスタンス クエリ要求を満たすために使用されます。 最終的には、前述の**履歴**テーブルの内容との整合性が維持されます。 このように別の Azure Storage テーブルを使用したインスタンス クエリ操作への効率的な対応は、[コマンド クエリ責務分離 (CQRS) パターン](https://docs.microsoft.com/azure/architecture/patterns/cqrs)の影響を受けます。
+このテーブルは、`GetStatusAsync` (.NET) API と `getStatus` (JavaScript) API の他に、[status query HTTP API](durable-functions-http-api.md#get-instance-status) からのインスタンス クエリ要求を満たすために使用されます。 最終的には、前述の**履歴**テーブルの内容との整合性が維持されます。 このように別の Azure Storage テーブルを使用したインスタンス クエリ操作への効率的な対応は、[コマンド クエリ責務分離 (CQRS) パターン](/azure/architecture/patterns/cqrs)の影響を受けます。
 
 ## <a name="internal-queue-triggers"></a>内部キュー トリガー
 

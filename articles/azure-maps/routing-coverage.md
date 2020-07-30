@@ -1,19 +1,19 @@
 ---
 title: ルーティングの対象範囲 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps のルーティングの対象範囲となるリージョンについて説明します。
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d581380bed3cb0cbc50a0b763a1dc7fe7ee1d04e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123889"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129527"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 
@@ -90,7 +90,7 @@ ms.locfileid: "83123889"
 | バルバドス                       |        ✓       |                      |             |
 | ベリーズ                         |        ✓       |                      |             |
 | ブラジル                         |        ✓       |         ✓            |     ✓       | 
-| カナダ                         |        ✓       |         ✓            |     ✓      |
+| Canada                         |        ✓       |         ✓            |     ✓      |
 | チリ                          |        ✓       |         ✓            |     ✓      |
 | コロンビア                       |        ✓       |         ✓            |             |
 | コスタリカ                     |        ✓       |                      |             |
@@ -116,7 +116,7 @@ ms.locfileid: "83123889"
 | セントビンセントおよびグレナディーン諸島       |        ✓       |                      |             |
 | スリナム                       |        ✓       |                      |             |
 | トリニダード・トバゴ              |        ✓       |                      |             |
-| 米国                  |        ✓       |         ✓            |     ✓      | 
+| United States                  |        ✓       |         ✓            |     ✓      | 
 | \+ 米領サモア                |        ✓       |                      |             |
 | \+ 北マリアナ諸島      |        ✓       |                      |             |
 | \+ プエルトリコ                   |        ✓       |                      |             |

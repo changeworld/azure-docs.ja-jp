@@ -13,13 +13,14 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - mqtt
+- 'Role: Cloud Development'
 ms.date: 06/21/2019
-ms.openlocfilehash: 39d136815e3808c907e190773b9303075a5093e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8e63ccae81b7de41a38f362c55309729243d9cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769360"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315157"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>クイック スタート:Node.js を使用して、Azure IoT ハブに接続されたデバイスを制御する
 

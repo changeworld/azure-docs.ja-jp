@@ -9,15 +9,17 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e26c3fc9ec420596a4ec152f7f176e44acc7b4c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770036"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321668"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 

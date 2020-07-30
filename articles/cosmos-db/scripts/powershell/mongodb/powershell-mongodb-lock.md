@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: b9a457536754539aa8e736953913590a71b5a32c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 3e4a64b989c11f168468936cf25d5bbd4f6c9b15
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039882"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-mongodb-api-database-and-collection-using-azure-powershell"></a>Azure PowerShell を使用して Azure Cosmos MongoDB API のデータベースとコレクションのためのリソース ロックを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "85127208"
 [!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
 
 > [!IMPORTANT]
-> 先に `disableKeyBasedMetadataWriteAccess` プロパティを有効にして Cosmos DB アカウントをロックしておかないと、ユーザーが MongoDB SDK、Mongoshell、各種のツール、または Azure portal を使って行った変更に対してリソース ロックが機能しません。 このプロパティを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk)」を参照してください。
+> 先に `disableKeyBasedMetadataWriteAccess` プロパティを有効にして Cosmos DB アカウントをロックしておかないと、ユーザーが MongoDB SDK、Mongoshell、各種のツール、または Azure portal を使って行った変更に対してリソース ロックが機能しません。 このプロパティを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](../../../role-based-access-control.md#prevent-sdk-changes)」を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

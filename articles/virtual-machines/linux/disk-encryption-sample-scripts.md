@@ -4,16 +4,16 @@ description: この記事は、Linux VM 用の Microsoft Azure Disk Encryption �
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab6ef302d2ac3cbca8bb91c05f994c1ddf19bd1e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510499"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370259"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Linux VM 用の Azure Disk Encryption のサンプル スクリプト
 

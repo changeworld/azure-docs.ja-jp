@@ -5,18 +5,18 @@ description: Azure Machine Learning で、分離した Azure Virtual Network を
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520700"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320172"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -304,8 +304,8 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 - NSG 規則を使用して、アウトバウンドのインターネット接続を拒否します。
 
 - __コンピューティング インスタンス__ または __コンピューティング クラスター__ の場合は、次の項目への送信トラフィックを制限します。
-   - Azure Storage (__Storage__ の__サービス タグ__を使用)
-   - Azure Container Registry (__AzureContainerRegistry__ の__サービス タグ__を使用)
+   - Azure Storage (__Storage.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
+   - Azure Container Registry (__AzureContainerRegistry.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
    - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
    - Azure Resource Manager (__AzureResourceManager__ の __サービス タグ__ を使用)
    - Azure Active Directory (__AzureActiveDirectory__ の __サービス タグ__ を使用)
@@ -429,6 +429,8 @@ except ComputeTargetException:
 ```
 
 作成プロセスが完了したら、実験でクラスターを使用してモデルをトレーニングします。 詳細については、[トレーニング用のコンピューティング ターゲットの選択と使用](how-to-set-up-training-targets.md)に関するページをご覧ください。
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="access-data-in-a-compute-instance-notebook"></a>コンピューティング インスタンス ノートブック内のデータにアクセスする
 

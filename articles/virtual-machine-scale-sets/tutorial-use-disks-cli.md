@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e50f025ebd22cbe231dcd01e277a76b0f8e9b56d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1aa87d72bf2b73b1fa616d7ff7535dac4da9b7fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029627"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -43,12 +43,12 @@ CLI をローカルにインストールして使用する場合、このチュ�
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 | Type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
-| [汎用](../virtual-machines/linux/sizes-general.md) | A、B、D シリーズ | 1600 |
-| [コンピューティングの最適化](../virtual-machines/linux/sizes-compute.md) | F シリーズ | 576 |
-| [メモリの最適化](../virtual-machines/linux/sizes-memory.md) | D、E、G、M シリーズ | 6144 |
-| [ストレージの最適化](../virtual-machines/linux/sizes-storage.md) | L シリーズ | 5630 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N シリーズ | 1440 |
-| [高性能](../virtual-machines/linux/sizes-hpc.md) | A および H シリーズ | 2000 |
+| [汎用](../virtual-machines/sizes-general.md) | A、B、D シリーズ | 1600 |
+| [コンピューティングの最適化](../virtual-machines/sizes-compute.md) | F シリーズ | 576 |
+| [メモリの最適化](../virtual-machines/sizes-memory.md) | D、E、G、M シリーズ | 6144 |
+| [ストレージの最適化](../virtual-machines/sizes-storage.md) | L シリーズ | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N シリーズ | 1440 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A および H シリーズ | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure データ ディスク
@@ -112,7 +112,7 @@ az vmss disk attach \
 ## <a name="prepare-the-data-disks"></a>データ ディスクの準備
 作成されてスケール セット VM インスタンスに接続されたディスクは、未フォーマット ディスクです。 これらのディスクをデータおよびアプリケーション用に使用するには、ディスクを準備する必要があります。 ディスクを準備するには、パーティションを作成し、ファイルシステムを作成した後、マウントします。
 
-スケール セット内の複数の VM インスタンスにわたってこのプロセスを自動化するには、Azure カスタム スクリプト拡張機能を使用できます。 この拡張機能を使用すると、各 VM インスタンス上でローカルにスクリプトを実行して、接続されたデータ ディスクの準備などの操作を実行できます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/linux/extensions-customscript.md)」を参照してください。
+スケール セット内の複数の VM インスタンスにわたってこのプロセスを自動化するには、Azure カスタム スクリプト拡張機能を使用できます。 この拡張機能を使用すると、各 VM インスタンス上でローカルにスクリプトを実行して、接続されたデータ ディスクの準備などの操作を実行できます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/extensions/custom-script-linux.md)」を参照してください。
 
 次の例では、すべての未フォーマットの接続されたデータ ディスクを準備する [az vmss extension set](/cli/azure/vmss/extension) を使用して、GitHub サンプル リポジトリにあるスクリプトを各 VM インスタンス上で実行します。
 

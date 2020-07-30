@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Monitor Application In
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: eb6c0a8319257949cee8f35be6cdfac22f1fe5d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801639"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323436"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>クイック スタート:Azure Monitor Application Insights を使って Web サイトの監視を開始する
 
@@ -30,7 +30,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 1. **[リソースの作成]**  >  **[管理ツール]**  >  **[Application Insights]** の順に選択します。
 
    > [!NOTE]
-   >Application Insights リソースの作成が初めての場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」を参照してください。
+   >Application Insights リソースの作成が初めての場合は、「[Application Insights リソースの作成](./create-new-resource.md)」を参照してください。
 1. 構成ボックスが表示されたら、次の表を使用して入力フィールドを完成させます。
 
     | 設定        | 値           | 説明  |
@@ -105,15 +105,15 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/website-monitoring/analytics-query.png)
 
-1. **[概要]** ページに戻ります。 **[調査]** ヘッダーで、 **[ブラウザー]** を選択し、 **[パフォーマンス]** を選択します。  Web サイトのパフォーマンスに関するメトリックが表示されます。 Web サイトのエラーと例外を分析するための対応するビューがあります。 **[サンプル]** を選択して、[エンドツーエンドのトランザクションの詳細](../../azure-monitor/app/transaction-diagnostics.md)にアクセスできます。
+1. **[概要]** ページに戻ります。 **[調査]** ヘッダーで、 **[ブラウザー]** を選択し、 **[パフォーマンス]** を選択します。  Web サイトのパフォーマンスに関するメトリックが表示されます。 Web サイトのエラーと例外を分析するための対応するビューがあります。 **[サンプル]** を選択して、[エンドツーエンドのトランザクションの詳細](./transaction-diagnostics.md)にアクセスできます。
 
    ![サーバー メトリックのグラフ](./media/website-monitoring/browser-performance.png)
 
-1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]** ](../../azure-monitor/app/usage-segmentation.md) を選択し、[ユーザー動作分析ツール](../../azure-monitor/app/usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
+1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]** ](./usage-segmentation.md) を選択し、[ユーザー動作分析ツール](./usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
 
      ![ユーザーのグラフ](./media/website-monitoring/usage-users.png)
 
-1. 複数のページがある、より複雑な Web サイトでは、[**User Flows**](../../azure-monitor/app/usage-flows.md) ツールを使用して、Web サイトのさまざまな部分を辿る訪問者の経路を追跡できます。
+1. 複数のページがある、より複雑な Web サイトでは、[**User Flows**](./usage-flows.md) ツールを使用して、Web サイトのさまざまな部分を辿る訪問者の経路を追跡できます。
 
    ![User Flows の視覚化](./media/website-monitoring/user-flows.png)
 
@@ -132,4 +132,5 @@ Web サイトを監視するためのより高度な構成については、[Jav
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [パフォーマンスの問題の特定と診断](../log-query/log-query-overview.md)
+
