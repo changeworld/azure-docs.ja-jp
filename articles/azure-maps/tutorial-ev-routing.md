@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python) | Microsoft Azure Maps
 description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f341179d121af2fa4e5b198aeee2ea65bc6c378c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560390"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133318"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -39,7 +39,7 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 
 このチュートリアルを完了するには、まず Azure Maps アカウントを作成して、プライマリ キー (サブスクリプション キー) を取得する必要があります。 
 
-Azure Maps アカウントのサブスクリプションを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するセクションの手順に従います。 S1 価格帯の Azure Maps アカウントのサブスクリプションが必要です。 
+Azure Maps アカウントのサブスクリプションを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するセクションの手順に従います。 S1 価格帯の Azure Maps アカウントのサブスクリプションが必要です。 
 
 アカウントの主サブスクリプション キーを取得するには、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従います。
 

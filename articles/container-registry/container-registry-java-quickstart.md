@@ -2,15 +2,16 @@
 title: クイックスタート - Maven と Jib を使用して Java コンテナー イメージを作成し Azure Container Registry にプッシュする
 description: Maven Jib プラグインを使用して、コンテナー化された Java アプリを作成し、Azure Container Registry にプッシュします。
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 87a4741ea8a64445c10c73bb1204aef1a2fcfaaf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9310fb92b4b0ad1163d343f13daf42c15923ec20
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248800"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327414"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>クイック スタート:Java コンテナー イメージを作成して Azure Container Registry にプッシュする
 

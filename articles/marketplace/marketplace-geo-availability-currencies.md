@@ -3,16 +3,16 @@ title: Microsoft コマーシャル マーケットプレースの利用可能�
 description: コマーシャル マーケットプレースの利用可能な地域とトランザクションの通貨のサポート
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120009"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387440"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
@@ -43,9 +43,9 @@ ms.locfileid: "86120009"
 | ブラジル                              | BR        | BRL\*        |
 | ブルネイ                              | BN        | USD          |
 | ブルガリア                            | BG        | EUR          |
-| カメルーン                            | CM        | USD          |
-| カナダ                              | CA        | CAD          |
 | カーボベルデ                          | CV        | USD          |
+| カメルーン                            | CM        | USD          |
+| Canada                              | CA        | CAD          |
 | ケイマン諸島                      | KY        | USD          |
 | チリ                               | CL        | USD          |
 | 中国\**                            | CN        | 該当なし          |
@@ -110,8 +110,8 @@ ms.locfileid: "86120009"
 | ナミビア                             | NA        | USD          |
 | ネパール                               | NP        | USD          |
 | オランダ                         | NL        | EUR          |
-| ニカラグア                           | NI        | USD          |
 | ニュージーランド                         | NZ        | NZD          |
+| ニカラグア                           | NI        | USD          |
 | ナイジェリア                             | NG        | USD          |
 | ノルウェー                              | NO        | NOK          |
 | オマーン                                | OM        | USD          |
@@ -148,15 +148,15 @@ ms.locfileid: "86120009"
 | チュニジア                             | TN        | USD          |
 | トルコ                              | TR        | USD          |
 | トルクメニスタン                        | TM        | USD          |
-| バチカン市国 (教皇庁)             | VA        | EUR          |
-| 米領バージン諸島 | VI        | USD          |
 | ウガンダ                              | UG        | USD          |
 | ウクライナ                             | UA        | USD          |
 | アラブ首長国連邦                | AE        | USD          |
 | イギリス                      | GB        | GBP          |
-| 米国                       | US        | USD          |
+| United States                       | US        | USD          |
+| 米国バージン諸島                 | VI        | USD          |
 | ウルグアイ                             | UY        | USD          |
 | ウズベキスタン                          | UZ        | USD          |
+| バチカン市国 (教皇庁)             | VA        | EUR          |
 | ベネズエラ                           | VE        | USD          |
 | ベトナム                             | VN        | USD          |
 | イエメン                               | YE        | USD          |

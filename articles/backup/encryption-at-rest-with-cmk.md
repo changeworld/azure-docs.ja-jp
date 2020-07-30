@@ -3,16 +3,16 @@ title: カスタマー マネージド キーを使用したバックアップ �
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: ee64b9f2c6d260d91763cbe2d339640a9fab9967
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172430"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388001"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
-Azure Backup を使用すると、既定で有効になっているプラットフォーム マネージド キーを使用する代わりに、カスタマー マネージド キー (CMK) を使用してバックアップ データを暗号化できます。 バックアップ データの暗号化に使用するキーは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) に格納する必要があります。
+Azure Backup を使用すると、既定で有効になっているプラットフォーム マネージド キーを使用する代わりに、カスタマー マネージド キー (CMK) を使用してバックアップ データを暗号化できます。 バックアップ データの暗号化に使用するキーは、[Azure Key Vault](../key-vault/index.yml) に格納する必要があります。
 
 バックアップの暗号化に使用される暗号化キーは、ソースに使用されているものと異なることがあります。 データは、AES 256 ベースのデータ暗号化キー (DEK) を使用して保護され、このキーはご自身のキー (KEK) を使用して保護されます。 これにより、データとキーを完全に制御できます。 暗号化を許可するには、Recovery Services コンテナーに、Azure Key Vault の暗号化キーへのアクセスが許可されている必要があります。 必要に応じて、キーを変更できます。
 
@@ -31,7 +31,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 
 - 現在、この機能では、**MARS エージェントを使用したバックアップがサポートされていません**。また、CMK で暗号化されたコンテナーを同じ目的に使用することはできません。 MARS エージェントでは、ユーザーのパスフレーズベースの暗号化を使用します。 この機能では、クラシック VM のバックアップもサポートされていません。
 
-- この機能は [Azure Disk Encryption](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss) とは関係がありません。こちらでは、BitLocker (Windows の場合) と DM-Crypt (Linux の場合) を使った、VM のディスクに対するゲストベースの暗号化を使用します
+- この機能は [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) とは関係がありません。こちらでは、BitLocker (Windows の場合) と DM-Crypt (Linux の場合) を使った、VM のディスクに対するゲストベースの暗号化を使用します
 
 - Recovery Services コンテナーは、**同じリージョン**にある Azure キー コンテナーに格納されているキーを使用した場合にのみ暗号化できます。 また、キーは **RSA 2048 キー**に限定され、**有効な**状態である必要があります。
 
@@ -92,7 +92,7 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure キー コンテナーで論理的な削除と消去保護を有効にする
 
-暗号化キーを格納している Azure キー コンテナーで、**論理的な削除と消去保護を有効にする**必要があります。 これは、次に示すように、Azure キー コンテナーの UI から行うことができます (または、これらのプロパティはキー コンテナーの作成時に設定することができます)。 これらのキー コンテナーのプロパティの詳細については、[こちら](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)を参照してください。
+暗号化キーを格納している Azure キー コンテナーで、**論理的な削除と消去保護を有効にする**必要があります。 これは、次に示すように、Azure キー コンテナーの UI から行うことができます (または、これらのプロパティはキー コンテナーの作成時に設定することができます)。 これらのキー コンテナーのプロパティの詳細については、[こちら](../key-vault/general/soft-delete-overview.md)を参照してください。
 
 ![論理的な削除と消去保護を有効にする](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -193,13 +193,13 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 >
 >上記の手順をすべて確認できた場合のみ、バックアップの構成に進んでください。
 
-カスタマー マネージド キーで暗号化された Recovery Services コンテナーへのバックアップを構成して実行するプロセスは、プラットフォーム マネージド キーを使用するコンテナーの場合と同じで、**エクスペリエンスに変わりはありません**。 このことは、[Azure VM のバックアップ](https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)および VM 内で実行されるワークロード ([SAP HANA](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)、[SQL Server](https://docs.microsoft.com/azure/backup/tutorial-sql-backup) データベースなど) のバックアップにも当てはまります。
+カスタマー マネージド キーで暗号化された Recovery Services コンテナーへのバックアップを構成して実行するプロセスは、プラットフォーム マネージド キーを使用するコンテナーの場合と同じで、**エクスペリエンスに変わりはありません**。 このことは、[Azure VM のバックアップ](./quick-backup-vm-portal.md)および VM 内で実行されるワークロード ([SAP HANA](./tutorial-backup-sap-hana-db.md)、[SQL Server](./tutorial-sql-backup.md) データベースなど) のバックアップにも当てはまります。
 
 ## <a name="restoring-data-from-backup"></a>バックアップからのデータの復元
 
 ### <a name="vm-backup"></a>VM のバックアップ
 
-Recovery Services コンテナーの格納データは、[こちら](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms)で説明されている手順に従って復元できます。 カスタマー マネージド キーを使用して暗号化された Recovery Services コンテナーから復元する場合は、復元されたデータを、ディスク暗号化セット (DES) を使用して暗号化することを選択できます。
+Recovery Services コンテナーの格納データは、[こちら](./backup-azure-arm-restore-vms.md)で説明されている手順に従って復元できます。 カスタマー マネージド キーを使用して暗号化された Recovery Services コンテナーから復元する場合は、復元されたデータを、ディスク暗号化セット (DES) を使用して暗号化することを選択できます。
 
 #### <a name="restoring-vm--disk"></a>VM およびディスクの復元
 

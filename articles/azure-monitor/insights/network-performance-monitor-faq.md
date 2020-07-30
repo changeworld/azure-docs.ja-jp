@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539671"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326139"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -19,7 +19,7 @@ ms.locfileid: "86539671"
 
 この記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します
 
-[Network Performance Monitor](../../networking/network-monitoring-overview.md) は、クラウド ベースの[ハイブリッド ネットワーク監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](../../azure-monitor/insights/network-performance-monitor-expressroute.md)にも利用できます。 
+[Network Performance Monitor](../../networking/network-monitoring-overview.md) は、クラウド ベースの[ハイブリッド ネットワーク監視](./network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](./network-performance-monitor-service-connectivity.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](./network-performance-monitor-expressroute.md)にも利用できます。 
 
 トラフィックのブラックホール、ルーティング エラーなどのネットワークの問題のほか、従来のネットワーク監視手法では検出されない問題を検出します。 ネットワーク リンクに関するしきい値を超えた場合、このソリューションはアラートと通知を生成します。 また、ネットワーク パフォーマンスの問題をタイムリーに検出できるほか、問題の原因を特定のネットワーク セグメントまたはデバイスに限定できます。 
 
@@ -40,7 +40,7 @@ Linux ベースのノードを使用してネットワークを監視する機�
 ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 このソリューションには、その CPU 使用率が 5% を超えた場合に監視プロセスを停止する機能があります。
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>NPM を使用するには、ノードを直接エージェントとして、または System Center Operations Manager を介して接続する必要がありますか。
-パフォーマンス モニター機能とサービス接続モニター機能のどちらも、[直接エージェントとして接続されている](../../azure-monitor/platform/agent-windows.md)ノードと [Operations Manager 経由で接続されている](../../azure-monitor/platform/om-agents.md)ノードをサポートします。
+パフォーマンス モニター機能とサービス接続モニター機能のどちらも、[直接エージェントとして接続されている](../platform/agent-windows.md)ノードと [Operations Manager 経由で接続されている](../platform/om-agents.md)ノードをサポートします。
 
 ExpressRoute モニター機能では、Azure ノードは直接エージェントとしてのみ接続する必要があります。 Operations Manager 経由で接続されている Azure ノードはサポートされません。 オンプレミス ノードの場合、直接エージェントとして接続されるノードおよび Operations Manager を介して接続されているノードは、ExpressRoute 回線の監視用としてサポートされます。
 
@@ -49,12 +49,12 @@ Windows Server ベースのノードを使用してネットワークを監視�
 
 Windows デスクトップ/クライアント オペレーティング システム ベースのノードには、ICMP を使用することをお勧めします。 このプラットフォームでは、NPM がネットワーク トポロジの検出に使用する RAW ソケット経由での TCP データの送信は許可されていません。
 
-各プロトコルの相対的な利点の詳細を[ここ](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)から取得できます。
+各プロトコルの相対的な利点の詳細を[ここ](./network-performance-monitor-performance-monitor.md#choose-the-protocol)から取得できます。
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>TCP プロトコルを使用して監視をサポートするにはノードをどのように構成できますか。
 TCP プロトコルを使用してノードが監視をサポートするには、次のようにします。 
 * ノードのプラットフォームが Windows Server (2008 SP1 またはそれ以降) であるようにします。
-* [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell スクリプトをノードで実行します。 詳細については、[手順](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)を参照してください。
+* [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell スクリプトをノードで実行します。 詳細については、[手順](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)を参照してください。
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>監視のために NPM で使用する TCP ポートをどのように変更すればよいですか。
@@ -182,10 +182,10 @@ NetworkMonitoring
 ```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>NPM のパフォーマンス モニターではどのリージョンがサポートされていますか。
-NPM は、[サポートされるリージョン](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのネットワーク間の接続を監視できます
+NPM は、[サポートされるリージョン](./network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのネットワーク間の接続を監視できます
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>NPM のサービス接続モニターではどのリージョンがサポートされていますか。
-NPM は、[サポートされるリージョン](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのサービスへの接続を監視できます
+NPM は、[サポートされるリージョン](./network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのサービスへの接続を監視できます
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM の ExpressRoute モニターではどのリージョンがサポートされていますか。
 NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](../../expressroute/how-to-npm.md)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
@@ -299,4 +299,5 @@ NPM は UI では待機時間の数値をミリ秒単位に丸めます。 こ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure の Network Performance Monitor ソリューション](../../azure-monitor/insights/network-performance-monitor.md)を参照して、Network Performance Monitor の詳細について学習します。
+- [Azure の Network Performance Monitor ソリューション](./network-performance-monitor.md)を参照して、Network Performance Monitor の詳細について学習します。
+

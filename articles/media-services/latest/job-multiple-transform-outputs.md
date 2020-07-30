@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
-ms.openlocfilehash: dbbeeb33ee46b37ec920fe598483c332d3439689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c39b133773cbe35d78e04c4e40de9d62c4eba18
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001113"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>複数の変換出力があるジョブを作成する
 
@@ -131,7 +131,7 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 ```
 ## <a name="job-error-codes"></a>ジョブ エラー コード
 
-[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
+[エラー コード](/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

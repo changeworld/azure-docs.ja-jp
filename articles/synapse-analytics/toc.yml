@@ -24,6 +24,8 @@
           href: get-started-pipelines.md
         - name: 7 Power BI で視覚化する
           href: get-started-visualize-power-bi.md
+        - name: 8 監視する
+          href: get-started-monitor.md
     - name: チート シート
       href: overview-cheat-sheet.md
     - name: よく寄せられる質問
@@ -847,6 +849,10 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: コネクタのトラブルシューティング
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: データ コピー ツールのトラブルシューティング
+              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: セルフホステッド統合ランタイムのトラブルシューティング
+              href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: ツールを Synapse Analytics に接続する
       items:
         - name: Synapse SQL

@@ -21,8 +21,6 @@
       href: delete-application-portal.md
 - name: チュートリアル
   items:
-    - name: ギャラリーに記載されていないアプリの追加
-      href: add-non-gallery-app.md
     - name: 統合されたギャラリー アプリ (ServiceNow、Salesforce、Dropbox など)
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
@@ -42,6 +40,8 @@
       items:
         - name: アプリ統合の概要
           href: plan-an-application-integration.md
+        - name: ギャラリーに記載されていないアプリの計画
+          href: non-gallery-apps.md
         - name: アクセス パネルのデプロイの計画
           href: access-panel-deployment-plan.md
         - name: 開発者向けのガイダンス
@@ -106,7 +106,7 @@
             - name: SAML ベースのシングル サインオンの構成
               items:
                 - name: SAML ベースのシングル サインオンの構成
-                  href: configure-single-sign-on-non-gallery-applications.md
+                  href: configure-saml-single-sign-on.md
                 - name: ユーザー属性と要求のカスタマイズ
                   items:
                     - name: グループ要求の構成

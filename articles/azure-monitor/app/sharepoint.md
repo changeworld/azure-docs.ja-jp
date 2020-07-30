@@ -3,12 +3,12 @@ title: Application Insights で SharePoint を監視する
 description: 新しいインストルメンテーション キーで新しいアプリケーションの監視を開始します。
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 392c0e0ee46e8acd540d498cbda1d240611d182e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516891"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326530"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Application Insights で SharePoint を監視する
 
@@ -137,7 +137,8 @@ function onRequestFail(sender, args) {
 
 
 ## <a name="next-steps"></a>次の手順
-* [Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) はサイトの可用性を監視します。
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md) 。
+* [Web テスト](./monitor-web-app-availability.md) はサイトの可用性を監視します。
+* [Application Insights](./app-insights-overview.md) 。
 
 <!--Link references-->
+
