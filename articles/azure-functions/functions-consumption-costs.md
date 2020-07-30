@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76963990"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083040"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -61,7 +61,7 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
 
 ## <a name="view-execution-data"></a>実行データを表示する
 
-[請求書](/azure/billing/billing-download-azure-invoice)では、 **[Total Executions - Functions]\(合計実行数 - Functions\)** および **[Execution Time - Functions]\(実行時間 - Functions\)** のコスト関連データと、実際に請求されたコストを見ることができます。 ただし、この請求データは過去の請求期間の月次集計です。 
+[請求書](../cost-management-billing/understand/download-azure-invoice.md)では、 **[Total Executions - Functions]\(合計実行数 - Functions\)** および **[Execution Time - Functions]\(実行時間 - Functions\)** のコスト関連データと、実際に請求されたコストを見ることができます。 ただし、この請求データは過去の請求期間の月次集計です。 
 
 関数のコストへの影響をより深く理解するには、Azure Monitor を使用することで、関数アプリによって現在生成されているコスト関連メトリックを表示できます。 このデータを取得するには、[Azure portal] の [Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-getting-started.md)または REST API を使用できます。
 
@@ -237,5 +237,5 @@ customMetrics
 > [!div class="nextstepaction"]
 > [関数アプリの監視についての詳細情報](functions-monitoring.md)
 
-[価格ページ]: https://azure.microsoft.com/pricing/details/functions/
+[価格ページ]:https://azure.microsoft.com/pricing/details/functions/
 [Azure Portal]: https://portal.azure.com

@@ -5,16 +5,16 @@ author: cynthn
 manager: gwallace
 ms.service: virtual-machines
 ms.subservice: networking
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: c29fb075fc2d8b512070d7a6cf3fef949def5894
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c78452d7919a6246c45c1d60484d3841f1fd0998
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066626"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284848"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Azure CLI 使用した VM へのポートの開放とエンドポイント
 

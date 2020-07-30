@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 4e3953c56a9acf911c7dc2bbbd453b52b72f9bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f7534fe5fe68e2b94b106e464006ee45957bd99
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077830"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>クイック スタート:JavaScript 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -28,7 +28,12 @@ JavaScript 用 Azure Queue storage クライアント ライブラリ v12 を使
 * キューからメッセージを削除する
 * キューを削除する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [パッケージ (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/storage-queue/)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
+* [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-queue)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 

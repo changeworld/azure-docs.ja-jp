@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 4/15/2019
+ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281822"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -63,7 +63,7 @@ ms.locfileid: "85356153"
 2. エージェント マシンに PowerShell モジュールをインポートします。
  
  ```powershell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
 3. Invoke PowerShell コマンドを実行します。 
 

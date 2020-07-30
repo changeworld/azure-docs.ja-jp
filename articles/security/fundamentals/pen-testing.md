@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6e25b6304ee9ac41ca95d5a3a6eac0e91eb41b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80549252"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287770"
 ---
 # <a name="penetration-testing"></a>侵入テスト
 アプリケーションのテストとデプロイに Azure を使用するメリットの 1 つが、環境をすばやく作成できることです。 オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。
@@ -41,8 +41,6 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 * [Open Web Application Security Project (OWASP) の上位 10 の脆弱性](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
 * [ファジー テスト](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
 * [ポートのスキャン](https://en.wikipedia.org/wiki/Port_scanner)
-
-実行できないテストの種類の 1 つは、 [サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。 これには、Dos 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

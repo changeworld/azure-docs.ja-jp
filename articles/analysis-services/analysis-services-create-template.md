@@ -7,13 +7,13 @@ tags: azure-resource-manager
 ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 4dd7906ed32faa630ba074cb29e7987a64205cb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-armqs, references_regions
+ms.openlocfilehash: 7ba678cb71b9bd7a6b941b8e0dc90a0447d165df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015360"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>クイック スタート:サーバーの作成 - ARM テンプレート
 

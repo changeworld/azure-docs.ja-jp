@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518591"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076051"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,10 +23,6 @@ ms.locfileid: "86518591"
 クラウド環境でホストされる分散型アプリケーションの問題の診断およびトラブルシューティングは、従来の環境よりも複雑になる可能性があります。 アプリケーションは、PaaS や IaaS インフラストラクチャ、オンプレミス、モバイル デバイス、これらの環境を組み合わせたものにデプロイできます。 一般に、アプリケーションのネットワーク トラフィックは公衆ネットワークと専用ネットワークを経由する可能性があり、アプリケーションでは、Microsoft Azure Storage のテーブル、BLOB、キュー、ファイルのほか、リレーショナル データベースやドキュメント データベースといった他のデータ ストアなどの複数のストレージ技術を使用している可能性があります。
 
 このようなアプリケーションを適切に管理するためには、アプリケーションをプロアクティブに監視し、アプリケーションおよびアプリケーションが依存する技術をあらゆる側面から診断およびトラブルシューティングする方法を理解する必要があります。 Azure Storage サービスのユーザーは、(応答時間が通常より長いなどの) 予期しない動作変化を捉えるために、アプリケーションで使用している Storage サービスを継続して監視し、ログを使用して詳細なデータを収集し、問題を徹底的に分析する必要があります。 監視とログの両方から得られた診断情報を基に、アプリケーションで発生した問題の根本原因を特定できます。 そして、問題をトラブルシューティングし、問題を解決するための適切な手順を決定できます。 Azure Storage は Azure の中核サービスであり、顧客が Azure インフラストラクチャにデプロイするソリューションのほとんどでは、Azure Storage が重要な役割を担っています。 Azure Storage には、クラウド ベース アプリケーションのストレージの問題を簡単に監視、診断、およびトラブルシューティングできる機能が組み込まれています。
-
-> [!NOTE]
-> 現時点では、Azure Files はログ記録をサポートしていません。
->
 
 Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「 [Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting.md)」を参照してください。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635948"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007998"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics 拡張機能の概要
 Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピューティング リソースのゲスト オペレーティング システムから監視データを収集する、[Azure Monitor のエージェント](agents-overview.md)です。 この記事では、Azure Diagnostics 拡張機能の概要と、サポートされている特定の機能、およびインストールと構成のオプションについて説明します。 
@@ -34,7 +34,7 @@ Azure Monitor の Log Analytics エージェントは、仮想マシンのゲス
 
 - Azure Diagnostics 拡張機能は、Azure の仮想マシンでのみ使用できます。 Log Analytics エージェントは、Azure、他のクラウド、およびオンプレミスの仮想マシンで使用できます。
 - Azure Diagnostics 拡張機能では、Azure Storage、[Azure Monitor メトリック](data-platform-metrics.md) (Windows のみ)、および Event Hubs にデータが送信されます。 Log Analytics エージェントでは、[Azure Monitor ログ](data-platform-logs.md)にデータが収集されます。
-- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[Azure Monitor for VMs](../insights/vminsights-overview.md)、および [Azure Security Center](/azure/security-center/) などのその他のサービスに必要です。
+- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[Azure Monitor for VMs](../insights/vminsights-overview.md)、および [Azure Security Center](../../security-center/index.yml) などのその他のサービスに必要です。
 
 ## <a name="costs"></a>コスト
 Azure Diagnostic 拡張機能には料金はかかりませんが、取り込まれたデータの料金が発生する場合があります。 データの収集先については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
@@ -50,8 +50,8 @@ Azure Diagnostic 拡張機能には料金はかかりませんが、取り込ま
 | パフォーマンス カウンター | オペレーティング システムとワークロードのさまざまな側面のパフォーマンスを測定する数値。 |
 | IIS ログ             | ゲスト オペレーティング システムで実行されている IIS Web サイトの使用状況に関する情報。 |
 | アプリケーション ログ     | アプリケーションによって書き込まれたメッセージをトレースする。 |
-| .NET EventSource ログ |.NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) クラスを使用するコード作成イベント |
-| [マニフェスト ベースの ETW ログ](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |すべてのプロセスによって生成された Windows イベント トレーシング イベント。 |
+| .NET EventSource ログ |.NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) クラスを使用するコード作成イベント |
+| [マニフェスト ベースの ETW ログ](/windows/desktop/etw/about-event-tracing) |すべてのプロセスによって生成された Windows イベント トレーシング イベント。 |
 | クラッシュ ダンプ (ログ)   | アプリケーションがクラッシュした場合のプロセスの状態に関する情報。 |
 | ファイル ベース ログ    | アプリケーションまたはサービスで作成されたログ。 |
 | エージェント診断ログ | Azure Diagnostics 自体に関する情報。 |
@@ -117,4 +117,3 @@ Windows および Linux の Diagnostics 拡張機能のインストールと構�
 
 * [Azure Diagnostics でのパフォーマンス カウンターの使用](../../cloud-services/diagnostics-performance-counters.md)について説明します。
 * Azure Storage テーブルでの診断の開始またはデータの検索に問題がある場合は、[Azure Diagnostics のトラブルシューティング](diagnostics-extension-troubleshooting.md)に関するページを参照してください。
-

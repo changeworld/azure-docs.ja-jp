@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074460"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -18,10 +18,10 @@ ms.locfileid: "86519900"
 ## <a name="prerequisites"></a>前提条件
 
 * Live Video Analytics に対するハードウェアとソフトウェアの制約を満たす Linux コンピューター
-* [所有者特権](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)がある Azure サブスクリプション
-* [IoT Hub を作成してセットアップします](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [IoT Edge デバイスを登録します](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* [所有者特権](../../role-based-access-control/built-in-roles.md#owner)がある Azure サブスクリプション
+* [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
+* [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国中部、米国中北部、東日本、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
     * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします
@@ -225,7 +225,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 2.  デバイスの詳細で、Blob Storage モジュールが **[デプロイで指定] と [デバイス別に報告]** の両方として一覧に表示されていることを確認します。
 
 モジュールがデバイス上で開始してから IoT Hub にレポートされるまでしばらく時間がかかる場合があります。 ページを更新して、最新の状態を表示します。
-状態コード:200 –OK は、[IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime)が正常であり、正常に動作していることを意味します。
+状態コード:200 –OK は、[IoT Edge ランタイム](../../iot-edge/iot-edge-runtime.md)が正常であり、正常に動作していることを意味します。
 
 ![Status](./media/deploy-iot-edge-device/status.png)
 

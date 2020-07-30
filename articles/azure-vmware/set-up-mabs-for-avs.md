@@ -3,12 +3,12 @@ title: Azure VMware Solution 向けに Azure Backup Server を設定する
 description: Azure Backup Server を使用して仮想マシンをバックアップするように Azure VMware Solution 環境を設定します。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816858"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079538"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware Solution 向けに Azure Backup Server を設定する
 
@@ -309,7 +309,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
    * **データベース**: **[データベース名]** を **ReportServer$\<SQLInstanceName>** にする必要があります。
    * **[Web ポータル URL]** : **[仮想ディレクトリ]** を **Reports_\<SQLInstanceName>** にする必要があります。
 
-   SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
+   SSRS の構成について詳しくは、[こちら](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
 
    > [!NOTE]
    > Azure Backup Server のデータベースとして使用される SQL Server のライセンスは、[マイクロソフト オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) (OST) によって管理されます。 OST に従って、Azure Backup Server にバンドルされている SQL Server は、Azure Backup Server 用のデータベースとしてのみ使用できます。
@@ -319,7 +319,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 1. Microsoft Azure Backup Server のファイルをインストールする場所を指定し、 **[次へ]** を選択します。
 
    > [!NOTE]
-   > Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するため、インストールが完了した後で別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))」を参照してください。
+   > Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するため、インストールが完了した後で別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12))」を参照してください。
 
    ![Microsoft Azure Backup セットアップのインストールの設定](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Azure Backup Server v3 では、ストレージ ボリュームのみが受け�
 
 > [!div class="nextstepaction"]
 > [Azure VMware Solution VM のバックアップを構成する](backup-avs-vms-with-mabs.md)
-

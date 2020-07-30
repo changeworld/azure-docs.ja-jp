@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e76b0912a2862ecf49fb4b06e15285db50a0442a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57e0d356ce6bedfd5e6a9bf1e576ec154e8d5802
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082318"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>PowerShell で仮想マシンを作成する
 
@@ -53,6 +53,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の仮想マシン用の PowerShell サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にあります。

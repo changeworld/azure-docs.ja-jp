@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: f5f321beb873ffcd6d120e94f8416a650d0de3cf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6332e74ec46454a4df70c40f4b4dfbbc6260bc39
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523555"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281431"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 
@@ -94,7 +94,10 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
       auth: {
         user: process.env.COSMODDB_USER,
         password: process.env.COSMOSDB_PASSWORD
-      }
+      },
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    retryWrites: false
     })
     .then(() => console.log('Connection to CosmosDB successful'))
     .catch((err) => console.error(err));

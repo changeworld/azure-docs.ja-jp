@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074399"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -655,7 +655,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 上のメッセージに関して、次のプロパティに注意してください。
 
-* 各メッセージに "body" セクションと "applicationProperties" セクションが存在します。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」の記事を参照してください。
+* 各メッセージに "body" セクションと "applicationProperties" セクションが存在します。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」の記事を参照してください。
 * 最初のメッセージは Diagnostics イベントです。MediaSessionEstablished は、RTSP ソース ノード (subject) が RTSP シミュレーターとの接続を確立し、(シミュレートされた) ライブ フィードの受信を開始できたことを示します。
 * applicationProperties の "subject" が、メッセージの生成元となったグラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されています。
 * applicationProperties の "eventType" には Diagnostics イベントであることが示されています。

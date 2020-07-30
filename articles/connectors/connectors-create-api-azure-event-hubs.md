@@ -7,16 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225875"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284100"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する
 
-この記事では、Azure Event Hubs コネクタを使用してロジック アプリの中から [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) に送信されたイベントを監視および管理する方法を示します。 このようにして、イベント ハブからイベントを確認および送受信するためのタスクとワークフローを自動化するロジック アプリを作成できます。 コネクタ固有の技術情報については、[Azure Event Hubs コネクタ リファレンス](https://docs.microsoft.com/connectors/eventhubs/)に関する記事を参照してください。</a>
+この記事では、Azure Event Hubs コネクタを使用してロジック アプリの中から [Azure Event Hubs](../event-hubs/event-hubs-about.md) に送信されたイベントを監視および管理する方法を示します。 このようにして、イベント ハブからイベントを確認および送受信するためのタスクとワークフローを自動化するロジック アプリを作成できます。 コネクタ固有の技術情報については、[Azure Event Hubs コネクタ リファレンス](/connectors/eventhubs/)に関する記事を参照してください。</a>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -173,7 +173,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/eventhubs/)を参照してください。
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/eventhubs/)を参照してください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、このコネクタの ISE のラベルがついたバージョンで [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が代わりに使用されます。

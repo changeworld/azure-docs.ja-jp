@@ -4,15 +4,15 @@ description: Azure の顧客のリソースを管理する際に使用するユ�
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 07/24/2020
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.topic: how-to
+ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743917"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281788"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 

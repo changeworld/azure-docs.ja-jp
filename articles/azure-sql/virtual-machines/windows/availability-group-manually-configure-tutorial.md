@@ -3,7 +3,7 @@ title: チュートリアル:SQL Server Always On 可用性グループを構成
 description: このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960743"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286857"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>チュートリアル:Azure Virtual Machines で SQL Server 可用性グループを構成する
 

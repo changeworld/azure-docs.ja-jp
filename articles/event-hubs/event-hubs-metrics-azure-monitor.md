@@ -3,18 +3,18 @@ title: Azure Monitor でのメトリック - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Monitoring を使用して Azure Event Hubs を監視する方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074865"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor での Azure Event Hubs メトリック
 
 Event Hubs メトリックによって、Azure サブスクリプション内の Event Hubs リソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、イベント ハブの全体的な正常性を評価できます。 これらの統計はイベント ハブの状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。
 
-Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、「[Microsoft Azure での監視](../monitoring-and-diagnostics/monitoring-overview.md)」および GitHub 上の「[Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」(.NET を使用した Azure Monitor メトリックの取得) のサンプルを参照してください。
+Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、「[Microsoft Azure での監視](../azure-monitor/overview.md)」および GitHub 上の「[Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」(.NET を使用した Azure Monitor メトリックの取得) のサンプルを参照してください。
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
@@ -103,7 +103,7 @@ Azure Event Hubs は、Azure Monitor でのメトリックの次のディメン�
 Azure Monitor を使用して監視データ (アクティビティ ログ、診断ログなど) をイベント ハブにルーティングすると、セキュリティ情報イベント管理 (SIEM) ツールと簡単に統合できます。 詳細については、次の記事/ブログ投稿を参照してください。
 
 - [外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Azure Log Integration の概要](../security/fundamentals/azure-log-integration-overview.md)
+- [Azure Log Integration の概要](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [Azure Monitor を使用して SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 SIEM ツールでイベント ハブからログ データを使用するシナリオでは、受信メッセージが表示されない場合や、受信メッセージは表示されものの、メトリック グラフに送信メッセージが表示されない場合、次の手順を実行してください。
@@ -114,7 +114,7 @@ SIEM ツールでイベント ハブからログ データを使用するシナ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 「[Microsoft Azure での監視の概要](../monitoring-and-diagnostics/monitoring-overview.md)」を参照してください。
+* 「[Microsoft Azure での監視の概要](../azure-monitor/overview.md)」を参照してください。
 * GitHub 上の「[Retrieve Azure Monitor metrics with .NET (.NET を使用した Azure Monitor メトリックの取得)](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」のサンプル。 
 
 Event Hubs の詳細については、次のリンクを参照してください。
@@ -129,6 +129,3 @@ Event Hubs の詳細については、次のリンクを参照してください
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png
 [2]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor2.png
-
-
-

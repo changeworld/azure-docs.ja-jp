@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 9e3638c9823ed0fbae61a0dc5a93dff2e211d3f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6477d8f59d66c053ced4ceebed98082d51f92c2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076003"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>CLI を使用して BACPAC ファイルを SQL Database のデータベースにインポートする
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| コマンド | 説明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | サーバーのコマンド。 |
 | [az sql db import](/cli/azure/sql/db#az-sql-db-import) | データベースのインポート コマンド。 |
