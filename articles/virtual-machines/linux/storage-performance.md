@@ -5,17 +5,17 @@ services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
 ms-subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 520754c08fc9bf89949739987b41974eccdcd29d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81757688"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292143"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
 
@@ -110,4 +110,4 @@ Lsv2 VM にある 1.92 TB NVMe ディスク上のローカル ストレージは
    
 ## <a name="next-steps"></a>次のステップ
 
-* Azure 上で[ストレージのパフォーマンスを高めるために最適化されたすべての VM](sizes-storage.md) の仕様を確認してください。
+* Azure 上で[ストレージのパフォーマンスを高めるために最適化されたすべての VM](../sizes-storage.md) の仕様を確認してください。

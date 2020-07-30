@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520155"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289332"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターにアカウントを移行する方法
 
@@ -59,7 +59,7 @@ Microsoft との提携を希望される企業は、Microsoft Partner Network (M
 
 Microsoft Partner Network のメンバーでない場合は、[こちらで参加](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)して MPN ID を取得できます。 アカウントのアクティブ化プロセスで入力する必要があるため、MPN ID をメモしておきます。
 
-Microsoft Partner Network の詳細については、パートナー Web サイト「[Microsoft Partner Network に参加する](https://partner.microsoft.com/en-US/membership)」を参照してください。 Microsoft Partner Network の ISV 特典の詳細については、「[ISV リソース ハブ](https://partner.microsoft.com/isv-resource-hub)」を参照してください。  
+Microsoft Partner Network の詳細については、パートナー Web サイト「[Microsoft Partner Network に参加する](https://partner.microsoft.com/membership)」を参照してください。 Microsoft Partner Network の ISV 特典の詳細については、「[ISV リソース ハブ](https://partner.microsoft.com/isv-resource-hub)」を参照してください。  
 
 ## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>Dynamics 365 と PowerApps のオファーをパートナー センターに移行する
 
