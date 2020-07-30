@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する | Microsoft Azure Maps
 description: このチュートリアルでは、Azure Notebooks (Python) を使用して、Microsoft Azure Maps Weather Service の天気予報データにセンサー データを結合する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5a262c95328fef772c9158082f554de9f7ac5f81
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560371"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133233"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
@@ -35,7 +35,7 @@ ms.locfileid: "84560371"
 
 このチュートリアルを完了するには、まず以下を実行する必要があります。
 
-1. [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従い、S0 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。
+1. [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従い、S0 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。
 2. [主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従い、アカウントの主サブスクリプション キーを取得します。
 
 

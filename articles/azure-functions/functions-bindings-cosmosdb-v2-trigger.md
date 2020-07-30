@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30096e84c31f9e73e0ce02daa5765e98bdcd192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085097"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降での Azure Cosmos DB のトリガー
 
@@ -209,7 +209,7 @@ Python コードを次に示します。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Java 関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)から、`@CosmosDBInput` 注釈を Cosmos DB からデータを読み取るパラメーターに使用します。
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)から、`@CosmosDBInput` 注釈を Cosmos DB からデータを読み取るパラメーターに使用します。
 
 ---
 

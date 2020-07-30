@@ -1,21 +1,21 @@
 ---
 title: Azure Functions における Azure Blob Storage の出力バインド
-description: Azure Functions に Azure Blob Storage データを提供する方法について説明します。
+description: Azure 関数に Azure Blob Storage データを提供する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 56c11c2ae867769eb5eab00a2a6a3ecb616449b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7ba52c34c376139538a5d0bf7747cceb6b46cb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056119"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の出力バインド
 
-出力バインドを使用すると、Azure Functions 内で Blob Storage データを変更および削除できます。
+出力バインドを使用すると、Azure 関数内で Blob Storage データを変更および削除できます。
 
 セットアップと構成の詳細については、[概要](./functions-bindings-storage-blob.md)を参照してください。
 
@@ -394,9 +394,9 @@ JavaScript では、`context.bindings.<name from function.json>` を使用して
 
 | バインド |  リファレンス |
 |---|---|
-| BLOB | [BLOB エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
-| BLOB、テーブル、キュー |  [ストレージ エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| BLOB、テーブル、キュー |  [トラブルシューティング](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| BLOB | [BLOB エラー コード](/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| BLOB、テーブル、キュー |  [ストレージ エラー コード](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB、テーブル、キュー |  [トラブルシューティング](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>次のステップ
 

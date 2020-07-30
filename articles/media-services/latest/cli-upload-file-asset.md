@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5d1dc90832a399aa9ee253b2c7962b8536c1926a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 68dbeba62f5b59e2c047c7f403e7c50e7325e8ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092118"
 ---
 # <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLI の例: ローカル ファイルをコンテナーにアップロードする
 
@@ -27,7 +27,7 @@ ms.locfileid: "80383006"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Media Services アカウントを作成する](create-account-cli-how-to.md)
+* [Media Services アカウントを作成する](./create-account-howto.md)
 * 「[アセットの管理](manage-asset-concept.md)」を確認する。
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]

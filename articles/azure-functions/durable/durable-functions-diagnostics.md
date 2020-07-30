@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081816"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -20,7 +20,7 @@ ms.locfileid: "84698004"
 
 Azure Functions の診断と監視には、[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用する方法が推奨されています。 Durable Functions にもそれが当てはまります。 Application Insights を関数アプリで活用する方法の概要については、「[Azure Functions を監視する](../functions-monitoring.md)」を参照してください。
 
-また、Azure Functions Durable 拡張機能では "*追跡イベント*" が生成されます。このイベントを使って、オーケストレーションの実行をエンドツーエンドでトレースできます。 これらの追跡イベントは、Azure portal で [Application Insights 分析](../../azure-monitor/app/analytics.md)ツールを使って検出および照会できます。
+また、Azure Functions Durable 拡張機能では "*追跡イベント*" が生成されます。このイベントを使って、オーケストレーションの実行をエンドツーエンドでトレースできます。 これらの追跡イベントは、Azure portal で [Application Insights 分析](../../azure-monitor/log-query/log-query-overview.md)ツールを使って検出および照会できます。
 
 ### <a name="tracking-data"></a>データの追跡
 
@@ -383,7 +383,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 
 ## <a name="storage"></a>ストレージ
 
-既定では、Durable Functions の状態が Azure Storage に格納されます。 この動作は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) などのツールを使用してご自分のオーケストレーションの状態を調査することができることを意味します。
+既定では、Durable Functions の状態が Azure Storage に格納されます。 この動作は、[Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールを使用してご自分のオーケストレーションの状態を調査することができることを意味します。
 
 ![Azure Storage Explorer のスクリーンショット](./media/durable-functions-diagnostics/storage-explorer.png)
 
