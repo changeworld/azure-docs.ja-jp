@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029435"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 **問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
@@ -73,7 +73,7 @@ ms.locfileid: "85374595"
     データがない場合、VM で実行されている診断拡張機能に問題があることがわかります。 データが存在する場合は、スケール規則と Insights サービスのどちらかに問題があることがわかります。 [Azure の状態](https://azure.microsoft.com/status/)を確認してください。
     
     これまでの手順を終えても、自動スケールに関する問題が解決しない場合は、次のリソースをご利用ください。 
-    * [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)または [Stack overflow](https://stackoverflow.com/questions/tagged/azure) でフォーラムを読む 
+    * [Microsoft Q&A 質問ページ](/answers/topics/azure-virtual-machines.html)または [Stack overflow](https://stackoverflow.com/questions/tagged/azure) でフォーラムを読む 
     * サポートに問い合わせる。 テンプレートと、パフォーマンス データのビューを共有できるように準備しておいてください。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028364"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Windows STOP エラーのトラブルシューティング – ディレクトリ サービスの初期化エラー
 
@@ -27,7 +27,7 @@ ms.locfileid: "83663940"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、エラーのため VM を再起動する必要があることを示すスクリーンショットが表示され、Windows Server 2008 R2 では停止コード **0xC00002E1**、Windows Server 2012 以降では **0xC00002E2** が表示されます。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、エラーのため VM を再起動する必要があることを示すスクリーンショットが表示され、Windows Server 2008 R2 では停止コード **0xC00002E1**、Windows Server 2012 以降では **0xC00002E2** が表示されます。
 
 ![Windows Server 2012 の起動画面に、"問題が発生したため、PC を再起動する必要があります。 エラー情報を収集しています。自動的に再起動します。" と表示されます。](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -62,7 +62,7 @@ OS が起動すると、ユーザー ログインの認証を行うローカル 
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [VM 修復コマンドの手順 1 から 3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、修復 VM を準備します。
+1. [VM 修復コマンドの手順 1 から 3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、修復 VM を準備します。
 1. リモート デスクトップ接続を使用し、修復 VM に接続します。
 
 ### <a name="free-up-space-on-disk"></a>ディスク上の領域を解放する
@@ -70,11 +70,11 @@ OS が起動すると、ユーザー ログインの認証を行うローカル 
 ディスクが修復 VM に接続されたので、Active Directory 内部データベースを保持しているディスクに、正常に実行するのに十分な空き領域があることを確認します。
 
 1. ドライブを右クリックして **[プロパティ]** を選択し、ディスクがいっぱいになっていないかどうかを確認します。
-1. ディスクの空き領域が 300 Mb 未満の場合は [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) を使用して最大 1 Tb まで拡張します。
+1. ディスクの空き領域が 300 Mb 未満の場合は [PowerShell](../windows/expand-os-disk.md) を使用して最大 1 Tb まで拡張します。
 1. ディスクの使用済み領域が 1 Tb に達した場合は、ディスクのクリーンアップを実行します。
 
-   1. PowerShell を使用して、破損した VM から[データ ディスクをデタッチします](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)。
-   1. 破損した VM からデタッチしたら、機能している VM に[データ ディスクを接続します](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)。
+   1. PowerShell を使用して、破損した VM から[データ ディスクをデタッチします](../windows/detach-disk.md#detach-a-data-disk-using-powershell)。
+   1. 破損した VM からデタッチしたら、機能している VM に[データ ディスクを接続します](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
    1. [ディスク クリーンアップ ツール](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)を使用して、追加の領域を解放します。
 
 1. **省略可能** - 領域がさらに必要な場合は、CMD インスタンスを開き、`defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g` コマンドを入力して、ドライブのデフラグを実行します。
@@ -183,7 +183,7 @@ OS が起動すると、ユーザー ログインの認証を行うローカル 
 
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-1. [VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、VM を再構成します。
+1. [VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構成します。
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>記憶域ネットワーク ポリシーを再構成する
 

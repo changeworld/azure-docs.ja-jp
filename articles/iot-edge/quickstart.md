@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117250"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>クイック スタート:初めての IoT Edge モジュールを仮想 Windows デバイスにデプロイする
 
@@ -22,10 +22,12 @@ ms.locfileid: "86511915"
 
 このクイック スタートでは、次の方法について説明します。
 
-1. IoT Hub を作成します。
-2. IoT Edge デバイスを IoT ハブに登録します。
-3. IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
-4. モジュールを IoT Edge デバイスにリモートでデプロイし、テレメトリを IoT Hub に送信します。
+> [!div class="checklist"]
+>
+> * IoT Hub を作成します。
+> * IoT Edge デバイスを IoT ハブに登録します。
+> * IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+> * モジュールを IoT Edge デバイスにリモートでデプロイし、テレメトリを IoT Hub に送信します。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart/install-edge-full.png)
 

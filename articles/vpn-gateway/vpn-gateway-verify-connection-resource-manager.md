@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: 93a7c0bb15c17b6939d6d53018e4fed84b1ae020
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38015d62077350e0e6f6ed8e7a43f748db58d213
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086988"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
 
@@ -24,7 +24,7 @@ ms.locfileid: "84984561"
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell を使用して Resource Manager デプロイ モデルでの VPN ゲートウェイ接続を確認するには、[Azure Resource Manager PowerShell コマンドレット](/powershell/azure/overview)の最新バージョンをインストールします。
+PowerShell を使用して Resource Manager デプロイ モデルでの VPN ゲートウェイ接続を確認するには、[Azure Resource Manager PowerShell コマンドレット](/powershell/azure/)の最新バージョンをインストールします。
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
@@ -47,4 +47,4 @@ PowerShell を使用してクラシック デプロイ モデルでの VPN ゲ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 仮想ネットワークに仮想マシンを追加できます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
+* 仮想ネットワークに仮想マシンを追加できます。 手順については、 [仮想マシンの作成](../virtual-machines/windows/quick-create-portal.md) に関するページを参照してください。

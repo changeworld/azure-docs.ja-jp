@@ -4,12 +4,14 @@ Description: 価格の選択、支払いの内訳、納税責任に関連した�
 ms.topic: conceptual
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: 0949bd1234b28a9683e194d3b3f08511f7f17a26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: b0ada7047241e74095fd5b81a261c15295a08737
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120689"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319934"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>コマーシャル マーケットプレース発行元向けの税の詳細
 
@@ -63,7 +65,7 @@ ms.locfileid: "86120689"
 | カーボベルデ                       | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | カンボジア                         | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | カメルーン                         | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
-| カナダ                           | 税金は選択される価格に追加されます。                                                                                                      | 価格から Microsoft Store の手数料を差し引いた金額                 | Microsoft          |
+| Canada                           | 税金は選択される価格に追加されます。                                                                                                      | 価格から Microsoft Store の手数料を差し引いた金額                 | Microsoft          |
 | ケイマン諸島                   | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | 中央アフリカ共和国         | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | チャド                             | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |

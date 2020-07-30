@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a7cdeb7bfde7396026b782382b34228c309b37d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088146"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -38,7 +38,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 + [Outlook.com](https://outlook.com/) のアカウント (通知の送信用)。
 
 > [!NOTE]
-> Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のアプリおよびサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+> Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のアプリおよびサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
 + この記事では、[Azure portal から初めての関数を作成する方法](functions-create-first-azure-function.md)に関するページで作成したリソースを使用して作業を開始します。
 リソースの作成が済んでいない場合は、すぐにこれらの手順に従って Function App を作成してください。
@@ -304,4 +304,3 @@ Azure Functions は、ロジック アプリ ワークフローの処理タス�
 > [Azure Functions を使用してサーバーレス API を作成する](functions-create-serverless-api.md)
 
 Logic Apps の詳細については、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) に関するページを参照してください。
-
