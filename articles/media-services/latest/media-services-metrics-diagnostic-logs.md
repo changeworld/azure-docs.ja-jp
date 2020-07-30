@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559534"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011653"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Monitor 経由で Media Services のメトリックと診断ログを監視する
 
@@ -58,7 +58,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
 
-次の Media Services [ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックがサポートされています。
+次の Media Services [ストリーミング エンドポイント](/rest/api/media/streamingendpoints) メトリックがサポートされています。
 
 |メトリックの名前|Display name|説明|
 |---|---|---|

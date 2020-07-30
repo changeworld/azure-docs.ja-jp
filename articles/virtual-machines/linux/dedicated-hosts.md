@@ -4,14 +4,14 @@ description: Azure 専用ホストを使用して仮想マシンをデプロイ�
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 07/28/2020
 ms.author: cynthn
-ms.openlocfilehash: 7e19f74c40bbeb83c9230e620c4488778823ef99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 97e65528a7f049c213ec077c83da1b7672469d90
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510805"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388171"
 ---
 # <a name="azure-dedicated-hosts-for-virtual-machines"></a>仮想マシン用 Azure 専用ホスト
 

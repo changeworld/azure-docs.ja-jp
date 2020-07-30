@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919918"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011347"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -248,7 +248,7 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 
 ホット アクセス層内の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントの BLOB と同じになります。 クール アクセス層内の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントの BLOB と類似しています (ミリ秒)。 アーカイブ アクセス層の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントのいずれにおいても数時間に及びます。
 
-クール アクセス層内の BLOB は、ホット アクセス層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。 詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)」を参照してください。
+クール アクセス層内の BLOB は、ホット アクセス層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。 詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_5/)」を参照してください。
 
 **ホット、クール、アーカイブの各層間で操作は同じですか。**
 

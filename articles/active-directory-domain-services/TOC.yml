@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: パスワード ハッシュ同期のしくみ
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 仮想ネットワークに関する考慮事項
+      href: network-considerations.md
     - name: クラシック デプロイ移行のメリット
       href: concepts-migration-benefits.md
     - name: Azure Active Directory とは
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: グループの管理されたサービス アカウント (gMSA) の使用
           href: create-gmsa.md
-    - name: Azure AD DS を計画する
-      items:
-        - name: 仮想ネットワークに関する考慮事項
-          href: network-considerations.md
     - name: Azure AD DS を管理する
       items:
         - name: グループ ポリシーの管理

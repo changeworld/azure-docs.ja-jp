@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083992"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Security Center の強化されたセキュリティ スコア
 
@@ -172,7 +172,7 @@ Secure Scores API を使用して構築されたツールの例については�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティのベストプラクティスを実装する (最大スコア 0)</p></strong>最新のセキュリティ対策では、ネットワーク境界の "侵害を想定" しています。 そのため、このコントロールの多くのベスト プラクティスでは、ID の管理が重視されています。<br>キーや資格情報の紛失は、よくある問題です。 <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> では、キー、.pfx ファイル、パスワードを暗号化することにより、キーとシークレットを保護します。<br>仮想プライベート ネットワーク (VPN) は、仮想マシンへのアクセスをセキュリティで保護します。 VPN を利用できない場合は、複雑なパスフレーズと <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a> などの 2 要素認証を使用します。 2 要素認証は、ユーザー名とパスワードのみに依存することに伴う弱点を回避します。<br>強力な認証および承認プラットフォームの使用は、もう 1 つのベスト プラクティスです。 フェデレーション ID を使用すると、組織は、承認された ID の管理を委任できます。 これは、従業員が退職し、そのアクセス権を取り消す必要がある場合にも重要です。</td>
-    <td class="tg-lboi"; width=55%>- サブスクリプションには最大 3 人の所有者を指定する必要があります<br>- - 読み取りアクセス許可を持つ外部アカウントをお使いのサブスクリプションから除外する必要があります<br>- お使いのサブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要があります<br>- ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要があります<br>- RootManageSharedAccessKey を除くすべての承認規則をイベント ハブの名前空間から削除する必要があります<br>- SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要があります<br>- イベント ハブ インスタンスの承認規則を定義する必要があります<br>- ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要があります<br>- 仮想マシンを新しい Azure Resource Manager リソースに移行する必要があります<br>- SQL Database の Advanced Data Security 設定にはセキュリティ アラートを受け取る電子メール アドレスを含める必要があります<br>- マネージド インスタンスで Advanced Data Security を有効にする必要があります<br>- SQL Managed Instance の Advanced Data Security 設定で、Advanced Threat Protection のすべての種類を有効にする必要があります<br>- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要があります<br>- SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要があります<br>- サブネットはネットワーク セキュリティ グループに関連付けられている必要があります<br>- SQL Database の Advanced Data Security 設定では、サーバーですべての種類の Advanced Threat Protection を有効にする必要があります<br>- [プレビュー] Windows Exploit Guard を有効にする必要があります <br>- [プレビュー] ゲスト構成エージェントをインストールする必要があります<br>- インターネットに接続されていない仮想マシンをネットワーク セキュリティ グループで保護する必要があります</td>
+    <td class="tg-lboi"; width=55%>- サブスクリプションには最大 3 人の所有者を指定する必要があります<br>- - 読み取りアクセス許可を持つ外部アカウントをお使いのサブスクリプションから除外する必要があります<br>- お使いのサブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要があります<br>- ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要があります<br>- RootManageSharedAccessKey を除くすべての承認規則をイベント ハブの名前空間から削除する必要があります<br>- SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要があります<br>- マネージド インスタンスで Advanced Data Security を有効にする必要があります<br>- イベント ハブ インスタンスの承認規則を定義する必要があります<br>- ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要があります<br>- 仮想マシンを新しい Azure Resource Manager リソースに移行する必要があります<br>- サブネットはネットワーク セキュリティ グループに関連付けられている必要があります<br>- [プレビュー] Windows Exploit Guard を有効にする必要があります <br>- [プレビュー] ゲスト構成エージェントをインストールする必要があります<br>- インターネットに接続されていない仮想マシンをネットワーク セキュリティ グループで保護する必要があります</td>
   </tr>
 </tbody>
 </table>

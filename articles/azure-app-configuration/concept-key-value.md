@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856672"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050148"
 ---
 # <a name="keys-and-values"></a>キーと値
 
@@ -77,7 +77,7 @@ App Configuration ではキー値のバージョン管理は自動的に行わ�
 
 それぞれのキー値は、対応するキーとラベル (`null` の場合もあり) によって一意に識別されます。 キー値は、パターンを指定して App Configuration ストアに照会します。 App Configuration ストアからは、そのパターンに一致するすべてのキー値に加え、それに対応する値と属性が返されます。 App Configuration に対する REST API 呼び出しには、次のキー パターンを使用します。
 
-| Key | |
+| Key | 説明 |
 |---|---|
 | `key` を省略 (または `key=*`) | すべてのキーに一致します |
 | `key=abc` | 厳密に **abc** であるキー名に一致します |
@@ -86,7 +86,7 @@ App Configuration ではキー値のバージョン管理は自動的に行わ�
 
 また、次のラベル パターンを含めることもできます。
 
-| Label | |
+| Label | 説明 |
 |---|---|
 | `label` を省略 (または `label=*`) | 任意のラベル (`null` を含む) に一致します |
 | `label=%00` | `null` ラベルに一致します |
