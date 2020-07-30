@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 520f64cbe768f2fcbd4603d1fb038bc349cd01db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 70a4d6f01271c5026463ac0dc946fb1b2991de09
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391980"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323827"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -115,7 +116,7 @@ ms.locfileid: "85391980"
 ### <a name="1164"></a><a name="1.16.4"></a>1.16.4
 * クエリのパーティション キー範囲の読み取りでのバグが修正されました。
 
-### <a name="1163"></a><a name="1.16.3"/>1.16.3
+### <a name="1163"></a><a name="1.16.3"></a>1.16.3
 * DirectHttps モードでの継続トークン ヘッダー サイズの設定に関するバグが修正されました。
 
 ### <a name="1162"></a><a name="1.16.2"></a>1.16.2

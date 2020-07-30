@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e4c50b4b66d164ba2e89cfc537d9dd8593c4f57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "69639387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092033"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - Node.js
 
@@ -35,8 +35,8 @@ ms.locfileid: "69639387"
 ## <a name="prerequisites"></a>前提条件
 
 - [Node.js](https://nodejs.org/en/download/)
-- [Media Services アカウントを作成する](create-account-cli-how-to.md)<br/>Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
-- 「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
+- [Media Services アカウントを作成する](./create-account-howto.md)<br/>Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
+- 「[Azure CLI で Azure Media Services API にアクセスする](./access-api-howto.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
 
 ## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "69639387"
 
 サンプルは、[StreamFilesSample](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/master/AMSv3Samples/StreamFilesSample) フォルダーにあります。
 
-ダウンロードしたプロジェクト内の [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) を開きます。 `endpoint config` の値を、[API へのアクセス](access-api-cli-how-to.md)によって取得した資格情報に置き換えます。
+ダウンロードしたプロジェクト内の [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) を開きます。 `endpoint config` の値を、[API へのアクセス](./access-api-howto.md)によって取得した資格情報に置き換えます。
 
 サンプルは、次のアクションを実行します。
 
@@ -101,7 +101,7 @@ az group delete --name amsResourceGroup
 
 ## <a name="see-also"></a>関連項目
 
-[ジョブ エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+[ジョブ エラー コード](/rest/api/media/jobs/get#joberrorcode)。
 
 ## <a name="next-steps"></a>次のステップ
 

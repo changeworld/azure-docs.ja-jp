@@ -4,15 +4,15 @@ description: 仮想ハード ディスク (VHD) を作成するときの一般�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 2b6ab5d36cd5a1f66badc79d1b2d42e464d028f4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110744"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323997"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 作成における一般的な問題
 

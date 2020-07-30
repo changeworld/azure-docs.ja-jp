@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052164"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -69,7 +69,7 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Azure CLI から Red Hat Gold Image を使用する
 
-次の手順では、Azure CLI を使用した RHEL VM の初期デプロイ プロセスについて説明します。 この手順では、[Azure CLI がインストール済み](https://docs.microsoft.com/cli/azure/install-azure-cli)であることを前提としています。
+次の手順では、Azure CLI を使用した RHEL VM の初期デプロイ プロセスについて説明します。 この手順では、[Azure CLI がインストール済み](/cli/azure/install-azure-cli)であることを前提としています。
 
 >[!IMPORTANT]
 >次のすべてのコマンドでは、発行元、オファー、プラン、およびイメージの参照ですべて小文字を使用してください。
@@ -200,7 +200,7 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 
     この場合、Microsoft か Red Hat にお問い合わせいただき、サブスクリプションを有効にしてください。
 
-- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
+- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](../../linux/shared-image-galleries.md) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
 
     ```azurecli
     az vm create –image \

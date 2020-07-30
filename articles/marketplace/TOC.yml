@@ -169,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: SaaS オファーを作成する
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS 用 Azure AD 認証
+              items:
+                - name: Azure AD と SaaS の概要
+                  href: ./azure-ad-saas.md
+                - name: 取引可能オファーのランディング ページ
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: 試用版オファーのランディング ページ
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS Fulfillment API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

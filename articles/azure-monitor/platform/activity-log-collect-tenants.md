@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516347"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321872"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure Active Directory テナントにまたがる Azure Monitor に Azure アクティビティ ログを収集する (レガシ)
 
@@ -340,4 +340,5 @@ Logic Apps デザイナーで **[実行]** をクリックしてロジック ア
 この記事では、イベント ハブから Azure アクティビティ ログを読み取り、分析のためにそれを Log Analytics ワークスペースに送信するロジック アプリを作成しました。 ワークスペース内のデータの視覚化 (ダッシュボードの作成を含む) の詳細については、データの視覚化のチュートリアルを確認してください。
 
 > [!div class="nextstepaction"]
-> [ログ検索データの視覚化のチュートリアル](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [ログ検索データの視覚化のチュートリアル](../learn/tutorial-logs-dashboards.md)
+

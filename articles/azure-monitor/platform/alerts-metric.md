@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369388"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321124"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -32,7 +32,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 3. **[ターゲットの選択]** をクリックし、読み込まれるコンテキスト ウィンドウで、アラートを設定するターゲット リソースを選択します。 **サブスクリプション**と**リソースの種類**のドロップダウン リストを使用して、監視するリソースを検索します。 検索バーを使用して、リソースを検索することもできます。
 
-4. 選択したリソースにアラートを作成できるメトリックがある場合は、右下の **[使用可能なシグナル]** にメトリックが表示されます。 メトリック アラートでサポートされているリソースの種類の完全な一覧については、[こちらの記事](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
+4. 選択したリソースにアラートを作成できるメトリックがある場合は、右下の **[使用可能なシグナル]** にメトリックが表示されます。 メトリック アラートでサポートされているリソースの種類の完全な一覧については、[こちらの記事](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
 
 5. ターゲット リソースを選択した後、 **[条件の追加]** をクリックします。
 
@@ -90,7 +90,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 ## <a name="with-azure-cli"></a>Azure CLI の場合
 
-前のセクションでは、Azure portal を使用してメトリック アラート ルールを作成、表示、および管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) を使用することです。 この記事では、Cloud Shell を使用します。
+前のセクションでは、Azure portal を使用してメトリック アラート ルールを作成、表示、および管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest) を使用することです。 この記事では、Cloud Shell を使用します。
 
 1. Azure portal に移動して、 **[Cloud Shell]** をクリックします。
 
@@ -136,8 +136,8 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](../../azure-monitor/platform/alerts-metric-create-templates.md)。
+- [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](./alerts-metric-create-templates.md)。
 - [メトリック アラートのしくみを理解します](alerts-metric-overview.md)。
 - [動的しきい値条件のメトリックのアラートのしくみを理解します](alerts-dynamic-thresholds.md)。
-- [メトリック アラートの Web hook スキーマを理解します](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [メトリック アラートの Web hook スキーマを理解します](./alerts-metric-near-real-time.md#payload-schema)
 

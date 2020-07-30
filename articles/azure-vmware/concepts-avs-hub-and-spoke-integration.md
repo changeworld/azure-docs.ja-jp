@@ -3,16 +3,16 @@ title: 概念 - ハブ アンド スポークのアーキテクチャで Azure V
 description: Azure の既存または新規のハブ アンド スポークのアーキテクチャで Azure VMware Solution (AVS) のデプロイを統合するための推奨事項について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 82937e04fc0a5101c353702b92b6b068d027d7ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d95ed81c5188eab0dc508f5320549c4a402e151
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062925"
 ---
 # <a name="integrate-azure-vmware-solution-avs-in-a-hub-and-spoke-architecture"></a>ハブ アンド スポークのアーキテクチャで Azure VMware Solution (AVS) を統合する
 
-この記事では、Azure の既存または新規の[ハブ アンド スポークのアーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/shared-services)で Azure VMware Solution (AVS) のデプロイを統合するための推奨事項について説明します。 
+この記事では、Azure の既存または新規の[ハブ アンド スポークのアーキテクチャ](/azure/architecture/reference-architectures/hybrid-networking/shared-services)で Azure VMware Solution (AVS) のデプロイを統合するための推奨事項について説明します。 
 
 ハブ アンド スポークのシナリオでは、次のワークロードを含むハイブリッド クラウド環境が想定されています。
 
@@ -24,7 +24,7 @@ ms.locfileid: "85374975"
 
 "*ハブ*" は、オンプレミスおよび AVS のプライベート クラウドへの接続の中心点として機能する Azure Virtual Network です。 "*スポーク*" は、仮想ネットワーク間通信を有効にするためにハブとピアリングされた仮想ネットワークです。
 
-オンプレミスのデータセンター、AVS プライベート クラウド、およびハブの間のトラフィックは、ExpressRoute 接続を経由します。 スポーク仮想ネットワークには、通常、IaaS ベースのワークロードが含まれていますが、Virtual Network に直接統合されている PaaS サービス ([App Service Environment](../app-service/environment/intro.md) など) や、[Azure Private Link](https://docs.microsoft.com/azure/private-link/) が有効になっているその他の PaaS サービスを含めることができます。 
+オンプレミスのデータセンター、AVS プライベート クラウド、およびハブの間のトラフィックは、ExpressRoute 接続を経由します。 スポーク仮想ネットワークには、通常、IaaS ベースのワークロードが含まれていますが、Virtual Network に直接統合されている PaaS サービス ([App Service Environment](../app-service/environment/intro.md) など) や、[Azure Private Link](../private-link/index.yml) が有効になっているその他の PaaS サービスを含めることができます。 
 
 この図は、ExpressRoute 経由でオンプレミスおよび AVS に接続されている Azure のハブ アンド スポークのデプロイの例を示しています。
 
@@ -50,7 +50,7 @@ ms.locfileid: "85374975"
 
     -   **IaaS スポーク:** IaaS スポークでは、VM 可用性セットと仮想マシン スケール セットを含む Azure IaaS ベースのワークロード、および対応するネットワーク コンポーネントがホストされます。
 
-    -   **PaaS スポーク:** PaaS スポークでは、[プライベート エンドポイント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)と[プライベート リンク](https://docs.microsoft.com/azure/private-link/private-link-overview)により、プライベート アドレス指定を使用して Azure PaaS サービスがホストされます。
+    -   **PaaS スポーク:** PaaS スポークでは、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)と[プライベート リンク](../private-link/private-link-overview.md)により、プライベート アドレス指定を使用して Azure PaaS サービスがホストされます。
 
 -   **Azure Firewall:** スポーク、オンプレミス、AVS の間でトラフィックをセグメント化するための中心的な要素として機能します。
 
@@ -58,7 +58,7 @@ ms.locfileid: "85374975"
 
 ## <a name="network-and-security-considerations"></a>ネットワークとセキュリティに関する考慮事項
 
-ExpressRoute 接続を使用すると、オンプレミス、AVS、Azure ネットワーク ファブリックの間でトラフィックをフローさせることができます。 AVS では、[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用してこの接続が実装されます。
+ExpressRoute 接続を使用すると、オンプレミス、AVS、Azure ネットワーク ファブリックの間でトラフィックをフローさせることができます。 AVS では、[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) を使用してこの接続が実装されます。
 
 オンプレミスの接続では、ExpressRoute Global Reach も使用できますが、必須ではありません。
 
@@ -72,11 +72,11 @@ ExpressRoute 接続を使用すると、オンプレミス、AVS、Azure ネッ�
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="AVS からハブへの仮想ネットワーク トラフィック フロー":::
 
 
-AVS ネットワークと相互接続の概念の詳細については、[AVS 製品ドキュメント](https://docs.microsoft.com/azure/azure-vmware/concepts-networking)を参照してください。
+AVS ネットワークと相互接続の概念の詳細については、[AVS 製品ドキュメント](./concepts-networking.md)を参照してください。
 
 ### <a name="traffic-segmentation"></a>トラフィックのセグメント化
 
-[Azure Firewall](https://docs.microsoft.com/azure/firewall/) はハブ アンド スポークのトポロジの中心的な要素であり、ハブ仮想ネットワークにデプロイされています。 Azure Firewall、またはその他の Azure でサポートされているネットワーク仮想アプライアンスを使用して、トラフィック規則を確立し、さまざまなスポーク、オンプレミス、AVS のワークロード間の通信をセグメント化します。
+[Azure Firewall](../firewall/index.yml) はハブ アンド スポークのトポロジの中心的な要素であり、ハブ仮想ネットワークにデプロイされています。 Azure Firewall、またはその他の Azure でサポートされているネットワーク仮想アプライアンスを使用して、トラフィック規則を確立し、さまざまなスポーク、オンプレミス、AVS のワークロード間の通信をセグメント化します。
 
 トラフィックを Azure Firewall に送信するためのルート テーブルを作成します。  スポーク仮想ネットワークの場合は、Azure Firewall の内部インターフェイスに既定のルートを設定するルートを作成します。これにより、Virtual Network 内のワークロードが AVS アドレス空間に到達する必要がある場合に、ファイアウォールによってこのワークロードを評価し、対応するトラフィック規則を適用して許可または拒否することができます。  
 
@@ -104,7 +104,7 @@ Azure Application Gateway V1 および V2 は、AVS VM 上でバックエンド 
 
 ハブ仮想ネットワーク内の共有サービス サブネットにデプロイされている Windows 10 または Windows Server の VM である Jumpbox を使用して、AVS 環境にアクセスします。
 
-セキュリティのベスト プラクティスとして、ハブ仮想ネットワーク内に [Microsoft Azure Bastion](https://docs.microsoft.com/azure/bastion/) サービスをデプロイすることをお勧めします。 Azure Bastion では、Azure にデプロイされている VM へのシームレスな RDP アクセスと SSH アクセスが提供されます。これらのリソースにパブリック IP アドレスをプロビジョニングする必要はありません。 Azure Bastion サービスをプロビジョニングすると、選択した VM に Azure portal からアクセスできるようになります。 接続を確立すると、新しいタブが開いて Jumpbox デスクトップが表示され、そのデスクトップから AVS プライベート クラウド管理プレーンにアクセスできるようになります。
+セキュリティのベスト プラクティスとして、ハブ仮想ネットワーク内に [Microsoft Azure Bastion](../bastion/index.yml) サービスをデプロイすることをお勧めします。 Azure Bastion では、Azure にデプロイされている VM へのシームレスな RDP アクセスと SSH アクセスが提供されます。これらのリソースにパブリック IP アドレスをプロビジョニングする必要はありません。 Azure Bastion サービスをプロビジョニングすると、選択した VM に Azure portal からアクセスできるようになります。 接続を確立すると、新しいタブが開いて Jumpbox デスクトップが表示され、そのデスクトップから AVS プライベート クラウド管理プレーンにアクセスできるようになります。
 
 > [!IMPORTANT]
 > Jumpbox VM にパブリック IP アドレスを指定したり、パブリック インターネットに 3389/TCP ポートを公開したりしないでください。 
@@ -137,21 +137,19 @@ Azure DNS プライベート ゾーンについていくつかの考慮事項が
 
 ## <a name="identity-considerations"></a>ID に関する考慮事項
 
-ID に関する理由により、共有サービス サブネットを使用して、ハブに少なくとも 1 つの AD ドメイン コントローラー (理想的には、ゾーン分散形式の 2 つまたは VM 可用性セット) をデプロイすることをお勧めします。 オンプレミスの AD ドメインを Azure に拡張する方法については、[Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)に関する記事を参照してください。
+ID に関する理由により、共有サービス サブネットを使用して、ハブに少なくとも 1 つの AD ドメイン コントローラー (理想的には、ゾーン分散形式の 2 つまたは VM 可用性セット) をデプロイすることをお勧めします。 オンプレミスの AD ドメインを Azure に拡張する方法については、[Azure アーキテクチャ センター](/azure/architecture/reference-architectures/identity/adds-extend-domain)に関する記事を参照してください。
 
 さらに、vSphere 環境内で ID および DNS ソースとして機能するように、別のドメイン コントローラーを AVS 側にデプロイします。
 
 vCenter および SSO の場合は、Azure portal の **[管理]\>[ID]\>[ID ソース]** で ID ソースを設定します。
 
-推奨されるベスト プラクティスとして、[AD ドメインと Azure Active Directory](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/azure-ad) を統合することをお勧めします。
+推奨されるベスト プラクティスとして、[AD ドメインと Azure Active Directory](/azure/architecture/reference-architectures/identity/azure-ad) を統合することをお勧めします。
 
 <!-- LINKS - external -->
-[Azure Architecture Center]: https://docs.microsoft.com/azure/architecture/
+[Azure Architecture Center]: /azure/architecture/
 
-[Hub & Spoke topology]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Hub & Spoke topology]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 
-[Azure networking documentation]: https://docs.microsoft.com/azure/networking/
+[Azure networking documentation]: ../networking/index.yml
 
 <!-- LINKS - internal -->
-
-

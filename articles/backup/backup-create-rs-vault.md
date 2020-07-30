@@ -3,12 +3,13 @@ title: Recovery Services コンテナーを作成して構成する
 description: この記事では、バックアップと復旧ポイントを格納する Recovery Services コンテナーを作成して構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.custom: references_regions
+ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032954"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 
@@ -21,7 +22,7 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 > [!NOTE]
 > Recovery Services コンテナーの**ストレージ レプリケーションの種類** (ローカル冗長/geo 冗長) を変更する場合は、コンテナー内にバックアップを構成する前に行う必要があります。 バックアップを構成すると、変更するオプションは無効になります。
 >
->- まだバックアップを構成していない場合は、[こちらの手順に従って](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)設定を確認および変更してください。
+>- まだバックアップを構成していない場合は、[こちらの手順に従って](#set-storage-redundancy)設定を確認および変更してください。
 >- 既にバックアップを構成しており、GRS から LRS に移行する必要がある場合は、[こちらの回避策を確認](#how-to-change-from-grs-to-lrs-after-configuring-backup)してください。
 
 1. **[Recovery Services コンテナー]** ブレードで、新しいコンテナーをクリックします。 **[設定]** セクションの **[プロパティ]** をクリックします。
@@ -33,14 +34,14 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 
    - プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き既定の **geo 冗長**設定を使用することをお勧めします。
    - プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、 **[ローカル冗長]** を選択します。これにより、Azure ストレージのコストを削減できます。
-   - [geo](../storage/common/storage-redundancy-grs.md) 冗長と[ローカル](../storage/common/storage-redundancy-lrs.md)冗長の詳細をご確認ください。
+   - [geo](../storage/common/storage-redundancy.md) 冗長と[ローカル](../storage/common/storage-redundancy.md)冗長の詳細をご確認ください。
 
 >[!NOTE]
 >現在のソリューションはスナップショット ベースであり、コンテナーに転送されるデータがないため、コンテナーのストレージ レプリケーション設定は、Azure ファイル共有のバックアップには関係ありません。 スナップショットは、バックアップされたファイル共有と同じストレージ アカウントに格納されます。
 
 ## <a name="set-cross-region-restore"></a>リージョンをまたがる復元の設定
 
-復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)) で復元できます。 このオプションを使用すると、次のことができます。
+復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)) で復元できます。 このオプションを使用すると、次のことができます。
 
 - 監査またはコンプライアンスの必要がある場合にドリルを行う
 - プライマリ リージョンで障害が発生した場合に、VM またはそのディスクを復元する。
@@ -83,10 +84,10 @@ GRS 冗長性を使用して作成されたコンテナーには、リージョ�
 コンテナーでバックアップを構成する前に、 **[ストレージ レプリケーションの種類]** と **[セキュリティ設定]** の既定の設定を確認することを強くお勧めします。
 
 - 既定では、 **[ストレージ レプリケーションの種類]** は **[Geo-redundant]\(geo 冗長\)** (GRS) に設定されます。 バックアップを構成すると、変更オプションは無効になります。
-  - まだバックアップを構成していない場合は、[こちらの手順に従って](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)設定を確認および変更してください。
+  - まだバックアップを構成していない場合は、[こちらの手順に従って](#set-storage-redundancy)設定を確認および変更してください。
   - 既にバックアップを構成しており、GRS から LRS に移行する必要がある場合は、[こちらの回避策を確認](#how-to-change-from-grs-to-lrs-after-configuring-backup)してください。
 
-- 誤った削除や悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナー上で **[論理的な削除]** は既定で **[Enabled]\(有効\)** になっています。 設定を確認および変更するには、[こちらの手順に従ってください](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)。
+- 誤った削除や悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナー上で **[論理的な削除]** は既定で **[Enabled]\(有効\)** になっています。 設定を確認および変更するには、[こちらの手順に従ってください](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
 
 ### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>バックアップの構成後に GRS から LRS に変更する方法
 
@@ -123,7 +124,7 @@ GRS コンテナー内にある現在保護されているデータを保持し�
   - バックアップされたデータの復元は、GRS コンテナー内の有効期限が切れていない復旧ポイントに対してのみ可能です。
   - データの新しい初期レプリカを LRS コンテナーに作成する必要があります。
 
-- Azure VM の場合は、GRS コンテナー内の VM に対して[保護を停止してデータを保持](backup-azure-manage-vms.md#stop-protecting-a-vm)し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。 VM を別のリソース グループに移動するための[ガイダンスと制限事項](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)に関するページを参照してください。
+- Azure VM の場合は、GRS コンテナー内の VM に対して[保護を停止してデータを保持](backup-azure-manage-vms.md#stop-protecting-a-vm)し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。 VM を別のリソース グループに移動するための[ガイダンスと制限事項](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md)に関するページを参照してください。
 
   VM を保護できるのは、一度に 1 つのコンテナーのみになります。 ただし、新しいリソース グループ内の VM は別の VM と見なされるため、LRS コンテナーで保護できます。
 

@@ -3,12 +3,12 @@ title: Java アプリケーションを任意の環境で監視する - Azure Mo
 description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319705"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014339"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション - パブリックプレビュー
 
@@ -32,11 +32,11 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
-アプリケーションの JVM 引数の構成に関する追加のヘルプについては、「[3.0 Preview: Tips for updating your JVM args](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)」 (3.0 プレビュー: JVM の引数の更新に関するヒント) を参照してください。
+アプリケーションの JVM 引数の構成に関する追加のヘルプについては、「[3.0 Preview: Tips for updating your JVM args](./java-standalone-arguments.md)」 (3.0 プレビュー: JVM の引数の更新に関するヒント) を参照してください。
 
 **3.エージェントを Application Insights リソースにポイントする**
 
-Application Insights リソースをまだ持っていない場合は、[リソース作成ガイド](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)の手順に従って、新しいリソースを作成できます。
+Application Insights リソースをまだ持っていない場合は、[リソース作成ガイド](./create-new-resource.md)の手順に従って、新しいリソースを作成できます。
 
 環境変数を設定して、エージェントを Application Insights リソースにポイントします。
 
@@ -80,7 +80,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 * HTTP Proxy
 * 自己診断
 
-詳細については、「[3.0 Public Preview: Configuration Options](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)」 (3.0 パブリック プレビュー: 自動収集された要求、依存関係、ログ、およびメトリック) を参照してください。
+詳細については、「[3.0 Public Preview: Configuration Options](./java-standalone-config.md)」 (3.0 パブリック プレビュー: 自動収集された要求、依存関係、ログ、およびメトリック) を参照してください。
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自動収集された要求、依存関係、ログ、およびメトリック
 
