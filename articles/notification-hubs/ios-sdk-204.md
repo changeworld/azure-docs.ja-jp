@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 2103c93e553cc5e1e94941b1567bd3c0f168eabf
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 80a9a98043a39b654f0d62a84ae81e12797b15b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022363"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>チュートリアル:Azure Notification Hubs (バージョン 2.0.4) を使用して iOS アプリにプッシュ通知を送信する
 
@@ -491,7 +491,7 @@ iOS でプッシュ通知をテストするには、物理 iOS デバイスに�
 - [登録管理](notification-hubs-push-notification-registration-management.md)
 - [タグの使用](notification-hubs-tags-segment-push-message.md)
 - [カスタム テンプレートの使用](notification-hubs-templates-cross-platform-push-messages.md)
-- [Service Bus access control with shared access signatures](/azure/service-bus-messaging/service-bus-sas) (共有アクセス署名による Service Bus のアクセスの制御)
+- [Service Bus access control with shared access signatures](../service-bus-messaging/service-bus-sas.md) (共有アクセス署名による Service Bus のアクセスの制御)
 - [プログラムによる SAS トークンの生成](/rest/api/eventhub/generate-sas-token)
 - [Apple のセキュリティ: 一般的な暗号化](https://developer.apple.com/security/)
 - [UNIX エポック時間](https://en.wikipedia.org/wiki/Unix_time)

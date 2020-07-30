@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b7ab9e63bfe92967eca22b60dceec0de882768a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540578"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075628"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop の FAQ
 
@@ -121,7 +121,7 @@ FSLogix の制限事項またはクォータは、ユーザー プロファイ�
 | リソース | 要件 |
 |---|---|
 | 安定状態での IOPS | 10 |
-| サインイン/サインアウト時の IOPS | 5 |
+| サインイン/サインアウト時の IOPS | 50 |
 
 この表の例は 1 人のユーザーの場合を示していますが、環境内のユーザーの合計数の要件を見積もるために使用できます。 たとえば、100 ユーザーの場合は 1000 IOPS、サインインとサインアウトの場合は 5000 IOPS が必要になります。
 

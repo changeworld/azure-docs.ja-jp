@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114307"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073613"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>移行ツールの動作の理解
 
@@ -64,7 +64,7 @@ ms.locfileid: "81114307"
 - SASThrottlingError
 - ThrottlingError
 
-パーセント メトリックに対するクラシック アラート ルールは、[従来のストレージ メトリックと新しいストレージ メトリック間のマッピング](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)に基づいて移行する必要があります。 使用可能な新しいメトリックは絶対値であるため、しきい値を適切に変更する必要があります。
+パーセント メトリックに対するクラシック アラート ルールは、[従来のストレージ メトリックと新しいストレージ メトリック間のマッピング](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics)に基づいて移行する必要があります。 使用可能な新しいメトリックは絶対値であるため、しきい値を適切に変更する必要があります。
 
 AnonymousThrottlingError、SASThrottlingError、および ThrottlingError に関するクラシック アラート ルールについては、同じ機能を提供する一体型のメトリックがないため、2 つの新しいアラートに分割する必要があります。 しきい値を適切に調整する必要があります。
 

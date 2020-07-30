@@ -1,5 +1,5 @@
 ---
-title: データ型の定義
+title: Synapse SQL でのテーブルのデータ型
 description: Synapse SQL におけるテーブルのデータ型の定義に関するレコメンデーション。
 services: synapse-analytics
 author: filippopovic
@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 312c58a7df09ebe3e0bdf0749f902199723a331b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 907258dbce9b4f942601935df472e3515ed2d956
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020636"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Synapse SQL でのテーブルのデータ型
 

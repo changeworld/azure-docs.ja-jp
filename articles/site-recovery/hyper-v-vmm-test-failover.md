@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076072"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>セカンダリサイトに対して Hyper-V VM の DR ドリルを実行する
 
@@ -103,17 +103,17 @@ VM がフェールオーバーできるかどうかのみを確認する場合�
 * **DHCP**: 仮想マシンが DHCP を使用する場合、テスト DHCP サーバーでテスト DNS の IP アドレスを更新する必要があります。 Windows ネットワーク仮想化のネットワーク タイプを使用している場合、VMM サーバーは DHCP サーバーとして機能します。 したがって、テスト フェールオーバー ネットワークの DNS の IP アドレスを更新する必要があります。 この場合、仮想マシンは関連する DNS サーバーに自身を登録します。
 * **静的アドレス**: 仮想マシンが静的 IP アドレスを使用する場合、テスト フェールオーバー ネットワークでテスト DNS サーバーの IP アドレスを更新する必要があります。 場合によっては、テスト仮想マシンの IP アドレスを DNS に反映することも必要です。 この目的のために、次のサンプル スクリプトを使用することができます。
 
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
-
-
+  ```powershell
+  Param(
+  [string]$Zone,
+  [string]$name,
+  [string]$IP
+  )
+  $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+  $newrecord = $record.clone()
+  $newrecord.RecordData[0].IPv4Address  =  $IP
+  Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+  ```
 
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 

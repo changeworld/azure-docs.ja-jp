@@ -3,20 +3,20 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079691"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
-サーバーレス関数の開発、デプロイ、操作に関するセキュリティ計画は、多くの点において Web ベースやクラウド ホスト型のアプリケーションのものと非常に似通っています。 [Azure App Service](/azure/app-service/) には、関数アプリ向けのホスティング インフラストラクチャが用意されています。 この記事では、関数コードを実行する場合のセキュリティ戦略と、App Service を利用して関数をセキュリティで保護する方法について説明します。 
+サーバーレス関数の開発、デプロイ、操作に関するセキュリティ計画は、多くの点において Web ベースやクラウド ホスト型のアプリケーションのものと非常に似通っています。 [Azure App Service](../app-service/index.yml) には、関数アプリ向けのホスティング インフラストラクチャが用意されています。 この記事では、関数コードを実行する場合のセキュリティ戦略と、App Service を利用して関数をセキュリティで保護する方法について説明します。 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-[Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に準拠した一連のセキュリティ推奨事項については、「[Azure Functions 用の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
+[Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に準拠した一連のセキュリティ推奨事項については、「[Azure Functions 用の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
 
 ## <a name="secure-operation"></a>操作をセキュリティで保護する 
 

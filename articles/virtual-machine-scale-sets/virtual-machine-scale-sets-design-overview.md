@@ -10,15 +10,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080507"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
-この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
+この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](./overview.md)」を参照してください。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>仮想マシンではなくスケール セットを使用するケース
 一般に、類似した構成のマシン セットで高可用性インフラストラクチャをデプロイする場合は、スケール セットが便利です。 ただし、スケール セットだけで使用できる機能と、仮想マシンだけで使用できる機能があります。 それぞれのテクノロジの使用場面を適切に判断できるよう、まずはスケール セットだけで使用できる機能のうち、よく使用されるものについて見ていきましょう。
@@ -27,8 +27,8 @@ ms.locfileid: "85373983"
 
 - スケール セットの構成を指定したら、*capacity* プロパティを更新すれば、並列する複数の VM をデプロイすることができます。 このプロセスは、スクリプトを記述したり、並列する多数の VM を調整しながら個別にデプロイしたりするよりも有効です。
 - [Azure の自動スケール機能を使用してスケール セットの規模を自動で設定](./virtual-machine-scale-sets-autoscale-overview.md)することができますが、個々の VM に対してはできません。
-- [スケール セットの VM を再イメージ化](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)することはできますが、[個々の VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) を再イメージ化することはできません。
-- スケール セットの VM を[オーバープロビジョニング](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)して、信頼性高めながらデプロイ時間を短縮することができます。 個々の VM をオーバープロビジョニングするには、このアクションを実行するカスタム コードを記述する必要があります。
+- [スケール セットの VM を再イメージ化](/rest/api/compute/virtualmachinescalesets/reimage)することはできますが、[個々の VM](/rest/api/compute/virtualmachines) を再イメージ化することはできません。
+- スケール セットの VM を[オーバープロビジョニング](#overprovisioning)して、信頼性高めながらデプロイ時間を短縮することができます。 個々の VM をオーバープロビジョニングするには、このアクションを実行するカスタム コードを記述する必要があります。
 - [アップグレード ポリシー](./virtual-machine-scale-sets-upgrade-scale-set.md)を指定して、スケール セット内の VM 全体にアップグレードを簡単にロールアウトすることができます。 個々の VM でこれを行うには、アップデートを自分で調整する必要があります。
 
 ### <a name="vm-specific-features"></a>VM だけで使用できる機能
@@ -68,4 +68,3 @@ Marketplace イメージ (プラットフォーム イメージとも呼ばれ�
 (自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure マネージド ディスクで構成した場合に最大 600 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
 
 VM の数が、これらの制限で許可されている数を超える場合は、 [こちらのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)に示すように、複数のスケール セットをデプロイする必要があります。
-

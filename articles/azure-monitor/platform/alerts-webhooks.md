@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073589"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
 
@@ -26,7 +26,7 @@ webhook URI を追加または更新するには、[Azure Portal](https://portal
 
 ![[アラート ルールの追加] ウィンドウ](./media/alerts-webhooks/Alertwebhook.png)
 
-また、[Azure PowerShell コマンドレット](../samples/powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](../samples/cli-samples.md#work-with-alerts)、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) を使用して、webhook URI にポストするアラートを構成することもできます。
+また、[Azure PowerShell コマンドレット](../samples/powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](../samples/cli-samples.md#work-with-alerts)、または [Azure Monitor REST API](/rest/api/monitor/alertrules) を使用して、webhook URI にポストするアラートを構成することもできます。
 
 ## <a name="authenticate-the-webhook"></a>webhook の認証
 webhook は、トークンベースの承認を使用して認証できます。 webhook URI は、トークン ID を使用して保存されます。 例: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -79,11 +79,11 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | conditionType |Y |"Metric"、"Event" |2 つの種類のアラート (メトリックとイベント) がサポートされています。 メトリック アラートは、メトリックの条件に基づいています。 イベント アラートは、アクティビティ ログのイベントに基づいています。 この値を使用して、アラートがメトリックとイベントのどちらに基づいているかを確認できます。 |
 | condition |Y | |**conditionType** の値に基づいて確認する特定のフィールド。 |
 | metricName |メトリック アラートの場合 | |ルールによる監視対象を定義するメトリックの名前。 |
-| metricUnit |メトリック アラートの場合 |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds" |メトリックで使用できる単位。 [使用できる値](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)を参照してください。 |
+| metricUnit |メトリック アラートの場合 |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds" |メトリックで使用できる単位。 [使用できる値](/previous-versions/azure/reference/dn802430(v=azure.100))を参照してください。 |
 | metricValue |メトリック アラートの場合 | |アラートの原因となったメトリックの実際の値。 |
 | threshold |メトリック アラートの場合 | |アラートがアクティブ化されるしきい値。 |
 | windowSize |メトリック アラートの場合 | |しきい値に基づいてアラート アクティビティを監視するために使用される期間。 値は 5 分～ 1 日の範囲で指定する必要があります。 値は ISO 8601 の期間の形式である必要があります。 |
-| timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |収集されたデータの経時的な結合方法。 既定値は Average です。 [使用できる値](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)を参照してください。 |
+| timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |収集されたデータの経時的な結合方法。 既定値は Average です。 [使用できる値](/previous-versions/azure/reference/dn802410(v=azure.100))を参照してください。 |
 | operator |メトリック アラートの場合 | |設定したしきい値と現在のメトリック データを比較するために使用される演算子。 |
 | subscriptionId |Y | |Azure サブスクリプション ID です。 |
 | resourceGroupName |Y | |影響を受けるリソースのリソース グループの名前。 |
@@ -95,7 +95,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | properties |N |省略可能 |イベントに関する詳細を含むキー/値のペアのセット。 たとえば、「 `Dictionary<String, String>` 」のように入力します。 properties フィールドは省略可能です。 カスタム UI またはロジック アプリベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキー/値のペアを入力できます。 webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを webhook に戻すこともできます。 |
 
 > [!NOTE]
-> **properties** フィールドは、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) を使用してのみ設定できます。
+> **properties** フィールドは、[Azure Monitor REST API](/rest/api/monitor/alertrules) を使用してのみ設定できます。
 >
 >
 
@@ -105,4 +105,3 @@ POST 操作には、すべてのメトリックベースのアラートについ
 * [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)方法について確認します。
 * [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)方法について確認します。
 * [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)方法について確認します。
-

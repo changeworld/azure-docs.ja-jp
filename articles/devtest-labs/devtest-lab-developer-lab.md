@@ -3,12 +3,12 @@ title: 開発者のための Azure DevTest Labs の使用 | Microsoft Docs
 description: 開発者の要件を満たすために使うことができる Azure DevTest Labs 機能のほか、ラボをセットアップするための詳細な手順について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6bb2c4d21ee6b6cb072c550c82c380b3a380f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481036"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293027"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>開発者のための Azure DevTest Labs の使用
 Azure DevTest Labs を使うと多くの重要なシナリオを実装できますが、主要なシナリオの 1 つは、DevTest Labs を使って開発者のために開発用コンピューターをホストすることです。 このシナリオでは、DevTest Labs には次のような利点があります。
@@ -45,7 +45,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    | --- | --- |
    | [Azure Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージをホワイトリストに登録し、開発者に必要なイメージのみを利用できるようにする方法について学びます。|
    | [カスタム イメージの作成](devtest-lab-create-template.md) |必要なソフトウェアを事前にインストールしてカスタム イメージを作成し、開発者がそのカスタム イメージを使って VM を迅速に作成できるようにします。|
-   | [イメージ ファクトリについて](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |イメージ ファクトリを設定して使う方法を説明するビデオをご覧ください。|
+   | [イメージ ファクトリについて](./devtest-lab-faq.md#blog-post) |イメージ ファクトリを設定して使う方法を説明するビデオをご覧ください。|
 
 3. **開発者のコンピューター用に再利用可能なテンプレートを作成する** 
    
@@ -124,4 +124,3 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    | [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

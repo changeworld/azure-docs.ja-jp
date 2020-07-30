@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 053ee85318d8ac9ccd5fb8b63fb44df966d34821
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075032"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターを作成する
 
@@ -38,7 +38,7 @@ PowerShell を使用して Data Lake Storage Gen1 を操作できるように HD
 このチュートリアルを開始する前に、次の要件を満たしていることを確認します。
 
 * **Azure サブスクリプション**:[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* **Azure PowerShell 1.0 以上**:[PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページをご覧ください。
+* **Azure PowerShell 1.0 以上**:[PowerShell のインストールと構成の方法](/powershell/azure/)に関するページをご覧ください。
 * **Windows ソフトウェア開発キット (SDK)** :Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/downloads)」をご覧ください。 SDK は、セキュリティ証明書の作成に使用します。
 * **Azure Active Directory サービス プリンシパル**:このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
