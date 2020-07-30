@@ -485,7 +485,7 @@
             - name: 通知の表示
               href: ../service-health/service-notifications.md
             - name: 通知イベントでのアラートの構成
-              href: platform/alerts-activity-log-service-notifications.md
+              href: ../service-health/alerts-activity-log-service-notifications-portal.md
         - name: 通知とアクション
           items:
             - name: アクション ルール (プレビュー)
@@ -905,18 +905,24 @@
           href: insights/vminsights-ga-release-faq.md
         - name: よく寄せられる質問
           href: faq.md#azure-monitor-for-vms
-        - name: 監視を有効にする
+        - name: ワークスペースの構成
+          href: insights/vminsights-configure-workspace.md
+        - name: エージェントのインストール
           items:
-            - name: 監視の有効化の概要
+            - name: 概要
               href: insights/vminsights-enable-overview.md
-            - name: 単一の Azure VM での有効化
-              href: insights/vminsights-enable-single-vm.md
-            - name: Azure Policy を使用して有効にする
-              href: insights/vminsights-enable-at-scale-policy.md
-            - name: Azure PowerShell を使用して有効にする
-              href: insights/vminsights-enable-at-scale-powershell.md
-            - name: ハイブリッド環境対応にする
-              href: insights/vminsights-enable-hybrid-cloud.md
+            - name: Azure portal
+              href: insights/vminsights-enable-portal.md
+            - name: Azure PowerShell
+              href: insights/vminsights-enable-powershell.md
+            - name: ARM テンプレート
+              href: insights/vminsights-enable-resource-manager.md
+            - name: Azure Policy
+              href: insights/vminsights-enable-policy.md
+            - name: ハイブリッド VM
+              href: insights/vminsights-enable-hybrid.md
+            - name: 依存関係エージェントのアップグレード
+              href: insights/vminsights-dependency-agent-maintenance.md
         - name: 依存関係のマップ
           href: insights/vminsights-maps.md
         - name: パフォーマンスの監視
@@ -927,8 +933,6 @@
           href: insights/vminsights-workbooks.md
         - name: アラート ルールの作成
           href: insights/vminsights-alerts.md
-        - name: 依存関係エージェントのアップグレード
-          href: insights/vminsights-dependency-agent-maintenance.md
         - name: 監視を無効にする
           href: insights/vminsights-optout.md
     - name: コンテナーに対する Azure Monitor

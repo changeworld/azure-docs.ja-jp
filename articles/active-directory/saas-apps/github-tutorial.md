@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253743"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170535"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub の統合
 
@@ -87,7 +87,7 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>`
 
-    c. **[応答 URL]** テキスト ボックスに、`https://github.com/orgs/<Organization ID>/saml/consume` のパターンを使用して URL を入力します。
+    c. **[応答 URL]** ボックスに、`https://github.com/orgs/<Organization ID>/saml/consume` のパターンを使用して URL を入力します
 
 
     > [!NOTE]

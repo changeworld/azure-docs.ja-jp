@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945360"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327278"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 [Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、アクティビティ ログのカテゴリとそれぞれのスキーマについて説明します。 
 
 スキーマは、ログへのアクセス方法によって異なります。
  
-- この記事で説明するスキーマは、[REST API](https://docs.microsoft.com/rest/api/monitor/activitylogs) からアクティビティ ログにアクセスするときに使用します。 これは、Azure portal でイベントを表示するときに **JSON** オプションを選択した場合に使用されるスキーマでもあります。
+- この記事で説明するスキーマは、[REST API](/rest/api/monitor/activitylogs) からアクティビティ ログにアクセスするときに使用します。 これは、Azure portal でイベントを表示するときに **JSON** オプションを選択した場合に使用されるスキーマでもあります。
 - [診断設定](diagnostic-settings.md)を使用して Azure Storage または Azure Event Hubs にアクティビティ ログを送信する場合は、スキーマについて最後の「[ストレージ アカウントとイベント ハブからのスキーマ](#schema-from-storage-account-and-event-hubs)」セクションを参照してください。
-- [診断設定](diagnostic-settings.md)を使用して Log Analytics ワークスペースにアクティビティ ログを送信する場合は、スキーマについて [Azure Monitor データ参照](https://docs.microsoft.com/azure/azure-monitor/reference/)を参照してください。
+- [診断設定](diagnostic-settings.md)を使用して Log Analytics ワークスペースにアクティビティ ログを送信する場合は、スキーマについて [Azure Monitor データ参照](/azure/azure-monitor/reference/)を参照してください。
 
 
 ## <a name="categories"></a>Categories
-アクティビティ ログの各イベントには、次の表に示す特定のカテゴリがあります。 ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合は、各カテゴリとそのスキーマの詳細について、以下のセクションを参照してください。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](resource-logs-stream-event-hubs.md)場合、スキーマは異なります。 [リソース ログ スキーマ](diagnostic-logs-schema.md)へのプロパティのマッピングについては、この記事の最後のセクションで紹介します。
+アクティビティ ログの各イベントには、次の表に示す特定のカテゴリがあります。 ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合は、各カテゴリとそのスキーマの詳細について、以下のセクションを参照してください。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](./resource-logs.md#send-to-azure-event-hubs)場合、スキーマは異なります。 [リソース ログ スキーマ](./resource-logs-schema.md)へのプロパティのマッピングについては、この記事の最後のセクションで紹介します。
 
 | カテゴリ | 説明 |
 |:---|:---|
@@ -214,7 +214,7 @@ ms.locfileid: "84945360"
   }
 }
 ```
-プロパティの値に関するドキュメントについては、[サービスの正常性通知](./../../azure-monitor/platform/service-notifications.md)に関する記事を参照してください。
+プロパティの値に関するドキュメントについては、[サービスの正常性通知](../../service-health/service-notifications.md)に関する記事を参照してください。
 
 ## <a name="resource-health-category"></a>リソース正常性カテゴリ
 このカテゴリには、Azure リソースで発生したすべてのリソース正常性イベントのレコードが含まれます。 このカテゴリに表示されるイベントの種類として、[Virtual Machine health status changed to unavailable]\(仮想マシンの正常性状態が使用不可に変わりました\) などがあります。 リソース正常性イベントでは、次の 4 つのヘルス状態のいずれかを表すことができます。Available、Unavailable、Degraded、および Unknown。 さらに、リソース正常性イベントは、プラットフォーム開始またはユーザー開始のいずれかのカテゴリーに分けることができます。
@@ -793,10 +793,10 @@ ms.locfileid: "84945360"
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>ストレージ アカウントとイベント ハブからのスキーマ
-Azure アクティビティ ログをストレージ アカウントまたはイベント ハブにストリーミングする場合、データは[リソース ログ スキーマ](diagnostic-logs-schema.md)に従います。 上記のスキーマからリソース ログ スキーマへのプロパティのマッピングを次の表に示します。
+Azure アクティビティ ログをストレージ アカウントまたはイベント ハブにストリーミングする場合、データは[リソース ログ スキーマ](./resource-logs-schema.md)に従います。 上記のスキーマからリソース ログ スキーマへのプロパティのマッピングを次の表に示します。
 
 > [!IMPORTANT]
-> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](diagnostic-logs-append-blobs.md)」を参照してください。
+> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](/azure/azure-monitor/platform/resource-logs-blob-format)」を参照してください。
 
 
 | リソース ログのスキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | Notes |

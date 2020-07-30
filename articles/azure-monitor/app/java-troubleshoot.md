@@ -3,12 +3,13 @@ title: Java Web プロジェクトでの Application Insights のトラブルシ
 description: トラブルシューティング ガイド - Application Insights でライブ Java アプリケーションを監視します。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484795"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372520"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -24,7 +25,7 @@ ms.locfileid: "84484795"
 * 少し待ってから、[最新の情報に更新] をクリックします。 グラフは周期的に自動で更新されますが、手動で更新することもできます。 更新間隔は、グラフの時間範囲によって異なります。
 * インストルメンテーション キーが、(プロジェクトのリソース フォルダーにある) ApplicationInsights.xml ファイル内で定義されているか、環境変数として構成されていることをご確認ください。
 * この xml ファイルに `<DisableTelemetry>true</DisableTelemetry>` ノードが存在しないことをご確認ください。
-* ファイアウォールで、dc.services.visualstudio.com への送信トラフィック用に TCP ポート 80 と 443 を開くことが必要な場合があります。 最新のバージョンの [ファイアウォール例外の一覧に関する記事](../../azure-monitor/app/ip-addresses.md)
+* ファイアウォールで、dc.services.visualstudio.com への送信トラフィック用に TCP ポート 80 と 443 を開くことが必要な場合があります。 最新のバージョンの [ファイアウォール例外の一覧に関する記事](./ip-addresses.md)
 * Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。 アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 * プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへの[ログを有効にし](#debug-data-from-the-sdk)、AI:INFO/WARN/ERROR から始まるエントリに疑わしいログがないかを調べます。 
 * 正しい ApplicationInsights.xml ファイルが Java SDK によって正常に読み込まれたことを確認します。そのためには、コンソールの出力メッセージに「構成ファイルが正常に検出されました」というメッセージがあるかどうかを確認します。
@@ -38,7 +39,7 @@ ms.locfileid: "84484795"
 * 正しい AI リソースを見ていますか? アプリケーションの iKey を、テレメトリが必要なリソースに一致させてください。 これらが同じである必要があります。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>予期しているデータがすべて表示されません
-* [使用量と推定コスト] ページを開き、[サンプリング](../../azure-monitor/app/sampling.md)が動作中かどうかを確認します (転送率が 100% の場合、サンプリングは実行されていません)。Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。 これにより、テレメトリの月間クォータの上限を超えないようにすることができます。
+* [使用量と推定コスト] ページを開き、[サンプリング](./sampling.md)が動作中かどうかを確認します (転送率が 100% の場合、サンプリングは実行されていません)。Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。 これにより、テレメトリの月間クォータの上限を超えないようにすることができます。
 * SDK サンプリングを有効にしていますか? 有効にしている場合、該当するすべての型について、指定したレートでデータがサンプリングされます。
 * 古いバージョンの Java SDK を実行していませんか? バージョン 2.0.1 以降に、ローカル ドライブでのデータ永続化だけでなく、ネットワークやバックエンドの断続的障害に対処できるように、フォールト トレランスのメカニズムを導入しました。
 * テレメトリが過度になるという理由から、調整を行っていますか? 情報のログ記録を有効にしている場合は、"アプリが調整されました" というログ メッセージが表示されます。 現在の制限は、32,000 テレメトリ項目/秒です。
@@ -193,11 +194,11 @@ Application Insights では `org.apache.http` が使用されます。 これは
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

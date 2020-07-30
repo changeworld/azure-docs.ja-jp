@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 8166a85d1c3421d95ac2b818e51b6b60e7663165
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9bc351f72f5dac38ebfc1983a7b918d46f5fc8ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000314"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成 
 > [!div class="op_single_selector"]
@@ -38,10 +38,10 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 ## <a name="types-used-to-create-filters"></a>フィルターの作成に使用する種類
 次の種類の REST API を使用してフィルターを作成します。  
 
-* [Assert](https://docs.microsoft.com/rest/api/media/operations/filter)
-* [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* [FilterTrackSelect と FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* [Assert](/rest/api/media/operations/filter)
+* [AssetFilter](/rest/api/media/operations/assetfilter)
+* [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* [FilterTrackSelect と FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 > [!NOTE]
 > 
@@ -217,7 +217,7 @@ x-ms-client-request-id: 00000000
 ```
 
 ## <a name="update-filters"></a>フィルターの更新
-新しいプロパティ値でフィルターを更新するには、PATCH、PUT、MERGE を使用します。  これらの操作の詳細については、「 [PATCH、PUT、MERGE](https://msdn.microsoft.com/library/dd541276.aspx)」をご覧ください。
+新しいプロパティ値でフィルターを更新するには、PATCH、PUT、MERGE を使用します。  これらの操作の詳細については、「 [PATCH、PUT、MERGE](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893)」をご覧ください。
 
 フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかります。 このフィルターを使用してコンテンツが処理された場合 (また、プロキシと CDN にキャッシュされている場合)、このフィルターを更新するとプレイヤーでエラーが発生します。 フィルターを更新した後は、キャッシュをクリアしてください。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。  
 
@@ -371,4 +371,3 @@ Host: media.windows.net
 
 ## <a name="see-also"></a>参照
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
-

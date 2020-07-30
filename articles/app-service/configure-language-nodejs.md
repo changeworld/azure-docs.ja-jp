@@ -1,15 +1,16 @@
 ---
 title: Windows Node.js アプリを構成する
 description: App Service のネイティブ Windows インスタンスで Node.js アプリを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
+ms.custom: devx-track-javascript
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 9f4ccdd04b8d57784f452dc28fa4507fb7ea94c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fc6ed5cb090653e381d82f484d355a514520c62
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907994"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170907"
 ---
 # <a name="configure-a-windows-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Windows Node.js アプリを構成する
 

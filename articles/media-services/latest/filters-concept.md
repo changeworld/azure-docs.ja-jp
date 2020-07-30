@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023230"
 ---
 # <a name="filters"></a>フィルター
 
@@ -38,8 +38,8 @@ Media Services では、**アカウント フィルター**と、コンテンツ
 
 2 種類のフィルターがあります。 
 
-* [アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters) (グローバル) - Azure Media Services アカウントのすべてのアセットに適用可能。アカウントの有効期間があります。
-* [アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters) (ローカル) - 作成時にフィルターに関連付けられたアセットにのみ適用可能。アセットの有効期間があります。 
+* [アカウント フィルター](/rest/api/media/accountfilters) (グローバル) - Azure Media Services アカウントのすべてのアセットに適用可能。アカウントの有効期間があります。
+* [アセット フィルター](/rest/api/media/assetfilters) (ローカル) - 作成時にフィルターに関連付けられたアセットにのみ適用可能。アセットの有効期間があります。 
 
 **アカウント フィルター** タイプと**アセット フィルター** タイプは、フィルターの定義/記述に関して、まったく同じプロパティを持ちます。 ただし**アセット フィルター**を作成するときは、フィルターを関連付けるアセットの名前を指定する必要があります。
 
@@ -139,7 +139,7 @@ Media Services では、**アカウント フィルター**と、コンテンツ
 
 ## <a name="associating-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
-[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に対する[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 
+[ストリーミング ロケーター](/rest/api/media/streaminglocators/create#request-body)に対する[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 
 
 次の例を参照してください。
 
@@ -161,4 +161,3 @@ CDN が有効になっている場合は特に、アクティブに公開され�
 - [REST API を使用したフィルターの作成](filters-dynamic-manifest-rest-howto.md)
 - [.NET を使用したフィルターの作成](filters-dynamic-manifest-dotnet-howto.md)
 - [CLI を使用したフィルターの作成](filters-dynamic-manifest-cli-howto.md)
-
