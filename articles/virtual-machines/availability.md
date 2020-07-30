@@ -4,14 +4,14 @@ description: Azure で仮想マシンを実行するための可用性機能に�
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 39674e17c16870ba170242ee17cdc17fde4e5798
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d26e1edb53f963d591b1ee1fba58b87fd454e898
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528051"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288569"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure の仮想マシンの可用性オプション
 

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 67b85c34c72d8c4b4dc7cecaeb74a9b164133702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53745baa3883108295a76ec299e8347d68419336
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391963"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386097"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "85391963"
 |---------|---------|
 |SDK のダウンロード  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
-|SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-cosmos-js#installation)
+|SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-sdk-for-js)
 |SDK への参加 | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | サンプル | [Node.js コード サンプル](sql-api-nodejs-samples.md)
 | 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started.md)
@@ -309,21 +309,21 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ### <a name="1121"></a><a name="1.12.1"></a>1.12.1
 * ドキュメントに Unicode の特殊文字 (LS、PS) が含まれている場合の executeStoredProcedure のバグを修正しました。
 * パーティション キーで Unicode 文字が使用されているドキュメントを処理する際のバグを修正しました。
-* 名前メディアでコレクションを作成するためのサポートを修正しました。 GitHub Issue #114。
-* アクセス許可承認トークンのサポートを修正しました。 GitHub Issue #178。
+* 名前メディアでコレクションを作成するためのサポートを修正しました。 GitHub 問題 #114。
+* アクセス許可承認トークンのサポートを修正しました。 GitHub 問題 #178。
 
 ### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * ConsistentPrefix と呼ばれる新しい[一貫性レベル](consistency-levels.md)に対応するようになりました。
 * UriFactory のサポートを追加しました。
-* Unicode サポートのバグを修正しました。 GitHub Issue #171。
+* Unicode サポートのバグを修正しました。 GitHub 問題 #171。
 
 ### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
 * クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
 * Azure Cosmos DB Emulator に対して実行しているときに TLS 検証を無効にするオプションを追加しました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
-* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 GitHub Issue #107。
-* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 GitHub Issue #155。
+* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 GitHub 問題 #107。
+* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 GitHub 問題 #155。
 
 ### <a name="1102"></a><a name="1.10.2"></a>1.10.2
 * SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。

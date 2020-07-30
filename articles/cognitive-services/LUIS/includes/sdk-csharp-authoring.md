@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/26/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 559aee5de7dcf63c92957d70468db6c9672d9155
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 671d6a18ca4c6b9ae15453d23d8188fbb4f7d957
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124396"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369436"
 ---
 .NET 用 Language Understanding (LUIS) 作成クライアント ライブラリの用途は次のとおりです。
 

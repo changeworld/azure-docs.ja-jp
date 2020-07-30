@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:場所へのルートを検索する |Microsoft Azure Maps
 description: このチュートリアルでは、Microsoft Azure Maps ルート指定サービスを使用して、マップ上の場所 (目的地) へのルートをレンダリングする方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 98c36176ecd2996e5f735c52017162a076ef4bde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333756"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287422"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使って目的地へのルートを検索する
 
@@ -27,7 +27,7 @@ ms.locfileid: "80333756"
 
 ## <a name="prerequisites"></a>前提条件
 
-先に進む前に、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順に従ってください。S1 価格レベルのサブスクリプションが必要です。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+先に進む前に、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)手順に従ってください。S1 価格レベルのサブスクリプションが必要です。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 <a id="getcoordinates"></a>
 

@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 79b726d39b9a895d8120f5f2afdb818c3a55741b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 991a9fd9fa0717c97a549d371ca47c5b389d1a27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249585"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008763"
 ---
 # <a name="set-up-rate-limit-policy"></a>レート制限ポリシーのセットアップ
 
@@ -42,6 +42,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 ```
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure API Management 用 Azure PowerShell サンプルは、[PowerShell サンプル](../powershell-samples.md)のページにあります。

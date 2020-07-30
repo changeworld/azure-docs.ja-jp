@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457203"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037314"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud での問題を自己診断して解決する方法
 Azure Spring Cloud 診断は、アプリのトラブルシューティングに役立つ対話型エクスペリエンスです。 構成は必要ありません。 問題が見つかった場合、Azure Spring Cloud 診断は問題点を指摘し、問題のトラブルシューティングと解決に役立つ情報にユーザーを導きます。

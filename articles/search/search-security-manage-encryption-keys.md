@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13ffd1eeb2df3c21a6167b056557b9141444f7c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038581"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 内のユーザーが管理するキーを使用した Azure Cognitive Search でのコンテンツの保存時の暗号化
 
@@ -36,7 +36,7 @@ ms.locfileid: "85553288"
 
 + [Azure Key Vault リソースを作成](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)するか、サブスクリプションから既存のコンテナーを見つけます。
 
-+ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を構成タスクに使用します。
++ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を構成タスクに使用します。
 
 + REST API の呼び出しには、[Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md)、および [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview)を使用できます。 現時点では、カスタマー マネージドの暗号化はポータルでサポートされていません。
 

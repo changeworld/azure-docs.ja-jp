@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 0e49d59386b19aa8da46b8c8e6acfe50e2124541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: d9a3c831275a6e758a6c5b5f377a80b074e0953e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037408"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Azure Spring Cloud で永続ストレージを使用する
 

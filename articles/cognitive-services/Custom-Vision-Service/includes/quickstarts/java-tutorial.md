@@ -1,14 +1,15 @@
 ---
 author: areddish
+ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: efbfed5198620fc07b10354a5b74f6ddaf2cd4ab
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f4d4075fae22c22e249a6891185c7b7fc9a572de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82135105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375737"
 ---
 この記事では、Custom Vision Java SDK を使用して画像分類モデルを構築する基本的な方法について説明します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の Java アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
 

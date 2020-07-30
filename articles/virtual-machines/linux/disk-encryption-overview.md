@@ -4,16 +4,16 @@ description: この記事では、Linux VM で Microsoft Azure Disk Encryption �
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8e4843ad71455f8e478ef74ee71975c1dbf2925
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1551bd3a6caedb61750b28120c222a57b491640e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510566"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372622"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -139,7 +139,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) は、コマンド ラインから Azure リソースを管理できるように最適化されています。|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) は、Linux VM でディスク暗号化を有効にするために使用される Linux ベースの透過的なディスク暗号化サブシステムです。 |
 | キー暗号化キー (KEK) | シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントと「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。 |
-| PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/overview)に関するページをご覧ください。 |
+| PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/)に関するページをご覧ください。 |
 
 
 ## <a name="next-steps"></a>次のステップ
