@@ -14,6 +14,13 @@
           href: ./kubernetes/policy-samples.md
         - name: Arc 対応サーバー
           href: ./servers/policy-samples.md
+- name: 概念
+  items:
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./servers/security-controls-policy.md
 - name: 操作方法ガイド
   items:
     - name: Arc 対応 Kubernetes

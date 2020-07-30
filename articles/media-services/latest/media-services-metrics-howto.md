@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5df104efb65152f5bcb71a86911e694611d8a742
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022873"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services のメトリックを監視する
 
@@ -28,7 +28,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md)
+- [Media Services アカウントを作成する](./create-account-howto.md)
 - 「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を確認する
 
 ## <a name="view-metrics-in-azure-portal"></a>Azure portal でメトリックを表示する

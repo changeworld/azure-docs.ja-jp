@@ -4,16 +4,16 @@ description: カスタム メトリックを使用して Web アプリをリア�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166486"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321940"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションを監視します。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream を[プロファイラー](../../azure-monitor/app/profiler.md)と[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)と併用することにより、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを利用できます。
+[Application Insights](./app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションを監視します。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream を[プロファイラー](./profiler.md)と[スナップショット デバッガー](./snapshot-debugger.md)と併用することにより、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを利用できます。
 
 Live Metrics Stream を使用すると、次のことが可能になります。
 
@@ -31,7 +31,7 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 ## <a name="get-started"></a>はじめに
 
-1. アプリケーションに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.yml)します。
+1. アプリケーションに [Application Insights をインストール](../azure-monitor-app-hub.yml)します。
 2. Live Metrics ストリームを有効にするには、標準の Application Insights パッケージに加え、[Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) が必要です。
 3. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
@@ -43,17 +43,17 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 ### <a name="no-data-check-your-server-firewall"></a>データが表示されない場合 サーバーのファイアウォールを確認
 
-サーバーのファイアウォールで、[Live Metrics Stream の発信ポート](../../azure-monitor/app/ip-addresses.md#outgoing-ports)が開いているか確認します。
+サーバーのファイアウォールで、[Live Metrics Stream の発信ポート](./ip-addresses.md#outgoing-ports)が開いているか確認します。
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Live Metrics Stream が メトリックス エクスプローラーや Analytics と異なる点
 
 | |Live Stream | メトリックス エクスプローラーと Analytics |
 |---|---|---|
 |**待機時間**|1 秒以内に表示されるデータ|数分間で集計|
-|**リテンション期間なし**|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**リテンション期間なし**|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**[要求時]**|データは、[Live Metircs] ペインが開いている間のみストリーミングされます |SDK がインストールされて有効になるたびに、データが送信されます|
-|**Free**|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
-|**サンプリング**|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)されることがあります|
+|**Free**|Live Stream データ用の料金は発生しません|[価格](./pricing.md)設定の対象
+|**サンプリング**|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](./api-filtering-sampling.md)されることがあります|
 |**コントロール チャネル**|フィルターの制御シグナルが SDK に送信されます。 このチャネルをセキュリティで保護することをお勧めします。|通信はポータルへの一方向です|
 
 ## <a name="select-and-filter-your-metrics"></a>メトリックの選択とフィルタリング
@@ -64,7 +64,7 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 ![要求率のフィルター処理](./media/live-stream/filter-request.png)
 
-Count 以外の値を監視できます。 オプションはストリームの種類によって異なります。ストリームの種類には、任意の Application Insights Telemetry (要求、依存関係、例外、トレース、イベント、またはメトリック) を指定できます。 オプションには、独自の[カスタム測定](../../azure-monitor/app/api-custom-events-metrics.md#properties)を指定できます。
+Count 以外の値を監視できます。 オプションはストリームの種類によって異なります。ストリームの種類には、任意の Application Insights Telemetry (要求、依存関係、例外、トレース、イベント、またはメトリック) を指定できます。 オプションには、独自の[カスタム測定](./api-custom-events-metrics.md#properties)を指定できます。
 
 ![クエリ ビルダーで要求率にカスタム メトリックを使用する](./media/live-stream/query-builder-request.png)
 
@@ -206,10 +206,11 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合:Live Metrics Stream では、他の Application Insights テレメトリとは異なる IP アドレスを使用します。 [これらの IP アドレス](../../azure-monitor/app/ip-addresses.md)がファイアウォールで開いていることを確認してください。
+データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合:Live Metrics Stream では、他の Application Insights テレメトリとは異なる IP アドレスを使用します。 [これらの IP アドレス](./ip-addresses.md)がファイアウォールで開いていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Application Insights による使用状況の監視](../../azure-monitor/app/usage-overview.md)
-* [診断検索の使用](../../azure-monitor/app/diagnostic-search.md)
-* [Profiler](../../azure-monitor/app/profiler.md)
-* [スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)
+* [Application Insights による使用状況の監視](./usage-overview.md)
+* [診断検索の使用](./diagnostic-search.md)
+* [Profiler](./profiler.md)
+* [スナップショット デバッガー](./snapshot-debugger.md)
+

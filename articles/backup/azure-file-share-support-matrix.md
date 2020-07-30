@@ -4,12 +4,12 @@ description: Azure ファイル共有をバックアップする際のサポー�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289505"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 
@@ -20,10 +20,6 @@ ms.locfileid: "86514554"
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure ファイル共有のバックアップの GA リージョン
 
 Azure ファイル共有のバックアップは、以下を**除く**すべてのリージョンで利用できます。ドイツ中部 (ソブリン)、ドイツ北東部 (ソブリン)、中国東部、中国東部 2、中国北部、中国北部 2、US Gov アイオワ
-
-### <a name="supported-regions-for-accidental-delete-protection"></a>誤削除からの保護のサポート対象リージョン
-
-米国中西部、オーストラリア東南部、カナダ中部、米国中西部、インド南部、米国中北部、東日本、ブラジル南部、米国中南部、オーストラリア東部、米国東部、米国東部 2
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
