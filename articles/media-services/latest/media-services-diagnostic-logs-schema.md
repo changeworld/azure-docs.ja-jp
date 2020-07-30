@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75750874"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092016"
 ---
 # <a name="diagnostic-logs-schemas"></a>診断ログのスキーマ
 
@@ -30,7 +30,7 @@ ms.locfileid: "75750874"
 
 ## <a name="top-level-diagnostic-logs-schema"></a>診断ログの上位スキーマ
 
-診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../azure-monitor/platform/tutorial-dashboards.md)」をご覧ください。
+診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../azure-monitor/platform/resource-logs-schema.md)」をご覧ください。
 
 ## <a name="key-delivery-log-schema"></a>キー配信ログのスキーマ
 

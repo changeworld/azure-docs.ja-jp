@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022909"
 ---
 # <a name="manage-assets"></a>アセットの管理
 
-Azure Media Services では、[アセット](https://docs.microsoft.com/rest/api/media/assets)で以下のことを行います。 
+Azure Media Services では、[アセット](/rest/api/media/assets)で以下のことを行います。 
 
 * メディア ファイルをアセットにアップロードする
 * ライブ ストリームをアセットに取り込んで、アーカイブする
@@ -56,13 +56,13 @@ Azure Media Services では、[アセット](https://docs.microsoft.com/rest/api
     ```
 2. デジタル ファイルをアセット コンテナーにアップロードするために使用する、読み取り/書き込みアクセス許可のある SAS URL を取得します。
 
-    Media Services API を使用して、[アセット コンテナーの URL を一覧表示](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)できます。
+    Media Services API を使用して、[アセット コンテナーの URL を一覧表示](/rest/api/media/assets/listcontainersas)できます。
 
-    **AssetContainerSas.listContainerSas** が受け取る [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) パラメーターに `expiryTime` を設定します。 時間は 24 時間未満に設定してください。
+    **AssetContainerSas.listContainerSas** が受け取る [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) パラメーターに `expiryTime` を設定します。 時間は 24 時間未満に設定してください。
 
-    ストレージ アカウントごとに 2 つのストレージ アカウント キーがあるため、[ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) は複数の SAS URL を返します。 ストレージ アカウントには、ストレージ アカウント キーのフェールオーバーとシームレスなローテーションに役立つ 2 つのキーがあります。 最初の SAS URL は最初のストレージ アカウント キーを表し、2 番目の SAS URL は 2 番目のキーを表します。
+    ストレージ アカウントごとに 2 つのストレージ アカウント キーがあるため、[ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) は複数の SAS URL を返します。 ストレージ アカウントには、ストレージ アカウント キーのフェールオーバーとシームレスなローテーションに役立つ 2 つのキーがあります。 最初の SAS URL は最初のストレージ アカウント キーを表し、2 番目の SAS URL は 2 番目のキーを表します。
 3. Azure Storage API または SDK (たとえば、[Storage REST API](../../storage/common/storage-rest-api-auth.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) を使用して、ファイルをアセット コンテナーにアップロードします。
-4. Media Services v3 API を使用して、"入力" アセットを処理する変換とジョブを作成します。 詳しくは、「[Transform と Job](transform-concept.md)」をご覧ください。
+4. Media Services v3 API を使用して、"入力" アセットを処理する変換とジョブを作成します。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。
 5. "出力" アセットからのコンテンツをストリーム配信します。
 
 ### <a name="create-a-new-asset"></a>新しいアセットの作成
@@ -76,7 +76,7 @@ Azure Media Services では、[アセット](https://docs.microsoft.com/rest/api
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-REST の例については、[REST を使用したアセットの作成](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples)の例をご覧ください。
+REST の例については、[REST を使用したアセットの作成](/rest/api/media/assets/createorupdate#examples)の例をご覧ください。
 
 この例では、**要求本文**を作成する方法を示しており、説明、コンテナー名、ストレージ アカウントなどの有用な情報を指定できます。
 
@@ -107,7 +107,7 @@ curl -X PUT \
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>ライブ ストリームをアセットに取り込んで、アーカイブする
 
-Media Services の[ライブ出力](https://docs.microsoft.com/rest/api/media/liveoutputs)オブジェクトは、ご利用のライブ ストリームをキャッチしてご利用の Media Services アカウントのアセットに記録するデジタル ビデオ レコーダーのようなものです。 記録されたコンテンツは、[アセット](https://docs.microsoft.com/rest/api/media/assets) リソースによって定義されたコンテナーに保存されます。
+Media Services の[ライブ出力](/rest/api/media/liveoutputs)オブジェクトは、ご利用のライブ ストリームをキャッチしてご利用の Media Services アカウントのアセットに記録するデジタル ビデオ レコーダーのようなものです。 記録されたコンテンツは、[アセット](/rest/api/media/assets) リソースによって定義されたコンテナーに保存されます。
 
 詳細については、次を参照してください。
 
@@ -145,6 +145,6 @@ Media Services では、ご利用のビデオを処理するとき (エンコー
 
 ライブおよびオンデマンドでアップロード、エンコード、分析、ストリーム配信を行う方法を示す完全なコード例を参照してください。 
 
-* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [REST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
+* [.NET](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [REST](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

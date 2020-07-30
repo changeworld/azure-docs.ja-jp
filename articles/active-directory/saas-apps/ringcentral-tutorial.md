@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 33548df0b8eb73d28dfe6348f057266cca4c0290
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 15dc4ee8a5c1021587bb5c37e634070a76b3f05d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168543"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058226"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と RingCentral の統合
 
@@ -38,6 +38,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * RingCentral でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -91,14 +94,18 @@ RingCentral で Azure AD SSO を構成してテストするには、次の構成
 1. **サービス プロバイダー メタデータ ファイル**がない場合は、次のフィールドに値を入力します。
 
     a. **[識別子]** ボックスに次の URL を入力します。
-
-    - `https://sso.ringcentral.com`
-    - `https://ssoeuro.ringcentral.com`
+  
+    | 識別子 |
+    |--|
+    |  `https://sso.ringcentral.com` |
+    | `https://ssoeuro.ringcentral.com` |
 
     b. **[応答 URL]** ボックスに、URL を入力します。
 
-    - `https://sso.ringcentral.com/sp/ACS.saml2`
-    - `https://ssoeuro.ringcentral.com/sp/ACS.saml2`
+    | [応答 URL] |
+    |--|
+    | `https://sso.ringcentral.com/sp/ACS.saml2` |
+    | `https://ssoeuro.ringcentral.com/sp/ACS.saml2` |
 
 1. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 

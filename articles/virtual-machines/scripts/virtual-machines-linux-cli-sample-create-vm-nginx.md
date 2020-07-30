@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4cea4fa293083298858a775eff01b9acf17d6c7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f894d4f29ce8729ff88faa72b0d6c470fd6f87c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458618"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088684"
 ---
 # <a name="create-a-vm-with-nginx"></a>NGINX がインストールされた VM の作成
 
@@ -62,14 +62,14 @@ az group delete --name myResourceGroup
 
 | command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
-| [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 受信トラフィックを許可するネットワーク セキュリティ グループ規則を作成します。 このサンプルでは、HTTP トラフィック用にポート 80 を開きます。 |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | VM に仮想マシン拡張機能を追加して実行します。 このサンプルでは、カスタム スクリプト拡張機能を使用して NGINX をインストールします。|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az vm create](/cli/azure/vm) | 仮想マシンを作成します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
+| [az vm open-port](/cli/azure/network/nsg/rule) | 受信トラフィックを許可するネットワーク セキュリティ グループ規則を作成します。 このサンプルでは、HTTP トラフィック用にポート 80 を開きます。 |
+| [azure vm extension set](/cli/azure/vm/extension) | VM に仮想マシン拡張機能を追加して実行します。 このサンプルでは、カスタム スクリプト拡張機能を使用して NGINX をインストールします。|
+| [az group delete](/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。

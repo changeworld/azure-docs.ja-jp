@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260595"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309156"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -43,7 +44,7 @@ ms.locfileid: "85260595"
 
 それでは、GitHub からサンプル Java アプリケーションをダウンロードして、コードの作業を行います。 このアプリケーションでは、Azure Cosmos DB データに対して一括操作を実行します。 アプリケーションを複製するために、コマンド プロンプトを開き、コピー先のディレクトリに移動し、次のコマンドを実行します。
 
-```
+```bash
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
@@ -123,13 +124,13 @@ ms.locfileid: "85260595"
 
 5. 一括インポート アプリケーションの準備ができたら、"mvn clean package" コマンドを使用して、ソースからコマンド ライン ツールをビルドします。 このコマンドは、ターゲット フォルダーに jar ファイルを生成します。  
 
-   ```java
+   ```bash
    mvn clean package
    ```
 
 6. ターゲットの依存関係が生成されたら、次のコマンドを使用して一括インポーター アプリケーションを呼び出すことができます。  
 
-   ```java
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
@@ -186,13 +187,13 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
 
 3. 一括更新アプリケーションの準備ができたら、"mvn clean package" コマンドを使用して、ソースからコマンド ライン ツールをビルドします。 このコマンドは、ターゲット フォルダーに jar ファイルを生成します。  
 
-   ```
+   ```bash
    mvn clean package
    ```
 
 4. ターゲットの依存関係が生成されたら、次のコマンドを使用して一括更新アプリケーションを呼び出すことができます。
 
-   ```
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 

@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7a8be9b9cebc72e9605af0aaa581783a75246eef
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: d52882eef56a2f99e778b20707aa3aa1a6d4ff18
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701536"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088939"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Azure CLI を使用してゾーン冗長仮想マシン スケール セットを作成する
 このスクリプトでは、複数の可用性ゾーンにわたって Ubuntu を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。
@@ -43,4 +43,4 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/overview)のページをご覧ください。

@@ -43,8 +43,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: デバイスの接続 (Python)
           href: tutorial-connect-device-python.md
-        - name: プラグ アンド プレイ (プレビュー) デバイスの接続
-          href: tutorial-connect-pnp-device.md
         - name: ゲートウェイ デバイス テンプレートの作成
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge デバイスの接続
@@ -79,8 +77,6 @@
       items:
         - name: デバイス テンプレートを設定する
           href: howto-set-up-template.md
-        - name: MXChip IoT DevKit を準備して接続する
-          href: howto-connect-devkit.md
         - name: Azure Sphere DevKit を準備して接続する
           href: howto-connect-sphere.md
         - name: RuuviTag デバイスを準備して接続する

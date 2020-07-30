@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324592"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
 
 受信要求データは、OpenCensus Python とそのさまざまな統合を使用して収集されます。 一般的な Web フレームワーク `django`、`flask` および `pyramid` 上に構築された Web アプリケーションに送信された受信要求データを追跡します。 その後、データは Azure Monitor の Application Insights に `requests` テレメトリとして送信されます。
 
-まず、最新の [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
+まず、最新の [OpenCensus Python SDK](./opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
 
 ## <a name="tracking-django-applications"></a>Django アプリケーションの追跡
 
@@ -119,8 +119,9 @@ ms.locfileid: "84753203"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アプリケーション マップ](../../azure-monitor/app/app-map.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) のクエリ](../../azure-monitor/log-query/log-query-overview.md)
-* [トランザクションの診断](../../azure-monitor/app/transaction-diagnostics.md)
+* [アプリケーション マップ](./app-map.md)
+* [可用性](./monitor-web-app-availability.md)
+* [Search](./diagnostic-search.md)
+* [Log (Analytics) のクエリ](../log-query/log-query-overview.md)
+* [トランザクションの診断](./transaction-diagnostics.md)
+

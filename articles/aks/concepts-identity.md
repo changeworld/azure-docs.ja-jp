@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: b7739320fa23bf4469548f61486da1a5ee6110da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507159"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128660"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -105,7 +105,7 @@ Azure RBAC は [Azure Resource Manager](../azure-resource-manager/management/ove
 
 Azure の RBAC では、適用されるアクセス許可の概要を説明する*ロール定義*を作成します。 その後、ユーザーまたはグループに、特定の "*スコープ*" (個々のリソース、リソース グループ、またはサブスクリプション全体) に対する "*ロールの割り当て*" によって、このロール定義が割り当てられます。
 
-詳細については、「[Azure RBAC とは][azure-rbac]」を参照してください。
+詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは][azure-rbac]」
 
 AKS クラスターを完全に運用するには、次の 2 つのレベルのアクセスが必要です。 
 1. [Azure サブスクリプションの AKS リソースへのアクセス](#azure-rbac-to-authorize-access-to-the-aks-resource)。 このプロセスでは、AKS API を使用してクラスターのスケーリングやアップグレードを制御したり、kubeconfig をプルしたりすることができます。

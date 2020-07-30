@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bf6477fed1840daa326f411862a7304018f39e3c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022431"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する
 
@@ -185,7 +185,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
    これは、後で Notification Hubs の構成に使用するトークン値です。
 
-以上の手順を終えると、後の「 [APNS 情報を使用して通知ハブを構成する](notification-hubs-ios-push-notifications-swift-apps-get-started.md#configure-your-notification-hub-with-apns-information)」で使用する以下の情報が用意できています。
+以上の手順を終えると、後の「 [APNS 情報を使用して通知ハブを構成する](#configure-the-notification-hub-with-apns-information)」で使用する以下の情報が用意できています。
 
 - **チーム ID** (手順 1. を参照)
 - **バンドル ID** (手順 1. を参照)
@@ -264,7 +264,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>APNS 情報を利用して通知ハブを構成する
 
- **[Notification Services]** で  **[Apple (APNS)]** を選択してから、前に「 [Notification Hubs の証明書を作成する](notification-hubs-ios-push-notifications-swift-apps-get-started.md#creating-a-certificate-for-notification-hubs) 」セクションで選択したアプローチに基づく適切な手順に従います。
+ **[Notification Services]** で  **[Apple (APNS)]** を選択してから、前に「 [Notification Hubs の証明書を作成する](#create-a-certificate-for-notification-hubs) 」セクションで選択したアプローチに基づく適切な手順に従います。
 
 > [!NOTE]
 > **[アプリケーション モード]** の **[Production] (運用)** は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。
@@ -306,4 +306,4 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 このチュートリアルでは、Azure で通知ハブを作成して構成し、それを、Apple Push Notification Service (APNS) を使用してアプリケーションに通知を送信できるように構成しました。 次に、サンプルの iOS アプリケーションを作成し、Azure portal を通じて送信されるプッシュ通知を受信できるように Azure Notification Hubs SDK と統合しします。 選択する言語に基づいた次のチュートリアルに進みます。
 
-- [チュートリアル:Swift を使用して iOS アプリと統合する](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
+- [チュートリアル:Swift を使用して iOS アプリと統合する]()

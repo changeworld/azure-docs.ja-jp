@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202563"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325340"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -76,7 +76,7 @@ Log Analytics エージェントの制限事項は次のとおりです。
 Azure Diagnostics 拡張機能は、次のような場合に使用します。
 
 - アーカイブのため、または [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールで分析したりするために Azure Storage にデータを送信する。
-- [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](../../azure-monitor/platform/alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Windows のみ) などの機能を活用したりする。
+- [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](./alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Windows のみ) などの機能を活用したりする。
 - [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
 - [ブート診断](../../virtual-machines/troubleshooting/boot-diagnostics.md)を収集して VM ブートの問題を調査する。
 
@@ -91,7 +91,7 @@ Azure Diagnostics 拡張機能の制限事項は次のとおりです。
 
 Telegraf エージェントは、次のような場合に使用します。
 
-* [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](../../azure-monitor/platform/alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Linux のみ) などの機能を活用したりする。 
+* [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](./alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Linux のみ) などの機能を活用したりする。 
 
 
 
@@ -120,3 +120,4 @@ Telegraf エージェントは、次のような場合に使用します。
 - [Log Analytics エージェントの概要](log-analytics-agent.md)
 - [Azure Diagnostics 拡張機能の概要](diagnostics-extension-overview.md)
 - [Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](collect-custom-metrics-linux-telegraf.md)
+

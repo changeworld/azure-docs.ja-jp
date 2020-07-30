@@ -3,17 +3,17 @@ title: Windows の Azure CLI サンプル
 description: Windows の Azure CLI サンプル
 author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11d0af0133a113382ea9ed03eeeb8686ebe0c73b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3d91197b72071c6379ea74d212aa7fdc550f4780
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203688"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288324"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>Windows 仮想マシン用の Azure CLI サンプル
 
