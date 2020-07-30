@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080439"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -112,7 +112,7 @@ Azure は、サブスクリプション所有者と共同所有者グループ�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>PowerShell を使用してメンテナンスの状態を確認する
 
-Azure PowerShell を使用して、仮想マシン スケール セット内の VM のメンテナンスの予定を確認することができます。 計画メンテナンスに関する情報は、[Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) コマンドレットと `-InstanceView` パラメーターを使用することで取得できます。
+Azure PowerShell を使用して、仮想マシン スケール セット内の VM のメンテナンスの予定を確認することができます。 計画メンテナンスに関する情報は、[Get-AzVmss](/powershell/module/az.compute/get-azvmss) コマンドレットと `-InstanceView` パラメーターを使用することで取得できます。
  
 メンテナンス情報は、計画済みのメンテナンスがある場合にのみ返されます。 VM インスタンスに影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 

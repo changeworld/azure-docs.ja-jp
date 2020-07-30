@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978180"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035980"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
@@ -42,10 +42,10 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 >
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
-> このドキュメントで紹介されている構成を [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) で使用することはまだサポートされていません
+> このドキュメントで紹介されている構成を [Azure Availability Zones](../../../availability-zones/az-overview.md) で使用することはまだサポートされていません
 > 
 
-ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用することも検討してください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用することも検討してください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036184"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>OS 起動時 - コンピューターが予期せず再起動したか、予期しないエラーが発生しました
 
@@ -27,7 +27,7 @@ ms.locfileid: "85268759"
 
 ## <a name="symptom"></a>症状
 
-[起動診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、Windows インストールが失敗して、次のエラーが生成したことがスクリーンショットに示されます。
+[起動診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、Windows インストールが失敗して、次のエラーが生成したことがスクリーンショットに示されます。
 
 **コンピューターが予期せず再起動したか、予期しないエラーが発生しました。Windows のインストールを続行できません。Windows をインストールするには、[OK] をクリックしてコンピューターを再起動してから、インストールを再実行してください。**
 
@@ -37,7 +37,7 @@ ms.locfileid: "85268759"
 
 ## <a name="cause"></a>原因
 
-コンピューターは [一般化されたイメージ](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)の初期ブートを実行しようとしていますが、処理中のカスタム応答ファイル (unattend.xml) が原因で問題が発生しました。 Azure では、カスタム応答ファイルはサポートされていません。 
+コンピューターは [一般化されたイメージ](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)の初期ブートを実行しようとしていますが、処理中のカスタム応答ファイル (unattend.xml) が原因で問題が発生しました。 Azure では、カスタム応答ファイルはサポートされていません。 
 
 応答ファイルは、Windows Server オペレーティング システムのインストール中に自動化する構成設定の定義と値を含む特殊な XML ファイルです。 構成オプションには、ディスクのパーティション分割方法、インストールする Windows イメージがある場所、適用するプロダクト キー、実行するその他のコマンドなどが含まれます。
 
@@ -57,7 +57,7 @@ Azure では、Unattend.xml ファイルではなく、**Sysprep.exe**の **[シ
 
 - 前のコマンドで、`<NameOfYourAnswerFile.XML>` をお使いのファイルの名前で置き換えます。
 
-この問題を解決するには、[イメージの準備やキャプチャに関する Azure のガイダンス](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)の記事に従い、一般化された新しいイメージを準備します。 sysprep の際に `/unattend:<answerfile>` フラグを使用しないでください。 代わりに、以下のフラグのみを使用してください。
+この問題を解決するには、[イメージの準備やキャプチャに関する Azure のガイダンス](../windows/upload-generalized-managed.md)の記事に従い、一般化された新しいイメージを準備します。 sysprep の際に `/unattend:<answerfile>` フラグを使用しないでください。 代わりに、以下のフラグのみを使用してください。
 
 `sysprep /oobe /generalize /shutdown`
 

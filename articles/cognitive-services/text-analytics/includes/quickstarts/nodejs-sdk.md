@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 7f25c9c500615f376ffe2fee2483fbfbdc03f3b8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: cc5db825771369d35b447232b58a9e42b14efb4f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735565"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374842"
 ---
 <a name="HOLTop"></a>
 
@@ -31,7 +31,7 @@ ms.locfileid: "84735565"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [Node.js](https://nodejs.org/)。
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
@@ -61,7 +61,7 @@ npm init
 `@azure/ai-text-analytics` NPM パッケージをインストールします。
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0
+npm install --save @azure/ai-text-analytics@5.0.0
 ```
 
 > [!TIP]

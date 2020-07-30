@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987673"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082105"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -34,7 +34,7 @@ ms.locfileid: "84987673"
 
 * 次の手順では、両方の VNet が既に作成されていることを前提にしています。 この記事を演習として使用しており、VNet がない場合は、手順内のリンクを使用して作成できます。
 * これらの VNet のアドレス範囲が互いに重複しておらず、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していないことを確認します。
-* Resource Manager と Service Management (クラシック) の両方に最新の PowerShell コマンドレットをインストールします。 この記事では、Azure Portal と PowerShell の両方を使います。 PowerShell は、クラシック VNet から Resource Manager VNet への接続を作成するために必要です。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 
+* Resource Manager と Service Management (クラシック) の両方に最新の PowerShell コマンドレットをインストールします。 この記事では、Azure Portal と PowerShell の両方を使います。 PowerShell は、クラシック VNet から Resource Manager VNet への接続を作成するために必要です。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/)」を参照してください。 
 
 ### <a name="example-settings"></a><a name="values"></a>設定例
 

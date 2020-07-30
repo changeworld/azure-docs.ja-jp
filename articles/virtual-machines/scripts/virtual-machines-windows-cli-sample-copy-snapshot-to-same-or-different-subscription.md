@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 00c06790a146efb089b65d16b93b6dc624a11e85
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 54029e2ccbf592dfcde484728fa9cb969a668edd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010098"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>CLI を使用してマネージド ディスクのスナップショットを同じまたは別のサブスクリプションにコピーする
 
@@ -44,11 +44,11 @@ ms.locfileid: "81459595"
 
 | command | メモ |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにそのスナップショットをコピーします。  |
-| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot) | 親スナップショットの名前と ID を使用して別のサブスクリプションにスナップショットを作成することで、スナップショットをコピーします。  |
+| [az snapshot show](/cli/azure/snapshot) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにそのスナップショットをコピーします。  |
+| [az snapshot create](/cli/azure/snapshot) | 親スナップショットの名前と ID を使用して別のサブスクリプションにスナップショットを作成することで、スナップショットをコピーします。  |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシンとマネージド ディスクの CLI サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にあります。

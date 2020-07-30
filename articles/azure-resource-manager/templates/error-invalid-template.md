@@ -3,12 +3,12 @@ title: 無効なテンプレート エラー
 description: Azure Resource Manager テンプレートのデプロイ時の無効なテンプレート エラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118887"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373812"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>無効なテンプレートのエラーを解決する
 
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解決策 4 - ターゲット リソース グループが多すぎる
 
-以前のデプロイでは、ターゲット リソース グループが 1 回のデプロイにつき 5 つに制限されていたため、このエラーが表示されることがあります。 この制限は、2020 年 5 月に 800 リソース グループに増やされました。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-resource-group-deployment.md)」を参照してください。
+以前のデプロイでは、ターゲット リソース グループが 1 回のデプロイにつき 5 つに制限されていたため、このエラーが表示されることがあります。 この制限は、2020 年 5 月に 800 リソース グループに増やされました。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-scope-deployment.md)」を参照してください。
 
 <a id="circular-dependency"></a>
 
