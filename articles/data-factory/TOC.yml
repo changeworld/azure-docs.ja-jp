@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: マネージド仮想ネットワーク
-      href: managed-virtual-network-private-endpoint.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: カスタマー マネージド キーの暗号化
           href: enable-customer-managed-key.md
+        - name: マネージド仮想ネットワーク
+          href: managed-virtual-network-private-endpoint.md
     - name: 監視と管理
       items:
         - name: 視覚的な監視
@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: データ フロー
           href: data-flow-troubleshoot-guide.md
+        - name: データのコピー ツール
+          href: copy-data-tool-troubleshoot-guide.md
         - name: セルフホステッド統合ランタイム
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 統合ランタイム

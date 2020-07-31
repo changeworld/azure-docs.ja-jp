@@ -12,9 +12,13 @@
   items:
     - name: ポータルで VM を作成する
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
-    - name: ダッシュボードを作成する - Resource Manager テンプレート
-      displayName: Resource Manager
-      href: quick-create-template.md
+    - name: ダッシュボードを作成する
+      items:
+        - name: Azure PowerShell
+          href: quickstart-portal-dashboard-powershell.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: quick-create-template.md
 - name: 概念
   items:
     - name: ロールベースのアクセス制御を使用したダッシュボードの共有

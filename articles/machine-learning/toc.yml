@@ -16,6 +16,7 @@
   expanded: true
   items:
     - name: スタジオ
+      expanded: true
       items:
         - name: デザイナー (ドラッグアンドドロップ)
           items:
@@ -37,6 +38,7 @@
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
     - name: Python SDK
+      expanded: true
       items:
         - name: 初めての ML 実験を作成する
           items:
