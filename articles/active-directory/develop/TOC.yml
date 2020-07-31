@@ -512,6 +512,8 @@
           href: active-directory-claims-mapping.md
         - name: 省略可能な要求の構成
           href: active-directory-optional-claims.md
+        - name: 要求でのディレクトリ スキーマ拡張属性の使用
+          href: active-directory-schema-extensions.md
         - name: トークンの有効期間の構成
           href: active-directory-configurable-token-lifetimes.md
         - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理

@@ -42,6 +42,8 @@
   items:
     - name: Cognitive Search で Form Recognizer を使用する
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+    - name: AI Builder で Form Recognizer を使用する
+      href: tutorial-ai-builder.md
 - name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成

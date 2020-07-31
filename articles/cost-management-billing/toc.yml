@@ -304,6 +304,8 @@
               items:
                 - name: 予約と使用率の表示
                   href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+                - name: CSP としての予約の表示
+                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
                 - name: 予約の管理
                   href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
                 - name: 予約の交換と返金

@@ -51,6 +51,8 @@
       items:
         - name: 予約と使用率の表示
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: CSP としての予約の表示
+          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 予約の管理
           href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 最適化設定の変更
