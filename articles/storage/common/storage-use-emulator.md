@@ -59,7 +59,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 ストレージ エミュレーターは既定では `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator` にインストールされます。
 
 > [!TIP]
-> [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)を使用して、ローカル ストレージ エミュレーター リソースを操作できます。 ストレージ エミュレーターをインストールして起動した後、ストレージ エクスプローラーのリソース ツリーの [Local & Attached]\(ローカルで接続済み\) の下で、"(エミュレーター - 既定のポート (キー))" を探します。
+> [Microsoft Azure Storage Explorer](https://storageexplorer.com) を使用して、ローカル ストレージ エミュレーター リソースを操作できます。 ストレージ エミュレーターをインストールして起動した後、Storage Explorer のリソース ツリーの [Local & Attached]\(ローカルで接続済み\) の下で、"(エミュレーター - 既定のポート (キー))" を探します。
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>別の SQL データベースを使用するための、ストレージ エミュレーターの初期化
@@ -98,7 +98,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Xamarin ライブラリなど、一部の Azure ストレージ クライアント ライブラリでは、共有アクセス署名 (SAS) トークンでの認証だけがサポートされています。 SAS トークンは、[ストレージ エクスプローラー](https://storageexplorer.com/)や、共有キー認証がサポートされている別のアプリケーションを使用して作成できます。
+Xamarin ライブラリなど、一部の Azure ストレージ クライアント ライブラリでは、共有アクセス署名 (SAS) トークンでの認証だけがサポートされています。 SAS トークンは、[Storage Explorer](https://storageexplorer.com/) や、共有キー認証がサポートされている別のアプリケーションを使用して作成できます。
 
 また、Azure PowerShell を使用して SAS トークンを生成することもできます。 次の例では、BLOB コンテナーに対するフル アクセス許可を持つ SAS トークンが生成されます。
 
@@ -183,7 +183,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 | --- | --- | --- | --- |
 | **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
-| **状態** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
+| **Status** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
 | **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*:BLOB データを消去します。 <br/>*queue*:キュー データを消去します。 <br/>*table*:テーブル データを消去します。 <br/>*all*:すべてのサービスのすべてのデータを消去します。 |
 | **Init** |エミュレーターを設定するために、1 回限りの初期化を行います。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*:SQL インスタンスをホストしているサーバーを指定します。 <br/>*-sqlinstance instanceName*:既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。 <br/>*-forcecreate*:SQL データベースが既に存在していても、強制的に作成します。 <br/>*-skipcreate*:SQL データベースの作成をスキップします。 これは -forcecreate に優先します。<br/>*-reserveports*:サービスに関連付けられている HTTP ポートの予約を試行します。<br/>*-unreserveports*:サービスに関連付けられている HTTP ポートの予約の削除を試行します。 これは -reserveports に優先します。<br/>*-inprocess*:新しいプロセスを生成せずに、現在のプロセスで初期化を行います。 ポートの予約を変更する場合は、管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
 
@@ -327,4 +327,4 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 * コミュニティで管理されているオープンソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/azure/azurite) を評価します。 
 * 「[.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
-* [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
+* [Microsoft Azure Storage Explorer](https://storageexplorer.com)を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
