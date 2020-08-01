@@ -69,8 +69,6 @@
           href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: ソース属性が存在しない
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: プロビジョニング ジョブが遅い
-          href: application-provisioning-when-will-provisioning-finish.md
         - name: プロビジョニング ログ
           href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: SCIM エンドポイントの構築とプロビジョニングの構成

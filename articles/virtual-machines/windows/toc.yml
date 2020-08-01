@@ -848,7 +848,7 @@
         - name: ディスクに VHD をアップロードする - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: ディスクを安全にインポート/エクスポートする - ポータル
-          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクのサイズの変更
           href: expand-os-disk.md
         - name: Storage Explorer を使用してディスクを管理する
