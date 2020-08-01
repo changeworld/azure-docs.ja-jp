@@ -141,5 +141,5 @@ EndpointSuffix=core.chinacloudapi.cn;
 ## <a name="next-steps"></a>次のステップ
 
 * [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
-* [Azure ストレージ エクスプローラー](storage-explorers.md)
+* [Azure Storage Explorer](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)
