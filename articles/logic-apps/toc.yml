@@ -28,6 +28,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: サンプル
   items:
+    - name: ロジック アプリの作成 - サンプル スクリプト
+      href: sample-logic-apps-cli-script.md
     - name: Azure のコード サンプル
       href: /samples/browse/?products=azure-logic-apps
     - name: Resource Manager のクイックスタート テンプレート

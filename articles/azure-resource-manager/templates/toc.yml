@@ -210,8 +210,10 @@
     - name: Template Specs
       items:
         - name: リンク済みテンプレートで作成する
+          displayName: template specs
           href: template-specs-create-linked.md
         - name: リンク済みテンプレートとしてデプロイする
+          displayName: template specs
           href: template-specs-deploy-linked-template.md
     - name: 高度なテンプレート
       items:
@@ -366,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: Tenant
           href: deploy-to-tenant.md
-        - name: クロス リソース グループ
-          href: cross-resource-group-deployment.md
+        - name: スコープをまたいだデプロイ
+          href: cross-scope-deployment.md
     - name: パラメーターを指定する
       items:
         - name: パラメーター ファイルを作成する

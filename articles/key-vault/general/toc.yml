@@ -67,7 +67,9 @@
     - name: 論理的な削除
       items:
         - name: Azure Key Vault の論理的な削除
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: 既定での論理的な削除
+          href: soft-delete-change.md
     - name: 認証、要求、応答
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault のスロットル ガイダンス

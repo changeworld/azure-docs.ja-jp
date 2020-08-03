@@ -452,6 +452,8 @@
       displayName: security
     - name: ユーザー フローのバージョン
       href: user-flow-versions.md
+    - name: ユーザー フローのレガシ バージョン
+      href: user-flow-versions-legacy.md
 - name: リソース
   items:
     - name: Azure のロードマップ

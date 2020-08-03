@@ -237,21 +237,41 @@
       href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
       href: sap-proximity-placement-scenarios.md
-- name: AAD SAP ID 統合およびシングル サインオン
+- name: Azure AD と SAP アプリケーションの統合
   items:
-    - name: SAP Cloud との統合
-      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP Cloud Platform Identity Authentication の統合
+    - name: SAP SuccessFactors から Active Directory へのユーザーのプロビジョニング
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP SuccessFactors から Azure AD へのユーザーのプロビジョニング
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: Azure AD から SAP SuccessFactors へのユーザーの書き戻し
+      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Cloud Platform Identity Authentication サービスへのユーザーのプロビジョニング
+      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Cloud Platform Identity Authentication サービスとの SSO の構成
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: SAP Cloud Platform でのシングル サインオンの設定
+    - name: SAP SuccessFactors との SSO の構成
+      href: ../../../active-directory/saas-apps/successfactors-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Analytics Cloud との SSO の構成
+      href: ../../../active-directory/saas-apps/sapboc-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Fiori との SSO の構成
+      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Qualtrics との SSO の構成
+      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Ariba との SSO の構成
+      href: ../../../active-directory/saas-apps/ariba-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Concur Travel and Expense との SSO の構成
+      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Cloud Platform との SSO の構成
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP NetWeaver の統合
+    - name: SAP NetWeaver との SSO の構成
       href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP Business ByDesign の統合
+    - name: SAP Business ByDesign との SSO の構成
       href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP HANA DBMS の統合
+    - name: SAP HANA との SSO の構成
       href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: Azure AD を使用した SAP Fiori Launchpad SAML シングル サインオン
+    - name: SAP Cloud for Customer との SSO の構成
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Fiori Launchpad との SSO の構成
       href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: SAP への Azure サービスの統合
   items:

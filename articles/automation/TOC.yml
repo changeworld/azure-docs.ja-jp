@@ -244,43 +244,49 @@
     - name: 更新管理
       items:
         - name: 概要
-          href: automation-update-management.md
+          href: update-management/update-mgmt-overview.md
         - name: リンクされた Log Analytics ワークスペースでサポートされるリージョン
           href: how-to/region-mappings.md
         - name: 有効化
           items:
             - name: Azure Resource Manager テンプレートを使用して Update Management を有効にする
-              href: automation-update-management-deploy-template.md
+              href: update-management/update-mgmt-enable-template.md
             - name: Azure portal から Update Management を有効にする
-              href: automation-onboard-solutions-from-browse.md
+              href: update-management/update-mgmt-enable-portal.md
             - name: Azure VM から Update Management を有効にする
-              href: automation-onboard-solutions-from-vm.md
+              href: update-management/update-mgmt-enable-vm.md
             - name: Automation アカウントから Update Management を有効にする
-              href: automation-onboard-solutions-from-automation-account.md
+              href: update-management/update-mgmt-enable-automation-account.md
             - name: Runbook から Update Management を有効にする
-              href: automation-onboard-solutions.md
-        - name: Azure VM の更新プログラムの管理
-          href: automation-tutorial-update-management.md
-        - name: 複数の VM の更新プログラム管理
-          href: manage-update-multi.md
-        - name: 更新の評価を表示する
-          href: automation-view-update-assessments.md
-        - name: 事前スクリプトと事後スクリプトを管理する
-          href: pre-post-scripts.md
+              href: update-management/update-mgmt-enable-runbook.md
+        - name: VM 用の更新プログラムを管理する
+          items:
+            - name: はじめに
+              href: update-management/update-mgmt-manage-updates-for-vm.md
+            - name: コンプライアンスの評価
+              href: update-management/update-mgmt-view-update-assessments.md
+            - name: 更新プログラムのデプロイとステータスの確認
+              href: update-management/update-mgmt-deploy-updates.md
+            - name: 事前スクリプトと事後スクリプトの使用
+              href: update-management/update-mgmt-pre-post-scripts.md
+            - name: アラートを構成する
+              href: update-management/update-mgmt-configure-alerts.md
         - name: Configuration Manager との統合
-          href: updatemgmt-mecmintegration.md
+          href: update-management/update-mgmt-mecmintegration.md
         - name: Windows Update クライアントを構成する
-          href: automation-configure-windows-update.md
+          href: update-management/update-mgmt-configure-wuagent.md
         - name: 動的グループを使用する
-          href: automation-update-management-groups.md
+          href: update-management/update-mgmt-groups.md
         - name: Update Management ログにクエリを実行する
-          href: automation-update-management-query-logs.md
+          href: update-management/update-mgmt-query-logs.md
         - name: スコープ構成を使用する
-          href: automation-scope-configurations-update-management.md
-        - name: Automation アカウントからワークスペースのリンクを解除する
-          href: automation-unlink-workspace-update-management.md
-        - name: Update Management から VM を削除する
-          href: automation-remove-vms-from-update-management.md
+          href: update-management/update-mgmt-scope-configuration.md
+        - name: Disable
+          items:
+            - name: Update Management を削除する
+              href: update-management/update-mgmt-remove-feature.md
+            - name: Update Management から VM を削除する
+              href: update-management/update-mgmt-remove-vms.md
         - name: トラブルシューティング
           items:
             - name: 機能のデプロイに関する問題のトラブルシューティング
