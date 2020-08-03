@@ -403,6 +403,13 @@
           href: ps-template.md
         - name: VM への接続
           href: connect-logon.md
+        - name: Linux VM への接続
+          displayName: ssh keygen ssk-key putty
+          items:
+            - name: ポータルで
+              href: ../ssh-keys-portal.md
+            - name: Windows の場合
+              href: ../linux/ssh-from-windows.md
         - name: Azure ハイブリッド特典ライセンスの使用
           href: hybrid-use-benefit-licensing.md
         - name: Windows 10 のマルチテナント ホスティング権限の使用

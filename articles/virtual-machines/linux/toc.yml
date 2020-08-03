@@ -634,6 +634,8 @@
               href: mac-create-ssh-keys.md
             - name: Windows の場合
               href: ssh-from-windows.md
+            - name: ポータルで
+              href: ../ssh-keys-portal.md
             - name: 詳細な手順
               href: create-ssh-keys-detailed.md
     - name: VM の保護
@@ -924,7 +926,7 @@
           href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
-            - name: アーキテクチャ
+            - name: Architecture
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
