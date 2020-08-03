@@ -112,6 +112,8 @@
           href: cognitive-search-incremental-indexing-conceptual.md
     - name: セキュリティ
       items:
+        - name: セキュリティの概要
+          href: search-security-overview.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -327,10 +329,8 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API をアップグレードする
           href: search-api-migration.md
-    - name: セキュリティ
+    - name: Security
       items:
-        - name: 概要
-          href: search-security-overview.md
         - name: データの暗号化
           items:
             - name: カスタマー マネージド キー

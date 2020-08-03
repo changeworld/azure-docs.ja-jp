@@ -1,14 +1,14 @@
 ---
 title: FedRAMP High ブループリント サンプルの概要
 description: FedRAMP High ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の FedRAMP High コントロールを評価するのに役立ちます。
-ms.date: 01/31/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 3a26c6f8e781a1bb2ff30ca9e2c179bcda8eadec
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: a8761d02d089013bccd31a9968367b26c3d22f87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517118"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495864"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルの概要
 
