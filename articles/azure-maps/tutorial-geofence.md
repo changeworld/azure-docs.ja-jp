@@ -39,7 +39,7 @@ ms.locfileid: "86517402"
 
 ## <a name="upload-geofencing-geojson-data"></a>ジオフェンシング GeoJSON データをアップロードする
 
-このチュートリアルでは、`FeatureCollection` を含んだジオフェンシング GeoJSON データをアップロードします。 `FeatureCollection` には、建設現場内の多角形領域を定義する 2 つのジオフェンスが含まれています。 1 つ目のジオフェンスには、時間の有効期限や制限はありません。 2 つ目のジオフェンスは、照会できる期間が作業時間 (太平洋標準時の午前 9 時から午後 5 時) に限られ、また 2022 年 1 月 1 日を過ぎると無効となります。 PST), and will no longer be valid after January 1, 2022. GeoJSON 形式の詳細については、「[GeoJSON データのジオフェンシング](geofence-geojson.md)」を参照してください。
+このチュートリアルでは、`FeatureCollection` を含んだジオフェンシング GeoJSON データをアップロードします。 `FeatureCollection` には、建設現場内の多角形領域を定義する 2 つのジオフェンスが含まれています。 1 つ目のジオフェンスには、時間の有効期限や制限はありません。 2 つ目のジオフェンスは、照会できる期間が作業時間 (太平洋標準時の午前 9 時から午後 5 時) に限られ、また 2022 年 1 月 1 日を過ぎると無効となります。 PST), and will no longer be valid after January 1, 2022. GeoJSON 形式の詳細については、「[ジオフェンシング GeoJSON データ](geofence-geojson.md)」を参照してください。
 
 >[!TIP]
 >ジオフェンシング データはいつでも更新することができます。 データを更新する方法について詳しくは、[Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) に関するページを参照してください。
