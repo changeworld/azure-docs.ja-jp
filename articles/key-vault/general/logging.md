@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090588"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -43,7 +43,7 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 このチュートリアルを完了するには次の準備が必要です。
 
 * 使用している既存の Key Vault。  
-* Azure PowerShell 1.0.0 以降のバージョン。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`$PSVersionTable.PSVersion`」と入力します。  
+* Azure PowerShell 1.0.0 以降のバージョン。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`$PSVersionTable.PSVersion`」と入力します。  
 * Azure 上に確保された Key Vault のログを格納するための十分なストレージ。
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Key Vault サブスクリプションに接続する
@@ -70,7 +70,7 @@ Get-AzSubscription
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-PowerShell を適切なサブスクリプションにポイントすることは、アカウントに複数のサブスクリプションが関連付けられている場合は特に重要な手順です。 Azure PowerShell の詳細については、「 [How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](/powershell/azure/overview)」をご覧ください。
+PowerShell を適切なサブスクリプションにポイントすることは、アカウントに複数のサブスクリプションが関連付けられている場合は特に重要な手順です。 Azure PowerShell の詳細については、「 [How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](/powershell/azure/)」をご覧ください。
 
 ## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>ログ用のストレージ アカウントを作成する
 
@@ -97,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Azure PowerShell を使用してログ記録を有効にする
 
-Key Vault のログ記録を有効にするために、**Set-AzDiagnosticSetting** コマンドレットを、新しいストレージ アカウントおよび Key Vault 用に作成した変数と組み合わせて使用します。 また、 **-Enabled** フラグを **$true** に設定し、カテゴリを **AuditEvent** (Key Vault ログ記録の唯一のカテゴリ) に設定します。
+Key Vault のログ記録を有効にするために、**Set-AzDiagnosticSetting** コマンドレットを、新しいストレージ アカウントおよび Key Vault 用に作成した変数と組み合わせて使用します。 また、 **-Enabled** フラグを **$true** に設定し、カテゴリを `AuditEvent` (Key Vault ログ記録の唯一のカテゴリ) に設定します。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -271,7 +271,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | **resourceId** |Azure Resource Manager リソース ID。 Key Vault のログの場合は、常に Key Vault リソース ID となります。 |
 | **operationName** |次の表に示すような操作の名前です。 |
 | **operationVersion** |クライアントによって要求された REST API バージョン。 |
-| **category** |結果の種類。 Key Vault のログの場合、**AuditEvent** は使用可能な単一の値です。 |
+| **category** |結果の種類。 Key Vault のログの場合、`AuditEvent` は使用可能な唯一の値です。 |
 | **resultType** |REST API 要求の結果です。 |
 | **resultSignature** |HTTP の状態です。 |
 | **resultDescription** |結果に関する追加の説明です (使用可能な場合)。 |
@@ -279,7 +279,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | **callerIpAddress** |要求を行ったクライアントの IP アドレスです。 |
 | **correlationId** |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
 | **identity** |REST API 要求に提示されたトークンからの ID です。 これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。 |
-| **properties** |操作によって異なる情報です (**operationName**)。 ほとんどの場合、このフィールドには、クライアント情報 (クライアントから渡されたユーザー エージェント文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (**KeyCreate** または **VaultGet** など) を行った結果としてオブジェクトが返される場合は、キーの URI ("id" として)、資格情報コンテナーの URI、またはシークレットの URI も含まれます。 |
+| **properties** |操作によって異なる情報です (**operationName**)。 ほとんどの場合、このフィールドには、クライアント情報 (クライアントから渡されたユーザー エージェント文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (**KeyCreate** や **VaultGet** など) を行った結果としてオブジェクトが返される場合、キーの URI (`id` として)、コンテナーの URI、またはシークレットの URI も含まれます。 |
 
 **operationName** フィールドの値は、*ObjectVerb* 形式となります。 次に例を示します。
 
@@ -321,9 +321,9 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor ログの使用
 
-Azure Monitor ログの Key Vault ソリューションを使用して、Key Vault の **AuditEvent** ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。 
+Azure Monitor ログの Key Vault ソリューションを使用して、Key Vault の `AuditEvent` ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。 
 
-詳細については、[Azure Monitor ログの Azure Key Vault ソリューション](../../azure-monitor/insights/azure-key-vault.md)に関するページをご覧ください。 この記事では、Azure Monitor ログのプレビューで提供された以前の Key Vault ソリューションから移行する必要がある場合の手順について説明しました。つまり、最初にログを Azure ストレージ アカウントにルーティングし、そこから読み取ることができるよう Azure Monitor ログを構成しました。
+この設定方法などの詳細については、[Azure Monitor の Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md) に関するページをご覧ください。
 
 ## <a name="next-steps"></a><a id="next"></a>次のステップ
 

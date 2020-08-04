@@ -1,5 +1,5 @@
 ---
-title: ストレージ アカウントにマネージド ディスクをコピーする - CLI サンプル
+title: ストレージ アカウントにマネージド ディスクをコピーする - Windows CLI サンプル
 description: Azure CLI サンプル - ストレージ アカウントにマネージド ディスクをエクスポートまたはコピーします。
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 64db152c6ebd2e8be4dc8034222eb5f1610946ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17ca58a8c03def3565bf7e38099d84cf767d333c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459612"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010099"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLI を使用してストレージ アカウントにマネージド ディスクをエクスポート/コピーする
 
@@ -40,13 +40,13 @@ ms.locfileid: "81459612"
 
 | command | メモ |
 |---|---|
-| [az ディスク アクセスの許可](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | 基盤となる VHD ファイルをストレージ アカウントにコピーするか、オンプレミスにダウンロードするために使用される、読み取り専用の SAS を生成します。  |
-| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします |
+| [az ディスク アクセスの許可](/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | 基盤となる VHD ファイルをストレージ アカウントにコピーするか、オンプレミスにダウンロードするために使用される、読み取り専用の SAS を生成します。  |
+| [az storage blob copy start](/cli/azure/storage/blob/copy) | BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします |
 
 ## <a name="next-steps"></a>次のステップ
 
 [VHD からマネージド ディスクを作成する](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシンとマネージド ディスクの CLI サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にあります。

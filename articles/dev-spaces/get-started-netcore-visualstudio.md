@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 722f2f5b86bd67df7c7250cdbfc44ebcc048c773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090792"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio と .NET Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "83995906"
 - 2 つのサービスを個別に開発し、Kubernetes の DNS サービス検索を使用して別のサービスを呼び出す。
 - チーム環境でコードを生産的に開発してテストする。
 
-> [!Note]
+> [!NOTE]
 > いつでも**問題が発生した場合**は「[トラブルシューティング](troubleshooting.md)」セクションを参照してください。
 
 ## <a name="install-the-azure-cli"></a>Azure CLI のインストール
@@ -36,7 +36,7 @@ Azure にサインインします。 ターミナル ウィンドウで次のコ
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>複数の Azure サブスクリプションがある場合:
@@ -91,31 +91,31 @@ Azure 開発ワークロードを使用して、[Visual Studio 2019](https://www
 
 Visual Studio 内から、新しいプロジェクトを作成します。 現時点では、このプロジェクトは **ASP.NET Core Web アプリケーション**である必要があります。 プロジェクトに "**webfrontend**" という名前を付けます。
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+![[新しいプロジェクト] ダイアログ ボックスでは、"webfrontend" という名前の C# Web アプリケーションが C:\Source\Repos の場所に作成されることが示されています。 [ソリューション] ドロップダウン リストに [新しいソリューションの作成] が表示され、[ソリューションのディレクトリを作成] チェック ボックスがオンになっています。](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
 **[Web アプリケーション (モデル ビュー コントローラー)]** テンプレートを選択し、ダイアログの上部にある 2 つのドロップダウンで **.NET Core** と **ASP.NET Core 2.0** が対象になっていることを確認します。 **[OK]** をクリックしてプロジェクトを作成します。
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+![[新しい A S P ドット NET Core Web アプリケーション] ダイアログ ボックスの 2 つのドロップダウン リスト ボックスには、[ドット NET Core] と [A S P ドット NET Core 2 てん 0] が表示されています。 リスト ボックスの下にあるプロジェクト テンプレート ボタンの配列では、[Web アプリケーション (モデル ビュー コントローラー)] テンプレートが選択されています。 [Docker サポートを有効にする] チェック ボックスはオフになっています。](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>AKS クラスターの開発空間を有効にする
 
 先ほど作成したプロジェクトに対し、次の図のように、起動設定のドロップダウンから **[Azure Dev Spaces]** を選択します。
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![Microsoft Visual Studio Int プレビューというラベルが付いたウィンドウの上部に、ドロップダウン リストボックスがあります。 [Azure Dev Spaces] が選択されています。](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 次に表示されるダイアログで、適切なアカウントでサインインしていることを確認し、既存の Kubernetes クラスターを選択します。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
+![[Azure Dev Spaces] ダイアログ ボックスには、次のボックスがあります: [サブスクリプション]、[Azure Kubernetes Service クラスター]、[スペース]。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
 現時点では、 **[スペース]** ドロップダウンは既定の `default` のままにしておきます。 このオプションについては、後で詳しく説明します。 パブリック エンドポイント経由で Web アプリにアクセスできるように、 **[Publicly Accessible]\(パブリックにアクセス可能\)** チェック ボックスをオンにします。 この設定は必須ではありませんが、このチュートリアルの後の方でいくつかの概念を示す際に役立ちます。 いずれにせよ、Visual Studio を使用して Web サイトをデバッグできるので心配はありません。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
+![[パブリックにアクセス可能] チェック ボックスがオンになっています。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
 **[OK]** をクリックして、クラスターを選択または作成します。
 
 Azure Dev Spaces を使用できないクラスターを選択すると、クラスターを構成するかどうかをたずねるメッセージが表示されます。
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![メッセージの内容は次のとおりです。"Azure Dev Spaces リソースの追加 Azure Dev Spaces を使用するには、使用するように選択した A K S クラスターを構成する必要があります。 そうしますか?" [O K] ボタンと [キャンセル] ボタンがあります。](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 **[OK]** を選択します。
 
@@ -124,9 +124,9 @@ Azure Dev Spaces を使用できないクラスターを選択すると、クラ
 
  処理を完了するために、バックグラウンド タスクが開始されます。 完了するまでに、数分かかります。 まだ作成中かどうかを確認するには、次の画像に示すように、ステータス バーの左下隅にある **[バックグラウンド タスク]** アイコンをポイントします。
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
+![ポイントすると表示されるポップアップ ウィンドウには、"Creating "My A K S" in resource group (リソース グループに "My A K S" を作成しています)" と表示されています。](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
-> [!Note]
+> [!NOTE]
 > 開発空間が正常に作成されるまで、アプリケーションをデバッグすることはできません。
 
 ### <a name="look-at-the-files-added-to-project"></a>プロジェクトに追加されたファイルを確認する
@@ -138,7 +138,7 @@ Azure Dev Spaces を使用できないクラスターを選択すると、クラ
 
 最後に、`azds.yaml` という名前のファイルがあります。このファイルには、開発空間で必要となる開発時の構成が含まれています。
 
-![](media/get-started-netcore-visualstudio/ProjectFiles.png)
+![[ソリューション エクスプローラー] ウィンドウの "webfrontend" ソリューションには、"a z d s ドット yaml" ファイルが表示されています。](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Kubernetes でコンテナーをデバッグする
 開発空間が正常に作成されたら、アプリケーションをデバッグすることができます。 コードにブレークポイントを設定します。たとえば、`HomeController.cs` ファイルの 20 行目 (`Message` 変数が設定されている行) に設定します。 **F5** キーを押してデバッグを開始します。 

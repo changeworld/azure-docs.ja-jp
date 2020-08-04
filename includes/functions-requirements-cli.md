@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 9e9f9c71701ceb1c76bc162f22e166b4565e731b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3f5c7021461b407e90d61ed045c112aab3c1c4e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055985"
 ---
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
@@ -44,10 +44,12 @@ ms.locfileid: "86062684"
 + [.NET Core SDK 2.2 以上](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8。
++ [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8。 
+
+    > [!IMPORTANT]
+    > + Java 11 に対する Functions のサポートは現在プレビューの段階にあり、Maven アーキタイプでは既定で Java 8 デプロイが作成されます。 代わりに、Java 11 で関数アプリを実行する場合は、Java 11 の値を使用して pom.xml ファイルを手動で更新する必要があります。 詳細については、「[Java のバージョン](../articles/azure-functions/functions-reference-java.md#java-versions)」を参照してください。 
+    > + このクイックスタートを行うには、`JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 
-> [!IMPORTANT]
-> このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
 ::: zone-end

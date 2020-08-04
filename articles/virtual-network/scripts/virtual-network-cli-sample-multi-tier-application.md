@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 39a993324a476f0e1f1d17858ae126742e4f69f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2dfbb7a7a046486a04bd55f8c4486d448c131486
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74083857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073980"
 ---
-# <a name="create-a-network-for-multi-tier-applications-script-sample"></a>多層アプリケーション用のネットワークの作成のスクリプト サンプル
+# <a name="create-a-virtual-network-for-multi-tier-applications-using-an-azure-cli-script-sample"></a>Azure CLI スクリプト サンプルを使用して多層アプリケーション用の仮想ネットワークを作成する
 
 このスクリプト サンプルは、フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへのトラフィックは HTTP と SSH に制限され、バックエンド サブネットへのトラフィックは MySQL、ポート 3306 に制限されます。 このスクリプトを実行すると、2 つの仮想マシンが、Web サーバーと MySQL ソフトウェアをデプロイできる各サブネットに 1 つずつ作成されます。
 
@@ -45,7 +45,7 @@ az group delete --name MyResourceGroup --yes
 
 このスクリプトでは次のコマンドを使用して、リソース グループ、仮想ネットワーク、およびネットワーク セキュリティ グループを作成します。 以下の表の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](/cli/azure/network/vnet) | Azure 仮想ネットワークとフロントエンド サブネットを作成します。 |

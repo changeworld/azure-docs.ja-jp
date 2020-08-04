@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ed552bfb37f01200a4dba38ea733a1189768d56a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067152"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
 
@@ -41,7 +41,7 @@ ms.locfileid: "85114386"
 
 ## <a name="build-the-ui"></a>UI の作成
 
-1. Visual Studio Code で [停止] ボタン ( ![Visual Studio Code の [停止] ボタン](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) ) をクリックして Node アプリを停止します。
+1. Visual Studio Code で [停止] ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png":::) をクリックして Node アプリを停止します。 
 
 2. Windows のコマンド プロンプトまたは Mac のターミナル ウィンドウで、次のコマンドを入力して heroes コンポーネントを生成します。 このコードの g は生成 (generate) を、c はコンポーネント (component) を、heroes はコンポーネントの名前を表します。また、フラット ファイル構造 (--flat) を使用して、サブフォルダーの作成を抑制しています。
 
@@ -486,7 +486,7 @@ ms.locfileid: "85114386"
 
     ここで、アプリを実行してみましょう。
 
-2. Visual Studio Code の左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)) をクリックし、 **[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)) をクリックします。
+2. Visual Studio Code で、左側の **[デバッグ]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png":::) をクリックしてから、 **[デバッグの開始]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png":::) をクリックします。
 
 3. インターネット ブラウザーを開いて **localhost:3000** に移動すると、アプリがローカルで実行されているようすを確認できます。
 

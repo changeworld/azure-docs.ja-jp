@@ -1,5 +1,5 @@
 ---
-title: スナップショットからマネージド ディスクを作成する - CLI サンプル
+title: スナップショットからマネージド ディスクを作成する (Linux) - CLI のサンプル
 description: Azure CLI サンプル スクリプト - スナップショットからマネージド ディスクを作成する
 services: virtual-machines-linux
 documentationcenter: storage
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: c0c009573393a65d901634fca8de3cf03df6b874
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c5e9e16b81c0befb6524a284d63fb2e106bff7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085318"
 ---
-# <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>CLIでスナップショットからマネージド ディスクを作成する
+# <a name="create-a-managed-disk-from-a-snapshot-with-cli-linux"></a>CLI でスナップショットからマネージド ディスクを作成する (Linux)
 
 このスクリプトでは、スナップショットからマネージド ディスクを作成します。 このスクリプトを使用して、OS またはデータ ディスクのスナップショットから仮想マシンを復元します。 OS およびデータのマネージド ディスクをそれぞれのスナップショットから作成してから、マネージド ディスクを接続することで新しい仮想マシンを作成します。 スナップショットから作成されたデータ ディスクを接続することで既存の VM のデータ ディスクを復元することもできます。
 
@@ -42,13 +42,13 @@ ms.locfileid: "81460411"
 
 | command | メモ |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 Id プロパティはマネージド ディスクを作成するために使用されます。  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk) | 管理対象スナップショット Id を使用してマネージド ディスクを作成します |
+| [az snapshot show](/cli/azure/snapshot) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 Id プロパティはマネージド ディスクを作成するために使用されます。  |
+| [az disk create](/cli/azure/disk) | 管理対象スナップショット Id を使用してマネージド ディスクを作成します |
 
 ## <a name="next-steps"></a>次のステップ
 
 [マネージド ディスクを OS ディスクとして接続することで仮想マシンを作成する](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシンとマネージド ディスクの CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にあります。

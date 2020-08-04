@@ -1,5 +1,5 @@
 ---
-title: Synapse Analytics の SQL リソースの使用
+title: Synapse SQL のリソースの使用
 description: Azure Synapse Analytics の Synapse SQL 使用モデルについて学習します。
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112750"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369018"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure Synapse Analytics の SQL リソースの使用
+# <a name="synapse-sql-resource-consumption"></a>Synapse SQL のリソースの使用
 
 この記事では、Synapse SQL (プレビュー) のリソースの使用モデルについて説明します。
 
@@ -99,7 +99,7 @@ SQL プールは、大量のコンピューティングをプロビジョニン�
 
 Data Warehouse ユニットを変更するには、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」で説明されているアクセス許可が必要です。
 
-SQL DB 共同作成者や SQL Server 共同作成者などの Azure リソースの組み込みロールで DWU 設定を変更できます。
+SQL DB 共同作成者や SQL Server 共同作成者などの Azure 組み込みロールで DWU 設定を変更できます。
 
 #### <a name="view-current-dwu-settings"></a>現在の DWU 設定の表示
 
