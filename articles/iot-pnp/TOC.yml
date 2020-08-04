@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: 複数のコンポーネント デバイスに接続する (Python)
       href: tutorial-multiple-components-python.md
+    - name: MQTT を使用してデバイスを接続する
+      href: tutorial-use-mqtt.md
 - name: 概念
   items:
     - name: アーキテクチャ
