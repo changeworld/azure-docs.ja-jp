@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063258"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対する Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して接続を確認する
 > [!NOTE]
-> クライアントの接続文字列で、サーバーの**完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接行われたログイン試行は、すべて失敗します。 これは意図的な動作です。トラフィックは、プライベート エンドポイントによってリージョン内の SQL Gateway にルーティングされ、ログインに成功するためには FQDN を指定する必要があるためです。
+> クライアント (`<server>.database.windows.net`) の接続文字列で、サーバーの**完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接、またはプライベート リンクの FQDN (`<server>.privatelink.database.windows.net`) を使用してログインを試みると、失敗します。 この動作は仕様によるものです。トラフィックは、プライベート エンドポイントによってリージョン内の SQL Gateway にルーティングされ、ログインに成功するためには、正しい FQDN を指定する必要があるためです。
 
 ここに示す手順に従い、[SSMS を使用して SQL データベースに接続します](connect-query-ssms.md)。 SSMS を使用して SQL Database に接続したら、次のクエリを実行して、Azure VM のプライベート IP アドレスから接続していることを確認します。
 

@@ -171,10 +171,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: 診断ログのスキーマ
           href: media-services-diagnostic-logs-schema.md
-    - name: Player クライアント
+    - name: Azure Media Player
       items:
-        - name: Azure Media Player
-          href: use-azure-media-player.md
+        - name: Azure Media Player の概要
+          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
     - name: v3 API シリーズを使用した開発
       items:
         - name: 概要
@@ -285,7 +285,11 @@
           items:
             - name: .NET の場合
               displayName: 'encode, encoding, custom, transform'
-              href: customize-encoder-presets-how-to.md
+              items:
+                - name: エンコーダー プリセットのカスタマイズ
+                  href: customize-encoder-presets-how-to.md
+                - name: オーバーレイ変換の作成
+                  href: how-to-create-overlay.md
             - name: CLI の場合
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -355,6 +359,14 @@
           href: download-results-howto.md
         - name: 説明的なオーディオの通知
           href: signal-descriptive-audio-howto.md
+    - name: メディア プレイヤーの使用
+      items:
+        - name: Azure Media Player のフル セットアップ
+          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+        - name: Video.js プレイヤーの使用
+          href: how-to-video-js-player.md
+        - name: Shaka ビデオ プレイヤーの使用
+          href: how-to-shaka-player.md
 - name: リファレンス
   items:
     - name: OpenAPI の仕様 (Swagger)

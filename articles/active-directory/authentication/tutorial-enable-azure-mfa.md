@@ -5,23 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77154680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035062"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>チュートリアル:Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する
 
 Multi-Factor Authentication (MFA) は、サインイン イベント中に追加で本人確認できるものをユーザーに求めるプロセスです。 その確認として、各自の携帯電話にコードを入力したり、指紋スキャンを行ったりする方法が考えられます。 2 つ目の認証形式を義務付ければ、その二次的な要素は攻撃者が容易に取得したり複製したりできるようなものではないため、セキュリティが向上します。
 
 Azure Multi-Factor Authentication と条件付きアクセス ポリシーを使用すると、特定のサインイン イベント時にユーザーの MFA を有効にするための柔軟性が得られます。
+
+> [!IMPORTANT]
+> このチュートリアルでは、Azure Multi-Factor Authentication を有効にする方法を管理者に示します。
+>
+> IT チームが Azure Multi-Factor Authentication を使用する機能を有効にしていない場合、またはサインイン時に問題が発生した場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -38,9 +43,9 @@ Azure Multi-Factor Authentication と条件付きアクセス ポリシーを使
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
 * パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してエンドユーザーの Azure Multi-Factor Authentication エクスペリエンスをテストします。
-    * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
+    * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)」を参照してください。
 * 管理者以外のユーザーが所属するグループ (*MFA-Test-Group* など)。 このチュートリアルでは、このグループに対して Azure Multi-Factor Authentication を有効にします。
-    * グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory-groups-create-azure-portal.md)方法を参照してください。
+    * グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する](../fundamentals/active-directory-groups-create-azure-portal.md)方法を参照してください。
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 

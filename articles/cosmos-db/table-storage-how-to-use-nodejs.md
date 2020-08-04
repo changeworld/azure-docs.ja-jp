@@ -5,39 +5,41 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 1f0541cd3ae7cf2c78d3cd2bf6844fed930e7968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2abe23de5fbd2feada6ac8ff0a827b8575bcb28b
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833149"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171993"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>概要
-この記事では、Node.js アプリケーションで Azure Storage Table サービスまたは Azure Cosmos DB を使用して一般的なシナリオを実行する方法について説明します。
+この記事では、テーブルの作成、データの格納、データに対する CRUD 操作の実行を行う方法について説明します。 Azure Table service または Azure Cosmos DB Table API のいずれかを選択してください。 サンプルは Node.js で記述されています。
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
+**Azure Storage アカウントを作成する**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
+**Azure Cosmos DB Table API アカウントを作成する**
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="configure-your-application-to-access-azure-storage-or-the-azure-cosmos-db-table-api"></a>Azure Storage または Azure Cosmos DB Table API にアクセスするようにアプリケーションを構成する
+
 Azure Storage または Azure Cosmos DB を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージをインストールする
+
 1. **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使って、アプリケーションを作成したフォルダーに移動します。
 2. コマンド ウィンドウに「 **npm install azure-storage** 」と入力します。 このコマンドの出力は次の例のようになります。
 
@@ -57,34 +59,42 @@ Azure Storage または Azure Cosmos DB を使用するには、Azure Storage SD
 3. 手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。 このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
 ### <a name="import-the-package"></a>パッケージをインポートする
+
 アプリケーションの **server.js** ファイルの先頭に次のコードを追加します。
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
-## <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
-Azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数の AZURE_STORAGE_ACCOUNT と AZURE_STORAGE_ACCESS_KEY、または AZURE_STORAGE_CONNECTION_STRING を読み取ります。 これらの環境変数が設定されていない場合、 **TableService**を呼び出すときにアカウント情報を指定する必要があります。 たとえば、次のコードでは、**TableService** オブジェクトを作成します。
+## <a name="add-your-connection-string"></a>接続文字列を追加する
+
+Azure ストレージ アカウントまたは Azure Cosmos DB Table API アカウントのいずれかに接続できます。 使用しているアカウントの種類に基づいて接続文字列を取得します。
+
+### <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
+
+Azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数の AZURE_STORAGE_ACCOUNT と AZURE_STORAGE_ACCESS_KEY、または AZURE_STORAGE_CONNECTION_STRING を読み取ります。 これらの環境変数が設定されていない場合、`TableService` を呼び出すときにアカウント情報を指定する必要があります。 たとえば、次のコードでは、`TableService` オブジェクトを作成します。
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB の接続を追加する
-Azure Cosmos DB 接続を追加するには、**TableService** オブジェクトを作成し、アカウント名、主キー、およびエンドポイントを指定します。 これらの値は、自分の Cosmos DB アカウントの Azure Portal で **[設定]**  >  **[接続文字列]** を選択することによりコピーできます。 次に例を示します。
+### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB の接続を追加する
+
+Azure Cosmos DB 接続を追加するには、`TableService` オブジェクトを作成し、アカウント名、主キー、およびエンドポイントを指定します。 これらの値は、自分の Cosmos DB アカウントの Azure Portal で **[設定]**  >  **[接続文字列]** を選択することによりコピーできます。 次に例を示します。
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```
 
 ## <a name="create-a-table"></a>テーブルを作成する
-次のコードは、 **TableService** オブジェクトを作成し、これを使用して新しいテーブルを作成します。
+
+次のコードは、 `TableService` オブジェクトを作成し、これを使用して新しいテーブルを作成します。
 
 ```javascript
 var tableSvc = azure.createTableService();
 ```
 
-**createTableIfNotExists** の呼び出しにより、指定した名前の新しいテーブルが (まだ存在していない場合は) 作成されます。 次の例では、"mytable" という名前のテーブルが存在しない場合、このテーブルを作成します。
+`createTableIfNotExists` の呼び出しにより、指定した名前の新しいテーブルが (まだ存在していない場合は) 作成されます。 次の例では、"mytable" という名前のテーブルが存在しない場合、このテーブルを作成します。
 
 ```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
@@ -96,8 +106,9 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 
 新しいテーブルを作成する場合、`result.created` は `true` です。テーブルが既に存在する場合は `false` です。 `response` には要求に関する情報が含まれます。
 
-### <a name="filters"></a>フィルター
-オプションのフィルタリングは、**TableService** を使って行われる操作に適用できます。 フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
+### <a name="apply-filters"></a>フィルターを適用する
+
+オプションのフィルタリングは、`TableService` を使用して行われる操作に適用できます。 フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
 ```javascript
 function handle (requestOptions, next)
@@ -109,9 +120,9 @@ function handle (requestOptions, next)
 function (returnObject, finalCallback, next)
 ```
 
-このコールバックで、**returnObject** (サーバーへの要求からの応答) の処理の後に、コールバックは **next** を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に **finalCallback** を呼び出す必要があります (サービス呼び出しを終了する場合)。
+このコールバックで、`returnObject` (サーバーへの要求からの応答) の処理の後に、コールバックは `next` (存在する場合) を呼び出して他のフィルターの処理を続行するか、それ以外の場合は単に `finalCallback` を呼び出して、サービス呼び出しを終了する必要があります。
 
-再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **TableService** オブジェクトを作成します。
+再試行のロジックを実装する 2 つのフィルターが、Azure SDK for Node.js に含まれています。`ExponentialRetryPolicyFilter** and `LinearRetryPolicyFilter`. The following creates a `TableService` object that uses the `ExponentialRetryPolicyFilter`:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -119,6 +130,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
+
 エンティティを追加するには、エンティティのプロパティを定義するオブジェクトを最初に作成します。 すべてのエンティティには、エンティティの一意の識別子である **PartitionKey** と **RowKey** が含まれます。
 
 * **PartitionKey** - エンティティが格納されるパーティションを決定します。
@@ -126,7 +138,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 **PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
-エンティティを定義する例を次に示します。 **dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。 型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
+エンティティを定義する例を次に示します。 **dueDate** は、`Edm.DateTime` の型として定義されています。 型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
 ```javascript
 var task = {
@@ -138,9 +150,9 @@ var task = {
 ```
 
 > [!NOTE]
-> 各レコードには、エンティティが挿入または更新される場合に Azure により設定される **Timestamp** フィールドもあります。
+> 各レコードには、エンティティが挿入または更新される場合に Azure により設定される `Timestamp` フィールドもあります。
 
-**entityGenerator** を使用してエンティティを作成することもできます。 次の例では、 **entityGenerator**を使用して同じタスク エンティティを作成しています。
+`entityGenerator` を使用してエンティティを作成することもできます。 次の例では、 `entityGenerator` を使用して同じタスク エンティティを作成しています。
 
 ```javascript
 var entGen = azure.TableUtilities.entityGenerator;
@@ -152,7 +164,7 @@ var task = {
 };
 ```
 
-エンティティをテーブルに追加するには、エンティティ オブジェクトを **insertEntity** メソッドに渡します。
+テーブルにエンティティを追加するには、エンティティ オブジェクトを `insertEntity` メソッドに渡します。
 
 ```javascript
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
@@ -171,19 +183,20 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 ```
 
 > [!NOTE]
-> 既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。 このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。 そのためには、次のように **echoContent** を有効にします。
+> 既定では、`insertEntity` は、`response` 情報の一部として、挿入されたエンティティを返しません。 このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。 これを行うには、次のように `echoContent` を有効にします。
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 
 ## <a name="update-an-entity"></a>エンティティを更新する
+
 既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **replaceEntity** - 既存のエンティティを置換することで更新します。
-* **mergeEntity** - 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
-* **insertOrReplaceEntity** - 既存のエンティティを、置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
-* **insertOrMergeEntity** - 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* `replaceEntity` - 既存のエンティティを置換することで更新します。
+* `mergeEntity` - 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
+* `insertOrReplaceEntity` - 既存のエンティティを置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* `insertOrMergeEntity` - 新しいプロパティ値を既存のエンティティにマージすることで既存のものを更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-次の例に、 **replaceEntity**を使用してエンティティを更新する方法を示します。
+次の例で、`replaceEntity` を使用してエンティティを更新する方法を示します。
 
 ```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
@@ -204,12 +217,13 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 >
 >
 
-**replaceEntity** および **mergeEntity** では、更新するエンティティが存在しないと、更新操作が失敗します。したがって、更新するエンティティが既に存在するかどうかにかかわらずにエンティティを格納する場合は、**insertOrReplaceEntity** または **insertOrMergeEntity** を使用します。
+`replaceEntity` および `mergeEntity` では、更新するエンティティが存在しないと、更新操作が失敗します。したがって、既に存在するかどうかにかかわらずにエンティティを格納する場合は、`insertOrReplaceEntity` または `insertOrMergeEntity` を使用します。
 
 成功した更新操作の `result` には、更新されたエンティティの **Etag** が含まれます。
 
 ## <a name="work-with-groups-of-entities"></a>エンティティのグループを操作する
-状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。 これを実現するには、**TableBatch** クラスを使ってバッチを作成し、**TableService** の **executeBatch** メソッドを使ってバッチ操作を実行します。
+
+状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。 これを実現するには、`TableBatch` クラスを使用してバッチを作成し、`TableService` の `executeBatch` メソッドを使用してバッチ操作を実行します。
 
  次の例に、2 つのエンティティをバッチで送信する方法を示します。
 
@@ -242,6 +256,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 バッチ操作が成功した場合、`result` にはバッチ内の各操作の情報が含まれます。
 
 ### <a name="work-with-batched-operations"></a>バッチ操作の処理
+
 バッチに追加された操作を検査するには、`operations` プロパティを確認します。 次のメソッドを使用して操作を処理できます。
 
 * **clear** - バッチのすべての操作をクリアします。
@@ -251,6 +266,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 * **size** - バッチ内の操作の数を返します。
 
 ## <a name="retrieve-an-entity-by-key"></a>キーを使用したエンティティを取得する
+
 **PartitionKey** と **RowKey** に基づいて特定のエンティティを返すには、**retrieveEntity** メソッドを使います。
 
 ```javascript
@@ -264,6 +280,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 この操作を完了すると、`result` にはエンティティが含まれます。
 
 ## <a name="query-a-set-of-entities"></a>エンティティのセットを照会する
+
 テーブルを照会するには、 **TableQuery** オブジェクトを使用し、以下の句を使用してクエリ式を作成します。
 
 * **select** - クエリから返されるフィールド
@@ -294,6 +311,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は*null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
 
 ### <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
+
 テーブルに対するクエリでは、ごくわずかのフィールドだけをエンティティから取得できます。
 この方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 **select** 句を使って、返されるフィールドの名前を渡します。 たとえば、次のクエリでは **description** フィールドと **dueDate** フィールドのみを返します。
 
@@ -305,6 +323,7 @@ var query = new azure.TableQuery()
 ```
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
+
 パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、**task1** オブジェクトに、削除するエンティティの **RowKey** と **PartitionKey** の値が格納されます。 次に、このオブジェクトが **deleteEntity** メソッドに渡されます。
 
 ```javascript
@@ -326,6 +345,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 >
 
 ## <a name="delete-a-table"></a>テーブルを削除する
+
 次のコードは、ストレージ アカウントからテーブルを削除します。
 
 ```javascript
@@ -339,6 +359,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 テーブルが存在するかどうかが不明な場合は、 **deleteTableIfExists**を使用します。
 
 ## <a name="use-continuation-tokens"></a>継続トークンを使用する
+
 テーブルに対するクエリによって大量の結果が返される場合は、継続トークンを探します。 クエリの対象となるデータは大量になる可能性があります。継続トークンが存在するときにわかるようにしていない場合はこの事実に気付かない可能性があります。
 
 エンティティを照会したときに返される **results** オブジェクトは、このようなトークンが存在する場合に `continuationToken` プロパティを設定します。 クエリを実行するときにこれを使用して、後続のパーティションおよびテーブル エンティティに移動できます。
@@ -367,6 +388,7 @@ dc.table.queryEntities(tableName,
 また、`continuationToken` と共に `top` を使用して、ページ サイズを設定することもできます。
 
 ## <a name="work-with-shared-access-signatures"></a>共有アクセス署名を操作する
+
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにテーブルへの細密なアクセスを提供する安全な方法です。 多くの場合、SAS は、モバイル アプリでのレコードの照会などデータへの限定的なアクセスのために使用されます。
 
 クラウドベースのサービスなどの信頼されたアプリケーションは、**TableService** の **generateSharedAccessSignature** を使って SAS を生成し、信頼されていないか、モバイル アプリなどの部分的に信頼されたアプリケーションにこれを提供します。 SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
@@ -412,6 +434,7 @@ sharedTableService.queryEntities(query, null, function(error, result, response) 
 SAS がクエリ アクセスのみで生成されたので、エンティティの挿入、更新、または削除を試行するとエラーが返されます。
 
 ### <a name="access-control-lists"></a>アクセス制御リスト
+
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。 複数のクライアントにテーブルへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
 
 ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
@@ -454,6 +477,7 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 詳細については、次のリソースを参照してください。
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

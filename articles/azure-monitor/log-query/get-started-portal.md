@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798257"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075336"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>チュートリアル:Log Analytics クエリの使用方法
 
@@ -189,7 +189,7 @@ Log Analytics の結果テーブルまたはグラフを Azure の共有ダッ�
    
    クエリを関数として保存する場合は、他のクエリでこのクエリを参照するための短い名前となる **[関数のエイリアス]** を指定します。
    
-1. **クエリ エクスプローラー**でこのクエリに使用する **[カテゴリ]** を指定します。
+1. Log Analytics ワークスペース内で作業している場合は、クエリに使用する**クエリ エクスプローラー**で **[カテゴリ]** を指定します (Application Insights クエリでは、カテゴリを使用できません)。
    
 1. **[保存]** を選択します。
    
@@ -202,6 +202,10 @@ Log Analytics の結果テーブルまたはグラフを Azure の共有ダッ�
 
 ### <a name="export-and-share-queries"></a>クエリのエクスポートと共有
 クエリをエクスポートするには、上部バーで **[エクスポート]** を選択してから、ドロップダウン リストで **[CSV へエクスポート - すべての列]** 、 **[CSV へエクスポート - 表示されている列]** 、または **[Power BI へエクスポート (M Query)]** を選択します。
+
+次のビデオでは、Log Analytics を Excel と統合する方法について説明しています。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
 
 クエリへのリンクを共有するには、上部バーで **[リンクのコピー]** を選択してから、 **[クエリへのリンクのコピー]** 、 **[クエリ テキストのコピー]** 、または **[Copy query results]\(クエリの結果のコピー\)** を選択してクリップボードにコピーします。 クエリ リンクは、同じワークスペースにアクセス可能な他のユーザーに送信できます。
 

@@ -5,15 +5,15 @@ services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002048"
 ---
 ## <a name="create-a-device-template"></a>デバイス テンプレートを作成する
 
@@ -79,12 +79,11 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
 
 1. **[デバイス]** ページで、 **[環境センサー]** デバイス テンプレートを選択します。
 
-    > [!TIP]
-    > **[+ 新規]** を選択する前に必ず、使用するテンプレートを選択してください。そうしないと、関連付けられていないデバイスが作成されます。
-
 1. **[+新規]** を選択します。
 
-1. **[Simulated]\(シミュレート済み\)** が **[Off]\(オフ\)** になっていることを確認します。 **[作成]** を選択します。
+1. **[Create a new device]\(新しいデバイスの作成\)** ダイアログで、 **[環境センサー]** がテンプレート型であり、 **[Simulate this device?]\(このデバイスをシミュレートしますか?\)** が **[いいえ]** に設定されていることを確認します。
+
+1. **[作成]** を選択します。
 
 デバイス名をクリックし、 **[接続]** を選択します。 **[デバイスの接続]** ページで、デバイスの接続情報を書き留めておきます ( **[ID スコープ]** 、 **[デバイス ID]** 、 **[プライマリ キー]** )。 デバイス コードを作成する際に、これらの値が必要になります。
 

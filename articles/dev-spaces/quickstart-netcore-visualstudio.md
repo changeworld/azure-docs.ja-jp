@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナ
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007006"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio と .NET Core - Azure Dev Spaces
 
@@ -84,15 +84,15 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 
 ご自分のプロジェクトで、次の図のように、起動設定のドロップダウンから **[Azure Dev Spaces]** を選択します。
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![[IIS Express] オプションが強調表示され、[Azure Dev Spaces] オプションが選択されて強調表示されている Visual Studio の UI のスクリーンショット。](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 [Azure Dev Spaces] ダイアログで、ご自分の "*サブスクリプション*" と "*Azure Kubernetes クラスター*" を選択します。 *[空間]* は *[default]* に設定しておいて、 *[公的にアクセス可能]* チェック ボックスをオンします。 [*OK*] をクリックします。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
+![[Azure Dev Spaces] ダイアログ ボックスのスクリーンショット。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
 このプロセスによって、パブリックにアクセスできる URL を備えた *default* 開発空間にお客様のサービスがデプロイされます。 Azure Dev Spaces と共に動作するように構成されていないクラスターを選択すると、クラスターを構成するかどうかをたずねるメッセージが表示されます。 [*OK*] をクリックします。
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![[Azure Dev Spaces リソースの追加] ダイアログ ボックスのスクリーンショット。](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 *default* 開発空間で稼働するサービスのパブリック URL が、 *[出力]* ウィンドウに表示されます。
 

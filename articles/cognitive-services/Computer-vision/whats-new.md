@@ -10,16 +10,28 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 75d191c9d65cc639522c3fbba5b8c438b8b83448
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ceb9e731b1052d47131dfbc6754e1cb921a8f585
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560116"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280836"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="read-api-v31-preview1-adds-support-for-simplified-chinese"></a>Read API v3.1-preview.1 で簡体字中国語のサポートが追加
+Computer Vision の Read API v3.1-preview.1 では、簡体字中国語のサポートが追加されています。
+
+* この Read API のプレビュー バージョンでは、英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、簡体字中国語、およびスペイン語がサポートされています。
+
+詳細については、[Read API の概要](concept-recognizing-text.md)に関する記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [Read API v3.1-preview.1 の詳細を確認する](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020 年 5 月
 Computer Vision API v3.0 が一般提供になり、[Read API](concept-recognizing-text.md) が更新されています。
@@ -35,7 +47,7 @@ Computer Vision API v3.0 が一般提供になり、[Read API](concept-recognizi
 
 ## <a name="january-2020"></a>2020 年 1 月
 
-### <a name="read-api-30-preview"></a>Read API 3.0 プレビュー
+### <a name="read-api-30-public-preview"></a>Read API 3.0 パブリック プレビュー
 
 Read API のバージョン3.0 では、印刷されたテキストまたは手書きテキストを画像から抽出するオプションが追加されました。 以前のバージョンと比較して、3.0 では以下のものが提供されます。
 * 精度の向上

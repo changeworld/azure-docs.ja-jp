@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 4bf86c616420bb049e1d7a82ad0e942e6eb7b36f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732078"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369268"
 ---
 .NET 用 Language Understanding (LUIS) 予測クライアント ライブラリの用途は次のとおりです。
 
@@ -31,46 +31,6 @@ ms.locfileid: "81732078"
 * LUIS アプリ ID - パブリック IoT アプリ ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` を使用します。 クイックスタートのコードで使用されるユーザー クエリは、そのアプリに固有のものです。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-an-environment-variable"></a>環境変数を作成する
-
-キーとリソースの名前を使用して、認証用に 2 つの環境変数を作成します。
-
-* `LUIS_PREDICTION_KEY` - 要求を認証するためのリソース キー。
-* `LUIS_ENDPOINT_NAME` - キーに関連付けられているリソース名。
-
-ご利用のオペレーティング システムの手順に従ってください。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
-setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
-```
-
-環境変数を追加したら、コンソール ウィンドウを再起動します。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-次のように `.bash_profile` を編集し、環境変数を追加します。
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
-
----
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -134,13 +94,7 @@ Language Understanding (LUIS) 予測ランタイム クライアントは、認�
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-1. キー、名前、およびアプリ ID の変数を作成します。
-
-    `LUIS_PREDICTION_KEY` という名前の環境変数から取得した予測キーを管理するための変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。 メソッドは後で作成します。
-
-    リソース名 `LUIS_ENDPOINT_NAME` を保持する変数を作成します。
-
-    `LUIS_APP_ID` という名前の環境変数として、アプリ ID の変数を作成します。 この環境変数をパブリック IoT アプリに設定します。
+1. キー、リソース名、アプリ ID、発行スロットの変数を作成します。 パブリック IoT アプリに次のアプリ ID を設定します。
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 

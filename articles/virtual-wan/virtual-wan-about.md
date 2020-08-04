@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058750"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
@@ -110,7 +110,7 @@ Virtual WAN には、高度なルーティング機能強化があります。 �
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>グローバル VNET ピアリング
 
-グローバル VNet ピアリングには、異なるリージョンにある 2 つの VNet を接続するメカニズムが用意されています。 Virtual WAN では、仮想ネットワーク接続によって VNet が仮想ハブと接続されます。 ユーザーはグローバル VNet ピアリングを明示的に設定する必要がありません。 仮想ハブに接続された VNet は、VNet ピアリング料金が発生する同じリージョンにあります。 別のリージョンの仮想ハブに接続された VNet には、グローバル VNet ピアリング料金が発生します。
+グローバル VNet ピアリングには、異なるリージョンにある 2 つの VNet を接続するメカニズムが用意されています。 Virtual WAN では、仮想ネットワーク接続によって VNet が仮想ハブと接続されます。 ユーザーはグローバル VNet ピアリングを明示的に設定する必要がありません。 同じリージョンの仮想ハブに接続された VNet には、VNet ピアリング料金が発生します。 別のリージョンの仮想ハブに接続された VNet には、グローバル VNet ピアリング料金が発生します。
 
 ### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute トラフィックの暗号化
 

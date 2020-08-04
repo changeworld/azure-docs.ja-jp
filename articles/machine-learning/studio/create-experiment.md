@@ -1,6 +1,5 @@
 ---
-title: クイック スタート:データ サイエンス実験を作成する
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):クイック スタート:データ サイエンス実験を作成する - Azure
 description: この機械学習のクイック スタートでは、簡単なデータ サイエンスの実験手順を説明しています。 回帰アルゴリズムを使用して自動車の価格を予測します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f8984b3b712d591b64c383dabb723ba5afc61efc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 99332a8716ae137b8ea5fe69a53c7f8e4c46f095
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965146"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282553"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>クイック スタート:Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する
+# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>クイック スタート:Machine Learning Studio (classic) で初めてのデータ サイエンス実験を作成する
+
+**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

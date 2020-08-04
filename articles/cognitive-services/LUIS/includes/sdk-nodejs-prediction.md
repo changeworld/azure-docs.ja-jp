@@ -6,23 +6,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 504ba9106cc9d617858e8fad7ea421c8707707b3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 19da911cbc662f47e7bbd16aaddf8803d4109d6a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171280"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369269"
 ---
 Node.js 用 Language Understanding (LUIS) ランタイム クライアント ライブラリの用途は次のとおりです。
 
 * スロット別の予測
 * バージョン別の予測
 
-[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [ランタイム パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js)
+[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [ランタイム パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,8 +35,6 @@ Node.js 用 Language Understanding (LUIS) ランタイム クライアント ラ
 ### <a name="get-your-language-understanding-luis-runtime-key"></a>Language Understanding (LUIS) ランタイム キーを取得する
 
 LUIS ランタイム リソースを作成して、[ランタイム キー](../luis-how-to-azure-subscription.md)を取得します。 次の手順のために、キーとキーのエンドポイントを保持しておきます。
-
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
 ### <a name="create-a-new-javascript-nodejs-file"></a>新しい JavaScript (Node.js) ファイルを作成する
 
@@ -75,13 +73,11 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
 
 1. 独自の必須 LUIS 情報の変数を作成します。
 
-    `LUIS_RUNTIME_KEY` という名前の環境変数から取得した予測キーを管理するための変数を追加します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。 メソッドは後で作成します。
-
-    リソース名 `LUIS_RUNTIME_ENDPOINT` を保持する変数を作成します。
-
+    予測キーとエンドポイント キーを管理する変数を追加します。 
+    
     [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Variables)]
 
-1. `LUIS_APP_ID` という名前の環境変数として、アプリ ID の変数を作成します。 この環境変数をパブリック IoT アプリ **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** に設定します。 `production` 公開スロットを設定する変数を作成します。
+1. `LUIS_APP_ID` という名前のアプリ ID の変数を作成します。 この変数をパブリック IoT アプリ **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** に設定します。 `production` 公開スロットを設定する変数を作成します。
 
     [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=OtherVariables)]
 

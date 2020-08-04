@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して Azure に移行す�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dd00f800003724b3a5c15d265a5428272e1762fb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110353"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290219"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Server Assessment による VMware VM の評価
 
@@ -146,7 +146,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
      - サポートされるのは HTTP プロキシのみです。
    - **時刻同期**:検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
    - **更新プログラムのインストール**:アプライアンスでは、最新の更新プログラムがインストールされることが保証されます。
-   - **Install VDDK\(VDDK のインストール\)** :アプライアンスでは、VMWare vSphere Virtual Disk Development Kit (VDDK) がインストールされていることが確認されます。 インストールされていない場合は、VMware から VDDK 6.7 をダウンロードし、ダウンロードした zip コンテンツをアプライアンス上の指定された場所に抽出します。
+   - **Install VDDK\(VDDK のインストール\)** :アプライアンスでは、VMware vSphere Virtual Disk Development Kit (VDDK) がインストールされていることが確認されます。 インストールされていない場合は、VMware から VDDK 6.7 をダウンロードし、ダウンロードした zip コンテンツをアプライアンス上の指定された場所に抽出します。
 
      Azure Migrate Server Migration では、Azure への移行の間に VDDK を使用してマシンがレプリケートされます。       
 

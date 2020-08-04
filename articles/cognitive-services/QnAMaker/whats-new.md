@@ -3,19 +3,17 @@ title: QnA Maker サービスの新機能
 titleSuffix: Azure Cognitive Services
 description: この記事には、QnA Maker に関するニュースが含まれています。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 06/15/2020
-ms.author: diberry
-ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/16/2020
+ms.openlocfilehash: 0337abedbc5b592a0ae48fabd5bc7ecbb484def9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791216"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132791"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -24,6 +22,12 @@ ms.locfileid: "84791216"
 ## <a name="release-notes"></a>リリース ノート
 
 QnA Maker の新機能について説明します。
+
+### <a name="july-2020"></a>2020 年 7 月
+
+* [メタデータ: `OR` による複数のメタデータ ペアの論理の組み合わせ](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* Cognitive Search エンドポイントをプライベートにしたうえで引き続き QnA Maker にアクセスできるように構成する[手順](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet)。
+* Free レベルの Cognitive Search リソースは、[90 日間非アクティブな期間](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)が経過すると削除されます。
 
 ### <a name="june-2020"></a>2020 年 6 月
 

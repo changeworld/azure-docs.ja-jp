@@ -1,5 +1,5 @@
 ---
-title: 概要 - SQL オンデマンド (プレビュー) を使用してストレージ内のデータを照会する
+title: SQL オンデマンド (プレビュー) を使用してストレージ内のデータに対してクエリを実行する
 description: この記事では、Azure Synapse Analytics 内の SQL オンデマンド (プレビュー) リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259670"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386658"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する
 
@@ -54,7 +54,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 
 ## <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
-Parquet ソース データに対してクエリを実行するには、FORMAT = 'CSV' を使用します。 CSV ファイルに対してクエリを実行するときに、`OPENROWSET` 関数の一部として CSV ファイルのスキーマを指定できます。
+CSV ソース データに対してクエリを実行するには、FORMAT = 'CSV' を使用します。 CSV ファイルに対してクエリを実行するときに、`OPENROWSET` 関数の一部として CSV ファイルのスキーマを指定できます。
 
 ```sql
 SELECT * FROM
@@ -186,7 +186,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 - 指定された column_name でプロパティが見つからない場合、関数はエラーを返します。
 - 指定された column_path でプロパティが見つからない場合、[パス モード](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)に応じて、関数は、strict モードのときはエラーを、lax モードのときには null を返します。
 
-クエリのサンプルについては、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#access-elements-from-nested-columns)に関する記事の「入れ子にされた列から要素にアクセスする」セクションを参照してください。
+クエリのサンプルについては、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#read-properties-from-nested-object-columns)に関する記事の「入れ子にされた列から要素にアクセスする」セクションを参照してください。
 
 #### <a name="access-elements-from-repeated-columns"></a>繰り返される列から要素にアクセスする
 

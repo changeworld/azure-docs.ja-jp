@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089500"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>クイック スタート:静的 Web アプリを初めてビルドする
 
@@ -68,7 +68,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 - [Azure Portal](https://portal.azure.com) に移動します
 - **[リソースの作成]** をクリックします
-- **Static Web Apps** を検索します
+- **[Static Web Apps]** を探します
 - **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
 - **[作成]** をクリックします。
 
@@ -97,7 +97,10 @@ GitHub にサインインしたら、リポジトリの情報を入力します�
 
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="[次へ: ビルド] ボタン":::
 
-### <a name="build"></a>Build
+> [!NOTE]
+>  リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]、[アプリケーション]、[認可された OAuth アプリ]** の順に移動して、 **[Azure Static Web Apps]** 、 **[許可]** の順に選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
+
+### <a name="build"></a>ビルド
 
 次に、使用するフロントエンド フレームワークに固有の構成の詳細を追加します。
 

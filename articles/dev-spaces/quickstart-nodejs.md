@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で Node.js アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 18171a2f8d13bfcf3df76b1453c39c59cab89d7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 370d49b5287a4d5beafc8c2cc5d8f48c269715db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006946"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Node.js を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
@@ -140,7 +140,7 @@ Visual Studio Code でコマンド パレットを開くには、 **[表示]** �
 
 デバッグ モードを **[Attach to a Server (AZDS)]\(サーバーへのアタッチ (AZDS)\)** に変更して、サービスを開始します。
 
-![](media/get-started-node/attach-nodejs.png)
+![[Attach to a Server (AZDS)]\(サーバーへのアタッチ (AZDS)\) オプションが選択された VS Code の UI のスクリーンショット。](media/get-started-node/attach-nodejs.png)
 
 このコマンドによって、Azure Dev Spaces のサービスがビルドされ、稼働します。 また、サービスのコンテナーで [nodemon](https://nodemon.io) プロセスが開始され、VS Code がそれにアタッチされます。 *nodemon* プロセスでは、ソース コードに変更が加えられた際の自動再起動が可能であり、自分のローカル コンピューターでの開発と同様のより高速な内部ループ開発が実現します。
 

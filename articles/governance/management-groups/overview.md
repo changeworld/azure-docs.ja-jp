@@ -3,12 +3,12 @@ title: 管理グループを使用してリソースを整理する - Azure Gove
 description: 管理グループ、そのアクセス許可のしくみ、その使用方法について説明します。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963684"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132927"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure 管理グループとは
 
@@ -89,20 +89,20 @@ Azure 管理グループは、すべてのリソース アクセスとロール�
 
 | RBAC ロール名             | 作成 | [名前の変更] | 移動\*\* | 削除 | アクセス権の割り当て | ポリシーの割り当て | Read  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|所有者                       | X      | X      | X        | X      | X             | X             | X     |
-|Contributor                 | X      | X      | X        | X      |               |               | X     |
-|MG Contributor\*            | X      | X      | X        | X      |               |               | X     |
+|所有者                       | X      | x      | x        | x      | x             | x             | x     |
+|Contributor                 | x      | x      | x        | x      |               |               | x     |
+|MG Contributor\*            | x      | x      | x        | x      |               |               | x     |
 |Reader                      |        |        |          |        |               |               | X     |
 |MG Reader\*                 |        |        |          |        |               |               | X     |
 |リソース ポリシー共同作成者 |        |        |          |        |               | X             |       |
-|User Access Administrator   |        |        |          |        | X             | X             |       |
+|User Access Administrator   |        |        |          |        | x             | x             |       |
 
 \*:MG Contributor と MG Reader は、管理グループのスコープのみでのこれらのアクションの実行をユーザーに許可します。  
 \*\*: ルート管理グループに対するロールの割り当ては、それとの間でのサブスクリプションまたは管理グループの移動に必要ありません。 階層内の項目の移動について詳しくは、「[Manage your resources with management groups (管理グループを使用してリソースを管理する)](manage.md)」を参照してください。
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>カスタム RBAC ロールの定義と割り当て
+## <a name="azure-custom-role-definition-and-assignment"></a>Azure カスタム ロールの定義と割り当て
 
-管理グループに対するカスタム RBAC ロールのサポートは、現在プレビュー段階にあり、いくつかの[制限事項](#limitations)があります。 管理グループのスコープは、"ロールの定義" の割り当て可能なスコープで定義できます。 すると、そのカスタム RBAC ロールが、当該の管理グループと、その下にあるすべての管理グループ、サブスクリプション、リソース グループ、またはリソースに割り当てることができるようになります。 あらゆる組み込みロールと同様、このカスタム ロールも階層に沿って継承されます。  
+管理グループに対する Azure カスタム ロールのサポートは、現在プレビュー段階にあり、いくつかの[制限事項](#limitations)があります。 管理グループのスコープは、"ロールの定義" の割り当て可能なスコープで定義できます。 その後、その Azure カスタム ロールを、当該の管理グループと、その下にあるすべての管理グループ、サブスクリプション、リソース グループ、またはリソースに割り当てることができるようになります。 あらゆる組み込みロールと同様、このカスタム ロールも階層に沿って継承されます。  
 
 ### <a name="example-definition"></a>定義の例
 

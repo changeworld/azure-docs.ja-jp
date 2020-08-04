@@ -1,5 +1,5 @@
 ---
-title: インクルード ファイル
+title: ファイルを含める
 description: インクルード ファイル
 services: backup
 author: dcurwin
@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003831"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -51,6 +51,10 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
       > データ ソースの場所がわからない場合は、ダイアログ ボックスを閉じます。 ポータルの自分のリソースの一覧に移動します。 複数のリージョンにデータ ソースがある場合は、リージョンごとに Recovery Services コンテナーを作成します。 まず最初の場所にコンテナーを作成してから、別の場所にコンテナーを作成します。 バックアップ データを格納するためにストレージ アカウントを指定する必要はありません。 Recovery Services コンテナーと Azure Backup で自動的に処理されます。
       >
       >
+
+1. 値を指定したら、 **[確認と作成]** を選択します。
+
+    ![[Recovery Services コンテナー] を作成する](./media/backup-create-rs-vault/review-and-create.png)
 
 1. Recovery Services コンテナーを作成する準備ができたら、 **[作成]** を選択します。
 

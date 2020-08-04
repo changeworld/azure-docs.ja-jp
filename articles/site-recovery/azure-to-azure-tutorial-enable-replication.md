@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e7f7535cf66da721e1738da6d0efbf335d97a6da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a3cec6cb009e3d83d22f3f2a4140afe16db180a8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134502"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372928"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -94,7 +94,7 @@ Azure Site Recovery には、Site Recovery の管理操作を制御するため�
 
 - **Site Recovery 閲覧者** - このロールには、すべての Site Recovery 管理操作を見るアクセス許可があります。 このロールは、保護の現在の状態を監視し、サポート チケットを発行できる、IT 監視担当役員に最も適しています。
 
-[Azure RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)について説明します。
+[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)の詳細をご覧ください。
 
 ## <a name="enable-replication-for-a-vm"></a>VM のレプリケーションを有効にする
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 02ebdfc0fe3fd39f29a64fdb49a3f0d37b007097
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dc4c348315dce59d5eaf58046c9a8d8f7f2e3725
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526964"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313678"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure の Linux 仮想マシンを監視する
 
@@ -140,7 +140,7 @@ Azure Monitor for VMs を使用した Azure VM の監視を有効にするには
     この一覧では、サブスクリプションで VM がデプロイされている既定のワークスペースと場所が事前に選択されています。 
 
     >[!NOTE]
-    >VM からの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 Log Analytics ワークスペースは、[サポートされているリージョン](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)のいずれかに属している必要があります。
+    >VM からの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 ワークスペースは、[サポートされているリージョン](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)のいずれかに属している必要があります。
 
 監視を有効にした後、VM のパフォーマンス メトリックが表示されるまでに数分かかることがあります。
 

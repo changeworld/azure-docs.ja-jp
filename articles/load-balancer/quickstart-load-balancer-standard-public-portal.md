@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536550"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125192"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷を分散するロード バランサーを作成する
 
@@ -111,7 +111,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | 異常のしきい値 | **異常しきい値**またはプローブの連続する失敗の回数として **[2]** を選択します。この回数を超えると、VM は異常と見なされます。|
     | | |
 
-3. **[OK]** を選択します。
+3. 残りの部分は既定値のままにし、 **[OK]** を選択します。
 
 ### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 
@@ -140,7 +140,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | バックエンド ポート | 「**80**」と入力します。 |
     | バックエンド プール | **[myBackendPool]** を選択します。|
     | 正常性プローブ | **[myHealthProbe]** を選択します。 |
-    | 暗黙的なアウトバウンド規則の作成 | **[はい]** を選択します。 </br> 詳細および高度なアウトバウンド規則の構成については、以下を参照してください。 </br> [Azure の送信接続](load-balancer-outbound-connections.md) </br> [Azure portal を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](configure-load-balancer-outbound-portal.md)
+    | 暗黙的なアウトバウンド規則の作成 | このため、 **[いいえ]** を選択します。
 
 4. 残りの部分は既定値のままにし、次に **[OK]** を選択します。
 
@@ -237,6 +237,49 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | 可用性ゾーン | **2** |**3**|
     | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します| 既存の **[myNSG]** を選択します|
 
+## <a name="create-outbound-rule-configuration"></a>アウトバウンド規則構成の作成
+ロードバランサーのアウトバウンド規則では、バックエンド プール内の VM 用に送信 SNAT を構成します。 
+
+アウトバウンド接続の詳細については、「[Azure のアウトバウンド接続](load-balancer-outbound-connections.md)」を参照してください。
+
+### <a name="create-outbound-rule"></a>アウトバウンド規則の作成
+
+1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer]** を選択します。
+
+2. **[設定]** で、 **[アウトバウンド規則]** 、 **[追加]** の順に選択します。
+
+3. アウトバウンド規則の構成には、以下の値を使用します。
+
+    | 設定 | [値] |
+    | ------- | ----- |
+    | Name (名前) | 「**myOutboundRule**」と入力します。 |
+    | フロントエンド IP アドレス | **[新規作成]** を選択します。 </br> **[名前]** に、「**LoadBalancerFrontEndOutbound**」と入力します。 </br> **[IP アドレス]** または **[IP プレフィックス]** を選択します。 </br> **[パブリック IP アドレス]** または **[パブリック IP プレフィックス]** で **[新規作成]** を選択します。 </br> [名前] に、「**myPublicIPOutbound**」または「**myPublicIPPrefixOutbound**」と入力します。 </br> **[OK]** を選択します。 </br> **[追加]** を選択します。|
+    | アイドル タイムアウト (分) | スライダーを **15 分**に移動します。|
+    | TCP リセット | **[Enabled]** を選択します。|
+    | バックエンド プール | **[新規作成]** を選択します。 </br> **[名前]** に「**myBackendPoolOutbound**」と入力します。 </br> **[追加]** を選択します。 |
+    | [ポートの割り当て] -> [ポートの割り当て] | **[送信ポートの数を手動で選択する]** を選択します |
+    | [送信ポート] -> [選択基準] | **[インスタンスごとのポート]** を選択します |
+    | [送信ポート] -> [インスタンスごとのポート] | 「**10000**」と入力します。 |
+
+4. **[追加]** を選択します。
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>仮想マシンをアウトバウンド プールに追加する
+
+1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer]** を選択します。
+
+2. **[設定]** で、 **[バックエンド プール]** を選択します。
+
+3. **[myBackendPoolOutbound]** を選択します。
+
+4. **[仮想ネットワーク]** で **[myVNet]** を選択します。
+
+5. **[仮想マシン]** で、 **[+ 追加]** を選択します。
+
+6. **myVM1**、**myVM2**、**myVM3** の横にあるチェック ボックスをオンにします。 
+
+7. **[追加]** を選択します。
+
+8. **[保存]** を選択します。
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[オプション 2: ロード バランサー (Basic SKU) を作成する](#tab/option-1-create-load-balancer-basic)
 
@@ -310,7 +353,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     
     | 設定 | 値 |
     | ------- | ----- |
-    | Name (名前) | 「**myBackendPool**」と入力します。 |
+    | 名前 | 「**myBackendPool**」と入力します。 |
     | 仮想ネットワーク | **[myVNet]** を選択します。 |
     | 関連付け先 | **[仮想マシン]** を選択します |
 
@@ -441,9 +484,10 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | 名前 |  **myVM2** |**myVM3**|
     | 可用性セット| **[myAvailabilitySet]** を選択します | **[myAvailabilitySet]** を選択します|
     | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します| 既存の **[myNSG]** を選択します|
+
 ---
 
-### <a name="install-iis"></a>IIS のインストール
+## <a name="install-iis"></a>IIS のインストール
 
 1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myResourceGroupLB]** リソース グループにある **[myVM1]** を選択します。
 

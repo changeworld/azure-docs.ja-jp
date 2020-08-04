@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 104e812cc9e792ce71f263085ba1a3474cc2226b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002779"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と .NET Core - Azure Dev Spaces
 
@@ -155,7 +155,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 ファイルを保存します。 *[デバッグ]* 、 *[デバッグの再起動]* の順にクリックします。または、 *[デバッグ] ツール バー*で、 *[デバッグの再起動]* ボタンをクリックします。
 
-![[デバッグ] ツール バーは、ページの上部中央 (ページ タイトルの直下) にある小さなペインです。 再起動ボタンは円状の矢印で表され、強調表示されています。 ボタンには、[Restart (Ctrl+Shift+F5)]\(再起動 (Ctrl+Shift+F5)\) というホバー画像が表示されています。](media/common/debug-action-refresh.png)
+![[デバッグ] ツール バーは、ページの上部中央 (ページ タイトルの直下) にある小さなペインです。 再起動ボタンは円状の矢印で表され、強調表示されています。 ボタンには、[再起動 (Ctrl+Shift+F5)] というホバー画像が表示されています。](media/common/debug-action-refresh.png)
 
 ブラウザーでサービスを開き、更新されたメッセージが表示されることに注目します。
 
