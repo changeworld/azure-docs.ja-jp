@@ -123,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: Linux を実行中の Azure VM のアプリ整合性バックアップを構成する
               href: backup-azure-linux-app-consistent.md
+            - name: 選択的ディスク バックアップ
+              href: selective-disk-backup-restore.md
         - name: 復元
           items:
             - name: Azure VM の復元について
@@ -351,7 +353,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: security-overview.md
