@@ -33,8 +33,8 @@ ms.locfileid: "84040883"
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. **[Clone or download]\(クローンまたはダウンロード\)** をクリックします。
 3. **[Download zip]** をクリックして、ファイルを保存します。
-4. zip ファイルを右クリックし、 **[Properties]\(プロパティ\)** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例: _WingtipTicketsSaaS-DbPerTenant-master.zip_)
-5. **[General]\(全般\)** タブで **[Unblock]\(ブロックの解除\)** を選択します。
+4. zip ファイルを右クリックし、 **[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例: _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+5. **[全般]** タブで **[ブロックの解除]** を選択します。
 6. **[OK]** をクリックします。
 7. ファイルを解凍します。
 
