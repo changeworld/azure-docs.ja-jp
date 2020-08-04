@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255712"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283454"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のストレージ アカウント アクセスを制御する
 
@@ -87,6 +87,11 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 | *マネージド ID* | サポートされています      | サポートされています        | サポートされています     |
 | *ユーザー ID*    | サポートされています      | サポートされています        | サポートされています     |
 
+
+> [!IMPORTANT]
+> ファイアウォールで保護されているストレージにアクセスする場合に使用できるのは、マネージド ID のみです。 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロール](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
+>
+
 ## <a name="credentials"></a>資格情報
 
 Azure Storage にあるファイルに対してクエリを実行するには、SQL オンデマンド エンドポイントに、認証情報を含む資格情報が必要です。 2 種類の資格情報が使用されます。
@@ -109,11 +114,7 @@ GRANT ALTER ANY CREDENTIAL TO [user_name];
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-スムーズな Azure AD パススルーの実行を確保するために、すべてのユーザーには、既定で `UserIdentity` 資格情報を使用する権限が与えられます。 これは、Azure Synapse ワークスペースのプロビジョニング時に、次のステートメントの自動実行によって実現されます。
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+スムーズな Azure AD パススルーの実行を確保するために、すべてのユーザーには、既定で `UserIdentity` 資格情報を使用する権限が与えられます。
 
 ## <a name="server-scoped-credential"></a>サーバースコープ資格情報
 
@@ -243,7 +244,7 @@ SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
                                 DATA_SOURCE = [mysample],
-                                FORMAT=PARQUET) as rows;
+                                FORMAT='PARQUET') as rows;
 GO
 ```
 
@@ -288,7 +289,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
 GO
 ```
 

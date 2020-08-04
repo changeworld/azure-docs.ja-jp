@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop のアプリ グループを管理する - Azure
-description: Windows Virtual Desktop のテナントを Azure Active Directory に設定する方法を説明します。
+title: Windows Virtual Desktop (クラシック) のアプリ グループを管理する - Azure
+description: Windows Virtual Desktop (クラシック) のテナントを Azure Active Directory に設定する方法を説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 55c2ed5f9066d85643588f77806bbd41e92dd16b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fcf946c4bde89f3c14e78744305bc274ea67962f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613948"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284984"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop のアプリ グループを管理する
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) のアプリ グループを管理する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../manage-app-groups.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../manage-app-groups.md)を参照してください。
 
 Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
 

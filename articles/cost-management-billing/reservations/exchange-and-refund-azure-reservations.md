@@ -3,26 +3,25 @@ title: Azure の予約のセルフサービスによる交換と払戻
 description: Azure の予約を交換または払い戻す方法について説明します。
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 07/01/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 3f41f26e6934e156ab38340a74e2c070b26cefb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287644"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
-Azure の予約は、変化するニーズを満たすために柔軟性を提供します。 予約は、同じ種類の別の予約と交換できます。つまり仮想マシンの予約と引き換えに、あらゆるサイズまたはリージョンの仮想マシンの予約を購入することが可能です。 同様に、SQL PaaS Database の予約と引き換えに、あらゆる種類またはリージョンの SQL PaaS Database の予約を購入することができます。 予約の払い戻しを行うこともできますが、取り消した予約コミットメントの総額が、12 か月のローリング ウィンドウで 50,000 米国ドルを超えないようにする必要があります。 Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予約、Azure Red Hat Open Shift の予約、Red Hat プラン、SUSE Linux プランは払い戻しの対象外となります。
+Azure の予約は、変化するニーズを満たすために柔軟性を提供します。 変化するニーズを満たすために、予約を同じ種類の別の予約と交換できます。 たとえば、他の任意のサイズまたはリージョンの別の VM の予約を購入して、仮想マシンの予約と交換することができます。 同様に、任意の種類またはリージョンの SQL PaaS Database の予約を購入して、SQL PaaS Database の予約と交換することができます。 予約は払い戻しも可能ですが、ご自分の請求範囲 (EA、Microsoft 顧客契約、Microsoft Partner Agreement など) のすべての予約コミットメントのキャンセル額合計が、12 か月間のローリング ウィンドウで 50,000 米国ドルを超えることはできません。 Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予約、Azure Red Hat Open Shift の予約、Red Hat プラン、SUSE Linux プランは払い戻しの対象外となります。
 
 セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制やクラウド ソリューション プロバイダー (CSP) などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
 
-既存の予約を交換または払い戻しするには、予約注文の所有者アクセス権を持っている必要があります。 [予約を管理できるユーザーを追加または変更する](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)ことができます。
-
 > [!NOTE]
-> Microsoft では、現在予約の払戻の中途解約料は請求していません。 将来的には、払戻料金を請求するようになる場合もあります。 現在、この料金がいつから有効になるかは未定です。
+> - **既存の予約を交換または払い戻しするには、予約注文の所有者のアクセス許可を持っている必要があります**。 [予約を管理できるユーザーを追加または変更する](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)ことができます。
+> - Microsoft では、現在予約の払戻の中途解約料は請求していません。 将来的には、払戻料金を請求するようになる場合もあります。 現在、この料金がいつから有効になるかは未定です。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>既存の予約の交換または払戻を行う方法
 
@@ -76,7 +75,8 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 **払戻ポリシー**
 
 - 現在、中途解約料は課金していませんが、将来的には 12% の解約料が発生する可能性があります。
-- 取り消したコミットメントの合計が、12 か月のローリング ウィンドウで 50,000 ドルを超えないようにする必要があります。 たとえば、1 か月あたり 100 米国ドルの 3 年間の予約を 18 か月目に払い戻した場合、取り消したコミットメント額は 1,800 米国ドルとなります。 この払い戻し後は、48,200 米国ドルが、払い戻し可能な新しい限度額となります。 この払い戻しから 365 日後、48,200 米国ドルという上限が 1,800 米国ドル増やされ、新しいプールは 50,000 米国ドルとなります。 以降すべての予約取り消しは同じプールから減額され、同じ補充ロジックが適用されます。
+- 1 つの請求プロファイルまたは 1 回の加入契約のすべての予約コミットメントのキャンセル額合計は、12 か月間のローリング ウィンドウにおいて 50,000 米国ドルを超えることはできません。 たとえば、1 か月あたり 100 米国ドルの 3 年間の予約を 18 か月目に払い戻した場合、取り消したコミットメント額は 1,800 米国ドルとなります。 この払い戻し後は、48,200 米国ドルが、払い戻し可能な新しい限度額となります。 この払い戻しから 365 日以内に、48,200 米国ドルの上限が 1,800 米国ドル増やされ、ご自分の新しいプールは 50,000 米国ドルとなります。 その請求プロファイルまたは EA 加入契約のその他のすべての予約取り消しは同じプールから減額され、同じ補充ロジックが適用されます。
+- 1 つの請求プロファイルまたは 1 回の EA 加入契約の 12 か月間の上限 50,000 米国ドルを超える払い戻しは、Azure では処理できません。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
 - 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
 

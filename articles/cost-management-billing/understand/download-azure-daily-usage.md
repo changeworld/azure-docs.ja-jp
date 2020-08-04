@@ -7,13 +7,13 @@ ms.author: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 3a7e1e8670911d361b3c59aacc0973eac035fb70
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/27/2020
+ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322034"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 
@@ -21,7 +21,7 @@ Azure の利用状況と請求金額に対する日単位の内訳を Azure port
 
 Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と請求金額を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。  Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の利用状況と請求金額を表示してダウンロードできるのは、取引先組織である Microsoft の全体管理者ロールと管理者エージェント ロールだけです。 [Azure portal で課金アカウントの種類を確認](#check-your-billing-account-type)してください。
 
-使用量と請求金額のダウンロード オプションは、使用するサブスクリプションの種類により異なります。 
+使用量と請求金額のダウンロード オプションは、使用するサブスクリプションの種類により異なります。
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Azure portal から利用状況をダウンロードする (.csv)
 
@@ -34,7 +34,6 @@ Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と
 1. 右側にある**ダウンロード アイコン**または省略記号 (`...`) を選択します。  
   ![[使用量 + 請求金額] の [ダウンロード] の場所を示すスクリーンショット](./media/download-azure-daily-usage/download-usage-others.png)  
 1. 右側に [ダウンロード] ペインが開きます。 **[使用量の詳細]** セクションから **[ダウンロード]** を選択します。  
-
 
 ## <a name="download-usage-for-ea-customers"></a>EA のお客様の使用量のダウンロード
 
@@ -54,10 +53,9 @@ Microsoft 顧客契約を結んでいる場合は、現在の請求期間の月�
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. "*コスト管理 + 請求*" を検索します。
 3. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
-4. **[概要]** 領域で、月度累計請求金額の下にあるダウンロード リンクを見つけます。
-5. **[Azure の利用状況と請求金額]** を選択します。
-
-    ![概要からのダウンロードを示すスクリーンショット](./media/download-azure-daily-usage/open-usage01.png)
+4. **[概要]** 領域で、最近の請求金額の下にあるダウンロード リンクを見つけます。
+5. **[使用状況と料金をダウンロードする]** を選択します。  
+    :::image type="content" source="./media/download-azure-daily-usage/open-usage01.png" alt-text="概要からのダウンロードを示すスクリーンショット" lightbox="./media/download-azure-daily-usage/open-usage01.png" :::
 
 ## <a name="check-your-billing-account-type"></a>課金アカウントの種類を確認する
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

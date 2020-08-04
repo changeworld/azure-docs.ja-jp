@@ -1,6 +1,6 @@
 ---
 title: VM ネットワーク トラフィックのフィルター処理 - スクリプト サンプル
-description: Azure CLI スクリプト サンプル - VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理
+description: Azure CLI スクリプト サンプルを使用して、仮想マシン (VM) のネットワーク トラフィックの着信および送信トラフィックをフィルター処理します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 71de6c9c3f742e006762fb8778948cff2e5d96af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6832cf08abd179b6108f971227b5c054c5617337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74084046"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281635"
 ---
-# <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理のスクリプト サンプル
+# <a name="filter-inbound-and-outbound-vm-network-traffic-using-an-azure-cli-script-sample"></a>Azure CLI スクリプト サンプルを使用した VM の着信および送信ネットワーク トラフィックのフィルター処理
 
 このスクリプト サンプルは、フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへの着信ネットワーク トラフィックは、HTTP、HTTPS、SSH に制限されますが、バックエンド サブネットからインターネットへの送信トラフィックは許可されません。 スクリプトを実行すると、2 つの NIC がアタッチされた 1 つの仮想マシンが作成されます。 各 NIC は異なるサブネットに接続されます。
 

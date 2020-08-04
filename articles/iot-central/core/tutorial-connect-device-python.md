@@ -3,17 +3,17 @@ title: チュートリアル - 汎用の Python クライアント アプリを 
 description: このチュートリアルでは、デバイス開発者を対象に、Python クライアント アプリが実行されているデバイスを Azure IoT Central アプリケーションに接続する方法を説明します。 デバイス機能モデルをインポートしてデバイス テンプレートを作成し、接続されているデバイスを対話的に操作できるビューを追加します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 98aa452e8b0b5cf04edd319298c2b35e6097148e
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: d7093895392cb26e25e8054f0cdcb6870ce9e18a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971064"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336109"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)
 
@@ -38,7 +38,7 @@ ms.locfileid: "85971064"
 
 この記事の手順を完了するには、次のものが必要です。
 
-* **カスタム アプリケーション** テンプレートを使用して作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+* **カスタム アプリケーション** テンプレートを使用して作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。 アプリケーションは、2020 年 7 月 14 日以降に作成されている必要があります。
 * [Python](https://www.python.org/) バージョン 3.7 以降がインストールされた開発用マシン。 コマンドラインで `python3 --version` を実行して、お使いのバージョンを確認できます。 Python は、さまざまなオペレーティング システムで使用できます。 このチュートリアルの手順では、Windows コマンド プロンプトで **python3** コマンドを実行していることを前提としています。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -214,18 +214,18 @@ ms.locfileid: "85971064"
 
     オペレーターは、コマンド履歴で応答ペイロードを表示できます。
 
-1. IoT Central アプリケーションから送信されるプロパティの更新を処理するために、次の関数を `main` 関数内に追加します。
+1. IoT Central アプリケーションから送信されるプロパティの更新を処理するために、次の関数を `main` 関数内に追加します。 [書き込み可能なプロパティの更新](concepts-telemetry-properties-commands.md#writeable-property-types)に応答してデバイスから送信されるメッセージには、`av` フィールドと `ac` フィールドが含まれている必要があります。 `ad` フィールドは省略可能です。
 
     ```python
       async def name_setting(value, version):
         await asyncio.sleep(1)
         print(f'Setting name value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'name' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       async def brightness_setting(value, version):
         await asyncio.sleep(5)
         print(f'Setting brightness value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       settings = {
         'name': name_setting,
@@ -261,7 +261,7 @@ ms.locfileid: "85971064"
 
       if device_client is not None and device_client.connected:
         print('Send reported properties on startup')
-        await device_client.patch_twin_reported_properties({'state': 'true'})
+        await device_client.patch_twin_reported_properties({'state': 'true', 'processorArchitecture': 'ARM', 'swVersion': '1.0.0'})
         tasks = asyncio.gather(
           send_telemetry(),
           command_listener(),
@@ -304,11 +304,14 @@ python3 environmental_sensor.py
 
 ![クライアント アプリケーションを観察する](media/tutorial-connect-device-python/run-application-2.png)
 
+## <a name="view-raw-data"></a>生データを表示する
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
 デバイス開発者として、Python を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
 
-* 「[MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](./howto-connect-devkit.md)」ハウツー記事で、実際のデバイスを IoT Central に接続する方法を確認します。
 * デバイス コードを実装する際のデバイス テンプレートの役割について詳しくは、「[デバイス テンプレートとは](./concepts-device-templates.md)」をご覧ください。
 * IoT Central にデバイスを登録する方法と IoT Central でデバイスの接続を保護する方法の詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
 

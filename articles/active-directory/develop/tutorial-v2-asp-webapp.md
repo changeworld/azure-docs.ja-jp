@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058287"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -407,7 +407,7 @@ Microsoft ID プラットフォームと統合するアプリケーションは�
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
-サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定されている HTTPS の URL です。 ホーム ページには、 *"Hello \<ユーザー>"* というウェルカム メッセージ、サインアウトのためのリンク、ユーザーの要求を表示するリンクが表示されます。 ユーザーの要求へのリンクは、前に作成した Claims コントローラーに接続しています。
+サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定されている HTTPS の URL です。 ホーム ページには、 *"Hello \<user>"* というウェルカム メッセージ、サインアウトのためのリンク、ユーザーの要求を表示するリンクが表示されます。 ユーザーの要求へのリンクは、前に作成した Claims コントローラーに接続しています。
 
 ### <a name="view-the-users-claims"></a>ユーザーの要求を表示する
 
@@ -468,13 +468,13 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>オプション 3:カスタム メソッドを使用して発行者を検証する
 
-**IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters クラス](/previous-versions/visualstudio/dn464192(v=vs.114))に関するページを参照してください。
+**IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) クラスに関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Web アプリが Web API を呼び出す方法について学習します。
 
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>このクイックスタート ガイドで使用されているアプリケーションの作成方法について学習します
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションの作成方法を確認する
 
 Microsoft ID プラットフォームで Web API を呼び出す Web アプリについてさらに学習します。
 

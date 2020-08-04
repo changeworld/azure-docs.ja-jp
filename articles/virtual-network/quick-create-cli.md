@@ -1,7 +1,7 @@
 ---
 title: 仮想ネットワークの作成 - クイック スタート - Azure CLI
 titlesuffix: Azure Virtual Network
-description: このクイック スタートでは、Azure CLI を使用して仮想ネットワークを作成する方法について説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
+description: このクイック スタートでは、Azure CLI を使用して仮想ネットワークを作成する方法について説明します。 仮想ネットワークでは、Azure リソースが互いに通信を行ったり、インターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed535c76ae3c456c8aa7d2e14301b9cb9cb288be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235194"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283182"
 ---
-# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用した仮想ネットワークの作成
+# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用した仮想ネットワークの作成
 
 仮想ネットワークによって、仮想マシン (VM) などの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。 このクイック スタートでは、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成したら、2 つの VM を仮想ネットワークにデプロイします。 次にインターネットから VM に接続し、新しい仮想ネットワークを介してプライベートで通信します。
 

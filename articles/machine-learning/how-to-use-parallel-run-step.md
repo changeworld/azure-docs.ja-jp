@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520631"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288882"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,13 +27,13 @@ ParallelRunStep では、テラバイト規模の構造化または非構造化�
 
 この記事では、次のタスクについて説明します。
 
-> * 機械学習リソースを設定する。
-> * バッチ推論のデータの入出力を構成する。
-> * [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) データセットに基づいて事前トレーニング済みイメージ分類モデルを準備する。 
-> * ご自身の推論スクリプトを記述する。
-> * ParallelRunStep を含む[機械学習パイプライン](concept-ml-pipelines.md)を作成し、MNIST テスト イメージに対してバッチ推論を実行する。 
-> * 新しいデータ入力とパラメーターを使用して、バッチ推論の実行を再送信する。 
-> * 結果を表示します。
+> 1. 機械学習リソースを設定する。
+> 1. バッチ推論のデータの入出力を構成する。
+> 1. [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) データセットに基づいて事前トレーニング済みイメージ分類モデルを準備する。 
+> 1.  ご自身の推論スクリプトを記述する。
+> 1. ParallelRunStep を含む[機械学習パイプライン](concept-ml-pipelines.md)を作成し、MNIST テスト イメージに対してバッチ推論を実行する。 
+> 1. 新しいデータ入力とパラメーターを使用して、バッチ推論の実行を再送信する。 
+> 1. 結果を表示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -100,6 +100,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ## <a name="configure-inputs-and-output"></a>入出力を構成する
 
@@ -203,16 +205,16 @@ model = Model.register(model_path="models/",
 スクリプトには 2 つの関数が "*必ず必要*" です。
 - `init()`:この関数は、後で推論するためのコストのかかる準備、または一般的な準備を行うときに使用します。 たとえば、これを使って、モデルをグローバル オブジェクトに読み込みます。 この関数は、プロセスの開始時に 1 回だけ呼び出されます。
 -  `run(mini_batch)`:この関数は、`mini_batch` インスタンスごとに実行されます。
-    -  `mini_batch`:ParallelRunStep は run メソッドを呼び出して、そのメソッドに、リストまたは Pandas データフレームのいずれかを引数として渡します。 mini_batch のエントリはそれぞれ、ファイル パス (入力が FileDataset の場合) または Pandas データフレーム (入力が TabularDataset の場合) になります。
-    -  `response`: run() メソッドは、Pandas データフレームまたは配列を返します。 append_row output_action の場合、これらの返される要素は、共通の出力ファイルに追加されます。 summary_only の場合、要素のコンテンツは無視されます。 すべての出力アクションについて、返される出力要素はそれぞれ、入力ミニバッチ内で成功した 1 つの入力要素の実行を示します。 入力を実行出力結果にマップできるだけの十分なデータが実行結果に含まれていることを確認してください。 実行の出力は出力ファイルに書き込まれますが、順序どおりの書き込みは保証されません。出力でいずれかのキーを使って、入力にマップする必要があります。
+    -  `mini_batch`: `ParallelRunStep` は run メソッドを呼び出して、そのメソッドに、リストまたは Pandas `DataFrame` のいずれかを引数として渡します。 mini_batch のエントリはそれぞれ、ファイル パス (入力が `FileDataset` の場合) または Pandas `DataFrame` (入力が `TabularDataset` の場合) になります。
+    -  `response`: run() メソッドは、Pandas `DataFrame` または配列を返します。 append_row output_action の場合、これらの返される要素は、共通の出力ファイルに追加されます。 summary_only の場合、要素のコンテンツは無視されます。 すべての出力アクションについて、返される出力要素はそれぞれ、入力ミニバッチ内で成功した 1 つの入力要素の実行を示します。 入力を実行出力結果にマップできるだけの十分なデータが実行結果に含まれていることを確認してください。 実行の出力は出力ファイルに書き込まれますが、順序どおりの書き込みは保証されません。出力でいずれかのキーを使って、入力にマップする必要があります。
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -287,7 +289,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 `ParallelRunConfig` は、Azure Machine Learning パイプライン内にある `ParallelRunStep` インスタンスの主要な構成です。 これは、お使いのスクリプトをラップし、必要なパラメーターを構成するときに使用します。たとえば、次のようなエントリです。
 - `entry_script`:複数のノードで並列で実行されるローカル ファイル パスとしてのユーザー スクリプト。 `source_directory` が存在する場合は、相対パスを使用します。 それ以外の場合は、マシンでアクセス可能な任意のパスを使用します。
-- `mini_batch_size`:1 つの `run()` 呼び出しに渡されたミニバッチのサイズ (省略可能。既定値は、FileDataset の場合は `10` ファイル、TabularDataset の場合は `1MB` です)。
+- `mini_batch_size`:1 つの `run()` 呼び出しに渡されたミニバッチのサイズ (省略可能。既定値は、`FileDataset` の場合は `10` ファイルで、`TabularDataset` の場合は `1MB` です。)
     - `FileDataset` の場合、これはファイル数を示し、最小値は `1` です。 複数のファイルを 1 つのミニバッチに結合できます。
     - `TabularDataset` の場合は、データのサイズです。 サンプル値は、`1024`、`1024KB`、`10MB`、および `1GB` です。 推奨値は `1MB` です。 `TabularDataset` のミニバッチは、ファイル境界を超えません。 たとえば、さまざまなサイズの .csv ファイルがある場合、ファイルの最小サイズは 100 KB で、最大サイズは 10 MB です。 `mini_batch_size = 1MB` を設定すると、1 MB より小さいファイルは 1 つのミニバッチとして処理されます。 1 MB を超えるファイルは、複数のミニバッチに分割されます。
 - `error_threshold`:処理中に無視する必要のあるエラーの数。`TabularDataset` の場合はレコード エラー数、`FileDataset` の場合はファイル エラー数を示します。 入力全体に対するエラーの数がこの値を超えると、ジョブは中止されます。 エラーのしきい値は入力全体を対象としています。`run()` メソッドに送信された個々のミニバッチを対象にしているものではありません。 範囲は `[-1, int.max]` です。 `-1` 部分は、処理中にすべてのエラーを無視することを示します。
@@ -304,7 +306,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`:`run()` メソッド呼び出しのタイムアウト (秒単位)。 (省略可能、既定値は `60` です)
 - `run_max_try`:ミニバッチに対する `run()` の最大試行回数。 例外がスローされた場合、`run()` は失敗します。`run_invocation_timeout` に到達した場合は何も返されません (省略可能。既定値は `3` です)。 
 
-`mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout`、`run_max_try` を `PipelineParameter` として指定すると、パイプラインの実行を再送信するときに、パラメーターの値を微調整できます。 この例では、`mini_batch_size` と `Process_count_per_node` に PipelineParameter を使用し、後で実行を再送信するときに、これらの値を変更します。 
+`mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout`、`run_max_try` を `PipelineParameter` として指定すると、パイプラインの実行を再送信するときに、パラメーターの値を微調整できます。 この例では、`mini_batch_size` と `Process_count_per_node` に `PipelineParameter` を使用し、後で実行を再送信するときに、これらの値を変更します。 
 
 この例では、前に説明した `digit_identification.py` スクリプトを使用していることを前提としています。 独自のスクリプトを使用する場合は、`source_directory` および `entry_script` パラメーターを適宜変更します。
 
@@ -394,7 +396,7 @@ pipeline_run_2.wait_for_completion(show_output=True)
 ```
 ## <a name="view-the-results"></a>結果の確認
 
-上記の実行の結果は、PipelineData オブジェクトに指定したデータストアに出力データとして書き込まれます。この場合、これは "*推論*" と呼ばれます。 結果は既定の BLOB コンテナーに格納されるので、ストレージ アカウントに移動して Storage Explorer を使用して表示できます。ファイル パスは、azureml-blobstore-*GUID*/azureml/*RunId*/*output_dir* です。
+上記の実行結果は、`PipelineData` オブジェクトに指定した `DataStore` に出力データとして書き込まれます。この場合、これは*推論*と呼ばれます。 結果は既定の BLOB コンテナーに格納されるので、ストレージ アカウントに移動して Storage Explorer を使用して表示できます。ファイル パスは、azureml-blobstore-*GUID*/azureml/*RunId*/*output_dir* です。
 
 また、このデータをダウンロードして結果を確認することもできます。 サンプル コード (最初の 10 行のみ) を次に示します。
 

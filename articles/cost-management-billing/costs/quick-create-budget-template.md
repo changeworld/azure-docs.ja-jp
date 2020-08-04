@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252438"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385783"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して予算を作成する
 
@@ -29,13 +29,31 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-ARM テンプレートでサポートされるのは、マイクロソフト エンタープライズ契約 (EA) の Azure サブスクリプションのみです。 その他の種類のサブスクリプションは、このテンプレートではサポートされません。
-
-予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。 Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。
-
-予算が作成された後、予算を表示するには、少なくとも Azure アカウントの読み取りアクセス権が必要です。
-
 新しいサブスクリプションをご利用の場合、予算の作成など、Cost Management の機能をすぐには使用できません。 すべての Cost Management 機能を使用できるようになるまでに、最大 48 時間かかる場合があります。
+
+予算は、次の種類の Azure アカウントの種類とスコープに対してサポートされています。
+
+- Azure のロールベースのアクセス制御のスコープ
+    - 管理グループ
+    - サブスクリプション
+- Enterprise Agreement のスコープ
+    - 請求先アカウント
+    - 部署
+    - 登録アカウント
+- 個々の契約
+    - 請求先アカウント
+- Microsoft Customer Agreement のスコープ
+    - 請求先アカウント
+    - 請求プロファイル
+    - 請求書セクション
+    - Customer
+- AWS スコープ
+    - 外部アカウント
+    - 外部サブスクリプション
+
+予算を表示するには、少なくとも Azure アカウントの読み取りアクセス権が必要です。
+
+Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。
 
 ユーザーおよびグループごとの予算については、サブスクリプションに従い、次の Azure アクセス許可 (スコープ) がサポートされています。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
@@ -49,7 +67,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/create-budget)からのものです。
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
 
 テンプレートには、1 つの Azure リソースが定義されています。
 
@@ -63,27 +81,29 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 2. 次の値を選択または入力します。
 
-   [![Resource Manager テンプレート、予算の作成、ポータルでのデプロイ](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
-
+   :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager テンプレート、予算の作成、ポータルでのデプロイ" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
+   
     * **サブスクリプション**: Azure サブスクリプションを選択します。
-    * **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力して、 **[OK]** をクリックするか、既存のリソース グループを選択します。
-    * **場所**: 場所を選択します。 たとえば **[米国中部]** です。
+    * **Resource group**: 必要に応じて、既存リソース グループ、または **[新規作成]** を選択します。
+    * **リージョン**: Azure のリージョンを選択します。 たとえば **[米国中部]** です。
     * **予算名**: 予算の名前を入力します。 リソース グループ内で一意であることが必要です。 使用できる文字は、英数字、アンダー スコア、ハイフンのみです。
-    * **Amount (量)** : 予算で追跡するコストまたは使用量の合計を入力します。
-    * **予算カテゴリ**: 予算のカテゴリ (予算で追跡するのが **[コスト]** であるか **[使用量]** であるか) を選択します。
+    * **金額**: 予算で追跡するコストの合計額を入力します。
     * **時間グレイン**: 予算の対象となる時間を入力します。 指定できる値は、毎月、四半期ごと、毎年です。 時間グレインの終了時点で予算はリセットされます。
     * **開始日**: 月の第 1 日目に対する開始日を入力します (YYYY-MM-DD 形式)。 将来の開始日は、今日から 3 か月以内でなければなりません。 時間グレイン期間に対する過去の開始日を指定することができます。
-    * **終了日**: 予算の終了日を YYYY-MM-DD 形式で入力します。 指定しなかった場合は、既定で開始日から 10 年に設定されます。
-    * **演算子**: 比較演算子を選択します。 指定できる値は、EqualTo、GreaterThan、GreaterThanOrEqualTo です。
-    * **しきい値**: 通知のしきい値を入力します。 コストがしきい値を超えたとき、通知が送信されます。 常にパーセント単位となります。0 から 1000 の範囲で指定してください。
-    * **連絡先の電子メール**: しきい値を超えたときに予算の通知が送信される一連のメール アドレスを入力します。 `["user1@domain.com","user2@domain.com"]` 形式で指定する必要があります。
+    * **終了日**: 予算の終了日を YYYY-MM-DD 形式で入力します。 
+    * **最初のしきい値**: 最初の通知のしきい値を入力します。 コストがしきい値を超えたとき、通知が送信されます。 常にパーセント単位となります。0 から 1000 の範囲で指定してください。
+    * **2 つめのしきい値**: 2 つめの通知のしきい値を入力します。 コストがしきい値を超えたとき、通知が送信されます。 常にパーセント単位となります。0 から 1000 の範囲で指定してください。
     * **Contact Roles (連絡先の役割)** : しきい値を超えたときに予算の通知が送信される一連の連絡先の役割を入力します。 既定値は、所有者、共同作成者、閲覧者です。 `["Owner","Contributor","Reader"]` 形式で指定する必要があります。
+    * **連絡先の電子メール**: しきい値を超えたときに予算の通知の送信先となる一連のメール アドレスを入力します。 `["user1@domain.com","user2@domain.com"]` 形式で指定する必要があります。
     * **Contact Groups (連絡先グループ)** : しきい値を超えたときに予算の通知が送信される一連のアクション グループのリソース ID を完全なリソース URI として入力します。 文字列の配列を指定できます。 `["action group resource ID1","action group resource ID2"]` 形式で指定する必要があります。 アクション グループを使用しない場合は、「`[]`」と入力してください。
-    * **Resources Filter (リソース フィルター)** : リソースに使用する一連のフィルターを入力します。 `["Resource Filter Name1","Resource Filter Name2"]` 形式で指定する必要があります。 フィルターを適用しない場合は、「`[]`」と入力してください。 リソース フィルターを入力する場合は、 **[Meters Filters]\(メーター フィルター\)** の値も入力する必要があります。
-    * **[Meters Filter]\(メーター フィルター\)** : メーターに対する一連のフィルターを入力します。予算カテゴリが **[使用量]** である場合は必須です。 `["Meter Filter Name1","Meter Filter Name2"]` 形式で指定する必要があります。 **リソース フィルター**を入力しなかった場合は、「`[]`」と入力してください。
-    * **上記の使用条件に同意する**: 選択。
+    * **Resource Group のフィルター値** フィルター処理する一連のリソース グループ名を入力します。 `["Resource Group Name1","Resource Group Name2"]` 形式で指定する必要があります。 フィルターを適用しない場合は、「`[]`」と入力してください。 
+    * **測定カテゴリのフィルター値** 一連の Azure サービス測定カテゴリを入力します。 `["Meter Category1","Meter Category2"]` 形式で指定する必要があります。 フィルターを適用しない場合は、「`[]`」と入力してください。
+   
+3. ご利用の Azure サブスクリプションの種類に応じて、次のいずれかのアクションを実行します。
+   - **[Review + create]\(レビュー + 作成\)** を選択します。
+   - 使用条件を確認し、 **[上記の使用条件に同意する]** を選択し、 **[購入]** を選択します。
 
-3. **[購入]** を選択します。 予算が正常にデプロイされた後、通知が表示されます。
+4. **[確認と作成]** を選択した場合は、テンプレートが検証されます。 **［作成］** を選択します  
 
    ![Resource Manager テンプレートで予算をデプロイする場合のポータルの通知](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 

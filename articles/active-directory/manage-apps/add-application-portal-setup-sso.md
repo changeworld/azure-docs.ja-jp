@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b19427070d982918584c13c25518cffe55497000
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223331"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387287"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへのシングル サインオン (SSO) を設定する
 
@@ -55,6 +55,8 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 
 1. SAML ベースの SSO に Azure AD を使用するようにアプリケーションを構成するプロセスは、アプリケーションによって異なります。 GitHub に関するガイダンスへのリンクが表示されています。 他のアプリに関するガイドは、「[SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/)」で見つけることができます。
 1. アプリケーションへの SSO を設定するには、そのガイドに従ってください。 多くのアプリケーションには、SSO 機能に関する特定のサブスクリプション要件があります。 たとえば、GitHub の場合は Enterprise サブスクリプションが必要です。
+    > [!TIP]
+    > SAML 構成オプションの詳細については、「[SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)」を参照してください。
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="GitHub の価格設定ページの Enterprise サブスクリプション内に表示されたシングル サインオン オプションを示すスクリーンショット。":::
 

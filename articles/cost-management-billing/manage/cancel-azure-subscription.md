@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: banders
-ms.openlocfilehash: 2d8b529683f4d07bc47010711d65ca40536823fb
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039756"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -25,7 +25,7 @@ ms.locfileid: "82996558"
 * サービスをシャットダウンする。 [管理ポータルのリソース ページ](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)に移動し、実行中の仮想マシン、アプリケーション、またはその他のサービスをすべて**停止**します。
 * データの移行を検討する。 「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 * すべてのリソースとすべてのリソース グループを削除します。
-* `AssignableScopes` でこのサブスクリプションを参照しているカスタム ロールがある場合は、それらのカスタム ロールを更新して、このサブスクリプションを削除する必要があります。 サブスクリプションを取り消した後でカスタム ロールを更新しようとすると、エラーが発生する可能性があります。 詳細については、「[カスタム ロールに関する問題のトラブルシューティング](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles)」と、「[Azure リソースのカスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
+* `AssignableScopes` でこのサブスクリプションを参照しているカスタム ロールがある場合は、それらのカスタム ロールを更新して、このサブスクリプションを削除する必要があります。 サブスクリプションを取り消した後でカスタム ロールを更新しようとすると、エラーが発生する可能性があります。 詳細については、[カスタム ロールに関する問題のトラブルシューティング](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles)に関するセクションと、「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
 
 有料の Azure サポート プランを取り消しても、サブスクリプション期間の残りの期間について請求されます。 詳細については、「[Azure のサポート プラン](https://azure.microsoft.com/support/plans/)」を参照してください。
 

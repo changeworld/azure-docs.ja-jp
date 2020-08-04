@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338029"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントにアプリケーションを追加する
 
@@ -53,7 +53,7 @@ Azure AD テナントにアプリケーションを追加するには、次の�
 6. 追加するアプリケーションはギャラリーで参照できます。または、検索ボックスに名前を入力してアプリケーションを検索します。 次に、結果からアプリケーションを選択します。 フォームでは、組織のニーズに合わせてアプリケーションの名前を編集できます。 この例では、GitHub を選択し、名前を **GitHub-test** に変更しました。
     ![ギャラリーからのアプリケーションの追加方法が示されている](media/add-application-portal/create-application.png)
     >[!TIP]
-    >探しているアプリケーションがギャラリーにない場合は、「**独自のアプリケーションの作成**」のリンクをクリックすることができます。 Microsoft は既に多くのアプリケーション開発者と協力して、Azure AD と連携するように事前に構成しています。 これらは、ギャラリーに表示されるアプリです。 ただし、追加するアプリが一覧に表示されない場合は、新しい汎用アプリを作成し、自分で、またはそれを作成した開発者のガイダンスに従って構成することができます。
+    >探しているアプリケーションがギャラリーにない場合は、 **[独自のアプリケーションの作成]** のリンクをクリックして、 **[アプリケーションでどのような操作を行いたいですか?]** で **[ギャラリーに見つからないその他のアプリケーションを統合します]** を選択します。 Microsoft は既に多くのアプリケーション開発者と協力して、Azure AD と連携するように事前に構成しています。 これらは、ギャラリーに表示されるアプリです。 ただし、追加するアプリが一覧に表示されない場合は、新しい汎用アプリを作成し、自分で、またはそれを作成した開発者のガイダンスに従って構成することができます。
 7. **［作成］** を選択します [作業の開始] ページが表示され、組織のアプリケーションを構成するためのオプションが表示されます。
 
 アプリケーションの追加が完了しました。 次のクイックスタートでは、アプリケーションのロゴを変更し、他のプロパティを編集する方法を示します。

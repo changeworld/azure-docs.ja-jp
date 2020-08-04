@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6ea0b28f5e0f23e0f8bb30e8fe2b0f792bce0709
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517622"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287449"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway の新着情報
 
@@ -27,7 +27,7 @@ Azure Application Gateway は、継続的に更新されます。 常に最新�
 
 |機能  |説明  |追加日  |
 |---------|---------|---------|
-| リスナーにおけるワイルドカードのホスト名 (プレビュー) | マルチサイト リスナーでワイルドカードのホスト名を定義し、リスナー 1 つにつき最大 5 つのホスト名を定義できるようになりました。 詳細については、「[リスナーにおけるワイルドカードのホスト名 (プレビュー)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)」を参照してください。ステップ バイ ステップ ガイドについては、[Azure portal を使用して Application Gateway で複数のサイトをホストする](create-multiple-sites-portal.md)方法に関するページを参照してください。 | 2020 年 7 月 |
+| リスナーにおけるワイルドカードのホスト名 (プレビュー) | マルチサイト リスナーでワイルドカードのホスト名を定義し、リスナー 1 つにつき最大 5 つのホスト名を定義できるようになりました。 詳細については、[リスナーでのワイルドカードのホスト名 (プレビュー)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) に関する記事を参照してください。 | 2020 年 7 月 |
 | URL 書き換え (プレビュー) | URL 書き換えを使用して、URL パスとクエリ文字列パラメーターの書き換えができるようになりました。 詳細については、[HTTP ヘッダーと URL の書き換え](rewrite-http-headers-url.md)に関するページを参照してください。ステップ バイ ステップ ガイドについては、[Azure portal を使用して Application Gateway で URL を書き換える](rewrite-url-portal.md)方法に関するページを参照してください。 | 2020 年 7 月 |
 | 正常性プローブ用のカスタム ポート | Application Gateway v2 SKU の正常性プローブの構成で、カスタム ポートを指定できるようになりました。 詳細については、[正常性プローブの概要](application-gateway-probe-overview.md)に関するページを参照してください。 | 2020 年 7 月 |
 | Application Gateway イングレス コントローラー (AGIC) AKS アドオン (プレビュー) |Azure CLI から 1 行で、Application Gateway イングレス コントローラーをネイティブ AKS アドオンとしてデプロイできるようになりました。 AKS アドオンとなったことで、AGIC をご利用の AKS クラスターで実行したまま、フル マネージドのサービスとしてご利用いただけます。 詳細については、[AGIC アドオンの相違点](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)に関するセクションを参照してください。 |2020 年 6 月 |

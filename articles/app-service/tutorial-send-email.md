@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083244"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -17,7 +17,7 @@ ms.locfileid: "82562306"
 
 - トランザクションの確認メールを送信する
 - Facebook グループにユーザーを追加する
-- SAP や SalesForce などのサードパーティ製システムに接続する
+- SAP や Salesforce などのサードパーティ製システムに接続する
 - 標準的な B2B メッセージを交換する
 
 このチュートリアルでは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して、App Service アプリから Gmail でメールを送信します。 Web アプリからメールを送信する方法は他にもあります。たとえば、言語フレームワークによって提供される SMTP 構成などです。 ただし、Logic Apps を使用すると、コードを複雑にすることなく、App Service アプリをもっと強化できます。 Logic Apps には、最も一般的なビジネス統合用の単純な構成インターフェイスが用意されており、アプリから HTTP 要求を使用していつでも呼び出すことができます。
@@ -57,10 +57,10 @@ ms.locfileid: "82562306"
 1. [Azure portal](https://portal.azure.com) で、「[ロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)」の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー**が表示されたら、このチュートリアルに戻ります。
 1. Logic Apps デザイナーのスプラッシュ ページで、 **[一般的なトリガーで開始する]** の **[HTTP 要求の受信時]** を選択します。
 
-    ![](./media/tutorial-send-email/receive-http-request.png)
+    ![Logic Apps Designer のスプラッシュ ページのスクリーンショット。[HTTP 要求の受信時] が強調表示されています。](./media/tutorial-send-email/receive-http-request.png)
 1. **[HTTP 要求の受信時]** のダイアログで、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
-    ![](./media/tutorial-send-email/generate-schema-with-payload.png)
+    ![[HTTP 要求の受信時] ダイアログ ボックスのスクリーンショット。[サンプルのペイロードを使用してスキーマを生成する] オプションが選択されています。 ](./media/tutorial-send-email/generate-schema-with-payload.png)
 
 1. 次のサンプル JSON をテキスト ボックスにコピーして、 **[完了]** を選択します。
 
@@ -77,7 +77,7 @@ ms.locfileid: "82562306"
 
     HTTP 要求トリガーの URL が表示されるようになりました。 コピー アイコンを選択して、後で使用できるようにコピーしておきます。
 
-    ![](./media/tutorial-send-email/http-request-url.png)
+    ![HTTP 要求トリガーの URL をコピーするためのコピー アイコンが強調表示されているスクリーンショット。](./media/tutorial-send-email/http-request-url.png)
 
     この HTTP 要求定義は、Gmail であるかそれ以外の何かであるかにかかわらず、このロジック アプリで実行するすべての処理のトリガーです。 後で、App Service アプリでこの URL を呼び出します。 要求トリガーの詳細については、[HTTP 要求と応答のリファレンス](../connectors/connectors-native-reqres.md)を参照してください。
 
@@ -87,18 +87,18 @@ ms.locfileid: "82562306"
     > SendGrid、MailChimp、Office 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](https://docs.microsoft.com/azure/logic-apps/)を参照してください。
 1. **[Gmail]** ダイアログで、 **[サインイン]** を選択し、メールの送信に使用する Gmail アカウントにサインインします。
 
-    ![](./media/tutorial-send-email/gmail-sign-in.png)
+    ![電子メールの送信元にする Gmail アカウントにサインインするための [Gmail] ダイアログ ボックスのスクリーンショット。](./media/tutorial-send-email/gmail-sign-in.png)
 
 1. サインインした後、 **[To]\(対象\)** ボックス内をクリックすると、動的なコンテンツのダイアログが自動的に開かれます。
 
 1. **[HTTP 要求の受信時]** アクションの横の **[もっと見る]** を選択します。
 
-    ![](./media/tutorial-send-email/expand-dynamic-content.png)
+    ![[HTTP 要求の受信時] アクションの横にある [もっと見る] ボタンのスクリーンショット。](./media/tutorial-send-email/expand-dynamic-content.png)
 
     これで、前に使用したサンプル JSON データの 3 つのプロパティが表示されます。 この手順では、HTTP 要求のこれらのプロパティを使用して、メールを作成します。
 1. **[To]\(対象\)** フィールドの値を選択しているため、 **[メール]** を選択します。 必要に応じて、 **[動的なコンテンツの追加]** をクリックして、動的なコンテンツのダイアログをオフに切り替えます。
 
-    ![](./media/tutorial-send-email/hide-dynamic-content.png)
+    ![電子メール オプションのスクリーンショット。[動的なコンテンツの追加] オプションが強調表示されています。](./media/tutorial-send-email/hide-dynamic-content.png)
 
 1. **[新しいパラメーターの追加]** ドロップダウンで **[件名]** と **[本文]** を選択します。
 
@@ -109,15 +109,15 @@ ms.locfileid: "82562306"
     > [!TIP]
     > メールの本文で HTML コンテンツを直接編集する場合は、Logic Apps デザイナー ウィンドウの上部にある **[コード ビュー]** を選択します。 動的なコンテンツ コード (たとえば、`@{triggerBody()?['due']}`) が保持されていることを確認します
     >
-    > ![](./media/tutorial-send-email/edit-rich-html-email.png) 
+    > ![HTML コンテンツをメール本文で直接閲覧するためのコード ビューのスクリーンショット。](./media/tutorial-send-email/edit-rich-html-email.png) 
 
 1. 次に、HTTP トリガーに非同期 HTTP 応答を追加します。 HTTP トリガーと Gmail アクションの間の **+** 記号をクリックし、 **[並列分岐の追加]** を選択します。
 
-    ![](./media/tutorial-send-email/add-http-response.png)
+    ![\+ 記号のスクリーンショット。[並列分岐の追加] オプションが強調表示されています。](./media/tutorial-send-email/add-http-response.png)
 
 1. 検索ボックスで**応答**を検索して、**応答**アクションを選択します。
 
-    ![](./media/tutorial-send-email/choose-response-action.png)
+    ![検索バーのスクリーンショット。応答アクションが強調表示されています。](./media/tutorial-send-email/choose-response-action.png)
 
     既定では、応答アクションは HTTP 200 を送信します。 このチュートリアルでは、それで十分です。 詳細については、[HTTP 要求と応答のリファレンス](../connectors/connectors-native-reqres.md)を参照してください。
 
@@ -127,7 +127,7 @@ ms.locfileid: "82562306"
 
 前の手順で HTTP 要求トリガーの URL をコピーしてあることを確認します。 機密情報が含まれているため、コードに直接記述しないことをお勧めします。 代わりに、App Service ではアプリ設定を使用して、環境変数として参照できます。 
 
-[Cloud Shell](https://shell.azure.com) で次のコマンドを使用して、アプリ設定を作成します ( *\<app-name>* 、 *\<resource-group-name>* 、および *\<logic-app-url>* を置き換えます)。
+[Cloud Shell](https://shell.azure.com) で次のコマンドを使用してアプリ設定を作成します ( *\<app-name>* 、 *\<resource-group-name>* 、 *\<logic-app-url>* を置き換えます)。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings LOGIC_APP_URL="<your-logic-app-url>"

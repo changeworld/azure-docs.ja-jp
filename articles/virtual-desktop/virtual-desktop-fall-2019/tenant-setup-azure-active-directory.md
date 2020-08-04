@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop でテナントを作成する - Azure
-description: Windows Virtual Desktop のテナントを Azure Active Directory に設定する方法を説明します。
+title: Windows Virtual Desktop (クラシック) でテナントを作成する - Azure
+description: Windows Virtual Desktop (クラシック) のテナントを Azure Active Directory に設定する方法を説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a1e301b63eee348f59a1b9570c2c3ffcd78ecef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362392"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286361"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop でテナントを作成する
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) でテナントを作成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。
 
 Windows Virtual Desktop でのテナントの作成は、デスクトップ仮想ソリューションを構築するための最初の手順です。 テナントは、1 つまたは複数のホスト プールのグループです。 各ホスト プールは複数のセッション ホストで構成されていて、Azure において仮想マシンとして動作し、Windows Virtual Desktop サービスに登録されます。 各ホスト プールはさらに、リモート デスクトップおよびリモート アプリケーションのリソースをユーザーに発行するために使用される、1 つ以上のアプリ グループで構成されます。 テナントを使用すると、ホスト プールの構築、アプリ グループの作成、ユーザーの割り合て、サービスを通じた接続の作成を行うことができます。
 

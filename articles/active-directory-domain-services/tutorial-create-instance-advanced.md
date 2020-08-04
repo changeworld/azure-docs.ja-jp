@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - 詳細構成を使用して Azure AD DS マネージド ドメインを作成する
-description: このチュートリアルでは、Azure portal を使用して Azure Active Directory Domain Services のマネージド ドメインを作成、構成し、詳細構成オプションを指定する方法について説明します。
+title: チュートリアル - カスタマイズされた Azure Active Directory Domain Services のマネージド ドメインを作成する | Microsoft Docs
+description: このチュートリアルでは、Azure portal を使用してカスタマイズされた Azure Active Directory Domain Services のマネージド ドメインを作成、構成し、詳細構成オプションを指定する方法について学習します。
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518523"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278551"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services のマネージド ドメインを作成、構成する
 
@@ -131,7 +131,7 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
     1. 仮想ネットワークを作成するように選択した場合は、仮想ネットワークの名前 (例: *myVnet*) を入力し、アドレスの範囲 (例: *10.0.1.0/24*) を指定します。
     1. わかりやすい名前 (例: *DomainServices*) で専用サブネットを作成します。 アドレス範囲 (例: *10.0.1.0/24*) を指定します。
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [ ![Azure AD Domain Services で使用する仮想ネットワークとサブネットを作成する](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     必ずプライベート IP アドレスの範囲内にあるアドレスの範囲を選んでください。 ご自身が所有していないパブリック アドレス空間内の IP アドレス範囲を指定すると、Azure AD DS 内でエラーが発生します。
 
@@ -159,7 +159,7 @@ Azure AD DS ドメインの管理には、*AAD DC Administrators* という名�
 
 ## <a name="configure-synchronization"></a>同期の構成
 
-Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーとグループを同期できるほか、特定のグループのみを "*範囲指定*" して同期することもできます。 "*すべて*" のユーザーとグループを同期することにした場合は、指定した範囲のみの同期を後から選択することはできません。 範囲指定された同期の詳細については、[Azure AD Domain Services の範囲指定された同期][scoped-sync]に関するページを参照してください。
+Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーとグループを同期できるほか、特定のグループのみを "*範囲指定*" して同期することもできます。 今すぐ同期スコープを変更することも、マネージド ドメインをデプロイすることもできます。 詳細については、[Azure AD Domain Services の範囲指定された同期][scoped-sync]に関するページを参照してください。
 
 1. このチュートリアルでは、**すべて**のユーザーとグループを同期するように選択します。 この同期が既定のオプションとなります。
 
