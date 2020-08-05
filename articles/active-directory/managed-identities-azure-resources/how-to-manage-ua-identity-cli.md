@@ -35,7 +35,7 @@ Azure リソースのマネージド ID は、Azure Active Directory のマネ�
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
     - Azure ポータルから [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する (次のセクションを参照してください)。
-    - 各コード ブロックの右上隅にある「試してみる」ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
+    - 各コード ブロックの右上隅にある「使ってみる」ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
     - ローカル CLI コンソールを使用する場合は、[Azure CLI の最新バージョン (2.0.13 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 ユーザー割り当て ID をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用して、Azure に `az login` でサインインします。
 
 
