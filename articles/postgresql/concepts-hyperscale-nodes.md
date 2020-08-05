@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/28/2020
+ms.openlocfilehash: af743ca56572f507091db01f11d3283294a9e3d5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974004"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382799"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のノード
 
@@ -22,7 +22,9 @@ Hyperscale (Citus) のホスティング タイプは、Azure Database for Postg
 
 すべてのサーバー グループに、1 つのコーディネーター ノードと複数のワーカーが含まれます。 アプリケーションは、クエリをコーディネーター ノードに送信し、このノードが関連するワーカーにリレーして、結果を累積します。 アプリケーションは、ワーカーに直接接続することはできません。
 
-クエリごとに、コーディネーターは、必要なデータが単一のノードと複数のノードのどちらに存在するかによって、単一のワーカー ノードにルーティングするか、複数のノードにわたって並列処理します。 コーディネーターは、メタデータ テーブルを参照して、どのように処理するかを決定します。 これらのテーブルは、ワーカー ノードの DNS 名およびヘルスと、ノード間でのデータの分布を追跡します。
+Hyperscale (Citus) を使用すると、データベース管理者は、異なる行を異なるワーカー ノード上に格納して、テーブルを "*分散*" させることができます。 分散テーブルは、Hyperscale パフォーマンスにとって重要です。 テーブルの分散に失敗すると、コーディネーター ノード上に完全に残り、マシン間の並列処理を利用できません。
+
+分散テーブル上の各クエリに対して、コーディネーターは、必要なデータが単一または複数のノードのどちらに存在するかに応じて、単一のワーカー ノードにルーティングするか、または複数にわたって並列処理を行います。 コーディネーターは、メタデータ テーブルを参照して、どのように処理するかを決定します。 これらのテーブルは、ワーカー ノードの DNS 名およびヘルスと、ノード間でのデータの分布を追跡します。
 
 ## <a name="next-steps"></a>次のステップ
-- ノードで[分散データ](concepts-hyperscale-distributed-data.md)を格納する方法について学習する
+- 「[分散テーブル](concepts-hyperscale-distributed-data.md)」を参照してください

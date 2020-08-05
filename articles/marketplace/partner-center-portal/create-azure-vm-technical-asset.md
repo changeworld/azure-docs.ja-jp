@@ -4,15 +4,15 @@ description: Azure Marketplace 向けの仮想マシン (VM) オファーの技�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: dannyevers
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107157"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407950"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure 仮想マシンの技術資産を作成する
 
@@ -43,7 +43,7 @@ VM イメージには、1 個のオペレーティング システム ディス�
 
 VM と VHD の管理に役立つ次のスクリプト環境のいずれかを利用することを検討してください。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 また、開発環境に次のツールを追加することを検討してください。
@@ -282,4 +282,4 @@ Azure ベースの新しい VHD の作成で問題が発生した場合は、「
 
 それ以外の場合:
 
-* 「[VM イメージを認定する](get-sas-uri.md)」では、*Certification Test Tool for Azure Certified* ツールを入手する場所や、VM イメージを認定するためにそれを使用する方法など、Azure Marketplace 認定のために VM イメージをテストして送信する方法について説明しています。
+* [VHD からデプロイされた仮想マシン (VM) のテスト](azure-vm-image-certification.md)に関するページでは、*Certification Test Tool for Azure Certified* ツールを入手する場所や、VM イメージを認定するためにそれを使用する方法など、Azure Marketplace 認定のために VM イメージをテストして送信する方法について説明しています。

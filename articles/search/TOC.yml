@@ -335,6 +335,8 @@
           items:
             - name: カスタマー マネージド キー
               href: search-security-manage-encryption-keys.md
+            - name: キー情報の取得
+              href: search-security-get-encryption-keys.md
         - name: 受信セキュリティ
           items:
             - name: API アクセス キー

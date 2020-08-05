@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL で一時テーブルを使用する
+title: Synapse SQL の一時テーブルを使用する
 description: Synapse SQL の一時テーブルの基本的な利用方法について説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020562"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL の一時テーブル
 

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで内部のプライベート ネットワーク用の NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056977"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "86251588"
 
 既定では、NGINX イングレス コントローラーは動的パブリック IP アドレスの割り当てによって作成されます。 一般的な構成要件は、内部のプライベート ネットワークと IP アドレスを使用することです。 この手法では、外部アクセスなしで、サービスへのアクセスを内部ユーザーに制限できます。
 
-次の例のマニフェスト ファイルを使用して、*internal-ingress.yaml* という名前のファイルを作成します。 この例では、*loadBalancerIP* リソースに *10.240.0.42* を割り当てます。 イングレス コント ローラーで使用する場合は、独自の内部 IP アドレスを指定します。 この IP アドレスが仮想ネットワーク内でまだ使用されていないことを確認します。
+次の例のマニフェスト ファイルを使用して、*internal-ingress.yaml* という名前のファイルを作成します。 この例では、*loadBalancerIP* リソースに *10.240.0.42* を割り当てます。 イングレス コント ローラーで使用する場合は、独自の内部 IP アドレスを指定します。 この IP アドレスが仮想ネットワーク内でまだ使用されていないことを確認します。 また、既存の仮想ネットワークとサブネットを使用している場合は、適切なアクセス許可を使用して AKS クラスターを構成し、仮想ネットワークとサブネットを管理する必要もあります。 詳細については、「[Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する][aks-configure-kubenet-networking]」または「[Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する][aks-configure-advanced-networking]」を参照してください。
 
 ```yaml
 controller:
@@ -185,7 +185,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 `hello-world-ingress.yaml` という名前のファイルを作成し、次の例の YAML 内にコピーします。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -358,3 +358,5 @@ kubectl delete namespace ingress-basic
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

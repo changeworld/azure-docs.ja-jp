@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b77d69248059a494d823afcd149382dd52b0e49d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704711"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317129"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Azure の場所が決まったら、Azure CLI で [az group create](/cli/azure/group#az-group-create) コマンドを使用して新しいリソース グループを作成します。
 
-次の例では、Azure の場所 `westus2` を、サブスクリプションで使用できる Azure の場所の 1 つに置き換えます。
+次の例では、Azure の場所 `westus2` を、お使いのサブスクリプションで使用できる Azure の場所の 1 つに置き換えます。
 
 ```azurecli-interactive
 az group create \
@@ -151,6 +151,8 @@ az cognitiveservices account create \
     --location westus2 \
     --yes
 ```
+
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>リソースのキーを取得する
 

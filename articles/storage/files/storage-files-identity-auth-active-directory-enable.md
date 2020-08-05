@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 0f2f0def9a23437dff57dda2d1a57950cef86275
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496130"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999583"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概要 - SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証
 
-[Azure Files](storage-files-introduction.md)  では、次の 2 種類の Domain Services を介したサーバー メッセージ ブロック (SMB) 経由の ID ベース認証がサポートされています: Azure Active Directory Domain Services (Azure AD DS) およびオンプレミスの Active Directory Domain Services (AD DS)。 ID ベースのいずれかの認証方法を使用すると、Azure ファイル共有にアクセスするプロセスと既存の ID ベースの認証プロセスを統合でき、個別に管理する必要はありません。 この一連の記事では、Azure ファイル共有での認証用にオンプレミスの AD DS を有効にして構成する方法に重点を置いて説明します。
+[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 選択するドメイン サービスによって設定は異なります。 この一連の記事では、Azure ファイル共有での認証用にオンプレミスの AD DS を有効にして構成する方法に重点を置いて説明します。
 
 Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 

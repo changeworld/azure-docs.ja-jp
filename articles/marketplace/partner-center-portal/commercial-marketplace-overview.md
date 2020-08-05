@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047593"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース ポータルの概要
 
@@ -28,9 +28,9 @@ ms.locfileid: "86116694"
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>Cloud パートナー ポータルからの移行
 
-パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一環として、すべてのコマーシャル マーケットプレース プランを、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)からパートナー センターに移行しました。
+パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一環として、すべてのコマーシャル マーケットプレース オファーを、Cloud パートナー ポータル (CPP) からパートナー センターに移行しました。
 
-これまで Cloud パートナー ポータルを使用していた既存のパブリッシャーは、パートナー センターで、なじみはあるが強化された直感的ユーザー エクスペリエンスを実感することができます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナー エクスペリエンスのアップグレードによって、カスタマーが影響を受けることはありません。
+これまで CPP を使用していた既存のパブリッシャーは、パートナー センターで、なじみはあるが強化された直感的ユーザー エクスペリエンスを実感することができます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナー エクスペリエンスのアップグレードによって、カスタマーが影響を受けることはありません。
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>発行とオファー管理のユーザー エクスペリエンスの改善
 

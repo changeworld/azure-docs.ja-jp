@@ -4,15 +4,15 @@ description: AzCopy は、ストレージ アカウント間のデータ コピ�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142995"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289241"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -111,7 +111,7 @@ Azure Active Directory を使用すると、各コマンドに SAS トークン�
 azcopy login
 ```
 
-1 つ以上の組織に属している場合、ストレージ アカウントが属する組織のテナント ID を含めます。
+エラーが発生する場合は、ストレージ アカウントが属する組織のテナント ID を含めてみてください。
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>

@@ -2,13 +2,13 @@
 title: ナレッジ ベースの共同利用 - QnA Maker
 description: QnA Maker では、複数のユーザーがナレッジ ベースを共同利用できます。 この機能は、Azure のロール ベースのアクセス制御で提供されています。
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/13/2020
+ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650790"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054065"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>作成者や編集者との共同作業
 
@@ -30,15 +30,15 @@ QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソー�
 
 1. [Azure](https://portal.azure.com/) portal にサインインして、使用する QnA Maker リソースに移動します。
 
-    ![QnA Maker のリソース リスト](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![QnA Maker のリソース リスト](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
 1. **[アクセス制御 (IAM)]** タブを開きます。
 
-    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
 1. **[追加]** を選択します。
 
-    ![QnA Maker IAM の [追加]](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![QnA Maker IAM の [追加]](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. 次の一覧からロールを選択します。
 
@@ -46,17 +46,23 @@ QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソー�
     |--|
     |所有者|
     |Contributor|
-    |QnA Maker リーダー|
-    |QnA Maker エディター|
+    |Cognitive Services QnA Maker 閲覧者|
+    |Cognitive Services QnA Maker エディター|
     |Cognitive Services ユーザー|
 
-    ![QnA Maker IAM のロールの追加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker IAM のロールの追加。":::
 
 1. ユーザーのメール アドレスを入力し、 **[保存]** を押します。
 
-    ![QnA Maker IAM の電子メールの追加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![QnA Maker IAM の電子メールの追加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
+
+### <a name="view-qna-maker-knowledge-bases"></a>QnA Maker ナレッジ ベースを表示する
 
 QnA Maker サービスを共有する相手が [QnA Maker ポータル](https://qnamaker.ai)にログインすると、自身のロールに基づいて、そのサービスのすべてのナレッジ ベースを表示できます。
+
+ナレッジ ベースを選択すると、その QnA Maker リソースでの現在のロールがナレッジベース名の横に表示されます。
+
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="編集モードのナレッジ ベースのスクリーンショット。Web ページの左上隅にあるナレッジ ベース名の横に、かっこで囲まれたロール名が表示されています。":::
 
 ## <a name="next-steps"></a>次のステップ
 

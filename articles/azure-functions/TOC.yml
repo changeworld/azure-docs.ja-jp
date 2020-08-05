@@ -345,8 +345,8 @@
       items:
         - name: ストレージのトラブルシューティング
           href: functions-recover-storage-account.md
-        - name: Python 依存関係のトラブルシューティング
-          href: recover-module-not-found.md
+        - name: Python 関数のトラブルシューティング
+          href: recover-python-functions.md
 - name: リファレンス
   items:
     - name: API リファレンス

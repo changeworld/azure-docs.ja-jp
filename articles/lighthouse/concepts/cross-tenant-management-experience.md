@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 07/17/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b3aa15dd968b4cded831934103a02420d020b9a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521039"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371041"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -53,7 +53,7 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
   - Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
   - 顧客のハイブリッド環境全体に同じポリシー セットが提供されていることを確認する
   - Azure Security Center を使用して、顧客のハイブリッド環境全体のコンプライアンスを監視する
-- ハイブリッド Kubernetes クラスターを大規模に管理する - [Azure Arc for Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md):
+- ハイブリッド Kubernetes クラスターを大規模に管理する - [Azure Arc 対応 Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md):
   - [Kubernetes クラスターを Azure Arc に接続](../../azure-arc/kubernetes/connect-cluster.md)し、Azure 内の委任されたサブスクリプションやリソース グループに接続する
   - 接続されたクラスターに [GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) を使用する
   - 接続されたクラスター全体にポリシーを適用する
@@ -82,6 +82,7 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - ログ分析: 複数のテナントにあるリモートの顧客ワークスペースからデータを照会する
 - 顧客のテナント内に、サービス プロバイダー テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
+- SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure のネットワーク](../../networking/networking-overview.md):
 

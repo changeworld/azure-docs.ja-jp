@@ -91,7 +91,7 @@
       items:
         - name: 特権アクセスの概要
           href: groups-features.md
-        - name: グループを検出する
+        - name: グループを管理下に置く
           href: groups-discover-groups.md
         - name: メンバーまたは所有者を割り当てる
           href: groups-assign-member-owner.md

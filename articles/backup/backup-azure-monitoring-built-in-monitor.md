@@ -4,12 +4,12 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054553"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -28,7 +28,7 @@ Azure Backup では、Azure Backup で保護されているワークロード用
 - Azure VM バックアップ
 - Azure ファイルのバックアップ
 - SQL や SAP HANA などの Azure ワークロードのバックアップ
-- Azure Backup エージェント (MAB)
+- Microsoft Azure Recovery Services (MARS) エージェント
 
 System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (MABS) からのジョブは表示されません。
 
@@ -44,7 +44,7 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 次のシナリオは、サービスによって警告可能シナリオとして定義されています。
 
 - バックアップ/復元エラー
-- Azure Backup エージェント (MAB) のバックアップの成功 (警告あり)
+- バックアップの成功 (Microsoft Azure Recovery Services (MARS) エージェントに対する警告を含む)
 - 保護の停止 (データの保持を含む)/保護の停止 (データの削除を含む)
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>ここには、次の Azure Backup ソリューションからのアラートが表示されます。
@@ -52,7 +52,7 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 - Azure VM バックアップ
 - Azure ファイルのバックアップ
 - SQL、SAP HANA などの Azure ワークロードのバックアップ
-- Azure Backup エージェント (MAB)
+- Microsoft Azure Recovery Services (MARS) エージェント 
 
 > [!NOTE]
 > System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (MABS) からのアラートは表示されません。

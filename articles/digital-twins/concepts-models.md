@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258272"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131635"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -24,12 +24,12 @@ Azure Digital Twins の重要な特性は、独自のボキャブラリを定義
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>モデルを記述するための Digital Twin Definition Language (DTDL)
 
-Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) を使用して定義されます。 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 Azure Digital Twins では、DTDL "*バージョン 2*" を使用します。
+Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) を使用して定義されます。 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 
+
+Azure Digital Twins では、DTDL "*バージョン 2*" を使用します。 このバージョンの DTDL の詳細については、GitHub で次の仕様ドキュメントを参照してください: [*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 > [!TIP] 
 > DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。 Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
-
-DTDL 全般の詳細については、GitHub で次の仕様ドキュメントを参照してください。[Digital Twins Definition Language (DTDL) - バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 ## <a name="elements-of-a-model"></a>モデルの要素
 
@@ -62,7 +62,9 @@ DTDL モデルに Azure Digital Twins との互換性を与えるには、これ
 
 ツインの型モデルは、任意のテキスト エディターで記述できます。 DTDL 言語は、JSON 構文に従います。そのため、モデルは *json* という拡張子で保存する必要があります。 JSON 拡張子を使用すると、多くのプログラミング テキスト エディターで、DTDL ドキュメントの基本的な構文チェックと強調表示ができるようになります。 また、[Visual Studio Code](https://code.visualstudio.com/) には、[DTDL 拡張子](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)も使用できます。
 
-DTDL インターフェイスとして記述された一般的なモデルの例を以下に示します。 このモデルでは、惑星とそれぞれの名前、質量、および温度が記述されています。 惑星には、衛星として月があったり、クレーターが含まれていたりする場合があります。
+このセクションでは、DTDL インターフェイスとして記述された一般的なモデルの例を示します。 このモデルでは、**惑星**とそれぞれの名前、質量、および温度が記述されています。
+ 
+惑星は衛星である**月**とも相互作用する可能性があり、**クレーター**が含まれる場合もあります。 次の例の `Planet` モデルでは、2 つの外部モデル `Moon` と `Crater` を参照することにより、これらの他のエンティティへの接続が表されています。 以下のコード例ではこれらのモデルも定義されていますが、主要な `Planet` の例から注目が逸れないように、非常に単純にされています。
 
 ```json
 [
@@ -101,6 +103,11 @@ DTDL インターフェイスとして記述された一般的なモデルの例
   },
   {
     "@id": "dtmi:com:contoso:Crater;1",
+    "@type": "Interface",
+    "@context": "dtmi:dtdl:context;2"
+  },
+  {
+    "@id": "dtmi:com:contoso:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2"
   }
@@ -204,13 +211,13 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 DTDL 検証ツールのサンプルは、NuGet でクライアント側ライブラリとして提供されている .NET DTDL パーサー ライブラリに基づいて構築されています。[**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). また、このライブラリを直接使用し、自分独自の検証ソリューションを設計することもできます。 パーサー ライブラリを使用する場合は、Azure Digital Twins が実行されているバージョンと互換性のあるバージョンを使用するようにしてください。 プレビュー期間中のこれのバージョンは、*3.7.0* です。
 
-使用例を含むパーサー ライブラリの詳細については、[方法:モデルの解析および検証](how-to-use-parser.md)に関するページを参照してください。
+使用例を含むパーサー ライブラリの詳細については、"[*モデルを解析および検証する方法*](how-to-use-parser.md)" に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 DigitalTwinsModels API を使用してモデルを管理する方法を参照してください。
-* [カスタム モデルを管理する](how-to-manage-model.md)
+* [*方法: カスタム モデルを管理する*](how-to-manage-model.md)"
 
 または、モデルに基づいてデジタル ツインがどのように作成されるかについて学習してください。
-* [概念:デジタル ツインとツイン グラフ](concepts-twins-graph.md)
+* "[*概念: デジタル ツインとツイン グラフ*](concepts-twins-graph.md)"
 

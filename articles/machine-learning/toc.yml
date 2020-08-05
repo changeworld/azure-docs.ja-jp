@@ -15,28 +15,6 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: スタジオ
-      expanded: true
-      items:
-        - name: デザイナー (ドラッグアンドドロップ)
-          items:
-            - name: 1. 回帰モデルをトレーニングする
-              displayName: studio
-              href: tutorial-designer-automobile-price-train-score.md
-            - name: 2. そのモデルをデプロイする
-              displayName: studio
-              href: tutorial-designer-automobile-price-deploy.md
-        - name: 自動化された ML (UI)
-          items:
-            - name: 自動 ML の実験を作成する
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-first-experiment-automated-ml.md
-            - name: 需要予測 (自転車シェア データ)
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-automated-ml-forecast.md
-        - name: 画像データへのラベル付け
-          displayName: 'tag, tagging, images'
-          href: tutorial-labeling.md
     - name: Python SDK
       expanded: true
       items:
@@ -64,11 +42,33 @@
         - name: 実稼働用にコードを準備する
           displayName: 'mlops, mlopspython, production'
           href: tutorial-convert-ml-experiment-to-production.md
+    - name: スタジオ
+      expanded: true
+      items:
+        - name: 自動化された ML (UI)
+          items:
+            - name: 自動 ML の実験を作成する
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: 需要予測 (自転車シェア データ)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
+        - name: デザイナー (ドラッグアンドドロップ)
+          items:
+            - name: 1. 回帰モデルをトレーニングする
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 2. そのモデルをデプロイする
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: 画像データへのラベル付け
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: R SDK
       items:
         - name: 初めての ML 実験を作成する (R)
           href: tutorial-1st-r-experiment.md
-    - name: Machine Learning CLI
+    - name: CLI
       items:
         - name: CLI を使用したトレーニングとデプロイ
           href: tutorial-train-deploy-model-cli.md
@@ -226,9 +226,6 @@
         - name: 非公開の Python パッケージを使用する
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-private-python-packages.md
-        - name: ログの有効化
-          displayName: 'troubleshoot, log, files, tracing'
-          href: how-to-enable-logging.md
         - name: 入力および出力ディレクトリを設定する
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
@@ -309,8 +306,12 @@
             - name: 実行の開始、監視、または取り消し
               displayName: 'cancel, fail, status, child run'
               href: how-to-manage-runs.md
-            - name: トレーニング実行のメトリックを記録する
+            - name: ログの有効化
+              displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
+            - name: ログを表示する
+              displayName: 'troubleshoot, log, files, tracing'
+              href: how-to-monitor-view-training-logs.md
             - name: MLflow を使用して実験を追跡する
               displayName: 'log, monitor, metrics, Databricks'
               href: how-to-use-mlflow.md
@@ -363,7 +364,7 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: デプロイメント シナリオ
+        - name: 展開ターゲット
           items:
             - name: 既存のモデルを使用する
               displayName: publish existing model
@@ -394,19 +395,37 @@
               href: how-to-deploy-fpga-web-service.md
         - name: トラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
-        - name: クライアントの作成
+        - name: Web サービスを使用する
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: モデルを監視する
+        - name: Web サービスを更新する
+          displayName: update hot reload model mounting
+          href: how-to-deploy-update-web-service.md
+        - name: 高度なエントリ スクリプトの作成
+          displayName: swagger inference schema binary cors
+          href: how-to-deploy-advanced-entry-script.md
+        - name: Web サービスを監視する
           items:
             - name: モデルのデータを収集して評価する
               displayName: track production
               href: how-to-enable-data-collection.md
             - name: Application Insights での監視
               href: how-to-enable-app-insights.md
+        - name: モデルを継続的にデプロイする
+          displayName: ci cd azure devops models
+          href: how-to-deploy-continuously-deploy.md
         - name: 暗号化された推論サービスをデプロイする
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
+        - name: モデルのプロファイル
+          displayName: profile resource requirement
+          href: how-to-deploy-profile-model.md
+        - name: (プレビュー) コードなしのデプロイ
+          displayName: no code
+          href: how-to-deploy-no-code-deployment.md
+        - name: モデルのパッケージ化
+          displayName: docker file download
+          href: how-to-deploy-package-models.md
     - name: ML パイプラインの作成と使用
       displayName: pipelines
       items:
@@ -423,6 +442,9 @@
           href: how-to-debug-pipelines.md
         - name: Application Insights でパイプラインをデバッグする
           href: how-to-debug-pipelines-application-insights.md
+        - name: デザイナーのメトリックのログ記録
+          displayName: 'designer, logging'
+          href: how-to-track-designer-experiments.md
         - name: デザイナーによるデータの変換
           displayName: pipeline
           href: how-to-designer-transform-data.md

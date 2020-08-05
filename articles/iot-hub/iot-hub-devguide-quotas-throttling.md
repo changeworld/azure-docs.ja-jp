@@ -7,12 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Operations'
+- 'Role: Technical Support'
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688978"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335564"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -26,9 +30,9 @@ ms.locfileid: "84688978"
 
 また、レベルでは、IoT Hub がすべての操作に適用するスロットル制限も決まります。
 
-### <a name="iot-plug-and-play"></a>IoT プラグ アンド プレイ
+## <a name="iot-plug-and-play"></a>IoT プラグ アンド プレイ
 
-パブリック プレビュー中、IoT プラグ アンド プレイ デバイスでは、インターフェイスごとに個別のメッセージが送信されます。これにより、ご利用のメッセージ クォータに対してカウントされるメッセージ数が増加する可能性があります。
+IoT プラグ アンド プレイ デバイスでは、インターフェイスごとに少なくとも 1 つのテレメトリ メッセージが送信されます。これにより、メッセージ クォータに対してカウントされるメッセージ数が増加する可能性があります。
 
 ## <a name="operation-throttles"></a>操作のスロットル
 
