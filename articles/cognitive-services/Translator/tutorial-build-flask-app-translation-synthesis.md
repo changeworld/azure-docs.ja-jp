@@ -10,13 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: tracking-python
-ms.openlocfilehash: b70ac801765461401a7bfa1d2f251fb41176dccb
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: b0a8a55b1e62c30ec7384b19b3e963054fee432b
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232765"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407287"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 
@@ -60,7 +60,7 @@ Flask は、Web アプリケーションを作成するためのマイクロフ�
 ## <a name="create-an-account-and-subscribe-to-resources"></a>アカウントを作成してリソースをサブスクライブする
 
 前述のように、このチュートリアルには 3 つのサブスクリプション キーが必要となります。 つまり、次の目的に使用するリソースをご自分の Azure アカウント内に作成する必要があります。
-* Translator
+* [変換者]
 * Text Analytics
 * Speech Services
 

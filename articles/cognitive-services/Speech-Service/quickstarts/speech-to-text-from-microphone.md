@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: trbye
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js-go-spx
-ms.openlocfilehash: e5097b30bd280e0a46e3b327d94fbd26244a4fdc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 1381d26ae4c720f57db60d7cc8c9242b6534f199
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391572"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405298"
 ---
 # <a name="quickstart-recognize-speech-from-a-microphone"></a>クイック スタート:マイクから音声を認識する
 

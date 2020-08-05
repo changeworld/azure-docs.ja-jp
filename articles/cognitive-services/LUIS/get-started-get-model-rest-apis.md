@@ -5,19 +5,19 @@ description: この REST API のクイックスタートでは、利用可能な
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18, tracking-python
+ms.custom: seodec18, tracking-python, devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/03/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: cc3e0c66a018c46fcae76dea9b74735082e077aa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79098056fcebdd8ac382dec1057935fdfee6b77b
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538107"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407263"
 ---
 # <a name="quickstart-change-model-with-rest-apis"></a>クイック スタート:REST API を使用してモデルを変更する
 
