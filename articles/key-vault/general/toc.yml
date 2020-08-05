@@ -6,6 +6,8 @@
       href: overview.md
     - name: キー、シークレット、証明書について
       href: about-keys-secrets-certificates.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:

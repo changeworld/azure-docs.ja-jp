@@ -301,7 +301,7 @@
     - name: アプリケーションの開発と実行
       items:
         - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用

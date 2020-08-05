@@ -372,7 +372,7 @@
     - name: 監視
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: バックアップと回復
-      href: backup-recovery.md
+      href: ../backup-recovery.md
     - name: クラウド導入フレームワーク
       href: /azure/cloud-adoption-framework/get-started/
     - name: アーキテクチャ センター
@@ -570,7 +570,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -926,7 +926,7 @@
           href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
-            - name: Architecture
+            - name: アーキテクチャ
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
