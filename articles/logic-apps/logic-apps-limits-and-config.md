@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 06/25/2020
-ms.openlocfilehash: 4235e948dba76c0b2926d9965ccd2fcb072cad62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/28/2020
+ms.openlocfilehash: 2aa267f3c04225699d3ce65b5f8ee3b573ac0c78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520785"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323759"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -389,8 +389,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 > [!TIP]
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。
-> このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
-> マネージド コネクタの場合は、引き続き IP アドレスを使用する必要があります。
+> マネージド コネクタの場合は、リージョンごとに送信マネージド コネクタの IP アドレス プレフィックスを指定する代わりに、必要に応じて **AzureConnectors** サービス タグを使用することができます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。 
 
 <a name="multi-tenant-outbound"></a>
 

@@ -1,5 +1,5 @@
 ---
-title: Azure セキュリティ ベンチマーク用の Linux Virtual Machines セキュリティ ベースライン
+title: Linux Virtual Machines 用の Azure のセキュリティ ベースライン
 description: Linux Virtual Machines セキュリティ ベースラインでは、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d8c4d67ed9b268bae55711fae8c4def33b967fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528083"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385485"
 ---
-# <a name="linux-virtual-machines-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Linux Virtual Machines セキュリティ ベースライン
+# <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines 用の Azure のセキュリティ ベースライン
 
 Linux Virtual Machines 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
@@ -568,7 +568,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [Azure リソースのロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md)
 
-* [Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -1096,7 +1096,7 @@ Azure Disk Encryption を使用している場合は、ディスク暗号化キ�
 
 * [VM の論理的な削除](../../backup/soft-delete-virtual-machines.md)
 
-* [Azure Key Vault の論理的な削除の概要](../../key-vault/general/overview-soft-delete.md)
+* [Azure Key Vault の論理的な削除の概要](../../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center の監視**: はい
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: ff988dd382c5df5d764c7ab29e8a469f510ba7f9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9d03866858c9f8af521b27c5e36f882d9e0e177d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529337"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404975"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -55,10 +55,12 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 
 |推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|リソースの種類|
 |----|----|----|----|----|
+|**Azure Kubernetes Service クラスターで Advanced Threat Protection を有効にする必要がある**|Security Center では、コンテナー化された環境に対するリアルタイムの脅威の防止が提供され、疑わしいアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。<br>重要:この推奨事項の修復によって、AKS クラスターを保護するための料金が発生します。 このサブスクリプションに AKS クラスターがない場合、料金は発生しません。 今後このサブスクリプションに AKS クラスターを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure Kubernetes Service クラスターで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a))|高|**Y**|サブスクリプション|
 |**Kubernetes Services では、許可する IP の範囲を定義する必要があります**|Kubernetes サービス管理 API へのアクセスは、特定の範囲の IP にのみ API アクセスに許可して制限する必要があります。 許可されたネットワークのアプリケーションのみがクラスターにアクセスできるよう、許可する IP の範囲を構成することをお勧めします。<br>(関連ポリシー: [プレビュー]Kubernetes Services では許可された IP 範囲を定義する必要がある)|高|N|コンピューティング リソース (コンテナー)|
 |**Pod Security Policies should be defined to reduce the attack vector by removing unnecessary application privileges\(不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し攻撃ベクトルを減らす必要がある\) (プレビュー)**|不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し、攻撃ベクトルを減らす必要があります。 アクセスが許可されているリソースにのみポッドがアクセスできるようポッドのセキュリティ ポリシーを定義し、構成することが推奨されます。<br>(関連ポリシー: [プレビュー]Kubernetes Services ではポッドのセキュリティ ポリシーを定義する必要がある)|Medium|N|コンピューティング リソース (コンテナー)|
 |**Kubernetes Service クラスターへのアクセスを制限するには、ロールベースの Access Control を使用する必要がある**|ユーザーが実行できるアクションを詳細にフィルター処理するには、ロールベースのアクセス制御 (RBAC) を使用して、Kubernetes サービス クラスター内のアクセス許可を管理し、関連する認可ポリシーを構成します。 詳細については、[Azure のロールベースのアクセス制御](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)に関するページを参照してください。<br>(関連ポリシー: [プレビュー]Kubernetes サービスでロールベースのアクセス制御 (RBAC) を使用する必要がある)|Medium|N|コンピューティング リソース (コンテナー)|
 |**Kubernetes サービスを最新の Kubernetes バージョンにアップグレードする必要がある**|最新の脆弱性の修正プログラムの恩恵を受けるには、Azure Kubernetes Service クラスターを最新の Kubernetes バージョンにアップグレードする必要があります。 Kubernetes の特定の脆弱性の詳細については、[Kubernetes CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes) のページを参照してください。<br>(関連ポリシー: [プレビュー]Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要があります)|高|N|コンピューティング リソース (コンテナー)|
+|**Azure Container Registry レジストリで Advanced Threat Protection を有効にする必要がある**|セキュリティで保護されたコンテナー化されたワークロードを構築するには、基になっているイメージに既知の脆弱性がないことを確認します。 Security Center では、プッシュされたコンテナー イメージごとにセキュリティの脆弱性についてお使いのレジストリがスキャンされ、各イメージの詳細な結果が公開されます。<br>重要:この推奨事項の修復によって、ACR レジストリを保護するための料金が発生します。 このサブスクリプションに ACR レジストリがない場合、料金は発生しません。 今後このサブスクリプションに ACR レジストリを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure Container Registry レジストリで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4))|高|**Y**|サブスクリプション|
 |**Azure Container Registry イメージの脆弱性を修復する必要がある (Qualys を利用)**|コンテナー イメージの脆弱性評価では、プッシュされた各コンテナー イメージのセキュリティ脆弱性をご自身のレジストリからスキャンし、各イメージの詳細な結果を公開します。 脆弱性を解決することで、お使いのコンテナーのセキュリティ体制が大幅に向上し、それらを攻撃から保護できます。<br>(関連ポリシーはありません)|高|N|コンピューティング リソース (コンテナー)|
 ||||||
 
@@ -67,6 +69,7 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 
 |推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|リソースの種類|
 |----|----|----|----|----|
+|**Azure App Service プランで Advanced Threat Protection を有効にする必要がある**|Security Center では、Web 上のアプリに対する一般的な攻撃を監視する目的で、クラウドの規模と、クラウド プロバイダーとしての Azure に与えられる視界が活用されます。<br>重要:この推奨事項の修復によって、App Service プランを保護するための料金が発生します。 このサブスクリプションに App Service プランがない場合、料金は発生しません。 今後このサブスクリプションに App Service プランを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure App Service プランで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb))|高|**Y**|サブスクリプション|
 |**Web アプリケーションには HTTPS を介してのみアクセスできるようにする**|Web アプリケーションに対して "HTTPS のみ" のアクセスを有効にします。 HTTPS を使用すると、サーバー/サービスの認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されるようになります。<br>(関連ポリシー:Web アプリケーションには HTTPS を介してのみアクセスできるようにする)|Medium|**Y**|App Service|
 |**Function App には HTTPS 経由でのみアクセスできるようにする**|関数アプリに対して "HTTPS のみ" のアクセスを有効にします。 HTTPS を使用すると、サーバー/サービスの認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されるようになります。<br>(関連ポリシー:Function App には HTTPS 経由でのみアクセスできるようにする)|Medium|**Y**|App Service|
 |**API アプリには HTTPS を介してのみアクセスできるようにする**|API アプリへのアクセスを、HTTPS 経由のみに制限します。<br>(関連ポリシー:API アプリには HTTPS を介してのみアクセスできるようにする必要があります)|Medium|N|App Service|
@@ -84,6 +87,7 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 
 |推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|リソースの種類|
 |----|----|----|----|----|
+|**仮想マシンで Advanced Threat Protection を有効にする必要がある**|Security Center では、仮想マシンのワークロードがリアルタイムで脅威から保護され、セキュリティ強化の推奨事項と、疑わしいアクティビティに関するアラートが生成されます。<br>ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、仮想マシンのセキュリティを強化することができます。<br>重要:この推奨事項の修復によって、仮想マシンを保護するための料金が発生します。 このサブスクリプションに仮想マシンがない場合、料金は発生しません。 今後このサブスクリプションに仮想マシンを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[仮想マシンで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d))|高|**Y**|サブスクリプション|
 |**Azure Stream Analytics で診断ログを有効にする必要がある**|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br>(関連ポリシー:Azure Stream Analytics で診断ログを有効にする必要がある)|低|**Y**|コンピューティング リソース (Stream Analytics)|
 |**Batch アカウントで診断ログを有効にする必要がある**|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br>(関連ポリシー:Batch アカウントで診断ログを有効にする必要がある)|低|**Y**|コンピューティング リソース (Batch)|
 |**イベント ハブの診断ログを有効にする必要がある**|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br>(関連ポリシー:イベント ハブの診断ログを有効にする必要がある)|低|**Y**|コンピューティング リソース (イベント ハブ)|
@@ -108,8 +112,8 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 |**システム更新プログラムをマシンにインストールする必要がある**|不足しているシステム セキュリティの更新プログラムと重要な更新プログラムをインストールして、Windows と Linux の仮想マシンとコンピューターをセキュリティで保護します<br>(関連ポリシー:システム更新プログラムをマシンにインストールする必要がある)|高|N|Machine|
 |**ネットワーク トラフィック データ収集エージェントを、Linux 仮想マシンにインストールする必要があります。 (プレビュー)**|Security Center は、Microsoft Monitoring Dependency Agent を使用して Azure 仮想マシンからネットワーク トラフィック データを収集し、高度なネットワーク保護機能 (ネットワーク マップでのトラフィックの視覚化、ネットワークのセキュリティ強化に関する推奨事項、具体的なネットワークの脅威など) を有効にします。<br>(関連ポリシー: [プレビュー]ネットワーク トラフィック データ収集エージェントを、Linux 仮想マシンにインストールする必要があります)|Medium|**Y**|Machine|
 |**ネットワーク トラフィック データ収集エージェントを、Windows 仮想マシンにインストールする必要があります。 (プレビュー)**|Security Center は、Microsoft Monitoring Dependency Agent を使用して Azure 仮想マシンからネットワーク トラフィック データを収集し、高度なネットワーク保護機能 (ネットワーク マップでのトラフィックの視覚化、ネットワークのセキュリティ強化に関する推奨事項、具体的なネットワークの脅威など) を有効にします。<br>(関連ポリシー: [プレビュー]ネットワーク トラフィック データ収集エージェントを、Windows 仮想マシンにインストールする必要があります。)|Medium|**Y**|Machine|
-|**組み込みの脆弱性評価ソリューションを仮想マシンで有効にする**|Qualys エージェント (組み込みの Azure Security Center の標準サービス レベルのオファリング) をインストールし、お使いの仮想マシンで最高品質の脆弱性評価ソリューションを有効にします。<br>(関連ポリシー: [プレビュー] Virtual Machines の脆弱性評価を有効にする必要があります。)|Medium|**Y**|Machine|
-|**仮想マシンで検出された脆弱性を修復する (Qualys を利用)**|Azure Security Center の組み込みの脆弱性評価ソリューション (Qualys を利用) で検出された、お使いの仮想マシンの脆弱性の検出結果をモニターします。<br>(関連ポリシー: [プレビュー] Virtual Machines の脆弱性評価を有効にする必要があります。)|低|N|Machine|
+|**組み込みの脆弱性評価ソリューションを仮想マシンで有効にする**|Qualys エージェント (組み込みの Azure Security Center の標準サービス レベルのオファリング) をインストールし、お使いの仮想マシンで最高品質の脆弱性評価ソリューションを有効にします。<br>(関連ポリシー:[仮想マシンで脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9))|Medium|**Y**|Machine|
+|**仮想マシンで検出された脆弱性を修復する (Qualys を利用)**|Azure Security Center の組み込みの脆弱性評価ソリューション (Qualys を利用) で検出された、お使いの仮想マシンの脆弱性の検出結果をモニターします。<br>(関連ポリシー:仮想マシンで脆弱性評価を有効にする必要がある)|低|N|Machine|
 |**システムの更新プログラムを適用するには、マシンを再起動する必要があります**|マシンを再起動してシステムの更新プログラムを適用し、マシンを脆弱性からセキュリティで保護します。<br>(関連ポリシーなし - "システム更新プログラムをマシンにインストールする必要がある" に依存)|Medium|N|Machine|
 |**Automation アカウント変数は、暗号化する必要がある**|機密データを格納するときには Automation アカウント変数資産の暗号化を有効にします。<br>(関連ポリシー:Automation アカウント変数に対して暗号化を有効にする必要がある)|高|N|コンピューティング リソース (Automation アカウント)|
 |**仮想マシンでディスク暗号化を適用する必要がある**|Azure Disk Encryption を使用して、Windows 仮想マシンと Linux 仮想マシンの両方で仮想マシン ディスクを暗号化します。 Azure Disk Encryption (ADE) では、Azure の顧客キー コンテナーでデータを保護し、組織のセキュリティとコンプライアンスに関する義務を果たす助けとなるように、業界標準である Windows の BitLocker 機能と Linux の DM-Crypt 機能を利用して OS とデータ ディスクの暗号化を提供します。 コンプライアンスとセキュリティの要件で、短期 (ローカルに接続された一時) ディスクの暗号化を含め、暗号化キーを使用してエンド ツー エンドでデータを暗号化する必要がある場合は、Azure Disk Encryption を使用します。 別の方法として、既定では、Managed Disks は保存時に既定で Azure Storage Service Encryption を使用して暗号化されます。この場合の暗号化キーは、Microsoft が Azure で管理するキーです。 これがコンプライアンスとセキュリティの要件を満たしている場合は、既定のマネージド ディスク暗号化を利用して要件を満たすことができます。<br>(関連ポリシー:仮想マシンでディスク暗号化を適用する必要がある)|高|N|Machine|
@@ -139,6 +143,9 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 
 |推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|リソースの種類|
 |----|----|----|----|----|
+|**Azure SQL Database サーバーで Advanced Data Security を有効にする必要がある**|Advanced Data Security は、高度な SQL セキュリティ機能を提供する統合パッケージです。 データベースの潜在的な脆弱性の検出と軽減、データベースへの脅威を示す可能性がある異常なアクティビティの検出、機密データの検出と分類を行う機能が含まれています。 <br>重要:この推奨事項の修復によって、Azure SQL Database サーバーを保護するための料金が発生します。 このサブスクリプションに Azure SQL Database サーバーがない場合、料金は発生しません。 今後このサブスクリプションに Azure SQL Database サーバーを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure SQL Database サーバーで Advanced Data Security を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2))|高|**Y**|サブスクリプション|
+|**マシン上の SQL サーバーで Advanced Data Security を有効にする必要がある**|Advanced Data Security は、高度な SQL セキュリティ機能を提供する統合パッケージです。 データベースの潜在的な脆弱性の検出と軽減、データベースへの脅威を示す可能性がある異常なアクティビティの検出、機密データの検出と分類を行う機能が含まれています。 <br>重要:この推奨事項の修復によって、マシン上の SQL サーバーを保護するための料金が発生します。 このサブスクリプションにマシン上の SQL サーバーがない場合、料金は発生しません。 今後このサブスクリプションにマシン上の SQL サーバーを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[マシン上の SQL サーバーで Advanced Data Security を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b))|高|**Y**|サブスクリプション|
+|**Azure Storage アカウントで Advanced Threat Protection を有効にする必要がある**|Advanced Threat Protection for Storage では、ストレージ アカウントにアクセスしたり、ストレージ アカウントを利用したりする試みに通常と異なるところがあり、有害な性質が疑われる場合に、そのような試みを検出できます。<br>重要:この推奨事項の修復によって、Azure Storage アカウントを保護するための料金が発生します。 このサブスクリプションに Azure Storage アカウントがない場合、料金は発生しません。 今後このサブスクリプションに Azure Storage アカウントを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure Storage アカウントで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa))|高|**Y**|サブスクリプション|
 |**ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要がある**|ストレージ アカウントのファイアウォール設定で無制限のネットワーク アクセスを監査します。 代わりに、許可されているネットワークからのアプリケーションのみがストレージ アカウントにアクセスできるように、ネットワーク ルールを構成します。 インターネットまたはオンプレミスの特定のクライアントからの接続を許可するには、特定の Azure 仮想ネットワークからのトラフィックまたはパブリック インターネット IP アドレス範囲に、アクセス権を付与できます。<br>(関連ポリシー:ストレージ アカウントに対する制限のないネットワーク アクセスの監査)|低|N|ストレージ アカウント|
 |**Advanced Data Security を、マネージド インスタンス上で有効にする必要があります**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、マネージド インスタンスあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Managed Instance で Advanced Data Security を有効にする必要がある)|高|**Y**|SQL|
 |**SQL Server で Advanced Data Security を有効にする必要がある**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、SQL サーバーあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Server で Advanced Data Security を有効にする必要があります)|高|**Y**|SQL|
@@ -172,6 +179,7 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 |**非推奨のアカウントをサブスクリプションから削除する必要がある**|現在のユーザーのみへのアクセスを有効にするために、非推奨のアカウントをサブスクリプションから削除します。<br>(関連ポリシー:非推奨のアカウントをサブスクリプションから削除する必要がある)|高|N|サブスクリプション|
 |**複数の所有者がサブスクリプションに割り当てられている必要がある**|管理者アクセスの冗長性を確保するために、複数のサブスクリプション所有者を指定します。<br>(関連ポリシー:複数の所有者がサブスクリプションに割り当てられている必要がある)|高|N|サブスクリプション|
 |**サブスクリプションには最大 3 人の所有者を指定する必要がある**|セキュリティ侵害を受けた所有者による侵害の可能性を減らすために、サブスクリプションの所有者の指定を 3 人未満にします。<br>(関連ポリシー:サブスクリプションには最大 3 人の所有者を指定する必要がある)|高|N|サブスクリプション|
+|**Azure Key Vault コンテナーで Advanced Threat Protection を有効にする必要がある**|Azure Security Center には、Azure Key Vault 用に Azure ネイティブの高度な脅威保護機能が含まれており、セキュリティ インテリジェンスのレイヤーが追加されます。<br>重要:この推奨事項の修復によって、AKV コンテナーを保護するための料金が発生します。 このサブスクリプションに AKV コンテナーがない場合、料金は発生しません。 今後このサブスクリプションに AKV コンテナーを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure Key Vault コンテナーで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047))|高|**Y**|サブスクリプション|
 |**Key Vault で診断ログを有効にする必要がある**|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br>(関連ポリシー:Key Vault で診断ログを有効にする必要がある)|低|**Y**|Key Vault|
 ||||||
 

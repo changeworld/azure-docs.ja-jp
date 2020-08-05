@@ -3,12 +3,12 @@ title: Azure Migrate での検出、評価、および依存関係分析に関�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118836"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385723"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -113,7 +113,7 @@ Azure で評価を作成する場合は、設定されているパフォーマ�
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>インポートベースの AVS の評価で、推奨される移行ツールが不明とマークされるのはなぜですか?
 
-CSV ファイルを介してインポートされたマシンの場合、AVS の評価の既定の移行ツールは不明です。 VMware マシンの場合は、VMWare Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
+CSV ファイルを介してインポートされたマシンの場合、AVS の評価の既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 
 ## <a name="what-is-dependency-visualization"></a>依存関係の視覚化とは何ですか。

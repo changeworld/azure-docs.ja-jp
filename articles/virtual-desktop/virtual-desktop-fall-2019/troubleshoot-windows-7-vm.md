@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop 上の Windows 7 仮想マシン - Azure
-description: Windows Virtual Desktop 環境で Windows 7 仮想マシン (VM) の問題を解決する方法。
+title: Windows Virtual Desktop (classic) 上の Windows 7 仮想マシン - Azure
+description: Windows Virtual Desktop (classic) 環境における Windows 7 仮想マシン (VM) の問題を解決する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614224"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286344"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (classic) での Windows 7 仮想マシンのトラブルシューティング
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (classic) に適用されます。
 
 この記事は、Windows Virtual Desktop セッション ホスト仮想マシン (VM) の構成中に発生する問題を解決するときにご利用ください。
 

@@ -1,6 +1,5 @@
 ---
-title: オンプレミスの SQL Server
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):オンプレミスの SQL Server - Azure
 description: SQL Server データベースのデータを使用して Azure Machine Learning Studio (クラシック) で高度な分析を実行します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 49ec8916e03323bdf4263fe9ea6cfca323339dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e654950360b7891e59f4f273efb7139a5223854a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706054"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324847"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server データベースを使用して Azure Machine Learning Studio (クラシック) で分析を実行する
+
+**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+
 
 多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio (クラシック) では、現在、SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio (クラシック) の**データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのために SQL Server データベースから直接読み取ることができます。
 

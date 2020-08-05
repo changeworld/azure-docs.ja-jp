@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f2ce8f300ae7586fc16fd9170ec290b19875d01c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103400"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371126"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
@@ -23,9 +23,9 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 
 ## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="text-analytics-for-health-container-public-gated-preview"></a>Text Analytics for Health コンテナーのパブリックのゲート付きプレビュー
+### <a name="text-analytics-for-health-container---public-gated-preview"></a>Text Analytics for health コンテナー - パブリックのゲート付きプレビュー
 
-Text Analytics for Health コンテナーがパブリックのゲート付きプレビュー段階に入りました。これにより、患者の問診票、医師のメモ、研究論文、退院要約などの臨床ドキュメントに記載されている英語の非構造化テキストから情報を抽出できるようになります。 現在、Text Analytics for Health コンテナーの使用には課金されません。 
+Text Analytics for health コンテナーがパブリックのゲート付きプレビュー段階に入りました。これにより、患者の問診票、医師のメモ、研究論文、退院要約などの臨床ドキュメントに記載されている英語の非構造化テキストから情報を抽出できるようになります。 現在、Text Analytics for health コンテナーの使用に対して課金されることはありません。 
 
 コンテナーには、以下の機能が用意されています。
 
@@ -36,7 +36,7 @@ Text Analytics for Health コンテナーがパブリックのゲート付きプ
 
 
 > [!div class="nextstepaction"]
-> [Text Analytics for Health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
+> [Text Analytics for health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 

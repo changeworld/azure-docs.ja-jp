@@ -5,18 +5,18 @@ description: Azure Machine Learning のリソースにおけるクォータと�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
-ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting,contperfq4
+ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430467"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372945"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用してリソースのクォータを管理し増やす
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Azure サブスクリプションごとに、サービス全体で、または�
 | 1 つの Azure Machine Learning コンピューティング (AmlCompute) リソース内の最大ノード数 | 100 ノード |
 | ノードごとの最大 GPU MPI 処理 | 1-4 |
 | ノードごとの最大の GPU ワークスペース | 1-4 |
-| ジョブの最長有効期間 | 90 日<sup>1</sup> |
+| ジョブの最長有効期間 | 21 日<sup>1</sup> |
 | 優先順位の低いノードでのジョブの最長有効期間 | 7 日<sup>2</sup> |
 | ノードごとの最大パラメーター サーバー | 1 |
 

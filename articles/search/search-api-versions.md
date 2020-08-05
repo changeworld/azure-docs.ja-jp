@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 2cdac18ed20c90861fe23f0a9ccbd02680d380af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 5be50453dff9acaf4a9876eec1d95b56abebf745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029843"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -24,7 +24,7 @@ Azure Cognitive Search のチームでは、原則として必要な場合にの
 SDK 更新プログラムにも同じルールが適用されます。 Azure Cognitive Search SDK は[セマンティック バージョニング](https://semver.org/) ルールに従っています。つまり、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。 SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。 下位互換性が保たれる機能更新の場合はマイナー バージョンがインクリメントされ、バグ修正の場合はビルド バージョンのみがインクリメントされます。
 
 > [!Important]
-> .NET、Java、Python、および JavaScript 用の Azure SDK によって、Azure Cognitive Search 用の新しいクライアント ライブラリがロールアウトされます。 現在、最新の Search REST API (2020-06-30) や Management REST API (2020-03-13) がサポートされる Azure SDK ライブラリはありませんが、これは時間の経過と共に変化します。 このページや[新機能](whats-new.md)に関するページで機能拡張のお知らせを定期的に確認することができます。 
+> .NET、Java、Python、および JavaScript 用の Azure SDK によって、Azure Cognitive Search 用の新しいクライアント ライブラリがロールアウトされます。 現在、最新の Search REST API (2020-06-30) や Management REST API (2020-03-13) が完全にサポートされる Azure SDK ライブラリはありませんが、これは時間の経過と共に変化します。 このページや[新機能](whats-new.md)に関するページで機能拡張のお知らせを定期的に確認することができます。 
 
 ## <a name="rest-apis"></a>REST API
 
@@ -69,7 +69,7 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11.0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Azure.Search.Documents 11.0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターまたは [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet) はまだサポートされていません。 |
 | [Microsoft.Azure.Search 10.0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | リリース日: 2019 年 5 月。 Search REST api-version=2019-05-06 を対象としています。|
 | [Microsoft.Azure.Search 8.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | プレビュー | リリース日: 2019 年 4 月。 Search REST api-version=2019-05-06-Preview を対象としています。|
 | [Microsoft.Azure.Management.Search 3.0.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | Management REST api-version=2015-08-19 を対象としています。  |

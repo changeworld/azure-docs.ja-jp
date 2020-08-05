@@ -4,15 +4,15 @@ description: AzCopy とファイル ストレージでデータを転送しま�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a836f4ce40f4d2e0871f99122d25bb6c6f346d05
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7123a90505e5068422d76f22042deac46e721218
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527882"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292725"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 
@@ -101,7 +101,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ### <a name="upload-specific-files"></a>特定のファイルをアップロードする
 
-完全なファイル名を指定することも、ワイルドカード文字 (*) を使用して名前の一部を使用することもできます。
+完全なファイル名、ワイルドカード文字 (*) を使用した部分的な名前、または日付と時刻を使用して、特定のファイルをアップロードすることができます。
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
@@ -128,6 +128,17 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 `--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
+
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをアップロードする 
+
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日時を ISO 8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-after '2020-08-19T15:04:00Z'` |
+
+詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
 
 ## <a name="download-files"></a>ファイルのダウンロード
 
@@ -185,7 +196,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ### <a name="download-specific-files"></a>特定のファイルをダウンロードする
 
-完全なファイル名を指定することも、ワイルドカード文字 (*) を使用して名前の一部を使用することもできます。
+完全なファイル名、ワイルドカード文字 (*) を使用した部分的な名前、または日付と時刻を使用して、特定のファイルをダウンロードすることができます。
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
@@ -212,6 +223,18 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 `--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
+
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをダウンロードする 
+
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日時を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name>/*<SAS-token>' '<local-directory-path>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/*?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory' --include-after '2020-08-19T15:04:00Z'` |
+
+
+詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
 
 ## <a name="copy-files-between-storage-accounts"></a>ストレージ アカウント間でファイルをコピーする
 

@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 05/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205698"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373744"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動機械学習での特徴量化
 
@@ -64,7 +64,7 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 | ------------- | ------------- |
 |**高カーディナリティまたは差異なしの特徴の削除*** |これらの特徴をトレーニング セットと検証セットから削除します。 これには、まったく値が存在しない特徴、すべての行の値が同じである特徴、高いカーディナリティ (ハッシュ、ID、GUID など) の特徴に適用します。|
 |**欠損値の補完*** |数値特徴の場合、その列の平均値で補完します。<br/><br/>カテゴリ特徴の場合、出現回数が最も多い値で補完します。|
-|**その他の特徴の生成*** |DateTime の特徴:年、月、日、曜日、年の通算日、四半期、年の通算週、時間、分、秒。<br/><br/>テキストの特徴:ユニグラム、バイグラム、トライグラムに基づく期間の頻度。|
+|**その他の特徴の生成*** |DateTime の特徴:年、月、日、曜日、年の通算日、四半期、年の通算週、時間、分、秒。<br/><br/>テキストの特徴:ユニグラム、バイグラム、トライグラムに基づく期間の頻度。 詳細については、[BERT を使用してこれを実行する方法](#bert-integration)に関する記事を参照してください。|
 |**変換とエンコード***|一意の値がほとんどない数値特徴を、カテゴリ特徴に変換します。<br/><br/>カーディナリティの低いカテゴリ特徴の場合、ワンホット エンコードが使用されます。 カーディナリティが高いカテゴリ特徴の場合、ワンホット ハッシュ エンコードが使用されます。|
 |**ワードの埋め込み**|事前トレーニングされたモデルを使用してテキスト トークンのベクトルをセンテンス ベクトルに変換するテキスト特性化機能です。 ドキュメント内の各ワードの埋め込みベクトルは、ドキュメント特徴ベクトルを生成するために他のものと集約されます。|
 |**ターゲット エンコード**|カテゴリ特徴の場合、このステップは、回帰の問題について各カテゴリを平均ターゲット値にマップされます。分類の問題については、各クラスのクラス確率にマップされます。 マッピングの過剰適合および疎データ カテゴリによって発生するノイズを削減するために、頻度ベースの重み付けと k フォールド クロス検証が適用されます。|
@@ -114,13 +114,13 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 
 ML モデルのトレーニングに使用されたデータと特徴から適切な予測が得られるよう、特徴量化の設定をカスタマイズすることができます。
 
-特徴量化をカスタマイズするには、`AutoMLConfig` オブジェクトで  `"featurization": FeaturizationConfig` を指定します。 Azure Machine Learning Studio を実験に使用している場合、[方法に関する記事](how-to-use-automated-ml-for-ml-models.md#customize-featurization)を参照してください。
+特徴量化をカスタマイズするには、`AutoMLConfig` オブジェクトで  `"featurization": FeaturizationConfig` を指定します。 Azure Machine Learning Studio を実験に使用している場合、[方法に関する記事](how-to-use-automated-ml-for-ml-models.md#customize-featurization)を参照してください。 予測のタスクの種類用に特徴量化をカスタマイズするには、[予測の方法](how-to-auto-train-forecast.md#customize-featurization)に関する記事を参照してください。
 
 サポートされるカスタマイズは次のとおりです。
 
 |カスタマイズ|定義|
 |--|--|
-|**列の目的の更新**|指定した列の特徴の種類をオーバーライドします。|
+|**列の目的の更新**|指定した列の自動検出された特徴の種類をオーバーライドします。|
 |**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在、*Imputer* (平均値、最頻値、中央値) と *HashOneHotEncoder* がサポートされています。|
 |**列の削除** |特徴量化から削除する列を指定します。|
 |**ブロック トランスフォーマー**| 特徴量化プロセスで使用されるブロック トランスフォーマーを指定します。|
@@ -138,6 +138,50 @@ featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strate
 featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
 featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
+
+## <a name="bert-integration"></a>BERT 統合 
+[BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) は、自動 ML の特徴量化層で使用されます。 この層では、列にフリー テキストやその他の種類のデータ (タイムスタンプや単純な数値など) が含まれているかどうかを検出し、それに応じて特徴量化を行います。 BERT の場合、ユーザーが指定したラベルを使用してモデルをファインチューニング/トレーニングした後、タイムスタンプベースの特徴 (曜日など) や多くの一般的なデータセットに含まれている数値などの他の特徴と一緒に、特徴としてドキュメントの埋め込み (BERT の場合、これらは特殊な [CLS] トークンに関連付けられた最終的な非表示状態です) を出力します。 
+
+BERT を有効にするには、トレーニングに GPU コンピューティングを使用する必要があります。 CPU コンピューティングを使用した場合、AutoML は、BERT ではなく、BiLSTM DNN 特徴抽出器を有効にします。 BERT を呼び出すには、automl_settings に "enable_dnn:True" を設定し、GPU コンピューティング (例: vm_size = "STANDARD_NC6"、またはそれ以上の GPU) を使用する必要があります。 例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)をご覧ください。
+
+BERT の場合、AutoML は次の手順を実行します (これらの項目が発生するためには、automl_settings に "enable_dnn:True" を設定する必要があることに注意してください)。
+
+1. すべてのテキスト列のトークン化を含む前処理 (最終的なモデルの特徴量化の概要には "StringCast" トランスフォーマーが表示されます)。 `get_featurization_summary()` メソッドを使用してモデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)を参照してください。
+
+```python
+text_transformations_used = []
+for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
+    text_transformations_used.extend(column_group['Transformations'])
+text_transformations_used
+```
+
+2. すべてのテキスト列を 1 つのテキスト列に連結します。そのため、最終的なモデルには "StringConcatTransformer" が表示されます。 
+
+> [!NOTE]
+> BERT の実装では、トレーニング サンプルのテキストの長さの合計は 128 トークンに制限されています。 つまり、すべてのテキスト列を連結した長さは、最大で 128 トークンになることが理想です。 理想的には、複数の列がある場合は、この条件が満たされるように各列を切り詰める必要があります。 たとえば、データに 2 つのテキスト列がある場合は、データを AutoML に供給する前に、両方のテキスト列を切り詰めてそれぞれ 64 トークンになるようにする必要があります (最終的に連結されたテキスト列で、両方の列を等しく表す必要があると仮定した場合)。 長さが 128 トークンを超える連結列の場合、BERT のトークナイザー層により、この入力は 128 トークンに切り詰められます。
+
+3. 特徴量のスイープ手順で、AutoML は、BERT を、データ サンプルのベースライン (bag-of-words 特徴量と事前トレーニングされた単語の埋め込み) と比較し、BERT によって精度が向上するかどうかを判断します。 AutoML は、BERT のパフォーマンスがベースラインよりも優れていると判断すると、最適な特徴量化戦略としてテキストの特徴量化に BERT を使用して、データ全体の特徴量化を進めます。 その場合、最終的なモデルには "PretrainedTextDNNTransformer" と表示されます。
+
+AutoML では現在約 100 の言語がサポートされており、データセットの言語に応じて、適切な BERT モデルが選択されます。 ドイツ語のデータの場合は、ドイツ語の BERT モデルが使用されます。 英語の場合は、英語の BERT モデルが使用されます。 その他のすべての言語では、多言語 BERT モデルが使用されます。
+
+次のコードでは、データセットの言語が "deu" ([ISO 分類](https://iso639-3.sil.org/code/hbs)でドイツ語を示す 3 文字の言語コード) に指定されているため、ドイツ語の BERT モデルがトリガーされます。
+
+```python
+from azureml.automl.core.featurization import FeaturizationConfig
+
+featurization_config = FeaturizationConfig(dataset_language='deu')
+
+automl_settings = {
+    "experiment_timeout_minutes": 120,
+    "primary_metric": 'accuracy', 
+# All other settings you want to use 
+    "featurization": featurization_config,
+    
+  "enable_dnn": True, # This enables BERT DNN featurizer
+    "enable_voting_ensemble": False,
+    "enable_stack_ensemble": False
+}
 ```
 
 ## <a name="next-steps"></a>次のステップ

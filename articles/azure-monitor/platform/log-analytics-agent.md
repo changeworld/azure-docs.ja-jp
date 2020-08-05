@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: c6bd45324313ebc44bd4c59cd6f09e2eaab28d32
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325289"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。
@@ -72,15 +72,15 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 
 |source | Method | 説明|
 |-------|-------------|-------------|
-|Azure VM| [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Log Analytics ワークスペースからデプロイする VM を指定します。 |
+|Azure VM| [Azure portal から手動で](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Log Analytics ワークスペースからデプロイする VM を指定します。 |
 | | \- Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能 | この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。 |
 | | [Azure Monitor for VMs](../insights/vminsights-enable-overview.md) | Azure Monitor for VM でモニタリングを有効化すると、Log Analytics 拡張機能とエージェントがインストールされます。 |
 | | [Azure Security Center の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md) | \- Azure Security Center では、セキュリティの脆弱性と脅威を監視するために有効にされている場合、サポートされているすべての Azure VM と作成された新しいものに、Log Analytics エージェントをプロビジョニングできます。 有効な場合、エージェントがインストールされていない新規または既存の VM がプロビジョニングされます。 |
 | ハイブリッド Windows コンピューター| [手動インストール](agent-windows.md) | コマンド ラインから Microsoft Monitoring エージェントをインストールします。 |
 | | [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | Azure Automation DSC を使用してインストールを自動化します。 |
 | | [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | データセンターに Microsoft Azure Stack をデプロイしている場合は、Azure Resource Manager テンプレートを使用します。| 
-| ハイブリッド Linux コンピューター| [手動インストール](../../azure-monitor/learn/quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 
-| System Center Operations Manager|[Operations Manager を Log Analytics に統合する](../../azure-monitor/platform/om-agents.md) | Operations Manager と Azure Monitor ログとの統合を構成して、収集したデータを Windows コンピューター レポートから管理グループに転送します。|  
+| ハイブリッド Linux コンピューター| [手動インストール](../learn/quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 
+| System Center Operations Manager|[Operations Manager を Log Analytics に統合する](./om-agents.md) | Operations Manager と Azure Monitor ログとの統合を構成して、収集したデータを Windows コンピューター レポートから管理グループに転送します。|  
 
 
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
@@ -153,6 +153,7 @@ Linux エージェントでは、次のバージョンの Linux オペレーテ�
 |Glibc |    GNU C ライブラリ | 2.5-12 
 |Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
 |Curl | cURL Web クライアント | 7.15.5 |
+|Python | | 2.6 以降または 3.3 以降
 |Python-ctypes | | 
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
 
@@ -228,3 +229,4 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 * [データ ソース](agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * Azure Monitor に機能を追加し、Log Analytics ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。
+

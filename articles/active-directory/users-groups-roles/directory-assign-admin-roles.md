@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b94d195ea1f31d228505f01c2a77a299e63c0a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 487177b4a114ba7537ac4f1aa74a4e2472455d4b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518098"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369562"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -289,6 +289,12 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、Azure AD でのハイブリッド ID の有効化に関連するサービスと設定を有効化、構成、管理できます。 このロールでは、サポートされている 3 つの認証方法であるパスワード ハッシュ同期 (PHS)、パススルー認証 (PTA)、フェデレーション (AD FS またはサードパーティのフェデレーション プロバイダー) のいずれかに Azure AD を構成し、関連するオンプレミス インフラストラクチャをデプロイして有効にすることが許可されます。 オンプレミス インフラストラクチャには、プロビジョニングと PTA エージェントが含まれます。 このロールでは、Windows 10 以外のデバイスまたは Windows Server 2016 以外のコンピューターでシームレス シングル サインオン (S-SSO) を有効にして、シームレスな認証を有効にすることが許可されます。 さらに、このロールでは、監視とトラブルシューティングのために、サインイン ログを表示し、正常性と分析にアクセスすることが許可されます。 
 
+### <a name="insights-administrator"></a>[Insights 管理者](#insights-administrator-permissions)
+このロールのユーザーは、[M365 Insights アプリケーション](https://go.microsoft.com/fwlink/?linkid=2129521)の管理機能の完全なセットにアクセスできます。 このロールでは、ディレクトリ情報の読み取り、サービスの正常性の監視、サポート チケットの提出、Insights 管理者設定の側面へのアクセスを行うことができます。
+
+### <a name="insights-business-leader"></a>[Insights ビジネス リーダー](#insights-business-leader-permissions)
+このロールのユーザーは、[M365 Insights アプリケーション](https://go.microsoft.com/fwlink/?linkid=2129521)を使用して、一連のダッシュボードと分析情報にアクセスできます。 これには、すべてのダッシュボード、表示される分析情報、およびデータ探索機能へのフル アクセスが含まれます。 このロールのユーザーには、製品の構成設定へのアクセス権がありません (これは Insights 管理者ロールの責任範囲です)。
+
 ### <a name="intune-administrator"></a>[Intune 管理者](#intune-service-administrator-permissions)
 
 このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)」を参照してください。
@@ -314,22 +320,22 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
 
-### <a name="modern-commerce-administrator"></a>[Modern Commerce 管理者](#modern-commerce-administrator-permissions)
+### <a name="modern-commerce-user"></a>[Modern Commerce ユーザー](#modern-commerce-user-permissions)
 
 使用しないでください。 このロールは、Commerce から自動的に割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。 詳細は以下を参照してください。
 
-Modern Commerce 管理者ロールは、特定のユーザーに Microsoft 365 管理センターにアクセスして、**ホーム**、**課金**、**サポート**の左側のナビゲーション エントリを表示するためのアクセス許可を付与します。 これらの領域で利用可能なコンテンツは、ユーザーが自分自身または組織のために購入した製品を管理するために、ユーザーに割り当てられた[コマース固有のロール](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)によって制御されます。 これには、請求書の支払いや、課金アカウントや課金プロファイルへのアクセスなどのタスクが含まれる場合があります。 
+Modern Commerce ユーザー ロールは、特定のユーザーに Microsoft 365 管理センターにアクセスして、**ホーム**、**課金**、**サポート**の左側のナビゲーション エントリを表示するためのアクセス許可を付与します。 これらの領域で利用可能なコンテンツは、ユーザーが自分自身または組織のために購入した製品を管理するために、ユーザーに割り当てられた[コマース固有のロール](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)によって制御されます。 これには、請求書の支払いや、課金アカウントや課金プロファイルへのアクセスなどのタスクが含まれる場合があります。 
 
-Modern Commerce 管理者ロールを持つユーザーは、通常、他の Microsoft 購入システムの管理権限を持っていますが、管理センターへのアクセスに使用されるグローバル管理者ロールまたは課金管理者ロールは持っていません。 
+Modern Commerce ユーザー ロールを持つユーザーは、通常、他の Microsoft 購入システムの管理権限を持っていますが、管理センターへのアクセスに使用されるグローバル管理者ロールまたは課金管理者ロールは持っていません。 
 
-**Modern Commerce 管理者ロールはいつ割り当てられますか?**
+**Modern Commerce ユーザー ロールが割り当てられるタイミング**
 
-* **Microsoft 365 管理センターでのセルフサービス購入** – セルフサービス購入により、ユーザーは新製品を自分で購入またはサインアップして、新製品を試す機会が得られます。 これらの製品は管理センターで管理されています。 セルフサービス購入を行うユーザーには、コマース システムでのロールと Modern Commerce 管理者ロールが割り当てられ、これにより、管理センターで購入を管理できるようになります。 管理者は [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) を使用して、(Power BI、Power Apps、Power Automate に対する) セルフサービス購入をブロックできます。 詳細については、「[セルフサービスによる購入に関するよくあるご質問](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)」を参照してください。  
-* **Microsoft コマーシャル マーケットプレースからの購入** - セルフサービス購入と同様に、ユーザーが Microsoft AppSource または Azure Marketplace から製品またはサービスを購入する際に、グローバル管理者ロールまたは課金管理者ロールを持っていない場合は、Modern Commerce 管理者ロールが割り当てられます。 場合によっては、ユーザーがこれらの購入をブロックされる場合があります。 詳細については、[Microsoft コマーシャル マーケットプレース](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)に関するページを参照してください。
-* **Microsoft からの提案** – 提案は、組織が Microsoft の製品やサービスを購入するための Microsoft からの正式なオファーです。 提案に同意する人が Azure AD でグローバル管理者ロールまたは課金管理者ロールを持っていない場合、提案を完了するためのコマース固有のロールと、管理センターにアクセスするための Modern Commerce 管理者ロールの両方が割り当てられます。 管理センターにアクセスするときは、そのコマース固有のロールによって承認された機能のみを使用できます。
-* **コマース固有のロール** – 一部のユーザーには、コマース固有のロールが割り当てられます。 ユーザーがグローバル管理者または課金管理者でない場合は、管理センターにアクセスできるように、Modern Commerce 管理者ロールを取得します。  
+* **Microsoft 365 管理センターでのセルフサービス購入** – セルフサービス購入により、ユーザーは新製品を自分で購入またはサインアップして、新製品を試す機会が得られます。 これらの製品は管理センターで管理されています。 セルフサービス購入を行うユーザーには、コマース システムでのロールと Modern Commerce ユーザー ロールが割り当てられ、これにより、管理センターで購入を管理できるようになります。 管理者は [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) を使用して、(Power BI、Power Apps、Power Automate に対する) セルフサービス購入をブロックできます。 詳細については、「[セルフサービスによる購入に関するよくあるご質問](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)」を参照してください。  
+* **Microsoft コマーシャル マーケットプレースからの購入** - セルフサービス購入と同様に、ユーザーが Microsoft AppSource または Azure Marketplace から製品またはサービスを購入するときに、グローバル管理者ロールまたは課金管理者ロールを持っていない場合は、Modern Commerce ユーザー ロールが割り当てられます。 場合によっては、ユーザーがこれらの購入をブロックされる場合があります。 詳細については、[Microsoft コマーシャル マーケットプレース](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)に関するページを参照してください。
+* **Microsoft からの提案** – 提案は、組織が Microsoft の製品やサービスを購入するための Microsoft からの正式なオファーです。 提案に同意する人が Azure AD でグローバル管理者ロールまたは課金管理者ロールを持っていない場合、提案を完了するためのコマース固有のロールと、管理センターにアクセスするための Modern Commerce ユーザー ロールの両方が割り当てられます。 管理センターにアクセスするときは、そのコマース固有のロールによって承認された機能のみを使用できます。
+* **コマース固有のロール** – 一部のユーザーには、コマース固有のロールが割り当てられます。 ユーザーがグローバル管理者または課金管理者でない場合は、管理センターにアクセスできるように、Modern Commerce ユーザー ロールを取得します。  
 
-ユーザーから Modern Commerce 管理者ロールが割り当て解除されると、Microsoft 365 管理センターにアクセスできなくなります。 ユーザーが自身または組織のために製品を管理している場合は、それらを管理できなくなります。 これには、ライセンスの割り当て、支払い方法の変更、請求書の支払い、サブスクリプションを管理するためのその他のタスクが含まれます。
+ユーザーから Modern Commerce ユーザー ロールが割り当て解除されると、Microsoft 365 管理センターにアクセスできなくなります。 ユーザーが自身または組織のために製品を管理している場合は、それらを管理できなくなります。 これには、ライセンスの割り当て、支払い方法の変更、請求書の支払い、サブスクリプションを管理するためのその他のタスクが含まれます。
 
 ### <a name="network-administrator"></a>[ネットワーク管理者](#network-administrator-permissions)
 
@@ -1224,6 +1230,27 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
+### <a name="insights-administrator-permissions"></a>Insights 管理者のアクセス許可
+
+M365 Insights アプリへの管理アクセス権があります。 
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.insights/allEntities/allTasks | Insights の全側面の管理。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+
+### <a name="insights-business-leader-permissions"></a>Insights ビジネス リーダーのアクセス許可
+
+M365 Insights アプリを使用して、ダッシュボードと分析情報を表示および共有できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.insights/reports/read | Insights アプリでのレポートとダッシュボードの表示。 |
+| microsoft.insights/programs/update | Insights アプリでのプログラムのデプロイと管理。 |
 
 ### <a name="intune-service-administrator-permissions"></a>Intune サービス管理者のアクセス許可
 
@@ -1338,7 +1365,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
 
-### <a name="modern-commerce-administrator-permissions"></a>Modern Commerce 管理者のアクセス許可
+### <a name="modern-commerce-user-permissions"></a>Modern Commerce ユーザーのアクセス許可
 会社、部署、またはチームの商用購入を管理できます。 
 
 > [!NOTE]
@@ -1619,24 +1646,26 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 
 | **アクション** | **説明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.directory/devices/bitLockerRecoveryKeys/read | Azure Active Directory での devices.bitLockerRecoveryKeys プロパティの読み取り。 |
+| microsoft.directory/identityProtection/allProperties/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
+| microsoft.directory/identityProtection/allProperties/update | microsoft.aad.identityProtection でのすべてのリソースの更新。 |
 | microsoft.directory/policies/basic/update | Azure Active Directory での policies の基本プロパティの更新。 |
 | microsoft.directory/policies/create | Azure Active Directory での policies の作成。 |
 | microsoft.directory/policies/delete | Azure Active Directory での policies の削除。 |
 | microsoft.directory/policies/owners/update | Azure Active Directory での policies.owners プロパティの更新。 |
 | microsoft.directory/policies/tenantDefault/update | Azure Active Directory での policies.tenantDefault プロパティの更新。 |
+| microsoft.directory/privilegedIdentityManagement/allProperties/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
 | microsoft.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
 | microsoft.directory/signInReports/allProperties/read | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
-| microsoft.aad.identityProtection/allEntities/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
-| microsoft.aad.identityProtection/allEntities/update | microsoft.aad.identityProtection でのすべてのリソースの更新。 |
-| microsoft.aad.privilegedIdentityManagement/allEntities/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.protectionCenter/allEntities/read | Office 365 プロテクション センターの全側面の読み取り。 |
 | microsoft.office365.protectionCenter/allEntities/update | microsoft.office365.protectionCenter でのすべてのリソースの更新。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="security-operator-permissions"></a>セキュリティ オペレーターのアクセス許可
 
@@ -1649,12 +1678,13 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Microsoft Cloud App Security の読み取りと構成。 |
-| microsoft.aad.identityProtection/allEntities/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
-| microsoft.aad.privilegedIdentityManagement/allEntities/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
 | microsoft.azure.advancedThreatProtection/allEntities/read | Azure AD Advanced Threat Protection の読み取りと構成。 |
+| microsoft.directory/cloudAppSecurity/allProperties/allTasks | Microsoft Cloud App Security の読み取りと構成。 |
+| microsoft.directory/identityProtection/allProperties/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
+| microsoft.directory/privilegedIdentityManagement/allProperties/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
 | microsoft.intune/allEntities/allTasks | Intune の全側面の管理。 |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | セキュリティ/コンプライアンス センターの読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Windows Defender Advanced Threat Protection の読み取りと構成。 |
 
 ### <a name="security-reader-permissions"></a>セキュリティ閲覧者のアクセス許可
@@ -1872,13 +1902,15 @@ Exchange サービス管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d
 ゲスト招待元 | ゲスト招待元 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 ヘルプデスク管理者 | ヘルプデスク管理者 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 ハイブリッド ID の管理者 | ハイブリッド ID の管理者 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
+Insights 管理者 | Insights 管理者 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
+Insights ビジネス リーダー | Insights ビジネス リーダー | 31e939ad-9672-4796-9c2e-873181342d2d
 Intune サービス管理者 | Intune 管理者 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理者 | Kaizala 管理者 | 74ef975b-6605-40af-a5d2-b9539d836353
 ライセンス管理者 | ライセンス管理者 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync サービス管理者 | Skype for Business 管理者 | 75941009-915a-4869-abe7-691bff18279e
 メッセージ センターのプライバシー閲覧者 | メッセージ センターのプライバシー閲覧者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 メッセージ センター閲覧者 | メッセージ センター閲覧者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-Modern Commerce 管理者 | Modern Commerce 管理者 | d24aef57-1500-4070-84db-2666f29cf966
+Modern Commerce ユーザー | Modern Commerce ユーザー | d24aef57-1500-4070-84db-2666f29cf966
 ネットワーク管理者 | ネットワーク管理者 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office アプリ管理者 | Office アプリ管理者 | 2b745bdf-0803-4d80-aa65-822c4493daac
 パートナー レベル 1 のサポート | 使用するべきではないため、表示されません | 4ba39ca4-527c-499a-b93d-d9b492c50246

@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.custom: contperfq4
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536115"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373693"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -368,6 +368,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
 たとえば、リモート実行のために送信される ML パイプラインからコンピューティング ターゲットを作成またはアタッチしようとすると、エラーが発生します。
+
+## <a name="missing-user-interface-items-in-studio"></a>スタジオにユーザー インターフェイス項目が見つからない
+
+Azure のロールベースのアクセス制御を使用すると、Azure Machine Learning で実行できるアクションを制限できます。 これらの制限によって、Azure Machine Learning Studio にユーザー インターフェイス項目を表示しないようにすることができます。 たとえば、コンピューティング インスタンスを作成できないロールがユーザーに割り当てられている場合、コンピューティング インスタンスを作成するオプションは、スタジオには表示されません。
+
+詳細については、「[ユーザーとロールを管理する](how-to-assign-roles.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

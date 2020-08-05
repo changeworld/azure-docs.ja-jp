@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 20175e252d009620585e20cf76cdb634549b4f1d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224164"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323912"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>プログラムによる Azure サブスクリプションの作成 (プレビュー)
 
@@ -160,7 +160,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-まず、`Install-Module Az.Subscription -AllowPrerelease` を実行してこのプレビュー モジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/scripting/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
+`New-AzSubscription` コマンドレットを含む最新バージョンのモジュールをインストールするには、`Install-Module Az.Subscription` を実行します。 PowerShellGet の最新バージョンをインストールするには、[PowerShellGet モジュールの取得](/powershell/scripting/gallery/installing-psget)に関するページを参照してください。
 
 次の [New-AzSubscription](/powershell/module/az.subscription) コマンドを実行します。その際、`<enrollmentAccountObjectId>` を最初のステップで収集した `ObjectId` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えます。 所有者を指定する場合、[ユーザー オブジェクト ID の取得方法](grant-access-to-create-subscription.md#userObjectId)をご確認ください。
 
@@ -177,7 +177,8 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | いいえ       | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーの、メール アドレス。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。|
 | `OwnerApplicationId` | いいえ       | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。|
 
-すべてのパラメーターの完全な一覧については、[New-AzSubscription](/powershell/module/az.subscription) を参照してください。
+すべてのパラメーターの完全な一覧については、[New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription) を参照してください。
+
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

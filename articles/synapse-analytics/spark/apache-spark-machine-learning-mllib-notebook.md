@@ -1,5 +1,5 @@
 ---
-title: Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
+title: Apache Spark MLlib で機械学習アプリをビルドする
 description: Apache Spark MLlib を使用して、ロジスティック回帰による分類を使用してデータセットを分析する Machine Learning アプリを作成する方法について説明します。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: fd3637eed35fa4b9f40623612be9fc99703051e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7ae2e3045b8f6e56b756ac1b2a4233ac8af9688
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368177"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373455"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 2 つの DataFrame が得られたところで、次のタスクは、モデル式を作成して、トレーニング DataFrame に対してそれを実行し、さらにテスト用 DataFrame に対して検証することです。 さまざまなバージョンのモデル式で試して、さまざまな組み合わせの影響を確認する必要があります。
 
 > [!Note]
-> モデルを保存するためには、Azure Storage Blob データ共同作成者 RBAC ロールが必要です。 お使いのストレージ アカウントで、[アクセス制御 (IAM)] に移動し、[ロール割り当ての追加] を選択します。 [ストレージ BLOB データ共同作成者] RBAC ロールを SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)をご覧ください。
+> モデルを保存するためには、Azure Storage Blob データ共同作成者 RBAC ロールが必要です。 お使いのストレージ アカウントで、[アクセス制御 (IAM)] に移動し、[ロール割り当ての追加] を選択します。 [ストレージ BLOB データ共同作成者] RBAC ロールを SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
 
 ```python
 ## Create a new LR object for the model

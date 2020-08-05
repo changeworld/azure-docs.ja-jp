@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077823"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
+# <a name="setting-up-the-azure-importexport-tool-v1"></a>Azure Import/Export ツール v1 の設定
 Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  
 
 -   インポート ジョブを作成する前に、このツールを使用して、Microsoft Azure データ センターに発送するハード ドライブにデータをコピーできます。  

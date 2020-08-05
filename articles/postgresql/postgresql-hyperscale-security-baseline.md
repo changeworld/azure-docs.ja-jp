@@ -1,20 +1,20 @@
 ---
-title: Azure セキュリティ ベンチマーク用の Azure Database for PostgreSQL - Hyperscale セキュリティ ベースライン
+title: Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale
 description: Azure Database for PostgreSQL - Hyperscale セキュリティ ベースラインにより、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030047"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Azure Database for PostgreSQL - Hyperscale セキュリティ ベースライン
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale
 
 Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 

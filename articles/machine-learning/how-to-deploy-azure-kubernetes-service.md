@@ -5,17 +5,18 @@ description: Azure Kubernetes Service を使用して Web サービスとして 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 16465ff823fab1b13f43aec33cb41f9b26b5c054
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392558"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372112"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,8 +35,15 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 * Azure Machine Learning SDK、Machine Learning CLI、または [Azure Machine Learning Studio](https://ml.azure.com) を使って、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
 * 既存の AKS クラスターを Azure Machine Learning のワークスペースにアタッチします。 Azure Machine Learning SDK、Machine Learning CLI、または Azure Machine Learning Studio を使って、クラスターをアタッチできます。
 
+AKS クラスターと AML ワークスペースは異なるリソース グループに配置できます。
+
 > [!IMPORTANT]
 > 作成またはアタッチのプロセスは、1 回限りのタスクです。 AKS クラスターがワークスペースに接続されると、デプロイに使用できます。 不要になった AKS クラスターは、デタッチまたは削除できます。 デタッチまたは削除したクラスターには、デプロイできなくなります。
+
+> [!IMPORTANT]
+> Web サービスにデプロイする前にローカルでデバッグすることを強くお勧めします。詳細については、「[ローカル デバッグ](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)」を参照してください
+>
+> Azure Machine Learning の[ローカルの Notebook へのデプロイ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)に関する記事を参照することもできます
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,11 +63,28 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 - この記事の __CLI__ スニペットは、`inferenceconfig.json` ドキュメントを作成済みであることを前提としています。 このドキュメントの作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
+- [API サーバーへのアクセスが有効な承認済みの IP 範囲](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)を持つ AKS クラスターを接続する場合は、AKS クラスターの AML コントロール プレーンの IP 範囲を有効にします。 AML コントロール プレーンは、ペアになっているリージョンにまたがってデプロイされ、AKS クラスター上に推論ポッドをデプロイします。 API サーバーにアクセスできない場合、推論ポッドをデプロイすることはできません。 AKS クラスターで IP 範囲を有効にする場合、[ペアになっているリージョン]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)の両方に対して [IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)を使用します
+ 
+ - コンピューティング名はワークスペース内で一意にする必要があります
+   - 名前は必須であり、3 文字から 24 文字の長さにする必要があります。
+   - 有効な文字は、大文字、小文字、数字、- 文字です。
+   - 名前の先頭は文字である必要があります
+   - 名前は、Azure リージョン内のすべての既存のコンピューティングで一意である必要があります。 選択した名前が一意でない場合は、アラートが表示されます
+   
+ - GPU ノードまたは FPGA ノード (または特定の SKU) にモデルをデプロイする場合は、特定の SKU でクラスターを作成する必要があります。 既存のクラスターにセカンダリ ノード プールを作成し、そのセカンダリ ノード プールにモデルをデプロイすることはサポートされていません。
+ 
+ - Basic ロード バランサー (BLB) ではなく Standard ロード バランサー (SLB) をクラスターにデプロイする必要がある場合は、AKS ポータル、CLI、または SDK でクラスターを作成し、AML ワークスペースにアタッチしてください。 
+
+
+
 ## <a name="create-a-new-aks-cluster"></a>新しい AKS クラスターを作成する
 
-**推定所要時間**: 約 20 分です。
+**推定所要時間**: 約 10 分。
 
 AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
+ 
+Azure Machine Learning で、Private Link が有効な Azure Kubernetes サービスの使用がサポートされるようになりました。
+プライベート AKS クラスターを作成するには、[こちら](https://docs.microsoft.com/azure/aks/private-clusters)のドキュメントに従ってください
 
 > [!TIP]
 > Azure Virtual Network を使用して AKS クラスターをセキュリティで保護する場合は、まず仮想ネットワークを作成する必要があります。 詳細については、[Azure Virtual Network での実験と推論の安全な実行](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。

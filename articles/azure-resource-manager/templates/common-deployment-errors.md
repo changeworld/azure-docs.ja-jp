@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用した Azure へのリソースの�
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055666"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373999"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -78,7 +78,7 @@ ms.locfileid: "86055666"
 | SubnetsNotInSameVnet | 仮想マシンでは、仮想ネットワークを 1 つのみを持つことができます。 複数の NIC をデプロイするときは、それらが同じ仮想ネットワークに属していることを確認してください。 | [複数の NIC](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotRegistered | ネットワーク リソースをデプロイすると、Microsoft.Network リソース プロバイダーがサブスクリプションに自動的に登録されます。 自動登録が時間内に完了しないことがあります。 この断続的なエラーを回避するには、デプロイの前に、Microsoft.Network リソース プロバイダーを登録します。 | [登録を解決する](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 不要な依存関係を削除します。 | [循環依存関係を解決する](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | 1 回のデプロイのリソース グループ数を減らします。 | [リソース グループ間のデプロイ](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | 1 回のデプロイのリソース グループ数を減らします。 | [スコープをまたいだデプロイ](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>エラー コードを見つける
 

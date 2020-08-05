@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 73077b6b25c09c17deb4ad468c79fe6d5ddd648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2e84cf06019c592a726564768f9b332ab5ed610
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833257"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372299"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする
 
@@ -26,7 +26,7 @@ Azure Storage リソース プロバイダーを使用すると、ストレー�
 
 Microsoft からは、Azure Storage リソースを操作する 2 つの REST API が用意されています。 これらの API は、Azure Storage に対して実行できるすべてのアクションの基礎を形成します。 Azure Storage REST API を使用すると、ストレージ アカウントのデータ (BLOB、キュー、ファイル、テーブル データなど) を操作できます。 Azure Storage リソース プロバイダー REST API を使用すると、ストレージ アカウントと関連リソースを操作できます。
 
-BLOB データを読み取りまたは書き込みを行う要求には、管理操作を実行する要求とは異なるアクセス許可が必要です。 RBAC を使うと、両方の種類のリソースへのアクセス許可をきめ細かく制御できます。 RBAC ロールをセキュリティ プリンシパルに割り当てる場合は、必ずそのプリンシパルに付与されるアクセス許可を理解してください。 各組み込み RBAC ロールに関連付けられているアクションが説明された詳細なリファレンスについては、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+BLOB データを読み取りまたは書き込みを行う要求には、管理操作を実行する要求とは異なるアクセス許可が必要です。 RBAC を使うと、両方の種類のリソースへのアクセス許可をきめ細かく制御できます。 RBAC ロールをセキュリティ プリンシパルに割り当てる場合は、必ずそのプリンシパルに付与されるアクセス許可を理解してください。 各 Azure 組み込みロールに関連付けられているアクションが説明された詳細なリファレンスについては、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 Azure Storage は、Azure AD を使用して Blob および Queue ストレージに対する要求を承認する処理をサポートしています。 BLOB およびキュー データ操作の RBAC ロールの詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
 
@@ -34,7 +34,7 @@ Azure Storage は、Azure AD を使用して Blob および Queue ストレー�
 
 すべての Azure サブスクリプションには、ユーザー、グループ、アプリケーションを管理する Azure Active Directory が関連付けられています。 ユーザー、グループ、アプリケーションは、[Microsoft ID プラットフォーム](/azure/active-directory/develop/)のコンテキストではセキュリティ プリンシパルと呼ばれることもあります。 ロールベースのアクセス制御 (RBAC) を使用し、Active Directory で定義されているセキュリティ プリンシパルに対して、サブスクリプションのリソースへのアクセス権を付与できます。
 
-RBAC ロールをセキュリティ プリンシパルに割り当てるときに、ロールによって付与されたアクセス許可を有効にするスコープも指定します。 管理操作の場合、サブスクリプション、リソース グループ、またはストレージ アカウントのレベルでロールを割り当てることができます。 セキュリティ プリンシパルに RBAC ロールを割り当てるには、[Azure portal](https://portal.azure.com/)、[Azure CLI ツール](../../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Storage リソース プロバイダー REST API](/rest/api/storagerp) を使用します。
+RBAC ロールをセキュリティ プリンシパルに割り当てるときに、ロールによって付与されたアクセス許可を有効にするスコープも指定します。 管理操作の場合、サブスクリプション、リソース グループ、またはストレージ アカウントのレベルでロールを割り当てることができます。 セキュリティ プリンシパルに RBAC ロールを割り当てるには、[Azure portal](https://portal.azure.com/)、[Azure CLI ツール](../../cli-install-nodejs.md)、[PowerShell](/powershell/azure/)、または [Azure Storage リソース プロバイダー REST API](/rest/api/storagerp) を使用します。
 
 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」 と[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
@@ -57,7 +57,7 @@ Azure には、管理操作を呼び出すアクセス許可を付与する組�
 
 ### <a name="custom-roles-for-management-operations"></a>管理操作のカスタム ロール
 
-Azure は、管理リソースにアクセスするためのカスタム RBAC ロールの定義もサポートしています。 カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
+Azure では、管理リソースにアクセスするための Azure カスタム ロールの定義もサポートしています。 カスタム ロールの詳細については、「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
 
 ## <a name="code-samples"></a>コード サンプル
 

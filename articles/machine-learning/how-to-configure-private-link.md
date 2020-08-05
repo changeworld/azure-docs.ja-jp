@@ -5,21 +5,25 @@ description: Azure Private Link を使用して、仮想ネットワークから
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/28/2020
+ms.openlocfilehash: 59a82b8d7037fb9f2ca03b99b9e797920644fbd6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134865"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373727"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する (プレビュー)
 
-このドキュメントでは、Azure Machine Learning ワークスペースで Azure Private Link を使用する方法について説明します。 この機能は現在プレビュー段階であり、米国東部、米国西部 2、米国中南部の各リージョンでご利用いただけます。 
+このドキュメントでは、Azure Machine Learning ワークスペースで Azure Private Link を使用する方法について説明します。 
+
+> [!IMPORTANT]
+> Azure Machine Learning ワークスペースでの Azure Private Link の使用は、現在パブリック プレビュー段階です。 この機能は**米国東部**と**米国西部 2** リージョン でのみ利用できます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure Private Link では、プライベート エンドポイントを使用してワークスペースに接続できます。 プライベート エンドポイントは、仮想ネットワーク内にある一組のプライベート IP アドレスです。 これにより、ワークスペースへのアクセスが、プライベート IP アドレスでのみ行われるように制限できます。 Private Link を使用すると、データ窃盗のリスクを軽減できます。 プライベート エンドポイントの詳細については、[Azure Private Link](/azure/private-link/private-link-overview) に関する記事を参照してください。
 
@@ -27,6 +31,8 @@ Azure Private Link では、プライベート エンドポイントを使用し
 > Azure Private Link は、ワークスペースの削除やコンピューティング リソースの管理などの Azure コントロール プレーン (管理操作) には影響しません。 たとえば、コンピューティング先の作成、更新、削除などです。 これらの操作は、通常どおりパブリック インターネット経由で実行されます。
 >
 > Azure Machine Learning コンピューティング インスタンス プレビューは、Private Link が有効になっているワークスペースではサポートされていません。
+>
+> Mozilla Firefox を使用している場合、ワークスペースのプライベート エンドポイントにアクセスしようとしたときに問題が発生することがあります。 この問題は、Mozilla の DNS over HTTPS に関連している可能性があります。 回避策として、Microsoft Edge または Google Chrome を使用することをお勧めします。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>プライベート エンドポイントを使用するワークスペースを作成する
 
@@ -113,6 +119,9 @@ Azure Virtual Machines について詳しくは、「[Virtual Machines のドキ
 
 仮想ネットワークにストレージ アカウントを配置する方法の詳細については、「[ワークスペース用のストレージ アカウントを使用する](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)」を参照してください。
 
+> [!WARNING]
+> Azure Machine Learning では、Private Link が有効になっている Azure Storage アカウントの使用はサポートされていません。
+
 ## <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 
 ワークスペースで使用されている Azure Key Vault をセキュリティで保護するには、それを仮想ネットワーク内に配置するか、それに対して Private Link を有効にすることができます。
@@ -125,8 +134,8 @@ Azure Virtual Machines について詳しくは、「[Virtual Machines のドキ
 
 ワークスペースによって使用される Azure Kubernetes Service をセキュリティで保護するには、それを仮想ネットワーク内に配置します。 詳細については、[ワークスペースで Azure Kubernetes Service を使用する](how-to-enable-virtual-network.md#aksvnet)方法に関するページを参照してください。
 
-> [!WARNING]
-> Azure Machine Learning では、プライベート リンクが有効になっている Azure Kubernetes Service の使用はサポートされていません。
+Azure Machine Learning で、Private Link が有効な Azure Kubernetes サービスの使用がサポートされるようになりました。
+プライベート AKS クラスターを作成するには、[こちら](https://docs.microsoft.com/azure/aks/private-clusters)のドキュメントに従ってください
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 

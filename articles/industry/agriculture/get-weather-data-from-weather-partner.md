@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536625"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281023"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>気象パートナーから気象データを取得する
 
@@ -26,7 +26,7 @@ Azure FarmBeats を利用すると、Docker ベースのコネクタ フレー�
 
 FarmBeats Datahub で気象データの取得を開始するには、次の手順を行います。
 
-1. FarmBeats Datahub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger) にアクセスします。
+1. FarmBeats Datahub Swagger `https://farmbeatswebsite-api.azurewebsites.net/swagger` にアクセスします。
 
 2. /Partner API にアクセスして、POST 要求を行います。 次の入力ペイロードを使用します。
 

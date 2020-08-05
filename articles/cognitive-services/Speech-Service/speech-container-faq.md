@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383081"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289023"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>音声サービスコンテナーの良くある質問(FAQ)
 
@@ -49,7 +49,7 @@ Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 
 <details>
 <summary>
-<b>オンプレミスの音声コンテナーの容量プランニングとコストの見積もりはどうすればいいでしょうか。</b>
+<b>オンプレミスの音声テキスト変換コンテナーの容量計画とコストの見積もりはどうすればいいでしょうか。</b>
 </summary>
 
 **回答:** バッチ処理モードのコンテナーの容量については、各デコーダーが２つのCPUコアを使用して、単一の認識をリアルタイムの 2-3x の処理が可能です。 各コンテナーインスタンスにつき２つ以上の認識を保持することは推奨しませんが、ロードバランサーの背景にある信頼性や可能性を考慮し、コンテナーのインスタンスをさらに多く実行することをお勧めします。

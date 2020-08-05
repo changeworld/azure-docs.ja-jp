@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70999162"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371381"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護するベスト プラクティス
 この記事では、PaaS (platform-as-a-service) の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -58,14 +58,14 @@ Shared Access Signature の詳細については、「[Shared Access Signatures 
 ## <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
 アクセスを管理する別の方法として、[ロールベースのアクセス制御](/azure/role-based-access-control/overview) (RBAC) を使用する方法があります。 RBAC を使用すれば、知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、実際に必要となるアクセス許可を従業員に付与することに注力できます。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 RBAC は、Azure の詳細なアクセス管理によってこの問題を解決します。 これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。
 
-Azure の組み込み RBAC ロールを使用して、ユーザーに権限を割り当てることができます。 例えば、クラウド事業者は、ストレージ アカウントを管理する必要がある場合はストレージ アカウント共同作業者ロール、従来のストレージ アカウントを管理する場合は従来のストレージ アカウント共同作業者ロールの使用します。 VM を管理する必要はあるが接続先の仮想ネットワークまたはストレージ アカウントを管理する必要がないというクラウド事業者は、作業者に仮想マシン共同作業者ロールを追加できます。
+Azure で Azure 組み込みロールを使用して、ユーザーに権限を割り当てることができます。 例えば、クラウド事業者は、ストレージ アカウントを管理する必要がある場合はストレージ アカウント共同作業者ロール、従来のストレージ アカウントを管理する場合は従来のストレージ アカウント共同作業者ロールの使用します。 VM を管理する必要はあるが接続先の仮想ネットワークまたはストレージ アカウントを管理する必要がないというクラウド事業者は、作業者に仮想マシン共同作業者ロールを追加できます。
 
 RBAC などの機能を使用したデータ アクセス制御を適用しない場合、ユーザーに必要以上の権限が付与される可能性があります。 これにより、一部のユーザーが最初の段階でアクセスすべきではないデータにアクセスできてしまい、データのセキュリティ侵害につながる恐れがあります。
 
 RBAC の詳細については、次の記事をご覧ください。
 
 - [RBAC と Azure portal を使用してアクセスを管理する](/azure/role-based-access-control/role-assignments-portal)
-- [Azure リソースの組み込みロール](/azure/role-based-access-control/built-in-roles)
+- [Azure 組み込みロール](/azure/role-based-access-control/built-in-roles)
 - [Azure Storage セキュリティ ガイド](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>価値の高いデータのクライアント側暗号化を使用する

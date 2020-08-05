@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dea4c0f63b6c4e76c2289e6c3d930ea32cf2880
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449313"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373217"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault にストレージ アカウントへのアクセス権を付与する
 
-Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" するアクセス許可が必要です。 このようなアクセス許可は、組み込みの RBAC ロールである[ストレージ アカウント キー オペレーター サービス ロール](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)で有効になります。 
+Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" するアクセス許可が必要です。 このようなアクセス許可は、Azure 組み込みロールである[ストレージ アカウント キー オペレーターのサービス ロール](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)で有効になります。 
 
 Azure PowerShell の [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) コマンドレットを使用して、このロールを Key Vault サービス プリンシパルに割り当て、範囲をそのストレージ アカウントに限定します。
 
@@ -164,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>キーの再生成を有効にする
 
-Key Vault でストレージ アカウント キーを定期的に再生成する場合は、Azure PowerShell の [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) コマンドレットを使用して、再生成期間を設定できます。 この例では、3 日間の再生成期間を設定します。 3 日後、Key Vault は "key2" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます (従来のストレージ アカウントの場合、"primary" と "secondary" で置き換えます)。
+Key Vault でストレージ アカウント キーを定期的に再生成する場合は、Azure PowerShell の [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) コマンドレットを使用して、再生成期間を設定できます。 この例では、3 日間の再生成期間を設定します。 ローテーションする時間になると、Key Vault はアクティブでないキーを再生成し、新しく作成されたキーをアクティブとして設定します。 SAS トークンを発行するために使用されるキーは、常に 1 つだけです。 これがアクティブなキーです。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
