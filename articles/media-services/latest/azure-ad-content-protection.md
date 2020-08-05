@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001402"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422098"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>チュートリアル:Azure AD を使用したエンド ツー エンドのコンテンツ保護
 
