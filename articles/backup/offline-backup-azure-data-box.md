@@ -3,12 +3,12 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091030"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
@@ -153,7 +153,7 @@ MARS エージェントはローカル システム コンテキストで動作�
 NFS プロトコルを使用して Data Box デバイスをローカル システムとしてマウントできることを確認するには:
 
 1. MARS エージェントがインストールされている Windows サーバーで、NFS クライアント機能を有効にします。 代替ソース *WIM:D:\Sources\Install.wim:4* を指定します。
-1. <https://download.sysinternals.com/files/PSTools.zip> から MARS エージェントがインストールされているサーバーに PSExec をダウンロードします。
+1. MARS Agent がインストールされているサーバーに [Sysinternals](/sysinternals/downloads/psexec) ページから PsExec をダウンロードします。
 1. 管理者特権でのコマンド プロンプトを開き、*PSExec.exe* を含むディレクトリを現在のディレクトリとして次のコマンドを実行します。
 
     ```cmd

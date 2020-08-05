@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell スクリプトのサンプル - IPv6 エンドポイントを構成する
 titlesuffix: Azure Virtual Network
-description: Azure Virtual Network で PowerShell を使用して IPv6 エンドポイントを有効する
+description: Azure PowerShell スクリプトを使用して仮想ネットワークに IPv6 エンドポイントを構成し、PowerShell サンプルに役立つコマンド固有のドキュメントへのリンクを検索します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 4dfc6da8dcf33f49ceb203b32e81033fd81fa329
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83153023d7d58f215d5e62d8502baa01b99ed2e1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507490"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291892"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>Azure PowerShell スクリプトのサンプルを使用して仮想ネットワークに IPv6 エンドポイントを構成する (プレビュー)
 
@@ -269,6 +269,6 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/)を参照してください。
 
 その他のネットワーク PowerShell のサンプル スクリプトは、[Azure ネットワークの概要ドキュメント](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)で確認できます。

@@ -1,18 +1,18 @@
 ---
 title: Azure Active Directory の資格情報を使用して Linux VM にログインする
 description: Azure Active Directory 認証を使用してサインインするために、Linux VM を作成して構成する方法について説明します。
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510431"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291143"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -113,7 +113,7 @@ VM に拡張機能が正常にインストールされると、*provisioningStat
 
 ## <a name="configure-role-assignments-for-the-vm"></a>仮想マシン ロールの割り当てを構成する
 
-Azure のロールベース アクセス制御 (RBAC) ポリシーは、VM にログオンできるユーザーを規定します。 VM へのログインを承認するには、次の 2 つの RBAC ロールが使用されます。
+Azure のロールベース アクセス制御 (Azure RBAC) ポリシーは、VM にログオンできるユーザーを規定します。 VM へのログインを承認するには、次の 2 つの RBAC ロールが使用されます。
 
 - **仮想マシンの管理者ログイン**:このロールが割り当てられたユーザーは Windows 管理者または Linux のルート ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
 - **仮想マシンのユーザー ログイン**:このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。

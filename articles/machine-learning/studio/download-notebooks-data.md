@@ -1,6 +1,5 @@
 ---
-title: ノートブック (プレビュー) データをダウンロードする方法
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): ノートブック (プレビュー) データをダウンロードする方法 - Azure'
 description: ML Studio (クラシック) でノートブック (プレビュー) データをダウンロードする方法。
 ms.service: machine-learning
 ms.subservice: studio
@@ -8,14 +7,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc12204c5eabf857fd1143e71df9b2b505d88a23
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208467"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318659"
 ---
 # <a name="download-notebookspreview-data"></a>ノートブック (プレビュー) データをダウンロードする
+
+**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
 
 Notebooks (プレビュー) 機能は、*2020 年 4 月 13 日*に削除されました。 Notebooks (プレビュー) のタブとユーザー ノートブック ファイルの削除は、現在、世界中の Azure リージョンにロールアウトされています。
 

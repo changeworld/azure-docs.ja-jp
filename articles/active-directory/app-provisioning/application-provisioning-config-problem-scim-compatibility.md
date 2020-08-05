@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/03/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782264"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387168"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -42,7 +42,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 いいえ。 これらの変更は、以前の動作を使用するようコード化された SCIM アプリに重大な変更をもたらすため、既存のアプリに自動的に適用されることはありません。
 
-これらの変更は、修正日付後に、Azure portal で構成されたすべての新しい[ギャラリー以外の SCIM アプリ](../manage-apps/configure-single-sign-on-non-gallery-applications.md)に適用されます。
+これらの変更は、修正日付後に、Azure portal で構成されたすべての新しいギャラリー以外の SCIM アプリに適用されます。
 
 最新の修正プログラムを含めるように既存ユーザー プロビジョニング ジョブを移行する方法については、次のセクションを参照してください。
 

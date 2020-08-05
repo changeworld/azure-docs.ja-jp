@@ -7,41 +7,24 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b6d6e16b079f1423fd1ea812e384546ae5d84067
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5245e3740773c2be7973b26a4785982e0daa56c9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291636"
 ---
-# <a name="dtdl-client-side-parser-library"></a>DTDL クライアント側パーサー ライブラリ
+# <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>DTDL パーサー ライブラリを使用してモデルを解析および検証する
 
-Azure Digital Twins の[モデル](concepts-models.md)は、JSON-LD ベースの Digital Twins Definition language (DTDL) を使用して定義されます。 モデルの解析に役立つように、次の DTDL 解析ライブラリがクライアント側ライブラリとして NuGet.org で提供されています: [Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。
+Azure Digital Twins の[モデル](concepts-models.md)は、JSON-LD ベースの Digital Twins Definition language (DTDL) を使用して定義されます。 **モデルは、Azure Digital Twins インスタンスにアップロードする前に、オフラインで検証することをお勧めします。**
 
-このライブラリは、DTDL 定義へのモデル アクセスを提供し、本質的に DTDL の C# リフレクションと同等の機能を果たします。 このライブラリは、特にビジュアル エディターまたはテキスト エディターで DTDL 検証を行う場合に、すべての [Azure Digital Twins SDK](how-to-use-apis-sdks.md) から独立して使用できます。 これは、モデル定義ファイルをサービスにアップロードする前にその有効性を確認するのに役立ちます。
-
-パーサー ライブラリを使用するには、DTDL ドキュメントのセットをライブラリに提供します。 通常、これらのモデル ドキュメントはサービスから取得しますが、クライアントが最初にそれらをサービスにアップロードする責任がある場合は、それらをローカルで使用できるようにすることもできます。 
-
-パーサーを使用するための一般的なワークフローを次に示します。
-1. サービスから一部またはすべての DTDL ドキュメントを取得します。
-2. 返されたメモリ内 DTDL ドキュメントをパーサーに渡します。
-3. パーサーが、渡されたドキュメントのセットを検証し、詳細なエラー情報を返します。 この機能は、エディターのシナリオで役立ちます。
-4. パーサー API シリーズを使用して、ドキュメント セットに含まれているモデルの分析を続行します。 
-
-パーサーの機能は次のとおりです。
-* 実装されているすべてのモデル インターフェイス (インターフェイスの `extends` セクションの内容) を取得します。
-* モデルで宣言されているすべてのプロパティ、テレメトリ、コマンド、コンポーネント、およびリレーションシップを取得します。 また、このコマンドでは、これらの定義に含まれるすべてのメタデータが取得され、継承 (`extends` セクション) が考慮されます。
-* すべての複雑なモデル定義を取得します。
-* モデルを別のモデルから割り当てることができるかどうかを判断します。
-
-> [!NOTE]
-> [IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) デバイスでは、その機能を記述するために小さな構文バリアントを使用します。 この構文バリアントは、Azure Digital Twins で使用される DTDL の意味的に互換性のあるサブセットです。 パーサー ライブラリを使用する場合は、デジタル ツインの DTDL の作成に使用された構文バリアントを把握している必要はありません。 パーサーは、既定で、常に PnP と Azure Digital Twins の両方の構文に対して同じモデルを返します。
+NuGet には、これを行うのに役立つ .NET クライアント側の DTDL 解析ライブラリが用意されています。[**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). パーサー ライブラリを直接 C# コードで使用することも、パーサー ライブラリに構築された、言語に依存しないコード サンプル プロジェクトを使用することもできます。[**DTDL 検証ツール サンプル**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)
 
 ## <a name="use-the-dtdl-validator-sample"></a>DTDL 検証ツール サンプルを使用する
 
-モデル ドキュメントを検証して DTDL が有効であることを確認できるサンプル コードが用意されています。 これは、DTDL パーサー ライブラリに基づいて構築されており、言語に依存しません。 こちらから入手いただけます ([DTDL 検証ツール サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator))。
+[**DTDL 検証ツール**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)は、モデル ドキュメントを検証して DTDL が有効であることを確認できるサンプル プロジェクトです。 これは、.NET パーサー ライブラリに基づいて構築されており、言語に依存しません。 これは、サンプル リンクの *[ZIP のダウンロード]* ボタンで取得できます。
 
-この検証ツール サンプルは、DTDL ファイルのディレクトリ ツリーを検証するコマンド ライン ユーティリティとして使用できます。 また、対話モードも用意されています。 ソース コードには、パーサー ライブラリを使用する方法の例が示されています。
+ソース コードには、パーサー ライブラリを使用する方法の例が示されています。 この検証ツール サンプルは、DTDL ファイルのディレクトリ ツリーを検証するコマンド ライン ユーティリティとして使用できます。 また、対話モードも用意されています。
 
 サンプルを自己完結型の実行可能ファイルにパッケージ化する方法については、DTDL 検証ツール サンプルのフォルダー内の *readme.md* ファイルを参照してください。
 
@@ -65,9 +48,30 @@ DTDLValidator -i
 
 このサンプルの詳細については、ソース コードを参照するか、`DTDLValidator --help` を実行してください。
 
-## <a name="use-the-parser-library-in-code"></a>コードでパーサー ライブラリを使用する
+## <a name="use-the-net-parser-library"></a>.NET パーサー ライブラリを使用する 
 
-パーサー ライブラリを直接使用して、独自のアプリケーションでモデルを検証したり、動的なモデル駆動型 UI、ダッシュボード、およびレポートを生成したりすることもできます。
+[**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ライブラリは、DTDL 定義へのモデル アクセスを備えており、本質的に DTDL の C# リフレクションと同等の機能を果たします。 このライブラリは、特にビジュアル エディターまたはテキスト エディターで DTDL 検証を行う場合に、すべての [Azure Digital Twins SDK](how-to-use-apis-sdks.md) から独立して使用できます。 これは、モデル定義ファイルをサービスにアップロードする前にその有効性を確認するのに役立ちます。
+
+パーサー ライブラリを使用するには、DTDL ドキュメントのセットをライブラリに提供します。 通常、これらのモデル ドキュメントはサービスから取得しますが、クライアントが最初にそれらをサービスにアップロードする責任がある場合は、それらをローカルで使用できるようにすることもできます。 
+
+パーサーを使用するための一般的なワークフローを次に示します。
+1. サービスから一部またはすべての DTDL ドキュメントを取得します。
+2. 返されたメモリ内 DTDL ドキュメントをパーサーに渡します。
+3. パーサーが、渡されたドキュメントのセットを検証し、詳細なエラー情報を返します。 この機能は、エディターのシナリオで役立ちます。
+4. パーサー API シリーズを使用して、ドキュメント セットに含まれているモデルの分析を続行します。 
+
+パーサーの機能は次のとおりです。
+* 実装されているすべてのモデル インターフェイス (インターフェイスの `extends` セクションの内容) を取得します。
+* モデルで宣言されているすべてのプロパティ、テレメトリ、コマンド、コンポーネント、およびリレーションシップを取得します。 また、このコマンドでは、これらの定義に含まれるすべてのメタデータが取得され、継承 (`extends` セクション) が考慮されます。
+* すべての複雑なモデル定義を取得します。
+* モデルを別のモデルから割り当てることができるかどうかを判断します。
+
+> [!NOTE]
+> [IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) デバイスでは、その機能を記述するために小さな構文バリアントを使用します。 この構文バリアントは、Azure Digital Twins で使用される DTDL の意味的に互換性のあるサブセットです。 パーサー ライブラリを使用する場合は、デジタル ツインの DTDL の作成に使用された構文バリアントを把握している必要はありません。 パーサーは、既定で、常に PnP と Azure Digital Twins の両方の構文に対して同じモデルを返します。
+
+### <a name="code-with-the-parser-library"></a>パーサー ライブラリを使用してコードを書く
+
+パーサー ライブラリを直接使用して、独自のアプリケーションでモデルを検証したり、動的なモデル駆動型 UI、ダッシュボード、レポートを生成したりすることができます。
 
 以下のパーサー コードの例をサポートするには、Azure Digital Twins インスタンスに定義されているいくつかのモデルを検討してください。
 
@@ -169,4 +173,4 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 ## <a name="next-steps"></a>次のステップ
 
 モデルの作成が完了したら、DigitalTwinsModels API シリーズを使用してモデルをアップロードする方法 (およびその他の管理操作を実行する方法) を確認してください。
-* [カスタム モデルを管理する](how-to-manage-model.md)
+* [*方法: カスタム モデルを管理する*](how-to-manage-model.md)"

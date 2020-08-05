@@ -5,16 +5,17 @@ description: Azure CLI を使用して、新しい Azure Machine Learning ワー
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 06/25/2020
-ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392711"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319696"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 Azure Machine Learning ワークスペースは、次の Azure サービスまたはエンティティに依存しています。
 
 > [!IMPORTANT]
-> 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。 独自のストレージ アカウントをアタッチする場合は、Azure BLOB と Azure File の両方の機能が有効であることと、階層型名前空間 (ADLS Gen 2) が無効であることを確認します。 ワークスペースをデータ ストアとして作成した後は、いつでも独自のストレージ アカウントをアタッチできます。
+> 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。 独自のストレージ アカウントをアタッチする場合は、次の条件を満たしていることを確認してください。
+>
+> * ストレージ アカウントが Premium アカウント (Premium_LRS と Premium_GRS) "_ではない_"
+> * Azure Blob と Azure File の両方の機能が有効になっている
+> * 階層型名前空間 (ADLS Gen 2) が無効になっている
+>
+> これらの要件は、ワークスペースによって使用される "_既定_" のストレージ アカウントにのみ使用されます。
 
 | サービス | 既存のインスタンスを指定するパラメーター |
 | ---- | ---- |
@@ -147,6 +154,9 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     このコマンドからの応答は、次のテキストのようになり、ご使用のストレージ アカウントの ID になります。
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの "_既定_" のストレージ アカウントでは、Premium Storage と階層型名前空間のどちらもサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
 
 + **Azure Application Insights**:
 

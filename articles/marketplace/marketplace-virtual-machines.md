@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065638"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>仮想マシンのオファー発行ガイド
 
@@ -47,7 +47,7 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 > 現在、Enterprise Agreement に関連付けられている年額コミットメントは VM の Azure 利用には使えますが、公開元のソフトウェア ライセンス料金には使えません。  
 > 
 > [!NOTE]
-> イメージと価格をプライベート オファーとして発行することで､VM の検出とデプロイを特定の顧客に限定できます。 プライベート オファーとすることで､公開元が近しい顧客に排他的なオファーを作成し､カスタマイズされたソフトウェアと条件を提供できるようになります。 条件をカスタマイズすることによって､公開元は特別な価格と条件によるフィールド主導の取引､さらには限定的なソフトウェア リリースの利用などのさまざまなシナリオにスポットライトを当てることができます。 プライベート オファーにより､公開元はそうした詳細を組み込んだ新しい SKU を作成し､限られた顧客に具体的な価格や製品を提供できます。  
+> イメージと価格をプライベート オファーとして発行することで､VM の検出とデプロイを特定の顧客に限定できます。 プライベート オファーとすることで､公開元が近しい顧客に排他的なオファーを作成し､カスタマイズされたソフトウェアと条件を提供できるようになります。 条件をカスタマイズすることによって､公開元は特別な価格と条件によるフィールド主導の取引､さらには限定的なソフトウェア リリースの利用などのさまざまなシナリオにスポットライトを当てることができます。 プライベート オファーにより、公開元はそうした詳細を組み込んだ新しいプランを作成し､限られた顧客に具体的な価格や製品を提供できます。  
 >
 > 詳細については、[Azure Marketplace でのプライベート オファー](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)をご覧ください。  
 

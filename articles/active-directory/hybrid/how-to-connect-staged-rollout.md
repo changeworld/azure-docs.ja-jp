@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019830"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
-段階的なロールアウト アプローチを使用することで、ドメイン全体のカットオーバーを回避できます。  これにより、Azure Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
+段階的なロールアウトにより、ドメインを切り替える前に、Azure Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
     
 -  現在、オンプレミスの Multi-Factor 認証サーバーを使用しています。 
 -  認証にスマート カードを使用しています。 
@@ -45,7 +45,7 @@ ms.locfileid: "85357853"
 
 -   クラウド認証に移行するユーザーに必要なすべての適切なテナント ブランドと条件付きアクセスポリシーを構成しました。
 
--   Azure Multi-Factor Authentication の使用を計画している場合は、[セルフサービス パスワード リセット (SSPR) と Multi-Factor Authentication の集中型登録](../authentication/concept-registration-mfa-sspr-combined.md)を使用して、ユーザーが認証方法を 1 回で登録できるようにすることをお勧めします。
+-   Azure Multi-Factor Authentication の使用を計画している場合は、[セルフサービス パスワード リセット (SSPR) と Multi-Factor Authentication の統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を使用して、ユーザーが認証方法を 1 回で登録できるようにすることをお勧めします。
 
 -   この段階的なロールアウト機能を使用するには、テナントのグローバル管理者である必要があります。
 
@@ -81,6 +81,8 @@ ms.locfileid: "85357853"
 
 
 - 段階的なロールアウトで、セキュリティ グループを初めて追加する時点では、UX タイムアウトを回避するために、200 ユーザーに制限されます。グループを追加した後、必要に応じて、そのグループにさらにユーザーを直接追加できます。
+
+- ユーザーが段階的にロールアウトされている間は、パスワードの有効期限ポリシーが 90 日に設定されます。これをカスタマイズするオプションはありません。 
 
 
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる
@@ -173,6 +175,7 @@ PowerShell を使用して、 Active Directory Domain Services フォレスト�
 
    >[!NOTE]
    >グループ内のメンバーは、段階的なロールアウトに対して自動的に有効になります。 段階的なロールアウトでは、入れ子になったグループと動的グループはサポートされていません。
+   >新しいグループを追加すると、グループ内のユーザー (新しいグループ 1 つにつき最大 200 ユーザー) が、即座にマネージド認証を使用するように更新されます。 グループを編集する (ユーザーを追加または削除する) 場合、変更が有効になるまでに最大 24 時間かかることがあります。
 
 ## <a name="auditing"></a>監査
 

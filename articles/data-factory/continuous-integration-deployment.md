@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336924"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -49,7 +49,7 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 1.  pull request が承認され、変更がマスター ブランチにマージされたら、変更が開発ファクトリに発行されます。
 
-1.  変更をテストまたは UAT ファクトリにデプロイする準備がチームにできたら、チームは Azure Pipelines リリースに進み、望ましいバージョンの開発ファクトリを UAT にデプロイします。 このデプロイは Azure Pipelines タスクの一環として行われ、Resource Manager テンプレート パラメーターを使用し、適切な構成を適用します。
+1.  チームは、変更をテストまたは UAT (ユーザー受け入れテスト) ファクトリにデプロイする準備ができたら、Azure Pipelines リリースに進み、望ましいバージョンの開発ファクトリを UAT にデプロイします。 このデプロイは Azure Pipelines タスクの一環として行われ、Resource Manager テンプレート パラメーターを使用し、適切な構成を適用します。
 
 1.  テスト ファクトリで変更の妥当性が確認されたら、パイプライン リリースの次のタスクを利用し、運用環境のファクトリにデプロイします。
 

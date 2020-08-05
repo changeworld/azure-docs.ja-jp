@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205289"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290934"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -25,34 +25,34 @@ Computer Vision の一部の機能では、複数の言語がサポートされ�
 
 Computer Vision の OCR API では複数の言語をサポートしています。 言語コードを指定する必要はありません。 詳細については、「[光学式文字認識 (OCR)](concept-recognizing-text.md)」を参照してください。
 
-|Language| 言語コード | OCR API | Read API |
-|:-----|:----:|:-----:|:---:|
-|アラビア語 | `ar`|✔ | |
-|簡体中国語 | `zh-Hans`|✔ | |
-|繁体中国語 | `zh-Hant`|✔ | |
-|チェコ語 | `cs` |✔ | |
-|デンマーク語 | `da` |✔ | |
-|オランダ語 | `nl` |✔ |✔ |
-|英語 | `en` |✔ |✔ |
-|フィンランド語 | `fi` |✔ | |
-|フランス語 | `fr` |✔ |✔ |
-|ドイツ語 | `de` |✔ |✔ |
-|ギリシャ語 | `el` |✔ | |
-|ハンガリー語 | `hu` |✔ | |
-|イタリア語 | `it` |✔ |✔ |
-|日本語 | `ja` |✔ | |
-|韓国語 | `ko` |✔ | |
-|ノルウェー語 | `nb` |✔ | |
-|ポーランド語 | `pl` |✔ | |
-|ポルトガル語 | `pt` |✔ |✔ |
-|ルーマニア語 | `ro` |✔ | |
-|ロシア語 | `ru` |✔ | |
-|セルビア語 (キリル) | `sr-Cyrl` |✔ | |
-|セルビア語 (ラテン) | `sr-Latn` |✔ | |
-|スロバキア語 | `sk` |✔ | |
-|スペイン語 | `es` |✔ |✔ |
-|スウェーデン語 | `sw` |✔ | |
-|トルコ語 | `tr` |✔ | |
+|Language| 言語コード | OCR API | v3.0 の読み取り | v3.1-preview.1 の読み取り |
+|:-----|:----:|:-----:|:---:|:---:|
+|アラビア語 | `ar`|✔ | | |
+|簡体中国語 | `zh-Hans`|✔ | |✔ |
+|繁体中国語 | `zh-Hant`|✔ | | |
+|チェコ語 | `cs` |✔ | | |
+|デンマーク語 | `da` |✔ | | |
+|オランダ語 | `nl` |✔ |✔ |✔ |
+|英語 | `en` |✔ |✔ |✔ |
+|フィンランド語 | `fi` |✔ | | |
+|フランス語 | `fr` |✔ |✔ |✔ |
+|ドイツ語 | `de` |✔ |✔ |✔ |
+|ギリシャ語 | `el` |✔ | | |
+|ハンガリー語 | `hu` |✔ | | |
+|イタリア語 | `it` |✔ |✔ |✔ |
+|日本語 | `ja` |✔ | | |
+|韓国語 | `ko` |✔ | | |
+|ノルウェー語 | `nb` |✔ | | |
+|ポーランド語 | `pl` |✔ | | |
+|Portuguese | `pt` |✔ |✔ |✔ |
+|ルーマニア語 | `ro` |✔ | | |
+|ロシア語 | `ru` |✔ | | |
+|セルビア語 (キリル) | `sr-Cyrl` |✔ | | |
+|セルビア語 (ラテン) | `sr-Latn` |✔ | | |
+|スロバキア語 | `sk` |✔ | | |
+|スペイン語 | `es` |✔ |✔ |✔ |
+|スウェーデン語 | `sw` |✔ | | |
+|トルコ語 | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>画像分析
 
@@ -60,10 +60,10 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 
 |Language | 言語コード | Categories | Tags | 説明 | 成人向けコンテンツ | ブランド | Color | 顔 | ImageType | Objects | 有名人 | ランドマーク |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|中国語 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Chinese | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英語 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |日本語 | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|ポルトガル語 | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Portuguese | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |スペイン語 | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
 ## <a name="next-steps"></a>次のステップ

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564420"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319050"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
@@ -59,7 +59,7 @@ Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs 
 
 カスタム スキルは、フォームの認識や、[カスタム スキル Web インターフェイス](cognitive-search-custom-skill-interface.md)で指定してラップするモデルを使用するカスタム エンティティ検出などの、より複雑なシナリオに対応できます。 カスタム スキルの例としては、[Forms Recognizer](/azure/cognitive-services/form-recognizer/overview)、[Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) の統合、[カスタム エンティティ認識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)などがあります。
 
-<a name="enrichment-steps"> エンリッチメント パイプラインの手順 </a>
+## <a name="steps-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインの手順<a name="enrichment-steps"></a>
 
 エンリッチメント パイプラインは "[*インデクサー*](search-indexer-overview.md)" に基づきます。 インデクサーは、ドキュメント解析のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを設定します。 インデクサーにアタッチされたスキルにより、ユーザーが定義した 1 つ以上のスキルセットに従ってドキュメントがインターセプトされ、エンリッチメントされます。 インデックスが作成されると、[Azure Cognitive Search でサポートされているすべての種類のクエリ](search-query-overview.md)から検索を要求してコンテンツにアクセスできます。  インデクサーを使い慣れていない場合は、このセクションで手順を示します。
 

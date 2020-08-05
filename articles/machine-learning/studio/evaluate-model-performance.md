@@ -1,6 +1,5 @@
 ---
-title: モデルの評価とクロス検証
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): モデルの評価とクロス検証 - Azure'
 description: Azure Machine Learning Studio (classic) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2308b57859a7f8eb0aa6519246fbb52ffdf9e81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318642"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) でモデルのパフォーマンスを評価する
+
+**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+
 
 この記事では、Azure Machine Learning Studio (classic) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。  モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 Azure Machine Learning Studio (クラシック) では、 
 + [モデルの評価][evaluate-model] 

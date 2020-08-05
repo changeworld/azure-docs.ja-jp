@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386744"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027514"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API コネクタをユーザー フローに追加する
 
@@ -35,7 +35,7 @@ ms.locfileid: "85386744"
 6. API 呼び出しの **[エンドポイント URL]** を指定します。
 7. API の認証情報を指定します。
 
-   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できるダミーの **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure Functions で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: https[]()://contoso.azurewebsites.net/api/endpoint<b>?code=0123456789</b>)。
+   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できるダミーの **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: https[]()://contoso.azurewebsites.net/api/endpoint<b>?code=0123456789</b>)。
 
    ![新しい API コネクタを追加する](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ API エンドポイントが呼び出されたときに送信する要求に値�
 カスタム属性は、**extension_\<extensions-app-id>_AttributeName** 形式を使用してユーザー向けに作成できます。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 API からは、`<extensions-app-id>` を含む、または含まない要求が返されることがあります。 カスタム属性の詳細については、[セルフサービス サインアップ フローのカスタム属性の定義](user-flow-add-custom-attributes.md)に関するページを参照してください。
 
 > [!TIP] 
-> [**identities ('identities')** ](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) および **Email Address ('email_address')** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために使用できます。 'identities' 要求は、ユーザーが Google または Facebook で認証されるときに送信され、'email_address' は常に送信されます。
+> [**identities ('identities')** ](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) および **Email Address ('email')** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために使用できます。 'identities' 要求は、ユーザーが Google または Facebook で認証されるときに送信され、'email' は常に送信されます。
 
 ## <a name="expected-response-types-from-the-web-api"></a>Web API からの予期される応答の種類
 
@@ -138,13 +138,13 @@ Content-type: application/json
 | version                                            | String            | はい      | API のバージョン。                                                                                                                                                                                                                                                                |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納できます。 **[アプリケーション要求]** として選択されている場合、値をトークンで返すことができます。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 返される要求には、必要に応じて `_<extensions-app-id>_` を含めることはできません。 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納されます。 トークンではカスタム属性を返信できません。 |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 返される要求に `_<extensions-app-id>_` が含まれている必要はありません。 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納されます。 トークンではカスタム属性を返信できません。 |
 
 ### <a name="blocking-response"></a>ブロック応答
 
 ブロック応答によって、ユーザー フローは終了します。 API を使用してこれを意図的に発行して、ユーザーにブロック ページを表示することにより、ユーザー フローの継続を停止することができます。 ブロック ページには、API によって提供された `userMessage` が表示されます。
 
-ブロック応答の例を次に示します。
+ブロック応答の例。
 
 ```http
 HTTP/1.1 200 OK
