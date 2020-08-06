@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: fe139921cb73ee0e224c995e2dd5eb5fc50f3979
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80a38c069f937783b60ede46bc4319253798ff44
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593809"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431646"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Next.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
 

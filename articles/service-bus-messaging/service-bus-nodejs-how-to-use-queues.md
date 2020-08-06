@@ -6,13 +6,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 01841b1e6d6fed684137e1327dd77e276650803c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340610"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430633"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>クイック スタート:Azure の Service Bus キューを Node.js および azure-sb パッケージで使用する
 このチュートリアルでは、[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージを使用して、Node.js アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 サンプルは JavaScript で記述されます。このサンプルでは、azure-sb パッケージを内部で使用する Node.js [Azure モジュール](https://www.npmjs.com/package/azure)が使用されます。
