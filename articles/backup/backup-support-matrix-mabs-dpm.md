@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 938fb751de90112dc206779a36b88f95f1d7d508
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289446"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810430"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -24,7 +24,7 @@ MABS は System Center DPM に基づいており、同様の機能を提供し�
 
 - MABS を実行するために System Center ライセンスは必要ありません。
 - MABS と DPM の両方に対して、Azure は長期的なバックアップ ストレージを提供します。 さらに、DPM では、テープで長期保存するためのデータのバックアップが可能になります。 MABS では、この機能は提供されません。
-- [セカンダリ DPM サーバーを使用してプライマリ DPM サーバーをバックアップすることができます。](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019) セカンダリ サーバーは、プライマリ サーバー データベースと、プライマリ サーバーに格納されているデータ ソース レプリカを保護します。 プライマリ サーバーに障害が発生した場合、セカンダリ サーバーは、プライマリ サーバーが再び使用可能になるまで、プライマリ サーバーによって保護されているワークロードを引き続き保護することができます。  MABS では、この機能は提供されません。
+- [セカンダリ DPM サーバーを使用してプライマリ DPM サーバーをバックアップすることができます。](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019) セカンダリ サーバーは、プライマリ サーバー データベースと、プライマリ サーバーに格納されているデータ ソース レプリカを保護します。 プライマリ サーバーに障害が発生した場合、セカンダリ サーバーは、プライマリ サーバーが再び使用可能になるまで、プライマリ サーバーによって保護されているワークロードを引き続き保護することができます。  MABS では、この機能は提供されません。
 
 MABS は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57520)からダウンロードします。 これは、オンプレミスまたは Azure VM で実行できます。
 

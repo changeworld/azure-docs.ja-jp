@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 20175e252d009620585e20cf76cdb634549b4f1d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b4c16dd276f9f564963fdefe8d16dbc92c1303d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323912"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810447"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>プログラムによる Azure サブスクリプションの作成 (プレビュー)
 
@@ -156,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
 | `owners`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 
-応答では、ヘッダー `Location` の一部として、サブスクリプション作成操作の状態を照会できる URL が返されます。 サブスクリプションの作成が完了すると、`Location` URL の GET によって、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。 詳細については、[サブスクリプション API のドキュメント](https://docs.microsoft.com/rest/api/subscription/)を参照してください
+応答では、ヘッダー `Location` の一部として、サブスクリプション作成操作の状態を照会できる URL が返されます。 サブスクリプションの作成が完了すると、`Location` URL の GET によって、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。 詳細については、[サブスクリプション API のドキュメント](/rest/api/subscription/)を参照してください
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

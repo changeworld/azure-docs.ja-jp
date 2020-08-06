@@ -4,12 +4,12 @@ description: Java を使用して関数を開発する方法について説明�
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372418"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810090"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -19,7 +19,7 @@ Java 開発者が、Azure Functions を初めて使用する場合は、まず�
 
 | 作業の開始 | 概念| 
 | -- | -- |  
-| <ul><li>[Visual Studio Code を使用した Java 関数](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[ターミナル/コマンド プロンプトによる Java/Maven 関数](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Gradle を使用した Java 関数](functions-create-first-java-gradle.md)</li><li>[Eclipse を使用した Java 関数](functions-create-maven-eclipse.md)</li><li>[IntelliJ アイデアを使用した Java 関数](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Java 関数](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[ターミナル/コマンド プロンプトによる Java/Maven 関数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Gradle を使用した Java 関数](functions-create-first-java-gradle.md)</li><li>[Eclipse を使用した Java 関数](functions-create-maven-eclipse.md)</li><li>[IntelliJ アイデアを使用した Java 関数](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Java 関数の基礎
 
