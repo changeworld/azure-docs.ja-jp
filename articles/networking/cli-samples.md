@@ -1,6 +1,6 @@
 ---
 title: Azure CLI のサンプル - ネットワーク
-description: Azure CLI のサンプル
+description: Azure リソース間の接続のサンプル、負荷分散とトラフィック方向のサンプルなど、ネットワーク用の Azure CLI のサンプルについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: kumud
-ms.openlocfilehash: 397f2999821e97a1f12362e2aa2fa20b20e78596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 9d503e4c8eacd27ac7495ad56c4256455cf3885e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232408"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287821"
 ---
 # <a name="azure-cli-samples-for-networking"></a>ネットワーク用の Azure CLI サンプル
 

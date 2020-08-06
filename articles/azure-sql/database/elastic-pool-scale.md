@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-ms.date: 3/14/2019
-ms.openlocfilehash: 4cc5ad575b0fbe371d9432668e8ccf43b45ae717
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 7/28/2020
+ms.openlocfilehash: 8cd8dda807b27bc1a83176c6a46596eccfd19073
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032073"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372095"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL Database でエラスティック プールのリソースをスケーリングする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,17 @@ ms.locfileid: "84032073"
 >
 > - サービス レベルを変更する場合、またはエラスティック プールのコンピューティングを再度スケーリングする場合は、そのプール内のすべてのデータベース全体で使用される領域の合計を、推定値の計算に使用する必要があります。
 > - エラスティック プールとの間でデータベースを移動する場合、エラスティック プールで使用される領域ではなく、データベースの使用領域のみが待機時間に影響します。
->
+> - Standard および General Purpose エラスティック プールでは、エラスティック プールで Premium ファイル共有 ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) ストレージが使用されている場合、エラスティック プールとの間、またはエラスティック プール間でデータベースを移動するための待ち時間は、データベース サイズに比例します。 プールで PFS ストレージが使用されているかどうかを確認するには、プールのデータベースのコンテキストで次のクエリを実行します。 AccountType 列の値が `PremiumFileStorage` の場合、プールで PFS ストレージが使用されています。
+
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
+
 > [!TIP]
 > 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) と [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 

@@ -2,13 +2,13 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945445"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321753"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>テナント レベルでリソースを作成する
 
@@ -16,15 +16,32 @@ ms.locfileid: "84945445"
 
 ## <a name="supported-resources"></a>サポートされているリソース
 
-テナント レベルでは次のリソースの種類をデプロイできます。
+すべてのリソースの種類をテナント レベルにデプロイできるわけではありません。 このセクションでは、サポートされているリソースの種類を示します。
 
-* [deployments](/azure/templates/microsoft.resources/deployments) - 管理グループまたはサブスクリプションにデプロイする入れ子になったテンプレート用。
-* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+Azure ポリシーでは、以下を使用します。
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+
+ロールベースのアクセス制御では、以下を使用します。
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+管理グループ、サブスクリプション、またはリソース グループにデプロイする入れ子になったテンプレートでは、以下を使用します。
+
+* [deployments](/azure/templates/microsoft.resources/deployments)
+
+管理グループを作成するには、以下を使用します。
+
+* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+
+コストを管理するには、以下を使用します。
+
+* [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
+* [instructions](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 ### <a name="schema"></a>スキーマ
 
@@ -93,6 +110,56 @@ REST API の場合は、「[デプロイ - テナントのスコープでの作�
 デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
+
+## <a name="deployment-scopes"></a>デプロイのスコープ
+
+テナントにデプロイするときに、テナントまたは管理グループ、サブスクリプション、およびリソース グループをテナントでターゲットにすることができます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+テンプレートのリソース セクション内で定義されたリソースは、テナントに適用されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        tenant-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+テナント内で管理グループを対象にするには、入れ子になったデプロイを追加し、`scope` プロパティを指定します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedMG",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 

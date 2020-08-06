@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522263"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373285"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure Digital Twins をセキュリティで保護する
 
@@ -35,7 +35,7 @@ Azure AD では、アクセスは 2 段階のプロセスです。 セキュリ�
 
 承認の手順では、セキュリティ プリンシパルに RBAC ロールを割り当てる必要があります。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Digital Twins には、Azure Digital Twins リソースの一連のアクセス許可を含む RBAC ロールが用意されています。 これらのロールについては、この記事の後半で説明します。
 
-Azure でサポートされているロールとロールの割り当ての詳細については、Azure RBAC ドキュメントの[各種ロールの概要](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
+Azure でサポートされているロールとロールの割り当ての詳細については、Azure RBAC ドキュメントの[*各種ロールの概要*](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
 ### <a name="authentication-with-managed-identities"></a>マネージド ID による認証
 
@@ -45,20 +45,20 @@ Azure でサポートされているロールとロールの割り当ての詳�
 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Authorization:Azure Digital Twins の RBAC ロール
 
-Azure には、Azure Digital Twins リソースへのアクセスを承認するために以下の組み込みの RBAC ロールが用意されています。
-* Azure Digital Twins Owner (プレビュー) - Azure Digital Twins リソースに対するフル アクセス権を付与するには、このロールを使用します。
-* Azure Digital Twins Reader (プレビュー) - Azure Digital Twins リソースへの読み取り専用アクセス権を付与するには、このロールを使用します。
+Azure には、Azure Digital Twins リソースへのアクセス承認用に、以下の Azure 組み込みロールが用意されています。
+* *Azure Digital Twins Owner (プレビュー)* - Azure Digital Twins リソースに対するフル アクセス権を付与するには、このロールを使用します。
+* *Azure Digital Twins Reader (プレビュー)* - Azure Digital Twins リソースへの読み取り専用アクセス権を付与するには、このロールを使用します。
 
 > [!TIP]
-> Azure Digital Twins Reader (プレビュー) ロールでは、リレーションシップの閲覧もサポートされるようになりました。
+> *Azure Digital Twins Reader (プレビュー)* ロールでは、リレーションシップの閲覧もサポートされるようになりました。
 
-組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの[ロール定義の概要](../role-based-access-control/role-definitions.md)に関するページを参照してください。 カスタム RBAC ロールの作成の詳細については、[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)に関するページを参照してください。
+組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの[*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「[*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ロールを割り当てるには、次の 2 つの方法があります。
-* Azure portal の Azure Digital Twins のアクセス制御 (IAM) ペインを使用する ([Azure RBAC と Azure portal を使用したロールの割り当ての追加または削除](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください)
+* Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する ([*Azure RBAC と Azure portal を使用したロールの割り当ての追加または削除*](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください)
 * CLI コマンドを使用してロールを追加または削除する
 
-この詳細な実行手順については、[Azure Digital Twins チュートリアルの*エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)" に関するページを参照してください。
+この詳細な実行手順については、[*Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
 
 ## <a name="permission-scopes"></a>アクセス許可のスコープ
 
@@ -71,8 +71,14 @@ Azure には、Azure Digital Twins リソースへのアクセスを承認する
 * デジタル ツインの関係:このリソースのアクションによって、ツイン グラフ内のデジタル ツイン間の[関係](concepts-twins-graph.md)に対する CRUD 操作の制御が定義されます。
 * イベント ルート:このリソースのアクションによって、Azure Digital Twins から [Event Hub](../event-hubs/event-hubs-about.md)、[Event Grid](../event-grid/overview.md)、または [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) などのエンドポイント サービスに[イベントをルーティング](concepts-route-events.md)するアクセス許可が決まります。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、"[*Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)* ](troubleshoot-error-403.md)" といったエラーのトラブルシューティングに関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-* サンプル クライアント アプリケーションでこれらの手順を実行する方法については、"[*クライアント アプリケーションの認証方法*](how-to-authenticate-client.md)" に関するページを参照してください。
+* [*インスタンスと認証の設定方法*](how-to-set-up-instance-scripted.md)に関するページで取り上げられている、動作中の概念について確認します。
+
+* クライアント アプリケーション コードからこれらの概念を操作する方法を、[*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
 
 * 詳細については、「[Azure リソースの RBAC](../role-based-access-control/overview.md)」を参照してください。

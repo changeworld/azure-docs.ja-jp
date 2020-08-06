@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476769"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386216"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -40,7 +40,7 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 - [CLI を使用した Key Vault の管理](../secrets/quick-create-cli.md)
 - [PowerShell を使用した Key Vault の作成と管理](../secrets/quick-create-powershell.md)
-- [Azure ポートを使用した Key Vault の作成と管理](../secrets/quick-create-portal.md)
+- [Azure portal を使用した Key Vault の作成と管理](../secrets/quick-create-portal.md)
 - [Python を使用した Key Vault の作成と管理](../secrets/quick-create-python.md)
 - [Java を使用した Key Vault の作成と管理](../secrets/quick-create-java.md)
 - [Node.js を使用した Key Vault の作成と管理](../secrets/quick-create-node.md)
@@ -75,11 +75,11 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 Node.js では、キー コンテナー管理 API とキー コンテナー オブジェクト API は別々になっています。 次の概要の記事から、両方にアクセスすることができます。 
 
-[Node.js 用 Azure Key Vault モジュール](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Node.js 用 Azure Key Vault モジュール](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Python 用 Azure Key Vault ライブラリ](/python/api/overview/azure/key-vault?view=azure-python)
+[Python 用 Azure Key Vault ライブラリ](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 
 次の記事とシナリオは、Azure Key Vault を操作するためのタスク固有のガイダンスを提供します。
 
-- [サブスクリプションの移行後に Key Vault のテナント ID を変更する](subscription-move-fix.md) - テナント A からテナント B に Azure サブスクリプションを移行すると、テナント B のプリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次のガイドを使用します。
+- [サブスクリプションの移行後に Key Vault のテナント ID を変更する](move-subscription.md) - テナント A からテナント B に Azure サブスクリプションを移行すると、テナント B のプリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次のガイドを使用します。
 - [ファイアウォールの背後で Key Vault にアクセスする](access-behind-firewall.md) - キー コンテナーにアクセスするには、Key Vault クライアント アプリケーションが、各種の機能のために複数のエンドポイントにアクセスできる必要があります。
 - [Azure Key Vault の HSM 保護キーを生成し、転送する方法](../keys/hsm-protected-keys.md) - この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
 - [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す方法](../../azure-resource-manager/templates/key-vault-parameter.md) - デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、Azure Key Vault にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。
@@ -122,7 +122,7 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
-- [Key Vault の論理的な削除の動作](overview-soft-delete.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
+- [Key Vault の論理的な削除の動作](soft-delete-overview.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
 - [Key Vault のクライアント調整](overview-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
 - [Key Vault のストレージ アカウント キーの概要](../secrets/overview-storage-keys.md)に関するページでは、Key Vault 統合 Azure ストレージ アカウント キーについて説明します。
 - [Key Vault のセキュリティ ワールド](overview-security-worlds.md)に関するページでは、リージョンとセキュリティ領域の関係について説明します。

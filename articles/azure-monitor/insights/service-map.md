@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539773"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326071"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
 Service Map は自動的に Windows および Linux のシステム上のアプリケーション コンポーネントを検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
-この記事では、オンボードと、Service Map の使い方を詳しく説明します。 このソリューションの前提条件の構成の詳細については、[Azure Monitor for VMs の有効化の概要](vminsights-enable-overview.md#prerequisites)に関するページをご覧ください。 要約すると、以下が必要です。
+この記事では、オンボードと、Service Map の使い方を詳しく説明します。 ソリューションの前提条件は次のとおりです。
 
-* このソリューションを有効にするための Log Analytics ワークスペース。
+* [サポートされているリージョン](vminsights-configure-workspace.md#supported-regions)内の Log Analytics ワークスペース。
 
-* ソリューションを有効にしたのと同じワークスペースを報告するように構成された Windows コンピューターまたは Linux サーバーにインストールされている Log Analytics エージェント。
+* ソリューションを有効にした同じワークスペースに接続された Windows コンピューターまたは Linux サーバーにインストールされている [Log Analytics エージェント](vminsights-enable-overview.md#agents)。
 
-* Windows コンピューターまたは Linux サーバーにインストールされている Dependency Agent。
+* Windows コンピューターまたは Linux サーバーにインストールされている [Dependency Agent](vminsights-enable-overview.md#agents)。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](../../azure-monitor/insights/vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms) を参照してください。
+>Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](./vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms) を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -304,7 +304,7 @@ Service Map と Update Management との統合は、両方のソリューショ�
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 
-Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../../azure-monitor/log-query/log-query-overview.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../log-query/log-query-overview.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 プロセスまたはコンピューターが起動されたとき、あるいは Service Map にオンボードされたときに生成されるレコードに加え、一意のコンピューターとプロセスごとに 1 時間あたり 1 つのレコードが生成されます。 これらのレコードは、次の表に示したプロパティを持ちます。 ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のマシン リソースのフィールドにマップされます。 ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のプロセス リソースのフィールドにマップされます。 ResourceName_s フィールドは、対応する Resource Manager リソースの名前フィールドと一致します。 
 
@@ -550,7 +550,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>次のステップ
 
-Log Analytics の[ログ検索](../../azure-monitor/log-query/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
+Log Analytics の[ログ検索](../log-query/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -603,3 +603,4 @@ Service Map にマシンは表示されるがプロセスまたは接続デー�
 ## <a name="suggestions"></a>検索候補
 
 サービス マップやこのドキュメントについてフィードバックはありますか。  [UserVoice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)では、機能を提案したり、既存の提案に投票することができます。
+

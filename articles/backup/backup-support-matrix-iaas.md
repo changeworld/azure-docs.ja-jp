@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 490905b28b203534e2651e5cbd9fb9ba3be2ae8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d00f6ee8c10144a7c9fd65101dd21ccb7deeb0a6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538685"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289481"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -109,7 +109,7 @@ DPM または MABS ディスクの復旧ポイント数 | ファイル サーバ
 --- | ---
 **新しい VM を作成する** | 基本的な VM を復元ポイントからすばやく作成し、起動して実行します。<br/><br/> VM の名前を指定し、配置先のリソース グループと仮想ネットワーク (VNet) を選択して、復元された VM のストレージ アカウントを指定することができます。 新しい VM は、ソース VM と同じリージョンに作成する必要があります。
 **ディスクを復元する** | 新しい VM を作成するために使用できる VM ディスクを復元します。<br/><br/> Azure Backup は、VM のカスタマイズと作成に役立つテンプレートを提供します。 <br/><br> 復元ジョブによって生成されるテンプレートをダウンロードして使用することで、カスタム VM 設定を指定したり、VM を作成したりできます。<br/><br/> ディスクは、指定したリソース グループにコピーされます。<br/><br/> または、ディスクを既存の VM に接続することや、PowerShell を使用して新しい VM を作成することもできます。<br/><br/> このオプションは、VM をカスタマイズする場合や、バックアップの時点では存在していなかった構成設定を追加する場合や、テンプレートまたは PowerShell を使用して構成する必要がある設定を追加する場合に役立ちます。
-**既存のものを置き換える** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>既存のものの置き換えは、暗号化されていないマネージド VM でサポートされています。 アンマネージド ディスク、[汎用化された VM](../virtual-machines/windows/capture-image-resource.md)、または[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM では、サポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br><br> リンクされたリソース ([ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) や [Key Vault](../key-vault/general/overview.md) など) がある VM では、既存のものを置き換えることはできません。これは、バックアップ クライアント アプリには、復元の実行中にこれらのリソースに対するアクセス許可がないためです。
+**既存のものを置き換える** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>既存のものの置き換えは、暗号化されていないマネージド VM でサポートされています。 アンマネージド ディスク、[汎用化された VM](../virtual-machines/windows/capture-image-resource.md)、または[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM では、サポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br><br> 既存のものの置き換えは、[ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) や [Key Vault](../key-vault/general/overview.md) など、リンクされたリソースを持つ VM でもサポートされます。
 **リージョンをまたがる (セカンダリ リージョン)** | リージョンをまたがる復元を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)) に復元できます。<br><br> セカンダリ リージョンにバックアップが実行されている場合は、選択されている回復ポイントのすべての Azure VM を復元できます。<br><br> この機能は、次のオプションで使用できます。<br> <li> [VM を作成します](./backup-azure-arm-restore-vms.md#create-a-vm) <br> <li> [ディスクを復元する](./backup-azure-arm-restore-vms.md#restore-disks) <br><br> 現時点では、[[既存のディスクの置き換え]](./backup-azure-arm-restore-vms.md#replace-existing-disks) オプションはサポートされていません。<br><br> アクセス許可<br> セカンダリ リージョンでの復元操作は、バックアップ管理者とアプリ管理者が実行できます。
 
 ## <a name="support-for-file-level-restore"></a>ファイル レベルの復元のサポート

@@ -1,23 +1,23 @@
 ---
-title: Windows Virtual Desktop の GPU を構成する - Azure
-description: Windows Virtual Desktop で GPU アクセラレーションを使用したレンダリングとエンコードを有効にする方法。
+title: Windows Virtual Desktop (クラシック) の GPU を構成する - Azure
+description: Windows Virtual Desktop (クラシック) で GPU アクセラレーションを使用したレンダリングとエンコードを有効にする方法について説明します。
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: 33bc63887b73adaf570b385d2a289fcd97ff1632
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6c8fe95508937604c53d817d60dd637352fb6fa
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288692"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../configure-vm-gpu.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../configure-vm-gpu.md)を参照してください。
 
 Windows Virtual Desktop では、アプリのパフォーマンスとスケーラビリティを向上させるために、GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。 GPU アクセラレーションは、グラフィックを多用するアプリケーションの場合に特に重要です。
 

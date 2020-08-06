@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214453"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383887"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
@@ -26,6 +26,72 @@ ms.locfileid: "85214453"
 - 引用符で囲まれていない値、引用符で囲まれた値、エスケープ文字
 
 上記のすべてのバリエーションについては、以下で説明します。
+
+## <a name="quickstart-example"></a>クイック スタートの例
+
+`OPENROWSET` 関数を使用すると、ファイルの URL を指定することによって、CSV ファイルの内容を読み取ることができます。
+
+### <a name="reading-csv-file"></a>CSV ファイルの読み取り
+
+`CSV` ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にファイルの URL を指定し、csv `FORMAT` および 2.0 `PARSER_VERSION` を指定することです。 ファイルが一般公開されている場合、または Azure AD ID でこのファイルにアクセスできる場合は、次の例に示すようなクエリを使用して、ファイルの内容を表示することができます。
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+オプション `firstrow` は、この場合のヘッダーを表す CSV ファイルの最初の行をスキップするために使用されます。 このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム ID で保護されている場合は、[SQL ログインのためのサーバー レベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
+
+### <a name="using-data-source"></a>データ ソースの使用
+
+前の例では、ファイルへの完全なパスを使用しています。 別の方法として、ストレージのルート フォルダーを示す場所を持つ外部データ ソースを作成します。
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+データ ソースを作成したら、そのデータソースと `OPENROWSET` 関数のファイルへの相対パスを使用できます。
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+データ ソースが SAS キーまたはカスタム ID で保護されている場合は、[データベース スコープ資格情報を使用してデータ ソース](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)を構成できます。
+
+### <a name="explicitly-specify-schema"></a>スキーマを明示的に指定する
+
+`OPENROWSET` を使用すると、`WITH` 句によってファイルから読み取る列を明示的に指定できます。
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+`WITH` 句のデータ型の後の数値は、CSV ファイル内の列インデックスを表します。
+
+次のセクションでは、さまざまな種類の CSV ファイルに対してクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

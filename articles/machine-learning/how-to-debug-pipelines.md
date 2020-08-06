@@ -5,17 +5,17 @@ description: Python で Azure Machine Learning パイプラインをデバッグ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting, tracking-python
+ms.openlocfilehash: 6fa75c0c6ec6146ca59f6eaf4593b4912ae823c1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557429"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372962"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "84557429"
 * Application Insights を使用してデバッグする
 * Visual Studio Code (VS Code) と Python Tools for Visual Studio (PTVSD) を使用して対話形式でデバッグする
 
-## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でのデバッグとトラブルシューティング
+## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
 以降のセクションでは、パイプラインの構築時に陥りやすい落とし穴と、パイプラインで実行されているコードをデバッグするためのさまざまな方法の概要について説明します。 パイプラインが予期したとおりに実行されない場合は、次のヒントを参考にしてください。
 
 ### <a name="testing-scripts-locally"></a>スクリプトのローカルでのテスト
@@ -127,9 +127,13 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) でのデバッグとトラブルシューティング
+## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー)
 
 このセクションでは、デザイナーでパイプラインをトラブルシューティングする方法の概要について説明します。 デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページで、**70_driver_log** ファイルが確認できます。
+
+### <a name="enable-logging-for-real-time-endpoints"></a>リアルタイム エンドポイントのログ記録を有効にする
+
+デザイナーでリアルタイム エンドポイントのトラブルシューティングとデバッグを行うには、SDK を使用して Application Insight のログ記録を有効にする必要があります。 ログ記録を使用すると、モデル デプロイと使用に関する問題のトラブルシューティングとデバッグを行うことができます。 詳細については、[デプロイ済みモデルのログ記録](how-to-enable-logging.md#logging-for-deployed-models)に関する記事をご覧ください。 
 
 ### <a name="get-logs-from-the-authoring-page"></a>作成ページからログを取得する
 
@@ -156,10 +160,10 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 > [!IMPORTANT]
 > パイプラインの実行の詳細ページからパイプラインを更新するには、新しいパイプライン ドラフトにパイプラインの実行を**複製する**必要があります。 パイプラインの実行は、パイプラインのスナップショットです。 ログ ファイルに似ており、変更することはできません。 
 
-## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights のデバッグとトラブルシューティング
+## <a name="application-insights"></a>Application Insights
 この方法で OpenCensus Python ライブラリを使用する方法の詳細については、次のガイドを参照してください。[Application Insights での機械学習パイプラインのデバッグとトラブルシューティング](how-to-debug-pipelines-application-insights.md)
 
-## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Visual Studio Code でのデバッグとトラブルシューティング
+## <a name="visual-studio-code"></a>Visual Studio Code
 
 場合によっては、ML パイプラインで使用される Python コードを対話的にデバッグする必要が生じることがあります。 Visual Studio Code (VS Code) と Python Tools for Visual Studio (PTVSD) を使用することによって、トレーニング環境で実行されるコードにアタッチできます。
 

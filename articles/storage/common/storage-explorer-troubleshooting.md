@@ -6,14 +6,14 @@ author: Deland-Han
 manager: dcscontentpm
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61a281e5fa9e8d360b9b6e52cda9c54db49d93d0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974519"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406743"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -67,9 +67,9 @@ BLOB コンテナーまたはキューにアクセスする場合、Azure 資格
 
 その他のリソースの種類については現在、RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)することができます。
 
-### <a name="recommended-built-in-rbac-roles"></a>推奨される組み込みの RBAC ロール
+### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
 
-Storage Explorer を使用するために必要なアクセス許可を提供できる組み込み RBAC ロールは複数あります。 そうしたロールの一部を以下に示します。
+Storage Explorer を使用するために必要なアクセス許可を提供できる Azure 組み込みロールがいくつかあります。 そうしたロールの一部を以下に示します。
 - [所有者](/azure/role-based-access-control/built-in-roles#owner):リソースへのアクセスを含め、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
 - [共同作成者](/azure/role-based-access-control/built-in-roles#contributor):リソースへのアクセスを除き、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
 - [閲覧者](/azure/role-based-access-control/built-in-roles#reader):リソースを読み取って一覧表示します。
@@ -335,7 +335,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
 2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
-     dpkg -i packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
@@ -348,7 +348,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
 2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
-     dpkg -i packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
@@ -361,7 +361,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
 2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
-     dpkg -i packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \

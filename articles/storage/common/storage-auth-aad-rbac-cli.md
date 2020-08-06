@@ -1,29 +1,29 @@
 ---
 title: Azure CLI を使用してデータ アクセスのための RBAC ロールを割り当てる
 titleSuffix: Azure Storage
-description: Azure CLI を使用して、ロールベースのアクセス制御 (RBAC) を使用して Azure Active Directory セキュリティ プリンシパルへのアクセス許可を割り当てる方法について説明します。 Azure Storage では、Azure AD を使用した認証用の組み込みとカスタムの RBAC ロールがサポートされています。
+description: Azure CLI を使用して、ロールベースのアクセス制御 (RBAC) を使用して Azure Active Directory セキュリティ プリンシパルへのアクセス許可を割り当てる方法について説明します。 Azure Storage では、Azure AD を使用した認証用の組み込みロールと Azure カスタム ロールがサポートされています。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 25a38fc6f9607ef878ad3c5bf7074f5b63d5c121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afa48c07e628eaeb013c24fa38fcda1adea2555a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808872"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368976"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure CLI を使用して、BLOB およびキュー データにアクセスするための RBAC ロールを割り当てる
 
-Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の組み込み RBAC ロールは、Azure Storage によって定義されます。
+Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールは、Azure Storage によって定義されます。
 
 RBAC ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいは個別のコンテナーまたはキューのレベルで指定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
-この記事では、Azure CLI を使用して、組み込みの RBAC ロールの一覧を表示し、ロールをユーザーに割り当てる方法について説明します。 Azure CLI の使用の詳細については、「[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure)」を参照してください。
+この記事では、Azure CLI を使用して、Azure 組み込みロールの一覧を表示し、ロールをユーザーに割り当てる方法について説明します。 Azure CLI の使用の詳細については、「[Azure コマンド ライン インターフェイス (CLI)](/cli/azure)」を参照してください。
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>BLOB とキューの RBAC ロール
 
@@ -35,7 +35,7 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 ## <a name="list-available-rbac-roles"></a>利用可能な RBAC ロールの一覧を表示する
 
-Azure CLI を使用して利用可能な組み込み RBAC ロールの一覧を表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) コマンドを使用します。
+Azure CLI を使用して利用可能な Azure 組み込みロールの一覧を表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) コマンドを使用します。
 
 ```azurecli-interactive
 az role definition list --out table

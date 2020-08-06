@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122213"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373472"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
 
@@ -23,7 +23,7 @@ ms.locfileid: "86122213"
 > Text Analytics for Health は、"現状のまま"、"保証なしで" 提供されるプレビュー機能です。 そのため、**Text Analytics for Health (プレビュー) は、運用環境に実装またはデプロイして使用しないでください。** Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 Microsoft では、Text Analytics for Health またはその機能に関連して提供されるすべての資料が、すべての医療目的に対して十分であること、またはすべての人の健康的または医療的な要件を満たすことについて、いっさい保証しません。 
 
 
-Azure Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストから、関連する医療情報を抽出してラベル付けする、コンテナー化されたサービスです。  
+Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストから関連する医療情報を抽出してラベル付けする、コンテナー化されたサービスです。  
 
 ## <a name="features"></a>特徴
 
@@ -62,7 +62,7 @@ Text Analytics for Health では、統一医療言語システム ([UMLS](https:
 
 ---
 
-サポートされているすべてのエンティティの一覧については、Text Analytics for Healthcare によって返される[エンティティのカテゴリ](../named-entity-types.md?tabs=health)を参照してください。
+サポートされているすべてのエンティティの一覧については、Text Analytics for Health によって返される[エンティティのカテゴリ](../named-entity-types.md?tabs=health)を参照してください。
 
 ## <a name="supported-languages"></a>サポートされている言語
 
@@ -70,7 +70,7 @@ Text Analytics for Health では、英語のドキュメントのみがサポー
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
-コンテナーへのアクセスを要求するには、[Cognitive Services コンテナー要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 現在、Text Analytics for Health の使用には課金されません。 
+コンテナーへのアクセスを要求するには、[Cognitive Services コンテナー要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 現在のところ、Text Analytics for Health の使用には課金されません。 
 
 [!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -80,8 +80,8 @@ Text Analytics for Health では、英語のドキュメントのみがサポー
 
 コンテナーをインストールして実行するには、複数の方法があります。 
 
-1. [Azure portal](text-analytics-how-to-install-containers.md?tabs=healthcare) を使用して Text Analytics リソースを作成し、Docker を使用してコンテナーを取得します。
-2. 次の PowerShell と [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) のスクリプトを使用して、リソース デプロイ コンテナーの構成を自動化します。
+- [Azure portal](text-analytics-how-to-install-containers.md?tabs=healthcare) を使用して Text Analytics リソースを作成し、Docker を使用してコンテナーを取得します。
+- 次の PowerShell と [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) のスクリプトを使用して、リソース デプロイ コンテナーの構成を自動化します。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Azure Web App for Containers を使用してコンテナーをインストールする
 

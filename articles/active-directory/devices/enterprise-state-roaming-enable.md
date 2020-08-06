@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253003"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541891"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 
@@ -31,7 +31,7 @@ Enterprise State Roaming を有効にすると、組織には、Azure Informatio
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming を有効にするには
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
-1. **[Azure Active Directory]** &gt; **[デバイス]** &gt; **[Enterprise State Roaming]** を選択します。
+1. **[Azure Active Directory]**  >  **[デバイス]**  >  **[Enterprise State Roaming]** を選択します。
 1. **[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を選択します。 詳細については、[デバイス設定の構成方法](/azure/active-directory/device-management-azure-portal)に関するページをご覧ください。
   
    ![[デバイス間での設定とアプリ データの同期が許可されるユーザー] のデバイス設定のイメージ](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -56,7 +56,7 @@ Enterprise State Roaming のデータは、Azure Active Directory のインス�
 次の手順に従って、ユーザーごとのデバイス同期状態のレポートを表示します。
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
-1. **[Azure Active Directory]** &gt; **[ユーザー]** &gt; **[すべてのユーザー]** を選択します。
+1. **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 1. ユーザーを選択し、 **[デバイス]** を選択します。
 1. **[表示]** で、 **[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
   

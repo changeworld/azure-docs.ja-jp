@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499224"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318115"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -655,7 +655,7 @@ Azure、Azure US Government、および Azure China 21Vianet クラウドでコ�
 この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>既存のワークスペースにオンボードすることはできますか?
-仮想マシンが Log Analytics ワークスペースに既に接続されている場合、ワークスペースが[こちら](insights/vminsights-enable-overview.md#prerequisites)に記載されたサポートされているリージョンのいずれかにあれば、VM 用 Azure Monitor にオンボードするときにそのワークスペースを引き続き使用できます。
+仮想マシンが Log Analytics ワークスペースに既に接続されている場合、ワークスペースが[サポートされているリージョン](insights/vminsights-configure-workspace.md#supported-regions)のいずれかにあれば、Azure Monitor for VMs にオンボードするときにそのワークスペースを引き続き使用できます。
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>新しいワークスペースにオンボードすることはできますか? 

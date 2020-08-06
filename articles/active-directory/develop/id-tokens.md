@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926716"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313338"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -27,11 +27,11 @@ ms.locfileid: "82926716"
 
 ## <a name="using-the-id_token"></a>id_token を使用する
 
-ID トークンは、ユーザーが本人の主張どおりの人物であることを検証し、ユーザーについてその他の役に立つ情報を取得するために使用されます。[アクセス トークン](access-tokens.md)の代わりに、承認のために使用してはなりません。 これによって提供される要求は、アプリケーション内の UX でデータベースのキーとして使用でき、クライアント アプリケーションへのアクセスが提供されます。  データベースのキーを作成するときは、ゲスト シナリオが乱雑になるため、`idp` は使用しないでください。  キーの処理は `sub` (常に一意) のみで実行する必要があり、必要に応じてルーティングのために `tid` が使用されます。  サービス間でデータを共有する必要がある場合、複数のサービスで同じ `oid` が取得されるため、`oid`+`sub`+`tid` で機能します。
+ID トークンは、ユーザーが本人の主張どおりの人物であることを検証し、ユーザーについてその他の役に立つ情報を取得するために使用されます。[アクセス トークン](access-tokens.md)の代わりに、承認のために使用してはなりません。 これによって提供される要求は、アプリケーション内の UX で[データベースのキー](#using-claims-to-reliably-identify-a-user-subject-and-object-id)として使用でき、クライアント アプリケーションへのアクセスが提供されます。  
 
 ## <a name="claims-in-an-id_token"></a>id_token の要求
 
-Microsoft Identity の `id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) (JSON Web トークン) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての JWT 要求は v1.0 と v2.0 両方のトークンに出現します。
+`id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) (JSON Web トークン) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての JWT 要求は v1.0 と v2.0 両方のトークンに出現します。
 
 ### <a name="v10"></a>v1.0
 
@@ -87,14 +87,25 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`ver` | 文字列、1.0 または 2.0 | id_token のバージョンを示します。 |
 
 > [!NOTE]
-> v1 と v2 の id_token は、上記の例に示すように、含まれる情報の量に違いがあります。 基本的に、バージョンによって発行元の Azure AD プラットフォーム エンドポイントが指定されます。 [Azure AD の OAuth 実装](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)は長年にわたって進化してきました。 現在、AzureAD アプリケーション用に 2 つの異なる OAuth エンドポイントがあります。 v2 として分類されている新しいエンドポイントを使用することも、v1 と呼ばれる古いエンドポイントを使用することもできます。 これらの両方で OAuth エンドポイントは異なります。 v2 エンドポイントは、v1 エンドポイントのすべての機能が移行されようとしている新しいエンドポイントであり、新たな開発者の方は v2 エンドポイントを使用することをお勧めします。
+> v1.0 と v2.0 の id_token は、上記の例に示すように、含まれる情報の量に違いがあります。 バージョンは、要求元のエンドポイントに基づきます。 既存のアプリケーションでは Azure AD エンドポイントを使用する可能性がありますが、新しいアプリケーションでは v2.0 "Microsoft ID プラットフォーム" エンドポイントを使用する必要があります。
 >
-> - V1: Azure Active Directory エンドポイント: `https://login.microsoftonline.com/common/oauth2/authorize`
-> - V2: Microsoft ID プラットフォーム エンドポイント: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v1.0:Azure AD エンドポイント: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - v2.0:Microsoft ID プラットフォーム エンドポイント: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>要求を使用してユーザーを確実に識別する (サブジェクトとオブジェクト ID)
+
+ユーザーを識別する (たとえば、データベース内で検索したり、ユーザーが持つアクセス許可を決定したりする) 場合は、時間が経過しても一定で一意の情報を使用することが重要です。  レガシ アプリケーションでは、メール アドレス、電話番号、UPN などのフィールドが使われることがあります。  これらはすべて時間の経過と共に変わることがあり、時間の経過と共に再利用されることもあります。従業員の名前が変わったり、または従業員に以前の存在しなくなった従業員のメール アドレスに一致するアドレスが与えられたりする場合などです。 このため、アプリケーションでユーザーを識別するために、人間が判読できるデータを使用しないことが**重要**です。人間が判読可能であるとは、一般にだれかがそれを読んで、変更したくなることを意味します。  代わりに、OIDC 標準によって提供される要求、または Microsoft によって提供される拡張要求 (`sub` および `oid` 要求) を使用します。
+
+ユーザーごとに情報を正しく格納するには、`sub` または `oid` を単独で使用し (GUID は一意であるため)、必要に応じて `tid` をルーティングまたはシャーディングに使用します。  サービス間でデータを共有する必要がある場合は、すべてのアプリで、特定のユーザーに対して同じ `oid` と `tid` 要求が取得されるため、`oid`+`tid` が最適です。  Microsoft ID プラットフォームの `sub` 要求は "ペア" になっています。これは、トークンの受信者、テナント、ユーザーの組み合わせに基づいて一意です。  したがって、特定のユーザーに対して ID トークンを要求する 2 つのアプリは、`sub` 要求は異なっていても、そのユーザーに対して同じ `oid` 要求を受け取ることになります。
+
+>[!NOTE]
+> テナント間でユーザーを関連付けようとして、`idp` 要求を使用して、ユーザーに関する情報を格納しないでください。  これは機能しません。ユーザーの `oid` および `sub` 要求は、設計によってテナント間で変わり、アプリケーションで、テナントを越えてユーザーを追跡できないようにしているためです。  
+>
+> ユーザーが 1 つのテナントに所属し、別のテナントで認証するゲスト シナリオでは、ユーザーがサービスに対して新しいユーザーであるかのように、ユーザーを処理する必要があります。  Contoso テナントのドキュメントと特権は、Fabrikam テナントでは適用できません。 これは、テナント間での予期しないデータの漏洩を防ぐために重要です。
 
 ## <a name="validating-an-id_token"></a>id_token の検証
 
-`id_token` の検証は、[アクセス トークンの検証](access-tokens.md#validating-tokens)の最初の手順と似ています。クライアントは、正しい発行者がトークンを返送したことと、改ざんされていないことを検証する必要があります。 `id_tokens` は常に JWT トークンであるため、トークンを検証する多くのライブラリが存在しています。みずから検証するのではなく、これらのライブラリのいずれかを使用することをお勧めします。
+`id_token` の検証は、[アクセス トークンの検証](access-tokens.md#validating-tokens)の最初の手順と似ています。クライアントは、正しい発行者がトークンを返送したことと、改ざんされていないことを検証できます。 `id_tokens` は常に JWT トークンであるため、トークンを検証する多くのライブラリが存在しています。みずから検証するのではなく、これらのライブラリのいずれかを使用することをお勧めします。  Confidential クライアント (シークレットを持つクライアント) のみが ID トークンを検証すべきであることに注意してください。  パブリック アプリケーション (ユーザーのブラウザーやホーム ネットワークなど、制御できないデバイスまたはネットワークで完全に実行されるコード) は、ID トークンの検証から利点が得られません。これは、悪意のあるユーザーが、トークンの検証に使用するキーをインターセプトして編集できるためです。
 
 トークンを手動で検証するには、[アクセス トークンを検証](access-tokens.md#validating-tokens)する手順の詳細をご覧ください。 トークンの署名を検証した後で、id_token 内の次の JWT 要求を検証します (トークン検証ライブラリではこれも行われる場合があります)。
 

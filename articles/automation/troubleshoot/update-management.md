@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183156"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293090"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -387,7 +387,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * マシンの電源が切れていて到達できません。
 * マシンにネットワーク接続の問題があるため、マシン上のハイブリッド worker にアクセスできません。
 * MMA に対する更新があり、ソース コンピューター ID が変更されました。
-* Automation アカウントで 2,000 個の同時ジョブの制限に達した場合は、更新の実行が制限されました。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
+* Automation アカウントで 200 個の同時ジョブの制限に達した場合、更新の実行が制限されました。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
 
 ### <a name="resolution"></a>解決方法
 

@@ -3,20 +3,17 @@ title: Azure Kubernetes Service (AKS) でカスタマーマネージド キー�
 description: 独自のキー (BYOK) を使用して AKS OS ディスクとデータ ディスクを暗号化します。
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: f0b96b3f78adf4a7efb1d43626a5aaf82a5b5d43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252047"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499621"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する
 
 Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーの制御を強化するために、AKS クラスターの OS ディスクとデータ ディスクの両方の暗号化に使用する目的で[カスタマーマネージド キー][customer-managed-keys]を提供できます。
-
-> [!NOTE]
-> BYOK Linux および Windows ベースの AKS クラスターは、Azure マネージド ディスクのサーバー側暗号化をサポートする [Azure リージョン][supported-regions]で使用できます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -164,9 +161,7 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>制限事項
 
-* BYOK は現在、特定の [Azure リージョン][supported-regions]で GA およびプレビューとして提供されています
-* データ ディスクの暗号化は、Kubernetes バージョン 1.17 以降でサポートされます   
-* BYOK がサポートされているリージョンでのみ使用できます
+* データ ディスクの暗号化は、Kubernetes バージョン 1.17 以降でサポートされます
 * カスタマーマネージド キーによる暗号化は、現在、新しい AKS クラスターのみを対象としています。既存のクラスターはアップグレードできません
 
 ## <a name="next-steps"></a>次のステップ

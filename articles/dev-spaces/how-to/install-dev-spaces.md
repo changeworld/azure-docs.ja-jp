@@ -5,18 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: AKS クラスターで Azure Dev Spaces を有効にして、クライアント側ツールをインストールする方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996263"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407899"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS クラスターで Azure Dev Spaces を有効にして、クライアント側ツールをインストールする
 
 この記事では、AKS クラスターで Azure Dev Spaces を有効にする方法と、クライアント側ツールをインストールする方法をいくつかを紹介します。
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>CLI を使用して Azure Dev Spaces を有効化または削除する
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>CLI を使用して Azure Dev Spaces を有効にする
 
 CLI を使用して Dev Spaces を有効にする前に、以下が必要です。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント][az-portal-create-account]を作成できます。
@@ -49,7 +49,23 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI もインストールされます。
 
-AKS クラスターから Azure Dev Spaces を削除するには、`azds remove` コマンドを使用します。 次に例を示します。
+## <a name="install-the-client-side-tools"></a>クライアント側ツールをインストールする
+
+Azure Dev Spaces クライアント側ツールを使用すると、ローカル コンピューターから AKS クラスター上の dev 領域と対話できます。 クライアント側ツールをインストールする方法はいくつかあります。
+
+* [Visual Studio Code][vscode] で [Azure Dev Spaces 拡張機能][vscode-extension]をインストールします。
+* [Visual Studio 2019][visual-studio] で、Azure Development ワークロードをインストールします。
+* [Windows][cli-win]、[Mac][cli-mac]、または [Linux][cli-linux] CLI をダウンロードしてインストールします。
+
+## <a name="remove-azure-dev-spaces-using-the-cli"></a>CLI を使用して Azure Dev Spaces を削除する
+
+AKS クラスターから Azure Dev Spaces を削除するには、`azds remove` コマンドを使用します。
+
+```azurecli
+azds remove -g MyResourceGroup -n MyAKS
+```
+
+次の出力例は、*MyAKS* クラスターから Azure Dev Spaces が削除されたことを示しています。
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -58,15 +74,7 @@ Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that tar
 Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
 ```
 
-上記のコマンドでは *MyResourceGroup* 内の *MyAKS* クラスターから Azure Dev Spaces を削除します。 Azure Dev Spaces で作成した名前空間はすべて、ワークロードと共に残りますが、それらの名前空間にある新しいワークロードは Azure Dev Spaces ではインストルメント化されません。 また、Azure Dev Spaces によってインストルメント化された既存のポッドを再起動すると、エラーが表示される場合があります。 Azure Dev Spaces ツールを使用せずに、それらのポッドを再デプロイする必要があります。 クラスターから Azure Dev Spaces を完全に削除するには、Azure Dev Spaces が有効化されていたすべての名前空間にあるすべてのポッドを削除します。
-
-## <a name="install-the-client-side-tools"></a>クライアント側ツールをインストールする
-
-Azure Dev Spaces クライアント側ツールを使用すると、ローカル コンピューターから AKS クラスター上の dev 領域と対話できます。 クライアント側ツールをインストールする方法はいくつかあります。
-
-* [Visual Studio Code][vscode] で [Azure Dev Spaces 拡張機能][vscode-extension]をインストールします。
-* [Visual Studio 2019][visual-studio] で、Azure Development ワークロードをインストールします。
-* [Windows][cli-win]、[Mac][cli-mac]、または [Linux][cli-linux] CLI をダウンロードしてインストールします。
+Azure Dev Spaces で作成した名前空間はすべて、ワークロードと共に残りますが、それらの名前空間にある新しいワークロードは Azure Dev Spaces ではインストルメント化されません。 また、Azure Dev Spaces によってインストルメント化された既存のポッドを再起動すると、エラーが表示される場合があります。 Azure Dev Spaces ツールを使用せずに、それらのポッドを再デプロイする必要があります。 クラスターから Azure Dev Spaces を完全に削除するには、Azure Dev Spaces が有効化されていたすべての名前空間にあるすべてのポッドを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

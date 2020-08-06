@@ -1,6 +1,6 @@
 ---
-title: PowerShell を使用して Windows Virtual Desktop のホスト プールを作成する Fall 2019 - Azure
-description: PowerShell コマンドレットを使用して Windows Virtual Desktop にホスト プールを作成する方法。
+title: PowerShell を使用して Windows Virtual Desktop (クラシック) のホスト プールを作成する - Azure
+description: PowerShell コマンドレットを使用して Windows Virtual Desktop (クラシック) にホスト プールを作成する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 552a3fdd20d67d81fe0c6a81a965fd3231da643d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7bc1e229711ef24b07641c5767f5f60c17a3b97c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291291"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>PowerShell を使用してホスト プールを作成する
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>PowerShell を使用して Windows Virtual Desktop (クラシック) でホスト プールを作成する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../create-host-pools-powershell.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../create-host-pools-powershell.md)を参照してください。
 
 ホスト プールは、Windows Virtual Desktop テナント環境内にある 1 つまたは複数の同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
 

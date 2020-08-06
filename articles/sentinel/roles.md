@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: a43b2282974e30cfcf9fa6950e32008c06da98d2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 95a966799b4cb66b74d998df9c58958b9b89ecdb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956799"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374220"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
@@ -85,7 +85,7 @@ Azure Sentinel 固有の RBAC ロールの割り当てでは、Azure および L
 
 ## <a name="custom-roles-and-advanced-rbac"></a>カスタム ロールと高度な RBAC
 
-- 組み込みの RBAC ロールの使用に加え、またはその代わりに、Azure Sentinel のカスタムの RBAC ロールを作成することができます。 Azure Sentinel のカスタム RBAC ロールは、[Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) および [Azure Log Analytics リソース](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)に対する特定のアクセス許可に基づいて、他の[カスタム Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) ロールを作成する場合と同じ方法で作成されます。
+- Azure 組み込みロールの使用に加え、またはその代わりに、Azure Sentinel の Azure カスタム ロールを作成することができます。 Azure Sentinel の Azure カスタム ロールは、[Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) および [Azure Log Analytics リソース](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)に対する特定のアクセス許可に基づいて、他の[カスタム Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) ロールを作成する場合と同じ方法で作成されます。
 
 - Azure Sentinel ワークスペースのデータに対して、Log Analytics の高度なロールベースのアクセス制御を使用できます。 これには、データ型ベースの RBAC とリソース中心の RBAC の両方が含まれます。 Log Analytics ロールの詳細については、 [Azure Monitor でのログ データとワークスペースの管理](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)に関する記事を参照してください。
 
