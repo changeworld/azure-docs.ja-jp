@@ -6,13 +6,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-java
-ms.openlocfilehash: 26748b6847ab7061b0038ef9ca18f1b721d320e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: e962047c08dec336ba293aee96eadc0c96d1fc0f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320767"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504468"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>クイック スタート:Azure CLI を使用して Service Bus キューを作成する
 このクイック スタートでは、Azure CLI と Service Bus Java ライブラリを使って、Service Bus とメッセージを送受信する方法について説明します。 最後に、技術的な詳細に関心がある場合は、サンプル コードの主要な要素の[説明を読む](#understand-the-sample-code)ことができます。
