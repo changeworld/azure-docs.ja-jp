@@ -3,12 +3,12 @@ title: Azure Event Grid のカスタム トピック用のディザスター リ
 description: このチュートリアルでは、Event Grid サービスがリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115082"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461682"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
@@ -26,7 +26,7 @@ ms.locfileid: "86115082"
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 この URL は後で必要になるのでメモしておいてください。
@@ -207,4 +207,4 @@ namespace EventGridFailoverPublisher
 
 - [http エンドポイントでイベントを受信](./receive-events.md)する方法について学習する
 - [イベントをハイブリッド接続にルーティング](./custom-event-to-hybrid-connection.md)する方法を理解する
-- [Azure DNS と Traffic Manager を使用したディザスター リカバリー](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)について学習する
+- [Azure DNS と Traffic Manager を使用したディザスター リカバリー](../networking/disaster-recovery-dns-traffic-manager.md)について学習する

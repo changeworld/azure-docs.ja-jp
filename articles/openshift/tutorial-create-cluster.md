@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260673"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475653"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -33,42 +33,12 @@ Azure Red Hat OpenShift クラスターを作成するには、次のアクセ�
 |**User Access Administrator**|X|X| |
 |**Contributor**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>`az aro` 拡張機能をインストールする
-`az aro` 拡張機能を使用すると、Azure CLI を使用してコマンド ラインから直接 Azure Red Hat OpenShift クラスターを作成、アクセス、削除できます。
-
-次のコマンドを実行して、`az aro` 拡張機能をインストールします。
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-拡張機能が既にインストールされている場合は、次のコマンドを実行して更新できます。
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
 次に、お使いのサブスクリプションに `Microsoft.RedHatOpenShift` リソースプロバイダーを登録する必要があります。
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-拡張機能が登録されていることを確認します。
-
-```azurecli-interactive
-az -v
-```
-
-  次のような出力が表示されます。
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
