@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d2262017b257e9d7540d8dc640123ab584223d6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718606"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797153"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,6 +32,8 @@ ms.locfileid: "84718606"
 > * アクセスが不要になった場合に Workplace by Facebook 上のユーザーを削除する
 > * Azure AD と Workplace by Facebook 間でユーザー属性の同期を維持する
 > * Workplace by Facebook への[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) (推奨)
+
+>[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
 ## <a name="prerequisites"></a>前提条件
 
