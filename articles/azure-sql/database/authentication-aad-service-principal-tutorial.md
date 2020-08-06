@@ -177,7 +177,7 @@ SQL Managed Instance に**ディレクトリ閲覧者**のアクセス許可を�
 
 このチュートリアルでは、メイン サービス プリンシパルとして *AppSP* を、2 つ目のサービス プリンシパル ユーザーとして *myapp* を使用します。myapp は、*AppSP* によって Azure SQL に作成されます。 *AppSP* と *myapp* の 2 つのアプリケーションを作成する必要があります。
 
-Azure AD アプリケーションの作成方法について詳しくは、「[方法: リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
+Azure AD アプリケーションの作成方法について詳しくは、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」の記事を参照してください。
 
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>Azure SQL Database にサービス プリンシパル ユーザーを作成する

@@ -23,7 +23,7 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、vCenter と NSX-T Manager の管理インターフェイスへのアクセスが可能な AVS プライベート クラウドが必要です。 このサンプル アプリ コードの使用方法については、「[チュートリアル: Azure で VMware プライベート クラウド用のネットワークを構成する](tutorial-configure-networking.md)」を参照してください。
+このチュートリアルを完了するには、vCenter と NSX-T Manager の管理インターフェイスへのアクセスが可能な AVS プライベート クラウドが必要です。 「[チュートリアル: Azure で VMware プライベート クラウド用のネットワークを構成する](tutorial-configure-networking.md)」を参照してください。
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>NSX-T でネットワーク セグメントをプロビジョニングする
 
