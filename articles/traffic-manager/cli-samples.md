@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
-ms.openlocfilehash: fb50c13817f10f74610db68121087c125a6f91f6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e46393c20a3409f4c7ce740cfd4f6f3710f25e26
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286429"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501884"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Traffic Manager の Azure CLI サンプル
 

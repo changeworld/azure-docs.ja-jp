@@ -71,7 +71,7 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: 概念
   items:
-    - name: 予約の推奨事項を作成する方法
+    - name: Reservation recommendations
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 割り引きの適用方法
       items:
@@ -120,9 +120,9 @@
     - name: 予約 REST API
       href: reservation-apis.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 予約 - Azure PowerShell
-      href: /powershell/module/azurerm.reservations
+      href: /powershell/module/az.reservations
     - name: 予約 - CLI
-      href: /cli/azure/reservations/reservation
+      href: /cli/azure/reservations
     - name: Cost Management - Consumption Usage Details REST API
       href: /rest/api/consumption/usagedetails
     - name: Cost Management - Consumption Reservations Details REST API

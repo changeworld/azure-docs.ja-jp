@@ -2,16 +2,16 @@
 title: Azure Automation を使用した Azure Analysis Services モデルの更新 | Microsoft Docs
 description: この記事では、Azure Automation を使用して Azure Analysis Services のモデルの更新をコーディングする方法について説明します。
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025406"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553905"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
 

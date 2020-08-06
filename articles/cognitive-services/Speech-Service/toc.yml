@@ -494,10 +494,8 @@
       items:
         - name: カスタム キーワードの概要
           href: custom-keyword-overview.md
-        - name: カスタム キーワードの名前付けのガイドライン
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: カスタム キーワードの認識
-          href: speech-devices-sdk-create-kws.md
+        - name: カスタム キーワードの基本
+          href: custom-keyword-basics.md
 - name: Speaker Recognition
   items:
     - name: 概要
