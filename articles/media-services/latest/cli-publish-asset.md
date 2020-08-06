@@ -14,12 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: ccc981af63391527473452e2f53e7abd108fb739
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 95bdd3b3dddd1a04e00d705449681985400e9621
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092152"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87487634"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI の例: 資産の公開
 

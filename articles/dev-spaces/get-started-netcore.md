@@ -3,14 +3,15 @@ title: 'Kubernetes 開発空間を作成する: Visual Studio Code と .NET Core
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
+ms.custom: devx-track-azurecli
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 9c73c191054c9eee183a762d0a029d6c8dc431ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4202ef63f77571e279114525fa6f14178821e9c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013642"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499485"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と .NET Core
 

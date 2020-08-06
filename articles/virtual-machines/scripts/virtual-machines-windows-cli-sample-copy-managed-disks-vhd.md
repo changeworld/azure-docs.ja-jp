@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.custom: mvc,seodec18
-ms.openlocfilehash: 17ca58a8c03def3565bf7e38099d84cf767d333c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc,seodec18, devx-track-azurecli
+ms.openlocfilehash: 00b6f0d79427cf1f4af2c1669f514aaf6fe7558a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010099"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500336"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLI を使用してストレージ アカウントにマネージド ディスクをエクスポート/コピーする
 
