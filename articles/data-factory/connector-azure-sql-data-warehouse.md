@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/15/2020
-ms.openlocfilehash: 8d7171bafb292b0520b8873bad0ce8f55ab4040d
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 08/03/2020
+ms.openlocfilehash: caa132475df6481db7228a1ef7e18026b12cf38f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171496"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534330"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータをコピーして変換する
 
@@ -376,7 +376,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 | writeBatchSize    | SQL テーブルに挿入する**バッチあたりの**行数。<br/><br/>使用可能な値は **integer** (行数) です。 既定では、Data Factory により行のサイズに基づいて適切なバッチ サイズが動的に決定されます。 | いいえ。<br/>一括挿入を使用する場合に適用します。     |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ。<br/>一括挿入を使用する場合に適用します。        |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
-| tableOption | シンク テーブルが存在しない場合に、ソースのスキーマに基づいて、[シンク テーブルを自動的に作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します。 コピー アクティビティでステージング コピーが構成されている場合、テーブルの自動作成はサポートされません。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
+| tableOption | シンク テーブルが存在しない場合に、ソースのスキーマに基づいて、[シンク テーブルを自動的に作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
 | disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションのために、SQL Data Warehouse DWU などのメトリックが収集されます。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse のシンクの例
@@ -761,7 +761,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | INT                                   | Int32                          |
 | money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | Decimal (10 進数型)                        |
+| numeric                               | Decimal                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Single                         |
 | rowversion                            | Byte[]                         |

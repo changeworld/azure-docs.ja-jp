@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090605"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534483"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -174,7 +174,7 @@ IoT Hub は、顧客所有のストレージ アカウントにメッセージ�
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
@@ -228,7 +228,7 @@ IoT Hub のファイルのアップロード機能を使用すると、デバイ
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
@@ -246,7 +246,7 @@ IoT Hub では、顧客指定のストレージ BLOB 間で、デバイスの情
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 

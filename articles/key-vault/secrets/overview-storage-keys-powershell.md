@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 3dea4c0f63b6c4e76c2289e6c3d930ea32cf2880
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 87dc1ccb887638226607a1e398c7532de8d2c94f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373217"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534534"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -104,7 +104,7 @@ Key Vault からストレージ アカウント キーにアクセスして管�
 Azure PowerShell の [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) コマンドレットを使用して、このロールを Key Vault サービス プリンシパルに割り当て、範囲をそのストレージ アカウントに限定します。
 
 ```azurepowershell-interactive
-# Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
+# Assign Azure role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 

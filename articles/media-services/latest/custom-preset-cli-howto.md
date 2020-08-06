@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3b718a0a67381e2b1eb19d2397ecf86e4a9c196d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090129"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503890"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>カスタム変換を使用してエンコードする方法 - Azure CLI
 

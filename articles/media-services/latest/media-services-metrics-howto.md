@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 5df104efb65152f5bcb71a86911e694611d8a742
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 154e5b5d9639203810e9d16dec4e2907fe5ee80a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022873"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504298"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services のメトリックを監視する
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165772"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541874"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -226,10 +226,6 @@ Hybrid Azure AD Join がデバイスにとって最適なソリューション�
 
 * [デバイス設定を構成する](device-management-azure-portal.md#configure-device-settings)
 * Windows デバイスを管理するには、ローカル管理者である必要があります。 [Azure AD は、Azure AD 参加済みデバイスのこのメンバーシップを更新](assign-local-admin.md)して、デバイス マネージャーの役割を持つデバイスを、参加済みのすべてのデバイスに管理者として自動的に追加します。
-
-* [デバイスを検索する](device-management-azure-portal.md#locate-devices)
-
-* [デバイス ID 管理タスクを実行する](device-management-azure-portal.md#device-identity-management-tasks)
 
 [古いデバイスを管理する](manage-stale-devices.md)ことで環境をクリーンな状態に保って、現在のデバイスの管理に関するリソースに集中するようにしてください。
 
