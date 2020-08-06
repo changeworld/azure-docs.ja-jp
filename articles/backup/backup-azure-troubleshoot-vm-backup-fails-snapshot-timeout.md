@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5bf52606e6fa5de6a122a65432da87de1491e17f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324745"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809767"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "87324745"
 
 ### <a name="step-1-check-azure-vm-health"></a>手順 1:Azure VM の正常性を確認する
 
-- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)が**停止/割り当て解除済み/更新中**の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして**実行中**であることを確認してから、バックアップ操作を再試行してください。
+- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)が**停止/割り当て解除済み/更新中**の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして**実行中**であることを確認してから、バックアップ操作を再試行してください。
 - **保留中の OS の更新または再起動を確認します**:VM で保留中の OS 更新プログラムがないか、または再起動が保留されていないかを確認してください。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>手順 2:Azure VM ゲスト エージェント サービスの正常性を確認する
@@ -31,18 +31,18 @@ ms.locfileid: "87324745"
 - **Azure VM ゲスト エージェント サービスが開始されており、最新の状態であることを確認します**:
   - Windows VM の場合:
     - **services.msc** に移動し、**Windows Azure VM ゲスト エージェント サービス**が動作していることを確認します。 また、[最新バージョン](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)がインストールされていることを確認してください。 詳細については、[Windows VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)に関するページを参照してください。
-    - 既定では Azure VM エージェントは、ポータル、PowerShell、コマンド ライン インターフェイス、または Azure Resource Manager テンプレートから Azure Marketplace イメージによってデプロイされた、すべての Windows VM にインストールされます。 Azure にデプロイするカスタム VM イメージを作成する場合は、[エージェントの手動インストール](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation)が必要となる場合があります。
+    - 既定では Azure VM エージェントは、ポータル、PowerShell、コマンド ライン インターフェイス、または Azure Resource Manager テンプレートから Azure Marketplace イメージによってデプロイされた、すべての Windows VM にインストールされます。 Azure にデプロイするカスタム VM イメージを作成する場合は、[エージェントの手動インストール](../virtual-machines/extensions/agent-windows.md#manual-installation)が必要となる場合があります。
     - サポート マトリックスを確認して、VM が[サポートされている Windows オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-windows)で動作するかどうかを確認します。
   - Linux VM の場合は、
-    - コマンド `ps-e` を実行して、Azure VM ゲスト エージェント サービスが実行されていることを確認します。 また、[最新バージョン](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent)がインストールされていることを確認してください。 詳細については、[Linux VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)に関するページを参照してください。
-    - [Linux VM エージェントのシステム パッケージの依存関係](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)が、サポートされている構成であることを確認します。 次に例を示します。サポートされている Python のバージョンは 2.6 以降です。
+    - コマンド `ps-e` を実行して、Azure VM ゲスト エージェント サービスが実行されていることを確認します。 また、[最新バージョン](../virtual-machines/extensions/update-linux-agent.md)がインストールされていることを確認してください。 詳細については、[Linux VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)に関するページを参照してください。
+    - [Linux VM エージェントのシステム パッケージの依存関係](../virtual-machines/extensions/agent-linux.md#requirements)が、サポートされている構成であることを確認します。 次に例を示します。サポートされている Python のバージョンは 2.6 以降です。
     - サポート マトリックスを確認し、VM が[サポートされている Linux オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-linux)で動作するかどうかを確認します。
 
 ### <a name="step-3-check-azure-vm-extension-health"></a>手順 3:Azure VM 拡張機能の正常性を確認する
 
 - **すべての Azure VM 拡張機能が "プロビジョニング成功" の状態であることを確認します**:エラー状態の拡張機能がある場合、バックアップが影響を受ける可能性があります。
 - *Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]* に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。
-- すべての[拡張機能の問題](https://docs.microsoft.com/azure/virtual-machines/extensions/overview#troubleshoot-extensions)が解決されていることを確認して、バックアップ操作をやり直してください。
+- すべての[拡張機能の問題](../virtual-machines/extensions/overview.md#troubleshoot-extensions)が解決されていることを確認して、バックアップ操作をやり直してください。
 - **COM+ System Application** が動作していることを確認します。 また、**分散トランザクション コーディネーター サービス**も**ネットワーク サービス アカウント**として実行されている必要があります。 [COM+ と MSDTC の問題のトラブルシューティング](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)に関する記事の手順に従います。
 
 ### <a name="step-4-check-azure-backup-vm-extension-health"></a>手順 4:Azure Backup VM 拡張機能の正常性を確認する
@@ -57,9 +57,9 @@ Azure Backup では、VM スナップショット拡張機能を使用して Azu
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **ネットワーク アクセスが必要かどうかを確認します**:拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access)。
+- **ネットワーク アクセスが必要かどうかを確認します**:拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [詳細については、こちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
   - サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
-  - ゲスト ファイアウォールまたはプロキシを使用して `168.63.129.16` へのアクセスをブロックしている場合は、上記とは関係なく拡張機能はエラーになります。 ポート 80、443、および 32526 が必要です。[詳細はこちらを参照してください](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access)。
+  - ゲスト ファイアウォールまたはプロキシを使用して `168.63.129.16` へのアクセスをブロックしている場合は、上記とは関係なく拡張機能はエラーになります。 ポート 80、443、および 32526 が必要です。[詳細はこちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
 
 - **ゲスト VM 内で DHCP が有効になっていることを確認します**:これは、IaaS VM のバックアップを機能させるために、DHCP からホストまたはファブリック アドレスを取得するのに必要です。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を通じて静的プライベート IP を構成し、VM 内の DHCP オプションが有効になっていることを確認します。[詳細はこちらを参照してください](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)。
 

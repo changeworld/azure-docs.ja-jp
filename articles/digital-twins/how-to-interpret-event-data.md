@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3bb4d70b4c4f3f9edc525ffe5973bca633ddd1be
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142435"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800417"
 ---
 # <a name="understand-event-data"></a>イベント データについて
 
@@ -300,7 +300,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 ## <a name="next-steps"></a>次のステップ
 
 イベントを配信するためのエンドポイントとルートを作成する方法を参照してください。
-* [エンドポイントとルートを管理する](how-to-manage-routes.md)
+* [*方法: エンドポイントとルートを管理する*](how-to-manage-routes-apis-cli.md)
 
 または、Azure Digital Twins の API と SDK オプションの詳細を確認してください。
-* [Azure Digital Twins の API および SDK を使用する](how-to-use-apis-sdks.md)
+* [*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)

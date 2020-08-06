@@ -3,7 +3,7 @@ title: Azure AD エンタイトルメント管理でアクセス パッケージ
 description: Azure Active Directory エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、削除する方法を説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78bed4f5c600bfa0218f924dc4444119e9729e28
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078824"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798751"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 

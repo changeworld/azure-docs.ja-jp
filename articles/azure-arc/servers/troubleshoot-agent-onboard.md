@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004547"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809444"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Connected Machine エージェントの接続の問題のトラブルシューティング
 
@@ -90,7 +90,7 @@ azcmagent connect \
 
 該当する問題がここにない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
 
-* [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-arc.html) を通じて、Azure 専門家からの回答を得ることができます。
+* [Microsoft Q&A](/answers/topics/azure-arc.html) を通じて、Azure 専門家からの回答を得ることができます。
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure サポートにより、Azure コミュニティの回答、サポート、エキスパートと結び付けられます。
 
