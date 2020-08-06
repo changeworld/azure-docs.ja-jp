@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091982"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー 
 
@@ -200,7 +200,7 @@ ms.locfileid: "80582701"
 
 ## <a name="see-also"></a>関連項目
 
-- [エラー コードのエンコード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [エラー コードのエンコード](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services の概念](concepts-overview.md)
 - [クォータと制限](limits-quotas-constraints.md)
 

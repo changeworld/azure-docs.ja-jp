@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7110f3417937b623260983a9d94e9e6834fc8fc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76906749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077377"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC シリーズの仮想マシンの概要
 
@@ -63,6 +63,6 @@ Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure での [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) の HPC VM サイズの詳細を確認する。
+* Azure での [Linux](../../sizes-hpc.md) および [Windows](../../sizes-hpc.md) の HPC VM サイズの詳細を確認する。
 
-* Azure での [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) の詳細を確認する。
+* Azure での [HPC](/azure/architecture/topics/high-performance-computing/) の詳細を確認する。

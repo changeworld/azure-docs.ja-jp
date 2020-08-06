@@ -3,12 +3,12 @@ title: Azure VM の作成時にバックアップを有効にする
 description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032852"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 
@@ -30,7 +30,7 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
 
 2. Azure Marketplace で **[Compute]\(コンピューティング\)** をクリックし、VM イメージを選択します。
 
-3. [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) の指示に従って、VM を設定します。
+3. [Windows](../virtual-machines/windows/quick-create-portal.md) または [Linux](../virtual-machines/linux/quick-create-portal.md) の指示に従って、VM を設定します。
 
 4. **[管理]** タブの **[バックアップの有効化]** で **[オン]** をクリックします。
 5. Azure Backup により、Recovery Services コンテナーにバックアップされます。 既存のコンテナーがない場合は、 **[新規作成]** をクリックします。

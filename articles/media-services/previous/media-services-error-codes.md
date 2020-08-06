@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74887070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042831"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services エラー コード
 Microsoft Azure Media Services を使用する場合は、Media Services でサポートされていないアクションに対する認証トークンの有効期限切れなどの問題によって、サービスから HTTP エラー コードを受け取ることがあります。 Media Services やそれらが原因となって返されることがある **HTTP エラー コード** の一覧を次に示します。  
@@ -28,19 +28,19 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 要求には、無効な情報が含まれており、次のいずれかの理由で拒否されます。
 
 * サポートされていない API バージョンが指定されています。 最新バージョンについては、「[Media Services REST API 開発用の設定](media-services-rest-how-to-use.md)」をご覧ください。
-* Media Services の API バージョンが指定されていません。 API バージョンを指定する方法については、「[Media Services Operations REST API Reference (Media Services Operations REST API リファレンス)](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
+* Media Services の API バージョンが指定されていません。 API バージョンを指定する方法については、「[Media Services Operations REST API Reference (Media Services Operations REST API リファレンス)](/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
   
   > [!NOTE]
   > .NET または Java Sdk を使用して Media Services に接続する場合は、Media Services に対して何らかのアクションの実行を試行するたびに、API バージョンが指定されます。
   > 
   > 
-* 未定義のプロパティが指定されています。 プロパティ名は、エラー メッセージ内にあります。 特定のエンティティのメンバーであるプロパティのみを指定することができます。 エンティティとそのプロパティの一覧については、「[Azure Media Services REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
+* 未定義のプロパティが指定されています。 プロパティ名は、エラー メッセージ内にあります。 特定のエンティティのメンバーであるプロパティのみを指定することができます。 エンティティとそのプロパティの一覧については、「[Azure Media Services REST API リファレンス](/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
 * 無効なプロパティ値が指定されています。 プロパティ名は、エラー メッセージ内にあります。 有効なプロパティ タイプと値については、以前のリンクを参照してください。
 * プロパティ値が欠落しているので、必要です。
 * 指定された URL の一部には、無効な値が含まれています。
 * WriteOnce プロパティの更新が試行されました。
 * 指定されなかったか特定できなかったプライマリ AssetFile を使用して、入力資産のジョブの作成が試行されました。
-* SAS ロケーターの更新が試行されました。 SAS ロケーターの作成または削除のみできます。 ストリーミング ロケーターを更新できます。 詳細については、「[ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)」を参照してください。
+* SAS ロケーターの更新が試行されました。 SAS ロケーターの作成または削除のみできます。 ストリーミング ロケーターを更新できます。 詳細については、「[ロケーター](/rest/api/media/operations/locator)」を参照してください。
 * サポートされていない操作またはクエリが送信されました。
 
 ## <a name="401-unauthorized"></a>401 権限がありません
@@ -109,7 +109,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 * 「サーバーがビジー状態です。 1 秒あたり {0} 以上の要求を調整することができます。」
 * 「サーバーがビジー状態です。 {1} 秒内に {0} を越える要求を調整することができます。」
 
-このエラーを処理するには、指数関数的バックオフ再試行ロジックを使用することをお勧めします。 つまり、連続するエラー応答への再試行の間、徐々により長い待機時間を要するようになります。  詳細については、「[一時的なエラー処理アプリケーション ブロック](https://msdn.microsoft.com/library/hh680905.aspx)」を参照してください。
+このエラーを処理するには、指数関数的バックオフ再試行ロジックを使用することをお勧めします。 つまり、連続するエラー応答への再試行の間、徐々により長い待機時間を要するようになります。  詳細については、「[一時的なエラー処理アプリケーション ブロック](/previous-versions/msp-n-p/hh680905(v=pandp.50))」を参照してください。
 
 > [!NOTE]
 > [Azure Media Services SDK for .Net](https://github.com/Azure/azure-sdk-for-media-services/tree/master) を使用している場合は、503 エラーの再試行ロジックが SDK によって実装されています。  
@@ -117,11 +117,10 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 > 
 
 ## <a name="see-also"></a>参照
-[Media Services 管理エラー コード](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Media Services 管理エラー コード](/rest/api/media/)
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -1,19 +1,19 @@
 ---
 title: Azure portal で Azure Maps アカウントを管理する | Microsoft Azure Maps
 description: この記事では、Azure portal を使用して、Microsoft Azure Maps アカウントを管理する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3317b063b5b05a57f08bbd15be827cd83075de34
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335546"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126960"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps アカウントを管理する
 

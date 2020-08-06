@@ -1,19 +1,19 @@
 ---
 title: Azure Maps API の使用状況メトリックを表示する | Microsoft Azure Maps
 description: この記事では、Azure portal で Microsoft Azure Maps API の呼び出しに関するメトリックを表示する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 0eb117af712b3b1f63a3f99c96cba9775f8e3996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57fb699a7225a53af1f093520855e8e2ef132f42
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335162"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130734"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Azure Maps API の使用状況メトリックを表示する
 

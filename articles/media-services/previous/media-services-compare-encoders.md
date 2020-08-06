@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f42361df438a434548b3bc9394c007ef8d4c6eb0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038972"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの比較  
 
@@ -62,7 +62,7 @@ ms.locfileid: "86530390"
 | AVI (非圧縮 8-bit/10-bit) |はい |はい |
 | 3GPP/3GPP2 |はい |いいえ |
 | スムーズ ストリーミング ファイル形式 (PIFF 1.3) |はい |いいえ |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |はい |いいえ |
+| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) |はい |いいえ |
 | Matroska/WebM |はい |いいえ |
 | QuickTime (.mov) |はい |いいえ |
 

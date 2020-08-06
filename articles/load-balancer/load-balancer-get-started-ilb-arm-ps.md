@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: dcf54e5a9bee5f7dc6cba9e3cb178027f53ed5fb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7e962b87b1bd7ef200aa276d8dbecffd5d3fed04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961287"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090435"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成
 
@@ -250,7 +250,7 @@ Primary              : False
 
 `Add-AzVMNetworkInterface` コマンドを使用して、NIC を仮想マシンに割り当てます。
 
-仮想マシンを作成して NIC を割り当てる詳しい手順については、「[PowerShell で Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)」を参照してください。
+仮想マシンを作成して NIC を割り当てる詳しい手順については、「[PowerShell で Windows 仮想マシンを作成する](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)」を参照してください。
 
 ## <a name="add-the-network-interface"></a>ネットワーク インターフェイスの追加
 

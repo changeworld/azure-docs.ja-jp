@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069790"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>スポット VM とスケール セットのエラー メッセージ
 
@@ -35,7 +35,6 @@ ms.locfileid: "84676575"
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  最大価格は、Azure Spot Virtual Machines のみでサポートされています。 | 詳細については、[Spot Virtual Machines](./linux/spot-vms.md) に関するページを参照してください。 |
 | MoveResourcesWithAzureSpotVMNotSupported  |  リソースの移動要求に、Azure スポット仮想マシンが含まれています。 現在これはサポートされていません。 仮想マシン ID のエラーの詳細を確認してください。 | スポット VM を移動することはできません。 |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  リソースの移動要求に、Azure スポット仮想マシン スケール セットが含まれています。 現在これはサポートされていません。 仮想マシン スケール セット ID のエラーの詳細を確認してください。 | スポット スケール セットのインスタンスを移動することはできません。 |
-| EphemeralOSDisksNotSupportedForSpotVMs | 一時 OS ディスクは、スポット VM ではサポートされていません。 | スポット VM には、通常の OS ディスクを使用してください。 |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | VM オーケストレーション モードの仮想マシン スケール セットでは、Azure Spot Virtual Machine はサポートされていません。 | スポット インスタンスを使用するには、オーケストレーション モードを仮想マシン スケール セットに設定します。 |
 
 
