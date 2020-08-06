@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495297"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486796"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 からのデータのクエリ
 
@@ -37,7 +37,7 @@ Azure Time Series Insights Gen2 では、機能が豊富な文字列ベースの
 
 ## <a name="environment-apis"></a>Environment API
 
-* [Environment API の取得](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get):呼び出し元がアクセスを許可されている環境の一覧が返されます。
+* [Environment API の取得](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment):呼び出し元がアクセスを許可されている環境の一覧が返されます。
 * [Environments Availability API の取得](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability):イベントのタイムスタンプ `$ts` に対するイベント数の分布が返されます。 この API は、イベントが存在する場合に、時間間隔ごとにイベントの数を返すため、環境にイベントがあるかどうかを判断するのに役立ちます。
 * [Get Event Schema API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema):特定の検索範囲に対するイベント スキーマのメタデータが返されます。 この API は、特定の検索範囲に対してスキーマで使用できるすべてのメタデータとプロパティを取得するのに役立ちます。
 

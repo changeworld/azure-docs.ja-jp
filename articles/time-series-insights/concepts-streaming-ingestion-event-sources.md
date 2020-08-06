@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: c2a25632942c0c39a20fa0c7f51a1e8937bdd873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059391"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491971"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 のイベント ソース
 
@@ -27,7 +27,7 @@ ms.locfileid: "87059391"
 
 ## <a name="create-or-edit-event-sources"></a>イベント ソースの作成または編集
 
-イベント ソース リソースは、Azure Time Series Insights Gen2 環境と同じ Azure サブスクリプションに存在する場合と、別のサブスクリプションに存在する場合があります。[Azure portal](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM テンプレート](time-series-insights-manage-resources-using-azure-resource-manager-template.md)、および [REST API](https://docs.microsoft.com/rest/api/time-series-insights/management/eventsources) を使用して、環境のイベント ソースを作成、編集、または削除できます。
+イベント ソース リソースは、Azure Time Series Insights Gen2 環境と同じ Azure サブスクリプションに存在する場合と、別のサブスクリプションに存在する場合があります。[Azure portal](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM テンプレート](time-series-insights-manage-resources-using-azure-resource-manager-template.md)、および [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) を使用して、環境のイベント ソースを作成、編集、または削除できます。
 
 イベント ソースに接続すると、Azure Time Series Insights Gen2 環境は、IoT Hub またはイベント ハブに現在格納されているすべてのイベントを、最も古いイベントから読み取ります。
 

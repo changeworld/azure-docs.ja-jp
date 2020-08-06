@@ -3,19 +3,20 @@ title: GitHub のアクションと Azure Kubernetes Service (プレビュー)
 services: azure-dev-spaces
 ms.date: 04/03/2020
 ms.topic: conceptual
-description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接  Pull request\(プル要求\) からの変更を確認およびテストする
+description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接プル要求からの変更を確認およびテストする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9cb240add87a14b0d474cec17684ef65a22cc07a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637940"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421027"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
-Azure Dev Spaces は、 Pull request\(プル要求\) がリポジトリのメイン ブランチに結合される前に、 Pull request\(プル要求\) からの変更を AKS で直接テストできる GitHub Actions を使用してワークフローを提供します。 実行中のアプリケーションを用意して Pull request\(プル要求\) の変更を確認することで、開発者とチーム メンバーの両方の信頼度を高めることができます。 この実行中のアプリケーションは、製品マネージャーやデザイナーなどのチーム メンバーが、開発の初期段階の間にレビュー プロセスの一部となることにも貢献できます。
+Azure Dev Spaces は、プル要求がリポジトリのメイン ブランチに結合される前に、プル要求からの変更を AKS で直接テストできる GitHub Actions を使用してワークフローを提供します。 実行中のアプリケーションを用意してプル要求の変更を確認することで、開発者とチーム メンバーの両方の信頼度を高めることができます。 この実行中のアプリケーションは、製品マネージャーやデザイナーなどのチーム メンバーが、開発の初期段階の間にレビュー プロセスの一部となることにも貢献できます。
 
 このガイドでは、以下の方法について説明します。
 
@@ -146,13 +147,13 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 git push origin bike-images
 ```
 
-プッシュが完了したら、GitHub でフォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの *master* ブランチを使用して Pull request\(プル要求\) を作成します。
+プッシュが完了したら、GitHub でフォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの *master* ブランチを使用してプル要求を作成します。
 
-Pull request\(プル要求\) が開かれたら、 *[アクション]* タブに移動します。新しいアクションが開始され、*Bikes* サービスを構築中であることを確認します。
+プル要求が開かれたら、 *[アクション]* タブに移動します。新しいアクションが開始され、*Bikes* サービスを構築中であることを確認します。
 
 ## <a name="view-the-child-space-with-your-changes"></a>変更を含む子空間を表示する
 
-アクションが完了すると、Pull request\(プル要求\) に含まれる変更に基づいて、新しい子空間への URL を含むコメントが表示されます。
+アクションが完了すると、プル要求に含まれる変更に基づいて、新しい子空間への URL を含むコメントが表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![GitHub アクションの Url](../media/github-actions/github-action-url.png)

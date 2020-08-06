@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338281"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421724"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -56,7 +56,7 @@ ms.locfileid: "85338281"
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>少なくとも 1 つのアカウントを条件付きアクセス ポリシーから除外する
 
-緊急時には、問題を修正するためにアクセスをブロックする可能性のあるポリシーは望ましくありません。 少なくとも 1 つの緊急アクセス用アカウントを、すべての条件付きアクセス ポリシーから除外してください。 [ベースライン ポリシー](../conditional-access/baseline-protection.md)を有効にしている場合、緊急アクセス用アカウントを除外する必要があります。
+緊急時には、問題を修正するためにアクセスをブロックする可能性のあるポリシーは望ましくありません。 少なくとも 1 つの緊急アクセス用アカウントを、すべての条件付きアクセス ポリシーから除外してください。
 
 ## <a name="federation-guidance"></a>フェデレーション ガイド
 

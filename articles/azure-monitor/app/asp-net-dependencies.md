@@ -3,20 +3,20 @@ title: Azure Application Insights における依存関係の追跡 | Microsoft 
 description: オンプレミスまたは Microsoft Azure Web アプリケーションからの依存関係呼び出しを Application Insights で監視します。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 472d7d26c8a478f521159a44959d7e0a5d749e0d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321379"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
-"*依存関係*" は、アプリケーションによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、依存関係呼び出しの時間、その失敗と成功、追加情報 (依存関係の名前など) が計測されます。 特定の依存関係呼び出しを調査し、要求や例外に関連付けることができます。
+"*依存関係*" は、アプリケーションによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](./app-insights-overview.md) では、依存関係呼び出しの時間、その失敗と成功、追加情報 (依存関係の名前など) が計測されます。 特定の依存関係呼び出しを調査し、要求や例外に関連付けることができます。
 
 ## <a name="automatically-tracked-dependencies"></a>自動追跡された依存関係
 
-.NET と .NET Core 向けの Application Insights SDK には `DependencyTrackingTelemetryModule` が付属しています。これは、依存関係を自動的に収集するテレメトリ モジュールです。 リンクされている公式ドキュメントに従って構成されているとき、[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) アプリケーションと [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) アプリケーションでは、この依存関係収集が自動的に有効になります。`DependencyTrackingTelemetryModule` は[この](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet パッケージとして出荷され、NuGet パッケージの `Microsoft.ApplicationInsights.Web` または `Microsoft.ApplicationInsights.AspNetCore` を使用するとき、自動的に取り込まれます。
+.NET と .NET Core 向けの Application Insights SDK には `DependencyTrackingTelemetryModule` が付属しています。これは、依存関係を自動的に収集するテレメトリ モジュールです。 リンクされている公式ドキュメントに従って構成されているとき、[ASP.NET](./asp-net.md) アプリケーションと [ASP.NET Core](./asp-net-core.md) アプリケーションでは、この依存関係収集が自動的に有効になります。`DependencyTrackingTelemetryModule` は[この](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet パッケージとして出荷され、NuGet パッケージの `Microsoft.ApplicationInsights.Web` または `Microsoft.ApplicationInsights.AspNetCore` を使用するとき、自動的に取り込まれます。
 
  `DependencyTrackingTelemetryModule` では現在のところ、次の依存関係が自動的に追跡されます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "86081351"
 |[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| バージョン 3.0.0 以上。 |
 |Azure Cosmos DB | HTTP/HTTPS が使用されている場合にのみ、自動的に追跡されます。 TCP モードは、Application Insights ではキャプチャされません。 |
 
-依存関係が欠落している場合は、別の SDK を使用して、[自動収集された依存関係](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)の一覧にあることを確認します。 依存関係が自動収集されない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
+依存関係が欠落している場合は、別の SDK を使用して、[自動収集された依存関係](./auto-collect-dependencies.md)の一覧にあることを確認します。 依存関係が自動収集されない場合でも、[TrackDependency 呼び出し](./api-custom-events-metrics.md#trackdependency)を使えば手動で追跡することができます。
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>コンソール アプリで自動依存関係追跡を設定する
 
@@ -41,7 +41,7 @@ ms.locfileid: "86081351"
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-.NET Core コンソールアプリの場合、TelemetryConfiguration.Active は古い形式です。 [worker サービスに関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)および [ASP.NET Core の監視に関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)に記載のガイダンスを参照してください。
+.NET Core コンソールアプリの場合、TelemetryConfiguration.Active は古い形式です。 [worker サービスに関するドキュメント](./worker-service.md)および [ASP.NET Core の監視に関するドキュメント](./asp-net-core.md)に記載のガイダンスを参照してください。
 
 ### <a name="how-automatic-dependency-monitoring-works"></a>自動依存関係監視のしくみは?
 
@@ -101,7 +101,7 @@ ASP.NET アプリケーションの場合は、バイト コード インスト�
 | --- | --- |
 | Azure Web アプリ |Web アプリのコントロール パネルで [Application Insights ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、SQL コマンドを .NET |
 | IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用するか、Status Monitor PowerShell モジュールを使用して、[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-reference.md)して IIS を再起動します。 |
-| Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) または [ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
+| Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](./asp-net.md) または [ASP.NET Core アプリケーション](./asp-net-core.md)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
 | IIS Express | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用します。
 
 上記のプラットフォーム固有の手順に加えて、次のように applicationInsights.config ファイルを変更することで、**SQL コマンドの収集の有効化も明示的に選択する必要**があります。
@@ -202,6 +202,7 @@ ASP.NET アプリケーションの場合は、バイト コード インスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [例外](../../azure-monitor/app/asp-net-exceptions.md)
-* [ユーザーとページのデータ](../../azure-monitor/app/javascript.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
+* [例外](./asp-net-exceptions.md)
+* [ユーザーとページのデータ](./javascript.md)
+* [可用性](./monitor-web-app-availability.md)
+

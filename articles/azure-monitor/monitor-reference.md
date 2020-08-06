@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505722"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447324"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -176,7 +176,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 
 | 製品/サービス | 説明 |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking.md) と [Update Management](../automation/automation-update-management.md) に関する記事を参照してください。 |
+| [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking.md) と [Update Management](../automation/update-management/update-mgmt-overview.md) に関する記事を参照してください。 |
 | [Azure Information Protection ](/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
 | [Azure Security Center](../security-center/index.yml) | セキュリティ イベントを収集して分析し、脅威分析を実行します。 「[Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md)」を参照してください。 |
 | [Azure Sentinel](../sentinel/index.yml) | Office 365 やアマゾン ウェブ サービスの Cloud Trail などのさまざまなソースに接続します。 「[データ ソースの接続](../sentinel/connect-data-sources.md)」のページを参照してください。 |

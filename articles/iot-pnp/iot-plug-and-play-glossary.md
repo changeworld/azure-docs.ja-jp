@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337315"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475466"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
 
@@ -98,10 +98,6 @@ IoT プラグ アンド プレイ デバイスは、データの収集や他の�
 ## <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
 IoT プラグ アンド プレイ [デバイス](#iot-plug-and-play-device)は、データをソリューションとやり取りするときに一連の[規則](concepts-convention.md)に従うことが想定されています。
-
-## <a name="model-discovery"></a>モデル検出
-
-[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)から IoT ソリューションに接続すると、そのソリューションでは、[デバイス モデル](#device-model)を検索することで、デバイスの機能を検出できます。 このソリューションでは、[モデル リポジトリ](#model-repository)またはその他の場所にあるデバイス モデルを見つけることができます。
 
 ## <a name="model-id"></a>モデル ID
 

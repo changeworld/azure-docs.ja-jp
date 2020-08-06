@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495382"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289956"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 のタイム シリーズ モデル
 
@@ -24,7 +24,7 @@ ms.locfileid: "86495382"
 > [!TIP]
 >
 > * タイム シリーズ モデルのライブによる実例については、 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境を参照してください。
-> * Azure Time Series Insights Gen2 Explorer を使用して、[タイム シリーズ モデルを操作する方法](time-series-insights-update-how-to-tsm.md)について学習します。
+> * Azure Time Series Insights Gen2 Explorer を使用して、[タイム シリーズ モデルを操作する方法](/azure/time-series-insights/how-to-edit-your-model)について学習します。
 
 ## <a name="summary"></a>まとめ
 
@@ -75,7 +75,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 [![タイム シリーズ モデルの概要グラフ](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-タイム シリーズ モデルは、[Azure Time Series Insights Gen2 Explorer](time-series-insights-update-how-to-tsm.md) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) を使用して管理できます。
+タイム シリーズ モデルは、[Azure Time Series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) を使用して管理できます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 
@@ -283,12 +283,13 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
   ]
 }
 ```
+
 タイム シリーズ モデルの型には、イベントに対する式および計算ルールを指定する多数の変数を含めることができます。 タイム シリーズ モデル変数を定義する方法の詳細については、[こちら](./concepts-variables.md)を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 
-- API を使用してモデルを編集する方法の詳細について、[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)のリファレンス ドキュメントを参照します。
+* API を使用してモデルを編集する方法の詳細について、[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)のリファレンス ドキュメントを参照します。
 
-- [タイム シリーズ モデル変数](./concepts-variables.md)を使用して作成できる数式と計算を確認します
+* [タイム シリーズ モデル変数](./concepts-variables.md)を使用して作成できる数式と計算を確認します
 
-- Azure Time Series Insights Gen2 での[データのクエリ](concepts-query-overview.md)について学習します
+* Azure Time Series Insights Gen2 での[データのクエリ](concepts-query-overview.md)について学習します

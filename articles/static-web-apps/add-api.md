@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d6a25e7c36118f6a11bd1a177159bc9050ee69ca
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104114"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431023"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
 
@@ -133,7 +134,7 @@ HTTP によってトリガーされた関数により、Visual Studio Code で A
 
 ## <a name="run-the-api-locally"></a>API をローカルで実行する
 
-Visual Studio Code を [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) と統合することで、このプロジェクトをローカルの開発用コンピューター上で実行してから、Azure に発行することができます。
+Visual Studio Code を [Azure Functions Core Tools](../azure-functions/functions-run-local.md) と統合することで、このプロジェクトをローカルの開発用コンピューター上で実行してから、Azure に発行することができます。
 
 > [!TIP]
 > 続行する前に、[前提条件](#prerequisites)セクションに記載されているすべてのリソースがインストールされていることを確認してください。

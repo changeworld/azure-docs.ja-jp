@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320172"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420534"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,6 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 > [!WARNING]
 > 
 > Azure Machine Learning コンピューティング インスタンス プレビューは、Private Link が有効になっているワークスペースではサポートされていません。
->
-> Azure Machine Learning では、Private Link が有効になっている Azure Kubernetes Service の使用はサポートされていません。 代わりに、仮想ネットワークで Azure Kubernetes Service を使用できます。 詳細については、「[Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)」を参照してください。
-
 
 <a id="amlcompute"></a>
 
@@ -448,9 +445,6 @@ Azure のコンピューティング インスタンスでノートブックを�
 > 次の手順を開始する前に、「[Azure Kubernetes サービス (AKS) における高度なネットワークの構成](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites)」攻略ガイドの前提条件に従って、クラスターの IP アドレス指定を計画してください。
 >
 > AKS インスタンスと Azure の仮想ネットワークは同じリージョンに存在する必要があります。 仮想ネットワークでワークスペースによって使用される Azure Storage アカウントをセキュリティで保護する場合、それらは AKS インスタンスと同じ仮想ネットワークに存在する必要があります。
-
-> [!WARNING]
-> Azure Machine Learning では、プライベート リンクが有効になっている Azure Kubernetes サービスの使用はサポートされていません。
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインし、お使いのサブスクリプションとワークスペースを選択します。
 
