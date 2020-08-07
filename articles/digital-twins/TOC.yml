@@ -70,8 +70,6 @@
           href: how-to-create-azure-function.md
         - name: ツイン グラフにクエリを実行する
           href: how-to-query-graph.md
-        - name: Azure Monitor のメトリックを表示する
-          href: how-to-view-metrics.md
     - name: 入力を接続する
       items:
         - name: IoT Hub からテレメトリを取り込む
@@ -79,15 +77,23 @@
     - name: 出力を接続する
       items:
         - name: エンドポイントとルートを管理する
-          href: how-to-manage-routes.md
+          items:
+            - name: API と CLI のバージョン
+              href: how-to-manage-routes-apis-cli.md
+            - name: ポータルのバージョン
+              href: how-to-manage-routes-portal.md
         - name: Azure Maps と統合する
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
           href: how-to-integrate-time-series-insights.md
     - name: トラブルシューティング
       items:
+        - name: Azure Monitor のメトリックを表示する
+          href: troubleshoot-metrics.md
         - name: 診断ログの有効化
           href: troubleshoot-diagnostics.md
+        - name: アラートを有効にする
+          href: troubleshoot-alerts.md
         - name: 既知の問題
           href: troubleshoot-known-issues.md
         - name: 問題解決
