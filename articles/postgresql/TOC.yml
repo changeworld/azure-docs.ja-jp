@@ -255,6 +255,8 @@
           items:
             - name: TLS の構成
               href: howto-tls-configurations.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: サーバー パラメーターの構成
           items:
             - name: Azure portal

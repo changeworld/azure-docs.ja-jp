@@ -75,7 +75,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: キー値ストア
+    - name: キーと値
       href: concept-key-value.md
     - name: ポイントインタイム スナップショット
       href: concept-point-time-snapshot.md
