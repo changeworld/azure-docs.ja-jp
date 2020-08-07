@@ -1,6 +1,6 @@
 ---
 title: Azure の使用状況と料金の表示とダウンロード
-description: Azure の毎日の使用量と料金をダウンロードまたは表示する方法について説明します。
+description: Azure の毎日の使用状況と料金をダウンロードまたは表示し、使用可能なその他のリソースを確認する方法について説明します。
 keywords: 使用量の請求, 利用料金, 使用量のダウンロード, 使用量の表示, Azure 請求書, Azure 使用量
 author: bandersmsft
 ms.author: banders
@@ -8,12 +8,12 @@ tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d09f792e784c89e704691975d44cb3cbfa753cf4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322034"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460509"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 

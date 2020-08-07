@@ -3,17 +3,17 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372146"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563944"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -140,7 +140,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 コスト ポリシーが **[はい]** に設定されている場合、顧客テナントに関連付けられているサブスクリプション ユーザーは、従量課金制の料金で使用料金を確認できます。
 
-コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。
+コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。 直接パートナーまたは間接プロバイダーの全体管理者/管理エージェントは、[顧客更新 API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) を使用して、各顧客のコスト表示ポリシーを大規模に設定することもできます。
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>顧客テナントのサブスクリプション コストを表示する
 

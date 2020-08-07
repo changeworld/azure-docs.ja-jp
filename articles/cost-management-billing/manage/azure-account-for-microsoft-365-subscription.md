@@ -1,6 +1,6 @@
 ---
 title: Azure アカウントを使用した Microsoft 365 のサインアップ
-description: Azure アカウントを使用して、Microsoft 365 サブスクリプションを作成する方法を説明します
+description: Azure アカウントを使用して、Microsoft 365 サブスクリプションを作成する方法を説明します。 また、既存の Azure と Microsoft 365 のアカウントを相互に関連付けることもできます。
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
@@ -8,14 +8,14 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: banders
-ms.openlocfilehash: 006f8edc81ec19647ff6173a4c786c6d7e93fadc
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 050bd9c420ccecdb91a6c438782d9be1c6c23b88
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810382"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461886"
 ---
-# <a name="sign-up-for-a-microsoft--365-subscription-with-your-azure-account"></a>Azure アカウントで Microsoft 365 サブスクリプションにサインアップする
+# <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Azure アカウントで Microsoft 365 サブスクリプションにサインアップする
 
 Azure サブスクライバーは、Azure アカウントを使用して、Microsoft 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Microsoft 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Microsoft 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 

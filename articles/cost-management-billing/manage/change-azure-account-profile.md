@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286599"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553480"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>Azure アカウントの連絡先情報を変更する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87286599"
 
 *請求先住所* - 請求先住所は、課金アカウントに対して生成された請求書の責任者である組織または個人の住所および連絡先情報です。 Microsoft Online Service Program (MOSP) の課金アカウントの場合、アカウントに対して生成されたすべての請求書に表示される 1 つの請求先住所があります。 Microsoft 顧客契約 (MCA) の課金アカウントの場合、課金プロファイルごとに請求先住所があり、課金プロファイルに対して生成された請求書に表示されます。
 
-*サービスおよびマーケティング メール用の連絡先メール アドレス* - サインインに使用するメール アドレスとは異なるメール アドレスを指定して、ご利用の Azure アカウントに関しての請求、サービス、推奨に関連した重要な通知を受け取ることができます。  
+*サービスおよびマーケティング メール用の連絡先メール アドレス* - サインインに使用するメール アドレスとは異なるメール アドレスを指定して、ご利用の Azure アカウントに関しての請求、サービス、推奨量に関連した重要な通知を受け取ることができます。 アカウントで使用されているサービスに対する緊急のセキュリティ イシュー、価格の変更、破壊的変更などのサービス通知メールは、常にサインインアドレスに送信されます。
 
 ## <a name="update-an-mosp-billing-account-address"></a>MOSP 課金アカウントの住所を更新する
 

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126127"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530012"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
@@ -33,7 +33,7 @@ RBAC を使用してリソースへのアクセスを管理することをお勧
 
 ## <a name="assign-a-subscription-administrator"></a>サブスクリプション管理者を割り当てる
 
-ユーザーを Azure サブスクリプションの管理者にするには、既存の管理者が、サブスクリプションのスコープで[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール (RBAC ロール) を割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
+ユーザーを Azure サブスクリプションの管理者にするには、既存の管理者が、サブスクリプションのスコープで[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール (Azure ロール) を割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
 
 サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
 
