@@ -174,7 +174,7 @@
     - name: Azure Media Player
       items:
         - name: Azure Media Player の概要
-          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
+          href: ../azure-media-player/azure-media-player-overview.md
     - name: v3 API シリーズを使用した開発
       items:
         - name: 概要
@@ -362,7 +362,7 @@
     - name: メディア プレイヤーの使用
       items:
         - name: Azure Media Player のフル セットアップ
-          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+          href: ../azure-media-player/azure-media-player-full-setup.md
         - name: Video.js プレイヤーの使用
           href: how-to-video-js-player.md
         - name: Shaka ビデオ プレイヤーの使用
@@ -373,7 +373,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/media/'
+      href: /rest/api/media/
     - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDK

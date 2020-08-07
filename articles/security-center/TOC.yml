@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: 推奨事項を使用してセキュリティを強化する
           href: security-center-using-recommendations.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 脅威の防止とセキュリティ アラート
       items:
         - name: Security Center での脅威の防止の概要
