@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: ログをイベント ハブにストリーミングする
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: ログ分析ウィザード
+      href: tutorial-log-analytics-wizard.md
 - name: 概念
   items:
     - name: レポートと監視のデプロイを計画する

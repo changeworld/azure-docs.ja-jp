@@ -13,10 +13,10 @@
       items:
         - name: アプリを登録します
           href: quickstart-register-app.md
-        - name: Web API にアクセスするためにアプリを構成する
-          href: quickstart-configure-app-access-web-apis.md
         - name: Web API を公開するためにアプリを構成する
           href: quickstart-configure-app-expose-web-apis.md
+        - name: Web API にアクセスするためにアプリを構成する
+          href: quickstart-configure-app-access-web-apis.md
         - name: アプリでサポートされるアカウントを変更する
           href: quickstart-modify-supported-accounts.md
         - name: アプリの削除

@@ -229,7 +229,7 @@
         - name: 入力および出力ディレクトリを設定する
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: 対話型デバッグ
+        - name: Visual Studio Code
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
         - name: Git 統合
@@ -437,26 +437,28 @@
           href: how-to-schedule-pipelines.md
         - name: パイプラインをトリガーする
           href: how-to-trigger-published-pipeline.md
+        - name: デザイナー (ドラッグアンドドロップ)
+          items:
+            - name: メトリックのログ記録
+              displayName: 'designer, logging'
+              href: how-to-track-designer-experiments.md
+            - name: データを変換する
+              displayName: pipeline
+              href: how-to-designer-transform-data.md
+            - name: 公開済みパイプラインを使用して再トレーニングする
+              displayName: 'retrain, designer, published pipeline'
+              href: how-to-retrain-designer.md
+            - name: バッチ予測
+              displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+              href: how-to-run-batch-predictions-designer.md
+            - name: Python コードを実行する
+              displayName: 'feature extraction, feature engineering'
+              href: how-to-designer-python.md
         - name: パイプラインのデバッグとトラブルシューティングを行う
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Application Insights でパイプラインをデバッグする
           href: how-to-debug-pipelines-application-insights.md
-        - name: デザイナーのメトリックのログ記録
-          displayName: 'designer, logging'
-          href: how-to-track-designer-experiments.md
-        - name: デザイナーによるデータの変換
-          displayName: pipeline
-          href: how-to-designer-transform-data.md
-        - name: デザイナーによる発行されたパイプラインを使用した再トレーニング
-          displayName: 'retrain, designer, published pipeline'
-          href: how-to-retrain-designer.md
-        - name: デザイナーによるバッチ予測
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-        - name: デザイナーによる Python コードの実行
-          displayName: 'feature extraction, feature engineering'
-          href: how-to-designer-python.md
         - name: 並列実行ステップの使用
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
@@ -475,6 +477,9 @@
     - name: リソースの管理 (VS Code)
       displayName: 'vscode,resources'
       href: how-to-manage-resources-vscode.md
+    - name: VS Code の対話型デバッグ
+      displayName: 'vscode,remote,debug,pipelines,deployments,ssh'
+      href: how-to-debug-visual-studio-code.md
     - name: データをエクスポートおよび削除する
       displayName: GDPR
       href: how-to-export-delete-data.md

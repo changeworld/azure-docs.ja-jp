@@ -1248,7 +1248,7 @@
           href: sql-api-sdk-dotnet-changefeed.md
         - name: .NET バルク エグゼキューター ライブラリ v2
           href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java SDK
+    - name: Java SDK とコネクタ
       items:
         - name: Java SDK v4
           href: sql-api-sdk-java-v4.md
@@ -1256,6 +1256,10 @@
           href: sql-api-sdk-async-java.md
         - name: 同期の Java SDK v2
           href: sql-api-sdk-java.md
+        - name: SQL API の Spring Data コネクタ
+          href: sql-api-sdk-java-spring.md
+        - name: SQL API の Spark コネクタ
+          href: sql-api-sdk-java-spark.md
         - name: Java バルク エグゼキューター ライブラリ v2
           href: sql-api-sdk-bulk-executor-java.md
     - name: Node.js

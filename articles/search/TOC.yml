@@ -312,9 +312,15 @@
         - name: プレビュー機能一覧
           href: search-api-preview.md
         - name: .NET での開発
-          href: search-howto-dotnet-sdk.md
+          items:
+            - name: Microsoft.Azure.Search (v10) を使用する
+              href: search-howto-dotnet-sdk.md
+            - name: 作業開始 (v10)
+              href: search-get-started-dotnet-v10.md
         - name: SDK をアップグレードする
           items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
             - name: .NET SDK 10.0
               href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
@@ -349,7 +355,7 @@
           items:
             - name: セキュリティ フィルター
               href: search-security-trimming-for-azure-search.md
-            - name: AAD の ID のフィルター処理
+            - name: ユーザー ID でフィルター処理する
               href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理する
       items:
