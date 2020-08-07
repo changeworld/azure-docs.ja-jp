@@ -147,7 +147,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
     ![南京錠アイコン](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. ストレージ エクスプローラーを開きます。
+5. Storage Explorer を開きます。
 6. "サービス ハブがキーチェーンへのアクセスを要求しています" というようなメッセージが表示されます。 Mac 管理者アカウントのパスワードを入力し、 **[常に許可]** ( **[常に許可]** が使用できない場合は **[許可]** ) を選択します。
 7. サインインを試します。
 
