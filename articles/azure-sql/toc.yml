@@ -37,7 +37,7 @@
           href: database/scale-resources.md
         - name: 読み取りスケールアウト
           href: database/read-scale-out.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: 概要
               href: database/security-overview.md
@@ -811,7 +811,7 @@
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: データベース メール
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
-        - name: Security
+        - name: セキュリティ
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md
@@ -998,7 +998,7 @@
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
                     - name: FCI を作成する
                       items:
-                        - name: Azure 共有ディスク (SQL2019 以降)
+                        - name: Azure 共有ディスク
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
                         - name: 記憶域スペース ダイレクト (Win2016 以降)
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
@@ -1044,7 +1044,7 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: MSDN フォーラム
               href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
-            - name: スタック オーバーフロー
+            - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: Linux
       items:
@@ -1142,7 +1142,7 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: トラブルシューティング
       items:
