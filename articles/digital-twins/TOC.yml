@@ -55,7 +55,7 @@
         - name: カスタム モデルを管理する
           href: how-to-manage-model.md
         - name: モデルを解析および検証する
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
         - name: タグを追加する
           href: how-to-use-tags.md
     - name: ライブ実行環境を使用する

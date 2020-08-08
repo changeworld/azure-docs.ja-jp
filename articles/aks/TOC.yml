@@ -290,8 +290,8 @@
           href: windows-container-powershell.md
         - name: リモート接続
           href: rdp.md
-        - name: 既知の制限事項
-          href: windows-node-limitations.md
+        - name: Windows Server コンテナー FAQ
+          href: windows-faq.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
         - name: Windows Server コンテナー用の Dockerfile の作成

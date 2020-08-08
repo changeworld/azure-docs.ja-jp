@@ -94,7 +94,7 @@
   items:
     - name: Service Fabric のベスト プラクティスの概要
       href: service-fabric-best-practices-overview.md
-    - name: セキュリティ
+    - name: Security
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
       href: service-fabric-best-practices-networking.md
@@ -129,7 +129,7 @@
       href: service-fabric-application-scenarios.md
     - name: Architecture
       href: service-fabric-architecture.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -671,7 +671,7 @@
                 - name: プログラムによるスケールアウト
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: プライマリ ノード タイプのスケールアップ
-                  href: service-fabric-scale-up-node-type.md
+                  href: service-fabric-scale-up-primary-node-type.md
                 - name: ノード タイプの追加
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
                 - name: ノード タイプを削除する

@@ -7,14 +7,14 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: ARM テンプレートを使用して NSG フロー ログを構成する
-      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: VM トラフィック フィルターに関する問題を診断する - ポータル
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: VM トラフィック フィルターに関する問題を診断する - PowerShell
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: VM トラフィック フィルターに関する問題を診断する - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: ARM テンプレートを使用して NSG フロー ログを構成する
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: チュートリアル
   items:
     - name: VM のルーティングに関する問題を診断する

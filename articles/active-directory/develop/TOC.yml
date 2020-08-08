@@ -298,6 +298,9 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: 単一および複数アカウントのパブリック クライアント アプリ
               href: single-multi-account.md
+            - name: エラーと例外を処理する
+              href: msal-android-handling-exceptions.md
+              displayName: 'android, mobile'
             - name: ログ記録
               href: msal-logging.md?tabs=android
         - name: iOS と macOS
