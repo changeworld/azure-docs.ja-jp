@@ -145,7 +145,7 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 別の Web ブラウザー ウィンドウで、GitHub 組織サイトに管理者としてサインインします。
 
-2. **[設定]** に移動し、 **[セキュリティ]** をクリックします。
+2. **[Settings]\(設定\)** に移動し、 **[Security]\(セキュリティ\)** をクリックします。
 
     ![設定](./media/github-tutorial/tutorial_github_config_github_03.png)
 
@@ -161,9 +161,9 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
     ![設定](./media/github-tutorial/tutorial_github_config_github_051.png)
 
-    a. **[シングル サインオン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[Sign on URL]\(シングル サインオン URL\)** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    b. **[発行者]** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
+    b. **[Issuer](発行者\)** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
     c. Azure Portal からダウンロードした証明書 をメモ帳で開き、その内容を **[Public Certificate]\(公開証明書\)** ボックスに貼り付けます。
 
@@ -177,7 +177,7 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
     ![設定](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-6. **[保存]**
+6. **[Save]\(保存\)**
 
 > [!NOTE]
 > GitHub でのシングル サインオンは GitHub で特定の組織を認証するものです。GitHub そのものの認証に取って代わることはできません。 つまり、ユーザーの github.com セッションの有効期限が切れた場合は、シングル サインオン プロセス中に GitHub の ID とパスワードで認証するように求められることがあります。
@@ -190,21 +190,21 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. GitHub 企業サイトに管理者としてログインします。
 
-2. **[ユーザー]** をクリックします。
+2. **[People]\(ユーザー\)** をクリックします。
 
     ![ユーザー](./media/github-tutorial/tutorial_github_config_github_08.png "ユーザー")
 
-3. **[メンバーの招待]** をクリックします。
+3. **[Invite member]\(メンバーの招待\)** をクリックします。
 
     ![ユーザーの招待](./media/github-tutorial/tutorial_github_config_github_09.png "ユーザーの招待")
 
-4. **[メンバーの招待]** ダイアログ ページで、次の手順を実行します。
+4. **[Invite member]\(メンバーの招待\)** ダイアログ ページで、次の手順を実行します。
 
-    a. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
+    a. **[Email]\(電子メール\)** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
     ![ユーザーの招待](./media/github-tutorial/tutorial_github_config_github_10.png "[ユーザーの招待]")
 
-    b. **[Send Invitation (招待状の送信)]** をクリックします。
+    b. **[Send Invitation]\(招待状の送信\)** をクリックします。
 
     ![ユーザーの招待](./media/github-tutorial/tutorial_github_config_github_11.png "[ユーザーの招待]")
 
