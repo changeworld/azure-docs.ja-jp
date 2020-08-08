@@ -520,7 +520,7 @@ catch(ServiceException $e){
 
 これで、Azure Table service と Azure Cosmos DB の基本を学習できました。さらに詳しく学習するには、次のリンク先をご覧ください。
 
-* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 * [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)
 
