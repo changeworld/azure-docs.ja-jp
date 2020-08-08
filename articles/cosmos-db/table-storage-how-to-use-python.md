@@ -239,7 +239,7 @@ table_service.delete_table('tasktable')
 * [Azure Cosmos DB の FAQ - Table API を使った開発](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Azure Cosmos DB SDK for Python API のリファレンス](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
-* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション
 * [Visual Studio での Python の使用 (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 
