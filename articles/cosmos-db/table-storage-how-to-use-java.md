@@ -618,7 +618,7 @@ catch (Exception e)
 ## <a name="next-steps"></a>次のステップ
 
 * [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started)
-* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Azure Storage SDK for Java][Azure Storage SDK for Java]
 * [Azure ストレージ クライアント SDK リファレンス][Azure Storage Client SDK Reference]
 * [Azure Storage REST API][Azure Storage REST API]
