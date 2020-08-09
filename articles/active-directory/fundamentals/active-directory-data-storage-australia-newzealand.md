@@ -23,7 +23,7 @@ ms.locfileid: "87799039"
 
 Azure Active Directory (Azure AD) の顧客データは、お客様が Microsoft オンライン サービスにサインアップしたときに指定した国に基づいて地理的な場所に保存されます。 Microsoft オンライン サービスには、Office 365 や Azure があります。 
 
-Azure AD およびその他の Microsoft サービスのデータが配置される場所の詳細については、Microsoft セキュリティ センターの[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
+Azure AD およびその他の Microsoft サービスのデータが配置される場所の詳細については、Microsoft トラスト センターの[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
 
 2020 年 2 月 26 日から、Microsoft は、オーストラリアまたはニュージーランドの請求先住所を含む新しいテナントについて、Azure AD の顧客データをオーストラリアのデータセンター内に格納し始めました。 2020 年 5 月 1 日から 2020 年 10 月 31 日までの期間に、Microsoft は、オーストラリアまたはニュージーランドの請求先住所が保存された既存のテナントをオーストラリアのデータセンターに移行します。お客様に操作の必要ありません。 移行プロセスは、お客様のダウンタイムを必要とせず、移行中、テナントの機能に影響を与えません。
 
