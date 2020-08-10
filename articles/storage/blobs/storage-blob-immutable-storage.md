@@ -30,7 +30,7 @@ Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホー�
 
 一般的な用途は次のとおりです。
 
-- **法令遵守**:Azure Blob Storage の不変ストレージは、組織が SEC 17a-4(f)、CFTC 1.31(d)、FINRA などの規制に準拠するのに役立ちます。 不変ストレージがこれらの規制要件にどのように対応しているかについて詳細に示した、Cohasset Associates によるテクニカル ホワイトペーパーをご用意しています。[Microsoft Service Trust Portal](https://aka.ms/AzureWormStorage) からダウンロードしてご利用ください。 [Azure セキュリティ センター](https://www.microsoft.com/trustcenter/compliance/compliance-overview)では、コンプライアンス関連の Microsoft の認定資格に関する詳しい情報を確認できます。
+- **法令遵守**:Azure Blob Storage の不変ストレージは、組織が SEC 17a-4(f)、CFTC 1.31(d)、FINRA などの規制に準拠するのに役立ちます。 不変ストレージがこれらの規制要件にどのように対応しているかについて詳細に示した、Cohasset Associates によるテクニカル ホワイトペーパーをご用意しています。[Microsoft Service Trust Portal](https://aka.ms/AzureWormStorage) からダウンロードしてご利用ください。 [Azure トラスト センター](https://www.microsoft.com/trustcenter/compliance/compliance-overview)では、コンプライアンス関連の Microsoft の認定資格に関する詳しい情報を確認できます。
 
 - **セキュリティ保護されたドキュメント リテンション**:Azure Blob Storage の不変ストレージにより、アカウント管理特権を持つユーザーを含め、どのユーザーもデータを変更したり、削除したりできなくなります。
 
