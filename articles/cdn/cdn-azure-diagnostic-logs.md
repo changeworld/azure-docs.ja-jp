@@ -51,7 +51,7 @@ Azure Diagnostics ログにより、基本的な使用メトリックを CDN エ
 
 CDN コア分析を使用してログ記録を有効にするには、次の手順に従います。
 
-[Azure portal](https://portal.azure.com) にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
+[Azure Portal](https://portal.azure.com) にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
 
 1. Azure Portal で、**CDN プロファイル** に移動してください。
 
@@ -169,10 +169,10 @@ Azure Monitor を使用してログを保存するには、次の手順に従い
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Azure Storage からの診断ログの使用
 このセクションでは、CDN コア分析のスキーマと、これが Microsoft Azure Storage アカウントの内部でどのように編成されているかについて説明し、ログを CSV ファイルにダウンロードするためのサンプル コードを提供します。
 
-### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーの使用
-Azure ストレージ アカウントからコア分析データにアクセスするには、ストレージ アカウント内のコンテンツにアクセスするためのツールが必要です。 市場にはいくつかのツールがありますが、お勧めするツールは Microsoft Azure ストレージ エクスプローラーです。 ツールをダウンロードするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
+### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer の使用
+Azure ストレージ アカウントからコア分析データにアクセスするには、ストレージ アカウント内のコンテンツにアクセスするためのツールが必要です。 市場にはいくつかのツールがありますが、お勧めするツールは Microsoft Azure Storage Explorer です。 ツールをダウンロードするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
 
-1.  **Microsoft Azure ストレージ エクスプローラー**を開きます
+1.  **Microsoft Azure Storage Explorer** を開きます
 2.  ストレージ アカウントを見つけます
 3.  このストレージ アカウントで **Blob Containers** ノードを展開します。
 4.  *Insights-logs-coreanalytics* というコンテナーを選択します。
