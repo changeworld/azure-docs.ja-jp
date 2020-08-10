@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283454"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534772"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のストレージ アカウント アクセスを制御する
 
@@ -89,7 +89,7 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 
 > [!IMPORTANT]
-> ファイアウォールで保護されているストレージにアクセスする場合に使用できるのは、マネージド ID のみです。 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロール](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
+> ファイアウォールで保護されているストレージにアクセスする場合に使用できるのは、マネージド ID のみです。 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロール](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
 >
 
 ## <a name="credentials"></a>資格情報
@@ -219,7 +219,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>例
 
-**一般公開されているデータ ソースへのアクセス**
+### <a name="access-a-publicly-available-data-source"></a>**一般公開されているデータ ソースにアクセスする**
 
 次のスクリプトを使用して、一般公開されているデータ ソースにアクセスするテーブルを作成します。
 
@@ -248,7 +248,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-**資格情報を使用したデータ ソースへのアクセス**
+### <a name="access-a-data-source-using-credentials"></a>**資格情報を使用してデータ ソースにアクセスする**
 
 次のスクリプトを変更して、SAS トークン、ユーザーの Azure AD ID、またはワークスペースのマネージド ID を使用して Azure Storage にアクセスする外部テーブルを作成します。
 

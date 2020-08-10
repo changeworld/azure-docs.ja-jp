@@ -7,12 +7,13 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
-ms.openlocfilehash: 1281f5c3355a09659f2f45c4cf944271936f50d8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c2ef52669a0bc5cd29bdcebf920beb1f409e65d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636356"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533106"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -411,4 +412,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次のステップ  
 
 > [!div class="nextstepaction"]
-> [Azure NetApp Files を使用してボリュームを管理する](azure-netapp-files-manage-volumes.md)  
+> [Azure NetApp Files のストレージ階層](azure-netapp-files-understand-storage-hierarchy.md)   
+> [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)   
+> [NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)   

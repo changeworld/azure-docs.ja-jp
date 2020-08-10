@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384908"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482007"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する
 
@@ -133,7 +133,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 
 前提条件の一部として完了したチュートリアルでは、*B2C_1_signupsignin1* という名前の、サインアップおよびサインイン用のユーザー フローを作成しました。 このセクションでは、ID プロバイダーを *B2C_1_signupsignin1* ユーザー フローに追加します。
 
-1. **[ユーザー フロー (ポリシー)]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
+1. **[ユーザー フロー]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
 2. **[ID プロバイダー]** を選択し、追加した **Facebook** および **Contoso Azure AD** の ID プロバイダーを選択します。
 3. **[保存]** を選択します。
 

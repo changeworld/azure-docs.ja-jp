@@ -12,12 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 263eb531466e26ed6069dc889c17e2632aa9ed20
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76704223"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799414"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 
@@ -75,6 +75,13 @@ UI を通じて新しいスコープを公開するには:
 
 1. 完了したら、 **[状態]** を設定し、 **[スコープの追加]** を選択します。
 
+1. (省略可能) 定義されているスコープに対してアプリのユーザーによる同意を求めるメッセージを表示しないようにするには、クライアント アプリケーションによる Web API へのアクセスを "事前承認" することができます。 ユーザーには同意を拒否する機会がないため、信頼できるクライアント アプリケーション "*だけ*" を事前承認する必要があります。
+    1. **[承認済みのクライアント アプリケーション]** で、 **[クライアント アプリケーションの追加]** を選択します
+    1. 事前承認するクライアント アプリケーションの **[アプリケーション (クライアント) ID]** を入力します。 たとえば、以前に登録した Web アプリケーションのそれです。
+    1. **[承認済みのスコープ]** で、同意を求めるメッセージを表示しないスコープを選択し、 **[アプリケーションの追加]** を選択します。
+
+    クライアント アプリが事前承認されたクライアント アプリ (PCA) になり、ユーザーにはサインインするときの同意を求めるメッセージが表示されなくなります。
+
 1. [他のアプリケーションに Web API が公開されていることを確認する](#verify-the-web-api-is-exposed-to-other-applications)ための手順を実行します。
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>アプリケーション マニフェストを通じて新しいスコープまたはロールを公開する
@@ -84,7 +91,7 @@ UI を通じて新しいスコープを公開するには:
 アプリケーション マニフェストを通じて新しいスコープを公開するには:
 
 1. アプリの **[概要]** ページで、 **[マニフェスト]** セクションを選択します。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 必要があれば、 **[ダウンロード]** を選択してローカルでマニフェストを編集します。その後、 **[アップロード]** を使用して、アプリケーションにマニフェストを再適用します。
-    
+
     次の例では、`oauth2Permissions` コレクションに以下の JSON 要素を追加して、リソース/API の `Employees.Read.All` という新しいスコープを公開する方法を示しています。
 
       ```json
@@ -110,14 +117,17 @@ UI を通じて新しいスコープを公開するには:
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>他のアプリケーションに Web API が公開されているかどうかを確認する
 
-1. Azure AD テナントに戻って、 **[アプリの登録]** を選択し、構成するクライアント アプリケーションを見つけて選択します。
+1. Azure AD テナントに戻り、 **[アプリの登録]** を選択してから、構成するクライアント アプリケーションを見つけて選択します。
 1. [Web API にアクセスするためのクライアント アプリケーションの構成](quickstart-configure-app-access-web-apis.md)に関するページで説明されている手順をもう一度実行します。
-1. [API の選択](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-)の手順で、リソースを選択します。 新しいスコープが表示されていれば、クライアントのアクセス許可の要求で利用できる状態です。
+1. [API を選択する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)ステップになったら、リソース (Web API アプリの登録) を選択します。
+    * Azure portal を使用して Web API アプリの登録を作成した場合、その API リソースは **[自分の API]** タブの一覧に表示されます。
+    * プロジェクトの作成時に Visual Studio による Web API アプリの登録の作成を許可した場合は、 **[所属する組織で使用している API]** タブの一覧に API リソースが表示されます。
+
+Web API リソースを選択すると、クライアントのアクセス許可の要求で利用できる新しいスコープが表示されます。
 
 ## <a name="more-on-the-application-manifest"></a>アプリケーション マニフェストの詳細
 
-アプリケーション マニフェストは、アプリケーション エンティティを更新するためのメカニズムとしての役割を果たすものです。Azure AD アプリケーションの ID 構成の属性はすべて、このアプリケーション エンティティで定義されています。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)を参照してください。 このドキュメントでは、API のアクセス許可を指定するために使用するアプリケーション エンティティのメンバーについて、詳細な参照情報を確認できます。たとえば、次のような情報です。  
+アプリケーション マニフェストは、アプリケーション エンティティを更新するためのメカニズムとしての役割を果たすものです。Azure AD アプリケーションの ID 構成の属性はすべて、このアプリケーション エンティティで定義されています。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)を参照してください。 このドキュメントでは、API のアクセス許可を指定するために使用するアプリケーション エンティティのメンバーについて、詳細な参照情報を確認できます。たとえば、次のような情報です。
 
 * appRoles メンバー: Web API の[アプリケーションのアクセス許可](developer-glossary.md#permissions)を定義するときに使用する [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) エンティティのコレクションです。
 * oauth2Permissions メンバー: Web API の[委任されたアクセス許可](developer-glossary.md#permissions)を定義するときに使用する [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) エンティティのコレクションです。

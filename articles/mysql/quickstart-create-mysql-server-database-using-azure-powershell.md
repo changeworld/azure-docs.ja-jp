@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 2e12da29a8388bf4a232930c3737be7ddce80d12
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611944"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543539"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Database for MySQL サーバーを作成する
 
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [PowerShell を使用して Azure Database for MySQL を設計する](tutorial-design-database-using-powershell.md)
+> [PowerShell を使用して接続文字列を生成する - Azure Database for MySQL](connect-powershell.md)

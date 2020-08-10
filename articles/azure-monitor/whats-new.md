@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498510"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799329"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -20,7 +20,7 @@ ms.locfileid: "86498510"
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="general"></a>全般
-- [Azure Monitor をデプロイする](platform/deploy-scale.md) - 新しい記事。
+- [Azure Monitor をデプロイする](deploy-scale.md) - 新しい記事。
 - [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - billingtype プロパティを更新しました。 PowerShell コマンドを追加しました。
 
 ### <a name="agents"></a>エージェント
@@ -54,7 +54,7 @@ ms.locfileid: "86498510"
 - [Azure Log Analytics ワークスペースの削除と復旧](platform/delete-workspace.md) - PowerShell コマンドを追加しました。 トラブルシューティングを更新しました。
 - [Azure Monitor で Log Analytics ワークスペースを管理する](platform/manage-access.md) - RBAC セクションに許可されないテーブルの例を追加しました。
 - [Azure Monitor ログの使用量とコストを管理する](platform/manage-cost-storage.md) - データ サイズの計算に関する詳細を追加しました。 データ ボリューム アラートの構成について更新しました。 Azure Sentinel によって収集されるセキュリティ データの詳細。 データ上限の明確化。
-- [Azure Logic Apps と Power Automate で Azure Monitor ログを使用する](platform/logicapp-flow-connector.md) - コネクターの制限を追加しました。
+- [Azure Logic Apps と Power Automate で Azure Monitor ログを使用する](platform/logicapp-flow-connector.md) - コネクタの制限を追加しました。
 
 ### <a name="metrics"></a>メトリック
 - [Azure Monitor でサポートされているメトリック (リソースの種類別)](platform/metrics-supported.md) - SQL Server のメトリックを更新しました。

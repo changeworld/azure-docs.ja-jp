@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078686"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447032"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer の最新情報
 
@@ -34,6 +34,16 @@ Azure Load Balancer は定期的に更新されます。 最新のお知らせ�
 | 検証 | HA ポートの検証の追加 | Floating IP が有効になっているときにのみ、HA ポート ルールと非 HA ポート ルールを確実に構成できるようにする検証が追加されました。 以前は、この構成をしても意図どおりに機能しませんでした。 機能は変更されていません。 詳細については、[こちら](load-balancer-ha-ports-overview.md#limitations)を参照してください。| 2020 年 6 月 |
 | 特徴量| Azure Load Balancer の IPv6 サポート (一般公開) | Azure Load Balancer のフロントエンドとして IPv6 アドレスを使用できます。 [こちらでデュアル スタック アプリケーションの作成](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)方法について説明します。 |2020 年 4 月|
 | 特徴量| アイドル タイムアウト時の TCP リセット (一般公開)| TCP リセットを使用して、アプリケーションの動作をより予測可能にします。 [詳細情報](load-balancer-tcp-reset.md)| 2020 年 2 月 |
+
+## <a name="known-issues"></a>既知の問題
+
+製品グループは、次の既知の問題の解決に積極的に取り組んでいます。
+
+|問題 |説明  |対応策  |
+| ---------- |---------|---------|
+| Log Analytics のエクスポート | Log Analytics で、Standard Load Balancer に対するメトリックまたは Basic Load Balancer に対する正常性プローブ状態ログをエクスポートできません  | [Standard Load Balancer に対する多次元メトリックの場合は Azure Monitor を利用します](load-balancer-standard-diagnostics.md)。 監視に Log Analytics を使用することはできませんが、Azure Monitor により多次元メトリックの豊富なセットが視覚化されます。 Load Balancer の [分析情報] サブブレードを使用して、構成済みのメトリック ダッシュボードを利用できます。 Basic Load Balancer を使用している場合、運用レベルのメトリック監視のためには [Standard にアップグレード](upgrade-basic-standard.md)します。
+
+  
 
 ## <a name="next-steps"></a>次のステップ
 

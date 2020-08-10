@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084706"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420823"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する
 
@@ -108,7 +108,7 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>ハブとスポークのルーティングを構成する
 
-Azure portal から Cloud Shell を開き、次の Azure PowerShell を実行して、必要なハブとスポークのルーティングを構成します。
+Azure portal から Cloud Shell を開き、次の Azure PowerShell を実行して、必要なハブとスポークのルーティングを構成します。 ピアリングされたスポークおよびブランチ接続では、伝達を **NONE** に設定する必要があります。 こうすることで、スポーク間の Any-to-Any 通信を防ぎ、代わりに既定ルートを使用してトラフィックをファイアウォールにルーティングすることができます。
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `

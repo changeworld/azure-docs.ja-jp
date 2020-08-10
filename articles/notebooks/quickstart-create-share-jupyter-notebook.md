@@ -4,12 +4,12 @@ description: Azure Notebooks プレビューで Jupyter ノートブックをす
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec1a03cb1c05248458a47ec4b22a0243b31bafcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832102"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423288"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを作成して共有する
 
@@ -43,9 +43,9 @@ ms.locfileid: "85832102"
 
 1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。 **[+ 新規]** ドロップダウン ( **[+]** とだけ表示されている場合があります) を選択し、 **[Notebook]\(ノートブック\)** を選択することで、新しいノートブックをプロジェクトに追加します。
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    :::image type="content" source="media/quickstarts/empty-project-new-notebook-button.png" alt-text="新しい空のプロジェクトと、ノートブックの追加コマンド。" lightbox="media/quickstarts/empty-project-new-notebook-button.png":::
 
-1. 表示される **[Create New Notebook]\(新しいノートブックの作成\)** ポップアップで、ノートブックのファイル名 (例: *HelloWorldInPython.ipynb*、 *.ipynb* は IronPython (Jupyter) ノートブックを意味します) を入力し、言語 ("*カーネル*" とも呼ばれます) として **[Python 3.6]** を選択します。
+1. 表示される **[Create New Notebook]\(新しいノートブックの作成\)** ポップアップで、ノートブックのファイル名 (例: *HelloWorldInPython.ipynb*、*.ipynb* は IronPython (Jupyter) ノートブックを意味します) を入力し、言語 ("*カーネル*" とも呼ばれます) として **[Python 3.6]** を選択します。
 
     ![新しいノートブックの作成ポップアップ](media/quickstarts/new-notebook-popup.png)
 
@@ -97,9 +97,9 @@ ms.locfileid: "85832102"
 
 ## <a name="share-the-notebook"></a>ノートブックを共有する
 
-ノートブックを共有するには、必要な場合はプロジェクトのページに戻り、ノートブック ファイルを右クリックし、 **[Copy Link]\(リンクのコピー\)** (キーボード ショートカット: Y) を選択して、適切なメッセージにそのリンクを貼り付けます (メール、IM など)。
+ノートブックを共有するには、必要な場合はプロジェクトのページに戻り、ノートブック ファイルを右クリックし、**[Copy Link]\(リンクのコピー\)** (キーボード ショートカット: Y) を選択して、適切なメッセージにそのリンクを貼り付けます (メール、IM など)。
 
-プロジェクト ページでは、 **[Share]\(共有\)** メニューを使用してリンクを取得し、そのリンクでメール メッセージを作成するか、または HTML と Markdown の埋め込みコードを取得することもできます。
+プロジェクト ページでは、**[Share]\(共有\)** メニューを使用してリンクを取得し、そのリンクでメール メッセージを作成するか、または HTML と Markdown の埋め込みコードを取得することもできます。
 
 ![プロジェクト共有コマンド](media/quickstarts/share-project-command.png)
 

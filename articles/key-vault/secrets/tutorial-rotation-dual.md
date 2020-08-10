@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800699"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542197"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -41,9 +41,8 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 * 2 つの Azure ストレージ アカウント
 
 まだ Key Vault とストレージ アカウントをお持ちでない場合は、以下のデプロイ リンクを使用してください。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+
+[![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. **[リソース グループ]** で、 **[新規作成]** を選択します。 このグループに **akvrotation** という名前を付けて **[OK]** をクリックします。
 1. **[確認および作成]** を選択します。
@@ -79,10 +78,9 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 - ストレージ アカウント キーのローテーション関数とイベント トリガーおよび HTTP トリガー (オンデマンド ローテーション)
 - **SecretNearExpiry** イベントの EventGrid イベント サブスクリプション
 
-1. Azure テンプレートのデプロイのリンクを選択します。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Azure テンプレートのデプロイのリンクを選択します。 
+
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
 1. ローテーションするアクセス キーがあるストレージ アカウントの名前を **[ストレージ アカウント名]** に入力します。
@@ -154,10 +152,9 @@ az storage account keys list -n akvrotationstorage
 - ストレージ アカウントのアクセス キーにアクセスする関数アプリにストレージ アカウント キー オペレーターのサービス ロールを割り当てる
 - **SecretNearExpiry** イベントの EventGrid イベント サブスクリプション
 
-1. Azure テンプレートのデプロイのリンクを選択します。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Azure テンプレートのデプロイのリンクを選択します。 
+
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
 1. ローテーションするアクセス キーがあるストレージ アカウントの名前を **[ストレージ アカウント名]** に入力します。

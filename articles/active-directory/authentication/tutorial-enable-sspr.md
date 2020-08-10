@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035028"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419480"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P1 または試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
 * パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してエンドユーザーの SSPR エクスペリエンスをテストします。
@@ -60,7 +60,7 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
 1. **[プロパティ]** ページの *[セルフ サービスによるパスワードのリセットが有効]* オプションの下で、 **[グループの選択]** を選択します。
 1. 使用する Azure AD グループ (*SSPR-Test-Group* など) を参照して選択し、 *[選択]* を選択します。
 
-    [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
+    [ ![Azure portal で、セルフサービス パスワード リセットを有効にするグループを選択する](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) ](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
 1. 選択したユーザーに対して SSPR を有効にするには、 **[保存]** を選択します。
 

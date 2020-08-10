@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4a128d46ca1b3f84981f9732f86ff49f72cc18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4f30202b08328854296b45e0279fc51b25b0a7c
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025831"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428464"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -69,6 +69,9 @@ Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバ�
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (シームレス SSO を使用しているか、使用する予定の場合)
+
+> [!WARNING]
+> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合は、'https://device.login.microsoftonline.com ' へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 'https://device.login.microsoftonline.com ' を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
 
 組織がアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合は、Windows 10 コンピューターを Azure AD にデバイス登録できるように、[Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することができます。 WPAD の構成と管理の問題に対処するには、「[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。 更新プログラム 1709 より前の Windows 10 デバイスでは、Hybrid Azure AD Join と連携するようにプロキシを構成するためのオプションとして WPAD のみを選択できます。 
 

@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f4b42f2ed43da68daabb3bd334a362071202be42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 619b5f16f5a913a4ec9bb1ebe2e7060fcac28d7d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073730"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421809"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -31,11 +31,11 @@ App Service の主な機能として、次のようなものがあります。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP など)、SaaS サービス (Salesforce など)、インターネット サービス (Facebook など) 向けに用意された 50 を超える[コネクタ](../connectors/apis-list.md)から選択できます。 また、[ハイブリッド接続](app-service-hybrid-connections.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 * **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/en-us/trustcenter)しています。 [Azure Active Directory](configure-authentication-provider-aad.md) またはソーシャル ログイン ([Google](configure-authentication-provider-google.md)、[Facebook](configure-authentication-provider-facebook.md)、[Twitter](configure-authentication-provider-twitter.md)、および[Microsoft](configure-authentication-provider-microsoft.md)) でユーザーを認証します。 [IP アドレス制限](app-service-ip-restrictions.md)を作成し、[サービス ID を管理](overview-managed-identity.md)します。
 * **アプリケーション テンプレート** - WordPress、Joomla、Drupal など、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にある詳細な一覧からアプリケーション テンプレートを選択します。
-* **Visual Studio の統合** - Visual Studio の専用ツールを使えば、作成、デプロイ、デバッグの作業が効率的になります。
+* **Visual Studio と Visual Studio Code の統合** - Visual Studio と Visual Studio Code の専用ツールを使用することで、作成、デプロイ、デバッグの作業を効率化することができます。
 * **API とモバイル機能** - App Service は、RESTful API シナリオに対してターンキー CORS サポートを提供するほか、認証、オフライン データ同期、プッシュ通知などを有効にして、モバイル アプリのシナリオを簡素化します。
 * **サーバーレス コード** - コード スニペットまたはスクリプトをオンデマンドで実行します。その際、インフラストラクチャを明示的にプロビジョニングまたは管理する必要はありません。また、コードによって実際に使用されたコンピューティング時間のみが課金対象となります ([Azure Functions](/azure/azure-functions/) に関するページを参照)。
 
-App Service の他に、Azure では Web サイトと Web アプリケーションをホストするために利用できるサービスも提供しています。 ほとんどの場合は、App Service が最適な方法になります。  マイクロサービス アーキテクチャについては、[Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。 また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) の利用をご検討ください。 これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](overview-compare.md)」を参照してください。
+App Service の他に、Azure では Web サイトと Web アプリケーションをホストするために利用できるサービスも提供しています。 ほとんどの場合は、App Service が最適な方法になります。  マイクロサービス アーキテクチャの場合は、[Azure Spring-Cloud サービス](/azure/spring-cloud/)または [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。  また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) の利用を検討してください。 これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](overview-compare.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

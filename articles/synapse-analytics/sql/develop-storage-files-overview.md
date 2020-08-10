@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046885"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483554"
 ---
-# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Synapse SQL (オンデマンド) 内の外部ストレージへのアクセス
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Synapse SQL (オンデマンド) で外部ストレージにアクセスする
 
 このドキュメントでは、ユーザーが Synapse SQL (オンデマンド) で、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
 
@@ -59,7 +59,7 @@ URL に一致するサーバーレベルの資格情報がない場合、また�
 > [!NOTE]
 > このバージョンの OPENROWSET は、既定の認証を使用して迅速かつ簡単にデータを探索できるように設計されています。 偽装またはマネージド ID を活用するには、次のセクションで説明されているように OPENROWSET を DATASOURCE と共に使用します。
 
-### <a name="querying-data-sources-using-openrowset"></a>OPENROWSET を使用してデータ ソースに対してクエリを実行する
+### <a name="query-data-sources-using-openrowset"></a>OPENROWSET を使用してデータ ソースのクエリを実行する
 
 OPENROWSET を使用すると、ユーザーは外部データ ソースに配置されたファイルに対してクエリを実行できます。
 
@@ -91,7 +91,7 @@ DATABASE SCOPED CREDENTIAL では、参照されるデータ ソース上のフ�
   - `ADMINISTER DATABASE BULK OPERATIONS` を使用すると、データベース スコープ ユーザーは OPENROWSET 関数を実行できます。
 - EXTERNAL DATA SOURCE で参照される資格情報に対する REFERENCES DATABASE SCOPED CREDENTIAL
 
-#### <a name="accessing-anonymous-data-sources"></a>匿名データ ソースへのアクセス
+#### <a name="access-anonymous-data-sources"></a>匿名データ ソースにアクセスする
 
 ユーザーは、パブリック アクセス ストレージを参照する CREDENTIAL なしの EXTERNAL DATA SOURCE を作成するか、Azure AD パススルー認証を使用することができます。
 
@@ -132,7 +132,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 DATABASE SCOPED CREDENTIAL では、参照されるデータ ソース上のファイルへのアクセス方法を指定します。
 
-### <a name="reading-external-files-with-external-table"></a>EXTERNAL TABLE を使用した外部ファイルの読み取り
+### <a name="read-external-files-with-external-table"></a>EXTERNAL TABLE を使用して外部ファイルを読み取る
 
 EXTERNAL TABLE では、標準的な SQL SELECT ステートメントを使用して、データ ソースを介して参照されるファイルからデータを読み取ることができます。
 

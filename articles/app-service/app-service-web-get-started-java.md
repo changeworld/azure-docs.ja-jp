@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ae304763718f649d7895394d67c2aec307f14af
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324235"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799992"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>クイック スタート:Azure App Service on Windows で Java アプリを作成する
 
@@ -49,13 +49,19 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Maven プラグインを構成する
 
-Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure 資格情報を自動的に取得できます。 Azure CLI がインストールされていない場合、Maven プラグインは Oauth またはデバイス ログインでサインインします。 必要に応じて、[Maven プラグインによる認証](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)の詳細を確認してください。
+Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure 資格情報を自動的に取得できます。 Azure CLI がローカル環境にインストールされていない場合、ユーザーは Maven プラグインにより Oauth またはデバイス ログインを使用してサインインされます。 必要に応じて、[Maven プラグインによる認証](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)の詳細を確認してください。
 
-コマンド プロンプトで次の Maven コマンドを実行してデプロイを構成します。最初の手順では **windows** OS を表す **2** を選択します。次に **Confirm (Y/N)** プロンプトが表示されるまで **Enter** キーを押して既定の構成値を使用し、**y** キーを押して構成を完了します。 
-
+次の Maven コマンドを実行して、デプロイを構成することができます
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
+
+選択を求めるメッセージが表示されます 
+* **OS (既定値: `linux`)**
+* **Java バージョン (既定値: `1.8`)**
+* **Web コンテナー (既定値: `tomcat 8.5`)** 
+
+最初のステップでは、「 **`2`** 」と入力して **Windows** OS を選択するように注意してください。 その他の構成は、**Enter** キーを押して既定値のままにすることができます。 最後に、 **[Confirm (Y/N)]** というプロンプトで **`Y`** キーを押して、構成を完了します。
 
 サンプル プロセスは次のようになります。
 
@@ -153,8 +159,11 @@ code pom.xml
 `<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
 `<deployment>` | true | デプロイ構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
 
+`<appName>` と `<resourceGroup>` の値 (デモでは `helloworld-1590394316693` と `helloworld-1590394316693-rg`) に注意してください。これらは後で使用します。
+
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
+
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
@@ -169,13 +178,14 @@ az login
 mvn package azure-webapp:deploy
 ```
 
-デプロイが完了したら、Web ブラウザーで次の URL を使用して、デプロイされたアプリケーションを参照します (たとえば、`http://<webapp>.azurewebsites.net/`)。
+デプロイが完了すると、アプリケーションは `http://<appName>.azurewebsites.net/` で準備が整います (デモでは `http://helloworld-1590394316693.azurewebsites.net`)。 ローカル Web ブラウザーで URL を開くと、次のように表示されます
 
 ![Azure App Service で実行されているサンプル アプリ](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **お疲れさまでした。** App Service on Windows に初めての Java アプリをデプロイしました。
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

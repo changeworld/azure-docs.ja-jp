@@ -10,12 +10,13 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 718c9a62cc867e5d65cc3c79e78ce3282f1037c7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+- devx-track-azurecli
+ms.openlocfilehash: 0ab19e538d2ffb97f9bb80c47f9ce5471bdb87a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285851"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799466"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -30,6 +31,9 @@ ms.locfileid: "87285851"
 > * コードを更新して再デプロイする
 > * 診断ログを表示する
 > * Azure portal で Web アプリを管理する
+
+[このチュートリアルの Azure portal バージョン](/azure/developer/python/tutorial-python-postgresql-app-portal)も使用できます。
+
 
 ## <a name="set-up-your-initial-environment"></a>初期環境を設定する
 

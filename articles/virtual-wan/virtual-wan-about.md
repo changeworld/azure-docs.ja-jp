@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058750"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513147"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
@@ -124,9 +124,9 @@ Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機�
 
 ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用する場合は、次を考慮してください。
 
-* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
+* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 17 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
 
-* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
+* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 17 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 

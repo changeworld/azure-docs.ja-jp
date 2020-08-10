@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75b6ba110264ae3826093222e9cd3c4073bc17f0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0e16fdaed8ce7e73718569652e88e66844850175
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683582"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416573"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -105,7 +105,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]** を選択して構成を保存する必要があります。
+1. **[基本的な SAML 構成]** セクションで、 **[識別子 (エンティティ ID)]** と **[応答 URL]** の両方を同じ既定値 (`https://signin.aws.amazon.com/saml`) に更新します。 **[保存]** を選択して構成の変更を保存する必要があります。
 
 1. 複数のインスタンスを構成している場合は、識別子の値を指定します。 2 番目のインスタンス以降は、次の形式を使用します。これには、一意の SPN 値を指定するための **#** 符号が含まれます。
 
@@ -123,7 +123,15 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
     | Role            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | 「900 秒 (15 分) から43200 秒 (12 時間) の値を指定してください」 |  `https://aws.amazon.com/SAML/Attributes` |
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** (手順 3) ダイアログ ボックスで、 **[証明書の追加]** を選択します。
+
+    ![新しい SAML 証明書を作成する](common/add-saml-certificate.png)
+
+1. 新しい SAML 署名証明書を生成し、 **[新しい証明書]** を選択します。 証明書通知のメール アドレスを入力します。
+   
+    ![新しい SAML 証明書](common/new-saml-certificate.png) 
+
+1. **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 

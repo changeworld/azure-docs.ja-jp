@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125192"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475807"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷を分散するロード バランサーを作成する
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷分散を行うパブリック ロード バランサーを作成する
 
 Azure portal を使用してパブリック ロード バランサーと 3 つの仮想マシンを作成することにより、Azure Load Balancer の使用を開始します。
 
@@ -36,7 +36,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[オプション 1 (既定): ロード バランサー (Standard SKU) を作成する](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[オプション 1 (既定): パブリック ロード バランサーを作成する (Standard SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
@@ -76,7 +76,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 * ロード バランサーのバックエンド アドレス プールの設定。
 * 正常性プローブ。
-* ロード バランサー規則とアウトバウンド規則。
+* ロード バランサー規則。
 
 ### <a name="create-a-backend-pool"></a>バックエンド プールの作成
 
@@ -281,7 +281,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 8. **[保存]** を選択します。
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[オプション 2: ロード バランサー (Basic SKU) を作成する](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[オプション 2: パブリック ロード バランサーを作成する (Basic SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
@@ -468,8 +468,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 5. **[管理]** タブまたは **[次へ]**  >  **[管理]** を選択します。
 
 6. **[管理]** タブで、次を選択または入力します。
+    
     | 設定 | 値 |
-    |-|-|
+    |---|---|
     | **Monitoring** | |
     | ブート診断 | **[オフ]** を選択します |
 
@@ -484,6 +485,24 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | 名前 |  **myVM2** |**myVM3**|
     | 可用性セット| **[myAvailabilitySet]** を選択します | **[myAvailabilitySet]** を選択します|
     | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します| 既存の **[myNSG]** を選択します|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>仮想マシンをバックエンド プールに追加する
+
+前のステップで作成した VM を **myLoadBalancer** のバックエンドプールに追加する必要があります。
+
+1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer]** を選択します。
+
+2. **[設定]** で、 **[バックエンド プール]** を選択し、**myBackendPool** を選択します。
+
+3. **[関連付け先]** で **[仮想マシン]** を選択します。
+
+4. **[仮想マシン]** セクションで、 **[+ 追加]** を選択します。
+
+5. **myVM1**、**myVM2**、**myVM3** の横にあるチェック ボックスをオンにします。
+
+6. **[追加]** を選択します。
+
+7. **[保存]** を選択します。
 
 ---
 

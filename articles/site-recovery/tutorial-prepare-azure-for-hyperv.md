@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130986"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498992"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリーのために Azure リソースを準備する
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 9. **[場所]** で、ストレージ アカウントの地理的な場所を選択します。 このチュートリアルでは、"**西ヨーロッパ**" を使用します。
 10. **[作成]** をクリックしてストレージ アカウントを作成します。
 
-   ![ストレージ アカウントの作成](media/tutorial-prepare-azure/create-storageacct.png)
+   ![[ストレージ アカウントの作成] のオプションのスクリーンショット。](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[場所]** で、コンテナーを配置するリージョンを選びます。 このチュートリアルでは、"**西ヨーロッパ**" を使用します。
 4. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、 **[ダッシュボードにピン留めする]**  >  **[作成]** の順に選択します。
 
-![新しい資格情報コンテナーの作成](./media/tutorial-prepare-azure/new-vault-settings.png)
+![[Recovery Services コンテナーの作成] ページのスクリーンショット。](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 新しい資格情報コンテナーは、 **[ダッシュボード]**  >  **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
 
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. 基本的な DDoS 保護の既定のオプションはそのままにして、ネットワーク上にサービス エンドポイントを置きません。
 8. **作成** を選択します。
 
-![仮想ネットワークの作成](media/tutorial-prepare-azure/create-network.png)
+![[仮想ネットワークの作成] のオプションのスクリーンショット。](media/tutorial-prepare-azure/create-network.png)
 
 仮想ネットワークの作成には数秒かかります。 作成が完了すると、Azure portal ダッシュボードに表示されます。
 

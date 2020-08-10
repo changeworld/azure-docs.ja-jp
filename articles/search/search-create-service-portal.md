@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529626"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554024"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -30,8 +30,8 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 次のサービス プロパティは、サービスの有効期間にわたって固定されます。これらのいずれかを変更するには、新しいサービスが必要です。 これらは固定されているため、各プロパティを入力するときに使用の影響を考慮してください。
 
 * サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
-* サービス レベル[によって料金が変わり](search-sku-tier.md)、容量の上限が設定されます。
-* サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 ナレッジ マイニングと AI エンリッチメントに関心がある場合は、Azure Cognitive Search と同じリージョンに、Cognitive Services と、場合によっては Azure Machine Learning が必要になります。
+* サービス レベル[によって料金が変わり](search-sku-tier.md)、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
+* サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに配置するか、対象の機能が提供されているリージョンに配置する必要があります。 
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
@@ -51,7 +51,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 ## <a name="choose-a-subscription"></a>サブスクリプションを選択します。
 
-サブスクリプションが複数ある場合には、Search サービスに使用するものを選択します。
+サブスクリプションが複数ある場合には、Search サービスに使用するものを選択します。 [二重暗号化](search-security-overview.md#double-encryption)またはマネージド サービス ID に依存する他の機能を実装している場合は、Azure Key Vault またはマネージド ID の使用対象の他のサービスに対して使用されているものと同じサブスクリプションを選択します。
 
 ## <a name="set-a-resource-group"></a>リソース グループを設定する
 
@@ -89,6 +89,8 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 > [!Note]
 > インド中部とアラブ首長国連邦北部では、現在、新しいサービスを使用できません。 既にそれらのリージョンで使用できるサービスについては、制限なしでスケールアップでき、サービスはそのリージョンで完全にサポートされます。 制限は一時的なものであり、新しいサービスのみに限定されます。 制限が適用されなくなったら、この注記を削除する予定です。
+>
+> 二重暗号化は特定のリージョンでのみ利用できます。 詳細については、[二重暗号化](search-security-overview.md#double-encryption)に関するページを参照してください。
 
 ### <a name="requirements"></a>必要条件
 
@@ -96,7 +98,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
  事業継続とディザスター リカバリー (BCDR) の要件を持つお客様は、[リージョンのペア](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)にそれらのサービスを作成する必要があります。 たとえば、北米で活動している場合は、各サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
-### <a name="recommendations"></a>推奨事項
+### <a name="recommendations"></a>Recommendations
 
 複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
 

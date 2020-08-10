@@ -11,12 +11,13 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: cfe85db7a49f2d7b830165d05acaa458f51119f0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+- devx-track-azurecli
+ms.openlocfilehash: 17edd19dd63c97983b3f12f0d59690b55367dbbe
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115772"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500863"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -64,16 +65,31 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 コンテナーの Azure Monitor は、 *--enable-addons monitoring* パラメーターを使用して有効にすることもできます。  これは完了までに数分かかる場合があります。
+AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 > [!NOTE]
-> AKS クラスターを作成すると、AKS リソースを保存するための 2 つ目のリソース グループが自動的に作成されます。 詳細については、「[AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?](./faq.md#why-are-two-resource-groups-created-with-aks)」を参照してください。
+> Azure Monitor for containers を有効にするには、 *--enable-addons monitoring* パラメーターを使用します。これには、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* がサブスクリプションに登録されている必要があります。 登録状態を確認するには:
+> 
+> ```azurecli
+> az provider show -n Microsoft.OperationsManagement -o table
+> az provider show -n Microsoft.OperationalInsights -o table
+> ```
+> 
+> 登録されていない場合は、次のコマンドを使用して、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* を登録します。
+> 
+> ```azurecli
+> az provider register --namespace Microsoft.OperationsManagement
+> az provider register --namespace Microsoft.OperationalInsights
+> ```
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
 
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。
+
+> [!NOTE]
+> AKS クラスターを作成すると、AKS リソースを保存するための 2 つ目のリソース グループが自動的に作成されます。 詳細については、「[AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?](./faq.md#why-are-two-resource-groups-created-with-aks)」を参照してください。
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 

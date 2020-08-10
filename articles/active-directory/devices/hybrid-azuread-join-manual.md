@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025780"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428381"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -59,6 +59,9 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * 組織の STS (フェデレーション ドメインの場合)。これはユーザーのローカル イントラネット設定に含まれています。
+
+> [!WARNING]
+> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合は、'https://device.login.microsoftonline.com ' へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 'https://device.login.microsoftonline.com ' を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
 
 組織でシームレス SSO の使用を計画している場合は、組織内のコンピューターから次の URL に到達できる必要があります。 これもユーザーのローカル イントラネット ゾーンに追加する必要があります。
 

@@ -7,16 +7,16 @@ author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3ac67d6222e6b7df1d7989c234c3ef0a5fa137f9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a40244fb958993cbed9e8585190939eb43e5acc2
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327953"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461784"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Azure RBAC 用の Azure Policy 規制コンプライアンス コントロール
 
-[Azure Policy](../governance/policy/index.yml) では、インフラストラクチャがビジネス標準に準拠するように、Azure リソースに対して規則を適用できます。
+[Azure Policy](../governance/policy/index.yml) を使用すると、インフラストラクチャがビジネス標準に準拠するように、Azure リソースに対して規則を適用できます。
 [Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)により、さまざまなコンプライアンス基準に関連する**コンプライアンス ドメイン**および**セキュリティ コントロール**に対して、"_組み込み_" と呼ばれる、Microsoft が作成および管理するイニシアチブ定義が提供されます。 このページでは、Azure ロールベースのアクセス制御 (Azure RBAC) 用の**コンプライアンス ドメイン**と**セキュリティ コントロール**の一覧を示します。 **セキュリティ コントロール**の組み込みを個別に割り当てることで、Azure リソースを特定の標準に準拠させることができます。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]

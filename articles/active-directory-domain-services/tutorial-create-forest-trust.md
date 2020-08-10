@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 40dd7f1b177fd1319b145036c8263ba2c6e30137
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024674"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492158"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
-パスワード ハッシュを同期できない環境、またはスマート カードを使用して排他的にサインインするために自分でパスワードがわからないユーザーが含まれる環境では、Azure Active Directory Domain Services (Azure AD DS) でリソース フォレストを使用できます。 リソース フォレストでは、Azure AD DS から 1 つまたは複数のオンプレミスの AD DS 環境への一方向の送信の信頼が使用されます。 この信頼関係により、ユーザー、アプリケーション、およびコンピューターは、Azure AD DS マネージド ドメインから、オンプレミスのドメインに対して認証を行うことができます。 Azure AD DS リソース フォレストは現在、プレビューの段階です。
+パスワード ハッシュを同期できない環境、またはスマート カードを使用して排他的にサインインするために自分でパスワードがわからないユーザーが含まれる環境では、Azure Active Directory Domain Services (Azure AD DS) でリソース フォレストを使用できます。 リソース フォレストでは、Azure AD DS から 1 つまたは複数のオンプレミスの AD DS 環境への一方向の送信の信頼が使用されます。 この信頼関係により、ユーザー、アプリケーション、およびコンピューターは、Azure AD DS マネージド ドメインから、オンプレミスのドメインに対して認証を行うことができます。 リソース フォレストでは、オンプレミスのパスワード ハッシュが同期されることはありません。
 
 ![Azure AD DS からオンプレミスの AD DS へのフォレストの信頼の図](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 

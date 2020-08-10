@@ -8,12 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 2abe23de5fbd2feada6ac8ff0a827b8575bcb28b
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171993"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760976"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 
@@ -122,7 +123,7 @@ function (returnObject, finalCallback, next)
 
 このコールバックで、`returnObject` (サーバーへの要求からの応答) の処理の後に、コールバックは `next` (存在する場合) を呼び出して他のフィルターの処理を続行するか、それ以外の場合は単に `finalCallback` を呼び出して、サービス呼び出しを終了する必要があります。
 
-再試行のロジックを実装する 2 つのフィルターが、Azure SDK for Node.js に含まれています。`ExponentialRetryPolicyFilter** and `LinearRetryPolicyFilter`. The following creates a `TableService` object that uses the `ExponentialRetryPolicyFilter`:
+再試行のロジックを実装する 2 つのフィルター (`ExponentialRetryPolicyFilter` と `LinearRetryPolicyFilter`) が、Azure SDK for Node.js に含まれています。 以下では `ExponentialRetryPolicyFilter` を使用する `TableService` オブジェクトが作成されます。
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();

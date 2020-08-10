@@ -6,19 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/15/2020
-ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076335"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553931"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="feature-announcements-in-2020"></a>2020 年の機能のお知らせ
+
+### <a name="august-2020"></a>2020 年 8 月
+
+|機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
+|---------|------------------|-------------|---------------|
+| [二重暗号化](search-security-overview.md#encryption) | セキュリティ | 新しい検索サービスでカスタマー マネージド キー (CMK) 暗号化を構成することにより、ストレージ層での二重暗号化を有効にします。 新しいサービスを作成し、[カスタマー マネージド キーを構成してインデックスまたはシノニム マップに適用し](search-security-manage-encryption-keys.md)、そのコンテンツで二重暗号化のメリットを得ます。 | 次のリージョンで 2020 年 8 月 1 日以降に作成されたすべての検索サービスで一般提供されます: 米国西部 2、米国東部、米国中南部、US Gov バージニア、US Gov アリゾナ。 サービスを作成するには、ポータル、管理 REST API、または SDK を使用します。 |
 
 ### <a name="july-2020"></a>2020 年 7 月
 

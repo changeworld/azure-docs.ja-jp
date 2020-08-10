@@ -3,12 +3,12 @@ title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
 ms.date: 07/14/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087494"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534789"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -322,7 +322,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>仮想マシンとそのネットワーク インターフェイスおよびパブリック IP を一覧表示する
 
-このクエリでは、2 つの **leftouter** `join` コマンドを使用して、仮想マシンとそれに関連するネットワーク インターフェイス、さらに、それらのネットワーク インターフェイスに関連付けられたパブリック IP アドレスを結合します。
+このクエリでは、2 つの **leftouter** `join` コマンドを使用して、Resource Manager デプロイ モデルで作成された仮想マシン、それに関連するネットワーク インターフェイス、さらに、それらのネットワーク インターフェイスに関連付けられたパブリック IP アドレスを結合します。
 
 ```kusto
 Resources

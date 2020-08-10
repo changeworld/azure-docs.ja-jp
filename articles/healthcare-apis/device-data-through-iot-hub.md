@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d606cd4f5c4b901c060c97d73524997b94eaf225
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116848"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446298"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 
@@ -96,7 +96,7 @@ Azure IoT Hub は、[メッセージ ルーティング](https://docs.microsoft.
 IoT コネクタによって作成された FHIR Observation リソースを、Postman を使用して Azure API for FHIR で表示できます。 [Azure API for FHIR にアクセスするように Postman](access-fhir-postman-tutorial.md) を設定し、上のサンプル メッセージで送信された心拍の値を含む Observation FHIR リソースを表示するように `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` に対して `GET` 要求を行います。
 
 > [!TIP]
-> Azure API for FHIR データ プレーンへの適切なアクセス権がユーザーに付与されていることを確認します。 [Azure のロールベースのアクセス制御](configure-azure-rbac.md)を使用して、必要なデータ プレーン ロールを割り当ててください。
+> Azure API for FHIR データ プレーンへの適切なアクセス権がユーザーに付与されていることを確認します。 [Azure のロールベースのアクセス制御 (Azure RBAC)](configure-azure-rbac.md) を使用して、必要なデータ プレーン ロールを割り当てます。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -114,4 +114,3 @@ IoT コネクタ内のさまざまなデータ フロー ステージについ�
 >[IoT コネクタのマッピング テンプレート](iot-mapping-templates.md)
 
 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
-

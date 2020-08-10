@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207813"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445900"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -143,7 +143,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     }
     ```
 
-    このコードでは、**RemoteRenderingCoordinator** コンポーネントに、さらに 3 つの文字列変数が追加されます。\
+    このコードでは、**RemoteRenderingCoordinator** コンポーネントに、さらに 3 つの文字列変数が追加されます。
     ![リンクされたモデル](./media/storage-account-linked-model.png)
 
 1. **RemoteRenderingCoordinator** コンポーネントに実際の値を追加します。 [モデル変換のクイックスタート](../../../quickstarts/convert-model.md)に従った場合、実際の値は次のようになります。
@@ -156,7 +156,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     > スクリプト [**Conversion.ps1** を実行](../../../quickstarts/convert-model.md#run-the-conversion)する際に "-UseContainerSas" 引数を指定しなかった場合、SAS トークンの代わりに上記の値がすべて出力されます。 ![リンクされたモデル](./media/converted-output.png)
 1. カスタム モデルを読み込むためのスペースを確保するために、当面の間、GameObject **TestModel** は削除するか無効にしておいてください。
 1. シーンを再生して、リモート セッションに接続します。
-1. **RemoteRenderingCoordinator** を右クリックし、 **[Load Linked Custom Model]\(リンクされたカスタム モデルを読み込む\)** を選択します。\
+1. **RemoteRenderingCoordinator** を右クリックし、 **[Load Linked Custom Model]\(リンクされたカスタム モデルを読み込む\)** を選択します。
     ![リンクされたモデルを読み込む](./media/load-linked-model.png)
 
 以上の手順では、SAS トークンをローカル アプリケーションから削除することで、アプリケーションのセキュリティが向上します。
@@ -176,16 +176,13 @@ AAD 認証を使用すると、ARR を使用している個人またはグルー
 1. [認証の構成方法に関するページの「デプロイされたアプリケーションの認証」](../../../how-tos/authentication.md#authentication-for-deployed-applications)に従います。具体的には、Azure Spatial Anchors のドキュメント「[Azure AD ユーザー認証](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)」に記載された手順に従うことになります。 これには、新しい Azure Active Directory アプリケーションの登録や、ARR インスタンスへのアクセスの構成が含まれます。
 1. 新しい AAD アプリケーションを構成したら、AAD アプリケーションが次の画像のようになっていることを確認します。
 
-    **[AAD アプリケーション] -> [認証]** \
-    ![アプリ認証](./media/app-authentication-public.png)
+    **[AAD アプリケーション] -> [認証]** ![アプリの認証](./media/app-authentication-public.png)
 
-    **[AAD アプリケーション] -> [API のアクセス許可]** \
-    ![アプリの API](./media/request-api-permissions-step-five.png)
+    **[AAD アプリケーション] -> [API のアクセス許可]** ![アプリ API](./media/request-api-permissions-step-five.png)
 
 1. Remote Rendering アカウントを構成したら、その構成が次の画像のようになっていることを確認します。
 
-    **[AAR] -> [アクセス制御 (IAM)]** \
-    ![ARR ロール](./media/azure-remote-rendering-role-assignment-complete.png)
+    **[AAR] -> [アクセス制御 (IAM)]** ![ARR ロール](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > クライアント アプリケーションを介してセッションを管理する場合、"*所有者*" ロールでは不十分です。 セッションの管理権限を付与したい各ユーザーに対して、**Remote Rendering クライアント** ロールを指定する必要があります。 セッションの管理とモデルの変換を行う各ユーザーに対して、**Remote Rendering 管理者**ロールを指定する必要があります。
@@ -356,10 +353,8 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
 
 1. Unity エディターの [Play]\(再生\) を押し、セッションの実行に同意します。
     **AADAuthentication** コンポーネントはビュー コントローラーを備えているため、セッション承認のモーダル パネルの後にプロンプトを表示するように自動的にフックアップされます。
-1. **AppMenu** の右側のパネルに表示される手順に従います。\
-    次のように表示されます。\
-    ![AAD 認証コンポーネント](./media/device-flow-instructions.png)\
-    指定されたコードをセカンダリ デバイス (または同じデバイス上のブラウザー) に入力した後、自分の資格情報を使用してログインすると、要求元のアプリケーション (この場合は Unity エディター) にアクセス トークンが返されます。
+1. **AppMenu** の右側のパネルに表示される手順に従います。
+    次のように表示されます。![AAD 認証コンポーネント](./media/device-flow-instructions.png) 指定されたコードをセカンダリ デバイス (または同じデバイス上のブラウザー) に入力した後、自分の資格情報を使用してログインすると、要求元のアプリケーション (この場合は Unity エディター) にアクセス トークンが返されます。
 1. その後は、アプリケーションのすべての処理が通常どおりに続行されます。 想定したとおりに一連のステージが進行しない場合は、何かエラーが発生していないか Unity コンソールで確認してください。
 
 ## <a name="build-to-device"></a>デバイスにビルドする
