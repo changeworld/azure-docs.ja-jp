@@ -3,20 +3,20 @@ title: Azure AD デプロイ チェックリスト
 description: Azure Active Directory 機能のデプロイ チェックリスト
 services: active-directory
 ms.service: active-directory
-ms.subservice: ''
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025389"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -53,10 +53,11 @@ ms.locfileid: "77063647"
 | [クラウド ベースのユーザー アカウントの定期的なパスワード リセットを無効にする](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期的なパスワード リセットでは、ユーザーに、既存のパスワードを増やすことが推奨されています。 Microsoft のパスワードのガイダンス ドキュメントに記載されたガイドラインを使用し、オンプレミスのポリシーをクラウドのみのユーザーにミラー化します。 | Azure AD Free |
 | [Azure Active Directory のスマート ロックアウトをカスタマイズする](../authentication/howto-password-smart-lockout.md) | オンプレミスの Active Directory ユーザーにレプリケートされないように、クラウド ベースのユーザーからのロックアウトを停止します | |
 | [AD FS のエクストラネット スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS のエクストラネット ロックアウトは、ブルート フォース パスワード推測攻撃からの保護を行います。同時に、有効な AD FS ユーザーには引き続き自分のアカウントを使用させます。 | |
+| [条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする](../conditional-access/block-legacy-authentication.md) | Multi-Factor Authentication を適用できないため、敵対者に好まれるエントリ ポイントになる POP、SMTP、IMAP、MAPI などのレガシ認証プロトコルをブロックします。 | Azure AD Premium P1 |
 | [条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md) | 条件付きアクセス ポリシーを使用して、機密性の高いアプリケーションにアクセスするときには 2 段階認証を実行するようユーザーに要求します。 | Azure AD Premium P1 |
 | [Azure Active Directory Identity Protection を有効にする](../identity-protection/overview-identity-protection.md) | 組織内のユーザーについて、リスクのあるサインインや侵害された資格情報の追跡を有効にします。 | Azure AD Premium P2 |
 | [リスク検出を使用して多要素認証とパスワード変更をトリガーする](../authentication/tutorial-risk-based-sspr-mfa.md) | 多要素認証、パスワードのリセット、リスクに基づいたサインインのブロックなどのイベントをトリガーできるオートメーションを有効にします。 | Azure AD Premium P2 |
-| [セルフサービス パスワード リセットと Azure AD Multi-Factor Authentication の集中型登録 (プレビュー) を有効にする](../authentication/concept-registration-mfa-sspr-converged.md) | Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 | Azure AD Premium P1 |
+| [セルフサービス パスワード リセットと Azure AD Multi-Factor Authentication の統合された登録を有効にする](../authentication/concept-registration-mfa-sspr-combined.md) | Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>フェーズ 2:ユーザーのインポート、同期の有効化、デバイスの管理
 

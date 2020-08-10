@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/28/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389294"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169431"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -86,7 +87,7 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 
 次に、スコープを追加して API を公開します。
 
-1. **[管理]** の **[API の公開]** を選択します。
+1. 左側のメニューの **[管理]** で、 **[API の公開]** を選択します。
 1. **[スコープの追加]** 、 **[保存して続行]** の順に選択し、既定のアプリケーション ID URI をそのまま使用します。
 1. 次の値を入力して、ご自身の Azure AD B2C テナントでカスタム ポリシーの実行を許可するスコープを作成します。
     * **スコープ名**: `user_impersonation`
@@ -109,13 +110,13 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 
 次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
 
-1. **[管理]** で、 **[認証]** を選択します。
+1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
 1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
 1. **[保存]** を選択します。
 
 次に、*IdentityExperienceFramework* 登録で前に公開した API スコープに、アクセス許可を付与します。
 
-1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
+1. 左側のメニューの **[管理]** で、 **[API のアクセス許可]** を選択します。
 1. **[構成されたアクセス許可]** の下で **[アクセス許可の追加]** を選択します。
 1. **[自分の API]** タブ、**IdentityExperienceFramework** アプリケーションの順に選択します。
 1. **[アクセス許可]** で、前に定義した **[user_impersonation]** スコープを選択します。

@@ -4,16 +4,16 @@ description: Azure 仮想マシンでの GRUB 用シリアル コンソールの
 services: virtual-machines-linux
 author: asinn826
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7e558464c82db9d71132c4b1f53f9892d2d653
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758509"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292234"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
 GRUB は、GRand Unified Bootloader の略です。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
@@ -78,7 +78,7 @@ RHEL 7.4 以降または 6.9 以降の場合の代わりの方法として、GRU
 1. Ctrl キーを押しながら X キーを押して終了し、適用された設定で再起動します
 1. シングル ユーザー モードが開始される前に管理者パスワードの入力が求められます (前述の手順で作成したパスワードを入力します)    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![コマンドライン インターフェイスを示すアニメーション イメージ。 ユーザーは、サーバーを選択し、カーネル行の末尾を見つけて、指定されたテキストを入力します。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>RHEL で root アカウントを有効にせずにシングル ユーザー モードを開始する
 前述の手順を実行して root ユーザーを有効にしなかった場合でも、root パスワードをリセットできます。 次の手順を実行してください。
@@ -95,7 +95,7 @@ RHEL 7.4 以降または 6.9 以降の場合の代わりの方法として、GRU
 1. シングル ユーザー モードで起動したら、`chroot /sysroot` と入力して `sysroot` jail に切り替えます
 1. これで root になりました。 `passwd` を使用して root パスワードをリセットしてから、前述の手順を使用してシングル ユーザー モードを開始することができます。 完了したら、`reboot -f` と入力して再起動します。
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![コマンドライン インターフェイスを示すアニメーション イメージ。 ユーザーは、サーバーを選択し、カーネル行の末尾を検索して、指定されたコマンドを入力します。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > 注:前述の手順を実行すると、緊急シェルが開始されるので、`fstab` の編集などのタスクも実行できます。 ただし、一般的に受け入れられている提案は、root のパスワードをリセットし、それを使用してシングル ユーザー モードを開始することです。 
 
@@ -157,7 +157,7 @@ SLES での GRUB アクセスには、YaST を使用してブートローダー�
 1. GRUB を開始するには、VM を再起動し、起動シーケンス中に任意のキーを押します (GRUB が画面に表示されたままになります)
     - GRUB の既定のタイムアウトは 1 秒です。 これを変更するには、`/etc/default/grub` で `GRUB_TIMEOUT` 変数を変更します
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![コマンドライン インターフェイスを示すアニメーション イメージ。 ユーザーは、指定されたテキストを入力し、指定されたオプションを選択して、設定を保存します。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>SUSE SLES でのシングル ユーザー モード
 SLES が正常に起動できない場合は、自動的に緊急シェルが開始されます。 緊急シェルを手動で開始するには、次の手順を実行します。
@@ -178,7 +178,7 @@ Oracle Linux には GRUB が付属しており、すぐに使用できます。 
 Oracle Linux でシングル ユーザー モードを有効にするには、前述の RHEL の手順を実行します。
 
 ## <a name="next-steps"></a>次のステップ
-* 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](serial-console.md)を参照してください。
+* 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](../troubleshooting/serial-console-linux.md)を参照してください。
 * [NMI および SysRq 呼び出し](serial-console-nmi-sysrq.md)のためにシリアル コンソールを使用する
-* シリアル コンソールは、[Windows](../windows/serial-console.md) VM でも使用可能
-* [ブート診断](boot-diagnostics.md)の詳細を表示する
+* シリアル コンソールは、[Windows](../troubleshooting/serial-console-windows.md) VM でも使用可能
+* [ブート診断](../troubleshooting/boot-diagnostics.md)の詳細を表示する
