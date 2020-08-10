@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 64a33b12da0e9b90eaeb7039f65b2493a839a0c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054125"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
@@ -93,7 +93,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
   
 3. VMDK を ESXi サーバーにアップロードします。 ナビゲーター ウィンドウで **[ストレージ]** を選択します。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
+   ![ESXi サーバー サイト上のページのスクリーンショット。[ナビゲーター] ペインで [ストレージ] オプションが選択されています。](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
 4. 右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。 
 

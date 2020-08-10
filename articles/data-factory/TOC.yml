@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: マネージド仮想ネットワーク
-      href: managed-virtual-network-private-endpoint.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
@@ -211,14 +209,14 @@
       items:
         - name: データ ファクトリの視覚的な作成
           href: author-visually.md
+        - name: 反復開発とデバッグ
+          href: iterative-development-debugging.md
         - name: 管理ハブ
           href: author-management-hub.md
         - name: ソース管理
           href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
-        - name: 反復開発とデバッグ
-          href: iterative-development-debugging.md
     - name: Connectors
       items:
         - name: コネクタの概要
@@ -564,6 +562,8 @@
       items:
         - name: リンクされたサービスをパラメーター化する
           href: parameterize-linked-services.md
+        - name: グローバル パラメーター
+          href: author-global-parameters.md
         - name: 式言語
           href: control-flow-expression-language-functions.md
         - name: システム変数
@@ -588,6 +588,8 @@
           href: data-factory-service-identity.md
         - name: カスタマー マネージド キーの暗号化
           href: enable-customer-managed-key.md
+        - name: マネージド仮想ネットワーク
+          href: managed-virtual-network-private-endpoint.md
     - name: 監視と管理
       items:
         - name: 視覚的な監視
@@ -726,12 +728,16 @@
           href: pricing-concepts.md
     - name: トラブルシューティング ガイド
       items:
+        - name: Data Factory UX
+          href: data-factory-ux-troubleshoot-guide.md
         - name: Activities
           href: data-factory-troubleshoot-guide.md
         - name: Connectors
           href: connector-troubleshoot-guide.md
         - name: データ フロー
           href: data-flow-troubleshoot-guide.md
+        - name: データのコピー ツール
+          href: copy-data-tool-troubleshoot-guide.md
         - name: セルフホステッド統合ランタイム
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 統合ランタイム

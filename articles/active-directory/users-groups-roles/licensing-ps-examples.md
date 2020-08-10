@@ -14,16 +14,16 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727332"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025219"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD でのグループベース ライセンスの PowerShell と Graph の例
 
-グループベースのライセンスの機能はすべて [Azure ポータル](https://portal.azure.com)を通じて利用できます。現在、PowerShell と Microsoft Graph のサポートは読み取り専用操作に制限されていますが、 既存の [MSOnline PowerShell コマンドレット](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) と Microsoft Graph を使用して実行できる便利なタスクがいくつかあります。 このドキュメントでは、利用できる機能のいくつかの例を示します。
+グループベースのライセンスの機能はすべて [Azure ポータル](https://portal.azure.com)を通じて利用できます。現在、PowerShell と Microsoft Graph のサポートは読み取り専用操作に制限されていますが、 既存の [MSOnline PowerShell コマンドレット](/powershell/module/msonline) と Microsoft Graph を使用して実行できる便利なタスクがいくつかあります。 このドキュメントでは、利用できる機能のいくつかの例を示します。
 
 > [!NOTE]
 > コマンドレットの実行を開始する前に、`Connect-MsolService` コマンドレットを実行して、組織に接続していることを最初に確認します。

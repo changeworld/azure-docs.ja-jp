@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202541"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372022"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
@@ -35,7 +35,7 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 
 デバイスの問題が発生した場合は、システム ログからサポート パッケージを作成できます。 Microsoft サポートでは、このパッケージを使用して問題のトラブルシューティングを行います。 サポート パッケージを生成するには、次の手順を実行します。
 
-1. ローカル Web UI で、 **[サポートにお問い合わせ]** に移動し、 **[サポート パッケージの作成]** をクリックします。
+1. ローカル Web UI で、 **[サポートにお問い合わせ]** に移動し、 **[サポート パッケージの作成]** を選択します。
 
     ![サポート パッケージの作成 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 
     ![サポート パッケージの作成 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. サポート パッケージの作成が完了したら、 **[サポート パッケージのダウンロード]** をクリックします。 
+3. サポート パッケージの作成が完了したら、 **[サポート パッケージのダウンロード]** を選択します。
 
     ![サポート パッケージの作成 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. ダウンロードする場所を参照して選択します。 フォルダを開いて内容を表示します。
 
     ![サポート パッケージの作成 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>デバイスのシャットダウンと再起動
 
@@ -59,7 +58,7 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 デバイスをシャットダウンするには、次の手順を実行します。
 
 1. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
-2. **[シャットダウン]** をクリックします。
+2. **[シャットダウン]** を選択します。
 
     ![Data Box のシャット ダウン 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,11 +71,11 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 Data Box を再起動するには、次の手順を実行します。
 
 1. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
-2. **[Restart (再開)]** をクリックします。
+2. **[Restart]\(再起動\)** をクリックします。
 
     ![Data Box の再起動 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. 確認を求められたら、 **[OK]** をクリックして続行します。
+3. 確認を求められたら、 **[OK]** を選択して続行します。
 
    デバイスは、シャットダウンしてから再起動します。
 
@@ -90,9 +89,9 @@ Data Box を再起動するには、次の手順を実行します。
 
     ![デバイスの発送準備完了](media/data-box-portal-admin/ready-to-ship.png)
 
-2. **[ファイルの一覧のダウンロード]** をクリックして、自分の Data Box にコピーされたファイルの一覧をダウンロードします。
+2. **[ファイルの一覧のダウンロード]** を選択して、自分の Data Box にコピーされたファイルの一覧をダウンロードします。
 
-    ![[ファイルの一覧のダウンロード] をクリックする](media/data-box-portal-admin/download-list-of-files.png)
+    ![[ファイルの一覧のダウンロード] を選択する](media/data-box-portal-admin/download-list-of-files.png)
 
 3. エクスプローラーで、デバイスへの接続に使用されているプロトコルと使用されている Azure Storage の種類に応じて別個のファイルの一覧が生成されたことを確認できます。
 
@@ -179,10 +178,51 @@ Data Box を再起動するには、次の手順を実行します。
     ![チェックサムを無効にする](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. **[無効]** をクリックしてチェックサム検証を無効にします
-3. **[Apply]** をクリックします。
+3. **[適用]** を選択します。
 
 > [!NOTE]
 > チェックサム計算のスキップ オプションは、Azure Data Box がロック解除されている場合にのみ使用できます。 デバイスがロックされている場合、このオプションは表示されません。
 
-- [Azure portal を使用して Data Box と Data Box Heavy を管理する](data-box-portal-admin.md)方法について学習します。
+## <a name="enable-smb-signing"></a>SMB 署名を有効にする
 
+サーバー メッセージ ブロック (SMB) 署名は、SMB を使用する通信にパケット レベルでデジタル署名できる機能です。 この署名により、転送中の SMB パケットを変更する攻撃を防ぐことができます。
+
+SMB 署名に関する詳細については、「[サーバー メッセージ ブロックの署名の概要](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing)」を参照してください。
+
+Azure デバイスで SMB 署名を有効にするには、次のようにします。
+
+1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
+
+    ![[設定] を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. SMB 署名を **[有効]** にします。
+
+    ![SMB 署名を有効にする](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. **[適用]** を選択します。
+4. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
+5. **[Restart]\(再起動\)** をクリックします。
+
+## <a name="enable-tls-11"></a>TLS 1.1 を有効にする
+
+既定の Azure Data Box では、トランスポート層セキュリティ (TLS) 1.1 より安全性が高いため、TLS 1.2 が暗号化に使用されます。 ただし、ユーザーまたはクライアントがブラウザーを使用して TLS 1.2 がサポートされていないデータにアクセスする場合は、TLS 1.1 を有効にすることができます。
+
+TLS に関する詳細については、[Azure Data Box Gateway のセキュリティ](../databox-online/data-box-gateway-security.md)に関する記事を参照してください。
+
+Azure デバイスで TLS 1.1 を有効にするには、次のようにします。
+
+1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
+
+    ![[設定] を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. TLS 1.1 を **[有効]** にします。
+
+    ![TLS 1.1 を有効にする](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. **[適用]** を選択します。
+4. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
+5. **[Restart]\(再起動\)** をクリックします。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure portal を使用して Data Box と Data Box Heavy を管理する](data-box-portal-admin.md)方法について学習します。

@@ -14,12 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 95bdd3b3dddd1a04e00d705449681985400e9621
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74896115"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87487634"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI の例: 資産の公開
 
@@ -27,7 +28,7 @@ ms.locfileid: "74896115"
 
 ## <a name="prerequisites"></a>前提条件 
 
-[Media Services アカウントを作成する](create-account-cli-how-to.md)
+[Media Services アカウントを作成する](./create-account-howto.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

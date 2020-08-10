@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207092"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285681"
 ---
 # <a name="how-to-use-image-templates"></a>イメージ テンプレートの使用方法
 
@@ -148,44 +148,337 @@ SVG 画像テンプレートでは、次のプレースホルダー値がサポ�
 
 **シンボル アイコン テンプレート**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| marker | marker-thick | marker-circle | marker-flat |
-|![marker アイコン](./media/image-templates/marker.png)|![marker-thick アイコン](./media/image-templates/marker-thick.png)|![marker-circle アイコン](./media/image-templates/marker-circle.png)|![marker-flat アイコン](./media/image-templates/marker-flat.png)|
-||||
-| marker-square | marker-square-cluster | marker-arrow | marker-ball-pin | 
-|![marker-square アイコン](./media/image-templates/marker-square.png)|![marker-square-cluster アイコン](./media/image-templates/marker-square-cluster.png)|![marker-arrow アイコン](./media/image-templates/marker-arrow.png)|![marker-ball-pin アイコン](./media/image-templates/marker-ball-pin.png)|
-||||
-| marker-square-rounded | marker-square-rounded-cluster | フラグ | flag-triangle |
-| ![marker-square-rounded アイコン](./media/image-templates/marker-square-rounded.png) | ![marker-square-rounded-cluster アイコン](./media/image-templates/marker-square-rounded-cluster.png) | ![flag アイコン](./media/image-templates/flag.png) | ![flag-triangle アイコン](./media/image-templates/flag-triangle.png) |
-||||
-| triangle | triangle-thick | triangle-arrow-up | triangle-arrow-left |
-| ![triangle アイコン](./media/image-templates/triangle.png) | ![triangle-thick アイコン](./media/image-templates/triangle-thick.png) | ![triangle-arrow-up アイコン](./media/image-templates/triangle-arrow-up.png) | ![triangle-arrow-left アイコン](./media/image-templates/triangle-arrow-left.png) |
-||||
-| hexagon | hexagon-thick | hexagon-rounded | hexagon-rounded-thick |
-| ![hexagon アイコン](./media/image-templates/hexagon.png) | ![hexagon-thick アイコン](./media/image-templates/hexagon-thick.png) | ![hexagon-rounded アイコン](./media/image-templates/hexagon-rounded.png) | ![hexagon-rounded-thick アイコン](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| pin | pin-round | rounded-square | rounded-square-thick |
-| ![pin アイコン](./media/image-templates/pin.png) | ![pin-round アイコン](./media/image-templates/pin-round.png) | ![rounded-square アイコン](./media/image-templates/rounded-square.png) | ![rounded-square-thick アイコン](./media/image-templates/rounded-square-thick.png) |
-||||
-| arrow-up | arrow-up-thin | car ||
-| ![arrow-up アイコン](./media/image-templates/arrow-up.png) | ![arrow-up-thin アイコン](./media/image-templates/arrow-up-thin.png) | ![car アイコン](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      marker
+   :::column-end:::
+   :::column span="":::
+      marker-thick
+   :::column-end:::
+   :::column span="":::
+      marker-circle
+   :::column-end:::
+   :::column span="":::
+      marker-flat
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![marker アイコン](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![marker-thick アイコン](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![marker-circle アイコン](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![marker-flat アイコン](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      marker-square
+   :::column-end:::
+   :::column span="":::
+      marker-square-cluster
+   :::column-end:::
+   :::column span="":::
+      marker-arrow
+   :::column-end:::
+   :::column span="":::
+      marker-ball-pin
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![marker-square アイコン](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![marker-square-cluster アイコン](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![marker-arrow アイコン](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![marker-ball-pin アイコン](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      marker-square-rounded
+   :::column-end:::
+   :::column span="":::
+      marker-square-rounded-cluster
+   :::column-end:::
+   :::column span="":::
+      フラグ
+   :::column-end:::
+   :::column span="":::
+      flag-triangle
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![marker-square-rounded アイコン](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![marker-square-rounded-cluster アイコン](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![flag アイコン](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![flag-triangle アイコン](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      triangle
+   :::column-end:::
+   :::column span="":::
+      triangle-thick
+   :::column-end:::
+   :::column span="":::
+      triangle-arrow-up
+   :::column-end:::
+   :::column span="":::
+      triangle-arrow-left
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![triangle アイコン](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![triangle-thick アイコン](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![triangle-arrow-up アイコン](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![triangle-arrow-left アイコン](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      hexagon
+   :::column-end:::
+   :::column span="":::
+      hexagon-thick
+   :::column-end:::
+   :::column span="":::
+      hexagon-rounded
+   :::column-end:::
+   :::column span="":::
+      hexagon-rounded-thick
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![hexagon アイコン](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![hexagon-thick アイコン](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![hexagon-rounded アイコン](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![hexagon-rounded-thick アイコン](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      pin
+   :::column-end:::
+   :::column span="":::
+      pin-round
+   :::column-end:::
+   :::column span="":::
+      rounded-square
+   :::column-end:::
+   :::column span="":::
+      rounded-square-thick
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pin アイコン](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![pin-round アイコン](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![rounded-square アイコン](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![rounded-square-thick アイコン](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      arrow-up
+   :::column-end:::
+   :::column span="":::
+      arrow-up-thin
+   :::column-end:::
+   :::column span="":::
+      car
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![arrow-up アイコン](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![arrow-up-thin アイコン](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![car アイコン](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **多角形塗りつぶしパターン テンプレート**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| checker | checker-rotated | circles | circles-spaced |
-| ![checker アイコン](./media/image-templates/checker.png) | ![checker-rotated アイコン](./media/image-templates/checker-rotated.png) | ![circles アイコン](./media/image-templates/circles.png) | ![circles-spaced アイコン](./media/image-templates/circles-spaced.png) |
-|||||
-| diagonal-lines-up | diagonal-lines-down | diagonal-stripes-up | diagonal-stripes-down |
-| ![diagonal-lines-up アイコン](./media/image-templates/diagonal-lines-up.png) | ![diagonal-lines-down アイコン](./media/image-templates/diagonal-lines-down.png) | ![diagonal-stripes-up アイコン](./media/image-templates/diagonal-stripes-up.png) | ![diagonal-stripes-down アイコン](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| grid-lines | rotated-grid-lines | rotated-grid-stripes | x-fill |
-| ![grid-lines アイコン](./media/image-templates/grid-lines.png) | ![rotated-grid-lines アイコン](./media/image-templates/rotated-grid-lines.png) | ![rotated-grid-stripes アイコン](./media/image-templates/rotated-grid-stripes.png) | ![x-fill アイコン](./media/image-templates/x-fill.png) |
-|||||
-| zig-zag | zig-zag-vertical | dots |  |
-| ![zig-zag アイコン](./media/image-templates/zig-zag.png) | ![zig-zag-vertical アイコン](./media/image-templates/zig-zag-vertical.png) | ![dots アイコン](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      checker
+   :::column-end:::
+   :::column span="":::
+      checker-rotated
+   :::column-end:::
+   :::column span="":::
+      circles
+   :::column-end:::
+   :::column span="":::
+      circles-spaced
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![checker アイコン](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![checker-rotated アイコン](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![circles アイコン](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![circles-spaced アイコン](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      diagonal-lines-up
+   :::column-end:::
+   :::column span="":::
+      diagonal-lines-down
+   :::column-end:::
+   :::column span="":::
+      diagonal-stripes-up
+   :::column-end:::
+   :::column span="":::
+      diagonal-stripes-down
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![diagonal-lines-up アイコン](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![diagonal-lines-down アイコン](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![diagonal-stripes-up アイコン](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![diagonal-stripes-down アイコン](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      grid-lines
+   :::column-end:::
+   :::column span="":::
+      rotated-grid-lines
+   :::column-end:::
+   :::column span="":::
+      rotated-grid-stripes
+   :::column-end:::
+   :::column span="":::
+      x-fill
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![grid-lines アイコン](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![rotated-grid-lines アイコン](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![rotated-grid-stripes アイコン](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![x-fill アイコン](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      zig-zag
+   :::column-end:::
+   :::column span="":::
+      zig-zag-vertical
+   :::column-end:::
+   :::column span="":::
+      dots
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![zig-zag アイコン](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![zig-zag-vertical アイコン](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![dots アイコン](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **事前に読み込まれるイメージ アイコン**
 

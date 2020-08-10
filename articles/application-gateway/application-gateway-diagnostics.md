@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889697"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517877"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -156,7 +156,9 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ### <a name="access-log"></a>アクセス ログ
 
-アクセス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次の v1 の例に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。
+アクセス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。 
+
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>Application Gateway Standard および WAF SKU (v1) の場合
 
 |値  |説明  |
 |---------|---------|
@@ -200,7 +202,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
     }
 }
 ```
-Application Gateway と WAF v2 の場合、ログにはさらにいくつかの情報が表示されます。
+#### <a name="for-application-gateway-and-waf-v2-sku"></a>Application Gateway と WAF v2 SKU の場合
 
 |値  |説明  |
 |---------|---------|
@@ -221,7 +223,10 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
 |serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
-|host| 要求のホスト ヘッダーに表示されているアドレス。|
+|host| 要求のホスト ヘッダーに表示されているアドレス。 書き換えられた場合、このフィールドには更新されたホスト名が含まれます|
+|originalRequestUriWithArgs| このフィールドには元の要求 URL が含まれています |
+|requestUri| このフィールドには、Application Gateway での書き換え操作後の URL が含まれています |
+|originalHost| このフィールドには、元の要求ホスト名が含まれています
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",

@@ -1,6 +1,5 @@
 ---
-title: Excel で Web サービスを使用する
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):Excel で Web サービスを使用する - Azure
 description: Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 8f9e0fb900bb3265c6ec79a85fb19efd76e719ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9459977d2b72374bdfd081d164da7d1861576cc7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282536"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio (クラシック) Web サービスの使用
+
+**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
 
 Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 

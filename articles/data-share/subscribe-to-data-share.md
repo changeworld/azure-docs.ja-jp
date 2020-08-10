@@ -1,17 +1,17 @@
 ---
 title: チュートリアル:データの受け入れと受信 - Azure Data Share
 description: チュートリアル - Azure Data Share を使用したデータの受け入れと受信
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/10/2019
-ms.openlocfilehash: 4dff48f909cd3febbbb7e92dcf96070020b8f57c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/30/2020
+ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82145147"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512093"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 

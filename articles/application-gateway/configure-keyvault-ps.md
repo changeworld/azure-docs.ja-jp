@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 5e0cb1a5c5c115aa1aaf9697e19631e2142853a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808061"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386284"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して TLS 終端を構成する
 
@@ -73,7 +73,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> TLS 終端が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
+> TLS 終端が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/general/soft-delete-overview.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 

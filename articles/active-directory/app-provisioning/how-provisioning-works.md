@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781652"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445612"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -162,7 +162,7 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 
 ### <a name="how-long-provisioning-takes"></a>プロビジョニングにかかる時間
 
-プロビジョニング ジョブで実行されているのが初期プロビジョニング サイクルか増分サイクルかによって、パフォーマンスが異なります。 プロビジョニングにかかる時間、およびプロビジョニング サービスの状態を監視する方法について詳しくは、[ユーザー プロビジョニングの状態の確認](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)に関するページをご覧ください。
+プロビジョニング ジョブで実行されているのが初期プロビジョニング サイクルか増分サイクルかによって、パフォーマンスが異なります。 プロビジョニングにかかる時間、およびプロビジョニング サービスの状態を監視する方法について詳しくは、[ユーザー プロビジョニングの状態の確認](application-provisioning-when-will-provisioning-finish-specific-user.md)に関するページをご覧ください。
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>ユーザーが正しくプロビジョニングされているかどうかを確認する方法
 

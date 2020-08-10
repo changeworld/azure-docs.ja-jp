@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281227"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -99,7 +99,7 @@ AKS クラスターの作成には数分かかります。
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-次に、[kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示します。 次の例に示されているように、*failure-domain.beta.kubernetes.io/zone* 値をフィルター処理します。
+次に、[kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示し、*failure-domain.beta.kubernetes.io/zone* 値でフィルター処理します。 Bash シェルの例を次に示します。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -131,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-数分後にスケール操作が完了すると、コマンド `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` によって、次の例のような出力が得られます。
+数分後にスケール操作が完了すると、Bash シェルのコマンド `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` によって、次の例のような出力が得られます。
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -152,7 +152,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-ポッドが実行されているノードを表示すると、3 つの異なる可用性ゾーンに対応するノードでポッドが実行されていることがわかります。 たとえば、コマンド `kubectl describe pod | grep -e "^Name:" -e "^Node:"` を使用すると、次のような出力が表示されます。
+ポッドが実行されているノードを表示すると、3 つの異なる可用性ゾーンに対応するノードでポッドが実行されていることがわかります。 たとえば、Bash シェルでコマンド `kubectl describe pod | grep -e "^Name:" -e "^Node:"` を使用すると、次のような出力が表示されます。
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

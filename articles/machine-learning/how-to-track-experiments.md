@@ -3,21 +3,20 @@ title: ML の実験とメトリックをログに記録する
 titleSuffix: Azure Machine Learning
 description: Azure ML の実験を監視し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 トレーニング スクリプトにログ記録を追加し、記録された実行結果を表示します。  run.log、Run.start_logging、ScriptRunConfig を使用します。
 services: machine-learning
-author: sdgilley
-ms.author: sgilley
-ms.reviewer: sgilley
+author: likebupt
+ms.author: keli19
+ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
-ms.topic: how-to
-ms.date: 03/12/2020
-ms.custom: seodec18
-ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 9833c0974af9a5bcc069ad41cfb57631dbed34dc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675204"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320954"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -108,7 +107,7 @@ Azure Machine Learning SDK を使用して実験の追跡を追加し、永続�
 
 __Python スクリプトの実行__モジュールを使用して、ログ記録のロジックをデザイナーの実験に追加します。 このワークフローを使用して任意の値をログに記録することができますが、__モデルの評価__モジュールからメトリックをログに記録し、さまざまな実行にわたってモデルのパフォーマンスを追跡する場合に特に便利です。
 
-1. __Python スクリプトの実行__モジュールを__モデルの評価__モジュールの出力に接続します。
+1. __Python スクリプトの実行__モジュールを__モデルの評価__モジュールの出力に接続します。 __モデルの評価__では、2 つのモデルの評価結果を出力できます。 次の例では、親の実行レベルで 2 つの出力ポートのメトリックをログに記録する方法を示します。 
 
     ![Python スクリプトの実行モジュールをモデルの評価モジュールに接続する](./media/how-to-track-experiments/designer-logging-pipeline.png)
 
@@ -116,23 +115,29 @@ __Python スクリプトの実行__モジュールを使用して、ログ記録
 
     ```python
     # dataframe1 contains the values from Evaluate Model
-    def azureml_main(dataframe1 = None, dataframe2 = None):
+    def azureml_main(dataframe1=None, dataframe2=None):
         print(f'Input pandas.DataFrame #1: {dataframe1}')
-
+    
         from azureml.core import Run
-
+    
         run = Run.get_context()
-
-        # Log the mean absolute error to the current run to see the metric in the module detail pane.
-        run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
-
+    
         # Log the mean absolute error to the parent run to see the metric in the run details page.
         # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
         # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
-        run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+
+        # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
+        run.parent.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
+
+        # Log right output port result of Evaluate Model.
+        run.parent.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
     
         return dataframe1,
     ```
+
+1. パイプラインの実行が完了すると、実験ページに *Mean_Absolute_Error* が表示されます。
+
+    ![Python スクリプトの実行モジュールをモデルの評価モジュールに接続する](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
 
 ## <a name="manage-a-run"></a>実行の管理
 

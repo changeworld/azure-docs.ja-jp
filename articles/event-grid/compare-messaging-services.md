@@ -3,20 +3,20 @@ title: Azure メッセージング サービスの比較
 description: Azure Event Grid、Event Hubs、および Service Bus の 3 つの Azure メッセージング サービスについて説明します。 さまざまなシナリオでどのサービスを使うべきか、お勧めします。
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 9c539accbc41f56e4421b9e793c25496987363aa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101377"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460407"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
 
 Azure には、ソリューション全体にわたるイベント メッセージの配信を支援する 3 つのサービスがあります。 これらのサービスを次に示します。
 
-* [Event Grid](/azure/event-grid/)
-* [Event Hubs](/azure/event-hubs/)
-* [Service Bus](/azure/service-bus-messaging/)
+* [Event Grid](./index.yml)
+* [Event Hubs](../event-hubs/index.yml)
+* [Service Bus](../service-bus-messaging/index.yml)
 
 いくつかの類似点もありますが、各サービスはそれぞれ、特定のシナリオ向けに設計されています。 この記事では、これらのサービスの相違点について説明し、アプリケーションでどのサービスを選択すればよいかを把握しやすくします。 多くの場合、メッセージング サービスは補完的で、組み合わせて使用することができます。
 

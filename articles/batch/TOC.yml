@@ -51,6 +51,9 @@
   items:
     - name: セキュリティ
       items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: Batch サービスのワークフローとリソース

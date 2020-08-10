@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services コンテナーを削除する
 description: この記事では、依存関係を削除してから Azure Backup Recovery Services コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055190"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -27,7 +27,7 @@ ms.locfileid: "85563117"
 
 - 内部にリソースが存在するため、資格情報コンテナーを削除できません。 バックアップ項目、保護されたサーバー、またはこのコンテナーに関連付けられたバックアップ管理サーバーがないことを確認してください。 削除を続行する前に、このコンテナーに関連付けられた次のコンテナーの登録を解除します。
 
-- Recovery Services コンテナー内に論理的に削除された状態のバックアップ項目があるため、そのコンテナーを削除できません。 論理的に削除された項目は、削除操作の 14 日後に完全に削除されます。 バックアップ項目が完全に削除され、コンテナーに論理的な削除状態の項目がなくなってからコンテナーの削除を試みてください。 詳細については、「[Azure Backup の論理的な削除](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)」を参照してください。
+- Recovery Services コンテナー内に論理的に削除された状態のバックアップ項目があるため、そのコンテナーを削除できません。 論理的に削除された項目は、削除操作の 14 日後に完全に削除されます。 バックアップ項目が完全に削除され、コンテナーに論理的な削除状態の項目がなくなってからコンテナーの削除を試みてください。 詳細については、「[Azure Backup の論理的な削除](./backup-azure-security-feature-cloud.md)」を参照してください。
 
 ## <a name="proper-way-to-delete-a-vault"></a>コンテナーを削除する正しい方法
 
@@ -36,9 +36,9 @@ ms.locfileid: "85563117"
 
 コンテナーを正しく削除するには、次の順序で手順に従う必要があります。
 
-- **手順 1.** :論理的な削除機能を無効にします。 論理的な削除を無効にする手順については、[ここを参照](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)してください。
+- **手順 1.** :論理的な削除機能を無効にします。 論理的な削除を無効にする手順については、[ここを参照](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)してください。
 
-- **手順 2**:論理的な削除を無効にしたら、以前に論理的に削除された状態で残っている項目があるかどうかを確認します。 論理的に削除された状態の項目がある場合は、*削除の取り消し*と、再度の*削除*を行う必要があります。 [次の手順に従って](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items)論理的な削除の項目を見つけ、それらを完全に削除します。
+- **手順 2**:論理的な削除を無効にしたら、以前に論理的に削除された状態で残っている項目があるかどうかを確認します。 論理的に削除された状態の項目がある場合は、*削除の取り消し*と、再度の*削除*を行う必要があります。 [次の手順に従って](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items)論理的な削除の項目を見つけ、それらを完全に削除します。
 
 - **手順 3**:次の 3 つの場所すべてを調べて、保護された項目があるかどうかを確認する必要があります。
 
@@ -209,7 +209,7 @@ MABS または DPM 管理コンソールからバックアップ項目を削除�
            [<CommonParameters>]
     ```
 
-  Azure Backup で保護された項目の保護を無効にする方法について、[詳細を参照](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0)してください。
+  Azure Backup で保護された項目の保護を無効にする方法について、[詳細を参照](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection)してください。
 
 - クラウド内のバックアップで保護されているすべての項目の保護を停止し、データを削除します (例:IaaS VM、Azure ファイル共有など)。
 
@@ -225,7 +225,7 @@ MABS または DPM 管理コンソールからバックアップ項目を削除�
        [<CommonParameters>]
     ```
 
-    Backup で保護された項目の保護の無効化について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) してください。
+    Backup で保護された項目の保護の無効化について、[詳細を学習](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) してください。
 
 - Azure をバックアップ先とする Azure Backup エージェント (MARS) を使用して保護されているオンプレミスのファイルとフォルダーの場合は、次の PowerShell コマンドを使用して、各 MARS PowerShell モジュールからバックアップ データを削除します。
 
@@ -263,7 +263,7 @@ MABS または DPM 管理コンソールからバックアップ項目を削除�
               [<CommonParameters>]
     ```
 
-    ボールトからの Windows Server またはその他のコンテナーの登録解除について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0)してください。
+    ボールトからの Windows Server またはその他のコンテナーの登録解除について、[詳細を学習](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer)してください。
 
 - MABS (Microsoft Azure Backup Server) または Azure への DPM (System Center Data Protection Manager) を使用して保護されたオンプレミスのマシンの場合:
 
@@ -278,7 +278,7 @@ MABS または DPM 管理コンソールからバックアップ項目を削除�
           [<CommonParameters>]
     ```
 
-    ボールトからのバックアップ管理コンテナーの登録解除について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0)してください。
+    ボールトからのバックアップ管理コンテナーの登録解除について、[詳細を学習](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer)してください。
 
 バックアップされたデータを完全に削除し、すべてのコンテナーの登録を解除してから、ボールトの削除に進みます。
 
@@ -293,7 +293,7 @@ Recovery Services コンテナーを削除するには:
       [<CommonParameters>]
    ```
 
-Recovery Services コンテナーの削除について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)してください。
+Recovery Services コンテナーの削除について、[詳細を学習](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)してください。
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>CLI を使用して Recovery Services コンテナーを削除する
 
@@ -330,7 +330,7 @@ Recovery Services コンテナーの削除について、[詳細を学習](https
                        [--yes]
     ```
 
-    詳細については、こちらの [記事](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest)を参照してください
+    詳細については、こちらの [記事](/cli/azure/backup/vault?view=azure-cli-latest)を参照してください
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Recovery Services コンテナーを削除する
 

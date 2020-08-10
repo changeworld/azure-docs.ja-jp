@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066347"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
@@ -162,7 +162,7 @@ ms.locfileid: "83831621"
 
 > [!NOTE]
 > これらの手順では Office 365 Outlook を使用できますが、Logic Apps がサポートするどの電子メール プロバイダーでも使用できます。 
-> [こちらからコネクタの一覧を確認してください](https://docs.microsoft.com/connectors/)。 別の電子メール アカウントを使用する場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。 
+> [こちらからコネクタの一覧を確認してください](/connectors/)。 別の電子メール アカウントを使用する場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。 
 
 1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーの検索ボックスの下で、 **[すべて]** を選択します。 「定期的」を検索します。 
    トリガーの一覧から、 **[定期的なスケジュール]** を選択します。
@@ -335,7 +335,7 @@ ms.locfileid: "83831621"
 
 ## <a name="get-support"></a>サポートを受ける
 
-* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)を参照してください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ

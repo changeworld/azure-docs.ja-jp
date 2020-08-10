@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300792"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529031"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
@@ -68,8 +68,8 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 7. インストールが完了したら、Log Analytics ワークスペースに移動し、 **[詳細設定]** をクリックします。 **[データ]** ページに移動し、 **[Windows パフォーマンス カウンター]** をクリックします。 
 8. **+** をクリックすると、次の 2 つのカウンターが 300 秒のサンプル間隔で追加されます。
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 チャーンおよびアップロード レート データがワークスペースに送信されます。
 

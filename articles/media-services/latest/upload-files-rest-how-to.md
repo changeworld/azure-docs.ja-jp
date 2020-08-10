@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57839c82af71f7cedfe1b3c77095210d273be4a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091846"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>REST を使用して Media Services v3 アカウントにファイルをアップロードする
 
-Media Services で、デジタル ファイルをアセットに関連付けられている BLOB コンテナーにアップロードします。 [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を格納できます。 ファイルをアセットのコンテナーにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
+Media Services で、デジタル ファイルをアセットに関連付けられている BLOB コンテナーにアップロードします。 [Asset](/rest/api/media/operations/asset) エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を格納できます。 ファイルをアセットのコンテナーにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
 この記事では、REST を使用してローカル ファイルをアップロードする方法を示します。
 

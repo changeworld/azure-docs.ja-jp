@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 478d9c0485125870f8d5ffb4132f46476b4bb4ef
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 924654dace53b326e3a29bb834f773122b0476ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081119"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -134,7 +134,7 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **C# モジュール**を選択します。 |
    | Provide a module name (モジュール名の指定) | 既定の **SampleModule** を受け入れます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/samplemodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/samplemodule のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -212,13 +212,19 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 1. **[表示]**  >  **[ターミナル]** の順に選択して、Visual Studio Code 統合ターミナルを開きます。
 
-2. レジストリを作成した後に保存した Azure コンテナー レジステリの資格情報を使用して Docker にサインインします。
+2. レジストリを作成した後に保存した Azure Container Registry の資格情報を使用して Docker にサインインします。
 
    ```cmd/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
    `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
+   
+3. Azure Container Registry にログインする
+
+   ```cmd/sh
+   az acr login -n <ACR registry name>
+   ```
 
 ### <a name="build-and-push"></a>ビルドとプッシュ
 
@@ -262,7 +268,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 モジュール イメージをビルドおよびプッシュしているときにエラーが発生する場合は、開発マシン上の Docker 構成に関連していることがよくあります。 次のチェックを使用して構成を確認してください。
 
 * コンテナー レジストリからコピーした資格情報を使用して `docker login` コマンドを実行したか。 これらの資格情報は、Azure にサインインする際に使用するものとは異なります。
-* コンテナー リポジトリは正しいか。 正しいコンテナー レジストリ名と正しいモジュール名が含まれているか。 SampleModule フォルダー内の **module.json** ファイルを開いて確認してください。 リポジトリ値は、 **\<レジストリ名\>.azurecr.io/samplemodule** のようになっているはずです。
+* コンテナー リポジトリは正しいか。 正しいコンテナー レジストリ名と正しいモジュール名が含まれているか。 SampleModule フォルダー内の **module.json** ファイルを開いて確認してください。 リポジトリ値は、 **\<registry name\>.azurecr.io/samplemodule** のようになっているはずです。
 * **SampleModule** とは異なる名前を自分のモジュールに使用した場合、その名前はソリューション全体で一貫しているか。
 * 対象のマシンは、ビルドしているのと同じ種類のコンテナーを実行しているか。 このチュートリアルは Linux IoT Edge デバイスを対象としているため、Visual Studio Code のサイド バーには **amd64** または **arm32v7** と表示され、Docker Desktop は Linux コンテナーを実行している必要があります。  
 

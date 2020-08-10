@@ -64,6 +64,8 @@
       href: manage-recording-policy-how-to.md
     - name: 任意の AI を利用したライブ ビデオの分析
       href: analyze-with-ai-your-choice-how-to.md
+    - name: ポータルを使用したダイレクト メソッドの呼び出し
+      href: use-azure-portal-to-invoke-direct-methods.md
     - name: トラブルシューティング
       href: troubleshoot-how-to.md
 - name: リファレンス

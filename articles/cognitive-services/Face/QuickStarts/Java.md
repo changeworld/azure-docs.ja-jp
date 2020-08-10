@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ccf4d68b90713212685f2583ba5a8db11bd1d050
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: c0ce166c571d54980e0703fd2891c173838a4674
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986565"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325510"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>クイック スタート:REST API と Java を使用して画像内の顔を検出する
 

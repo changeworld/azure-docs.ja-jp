@@ -3,12 +3,12 @@ title: Azure でアプリをテストする方法 | Microsoft Docs
 description: ラボでファイル共有を作成し、ラボ内のローカル コンピューターと仮想マシンにマウントし、デスクトップまたは web アプリケーションをファイル共有にデプロイしてテストする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476497"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282247"
 ---
 # <a name="test-your-app-in-azure"></a>Azure でアプリをテストする 
 このアーティクルでは、DevTest Labs を使用して Azure のアプリケーションをテストするための手順を提供します。 最初に、ラボ内のファイル共有を設定して、ローカル開発用コンピューターとラボ内の VM にドライブとしてマウントします。 次に、Visual Studio 2019 を使用して、ラボの VM でアプリを実行できるように、ファイル共有にアプリをデプロイします。  
@@ -18,7 +18,7 @@ ms.locfileid: "85476497"
 ## <a name="prerequisites"></a>前提条件 
 1. サブスクリプションをまだ持っていない場合は[Azure サブスクリプションを作成](https://azure.microsoft.com/free/)し、 [Azure portal](https://portal.azure.com)にサインインします。
 2. [このアーティクル](devtest-lab-create-lab.md)の手順に従い、Azure DevTest Labs を使用してラボを作成します。 次回サインインした時に簡単に見つけられるように、ラボをダッシュボードにピン留めします。 Azure DevTest Labs では、無駄を最小限に抑えて原価を管理することで、 Azure 内のリソースを素早く作成することができます。 DevTest Labs の詳細はについては、 [概要](devtest-lab-overview.md)を参照してください。 
-3. [ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)アーティクルの手順に従い、ラボのリソース グループ内に Azure Storage アカウントを作成します。 **ストレージ アカウントを作成する**ページで、**リソース グループ**用に**Use existing**を選択し、**ラボのリソース グループ**を選択します。 
+3. [ストレージ アカウントを作成する](../storage/common/storage-account-create.md)アーティクルの手順に従い、ラボのリソース グループ内に Azure Storage アカウントを作成します。 **ストレージ アカウントを作成する**ページで、**リソース グループ**用に**Use existing**を選択し、**ラボのリソース グループ**を選択します。 
 4. [Azure Files にファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md)アーティクル内の手順に従い、Azure storage 内にファイル共有を作成します。 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>ローカル コンピューターにファイル共有をマウントする

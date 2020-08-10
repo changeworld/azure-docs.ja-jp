@@ -6,18 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539909"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324116"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
 現在、この機能はプレビュー段階にあります。
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用するときにライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Application Insights Profiler は現在、Azure App Service 上の Linux でホストされている ASP.NET Core Web アプリで利用できます。 このガイドでは、ASP.NET Core Linux Web アプリのためにプロファイラー トレースを収集するしくみについて段階的に説明します。
+[Application Insights](./app-insights-overview.md) を使用するときにライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Application Insights Profiler は現在、Azure App Service 上の Linux でホストされている ASP.NET Core Web アプリで利用できます。 このガイドでは、ASP.NET Core Linux Web アプリのためにプロファイラー トレースを収集するしくみについて段階的に説明します。
 
 このチュートリアルを完了すると、図に示されているトレースのようなプロファイラー トレースをアプリで収集できるようになります。 この例では、プロファイラー トレースは、特定の Web 要求が待ち時間のために遅くなっていることを示しています。 アプリを遅くしているコード内の "*ホット パス*" には炎を模したアイコンが付きます。 **HomeController** セクションの **About** メソッドが **Thread.Sleep** 関数を呼び出しているため、Web アプリが遅くなっています。
 
@@ -149,7 +149,7 @@ ms.locfileid: "86539909"
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights を追加して Web アプリを監視する
 
-1. [Application Insights リソースを作成します](./../../azure-monitor/app/create-new-resource.md )。
+1. [Application Insights リソースを作成します](./create-new-resource.md)。
 
 2. Application Insights リソースの **iKey** 値をコピーし、自分の Web アプリで次のように設定します。
 
@@ -171,3 +171,4 @@ ms.locfileid: "86539909"
 Azure App Service でホストされているカスタム コンテナーを使用する場合は、[コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で Application Insight Profiler を有効にします。
 
 問題やご提案があれば、次の Application Insights GitHub リポジトリにご報告ください:[ApplicationInsights-Profiler-AspNetCore:Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)。
+

@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2d18a50a21c41830796c913a424707897d277218
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026766"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -264,6 +264,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90093 | GraphUserUnauthorized - 要求に対して Forbidden エラー コードが Graph から返されました。 |
 | AADSTS90094 | AdminConsentRequired - 管理者の同意が必要です。 |
 | AADSTS900382 | Confidential Client はクロスクラウド要求でサポートされていません。 |
+| AADSTS90099 | アプリケーション '{appId}' ({appName}) は、テナント '{tenant}' で承認されていません。 アプリケーションは、パートナー代理管理者が使用できるようになる前に、顧客テナントへのアクセスが承認されている必要があります。 事前同意を提供するか、適切な Partner Center API を実行してアプリケーションを承認します。 |
 | AADSTS90100 | InvalidRequestParameter - パラメーターが空であるか無効です。 |
 | AADSTS901002 | AADSTS901002:"resource" 要求パラメーターはサポートされていません。 |
 | AADSTS90101 | InvalidEmailAddress - 指定されたデータは有効な電子メール アドレスはありません。 電子メール アドレスは `someone@example.com` の形式である必要があります。 |

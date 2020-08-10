@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 07/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729244"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325255"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -153,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 *RoutingWeight* の範囲は 0 ～ 32000 です。 既定値は 0 です。
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath を構成する 
-ExpressRoute 回線が [ExpressRoute Direct](expressroute-erdirect-about.md) 上にあり、仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ の場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効することができます。 FastPath を使用すると、オンプレミス ネットワークと仮想ネットワーク間における 1 秒あたりのパケット数や 1 秒あたりの接続数など、データ パスのパフォーマンスが向上します。 
+仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ である場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効にすることができます。 FastPath を使用すると、オンプレミス ネットワークと仮想ネットワーク間における 1 秒あたりのパケット数や 1 秒あたりの接続数など、データ パスのパフォーマンスが向上します。 
 
 **新しい接続で FastPath を構成する**
 

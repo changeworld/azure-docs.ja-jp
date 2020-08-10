@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
-ms.openlocfilehash: 5417ff3b53526adbaeba2b9df58694ad495475d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284185"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>コマンドのパラメーターに構成を追加する
 

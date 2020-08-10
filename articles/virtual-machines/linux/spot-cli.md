@@ -4,16 +4,16 @@ description: CLI を使用して Azure スポット VM をデプロイし、コ�
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: d6560f11d26200bdd9f39c4cbae643022872d362
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8515668cc30f62edadc0975533fe3bb9646e5e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506074"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288378"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Azure CLI を使用してスポット VM をデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "85506074"
 
 VM に対して、1 時間あたりに支払うことができる最大価格を設定するオプションがあります。 スポット VM の最大価格は、小数点以下最大 5 桁を使用して米ドル (USD) で設定できます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準 VM の価格のいずれか低い方になります。 最大価格の設定の詳細については、[スポット VM の価格](spot-vms.md#pricing)に関するページを参照してください。
 
-Azure CLI を使用してスポットで VM を作成するプロセスは、[クイックスタートの記事](/azure/virtual-machines/linux/quick-create-cli)で詳しく説明されている内容と同じです。 '--priority Spot' パラメーターを追加し、`--eviction-policy` を Deallocate (既定値) または `Delete` に設定して、最大価格または `-1` を指定するだけです。 
+Azure CLI を使用してスポットで VM を作成するプロセスは、[クイックスタートの記事](./quick-create-cli.md)で詳しく説明されている内容と同じです。 '--priority Spot' パラメーターを追加し、`--eviction-policy` を Deallocate (既定値) または `Delete` に設定して、最大価格または `-1` を指定するだけです。 
 
 
 ## <a name="install-azure-cli"></a>Azure CLI のインストール

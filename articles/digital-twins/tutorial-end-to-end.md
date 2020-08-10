@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206545"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131737"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>エンド ツー エンドのソリューションを構築する
 
@@ -26,6 +26,9 @@ Azure Digital Twins インスタンスは、環境のライブ データによ�
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>Cloud Shell セッションの設定
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -90,7 +93,7 @@ Query
 * *ProcessHubToDTEvents*: 受信した IoT Hub データを処理し、それに応じて Azure Digital Twins を更新します。
 * *ProcessDTRoutedData*: デジタル ツインからのデータを処理し、それに応じて Azure Digital Twins 内の親ツインを更新します。
 
-このセクションでは、事前に作成された関数アプリを発行し、Azure Active Directory (AAD) ID を割り当てることで、関数アプリから Azure Digital Twins に確実にアクセスできるようにします。 これらの手順が完了すると、このチュートリアルで以降、関数アプリに含まれている関数を使用できるようになります。 
+このセクションでは、事前に作成された関数アプリを発行し、Azure Active Directory (Azure AD) ID を割り当てることで、関数アプリから Azure Digital Twins に確実にアクセスできるようにします。 これらの手順が完了すると、このチュートリアルで以降、関数アプリに含まれている関数を使用できるようになります。 
 
 ### <a name="publish-the-app"></a>アプリの発行
 
@@ -138,7 +141,7 @@ Visual Studio のメイン ウィンドウに再度 *[発行]* ペインが表�
 
 ### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
 
-次は、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される AAD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*所有者*" アクセス許可を付与します。
+次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*所有者*" アクセス許可を付与します。
 
 Azure Cloud Shell で次のコマンドを使用して、関数アプリがデジタル ツイン インスタンスを参照する目的で使用するアプリケーション設定を構成します。
 
@@ -420,7 +423,7 @@ Azure Cloud Shell から [az group delete](https://docs.microsoft.com/cli/azure/
 az group delete --name <your-resource-group>
 ```
 
-次に、クライアント アプリ用に作成した AAD アプリの登録を次のコマンドで削除します。
+次に、クライアント アプリ用に作成した Azure AD アプリの登録を次のコマンドで削除します。
 
 ```azurecli
 az ad app delete --id <your-application-ID>
@@ -433,7 +436,7 @@ az ad app delete --id <your-application-ID>
 このチュートリアルでは、デバイスのライブ データによって駆動される Azure Digital Twins を紹介するエンド ツー エンドのシナリオを作成しました。
 
 今度は、次のチュートリアルの概念ドキュメントを参照し、ここで扱った要素についてさらに理解を深めましょう。
-* [概念:カスタム モデル](concepts-models.md)
+* "[*概念: カスタム モデル*](concepts-models.md)"
 
 または、次のハウツー記事を足がかりとして、このチュートリアルで学んだプロセスについてさらに詳しい知識を身に付けることもできます。
-* [Azure Digital Twins CLI を使用する](how-to-use-cli.md)
+* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)

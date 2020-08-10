@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 5bf397cac26d3cc46e11f8ac60110629a528cd62
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 49692c08787103b09e6e1502f7a9a58736239fdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229824"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018997"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -138,7 +138,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 
 マネージド ID の種類 |すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
+| システム割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
 | ユーザー割り当て済み | 使用不可 | 使用不可  | 使用不可  | 使用不可 |
 
 
@@ -224,7 +224,7 @@ Azure Policy のために (それが提供されているリージョンで) マ
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-[Service Fabric アプリケーションのマネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) はプレビュー段階であり、すべてのリージョンで使用できます。
+すべてのリージョンで [Service Fabric アプリケーションのマネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) を使用できます。
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |

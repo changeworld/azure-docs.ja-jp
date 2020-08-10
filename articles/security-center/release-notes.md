@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 997b7b1442d29c4daa4e47c89a7f53d46c3b8c81
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 10bcbcba6163908be1725d66576c41c06c7cc2a2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969587"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405162"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -32,7 +32,28 @@ Azure のセキュリティは精力的な開発の下、継続的に改善さ�
 ## <a name="july-2020"></a>2020 年 7 月
 
 7 月の更新プログラムには次のものが含まれます。
+- [仮想マシンの脆弱性評価が、マーケットプレース以外のイメージに対して使用可能に](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)auto        
 - [Azure Files と Azure Data Lake Storage Gen2 を含むように拡張された Azure Storage の脅威の防止 (プレビュー)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [脅威の防止機能を有効にするための 8 つの新しい推奨事項](#eight-new-recommendations-to-enable-threat-protection-features)
+- [コンテナーのセキュリティ強化 - レジストリのスキャンの高速化とドキュメントの更新](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [適応型アプリケーション制御規則を更新するための新しい推奨事項](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [非推奨となった SQL の高度なデータ セキュリティの 6 つのポリシー](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
+
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>仮想マシンの脆弱性評価をマーケットプレース以外のイメージで使用可能に
+
+脆弱性評価ソリューションを展開する際、以前は展開前に Security Center によって検証チェックが実行されていました。 このチェックは、接続先の仮想マシンのマーケットプレース SKU を確認するために行われていました。 
+
+今回の更新プログラムから、このチェックは削除され、脆弱性評価ツールを 'カスタム' Windows および Linux マシンに展開できるようになりました。 カスタム イメージは、マーケットプレースの既定値からユーザーが変更したものです。
+
+統合された脆弱性評価拡張機能 (Qualys を使用) をより多くのマシンに展開できるようになりましたが、サポートは、「[Qualys の組み込み脆弱性スキャナーのデプロイ](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)」に記載されている OS を使用している場合にのみ受けることができます。
+
+[仮想マシン向けの統合された脆弱性スキャナー (Standard レベルのみ)](built-in-vulnerability-assessment.md) の詳細について確認してください。
+
+Qualys または Rapid7 からプライベートにライセンス提供された独自の脆弱性評価ソリューションを使用する方法の詳細については、「[パートナーの脆弱性スキャン ソリューションをデプロイする](partner-vulnerability-assessment.md)」を参照してください。
+
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure Files と Azure Data Lake Storage Gen2 を含むように拡張された Azure Storage の脅威の防止 (プレビュー)
 
@@ -41,6 +62,84 @@ Azure Storage の脅威の防止では、Azure Storage アカウント上の潜�
 BLOB コンテナー、ファイル共有、またはデータ レイクのいずれに格納されているデータでも保護できます。 
 
 詳細については、「[Azure Storage の脅威の防止](threat-protection.md#threat-protection-for-azure-storage-)」を参照してください。
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>脅威の防止機能を有効にするための 8 つの新しい推奨事項
+
+次のリソース タイプに対して Azure Security Center の脅威の防止機能を簡単に提供するため、新たに 8 つの推奨事項が追加されました: 仮想マシン、App Service プラン、Azure SQL Database サーバー、マシン上の SQL Server、Azure Storage アカウント、Azure Kubernetes Service クラスター、Azure Container Registry レジストリ、および Azure Key Vault ボールト。
+
+新しい推奨事項は次のとおりです。
+
+- **Azure SQL Database サーバーで Advanced Data Security を有効にする必要がある**
+- **マシン上の SQL サーバーで Advanced Data Security を有効にする必要がある**
+- **Azure App Service プランで Advanced Threat Protection を有効にする必要がある**
+- **Azure Container Registry レジストリで Advanced Threat Protection を有効にする必要がある**
+- **Azure Key Vault コンテナーで Advanced Threat Protection を有効にする必要がある**
+- **Azure Kubernetes Service クラスターで Advanced Threat Protection を有効にする必要がある**
+- **Azure Storage アカウントで Advanced Threat Protection を有効にする必要がある**
+- **仮想マシンで Advanced Threat Protection を有効にする必要がある**
+
+これらの新しい推奨事項は、セキュリティ コントロール **Advanced Threat Protection を有効にする**に属しています。
+
+推奨事項には、クイック修正機能も含まれています。 
+
+> [!IMPORTANT]
+> これらの推奨事項を 1 つでも修復すると、関連するリソースを保護するための料金が発生します。 現在のサブスクリプションに関連するリソースがある場合、直ちに料金が発生します。 後で追加した場合は、後で行われます。
+> 
+> たとえば、サブスクリプションに Azure Kubernetes Service クラスターがない状態で脅威の防止を有効にした場合、料金は発生しません。 将来、同じサブスクリプションにクラスターを追加すると、そのクラスターは自動的に保護され、その時点で料金が発生します。
+
+各項目の詳細については、[セキュリティに関する推奨事項のリファレンス ページ](recommendations-reference.md)を参照してください。
+
+詳細については、「[Azure Security Center での脅威の防止](https://docs.microsoft.com/azure/security-center/threat-protection)」を参照してください。
+
+
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>コンテナーのセキュリティ強化 - レジストリのスキャンの高速化とドキュメントの更新
+
+コンテナーのセキュリティ ドメインへの継続的な投資の一環として、Security Center では Azure Container Registry に保存されているコンテナー イメージの動的スキャンにおける大幅なパフォーマンス向上を実現しました。 スキャンは、通常約 2 分で完了するようになりました。 場合によっては、最大 15 分かかることがあります。
+
+Azure Security Center のコンテナーのセキュリティ機能に関する明確さとガイダンスを改善するために、コンテナーのセキュリティに関するドキュメントのページも更新しました。 
+
+Security Center でのコンテナー セキュリティの詳細については、次の記事を参照してください。
+
+- [Security Center のコンテナーのセキュリティ機能の概要](https://docs.microsoft.com/azure/security-center/container-security)
+- [Azure Container Registry との統合の詳細](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+- [Azure Kubernetes Service との統合の詳細](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
+- [レジストリをスキャンして Docker ホストを強化する方法](https://docs.microsoft.com/azure/security-center/monitor-container-security)
+- [Azure Kubernetes Service クラスターの脅威防止機能からのセキュリティ アラート](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [Azure Kubernetes Service ホストの脅威防止機能からのセキュリティ アラート](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
+- [コンテナーに関するセキュリティの推奨事項](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+
+
+
+### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>適応型アプリケーション制御規則を更新するための新しい推奨事項
+
+適応型アプリケーション制御機能は、構成されたグループ内のマシンのアクティビティを継続的に監視します。 この更新プログラムから、擬陽性アラートが発生する可能性がある、以前は許可されていなかった正当な動作が通知されるようになりました。
+
+新しい推薦事項の「**適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある**」により、既存のポリシーに新しいルールを追加して、適応型アプリケーション制御違反アラートの擬陽性の数を減らすよう求めるメッセージが表示されます。
+
+適応型アプリケーション制御の詳細については、[こちら](security-center-adaptive-application.md)をご覧ください。
+
+
+
+### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>非推奨となった SQL の高度なデータ セキュリティの 6 つのポリシー
+
+SQL マシンの高度なデータ セキュリティに関連する 6 つのポリシーが非推奨になります。
+
+- SQL マネージド インスタンスの高度なデータ セキュリティ設定で、Advanced Threat Protection の種類を [すべて] に設定する必要がある
+- SQL Server の高度なデータ セキュリティ設定で、Advanced Threat Protection の種類を [すべて] に設定する必要がある
+- SQL マネージド インスタンスの高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+
+詳細については、[組み込みのポリシー](security-center-policy-definitions.md)に関するページを参照してください。
+
+
+
 
 
 ## <a name="june-2020"></a>2020 年 6 月
@@ -146,9 +245,9 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [Azure SQL Database サーバーで Advanced Data Security を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [マシン上の SQL サーバーで Advanced Data Security を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
-| [ストレージ アカウントで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [Azure Storage アカウントで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
 | [Azure Key Vault コンテナーで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
-| [App Service プランで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [Azure App Service プランで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
 | [Azure Container Registry レジストリで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
 | [Azure Kubernetes Service クラスターで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
 | [Virtual Machines で Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
@@ -210,14 +309,14 @@ Security Center には、VM の管理ポートを保護するオプションの�
 
 - VM での JIT の有効化を勧める推奨事項の名前が変更されました。 以前の "仮想マシンに Just-In-Time ネットワーク アクセス制御を適用する必要があります" から次のように変わりました: "仮想マシンの管理ポートは、Just-In-Time ネットワーク アクセス制御によって保護されている必要があります"。
 
-- オープンな管理ポートがある場合にのみトリガーされるよう推奨事項が設定されました。
+- この推奨事項は、オープンな管理ポートがある場合にのみトリガーされます。
 
 詳しくは、[JIT アクセス機能](security-center-just-in-time.md)に関するページを参照してください。
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>別のセキュリティ コントロールへのカスタム推奨事項の移動
 
-強化されたセキュア スコアと共に導入されたセキュリティ コントロールの 1 つに、"セキュリティのベスト プラクティスの実装" がありました。 お客様のサブスクリプションで作成されたカスタム推奨事項は自動的に、このコントロールに配置されていました。 
+強化されたセキュア スコアと共に導入されたセキュリティ コントロールの 1 つが、"セキュリティのベスト プラクティスの実装" です。 お客様のサブスクリプションで作成されたカスタム推奨事項は自動的に、このコントロールに配置されていました。 
 
 カスタム推奨事項は見つけやすいように、専用のセキュリティ コントロールである "カスタム推奨事項" に移行しました。 このコントロールは、お客様のセキュア スコアに影響しません。
 
@@ -230,7 +329,7 @@ Security Center には、VM の管理ポートを保護するオプションの�
 
 組織が個々の攻撃対象領域をどの程度セキュリティで保護しているかをすぐに確認するには、各セキュリティ コントロールのスコアを確認します。
 
-既定では、推奨事項がセキュリティ コントロールに表示されます。 この更新から、それらをリストとしても表示できるようになりました。 影響を受けるリソースの正常性状態で並べ替えられた単純なリストとして表示するには、新しいトグル "コントロールによるグループ化" を使用します。 このトグルはポータル内のリストの上にあります。
+既定では、推奨事項がセキュリティ コントロールに表示されます。 この更新プログラムから、それらをリストとしても表示できるようになりました。 影響を受けるリソースの正常性状態で並べ替えられた単純なリストとして表示するには、新しいトグル "コントロールによるグループ化" を使用します。 このトグルはポータル内のリストの上にあります。
 
 セキュリティ コントロール (およびこのトグル) は、新しいセキュア スコア エクスペリエンスの一部です。 ポータル内からフィードバックをお送りいただけますとさいわいです。
 
@@ -240,7 +339,7 @@ Security Center には、VM の管理ポートを保護するオプションの�
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>拡張されたセキュリティ コントロール "セキュリティのベスト プラクティスの実装" 
 
-強化されたセキュア スコアと共に導入されたセキュリティ コントロールの 1 つは、"セキュリティのベスト プラクティスの実装" です。 このコントロールに推奨事項があっても、セキュア スコアに影響はありません。 
+強化されたセキュア スコアと共に導入されたセキュリティ コントロールの 1 つが、"セキュリティのベスト プラクティスの実装" です。 このコントロールに推奨事項があっても、セキュア スコアに影響はありません。 
 
 この更新により、3 つの推奨事項が当初配置されていたコントロールからこのベスト プラクティス コントロールに移動されました。 この操作が行われたのは、これら 3 つの推奨事項のリスクが当初考えていたよりも低いことが判明したためです。
 

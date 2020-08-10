@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment でエージェントベースの依存�
 description: この記事では、Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109996"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321209"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -31,7 +31,7 @@ ms.locfileid: "86109996"
     - Azure Migrate アプライアンスを設定して Azure Migrate プロジェクトでマシンが検出された後にのみ、ワークスペースをアタッチできます。
     - ワークスペースが、Azure Migrate プロジェクトを含むサブスクリプション内にあることを確認します。
     - ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 他のリージョンにあるワークスペースをプロジェクトに関連付けることはできません。
-    - ワークスペースは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)リージョンに存在する必要があります。
+    - ワークスペースは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。
     - 新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けることができます。
     - ワークスペースのアタッチは、マシンの依存関係の視覚化を初めて設定したときに行います。 Azure Migrate プロジェクトのワークスペースは、追加後に変更できません。
     - Log Analytics では、Azure Migrate に関連付けられたワークスペースは、移行プロジェクト キーとプロジェクト名のタグが付けられます。

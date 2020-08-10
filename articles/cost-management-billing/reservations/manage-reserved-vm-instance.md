@@ -1,18 +1,18 @@
 ---
 title: Azure の予約を管理する
-description: Azure の予約を管理する方法について説明します。
+description: Azure の予約を管理する方法について説明します。 予約スコープを変更し、予約を分割し、予約の使用を最適化するステップを参照してください。
 ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: f3e4a772382606178d6cd5b0dcb92b0d1bc28695
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434183"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461818"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 

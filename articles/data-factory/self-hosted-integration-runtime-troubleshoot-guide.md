@@ -5,20 +5,46 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2020
+ms.date: 07/19/2020
 ms.author: abnarain
-ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023861"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のセルフホステッド統合ランタイムの一般的なトラブルシューティング方法について説明します。
+
+## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>Azure Data Factory からセルフホステッド統合ランタイム ログを収集する
+
+セルフホステッド IR/共有 IR で実行したアクティビティが失敗した場合、Azure Data Factory ではエラー ログを表示してアップロードすることができます。 以下の手順に従ってエラー レポート ID を取得したら、レポート ID を入力して関連する既知の問題を特定できます。
+
+1. **[アクティビティの実行]** ページに移動します。
+
+1. **[エラー]** 列の下にあるボタンをクリックします。
+
+    ![[アクティビティの実行] ページ](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+
+1. 失敗したアクティビティの実行に関連するログが表示されます。 支援が必要な場合は、 **[ログの送信]** ボタンをクリックしてください。
+
+    ![[ログの送信]](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+
+1. 送信するログを選択できます。 *セルフホステッド IR* では、失敗したアクティビティに関連するログ、またはセルフホステッド IR ノードのすべてのログをアップロードできます。 *共有 IR* では、失敗したアクティビティに関連するログのみをアップロードできます。
+
+    ![ログの選択](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+
+1. 問題解決のためにさらに支援が必要な場合は、ログをアップロードする際に、レポート ID を記録しておきます。
+
+    ![ログのアップロード](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+
+> [!NOTE]
+> ログの表示とアップロードの要求は、すべてのオンライン セルフホステッド IR インスタンスで実行されます。 ログが見つからない場合に備えて、すべてのセルフホステッド IR インスタンスがオンラインになっていることを確認してください。 
+
 
 ## <a name="common-errors-and-resolutions"></a>よくあるエラーと解決方法
 

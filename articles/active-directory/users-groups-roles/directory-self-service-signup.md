@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015869"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
@@ -78,8 +78,8 @@ Flow および PowerApps の試用版サインアップは、**AllowAdHocSubscri
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
-* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Azure PowerShell のインストールと構成の方法](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 * [アンマネージド Azure Active Directory の職場または学校アカウントを削除する](users-close-account.md)

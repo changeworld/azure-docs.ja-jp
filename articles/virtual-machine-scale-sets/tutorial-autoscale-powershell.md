@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7ba6a059a35bee0b122659d8fc70466595112fca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011035"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 
@@ -99,7 +99,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ## <a name="create-a-rule-to-autoscale-in"></a>自動スケールイン ルールの作成
 夜間や週末は、アプリケーションの需要が低下する可能性があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションによって、現在の需要を満たすのに必要な数のインスタンスのみが実行されるようになるため、スケール セットの実行コストが削減されます。
 
-CPU に対する負荷の平均が 5 分間に 30% を下回った場合にスケール セット内の VM インスタンスの数を減らす別のルールを [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) を使用して作成します。 ルールがトリガーされると、VM インスタンスの数が 1 つ減ります。次の例では、このスケールアップ ルールを保持する *myRuleScaleDown* という名前のオブジェクトを作成します。 *-MetricResourceId* は、サブスクリプション ID、リソース グループ名、およびスケール セット名に以前に定義した変数を使用します。
+CPU に対する負荷の平均が 5 分間に 30% を下回った場合にスケール セット内の VM インスタンスの数を減らす別のルールを [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) を使用して作成します。 ルールがトリガーされると、VM インスタンスの数が 1 つ減ります。 次の例では、このスケールダウン ルールを保持する *myRuleScaleDown* という名前のオブジェクトを作成します。 *-MetricResourceId* は、サブスクリプション ID、リソース グループ名、およびスケール セット名に以前に定義した変数を使用します。
 
 ```azurepowershell-interactive
 $myRuleScaleIn = New-AzureRmAutoscaleRule `

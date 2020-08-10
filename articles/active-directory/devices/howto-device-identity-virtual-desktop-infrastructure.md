@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900372"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419803"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -53,10 +53,10 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 |   |   |   | 非永続的 | いいえ |
 |   | マネージド | 最新の Windows | 永続的 | いいえ |
 |   |   |   | 非永続的 | いいえ |
-| Azure AD 登録済み | フェデレーション | 最新の Windows | 永続的 | いいえ |
-|   |   |   | 非永続的 | いいえ |
-|   | マネージド | 最新の Windows | 永続的 | いいえ |
-|   |   |   | 非永続的 | いいえ |
+| Azure AD 登録済み | フェデレーション | 最新の Windows | 永続的 | 適用外 |
+|   |   |   | 非永続的 | 適用外 |
+|   | マネージド | 最新の Windows | 永続的 | 適用外 |
+|   |   |   | 非永続的 | 適用外 |
 
 \***フェデレーション** ID インフラストラクチャ環境は、AD FS やその他のサードパーティ IDP などの ID プロバイダーを備えた環境を表します。
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 72d25582d15e745b0bdefcde5f68af94eab49293
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 281871b1ce9ac3928caeefc2cfb0cee644ea8e56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712209"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319084"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Unity で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -158,7 +158,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) デリゲートの詳細を確認してください。
 
 ```csharp
-    this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args)
+    this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args) =>
     {
         var status = args.Status;
         if (status.UserFeedback == SessionUserFeedback.None) return;
@@ -198,7 +198,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
     // you might show content at this anchor for a while, then save when
     // the user confirms placement.
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor();
-    cloudAnchor.LocalAnchor = this.localAnchor.GetNativeAnchorPointer();
+    cloudAnchor.LocalAnchor = this.localAnchor.GetNativeSpatialAnchorPtr();
     await this.cloudSession.CreateAnchorAsync(cloudAnchor);
     this.feedback = $"Created a cloud anchor with ID={cloudAnchor.Identifier}");
 ```

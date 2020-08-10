@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 00c2825b78d0774d3c428978ba66c957130d3737
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509365"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499956"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
 
@@ -38,6 +38,9 @@ SaaS (サービスとしてのソフトウェア) アプリと Azure AD の統�
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * シングル サインオン (SSO) が有効な DocuSign サブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -87,15 +90,15 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します: 
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します:
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します: 
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します:
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します: 
+    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します:
     
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 

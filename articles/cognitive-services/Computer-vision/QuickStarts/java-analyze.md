@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b307e39937378aa8228d4083f1a6f709069a59f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: seodec18, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 78781fbd565b53a1446e5a8d92b5bf15b26e9e40
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512938"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323351"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用してリモート画像を分析する
 

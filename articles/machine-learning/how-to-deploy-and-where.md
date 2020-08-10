@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146557"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536387"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -441,9 +441,9 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 この例では、構成で次の設定が指定されています。
 
-* このモデルには Python が必要であるということ。
+* このモデルには Python が必要であるということ
 * [エントリ スクリプト](#script)。デプロイされたサービスに送信される Web 要求の処理に必要です。
-* 推論を行うために必要な Python パッケージを記述する Conda ファイル。
+* 推論を行うために必要な Python パッケージを記述する Conda ファイル
 
 推論構成を利用したカスタム Docker イメージの使用については、[カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
 
@@ -537,7 +537,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="deploy-to-target"></a>ターゲットにデプロイする
 
-デプロイでは、推論構成のデプロイ構成を使用して、モデルをデプロイします。 デプロイ プロセスは、コンピューティング ターゲットに関係なく類似しています。 AKS へのデプロイは、AKS クラスターへの参照を指定する必要があるため、少し異なります。
+デプロイでは、推論構成のデプロイ構成を使用して、モデルをデプロイします。 デプロイ プロセスは、コンピューティング ターゲットに関係なく類似しています。 Azure Kubernetes Service (AKS) へのデプロイは、AKS クラスターへの参照を指定する必要があるため、少し異なります。
 
 ### <a name="choose-a-compute-target"></a>コンピューティング ターゲットを選択する
 
@@ -629,7 +629,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 [Azure Kubernetes Service へのデプロイ](how-to-deploy-azure-kubernetes-service.md)に関する記事を参照してください。
 
 ### <a name="ab-testing-controlled-rollout"></a>A/B テスト (制御ロールアウト)
-詳細については、[「ML モデルの制御ロールアウト」](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)を参照してください。
+詳細については、[ML モデルの制御されたロールアウト](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)に関するページを参照してください。
 
 ## <a name="consume-web-services"></a>Web サービスを使用する
 
@@ -914,6 +914,12 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+モデルにスコアを付けるには、「[Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)」を参照してください。 多くの ONNX プロジェクトでは、protobuf ファイルを使用してトレーニング データと検証データがコンパクトに格納されます。これにより、サービスで想定されているデータ形式がわかりにくい場合があります。 モデル開発者は、開発者向けに次のドキュメントを作成する必要があります。
+
+* 入力形式 (JSON またはバイナリ)
+* 入力データの形式と型 (たとえば、形式 [100,100,3] の浮動小数点数の配列)
+* ドメイン情報 (イメージ、色空間、コンポーネントの順序、値が正規化されているかどうかなど)
+
 Pytorch を使用している場合は、[モデルを PyTorch から ONNX にエクスポートする](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)と、変換および制限に関する詳細が得られます。 
 
 ### <a name="scikit-learn-models"></a>Scikit-learn モデル
@@ -939,7 +945,7 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-注:predict_proba をサポートするモデルは、既定でそのメソッドを使用します。 これをオーバーライドして predict を使用するには、次のように POST の本文を変更します。
+注:predict_proba をサポートするモデルでは、既定でそのメソッドが使用されます。 これをオーバーライドして predict を使用するには、次のように POST の本文を変更します。
 ```python
 import json
 

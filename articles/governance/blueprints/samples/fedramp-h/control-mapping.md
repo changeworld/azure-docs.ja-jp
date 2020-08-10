@@ -1,14 +1,14 @@
 ---
 title: FedRAMP High ブループリント サンプルのコントロール
 description: FedRAMP High ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 05/12/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: ae534248196dec30c087ff4b529e699ef082426e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517203"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484234"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルのコントロール マッピング。
 

@@ -7,14 +7,14 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: 接続モニター (プレビュー)
-      href: connection-monitor-preview.md
     - name: VM トラフィック フィルターに関する問題を診断する - ポータル
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: VM トラフィック フィルターに関する問題を診断する - PowerShell
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: VM トラフィック フィルターに関する問題を診断する - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: ARM テンプレートを使用して NSG フロー ログを構成する
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: チュートリアル
   items:
     - name: VM のルーティングに関する問題を診断する
@@ -27,6 +27,8 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: 概念
   items:
+    - name: 接続モニター (プレビュー)
+      href: connection-monitor-preview.md
     - name: VM ネットワーク トラフィック フィルターに関する問題を診断する
       href: network-watcher-ip-flow-verify-overview.md
     - name: VM のルーティングに関する問題を診断する
@@ -51,6 +53,12 @@
   items:
     - name: Network Watcher を構成する
       href: network-watcher-create.md
+    - name: 接続モニターを作成する (プレビュー)
+      items:
+        - name: Azure Portal の使用
+          href: connection-monitor-preview-create-using-portal.md
+        - name: ARMClient の使用
+          href: connection-monitor-preview-create-using-arm-client.md
     - name: VM ネットワークに関する問題を診断する
       items:
         - name: VM 拡張機能をインストールする
@@ -162,6 +170,10 @@
       href: view-relative-latencies.md
     - name: ネットワーク パフォーマンスを監視する
       href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+    - name: リソースの移動
+      items:
+        - name: Network Watcher リソースの移動
+          href: resource-move.md
 - name: リファレンス
   items:
     - name: Azure CLI

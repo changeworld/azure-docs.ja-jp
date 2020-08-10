@@ -8,6 +8,8 @@
       href: overview.md
     - name: メッセージング サービスの比較
       href: compare-messaging-services.md
+    - name: リリース ノート
+      href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -91,7 +93,7 @@
     - name: Resource Manager テンプレート
       href: template-samples.md
     - name: コード サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+      href: /samples/browse/?term=Event+Grid
     - name: Azure Policy の組み込み
       href: ./policy-samples.md
 - name: 概念
@@ -236,7 +238,7 @@
           href: configure-private-endpoints.md
         - name: IP ファイアウォールの構成 (プレビュー)
           href: configure-firewall.md
-        - name: Webhook を AAD で保護する
+        - name: AAD を使用した Webhook のセキュリティ保護
           href: secure-webhook-delivery.md
         - name: マネージド ID を使用したイベント配信
           href: managed-service-identity.md

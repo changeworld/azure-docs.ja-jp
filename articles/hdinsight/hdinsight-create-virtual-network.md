@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: e8619bd7159bbbd418548a5e014dd92f7b9c9e84
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074754"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスターの仮想ネットワークの作成
 
@@ -27,7 +27,7 @@ Azure HDInsight での仮想ネットワークの使用に関する背景情報�
 
 この記事のサンプルに関するその他の前提条件には、次の項目があります。
 
-* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)をインストールする必要があります。
+* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)をインストールする必要があります。
 * Azure CLI を使用する予定で、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 > [!IMPORTANT]  

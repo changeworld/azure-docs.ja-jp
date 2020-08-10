@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497116"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -190,7 +190,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
    入力を開始すると、次の図に示すように、 **[Local inputs]\(ローカル入力\)** セクションに表示されます。
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![開始した入力を含むローカル入力セクションを示すスクリーンショット。](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    Graylog のメッセージ入力の詳細については、[こちら](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)のドキュメントを参照してください。
 

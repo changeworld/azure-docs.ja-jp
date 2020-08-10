@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: ab6eb9b516ca30d92437bdc358e3f1f56cfe8e71
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 53e27e4fafaf4468c9c2f4a1ce24ace3d317dada
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457220"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503261"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 

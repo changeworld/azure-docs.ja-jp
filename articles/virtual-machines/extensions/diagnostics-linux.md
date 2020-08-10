@@ -9,19 +9,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085692"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
 このドキュメントでは、Linux Diagnostic Extension のバージョン 3.0 以降について説明します。
 
 > [!IMPORTANT]
-> バージョン 2.3 以前については、[このドキュメント](../linux/classic/diagnostic-extension-v2.md)を参照してください。
+> バージョン 2.3 以前については、[このドキュメント](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)を参照してください。
 
 ## <a name="introduction"></a>はじめに
 
@@ -67,8 +67,8 @@ Debian 7 などのメジャー バージョンのみを示しているディス�
 
 ### <a name="prerequisites"></a>前提条件
 
-* **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)に従って更新します。
-* **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
+* **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](./update-linux-agent.md)に従って更新します。
+* **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
 * 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。
 
@@ -243,7 +243,7 @@ Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Event Hubs 用の SAS トークンでの情報の生成と取得の詳細については、[こちらの Web ページ](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)を参照してください。
+Event Hubs 用の SAS トークンでの情報の生成と取得の詳細については、[こちらの Web ページ](/rest/api/eventhub/generate-sas-token#powershell)を参照してください。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob シンク
 
@@ -580,7 +580,7 @@ BytesPerSecond | 1 秒あたりの読み取りまたは書き込みバイト数
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-このコマンドは、Azure CLI の Azure Resource Management (ARM) モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](https://docs.microsoft.com/azure/xplat-cli-connect)をご覧ください。
+このコマンドは、Azure CLI の Azure Resource Management (ARM) モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](/azure/xplat-cli-connect)をご覧ください。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -763,10 +763,10 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 
 ![image](./media/diagnostics-linux/stg_explorer.png)
 
-EventHubs エンドポイントに発行されたメッセージを使用する方法については、関連する [EventHubs ドキュメント](../../event-hubs/event-hubs-what-is-event-hubs.md)を参照してください。
+EventHubs エンドポイントに発行されたメッセージを使用する方法については、関連する [EventHubs ドキュメント](../../event-hubs/event-hubs-about.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 収集するメトリックのメトリック アラートを [Azure Monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) で作成します。
-* メトリックの[監視グラフ](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)を作成します。
+* 収集するメトリックのメトリック アラートを [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) で作成します。
+* メトリックの[監視グラフ](../../azure-monitor/platform/data-platform.md)を作成します。
 * メトリックを使用して[仮想マシン スケール セットを作成](../linux/tutorial-create-vmss.md)し、自動スケールを制御する方法について説明します。

@@ -10,26 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 07/27/2020
+ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309258"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の[データベース](single-database-overview.md)のコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、データベースをコピーできます。
+Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、既存の[データベース](single-database-overview.md)のコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、Azure CLI、または T-SQL を使って、データベースをコピーできます。
 
 ## <a name="overview"></a>概要
 
-データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。 同じサーバーまたは別のサーバーを選択できます。 また、そのサービス レベルとコンピューティング サイズを維持するか、同じサービス レベル (エディション) 内の別のコンピューティング サイズを使用することもできます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 この時点では、任意のエディションにアップグレードまたはダウン グレードできます。 ログイン、ユーザー、アクセス許可は非依存で管理できます。 コピーは geo レプリケーション テクノロジを使用して作成され、シード処理が完了すると、geo レプリケーション リンクは自動的に終了します。 geo レプリケーションを使用するためのすべての要件が、データベースのコピー操作に適用されます。 詳細については、「[アクティブ geo レプリケーションの作成と使用](active-geo-replication-overview.md)」を参照してください。
-
-> [!NOTE]
-> データベースのコピーを作成するときは、[自動データベース バックアップ](automated-backups-overview.md)が使用されます。
+データベースのコピーは、コピー要求が開始された時点でのソース データベースのトランザクション上一貫性のあるスナップショットになります。 コピーには、同じサーバーまたは別のサーバーを選択できます。 また、ソース データベースのサービス レベルとコンピューティング サイズを維持するか、同じまたは異なるサービス レベル内の別のコンピューティング サイズを使用することもできます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 コピーしたデータベースのログイン、ユーザー、およびアクセス許可は、ソース データベースとは別に管理されます。 コピーは geo レプリケーション テクノロジを使用して作成されます。 レプリカのシード処理が完了すると、geo レプリケーション リンクは自動的に終了します。 geo レプリケーションを使用するためのすべての要件が、データベースのコピー操作に適用されます。 詳細については、「[アクティブ geo レプリケーションの作成と使用](active-geo-replication-overview.md)」を参照してください。
 
 ## <a name="logins-in-the-database-copy"></a>データベースのコピーへのログイン
 

@@ -3,12 +3,12 @@ title: Azure Backup の論理的な削除
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116414"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538838"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup の論理的な削除
 
@@ -29,7 +29,7 @@ ms.locfileid: "84116414"
 
 論理的な削除は、偶発的または悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナーでは既定で有効になっています。  この機能を無効にすることは推奨されません。 論理的な削除を無効にすることを検討する必要があるのは、保護された項目を新しいコンテナーに移動することを計画していて、削除と再保護の前に (テスト環境などで) 必要な 14 日間待機できない場合のみです。この機能を無効にできるのは、コンテナーの所有者だけです。 この機能を無効にした場合、保護された項目を今後削除すると、復元する機能はなく、すべてがすぐに削除されます。 この機能を無効にする前に、論理的に削除された状態で存在するバックアップ データは、14 日間論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、完全に削除されるように、削除を取り消してからもう一度削除する必要があります。
 
- 論理的な削除を無効にすると、SQL Server や SAP HANA ワークロードを含むすべての種類のワークロードに対してこの機能が無効になることに注意してください。 たとえば、サブスクリプションに対して [SQL Server/SAP HANA プレビュー](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview)を有効にすると、同じコンテナー内の仮想マシンに対して有効にしたまま、SQL Server または SAP HANA DB に対してのみ論理的な削除を無効にすることはできません。 詳細に制御するには、個別のコンテナーを作成します。
+ 論理的な削除を無効にすると、SQL Server や SAP HANA ワークロードを含むすべての種類のワークロードに対してこの機能が無効になることに注意してください。 たとえば、サブスクリプションに対して [SQL Server/SAP HANA プレビュー](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview)を有効にすると、同じコンテナー内の仮想マシンに対して有効にしたまま、SQL Server または SAP HANA DB に対してのみ論理的な削除を無効にすることはできません。 詳細に制御するには、個別のコンテナーを作成します。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal を使用した論理的な削除を無効にする
 
@@ -46,7 +46,7 @@ ms.locfileid: "84116414"
 > [!IMPORTANT]
 > Azure PS で論理的に削除するために必要な Az.RecoveryServices バージョンの最小は 2.2.0 です。 ```Install-Module -Name Az.RecoveryServices -Force``` を使用し、最新バージョンを取得してください。
 
-無効にするには、[Set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS コマンドレットを使用します。
+無効にするには、[Set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS コマンドレットを使用します。
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -87,11 +87,11 @@ REST API を使用して論理的な削除機能を無効にする方法につ�
 
 5. バックアップ データを完全に削除するには、 **[バックアップ データの削除]** を選択します。
 
-   ![[バックアップ データの削除] の選択](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![[バックアップ データの削除] の選択](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. バックアップ項目の名前を入力して、復旧ポイントを削除してもよいことを確認します。
 
-   ![バックアップ項目の名前の入力](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![バックアップ項目の名前の入力](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. 項目のバックアップ データを削除するには、 **[削除]** を選択します。 バックアップ データが削除されたことを示す通知メッセージが表示されます。
 

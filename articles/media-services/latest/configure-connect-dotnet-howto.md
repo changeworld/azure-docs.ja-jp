@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001317"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 
@@ -27,7 +27,7 @@ ms.locfileid: "83201128"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください
 - .NET の開発に使用するツールをインストールします。 この記事の手順では、[Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)を使用する方法を示します。 Visual Studio Code を使用できます。「[Working with C# (C# の使用)](https://code.visualstudio.com/docs/languages/csharp)」をご覧ください。 または、別のコード エディターを使用できます。
 
 > [!IMPORTANT]
@@ -39,7 +39,7 @@ ms.locfileid: "83201128"
 1. **[ファイル]** メニューから **[新規作成]**  >  **[プロジェクト]** をクリックします。 
 1. **.NET Core** コンソール アプリケーションを作成します。
 
-このトピックのサンプル アプリの対象は `netcoreapp2.0` です。 コードでは "async main" が使用されています。これは、C# 7.1 以降で利用できます。 詳しくは、こちらの[ブログ](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)をご覧ください。
+このトピックのサンプル アプリの対象は `netcoreapp2.0` です。 コードでは "async main" が使用されています。これは、C# 7.1 以降で利用できます。 詳しくは、こちらの[ブログ](/archive/blogs/benwilli/async-main-is-available-but-hidden)をご覧ください。
 
 ## <a name="add-required-nuget-packages"></a>必要な NuGet パッケージを追加する
 
@@ -64,7 +64,7 @@ ms.locfileid: "83201128"
 
 ### <a name="set-values-in-appsettingsjson"></a>appsettings.json の値を設定する
 
-[API へのアクセス](access-api-cli-how-to.md)に関する記事の説明に従って、`az ams account sp create` コマンドを実行します。 コマンドで返される json を、"appsettings.json" にコピーする必要があります。
+[API へのアクセス](./access-api-howto.md)に関する記事の説明に従って、`az ams account sp create` コマンドを実行します。 コマンドで返される json を、"appsettings.json" にコピーする必要があります。
  
 ## <a name="add-configuration-file"></a>Add configuration file
 
@@ -243,5 +243,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>関連項目
 
-* [.NET リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET リファレンス](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * コードの例について詳しくは、[.NET SDK サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet) リポジトリをご覧ください。

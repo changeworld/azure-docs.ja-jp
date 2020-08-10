@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065623"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>チュートリアル:Synapse Studio で Apache Spark ジョブ定義を作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "85194486"
 
 * PySpark (Python) 用の Apache Spark ジョブ定義を作成する
 * Spark (Scala) 用の Apache Spark ジョブ定義を作成する
-* .NET Spark (C#) 用の Apache Spark ジョブ定義を作成する
+* .NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成する
 * Apache Spark ジョブ定義をバッチ ジョブとして送信する
 * Apache Spark ジョブ定義をパイプラインに追加する
 
@@ -42,7 +42,7 @@ ms.locfileid: "85194486"
 
 1. [Azure Synapse Studio](https://web.azuresynapse.net/) を開きます。
 
-2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)にアクセスして、**wordcount.jar** と **shakespear.txt** をダウンロードできます。 次に、これらのファイルを Azure Storage にアップロードします。 **[データ]** をクリックし、 **[ストレージ アカウント]** を選択して、関連ファイルを ADLS Gen2 ファイル システムにアップロードします。 ファイルが Azure ストレージに既に存在する場合は、この手順をスキップします。 
+2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)に移動して、**wordcount.py** と **shakespear.txt** をダウンロードできます。 次に、これらのファイルを Azure Storage にアップロードします。 **[データ]** をクリックし、 **[ストレージ アカウント]** を選択して、関連ファイルを ADLS Gen2 ファイル システムにアップロードします。 ファイルが Azure ストレージに既に存在する場合は、この手順をスキップします。 
 
      ![python ファイルのアップロード](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ ms.locfileid: "85194486"
      |  プロパティ   | 説明   |  
      | ----- | ----- |  
      |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 サンプル: `job definition sample`|
-     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから PY ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `shakespeare.txt`|
-     |参照ファイル| メイン定義ファイル内で参照に使用される追加ファイル。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから PY ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://…/path/to/wordcount.py`|
+     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |参照ファイル| メイン定義ファイル内で参照に使用される追加ファイル。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 |
      |Spark プール| 選択した Apache Spark プールにジョブが送信されます。|
      |Spark のバージョン| Apache Spark プールが実行されている Apache Spark のバージョン。|
      |エグゼキュータ| ジョブ用の指定された Apache Spark プール内で提供される Executor の数。|
@@ -92,9 +92,9 @@ ms.locfileid: "85194486"
      |  プロパティ   | 説明   |  
      | ----- | ----- |  
      |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 サンプル: `job definition sample`|
-     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから JAR ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから JAR ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://…/path/to/wordcount.jar`|
      |メイン クラス名| 完全修飾識別子またはメイン定義ファイル内のメイン クラス。 サンプル: `WordCount`|
-     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |参照ファイル| メイン定義ファイル内で参照に使用される追加ファイル。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。|
      |Spark プール| 選択した Apache Spark プールにジョブが送信されます。|
      |Spark のバージョン| Apache Spark プールが実行されている Apache Spark のバージョン。|
@@ -109,9 +109,9 @@ ms.locfileid: "85194486"
      ![Scala 定義の公開](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>.NET Spark (C#) 用の Apache Spark ジョブ定義を作成する
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>.NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成する
 
-このセクションでは、.NET Spark (C#) 用の Apache Spark ジョブ定義を作成します。
+このセクションでは、.NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成します。
  1. [Azure Synapse Studio](https://web.azuresynapse.net/) を開きます。
 
  2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET)にアクセスして、**wordcount.zip** と **shakespear.txt** をダウンロードできます。 次に、これらのファイルを Azure Storage にアップロードします。 **[データ]** をクリックし、 **[ストレージ アカウント]** を選択して、関連ファイルを ADLS Gen2 ファイル システムにアップロードします。 ファイルが Azure ストレージに既に存在する場合は、この手順をスキップします。 
@@ -125,12 +125,13 @@ ms.locfileid: "85194486"
  4. Apache Spark ジョブ定義のメイン ウィンドウの [言語] ドロップ ダウン リストから **[.NET Spark (C#/F#)]** を選択します。
 
  5. Apache Spark ジョブ定義の情報を入力します。 サンプル情報をコピーできます。
+    
      |  プロパティ   | 説明   |  
      | ----- | ----- |  
      |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 サンプル: `job definition sample`|
-     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージからの .NET for Apache Spark アプリケーション (メインの実行可能ファイル、ユーザー定義関数を含む DLL、およびその他の必要なファイル) を含む ZIP ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから .NET for Apache Spark アプリケーション (メインの実行可能ファイル、ユーザー定義関数を含む DLL、およびその他の必要なファイル) を含む ZIP ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://…/path/to/wordcount.zip`|
      |Main executable file (メイン実行可能ファイル)| メイン定義 ZIP ファイル内のメインの実行可能ファイル。 サンプル: `WordCount`|
-     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
+     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |参照ファイル| メイン定義 ZIP ファイル (依存 jar、追加のユーザー定義関数 DLL、およびその他の構成ファイル) に含まれていない .NET for Apache Spark アプリケーションを実行するために、ワーカー ノードによって必要とされる追加のファイル。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。|
      |Spark プール| 選択した Apache Spark プールにジョブが送信されます。|
      |Spark のバージョン| Apache Spark プールが実行されている Apache Spark のバージョン。|

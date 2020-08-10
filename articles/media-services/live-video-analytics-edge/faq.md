@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge に関する FAQ - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge の FAQ に対する回答を示します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011517"
 ---
 # <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 
@@ -20,14 +20,14 @@ ms.locfileid: "84260735"
 
 |変数   |説明|
 |---|---|
-|[System.DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|特定の時点を表します。通常、日時形式で表されます。|
+|[System.DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|特定の時点を表します。通常、日時形式で表されます。|
 |System.GraphTopologyName   |メディア グラフ トポロジを表します。グラフのブループリントを保持します。|
 |System.GraphInstanceName|  メディア グラフ インスタンスを表します。パラメーター値を保持し、トポロジを参照します。|
 
 ## <a name="configuration-and-deployment"></a>構成とデプロイ
 
 メディア Edge モジュールを Windows 10 デバイスに展開することはできますか。
-    * はい。 [Windows 10 での Linux コンテナー](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers)に関する記事を参照してください。
+    * はい。 [Windows 10 での Linux コンテナー](/virtualization/windowscontainers/deploy-containers/linux-containers)に関する記事を参照してください。
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>IP カメラと RTSP 設定からのキャプチャ
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
-ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001487"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して、Azure Logic Apps でフラット ファイルをエンコードまたはデコードする
 
@@ -25,7 +25,7 @@ ms.locfileid: "83005354"
 
 * **フラット ファイル** コネクタを使用するロジック アプリと、ロジック アプリのワークフローを開始するトリガー。 **フラット ファイル** コネクタでは、アクションのみが提供され、トリガーは提供されません。 トリガーまたは別のアクションを使用して、エンコードまたはデコードのために XML コンテンツをロジック アプリにフィードできます。 ロジック アプリを初めて使用する場合は、[クイック スタート:初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-* ご使用の Azure サブスクリプションに関連付けられており、**フラット ファイル** コネクタの使用を計画している[ロジック アプリにリンクされている](logic-apps-enterprise-integration-accounts.md#link-account)[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 使用するロジックアプリと統合アカウントは両方とも同じ場所または同じ Azure リージョンに存在する必要があります。
+* ご使用の Azure サブスクリプションに関連付けられており、**フラット ファイル** コネクタの使用を計画している[ロジック アプリにリンクされている](./logic-apps-enterprise-integration-create-integration-account.md#link-account)[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 使用するロジックアプリと統合アカウントは両方とも同じ場所または同じ Azure リージョンに存在する必要があります。
 
 * XML コンテンツをエンコードまたはデコードするために統合アカウントにアップロードしたフラット ファイル [スキーマ](logic-apps-enterprise-integration-schemas.md)
 

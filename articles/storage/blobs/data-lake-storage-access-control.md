@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091353"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -65,7 +65,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 ファイルおよびディレクトリ レベルのアクセス許可を設定するには、次のいずれかの記事をご覧ください。
 
-|||
+| 環境 | [アーティクル] |
 |--------|-----------|
 |Azure ストレージ エクスプローラー |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
 |.NET |[.NET を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-dotnet.md)|

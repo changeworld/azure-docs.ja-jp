@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 74706e772371c39b96b0cb02bd09ec70ad4d43f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247276"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539127"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -28,7 +28,7 @@ ms.locfileid: "84247276"
 >
 >
 
-Azure VM にデプロイされた MABS では、Azure で VM をバックアップできますが、バックアップ操作を有効にするには、それらが同じドメイン内にある必要があります。 Azure VM をバックアップするプロセスは、オンプレミスで VM をバックアップするプロセスと変わりませんが、Azure で MABS をデプロイするには、いくつかの制限があります。 制限の詳細については、「[Azure の仮想マシンとしての DPM](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)」を参照してください。
+Azure VM にデプロイされた MABS では、Azure で VM をバックアップできますが、バックアップ操作を有効にするには、それらが同じドメイン内にある必要があります。 Azure VM をバックアップするプロセスは、オンプレミスで VM をバックアップするプロセスと変わりませんが、Azure で MABS をデプロイするには、いくつかの制限があります。 制限の詳細については、「[Azure の仮想マシンとしての DPM](/system-center/dpm/install-dpm#setup-prerequisites)」を参照してください。
 
 > [!NOTE]
 > Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/management/deployment-models.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
@@ -46,9 +46,9 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
 
-Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は4 つのコアと 8 GB の RAM を持つ Standard_A4_v2 です。
+Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は4 つのコアと 8 GB の RAM を持つ Standard_A4_v2 です。
 
-Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、[MABS の保護マトリックス](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)に関するページで説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、[MABS の保護マトリックス](./backup-mabs-protection-matrix.md)に関するページで説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 ### <a name="using-an-on-premises-server"></a>オンプレミスに設置されたサーバーを使用する場合
 
@@ -59,7 +59,7 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 | Windows Server 2019 |64 ビット |Standard、Datacenter、Essentials |
 | Windows Server 2016 と最新 SP |64 ビット |Standard、Datacenter、Essentials  |
 
-Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。 Hyper-V VM にデプロイするときは、 [DPM と重複除去](https://docs.microsoft.com/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) が連携するしくみの詳細を確認してください。
+Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。 Hyper-V VM にデプロイするときは、 [DPM と重複除去](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) が連携するしくみの詳細を確認してください。
 
 > [!NOTE]
 > Azure Backup Server は、単一目的の専用サーバーで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
@@ -80,7 +80,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 ### <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
 
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、Recovery Services コンテナーは geo 冗長ストレージを使用します。 このコンテナーがプライマリ コンテナーの場合は、ストレージ オプションの設定を geo 冗長ストレージのままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy-grs.md)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy-lrs.md)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、Recovery Services コンテナーは geo 冗長ストレージを使用します。 このコンテナーがプライマリ コンテナーの場合は、ストレージ オプションの設定を geo 冗長ストレージのままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy.md)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy.md)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
@@ -129,7 +129,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
     **バックアップ作業の開始**ウィザードが、Azure にワークロードを保護するための **[インフラストラクチャの準備]** オプションに切り替わります。
 
    > [!NOTE]
-   > ファイルとフォルダーだけをバックアップする場合は、Azure Backup エージェントを使用すること、および[ファイルとフォルダーのバックアップ](backup-try-azure-backup-in-10-mins.md)に関する記事のガイダンスに従って操作することをお勧めします。 ファイルやフォルダー以外を保護する場合、または将来的に保護のニーズを拡張する場合は、そのワークロードを選択します。
+   > ファイルとフォルダーだけをバックアップする場合は、Azure Backup エージェントを使用すること、および[ファイルとフォルダーのバックアップ](./backup-windows-with-mars-agent.md)に関する記事のガイダンスに従って操作することをお勧めします。 ファイルやフォルダー以外を保護する場合、または将来的に保護のニーズを拡張する場合は、そのワークロードを選択します。
    >
    >
 
@@ -190,7 +190,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
     * データベース: DatabaseName は ReportServer$\<SQLInstanceName> にする必要があります
     * Web ポータルの URL:‘仮想ディレクトリ’ は ReportServer_\<SQLInstanceName> にする必要があります
 
-    SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
+    SSRS の構成について詳しくは、[こちら](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode)をご覧ください。
 
     > [!NOTE]
     > MABS のデータベースとして使用される SQL Server のライセンスは、[マイクロソフト オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products)によって管理されます。 OST に従って、MABS にバンドルされている SQL Server は、MABS のデータベースとしてのみ使用できます。
@@ -199,7 +199,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)」を参照してください。
+    スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)」を参照してください。
 5. 制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -227,7 +227,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 ### <a name="add-backup-storage"></a>Backup ストレージの追加
 
-一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクを追加する方法の詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)」を参照してください。
+一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクを追加する方法の詳細については、「 [記憶域プールおよびディスク記憶域の構成](./backup-mabs-add-storage.md)」を参照してください。
 
 > [!NOTE]
 > Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。 Azure Backup Server の現在のアーキテクチャでは、Azure Backup コンテナーにはデータの " *2 番目の* " コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
@@ -236,7 +236,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 ### <a name="install-and-update-the-data-protection-manager-protection-agent"></a>Data Protection Manager 保護エージェントのインストールと更新
 
-MABS は、System Center Data Protection Manager 保護エージェントを使用します。 保護サーバー上に保護エージェントをインストールする手順は、[こちら](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-1807)をご覧ください。
+MABS は、System Center Data Protection Manager 保護エージェントを使用します。 保護サーバー上に保護エージェントをインストールする手順は、[こちら](/system-center/dpm/deploy-dpm-protection-agent)をご覧ください。
 
 この後のセクションでは、クライアント コンピューターのために保護エージェントを更新する方法を説明します。
 
@@ -314,7 +314,7 @@ ExpressRoute Microsoft ピアリングを使用している場合、次のサー
 * Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
 * Azure Storage (Recovery Services コンテナーの場所による)
 
-詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
 
 Azure Backup Server マシンが Azure に接続できるようになると、実行可能な操作が Azure サブスクリプションの状態に応じて決まります。 マシンが "接続中" になった場合に許可される操作の詳細は、上記の表に記載されています。
 
@@ -362,7 +362,7 @@ Microsoft Azure Backup Server がセットアップ段階 (またはバックア
 
 ## <a name="next-steps"></a>次のステップ
 
-DPM 用の環境の準備については[こちら](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019)に詳細があります。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。 一連の [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016)を使用して、さまざまな操作を実行できます。
+DPM 用の環境の準備については[こちら](/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019)に詳細があります。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。 一連の [PowerShell コマンドレット](/powershell/module/dataprotectionmanager/)を使用して、さまざまな操作を実行できます。
 
 以下の記事により、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 

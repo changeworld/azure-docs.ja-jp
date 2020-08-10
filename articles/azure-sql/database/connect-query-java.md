@@ -1,190 +1,498 @@
 ---
-title: Java を使用してデータベースを照会する
-description: Java を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに接続し、T-SQL ステートメントを使用してクエリを実行するプログラムを作成する方法について説明します。
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Azure SQL Database で Java と JDBC を使用する
+description: Azure SQL Database で Java と JDBC を使用する方法について説明します。
 services: sql-database
+author: jdubois
+ms.author: judubois
 ms.service: sql-database
 ms.subservice: development
-ms.devlang: java
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: v-masebo
-ms.date: 05/29/2020
-ms.custom: seo-java-july2019. seo-java-august2019, sqldbrb=2 
-ms.openlocfilehash: 6be52d2d3472888607bbd6276b4794184bb11273
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.devlang: java
+ms.date: 06/26/2020
+ms.custom: devx-track-java
+ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267394"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325136"
 ---
-# <a name="quickstart-use-java-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Java を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="use-java-and-jdbc-with--azure-sql-database"></a>Azure SQL Database で Java と JDBC を使用する
 
-このクイックスタートでは、Java を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに接続し、T-SQL ステートメントを使用してデータに対してクエリを実行します。
+このトピックでは、Java と [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) を使って [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) で情報を格納および取得するサンプル アプリケーションを作成する方法を説明します。
+
+JDBC は、従来のリレーショナル データベースに接続するための標準の Java API です。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次のものが必要です。
+- Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) または [Azure CLI](/cli/azure/install-azure-cli)。 Azure Cloud Shell をお勧めします。これにより、自動的にログインし、必要なすべてのツールにアクセスできるようになります。
+- サポートされている [Java 開発キット](https://aka.ms/azure-jdks)、バージョン 8 (Azure Cloud Shell に含まれます)。
+- [Apache Maven](https://maven.apache.org/) ビルド ツール。
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+## <a name="prepare-the-working-environment"></a>作業環境を準備する
 
-  || SQL Database | SQL Managed Instance | Azure VM 上の SQL Server |
-  |:--- |:--- |:---|:---|
-  | 作成| [ポータル](single-database-create-quickstart.md) | [ポータル](../managed-instance/instance-create-quickstart.md) | [ポータル](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | 構成 | [サーバーレベルの IP ファイアウォール規則](firewall-create-server-level-portal-quickstart.md)| [VM からの接続](../managed-instance/connect-vm-instance-configure.md)|
-  |||[オンプレミスからの接続](../managed-instance/point-to-site-p2s-configure.md) | [SQL Server インスタンスに接続する](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |データの読み込み|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](../managed-instance/restore-sample-database-quickstart.md) | [Wide World Importers を復元する](../managed-instance/restore-sample-database-quickstart.md) |
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](database-import.md) ファイルから Adventure Works を復元またはインポートする| [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](database-import.md) ファイルから Adventure Works を復元またはインポートする|
-  |||
+入力ミスを少なくし、特定のニーズに応じて以下の構成をカスタマイズしやすくするために、ここでは環境変数を使用します。
 
-- [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 関連のソフトウェア
+次のコマンドを使用して環境変数を設定します。
 
-  # <a name="macos"></a>[macOS](#tab/macos)
+```bash
+AZ_RESOURCE_GROUP=database-workshop
+AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
+AZ_LOCATION=<YOUR_AZURE_REGION>
+AZ_SQL_SERVER_USERNAME=demo
+AZ_SQL_SERVER_PASSWORD=<YOUR_AZURE_SQL_PASSWORD>
+AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
+```
 
-  「[macOS で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)」の手順 **1.2** と **1.3** を使用して、Homebrew と Java をインストールした後、Maven をインストールします。
+プレースホルダーは、この記事全体で使用される次の値に置き換えてください。
 
-  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
+- `<YOUR_DATABASE_NAME>`:Azure SQL Database サーバーの名前。 Azure 全体で一意である必要があります。
+- `<YOUR_AZURE_REGION>`:使用する Azure リージョン。 既定で `eastus` を使用できますが、居住地に近いリージョンを構成することをお勧めします。 「`az account list-locations`」を入力すると、使用可能なリージョンの完全な一覧を表示できます。
+- `<AZ_SQL_SERVER_PASSWORD>`:Azure SQL Database サーバーのパスワード。 パスワードは 8 文字以上にする必要があります。 これには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
+- `<YOUR_LOCAL_IP_ADDRESS>`:ローカル コンピューターの IP アドレス。そこから、Java アプリケーションを実行します。 これを確認する簡単な方法は、ブラウザーで [whatismyip.akamai.com](http://whatismyip.akamai.com/)にアクセスすることです。
 
-  「[Ubuntu で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)」の手順 **1.2**、**1.3**、および **1.4** を使用して、Java をインストールし、Java Development Kit をインストールした後、Maven をインストールします。
+次に、リソース グループを作成するには、次のコマンドを使用します。
 
-  # <a name="windows"></a>[Windows](#tab/windows)
-
-  「[Windows で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)」の手順 **1.2** と **1.3** を使用して、Java をインストールした後、Maven をインストールします。
-
-  ---
-
-> [!IMPORTANT]
-> この記事のスクリプトは、**Adventure Works** データベースを使用するように記述されています。
-
-> [!NOTE]
-> 必要に応じて、Azure SQL Managed Instance を使用することを選択できます。
->
-> 作成して構成するには、[Azure portal](../managed-instance/instance-create-quickstart.md)、[PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) を使用してから、[オンプレミス](../managed-instance/point-to-site-p2s-configure.md)または [VM](../managed-instance/connect-vm-instance-configure.md) 接続を設定します。
->
-> データを読み込む方法については、[Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) ファイルの [BACPAC を使用した復元](database-import.md)に関するページを参照するか、[Wide World Importers データベースの復元](../managed-instance/restore-sample-database-quickstart.md)に関するページを参照してください。
-
-## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する
-
-Azure SQL Database のデータベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
-
-1. [Azure portal](https://portal.azure.com/) にサインインします。
-
-2. **[SQL データベース]** を選択するか、 **[SQL Managed Instance]** ページを開きます。
-
-3. **[概要]** ページで、Azure SQL Database 内のデータベースの **[サーバー名]** の横にある完全修飾サーバー名、または Azure SQL Managed Instance または Azure VM 上の SQL Server の **[ホスト]** の横にある完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+```azurecli
+az group create \
+    --name $AZ_RESOURCE_GROUP \
+    --location $AZ_LOCATION \
+  	| jq
+```
 
 > [!NOTE]
-> Azure VM 上の SQL Server の接続情報については、[SQL Server への接続](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)に関するページをご覧ください。
+> `jq` ユーティリティを使用し、JSON データを表示し、より読みやすくします。 このユーティリティは既定で [Azure Cloud Shell](https://shell.azure.com/) にインストールされます。 このツールを使用しない場合は、使用するすべてのコマンドの `| jq` の部分を削除しても問題ありません。
 
-## <a name="create-the-project"></a>プロジェクトを作成する
+## <a name="create-an-azure-sql-database-instance"></a>Azure SQL Database インスタンスを作成する
 
-1. コマンド プロンプトから *sqltest* という新しい Maven プロジェクトを作成します。
+最初に作成するのは、マネージド Azure SQL Database サーバーです。
 
-    ```bash
-    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
-    ```
+> [!NOTE]
+> Azure SQL Database サーバーの作成の詳細については、「[クイックスタート:Azure SQL Database の単一データベースを作成する](/azure/sql-database/sql-database-single-database-get-started)」を参照してください。
 
-1. フォルダーを *sqltest* に移動し、任意のテキスト エディターで *pom.xml* を開きます。 次のコードを使用して、プロジェクトの依存関係に **Microsoft JDBC Driver for SQL Server** を追加します。
+[Azure Cloud Shell](https://shell.azure.com/) で次のコマンドを実行します。
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.sqlserver</groupId>
-        <artifactId>mssql-jdbc</artifactId>
-        <version>7.0.0.jre8</version>
-    </dependency>
-    ```
+```azurecli
+az sql server create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME \
+    --location $AZ_LOCATION \
+    --admin-user $AZ_SQL_SERVER_USERNAME \
+    --admin-password $AZ_SQL_SERVER_PASSWORD \
+  	| jq
+```
 
-1. さらに *pom.xml* で、次のプロパティをプロジェクトに追加します。 properties セクションがない場合は、dependencies の後に追加してください。
+このコマンドにより、Azure SQL Database サーバーが作成されます。
 
-   ```xml
-   <properties>
-       <maven.compiler.source>1.8</maven.compiler.source>
-       <maven.compiler.target>1.8</maven.compiler.target>
-   </properties>
-   ```
+### <a name="configure-a-firewall-rule-for-your-azure-sql-database-server"></a>Azure SQL Database サーバーのファイアウォール規則を構成する
 
-1. *pom.xml* を保存して閉じます。
+Azure SQL Database インスタンスは、既定でセキュリティ保護されています。 受信接続を一切許可しないファイアウォールがあります。 データベースを使用できるようにするには、データベース サーバーにアクセスするためのローカル IP アドレスを許可するファイアウォール規則を追加する必要があります。
 
-## <a name="add-code-to-query-the-database"></a>データベースに対してクエリを実行するコードを追加する
+この記事の冒頭でローカル IP アドレスを構成したので、次のコマンドを実行してサーバーのファイアウォールを開くことができます。
 
-1. Maven プロジェクトに *App.java* というファイルがあらかじめ存在している必要があります (
+```azurecli
+az sql server firewall-rule create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME-database-allow-local-ip \
+    --server $AZ_DATABASE_NAME \
+    --start-ip-address $AZ_LOCAL_IP_ADDRESS \
+    --end-ip-address $AZ_LOCAL_IP_ADDRESS \
+  	| jq
+```
 
-   *..\sqltest\src\main\java\com\sqldbsamples\App.java*)。
+### <a name="configure-a-azure-sql-database"></a>Azure SQL データベースを構成する
 
-1. そのファイルを開いて、その内容を次のコードに置き換えます。 そのうえで、サーバー、データベース、ユーザー、パスワードの適切な値を入力してください。
+先ほど作成した Azure SQL Database サーバーは空です。 Java アプリケーションで使用できるデータベースはありません。 次のコマンドを実行し、`demo` という名前の新しいデータベースを作成します。
 
-    ```java
-    package com.sqldbsamples;
+```azurecli
+az sql db create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name demo \
+    --server $AZ_DATABASE_NAME \
+  	| jq
+```
 
-    import java.sql.Connection;
-    import java.sql.Statement;
-    import java.sql.PreparedStatement;
-    import java.sql.ResultSet;
-    import java.sql.DriverManager;
+### <a name="create-a-new-java-project"></a>新しい Java プロジェクトを作成する
 
-    public class App {
+任意の IDE を使用して新しい Java プロジェクトを作成し、そのルート ディレクトリに `pom.xml` ファイルを追加します。
 
-        public static void main(String[] args) {
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
 
-            // Connect to database
-            String hostName = "your_server.database.windows.net"; // update me
-            String dbName = "your_database"; // update me
-            String user = "your_username"; // update me
-            String password = "your_password"; // update me
-            String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
-                + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-            Connection connection = null;
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-            try {
-                connection = DriverManager.getConnection(url);
-                String schema = connection.getSchema();
-                System.out.println("Successful connection - Schema: " + schema);
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.4.1.jre8</version>
+        </dependency>
+    </dependencies>
+</project>
+```
 
-                System.out.println("Query data example:");
-                System.out.println("=========================================");
+このファイルは、以下を使用するようにプロジェクトを構成する [Apache Maven](https://maven.apache.org/) です。
 
-                // Create and execute a SELECT SQL statement.
-                String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName "
-                    + "FROM [SalesLT].[ProductCategory] pc "  
-                    + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
+- Java 8
+- 最近の Java 用 SQL Server ドライバー
 
-                try (Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(selectSql)) {
+### <a name="prepare-a-configuration-file-to-connect-to-azure-sql-database"></a>Azure SQL データベースに接続するための構成ファイルを準備する
 
-                    // Print results from select statement
-                    System.out.println("Top 20 categories:");
-                    while (resultSet.next())
-                    {
-                        System.out.println(resultSet.getString(1) + " "
-                            + resultSet.getString(2));
-                    }
-                    connection.close();
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+*src/main/resources/application.properties* ファイルを作成して、以下を追加します。
+
+```properties
+url=jdbc:sqlserver://$AZ_DATABASE_NAME.database.windows.net:1433;database=demo;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+user=demo@$AZ_DATABASE_NAME
+password=$AZ_SQL_SERVER_PASSWORD
+```
+
+- 2 つの `$AZ_DATABASE_NAME` 変数を、この記事の冒頭で構成した値に置き換えます。
+- `$AZ_SQL_SERVER_PASSWORD` 変数を、この記事の冒頭で構成した値で置き換えます。
+
+### <a name="create-an-sql-file-to-generate-the-database-schema"></a>データベース スキーマを生成するための SQL ファイルを作成する
+
+データベース スキーマを作成するためには、*src/main/resources/`schema.sql`* ファイルを使用します。 このファイルを次の内容で作成します。
+
+```sql
+DROP TABLE IF EXISTS todo;
+CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BIT);
+```
+
+## <a name="code-the-application"></a>アプリケーションをコーディングする
+
+### <a name="connect-to-the-database"></a>データベースに接続する
+
+次に、JDBC を使用して Azure SQL データベースのデータを格納および取得する Java コードを追加します。
+
+次のコードを含んだ *src/main/java/DemoApplication.java* ファイルを作成します。
+
+```java
+package com.example.demo;
+
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Logger;
+
+public class DemoApplication {
+
+    private static final Logger log;
+
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log =Logger.getLogger(DemoApplication.class.getName());
     }
-    ```
 
-   > [!NOTE]
-   > このコード例では、Azure SQL Database で **AdventureWorksLT** サンプル データベースを使用します。
+    public static void main(String[] args) throws Exception {
+        log.info("Loading application properties");
+        Properties properties = new Properties();
+        properties.load(DemoApplication.class.getClassLoader().getResourceAsStream("application.properties"));
 
-## <a name="run-the-code"></a>コードの実行
+        log.info("Connecting to the database");
+        Connection connection = DriverManager.getConnection(properties.getProperty("url"), properties);
+        log.info("Database connection test: " + connection.getCatalog());
 
-1. コマンド プロンプトでアプリを実行します。
+        log.info("Create database schema");
+        Scanner scanner = new Scanner(DemoApplication.class.getClassLoader().getResourceAsStream("schema.sql"));
+        Statement statement = connection.createStatement();
+        while (scanner.hasNextLine()) {
+            statement.execute(scanner.nextLine());
+        }
 
-    ```bash
-    mvn package -DskipTests
-    mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
-    ```
+        /*
+        Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+        insertData(todo, connection);
+        todo = readData(connection);
+        todo.setDetails("congratulations, you have updated data!");
+        updateData(todo, connection);
+        deleteData(todo, connection);
+        */
 
-1. 先頭から 20 行が返されることを確認して、アプリ ウィンドウを閉じます。
+        log.info("Closing database connection");
+        connection.close();
+    }
+}
+```
+
+この Java コードは、SQL Server データベースに接続するため、またデータを格納するスキーマを作成するために、先ほど作成した *application.properties* ファイルと *schema.sql* ファイルを使用します。
+
+このファイルを見るとわかるように、データの挿入、読み取り、更新、削除のためのメソッドがコメント化されています。これらのメソッドのコードは、この記事の中で後から作成します。それぞれのメソッドが完成したら都度、コメント解除することができます。
+
+> [!NOTE]
+> データベースの資格情報は、*application.properties* ファイルの *user* プロパティと *password* プロパティに格納されます。 プロパティ ファイルは引数として渡されるため、これらの資格情報は `DriverManager.getConnection(properties.getProperty("url"), properties);` を実行するときに使用されます。
+
+以後、このメイン クラスは、次の任意のツールを使用して実行することができます。
+
+- IDE を使用する場合: *DemoApplication* クラスを右クリックして実行します。
+- Maven を使用する場合: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"` を実行することによってアプリケーションを実行できます。
+
+次のコンソール ログが示すように、このアプリケーションは、Azure SQL Database に接続してデータベース スキーマを作成した後、接続を閉じます。
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Closing database connection 
+```
+
+### <a name="create-a-domain-class"></a>ドメイン クラスを作成する
+
+`DemoApplication` クラスの横に新しい `Todo` Java クラスを作成し、以下のコードを追加します。
+
+```java
+package com.example.demo;
+
+public class Todo {
+
+    private Long id;
+    private String description;
+    private String details;
+    private boolean done;
+
+    public Todo() {
+    }
+
+    public Todo(Long id, String description, String details, boolean done) {
+        this.id = id;
+        this.description = description;
+        this.details = details;
+        this.done = done;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", details='" + details + '\'' +
+                ", done=" + done +
+                '}';
+    }
+}
+```
+
+このクラスは、*schema.sql* スクリプトを実行する際に作成した `todo` テーブルにマップされるドメイン モデルです。
+
+### <a name="insert-data-into-azure-sql-database"></a>Azure SQL データベースにデータを挿入する
+
+*src/main/java/DemoApplication.java* ファイルの main メソッドの後に、データベースにデータを挿入するための次のメソッドを追加します。
+
+```java
+private static void insertData(Todo todo, Connection connection) throws SQLException {
+    log.info("Insert data");
+    PreparedStatement insertStatement = connection
+            .prepareStatement("INSERT INTO todo (id, description, details, done) VALUES (?, ?, ?, ?);");
+
+    insertStatement.setLong(1, todo.getId());
+    insertStatement.setString(2, todo.getDescription());
+    insertStatement.setString(3, todo.getDetails());
+    insertStatement.setBoolean(4, todo.isDone());
+    insertStatement.executeUpdate();
+}
+```
+
+これで、`main` メソッドの次の 2 つの行のコメントを解除できます。
+
+```java
+Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+insertData(todo, connection);
+```
+
+メイン クラスを実行すると、次の出力が生成されるはずです。
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Closing database connection
+```
+
+### <a name="reading-data-from-azure-sql-database"></a>Azure SQL データベースからデータを読み取る
+
+先ほど挿入したデータを読み取って、コードが正しく動作することを確認しましょう。
+
+*src/main/java/DemoApplication.java* ファイルの `insertData` メソッドの後に、データベースからデータを読み取るための次のメソッドを追加します。
+
+```java
+private static Todo readData(Connection connection) throws SQLException {
+    log.info("Read data");
+    PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
+    ResultSet resultSet = readStatement.executeQuery();
+    if (!resultSet.next()) {
+        log.info("There is no data in the database!");
+        return null;
+    }
+    Todo todo = new Todo();
+    todo.setId(resultSet.getLong("id"));
+    todo.setDescription(resultSet.getString("description"));
+    todo.setDetails(resultSet.getString("details"));
+    todo.setDone(resultSet.getBoolean("done"));
+    log.info("Data read from the database: " + todo.toString());
+    return todo;
+}
+```
+
+これで、`main` メソッドの次の行のコメントを解除できます。
+
+```java
+todo = readData(connection);
+```
+
+メイン クラスを実行すると、次の出力が生成されるはずです。
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="updating-data-in-azure-sql-database"></a>Azure SQL Database のデータを更新する
+
+先ほど挿入したデータを更新しましょう。
+
+引き続き *src/main/java/DemoApplication.java* ファイルの `readData` メソッドの後に、データベース内のデータを更新するための次のメソッドを追加します。
+
+```java
+private static void updateData(Todo todo, Connection connection) throws SQLException {
+    log.info("Update data");
+    PreparedStatement updateStatement = connection
+            .prepareStatement("UPDATE todo SET description = ?, details = ?, done = ? WHERE id = ?;");
+
+    updateStatement.setString(1, todo.getDescription());
+    updateStatement.setString(2, todo.getDetails());
+    updateStatement.setBoolean(3, todo.isDone());
+    updateStatement.setLong(4, todo.getId());
+    updateStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+これで、`main` メソッドの次の 2 つの行のコメントを解除できます。
+
+```java
+todo.setDetails("congratulations, you have updated data!");
+updateData(todo, connection);
+```
+
+メイン クラスを実行すると、次の出力が生成されるはずです。
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="deleting-data-in-azure-sql-database"></a>Azure SQL データベースからデータを削除する
+
+最後に、先ほど挿入したデータを削除しましょう。
+
+引き続き *src/main/java/DemoApplication.java* ファイルの `updateData` メソッドの後に、データベース内のデータを削除するための次のメソッドを追加します。
+
+```java
+private static void deleteData(Todo todo, Connection connection) throws SQLException {
+    log.info("Delete data");
+    PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
+    deleteStatement.setLong(1, todo.getId());
+    deleteStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+これで、`main` メソッドの次の行のコメントを解除できます。
+
+```java
+deleteData(todo, connection);
+```
+
+メイン クラスを実行すると、次の出力が生成されるはずです。
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Delete data 
+[INFO   ] Read data 
+[INFO   ] There is no data in the database! 
+[INFO   ] Closing database connection 
+```
+
+## <a name="conclusion-and-resources-clean-up"></a>結論とリソースのクリーンアップ
+
+お疲れさまでした。 JDBC を使用して、Azure SQL データベースでデータを格納および取得する Java アプリケーションを作成しました。
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>次のステップ
 

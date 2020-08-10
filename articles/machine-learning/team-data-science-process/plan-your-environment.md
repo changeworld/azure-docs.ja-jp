@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047710"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 
@@ -145,7 +145,7 @@ ms.locfileid: "84267936"
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>データ分析にはどのツールを使用する必要がありますか。
 
-* [Microsoft Azure PowerShell](/powershell/azure/overview) - スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語
+* [Microsoft Azure PowerShell](/powershell/azure/) - スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)

@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647903"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323113"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>ワークスペース ベースの Application Insights リソース (プレビュー)
 
@@ -25,7 +25,7 @@ ms.locfileid: "83647903"
 
 ![ワークスペース ベースの Application Insights リソース](./media/create-workspace-resource/create-workspace-based.png)
 
-既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)を参照してください。
+既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../learn/quick-create-workspace.md)を参照してください。
 
 パブリック プレビューについては、**ワークスペース ベースのリソースは現在、米国西部 2、米国東部、および米国中南部に制限されています。**
 
@@ -40,7 +40,7 @@ ms.locfileid: "83647903"
 
 ## <a name="copy-the-connection-string"></a>接続文字列のコピー
 
-[接続文字列](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+[接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 ## <a name="monitoring-configuration"></a>監視構成
 
@@ -52,14 +52,14 @@ ms.locfileid: "83647903"
 
 コードベースの監視用の Application Insights SDK の設定に関する詳細なドキュメントについては、言語またはフレームワーク固有のドキュメントを参照してください。
 
-- [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [バックグラウンド タスクおよび最新のコンソール アプリケーション (.NET/.NET Core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [クラシック コンソール アプリケーション (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [Java ](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
-- [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+- [ASP.NET](./asp-net.md)
+- [ASP.NET Core ](./asp-net-core.md)
+- [バックグラウンド タスクおよび最新のコンソール アプリケーション (.NET/.NET Core)](./worker-service.md)
+- [クラシック コンソール アプリケーション (.NET)](./console.md) 
+- [Java ](./java-get-started.md?tabs=maven)
+- [JavaScript](./javascript.md)
+- [Node.js](./nodejs.md)
+- [Python](./opencensus-python.md)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>コード不要の監視と Visual Studio リソースの作成
 
@@ -102,7 +102,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
+このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -197,10 +197,11 @@ Application Insights リソース ウィンドウで **[プロパティ]**  >  *
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリックを探索する](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics クエリを作成する](../../azure-monitor/app/analytics.md)
+* [メトリックを探索する](../platform/metrics-charts.md)
+* [Analytics クエリを作成する](../log-query/log-query-overview.md)
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[api]: ./api-custom-events-metrics.md
+[diagnostic]: ./diagnostic-search.md
+[metrics]: ../platform/metrics-charts.md
+[start]: ./app-insights-overview.md
+

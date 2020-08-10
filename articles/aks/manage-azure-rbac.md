@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056746"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に Azure RBAC を使用する (プレビュー)
 
@@ -35,14 +35,14 @@ Azure から Kubernetes のリソースに対する RBAC を管理する機能�
 - プレビューの <https://aka.ms/aad-rbac-sign-up-form> にサインアップします。
 - `EnableAzureRBACPreview` 機能フラグが有効になっていることを確認します。
 - `AAD-V2` 機能フラグが有効になっていることを確認します。
-- `aks-preview` CLI 拡張機能 v0.4.55 以降がインストールされていることを確認します
+- `aks-preview` [CLI 拡張機能][az-extension-add] v0.4.55 以降がインストールされていることを確認します
 - [kubectl v1.18.3 以降][az-aks-install-cli]がインストールされていることを確認します。
 
 #### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>プレビュー機能 `EnableAzureRBACPreview` と `AAD-V2` を登録する
 
 Kubernetes 認可に Azure RBAC を使用する AKS クラスターを作成するには、サブスクリプションで機能フラグ `EnableAzureRBACPreview` と `AAD-V2` を有効にする必要があります。
 
-次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EnableAzureRBACPreview` 機能フラグを登録します。
+次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EnableAzureRBACPreview` および `AAD-V2` 機能フラグを登録します。
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
@@ -66,7 +66,7 @@ az provider register --namespace Microsoft.ContainerService
 
 #### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-Azure RBAC を使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.55 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+Azure RBAC を使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.55 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
 
 ```azurecli-interactive
 # Install the aks-preview extension

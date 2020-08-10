@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435780"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038547"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
@@ -49,7 +49,7 @@ Security Center を初めて起動してから数分以内に、以下の項目�
 
 Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Log Analytics エージェントをインストールする必要があります。
 
-## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
+## <a name="upgrade-to-the-standard-pricing-tier"></a>Standard 価格レベルにアップグレードする
 Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 Security Center Standard には無料試用版があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 
 
 1. Security Center メイン メニューの **[使用の開始]** を選択します。
@@ -107,6 +107,11 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 
 > [!div class="nextstepaction"]
 > [クイック スタート: Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Maps を使用してストア ロケーター アプリケーションを作成する | Microsoft Azure Maps
 description: このチュートリアルでは、Microsoft Azure Maps Web SDK を使用して、ストア ロケーター Web アプリケーションを作成する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 4bb0a4a0a621881fe1d9a59585476baa2ce05f8e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289548"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 

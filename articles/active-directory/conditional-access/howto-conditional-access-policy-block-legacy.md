@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6539a233fbb8038d82a8ea41da2c9e79745324
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995192"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283012"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件付きアクセス:レガシ認証をブロックする
 
@@ -36,7 +36,7 @@ ms.locfileid: "83995192"
    1. **[Done]** を選択します。
 1. **[クラウド アプリまたはアクション]** で、 **[すべてのクラウド アプリ]** を選択します。
    1. **[Done]** を選択します。
-1. **[条件]**  >  **[Client apps (preview)]\(クライアント アプリ (プレビュー)\)** で、 **[Configure]\(構成する\)** を **[はい]** に設定します。
+1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** の **[このポリシーを適用するクライアント アプリを選択します]** で、次のようにします。
    1. **[モバイル アプリとデスクトップ クライアント]**  >  **[Other clients]\(その他のクライアント\)** チェック ボックスのみをオンにします。
    1. **[Done]** を選択します。
 1. **アクセス制御** > **許可** で、**アクセスのブロック** を選択します。

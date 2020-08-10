@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251198"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285868"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -57,9 +57,9 @@ Traffic Manager は DNS 参照を実行して、ユーザーの最も適切な�
 
 エンドポイントとルーティングを設定する方法については、[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)に関する記事をご覧ください。
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したレイヤー 7 のアプリケーション ルーティング
+### <a name="application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したアプリケーション ルーティング
 
-Traffic Manager は、DNS (レイヤー 3) を使ってトラフィックのシェーピングを行います。 [Azure Front Door Service](../frontdoor/front-door-overview.md) には、HTTP/HTTPS (レイヤー 7) のルーティング オプションが用意されています。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
+[Azure Front Door Service](../frontdoor/front-door-overview.md) は、スプリット TCP ベースのエニーキャスト プロトコルを使用して、エンド ユーザーが最も近い Front Door POP (point of presence) にすぐに接続されるようにします。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>グローバル仮想ネットワーク ピアリングを使用してリージョンを相互接続する
 

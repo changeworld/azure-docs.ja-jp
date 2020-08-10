@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 7052e9203532320a7de5197e983d40cb0a34b50d
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 9be1053600ab89a7879a04a7c08a44ddf3bc862a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291238"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -29,7 +29,7 @@ Windows Virtual Desktop は定期的に更新されます。 この記事では�
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-先月、Windows Virtual Desktop Spring 2020 更新プログラムのプレビューが導入されました。 この更新プログラムには、多くの魅力的な新機能が用意されています。 ここでは、Spring 2020 更新プログラムの最新情報を紹介します。
+先月、Azure Resource Manager 統合を使用した Windows Virtual Desktop をプレビューとして導入しました。 この更新プログラムには、多くの魅力的な新機能が用意されています。 ここでは、このバージョンの Windows Virtual Desktop について説明します。
 
 ### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager-preview"></a>Windows Virtual Desktop が Azure Resource Manager (プレビュー) と統合されました
 
@@ -39,22 +39,22 @@ Windows Virtual Desktop が Azure Resource Manager と統合されました。 �
 
 - Windows Virtual Desktop が Azure portal と統合されました。 つまり、ポータルで直接すべてを管理できるため、PowerShell、Web アプリ、サードパーティ製のツールは必要ありません。 開始するには、[Azure portal でのホスト プールの作成](create-host-pools-azure-marketplace.md)に関するチュートリアルを参照してください。
 
-- Spring 2020 更新プログラムより前は、RemoteApp とデスクトップを個々のユーザーにしか発行できませんでした。 Azure Resource Manager を使用すると、Azure Active Directory グループにリソースを発行できるようになりました。
+- この更新プログラムより前は、RemoteApp とデスクトップを個々のユーザーにしか発行できませんでした。 Azure Resource Manager を使用すると、Azure Active Directory グループにリソースを発行できるようになりました。
 
 - 以前のバージョンの Windows Virtual Desktop には、テナントまたはホスト プールに割り当てることができる組み込み管理者ロールが 4 つありました。 これらのロールは、Azure の[ロールベースのアクセス制御](../role-based-access-control/overview.md)に組み込まれました。 これらのロールは、すべての Windows Virtual Desktop Azure Resource Manager オブジェクトに適用することができます。これにより、完全な多機能な委任モデルを作成できます。
 
-- Spring 2020 更新プログラムでは、ホスト プールを拡張するために Azure Marketplace または GitHub テンプレートを繰り返し実行する必要がなくなりました。 ホスト プールを拡張するために必要なのは、Azure portal で対象のホスト プールに移動し、 **[+ 追加]** を選択して追加のセッション ホストをデプロイすることだけです。
+- この更新プログラムでは、ホスト プールを拡張するために Azure Marketplace または GitHub テンプレートを繰り返し実行する必要がなくなりました。 ホスト プールを拡張するために必要なのは、Azure portal で対象のホスト プールに移動し、 **[+ 追加]** を選択して追加のセッション ホストをデプロイすることだけです。
 
 - ホスト プールのデプロイは、[Azure Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md) と完全に統合されました。 Shared Image Gallery は、イメージのバージョン管理を含む仮想マシン (VM) イメージ定義を格納する、別の Azure サービスです。 また、グローバル レプリケーションを使用して、イメージをコピーし、ローカル デプロイ用に他の Azure リージョンに送信することもできます。
 
 - 従来 PowerShell または診断サービス Web アプリを通じて実行されていた監視機能は、Azure portal の Log Analytics に移動されました。 また、レポートを視覚化するための 2 つのオプションも用意されました。 Kusto クエリを実行し、Workbooks を使用すると、ビジュアル レポートを作成できます。
 
-- Windows Virtual Desktop を使用するために Azure Active Directory (Azure AD) の同意を完了する必要がなくなりました。 Spring 2020 更新プログラムでは、Azure サブスクリプションの Azure AD テナントによってユーザーが認証され、管理者に RBAC 制御が提供されます。
+- Windows Virtual Desktop を使用するために Azure Active Directory (Azure AD) の同意を完了する必要がなくなりました。 この更新プログラムでは、Azure サブスクリプションの Azure AD テナントによってユーザーが認証され、管理者に RBAC 制御が提供されます。
 
 
 ### <a name="powershell-support"></a>PowerShell のサポート
 
-Spring 2020 更新プログラムでは、Azure PowerShell Az モジュールに新しい AzWvd コマンドレットが追加されました。 この新しいモジュールは、.NET Core で実行される PowerShell Core でサポートされます。
+この更新プログラムでは、Azure PowerShell Az モジュールに新しい AzWvd コマンドレットが追加されました。 この新しいモジュールは、.NET Core で実行される PowerShell Core でサポートされます。
 
 このモジュールをインストールするには、「[Windows Virtual Desktop 用 PowerShell モジュールを設定する](powershell-module.md)」の手順に従ってください。
 

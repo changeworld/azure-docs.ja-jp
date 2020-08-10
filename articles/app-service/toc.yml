@@ -76,7 +76,7 @@
       href: deploy-best-practices.md
     - name: セキュリティ
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -84,6 +84,9 @@
           href: overview-patch-os-runtime.md
         - name: 組み込みのセキュリティ制御
           href: app-service-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティの概要
           href: overview-security.md
     - name: ネットワーク機能

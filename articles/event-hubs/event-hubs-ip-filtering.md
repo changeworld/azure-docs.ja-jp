@@ -2,13 +2,13 @@
 title: Azure Event Hubs のファイアウォール ルール | Microsoft Docs
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Event Hubs への接続を許可します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: fb9fa72af7127224afdcf70ecca1c851e9212c4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 2b886aaaf40e5c82d9c7ac3ce5abeda8f54cad3b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320424"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288040"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Azure Event Hubs 名前空間に対する IP ファイアウォール規則を構成する
 既定では、要求が有効な認証と承認を受けている限り、Event Hubs 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -21,9 +21,7 @@ ms.locfileid: "85320424"
 > 仮想ネットワークが実装されているときは、信頼できる Microsoft サービスはサポートされません。
 >
 > 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Monitor (診断設定)
 > - Azure Stream Analytics
-> - Azure Event Grid との統合
 > - Azure IoT Hub ルート
 > - Azure IoT Device Explorer
 >

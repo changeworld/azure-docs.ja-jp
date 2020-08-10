@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608027"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495347"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>クイック スタート:シンプルな Azure CLI コマンド az mysql up (プレビュー) を使用して Azure Database for MySQL を作成する
 

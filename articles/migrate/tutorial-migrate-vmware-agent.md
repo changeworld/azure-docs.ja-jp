@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントベー
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 707a74d0e993625d32c60f7120bf69055dc9e885
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119261"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290195"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -195,7 +195,7 @@ Azure Migrate プロジェクトがまだない場合は、ここで[プロジ�
 
 OVF テンプレートのダウンロード後、それを VMware にインポートして、Windows Server 2016 を稼働させている VMware VM 上にレプリケーション アプリケーションを作成します。
 
-1. VMWare vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
+1. VMware vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
 2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、 **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。 
 3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を入力します。
 4. **[Review details]\(詳細の確認\)** で、 **[Next]\(次へ\)** を選択します。
@@ -209,7 +209,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 ### <a name="start-appliance-setup"></a>アプライアンスの設定を開始する
 
-1. VMWare vSphere Client のコンソールで、VM をオンにします。 VM が Windows Server 2016 のインストール エクスペリエンスで起動します。
+1. VMware vSphere Client のコンソールで、VM をオンにします。 VM が Windows Server 2016 のインストール エクスペリエンスで起動します。
 2. 使用許諾契約書に同意し、管理者パスワードを入力します。
 3. インストールの完了後、管理者パスワードを使用して、管理者として VM にサインインします。 初めてサインインすると、数秒以内にレプリケーション アプライアンス設定ツール (Azure Site Recovery 構成ツール) が起動します。
 5. Server Migration へのアプライアンスの登録に使用する名前を入力します。 続けて、 **[次へ]** をクリックします。

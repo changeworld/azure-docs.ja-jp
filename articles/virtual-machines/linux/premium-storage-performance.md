@@ -1,5 +1,5 @@
 ---
-title: 'Azure Premium Storage: Linux VM におけるパフォーマンスのための設計 | Microsoft Docs'
+title: 'Azure Premium Storage: 高パフォーマンス用に設計する | Microsoft Docs'
 description: Azure Premium SSD マネージド ディスクを使用する高パフォーマンスのアプリケーションを設計します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 91968a9701c46114d56b30ec6e3a93cfa76bf023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c654be5f85d5f8b8330e6c08d2655f27d3b2660d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022165"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080201"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]

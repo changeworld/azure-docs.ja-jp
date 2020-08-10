@@ -3,12 +3,12 @@ title: Windows Server へのシステム状態の復元
 description: Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067364"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -183,7 +183,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
         >[!NOTE]
         >すべての Active Directory データを復元している場合 (機能するドメイン コントローラーがフォレストに残っていない) は、上記の手順 9. で必ず **[Active Directory ファイルの Authoritative Restore を実行する]** を選択してください。
 
-    * [wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) ユーティリティを使用して、コマンド ラインから復元を実行します。
+    * [wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) ユーティリティを使用して、コマンド ラインから復元を実行します。
 
         使用するバックアップのバージョン識別子が必要になります。 次のコマンドを実行すると、バージョン識別子の一覧を取得できます。
 
@@ -193,7 +193,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
         次に、そのバージョン識別子を使用して復元を実行します。
 
-        たとえば、`server01` 用の共有リソース `\\servername\share` に格納されている、2020 年 4 月 30 日午前 9 時のバックアップを使用して、[AD DS の非 Authoritative Restore と sysvol フォルダーの Authoritative Restore](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) を実行するには、次のように入力します。
+        たとえば、`server01` 用の共有リソース `\\servername\share` に格納されている、2020 年 4 月 30 日午前 9 時のバックアップを使用して、[AD DS の非 Authoritative Restore と sysvol フォルダーの Authoritative Restore](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) を実行するには、次のように入力します。
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol

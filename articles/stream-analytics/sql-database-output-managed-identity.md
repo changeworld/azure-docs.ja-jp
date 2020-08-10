@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fff44617a5621d4edd84bee8f9b1e6b6e6924cd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045622"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305926"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用して Azure SQL Database にアクセスする (プレビュー)
 
@@ -102,7 +102,7 @@ Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[�
 
 ## <a name="grant-stream-analytics-job-permissions"></a>Stream Analytics ジョブにアクセス許可を付与する
 
-前のセクションで説明したように、包含データベース ユーザーを作成し、ポータルで Azure サービスへのアクセス許可を付与すると、Stream Analytics ジョブには、マネージド ID を介して SQL Database リソースに**接続する**ためのマネージド ID からのアクセス許可が付与されます。 SELECT および INSERT のアクセス許可を Stream Analytics ジョブに付与することをお勧めします。これらは後で Stream Analytics ワークフローで必要になるためです。 **SELECT** のアクセス許可により、ジョブは SQL Database 内のテーブルへの接続をテストできます。 **INSERT** のアクセス許可により、入力と SQL Database 出力を構成した後で、エンドツーエンドの Stream Analytics クエリをテストできます。これらのアクセス許可を Stream Analytics ジョブに付与するには、SQL Server Management Studio を使用します。 詳細については、「[GRANT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15)」のリファレンスを参照してください。
+前のセクションで説明したように、包含データベース ユーザーを作成し、ポータルで Azure サービスへのアクセス許可を付与すると、Stream Analytics ジョブには、マネージド ID を介して SQL Database リソースに**接続する**ためのマネージド ID からのアクセス許可が付与されます。 SELECT および INSERT のアクセス許可を Stream Analytics ジョブに付与することをお勧めします。これらは後で Stream Analytics ワークフローで必要になるためです。 **SELECT** のアクセス許可により、ジョブは SQL Database 内のテーブルへの接続をテストできます。 **INSERT** のアクセス許可により、入力と SQL Database 出力を構成した後で、エンドツーエンドの Stream Analytics クエリをテストできます。これらのアクセス許可を Stream Analytics ジョブに付与するには、SQL Server Management Studio を使用します。 詳細については、「GRANT (Transact-SQL)」のリファレンスを参照してください。
 
 データベース内の特定のテーブルまたはオブジェクトに対するアクセス許可のみを付与するには、次の T-SQL 構文を使用してクエリを実行します。 
 

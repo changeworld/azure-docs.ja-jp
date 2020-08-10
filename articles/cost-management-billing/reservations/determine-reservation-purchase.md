@@ -4,15 +4,15 @@ description: この記事は、購入すべき予約を判断するのに役立�
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.topic: how-to
+ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628607"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759897"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>購入する予約を判断する
 
@@ -91,6 +91,8 @@ Azure portal の [予約] に移動し、100 DWU の倍数単位で Azure Synaps
 レコメンデーション エンジンによって計算される予約購入は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/docs) の **[Recommended]\(推奨\)** タブに表示されます。 以下に例の画像を示します。
 
 ![推奨量を示す画像](./media/determine-reservation-purchase/select-product-ri.png)
+
+[推奨事項](reserved-instance-purchase-recommendations.md#recommendations-in-the-azure-portal)の詳細をご確認ください。
 
 ## <a name="recommendations-in-the-cost-management-power-bi-app"></a>Cost Management Power BI アプリにおける推奨情報
 

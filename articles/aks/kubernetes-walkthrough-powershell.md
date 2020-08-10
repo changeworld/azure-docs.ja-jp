@@ -1,15 +1,16 @@
 ---
-title: クイック スタート:Azure Kubernetes Service クラスターをデプロイする
+title: クイック スタート:PowerShell を使用して AKS クラスターをデプロイする
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、PowerShell を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 219772fd81617dc3e69b452057e0122eedef69f9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251479"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499859"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Kubernetes Service クラスターをデプロイする
 

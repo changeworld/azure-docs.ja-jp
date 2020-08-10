@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87dc1ccb887638226607a1e398c7532de8d2c94f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449313"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534534"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -99,12 +99,12 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault にストレージ アカウントへのアクセス権を付与する
 
-Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" するアクセス許可が必要です。 このようなアクセス許可は、組み込みの RBAC ロールである[ストレージ アカウント キー オペレーター サービス ロール](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)で有効になります。 
+Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" するアクセス許可が必要です。 このようなアクセス許可は、Azure 組み込みロールである[ストレージ アカウント キー オペレーターのサービス ロール](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)で有効になります。 
 
 Azure PowerShell の [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) コマンドレットを使用して、このロールを Key Vault サービス プリンシパルに割り当て、範囲をそのストレージ アカウントに限定します。
 
 ```azurepowershell-interactive
-# Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
+# Assign Azure role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 
@@ -164,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>キーの再生成を有効にする
 
-Key Vault でストレージ アカウント キーを定期的に再生成する場合は、Azure PowerShell の [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) コマンドレットを使用して、再生成期間を設定できます。 この例では、3 日間の再生成期間を設定します。 3 日後、Key Vault は "key2" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます (従来のストレージ アカウントの場合、"primary" と "secondary" で置き換えます)。
+Key Vault でストレージ アカウント キーを定期的に再生成する場合は、Azure PowerShell の [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) コマンドレットを使用して、再生成期間を設定できます。 この例では、3 日間の再生成期間を設定します。 ローテーションする時間になると、Key Vault はアクティブでないキーを再生成し、新しく作成されたキーをアクティブとして設定します。 SAS トークンを発行するために使用されるキーは、常に 1 つだけです。 これがアクティブなキーです。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

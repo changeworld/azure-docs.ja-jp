@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039009"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524507"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
 
@@ -53,7 +53,7 @@ LUIS コンテナーを実行するには、次の前提条件を確認してく
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
-このコンテナーでは、以下の設定に関して最小値と推奨値がサポートされます。
+次の表は、コンテナー ホストの最小値と推奨値の一覧です。 要件は、トラフィック量によって変わる場合があります。
 
 |コンテナー| 最小値 | 推奨 | TPS<br>(最小、最大)|
 |-----------|---------|-------------|--|

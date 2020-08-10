@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77566150"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091268"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>プライベート クラウドに VMware 仮想マシンを作成する
 
@@ -122,9 +122,9 @@ Linux では、DNS サーバーを設定するためのさまざまなパッケ�
 
 これらの Microsoft のトピックでは、Windows サーバーを DNS サーバーおよび DHCP サーバーとして設定する方法について説明しています。
 
-[DNS サーバーとしての Windows Server](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[DNS サーバーとしての Windows Server](/windows-server/networking/dns/dns-top)
 
-[DHCP サーバーとしての Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[DHCP サーバーとしての Windows Server](/windows-server/networking/technologies/dhcp/dhcp-top)
 
 ## <a name="customize-networking-configuration-optional"></a>ネットワーク構成をカスタマイズする (省略可能)
 

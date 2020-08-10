@@ -93,9 +93,14 @@
     - name: コードとしてのポリシー ワークフローの設計
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
-    - name: Kubernetes 用の Azure Policy (プレビュー)
-      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
-      href: ./concepts/policy-for-kubernetes.md
+    - name: Kubernetes の統合
+      items:
+        - name: Kubernetes 用の Azure Policy (プレビュー)
+          displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+          href: ./concepts/policy-for-kubernetes.md
+        - name: Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+          displayName: 'aks, psp, rego, opa'
+          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
@@ -151,10 +156,10 @@
       items:
         - name: Azure Monitor の大規模なデプロイ
           displayName: 'monitor, diagnostic settings, dependency agent'
-          href: ../../azure-monitor/platform/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: Azure Monitor for VMs の有効化 (プレビュー)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
 - name: トラブルシューティング
   href: ./troubleshoot/general.md
 - name: リファレンス
@@ -223,6 +228,8 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: リソース
   items:
+    - name: 既知の問題
+      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub - Azure Policy サンプル
       href: 'https://github.com/Azure/azure-policy'
     - name: GitHub - コミュニティ ポリシー リポジトリ
@@ -241,8 +248,8 @@
           href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
         - name: 修復タスク
           href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: 動画 - Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: 動画 - Ignite 2019
+      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール

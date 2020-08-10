@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1ed86db85de8d4665c9eecfbde96b0909b12362
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ca5ec32e1f88572812b19cf08d4c6f9dc70af6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018574"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
@@ -83,7 +83,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 
 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。
 
-ここでは、Azure Resource Manager PowerShell コマンドレットを使用する必要があります。  インストールしていない場合は、先に進む前に、[最新バージョンをダウンロード](https://docs.microsoft.com/powershell/azure/overview)してください。
+ここでは、Azure Resource Manager PowerShell コマンドレットを使用する必要があります。  インストールしていない場合は、先に進む前に、[最新バージョンをダウンロード](https://docs.microsoft.com/powershell/azure/)してください。
 
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 

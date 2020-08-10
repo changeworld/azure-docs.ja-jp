@@ -3,38 +3,38 @@ title: Application Insights からのテレメトリの連続エクスポート 
 description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110217"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324337"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
 
 > [!NOTE]
-> 連続エクスポートは、従来の Application Insights リソースに対してのみサポートされます。 [ワークスペース ベースの Application Insights リソース](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)では、[診断設定](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)を使用する必要があります。
+> 連続エクスポートは、従来の Application Insights リソースに対してのみサポートされます。 [ワークスペース ベースの Application Insights リソース](./create-workspace-resource.md)では、[診断設定](./create-workspace-resource.md#export-telemetry)を使用する必要があります。
 >
 
 連続エクスポートをセットアップする前に、次の代替手段を検討してください。
 
 * メトリック タブや検索タブの上部にある [エクスポート] ボタンを使用すると、テーブルやグラフを Excel のスプレッドシートに転送できます。
 
-* [Analytics](../../azure-monitor/app/analytics.md) にはテレメトリ用の強力なクエリ言語があります。 結果をエクスポートすることもできます。
-* [Power BI でデータを探索](../../azure-monitor/app/export-power-bi.md )する場合は、連続エクスポートを使用せずに実行できます。
+* [Analytics](../log-query/log-query-overview.md) にはテレメトリ用の強力なクエリ言語があります。 結果をエクスポートすることもできます。
+* [Power BI でデータを探索](./export-power-bi.md)する場合は、連続エクスポートを使用せずに実行できます。
 * [データ アクセス REST API](https://dev.applicationinsights.io/) を使用すると、テレメトリにプログラムでアクセスすることができます。
-* [PowerShell を使用して連続エクスポート](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)の設定にアクセスすることもできます。
+* [PowerShell を使用して連続エクスポート](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)の設定にアクセスすることもできます。
 
-連続エクスポートによってストレージ (必要な期間の保持が可能) にコピーされたデータは、通常の[リテンション期間](../../azure-monitor/app/data-retention-privacy.md)が過ぎるまで引き続き Application Insights で使用できます。
+連続エクスポートによってストレージ (必要な期間の保持が可能) にコピーされたデータは、通常の[リテンション期間](./data-retention-privacy.md)が過ぎるまで引き続き Application Insights で使用できます。
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>連続エクスポートの高度なストレージ構成
 
 連続エクスポートでは、次の Azure のストレージ機能または構成は**サポートされません**。
 
-* [VNET/Azure Storage ファイアウォール](https://docs.microsoft.com/azure/storage/common/storage-network-security)と Azure BLOB ストレージの併用。
+* [VNET/Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)と Azure BLOB ストレージの併用。
 
-* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
+* [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>連続エクスポートを作成する
 
@@ -60,13 +60,13 @@ ms.locfileid: "86110217"
 
 |名前 | 説明 |
 |:----|:------|
-| [可用性](export-data-model.md#availability) | [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)をレポートします。  |
-| [Event](export-data-model.md#events) | [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)によって生成されたカスタム イベント。 
-| [例外](export-data-model.md#exceptions) |サーバーおよびブラウザーの [例外](../../azure-monitor/app/asp-net-exceptions.md) をレポートします。
-| [Messages (メッセージ)](export-data-model.md#trace-messages) | [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) および[ログ アダプター](../../azure-monitor/app/asp-net-trace-logs.md)によって送信されます。
+| [可用性](export-data-model.md#availability) | [可用性 Web テスト](./monitor-web-app-availability.md)をレポートします。  |
+| [Event](export-data-model.md#events) | [TrackEvent()](./api-custom-events-metrics.md#trackevent)によって生成されたカスタム イベント。 
+| [例外](export-data-model.md#exceptions) |サーバーおよびブラウザーの [例外](./asp-net-exceptions.md) をレポートします。
+| [Messages (メッセージ)](export-data-model.md#trace-messages) | [TrackTrace](./api-custom-events-metrics.md#tracktrace) および[ログ アダプター](./asp-net-trace-logs.md)によって送信されます。
 | [Metrics](export-data-model.md#metrics) | メトリック API 呼び出しによって生成されます。
 | [PerformanceCounters](export-data-model.md) | Application Insights によって収集されたパフォーマンス カウンター。
-| [要求数](export-data-model.md#requests)| [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。| 
+| [要求数](export-data-model.md#requests)| [TrackRequest](./api-custom-events-metrics.md#trackrequest)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。| 
 
 ### <a name="to-edit-continuous-export"></a>連続エクスポートを編集するには
 
@@ -84,14 +84,14 @@ ms.locfileid: "86110217"
 ## <a name="what-events-do-you-get"></a><a name="analyze"></a> 取得されるイベント
 エクスポートされたデータは、お客様のアプリケーションから受け取った未加工のテレメトリですが、クライアントの IP アドレスから計算された位置データが追加されます。
 
-[サンプリング](../../azure-monitor/app/sampling.md) によって破棄されたデータは、エクスポートされるデータに含まれません。
+[サンプリング](./sampling.md) によって破棄されたデータは、エクスポートされるデータに含まれません。
 
 他の計算メトリックは含まれません。 たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
-データには、セットアップ済みのすべての[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)の結果も含まれます。
+データには、セットアップ済みのすべての[可用性 Web テスト](./monitor-web-app-availability.md)の結果も含まれます。
 
 > [!NOTE]
-> **サンプリング。** アプリケーションで大量のデータを送信すると、サンプリング機能が動作して、生成されたテレメトリのごく一部だけが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../azure-monitor/app/sampling.md)
+> **サンプリング。** アプリケーションで大量のデータを送信すると、サンプリング機能が動作して、生成されたテレメトリのごく一部だけが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](./sampling.md)
 >
 >
 
@@ -210,5 +210,6 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 
 <!--Link references-->
 
-[exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
+[exportasa]: ./code-sample-export-sql-stream-analytics.md
+[roles]: ./resources-roles-access-control.md
+

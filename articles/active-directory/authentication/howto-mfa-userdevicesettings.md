@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 295738ee5943a6cf54bc7e1e3ce4bba621dbe29f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9861e8e8be39781ad1b256b9939df3ab03e74be6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658685"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027531"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-factor Authentication のユーザー設定の管理
 
@@ -54,6 +54,6 @@ Azure Multi-Factor Authentication のユーザーを管理しやすくするた�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、個々のユーザー設定の構成について説明しました。 Azure Multi-Factor Authentication サービス設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
+この記事では、個々のユーザー設定を構成する方法について説明しました。 Azure Multi-Factor Authentication サービスの全体的な設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
 
-ユーザーがヘルプを必要とする場合は、[Azure Multi-Factor Authentication のユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)を参照してください。
+ユーザーがヘルプを必要とする場合は、[Azure Multi-Factor Authentication のユーザー ガイド](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。

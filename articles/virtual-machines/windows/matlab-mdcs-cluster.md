@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869419"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074240"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM での MATLAB Distributed Computing Server クラスターの作成
 コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。 VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)から入手可能) を使用してクラスターをデプロイおよび管理します。 デプロイ後には、クラスターに接続してワークロードを実行します。
@@ -25,7 +25,7 @@ Azure の仮想マシンを使用すると、対話型のジョブ、バッチ �
 
 ## <a name="prerequisites"></a>前提条件
 * **クライアント コンピューター** : デプロイ後の Azure と MATLAB Distributed Computing Server クラスターとの通信に、Windows ベースのクライアント コンピューターが必要です。
-* **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
+* **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/) 」を参照してください。
 * **Azure サブスクリプション** - サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制サブスクリプションまたはその他の購入オプションを検討してください。
 * **vCPU クォータ** : 大規模なクラスターまたは複数の MATLAB Distributed Computing Server クラスターをデプロイするには、vCPU クォータを増やす必要があります。 クォータを増やすには、 [オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 * **MATLAB の Parallel Computing Toolbox および MATLAB Distributed Computing Server ライセンス** : このスクリプトでは、すべてのライセンスで [MathWorks Hosted License Manager](https://www.mathworks.com/help/install/license-management.html) が使用されていることを想定しています。  

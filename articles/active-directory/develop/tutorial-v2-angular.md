@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: 67ce5f898f2f9b6be088a0d01aec908c93ce7418
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231694"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446890"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -31,7 +31,7 @@ ms.locfileid: "86231694"
 
 ## <a name="how-the-sample-app-works"></a>このサンプル アプリのしくみ
 
-![このチュートリアルで生成されたサンプル アプリの動作を示す図](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![このチュートリアルで生成されたサンプル アプリの動作を示す図](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 ### <a name="more-information"></a>詳細情報
 
@@ -60,10 +60,11 @@ MSAL.js ライブラリのソース コードは、GitHub の [AzureAD/microsoft
 
 次の npm コマンドを使用して、新しい Angular アプリケーションを生成します。
 
-```Bash
+```bash
 npm install -g @angular/cli@8                    # Install the Angular CLI
-npm install @angular/material@8 @angular/cdk@8   # Install the Angular Material component library (optional, for UI)
 ng new my-application --routing=true --style=css # Generate a new Angular app
+cd my-application                                # Change to the app directory
+npm install @angular/material@8 @angular/cdk@8   # Install the Angular Material component library (optional, for UI)
 npm install msal @azure/msal-angular             # Install MSAL and MSAL Angular in your application
 ng generate component page-name                  # To add a new page (such as a home or profile page)
 ```
@@ -148,7 +149,7 @@ Azure portal に[シングルページ アプリケーションを登録する�
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
-    
+
     ngOnInit() { }
 
     login() {

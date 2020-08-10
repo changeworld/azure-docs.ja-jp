@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105923"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327890"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -310,6 +310,7 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
+* [Log Analytics エージェントの概要](./log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
 
-* 「[Azure Virtual Machines に関するデータの収集](../../azure-monitor/learn/quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。
+* 「[Azure Virtual Machines に関するデータの収集](../learn/quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。
+

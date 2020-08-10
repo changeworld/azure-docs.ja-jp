@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116988"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -186,7 +186,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 ある "_リソースの種類_" が **strongType** に対して有効かどうかを確認するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。
+`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 ある "_リソースの種類_" が **strongType** に対して有効かどうかを確認するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
 
 **Get-AzResourceProvider** によって返されない一部の "_リソースの種類_" もサポートされています。 これらには次のようなものがあります。
 
@@ -513,37 +513,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 }
 ```
 
-例 5:すべての文字列配列メンバーが条件式を満たすかどうかをチェックします
-
-```json
-{
-    "count": {
-        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-        "where": {
-            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-            "like": "*@contoso.com"
-        }
-    },
-    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
-}
-```
-
-例 6:**value** 内の **field** を使用して、すべての配列メンバーが条件式を満たすかどうかをチェックします
-
-```json
-{
-    "count": {
-        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-        "where": {
-            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
-            "equals": "contoso.com"
-        }
-    },
-    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
-}
-```
-
-例 7:少なくとも 1 つの配列メンバーが、条件式内の複数のプロパティと一致するかどうかをチェックします
+例 5:少なくとも 1 つの配列メンバーが、条件式内の複数のプロパティと一致するかどうかをチェックします
 
 ```json
 {

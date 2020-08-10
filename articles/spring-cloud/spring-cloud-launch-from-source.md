@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 3ab4b1729ea380671b72a9bb01740930a186d5c3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: da1fa8306630fe84efeb208883fb9ed3979be491
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470796"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504587"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>クイック スタート:ソース コードから Spring Cloud アプリケーションを起動する
 

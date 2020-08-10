@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079300"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -19,7 +19,7 @@ Azure Backup を使用した Azure 仮想マシンのバックアップが完了
 
 ## <a name="select-recovery-point"></a>Select Recovery point
 
-バックアップ項目の使用可能な復旧ポイントの一覧は、[復旧ポイント一覧取得 REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list) を使用して取得できます。 関連するすべての値を含む簡単な *GET* 操作です。
+バックアップ項目の使用可能な復旧ポイントの一覧は、[復旧ポイント一覧取得 REST API](/rest/api/backup/recoverypoints/list) を使用して取得できます。 関連するすべての値を含む簡単な *GET* 操作です。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -33,7 +33,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [OK]  |
+|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [OK]  |
 
 #### <a name="example-response"></a>応答の例
 
@@ -119,7 +119,7 @@ X-Powered-By: ASP.NET
 
 バックアップ データからの VM の作成をカスタマイズする必要がある場合は、選択したストレージ アカウントにディスクを復元し、要件に従ってこれらのディスクから VM を作成できます。 そのストレージ アカウントは、復旧サービスと同じリージョン内に存在し、ゾーン冗長ではない必要があります。 バックアップされた VM ("vmconfig.json") のディスクと構成は、特定のストレージ アカウントに格納されます。
 
-ディスクの復元のトリガーは、*POST* 要求です。 ディスクの復元操作について詳しくは、["復元のトリガー" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger) に関するページをご覧ください。
+ディスクの復元のトリガーは、*POST* 要求です。 ディスクの復元操作について詳しくは、["復元のトリガー" REST API](/rest/api/backup/restores/trigger) に関するページをご覧ください。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -133,9 +133,9 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)をご覧ください。
+要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](/rest/api/backup/restores/trigger#request-body)をご覧ください。
 
 #### <a name="example-request"></a>要求の例
 
@@ -161,7 +161,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 ### <a name="response"></a>Response
 
-ディスク復元のトリガーは、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
+ディスク復元のトリガーは、[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 

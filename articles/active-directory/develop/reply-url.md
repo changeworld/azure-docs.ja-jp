@@ -4,18 +4,18 @@ description: リダイレクト URI および応答 URL に関する制約と制
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 06/29/2019
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: b7aefc54a20e23ae969750532e7e3bc824f69c56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fdeb0018e27a2557161b2ec1c4794d975403523
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725314"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311621"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>リダイレクト URI および応答 URL に関する制約と制限
 
@@ -41,17 +41,34 @@ ms.locfileid: "83725314"
 アプリ登録に追加するリダイレクト URI ごとに最大 256 文字を使用できます。
 
 ## <a name="supported-schemes"></a>サポートされているスキーム
+
 現在、Azure AD アプリケーション モデルでは、組織の Azure Active Directory (Azure AD) テナントで Microsoft の職場または学校アカウントにサインインするアプリに対して、HTTP と HTTPS の両方のスキームがサポートされています。 つまり、アプリケーション マニフェストの `signInAudience` フィールドは、*AzureADMyOrg* または *AzureADMultipleOrgs* に設定されています。 個人用の Microsoft アカウントと職場および学校のアカウントにサインインするアプリ (つまり、`signInAudience` が *AzureADandPersonalMicrosoftAccount*  に設定されている) では、HTTPS スキームのみが許可されます。
 
 > [!NOTE]
 > 新しい[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでは、開発者は UI で HTTP スキームを使用して URI を追加することはできません。 職場または学校アカウントにサインインするアプリに対して HTTP URI を追加することは、アプリ マニフェスト エディターでのみサポートされます。 今後、新しいアプリではリダイレクト URI で HTTP スキームを使用できなくなります。 ただし、リダイレクト URI に HTTP スキームを含む以前のアプリは引き続き動作します。 開発者は、リダイレクト URI で HTTPS スキームを使用する必要があります。
 
+## <a name="localhost-exceptions"></a>Localhost の例外
+
+[RFC 8252 のセクション 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) と [7.3](https://tools.ietf.org/html/rfc8252#section-7.3) に従って、"loopback" または "localhost" リダイレクト URI には、次の 2 つの特別な考慮事項があります。
+
+1. リダイレクトでデバイスを離れることはないため、`http` URI スキームは許容可能です。  これは、`http://127.0.0.1/myApp` の他に、`https://127.0.0.1/myApp` も許容可能であることを意味します。 
+1. ネイティブ アプリケーションでは一時的なポート範囲が頻繁に必要とされるため、ポート コンポーネント (`:5001`や `:443` など) は、リダイレクト URI との照合のために無視されます。  その結果、`http://127.0.0.1:5000/MyApp` と `http://127.0.0.1:1234/MyApp` は、どちらも `http://127.0.0.1/MyApp` と `http://127.0.0.1:8080/MyApp` と一致します。
+
+開発の観点から見ると、これはいくつかのことを意味します。
+
+1. ポートのみが異なる場合は、複数の応答 URI を登録しないでください。  ログイン サーバーでは任意のものが選択され、その応答 URI に関連付けられている動作が使用されます (たとえば、`web`、`native`、`spa` 型のリダイレクトであるかどうか)。
+1. 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする必要がある場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。  `http://127.0.0.1/MyWebApp` と `http://127.0.0.1/MyNativeApp` は一致しません。  
+1. RFC ガイダンスに従って、リダイレクト URI で `localhost` を使用しないでください。  代わりに、実際のループバック IP アドレス `127.0.0.1` を使用します。 これにより、正しく構成されていないファイアウォールや名前が変更されたネットワーク インターフェイスによるアプリの破損が防止されます。
+
+>[!NOTE]
+> 現時点では、IPv6 ループバック (`[::1]`) はサポートされていません。  これは後日追加される予定です。
+
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>URI にワイルドカードを使用する制限
 
-`https://*.contoso.com` のようなワイルドカード URI は便利ですが、避けてください。 リダイレクト URI にワイルドカードを使用すると、セキュリティ面で影響が出ます。 OAuth 2.0 仕様 ([セクション 3.1.2 of RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) によると、リダイレクト エンドポイント URI は絶対 URI にする必要があります。 
+`https://*.contoso.com` のようなワイルドカード URI は便利ですが、避けてください。 リダイレクト URI にワイルドカードを使用すると、セキュリティ面で影響が出ます。 OAuth 2.0 仕様 ([セクション 3.1.2 of RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) によると、リダイレクト エンドポイント URI は絶対 URI にする必要があります。
 
-Microsoft の個人用アカウント、職場用アカウント、学校用アカウントにサインインするように構成されているアプリの場合、Azure AD アプリケーション モデルではワイルドカード URI がサポートされません。 ただし、組織の Azure AD テナントで本日、職場または学校アカウントにサインインするように構成されているアプリの場合、ワイルドカード URI が許可されます。 
- 
+Microsoft の個人用アカウント、職場用アカウント、学校用アカウントにサインインするように構成されているアプリの場合、Azure AD アプリケーション モデルではワイルドカード URI がサポートされません。 ただし、組織の Azure AD テナントで本日、職場または学校アカウントにサインインするように構成されているアプリの場合、ワイルドカード URI が許可されます。
+
 > [!NOTE]
 > 新しい[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでは、開発者は UI にワイルドカード URI を追加できません。 職場または学校アカウントにサインインするアプリに対してワイルドカード URI を追加することは、アプリ マニフェスト エディターでのみサポートされます。 今後、新しいアプリではリダイレクト URI でワイルドカードを使用できません。 ただし、リダイレクト URI にワイルドカードを含む以前のアプリは引き続き動作します。
 
@@ -59,7 +76,7 @@ Microsoft の個人用アカウント、職場用アカウント、学校用ア�
 
 ### <a name="use-a-state-parameter"></a>状態パラメーターを使用する
 
-たくさんのサブドメインがあるとき、認証に成功したユーザーを最初のページにリダイレクトする必要がある場合、状態パラメーターの使用が便利なことがあります。 
+たくさんのサブドメインがあるとき、認証に成功したユーザーを最初のページにリダイレクトする必要がある場合、状態パラメーターの使用が便利なことがあります。
 
 このアプローチでは:
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102794"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -45,22 +45,30 @@ ms.locfileid: "83343448"
 
 ### <a name="upload-your-vhd"></a>お使いの VHD をアップロードする
 
- 直接アップロードを使用して、お使いの VHD を Azure マネージド ディスクに簡単に転送できます。 以前は、ストレージ アカウントへのデータのステージングを含む複雑なプロセスを実行する必要がありました。 現在、手順は少なくなっています。 オンプレミスの VM の Azure へのアップロードや大規模なマネージド ディスクへのアップロードはもっと簡単になり、バックアップと復元のプロセスが簡素化されています。 また、VM へのアタッチなしで、マネージド ディスクに直接データをアップロードできることでコストが削減されます。 直接アップロードを使用して、最大 32 TiB の VHD をアップロードできます。
+直接アップロードを使用して、お使いの VHD を Azure マネージド ディスクに簡単に転送できます。 以前は、ストレージ アカウントへのデータのステージングを含む複雑なプロセスを実行する必要がありました。 現在、手順は少なくなっています。 オンプレミスの VM の Azure へのアップロードや大規模なマネージド ディスクへのアップロードはもっと簡単になり、バックアップと復元のプロセスが簡素化されています。 また、VM へのアタッチなしで、マネージド ディスクに直接データをアップロードできることでコストが削減されます。 直接アップロードを使用して、最大 32 TiB の VHD をアップロードできます。
 
- VHD を Azure に転送する方法については、[CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) または [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) の記事を参照してください。
+VHD を Azure に転送する方法については、[CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) または [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) の記事を参照してください。
 
-## <a name="encryption"></a>暗号化
+## <a name="security"></a>セキュリティ
+
+### <a name="private-links"></a>プライベート リンク
+
+マネージド ディスクでは、プライベート リンクを使用してネットワーク内部のマネージド ディスクをインポートまたはエクスポートできます。 プライベート リンクを使用すると、接続されていないマネージド ディスクおよびスナップショットに対して期限付きの Shared Access Signature (SAS) URI を生成できます。これを使用して、リージョン拡張、ディザスター リカバリー、およびフォレンジック分析のために他のリージョンにデータをエクスポートできます。 SAS URI は、オンプレミスから空のディスクに VHD を直接アップロードするために使用することもできます。 現在、[プライベート リンク](../articles/private-link/private-link-overview.md)を使用して、マネージド ディスクのエクスポートとインポートが対象の Azure 仮想ネットワーク内でのみ発生するように制限できます。 プライベート リンクを使用すると、セキュリティで保護された Microsoft バックボーン ネットワーク内でのみデータが移動することが保証されます。
+
+マネージド ディスクをインポートまたはエクスポートするためにプライベート リンクを有効にする方法については、[CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) または[ポータル](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md)に関するページを参照してください。
+
+### <a name="encryption"></a>暗号化
 
 マネージド ディスクには、2 種類の暗号化が用意されています。 1 つ目は、ストレージ サービスによって実行されるサーバー側暗号化 (SSE) です。 2 つ目は、OS と VM 用データ ディスクで有効にできる Azure Disk Encryption (ADE) です。
 
-### <a name="server-side-encryption"></a>サーバー側暗号化
+#### <a name="server-side-encryption"></a>サーバー側暗号化
 
-[Azure サーバー側暗号化](../articles/virtual-machines/windows/disk-encryption.md)は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています (これに対し、一時ディスクは Storage Service Encryption によって暗号化されません。[一時ディスク ディスク ロール](#temporary-disk)に関するページを参照してください)。
+サーバー側暗号化では、保存時の暗号化が提供され、組織のセキュリティおよびコンプライアンス要件を満たすようにデータが保護されます。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています (これに対し、一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。[一時ディスク ディスク ロール](#temporary-disk)に関するセクションを参照してください)。
 
-キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../articles/virtual-machines/windows/disk-encryption.md)」を参照してください。
 
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption を使用すると、IaaS 仮想マシンで使用される OS とデータ ディスクを暗号化できます。 この暗号化にはマネージド ディスクが含まれます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 暗号化プロセスは Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 詳細については、「[Linux VM に対する Azure Disk Encryption](../articles/virtual-machines/linux/disk-encryption-overview.md)」または「[Windows VM 用の Azure Disk Encryption](../articles/virtual-machines/windows/disk-encryption-overview.md)」をご覧ください。
 
@@ -82,9 +90,9 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) イベント中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 VM の標準の再起動が正常に実行されている間、一時ディスクのデータは保持されます。  
+すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 VM の標準の再起動が正常に実行されている間、一時ディスクのデータは保持されます。  
 
-Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクはサーバー側暗号化によって暗号化されません (「[暗号化](#encryption)」を参照してください)。
+Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。
 
 ## <a name="managed-disk-snapshots"></a>マネージド ディスクのスナップショット
 

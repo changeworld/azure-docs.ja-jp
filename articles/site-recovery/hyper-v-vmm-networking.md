@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021666"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>フェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する
 
@@ -79,12 +79,12 @@ System Center Virtual Machine Manager (VMM) クラウドの Hyper-V VM をセカ
 
 VM の保護を有効にしたら、以下のサンプル スクリプトを使用して、VM に割り当てられているアドレスを検証することができます。 この IP アドレスがフェールオーバー IP アドレスとして設定され、フェールオーバー時に VM に割り当てられます。
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>別の IP アドレスを使用する
 
@@ -93,7 +93,7 @@ VM の保護を有効にしたら、以下のサンプル スクリプトを使�
 - イントラネット アプリケーションに低 TTL 値を使用する。
 - Site Recovery の復旧計画で以下のスクリプトを使用して、タイムリーに DNS サーバーが更新されるようにする。 動的 DNS 登録を使用する場合、スクリプトは必要ありません。
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,

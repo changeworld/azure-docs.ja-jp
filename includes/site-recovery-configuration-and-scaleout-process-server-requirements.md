@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85292103"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544106"
 ---
 **構成およびプロセス サーバーの要件**
 
@@ -60,6 +60,9 @@ time.windows.com | システム時刻とグローバル時刻間の時刻同期�
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> *.services.visualstudio.com (省略可能) </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF の設定では、次の追加 URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL のダウンロードを完了するためのものです。 </br> いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL もホワイトリストに登録されていることを確認してください。
 |
+
+> [!NOTE]
+> Site Recovery コンテナーへの[プライベート リンク接続](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md)がある場合は、構成サーバーへの追加のインターネット アクセスは不要です。 これには例外があり、OVA テンプレートを使用して CS マシンを設定しているときに、プライベート リンク アクセス以外から次の URL にアクセスする必要があります: https://management.azure.com 、 https://www.live.com 、および https://www.microsoft.com 。 これらの URL へのアクセスを許可しない場合は、Unified Installer を使用して CS を設定してください。
 
 ## <a name="required-software"></a>必要なソフトウェア
 

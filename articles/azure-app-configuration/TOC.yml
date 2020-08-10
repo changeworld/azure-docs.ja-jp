@@ -4,6 +4,8 @@
   items:
     - name: Azure App Configuration について
       href: overview.md
+    - name: ベスト プラクティス
+      href: howto-best-practices.md
     - name: よく寄せられる質問
       href: faq.md
 - name: クイックスタート
@@ -34,26 +36,32 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: チュートリアル
   items:
-    - name: ASP.NET Core で動的な構成を有効にする
-      href: enable-dynamic-configuration-aspnet-core.md
-    - name: .NET Core アプリで動的な構成を有効にする
-      href: enable-dynamic-configuration-dotnet-core.md
-    - name: .NET Framework で動的な構成を有効にする
-      href: enable-dynamic-configuration-dotnet.md
-    - name: Azure Functions で動的な構成を有効にする
-      href: enable-dynamic-configuration-azure-functions-csharp.md
-    - name: Spring Boot で動的な構成を有効にする
-      href: enable-dynamic-configuration-java-spring-app.md
-    - name: .NET Core アプリ内で機能フラグを使用する
-      href: use-feature-flags-dotnet-core.md
-    - name: Spring Boot アプリ内で機能フラグを使用する
-      href: use-feature-flags-spring-boot.md
+    - name: 動的な構成の有効化
+      items:
+        - name: ASP.NET Core
+          href: enable-dynamic-configuration-aspnet-core.md
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core.md
+        - name: .NET Framework
+          href: enable-dynamic-configuration-dotnet.md
+        - name: Azure Functions
+          href: enable-dynamic-configuration-azure-functions-csharp.md
+        - name: Spring Boot
+          href: enable-dynamic-configuration-java-spring-app.md
+    - name: 機能フラグの使用
+      items:
+        - name: .NET Core
+          href: use-feature-flags-dotnet-core.md
+        - name: Spring Boot
+          href: use-feature-flags-spring-boot.md
     - name: 機能フラグを管理する
       href: manage-feature-flags.md
-    - name: ASP.NET Core で Key Vault 参照を使用する
-      href: use-key-vault-references-dotnet-core.md
-    - name: Spring Boot で Key Vault 参照を使用する
-      href: use-key-vault-references-spring-boot.md
+    - name: Key Vault 参照を使用する
+      items:
+        - name: ASP.NET Core
+          href: use-key-vault-references-dotnet-core.md
+        - name: Spring Boot
+          href: use-key-vault-references-spring-boot.md
     - name: CI/CD パイプラインとの統合
       href: integrate-ci-cd-pipeline.md
     - name: Helm を使用して Kubernetes デプロイと統合する
@@ -67,7 +75,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: キー値ストア
+    - name: キーと値
       href: concept-key-value.md
     - name: ポイントインタイム スナップショット
       href: concept-point-time-snapshot.md
@@ -105,8 +113,6 @@
       href: howto-app-configuration-event.md
     - name: 構成ストアの自動バックアップ
       href: howto-backup-config-store.md
-    - name: ベスト プラクティス
-      href: howto-best-practices.md
 - name: リファレンス
   items:
     - name: 構成

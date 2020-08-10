@@ -2,15 +2,15 @@
 title: クイック スタート:SDK を使用して学習ループを作成および使用する - Personalizer
 description: このクイックスタートでは、クライアント SDK を使用してナレッジ ベースを作成および管理する方法について説明します。
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.date: 07/30/2020
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: d4706e93470134751ade5f16e46a4323fd690f94
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 05657d350616502c3d32b500a32b394a748ab2f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608640"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461123"
 ---
 # <a name="quickstart-personalizer-client-library"></a>クイック スタート:Personalizer クライアント ライブラリ
 

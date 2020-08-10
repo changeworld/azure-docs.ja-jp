@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085148"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -35,7 +35,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 + **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
 
-+ [**バージョン 3.x および 2.x**](#v2):[Azure Functions ランタイムのバージョン 3.x または 2.x](functions-versions.md) をサポートします。 これらのバージョンでは [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)、および [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
++ [**バージョン 3.x および 2.x**](#v2):[Azure Functions ランタイムのバージョン 3.x または 2.x](functions-versions.md) をサポートします。 これらのバージョンでは [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2)、および [Linux](?tabs=linux#v2) がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
 特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
 
@@ -48,7 +48,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>バージョン 3.x および 2.x
 
-バージョン 3.x および 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイムを使用します。 このバージョンは、[Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)、[Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) など、.NET Core が対応しているすべてのプラットフォームでサポートされています。 
+バージョン 3.x および 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイムを使用します。 このバージョンは、[Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2)、[Linux](?tabs=linux#v2) など、.NET Core が対応しているすべてのプラットフォームでサポートされています。 
 
 > [!IMPORTANT]
 > [拡張バンドル]を使用すると、.NET Core SDK をインストールするための要件をバイパスできます。
@@ -240,7 +240,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 ### <a name="get-your-storage-connection-strings"></a>ストレージ接続文字列の取得
 
-開発のために Microsoft Azure ストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
+開発のために Microsoft Azure ストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-account-create.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
 
 - [Azure portal] から、 **[ストレージ アカウント]** を検索して選択します。 
   ![Azure portal で [ストレージ アカウント] を選択する](./media/functions-run-local/select-storage-accounts.png)
@@ -343,7 +343,7 @@ func start
 ```
 func start
 ```
-このコマンドは[仮想環境で実行する](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)必要があります。
+このコマンドは[仮想環境で実行する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)必要があります。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -574,7 +574,7 @@ Azure で関数アプリを作成するときに Application Insights の統合�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Functions Core Tools [Microsoft 学習モジュール](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) を使用して Azure Functions を開発、テスト、および発行する方法について説明します。Azure Functions Core Tools は[オープンソースであり、GitHub ](https://github.com/azure/azure-functions-cli)でホストされています。  
+Azure Functions Core Tools [Microsoft 学習モジュール](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) を使用して Azure Functions を開発、テスト、および発行する方法について説明します。Azure Functions Core Tools は[オープンソースであり、GitHub ](https://github.com/azure/azure-functions-cli)でホストされています。  
 バグまたは機能要求を提出するには、[GitHub の問題をオープン](https://github.com/azure/azure-functions-cli/issues)してください。
 
 <!-- LINKS -->

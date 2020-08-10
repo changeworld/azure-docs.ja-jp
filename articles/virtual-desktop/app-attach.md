@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204474"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291518"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
@@ -29,7 +29,7 @@ ms.locfileid: "85204474"
 開始する前に、MSIX アプリのアタッチを構成するために必要な項目を示します。
 
 - Windows Insider ポータルにアクセスして、MSIX アプリのアタッチ API をサポートする Windows 10 のバージョンを取得する。
-- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop Fall 2019 リリースのデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Windows Virtual Desktop Spring 2020 のデプロイ方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 - MSIX パッケージ化ツール。
 - MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のネットワーク共有。
 

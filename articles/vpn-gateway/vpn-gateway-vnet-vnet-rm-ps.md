@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 318656a779aa5ba2279f075fcc44589fe2039682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009494"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -81,7 +81,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 * ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 端末の左上をクリックして、Cloud Shell を再起動できます。 端末を再起動したら、忘れずにすべての変数を再宣言してください。
 
-* 代わりに最新バージョンの Azure PowerShell モジュールをローカル環境にインストールしたい場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
+* 代わりに最新バージョンの Azure PowerShell モジュールをローカル環境にインストールしたい場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」をご覧ください。
 
 ### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>手順 1 - IP アドレス範囲を決める
 

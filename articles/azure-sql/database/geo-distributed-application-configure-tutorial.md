@@ -4,19 +4,19 @@ description: Azure SQL Database 内のデータベースおよびクライアン
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90bfe3f6e8d5ed19380ab2b48aa38e598c3f109a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324727"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501612"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>チュートリアル:geo 分散型データベースを実装する (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルに取り組む前に、次のものがインストールされていることを確認してください。
 
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azure/)
 - Azure SQL Database 内の単一データベース。 次の方法で作成します。
   - [Azure Portal](single-database-create-quickstart.md)
   - [Azure CLI](az-cli-script-samples-content-guide.md)

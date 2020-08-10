@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Cassandra API を使用して Java アプリを作成する
+title: Java 4.0 SDK を使用した Azure Cosmos DB Cassandra API による Java アプリ
 description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します
 ms.service: cosmos-db
 author: TheovanKraay
@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 59ea78fed27b41199699d5413f605288bbf1a608
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 4411c2d3b540423c1086fe8b45bd343870a72f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118391"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319203"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>クイック スタート:Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v4 ドライバー)
 
@@ -155,7 +155,7 @@ ms.locfileid: "85118391"
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Azure portal の [接続文字列] ページからユーザー名を表示してコピー":::
 
-2. 画面右側の ![コピー ボタン](./media/create-cassandra-java/copy-button-azure-portal.png) ボタンを使用して [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
+2. 画面右側の :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: ボタンを使用して [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
 
 3. *C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources* フォルダーから *config.properties* ファイルを開きます。 
 

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244533"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507099"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -54,9 +54,9 @@ Windows Server ノードでは、Windows Update が自動的に実行された�
 
 ### <a name="compute-isolation"></a>コンピューティングの分離
 
- 特定のワークロードでは、コンプライアンスや規制上の要件により、他の顧客のワークロードからの高いレベルの分離が必要になる場合があります。 これらのワークロードの場合、Azure は、AKS クラスター内のエージェント ノードとして使用できる[分離された仮想マシン](../virtual-machines/linux/isolation.md)を提供します。 これらの分離された仮想マシンは、特定のハードウェアの種類に分離され、単一顧客専用です。 
+ 特定のワークロードでは、コンプライアンスや規制上の要件により、他の顧客のワークロードからの高いレベルの分離が必要になる場合があります。 これらのワークロードの場合、Azure は、AKS クラスター内のエージェント ノードとして使用できる[分離された仮想マシン](../virtual-machines/isolation.md)を提供します。 これらの分離された仮想マシンは、特定のハードウェアの種類に分離され、単一顧客専用です。 
 
- これらの分離された仮想マシンを AKS クラスターで使用するには、AKS クラスターを作成するとき、またはノード プールを追加するときに、 **[ノード サイズ]** として[こちら](../virtual-machines/linux/isolation.md)に示されている分離された仮想マシンのサイズのいずれかを選択します。
+ これらの分離された仮想マシンを AKS クラスターで使用するには、AKS クラスターを作成するとき、またはノード プールを追加するときに、 **[ノード サイズ]** として[こちら](../virtual-machines/isolation.md)に示されている分離された仮想マシンのサイズのいずれかを選択します。
 
 
 ## <a name="cluster-upgrades"></a>クラスターのアップグレード
@@ -81,6 +81,8 @@ Windows Server ノードでは、Windows Update が自動的に実行された�
 ### <a name="azure-network-security-groups"></a>Azure ネットワーク セキュリティ グループ
 
 仮想ネットワークでのトラフィックのフローをフィルター処理するため、Azure はネットワーク セキュリティ グループ規則を使用します。 これらの規則は、リソースへのアクセスを許可または拒否する発信元と宛先の IP 範囲、ポート、およびプロトコルを定義します。 Kubernetes API サーバーへの TLS トラフィックを許可する、既定の規則が作成されます。 ロード バランサー、ポート マッピング、またはイングレス ルートでサービスを作成すると、AKS が自動的に、トラフィックが適切にフローするようにネットワーク セキュリティ グループを変更します。
+
+AKS クラスターに独自のサブネットを指定し、トラフィックのフローを変更する場合は、AKS によって管理されるサブネットレベルのネットワーク セキュリティ グループを変更しないでください。 ロード バランサーへのアクセス、コントロール プレーンとの通信、[エグレス][aks-limit-egress-traffic]など、クラスターの管理に必要なトラフィックが妨げられない限り、サブネットレベルのネットワーク セキュリティ グループをさらに作成してトラフィックのフローを変更することができます。
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes ネットワーク ポリシー
 
@@ -123,6 +125,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md

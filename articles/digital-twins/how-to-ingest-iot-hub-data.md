@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725853"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131567"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
 
@@ -42,7 +42,7 @@ Azure Digital Twins は、IoT デバイスやその他のソースからのデ�
 
 この例を続行する前に、次の前提条件を満たす必要があります。
 1. IoT Hub を作成します。 手順については、[この IoT Hub のクイックスタート](../iot-hub/quickstart-send-telemetry-cli.md)の「*IoT Hub の作成*」セクションを参照してください。
-2. IoT Hub からのイベントを処理する Azure 関数を少なくとも 1 つ作成します。 [データを処理する Azure 関数 ](how-to-create-azure-function.md) を設定し、Azure Digital Twins に接続して Azure Digital Twins API 関数を呼び出すことができる基本的な Azure 関数を構築します。 このハウツーの残りの部分は、この関数に基づいています。
+2. IoT Hub からのイベントを処理する Azure 関数を少なくとも 1 つ作成します。 「[*データを処理するため Azure 関数を設定する*](how-to-create-azure-function.md)」方法を参照して、Azure Digital Twins に接続して Azure Digital Twins API 関数を呼び出すことができる基本的な Azure 関数を構築します。 このハウツーの残りの部分は、この関数に基づいています。
 3. ハブ データのイベントの宛先を設定します。 [Azure portal](https://portal.azure.com/) で、IoT Hub インスタンスに移動します。 *[イベント]* で、Azure 関数のサブスクリプションを作成します。 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure portal: イベント サブスクリプションの追加":::
@@ -55,7 +55,7 @@ Azure Digital Twins は、IoT デバイスやその他のソースからのデ�
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>Visual Studio で Azure 関数を作成する
 
-このセクションでは、同じ Visual Studio のスタートアップ手順と、Azure 関数スケルトンを使用します。これについては、[データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページを参照してください。 このスケルトンを使用すると、認証を処理し、サービス クライアントを作成することができます。これにより、データを処理し、応答として Azure Digital Twins API を呼び出すことができるようになります。 
+このセクションでは、同じ Visual Studio のスタートアップ手順と、Azure 関数スケルトンを使用します。これについては、[*データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)に関するページを参照してください。 このスケルトンを使用すると、認証を処理し、サービス クライアントを作成することができます。これにより、データを処理し、応答として Azure Digital Twins API を呼び出すことができるようになります。 
 
 スケルトン関数の中核は次のとおりです。
 
@@ -268,9 +268,9 @@ public static async Task UpdateTwinProperty(DigitalTwinsClient client, string tw
 
 ## <a name="debug-azure-function-apps-locally"></a>Azure 関数アプリをローカルでデバッグする
 
-Event Grid トリガーを使用してローカルで Azure 関数をデバッグすることができます。 この詳細については、「[イベント グリッド トリガーをローカルにデバッグ](../azure-functions/functions-debug-event-grid-trigger-local.md)」を参照してください。
+Event Grid トリガーを使用してローカルで Azure 関数をデバッグすることができます。 この詳細については、「[*イベント グリッド トリガーをローカルにデバッグ*](../azure-functions/functions-debug-event-grid-trigger-local.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins を使用したデータのイングレスとエグレスについて確認します。
-* [概念:他のサービスとの統合](concepts-integration.md)
+* "[*概念: 他のサービスとの統合*](concepts-integration.md)

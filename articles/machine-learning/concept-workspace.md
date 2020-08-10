@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287229"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -47,13 +47,18 @@ ms.locfileid: "86147026"
 
 ご自身のワークスペースは、次の方法で操作できます。
 
+> [!IMPORTANT]
+> 以下に "(プレビュー)" と付記されているツールは、現在、パブリック プレビュー段階です。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 + Web 上:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) - [Enterprise Edition](overview-what-is-azure-ml.md#sku) ワークスペースでのみ使用できます。
 + [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用したすべての Python 環境で。
-+ [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用したすべての R 環境で。
++ [Azure Machine Learning SDK for R (プレビュー)](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用したすべての R 環境で。
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)を使用
 + [Azure Machine Learning VS Code 拡張機能](how-to-manage-resources-vscode.md#workspaces)
+
 
 ## <a name="machine-learning-with-a-workspace"></a>ワークスペースを使用した機械学習
 
@@ -111,6 +116,9 @@ Azure portal を使用して、[ワークスペースを Basic から Enterprise
 
 > [!NOTE]
 > 新しいバージョンを作成するだけでなく、既存の Azure サービスを使用することもできます。
+
+> [!IMPORTANT]
+> 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層型名前空間 (Azure Data Lake Storage Gen2 で使用) を含めることもできません。 ワークスペースの "_既定_" のストレージ アカウントでは、Premium Storage と階層型名前空間のどちらもサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

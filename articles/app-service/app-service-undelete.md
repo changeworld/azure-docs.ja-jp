@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050293"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell を使用して、削除された App Service アプリを復元する
 
@@ -58,7 +58,7 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 復元するアプリが特定されたら、`Restore-AzDeletedWebApp` を使用して復元できます。
 
 ```powershell
-Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
+Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
 > アプリの一部としてデプロイ スロットは復元されません。 ステージング スロットを復元する必要がある場合は、`-Slot <slot-name>` フラグを使用します。
@@ -66,7 +66,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 コマンドの入力は次のとおりです。
 
-- **リソース グループ**:アプリが復元されるターゲット リソース グループ
+- **ターゲット リソース グループ**:アプリが復元されるターゲット リソース グループ
 - **Name**:アプリの名前。グローバルに一意である必要があります。
 - **TargetAppServicePlanName**:アプリにリンクされている App Service プラン
 

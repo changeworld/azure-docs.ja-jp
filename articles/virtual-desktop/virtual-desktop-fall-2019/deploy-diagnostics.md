@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop の診断ツールをデプロイする - Azure
-description: Windows Virtual Desktop の診断 UX ツールをデプロイする方法。
+title: Windows Virtual Desktop (クラシック) の診断ツールをデプロイする - Azure
+description: Windows Virtual Desktop (クラシック) の診断 UX ツールをデプロイする方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285103"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。
 
 >[!IMPORTANT]
 >サービスの需要が増加したため、2020 年 3 月 16 日より、ユーザーエクスペリエンスに影響を与える診断クエリを一時的に無効にしました。 このツールはこれらのクエリに依存して機能するため、動作が停止します。 診断クエリを再度利用できるようになったときに、この記事を更新します。

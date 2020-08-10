@@ -1,6 +1,5 @@
 ---
-title: Web サービス用の Excel アドイン
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): Web サービス用の Excel アドイン - Azure'
 description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee4cb3bbbe743cef06ddf1f4ac5ffaf6374de0ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211325"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318625"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
+
+**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+
 
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 76ccd6f42f2cfd83512a2e817e8c2ac9aa61a28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21d910fb0e0992b35aa19ce65fc216734e30265c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515920"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -47,4 +47,4 @@ ms.locfileid: "85391489"
 
 Azure Digital Twins モデルの DTDL ドキュメント内のデータ型とフィールドに関する制限事項については、GitHub の仕様ドキュメントを参照してください。[Digital Twins Definition Language (DTDL) - バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
-プレビュー期間中のクエリの作成に関するクエリの待機時間の詳細とその他のガイドラインについては、[ツイン グラフのクエリを実行する方法](../articles/digital-twins/how-to-query-graph.md)に関する記事をご覧ください。
+プレビュー期間中のクエリの作成に関するクエリの待ち時間の詳細とその他のガイドラインについては、"[*ツイン グラフのクエリを実行する方法*](../articles/digital-twins/how-to-query-graph.md)" に関する記事を参照してください。

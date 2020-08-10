@@ -4,16 +4,16 @@ description: AzCopy の構成、最適化、トラブルシューティングを
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282434"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -63,7 +63,7 @@ Windows で AzCopy を実行していて、プロキシを使用_しない_よ�
 
 ### <a name="run-benchmark-tests"></a>ベンチマーク テストを実行する
 
-特定の BLOB コンテナーまたはファイル共有に対してパフォーマンス ベンチマーク テストを実行して、全般的なパフォーマンスの統計情報を表示し、パフォーマンスのボトルネックを識別できます。 
+特定の BLOB コンテナーまたはファイル共有に対してパフォーマンス ベンチマーク テストを実行して、全般的なパフォーマンスの統計情報を表示し、パフォーマンスのボトルネックを識別できます。 生成されたテスト データをアップロードまたはダウンロードして、テストを実行できます。 
 
 パフォーマンス ベンチマーク テストを実行するには、次のコマンドを使用します。
 
@@ -77,9 +77,7 @@ Windows で AzCopy を実行していて、プロキシを使用_しない_よ�
 
 このコマンドは、指定したコピー先にテスト データをアップロードすることで、パフォーマンス ベンチマークを実行します。 テスト データはメモリ内に生成され、コピー先にアップロードされた後、テストの完了後にコピー先から削除されます。 オプションのコマンド パラメーターを使用して、生成するファイルの数と、必要なサイズを指定できます。
 
-詳細なリファレンス ドキュメントについては、「[azcopy benchmark](storage-ref-azcopy-bench.md)」を参照してください。
-
-このコマンドの詳細なヘルプ ガイダンスを表示するには、「`azcopy benchmark -h`」と入力して Enter キーを押してください。
+データをダウンロードしてこのテストを実行する場合は、`mode` パラメーターを `download` に設定します。 詳細なリファレンス ドキュメントについては、「[azcopy benchmark](storage-ref-azcopy-bench.md)」を参照してください。 
 
 ### <a name="optimize-throughput"></a>スループットを最適化する
 

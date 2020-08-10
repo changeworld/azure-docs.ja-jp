@@ -4,12 +4,12 @@ description: Azure Monitor のパートナーと、そのパートナーとの�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248973"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318336"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -268,10 +268,10 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor の詳細情報](../../azure-monitor/overview.md)
+- [Azure Monitor の詳細情報](../overview.md)
 - [REST API を使用してメトリックにアクセスする](rest-api-walkthrough.md)
-- [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [リソース ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](./activity-log.md#legacy-collection-methods)
+- [リソース ログを Microsoft 以外のサービスにストリーミングする](./resource-logs.md#send-to-azure-event-hubs)
 
 
 
@@ -281,13 +281,13 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric の紹介。"
 [circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
-[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
+[cloudhealth-doc]: https://www.cloudhealthtech.com/products/azure-management
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix の概要。"
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog ドキュメント。"
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace ドキュメント。"
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic ドキュメント。"
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana の統合。"
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influxdata Telegraf の統合。"
+[influxdata-doc]: ./collect-custom-metrics-linux-telegraf.md "Azure Monitor Influxdata Telegraf の統合。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Logic Monitor のドキュメント。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft のドキュメント。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic ドキュメント。"

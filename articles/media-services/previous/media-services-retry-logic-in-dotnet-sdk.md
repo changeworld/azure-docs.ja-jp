@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120b7e044452dc47126923449a3e1a6e55cfd6a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61094661"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000025"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック  
 
@@ -50,7 +50,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 | IOException |いいえ |はい |いいえ |いいえ |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 状態コード
-次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) の列挙型は、状態コードを定義します。  
+次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) の列挙型は、状態コードを定義します。  
 
 | Status | Web Request | ストレージ | クエリ | SaveChanges |
 | --- | --- | --- | --- | --- |
@@ -88,4 +88,3 @@ Media Services SDK for .NET 再試行ロジックの実際の実装を確認す�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

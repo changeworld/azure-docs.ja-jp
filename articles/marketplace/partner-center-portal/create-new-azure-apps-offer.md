@@ -3,14 +3,16 @@ title: Azure アプリケーション オファーを作成する - Microsoft �
 description: パートナー センターの商業マーケットプレース ポータルで、新しい Azure アプリケーション オファーを作成するための手順と考慮事項について学習します。 Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを使用して、Azure アプリケーション オファーを一覧表示したり、販売したりすることができます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: AarathiN
+ms.author: aarathin
+ms.date: 07/14/2020
+ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121974"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326676"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -65,7 +67,7 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 Azure アプリケーションを管理するためのスクリプト環境として、次のいずれか一方または両方を選択します。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 開発環境には次にツールを加えることを推奨します｡
@@ -308,7 +310,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 ## <a name="plan-overview"></a>プランの概要
 
-このタブでは、同じオファー内でさまざまなプラン オプションを提供することができます。 これらのプラン (Cloud パートナー ポータルでは SKU と呼ばれます) は、プランの種類 (ソリューション テンプレートとマネージド アプリケーション)、収益化、または対象ユーザーが異なっていてもかまいません。  オファーがマーケットプレースの一覧に表示されるためには、少なくとも 1 つのプランを構成します。
+このタブでは、同じオファー内でさまざまなプラン オプションを提供することができます。 これらのプラン (以前は SKU と呼ばれていました) は、プランの種類 (ソリューション テンプレートとマネージド アプリケーション)、収益化、または対象ユーザーに関して異なる場合があります。 オファーがマーケットプレースの一覧に表示されるためには、少なくとも 1 つのプランを構成します。
 
 作成後、オファーの名前、ID、プランの種類、利用可否 (パブリックまたはプライベート)、現在の公開状態、使用可能なアクションが、このタブに表示されます。
 
@@ -510,7 +512,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 **承認** – 管理対象リソース グループへのアクセス許可を付与するユーザー、グループ、アプリケーションの Azure Active Directory オブジェクト ID を追加します。 プリンシパル ID でユーザーを識別します。プリンシパル ID は、[Azure portal の Azure Active Directory ユーザー ブレード](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)にあります。
 
-プリンシパルごとに、一覧から Azure AD 組み込みロールのいずれかを選択します (所有者または共同作成者)。 選択したロールによって、顧客のサブスクリプションのリソースに対してプリンシパルが持つアクセス許可が記述されます。 詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。 ロールベースのアクセス制御 (RBAC) について詳しくは、[Azure portal での RBAC の概要](../../role-based-access-control/overview.md)に関する記事をご覧ください。
+プリンシパルごとに、一覧から Azure AD 組み込みロールのいずれかを選択します (所有者または共同作成者)。 選択したロールによって、顧客のサブスクリプションのリソースに対してプリンシパルが持つアクセス許可が記述されます。 詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。 ロールベースのアクセス制御 (RBAC) について詳しくは、[Azure portal での RBAC の概要](../../role-based-access-control/overview.md)に関する記事をご覧ください。
 
 >[!Note]
 >クラウドあたり最大 100 個の承認を追加できますが、一般には、Active Directory ユーザー グループを作成し、その ID を "プリンシパル ID" で指定する方が簡単です。 これにより、プランをデプロイした後で管理グループにより多くのユーザーを追加できるようになり、承認を追加するためだけにプランを更新する必要がなくなります。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084502"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理 
 
@@ -67,7 +67,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 * キャッシュ制御
 * Cross site access policies
 
-これらのプロパティの詳細については、「 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)」をご覧ください。
+これらのプロパティの詳細については、「 [StreamingEndpoint](/rest/api/media/operations/streamingendpoint)」をご覧ください。
 
 >[!NOTE]
 >CDN が有効になっている場合、IP アクセスにアクセスすることはできません。 IP アクセスは、CDN を指定していない場合にのみ適用されます。
@@ -122,4 +122,3 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

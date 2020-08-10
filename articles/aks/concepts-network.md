@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) におけるネットワークにつ
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244652"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387763"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -105,7 +105,7 @@ kubenet と Azure CNI には、次のような動作の違いが存在します�
 | ロード バランサー サービス、App Gateway、またはイングレス コントローラーを使用して、Kubernetes サービスを公開する | サポートされています | サポートされています |
 | 既定の Azure DNS およびプライベート ゾーン                                                          | サポートされています | サポートされています |
 
-DNS については、kubernet と Azure CNI のどちらのプラグインでも、CoreDNS (AKS で実行されるデーモン セット) によって DNS が提供されます。 Kubernetes の CoreDNS の詳細については、[DNS サービスのカスタマイズ](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)に関するページを参照してください。 CoreDNS は、既定では、不明なドメインをノードの DNS サーバー (つまり、AKS クラスターがデプロイされている Azure Virtual Network の DNS 機能) に転送するように構成されています。 そのため、Azure DNS およびプライベート ゾーンは、AKS で実行されるポッドに対して機能します。
+DNS については、kubernet と Azure CNI のどちらのプラグインでも、CoreDNS (AKS で実行されるデプロイ) によって、その独自の自動スケーリングで DNS が提供されます。 Kubernetes の CoreDNS の詳細については、[DNS サービスのカスタマイズ](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)に関するページを参照してください。 CoreDNS は、既定では、不明なドメインをノードの DNS サーバー (つまり、AKS クラスターがデプロイされている Azure Virtual Network の DNS 機能) に転送するように構成されています。 そのため、Azure DNS およびプライベート ゾーンは、AKS で実行されるポッドに対して機能します。
 
 ### <a name="support-scope-between-network-models"></a>ネットワーク モデル間のサポート範囲
 

@@ -1,6 +1,5 @@
 ---
-title: アプリケーション ライフサイクル管理
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):アプリケーション ライフサイクル管理 - Azure
 description: アプリケーションライフサイクル管理のベストプラクティスを Azure Machine Learning Studio (クラシック) に適用する
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 2eb5f3acc07f04ba2102ea25fbad89d73514444a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47f72e1844f6fe34f129d40130a3dba0383dd094
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705918"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326292"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でのアプリケーション ライフサイクル管理
+
+**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+
 
 Azure Machine Learning Studio (クラシック) は、Azure クラウド プラットフォームで運用できる機械学習の実験を開発するツールです。 Visual Studio IDE に似ており、1 つのプラットフォームにマージされているスケーラブルなクラウド サービスです。 さまざまな資産のバージョン管理から、自動化された実行とデプロイまで、標準的なアプリケーション ライフサイクル管理 (ALM) プラクティスを Azure Machine Learning Studio (クラシック) に組み込むことができます。 この記事では、一部のオプションとアプローチについて説明します。
 

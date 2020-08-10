@@ -4,16 +4,16 @@ description: Azure CLI または Resource Manager テンプレートを使って
 author: cynthn
 ms.service: virtual-machines-linux
 ms.subservice: networking
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706683"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283267"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 
@@ -167,7 +167,7 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 }
 ```
 
-詳細については、[*copy* を使用した複数のインスタンスの作成](../../resource-group-create-multiple.md)に関する記事を参照してください。 
+詳細については、[*copy* を使用した複数のインスタンスの作成](../../azure-resource-manager/templates/copy-resources.md)に関する記事を参照してください。 
 
 `copyIndex()` を使用してリソース名に数値を追加することもできます。これにより、`myNic1`、`myNic2` などを作成することができます。インデックス値を追加する例を次に示します。
 

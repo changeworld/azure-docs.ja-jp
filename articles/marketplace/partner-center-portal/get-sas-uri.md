@@ -3,22 +3,22 @@ title: VM イメージの Shared Access Signature URI - Azure Marketplace
 description: Azure Marketplace で仮想ハード ディスク (VHD) の Shared Access Signature (SAS) URI を生成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: anbene
-ms.author: mingshen
-ms.date: 04/09/2020
-ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 07/14/2020
+ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121726"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317503"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
 
 この記事では、各仮想ハード ディスク (VHD) の共有アクセス署名 (SAS) Uniform Resource Identifier (URI) を生成する方法について説明します。
 
-発行プロセス中に、プランに関連付けられている各 VHD の URI を指定する必要があります。 このようなプランは、以前は SKU (Stock Keeping Unit) と呼ばれていました。 マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この URI は、パートナー センターの **[プラン]** タブで入力します。
+発行プロセス中に、プラン (以前は SKU と呼ばれていました) に関連付けられている各 VHD の URI を指定する必要があります。(formerly called SKUs). マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この URI は、パートナー センターの **[プラン]** タブで入力します。
 
 VHD の SAS URI を生成するときは、次の要件に従ってください。
 
@@ -110,7 +110,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-発行する予定の SKU に含まれる各 VHD について、これらの手順を繰り返します。
+発行するプラン内の各 VHD に対して、これらの手順を繰り返します。
 
 ## <a name="verify-the-sas-uri"></a>SAS URI の検証
 

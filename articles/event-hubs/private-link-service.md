@@ -3,17 +3,17 @@ title: Azure Event Hubs を Azure Private Link サービスと統合する
 description: Azure Event Hubs を Azure Private Link サービスと統合する方法について説明します
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312819"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512259"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure Event Hubs を Azure Private Link と統合する
 Azure Private Link サービスを使用すると、仮想ネットワーク内の**プライベート エンドポイント**経由で、Azure サービス (Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
 
-プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
+プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の仮想ネットワークからのプライベート IP アドレスを使用して、サービスを実質的に仮想ネットワークに取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
 
 詳細については、「[Azure Private Link とは](../private-link/private-link-overview.md)」を参照してください。
 
@@ -58,10 +58,13 @@ Event Hubs の名前空間が既にある場合は、次の手順に従ってプ
 2. 検索バーで、「**イベント ハブ**」と入力します。
 3. プライベート エンドポイントを追加する**名前空間**を一覧から選択します。
 4. **[設定]** で **[ネットワーク]** タブを選択します。
-5. ページの上部にある **[プライベート エンドポイント接続]** タブを選択します。 
-6. ページの上部にある **[+ プライベート エンドポイント]** ボタンを選択します。
 
-    ![Image](./media/private-link-service/private-link-service-3.png)
+    > [!NOTE]
+    > **Standard** または **Dedicated** 名前空間のみの **[ネットワーク]** タブが表示されます。 
+1. ページの上部にある **[プライベート エンドポイント接続]** タブを選択します。 
+1. ページの上部にある **[+ プライベート エンドポイント]** ボタンを選択します。
+
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="[ネットワーク] ページ - [プライベート エンドポイント接続] タブ - [プライベート エンドポイントの追加] リンク":::
 7. **[基本]** ページで、次の手順を行います。 
     1. プライベート エンドポイントを作成する **Azure サブスクリプション**を選択します。 
     2. プライベート エンドポイント リソース用の**リソース グループ**を選択します。

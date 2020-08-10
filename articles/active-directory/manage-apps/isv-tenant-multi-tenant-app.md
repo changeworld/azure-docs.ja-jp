@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a0b63c130d7d1e72bd3320e40213ae3cb1069a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 264d4afb50904be17624f8801b7b79fe4b232030
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763246"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386811"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>マルチテナント アプリケーション用に Azure テナントを作成する  
 
@@ -37,7 +37,7 @@ Azure サブスクリプションと Azure Active Directory は無料で作成�
 
    a. **OIDC または Oath アプリケーション**の場合、マルチテナント アプリケーションとして[アプリケーションを登録](../develop/quickstart-register-app.md)します。 ‎[サポートされているアカウントの種類] で、[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント] オプションを選択します。
 
-   b. **SAML ベース、および WS-Fed ベースのアプリケーション**の場合、Azure AD で汎用 SAML テンプレートを使用して [SAML ベースのシングル サインオン アプリケーションを構成](configure-single-sign-on-non-gallery-applications.md)します。
+   b. **SAML ベース、および WS-Fed ベースのアプリケーション**の場合、Azure AD で汎用 SAML テンプレートを使用して [SAML ベースのシングル サインオン アプリケーションを構成](configure-saml-single-sign-on.md)します。
 
 必要に応じて、[シングルテナント アプリケーションをマルチテナントに変換](../develop/howto-convert-app-to-be-multi-tenant.md)することもできます。
 

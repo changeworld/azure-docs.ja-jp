@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15c388336efc92381ac5ebd84df9145c1890cfcc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007216"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "75438962"
   2. **クライアント ID** と**秘密キー**を取得します。
   3. **テナント ID**を取得します。
   4. **ADFGetStartedApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。
-* [Azure PowerShell](/powershell/azure/overview)をインストールします。
+* [Azure PowerShell](/powershell/azure/)をインストールします。
 * **PowerShell** を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
   1. **Connect-AzAccount** を実行し、Azure portal へのサインインに使用するユーザー名とパスワードを入力します。
   2. **Get-AzSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。

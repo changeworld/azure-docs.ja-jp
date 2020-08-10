@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37b3e5eff0baee736fc05760e19c31fdc513e23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79137324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060374"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
 
@@ -80,8 +80,8 @@ ms.locfileid: "79137324"
 | [MPEGDASH]        | 情報技術 -- HTTP 経由のダイナミック アダプティブ ストリーミング (DASH) -- パート 1:メディア プレゼンテーションの説明とセグメント形式。 2014 年 5 月。 公開済み。 URL: https://www.iso.org/standard/65274.html         |
 | [MPEGCMAF]        | 情報技術 -- マルチメディア アプリケーション形式 (MPEG-A) -- パート 19:セグメント化メディア用の共通メディア アプリケーション形式 (CMAF)。 2018 年 1 月。 公開済み。 URL: https://www.iso.org/standard/71975.html |
 | [MPEGCENC]        | 情報技術 -- MPEG システム技術 -- パート 7:ISO ベース メディア ファイル形式ファイルでの一般的な暗号化。 2016 年 2 月。 公開済み。 URL: https://www.iso.org/standard/68042.html                   |
-| [MS-SSTR]         | [「Microsoft Smooth Streaming プロトコル」、2014 年 5 月 15 日](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
-| [MS-SSTR-Ingest]  | [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [MS-SSTR]         | [「Microsoft Smooth Streaming プロトコル」、2014 年 5 月 15 日](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
+| [MS-SSTR-Ingest]  | [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | R. Pantos, Ed.; W. May. HTTP ライブ ストリーミング。 2017 年 8 月。 情報提供。 [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Base16、Base32、および Base64 データ エンコード - [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | [RTMP]            | [「Adobe のリアルタイム メッセージング プロトコル」、2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |

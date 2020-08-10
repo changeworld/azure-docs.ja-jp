@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics の共有データベース
+title: 共有データベース
 description: Azure Synapse Analytics は、Apache Spark でデータベースを作成することで SQL オンデマンド (プレビュー) エンジンと SQL プール エンジンからアクセスできるようにする共有メタデータ モデルを提供します。
 services: synapse-analytics
 author: MikeRys
@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 68919457cc045f50ebef249ced9c117fea8d6984
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079030"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385536"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース
 
@@ -34,7 +34,7 @@ Spark を使用して、Spark で作成されたデータベースを管理し�
 
 SQL オンデマンドを使用して Spark で作成されたデータベースにオブジェクトを作成した場合、またはデータベースを削除しようとした場合、操作は成功します。 ただし、元の Spark データベースは変更されません。
 
-## <a name="handling-of-name-conflicts"></a>名前の競合の処理
+## <a name="how-name-conflicts-are-handled"></a>名前の競合の処理方法
 
 Spark データベースの名前が既存の SQL オンデマンド データベースの名前と競合している場合は、SQL オンデマンドで Spark データベースに対してサフィックスが追加されます。 SQL オンデマンドでのサフィックスは `_<workspace name>-ondemand-DefaultSparkConnector` です。
 
@@ -57,7 +57,7 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
 
 ## <a name="examples"></a>例
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>Spark データベースの作成と接続 - SQL オンデマンド
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>SQL オンデマンドを使用して Spark データベースを作成して接続する
 
 まず、ワークスペースに既に作成済みの Spark クラスターを使用して、`mytestdb` という名前の新しい Spark データベースを作成します。 たとえば、次の .NET for Spark ステートメントで Spark C# ノートブックを使用して、これを実現できます。
 

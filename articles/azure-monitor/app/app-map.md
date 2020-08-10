@@ -3,13 +3,14 @@ title: Azure Application Insights のアプリケーション マップ | Micros
 description: アプリケーション マップを使用した複雑なアプリケーション トポロジの監視
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80989529"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367012"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -157,7 +158,7 @@ ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコ�
 
 **Java エージェント**
 
-[Java エージェント3.0 の場合](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)、クラウド ロール名は次のように設定されます。
+[Java エージェント3.0 の場合](./java-in-process-agent.md)、クラウド ロール名は次のように設定されます。
 
 ```json
 {
@@ -259,15 +260,15 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 1. 正式にサポートされている SDK を使用していることを確認します。 サポートされていない/コミュニティ SDK は相関関係をサポートしていない場合があります。
 
-    サポートされている SDK の一覧については、この[記事](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)をご覧ください。
+    サポートされている SDK の一覧については、この[記事](./platforms.md)をご覧ください。
 
 2. すべてのコンポーネントを最新の SDK バージョンにアップグレードします。
 
-3. C# で Azure Functions を使用している場合は、[Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions) にアップグレードします。
+3. C# で Azure Functions を使用している場合は、[Functions V2](../../azure-functions/functions-versions.md) にアップグレードします。
 
 4. [クラウド ロール名](#set-cloud-role-name)が正しく構成されていることを確認します。
 
-5. 依存関係が欠落している場合は、[自動収集された依存関係](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)の一覧にあることを確認します。 ない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
+5. 依存関係が欠落している場合は、[自動収集された依存関係](./auto-collect-dependencies.md)の一覧にあることを確認します。 ない場合でも、[TrackDependency 呼び出し](./api-custom-events-metrics.md#trackdependency)を使えば手動で追跡することができます。
 
 ### <a name="too-many-nodes-on-the-map"></a>マップ上のノードが多すぎる
 
@@ -281,7 +282,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 * 依存関係の種類は、依存関係の論理型を表す必要があります。 たとえば、一般的な依存関係の種類には、HTTP、SQL、Azure Blob などがあります。 一意の ID は含めないでください。
 
-* クラウド ロール名の目的については、[上記のセクション](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)を参照してください。
+* クラウド ロール名の目的については、[上記のセクション](#set-cloud-role-name)を参照してください。
 
 ## <a name="portal-feedback"></a>ポータルのフィードバック
 

@@ -44,6 +44,9 @@
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: ベスト プラクティス
               href: database/security-best-practice.md
+            - name: Azure Policy によるセキュリティ制御
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./database/security-controls-policy.md
             - name: セキュリティ ベースライン
               href: database/security-baseline.md
             - name: セキュリティ属性
@@ -75,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: 条件付きアクセス
                   href: database/conditional-access-configure.md
+                - name: サービス プリンシパル (アプリケーション)
+                  href: database/authentication-aad-service-principal.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: 概要
@@ -138,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: セキュリティ
           items:
+            - name: Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する
+              href: database/authentication-aad-guest-users.md
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
             - name: ストレージに脆弱性スキャンを格納する
@@ -201,9 +208,11 @@
             - name: Java
               items:
                 - name: Spring Data JDBC の使用
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
                 - name: Spring Data JPA の使用
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Spring Data R2DBC の使用
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
 - name: SQL Database (SQL DB)
   items:
     - name: ドキュメント
@@ -230,8 +239,6 @@
               href: database/service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
-            - name: Premium RS から移行する
-              href: database/service-tiers-prs.md
     - name: クイックスタート
       href: database/quickstart-content-reference-guide.md
       items:
@@ -274,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: TDE 保護機能の削除
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: サービス プリンシパルを使用してユーザーを作成する
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: データの移動
           items:
             - name: DMS を使用した移行
@@ -392,6 +401,12 @@
                   href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
+                - name: Java と Spring Data JDBC
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Java と Spring Data JPA
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Java と Spring Data R2DBC
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
@@ -680,16 +695,20 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: 概念
       items:
-        - name: トランザクション レプリケーション
-          href: managed-instance/replication-transactional-overview.md
-        - name: Management API リファレンス
-          href: managed-instance/api-references-create-manage-instance.md
         - name: リソース制限
           href: managed-instance/resource-limits.md
         - name: 接続のアーキテクチャ
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL の相違点
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: トランザクション レプリケーション
+          href: managed-instance/replication-transactional-overview.md
+        - name: 管理操作
+          items:
+            - name: 概要
+              href: managed-instance/management-operations-overview.md
+            - name: API リファレンス
+              href: managed-instance/api-references-create-manage-instance.md
         - name: Machine Learning サービス
           items:
             - name: 概要
@@ -708,6 +727,8 @@
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                     - name: モデルのトレーニングとスコア付け
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: ONNX モデルをデプロイする
+                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current
                 - name: R
                   items:
                     - name: R スクリプトの実行
@@ -866,6 +887,7 @@
             - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
             - name: ARM テンプレート
+              displayName: Resource Manager
               href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: 概念
           items:
@@ -952,8 +974,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性グループ
                   items:
-                    - name: Azure SQL VM CLI
-                      href: virtual-machines/windows/availability-group-az-cli-configure.md
+                    - name: PowerShell または Az CLI
+                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure クイック スタート テンプレート
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: 複数のリージョン
@@ -976,7 +998,7 @@
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
                     - name: FCI を作成する
                       items:
-                        - name: Azure 共有ディスク (SQL2019 以降)
+                        - name: Azure 共有ディスク
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
                         - name: 記憶域スペース ダイレクト (Win2016 以降)
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
@@ -995,7 +1017,7 @@
         - name: リファレンス
           items:
             - name: Azure PowerShell
-              href: /powershell/azure/overview
+              href: /powershell/azure/
             - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
@@ -1010,6 +1032,8 @@
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 価格
               href: virtual-machines/windows/pricing-guidance.md
+            - name: アーカイブ済みの従来の RM ドキュメント
+              href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Data Tools (SSDT)
               href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
             - name: SQL Server Management Studio (SSMS)

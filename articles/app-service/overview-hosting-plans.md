@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068190"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
@@ -79,8 +79,10 @@ App Service でアプリを作成すると、App Service プランに入れら�
 
 > [!NOTE]
 > App Service を別の Azure サービスと統合する場合は、これらの他のサービスの料金を考慮する必要があります。 たとえば、Azure Traffic Manager を使用してアプリを地理的にスケーリングする場合、Azure Traffic Manager も使用状況に基づいて課金されます。 Azure でクロスサービス コストを見積もるには、「[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)」をご覧ください。 
->
->
+
+クラウドの支出を最適化して節約しますか?
+
+[!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>アプリに能力や機能の追加が必要になった場合
 

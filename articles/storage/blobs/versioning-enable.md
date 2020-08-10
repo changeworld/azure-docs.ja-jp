@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884181"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086049"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 
@@ -68,7 +68,7 @@ Azure portal でテンプレートを使用してリソースをデプロイす�
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>BLOB を変更して新しいバージョンをトリガーする
 
-次のコード例は、.NET バージョン 12 用の Azure Storage クライアント ライブラリを使用して、新しいバージョンの作成をトリガーする方法を示しています。 この例を実行する前に、ストレージ アカウントのバージョン管理が有効になっていることをご確認ください。
+次のコード例は、.NET バージョン [12.5.0-preview.5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) 以降用の Azure Storage クライアント ライブラリを使用して、新しいバージョンの作成をトリガーする方法を示しています。 この例を実行する前に、ストレージ アカウントのバージョン管理が有効になっていることをご確認ください。
 
 この例では、ブロック BLOB を作成してから、BLOB のメタデータを更新します。 BLOB のメタデータを更新すると、新しいバージョンの作成がトリガーされます。 この例では、初期バージョンと現在のバージョンを取得し、現在のバージョンにのみメタデータが含まれていることを示します。
 

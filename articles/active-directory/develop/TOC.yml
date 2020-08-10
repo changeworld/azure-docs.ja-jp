@@ -13,10 +13,10 @@
       items:
         - name: アプリを登録します
           href: quickstart-register-app.md
-        - name: Web API にアクセスするためにアプリを構成する
-          href: quickstart-configure-app-access-web-apis.md
         - name: Web API を公開するためにアプリを構成する
           href: quickstart-configure-app-expose-web-apis.md
+        - name: Web API にアクセスするためにアプリを構成する
+          href: quickstart-configure-app-access-web-apis.md
         - name: アプリでサポートされるアカウントを変更する
           href: quickstart-modify-supported-accounts.md
         - name: アプリの削除
@@ -298,6 +298,9 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: 単一および複数アカウントのパブリック クライアント アプリ
               href: single-multi-account.md
+            - name: エラーと例外を処理する
+              href: msal-android-handling-exceptions.md
+              displayName: 'android, mobile'
             - name: ログ記録
               href: msal-logging.md?tabs=android
         - name: iOS と macOS
@@ -512,6 +515,8 @@
           href: active-directory-claims-mapping.md
         - name: 省略可能な要求の構成
           href: active-directory-optional-claims.md
+        - name: 要求でのディレクトリ スキーマ拡張属性の使用
+          href: active-directory-schema-extensions.md
         - name: トークンの有効期間の構成
           href: active-directory-configurable-token-lifetimes.md
         - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
@@ -618,6 +623,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: 認証時のエラーを診断する
           href: vs-active-directory-error.md
+    - name: アプリを市場に導入する
+      items:
+        - name: App Source に公開する
+          href: v2-howto-get-appsource-certified.md
+        - name: Azure AD アプリ ギャラリーに公開する
+          href: v2-howto-app-gallery-listing.md
+        - name: Office 365 販売者ダッシュボードに公開する
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: リファレンス
   items:
     - name: アプリケーション マニフェスト

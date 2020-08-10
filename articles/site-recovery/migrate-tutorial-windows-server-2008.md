@@ -5,38 +5,43 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73936134"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281278"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
-このチュートリアルでは、Azure Site Recovery を使用して Windows Server 2008 または 2008 R2 を実行しているオンプレミスのサーバーを Azure に移行する方法を示します。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、Azure Site Recovery を使用して Windows Server 2008 または 2008 R2 を実行しているオンプレミスのサーバーを Azure に移行する方法を示します。 
+
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * 移行対象のオンプレミス環境を準備する
-> * ターゲット環境をセットアップする
-> * レプリケーション ポリシーを設定する
-> * レプリケーションを有効にする
-> * テスト移行を実行して、すべて想定どおりに動作していることを確認する
-> * Azure にフェールオーバーして、移行を完了する
+> * 移行対象のオンプレミス環境を準備します。
+> * ターゲット環境を設定します。
+> * レプリケーション ポリシーを設定します。
+> * レプリケーションを有効にします。
+> * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。
+> * Azure にフェールオーバーして移行を完了します。
 
-「制限事項と既知の問題」セクションでは、いくつかの制限事項と、Windows Server 2008 マシンを Azure に移行する際に発生する可能性がある既知の問題の回避策を一覧に示しています。 
+## <a name="migrate-with-azure-migrate"></a>Azure Migrate を使用した移行
 
-> [!NOTE]
-> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 [詳細については、こちらを参照してください](../migrate/migrate-services-overview.md)。
+マシンを Azure に移行する際は、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用することをお勧めします。 Azure Migrate は、Azure Migrate、その他の Azure サービス、サードパーティ製のツールを使用して、オンプレミス マシンを評価して Azure に移行するための一元的なハブを提供します。 Azure Site Recovery は、移行でなくディザスター リカバリーのみに使用してください。
 
-
-## <a name="supported-operating-systems-and-environments"></a>サポートされているオペレーティング システムと環境
+Azure Migrate は、Windows Server 2008 を実行しているサーバーの移行をサポートしています。
 
 
-|オペレーティング システム  | オンプレミスの環境  |
+## <a name="migrate-with-site-recovery"></a>Site Recovery を使用した移行
+
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+
+
+|オペレーティング システム  | 環境  |
 |---------|---------|
 |Windows Server 2008 SP2 - 32 ビットおよび 64 ビット(IA-32 および x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     VMware VM、Hyper-V VM、および物理サーバー    |
 |Windows Server 2008 R2 SP1 - 64 bit</br>- Standard</br>- Enterprise</br>- Datacenter     |     VMware VM、Hyper-V VM、および物理サーバー|
@@ -46,9 +51,9 @@ ms.locfileid: "73936134"
 > - 移行前に、最新の Service Pack と Windows 更新プログラムがインストールされていることを確認してください。
 
 
-## <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 
-開始する前に、[VMware と物理サーバーの移行](vmware-azure-architecture.md)や [Hyper-V 仮想マシンの移行](hyper-v-azure-architecture.md)のための Azure Site Recovery アーキテクチャを確認することをお勧めします。 
+開始する前に、[VMware と物理サーバーの移行](vmware-azure-architecture.md)や [Hyper-V 仮想マシンの移行](hyper-v-azure-architecture.md)のために Azure Site Recovery のアーキテクチャを確認することをお勧めします。 
 
 Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper-V 仮想マシンを移行するには、[オンプレミス マシンを Azure に移行する](migrate-tutorial-on-premises-azure.md)チュートリアルの手順に従います。
 
@@ -57,7 +62,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 > VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください
 
 
-## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
+### <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
 - Windows Server 2008 SP2 サーバーの移行に使用される構成サーバー、追加のプロセス サーバー、およびモビリティ サービスは、Azure Site Recovery ソフトウェアのバージョン 9.19.0.0 以降を実行している必要があります。
 
@@ -79,10 +84,10 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
   >
   >テスト フェールオーバー操作は中断がなく、選択した分離ネットワークに仮想マシンを作成することで、移行のテストを支援します。 フェールオーバー操作とは異なり、テスト フェールオーバー操作中は、データ レプリケーションは進行を続けます。 移行の準備が整う前に、好きな回数だけ、テスト フェールオーバーを実行できます。 
   >
-  >
+  
 
 
-## <a name="getting-started"></a>作業の開始
+### <a name="get-started"></a>はじめに
 
 次のタスクを実行して、Azure サブスクリプションおよびオンプレミス VMware/物理環境を準備します。
 
@@ -90,7 +95,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) を準備する
 
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
+### <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
 2. **[リソースの作成]**  >  **[管理ツール]**  >  **[バックアップおよびサイトの回復]** の順にクリックします。
@@ -104,12 +109,12 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 新しいコンテナーは、 **[ダッシュボード]** の **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに追加されます。
 
 
-## <a name="prepare-your-on-premises-environment-for-migration"></a>移行対象のオンプレミス環境を準備する
+### <a name="prepare-your-on-premises-environment-for-migration"></a>移行対象のオンプレミス環境を準備する
 
 - VMware で実行されている Windows Server 2008 の仮想マシンを移行するには、[VMware にオンプレミス構成サーバーをセットアップします](vmware-azure-tutorial.md#set-up-the-source-environment)。
 - 構成サーバーを VMware 仮想マシンとしてセットアップできない場合は、[オンプレミス物理サーバーまたは仮想マシンに構成サーバーをセットアップします](physical-azure-disaster-recovery.md#set-up-the-source-environment)。
 
-## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
+### <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 
 ターゲット リソースを選択して確認します。
 
@@ -118,7 +123,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
 
-## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
+### <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
 
 1. 新しいレプリケーション ポリシーを作成するには、 **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]**  >  **[+ レプリケーション ポリシー]** の順にクリックします。
 2. **[レプリケーション ポリシーの作成]** で、ポリシー名を指定します。
@@ -133,7 +138,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 
    ![レプリケーション ポリシーの作成](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
-## <a name="enable-replication"></a>レプリケーションを有効にする
+### <a name="enable-replication"></a>レプリケーションを有効にする
 
 Windows Server 2008 SP2 / Windows Server 2008 R2 SP1 サーバーが移行されるように、[レプリケーションを有効にします](physical-azure-disaster-recovery.md#enable-replication)。
    
@@ -141,7 +146,7 @@ Windows Server 2008 SP2 / Windows Server 2008 R2 SP1 サーバーが移行され
 
    ![レプリケーションを有効にする](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
-## <a name="run-a-test-migration"></a>テスト移行を実行する
+### <a name="run-a-test-migration"></a>テスト移行を実行する
 
 初期レプリケーションが完了し、サーバーのステータスが **[保護済み]** に変わった後、サーバーのレプリケーションのテスト フェールオーバーを実行できます。
 
@@ -150,7 +155,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
    ![[テスト フェールオーバー]](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
-## <a name="migrate-to-azure"></a>Azure への移行
+### <a name="migrate-to-azure"></a>Azure への移行
 
 移行するマシンのフェールオーバーを実行します。
 
@@ -168,3 +173,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 
 > [!WARNING]
 > **進行中のフェールオーバーを取り消さないでください**: フェールオーバーが開始される前に、サーバーのレプリケーションが停止されます。 進行中のフェールオーバーを取り消すと、フェールオーバーは停止しますが、サーバーによるレプリケーションが続行されなくなります。
+
+## <a name="next-steps"></a>次のステップ
+> [!div class="nextstepaction"]
+> Azure Migrate について[よく寄せられる質問を確認](../migrate/resources-faq.md)する。

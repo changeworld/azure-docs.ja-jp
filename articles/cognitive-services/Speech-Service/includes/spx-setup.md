@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: b0f70fccf3f7f4a6856ae64d0946c2c473fed93c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: abfb4f6ba9452581811db1f462089cbafc771266
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544491"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,6 +27,11 @@ Windows に Speech CLI をインストールするには、次の手順に従い
 3. ダウンロードから抽出したルート ディレクトリ `spx-zips` にアクセスし、必要なサブディレクトリを抽出します (.NET Framework 4.7 の場合は `spx-net471`、x64 CPU での .NET Core 3.0 の場合は `spx-netcore-win-x64`)。
 
 コマンド プロンプトで、ディレクトリをこの場所に変更し、「`spx`」と入力して、Speech CLI のヘルプを表示します。
+
+> [!NOTE]
+> Windows の Speech CLI では、ローカル コンピューター上のコマンド プロンプトで使用できるフォントのみを表示できます。
+> [Windows ターミナル](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)では、Speech CLI によって対話的に生成されるすべてのフォントがサポートされます。
+> ファイルに出力すると、メモ帳などのテキスト エディターや、Microsoft Edge などの Web ブラウザーでも、すべてのフォントを表示できます。
 
 > [!NOTE]
 > Powershell では、コマンドの検索時にローカル ディレクトリがチェックされません。 Powershell で、ディレクトリを `spx` の場所に変更し、`.\spx` と入力してツールを呼び出します。

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34e3a3d1e0245180ce923fc3ec7353ab1a176be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086355"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 
@@ -39,7 +39,7 @@ ms.locfileid: "84712294"
 | Windows Media Video (WMV)/ASF (.wmv、.asf) |はい |
 | AVI (非圧縮 8-bit/10-bit) (.avi) |はい |
 | MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv) |はい |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |はい |
+| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |はい |
 | Matroska/WebM (.mkv) |はい |
 | WAVE/WAV (.wav) |はい |
 | QuickTime (.mov) |はい |
@@ -116,4 +116,3 @@ or
 [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md)
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
-

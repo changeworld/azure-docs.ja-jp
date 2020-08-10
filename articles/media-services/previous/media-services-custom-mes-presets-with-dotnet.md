@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956715"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052938"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ  
 
@@ -30,7 +30,7 @@ ms.locfileid: "85956715"
 この記事では、[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) プリセットを取得してレイヤーの数を減らすことによってプリセットをカスタマイズする方法を説明します。 [Media Encoder Standard のプリセットのカスタマイズ](media-services-advanced-encoding-with-mes.md)の記事では、高度なエンコード タスクを実行するために使用できるカスタム プリセットを示しています。
 
 > [!NOTE]
-> この記事で説明されているカスタム プリセットは、[Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) 変換または CLI コマンドでは使用できません。 詳細については、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください。
+> この記事で説明されているカスタム プリセットは、[Media Services V3](../latest/index.yml) 変換または CLI コマンドでは使用できません。 詳細については、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください。
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES プリセットのカスタマイズ
 

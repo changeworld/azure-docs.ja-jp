@@ -4,19 +4,19 @@ description: BACPAC ファイルを Azure SQL Database のデータベースに�
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: load & move data
+ms.custom: load & move data, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 9e3638c9823ed0fbae61a0dc5a93dff2e211d3f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a8c544f1d3b7d1255cf5a0e6d05975ea5f5ec203
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022643"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503805"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>CLI を使用して BACPAC ファイルを SQL Database のデータベースにインポートする
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| command | 説明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | サーバーのコマンド。 |
 | [az sql db import](/cli/azure/sql/db#az-sql-db-import) | データベースのインポート コマンド。 |

@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
-ms.custom: include file
+ms.custom: include file, devx-track-javascript
 ms.author: diberry
-ms.openlocfilehash: 6e240a0c5d5d77489c92862238c2e5041bdeabe3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 88a9c2f18237974a0188f6cf387bf98ebfa2b211
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171348"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425136"
 ---
 Node.js 用 Language Understanding (LUIS) 作成クライアント ライブラリの用途は次のとおりです。
 
@@ -25,7 +25,7 @@ Node.js 用 Language Understanding (LUIS) 作成クライアント ライブラ�
 * アプリをトレーニングして公開する。
 * アプリの削除
 
-[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [作成パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)、[ランタイム パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [作成パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)、[ランタイム パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,46 +36,7 @@ Node.js 用 Language Understanding (LUIS) 作成クライアント ライブラ�
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUIS) スターター キーを取得する
 
-LUIS 作成リソースを作成して、[スターター キー](../luis-how-to-azure-subscription.md#starter-key)を取得します。 次の手順のために、キーとキーのエンドポイントを保持しておきます。
-
-### <a name="create-an-environment-variable"></a>環境変数を作成する
-
-キーとキーのリージョンを使用して、認証用に 2 つの環境変数を作成します。
-
-* `LUIS_AUTHORING_KEY` - 要求を認証するためのリソース キー。
-* `LUIS_AUTHORING_ENDPOINT` - キーに関連付けられたエンドポイント。
-
-ご利用のオペレーティング システムの手順に従ってください。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_AUTHORING_ENDPOINT <replace-with-your-luis-authoring-endpoint>
-```
-
-環境変数を追加したら、コンソール ウィンドウを再起動します。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-次のように `.bash_profile` を編集し、環境変数を追加します。
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
-***
+LUIS 作成リソースを作成して、[オーサリング キー](../luis-how-to-azure-subscription.md)を取得します。 キーとキーのエンドポイントを保持し、これらの文字列をコード ファイルの先頭に追加する必要があります。
 
 ### <a name="install-the-npm-library-for-luis-authoring"></a>LUIS 作成用 NPM ライブラリをインストールする
 
@@ -118,8 +79,6 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
 好みのエディターまたは IDE で、`luis_authoring_quickstart.js` という名前の新しいテキスト ファイルを作成します。 その後、次の依存関係を追加します。
 
 [!code-javascript[Create a new application in your preferred editor or IDE.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Dependencies)]
-
-自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 
 [!code-javascript[Create variables for your resource's Azure endpoint and key.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Variables)]
 

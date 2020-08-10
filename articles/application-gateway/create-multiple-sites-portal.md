@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 07/20/2020
 ms.author: victorh
-ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74075149"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290153"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "74075149"
 > * ルーティング規則の作成
 > * ドメインの CNAME レコードの作成
 
-![マルチサイト ルーティングの例](./media/create-multiple-sites-portal/scenario.png)
+:::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -50,7 +50,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    - **[リソース グループ]** :リソース グループには、**myResourceGroupAG** を選択します。 存在しない場合は、 **[新規作成]** を選択して作成します。
    - **[アプリケーション ゲートウェイ名]** :アプリケーション ゲートウェイの名前として「*myAppGateway*」と入力します。
 
-     ![新しいアプリケーション ゲートウェイの作成:基本](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="アプリケーション ゲートウェイの作成":::
 
 2.  お客様が作成するリソースの間で Azure による通信が行われるには、仮想ネットワークが必要です。 新しい仮想ネットワークを作成することも、既存の仮想ネットワークを使用することもできます。 この例では、アプリケーション ゲートウェイの作成と同時に新しい仮想ネットワークを作成します。 Application Gateway インスタンスは、個別のサブネットに作成されます。 この例では 2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。
 
@@ -66,7 +66,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     **[OK]** を選択して **[仮想ネットワークの作成]** ウィンドウを閉じ、仮想ネットワークの設定を保存します。
 
-     ![新しいアプリケーションゲートウェイの作成: 仮想ネットワーク](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="VNet を作成します":::
     
 3. **[基本]** タブで、その他の設定の既定値をそのまま使用し、 **[次へ:フロントエンド]** を選択します。
 
@@ -78,7 +78,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
 
-     ![新しいアプリケーション ゲートウェイの作成: フロントエンド](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="VNet を作成します":::
 
 3. **バックエンド** を選択します。
 
@@ -96,7 +96,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 3. **[バックエンド プールの追加]** ウィンドウで、 **[追加]** を選択してバックエンド プールの構成を保存し、 **[バックエンド]** タブに戻ります。
 4. 次に、*fabrikamPool* という名前の別のバックエンド プールを追加します。
 
-     ![新しいアプリケーション ゲートウェイの作成: バックエンド](./media/create-multiple-sites-portal/backend-pools.png)
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="バックエンドを作成します":::
 
 4. **[バックエンド]** タブで、 **[次へ:構成]** を選択します。
 
@@ -119,7 +119,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
    **[リスナー]** タブで他の設定の既定値をそのまま使用し、 **[バックエンド ターゲット]** タブを選択して、ルーティング規則の残りの部分を構成します。
 
-   ![新しいアプリケーション ゲートウェイの作成: リスナー](./media/create-multiple-sites-portal/routing-rule.png)
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="ルーティング規則を作成します":::
 
 4. **[バックエンド ターゲット]** タブで、 **[バックエンド ターゲット]** として **[contosoPool]** を選択します。
 
@@ -128,7 +128,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 6. **[ルーティング規則の追加]** ウィンドウで **[追加]** を選択してルーティング規則を保存し、 **[構成]** タブに戻ります。
 7. **[ルールの追加]** を選択し、Fabrikam 用に同様のルール、リスナー、バックエンドターゲット、および HTTP 設定を追加します。
 
-     ![新しいアプリケーションゲートウェイの作成: ルーティング規則](./media/create-multiple-sites-portal/fabrikamRule.png)
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam 規則":::
 
 7. **タグ**、**次へ:確認と作成** をクリックします。
 

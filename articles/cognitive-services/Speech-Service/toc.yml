@@ -416,6 +416,8 @@
                   href: how-to-custom-commands-add-interaction-rules.md
                 - name: 音声応答の言語生成テンプレートを追加する
                   href: how-to-custom-commands-add-language-generation-templates.md
+                - name: Custom Voice を使用する
+                  href: how-to-custom-commands-use-custom-voice.md
             - name: 統合
               items:
                 - name: Speech SDK を使用してクライアント アプリと統合する
@@ -452,6 +454,8 @@
               href: faq-voice-assistants.md
             - name: Speech SDK
               href: speech-sdk.md
+            - name: カスタム コマンドによる保存データの暗号化
+              href: custom-commands-encryption-of-data-at-rest.md
     - name: Direct Line Speech
       items:
         - name: Direct Line Speech とは
@@ -490,10 +494,8 @@
       items:
         - name: カスタム キーワードの概要
           href: custom-keyword-overview.md
-        - name: カスタム キーワードの名前付けのガイドライン
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: カスタム キーワードの認識
-          href: speech-devices-sdk-create-kws.md
+        - name: カスタム キーワードの基本
+          href: custom-keyword-basics.md
 - name: Speaker Recognition
   items:
     - name: 概要

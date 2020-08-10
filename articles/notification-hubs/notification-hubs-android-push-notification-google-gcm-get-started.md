@@ -11,17 +11,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 8bbdf984311883006fcd6af16f42d7f7972cc169
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249239"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323317"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する (非推奨)
 
@@ -485,7 +485,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(省略可能) アプリから直接プッシュ通知を送信する
 
-通常は、バックエンド サーバーを使用して通知を送信します。 場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。 このセクションでは、 [Azure Notification Hubs REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)を使用してクライアントから通知を送信する方法を説明します。
+通常は、バックエンド サーバーを使用して通知を送信します。 場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。 このセクションでは、 [Azure Notification Hubs REST API](/previous-versions/azure/reference/dn223264(v=azure.100))を使用してクライアントから通知を送信する方法を説明します。
 
 1. Android Studio の [Project (プロジェクト)] ビューで **[app]**  >  **[src]**  >  **[main]**  >  **[res]**  >  **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、 **[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
@@ -544,7 +544,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. 通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成します。 接続文字列のキー データを解析してから、「[共通概念](https://msdn.microsoft.com/library/azure/dn495627.aspx)」の REST API リファレンスの説明に従って SaS トークンを作成します。 次のコードでは、実装例を示します。
+6. 通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成します。 接続文字列のキー データを解析してから、「[共通概念](/previous-versions/azure/reference/dn495627(v=azure.100))」の REST API リファレンスの説明に従って SaS トークンを作成します。 次のコードでは、実装例を示します。
 
     `MainActivity.java` で、接続文字列を解析する次のメソッドを `MainActivity` クラスに追加します。
 
@@ -741,7 +741,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com

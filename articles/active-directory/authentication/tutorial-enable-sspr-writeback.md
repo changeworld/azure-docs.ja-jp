@@ -5,24 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/24/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202549"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518489"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
 Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用すると、ユーザーは Web ブラウザーを使用して自分のパスワードを更新したり、自分のアカウントのロックを解除したりできます。 Azure AD がオンプレミスの Active Directory Domain Services (AD DS) 環境に接続されているハイブリッド環境では、このシナリオにより、パスワードが 2 つのディレクトリ間で異なる場合があります。
 
 パスワード ライトバックを使用すると、Azure AD でのパスワード変更をオンプレミスの AD DS 環境に同期することができます。 Azure AD Connect には、これらのパスワード変更を Azure AD から既存のオンプレミス ディレクトリに送信するための安全なメカニズムが用意されています。
+
+> [!IMPORTANT]
+> このチュートリアルでは、セルフサービス パスワード リセットをオンプレミス環境にライトバックする方法を管理者に示します。 既にセルフサービス パスワード リセットの登録が済んでいて、自分のアカウントに戻る必要があるエンド ユーザーは、 https://aka.ms/sspr にアクセスしてください。
+>
+> ユーザーが自分でパスワードをリセットする機能が IT チームによって有効にされていない場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -35,7 +40,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも Azure AD Premium P1 または P2 試用版ライセンスが有効になっている、動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P1 試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 詳細については、[Azure AD SSPR のライセンス要件](concept-sspr-licensing.md)に関するページを参照してください。
 * "*グローバル管理者*" 特権を持つアカウント。
@@ -43,7 +48,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
     * 必要に応じて、[前のチュートリアルを完了して Azure AD SSPR を有効にしてください](tutorial-enable-sspr.md)。
 * Azure AD Connect の現在のバージョンを使用して構成された既存のオンプレミスの AD DS 環境。
     * 必要に応じて、[簡易](../hybrid/how-to-connect-install-express.md)または[カスタム](../hybrid/how-to-connect-install-custom.md)設定を使用して Azure AD Connect を構成してください。
-    * パスワード ライトバックを使用するためには、ドメイン コントローラーが Windows Server 2012 以降である必要があります。
+    * パスワード ライトバックを使用するには、ドメイン コントローラーが Windows Server 2012 以降である必要があります。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Azure AD Connect に対するアカウントのアクセス許可を構成する
 
@@ -54,11 +59,9 @@ SSPR のライトバックを正しく操作するには、Azure AD Connect で�
 * **パスワードのリセット**
 * `lockoutTime` に対する**書き込みアクセス許可**
 * `pwdLastSet` に対する**書き込みアクセス許可**
-* 次のいずれかでの "期限切れではないパスワード" の**拡張権限**:
-   * そのフォレスト内の*各ドメイン*のルート オブジェクト
-   * SSPR の範囲内にしたいユーザー組織単位 (OU)
+* まだ設定して場合は、そのフォレスト内の "*各ドメイン*" のルート オブジェクトに対する "期限切れではないパスワード" の**拡張権利**。
 
-これらのアクセス許可を割り当てないと、ライトバックが正しく構成されているように見えても、ユーザーがクラウドからオンプレミスのパスワードを管理するときにエラーが発生します。 "期限切れではないパスワード" が表示されるためには、 **[このオブジェクトとすべての子オブジェクト]** にアクセス許可が割り当てられている必要があります。  
+これらのアクセス許可を割り当てないと、ライトバックが正しく構成されているように見えても、ユーザーがクラウドからオンプレミスのパスワードを管理するときにエラーが発生することがあります。 "期限切れではないパスワード" が表示されるためには、 **[このオブジェクトとすべての子オブジェクト]** にアクセス許可が割り当てられている必要があります。  
 
 > [!TIP]
 >
@@ -74,7 +77,7 @@ SSPR のライトバックを正しく操作するには、Azure AD Connect で�
 1. **[適用対象]** ドロップダウン ボックスの一覧で、 **[ユーザーの子孫オブジェクト]** オブジェクトを選びます。
 1. *[アクセス許可]* で次のオプションのボックスを選択します。
     * **パスワードのリセット**
-1. *[プロパティ]* で次のオプションのボックスを選択します。 これらのオプションを見つけるには、リストをスクロールする必要があります。これらは、既定で設定されている場合があります。
+1. *[プロパティ]* で次のオプションのボックスを選択します。 これらのオプションを見つけるには、リストをスクロールします。これらは、既定で設定されている場合があります。
     * **Write lockoutTime**
     * **Write pwdLastSet**
 
@@ -89,13 +92,13 @@ SSPR のライトバックを正しく操作するには、Azure AD Connect で�
 グループ ポリシーを更新する場合は、更新されたポリシーがレプリケートされるまで待つか、`gpupdate /force` コマンドを使用します。
 
 > [!Note]
-> パスワードがすぐに変更されるように、パスワード ライトバックを 0 に設定する必要があります。 ただし、ユーザーがオンプレミスのポリシーに準拠していて、 *[パスワードの変更禁止期間]* が 0 より大きい値に設定されている場合は、オンプレミスのポリシーが評価された後もパスワード ライトバックは機能します。 
+> パスワードがすぐに変更されるようにするには、パスワード ライトバックを 0 に設定する必要があります。 ただし、ユーザーがオンプレミスのポリシーに準拠していて、 *[パスワードの変更禁止期間]* が 0 より大きい値に設定されている場合でも、パスワード ライトバックはオンプレミスのポリシーが評価された後で機能します。
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Azure AD Connect でパスワード ライトバックを有効にする
 
 Azure AD Connect の構成オプションの 1 つはパスワード ライトバック用です。 このオプションが有効になっていると、パスワード変更イベントにより、Azure AD Connect は更新された資格情報をオンプレミスの AD DS 環境に同期します。
 
-セルフサービス パスワード リセットのライトバックを有効にするには、まず、Azure AD Connect でライトバック オプションを有効にします。 Azure AD Connect サーバーから、次の手順を実行します。
+SSPR のライトバックを有効にするには、まず、Azure AD Connect でライトバック オプションを有効にします。 Azure AD Connect サーバーから、次の手順を実行します。
 
 1. Azure AD Connect サーバーにサインインし、**Azure AD Connect** 構成ウィザードを開始します。
 1. **[ようこそ]** ページで **[構成]** を選びます。

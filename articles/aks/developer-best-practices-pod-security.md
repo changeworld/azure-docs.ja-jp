@@ -2,16 +2,15 @@
 title: 開発者のベスト プラクティス - Azure Kubernetes Service (AKS) でのポッドのセキュリティ
 description: Azure Kubernetes Service (AKS) でポッドをセキュリティで保護する方法に関する、開発者のベスト プラクティスについて説明します
 services: container-service
-author: zr-msft
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 3a62dcbbec90ec73ded722a6efbbd5907fb21f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320682"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのポッドのセキュリティに関するベスト プラクティス
 
@@ -52,15 +51,16 @@ kind: Pod
 metadata:
   name: security-context-demo
 spec:
+  securityContext:
+    fsGroup: 2000
   containers:
     - name: security-context-demo
       image: nginx:1.15.5
-    securityContext:
-      runAsUser: 1000
-      fsGroup: 2000
-      allowPrivilegeEscalation: false
-      capabilities:
-        add: ["NET_ADMIN", "SYS_TIME"]
+      securityContext:
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
 クラスター オペレーターと連携して、どのようなセキュリティ コンテキスト設定が必要かを判断します。 ポッドが必要とする追加のアクセス許可およびアクセスを最小限に抑えるように、アプリケーションを設計してみてください。 クラスター オペレーターが実装できる、AppArmor および seccomp (セキュリティで保護されたコンピューティング) を使用してアクセスを制限する追加のセキュリティ機能があります。 詳細については、「[リソースへのコンテナー アクセスをセキュリティで保護する][apparmor-seccomp]」を参照してください。

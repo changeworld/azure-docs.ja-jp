@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083431"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>H シリーズ VM でのハイ パフォーマンス コンピューティング
 
@@ -39,7 +39,7 @@ HB シリーズまたは HC シリーズの VM での InfiniBand の設定につ
 
 ## <a name="get-started"></a>はじめに
 
-まず、どの H シリーズの VM を使うかを決定します。 HPC 用に最適化された VM について詳しくは、[HB シリーズの概要](hb-series-overview.md)および [HC シリーズの概要](hc-series-overview.md)に関する記事をご覧ください。 仕様については、「[ハイ パフォーマンス コンピューティング仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)」をご覧ください。
+まず、どの H シリーズの VM を使うかを決定します。 HPC 用に最適化された VM について詳しくは、[HB シリーズの概要](hb-series-overview.md)および [HC シリーズの概要](hc-series-overview.md)に関する記事をご覧ください。 仕様については、「[ハイ パフォーマンス コンピューティング仮想マシンのサイズ](../../sizes-hpc.md)」をご覧ください。
 
 アプリケーション用の VM を選択して作成した後は、InfiniBand を有効にして構成する必要があります。 Windows VM と Linux VM の両方で InfiniBand を有効にする方法については、[InfiniBand の有効化](enable-infiniband.md)に関する記事をご覧ください。
 
@@ -51,4 +51,4 @@ VM シリーズを選択し、InfiniBand と MPI を設定した後は、HPC ワ
 
 - [HB シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)を確認し、主な相違点と仕様について学習します。
 
-- HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)」をご覧ください。
+- HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

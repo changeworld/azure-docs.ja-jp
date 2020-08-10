@@ -4,15 +4,15 @@ description: Azure Firewall と統合して、App Service 環境内からの送�
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 8e63c0678967a21a6b2763574e594a1a6c2ba25b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9407e388a44ec78fa1e089542fc5ea3ef9387d60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073760"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -248,6 +248,7 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
+|oryx-cdn.microsoft.io:443 |
 | \*.cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
 |\*.data.mcr.microsoft.com:443 |

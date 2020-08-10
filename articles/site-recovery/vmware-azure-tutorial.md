@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610685"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290662"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -84,7 +84,7 @@ ms.locfileid: "82610685"
 ## <a name="import-the-template-in-vmware"></a>VMware にテンプレートをインポートする
 
 
-1. VMWare vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
+1. VMware vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
 2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、 **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。
 
      ![OVF テンプレート](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -113,7 +113,7 @@ ms.locfileid: "82610685"
 
 構成サーバーを設定した後、それをコンテナーに登録します。
 
-1. VMWare vSphere Client のコンソールで、VM をオンにします。
+1. VMware vSphere Client のコンソールで、VM をオンにします。
 2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
 3. インストールの完了後に、管理者として VM にサインインします。
 4. 初めてサインインすると、数秒後に Azure Site Recovery 構成ツールが起動します。
@@ -169,6 +169,8 @@ ms.locfileid: "82610685"
 
 - このポリシーは自動的に構成サーバーに関連付けられます。
 - 既定でフェールバックの照合ポリシーが自動的に作成されます。 たとえば、レプリケーション ポリシーが **rep-policy** の場合、フェールバック ポリシーは **rep-policy-failback** になります。 このポリシーは、Azure からフェールバックを開始するまで使用されません。
+
+注:VMware から Azure へのシナリオでは、クラッシュ整合性スナップショットが 5 分間隔で作成されます。
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 

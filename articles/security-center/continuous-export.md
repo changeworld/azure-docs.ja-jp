@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519699"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項のエクスポート
 
@@ -29,7 +29,6 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 
 
-
 ## <a name="availability"></a>可用性
 
 - リリース状態: **一般提供**
@@ -37,10 +36,7 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
     - エクスポート構成を含むサブスクリプション上での**閲覧者**
     - リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)
     - ターゲット リソースに対する書き込みアクセス許可も必要になります
-- クラウド: 
-    - ✔ 商用クラウド
-    - ✔ US Gov
-    - ✘ China Gov、その他の Gov
+- クラウド:   ✔ 商用クラウド   ✔ US Gov   ✘ China Gov、その他の Gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>連続エクスポートを設定する

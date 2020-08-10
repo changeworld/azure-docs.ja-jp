@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781635"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445657"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -256,7 +256,7 @@ Azure AD では、属性から属性への直接マッピング、定数値の�
 
 Azure AD プロビジョニング サービスを初めて実行すると、ソース システムとターゲット システムに対する初回サイクルにより、各ターゲット システムのすべてのユーザー オブジェクトのスナップショットが作成されます。
 
-アプリケーションに対して自動プロビジョニングを有効にする場合、初回サイクルには 20 分から数時間かかることがあります。 この期間は、Azure AD ディレクトリのサイズと、プロビジョニングの対象となるユーザーの数によって異なります。 「[プロビジョニングのパフォーマンスを改善する方法](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)」を参照してください。
+アプリケーションに対して自動プロビジョニングを有効にする場合、初回サイクルには 20 分から数時間かかることがあります。 この期間は、Azure AD ディレクトリのサイズと、プロビジョニングの対象となるユーザーの数によって異なります。
 
 プロビジョニング サービスは、初回サイクル後の両方のシステムの状態を保管し、後続の増分サイクルのパフォーマンスを改善します。
 
@@ -299,8 +299,6 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 * [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](../app-provisioning/application-provisioning-config-problem.md)
 
 * [アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
-
-* [長時間を要する Azure AD ギャラリー アプリケーションへのユーザー プロビジョニング](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
 
 * [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 

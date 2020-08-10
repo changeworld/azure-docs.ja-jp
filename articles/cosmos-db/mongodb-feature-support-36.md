@@ -4,15 +4,15 @@ description: Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API でサポ
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 07/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 92c94b08602fb32ccebf6115306a5000665affe2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076827"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 
@@ -542,7 +542,32 @@ $polygon |  はい |
 
 ## <a name="unique-indexes"></a>一意なインデックス
 
-一意なインデックスによって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 "unique" 制約を含めて createIndex コマンドを使用すれば、Cosmos DB でカスタム インデックスを作成できます。
+[一意なインデックス](mongodb-indexing.md#unique-indexes)によって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 Cosmos DB で一意なインデックスを作成するには、`unique` 制約パラメーターを指定して `createIndex` コマンドを実行します。
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>複合インデックス
+
+[複合インデックス](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)では、最大 8 つのフィールドから成るフィールド グループにインデックスを付けることができます。 この種のインデックスは、ネイティブの MongoDB 複合インデックスとは異なります。 Azure Cosmos DB の複合インデックスは、複数のフィールドに適用される並べ替え操作に使用されます。 複合インデックスを作成するには、パラメーターとして複数のプロパティを指定する必要があります。
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>Time-to-live (TTL)
 

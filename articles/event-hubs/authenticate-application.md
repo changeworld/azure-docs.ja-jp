@@ -3,12 +3,12 @@ title: Azure Event Hubs リソースにアクセスするためのアプリケ�
 description: この記事では、Azure Active Directory を使用して Azure Event Hubs リソースにアクセスするためのアプリケーションを認証する方法について説明します
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 8cf51daef7298ff0ad487d5a072b6126557578c1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1def026b1f188eba85ad5a86bf963ba1964b768a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537294"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371534"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する
 Microsoft Azure では、Azure Active Directory (Azure AD) を利用して、リソースとアプリケーションの統合されたアクセス制御管理が提供されています。 Azure Event Hubs で Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` です (Kafka クライアントの場合、トークンを要求するリソースは `https://<namespace>.servicebus.windows.net` です)。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Event Hubs リソースへの要求を承認できます。
@@ -19,7 +19,7 @@ Microsoft Azure では、Azure Active Directory (Azure AD) を利用して、リ
 > ロールの定義はアクセス許可のコレクションです。 ロールベースのアクセス制御 (RBAC) では、これらのアクセス許可をロールの割り当てによってどのように適用するかを制御します。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。 詳細については、[各種ロールについて](../role-based-access-control/overview.md)の記事をご覧ください。
 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Azure Event Hubs の組み込みのロール
-Azure には、Event Hubs データへの Azure AD と OAuth を使ったアクセスを承認するために、次の組み込み RBAC ロールが用意されています。
+Azure には、Event Hubs データへの Azure AD と OAuth を使ったアクセスを承認するために、次の Azure の組み込みロールが用意されています。
 
 - [Azure Event Hubs のデータ所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Event Hubs リソースへの完全なアクセス権を付与するには、このロールを使用します。
 - [Azure Event Hubs のデータ送信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Event Hubs リソースへの送信アクセス権を付与するには、このロールを使用します。
@@ -107,7 +107,7 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
     このサンプルは、最新の **Azure.Messaging.EventHubs** ライブラリを使用するように更新されています。
 
 ## <a name="next-steps"></a>次のステップ
-- RBAC の詳細については、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) に関する記事を参照してください。
+- RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 - Azure PowerShell、Azure CLI、または REST API で RBAC ロールを割り当てて管理する方法については、次の記事を参照してください。
     - [Azure PowerShell を使用してロールベースのアクセス制御 (RBAC) を管理する](../role-based-access-control/role-assignments-powershell.md)  
     - [Azure CLI を使用してロールベースのアクセス制御 (RBAC) を管理する](../role-based-access-control/role-assignments-cli.md)

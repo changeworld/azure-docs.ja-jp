@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 8cf9641a1b7a5d1aada13522d612458d5032f883
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 38f8df1e721d2e29d4871a05263d9f4559aaedc4
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258694"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406811"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>クイック スタート:Node.js を使用してテキストを音声に変換する
 

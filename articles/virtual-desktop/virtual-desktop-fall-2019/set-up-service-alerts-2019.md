@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop のサービス アラートを設定する - Azure
-description: Windows Virtual Desktop のサービス通知を受信するように Azure Service Health を設定する方法。
+title: Windows Virtual Desktop (クラシック) のサービス アラートを設定する - Azure
+description: Windows Virtual Desktop (クラシック) のサービス通知を受信する Azure Service Health の設定方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a3f938c6e4c9bb13794ddd01092f0e79077a89cc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259758"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283386"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>チュートリアル:サービス アラートを設定する
+# <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) のサービス アラートを設定する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../set-up-service-alerts.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../set-up-service-alerts.md)を参照してください。
 
 Azure Service Health を使用すると、Windows Virtual Desktop のサービスの問題と正常性に関するアドバイザリを監視できます。 Azure Service Health によって、さまざまな種類のアラート (メールや SMS など) の通知を受け取り、問題の影響を把握し、問題が解決したときに最新の情報を得ることができます。 さらに、Azure Service Health は、ダウンタイムを軽減し、お使いのリソースの可用性に影響を与える可能性がある計画的なメンテナンスや変更に備えるためにも役立ちます。
 

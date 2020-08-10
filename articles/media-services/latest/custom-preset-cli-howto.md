@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382955"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503890"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>カスタム変換を使用してエンコードする方法 - Azure CLI
 
@@ -32,7 +32,7 @@ Azure Media Services でエンコードする場合、クイック スタート�
 
 ## <a name="prerequisites"></a>前提条件
 
-[Media Services アカウントを作成する](create-account-cli-how-to.md)
+[Media Services アカウントを作成する](./create-account-howto.md)
 
 リソース グループ名と Media Services アカウント名を覚えておいてください。
 

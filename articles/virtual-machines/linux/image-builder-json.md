@@ -3,17 +3,17 @@ title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
 author: danielsollondon
 ms.author: danis
-ms.date: 06/23/2020
-ms.topic: article
+ms.date: 07/09/2020
+ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221206"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283301"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -24,7 +24,7 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
@@ -39,9 +39,8 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
             "vmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
-                "name": "<vnetName>",
-                "subnetName": "<subnetName>",
-                "resourceGroupName": "<vnetRgName>"
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
             },
         "source": {}, 
         "customize": {}, 
@@ -54,11 +53,11 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
 
 ## <a name="type-and-api-version"></a>種類と API のバージョン
 
-`type` はリソースの種類であり、`"Microsoft.VirtualMachineImages/imageTemplates"` にする必要があります。 `apiVersion` は API の変化に合わせて時間と共に変わりますが、プレビューでは `"2019-05-01-preview"` にする必要があります。
+`type` はリソースの種類であり、`"Microsoft.VirtualMachineImages/imageTemplates"` にする必要があります。 `apiVersion` は API の変化に合わせて時間と共に変わりますが、プレビューでは `"2020-02-14"` にする必要があります。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
 ## <a name="location"></a>場所
@@ -101,9 +100,8 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
 
 ```json
     "vnetConfig": {
-        "name": "<vnetName>",
-        "subnetName": "<subnetName>",
-        "resourceGroupName": "<vnetRgName>"
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
     }
 ```
 ## <a name="tags"></a>Tags
@@ -121,9 +119,8 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
 詳しくは、「[リソースの依存関係を定義する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)」をご覧ください。
 
 ## <a name="identity"></a>ID
-既定の Image Builder では、スクリプトの使用、または GitHub や Azure Storage などの複数の場所からのファイルのコピーがサポートされています。 これらを使うには、それらにパブリックからアクセスできる必要があります。
 
-また、Azure ユーザー割り当てマネージド ID を自分で定義し、ID に Azure ストレージ アカウントで少なくとも "ストレージ BLOB データ閲覧者" を付与することによって、Image Builder で Azure Storage にアクセスできるようにすることもできます。 つまり、ストレージ BLOB を外部からアクセス可能にしたり、SAS トークンをセットアップしたりする必要はありません。
+必須 - スクリプトで Azure Storage から読み取られたイメージを読み書きするアクセスが Image Builder に許可されるようにするには、個々のリソースに対するアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Image Builder のアクセス許可のしくみと関連する手順の詳細については、[ドキュメント](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)を参照してください。
 
 
 ```json
@@ -135,9 +132,10 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
         },
 ```
 
-詳しい例については、「[Use an Azure User-Assigned Managed Identity to access files in Azure Storage (Azure ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする)](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)」をご覧ください。
 
-ユーザー割り当て ID に対する Image Builder のサポート: •   単一の ID のみがサポートされます •   カスタム ドメイン名はサポートされません
+Image Builder によるユーザー割り当て ID のサポート:
+* 単一の ID のみがサポートされています
+* カスタム ドメインはサポートされていません
 
 詳しくは、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」をご覧ください。
 この機能のデプロイについて詳しくは、「[Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)」をご覧ください。
@@ -153,11 +151,6 @@ API ではイメージ ビルド用のソースを定義する "SourceType" が�
 
 > [!NOTE]
 > 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
-
-### <a name="iso-source"></a>ISO ソース
-現在 [RHEL 持ち込みサブスクリプション イメージ](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)があるため、Image Builder では、この機能を非推奨にしています。以下のタイムラインをご確認ください。
-    * 2020 年 3 月 31 日 - リソース プロバイダーによる RHEL ISO ソースを含むイメージ テンプレートの受け入れが終了します。
-    * 2020 年 4 月 30 日 - RHEL ISO ソースを含むイメージ テンプレートの処理が終了します。
 
 ### <a name="platformimage-source"></a>PlatformImage ソース 
 Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)を参照してください。 
@@ -181,6 +174,21 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 "最新" バージョンを使用できますが、バージョンは、テンプレートが送信されるときではなく、イメージのビルドが行われるときに評価されます。 Shared Image Gallery 送信先でこの機能を使用する場合、テンプレートを再送信するのは避け、間隔を置いてイメージ ビルドを再実行します。これにより、最新のイメージから、ご自身のイメージが再作成されます。
 
+#### <a name="support-for-market-place-plan-information"></a>マーケットプレース プラン情報のサポート
+次の例のように、プラン情報を指定することもできます。
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>ManagedImage ソース
 
 ソース イメージを、一般化された VHD または VM の既存のマネージド イメージとして設定します。 ソース マネージド イメージは、サポート対象の OS のものでなければならず、Azure Image Builder テンプレートと同じリージョンに存在する必要があります。 
@@ -206,6 +214,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```
 
 `imageVersionId` は、イメージ バージョンの ResourceId にする必要があります。 イメージ バージョンの一覧を表示するには、[az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) を使います。
+
 
 ## <a name="properties-buildtimeoutinminutes"></a>プロパティ: buildTimeoutInMinutes
 
@@ -254,7 +263,9 @@ Image Builder では、複数の "カスタマイザー" がサポートされ�
 
  
 customize セクションは配列です。 Azure Image Builder では、カスタマイザーが順番に実行されます。 いずれかのカスタマイザーでエラーが発生すると、ビルド プロセスが失敗します。 
- 
+
+> [!NOTE]
+> インライン コマンドは、イメージ テンプレート定義に表示され、サポート ケース支援時に Microsoft サポートによって表示されることがあります。 機密情報がある場合は、アクセスに認証が必要な Azure Storage 内のスクリプトに移動する必要があります。
  
 ### <a name="shell-customizer"></a>シェル カスタマイザー
 
@@ -293,7 +304,7 @@ OS のサポート: Linux
 スーパー ユーザー特権で実行するコマンドについては、`sudo` を先頭に付ける必要があります。
 
 > [!NOTE]
-> RHEL ISO ソースでシェル カスタマイザーを実行するときは、カスタマイズを行う前に、最初のカスタマイズ シェルで、Red Hat エンタイトルメント サーバーへの登録を処理する必要があります。 カスタマイズが完了したら、スクリプトでエンタイトルメント サーバーへの登録を解除する必要があります。
+> インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらのコマンドを確認できます。また、トラブルシューティングのためにサポート ケースが発生した場合に、Microsoft サポートでこれらのコマンドを表示することもできます。 機密性の高いコマンドまたは値がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
 
 ### <a name="windows-restart-customizer"></a>Windows 再起動カスタマイザー 
 再起動カスタマイザーでは、Windows VM を再起動して、オンラインに戻るのを待機することができます。これにより、再起動が必要なソフトウェアをインストールできます。  
@@ -485,7 +496,7 @@ runOutputName=<runOutputName>
 
 az resource show \
         --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
-        --api-version=2019-05-01-preview
+        --api-version=2020-02-14
 ```
 
 出力:
@@ -569,13 +580,22 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 共有イメージ ギャラリーの配布プロパティ:
 
 - **type** - sharedImage  
-- **galleryImageId** – 共有イメージ ギャラリーの ID。 形式is: /subscriptions/\<subscriptionId>/resourceGroups/\<resourceGroupName>/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>。
+- **galleryImageId** – 共有イメージ ギャラリーの ID です。これは、次の 2 つの形式で指定できます。
+    * 自動バージョン管理 - Image Builder によって、モノトニックなバージョン番号が自動的に生成されます。これは、同じテンプレートからイメージを再構築し続ける場合に便利です。形式は `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` です。
+    * 明示的なバージョン管理 - Image Builder で使用するバージョン番号を渡すことができます。 形式は `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>` です。
+
 - **runOutputName** – 配布を示す一意の名前。  
 - **artifactTags** -省略可能なユーザー指定のキー値ペアのタグ。
-- **replicationRegions** -レプリケーション用のリージョンの配列。 リージョンの 1 つは、ギャラリーがデプロイされているリージョンでなければなりません。
- 
+- **replicationRegions** -レプリケーション用のリージョンの配列。 リージョンの 1 つは、ギャラリーがデプロイされているリージョンでなければなりません。 リージョンを追加すると、ビルド時間が長くなります。これは、レプリケーションが完了するまでビルドが完了しないためです。
+- **excludeFromLatest** (省略可能) これにより、作成したイメージ バージョンを SIG 定義で最新バージョンとして使用しないように設定できます。既定値は "false" です。
+- **storageAccountType** (省略可能) AIB では、作成されるイメージ バージョンに対して、次の種類のストレージを指定することがサポートされています。
+    * "Standard_LRS"
+    * "Standard_ZRS"
+
+
 > [!NOTE]
-> ギャラリーとは別のリージョンで Azure Image Builder を使用できますが、Azure Image Builder サービスはデータセンター間でイメージを転送する必要があり、これには長い時間がかかります。 Image Builder ではモノトニックな整数に基づいて自動的にイメージのバージョンが設定され、それを指定することは現在はできません。 
+> イメージ テンプレートと参照されている `image definition` が同じ場所にない場合は、イメージを作成するための追加の時間が表示されます。 現在、イメージ バージョン リソースの `location` パラメーターは Image Builder にはなく、その親の `image definition` から取得されます。 たとえば、イメージ定義が westus にあり、イメージ バージョンを eastus にレプリケートする場合、BLOB が westus にコピーされます。この BLOB から westus のイメージ バージョン リソースが作成され、eastus にレプリケートされます。 追加のレプリケーション時間を回避するには、`image definition` とイメージ テンプレートが同じ場所にあるようにします。
+
 
 ### <a name="distribute-vhd"></a>配布: VHD  
 VHD に出力することができます。 その後、VHD をコピーし、それを使って Azure MarketPlace に発行したり、Azure Stack で使ったりできます。  
@@ -608,8 +628,45 @@ az resource show \
 
 > [!NOTE]
 > VHD が作成されたら、できるだけ早く別の場所にそれをコピーします。 VHD は、イメージ テンプレートが Azure Image Builder サービスに送信されるときに作成される一時的なリソース グループのストレージ アカウントに格納されます。 イメージ テンプレートを削除すると、VHD が失われます。 
- 
+
+## <a name="image-template-operations"></a>イメージ テンプレートの操作
+
+### <a name="starting-an-image-build"></a>イメージ ビルドの開始
+ビルドを開始するには、イメージ テンプレート リソースに対して "Run" を呼び出す必要があります。`run` コマンドの例は次のとおりです。
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>イメージ ビルドの取り消し
+イメージのビルドを実行しているときに、正しくないと思われる場合、ユーザーの入力を待っている場合、または正常に完了しないと考えられる場合は、ビルドを取り消すことができます。
+
+ビルドはいつでも取り消すことができます。 配布フェーズが始まっている場合でも取り消しはできますが、完了していない可能性があるイメージをクリーンアップする必要があります。 cancel コマンドで取り消しの完了は待機されません。取り消しの進行状況については、状態[コマンド](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)を使用して `lastrunstatus.runstate` を監視してください。
+
+
+`cancel` コマンドの例を次に示します。
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 さまざまなシナリオの .json ファイルのサンプルが、[Azure Image Builder の GitHub](https://github.com/danielsollondon/azvmimagebuilder) にあります。
- 

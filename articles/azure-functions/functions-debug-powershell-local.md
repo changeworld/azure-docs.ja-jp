@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082989"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-この関数アプリは、[PowerShell のクイックスタート](functions-create-first-function-powershell.md)を完了したときに作成されるものと似ています。
+この関数アプリは、[PowerShell のクイックスタート](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)を完了したときに作成されるものと似ています。
 
 `run.ps1` の関数のコードは、次のようなスクリプトです。
 
@@ -95,7 +95,7 @@ Visual Studio Code で PowerShell 関数をデバッグするには、以下が�
 * [Visual Studio Code 用 Azure Functions 拡張機能](functions-create-first-function-vs-code.md)
 * [PowerShell Core 6.2 以降](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-これらの依存関係をインストールした後、既存の PowerShell 関数プロジェクトを読み込むか、[Azure で初めての PowerShell 関数を作成します](functions-create-first-function-powershell.md)。
+これらの依存関係をインストールした後、既存の PowerShell 関数プロジェクトを読み込むか、[Azure で初めての PowerShell 関数を作成します](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)。
 
 >[!NOTE]
 > プロジェクトに必要な構成ファイルがない場合は、追加を求めるメッセージが表示されます。

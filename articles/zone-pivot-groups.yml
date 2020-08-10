@@ -55,7 +55,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -295,7 +295,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -365,7 +365,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -385,7 +385,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -403,7 +403,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -468,10 +468,38 @@ groups:
     title: Kotlin (Android)
   - id: programming-language-swift
     title: Swift (iOS)
+- id: programming-languages-set-twenty-one
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+- id: programming-languages-set-twenty-two
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: aml-control-methods
+  title: Azure Machine Learning コントロール プレーン
+  prompt: Azure Machine Learning コントロール プレーンのインターフェイスを選択する
+  pivots:
+  - id: py-sdk
+    title: Python SDK
+  - id: cli
+    title: Azure CLI
 metadata:
-  ms.openlocfilehash: 1b217a4cece304da740c5402c8ae1665404a7d91
-  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+  ms.openlocfilehash: a16cb06637b777259e4e5115beb1299e8ed65a6b
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/07/2020
-  ms.locfileid: "86040539"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87543522"

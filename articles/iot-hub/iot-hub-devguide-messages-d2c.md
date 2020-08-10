@@ -8,12 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790519"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327720"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -53,7 +55,7 @@ IoT Hub では現在、次のエンドポイントがサポートされていま
 
 IoT Hub がメッセージをルーティングできるストレージ サービスとして、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) アカウントと [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2) アカウントの 2 つがあります。 Azure Data Lake Storage アカウントは、BLOB ストレージ上に構築された、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)に対応したストレージ アカウントです。 これらはどちらも、そのストレージとして BLOB を使用します。
 
-IoT Hub は JSON 形式だけでなく、[Apache Avro](https://avro.apache.org/) 形式での Azure Storage へのデータの書き込みをサポートしています。 既定値は AVRO です。 エンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。 既存のエンドポイントに対して形式を編集することはできません。 JSON エンコードを使用する場合は、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのどちらの値でも大文字と小文字は区別されません。 コンテンツのエンコードが設定されていない場合、IoT Hub では Base 64 エンコード形式でメッセージが書き込まれます。 エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0) を使用して選択できます。 次の図は、Azure portal でエンコード形式を選択する方法を示しています。
+IoT Hub は JSON 形式だけでなく、[Apache Avro](https://avro.apache.org/) 形式での Azure Storage へのデータの書き込みをサポートしています。 既定値は AVRO です。 エンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。 既存のエンドポイントに対して形式を編集することはできません。 JSON エンコードを使用する場合は、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのどちらの値でも大文字と小文字は区別されません。 コンテンツのエンコードが設定されていない場合、IoT Hub では Base 64 エンコード形式でメッセージが書き込まれます。 エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint) を使用して選択できます。 次の図は、Azure portal でエンコード形式を選択する方法を示しています。
 
 ![Blob Storage エンドポイントのエンコード](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 

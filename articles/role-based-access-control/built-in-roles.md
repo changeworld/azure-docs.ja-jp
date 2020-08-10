@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/06/2020
-ms.openlocfilehash: 24e964ec37184e38358b5c64eff05a8aa10a431d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/16/2020
+ms.openlocfilehash: c0a397ac71c7c466145357093b6c22f78e627d1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086812"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511587"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -88,6 +88,10 @@ ms.locfileid: "86086812"
 > | [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Azure Kubernetes Service 共同作成者ロール](#azure-kubernetes-service-contributor-role) | Azure Kubernetes Service クラスターへの読み取りおよび書き込みアクセスを許可します。 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
+> | [Azure Kubernetes Service RBAC 管理者](#azure-kubernetes-service-rbac-admin) | リソース クォータと名前空間の更新または削除を除き、クラスターおよび名前空間のすべてのリソースを管理できます。 | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
+> | [Azure Kubernetes Service RBAC クラスター管理者](#azure-kubernetes-service-rbac-cluster-admin) | クラスター内のすべてのリソースを管理できます。 | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
+> | [Azure Kubernetes Service RBAC 閲覧者](#azure-kubernetes-service-rbac-reader) | クラスターおよび名前空間内のすべてのリソース (シークレットを除く) を表示できます。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
+> | [Azure Kubernetes Service RBAC ライター](#azure-kubernetes-service-rbac-writer) | リソース クォータ、名前空間、ポッド セキュリティ ポリシー、証明書署名要求、(クラスター) ロール、(クラスター) ロール バインドを除く、クラスターおよび名前空間のすべてを更新できます。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **データベース** |  |  |
 > | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB オペレーター](#cosmos-db-operator) | Azure Cosmos DB アカウントを管理することができます。ただし、アカウント内のデータにはアクセスできません。 アカウント キーと接続文字列へのアクセスは禁止されます。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -155,7 +159,7 @@ ms.locfileid: "86086812"
 > | [Security Reader](#security-reader) | Security Center の表示アクセス許可。 推奨事項、警告、セキュリティ ポリシー、セキュリティの状態を閲覧できますが、変更することはできません。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
-> | [Lab Creator](#lab-creator) | Azure Lab アカウントで管理対象のラボを作成、管理、削除できます。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | [Lab Creator](#lab-creator) | Azure ラボ アカウントに新しいラボを作成できます。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **監視** |  |  |
 > | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 ユーザーに Application Insights スナップショット デバッガー ロールを与える場合は、そのロールをユーザーに直接付与する必要があります。 このロールは、カスタム ロールに追加されるときに認識されません。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
@@ -204,9 +208,8 @@ ms.locfileid: "86086812"
 リソースへのアクセス権の付与以外のすべてを管理できます。 [詳細情報](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 > | **NotActions** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/Delete | ロール、ポリシーの割り当て、ポリシーの定義、ポリシー セットの定義を削除します。 |
@@ -254,9 +257,8 @@ ms.locfileid: "86086812"
 リソースへのアクセスを含め、すべてを管理できます。 [詳細情報](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -294,9 +296,8 @@ ms.locfileid: "86086812"
 すべてを表示できますが、変更することはできません。 [詳細情報](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -334,9 +335,8 @@ ms.locfileid: "86086812"
 Azure リソースに対するユーザー アクセスを管理します。 [詳細情報](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/* | 承認の管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
@@ -381,9 +381,8 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/domainNames/* | 従来のコンピューティング ドメイン名の作成と管理 |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/* | 仮想マシンの作成と管理 |
@@ -453,9 +452,8 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 ポータルで仮想マシンを表示し、管理者としてログインします。[詳細](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | パブリック IP アドレス定義を取得します。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | ロード バランサー定義を取得します。 |
@@ -505,9 +503,8 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 [詳細情報](../virtual-machines/linux/tutorial-govern-resources.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | コンピューティング可用性セットの作成と管理 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | コンピューティングの場所の作成と管理 |
@@ -625,9 +622,8 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 ポータルで仮想マシンを表示し、通常のユーザーとしてログインします。 [詳細情報](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | パブリック IP アドレス定義を取得します。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | ロード バランサー定義を取得します。 |
@@ -678,9 +674,8 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -732,9 +727,8 @@ CDN エンドポイントを管理できますが、アクセス権を他のユ�
 CDN エンドポイントを表示できますが、変更はできません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -786,9 +780,8 @@ CDN エンドポイントを表示できますが、変更はできません。
 CDN プロファイルとそのエンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 [詳細情報](../cdn/cdn-app-dev-net.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -840,9 +833,8 @@ CDN プロファイルとそのエンドポイントを管理できますが、�
 CDN プロファイルとそのエンドポイントを表示できますが、変更はできません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -894,9 +886,8 @@ CDN プロファイルとそのエンドポイントを表示できますが、�
 従来のネットワークを管理できます。ただし、それらへのアクセスは含まれません。 [詳細情報](../virtual-network/virtual-network-manage-peering.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/* | 従来のネットワークの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
@@ -946,9 +937,8 @@ CDN プロファイルとそのエンドポイントを表示できますが、�
 Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 [詳細情報](../dns/dns-protect-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/dnsZones/* | DNS ゾーンとレコードの作成と管理 |
@@ -998,9 +988,8 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 ネットワークを管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/* | ネットワークの作成と管理 |
@@ -1050,9 +1039,8 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 プライベート DNS ゾーンのリソースを管理できますが、リンク先の仮想ネットワークを管理することはできません。 [詳細情報](../dns/dns-protect-private-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -1108,9 +1096,8 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/trafficManagerProfiles/* |  |
@@ -1163,9 +1150,8 @@ Traffic Manager プロファイルを管理できますが、それにアクセ�
 Avere vFXT クラスターを作成および管理できます。 [詳細情報](../avere-vfxt/avere-vfxt-deploy-plan.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/*/read |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
@@ -1247,9 +1233,8 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 クラスターを管理するために Avere vFXT クラスターによって使用されます。[詳細](../avere-vfxt/avere-vfxt-manage-cluster.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | 仮想マシンのプロパティを取得します。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/write | ネットワーク インターフェイスを作成するか、既存のネットワーク インターフェイスを更新します。  |
@@ -1313,9 +1298,8 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません。[詳細](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
@@ -1433,9 +1417,8 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除きます)。[詳細](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
@@ -1583,9 +1566,8 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 バックアップ サービスを表示できますが、変更を行うことはできません。[詳細](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
@@ -1697,9 +1679,8 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 従来のストレージ アカウントを管理できますが、アクセスすることはできません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/* | ストレージ アカウントの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
@@ -1749,9 +1730,8 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 従来のストレージ アカウント キー オペレーターは、従来のストレージ アカウントでのキーの一覧表示と再生成を行うことができます。[詳細](../key-vault/secrets/overview-storage-keys.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listkeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/regeneratekey/action | ストレージ アカウントの既存のアクセス キーを再生成します。 |
 > | **NotActions** |  |
@@ -1791,9 +1771,8 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 [詳細情報](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -1841,9 +1820,8 @@ Data Box サービスですべてを管理できます (他のユーザーに対
 Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 [詳細情報](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/*/read |  |
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/jobs/listsecrets/action |  |
@@ -1899,9 +1877,8 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 独自のジョブを送信、監視、管理できますが、Data Lake Analytics アカウントを作成または削除することはできません。 [詳細情報](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.BigAnalytics/accounts/* |  |
 > | [Microsoft.DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/* |  |
@@ -1981,9 +1958,8 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/ListAccountSas/action | 指定されたストレージ アカウントのアカウント SAS トークンを返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
@@ -2025,9 +2001,8 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 [詳細情報](../storage/common/storage-auth-aad.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
@@ -2081,9 +2056,8 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 ストレージ アカウント アクセス キーを一覧表示および再生成できます。 [詳細情報](../storage/common/storage-account-keys-manage.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/regeneratekey/action | 指定されたストレージ アカウントのアクセス キーを再生成します。 |
 > | **NotActions** |  |
@@ -2123,9 +2097,8 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/delete | コンテナーを削除します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | コンテナーのメタデータまたはプロパティを変更します。 |
@@ -2177,9 +2150,8 @@ Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を
 Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/* | コンテナーのフル アクセス許可。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
@@ -2221,9 +2193,8 @@ Azure Storage Blob コンテナーとデータに対するフル アクセス (P
 Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
@@ -2265,9 +2236,8 @@ Azure Storage コンテナーと BLOB の読み取りと一覧表示を行いま
 Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 [詳細情報](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2305,9 +2275,8 @@ Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共�
 Azure ファイル共有のファイルまたはディレクトリに対する読み取り、書き込み、削除のアクセス権を許可します。 このロールに相当する機能は Windows ファイル サーバーに組み込まれていません。 [詳細情報](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2349,9 +2318,8 @@ Azure ファイル共有のファイルまたはディレクトリに対する�
 Azure ファイル共有のファイルまたはディレクトリに対する ACL の読み取り、書き込み、削除、変更を許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の変更に相当します。 [詳細情報](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2395,9 +2363,8 @@ Azure ファイル共有のファイルまたはディレクトリに対する A
 Azure ファイル共有のファイルまたはディレクトリに対する読み取りアクセスを許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の読み取りに相当します。 [詳細情報](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2435,9 +2402,8 @@ Azure ファイル共有のファイルまたはディレクトリに対する�
 Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | キューを削除します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/write | キューのメタデータまたはプロパティを変更します。 |
@@ -2485,9 +2451,8 @@ Azure Storage キューおよびキュー メッセージの読み取り、書�
 Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2527,9 +2492,8 @@ Azure Storage キューからのメッセージのピーク、取得、削除を
 Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2567,9 +2531,8 @@ Azure Storage キューにメッセージを追加します。 特定のデー�
 Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2612,9 +2575,8 @@ Azure Storage キューおよびキュー メッセージの読み取りと一�
 Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2652,9 +2614,8 @@ Azure Maps アカウントからマップ関連データを読み取るための
 Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 [詳細情報](../search/search-security-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -2704,9 +2665,8 @@ Search サービスを管理できます。ただし、それらへのアクセ�
 Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -2758,9 +2718,8 @@ Web サイトの Web プランを管理できます。ただし、それらへ�
 Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/* | Insights コンポーネントの作成と管理 |
@@ -2823,9 +2782,8 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 acr の削除 [詳細](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/artifacts/delete | コンテナー レジストリの成果物を削除します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2863,9 +2821,8 @@ acr の削除 [詳細](../container-registry/container-registry-roles.md)
 acr イメージ署名者 [詳細](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/sign/write | コンテナー レジストリのコンテンツの信頼メタデータをプッシュ/プルします。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2903,9 +2860,8 @@ acr イメージ署名者 [詳細](../container-registry/container-registry-role
 acr のプル [詳細](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2943,9 +2899,8 @@ acr のプル [詳細](../container-registry/container-registry-roles.md)
 acr のプッシュ [詳細](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/push/write | コンテナー レジストリにイメージをプッシュするか書き込みます。 |
 > | **NotActions** |  |
@@ -2985,9 +2940,8 @@ acr のプッシュ [詳細](../container-registry/container-registry-roles.md)
 ACR 検査データ閲覧者
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -3025,9 +2979,8 @@ ACR 検査データ閲覧者
 ACR 検査データ作成者
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/write | 検疫済みイメージの検疫状態を書き込むか変更します |
 > | **NotActions** |  |
@@ -3067,9 +3020,8 @@ ACR 検査データ作成者
 クラスター管理者の資格情報アクションを一覧表示します。 [詳細情報](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/action | 管理対象クラスターの clusterAdmin 資格情報を一覧表示します。 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | 資格情報の一覧の取得を使用し、ロール名を指定してマネージド クラスターのアクセス プロファイルを取得します。 |
 > | **NotActions** |  |
@@ -3109,9 +3061,8 @@ ACR 検査データ作成者
 クラスター ユーザーの資格情報アクションを一覧表示します。 [詳細情報](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -3149,9 +3100,8 @@ ACR 検査データ作成者
 Azure Kubernetes Service クラスターへの読み取りおよび書き込みアクセスを許可します。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | マネージド クラスターを取得します。 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | 新しいマネージド クラスターを作成するか、既存のものを更新します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -3188,6 +3138,254 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 }
 ```
 
+### <a name="azure-kubernetes-service-rbac-admin"></a>Azure Kubernetes Service RBAC 管理者
+
+リソース クォータと名前空間の更新または削除を除き、クラスターおよび名前空間のすべてのリソースを管理できます。 [詳細情報](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | デプロイを作成または更新します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | サブスクリプションの一覧を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | **NotDataActions** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | resourcequotas を書き込みます |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/delete | resourcequotas を削除します |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | namespaces を書き込みます |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/delete | 名前空間を削除します |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources under cluster/namespace, except update or delete resource quotas and namespaces.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3498e952-d568-435e-9b2c-8d77e338d7f7",
+  "name": "3498e952-d568-435e-9b2c-8d77e338d7f7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/delete",
+        "Microsoft.ContainerService/managedClusters/namespaces/write",
+        "Microsoft.ContainerService/managedClusters/namespaces/delete"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>Azure Kubernetes Service RBAC クラスター管理者
+
+クラスター内のすべてのリソースを管理できます。 [詳細情報](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | デプロイを作成または更新します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | サブスクリプションの一覧を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources in the cluster.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b",
+  "name": "b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Cluster Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-reader"></a>Azure Kubernetes Service RBAC 閲覧者
+
+クラスターおよび名前空間内のすべてのリソース (シークレットを除く) を表示できます。 [詳細情報](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | デプロイを作成または更新します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | サブスクリプションの一覧を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
+> | **NotDataActions** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/secrets/* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you view all resources in cluster/namespace, except secrets.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7f6c6a51-bcf8-42ba-9220-52d62157d7db",
+  "name": "7f6c6a51-bcf8-42ba-9220-52d62157d7db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*/read"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
+        "Microsoft.ContainerService/managedClusters/secrets/*"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-writer"></a>Azure Kubernetes Service RBAC ライター
+
+リソース クォータ、名前空間、ポッド セキュリティ ポリシー、証明書署名要求、(クラスター) ロール、(クラスター) ロール バインドを除く、クラスターおよび名前空間のすべてを更新できます。 [詳細情報](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | デプロイを作成または更新します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | サブスクリプションの一覧を取得します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/write |  |
+> | **NotDataActions** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | namespaces を書き込みます |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | resourcequotas を書き込みます |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/certificates.k8s.io/certificatesigningrequests/write | certificatesigningrequests を書き込みます |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/policy/podsecuritypolicies/write | podsecuritypolicies を書き込みます |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you update everything in cluster/namespace, except resource quotas, namespaces, pod security policies, certificate signing requests, (cluster)roles and (cluster)role bindings.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
+  "name": "a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*/read",
+        "Microsoft.ContainerService/managedClusters/*/write"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
+        "Microsoft.ContainerService/managedClusters/namespaces/write",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
+        "Microsoft.ContainerService/managedClusters/certificates.k8s.io/certificatesigningrequests/write",
+        "Microsoft.ContainerService/managedClusters/policy/podsecuritypolicies/write"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Writer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="databases"></a>データベース
 
 
@@ -3196,9 +3394,8 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 [詳細情報](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/*/read | 任意のコレクションの読み取り |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/readonlykeys/action | データベース アカウントの読み取り専用キーを読み取ります。 |
@@ -3248,9 +3445,8 @@ Cosmos DB アカウントのデータを読み取ることができます。 Azu
 Azure Cosmos DB アカウントを管理することができます。ただし、アカウント内のデータにはアクセスできません。 アカウント キーと接続文字列へのアクセスは禁止されます。 [詳細情報](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
@@ -3310,9 +3506,8 @@ Azure Cosmos DB アカウントを管理することができます。ただし�
 Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます。[詳細](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/backup/action | バックアップを構成するための要求を送信します |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/restore/action | 復元要求を送信します |
 > | **NotActions** |  |
@@ -3352,9 +3547,8 @@ Cosmos DB データベースまたはアカウントのコンテナーの復元�
 Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 [詳細情報](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* | Azure Cosmos DB アカウントの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
@@ -3406,10 +3600,10 @@ Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以�
 Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Cache](resource-provider-operations.md#microsoftcache)/register/action | "Microsoft.Cache" リソース プロバイダーをサブスクリプションに登録します。 |
 > | [Microsoft.Cache](resource-provider-operations.md#microsoftcache)/redis/* | Redis キャッシュの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -3435,6 +3629,7 @@ Redis Caches を管理できます。ただし、それらへのアクセスは�
     {
       "actions": [
         "Microsoft.Authorization/*/read",
+        "Microsoft.Cache/register/action",
         "Microsoft.Cache/redis/*",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.ResourceHealth/availabilityStatuses/read",
@@ -3458,9 +3653,8 @@ Redis Caches を管理できます。ただし、それらへのアクセスは�
 SQL データベースを管理できます。ただし、それらへのアクセスは含まれません。 また、セキュリティ関連のポリシーまたは親 SQL Server を管理することはできません。 [詳細情報](../data-share/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -3566,9 +3760,8 @@ SQL データベースを管理できます。ただし、それらへのアク�
 SQL マネージド インスタンスと必要なネットワーク構成を管理することができますが、他のユーザーにアクセス権を付与することはできません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -3634,9 +3827,8 @@ SQL マネージド インスタンスと必要なネットワーク構成を管
 SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 [詳細情報](../sql-database/sql-database-advanced-data-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
@@ -3758,9 +3950,8 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 [詳細情報](../sql-database/sql-database-aad-authentication-configure.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -3875,9 +4066,8 @@ SQL サーバーとデータベースを管理できます。ただし、それ�
 Azure Event Hubs リソースへのフル アクセスを許可します。 [詳細情報](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -3917,9 +4107,8 @@ Azure Event Hubs リソースへのフル アクセスを許可します。 [詳
 Azure Event Hubs リソースへの受信アクセスを許可します。 [詳細情報](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/consumergroups/read |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -3959,9 +4148,8 @@ Azure Event Hubs リソースへの受信アクセスを許可します。 [詳�
 Azure Event Hubs リソースへの送信アクセスを許可します。 [詳細情報](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/read |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4001,9 +4189,8 @@ Azure Event Hubs リソースへの送信アクセスを許可します。 [詳�
 データ ファクトリまたデータ ファクトリ内の子リソースを作成し管理します。 [詳細情報](../data-factory/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.DataFactory](resource-provider-operations.md#microsoftdatafactory)/dataFactories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
 > | [Microsoft.DataFactory](resource-provider-operations.md#microsoftdatafactory)/factories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
@@ -4057,9 +4244,8 @@ Azure Event Hubs リソースへの送信アクセスを許可します。 [詳�
 分析データを削除できます。[詳細](../azure-monitor/platform/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/*/read |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/purge/action | Application Insights からデータを削除します。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Log Analytics のデータの表示 |
@@ -4103,9 +4289,8 @@ Azure Event Hubs リソースへの送信アクセスを許可します。 [詳�
 HDInsight クラスター構成の読み取りと変更を実行できます。 [詳細情報](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.HDInsight](resource-provider-operations.md#microsofthdinsight)/*/read |  |
 > | [Microsoft.HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/getGatewaySettings/action | HDInsight クラスター向けのアプリケーションを取得します |
 > | [Microsoft.HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/updateGatewaySettings/action | HDInsight クラスターのゲートウェイ設定を更新します |
@@ -4159,9 +4344,8 @@ HDInsight クラスター構成の読み取りと変更を実行できます。 
 HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、および削除を行うことができます。[詳細](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/*/read |  |
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/domainServices/*/read |  |
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/domainServices/oucontainer/* |  |
@@ -4203,9 +4387,8 @@ HDInsight Enterprise セキュリティ パッケージに必要なドメイン 
 Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 [詳細情報](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/extensions/* |  |
@@ -4269,9 +4452,8 @@ Log Analytics 共同作成者は、すべての監視データを読み取り、
 Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 [詳細情報](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 検索クエリを実行します。 |
@@ -4320,9 +4502,8 @@ Log Analytics Reader は、すべての監視データの表示と検索、お�
 ブロックチェーン メンバー ノードにアクセスできるようにします。[詳細](../blockchain/service/configure-aad.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/read | 既存のブロックチェーン メンバーのトランザクション ノードを取得または一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4365,9 +4546,8 @@ Log Analytics Reader は、すべての監視データの表示と検索、お�
 Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 [詳細情報](../cognitive-services/cognitive-services-virtual-networks.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/features/read | サブスクリプションの機能を取得します。 |
@@ -4437,9 +4617,8 @@ Cognitive Services のキーの作成、読み取り、更新、削除、管理�
 Cognitive Services データを読み取ります。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4477,9 +4656,8 @@ Cognitive Services データを読み取ります。
 Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 [詳細情報](../cognitive-services/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | キーを一覧表示します。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | クラシック メトリック アラートを読み取ります |
@@ -4546,9 +4724,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 ユーザーに、Azure Remote Rendering の変換、セッション管理、レンダリング、および診断の機能を提供します。[詳細](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4600,9 +4777,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 ユーザーに、Azure Remote Rendering でのセッション管理、レンダリング、および診断の機能を提供します。 [詳細情報](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4648,9 +4824,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 アカウントで空間アンカーを管理できますが、削除することはできません。[詳細](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4698,9 +4873,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 アカウントで空間アンカーを管理できます。削除も可能です。[詳細](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4750,9 +4924,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 アカウントで空間アンカーのプロパティを検索して読み取ることができます。[詳細](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4799,9 +4972,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 サービスと API を管理できます。[詳細](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/* | API Management サービスの作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
@@ -4851,9 +5023,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 サービスを管理できますが、API は対象外です。[詳細](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | API Management サービス インスタンスの読み取り |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/backup/action | ユーザーが指定したストレージ アカウント内の指定されたコンテナーに API Management サービスをバックアップします。 |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/delete | API Management サービス インスタンスを削除します。 |
@@ -4921,9 +5092,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 サービスと API への読み取り専用アクセスです。[詳細](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | API Management サービス インスタンスの読み取り |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/read | API Management サービス インスタンスのメタデータの読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
@@ -4977,9 +5147,8 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 App Configuration データへのフル アクセスを許可します。 [詳細情報](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -5021,9 +5190,8 @@ App Configuration データへのフル アクセスを許可します。 [詳�
 App Configuration データへの読み取りアクセスを許可します。 [詳細情報](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -5061,9 +5229,8 @@ App Configuration データへの読み取りアクセスを許可します。 [
 Azure Service Bus リソースへのフル アクセスを許可します。 [詳細情報](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -5103,9 +5270,8 @@ Azure Service Bus リソースへのフル アクセスを許可します。 [�
 Azure Service Bus リソースへの受信アクセスを許可します。 [詳細情報](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/queues/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
@@ -5149,9 +5315,8 @@ Azure Service Bus リソースへの受信アクセスを許可します。 [詳
 Azure Service Bus リソースへの送信アクセスを許可します。 [詳細情報](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/queues/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
@@ -5195,9 +5360,8 @@ Azure Service Bus リソースへの送信アクセスを許可します。 [詳
 Azure Stack の登録を管理できます。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | Azure Stack Edge のサブスクリプションのプロパティを取得します。 |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | Azure Stack Marketplace の製品のプロパティを取得します |
@@ -5241,9 +5405,8 @@ Azure Stack の登録を管理できます。
 EventGrid のイベント サブスクリプション操作を管理できます。 [詳細情報](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | グローバル イベント サブスクリプションをトピックの種類ごとに一覧表示します |
@@ -5297,9 +5460,8 @@ EventGrid のイベント サブスクリプション操作を管理できます
 EventGrid のイベント サブスクリプションを読み取ることができます。 [詳細情報](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | eventSubscription を削除します。 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | グローバル イベント サブスクリプションをトピックの種類ごとに一覧表示します |
@@ -5347,9 +5509,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 ユーザーまたはプリンシパルに FHIR データへのフル アクセスを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -5387,9 +5548,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 ユーザーまたはプリンシパルに FHIR データの読み取りとエクスポートを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -5429,9 +5589,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 ユーザーまたはプリンシパルに FHIR データの読み取りを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -5469,9 +5628,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 ユーザーまたはプリンシパルに FHIR データの読み取りと書き込みを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -5511,9 +5669,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 統合サービス環境を管理できますが、それらにアクセスすることはできません。 [詳細情報](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/* |  |
@@ -5555,9 +5712,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 開発者が統合サービス環境でワークフロー、統合アカウント、および API 接続を作成および更新することを許可します。 [詳細情報](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/read | 統合サービス環境を読み取ります。 |
@@ -5601,9 +5757,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.IntelligentSystems/accounts/* | Intelligent Systems アカウントの作成と管理 |
@@ -5653,9 +5808,8 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 ロジック アプリを管理できますが、アクセス権を変更することはできません。 [詳細情報](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/read | 特定のアカウントのストレージ アカウントを返します。 |
@@ -5733,9 +5887,8 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。 [詳細情報](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/*/read | Insights のアラート ルールを読み取ります |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/*/read |  |
@@ -5808,9 +5961,8 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 ユーザー割り当て ID の作成、読み取り、更新、削除を行います。[詳細](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/read | 既存のユーザー割り当て ID を取得します。 |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/write | 新しいユーザー割り当て ID を作成するか、既存のユーザー割り当て ID に関連付けられているタグを更新します。 |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/delete | 既存のユーザー割り当て ID を削除します。 |
@@ -5862,9 +6014,8 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 ユーザー割り当て ID の読み取りと割り当てを行います。[詳細](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/read |  |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/assign/action |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
@@ -5917,9 +6068,8 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Log Analytics のデータの表示 |
@@ -5983,9 +6133,8 @@ Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
 Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
@@ -6053,9 +6202,8 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
 Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
@@ -6127,9 +6275,8 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 キー コンテナーを管理できますが、アクセスすることはできません。 [詳細情報](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/* |  |
@@ -6181,9 +6328,8 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 Security Center の表示および更新のアクセス許可。 セキュリティ閲覧者と同じアクセス許可があり、セキュリティ ポリシーの更新、アラートと推奨事項の無視も可能になります。 [詳細情報](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | ポリシーの割り当ての作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | ポリシー定義の作成と管理 |
@@ -6241,9 +6387,8 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 評価を Security Center にプッシュできます
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/assessments/write | サブスクリプションで利用可能なセキュリティ評価を作成または更新します |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -6281,9 +6426,8 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 これは、レガシ ロールです。 代わりに Security Admin を使用してください。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/*/read | 従来の仮想マシンの構成情報の読み取り |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/*/write | 従来の仮想マシンの構成の書き込み |
@@ -6339,9 +6483,8 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 Security Center の表示アクセス許可。 推奨事項、警告、セキュリティ ポリシー、セキュリティの状態を閲覧できますが、変更することはできません。 [詳細情報](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Log Analytics のデータの表示 |
@@ -6396,9 +6539,8 @@ Security Center の表示アクセス許可。 推奨事項、警告、セキュ
 Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 [詳細情報](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/read | 可用性セットのプロパティを取得します。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read | 仮想マシンのプロパティ (VM サイズ、実行時の状態、VM 拡張機能など) の読み取り |
@@ -6497,17 +6639,14 @@ Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャッ�
 
 ### <a name="lab-creator"></a>Lab Creator
 
-Azure Lab アカウントで管理対象のラボを作成、管理、削除できます。 [詳細情報](../lab-services/add-lab-creator.md)
+Azure ラボ アカウントに新しいラボを作成できます。 [詳細情報](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/*/read |  |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/createLab/action | ラボ アカウントにラボを作成します。 |
-> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/sizes/getRegionalAvailability/action |  |
-> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRegionalAvailability/action | ラボ アカウントの下で構成されたサイズ カテゴリ別のリージョン別の提供状況を取得します。 |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/action | ラボ アカウントのサイズ、地域、およびオペレーティング システムの組み合わせの価格と可用性を取得します。 |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/action | このサブスクリプションのコアに関する制限と使用状況が取得されます |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -6524,7 +6663,7 @@ Azure Lab アカウントで管理対象のラボを作成、管理、削除で�
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you create, manage, delete your managed labs under your Azure Lab Accounts.",
+  "description": "Lets you create new labs under your Azure Lab Accounts.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b97fb8bc-a8b2-4522-a38b-dd33c7e65ead",
   "name": "b97fb8bc-a8b2-4522-a38b-dd33c7e65ead",
   "permissions": [
@@ -6533,8 +6672,6 @@ Azure Lab アカウントで管理対象のラボを作成、管理、削除で�
         "Microsoft.Authorization/*/read",
         "Microsoft.LabServices/labAccounts/*/read",
         "Microsoft.LabServices/labAccounts/createLab/action",
-        "Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action",
-        "Microsoft.LabServices/labAccounts/getRegionalAvailability/action",
         "Microsoft.LabServices/labAccounts/getPricingAndAvailability/action",
         "Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
@@ -6559,9 +6696,8 @@ Azure Lab アカウントで管理対象のラボを作成、管理、削除で�
 Application Insights コンポーネントを管理できます。[詳細](../azure-monitor/app/resources-roles-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 従来のアラート ルールの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | 新しいアラート ルールの作成と管理 |
@@ -6615,9 +6751,8 @@ Application Insights コンポーネントを管理できます。[詳細](../az
 Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 ユーザーに Application Insights スナップショット デバッガー ロールを与える場合は、そのロールをユーザーに直接付与する必要があります。 このロールは、カスタム ロールに追加されるときに認識されません。 [詳細情報](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/*/read |  |
@@ -6665,9 +6800,8 @@ Application Insights スナップショット デバッガーで収集された�
 すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 [詳細情報](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/alerts/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/alertsSummary/* |  |
@@ -6765,9 +6899,8 @@ Application Insights スナップショット デバッガーで収集された�
 Azure リソースに対するメトリックの公開を有効にします。[詳細](../azure-monitor/insights/container-insights-update-metrics.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | Microsoft Insights プロバイダーを登録します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -6811,9 +6944,8 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 [詳細情報](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 検索クエリを実行します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
@@ -6855,9 +6987,8 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 共有ブックを保存できます。 [詳細情報](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/write | ブックを作成または更新します |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/delete | ブックを削除します |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | ブックを読み取ります |
@@ -6899,9 +7030,8 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 ブックの読み取りが可能です。 [詳細情報](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [microsoft.insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | ブックを読み取ります |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -6942,9 +7072,8 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 Automation Runbook を使用してジョブを作成および管理します。 [詳細情報](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/read | Hybrid Runbook Worker リソースを読み取ります。 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobs/read | Azure Automation ジョブを取得します。 |
@@ -7006,9 +7135,8 @@ Automation Runbook を使用してジョブを作成および管理します。 
 Automation オペレーターは、ジョブを開始、停止、中断、および再開できます。[詳細](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/read | Hybrid Runbook Worker リソースを読み取ります。 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobs/read | Azure Automation ジョブを取得します。 |
@@ -7086,9 +7214,8 @@ Automation オペレーターは、ジョブを開始、停止、中断、およ
 Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 [詳細情報](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/runbooks/read | Azure Automation Runbook を取得します。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
@@ -7136,9 +7263,8 @@ Runbook のジョブを作成する方法については、Runbook のプロパ�
 Azure Connected Machine をオンボードできます。 [詳細情報](../azure-arc/servers/onboard-service-principal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Azure Arc マシンを読み取ります |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Azure Arc マシンが書き込まれます |
 > | [Microsoft.GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/read | ゲスト構成の割り当てを取得します。 |
@@ -7180,9 +7306,8 @@ Azure Connected Machine をオンボードできます。 [詳細情報](../azur
 Azure Connected Machine の読み取り、書き込み、削除、再オンボードを実行できます。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Azure Arc マシンを読み取ります |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Azure Arc マシンが書き込まれます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Azure Arc マシンが削除されます |
@@ -7230,9 +7355,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 課金データへの読み取りアクセスを許可します。[詳細](../cost-management-billing/manage/manage-billing-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/*/read | 課金情報の読み取り |
 > | [Microsoft.Commerce](resource-provider-operations.md#microsoftcommerce)/*/read |  |
@@ -7282,9 +7406,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 ブループリントの定義を管理できますが、それらを割り当てることはできません。 [詳細情報](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprints/* | ブループリントの定義またはブループリント アーティファクトを作成および管理します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -7330,9 +7453,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 既存の発行済みのブループリントを割り当てることはできますが、ブループリントの新規作成はできません。 これは、ユーザーが割り当てたマネージド ID を使用して割り当てが行われた場合にのみ機能することに注意してください。 [詳細情報](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/* | ブループリント割り当てを作成および管理します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -7378,9 +7500,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 コストを表示し、コストの構成 (予算、エクスポートなど) を管理できます。[詳細](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/* |  |
 > | [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement)/* |  |
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/billingPeriods/read |  |
@@ -7434,9 +7555,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 コストのデータと構成 (予算、エクスポートなど) を表示できます。[詳細](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/*/read |  |
 > | [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/read |  |
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/billingPeriods/read |  |
@@ -7490,9 +7610,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 ユーザーに、階層設定の編集と削除を許可します
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/write | 管理グループ階層の設定が作成または更新されます。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/delete | 管理グループ階層の設定が削除されます。 |
 > | **NotActions** |  |
@@ -7532,9 +7651,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 マネージド アプリケーション リソースの作成を許可します。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/applications/* |  |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/register/action | ソリューションに登録します。 |
@@ -7580,9 +7698,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/applications/read | アプリケーションの一覧を取得します。 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/*/action |  |
@@ -7624,9 +7741,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/jitRequests/* |  |
@@ -7668,9 +7784,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 マネージド サービスの登録割り当て削除ロールを使用すると、テナント管理ユーザーは、テナントに割り当てられている登録割り当てを削除できます。 [詳細情報](../lighthouse/how-to/remove-delegation.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/read | マネージド サービスの登録割り当ての一覧を取得します。 |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/delete | マネージド サービスの登録割り当てを削除します。 |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/read | リソースの操作の状態を読み取ります。 |
@@ -7712,14 +7827,14 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 管理グループ共同作成者ロールです。[詳細](../governance/management-groups/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/delete | 管理グループを削除します。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/delete | 管理グループからサブスクリプションの関連付けを解除します。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/write | 既存のサブスクリプションと管理グループを関連付けます。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/write | 管理グループを作成または更新します。 |
+> | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 指定された管理グループのサブスクリプションを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7742,7 +7857,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
         "Microsoft.Management/managementGroups/read",
         "Microsoft.Management/managementGroups/subscriptions/delete",
         "Microsoft.Management/managementGroups/subscriptions/write",
-        "Microsoft.Management/managementGroups/write"
+        "Microsoft.Management/managementGroups/write",
+        "Microsoft.Management/managementGroups/subscriptions/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7760,10 +7876,10 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 管理グループ閲覧者ロール
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
+> | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 指定された管理グループのサブスクリプションを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7782,7 +7898,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
   "permissions": [
     {
       "actions": [
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Management/managementGroups/subscriptions/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7800,9 +7917,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -7852,9 +7968,8 @@ New Relic Application Performance Management のアカウントとアプリケ�
 リソース ポリシーに対する読み取りアクセスとリソース コンポーネント ポリシー イベントへの書き込みアクセスを許可します。 [詳細情報](../governance/policy/concepts/policy-for-kubernetes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/read | ポリシー割り当てに関する情報を取得します。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/read | ポリシー定義に関する情報を取得します。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/read | ポリシー セットの定義に関する情報を取得します。 |
@@ -7900,9 +8015,8 @@ New Relic Application Performance Management のアカウントとアプリケ�
 リソース ポリシーの作成または変更、サポート チケットの作成、リソースまたは階層の読み取りを行う権限を持つユーザー。 [詳細情報](../governance/policy/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | ポリシーの割り当ての作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | ポリシー定義の作成と管理 |
@@ -7950,9 +8064,8 @@ New Relic Application Performance Management のアカウントとアプリケ�
 資格情報コンテナーの作成とロールの割り当て以外の Site Recovery サービスを管理できます。[詳細](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
@@ -8044,9 +8157,8 @@ New Relic Application Performance Management のアカウントとアプリケ�
 フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作は実行できません。[詳細](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
@@ -8198,9 +8310,8 @@ New Relic Application Performance Management のアカウントとアプリケ�
 Site Recovery の状態を表示できますが、その他の管理操作は実行できません。[詳細](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | "拡張情報の取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトの拡張情報を取得します。 |
@@ -8298,9 +8409,8 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 サポート リクエストを作成して管理できます。[詳細](../azure-portal/supportability/how-to-create-azure-support-request.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
@@ -8342,9 +8452,8 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 エンティティ自体へのアクセスを提供することなく、エンティティのタグを管理できます。 [詳細情報](../azure-resource-manager/management/tag-resources.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/resources/read | リソース グループのリソースを取得します。 |
@@ -8399,9 +8508,8 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 BizTalk Services を管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.BizTalkServices/BizTalk/* | BizTalk Services の作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
@@ -8451,9 +8559,8 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 ユーザーにアプリケーション グループ内のアプリケーションを使用することを許可します。 [詳細情報](../virtual-desktop/delegated-access-virtual-desktop.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | "*なし*" |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -8491,9 +8598,8 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | アクション | 説明 |
 > | --- | --- |
-> | **アクション** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |

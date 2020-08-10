@@ -3,12 +3,12 @@ title: Event Grid ソースとしての Azure Blob Storage
 description: Blob Storage イベントに関して Azure Event Grid に用意されているプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113753"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371279"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 
@@ -23,6 +23,9 @@ ms.locfileid: "86113753"
 ### <a name="list-of-events-for-blob-rest-apis"></a>BLOB REST API のイベント一覧
 
 これらのイベントは、クライアントが BLOB REST API を呼び出して BLOB を作成、置換、または削除するときにトリガーされます。
+
+> [!NOTE]
+> 非階層型名前空間に対応するアカウントに対して dfs エンドポイント *`(abfss://URI) `* を使用すると、イベントが生成されません。 このようなアカウントの場合、イベントが生成されるのは、BLOB エンドポイント *`(wasb:// URI)`* に限られます。
 
  |イベント名 |説明|
  |----------|-----------|
@@ -288,7 +291,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -301,7 +304,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | api | string | イベントのトリガーとなった操作。 |
 | clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |

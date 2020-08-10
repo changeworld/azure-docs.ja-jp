@@ -5,12 +5,12 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040519"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 
@@ -102,7 +102,7 @@ ARM テンプレート パラメーター ファイルを使用すると、環�
 
 このアクションにより、新しいパラメーター ファイルが作成され、作成元のテンプレートにマップされます。 テンプレートを選択しているときに、Visual Studio Code ステータス バーで現在のテンプレートまたはパラメーターのファイル マッピングを表示および変更できます。
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![Visual Studio Code ステータス バーにテンプレートまたはパラメーターのファイル マッピングを示す画像。](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 パラメーター ファイルがテンプレートにマップされたので、拡張機能がテンプレートとパラメーター ファイルの両方を同時に検証します。 この検証を実際に確認するには、パラメーター ファイルの `storageAccountName` パラメーターに 2 文字の値を追加し、ファイルを保存します。
 

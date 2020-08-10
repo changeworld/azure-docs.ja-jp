@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077846"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure Storage 監視データのリファレンス
 
@@ -46,6 +46,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 | ------------------- | ----------------- |
 | BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 <br/> 寸法: **BlobType**、および **BlobTier** ([定義](#metrics-dimensions)) |
 | BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 <br/> 寸法: **BlobType**、および **BlobTier** ([定義](#metrics-dimensions)) |
+| BlobProvisionedSize | ストレージ アカウントでプロビジョニングされたストレージの総量。 このメトリックは、Premium Storage アカウントのみに適用されます。 <br/><br/> 単位: バイト <br/> 集計の種類:Average |
 | ContainerCount    | ストレージ アカウントのコンテナーの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
 | IndexCapacity     | ADLS Gen2 階層構造のインデックスで使用される記憶域の量 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 
@@ -78,6 +79,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 | FileCapacity | ストレージ アカウントによって使用されている File ストレージの量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 | FileCount   | ストレージ アカウントのファイルの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
 | FileShareCount | ストレージ アカウントのファイル共有の数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
+| FileShareProvisionedIOPS | ファイル共有でプロビジョニングされた IOPS の数。 このメトリックは、Premium ファイル ストレージにのみ適用されます。 <br/><br/> 単位: バイト <br/> 集計の種類:Average |
 
 ### <a name="transaction-metrics"></a>トランザクション メトリック
 

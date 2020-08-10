@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 5c898721102177a0d796db3b8b0f194c4ec3efae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed1341a323d947441fa2cb3c239fcdf99c447a97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84793689"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494490"
 ---
 SQL Server や Oracle などの一部のデータベース ワークロードでは、メモリ、記憶域、I/O 帯域幅は大量に必要ですが、コアの数は多くなくてもかまいません。 多くのデータベース ワークロードは、CPU 集中型ではありません。 Azure で提供される一部の VM サイズでは、VM の vCPU の数を制限してフトウェア ライセンスのコストを抑えながら、同じメモリ、記憶域、I/O 帯域幅を維持できます。
 
@@ -74,3 +74,5 @@ SQL Server または Oracle のライセンス料金は新しい vCPU の数に�
 | Standard_DS13-2_v2  | 2    | DS13_v2 と同じ |
 | Standard_DS14-8_v2  | 8    | DS14_v2 と同じ |
 | Standard_DS14-4_v2  | 4    | DS14_v2 と同じ |
+| Standard_M416-208s_v2 | 208    | M416s_v2 と同じ|
+| Standard_M416-208ms_v2 | 208    | M416ms_v2 と同じ |

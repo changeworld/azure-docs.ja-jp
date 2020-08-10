@@ -4,15 +4,15 @@ description: スケジュールと回収を含む、支払いポリシーに関�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118292"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324830"
 ---
 # <a name="payout-policy-details"></a>支払いポリシーの詳細
 

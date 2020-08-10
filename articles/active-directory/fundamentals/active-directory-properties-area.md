@@ -2,7 +2,7 @@
 title: 組織のプライバシー情報の追加 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory Properties エリアに組織のプライバシー情報を追加する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830640"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797395"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory を使用して組織のプライバシー情報を追加する
 この記事では、テナント管理者が Azure portal を使用して、組織の Azure Active Directory (Azure AD) テナントにプライバシー関連の情報を追加する方法について説明します。

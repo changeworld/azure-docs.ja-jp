@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: df0541802dfc331ffc94e95be112ea7e005960b5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071633"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>RabbitMQ を Azure Service Bus と統合する方法
 
@@ -90,7 +90,7 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="接続文字列の変換":::
 
-次に、ブラウザーで RabbitMQ 管理プラグインを開き ([http://localhost:15672/#/dynamic-shovels](http://localhost:15672/#/dynamic-shovels))、[`Admin -> Shovel Management` ] に移動します。ここで、RabbitMQ キューから Azure Service Bus キューへのメッセージ送信を処理する新しい Shovel を追加できます。
+次に、ブラウザーで RabbitMQ 管理プラグインを開き (`http://localhost:15672/#/dynamic-shovels`)、[`Admin -> Shovel Management` ] に移動します。ここで、RabbitMQ キューから Azure Service Bus キューへのメッセージ送信を処理する新しい Shovel を追加できます。
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="RabbitMQ Shovel の追加":::
 

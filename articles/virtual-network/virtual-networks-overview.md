@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Network | Microsoft Docs
-description: Azure Virtual Network の概念と機能について説明します。
+description: アドレス空間、サブネット、リージョン、サブスクリプションなど、Azure Virtual Network の概念と機能について説明します。
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3fd958ba1ef4ec4b8a198bcd5da497dc191be73d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040607"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386998"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -27,7 +27,7 @@ Azure Virtual Network (VNet) は、Azure 内のプライベート ネットワ�
 ## <a name="vnet-concepts"></a>VNet の概念
 
 - **[アドレス空間]:** VNet を作成する場合は、パブリック アドレスとプライベート (RFC 1918) アドレスを使用して、カスタム プライベート IP アドレス空間を指定する必要があります。 Azure は、ユーザーが割り当てたアドレス空間のプライベート IP アドレスを仮想ネットワーク内のリソースに割り当てます。 たとえば、アドレス空間 10.0.0.0/16 を指定した VNet で VM をデプロイする場合、VM には 10.0.0.4 などのプライベート IP が割り当てられます。
-- **サブネット:** サブネットにより、仮想ネットワークを 1 つ以上のサブネットワークにセグメント分割して、仮想ネットワークのアドレス空間の一部を各サブネットに割り当てることができます。 その後、特定のサブネット内に Azure リソースをデプロイできます。 従来のネットワークのように、サブネットでは、組織の内部ネットワークに適したセグメントに VNet アドレス空間をセグメント分割することができます。 これにより、アドレスの割り当ての効率も向上します。 ネットワーク セキュリティ グループを使用して、サブネット内のリソースを保護できます。 詳細については、「[セキュリティ グループ](security-overview.md)」を参照してください。
+- **サブネット:** サブネットにより、仮想ネットワークを 1 つ以上のサブネットワークにセグメント分割して、仮想ネットワークのアドレス空間の一部を各サブネットに割り当てることができます。 その後、特定のサブネット内に Azure リソースをデプロイできます。 従来のネットワークのように、サブネットでは、組織の内部ネットワークに適したセグメントに VNet アドレス空間をセグメント分割することができます。 これにより、アドレスの割り当ての効率も向上します。 ネットワーク セキュリティ グループを使用して、サブネット内のリソースを保護できます。 詳細については、「[ネットワーク セキュリティ グループ](security-overview.md)」を参照してください。
 - **リージョン**:VNet は 1 つのリージョン/場所内に制限されますが、仮想ネットワーク ピアリングを使用して、異なるリージョンの複数の仮想ネットワークを相互に接続できます。
 - **サブスクリプション:** VNet は、サブスクリプション内に制限されます。 各 Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)と Azure [リージョン](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)内に複数の仮想ネットワークを実装できます。
 
@@ -67,7 +67,7 @@ VNet 内のすべてのリソースにおいて、既定でインターネット
 
 次のオプションのいずれかまたは両方を使用して、サブネット間のネットワーク トラフィックをフィルター処理できます。
 
-- **セキュリティ グループ**:ネットワーク セキュリティ グループとアプリケーション セキュリティ グループには、受信と送信のセキュリティ規則を複数含めることができます。これらの規則を使用すると、送信元と送信先の IP アドレス、ポート、およびプロトコルに基づいて、リソースとの間で送受信されるトラフィックをフィルター処理できます。 詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)」または「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」をご覧ください。
+- **ネットワーク セキュリティ グループ:** ネットワーク セキュリティ グループとアプリケーション セキュリティ グループには、受信と送信のセキュリティ規則を複数含めることができます。これらの規則を使用すると、送信元と送信先の IP アドレス、ポート、およびプロトコルに基づいて、リソースとの間で送受信されるトラフィックをフィルター処理できます。 詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)」または「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」をご覧ください。
 - **ネットワーク仮想アプライアンス**:ネットワーク仮想アプライアンスとは、ファイアウォール、WAN 最適化などのネットワーク機能を実行する VM です。 仮想ネットワークにデプロイできる使用可能なネットワーク仮想アプライアンスの一覧については、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) で確認してください。
 
 ## <a name="route-network-traffic"></a>ネットワーク トラフィックのルーティング

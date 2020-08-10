@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a9373893b1381e9a2f54bb83717e6001efac295
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254669"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386335"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -74,7 +74,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 - **v1**
 
-   v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
+   v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。 0\.0.0.0/0 をオンプレミスにリダイレクトする必要があるシナリオ (強制トンネリング) は、v1 ではサポートされていません。
 
 - **v2**
 
@@ -146,7 +146,7 @@ Azure portal を使用してアプリケーション ゲートウェイを作成
 
 - (すべてのドメインに対する) すべての要求を受け入れ、バックエンド プールに転送する場合は、基本を選択します。 [基本リスナーのアプリケーション ゲートウェイを作成する方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)に関するページを参照してください。
 
-- *ホスト* ヘッダーまたはホスト名に基づいて異なるバックエンド プールに要求を転送する場合は、マルチサイト リスナーを選択します。ここで、受信要求と一致するホスト名も指定する必要があります。 これは、アプリケーション ゲートウェイが複数の Web サイトを同じパブリック IP アドレスとポートでホストするために、HTTP 1.1 ホスト ヘッダーを利用しているためです。
+- "*ホスト*" ヘッダーまたはホスト名に基づいて異なるバックエンド プールに要求を転送する場合は、マルチサイト リスナーを選択します。ここで、受信要求と一致するホスト名も指定する必要があります。 これは、アプリケーション ゲートウェイが複数の Web サイトを同じパブリック IP アドレスとポートでホストするために、HTTP 1.1 ホスト ヘッダーを利用しているためです。 詳細については、[Application Gateway を使用した複数サイトのホスティング](multiple-site-overview.md)に関するページを参照してください。
 
 #### <a name="order-of-processing-listeners"></a>リスナーを処理する順序
 
@@ -279,12 +279,16 @@ HTTP から HTTPS へのリダイレクトの詳細については、以下を�
 - [PowerShell を使用して外部サイトにトラフィックをリダイレクトする](redirect-external-site-powershell.md)
 - [CLI を使用して外部サイトにトラフィックをリダイレクトする](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>HTTP ヘッダー設定を書き換える
+### <a name="rewrite-http-headers-and-url"></a>HTTP ヘッダーと URL を書き換える
 
-この設定で、要求パケットと応答パケットがクライアントとバックエンド プール間を移動する間に、HTTP 要求および応答ヘッダーが追加、削除、または更新されます。 詳細については、次を参照してください。
+書き換え規則を使用すると、要求および応答パケットがアプリケーション ゲートウェイを通じてクライアントとバックエンド プールの間を移動する際に、HTTP(S) 要求と応答ヘッダーや URL パスとクエリ文字列パラメーターを追加、削除、または更新できます。
 
- - [HTTP ヘッダーの書き換えの概要](rewrite-http-headers.md)
+ヘッダーおよび URL パラメーターは、静的な値に設定するか、その他のヘッダーやサーバー変数に設定できます。 クライアント IP アドレスを抽出する、バックエンドに関する機密情報を削除する、セキュリティを追加するなど、重要なユース ケースで役立ちます。
+詳細については、次を参照してください。
+
+ - [HTTP ヘッダーと URL の書き換えの概要](rewrite-http-headers-url.md)
  - [HTTP ヘッダーの書き換えの構成](rewrite-http-headers-portal.md)
+ - [URL の書き換えの構成](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -357,7 +361,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 > [!NOTE]
 > 対応する HTTP 設定が明示的にリスナーに関連付けられていない限り、カスタム プローブはバックエンド プールの正常性を監視しません。
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>バックエンド アドレスからホスト名を選択する
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>バックエンド アドレスからホスト名を選択する
 
 この機能によって、要求の *host* ヘッダーが、バックエンド プールのホスト名に動的に設定されます。 これには IP アドレスまたは FQDN が使用されます。
 

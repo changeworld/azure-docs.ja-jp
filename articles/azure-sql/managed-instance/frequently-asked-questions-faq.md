@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224419"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498459"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,11 +66,11 @@ Azure SQL Managed Instance と SQL Server 間での構文と動作の違いに�
 **よい大きい RAM と仮想コアの比率や、より多くの CPU など、特定のハードウェア要件がある場合は、どこに移行できますか?**
 [Azure Virtual Machines 上の SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) またはメモリおよび CPU 最適化された [Azure SQL Database](../database/sql-database-paas-overview.md) への移行をご検討ください。
 
-## <a name="known-issues--bugs"></a>既知の問題 & バグ
+## <a name="known-issues-and-defects"></a>既知の問題と欠陥
 
-**既知の問題やバグはどこで確認できますか?**
+**既知の問題や欠陥はどこで確認できますか?**
 
-バグや既知の問題については、「[既知の問題](../database/doc-changes-updates-release-notes.md#known-issues)」を参照してください。
+製品の欠陥や既知の問題については、「[既知の問題](../database/doc-changes-updates-release-notes.md#known-issues)」を参照してください。
 
 ## <a name="new-features"></a>新機能
 
@@ -127,7 +127,7 @@ Managed Instance は、Azure Portal、[PowerShell](https://docs.microsoft.com/po
 **Azure SQL Database の単体またはエラスティック プールから SQL Managed Instance に移行するには、どうすればよいですか?**
 
 マネージド インスタンスで提供されるコンピューティングおよびストレージ サイズあたりのパフォーマンス レベルは、Azure SQL Database の他のデプロイ オプションと同じです。 単一インスタンスでデータを統合する場合または単にマネージド インスタンスでのみサポートされている機能が必要な場合は、エクスポートおよびインポート (BACPAC) 機能を使用してデータを移行できます。 SQL Database の SQL Managed Instance への移行に関して検討可能な他の方法を、次に示します。 
-- [Data Source External]() を使用する
+- [Data Source External](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210) を使用する
 - [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) を使用する
 - [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) を使用する
 
@@ -349,21 +349,6 @@ Express Route 回線のピアリングが不可能な場合、他の唯一のオ
 - [SQL 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)を有効にしてアラート メカニズムと統合する。
 - [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) スイートから[脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)を有効にする。
 
-
-## <a name="cost-saving-use-cases"></a>コストを節約するユース ケース
-
-**SQL Managed Instance のユース ケースやコスト削減の成果はどこで確認できますか?**
-
-SQL Managed Instance のケース スタディ:
-
-- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
-- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
-
-Azure SQL Managed Instance のデプロイに関連する利点、コスト、およびリスクについて理解を深めるには、次の Forrester 社による調査も参考になります。[Microsoft Azure SQL Database Managed Instance の Total Economic Impact](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)
-
-
 ## <a name="dns"></a>DNS
 
 **SQL Managed Instance 用にカスタム DNS を構成できますか?**
@@ -467,6 +452,19 @@ Managed Instance の価格オプションの詳細については、「[価格�
 **マネージド インスタンスのバックアップ ストレージのコストを最適化するにはどうすればよいですか?**
 
 バックアップ ストレージのコストを最適化するには、[SQL Managed Instance でのバックアップの微調整](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935)に関する記事を参照してください。
+
+## <a name="cost-saving-use-cases"></a>コストを節約するユース ケース
+
+**SQL Managed Instance のユース ケースやコスト削減の成果はどこで確認できますか?**
+
+SQL Managed Instance のケース スタディ:
+
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+Azure SQL Managed Instance のデプロイに関連する利点、コスト、およびリスクについて理解を深めるには、次の Forrester 社による調査も参考になります。[Microsoft Azure SQL Database Managed Instance の Total Economic Impact](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)
 
 ## <a name="password-policy"></a>パスワード ポリシー 
 

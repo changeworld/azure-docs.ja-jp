@@ -4,12 +4,12 @@ description: ポッドの水平オートスケーラー、クラスター オー
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244516"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499887"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -58,7 +58,7 @@ AKS でポッドの水平オートスケーラーを開始するには、「[ポ
 
 AKS でクラスター オートスケーラーを開始するには、「[Azure Kubernetes Service のクラスター オートスケーラー (AKS) - プレビュー][aks-cluster-autoscaler]」を参照してください。
 
-### <a name="scale-up-events"></a>スケール アップ イベント
+### <a name="scale-out-events"></a>スケールアウト イベント
 
 ノードに、要求されたポッドを実行するために十分なコンピューティング リソースがない場合、そのポッドではスケジューリング プロセスを進めることができません。 ノード プール内で追加のコンピューティング リソースが利用できない限り、ポッドを開始できません。
 
@@ -66,7 +66,7 @@ AKS でクラスター オートスケーラーを開始するには、「[Azure
 
 アプリケーションが迅速にスケーリングする必要がある場合、クラスター オートスケーラーによってデプロイされた追加ノードがスケジュール設定されたポッドを受け入れるまで、一部のポッドはスケジュール設定の待機状態のままのことがあります。 高いバースト需要のあるアプリケーションの場合、仮想ノードと Azure Container Instances でスケーリングできます。
 
-### <a name="scale-down-events"></a>スケール ダウン イベント
+### <a name="scale-in-events"></a>スケールイン イベント
 
 クラスター オートスケーラーでは、最近新しいスケジュール要求を受け取っていないノードのポッド スケジューリング状態も監視されます。 このシナリオでは、ノード プールに必要以上のコンピューティング リソースがあり、ノードの数を削減できることが示されます。
 

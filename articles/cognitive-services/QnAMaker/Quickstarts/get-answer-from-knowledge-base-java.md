@@ -3,14 +3,14 @@ title: クイック スタート:ナレッジ ベースから回答を取得す�
 description: この Java REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: f162276044e63c9deb46a60033ffe9904366f777
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 3b193473ea20880c4efcf8747a129680008e3c9f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342801"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325935"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>クイック スタート:Java を使用してナレッジ ベースから質問の回答を取得する
 

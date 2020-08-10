@@ -2,17 +2,16 @@
 title: Azure Data Lake Analytics の作成とクエリ - Azure CLI
 description: Azure コマンド ライン インターフェイスを使用して Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信する方法について説明します。
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: e8de36cca8386ed2a8ddba5782b7b48f248192e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: be7f9d66a10f3f0f4a1ae0f9e28e226f268a7f7c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564838"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497445"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Azure CLI で Azure Data Lake Analytics の使用を開始する
 

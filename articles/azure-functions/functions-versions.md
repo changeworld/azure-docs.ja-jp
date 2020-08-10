@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081680"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -91,7 +91,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 #### <a name="net"></a>.NET
 
-* [同期サーバー操作は既定では無効になっています](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
+* [同期サーバー操作は既定では無効になっています](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
 
 ### <a name="changing-version-of-apps-in-azure"></a>Azure でのアプリのバージョンの変更
 

@@ -40,16 +40,24 @@
       items:
         - name: Azure Digital Twins CLI を使用する
           href: how-to-use-cli.md
-        - name: Azure Digital Twins インスタンスを作成する
-          href: how-to-set-up-instance.md
-        - name: クライアント アプリケーションを認証する
+        - name: インスタンスと認証を設定する
+          items:
+            - name: スクリプト化バージョン
+              href: how-to-set-up-instance-scripted.md
+            - name: CLI のバージョン
+              href: how-to-set-up-instance-cli.md
+            - name: ポータルのバージョン
+              href: how-to-set-up-instance-portal.md
+        - name: アプリ認証コードを作成する
           href: how-to-authenticate-client.md
     - name: モデルを設計する
       items:
         - name: カスタム モデルを管理する
           href: how-to-manage-model.md
         - name: モデルを解析および検証する
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
+        - name: タグを追加する
+          href: how-to-use-tags.md
     - name: ライブ実行環境を使用する
       items:
         - name: デジタル ツインを管理する
@@ -69,13 +77,29 @@
     - name: 出力を接続する
       items:
         - name: エンドポイントとルートを管理する
-          href: how-to-manage-routes.md
+          items:
+            - name: API と CLI のバージョン
+              href: how-to-manage-routes-apis-cli.md
+            - name: ポータルのバージョン
+              href: how-to-manage-routes-portal.md
         - name: Azure Maps と統合する
           href: how-to-integrate-maps.md
+        - name: Azure Time Series Insights と統合する
+          href: how-to-integrate-time-series-insights.md
     - name: トラブルシューティング
       items:
+        - name: Azure Monitor のメトリックを表示する
+          href: troubleshoot-metrics.md
+        - name: 診断ログの有効化
+          href: troubleshoot-diagnostics.md
+        - name: アラートを有効にする
+          href: troubleshoot-alerts.md
         - name: 既知の問題
           href: troubleshoot-known-issues.md
+        - name: 問題解決
+          items:
+            - name: 403 (許可されていません)
+              href: troubleshoot-error-403.md
 - name: リファレンス
   items:
     - name: Digital Twins サービスに関する制約
@@ -145,7 +169,7 @@
         - name: Azure Digital Twins サンプル
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
         - name: Azure Digital Twins エクスプローラー (サンプル)
-          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL 検証ツール (サンプル)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
     - name: Azure ツール

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2018
 ms.author: cynthn
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: be2a52f1a9071e9d4bb77ab4439291fd58cd828b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c55f288631ae77541ad957aeeb26cfc44b29f37
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129368"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483181"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
 
@@ -178,7 +178,7 @@ exit
 
 ## <a name="take-a-disk-snapshot"></a>ディスクのスナップショットを作成する
 
-ディスクのスナップショットを作成すると、特定の時点のディスクに対する読み取り専用のコピーが作成されます。 Azure VM のスナップショットは、構成に変更を加える前に、VM の状態を簡単に保存するときに役立ちます。 問題やエラーが発生した場合は、スナップショットを使用して VM を復元できます。 VM に複数のディスクがある場合は、各ディスクのスナップショットが個別に作成されます。 アプリケーション整合性のあるバックアップを取得するには、ディスクのスナップショットを作成する前に、VM を停止することを検討してください。 または、[Azure Backup サービス](/azure/backup/)を使用して、VM の実行中に自動的にバックアップを実行できます。
+ディスクのスナップショットを作成すると、特定の時点のディスクに対する読み取り専用のコピーが作成されます。 Azure VM のスナップショットは、構成に変更を加える前に、VM の状態を簡単に保存するときに役立ちます。 問題やエラーが発生した場合は、スナップショットを使用して VM を復元できます。 VM に複数のディスクがある場合は、各ディスクのスナップショットが個別に作成されます。 アプリケーション整合性のあるバックアップを取得するには、ディスクのスナップショットを作成する前に、VM を停止することを検討してください。 または、[Azure Backup サービス](../../backup/index.yml)を使用して、VM の実行中に自動的にバックアップを実行できます。
 
 ### <a name="create-snapshot"></a>スナップショットの作成
 

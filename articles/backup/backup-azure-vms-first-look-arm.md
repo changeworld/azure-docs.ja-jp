@@ -3,12 +3,12 @@ title: VM の設定から Azure VM をバックアップする
 description: この記事では、Azure Backup サービスを使用して単一の Azure VM または複数の Azure VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538889"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286747"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM の設定から Azure VM をバックアップする
 
@@ -39,15 +39,15 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
    - コンテナーが既にある場合は、 **[既存のものを選択]** をクリックしてコンテナーを選択します。
    - コンテナーがない場合は、 **[新規作成]** をクリックします。 コンテナーの名前を指定します。 VM と同じリージョンおよびリソース グループに作成されます。 VM の設定からの直接バックアップを有効にするときは、これらの設定を変更できません。
 
-   ![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. **[バックアップ ポリシーの選択]** で次のようにします。
+6. **[バックアップ ポリシーの選択]** で、次のいずれかを行います。
 
    - 既定のポリシーをそのままにします。 これにより、1 日に 1 回指定時刻に VM がバックアップされ、30 日間コンテナーに保持されます。
    - ある場合は、既存のバックアップ ポリシーを選択します。
    - 新しいポリシーを作成し、ポリシーの設定を定義します。  
 
-   ![Select backup policy](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![Select backup policy](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. **[バックアップの有効化]** をクリックします。 これにより、バックアップ ポリシーと VM が関連付けられます。
 

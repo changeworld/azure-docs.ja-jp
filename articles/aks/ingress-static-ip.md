@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターの静的パブリック IP アドレスを使用して NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: a59bd1cfcc03b0a6c9af218cb7108a0ba094377d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: 38caddeece7b8e2a49d09e25a22e9996cf65d069
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255287"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335955"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 
@@ -49,6 +49,9 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
+> [!NOTE]
+> 上記のコマンドでは、AKS クラスターを削除すると削除される IP アドレスが作成されます。 または、AKS クラスターとは別に管理できる別のリソース グループに IP アドレスを作成することもできます。 別のリソース グループに IP アドレスを作成する場合は、AKS クラスターによって使用されるサービス プリンシパルで、アクセス許可が他のリソース グループ ("*ネットワーク共同作成者*" など) に委任されていることを確認します。
+
 次に、Helm を使用して *nginx-ingress* グラフをデプロイします。 追加された冗長性については、NGINX イングレス コントローラーの 2 つのレプリカが `--set controller.replicaCount` パラメーターでデプロイされています。 イングレス コントローラーのレプリカの実行から十分にメリットを享受するには、AKS クラスターに複数のノードが存在していることを確認します。
 
 イングレス コントローラー サービスに割り当てられるロード バランサーの静的 IP アドレスと、パブリック IP アドレス リソースに適用されている DNS 名ラベルの両方をイングレス コントローラーが認識できるように、2 つの追加パラメーターを Helm リリースに渡す必要があります。 HTTPS 証明書が正常に動作するには、DNS 名ラベルを使用して、イングレス コントローラーの IP アドレス向けに FQDN を構成します。
@@ -66,6 +69,9 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 イングレス コントローラーの **IP アドレス**と、FQDN プレフィックスで使用する**一意の名前**で以下のスクリプトを更新します。
 
+> [!IMPORTANT]
+> コマンドの実行時に、*STATIC_IP* と *DNS_LABEL* を実際の IP アドレスと一意の名前に置き換える必要があります。
+
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
@@ -80,7 +86,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="STATIC_IP" \
-    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="DNS_LABEL"
 ```
 
 次の出力例に示すように、NGINX イングレス コントローラー用の Kubernetes ロード バランサー サービスが作成されると、静的 IP アドレスが割り当てられます。
@@ -264,7 +270,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 `hello-world-ingress.yaml` という名前のファイルを作成し、次の例の YAML 内にコピーします。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress

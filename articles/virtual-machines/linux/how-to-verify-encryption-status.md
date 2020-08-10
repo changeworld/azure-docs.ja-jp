@@ -3,15 +3,16 @@ title: Linux の暗号化状態の確認 - Azure Disk Encryption
 description: この記事では、プラットフォームおよび OS レベルの暗号化の状態を確認する手順について説明します。
 author: kailashmsft
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
-ms.custom: seodec18
-ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 1d99b2a69f1cfd31216ca1058d5bc6825be83bcd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873998"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503516"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する 
 

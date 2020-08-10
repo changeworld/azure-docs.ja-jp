@@ -3,12 +3,12 @@ title: プレビュー - Kubernetes 用の Azure Policy について学習する
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。 これはプレビュー機能です。
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373626"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373761"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes 用の Azure Policy について理解する (プレビュー)
 
@@ -373,7 +373,7 @@ Azure Policy からはアドオンに対して、ポリシー定義の _details.
 
 ## <a name="assign-a-built-in-policy-definition"></a>組み込みポリシー定義の割り当て
 
-ポリシー定義を Kubernetes クラスターに割り当てるには、適切なロールベースのアクセス制御 (RBAC) ポリシー割り当て操作が割り当てられている必要があります。 組み込みの RBAC ロール **リソース ポリシー共同作成者**と**所有者**には、これらの操作があります。 詳細については、「[Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)」を参照してください。
+ポリシー定義を Kubernetes クラスターに割り当てるには、適切なロールベースのアクセス制御 (RBAC) ポリシー割り当て操作が割り当てられている必要があります。 Azure 組み込みのロール **リソース ポリシー共同作成者**と**所有者**には、これらの操作があります。 詳細については、「[Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)」を参照してください。
 
 次の手順に従って、Azure portal を使用してクラスターを管理する組み込みのポリシー定義を確認します。
 

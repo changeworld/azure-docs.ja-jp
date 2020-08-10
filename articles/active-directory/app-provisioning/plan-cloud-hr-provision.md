@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781601"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445570"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -404,7 +404,6 @@ Azure AD プロビジョニング サービスでは、レポートの生成、�
 
 - [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](application-provisioning-config-problem.md)
 - [アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する](user-provisioning-sync-attributes-for-mapping.md)
-- [長時間を要する Azure AD ギャラリー アプリケーションへのユーザー プロビジョニング](application-provisioning-when-will-provisioning-finish.md)
 - [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](application-provisioning-config-problem-storage-limit.md)
 - [Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](application-provisioning-config-problem-no-users-provisioned.md)
 - [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](application-provisioning-config-problem-wrong-users-provisioned.md)

@@ -2,19 +2,19 @@
 title: Hybrid Cloud Extension (HCX) をインストールする
 description: Azure VMware Solution (AVS) プライベート クラウド用の VMware Hybrid Cloud Extension (HCX) ソリューションを設定します
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367548"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539161"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware Solution 用の HCX をインストールする
 
 この記事では、Azure VMWare Solution (AVS) プライベート クラウド用の VMWare Hybrid Cloud Extension (HCX) ソリューションを設定する手順を説明します。 HCX を使用すると、さまざまな組み込みの HCX でサポートされた移行の種類により、クラウドやその他の接続されたサイトに VMware のワークロードを移行できます。
 
-HCX Advanced (既定のインストール) では、最大 3 つの外部サイトがサポートされます。 3 つより多くのサイトが必要な場合は、サポートを通じて HCX Enterprise アドオンを有効にすることができます。 HCX Enterprise のインストールでは、一般提供 (GA) 後、お客様に対して追加料金が発生しますが、[追加の機能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)が提供されます。
+HCX Advanced (既定のインストール) では、最大 3 つの vCenter がサポートされます。 4 つ以上必要な場合は、サポートを通じて HCX Enterprise アドオンを有効にすることができます。 HCX Enterprise のインストールでは、一般提供 (GA) 後、お客様に対して追加料金が発生しますが、[追加の機能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)が提供されます。
 
 
 「[開始する前に](#before-you-begin)」、「[ソフトウェア バージョンの要件](#software-version-requirements)」、「[前提条件](#prerequisites)」を最初によく確認してください。 

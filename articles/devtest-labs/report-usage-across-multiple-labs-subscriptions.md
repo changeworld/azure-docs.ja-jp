@@ -3,16 +3,16 @@ title: 複数のラボとサブスクリプションにわたる Azure DevTest L
 description: 複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483433"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287274"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する
 
-ほとんどの大規模な組織では、使用状況の傾向や外れ値を視覚化することで、リソースの使用状況をより効果的に追跡したいと考えています。 ラボの所有者またはマネージャーは、リソースの使用状況に基づいて、ラボをカスタマイズして[リソースの使用状況とコストを向上させる](https://docs.microsoft.com/azure/billing/billing-getting-started)ことができます。 Azure DevTest Labs では、ラボごとのリソース使用状況をダウンロードし、使用パターンをより詳しく調べることができます。 これらの使用パターンは、変化を特定し、効率を向上させるために役立ちます。 ほとんどの企業では、個々のラボの使用状況と、[複数のラボとサブスクリプション](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)にわたる全体的な使用状況の両方を求めています。 
+ほとんどの大規模な組織では、使用状況の傾向や外れ値を視覚化することで、リソースの使用状況をより効果的に追跡したいと考えています。 ラボの所有者またはマネージャーは、リソースの使用状況に基づいて、ラボをカスタマイズして[リソースの使用状況とコストを向上させる](../cost-management-billing/manage/getting-started.md)ことができます。 Azure DevTest Labs では、ラボごとのリソース使用状況をダウンロードし、使用パターンをより詳しく調べることができます。 これらの使用パターンは、変化を特定し、効率を向上させるために役立ちます。 ほとんどの企業では、個々のラボの使用状況と、[複数のラボとサブスクリプション](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)にわたる全体的な使用状況の両方を求めています。 
 
 この記事では、複数のラボとサブスクリプションにわたるリソース使用状況の情報を処理する方法について説明します。
 
@@ -24,8 +24,8 @@ ms.locfileid: "85483433"
 
 DevTest Labs のリソース使用率をエクスポートする前に、Azure Storage アカウントを設定し、使用状況データを含むさまざまなファイルを格納できるようにしておく必要があります。 データのエクスポートを実行するには、次の 2 つの一般的な方法があります。
 
-* [DevTest Labs REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* アクション `exportResourceUsage`、ラボ リソース ID、および必要なパラメーターを指定した PowerShell Az.Resource モジュール [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2)。 
+* [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
+* アクション `exportResourceUsage`、ラボ リソース ID、および必要なパラメーターを指定した PowerShell Az.Resource モジュール [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2)。 
 
     [個人データのエクスポートまたは削除](personal-data-delete-export.md)に関する記事には、サンプル PowerShell スクリプトとエクスポートされるデータに関する詳細情報が記載されています。 
 
@@ -48,8 +48,8 @@ DevTest Labs のリソース使用率をエクスポートする前に、Azure S
 
 複数のラボの使用状況情報をエクスポートするには、次の使用を検討します。 
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。PowerShell などの多くの言語で使用できます。 
-* [Azure Automation Runbook](https://docs.microsoft.com/azure/automation/)。PowerShell、Python、またはカスタム グラフィカル デザイナーを使用してエクスポート コードを記述します。
+* [Azure Functions](../azure-functions/index.yml)。PowerShell などの多くの言語で使用できます。 
+* [Azure Automation Runbook](../automation/index.yml)。PowerShell、Python、またはカスタム グラフィカル デザイナーを使用してエクスポート コードを記述します。
 
 これらのテクノロジを使用して、特定の日時にすべてのラボで個別のラボ エクスポートを実行できます。 
 
@@ -69,7 +69,7 @@ Azure 関数では、長期的なストレージにデータをプッシュす�
 
 ## <a name="visualizing-data-and-gathering-insights"></a>データの視覚化と分析情報の収集
 
-任意のデータ視覚化ツールを使用して長期的なストレージに接続し、使用状況データを表示し、分析情報を収集して、使用効率を確認します。 たとえば、[Power BI](https://docs.microsoft.com/power-bi/power-bi-overview) を使用すると、使用状況データを整理して表示できます。 
+任意のデータ視覚化ツールを使用して長期的なストレージに接続し、使用状況データを表示し、分析情報を収集して、使用効率を確認します。 たとえば、[Power BI](/power-bi/power-bi-overview) を使用すると、使用状況データを整理して表示できます。 
 
 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用すると、1 つの場所のインターフェイス内でリソースの作成、リンク、管理を行うことができます。 より高度な制御が必要な場合は、個々のリソースを 1 つのリソース グループ内に作成し、Data Factory サービスとは別に管理することができます。  
 

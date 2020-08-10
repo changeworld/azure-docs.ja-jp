@@ -1,19 +1,19 @@
 ---
 title: ジオフェンスの GeoJSON データ形式 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps の GET Geofence および POST Geofence API で使用できるジオフェンス データの準備方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7b9860908dd3bdf3dcda727f350578a97b890cac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335618"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131307"
 ---
 # <a name="geofencing-geojson-data"></a>GeoJSON データのジオフェンシング
 

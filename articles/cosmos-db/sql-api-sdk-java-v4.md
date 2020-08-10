@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412636"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537886"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -61,6 +61,17 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 | **Azure Cosmos DB のワークショップとラボ** |[Cosmos DB ワークショップのホーム ページ](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>リリース履歴
+
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+* スクリプト ログ対応 API を `CosmosStoredProcedureRequestOptions` に追加しました。
+* `DirectConnectionConfig` の既定の `idleEndpointTimeout` を 1h に更新し、既定の `connectTimeout` を 5s に更新しました。
+#### <a name="key-bug-fixes"></a>主要なバグ修正
+* `GatewayConnectionConfig` `idleConnectionTimeout` が `DirectConnectionConfig` `idleConnectionTimeout` をオーバーライドしていた問題を修正しました。
+* `CosmosQueryRequestOptions` で `responseContinuationTokenLimitInKb` の get および set API を修正しました。
+* 同じ名前でコレクションを再作成するときのクエリおよび変更フィードの問題を修正しました。
+* ClassCastException をスローする上位のクエリの問題を修正しました。
+* NullPointerException をスローする並べ替えクエリの問題を修正しました。
+* リアクター `onErrorDropped` が呼び出される、直接モードでの取り消された要求の処理の問題を修正しました。 
 
 ### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
 #### <a name="new-features"></a>新機能

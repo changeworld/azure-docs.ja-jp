@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 437cbb87694adf89054161a7b0d40f6528b94199
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d1b545129312e2954c76e296560d9476f37f4424
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224096"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081765"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -674,7 +674,7 @@ public class HttpTriggerJava {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-認証されたクライアントに関する情報は、[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
+認証されたクライアントに関する情報は、[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
 
 ```csharp
 using System.Net;
@@ -706,7 +706,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-認証されたクライアントに関する情報は、[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
+認証されたクライアントに関する情報は、[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
 
 ```csharp
 using System.Net;

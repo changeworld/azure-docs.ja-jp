@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service 上でマルチサービス .NET Core アプリケーションをデバッグする方法を示します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 073019a75f78263e9d300a82469b36268d032679
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438398"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072941"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>複数の依存サービスの実行: Azure Dev Spaces での .NET Core と Visual Studio
 
@@ -21,7 +21,7 @@ ms.locfileid: "75438398"
 ## <a name="call-another-container"></a>別のコンテナーを呼び出す
 このセクションでは、2 つ目のサービス (`mywebapi`) を作成し、`webfrontend` でそのサービスを呼び出します。 各サービスは別々のコンテナーで実行されます。 その後、両方のコンテナーでデバッグします。
 
-![](media/common/multi-container.png)
+![この図は、webfrontend サービスが mywebapi サービスを呼び出すことを (矢印で) 示しています。](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>*mywebapi* のサンプル コードをダウンロードする
 時間を節約するために、GitHub リポジトリからサンプル コードをダウンロードしましょう。 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces ) に移動し、 **[Clone or download]** をクリックして GitHub リポジトリをダウンロードします。 このセクションのコードは、`samples/dotnetcore/getting-started/mywebapi` にあります。
@@ -34,7 +34,7 @@ ms.locfileid: "75438398"
 2. `mywebapi` の準備ができたら、ブラウザーで localhost アドレスを開き、URL に `/api/values` を追加して `ValuesController` の既定の GET API を呼び出します。 
 3. すべての手順が正常に完了すると、次のような `mywebapi` サービスからの応答を確認できます。
 
-    ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
+    ![この Web ページには、"value1" と "value2" という 2 つの文字列の json 配列が示されています。](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend* から *mywebapi* に対して要求を行う
 次に、`mywebapi` に対して要求を行う `webfrontend` のコードを記述しましょう。 `webfrontend` プロジェクトがある Visual Studio ウィンドウに切り替えます。 `HomeController.cs` ファイルで、About メソッドのコードを次のコードに "*置き換えます*"。
@@ -72,7 +72,7 @@ ms.locfileid: "75438398"
 1. ページの上部にある **[About]** リンクをクリックすると、`webfrontend` プロジェクトのブレークポイントがトリガーされます。 
 1. F10 キーを押して続行します。 `mywebapi` プロジェクトのブレークポイントがトリガーされます。
 1. F5 キーを押して続行し、`webfrontend` プロジェクトのコードに戻ります。
-1. F5 キーをもう一度押すと要求が完了し、ブラウザーでページが返されます。 Web アプリの About ページに、2 つのサービスによって連結されたメッセージ ("Hello from webfrontend and Hello from mywebapi") が表示されます。
+1. F5 キーをもう一度押すと要求が完了し、ブラウザーでページが返されます。 Web アプリの [About]\(詳細情報\) ページに、2 つのサービスによって連結されたメッセージ "Hello from webfrontend and Hello from mywebapi" が表示されます。
 
 ### <a name="well-done"></a>お疲れさまでした。
 これで、各コンテナーを個別に開発して展開できる、複数コンテナー アプリケーションが作成されました。

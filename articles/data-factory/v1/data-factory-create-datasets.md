@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 1865e1a2ff9a01f75b9849fb340dc0d080feabc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13ee8c5166e3b31ec186ca9aa2702d15de36e09f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522399"
 ---
-# <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
+# <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (バージョン 1) のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-create-datasets.md)
 > * [バージョン 2 (最新バージョン)](../concepts-datasets-linked-services.md)

@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080949"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure 通知ハブを作成する
 
@@ -95,7 +95,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   `az notification-hub namespace create` コマンドに指定した `--name` が使用できない場合、または [Azure リソースの命名規則と制限](/azure/azure-resource-manager/management/resource-name-rules)を満たさない場合、Azure CLI は次のコンソール出力で応答します。
+   `az notification-hub namespace create` コマンドに指定した `--name` が使用できない場合、または [Azure リソースの命名規則と制限](../azure-resource-manager/management/resource-name-rules.md)を満たさない場合、Azure CLI は次のコンソール出力で応答します。
 
    ```output
    #the name is not available
@@ -148,7 +148,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 1. 通知ハブ用のアクセス ポリシーを一覧表示します。
 
-   Azure Notification Hubs は、アクセス ポリシーを使用して [Shared Access Signature セキュリティ](/azure/notification-hubs/notification-hubs-push-notification-security)を使用します。  通知ハブを作成すると、2 つのポリシーが自動的に作成されます。  プッシュ通知を構成するには、これらのポリシーの接続文字列が必要です。  [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) を実行すると、ポリシー名とそれぞれのリソース グループの一覧が返されます。
+   Azure Notification Hubs は、アクセス ポリシーを使用して [Shared Access Signature セキュリティ](./notification-hubs-push-notification-security.md)を使用します。  通知ハブを作成すると、2 つのポリシーが自動的に作成されます。  プッシュ通知を構成するには、これらのポリシーの接続文字列が必要です。  [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) を実行すると、ポリシー名とそれぞれのリソース グループの一覧が返されます。
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -167,7 +167,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 3. 通知ハブ アクセス ポリシー用のキーと接続文字列を一覧表示する
 
-   アクセス ポリシーごとに、キーと接続文字列の 2 つのセットがあります。  これらは、後で[通知ハブを構成する](/azure/notification-hubs/configure-notification-hub-portal-pns-settings)ために必要になります。  通知ハブ アクセス ポリシーのキーと接続文字列を一覧表示するには、[az notification-hub authorization-rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) コマンドを使用します。
+   アクセス ポリシーごとに、キーと接続文字列の 2 つのセットがあります。  これらは、後で[通知ハブを構成する](./configure-notification-hub-portal-pns-settings.md)ために必要になります。  通知ハブ アクセス ポリシーのキーと接続文字列を一覧表示するには、[az notification-hub authorization-rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) コマンドを使用します。
 
    ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature

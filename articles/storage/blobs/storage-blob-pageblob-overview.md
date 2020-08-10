@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223297"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518709"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -33,6 +33,10 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 * アプリケーションをターゲットにした増分スナップショットの管理:アプリケーションは、ページ BLOB のスナップショットと REST API を利用して、コストがかかるデータの重複を発生させずに、アプリケーションのチェックポイントを保存できます。 Azure Storage では、ページ BLOB のローカル スナップショットがサポートされています。このスナップショットは、BLOB 全体のコピーを必要としません。 これらのパブリック スナップショット API では、スナップショット間でのデルタへのアクセスとコピーも可能です。
 * オンプレミスからクラウドへのアプリケーションとデータのライブ マイグレーション:オンプレミスの VM の実行を続けながら、オンプレミス データをコピーし、REST API を使用して Azure のページ BLOB に直接書き込みます。 ターゲットが書き込まれたら、そのデータを使用して Azure VM にすばやくフェールオーバーできます。 このようにして、最小限のダウンタイムで VM と仮想ディスクをオンプレミスからクラウドに移行できます。これは、VM の使用を続けている間にバックグラウンドでデータの移行が行われて、フェールオーバーに必要なダウンタイムが短縮されるためです (数分)。
 * [SAS ベース](../common/storage-sas-overview.md)の共有アクセス。コンカレンシー制御のサポートによる複数のリーダーと単一のライターのようなシナリオを実現できます。
+
+## <a name="pricing"></a>価格
+
+ページ BLOB で提供されるストレージの種類には、それぞれ独自の価格モデルがあります。 Premium ページ BLOB はマネージド ディスクの価格モデルに従いますが、標準ページ BLOB は、使用されたサイズと各トランザクションに対して課金されます。 詳細については、[Azure ページ BLOB の価格ページ](https://azure.microsoft.com/pricing/details/storage/page-blobs/)を参照してください。
 
 ## <a name="page-blob-features"></a>ページ BLOB の機能
 

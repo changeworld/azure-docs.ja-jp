@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267564"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530012"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
@@ -22,7 +22,7 @@ Azure リソースへのアクセスを管理するには、適切な管理者�
 
 この記事では、サブスクリプション スコープで RBAC を使用してユーザーの管理者ロールを追加または変更する方法について説明します。
 
-RBAC を使用してリソースへのアクセスを管理することをお勧めします。 ただし、まだクラシック デプロイ モデルを使用し、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/powershell/module/servicemanagement/azure)を使用してクラシック リソースを管理している場合は、従来の管理者を使用する必要があります。
+RBAC を使用してリソースへのアクセスを管理することをお勧めします。 ただし、まだクラシック デプロイ モデルを使用し、[Azure サービス管理 PowerShell モジュール](/powershell/module/servicemanagement/azure.service)を使用してクラシック リソースを管理している場合は、従来の管理者を使用する必要があります。
 
 > [!TIP]
 > クラシック リソースの管理に Azure portal だけを使用している場合は、従来の管理者を使用する必要はありません。
@@ -33,7 +33,7 @@ RBAC を使用してリソースへのアクセスを管理することをお勧
 
 ## <a name="assign-a-subscription-administrator"></a>サブスクリプション管理者を割り当てる
 
-ユーザーを Azure サブスクリプションの管理者にするには、既存の管理者が、サブスクリプションのスコープで[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール (RBAC ロール) を割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
+ユーザーを Azure サブスクリプションの管理者にするには、既存の管理者が、サブスクリプションのスコープで[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール (Azure ロール) を割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
 
 サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
 
@@ -69,7 +69,7 @@ RBAC を使用してリソースへのアクセスを管理することをお勧
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ロールベースのアクセス制御 (RBAC) とは何か](../../role-based-access-control/overview.md)
+* [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)
 * [Azure での各種ロールについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory での管理者ロールのアクセス許可](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)

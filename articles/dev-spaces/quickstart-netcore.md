@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b38562879fa67d7ee82e3251ea2fcaa57a2075d6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 104e812cc9e792ce71f263085ba1a3474cc2226b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002779"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と .NET Core - Azure Dev Spaces
 
@@ -102,7 +102,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 左側の *[デバッグ]* アイコンをクリックし、上部の *[.NET Core Launch (AZDS)]\(.NET Core の起動 (AZDS)\)* をクリックします。
 
-![](media/get-started-netcore/debug-configuration.png)
+![スクリーンショットは、Visual Studio Code ウィンドウの左上隅です。 デバッグ アイコンが強調表示され、左側のパネルには "DEBUG" というタイトルが、またその右側のドロップダウン リストには ". NET Core Launch (AZDS)" が表示されています。](media/get-started-netcore/debug-configuration.png)
 
 このコマンドによって、デバッグ モードで Azure Dev Spaces のサービスがビルドされ、稼働します。 下部にある *[ターミナル]* ウィンドウに、Azure Dev Spaces で動作しているサービスのビルド出力と URL が表示されます。 "*デバッグ コンソール*" にログの出力が表示されます。
 
@@ -155,7 +155,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 ファイルを保存します。 *[デバッグ]* 、 *[デバッグの再起動]* の順にクリックします。または、 *[デバッグ] ツール バー*で、 *[デバッグの再起動]* ボタンをクリックします。
 
-![](media/common/debug-action-refresh.png)
+![[デバッグ] ツール バーは、ページの上部中央 (ページ タイトルの直下) にある小さなペインです。 再起動ボタンは円状の矢印で表され、強調表示されています。 ボタンには、[再起動 (Ctrl+Shift+F5)] というホバー画像が表示されています。](media/common/debug-action-refresh.png)
 
 ブラウザーでサービスを開き、更新されたメッセージが表示されることに注目します。
 

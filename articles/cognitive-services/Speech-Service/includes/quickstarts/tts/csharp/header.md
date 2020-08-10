@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 2a828cecba5432a7fa67252697827f34f0803a40
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d3f685d5386b72ccb0665d36361a4bd1fa60e46e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75468717"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545128"
 ---
-すぐに使用できるようにするには、GitHub ですべての <a href="https://aka.ms/speech/github-csharp">Speech SDK C# サンプル</a>を表示またはダウンロードします。 それ以外の場合は、始めましょう。
+GitHub で、すべての <a href="https://aka.ms/speech/github-csharp">Speech SDK C# サンプル</a>を表示またはダウンロードできます。 

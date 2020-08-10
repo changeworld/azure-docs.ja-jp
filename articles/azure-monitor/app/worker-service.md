@@ -3,12 +3,12 @@ title: ワーカー サービス アプリ (非 HTTP アプリ) 向け Applicati
 description: Azure Monitor Application Insights を使用した .NET Core/.NET Framework (非 HTTP アプリ) の監視。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ae146c6c010f067973c9fbae4c90bd1116d7c21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499207"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325408"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -542,7 +542,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="next-steps"></a>次のステップ
 
-* [API を使用](../../azure-monitor/app/api-custom-events-metrics.md)して、アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
-* [自動的に追跡されない追加の依存関係を追跡します](../../azure-monitor/app/auto-collect-dependencies.md)。
-* [自動収集されたテレメトリを強化またはフィルター処理します](../../azure-monitor/app/api-filtering-sampling.md)。
+* [API を使用](./api-custom-events-metrics.md)して、アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
+* [自動的に追跡されない追加の依存関係を追跡します](./auto-collect-dependencies.md)。
+* [自動収集されたテレメトリを強化またはフィルター処理します](./api-filtering-sampling.md)。
 * [ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection)。
+

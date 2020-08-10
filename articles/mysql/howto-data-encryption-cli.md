@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: e6cb3e5db1c7fae3b0542557d2dae8239e0624f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f73910c528ff65a8c537e779a028860d64561d05
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114620"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386726"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL のデータ暗号化
 
@@ -20,7 +20,7 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
 ## <a name="prerequisites-for-azure-cli"></a>Azure CLI の前提条件
 
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
-* カスタマー マネージド キーで使用するキー コンテナーとキーを作成します。 キー コンテナーの消去防止と論理的な削除も有効にします。
+* カスタマー マネージド キーで使用するキー コンテナーとキーを作成します。 また、キー コンテナーの消去防止と論理的な削除も有効にします。
 
   ```azurecli-interactive
   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
@@ -32,15 +32,15 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
   ```
 
-* 既存のキー コンテナーを使用するには、カスタママー マネージド キーとして使用するために次のプロパティが必要です。
+* 既存のキー コンテナーを使用するには、カスタママー マネージド キーとして使用すための次のプロパティが必要です。
 
-  * [論理的な削除](../key-vault/general/overview-soft-delete.md)
+  * [論理的な削除](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [消去保護](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
@@ -83,7 +83,7 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
 
     キーの URL: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
-## <a name="using-data-encryption-for-restore-or-replica-servers"></a>復元サーバーまたはレプリカ サーバーでのデータ暗号化の使用
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>復元またはレプリカ サーバーでのデータ暗号化の使用
 
 Key Vault に格納されている顧客のマネージド キーで Azure Database for MySQL が暗号化された後、新しく作成されたサーバーのコピーも暗号化されます。 この新しいコピーは、ローカルまたは geo 復元操作を使用するか、レプリカ (ローカル/リージョン間) 操作を使用して作成できます。 そのため、暗号化された MySQL サーバーの場合は、次の手順を使用して、暗号化済みの復元されたサーバーを作成できます。
 
@@ -134,7 +134,7 @@ Azure portal とは別に、新規および既存のサーバー用の Azure Res
 
 また、Azure Resource Manager テンプレートを使用して、既存の Azure Database for MySQL サーバー上でデータ暗号化を有効にすることもできます。
 
-* プロパティ オブジェクトの `Uri` プロパティで以前にコピーした Azure Key Vault キーのリソース ID を渡します。
+* プロパティ オブジェクトの `Uri` プロパティで以前コピーした Azure Key Vault キーのリソース ID を渡します。
 
 * *2020-01-01-preview* を API バージョンとして使用します。
 

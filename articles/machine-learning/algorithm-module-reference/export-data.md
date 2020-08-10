@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/28/2020
+ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337825"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 
@@ -28,6 +28,7 @@ ms.locfileid: "79456303"
 - Azure ファイル共有
 - Azure Data Lake
 - Azure Data Lake Gen2
+- Azure SQL データベース
 
 データをエクスポートする前に、Azure Machine Learning ワークスペースにデータストアを登録する必要があります。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](../how-to-access-data.md)」を参照してください。
 
@@ -40,6 +41,9 @@ ms.locfileid: "79456303"
 1. **[データのエクスポート]** を選択して **[プロパティ]** ウィンドウを開きます。
 
 1. **[データストア]** では、ドロップダウン リストから既存のデータストアを選択します。 新しいデータストアを作成することもできます。 方法については、「[Azure ストレージ サービスのデータにアクセスする](../how-to-access-data.md)」を参照してください。
+
+    > [!NOTE]
+    > 別のデータ型として指定された SQL データベース列に特定のデータ型のデータをエクスポートすることはできません。
 
 1. **[出力の再生成]** チェックボックスを使用して、実行時に出力を再生成するようにモジュールを実行するかどうかを決定します。 
 

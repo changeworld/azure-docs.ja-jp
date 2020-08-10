@@ -9,14 +9,15 @@ ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 391cc4c08b7067ef388c2130cb340fb5597c843f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 66869b7dc38e11b614ebc89538c2c195122b5bb3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067017"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479559"
 ---
-# <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除
+# <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>Azure CLI スクリプトを使用して、コンテナー名のプレフィックスに基づいてコンテナーを削除する
 
 このスクリプトでは、まず Azure Blob ストレージにいくつかのサンプルのコンテナーを作成してから、コンテナー名のプレフィックスに基づいてコンテナーの一部を削除します。
 

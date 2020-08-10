@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023995"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -218,7 +218,7 @@ Azure SQL Database の Hyperscale レベルはすべてのリージョンで利�
 
 | 問題 | 説明 |
 | :---- | :--------- |
-| サーバーの [バックアップの管理] ペインに、Hyperscale データベースが表示されない。 ビューからフィルターで除外される。  | Hyperscale では別の方法でバックアップが管理されています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されません。 したがって、Hyperscale データベースは、[バックアップの管理] ペインに表示されません。|
+| サーバーの [バックアップの管理] ペインに、Hyperscale データベースが表示されない。 ビューからフィルターで除外される。  | Hyperscale では別の方法でバックアップが管理されています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されません。 したがって、Hyperscale データベースは、[バックアップの管理] ペインに表示されません。<br><br>他の Azure SQL Database サービス レベルから Hyperscale に移行されたデータベースについては、移行前のバックアップは、ソース データベースの[バックアップ保有](automated-backups-overview.md#backup-retention)期間の間保持されます。 これらのバックアップを使用して、ソース データベースを移行前のある時点まで[復元](recovery-using-backups.md#programmatic-recovery-using-automated-backups)することができます。|
 | ポイントインタイム リストア | Hyperscale 以外のデータベースを Hyperscale データベースとして復元することも、Hyperscale データベースを Hyperscale 以外のデータベースとして復元することもできません。 サービス レベルを変更することで Hyperscale に移行された Hyperscale 以外のデータベースの場合は、[プログラムによって](recovery-using-backups.md#programmatic-recovery-using-automated-backups)、データベースのバックアップ保有期間内における移行前の特定の時点に復元することができます。 復元されたデータベースは Hyperscale 以外となります。 |
 | 1 TB を超えるデータ ファイルがデータベースに 1 つ以上ある場合、移行に失敗します。 | 場合によっては、サイズの大きいファイルを 1 TB 未満に圧縮することで、この問題を回避できることがあります。 移行プロセス中に使用されているデータベースを移行する場合は、1 TB を超えるファイルがないことを確認してください。 データベース ファイルのサイズを確認するには、以下のクエリを使用してください。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | 現在、Azure SQL Managed Instance は Hyperscale データベースではサポートされていません。 |

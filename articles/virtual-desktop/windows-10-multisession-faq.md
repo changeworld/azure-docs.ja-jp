@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adc0d63a51535b27b42abbe0115ff25594eb2b4f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086927"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292478"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
@@ -102,6 +102,6 @@ Microsoft Store アプリを無効にして、ユーザーが既にプロビジ�
 
 Windows Virtual Desktop と Windows 10 Enterprise マルチセッションの詳細については、次をご覧ください。
 
-- [Windows Virtual Desktop プレビューのドキュメント](overview.md)を確認する
+- [Windows Virtual Desktop のドキュメント](overview.md)を確認する
 - [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスする
 - [Windows Virtual Desktop のチュートリアル](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)を使用して Windows Virtual Desktop のデプロイをセットアップする

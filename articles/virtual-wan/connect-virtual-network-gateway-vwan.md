@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e26b00a78d2ce533aa4d16e88649e7e73e3af91
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749691"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387202"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (仮想ネットワーク ゲートウェイ) を Virtual WAN に接続する
 
@@ -33,9 +33,9 @@ Azure Virtual Network
 
 * 仮想ネットワーク ゲートウェイのない仮想ネットワークを作成します。 オンプレミス ネットワークのどのサブネットも接続先の仮想ネットワークと重複していないことを確認してください。 Azure portal で仮想ネットワークを作成するには、[クイックスタート](../virtual-network/quick-create-portal.md)を参照してください。
 
-## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1.Azure 仮想ネットワーク ゲートウェイを作成する
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1.VPN Gateway 仮想ネットワーク ゲートウェイを作成する
 
-仮想ネットワークのために、アクティブ/アクティブ モードで仮想ネットワークの VPN Gateway 仮想ネットワーク ゲートウェイを作成します。 ゲートウェイを作成する際には、2 つのゲートウェイ インスタンスについて既存のパブリック IP アドレスを使用するか、新しいパブリック IP を作成するかを選ぶことができます。 これらのパブリック IP は、Virtual WAN サイトを設定するときに使用します。 アクティブ/アクティブ モードに関する詳細については、[アクティブ/アクティブ接続の構成](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)に関するページを参照してください。
+アクティブ/アクティブ モードで、仮想ネットワークのために **VPN Gateway** 仮想ネットワーク ゲートウェイを作成します。 ゲートウェイを作成する際には、2 つのゲートウェイ インスタンスについて既存のパブリック IP アドレスを使用するか、新しいパブリック IP を作成するかを選ぶことができます。 これらのパブリック IP は、Virtual WAN サイトを設定するときに使用します。 アクティブ/アクティブ VPN ゲートウェイと構成の手順に関する詳細については、[アクティブ/アクティブ VPN ゲートウェイの構成](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)に関する記事を参照してください。
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>アクティブ/アクティブ モードの設定
 

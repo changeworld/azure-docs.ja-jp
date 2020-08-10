@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5fe8d261cb6804ffdf2cbe4f543db29336c4c78b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337179"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -63,11 +63,8 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 
 ### <a name="create-device-templates"></a>デバイス テンプレートを作成する
 
-[IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md) を使用すると、埋め込みデバイス コードを記述せずに、IoT Central でデバイスを統合できます。 IoT プラグ アンド プレイ (プレビュー) の中核となるのは、デバイスの機能を記述するデバイス機能モデル スキーマです。 IoT Central アプリケーション内のデバイス テンプレートでは、これらの IoT プラグ アンド プレイ (プレビュー) デバイス機能モデルを使用しています。
-
 ソリューション ビルダーには、デバイス テンプレート作成のためのオプションがいくつか用意されています。
 
-- [Azure Certified for IoT デバイス カタログ](https://aka.ms/iotdevcat)からデバイス機能モデルをインポートし、次に、IoT Central アプリケーションで必要とされるクラウド プロパティ、カスタマイズ、およびダッシュボードを追加します。
 - IoT Central でデバイス テンプレートを設計してから、そのデバイス機能モデルをデバイス コードに実装します。
 - Visual Studio Code を使用してデバイス機能モデルを作成し、モデルをリポジトリに発行します。 モデルからデバイス コードを実装し、デバイスを IoT Central アプリケーションに接続します。 IoT Central によって、リポジトリからデバイス機能モデルが検索され、シンプルなデバイス テンプレートが自動的に作成されます。
 - Visual Studio Code を使用してデバイス機能モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス機能モデルを手動でインポートしてから、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、およびダッシュボードを追加します。
@@ -149,7 +146,6 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 - 現在、IoT Central は、米国、ヨーロッパ、アジア太平洋、オーストラリア、英国、日本で使用できます。
 - 場所が英国の場合および日本の場合、**カスタム アプリケーション (レガシ)** アプリケーション テンプレートは使用できません。
 - デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
-- [IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)のサポートはプレビュー段階であり、一部のリージョンでのみサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -158,7 +154,6 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 - [IoT ソリューションを作成するための Azure のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)を把握する。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
 - 実際に [Azure IoT Central アプリケーションを作成](quick-deploy-iot-central.md)してみる。
-- [IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md)の詳細を確認する。
 - [Azure IoT Edge デバイスを接続する](./tutorial-add-edge-as-leaf-device.md)方法について学習する。
 - [Azure IoT のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)の詳細を確認する。
 

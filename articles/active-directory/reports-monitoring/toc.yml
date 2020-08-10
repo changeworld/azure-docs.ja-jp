@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: ログをイベント ハブにストリーミングする
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: ログ分析ウィザード
+      href: tutorial-log-analytics-wizard.md
 - name: 概念
   items:
     - name: レポートと監視のデプロイを計画する
@@ -84,6 +86,8 @@
           href: troubleshoot-missing-data-download.md
         - name: レポート用の Graph API にアクセスできない
           href: troubleshoot-graph-api.md
+        - name: 検証済みドメインの変更に関する監査データ
+          href: troubleshoot-audit-data-verified-domain.md
 - name: リファレンス
   expanded: true
   items:

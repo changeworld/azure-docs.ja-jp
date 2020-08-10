@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: azure-migrate-seo
-  ms.openlocfilehash: 732870bef2311ac13afb9a6e2a1a329fdd3905e2
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: e2cee85efd6c4aea51f41d2cd8a7c41f4c881114
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86522314"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87090724"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -91,6 +91,8 @@ landingContent:
       url: tutorial-postgresql-azure-postgresql-online.md
     - text: RDS PostgreSQL を Azure DB for PostgreSQL に移行する
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
+    - text: ポータルを使用してオンラインで Azure DB for PostgreSQL インスタンスの間で移行する
+      url: tutorial-azure-postgresql-to-azure-postgresql-online-portal.md
     - text: Azure DB for MySQL に移行する - オンライン
       url: tutorial-mysql-azure-mysql-online.md
     - text: RDS MySQL を Azure DB for MySQL に移行する - オンライン

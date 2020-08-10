@@ -18,6 +18,8 @@
   items:
     - name: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
       href: howto-create-private-cluster-4x.md
+    - name: Azure Red Hat OpenShift 4 クラスターのプル シークレットを更新する
+      href: howto-add-update-pull-secret.md
     - name: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
       href: dns-forwarding.md
     - name: Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する
@@ -26,6 +28,12 @@
           href: configure-azure-ad-cli.md
         - name: Azure Active Directory 認証を構成する (ポータル)
           href: configure-azure-ad-ui.md
+    - name: Velero を使用してアプリケーションのバックアップと復元を作成する
+      items:
+        - name: Velero を使用してクラスター アプリケーションのバックアップを作成する
+          href: howto-create-a-backup.md
+        - name: Velero を使用してクラスター アプリケーションの復元を作成する
+          href: howto-create-a-restore.md
     - name: Azure Red Hat OpenShift 4 の監視とログ記録
       items:
         - name: Azure Red Hat OpenShift 4 における Azure Monitor for containers (プレビュー)
@@ -67,6 +75,10 @@
               href: cluster-administration-cluster-admin-role.md
             - name: 2 - Azure Red Hat OpenShift 3.11 でセキュリティ コンテキスト制約を管理する
               href: cluster-administration-security-context-constraints.md
+- name: 概念
+  items:
+    - name: Azure Red Hat OpenShift 4 クラスターのネットワーク
+      href: concepts-networking.md
 - name: リファレンス
   items:
     - name: Azure Red Hat OpenShift CLI

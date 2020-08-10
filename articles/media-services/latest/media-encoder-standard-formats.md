@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053234"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standard Encoder の形式およびコーデック
 
-この記事では、[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](customize-encoder-presets-how-to.md)」を参照してください。
+この記事では、[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](customize-encoder-presets-how-to.md)」を参照してください。
 
 ## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 
@@ -36,7 +36,7 @@ ms.locfileid: "79227127"
 | Windows Media Video (WMV)/ASF (.wmv、.asf) |はい |
 | AVI (非圧縮 8-bit/10-bit) (.avi) |はい |
 | MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv) |はい |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |はい |
+| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |はい |
 | Matroska/WebM (.mkv) |はい |
 | WAVE/WAV (.wav) |はい |
 | QuickTime (.mov) |はい |

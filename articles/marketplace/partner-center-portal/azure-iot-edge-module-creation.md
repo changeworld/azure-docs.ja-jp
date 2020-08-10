@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119295"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520274"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する
 
@@ -286,13 +286,13 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 ### <a name="plan-overview"></a>プランの概要
 
-このタブでは、パートナー センターの同じオファー内でさまざまなプラン オプションを指定できます。 このようなプランは以前、SKU、つまり、Stock Keeping Unit と呼ばれていました。 プランの違いとは、グローバル クラウド、Government クラウド、プランで参照される画像など、利用できるクラウドの違いです。 マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+このタブでは、パートナー センターの同じオファー内でさまざまなプラン オプションを指定できます。 プラン (以前は SKU と呼ばれていました) は、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
 
 プランの作成後、 **[プランの概要]** タブが表示されます。
 
 - プラン名
 - 価格モデル
-- クラウドの可用性 (グローバルまたは Government)
+- Azure リージョン (グローバルまたは Government)
 - 現在の公開状態
 - 利用できるアクション
 
@@ -329,7 +329,7 @@ IoT Edge モジュールのオファーのすべてのプランは、自動的�
 
 #### <a name="azure-government-certifications"></a>Azure Government の認定資格
 
-このオプションは、 **[クラウドの使用可能性]** で **[Azure Government]** を選択した場合にのみ表示されます。
+このオプションは、 **[Azure リージョン]** で **[Azure Government]** を選択した場合にのみ表示されます。
 
 Azure Government サービスでは、特定の政府の規制および要件の対象となるデータが処理されます。 FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4、CJIS などです。 これらのプログラムの認定資格を認識させるため、認定資格について説明するリンクを 100 個まで提供することができます。 プログラムのリスト登録に直接リンクするか、独自の Web サイトにリンクできます。 これらのリンクは、Azure Government の顧客にのみ表示されます。
 
@@ -345,7 +345,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 (オファーではなく) プランについて簡単にまとめた説明です。 この概要は Azure Marketplace の検索結果に表示されます。最大 100 文字を入力できます。
 
-### <a name="plan-description"></a>プラン説明
+### <a name="plan-description"></a>プランの説明
 
 このプラン独特の要素やオファーに含まれる他のプラントの違いを説明します。 オファーについては説明しないでください。プランの説明だけです。 この説明は Azure Marketplace と Azure portal のオファーのリスト登録ページに表示されます。 プラン概要に入力したものと同じ内容にすることができます。最大 2,000 文字を入力できます。
 

@@ -8,26 +8,23 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07857feb2e5552429c445b22c4c4b2f121f29a93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976491"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292540"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>トラブルシューティングの概要、フィードバック、サポート
+# <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows Virtual Desktop のトラブルシューティングの概要、フィードバック、およびサポート
 
 >[!IMPORTANT]
->このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[この記事](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)を参照してください。
 
 この記事では、Windows Virtual Desktop 環境の設定中に発生することがある問題の概要とその問題の解決方法について説明しています。
 
-## <a name="report-issues-during-public-preview"></a>パブリック プレビュー中の問題の報告
+## <a name="report-issues"></a>レポートに関する問題
 
-Spring 2020 リリースのパブリック プレビュー中に問題を報告したり機能を提案したりするには、[Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスしてください。 Tech Community を使用して、ベスト プラクティスについて話し合ったり、新機能を提案したり投票したりすることができます。 パブリック プレビュー リリースに関連する問題を報告する場合は、問題の種類に **Spring 2020 Update (Preview)** というラベルを付けてください。
+Azure Resource Manager 統合を使用して Windows Virtual Desktop の問題を報告したり、機能を提案したりするには、[Windows Virtual Desktop の Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスしてください。 Tech Community を使用して、ベスト プラクティスについて話し合ったり、新機能を提案したり投票したりすることができます。
 
 投稿でヘルプを要求したり、新しい機能を提案したりするときは、できるだけ詳細にトピックを記述してください。 詳細情報は、他のユーザーが質問に回答したり、投票を提案している機能を理解したりするのに役立ちます。
 

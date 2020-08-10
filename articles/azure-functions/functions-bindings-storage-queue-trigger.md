@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559911"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564046"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -163,7 +163,7 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
 }
 ```
 
-*_\_init_\_.py* のコードによってパラメーターが `func.ServiceBusMessage` として宣言され、関数でキュー メッセージを読み取ることができるようになります。
+*_\_init_\_.py* のコードによってパラメーターが `func.QueueMessage` として宣言され、関数でキュー メッセージを読み取ることができるようになります。
 
 ```python
 import logging
@@ -351,17 +351,17 @@ public class QueueTriggerDemo {
 
 # <a name="python"></a>[Python](#tab/python)
 
-[QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python) として型指定されたパラメーターを使用して、キュー メッセージにアクセスします。
+[QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python) として型指定されたパラメーターを使用して、キュー メッセージにアクセスします。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) 注釈を使用すると、関数をトリガーしたキュー メッセージにアクセスできます。
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) 注釈を使用すると、関数をトリガーしたキュー メッセージにアクセスできます。
 
 ---
 
 ## <a name="message-metadata"></a>メッセージのメタデータ
 
-キュー トリガーは、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)を提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) クラスのメンバーです。
+キュー トリガーは、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)を提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) クラスのメンバーです。
 
 |プロパティ|種類|説明|
 |--------|----|-----------|

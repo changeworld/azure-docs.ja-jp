@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、Swift - Speech サービス
+title: クイック スタート:iOS 上で Swift を使用して音声を合成する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: iOS 上で Swift と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 8ce7d963e1d4a3514a0e60435634ba4f4a9cb009
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e71717bdacbc3c6eb08fbdc8d56ec19c26a1d114
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391283"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062286"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS 上で Swift と Speech SDK を使用して音声を合成する
 

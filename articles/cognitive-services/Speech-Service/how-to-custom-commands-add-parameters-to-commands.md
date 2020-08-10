@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362375"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524303"
 ---
 # <a name="add-parameters-to-commands"></a>コマンドにパラメーターを追加する
 
@@ -62,8 +62,11 @@ ms.locfileid: "85362375"
        
         
    1. 定義済み入力値を追加するには、 **[Add a predefined input]\(定義済みの入力を追加\)** を選択し、 **[新しい項目]** ウィンドウで、上の表に示されているように **[名前]** を入力します。 今回の場合は別名を使用しないため、空白のままにします。 
+
     > [!div class="mx-imgBorder"]
-        > ![パラメーターの作成](media/custom-commands/create-on-off-parameter.png)
+
+    > ![パラメーターの作成](media/custom-commands/create-on-off-parameter.png)
+
    1. パラメーターのすべての構成を保存するには、 **[保存]** を選択します。
  
  ### <a name="add-subjectdevice-parameter"></a>SubjectDevice パラメーターを追加する 

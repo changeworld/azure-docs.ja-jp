@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics の SQL プールへの取り込み
+title: SQL プールにデータを取り込む
 description: Azure Synapse Analytics の SQL プールにデータを取り込む方法について説明します
 services: synapse-analytics
 author: djpmsft
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: c093a424ecf085c59501ee3d480838cc30c2ebf4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 63e83e69e5e09c17b2a2ddb5ca7bee6474e2fddd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963038"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386675"
 ---
-# <a name="ingesting-data-into-a-sql-pool"></a>SQL プールへのデータの取り込み
+# <a name="ingest-data-into-a-sql-pool"></a>SQL プールにデータを取り込む
 
 この記事では、Azure Synapse Analytics を使用して、Azure Data Lake Gen 2 ストレージ アカウントから SQL プールにデータを取り込む方法について説明します。
 

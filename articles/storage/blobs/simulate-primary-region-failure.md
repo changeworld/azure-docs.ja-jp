@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: f7a792eea28c6a6d05c4f295241291fdf2449467
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a9aa58ec990170df99f330f67991fff7b61c2b49
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858900"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429834"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>チュートリアル:プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
 

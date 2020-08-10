@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f8f1cceb5cfee4bf910674ecd50c7fba1d5c021
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659477"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318370"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
@@ -28,7 +28,7 @@ Azure Monitor は、フル スタックの統合監視サービスになり、�
 新しいプラットフォームの使用を開始し、新しいプラットフォームでアラートを再作成することをお勧めします。 多数のアラートを作成しているお客様のために、中断や追加コストなしで既存のクラシック アラートを新しいアラート システムに移動するための[自主的移行ツール](alerts-using-migration-tool.md)を[段階的に展開](alerts-understand-migration.md#rollout-phases)する作業が進んでいます。
 
 > [!IMPORTANT]
-> アクティビティ ログで作成されたクラシック アラート ルールは非推奨や移行の対象になることはありません。 アクティビティ ログで作成されたすべてのクラシック アラート ルールには、新しい Azure Monitor のアラートからそのままアクセスし、使用できます。 詳細については、「[Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-activity-log.md)」を参照してください。 同様に、Service Health に関するアラートには、新しい Service Health セクションからそのままアクセスし、使用できます。 詳細については、[サービスの正常性通知のアラート](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関するページを参照してください。
+> アクティビティ ログで作成されたクラシック アラート ルールは非推奨や移行の対象になることはありません。 アクティビティ ログで作成されたすべてのクラシック アラート ルールには、新しい Azure Monitor のアラートからそのままアクセスし、使用できます。 詳細については、「[Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](./alerts-activity-log.md)」を参照してください。 同様に、Service Health に関するアラートには、新しい Service Health セクションからそのままアクセスし、使用できます。 詳細については、[サービスの正常性通知のアラート](../../service-health/alerts-activity-log-service-notifications-portal.md)に関するページを参照してください。
 
 ## <a name="unified-metrics-and-alerts-in-application-insights"></a>Application Insights でのメトリックとアラートの統合
 
@@ -36,29 +36,29 @@ Azure Monitor の新しいメトリック プラットフォームは、Applicat
 
 Application Insights での新しい監視とアラートの統合には、以下が含まれます。
 
-- **Application Insights プラットフォーム メトリック** – Application Insights 製品から一般的な構築済みのメトリックを提供します。 詳細については、[新しい Azure Monitor での Application Insights のプラットフォーム メトリック](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)の使用に関する記事を参照してください。
-- **Application insights の可用性と Web テスト** - Web アプリまたはサーバーの応答性と可用性を評価する機能を提供します。 詳細については、[新しい Azure Monitor での Application Insights の可用性テストとアラート](../../azure-monitor/app/monitor-web-app-availability.md)の使用に関する記事を参照してください。
-- **Application Insights カスタム メトリック** – 監視とアラート用の独自のメトリックを定義して発行できます。 詳細については、[新しい Azure Monitor での Application Insights のカスタム メトリック](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)の使用に関する記事を参照してください。
-- **Application Insights エラーの異常 (スマート検出の一部)** – Web アプリで HTTP 要求または依存する呼び出しの失敗率が異常に増加した場合に、ほぼリアルタイムで自動的に通知します。 詳細については、[[スマート検出 - 失敗の異常]](https://docs.microsoft.com/azure/azure-monitor/app/proactive-failure-diagnostics) の使用に関するこの記事を参照してください。
+- **Application Insights プラットフォーム メトリック** – Application Insights 製品から一般的な構築済みのメトリックを提供します。 詳細については、[新しい Azure Monitor での Application Insights のプラットフォーム メトリック](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)の使用に関する記事を参照してください。
+- **Application insights の可用性と Web テスト** - Web アプリまたはサーバーの応答性と可用性を評価する機能を提供します。 詳細については、[新しい Azure Monitor での Application Insights の可用性テストとアラート](../app/monitor-web-app-availability.md)の使用に関する記事を参照してください。
+- **Application Insights カスタム メトリック** – 監視とアラート用の独自のメトリックを定義して発行できます。 詳細については、[新しい Azure Monitor での Application Insights のカスタム メトリック](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)の使用に関する記事を参照してください。
+- **Application Insights エラーの異常 (スマート検出の一部)** – Web アプリで HTTP 要求または依存する呼び出しの失敗率が異常に増加した場合に、ほぼリアルタイムで自動的に通知します。 詳細については、[[スマート検出 - 失敗の異常]](../app/proactive-failure-diagnostics.md) の使用に関するこの記事を参照してください。
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>他の Azure リソースでのメトリックとアラートの統合
 
-2018 年 3 月以降、Azure リソースに対して、次世代のアラートと多次元監視を利用できるようになっています。 新しいメトリック プラットフォームとアラートは高速であり、ほぼリアルタイムの機能を提供するようになっています。 さらに重要なのは、新しいメトリック プラットフォームでは、アラートがより高い粒度で提供されることです。これは、新しいプラットフォームには、特定の値の組み合わせ、条件、または操作でフィルター処理できるディメンション オプションが含まれているためです。 新しい Azure Monitor のすべてのアラートと同じように、新しいメトリック アラートは、ActionGroups を使用して拡張でき、電子メールや Webhook による通知に加え、SMS、Voice、Azure Function、Automation Runbook などによる通知まで展開できます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
+2018 年 3 月以降、Azure リソースに対して、次世代のアラートと多次元監視を利用できるようになっています。 新しいメトリック プラットフォームとアラートは高速であり、ほぼリアルタイムの機能を提供するようになっています。 さらに重要なのは、新しいメトリック プラットフォームでは、アラートがより高い粒度で提供されることです。これは、新しいプラットフォームには、特定の値の組み合わせ、条件、または操作でフィルター処理できるディメンション オプションが含まれているためです。 新しい Azure Monitor のすべてのアラートと同じように、新しいメトリック アラートは、ActionGroups を使用して拡張でき、電子メールや Webhook による通知に加え、SMS、Voice、Azure Function、Automation Runbook などによる通知まで展開できます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](./alerts-metric.md)」を参照してください。
 Azure リソースの新しいメトリックは、以下のように使用できます。
 
-- **Azure Monitor の標準プラットフォーム メトリック** – さまざまな Azure サービスと製品から一般的な設定済みのメトリックを提供します。 詳細については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)と[Azure Monitor でのメトリック アラートのサポート](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts)に関する記事を参照してください。
-- **Azure Monitor のカスタム メトリック**– Azure Diagnostics エージェントを含む、ユーザーが操作するソースからメトリックを提供します。 詳細については、記事「[Azure Monitor のカスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)」を参照してください。 カスタム メトリックを使用して、[Windows Azure Diagnostics エージェント](../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md)と [InfluxData Telegraf エージェント](../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md)によって収集されたメトリックを公開することもできます。
+- **Azure Monitor の標準プラットフォーム メトリック** – さまざまな Azure サービスと製品から一般的な設定済みのメトリックを提供します。 詳細については、[Azure Monitor でサポートされるメトリック](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)と[Azure Monitor でのメトリック アラートのサポート](./alerts-metric-overview.md#supported-resource-types-for-metric-alerts)に関する記事を参照してください。
+- **Azure Monitor のカスタム メトリック**– Azure Diagnostics エージェントを含む、ユーザーが操作するソースからメトリックを提供します。 詳細については、記事「[Azure Monitor のカスタム メトリック](./metrics-custom-overview.md)」を参照してください。 カスタム メトリックを使用して、[Windows Azure Diagnostics エージェント](./collect-custom-metrics-guestos-resource-manager-vm.md)と [InfluxData Telegraf エージェント](./collect-custom-metrics-linux-telegraf.md)によって収集されたメトリックを公開することもできます。
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>クラシック監視およびアラート プラットフォームの提供終了
 
-前述のとおり、Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) で現在使用できるクラシック監視およびアラート プラットフォームは、新しいシステムへの引継ぎが進行中であるため、数か月後に提供終了される予定です。
+前述のとおり、Azure portal の[アラート (クラシック) セクション](./alerts-classic.overview.md) で現在使用できるクラシック監視およびアラート プラットフォームは、新しいシステムへの引継ぎが進行中であるため、数か月後に提供終了される予定です。
 古いクラシックな監視とアラートは、関連する API、Azure portal のインターフェイス、およびその中のサービスも含めて、2019年 8 月 31 日付けで提供が終了します。 具体的には、次の機能が廃止されます。
 
-- Azure portal の [アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md)で現在利用できる Azure リソースの古い (クラシック) メトリックとアラート; [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) リソースとしてアクセス可能
-- Application Insights の古い (クラシック) プラットフォームとカスタム メトリック、Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) で現在使用でき、[microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) リソースとしてアクセス可能なアラート
-- Azure portal で [Application Insights 内のスマート検出](../../azure-monitor/app/proactive-diagnostics.md)として現在使用できる古い (クラシック) エラーの異常; Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md)に表示されるように構成されたアラート
+- Azure portal の [アラート (クラシック) セクション](./alerts-classic.overview.md)で現在利用できる Azure リソースの古い (クラシック) メトリックとアラート; [microsoft.insights/alertrules](/rest/api/monitor/alertrules) リソースとしてアクセス可能
+- Application Insights の古い (クラシック) プラットフォームとカスタム メトリック、Azure portal の[アラート (クラシック) セクション](./alerts-classic.overview.md) で現在使用でき、[microsoft.insights/alertrules](/rest/api/monitor/alertrules) リソースとしてアクセス可能なアラート
+- Azure portal で [Application Insights 内のスマート検出](../app/proactive-diagnostics.md)として現在使用できる古い (クラシック) エラーの異常; Azure portal の[アラート (クラシック) セクション](./alerts-classic.overview.md)に表示されるように構成されたアラート
 
-対応する [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)、[CLI](../../azure-monitor/platform/alerts-classic-portal.md)、[Azure portal ページ](../../azure-monitor/platform/alerts-classic-portal.md)、および[リソース テンプレート](../../azure-monitor/platform/alerts-enable-template.md)を含むすべてのクラシック監視およびアラート システムは、2019 年 8 月末まで使用可能なままです。 
+対応する [API](/rest/api/monitor/alertrules)、[PowerShell](./alerts-classic-portal.md)、[CLI](./alerts-classic-portal.md)、[Azure portal ページ](./alerts-classic-portal.md)、および[リソース テンプレート](./alerts-enable-template.md)を含むすべてのクラシック監視およびアラート システムは、2019 年 8 月末まで使用可能なままです。 
 
 2019 年 8 月末時点の Azure Monitor:
 
@@ -75,7 +75,7 @@ Azure リソースの新しいメトリックは、以下のように使用で�
 
 ## <a name="pricing-for-migrated-alert-rules"></a>移行済みのアラート ルールの価格
 
-Azure Monitor の[クラシック アラート](../../azure-monitor/platform/alerts-classic.overview.md)を新しいアラート エクスペリエンスに移行するのに役立つ移行ツールのロール アウトが進んでいます。 移行済みのアラート ルールとそれに対応する移行済みのアクション グループ (電子メール、Webhook、または LogicApp) は無料のままです。 クラシック アラートが持っていた、しきい値、集計の種類、集計の粒度を編集する機能などは、移行済みのアラート ルールでも引き続き無料で利用できます。 ただし、移行済みのアラート ルールを、新しいアラート プラットフォームの機能、通知、またはアクションの種類を使用するように編集した場合は、該当する料金が適用されます。 アラート ルールと通知の価格の詳細については、[「Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
+Azure Monitor の[クラシック アラート](./alerts-classic.overview.md)を新しいアラート エクスペリエンスに移行するのに役立つ移行ツールのロール アウトが進んでいます。 移行済みのアラート ルールとそれに対応する移行済みのアクション グループ (電子メール、Webhook、または LogicApp) は無料のままです。 クラシック アラートが持っていた、しきい値、集計の種類、集計の粒度を編集する機能などは、移行済みのアラート ルールでも引き続き無料で利用できます。 ただし、移行済みのアラート ルールを、新しいアラート プラットフォームの機能、通知、またはアクションの種類を使用するように編集した場合は、該当する料金が適用されます。 アラート ルールと通知の価格の詳細については、[「Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
 
 アラート ルールに対して料金が発生する可能性があるケースの例を次に示します。
 
@@ -88,5 +88,6 @@ Azure Monitor の[クラシック アラート](../../azure-monitor/platform/ale
 
 ## <a name="next-steps"></a>次のステップ
 
-* [新しい統合された Azure Monitor](../../azure-monitor/overview.md)について確認する。
-* 新しい [Azure のアラート](../../azure-monitor/platform/alerts-overview.md)の詳細を確認する。
+* [新しい統合された Azure Monitor](../overview.md)について確認する。
+* 新しい [Azure のアラート](./alerts-overview.md)の詳細を確認する。
+

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074000"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -41,7 +41,7 @@ Azure Fence エージェントでは、追加の仮想マシンをデプロイ�
 ![SLES における Pacemaker の概要](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合、関係する VM と SBD デバイスをホストする VM が [NVA](https://azure.microsoft.com/solutions/network-appliances/) などのその他のデバイスを通過しないようにすることが、完全なクラスター構成の全体的な信頼性に必要です。 このようにしないと、NVA の問題とメンテナンス イベントがクラスター構成全体の安定性と信頼性に負の影響を与える可能性があります。 このような障害を回避するには、Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合に、クラスター化されたノードと NVA や類似のデバイスを介した SBD デバイスなどの間のトラフィックをルーティングする、NVA のルーティング規則または[ユーザー定義のルーティング規則](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)を定義しないようにする必要があります。 
+> Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合、関係する VM と SBD デバイスをホストする VM が [NVA](https://azure.microsoft.com/solutions/network-appliances/) などのその他のデバイスを通過しないようにすることが、完全なクラスター構成の全体的な信頼性に必要です。 このようにしないと、NVA の問題とメンテナンス イベントがクラスター構成全体の安定性と信頼性に負の影響を与える可能性があります。 このような障害を回避するには、Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合に、クラスター化されたノードと NVA や類似のデバイスを介した SBD デバイスなどの間のトラフィックをルーティングする、NVA のルーティング規則または[ユーザー定義のルーティング規則](../../../virtual-network/virtual-networks-udr-overview.md)を定義しないようにする必要があります。 
 >
 
 ## <a name="sbd-fencing"></a>SBD フェンス
@@ -583,7 +583,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) を使って作成してください
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) または [Azure CLI](../../../role-based-access-control/custom-roles-cli.md) を使って作成してください
 
 入力ファイルには次の内容を使用します。 実際のサブスクリプションに合わせて内容を調整する必要があります。つまり、c276fc76-9cd4-44c9-99a7-4fd71546436e and e91d47c4-76f3-4271-a796-21b4ecfe3624 は、ご利用のサブスクリプションの ID に置き換えます。 ご利用のサブスクリプションが 1 つしかない場合は、AssignableScopes の 2 つ目のエントリは削除してください。
 
@@ -647,11 +647,11 @@ sudo crm configure property stonith-timeout=900
 > 監視およびフェンス操作は逆シリアル化されます。 その結果、長時間実行されている監視操作と同時フェンス イベントがある場合、既に実行されている監視操作により、クラスターのフェールオーバーに遅延は発生しません。
 
 > [!TIP]
->Azure Fence Agent では、[標準 ILB を使用した VM 用のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)に関する記事で説明されているように、使用可能なソリューションと共に、パブリック エンドポイントへの送信接続が必要です。  
+>Azure Fence Agent では、[標準 ILB を使用した VM 用のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)に関する記事で説明されているように、使用可能なソリューションと共に、パブリック エンドポイントへの送信接続が必要です。  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure のスケジュール化されたイベントの Pacemaker 構成
 
-Azure では、[スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
+Azure では、[スケジュール化されたイベント](../../linux/scheduled-events.md)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
 
 1. **[A]** **azure-events** エージェントのパッケージが既にインストールされ、最新であることを確認します。 
 

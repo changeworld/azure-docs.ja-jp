@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: アプリ管理者のアクセス許可を委任する
               href: roles-delegate-app-roles.md
+        - name: グループを使用してロールの割り当てを管理する
+          items:
+            - name: グループベースのロールの割り当て (プレビュー)
+              href: roles-groups-concept.md
+            - name: ロールを割り当て可能なグループを作成する
+              href: roles-groups-create-eligible.md
+            - name: ロールをグループに割り当てる
+              href: roles-groups-assign-role.md
+            - name: グループからロールの割り当てを削除する
+              href: roles-groups-remove-assignment.md
+            - name: グループのロールの割り当てを確認する
+              href: roles-groups-view-assignments.md
+            - name: PIM でグループをロールの対象にする
+              href: roles-groups-pim-eligible.md
+            - name: FAQ とトラブルシューティング
+              href: roles-groups-faq-troubleshooting.md
         - name: タスク別の最小特権ロール
           href: roles-delegate-by-task.md
         - name: Microsoft 365 のロール

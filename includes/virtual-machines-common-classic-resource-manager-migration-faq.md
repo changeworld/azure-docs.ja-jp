@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837878"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527212"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>移行にはどれくらいの時間が必要ですか?
 
@@ -29,7 +29,7 @@ IaaS VM (クラシック) がアクティブであるか、またはこれを停
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>"NewClassicVMCreationNotAllowedForSubscription" というエラーが発生するのはなぜですか?
 
-提供終了プロセスの一環として、新しいお客様は IaaS VM (クラシック) を利用できなくなりました。 お客様は新しい顧客として特定されたため、お客様の操作は承認されませんでした。 [ARM を使った Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) を使用することを強くお勧めします。 ARM を使用して Azure VM を使用できない場合は、サブスクリプションのホワイトリスト登録についてサポートにお問い合わせください。
+提供終了プロセスの一環として、新しいお客様は IaaS VM (クラシック) を利用できなくなりました。 お客様は新しい顧客として特定されたため、お客様の操作は承認されませんでした。 [ARM を使った Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) を使用することを強くお勧めします。 ARM を使用して Azure VM を使用できない場合は、サブスクリプションを許可リストに追加するよう、サポートにお問い合わせください。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>この移行計画は Azure 仮想マシン上で実行されている既存のサービスやアプリケーションに影響しますか? 
 

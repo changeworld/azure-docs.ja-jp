@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204809031bf0d32a998d8bcc435fe2500a025fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730936"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386947"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -51,7 +51,7 @@ Azure AD 管理者は、アクセス パネルを使用して、ユーザーが�
 
 共有アカウントは、管理作業の強化、使いやすさの向上だけでなく、セキュリティも強化します。 資格情報の使用権限を持つユーザーには、共有パスワードが表示されるのではなく、パスワードを調整された認証フローの一部として使用する権限が与えられます。 さらに、一部のパスワード SSO アプリケーションには、Azure AD を使って定期的にパスワードをロールオーバー (更新) するオプションがあります。 システムは、大規模で複雑なパスワードを使って、アカウントのセキュリティを強化します。 管理者は、アプリケーションへのアクセス権の付与または取り消しを簡単に行うことができ、アカウントへのアクセス権を持つユーザーおよび過去にアプリケーションにアクセスしたユーザーを把握できます。
 
-Azure AD では、あらゆる種類のパスワード シングル サインオン アプリケーションについて、Enterprise Mobility Suite (EMS) または Azure AD Premium ライセンス プランを対象とする共有アカウントがサポートされます。 アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、 [カスタム SSO アプリケーション](../manage-apps/configure-single-sign-on-non-gallery-applications.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
+Azure AD では、あらゆる種類のパスワード シングル サインオン アプリケーションについて、Enterprise Mobility Suite (EMS) または Azure AD Premium ライセンス プランを対象とする共有アカウントがサポートされます。 アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、 [カスタム SSO アプリケーション](../manage-apps/what-is-single-sign-on.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
 
 アカウントの共有を有効にする Azure AD の機能は、次のとおりです。
 

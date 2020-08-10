@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054477"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure で仮想マシンをバックアップする
 
-[Azure Backup](backup-overview.md) では、オンプレミスのマシンとアプリ、および Azure VM をバックアップします。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) と Azure PowerShell を使用して Azure VM をバックアップする方法を紹介します。 このクイックスタートでは、ARM テンプレートをデプロイして Recover Services コンテナーを作成するプロセスを中心に説明します。 ARM テンプレートの開発に関する詳細については、[Azure Resource Manager ドキュメント](/azure/azure-resource-manager/)と[テンプレート リファレンス](/azure/templates/microsoft.recoveryservices/allversions)をご覧ください。
+[Azure Backup](backup-overview.md) では、オンプレミスのマシンとアプリ、および Azure VM をバックアップします。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) と Azure PowerShell を使用して Azure VM をバックアップする方法を紹介します。 このクイックスタートでは、ARM テンプレートをデプロイして Recover Services コンテナーを作成するプロセスを中心に説明します。 ARM テンプレートの開発に関する詳細については、[Azure Resource Manager ドキュメント](../azure-resource-manager/index.yml)と[テンプレート リファレンス](/azure/templates/microsoft.recoveryservices/allversions)をご覧ください。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

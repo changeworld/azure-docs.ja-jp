@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282774"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) へのレプリケーションを構成する 
 
@@ -24,7 +24,7 @@ ms.locfileid: "84667881"
   
 - Azure SQL Edge のインスタンスは、パブリッシャーのプッシュ サブスクライバーである必要があります。
 - パブリッシャーとディストリビューターは、次のいずれかが可能です。
-   - オンプレミスで実行されている SQL Server のインスタンス、または Azure 仮想マシンで実行されている SQL Server のインスタンス。 詳細については、[Azure Virtual Machines 上の SQL Server の概要](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/)に関するページをご覧ください。 SQL Server インスタンスでは、SQL Server 2016 よりも大きいバージョンが使用されている必要があります。
+   - オンプレミスで実行されている SQL Server のインスタンス、または Azure 仮想マシンで実行されている SQL Server のインスタンス。 詳細については、[Azure Virtual Machines 上の SQL Server の概要](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)に関するページをご覧ください。 SQL Server インスタンスでは、SQL Server 2016 よりも大きいバージョンが使用されている必要があります。
    - Azure SQL Managed Instance のインスタンス。 SQL マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)」を参照してください。
 
 - ディストリビューション データベースとレプリケーション エージェントを Azure SQL Edge のインスタンスに配置することはできません。  

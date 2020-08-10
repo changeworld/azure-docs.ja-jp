@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077160"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501527"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -93,8 +93,8 @@ Enterprise Agreement (EA) の課金アカウント (加入契約とも呼ばれ�
 
 EA の課金スコープでは、次のロールがサポートされます。
 
-- **エンタープライズ管理者** – 課金アカウントの設定とアクセスを管理し、すべてのコストを表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。 この EA 課金スコープは、[Cost Management 共同作成者の Azure RBAC ロール](../../role-based-access-control/built-in-roles.md#cost-management-contributor)と同じ機能を持ちます。
-- **エンタープライズ読み取り専用ユーザー** – 課金アカウントの設定、コスト データ、およびコストの構成を表示することができます。 たとえば、予算やエクスポートなどです。 この EA 課金スコープは、[Cost Management 閲覧者の Azure RBAC ロール](../../role-based-access-control/built-in-roles.md#cost-management-reader)と同じ機能を持ちます。
+- **エンタープライズ管理者** – 課金アカウントの設定とアクセスを管理し、すべてのコストを表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。 この EA 課金スコープは、[Cost Management 共同作成者の Azure ロール](../../role-based-access-control/built-in-roles.md#cost-management-contributor)と同じ機能を持ちます。
+- **エンタープライズ読み取り専用ユーザー** – 課金アカウントの設定、コスト データ、およびコストの構成を表示することができます。 たとえば、予算やエクスポートなどです。 この EA 課金スコープは、[Cost Management 閲覧者の Azure ロール](../../role-based-access-control/built-in-roles.md#cost-management-reader)と同じ機能を持ちます。
 - **部門管理者** – 部門の設定 (コスト センターなど) を管理し、すべてのコストにアクセスして表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。  部門管理者と読み取り専用ユーザーがコストを表示できるように、 **[DA ビューの請求額]** の課金アカウント設定を有効にする必要があります。 **[DA ビューの請求額]** が無効になっている場合、部門のユーザーは、たとえアカウントやサブスクリプションの所有者であっても、いずれのレベルでもコストを表示することはできません。
 - **部門の読み取り専用ユーザー** – 部門の設定、コスト データ、およびコストの構成を表示することができます。 たとえば、予算やエクスポートなどです。 **[DA ビューの請求額]** が無効になっている場合、部門のユーザーは、たとえアカウントやサブスクリプションの所有者であっても、いずれのレベルでもコストを表示することはできません。
 - **アカウント所有者** – 登録アカウントの設定 (コスト センターなど) を管理し、すべてのコストを表示し、登録アカウントのコストの構成 (予算やエクスポートなど) を管理することができます。 アカウント所有者と RBAC ユーザーがコストを表示できるように、 **[AO ビューの請求額]** の課金アカウント設定を有効にする必要があります。
@@ -141,10 +141,10 @@ EA の課金スコープとは異なり、顧客契約の課金アカウント�
 
 顧客契約の課金スコープでは、次のロールがサポートされます。
 
-- **所有者** – 課金設定を管理し、すべてのコストにアクセスして表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 共同作成者の Azure RBAC ロール](../../role-based-access-control/built-in-roles.md#cost-management-contributor)と同じ機能を持ちます。
-- **共同作成者** – 課金設定を管理できますが、すべてのコストにアクセスして表示したり、コストの構成を管理したりすることはできません。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 共同作成者の Azure RBAC ロール](../../role-based-access-control/built-in-roles.md#cost-management-contributor)と同じ機能を持ちます。
-- **閲覧者** – 課金設定、コスト データ、およびコストの構成を表示できます。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 閲覧者の Azure RBAC ロール](../../role-based-access-control/built-in-roles.md#cost-management-reader)と同じ機能を持ちます。
-- **請求書管理者** – 請求書の表示と支払い、コストのデータと構成の表示ができます。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 閲覧者の Azure RBAC ロール](../../role-based-access-control/built-in-roles.md#cost-management-reader)と同じ機能を持ちます。
+- **所有者** – 課金設定を管理し、すべてのコストにアクセスして表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 共同作成者の Azure ロール](../../role-based-access-control/built-in-roles.md#cost-management-contributor)と同じ機能を持ちます。
+- **共同作成者** – 課金設定を管理できますが、すべてのコストにアクセスして表示したり、コストの構成を管理したりすることはできません。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 共同作成者の Azure ロール](../../role-based-access-control/built-in-roles.md#cost-management-contributor)と同じ機能を持ちます。
+- **閲覧者** – 課金設定、コスト データ、およびコストの構成を表示できます。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 閲覧者の Azure ロール](../../role-based-access-control/built-in-roles.md#cost-management-reader)と同じ機能を持ちます。
+- **請求書管理者** – 請求書の表示と支払い、コストのデータと構成の表示ができます。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、[Cost Management 閲覧者の Azure ロール](../../role-based-access-control/built-in-roles.md#cost-management-reader)と同じ機能を持ちます。
 - **Azure サブスクリプション作成者** – Azure サブスクリプションの作成、コストの表示、およびコストの構成の管理ができます。 たとえば、予算やエクスポートなどです。 この顧客契約の課金スコープは、EA 加入契約のアカウント所有者のロールと同じ機能を持ちます。
 
 Azure サブスクリプションは、EA 登録アカウントの下に入れ子になっているのと同様に、請求書セクションの下に入れ子になっています。 課金ユーザーは、それぞれのスコープの下にあるサブスクリプションとリソース グループのコスト データにアクセスすることができます。 しかし、Azure portal でリソースを表示したり管理したりすることはできません。 課金ユーザーがコストを表示するには、Azure portal のサービスの一覧で **[コストの管理と請求]** に移動します。 次に、コストにフィルターを適用し、レポートする必要がある特定のサブスクリプションとリソース グループに絞り込みます。

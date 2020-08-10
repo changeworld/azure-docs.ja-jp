@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74901276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038734"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK を使用してストリーミング エンドポイントを管理する  
 
 >[!NOTE]
->必ず、[概要](media-services-streaming-endpoints-overview.md)記事をお読みください。 また、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint) もお読みください。
+>必ず、[概要](media-services-streaming-endpoints-overview.md)記事をお読みください。 また、[StreamingEndpoint](/rest/api/media/operations/streamingendpoint) もお読みください。
 
 この記事では、Azure Media Services .NET SDK を使って次のタスクを実行するためのコードを示します。
 
@@ -150,4 +150,3 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

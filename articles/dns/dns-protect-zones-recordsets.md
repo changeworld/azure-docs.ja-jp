@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 81a58657a4ab8f7403006ce02fb8f585feea86b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbf996a66bf76520002a22169903c7961080e38b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711274"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131533"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -24,7 +24,7 @@ DNS ゾーンと DNS レコードは、重要なリソースです。 DNS ゾー
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-Azure のロールベースのアクセス制御 (RBAC) では、Azure ユーザー、グループ、およびリソースのアクセス権を詳細に管理できます。 RBAC を使用すると、ユーザーが必要とするアクセス レベルを付与することができます。 RBAC を使用したアクセス管理の詳細については、[ロールベースのアクセス制御の概要](../role-based-access-control/overview.md)に関するページを参照してください。
+Azure のロールベースのアクセス制御 (Azure RBAC) では、Azure ユーザー、グループ、およびリソースのアクセス権を詳細に管理できます。 RBAC を使用すると、ユーザーが必要とするアクセス レベルを付与することができます。 RBAC を使用したアクセス管理の詳細については、[Azure ロールベースのアクセス制御の概要 (Azure RBAC)](../role-based-access-control/overview.md) に関するページを参照してください。
 
 ### <a name="the-dns-zone-contributor-role"></a>DNS ゾーン共同作成者ロール
 
@@ -168,7 +168,7 @@ CNAME の管理に使用するアカウントには、CNAME レコードのみ�
 残りの Actions プロパティは、[DNS ゾーン共同作成者組み込みロール](../role-based-access-control/built-in-roles.md#dns-zone-contributor)からコピーしたものです。
 
 > [!NOTE]
-> レコード セットを削除できないようにしながらもレコード セットの更新は許可するようなカスタム RBAC ロールの作成は、効果的な制御方法とは言えません。 レコード セットの削除は防止できますが、変更は自由にできてしまうためです。  レコード セットに対するレコードの追加や削除といった変更が許可されることになり、すべてのレコードを削除してレコード セットを空にすることもできてしまいます。 DNS 解決の視点から見ると、これはレコード セットが削除された場合と同等の影響があります。
+> レコード セットを削除できないようにしながらもレコード セットの更新は許可するような Azure カスタム ロールの使い方は、効果的な制御方法とは言えません。 レコード セットの削除は防止できますが、変更は自由にできてしまうためです。  レコード セットに対するレコードの追加や削除といった変更が許可されることになり、すべてのレコードを削除してレコード セットを空にすることもできてしまいます。 DNS 解決の視点から見ると、これはレコード セットが削除された場合と同等の影響があります。
 
 現時点では、Azure Portal でカスタム ロールを定義することはできません。 カスタム ロールは、Azure PowerShell を使用して次のロール定義に基づいて作成できます。
 

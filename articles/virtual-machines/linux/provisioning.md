@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307064"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080150"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM のプロビジョニング
 一般化されたイメージ (共有イメージ ギャラリーまたはマネージド イメージ) から VM を作成すると、コントロール プレーンによって VM を作成し、VM にパラメーターと設定を渡すことができます。 これは、VM *プロビジョニング*と呼ばれます。 プロビジョニングでは、VM の起動時に VM で使用できる必須の VM Create パラメーター値 (hostname、username、password、SSH キー、customData) がプラットフォームによって作成されます。 
 
 イメージ内に組み込まれているプロビジョニング エージェントは、プラットフォームとのインターフェイスを作成し、複数の独立したプロビジョニング インターフェイスに接続することで、完了したプラットフォームにプロパティとシグナルを設定します。 
 
-プロビジョニング エージェントには、[Azure Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)または [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) を使用できます。 これらは、一般化されたイメージを作成するための[前提条件](create-upload-generic.md)です。
+プロビジョニング エージェントには、[Azure Linux エージェント](../extensions/agent-linux.md)または [cloud-init](./using-cloud-init.md) を使用できます。 これらは、一般化されたイメージを作成するための[前提条件](create-upload-generic.md)です。
 
-プロビジョニング エージェントは、すべての動作保証済み [Azure Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)のサポートを提供します。また、多くの場合、動作保証済みディストリビューションのイメージには、cloud-init と Linux エージェントの両方が付属しています。 これにより、プロビジョニングを処理するための cloud-init のオプションが提供されます。また、Linux エージェントは、[Azure 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)の処理をサポートします。 拡張機能のサポートを提供すると、VM は、VM のパスワード リセット、Azure 監視、Azure バックアップ、Azure Disk encryption などの追加の Azure サービスをサポートする資格を持つことになります。
+プロビジョニング エージェントは、すべての動作保証済み [Azure Linux ディストリビューション](./endorsed-distros.md)のサポートを提供します。また、多くの場合、動作保証済みディストリビューションのイメージには、cloud-init と Linux エージェントの両方が付属しています。 これにより、プロビジョニングを処理するための cloud-init のオプションが提供されます。また、Linux エージェントは、[Azure 拡張機能](../extensions/features-windows.md)の処理をサポートします。 拡張機能のサポートを提供すると、VM は、VM のパスワード リセット、Azure 監視、Azure バックアップ、Azure Disk encryption などの追加の Azure サービスをサポートする資格を持つことになります。
 
 プロビジョニングが完了すると、起動のたびに cloud-init が実行されます。 cloud-init は、ネットワークの変更、一時ディスクのマウント、フォーマット、Linux エージェントの起動など、VM への変更を監視します。 Linux エージェントはサーバー上で継続的に実行され、Azure プラットフォームから "目標状態" (新しい構成) を求めています。そのため、拡張機能をインストールするたびに、エージェントがそれらを処理できるようになります。
 

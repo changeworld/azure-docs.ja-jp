@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: テンプレートの作成 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: テンプレート スペックの作成とデプロイ
+      href: quickstart-create-template-specs.md
     - name: Azure サービス
       items:
         - name: AI + 機械学習
@@ -28,6 +30,8 @@
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databricks
               href: /azure/databricks/scenarios/quickstart-create-databricks-workspace-resource-manager-template?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Data Factory
+              href: ../../data-factory/quickstart-create-data-factory-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Event Hubs
               href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: HDInsight - Hadoop
@@ -114,6 +118,8 @@
           items:
             - name: Advisor
               href: ../../advisor/advisor-alerts-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: オートメーション
+              href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: バックアップ
               href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: コストの管理と請求
@@ -201,6 +207,14 @@
         - name: 3 - パイプラインを作成する
           displayName: Devop
           href: deployment-tutorial-pipeline.md
+    - name: Template Specs
+      items:
+        - name: リンク済みテンプレートで作成する
+          displayName: template specs
+          href: template-specs-create-linked.md
+        - name: リンク済みテンプレートとしてデプロイする
+          displayName: template specs
+          href: template-specs-deploy-linked-template.md
     - name: 高度なテンプレート
       items:
         - name: テンプレート リファレンスの使用
@@ -240,6 +254,8 @@
       href: template-best-practices.md
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
+    - name: Template Specs
+      href: template-specs.md
     - name: クラウドの一貫性を実現するテンプレート
       href: templates-cloud-consistency.md
     - name: デプロイ モード
@@ -288,6 +304,8 @@
         - name: デプロイ スクリプト
           displayName: custom script
           href: deployment-script-template.md
+        - name: デプロイ スクリプト開発環境を作成する
+          href: deployment-script-template-configure-dev.md
         - name: テンプレートをモジュール化する
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
@@ -350,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: Tenant
           href: deploy-to-tenant.md
-        - name: クロス リソース グループ
-          href: cross-resource-group-deployment.md
+        - name: スコープをまたいだデプロイ
+          href: cross-scope-deployment.md
     - name: パラメーターを指定する
       items:
         - name: パラメーター ファイルを作成する

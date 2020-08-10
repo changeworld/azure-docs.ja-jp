@@ -3,14 +3,14 @@ title: HTTP 要求に応答する関数を Azure で作成する
 description: コマンド ラインから関数を作成し、ローカル プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法を学習します。
 ms.date: 03/30/2020
 ms.topic: quickstart
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4aa1a20109bb086229fae96015c5f29c72df6f22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506351"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497190"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>クイック スタート:HTTP 要求に応答する関数を Azure で作成する
 
@@ -111,6 +111,9 @@ Maven により、デプロイ時にプロジェクトの生成を終了する�
 「`Y`」と入力するか、Enter キーを押して確認します。
 
 Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
+
+Azure で Java 11 上で実行するには、pom.xml ファイルの値を変更する必要があります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。 
+
 ::: zone-end  
 プロジェクト フォルダーに移動します。
 
@@ -157,6 +160,8 @@ cd fabrikam-functions
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 これらの設定を変更して、Azure でのリソースの作成方法を制御できます。たとえば、初期デプロイの前に `runtime.os` を `windows` から `linux` に変更することができます。 Maven プラグインでサポートされている設定の完全な一覧については、[構成の詳細](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)に関するページを参照してください。
+
+Java 8 の代わりに、Java 11 で関数アプリを実行する場合は、Java 11 の値を使用して pom.xml ファイルを手動で更新する必要があります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。 Java 11 で実行している場合、次を確認してください。  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 

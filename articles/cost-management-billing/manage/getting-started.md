@@ -5,15 +5,15 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 04/10/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1b63b0316b8314e4c5107ddd3f1d22c1d59cbb08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262097"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281805"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -221,7 +221,7 @@ Azure portal で請求書の詳細を表示するには、分析する請求書�
 - データ転送 (送信)
 - Standard マネージド ディスク
 - Standard マネージド ディスク操作
-- Standard IO - ディスク
+- Standard IO ディスク
 - Standard IO - ブロック BLOB (読み取り)
 - Standard IO - ブロック BLOB (書き込み)
 - Standard IO - ブロック BLOB (削除)

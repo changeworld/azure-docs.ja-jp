@@ -10,15 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134685"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092322"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> Azure Machine Learning R SDK は現在、パブリック プレビューの段階にあります。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このチュートリアルでは、Azure Machine Learning R SDK (プレビュー) を使用して、自動車事故における死亡の可能性を予測するロジスティック回帰モデルを作成します。 Azure Machine Learning のクラウド リソースと R を組み合わせて、モデルのトレーニングとデプロイのためのスケーラブルな環境を実現する方法について見ていきましょう。  
 

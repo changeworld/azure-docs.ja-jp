@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6185cbb871d63cfdf5a4c336944158593b63e4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255661"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372843"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
 >[!IMPORTANT]
->Microsoft Teams のメディア最適化は現在、パブリック プレビューの段階です。 Teams を運用環境のワークロードにデプロイする前に、Teams の最適化されたユーザー エクスペリエンスを評価することをお勧めします。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+>Teams のメディア最適化は、Microsoft 365 Government 環境ではサポートされていません。
 
 >[!NOTE]
 >Microsoft Teams のメディア最適化は、Windows 10 マシン上の Windows デスクトップ クライアントのみ利用できます。 メディア最適化の利用には、Windows デスクトップ クライアントのバージョン 1.2.1026.0 以降が必要です。
@@ -53,7 +53,21 @@ Teams でメディアの最適化を有効にするには、ホストで次の�
 
 ### <a name="install-the-teams-websocket-service"></a>Teams WebSocket Service をインストールする
 
-VM イメージに [WebSocket Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) をインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
+VM イメージに最新の [WebSocket Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) をインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
+
+#### <a name="latest-websocket-service-versions"></a>最新の WebSocket サービスのバージョン
+
+次の表は、最新バージョンの WebSocket サービスを示しています。
+
+|Version        |リリース日  |
+|---------------|--------------|
+|1.0.2006.11001 |2020 年 7 月 28 日    |
+|0.11.0         |2020 年 5 月 29 日    |
+
+#### <a name="updates-for-version-10200611001"></a>バージョン 1.0.2006.11001 用の更新プログラム
+
+- 通話または会議中に Teams アプリを最小化すると、着信ビデオのドロップが発生する問題を修正しました。
+- マルチモニター デスクトップ セッションで共有するモニターを 1 つ選択するためのサポートが追加されました。
 
 ### <a name="install-microsoft-teams"></a>Microsoft Teams をインストールする
 
@@ -109,7 +123,7 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 
 3. ユーザー プロファイル画像を選択し、 **[設定]** を選択します。
 
-      メディア最適化が読み込まれていると、デバイス メニューにローカルで利用できるオーディオ デバイスとカメラが列挙されます。 メニューに **[リモート オーディオ]** が表示されている場合は、Teams アプリを終了し、もう一度やり直してください。 メニューにデバイスが表示されない場合には、「[Microsoft Teams をインストールする](#install-microsoft-teams)」に戻り、インストール プロセスが完了しているかどうかを確認してください。
+      メディア最適化が読み込まれていると、デバイス メニューにローカルで利用できるオーディオ デバイスとカメラが列挙されます。 メニューに **[リモート オーディオ]** が表示されている場合は、Teams アプリを終了し、もう一度やり直してください。 それでもデバイスがメニューに表示されない場合は、ローカル PC のプライバシー設定を確認してください。 **[設定]**  >  **[プライバシー]**  >  **[アプリのアクセス許可]** の下にある **[Allow apps to access your microphone]** \(アプリからのマイクへのアクセスを許可する\) のトグルが **[オン]** になっていることを確認します。 リモート セッションから切断してから、もう一度オーディオ デバイスとビデオ デバイスを再接続します。 ビデオを使用して通話やミーティングに参加するには、アプリがカメラにアクセスするためのアクセス許可も付与する必要があります。
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
@@ -125,9 +139,7 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 ### <a name="calls-and-meetings"></a>通話と会議
 
 - Windows Virtual Desktop 環境内の Teams デスクトップ クライアントは、ライブ イベントをサポートしていません。 現時点でライブ イベントに参加する場合には、代わりにリモート セッション内で [Teams Web クライアント](https://teams.microsoft.com)を使用することをお勧めします。
-- 通話または会議の最中に Teams アプリを最小化すると、アプリを展開したときに着信ビデオ フィードが消えてしまうことがあります。
 - 通話、会議とも、現時点ではアプリケーションの共有をサポートしていません。 デスクトップ セッションは、デスクトップ共有をサポートしています。
-- マルチモニター構成でデスクトップを共有すると、全部のモニターが共有されます。
 - 制御の付与と取得は、現時点ではサポートされていません。
 - Windows Virtual Desktop 上の Teams は、一度に 1 つの着信ビデオ入力のみをサポートしています。 つまり、だれかが画面を共有しようとすると、そのたびに会議リーダーの画面に代わってそのユーザーの画面が表示されます。
 - WebRTC の制約により、ビデオ ストリームの解像度は着信、発信とも 720p となっています。

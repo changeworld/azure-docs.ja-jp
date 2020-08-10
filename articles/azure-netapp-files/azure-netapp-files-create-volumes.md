@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/01/2019
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483637"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169458"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -76,7 +76,7 @@ Azure NetApp Files では、NFS ボリューム (NFSv3 と NFSv4.1) および SM
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。  
 
     * **Virtual Network**  
-        ボリュームへのアクセス元となる Azure Virtual Network (Vnet) を指定します。  
+        ボリュームへのアクセス元となる Azure 仮想ネットワーク (VNet) を指定します。  
 
         指定する Vnet には、Azure NetApp Files に委任されているサブネットがある必要があります。 Azure NetApp Files サービスにアクセスできるのは、同じ Vnet から、またはボリュームと同じリージョンにある Vnet から Vnet ピアリングを経由する場合のみです。 ボリュームには、オンプレミス ネットワークから Express Route 経由でアクセスすることもできます。   
 
@@ -89,6 +89,12 @@ Azure NetApp Files では、NFS ボリューム (NFSv3 と NFSv4.1) および SM
         ![ボリュームを作成する](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、プルダウン メニューでスナップショット ポリシーを選択します。 
+
+        スナップショット ポリシーの作成の詳細については、[スナップショットの管理](azure-netapp-files-manage-snapshots.md)に関するページを参照してください。
+
+        ![詳細セクションの表示](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. **[プロトコル]** をクリックし、次のアクションを実行します。  
     * ボリュームのプロトコルの種類として **[NFS]** を選択します。   

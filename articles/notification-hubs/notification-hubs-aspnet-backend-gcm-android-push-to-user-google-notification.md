@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 27a56a45845c1515b500a71528d3449b63c3f869
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127360"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323963"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging (非推奨) を使用して特定の Android ユーザーにプッシュ通知を送信する
 
@@ -154,7 +154,7 @@ ms.locfileid: "80127360"
 
     これで、`main_activity.xml` のグラフィカル レイアウトは次の図のようになります。
 
-    ![][A1]
+    ![ユーザー名、パスワード、受信者、メッセージの各ボックスと、サインインと通知の送信の各ボタンを備えたアプリのスクリーンショット。][A1]
 3. `MainActivity` クラスと同じパッケージに `RegisterClient` という新しいクラスを作成します。 新しいクラス ファイルに次のコードを使用します。
 
     ```java
@@ -474,7 +474,7 @@ ms.locfileid: "80127360"
 2. Android アプリケーションで、ユーザー名とパスワードを入力します。 どちらも同じ文字列値にする必要があり、空白や特殊文字が含まれることはありません。
 3. Android アプリケーションで、 **[サインイン]** をクリックします。 「 **Logged in and registered (ログイン・登録済み)** 」というトースト メッセージが表示されるまで待機します。 これは、 **[Send Notification] (通知の送信)** ボタンを有効にします。
 
-    ![][A2]
+    ![アプリのスクリーンショット。 ユーザーがサインインして登録されていることを確認するトースト メッセージが表示され、[通知の送信] ボタンがオンになっています。][A2]
 4. トグル ボタンをクリックして、アプリを実行し、ユーザーを登録したすべてのプラットフォームを有効にします。
 5. 通知メッセージを受信するユーザーの名前を入力します。 そのユーザーは、ターゲット デバイスで通知登録されている必要があります。
 6. プッシュ通知メッセージとしてユーザーが受信するメッセージを入力します。

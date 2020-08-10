@@ -45,7 +45,7 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Azure AD ロールの管理
       items:
-        - name: 機能更新プログラム
+        - name: 機能の概要
           href: azure-ad-roles-features.md
         - name: Azure AD ロール用の PowerShell
           href: powershell-for-azure-ad-roles.md
@@ -87,6 +87,22 @@
           href: azure-pim-resource-rbac.md
         - name: カスタム ロールを使用する
           href: pim-resource-roles-custom-role-policy.md
+    - name: 特権アクセス グループの管理 (プレビュー)
+      items:
+        - name: 特権アクセスの概要
+          href: groups-features.md
+        - name: グループを管理下に置く
+          href: groups-discover-groups.md
+        - name: メンバーまたは所有者を割り当てる
+          href: groups-assign-member-owner.md
+        - name: 要求の承認
+          href: groups-approval-workflow.md
+        - name: 割り当ての延長または更新
+          href: groups-renew-extend.md
+        - name: ロール設定を構成する
+          href: groups-role-settings.md
+        - name: 監査履歴を表示する
+          href: groups-audit.md
     - name: PIM のトラブルシューティング
       href: pim-troubleshoot.md
     - name: アクセス レビュー

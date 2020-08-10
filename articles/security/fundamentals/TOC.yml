@@ -58,6 +58,8 @@
       href: network-best-practices.md
     - name: DDoS Protection
       href: ddos-best-practices.md
+    - name: DDoS Protection のセキュリティ ベースライン
+      href: ddos-protection-security-baseline.md
     - name: 未解決の DNS とサブドメインの引き継ぎ
       href: subdomain-takeover.md
     - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ

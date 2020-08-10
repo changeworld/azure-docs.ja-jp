@@ -7,13 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/15/2020
-ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 07/15/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780557"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420602"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用してオートコンプリートと検索候補を追加する
 

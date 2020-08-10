@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199387"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383768"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -145,7 +145,7 @@ ms.locfileid: "83199387"
 
 * **適用されていません**:スコープ内にユーザーとアプリがある CA ポリシーがなかったことを意味します。 
 * **成功**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが正常に満たされたことを意味します。 
-* **失敗**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが満たされなかったことを意味します。 
+* **失敗**:サインインによって少なくとも 1 つの条件付きアクセス ポリシーのユーザーとアプリケーションの条件が満たされたうえで、制御の許可が満たされていないか、またはアクセスをブロックするように設定されています。
     
 **Q:条件付きアクセス ポリシーの結果として表示されるすべての値を教えてください。**
 

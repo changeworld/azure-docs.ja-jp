@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL 内で SQL オンデマンド (プレビュー) を使用してストレージ上のファイルにアクセスする
+title: SQL オンデマンド (プレビュー) でストレージ上のファイルにアクセスする
 description: Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046885"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Synapse SQL (オンデマンド) 内の外部ストレージへのアクセス
 
@@ -43,7 +43,7 @@ SELECT * FROM
 - Azure AD ユーザー - OPENROWSET では、呼び出し元の Azure AD ID を使用して、Azure Storage にアクセスしたり、匿名アクセスでストレージにアクセスしたりします。
 - SQL ユーザー – OPENROWSET では、匿名アクセスでストレージにアクセスします。
 
-SQL プリンシパルでは、OPENROWSET を使用して、ワークスペースのマネージド ID または SAS トークンで保護されたファイルに対して、直接クエリを実行することもできます。 SQL ユーザーがこの関数を実行する場合、ALTER ANY CREDENTIAL 権限を持つパワー ユーザーは、(ストレージ名とコンテナーを使用して) 関数内の URL に一致するサーバースコープの資格情報を作成し、この資格情報に対する REFERENCES 権限を OPENROWSET 関数の呼び出し元に付与する必要があります。
+SQL プリンシパルでは、OPENROWSET を使用して、ワークスペースのマネージド ID または SAS トークンで保護されたファイルに対して、直接クエリを実行することもできます。 SQL ユーザーがこの関数を実行する場合、`ALTER ANY CREDENTIAL` 権限を持つパワー ユーザーは、(ストレージ名とコンテナーを使用して) 関数内の URL に一致するサーバースコープの資格情報を作成し、この資格情報に対する REFERENCES 権限を OPENROWSET 関数の呼び出し元に付与する必要があります。
 
 ```sql
 EXECUTE AS somepoweruser
@@ -87,8 +87,8 @@ DATABASE SCOPED CREDENTIAL では、参照されるデータ ソース上のフ�
 呼び出し元には、OPENROWSET 関数を実行するための次のいずれかの権限が必要です。
 
 - OPENROWSET を実行するための次のいずれかの権限:
-  - ADMINISTER BULK OPERATION を使用すると、ログインで OPENROWSET 関数を実行できます。
-  - ADMINISTER DATABASE BULK OPERATION を使用すると、データベース スコープ ユーザーは OPENROWSET 関数を実行できます。
+  - `ADMINISTER BULK OPERATIONS` を使用すると、ログインで OPENROWSET 関数を実行できます。
+  - `ADMINISTER DATABASE BULK OPERATIONS` を使用すると、データベース スコープ ユーザーは OPENROWSET 関数を実行できます。
 - EXTERNAL DATA SOURCE で参照される資格情報に対する REFERENCES DATABASE SCOPED CREDENTIAL
 
 #### <a name="accessing-anonymous-data-sources"></a>匿名データ ソースへのアクセス
@@ -151,13 +151,13 @@ FROM dbo.DimProductsExternal
 
 | クエリ | 必要なアクセス許可|
 | --- | --- |
-| OPENROWSET(BULK) (データソースを指定しない) | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN`、または SQL ログインには、SAS で保護されたストレージに対する REFERENCES CREDENTIAL::\<URL> が必要です |
-| OPENROWSET (BULK) (資格情報なしのデータソースを指定) | `ADMINISTER BULK ADMIN` または `ADMINISTER DATABASE BULK ADMIN` |
-| OPENROWSET (BULK) (資格情報ありのデータソースを指定) | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN`、または `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| OPENROWSET(BULK) (データソースを指定しない) | `ADMINISTER BULK OPERATIONS`、`ADMINISTER DATABASE BULK OPERATIONS`、または SQL ログインには、SAS で保護されたストレージに対する REFERENCES CREDENTIAL::\<URL> が必要です |
+| OPENROWSET (BULK) (資格情報なしのデータソースを指定) | `ADMINISTER BULK OPERATIONS` または `ADMINISTER DATABASE BULK OPERATIONS` |
+| OPENROWSET (BULK) (資格情報ありのデータソースを指定) | `REFERENCES DATABASE SCOPED CREDENTIAL` と、`ADMINISTER BULK OPERATIONS` または `ADMINISTER DATABASE BULK OPERATIONS` のいずれか |
 | CREATE EXTERNAL DATA SOURCE | `ALTER ANY EXTERNAL DATA SOURCE` および `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CREATE EXTERNAL TABLE | `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY EXTERNAL FILE FORMAT`、および `ALTER ANY EXTERNAL DATA SOURCE` |
 | SELECT FROM EXTERNAL TABLE | `SELECT TABLE` および `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| CETAS | テーブルを作成する場合 - `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE`、および `ALTER ANY EXTERNAL FILE FORMAT`。 データを読み取る場合: クエリのテーブル、ビューまたは関数ごとの `ADMIN BULK OPERATIONS`、`REFERENCES CREDENTIAL` または `SELECT TABLE` + ストレージに対する読み取りと書き込み権限 |
+| CETAS | テーブルを作成する場合 - `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE`、および `ALTER ANY EXTERNAL FILE FORMAT`。 データを読み取る場合: クエリのテーブル、ビューまたは関数ごとの `ADMINISTER BULK OPERATIONS`、`REFERENCES CREDENTIAL` または `SELECT TABLE` + ストレージに対する読み取りと書き込み権限 |
 
 ## <a name="next-steps"></a>次のステップ
 

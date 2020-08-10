@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: aca0d67326a5a0488d0108efa9acd0d01c7788cd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 72e199e45047e1b425b2587c6b4028efb84060df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "84819933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087443"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Azure API for FHIR とは&reg;
 
@@ -82,11 +82,31 @@ Microsoft の FHIR 機能は、次の 2 つの構成で利用できます。
 
 FHIR API シリーズを使わない、FHIR サーバーの拡張やカスタマイズまたは基になるサービス (データベースなど) へのアクセスを必要とするユース ケースの場合は、開発者はオープンソースの FHIR Server for Azure を選択する必要があります。   永続化されたデータに FHIR API を介してのみアクセスする必要がある実稼働対応のターンキー FHIR API とバックエンド サービスの実装の場合は、開発者は Azure API for FHIR を選択する必要があります
 
+## <a name="iot-connector-preview"></a>IoT コネクタ (プレビュー)
+
+IoT コネクタは、Azure API for FHIR のオプション機能の 1 つであり、Internet of Medical Things (IoMT) デバイスからデータを取り込むことができます。 Internet of Medical Things とは、ネットワーク上の他の医療 IT システムとの間で健康とウェルネスのデータをキャプチャして交換する IoT デバイスのカテゴリです。 IoMT デバイスの例としては、フィットネスおよび医療用ウェアラブル、監視センサー、アクティビティ トラッカー、ポイント オブ ケア キオスク、スマート ピルなどがあります。 IoT コネクタ機能を使用すると、IoMT データをスケーラブルかつ安全で、規制に準拠した方法で Azure API for FHIR に取り込むためのサービスをすばやく設定できます。
+
+IoT コネクタは、IoMT デバイスによって送信される JSON ベースのあらゆるメッセージを受け入れることができます。 このデータは、まず適切な FHIR ベースの [Observation](https://www.hl7.org/fhir/observation.html) リソースに変換され、その後 Azure API for FHIR に保存されます。 データ変換ロジックは、メッセージ スキーマと FHIR の要件に基づいて構成するマッピング テンプレートのペアによって定義されます。 デバイス データは、IoT コネクタに直接プッシュすることも、他の Azure IoT ソリューション ([Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) および [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)) と連携してシームレスに使用することもできます。 IoT コネクタによって、セキュリティで保護されたデータ パイプラインが提供される一方で、Azure IoT ソリューションが物理デバイスのプロビジョニングとメンテナンスに対応できるようになります。
+
+### <a name="applications-of-iot-connector-preview"></a>IoT コネクタ (プレビュー) のアプリケーション
+
+IoMT デバイスの使用は医療分野で急速に拡大しています。複数のデバイス データを Azure API for FHIR に取り込む際のギャップを IoT コネクタが埋め、セキュリティとコンプライアンスを実現できるように設計されています。 IoMT データを FHIR サーバーに取り込むことで、データの総合的な分析情報が得られ、革新的な臨床ワークフローを実現できます。 IoT コネクタの一般的なシナリオは次のとおりです。
+- **リモート患者モニタリング/遠隔医療:** リモート患者モニタリングでは、従来の医療環境の外部で患者の健康データを収集する機能が提供されます。 医療機関は IoT コネクタを使用して、リモート デバイスで生成された健康データを Azure API for FHIR に取り込むことができます。 このデータを使用して、患者の健康状態を細かく注意して追跡し、患者が治療計画を遵守しているかを監視し、個人的なケアを提供できます。
+- **研究およびライフ サイエンス:** 臨床試験では試験データを取得するために、バイオセンサー、ウェアラブル、モバイル アプリなどの IoMT デバイスを迅速に導入しています。 これらの試験では IoT コネクタを利用して、セキュリティで保護された効率的かつ効果的な方法で、デバイス データを Azure API for FHIR に送信できます。 Azure API for FHIR に試験データが届くと、試験データのリアルタイム分析を実行できます。
+- **高度な分析:** IoMT デバイスからは、多種多量のデータを高速で提供できるため、機械学習モデルのトレーニング データとテスト データの提供元として最適です。 IoT コネクタは本来、さまざまなデータ頻度、柔軟なデータ スキーマ、低待機時間でのクラウド スケーリングなどに対処するように構築されています。 このような IoT コネクタの特性は、高度な分析のニーズに合わせてデバイス データをキャプチャするための選択肢として最適です。
+- **スマート ホスピタル/クリニック:** 現在、スマート ホスピタルおよびスマート クリニックでは、相互に接続されたデジタル資産のインフラストラクチャが構築されつつあります。 IoT コネクタを使用して、これらの接続されたコンポーネントからのデータをキャプチャして統合できます。 このようなデータ セットから得られる実用的な分析情報により、患者へのより良い治療が可能になり、運用効率を向上できます。
+
 ## <a name="next-steps"></a>次の手順
 
 Azure API for FHIR の使用を開始するには、5 分間のクイックスタートに従って、Azure API for FHIR をデプロイします。
 
 >[!div class="nextstepaction"]
 >[Azure API for FHIR をデプロイする](fhir-paas-portal-quickstart.md)
+
+IoT コネクタ機能を試すには、Azure portal を使用した IoT コネクタのデプロイに関するクイック スタートをご覧ください。
+
+>[!div class="nextstepaction"]
+>[IoT コネクタをデプロイする](iot-fhir-portal-quickstart.md)
+
 
 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286497"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 
@@ -26,7 +26,7 @@ ms.locfileid: "84705374"
 
 ## <a name="symmetric-key-creation"></a>対称キーの作成
 
-**[キーの自動生成]** オプションを有効にして新しい登録を保存すると、既定では、Device Provisioning Service により既定の 32 バイトの長さで新しい対称キーが作成されます。
+**[キーの自動生成]** オプションを有効にして新しい登録を保存すると、既定では、Device Provisioning Service により既定の 64 バイトの長さで新しい対称キーが作成されます。
 
 ![対称キーを自動生成する](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 

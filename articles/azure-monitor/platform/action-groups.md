@@ -3,15 +3,15 @@ title: Azure Portal でのアクション グループの作成および管理
 description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 6/5/2020
+ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465254"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516177"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -70,7 +70,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 ## <a name="action-specific-information"></a>アクション固有の情報
 
 > [!NOTE]
-> 次の各項目の数値の制限については、[監視のためのサブスクリプション サービスの制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits)に関するセクションを参照してください。  
+> 次の各項目の数値の制限については、[監視のためのサブスクリプション サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits)に関するセクションを参照してください。  
 
 ### <a name="automation-runbook"></a>Automation Runbook
 Runbook ペイロードの制限については、[Azure サブスクリプション サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)に関するページを参照してください。
@@ -107,21 +107,21 @@ ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../../azu
 アクション グループには、限られた数のロジック アプリのアクションを保持できます。
 
 ### <a name="secure-webhook"></a>Secure Webhook
-アクション グループの Webhook アクションを使用すると、Azure Active Directory を利用して、アクション グループと、保護された Web API (Webhook エンドポイント) との間の接続をセキュリティで保護することができます。 この機能を利用するための全体的なワークフローを次に示します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)」を参照してください。
+アクション グループの Webhook アクションを使用すると、Azure Active Directory を利用して、アクション グループと、保護された Web API (Webhook エンドポイント) との間の接続をセキュリティで保護することができます。 この機能を利用するための全体的なワークフローを次に示します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](../../active-directory/develop/v2-overview.md)」を参照してください。
 
-1. 保護された Web API 用の Azure AD アプリケーションを作成します。 [https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview ) をご覧ください。
-    - デーモン アプリで呼び出されるよう、保護された API を構成します。
+1. 保護された Web API 用の Azure AD アプリケーションを作成します。 「[保護された Web API: アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration)」の手順に従う必要があります。
+    - [デーモン アプリで呼び出される](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)よう、保護された API を構成します。
     
-1. アクション グループで Azure AD アプリケーションを使用できるようにします。
+2. アクション グループで Azure AD アプリケーションを使用できるようにします。
 
     > [!NOTE]
-    > このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)のメンバーである必要があります。
+    > このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)のメンバーである必要があります。
     
     - Azure AD テナント ID を使用するように、PowerShell スクリプトの Connect-AzureAD 呼び出しを変更します。
     - Azure AD アプリケーションのオブジェクト ID を使用するように、PowerShell スクリプトの変数 $myAzureADApplicationObjectId を変更します。
     - 変更したスクリプトを実行します。
     
-1. アクション グループの Secure Webhook アクションを構成します。
+3. アクション グループの Secure Webhook アクションを構成します。
     - スクリプトから値 $myApp.ObjectId をコピーし、Webhook アクション定義の [アプリケーション オブジェクト ID] フィールドに入力します。
     
     ![Secure Webhook アクション](./media/action-groups/action-groups-secure-webhook.png)
@@ -253,4 +253,4 @@ Webhook は、次のルールを使用して再処理されます。
 * [ITSM Connector](../../azure-monitor/platform/itsmc-overview.md) について学習します。
 * アラートの[レート制限](../../azure-monitor/platform/alerts-rate-limiting.md)について学習します。
 * [アクティビティ ログ アラートの概要](../../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
-* [サービスの正常性通知が投稿されるたびにアラートを設定](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)する方法について学習します。
+* [サービスの正常性通知が投稿されるたびにアラートを設定](../../service-health/alerts-activity-log-service-notifications-portal.md)する方法について学習します。

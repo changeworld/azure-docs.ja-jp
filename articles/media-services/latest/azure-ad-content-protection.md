@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205195"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422098"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>チュートリアル:Azure AD を使用したエンド ツー エンドのコンテンツ保護
 
@@ -48,13 +49,13 @@ Azure Media Services サブスクリプションをお持ちでない方は、Az
 次の概念は必須ではありませんが、このチュートリアルに取り組む前に理解しておくことをお勧めします。
 
 * デジタル著作権管理 (DRM)
-* [Azure Media Services (AMS) v3](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Azure Media Services (AMS) v3](./media-services-overview.md)
 * AMS API v3、Azure portal、[Azure Media Services Explorer (AMSE) ツール](https://github.com/Azure/Azure-Media-Services-Explorer)のいずれかを使用した AMS [コンテンツ キー ポリシー](content-key-policy-concept.md)
-* [Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)上の Azure AD v2 エンドポイント
-* 先進的なクラウド認証 ([OAuth 2.0、OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) など)
-  * [OAuth 2.0 の認可コード フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)と PKCE が必要な理由
-  * [委任されたアクセス許可とアプリケーションのアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#permissions)
-* [JWT トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)とその要求、署名キー ロールオーバー (サンプルに含まれています)
+* [Microsoft ID プラットフォーム](../../active-directory/develop/index.yml)上の Azure AD v2 エンドポイント
+* 先進的なクラウド認証 ([OAuth 2.0、OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md) など)
+  * [OAuth 2.0 の認可コード フロー](../../active-directory/develop/v2-oauth2-auth-code-flow.md)と PKCE が必要な理由
+  * [委任されたアクセス許可とアプリケーションのアクセス許可](../../active-directory/develop/developer-glossary.md#permissions)
+* [JWT トークン](../../active-directory/develop/access-tokens.md)とその要求、署名キー ロールオーバー (サンプルに含まれています)
 
 ### <a name="prerequisite-code-and-installations"></a>前提条件のコードとインストール
 
@@ -63,7 +64,7 @@ Azure Media Services サブスクリプションをお持ちでない方は、Az
 * Node.js のインストール。 Node.js は、こちら ([https://nodejs.org](https://nodejs.org)) からダウンロードしてください。このインストールには NPM が付属します。
 * [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 * Azure Media Services (AMS) アカウント。
-* @azure/msal-browser v2.0。これは、各種クライアント プラットフォームを対象とした [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) SDK ファミリーのメンバーの 1 つです。
+* @azure/msal-browser v2.0。これは、各種クライアント プラットフォームを対象とした [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) SDK ファミリーのメンバーの 1 つです。
 * 最新バージョンの [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)(サンプルに含まれています)。
 * クライアント側 JavaScript 経由でアクセスできる CORS でホストされたアプリケーション証明書と FairPlay DRM を含める場合は、Apple の FPS の資格情報。
 
@@ -98,7 +99,7 @@ Azure Media Services サブスクリプションをお持ちでない方は、Az
 
 ![JWT トークンを解析するための画面](media/aad-ams-content-protection/subsystem.svg)
 
-サブシステムの詳細については、「[アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](https://docs.microsoft.com/azure/media-services/latest/design-multi-drm-system-with-access-control)」を参照してください。
+サブシステムの詳細については、「[アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](./design-multi-drm-system-with-access-control.md)」を参照してください。
 
 ## <a name="understand-the-single-page-app"></a>シングルページ アプリを理解する
 
@@ -339,7 +340,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-*groups* 要求は、Azure AD の[制限付き要求セット](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets)のメンバーです。
+*groups* 要求は、Azure AD の[制限付き要求セット](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets)のメンバーです。
 
 #### <a name="test"></a>テスト
 

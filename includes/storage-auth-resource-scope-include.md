@@ -1,19 +1,17 @@
 ---
 title: インクルード ファイル
-description: インクルード ファイル
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
-ms.custom: include file
-ms.openlocfilehash: 8b97a62626666fa39a5b0622852d9eec47c2410a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c222869df561a9a36ebd69eb9ae09fa688ba0086
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024897"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518684"
 ---
 セキュリティ プリンシパルに RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。
 
@@ -24,3 +22,6 @@ ms.locfileid: "86024897"
 - **ストレージ アカウント。** このスコープでは、ロールの割り当ては、すべてのコンテナーとその BLOB、またはすべてのキューとそのメッセージに適用されます。
 - **リソース グループ。** このスコープでは、ロールの割り当ては、リソース グループ内のすべてのストレージ アカウントのすべてのコンテナーまたはキューに適用されます。
 - **サブスクリプション。** このスコープでは、ロールの割り当ては、サブスクリプション内のすべてのリソース グループ内の、すべてのストレージ アカウントのすべてのコンテナーまたはキューに適用されます。
+- **管理グループ。** このスコープでは、ロールの割り当ては、管理グループ内のすべてのサブスクリプション内のすべてのリソース グループ内のすべてのストレージ アカウントのすべてのコンテナーまたはキューに適用されます。
+
+RBAC ロールの割り当ての詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../articles/role-based-access-control/overview.md)」を参照してください。

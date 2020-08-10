@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039193"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 
 
@@ -214,7 +214,7 @@ ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする
 Azure AD に関する情報:
 
 * 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/develop/v2-overview.md)」をご覧ください。
-* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-administer.md)」をご覧ください。
+* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-whatis.md)」をご覧ください。
 
 ### <a name="some-issues-in-implementation"></a>実装での問題
 

@@ -6,23 +6,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 8aeb6b964ab38a68a6d8681a4e5c93e1650c6a69
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: db866da43310f5407ce4daae1cade2c7512b91ea
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171281"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369267"
 ---
 Python 用 Language Understanding (LUIS) 予測クライアント ライブラリの用途は次のとおりです。
 
 * スロット別の予測を取得する
 * バージョン別の予測を取得する
 
-[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [予測ランタイム パッケージ (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
+[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [予測ランタイム パッケージ (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,8 +35,6 @@ Python 用 Language Understanding (LUIS) 予測クライアント ライブラ�
 ### <a name="get-your-language-understanding-luis-runtime-key"></a>Language Understanding (LUIS) ランタイム キーを取得する
 
 LUIS ランタイム リソースを作成して、[ランタイム キー](../luis-how-to-azure-subscription.md)を取得します。 次の手順のために、キーとキーのエンドポイントを保持しておきます。
-
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
 ### <a name="create-a-new-python-file"></a>新しい Python ファイルを作成する
 
@@ -73,20 +71,16 @@ Language Understanding (LUIS) 予測ランタイム クライアントは、認�
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-1. 独自の必須 LUIS 情報の変数を作成します。
-
-    `LUIS_RUNTIME_KEY` という名前の環境変数から取得した予測キーを管理するための変数を追加します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。 メソッドは後で作成します。
-
-    リソース名 `LUIS_RUNTIME_ENDPOINT` を保持する変数を作成します。
+1. 実際の必須 LUIS 情報 (予測キーとエンドポイント) に使用する変数を作成します。
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. `LUIS_APP_ID` という名前の環境変数として、アプリ ID の変数を作成します。 この環境変数をパブリック IoT アプリ **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** に設定します。 `production` 公開スロットを設定する変数を作成します。
+1. パブリック IoT アプリに設定されたアプリ ID ( **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** ) の変数を作成します。 `production` 公開スロットを設定する変数を作成します。
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. 自分のキーを使用して資格情報オブジェクトを作成し、それを自分のエンドポイントと共に使用して [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() オブジェクトを作成します。
+1. 自分のキーを使用して資格情報オブジェクトを作成し、それを自分のエンドポイントと共に使用して [LUISRuntimeClientConfiguration](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python) オブジェクトを作成します。
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Client)]
 

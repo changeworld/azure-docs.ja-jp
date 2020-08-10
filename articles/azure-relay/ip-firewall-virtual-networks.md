@@ -3,12 +3,12 @@ title: Azure Relay 名前空間に対する IP ファイアウォールを構成
 description: この記事では、ファイアウォール規則を使用して、特定の IP アドレスから Azure Relay 名前空間への接続を許可する方法を説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314842"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533058"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Azure Relay 名前空間に対する IP ファイアウォールを構成する
 既定では、要求に有効な認証と承認がある限り、Relay 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -129,4 +129,4 @@ IP ファイアウォール規則は、名前空間レベルで適用されま�
 
 <!-- Links -->
 
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9c7e6733a9149008f6ed98ae7a7e0103f92f79f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196233"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325272"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor ログ レコードの標準プロパティ
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのいずれかにレコード セットとして格納され](../log-query/logs-structure.md)、それぞれが独自のプロパティ セットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
@@ -211,5 +211,6 @@ union withsource = tt *
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor ログ データの格納](../log-query/log-query-overview.md)方法の詳細を確認する。
-- [ログ クエリの作成](../../azure-monitor/log-query/get-started-queries.md)に関するレッスンを参照する。
-- [ログ クエリでのテーブルの結合](../../azure-monitor/log-query/joins.md)に関するレッスンを参照する。
+- [ログ クエリの作成](../log-query/get-started-queries.md)に関するレッスンを参照する。
+- [ログ クエリでのテーブルの結合](../log-query/joins.md)に関するレッスンを参照する。
+

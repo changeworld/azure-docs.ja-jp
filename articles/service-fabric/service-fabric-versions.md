@@ -3,16 +3,18 @@ title: Azure Service Fabric でサポートされているクラスターのバ�
 description: Service Fabric チーム ブログからの最新リリースへのリンクなど、Azure Service Fabric のクラスターのバージョンについて説明します。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 88c91558360f6be8343c955f8e6185366cd3279a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 728d7403ee8e0ac9ccbd69260a718c65389adc43
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808913"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433192"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
 クラスターでは常に、サポートされている Azure Service Fabric のバージョンが実行されている状態にします。 Service Fabric の新しいバージョンのリリースが発表された日から最短で 60 日後には、以前のバージョンのサポートが終了します。 新しいリリースについては、[Service Fabric チーム ブログ](https://azure.microsoft.com/updates/?product=service-fabric)上でお知らせします。
+
+Service Fabric ランタイムの特定のバージョンでは、指定されたバージョンまたは以前のバージョンの SDK および NuGet パッケージを使用できます。 新しいバージョンのパッケージはサポートされていないため、古いクラスターを対象とすると問題が発生する可能性があります。それらの環境でサポートされていない機能またはプロトコルの変更がある可能性があります。
 
 サポートされている Service Fabric のバージョンをクラスターにおいて継続して実行する方法の詳細については、次のドキュメントを参照してください。
 
@@ -41,8 +43,9 @@ ms.locfileid: "84808913"
 | 7.0.466.* | 6.5.* |バージョン 4.0 以前|2020 年 8 月 1 日 |
 | 7.0.470.* | 7.0.466.* |バージョン 4.0 以前 |2020 年 8 月 1 日  |
 | 7.0.472.* | 7.0.466.* |バージョン 4.0 以前 |2020 年 8 月 1 日  |
-| 7.1.409.* | 7.0.466.* |バージョン 4.0 以前 |最新バージョンのため、終了日なし |
-| 7.1.417.* | 7.0.466.* |バージョン 4.0 以前 |最新バージョンのため、終了日なし |
+| 7.1.409.* | 7.0.466.* |バージョン 4.1 以前 |最新バージョンのため、終了日なし |
+| 7.1.417.* | 7.0.466.* |バージョン 4.1 以前 |最新バージョンのため、終了日なし |
+| 7.1.428.* | 7.0.466.* |バージョン 4.1 以前 |最新バージョンのため、終了日なし |
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -113,3 +116,5 @@ ms.locfileid: "84808913"
 | 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
 | 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
 | 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
+| 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
+

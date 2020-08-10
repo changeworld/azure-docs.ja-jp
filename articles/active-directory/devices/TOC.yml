@@ -75,6 +75,8 @@
           href: enterprise-state-roaming-faqs.md
 - name: リファレンス
   items:
+    - name: TLS 1.2 を適用する
+      href: reference-device-registration-tls-1-2.md
     - name: Enterprise State Roaming GPO の設定
       href: enterprise-state-roaming-group-policy-settings.md
     - name: Enterprise State Roaming Windows の設定

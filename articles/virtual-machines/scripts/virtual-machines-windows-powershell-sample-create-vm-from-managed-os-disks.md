@@ -1,5 +1,5 @@
 ---
-title: マネージド ディスクを OS ディスクとして接続することで VM を作成する - PowerShell サンプル
+title: マネージド ディスクを OS ディスクとして接続して VM を作成する (Windows) - PowerShell
 description: Azure PowerShell のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 4514940918f33ee28fc4195b821018df54252e13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cbd9440948a124a5557e47f258b95b098f04a4b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75368490"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085233"
 ---
-# <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>PowerShell で既存の管理 OS ディスクを使用して仮想マシンを作成する
+# <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell-windows"></a>PowerShell で既存のマネージド OS ディスクを使用して仮想マシンを作成する (Windows)
 
 このスクリプトは、既存のマネージド ディスクを OS ディスクとして接続することで仮想マシンを作成します。 このスクリプトは、次のシナリオで使用します。
 * 別のサブスクリプションのマネージド ディスクからコピーされた既存の管理 OS ディスクから VM を作成する
@@ -51,15 +51,15 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 | command | メモ |
 |---|---|
-| [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/Get-AzDisk) | ディスクの名前とリソース グループに基づいてディスク オブジェクトを取得します。 返されたディスク オブジェクトの Id プロパティは、ディスクを新しい VM に接続するために使用されます。 |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | ディスクの Id プロパティを使用して、マネージド ディスクを OS ディスクとして新しい仮想マシンに接続します。 |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | パブリック IP アドレスを作成します。 |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | ネットワーク インターフェイスを作成します。 |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 仮想マシンを作成します。 |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
+| [Get-AzDisk](/powershell/module/az.compute/get-azdisk) | ディスクの名前とリソース グループに基づいてディスク オブジェクトを取得します。 返されたディスク オブジェクトの Id プロパティは、ディスクを新しい VM に接続するために使用されます。 |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | ディスクの Id プロパティを使用して、マネージド ディスクを OS ディスクとして新しい仮想マシンに接続します。 |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | パブリック IP アドレスを作成します。 |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | ネットワーク インターフェイスを作成します。 |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | 仮想マシンを作成します。 |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-マーケットプレース イメージの場合は、[Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) を使用してプラン情報を設定します。
+マーケットプレース イメージの場合は、[Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) を使用してプラン情報を設定します。
 
 ```powershell
 Set-AzVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Bame
@@ -67,6 +67,6 @@ Set-AzVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の仮想マシン用の PowerShell サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にあります。

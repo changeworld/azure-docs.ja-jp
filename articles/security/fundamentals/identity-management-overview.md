@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565895"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384533"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -64,7 +64,7 @@ Azure AD はオンプレミスの Active Directory 環境をクラウドに拡�
 
 * [シングル サインオンの概要](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [SaaS アプリと Azure Active Directory シングル サインオンを統合する](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
+* [アプリ管理のクイックスタート シリーズ](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>リバース プロキシ
 
@@ -91,10 +91,15 @@ Azure Multi-Factor Authentication は、複数の確認方法の使用を要求�
 
 Azure RBAC は Azure Resource Manager 上に構築された承認システムであり、Azure 内のリソースに対するアクセスをきめ細かく管理できます。 RBAC を使用すると、ユーザーのアクセスのレベルを細かく制御できます。 たとえば、ユーザーに応じて、管理の対象を仮想ネットワークのみに制限したり、リソース グループ内のすべてのリソースを管理できるようにしたりできます。 Azure には複数の組み込みロールがあり、使用できます。 4 つの基本的な組み込みロールを次に示します。 最初の 3 つは、すべてのリソースの種類に適用されます。
 
+- [所有者](/azure/role-based-access-control/built-in-roles#owner) - 他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 
+- [共同作成者](/azure/role-based-access-control/built-in-roles#contributor) - すべての種類の Azure リソースを作成および管理できます。他のユーザーにアクセス権を付与することはできません。
+- [閲覧者](/azure/role-based-access-control/built-in-roles#reader) - 既存の Azure リソースを表示できます。
+- [ユーザー アクセス管理者](/azure/role-based-access-control/built-in-roles#user-access-administrator) - Azure リソースへのユーザー アクセスを管理できます。
+
 詳細情報:
 
-* [ロールベースのアクセス制御 (RBAC) とは何か](/azure/role-based-access-control/overview)
-* [Azure リソースの組み込みロール](/azure/role-based-access-control/built-in-roles)
+* [Azure ロールベースのアクセス制御 (Azure RBAC) とは](/azure/role-based-access-control/overview)
+* [Azure 組み込みロール](/azure/role-based-access-control/built-in-roles)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>セキュリティの監視、アラート、および機械学習ベースのレポート
 

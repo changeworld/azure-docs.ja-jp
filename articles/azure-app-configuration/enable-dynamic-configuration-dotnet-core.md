@@ -14,16 +14,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fb55b5669c1be43b208a8d86b1676f163015f76f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856488"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278354"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>チュートリアル:.NET Core アプリで動的な構成を使用する
 
-App Configuration .NET Core クライアント ライブラリでは、アプリケーションを再起動させることなく必要に応じて構成設定のセットを更新できます。 これは、最初に構成プロバイダーのオプションから `IConfigurationRefresher` のインスタンスを取得した後、コード内の任意の場所でそのインスタンスの `Refresh` を呼び出すことによって実装できます。
+App Configuration .NET Core クライアント ライブラリでは、アプリケーションを再起動させることなく必要に応じて構成設定のセットを更新できます。 これは、最初に構成プロバイダーのオプションから `IConfigurationRefresher` のインスタンスを取得した後、コード内の任意の場所でそのインスタンスの `TryRefreshAsync` を呼び出すことによって実装できます。
 
 設定の更新を維持しながら、構成ストアの呼び出しが多くなりすぎないようにするため、キャッシュが各設定に使用されます。 設定のキャッシュされた値の有効期限が切れるまで、構成ストアの値が変更された場合でも、更新操作で値は更新されません。 各要求の既定の有効期間は 30 秒ですが、必要な場合はオーバーライドできます。
 
@@ -45,7 +45,7 @@ App Configuration .NET Core クライアント ライブラリでは、アプリ
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
-*Program.cs* を開いてファイルを更新します。`System.Threading.Tasks` 名前空間の参照を追加し、`AddAzureAppConfiguration` メソッドに更新の構成を指定し、`Refresh` メソッドを使用して手動更新をトリガーするようにします。
+*Program.cs* を開いてファイルを更新します。`System.Threading.Tasks` 名前空間の参照を追加し、`AddAzureAppConfiguration` メソッドに更新の構成を指定し、`TryRefreshAsync` メソッドを使用して手動更新をトリガーするようにします。
 
 ```csharp
 using System;
@@ -84,14 +84,14 @@ class Program
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
 }
 ```
 
-更新操作がトリガーされたときに、構成データを App Configuration ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `AddAzureAppConfiguration` メソッドに提供されたオプションで `GetRefresher` メソッドを呼び出すことによって `IConfigurationRefresher` のインスタンスを取得でき、このインスタンスの `Refresh` メソッドを使ってコード内の任意の場所で更新操作をトリガーできます。
+更新操作がトリガーされたときに、構成データを App Configuration ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `AddAzureAppConfiguration` メソッドに提供されたオプションで `GetRefresher` メソッドを呼び出すことによって `IConfigurationRefresher` のインスタンスを取得でき、このインスタンスの `TryRefreshAsync` メソッドを使ってコード内の任意の場所で更新操作をトリガーできます。
     
 > [!NOTE]
 > 構成設定の既定のキャッシュ有効期限は 30 秒ですが、`ConfigureRefresh` メソッドへの引数として渡されるオプション初期化子で `SetCacheExpiration` メソッドを呼び出すことにより、オーバーライドできます。

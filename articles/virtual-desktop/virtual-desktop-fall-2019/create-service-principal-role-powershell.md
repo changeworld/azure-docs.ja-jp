@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop サービス プリンシパル ロールの割り当て - Azure
-description: Windows Virtual Desktop で PowerShell を使用してサービス プリンシパルを作成する方法とロールを割り当てる方法を説明します。
+title: Windows Virtual Desktop (classic) サービス プリンシパル ロールの割り当て - Azure
+description: Windows Virtual Desktop (classic) で PowerShell を使用して、サービス プリンシパルを作成し、ロールを割り当てる方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 015d0e0208b83cff3db3995383ce93ed6362ee49
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117723"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270092"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (classic) で PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (classic) に適用されます。
 
 サービス プリンシパルとは、特定の目的に使用するロールやアクセス許可を割り当てるために Azure Active Directory に作成できる ID です。 Windows Virtual Desktop では、次の用途でサービス プリンシパルを作成できます。
 

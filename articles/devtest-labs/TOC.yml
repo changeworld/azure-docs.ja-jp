@@ -232,6 +232,12 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: アーティファクトの適用に関する問題のトラブルシューティング
           href: devtest-lab-troubleshoot-apply-artifacts.md
+    - name: ラボ リソースの暗号化
+      items:
+        - name: ラボで使用されるストレージの暗号化
+          href: encrypt-storage.md
+        - name: カスタマー マネージド キーを使用した OS ディスクの暗号化
+          href: encrypt-disks-customer-managed-keys.md
     - name: CI/CD との統合
       items:
         - name: ラボを Azure Pipelines CI/CD パイプラインに統合する
@@ -291,7 +297,7 @@
     - name: PowerShell - サンプル Az.DevTestLabs2 モジュール
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/dtl/'
+      href: /rest/api/dtl/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.devtestlab/allversions
 - name: リソース
@@ -301,7 +307,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-devtestlabs.html'
+      href: /answers/topics/azure-devtestlabs.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
     - name: ビデオ

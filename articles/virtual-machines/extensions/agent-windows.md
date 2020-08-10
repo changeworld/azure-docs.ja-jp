@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ff5825f3272f0dadc74147d36e8c5fd8e7838d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010956"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -71,13 +71,13 @@ $vm | Update-AzVM
 ### <a name="prerequisites"></a>前提条件
 - Windows VM エージェントでは、.Net Framework 4.0 を使用して、少なくとも Windows Server 2008 (64 ビット) を実行する必要があります。 「[Azure の仮想マシン エージェントの最小バージョン サポート](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください
 
-- VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)」をご覧ください。
+- VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」をご覧ください。
 
 ## <a name="detect-the-vm-agent"></a>VM エージェントの検出
 
 ### <a name="powershell"></a>PowerShell
 
-Azure Resource Manager の PowerShell モジュールを使用して、Azure VM に関する情報を取得できます。 VM に関する情報 (Azure VM エージェントのプロビジョニング状態など) を表示するには、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用します。
+Azure Resource Manager の PowerShell モジュールを使用して、Azure VM に関する情報を取得できます。 VM に関する情報 (Azure VM エージェントのプロビジョニング状態など) を表示するには、[Get-AzVM](/powershell/module/az.compute/get-azvm) を使用します。
 
 ```powershell
 Get-AzVM

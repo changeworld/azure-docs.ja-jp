@@ -1,5 +1,5 @@
 ---
-title: ネットワーク ルールでの Azure Firewall の FQDN フィルタリング (プレビュー)
+title: ネットワーク ルールでの Azure Firewall Manager のフィルタリング (プレビュー)
 description: ネットワーク ルールで FQDN フィルタリングを使用する方法
 services: firewall-manager
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 46d1f2eae1342901a660f99891d1ac1529e8ad77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 599620c5fcc3ad1802527bd66e2dbead1b97d11d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079027"
 ---
 # <a name="fqdn-filtering-in-network-rules-preview"></a>ネットワーク ルールでの FQDN フィルタリング (プレビュー)
 

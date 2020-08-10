@@ -4,16 +4,16 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82800653"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538770"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
-この記事では、[Azure Backup](backup-introduction-to-azure-backup.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
+この記事では、[Azure Backup](./backup-overview.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
 
 ## <a name="backup"></a>バックアップ
 
@@ -83,7 +83,7 @@ WA 対応ディスクでスナップショットを作成することはでき�
 
 Azure Backup では WA 対応ディスクをバックアップできませんが、バックアップから除外することはできます。 ただし、バックアップによってデータベース整合性が維持されなくなります。WA 対応ディスクの情報がバックアップされないためです。 オペレーティング システム ディスクのバックアップ、および WA 対応ではないディスクのバックアップが必要な場合は、この構成でディスクをバックアップできます。
 
-Azure Backup は、SAP HANA データベース用に RPO が 15 分のストリーミング バックアップ ソリューションを提供します。 これは、SAP による Backint 認定がされており、SAP HANA のネイティブ API を活用してネイティブ バックアップ サポートを提供します。 [Azure VM での SAP HANA データベースのバックアップ](https://docs.microsoft.com/azure/backup/sap-hana-db-about)について参照してください。
+Azure Backup は、SAP HANA データベース用に RPO が 15 分のストリーミング バックアップ ソリューションを提供します。 これは、SAP による Backint 認定がされており、SAP HANA のネイティブ API を活用してネイティブ バックアップ サポートを提供します。 [Azure VM での SAP HANA データベースのバックアップ](./sap-hana-db-about.md)について参照してください。
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>自分の VM バックアップ ポリシーで設定した、スケジュールされたバックアップ時刻からバックアップ開始時刻までの最大遅延時間はどれぐらいですか。
 
@@ -129,7 +129,11 @@ VM の復元は、Azure VM 用の簡易的な作成オプションと考えて�
 
 PowerShell でこれを行う方法の詳細については、[こちら](backup-azure-vms-automation.md#restore-an-azure-vm)をご覧ください。
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>削除された VM を復元できますか。
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>復元によって VM の作成に失敗した場合、復元に含まれるディスクはどうなりますか。
+
+マネージド VM の復元が発生した場合、VM の作成に失敗した場合でも、ディスクは復元されます。
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>削除された VM を復元することはできますか。
 
 はい。 VM を削除しても、コンテナー内の対応するバックアップ項目に移動して、復元ポイントから復元できます。
 
@@ -143,13 +147,13 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>暗号化された VM のキー コンテナーの設定を変更するとどうなりますか。
 
-暗号化された VM のキー コンテナーの設定を変更した後も、バックアップは新しい詳細情報のセットで引き続き動作します。 ただし、変更前の復元ポイントからの復元後は、キー コンテナー内のシークレットを復元してから VM を作成する必要があります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)を参照してください。
+暗号化された VM のキー コンテナーの設定を変更した後も、バックアップは新しい詳細情報のセットで引き続き動作します。 ただし、変更前の復元ポイントからの復元後は、キー コンテナー内のシークレットを復元してから VM を作成する必要があります。 詳細については、[こちらの記事](./backup-azure-restore-key-secret.md)を参照してください。
 
-シークレットまたはキーのロールオーバーなどの操作では、この手順は必要ありません。復元後も同じ KeyVault を使用できます。
+シークレットまたはキーのロールオーバーなどの操作では、この手順は必要ありません。復元後も同じキー コンテナーを使用できます。
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできますか。
 
-はい。VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)を参照してください
+はい。VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、こちらの[記事](./backup-azure-arm-restore-vms.md#post-restore-steps)を参照してください
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 

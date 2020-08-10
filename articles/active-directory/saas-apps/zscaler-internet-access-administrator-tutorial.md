@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7623373be1aded29cb022f1d5080ed94d96b719
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2957cf59a93837e4f84f64be054cdb9e6939da3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170090"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Internet Access Administrator の統合
 
@@ -41,6 +41,9 @@ Zscaler Internet Access Administrator と Azure AD の統合を構成するに�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * Zscaler Internet Access Administrator サブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -108,21 +111,25 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
     a. **[識別子]** テキスト ボックスに、要件に従って URL を入力します。
 
-    - `https://admin.zscaler.net`
-    - `https://admin.zscalerone.net`
-    - `https://admin.zscalertwo.net`
-    - `https://admin.zscalerthree.net`
-    - `https://admin.zscloud.net`
-    - `https://admin.zscalerbeta.net`
+    | 識別子 |
+    |------------|
+    | `https://admin.zscaler.net` |
+    | `https://admin.zscalerone.net` |
+    | `https://admin.zscalertwo.net` |
+    | `https://admin.zscalerthree.net` |
+    | `https://admin.zscloud.net` |
+    | `https://admin.zscalerbeta.net` |
 
     b. **[応答 URL]** テキスト ボックスに、要件に従って URL を入力します。
 
-    - `https://admin.zscaler.net/adminsso.do`
-    - `https://admin.zscalerone.net/adminsso.do`
-    - `https://admin.zscalertwo.net/adminsso.do`
-    - `https://admin.zscalerthree.net/adminsso.do`
-    - `https://admin.zscloud.net/adminsso.do`
-    - `https://admin.zscalerbeta.net/adminsso.do`
+    | [応答 URL] |
+    |-----------|
+    | `https://admin.zscaler.net/adminsso.do` |
+    | `https://admin.zscalerone.net/adminsso.do` |
+    | `https://admin.zscalertwo.net/adminsso.do` |
+    | `https://admin.zscalerthree.net/adminsso.do` |
+    | `https://admin.zscloud.net/adminsso.do` |
+    | `https://admin.zscalerbeta.net/adminsso.do` |
 
 5. Zscaler Internet Access Administrator アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性と要求]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性と要求]** ダイアログを開きます。
 

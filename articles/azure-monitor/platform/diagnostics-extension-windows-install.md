@@ -7,12 +7,13 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4e38e9ee301d080110e8019e3fe407e7d5cdc026
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549499"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499196"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
@@ -77,7 +78,7 @@ Azure portal で、個々の仮想マシンに診断拡張機能をインスト�
 Azure Resource Manager テンプレートを使用した診断拡張機能のデプロイについては、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](../../virtual-machines/extensions/diagnostics-template.md)」を参照してください。 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
-次の例のように、Azure CLI を使用して、[az vm extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) を使用して Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
+次の例のように、Azure CLI を使用して、[az vm extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) を使用して Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
 
 ```azurecli
 az vm extension set \
@@ -133,7 +134,7 @@ az vm extension set \
 
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
-次の例のように、PowerShell を使用し、[Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) を使用して、Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
+次の例のように、PowerShell を使用し、[Set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) を使用して、Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `

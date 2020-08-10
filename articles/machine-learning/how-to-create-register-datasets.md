@@ -5,18 +5,19 @@ description: 機械学習の実験を実行するために Azure Machine Learnin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: baa238f36c41b5f494e8748cd5cd563bd212f483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610712"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326394"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -33,7 +34,8 @@ Azure Machine Learning データセットを使用すると、次のことを実
 * 他のユーザーとデータを共有し、共同作業を行う。
 
 ## <a name="prerequisites"></a>前提条件
-' データセットを作成して操作するには、以下が必要です。
+
+データセットを作成して操作するには、以下が必要です。
 
 * Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
@@ -42,7 +44,7 @@ Azure Machine Learning データセットを使用すると、次のことを実
 * [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) (これには azureml-datasets パッケージが含まれています)。
 
 > [!NOTE]
-> 一部の Dataset クラスは、[azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
+> 一部の Dataset クラスは、[azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7)
 
 ## <a name="compute-size-guidance"></a>コンピューティング サイズのガイダンス
 
@@ -52,7 +54,7 @@ Azure Machine Learning データセットを使用すると、次のことを実
  
 Pandas を使用している場合は、使用するの vCPU は 1 つのみのため、複数所有する必要はありません。 Modin と Dask/Ray を使用すると、1 つの Azure Machine Learning コンピューティング インスタンス/ノード上に多数の vCPU を簡単に並列化できます。また、必要に応じて、`import pandas as pd` を `import modin.pandas as pd` に変更するだけで、大規模なクラスターにスケールアウトすることも可能です。 
  
-データに十分な大きさの仮想スペースを確保できない場合、2 つのオプションがあります。 Spark または Dask などのフレームワークを使用してデータの "メモリ不足" 処理を実行します。つまり、データフレームがパーティションによって RAM パーティションに読み込まれて処理され、最後に最終的な結果が収集されます。 この処理速度が遅すぎる場合は、Spark または Dask では、クラスターにスケールアウトでき、またインタラクティブに使用することも可能です。 
+データに十分な大きさの仮想マシンを確保できない場合、2 つのオプションがあります。Spark または Dask などのフレームワークを使用してデータの "メモリ不足" 処理を実行します。つまり、データフレームがパーティションによって RAM パーティションに読み込まれて処理され、最後に最終的な結果が収集されます。 この処理速度が遅すぎる場合は、Spark または Dask では、クラスターにスケールアウトでき、またインタラクティブに使用することも可能です。 
 
 ## <a name="dataset-types"></a>データセットの種類
 
@@ -81,7 +83,7 @@ Python SDK を使用して [Azure データストア](how-to-access-data.md)か�
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
-.csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。 
+.csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。 
 
 次のコードでは、ワークスペースの既存のワークスペースと必要なデータストアを名前で取得します。 次に、データストアとファイルの場所を `path` パラメーターに渡して、新しい TabularDataset である `weather_ds` を作成します。
 
@@ -121,7 +123,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Survived|Pclass|名前|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+|(インデックス)|PassengerId|Survived|Pclass|名前|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85|C
@@ -158,7 +160,7 @@ Azure SQL Database から読み取るには、`TabularDatasetFactory` クラス�
 
 from azureml.core import Dataset, Datastore
 
-# create tabular dataset from a SQL database in datastore
+# create tabular dataset from a SQL database in datastore. Take note of double parenthesis.
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
@@ -186,7 +188,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>FileDataset を作成する
 
-任意の形式のファイルを読み込み、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを使用します。 ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_files()` メソッドでパラメーター `validate =False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。
+任意の形式のファイルを読み込み、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを使用します。 ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -210,6 +212,7 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 1. **[データセットの作成]** を選択して、データセットのソースを選択します。 このソースには、ローカル ファイル、データストア、またはパブリック URL を指定できます。
 1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
 1. **[次へ]** を選択して、 **[データストアとファイルの選択]** フォームを開きます。 このフォームでは、作成後にデータセットを保存する場所を選択し、データセットに使用するデータ ファイルを選択します。 
+    1. データが仮想ネットワーク内にある場合は、検証のスキップを有効にします。 [仮想ネットワークの分離とプライバシー](how-to-enable-virtual-network.md#machine-learning-studio)について理解を深める。
 1. **[次へ]** を選択して **[Settings and preview]/(設定とプレビュー/)** および **[Schema]\(スキーマ\)** フォームを設定します。これらのフォームはファイルの種類に基づいてインテリジェントに設定され、これらのフォームで、作成前にデータセットを構成することができます。 
 1. **[次へ]** を選択して、 **[詳細の確認]** フォームを確認します。 選択内容を確認し、データセットについてのオプションのデータ プロファイルを作成します。 [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。 
 1. **[作成]** を選択して、データセットの作成を完了します。

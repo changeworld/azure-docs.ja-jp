@@ -4,19 +4,21 @@ description: オファーの新規作成または既存オファーの更新を�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115725"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292961"
 ---
 <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
 =========================
 
 > [!NOTE]
-> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
+> Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 切り替えにより、小さな変更が加えられました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの切り替え後もコードが引き続き動作することを確認してください。 CPP API は、パートナー センターへの切り替え前に既に統合されている既存の製品に対してのみ使用してください。新しい製品では、パートナー センター申請 API を使用する必要があります。
 
 この呼び出しでは、パブリッシャーの名前空間内にある特定のオファーが更新されるか、または新しいオファーが作成されます。
 
@@ -36,7 +38,7 @@ ms.locfileid: "86115725"
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**        |  **Value**               |
+|  **Name**        |  **Value**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 承認    | `Bearer YOUR_TOKEN`      |
@@ -283,4 +285,4 @@ ms.locfileid: "86115725"
 <a name="uploading-artifacts"></a>成果物のアップロード
 -------------------
 
-イメージやロゴなどの成果物は、Web 上のアクセス可能な場所にアップロードした後、上記の例のように、PUT 要求の URI として組み込むことにより、共有する必要があります。 システムは、これらのファイルが Azure Marketplace のストレージに存在しないことを検出すると、ストレージにファイルをダウンロードします。  その結果、将来の GET 要求ではこれらのファイルに対して Azure Marketplace サービスの URL が返されます。
+イメージやロゴなどの成果物は、Web 上のアクセス可能な場所にアップロードした後、上記の例のように、PUT 要求の URI として組み込むことにより、共有する必要があります。 これらのファイルが Azure Marketplace のストレージに存在しないことが検出されると、ストレージにファイルがダウンロードされます。  その結果、将来の GET 要求ではこれらのファイルに対して Azure Marketplace サービスの URL が返されます。

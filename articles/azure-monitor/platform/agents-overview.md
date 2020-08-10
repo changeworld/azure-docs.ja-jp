@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202563"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445292"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -62,7 +62,7 @@ Log Analytics エージェントは、次のような場合に使用します。
 * データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)でサポートされている機能を活用する。
 * 仮想マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる [Azure Monitor for VMs](../insights/vminsights-overview.md) を使用する。  
 * [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。
-* [Azure Automation Update Management](../../automation/automation-update-management.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking.md) を使用して、Azure VM の包括的な管理を提供する
+* [Azure Automation Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking.md) を使用して、Azure VM の包括的な管理を提供する
 * さまざまな[ソリューション](../monitor-reference.md#insights-and-core-solutions)を使用して、特定のサービスまたはアプリケーションを監視する。
 
 Log Analytics エージェントの制限事項は次のとおりです。
@@ -76,7 +76,7 @@ Log Analytics エージェントの制限事項は次のとおりです。
 Azure Diagnostics 拡張機能は、次のような場合に使用します。
 
 - アーカイブのため、または [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールで分析したりするために Azure Storage にデータを送信する。
-- [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](../../azure-monitor/platform/alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Windows のみ) などの機能を活用したりする。
+- [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](./alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Windows のみ) などの機能を活用したりする。
 - [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
 - [ブート診断](../../virtual-machines/troubleshooting/boot-diagnostics.md)を収集して VM ブートの問題を調査する。
 
@@ -91,7 +91,7 @@ Azure Diagnostics 拡張機能の制限事項は次のとおりです。
 
 Telegraf エージェントは、次のような場合に使用します。
 
-* [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](../../azure-monitor/platform/alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Linux のみ) などの機能を活用したりする。 
+* [Azure Monitor メトリック](data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](./alerts-metric-overview.md)や[自動スケーリング](autoscale-overview.md) (Linux のみ) などの機能を活用したりする。 
 
 
 
@@ -120,3 +120,4 @@ Telegraf エージェントは、次のような場合に使用します。
 - [Log Analytics エージェントの概要](log-analytics-agent.md)
 - [Azure Diagnostics 拡張機能の概要](diagnostics-extension-overview.md)
 - [Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](collect-custom-metrics-linux-telegraf.md)
+

@@ -4,16 +4,16 @@ description: Azure における VM のライフサイクルの概要 (VM の任�
 services: virtual-machines
 author: shandilvarun
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: c1452252e6cbd7b741c14c2ea52728ba144c65a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a12f4156947eb55696ffe2ba067250bd1282989d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757860"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292175"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>仮想マシンのライフサイクルと状態
 
@@ -21,4 +21,4 @@ ms.locfileid: "81757860"
 
 ## <a name="next-steps"></a>次のステップ
 
-VM の監視について詳しくは、「[Azure で仮想マシンを監視する方法](monitor.md)」をご覧ください。
+VM の監視について詳しくは、[Azure で仮想マシンを監視する方法](../../azure-monitor/insights/monitor-vm-azure.md)に関するページをご覧ください。

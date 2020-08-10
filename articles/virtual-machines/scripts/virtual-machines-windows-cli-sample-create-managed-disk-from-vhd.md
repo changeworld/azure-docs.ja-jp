@@ -1,5 +1,5 @@
 ---
-title: 同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する - CLI サンプル
+title: 同じアカウントの VHD ファイルからマネージド ディスクを作成する (Windows) - CLI サンプル
 description: Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: b0ce935e03a6202ac444987cbecf853ee6717d3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 34f05318840bcb4356de0aab8dd12f62ac79d345
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069246"
 ---
-# <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>CLI で同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する
+# <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli-windows"></a>CLI で同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する (Windows)
 
 このスクリプトは、同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成します。 sysprep された汎用的な VHD ではなく特殊化された VHD を OS の管理ディスクにインポートして仮想マシンを作成するには、このスクリプトを使います。 または、このスクリプトを使用して、データ VHD をマネージド データ ディスクにインポートします。
 
@@ -40,10 +40,10 @@ ms.locfileid: "81459524"
 
 | command | メモ |
 |---|---|
-| [az disk create](https://docs.microsoft.com/cli/azure/disk) | 同じサブスクリプション内のストレージ アカウントに VHD の URI を使用してマネージド ディスクを作成する |
+| [az disk create](/cli/azure/disk) | 同じサブスクリプション内のストレージ アカウントに VHD の URI を使用してマネージド ディスクを作成する |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシンとマネージド ディスクの CLI サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にあります。

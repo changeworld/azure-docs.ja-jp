@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ecd40d34233ba6f0b886f4b55aedf4339bf6de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367956"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505195"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復旧
 
@@ -41,7 +41,7 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
 > [!NOTE] 
 > インストールされているソリューションおよびリンクされたサービス (Azure Automation アカウントなど) は、削除時点でワークスペースから完全に削除され、回復させることはできません。 ワークスペースを以前に構成した状態に戻すには、回復操作の後で再構成する必要があります。
 
-ワークスペースは、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)、[Azure portal](https://portal.azure.com) のいずれかの方法で削除することができます。
+ワークスペースは、[PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](/rest/api/loganalytics/workspaces/delete)、[Azure portal](https://portal.azure.com) のいずれかの方法で削除することができます。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -64,10 +64,10 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 > [!IMPORTANT]
 > ワークスペースの完全削除操作を行うと元に戻すことができず、ワークスペースとそのデータを復元できないため、注意して使用してください。
 
-ワークスペースを完全に削除するには、'-force' タグを追加します。
+ワークスペースを完全に削除するには、"-forceDelete" タグを追加します。
 
 ```powershell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
 ```
 
 ## <a name="recover-workspace"></a>ワークスペースを回復させる
@@ -112,6 +112,6 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 * ワークスペースの作成時に "*このワークスペース名は既に使用されています*" または "*競合*" というエラー メッセージが表示される場合は、次の原因が考えられます。
   * ワークスペース名を使用できず、組織内の誰か、または他の顧客によって使用されている。
   * ワークスペースが過去 14 日以内に削除されており、その名前は論理的な削除期間にわたって予約されている。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。<br>
-     1. ワークスペースを[回復](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)します。
-     2. ワークスペースを[完全に削除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)します。
+     1. ワークスペースを[回復](#recover-workspace)します。
+     2. ワークスペースを[完全に削除](#permanent-workspace-delete)します。
      3. 同じワークスペース名を使用して新しいワークスペースを作成します。

@@ -255,6 +255,8 @@
           items:
             - name: TLS の構成
               href: howto-tls-configurations.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: サーバー パラメーターの構成
           items:
             - name: Azure portal
@@ -351,6 +353,8 @@
           items:
             - name: メトリックに基づいたアラートの作成
               href: howto-hyperscale-alert-on-metric.md
+            - name: Access データベース ログ
+              href: howto-hyperscale-logging.md
         - name: トラブルシューティング
           items:
             - name: 接続エラーのトラブルシューティング

@@ -4,18 +4,18 @@ description: この記事は、Linux VM 用の Microsoft Azure Disk Encryption �
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab6ef302d2ac3cbca8bb91c05f994c1ddf19bd1e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610355"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370259"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption のサンプル スクリプト 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Linux VM 用の Azure Disk Encryption のサンプル スクリプト
 
 この記事では、事前に暗号化された VHD の準備およびその他のタスクのためのサンプル スクリプトを提供します。
 
@@ -132,7 +132,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
     ```
   VM が "OS disk encryption started (OS ディスクの暗号化が開始されました)" 状態に達するまで、Premium ストレージを使用する VM でおよそ 40 分から 50 分かかります。
 
-  WALinuxAgent での[Issue #388](https://github.com/Azure/WALinuxAgent/issues/388) により、一部のディストリビューションでは、`OsVolumeEncrypted` と `DataVolumesEncrypted` は `Unknown` と表示されます。 WALinuxAgent バージョン 2.1.5 以降では、この問題は自動的に修正されます。 出力に `Unknown` が含まれている場合は、Azure リソース エクスプローラーを使用して、ディスクの暗号化状態を確認できます。
+  WALinuxAgent での[問題 #388](https://github.com/Azure/WALinuxAgent/issues/388) により、一部のディストリビューションでは、`OsVolumeEncrypted` と `DataVolumesEncrypted` は `Unknown` と表示されます。 WALinuxAgent バージョン 2.1.5 以降では、この問題は自動的に修正されます。 出力に `Unknown` が含まれている場合は、Azure リソース エクスプローラーを使用して、ディスクの暗号化状態を確認できます。
 
   [Azure リソース エクスプローラー](https://resources.azure.com/)に移動し、左側の選択パネルで次の階層を展開します。
 
@@ -186,7 +186,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
    ![Ubuntu 16.04 のセットアップ - ブート時のパスフレーズ指定](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. [こちらの手順](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+6. [こちらの手順](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json)に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 次の手順を行って、Azure で使用する暗号化を構成します。
 
@@ -262,7 +262,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
    ![openSUSE 13.2 のセットアップ - ブート時のパスフレーズ指定](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. 「[Azure 用の SLES または openSUSE 仮想マシンの準備](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+3. 「[Azure 用の SLES または openSUSE 仮想マシンの準備](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131)」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 Azure で使用する暗号化を構成するには、次の手順を行います。
 1. /etc/dracut.conf を編集し、次の行を追加します。
@@ -339,7 +339,7 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
 
    ![CentOS 7 のセットアップ - 起動時のパスフレーズ入力](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. 「[Azure 用の CentOS ベースの仮想マシンの準備](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)」の「CentOS 7.0+」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+5. 「[Azure 用の CentOS ベースの仮想マシンの準備](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70)」の「CentOS 7.0+」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 6. これで、VM のプロビジョニングを解除し、Azure にご利用の VHD をアップロードできるようになります。
 
@@ -439,7 +439,7 @@ Azure AD アプリ (以前のリリース) を使用して暗号化する場合�
 [KEK を使用せずに OS ディスクをアタッチする](#without-using-a-kek)場合は、次の手順で `$secretUrl` を使用します。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>KEK で暗号化されるディスク暗号化シークレット
-必要であれば、シークレットを Key Vault にアップロードする前に、キー暗号化キーを使用してシークレットを暗号化できます。 最初にキー暗号化キーを使用してシークレットを暗号化するには、ラップ [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) を使用します。 このラップ操作の出力は、base64 URL エンコードされた文字列です。これは、[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) コマンドレットを使用してシークレットとしてアップロードできます。
+必要であれば、シークレットを Key Vault にアップロードする前に、キー暗号化キーを使用してシークレットを暗号化できます。 最初にキー暗号化キーを使用してシークレットを暗号化するには、ラップ [API](/rest/api/keyvault/wrapkey) を使用します。 このラップ操作の出力は、base64 URL エンコードされた文字列です。これは、[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) コマンドレットを使用してシークレットとしてアップロードできます。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

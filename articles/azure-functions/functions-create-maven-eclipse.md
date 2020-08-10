@@ -5,13 +5,13 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054731"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373319"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -28,7 +28,7 @@ Java と Eclipse を使用して関数アプリを開発するには、以下の
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/) バージョン 8。
 -  [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 -  Java と Maven をサポートする [Eclipse](https://www.eclipse.org/downloads/packages/)。
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+-  [Azure CLI](/cli/azure)
 
 > [!IMPORTANT] 
 > このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
@@ -43,7 +43,7 @@ Azure Functions を実行およびデバッグするためのローカル環境�
 1. `resourceGroup`、`appName`、`appRegion` を含むすべてのフィールドに値を入力し (**fabrikam-function-20170920120101928** とは異なる appName を使用してください)、最後に **[完了]** をクリックします。
     ![Eclipse Maven の作成 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven は、_artifactId_ という名前の新しいフォルダーに、プロジェクト ファイルを作成します。 プロジェクトで生成されるコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。
+Maven は、_artifactId_ という名前の新しいフォルダーに、プロジェクト ファイルを作成します。 プロジェクトで生成されるコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](./functions-bindings-http-webhook.md)単純な関数です。
 
 ## <a name="run-functions-locally-in-the-ide"></a>IDE で関数をローカルで実行する
 

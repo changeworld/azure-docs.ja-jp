@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:IoT 空間分析を実装する | Microsoft Azure Maps
 description: IoT ハブを Microsoft Azure Maps サービスの API と統合します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2bb5876424730e55d15cc52aeb98aa04af040821
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318928"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133403"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 
@@ -110,7 +110,7 @@ Event Grid をサブスクライブするにはいくつかの方法がありま
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する 
 
-Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順に従い、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、お使いのアカウントのプライマリ キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)手順に従い、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、お使いのアカウントのプライマリ キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 
 

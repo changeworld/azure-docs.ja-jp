@@ -14,12 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 0c24464050d0beee120dcb234582a464d6245270
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 77264416affb582bb709ff747ebaa467927114c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76310647"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494895"
 ---
 # <a name="cli-example-create-an-asset"></a>CLI の例: 資産の作成
 
@@ -27,7 +28,7 @@ ms.locfileid: "76310647"
 
 ## <a name="prerequisites"></a>前提条件 
 
-[Media Services アカウントを作成する](create-account-cli-how-to.md)
+[Media Services アカウントを作成する](./create-account-howto.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

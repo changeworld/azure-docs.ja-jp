@@ -3,20 +3,23 @@ title: クイック スタート:.NET 用 Azure Blob Storage クライアント 
 description: このクイックスタートでは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/20/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4fa2d7f3884a30e60ce703dd45b295a85722fe67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84455945"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285290"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11
 
 .NET 用 Azure Blob Storage クライアント ライブラリ v11 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
+
+> [!NOTE]
+> このクイックスタートでは、Azure Blob Storage クライアント ライブラリのレガシー バージョンを使用します。 最新バージョンで始めるには、「[クイックスタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12](storage-quickstart-blobs-dotnet.md)」を参照してください。
 
 .NET 用 Azure Blob Storage クライアント ライブラリを使用すると、以下のことができます。
 
@@ -27,7 +30,12 @@ ms.locfileid: "84455945"
 * コンテナー内のすべての BLOB を一覧表示する
 * コンテナーを削除する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+その他のリソース:
+
+* [API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+* [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

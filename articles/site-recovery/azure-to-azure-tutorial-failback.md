@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134442"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289308"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールバックする
 
@@ -58,7 +58,7 @@ VM が再保護された後で、必要に応じてプライマリ リージョ�
     ![プライマリ リージョンとセカンダリ リージョンの VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Site Recovery 拡張機能バージョン 9.28.x.x 以降を実行しているコンピューターの場合、[更新プログラム ロールアップ 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) の Site Recovery は、フェールバックが完了して VM が再保護された後にセカンダリ ディザスター リカバリー リージョン内のコンピューターをクリーンアップします。 セカンダリ リージョン内の VM や NIC を手動で削除する必要はありません。 フェールバックの後のレプリケーションを完全に無効にした場合、Site Recovery は VM や NIC に加えて、ディザスター リカバリー リージョン内のディスクをクリーンアップします。
+> マネージド ディスクを使用しており、Site Recovery 拡張機能バージョン 9.28.x.x 以降を実行しているコンピューターの場合、[更新プログラム ロールアップ 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) の Site Recovery は、フェールバックが完了して VM が再保護された後にセカンダリ ディザスター リカバリー リージョン内のコンピューターをクリーンアップします。 セカンダリ リージョン内の VM や NIC を手動で削除する必要はありません。 アンマネージド ディスクを含む VM はクリーンアップされないことに注意してください。 フェールバックの後のレプリケーションを完全に無効にした場合、Site Recovery は VM や NIC に加えて、ディザスター リカバリー リージョン内のディスクをクリーンアップします。
 
 ## <a name="next-steps"></a>次のステップ
 

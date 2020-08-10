@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498968"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326088"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -66,6 +66,9 @@ ExpressRoute モニターのサポート対象リージョンの一覧は、[こ
 
 ## <a name="set-up-and-configure"></a>セットアップと構成
 
+> [!NOTE]
+> Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) または OMS Linux エージェントとも呼ばれます。
+
 ### <a name="install-and-configure-agents"></a>エージェントのインストールと構成 
 
 「[Windows コンピューターを Azure Monitor に接続する](../platform/agent-windows.md)」と「[Operations Manager を Azure Monitor に接続する](../platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
@@ -110,7 +113,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成 
 
-1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順も使用できます。 
+1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されている手順も使用できます。 
 2. Log Analytics ワークスペースを開いて、 **[概要]** タイルを選びます。 
 3. "*このソリューションにはさらに構成が必要です*" というメッセージが表示されている **[Network Performance Monitor]** タイルを選択します。
 
@@ -288,3 +291,4 @@ Azure portal を介してアラートを作成する NPM ユーザーの場合:
 
 ## <a name="next-steps"></a>次のステップ 
 [パフォーマンスの監視](network-performance-monitor-performance-monitor.md)、[サービス接続の監視](network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](network-performance-monitor-expressroute.md)の詳細情報を確認します。 
+

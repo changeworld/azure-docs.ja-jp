@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565905"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371415"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal での Azure Cognitive Search のサービス管理
 
@@ -123,7 +123,7 @@ Azure Cognitive Search は主要なデータ ストレージ ソリューショ�
 
 より一般的なのはレプリカを追加することですが、ストレージが制限されている場合は、パーティションを追加してより多くの容量を取得できます。 サービスをプロビジョニングしたサービス レベルによって、パーティションを追加できるかどうかが決まります。 Basic サービス レベルは、1 つのパーティションでロックされています。 Standard サービス レベル以上では、追加のパーティションがサポートされています。
 
-パーティションは 12 の倍数 (具体的には、1、2、3、4、6、12) で追加されます。 これは、シャーディングのアーティファクトです。 インデックスは 12 個のシャードで作成され、これらはすべて 1 個のパーティションまたは均等に 2、3、4、6、12 個のパーティションに格納されます (パーティションごとに 1 つのシャード)。
+パーティションは 12 の約数 (具体的には、1、2、3、4、6、12) で追加されます。 これは、シャーディングのアーティファクトです。 インデックスは 12 個のシャードで作成され、これらはすべて 1 個のパーティションまたは均等に 2、3、4、6、12 個のパーティションに格納されます (パーティションごとに 1 つのシャード)。
 
 ### <a name="remove-replicas"></a>レプリカの削除
 

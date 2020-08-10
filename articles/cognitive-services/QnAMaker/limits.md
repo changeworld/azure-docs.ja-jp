@@ -3,12 +3,12 @@ title: 制限と境界 - QnA Maker
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855550"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524439"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -79,7 +79,8 @@ URL ページから QnA を抽出するためにクロールできるディー�
 ナレッジ ベース内のコンテンツの全体的な制限は以下のとおりです。
 * 回答のテキストの長さ: 25,000
 * 質問のテキストの長さ: 1,000
-* メタデータのキー/値のテキストの長さ: 100
+* メタデータ キーのテキストの長さ: 100
+* メタデータ値のテキストの長さ: 500
 * メタデータ名でサポートされる文字: アルファベット、数字、`_`
 * メタデータ値でサポートされる文字: `:` と `|` を除くすべての文字
 * ファイル名の長さ: 200

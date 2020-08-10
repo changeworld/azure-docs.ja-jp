@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26fa2b82b89c7b9ce1e05062718f2c4d0c93197c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cabcaacbdc7e3e94e62c8fb45274c4d4f9390ddd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763280"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273407"
 ---
 # <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>マルチテナント アプリケーションのシングル サインオンを有効にする  
 
@@ -61,4 +61,4 @@ ms.locfileid: "84763280"
 1. [Azure テナントを作成し](isv-tenant-multi-tenant-app.md)、アプリケーションをテストします
 1. [SSO のドキュメントを作成し、サイトに発行します](isv-create-sso-documentation.md)。
 1. [アプリケーションの一覧を提出し](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)、Microsoft と連携して Microsoft のサイトでドキュメントを作成します。
-1. [Microsoft Partner Network に参加し (無料)、市場投入プランを作成します](https://partner.microsoft.com/en-us/explore/commercial#gtm)。
+1. [Microsoft Partner Network に参加し (無料)、市場投入プランを作成します](https://partner.microsoft.com/explore/commercial#gtm)。

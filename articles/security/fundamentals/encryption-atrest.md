@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd54c8f7e8a3784672f5364efc6f6b51186f911d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454681"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529286"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -258,9 +258,8 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 
 #### <a name="encryption-model-and-key-management-table"></a>暗号化モデルとキー管理テーブル
 
-|                                  |                    | **暗号化モデルとキーの管理** |                    |
+| 製品、機能、またはサービス | サービス管理キーを使用したサーバー側   | カスタマー マネージド キーを使用したサーバー側 | クライアント管理キーを使用したクライアント側  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理キーを使用したクライアント側**      |
 | **AI と機械学習**      |                    |                    |                    |
 | Azure Cognitive Search           | はい                | はい                | -                  |
 | Azure Cognitive Services         | はい                | はい                | -                  |
@@ -283,7 +282,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Azure HDInsight                  | はい                | All                | -                  |
 | Azure Monitor Application Insights | はい                | はい                | -                  |
 | Azure Monitor Log Analytics      | はい                | はい                | -                  |
-|  Azure Data Explorer              | はい                | はい                | -                  |
+| Azure Data Explorer              | はい                | はい                | -                  |
 | Azure Data Factory               | はい                | はい                | -                  |
 | Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
 | **Containers**                   |                    |                    |                    |

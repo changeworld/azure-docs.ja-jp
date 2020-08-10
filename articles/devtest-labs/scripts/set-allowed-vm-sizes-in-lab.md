@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 5b3dbee7d0ac928c4f18f25348e714aba9c1cd13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ce8034e8c028e3f385baf455c44c6ea33fe6f8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84893430"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290376"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>PowerShell を使用して Azure Lab Services で許可される VM のサイズを設定する
 
@@ -47,6 +47,6 @@ ms.locfileid: "84893430"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。
 
 Azure Lab Services のその他の PowerShell のサンプル スクリプトについては、[Azure Lab Services の PowerShell のサンプル](../samples-powershell.md)に関する記事をご覧ください。

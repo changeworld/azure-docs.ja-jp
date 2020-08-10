@@ -1,17 +1,15 @@
 ---
 title: Azure Functions のデプロイ テクノロジ
 description: Azure Functions にコードをデプロイするさまざまな方法について学習します。
-author: ggailey777
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: glenga
-ms.openlocfilehash: 63c52b8b1ee9b9448a1ba6f78873ae6a036e3563
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540215"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562941"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -39,7 +37,7 @@ Azure Functions は、クロス プラットフォームのローカル開発と
 | FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | ポータルでの編集 |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup>[トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。  
+<sup>1</sup>[トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。
 <sup>2</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
 
 ## <a name="key-concepts"></a>主要な概念
@@ -74,9 +72,9 @@ Linux でリモート ビルドを有効にするには、次の[アプリケー
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-既定では、[Azure Functions Core Tools](functions-run-local.md) と [Visual Studio Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、Linux へのデプロイ時にリモート ビルドが実行されます。 このため、どちらのツールでも、これらの設定は Azure で自動的に作成されます。 
+既定では、[Azure Functions Core Tools](functions-run-local.md) と [Visual Studio Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、Linux へのデプロイ時にリモート ビルドが実行されます。 このため、どちらのツールでも、これらの設定は Azure で自動的に作成されます。
 
-Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。 
+Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。
 
 ##### <a name="consumption-plan"></a>従量課金プラン
 
@@ -94,7 +92,7 @@ Azure Functions では、次のデプロイ方法が使用できます。
 
 外部パッケージ URL を使用して、関数アプリが含まれるリモート パッケージ (.zip) ファイルを参照できます。 このファイルは、指定の URL からダウンロードされます。アプリは [Run From Package](run-functions-from-deployment-package.md) モードで実行されます。
 
->__使用方法:__ アプリケーションの設定に `WEBSITE_RUN_FROM_PACKAGE` を追加します。 この設定では、値として URL (実行する特定のパッケージ ファイルの場所) を指定する必要があります。 [ポータルで](functions-how-to-use-azure-function-app-settings.md#settings)、または [Azure CLI を使用して](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)設定を追加できます。 
+>__使用方法:__ アプリケーションの設定に `WEBSITE_RUN_FROM_PACKAGE` を追加します。 この設定では、値として URL (実行する特定のパッケージ ファイルの場所) を指定する必要があります。 [ポータルで](functions-how-to-use-azure-function-app-settings.md#settings)、または [Azure CLI を使用して](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)設定を追加できます。
 >
 >Azure Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) を備えたプライベート コンテナーを使用して、Functions にパッケージへのアクセス権を付与します。 アプリケーションが再起動されるたびに、コンテンツのコピーがフェッチされます。 アプリケーションの有効期間中は、参照が有効である必要があります。
 
@@ -106,7 +104,7 @@ ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイ�
 
 >__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。[Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、またはコマンド ラインを使用した [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 既定では、これらのツールは zip デプロイを使用し、[パッケージから実行](run-functions-from-deployment-package.md)されます。 Core Tools と Visual Studio Code 拡張機能の両方で、Linux へのデプロイ時に[リモート ビルド](#remote-build)が有効になります。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
 
->zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。 
+>zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。
 
 >__いつ使用するか:__ zip デプロイは、Azure Functions で推奨されるデプロイ テクノロジです。
 
@@ -169,7 +167,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ポータルベースのエディターでは、関数アプリ内のファイルを直接編集できます (基本的には、変更内容を保存するたびにデプロイされます)。
 
->__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。 
+>__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。
 
 >__いつ使用するか:__ Azure Functions の使用を開始するには、ポータルが適しています。 より集中的な開発作業には、次のクライアント ツールのいずれかを使用することをお勧めします。
 >
@@ -198,7 +196,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ## <a name="next-steps"></a>次のステップ
 
-関数アプリのデプロイの詳細については、次の記事を参照してください。 
+関数アプリのデプロイの詳細については、次の記事を参照してください。
 
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
 + [Azure DevOps を使用した継続的デリバリー](functions-how-to-azure-devops.md)

@@ -117,10 +117,10 @@ Source server name (依存元サーバー名) | 依存元マシンの名前
 Source application (依存元アプリケーション) | 依存元マシン上のアプリケーションの名前 
 Source process (依存元プロセス) | 依存元マシン上のプロセスの名前 
 Destination server name (依存先サーバー名) | 依存先マシンの名前
-宛先 IP | 依存先マシンの IP アドレス
+Destination IP (依存先 IP) | 依存先マシンの IP アドレス
 Destination application (依存先アプリケーション) | 依存先マシン上のアプリケーションの名前
 Destination process (依存先プロセス) | 依存先マシン上のプロセスの名前 
-宛先ポート | 依存先マシンのポート番号
+Destination port (依存先ポート) | 依存先マシンのポート番号
 
 
 ## <a name="stop-dependency-discovery"></a>依存関係の検出を停止する

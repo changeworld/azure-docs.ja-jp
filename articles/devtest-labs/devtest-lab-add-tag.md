@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボへのタグの追加 | Microsoft Docs
 description: Azure DevTest Labs でラボにタグを追加する方法を説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bf835cee705012fd175a3132edde1d241311c576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483008"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287585"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する
 
@@ -52,7 +52,7 @@ ms.locfileid: "85483008"
 * タグ名は 512 文字まで、タグ値は 256 文字までに制限されます。 ストレージ アカウントについては、タグ名は 128 文字まで、タグ値は 256 文字までに制限されます。
 * リソース グループに適用したタグは、そのリソース グループ内のリソースには継承されません。
 
-「[タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)」のページでは、PowerShell や Azure CLI を使用してタグを管理する方法など、Azure でのタグの使用に関する詳細な情報を得られます。
+「[タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)」のページでは、PowerShell や Azure CLI を使用してタグを管理する方法など、Azure でのタグの使用に関する詳細な情報を得られます。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

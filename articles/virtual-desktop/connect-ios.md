@@ -8,22 +8,19 @@ ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6fa3a120788bf6b196409491584e068609b65e60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbf169a4be639d8745670a33b47a7392d13b6b07
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209056"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291452"
 ---
-# <a name="connect-with-the-ios-client"></a>iOS クライアントに接続する
+# <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>iOS クライアントを使用して Windows Virtual Desktop に接続する
 
 > 適用対象: iOS 13.0 以降。 iPhone、iPad、iPod touch と互換性があります。
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトと Spring 2020 更新プログラムの組み合わせに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/connect-ios-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/connect-ios-2019.md)を参照してください。
 
 ダウンロード可能なクライアントを使用して、ご使用の iOS デバイスから Windows Virtual Desktop リソースにアクセスできます。 このガイドでは、iOS クライアントを設定する方法について説明します。
 
@@ -40,7 +37,7 @@ ms.locfileid: "85209056"
 1. 接続センターで、 **+** をタップし、次に **[Add Workspace]\(ワークスペースを追加\)** をタップします。
 2. **[Feed URL]\(フィード URL\)** フィールドにフィード URL を入力します。 フィード URL には、URL またはメール アドレスのいずれかを指定できます。
    - URL を使用する場合は、管理者によって付与されたものを使用します。 通常、URL は <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> です。
-   - 電子メールを使用するには、メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者がそのようにサーバーを構成した場合)。
+   - 電子メールを使用するには、電子メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者がそのようにサーバーを構成した場合)。
 3. **[Next]\(次へ\)** をタップします。
 4. メッセージが表示されたら、資格情報を入力します。
    - **[User name]\(ユーザー名\)** 。リソースへのアクセス許可を持つユーザー名を指定します。
@@ -48,9 +45,9 @@ ms.locfileid: "85209056"
    - 管理者が追加の要素を指定するように認証を構成した場合、そのように求められることもあります。
 5. **[保存]** をタップします。
 
-その後、接続センターにリモート リソースが表示されます。
+この後、接続センターにリモート リソースが表示されるはずです。
 
-フィードをサブスクライブすると、フィードのコンテンツが自動で定期的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
+フィードをサブスクライブすると、フィードのコンテンツが定期的に自動的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 689fb9953f6de9c717d774e222824c5b3701527e
-  ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+  ms.openlocfilehash: e17e6195d629238c9c719d8e34780593129ae244
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2020
-  ms.locfileid: "86230351"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87027072"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
       url: quickstart-v2-ios.md
     - text: Windows デスクトップ (WPF)
       url: quickstart-v2-windows-desktop.md
-- title: Web API をセキュリティで保護する
+- title: Web API
   linkLists:
   - linkListType: get-started
     links:
@@ -92,11 +92,27 @@ landingContent:
       url: microsoft-graph-intro.md
     - text: Microsoft Graph 認証の概要
       url: https://docs.microsoft.com/graph/auth/
-- title: SAML 2.0
+- title: プロトコル
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: OAuth 2.0 と OpenID Connect
+      url: active-directory-v2-protocols.md
+    - text: SAML 2.0
+      url: active-directory-saml-protocol-reference.md
+- title: 企業-顧客間 (B2C)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD B2C とは
+      url: ../../active-directory-b2c/overview.md
+    - text: 技術と機能の概要
+      url: ../../active-directory-b2c/technical-overview.md
+- title: マネージド ID
   linkLists:
   - linkListType: get-started
     links:
-    - text: Azure AD で SAML プロトコルを使用する方法
-      url: active-directory-saml-protocol-reference.md
-    - text: Azure AD での SAML SSO
-      url: single-sign-on-saml-protocol.md
+    - text: Azure リソースのマネージド ID について
+      url: ../managed-identities-azure-resources/overview.md
+    - text: マネージド ID と Azure VM
+      url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a388cde60e0d19aed1af9620f82b7baa6d5b08fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067305"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>クイック スタート:Python SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
@@ -137,9 +137,9 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
-1. 画面右側の ![コピー ボタン](./media/create-cassandra-python/copy.png) ボタンを使って、一番上にある [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
+1. 画面右側の :::image type="icon" source="./media/create-cassandra-python/copy.png"::: ボタンを使用して、一番上の [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。 
 
-    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Azure portal の接続文字列ブレードに表示されるアクセス ユーザー名、パスワード、コンタクト ポイントをコピーする":::
+   :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Azure portal の接続文字列ブレードに表示されるアクセス ユーザー名、パスワード、コンタクト ポイントをコピーする":::
 
 1. *config.py* ファイルを開きます。 
 

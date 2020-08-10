@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944374"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505178"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -27,6 +27,9 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 
 1 つの診断設定では、各送信先を 1 つだけ定義することができます。 特定の種類の複数の送信先 (たとえば、2 つの異なる Log Analytics ワークスペース) にデータを送信する場合は、複数の設定を作成します。 各リソースには、最大 5 つの診断設定を作成できます。
 
+次のビデオでは、診断設定を使用してプラットフォーム ログをルーティングする手順について説明します。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
+
 > [!NOTE]
 > [プラットフォーム メトリック](metrics-supported.md)は、[Azure Monitor のメトリック](data-platform-metrics.md)へと自動的に送信されます。 診断設定を使用すると、特定の Azure サービスのメトリックを Azure Monitor ログに送信し、特定の制限で[ログ クエリ](../log-query/log-query-overview.md)を使用して他の監視データと組み合わせて分析することができます。 
 >  
@@ -34,7 +37,7 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 *例*: ブロックチェーンに関する "IOReadBytes" メトリックは、ノード レベルごとに探索してグラフ化できます。 ただし、診断設定を使用してエクスポートすると、エクスポートされたメトリックは、すべてのノードのすべての読み取りバイト数として表されます。 また、内部の制限により、すべてのメトリックが Azure Monitor ログまたは Log Analytics にエクスポート可能であるとは限りません。 詳細については、[エクスポート可能なメトリック一覧](metrics-supported-export-diagnostic-settings.md)をご覧ください。 
 >  
 >  
-> 特定のメトリックのこれらの制限を回避するには、[メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) を使用してこれらを抽出し、[Azure Monitor データ コレクター API](data-collector-api.md) を使用して Azure Monitor ログにインポートすることをお勧めします。  
+> 特定のメトリックのこれらの制限を回避するには、[メトリック REST API](/rest/api/monitor/metrics/list) を使用してこれらを抽出し、[Azure Monitor データ コレクター API](data-collector-api.md) を使用して Azure Monitor ログにインポートすることをお勧めします。  
 
 
 ## <a name="destinations"></a>変換先
@@ -86,7 +89,7 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
 
       ![診断設定](media/diagnostic-settings/menu-monitor.png)
 
-   - アクティビティ ログの場合は、 **[Azure Monitor]** メニューの **[アクティビティ ログ]** 、 **[診断設定]** の順にクリックします。 アクティビティ ログのレガシ構成が無効になっていることを確認してください。 詳細については、「[既存の設定を無効にする](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log)」を参照してください。
+   - アクティビティ ログの場合は、 **[Azure Monitor]** メニューの **[アクティビティ ログ]** 、 **[診断設定]** の順にクリックします。 アクティビティ ログのレガシ構成が無効になっていることを確認してください。 詳細については、「[既存の設定を無効にする](./activity-log.md#legacy-collection-methods)」を参照してください。
 
         ![診断設定](media/diagnostic-settings/menu-activity-log.png)
 
@@ -141,7 +144,7 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
 
 ## <a name="create-using-powershell"></a>PowerShell を使用して作成する
 
-[Azure PowerShell](powershell-quickstart-samples.md) を使用して診断設定を作成するには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) コマンドレットを使用します。 パラメーターの説明については、このコマンドレットのドキュメントを参照してください。
+[Azure PowerShell](../samples/powershell-samples.md) を使用して診断設定を作成するには、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) コマンドレットを使用します。 パラメーターの説明については、このコマンドレットのドキュメントを参照してください。
 
 > [!IMPORTANT]
 > この方法を Azure アクティビティ ログに使用することはできません。 代わりに、[Azure Monitor での Resource Manager テンプレートを使用した診断設定の作成](diagnostic-settings-template.md)に関するページを参照して、Resource Manager テンプレートを作成し、それを PowerShell を使用してデプロイします。
@@ -154,7 +157,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Azure CLI を使用して作成する
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) を使用して診断設定を作成するには、[az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) コマンドを使用します。 パラメーターの説明については、このコマンドのドキュメントを参照してください。
+[Azure CLI](/cli/azure/monitor?view=azure-cli-latest) を使用して診断設定を作成するには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) コマンドを使用します。 パラメーターの説明については、このコマンドのドキュメントを参照してください。
 
 > [!IMPORTANT]
 > この方法を Azure アクティビティ ログに使用することはできません。 代わりに、[Azure Monitor での Resource Manager テンプレートを使用した診断設定の作成](diagnostic-settings-template.md)に関するページを参照して、Resource Manager テンプレートを作成し、それを CLI を使用してデプロイします。
@@ -176,7 +179,7 @@ az monitor diagnostic-settings create  \
 Resource Manager テンプレートを使用して診断設定を作成または更新するには、「[Azure Monitor の診断設定用の Resource Manager テンプレートのサンプル](../samples/resource-manager-diagnostic-settings.md)」を参照してください。
 
 ## <a name="create-using-rest-api"></a>REST API を使用して作成する
-[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して診断設定を作成または更新するには、「[診断設定](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)」を参照してください。
+[Azure Monitor REST API](/rest/api/monitor/) を使用して診断設定を作成または更新するには、「[診断設定](/rest/api/monitor/diagnosticsettings)」を参照してください。
 
 ## <a name="create-using-azure-policy"></a>Azure Policy を使用して作成する
 診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](deploy-scale.md)」を参照してください。

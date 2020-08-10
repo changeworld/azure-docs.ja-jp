@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 46108ed06659d234907c6eaa6841dc18022c73bf
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044401"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,8 +35,9 @@ Excel 形式は、以下のコネクタでサポートされています。[Amaz
 | range            | 選択範囲のデータを検索するために指定するワークシート内のセルの範囲。たとえば、`A3:H5` (A3 から H5 の範囲のテーブル)、`A3` (セル A3 を起点とするテーブル)、`A3:A3` (単一のセル) を指定します。 指定しなかった場合、ADF により、ワークシート全体がテーブルとして読み取られます。 | いいえ       |
 | firstRowAsHeader | 指定したワークシート (または範囲) 内の先頭行を、列名を含んだヘッダー行として扱うかどうかを指定します。<br>使用できる値は **true** と **false** (既定値) です。 | いいえ       |
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は**空の文字列**です。 | いいえ       |
-| compressionCodec | Excel ファイルの読み取りに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 既定では圧縮されません。 <br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。 <br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに**注意**してください。 | いいえ       |
-| compressionLevel | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
+| compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
+| type<br/>( *`compression` の下にあります*) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 ファイルを保存するときに使用します。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに**注意**してください。 | いいえ。  |
+| level<br/>( *`compression` の下にあります*) | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage 上の Excel データセットの例を次に示します。
 
@@ -108,11 +109,11 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 | 名前                      | 説明                                                  | 必須 | 使用できる値                                            | データ フロー スクリプトのプロパティ         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | ワイルド カードのパス           | ワイルドカードのパスに一致するすべてのファイルが処理されます。 データセットで設定されているフォルダーとファイル パスはオーバーライドされます。 | no       | String[]                                                  | wildcardPaths                     |
-| パーティションのルート パス       | パーティション分割されたファイル データについては、パーティション フォルダーを列として読み取るためにパーティションのルート パスを入力できます。 | no       | String                                                    | partitionRootPath                 |
+| パーティションのルート パス       | パーティション分割されたファイル データについては、パーティション フォルダーを列として読み取るためにパーティションのルート パスを入力できます | no       | String                                                    | partitionRootPath                 |
 | ファイルの一覧             | 処理するファイルを一覧表示しているテキスト ファイルをソースが指しているかどうか | no       | `true` または `false`                                         | fileList                          |
 | ファイル名を格納する列 | ソース ファイル名とパスを使用して新しい列を作成します       | no       | String                                                    | rowUrlColumn                      |
 | 完了後          | 処理後にファイルを削除または移動します。 ファイル パスはコンテナー ルートから始まります | no       | 削除: `true` または `false` <br> 移動: `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
-| 最終更新日時でフィルター処理   | 最後に変更された日時に基づいてファイルをフィルター処理する場合に選択します | no       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
+| 最終更新日時でフィルター処理   | 最後に変更された日時に基づいてファイルをフィルター処理する場合に選択 | no       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
 
 ### <a name="source-example"></a>ソースの例
 

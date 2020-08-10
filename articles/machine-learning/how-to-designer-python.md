@@ -5,17 +5,17 @@ description: Azure Machine Learning デザイナー (プレビュー) で Python
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer, tracking-python
-ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer, tracking-python
+ms.openlocfilehash: c798fa3bdb6754b2d8b955efe49e208ea954f80a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206795"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326972"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
 
@@ -26,6 +26,8 @@ ms.locfileid: "86206795"
 既定の実行環境では、Python の Anaconda ディストリビューションが使用されます。 プレインストールされているパッケージの完全な一覧については、[「Python スクリプトの実行モジュール」のリファレンス](algorithm-module-reference/execute-python-script.md) ページを参照してください。
 
 ![Python 実行入力マップ](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>デザイナーで記述された Python を実行する
 

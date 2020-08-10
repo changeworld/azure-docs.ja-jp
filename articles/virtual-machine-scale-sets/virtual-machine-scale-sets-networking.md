@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080405"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -62,9 +62,9 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
 
 既存の Azure Load Balancer で仮想マシン スケール セットをデプロイするには、次の方法を使用できます。
 
-* [Azure portal を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
-* [Azure PowerShell を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
-* [Azure CLI を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
+* [Azure portal を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](../load-balancer/configure-vm-scale-set-portal.md)。
+* [Azure PowerShell を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](../load-balancer/configure-vm-scale-set-powershell.md)。
+* [Azure CLI を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](../load-balancer/configure-vm-scale-set-cli.md)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway を参照するスケール セットを作成する
 アプリケーション ゲートウェイを使うスケール セットを作成するには、次の ARM テンプレート構成のように、スケール セットの ipConfigurations セクションにおいてアプリケーション ゲートウェイのバックエンド アドレス プールを参照します。

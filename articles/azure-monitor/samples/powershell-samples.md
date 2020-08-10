@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055261"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell のサンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -22,10 +22,10 @@ ms.locfileid: "85413894"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>PowerShell のセットアップ
-コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、[PowerShell をインストールして構成する方法](/powershell/azure/overview)に関するページを参照してください。
+コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、[PowerShell をインストールして構成する方法](/powershell/azure/)に関するページを参照してください。
 
 ## <a name="examples-in-this-article"></a>この記事の例
-この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://docs.microsoft.com/powershell/module/az.applicationinsights)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
+この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](/powershell/module/az.applicationinsights)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
 
 ## <a name="sign-in-and-use-subscriptions"></a>サインインとサブスクリプションの使用
 まず、Azure サブスクリプションにログインします。
@@ -53,7 +53,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>アクティビティ ログの取得
-[Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) コマンドレットを使用します。  一般的な例を次に示します。 アクティビティ ログでは、過去 90 日間の操作が保持されます。 これより前の日付を使用すると、エラー メッセージが表示されます。  
+[Get-AzLog](/powershell/module/az.monitor/get-azlog) コマンドレットを使用します。  一般的な例を次に示します。 アクティビティ ログでは、過去 90 日間の操作が保持されます。 これより前の日付を使用すると、エラー メッセージが表示されます。  
 
 以降のコマンドでどのような時間を使用できるかを確認するために、現在の日付/時刻を表示します。
 ```powershell
@@ -116,7 +116,7 @@ Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 201
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-`Get-AzAlertHistory` コマンドレットは、さまざまなパラメーターをサポートしています。 詳細については、「 [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx)」をご覧ください。
+`Get-AzAlertHistory` コマンドレットは、さまざまなパラメーターをサポートしています。 詳細については、「 [Get-AlertHistory](/previous-versions/azure/mt282453(v=azure.100))」をご覧ください。
 
 ## <a name="retrieve-information-on-alert-rules"></a>アラート ルールに関する情報の取得
 以下のコマンドは、いずれも "montest" という名前のリソース グループに影響を及ぼします。
@@ -139,7 +139,7 @@ Get-AzAlertRule -ResourceGroup montest
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule` は、他のパラメーターもサポートしています。 詳細については、「 [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) 」をご覧ください。
+`Get-AzAlertRule` は、他のパラメーターもサポートしています。 詳細については、「 [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) 」をご覧ください。
 
 ## <a name="create-metric-alerts"></a>メトリック アラートの作成
 `Add-AlertRule` コマンドレットを使用して、アラート ルールを作成、更新、または無効化できます。
@@ -159,7 +159,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 | しきい値 (このメトリックの場合、数/秒) |1 |
 | WindowSize (hh:mm:ss 形式) |00:05:00 |
 | アグリゲーター (メトリックの統計。この例では Average を使用) |Average |
-| カスタム電子メール (文字列配列) |'foo@example.com'、'bar@example.com' |
+| カスタム電子メール (文字列配列) |'foo@example.com','bar@example.com' |
 | 所有者、共同作成者、および閲覧者への電子メールの送信 |-SendToServiceOwners |
 
 Email アクションを作成する
@@ -201,7 +201,7 @@ Get-AzMetricDefinition -ResourceId <resource_id>
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-`Get-AzMetricDefinition` で使用できるオプションの詳細な一覧については、「 [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」を参照してください。
+`Get-AzMetricDefinition` で使用できるオプションの詳細な一覧については、「 [Get-MetricDefinitions](/previous-versions/azure/mt282458(v=azure.100))」を参照してください。
 
 ## <a name="create-and-manage-activity-log-alerts"></a>アクティビティ ログ アラートの作成と管理
 アクティビティ ログ アラートは、`Set-AzActivityLogAlert` コマンドレットを使用して設定できます。 アクティビティ ログ アラートは、最初に条件のディクショナリとして条件を定義してから、それらの条件を使用するアラートを作成する必要があります。
@@ -272,7 +272,7 @@ $notification1= New-AzAutoscaleNotification -CustomEmails ashwink@microsoft.com 
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-自動スケール設定の管理の詳細については、「 [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx)」を参照してください。
+自動スケール設定の管理の詳細については、「 [Get-AutoscaleSetting](/previous-versions/azure/mt282461(v=azure.100))」を参照してください。
 
 ## <a name="autoscale-history"></a>自動スケールの履歴
 次の例は、最近の自動スケール イベントとアラート イベントを表示する方法を示しています。 アクティビティ ログの検索を使用して、自動スケールの履歴を表示します。
@@ -287,7 +287,7 @@ Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartT
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-詳細については、「 [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx)」を参照してください。
+詳細については、「 [Get-AutoscaleHistory](/previous-versions/azure/mt282464(v=azure.100))」を参照してください。
 
 ### <a name="view-details-for-an-autoscale-setting"></a>自動スケール設定の詳細の表示
 `Get-Autoscalesetting` コマンドレットを使用して、自動スケール設定の詳細を取得できます。
@@ -399,4 +399,3 @@ WorkspaceId プロパティはワークスペースの "*リソース ID*" を�
 ```
 
 これらのコマンドは、複数の送信先にデータを送信するように結合することができます。
-

@@ -3,16 +3,16 @@ title: リソース階層を保護する方法 - Azure のガバナンス
 description: 既定の管理グループの設定を含む階層設定を使用して、リソース階層を保護する方法について説明します。
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837351"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366774"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>リソース階層を保護する方法
 
-リソース、リソース グループ、サブスクリプション、管理グループ、およびテナントは、全体でリソース階層を成しています。 ルート管理グループの設定 (カスタム RBAC ロールや Azure Policy ポリシーの割り当てなど) は、リソース階層内のすべてのリソースに影響を与える可能性があります。 すべてのリソースに悪影響を及ぼす可能性のある変更からリソース階層を保護することが重要です。
+リソース、リソース グループ、サブスクリプション、管理グループ、およびテナントは、全体でリソース階層を成しています。 ルート管理グループの設定 (Azure カスタム ロールや Azure Policy ポリシーの割り当てなど) は、リソース階層内のすべてのリソースに影響を与える可能性があります。 すべてのリソースに悪影響を及ぼす可能性のある変更からリソース階層を保護することが重要です。
 
 管理グループには、テナント管理者がこれらの動作を制御できるようにする階層設定が用意されました。 この記事では、使用可能な各階層設定と、その設定方法について説明します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "83837351"
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-これらの操作では、ユーザーに階層設定の読み取りと更新のみを許可します。 管理グループ階層または階層内のリソースへのその他のアクセスは提供しません。 これらの操作はいずれも、組み込みの RBAC ロール **Hierarchy Settings Administrator** で使用できます。
+これらの操作では、ユーザーに階層設定の読み取りと更新のみを許可します。 管理グループ階層または階層内のリソースへのその他のアクセスは提供しません。 これらの操作はいずれも、Azure 組み込みロール **Hierarchy Settings Administrator** で使用できます。
 
 ## <a name="setting---default-management-group"></a>設定 - 既定の管理グループ
 

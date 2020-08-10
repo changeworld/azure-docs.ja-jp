@@ -939,8 +939,6 @@
           href: ./control-network-traffic.md
         - name: NSG と UDR に必要な IP アドレス
           href: ./hdinsight-management-ip-addresses.md
-        - name: Azure Firewall のサービス タグ
-          href: ./hdinsight-service-tags.md
         - name: お客様が管理するキー ディスクの暗号化
           href: ./disk-encryption.md
         - name: Ranger と Apache Ambari での LDAP 同期
@@ -967,8 +965,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: サービス エンドポイント ポリシーを作成する
+          href: ./service-endpoint-policies.md
         - name: ネットワーク仮想アプライアンスを構成する
           href: ./network-virtual-appliance.md
+        - name: Azure Firewall のサービス タグ
+          href: ./hdinsight-service-tags.md
         - name: トラブルシューティング
           items:
             - name: ESP 認証の問題

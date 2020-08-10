@@ -5,24 +5,24 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.custom: seodec18~~~~
-ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.custom: seodec18
+ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046622"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
+# <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Azure portal を使用して Azure Time Series Insights Gen1 環境の参照データ セットを作成する
 
 この記事では、Azure Time Series Insights 環境に参照データ セットを追加する方法について説明します。 参照データは、ソース データに結合することにより値を増幅するのに役立ちます。
 
-参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
+参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Azure Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
 
 参照データは、遡及的に結合されることはありません。 そのため、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。
 
@@ -36,15 +36,15 @@ ms.locfileid: "82838520"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. 既存の Azure Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
+1. 既存の Azure Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Azure Time Series Insights 環境を選択します。
 
-1. **[概要]** ページを選択します。 ページの上部付近にある **[Essentials]** セクションを展開して、 **[Time Series Insights エクスプローラーの URL]** を見つけ、リンクを開きます。  
+1. **[概要]** ページを選択します。 ページの上部付近にある **[Essentials]** セクションを展開して、 **[Time Series Insights Explorer の URL]** を見つけ、リンクを開きます。  
 
    [![[Essentials] セクションを展開する](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   お使いの Time Series Insights 環境に対するエクスプローラーを表示します。
+   お使いの Azure Time Series Insights 環境に対するExplorer を表示します。
 
-1. Time Series Insights エクスプローラーで環境セレクターを展開します。 アクティブな環境を選択します。 エクスプローラー ページの右上にある参照データ アイコンを選択します。
+1. Azure Time Series Insights Explorer で環境セレクターを展開します。 アクティブな環境を選択します。 Explorer ページの右上にある参照データ アイコンを選択します。
 
    [![参照データの追加](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 

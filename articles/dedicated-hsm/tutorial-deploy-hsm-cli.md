@@ -8,17 +8,17 @@ manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc, seodec18
+ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 02b15f88e05abc918100f5e6b1ad1cdd60954a9d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454314"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486988"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル:CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -63,15 +63,7 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-次のコマンドでは、Dedicated HSM サービスに必須のネットワーク機能を確認します。
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-両方のコマンドで "Registered" の状態が返される必要があります (以下を参照)。 コマンドによって "Registered" が返されない場合は、このサービスへの登録が必要です。お客様の Microsoft アカウント担当者にお問い合わせください。
+コマンドで "Registered" の状態が返される必要があります (以下を参照)。 コマンドによって "Registered" が返されない場合は、このサービスへの登録が必要です。お客様の Microsoft アカウント担当者にお問い合わせください。
 
 ![サブスクリプションの状態](media/tutorial-deploy-hsm-cli/subscription-status.png)
 

@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563746"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384771"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
@@ -81,7 +81,7 @@ Azure Firewall Manager には、次の既知の問題があります。
 |トラフィックの分割が現在サポートされていない。|Office 365 と Azure パブリック PaaS トラフィックの分割は現在サポートされていません。 そのため、V2I または B2I にサードパーティ プロバイダーを選択すると、パートナー サービスを介してすべての Azure Public PaaS および Office 365 トラフィックも送信されます。|ハブでのトラフィックの分割を調査中です。
 |セキュリティ保護付き仮想ハブがリージョンごとに 1 つである。|1 つのリージョンで複数のセキュリティ保護付き仮想ハブを使用することはできません。|1 つのリージョンに複数の仮想 WAN を作成します。|
 |基本ポリシーがローカル ポリシーと同じリージョンにある必要がある。|基本ポリシーと同じリージョンにすべてのローカル ポリシーを作成します。 セキュリティ保護付きハブ上の 1 つのリージョンで作成されたポリシーを、別のリージョンから適用することもできます。|調査中|
-|セキュリティ保護付き仮想ハブで、ハブ間の通信が機能しない|セキュリティ保護付き仮想ハブからセキュリティ保護付き仮想ハブへの通信はまだサポートされていません。|調査中|
+|セキュリティ保護付き仮想ハブで、ハブ間の通信が機能しない|セキュリティ保護付き仮想ハブからセキュリティ保護付き仮想ハブへの通信はまだサポートされていませんが、ハブからハブへの通信は引き続き機能します。|調査中|
 |同じ Virtual WAN を共有するすべてのセキュリティ保護付き仮想ハブは同じリソース グループに存在する必要がある|この動作は、今日の Virtual WAN ハブに合わせたものです。|複数の異なるリソース グループにセキュリティ保護付き仮想ハブを作成できるようにするには、複数の Virtual WAN を作成します。|
 
 ## <a name="next-steps"></a>次のステップ

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ff2bc6d4bb4f7b983787b287fbb27e1c33cc179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74899825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022992"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>HTTPS URL からジョブの入力を作成する
 
@@ -33,7 +33,7 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 
 ## <a name="job-error-codes"></a>ジョブ エラー コード
 
-[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
+[エラー コード](/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

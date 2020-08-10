@@ -3,16 +3,16 @@ title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58bcd7ecd7c6fac80f5b78fb2c8b568b63e3e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077146"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 
-この記事では、Azure portal を使用して [Azure ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)をバックアップする方法について説明します。
+この記事では、Azure portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)をバックアップする方法について説明します。
 
 この記事では、次の方法について学習します。
 

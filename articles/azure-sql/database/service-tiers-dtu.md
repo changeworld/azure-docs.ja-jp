@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539178"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382697"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,15 +36,14 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
-|対象のワークロード|開発、運用|開発、運用|開発、運用|
-|アップタイム SLA|99.99%|99.99%|99.99%|
-|最大バックアップ保有期間|7 日|35 日|35 日|
-|CPU|低|低、中、高|中、高|
-|IO スループット (概算) |DTU あたり 1-5 IOPS| DTU あたり 1-5 IOPS | DTU あたり 25 IOPS|
-|IO 待機時間 (概算)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|
-|列ストア インデックス作成 |該当なし|S3 以上|サポートされています|
-|インメモリ OLTP|該当なし|該当なし|サポートされています|
-|||||
+|**対象のワークロード**|開発、運用|開発、運用|開発、運用|
+|**アップタイム SLA**|99.99%|99.99%|99.99%|
+|**最大バックアップ保有期間**|7 日|35 日|35 日|
+|**CPU**|低|低、中、高|中、高|
+|**IO スループット (概算)** |DTU あたり 1-5 IOPS| DTU あたり 1-5 IOPS | DTU あたり 25 IOPS|
+|**IO 待機時間 (概算)**|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|
+|**列ストア インデックス作成** |該当なし|S3 以上|サポートされています|
+|**インメモリ OLTP**|該当なし|該当なし|サポートされています|
 
 > [!IMPORTANT]
 > Basic、Standard S0、S1、S2 サービス レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。 
@@ -59,25 +58,23 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 
 コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、「[DTU ベースの購入モデル](purchasing-models.md#dtu-based-purchasing-model)」を参照してください。
 
-|Basic|Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  |
-| 最大 DTU | 5 | 3000 | 4000 | 
-|||||
+| **最大ストレージ サイズ** | 2 GB | 1 TB (テラバイト) | 4 TB  |
+| **最大 DTU** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](file-space-manage.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>エラスティック プールの eDTU、ストレージ、プールされたデータベースの上限
 
-| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
-| データベースあたりの最大ストレージ サイズ  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) |
-| プールあたりの最大ストレージ サイズ | 156 GB | 4 TB | 4 TB |
-| データベースあたりの最大 eDTU 数 | 5 | 3000 | 4000 |
-| プールあたりの最大 eDTU 数 | 1600 | 3000 | 4000 |
-| プールあたりのデータベースの最大数 | 500  | 500 | 100 |
-|||||
+| **データベースあたりの最大ストレージ サイズ**  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) |
+| **プールあたりの最大ストレージ サイズ** | 156 GB | 4 TB | 4 TB |
+| **データベースあたりの最大 eDTU 数** | 5 | 3000 | 4000 |
+| **プールあたりの最大 eDTU 数** | 1600 | 3000 | 4000 |
+| **プールあたりのデータベースの最大数** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、US DoD の各リージョンと、US Gov 中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。  

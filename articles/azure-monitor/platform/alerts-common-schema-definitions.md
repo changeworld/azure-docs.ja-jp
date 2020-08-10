@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445374"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013965"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
@@ -149,7 +149,7 @@ ms.locfileid: "85445374"
 ### <a name="log-alerts"></a>ログ アラート
 
 > [!NOTE]
-> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludeSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれない場合は、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get) と組み合わせて検索クエリを使用する必要があります。 
+> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludeSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれない場合は、[Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) と組み合わせて検索クエリを使用する必要があります。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ ms.locfileid: "85445374"
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ ms.locfileid: "85445374"
 ## <a name="next-steps"></a>次のステップ
 
 - [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)について学習します。
-- [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)について学習します。 
-
+- [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](./alerts-common-schema-integrations.md)について学習します。 

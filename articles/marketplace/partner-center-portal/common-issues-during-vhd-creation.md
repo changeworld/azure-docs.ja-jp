@@ -4,15 +4,15 @@ description: 仮想ハード ディスク (VHD) を作成するときの一般�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 2b6ab5d36cd5a1f66badc79d1b2d42e464d028f4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110744"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504315"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 作成における一般的な問題
 
@@ -34,8 +34,8 @@ Azure Marketplace は現在、マネージド ストレージ上のイメージ�
 
 次の記事で、Windows および Linux ベースの VM に対する RDS のリセットを実行する方法について説明しています。
 
-* [Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>新しい SSH 証明書を生成するにはどうすればよいですか?
 
@@ -59,7 +59,7 @@ Azure Resource Manager デプロイ モデルを使用している場合、3 つ
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>VM で、スタートアップ タスクのカスタム スクリプト拡張機能を管理するにはどうすればよいですか?
 
-Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)」を参照してください。
+Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](/azure/virtual-machines/extensions/custom-script-windows)」を参照してください。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>32 ビットのアプリケーションやサービスは Azure Marketplace でサポートされていますか?
 

@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service の .NET Core アプリケーションでのチーム開発を行う方法を示します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d917dc71ef02b5197ed8d20ec31c538a1af4c14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166038"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072967"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces での .NET Core と Visual Studio を使用したチーム開発
 
@@ -36,7 +36,7 @@ ms.locfileid: "82166038"
 * サービスの依存関係の多くをシミュレートしたり、モックを作成したりする開発者もいます。 これは有効な方法ですが、これらのモックの管理はすぐに開発コストに影響を与える可能性があります。 さらに、この方法では開発環境が運用環境と異なって見えるようになり、特定しにくいバグが発生するおそれもあります。
 * その結果、あらゆる種類の統合テストの実行が困難になります。 実際には、統合テストはコミット後にのみ行われる場合があります。つまり、問題は開発サイクルの後半に発生します。
 
-    ![](media/common/microservices-challenges.png)
+    ![アプリ サービスとその依存関係との関係を示すことで、統合テストの複雑さを示すイメージ。](media/common/microservices-challenges.png)
 
 ### <a name="work-in-a-shared-dev-space"></a>共有開発空間で作業する
 Azure Dev Spaces を使用して、Azure に "*共有*" 開発空間をセットアップできます。 各開発者は、アプリケーションの自分の担当部分だけに集中でき、自分のシナリオが依存する他のすべてのサービスとクラウド リソースが既に含まれている開発空間で、"*事前コミット コード*" を繰り返し開発できます。 依存関係は常に最新の状態であり、開発者は運用環境を反映した方法で作業を行います。
@@ -63,8 +63,8 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[プロパティ]** を選択します。
 1. 左側の **[デバッグ]** タブを選択して、Azure Dev Spaces の設定を表示します。
 1. サービスに対して F5 キーまたは Ctrl + F5 キーを押したときに使用される空間を作成するために、 **[変更]** を選択します。
-1. [スペース] ボックスの一覧の **[\<Create New Space…\>]\(<新しいスペースの作成...>\)** を選択します。
-1. 親空間が **\<なし\>** に設定されていることを確認し、空間名「**dev**」を入力します。 [OK] をクリックします。
+1. [スペース] ドロップダウンで、 **\<Create New Space…\>** を選択します。
+1. 親空間が **\<none\>** に設定されていることを確認し、空間名「**dev**」を入力します。 [OK] をクリックします。
 1. Ctrl + F5 キーを押して、デバッガーをアタッチせずに _mywebapi_ を実行します。
 1. _webfrontend_ プロジェクトがある Visual Studio ウィンドウに切り替え、Ctrl + F5 キーを押してこれも同様に実行します。
 
@@ -81,24 +81,24 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 パブリック URL を開き、Web アプリに移動するすべてのユーザーは、既定の _dev_ 空間を使用して両方のサービスを介して実行される、作成済みのコード パスを呼び出すことになります。 ここでは、*mywebapi* の開発を続けるとします。開発空間を使用している他の開発者の作業を妨げずに続行するにはどうすればよいのでしょうか。 それには、独自のスペースを設定することです。
 
 ### <a name="create-a-new-dev-space"></a>新しい開発空間を作成する
-Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例:  _sprint4_ または _demo_)。
+Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例: _sprint4_ または _demo_)。
 
 新しいスペースを作成するには、次の手順を実行します。
 1. *mywebapi* プロジェクトがある Visual Studio ウィンドウに切り替えます。
 2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[プロパティ]** を選択します。
 3. 左側の **[デバッグ]** タブを選択して、Azure Dev Spaces の設定を表示します。
 4. ここから、F5 キーまたは Ctrl + F5 キーを押したときに使用されるクラスターやスペースを変更または作成できます。 *以前に作成した Azure Dev Space が選択されていることを確認します。*
-5. [スペース] ボックスの一覧の **[\<Create New Space…\>]\(<新しいスペースの作成...>\)** を選択します。
+5. [スペース] ドロップダウンで、 **\<Create New Space…\>** を選択します。
 
-    ![](media/get-started-netcore-visualstudio/Settings.png)
+    ![Visual Studio ソリューション エクスプローラーの [デバッグ] プロジェクト プロパティ ページにある [スペース] ドロップダウンで [Create New Space]\(新しいスペースの作成\) を選択したことを示すスクリーンショット。](media/get-started-netcore-visualstudio/Settings.png)
 
 6. **[空間の追加]** ダイアログで、親の空間を **dev** に設定し、新しい空間の名前を入力します。 誰が作業しているスペースであるかを同僚がわかるように、新しいスペースに自分の名前 (例: "scott") を使用できます。 **[OK]** をクリックします。
 
-    ![](media/get-started-netcore-visualstudio/AddSpace.png)
+    ![チーム開発用の新しい開発スペースを追加するための [空間の追加] ダイアログを示すスクリーンショット。](media/get-started-netcore-visualstudio/AddSpace.png)
 
 7. これで、AKS クラスターと、プロジェクトのプロパティ ページで選択した新しいスペースが表示されます。
 
-    ![](media/get-started-netcore-visualstudio/Settings2.png)
+    ![Visual Studio ソリューション エクスプローラーの [デバッグ] プロジェクト プロパティ ページで AKS クラスター "MyAKS" およびスペース "scott" が選択されていることを示すスクリーンショット。](media/get-started-netcore-visualstudio/Settings2.png)
 
 ### <a name="update-code-for-mywebapi"></a>*mywebapi* のコードを更新する
 
@@ -117,7 +117,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 
 さまざまなスペースのしくみを理解するうえで役立つ図を次に示します。 紫色のパスは、_dev_ 空間を使用した要求を示しています。これは、URL の先頭に空間が追加されていない場合に使用される既定のパスです。 ピンク色のパスは、_dev/scott_ 空間を使用した要求を示しています。
 
-![](media/common/Space-Routing.png)
+![新しく作成された "dev/scott" 空間と既定の "dev" 空間を通じた要求のパス名とルーティングの違いを示す図。](media/common/Space-Routing.png)
 
 Azure Dev Spaces のこの組み込み機能を使用すると、共有環境でコードをエンド ツー エンドでテストできます。各開発者が自分のスペースにサービスの完全なスタックを再作成する必要はありません。 このガイドの以前の手順で示したように、このルーティングではアプリ コードで伝達ヘッダーを転送する必要があります。
 

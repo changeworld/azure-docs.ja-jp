@@ -3,15 +3,15 @@ title: Debian Linux VHD を準備する
 description: Azure で VM をデプロイするために Debian VHD イメージを作成する方法について説明します。
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: 4c2edddb8eec4a2f8300077bb00df72d7e2b00de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510724"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368202"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
 ## <a name="prerequisites"></a>前提条件

@@ -3,12 +3,12 @@ title: 完全モードの削除
 description: リソースの種類に応じて Azure Resource Manager テンプレートで完全モードがどのように処理されるかを示します。
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.openlocfilehash: 5e247fc20a128b3dd8b3fe646ef956388e0d2c2d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 48a7758ce706612607b97647bc88238957b118d3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027843"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371347"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完全モード デプロイでの Azure リソースの削除
 
@@ -18,7 +18,7 @@ ms.locfileid: "86027843"
 
 **いいえ**とマークされたリソースの種類は、テンプレート内になくても自動的に削除されることはありませんが、親リソースが削除された場合は削除されます。 動作の詳細については、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」をご覧ください。
 
-[テンプレート内の複数のリソース グループ](cross-resource-group-deployment.md)にデプロイする場合、デプロイ操作で指定されたリソース グループ内のリソースは削除対象となります。 セカンダリ リソース グループ内のリソースは削除されません。
+[テンプレート内の複数のリソース グループ](cross-scope-deployment.md)にデプロイする場合、デプロイ操作で指定されたリソース グループ内のリソースは削除対象となります。 セカンダリ リソース グループ内のリソースは削除されません。
 
 リソース プロバイダーの名前空間に移動します。
 > [!div class="op_single_selector"]

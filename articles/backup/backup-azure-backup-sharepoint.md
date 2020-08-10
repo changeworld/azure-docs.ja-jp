@@ -3,12 +3,12 @@ title: DPM を使用した SharePoint ファームの Azure へのバックア�
 description: この記事では、Azure への SharePoint ファームの DPM/Azure Backup サーバー保護の概要について説明します
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 447776af7cb021fd0c3381334bf3acf258ff22ab
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539110"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032886"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM を使用した SharePoint ファームの Azure へのバックアップ
 
@@ -32,7 +32,7 @@ SharePoint ファームを Azure にバックアップする前に、確認す�
 
 ## <a name="configure-backup"></a>バックアップの構成
 
-SharePoint ファームをバックアップするには、ConfigureSharePoint.exe を使用して SharePoint の保護を構成し、DPM で保護グループを作成します。 手順については、DPM ドキュメントの「[バックアップの構成](//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup)」を参照してください。
+SharePoint ファームをバックアップするには、ConfigureSharePoint.exe を使用して SharePoint の保護を構成し、DPM で保護グループを作成します。 手順については、DPM ドキュメントの「[バックアップの構成](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup)」を参照してください。
 
 ## <a name="monitoring"></a>監視
 

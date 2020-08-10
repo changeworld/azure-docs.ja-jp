@@ -3,12 +3,12 @@ title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078563"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284372"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -89,7 +89,7 @@ Advisor では、繰り返し失敗する Azure Data Factory パイプライン�
 Advisor では、Azure Blob Storage のオブジェクト数、合計サイズ、およびトランザクションに関するインテリジェンスを利用して、1 つ以上のストレージ アカウントの階層データに対してライフサイクル管理を有効にすべきかどうかを検出します。 アプリケーションの互換性のために Azure Blob Storage にご自身のデータを保持しながらストレージ コストを最適化するために、ライフサイクル管理ルールを作成してデータをクールまたはアーカイブ ストレージに自動的に階層化するように求めるメッセージが表示されます。
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>エフェメラル OS ディスクの作成に関する推奨事項
-[エフェメラル OS ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)では次のことができます。 
+[エフェメラル OS ディスク](../virtual-machines/ephemeral-os-disks.md)では次のことができます。 
 - OS ディスクのストレージ コストを節約する。 
 - OS ディスクへの読み取り/書き込み待機時間を短縮する。 
 - OS (および一時ディスク) を元の状態にリセットすることで、VM の再イメージ化操作を高速化する。
@@ -114,4 +114,3 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
-

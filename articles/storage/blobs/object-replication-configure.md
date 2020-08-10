@@ -6,15 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 73b568057bbb846958b6fe95f11c285326fe3688
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888111"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495184"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>ブロック BLOB のオブジェクト レプリケーションを構成する (プレビュー)
 
@@ -52,7 +53,7 @@ Azure portal でレプリケーション ポリシーを作成するには、次
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
 
-1. 必要に応じて、1 つ以上のフィルターを指定し、プレフィックス パターンに一致する BLOB のみをコピーします。 たとえば、プレフィックス `b` を指定すると、その文字で始まる名前の BLOB のみがレプリケートされます。 プレフィックスの一部として仮想ディレクトリを指定できます。
+1. 必要に応じて、1 つ以上のフィルターを指定し、プレフィックス パターンに一致する BLOB のみをコピーします。 たとえば、プレフィックス `b` を指定すると、その文字で始まる名前の BLOB のみがレプリケートされます。 プレフィックスの一部として仮想ディレクトリを指定できます。 プレフィックス文字列では、ワイルドカード文字はサポートされません。
 
     次の図は、レプリケーション ルールの一部としてコピーされる BLOB を制限するフィルターを示しています。
 
@@ -68,7 +69,7 @@ Azure portal でレプリケーション ポリシーを作成するには、次
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell でレプリケーション ポリシーを作成するには、まず Az.Storage PowerShell モジュールのバージョン [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) をインストールします。 次の手順に従って、プレビュー モジュールをインストールします。
+PowerShell でレプリケーション ポリシーを作成するには、まず Az.Storage PowerShell モジュールのバージョン [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 以降をインストールします。 次の手順に従って、プレビュー モジュールをインストールします。
 
 1. **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールをアンインストールします。
 

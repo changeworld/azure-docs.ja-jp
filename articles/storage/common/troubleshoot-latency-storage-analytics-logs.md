@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075956"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Storage Analytics ログを使用した待ち時間のトラブルシューティング
 
@@ -97,7 +97,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 
    次の表は、長い待ち時間の OperationType と RequestStatus の結果に関する情報を示しています。
 
-   |   |RequestStatus=<br>Success|RequestStatus=<br>(SAS)NetworkError|推奨|
+   | BLOB の種類 |RequestStatus=<br>Success|RequestStatus=<br>(SAS)NetworkError|推奨|
    |---|---|---|---|
    |GetBlob|はい|いいえ|[**GetBlob 操作:** RequestStatus = Success](#getblob-operation-requeststatus--success)|
    |GetBlob|いいえ|はい|[**GetBlob 操作:** RequestStatus = (SAS)NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|

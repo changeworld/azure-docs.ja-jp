@@ -3,19 +3,21 @@ title: 同時実行制御 - Azure Marketplace
 description: Microsoft Cloud パートナー ポータルの発行 API の同時実行制御戦略。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b66d266500745d08bef98a42e51cc8a7bab63958
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 2ec2e701a1d9cb449939416e65cf645f8bc01887
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287900"
 ---
 # <a name="concurrency-control"></a>同時実行制御
 
 > [!NOTE]
-> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
+> Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 切り替えにより、小さな変更が加えられました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの切り替え後もコードが引き続き動作することを確認してください。 CPP API は、パートナー センターへの切り替え前に既に統合されている既存の製品に対してのみ使用してください。新しい製品では、パートナー センター申請 API を使用する必要があります。
 
 Microsoft Cloud パートナー ポータルの発行 API を呼び出すごとに、使用する同時実行制御戦略を明示的に指定する必要があります。 **If-Match** ヘッダーを指定しない場合、HTTP 400 エラー応答になります。 次の 2 つの同時実行制御の戦略が用意されています。
 

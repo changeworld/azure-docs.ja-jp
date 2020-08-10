@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058620"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
 
@@ -76,7 +76,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 > [!NOTE]
 >`displayName` にスペースを含めることはできません。
 
-`users` または `applications` (あるいは両方) を対象とするアプリ ロールを定義できます。 `applications` で使用可能な場合、アプリ ロールはアプリケーションのアクセス許可として **[必要なアクセス許可]** ブレードに表示されます。 次の例では、`Application` を対象とするアプリ ロールを示します。
+`users` または `applications` (あるいは両方) を対象とするアプリ ロールを定義できます。 `applications` から使用できる場合、アプリのロールは、 **[管理]** セクション > **[API のアクセス許可] > [アクセス許可の追加] > [自分の API] > [API を選択する] > [アプリケーションの許可]** の下にアプリケーションのアクセス許可として表示されます。 次の例では、`Application` を対象とするアプリ ロールを示します。
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -118,6 +118,10 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 1. ロールを選択して、 **[選択]** ボタンをクリックします。
 1. 一番下の **[割り当て]** ボタンをクリックすると、ユーザーとグループのアプリへの割り当てが完了します。
 1. 追加したユーザーとグループが、更新された **[ユーザーとグループ]** のリストに表示されていることを確認します。
+
+### <a name="receive-roles-in-tokens"></a>トークンでロールを受信する
+
+さまざまなアプリのロールに割り当てられたユーザーがアプリケーションにサインインすると、`roles` 要求で割り当てられたロールがトークンに付与されます。
 
 ## <a name="more-information"></a>詳細情報
 

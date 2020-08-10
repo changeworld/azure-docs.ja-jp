@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015699"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 
@@ -50,7 +50,7 @@ Azure AD PowerShell モジュールをインストールするには、次のコ
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/install-adv2?view=azureadps-2.0) に関するオンライン リファレンス ドキュメントをご覧ください。
+これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) に関するオンライン リファレンス ドキュメントをご覧ください。
 
 > [!NOTE]
 > Azure AD PowerShell コマンドレットは .Net Core をベースにしているため、新しい PowerShell 7 では動作しません。 この点は把握しており、更新に取り組んでいます。 現時点では、Azure AD の Powershell の操作には、Windows PowerShell 5.x を使用することを推奨します。 
@@ -338,7 +338,7 @@ Office 365 のグループの書き戻しは Azure Active Directory (Azure AD) �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/install-adv2?view=azureadps-2.0)を参照してください。
+Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)を参照してください。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

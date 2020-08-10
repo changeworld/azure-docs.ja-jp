@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038057"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075785"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -48,7 +48,22 @@ VMware は Windows Virtual Desktop 認定プロバイダーであり、Windows V
 
 シン クライアントおよびゼロ クライアントのエンドポイント デバイス、および仮想デスクトップ用の管理ソフトウェアにおける 10ZiG の世界市場のリーダーシップは、これらのデバイスとソフトウェアがお客様のお役に立てていることから実証されています。 このシン クライアントハードウェアには慎重に考案された特典が付属しており、顧客のニーズに基づいてお客様が適切なクライアント デバイスを確実に入手できるように設計されています。 10ZiG は、Windows ベースおよび Linux ベースのクライアントを使用して、お客様環境に合わせてデバイスをカスタマイズします。これにより、クラウドの内外の両方で仮想デスクトップで最高のパフォーマンスが得られます。
 
-- [パートナーの Web サイトにアクセスする。](https://www.10zig.com/)
+- [パートナーの Web サイトにアクセスする。](https://www.10zig.com/about/microsoft-wvd)
+
+## <a name="automai"></a>Automai
+
+![Automai ロゴ](./media/partners/automai.png)
+
+Automai のロボット オートメーション プラットフォームを使用すると、デプロイを運用する前に、Windows Virtual Desktop 環境で主要なビジネス プロセスをテストできます。
+
+Automai の ScenarioBuilder ツールと GUI ベースのワークフロー エンジンを使用すると、IT チームは実際のエンド ユーザー ワークフローを記録し、それらを自動的にスクリプトに変換できます。 Automai では、個々のデスクトップからプロセスを実行するボットを使用し、シミュレーションでエンドユーザーのアクティビティをエミュレートし、結果を報告します。 これにより、テスト プロセスが大幅に簡略化されるため、IT 管理者は非常に複雑なシナリオでもストレステストを行うことができます。
+
+起動の準備ができたら、ロード テスト用に作成したすべてのワークフロー スクリプトを使用して、運用環境のパフォーマンスを継続的に監視できます。 Automai のボットの機能は、可用性の監視だけではありません。 ボットを使用すると、主要な場所からエンドユーザーのワークフローをテストし、スクリーンショットを取得し、エラー レポートをリアルタイムで収集することもできます。 これにより、Windows Virtual Desktop アプリケーションに対して、バグ修正の事後対応よりも積極的なアプローチが可能になります。
+
+Automai を利用すると、パフォーマンス テスト、機能テスト、パフォーマンス監視、さらにはロボット プロセスの自動化を、すべて 1 つのプラットフォーム上で、同じスクリプトを使用して実行できます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N)
+- [パートナーの Web サイトにアクセスする。](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580)
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -112,6 +127,17 @@ Ekran System クライアントの独自の浮動エンドポイント ライセ
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8)
 - [パートナー ページに移動する](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring)。
+
+## <a name="fabulatech"></a>FabulaTech
+
+![FabulaTech ロゴ](./media/partners/fabulatech.png)
+
+FabulaTech は、Windows Virtual Desktop クライアントとシームレスに統合されています。 インストールし、リモート デスクトップとの接続を確立すると、FabulaTech ソフトウェアは自動的に動作を開始します。
+
+ユーザーが仮想デスクトップにサインインすると、FabulaTech ソフトウェアによって仮想デバイスが作成されます。 たとえば、仮想 Web カメラ、スキャナー、または指紋リーダーを作成できます。 リモート セッションで実行されているすべてのアプリから、物理デバイスであるかのように仮想デバイスにアクセスすることができます。 システム トレイ アイコン メニューを使用して、Windows Virtual Desktop で仮想デバイスを構成することができます。つまり、このソリューションをシン クライアント上でも使用できます。 さらに、すべての通信は既存のリモート デスクトップ接続を介して行われます。つまり、ファイアウォールは設定されています。 すべての機能はすぐに使用できます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO)
+- [パートナーの Web サイトにアクセスする。](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/)
 
 ## <a name="flexxible-it"></a>Flexxible IT
 
@@ -274,7 +300,7 @@ Rimo3 には、使いやすくスケーラブルな自動アプリケーショ�
 
 ![sepago ロゴ](./media/partners/sepago.png)
 
-sepago は、ケルン在住の 4 人の仲間によって 2002 年に設立されました。 現在、sepago は sepagist の数を着実に伸ばしている IT 管理コンサルタントで、ケルン、ミュンヘン、およびハンブルクのドイツ各地で営業しています。 sepago は、アプリケーションの自動プロビジョニング、仮想化、クラウド ソリューション、および IT セキュリティの専門家集団です。 sepago は、デジタル変革が進行中の中規模および大規模企業をサポートするとともに、ユーザーが安全かつ効率的に作業できるようにします。
+sepago は、ケルン在住の 4 人の仲間によって 2002 年に設立されました。 現在、sepago は sepagist の数を着実に伸ばしている IT 管理コンサルタントで、ケルン、ミュンヘン、およびハンブルクのドイツ各地で営業しています。 sepago は、アプリケーションの自動プロビジョニング、仮想化、クラウド ソリューション、および IT セキュリティの専門家集団です。 sepago は、デジタル変革が進行中の中規模および大規模企業をサポートしています。また、ユーザーが安全かつ効率的に作業できるように取り組んでいます。
 
 sepago のイノベーションおよび開発ラボでは、ビッグ データと AI テクノロジを使用してスマート ソリューションを構築しています。 これらのソリューションは、Windows Virtual Desktop などのパートナー製品のビジネス、ユーザー エクスペリエンス、および管理の向上に焦点を当てています。
 

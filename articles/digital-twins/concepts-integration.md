@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737174"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367438"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Twins を他のサービスと統合する
 
@@ -20,11 +20,11 @@ Azure Digital Twins は、通常、他のサービスと共に使用されます
 
 ## <a name="data-ingress"></a>データのイングレス
 
-Azure Digital Twins は、IoT Hub のデータを使用して動作させることができます。 これにより、環境内の物理デバイスからテレメトリを収集し、クラウドの Azure Digital Twins グラフを使用してこのデータを処理することができます。
+Azure Digital Twins は、IoT Hub、Logic Apps、独自のカスタムサービスなど、任意のサービスのデータとイベント使用して動作できます。 これにより、環境内の物理デバイスからテレメトリを収集し、クラウドの Azure Digital Twins グラフを使用してこのデータを処理することができます。
 
 Azure Digital Twins には IoT Hub が組み込まれていません。 現在運用中の既存の IoT Hub を使用することも、新しいものをデプロイすることもできます。 これにより、IoT Hub のすべてのデバイス管理機能にフル アクセスできます。
 
-IoT Hub から Azure Digital Twins にデータを取り込むには [Azure 関数](../azure-functions/functions-overview.md)を使用します。 このパターンの詳細については、[IoT Hub からテレメトリを取り込む方法](how-to-ingest-iot-hub-data.md)に関するページを参照するか、[Azure Digital Twins チュートリアルのエンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照してください。
+任意のソースから Azure Digital Twins にデータを取り込むには、[Azure 関数](../azure-functions/functions-overview.md)を使用します。 このパターンの詳細については、[*IoT Hub からテレメトリを取り込む方法*](how-to-ingest-iot-hub-data.md)に関するページを参照するか、Azure Digital Twins [*チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
 
 ## <a name="data-egress-services"></a>データ エグレス サービス
 
@@ -33,7 +33,7 @@ Azure Digital Twins は、接続されている**エンドポイント**にデ�
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-エンドポイントは、管理 API または Azure portal を使用して Azure Digital Twins にアタッチされています。 エンドポイントを Azure Digital Twins に接続する方法の詳細については、[エンドポイントとルートを管理する方法](how-to-manage-routes.md)に関するページを参照してください。
+エンドポイントは、管理 API または Azure portal を使用して Azure Digital Twins にアタッチされています。 エンドポイントを Azure Digital Twins に接続する方法の詳細については、[*エンドポイントとルートを管理する方法*](how-to-manage-routes.md)に関するページを参照してください。
 
 他にも、[Azure Storage](../storage/common/storage-introduction.md) や [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md) など、データの最終的な転送先となるサービスが多数あります。 このようなサービスにデータを送信するには、宛先サービスをエンドポイントにアタッチします。
 
@@ -42,7 +42,7 @@ Azure Digital Twins は、接続されている**エンドポイント**にデ�
 ## <a name="next-steps"></a>次のステップ
 
 エンドポイントの詳細と外部サービスに対するルーティング イベントについては、次を参照してください。
-* [概念:Azure Digital Twins イベントのルーティング](concepts-route-events.md)に関するページ
+* "[*概念: Azure Digital Twins イベントのルーティング*](concepts-route-events.md)
 
 IoT Hub からデータを取り込むように Azure Digital Twins を設定する方法をご覧ください。
-* [IoT Hub からテレメトリを取り込む方法](how-to-ingest-iot-hub-data.md)に関するページ
+* [*方法: IoT Hub からテレメトリを取り込む*](how-to-ingest-iot-hub-data.md)

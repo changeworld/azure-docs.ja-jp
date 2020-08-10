@@ -1,18 +1,18 @@
 ---
 title: Azure の Enterprise 管理者ロールを理解する
-description: Azure の Enterprise 管理者ロールについて説明します。
+description: Azure の Enterprise 管理者ロールについて説明します。 5 種類の管理者ロールを割り当てることができます。
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045146"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531491"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure エンタープライズ ロールの管理
 
@@ -32,7 +32,7 @@ ms.locfileid: "86045146"
 
 たとえば、最初の認証の種類が [Mixed]\(混在\) に設定されている場合、EA は Microsoft アカウントとして追加され、請求先担当者には読み取り専用の EA 管理特権が与えられます。 既存の請求先担当者に対する Microsoft アカウント認証を EA 管理者が承認していない場合は、該当ユーザーを削除し、EA Portal から加入契約レベルで設定された "職場または学校アカウントのみ" の読み取り専用管理者としてそのユーザーを再び追加するよう EA 管理者から求められることがあります。
 
-以上のロールは Azure Enterprise Agreement 管理に固有のものであり、リソース アクセスを制御する目的で Azure に与えられる組み込みロールに追加されるものです。 詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+以上のロールは Azure Enterprise Agreement 管理に固有のものであり、リソース アクセスを制御する目的で Azure に与えられる組み込みロールに追加されるものです。 詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 次のセクションでは、各ロールの制限事項と機能について説明します。
 
@@ -103,9 +103,9 @@ Azure portal に表示される価格は管理者ロールによって異なる�
 
 これらのポリシーを設定する方法については、「[Manage access to billing information for Azure](manage-billing-access.md)」(Azure の課金情報へのアクセスの管理) を参照してください。
 
-次の表は、Enterprise Agreement 管理者ロール、請求金額の表示ポリシー、Azure portal のロールベースのアクセス制御 (RBAC) ロール、Azure portal に表示される価格の関係をまとめたものです エンタープライズ管理者には、組織の EA 価格に基づいて使用料詳細が常に表示されます。 ただし、部門管理者とアカウント所有者では、請求金額の表示ポリシーとその RBAC ロールに基づいて、表示される価格ビューが異なります。 次の表に記載されている部門管理者ロールは、部門管理者ロールと部門管理者 (読み取り専用) ロールの両方を指します。
+次の表は、Enterprise Agreement 管理者ロール、料金の表示ポリシー、Azure portal の Azure ロール、Azure portal に表示される価格の関係をまとめたものです エンタープライズ管理者には、組織の EA 価格に基づいて使用料詳細が常に表示されます。 ただし、部門管理者とアカウント所有者では、料金の表示ポリシーとその Azure ロールに基づいて、表示される価格ビューが異なります。 次の表に記載されている部門管理者ロールは、部門管理者ロールと部門管理者 (読み取り専用) ロールの両方を指します。
 
-|Enterprise Agreement 管理者ロール|ロールの請求金額の表示ポリシー|RBAC ロール|価格ビュー|
+|Enterprise Agreement 管理者ロール|ロールの請求金額の表示ポリシー|Azure ロール|価格ビュー|
 |---|---|---|---|
 |アカウント所有者または部門管理者|✔ 有効|所有者|組織の EA 価格|
 |アカウント所有者または部門管理者|✘ 無効|所有者|小売価格|
@@ -113,7 +113,7 @@ Azure portal に表示される価格は管理者ロールによって異なる�
 |アカウント所有者または部門管理者|✘ 無効 |なし|価格設定なし|
 |なし|適用なし |所有者|小売価格|
 
-Enterprise portal でエンタープライズ管理者ロールと請求金額の表示ポリシーを設定します。 RBAC ロールは Azure portal で更新できます。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+Enterprise portal でエンタープライズ管理者ロールと請求金額の表示ポリシーを設定します。 Azure ロールは Azure portal で更新できます。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 
 
@@ -121,4 +121,4 @@ Enterprise portal でエンタープライズ管理者ロールと請求金額�
 
 - [Azure の課金情報へのアクセスの管理](manage-billing-access.md)
 - [RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)
-- [Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)
+- [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)

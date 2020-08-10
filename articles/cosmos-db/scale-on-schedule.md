@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262482"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503737"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Functions のタイマー トリガーを使用して Azure Cosmos DB のスループットをスケーリングする
 
 Azure Cosmos アカウントのパフォーマンスは、要求ユニット/秒 (RU/秒) で表されるプロビジョニングされているスループットの量に基づいています。 プロビジョニングの粒度は 1 秒であり、1 時間あたりの最大 RU/秒に基づいて課金されます。 容量がプロビジョニングされるというモデルによって、予測可能で一貫性のあるスループットをサービスが提供でき、待機時間が短くなり、可用性が高くなります。 ほとんどの運用ワークロードがこれらの機能を備えています。 ただし、Azure Cosmos DB が業務時間中にのみ使用される開発およびテスト環境では、朝にスループットをスケールアップし、業務時間後の夕方にスケールダウンして戻すことができます。
 
-スループットは、コア (SQL) API アカウントに対して [Azure Resource Manager テンプレート](resource-manager-samples.md)、[Azure CLI](cli-samples.md)、および [PowerShell](powershell-samples-sql.md) を使用して、または言語固有の Azure Cosmos DB SDK を使用して設定できます。 Resource Manager テンプレート、Azure CLI、または PowerShell を使用する利点は、これらがすべての Azure Cosmos DB モデル API をサポートしていることです。
+スループットは、コア (SQL) API アカウントに対して [Azure Resource Manager テンプレート](resource-manager-samples.md)、[Azure CLI](cli-samples.md)、および [PowerShell](powershell-samples.md) を使用して、または言語固有の Azure Cosmos DB SDK を使用して設定できます。 Resource Manager テンプレート、Azure CLI、または PowerShell を使用する利点は、これらがすべての Azure Cosmos DB モデル API をサポートしていることです。
 
 ## <a name="throughput-scheduler-sample-project"></a>スループット スケジューラのサンプル プロジェクト
 

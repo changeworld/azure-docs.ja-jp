@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549639"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424070"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -28,7 +28,7 @@ NAT ゲートウェイ リソースは、[Virtual Network NAT](nat-overview.md) 
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="インターネットへのアウトバウンド接続のための Virtual Network NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="インターネットへのアウトバウンド接続のための Virtual Network NAT">
 </p>
 
 *図:インターネットへのアウトバウンド接続のための Virtual Network NAT*
@@ -54,7 +54,7 @@ Virtual Network:
 次の図は、異なる Azure Resource Manager リソース間で書き換え可能な参照を示しています。  矢印は、書き換え可能なポイントを起点とする参照の方向を示しています。 確認 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network NAT のオブジェクト モデル">
+  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT のオブジェクト モデル">
 </p>
 
 *図:Virtual Network NAT のオブジェクト モデル*
@@ -119,7 +119,7 @@ NAT ゲートウェイは、次の機能と共に利用することができま�
 新しいデプロイを開発する際は、Standard SKU から始めるようにしてください。
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="インターネットへのアウトバウンド接続のための Virtual Network NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="インターネットへのアウトバウンド接続のための Virtual Network NAT">
 </p>
 
 *図:インターネットへのアウトバウンド接続のための Virtual Network NAT*
@@ -129,7 +129,7 @@ NAT ゲートウェイによって実現される、インターネットへの�
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>インスタンスレベル パブリック IP を使用した VM と NAT
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="インスタンスレベル パブリック IP を使用した VM と Virtual Network NAT">
+  <img src="media/nat-overview/flow-direction2.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP." width="300" title="インスタンスレベル パブリック IP を使用した VM と Virtual Network NAT">
 </p>
 
 *図:インスタンスレベル パブリック IP を使用した VM と Virtual Network NAT*
@@ -144,7 +144,7 @@ VM からのアウトバウンドには NAT ゲートウェイが使用されま
 #### <a name="nat-and-vm-with-public-load-balancer"></a>パブリック Load Balancer を使用した VM と NAT
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="パブリック Load Balancer を使用した VM と Virtual Network NAT">
+  <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="パブリック Load Balancer を使用した VM と Virtual Network NAT">
 </p>
 
 *図:パブリック Load Balancer を使用した VM と Virtual Network NAT*
@@ -159,7 +159,7 @@ VM からのアウトバウンドには NAT ゲートウェイが使用されま
 #### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>インスタンスレベル パブリック IP とパブリック Load Balancer を使用した VM と NAT
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="インスタンスレベル パブリック IP とパブリック Load Balancer を使用した VM と Virtual Network NAT">
+  <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="インスタンスレベル パブリック IP とパブリック Load Balancer を使用した VM と Virtual Network NAT">
 </p>
 
 *図:インスタンスレベル パブリック IP とパブリック Load Balancer を使用した VM と Virtual Network NAT*
@@ -182,7 +182,7 @@ NAT ゲートウェイは、サブネットのアウトバウンド シナリオ
 #### <a name="zone-isolation-with-zonal-stacks"></a>ゾーン スタックを使用したゾーンの分離
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="複数形成するゾーンの分離を使用した Virtual Network NAT "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="複数形成するゾーンの分離を使用した Virtual Network NAT "zonal stacks"">
 </p>
 
 *図:"ゾーン スタック" を複数形成するゾーンの分離を使用した Virtual Network NAT*
@@ -210,7 +210,7 @@ NAT は回復性を備えており、可用性ゾーンがなくても、複数�
 #### <a name="cross-zone-outbound-scenarios-not-supported"></a>クロスゾーンのアウトバウンド シナリオはサポートされない
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtual Network NAT はゾーンスパニング サブネットと共存できない">
+  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="Virtual Network NAT はゾーンスパニング サブネットと共存できない">
 </p>
 
 *図:Virtual Network NAT はゾーンスパニング サブネットと共存できない*
@@ -268,7 +268,7 @@ NAT による SNAT は、いくつかの点で [Load Balancer](../load-balancer/
 NAT では、新しいアウトバウンド トラフィック フローにオンデマンドで SNAT ポートが割り当てられます。 インベントリにあるすべての空き SNAT ポートは、NAT が構成されているサブネット上のすべての仮想マシンによって使用されます。 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Virtual Network NAT のオンデマンド アウトバウンド SNAT">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T." width="550" title="Virtual Network NAT のオンデマンド アウトバウンド SNAT">
 </p>
 
 *図:Virtual Network NAT のオンデマンド アウトバウンド SNAT*
@@ -276,7 +276,7 @@ NAT では、新しいアウトバウンド トラフィック フローにオ�
 アウトバウンド フローは、任意の IP 構成の仮想マシンがオンデマンドで作成できます。  最悪のケースに備えたインスタンスごとのオーバープロビジョニングも含め、インスタンスごとの事前割り当て計画は必要ありません。  
 
 <p align="center">
-  <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="枯渇状況での相違点">
+  <img src="media/nat-overview/exhaustion-threshold.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T with exhaustion threshold." width="550" title="枯渇状況での相違点">
 </p>
 
 *図:枯渇状況での相違点*

@@ -3,12 +3,12 @@ title: お使いのハイブリッド Kubernetes クラスターの監視を停�
 description: この記事では、Azure Monitor for containers でお使いのハイブリッド Kubernetes クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 86a774737d5269d77c4053ad61ab870b13288aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091200"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>お使いのハイブリッド クラスターの監視を停止する方法
 
@@ -120,4 +120,4 @@ Kubernetes クラスターの監視を有効にした後に、その監視が必
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスターを監視するためだけに作成した Log Analytics ワークスペースが不要になった場合は、それを手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../../log-analytics/log-analytics-manage-del-workspace.md)に関するページを参照してください。
+クラスターを監視するためだけに作成した Log Analytics ワークスペースが不要になった場合は、それを手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../platform/delete-workspace.md)に関するページを参照してください。

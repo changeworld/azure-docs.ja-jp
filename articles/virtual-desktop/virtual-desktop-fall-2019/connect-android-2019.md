@@ -1,6 +1,6 @@
 ---
-title: Android から Windows Virtual Desktop に接続する - Azure
-description: Android クライアントを使用して Windows Virtual Desktop に接続する方法。
+title: Android から Windows Virtual Desktop (クラシック) に接続する - Azure
+description: Android クライアントを使用して Windows Virtual Desktop (クラシック) に接続する方法。
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,22 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 802e957c9473276dfa73a3ffd93fdd7c526dbf26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c83d243a24fb0cacdf032dfa77e9bb17fdf5e824
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213246"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383802"
 ---
-# <a name="connect-with-the-android-client"></a>Android クライアントに接続する
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Android クライアントを使用して Windows Virtual Desktop (クラシック) に接続する
 
 > 適用対象:Android 4.1 以降、Chrome OS 53 以降の Chromebook。
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-android.md)を参照してください。
-
->[!NOTE]
-> Android クライアントから Windows Virtual Desktop リソースにアクセスする機能は、現在プレビューで使用できます。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-android.md)を参照してください。
 
 ダウンロード可能なクライアントを使用して、ご利用の Android デバイスから Windows Virtual Desktop リソースにアクセスできます。 Google Play ストアをサポートする Chromebook デバイスで Android クライアントを使用することもできます。 このガイドでは、Android クライアントを設定する方法について説明します。
 
