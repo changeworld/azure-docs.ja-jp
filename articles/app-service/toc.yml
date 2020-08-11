@@ -66,6 +66,8 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+    - name: Terraform
+      href: samples-terraform.md
 - name: 概念
   items:
     - name: App Service プラン

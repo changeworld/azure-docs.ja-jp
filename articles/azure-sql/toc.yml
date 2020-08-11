@@ -763,6 +763,18 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                         - name: 4 - モデルをデプロイする
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: NYC タクシーのヒント (分類)
+                      items:
+                        - name: 1 - 概要
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - データの探索
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - 機能エンジニアリング
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - トレーニングおよびデプロイ
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 5 - 予測
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                 - name: R
                   items:
                     - name: スキー レンタル (デシジョン ツリー)
@@ -785,6 +797,18 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                         - name: 4 - モデルをデプロイする
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: NYC タクシーのヒント (分類)
+                      items:
+                        - name: 1 - 概要
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - データの探索
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - 機能エンジニアリング
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - トレーニングおよびデプロイ
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 5 - 予測
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
             - name: Python、R パッケージの管理
               items:
                 - name: Python

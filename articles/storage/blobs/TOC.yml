@@ -158,8 +158,10 @@
           items:
             - name: バージョン管理
               href: versioning-overview.md
-            - name: 論理的な削除
-              href: soft-delete-overview.md
+            - name: BLOB の論理的な削除
+              href: soft-delete-blob-overview.md
+            - name: コンテナーの論理的な削除
+              href: soft-delete-container-overview.md
             - name: スナップショット
               href: snapshots-overview.md
             - name: Change Feed
@@ -423,8 +425,10 @@
           items:
             - name: BLOB のバージョン管理を有効にする
               href: versioning-enable.md
-            - name: 論理的な削除を有効にする
-              href: soft-delete-enable.md
+            - name: BLOB の論理的な削除の有効化
+              href: soft-delete-blob-enable.md
+            - name: コンテナーの論理的な削除を有効にする
+              href: soft-delete-container-enable.md
             - name: スナップショットの作成 (.NET)
               href: snapshots-manage-dotnet.md
             - name: 変更フィード ログの処理
