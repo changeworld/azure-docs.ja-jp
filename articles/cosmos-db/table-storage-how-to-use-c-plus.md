@@ -507,7 +507,7 @@ Visual Studio Community エディションの場合、インクルード ファ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 Azure Storage および Azure Cosmos DB の Table API について詳しくは、次のリンクを参照してください。
 
