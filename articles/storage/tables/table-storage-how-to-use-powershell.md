@@ -164,4 +164,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [PowerShell - AzureRmStorageTable/AzTable PS モジュール v2.0 からの Azure テーブルの操作](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
-* [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
