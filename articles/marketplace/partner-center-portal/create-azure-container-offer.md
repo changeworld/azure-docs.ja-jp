@@ -4,15 +4,15 @@ description: Container オファーを作成して Azure Marketplace に公開�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109669"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799176"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
@@ -195,14 +195,15 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
- オファーのロゴの PNG ファイルを次の 4 つのピクセル サイズで提供します。
+**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して**小** (48 x 48 ピクセル) サイズおよび**中** (90 x 90 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
+
+リストのさまざまな場所で使用するために、3 つのロゴ サイズはすべて必須です。
 
 - **小** (48 x 48)
 - **中** (90 x 90)
-- **大** (216 x 216)
-- **ワイド** (255 x 115)
+- **大** (216 x 216 から 350 x 350)
 
-4 つすべてのロゴが必要であり、マーケットプレースのリスト登録のさまざまな場所で使用されます。
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
@@ -250,13 +251,13 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 ### <a name="plan-overview"></a>プランの概要
 
-このタブでは、同じオファー内でさまざまなプラン オプションを指定できます。 これらのプランは以前、SKU、つまり、Stock Keeping Unit と呼ばれていました。 プランは、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 商業マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+このタブでは、同じオファー内でさまざまなプラン オプションを指定できます。 プラン (以前は SKU と呼ばれていました) は、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 商業マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
 
 プランの作成後、 **[プランの概要]** タブが表示されます。
 
 - プラン名
 - 価格モデル
-- クラウドの可用性 (グローバルまたは Government)
+- Azure リージョン (グローバルまたは Government)
 - 現在の公開状態
 - 利用できるアクション
 
@@ -284,16 +285,14 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 Azure Container オファーのすべてのプランは、自動的に **[Azure グローバル]** で利用できるようになります。  コマーシャル マーケットプレースを使用する、すべてのグローバル Azure リージョンの顧客がプランを使用できます。 詳細については、「[利用可能な地域と通貨サポート](../marketplace-geo-availability-currencies.md)」を参照してください。
 
-[ **[Azure Government]** ](../../azure-government/documentation-government-welcome.md) オプションを選択すると、ソリューションがここに表示されます。 これは政府機関コミュニティ クラウドであり、米国連邦の顧客向けにアクセスが規制されています s](../marketplace-geo-availability-currencies.md)em。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。
-
-Azure Government に[公開](../../azure-government/documentation-government-manage-marketplace-partners.md)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを作成し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に対する試用版アカウントの申請を行います。
+[[Azure Government]](../../azure-government/documentation-government-welcome.md) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカ合衆国の連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](../../azure-government/documentation-government-manage-marketplace-partners.md)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを作成し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に対する試用版アカウントの申請を行います。
 
 > [!NOTE]
 > プランが公開され、特定のリージョンで利用できるようになった後に、そのリージョンを削除することはできません。
 
 #### <a name="azure-government-certifications"></a>Azure Government の認定資格
 
-このオプションは、 **[クラウドの使用可能性]** で **[Azure Government]** を選択した場合にのみ表示されます。
+このオプションは、 **[Azure リージョン]** で **[Azure Government]** を選択した場合にのみ表示されます。
 
 Azure Government サービスでは、特定の政府の規制および要件の対象となるデータが処理されます。 FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4、CJIS などです。
 

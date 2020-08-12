@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/15/2020
-ms.openlocfilehash: 0d11e320db5e037f855c01738de592a2d21d60e8
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 08/05/2020
+ms.openlocfilehash: 2df9324c87f13bf757abb314690eb1afa602ee5e
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171486"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800315"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database のデータをコピーおよび変換する
 
@@ -263,7 +263,7 @@ Azure SQL Database からデータをコピーするために、コピー アク
 | sqlReaderQuery | このプロパティは、カスタム SQL クエリを使用してデータを読み取ります。 たとえば `select * from MyTable` です。 | いいえ |
 | sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 | いいえ |
 | storedProcedureParameters | ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
-| isolationLevel | SQL ソースのトランザクション ロック動作を指定します。 使用できる値は、次のとおりです。**ReadCommitted**、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 指定しない場合、データベースの既定の分離レベルが使用されます。 詳細については[こちらのドキュメント](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)をご覧ください。 | いいえ |
+| isolationLevel | SQL ソースのトランザクション ロック動作を指定します。 使用できる値は、次のとおりです。**ReadCommitted**、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 指定しなかった場合は、データベースの既定の分離レベルが使用されます。 詳細については[こちらのドキュメント](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)をご覧ください。 | いいえ |
 
 **注意する点:**
 
@@ -368,7 +368,7 @@ GO
 |:--- |:--- |:--- |
 | type | コピー アクティビティの sink の **type** プロパティは **AzureSqlSink** に設定する必要があります。 "SqlSink" タイプは、現在も下位互換性のためにサポートされています。 | はい |
 | preCopyScript | コピー アクティビティがデータを Azure SQL Database に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ |
-| tableOption | ソースのスキーマに基づいて[自動的にシンク テーブルを作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します (存在しない場合)。 <br>シンクでストアド プロシージャが指定されている場合、またはコピー アクティビティでステージング コピーが構成されている場合、テーブルの自動作成はサポートされません。 <br>使用できる値は `none` (既定値)、`autoCreate` です。 | いいえ |
+| tableOption | シンク テーブルが存在しない場合に、ソースのスキーマに基づいて、[シンク テーブルを自動的に作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します。 <br>シンクでストアド プロシージャが指定されている場合、テーブルの自動作成はサポートされません。 <br>使用できる値は `none` (既定値)、`autoCreate` です。 | いいえ |
 | sqlWriterStoredProcedureName | ターゲット テーブルにソース データを適用する方法を定義しているストアド プロシージャの名前です。 <br/>このストアド プロシージャは*バッチごとに呼び出されます*。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) の場合は、`preCopyScript` プロパティを使用します。<br>例については、「[SQL シンクからのストアド プロシージャの呼び出し](#invoke-a-stored-procedure-from-a-sql-sink)」を参照してください。 | いいえ |
 | storedProcedureTableTypeParameterName |ストアド プロシージャで指定されたテーブル型のパラメーター名。  |いいえ |
 | sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |いいえ |
@@ -641,7 +641,7 @@ Azure SQL Database をコピー元またはコピー先としてデータがコ�
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |xml |
+| xml |String |
 
 >[!NOTE]
 > 10 進の中間型にマップされるデータ型の場合、コピー アクティビティでは、現在、最大 28 の有効桁数がサポートされています。 28 よりも大きな有効桁数のデータがある場合は、SQL クエリで文字列に変換することを検討してください。

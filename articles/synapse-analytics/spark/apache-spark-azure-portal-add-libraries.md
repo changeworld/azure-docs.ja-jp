@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics で Apache Spark 用のライブラリを追加および管理する
+title: Apache Spark 用のライブラリを追加および管理する
 description: Azure Synapse Analytics で、Apache Spark によって使用されるライブラリを追加および管理する方法について説明します。
 services: synapse-analytics
 author: euangMS
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 85635ff3a52236d0c53b72c68eda0d71debe1f61
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0d34d80df77b5c6fcdefc39b3bc3b1619a93705
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145912"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496255"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを追加および管理する
 
@@ -21,7 +21,7 @@ Apache Spark は、機能を提供するために多くのライブラリに依�
 
 Python パッケージは Spark プール (プレビュー) レベルで追加でき、.jar ベースのパッケージは Spark ジョブ定義レベルで追加できます。
 
-## <a name="adding-or-updating-python-libraries"></a>Python ライブラリの追加または更新
+## <a name="add-or-update-python-libraries"></a>Python ライブラリを追加または更新する
 
 Azure Synapse Analytics の Apache Spark には、Anacondas の完全インストールと追加のライブラリがあります。 完全なライブラリの一覧については、[Apache Spark のバージョンのサポート](apache-spark-version-support.md)に関するページを参照してください。
 
@@ -51,7 +51,7 @@ alabaster==0.7.10
 
 ![Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Python ライブラリを追加する")
 
-### <a name="verifying-installed-libraries"></a>インストールされているライブラリの検証
+### <a name="verify-installed-libraries"></a>インストールされているライブラリの検証
 
 正しいライブラリの正しいバージョンがインストールされているかどうかを検証するには、次のコードを実行します。
 

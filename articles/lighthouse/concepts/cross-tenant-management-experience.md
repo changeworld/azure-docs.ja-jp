@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 07/24/2020
+ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371041"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500880"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -33,9 +33,7 @@ Azure Lighthouse を使用すると、テナントによって異なるアカウ
 
 委任されたリソースに対して管理タスクをポータル上で直接実行するか、API および管理ツール (Azure CLI や Azure PowerShell など) を使用して実行することができます。 既存の API はすべて、委任されたリソースを操作するときに使用できます。ただし、テナント間の管理において機能がサポートされており、ユーザーが適切なアクセス許可を持っている必要があります。
 
-Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0)では、返されたサブスクリプションがサービス プロバイダーのテナントまたは管理対象の顧客のテナントに属しているかどうかを識別できるように、各サブスクリプションの `tenantID` が表示されます。
-
-同様に、[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) などの Azure CLI コマンドでは、**homeTenantId** 属性と **managedByTenants** 属性が表示されます。
+[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) などの Azure CLI コマンドを使用すると、各サブスクリプションの **homeTenantId** と **managedByTenants** 属性が表示され、返されたサブスクリプションがユーザーのサービス プロバイダーのテナントに属しているか、管理されている顧客テナントに属しているかを識別できます。
 
 > [!TIP]
 > Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
@@ -70,7 +68,7 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
 
 [Azure Cost Management および Billing](../../cost-management-billing/index.yml):
 
-- CSP パートナーは、管理しているテナントから、Azure プランに含まれるお客様に対する、(購入を含めずに) 税引き前消費コストを表示、管理、分析できます。 コストは、小売価格と、お客様のサブスクリプションに対してパートナーが持っている Azure ロールベースのアクセス制御 (RBAC) アクセスに基づきます。
+- CSP パートナーは、管理しているテナントから、Azure プランに含まれるお客様に対する、(購入を含めずに) 税引き前消費コストを表示、管理、分析できます。 コストは、小売価格と、お客様のサブスクリプションに対してパートナーが持っている Azure ロールベースのアクセス制御 (Azure RBAC) アクセスに基づきます。
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 

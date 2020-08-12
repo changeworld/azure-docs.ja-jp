@@ -1,20 +1,20 @@
 ---
-title: Microsoft コマーシャル マーケットプレースで Power BI アプリ オファーを作成する
+title: Microsoft AppSource で Power BI アプリ オファーを作成する
 description: Power BI アプリ オファーを作成し、Microsoft AppSource に公開する方法について学習します。
-author: anbene
-ms.author: mingshen
+author: navits09
+ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980351"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800300"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource 用の Power BI アプリを作成する
+# <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
 この記事では、Power BI アプリ オファーを作成し、Microsoft [AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
 
@@ -207,11 +207,14 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴの PNG ファイルは、次の 2 つのピクセル サイズで提供します。
-- **小** (48 x 48)
-- **大** (216 x 216)
+**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して、**小** (48 x 48 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
 
-両方のロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+リストのさまざまな場所で使用するために、両方のロゴ サイズが必須です。
+
+- **小** (48 x 48)
+- **大** (216 x 216 から 350 x 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

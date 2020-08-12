@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466019"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496425"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
@@ -81,7 +81,7 @@ Gen2 に移行するには、次の方法が推奨されます。
    
 6. コード ファイル、Databricks ノートブック、Apache Hive HQL ファイル、またはワークロードの一部として使用されるその他のファイルで、文字列 `adl://` が含まれる URI 参照を検索します。 これらの参照を、新しいストレージ アカウントの [Gen2 形式の URI](data-lake-storage-introduction-abfs-uri.md) に置き換えます。 たとえば、Gen1 の URI `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` は、`abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` になる可能性があります。 
 
-7. [ロールベースのアクセス制御 (RBAC) のロール](../common/storage-auth-aad-rbac-portal.md)、[ファイルとフォルダー レベルのセキュリティ](data-lake-storage-access-control.md)、[Azure Storage ファイアウォールと仮想ネットワーク](../common/storage-network-security.md)を含むように、アカウントのセキュリティを構成します。
+7. [Azure ロール](../common/storage-auth-aad-rbac-portal.md)、[ファイルとフォルダー レベルのセキュリティ](data-lake-storage-access-control.md)、および [Azure Storage ファイアウォールと仮想ネットワーク](../common/storage-network-security.md)を含むように、アカウントのセキュリティを構成します。
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>手順 4:Gen1 から Gen2 に切り替える
 
@@ -207,4 +207,3 @@ Gen2 でアプリケーションとワークロードが安定していること
 - ストレージ アカウントに対するセキュリティの設定のさまざまな部分について学習します。 [Azure Storage セキュリティ ガイド](../common/storage-security-guide.md)に関する記事をご覧ください。
 - Data Lake Store のパフォーマンスを最適化します。 「[パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する](data-lake-storage-performance-tuning-guidance.md)」をご覧ください
 - Data Lake Store の管理に関するベスト プラクティスを確認します。 「[Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス](data-lake-storage-best-practices.md)」をご覧ください
-

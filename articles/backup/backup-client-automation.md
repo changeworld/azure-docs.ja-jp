@@ -3,12 +3,12 @@ title: PowerShell を使用して Windows Server を Azure にバックアップ
 description: この記事では、PowerShell を使用して Windows Server または Windows クライアント上に Azure Backup を設定したり、バックアップと回復を管理したりする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513729"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564029"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 Windows Server または Windows クライアント コンピューターで [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) コマンドレットを実行し、コンピューターをコンテナーに登録します。
-バックアップに使用されるこれらのコマンドレットは、インストール プロセスの一部として Mars AgentInstaller が追加した MSONLINE モジュールに含まれています。
+これと、バックアップに使用されるその他のコマンドレットは、インストール プロセスの一部として MARS AgentInstaller で追加された MSONLINE モジュールに含まれています。
 
 このエージェント インストーラーでは、$Env:PSModulePath 変数が更新されません。 つまり、モジュールの自動読み込みに失敗します。 これを解決するために、次を実行できます。
 

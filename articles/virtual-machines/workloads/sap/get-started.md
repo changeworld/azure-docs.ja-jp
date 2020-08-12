@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/16/2020
+ms.date: 08/04/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03d0367b3794069908b31ee7af1250fd70f1bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525213"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800350"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -104,6 +104,9 @@ SAP コンポーネントへの Azure サービスの統合については、以
 
 ## <a name="change-log"></a>変更履歴
 
+- 2020 年 8 月 4 日: Pacemaker クラスターにおける信頼性の高い名前解決の重要性を強調するために、[Azure での SLES に対する Pacemaker の設定](./high-availability-guide-suse-pacemaker.md)および [Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)に関するページを変更
+- 2020 年 8 月 4 日: パラメーター `enque/encni/set_so_keepalive` の使用を明確にするために、[WFCS とファイル共有における SAP NW HA](./sap-high-availability-installation-wsfc-file-share.md)、[WFCS と共有ディスクにおける SAP NW HA](./sap-high-availability-installation-wsfc-shared-disk.md)、[Azure VM における SAP NW の HA](./high-availability-guide.md)、[SLES 上の Azure VM での SAP NW の HA](./high-availability-guide-suse.md)、[ANF を使用した SLES 上の Azure VM での SAP NW の HA](./high-availability-guide-suse-netapp-files.md)、[SLES マルチ SID 上の Azure VM での SAP NW の HA ガイド](./high-availability-guide-suse-multi-sid.md)、[RHEL 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-rhel.md)、[ANF を使用した RHEL 上の Azure VM での SAP NW の HA](./high-availability-guide-rhel-netapp-files.md)、[RHEL マルチ SID 上の Azure VM での SAP NW の HA ガイド](./high-availability-guide-rhel-multi-sid.md)に関するページを更新
+- 2020 年 7 月 23 日: SAP HANA Large Instances 予約を購入する前に知っておくべきことと、その購入方法について説明する記事「[Azure 予約を使用して SAP HANA Large Instances に保存する](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)」を追加
 - 2020 年 7 月 16 日:[展開ガイド](deployment-guide.md)で Azure PowerShell を使用して SAP 用の新しい VM 拡張機能をインストールする方法を説明
 - 2020 年 7 月 4 日: [SAP ソリューション向け Azure Monitor (プレビュー)](./azure-monitor-overview.md) のリリース
 - 2020 年 7 月 1 日: ドキュメント「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」での、Azure Premium Storage バースト機能に基づく低コストのストレージ構成の提案 
@@ -129,7 +132,7 @@ SAP コンポーネントへの Azure サービスの統合については、以
 - 2020 年 3 月 31 日:「[SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)」および「[Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)」での、ストライプ ボリュームを作成するときにストライプ サイズを指定する方法の手順を追加するための変更
 - 2020 年 3 月 27 日:「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」での、ファイル システム マウント オプションを NetApp TR-4746 (同期マウント オプションを削除する) に合わせるための変更
 - 2020 年 3 月 26 日:「[SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-suse-multi-sid.md)」での、NetApp TR-4746 に参照を追加するための変更
-- 2020 年 3 月 26 日:「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)」、「[SAP アプリケーション用の Azure NetApp Files を使用した SLES 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)」、「[SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-suse-multi-sid.md)」、「[Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](./high-availability-guide-rhel.md)」、および「[SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](./high-availability-guide-rhel-netapp-files.md)」での、図を更新し、Azure Load Balancer バックエンド プールの作成手順を明確にするための変更
+- 2020 年 3 月 26 日:図を更新し、Azure Load Balancer バックエンド プールの作成手順を明確にするために、[SLES for SAP アプリケーション上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)、[SAP アプリケーション用の Azure NetApp Files を使用した SLES 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)、[SLES 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)、[RHEL マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-suse-multi-sid.md)、[RHEL for SAP アプリケーション上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-rhel.md)、[SAP アプリケーション用の Azure NetApp Files を使用した RHEL 上の SAP NetWeaver 用の Azure VM の高可用性](./high-availability-guide-rhel-netapp-files.md)に関するページを変更
 - 2020 年 3 月 19 日:ドキュメント「[クイックスタート: Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール](./hana-get-started.md)」から「[Azure Virtual Machines への SAP HANA のインストール](./hana-get-started.md)」へのメジャー リビジョン
 - 2020 年 3 月 17 日:「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](./high-availability-guide-suse-pacemaker.md)」での、必要なくなった SBD 構成設定を削除するための変更
 - 2020 年 3 月 16 日:「[Azure デプロイでサポートされている SAP ソフトウェア](./sap-supported-product-on-azure.md)」での、SAP HANA IaaS 認定プラットフォームの列の認定シナリオの明確化

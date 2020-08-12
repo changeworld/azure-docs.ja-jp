@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e90e45a0c96d8bbd2806a0ab6df70ef83e0cc9f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121930"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800009"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーの作成
 
@@ -195,10 +195,14 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴを次の 3 つのピクセル サイズで提供します。
-- **小** (必須、48 x 48)
-- **大** (必須、216 x 216)
-- **ワイド** (省略可能、255 x 115)
+**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して、**小** (48 x 48 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
+
+リストのさまざまな場所で使用するために、両方のロゴ サイズが必須です。
+
+- **小** (48 x 48)
+- **大** (216 x 216 から 350 x 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

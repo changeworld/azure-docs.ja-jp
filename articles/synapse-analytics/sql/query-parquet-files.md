@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386624"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496238"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して Parquet ファイルに対してクエリを実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87386624"
 
 `OPENROWSET` 関数を使用すると、ファイルの URL を指定することによって、Parquet ファイルの内容を読み取ることができます。
 
-### <a name="reading-parquet-file"></a>Parquet ファイルの読み取り
+### <a name="read-parquet-file"></a>parquet ファイルの読み取り
 
 `PARQUET` ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にファイルの URL を指定し、parquet の `FORMAT` を指定することです。 ファイルが一般公開されている場合、または Azure AD ID でこのファイルにアクセスできる場合は、次の例に示すようなクエリを使用して、ファイルの内容を表示することができます。
 
@@ -37,7 +37,7 @@ from openrowset(
 
 このファイルにアクセスできることを確認してください。 ファイルが SAS キーまたはカスタム Azure ID で保護されている場合は、[SQL ログインのためのサーバーレベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
 
-### <a name="using-data-source"></a>データ ソースの使用
+### <a name="data-source-usage"></a>データ ソースの使用状況
 
 前の例では、ファイルへの完全なパスを使用しています。 別の方法として、ストレージのルート フォルダーを示す場所を持つ外部データ ソースを作成し、そのデータ ソースとファイルへの相対パスを `OPENROWSET` 関数で使用することができます。
 

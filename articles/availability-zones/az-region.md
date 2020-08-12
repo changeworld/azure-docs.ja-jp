@@ -4,15 +4,15 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2e337628542475c081a59bffd25368de313011f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e13d7a1cb35d2b0c9544a8be36f834efc6970501
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206215"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759650"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure での Availability Zones をサポートしているリージョン
 
@@ -58,12 +58,11 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 Azure は、次のリージョンでも Availability Zones サポートを提供しています。
 
 - US Gov バージニア州
-- オーストラリア東部
 - 南アフリカ北部
 - 米国中南部
 - カナダ中部
 
-これらの 5 つのリージョンでの Availability Zones サポートの詳細については、Microsoft の営業担当者またはカスタマー担当者にお問い合わせください。
+これらの 4 つのリージョンでの Availability Zones サポートの詳細については、Microsoft の営業担当者かカスタマー担当者にお問い合わせください。または、テクニカル サポート リクエストを開きます。
 
 ## <a name="next-steps"></a>次のステップ
 

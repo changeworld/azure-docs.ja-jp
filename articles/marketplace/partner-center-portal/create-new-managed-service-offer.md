@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ae079fce02f58d6c6457d7fe6401526f4002662f
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405247"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798190"
 ---
 # <a name="create-a-managed-service-offer"></a>管理サービス オファーの作成
 
@@ -133,23 +133,17 @@ Azure portal でのオファー情報の表示例を次に示します。
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
-#### <a name="marketplace-logos"></a>Marketplace のロゴ
+#### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴを次の 4 つのピクセル サイズで提供します。
+**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して**小** (48 x 48 ピクセル) サイズおよび**中** (90 x 90 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
+
+リストのさまざまな場所で使用するために、3 つのロゴ サイズはすべて必須です。
 
 - **小** (48 x 48)
 - **中** (90 x 90)
-- **大** (216 x 216)
-- **ワイド** (255 x 115)
+- **大** (216 x 216 から 350 x 350)
 
-お客様のロゴについては、これらのガイドラインに従ってください。
-
-- Azure の設計には簡単なカラー パレットがあります。 ロゴのプライマリ カラーとセカンダリ カラーの数は制限してください。
-- ポータルのテーマの色は白黒です。 この色を、ロゴの背景色として使用しないでください。 ポータルでロゴが目立つ色を使用します。 背景色としてはシンプルなプライマリ カラーをお勧めします。
-- 透明な背景を使用している場合は、ロゴおよびテキストが白、黒、または青ではないことを確認します。
-- ロゴのルック アンド フィールはフラットにして、グラデーションは避ける必要があります。 ロゴではグラデーションの背景を使用しないでください。
-- ロゴにはテキストを使用しないでください (会社またはブランドの名前であっても)。
-- ロゴが伸縮されていないことを確認してください。
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

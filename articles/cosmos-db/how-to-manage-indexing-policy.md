@@ -4,15 +4,15 @@ description: インデックス作成ポリシーを管理して、インデッ�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 ms.author: tisande
-ms.custom: tracking-python
-ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: tracking-python, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: b3234d524adc8256373acce7480319a8fd4b76ac
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261513"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761108"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -344,7 +344,7 @@ Azure Cosmos DB では、インデックス作成ポリシーは下のいずれ�
 [インデックス作成ポリシーの更新](index-policy.md#modifying-the-indexing-policy)により、インデックスの変換がトリガーされます。 この変換の進行状況は、SDK から追跡することもできます。
 
 > [!NOTE]
-> インデックス作成ポリシーを更新するとき、Azure Cosmos DB への書き込みが中断されることはありません。 インデックスの再作成中、インデックスが更新されているとき、クエリから部分的な結果が返されることがあります。
+> インデックス作成ポリシーを更新するとき、Azure Cosmos DB への書き込みが中断されることはありません。 [インデックスの変換](indexing-policy.md#modifying-the-indexing-policy)について、さらに学習してください
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 

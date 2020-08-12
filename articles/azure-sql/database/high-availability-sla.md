@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 01906935de76b2b262f2058563a3eee0e297e8a4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: ab3d0a4b33bd2e424141adc9f6b8739380c2947b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985329"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542010"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,16 +95,22 @@ Hyperscale の高可用性の詳細については、「[ハイパースケー�
 
 ## <a name="testing-application-fault-resiliency"></a>アプリケーションの障害回復性のテスト
 
-高可用性は、データベース アプリケーションに対して透過的に機能する SQL Database と SQL Managed Instance のプラットフォームの基礎となる部分です。 しかし、計画済みまたは計画外のイベント時に開始された自動フェールオーバー操作がアプリケーションに与える影響をテストしてから、運用環境にデプロイする必要があると弊社は認識しています。 特別な API を呼び出してデータベースまたはエラスティック プールを再起動することができ、これによりフェールオーバーがトリガーされます。 ゾーン冗長データベースまたはエラスティック プールの場合、API 呼び出しによって、クライアント接続が、古いプライマリの可用性ゾーンとは異なる可用性ゾーン内の新しいプライマリにリダイレクトされます。 そのため、フェールオーバーが既存のデータベース セッションにどのように影響するかをテストするだけでなく、ネットワーク待機時間の変化によってエンドツーエンドのパフォーマンスを変化させるかどうかを確認することもできます。 再起動操作が影響を及ぼし、その多くがプラットフォームに負荷をかける可能性があるため、各データベースまたはエラスティック プールに対しては、30 分ごとに 1 つのフェールオーバー呼び出しのみが許可されます。
+高可用性は、データベース アプリケーションに対して透過的に機能する SQL Database と SQL Managed Instance のプラットフォームの基礎となる部分です。 しかし、計画済みまたは計画外のイベント時に開始された自動フェールオーバー操作がアプリケーションに与える影響をテストしてから、運用環境にデプロイする必要があると Microsoft は認識しています。 特別な API を呼び出してデータベース、エラスティック プール、またはマネージド インスタンスを再起動することにより、手動でフェールオーバーをトリガーできます。 ゾーン冗長データベースまたはエラスティック プールの場合、API 呼び出しによって、クライアント接続が、古いプライマリの可用性ゾーンとは異なる可用性ゾーン内の新しいプライマリにリダイレクトされます。 そのため、フェールオーバーが既存のデータベース セッションにどのように影響するかをテストするだけでなく、ネットワーク待機時間の変化によってエンドツーエンドのパフォーマンスを変化させるかどうかを確認することもできます。 再起動操作が影響を及ぼし、その多くがプラットフォームに負荷をかける可能性があるため、各データベース、エラスティック プール、またはマネージド インスタンスに対しては、30 分ごとに 1 つのフェールオーバー呼び出しのみが許可されます。
 
-フェールオーバーは REST API または PowerShell を使用して開始できます。 REST API については、[データベースのフェールオーバー](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)と[エラスティック プールのフェールオーバー](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)に関するページを参照してください。 PowerShell については、[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) および [Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover) を参照してください。 REST API の呼び出しは、Azure CLI から [az rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) コマンドを使用して行うこともできます。
+フェールオーバーは、PowerShell、REST API または Azure CLI を使用して開始できます。
+
+|デプロイの種類|PowerShell|REST API| Azure CLI|
+|:---|:---|:---|:---|
+|データベース|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[データベース フェールオーバー](/rest/api/sql/databases(failover)/failover/)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) が使用できます|
+|エラスティック プール|[Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[エラスティック プールのフェールオーバー](/rest/api/sql/elasticpools(failover)/failover/)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) が使用できます|
+|マネージド インスタンス|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[マネージド インスタンス - フェールオーバー](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
-> フェールオーバー コマンドは現在、ハイパースケール サービス レベルでは、また Managed Instance に対しては利用できません。
+> フェールオーバー コマンドは、ハイパースケール データベースの読み取り可能なセカンダリ レプリカでは使用できません。
 
 ## <a name="conclusion"></a>まとめ
 
-Azure SQL Database と Azure SQL Managed Instance の特徴は、Azure プラットフォームと緊密に統合される、組み込みの高可用性ソリューションです。 障害の検出と復旧に Service Fabric を、データ保護に Azure BLOB ストレージを、フォールト トレランスを高めるために Availability Zones を活用しています。 さらに、SQL Database と SQL Managed Instance では、レプリケーションとフェールオーバーのために、SQL Server インスタンスから Always On 可用性グループのテクノロジを活用しています。 これらのテクノロジを組み合わせることで、アプリケーションでは混合ストレージ モデルを最大限に活用して、高要件の SLA にも対応できます。
+Azure SQL Database と Azure SQL Managed Instance の特徴は、Azure プラットフォームと緊密に統合される、組み込みの高可用性ソリューションです。 これは、障害の検出と復旧に Service Fabric を、データ保護に Azure BLOB ストレージを、フォールト トレランスを高めるために Availability Zones を活用しています (ドキュメントの冒頭に記載のあるとおり、これは Azure SQL Managed Instance には適用されません)。 さらに、SQL Database と SQL Managed Instance では、レプリケーションとフェールオーバーのために、SQL Server インスタンスから Always On 可用性グループのテクノロジを活用しています。 これらのテクノロジを組み合わせることで、アプリケーションでは混合ストレージ モデルを最大限に活用して、高要件の SLA にも対応できます。
 
 ## <a name="next-steps"></a>次のステップ
 

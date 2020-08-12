@@ -4,14 +4,21 @@ description: Java Message Service (JMS) API を Azure Service Bus と Advanced M
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 95558f973041a086dc66d2bebb1ce54ee58c952a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320784"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799686"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service (JMS) を使用する
+
+> [!WARNING]
+> 次のガイドは、Java Message Service (JMS) 1.1 API の**限定的なサポート**に対応し、Azure Service Bus Standard レベルのみが対象です。
+>
+> Java Message Service (JMS) 2.0 API の完全なサポートは、[プレビューの Azure Service Bus Premium レベル](how-to-use-java-message-service-20.md)でのみ使用できます。こちらを強くお勧めします。
+>
+
 この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Azure Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Azure Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-amqp-dotnet.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
@@ -29,7 +36,7 @@ Azure Service Bus での AMQP 1.0 のサポートにより、ブローカー メ
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>AMQP 1.0 JMS クライアント ライブラリのダウンロード
 Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、[https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) を参照してください。
 
-Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
+Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、以下の JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
 
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms-client-[version].jar
@@ -377,4 +384,3 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 * [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)
-

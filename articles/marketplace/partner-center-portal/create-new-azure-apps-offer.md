@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326676"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797894"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -247,14 +247,15 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴの PNG ファイルを次の 3 つのピクセル サイズで提供します。
+**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して**小** (48 x 48 ピクセル) サイズおよび**中** (90 x 90 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
+
+リストのさまざまな場所で使用するために、3 つのロゴ サイズはすべて必須です。
 
 - **小** (48 x 48)
 - **中** (90 x 90)
-- **大** (216 x 216)
-- **ワイド** (255 x 115)
+- **大** (216 x 216 から 350 x 350)
 
-3 つすべてのロゴが必要であり、一覧のさまざまな場所で使用されます。
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

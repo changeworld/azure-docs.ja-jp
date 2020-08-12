@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5b105bf6fea8b78a11f77d73918376670be9ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf483d5a9b6a75ccad48908701d89d1c40206208
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052571"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759871"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -1449,7 +1449,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
 ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
-1. SAP ASCS/SCS インスタンス プロファイルに次のプロファイル パラメーターを追加します。
+1. ENSA1 を使用する場合は、このプロファイル パラメーターを SAP ASCS/SCS インスタンス プロファイルに追加します。
 
    ```
    enque/encni/set_so_keepalive = true
@@ -1461,6 +1461,8 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
    たとえば、SAP SCS インスタンス プロファイルの対応するパスは次のようになります。
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+
+   ENSA1 と ENSA2 の両方について、`keepalive` OS パラメーターが SAP ノート [1410736](https://launchpad.support.sap.com/#/notes/1410736) の説明に従って設定されていることを確認します。  
 
 2. 変更を適用するには、SAP ASCS/SCS インスタンスを再起動します。
 

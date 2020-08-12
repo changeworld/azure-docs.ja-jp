@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073613"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564097"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>移行ツールの動作の理解
 
@@ -104,7 +104,7 @@ HTTP 2xx、HTTP 3xx、HTTP 400、HTTP 401、内部サーバー エラー、サ�
 
 ### <a name="classic-compute-metrics"></a>従来のコンピューティング メトリック
 
-クラシック コンピューティング リソースは新しいアラートでまだサポートされていないため、クラシック コンピューティング メトリックに関するアラートは移行ツールを使用しても移行されません。 これらのリソースの種類に対する新しいアラートのサポートは、今後追加される予定です。 追加されたら、お客様は 2020 年 6 月より前のクラシック アラート ルールに基づいて、新しい同等のアラート ルールを作成し直す必要があります。
+クラシック コンピューティング リソースは新しいアラートでまだサポートされていないため、クラシック コンピューティング メトリックに関するアラートは移行ツールを使用しても移行されません。 これらのリソースの種類に対する新しいアラートのサポートは現在パブリック プレビュー段階であり、お客様は従来のアラート ルールに基づいて新しい同等のアラート ルールを再作成できます。
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>非推奨のメトリックに対するクラシック アラート ルール
 

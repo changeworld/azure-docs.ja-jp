@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373489"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759701"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,17 +29,20 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
 ### <a name="september-2020"></a>2020 年 9 月
 
-新しい SQL ゲートウェイが、次のリージョンに追加されます。
+新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイは、2020 年 9 月 10 日にお客様のトラフィックの受け入れを開始します。
+
+- 米国中西部: 13.78.248.43 
+- 南アフリカ北部: 102.133.120.2  
+
+新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイは、2020 年 9 月 1 日にお客様のトラフィックの受け入れを開始します。
 
 - 北ヨーロッパ:13.74.104.113 
 - 米国西部 2:40.78.248.10 
 - 西ヨーロッパ:52.236.184.163 
 - 米国中南部:20.45.121.1、20.49.88.1 
 
-既存の SQL ゲートウェイで、次のリージョンのトラフィックの受け入れを開始します。
+既存の SQL ゲートウェイは、以下のリージョンのトラフィックの受け入れを開始します。 これらの SQL ゲートウェイは、2020 年 9 月 1 日にお客様のトラフィックの受け入れを開始します。 :
 - 東日本:40.79.184.8、40.79.192.5
-
-これらの SQL ゲートウェイは、2020 年 9 月 1 日にお客様のトラフィックの受け入れを開始します。 
 
 ### <a name="august-2020"></a>2020 年 8 月
 
@@ -82,7 +85,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - データベースに対して[ゾーン冗長構成](high-availability-sla.md#zone-redundant-configuration)を使用している
 
 次の場合は影響を受けません。
-
+ 
 - 接続ポリシーとしてのリダイレクトがある
 - Azure の内部から SQL Database へのサービス タグを使用した接続がある
 - サポートされているバージョンの SQL Server 用 JDBC ドライバーを使用して行われる接続は影響を受けません。 サポートされている JDBC のバージョンについては、「[Microsoft SQL Server 用 JDBC Driver のダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)」を参照してください。

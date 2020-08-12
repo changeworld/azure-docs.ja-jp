@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291143"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534738"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -113,7 +113,7 @@ VM に拡張機能が正常にインストールされると、*provisioningStat
 
 ## <a name="configure-role-assignments-for-the-vm"></a>仮想マシン ロールの割り当てを構成する
 
-Azure のロールベース アクセス制御 (Azure RBAC) ポリシーは、VM にログオンできるユーザーを規定します。 VM へのログインを承認するには、次の 2 つの RBAC ロールが使用されます。
+Azure のロールベース アクセス制御 (Azure RBAC) ポリシーは、VM にログオンできるユーザーを規定します。 VM へのログインを承認するには、次の 2 つの Azure ロールが使用されます。
 
 - **仮想マシンの管理者ログイン**:このロールが割り当てられたユーザーは Windows 管理者または Linux のルート ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
 - **仮想マシンのユーザー ログイン**:このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
@@ -181,9 +181,9 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ## <a name="troubleshoot-sign-in-issues"></a>サインアップに関する問題のトラブルシューティング
 
-Azure AD の資格情報を使用して SSH 経由でログインしようとしたときによく発生する問題は、RBAC ロールが割り当てられていないために、サインインを求める画面が繰り返し表示されることです。 次のセクションを使用してこの問題を解決してください。
+Azure AD の資格情報を使用して SSH 経由でログインしようとしたときによく発生する問題は、Azure ロールが割り当てられていないために、サインインを求める画面が繰り返し表示されることです。 次のセクションを使用してこの問題を解決してください。
 
-### <a name="access-denied-rbac-role-not-assigned"></a>アクセスが拒否されました:RBAC の役割が割り当てられていません
+### <a name="access-denied-azure-role-not-assigned"></a>アクセスが拒否されました:Azure ロールが割り当てられていません
 
 SSH プロンプトで次のエラーが表示された場合は、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する RBAC ポリシーが VM に設定されていることを確認してください。
 

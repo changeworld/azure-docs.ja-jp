@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688893"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760908"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure で SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクに SAP NetWeaver HA をインストールする
 
@@ -225,7 +225,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
 ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
-1. SAP ASCS/SCS インスタンス プロファイルに次のプロファイル パラメーターを追加します。
+1. ENSA1 を使用する場合は、このプロファイル パラメーターを SAP ASCS/SCS インスタンス プロファイルに追加します。
 
    ```
    enque/encni/set_so_keepalive = true
@@ -237,6 +237,8 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
    たとえば、SAP SCS インスタンス プロファイルの対応するパスは次のようになります。
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   
+   ENSA1 と ENSA2 の両方について、`keepalive` OS パラメーターが SAP ノート [1410736](https://launchpad.support.sap.com/#/notes/1410736) の説明に従って設定されていることを確認します。   
 
 2. 変更を適用するには、SAP ASCS/SCS インスタンスを再起動します。
 

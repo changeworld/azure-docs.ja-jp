@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763739"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799504"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 
@@ -26,6 +26,9 @@ ms.locfileid: "84763739"
 制御を強化するために、[ユーザー割り当てを必要とする](#configure-an-application-to-require-user-assignment)ように、特定の種類のエンタープライズ アプリケーションを構成できます。 
 
 [エンタープライズ アプリにユーザーまたはグループを割り当てる](#assign-users-or-groups-to-an-app-via-the-azure-portal)には、グローバル管理者、アプリケーション管理者、クラウド アプリケーション管理者のいずれかとしてサインインするか、エンタープライズ アプリの所有者として割り当てられている必要があります。
+
+> [!IMPORTANT]
+> グループをアプリケーションに割り当てると、そのグループ内のユーザーのみがアクセスできるようになります。 割り当ては、入れ子になったグループにはカスケードされません。
 
 > [!NOTE]
 > グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Office 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。 

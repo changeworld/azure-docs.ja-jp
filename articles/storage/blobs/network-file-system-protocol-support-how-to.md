@@ -1,24 +1,24 @@
 ---
-title: NFS 3.0 プロトコル を使用して Linux に Azure Blob storage をマウントする (プレビュー) | Microsoft Docs
-description: NFS 3.0 プロトコルを使用して、オンプレミスで実行される Linux ベースの Azure 仮想マシン (VM) または Linux システムから BLOB ストレージにコンテナーをマウントする方法について説明します。
+title: NFS 3.0 プロトコル (プレビュー) を使用して Azure Blob Storage をマウントする | Microsoft Docs
+description: NFS 3.0 プロトコルを使用して、Azure 仮想マシン (VM) から、またはオンプレミスで実行されているクライアントから、BLOB ストレージにコンテナーをマウントする方法について説明します。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372911"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760798"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用して Linux で Blob Storage をマウントする (プレビュー)
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする
 
-NFS 3.0 プロトコルを使用して、オンプレミスで実行される Linux ベースの Azure 仮想マシン (VM) または Linux システムから BLOB ストレージにコンテナーをマウントすることができます。 この記事では、ステップ バイ ステップ ガイダンスを提供しています。 BLOB ストレージでの NFS 3.0 プロトコルのサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
+Windows または Linux ベースの Azure 仮想マシン (VM) か、オンプレミスで実行されている Windows または Linux システムから、NFS 3.0 プロトコルを使用して、BLOB Storage にコンテナーをマウントすることができます。 この記事では、ステップ バイ ステップ ガイダンスを提供しています。 BLOB ストレージでの NFS 3.0 プロトコルのサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
 
 > [!NOTE]
 > Azure BLOB Storage での NFS 3.0 プロトコルのサポートはパブリック プレビュー段階であり、次のリージョンで利用できます。米国東部、米国中部、およびカナダ中部。
@@ -117,6 +117,10 @@ NFS 3.0 を使用してコンテナーをマウントするには、その機能
 
 ## <a name="step-7-mount-the-container"></a>手順 7:コンテナーをマウントする
 
+Windows または Linux システムにディレクトリを作成してから、コンテナーをストレージ アカウントにマウントします。
+
+### <a name="linux"></a>[Linux](#tab/linux)
+
 1. Linux システムで、ディレクトリを作成します。
 
    ```
@@ -132,6 +136,25 @@ NFS 3.0 を使用してコンテナーをマウントするには、その機能
    - このコマンドに表示される `<storage-account-name>` プレースホルダーをストレージ アカウントの名前に置き換えます。  
 
    - `<container-name>` プレースホルダーは、実際のコンテナーの名前に置き換えます。
+
+
+### <a name="windows"></a>"[Windows](#tab/windows)"
+
+1. **[Windows の機能]** ダイアログ ボックスを開き、 **[NFS のクライアント]** 機能をオンにします。 
+
+   ![Network File System のクライアントの機能](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. [mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) コマンドを使用して、コンテナーをマウントします。
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - このコマンドに表示される `<storage-account-name>` プレースホルダーをストレージ アカウントの名前に置き換えます。  
+
+   - `<container-name>` プレースホルダーは、実際のコンテナーの名前に置き換えます。
+
+---
 
 ## <a name="resolve-common-issues"></a>一般的な問題を解決
 

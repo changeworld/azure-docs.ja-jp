@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 657c41fbcda30ffb5af4c5a27d58ef17c02a46bc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001436"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798258"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
@@ -191,11 +191,14 @@ Microsoft AppSource でのオファー情報の表示例を次に示します。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴを次の 2 つのピクセル サイズで提供してください。
+**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して、**小** (48 x 48 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
+
+リストのさまざまな場所で使用するために、両方のロゴ サイズが必須です。
 
 - **小** (48 x 48)
-- **大** (216 x 216)
+- **大** (216 x 216 から 350 x 350)
 
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

@@ -11,21 +11,21 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 8788bd5c5da4d2f5622a633109e2fa8b6d2a5f03
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405145"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461189"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>SAML ベースのシングル サインオンの構成
 
-アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 この記事では、シングル サインオンの SAML オプションについて詳しく説明します。 
+アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 この記事では、シングル サインオンの SAML ベースのオプションについて詳しく説明します。 
 
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure AD を ID プロバイダーとして使用し、シングル サインオン (SSO) を設定することは、使用するアプリケーションに応じて単純な場合もあれば複雑な場合もあります。 アプリケーションの中には、わずか数回のアクションで設定できるものもあれば、詳細な構成が必要なものもあります。 Others require in-depth configuration. 短時間で利用できるようにするには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 追加しようとしているアプリケーションが単純なものであれば、おそらくこの記事を読む必要はありません。 追加しようとしているアプリケーションで SAML ベースの SSO のカスタム構成が必要な場合は、この記事をお読みください。
+Azure AD を ID プロバイダー (IdP) として使用し、シングル サインオン (SSO) を設定することは、使用するアプリケーションに応じて単純な場合もあれば複雑な場合もあります。 アプリケーションの中には、わずか数回のアクションで設定できるものもあれば、詳細な構成が必要なものもあります。 Others require in-depth configuration. 短時間で利用できるようにするには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 追加しようとしているアプリケーションが単純なものであれば、おそらくこの記事を読む必要はありません。 追加しようとしているアプリケーションで SAML ベースの SSO のカスタム構成が必要な場合は、この記事をお読みください。
 
 [クイックスタート シリーズ](view-applications-portal.md)には、シングル サインオンの構成に関する記事があります。 そこでは、アプリの SAML 構成ページにアクセスする方法について説明しています。 SAML 構成ページには 5 つのセクションがあります。 これらのセクションについては、この記事で詳しく説明します。
 

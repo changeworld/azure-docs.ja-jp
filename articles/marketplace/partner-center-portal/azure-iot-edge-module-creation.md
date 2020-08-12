@@ -1,20 +1,20 @@
 ---
 title: パートナー センターを使用して Azure Marketplace で Azure IoT Edge モジュールのオファーを作成する
-description: パートナー センターを使用して、Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する方法について説明します
+description: パートナー センターを使用して、Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: anbene
-ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: article
+author: keferna
+ms.author: keferna
+ms.date: 07/22/2020
+ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520274"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808713"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する
+# <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
 この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
@@ -51,9 +51,9 @@ ms.locfileid: "86520274"
 このページには、ユーザーの選択に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
 - オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
-- オファーが公開中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
 - オファーがプレビューの場合 - [公開する](publishing-status.md#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [公開を取り消す](update-existing-offer.md#cancel-publishing)
+- 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
@@ -199,14 +199,15 @@ IoT Edge モジュールのオファーには、説明の一番下に、次の�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴの PNG ファイルを次の 4 つのピクセル サイズで提供します。
+**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して**小** (48 x 48 ピクセル) サイズおよび**中** (90 x 90 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
 
-- **小 (48 x 48)**
-- **中 (90 x 90)**
-- **大 (216 x 216)**
-- **ワイド (255 x 115)**
+リストのさまざまな場所で使用するために、3 つのロゴ サイズはすべて必須です。
 
-4 つすべてのロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+- **小** (48 x 48)
+- **中** (90 x 90)
+- **大** (216 x 216 から 350 x 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
@@ -345,7 +346,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 (オファーではなく) プランについて簡単にまとめた説明です。 この概要は Azure Marketplace の検索結果に表示されます。最大 100 文字を入力できます。
 
-### <a name="plan-description"></a>プランの説明
+### <a name="plan-description"></a>プラン説明
 
 このプラン独特の要素やオファーに含まれる他のプラントの違いを説明します。 オファーについては説明しないでください。プランの説明だけです。 この説明は Azure Marketplace と Azure portal のオファーのリスト登録ページに表示されます。 プラン概要に入力したものと同じ内容にすることができます。最大 2,000 文字を入力できます。
 
