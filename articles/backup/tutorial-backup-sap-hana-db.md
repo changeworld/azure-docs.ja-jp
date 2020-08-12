@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: f89d21a252870befae7807d2dda96828aaaa1326
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: e892bf2b943d35728b15a9354308e149af2e478e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439666"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810209"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -73,7 +73,7 @@ ms.locfileid: "87439666"
 
 1. **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
 
-Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)を参照してください。
+Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
 
 ### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 

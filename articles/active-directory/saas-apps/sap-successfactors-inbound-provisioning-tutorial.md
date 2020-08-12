@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016974"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809954"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニング (プレビュー) を構成する
-このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 この統合は、パブリック プレビュー中であり、SuccessFactors Employee Central から [70 を超えるユーザー属性](../app-provisioning/sap-successfactors-attribute-reference.md)を取得することをサポートしています。
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニングを構成する 
+このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
 
 >[!NOTE]
 >SuccessFactors からプロビジョニングするユーザーに、オンプレミス AD アカウントと、場合によって Azure AD アカウントも必要な場合は、このチュートリアルを使用します。 SuccessFactors のユーザーに Azure AD アカウント (クラウドのみのユーザー) のみが必要な場合は、[SAP SuccessFactors から Azure AD へのユーザー プロビジョニングを構成する](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)方法に関するチュートリアルを参照してください。 
@@ -82,7 +82,7 @@ SuccessFactors から AD へのクラウド人事駆動型のユーザー プロ
 * AD ユーザー プロビジョニング アプリにデプロイする SuccessFactors の数
 * 一致する ID、属性マッピング、変換、およびスコープ フィルター
 
-これらのトピックに関する包括的なガイドラインについては、[クラウド人事デプロイ計画](../app-provisioning/plan-cloud-hr-provision.md)に関するページを参照してください。 
+これらのトピックに関する包括的なガイドラインについては、[クラウド人事デプロイ計画](../app-provisioning/plan-cloud-hr-provision.md)に関するページを参照してください。 サポートされるエンティティや処理の詳細、さまざまな人事シナリオに向けて統合をカスタマイズする方法については、[SAP SuccessFactors の統合に関するリファレンス](../app-provisioning/sap-successfactors-integration-reference.md)を参照してください。 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>統合のための SuccessFactors の構成
 

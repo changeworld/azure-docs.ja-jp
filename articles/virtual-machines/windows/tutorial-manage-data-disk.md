@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69d346d554ee6f30e4ef578bacf358aaba722b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077451"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825176"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
@@ -40,7 +40,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 **オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 4 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 [Azure Marketplace](https://azure.microsoft.com/marketplace/) イメージから新しい仮想マシン (VM) を作成する場合は、通常、127 GB です (ただし、一部のイメージの OS ディスクは、これより小さいサイズです)。 OS ディスクには、既定でドライブ文字 *C:* が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
 
-**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは [VM のサイズ](sizes.md)によって決まります。 一時ディスクには、既定でドライブ文字 *D:* が割り当てられます。
+**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは [VM のサイズ](../sizes.md)によって決まります。 一時ディスクには、既定でドライブ文字 *D:* が割り当てられます。
 
 ## <a name="azure-data-disks"></a>Azure データ ディスク
 
@@ -57,7 +57,7 @@ Azure では、2 種類のディスクを提供しています。
 ### <a name="premium-disk-performance"></a>Premium ディスクのパフォーマンス
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-上記の表は、ディスクあたりの最大 IOPS を割り出していますが、複数のデータ ディスクをストライピングすることによって、より高いレベルのパフォーマンスを実現できます。 たとえば、64 のデータ ディスクを Standard_GS5 VM に接続することができます。 これらの各ディスクのサイズが P30 である場合、最大 80,000 IOPS を実現できます。 VM あたりの最大 IOPS について詳しくは、「[VM の種類とサイズ](./sizes.md)」をご覧ください。
+上記の表は、ディスクあたりの最大 IOPS を割り出していますが、複数のデータ ディスクをストライピングすることによって、より高いレベルのパフォーマンスを実現できます。 たとえば、64 のデータ ディスクを Standard_GS5 VM に接続することができます。 これらの各ディスクのサイズが P30 である場合、最大 80,000 IOPS を実現できます。 VM あたりの最大 IOPS について詳しくは、「[VM の種類とサイズ](../sizes.md)」をご覧ください。
 
 ## <a name="create-and-attach-disks"></a>ディスクを作成して接続する
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306113"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836005"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -101,7 +101,7 @@ Azure に未対応 |  この VM は Azure では起動しません。 たとえ�
 --- | --- | ---
 **ブートの種類** | BIOS がサポートされています。 UEFI はサポートされていません。 | ブートの種類が UEFI の場合は条件付きで対応します。
 **コア** | マシンのコア数が、Azure VM でサポートされる最大コア数 (128) 以下。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が考慮されます。<br/>アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | 制限以下の場合は対応します。
-**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](../virtual-machines/windows/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
+**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](../virtual-machines/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
 **ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | 制限内であれば対応します。
 **ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | 制限内であれば対応します。
 
@@ -263,7 +263,7 @@ System Center Operations Manager 2012 R2 以降によって監視されている
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - Windows および Linux オペレーティング システムの[依存関係エージェントのサポート](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)に関する詳細を確認してください。
-- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)をご覧ください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
 
 >[!NOTE]
 > システムの前提条件や Dependency Agent のデプロイ方法についての概要を紹介するために引用されている Azure Monitor for VMs の記事は、Service Map ソリューションにも当てはまります。

@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 706ae5a6c93468da9a65293c1bb4eefb136b938d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553276"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829681"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -34,7 +34,7 @@ Azure Portal で複数のダッシュボードを作成し、各ダッシュボ�
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../app/asp-net.md)を実行します。
 
 > [!NOTE]
-> ダッシュボードを操作するために必要なアクセス許可については、「[ダッシュボードのアクセス制御について](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboard-share-access#understanding-access-control-for-dashboards)」を参照してください。
+> ダッシュボードを操作するために必要なアクセス許可については、「[ダッシュボードのアクセス制御について](../../azure-portal/azure-portal-dashboard-share-access.md#understanding-access-control-for-dashboards)」を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
@@ -131,4 +131,3 @@ Azure Application Insights の Logs (Analytics) は独立したサービスで�
 
 > [!div class="nextstepaction"]
 > [詳細な診断](../app/devops.md)
-

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4868db7df6209c620c5ae1bd9b1207072214ad35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2675a55133d405041be6e309e0cc4d1596084e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074223"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835487"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -57,7 +57,7 @@ Azure は、単一インスタンス仮想マシン向けに、業界をリー�
 
 
 ## <a name="vm-size"></a>VM サイズ
-使用する VM の[サイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
+使用する VM の[サイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
 
 Azure では、VM のサイズおよびオペレーティング システムに基づいて[時間単位の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)が請求されます。 時間単位を満たさない場合は、分単位でのみ請求されます。 ストレージは別料金で、別個に請求されます。
 
