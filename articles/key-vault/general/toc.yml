@@ -46,7 +46,7 @@
   items:
     - name: 基本的な概念
       href: basic-concepts.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Azure Key Vault セキュリティ
           href: overview-security.md
@@ -90,6 +90,8 @@
           href: managed-identity.md
         - name: アクセス制御ポリシーを使用する
           href: group-permissions-for-apps.md
+        - name: アクセスに関する問題をトラブルシューティングする
+          href: troubleshooting-access-issues.md
     - name: 開発
       items:
         - name: Azure Key Vault 開発者ガイド

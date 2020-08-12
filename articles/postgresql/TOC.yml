@@ -53,7 +53,7 @@
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
         - name: 2 - Web アプリの設計 - Python
-          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          href: ../app-service/tutorial-python-postgresql-app.md
           maintainContext: true
         - name: 3 - 監視と調整
           href: tutorial-monitor-and-tune.md

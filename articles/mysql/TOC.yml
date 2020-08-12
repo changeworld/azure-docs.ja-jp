@@ -57,10 +57,10 @@
     - name: 2 - Web アプリの作成
       items:
         - name: コンテナーでの Wordpress と MySQL
-          href: ../app-service/containers/tutorial-multi-container-app.md
+          href: ../app-service/tutorial-multi-container-app.md
           maintainContext: true
         - name: PHP と MySQL
-          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          href: ../app-service/tutorial-php-mysql-app.md
           maintainContext: true
 - name: サンプル
   items:

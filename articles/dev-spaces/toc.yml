@@ -25,38 +25,8 @@
           href: quickstart-existing-helm-chart.md
     - name: チュートリアル
       items:
-        - name: Java (VS Code と CLI)
-          items:
-            - name: 1 - はじめに
-              href: get-started-java.md
-            - name: 2 - マルチサービス開発
-              href: multi-service-java.md
-            - name: 3 - チーム開発
-              href: team-development-java.md
-        - name: .NET Core (VS Code と CLI)
-          items:
-            - name: 1 - はじめに
-              href: get-started-netcore.md
-            - name: 2 - マルチサービス開発
-              href: multi-service-netcore.md
-            - name: 3 - チーム開発
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: 1 - はじめに
-              href: get-started-netcore-visualstudio.md
-            - name: 2 - マルチサービス開発
-              href: multi-service-netcore-visualstudio.md
-            - name: 3 - チーム開発
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js (VS Code と CLI)
-          items:
-            - name: 1 - はじめに
-              href: get-started-nodejs.md
-            - name: 2 - マルチサービス開発
-              href: multi-service-nodejs.md
-            - name: 3 - チーム開発
-              href: team-development-nodejs.md
+        - name: Visual Studio 入門
+          href: get-started-netcore-visualstudio.md
     - name: 概念
       items:
         - name: Dev Spaces のしくみ
@@ -83,8 +53,6 @@
           href: how-to/install-dev-spaces.md
         - name: Azure Cloud Shell を使用して Kubernetes クラスターを作成する
           href: how-to/create-cluster-cloud-shell.md
-        - name: Azure Dev Spaces を共有する
-          href: how-to/share-dev-spaces.md
         - name: シークレットを管理する
           href: how-to/manage-secrets.md
         - name: カスタム NuGet フィードを使用する

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075628"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504417"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop の FAQ
 
@@ -46,7 +46,7 @@ ms.locfileid: "87075628"
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Windows Virtual Desktop では Azure Active Directory モデルの分割はサポートされていますか。
 
-ユーザーがアプリ グループに割り当てられると、サービスでは単純な Azure のロールベースのアクセス制御 (RBAC) ロールの割り当てが行なわれます。 そのため、ユーザーの Azure Active Directory (AD) とアプリ グループの Azure AD は同じ場所にある必要があります。 ホスト プール、アプリ グループ、ワークスペースなどのすべてのサービス オブジェクトも、ユーザーと同じ Azure AD に含まれている必要があります。
+ユーザーがアプリ グループに割り当てられると、サービスにより単純な Azure ロールの割り当てが行われます。 そのため、ユーザーの Azure Active Directory (AD) とアプリ グループの Azure AD は同じ場所にある必要があります。 ホスト プール、アプリ グループ、ワークスペースなどのすべてのサービス オブジェクトも、ユーザーと同じ Azure AD に含まれている必要があります。
 
 同じ仮想ネットワーク (VNET) 内のユーザーの Azure AD と Active Directory が同期されている限り、異なる Azure AD に仮想マシン (VM) を作成できます。
 

@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-java
+ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537886"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500659"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -62,7 +63,30 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 
 ## <a name="release-history"></a>リリース履歴
 
+### <a name="440-beta1-unreleased"></a>4.4.0-beta.1 (未リリース)
+
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
+#### <a name="new-features"></a>新機能
+* reactor-core ライブラリ バージョンを `3.3.8.RELEASE` に更新しました。 
+* reactor-netty ライブラリ バージョンを `0.9.10.RELEASE` に更新しました。 
+* netty ライブラリ バージョンを `4.1.51.Final` に更新しました。 
+* `partitionKey` を含む `upsertItem` 用の新しいオーバーロード API を追加しました。 
+* オープン テレメトリのトレース サポートを追加しました。 
+#### <a name="key-bug-fixes"></a>主要なバグ修正
+* ゲートウェイ モードで要求をキャンセルすると SSLException がスローされる問題を修正しました。
+* ストアド プロシージャ実行でのリソース スロットルの再試行ポリシーを修正しました。
+* ログ レベル デバッグ モードで SDK がハングする問題を修正しました。 
+* 直接モードで待機時間が定期的に急上昇する問題を修正しました。 
+* クライアントの初期化時間が長い問題を修正しました。 
+* 直接モードとゲートウェイ モードでクライアントをカスタマイズすると http プロキシ バグが発生する問題を修正しました。 
+* ユーザーが null オプションを渡すと発生する可能性のある NPE を修正しました。 
+* 診断文字列の `requestLatency` に timeUnit を追加しました。
+* 診断文字列から重複する URI 文字列を削除しました。 
+* 診断文字列をポイント操作向けの正しい JSON 形式に修正しました。
+* Not Found 例外でリアクター チェーンが発生する原因となっていた `.single()` 演算子の問題を修正しました。 
+
 ### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+#### <a name="new-features"></a>新機能
 * スクリプト ログ対応 API を `CosmosStoredProcedureRequestOptions` に追加しました。
 * `DirectConnectionConfig` の既定の `idleEndpointTimeout` を 1h に更新し、既定の `connectTimeout` を 5s に更新しました。
 #### <a name="key-bug-fixes"></a>主要なバグ修正
@@ -137,6 +161,7 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 * 二重シリアル化/逆シリアル化の削除によるクエリの最適化。 
 * 不要なコピーによる旧戻しや更新を削除することによる応答ヘッダーの最適化。 
 * 中間の文字列インスタンス化を削除して、`ByteBuffer` のシリアル化/逆シリアル化を最適化しました。
+
 #### <a name="key-bug-fixes"></a>主要なバグ修正
 * ConnectionPolicy `toString()` Null ポインター例外を修正しました。
 * 値の order by クエリの場合に発生する、クエリ結果の解析の問題を修正しました。 

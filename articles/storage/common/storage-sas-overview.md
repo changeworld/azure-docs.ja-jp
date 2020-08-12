@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077873"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502173"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する
 
@@ -58,7 +58,7 @@ Shared Access Signature とは、特殊なクエリ パラメーターのセッ�
 
 - Azure Active Directory (Azure AD) 資格情報を使用して作成された*ユーザー委任キー*を使用する。 ユーザー委任 SAS は、ユーザー委任キーで署名されます。
 
-    ユーザー委任キーを取得して SAS を作成するには、Azure AD セキュリティ プリンシパルに **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールベースのアクセス制御 (RBAC) ロールが割り当てられている必要があります。 ユーザー委任キーを取得するアクセス許可を持つ RBAC ロールの詳細については、[ユーザー委任 SAS の作成 (REST API)](/rest/api/storageservices/create-user-delegation-sas) に関するページを参照してください。
+    ユーザー委任キーを取得して SAS を作成するには、Azure AD セキュリティ プリンシパルに **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含む Azure ロールが割り当てられている必要があります。 ユーザー委任キーを取得するアクセス許可を持つ Azure ロールの詳細については、[ユーザー委任 SAS の作成 (REST API)](/rest/api/storageservices/create-user-delegation-sas) に関するページを参照してください。
 
 - ストレージ アカウント キーを使用する。 サービス SAS とアカウント SAS は、どちらもストレージ アカウント キーを使用して署名されます。 アカウント キーで署名された SAS を作成するには、アプリケーションがアカウント キーにアクセスできる必要があります。
 

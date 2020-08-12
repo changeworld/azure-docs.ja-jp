@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128660"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498125"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -75,8 +75,6 @@ Azure AD が統合された AKS クラスターでは、名前空間内または
 
 Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][openid-connect]を参照してください。 Kubernetes クラスターの内部からは、[Webhook トークン認証][webhook-token-docs]を使用して認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。
 
-Kubernetes クラスターの内部からは、webhook トークン認証を使って認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。
-
 ### <a name="webhook-and-api-server"></a>Webhook と API サーバー
 
 ![Webhook と API サーバーの認証フロー](media/concepts-identity/auth-flow.png)
@@ -121,7 +119,7 @@ Kubernetes API へのアクセスを提供する kubeconfig ファイルへの�
 
 ### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に対する Azure RBAC (プレビュー)
 
-Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使用されることにより、ユーザーは、Azure RBAC ロールの定義とロールの割り当てを使用して、Azure AD と統合された K8s クラスター リソースのアクセス許可と割り当てを管理できます。
+Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使用されることにより、ユーザーは、Azure ロールの定義とロールの割り当てを使用して、Azure AD と統合された K8s クラスター リソースのアクセス許可と割り当てを管理できます。
 
 ![Kubernetes 認可に対する Azure RBAC のフロー](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 
