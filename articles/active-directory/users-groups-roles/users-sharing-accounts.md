@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386947"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164225"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -55,7 +55,7 @@ Azure AD では、あらゆる種類のパスワード シングル サインオ
 
 アカウントの共有を有効にする Azure AD の機能は、次のとおりです。
 
-* [パスワード シングル サインオン](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [パスワード シングル サインオン](../manage-apps/sso-options.md#password-based-sso)
 * パスワード シングル サインオン エージェント
 * [グループの割り当て](groups-self-service-management.md)
 * カスタム パスワード アプリケーション

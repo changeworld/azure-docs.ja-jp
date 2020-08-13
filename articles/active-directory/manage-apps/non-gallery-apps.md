@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 300c6e268e3d2f639bf697237253d2b98e5daa15
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d4f00061664340681b365eddfa1a742795f96d99
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352067"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164684"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>アプリ ギャラリーに記載されていないアプリケーションで Azure AD を使用する
 
@@ -29,9 +29,9 @@ ms.locfileid: "87352067"
 組織に既に存在するアプリケーションや、Azure AD ギャラリーに属していないベンダーのサードパーティ アプリケーションを追加できます。 [使用許諾契約書](https://azure.microsoft.com/pricing/details/active-directory/)に応じて、以下の機能を使用することができます。
 
 - [Security Assertion Markup Language (SAML) 2.0](https://wikipedia.org/wiki/SAML_2.0) ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
-- [パスワードベースの SSO](what-is-single-sign-on.md#password-based-sso)
+- [パスワードベースの SSO](sso-options.md#password-based-sso)
 - [ユーザー プロビジョニング用の System for Cross-Domain Identity Management (SCIM) プロトコル](../app-provisioning/use-scim-to-provision-users-and-groups.md)を使用するアプリケーションのセルフサービス接続
-- [Office 365 アプリ ランチャー](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](what-is-single-sign-on.md#linked-sign-on)での任意のアプリケーションへのリンクの追加機能
+- [Office 365 アプリ ランチャー](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](sso-options.md#linked-sign-on)での任意のアプリケーションへのリンクの追加機能
 
 カスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、[Azure AD の認証シナリオ](../develop/authentication-scenarios.md)に関するページを参照してください。 [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) などの最新のプロトコルを使用してユーザーを認証するアプリを開発した場合は、それを Azure portal の[アプリの登録](../develop/quickstart-register-app.md)エクスペリエンスを使用して Microsoft ID プラットフォームに登録できます。
 
