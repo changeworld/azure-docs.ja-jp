@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 59dbe7f1a41c7241843362018909e9b65efe7b0e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31bc9a5f38d50318f858a4d7169391e9d2e5e610
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292443"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848732"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 および Easv4 シリーズ
 
@@ -83,7 +83,7 @@ Easv4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロ�
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報: [ディスクの種類](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+ディスクの種類の詳細情報: [ディスクの種類](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>次のステップ
 

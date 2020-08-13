@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 0d31d982e7788970cbf7aad7dd64db9e6d4b9b10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f0e9d057c92f1907bb77ee0767c7bb07f0f4c62
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502199"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836991"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
@@ -261,7 +261,7 @@ tagsList | プログラムによる解析を簡単にするために JSON 配列
 version | VM イメージのバージョン | 2017-04-02
 vmId | VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [VM サイズ](sizes.md) | 2017-04-02
+vmSize | [VM サイズ](../sizes.md) | 2017-04-02
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>サンプル 1:Azure で動作している VM の追跡

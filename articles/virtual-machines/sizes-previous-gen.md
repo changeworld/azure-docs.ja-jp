@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289716"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831296"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
@@ -80,7 +80,7 @@ NVv2 インスタンス内の各 GPU には GRID ライセンスが付属して�
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
-このセクションでは、より古い世代の仮想マシンのサイズの情報が提供されます。 これらのサイズは引き続きサポートされますが、追加容量は得られません。 一般提供されるより新しいまたは代替のサイズがあります。 ニーズに最も合う VM サイズを選択するには、「[Azure の Linux 仮想マシンのサイズ](linux/sizes.md)」を参照してください。  
+このセクションでは、より古い世代の仮想マシンのサイズの情報が提供されます。 これらのサイズは引き続きサポートされますが、追加容量は得られません。 一般提供されるより新しいまたは代替のサイズがあります。 ニーズに最も合う VM サイズを選択するには、「[Azure の Linux 仮想マシンのサイズ](./sizes.md)」を参照してください。  
 
 Linux VM のサイズ変更の詳細については、[Linux VM のサイズ変更](linux/change-vm-size.md)に関するページを参照してください。  
 

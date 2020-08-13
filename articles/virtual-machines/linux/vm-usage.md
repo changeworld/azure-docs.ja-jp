@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04536836c4d061249201c82f738aa41501f0847e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387712"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828865"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
 Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../../cost-management-billing/understand/review-individual-bill.md)に関するページをご覧ください。
@@ -35,7 +35,7 @@ Azure の使用量のデータを分析すると、消費額に関して説得�
 | 使用量| その日に消費されたリソースの量。 コンピューティングについては、VM が実行されていた特定の時間に対して分単位で課金されます (最大 6 桁の精度)。| `1, 0.5`|
 | リソースの場所  | リソースが実行されているデータ センターを特定します。| `JA East`|
 | 使用サービス | 使用した Azure プラットフォーム サービス。| `Microsoft.Compute`|
-| リソース グループ | デプロイされたリソースが実行されるリソース グループ。 詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)」を参照してください。|`MyRG`|
+| リソース グループ | デプロイされたリソースが実行されるリソース グループ。 詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。|`MyRG`|
 | インスタンス ID | リソースの識別子。 識別子には、リソースの作成時に指定した名前が含まれています。 VM については、インスタンス ID には、SubscriptionId、ResourceGroupName、および VMName (または、スケール セットの使用量についてはスケール セット名) が含まれます。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>or<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Tags| この列には、ユーザーが指定したリソース タグが含まれます。 タグは、課金記録のグループ化に使用できます。 [Virtual Machines にタグを付ける](tag.md)方法を確認してください。 Resource Manager VM でのみ使用できます。| `{"myDepartment":"RD","myUser":"myName"}`|
 | 追加情報 | サービス固有のメタデータ。 VM については、追加情報フィールドに次のデータが設定されます。 <br><br> イメージの種類: 実行した特定のイメージ。 以下の「イメージの種類」で、サポートされている文字列の完全な一覧を確認してください。<br><br> サービスの種類: デプロイしたサイズ。<br><br> VMName: VM の名前。 このフィールドは、スケール セット VM にのみ設定されます。 スケール セット VM の VM 名が必要な場合は、上記のインスタンス ID 文字列で確認できます。<br><br> UsageType: これが表す使用量の種類を指定します。<br><br> ComputeHR は、Standard_D1_v2 など、基になる VM のコンピューティング時間の使用量です。<br><br> ComputeHR_SW は、VM が Microsoft R Server などの Premium ソフトウェアを使用している場合の、Premium ソフトウェア料金です。 | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium ソフトウェア<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |

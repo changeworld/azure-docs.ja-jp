@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: aedf39f99ace6e1119dde7089a3c83b96ac41fb1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 7738582ec2839a6fddaa01ff0f9921c276c9748d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079708"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843115"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions の Azure Service Bus トリガー
 

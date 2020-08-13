@@ -3,12 +3,12 @@ title: Azure Migrate での検出、評価、および依存関係分析に関�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385723"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829885"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -169,7 +169,7 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 
 エージェントベースの依存関係の視覚化の場合:
 
-- [依存関係エージェントをインストールするスクリプト](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)を使用してください。
+- [依存関係エージェントをインストールするスクリプト](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)を使用してください。
 - MMA の場合は、[コマンドラインまたはオートメーションを使用](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)するか、[スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
 - スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と [Intigua](https://www.intigua.com/intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
 

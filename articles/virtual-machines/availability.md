@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: d26e1edb53f963d591b1ee1fba58b87fd454e898
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 18d7755bf6bf9d09a8da30cb5c2892af6ed90c7d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288569"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830650"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure の仮想マシンの可用性オプション
 
@@ -47,11 +47,11 @@ ms.locfileid: "87288569"
 
 ## <a name="virtual-machines-scale-sets"></a>Virtual Machines スケール セット 
 
-Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つのスケール セット内に 2 つ以上の VM を作成することをお勧めします。 スケール セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 スケール セット内の仮想マシンは、複数の更新ドメインと障害ドメインにデプロイして、データセンターの障害や、計画済みまたは計画外のメンテナンス イベントによる障害に対する可用性と復元性を最大にすることができます。 スケール セット内の仮想マシンは、1 つの可用性ゾーン (リージョン) にデプロイすることもできます。 可用性ゾーンのデプロイ オプションは、オーケストレーション モードによって異なる場合があります。
+Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つのスケール セット内に 2 つ以上の VM を作成することをお勧めします。 スケール セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium SSD](./windows/disks-types.md#premium-ssd) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 スケール セット内の仮想マシンは、複数の更新ドメインと障害ドメインにデプロイして、データセンターの障害や、計画済みまたは計画外のメンテナンス イベントによる障害に対する可用性と復元性を最大にすることができます。 スケール セット内の仮想マシンは、1 つの可用性ゾーン (リージョン) にデプロイすることもできます。 可用性ゾーンのデプロイ オプションは、オーケストレーション モードによって異なる場合があります。
 
 **障害ドメインと更新ドメイン**
 
-仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)に関する記事を参照してください。
+仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](./windows/manage-availability.md)に関する記事を参照してください。
 
 
 ## <a name="availability-sets"></a>可用性セット
@@ -72,4 +72,3 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 
 ## <a name="next-steps"></a>次のステップ
 可用性と冗長性の機能を使って、Azure 環境を構築できるようになりました。 ベスト プラクティスに関する情報については、[Azure の可用性のベスト プラクティス](/azure/architecture/checklist/resiliency-per-service)に関するページをご覧ください。
-

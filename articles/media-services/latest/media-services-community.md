@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c47488915997f054487d8343c7c3c032135dcdb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828501"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833081"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure Media Services v3 コミュニティ  
 
@@ -40,7 +40,7 @@ ms.locfileid: "83828501"
 
 現在、Media Services チームの主要なコミュニティ フォーラムは MSDN です。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 また同チームでは、Stack Overflow に "azure-media-services" タグで投稿された質問をモニタリングしています。
 

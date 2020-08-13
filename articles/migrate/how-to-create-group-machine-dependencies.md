@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment でエージェントベースの依存�
 description: この記事では、Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321209"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829919"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -104,7 +104,7 @@ MMA でサポートされる Linux オペレーティング システムの一�
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)をご覧ください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
 - 依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)をご覧ください。
 
 
@@ -208,5 +208,3 @@ VMConnection
 ## <a name="next-steps"></a>次のステップ
 
 グループの[評価を作成](how-to-create-assessment.md)します。
-
-

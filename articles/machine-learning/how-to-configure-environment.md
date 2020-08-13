@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: f0ac64fa184382f3939530565caa93f87da0fbf6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 09d82c4834e50e0dff74edb5ccd14287736b937e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321481"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844475"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
