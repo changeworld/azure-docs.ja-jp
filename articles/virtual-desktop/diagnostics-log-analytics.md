@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop の診断ログ分析 - Azure
 description: Windows Virtual Desktop の診断機能でログ分析を使用する方法について説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292604"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005109"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
@@ -134,7 +132,7 @@ Azure Monitor Log Analytics UI を使用したサンプル クエリへのアク
 1. Log Analytics ワークスペースにアクセスし、 **[ログ]** を選択します。 クエリ UI の例が自動的に表示されます。
 1. フィルターを **[カテゴリ]** に変更します。
 1. **[Windows Virtual Desktop]** を選択して、使用可能なクエリを確認します。
-1. **[実行]** を選択して、選択したクエリを実行します。 
+1. **[実行]** を選択して、選択したクエリを実行します。
 
 サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/log-query/saved-queries.md)」を参照してください。
 
