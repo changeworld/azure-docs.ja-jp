@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e37bda28bed3ecd2c842c4659bcff3cb86eb6a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064293"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920689"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>チュートリアル:StarLeaf を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -36,7 +36,7 @@ ms.locfileid: "77064293"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * Azure AD テナント。
-* [StarLeaf テナント](https://www.starleaf.com/solutions/)。
+* [StarLeaf テナント](https://starleaf.com/)。
 * 管理者アクセス許可がある StarLeaf のユーザー アカウント。
 
 ## <a name="assign-users-to-starleaf"></a>ユーザーを StarLeaf に割り当てる

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: d360b890023c1a14f80d9fc8efc703abd7544710
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328078"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921386"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する
 
@@ -53,7 +53,7 @@ ID を使用するための最初の手順として、ランディング ペー�
 
 Microsoft Graph API にクエリを実行する予定がある場合は、[Web API にアクセスするように新しいアプリケーションを構成](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)します。 このアプリケーションの API のアクセス許可を選択する場合、ユーザーに関する基本情報を収集してオンボード プロセスがスムーズかつ自動的に実行されるようにするには **User.Read** の既定値で十分です。 **[needs admin consent] (管理者の同意が必要)** というラベルが付いた API のアクセス許可を要求すると、管理者以外のすべてのユーザーがランディング ページにアクセスできなくなるため、この要求はしないでください。
 
-オンボードまたはプロビジョニング プロセスの一部として管理者特権のアクセス許可が必要な場合は、マーケットプレースから送信されたすべてのユーザーが最初にランディング ページを操作できるように、Azure AD の[増分同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#incremental-and-dynamic-consent)機能を使用することを検討してください。
+オンボードまたはプロビジョニング プロセスの一部として管理者特権のアクセス許可が必要な場合は、マーケットプレースから送信されたすべてのユーザーが最初にランディング ページを操作できるように、Azure AD の[増分同意](https://aka.ms/incremental-consent)機能を使用することを検討してください。
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>開始点としてコード サンプルを使用する
 

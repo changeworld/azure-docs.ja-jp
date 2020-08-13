@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: eecf7ba1471e35e2d9ab26394c7295f324c4ca20
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 034d1c4dbbb91ad7317ffb56b1fe38e010694c44
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116401"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927098"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>ADF でオンプレミスの SSIS ワークロードを SSIS に移行する
 
@@ -66,7 +66,7 @@ Data Migration Assistant (DMA) は、この目的のために自由にダウン�
 |-|-|-|
 |SSISDB|[**SSISDB** を移行する](scenario-ssis-migration-ssisdb-mi.md)|[SSIS ジョブを Azure SQL Managed Instance エージェントに移行する](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent)|
 |ファイル システム|dtinstall/dtutil/manual copy を使用してファイル共有/Azure Files に再デプロイするか、ファイル システムを使用して VNet/セルフホステッド IR 経由でアクセスできる状態にします。 詳細については、「[dtutil ユーティリティ](https://docs.microsoft.com/sql/integration-services/dtutil-utility)」を参照してください。|<li> [SSMS の SSIS ジョブ移行ウィザード](how-to-migrate-ssis-job-ssms.md)を使用して移行します。 <li>スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
-|SQL Server (MSDB)|SSMS/dtutil を使用してファイル システム/ファイル共有/Azure Files にエクスポートします。 詳細については、[SSIS パッケージのエクスポート](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)に関する記事を参照してください。|スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
+|SQL Server (MSDB)|SSMS/dtutil を使用してファイル システム/ファイル共有/Azure Files にエクスポートします。 詳細については、[SSIS パッケージのエクスポート](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service#import-and-export-packages)に関する記事を参照してください。|スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
 |パッケージ ストア|SSMS/dtutil を使用してファイル システム/ファイル共有/Azure Files にエクスポートするか、dtinstall/dtutil/manual copy を使用してファイル共有/Azure Files に再デプロイするか、VNet/セルフホステッド IR 経由でアクセスできるようにファイル システムに保存します。 詳細については、「dtutil ユーティリティ」を参照してください。 詳細については、「[dtutil ユーティリティ](https://docs.microsoft.com/sql/integration-services/dtutil-utility)」を参照してください。|スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
 
 ### <a name="azure-sql-database-as-database-workload-destination"></a>データベース ワークロードの宛先としての **Azure SQL Database**
@@ -75,7 +75,7 @@ Data Migration Assistant (DMA) は、この目的のために自由にダウン�
 |-|-|-|
 |SSISDB|SSDT/SSMS を使用して Azure-SSISDB に再デプロイします。 詳細については、[Azure での SSIS パッケージのデプロイ](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)に関する記事を参照してください。|スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
 |ファイル システム|dtinstall/dtutil/manual copy を使用してファイル共有/Azure Files に再デプロイするか、ファイル システムを使用して VNet/セルフホステッド IR 経由でアクセスできる状態にします。 詳細については、「[dtutil ユーティリティ](https://docs.microsoft.com/sql/integration-services/dtutil-utility)」を参照してください。|<li> [SSMS の SSIS ジョブ移行ウィザード](how-to-migrate-ssis-job-ssms.md)を使用して移行します。 <li> スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
-|SQL Server (MSDB)|SSMS/dtutil を使用してファイル システム/ファイル共有/Azure Files にエクスポートします。 詳細については、[SSIS パッケージのエクスポート](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)に関する記事を参照してください。|スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
+|SQL Server (MSDB)|SSMS/dtutil を使用してファイル システム/ファイル共有/Azure Files にエクスポートします。 詳細については、[SSIS パッケージのエクスポート](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service#import-and-export-packages)に関する記事を参照してください。|スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
 |パッケージ ストア|SSMS/dtutil を使用してファイル システム/ファイル共有/Azure Files にエクスポートするか、dtinstall/dtutil/manual copy を使用してファイル共有/Azure Files に再デプロイするか、VNet/セルフホステッド IR 経由でアクセスできるようにファイル システムに保存します。 詳細については、「dtutil ユーティリティ」を参照してください。 詳細については、「[dtutil ユーティリティ](https://docs.microsoft.com/sql/integration-services/dtutil-utility)」を参照してください。|スクリプト/SSMS/ADF ポータルを使用して、ADF パイプライン/アクティビティ/トリガーに変換します。 詳細については、[SSMS のスケジュール設定機能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)に関する記事を参照してください。|
 
 ## <a name="additional-resources"></a>その他のリソース

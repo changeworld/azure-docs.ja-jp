@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810278"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921947"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -111,7 +111,7 @@ SQL Database と SQL Managed Instance では、使用されたバックアップ
 
 - 必要最小限まで[バックアップの保持期間](#change-the-pitr-backup-retention-period-by-using-the-azure-portal)を短縮します。
 - インデックスの再構築などの大規模な書き込み操作を、必要以上に頻繁に行わないようにします。
-- 大規模なデータ読み込み操作の場合、[クラスター化された列ストア インデックス](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)を使用して、関連する[ベスト プラクティス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)に従うことを検討し、クラスター化されていないインデックスの数を減らします。
+- 大規模なデータ読み込み操作の場合、[クラスター化された列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)を使用して、関連する[ベスト プラクティス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)に従うことを検討し、クラスター化されていないインデックスの数を減らします。
 - 汎用サービス レベルでは、プロビジョニングされたデータ ストレージの方が、バックアップ ストレージの価格よりも安価です。 超過のバックアップ ストレージのコストが継続的に増加している場合は、データ ストレージを増やしてバックアップ ストレージを節約することを検討してください。
 - 一時的な結果やデータの保存には、アプリケーションのロジックでの永続的テーブルではなく TempDB を使用します。
 - 可能な限り (Dev/Test 環境など) ローカル冗長バックアップ ストレージを使用します。

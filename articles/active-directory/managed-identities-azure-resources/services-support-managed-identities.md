@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 49692c08787103b09e6e1502f7a9a58736239fdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018997"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873587"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -85,12 +85,19 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
 | ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
+### <a name="azure-cognitive-services"></a>Azure Cognitive Services
+
+マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
+| ユーザー割り当て済み | 使用不可 | 使用できません | 使用できません | 使用不可 |
+
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| システム割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用できません | 使用不可 |
 | ユーザー割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Container Instances のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
@@ -104,7 +111,7 @@ Azure Container Instances のために (それが提供されているリージ�
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
+| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用できません | 使用不可 |
 | ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Container Registry タスクのために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
@@ -123,7 +130,7 @@ Azure Container Registry タスクのために (それが提供されている�
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用できません | 使用不可 | 使用不可 |
 
 Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -139,7 +146,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 マネージド ID の種類 |すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
-| ユーザー割り当て済み | 使用不可 | 使用不可  | 使用不可  | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用できません  | 使用できません  | 使用不可 |
 
 
 
@@ -168,7 +175,7 @@ Azure Functions のために (それが提供されているリージョンで) 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用できません | 使用不可 | 使用不可 |
 
 Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -179,7 +186,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | システム割り当て済み | Azure Import Export サービスが利用可能なリージョンで利用可能 | プレビュー | 利用可能 | 利用可能 |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用できません | 使用不可 | 使用不可 |
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -211,7 +218,7 @@ Azure Logic Apps のために (それが提供されているリージョンで)
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用できません | 使用できません | 使用不可 |
 
 Azure Policy のために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
 

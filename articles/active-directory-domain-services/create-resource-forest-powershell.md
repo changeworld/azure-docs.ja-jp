@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: d5eef553d0d3bf5acbcb61ef8f2dcfab88a53266
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505551"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921998"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure Active Directory Domain Services のリソース フォレスト、およびオンプレミス ドメインへの送信フォレストの信頼を、Azure PowerShell を使用して作成する
 
@@ -148,8 +148,8 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. Azure VPN または Azure ExpressRoute 接続を使用して、Azure へのオンプレミス ネットワークに対するハイブリッド接続を作成します。 ハイブリッド ネットワーク構成についてはこのドキュメントでは説明しませんが、現在の環境内に既に存在している可能性があります。 特定のシナリオの詳細については、次の記事を参照してください。
 
-    * [Azure サイト間 VPN](/vpn-gateway/vpn-gateway-about-vpngateways) に関する記事。
-    * [Azure ExpressRoute の概要](/vpn-gateway/vpn-gateway-about-vpngateways)に関する記事。
+    * [Azure サイト間 VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways) に関する記事。
+    * [Azure ExpressRoute の概要](/azure/expressroute/expressroute-introduction)に関する記事。
 
     > [!IMPORTANT]
     > マネージド ドメインの仮想ネットワークに直接接続を作成する場合は、別のゲートウェイ サブネットを使用します。 マネージド ドメインのサブネットにはゲートウェイを作成しないでください。
