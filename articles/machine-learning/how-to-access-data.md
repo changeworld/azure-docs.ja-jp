@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
-ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: how-to, seodec18, devx-track-python
+ms.openlocfilehash: 90de785d56e50885a13d43faa77f087d1235ea18
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496102"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852533"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage サービスに接続する
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]

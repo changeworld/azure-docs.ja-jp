@@ -5,16 +5,16 @@ description: Ubuntu Data Science Virtual Machine に含まれるツールの詳�
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955541"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852227"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>リファレンス: Ubuntu (Linux) Data Science Virtual Machine
 
