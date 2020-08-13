@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 4ff80330ab6244bc9d108b7f5a1d4e4e0dbd4feb
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6e03b8f89ec22b74ad7dd14d9225c11fde78ec7f
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387406"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135625"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) を作成する
 
@@ -115,7 +115,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-これまでのところ、クエリには github\_events だけが関係していましたが、この情報を github\_users と組み合わせることができます。 ユーザーとイベントを両方、同じ ID (`user_id`) でシャード化したため、ユーザー ID が一致する両テーブルの行は同じデータベース ノードと[同じ場所に配置](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation)され、簡単に結合できます。
+これまでのところ、クエリには github\_events だけが関係していましたが、この情報を github\_users と組み合わせることができます。 ユーザーとイベントを両方、同じ ID (`user_id`) でシャード化したため、ユーザー ID が一致する両テーブルの行は同じデータベース ノードと[同じ場所に配置](concepts-hyperscale-colocation.md)され、簡単に結合できます。
 
 `user_id` で結合した場合、Hyperscale は、worker ノードで並列実行するため、結合実行をシャードにプッシュできます。 たとえば、リポジトリを最も多く作成したユーザーを見つけましょう。
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 5f8fb98b1032111eb55197fa5b7d561019be9de3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c2d55b15fb69fe4c1aea21bb2183f0e40c3586c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074480"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136492"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>チュートリアル:Media Services v3 を使用してビデオをアップロード、エンコード、ストリーム配信する
 
@@ -72,7 +72,7 @@ Azure Media Services を使うと、さまざまなブラウザーやデバイ�
 6. **ストリーミング ロケーター**を作成します。
 7. ストリーミング URL を作成します。
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />.NET SDK で Media Services API の使用を開始する
+### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
 .NET で Media Services API の使用を始めるには、**AzureMediaServicesClient** オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure AD を使用して Azure に接続するために必要な資格情報を指定する必要があります。 この記事の最初に複製したコード内で、ローカル構成ファイルで指定された資格情報に基づいて、**GetCredentialsAsync** 関数が ServiceClientCredentials オブジェクトを作成します。
 
