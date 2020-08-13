@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 715f75223b84302395ecf5b0cd4f32f4eb348de7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 7a42ae39e35d181c9d354fc7c7d8ff125ade5acd
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405426"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876752"
 ---
 # <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>クイック スタート:Translator を使用してサポートされている言語の一覧を取得する
 

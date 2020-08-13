@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: trbye
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: b571c5ee64e12021acf699f979d85d37af7bac7d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c5ceb76b8dcdad5d487e196cf1780703b7e34f17
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407637"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874522"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>音声合成の基本を学ぶ
 

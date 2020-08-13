@@ -3,14 +3,14 @@ title: クイック スタート:SDK による予測エンドポイントに対�
 description: このクイックスタートでは、SDK を使用して Azure Cognitive Services LUIS アプリケーションにユーザーの発話を送信し、予測を受信する方法について説明します。
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: c4929f73add9c5d9aabd8ddd3c4878e88c9a9b27
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5a435892c828c7239793f4060d642459947d972f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369266"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876956"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>クイック スタート:SDK を使用した V3 予測エンドポイントに対するクエリの実行
 

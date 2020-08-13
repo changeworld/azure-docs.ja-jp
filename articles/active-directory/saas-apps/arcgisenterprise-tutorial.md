@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e21b1c72f191f3644975afd511a900667a04ce9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157905"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>チュートリアル: Azure Active Directory と ArcGIS Enterprise の統合
 
@@ -41,6 +41,9 @@ ArcGIS Enterprise と Azure AD の統合を構成するには、次のものが�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * ArcGIS Enterprise でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -70,7 +73,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ArcGIS Enterprise**」と入力し、結果パネルで **[ArcGIS Enterprise]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ArcGIS Enterprise**」と入力し、結果パネルで **[ArcGIS Enterprise]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の ArcGIS Enterprise](common/search-new-app.png)
 
@@ -94,7 +97,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 [アプリケーション名] を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **ArcGIS Enterprise** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ArcGIS Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -151,7 +154,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
     b. **[URL]** ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
-    c. **[詳細設定の表示]** をクリックし、 **[エンティティ ID]** の値をコピーして、Azure Portal の **[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\)** セクションの **[識別子]** テキスト ボックスに貼り付けます。
+    c. **[詳細設定の表示]** をクリックし、**[エンティティ ID]** の値をコピーして、Azure Portal の **[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\)** セクションの **[識別子]** テキスト ボックスに貼り付けます。
     
     ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure5.png)
 
@@ -186,7 +189,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 このセクションでは、ArcGIS Enterprise へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ArcGIS Enterprise]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ArcGIS Enterprise]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
