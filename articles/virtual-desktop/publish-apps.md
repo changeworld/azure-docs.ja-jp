@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop で組み込みアプリを発行する - Azure
 description: Windows Virtual Desktop で組み込みアプリを発行する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad2dd398e5eddd7cbb56b4f293a8a67a0df85316
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b088f1f58e26dca854c17b0765607ebe76017dfe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291385"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009496"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows Virtual Desktop で組み込みアプリを発行する
 

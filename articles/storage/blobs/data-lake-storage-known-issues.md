@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 44d58b4e68e9f846b6bdb87765e96bcab90274a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083601"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056080"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -54,8 +54,6 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 * [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
 * [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。

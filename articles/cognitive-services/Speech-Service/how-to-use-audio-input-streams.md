@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1574ea1c6f97606198d071d79ea69d58304a6159
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584928"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053560"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Speech SDK のオーディオ入力ストリーム API について
 
@@ -75,5 +75,5 @@ Speech SDK の**オーディオ入力ストリーム** API では、マイクま
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 - [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

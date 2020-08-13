@@ -1,18 +1,18 @@
 ---
 title: Azure Synapse Link for Azure Cosmos DB にはどのような利点があり、いつ使用するか
 description: Azure Synapse Link for Azure Cosmos DB について説明します。 Synapse Link により、Azure Synapse Analytics を使用して、Azure Cosmos DB のオペレーショナル データに対するほぼリアルタイムの分析 (HTAP) を実行できます。
-author: srchi
-ms.author: srchi
+author: Rodrigossz
+ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025779"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034180"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse Link for Azure Cosmos DB (プレビュー) とは
 

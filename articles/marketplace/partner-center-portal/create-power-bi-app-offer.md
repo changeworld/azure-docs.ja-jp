@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800300"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030762"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
@@ -202,19 +202,20 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して、**小** (48 x 48 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
-
-リストのさまざまな場所で使用するために、両方のロゴ サイズが必須です。
-
+オファーのロゴの PNG ファイルは、次の 2 つのピクセル サイズで提供します。
 - **小** (48 x 48)
-- **大** (216 x 216 から 350 x 350)
+- **大** (216 x 216)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+両方のロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

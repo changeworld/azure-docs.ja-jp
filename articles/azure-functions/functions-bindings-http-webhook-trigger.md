@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: d1b545129312e2954c76e296560d9476f37f4424
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 271787c47b29bc713cc923c7d27852a8e05703ef
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081765"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042549"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -824,7 +824,7 @@ C# 以外の関数では、Content-Type `image/jpeg` を使用して要求を送
 
 ## <a name="limits"></a>制限
 
-HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)の `httpRuntime` 要素で指定されています。
+HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config)の `httpRuntime` 要素で指定されています。
 
 HTTP トリガーを使用する関数が 230 秒以内に完了しない場合、[Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) でタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#timeout)を参照してください。
 

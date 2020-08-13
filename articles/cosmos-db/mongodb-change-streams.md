@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API での変更ストリーム
 description: Azure Cosmos DB の MongoDB 用 API で変更ストリームを使用し、データに対して行われた変更を取得する方法について説明します。
-author: srchi
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/04/2020
-ms.author: srchi
+ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 845398744637d0e0092934248d4eb4533d7b9344
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415535"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036710"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API での変更ストリーム
 

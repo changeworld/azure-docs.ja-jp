@@ -1,19 +1,17 @@
 ---
 title: ドメイン コントローラーを使用して Azure Files のファイル共有を作成する - Azure
 description: Active Directory ドメインが設定された既存の Windows Virtual Desktop ホスト プールにある Azure ファイル共有上に、FSLogix プロファイル コンテナーを設定します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027394"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009224"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure Files および AD DS を使用してプロファイル コンテナーを作成する
 
@@ -189,8 +187,6 @@ NTFS のアクセス許可を構成するには:
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
-
-5. **[適用]** を選択します。
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>セッション ホスト VM に FSLogix を構成する
 

@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop トラブルシューティングの概要 - Azure
 description: Windows Virtual Desktop 環境の設定時の問題の解決方法の概要。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292540"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009360"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows Virtual Desktop のトラブルシューティングの概要、フィードバック、およびサポート
 

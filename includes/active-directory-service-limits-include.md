@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 840357f51bbeeb877aba48fd8d04baad204cec1e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ba0791108878dada5088428ce40d1af672d1892a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375144"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010967"
 ---
 ここでは、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。
 
@@ -30,4 +30,4 @@ ms.locfileid: "87375144"
 | アクセス パネル |割り当てられたライセンスに関係なく、各ユーザーのアクセス パネルに表示できるアプリケーション数に制限はありません。  |
 | Reports | いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。 それを超えるデータは切り捨てられます。 |
 | 管理単位 | Azure AD リソースは最大 30 個の管理単位のメンバーにすることができます。 |
-| 管理者ロールとアクセス許可 | <ul><li>グループを[所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>グループを[ロール](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)に割り当てることはできません。</li><li>管理者以外の全ユーザーがすべてのディレクトリ情報にアクセスできないよう、他のユーザーがディレクトリ情報を読み取ることができるユーザーのアクセス許可は、Azure AD 組織全体での切り替え以外の方法で制限することはできません (推奨されません)。 既定のアクセス許可の詳細については、[ここ](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |
+| 管理者ロールとアクセス許可 | <ul><li>グループを[所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>管理者以外の全ユーザーがすべてのディレクトリ情報にアクセスできないよう、他のユーザーがディレクトリ情報を読み取ることができるユーザーのアクセス許可は、Azure AD 組織全体での切り替え以外の方法で制限することはできません (推奨されません)。 既定のアクセス許可の詳細については、[ここ](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |
