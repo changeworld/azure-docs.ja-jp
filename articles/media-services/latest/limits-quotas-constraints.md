@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2845cd0fad8375db67d1aa86333f144222dc0aa
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043502"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446329"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
@@ -28,14 +28,14 @@ ms.locfileid: "87043502"
 
 ## <a name="account-limits"></a>アカウントの制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | 1 つのサブスクリプション内の [Media Services アカウント](media-services-account-concept.md) | 25 (固定) |
 
 ## <a name="asset-limits"></a>アセットの制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | Media Services アカウントあたりの[アセット数](assets-concept.md) | 1,000,000|
 
 ## <a name="storage-limits"></a>ストレージの制限
@@ -86,9 +86,10 @@ ms.locfileid: "87043502"
 
 ## <a name="packaging--delivery-limits"></a>パッケージおよび配信の制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | Media Services アカウントあたりの[ストリーミング エンドポイント](streaming-endpoint-concept.md) (停止済みまたは実行中)|2 |
+| Premium ストリーミング ユニット | 10 |
 | [動的マニフェスト フィルター](filters-dynamic-manifest-overview.md)|100|
 | [ストリーミング ポリシー](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | 1 つの資産に同時に関連付けられる一意の[ストリーミング ロケーター数](streaming-locators-concept.md) | 100<sup>(7)</sup> (固定) |

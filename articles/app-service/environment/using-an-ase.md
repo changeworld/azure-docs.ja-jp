@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125810"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448195"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
 
@@ -126,15 +126,15 @@ SCM URL は、Kudu コンソールにアクセスしたり、Web デプロイを
 
 ILB ASE を使用して独自の DNS サーバーで DNS を構成するには、次の操作を行ってください。
 
-1. <ASE name>.appserviceenvironment.net のゾーンを作成する
+1. &lt;ASE 名&gt;.appserviceenvironment.net 用のゾーンを作成する
 1. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
 1. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
-1. <ASE name>.appserviceenvironment.net に scm という名前のゾーンを作成する
+1. &lt;ASE 名&gt;.appserviceenvironment.net に scm という名前のゾーンを作成する
 1. scm ゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
 
 Azure DNS プライベート ゾーンで DNS を構成するには、次の操作を行ってください。
 
-1. <ASE name>.appserviceenvironment.net という名前の Azure DNS プライベート ゾーンを作成する
+1. &lt;ASE 名&gt;.appserviceenvironment.net という名前の Azure DNS プライベート ゾーンを作成する
 1. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
 1. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
 1. そのゾーンに、ILB の IP アドレスに *.scm を指定する A レコードを作成する
@@ -251,6 +251,30 @@ ASE を削除するには、次の手順に従います。
     ![ASE の削除][3]
 
 1. **[OK]** を選択します。
+
+## <a name="ase-cli"></a>ASE CLI
+
+ASE に役立つコマンドライン機能があります。  以下で az cli コマンドを確認できます。
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

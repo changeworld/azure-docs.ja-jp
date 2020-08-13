@@ -1,6 +1,6 @@
 ---
 title: セッション管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool で公開されている脅威に対するセッション管理の軽減策について説明します。 軽減策の情報を参照し、コード例を確認します。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref
-ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 6a40d89db3e81721ec8a35973b79a558c17caee4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83198878"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543692"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | [アーティクル] |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Azure AD を使うときは、ADAL のメソッドを使って適切なログアウトを実装する](#logout-adal)</li></ul> |
-| IoT デバイス | <ul><li>[生成される SaS トークンに対して有限の有効期間を使う](#finite-tokens)</li></ul> |
+| **IoT デバイス** | <ul><li>[生成される SaS トークンに対して有限の有効期間を使う](#finite-tokens)</li></ul> |
 | **Azure Document DB** | <ul><li>[生成されるリソース トークンに対して最小限のトークン有効期間を使う](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[ADFS を使うときは、WsFederation のメソッドを使って適切なログアウトを実装する](#wsfederation-logout)</li></ul> |
 | **Identity Server** | <ul><li>[Identity Server を使うときは、適切なログアウトを実装する](#proper-logout)</li></ul> |
@@ -306,7 +306,7 @@ public ViewResult SubmitUpdate()
 * これらの cookie と `Request.Form` の値が一致する。すべてに問題がない場合、要求は通常どおり通過します。 問題がある場合は、"必要な偽造防止トークンが指定されていないか、または無効です" というメッセージで承認が失敗します。 
 
 ### <a name="example"></a>例
-CSRF 対策と AJAX:AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 
+CSRF 対策と AJAX: AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 
 ```csharp
 <script>
     @functions{
@@ -469,7 +469,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を防止する](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
-| **手順** | CSRF 対策と AJAX:AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 |
+| **手順** | CSRF 対策と AJAX: AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 |
 
 ### <a name="example"></a>例
 ```Javascript

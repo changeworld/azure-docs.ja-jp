@@ -1,19 +1,19 @@
 ---
-title: マッピング データ フローの視覚的な監視
-description: Azure Data Factory のデータ フローを視覚的に監視する方法
+title: マッピング データ フローの監視
+description: Azure Data Factory でマッピング データ フローを視覚的に監視する方法
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958900"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475551"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
@@ -27,7 +27,7 @@ ms.locfileid: "85958900"
 
 実行時間や状態など、このレベルでの統計も表示されます。 アクティビティ レベルの実行 ID は、パイプライン レベルの実行 ID とは異なります。 以前のレベルの実行 ID は、パイプラインの実行 ID です。 眼鏡を選択すると、データ フローの実行に関する詳細が示されます。
 
-![データ フローの監視](media/data-flow/mon002.png "データ フローの監視")
+![データ フローの監視](media/data-flow/monitoring-details.png "データ フローの監視")
 
 グラフィカルなノード監視ビューを開いているときは、表示専用のシンプルなバージョンのデータ フロー グラフが表示されます。
 

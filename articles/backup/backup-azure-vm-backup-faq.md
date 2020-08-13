@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538770"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533497"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -99,11 +99,7 @@ VM または VM リソース グループの大文字と小文字を変更して
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>VM に接続されているディスクを選択的にバックアップまたは復元できますか。
 
-Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。
-
-現在、Azure Backup では、仮想マシン バックアップ ソリューションを使用して、VM 内のすべてのディスク (オペレーティング システムとデータ) をまとめてバックアップすることがサポートされています。 ディスクを除外する機能を使用すると、VM の多数のデータ ディスクから 1 つまたは複数のデータ ディスクのバックアップを作成できます。 これにより、バックアップと復元のニーズに応じた効率的で費用対効果の高いソリューションが提供されます。 各復旧ポイントには、バックアップ操作に含まれるディスクのデータが含まれています。これにより、復元操作中に特定の復旧ポイントから復元されたディスクのサブセットを使用できるようになります。 これは、スナップショットからの復元とコンテナーからの復元の両方に適用されます。
-
-プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
+Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。 詳細については、「[選択的ディスク バックアップと Azure VM の復元](selective-disk-backup-restore.md)」を参照してください。
 
 ## <a name="restore"></a>復元
 

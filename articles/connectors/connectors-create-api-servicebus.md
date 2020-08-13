@@ -3,16 +3,16 @@ title: Azure Service Bus を使用したメッセージ交換
 description: Azure Logic Apps で Azure Service Bus を使用してメッセージを送受信する自動化されたタスクとワークフローを作成する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283998"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461618"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -31,7 +31,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * Service Bus 名前空間と、キューなどのメッセージング エンティティ。 項目とロジック アプリでは、同じ Azure サブスクリプションを使用する必要があります。 これらの項目がない場合は、[Service Bus 名前空間とキューの作成](../service-bus-messaging/service-bus-create-namespace-portal.md)方法を学習してください。
 
@@ -45,7 +45,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ロジック アプリが Service Bus 名前空間にアクセスするためのアクセス許可を持っていることを確認します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) で、Azure アカウントを使ってサインインします。
 
 1. Service Bus "*名前空間*" に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して**管理**アクセス許可が付与されていることを確認します。
 
@@ -54,7 +54,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 1. Service Bus 名前空間の接続文字列を取得します。 ロジック アプリで接続情報を入力するときに、この文字列が必要です。
 
    1. **[共有アクセス ポリシー]** ウィンドウで、 **[RootManageSharedAccessKey]** を選択します。
-   
+
    1. プライマリ接続文字列の横にあるコピー ボタンを選択します。 後で使用できるように接続文字列を保存します。
 
       ![Service Bus 名前空間の接続文字列をコピーする](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
@@ -171,4 +171,3 @@ Service Bus コネクタを使用すると、Service Bus からコネクタ キ�
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
-

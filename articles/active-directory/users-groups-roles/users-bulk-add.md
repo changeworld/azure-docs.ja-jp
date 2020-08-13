@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731511"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423611"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory でのユーザーの一括作成
 
@@ -48,6 +48,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 - 必須の列が最初に示されています。
 - テンプレートに新しい列を追加することはお勧めしません。 列を追加しても無視され、処理されません。
 - できる限り、常に最新バージョンの CSV テンプレートをダウンロードすることをお勧めします。
+- フィールドの前後に意図しない空白がないか確認してください。 **ユーザー プリンシパル名**の場合、そのような空白があると、インポートに失敗します。
 
 ## <a name="to-create-users-in-bulk"></a>ユーザーを一括で作成する手順
 
@@ -59,7 +60,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 1. CSV ファイルを開いて、作成するユーザーごとに 1 行を追加します。 必須値は、 **[名前]** 、 **[ユーザー プリンシパル名]** 、 **[初期パスワード]** 、および **[サインインのブロック (はい/いいえ)]** のみです。 そのうえでファイルを保存します。
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![CSV ファイルには、作成するユーザーの名前と ID が含まれています。](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. **[ユーザーの一括作成]** ページの [CSV ファイルをアップロード] で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
 1. ファイルの内容が検証された後、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
@@ -72,7 +73,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 **[一括操作の結果]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![[一括操作の結果] ページで作成の状態を確認する](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 次に、作成したユーザーが Azure AD 組織に存在するかどうかを、Azure portal または PowerShell を使用して確認します。
 

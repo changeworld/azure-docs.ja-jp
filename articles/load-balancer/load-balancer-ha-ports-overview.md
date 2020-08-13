@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920613"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447064"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -99,5 +99,5 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ## <a name="next-steps"></a>次のステップ
 
-- ポータル (tutorial-load-balancer-standard-internal-portal.mdl#create-a-load-balancer-rule)、[PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、[CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)、または[テンプレート](load-balancer-get-started-ilb-arm-template.md)を使用して ILB の HA ポートを構成する方法を確認する。
+- [ポータル](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)、[PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、[CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)、または[テンプレート](load-balancer-get-started-ilb-arm-template.md)を利用し、ILB の HA ポートを構成する方法について説明します。
 - [Standard Load Balancer の詳細を確認する](load-balancer-standard-overview.md)

@@ -1,22 +1,25 @@
 ---
-title: Azure ストレージ エミュレーターを使用した開発とテスト | Microsoft Docs
+title: Azure ストレージ エミュレーターを使用した開発とテスト
 description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512172"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447151"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
 Microsoft Azure ストレージ エミュレーターは、ローカル開発のために Azure の Blob service、Queue service、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
+
+> [!IMPORTANT]
+> Azure Storage エミュレーターは現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage エミュレーターよりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
 
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターの取得
 
@@ -75,7 +78,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 
    `AzureStorageEmulator.exe init /server .`
 
-   または、データベースを既定の LocalDB インスタンスに再初期化する次のコマンドを使うこともできます。
+   または、データベースを既定の LocalDB インスタンスに初期化する次のコマンドを使うこともできます。
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -179,7 +182,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `/help` 」と入力します。
 
-| オプション | 説明 | command | 引数 |
+| オプション | 説明 | コマンド | 引数 |
 | --- | --- | --- | --- |
 | **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
@@ -328,3 +331,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 * コミュニティで管理されているオープンソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/azure/azurite) を評価します。 
 * 「[.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
 * [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
+
+## <a name="see-also"></a>参照
+
+* [Azurite、Azure SDK、Azure Storage Explorer によるローカル Azure Storage の開発](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)

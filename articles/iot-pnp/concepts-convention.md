@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352047"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475670"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
@@ -25,11 +25,11 @@ IoT プラグ アンド プレイ デバイスが実装するテレメトリ、�
 
 詳細については、「[モデル内の IoT プラグ アンド プレイ コンポーネント](concepts-components.md)」を参照してください。
 
-## <a name="model-discovery"></a>モデル検出
+## <a name="identify-the-model"></a>モデルを識別する
 
 実装するモデルをアナウンスするために、IoT プラグ アンド プレイ デバイスでは、`USERNAME` フィールドに `model-id` を追加することにより、MQTT 接続パケットにモデル ID を含めます。
 
-デバイスに実装されるモデルを検出するために、サービスでは以下からモデル ID を取得できます。
+デバイスに実装されるモデルを識別するには、サービスを使用して以下でモデル ID を取得できます。
 
 - デバイス ツインの `modelId` フィールド。
 - デジタル ツインの `$metadata.$model` フィールド。

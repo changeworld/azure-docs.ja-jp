@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 8a9373893b1381e9a2f54bb83717e6001efac295
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386335"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438912"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -55,7 +55,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
   - 既定のアウトバウンド規則は削除しないでください。
   - アウトバウンド接続を拒否する他のアウトバウンド規則は作成しないでください。
 
-- **AzureLoadBalancer** タグからのトラフィックを許可する必要があります。
+- **AzureLoadBalancer** タグからで宛先サブネットが **[すべて]** のトラフィックを許可する必要があります。
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway アクセスを少数のソース IP に限定する
 
@@ -65,7 +65,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 2. [バックエンド正常性状態通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)のために、ソースが **GatewayManager** サービス タグ、宛先が **[すべて]** 、宛先ポートが Application Gateway v1 SKU の 65503 ～ 65534、および v2 SKU のポート 65200 ～ 65535 である着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
 3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と仮想ネットワーク通信 (*VirtualNetwork* タグ) を受信方向で許可します。
 4. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
-5. インターネットのすべての宛先への送信トラフィックを許可します。
+5. すべての宛先に対してインターネットへの送信トラフィックを許可します。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート
 
@@ -122,7 +122,15 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 ## <a name="front-end-ip"></a>フロントエンド IP
 
-アプリケーション ゲートウェイは、パブリック IP アドレス、プライベート IP アドレス、またはその両方を持つように構成できます。 パブリック IP が必要となるのは、インターネットに接続している仮想 IP (VIP) を介してインターネット上でクライアントがアクセスする必要があるバックエンドをホストするときです。 
+アプリケーション ゲートウェイは、パブリック IP アドレス、プライベート IP アドレス、またはその両方を持つように構成できます。 パブリック IP が必要となるのは、インターネットに接続している仮想 IP (VIP) を介してインターネット上でクライアントがアクセスする必要があるバックエンドをホストするときです。
+
+> [!NOTE]
+> 現在、Application Gateway V2 はプライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
+>* プライベート IP とパブリック IP
+>* パブリック IP のみ
+>
+> 詳細については、「[Application Gateway に関してよく寄せられる質問](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)」を参照してください。
+
 
 パブリック IP は、インターネットに公開されない内部エンドポイントには必要ありません。 これは、"*内部ロード バランサー*" (ILB) エンドポイントまたはプライベート フロントエンド IP と呼ばれます。 アプリケーション ゲートウェイ ILB は、インターネットに接続されていない内部の基幹業務アプリケーションで便利です。 また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層に役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または TLS ターミネーションが必要です。
 

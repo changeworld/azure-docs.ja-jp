@@ -1,24 +1,22 @@
 ---
-title: サービス プリンシパルを使用して、Windows Virtual Desktop の管理ツールをデプロイする - Azure
-description: ここでは、PowerShell を使用して Windows Virtual Desktop の管理ツールをデプロイする方法について説明します。
-services: virtual-desktop
+title: サービス プリンシパルを使用して、Windows Virtual Desktop (クラシック) の管理ツールをデプロイする - Azure
+description: ここでは、PowerShell を使用して Windows Virtual Desktop (クラシック) の管理ツールをデプロイする方法について説明します。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08366735308e8b3c6fb79efd1adca469272dd053
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513396"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005773"
 ---
-# <a name="deploy-a-management-tool-with-powershell"></a>PowerShell で管理ツールをデプロイする
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>PowerShell を使用して Windows Virtual Desktop (クラシック) 管理ツールをデプロイする
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。
 
 この記事では、PowerShell を使用して管理ツールをデプロイする方法について説明します。
 

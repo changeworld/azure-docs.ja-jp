@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bd688a9e488c1206b0c8531698b061f650e2afe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027497"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417932"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>ユーザーごとの Azure Multi-Factor Authentication を有効にしてサインイン イベントのセキュリティを確保する
 
@@ -55,7 +55,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 1. *[Azure Active Directory]* を探して選択してから、 **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
-1. **[Multi-Factor Authentication]** を選択します。 このメニュー オプションを表示するには、必要に応じて右にスクロールします。 次のスクリーンショット例を選択すると、完全な Azure portal ウィンドウとメニューの場所が表示されます。[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD の [ユーザー] ウィンドウから [Multi-Factor Authentication] を選択します")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. **[Multi-Factor Authentication]** を選択します。 このメニュー オプションを表示するには、必要に応じて右にスクロールします。 次のスクリーンショット例を選択すると、完全な Azure portal ウィンドウとメニューの場所が表示されます。[![Azure AD の [ユーザー] ウィンドウから [Multi-Factor Authentication] を選択します。](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. 次の例に示すように、ユーザーの状態を表示する新しいページが開きます。
    ![Azure Multi-Factor Authentication のユーザーの状態情報の例を示すスクリーンショット](./media/howto-mfa-userstates/userstate1.png)
 
