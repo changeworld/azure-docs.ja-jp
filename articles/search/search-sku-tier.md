@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519735"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553973"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -61,9 +61,18 @@ Azure Cognitive Search サービスを作成すると、サービスの有効期
 Azure Cognitive Search 上に構築されたソリューションでは、次のようなコストが発生する場合があります。
 
 + 最小の構成 (1 つのパーティションとレプリカ) で 24 時間 365 日実行されるサービス自体の費用
+
 + 容量の追加 (レプリカまたはパーティション)
-+ 帯域幅料金 (送信データ転送) 
-+ AI エンリッチメント (AI 処理を定義するスキルセット内で Cognitive Services を接続、またはナレッジ ストアに Azure Storage を使用) などのアドオン サービス、またはプライベート仮想ネットワークでの検索サービスのデプロイ
+
++ 帯域幅料金 (送信データ転送)
+
++ 特定の機能に必要なアドオンサービス:
+
+  + AI エンリッチメント ([Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) が必要)
+  + ナレッジ ストア ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要)
+  + インクリメンタル エンリッチメント ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要。AI エンリッチメントに適用される)
+  + カスタマー マネージド キーと二重暗号化 ([Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) が必要)
+  + インターネットにアクセスできないモデル用のプライベート エンドポイント ([Azure Private Link が必要](https://azure.microsoft.com/pricing/details/private-link/))
 
 ### <a name="service-costs"></a>サービスのコスト
 

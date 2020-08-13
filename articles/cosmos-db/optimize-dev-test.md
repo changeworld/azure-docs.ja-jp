@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 3fe5ea98f8db633eed7ce4e2c0ac0cafa56408ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea5d975b73afcf03ad97bafd1c6f68f2b55263c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194518"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084723"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Azure Cosmos DB での開発とテストのコストを最適化する
 
@@ -23,7 +23,9 @@ ms.locfileid: "82194518"
 
 ## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB の Free レベル
 
-Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります。 また、データベース レベルで 400 RU/秒を共有する 25 個のコンテナーを備えた 1 つの共有スループット データベースを作成し、すべて Free レベルで対応することもできます (Free レベルのアカウントでは、5 つの共有スループット データベースが上限になります)。 Free レベルは、アカウントの有効期間中は無期限に存続し、無制限のストレージとスループット (RU/秒)、SLA、高可用性、すべての Azure リージョンでのターンキー グローバル分散など、通常の Azure Cosmos DB アカウントの[利点と機能](introduction.md#key-benefits)をすべて備えます。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](manage-sql-with-resource-manager.md#free-tier)を使用します。 詳しくは、[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
+Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります。 また、データベース レベルで 400 RU/秒を共有する 25 個のコンテナーを備えた 1 つの共有スループット データベースを作成し、すべて Free レベルで対応することもできます (Free レベルのアカウントでは、5 つの共有スループット データベースが上限になります)。 Free レベルを使用するときに、400 RU/秒の最小スループットでプロビジョニングすると、そのデータベース内のすべてのコンテナーでそのスループットを共有できます。 共有スループットを持つ新しいデータベースや専用スループットを持つコンテナーは、通常の価格で課金されます。
+
+Free レベルは、アカウントの有効期間中は無期限に存続し、無制限のストレージとスループット (RU/秒)、SLA、高可用性、すべての Azure リージョンでのターンキー グローバル分散など、通常の Azure Cosmos DB アカウントの[利点と機能](introduction.md#key-benefits)をすべて備えます。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](manage-sql-with-resource-manager.md#free-tier)を使用します。 詳しくは、[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB を無料で試す
 

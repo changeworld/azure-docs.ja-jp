@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116283"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084196"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Cognitive Search での言語によるフィルター処理の方法 
 
@@ -34,7 +34,7 @@ Azure Cognitive Search のクエリは、単一のインデックスを対象に
 
 次の例は、さまざまな言語のコンテンツを含む複数の文字列フィールドが含まれている[実際のサンプル](search-get-started-portal.md)を示しています。 このインデックスのフィールドに対する言語アナライザーの割り当てに注目してください。 文字列を含むフィールドを、対象言語の言語ルールを処理するように設計されたアナライザーと組み合わせると、フル テキスト検索のパフォーマンスは向上します。
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![不動産のサンプルの [フィールド名] 画面を示すスクリーンショット。 フィールドのグループが強調表示され、言語アナライザーの割り当てが、強調表示されているフィールドの言語にどのように対応しているかが示されています。](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > フィールド定義と言語アナライザーを紹介するコード例については、[インデックスの定義 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) と[インデックスの定義 (REST)](search-create-index-rest-api.md) に関するセクションを参照してください。

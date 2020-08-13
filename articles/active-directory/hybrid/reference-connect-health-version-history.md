@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897038"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446961"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -217,7 +217,7 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 ## <a name="november-2015"></a>2015 年 11 月
 **新機能:**
 
-* [ロールベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) のサポート
 
 **新しいプレビュー機能:**
 
@@ -253,4 +253,3 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 
 ## <a name="next-steps"></a>次のステップ
 「 [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](whatis-hybrid-identity-health.md)」を参照してください。
-

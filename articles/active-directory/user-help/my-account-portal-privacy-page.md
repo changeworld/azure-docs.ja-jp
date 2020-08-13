@@ -11,26 +11,28 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 0e74ea4a3204efb35fa6113504356e87c85aa0dd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ec050f3dfd2537f8cffde353772d61c32cb9d676
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742092"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422372"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>組織でのプライバシー関連データの使用方法を表示します。
 
-**マイ アカウント** ポータルの **[プライバシー]** ページでは、所属の組織でご自分のデータがどのように使用されているかを確認できます。
+**マイ アカウント** ポータルの **[Settings & Privacy] (設定とプライバシー)** ページでは、所属する組織で自分のデータがどのように使用されているかを確認できます。
 
 ## <a name="view-your-privacy-related-info"></a>プライバシー関連情報を表示する
 
 1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。
 
-2. 左側のナビゲーション ウィンドウから **[プライバシー]** を選択するか、 **[プライバシー]** ブロックから **[プライバシーの確認]** リンクを選択します。
+2. 左側のナビゲーション ウィンドウから **[Settings & Privacy] (設定とプライバシー)** を選択するか、 **[Settings & Privacy] (設定とプライバシー)** ブロックから **[View Settings and Privacy] (設定とプライバシーの表示)** リンクを選択します。
 
-    ![[プライバシー] リンクが強調表示されている [マイ アカウント] ページ](media/my-account-portal/my-account-portal-privacy.png)
+    ![[Settings & Privacy] (設定とプライバシー) リンクが強調表示されている [マイ アカウント] ページ](media/my-account-portal/my-account-portal-privacy.png)
 
-3. 以下を含む情報を確認します。
+3. 次のスクリーンショットの例に示すように、 **[プライバシー]** を選択してから、以下を含む情報を確認します。
+
+    ![[プライバシー] タブ オプションが強調表示されている [Settings & Privacy] (設定とプライバシー) ページ](media/my-account-portal/my-account-portal-privacy-tab.png)
 
     - **サービス**。 職場または学校アカウントを使用してご自分が接続されているオンライン サービスの一覧。
 
@@ -47,5 +49,7 @@ ms.locfileid: "83742092"
 - [組織](my-account-portal-organizations-page.md)を表示または管理する。
 
 - [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示する。
+
+- [マイ アカウント ポータルの設定](my-account-portal-settings.md)を変更する
 
 - [Office ポータルの「セキュリティとプライバシー」](https://portal.office.com/account/#security)のページでは、Microsoft Office 関連のご自分の連絡先設定とプライバシー情報を表示することもできます。

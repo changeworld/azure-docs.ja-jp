@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b6244b3ab72f7fa8ea375ff67a08e8d1d241df4a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 002eeaedf4ae479408cd1ba0c7a373d8a2661cdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089398"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -39,7 +39,7 @@ Azure マネージド ディスクの暗号化とキー管理に関する詳細�
 新しいストレージ アカウント内のデータは Microsoft マネージド キーで暗号化されます。 Microsoft マネージド キーを利用してデータを暗号化することも、独自のキーで暗号化を管理することもできます。 独自のキーで暗号化を管理する場合は、次の 2 つのオプションがあります。
 
 - Azure Key Vault では、BLOB ストレージと Azure Files でのデータの暗号化と暗号化解除に使用する "*カスタマー マネージド キー*" を指定できます。<sup>1、2</sup> カスタマー マネージド キーの詳細については、「[Azure Key Vault でカスタマー マネージド キーを使用して Azure Storage の暗号化を管理する](encryption-customer-managed-keys.md)」を参照してください。
-- BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する (プレビュー)](encryption-customer-provided-keys.md)」を参照してください。
+- BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)」を参照してください。
 
 次の表では、Azure Storage 暗号化のキー管理オプションを比較しています。
 

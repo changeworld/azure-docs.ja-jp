@@ -1,19 +1,19 @@
 ---
 title: Azure Maps Search Service のベスト プラクティス | Microsoft Azure Maps
 description: Microsoft Azure Maps から Search Service を使用する場合のベスト プラクティスを適用する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264368"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064276"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps Search Service のベスト プラクティス
 
@@ -28,7 +28,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) に
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Mapsサービス API を呼び出すには、Azure Maps アカウントとキーが必要です。 詳細については、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)および[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)を参照してください。 
+Azure Mapsサービス API を呼び出すには、Azure Maps アカウントとキーが必要です。 詳細については、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)および[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)を参照してください。 
 
 Azure Maps での認証の詳細については、[Azure Maps での認証の管理](./how-to-manage-authentication.md)を参照してください。
 

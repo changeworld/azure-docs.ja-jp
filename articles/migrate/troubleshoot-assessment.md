@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: cc8a8e8c09fa9a8a34cfc90cb102cefabf227595
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385706"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460985"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -66,6 +66,9 @@ VMware VM および Hyper-V VM の場合、Server Assessment では、Server Ass
 
 このギャップは、VMware VM で[アプリケーション検出](./how-to-discover-applications.md)を有効にすることで対処できます。 Server Assessment では、指定されたゲスト資格情報を使用して VM から検出されたオペレーティング システムが使用されます。 このオペレーティング システムのデータでは、Windows VM と Linux VM の両方の場合に適切な OS 情報が示されます。
 
+## <a name="operating-system-version-not-available"></a>オペレーティング システムのバージョンを入手できない
+
+物理サーバーの場合、オペレーティング システムのマイナーバージョン情報が入手可能であるはずです。 入手できない場合は、Microsoft サポートにお問い合わせください。 VMware マシンの場合、Server Assessment では、vCenter Server でその VM に対して指定されているオペレーティング システム情報を使用します。 ただし、vCenter Server は、オペレーティング システムのマイナー バージョンを提供しません。 マイナー バージョンを検出するには、[アプリケーション検出](./how-to-discover-applications.md)を設定する必要があります。 Hyper-V VM の場合、オペレーティング システムのマイナーバージョンの検出はサポートされていません。 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure VM 評価でオンプレミスより大きい Azure SKU
 
@@ -180,6 +183,9 @@ Azure Migrate Server Assessment では、エージェント ベースの依存�
 
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>依存関係のエクスポートの CSV で "不明なプロセス" と表示されます
 エージェントレスの依存関係の分析では、プロセス名はベストエフォートでキャプチャされます。 特定のシナリオでは、依存元と依存先のサーバー名および依存先のポートはキャプチャされますが、依存関係の両端でプロセス名を特定することはできません。 このような場合、プロセスは "不明なプロセス" とマークされます。
+
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>Server Assessment でワークスペースの構成を試みたときに自分の Log Analytics ワークスペースが表示されない
+現在、Azure Migrate では、米国東部、東南アジア、および西ヨーロッパの各リージョンで OMS ワークスペースの作成がサポートされています。 ワークスペースが Azure Migrate 以外の他のリージョンで作成されている場合、現在、Azure Migrate プロジェクトに関連付けることはできません。
 
 
 ## <a name="capture-network-traffic"></a>ネットワーク トラフィックをキャプチャする

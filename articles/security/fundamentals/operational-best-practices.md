@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204737"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423152"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -55,7 +55,7 @@ Azure の登録ポータルで、管理者の連絡先情報にセキュリテ�
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure サブスクリプションを管理グループに整理する
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](/azure/governance/management-groups/create)では、サブスクリプションを上回る範囲のレベルが提供されます。 管理グループと呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用された条件を自動的に継承します。
 
-管理グループとサブスクリプションの柔軟な構造をディレクトリに構築することができます。 各ディレクトリには、ルート管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。
+管理グループとサブスクリプションの柔軟な構造をディレクトリに構築することができます。 各ディレクトリには、ルート管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループを使用すると、グローバル ポリシーと Azure ロールの割り当てをディレクトリ レベルで適用できます。
 
 管理グループの使用に関するベスト プラクティスを次にいくつか示します。
 
@@ -182,7 +182,7 @@ DDoS に対する回復性を設計しビルドするときは、さまざまな
 
 Azure Cloud Services の場合は、[複数インスタンス](../../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。
 
-[Azure Virtual Machines](/azure/virtual-machines/windows/overview) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](/azure/virtual-machines/virtual-machines-windows-manage-availability)に各 VM が含まれていることを確認してください。 自動スケーリング機能には仮想マシン スケール セットを使うことをお勧めします。
+[Azure Virtual Machines](../../virtual-machines/windows/overview.md) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](../../virtual-machines/windows/tutorial-availability-sets.md)に各 VM が含まれていることを確認してください。 自動スケーリング機能には仮想マシン スケール セットを使うことをお勧めします。
 
 **ベスト プラクティス**: アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装します。  
 **詳細**: 攻撃のリスクは、アプリケーションの規模 (攻撃対象領域) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) と [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) を用いて不要にリスニングしているポートを閉じることで、攻撃対象領域を減らすことができます。

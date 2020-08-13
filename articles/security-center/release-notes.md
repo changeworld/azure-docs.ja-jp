@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 10bcbcba6163908be1725d66576c41c06c7cc2a2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405162"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438955"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -32,11 +32,11 @@ Azure のセキュリティは精力的な開発の下、継続的に改善さ�
 ## <a name="july-2020"></a>2020 年 7 月
 
 7 月の更新プログラムには次のものが含まれます。
-- [仮想マシンの脆弱性評価が、マーケットプレース以外のイメージに対して使用可能に](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)auto        
+- [仮想マシンの脆弱性評価をマーケットプレース以外のイメージで使用可能に](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
 - [Azure Files と Azure Data Lake Storage Gen2 を含むように拡張された Azure Storage の脅威の防止 (プレビュー)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [脅威の防止機能を有効にするための 8 つの新しい推奨事項](#eight-new-recommendations-to-enable-threat-protection-features)
 - [コンテナーのセキュリティ強化 - レジストリのスキャンの高速化とドキュメントの更新](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [適応型アプリケーション制御規則を更新するための新しい推奨事項](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [新しい推奨事項とパス規則でのワイルドカードのサポートによって適応型アプリケーション制御を更新](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [非推奨となった SQL の高度なデータ セキュリティの 6 つのポリシー](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
@@ -115,11 +115,16 @@ Security Center でのコンテナー セキュリティの詳細については
 
 
 
-### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>適応型アプリケーション制御規則を更新するための新しい推奨事項
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>新しい推奨事項とパス規則でのワイルドカードのサポートによって適応型アプリケーション制御を更新
 
-適応型アプリケーション制御機能は、構成されたグループ内のマシンのアクティビティを継続的に監視します。 この更新プログラムから、擬陽性アラートが発生する可能性がある、以前は許可されていなかった正当な動作が通知されるようになりました。
+適応型アプリケーション制御の機能に、2 つの重要な更新プログラムが適用されています。
 
-新しい推薦事項の「**適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある**」により、既存のポリシーに新しいルールを追加して、適応型アプリケーション制御違反アラートの擬陽性の数を減らすよう求めるメッセージが表示されます。
+- 新しい推奨事項により、以前は許可されていなかった、正当である可能性のある動作が識別されます。 新しい推薦事項の「**適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある**」により、既存のポリシーに新しいルールを追加して、適応型アプリケーション制御違反アラートの擬陽性の数を減らすよう求めるメッセージが表示されます。
+
+- パス規則でワイルドカードがサポートされるようになっています。 この更新プログラムから、ワイルドカードの使用が許可されたパス規則を構成できます。 サポートされているシナリオは 2 つあります。
+
+    - パスの末尾でワイルドカードを使用し、そのフォルダーとサブフォルダー内のすべての実行可能ファイルを許可します
+    - パスの途中でワイルドカードを使用し、変化するフォルダー名を持つ既知の実行可能ファイルの名前 (既知の実行可能ファイルを含む個人ユーザー フォルダー、自動生成されたフォルダー名など) を有効にします。 
 
 適応型アプリケーション制御の詳細については、[こちら](security-center-adaptive-application.md)をご覧ください。
 
@@ -335,7 +340,7 @@ Security Center には、VM の管理ポートを保護するオプションの�
 
 セキュリティ コントロールの詳細については、「[Azure Security Center の強化されたセキュア スコア (プレビュー)](secure-score-security-controls.md)」を参照してください。
 
-![“コントロールによるグループ化“ の推奨設定のトグル](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+![“コントロールによるグループ化“ の推奨設定のトグル](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>拡張されたセキュリティ コントロール "セキュリティのベスト プラクティスの実装" 
 

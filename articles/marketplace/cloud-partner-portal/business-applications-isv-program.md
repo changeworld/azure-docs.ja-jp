@@ -3,15 +3,16 @@ title: Microsoft Business Applications 独立系ソフトウェア ベンダー 
 description: Business Applications ISV コネクト プログラムにオンボードする方法を示します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 6/25/2020
-ms.author: dsindona
-ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.topic: article
+author: parthpandyaMSFT
+ms.author: parthp
+ms.date: 7/14/2020
+ms.openlocfilehash: 8c8bcb6bde7ec7ec3e3f7f60213dbbc641cfa127
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170243"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281669"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
@@ -38,7 +39,7 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 
 1.  [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
 2.  **[設定]** (歯車アイコン) を選択し、 **[開発者向け設定]** を選択します。
-3.  **[契約]** を選択します。 
+3.  **[契約]** を選択します。
 4.  バージョンのリンクを選択し、契約を表示します。
 5.  契約に同意して受け入れるには、 **[Accept Agreement]\(契約に同意する\)** を選択します。
 
@@ -75,9 +76,8 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 
 アカウントに関する問い合わせは、アカウント マネージャーまたは [Microsoft パートナー サポート](https://aka.ms/marketplacepublishersupport)に対して行ってください。 ビジネス アプリケーション ISV コネクト プログラムの一般情報については、以下をご覧ください。
 
-- **[ISV 向けビジネス アプリケーション (オンライン記事)](https://aka.ms/bizappsisvweb)**
-
-- **[ビジネス アプリケーション ISV 向けの新しいプログラムの概要 (PDF)](https://aka.ms/bizappsisvprogram)**
-
-- **[ISV コネクト プログラムのポリシー](https://aka.ms/bizappsisvpolicies)**
-
+- [ISV にとっての Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) (オンライン記事)
+- [Business Applications ISV 向けの新しいプログラムの概要](https://aka.ms/BizAppsISVProgram) (PDF)
+- [ビジネス アプリケーション ISV コネクト プログラムの FAQ](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf) (PDF)
+- [Business Applications ISV 向けの今後のプログラム](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) (ブログ投稿)
+- [ISV コネクト プログラムのポリシー](https://aka.ms/bizappsisvpolicies) (PDF)

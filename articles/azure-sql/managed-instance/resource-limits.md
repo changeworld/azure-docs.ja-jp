@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206197"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086831"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -128,7 +128,7 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 ## <a name="regional-resource-limitations"></a>リージョンのリソース制限
 
 > [!Note]
-> サブスクリプションの利用可能なリージョンに関する最新情報については、まず、[公式の COVID-19 に関するブログ投稿](https://aka.ms/sqlcapacity)を確認してください。
+> サブスクリプションの利用可能なリージョンに関する最新情報については、まず、[リージョンの選択](https://aka.ms/sqlcapacity)に関するページを確認してください。
 
 サポートされているサブスクリプションの種類には、リージョンごとのリソース数の制限を組み入れることができます。 SQL Managed Instance には、サブスクリプションの種類に応じて、(特別な[サポート リクエストを Azure portal で](../database/quota-increase-request.md)作成することによって、オンデマンドで増加する可能性がある) Azure リージョンごとに 2 つの既定の制限があります。
 

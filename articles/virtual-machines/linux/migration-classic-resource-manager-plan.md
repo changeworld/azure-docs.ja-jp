@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 79e560f73b69047419626086af9c975c90870edc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: db665fd952ccadd676056ad2d006e2b1bcbadf9c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291112"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448907"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux でのクラシックから Azure Resource Manager への IaaS リソースの移行計画
 
@@ -190,7 +190,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 Azure Resource Manager で有効にするサービスを、目的を持って選択してください。  多くのお客様は、Azure 環境について、以下のような魅力的な機能を活用しています。
 
-- [ロールベースのアクセス制御](../../role-based-access-control/overview.md)。
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)。
 - [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)。
 - [タグ](../../azure-resource-manager/management/tag-resources.md)。
 - [アクティビティ コントロール](../../azure-resource-manager/management/view-activity-logs.md)

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035079"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -56,6 +56,8 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 
 認証データと共に、認証結果 (成功または拒否) と、拒否された場合はその理由が保存されます。 このデータは、認証と使用状況のレポートで確認できます。
 
+詳細については、「[Azure Multi-Factor Authentication のデータの保存場所と顧客データ](concept-mfa-data-residency.md)」を参照してください。
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>ユーザーに SMS メッセージを送る際には、どの SMS ショート コードが使用されますか。
 
 米国では、Microsoft は次の SMS ショート コードを使用します。
@@ -70,7 +72,9 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 * *759731*
 * *673801*
 
-SMS または音声ベース Multi-Factor Authentication のプロンプトが常に同一番号で配信されるという保証はありません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国または地域ではショート コードをサポートしていません。
+SMS または音声ベース Multi-Factor Authentication のプロンプトが常に同一番号で配信されるという保証はありません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。
+
+Microsoft は、米国とカナダ以外の国または地域ではショート コードをサポートしていません。
 
 ## <a name="billing"></a>課金
 

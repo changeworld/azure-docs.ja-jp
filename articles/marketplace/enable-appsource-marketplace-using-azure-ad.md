@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103625"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323266"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>コマーシャル マーケットプレースの一覧を Azure Active Directory に統合する
 
@@ -40,10 +40,11 @@ Microsoft AppSource と Azure Marketplace のお客様は、製品内エクス�
 | Containers  | 該当なし | 該当なし | 該当なし | いいえ |
 | コンサルティング サービス  | いいえ | 該当なし | 該当なし | 該当なし |
 
-SaaS 技術要件に関する詳細については、「[SaaS アプリケーションのオファー発行ガイド](marketplace-saas-applications-technical-publishing-guide.md)」を参照してください。
+SaaS 技術要件の詳細については、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](./azure-ad-saas.md)」を参照してください。
 
 ## <a name="azure-ad-integration"></a>Azure AD の統合
 
+- 取引可能な SaaS (サービスとしてのソフトウェア) オファーのために Azure AD を統合する方法の詳細については、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](./azure-ad-saas.md)」を参照してください。
 - 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory](../active-directory/develop/index.yml) に関する記事をご覧ください。
 - Azure AD シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../active-directory/manage-apps/what-is-single-sign-on.md)」をご覧ください。
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386641"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489726"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して JSON ファイルに対してクエリを実行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "87386641"
 - 複数の JSON ドキュメントが JSON 配列として格納されている標準の JSON ファイル。
 - JSON ドキュメントが改行文字で区切られている行区切りの JSON ファイル。 これらの種類のファイルの一般的な拡張機能には、`jsonl`、`ldjson`、および `ndjson` があります。
 
-## <a name="reading-json-documents"></a>JSON ドキュメントの読み取り
+## <a name="read-json-documents"></a>JSON ドキュメントの読み取り
 
 JSON ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にファイルの URL を指定し、csv `FORMAT` を指定し、`fieldterminator` と `fieldquote` に `0x0b` 値を設定することです。 行区切りの JSON ファイルを読み取る必要がある場合は、これで十分です。 従来の JSON ファイルがある場合は、`rowterminator` に `0x0b` 値を設定する必要があります。 `OPENROWSET` 関数は JSON を解析し、次の形式ですべてのドキュメントを返します。
 
@@ -60,7 +60,7 @@ from openrowset(
 
 このクエリでは、各 JSON ドキュメントが結果セットの個別の行として返されます。 このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム ID で保護されている場合は、[SQL ログインのためのサーバー レベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。 
 
-### <a name="using-data-source"></a>データ ソースの使用
+### <a name="data-source-usage"></a>データ ソースの使用状況
 
 前の例では、ファイルへの完全なパスを使用しています。 別の方法として、ストレージのルート フォルダーを示す場所を持つ外部データ ソースを作成し、そのデータ ソースとファイルへの相対パスを `OPENROWSET` 関数で使用することができます。
 

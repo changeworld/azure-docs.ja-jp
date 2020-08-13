@@ -5,13 +5,13 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 07/31/2020
+ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219232"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497581"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -235,3 +235,7 @@ Azure Red Hat OpenShift 4 クラスターの場合、データは既定では暗
 4\.x クラスターの場合、Azure Disk (Premium_LRS) は既定のストレージ クラスとして構成されます。 追加のストレージ プロバイダー、および構成の詳細 (Azure File を含む) については、[永続ストレージ](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html)に関する Red Hat のドキュメントを参照してください。
 
 3\.11 クラスターの場合、Azure Disk (Premium_LRS) と Azure File の 2 つのストレージ クラスが既定で提供されます。
+
+## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>ARO では、クラスターのリージョン外に格納される顧客データがありますか?
+
+いいえ。 ARO クラスターで作成されたすべてのデータは、クラスターのリージョン内に維持されます。

@@ -147,7 +147,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -351,7 +351,7 @@
       items:
         - name: 概要
           href: platform/agents-overview.md
-        - name: よくあるご質問
+        - name: よく寄せられる質問
           href: faq.md#agents
         - name: Azure Monitor エージェント
           items:
@@ -935,6 +935,10 @@
               href: app/sharepoint.md
             - name: Windows デスクトップ
               href: app/windows-desktop.md
+        - name: その他のツール
+          items:
+            - name: 変更の分析
+              href: app/change-analysis.md
     - name: VM に対する Azure Monitor
       items:
         - name: 概要
@@ -1062,10 +1066,6 @@
           href: insights/resource-group-insights.md
         - name: 分析情報のトラブルシューティング
           href: insights/troubleshoot-workbooks.md
-    - name: 変更の分析
-      items:
-        - name: 変更の分析
-          href: app/change-analysis.md
     - name: ソリューション
       items:
         - name: 概要

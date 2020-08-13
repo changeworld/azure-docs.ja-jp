@@ -2,14 +2,14 @@
 title: Azure Site Recovery サービスに関する一般的な質問
 description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083737"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -116,6 +116,19 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>HyperV から Azure へのサイトの回復のシナリオに TLS 1.2 を適用するにはどうすればよいですか。
 Azure Site Recovery のマイクロサービス間のすべての通信は、TLS 1.2 プロトコルで発生します。 Site Recovery は、システム (OS) で構成されたセキュリティ プロバイダーを使用し、使用可能な最新の TLS プロトコルを使用します。 ユーザーは、レジストリで TLS 1.2 を明示的に有効にする必要があります。その後、Site Recovery は、サービスとの通信に TLS 1.2 を使用するようになります。 
 
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>レプリケーション データの読み取りと書き込みのために Site Recovery サービスからアクセスされるストレージ アカウントに対して、制限付きアクセスを適用するにはどうすればいいですか。
+*[Identity]\(ID\)* 設定に移動して、Recovery Services コンテナーのマネージド ID を切り替えることができます。 コンテナーが Azure Active Directory に登録されたら、ストレージ アカウントに移動して、以下のロールの割り当てをコンテナーに指定することができます。
+
+- Resource Manager ベースのストレージ アカウント (Standard タイプ):
+  - [Contributor](../role-based-access-control/built-in-roles.md#contributor)
+  - [ストレージ BLOB データ共同作成者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- Resource Manager ベースのストレージ アカウント (Premium タイプ):
+  - [Contributor](../role-based-access-control/built-in-roles.md#contributor)
+  - [ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- 従来のストレージ アカウント:
+  - [Classic Storage Account Contributor](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [従来のストレージ アカウント キー オペレーターのサービス ロール](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
+
 ## <a name="disaster-recovery"></a>障害復旧
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery が保護できるものは何ですか。
@@ -142,7 +155,7 @@ Site Recovery では、オンプレミスの VMware VM のディザスター リ
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM でディザスター リカバリーはサポートされますか?
 はい、Site Recovery では、オンプレミスの Hyper-V VM のディザスター リカバリーをサポートします。 Hyper-V VM のディザスター リカバリーに関する[一般的な質問を確認します](hyper-v-azure-common-questions.md)。
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理サーバーでディザスター リカバリーはサポートされますか?
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理サーバーでディザスター リカバリーはサポートされますか?
 はい、Site Recovery では、Windows および Linux を実行しているオンプレミスの物理サーバーの Azure またはセカンダリ サイトへのディザスター リカバリーをサポートします。 [Azure](vmware-physical-azure-support-matrix.md#replicated-machines) および[セカンダリ サイト](vmware-physical-secondary-support-matrix.md#replicated-vm-support)へのディザスター リカバリーについての要件を確認します。
 フェールオーバー後、物理サーバーは Azure で VM として実行されることに注意してください。 Azure からオンプレミスの物理サーバーへのフェールバックは、現在サポートされていません。 VMware 仮想マシンにのみフェールバックできます。
 

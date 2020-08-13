@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170413"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273375"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -58,7 +58,7 @@ Azure portal で関数アプリから Application Insights を開くには、左
 
 ![関数アプリの [概要] ページで Application Insights を開く](media/functions-monitoring/ai-link.png)
 
-Application Insights の使用方法については、「[Application Insights のドキュメント](https://docs.microsoft.com/azure/application-insights/)」をご覧ください。 このセクションでは、Application Insights でデータを表示する方法の例をいくつか示します。 Application Insights を既に使い慣れている場合は、[テレメトリ データの構成とカスタマイズの方法に関するセクション](#configure-categories-and-log-levels)に直接進んでかまいません。
+Application Insights の使用方法については、「[Application Insights のドキュメント](/azure/application-insights/)」をご覧ください。 このセクションでは、Application Insights でデータを表示する方法の例をいくつか示します。 Application Insights を既に使い慣れている場合は、[テレメトリ データの構成とカスタマイズの方法に関するセクション](#configure-categories-and-log-levels)に直接進んでかまいません。
 
 ![[Application Insights の概要] タブ](media/functions-monitoring/metrics-explorer.png)
 
@@ -68,12 +68,12 @@ Application Insights の次の領域は、関数の動作、パフォーマン�
 | ---- | ----------- |
 | **[障害](../azure-monitor/app/asp-net-exceptions.md)** |  関数の失敗やサーバーの例外に基づいてグラフやアラートを作成します。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。 |
 | **[パフォーマンス](../azure-monitor/app/performance-counters.md)** | **クラウド ロール インスタンス**あたりのリソース使用率とスループットを表示して、パフォーマンスの問題を分析します。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 |
-| **[メトリック](../azure-monitor/app/metrics-explorer.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
+| **[メトリック](../azure-monitor/platform/metrics-charts.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
 | **[ライブ メトリック    ](../azure-monitor/app/live-stream.md)** | 作成されたメトリック データをほぼリアルタイムに表示します。 |
 
 ## <a name="query-telemetry-data"></a>テレメトリをクエリする
 
-[Application Insights Analytics](../azure-monitor/app/analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。 
+[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。 
 
 **[ログ]** を選択して、ログに記録されたイベントを探索または照会します。
 
@@ -153,7 +153,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ### <a name="version-2x-and-higher"></a>バージョン 2.x 以降
 
-バージョン v2. x 以降のバージョンの Functions ランタイムでは、[.NET Core のログ記録フィルター階層](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)が使用されます。 
+バージョン v2. x 以降のバージョンの Functions ランタイムでは、[.NET Core のログ記録フィルター階層](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)が使用されます。 
 
 ```json
 {
@@ -246,7 +246,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ## <a name="configure-sampling"></a>サンプリングを構成する
 
-Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 Application Insights では、受信実行の割合が指定されたしきい値を超えると、受信した実行の一部がランダムに無視され始めます。 1 秒あたりの最大実行数の既定の設定は 20 (バージョン 1.x では 5) です。 [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) でサンプリングを構成できます。  次に例を示します。
+Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 Application Insights では、受信実行の割合が指定されたしきい値を超えると、受信した実行の一部がランダムに無視され始めます。 1 秒あたりの最大実行数の既定の設定は 20 (バージョン 1.x では 5) です。 [host.json](./functions-host-json.md#applicationinsights) でサンプリングを構成できます。  次に例を示します。
 
 ### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
@@ -285,9 +285,9 @@ Application Insights で traces として表示されるログを、ご使用の
 
 ### <a name="ilogger"></a>ILogger
 
-関数では、`TraceWriter` パラメーターではなく [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) パラメーターを使用します。 `TraceWriter` を使って作成されたログは Application Insights に送られますが、`ILogger` では[構造化ログ](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)を記録することができます。
+関数では、`TraceWriter` パラメーターではなく [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) パラメーターを使用します。 `TraceWriter` を使って作成されたログは Application Insights に送られますが、`ILogger` では[構造化ログ](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)を記録することができます。
 
-`ILogger` オブジェクトで、`Log<level>` [拡張メソッド (ILogger 上)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) を呼び出して、ログを作成します。 次のコードでは、カテゴリが "Function.<YOUR_FUNCTION_NAME>.User" の `Information` ログが書き込まれます。
+`ILogger` オブジェクトで、`Log<level>` [拡張メソッド (ILogger 上)](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) を呼び出して、ログを作成します。 次のコードでは、カテゴリが "Function.<YOUR_FUNCTION_NAME>.User" の `Information` ログが書き込まれます。
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -553,7 +553,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -577,7 +577,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.operationId};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -596,6 +596,9 @@ Functions v2 により、HTTP 要求、ServiceBus、EventHub、SQL の依存関�
 依存関係を表示するようにカスタム コードを記述することができます。 たとえば、[C# カスタム テレメトリ セクション](#log-custom-telemetry-in-c-functions)にあるサンプル コードを参照してください。 このサンプル コードでは、次のイメージのような Application Insights の*アプリケーション マップ*が作成されます。
 
 ![アプリケーション マップ](./media/functions-monitoring/app-map.png)
+
+> [!NOTE]
+> 依存関係は情報レベルで記述されます。 警告以上でフィルターすると、このデータは表示されなくなります。 また、依存関係の自動収集は、非ユーザー スコープで行われます。 このため、これらの依存関係をキャプチャする場合は、host.json のユーザー スコープ外 (Function.<YOUR_FUNCTION_NAME>.User キー外) で、レベルが少なくとも**情報**に設定されていることを確認してください。
 
 ## <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
 
@@ -679,14 +682,11 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview) を使用して、ストリーミング ログを有効にすることができます。 PowerShell の場合は、次のコマンドを使用して Azure アカウントを追加し、サブスクリプションを選択して、ログ ファイルをストリーミングします。
+[Azure PowerShell](/powershell/azure/) を使用して、ストリーミング ログを有効にすることができます。 PowerShell の場合は、次のスニペットに示すように、[Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) コマンドを使用して、関数アプリでのログ記録を有効にします。 
 
-```powershell
-Add-AzAccount
-Get-AzSubscription
-Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
-```
+:::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
+
+詳細については、[完全なコード例](../app-service/scripts/powershell-monitor.md#sample-script)を参照してください。 
 
 ## <a name="scale-controller-logs-preview"></a>スケール コントローラーのログ (プレビュー)
 

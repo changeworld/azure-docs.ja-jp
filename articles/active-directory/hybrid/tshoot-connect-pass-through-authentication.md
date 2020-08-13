@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281822"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446995"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -74,10 +74,8 @@ ms.locfileid: "87281822"
 
 同じユーザー名またはパスワードのエラーが発生した場合、パススルー認証エージェントは正常に動作していて、オンプレミスの UPN がルーティング不可能であることが問題の可能性があることを意味しています。 詳細については、「[代替ログイン ID を構成する]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)」を参照してください。
 
-
-
-
-
+> [!IMPORTANT]
+> Azure AD Connect サーバーが ([Azure AD Connect の前提条件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites)に記載されている要件である) ドメイン参加済みでない場合は、無効なユーザー名/パスワードの問題が発生します。
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理センターでのサインイン失敗の理由 (Premium ライセンスが必要)
 

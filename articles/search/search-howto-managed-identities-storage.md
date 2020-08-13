@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084077"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>マネージド ID を使用して、Azure ストレージ アカウントへの接続を設定する (プレビュー)
 
@@ -53,17 +53,19 @@ ms.locfileid: "86145376"
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage.png "ロールの割り当ての追加")
 
 4. インデックスを作成するストレージ アカウントの種類に基づいて、適切なロールを選択します。
-    1. Azure BLOB ストレージでは、検索サービスを、**閲覧者とデータ アクセス**および**ストレージ BLOB データ閲覧者**のロールに追加する必要があります。
-    1. Azure Data Lake Storage Gen2 では、検索サービスを、**閲覧者とデータ アクセス**および**ストレージ BLOB データ閲覧者**のロールに追加する必要があります。
-    1. Azure テーブル ストレージでは、検索サービスを**閲覧者とデータ アクセス** ロールにのみ追加する必要があります。
+    1. Azure BLOB ストレージでは、**ストレージ BLOB データ閲覧者**ロールに検索サービスを追加する必要があります。
+    1. Azure Data Lake Storage Gen2 では、**ストレージ BLOB データ閲覧者**ロールに検索サービスを追加する必要があります。
+    1. Azure テーブル ストレージでは、**閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
 5.  **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
 6.  検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
+    Azure Blob storage と Azure Data Lake Storage Gen2 の例を次に示します。
+
+    ![ストレージ BLOB データ閲覧者ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "ストレージ BLOB データ閲覧者ロールの割り当てを追加する")
+
+    Azure テーブル ストレージの例を次に示します。
+
     ![閲覧者とデータ アクセスのロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "閲覧者とデータ アクセスのロールの割り当てを追加する")
-
-Azure BLOB ストレージと Azure Data Lake Storage Gen2 に接続する場合は、**ストレージ BLOB データ閲覧者**ロールの割り当ても追加する必要があることにご注意ください。
-
-![ストレージ BLOB データ閲覧者ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "ストレージ BLOB データ閲覧者ロールの割り当てを追加する")
 
 ### <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 

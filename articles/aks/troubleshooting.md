@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056512"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -80,7 +80,11 @@ AKS には、サービス レベル目標 (SLO) とサービス レベル アグ
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[ノード間の内部トラフィックがブロックされていますか?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>`dial tcp <Node_IP>:10250: i/o timeout` などの `TCP timeouts` が発生します
+
+こうしたタイムアウトは、ノード間の内部トラフィックがブロックされている場合に発生します。 クラスターのノードのサブネットに適用されている[ネットワーク セキュリティ グループ](concepts-security.md#azure-network-security-groups)などによって、このトラフィックがブロックされていないことを確認します。
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>既存のクラスターでロールベースのアクセス制御 (RBAC) を有効にしようとしています。 どうすればいいですか。
 

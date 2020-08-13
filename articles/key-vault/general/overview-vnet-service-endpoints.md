@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792134"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090486"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -39,7 +39,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 
 ファイアウォールと仮想ネットワークの構成には、次の手順を実行する必要があります。 次の手順は、PowerShell、Azure CLI、Azure portal のどれを使用していても適用されます。
 
-1. [Key Vault のログ記録](logging.md)を有効にして、詳細なアクセスログを表示できるようにします。 これは、ファイアウォールと仮想ネットワーク規則によってキー コンテナーにアクセスできない場合の診断に役立ちます。 (このステップは省略可能ですが、強くお勧めします。)
+1. 詳細なアクセスログを表示するように [Key Vault のログ記録](logging.md)を有効にします。 これは、ファイアウォールと仮想ネットワーク規則によってキー コンテナーにアクセスできない場合の診断に役立ちます。 (このステップは省略可能ですが、強くお勧めします。)
 2. ターゲット仮想ネットワークとサブネットの**キー コンテナーのサービス エンドポイント**を有効にします。
 3. 特定の仮想ネットワーク、サブネット、および IPv4 アドレス範囲からキー コンテナーへのアクセスを制限するようにキー コンテナーのファイアウォールと仮想ネットワーク規則を設定します。
 4. すべての信頼できる Microsoft サービスからこのキー コンテナーにアクセスできるようにする必要がある場合は、**信頼できる Azure サービス**がキー コンテナーに接続できるようにするオプションを有効にします。
@@ -80,7 +80,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Event Hubs|[カスタマー マネージト キーのシナリオでキー コンテナーへのアクセスを許可する](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure Service Bus|[カスタマー マネージト キーのシナリオでキー コンテナーへのアクセスを許可する](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure Import/Export| [Azure Key Vault でユーザーが管理するキーを Import/Export サービスのために使用する](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[カスタマー マネージド キーを使用したレジストリの暗号化](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Container Registry|[カスタマー マネージド キーを使用したレジストリの暗号化](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[成果物を別のレジストリに転送する](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > 対応するサービスがキー コンテナーにアクセスできるように、関連するキー コンテナー アクセス ポリシーを設定する必要があります。

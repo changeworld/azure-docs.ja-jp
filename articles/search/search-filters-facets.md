@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792890"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084213"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Cognitive Search でファセット フィルターを作成する方法 
 
@@ -28,7 +28,7 @@ ms.locfileid: "72792890"
 
 ファセットは動的であり、クエリで返されます。 検索の応答で、結果のナビゲートに使用されるファセット カテゴリが提供されます。 ファセットの知識がない場合、次の例はファセット ナビゲーション構造を示しています。
 
-  ![](./media/search-filters-facets/facet-nav.png)
+  ![検索ダイアログを示すイメージ。フィルター処理された検索結果が肩書でグループ化されています。 矢印は、結果がファセット ナビゲーション構造に表示されるファセットであることを示しています。](./media/search-filters-facets/facet-nav.png)
 
 ファセット ナビゲーションを初めて使用する場合、詳細については、 [Azure Cognitive Search へのファセット ナビゲーションの実装方法](search-faceted-navigation.md)に関するページを参照してください。
 
@@ -121,7 +121,7 @@ Azure Cognitive Search のファセット ナビゲーションの課題の 1 �
 
 これは一般的なユース ケースですが、現時点ではファセット ナビゲーション構造ですぐに利用できるものではありません。 静的なファセットを必要とする開発者は、通常、結果に適用されるクエリと、ナビゲーションのためにファセットの静的リストの作成に使用されるクエリの 2 つのフィルター処理されたクエリを発行してこの制限に対処しています。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search のフィルター](search-filters.md)
 + [Index REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)

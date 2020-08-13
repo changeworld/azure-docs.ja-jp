@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2020
+ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c41a357ebaf65cca8465bfc48dda3dd065c3e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019388"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。 
@@ -35,6 +35,31 @@ ms.locfileid: "84759999"
 アプリケーション プロキシを有効にする方法 | この[チュートリアル](application-proxy-add-on-premises-application.md)では、アプリケーション プロキシを有効にし、コネクタをインストールして登録するための前提条件について説明します。
 Azure AD アプリケーション プロキシ コネクタを理解する | [コネクタ管理](application-proxy-connectors.md)とコネクタの[自動アップグレード](application-proxy-connectors.md#automatic-updates)について詳しく説明します。
 Azure AD アプリケーション プロキシ コネクタのダウンロード |  [最新のコネクタをダウンロードします](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。
+
+## <a name="1519750"></a>1.5.1975.0
+
+### <a name="release-status"></a>リリースの状態
+
+2020 年 7 月 22 日: ダウンロード対象としてリリース済み。このバージョンは、ダウンロードページからのみインストールできます。 このバージョンの自動アップグレード リリースは、後でリリースされる予定です。
+
+### <a name="new-features-and-improvements"></a>新機能と機能強化
+-   Azure Government クラウド環境のサポートが強化されました。 Azure Government クラウドのコネクタを正しくインストールする手順については、[前提条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)と[インストール手順](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)を確認してください。
+- リモート デスクトップ サービス Web クライアントとアプリケーション プロキシの連携がサポートされます。 詳細については、「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](application-proxy-integrate-with-remote-desktop-services.md)」を参照してください。
+- Websocket 拡張機能のネゴシエーションが改善されました。 
+
+### <a name="fixed-issues"></a>修正された問題
+- 小文字の文字列を強制する Websocket の問題を修正しました。
+- コネクタが応答しなくなることがある問題を修正しました。
+
+## <a name="1516260"></a>1.5.1626.0
+
+### <a name="release-status"></a>リリースの状態
+
+2020 年 7 月 17 日: ダウンロード対象としてリリース済み。 このバージョンは、ダウンロードページからのみインストールできます。 このバージョンの自動アップグレード リリースは、後でリリースされる予定です。
+
+### <a name="fixed-issues"></a>修正された問題
+- 以前のバージョンで発生したメモリ リークの問題を解決しました
+- Websocket のサポートに関する一般的な機能強化を行いました
 
 ## <a name="1515260"></a>1.5.1526.0
 
