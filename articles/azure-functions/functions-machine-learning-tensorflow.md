@@ -5,13 +5,13 @@ author: anthonychu
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 89b2fc9ffe05853e34670b6f33ed665240d59457
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: bd46044b6ba6d4dfca8dd90612d8f2530638c6f8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540198"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844458"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 

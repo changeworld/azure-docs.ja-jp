@@ -5,13 +5,13 @@ author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
-ms.custom: tracking-python
-ms.openlocfilehash: bbb784a1245ecc8d6f3d3aee45b729984568fc6c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: ebedb7f205553f91e38e3976a02b0912cbee1fb0
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506095"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852431"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>チュートリアル:PyTorch を使用して事前トレーニング済みの画像分類モデルを Azure Functions にデプロイする
 

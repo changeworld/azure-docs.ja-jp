@@ -11,13 +11,13 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 03/19/2020
 ms.author: aahi
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: 2305bb8c14954545097e085e73e0605517152201
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 57cbc2e12b06082b6449a6718bc43d46a2e8269d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404117"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852091"
 ---
 # <a name="quickstart-use-the-bing-video-search-client-library"></a>クイック スタート:Bing Video Search クライアント ライブラリを使用する
 

@@ -3,13 +3,13 @@ title: Azure Notebooks プレビューで Jupyter ノートブックを作成し
 description: Azure Notebooks プレビューで Jupyter ノートブックをすばやく作成して実行した後、そのノートブックを他のユーザーと共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.custom: tracking-python
-ms.openlocfilehash: ec1a03cb1c05248458a47ec4b22a0243b31bafcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-python
+ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423288"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849402"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを作成して共有する
 
