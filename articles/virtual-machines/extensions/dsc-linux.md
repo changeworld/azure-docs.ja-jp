@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494787"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876718"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -29,25 +29,17 @@ Desired State Configuration (DSC) は、コードで構成を行って IT およ
 
 DSCForLinux 拡張機能は Microsoft によって公開され、サポートされています。 拡張機能では、OMI および DSC のエージェントが Azure 仮想マシンにインストールされます。 DSC 拡張機能では、さらに次のアクションを実行できます。
 
-
 - Azure Automation サービスから構成をプルするために、Linux VM を Azure Automation アカウントに登録する (Register ExtensionAction)。
 - MOF 構成を Linux VM にプッシュする (Push ExtensionAction)。
 - ノード構成をプルするために、メタ MOF 構成を Linux VM に適用してプル サーバーを構成する (Pull ExtensionAction)。
 - カスタム DSC モジュールを Linux VM にインストールする (Install ExtensionAction)。
 - カスタム DSC モジュールを Linux VM から削除する (Remove ExtensionAction)。
 
- 
-
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](../linux/endorsed-distros.md)がすべてサポートされます。
-
-| Distribution | Version |
-|---|---|
-| Debian | すべてのバージョン |
-| Ubuntu| 18.04 |
+Linux が実行されているノードの場合、DSC Linux 拡張機能では、[PowerShell DSC に関するドキュメント](/powershell/scripting/dsc/getting-started/lnxgettingstarted)に示されている Linux ディストリビューションがすべてサポートされます。
  
 ### <a name="internet-connectivity"></a>インターネット接続
 
