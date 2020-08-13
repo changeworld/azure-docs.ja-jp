@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323113"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824989"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>ワークスペース ベースの Application Insights リソース (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "87323113"
 これにより、リソース全体で一般的なロールベースのアクセス制御 (RBAC) を使えるようになり、アプリ間またはワークスペース間のクエリが不要になります。
 
 > [!NOTE]
-> ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている Log Analytics ワークスペースを通じて課金されます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights)してください。
+> ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている Log Analytics ワークスペースを通じて課金されます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( ./pricing.md#workspace-based-application-insights)してください。
 
 新しいエクスペリエンスをテストするには、[Azure portal](https://portal.azure.com)にサインインし、Application Insights リソースを作成します。
 
@@ -204,4 +204,3 @@ Application Insights リソース ウィンドウで **[プロパティ]**  >  *
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

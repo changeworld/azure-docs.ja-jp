@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525468"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827420"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -174,7 +174,7 @@ Azure ストレージ アカウントは、管理の構成要素であり、制�
 
 Standard Storage の場合、ストレージ アカウントごとに IOPS の制限があることに注意してください。 [Azure Storage のスケーラビリティとパフォーマンスのターゲット](../../../storage/common/scalability-targets-standard-account.md)に関する記事で、**合計要求レート**を含む行を参照してください。 Azure サブスクリプションあたりのストレージ アカウント数には初期制限もあります。 複数のストレージ アカウントにわたる大規模な SAP ランドスケープの場合は、これらのストレージ アカウントの制限に達しないよう、VHD を分散します。 1,000 を超える VHD が搭載された数百台の仮想マシンでこの作業を行うのは困難です。
 
-DBMS デプロイ用の Standard Storage を SAP ワークロードと組み合わせて使用することは推奨されないため、Standard Storage に関する参照事項と推奨事項は、この短い[記事](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)に限定されます
+DBMS デプロイ用の Standard Storage を SAP ワークロードと組み合わせて使用することは推奨されないため、Standard Storage に関する参照事項と推奨事項は、この短い[記事](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)に限定されます
 
 複数の Azure ストレージ アカウントにわたって VHD を計画しデプロイする管理作業を回避するため、Microsoft は、2017 年に [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を発表しました。 マネージド ディスクは、Standard Storage と Premium Storage で使用できます。 非マネージド ディスクと比較したマネージド ディスクの主なメリットは次のとおりです。
 
@@ -327,7 +327,7 @@ DBMS VM と SAP アプリケーション レイヤーの間のトラフィック
 
 SAP アプリケーション レイヤーと DBMS レイヤーの間に配置されているロード バランサーと組み合わせて DirectServerReturn を構成することをお勧めします。 この構成により、2 つのレイヤー間のネットワーク待ち時間が短縮されます。
 
-SQL Server の Always On でこの構成を設定する方法の例については、「[Azure で Always On 可用性グループの ILB リスナーを構成する](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)」を参照してください。
+SQL Server の Always On でこの構成を設定する方法の例については、「[Azure で Always On 可用性グループの ILB リスナーを構成する](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)」を参照してください。
 
 公開済みの GitHub の JSON テンプレートを Azure 内の SAP インフラストラクチャ デプロイの参照として使用する場合は、この [SAP 3 層システム用テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)を参考にしてください。 このテンプレートでは、ロード バランサーの適切な設定も確認できます。
 

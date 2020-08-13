@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 166909f1e048ac54184ef5eee2ecee3bfedcdb02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a628a70d8ce62827f79c1f7e16d2826be8d80f5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284134"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827250"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -153,11 +153,48 @@ Logic Apps には、次のサービスまたはシステムでタスク、プロ
 
 ここでは、オンプレミス システムのデータやリソースにアクセスするために Logic Apps で提供されていてよく使用される標準コネクタを紹介します。 オンプレミス システムへの接続を作成するには、最初に[オンプレミス データ ゲートウェイのダウンロード、インストール、設定][gateway-doc]を行う必要があります。 このゲートウェイは、セキュリティで保護された通信チャネルを提供します。必要なネットワーク インフラストラクチャを設定する必要はありません。
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API アイコン][biztalk-server-icon]<br>**BizTalk** <br>**Server**][biztalk-server-doc] | [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc] | [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API アイコン][ibm-informix-icon]<br>**IBM** <br>**Informix**][ibm-informix-doc] | [![API アイコン][mysql-icon]<br>**MySQL**][mysql-doc] |
-| [![API アイコン][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc] | [![API アイコン][postgre-sql-icon]<br>**PostgreSQL**][postgre-sql-doc] | [![API アイコン][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc] | [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API アイコン][teradata-icon]<br>**Teradata**][teradata-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API アイコン][biztalk-server-icon]<br>**BizTalk** <br>**Server**][biztalk-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][ibm-informix-icon]<br>**IBM** <br>**Informix**][ibm-informix-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][mysql-icon]<br>**MySQL**][mysql-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][postgre-sql-icon]<br>**PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][teradata-icon]<br>**Teradata**][teradata-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="integration-account-connectors"></a>
 
@@ -165,12 +202,48 @@ Logic Apps には、次のサービスまたはシステムでタスク、プロ
 
 Logic Apps では、Azure の Enterprise Integration Pack (EIP) で利用可能な[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を作成して料金を支払うときに、ロジック アプリで企業間 (B2B) ソリューションを作成するための標準コネクタが提供されています。 このアカウントを使用すると、パーティー、取引先契約、マップ、スキーマ、証明書などの B2B 成果物を作成したり、保管したりできます。 これらの成果物を使用するには、ロジック アプリを統合アカウントに関連付けます。 現在、BizTalk Server を使用している場合は、これらのコネクタが既になじみがあるように見えるかもしれません。
 
-|___|___|___|___|
-|---|---|---|---|
-| [![API アイコン][as2-icon]<br>**AS2 <br>のデコード**][as2-doc] | [![API アイコン][as2-icon]<br>**AS2 <br>のエンコード**][as2-doc] | [![API アイコン][edifact-icon]<br>**EDIFACT <br>のデコード**][edifact-decode-doc] | [![API アイコン][edifact-icon]<br>**EDIFACT <br>のエンコード**][edifact-encode-doc] |
-| [![API アイコン][flat-file-decode-icon]<br>**フラット ファイル<br>のデコード**][flat-file-decode-doc] | [![API アイコン][flat-file-encode-icon]<br>**フラット ファイル<br>のエンコード**][flat-file-encode-doc] | [![API アイコン][integration-account-icon]<br>**統合<br>アカウント**][integration-account-doc] | [![API アイコン][liquid-icon]<br>**Liquid** <br>**変換**][json-liquid-transform-doc] |
-| [![API アイコン][x12-icon]<br>**X12 <br>のデコード**][x12-decode-doc] | [![API アイコン][x12-icon]<br>**X12 <br>のエンコード**][x12-encode-doc] | [![API アイコン][xml-transform-icon]<br>**XML** <br>**変換**][xml-transform-doc] | [![API アイコン][xml-validate-icon]<br>**XML <br>検証**][xml-validate-doc] |
-|||||
+:::row:::
+    :::column:::
+        [![API アイコン][as2-icon]<br>**AS2 <br>のデコード**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][as2-icon]<br>**AS2 <br>のエンコード**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][edifact-icon]<br>**EDIFACT <br>のデコード**][edifact-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][edifact-icon]<br>**EDIFACT <br>のエンコード**][edifact-encode-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][flat-file-decode-icon]<br>**フラット ファイル<br>のデコード**][flat-file-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][flat-file-encode-icon]<br>**フラット ファイル<br>のエンコード**][flat-file-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][integration-account-icon]<br>**統合<br>アカウント**][integration-account-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][liquid-icon]<br>**Liquid** <br>**変換**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][x12-icon]<br>**X12 <br>のデコード**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][x12-icon]<br>**X12 <br>のエンコード**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][xml-transform-icon]<br>**XML** <br>**変換**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][xml-validate-icon]<br>**XML <br>検証**][xml-validate-doc]
+    :::column-end:::
+:::row-end:::
 
 <a name="enterprise-connectors"></a>
 
@@ -178,10 +251,20 @@ Logic Apps では、Azure の Enterprise Integration Pack (EIP) で利用可能�
 
 Logic Apps では、SAP や IBM MQ などのエンタープライズ システムにアクセスするため、以下のエンタープライズ コネクタが提供されています。
 
-|___|___|___|
-|---|---|---|
-| [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] | [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc] |
-|||
+:::row:::
+    :::column:::
+        [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="ise-connectors"></a>
 
@@ -189,14 +272,90 @@ Logic Apps では、SAP や IBM MQ などのエンタープライズ システ�
 
 専用の[統合サービス環境 (ISE)](#integration-service-environment) で作成して実行するロジック アプリの場合、ロジック アプリ デザイナーでは **CORE** ラベルを使用して ISE 内で実行する組み込みトリガーおよびアクションが識別されます。 ISE 内で実行するマネージド コネクタには **ISE** ラベルが表示されますが、グローバルなマルチテナント Logic Apps サービスで実行するコネクタには、いずれのラベルも表示されません。 次の一覧は、現在 ISE バージョンがあるコネクタを示しています。
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API アイコン][as2-icon]<br>**AS2**][as2-doc] | [![API アイコン][azure-automation-icon]<br>**Azure <br>Automation**][azure-automation-doc] | [![API アイコン][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | [![API アイコン][azure-cosmos-db-icon]<br>**Azure Cosmos <br>DB**][azure-cosmos-db-doc] | [![API アイコン][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc] |
-| [![API アイコン][azure-event-grid-icon]<br>**Azure Event <br>Grid**][azure-event-grid-doc] | [![API アイコン][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc] | [![API アイコン][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc] | [![API アイコン][azure-monitor-logs-icon]<br>**Azure Monitor <br>ログ**][azure-monitor-logs-doc] | [![API アイコン][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc] |
-| [![API アイコン][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc] | [![API アイコン][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc] | [![API アイコン][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc] | [![API アイコン][edifact-icon]<br>**EDIFACT**][edifact-doc] | [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc] |
-| [![API アイコン][ftp-icon]<br>**FTP**][ftp-doc] | [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] | [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc] |
-| [![API アイコン][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | [![API アイコン][smtp-icon]<br>**SMTP**][smtp-doc] | [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API アイコン][x12-icon]<br>**X12**][x12-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API アイコン][as2-icon]<br>**AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-automation-icon]<br>**Azure <br>Automation**][azure-automation-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-cosmos-db-icon]<br>**Azure Cosmos <br>DB**][azure-cosmos-db-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-event-grid-icon]<br>**Azure Event <br>Grid**][azure-event-grid-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][azure-monitor-logs-icon]<br>**Azure Monitor <br>ログ**][azure-monitor-logs-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][edifact-icon]<br>**EDIFACT**][edifact-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][ftp-icon]<br>**FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API アイコン][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][smtp-icon]<br>**SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API アイコン][x12-icon]<br>**X12**][x12-doc]
+    :::column-end:::
+:::row-end:::
 
 詳細については、以下のトピックを参照してください。
 
@@ -234,7 +393,7 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 
 ## <a name="custom-apis-and-connectors"></a>カスタム API とコネクタ
 
-カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すには、[カスタム API Apps を作成](../logic-apps/logic-apps-create-api-app.md)して、Logic Apps プラットフォームを拡張します。 "*任意の*" REST または SOAP ベース API 用の[カスタム コネクタを作成](../logic-apps/custom-connector-overview.md)することもできます。その場合、これらの API は、Azure サブスクリプションの任意のロジック アプリで使用できるようになります。 Azure 内でカスタム API Apps またはコネクタを公開し、誰でも使用できるようにするには、[Microsoft の認定を受けるためにコネクタを提出](../logic-apps/custom-connector-submit-certification.md)してください。
+カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すには、[カスタム API Apps を作成](../logic-apps/logic-apps-create-api-app.md)して、Logic Apps プラットフォームを拡張します。 "*任意の*" REST または SOAP ベース API 用の[カスタム コネクタを作成](../logic-apps/custom-connector-overview.md)することもできます。その場合、これらの API は、Azure サブスクリプションの任意のロジック アプリで使用できるようになります。 Azure 内でカスタム API Apps またはコネクタを公開し、誰でも使用できるようにするには、[Microsoft の認定を受けるためにコネクタを提出](/connectors/custom-connectors/submit-certification)してください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にデプロイして実行したロジック アプリは、Azure 仮想ネットワーク内のリソースに直接アクセスできます。 オンプレミス データ ゲートウェイを必要とするカスタム コネクタを ISE の外部で作成した場合は、ISE 内のロジック アプリでもそれらのコネクタを使用できます。
@@ -459,4 +618,3 @@ Azure Logic Apps でコネクタを使用して特定のリソースに接続す
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 プロトコルを使用するメッセージをエンコードします"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML メッセージ変換します"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML メッセージを検証します"
-
