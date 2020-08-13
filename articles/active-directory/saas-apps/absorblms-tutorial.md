@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 936de76d1117c56f5a9dec48b51f33b9afa15351
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3d5dbd5c831b4e3cf2ab63796165dc6bad005a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67107496"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
@@ -41,6 +41,9 @@ Absorb LMS と Azure AD の統合を構成するには、次のものが必要�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
 * Absorb LMS でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -66,7 +69,7 @@ Azure AD への Absorb LMS の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Absorb LMS**」と入力し、結果ウィンドウで **[Absorb LMS]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Absorb LMS**」と入力し、結果ウィンドウで **[Absorb LMS]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Absorb LMS](common/search-new-app.png)
 
@@ -90,7 +93,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
 Absorb LMS で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Absorb LMS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Absorb LMS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -147,7 +150,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     ![[アカウント] ボタン](./media/absorblms-tutorial/1.png)
 
-3. [アカウント] ウィンドウで、 **[ポータルの設定]** を選択します。
+3. [アカウント] ウィンドウで、**[ポータルの設定]** を選択します。
 
     ![[ポータルの設定] リンク](./media/absorblms-tutorial/2.png)
 
@@ -165,9 +168,9 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     c. メモ帳で、Azure Portal からダウンロードした証明書を開きます。 **-----BEGIN CERTIFICATE-----** タグと **-----END CERTIFICATE-----** タグを削除します。 次に **[キー]** ボックスに残りのコンテンツを貼り付けます。
 
-    d. **[モード]** ボックスで、 **[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
+    d. **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
-    e. **[Id Property]\(ID プロパティ\)** ボックスで、Azure AD でユーザー ID として構成した属性を選択します。 たとえば、Azure AD で *nameidentifier* が選択されている場合、 **[ユーザー名]** を選択します。
+    e. **[Id Property]\(ID プロパティ\)** ボックスで、Azure AD でユーザー ID として構成した属性を選択します。 たとえば、Azure AD で *nameidentifier* が選択されている場合、**[ユーザー名]** を選択します。
 
     f. **[Signature Type]\(署名の種類\)** として **[Sha256]** を選択します。
 
@@ -210,7 +213,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Absorb LMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Absorb LMS]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Absorb LMS]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -222,7 +225,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -240,7 +243,7 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
 
 1. Absorb LMS 企業サイトに管理者としてサインインします。
 
-2. **[ユーザー]** ウィンドウで、 **[ユーザー]** を選択します。
+2. **[ユーザー]** ウィンドウで、**[ユーザー]** を選択します。
 
     ![[ユーザー] リンク](./media/absorblms-tutorial/absorblms_userssub.png)
 

@@ -4,15 +4,15 @@ description: Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API でサポ
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076827"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030544"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 
@@ -495,10 +495,10 @@ $nearSphere |  はい |
 $geometry |  はい |
 $minDistance | はい |
 $maxDistance | はい |
-$center | はい |
-$centerSphere | はい |
-$box | はい |
-$polygon |  はい |
+$center | いいえ |
+$centerSphere | いいえ |
+$box | いいえ |
+$polygon |  いいえ |
 
 ## <a name="cursor-methods"></a>カーソル メソッド
 

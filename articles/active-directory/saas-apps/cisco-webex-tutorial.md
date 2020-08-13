@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a6182159275236f023a1647275ed1fb8c8f4112
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72026256"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905773"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
 
@@ -39,6 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Cisco Webex Meetings でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -76,7 +79,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Cisco Webex Meetings** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Cisco Webex Meetings** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、**サービス プロバイダー メタデータ** ファイルを次のようにアップロードして、**IDP** 開始モードでアプリケーションを構成できます。
 
@@ -84,7 +87,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
     b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、 **[識別子]** と **[応答 URL]** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
+    c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、**[識別子]** と **[応答 URL]** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
 
     >[!Note]
     >サービス プロバイダー メタデータ ファイルは、「**Cisco Webex Meetings の SSO の構成**」セクションで取得します。これについては、チュートリアルの後の方で説明します。 
@@ -97,7 +100,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
     
     b. **[サインオン URL]** ボックスに、` https://<customername>.my.webex.com` という形式で URL を入力します。
 
-5. Cisco Webex Meetings アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+5. Cisco Webex Meetings アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 [ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -164,7 +167,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
 1. 管理資格情報で `https://<customername>.webex.com/admin` という URL に移動します。
 
-2. **[Common Site Settings]\(共通サイト設定\)** に移動し、 **[SSO Configuration]\(SSO 構成\)** に移動します。
+2. **[Common Site Settings]\(共通サイト設定\)** に移動し、**[SSO Configuration]\(SSO 構成\)** に移動します。
  
     ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
@@ -183,7 +186,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
     e. **[アカウントの自動作成]** を選択します。
 
     >[!NOTE]
-    >**Just-In-Time** ユーザー プロビジョニングを有効にするには、 **[アカウントの自動作成]** をチェックする必要があります。 さらに、SAML トークン属性を、SAML 応答で渡す必要があります。
+    >**Just-In-Time** ユーザー プロビジョニングを有効にするには、**[アカウントの自動作成]** をチェックする必要があります。 さらに、SAML トークン属性を、SAML 応答で渡す必要があります。
 
     f. **[保存]** をクリックします。
 

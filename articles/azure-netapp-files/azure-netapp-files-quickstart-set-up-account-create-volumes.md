@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c2ef52669a0bc5cd29bdcebf920beb1f409e65d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533106"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987513"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -132,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     > [!NOTE]
     > サポートされているリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)」を参照してください。
-    > コマンド ライン ツールでサポートされているリージョン名を取得するには、`az account list-locations -query "[].{Region:name}" --out table` を使用してください。
+    > コマンド ライン ツールでサポートされているリージョン名を取得するには、`az account list-locations --query "[].{Region:name}" --out table` を使用してください。
     >
 
 2. [az group create](/cli/azure/group#az-group-create) コマンドを使って新しいリソース グループを作成します。

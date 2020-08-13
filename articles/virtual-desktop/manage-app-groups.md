@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop ポータルのアプリ グループを管理する - Azure
 description: Azure portal を使用して Windows Virtual Desktop アプリ グループを管理する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283403"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010091"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
@@ -49,16 +47,16 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
     > ![Azure portal の [基本] タブのスクリーンショット。](media/basics-tab.png)
 
 6. アプリケーション グループをホスト プールに追加したい場合は、画面の左側にあるメニューから **[ホスト プール]** を選択します。
-   
+
     次に、アプリケーション グループの追加先となるホスト プールの名前を選択します。
-   
+
     その後、画面の左側にあるメニューから **[アプリケーション グループ]** を選択し、 **[+ 追加]** を選択します。
 
     最後に、アプリ グループを作成するサブスクリプション グループとリソース グループを選択します。 既存のリソース グループの名前をドロップダウン メニューから選択することも、 **[新規作成]** を選択してリソース グループを新たに作成することもできます。
 
       >[!NOTE]
       >アプリケーション グループをホスト プールに追加すると、アプリケーション グループに関連付けられるホスト プールが最初から選択されています。これは、ホスト プールが操作の起点となっているためです。
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![ホスト プールが事前に選択されている [基本] タブのスクリーンショット。](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
 
 12.  **[アプリケーション]** タブを選択し、 **[+ アプリケーションの追加]** を選択します。
 
-13.  スタート メニューからアプリケーションを追加するには、次の手順に従います。 
+13.  スタート メニューからアプリケーションを追加するには、次の手順に従います。
 
       - **[アプリケーション ソース]** に移動し、ドロップダウン メニューから **[スタート メニュー]** を選択します。 次に、 **[アプリケーション]** に移動し、ドロップダウン メニューからアプリケーションを選択します。
 
@@ -111,7 +109,7 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
 16.  アプリ グループをワークスペースに登録したい場合は、 **[Register application group]\(アプリケーション グループの登録\)** に移動し、 **[はい]** を選択します。 後からアプリ グループを登録する場合は、 **[いいえ]** を選択します。
 
 17.  **[はい]** を選択した場合は、アプリ グループの登録先として既存のワークスペースを選択できます。
-       
+
        >[!NOTE]
        >アプリ グループを登録できるのは、ホスト プールと同じ場所に作成されたワークスペースだけです。 さらに、 先ほどワークスペースに対し、新しいアプリ グループと同じホスト プールにある別のアプリ グループを登録した場合、そのワークスペースが選択され、編集することはできません。 特定のホスト プールにあるアプリ グループはすべて、同じワークスペースに登録する必要があります。
 

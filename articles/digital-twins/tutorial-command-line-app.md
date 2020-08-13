@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124566"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986273"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
@@ -78,7 +78,7 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
 > 独自のモデルを作成してみたい場合は、*Room* モデルのコードを新しいファイルに貼り付けて、 *.json* という拡張子で *AdtSampleApp\SampleClientApp\Models* フォルダーに保存してください。 その後、望みのものを表現するために、自由にプロパティやリレーションシップを追加してみましょう。 このフォルダーにある他のサンプル モデルも参考にしてください。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-use-parser.md)" に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
 
 ### <a name="get-started-with-the-command-line-app"></a>コマンド ライン アプリを使ってみる
 

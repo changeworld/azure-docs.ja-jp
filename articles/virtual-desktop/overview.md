@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop とは - Azure
 description: Windows Virtual Desktop の概要
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386575"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002368"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -132,14 +130,14 @@ Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、
 
 |オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 マルチセッション、バージョン 1903|はい|○|○|はい|
-|Windows 10 マルチセッション、バージョン 1809|○|[はい]|いいえ|いいえ|
-|Windows 10 Enterprise、バージョン 1903|○|○|○|○|
-|Windows 10 Enterprise、バージョン 1809|○|[はい]|いいえ|いいえ|
-|Windows 7 Enterprise|○|[はい]|いいえ|いいえ|
-|Windows Server 2019|○|[はい]|いいえ|いいえ|
-|Windows Server 2016|はい|○|○|はい|
-|Windows Server 2012 R2|はい|[はい]|いいえ|いいえ|
+|Windows 10 マルチセッション、バージョン 1903|はい|はい|はい|はい|
+|Windows 10 マルチセッション、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 10 Enterprise、バージョン 1903|はい|はい|はい|はい|
+|Windows 10 Enterprise、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 7 Enterprise|はい|はい|いいえ|いいえ|
+|Windows Server 2019|はい|はい|いいえ|いいえ|
+|Windows Server 2016|はい|はい|はい|はい|
+|Windows Server 2012 R2|はい|はい|いいえ|いいえ|
 
 ## <a name="next-steps"></a>次のステップ
 

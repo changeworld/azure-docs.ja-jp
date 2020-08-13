@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop (classic) サービス プリンシパル ロールの割り当て - Azure
 description: Windows Virtual Desktop (classic) で PowerShell を使用して、サービス プリンシパルを作成し、ロールを割り当てる方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 015d0e0208b83cff3db3995383ce93ed6362ee49
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 67527967e76174fd0152775aed140ec89e1674ec
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270092"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008833"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (classic) で PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
