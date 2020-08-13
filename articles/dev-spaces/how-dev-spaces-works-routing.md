@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスと、ルーティングがどのように機能するかについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512471"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077667"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Azure Dev Spaces でルーティングがどのように機能するか
 
@@ -49,7 +49,7 @@ HTTP ではないその他の TCP トラフィックはすべて、未変更の�
 
 ## <a name="sharing-a-dev-space"></a>開発スペースを共有する
 
-チームで作業している場合は、[チーム全体で開発スペースを共有](how-to/share-dev-spaces.md)したり、派生の開発スペースを作成したりできます。 開発スペースは、その開発スペースのリソース グループへの共同作成者アクセス権を持つユーザーが使用できます。
+チームで作業している場合は、チーム全体で開発スペースを共有したり、派生の開発スペースを作成したりできます。 開発スペースは、その開発スペースのリソース グループへの共同作成者アクセス権を持つユーザーが使用できます。
 
 別の開発スペースから派生した新しい開発スペースを作成することもできます。 派生の開発スペースを作成すると、その開発スペースの名前空間に *azds.io/parent-space=PARENT-SPACE-NAME* ラベルが追加されます。 また、親開発スペースからのすべてのアプリケーションが派生の開発スペースと共有されます。 更新バージョンのアプリケーションを派生の開発スペースにデプロイする場合、そのアプリケーションは派生の開発スペースにのみ存在し、親開発スペースには影響しません。 最大で 3 レベルの派生の開発スペースまたは "*親の親*" であるスペースを使用できます。
 

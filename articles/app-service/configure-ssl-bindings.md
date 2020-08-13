@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597897"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078633"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -52,7 +52,7 @@ ms.locfileid: "82597897"
 
 手順は次のとおりです。
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL バインド]** ダイアログを開きます。
 
@@ -153,7 +153,7 @@ ms.locfileid: "82597897"
 
 App Service では、[TLS 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS 要求は暗号化されていない HTTP 要求としてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
-[Linux Node.js 構成](containers/configure-language-nodejs.md#detect-https-session)ガイドなどの言語固有の構成ガイドでは、アプリケーション コード内の HTTPS セッションを検出する方法について説明しています。
+[Linux Node.js 構成](configure-language-nodejs.md#detect-https-session)ガイドなどの言語固有の構成ガイドでは、アプリケーション コード内の HTTPS セッションを検出する方法について説明しています。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 

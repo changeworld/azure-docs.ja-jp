@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: 950d85f391504095ceaaa10996145ca832b6db19
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56099a7d350a29db5a57708bc87b7174cfdb3b29
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432730"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079281"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue サービスを使用して Node.js でキューを作成および削除する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "87432730"
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial) に関するページをご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/quickstart-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial) に関するページをご覧ください。
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -341,7 +341,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [Azure Portal]: https://portal.azure.com
 
-[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)
+[Azure App Service での Node.js Web アプリの作成](../../app-service/quickstart-nodejs.md)
 
 [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: spelluru
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cdbde84780ed7c64f9ad3f4284a74261d2f4a728
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2526559a8b88309c098e59e8cc6d0ffd2793984f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500455"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067598"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル:CLI とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Java で Service Bus アプリを開発するには、以下のものがインストールされている必要があります。
 
 - [Java Development Kit](https://aka.ms/azure-jdks) (最新バージョン)。
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

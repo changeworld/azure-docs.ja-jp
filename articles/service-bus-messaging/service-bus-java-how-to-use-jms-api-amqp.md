@@ -4,12 +4,12 @@ description: Java Message Service (JMS) API を Azure Service Bus と Advanced M
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799686"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065779"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service (JMS) を使用する
 
@@ -29,7 +29,7 @@ Azure Service Bus での AMQP 1.0 のサポートにより、ブローカー メ
 このガイドでは、`basicqueue` という名前のキューが含まれる Service Bus 名前空間が既にあることを前提とします。 まだない場合は、[Azure portal](https://portal.azure.com) を使用して[名前空間とキューを作成する](service-bus-create-namespace-portal.md)ことができます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 > [!NOTE]
-> パーティション分割されたキューおよびトピックも AMQP をサポートします。 詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](service-bus-partitioned-queues-and-topics-amqp-overview.md)」を参照してください。
+> パーティション分割されたキューおよびトピックも AMQP をサポートします。 詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](./service-bus-amqp-protocol-guide.md)」を参照してください。
 > 
 > 
 
@@ -380,7 +380,7 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
-* [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
+* [Service Bus .NET API で AMQP 1.0 を使用する方法](./service-bus-amqp-dotnet.md)
 * [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)

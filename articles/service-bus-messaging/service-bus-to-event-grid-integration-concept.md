@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503295"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065116"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -41,9 +41,9 @@ Service Bus 名前空間に移動して、 **[アクセス制御 (IAM)]** を選
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-さらに、Service Bus では、標準の Event Grid セキュリティと[認証メカニズム](https://docs.microsoft.com/azure/event-grid/security-authentication)が使用されます。
+さらに、Service Bus では、標準の Event Grid セキュリティと[認証メカニズム](../event-grid/security-authentication.md)が使用されます。
 
-詳細については、「[Azure Event Grid イベント スキーマ](https://docs.microsoft.com/azure/event-grid/event-schema)」を参照してください。
+詳細については、「[Azure Event Grid イベント スキーマ](../event-grid/event-schema.md)」を参照してください。
 
 #### <a name="active-messages-available-event"></a>アクティブなメッセージが利用可能なイベント
 
@@ -132,7 +132,7 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
 
 ## <a name="azure-cli-instructions"></a>Azure CLI の手順
 
-最初に、Azure CLI バージョン 2.0 以降がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
+最初に、Azure CLI バージョン 2.0 以降がインストールされていることを確認してください。 [インストーラーをダウンロード](/cli/azure/install-azure-cli?view=azure-cli-latest)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
 
 次のコードを実行します。
 
@@ -150,7 +150,7 @@ BASH を使用している場合
 
 ## <a name="powershell-instructions"></a>PowerShell の手順
 
-Azure PowerShell がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
+Azure PowerShell がインストールされていることを確認してください。 [インストーラーをダウンロード](/powershell/azure/install-Az-ps)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
 
 ```powershell-interactive
 Connect-AzAccount
@@ -171,10 +171,10 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 ## <a name="next-steps"></a>次のステップ
 
 * Service Bus と Event Grid の[例](service-bus-to-event-grid-integration-example.md)を確認します。
-* [Event Grid](https://docs.microsoft.com/azure/event-grid/) の詳細を確認します。
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。
-* [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) の詳細を見る
-* [Service Bus](https://docs.microsoft.com/azure/service-bus/) の詳細を確認します。
+* [Event Grid](../event-grid/index.yml) の詳細を確認します。
+* [Azure Functions](../azure-functions/index.yml) について学習します。
+* [Logic Apps](../logic-apps/index.yml) の詳細を見る
+* [Service Bus](/azure/service-bus/) の詳細を確認します。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png
