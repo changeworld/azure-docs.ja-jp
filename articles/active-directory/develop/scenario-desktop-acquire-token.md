@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541925"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141297"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必須のパラメーター
 
-`AcquireTokenInteractive` の必須のパラメーターは 1 つだけです (``scopes``)。これには、トークンが必要なスコープを定義する文字列のリストが含まれています。 Microsoft Graph 用のトークンの場合、必要なスコープは各 Microsoft Graph API の API リファレンスの「アクセス許可」というセクションにあります。 たとえば、[ユーザーの連絡先を一覧表示する](https://docs.microsoft.com/graph/api/user-list-contacts)には、"User.Read"、"Contacts.Read" スコープを使用する必要があります。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)」を参照してください。
+`AcquireTokenInteractive` の必須のパラメーターは 1 つだけです (``scopes``)。これには、トークンが必要なスコープを定義する文字列のリストが含まれています。 Microsoft Graph 用のトークンの場合、必要なスコープは各 Microsoft Graph API の API リファレンスの「アクセス許可」というセクションにあります。 たとえば、[ユーザーの連絡先を一覧表示する](/graph/api/user-list-contacts)には、"User.Read"、"Contacts.Read" スコープを使用する必要があります。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](/graph/permissions-reference)」を参照してください。
 
 Android では、示されているように `.WithParentActivityOrWindow` を使用して親アクティビティを指定する必要もあります。これにより、操作後にトークンが親アクティビティに戻ります。 そのように指定しないと、`.ExecuteAsync()` の呼び出し時に例外がスローされます。
 
@@ -278,7 +278,7 @@ MSAL.NET チームでは、この拡張メカニズムを使用するように U
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>SystemWebViewOptions を使用して優れたエクスペリエンスを提供する
 
-MSAL.NET 4.1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) から、以下を指定できます。
+MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) から、以下を指定できます。
 
 - システム Web ブラウザーでのサインインあるいは同意エラーの場合に、(`BrowserRedirectError`) に移動する URI または (`HtmlMessageError`) を表示する HTML フラグメント。
 - サインインあるいは同意が成功した場合に、(`BrowserRedirectSuccess`) に移動する URI または (`HtmlMessageSuccess`) を表示する HTML フラグメント。
@@ -433,13 +433,13 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
   - または、テナント管理者が、テナント内のすべてのユーザーによるアプリケーションの使用に事前に同意しておく必要があります。
   - つまり、以下の要件が適用されます。
     - 開発者が自分で Azure portal 上の **[許可]** ボタンを選択しておきます。
-    - または、テナント管理者がアプリケーションの登録の **[API のアクセス許可]** タブにある **[{テナント ドメイン} の管理者の同意を付与/取り消す]** ボタンを選択しておきます。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)」を参照してください。
-    - または、ユーザーがアプリケーションに同意する方法を指定しておきます。 詳細については、「[個々のユーザーの同意を要求する](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent)」を参照してください。
-    - または、テナント管理者がアプリケーションに同意する方法を指定しておきます。 詳細については、[管理者の同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant)に関する記事を参照してください。
+    - または、テナント管理者がアプリケーションの登録の **[API のアクセス許可]** タブにある **[{テナント ドメイン} の管理者の同意を付与/取り消す]** ボタンを選択しておきます。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。
+    - または、ユーザーがアプリケーションに同意する方法を指定しておきます。 詳細については、「[個々のユーザーの同意を要求する](./v2-permissions-and-consent.md#requesting-individual-user-consent)」を参照してください。
+    - または、テナント管理者がアプリケーションに同意する方法を指定しておきます。 詳細については、[管理者の同意](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)に関する記事を参照してください。
 
 - このフローは、.NET デスクトップ、.NET Core、および UWP の各アプリに対して有効です。
 
-同意の詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関する記事を参照してください。
+同意の詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)に関する記事を参照してください。
 
 ### <a name="learn-how-to-use-it"></a>使用方法の確認
 

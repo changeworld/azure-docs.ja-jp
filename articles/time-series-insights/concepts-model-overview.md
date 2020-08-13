@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289956"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141722"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 のタイム シリーズ モデル
 
@@ -75,7 +75,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 [![タイム シリーズ モデルの概要グラフ](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-タイム シリーズ モデルは、[Azure Time Series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) を使用して管理できます。
+タイム シリーズ モデルは、[Azure Time Series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) を使用して管理できます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 
@@ -129,7 +129,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 ```
 
 > [!TIP]
-> インスタンス API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)に関する記事と、[インスタンス API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)を参照してください。
+> インスタンス API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)に関する記事と、[インスタンス API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)を参照してください。
 
 ## <a name="time-series-model-hierarchies"></a>タイム シリーズ モデルの階層
 
@@ -186,7 +186,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 * `ManufactureDate` は親である `year` と子である `month` を持つ階層を定義します。 各 `ManufactureDate` は複数の `years` を持つことができ、それぞれさらに複数の `months` を持つことができます。
 
 > [!TIP]
-> 階層 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[階層 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)を参照してください。
+> 階層 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[階層 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api)を参照してください。
 
 ### <a name="hierarchy-example"></a>階層の例
 
@@ -231,7 +231,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 [![タイム シリーズ モデルの種類の例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 型 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[型 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)を参照してください。
+> 型 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[型 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api)を参照してください。
 
 ### <a name="type-properties"></a>型のプロパティ
 
@@ -288,7 +288,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 
 ## <a name="next-steps"></a>次のステップ
 
-* API を使用してモデルを編集する方法の詳細について、[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)のリファレンス ドキュメントを参照します。
+* API を使用してモデルを編集する方法の詳細について、[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)のリファレンス ドキュメントを参照します。
 
 * [タイム シリーズ モデル変数](./concepts-variables.md)を使用して作成できる数式と計算を確認します
 

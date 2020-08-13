@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/23/2020
-ms.openlocfilehash: 9d29d83ed92ee0fa2217bb1c27fbf6c2fbb3584c
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 08/12/2020
+ms.openlocfilehash: e6fd405d1969a2f40a5f0c3466a57fbec60723e9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170867"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141161"
 ---
 # <a name="supported-data-types"></a>サポートされるデータ型
 
@@ -31,7 +31,7 @@ ms.locfileid: "87170867"
 
 ## <a name="sending-mixed-data-types"></a>データ型が混在しているデータの送信
 
-Azure Time Series Insights Gen2 環境は、厳密に型指定されています。 デバイスまたはタグにより、あるデバイス プロパティの異なる複数のデータ型が送信されると、値は 2 つの別の列に格納されるので、API 呼び出しで時系列モデル変数の式を定義するときには [coalesce() 関数](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)を使用する必要があります。
+Azure Time Series Insights Gen2 環境は、厳密に型指定されています。 デバイスまたはタグにより、あるデバイス プロパティの異なる複数のデータ型が送信されると、値は 2 つの別の列に格納されるので、API 呼び出しで時系列モデル変数の式を定義するときには [coalesce() 関数](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)を使用する必要があります。
 
 Azure Time Series Insights Explorer には、同じデバイス プロパティの別個の列を自動結合する方法が用意されています。 下の例では、センサーから、Long または Double の両方の可能性がある `PresentValue` プロパティが送信されます。 `PresentValue` プロパティの、格納されているすべての値に対して (データ型とは関係なく) クエリを実行する場合は、`PresentValue (Double | Long)` を選択すると複数の列が自動的に結合されます。
 
