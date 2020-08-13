@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: dpalled
-ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446643"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167999"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 での Long データ型のサポートの追加
 
@@ -66,7 +66,7 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 
 整数データは **propertyValue_long** に書き込まれます。 以前に **propertyValue_double** に取り込まれた (および今後取り込まれる) 数値データはコピーされません。
 
-**propertyValue** プロパティに対してこれら 2 つの列のデータのクエリを実行する場合は、TSX で **coalesce()** スカラー関数を使用する必要があります。 この関数によって、同じ **DataType** の引数が受け取られ、引数リスト内の最初の null 以外の値が返されます。 詳細については、[Azure Time Series Insights Gen2 データ アクセスの概念](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)に関するページを参照してください。
+**propertyValue** プロパティに対してこれら 2 つの列のデータのクエリを実行する場合は、TSX で **coalesce()** スカラー関数を使用する必要があります。 この関数によって、同じ **DataType** の引数が受け取られ、引数リスト内の最初の null 以外の値が返されます。 詳細については、[Azure Time Series Insights Gen2 データ アクセスの概念](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)に関するページを参照してください。
 
 #### <a name="variable-definition-in-tsx---numeric"></a>TSX の変数定義 - 数値
 
@@ -78,7 +78,7 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 
 [![新しい変数の定義](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>TSX クエリ API を使用したインライン変数の定義 - 数値
 
@@ -126,12 +126,12 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 }
 ```
 
-**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
 
 > [!NOTE]
 > これらの変数は、使用されている可能性があるすべての場所で更新することをお勧めします。 このような場所には、タイム シリーズ モデル、保存されたクエリ、Power BI コネクタのクエリなどがあります。
 
-### <a name="case-3-using-categorical-variables-to-map-integer-values-to-categories"></a>ケース 3: カテゴリ変数を使用して整数値をカテゴリにマップしている
+### <a name="case-3-using-categorical-variables-to-map-integer-values-to-categories"></a>ケース 3: カテゴリ変数を使用した整数値のカテゴリへのマッピング
 
 現時点で整数値をカテゴリにマップするカテゴリ変数を使用している場合は、**toLong** 関数を使用して **Double** 型から **Long** 型にデータを変換している可能性があります。 ケース 1 および 2 と同様に、**Double** と **Long** の **DataType** 列を結合する必要があります。
 
@@ -147,7 +147,7 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 
 **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
 
-カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)で **Long** 型である必要があります。
+カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>TSX クエリ API を使用したインライン変数の定義 - カテゴリ
 
@@ -227,19 +227,19 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 }
 ```
 
-カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)で **Long** 型である必要があります。
+カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
 
 > [!NOTE]
 > これらの変数は、使用されている可能性があるすべての場所で更新することをお勧めします。 このような場所には、タイム シリーズ モデル、保存されたクエリ、Power BI コネクタのクエリなどがあります。
 
-### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>ケース 4:JavaScript SDK を使用してカスタム フロントエンド アプリケーションを構築している
+### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>ケース 4:JavaScript SDK を使用したカスタム フロントエンド アプリケーションの構築
 
 ケース 1 - 3 の影響を受けていて、カスタム アプリケーションを構築する場合は、前の例で示したように、**coalesce()** 関数を使用するようにクエリを更新する必要があります。
 
-### <a name="case-5-nearing-warm-store-1000-property-limit"></a>ケース 5: ウォーム ストアの 1,000 個のプロパティの上限に近づいている
+### <a name="case-5-nearing-warm-store-1000-property-limit"></a>ケース 5: Warm ストアの 1,000 個のプロパティの上限に近づいている
 
 多数のプロパティがあるウォーム ストアのユーザーで、この変更によって環境が 1,000 個のウォーム ストアのプロパティ名の制限を超える可能性がある場合は、Azure portal からサポート チケットを送信し、この通信を伝えてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [サポートされているデータ型](concepts-supported-data-types.md)の完全な一覧を表示します。
