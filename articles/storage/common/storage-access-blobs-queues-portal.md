@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9b2de4f320801b20de5bcc9687a723dadb182ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807715"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534177"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure portal を使用した BLOB またはキュー データへのアクセス
 
@@ -25,11 +25,11 @@ ms.locfileid: "84807715"
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>BLOB またはキューのデータにアクセスするために必要なアクセス許可
 
-Azure portal で BLOB またはキュー データへのアクセスを承認する方法に応じて、特定のアクセス許可が必要になります。 ほとんどの場合、これらのアクセス許可はロールベースのアクセス制御 (RBAC) を使用して提供されます。 RBAC の詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+Azure portal で BLOB またはキュー データへのアクセスを承認する方法に応じて、特定のアクセス許可が必要になります。 ほとんどの場合、これらのアクセス許可はロールベースのアクセス制御 (RBAC) を使用して提供されます。 RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
 ### <a name="use-the-account-access-key"></a>アカウント アクセス キーを使用する
 
-BLOB およびキューのデータをアカウント アクセス キーでアクセスするには、RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む割り当てられた RBAC ロールが必要です。 この RBAC ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、次が含まれます。
+アカウント アクセス キーを使用して BLOB およびキューのデータにアクセスするには、RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、次が含まれます。
 
 - Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
 - Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
@@ -38,7 +38,7 @@ BLOB およびキューのデータをアカウント アクセス キーでア�
 Azure portal で BLOB またはキューのデータにアクセスしようとすると、ポータルはまずユーザーが **Microsoft.Storage/storageAccounts/listkeys/action** で割り当てられているロールがあるかどうかを確認します。 このアクションを持つロールが割り当てられている場合、ポータルは BLOB およびキューのデータにアクセスするためにアカウント キーを使用します。 このアクションを持つロールが割り当てられていない場合、ポータルは、Azure AD アカウントを使用してデータへのアクセスを試みます。
 
 > [!NOTE]
-> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者**ロールには、**Microsoft.Storage/storageAccounts/listkeys/action** を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つ BLOB およびキューのデータにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
+> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者**ロールには、**Microsoft.Storage/storageAccounts/listkeys/action** を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つ BLOB およびキューのデータにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
 
 ### <a name="use-your-azure-ad-account"></a>自分の Azure AD アカウントを使用する
 
@@ -47,7 +47,7 @@ Azure AD アカウントを使用して、Azure portal から BLOB またはキ�
 - Azure Resource Manager の[リーダー](../../role-based-access-control/built-in-roles.md#reader)ロールが、少なくとも、ストレージ アカウント以上のレベルを範囲として割り当てられている。 **リーダー**役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。
 - BLOB またはキューのデータへのアクセスを提供する組み込みロールまたはカスタム ロールのいずれかが割り当てられている。
 
-**リーダー** ロールの割り当てまたは別の Azure Resource Manager ロールの割り当てが必要であるため、ユーザーは Azure portal でストレージ アカウントの管理リソースを表示したり移動したりできます。 BLOB またはキューのデータへのアクセスを付与する RBAC ロールは、ストレージ アカウントの管理リソースへのアクセスを付与しません。 ポータルで BLOB またはキューのデータにアクセスするためには、ユーザーにはストレージ アカウント リソースを移動する許可が必要です。 この要件に関する詳細については、「[ポータルへのアクセス用の閲覧者ロールの割り当て](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)」を参照してください。
+**リーダー** ロールの割り当てまたは別の Azure Resource Manager ロールの割り当てが必要であるため、ユーザーは Azure portal でストレージ アカウントの管理リソースを表示したり移動したりできます。 BLOB またはキューのデータへのアクセスを許可する Azure ロールでは、ストレージ アカウントの管理リソースへのアクセスは許可されません。 ポータルで BLOB またはキューのデータにアクセスするためには、ユーザーにはストレージ アカウント リソースを移動する許可が必要です。 この要件に関する詳細については、「[ポータルへのアクセス用の閲覧者ロールの割り当て](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)」を参照してください。
 
 BLOB またはキュー データへのアクセスをサポートする組み込みロールには、次が含まれます。
 
@@ -57,7 +57,7 @@ BLOB またはキュー データへのアクセスをサポートする組み�
 - [ストレージ キュー データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor):キューに対する読み取り/書き込み/削除アクセス許可。
 - [ストレージ キュー データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader):キューに対する読み取り専用アクセス許可。
 
-カスタム ロールは、組み込みロールによって提供される同じアクセス許可のさまざまな組み合わせをサポートできます。 カスタム RBAC ロールを作成する方法の詳細については、「[Azure リソースのカスタム ロール](../../role-based-access-control/custom-roles.md)」と「[Understand role definitions for Azure resources](../../role-based-access-control/role-definitions.md)」(Azure リソースのロール定義を理解する) を参照してください。
+カスタム ロールは、組み込みロールによって提供される同じアクセス許可のさまざまな組み合わせをサポートできます。 Azure カスタム ロールを作成する方法の詳細については、「[Azure のカスタム ロール](../../role-based-access-control/custom-roles.md)」と「[Azure リソースのロール定義の概要](../../role-based-access-control/role-definitions.md)」を参照してください。
 
 従来のサブスクリプション管理者ロールでキューを一覧表示することはサポートされていません。 キューを一覧表示するには、ユーザーには Azure Resource Manager **リーダー** ロール、**ストレージ キュー データ閲覧者**ロール、または**ストレージ キュー データ共同作成者**ロールが割り当てられている必要があります。
 
@@ -82,7 +82,7 @@ BLOB またはキュー データへのアクセスをサポートする組み�
 
 ![Currently accessing container data with the account key (現在コンテナー データにアカウント キーを使用してアクセスしています)](media/storage-access-blobs-queues-portal/auth-method-access-key.png)
 
-Azure AD アカウントの使用に切り替えるには、図内で強調表示されているリンクをクリックします。 割り当てられている RBAC ロールにより適切なアクセス許可を持っていれば、続行することができます。 ただし、適切なアクセス許可を持っていない場合は、次のようなエラー メッセージが表示されます。
+Azure AD アカウントの使用に切り替えるには、図内で強調表示されているリンクをクリックします。 割り当てられている Azure ロールを通じて適切なアクセス許可が付与されている場合は、続行できます。 ただし、適切なアクセス許可を持っていない場合は、次のようなエラー メッセージが表示されます。
 
 ![Azure AD アカウントがアクセスをサポートしていないかどうかを示すエラー](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 

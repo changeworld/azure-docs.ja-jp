@@ -3,12 +3,12 @@ title: Azure Managed Disks を使用するためにクラスター ノードを�
 description: クラスターのダウンタイムをほとんどまたはまったく発生させずに、Azure Managed Disks を使用するように既存の Service Fabric クラスターをアップグレードする方法を次に示します。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255899"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542861"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure Managed Disks を使用するためにクラスター ノードをアップグレードする
 
@@ -165,7 +165,7 @@ Get-ServiceFabricClusterHealth
 
 #### <a name="parameters"></a>パラメーター
 
-新しいスケール セットのインスタンス名、数、およびサイズのパラメーターを追加します。 `vmNodeType1Name` は新しいスケール セットに一意であり、数とサイズの値は元のスケール セットと同じであることに注意してください。
+新しいスケール セットのインスタンス名のパラメーターを追加します。 `vmNodeType1Name` は新しいスケール セットに一意であり、数とサイズの値は元のスケール セットと同じであることに注意してください。
 
 **テンプレート ファイル**
 
@@ -174,18 +174,7 @@ Get-ServiceFabricClusterHealth
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-},
-"nt1InstanceCount": {
-    "type": "int",
-    "defaultValue": 5,
-    "metadata": {
-        "description": "Instance count for node type"
-    }
-},
-"vmNodeType1Size": {
-    "type": "string",
-    "defaultValue": "Standard_D2_v2"
-},
+}
 ```
 
 **パラメーター ファイル**
@@ -193,12 +182,6 @@ Get-ServiceFabricClusterHealth
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
-},
-"nt1InstanceCount": {
-    "value": 5
-},
-"vmNodeType1Size": {
-    "value": "Standard_D2_v2"
 }
 ```
 
@@ -216,13 +199,13 @@ Get-ServiceFabricClusterHealth
 
 デプロイ テンプレートの *resources* セクションで、新しい仮想マシン スケール セットを追加します。次の点に注意してください。
 
-* 新しいスケール セットでは、元のノードと同じノードの種類を参照します。
+* 新しいスケール セットでは、新しいノードの種類を参照します。
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
     ```
 
-* 新しいスケール セットでは、同じロード バランサーのバックエンド アドレスとサブネットを参照します (ただし、別のロード バランサーの受信 NAT プールを使用します)。
+* 新しいスケール セットでは、元のものと同じロード バランサーのバックエンド アドレスとサブネットを参照しますが、別のロード バランサーの受信 NAT プールを使用します。
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -253,6 +236,33 @@ Get-ServiceFabricClusterHealth
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
+
+次に、*Microsoft.ServiceFabric/clusters* リソースの `nodeTypes` リストにエントリを追加します。 元のノードの種類のエントリと同じ値を使用しますが、`name` については新しいノードの種類 (*vmNodeType1Name*) を参照する必要があります。
+
+```json
+"nodeTypes": [
+    {
+        "name": "[parameters('vmNodeType0Name')]",
+        ...
+    },
+    {
+        "name": "[parameters('vmNodeType1Name')]",
+        "applicationPorts": {
+            "endPort": "[parameters('nt0applicationEndPort')]",
+            "startPort": "[parameters('nt0applicationStartPort')]"
+        },
+        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
+        "durabilityLevel": "Silver",
+        "ephemeralPorts": {
+            "endPort": "[parameters('nt0ephemeralEndPort')]",
+            "startPort": "[parameters('nt0ephemeralStartPort')]"
+        },
+        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
+        "isPrimary": true,
+        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+    }
+],
+```
 
 テンプレートとパラメーター ファイルにすべての変更を実装したら、次のセクションに進み、Key Vault 参照を取得して、クラスターに更新をデプロイします。
 

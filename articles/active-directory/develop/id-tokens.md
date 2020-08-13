@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313338"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418918"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -71,7 +71,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`nbf` |  int、UNIX タイムスタンプ | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。|
 |`exp` |  int、UNIX タイムスタンプ | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。  この時刻よりも前でも、リソースによってトークンが拒否される可能性があることに注意してください。たとえば、認証での変更が必要な場合や、トークンの取り消しが検出された場合です。 |
 | `c_hash`| String |コード ハッシュは、ID トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
-|`at_hash`| String |アクセス トークン ハッシュは、ID トークンが OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
+|`at_hash`| String |アクセス トークン ハッシュは、ID トークンが `/authorize` エンドポイントから OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) を参照してください。 これは、`/token` エンドポイントからの ID トークンでは返されません。 |
 |`aio` | 不透明な文字列 | Azure AD がトークン再利用のためにデータの記録に使用する内部の要求。 無視してください。|
 |`preferred_username` | String | ユーザーを表すプライマリ ユーザー名です。 電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。 その値は、変更可能であり、時間の経過と共に変化することがあります。 これは変更可能であるため、この値は、承認の決定には使用できません。 この要求を受け取るには `profile` スコープが必要です。|
 |`email` | String | `email` 要求は、電子メール アドレスを持つゲスト アカウントに対して既定で使用されます。  アプリでは、[オプション要求](active-directory-optional-claims.md)である `email` を使用して、管理対象ユーザー (リソースと同じテナントのユーザー) の電子メール要求を要求できます。  v2.0 エンドポイントでは、アプリで `email` OpenID Connect スコープを要求することもできます (要求を取得するためにオプション要求とスコープの両方を要求する必要はありません)。  電子メール要求では、ユーザーのプロファイル情報からアドレス指定可能なメールのみがサポートされます。 |

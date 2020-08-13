@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309258"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530379"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -117,6 +117,9 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 > [!NOTE]
 > [Azure portal](https://portal.azure.com)、PowerShell、および Azure CLI は、別のサブスクリプションへのデータベースのコピーをサポートしていません。
 
+> [!TIP]
+> T-SQL を使用するデータベースのコピーでは、異なる Azure テナント内のサブスクリプションからのデータベースのコピーがサポートされています。
+
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 
 [の](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) に対してクエリを実行してコピー処理を監視し、[ sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)、[dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) を表示します。 コピー操作の進行中は、新しいデータベースの sys.databases ビューの **state_desc** 列が **COPYING** に設定されます。
@@ -130,7 +133,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 > [!IMPORTANT]
 > ソースよりも非常に小さいサービス目標を使用してコピーを作成する必要がある場合、ターゲット データベースには、シード処理を完了するための十分なリソースがない可能性があります。これにより、コピー操作が失敗する可能性があります。 このシナリオでは、geo リストア要求を使用して、別のサーバーや別のリージョンにコピーを作成します。 詳細については、[データベースのバックアップを使用した Azure SQL Database の復旧](recovery-using-backups.md#geo-restore)に関するページを参照してください。
 
-## <a name="rbac-roles-to-manage-database-copy"></a>データベースのコピーを管理する RBAC ロール
+## <a name="azure-roles-to-manage-database-copy"></a>データベースのコピーを管理する Azure ロール
 
 データベースのコピーを作成するには、次のロールが必要です
 
@@ -152,7 +155,7 @@ Azure portal を使用してデータベースのコピーを管理するには�
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-ポータルでリソース グループのデプロイの下の操作と、SQL 操作を含む、複数のリソースプロバイダーにまたがる操作を表示するには、以下の追加の RBAC ロールが必要です。
+ポータルでリソース グループのデプロイの下の操作と、SQL 操作を含む、複数のリソースプロバイダーにまたがる操作を表示するには、以下の追加の Azure ロールが必要です。
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 

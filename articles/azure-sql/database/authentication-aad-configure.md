@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281159"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499179"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -322,7 +322,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングできます。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |
@@ -360,7 +360,7 @@ SQL Managed Instance では Azure AD サーバー プリンシパル (ログイ�
 ただし、SQL Database と Azure Synapse で Azure Active Directory 認証を使用するには、Azure AD ID に基づく包含データベース ユーザーを使用する必要があります。 包含データベース ユーザーは、master データベース内にログインを持たず、データベースに関連付けられている Azure AD の ID にマップされます。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
 > [!NOTE]
-> Azure Portal を使用して、データベース ユーザー (管理者を除く) を作成することはできません。 RBAC ロールは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースには反映されません。 Azure RBAC ロールは Azure リソースの管理に使用され、データベースのアクセス許可には適用されません。 たとえば、**SQL Server 共同作成者**ロールでは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースに接続するためのアクセス権は付与されません。 Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
+> Azure Portal を使用して、データベース ユーザー (管理者を除く) を作成することはできません。 Azure ロールは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースには反映されません。 Azure ロールは Azure リソースの管理に使用され、データベースのアクセス許可には適用されません。 たとえば、**SQL Server 共同作成者**ロールでは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースに接続するためのアクセス権は付与されません。 Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
 
 > [!WARNING]
 > T-SQL の `CREATE LOGIN` ステートメントと `CREATE USER` ステートメントのユーザー名に含まれるコロン `:` やアンパサンド `&` などの特殊文字は、サポートされていません。
@@ -544,4 +544,3 @@ Azure AD 認証に関する問題のトラブルシューティングのガイ�
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

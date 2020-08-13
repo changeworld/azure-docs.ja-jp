@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: データ処理速度を最適化するためのベスト プラクティスと、大規模なデータ処理のために Azure Machine Learning でサポートされる統合について説明します。
 services: machine-learning
 ms.service: machine-learning
-author: sgilley
 ms.author: sgilley
+author: sdgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481886"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500965"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータ処理の最適化
 
@@ -65,7 +65,6 @@ CSV ファイルは、Excel での編集や読み取りが簡単であるため�
 
 * 分散フレームワークを使用してクラスターにスケールアウトします。 このオプションでは、データ処理の負荷は、並列で動作する複数の CPU に分割されて処理され、最終的な結果は最後に集約されます。
 
-
 ### <a name="recommended-distributed-frameworks"></a>推奨される分散フレームワーク
 
 次の表は、コードの選択またはデータ サイズに基づいて推奨される、Azure Machine Learning と統合された分散フレームワークを示しています。
@@ -82,4 +81,4 @@ CSV ファイルは、Excel での編集や読み取りが簡単であるため�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Machine Learning を使用したデータ インジェスト オプション](concept-data-ingestion.md)。
-* [Azure Data Factory を使用したデータ インジェスト](how-to-data-ingest-adf.md)。
+* [データセットを作成して登録する](how-to-create-register-datasets.md)。

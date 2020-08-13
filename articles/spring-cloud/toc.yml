@@ -22,6 +22,8 @@
   items:
     - name: アプリを手動でスケーリングする
       href: spring-cloud-tutorial-scale-manual.md
+    - name: アプリを自動スケーリングする
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: アラートとアクション グループ
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: IntelliJ を使用してアプリを展開する
@@ -38,8 +40,6 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: マイクロサービス アプリケーションの自動スケーリングを設定する
-      href: spring-cloud-tutorial-setup-autoscale.md
 - name: サンプル
   items:
     - name: Azure Policy の組み込み

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 73e23f24717616ef417460d2fdae6116cfdbdb3a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373244"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810413"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -43,7 +43,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
 * **Query** - 開発者は、Query カテゴリを使用して、複数のリレーションシップにわたる[ツイングラフで一連の Digital Twins を検索できます](how-to-query-graph.md)。
 * **EventRoutes** - EventRoutes カテゴリには、システムを通してダウンストリーミング サービスに[データをルーティングする](concepts-route-events.md) API が含まれています。
 
-パブリック プレビューの最新のデータ プレーン API バージョンは、**2020-05-31-preview** です。__
+パブリック プレビューの最新のデータ プレーン API バージョンは、**2020-05-31-preview** です。__ データ プレーン操作に対する _2020-03-01-preview_ API バージョンは非推奨になりました。
 
 データ プレーン API を使用するには
 * API を直接呼び出すには、次の操作を実行します。
@@ -284,7 +284,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 portal のホームページで、Azure Digital Twins インスタンスを検索して詳細を取得します。 Azure Digital Twins インスタンスのメニューから **[メトリック]** オプションを選択して、 *[メトリック]* ページを表示します。
 
-:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
+:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
 
 ここから、インスタンスのメトリックを表示したり、カスタム ビューを作成したりできます。
 

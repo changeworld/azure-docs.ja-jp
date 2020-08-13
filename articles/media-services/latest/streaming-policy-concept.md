@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582769"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544015"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
-Azure Media Services v3 では、[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使用して、[ストリーミング ロケーター](streaming-locators-concept.md)のためのストリーミング プロトコルと暗号化オプションを定義できます。 Media Services v3 には、試用または運用環境で直接使用できるように、いくつかの定義済みのストリーミングポリシーが用意されています。 
+Azure Media Services v3 では、[ストリーミング ポリシー](/rest/api/media/streamingpolicies)を使用して、[ストリーミング ロケーター](streaming-locators-concept.md)のためのストリーミング プロトコルと暗号化オプションを定義できます。 Media Services v3 には、試用または運用環境で直接使用できるように、いくつかの定義済みのストリーミングポリシーが用意されています。 
 
 現在利用できる定義済みのストリーミング ポリシー:<br/>
 * 'Predefined_DownloadOnly'
@@ -40,15 +40,15 @@ Azure Media Services v3 では、[ストリーミング ポリシー](https://do
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![シナリオに対して定義済みのストリーミング ポリシーを選択できるように設計されたデシジョン ツリーを示す図。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 コンテンツを暗号化する場合、[コンテンツ キー ポリシー](content-key-policy-concept.md)を作成する必要がありますが、**コンテンツ キー ポリシー**はクリアなストリーミングまたはダウンロードには必要ありません。 
 
-特別な要件がある (例: 異なるプロトコルを指定したい、カスタム キー配信サービスを使用する必要がある、クリアなオーディオ トラックを使用する必要がある) 場合は、カスタム ストリーミング ポリシーを[作成](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)できます。 
+特別な要件がある (例: 異なるプロトコルを指定したい、カスタム キー配信サービスを使用する必要がある、クリアなオーディオ トラックを使用する必要がある) 場合は、カスタム ストリーミング ポリシーを[作成](/rest/api/media/streamingpolicies/create)できます。 
 
 ## <a name="get-a-streaming-policy-definition"></a>ストリーミング ポリシー定義を取得する  
 
-ストリーミング ポリシーの定義を表示する場合は、[Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) を使用し、ポリシー名を指定します。 次に例を示します。
+ストリーミング ポリシーの定義を表示する場合は、[Get](/rest/api/media/streamingpolicies/get) を使用し、ポリシー名を指定します。 次に例を示します。
 
 ### <a name="rest"></a>REST
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a9c3264a9a9d6ae27eee6da4338fa6fd401da461
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371687"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534058"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure Storage 用の Azure セキュリティ ベースライン
 
@@ -292,7 +292,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**: Azure Storage アカウントまたは Azure Active Directory には、既定または空のパスワードという概念がありません。 Azure Storage では、Azure のロールベースのアクセス制御 (RBAC) と、共有キーおよび Shared Access Signature (SAS) をサポートするアクセス制御モデルが実装されます。 共有キーと SAS 認証の特徴は、呼び出し元に ID が関連付けられていないため、セキュリティ プリンシパルのアクセス許可ベースの承認を実行できないことです。 
+**ガイダンス**: Azure Storage アカウントまたは Azure Active Directory には、既定または空のパスワードという概念がありません。 Azure Storage では、Azure のロールベースのアクセス制御 (Azure RBAC) と、共有キーおよび Shared Access Signature (SAS) をサポートするアクセス制御モデルが実装されます。 共有キーと SAS 認証の特徴は、呼び出し元に ID が関連付けられていないため、セキュリティ プリンシパルのアクセス許可ベースの承認を実行できないことです。 
 
 - [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -536,7 +536,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、ロールベースのアクセス制御 (RBAC) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールは、Azure Storage によって定義されます。 
 
-- [Azure Storage アカウントに RBAC ロールを割り当てる方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
+- [Azure Storage アカウントに Azure ロールを割り当てる方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
@@ -860,7 +860,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b7ae2e3045b8f6e56b756ac1b2a4233ac8af9688
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373455"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535027"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
@@ -148,7 +148,7 @@ plt.show()
 ![箱ひげ図](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
 ![散布図](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
-## <a name="preparing-the-data"></a>データを準備する
+## <a name="prepare-the-data"></a>データを準備する
 
 生の形式のデータは、高い頻度で、モデルに直接渡すことに適していません。 データに対して一連のアクションを実行して、モデルでそれを使用できる状態にする必要があります。
 
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 2 つの DataFrame が得られたところで、次のタスクは、モデル式を作成して、トレーニング DataFrame に対してそれを実行し、さらにテスト用 DataFrame に対して検証することです。 さまざまなバージョンのモデル式で試して、さまざまな組み合わせの影響を確認する必要があります。
 
 > [!Note]
-> モデルを保存するためには、Azure Storage Blob データ共同作成者 RBAC ロールが必要です。 お使いのストレージ アカウントで、[アクセス制御 (IAM)] に移動し、[ロール割り当ての追加] を選択します。 [ストレージ BLOB データ共同作成者] RBAC ロールを SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
+> モデルを保存するためには、Storage BLOB データ共同作成者 の Azure ロールが必要です。 お使いのストレージ アカウントで、[アクセス制御 (IAM)] に移動し、[ロール割り当ての追加] を選択します。 Storage BLOB データ共同作成者の Azure ロールを SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
 
 ```python
 ## Create a new LR object for the model

@@ -139,6 +139,8 @@
               href: howto-monitor-application-health.md
             - name: アプリケーションに関する情報
               href: howto-get-app-info.md
+            - name: X.509 証明書のロール
+              href: how-to-roll-x509-certificates.md
         - name: 他の場所からの管理
           items:
             - name: Azure portal からの管理

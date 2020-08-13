@@ -85,7 +85,7 @@
       href: concept-github-action.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -109,6 +109,8 @@
       href: howto-labels-aspnet-core.md
     - name: 構成データのインポートまたはエクスポート
       href: howto-import-export-data.md
+    - name: キー値に JSON コンテンツ タイプを使用する
+      href: howto-leverage-json-content-type.md
     - name: カスタム エンドポイントへのイベントのルーティング
       href: howto-app-configuration-event.md
     - name: 構成ストアの自動バックアップ

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: matjazl
   ms.author: matjazl
-  ms.date: 08/06/2020
-  ms.openlocfilehash: 24f509c4ee2475842486fe6e11f98860b14a43d7
-  ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+  ms.date: 08/12/2020
+  ms.openlocfilehash: 66fc6223a50a062631a74e62e32e0e67c7d6ba73
+  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87901676"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88167489"
 landingContent:
 - title: Azure API for FHIR の開始
   linkLists:
@@ -41,6 +41,8 @@ landingContent:
       url: access-fhir-postman-tutorial.md
     - text: サードパーティ アプリと医療記録の SMART 統合
       url: use-smart-on-fhir-proxy.md
+    - text: Azure IoT Hub を通じてデバイス データを受信する
+      url: device-data-through-iot-hub.md
 - title: AD 認証用のアプリの登録
   linkLists:
   - linkListType: how-to-guide

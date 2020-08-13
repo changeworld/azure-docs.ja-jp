@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d1de40944b4ab15268cda576f477c08fc179f1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255903"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497326"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box 用の Azure セキュリティ ベースライン
 
@@ -216,7 +216,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: ご利用の Azure Data Box への管理アクセス権を持つユーザー アカウントのインベントリを維持します。 Azure portal でサブスクリプションの ID およびアクセス管理 (IAM) ペインを使用して、ロールベースのアクセス制御 (RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、マネージド ID に適用されます。注文が最初に作成されたときに、注文にアクセスできるユーザーを制御できます。 さまざまな範囲のロールベースのアクセス制御 (RBAC) ロールを設定して、Data Box の注文へのアクセスを制御します。 RBAC ロールは、アクセスの種類 (読み取り/書き込み、読み取り専用、操作のサブセットへの読み取り/書き込み) を決定します。
+**ガイダンス**: ご利用の Azure Data Box への管理アクセス権を持つユーザー アカウントのインベントリを維持します。 Azure portal でサブスクリプションの ID およびアクセス管理 (IAM) ペインを使用して、ロールベースのアクセス制御 (RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、マネージド ID に適用されます。注文が最初に作成されたときに、注文にアクセスできるユーザーを制御できます。 さまざまな範囲の Azure ロールを設定して、Data Box の注文へのアクセスを制御します。 Azure ロールは、アクセスの種類 (読み取り/書き込み、読み取り専用、操作のサブセットへの読み取り/書き込み) を決定します。
 
 * [カスタム ロールについて](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
@@ -297,7 +297,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
+**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
 
 * [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -841,7 +841,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**: ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**:ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 * [NIST の出版物 - IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 

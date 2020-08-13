@@ -37,7 +37,7 @@
           href: database/scale-resources.md
         - name: 読み取りスケールアウト
           href: database/read-scale-out.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: 概要
               href: database/security-overview.md
@@ -273,7 +273,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -341,7 +341,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -529,7 +529,7 @@
               href: database/elastic-query-horizontal-partitioning.md
             - name: スキーマが異なるテーブル間のクエリ
               href: database/elastic-query-vertical-partitioning.md
-        - name: エラスティック ジョブ
+        - name: エラスティック ジョブ (プレビュー)
           items:
             - name: ジョブの構成
               href: database/elastic-jobs-overview.md
@@ -809,24 +809,40 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                         - name: 5 - 予測
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-            - name: Python、R パッケージの管理
+            - name: 方法
               items:
-                - name: Python
+                - name: データ探索とモデリング
                   items:
-                    - name: Python パッケージ情報の取得
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: sqlmlutils を使用してインストールする
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                - name: R
+                    - name: Python
+                      items:
+                        - name: Python でのヒストグラムのプロット
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-plot-histogram?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: pandas データ フレームにデータをインポートする
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: SQL にデータフレームを挿入する
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: 予測
                   items:
-                    - name: R パッケージ情報の取得
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: sqlmlutils を使用してインストールする
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: miniCRAN リポジトリの作成
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: R パッケージを使用するためのヒント
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: PREDICT T-SQL でのネイティブ スコアリング
+                      href: 'https://docs.microsoft.com/sql/machine-learning/predictions/native-scoring-predict-transact-sql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: パッケージの管理
+                  items:
+                    - name: 新しい Python パッケージのインストール
+                      items:
+                        - name: Python パッケージ情報の取得
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: sqlmlutils を使用してインストールする
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: 新しい R パッケージのインストール
+                      items:
+                        - name: R パッケージ情報の取得
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: sqlmlutils を使用してインストールする
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: miniCRAN リポジトリの作成
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: R パッケージを使用するためのヒント
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
         - name: 特徴
           items:
             - name: リンク サーバー
@@ -835,7 +851,7 @@
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: データベース メール
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
-        - name: セキュリティ
+        - name: Security
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md

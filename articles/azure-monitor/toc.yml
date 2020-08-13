@@ -147,7 +147,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -196,7 +196,21 @@
               href: app/pricing.md
             - name: ログ データの使用量とコスト
               href: platform/manage-cost-storage.md
-        - name: Log Analytics ワークスペース
+    - name: プラットフォーム ログ
+      items:
+        - name: 概要
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: アクティビティ ログ
+          href: platform/activity-log.md
+        - name: リソース ログ
+          href: platform/resource-logs.md
+        - name: 診断設定
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+    - name: Log Analytics
+      items:
+        - name: Workspaces
           items:
             - name: ワークスペース デプロイの設計
               href: platform/design-logs-deployment.md
@@ -218,119 +232,6 @@
               href: platform/service-providers.md
             - name: アクセスを管理する
               href: platform/manage-access.md
-        - name: 仮想マシンのエージェント
-          items:
-            - name: 概要
-              href: platform/agents-overview.md
-            - name: よく寄せられる質問
-              href: faq.md#agents
-            - name: Azure Diagnostics 拡張機能
-              items:
-                - name: 概要
-                  href: platform/diagnostics-extension-overview.md
-                - name: Windows
-                  displayname: diagnostics extension
-                  items:
-                    - name: インストールと構成
-                      items:
-                        - name: インストール オプション
-                          href: platform/diagnostics-extension-windows-install.md
-                        - name: PowerShell
-                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                        - name: Resource Manager テンプレート
-                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
-                    - name: Azure Monitor メトリックへの送信
-                      items:
-                        - name: 仮想マシン
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                        - name: VM スケール セット
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: VM クラシック
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
-                        - name: クラウド サービス
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Event Hubs への送信
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: ログへの送信
-                      href: platform/diagnostics-extension-logs.md
-                    - name: Application Insights への送信
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: バージョン履歴
-                      href: platform/diagnostics-extension-versions.md
-                    - name: トラブルシューティング
-                      href: platform/diagnostics-extension-troubleshooting.md
-                - name: Linux
-                  displayname: diagnostics extension
-                  items:
-                    - name: 概要
-                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: Telegraf を使用したメトリックの収集
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics エージェント
-              items:
-                - name: 概要
-                  href: platform/log-analytics-agent.md
-                - name: Windows エージェント
-                  href: platform/agent-windows.md
-                - name: Linux エージェント
-                  href: platform/agent-linux.md
-                - name: Windows 用の VM 拡張機能
-                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-                - name: Linux 用の VM 拡張機能
-                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-                - name: Log Analytics ゲートウェイ
-                  href: platform/gateway.md
-                - name: エージェント管理
-                  href: platform/agent-manage.md
-                - name: エージェントの正常性
-                  href: insights/solution-agenthealth.md
-                - name: データ ソース
-                  items:
-                    - name: 概要
-                      href: platform/agent-data-sources.md
-                    - name: Windows イベント
-                      href: platform/data-sources-windows-events.md
-                    - name: カスタム JSON データ
-                      href: platform/data-sources-json.md
-                    - name: CollectD のパフォーマンス データ
-                      href: platform/data-sources-collectd.md
-                    - name: syslog
-                      href: platform/data-sources-syslog.md
-                    - name: パフォーマンス カウンター
-                      href: platform/data-sources-performance-counters.md
-                    - name: Linux アプリケーション パフォーマンス
-                      href: platform/data-sources-linux-applications.md
-                    - name: IIS ログ
-                      href: platform/data-sources-iis-logs.md
-                    - name: カスタム ログ
-                      href: platform/data-sources-custom-logs.md
-                    - name: カスタム フィールド
-                      href: platform/custom-fields.md
-            - name: トラブルシューティング
-              items:
-                - name: Log Analytics VM 拡張機能
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/vmext-troubleshoot.md
-                - name: Log Analytics Windows エージェント
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-windows-troubleshoot.md
-                - name: Log Analytics Linux エージェント
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-linux-troubleshoot.md
-    - name: プラットフォーム ログ
-      items:
-        - name: 概要
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: アクティビティ ログ
-          href: platform/activity-log.md
-        - name: リソース ログ
-          href: platform/resource-logs.md
-        - name: 診断設定
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
         - name: ログ クエリの概要
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
@@ -424,6 +325,135 @@
           href: platform/metric-chart-samples.md
         - name: メトリック グラフのトラブルシューティング
           href: platform/metrics-troubleshoot.md
+    - name: データ コレクション
+      items:
+        - name: データ収集ルール
+          href: platform/data-collection-rule-overview.md
+        - name: カスタム メトリック
+          items:
+            - name: カスタム メトリック
+              href: platform/metrics-custom-overview.md
+            - name: メトリック REST API
+              href: platform/metrics-store-custom-rest-api.md
+        - name: カスタム ログ
+          items:
+            - name: Log Analytics データ コレクター API
+              href: platform/data-collector-api.md
+            - name: Log Analytics データ コレクター API パイプラインの例
+              href: platform/create-pipeline-datacollector-api.md
+        - name: Logic Apps
+          items:
+            - name: Azure Monitor Logs コネクタ
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights コネクタ
+              href: app/automate-with-logic-apps.md
+    - name: エージェント
+      items:
+        - name: 概要
+          href: platform/agents-overview.md
+        - name: よくあるご質問
+          href: faq.md#agents
+        - name: Azure Monitor エージェント
+          items:
+            - name: 概要
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-overview.md
+            - name: データ コレクション
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Azure Diagnostics 拡張機能
+          items:
+            - name: 概要
+              href: platform/diagnostics-extension-overview.md
+            - name: Windows
+              displayname: diagnostics extension
+              items:
+                - name: インストールと構成
+                  items:
+                    - name: インストール オプション
+                      href: platform/diagnostics-extension-windows-install.md
+                    - name: PowerShell
+                      href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                    - name: Resource Manager テンプレート
+                      href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                - name: Azure Monitor メトリックへの送信
+                  items:
+                    - name: 仮想マシン
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                    - name: VM スケール セット
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                    - name: VM クラシック
+                      href: platform/collect-custom-metrics-guestos-vm-classic.md
+                    - name: クラウド サービス
+                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                - name: Event Hubs への送信
+                  href: platform/diagnostics-extension-stream-event-hubs.md
+                - name: ログへの送信
+                  href: platform/diagnostics-extension-logs.md
+                - name: Application Insights への送信
+                  href: platform/diagnostics-extension-to-application-insights.md
+                - name: バージョン履歴
+                  href: platform/diagnostics-extension-versions.md
+                - name: トラブルシューティング
+                  href: platform/diagnostics-extension-troubleshooting.md
+            - name: Linux
+              displayname: diagnostics extension
+              items:
+                - name: 概要
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: Telegraf を使用したメトリックの収集
+                  href: platform/collect-custom-metrics-linux-telegraf.md
+        - name: Log Analytics エージェント
+          items:
+            - name: 概要
+              href: platform/log-analytics-agent.md
+            - name: Windows エージェント
+              href: platform/agent-windows.md
+            - name: Linux エージェント
+              href: platform/agent-linux.md
+            - name: Windows 用の VM 拡張機能
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Linux 用の VM 拡張機能
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics ゲートウェイ
+              href: platform/gateway.md
+            - name: エージェント管理
+              href: platform/agent-manage.md
+            - name: エージェントの正常性
+              href: insights/solution-agenthealth.md
+            - name: データ ソース
+              items:
+                - name: 概要
+                  href: platform/agent-data-sources.md
+                - name: Windows イベント
+                  href: platform/data-sources-windows-events.md
+                - name: カスタム JSON データ
+                  href: platform/data-sources-json.md
+                - name: CollectD のパフォーマンス データ
+                  href: platform/data-sources-collectd.md
+                - name: syslog
+                  href: platform/data-sources-syslog.md
+                - name: パフォーマンス カウンター
+                  href: platform/data-sources-performance-counters.md
+                - name: Linux アプリケーション パフォーマンス
+                  href: platform/data-sources-linux-applications.md
+                - name: IIS ログ
+                  href: platform/data-sources-iis-logs.md
+                - name: カスタム ログ
+                  href: platform/data-sources-custom-logs.md
+                - name: カスタム フィールド
+                  href: platform/custom-fields.md
+        - name: トラブルシューティング
+          items:
+            - name: Log Analytics VM 拡張機能
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/vmext-troubleshoot.md
+            - name: Log Analytics Windows エージェント
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-windows-troubleshoot.md
+            - name: Log Analytics Linux エージェント
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-linux-troubleshoot.md
     - name: 自動スケール
       items:
         - name: 概要
@@ -1148,29 +1178,6 @@
               href: log-query/dashboard-upgrade.md
         - name: データを Grafana に送信する
           href: platform/grafana-plugin.md
-    - name: カスタム データの収集と分析
-      items:
-        - name: カスタム メトリック
-          items:
-            - name: カスタム メトリック
-              href: platform/metrics-custom-overview.md
-            - name: メトリック REST API
-              href: platform/metrics-store-custom-rest-api.md
-        - name: カスタム ログ
-          items:
-            - name: Log Analytics データ コレクター API
-              href: platform/data-collector-api.md
-            - name: Log Analytics データ コレクター API パイプラインの例
-              href: platform/create-pipeline-datacollector-api.md
-        - name: Logic Apps
-          items:
-            - name: Azure Monitor Logs コネクタ
-              href: platform/logicapp-flow-connector.md
-            - name: Application Insights コネクタ
-              href: app/automate-with-logic-apps.md
-        - name: REST API
-          displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
     - name: System Center の統合
       items:
         - name: Operations Manager に接続する
@@ -1274,6 +1281,9 @@
           href: /rest/api/monitor/
         - name: Azure Monitor ログ
           href: /rest/api/loganalytics
+        - name: REST API のチュートリアル
+          displayname: 'metrics, analyze'
+          href: platform/rest-api-walkthrough.md
     - name: Resource Manager テンプレート
       items:
         - name: Azure Monitor

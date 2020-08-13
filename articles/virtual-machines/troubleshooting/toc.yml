@@ -56,7 +56,7 @@
     - name: VM の起動が停止しています
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM のライフサイクルと状態
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: VM が起動しない
   items:
     - name: Linux

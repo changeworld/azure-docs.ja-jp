@@ -2,13 +2,13 @@
 title: Azure Monitor for containers からのメトリック アラート | Microsoft Docs
 description: この記事では、Azure Monitor for containers から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: c8b75b0d9b22658253c4637bd6507144575934de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094622"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563366"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Azure Monitor for containers からの推奨メトリック アラート (プレビュー)
 
@@ -33,7 +33,7 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
     表示された値は、**ciprod05262020** より後のバージョンである必要があります。 クラスターで古いバージョンを使用している場合は、[AKS クラスターでエージェントをアップグレードする](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)手順に従って、最新バージョンを取得します。
     
-    エージェントのリリースに関する詳細については、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。 メトリックが収集されていることを確認するには、Azure Monitor のメトリックス エクスプローラーを使用して、**分析情報**が一覧表示されている **[メトリック名前空間]** から確認できます。 収集されている場合は、先に進んで、アラートの設定を開始できます。
+    エージェントのリリースに関する詳細については、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。 メトリックが収集されていることを確認するには、Azure Monitor のメトリックス エクスプローラーを使用して、**分析情報**が一覧表示されている **[メトリック名前空間]** から確認できます。 収集されている場合は、先に進んで、アラートの設定を開始できます。 収集されたメトリックが表示されない場合は、クラスターのサービス プリンシパルまたは MSI に必要なアクセス許可がありません。 SPN または MSI が**監視メトリック パブリッシャー** ロールのメンバーであることを確認するには、「[Azure CLI を使用してクラスターごとにアップグレードする](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)」セクションの手順に従って、ロールの割り当てを確認して設定します。
 
 ## <a name="alert-rules-overview"></a>アラート ルールの概要
 

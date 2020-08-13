@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d29bccdadeef44f1ae4cdae5875257f95395b96f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373285"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534041"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure Digital Twins をセキュリティで保護する
 
@@ -33,7 +33,7 @@ Azure AD では、アクセスは 2 段階のプロセスです。 セキュリ�
 
 この認証手順では、実行時のアプリケーション要求に OAuth 2.0 アクセス トークンが含まれている必要があります。 アプリケーションが Azure エンティティ ([Azure Functions](../azure-functions/functions-overview.md) アプリなど) 内で実行されている場合、**マネージド ID** を使用してリソースにアクセスできます。 マネージド ID の詳細については、次のセクションを参照してください。
 
-承認の手順では、セキュリティ プリンシパルに RBAC ロールを割り当てる必要があります。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Digital Twins には、Azure Digital Twins リソースの一連のアクセス許可を含む RBAC ロールが用意されています。 これらのロールについては、この記事の後半で説明します。
+承認の手順では、セキュリティ プリンシパルに Azure ロールを割り当てる必要があります。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Digital Twins には、Azure Digital Twins リソースの一連のアクセス許可を含む Azure ロールが用意されています。 これらのロールについては、この記事の後半で説明します。
 
 Azure でサポートされているロールとロールの割り当ての詳細については、Azure RBAC ドキュメントの[*各種ロールの概要*](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
@@ -41,9 +41,9 @@ Azure でサポートされているロールとロールの割り当ての詳�
 
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、アプリケーション コードが実行されるデプロイに関連付けられた、セキュリティで保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
 
-マネージド ID では、Azure プラットフォームがこのランタイム ID を管理します。 ID 自体やアクセスする必要のあるリソース用に、アクセス キーをアプリケーション コードや構成に保存して保護する必要はありません。 Azure App Service アプリケーション内で実行される Azure Digital Twins クライアント アプリで、SAS ルールとキー、またはその他のアクセス トークンを処理する必要はありません。 クライアント アプリには、Azure Digital Twins 名前空間のエンドポイント アドレスのみが必要です。 アプリが接続されると、Azure Digital Twins によってマネージド エンティティのコンテキストがクライアントにバインドされます。 マネージド ID に関連付けられると、Azure Digital Twins クライアントは承認済みのすべての操作を実行できます。 次に、マネージド エンティティを Azure Digital Twins RBAC ロールに関連付けることにより、承認が付与されます (説明は後述します)。
+マネージド ID では、Azure プラットフォームがこのランタイム ID を管理します。 ID 自体やアクセスする必要のあるリソース用に、アクセス キーをアプリケーション コードや構成に保存して保護する必要はありません。 Azure App Service アプリケーション内で実行される Azure Digital Twins クライアント アプリで、SAS ルールとキー、またはその他のアクセス トークンを処理する必要はありません。 クライアント アプリには、Azure Digital Twins 名前空間のエンドポイント アドレスのみが必要です。 アプリが接続されると、Azure Digital Twins によってマネージド エンティティのコンテキストがクライアントにバインドされます。 マネージド ID に関連付けられると、Azure Digital Twins クライアントは承認済みのすべての操作を実行できます。 次に、マネージド エンティティを Azure Digital Twins Azure ロールに関連付けることにより、承認が付与されます (説明は後述します)。
 
-### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Authorization:Azure Digital Twins の RBAC ロール
+### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Authorization:Azure Digital Twins の Azure ロール
 
 Azure には、Azure Digital Twins リソースへのアクセス承認用に、以下の Azure 組み込みロールが用意されています。
 * *Azure Digital Twins Owner (プレビュー)* - Azure Digital Twins リソースに対するフル アクセス権を付与するには、このロールを使用します。
@@ -62,7 +62,7 @@ Azure には、Azure Digital Twins リソースへのアクセス承認用に、
 
 ## <a name="permission-scopes"></a>アクセス許可のスコープ
 
-セキュリティ プリンシパルに RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、できるだけ狭いスコープのみを付与するのが最善の方法です。
+セキュリティ プリンシパルに Azure ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、できるだけ狭いスコープのみを付与するのが最善の方法です。
 
 次の一覧は、Azure Digital Twins リソースへのアクセスのスコープを指定できるレベルについて説明したものです。
 * モデル:このリソースのアクションを使用すると、Azure Digital Twins にアップロードされた[モデル](concepts-models.md)の制御を指示できます。

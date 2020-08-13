@@ -161,11 +161,8 @@
             - name: ユーザーとロールを管理する
               href: how-to-assign-roles.md
             - name: 仮想ネットワークの使用
-              displayName: 'vnet, blob'
+              displayName: 'vnet, blob, private endpoint, private link'
               href: how-to-enable-virtual-network.md
-            - name: Private Link を使用する
-              displayName: private endpoint
-              href: how-to-configure-private-link.md
             - name: TLS を使用して Web サービスをセキュリティで保護する
               displayName: ssl
               href: how-to-secure-web-service.md
@@ -457,8 +454,8 @@
         - name: パイプラインのデバッグとトラブルシューティングを行う
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: Application Insights でパイプラインをデバッグする
-          href: how-to-debug-pipelines-application-insights.md
+        - name: パイプライン データを Application Insights にログする
+          href: how-to-log-pipelines-application-insights.md
         - name: 並列実行ステップの使用
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md

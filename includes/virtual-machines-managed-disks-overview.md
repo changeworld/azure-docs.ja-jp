@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102794"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162844"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -41,7 +41,7 @@ ms.locfileid: "87102794"
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
-[Azure のロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 マネージド ディスク では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーがマネージド ディスクをストレージ アカウントにコピーすることが望ましくない場合は、そのマネージド ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+[Azure のロールベースのアクセス制御 (Azure RBAC)](../articles/role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 マネージド ディスク では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーがマネージド ディスクをストレージ アカウントにコピーすることが望ましくない場合は、そのマネージド ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
 
 ### <a name="upload-your-vhd"></a>お使いの VHD をアップロードする
 
@@ -53,7 +53,7 @@ VHD を Azure に転送する方法については、[CLI](../articles/virtual-m
 
 ### <a name="private-links"></a>プライベート リンク
 
-マネージド ディスクでは、プライベート リンクを使用してネットワーク内部のマネージド ディスクをインポートまたはエクスポートできます。 プライベート リンクを使用すると、接続されていないマネージド ディスクおよびスナップショットに対して期限付きの Shared Access Signature (SAS) URI を生成できます。これを使用して、リージョン拡張、ディザスター リカバリー、およびフォレンジック分析のために他のリージョンにデータをエクスポートできます。 SAS URI は、オンプレミスから空のディスクに VHD を直接アップロードするために使用することもできます。 現在、[プライベート リンク](../articles/private-link/private-link-overview.md)を使用して、マネージド ディスクのエクスポートとインポートが対象の Azure 仮想ネットワーク内でのみ発生するように制限できます。 プライベート リンクを使用すると、セキュリティで保護された Microsoft バックボーン ネットワーク内でのみデータが移動することが保証されます。
+マネージド ディスクの Private Link サポートは現在プレビュー段階であり、ネットワークの内部でマネージド ディスクをインポートまたはエクスポートするために使用できます。 プライベート リンクを使用すると、接続されていないマネージド ディスクおよびスナップショットに対して期限付きの Shared Access Signature (SAS) URI を生成できます。これを使用して、リージョン拡張、ディザスター リカバリー、およびフォレンジック分析のために他のリージョンにデータをエクスポートできます。 SAS URI は、オンプレミスから空のディスクに VHD を直接アップロードするために使用することもできます。 現在、[プライベート リンク](../articles/private-link/private-link-overview.md)を使用して、マネージド ディスクのエクスポートとインポートが対象の Azure 仮想ネットワーク内でのみ発生するように制限できます。 プライベート リンクを使用すると、セキュリティで保護された Microsoft バックボーン ネットワーク内でのみデータが移動することが保証されます。
 
 マネージド ディスクをインポートまたはエクスポートするためにプライベート リンクを有効にする方法については、[CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) または[ポータル](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md)に関するページを参照してください。
 

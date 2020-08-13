@@ -3,12 +3,12 @@ title: Azure Backup を使用して Azure に SAP HANA データベースをバ�
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513869"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809138"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -25,7 +25,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 > * オンデマンド バックアップ ジョブを実行する
 
 >[!NOTE]
->RHEL (7.4、7.6、7.7、または 8.1) の SAP HANA バックアップ プレビューの[使用を開始](./tutorial-backup-sap-hana-db.md)します。 その他のクエリについては、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
+>2020 年 8 月 1 日の時点で、RHEL (7.4、7.6、7.7、8.1) 用の SAP HANA バックアップは一般提供されています。
 
 >[!NOTE]
 >**Azure VM での SQL Server の論理的な削除と Azure VM ワークロードでの SAP HANA の論理的な削除**が、プレビューで利用できるようになりました。<br>
@@ -67,7 +67,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 1. **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
 
-Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。
+Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 
@@ -214,4 +214,4 @@ Azure Backup でバックアップされているデータベースの (HANA Stu
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure VM で稼働している SAP HANA データベースを復元する](./sap-hana-db-restore.md)方法を学習する
-* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](./sap-hana-db-manage.md)方法を学習します
+* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](./sap-hana-db-manage.md)方法を学習する

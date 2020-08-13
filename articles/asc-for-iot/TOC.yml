@@ -31,6 +31,8 @@
       href: quickstart-create-security-twin.md
     - name: カスタムのセキュリティのアラートを作成する
       href: quickstart-create-custom-alerts.md
+    - name: セキュリティ アラートについて調査する
+      href: quickstart-investigate-security-alerts.md
 - name: 概念
   items:
     - name: セキュリティ エージェントの認証

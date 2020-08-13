@@ -9,16 +9,16 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: d24449f942a8c0da6774ebb2aa85f94a3088b36c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aa11d17aaba28819c4c5ecfb259eea2d8d12ce7d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324949"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431874"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
 
-**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio (クラシック) Web サービスを再トレーニングする方法を示します。 新しい Studio (クラシック) Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 45a8a2e4df35b0ddbf3fe3e42308a3361e1c912e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c15883f4e2a515e8c6015a39951a8729cf77274
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000144"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543998"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要  
 
@@ -34,7 +34,7 @@ ms.locfileid: "87000144"
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
+[![ビデオ オン デマンド アプリケーションを開発するために Azure Media Services オブジェクト データ モデルで最もよく使用されるオブジェクトの一部を示す図。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 REST API を使用して Media Services での開発を始めるには、次の前提条件が必要です。
@@ -867,7 +867,7 @@ Date: Mon, 14 May 2012 21:41:32 GMT
 AccessPolicy と Locator を設定したら、Azure Storage REST API を使用してファイルをダウンロードできます。  
 
 > [!NOTE]
-> 前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。 例: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? 。 。 。
+> 前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。 例: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? 。 。 .
 
 Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](/rest/api/storageservices/blob-service-rest-api)をご覧ください。
 

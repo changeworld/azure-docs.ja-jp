@@ -290,12 +290,16 @@
                   href: customize-encoder-presets-how-to.md
                 - name: オーバーレイ変換の作成
                   href: how-to-create-overlay.md
+                - name: .NET を使用してサムネイルを生成する
+                  href: media-services-generate-thumbnails-dotnet.md
             - name: CLI の場合
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: REST の場合
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+            - name: REST を使用してサムネイルを生成する
+              href: media-services-generate-thumbnails-rest.md
         - name: ビデオをサブクリップする
           items:
             - name: .NET の場合

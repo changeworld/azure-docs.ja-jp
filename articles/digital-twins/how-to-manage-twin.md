@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061593"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563927"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -37,10 +37,10 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 必要に応じて、デジタル ツインのすべてのプロパティの初期値を指定できます。 
 
-> [!TIP]
-> GetDigitalTwin を使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。  
-
 モデルと初期プロパティ値は、`initData` パラメーターによって提供されます。これは、関連データを含む JSON 文字列です。
+
+> [!TIP]
+> ツインを作成または更新した後、変更が[クエリ](how-to-query-graph.md)に反映されるまでに最大 10 秒の待機時間が発生する可能性があります。 `GetDigitalTwin` API ([この記事で後ほど](#get-data-for-a-digital-twin)説明します) ではこの遅延が発生しないため、迅速な応答が必要な場合は、クエリの代わりに API 呼び出しを使用して、新しく作成されたツインを確認してください。 
 
 ### <a name="initialize-properties"></a>プロパティを初期化する
 
@@ -90,6 +90,9 @@ object result = await client.GetDigitalTwin(id);
 ```
 
 この呼び出しでは、ツイン データが JSON 文字列として返されます。 
+
+> [!TIP]
+> `GetDigitalTwin` を使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。
 
 1 つの API 呼び出しを使用して複数のツインを取得するには、クエリ API の例を、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
 
@@ -174,7 +177,12 @@ foreach (string prop in twin.CustomProperties.Keys)
 
 デジタル ツインのプロパティを更新するには、置き換える情報を [JSON Patch](http://jsonpatch.com/) 形式で記述します。 これにより、一度に複数のプロパティを置き換えることができます。 次に、その JSON Patch ドキュメントを `Update` メソッドに渡します。
 
-`await client.UpdateDigitalTwin(id, patch);`.
+```csharp
+await client.UpdateDigitalTwin(id, patch);
+```
+
+> [!TIP]
+> ツインを作成または更新した後、変更が[クエリ](how-to-query-graph.md)に反映されるまでに最大 10 秒の待機時間が発生する可能性があります。 `GetDigitalTwin` API ([この記事の前の方で](#get-data-for-a-digital-twin)説明しました) ではこの遅延が発生しないため、迅速な応答が必要な場合は、クエリの代わりに API 呼び出しを使用して、新しく更新されたツインを確認してください。 
 
 JSON Patch コードの例を次に示します。 このドキュメントでは、適用先のデジタル ツインの *mass* および *radius* プロパティ値を置き換えます。
 

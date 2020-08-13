@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4496b74f162bfaeda7205963cbbe7e355db841f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495484"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503907"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>列ストア インデックスのパフォーマンスのための行グループの品質の最大化
+# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>列ストア インデックスのパフォーマンスのために行グループの品質を最大化する
 
 行グループの品質は、行グループ内の行数によって決まります。 使用できるメモリを増やすと、列ストア インデックスが各行グループに圧縮する行数を最大化できます。  これらのメソッドを使用して、列ストア インデックスの圧縮率およびクエリ パフォーマンスを向上させます。
 

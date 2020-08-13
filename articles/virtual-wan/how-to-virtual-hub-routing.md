@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6d14094edc7ae21ca0d56b544fb9c2b19f1f0582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144988"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513062"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>仮想ハブのルーティングを構成する方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "86144988"
 詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
 > [!NOTE]
-> これらの機能の一部は、まだロールアウト中の可能性があります。これは、8 月 3 日までに完了することが想定されています。
+> これらの機能の一部は、まだロールアウト中の可能性があります。これは、8 月 17 日までに完了する予定です。
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>ルート テーブルの作成
