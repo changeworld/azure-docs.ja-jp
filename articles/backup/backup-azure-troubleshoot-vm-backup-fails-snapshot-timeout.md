@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809767"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167931"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "87809767"
 
 ### <a name="step-1-check-azure-vm-health"></a>手順 1:Azure VM の正常性を確認する
 
-- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)が**停止/割り当て解除済み/更新中**の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして**実行中**であることを確認してから、バックアップ操作を再試行してください。
+- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](../virtual-machines/states-lifecycle.md#provisioning-states)が**停止/割り当て解除済み/更新中**の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして**実行中**であることを確認してから、バックアップ操作を再試行してください。
 - **保留中の OS の更新または再起動を確認します**:VM で保留中の OS 更新プログラムがないか、または再起動が保留されていないかを確認してください。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>手順 2:Azure VM ゲスト エージェント サービスの正常性を確認する
@@ -101,7 +101,7 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 **エラー コード**:UserErrorVmProvisioningStateFailed<br>
 **エラー メッセージ**:VM がプロビジョニングに失敗した状態<br>
 
-このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)」を参照してください。
+このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](../virtual-machines/states-lifecycle.md#provisioning-states)」を参照してください。
 
 - VMSnapshot 拡張機能が失敗の状態になっている場合は、失敗した拡張機能を右クリックして削除します。 オンデマンド バックアップをトリガーする。 このアクションにより、拡張機能が再インストールされ、バックアップ ジョブが実行されます。  <br>
 - 他の拡張機能が失敗状態にあると、バックアップが干渉される可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。
