@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 95cb1181f841ce5f958b8a85697d7261f442b410
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 29c57411a2a35c36d0b4a9d4def931821b795094
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799601"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121138"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web API:コード構成
 
@@ -176,7 +176,7 @@ Python Web API は、クライアントから受信したベアラー トーク�
 
 ## <a name="protocol"></a>Protocol
 
-OBO プロトコルの詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)」をご覧ください。
+OBO プロトコルの詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](./v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

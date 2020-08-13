@@ -1,19 +1,14 @@
 ---
 title: Azure Arc for servers (プレビュー) エージェントの管理
 description: この記事では、コンピューターに配置された Azure Arc for servers Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73ece3f1bc8d5e88d4c1c37e1040f2494230e4ee
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b7fcaca2188ef0e1e3c8c65226f8b383576082ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809597"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121291"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6a20bbeef83072b6fb76bd4e9214e63f094736a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b76e77d6d8575fa086f74c956594a344076f7c74
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172523"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118843"
 ---
 # <a name="add-your-application-to-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーに追加する
 
@@ -89,14 +89,14 @@ Microsoft のチームが詳細をレビューし、それに応じてアクセ�
 
 Azure AD アプリ ギャラリーにアプリケーションを公開するには、まず、Azure AD でサポートされている以下のフェデレーション プロトコルのいずれかを実装する必要があります。 また、Azure AD アプリケーション ギャラリーの使用条件に同意する必要もあります。 [この Web ページ](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)で Azure AD アプリケーション ギャラリーの使用条件を読み取ります。
 
-- **OpenID Connect**:Open ID Connect プロトコルを使用してアプリケーションを Azure AD と統合するには、[開発者向けの手順](v1-authentication-scenarios.md)に従ってください。
+- **OpenID Connect**:Open ID Connect プロトコルを使用してアプリケーションを Azure AD と統合するには、[開発者向けの手順](../azuread-dev/v1-authentication-scenarios.md)に従ってください。
 
     ![ギャラリーでの OpenID Connect アプリケーションの一覧表示](./media/howto-app-gallery-listing/openid.png)
 
     * OpenID Connect を使用してギャラリー内の一覧にご利用のアプリケーションを追加する場合は、上記のように **[OpenID Connect & OAuth 2.0]** を選択します。
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
-- **SAML 2.0** または **WS-Fed**:ご利用のアプリで SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
+- **SAML 2.0** または **WS-Fed**:ご利用のアプリで SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../manage-apps/view-applications-portal.md)を使って、Azure AD テナントと直接統合できます。
 
   ![ギャラリーでの SAML 2.0 または WS-Fed アプリケーションの一覧表示](./media/howto-app-gallery-listing/saml.png)
 

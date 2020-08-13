@@ -1,19 +1,14 @@
 ---
 title: Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする
 description: この記事では、Windows PowerShell DSC を使用して、Azure Arc for servers (プレビュー) を利用する Azure にマシンを接続する方法について説明します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: cdda3e6681d3e6912d031c45f5c6da9e92814e8f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809614"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121002"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする方法
 
@@ -49,7 +44,7 @@ ms.locfileid: "87809614"
 
 このモジュールのリソースは、Azure Connected Machine Agent の構成を管理するように設計されています。 また、`AzureConnectedMachineDsc\examples` フォルダーにある PowerShell スクリプト `AzureConnectedMachineAgent.ps1` も含まれています。 コミュニティ リソースを使用して、ダウンロードとインストールが自動化され、Azure Arc との接続が確立されます。このスクリプトでは、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」に説明されているものに似た手順が実行されます。
 
-マシンでプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、[こちら](onboard-portal.md#configure-the-agent-proxy-setting)に記載されているコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。 コマンドを手動で実行する代わりに、[ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) モジュールを使用して DSC でこの手順を実行できます。
+マシンでプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、[こちら](manage-agent.md#update-or-remove-proxy-settings)に記載されているコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。 コマンドを手動で実行する代わりに、[ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) モジュールを使用して DSC でこの手順を実行できます。
 
 >[!NOTE]
 >DSC で実行できるようにするには、localhost の構成を実行している場合でも PowerShell のリモート コマンドを受信するように Windows を構成する必要があります。 環境を簡単に正しく構成するには、管理者特権の PowerShell ターミナルで `Set-WsManQuickConfig -Force` を実行するだけです。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807623"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119710"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 
@@ -27,7 +27,7 @@ ms.locfileid: "85807623"
 このガイドの最後に、アプリケーションは個人のアカウントを使用して、保護されている API を呼び出します。 例としては、outlook.com、live.com などがあります。 アプリケーションは、Azure Active Directory (Azure AD) を持つ会社または組織の職場または学校アカウントも呼び出します。
 
 >[!NOTE]
-> このガイドでは、ユニバーサル Windows プラットフォーム開発がインストールされた Visual Studio が必要です。 ユニバーサル Windows プラットフォーム アプリを開発するために Visual Studio をダウンロードして構成する手順については、「[準備](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)」を参照してください。
+> このガイドでは、ユニバーサル Windows プラットフォーム開発がインストールされた Visual Studio が必要です。 ユニバーサル Windows プラットフォーム アプリを開発するために Visual Studio をダウンロードして構成する手順については、「[準備](/windows/uwp/get-started/get-set-up)」を参照してください。
 
 >[!NOTE]
 > Microsoft ID プラットフォームを初めて使用する場合は、「[クイックスタート: ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す](quickstart-v2-uwp.md)」から始めてください。

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552783"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115613"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>要求でディレクトリ スキーマ拡張属性を使用する
 
@@ -34,7 +34,7 @@ ms.locfileid: "87552783"
 ## <a name="registering-and-using-directory-schema-extensions"></a>ディレクトリ スキーマ拡張の登録と使用
 ディレクトリ スキーマ拡張属性は、次の 2 つの方法のいずれかで登録および設定できます。
 
-- AD Connect を構成して、オンプレミス AD からそれらを作成し、データを同期する。 詳細については、[Azure AD Connect 同期のディレクトリ拡張](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)に関する記事を参照してください。
+- AD Connect を構成して、オンプレミス AD からそれらを作成し、データを同期する。 詳細については、[Azure AD Connect 同期のディレクトリ拡張](../hybrid/how-to-connect-sync-feature-directory-extensions.md)に関する記事を参照してください。
 - Microsoft Graph を使用してディレクトリ スキーマ拡張属性の登録、値の設定、および読み取りを行う。詳細については、[ディレクトリ スキーマ拡張 | Graph API の概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)に関する記事、および PowerShell+ [AzureAD PowerShell コマンドレットを使用した拡張属性の管理](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0)に関する記事を参照してください。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>AD Connect を使用して作成されたディレクトリ スキーマ拡張属性からのデータを使用して要求を出力する

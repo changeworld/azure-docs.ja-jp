@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f62f6702b36915c6a6e1350072982e231cd9c07e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058287"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118231"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -264,7 +264,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
     ```
 
 ### <a name="more-information"></a>詳細情報
-このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "ブランド化ガイドライン")をご覧ください。
+このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](./howto-add-branding-in-azure-ad-apps.md "ブランド化ガイドライン")をご覧ください。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
 このコントローラーでは、コントローラーを保護する `[Authorize]` 属性の使用例を示します。 この属性は、認証されたユーザーのみを許可することで、コントローラーへのアクセスを制限します。 次のコードではこの属性を利用して、サインインの一部として取得されたユーザー要求を表示します。
@@ -403,7 +403,7 @@ Microsoft ID プラットフォームと統合するアプリケーションは�
 - アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
 - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
 
-詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)」を参照してください。
+詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](./v2-permissions-and-consent.md)」を参照してください。
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
@@ -424,7 +424,7 @@ Microsoft ID プラットフォームと統合するアプリケーションは�
 |**件名** |サブジェクト |Web 全体でユーザーを一意に識別する文字列|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**|
 
-さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[ID トークンに含まれる要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)を参照してください。
+さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[ID トークンに含まれる要求の一覧](./id-tokens.md)を参照してください。
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Authorize 属性を持つメソッドへのアクセスをテストする (省略可能)
 
@@ -484,6 +484,6 @@ Microsoft ID プラットフォームで Web API を呼び出す Web アプリ�
 Microsoft Graph を呼び出す Web アプリを構築する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET チュートリアル](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Microsoft Graph ASP.NET チュートリアル](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
