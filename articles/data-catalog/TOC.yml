@@ -1,4 +1,4 @@
-- name: Data Catalog のドキュメント
+- name: Azure Data Catalog のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -23,7 +23,7 @@
       href: data-catalog-adopting-data-catalog.md
     - name: よく寄せられる質問
       href: data-catalog-frequently-asked-questions.md
-- name: 方法
+- name: 操作方法ガイド
   items:
     - name: データ ソースの登録
       href: data-catalog-how-to-register.md

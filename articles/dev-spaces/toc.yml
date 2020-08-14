@@ -5,24 +5,6 @@
       items:
         - name: Azure Dev Spaces とは
           href: about.md
-    - name: クイックスタート
-      items:
-        - name: チーム開発
-          href: quickstart-team-development.md
-        - name: デバッグと反復
-          items:
-            - name: Visual Studio Code と Java を使用する
-              href: quickstart-java.md
-            - name: Visual Studio Code と .NET Core を使用する
-              href: quickstart-netcore.md
-            - name: Visual Studio Code と Node.js を使用する
-              href: quickstart-nodejs.md
-            - name: Visual Studio と .NET Core を使用する
-              href: quickstart-netcore-visualstudio.md
-        - name: CLI を使用して開発する
-          href: quickstart-cli.md
-        - name: 既存の Helm chart を使用して開発する
-          href: quickstart-existing-helm-chart.md
     - name: チュートリアル
       items:
         - name: Visual Studio 入門
