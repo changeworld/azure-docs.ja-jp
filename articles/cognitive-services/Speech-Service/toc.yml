@@ -117,30 +117,16 @@
   items:
     - name: テキスト読み上げのドキュメント
       href: index-text-to-speech.yml
-    - name: 概要
-      items:
-        - name: テキスト読み上げの概要
-          href: text-to-speech.md
-        - name: テキスト読み上げの基本
-          href: text-to-speech-basics.md
-    - name: クイック スタート
-      items:
-        - name: スピーカーに音声を合成する
-          href: quickstarts/text-to-speech.md
-        - name: オーディオ ファイルに音声を合成する
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: 長い形式の音声で音声を合成する
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: テキスト読み上げの概要
+      href: text-to-speech.md
+    - name: テキスト読み上げのクイックスタート
+      href: get-started-text-to-speech.md
     - name: 操作方法ガイド
       items:
         - name: SSML を使用して合成を改善する
           href: speech-synthesis-markup.md
         - name: Long Audio API を使用して音声を合成する
           href: long-audio-api.md
-        - name: REST を使用して音声のリストを取得する (Python)
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: REST を使用してテキストを音声に変換する (Python)
-          href: quickstart-python-text-to-speech.md
     - name: カスタマイズ
       items:
         - name: 責任のあるデプロイ

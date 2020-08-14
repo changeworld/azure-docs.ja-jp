@@ -6,6 +6,16 @@
       href: ./kubernetes/overview.md
     - name: Azure Arc 対応サーバーについて
       href: ./servers/overview.md
+- name: クイックスタート
+  items:
+    - name: Arc for servers エージェントの有効化
+      href: ./servers/learn/quick-enable-hybrid-vm.md
+- name: チュートリアル
+  items:
+    - name: ポリシーを割り当ててコンプライアンスを評価する
+      href: ./servers/learn/tutorial-assign-policy-portal.md
+    - name: マシンの監視
+      href: ./servers/learn/tutorial-enable-vm-insights.md
 - name: サンプル
   items:
     - name: Azure Policy の組み込み

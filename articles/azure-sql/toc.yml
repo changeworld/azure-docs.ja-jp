@@ -37,7 +37,7 @@
           href: database/scale-resources.md
         - name: 読み取りスケールアウト
           href: database/read-scale-out.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: 概要
               href: database/security-overview.md
@@ -72,7 +72,7 @@
               items:
                 - name: Azure AD 認証の構成
                   href: database/authentication-aad-configure.md
-                - name: 多要素 AAD 認証
+                - name: Multi-factor Azure AD 認証
                   href: database/authentication-mfa-ssms-overview.md
                 - name: 多要素認証の構成
                   href: database/authentication-mfa-ssms-configure.md
@@ -273,7 +273,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -341,7 +341,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -851,7 +851,7 @@
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: データベース メール
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
-        - name: Security
+        - name: セキュリティ
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md
@@ -891,8 +891,10 @@
           href: managed-instance/threat-detection-configure.md
         - name: アプリケーションの接続
           href: managed-instance/connect-application-instance.md
-        - name: アラートを作成する
+        - name: マネージド インスタンスでのアラートの作成
           href: managed-instance/alerts-create.md
+        - name: マネージド インスタンスでのフェールオーバーの手動開始
+          href: managed-instance/user-initiated-failover.md
     - name: サンプル
       items:
         - name: Azure CLI

@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: PowerShell を使用して Azure VM をバックアップする
       href: tutorial-backup-azure-vm.md
-    - name: ディスクの復元
+    - name: Azure CLI を使用した VM の復元
       href: tutorial-restore-disk.md
     - name: 個々のファイルの復元
       href: tutorial-restore-files.md
@@ -353,7 +353,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md

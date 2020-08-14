@@ -29,6 +29,8 @@
       href: quickstart-configure-your-solution.md
     - name: Azure Security Center for IoT モジュール ツインを作成する
       href: quickstart-create-security-twin.md
+    - name: セキュリティに関する推奨事項の調査
+      href: quickstart-investigate-security-recommendations.md
     - name: カスタムのセキュリティのアラートを作成する
       href: quickstart-create-custom-alerts.md
     - name: セキュリティ アラートについて調査する

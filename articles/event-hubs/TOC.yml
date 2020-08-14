@@ -188,6 +188,8 @@
           href: event-hubs-kafka-flink-tutorial.md
         - name: Apache Kafka Connect をハブと統合する (プレビュー)
           href: event-hubs-kafka-connect-tutorial.md
+        - name: Apache Kafka Connect (プレビュー) を Debezium と統合する
+          href: event-hubs-kafka-connect-debezium.md
         - name: Akka Streams をイベント ハブに接続する
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: FAQ - Kafka 用の Event Hubs

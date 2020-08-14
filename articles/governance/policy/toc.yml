@@ -10,16 +10,22 @@
   items:
     - name: ポリシーの割り当て - ポータル
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: ポリシーの割り当て - Azure PowerShell
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: ポリシーの割り当て - Azure CLI
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
+      href: ./assign-policy-azurecli.md
+    - name: ポリシーの割り当て - Azure PowerShell
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: ポリシーの割り当て - Python
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: ポリシーの割り当て - REST
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
     - name: ポリシーの割り当て - ARM テンプレート
       displayName: 'assign, compliance, resource manager'
-      href: assign-policy-template.md
+      href: ./assign-policy-template.md
 - name: チュートリアル
   items:
     - name: Azure Policy の作成と管理

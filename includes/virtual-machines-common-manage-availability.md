@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292403"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545142"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -53,7 +53,9 @@ Availability Zones では、Azure によって業界最高の 99.99% VM アッ�
 可用性セットは、VM の冗長性と可用性を提供するもう 1 つのデータセンター構成です。 データセンター内のこのような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
 
 > [!IMPORTANT]
-> 可用性セット内の単一インスタンスの仮想マシンは、仮想マシン接続について少なくとも 99.9% の SLA の資格を得るために、すべてのオペレーティング システム ディスクとデータ ディスクに Premium SSD または Ultra ディスクを使用する必要があります。
+> 可用性セット内の単一インスタンスの仮想マシンは、仮想マシン接続について少なくとも 99.9% の SLA の資格を得るために、すべてのオペレーティング システム ディスクとデータ ディスクに Premium SSD または Ultra ディスクを使用する必要があります。 
+> 
+> Standard SSD を使用する単一インスタンス仮想マシンは 99.5% 以上の SLA となり、Standard HDD を使用する単一インスタンス仮想マシンは 95% 以上の SLA となります。  「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください
 
 基盤となる Azure プラットフォームにより、可用性セット内の各仮想マシンに**更新ドメイン**と**障害ドメイン**が割り当てられます。 所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す、ユーザーが構成できない 5 つの更新ドメインが既定で割り当てられます (その後、最大 20 の更新ドメインを提供できるように Resource Manager のデプロイを増やすことができます)。 1 つの可用性セット内に 5 つ以上の仮想マシンが構成されているとき、6 つ目の仮想マシンは 1 つ目の仮想マシンと同じ更新ドメイン内に配置され、7 つ目は 2 つ目の仮想マシンと同じ更新ドメイン内に配置されるという方法で処理されます。 計画的メンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。 再起動された更新ドメインには、別の更新ドメインでメンテナンスが開始されるまでに、復旧するための時間として 30 分が与えられます。
 

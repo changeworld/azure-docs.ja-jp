@@ -46,6 +46,8 @@
       href: how-to-integrate-certificate-authority.md
     - name: トラブルシューティング - 証明書のインポート
       href: import-cert-faqs.md
+    - name: キー コンテナーからの証明書のエクスポート
+      href: how-to-export-certificate.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

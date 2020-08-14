@@ -117,10 +117,14 @@
               href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: azure-stack-edge-connect-powershell-interface.md
-        - name: トラブルシューティング
-          href: azure-stack-edge-troubleshoot.md
-        - name: Microsoft サポートに問い合わせる
-          href: azure-stack-edge-contact-microsoft-support.md
+            - name: トラブルシューティング
+              items:
+                - name: ログを使用
+                  href: azure-stack-edge-troubleshoot.md
+                - name: 注文の問題
+                  href: azure-stack-edge-troubleshoot-ordering.md
+                - name: Microsoft サポートに問い合わせる
+                  href: azure-stack-edge-contact-microsoft-support.md
         - name: モニター
           href: azure-stack-edge-monitor.md
         - name: デバイスの返却

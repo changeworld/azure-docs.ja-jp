@@ -169,14 +169,16 @@
               href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
-        - name: Nodes
-          href: concepts-hyperscale-nodes.md
         - name: 分散データ
-          href: concepts-hyperscale-distributed-data.md
-        - name: ディストリビューション列の選択
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: テーブル コロケーション
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: ノードとテーブル
+              href: concepts-hyperscale-nodes.md
+            - name: アプリケーションの種類の決定
+              href: concepts-hyperscale-app-type.md
+            - name: ディストリビューション列の選択
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: テーブル コロケーション
+              href: concepts-hyperscale-colocation.md
         - name: データ アクセスとセキュリティ
           items:
             - name: ファイアウォール規則
@@ -341,12 +343,16 @@
       items:
         - name: ユーザーの作成
           href: howto-hyperscale-create-users.md
-        - name: スケール
+        - name: サーバー グループのサイズ
           href: howto-hyperscale-scaling.md
         - name: ファイアウォールの管理
           items:
             - name: Azure portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 分散データ
+          items:
+            - name: テーブルの配布と変更
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
         - name: モニター
@@ -361,12 +367,22 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: リファレンス
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 単一サーバー
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: Resource Manager テンプレート
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Hyperscale (Citus)
+      items:
+        - name: SQL API 関数
+          href: reference-hyperscale-functions.md
+        - name: サーバー パラメーター
+          href: reference-hyperscale-parameters.md
+        - name: システム テーブル
+          href: reference-hyperscale-metadata.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

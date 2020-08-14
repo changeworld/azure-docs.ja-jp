@@ -185,3 +185,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: v2.0 または 2.1 から 3.0 へのアップグレード
+      href: upgrade-api-versions.md
