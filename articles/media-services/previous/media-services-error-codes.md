@@ -43,7 +43,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 * SAS ロケーターの更新が試行されました。 SAS ロケーターの作成または削除のみできます。 ストリーミング ロケーターを更新できます。 詳細については、「[ロケーター](/rest/api/media/operations/locator)」を参照してください。
 * サポートされていない操作またはクエリが送信されました。
 
-## <a name="401-unauthorized"></a>401 権限がありません
+## <a name="401-unauthorized"></a>401 Unauthorized\(権限がありません\)
 次のいずれかの理由で、(承認される前に) 要求を認証できませんでした。
 
 * 認証ヘッダーがありません。
@@ -51,7 +51,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
   * トークンの有効期限が切れています。 
   * トークンには、無効な署名が含まれています。
 
-## <a name="403-forbidden"></a>403 許可されていません
+## <a name="403-forbidden"></a>403 Forbidden\(許可されていません\)
 次のいずれかの理由で要求が受け入れられません。
 
 * Media Services アカウントが見つからないか、削除されています。
@@ -65,7 +65,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
   * 他の Media Services アカウントの ContentKey の上書きが試行されました。
 * サービス クォータが Media Services アカウントに到達したため、リソースを作成できませんでした。 サービス クォータの詳細については、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 
-## <a name="404-not-found"></a>404 見つかりません
+## <a name="404-not-found"></a>404 Not Found\(見つかりません\)
 次のいずれかの理由で、リソースでは要求が受け入れられません。
 
 * 存在しないエンティティの更新が試行されました。
@@ -74,7 +74,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 * 存在しないエンティティの GET が試行されました。
 * Media Services アカウントに関連付けられていないストレージ アカウントの指定が試行されました。  
 
-## <a name="409-conflict"></a>409 競合
+## <a name="409-conflict"></a>409 Conflict\(競合\)
 次のいずれかの理由で要求が受け入れられません。
 
 * 複数の AssetFile は、資産内で指定した名前を持ちます。
@@ -88,14 +88,14 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 * 既に使用中の 5 つのロケーターを持つ資産へのロケーターの作成が試行されました。 (Azure Storage は、1 つのストレージ コンテナーに 5 つの共有アクセス ポリシーの制限を適用します。)
 * 資産のストレージ アカウントを IngestManifestAsset にリンクするのと、親 IngestManifest で使用されるストレージ アカウントは同じではありません。  
 
-## <a name="500-internal-server-error"></a>500 内部サーバー エラー
+## <a name="500-internal-server-error"></a>500 Internal Server Error\(内部サーバー エラー\)
 要求の処理中に、Media Services では、処理の続行を妨げる何らかのエラーが発生します。 この場合は、次のいずれかの理由が考えられます。
 
 * Media Services アカウントのサービス クォータ情報が一時的に利用できないために、資産またはジョブの作成が失敗します。
 * アカウントのストレージ アカウント情報が一時的に利用できないために、資産または IngestManifest blob ストレージ コンテナーの作成が失敗します。
 * その他の予期しないエラー。
 
-## <a name="503-service-unavailable"></a>503 サービス利用不可
+## <a name="503-service-unavailable"></a>503 Service Unavailable\(サービス利用不可\)
 サーバは現在、要求を受信することができません。 このエラーは、サービスへの過度な要求によって引き起こされることがあります。 Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。
 
 > [!NOTE]
