@@ -31,7 +31,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 * Media Services の API バージョンが指定されていません。 API バージョンを指定する方法については、「[Media Services Operations REST API Reference (Media Services Operations REST API リファレンス)](/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
   
   > [!NOTE]
-  > .NET または Java Sdk を使用して Media Services に接続する場合は、Media Services に対して何らかのアクションの実行を試行するたびに、API バージョンが指定されます。
+  > .NET または Java SDK を使用して Media Services に接続する場合は、Media Services に対して何らかのアクションの実行を試行するたびに、API バージョンが指定されます。
   > 
   > 
 * 未定義のプロパティが指定されています。 プロパティ名は、エラー メッセージ内にあります。 特定のエンティティのメンバーであるプロパティのみを指定することができます。 エンティティとそのプロパティの一覧については、「[Azure Media Services REST API リファレンス](/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
