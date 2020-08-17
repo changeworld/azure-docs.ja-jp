@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: matjazl
   ms.author: matjazl
-  ms.date: 08/12/2020
-  ms.openlocfilehash: 66fc6223a50a062631a74e62e32e0e67c7d6ba73
-  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+  ms.date: 08/13/2020
+  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
+  ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88167489"
+  ms.locfileid: "88183447"
 landingContent:
 - title: Azure API for FHIR の開始
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Azure API for FHIR とは
       url: overview.md
+    - text: Azure IoT Connector for FHIR (プレビュー) とは
+      url: overview.md#azure-iot-connector-for-fhir-preview
   - linkListType: quickstart
     links:
     - text: FHIR 用の API サーバーのデプロイ

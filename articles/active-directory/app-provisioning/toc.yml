@@ -57,7 +57,9 @@
           href: export-import-provisioning-configuration.md
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
-        - name: アプリ プロビジョニングのトラブルシューティング
+        - name: 既知の問題
+          href: known-issues.md
+        - name: 構成の問題のトラブルシューティング
           href: application-provisioning-config-problem.md
         - name: 検疫の状態
           href: application-provisioning-quarantine-status.md

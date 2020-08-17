@@ -163,10 +163,6 @@
               href: concepts-read-replicas.md
             - name: 論理デコード
               href: concepts-logical.md
-        - name: リージョン間の移動
-          items:
-            - name: Azure portal
-              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: 分散データ
@@ -339,6 +335,10 @@
               href: howto-read-replicas-cli.md
             - name: 読み取りレプリカの管理 (Azure PowerShell)
               href: howto-read-replicas-powershell.md
+        - name: リージョン間の移動
+          items:
+            - name: Azure portal
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: ユーザーの作成

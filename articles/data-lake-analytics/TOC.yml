@@ -32,7 +32,7 @@
           href: ./security-controls-policy.md
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
           href: security-baseline.md
-- name: 方法
+- name: 操作方法ガイド
   items:
     - name: Data Lake Analytics の管理
       items:

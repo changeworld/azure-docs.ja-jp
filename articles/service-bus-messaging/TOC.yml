@@ -44,6 +44,8 @@
           items:
             - name: Azure portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure CLI
+              href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM テンプレート
               href: service-bus-resource-manager-namespace-topic.md
         - name: メッセージの発行とサブスクライブ
@@ -62,12 +64,8 @@
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: チュートリアル
   items:
-    - name: インベントリを更新する - PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: インベントリを更新する - ポータル
+    - name: インベントリを更新する
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: インベントリを更新する - CLI
-      href: service-bus-tutorial-topics-subscriptions-cli.md
     - name: Event Grid を使用したイベントへの応答
       href: service-bus-to-event-grid-integration-example.md
 - name: サンプル
@@ -93,7 +91,7 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 認証と権限承認
           href: service-bus-authentication-and-authorization.md

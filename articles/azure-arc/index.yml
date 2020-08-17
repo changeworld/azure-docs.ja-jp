@@ -7,20 +7,20 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 08/13/2020
   ms.author: magoedte
-  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87008491"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212782"
 landingContent:
-- title: Azure Arc の概要
+- title: Azure Arc について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Arc の詳細
+    - text: Azure Arc とは
       url: https://aka.ms/Azure-Arc-Info
 - title: Azure Arc 対応サーバーを使用してマシンを Azure に接続する
   linkLists:
@@ -30,12 +30,18 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
+    - text: Arc 対応サーバー エージェントを有効にする
+      url: ./servers/learn/quick-enable-hybrid-vm.md
+  - linkListType: how-to-guide
+    links:
     - text: Azure portal から Azure Arc へのマシンの接続
       url: ./servers/onboard-portal.md
     - text: サービス プリンシパルを使用したマシンの大規模な接続
       url: ./servers/onboard-service-principal.md
     - text: PowerShell DSC を使用してマシンを Azure に接続する
       url: ./servers/onboard-dsc.md
+    - text: Azure VM 拡張機能の管理と使用
+      url: ./servers/manage-vm-extensions.md
 - title: Azure Arc を使用して Kubernetes クラスターを Azure に接続する
   linkLists:
   - linkListType: overview

@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: クイックスタート
   items:
-    - name: Arc for servers エージェントの有効化
+    - name: Arc 対応サーバー エージェントを有効にする
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: チュートリアル
   items:

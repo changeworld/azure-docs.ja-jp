@@ -147,7 +147,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -494,6 +494,8 @@
               href: platform/alerts-metric.md
             - name: 動的しきい値の使用
               href: platform/alerts-dynamic-thresholds.md
+            - name: 多くの時系列に対する単一のアラート
+              href: platform/alerts-metric-multiple-time-series-single-rule.md
             - name: ログのメトリック アラート
               href: platform/alerts-metric-logs.md
             - name: Resource Manager テンプレートの使用

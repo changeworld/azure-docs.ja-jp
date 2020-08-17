@@ -287,8 +287,10 @@
       items:
         - name: 概要
           href: offline-backup-overview.md
-        - name: Azure Data Box を使用したオフライン バックアップ
+        - name: Azure Data Box を使用したオフライン バックアップ (MARS)
           href: offline-backup-azure-data-box.md
+        - name: Azure Data Box を使用したオフライン バックアップ (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: Import/Export を使用したオフライン バックアップ (MARS)
           href: backup-azure-backup-import-export.md
         - name: Import/Export を使用したオフライン バックアップ (DPM/MABS)
