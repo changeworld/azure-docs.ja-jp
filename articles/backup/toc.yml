@@ -146,7 +146,11 @@
         - name: 概要
           href: backup-azure-sql-database.md
         - name: バックアップ
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: コンテナーから複数の SQL Server VM をバックアップする
+              href: backup-sql-server-database-azure-vms.md
+            - name: VM ペインから SQL Server VM をバックアップする
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: 復元
           href: restore-sql-database-azure-vm.md
         - name: 管理する

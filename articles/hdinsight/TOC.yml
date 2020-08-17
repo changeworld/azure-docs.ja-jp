@@ -531,6 +531,8 @@
               items:
                 - name: 空のエッジ ノードを使用する
                   href: ./hdinsight-apps-use-edge-node.md
+                - name: エッジ ノードを使用して HiveServer2 をスケーリングする
+                  href: ./hdinsight-apps-install-hiveserver2.md
         - name: トラブルシューティング
           items:
             - name: 一般的な問題

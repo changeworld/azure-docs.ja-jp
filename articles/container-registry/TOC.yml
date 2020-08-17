@@ -148,6 +148,12 @@
         - name: トラブルシューティング
           expanded: false
           items:
+            - name: ログインのトラブルシューティング
+              href: container-registry-troubleshoot-login.md
+            - name: ネットワークに関する問題のトラブルシューティング
+              href: container-registry-troubleshoot-access.md
+            - name: レジストリのパフォーマンスのトラブルシューティング
+              href: container-registry-troubleshoot-performance.md
             - name: 一般的な問題の検出
               href: container-registry-check-health.md
             - name: よく寄せられる質問
