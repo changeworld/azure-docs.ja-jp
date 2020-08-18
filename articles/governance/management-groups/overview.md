@@ -3,12 +3,12 @@ title: 管理グループを使用してリソースを整理する - Azure Gove
 description: 管理グループ、そのアクセス許可のしくみ、その使用方法について説明します。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529349"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920162"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure 管理グループとは
 
@@ -25,7 +25,7 @@ ms.locfileid: "87529349"
 
 ポリシーを適用する階層を作成できます。たとえば、"運用" というグループの VM の場所を米国西部リージョンに制限できます。 このポリシーは、その管理グループの子孫であるすべての Enterprise Agreement (EA) サブスクリプションに継承され、それらのサブスクリプションの下にあるすべての VM に適用されます。 このセキュリティ ポリシーは、ガバナンスを改善するためにリソースまたはサブスクリプションの所有者が変更することができません。
 
-管理グループを使用するもう 1 つのシナリオは、ユーザーに複数のサブスクリプションへのアクセスを提供する場合です。 その管理グループの下に複数のサブスクリプションを移動することで、管理グループに対する[ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) 割り当てを 1 つ作成できます。これにより、すべてのサブスクリプションにそのアクセスが継承されます。 さまざまなサブスクリプションに RBAC を割り当てるスクリプトを作成しなくても、管理グループへ 1 つ割り当てることで、ユーザーは必要なものすべてにアクセスできます。
+管理グループを使用するもう 1 つのシナリオは、ユーザーに複数のサブスクリプションへのアクセスを提供する場合です。 その管理グループの下で複数のサブスクリプションを移動することで、管理グループ上に 1 つの [Azure ロール割り当て](../../role-based-access-control/overview.md)を作成することができます。これにより、すべてのサブスクリプションへのアクセスが継承されます。 さまざまなサブスクリプションに RBAC を割り当てるスクリプトを作成しなくても、管理グループへ 1 つ割り当てることで、ユーザーは必要なものすべてにアクセスできます。
 
 ### <a name="important-facts-about-management-groups"></a>管理グループに関する重要な事実
 
@@ -89,13 +89,13 @@ Azure 管理グループでは、すべてのリソース アクセスとロー�
 
 | Azure ロール名             | 作成 | [名前の変更] | 移動\*\* | 削除 | アクセス権の割り当て | ポリシーの割り当て | Read  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|所有者                       | X      | x      | x        | x      | x             | x             | x     |
-|Contributor                 | x      | x      | x        | x      |               |               | x     |
-|MG Contributor\*            | x      | x      | x        | x      |               |               | x     |
+|所有者                       | X      | X      | X        | X      | X             | X             | X     |
+|Contributor                 | X      | X      | X        | X      |               |               | X     |
+|MG Contributor\*            | X      | X      | X        | X      |               |               | X     |
 |Reader                      |        |        |          |        |               |               | X     |
 |MG Reader\*                 |        |        |          |        |               |               | X     |
 |リソース ポリシー共同作成者 |        |        |          |        |               | X             |       |
-|User Access Administrator   |        |        |          |        | x             | x             |       |
+|User Access Administrator   |        |        |          |        | X             | X             |       |
 
 \*:MG Contributor と MG Reader は、管理グループのスコープのみでのこれらのアクションの実行をユーザーに許可します。  
 \*\*: ルート管理グループに対するロールの割り当ては、それとの間でのサブスクリプションまたは管理グループの移動に必要ありません。 階層内の項目の移動について詳しくは、「[Manage your resources with management groups (管理グループを使用してリソースを管理する)](manage.md)」を参照してください。

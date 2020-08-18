@@ -1,6 +1,6 @@
 ---
 title: クイックスタート - Azure portal で Azure Storage テーブルを作成する
-description: このクイックスタートでは、Azure portal で Azure Storage Table service テーブルを作成します。
+description: このクイックスタートでは、Azure portal から Table service を使用して Azure Storage テーブルを作成します。 Azure Storage アカウントの作成方法もご覧ください。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3117a1ff24dd0a2a91768844bea41670ced8ff90
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75979946"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033531"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>クイック スタート: Azure portal で Azure Storage テーブルを作成する 
 
@@ -37,7 +37,7 @@ Azure portal で Table service を使用して、テーブルを作成するこ�
 
    ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
-3. **[テーブル名]** ボックスにテーブルの名前を入力し、 **[OK]** をクリックします。 
+3. **[テーブル名]** ボックスにテーブルの名前を入力し、**[OK]** をクリックします。 
 
    ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 

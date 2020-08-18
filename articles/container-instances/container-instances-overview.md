@@ -2,14 +2,14 @@
 title: Azure のサーバーレス コンテナー
 description: Azure Container Instances サービスには、仮想マシンを管理したり、より高度なオーケストレーターを採用したりせずに、Azure で最も高速かつ簡単に別個のコンテナーを実行する方法が用意されています。
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498686"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121665"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -35,10 +35,15 @@ Azure Container Instances では、アプリケーションの開発とトラブ
 > [!IMPORTANT]
 > 2020 年 1 月 13 日以降、Azure Container Instances では、サーバーとアプリケーションからのセキュリティで保護されたすべての接続で TLS 1.2 を使用する必要があります。 TLS 1.0 と 1.1 のサポートは、廃止される予定です。
 
-## <a name="hypervisor-level-security"></a>ハイパーバイザーレベルのセキュリティ
+## <a name="compliant-deployments"></a>準拠しているデプロイ
+
+### <a name="hypervisor-level-security"></a>ハイパーバイザーレベルのセキュリティ
 
 従来、コンテナーは、アプリケーション依存関係の分離とリソース ガバナンスを実現してきましたが、悪意のあるマルチテナント使用に対する十分なセキュリティ強化については考慮されていません。 Azure Container Instances を使用すると、アプリケーションは、VM 内であるかのように、コンテナー内で確実に分離されます。
 
+### <a name="customer-data"></a>顧客データ
+
+ACI サービスは、コンテナー グループが想定どおりに実行されていることを保証するために必要な最小限の顧客データを格納します。 顧客データを 1 つのリージョンに格納する機能は、現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内に格納されます。 詳細については、Azure サポートまでお問い合わせください。
 
 ## <a name="custom-sizes"></a>カスタム サイズ
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: a7e81b636690ced9baafc79de110f78c7258c36e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509374"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056315"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
 
@@ -45,6 +44,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Sage Intacct では、**IDP** Initiated SSO がサポートされます
+* Sage Intacct を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>ギャラリーからの Sage Intacct の追加
 
@@ -57,7 +57,7 @@ Azure AD への Sage Intacct の統合を構成するには、ギャラリーか
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Sage Intacct**」と入力します。
 1. 結果パネルから **[Sage Intacct]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>Sage Intacct の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>Sage Intacct の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Sage Intacct に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと Sage Intacct の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
@@ -227,3 +227,4 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

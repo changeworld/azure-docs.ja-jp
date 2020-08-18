@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、AWS VM を Azu
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534833"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066646"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -99,7 +99,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 次のようにして、アプライアンスのデプロイの準備をします。
 
 - レプリケーション アプライアンスをホストする別の EC2 VM を設定します。 このインスタンスは、Windows Server 2012 R2 または Windows Server 2016 を実行している必要があります。 アプライアンスのハードウェア、ソフトウェア、およびネットワークの要件を[確認](./migrate-replication-appliance.md#appliance-requirements)します。
-- レプリケートするソース VM にはアプライアンスをインストールしないでください。 これは異なる VM にデプロイする必要があります。
+- レプリケート対象のソース VM、または以前にインストールした Azure Migrate 検出および評価アプライアンスに、アプライアンスをインストールすることはできません。 これは異なる VM にデプロイする必要があります。
 - 移行するソース AWS VM には、レプリケーション アプライアンスへの良好なネットワーク接続が必要です。 これを実現するため、必要なセキュリティ グループ規則を構成します。 レプリケーション アプライアンスは、移行するソース VM と同じ VPC にデプロイすることが推奨されています。 レプリケーション アプライアンスが異なる VPC 内に存在する必要がある場合は、VPC を VPC ピアリングを介して接続する必要があります。
 - ソース AWS VM は、レプリケーション管理とレプリケーション データ転送のために、HTTPS 443 (コントロール チャネルのオーケストレーション) および TCP 9443 (データ転送) の受信ポートでレプリケーション アプライアンスと通信します。 レプリケーション アプライアンスは次に、HTTPS 443 送信ポート経由でレプリケーション データを Azure に送信します。 これらの規則を構成するには、ポートとソース IP の適切な情報を使用して、セキュリティ グループのインバウンド/アウトバウンド規則を編集します。
 

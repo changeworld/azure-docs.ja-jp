@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439134"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056229"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -151,6 +151,9 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
 
 コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでは、コンテナー イメージを IoT Edge デバイスにプルするためにこれらの資格情報が必要です。
+
+>[!NOTE]
+>「[**プロジェクト テンプレートを作成する**](#create-a-project-template)」手順で、**localhost: 5000** の値を Azure コンテナー レジストリのログイン サーバーの値で置き換えていない場合は、 **.env** ファイルと、配置マニフェストの registryCredentials セクションは見つかりません。 
 
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 

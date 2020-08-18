@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 16869ab3a1961879cfcda1eaa383073cd2309a01
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433384"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003369"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>チュートリアル:AI Builder を使用してフォーム処理アプリを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "87433384"
 ## <a name="prerequisites"></a>前提条件
 
 * データのトレーニングとテストに使用するために、同じ種類の少なくとも 5 つのフォームのセット。 トレーニング データ セットをまとめるためのヒントとオプションについては、[トレーニング データ セットの作成](./build-training-data-set.md)に関するページを参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2128080)の **Train** フォルダーにあるファイルを使用できます。
-* Power Apps または Power Automate のライセンスについては、[ライセンス ガイド](https://go.microsoft.com/fwlink/?linkid=2085130)に関するドキュメントを参照してください。 ライセンスには [Dataflex Pro](https://powerplatform.microsoft.com/en-us/common-data-service/) が含まれている必要があります。
+* Power Apps または Power Automate のライセンスについては、[ライセンス ガイド](https://go.microsoft.com/fwlink/?linkid=2085130)に関するドキュメントを参照してください。 ライセンスには、[Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/) が含まれている必要があります。
 * AI Builder の[アドオンまたは試用版](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)。
 
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475653"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904192"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -49,9 +49,9 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 
    Red Hat アカウントにログインするか、お使いのビジネス メール アドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
 
-2. **[Download pull secret]\(プル シークレットのダウンロード\) を選択します。**
+2. クラスターを初めて作成する場合は、[**OpenShift 製品ページ**](https://developers.redhat.com/products/codeready-containers)を参照してください。 登録後に、[**Red Hat OpenShift Cluster Manager ページ**](https://cloud.redhat.com/openshift/)に移動し、 **[Download pull secret]\(プル シークレットのダウンロード\)** をクリックすると、ARO クラスターで使用するプル シークレットをダウンロードできます。
 
-保存されている `pull-secret.txt` ファイルは安全な場所に保管してください。このファイルは、クラスターを作成するたびに使用します。
+保存済みの `pull-secret.txt` ファイルは安全な場所に保管してください。 Red Hat または認定パートナーのサンプルやオペレーターを含むクラスターを作成する必要がある場合は、クラスターを作成するたびにこのファイルが使用されます。
 
 `az aro create` コマンドを実行する場合は、`--pull-secret @pull-secret.txt` パラメーターを使用してプル シークレットを参照できます。 `pull-secret.txt` ファイルを格納したディレクトリから `az aro create` を実行します。 それ以外の場合は、`@pull-secret.txt` を `@<path-to-my-pull-secret-file>` で置き換えます。
 

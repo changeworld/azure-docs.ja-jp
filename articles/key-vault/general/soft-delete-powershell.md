@@ -2,19 +2,19 @@
 title: Azure Key Vault - PowerShell で論理的な削除を使用する方法
 description: PowerShell コード スニペットを使用した論理的な削除のユース ケースの例
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 9b9a7a5b3d92833a0f24f6bc646b19110dcfd66a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386080"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136475"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -67,11 +67,7 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ### <a name="new-key-vault"></a>新しいキー コンテナー
 
-新しいキー コンテナーの論理的な削除は、作成時に create コマンドに論理的な削除を有効にするフラグを追加することで有効にできます。
-
-```powershell
-New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
-```
+論理的な削除は、すべての新しいキー コンテナーで既定で自動的に有効になります。 2020 年 12 月 31 日までに、どのキー コンテナーでも論理的な削除を無効にすることはできなくなります。 
 
 ### <a name="verify-soft-delete-enablement"></a>論理的な削除が有効になっていることを確認する
 

@@ -236,7 +236,7 @@
       items:
         - name: プライベート エンドポイントの構成
           href: configure-private-endpoints.md
-        - name: IP ファイアウォールの構成 (プレビュー)
+        - name: IP ファイアウォールの構成
           href: configure-firewall.md
         - name: AAD を使用した Webhook のセキュリティ保護
           href: secure-webhook-delivery.md

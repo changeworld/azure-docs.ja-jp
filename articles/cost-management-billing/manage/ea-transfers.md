@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: c49894c722897233afa6325def1d3e17562d2dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a770fe2362e1e1c98c683f694f7f834ac6f4ea6c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075094"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836855"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure エンタープライズ転送
 
@@ -98,7 +98,7 @@ Azure EA Portal では、アカウント所有者間でサブスクリプショ�
 
 ## <a name="subscription-transfer-effects"></a>サブスクリプションを転送した場合の影響
 
-同じ Azure Active Directory テナント内のアカウントに Azure サブスクリプションを転送した場合、リソースを管理するための[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) が付与されていたユーザー、グループ、サービス プリンシパルはすべて、そのアクセス権を維持します。
+同じ Azure Active Directory テナント内のアカウントに Azure サブスクリプションを転送した場合、リソースを管理するための [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) が付与されていたユーザー、グループ、サービス プリンシパルはすべて、そのアクセス権を維持します。
 
 サブスクリプションに対する RBAC アクセス権を持つユーザーを表示するには、次の手順を実行します。
 

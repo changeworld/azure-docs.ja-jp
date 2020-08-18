@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b1be75b06b4281ee5d03675d9d33db00a5aaf7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 783a61c8e2b6c60b81e31d7771d3237c93be92a8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70013797"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Darwinbox の統合
 
@@ -30,7 +30,6 @@ ms.locfileid: "70013797"
 * Darwinbox にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Darwinbox に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -39,6 +38,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Darwinbox でのシングル サインオン (SSO) が有効なサブスクリプション。
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -75,7 +77,7 @@ Darwinbox に対する Azure AD SSO を構成してテストするには、次�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Darwinbox** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Darwinbox** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -83,12 +85,12 @@ Darwinbox に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.darwinbox.in/`
+   1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.darwinbox.in/`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
+   1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Darwinbox クライアント サポート チーム](https://darwinbox.com/contact-us.php)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+      > [!NOTE]
+      > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Darwinbox クライアント サポート チーム](https://darwinbox.com/contact-us.php)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -141,6 +143,28 @@ Darwinbox に対する Azure AD SSO を構成してテストするには、次�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネル上で [Darwinbox] タイルをクリックすると、SSO を設定した Darwinbox に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
+## <a name="test-sso-for-darwinbox-mobile"></a>Darwinbox (モバイル) の SSO のテスト
+
+1. Darwinbox モバイル アプリケーションを開きます。 **[Enter Organization URL]\(組織の URL の入力\)** をクリックし、テキストボックスに組織の URL を入力して、矢印ボタンをクリックします。
+
+    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+
+1. 複数のドメインがある場合は、対象のドメインをクリックします。
+
+    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+
+1. Darwinbox アプリケーションに Azure AD のメール アドレスを入力し、 **[Next]\(次へ\)** をクリックします。
+
+    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+
+1. Darwinbox アプリケーションに Azure AD のパスワードを入力し、 **[Sign in]\(サインイン\)** をクリックします。
+
+    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+
+1. サインインに成功すると、アプリケーションのホーム ページが表示されます。
+
+    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile05.jpg)
 
 ## <a name="additional-resources"></a>その他のリソース
 

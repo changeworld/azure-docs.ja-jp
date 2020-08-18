@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404176"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054342"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -265,7 +265,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 次に、マネージド ドメインにバインドします。 マネージド ドメインで NTLM パスワードハッシュ同期を無効にしている場合、ユーザー (およびサービス アカウント) は LDAP 簡易バインドを実行できません。 NTLM パスワード ハッシュ同期の無効化の詳細については、[マネージド ドメインをセキュリティで保護する方法][secure-domain]に関するページを参照してください。
 
 1. **[接続]** メニュー オプションを選択し、 **[バインド]** を選択します。
-1. *AAD DC Administrators* グループに所属するユーザー アカウント (例: *contosoadmin*) の資格情報を入力します。 ユーザー アカウントのパスワードを入力し、ご利用のドメインを入力します (例: *aaddscontoso.com*)。
+1. マネージド ドメインに属しているユーザー アカウントの資格情報を指定します。 ユーザー アカウントのパスワードを入力し、ご利用のドメインを入力します (例: *aaddscontoso.com*)。
 1. **[バインドの種類]** には、 *[資格情報によるバインド]* のオプションを選択します。
 1. **[OK]** を選択してマネージド ドメインにバインドします。
 

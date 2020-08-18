@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 9f95c3d03fed1950d6151ad1ed910bf2a8cd14f5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826825"
 ---
 # <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>新しい Azure Digital Twins と以前のバージョン (2018) との違い
 
@@ -33,7 +33,7 @@ Azure Digital Twins の最初のパブリック プレビューは、2018 年 10
 | **トポロジ**<br>*より柔軟*| 以前のリリースでは、スマート空間に合わせたツリー データ構造がサポートされていました。 デジタル ツインは、階層リレーションシップを使用して接続されていました。 | 新しいリリースでは、デジタル ツインは任意のグラフ トポロジに接続でき、必要に応じて整理することができます。 これにより、実際の複雑なリレーションシップをより柔軟に表現できるようになります。<br><br>詳細については、"[*デジタル ツインとツイン グラフの概念*](concepts-twins-graph.md)" に関するページを参照してください。 |
 | **Compute**<br>*より豊富でより柔軟* | 以前のリリースでは、イベントとテレメトリを処理するロジックは、JavaScript ユーザー定義関数 (UDF) で定義されていました。 UDF を使用したデバッグは制限されていました。 | 新しいリリースには、オープン コンピューティング モデルがあります。[Azure Functions](../azure-functions/functions-overview.md) などの外部のコンピューティング リソースを接続することによって、カスタム ロジックを提供します。 これにより、任意のプログラミング言語を使用し、制限なくカスタム コード ライブラリにアクセスできます。また、外部サービスが持っている可能性のある開発リソースやデバッグ リソースを活用することができます。<br><br>詳細については、"[*データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)に関するページを参照してください。 |
 | **IoT Hub を使用したデバイス管理**<br>*よりアクセスしやすい* | 以前のリリースでは、Azure Digital Twins サービスの内部にある [IoT Hub](../iot-hub/about-iot-hub.md) のインスタンスを使用してデバイスを管理していました。 この統合されたハブには、開発者が完全にアクセスすることはできませんでした。 | 新しいリリースでは、個別に作成された IoT Hub インスタンスを (既に管理しているすべてのデバイスと共に) 接続することで、独自の IoT ハブを持ち込めます。 これにより、IoT Hub の機能にフル アクセスが可能になり、デバイス管理を制御できるようになります。<br><br>詳細については、"[*IoT Hub からテレメトリを取り込む方法*](how-to-ingest-iot-hub-data.md)" に関するページを参照してください。 |
-| **Security**<br>*より標準* | 以前のリリースには、インスタンスへのアクセスを管理するために使用できる定義済みのロールがありました。 | 新しいリリースは、他の Azure サービスで使用されているのと同じ Azure の[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) バックエンド サービスと統合されています。 これにより、ソリューション内の他の Azure サービス (IoT Hub、Azure Functions、Event Grid など) 間での認証が簡単になります。<br>RBAC を使用すると、事前定義されたロールを引き続き使用することも、カスタム ロールを作成して構成することもできます。<br><br>詳細については、"[*Azure Digital Twins ソリューションのセキュリティの概念*](concepts-security.md)" に関するページを参照してください。 |
+| **Security**<br>*より標準* | 以前のリリースには、インスタンスへのアクセスを管理するために使用できる定義済みのロールがありました。 | 新しいリリースは、他の Azure サービスで使用されているのと同じ [Azure のロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) バックエンド サービスと統合されています。 これにより、ソリューション内の他の Azure サービス (IoT Hub、Azure Functions、Event Grid など) 間での認証が簡単になります。<br>RBAC を使用すると、事前定義されたロールを引き続き使用することも、カスタム ロールを作成して構成することもできます。<br><br>詳細については、"[*Azure Digital Twins ソリューションのセキュリティの概念*](concepts-security.md)" に関するページを参照してください。 |
 | **スケーラビリティ**<br>*より大きい* | 以前のリリースでは、デバイス、メッセージ、グラフ、およびスケール ユニットに対するスケール制限がありました。 Azure Digital Twins のインスタンスは、サブスクリプションごとに 1 つしかサポートされていませんでした。  | 新しいリリースでは、スケーラビリティが向上した新しいアーキテクチャに依存しており、コンピューティング能力が向上しています。 また、サブスクリプションごと、リージョンごとに 10 個のインスタンスがサポートされます。<br><br>現在のパブリック プレビューの制限の詳細については、"[*リファレンスのパブリック プレビューのサービスの制限*](reference-service-limits.md)" に関するページを参照してください。 |
 
 ## <a name="service-limits-in-public-preview"></a>パブリック プレビューのサービスの制限

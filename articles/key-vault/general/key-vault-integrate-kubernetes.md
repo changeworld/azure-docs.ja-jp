@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921564"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901999"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -71,7 +71,7 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. 作成した AKS クラスターのメタデータを表示するには、次のコマンドを使用します。 後で使用するために、**principalId**、**clientId**、**subscriptionId**、**nodeResourceGroup** をコピーします。
+1. 作成した AKS クラスターのメタデータを表示するには、次のコマンドを使用します。 後で使用するために、**principalId**、**clientId**、**subscriptionId**、**nodeResourceGroup** をコピーします。 マネージド ID を有効にして ASK クラスターを作成しなかった場合、**principalId** と **clientId** は null になります。 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -166,7 +166,7 @@ spec:
 
 ### <a name="assign-a-service-principal"></a>サービス プリンシパルの割り当て
 
-サービス プリンシパルを使用している場合は、対象のキー コンテナーにアクセスしてシークレットを取得するためのアクセス許可をサービス プリンシパルに付与します。 "*閲覧者*" ロールを割り当て、対象のキー コンテナーからシークレットを "*取得する*" ためのアクセス許可をサービス プリンシパルに付与するには、次の手順を実行します。
+サービス プリンシパルを使用している場合は、対象のキー コンテナーにアクセスしてシークレットを取得するためのアクセス許可をサービス プリンシパルに付与します。 次のコマンドを実行して、"*閲覧者*" ロールを割り当て、対象のキー コンテナーからシークレットを "*取得する*" ためのアクセス許可をサービス プリンシパルに付与します。
 
 1. サービス プリンシパルを既存の対象のキー コンテナーに割り当てます。 **$AZURE_CLIENT_ID** パラメーターは、サービス プリンシパルを作成した後にコピーした **appId** です。
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 マネージド ID を使用する場合は、作成した AKS クラスターに特定のロールを割り当てます。 
 
-1. ユーザー割り当てのマネージド ID の作成、一覧表示、または読み取りを行うには、AKS クラスターに[マネージド ID 共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロールを割り当てる必要があります。 **$clientId** が Kubernetes クラスターの clientId であることを確認します。
+1. ユーザー割り当てのマネージド ID の作成、一覧表示、または読み取りを行うには、AKS クラスターに[マネージド ID オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールを割り当てる必要があります。 **$clientId** が Kubernetes クラスターの clientId であることを確認します。 スコープについては、お使いの Azure サブスクリプション サービス、特に AKS クラスターの作成時に作成されたノード リソース グループの下に配置されます。 このスコープによって、そのグループ内のリソースのみが、以下に割り当てられたロールの影響を受けるようになります。 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```

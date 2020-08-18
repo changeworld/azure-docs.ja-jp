@@ -1,23 +1,23 @@
 ---
-title: Azure CLI - プライベート リンク (プレビュー) を使用してマネージド ディスクに対するインポートまたはエクスポート アクセスを制限する
-description: Azure CLI を使用して、マネージド ディスクに対するプライベート リンク (プレビュー) を有効にします。 対象の仮想ネットワーク内でのみディスクを安全にエクスポートおよびインポートできます。
+title: Azure CLI - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
+description: Azure CLI を使用して、マネージド ディスクのプライベート リンクを有効にします。 対象の仮想ネットワーク内でのみディスクを安全にエクスポートおよびインポートできます。
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420288"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136407"
 ---
-# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLI - プライベート リンク (プレビュー) を使用してマネージド ディスクに対するインポートまたはエクスポート アクセスを制限する
+# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
-[プライベート エンドポイント](../../private-link/private-endpoint-overview.md) (プレビュー) を使用すると、マネージド ディスクのエクスポートとインポートを制限し、対象の Azure 仮想ネットワーク上のクライアントから [Private Link](../../private-link/private-link-overview.md) を介してデータに安全にアクセスすることができます。 プライベート エンドポイントでは、対象のマネージド ディスク サービスのために仮想ネットワークのアドレス空間の IP アドレスを使用します。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンクを経由することで、パブリック インターネットからの露出を排除できます。 
+マネージド ディスクでのプライベート リンクのサポートは現在プレビュー段階です。 [プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用すると、マネージド ディスクのエクスポートとインポートを制限し、Azure 仮想ネットワーク上のクライアントから[プライベート リンク](../../private-link/private-link-overview.md)を介してデータに安全にアクセスできます。 プライベート エンドポイントでは、対象のマネージド ディスク サービスのために仮想ネットワークのアドレス空間の IP アドレスを使用します。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットから公開されることはなくなります。
 
 プライベート リンクを使用してマネージド ディスクをエクスポートまたはインポートするには、ディスク アクセス リソースを作成した後、プライベート エンドポイントを作成することによってこれを同じサブスクリプション内の仮想ネットワークにリンクします。 次に、ディスクまたはスナップショットをディスク アクセスのインスタンスに関連付けます。 最後に、ディスクまたはスナップショットの NetworkAccessPolicy プロパティを `AllowPrivate` に設定します。 これにより、対象の仮想ネットワークへのアクセスが制限されます。 
 

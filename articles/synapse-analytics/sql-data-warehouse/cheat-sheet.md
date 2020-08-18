@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 74ffb54b13783b4945376e1717777fa1da39ab44
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543318"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136101"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) のチート シート
 
@@ -37,7 +37,7 @@ ms.locfileid: "87543318"
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、PolyBase を使用してデータをステージング テーブルに読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (プレビュー) を使用して、データをステージング テーブルに読み込みます。 次の構成を使用します。
 
 | デザイン | 推奨 |
 |:--- |:--- |
@@ -109,7 +109,7 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 ## <a name="maintain-statistics"></a>統計を管理する
 
- 自動統計が一般公開されるまで、統計の手動のメンテナンスが必要です。 データに*大幅な*変更が発生したときに統計を更新することが重要です。 これにより、クエリ プランを最適化できます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
+データに*大幅な*変更が発生したときに統計を更新することが重要です。 "*大幅な*" 変更が発生したかどうかを判断するには、「[統計の更新](sql-data-warehouse-tables-statistics.md#update-statistics)」をご覧ください。 更新された統計により、クエリ プランが最適化されます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
 
 更新の頻度を定義することもできます。 たとえば、毎日新しい値が追加される可能性がある日付列を更新する場合があります。 結合に含まれる列、WHERE 句で使われている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。
 

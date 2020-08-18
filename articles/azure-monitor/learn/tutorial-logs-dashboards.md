@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148261"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927370"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -54,7 +54,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ![Azure portal で新しいダッシュボードを共有する](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-ダッシュボードの発行先となるサブスクリプションとリソース グループを選択するよう求められます。 便宜上、ポータルの発行機能によって、 **dashboards**という名前のリソース グループにダッシュボードを配置するように案内されます。  選択したサブスクリプションを確認し、 **[発行]** をクリックします。  ダッシュボードに表示される情報へのアクセスは、[Azure リソース ベースのアクセスの制御](../../role-based-access-control/role-assignments-portal.md)によって制御されます。   
+ダッシュボードの発行先となるサブスクリプションとリソース グループを選択するよう求められます。 便宜上、ポータルの発行機能によって、 **dashboards**という名前のリソース グループにダッシュボードを配置するように案内されます。  選択したサブスクリプションを確認し、 **[発行]** をクリックします。  ダッシュボードに表示される情報へのアクセスは、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) によって制御されます。   
 
 ## <a name="visualize-a-log-query"></a>ログ クエリを可視化する
 [Log Analytics](../log-query/get-started-portal.md) は、ログ クエリとその結果を処理するために使用する専用ポータルです。 たとえば、複数行のクエリを編集したり、コードを選択的に実行したりできます。また、状況依存の Intellisense、スマート分析などの機能もあります。 このチュートリアルでは、Log Analytics を使用して、グラフィカル形式でパフォーマンス ビューを作成し、今後の検索のためにそれを保存し、事前に作成した共有ダッシュボードにそれをピン留めします。

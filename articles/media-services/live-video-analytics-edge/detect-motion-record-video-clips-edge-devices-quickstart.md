@@ -3,12 +3,12 @@ title: モーションの検出とエッジ デバイス上でのビデオの記
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析し、何らかの動きがあるかどうかを検出し、ある場合には、MP4 ビデオ クリップをエッジ デバイス上のローカル ファイル システムに記録する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 796def7cad3632dd50184bea751dc9f348569216
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091863"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067703"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>クイック スタート:モーションの検出とエッジ デバイス上でのビデオの記録
  
@@ -89,11 +89,20 @@ ms.locfileid: "87091863"
 
 「[IoT Edge の配置マニフェストを生成してデプロイする](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest)」の手順で、Visual Studio Code で **AZURE IOT HUB** の下にある **lva-sample-device** ノード (左下のセクション内) を展開します。 次のモジュールがデプロイされていることを確認できます。
 
-* **lvaEdge** という名前の Live Video Analytics モジュール
-* **rtspsim** モジュール。ライブ ビデオ フィードのソースとして機能する RTSP サーバーをシミュレートします
+* `lvaEdge` という名前の Live Video Analytics モジュール
+* `rtspsim` モジュール。ライブ ビデオ フィードのソースとして機能する RTSP サーバーをシミュレートします
 
   ![モジュール](./media/quickstarts/lva-sample-device-node.png)
 
+> [!NOTE]
+> セットアップ スクリプトによってプロビジョニングされたものではなく、独自のエッジ デバイスを使用している場合は、エッジ デバイスにアクセスし、**管理者権限**で次のコマンドを実行して、このクイックスタートで使用するサンプル ビデオ ファイルをプルして保存します。  
+
+```
+mkdir /home/lvaadmin/samples
+mkdir /home/lvaadmin/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+chown -R lvaadmin /home/lvaadmin/samples/  
+```
 
 ## <a name="review---prepare-for-monitoring-events"></a>レビュー - イベントを監視するための準備をする
 「[イベントを監視するための準備をする](detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)」手順が完了していることを確認します。
@@ -105,54 +114,55 @@ ms.locfileid: "87091863"
 1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウに、いくつかのメッセージが出力されます。
 1. *operations.json* コードにより、ダイレクト メソッド `GraphTopologyList` および `GraphInstanceList` が呼び出されます。 前回のクイックスタート後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 Enter キーを押します。
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+```
+--------------------------------------------------------------------------
+Executing operation GraphTopologyList
+-----------------------  Request: GraphTopologyList  --------------------------------------------------
+{
+  "@apiVersion": "1.0"
+}
+---------------  Response: GraphTopologyList - Status: 200  ---------------
+{
+  "value": []
+}
+--------------------------------------------------------------------------
+Executing operation WaitForInput
+Press Enter to continue
+```
 
-    **[ターミナル]** ウィンドウに、次の一連のダイレクト メソッド呼び出しが表示されます。
+  **[ターミナル]** ウィンドウに、次の一連のダイレクト メソッド呼び出しが表示されます。  
+  * `topologyUrl` を使用する `GraphTopologySet` の呼び出し 
+  * 次の本文を使用する `GraphInstanceSet` の呼び出し。
 
-     * `topologyUrl` を使用する `GraphTopologySet` の呼び出し 
-     * 次の本文を使用する `GraphInstanceSet` の呼び出し。
+```
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph",
+  "properties": {
+    "topologyName": "EVRToFilesOnMotionDetection",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "testuser"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "testpassword"
+      }
+    ]
+  }
+}
+```
 
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph",
-           "properties": {
-             "topologyName": "EVRToFilesOnMotionDetection",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
-               }
-             ]
-           }
-         }
-         ```
-     * グラフ インスタンスとビデオのフローを開始する `GraphInstanceActivate` の呼び出し
-     * グラフ インスタンスが実行状態であることを示す `GraphInstanceList` の 2 回目の呼び出し
-1. **[ターミナル]** ウィンドウの出力は `Press Enter to continue` で一時停止します。 Enter キーはまだ押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
+  * グラフ インスタンスとビデオのフローを開始する `GraphInstanceActivate` の呼び出し
+  * グラフ インスタンスが実行状態であることを示す `GraphInstanceList` の 2 回目の呼び出し  
+
+3. **[ターミナル]** ウィンドウの出力は `Press Enter to continue` で一時停止します。 Enter キーはまだ押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
 1. Visual Studio Code の **[出力]** ウィンドウに切り替えます。 Live Video Analytics on IoT Edge モジュールから IoT ハブに送信されているメッセージが表示されます。 このクイックスタートの次のセクションでは、これらのメッセージについて説明します。
 
 1. メディア グラフは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 メディア グラフを停止するには、 **[ターミナル]** ウィンドウに戻り、Enter キーを押します。 
@@ -239,7 +249,7 @@ ms.locfileid: "87091863"
 
 ## <a name="play-the-mp4-clip"></a>MP4 クリップを再生する
 
-MP4 ファイルは、OUTPUT_VIDEO_FOLDER_ON_DEVICE キーを使用して *.env* ファイルで構成したエッジ デバイス上のディレクトリに書き込まれます。 既定値を使用している場合、結果は */home/lvaadmin/samples/output/* フォルダーに配置されます。
+MP4 ファイルは、OUTPUT_VIDEO_FOLDER_ON_DEVICE キーを使用して *.env* ファイルで構成したエッジ デバイス上のディレクトリに書き込まれます。 既定値を使用している場合、結果は */var/media/* フォルダーに配置されます。
 
 MP4 クリップを再生するには、次のようにします。
 
@@ -250,7 +260,7 @@ MP4 クリップを再生するには、次のようにします。
     ![VM](./media/quickstarts/virtual-machine.png)
 
 1. [Azure リソースを設定](detect-motion-emit-events-quickstart.md#set-up-azure-resources)したときに生成された資格情報を使用して、サインインします。 
-1. コマンド プロンプトで、関連するディレクトリに移動します。 既定の場所は、 */home/lvaadmin/samples/output* です。 MP4 ファイルがこのディレクトリで見つかります。
+1. コマンド プロンプトで、関連するディレクトリに移動します。 既定の場所は */var/media* です。 MP4 ファイルがこのディレクトリで見つかります。
 
     ![出力](./media/quickstarts/samples-output.png) 
 
