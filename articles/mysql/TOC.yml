@@ -138,6 +138,8 @@
           href: concepts-server-parameters.md
     - name: 開発
       items:
+        - name: アプリケーションのベスト プラクティス
+          href: app-development-best-practices.md
         - name: ドライバーとツールの互換性
           href: concepts-compatibility.md
         - name: アプリケーション開発

@@ -418,7 +418,7 @@
         - name: 移行の概要
           href: migration-classic-resource-manager-overview.md
         - name: 移行の詳細
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: 移行の計画
           href: migration-classic-resource-manager-plan.md
         - name: CLI を使用して移行する
@@ -428,7 +428,7 @@
         - name: 移行用のコミュニティ ツール
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: よく寄せられる質問
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: イメージの使用
       displayName: 'SIG, AMI, image'
       items:
@@ -582,7 +582,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -938,7 +938,7 @@
           href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
-            - name: アーキテクチャ
+            - name: Architecture
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
@@ -954,7 +954,7 @@
           href: detach-disk.md
         - name: Resource Manager テンプレートによるディスクのデプロイ
           displayName: 'Azure Resource Manager, ARM'
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: 共有ディスクを有効にする
           href: disks-shared-enable.md
         - name: ディスクに VHD をアップロードする - CLI
@@ -1004,7 +1004,7 @@
         - name: パフォーマンス
           items:
             - name: 書き込みアクセラレータの使用
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: ウルトラ ディスクの使用
               href: disks-enable-ultra-ssd.md
             - name: ディスクのベンチマークの実行
