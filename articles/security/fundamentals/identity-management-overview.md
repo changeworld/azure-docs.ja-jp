@@ -1,6 +1,6 @@
 ---
 title: ID 管理に役立つ Azure のセキュリティ機能 | Microsoft Docs
-description: " この記事は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明します。 Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、多要素認証や条件付きアクセス ポリシーなどの追加レベルの検証を可能にします。 "
+description: ID 管理に役立つ Azure のコア セキュリティ機能について説明します。 シングル サインオンやリバース プロキシなどのトピックに関する情報を参照してください。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002688"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のセキュリティ上の利点を活用す�
 * シングル サインオン
 * リバース プロキシ
 * Multi-Factor Authentication
-* ロールベースのアクセス制御 (RBAC)
+* Azure ロールベースのアクセス制御 (Azure RBAC)
 * セキュリティの監視、アラート、および機械学習ベースのレポート
 * コンシューマーの ID とアクセスの管理
 * デバイス登録
@@ -87,9 +87,9 @@ Azure Multi-Factor Authentication は、複数の確認方法の使用を要求�
 * [Azure Multi-Factor Authentication とは](/azure/active-directory/authentication/multi-factor-authentication)
 * [Azure Multi-Factor Authentication のしくみ](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="rbac"></a>RBAC
+## <a name="azure-rbac"></a>Azure RBAC
 
-Azure RBAC は Azure Resource Manager 上に構築された承認システムであり、Azure 内のリソースに対するアクセスをきめ細かく管理できます。 RBAC を使用すると、ユーザーのアクセスのレベルを細かく制御できます。 たとえば、ユーザーに応じて、管理の対象を仮想ネットワークのみに制限したり、リソース グループ内のすべてのリソースを管理できるようにしたりできます。 Azure には複数の組み込みロールがあり、使用できます。 4 つの基本的な組み込みロールを次に示します。 最初の 3 つは、すべてのリソースの種類に適用されます。
+Azure RBAC は Azure Resource Manager 上に構築された認可システムであり、Azure 内のリソースに対するアクセスをきめ細かく管理できます。 Azure RBAC を使用すると、ユーザーのアクセスのレベルを細かく制御できます。 たとえば、ユーザーに応じて、管理の対象を仮想ネットワークのみに制限したり、リソース グループ内のすべてのリソースを管理できるようにしたりできます。 Azure には複数の組み込みロールがあり、使用できます。 4 つの基本的な組み込みロールを次に示します。 最初の 3 つは、すべてのリソースの種類に適用されます。
 
 - [所有者](/azure/role-based-access-control/built-in-roles#owner) - 他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 
 - [共同作成者](/azure/role-based-access-control/built-in-roles#contributor) - すべての種類の Azure リソースを作成および管理できます。他のユーザーにアクセス権を付与することはできません。

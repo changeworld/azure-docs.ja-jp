@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 03/20/2019
+ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446961"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165160"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -31,6 +31,14 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 >
 
 Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
+
+## <a name="april-2020"></a>2020 年 4 月
+**エージェントの更新**
+
+- AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.77.0)
+
+   1.   アラートが誤って報告されていた "AD FS サービスのサービス プリンシパル名 (SPN) が無効" アラートのバグを修正しました。
+
 
 ## <a name="july-2019"></a>2019 年 7 月
 **エージェントの更新**
@@ -251,5 +259,5 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 * アプリケーション、エラーの種類などによってグループ化された AD FS サーバーへの失敗した要求の傾向。
 * Azure AD グローバル管理者の資格情報を使用した簡単なエージェントのデプロイメント。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](whatis-hybrid-identity-health.md)」を参照してください。

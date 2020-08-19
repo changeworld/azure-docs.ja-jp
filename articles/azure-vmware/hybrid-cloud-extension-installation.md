@@ -3,26 +3,26 @@ title: Hybrid Cloud Extension (HCX) をインストールする
 description: Azure VMware Solution (AVS) プライベート クラウド用の VMware Hybrid Cloud Extension (HCX) ソリューションを設定します
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539161"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904995"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware Solution 用の HCX をインストールする
 
 この記事では、Azure VMWare Solution (AVS) プライベート クラウド用の VMWare Hybrid Cloud Extension (HCX) ソリューションを設定する手順を説明します。 HCX を使用すると、さまざまな組み込みの HCX でサポートされた移行の種類により、クラウドやその他の接続されたサイトに VMware のワークロードを移行できます。
 
-HCX Advanced (既定のインストール) では、最大 3 つの vCenter がサポートされます。 4 つ以上必要な場合は、サポートを通じて HCX Enterprise アドオンを有効にすることができます。 HCX Enterprise のインストールでは、一般提供 (GA) 後、お客様に対して追加料金が発生しますが、[追加の機能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)が提供されます。
+HCX Advanced (既定のインストール) では、最大 3 つのサイト接続 (オンプレミスまたはクラウドからクラウド) がサポートされます。 3 つより多くのサイト接続が必要な場合は、サポートを通じて HCX Enterprise アドオン (現在プレビュー段階) を有効にすることができます。 HCX Enterprise では、一般提供 (GA) 後にはお客様に対して追加料金が発生しますが、[追加の機能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)が提供されます。
 
 
 「[開始する前に](#before-you-begin)」、「[ソフトウェア バージョンの要件](#software-version-requirements)」、「[前提条件](#prerequisites)」を最初によく確認してください。 
 
-その後、以下のことを行うのに必要なすべての手順について説明します。
+その後、次の操作を実行するために必要なすべての手順について説明します。
 
 > [!div class="checklist"]
-> * オンプレミスの HCX OVA をデプロイする
+> * オンプレミスの HCX OVA (コネクタ) をデプロイする
 > * HCX をアクティブ化して構成する
 > * ネットワーク アップリンクとサービス メッシュを構成する
 > * アプライアンスの状態を確認してセットアップを完了する
@@ -31,28 +31,31 @@ HCX Advanced (既定のインストール) では、最大 3 つの vCenter が�
 
 ## <a name="before-you-begin"></a>開始する前に
     
-* 基本的な AVS Software Defined Datacenter (SDDC) の[チュートリアル シリーズ](tutorial-network-checklist.md)を確認します
-* HCX ユーザー ガイドなど、[VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/index.html)を確認して参照します
-* VMware のドキュメント「[Vmware HCX で仮想マシンを移行する](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)」を確認します
-* 必要に応じて、「[VMware HCX のデプロイに関する考慮事項](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)」を確認します
+* 基本的な AVS Software Defined Datacenter (SDDC) の[チュートリアル シリーズ](tutorial-network-checklist.md)を確認します。
+* HCX ユーザー ガイドなど、[VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/index.html)を確認して参照します。
+* VMware のドキュメント「[Migrating Virtual Machines with VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)」 (Vmware HCX で仮想マシンを移行する) を確認します。
+* 必要に応じて、「[VMware HCX Deployment Considerations](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)」 (VMware HCX のデプロイに関する考慮事項) を確認します。
 * 必要に応じて、HCX についての VMware vSphere [ブログシリーズ](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)など、HCX に関連する VMware の資料を確認します。 
-* AVS サポート チャネルを通じて、AVS HCX Enterprise のアクティブ化を注文します。
+* AVS サポート チャネルを通じて、AVS HCX Enterprise のアクティブ化を要求します。
 
-コンピューティング リソースとストレージ リソースに対するワークロードのサイズの決定は、AVS Private Cloud HCX ソリューションの使用を準備する際に不可欠な計画手順です。 サイズ決定手順には、初期プライベート クラウド環境計画の一環として対処します。   
+コンピューティングとストレージのリソースに対するワークロードのサイズの決定は、AVS Private Cloud HCX ソリューションの使用を準備する際に不可欠な計画手順です。 サイズ決定手順には、初期プライベート クラウド環境計画の一環として対処します。 
+
+Azure Migrate ポータル (https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) で、AVS 評価を行ってワークロードのサイズを決定することもできます。
 
 ## <a name="software-version-requirements"></a>ソフトウェア バージョンの要件
+
 インフラストラクチャ コンポーネントでは、必要な最小バージョンが実行されている必要があります。 
                                                          
 | コンポーネントの種類    | ソース環境の要件    | ターゲット環境の要件   |
 | --- | --- | --- |
 | vCenter Server   | 5.1<br/><br/>5\.5 U1 以前を使用している場合は、HCX 操作用にスタンドアロンの HCX ユーザー インターフェイスを使用します。  | 6.0 U2 以降   |
 | ESXi   | 5.0    | ESXi 6.0 以降   |
-| NSX    | ソースの論理スイッチの HCX ネットワーク拡張機能の場合:NSXv 6.2 以降または NSX-T 2.4 以降   | NSXv 6.2 以降または NSX-T 2.4 以降<br/><br/>HCX 近接ルーティングの場合: NSXv 6.4 以降 (NSX-T では近接ルーティングはサポートされていません) |
+| NSX    | ソースの論理スイッチの HCX ネットワーク拡張機能の場合: NSXv 6.2 以降または NSX-T 2.4 以降   | NSXv 6.2 以降または NSX-T 2.4 以降<br/><br/>HCX 近接ルーティングの場合: NSXv 6.4 以降 (NSX-T では近接ルーティングはサポートされていません) |
 | vCloud Director   | 必須ではありません - ソース サイトの vCloud Director との相互運用性はありません | ターゲット環境を vCloud Director と統合する場合、最小値は 9.1.0.2 です。  |
 
 ## <a name="prerequisites"></a>前提条件
 
-* オンプレミスと AVS SDDC ER 回線の間に Global Reach を構成する必要があります。
+* オンプレミスと AVS SDDC ExpressRoute 回線の間に ExpressRoute Global Reach を構成する必要があります。
 
 * オンプレミスと AVS SDDC の間で、すべての必要なポートを開く必要があります ([VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)を参照)。
 

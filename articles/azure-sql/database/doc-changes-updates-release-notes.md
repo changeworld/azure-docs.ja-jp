@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067421"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121461"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 | ---| --- |
 | 単一データベースとエラスティック プールでの高速データベース復旧 | 詳しくは、「[高速データベース復旧](../accelerated-database-recovery.md)」をご覧ください。|
 | データの検出と分類  |詳しくは、[Azure SQL Database と Azure Synapse Analytics のデータ検出と分類](data-discovery-and-classification-overview.md)に関する記事をご覧ください。|
-| エラスティック データベース ジョブ | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
+| Elastic Database ジョブ (プレビュー) | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](elastic-query-overview.md)に関する記事をご覧ください。 |
 | エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](elastic-transactions-overview.md)。 |
 | Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](connect-query-portal.md)」をご覧ください。|
@@ -137,7 +137,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>リソース グループに対するアクセス許可が SQL Managed Instance に適用されない
 
-リソース グループ (RG) に SQL Managed Instance 共同作成者 RBAC ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
+リソース グループ (RG) に SQL Managed Instance 共同作成者 Azure ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
 
 **回避策**:ユーザーの SQL Managed Instance 共同作成者ロールをサブスクリプション レベルで設定します。
 

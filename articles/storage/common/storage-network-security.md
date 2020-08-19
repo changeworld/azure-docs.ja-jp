@@ -1,6 +1,6 @@
 ---
 title: Azure Storage ファイアウォールおよび仮想ネットワークの構成 | Microsoft Docs
-description: ストレージ アカウントの多層型ネットワーク セキュリティを構成します。
+description: Azure Storage ファイアウォールと Azure Virtual Network を使用して、ストレージ アカウントの多層型ネットワーク セキュリティを構成します。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 61c2b2b8bce676bd7032eb65fcf48b5ad07092ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c95501c4e17e0afaa082c3e02c29934435c1a19
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070665"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032505"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -120,7 +120,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 
 VNet 内の Azure Storage に対する[サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)を有効にします。 サービス エンドポイントでは、VNet からのトラフィックが、最適なパスを経由して、Azure Storage サービスにルーティングされます。 サブネットと仮想ネットワークの ID も、各要求と一緒に転送されます。 管理者は、その後、VNet 内の特定のサブネットからの要求の受信を許可するネットワーク ルールを、ストレージ アカウントに対して構成できます。 これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの認可要件を引き続き満たす必要があります。
 
-各ストレージ アカウントでは最大 100 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
+各ストレージ アカウントでは最大 200 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
 
 ### <a name="available-virtual-network-regions"></a>使用可能な仮想ネットワークのリージョン
 
@@ -365,7 +365,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 一部の Microsoft サービスは、お客様のネットワーク規則の対象にできないネットワークで稼働しています。 他のアプリに対するネットワーク規則を維持しながら、このような信頼された Microsoft サービスの一部にストレージ アカウントへのアクセスを許可できます。 これらの信頼されるサービスでは、強力な認証を使用して、お客様のストレージ アカウントに安全に接続します。 Microsoft サービスには、2 種類の信頼されるアクセスが用意されています。
 
 - 一部のサービスのリソースは、**お客様のサブスクリプションで登録されている場合に**、特定の操作 (ログの書き込みやバックアップなど) のために**同じサブスクリプション内の**ストレージ アカウントにアクセスできます。
-- 一部のサービスのリソースでは、そのシステム割り当てマネージド ID に **RBAC ロールを割り当てる**ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
+- 一部のサービスのリソースでは、そのシステム割り当てマネージド ID に **Azure ロールを割り当てる**ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
 
 
 **[信頼された Microsoft サービスを許可]** 設定を有効にすると、ストレージ アカウントと同じサブスクリプションに登録された次のサービスのリソースに対し、記載された一部の操作へのアクセスが許可されます。
@@ -384,7 +384,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure のネットワーク         | Microsoft.Network          | Network Watcher および Traffic Analytics サービスを含め、ネットワーク トラフィック ログを格納し、分析します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
-また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロールを割り当てている](storage-auth-aad.md#assign-rbac-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
+また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロールを割り当てている](storage-auth-aad.md#assign-azure-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
 
 | サービス                        | リソース プロバイダー名                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |

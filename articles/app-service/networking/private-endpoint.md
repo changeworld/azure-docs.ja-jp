@@ -4,17 +4,17 @@ description: Azure プライベート エンドポイントを使用して非公
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054578"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135387"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web アプリでのプライベート エンドポイントの使用 (プレビュー)
 
@@ -127,7 +127,9 @@ Elastic Premium プランの Azure Function をプライベート エンドポ�
 - ポータルを使用して Web アプリのプライベート エンドポイントをデプロイするには、[ポータルを使用して Web アプリに非公開で接続する方法][howtoguide1]に関するページを参照してください
 - Azure CLI を使用して Web アプリのプライベート エンドポイントをデプロイするには、[Azure CLI を使用して Web アプリに非公開で接続する方法][howtoguide2]に関するページを参照してください
 - PowerShell を使用して Web アプリのプライベート エンドポイントをデプロイするには、[PowerShell を使用して Web アプリに非公開で接続する方法][howtoguide3]に関するページを参照してください
-
+- Azure テンプレートを使用して Web アプリのプライベート エンドポイントをデプロイするには、[Azure テンプレートを使用して Web アプリに非公開で接続する方法][howtoguide4]に関するページを参照してください
+- エンド ツー エンドの例: ARM テンプレートにより、フロントエンド Web アプリを、VNet インジェクションとプライベート エンドポイントを使用するセキュリティで保護されたバックエンド Web アプリに接続する方法については、こちらの[クイックスタート][howtoguide5]を参照してください。
+- エンド ツー エンドの例: terraform により、フロントエンド Web アプリを、VNet インジェクションとプライベート エンドポイントを使用するセキュリティで保護されたバックエンド Web アプリに接続する方法については、こちらの[サンプル][howtoguide6]を参照してください。
 
 
 <!--Links-->
@@ -143,3 +145,6 @@ Elastic Premium プランの Azure Function をプライベート エンドポ�
 [howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
+[howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend

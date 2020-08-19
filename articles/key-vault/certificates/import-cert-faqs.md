@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094716"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056348"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>よく寄せられる質問 - Azure Key Vault 証明書のインポート
 
@@ -32,6 +32,10 @@ ms.locfileid: "87094716"
 ### <a name="how-can-i-resolve-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-in-key-vault"></a>"パラメーターが正しくありません" というエラーを解決する方法はありますか? Key Vault にインポートするためにサポートされている証明書の形式は何ですか?
 
 証明書をインポートするときは、キーがファイル自体に含まれていることを確認する必要があります。 秘密キーが異なる形式で別にある場合は、キーと証明書を組み合わせる必要があります。 証明機関によっては、証明書が異なる形式で提供されるため、証明書をインポートする前に、.pem または .pfx 形式であること、および使用されているキーが RSA または ECC のいずれかであることを確認します。 [証明書の要件](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support)と[証明書キーの要件](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)をご確認ください。
+
+###  <a name="can-i-import-certificate-using-arm-template"></a>ARM テンプレートを使用して証明書をインポートできますか?
+
+いいえ。ARM テンプレートを使用して証明書の操作を実行することはできません。 推奨される回避策は、API、CLI、または PowerShell で証明書をインポートする手段を利用することです。 既存の証明書がある場合は、それをシークレットとしてインポートできます。
 
 ### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>ポータルを使用して証明書をインポートする際にエラー ("問題が発生しました") が発生しました。 詳しく調査するにはどうすればよいですか?
     
@@ -64,6 +68,9 @@ ms.locfileid: "87094716"
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>パートナーの CA から証明書をインポートした場合、自動更新機能は引き続き機能しますか?
 はい。アップロードが完了したら、証明書の発行ポリシーで自動ローテーションを指定してください。 また、変更は、次のサイクルまたは証明書のバージョンまで反映されています。
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Key Vault にインポートされた App Service 証明書が表示されませんか? 
+証明書が正常にインポートされた場合、シークレット ブレードの下を確認してください。
 
 
 ## <a name="next-steps"></a>次のステップ

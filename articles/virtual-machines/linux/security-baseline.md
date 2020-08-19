@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 97b2189020beffda32cc70dc66f028bec834eee5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385485"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003261"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -562,11 +562,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: ロールベースのアクセス制御 (RBAC) を使用すると、チーム内の職務を分離し、VM 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを許可することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 Azure CLI または Azure PowerShell を使用して、Azure portal で VM のアクセス制御を構成できます。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、チーム内の職務を分離し、VM 上のユーザーに自分の職務を実行するために必要なアクセス権のみを付与できます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 Azure CLI または Azure PowerShell を使用して、Azure portal で VM のアクセス制御を構成できます。
 
-* [Azure リソースのロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md)
+* [Azure RBAC](../../role-based-access-control/overview.md)
 
 * [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
@@ -628,9 +628,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:仮想マシンの更新プログラムと修正プログラムを管理するには、Azure Update Management ソリューションを使用します。 Update Management は、サポートされているシステムへの修正プログラムの適用をローカルで構成された更新リポジトリに依存しています。
 
-* [Azure の Update Management ソリューション](../../automation/automation-update-management.md)
+* [Azure の Update Management ソリューション](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](../../automation/automation-tutorial-update-management.md)
+* [VM の更新プログラムとパッチを管理する](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -640,9 +640,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: サード パーティ製の修正プログラム管理ソリューションを使用できます。 Azure Update Management のソリューションを使用すると、仮想マシンの更新プログラムと修正プログラムを管理できます。 Update Management は、サポートされているシステムへの修正プログラムの適用をローカルで構成された更新リポジトリに依存しています。
 
-* [Azure の Update Management ソリューション](../../automation/automation-update-management.md)
+* [Azure の Update Management ソリューション](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](../../automation/automation-tutorial-update-management.md)
+* [VM の更新プログラムとパッチを管理する](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -920,11 +920,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: カスタム イメージ (仮想ハード ディスクなど) を使用している場合は、Azure のロールベースのアクセス制御を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
+**ガイダンス**: カスタム イメージ (仮想ハード ディスクなど) を使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
-* [Azure での RBAC の概要](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure RBAC について](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Azure で RBAC を構成する方法](../../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC を構成する方法](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center の監視**: 利用不可
 

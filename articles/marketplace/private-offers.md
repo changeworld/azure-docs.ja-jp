@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420109"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168016"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースでのプライベート オファー
 
@@ -35,7 +35,7 @@ ms.locfileid: "87420109"
 
 ## <a name="creating-private-offers-using-plans"></a>プランを使用したプライベート オファーの作成
 
-公開元は、新しいプラン (以前は SKU と呼ばれていました) を作成し、それらをプライベートに設定することによって、"*プランを含む新規または既存のオファー*" のプライベート版を簡単に作成できます。  
+公開元は、新しいプラン (以前は SKU と呼ばれていました) を作成し、それらをプライベートに設定することによって、"*プランを含む新規または既存のオファー*" のプライベート版を簡単に作成できます。 各オファーには、最大 45 個のプライベート プランを含めることができます。
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
 

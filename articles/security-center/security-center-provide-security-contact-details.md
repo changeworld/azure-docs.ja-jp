@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 661d3845365778f7ef23cdd05b81b98c3bf84259
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519287"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042277"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>セキュリティ アラートのメール通知を設定する 
 
 組織内の適切なユーザーが環境内のセキュリティ アラートについて通知を受け取るようにするには、 **[メール通知]** 設定ページでメール アドレスを入力します。
 
-通知を設定するときに、特定の個人またはサブスクリプションの特定の RBAC ロールを持つユーザーにメールを送信するように構成できます。 
+通知を設定するときに、特定の個人またはサブスクリプションの特定の Azure ロールを持つユーザーにメールを送信するように構成できます。 
 
 アラート疲れを避けるため、Security Center では送信メールの量が制限されています。 各サブスクリプションについて、Security Center では以下のように送信が行われます。
 
@@ -34,14 +34,20 @@ ms.locfileid: "86519287"
 
 ## <a name="availability"></a>可用性
 
-- リリース状態: **一般提供**
-- 必要なロール: **セキュリティ管理者**または**サブスクリプションの所有者** 
-- クラウド: ✔商用クラウド ✔ US Gov (一部) ✘ ナショナル/ソブリン (China Gov、その他の Gov)
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般公開|
+|価格:|Free レベル|
+|必要なロールとアクセス許可:|**Security Admin**<br>**サブスクリプションの所有者** |
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov (一部)<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
+
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>アラートの電子メール通知を設定する<a name="email"></a>
 
-個人または特定の RBAC ロールを持つすべてのユーザーにメール通知を送信できます。
+個人または特定の Azure ロールを持つすべてのユーザーにメール通知を送信できます。
 
 1. Security Center の **[Pricing & settings]\(価格と設定\)** 領域の関連するサブスクリプションで、 **[メール通知]** を選択します。
 
