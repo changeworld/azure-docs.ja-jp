@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: 概念
   items:
+    - name: アプリとデプロイについて
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: クォータと制限について
       href: spring-cloud-quotas.md
     - name: メトリックを理解する

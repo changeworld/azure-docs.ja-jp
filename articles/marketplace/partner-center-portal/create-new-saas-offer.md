@@ -3,18 +3,18 @@ title: SaaS オファーを作成する (Azure Marketplace および Microsoft A
 description: Microsoft パートナー センターの Microsoft コマーシャル マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うためにサービスとしてのソフトウェア (SaaS) プランを作成する方法。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 07/22/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800338"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166724"
 ---
-# <a name="create-a-saas-offer"></a>SaaS オファーを作成する
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで SaaS オファーを作成する
 
 コマーシャル マーケットプレースでサービスとしてのソフトウェア (SaaS) オファーの作成を開始するには、必ず、最初に[パートナー センター アカウントを作成](./create-account.md)し、 **[概要]** タブを選択した状態で[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いてください。
 
@@ -282,16 +282,18 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 #### <a name="files-and-images"></a>ファイルと画像
 
 - **[ドキュメント]** (必須) – お客様のオファーに関するマーケティング ドキュメント (PDF 形式) を追加します。オファーごとに少なくとも 1 つ、最大で 3 つのドキュメントを指定します。
-- **[画像]** (必須) - オファーのロゴ画像はマーケットプレース全体のさまざまな場所に表示される可能性があります。 **大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して**小** (48 x 48 ピクセル) サイズおよび**中** (90 x 90 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。 **ワイド** ロゴは省略可能です。必ずしも追加する必要はありません。
+- **[画像]**  – ロゴ画像を PNG 形式でアップロードします。
 
-    3 つのロゴ サイズは必須であり、一覧のさまざまな場所で使用されます。1 つのロゴ サイズは省略可能です。
+  - **小** (48 x 48 ピクセル、必須)
+  - **中** (90 x 90 ピクセル、必須)
+  - **大** (216 x 216 ピクセル、必須)
+  - **ワイド** (255 x 115 ピクセル) (任意指定)
 
-    - **小** (48 x 48)
-    - **中** (90 x 90)
-    - **大** (216 x 216 から 350 x 350)
-    - **ワイド** ("*省略可能*") (255 x 115)
+   これら 3 つのロゴ サイズは、ネットショップのさまざまな場所で使用されます。
 
-    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+   -   小のロゴ (48 x 48 ピクセル) は、Azure Marketplace の検索結果、Microsoft AppSource のメイン ページ、および検索結果ページに表示されます。 
+   -   中のロゴ (90 x 90 ピクセル) は、Microsoft Azure で新しいリソースを作成したときに表示されます。
+   -   大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルの間) は、Azure Marketplace と Microsoft AppSource のオファーの一覧ページに表示されます。
 
 - **[スクリーンショット]** (必須) – お客様のオファーについて説明するスクリーンショット (1280 x 720 ピクセルのサイズ) を、最大で 5 つ追加します。 すべての画像は .PNG 形式である必要があります。
 - **[ビデオ]** (省略可能) – お客様のオファーについて説明しているビデオへのリンクを追加します。 顧客へのオファーと共に表示される YouTube や Vimeo のビデオへのリンクを使用できます。 また、ビデオのサムネイル画像を入力する必要があります。PNG 形式で、サイズは 1,280 x 720 ピクセルにします。 オファーごとに最大 4 つのビデオを表示できます。
@@ -349,6 +351,8 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 ## <a name="plan-overview"></a>プランの概要
 
 このページでは、同じオファー内でさまざまなプラン オプションを指定できます。 これらのプラン (SKU とも呼ばれる) は、サービスのバージョン、収益化、またはレベルの点で異なる可能性があります。 マーケットプレースでオファーを販売するには、少なくとも 1 つのプランを設定する必要があります。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 作成後、オファーの名前、ID、価格モデル、提供状況 (パブリックまたはプライベート)、現在の公開状態、使用可能なアクションが表示されます。
 

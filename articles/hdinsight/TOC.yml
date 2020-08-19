@@ -356,6 +356,8 @@
               href: ./set-up-pyspark-interactive-environment.md
         - name: 開発
           items:
+            - name: SparkCruise を使用してクエリを最適化する
+              href: ./spark/spark-cruise.md
             - name: 対話型の Apache Spark シェルを使用する
               href: ./spark/apache-spark-shell.md
             - name: Apache Livy を使用したリモート ジョブ

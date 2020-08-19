@@ -42,6 +42,8 @@
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: ユーザーの一括作成
           href: users-bulk-add.md
+        - name: ゲスト ユーザーのアクセス許可の制限
+          href: users-restrict-guest-permissions.md
         - name: ユーザー プロファイルの管理
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: マイ スタッフの委任
@@ -68,19 +70,19 @@
           href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 動的グループと B2B
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: ディレクトリの管理
+    - name: 複数のテナントの管理
       items:
-        - name: Azure AD 組織
+        - name: Azure AD のテナント管理
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: ドメイン名を管理する
           href: domains-manage.md
-        - name: ディレクトリを削除する
+        - name: テナントを削除する
           href: directory-delete-howto.md
         - name: 複数のディレクトリ
           href: licensing-directory-independence.md
-        - name: セルフサービスのサインアップ
+        - name: セルフサービス サインアップ
           href: directory-self-service-signup.md
-        - name: ディレクトリの引き継ぎ
+        - name: テナントの引き継ぎ
           href: domains-admin-takeover.md
         - name: Azure AD Connect
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context

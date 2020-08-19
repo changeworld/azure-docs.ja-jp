@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.openlocfilehash: fa0ef29a1ae9e7fa7fbb1798927b01383f891c29
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85317180"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262094"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -32,13 +32,13 @@ landingContent:
     links:
     - text: Security Center のリリース ノート
       url: release-notes.md
-    - text: SQL マシン向けの Advanced Data Security
-      url: security-center-iaas-advanced-data.md
-    - text: アラートの抑制ルール
-      url: alerts-suppression-rules.md
+    - text: Asset Inventory によるリソースの管理
+      url: asset-inventory.md
+    - text: 適応型アプリケーション制御のページの書き換え
+      url: security-center-adaptive-application.md
     - text: 新しいセキュリティ制御の詳細な説明
       url: secure-score-security-controls.md#security-controls-and-their-recommendations
-    - text: 新しいセキュリティ スコア API
+    - text: セキュリティ スコア API
       url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: はじめに
   linkLists:

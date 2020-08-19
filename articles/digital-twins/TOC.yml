@@ -172,6 +172,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL 検証ツール (サンプル)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+        - name: DPS と IoT Hub の統合サンプル
+          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
     - name: Azure ツール
       items:
         - name: Azure Cloud Shell

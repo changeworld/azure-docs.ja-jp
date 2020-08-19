@@ -79,6 +79,8 @@
   items:
     - name: Azure Red Hat OpenShift 4 クラスターのネットワーク
       href: concepts-networking.md
+    - name: Azure Red Hat OpenShift 3.11 から Azure Red Hat OpenShift 4 への移行
+      href: migration.md
 - name: リファレンス
   items:
     - name: Azure Red Hat OpenShift CLI

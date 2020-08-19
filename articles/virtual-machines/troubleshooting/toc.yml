@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: Windows VM エージェントのオフライン インストール
       href: install-vm-agent-offline.md
+    - name: Windows VM エージェントのトラブルシューティング
+      href: windows-azure-guest-agent.md
 - name: バックアップと復元
   items:
     - name: Azure VM でのバックアップ エラーのトラブルシューティング

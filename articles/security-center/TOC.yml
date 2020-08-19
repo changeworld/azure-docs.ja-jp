@@ -151,6 +151,8 @@
           href: workflow-automation.md
         - name: レコメンデーションのエクスポート
           href: continuous-export.md
+    - name: Asset Inventory によるリソースの管理
+      href: asset-inventory.md
     - name: 他のツールおよびサービスとの統合
       items:
         - name: Windows Admin Center との統合
