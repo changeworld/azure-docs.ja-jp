@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845801"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142113"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>チュートリアル:Azure Data Box を返送する (プレビュー)
 
@@ -176,7 +176,7 @@ ms.locfileid: "87845801"
 
 ## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
-日本、シンガポール、韓国、西ヨーロッパで Data Box を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
+日本、シンガポール、韓国、インド、南アフリカ、または西ヨーロッパで Data Box を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
 
 1. この手順が正常に完了したら、Data Box のローカル Web UI の [発送準備] ページに表示される承認コードをメモしておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。

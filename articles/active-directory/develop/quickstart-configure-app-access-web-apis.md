@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120866"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140804"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する
 
@@ -148,7 +148,7 @@ Web アプリケーションに資格情報を追加するには、証明書を�
 
 ## <a name="add-permissions-to-access-web-apis"></a>Web API にアクセスするためのアクセス許可を追加する
 
-[Graph API のサインインとユーザー プロファイルの読み取りアクセス許可](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions)が既定で選択されています。 Web API ごとに [2 種類のアクセス許可](developer-glossary.md#permissions)から選択できます。
+[Graph API のサインインとユーザー プロファイルの読み取りアクセス許可](/graph/permissions-reference#user-permissions)が既定で選択されています。 Web API ごとに [2 種類のアクセス許可](developer-glossary.md#permissions)から選択できます。
 
 * **アプリケーションのアクセス許可**。 クライアント アプリケーションは、アプリケーション自体として (ユーザー コンテキストなしで) Web API に直接アクセスする必要があります。 この種類のアクセス許可には、管理者の同意が必要です。 このアクセス許可は、デスクトップおよびモバイルのクライアント アプリケーションでは使用できません。
 * **委任されたアクセス許可**。 クライアント アプリケーションは、サインインしているユーザーとして Web API にアクセスする必要があります。アクセスにあたっては、選択されているアクセス許可に応じて制限が適用されます。 この種類のアクセス許可は、管理者の同意が必要でない限り、ユーザーが付与できます。

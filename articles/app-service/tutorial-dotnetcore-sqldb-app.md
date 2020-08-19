@@ -4,14 +4,14 @@ description: SQL Database に接続された .NET Core アプリを Azure App Se
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 148b22e7abc4fca7b9cb104f3616562b74c73004
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 10182abb99788e4974e08c9bfc5c9c53df2a201b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082479"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212936"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -155,7 +155,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) コマンドを使用して、接続文字列を取得します。
 
 ```azurecli-interactive
-az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
+az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
 ```
 
 コマンド出力の *\<username>* と *\<password>* は、前に使用したデータベース管理者の資格情報に置き換えてください。

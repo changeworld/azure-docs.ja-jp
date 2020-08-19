@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830953"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212739"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -76,7 +76,7 @@ Azure Maps Mobility Service では、輸送経路を指定したり、公共輸�
 
 ### <a name="render-service"></a>Render Service
 
-現在プレビュー段階にある [Render Service V2](https://docs.microsoft.com/est/api/maps/renderv2) では、新しいバージョンの [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) が導入されています。 Get Map Tile V2 API では、Azure Maps Creator を使用して作成された Azure Maps の道路タイル、気象タイル、またはマップ タイルを要求できるようになりました。 新しい Get Map Tile V2 API を使用することをお勧めします。  
+現在プレビュー段階にある [Render Service V2](https://docs.microsoft.com/rest/api/maps/renderv2) では、新しいバージョンの [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) が導入されています。 Get Map Tile V2 API では、Azure Maps Creator を使用して作成された Azure Maps の道路タイル、気象タイル、またはマップ タイルを要求できるようになりました。 新しい Get Map Tile V2 API を使用することをお勧めします。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Render Service V2 からのマップの例":::
 

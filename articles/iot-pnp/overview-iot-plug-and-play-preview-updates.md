@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: 60ad7f5df4f13d626d7a2c24990c7f48db28d01d
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c415ffdaa2eb3ad6a76cd48c3a895b6618dd3986
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475228"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208060"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT プラグ アンド プレイ プレビュー更新版
 
@@ -80,7 +80,7 @@ SDK の以前のプレビュー バージョンとの下位互換性はありま
 
 ### <a name="service-sdks"></a>サービス SDK
 
-サービス SDK は、[Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/digitaltwins-preview/digitaltwins/service/readme.md) と [Python](https://github.com/Azure/azure-iot-sdk-python/blob/digitaltwins-preview/azure-iot-hub/README.md) で使用できます。
+サービス SDK は、[Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/digitaltwins-preview/digitaltwins/service/readme.md) と [Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/README.md) で使用できます。
 
 ## <a name="vs-code-extension"></a>VS Code 拡張機能
 

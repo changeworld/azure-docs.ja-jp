@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: a0e27927c91c8b8ed1cfca410e08a5eb90117f58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84f89b9def3fc5d98ebb669b9f5b86523854f7a8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076712"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185725"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ (SDK v4)
 
@@ -240,7 +240,6 @@ namespace key_vault_console_app
 
 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
-- [.NET を使用した Azure Key Vault に対するサービス間認証](../general/service-to-service-authentication.md)を実装する
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
 - [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
