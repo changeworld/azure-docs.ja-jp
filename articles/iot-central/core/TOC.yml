@@ -59,7 +59,7 @@
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
-    - name: Architecture
+    - name: アーキテクチャ
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
@@ -121,6 +121,8 @@
           href: howto-create-custom-analytics.md
         - name: Power BI でのデータの視覚化
           href: howto-connect-powerbi.md
+        - name: ファイルのアップロードの構成と使用
+          href: howto-configure-file-uploads.md
     - name: 管理
       items:
         - name: アプリケーションの管理
