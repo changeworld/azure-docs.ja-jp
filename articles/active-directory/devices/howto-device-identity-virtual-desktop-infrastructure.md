@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419803"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903155"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -77,7 +77,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 
 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
 
-非永続的 VDI を展開する場合、IT 管理者は Azure AD での古いデバイスの管理に細心の注意を払う必要があります。 Microsoft は、IT 管理者が以下のガイダンスを実施することをお勧めします。 そうしないと、非永続的 VDI プラットフォームから登録された古い Hybrid Azure AD 参加済みデバイスがディレクトリに多数存在することになります。
+非永続的な VDI の Hybrid Azure AD 結合は、Windows の現在のバージョンではサポートされていません。 ダウンレベルの Windows 向け非永続的 VDI を展開する場合、IT 管理者は Azure AD での古いデバイスの管理に細心の注意を払う必要があります。 Microsoft は、IT 管理者が以下のガイダンスを実施することをお勧めします。 そうしないと、非永続的 VDI プラットフォームから登録された古い Hybrid Azure AD 参加済みデバイスがディレクトリに多数存在することになります。
 
 - デスクトップが VDI ベースであることを示す、コンピューターの表示名のプレフィックスを作成して使用します。
 - 次のコマンドを、ログオフ スクリプトの一部として実行します。 このコマンドは、Azure AD 呼び出しをベスト エフォートでトリガーし、デバイスを削除します。

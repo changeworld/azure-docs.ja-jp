@@ -6,15 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b06d38d69f331df2f48637c6cdee527090955a47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830133"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207138"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>App Configuration ストアを自動的にバックアップする
 
@@ -254,7 +255,7 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 az group delete --name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、キー値の自動バックアップを設定する方法がわかりました。次は、アプリケーションの geo 回復性を向上させる方法について説明します。
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051512"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829698"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
@@ -745,7 +745,7 @@ TLS 1.2 暗号スイートの最低条件:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範囲
-Azure AD プロビジョニング サービスは現在、Azure IP 範囲下で稼働できます。 サービスを稼働する一連の IP 範囲を統合する作業が進行中です。 IP 範囲一覧の統合後、このドキュメントは更新されます。 
+Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory と AzureActiveDirectoryDomainServices の IP 範囲で動作します。 AzureActiveDirectory の IP 範囲のみへの統合を行う作業が進行中です。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>手順 3:SCIM エンドポイントを構築する
 

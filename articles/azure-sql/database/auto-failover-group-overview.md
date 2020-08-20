@@ -5,19 +5,19 @@ description: 自動フェールオーバー グループを使用して、サー
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: ecc2925b52679c5807c9fa79a67d7b45411df526
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014033"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826536"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -135,7 +135,7 @@ ms.locfileid: "87014033"
   
 ## <a name="permissions"></a>アクセス許可
 
-フェールオーバー グループに対するアクセス許可は、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) によって管理されます。 [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロールには、フェールオーバー グループを管理するために必要なすべてのアクセス許可があります。
+フェールオーバー グループに対するアクセス許可は、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) によって管理されます。 [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロールには、フェールオーバー グループを管理するために必要なすべてのアクセス許可があります。
 
 ### <a name="create-failover-group"></a>フェールオーバー グループの作成
 
@@ -398,7 +398,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>フェールオーバー グループのプログラムによる管理
 
-前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御](../../role-based-access-control/overview.md)に関するページをご覧ください。
+前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関する記事を参照してください。
 
 ### <a name="manage-sql-database-failover"></a>SQL Database のフェールオーバーを管理する
 
