@@ -3,7 +3,7 @@ title: Azure CLI スクリプトのサンプル - コンテナーへのファイ
 description: この記事では、Azure CLI スクリプトを使用して、ローカル ファイルをストレージ コンテナーにアップロードする方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/01/2019
-ms.author: juliako
+ms.date: 08/18/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a28cabfbc5cbba906a8c16451de801818b3fbed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2441aba7c7b83b379a9c80192fe72736ecebab8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489964"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606645"
 ---
 # <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLI の例: ローカル ファイルをコンテナーにアップロードする
 
@@ -29,7 +29,6 @@ ms.locfileid: "87489964"
 ## <a name="prerequisites"></a>前提条件
 
 * [Media Services アカウントを作成する](./create-account-howto.md)
-* 「[アセットの管理](manage-asset-concept.md)」を確認する。
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

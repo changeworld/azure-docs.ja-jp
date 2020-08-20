@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9310fd5c9a66fbd39e32c4756c5037567963912d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458670"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841842"
 ---
 実行するアプリケーションの仮想マシン (VM) は、常に安全な状態に保つ必要があります。 VM の安全を確保する手段としては、Azure のサービスや機能を通じて、VM へのアクセスやデータのストレージにセキュリティを確保する方法が挙げられます。 この記事では、VM とアプリケーションのセキュリティを維持するうえで役に立つ情報を提供します。
 
@@ -63,7 +63,7 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-[ロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用すると、チーム内で職務を分離し、職務に必要なアクセス許可のみを VM のユーザーに付与することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../articles/role-based-access-control/role-assignments-portal.md) で構成できるほか、[Azure CLI](https://docs.microsoft.com/cli/azure/role) または [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) を使って構成することもできます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../articles/role-based-access-control/overview.md) を使用すると、チーム内の職務を分離し、VM 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを付与できます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../articles/role-based-access-control/role-assignments-portal.md) で構成できるほか、[Azure CLI](https://docs.microsoft.com/cli/azure/role) または [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) を使って構成することもできます。
 
 
 ## <a name="next-steps"></a>次のステップ

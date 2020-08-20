@@ -894,6 +894,8 @@
           href: docker-compose-quickstart.md
     - name: アプリケーションの実行
       items:
+        - name: Red Hat
+          href: ../workloads/redhat/overview.md
         - name: Cloud Foundry
           href: ../../cloudfoundry/index.yml
         - name: Cassandra
@@ -938,7 +940,7 @@
           href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
-            - name: Architecture
+            - name: アーキテクチャ
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md

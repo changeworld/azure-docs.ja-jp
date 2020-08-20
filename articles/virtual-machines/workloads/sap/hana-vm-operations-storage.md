@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074025"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080526"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -133,7 +133,7 @@ LVM または mdadm を使用して、複数の Azure Premium ディスクにま
 > Azure M シリーズ仮想マシンの SAP HANA 認定は、 **/hana/log** ボリュームに Azure 書き込みアクセラレータを使用している場合に限定されます。 そのため、運用環境シナリオでの Azure M シリーズ仮想マシンへの SAP HANA のデプロイは、 **/hana/log** ボリュームに Azure 書き込みアクセラレータを使用して構成することが求められます。  
 
 > [!NOTE]
-> Azure Premium Storage を含むシナリオでは、バースト機能が構成に実装されます。 使用するストレージ テスト ツールがどのような形式であっても、[Azure Premium ディスクのバーストの動作](../../linux/disk-bursting.md)を考慮してください。 SAP HWCCT または HCMT ツールによって提供されるストレージ テストを実行する場合、一部のテストが、蓄積できるバースト クレジットを超えるため、すべてのテストが基準を満たすことは想定されていません (特に、すべてのテストが中断なく連続して実行される場合)。
+> Azure Premium Storage を含むシナリオでは、バースト機能が構成に実装されます。 ストレージ テスト ツールを使おうとしているときには、その内容を問わず、[Azure Premium ディスクのバースト動作](../../linux/disk-bursting.md)を考慮に入れてください。 SAP HWCCT または HCMT ツールによって提供されるストレージ テストを実行する場合、一部のテストが、蓄積できるバースト クレジットを超えるため、すべてのテストが基準を満たすことは想定されていません (特に、すべてのテストが中断なく連続して実行される場合)。
 
 
 > [!NOTE]
@@ -321,6 +321,44 @@ Azure で SAP のインフラストラクチャを設計する際には、SAP �
 > Azure NetApp Files ボリュームは、ボリュームを `unmount` したり、仮想マシンを停止したり、SAP HANA を停止したりすることなく、動的にサイズ変更することができます。 これにより、予想されるスループット要求と予期しないスループット要求の両方を柔軟に満たすことができます。
 
 ANF でホストされる NFS v4.1 ボリュームを使用して、スタンバイ ノードを含む SAP HANA スケールアウト構成をデプロイする方法については、[SUSE Linux Enterprise Server 上に Azure VM のスタンバイ ノードと Azure NetApp Files を使用して SAP HANA をスケールアウトする方法](./sap-hana-scale-out-standby-netapp-files-suse.md)に関するドキュメントを参照してください。
+
+
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure Premium Storage を使用する、コストを意識したソリューション
+これまでこのドキュメントの「[Azure M シリーズ仮想マシン用の Azure 書き込みアクセラレータおよび Premium Storage を使用するソリューション](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)」セクションで説明した Azure Premium Storage ソリューションは、SAP HANA の運用がサポートされるシナリオに向けられていました。 運用のサポートが可能な構成の特性の 1 つは、SAP HANA データと再実行ログのボリュームを 2 つの異なるボリュームに分離することです。 このような分離の理由として、これらのボリュームでのワークロード特性が異なっていることが挙げられます。 また、推奨される運用構成では、さまざまな種類のキャッシュ、または異なる種類の Azure ブロック ストレージが必要とされる場合があります。 Azure ブロック ストレージを使用する運用がサポートされる構成は、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に準拠することもターゲットになります。  運用環境以外のシナリオの場合、運用システムでは考慮される考慮事項の一部が、よりローエンドの非運用システムには当てはまらない可能性があります。 結果として、HANA のデータとログ ボリュームを組み合わせることができます。 ただし、運用システムで必要とされている一定のスループットや待機時間の KPI を結局満たせないなど、最終的に何らかの問題が生じることがあります。 このような環境でコストを削減するために考えられる別の方法は、[Azure Standard SSD ストレージ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)を使用することです。 ただしこれは、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) を無効にする選択肢です。 
+
+このような構成に向けた、より低コストの代替構成は次のようになります。
+
+
+| VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/data and /hana/log<br /> LVM または MDADM によるストライピング | /hana/shared | /root ボリューム | /usr/sap | comments |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/秒 | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| E16v3 | 128 GiB | 384 MB/秒 | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | VM の種類は HANA では未認定です <br /> 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| M32ts | 192 GiB | 500 MB/秒 | 3 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 5,000 に制限されます<sup>2</sup> |
+| E20ds_v4 | 160 GiB | 480 MB/秒 | 4 x P6 | 1 x E15 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| E32v3 | 256 GiB | 768 MB/秒 | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | VM の種類は HANA では未認定です <br /> 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| E32ds_v4 | 256 GiB | 768 Mbps | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| M32ls | 256 GiB | 500 MB/秒 | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 5,000 に制限されます<sup>2</sup> |
+| E48ds_v4 | 384 GiB | 1,152 MBps | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| E64v3 | 432 GiB | 1,200 MB/秒 | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| E64ds_v4 | 504 GiB | 1200 MB/秒 |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
+| M64ls | 512 GiB | 1,000 MB/秒 | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
+| M64s | 1,000 GiB | 1,000 MB/秒 | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
+| M64ms | 1,750 GiB | 1,000 MB/秒 | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
+| M128s | 2,000 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+| M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
+| M128ms | 3,800 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+| M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
+| M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+| M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+
+
+<sup>1</sup> [Azure 書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)は、Ev4 と Ev4 VM ファミリでは使用できません。 Azure Premium Storage を使用した結果として、I/O 待機時間が 1 ミリ秒未満になることはありません
+
+<sup>2</sup> この VM ファミリでは、[Azure 書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)がサポートされますが、書き込みアクセラレータの IOPS 制限によって、このディスク構成での IOPS 機能が制限される可能性があります
+
+SAP HANA のデータとログのボリュームを組み合わせる場合は、ストライプ ボリュームを構成するディスクで、読み取りキャッシュや読み取り/書き込みキャッシュを有効にしないでください。
+
+一覧に示した VM の種類には、SAP では認定されていないものがあります。そのため、いわゆる [SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)の一覧には含まれていません。 お客様からのフィードバックによれば、非運用環境の一部のタスクについては、一覧に含まれない種類の VM が正常に使用されました。
 
 
 ## <a name="next-steps"></a>次のステップ

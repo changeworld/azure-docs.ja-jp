@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119448"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035180"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>コマーシャル マーケットプレースのリード管理
+# <a name="lead-management-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースのリード管理
 
 優れたビジネスの中心は顧客です。 今日の製品入手の変革において、マーケティング担当者は顧客と直接つながり、関係を築くことに注力する必要があります。 これが、良質の潜在顧客を創出することが販売サイクルにとって重要なツールである理由です。 [パートナー センター](https://partner.microsoft.com/)でオファーを一覧表示した後、顧客がマーケットプレース内の製品に関心を示すか、またはその製品をデプロイしたらすぐに、その顧客の連絡先情報をプログラムで受信できるようになるツールがあります。 
 

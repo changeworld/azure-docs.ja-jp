@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 42dcbf693b6ec685849b1523480506e9c8f5b54b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202891"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003239"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>方法: Azure AD における属性マッピングの式を記述する
 
@@ -34,6 +34,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
   2. 文字列定数。二重引用符で囲む必要があります。 次に例を示します。"米国"
   3. 他の関数 次に例を示します。FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 次に例を示します。"会社名:\\"Contoso\\""
+* この構文では大文字と小文字が区別されます。これは、関数に文字列として入力するときに考慮する必要があり、ここから直接コピーして貼り付けることもできます。 
 
 ## <a name="list-of-functions"></a>関数の一覧
 

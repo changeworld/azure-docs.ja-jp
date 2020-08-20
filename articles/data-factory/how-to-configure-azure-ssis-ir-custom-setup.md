@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8b29708dbcc6bbb0d127b4277fd4b2d962da6e6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184363"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986391"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -129,11 +129,11 @@ ADF UI でカスタム セットアップを使用して Azure-SSIS IR をプロ
 
    * **[Install licensed component]\(ライセンス付与されたコンポーネントのインストール\)** という種類を選択した場合は、 **[コンポーネント名]** ドロップダウン リストで、Microsoft の ISV パートナーからの統合コンポーネントを選択できます。
 
-     * **[SentryOne's Task Factory]\(SentryOne の Task Factory\)** コンポーネントを選択した場合は、Azure-SSIS IR に SentryOne の [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) という一連のコンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2019.4.3** です。
+     * **[SentryOne's Task Factory]\(SentryOne の Task Factory\)** コンポーネントを選択した場合は、Azure-SSIS IR に SentryOne の [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) という一連のコンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2020.1.3** です。
 
-     * **[oh22's HEDDA.IO]\(oh22 の HEDDA.IO\)** コンポーネントを選択した場合は、サービスを購入した後、Azure-SSIS IR に oh22 の [HEDDA.IO](https://hedda.io/ssis-component/) データ品質またはクレンジング コンポーネントをインストールできます。 現在の統合バージョンは **1.0.13** です。
+     * **[oh22's HEDDA.IO]\(oh22 の HEDDA.IO\)** コンポーネントを選択した場合は、サービスを購入した後、Azure-SSIS IR に oh22 の [HEDDA.IO](https://hedda.io/ssis-component/) データ品質またはクレンジング コンポーネントをインストールできます。 現在の統合バージョンは **1.0.14** です。
 
-     * **[oh22's SQLPhonetics.NET]\(oh22 の SQLPhonetics.NET\)** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) データ品質または照合コンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.43** です。
+     * **[oh22's SQLPhonetics.NET]\(oh22 の SQLPhonetics.NET\)** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) データ品質または照合コンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.45** です。
 
      * **[KingswaySoft's SSIS Integration Toolkit]** \(KingswaySoft の SSIS Integration Toolkit\) コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の KingswaySoft から、購入した製品ライセンス キーを **[ライセンス キー]** ボックスに入力して、Microsoft Dynamics、SharePoint、Project Server、Oracle、Salesforce Marketing Cloud などの CRM、ERP、マーケティング、コラボレーション アプリ用の [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **2019.2** です。
 

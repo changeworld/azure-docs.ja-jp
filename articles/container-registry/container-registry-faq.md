@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247032"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836396"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -254,7 +254,9 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>匿名プル アクセスを有効にするにはどうすればよいですか?
 
-匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
+匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 レジストリに[スコープ マップ (ユーザー) またはトークン リソース](https://aka.ms/acr/repo-permissions)がある場合は、サポート チケットを生成する前にそれらを削除してください (システム スコープ マップは無視できます)。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
