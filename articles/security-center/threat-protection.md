@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041988"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272503"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Security Center での脅威の防止
 
@@ -230,7 +230,6 @@ Security Center のネットワーク レイヤー分析は、サンプルの [I
 
 Azure ネットワーク レイヤー アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azurenetlayer)に関するページを参照してください。
 
-Security Center でネットワーク関連のシグナルを使用して脅威の防止を適用する方法の詳細については、「[Security Center でのヒューリスティック DNS 検出](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)」を参照してください。
 
 
 

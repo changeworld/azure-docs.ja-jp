@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080526"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506398"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -42,7 +42,7 @@ Azure では、Azure Standard および Premium Storage の 2 つの VHD デプ�
 
 各種ストレージにおける SAP HANA 認定の最低条件は次のとおりです。 
 
-- Azure Premium Storage - **/hana/log** は、Azure [書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)でサポートされている必要があります。 **/hana/data** ボリュームは、Azure 書き込みアクセラレータなしで Premium Storage に配置することも、Ultra Disk に配置することもできます。
+- Azure Premium Storage - **/hana/log** は、Azure [書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)でサポートされている必要があります。 **/hana/data** ボリュームは、Azure 書き込みアクセラレータなしで Premium Storage に配置することも、Ultra Disk に配置することもできます。
 - **/hana/log** ボリュームには、少なくとも Azure Ultra Disk が必要です。 **/hana/data** ボリュームは、Azure 書き込みアクセラレータなしで Premium Storage に配置できます。また、再起動時間を短縮するために Ultra Disk に配置することもできます。
 - **/hana/log および /hana/data** には、Azure NetApp Files 上の **NFS v4.1** ボリュームを使用します。 /hana/shared のボリュームでは、NFS v3 または NFS v4.1 プロトコルを使用できます。
 
@@ -75,7 +75,7 @@ Linux には、数種類の I/O スケジューリング モードがありま�
 Azure 書き込みアクセラレータは、Azure M シリーズ VM 専用に提供される機能です。 名前が示すように、この機能の目的は、Azure Premium Storage に対する書き込みの I/O 待ち時間を短縮することです。 SAP HANA の場合、書き込みアクセラレータは **/hana/log** ボリュームに対してのみ使用する必要があります。 したがって、 **/hana/data** と **/hana/log** は別々のボリュームであり、Azure 書き込みアクセラレータは **/hana/log** ボリュームのみをサポートします。 
 
 > [!IMPORTANT]
-> Azure Premium Storage を使用する場合、 **/hana/log** ボリュームに Azure [書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)を使用することが必須となります。 書き込みアクセラレータは、Premium Storage と、M シリーズおよび Mv2 シリーズの VM でのみ使用できます。 書き込みアクセラレータは、Esv3 や Edsv4 などの他の Azure VM ファミリとの組み合わせでは機能しません。
+> Azure Premium Storage を使用する場合、 **/hana/log** ボリュームに Azure [書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を使用することが必須となります。 書き込みアクセラレータは、Premium Storage と、M シリーズおよび Mv2 シリーズの VM でのみ使用できます。 書き込みアクセラレータは、Esv3 や Edsv4 などの他の Azure VM ファミリとの組み合わせでは機能しません。
 
 Azure Premium Disk のキャッシュに関する下記の推奨事項は、次のような SAP HANA の I/O 特性を前提としています。
 
@@ -194,7 +194,7 @@ SAP **/hana/data** ボリュームの構成:
 
 推奨されるさまざまなボリュームのストレージ スループットが、実行するワークロードに対応できるかどうかを確認します。 ワークロードに **/hana/data** および **/hana/log** のより大きなボリュームが必要な場合は、Azure Premium Storage VHD の数を増やす必要があります。 記載されている数よりも多くの VHD でボリュームのサイズを設定すると、その Azure 仮想マシンの種類の制限内で IOPS と I/O スループットが向上します。
 
-Azure 書き込みアクセラレータは、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)との連携でのみ動作します。 そのため、少なくとも、 **/hana/log** ボリュームを形成する Azure Premium Storage ディスクはマネージド ディスクとしてデプロイする必要があります。 Azure 書き込みアクセラレータの詳細と制限事項については、[書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)に関する記事をご覧ください。
+Azure 書き込みアクセラレータは、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)との連携でのみ動作します。 そのため、少なくとも、 **/hana/log** ボリュームを形成する Azure Premium Storage ディスクはマネージド ディスクとしてデプロイする必要があります。 Azure 書き込みアクセラレータの詳細と制限事項については、[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)に関する記事をご覧ください。
 
 Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) ファミリおよび [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series) の HANA 認定 VM の場合、 **/hana/data** および **/hana/log** ボリュームに ANF を使用する必要があります。 または、 **/hana/log** ボリュームにのみ、Azure Premium Storage ではなく Azure Ultra Disk Storage を利用する必要があります。 その結果、Azure Premium Storage 上の **/hana/data** ボリュームの構成は次のようになります。
 
@@ -352,9 +352,9 @@ ANF でホストされる NFS v4.1 ボリュームを使用して、スタンバ
 | M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
 
 
-<sup>1</sup> [Azure 書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)は、Ev4 と Ev4 VM ファミリでは使用できません。 Azure Premium Storage を使用した結果として、I/O 待機時間が 1 ミリ秒未満になることはありません
+<sup>1</sup> [Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)は、Ev4 と Ev4 VM ファミリでは使用できません。 Azure Premium Storage を使用した結果として、I/O 待機時間が 1 ミリ秒未満になることはありません
 
-<sup>2</sup> この VM ファミリでは、[Azure 書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)がサポートされますが、書き込みアクセラレータの IOPS 制限によって、このディスク構成での IOPS 機能が制限される可能性があります
+<sup>2</sup> この VM ファミリでは、[Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)がサポートされますが、書き込みアクセラレータの IOPS 制限によって、このディスク構成での IOPS 機能が制限される可能性があります
 
 SAP HANA のデータとログのボリュームを組み合わせる場合は、ストライプ ボリュームを構成するディスクで、読み取りキャッシュや読み取り/書き込みキャッシュを有効にしないでください。
 

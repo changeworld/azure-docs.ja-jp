@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 6a8cc588ff7325242e7e010e9869eaa9a24f6fc2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033338"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205941"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>リダイレクト URI (応答 URL) に関する制約と制限
 
@@ -62,9 +62,9 @@ ms.locfileid: "88033338"
 
 開発の観点から見ると、これはいくつかのことを意味します。
 
-1. ポートのみが異なる複数のリダイレクト URI を登録しないでください。 ログイン サーバーでは任意のものが選択され、そのリダイレクト URI に関連付けられている動作が使用されます (たとえば、リダイレクトが `web` 型か、`native` 型か、`spa` 型か)。
-1. 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする必要がある場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。 たとえば、`http://127.0.0.1/MyWebApp` は `http://127.0.0.1/MyNativeApp` と一致しません。
-1. RFC ガイダンスに従って、リダイレクト URI で `localhost` を使用しないでください。 代わりに、実際のループバック IP アドレス `127.0.0.1` を使用します。 これにより、正しく構成されていないファイアウォールや名前が変更されたネットワーク インターフェイスによるアプリの破損が防止されます。
+* ポートのみが異なる複数のリダイレクト URI を登録しないでください。 ログイン サーバーでは任意のものが選択され、そのリダイレクト URI に関連付けられている動作が使用されます (たとえば、リダイレクトが `web` 型か、`native` 型か、`spa` 型か)。
+* 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする必要がある場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。 たとえば、`http://127.0.0.1/MyWebApp` は `http://127.0.0.1/MyNativeApp` と一致しません。
+* RFC ガイダンスに従って、リダイレクト URI で `localhost` を使用しないでください。 代わりに、実際のループバック IP アドレス `127.0.0.1` を使用します。 これにより、正しく構成されていないファイアウォールや名前が変更されたネットワーク インターフェイスによるアプリの破損が防止されます。
 
     IPv6 ループバック アドレス (`[::1]`) は、現在サポートされていません。
 
@@ -93,6 +93,6 @@ ms.locfileid: "88033338"
 > [!WARNING]
 > この手法では、セキュリティを侵害されたクライアントが状態パラメーターで送信された追加パラメーターを変更し、ユーザーを別の URL にリダイレクトすることを許します。これは RFC 6819 に説明がある[オープン リダイレクターの脅威](https://tools.ietf.org/html/rfc6819#section-4.2.4)です。 そのため、クライアントは状態を暗号化するか、リダイレクト URI に含まれるドメイン名をトークンと比べて検証するなど、何か他の手段で状態を検証することによって、これらのパラメーターを保護する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリの登録の[アプリケーション マニフェスト](reference-app-manifest.md)について学習します。

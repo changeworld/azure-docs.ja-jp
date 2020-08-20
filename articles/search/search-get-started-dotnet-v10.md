@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4d8a38666991760fbb133e617984ba23788034ca
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907868"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209334"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>クイック スタート:Microsoft.Azure.Search v10 クライアント ライブラリを使用して検索インデックスを作成する
 
@@ -106,9 +106,9 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](ht
 
 1. 2 つの空のクラス定義をご自分のプロジェクトに追加します。Address.Methods.cs、Hotel.Methods.cs
 
-1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25) で上書きします。
+1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25) で上書きします。
 
-1. Hotel.Methods.cs に、[行 1 から 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68) をコピーします。
+1. Hotel.Methods.cs に、[行 1 から 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68) をコピーします。
 
 ## <a name="1---create-index"></a>1 - インデックスの作成
 
@@ -552,7 +552,7 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行状態のままにしておくと、料金が発生する場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
 ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 

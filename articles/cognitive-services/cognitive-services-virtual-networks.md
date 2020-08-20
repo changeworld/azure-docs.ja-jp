@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080900"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505029"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -54,6 +54,7 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 > * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
+> * [Immersive Reader](./immersive-reader/index.yml)
 
 ## <a name="service-tags"></a>サービス タグ
 
@@ -72,6 +73,7 @@ Cognitive Services は、ネットワーク ルールの構成用のサービス
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator](./translator/index.yml)
 > * [Speech Service](./speech-service/index.yml)
+> * [Immersive Reader](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>既定のネットワーク アクセス ルールの変更
 

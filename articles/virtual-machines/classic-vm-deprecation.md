@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 16ca4ad1204301542ffaa0177d88b2c2800f13b4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c1807da76fe25d31581a07706489967d6e83f748
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836277"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505310"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023 年 3 月 1 日までに IaaS リソースを Azure Resource Manager に移行する 
 
@@ -41,7 +41,7 @@ ms.locfileid: "87836277"
 
 - [Linux](./linux/migration-classic-resource-manager-plan.md) および [Windows](./windows/migration-classic-resource-manager-plan.md) のクラシック VM を Azure Resource Manager に移行する場合の[詳細について学習](./windows/migration-classic-resource-manager-overview.md)します。
 
-- 詳細については、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](./windows/migration-classic-resource-manager-faq.md)」を参照してください
+- 詳細については、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](./migration-classic-resource-manager-faq.md)」を参照してください
 
 - 技術的な質問、問題、および許可リストへのサブスクリプションの追加については、[サポートにお問い合わせ](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})ください。
 
