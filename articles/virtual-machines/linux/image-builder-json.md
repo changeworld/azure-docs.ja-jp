@@ -3,17 +3,17 @@ title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
 author: danielsollondon
 ms.author: danis
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283301"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830344"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -116,7 +116,7 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
     "dependsOn": [],
 ```
 
-詳しくは、「[リソースの依存関係を定義する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)」をご覧ください。
+詳しくは、「[リソースの依存関係を定義する](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)」をご覧ください。
 
 ## <a name="identity"></a>ID
 
@@ -137,23 +137,24 @@ Image Builder によるユーザー割り当て ID のサポート:
 * 単一の ID のみがサポートされています
 * カスタム ドメインはサポートされていません
 
-詳しくは、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」をご覧ください。
-この機能のデプロイについて詳しくは、「[Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)」をご覧ください。
+詳しくは、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。
+この機能のデプロイについて詳しくは、「[Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)」をご覧ください。
 
 ## <a name="properties-source"></a>プロパティ: source
 
-`source` セクションには、Image Builder によって使われるソース イメージについての情報が含まれます。
+現在、Image Builder では 第 1 世代の HyperV のイメージと VM のみがサポートされています。`source` セクションには、Image Builder で使用されるソース イメージに関する情報が含まれています。
 
 API ではイメージ ビルド用のソースを定義する "SourceType" が必要であり、現在は次の 3 つの種類があります。
 - PlatformImage - ソース イメージが Marketplace イメージであることを示します。
 - ManagedImage - 標準のマネージド イメージから始めるときは、これを使います。
 - SharedImageVersion - ソースとして共有イメージ ギャラリー内のイメージのバージョンを使うときは、これを使います。
 
+
 > [!NOTE]
-> 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
+> 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
 
 ### <a name="platformimage-source"></a>PlatformImage ソース 
-Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)を参照してください。 
+Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../windows/image-builder-overview.md#os-support)を参照してください。 
 
 ```json
         "source": {
@@ -191,7 +192,10 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```
 ### <a name="managedimage-source"></a>ManagedImage ソース
 
-ソース イメージを、一般化された VHD または VM の既存のマネージド イメージとして設定します。 ソース マネージド イメージは、サポート対象の OS のものでなければならず、Azure Image Builder テンプレートと同じリージョンに存在する必要があります。 
+ソース イメージを、一般化された VHD または VM の既存のマネージド イメージとして設定します。
+
+> [!NOTE]
+> ソース マネージド イメージは、サポート対象の OS のものでなければならず、このイメージは Azure Image Builder テンプレートと同じリージョンに存在する必要があります。 
 
 ```json
         "source": { 
@@ -204,7 +208,11 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion ソース
-ソース イメージを、共有イメージ ギャラリー内の既存のイメージ バージョンに設定します。 イメージのバージョンはサポート対象の OS のものでなければならず、イメージを Azure Image Builder テンプレートと同じリージョンにレプリケートする必要があります。 
+ソース イメージを、共有イメージ ギャラリー内の既存のイメージ バージョンに設定します。
+
+> [!NOTE]
+> ソース マネージド イメージは、サポート対象の OS のものでなければならず、このイメージは Azure Image Builder テンプレートと同じリージョンに存在する必要があります。それ以外の場合は、イメージ バージョンを Image Builder テンプレート リージョンにレプリケートしてください。
+
 
 ```json
         "source": { 
@@ -365,7 +373,7 @@ OS のサポート: Windows と Linux
 - **validExitCodes** - 省略可能。スクリプト/インライン コマンドから返すことができる有効なコード。これにより、スクリプト/インライン コマンドの報告済みエラーが回避されます。
 - **runElevated** - 省略可能。ブール値。昇格されたアクセス許可でコマンドとスクリプトを実行するためのサポート。
 - **sha256Checksum** - ファイルの sha256 チェックサムの値。これをローカルで生成すると、Image Builder によってチェックサムと検証が実行されます。
-    * Windows で PowerShell を使用して sha256Checksum を生成するには、[Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) を実行します。
+    * Windows で PowerShell を使用して sha256Checksum を生成するには、[Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) を実行します。
 
 
 ### <a name="file-customizer"></a>ファイル カスタマイザー
@@ -559,7 +567,7 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 - イメージ定義 - イメージの概念的なグループ化。 
 - イメージ バージョン - VM またはスケール セットのデプロイに使われるイメージの種類。 イメージ バージョンは、VM をデプロイする必要がある他のリージョンにレプリケートできます。
  
-イメージ ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[共有イメージ](shared-images.md)に関する記事をご覧ください。 
+イメージ ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[共有イメージ](../shared-images-cli.md)に関する記事をご覧ください。 
 
 ```json
 {

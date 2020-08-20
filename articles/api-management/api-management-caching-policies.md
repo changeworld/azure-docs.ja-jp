@@ -1,6 +1,6 @@
 ---
 title: Azure API Management のキャッシュ ポリシー | Microsoft Docs
-description: Azure API Management で使用できるキャッシュ ポリシーについて説明します。
+description: Azure API Management で使用できるキャッシュ ポリシーについて説明します。 例を参照し、使用可能なその他のリソースを確認します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: e58cd8f19ab98601d37df185656038dbd5679eb2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fc5298b85af4eaa6cd84c871d38ea1c773abe0b4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255049"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851598"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -100,22 +100,22 @@ ms.locfileid: "86255049"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |cache-lookup|ルート要素。|はい|
-|vary-by-header|指定されたヘッダーの値 (Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match など) ごとに応答をキャッシュに格納します。|いいえ|
-|vary-by-query-parameter|指定されたクエリ パラメーターの値ごとに応答をキャッシュに格納します。 1 つまたは複数のパラメーターを入力します。 セミコロンを区切り文字として使用します。 パラメーターを指定しない場合、すべてのクエリ パラメーターが使用されます。|いいえ|
+|vary-by-header|指定されたヘッダーの値 (Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match など) ごとに応答をキャッシュに格納します。|No|
+|vary-by-query-parameter|指定されたクエリ パラメーターの値ごとに応答をキャッシュに格納します。 1 つまたは複数のパラメーターを入力します。 セミコロンを区切り文字として使用します。 パラメーターを指定しない場合、すべてのクエリ パラメーターが使用されます。|No|
 
 ### <a name="attributes"></a>属性
 
-| Name                           | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
+| 名前                           | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | allow-private-response-caching | `true` に設定すると、承認ヘッダーを含む要求をキャッシュできます。                                                                                                                                                                                                                                                                        | いいえ       | false             |
-| caching-type               | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
-| downstream-caching-type        | この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。                                                                                                          | いいえ       | なし              |
+| caching-type               | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | No       | `prefer-external` |
+| downstream-caching-type        | この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。                                                                                                          | No       | なし              |
 | must-revalidate                | ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。                                                                                                                                                                                                                      | いいえ       | true              |
-| vary-by-developer              | `true` に設定すると、[サブスクリプション キー](./api-management-subscriptions.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | はい      |         False          |
-| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](./api-management-howto-create-groups.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | はい      |       False            |
+| vary-by-developer              | `true` に設定すると、[サブスクリプション キー](./api-management-subscriptions.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | Yes      |         False          |
+| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](./api-management-howto-create-groups.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | Yes      |       False            |
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
@@ -179,13 +179,13 @@ ms.locfileid: "86255049"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |cache-store|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
+| 名前             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | duration         | キャッシュに格納されたエントリの有効期間 (秒単位)。                                                                                                                                                                                                                                                                                                   | はい      | 該当なし               |
 
@@ -222,16 +222,16 @@ ms.locfileid: "86255049"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |cache-lookup-value|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
+| 名前             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
-| default-value    | キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。                                                                                                                                                                                                           | いいえ       | `null`            |
+| caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | No       | `prefer-external` |
+| default-value    | キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。                                                                                                                                                                                                           | No       | `null`            |
 | key              | 検索で使用するキャッシュのキー値。                                                                                                                                                                                                                                                                                                                       | はい      | 該当なし               |
 | variable-name    | 検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。                                       | はい      | 該当なし               |
 
@@ -265,15 +265,15 @@ ms.locfileid: "86255049"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |cache-store-value|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
+| 名前             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
+| caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | No       | `prefer-external` |
 | duration         | 指定された期間 (秒単位)、値がキャッシュされます。                                                                                                                                                                                                                                                                                 | はい      | 該当なし               |
 | key              | 値が格納されるキャッシュのキー。                                                                                                                                                                                                                                                                                                                   | はい      | 該当なし               |
 | value            | キャッシュされる値。                                                                                                                                                                                                                                                                                                                                     | はい      | 該当なし               |
@@ -304,15 +304,15 @@ ms.locfileid: "86255049"
 
 #### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |cache-remove-value|ルート要素。|はい|
 
 #### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
+| 名前             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
+| caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | No       | `prefer-external` |
 | key              | キャッシュから削除される、前にキャッシュされた値のキー。                                                                                                                                                                                                                                                                                        | はい      | 該当なし               |
 
 #### <a name="usage"></a>使用法
