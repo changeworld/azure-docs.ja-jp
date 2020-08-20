@@ -1,17 +1,17 @@
 ---
 title: Azure Key Vault と Kubernetes の統合
 description: このチュートリアルでは、シークレット ストア コンテナー ストレージ インターフェイス (CSI) ドライバーを使用して Azure キー コンテナーにアクセスしてシークレットを取得し、Kubernetes ポッドにマウントします。
-author: taytran0
-ms.author: t-trtr
+author: rkarlin
+ms.author: rkarlin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9a13ede1c9dcd23b829d08ed9e3c6fc10248e191
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901999"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510047"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -241,7 +241,7 @@ kubectl apply -f secretProviderClass.yaml
 ### <a name="use-a-service-principal"></a>サービス プリンシパルを使用する
 
 サービス プリンシパルを使用している場合は、次のコマンドを使用して、SecretProviderClass と以前に構成した secrets-store-creds を使用して Kubernetes ポッドをデプロイします。 デプロイ テンプレートは次のとおりです。
-* [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-secrets-store-inline-volume-secretproviderclass.yaml) の場合
+* [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-inline-volume-service-principal.yaml) の場合
 * [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml) の場合
 
 ```azurecli
