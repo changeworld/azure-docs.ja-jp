@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 08/08/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 85c9bd3ecd5af861cfb93c18528416e06479ae93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558562"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119183"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -54,6 +54,9 @@ MSAL ライブラリでは、クライアントの資格情報 (シークレッ�
 - 機関またはクラウド インスタンスとテナント ID。
 - アプリケーションの登録から返されたクライアント ID。
 - クライアント シークレットまたは証明書のいずれか。
+
+> [!NOTE]
+> この記事の残りの部分にある .Net コード スニペットによって、[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) サンプルの [config](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) が参照されます。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -239,7 +242,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-or
+または
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -286,7 +289,7 @@ X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithAuthority(new Uri(config.Authority))
                                           .WithClientClaims(certificate, claims)
-                                          .Build();```
+                                          .Build();
 ```
 
 ここでも、詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関するページを参照してください。
@@ -330,16 +333,16 @@ ConfidentialClientApplication cca =
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=java)
 
 ---
