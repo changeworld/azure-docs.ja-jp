@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7464d1788101eef7bdad95545056bb32e46c395
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167812"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245470"
 ---
 # <a name="try-the-speech-service-for-free"></a>Speech Service を無料で試す
 
@@ -29,7 +29,7 @@ ms.locfileid: "88167812"
 
 30 日間の無料試用版をアクティブ化し、API キーを取得するには、次の手順を完了します。 試用期間は、次の手順が完了するとすぐに開始されます。
 
-1. 「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/)」に移動します。
+1. 「[Cognitive Services を試す](https://azure.microsoft.com/free/cognitive-services)」に移動します。
 1. **[Speech API]** タブを選択します。
 1. **[API キーの取得]** を選択します。
 
