@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: エンタープライズ対応とセキュリティ
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: エンタープライズ セキュリティとガバナンス
           items:
             - name: エンタープライズ セキュリティの概要
