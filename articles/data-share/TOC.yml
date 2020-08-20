@@ -6,6 +6,11 @@
       href: overview.md
     - name: サポートされているデータ ストア
       href: supported-data-stores.md
+- name: クイックスタート
+  items:
+    - name: データ共有の作成 - ARM テンプレート
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: チュートリアル
   expanded: true
   items:

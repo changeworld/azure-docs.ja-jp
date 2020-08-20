@@ -1265,9 +1265,11 @@
           href: sql-api-sdk-async-java.md
         - name: 同期の Java SDK v2
           href: sql-api-sdk-java.md
-        - name: SQL API の Spring Data コネクタ
-          href: sql-api-sdk-java-spring.md
-        - name: SQL API の Spark コネクタ
+        - name: Spring Data コネクタ v2
+          href: sql-api-sdk-java-spring-v2.md
+        - name: Spring Data コネクタ v3
+          href: sql-api-sdk-java-spring-v3.md
+        - name: Spark コネクタ
           href: sql-api-sdk-java-spark.md
         - name: Java バルク エグゼキューター ライブラリ v2
           href: sql-api-sdk-bulk-executor-java.md

@@ -74,10 +74,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: データ サイエンティスト
       items:
-        - name: NYC タクシーの予測のヒント
+        - name: Azure AutoML を使用して回帰実験を実行する
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Apache Spark MLlib を使用して分類モデルを作成する
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: 追加のライブラリを使用して Apache Spark を補強する
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: データ アナリスト
       items:
         - name: オンデマンドで SQL を使用して分析し、Synapse Studio を使用して視覚化する
@@ -202,8 +202,6 @@
               href: ./spark/apache-spark-overview.md
             - name: Apache Spark の概念
               href: ./spark/apache-spark-concepts.md
-            - name: ランタイム言語とライブラリのサポート
-              href: ./spark/apache-spark-version-support.md
             - name: Delta Lake とは
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Apache Spark のパフォーマンス
@@ -212,6 +210,12 @@
               href: ./spark/apache-spark-autoscale.md
         - name: 開発
           items:
+            - name: ライブラリ
+              items:
+                - name: ライブラリの追加と管理
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: ランタイム言語とライブラリのサポート
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio ノートブック
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: .NET for Apache Spark

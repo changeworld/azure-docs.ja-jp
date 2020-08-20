@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 6000bffb80c83ffce58605bcc7e5bfaf404329da
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: d063418bb8e78bf306dda8fc558bb0e3005dbd0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986681"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584898"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure Digital Twins API を使用したコーディング
 
@@ -48,7 +48,7 @@ dotnet new console
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
+dotnet add package Azure.identity --version 1.1.1
 ```
 
 最初の依存関係は、[.NET 用 Azure IoT Digital Twins クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)です。 2 つ目の依存関係では、Azure に対する認証を支援するツールが提供されます。
