@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056467"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167812"
 ---
 # <a name="try-the-speech-service-for-free"></a>Speech Service を無料で試す
 
@@ -87,7 +87,7 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 
 ## <a name="about-regions"></a>リージョンについて
 
-- アプリケーションで [Speech SDK](speech-sdk.md) を使用する場合、Speech の構成を作成するときに `westus` などのリージョン コードを指定します。
+- アプリケーションで [Speech SDK](speech-sdk.md) を使用する場合、Speech の構成を作成するときに `westus` などのリージョン ID を指定します。
 - アプリケーションで Speech Service の [REST API](rest-apis.md) のいずれかを使用する場合、要求を行うときに使用するエンドポイント URI にリージョンが含まれます。
 - あるリージョン用に作成されたキーはそのリージョンでのみ有効です。 別のリージョンで使用すると認証エラーが発生します。
 
