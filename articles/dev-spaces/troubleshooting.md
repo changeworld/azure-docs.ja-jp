@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077035"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210822"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -55,8 +55,6 @@ Azure Dev Spaces CLI がインストールされていない場合は、まず�
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
-
-コントローラーの再作成は、CLI や Visual Studio から行うことができます。 例については、[チーム開発](quickstart-team-development.md)または [.NET Core を使用した開発](quickstart-netcore-visualstudio.md)のクイックスタートを参照してください。
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>コントローラー名の文字数が原因でコントローラーの作成に失敗する
 

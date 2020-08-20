@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825006"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510863"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -84,7 +84,7 @@ S/4HANA の SAP NetWeaver またはアプリケーション レイヤー用の A
 | DBMS ログ ボリューム (HANA 以外) M または Mv2 以外の VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 中規模までのワークロードに適合 | 推奨 | サポート対象外 |
 
 
-<sup>1</sup> ログまたは再実行ログ ボリューム用の M または Mv2 VM ファミリでは [Azure 書き込みアクセラレータ](../../windows/how-to-enable-write-accelerator.md)を使用します。<sup>2</sup> ANF を使用するには ANF 上に /hana/log に加えて /hana/data も必要です。 
+<sup>1</sup> ログまたは再実行ログ ボリューム用の M または Mv2 VM ファミリでは [Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を使用します。<sup>2</sup> ANF を使用するには ANF 上に /hana/log に加えて /hana/data も必要です。 
 
 さまざまな種類のストレージに期待できる特性は、次のようになります。
 
@@ -101,7 +101,7 @@ S/4HANA の SAP NetWeaver またはアプリケーション レイヤー用の A
 | geo 冗長 | マネージド ディスク非対応 | マネージド ディスク非対応 | no | no | no |
 
 
-<sup>1</sup> ログまたは再実行ログ ボリューム用の M または Mv2 VM ファミリでは [Azure 書き込みアクセラレータ](../../windows/how-to-enable-write-accelerator.md)を使用します。
+<sup>1</sup> ログまたは再実行ログ ボリューム用の M または Mv2 VM ファミリでは [Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を使用します。
 
 <sup>2</sup> コストはプロビジョニングされた IOPS とスループットに依存します。
 
@@ -137,7 +137,7 @@ SAP ワークロードの機能マトリックスは次のようになります�
 | 機能| 解説| 注またはリンク | 
 | --- | --- | --- | 
 | OS ベース VHD | 適合 | すべてのシステム |
-| データ ディスク | 適合 | すべてのシステム - [特に SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| データ ディスク | 適合 | すべてのシステム - [特に SAP HANA](../../how-to-enable-write-accelerator.md) |
 | SAP グローバル トランスポート ディレクトリ | YES | [サポートされています](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | 適合 | すべてのシステム |
 | バックアップ ストレージ | 適合 | 短期的なバックアップの保存 |
@@ -149,12 +149,12 @@ SAP ワークロードの機能マトリックスは次のようになります�
 | ディスクあたりの最大 IOPS | 20,000 ([ディスク サイズによって異なる](https://azure.microsoft.com/pricing/details/managed-disks/)) | [VM の制限](../../sizes.md)も考慮すること |
 | スループット SLA | YES | - |
 | スループット (容量に対して線形) | ブラケット内で半直線 | [Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA 認定 | YES | [特に SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| HANA 認定 | YES | [特に SAP HANA](../../how-to-enable-write-accelerator.md) |
 | ディスクのスナップショット可能 | YES | - |
-| Azure Backup VM スナップショット可能 | YES | [書き込みアクセラレータ](../../windows/how-to-enable-write-accelerator.md)によってキャッシュされたディスクを除く  |
+| Azure Backup VM スナップショット可能 | YES | [書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)によってキャッシュされたディスクを除く  |
 | コスト | MEDIUM | - |
 
-Azure Premium Storage では、Azure Premium Storage で提供される一般的なキャッシュの種類を使用して SAP HANA ストレージの待機時間 KPI が満たされることはありません。 SAP HANA ログ書き込みのストレージ待機時間 KPI を満たすためには、「[書き込みアクセラレータを有効にする](../../windows/how-to-enable-write-accelerator.md)」の説明に従って、Azure 書き込みアクセラレータのキャッシュを使用する必要があります。 Azure 書き込みアクセラレータによって他のすべての DBMS システムに、トランザクション ログの書き込みと再実行ログの書き込みに関するメリットがもたらされます。 そのため、すべての SAP DBMS デプロイで使用することをお勧めします。 SAP HANA の場合、Azure 書き込みアクセラレータを Azure Premium Storage と組み合わせて使用することが必須です。
+Azure Premium Storage では、Azure Premium Storage で提供される一般的なキャッシュの種類を使用して SAP HANA ストレージの待機時間 KPI が満たされることはありません。 SAP HANA ログ書き込みのストレージ待機時間 KPI を満たすためには、「[書き込みアクセラレータを有効にする](../../how-to-enable-write-accelerator.md)」の説明に従って、Azure 書き込みアクセラレータのキャッシュを使用する必要があります。 Azure 書き込みアクセラレータによって他のすべての DBMS システムに、トランザクション ログの書き込みと再実行ログの書き込みに関するメリットがもたらされます。 そのため、すべての SAP DBMS デプロイで使用することをお勧めします。 SAP HANA の場合、Azure 書き込みアクセラレータを Azure Premium Storage と組み合わせて使用することが必須です。
 
 
 

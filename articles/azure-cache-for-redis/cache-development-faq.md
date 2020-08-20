@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 1a0bcfadb79d6d2cb13c67b3ebadfcba97bc1fb9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010760"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211298"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 開発に関してよくあるご質問
 
@@ -139,6 +140,6 @@ Redis データベースとは、単に同じ Redis インスタンス内でデ�
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他の [Azure Cache for Redis のよくあるご質問](cache-faq.md)について。

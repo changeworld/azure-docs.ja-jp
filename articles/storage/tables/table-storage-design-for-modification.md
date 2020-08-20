@@ -2,18 +2,18 @@
 title: データの変更に対応した Azure Table Storage を設計する | Microsoft Docs
 description: Azure Table Storage で、データの変更に対応したテーブルを設計します。 挿入、更新、削除操作を最適化します。 格納されたエンティティの一貫性を確保します。
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1f48cbf198e8a12d4f35293b285e6cb09bef29a1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 25785bc4b945f469e67f2a71eb6676940e091d56
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826468"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236762"
 ---
 # <a name="design-for-data-modification"></a>データの変更に対応した設計
 この記事では、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 「テーブルの設計パターン」セクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エンティティの変更にも適していることがおわかりになると思います。  

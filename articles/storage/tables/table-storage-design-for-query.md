@@ -2,18 +2,18 @@
 title: クエリに対応した Azure Table Storage を設計する | Microsoft Docs
 description: Azure Table Storage で、クエリに対応したテーブルを設計します。 適切なパーティション キーを選択し、クエリを最適化して、Table service のデータを並べ替えます。
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926248"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236337"
 ---
 # <a name="design-for-querying"></a>クエリに対応した設計
 Table service ソリューションでは、読み取り、書き込み、またはその両方の負荷が高くなることがあります。 この記事では、読み取り操作を効率的に行える Table service を設計する際に注意する必要のある事柄を中心に取り上げます。 通常は、読み取り操作を効率的にサポートする設計は、書き込み操作についても効率が高くなります。 ただし、書き込み操作をサポートする設計には、さらに考慮すべき事柄があります。「[データの変更に対応した設計](table-storage-design-for-modification.md)」の記事を参照してください。
@@ -96,7 +96,7 @@ Table service は、**PartitionKey** 次に **RowKey** に基づいた昇順で�
 * [パーティション内のセカンダリ インデックス パターン](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) -別個のテーブルの別個のパーティションの異なる RowKey 値を使用して各エンティティの複数のコピーを格納し、異なる RowKey 値を使用して効果的な検索と代替的な並べ替え順序を可能にします。
 * [ログ テール パターン](table-storage-design-patterns.md#log-tail-pattern) - 逆の日付と時間順で並べ替える *RowKey* 値を使用して、パーティションに最も新しく追加されたエンティティ **n** を取得します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テーブルの設計パターン](table-storage-design-patterns.md)
 - [リレーションシップのモデル化](table-storage-design-modeling.md)

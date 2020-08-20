@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: e28ca06c5d1f1a71daa9b64c9d7dc2bee37fd7c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010791"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205389"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Azure Cache for Redis 管理に関してよくあるご質問
 この記事では、Azure Cache for Redis の管理に役立つ、よくある質問に対する回答について説明します。
@@ -162,6 +163,6 @@ StackExchange.Redis を使用するときにサーバー GC を有効にする�
 
 各レベルの異なる接続制限について詳しくは、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)についてのページを参照してください。 接続と他の既定の構成について詳しくは、「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他の [Azure Cache for Redis のよくあるご質問](cache-faq.md)について。

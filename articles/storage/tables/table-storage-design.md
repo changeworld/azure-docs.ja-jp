@@ -2,18 +2,18 @@
 title: Azure Table Storage でスケーラビリティとパフォーマンスに優れたテーブルを設計する | Microsoft Docs
 description: Azure Table Storage でスケーラビリティとパフォーマンスに優れたテーブルを設計する方法を学習します。 テーブルのパーティション、エンティティ グループ トランザクション、容量とコストに関する考慮事項を確認します。
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 03/09/2020
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 59af13bcae14839a5b583ad7e063668b5305b30a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824411"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236507"
 ---
 # <a name="design-scalable-and-performant-tables"></a>高性能で拡張性の高いテーブルの設計
 
@@ -143,10 +143,10 @@ Table service の内部詳細、特に、サービスのパーティション管
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="cost-considerations"></a>コストの考慮事項
+## <a name="cost-considerations"></a>コストに関する考慮事項
 テーブル ストレージは比較的安価ですが、Table service ソリューションの評価の一環として、容量の使用とトランザクションの量を踏まえてコストを見積もる必要があります。 ただし、多くのシナリオでは、ソリューションのパフォーマンスとスケーラビリティを向上させるために、非正規化されたデータまたは重複するデータを格納するのも有効です。 価格の詳細については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テーブルの設計パターン](table-storage-design-patterns.md)
 - [リレーションシップのモデル化](table-storage-design-modeling.md)
