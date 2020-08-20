@@ -1,14 +1,14 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の操作中に大きなデータ セット内のレコードを取得、書式設定、ページング、およびスキップする方法について説明します。
-ms.date: 03/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681071"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056408"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -63,8 +63,8 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 
 ## <a name="paging-results"></a>ページングの結果
 
-処理のために、または結果セットが返されるレコード数の最大許容値 _1000_ を超えるために、結果セットを小さなレコード セットに分割する必要がある場合は、ページングを使用します。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) の **QueryResponse** では、結果セットが分割されていることを示す値として、**resultTruncated** と **$skipToken** が提供されています。
-**resultTruncated** はブール値で、応答で返されていない追加のレコードがあるかどうかをコンシューマーに通知します。 この状態は、**count** プロパティが **totalRecords** プロパティより小さい場合も示されます。 **totalRecords** では、クエリに一致したレコード数が定義されています。
+処理のために、または結果セットが返されるレコード数の最大許容値 _1000_ を超えるために、結果セットを小さなレコード セットに分割する必要がある場合は、ページングを使用します。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)
+**QueryResponse** では、結果セットが分割されていることを示す値として、**resultTruncated** と **$skipToken** が提供されています。 **resultTruncated** はブール値で、応答で返されていない追加のレコードがあるかどうかをコンシューマーに通知します。 この状態は、**count** プロパティが **totalRecords** プロパティより小さい場合も示されます。 **totalRecords** では、クエリに一致したレコード数が定義されています。
 
  ページングが無効になっているか、`id` 列がないためにページングを使用できない場合、または使用可能なリソースがクエリで要求されている量に満たない場合、**resultTruncated** は **true** です。 **resultTruncated** が **true** のときは、 **$skipToken** プロパティは設定されません。
 

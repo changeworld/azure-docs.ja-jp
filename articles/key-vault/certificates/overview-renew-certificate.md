@@ -10,18 +10,21 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c6999b67a5c0a0f4ca7cb943ae8de3afd8b6a11e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094717"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056280"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Azure Key Vault の証明書の更新について
 
 Azure Key Vault を使用すると、ネットワークのデジタル証明書のプロビジョニング、管理、およびデプロイを簡単に行うことができ、アプリケーションのセキュリティで保護された通信を実現できます。 証明書の一般的な情報については、[Azure Key Vault 証明書](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)に関するページを参照してください
 
 証明書の有効期間を短くするか、または証明書のローテーションの頻度を増やすと、敵対者による損害の範囲が抑えられます。
+
+## <a name="certificate-expiration-notifications"></a>証明書の有効期限の通知
+まず、証明書の有効期限が近づいたときに通知を受け取るようにするために、証明書の連絡先を Key Vault に追加します (例: PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) を使用します)。次に、証明書の有効期限に関する通知を受け取るタイミングを構成します。 有効期間アクションを構成するには、[こちら](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)に従ってください。
 
 キー コンテナーでの証明書の作成には、3 つのカテゴリがあります。 このガイドは、証明書の更新を実現する方法を理解するのに役立ちます。
 -   統合された CA を使用して作成された証明書 (DigiCert または GlobalSign)
@@ -55,6 +58,10 @@ Azure Key Vault のユーザーには、任意の CA から証明書をインポ
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 発行された証明書が Azure portal で "無効" 状態になっている場合は、[証明書の操作] に進み、その証明書のエラー メッセージを確認してください。
+
+### <a name="frequently-asked-questions"></a>よく寄せられる質問
+証明書の自動更新後にタグはレプリケートされますか?
+いいえ。ユーザーが手動でタグをコピーしない限り、タグはレプリケートされません。
 
 ### <a name="see-also"></a>参照
 *   [Key Vault と DigiCert 証明機関の統合](how-to-integrate-certificate-authority.md)
