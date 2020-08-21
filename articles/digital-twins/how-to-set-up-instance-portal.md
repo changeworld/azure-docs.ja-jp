@@ -143,7 +143,7 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 これを行うには、メニューから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、`requiredResourceAccess` の下のこれらのフィールドを探します。 値は、次のスクリーンショットの値と一致している必要があります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure AD アプリ登録のためのマニフェストのポータル ビュー。"requiredResourceAccess" 下で入れ子になっている "resourceAppId" 値 の 0b07f429-9f4b-4714-9392-cc5e8e80c8b0、および "resourceAccess > id" 値の 4589bd03-58cb-4e6c-b17f-b580e39652f8":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure AD アプリ登録のためのマニフェストのポータル ビュー。requiredResourceAccess 下で入れ子になっている resourceAppId 値 の 0b07f429-9f4b-4714-9392-cc5e8e80c8b0、および resourceAccess > id 値の 4589bd03-58cb-4e6c-b17f-b580e39652f8":::
 
 ### <a name="collect-important-values"></a>重要な値を収集する
 
