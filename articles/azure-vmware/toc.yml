@@ -58,8 +58,10 @@
               href: set-up-mabs-for-avs.md
             - name: Backup Server を使用した AVS VM のバックアップ
               href: backup-avs-vms-with-mabs.md
-        - name: AVS 上の Application Gateway
+        - name: AVS を使用した Application Gateway
           href: protect-avs-web-apps-with-app-gateway.md
+        - name: AVS を使用した Traffic Manager
+          href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware ソリューション
       items:
         - name: AVS 向けの vRealize Operations の設定

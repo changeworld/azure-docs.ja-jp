@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: アクセス レビュー
       items:
+        - name: アクセス レビューのデプロイの計画
+          href: deploy-access-reviews.md
         - name: アクセス パッケージ
           items:
             - name: アクセス レビューの作成
