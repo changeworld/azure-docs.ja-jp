@@ -89,9 +89,9 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。 
 
-## <a name="using-vs-code"></a>VS コードを使用する
+## <a name="using-vs-code"></a>VS Code　を使用する
 
-[VS コードを使用したモデルのデプロイ](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)に関する記事を参照してください。
+[VS Code を使用したモデルのデプロイ](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > テストするための ACI コンテナーを事前に作成する必要はありません。 ACI コンテナーは必要に応じて作成されます。
