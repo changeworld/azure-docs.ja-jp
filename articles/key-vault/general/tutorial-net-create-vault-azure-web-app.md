@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051900"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080234"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>チュートリアル:マネージド ID と .NET を使用して Key Vault を Azure Web アプリに接続する
 
@@ -28,7 +28,7 @@ Azure Key Vault は、資格情報やその他のシークレットを安全に�
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.Net Core 3.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -51,13 +51,9 @@ az group create --name "myResourceGroup" -l "EastUS"
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-"https://<your-keyvault-name>.vault.azure.net/" 形式で返される `vaultUri` を書き留めます。 「[コードを更新する](#update-the-code)」の手順で使用します。
+"https://&lt;your-keyvault-name&gt;.vault.azure.net/" の形式で返される `vaultUri` を書き留めます。 「[コードを更新する](#update-the-code)」の手順で使用します。
 
-これで [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) コマンドを使用して、キー コンテナーにシークレットを格納できます。 シークレットの名前は "MySecret" に、値は "Success!" に設定してください。
-
-```azurecli-interactive
-az keyvault secret set --vault-name "<your-keyvault-name>" --name "MySecret" --value "Success!"
-```
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
 ## <a name="create-a-net-web-app"></a>.NET Web アプリを作成する
 
@@ -144,7 +140,7 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 
 ### <a name="create-a-remote-web-app"></a>リモート Web アプリを作成する
 
-`myAppServicePlan` App Service プランに [Azure Web アプリ](../../app-service/containers/app-service-linux-intro.md)を作成します。 
+`myAppServicePlan` App Service プランに [Azure Web アプリ](../../app-service/overview.md#app-service-on-linux)を作成します。 
 
 > [!Important]
 > Key Vault と同様、Azure Web アプリにも一意の名前を付ける必要があります。 次の例の \<your-webapp-name\> は、実際の Web アプリの名前に置き換えてください。

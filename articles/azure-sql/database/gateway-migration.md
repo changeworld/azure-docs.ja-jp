@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084955"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759701"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure インフラストラクチャの機能強化に伴い、Microsoft は可能な限り最高のカスタマー エクスペリエンスを提供するためにハードウェアを定期的に更新しています。 今後数か月間で、より新しいハードウェア世代に基づくゲートウェイを追加し、それらにトラフィックを移行して、最終的に一部のリージョンでは以前のハードウェアに基づくゲートウェイの使用を停止する予定です。  
 
@@ -27,6 +27,22 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+### <a name="september-2020"></a>2020 年 9 月
+
+新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイは、2020 年 9 月 10 日にお客様のトラフィックの受け入れを開始します。
+
+- 米国中西部: 13.78.248.43 
+- 南アフリカ北部: 102.133.120.2  
+
+新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイは、2020 年 9 月 1 日にお客様のトラフィックの受け入れを開始します。
+
+- 北ヨーロッパ:13.74.104.113 
+- 米国西部 2:40.78.248.10 
+- 西ヨーロッパ:52.236.184.163 
+- 米国中南部:20.45.121.1、20.49.88.1 
+
+既存の SQL ゲートウェイは、以下のリージョンのトラフィックの受け入れを開始します。 これらの SQL ゲートウェイは、2020 年 9 月 1 日にお客様のトラフィックの受け入れを開始します。 :
+- 東日本:40.79.184.8、40.79.192.5
 
 ### <a name="august-2020"></a>2020 年 8 月
 
@@ -69,7 +85,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - データベースに対して[ゾーン冗長構成](high-availability-sla.md#zone-redundant-configuration)を使用している
 
 次の場合は影響を受けません。
-
+ 
 - 接続ポリシーとしてのリダイレクトがある
 - Azure の内部から SQL Database へのサービス タグを使用した接続がある
 - サポートされているバージョンの SQL Server 用 JDBC ドライバーを使用して行われる接続は影響を受けません。 サポートされている JDBC のバージョンについては、「[Microsoft SQL Server 用 JDBC Driver のダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)」を参照してください。

@@ -7,19 +7,19 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037768"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513708"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>仮想ハブの有効なルートを表示する
 
 Azure portal で Virtual WAN ハブのすべてのルートを表示できます。 この記事では、有効なルートを表示する手順について説明します。 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
 > [!NOTE]
-> Azure portal では、これらの機能の一部が現在ロールアウト中であるため、8 月 3 日の週まで使用できない可能性があります。 
+> Azure portal では、これらの機能の一部が現在ロールアウト中であるため、8 月 17 日の週まで使用できない可能性があります。 
 >
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>接続またはルート テーブルを選択する

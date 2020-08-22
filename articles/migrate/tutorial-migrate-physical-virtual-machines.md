@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、物理マシ�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ff8ac55f129e7579b12e2102c0c6292e9030021c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165398"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066629"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -103,10 +103,13 @@ Azure Migrate:Server Migration では、レプリケーション アプライア
 
 次のようにして、アプライアンスのデプロイの準備をします。
 
-- レプリケーション アプライアンスのホストとなるマシンを準備します。 マシンの要件を[確認](migrate-replication-appliance.md#appliance-requirements)します。 レプリケート元となるソース マシンにはアプライアンスをインストールしないでください。
+- レプリケーション アプライアンスのホストとなるマシンを準備します。 マシンの要件を[確認](migrate-replication-appliance.md#appliance-requirements)します。
 - レプリケーション アプライアンスでは MySQL が使用されます。 アプライアンスに MySQL をインストールするためのいくつかの[方法](migrate-replication-appliance.md#mysql-installation)を確認します。
 - [パブリック](migrate-replication-appliance.md#url-access) クラウドおよび[政府機関向け](migrate-replication-appliance.md#azure-government-url-access)クラウドにアクセスするレプリケーション アプライアンスに必要な Azure URL を確認します。
 - レプリケーション アプライアンスの[ポート](migrate-replication-appliance.md#port-access) アクセス要件を確認します。
+
+> [!NOTE]
+> レプリケート対象のソース マシン、または以前にインストールした Azure Migrate 検出および評価アプライアンスに、レプリケーション アプライアンスをインストールすることはできません。
 
 ## <a name="add-the-server-migration-tool"></a>Server Migration ツールを追加する
 
@@ -155,7 +158,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     ![プロバイダーのダウンロード](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 10. アプライアンスの設定ファイルとキー ファイルを、アプライアンス用に作成した Windows Server 2016 マシンにコピーします。
-11. 次の手順の説明に従って、レプリケーション アプライアンスの設定ファイルを実行します。 インストールが完了すると、アプライアンス構成ウィザードが自動的に起動します (アプライアンスのデスクトップに作成された cspsconfigtool ショートカットを使用して、ウィザードを手動で起動することもできます)。 ウィザードの [アカウントの管理] タブを使用して、モビリティ サービスのプッシュ インストールに使用するアカウントの詳細を追加します。 このチュートリアルでは、レプリケートされるマシンにモビリティ サービスを手動でインストールします。そのため、この手順でダミー アカウントを作成し、続行します。
+11. インストールが完了すると、アプライアンス構成ウィザードが自動的に起動します (アプライアンスのデスクトップに作成された cspsconfigtool ショートカットを使用して、ウィザードを手動で起動することもできます)。 ウィザードの [アカウントの管理] タブを使用して、モビリティ サービスのプッシュ インストールに使用するアカウントの詳細を追加します。 このチュートリアルでは、レプリケートされるソース VM にMobility Service を手動でインストールします。そのため、この手順でダミー アカウントを作成し、続行します。 ダミー アカウントを作成するための詳細情報には、"ゲスト" としてフレンドリ名、"ユーザー名" としてユーザー名、"パスワード" としてアカウントのパスワードを指定できます。 このダミー アカウントは、レプリケーションの有効化ステージで使用します。 
 
 12. アプライアンスが設定後に再起動されたら、 **[マシンの検出]** の **[構成サーバーの選択]** で新しいアプライアンスを選択し、 **[Finalize registration]\(登録の終了処理\)** をクリックします。 登録の終了処理では、レプリケーション アプライアンスを準備するための終了タスクがいくつか実行されます。
 
@@ -230,7 +233,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 2. **[レプリケート]** で、 **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
 4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。
-6. **[ゲストの資格情報]** で、モビリティ サービスを手動でインストールするために使用されるダミー アカウントを指定します (プッシュ インストールは物理ではサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。
+6. **[ゲストの資格情報]** では、前の[レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
 
     ![VM をレプリケートする](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 

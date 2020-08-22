@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091489"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -88,9 +88,9 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 
 つまり、このサービスを提供するコンピューティングとストレージの両方がこれらのリージョン内にあります。 ただし、クライアントの場所に制限はありません。 
 
-**Q:Azure Spatial Anchors には課金されますか? いつ課金されるようになりますか?**
+**Q:Azure Spatial Anchors には課金されますか?**
 
-**A:** プレビュー期間中の料金について詳しくは、[価格に関するページ](https://azure.microsoft.com/pricing/details/spatial-anchors/)をご覧ください。
+**A:** 価格の詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/spatial-anchors/)をご覧ください。
 
 ## <a name="technical-faqs"></a>技術的な FAQ
 

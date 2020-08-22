@@ -1,6 +1,6 @@
 ---
 title: Azure の Cloudyn に関してよく寄せられる質問
-description: この記事では、Cloudyn についてよく寄せられる質問にお答えします。
+description: Cloudyn ポータルを使用して間接的なエンタープライズ設定に関する一般的な問題を解決し、その他のよく寄せられる質問に回答する方法について説明します。
 author: bandersmsft
 ms.author: banders
 ms.date: 03/12/2020
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b9d19923302a40985906fa3c2e0e183045a95860
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411248"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460458"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 

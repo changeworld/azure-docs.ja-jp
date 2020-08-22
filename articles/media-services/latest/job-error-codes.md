@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
-ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: ec057d86ea39afb7eabd4e8227646eaec11c5655
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582214"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023009"
 ---
 # <a name="media-services-job-error-codes"></a>Media Services ジョブのエラー コード
 
@@ -26,7 +26,7 @@ ms.locfileid: "80582214"
 
 ## <a name="job-error-codes"></a>ジョブ エラー コード
 
-次の REST ドキュメントでは、[ジョブ エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関して詳細に説明しています。
+次の REST ドキュメントでは、[ジョブ エラー コード](/rest/api/media/jobs/get#joberrorcode)に関して詳細に説明しています。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

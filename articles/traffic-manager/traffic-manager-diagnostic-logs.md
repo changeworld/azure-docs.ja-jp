@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09c04d727e42f88bb376a59d66a23688e16abb13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089058"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager でリソースログを有効にする
 
@@ -68,9 +68,8 @@ Azure Monitor を通じて使用できるすべてのリソース ログには�
 
 次の表には、Azure Traffic Manager プロファイル リソースに固有のログ スキーマが含まれています。
 
-|||||
+|フィールド名|フィールドの型|定義|例|
 |----|----|---|---|
-|**フィールド名**|**フィールドの型**|**定義**|**例**|
 |EndpointName|String|正常性の状態が記録されている Traffic Manager エンドポイントの名前。|*myPrimaryEndpoint*|
 |Status|String|プローブされた Traffic Manager エンドポイントの正常性の状態。 状態は **Up** または **Down** のいずれかです。|**Up**|
 |||||

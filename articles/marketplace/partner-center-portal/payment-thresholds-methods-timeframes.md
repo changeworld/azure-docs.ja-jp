@@ -1,18 +1,18 @@
 ---
 title: 地域ごとの支払いの詳細 - Microsoft コマーシャル マーケットプレース
 description: 支払いの送金に要する概算時間、および支払いを受けることができる Microsoft ネットショップが、お住まいの国または地域および支払い受取口座の種類によってどのように異なるかについて説明します。
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745010"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327329"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>支払いのしきい値、方法、期間
 

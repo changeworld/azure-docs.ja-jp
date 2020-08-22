@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: de5b490f1ffd50e44defb1c3e3c6f0ad32ca689c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f86cc5e3edc659a233066fcf2544ed4a5019d0f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324286"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure ポータルで Log Analytics ワークスペースを作成する
 Azure portal で、 **[Log Analytics ワークスペース]** メニューを使用して、Log Analytics ワークスペースを作成します。 Log Analytics ワークスペースは、Azure Monitor ログ データ用の一意の環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。 次のソースからデータを収集しようとする場合、Log Analytics ワークスペースが必要です。
@@ -23,8 +23,8 @@ Azure portal で、 **[Log Analytics ワークスペース]** メニューを使
 
 環境内の Azure VM、Windows VM、Linux VM などの他のソースについては、次のトピックを参照してください。
 
-*  [Azure Virtual Machines に関するデータの収集](../learn/quick-collect-azurevm.md) 
-*  [ハイブリッド Linux コンピューターからのデータの収集](../learn/quick-collect-linux-computer.md)
+*  [Azure Virtual Machines に関するデータの収集](./quick-collect-azurevm.md) 
+*  [ハイブリッド Linux コンピューターからのデータの収集](./quick-collect-linux-computer.md)
 *  [ハイブリッド Windows コンピューターからのデータの収集](quick-collect-windows-computer.md)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -66,3 +66,4 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 * Operations Manager 管理グループに報告するエージェントからデータを収集して Log Analytics ワークスペースに格納するには、[データ ソースとして System Center Operations Manager を追加](../platform/om-agents.md)します。 
 * 階層内のコレクションのメンバーであるコンピュータをインポートするには、[構成マネージャー](../platform/collect-sccm.md)に接続します。  
 * 使用可能な[監視ソリューション](../insights/solutions.md)と、ソリューションをワークスペースに対して追加または削除する方法を確認します。
+

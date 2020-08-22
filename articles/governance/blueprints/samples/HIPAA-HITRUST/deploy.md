@@ -1,14 +1,14 @@
 ---
 title: HIPAA HITRUST ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む HIPAA HITRUST ブループリント サンプルのデプロイ手順です。
-ms.date: 12/03/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: b3101d67e281f3b613b95e3f3ef5f620ae44cec7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f41827d687beb583ea6402d517e88b8cf69903a0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044840"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211520"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST ブループリント サンプルをデプロイする
 
@@ -106,6 +106,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |SQL サーバーでの監査のデプロイ |ポリシー割り当て |SQL サーバー監査のためのストレージ アカウントのリソース グループ名 |監査によって、Azure Storage アカウントの監査ログにデータベース イベントが書き込まれます (ストレージ アカウントは、SQL Server が作成された各リージョンに作成され、そのリージョン内のすべてのサーバーによって共有されます)。 重要 - 監査を適切に実施するために、リソース グループまたはストレージ アカウントを削除したり、名前を変更したりしないでください。 |
 |ネットワーク セキュリティ グループの診断設定のデプロイ |ポリシー割り当て |ネットワーク セキュリティ グループの診断用のストレージ アカウント プレフィックス |このプレフィックスがネットワーク セキュリティ グループの場所と組み合わされて、作成されるストレージ アカウント名となります。 |
 |ネットワーク セキュリティ グループの診断設定のデプロイ |ポリシー割り当て |ネットワーク セキュリティ グループの診断用のストレージ アカウントのリソース グループ名 (存在する必要があります) |ストレージ アカウントが作成されるリソース グループ。 このリソース グループは、既に存在している必要があります。 |
+|\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ |ポリシー割り当て |Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース |このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。 |
+|\[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ |ポリシー割り当て |Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース |このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。 |
 
 ## <a name="next-steps"></a>次のステップ
 

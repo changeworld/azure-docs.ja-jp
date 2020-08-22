@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983151"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419480"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
 Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) により、ユーザーは、管理者やヘルプ デスクが関与することなく、自分のパスワードを変更またはリセットできるようになります。 ユーザーはアカウントがロックされた場合やパスワードを忘れた場合でも、画面の指示に従って自分自身のブロックを解除して、作業に戻ることができます。 この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます。
 
 > [!IMPORTANT]
-> このクイックスタートでは、管理者向けにセルフサービス パスワード リセットを有効にする方法を示します。 既にセルフサービス パスワード リセットの登録が済んでいて、自分のアカウントに戻る必要があるエンド ユーザーは、 https://aka.ms/sspr にアクセスしてください。
+> このチュートリアルでは、管理者向けにセルフサービス パスワード リセットを有効にする方法を示します。 既にセルフサービス パスワード リセットの登録が済んでいて、自分のアカウントに戻る必要があるエンド ユーザーは、 https://aka.ms/sspr にアクセスしてください。
 >
 > ユーザーが自分でパスワードをリセットする機能が IT チームによって有効にされていない場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
@@ -37,13 +37,13 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P1 または試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
 * パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してエンドユーザーの SSPR エクスペリエンスをテストします。
-    * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
+    * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)」を参照してください。
 * 管理者以外のユーザーが所属するグループ (*SSPR-Test-Group* など)。 このチュートリアルでは、このグループに対して SSPR を有効にします。
-    * グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory-groups-create-azure-portal.md)方法を参照してください。
+    * グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する](../fundamentals/active-directory-groups-create-azure-portal.md)方法を参照してください。
 
 ## <a name="enable-self-service-password-reset"></a>セルフサービス パスワード リセットを有効にする
 
@@ -60,7 +60,7 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
 1. **[プロパティ]** ページの *[セルフ サービスによるパスワードのリセットが有効]* オプションの下で、 **[グループの選択]** を選択します。
 1. 使用する Azure AD グループ (*SSPR-Test-Group* など) を参照して選択し、 *[選択]* を選択します。
 
-    [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
+    [ ![Azure portal で、セルフサービス パスワード リセットを有効にするグループを選択する](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) ](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
 1. 選択したユーザーに対して SSPR を有効にするには、 **[保存]** を選択します。
 
@@ -78,8 +78,8 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
     * *モバイル アプリ コード*
     * *Email*
     * *携帯電話*
-    * *会社電話*
-    * *セキュリティの質問*
+
+    業務要件に合うよう必要に応じて、追加の認証方法 ("*会社電話*" や "*セキュリティの質問*" など) を有効にすることができます。
 
 1. 認証方法を適用するには、 **[保存]** を選択します。
 
@@ -95,7 +95,7 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
 
 ## <a name="configure-notifications-and-customizations"></a>通知とカスタマイズを構成する
 
-アカウントのアクティビティについて常にユーザーに通知されるように、SSPR イベントが発生すると送信されるように電子メール通知を構成できます。 これらの通知は、通常のユーザー アカウントと管理者アカウントの両方を対象とすることができます。 管理者アカウントの場合は、この通知により、SSPR を使用して特権管理者アカウントのパスワードがリセットされたタイミングをより明確に認識できます。
+アカウントのアクティビティについて常にユーザーに通知されるように、SSPR イベントが発生すると送信されるように電子メール通知を構成できます。 これらの通知は、通常のユーザー アカウントと管理者アカウントの両方を対象とすることができます。 管理者アカウントの場合は、この通知により、SSPR を使用して特権管理者アカウントのパスワードがリセットされたタイミングをより明確に認識できます。 管理者アカウントで SSPR が使用されている場合、すべてのグローバル管理者に通知されます。
 
 1. 左側のメニューから **[通知]** ページに移動し、次のオプションを構成します。
 

@@ -7,16 +7,16 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997824"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284117"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Common Data Service のレコードを作成および管理する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Common Data Service コネクタ](https://docs.microsoft.com/connectors/commondataservice/)を使用すると、[Common Data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro) データベース内のレコードを管理する自動化されたワークフローをビルドすることができます。 これらのワークフローでは、レコードの作成、レコードの更新、その他の操作を行うことができます。 また、Common Data Service データベースから情報を取得して、その出力を、ロジック アプリで使用される他のアクションで使用できるようにします。 たとえば、Common Data Service データベースでレコードが更新された場合、Office 365 Outlook コネクタを使用してメールを送信できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Common Data Service コネクタ](/connectors/commondataservice/)を使用すると、[Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) データベース内のレコードを管理する自動化されたワークフローをビルドすることができます。 これらのワークフローでは、レコードの作成、レコードの更新、その他の操作を行うことができます。 また、Common Data Service データベースから情報を取得して、その出力を、ロジック アプリで使用される他のアクションで使用できるようにします。 たとえば、Common Data Service データベースでレコードが更新された場合、Office 365 Outlook コネクタを使用してメールを送信できます。
 
 この記事では、新しい潜在顧客レコードが作成されるたびにタスク レコードを作成するロジック アプリをビルドする方法について説明します。
 
@@ -24,10 +24,10 @@ ms.locfileid: "82997824"
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* [Common Data Service 環境](https://docs.microsoft.com/power-platform/admin/environments-overview)。組織がビジネス データと Common Data Service データベースを格納、管理、共有する場所です。 詳細については、次のリソースを参照してください。<p>
+* [Common Data Service 環境](/power-platform/admin/environments-overview)。組織がビジネス データと Common Data Service データベースを格納、管理、共有する場所です。 詳細については、次のリソースを参照してください。<p>
 
-  * [Learn: Common Data Service の開始方法](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Power Platform - 環境の概要](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [Learn: Common Data Service の開始方法](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Power Platform - 環境の概要](/power-platform/admin/environments-overview)
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)と、Common Data Service データベースのレコードにアクセスするロジック アプリに関する基本的な知識。 Common Data Service トリガーを使用してロジック アプリを起動するには、空のロジック アプリが必要です。 Azure Logic Apps を初めて使用する場合は、「[クイックスタート: Azure Logic Apps を使用して初めてのワークフローを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
 
@@ -51,7 +51,7 @@ ms.locfileid: "82997824"
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
-   | **Environment** | はい | 監視する環境 (例: "Fabrikam Sales Production")。 詳細については、「[Power Platform - 環境の概要](https://docs.microsoft.com/power-platform/admin/environments-overview)」を参照してください。 |
+   | **Environment** | はい | 監視する環境 (例: "Fabrikam Sales Production")。 詳細については、「[Power Platform - 環境の概要](/power-platform/admin/environments-overview)」を参照してください。 |
    | **エンティティ名** | はい | 監視するエンティティ (例: "潜在顧客") |
    | **スコープ** | はい | 新しいレコードを作成したソース。たとえば、部署内のユーザーや、組織内のユーザー。 この例では、"部署" を使用しています。 |
    ||||
@@ -126,7 +126,7 @@ ms.locfileid: "82997824"
 
    ![レコードをフィルター処理するための ODATA フィルター クエリを入力する](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-`$filter` システム クエリ オプションの詳細については、「[Common Data Service - 結果のフィルター](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)」を参照してください。
+`$filter` システム クエリ オプションの詳細については、「[Common Data Service - 結果のフィルター](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)」を参照してください。
 
 ## <a name="list-records-based-on-an-order"></a>順序に基づいてレコードを一覧表示する
 
@@ -140,7 +140,7 @@ ms.locfileid: "82997824"
 
    ![レコードを並べ替えるための ODATA フィルター クエリを入力する](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-`$orderby` システム クエリ オプションの詳細については、「[Common Data Service - 結果の並べ替え](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)」を参照してください。
+`$orderby` システム クエリ オプションの詳細については、「[Common Data Service - 結果の並べ替え](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)」を参照してください。
 
 ## <a name="field-data-types"></a>フィールドのデータ型
 
@@ -166,7 +166,7 @@ ms.locfileid: "82997824"
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-トリガー、アクション、制限、その他の詳細など、コネクタの Swagger の説明に基づいた技術情報については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/commondataservice/)を参照してください。
+トリガー、アクション、制限、その他の詳細など、コネクタの Swagger の説明に基づいた技術情報については、[コネクタのリファレンス ページ](/connectors/commondataservice/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133301"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167222"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
-この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 プランを購入した顧客は、その後サブスクリプションまたはリソース グループを委任します。これにより、お客様は [Azure Lighthouse](../overview.md) を通じて顧客を管理できるようになります。
+この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 オファーを購入した顧客は、その後サブスクリプションまたはリソース グループを委任します。これにより、お客様は [Azure Lighthouse](../overview.md) を通じて顧客を管理できるようになります。
 
 ## <a name="publishing-requirements"></a>発行要件
 
@@ -34,7 +34,7 @@ ms.locfileid: "86133301"
 顧客がオファーを追加すると、1 つ以上のサブスクリプションまたはリソース グループを委任できるようになり、これらは [Azure Lighthouse にオンボード](#the-customer-onboarding-process)されます。
 
 > [!IMPORTANT]
-> マネージド サービス オファー内の各プランには、 **[Manifest Details]\(マニフェストの詳細\)** セクションが含まれています。そこでは、そのプランを購入したお客様に代わり、委任されたリソース グループやサブスクリプションへのアクセス権を持つ Azure Active Directory (Azure AD) エンティティをお客様のテナント内に定義します。 含まれるグループ (またはユーザーまたはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意する必要があります。 顧客ごとに異なる担当グループを割り当てるには、各顧客専用の個別の[プライベート プラン](../../marketplace/private-offers.md)を発行する必要があります。
+> マネージド サービス オファー内の各プランには、 **[Manifest Details]\(マニフェストの詳細\)** セクションが含まれています。そこでは、そのプランを購入したお客様に代わり、委任されたリソース グループやサブスクリプションへのアクセス権を持つ Azure Active Directory (Azure AD) エンティティをお客様のテナント内に定義します。 含まれるグループ (またはユーザーまたはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意する必要があります。 顧客ごとに異なる担当グループを割り当てるには、各顧客専用の個別の[プライベート プラン](../../marketplace/private-offers.md)を発行することができます。 プライベート プランは、クラウド ソリューション プロバイダー (CSP) プログラムのリセラーを通じて確立されたサブスクリプションではサポートされないことにご注意ください。
 
 ## <a name="publish-your-offer"></a>実際のオファーを発行する
 

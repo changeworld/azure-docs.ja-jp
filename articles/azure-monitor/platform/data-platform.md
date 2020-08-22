@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515531"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325578"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor データ プラットフォーム
 
@@ -36,7 +36,7 @@ Azure リソースによって、大量の監視データが生成されます�
 
 Azure Monitor のメトリックは、タイムスタンプ付きのデータを分析するために最適化された時系列データベースに格納されます。 これにより、メトリックは、特にアラートと問題の迅速な検出に適しています。 それらによって、システムがどのように実行されているかを知ることができますが、通常は、問題の根本原因を識別するためにログと組み合わせる必要があります。
 
-メトリックは、Azure portal の [Azure メトリックス エクスプローラー](../platform/metrics-getting-started.md)で、対話式の分析を行うために使用できます。 他のデータと組み合わせた視覚化や、リアルタイムの[アラート](alerts-metric.md)で使用するために、[Azure ダッシュボード](../learn/tutorial-app-dashboards.md)に追加できます。
+メトリックは、Azure portal の [Azure メトリックス エクスプローラー](./metrics-getting-started.md)で、対話式の分析を行うために使用できます。 他のデータと組み合わせた視覚化や、リアルタイムの[アラート](alerts-metric.md)で使用するために、[Azure ダッシュボード](../learn/tutorial-app-dashboards.md)に追加できます。
 
 データのソースを含む Azure Monitor のメトリックの詳細については、「[Metrics in Azure Monitor (Azure Monitor のメトリック)](data-platform-metrics.md)」を参照してください。
 
@@ -90,3 +90,4 @@ Azure のツールを使用した監視データの分析に加え、監視デ�
 - [Azure Monitor のメトリック](data-platform-metrics.md)を確認します。
 - [Azure Monitor のログ](data-platform-logs.md)を確認します。
 - Azure のさまざまなリソースで[入手できる監視データ](data-sources.md)を確認します。
+

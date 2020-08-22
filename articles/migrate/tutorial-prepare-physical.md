@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて物理サ�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113253"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420789"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -138,7 +138,7 @@ Azure 仮想ネットワーク (VNet) を[設定](../virtual-network/manage-virt
 
 Azure Migrate には、オンプレミスのサーバーを検出するためのアクセス許可が必要です。
 
-- **Windows:** 検出するすべての Windows サーバーで、ドメイン管理者またはローカル管理者である必要があります。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+- **Windows:** ドメインに参加しているサーバーを検出するにはドメイン アカウントが、ドメインに参加していないマシンを検出するにはローカル アカウントが必要です。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
 - **Linux:** 検出する Linux サーバーのルート アカウントが必要です。
 
 ## <a name="prepare-for-physical-server-migration"></a>物理サーバーの移行を準備する

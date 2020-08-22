@@ -4,12 +4,12 @@ description: Grafana で表示できるように Azure Monitor および Applica
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073473"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -59,9 +59,9 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 2. データ ソースの名前を選択し、種類としてドロップダウンから **[Azure Monitor]** を選択します。
 
 3. サービス プリンシパルを作成します。Grafana では、Azure Active Directory サービス プリンシパルを使用して Azure Monitor API に接続してメトリック データを収集します。 Azure リソースへのアクセスを管理するには、サービス プリンシパルを作成するか、既存のものを使用する必要があります。
-    * サービス プリンシパルを作成するには、[この手順](../../azure-resource-manager/resource-group-create-service-principal-portal.md)を参照してください。 ご自分のテナント ID (ディレクトリ ID)、クライアント ID (アプリケーション ID)、およびクライアント シークレット (アプリケーション キー値) をコピーして保存します。
-    * [アプリケーションへのロールの割り当て](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに閲覧者ロールを割り当てます。 
-    Log Analytics API には、閲覧者ロールのアクセス許可を含む[Log Analytics 閲覧者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)が必要なので、それを追加します。
+    * サービス プリンシパルを作成するには、[この手順](../../active-directory/develop/howto-create-service-principal-portal.md)を参照してください。 ご自分のテナント ID (ディレクトリ ID)、クライアント ID (アプリケーション ID)、およびクライアント シークレット (アプリケーション キー値) をコピーして保存します。
+    * [アプリケーションへのロールの割り当て](../../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに閲覧者ロールを割り当てます。 
+    Log Analytics API には、閲覧者ロールのアクセス許可を含む[Log Analytics 閲覧者ロール](../../role-based-access-control/built-in-roles.md#log-analytics-reader)が必要なので、それを追加します。
 
 4. 使用する API への接続の詳細を指定します。 それらのすべてまたは一部に接続できます。 
     * Azure Monitor のメトリックとログの両方に接続する場合は、 **[Same details as Azure Monitor API]\(Azure Monitor API の詳細と同じ\)** を選択することで、同じ資格情報を再利用できます。
@@ -159,4 +159,3 @@ Azure 上に Grafana 環境をセットアップした場合、VM を使用し�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Monitor メトリックの概要](data-platform.md)
-

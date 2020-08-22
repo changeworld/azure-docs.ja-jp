@@ -3,12 +3,15 @@ title: ポータルを使用してコンテンツをアップロード、エン�
 description: このクイックスタートでは、ポータルで Azure Media Services を使用してコンテンツをアップロード、エンコード、およびストリーム配信する方法を示します。
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232476"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605659"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>クイック スタート:ポータルでコンテンツをアップロード、エンコード、およびストリーム配信する
 
@@ -28,14 +31,13 @@ ms.locfileid: "86232476"
 
   * [クラウドのアップロードとストレージ](storage-account-concept.md)
   * [アセットの概念](assets-concept.md)
-  * [資産の管理](manage-asset-concept.md)
 * 高品質のデジタル メディア ファイルを資産 (入力資産) にアップロードしたら、それを処理 (エンコードまたは分析) できます。 処理されたコンテンツは別の資産 (出力資産) に渡されます。 
     * アップロードしたファイルを、さまざまなブラウザーおよびデバイスで再生できる形式に[エンコード](encoding-concept.md)します。
     * アップロードしたファイルを[分析](analyzing-video-audio-files-concept.md)します。 
 
         現在、Azure portal を使用して、TTML および WebVTT クローズド キャプション ファイルを生成することができます。 これらの形式のファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。 また、コンテンツからキーワードを抽出することもできます。
 
-        ビデオおよびオーディオ ファイルから分析情報を抽出できるリッチなエクスペリエンスを実現するには、Media Services v3 プリセットを使用します (「[チュートリアル: Media Services v3 を使用してビデオを分析する](analyze-videos-tutorial-with-api.md)」を参照してください)。 <br/>より詳細な分析情報が必要な場合は [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) を直接使用します。    
+        ビデオおよびオーディオ ファイルから分析情報を抽出できるリッチなエクスペリエンスを実現するには、Media Services v3 プリセットを使用します (「[チュートリアル: Media Services v3 を使用してビデオを分析する](analyze-videos-tutorial-with-api.md)」を参照してください)。 <br/>より詳細な分析情報が必要な場合は [Video Indexer](../video-indexer/index.yml) を直接使用します。    
 * コンテンツが処理されると、メディア コンテンツをクライアント プレーヤーに配信できます。 出力資産内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成する必要があります。 **ストリーミング ロケーター**を作成するときは、**ストリーミング ポリシー**を指定する必要があります。 **ストリーミング ポリシー**を使用して、**ストリーミング ロケーター**のためのストリーミング プロトコルと暗号化オプション (該当する場合) を定義できます。
     
     レビュー:

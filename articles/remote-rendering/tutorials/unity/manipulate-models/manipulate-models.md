@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 182ceca11d6e9b9bbebcf2911de1783cef43dd1a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207332"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449042"
 ---
 # <a name="tutorial-manipulating-models"></a>チュートリアル:モデルの操作
 
@@ -332,18 +332,14 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 
 2. 前に作成した **TestModel** GameObject で、**RemoteRayCastPointerHandler** コンポーネントと **RemoteEntityHelper** コンポーネントの両方を追加します。
 1. `OnRemoteEntityClicked` イベントに `EntityToDebugLog` メソッドを割り当てます。 イベントの出力の型とメソッドの入力の型が一致すると、Unity の動的イベント フックアップを使用できます。これにより、イベントの値が自動的にメソッドに渡されます。
-    1. 新しいコールバック フィールドを作成します。\
-    ![コールバックを追加する](./media/add-callback-remote-entity-clicked.png)
-    1. 親 GameObject を参照するために、**Remote Entity Helper** コンポーネントを Object フィールドにドラッグします。\
-    ![オブジェクトを割り当てる](./media/assign-object.png)
-    1. `EntityToDebugLog` をコールバックとして割り当てます。\
-    ![コールバックを割り当てる](./media/remote-entity-event.png)
+    1. 新しいコールバック フィールドを作成します ![コールバックを追加する](./media/add-callback-remote-entity-clicked.png)
+    1. 親 GameObject を参照するために、**Remote Entity Helper** コンポーネントを Object フィールドにドラッグします ![オブジェクトを割り当てる](./media/assign-object.png)
+    1. `EntityToDebugLog` をコールバックとして割り当てます  ![コールバックを割り当てる](./media/remote-entity-event.png)
 1. Unity エディターで [play]\(再生\) を押してシーンを開始し、リモート セッションに接続してテスト モデルを読み込みます。
 1. MRTK のハンド シミュレーションを使用して、左 Shift キーを長押しします。
 1. シミュレートされた手を操作して、ハンド レイがテスト モデルを指すようにします。
 1. 長押ししてエアタップをシミュレートし、`OnPointerClicked` イベントを実行します。
-1. 選択した子エンティティの名前が含まれたログ メッセージを Unity コンソールで確認します。 次に例を示します。\
-![子エンティティの例](./media/child-entity-example.png)
+1. 選択した子エンティティの名前が含まれたログ メッセージを Unity コンソールで確認します。 次に例を示します。![子エンティティの例](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>リモート オブジェクト グラフを Unity 階層に同期させる
 
@@ -351,9 +347,9 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 
 1. シーンを開始し、テスト モデルを読み込みます。
 1. Unity の階層で **TestModel** GameObject の子を展開し、**TestModel_Entity** GameObject を選択します。
-1. インスペクターで、 *[Show Children]\(子の表示\)* ボタンをクリックします。\
+1. インスペクターで、 *[Show Children]\(子の表示\)* ボタンをクリックします。
 ![子の表示](./media/show-remote-children.png)
-1. 多数の子の一覧が表示されるまで、引き続き *[Show Children]\(子の表示\)* をクリックしながら階層の子を展開していきます。\
+1. 多数の子の一覧が表示されるまで、引き続き *[Show Children]\(子の表示\)* をクリックしながら階層の子を展開していきます。
 ![すべての子](./media/test-model-children.png)
 
 多数のエンティティの一覧が階層表示されます。 そのいずれかを選択すると、`Transform` コンポーネントと `RemoteEntitySyncObject` コンポーネントがインスペクターに表示されます。 既定では、各エンティティが自動的にはフレームごとに同期されないので、`Transform` に対するローカルな変更がサーバーとの間で同期されません。 *[Sync Every Frame]\(フレームごとに同期\)* チェック ボックスをオンにして、[Scene]\(シーン\) ビューでトランスフォームを移動、拡大縮小、回転することができます。[Scene]\(シーン\) ビューには、レンダリングされたモデルが表示されません。モデルの位置と回転が視覚的に更新されるようすを確認するには、[Game]\(ゲーム\) ビューを監視してください。
@@ -371,13 +367,13 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
     }
     ```
 
-1. **RemoteRayCastPointerHandler** イベント `OnRemoteEntityClicked` にコールバックをもう 1 つ追加し、それを `MakeSyncedGameObject` に設定します。\
+1. **RemoteRayCastPointerHandler** イベント `OnRemoteEntityClicked` にコールバックをもう 1 つ追加し、それを `MakeSyncedGameObject` に設定します。
 ![コールバックを追加する](./media/additional-callback.png)
 1. MRTK のハンド シミュレーションを使用して、左 Shift キーを長押しします。
 1. シミュレートされた手を操作して、ハンド レイがテスト モデルを指すようにします。
 1. 長押ししてエアタップをシミュレートし、`OnPointerClicked` イベントを実行します。
-1. 階層をチェックして展開し、クリックされたエンティティを表す新しい子オブジェクトを表示します。\
-![GameObject の表現](./media/gameobject-representing-entity.png)\
+1. 階層をチェックして展開し、クリックされたエンティティを表す新しい子オブジェクトを表示します。
+![GameObject の表現](./media/gameobject-representing-entity.png)
 1. テスト後、`MakeSyncedGameObject` のコールバックを削除します。このコールバックは、後で他の効果の一部として組み込みます。
 
 > [!NOTE]

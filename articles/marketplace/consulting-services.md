@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103757"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797867"
 ---
 # <a name="consulting-service-offers"></a>コンサルティング サービス オファー
 
@@ -84,12 +86,12 @@ Microsoft Azure に基づくコンサルティング サービスおよび管理
 最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。 登録要件の完全なチェックリストについては、[マーケットプレースで公開元になる](become-publisher.md)ことに関する記事を参照してください。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>成果物の公開を準備する
-登録前に、対象の顧客に対してご自身のサービスやソリューションの価値を明確に示すのに役立つコンテンツの収集や準備を開始できます。 
+登録前に、対象の顧客に対してご自身のサービスやソリューションの価値を明確に示すのに役立つコンテンツの収集や準備を開始できます。
 
 |新しい公開元の設定  |
 |---------|
 |MPN ID     |
-|会社のロゴ (48 x 48、216 x 216 ピクセル)     |
+|会社のロゴ: 48 x 48 ピクセル (オプション)、216 x 216 ピクセルから 350 x 350 ピクセル (必須)  |
 |リードの宛先     |
 ||
 

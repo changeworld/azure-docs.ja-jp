@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087828"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448385"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3
 
@@ -28,7 +28,7 @@ ms.locfileid: "79087828"
 
 ## <a name="general-changes-from-v2"></a>v2 からの一般的な変更点
 
-* v3 で作成されたアセットの場合、Media Services は [Azure Storage サーバー側のストレージ暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)のみをサポートします。
+* v3 で作成されたアセットの場合、Media Services は [Azure Storage サーバー側のストレージ暗号化](../../storage/common/storage-service-encryption.md)のみをサポートします。
     * V3 API は、[ストレージ暗号化](../previous/media-services-rest-storage-encryption.md) (AES 256) が Media Services によって提供された v2 API で作成されたアセットと一緒に使用できます。
     * v3 API を使用して従来の AES 256 [ストレージ暗号化](../previous/media-services-rest-storage-encryption.md)で新しいアセットを作成することはできません。
 * v3 の[アセット](assets-concept.md)のプロパティは v2 と異なります。[プロパティのマッピング](#map-v3-asset-properties-to-v2)に関するページを参照してください。
@@ -83,16 +83,17 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
     * 音声が入力されない場合に、無音オーディオ トラックを挿入する
     * 入力に映像が含まれていない場合に、ビデオ トラックを挿入する
 * 現在、コード変換を使用するライブ イベントでは、ストリーム中のスレート挿入および API 呼び出しによる Ad マーカー挿入はサポートされていません。 
- 
+* .NETCore SDK の V2 REST API の使用に関するベスト プラクティスとパターンについては、`https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git` サンプル コードを参照してください。
+
 ## <a name="asset-specific-changes"></a>資産固有の変更
 
 ### <a name="map-v3-asset-properties-to-v2"></a>v3 と v2 の資産のプロパティのマッピング
 
-次の表は、v3 の[資産](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)のプロパティが v2 の資産のプロパティにどのようにマッピングされるかを示しています。
+次の表は、v3 の[資産](/rest/api/media/assets/createorupdate#asset)のプロパティが v2 の資産のプロパティにどのようにマッピングされるかを示しています。
 
 |v3 のプロパティ|v2 のプロパティ|
 |---|---|
-|`id` - (一意) Azure Resource Manager の完全なパス。[アセット](https://docs.microsoft.com/rest/api/media/assets/createorupdate)に関するページで例を参照してください||
+|`id` - (一意) Azure Resource Manager の完全なパス。[アセット](/rest/api/media/assets/createorupdate)に関するページで例を参照してください||
 |`name` - (一意)「[名前付け規則](media-services-apis-overview.md#naming-conventions)」を参照してください ||
 |`alternateId`|`AlternateId`|
 |`assetId`|`Id` - (一意) 値は `nb:cid:UUID:` プレフィックスで始まります。|
@@ -110,8 +111,8 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 |暗号化オプション|説明|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services のストレージの暗号化|AES-256 暗号化、Media Services によって管理されるキー。|サポートされています<sup>(1)</sup>|サポートされていません<sup>(2)</sup>|
-|[Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure Storage によって提供されるサーバー側暗号化、Azure またはお客様が管理するキー。|サポートされています|サポートされています|
-|[ストレージ クライアント側暗号化](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure Storage によって提供されるクライアント側暗号化、お客様が Key Vault で管理するキー。|サポートされていません|サポートされていません|
+|[Storage Service Encryption for Data at Rest](../../storage/common/storage-service-encryption.md)|Azure Storage によって提供されるサーバー側暗号化、Azure またはお客様が管理するキー。|サポートされています|サポートされています|
+|[ストレージ クライアント側暗号化](../../storage/common/storage-client-side-encryption.md)|Azure Storage によって提供されるクライアント側暗号化、お客様が Key Vault で管理するキー。|サポートされていません|サポートされていません|
 
 <sup>1</sup> Media Services は、クリアな、どのような形式でも暗号化されていないコンテンツの処理をサポートしますが、そうすることは推奨されません。
 

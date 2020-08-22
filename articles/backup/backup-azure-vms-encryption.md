@@ -2,13 +2,13 @@
 title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/29/2020
+ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538906"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405765"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -47,7 +47,7 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 1. ADE が有効にされた 1 つまたは複数の [Windows](../virtual-machines/linux/disk-encryption-overview.md) または [Linux](../virtual-machines/linux/disk-encryption-overview.md) の VM があることを確認します。
 2. Azure VM バックアップの[サポート マトリックスを確認](backup-support-matrix-iaas.md)します。
-3. Recovery Services のバックアップ コンテナーをまだお持ちでない場合は、[作成](backup-azure-arm-vms-prepare.md#create-a-vault)します。
+3. Recovery Services のバックアップ コンテナーをまだお持ちでない場合は、[作成](backup-create-rs-vault.md)します。
 4. 既にバックアップが有効になっている VM に対して暗号化を有効にしている場合、中断せずにバックアップを継続できるように、Key Vault へのアクセス許可を Backup に提供する必要があるだけです。 これらのアクセス許可に関する[詳細](#provide-permissions)を参照してください。
 
 さらに、状況によっては、いくつか行う必要があることがあります。
@@ -56,29 +56,33 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 ## <a name="configure-a-backup-policy"></a>バックアップ ポリシーを構成する
 
-1. Recovery Services のバックアップ コンテナーをまだ作成していない場合は、[こちらの手順](backup-azure-arm-vms-prepare.md#create-a-vault)に従ってください。
-2. ポータルでコンテナーを開いて、 **[作業の開始]** セクションの **[バックアップ]** を選択します。
+1. Recovery Services のバックアップ コンテナーをまだ作成していない場合は、[こちらの手順](backup-create-rs-vault.md)に従ってください。
+1. ポータルでコンテナーを開いて、 **[概要]** セクションの **[+バックアップ]** を選択します。
 
-    ![バックアップ ブレード](./media/backup-azure-vms-encryption/select-backup.png)
+    ![バックアップ ウィンドウ](./media/backup-azure-vms-encryption/select-backup.png)
 
-3. **[バックアップの目標]**  >  **[ワークロードはどこで実行されていますか?]** で **[Azure]** を選択します。
-4. **[バックアップの対象]** で、 **[仮想マシン]**  >  **[OK]** を選択します。
+1. **[バックアップの目標]**  >  **[ワークロードはどこで実行されていますか?]** で **[Azure]** を選択します。
+1. **[バックアップの対象]** で、 **[仮想マシン]** を選択します。 次に、 **[バックアップ]** を選択します。
 
       ![シナリオ ブレード](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. **[バックアップ ポリシー]**  >  **[バックアップ ポリシーの選択]** で、コンテナーに関連付けるポリシーを選択します。 次に、 **[OK]** をクリックします
+1. **[バックアップ ポリシー]**  >  **[バックアップ ポリシーの選択]** で、コンテナーに関連付けるポリシーを選択します。 **[OK]** をクリックします。
     - バックアップ ポリシーでは、バックアップが取得されるタイミングと、それらが保存される期間を指定します。
     - 既定のポリシーの詳細がドロップダウン メニューの下に一覧表示されます。
 
     ![Open Scenario blade](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-6. 既定のポリシーを使用する必要がない場合は、 **[新規作成]** を選択して、[カスタム ポリシーを作成します](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
+1. 既定のポリシーを使用する必要がない場合は、 **[新規作成]** を選択して、[カスタム ポリシーを作成します](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
 
-7. 選択したポリシーを使用してバックアップする暗号化された VM を選び、 **[OK]** を選択します。
+1. **[仮想マシン]** で **[追加]** を選択します。
+
+    ![Open Scenario blade](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+
+1. 選択したポリシーを使用してバックアップする暗号化された VM を選び、 **[OK]** を選択します。
 
       ![暗号化された VM の選択](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
 
-8. Azure Key Vault を使用する場合は、コンテナー ページ上で、Azure Backup に Key Vault 内のキーとシークレットへの読み取り専用のアクセス権が必要なことを示すメッセージが表示されます。
+1. Azure Key Vault を使用する場合は、コンテナー ページ上で、Azure Backup に Key Vault 内のキーとシークレットへの読み取り専用のアクセス権が必要なことを示すメッセージが表示されます。
 
     - このメッセージを受け取った場合は、操作は必要ありません。
 
@@ -88,17 +92,17 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
         ![アクセスの警告](./media/backup-azure-vms-encryption/access-warning.png)
 
-9. **[バックアップの有効化]** をクリックして、コンテナーにバックアップ ポリシーをデプロイし、選択した VM に対してバックアップを有効にします。
+1. **[バックアップの有効化]** を選択して、コンテナーにバックアップ ポリシーをデプロイし、選択した VM に対してバックアップを有効にします。
 
 ## <a name="trigger-a-backup-job"></a>バックアップ ジョブをトリガーする
 
 初回バックアップはスケジュールに従って実行されますが、次のようにすぐに実行することもできます。
 
-1. コンテナー メニューで **[バックアップ アイテム]** をクリックします。
-2. **[バックアップ アイテム]** で、 **[Azure Virtual Machines]** をクリックします。
-3. **[バックアップ アイテム]** の一覧で、省略記号 [...] をクリックします。
-4. **[今すぐバックアップ]** をクリックします。
-5. **[今すぐバックアップ]** で、カレンダー コントロールを使用して復旧ポイントを保持する最終日を選択します。 次に、 **[OK]** をクリックします
+1. コンテナー メニューで **[バックアップ項目]** を選択します。
+2. **[バックアップ項目]** で、 **[Azure Virtual Machine]** を選択します。
+3. **[バックアップ項目]** の一覧で、省略記号 [...] を選択します。
+4. **[今すぐバックアップ]** を選択します。
+5. **[今すぐバックアップ]** で、カレンダー コントロールを使用して復旧ポイントを保持する最終日を選択します。 **[OK]** をクリックします。
 6. ポータルの通知を監視します。 コンテナー ダッシュボードの **[バックアップ ジョブ]**  >  **[進行中]** でジョブの進行状況を監視できます。 VM のサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
 
 ## <a name="provide-permissions"></a>アクセス許可を付与する
@@ -111,24 +115,27 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 アクセス許可を設定するには
 
 1. Azure portal で **[すべてのサービス]** を選択して、**キー コンテナー**を検索します。
-2. バックアップをしている暗号化された VM と関連付けられたキー コンテナーを選択します。
-3. **[アクセス ポリシー]**  > 、 **[新規追加]** の順に選択します。
-4. **[プリンシパルの選択]** を選択して、「**バックアップ管理**」と入力します。
-5. **[Backup Management Service]\(バックアップ管理サービス\)**  > 、 **[選択]** の順に選択します。
+1. バックアップをしている暗号化された VM と関連付けられたキー コンテナーを選択します。
+1. **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加]** の順に選択します。
+
+    ![アクセス ポリシーの追加](./media/backup-azure-vms-encryption/add-access-policy.png)
+
+1. **[プリンシパルの選択]** を選択して、「**バックアップ管理**」と入力します。
+1. **[Backup Management Service]\(バックアップ管理サービス\)**  > 、 **[選択]** の順に選択します。
 
     ![Backup サービスの選択](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. **[アクセス ポリシーの追加]**  > 、 **[テンプレートからの構成 (省略可能)]** で、 **[Azure Backup]** を選択します。
+1. **[アクセス ポリシーの追加]**  > 、 **[テンプレートからの構成 (省略可能)]** で、 **[Azure Backup]** を選択します。
     - **[キーのアクセス許可]** と **[シークレットのアクセス許可]** に、必要なアクセス許可が事前入力されます。
     - VM が **BEK のみ**を使用して暗号化される場合、シークレットのみを対象としたアクセス許可が必要なため、 **[キーのアクセス許可]** の選択を解除する必要があります。
 
     ![Azure Backup の選択](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-7. **[OK]** をクリックします。 **[Backup Management Service]\(バックアップ管理サービス\)** が、 **[アクセス ポリシー]** に追加されます。
+1. **[追加]** を選択します。 **[Backup Management Service]\(バックアップ管理サービス\)** が、 **[アクセス ポリシー]** に追加されます。
 
     ![アクセス ポリシー](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-8. **[保存]** をクリックして、Azure Backup にアクセス許可を提供します。
+1. **[保存]** を選択して、Azure Backup にアクセス許可を提供します。
 
 ## <a name="restore-an-encrypted-vm"></a>暗号化された VM を復元する
 

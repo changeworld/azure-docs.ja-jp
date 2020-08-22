@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 1b70dfb508ef00f370f0a6fa1456ab7178ec0eae
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 24f3dbc550f04d9b25c1c15e2878523c1a3df805
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87069043"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88651031"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -86,7 +86,7 @@ landingContent:
     - text: ブート構成の更新エラー
       url: ./troubleshoot-vm-boot-configure-update.md
     - text: VM のライフサイクルと状態
-      url: ../windows/states-lifecycle.md
+      url: ../states-lifecycle.md
 - title: 予期しない VM の再起動
   linkLists:
   - linkListType: how-to-guide
@@ -108,9 +108,9 @@ landingContent:
     - text: VM のサイズを変更するときの割り当てエラーのトラブルシューティング
       url: ./allocation-failure.md
     - text: VM の一時ドライブについて
-      url: ../windows/managed-disks-overview.md#temporary-disk
+      url: ../managed-disks-overview.md#temporary-disk
     - text: Azure Managed Disks の概要
-      url: ../windows/managed-disks-overview.md
+      url: ../managed-disks-overview.md
 - title: ディスクの暗号化の問題
   linkLists:
   - linkListType: how-to-guide

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770961"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116769"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory で使用できる認証方法と検証方法
 
@@ -39,12 +39,14 @@ Azure AD の多くのアカウントでは、セルフサービス パスワー�
 | [Microsoft Authenticator アプリ](#microsoft-authenticator-app) | はい (プレビュー) | MFA と SSPR |
 | [FIDO2 セキュリティ キー (プレビュー)](#fido2-security-keys) | はい | MFA のみ |
 | [OATH ソフトウェア トークン](#oath-software-tokens) | いいえ | MFA |
-| [OATH ハードウェア トークン (プレビュー)](#oath-hardware-tokens-preview) | はい | MFA |
+| [OATH ハードウェア トークン (プレビュー)](#oath-hardware-tokens-preview) | いいえ | MFA |
 | [SMS](#phone-options) | はい (プレビュー) | MFA と SSPR |
 | [音声通話](#phone-options) | いいえ | MFA と SSPR |
 | [セキュリティの質問](#security-questions) | いいえ | SSPR のみ |
 | [電子メール アドレス](#email-address) | いいえ | SSPR のみ |
 | [アプリ パスワード](#app-passwords) | いいえ | MFA のみ(特定の場合) |
+
+これらの認証方法は、Azure portal で構成できます。また、[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用して構成することが増えています。
 
 この記事では、Azure AD で使用できるさまざまな認証および検証方法についてまとめ、具体的な制限事項や制約事項について説明します。
 
@@ -74,7 +76,7 @@ Authenticator アプリは、スマートフォンまたはタブレットに通
 ![サインイン プロセスを完了するために Authenticator アプリを Web ブラウザーで要求する例のスクリーンショット](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> 組織に中国勤務のスタッフや中国に出張中のスタッフがいる場合、Android デバイスでの*モバイル アプリによる通知*メソッドはその国/地域では機能しません。 このようなユーザーには別の認証方法を使用できるようにする必要があります。
+> 中国勤務または出張中のスタッフが組織にいる場合、その国/地域では、Android デバイスの "*モバイル アプリによる通知*" 方法は機能しません。これは、Google Play のサービス (プッシュ通知など) がその地域でブロックされているためです。 ただし、iOS の通知は機能します。 Android デバイスの場合、それらのユーザーが代替の認証方法を利用できるようにする必要があります。
 
 ### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
 
@@ -297,6 +299,8 @@ SSPR の登録時に、ユーザーは使用する電子メール アドレス�
 SSPR の概念の詳細については、[Azure AD のセルフサービス パスワード リセットのしくみ][concept-sspr]に関するページを参照してください。
 
 MFA の概念の詳細については、[Azure Multi-Factor Authentication のしくみ][concept-mfa]に関するページを参照してください。
+
+[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用した認証方法の構成の詳細について確認してください。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

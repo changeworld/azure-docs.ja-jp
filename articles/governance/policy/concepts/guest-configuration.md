@@ -1,14 +1,14 @@
 ---
 title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
-ms.date: 05/20/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971098"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987105"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -35,9 +35,9 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 マシン内の設定を監査するには、[仮想マシン拡張機能](../../../virtual-machines/extensions/overview.md)を有効にします。また、マシンにはシステム マネージド ID が必要です。 拡張機能は、適用可能なポリシーの割り当てと、対応する構成定義をダウンロードします。 ID は、ゲスト構成サービスに対して読み取りと書き込みを行うときに、マシンを認証するために使用されます。 Arc に接続されたマシンは Arc に接続されたマシンのエージェントに含まれているため、この拡張機能は必要ありません。
 
 > [!IMPORTANT]
-> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。 
->  - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [Linux VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Azure の仮想マシンを監査するには、ゲスト構成拡張機能とマネージド ID が必要です。 拡張機能を大規模にデプロイするには、次のポリシー イニシアチブを割り当てます。
+> 
+> - [仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>拡張機能に設定されている制限
 
@@ -70,21 +70,41 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 |Microsoft|Windows Server|2012 以降|
 |Microsoft|Windows クライアント|Windows 10|
 |OpenLogic|CentOS|7.3 以降|
-|Red Hat|Red Hat Enterprise Linux|7.4 - 7.8、9.0 以降|
+|Red Hat|Red Hat Enterprise Linux|7.4 - 7.8|
 |Suse|SLES|12 SP3 以降|
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシーでサポートされます。
 
-## <a name="guest-configuration-extension-network-requirements"></a>ゲスト構成拡張機能のネットワーク要件
+## <a name="network-requirements"></a>ネットワークの要件
+
+Azure の仮想マシンは、ローカル ネットワーク アダプターまたは Private Link を使用して、ゲスト構成サービスと通信できます。
+
+Azure Arc マシンは、オンプレミスのネットワーク インフラストラクチャを使用して接続し、Azure サービスにアクセスして、コンプライアンスの状態を報告します。
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>Azure の仮想ネットワークを介して通信する
+
+通信に仮想ネットワークを使用する仮想マシンでは、ポート `443` で Azure データセンターへの発信アクセスが必要です。 アウトバウンド トラフィックが許可されないプライベート仮想ネットワークを Azure で使用している場合は、ネットワーク セキュリティ グループ規則で例外を構成する必要があります。 サービス タグ "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
+
+### <a name="communicate-over-private-link-in-azure"></a>Azure で Private Link を介して通信する
+
+仮想マシンは、ゲスト構成サービスとの通信に [Private Link](../../../private-link/private-link-overview.md) を使用できます。 この機能を有効にするには、名前 `EnablePrivateNeworkGC` と値 `TRUE` を使用してタグを適用します。 このタグは、ゲスト構成ポリシーをマシンに適用する前または後に適用できます。
+
+Azure [仮想パブリック IP アドレス](../../../virtual-network/what-is-ip-address-168-63-129-16.md)を使用してトラフィックがルーティングされて、Azure プラットフォーム リソースとの、セキュリティで保護された認証済みチャネルが確立されます。
+
+### <a name="azure-arc-connected-machines"></a>Azure Arc の接続されたマシン
+
+Azure Arc によって接続されている Azure の外部にあるノードでは、ゲスト構成サービスへの接続が必要です。
+ネットワークとプロキシの要件に関する詳細は、[Azure Arc のドキュメント](../../../azure-arc/servers/overview.md)で提供されています。
 
 Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 [サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
 
 ## <a name="managed-identity-requirements"></a>マネージド ID の要件
 
-仮想マシンに拡張機能を追加する **DeployIfNotExists** ポリシーでは、システム割り当てマネージド ID も有効になります (まで存在しない場合)。
+イニシアチブ「[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)」のポリシー定義を使用すると、システムによって割り当てられたマネージド ID が有効になります (まだ存在しない場合)。 ID の作成を管理するイニシアチブには、2 つのポリシー定義があります。 ポリシー定義内の IF 条件により、Azure のマシン リソースの現在の状態に基づいて正しい動作が保証されます。
 
-> [!WARNING]
-> システム割り当てマネージド ID を有効にするポリシーのスコープで、仮想マシンに対してユーザー割り当てマネージド ID を有効にすることは避けてください。 そのユーザー割り当て ID は置き換えられ、マシンが無応答になることがあります。
+現時点でマシンにマネージド ID がない場合、有効なポリシーは次のようになります。[\[プレビュー\]: ID のない仮想マシンでゲスト構成の割り当てを有効にするためにシステム割り当てマネージド ID を追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+
+現時点でマシンにユーザー割り当てのシステム ID がある場合、有効なポリシーは次のようになります。[\[プレビュー\]: ユーザー割り当て ID を持つ仮想マシンでゲスト構成の割り当てを有効にするためにシステム割り当てマネージド ID を追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
@@ -182,8 +202,8 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 - [ゲスト構成のコンプライアンス ビュー](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)から各設定の詳細を表示する方法を学習します。
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
-- 「[Azure Policy の定義の構造](definition-structure.md)」を確認します。
-- 「[Policy の効果について](effects.md)」を確認します。
+- 「[Azure Policy の定義の構造](./definition-structure.md)」を確認します。
+- 「[Policy の効果について](./effects.md)」を確認します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
 - [コンプライアンス データを取得する](../how-to/get-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。

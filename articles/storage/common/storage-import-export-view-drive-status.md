@@ -1,6 +1,6 @@
 ---
 title: Azure Import/Export ジョブの状態を表示する | Microsoft Docs
-description: Import/Export ジョブの状態および使用されているドライブの状態を表示する方法を説明します。
+description: Azure Import/Export ジョブの状態と、使用されているドライブの状態を表示する方法について説明します。 ジョブの処理にかかる時間に影響を与える要因について説明します。
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514128"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923613"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export ジョブの状態を表示する
 
@@ -28,7 +28,7 @@ Azure Portal から、インポート ジョブまたはエクスポート ジ�
 
 ドライブの処理状況に応じて、次のジョブの状態のいずれかが表示されます。
 
-| ジョブの状態 | 説明 |
+| ジョブの状態 | Description |
 |:--- |:--- |
 | 作成 | ジョブが作成された後、ジョブの状態は**Creating** (作成) に設定されます。 ジョブが **Creating** 状態である間、Import/Export サービスはドライブがデータ センターにまだ配送されていないものと見なします。 ジョブはこの状態に最大 2 週間留まることができ、その後はサービスによって自動的に削除されます。 |
 | 発送 | パッケージを発送したら、Azure Portal で追跡情報を更新する必要があります。  これにより、ジョブは **Shipping** (発送) 状態になります。 ジョブは、**Shipping** 状態に最大 2 週間留まります。 
@@ -44,7 +44,7 @@ Azure Portal から、インポート ジョブまたはエクスポート ジ�
 
 次の表では、ジョブ内の各ドライブの状態がたどる経過について説明しています。
 
-| ドライブの状態 | 説明 |
+| ドライブの状態 | Description |
 |:--- |:--- |
 | 指定済み | インポート ジョブの場合、Azure portal からジョブが作成されたときのドライブの初期状態は **Specified** (指定済み) です。 エクスポート ジョブの場合、ジョブの作成時にドライブは指定されないので、ドライブの初期状態は**Received** (受取済み) です。 |
 | 受取済み | Import/Export サービスがインポート ジョブの配送業者から受け取ったドライブを処理すると、ドライブの状態は**Received** (受取済み) に変わります。 エクスポート ジョブの場合は、**Received** (受取済み) がドライブの初期状態になります。 |
@@ -60,7 +60,7 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 
 次の表は、ドライブのエラー状態と、各状態に対して実行されるアクションを示したものです。
 
-| ドライブの状態 | Event | 解決方法/次の手順 |
+| ドライブの状態 | イベント | 解決方法/次の手順 |
 |:--- |:--- |:--- |
 | NeverReceived | **NeverReceived** としてマークされたドライブ (ジョブの出荷プロセスを通じて受け取られなかったドライブ) は、別便で配送されます。 | 運用チームはドライブを **Received** にします。 |
 | 該当なし | ジョブの対象でないドライブは、別のジョブを通じてデータ センターに配送されます。 | これらのドライブは追加ドライブとしてマークされ、元のパッケージに関連付けられたジョブが完了したときに、ユーザーに返送されます。 |
@@ -73,10 +73,10 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 -  ジョブの種類とコピーされているデータのサイズ
 -  ジョブに含まれるディスクの数 
 
-Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 Azure Portal に掲載される状態に加え、REST API を使用してジョブの進行状況を追跡できます。 [List Jobs](/previous-versions/azure/dn529083(v=azure.100)) 操作 API 呼び出しの達成率パラメーターでは、コピーの進捗率が示されます。
+Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 REST API を使用すると、Azure portal に投稿される状態に加えて、ジョブの進行状況を追跡できます。 [List Jobs](/previous-versions/azure/dn529083(v=azure.100)) 操作 API 呼び出しの達成率パラメーターでは、コピーの進捗率が示されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [WAImportExport ツールを設定する](storage-import-export-tool-how-to.md)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)

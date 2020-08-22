@@ -5,26 +5,25 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146241"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985684"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell を使用して、削除された App Service アプリを復元する
 
 Azure App Service で誤ってアプリを削除した場合は、[Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)のコマンドを使用して復元できます。
 
 > [!NOTE]
-> 削除されたアプリは、最初の削除から 30 日後にシステムから削除されます。 削除されたアプリは復元できません。
->
-
-> [!NOTE]
-> 削除の取り消し機能は、従量課金プランではサポートされていません。
+> - 削除されたアプリは、最初の削除から 30 日後にシステムから削除されます。 削除されたアプリは、復元できません。
+> - 削除の取り消し機能は、従量課金プランではサポートされていません。
+> - App Service Environment で実行されている App Service アプリでは、スナップショットはサポートされていません。 そのため、App Service Environment で実行されている App Service アプリでは、削除の取り消し機能と複製機能はサポートされていません。
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>App Service リソース プロバイダーを再登録します。
+
 一部のお客様では、削除されたアプリの一覧を取得できないという問題が発生する可能性があります。 この問題を解決するには、次のコマンドを実行します。
 
 ```powershell
@@ -52,13 +51,14 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 - **削除時刻**:アプリが削除された日時  
 
 ## <a name="restore-deleted-app"></a>削除したアプリを復元する
+
 >[!NOTE]
 > `Restore-AzDeletedWebApp` は、関数アプリではサポートされていません。
 
 復元するアプリが特定されたら、`Restore-AzDeletedWebApp` を使用して復元できます。
 
 ```powershell
-Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
+Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
 > アプリの一部としてデプロイ スロットは復元されません。 ステージング スロットを復元する必要がある場合は、`-Slot <slot-name>` フラグを使用します。
@@ -66,7 +66,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 コマンドの入力は次のとおりです。
 
-- **リソース グループ**:アプリが復元されるターゲット リソース グループ
+- **ターゲット リソース グループ**:アプリが復元されるターゲット リソース グループ
 - **Name**:アプリの名前。グローバルに一意である必要があります。
 - **TargetAppServicePlanName**:アプリにリンクされている App Service プラン
 

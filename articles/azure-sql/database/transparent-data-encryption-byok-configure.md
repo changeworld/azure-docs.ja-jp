@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981330"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387134"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と Azure CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "85981330"
 - TDE に使用する Azure Key Vault とキーを作成します。
   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../../key-vault/keys/hsm-protected-keys.md)
     - TDE に使用するには、キー コンテナーに次のプロパティが必要です。
-  - [論理的な削除](../../key-vault/general/overview-soft-delete.md)と消去保護
+  - [論理的な削除](../../key-vault/general/soft-delete-overview.md)と消去保護
 - TDE に使用するには、キーに次の属性が必要です。
   - 有効期限がない
   - 無効化されていない

@@ -52,8 +52,12 @@
     - name: アクセスと ID
       href: concepts-identity.md
     - name: セキュリティ
-      href: concepts-security.md
-      items: null
+      items:
+        - name: アプリケーションとクラスターのセキュリティ
+          href: concepts-security.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: ネットワーク
       href: concepts-network.md
     - name: ストレージ
@@ -166,6 +170,8 @@
         - name: Terraform を使用した AKS のデプロイ
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Kubernetes リソース ビューアーの使用 (プレビュー)
+          href: kubernetes-portal.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
     - name: データ ボリュームの構成
@@ -286,8 +292,8 @@
           href: windows-container-powershell.md
         - name: リモート接続
           href: rdp.md
-        - name: 既知の制限事項
-          href: windows-node-limitations.md
+        - name: Windows Server コンテナー FAQ
+          href: windows-faq.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
         - name: Windows Server コンテナー用の Dockerfile の作成
@@ -297,7 +303,7 @@
     - name: アプリケーションの開発と実行
       items:
         - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用

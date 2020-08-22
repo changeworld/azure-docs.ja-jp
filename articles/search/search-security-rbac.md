@@ -1,26 +1,26 @@
 ---
-title: Azure 管理アクセス用の RBAC ロールを設定する
+title: Azure 管理アクセス用の Azure ロールを設定する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search Management の管理タスクを制御および委任するための、Azure portal でのロールベースの管理制御 (RBAC)。
+description: Azure Cognitive Search 管理用の管理タスクを制御および委任するための、Azure portal でのロールベースのアクセス制御 (RBAC)。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462840"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009207"
 ---
-# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure Cognitive Search 管理アクセス用の RBAC ロールを設定する
+# <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure Cognitive Search への管理アクセス用の Azure ロールを設定する
 
 Azure では、ポータルまたはリソース マネージャー API で管理するすべてのサービスに対して、 [グローバルなロールベースの承認モデル](../role-based-access-control/role-assignments-portal.md) を用意しています。 所有者、共同作成者、および閲覧者のロールによって、各ロールに割り当てられる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対する*サービス管理*のレベルが決まります。 
 
 > [!Note]
-> インデックスの一部やドキュメントのサブセットを保護するためのロールベースのアクセス制御はありません。 検索結果に対する ID ベースのアクセスの場合は、セキュリティ フィルターを作成して ID 別に結果に手を入れ、要求者がアクセスしてはいけないドキュメントを削除します。 詳細については、[セキュリティ フィルター](search-security-trimming-for-azure-search.md)と[Active Directory を使用してセキュリティ保護する](search-security-trimming-for-azure-search-with-aad.md)を参照してください。
+> インデックスの一部やドキュメントのサブセットをセキュリティで保護するためのロールベースのアクセス制御 (RBAC) はありません。 検索結果に対する ID ベースのアクセスの場合は、セキュリティ フィルターを作成して ID 別に結果に手を入れ、要求者がアクセスしてはいけないドキュメントを削除します。 詳細については、[セキュリティ フィルター](search-security-trimming-for-azure-search.md)と[Active Directory を使用してセキュリティ保護する](search-security-trimming-for-azure-search-with-aad.md)を参照してください。
 
 ## <a name="management-tasks-by-role"></a>ロール別の管理タスク
 
@@ -29,7 +29,7 @@ Azure Cognitive Search の場合、ロールは次の管理タスクをサポー
 | Role | タスク |
 | --- | --- |
 | 所有者 |API キー、インデックス、インデクサー、インデクサー データ ソース、インデクサー スケジュールなど、サービス上のサービスやオブジェクトを作成または削除します。<p>カウントとストレージ サイズなど、サービスの状態を表示します。<p>ロール メンバーシップを追加または削除します (所有者のみがロール メンバーシップを管理できます)。<p>サブスクリプション管理者とサービス所有者には、所有者ロールに自動メンバーシップがあります。 |
-| Contributor |RBAC ロール管理を除き、アクセス レベルは所有者と同じです。 たとえば、共同作成者はオブジェクトの作成や削除、[API キー](search-security-api-keys.md)の表示や再生成は可能ですが、ロール メンバーシップは変更できません。 |
+| Contributor |Azure ロール管理を除き、アクセス レベルは所有者と同じです。 たとえば、共同作成者はオブジェクトの作成や削除、[API キー](search-security-api-keys.md)の表示や再生成は可能ですが、ロール メンバーシップは変更できません。 |
 | [Search Service Contributor 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | 共同作成者ロールと同じです。 |
 | Reader |サービスの要点とメトリックを表示します。 このロールのメンバーは、インデックス、インデクサー、データ ソース、または重要な情報を表示できません。  |
 

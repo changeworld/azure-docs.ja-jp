@@ -2,22 +2,17 @@
 title: Azure Kubernetes Service で Azure AD を使用する
 description: Azure Kubernetes Service (AKS) における Azure AD の使用方法
 services: container-service
-manager: gwallace
-author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: b30c5b0e81f4748d5e94c05d016be83163c1e78e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251129"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799859"
 ---
-# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS マネージド Azure Active Directory の統合 (プレビュー)
-
-> [!NOTE]
-> Azure Active Directory (Azure AD) と統合された既存の AKS (Azure Kubernetes Service) クラスターは、新しい AKS マネージド Azure AD エクスペリエンスの影響を受けません。
+# <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
 AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエンスを簡素化するように設計されています。これまでユーザーは、クライアント アプリとサーバー アプリを作成し、Azure AD テナントでディレクトリの読み取りアクセス許可を付与する必要がありました。 新しいバージョンでは、クライアント アプリとサーバー アプリは AKS リソース プロバイダーで管理されます。
 
@@ -27,60 +22,51 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 
 [Azure Active Directory 統合の概念に関するドキュメント](concepts-identity.md#azure-active-directory-integration)で AAD 統合フローの詳細を確認してください。
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、ベストエフォート ベースでカスタマー サポートによって部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポート記事を参照してください。
->
-> - [AKS のサポート ポリシー](support-policies.md)
-> - [Azure サポートに関する FAQ](faq.md)
+## <a name="region-availability"></a>利用可能なリージョン
 
-## <a name="before-you-begin"></a>開始する前に
+AKS マネージド Azure Active Directory 統合は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンで利用できます。
 
-* Azure アカウント テナント ID を確認します。そのためには、Azure portal に移動し、[Azure Active Directory] > [プロパティ] > [ディレクトリ ID] の順に選択します
+* Azure Government は現在サポートされていません。
+* Azure China 21Vianet は現在サポートされていません。
+
+## <a name="limitations"></a>制限事項 
+
+* AKS マネージド Azure AD 統合は無効にできません
+* AKS マネージド AAD 統合では、RBAC に対応していないクラスターはサポートされません
+* AKS マネージド AAD 統合に関連付けられている Azure AD テナントの変更はサポートされません
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure CLI バージョン 2.9.0 以降
+* 最小バージョンが [1.18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) の Kubectl
 
 > [!Important]
 > 最小バージョンが 1.18 の Kubectl を使用する必要があります。
 
-次のリソースがインストールされている必要があります。
-
-- Azure CLI バージョン 2.5.1 以降
-- aks-preview 0.4.38 拡張機能
-- 最小バージョンが [1.18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) の Kubectl
-
-aks-preview 以降の拡張機能をインストールまたは更新するには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli
-az extension update --name aks-preview
-az extension list
-```
-
 Kubectl をインストールするには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
 ```
 
 他のオペレーティング システムでは、[これらの手順](https://kubernetes.io/docs/tasks/tools/install-kubectl/)を使用します。
 
+
+## <a name="before-you-begin"></a>開始する前に
+
+クラスターには、Azure AD グループが必要です。 このグループは、クラスターの管理アクセス許可を付与する、クラスターの管理者グループとして必要です。 既存の Azure AD グループを使用することも、新しい Azure AD グループを作成することもできます。 Azure AD グループのオブジェクト ID を記録します。
+
 ```azurecli-interactive
-az feature register --name AAD-V2 --namespace Microsoft.ContainerService
+# List existing groups in the directory
+az ad group list --filter "displayname eq '<group-name>'" -o table
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+クラスター管理者用の新しい Azure AD グループを作成するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
-```
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
+# Create an Azure AD group
+az ad group create --display-name myAKSAdminGroup --mail-nickname myAKSAdminGroup
 ```
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>Azure AD が有効になっている AKS クラスターを作成する
@@ -94,31 +80,19 @@ Azure リソース グループを作成します。
 az group create --name myResourceGroup --location centralus
 ```
 
-既存の Azure AD グループを使用することも、新しい Azure AD グループを作成することもできます。 Azure AD グループのオブジェクト ID が必要です。
-
-```azurecli-interactive
-# List existing groups in the directory
-az ad group list
-```
-
-クラスター管理者用の新しい Azure AD グループを作成するには、次のコマンドを使用します。
-
-```azurecli-interactive
-# Create an Azure AD group
-az ad group create --display-name MyDisplay --mail-nickname MyDisplay
-```
-
 AKS クラスターを作成し、Azure AD グループの管理アクセスを有効にします
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
+az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <id> [--aad-tenant-id <id>]
 ```
 
 正常に作成された AKS マネージド Azure AD クラスターの応答本文には、次のセクションが含まれます
-```
+```output
 "AADProfile": {
-    "adminGroupObjectIds": null,
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
     "clientAppId": null,
     "managed": true,
     "serverAppId": null,
@@ -127,7 +101,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
   }
 ```
 
-クラスターは数分以内に作成されます。
+クラスターを作成したら、クラスターへのアクセスを開始できます。
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Azure AD が有効なクラスターへのアクセス
 
@@ -136,7 +110,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 クラスターにアクセスするためのユーザー資格情報を取得します。
  
 ```azurecli-interactive
- az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 手順に従ってサインインします。
 
@@ -150,7 +124,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-[ロールベースのアクセスの制御 (RBAC)](./azure-ad-rbac.md) を構成して、クラスターの追加のセキュリティ グループを構成します。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](./azure-ad-rbac.md) を構成して、クラスターの追加のセキュリティ グループを構成します。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Azure AD でのアクセスに関する問題のトラブルシューティング
 
@@ -162,8 +136,33 @@ aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 これらの手順を実行するには、[Azure Kubernetes Service クラスター管理者](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role)組み込みロールにアクセスできる必要があります。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
+az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
+
+## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>AKS マネージド Azure AD 統合へのアップグレード
+
+クラスターでレガシ Azure AD 統合を使用している場合は、AKS マネージド Azure AD 統合にアップグレードできます。
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <id> [--aad-tenant-id <id>]
+```
+
+正常に移行された AKS マネージド Azure AD クラスターの応答本文には、次のセクションが含まれます
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+クラスターにアクセスする場合は、[こちら][access-cluster]の手順に従ってください。
 
 ## <a name="non-interactive-sign-in-with-kubelogin"></a>kubelogin を使用した非対話型サインイン
 
@@ -195,3 +194,5 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
+[access-cluster]: #access-an-azure-ad-enabled-cluster
+[aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration

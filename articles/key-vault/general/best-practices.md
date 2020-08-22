@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213076"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386233"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault を使用するためのベスト プラクティス
 
@@ -56,5 +56,5 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 ## <a name="turn-on-recovery-options"></a>回復オプションの有効化
 
-1. [論理的な削除](overview-soft-delete.md)を有効にします。
+1. [論理的な削除](soft-delete-overview.md)を有効にします。
 2. 論理的な削除が有効になってもシークレットまたはコンテナーの強制削除を防ぐには、パージ保護を有効にします。

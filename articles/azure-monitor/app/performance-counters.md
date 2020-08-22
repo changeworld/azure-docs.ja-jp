@@ -3,16 +3,16 @@ title: Application Insights のパフォーマンス カウンター | Microsoft
 description: Application Insights でシステムとカスタムの .NET パフォーマンス カウンターを監視します。
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322518"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
-Windows には、CPU 占有率や、メモリ、ディスク、ネットワークの使用率など、広範な[パフォーマンス カウンター](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters)が用意されています。 ユーザーが独自のパフォーマンス カウンターを定義することもできます。 アプリケーションがオンプレミス ホスト上、または管理権限を持っている仮想マシン上の IIS で実行されている限り、パフォーマンス カウンターの収集はサポートされます。 Azure Web Apps として実行されているアプリケーションはパフォーマンス カウンターには直接アクセスできませんが、使用可能なカウンターのサブセットが Application Insights によって収集されます。
+Windows には、CPU 占有率や、メモリ、ディスク、ネットワークの使用率など、広範な[パフォーマンス カウンター](/windows/desktop/perfctrs/about-performance-counters)が用意されています。 ユーザーが独自のパフォーマンス カウンターを定義することもできます。 アプリケーションがオンプレミス ホスト上、または管理権限を持っている仮想マシン上の IIS で実行されている限り、パフォーマンス カウンターの収集はサポートされます。 Azure Web Apps として実行されているアプリケーションはパフォーマンス カウンターには直接アクセスできませんが、使用可能なカウンターのサブセットが Application Insights によって収集されます。
 
 ## <a name="view-counters"></a>カウンターを表示する
 
@@ -40,7 +40,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 
     `Get-Counter -ListSet *`
 
-    (「[`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx)」をご覧ください)
+    (「[`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1)」をご覧ください)
 2. ApplicationInsights.config を開きます。
 
    * 開発中にアプリに Application Insights を追加した場合は、プロジェクトで ApplicationInsights.config を編集して、サーバーに再デプロイします。
@@ -109,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Analytics のパフォーマンス カウンター
-[Analytics](../../azure-monitor/app/analytics.md) でパフォーマンス カウンター レポートを検索して表示できます。
+[Analytics](../log-query/log-query-overview.md) でパフォーマンス カウンター レポートを検索して表示できます。
 
 **performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが確認できます。 たとえば、使用できるカウンターを表示するには次のようにします。 
 
@@ -131,7 +131,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 * *例外レート* はシステム パフォーマンス カウンターです。 CLR ではスローされた処理済みおよび未処理の例外をすべてカウントし、特定のサンプリング時間間隔での合計をその時間間隔の長さで除算します。 Application Insights SDK では、この結果を収集し、ポータルに送信します。
 
-* *例外* は、グラフのサンプリング時間間隔中にポータルが受信した TrackException レポートの数です。 これには、コード内で TrackException 呼び出しが記述されている処理済みの例外のみが含まれ、 [未処理の例外](../../azure-monitor/app/asp-net-exceptions.md)はいずれも含められません。 
+* *例外* は、グラフのサンプリング時間間隔中にポータルが受信した TrackException レポートの数です。 これには、コード内で TrackException 呼び出しが記述されている処理済みの例外のみが含まれ、 [未処理の例外](./asp-net-exceptions.md)はいずれも含められません。 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Azure Web Apps で実行されているアプリケーションのパフォーマンス カウンター
 
@@ -147,10 +147,10 @@ ASP.NET Core でのパフォーマンス カウンターのサポートは制限
 * SDK バージョン 2.8.0 以降では、Linux の CPU/メモリ カウンターがサポートされます。 Linux では、その他のカウンターはサポートされません。 Linux (およびその他の非 Windows 環境) でシステム カウンターを取得するには、[EventCounter](eventcounters.md) を使用することをお勧めします。
 
 ## <a name="alerts"></a>警告
-他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](../../azure-monitor/platform/alerts-log.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
+他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](../platform/alerts-log.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 
-* [依存関係の追跡](../../azure-monitor/app/asp-net-dependencies.md)
-* [例外の追跡](../../azure-monitor/app/asp-net-exceptions.md)
+* [依存関係の追跡](./asp-net-dependencies.md)
+* [例外の追跡](./asp-net-exceptions.md)
 

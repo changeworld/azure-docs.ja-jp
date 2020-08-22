@@ -1,23 +1,18 @@
 ---
 title: Connected Machine Windows エージェントの概要
-description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、Azure Arc for servers エージェントについて概説します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.date: 07/09/2020
+description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc for servers (プレビュー) エージェントについて概説します。
+ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242952"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121835"
 ---
-# <a name="overview-of-azure-arc-for-servers-agent"></a>Azure Arc for servers エージェントの概要
+# <a name="overview-of-azure-arc-for-servers-preview-agent"></a>Azure Arc for servers (プレビュー) エージェントの概要
 
-Azure Arc for servers Connected Machine エージェントを使用すると、Azure の外部 (企業ネットワークや他のクラウド プロバイダー) でホストされている Windows や Linux のマシンを管理することができます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
+Azure Arc for servers (プレビュー) Connected Machine エージェントを使用すると、Azure の外部 (企業ネットワークや他のクラウド プロバイダー) でホストされている Windows や Linux のマシンを管理することができます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
 ## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
 
@@ -43,113 +38,7 @@ Windows および Linux 用の Azure Connected Machine エージェント パッ
 
 * Linux エージェント パッケージは、Microsoft の[パッケージ リポジトリ](https://packages.microsoft.com/)から、ディストリビューションに適切なパッケージ形式 (.RPM または .DEB) を使用して配布されます。
 
->[!NOTE]
->本プレビュー中は、Ubuntu 16.04 または 18.04 に適したパッケージが 1 つだけリリースされました。
-
 Windows および Linux 用の Azure Connected Machine エージェントは、要件に応じて、手動または自動で最新リリースにアップグレードできます。 詳細については、[このページ](manage-agent.md)を参照してください。
-
-## <a name="windows-agent-installation-details"></a>Windows エージェントのインストールの詳細
-
-Windows 用 Connected Machine エージェントは、次の 3 つの方法のいずれかを使用してインストールできます。
-
-* `AzureConnectedMachineAgent.msi` ファイルをダブルクリックする。
-* コマンド シェルから Windows インストーラー パッケージ `AzureConnectedMachineAgent.msi` を実行して手動で。
-* スクリプト化されたメソッドを使用して PowerShell セッションから。
-
-Windows 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成の変更がさらに適用されます。
-
-* 次のインストール フォルダーは、セットアップ中に作成されます。
-
-    |Folder |説明 |
-    |-------|------------|
-    |%ProgramFiles%\AzureConnectedMachineAgent |エージェント サポート ファイルが含まれている既定のインストール パス。|
-    |%ProgramData%\AzureConnectedMachineAgent |エージェント構成ファイルが含まれています。|
-    |%ProgramData%\AzureConnectedMachineAgent\Tokens |取得したトークンが含まれています。|
-    |%ProgramData%\AzureConnectedMachineAgent\Config |サービスへの登録情報を記録する `agentconfig.json` エージェント構成ファイルが含まれています。|
-    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | ゲスト構成エージェント ファイルを含むインストール パス。 |
-    |%ProgramData%\GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
-    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 拡張機能は Azure からダウンロードされ、ここにコピーされます。|
-
-* エージェントのインストール中に、次の Windows サービスがターゲット マシン上に作成されます。
-
-    |[サービス名] |Display name |[処理名] |説明 |
-    |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid Instance Metadata Service |himds.exe |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
-    |DscService |ゲスト構成サービス |dsc_service.exe |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
-
-* 次の環境変数は、エージェントのインストール中に作成されます。
-
-    |名前 |既定値 |説明 |
-    |-----|--------------|------------|
-    |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
-    |IMDS_ENDPOINT |http://localhost:40342 ||
-
-* トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
-
-    |ログ |説明 |
-    |----|------------|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |エージェント (HIMDS) サービスや Azure との対話の詳細を記録します。|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
-    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |DSC サービス アクティビティの詳細を記録します<br> (特に、HIMDS サービスと Azure Policy の間の接続)。|
-    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
-    |%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
-    |%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>|インストールされた拡張機能の詳細を記録します。|
-
-* ローカル セキュリティ グループの**ハイブリッド エージェント拡張アプリケーション**が作成されます。
-
-* エージェントのアンインストール中に、次の成果物は削除されません。
-
-    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
-    * %ProgramData%\AzureConnectedMachineAgent とサブディレクトリ
-    * %ProgramData%\GuestConfig
-
-## <a name="linux-agent-installation-details"></a>Linux エージェントのインストールの詳細
-
-Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 エージェントは、シェル スクリプト バンドルの [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) を使用してインストールおよび構成されます。
-
-Linux 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更がさらに適用されます。
-
-* 次のインストール フォルダーは、セットアップ中に作成されます。
-
-    |Folder |説明 |
-    |-------|------------|
-    |/var/opt/azcmagent/ |エージェント サポート ファイルが含まれている既定のインストール パス。|
-    |/opt/azcmagent/ |
-    |/opt/GC_Ext | ゲスト構成エージェント ファイルを含むインストール パス。|
-    |/opt/DSC/ |
-    |/var/opt/azcmagent/tokens |取得したトークンが含まれています。|
-    |/var/lib/GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
-    |/opt/GC_Ext/downloads|拡張機能は Azure からダウンロードされ、ここにコピーされます。|
-
-* 次のデーモンは、エージェントのインストール中にターゲット マシン上に作成されます。
-
-    |[サービス名] |Display name |[処理名] |説明 |
-    |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
-    |dscd.service |ゲスト構成サービス |/opt/DSC/dsc_linux_service |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
-
-* トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
-
-    |ログ |説明 |
-    |----|------------|
-    |/var/opt/azcmagent/log/himds.log |エージェント (HIMDS) サービスや Azure との対話の詳細を記録します。|
-    |/var/opt/azcmagent/log/azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
-    |/opt/logs/dsc.log |DSC サービス アクティビティの詳細を記録します<br> (特に、himds サービスと Azure Policy 間の接続)。|
-    |/opt/logs/dsc.telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
-    |/var/lib/GuestConfig/ext_mgr_logs |拡張エージェント コンポーネントに関する詳細を記録します。|
-    |/var/log/GuestConfig/extension_logs|インストールされた拡張機能の詳細を記録します。|
-
-* 次の環境変数は、エージェントのインストール中に作成されます。 これらの変数は `/lib/systemd/system.conf.d/azcmagent.conf` に設定されます。
-
-    |名前 |既定値 |説明 |
-    |-----|--------------|------------|
-    |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
-    |IMDS_ENDPOINT |http://localhost:40342 ||
-
-* エージェントのアンインストール中に、次の成果物は削除されません。
-
-    * /var/opt/azcmagent
-    * /opt/logs
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -172,13 +61,13 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 * マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
 
-* マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
+* マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者**ロールのメンバーである必要があります。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
 Azure Arc for servers (プレビュー) を使用してマシンを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続するマシンの数を計画する必要があります。
 
-## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
+### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
 
 Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。
 
@@ -251,6 +140,111 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 | 対話型 | [Azure portal からマシンを接続する方法](onboard-portal.md)に関するページの手順に従って、1 台のマシンまたは少数のマシンにエージェントを手動でインストールします。<br> Azure portal からスクリプトを生成し、マシン上で実行することによって、エージェントのインストールおよび構成手順を自動化することができます。|
 | 大規模 | [サービス プリンシパルを使用したマシンの接続](onboard-service-principal.md)に関するページに従って、複数のマシン用にエージェントをインストールして構成します。<br> この方法では、非対話形式でマシンを接続するためのサービス プリンシパルが作成されます。|
 | 大規模 | [Windows PowerShell DSC の使用](onboard-dsc.md)方法に関するページの説明に従って複数のマシンにエージェントをインストールして構成します。<br> この方法では、サービス プリンシパルを使用し、PowerShell DSC から非対話形式でマシンを接続します。 |
+
+## <a name="connected-machine-agent-technical-overview"></a>Connected Machine エージェントの技術概要
+
+### <a name="windows-agent-installation-details"></a>Windows エージェントのインストールの詳細
+
+Windows 用 Connected Machine エージェントは、次の 3 つの方法のいずれかを使用してインストールできます。
+
+* `AzureConnectedMachineAgent.msi` ファイルをダブルクリックする。
+* コマンド シェルから Windows インストーラー パッケージ `AzureConnectedMachineAgent.msi` を実行して手動で。
+* スクリプト化されたメソッドを使用して PowerShell セッションから。
+
+Windows 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成の変更がさらに適用されます。
+
+* 次のインストール フォルダーは、セットアップ中に作成されます。
+
+    |Folder |説明 |
+    |-------|------------|
+    |%ProgramFiles%\AzureConnectedMachineAgent |エージェント サポート ファイルが含まれている既定のインストール パス。|
+    |%ProgramData%\AzureConnectedMachineAgent |エージェント構成ファイルが含まれています。|
+    |%ProgramData%\AzureConnectedMachineAgent\Tokens |取得したトークンが含まれています。|
+    |%ProgramData%\AzureConnectedMachineAgent\Config |サービスへの登録情報を記録する `agentconfig.json` エージェント構成ファイルが含まれています。|
+    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | ゲスト構成エージェント ファイルを含むインストール パス。 |
+    |%ProgramData%\GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
+    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 拡張機能は Azure からダウンロードされ、ここにコピーされます。|
+
+* エージェントのインストール中に、次の Windows サービスがターゲット マシン上に作成されます。
+
+    |[サービス名] |Display name |[処理名] |説明 |
+    |-------------|-------------|-------------|------------|
+    |himds |Azure Hybrid Instance Metadata Service |himds.exe |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
+    |DscService |ゲスト構成サービス |dsc_service.exe |ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
+
+* 次の環境変数は、エージェントのインストール中に作成されます。
+
+    |名前 |既定値 |説明 |
+    |-----|--------------|------------|
+    |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
+    |IMDS_ENDPOINT |http://localhost:40342 ||
+
+* トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
+
+    |ログ |説明 |
+    |----|------------|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |エージェント (HIMDS) サービスや Azure との対話の詳細を記録します。|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
+    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |DSC サービス アクティビティの詳細を記録します<br> (特に、HIMDS サービスと Azure Policy の間の接続)。|
+    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
+    |%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
+    |%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>|インストールされた拡張機能の詳細を記録します。|
+
+* ローカル セキュリティ グループの**ハイブリッド エージェント拡張アプリケーション**が作成されます。
+
+* エージェントのアンインストール中に、次の成果物は削除されません。
+
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
+    * %ProgramData%\AzureConnectedMachineAgent とサブディレクトリ
+    * %ProgramData%\GuestConfig
+
+### <a name="linux-agent-installation-details"></a>Linux エージェントのインストールの詳細
+
+Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 エージェントは、シェル スクリプト バンドルの [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) を使用してインストールおよび構成されます。
+
+Linux 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更がさらに適用されます。
+
+* 次のインストール フォルダーは、セットアップ中に作成されます。
+
+    |Folder |説明 |
+    |-------|------------|
+    |/var/opt/azcmagent/ |エージェント サポート ファイルが含まれている既定のインストール パス。|
+    |/opt/azcmagent/ |
+    |/opt/GC_Ext | ゲスト構成エージェント ファイルを含むインストール パス。|
+    |/opt/DSC/ |
+    |/var/opt/azcmagent/tokens |取得したトークンが含まれています。|
+    |/var/lib/GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
+    |/opt/GC_Ext/downloads|拡張機能は Azure からダウンロードされ、ここにコピーされます。|
+
+* 次のデーモンは、エージェントのインストール中にターゲット マシン上に作成されます。
+
+    |[サービス名] |Display name |[処理名] |説明 |
+    |-------------|-------------|-------------|------------|
+    |himdsd.service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
+    |dscd.service |ゲスト構成サービス |/opt/DSC/dsc_linux_service |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
+
+* トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
+
+    |ログ |説明 |
+    |----|------------|
+    |/var/opt/azcmagent/log/himds.log |エージェント (HIMDS) サービスや Azure との対話の詳細を記録します。|
+    |/var/opt/azcmagent/log/azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
+    |/opt/logs/dsc.log |DSC サービス アクティビティの詳細を記録します<br> (特に、himds サービスと Azure Policy 間の接続)。|
+    |/opt/logs/dsc.telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
+    |/var/lib/GuestConfig/ext_mgr_logs |拡張エージェント コンポーネントに関する詳細を記録します。|
+    |/var/log/GuestConfig/extension_logs|インストールされた拡張機能の詳細を記録します。|
+
+* 次の環境変数は、エージェントのインストール中に作成されます。 これらの変数は `/lib/systemd/system.conf.d/azcmagent.conf` に設定されます。
+
+    |名前 |既定値 |説明 |
+    |-----|--------------|------------|
+    |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
+    |IMDS_ENDPOINT |http://localhost:40342 ||
+
+* エージェントのアンインストール中に、次の成果物は削除されません。
+
+    * /var/opt/azcmagent
+    * /opt/logs
 
 ## <a name="next-steps"></a>次のステップ
 

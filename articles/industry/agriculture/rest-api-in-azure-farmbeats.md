@@ -1,24 +1,20 @@
 ---
-title: References
-description: ''
+title: Azure FarmBeats API
+description: JSON ベースの応答を備えた標準化された RESTful インターフェイスを農業ビジネスに提供する、Azure FarmBeats API について説明します。
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488037"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536574"
 ---
-# <a name="references"></a>References
+# <a name="azure-farmbeats-apis"></a>Azure FarmBeats API
 
-この記事では、Azure FarmBeats API について説明します。
-
-## <a name="rest-api"></a>REST API
-
-Azure FarmBeats API は、JSON ベースの応答を備えた標準化された RESTful インターフェイスを農業ビジネスに提供し、次のような Azure FarmBeats 機能の活用を支援します。
+この記事では、Azure FarmBeats API について説明します。 Azure FarmBeats API は、JSON ベースの応答を備えた標準化された RESTful インターフェイスを農業ビジネスに提供し、次のような Azure FarmBeats 機能の活用を支援します。
 
 - センサー、カメラ、ドローン、天気、衛星、キュレートされた地上データを取得する API
 - 共通データ プロバイダー全体のデータの正規化とコンテキスト化
@@ -63,7 +59,7 @@ REST API に対して認証された要求を行うには、クライアント �
 
 アクセス トークンは、次のように後続の API 要求のヘッダー セクションに含めて送信する必要があります。
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -182,6 +178,6 @@ Azure FarmBeats API は、Azure Active Directory のユーザーまたはアプ�
 
 アクセス トークンは、次のようにして後続の API 要求のヘッダー セクションに含めて送信します。
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/16/2020
+ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4672c5cab5977b000bd5095f3868864ae0c267ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255627"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005756"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
 
@@ -52,13 +52,13 @@ ADAL ではなく MSAL を使用することで、以下が可能になります
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
 __Q:ADAL は非推奨となる予定ですか?__  
-A:はい。 2020 年 6 月 30 日以降、ADAL に新機能は追加されなくなります。 2022 年 6 月 30 日までは、引き続き ADAL の重要なセキュリティ修正プログラムを追加します。
+A:はい。 2020 年 6 月 30 日以降、ADAL に新機能は追加されなくなります。 2022 年 6 月 30 日までは、引き続き ADAL の重要なセキュリティ修正プログラムを追加します。 この日付以降も ADAL を使用しているアプリは引き続き機能しますが、最新の機能を利用し、セキュリティを維持するために、MSAL にアップグレードすることをお勧めします。
+
+__Q:既存の ADAL アプリの動作は停止しますか?__  
+A:いいえ。 既存のアプリは、変更しなくても引き続き動作します。 2022 年 6 月 30 日以降も維持する予定がある場合は、その安全性を確保するためにアプリを MSAL に更新することを検討してください。しかし、既存の機能を維持する上で、MSAL への移行は必須ではありません。
 
 __Q:どのアプリで ADAL を使用しているかを知る方法はありますか?__  
-A:アプリケーションのソース コードがある場合は、上記の移行ガイドを参照して、アプリで使用しているライブラリを判別し、それを MSAL に移行する方法を確認できます。 アプリケーションのソース コードにアクセスできない場合は、[サポート リクエストを開いて](developer-support-help-options.md#open-a-support-request)、登録されているアプリケーションと各アプリケーションで使用されているライブラリの一覧を取得することができます。
-
-__Q:既存の ADAL アプリは引き続き動作しますか。__  
-A:既存のアプリは、変更せずとも引き続き動作します。 2022 年 6 月 30 日以降も運用する予定がある場合は、その安全性を確保するために MSAL に更新することを検討してください。ただし、既存の機能を維持する上で、MSAL への移行は必須ではありません。
+A:アプリケーションのソース コードがある場合は、上記の移行ガイドを参照して、アプリで使用しているライブラリを判別し、それを MSAL に移行する方法を確認できます。 ISV と提携している場合は、直接連絡して、MSAL への移行の過程を理解することをお勧めします。 アプリケーションのソース コードにアクセスできない場合は、[サポート リクエストを開いて](developer-support-help-options.md#open-a-support-request)、登録されているアプリケーションと各アプリケーションで使用されているライブラリの一覧を取得することができます。
 
 __Q:MSAL への移行に投資すべき理由を教えてください。__  
 A:MSAL には、増分同意、シングル サインオン、トークン キャッシュ管理など、ADAL には含まれない新機能が含まれています。 また、ADAL とは異なり、MSAL は 2022 年 6 月 30 日以降のセキュリティ更新プログラムを引き続き受けることができます。 [詳細については、こちらを参照してください](msal-overview.md)。

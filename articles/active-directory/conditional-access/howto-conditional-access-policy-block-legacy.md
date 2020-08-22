@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6539a233fbb8038d82a8ea41da2c9e79745324
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995192"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032086"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件付きアクセス:レガシ認証をブロックする
 
@@ -36,8 +36,8 @@ ms.locfileid: "83995192"
    1. **[Done]** を選択します。
 1. **[クラウド アプリまたはアクション]** で、 **[すべてのクラウド アプリ]** を選択します。
    1. **[Done]** を選択します。
-1. **[条件]**  >  **[Client apps (preview)]\(クライアント アプリ (プレビュー)\)** で、 **[Configure]\(構成する\)** を **[はい]** に設定します。
-   1. **[モバイル アプリとデスクトップ クライアント]**  >  **[Other clients]\(その他のクライアント\)** チェック ボックスのみをオンにします。
+1. **[条件]**  >  **[クライアント アプリ]** で、 **[構成]** を **[はい]** に設定します。
+   1. **[Exchange ActiveSync クライアント]** と **[その他のクライアント]** のボックスのみをオンにします。
    1. **[Done]** を選択します。
 1. **アクセス制御** > **許可** で、**アクセスのブロック** を選択します。
    1. **[選択]** を選択します。

@@ -1,14 +1,14 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 06/22/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954151"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474905"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -56,6 +56,10 @@ ms.locfileid: "85954151"
 Batch プールでは、Azure のダウンタイム イベントが発生する可能性があります。 Batch のシナリオまたはワークフローの計画および開発時には、この点に留意してください。
 
 ノードで障害が発生した場合、Batch は自動的にそれらの計算ノードを回復しようとします。 これにより、回復されたノードで実行中のタスクの再スケジュールがトリガーされることがあります。 中断されたタスクの詳細については、[再試行のための設計](#design-for-retries-and-re-execution)に関するセクションを参照してください。
+
+### <a name="third-party-images"></a>サード パーティのイメージ
+
+プールは、Azure Marketplace に発行されたサード パーティのイメージを使用して作成できます。 ユーザー サブスクリプション モードの Batch アカウントを使用すると、特定のサード パーティのイメージでプールを作成する場合、"Marketplace での購入資格の確認のため、割り当てに失敗しました" というエラーが表示されることがあります。 このエラーを解決するには、イメージの発行者によって設定された条項に同意します。 これを行うには、[Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) または [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest) を使用します。
 
 ### <a name="azure-region-dependency"></a>Azure リージョンの依存関係
 
@@ -146,6 +150,10 @@ Batch ノードでタスクをスケジュールするとき、それをタス�
 ### <a name="collect-the-batch-agent-logs"></a>Batch エージェント ログを収集する
 
 ノードまたはノードで実行されているタスクの動作に関連する問題が発生した場合は、該当するノードの割り当てを解除する前に、Batch エージェント ログを収集します。 Batch エージェント ログは、Batch サービス ログのアップロード API を使用して収集できます。 これらのログは、サポート チケットの一部として Microsoft に提供することができ、問題のトラブルシューティングと解決に役立ちます。
+
+### <a name="manage-os-upgrades"></a>OS のアップグレードを管理する
+
+ユーザー サブスクリプション モードの Batch アカウントの場合、実行時間の長いタスクでは特に、OS の自動アップグレードによってタスクの進行が中断される場合があります。 [べき等タスクを構築](#build-durable-tasks)することで、こうした中断によるエラーを減らすことができます。 また、[タスクの実行が予期されない時間に OS イメージのアップグレードをスケジュール設定](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)することもお勧めします。
 
 ## <a name="isolation-security"></a>分離のセキュリティ
 

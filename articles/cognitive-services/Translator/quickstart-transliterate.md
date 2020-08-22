@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: tracking-python
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 31d316635211d56207b2d612997938c2baaff02f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 887f92fd1b59a0249050021e1a058eef8bd28ea4
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144223"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876497"
 ---
 # <a name="quickstart-use-the-translator-to-transliterate-text"></a>クイック スタート:Translator を使用してテキストの表記を変換する
 

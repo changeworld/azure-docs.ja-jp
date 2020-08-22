@@ -4,15 +4,15 @@ description: Azure App Service での断続的な接続エラーと、それに�
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252442"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447909"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -37,6 +37,8 @@ Azure アプリ サービスでホストされているアプリケーション�
 アプリケーションまたは関数で新しい接続を開くペースが速いと、128 ポートの事前割り当てクォータがすぐに枯渇する可能性があります。 その場合、追加の SNAT ポートを動的に割り当てるか、回収した SNAT ポートを再利用することで新しい SNAT ポートが利用可能になるまで、アプリケーションまたは関数はブロックされます。 このように新しい接続を作成できないためにブロックされているアプリケーションまたは関数では、この記事の「**現象**」で説明している 1 つ以上の問題が発生し始めます。
 
 ## <a name="avoiding-the-problem"></a>問題の回避
+
+サービス エンドポイントがサポートされる Azure サービスが宛先であれば、[リージョンの VNet 統合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)とサービス エンドポイントまたはプライベート エンドポイントを利用し、SNAT ポート不足問題を回避できます。 リージョンの VNet 統合を使用しているとき、統合サブネットにサービス エンドポイントを配置する場合、アプリでそれらのサービスにトラフィックを送信するとき、送信 SNAT ポート制限が適用されません。 同様に、リージョンの VNet 統合とプライベート エンドポイントを使用する場合、その宛先には、送信 SNAT ポート問題が発生しません。 
 
 SNAT ポートの問題を回避することは、同じホストとポートへの新しい接続を繰り返し作成しないことを意味します。
 

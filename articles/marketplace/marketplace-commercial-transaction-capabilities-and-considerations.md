@@ -4,19 +4,21 @@ description: この記事では、コマーシャル マーケットプレース
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119431"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503567"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
 ## <a name="transactions-by-publishing-option"></a>発行オプション別のトランザクション
 
-発行元または Microsoft が、コマーシャル マーケットプレースでのオファーのソフトウェア ライセンス トランザクションの管理を担当します。 オファーに対して選択した発行オプションによって、トランザクションの管理者が決定されます。 各発行オプションの可用性と説明については、「[公開オプションを選択する](./determine-your-listing-type.md#choose-a-publishing-option)」を参照してください。
+発行元または Microsoft が、コマーシャル マーケットプレースでのオファーのソフトウェア ライセンス トランザクションの管理を担当します。 オファーに対して選択した発行オプションによって、トランザクションの管理者が決定されます。 各発行オプションの可用性と説明については、「[公開オプションを選択する](./determine-your-listing-type.md#choose-a-call-to-action)」を参照してください。
 
 ### <a name="list-trial-and-byol-publishing-options"></a>リスト、試用版および BYOL の発行オプション
 
@@ -134,7 +136,7 @@ Marketplace サービス手数料減額の対象となっているパートナ�
 |Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 90% を支払います   |   1 か月あたり $80.00 <br> \* 1 か月あたり $90.00    |
 |Microsoft は、ライセンス コストの 20% を受け取ります <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 10% を受け取ります。  |  1 か月あたり $20.00 <br> \* $10.00     |
 
-コマーシャル マーケットプレースで公開する特定の SaaS 製品の場合、Microsoft によって **Marketplace サービス料金**が 20% から 10% に減額されます (Microsoft 発行元契約の説明に従う)。 対象のオファーになるには、少なくとも 1 つのオファーが Microsoft によって IP 共同販売対応または優先される IP 共同販売のいずれかとして指定されている必要があります。 その月の Marketplace サービス料金の減額を受け取るには、前のカレンダー月の月末までに少なくとも 5 営業日適格性を満たす必要があります。 Marketplace サービス料金の減額は、VM、マネージド アプリ、またはコマーシャル マーケットプレースから入手できる他の製品には適用されません。 この減額料金は、対象となるオファーと、2019 年 5 月 1 日から 2020 年 6 月 30 日までにマイクロソフトが収集したライセンス料金に適用されます。 その後、料金は通常の金額に戻ります。
+コマーシャル マーケットプレースで公開する特定のオファーに関しては、Microsoft によって Marketplace サービス料金が 20% から 10% に減額されます (Microsoft 発行元契約の説明に従う)。 お客様のオファーが対象となるには、オファーが Microsoft によって Azure IP 共同販売インセンティブの対象に指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブ対象 SaaS、VM、管理対象アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーに適用されます。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
 
@@ -161,7 +163,7 @@ Marketplace サービス手数料減額の対象となっているパートナ�
 
 #### <a name="billing-questions-and-support"></a>課金に関する質問とサポート
 
-詳細と法的なポリシーについては、パートナー センターから入手できる「[発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)」を確認してください。
+詳細と法的なポリシーについては、パートナー センターから入手できる「[発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)」を確認してください。
 
 課金に関する質問のサポートを受けるには、[コマーシャル マーケットプレースの公開元のサポート](https://aka.ms/marketplacepublishersupport)に問い合わせてください。
 
@@ -180,7 +182,7 @@ Marketplace サービス手数料減額の対象となっているパートナ�
 
 取引の公開オプションは、次の Marketplace オフォーの種類でのみ使用可能です。
 
-- **仮想マシン** - 無料、ライセンス持ち込み、従量課金制のいずれかの価格モデルを選択し、オファー レベルで定義した SKU として提示します。 顧客の Azure 請求書には、Microsoft によって、基になる Azure インフラストラクチャ料金とは別に、公開元のソフトウェア ライセンス料金が提示されます。 Azure インフラストラクチャ料金は、公開元のソフトウェアを使用することによって発生します。
+- **仮想マシン** - 無料、ライセンス持ち込み、従量課金制のいずれかの価格モデルを選択し、オファー レベルで定義したプランとして提示します。 顧客の Azure 請求書には、Microsoft によって、基になる Azure インフラストラクチャ料金とは別に、公開元のソフトウェア ライセンス料金が提示されます。 Azure インフラストラクチャ料金は、公開元のソフトウェアを使用することによって発生します。
 
 - **Azure アプリケーション: ソリューション テンプレートまたはマネージド アプリ** – 1 台または複数台の仮想マシンをプロビジョニングし、仮想マシン価格の合計を求める必要があります。 単一オファーのマネージド アプリの場合、仮想マシン価格ではなく定額の月額サブスクリプションを価格モデルとして選択できます。 場合によっては、Azure インフラストラクチャの使用料金がソフトウェア ライセンス料金とは別に顧客に渡されますが、請求書は同じです。 ただし、ISV インフラストラクチャの料金に対してマネージド アプリ オファリングを構成した場合、Azure リソースは公開元に課金され、顧客にはインフラストラクチャ、ソフトウェア ライセンス、および管理サービスのコストを含む固定料金が請求されます。
 

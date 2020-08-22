@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427723"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586158"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>マネージド ID で Key Vault の認証を提供する
 
@@ -35,7 +35,7 @@ ms.locfileid: "81427723"
    - [Azure PowerShell を使用してキー コンテナーを作成する](../secrets/quick-create-powershell.md)
    - [Azure portal を使用してキー コンテナーを作成する](../secrets/quick-create-portal.md)。
 - キー コンテナーへのアクセスを許可する既存の App Service アプリケーション。 [App Service のドキュメント](../../app-service/overview.md)の手順に従って簡単に作成できます。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。 別の方法として、[Azure portal](https://portal.azure.com) を使用することもできます。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。 別の方法として、[Azure portal](https://portal.azure.com) を使用することもできます。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>システム割り当て ID の追加 
@@ -52,7 +52,7 @@ ms.locfileid: "81427723"
 
 1. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** をクリックします。 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![システム割り当て ID の保存を示すスクリーンショット。](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 1.  **[追加]** をクリックして、新しいアクセス ポリシーの追加を完了します。
 
-    ![](../media/managed-identity-access-policy.png)
+    ![Azure portal での新しいアクセス ポリシーの追加を示すスクリーンショット。](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

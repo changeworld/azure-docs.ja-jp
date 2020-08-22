@@ -8,7 +8,7 @@
     - name: コマーシャル マーケットプレースの概要とメリット
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 1 つのマーケットプレース、2 つのネットショップ
+        - name: 1 つのマーケットプレース、2 つのオンライン ストア
           href: ./comparing-appsource-azure-marketplace.md
         - name: 発行オプションと考慮事項
           href: ./determine-your-listing-type.md
@@ -60,6 +60,8 @@
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Azure の消費コミットメントのベネフィット
+              href: ./azure-consumption-commitment-benefit.md
             - name: 共同販売のパートナー エンゲージメント
               href: ./marketplace-co-sell.md
             - name: 推奨されるソリューション
@@ -119,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM 技術資産に関する FAQ
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Azure VM イメージを認定する
+                - name: VHD からデプロイされた仮想マシンをテストする
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI
                   items:
@@ -167,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: SaaS オファーを作成する
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS 用 Azure AD 認証
+              items:
+                - name: Azure AD と SaaS の概要
+                  href: ./azure-ad-saas.md
+                - name: 取引可能オファーのランディング ページ
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: 試用版オファーのランディング ページ
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS Fulfillment API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

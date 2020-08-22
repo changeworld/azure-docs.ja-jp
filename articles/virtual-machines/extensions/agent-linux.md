@@ -1,26 +1,19 @@
 ---
 title: Azure Linux VM エージェントの概要
 description: Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186828"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269123"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 
@@ -72,7 +65,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 次のシステムがテスト済みで、Azure Linux エージェントで機能することがわかっています。
 
 > [!NOTE]
-> この一覧は、Microsoft Azure Platform でサポートされるシステムの公式の一覧とは異なる場合があります (Microsoft Azure Platform でサポートされるシステムの一覧: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216))
+> この一覧は、[サポートされているディストリビューション](../linux/endorsed-distros.md)の公式の一覧とは異なる可能性があります。
 > 
 > 
 
@@ -344,5 +337,4 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 * 詳しくは､プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するための次のリソースを参照してください。
   
   * [Ubuntu Wiki: スワップ パーティションの構成](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Azure の仮想マシンにカスタム データを挿入する](../windows/classic/inject-custom-data.md)
-
+  * [Azure の仮想マシンにカスタム データを挿入する](../windows/tutorial-automate-vm-deployment.md)

@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026969"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067910"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -18,13 +18,13 @@ ms.locfileid: "86026969"
 ## <a name="prerequisites"></a>前提条件
 
 * Live Video Analytics に対するハードウェアとソフトウェアの制約を満たす Linux コンピューター
-* [所有者特権](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)がある Azure サブスクリプション
-* [IoT Hub を作成してセットアップします](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [IoT Edge デバイスを登録します](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* [所有者特権](../../role-based-access-control/built-in-roles.md#owner)がある Azure サブスクリプション
+* [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
+* [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国中部、米国中北部、東日本、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
-    * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします。
+    * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Live Video Analytics を使用するための Azure リソースの構成
 
@@ -34,7 +34,7 @@ ms.locfileid: "86026969"
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを設定する
 
-Live Video Analytics を使用してビデオをクラウドに記録し、後でそれを再生する場合は、[Premium ストリーミング エンドポイント](../latest/streaming-endpoint-concept.md#types)を使用するように Media Services を更新する必要があります。  
+Live Video Analytics を使用して、継続的にビデオをクラウドに記録し、後でそれを再生する前に、[クエリ API](playback-recordings-how-to.md#query-api) を使用する場合、[Premium ストリーミング エンドポイント](../latest/streaming-endpoint-concept.md#types)を使用するように Media Service を更新することをお勧めします。  
 
 これは省略可能な手順です。 次の Azure CLI コマンドを使用して、それを行うことができます。
 
@@ -86,8 +86,8 @@ Live Video Analytics on IoT Edge では、「[モジュール ツインの構成
 
 ### <a name="deploy-using-the-azure-portal"></a>Azure Portal を使用したデプロイ
 
-Azure portal では、配置マニフェストの作成から、IoT Edge デバイスへのデプロイのプッシュまでをガイドします。
-デバイスを選択する
+Azure portal では、配置マニフェストの作成から、IoT Edge デバイスへのデプロイのプッシュまでをガイドします。  
+#### <a name="select-your-device-and-set-modules"></a>デバイスを選択してモジュールを設定する
 
 1. [Azure Portal](https://ms.portal.azure.com/) にサインインし、IoT Hub に移動します。
 1. メニューから **[IoT Edge]** を選択します。
@@ -112,23 +112,12 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     > [!TIP]
     > この手順の説明に従って、 **[モジュール設定]** タブ、 **[コンテナ作成オプション]** タブ、および **[モジュールツイン設定]** タブで値を指定するまで、 **[追加]** を選択しないでください。
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > Azure IoT Edge モジュールの呼び出しでは、大文字と小文字が区別されます。 モジュール名として使用する文字列を正確に記録しておきます。
 
 1. **[環境変数]** タブを開きます。
    
-   次の JSON をコピーしてボックスに貼り付け、アプリケーション データとビデオ出力を保存するために使用するユーザー ID とグループ ID を指定します。
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   ![環境変数](./media/deploy-iot-edge-device/environment-variables.png)に表示される入力ボックスに、次の値を追加します。 
 
 1. **[コンテナーの作成オプション]** タブを開きます。
 
@@ -201,8 +190,8 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   ツイン プロパティ **allowUnsecuredEndpoints** を true に設定してあるのは、チュートリアルとクイックスタートのためです。   
+   > [!Note]
+   > ツイン プロパティ **allowUnsecuredEndpoints** を true に設定してあるのは、チュートリアルとクイックスタートのためです。   
    運用環境で実行する場合は、このプロパティを **false** に設定する必要があります。 これにより、セキュリティ保護されていないすべてのエンドポイントがアプリケーションでブロックされ、グラフのトポロジを実行するには、有効な接続資格情報が必要になります。  
    
     [追加] を選択して、モジュール ツインのプロパティを追加します。
@@ -225,7 +214,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 2.  デバイスの詳細で、Blob Storage モジュールが **[デプロイで指定] と [デバイス別に報告]** の両方として一覧に表示されていることを確認します。
 
 モジュールがデバイス上で開始してから IoT Hub にレポートされるまでしばらく時間がかかる場合があります。 ページを更新して、最新の状態を表示します。
-状態コード:200 –OK は、[IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime)が正常であり、正常に動作していることを意味します。
+状態コード:200 –OK は、[IoT Edge ランタイム](../../iot-edge/iot-edge-runtime.md)が正常であり、正常に動作していることを意味します。
 
 ![Status](./media/deploy-iot-edge-device/status.png)
 
@@ -258,5 +247,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     ![200 状態メッセージ](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>次のステップ
+次を試します。「[クイックスタート: はじめに - Live Video Analytics on IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[クイック スタート: はじめに - Live Video Analytics on IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> コマンドで次を実行し、既定の `lva-sample-device` の代わりに `device-id` を使用します。

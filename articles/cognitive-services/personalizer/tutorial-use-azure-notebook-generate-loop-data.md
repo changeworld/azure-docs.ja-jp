@@ -3,20 +3,18 @@ title: チュートリアル:Azure Notebook - Personalizer
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure Notebook で Personalizer ループ システムをシミュレートします。これにより、顧客が注文すべきコーヒーの種類が提案されます。 ユーザーとその好みはユーザー データセットに格納されます。 また、コーヒーに関する情報もあり、コーヒー データセットに格納されます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
-ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python
+ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608487"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876735"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 

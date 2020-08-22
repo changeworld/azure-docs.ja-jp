@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 07/21/2020
 ms.author: victorh
-ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76315033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086593"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリック
 
@@ -99,9 +99,13 @@ Azure Firewall では、次のメトリックを利用できます。
 
     単位: カウント
 
-- **[Data processed]\(処理済みデータ\)** - ファイアウォールを通過しているデータの量。
+- **[処理済みデータ]** - 所与の時間枠内でファイアウォールを通過したデータの合計。
 
     単位: バイト
+
+- **[スループット]** - 1 秒間にファイアウォールを通過したデータの率。
+
+    [単位]: 1 秒あたりのビット数
 
 - **[Firewall health state]\(ファイアウォール正常性状態\)** - SNAT ポートの可用性に基づいて、ファイアウォールの正常性を示します。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042817"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -360,11 +360,10 @@ Media Services のラーニング パスを確認します。
 
 [.NET SDK でシングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[REST API でチャネルを管理する](https://docs.microsoft.com/rest/api/media/operations/channel)
+[REST API でチャネルを管理する](/rest/api/media/operations/channel)
 
 [Media Services の概念](media-services-concepts.md)
 
 [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-

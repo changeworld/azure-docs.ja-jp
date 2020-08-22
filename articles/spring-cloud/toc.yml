@@ -22,6 +22,8 @@
   items:
     - name: アプリを手動でスケーリングする
       href: spring-cloud-tutorial-scale-manual.md
+    - name: アプリを自動スケーリングする
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: アラートとアクション グループ
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: IntelliJ を使用してアプリを展開する
@@ -45,6 +47,8 @@
       href: ./policy-samples.md
 - name: 概念
   items:
+    - name: アプリとデプロイについて
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: クォータと制限について
       href: spring-cloud-quotas.md
     - name: メトリックを理解する

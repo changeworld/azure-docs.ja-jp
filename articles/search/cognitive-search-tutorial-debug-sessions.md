@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510990"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290672"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う
 
@@ -73,7 +73,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. **[ファイル]**  >  **[新規作成]** で、インポートするコレクションを選択します。
 1. コレクションがインポートされたら、アクションの一覧 ([...]) を展開します。
 1. **[編集]** をクリックします。
-1. searchService の名前を入力します (たとえば、エンドポイントが https://mydemo.search.windows.net の場合、サービス名は "mydemo" です)。
+1. searchService の名前を入力します (たとえば、エンドポイントが `https://mydemo.search.windows.net` の場合、サービス名は "`mydemo`" です)。
 1. apiKey と、検索サービスのプライマリ キーまたはセカンダリ キーを入力します。
 1. Azure Storage アカウントのキー ページにある storageConnectionString を入力します。
 1. ストレージ アカウントに作成したコンテナーの containerName を入力します。

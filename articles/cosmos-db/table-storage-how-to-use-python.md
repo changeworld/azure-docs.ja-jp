@@ -5,29 +5,31 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.custom: tracking-python
-ms.openlocfilehash: 0d24f5621786ce292d98ae1fc6dd8fafc5b69c55
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: devx-track-python
+ms.openlocfilehash: 4de8b50b82765499b504dac27bcef439681d58f0
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556218"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874913"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Azure Table Storage と Azure Cosmos DB は、NoSQL の構造化データをクラウド内に格納するサービスです。スキーマレスのデザインでキー/属性ストアを実現します。 Table Storage と Azure Cosmos DB はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 Table Storage と Table API のデータへのアクセスは、多くの種類のアプリケーションにとって高速でコスト効率に優れ、また一般に、従来の SQL と比較して、同様の容量のデータを低コストで保存することができます。
+Azure Table Storage と Azure Cosmos DB は、NoSQL の構造化データをクラウド内に格納するサービスです。スキーマレスのデザインでキー/属性ストアを実現します。 Table Storage と Azure Cosmos DB はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 Table Storage と Table API のデータへのアクセスは、多くの種類のアプリケーションにとって高速でコスト効率に優れ、また一般に、ほぼ同じ容量のデータの場合、従来の SQL と比較して低コストです。
 
 Table Storage または Azure Cosmos DB を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、サービスに必要なその他の種類のメタデータなど、柔軟なデータセットを格納できます。 ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
 ### <a name="about-this-sample"></a>このサンプルについて
+
 このサンプルでは、Azure Table Storage の一般的な用途における [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) の使い方について説明します。 SDK の名前は、Azure Cosmos DB で使うことを示していますが、パッケージは Azure Cosmos DB と Azure Tables ストレージの両方に使うことができます。また、各サービスは一意のエンドポイントを持っています。 次の方法を示す Python の例を使って、これらのシナリオについて説明します。
+
 * テーブルの作成と削除
 * エンティティの挿入とクエリ
 * エンティティの変更
@@ -38,17 +40,20 @@ Table Storage または Azure Cosmos DB を使用すると、Web アプリケー
 
 このサンプルの作業を行うためには、次のものが必要になります。
 
-- [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5、3.6
-- [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
-- [Azure Storage アカウント](../storage/common/storage-account-create.md)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)
+* [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5、3.6
+* [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
+* [Azure Storage アカウント](../storage/common/storage-account-create.md)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
+**Azure Storage アカウントを作成する**
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
+**Azure Cosmos DB Table API アカウントを作成する**
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>Azure Cosmos DB Table SDK for Python をインストールする

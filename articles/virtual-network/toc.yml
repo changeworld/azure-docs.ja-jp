@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: 仮想ネットワークの作成 - Azure CLI
       href: quick-create-cli.md
+    - name: 仮想ネットワークの作成 - ARM テンプレート
+      href: quick-create-template.md
   expanded: true
 - name: チュートリアル
   items:

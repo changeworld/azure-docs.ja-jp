@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057825"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317350"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -23,7 +23,7 @@ ms.locfileid: "86057825"
 - **[項目の削除]** : このオプションは、バックアップ対象から項目を削除するために使用します。
   - ボリューム内のすべての項目を削除する場合は、 **[項目の削除]** ではなく **[除外の設定]** を使用します。
   - ボリューム内のすべての選択を解除すると、項目の以前のバックアップが、最終バックアップ時の保持設定に従って保持されます (変更のスコープなし)。
-  - これらの項目を再選択すると最初の完全バックアップが行われ、新しいポリシーの変更は以前のバックアップには適用されません。
+  - これらの項目を再選択すると、最初の完全バックアップが行われ、新しいポリシーの変更は以前のバックアップには適用されません。
   - ボリューム全体の選択を解除すると、保持ポリシーを変更するためのスコープがなくても過去のバックアップが保持されます。
 - **[除外の設定]** : 特定の項目をバックアップ対象から除外するには、このオプションを使用します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "86057825"
 
     ![項目の選択](./media/backup-azure-manage-mars/select-item.png)
 
-6. 後続の手順を完了し、 **[完了]** をクリックして操作を完了します。
+6. 次の手順を完了し、 **[完了]** をクリックして操作を完了します。
 
 ### <a name="add-exclusion-rules-to-existing-policy"></a>既存のポリシーに除外ルールを追加する
 
@@ -71,7 +71,7 @@ ms.locfileid: "86057825"
 
     ![項目の選択](./media/backup-azure-manage-mars/subfolders-type.png)
 
-5. 後続の手順を完了し、 **[完了]** をクリックして操作を完了します。
+5. 次の手順を完了し、 **[完了]** をクリックして操作を完了します。
 
 ### <a name="remove-items-from-existing-policy"></a>既存のポリシーから項目を削除する
 
@@ -82,7 +82,7 @@ ms.locfileid: "86057825"
     > [!NOTE]
     > ポリシーからボリュームを完全に削除するときには、注意して操作を進めてください。  もう一度追加する必要がある場合、それは新しいボリュームとして扱われます。 次のスケジュールされたバックアップでは、増分バックアップではなく初回バックアップ (完全バックアップ) が実行されます。 後で項目を一時的に削除して追加する必要がある場合は、完全バックアップではなく増分バックアップとなるように、 **[項目の削除]** ではなく **[除外の設定]** を使用することをお勧めします。
 
-2. 後続の手順を完了し、 **[完了]** をクリックして操作を完了します。
+2. 次の手順を完了し、 **[完了]** をクリックして操作を完了します。
 
 ## <a name="stop-protecting-files-and-folder-backup"></a>ファイルおよびフォルダーのバックアップの保護を停止する
 
@@ -112,7 +112,7 @@ ms.locfileid: "86057825"
 1. **[スケジュールされたバックアップの一時停止]** で情報を確認し、 **[完了]** をクリックします。
 
     ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. **[Modify backup process]\(バックアップ プロセスの変更\)** で、スケジュールのバックアップの一時停止が成功状態であることを確認し、 **[閉じる]** をクリックして終了します。
+1. **[バックアップの進行状況の変更]** で、スケジュールのバックアップの一時停止が成功の状態であることを確認し、 **[閉じる]** をクリックして終了します。
 
 ### <a name="stop-protection-and-delete-backup-data"></a>保護を停止してバックアップ データを削除する
 
@@ -156,17 +156,18 @@ ms.locfileid: "86057825"
 
 パスフレーズは、MARS エージェントを使用して Azure との間でオンプレミスまたはローカル マシンをバックアップまたは復元するときに、データを暗号化および復号化するために使用されます。 パスフレーズを紛失した場合または忘れた場合は、次の手順に従ってパスフレーズを再生成できます (マシンが Recovery Services Vault にまだ登録され、バックアップが構成されている場合)。
 
-- MARS エージェント コンソールで、 **[操作] ペイン** >  **[プロパティの変更]** に移動します。 次に、 **[暗号化] タブ**に移動します。<br>
-- **[パスフレーズの変更]** チェックボックスをオンにします。<br>
-- 新しいパスフレーズを入力するか、 **[パスフレーズの生成]** をクリックします。
-- **[参照]** をクリックして、新しいパスフレーズを保存します。
+1. MARS エージェント コンソールで、 **[操作] ペイン** >  **[プロパティの変更]** に移動します。 次に、 **[暗号化] タブ**に移動します。<br>
+1. **[パスフレーズの変更]** チェックボックスをオンにします。<br>
+1. 新しいパスフレーズを入力するか、 **[パスフレーズの生成]** をクリックします。
+1. **[参照]** をクリックして、新しいパスフレーズを保存します。
 
     ![パスフレーズを生成します。](./media/backup-azure-manage-mars/passphrase.png)
-- **[OK]** をクリックして変更を適用します。  Azure portal で Recovery Services コンテナーの [[Security Feature]\(セキュリティ機能\)](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) が有効な場合、[セキュリティ PIN] の入力を求められます。 PIN を受信するには、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)に記載されている手順に従います。<br>
-- ポータルからセキュリティ PIN を貼り付け、 **[OK]** をクリックして変更を適用します。<br>
+
+1. **[OK]** をクリックして変更を適用します。  Azure portal 上で Recovery Services コンテナーの [[Security Feature]\(セキュリティ機能\)](./backup-azure-security-feature.md#enable-security-features) が有効な場合、[セキュリティ PIN] の入力を求められます。 PIN を受信するには、こちらの[記事](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)に記載されている手順に従います。<br>
+1. ポータルからセキュリティ PIN を貼り付け、 **[OK]** をクリックして変更を適用します。<br>
 
     ![パスフレーズを生成します。](./media/backup-azure-manage-mars/passphrase2.png)
-- パスフレーズは、(ソース マシンではない) 別の場所、できれば Azure Key Vault に安全に保存するようにします。 複数のマシンが MARS エージェントでバックアップされている場合は、すべてのパスフレーズを追跡します。
+1. パスフレーズは、(ソース マシンではない) 別の場所、できれば Azure Key Vault に安全に保存するようにします。 複数のマシンが MARS エージェントでバックアップされている場合は、すべてのパスフレーズを追跡します。
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>使用できないマシンのバックアップ データを管理する
 
@@ -183,13 +184,14 @@ ms.locfileid: "86057825"
 MARS のバックアップ ポリシーの管理は、ポータルではなく、MARS コンソールを使用して行われます。 期限切れになる前に既存の復旧ポイントの保有期間の設定を延長する必要がある場合は、マシンを復元し、MARS コンソールをインストールして、ポリシーを延長する必要があります。
 
 - マシンを復元するには、次の手順を実行します。
-  - [代替のターゲット マシンに VM を復元します](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
-  - ソース マシンと同じホスト名でターゲット マシンを再作成します
-  - エージェントをインストールし、同じパスフレーズを使用して同じコンテナーに再登録します
-  - MARS クライアントを起動して、要件に応じて保有期間を延長します
+  1. [代替のターゲット マシンに VM を復元します](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  1. ソース マシンと同じホスト名でターゲット マシンを再作成します
+  1. エージェントをインストールし、同じパスフレーズを使用して同じコンテナーに再登録します
+  1. MARS クライアントを起動して、要件に応じて保有期間を延長します
 - 新しく復元されたマシンは、MARS で保護され、引き続きバックアップを実行します。  
 
 ## <a name="next-steps"></a>次のステップ
 
-- サポートされるシナリオと制限事項については、[MARS エージェントのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)に関するページを参照してください。
+- サポートされるシナリオと制限事項については、[MARS エージェントのサポート マトリックス](./backup-support-matrix-mars-agent.md)に関するページを参照してください。
 - [オンデマンド バックアップ ポリシーの保持動作](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)の詳細を確認します。
+- よく寄せられる質問については、「[MARS エージェントに関する FAQ](backup-azure-file-folder-backup-faq.md)」を参照してください。

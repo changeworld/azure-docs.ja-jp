@@ -11,14 +11,43 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112988"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415025"
 ---
-# <a name="release-notes"></a>リリース ノート
+# <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0:2020 年 7 月リリース
+
+**注**:Windows の音声 SDK は、Visual Studio 2015、2017、および 2019 の Microsoft Visual C++ 再配布可能パッケージに依存します。 [こちら](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)からダウンロードしてインストールします。
+
+**新機能**
+- **C#** : 非同期での会話の文字起こしのサポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)のドキュメントを参照してください。  
+- **JavaScript**:[ブラウザー](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) と [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition) の両方で、話者認識のサポートが追加されました。
+- **JavaScript**:言語/言語 ID の自動検出のサポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)のドキュメントを参照してください。
+- **Objective-C**:[マルチデバイスの会話](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation)と[会話の文字起こし](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription)のサポートが追加されました。 
+- **Python**: Windows および Linux での Python 用圧縮オーディオ サポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)のドキュメントを参照してください。 
+
+**バグの修正**
+- **[すべて]** : KeywordRecognizer で認識後にストリームが送られない原因となっていた問題が修正されました。
+- **[すべて]** : KeywordRecognitionResult から取得したストリームにキーワードが含まれていない原因となっていた問題が修正されました。
+- **[すべて]** : SendMessageAsync で、ユーザーがその待機を終えた後に、実際にネットワーク経由でメッセージが送信されないという問題が修正されました。
+- **[すべて]** : ユーザーが VoiceProfileClient::SpeakerRecEnrollProfileAsync メソッドを複数回呼び出し、呼び出しの完了を待機しなかった場合の、Speaker Recognition API のクラッシュが修正されました。
+- **[すべて]** : VoiceProfileClient クラスと SpeakerRecognizer クラスでのファイル ログの有効化が修正されました。
+- **JavaScript**:ブラウザーが最小化されたときの調整の[問題](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74)が修正されました。
+- **JavaScript**:ストリームでのメモリ リークの[問題](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78)が修正されました。
+- **JavaScript**:NodeJS からの OCSP 応答のキャッシュが追加されました。
+- **Java**: BigInteger フィールドが常に 0 を返す原因となっていた問題が修正されました。
+- **iOS**: iOS App Store で Speech SDK ベースのアプリを発行する場合の[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702)が修正されました。
+
+**サンプル**
+- **C++** :話者認識のサンプル コードが[ここ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)に追加されました。
+
+**COVID-19 の影響によるテストの短縮:** 過去数週間にわたってリモートにて作業を行っているため、通常ならば実施するはずの手動による検証テストを行うことができませんでした。 問題発生の可能性が想定される変更はいっさい行っていません。また、自動テストはすべて成功しました。 しかし、もし仮に何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) にてお知らせください。<br>
+皆様の健康をお祈りします！
 
 ## <a name="text-to-speech-2020-july-release"></a>テキスト読み上げ 2020 年 7 月リリース
 
@@ -85,10 +114,10 @@ ms.locfileid: "86112988"
 
 ### <a name="samplessdk"></a>サンプル/SDK
 
-* JavaScript:FireFox および macOS と iOS での Safari における再生の問題が修正されました。 
+* JavaScript:Firefox および macOS と iOS での Safari における再生の問題が修正されました。 
 
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020 年 6 月リリース
-**Speech CLI (別名 SPX)**
+**Speech CLI (SPX とも呼ばれます)**
 -   CLI 内ヘルプ検索機能が追加されました。
     -   `spx help find --text TEXT`
     -   `spx help find --topic NAME`
@@ -115,7 +144,7 @@ ms.locfileid: "86112988"
 
 
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020-May リリース
-**Speech CLI (別名 SPX)**
+**Speech CLI (SPX とも呼ばれます)**
 - **SPX** は、コマンド ラインから認識、合成、翻訳、バッチ文字起こし、およびカスタム音声管理を実行するための新しいコマンド ライン ツールです。 これを使用して、音声サービスをテストしたり、実行する必要がある音声サービス タスクをスクリプト化したりできます。 ツールをダウンロードし、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)のドキュメントを参照してください。
 
 **新機能**

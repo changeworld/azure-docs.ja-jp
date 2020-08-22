@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004751"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Monitor ログに Azure Automation のジョブ データを転送する
 
@@ -28,7 +28,7 @@ Azure Automation では、Runbook ジョブの状態とジョブ ストリーム
 
 Azure Monitor ログへの Automation ログの送信を開始するには、次のものが必要です。
 
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs/) の最新リリース。
+* [Azure PowerShell](/powershell/azure/) の最新リリース。
 * Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの使用](../azure-monitor/overview.md)に関するページを参照してください
 * Azure Automation アカウントのリソース ID。
 

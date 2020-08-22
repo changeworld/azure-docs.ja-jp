@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725904"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589403"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -78,13 +78,13 @@ namespace FunctionSample
 
 これで、関数をコンパイルして実行できるようになりました。 Azure 関数は最終的にクラウドで実行することを目的としていますが、ローカルで Azure 関数を実行およびデバッグすることもできます。
 
-この詳細については、「[イベント グリッド トリガーをローカルにデバッグ](../azure-functions/functions-debug-event-grid-trigger-local.md)」を参照してください。
+この詳細については、「[*イベント グリッド トリガーをローカルにデバッグ*](../azure-functions/functions-debug-event-grid-trigger-local.md)」を参照してください。
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Azure Digital Twins SDK を Azure 関数アプリに追加する
 
 関数アプリと Azure Digital Twins のやり取りには、[.NET (C#) 用の Azure IoT Digital Twin クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)を使用します。 この SDK を使用するには、次のパッケージをプロジェクトに含める必要があります。
 * `Azure.DigitalTwins.Core` (バージョン `1.0.0-preview.2`)
-* `Azure.Identity`
+* `Azure.Identity` (バージョン `1.1.1`)
 
 Azure Functions を適切に設定するように Azure SDK パイプラインを構成するには、以下も必要です。
 * `Azure.Net.Http`
@@ -163,9 +163,9 @@ az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(fu
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-マネージド ID の詳細については、「[App Service と Azure Functions でマネージド ID を使用する方法](../app-service/overview-managed-identity.md)」を参照してください。
+マネージド ID の詳細については、「[*App Service と Azure Functions でマネージド ID を使用する方法*](../app-service/overview-managed-identity.md)」を参照してください。
 
-最後に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 詳細については、「[環境変数](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)」を参照してください。
+最後に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 詳細については、「[*環境変数*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)」を参照してください。
 
 > [!TIP]
 > Azure Digital Twins インスタンスの URL を作成するには、Azure Digital Twins インスタンスの *hostName* の先頭に *https://* を追加します。 インスタンスのすべてのプロパティと共に hostName を表示する場合は、`az dt show --dt-name <your-Azure-Digital-Twins-instance>` を実行できます。
@@ -209,7 +209,7 @@ ID ページで、 *[状態]* トグルを *[オン]* に設定します。
 
 ### <a name="assign-access-roles"></a>アクセス ロールを割り当てる
 
-Azure Digital Twins では、ロールベースのアクセス制御を使用してアクセスを管理するため (詳細については「[概念: Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)」を参照してください)、各関数アプリ用に Azure Digital Twins へのアクセスを許可するロールも追加する必要があります。
+Azure Digital Twins では、ロールベースのアクセス制御を使用してアクセスを管理するため (詳細については「[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)」を参照してください)、各関数アプリ用に Azure Digital Twins へのアクセスを許可するロールも追加する必要があります。
 
 ロールを割り当てるには、作成した Azure Digital Twins インスタンスの**リソース ID** が必要です。 インスタンスを作成したときにメモしなかった場合は、次のコマンドを使用して取得できます。
 
@@ -232,4 +232,4 @@ az role assignment create --role "Azure Digital Twins Owner (Preview)" --assigne
 * 他のサービスからメッセージを受信する Event Grid エンドポイント
 
 次に、IoT Hub データを Azure Digital Twins に取り込む基本的な Azure 関数を構築する方法を確認します。
-* [IoT Hub からテレメトリを取り込む方法](how-to-ingest-iot-hub-data.md)
+* [*方法: IoT Hub からテレメトリを取り込む*](how-to-ingest-iot-hub-data.md)

@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: 推奨事項を使用してセキュリティを強化する
           href: security-center-using-recommendations.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 脅威の防止とセキュリティ アラート
       items:
         - name: Security Center での脅威の防止の概要
@@ -149,6 +151,8 @@
           href: workflow-automation.md
         - name: レコメンデーションのエクスポート
           href: continuous-export.md
+    - name: Asset Inventory によるリソースの管理
+      href: asset-inventory.md
     - name: 他のツールおよびサービスとの統合
       items:
         - name: Windows Admin Center との統合

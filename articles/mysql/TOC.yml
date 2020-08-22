@@ -28,6 +28,12 @@
           href: connect-php.md
         - name: Java
           href: connect-java.md
+        - name: Java と Spring Data JDBC
+          href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: Java と Spring Data JPA
+          href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: Java と Spring Data R2DBC
+          href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
         - name: .NET
           href: connect-csharp.md
         - name: Python
@@ -57,10 +63,10 @@
     - name: 2 - Web アプリの作成
       items:
         - name: コンテナーでの Wordpress と MySQL
-          href: ../app-service/containers/tutorial-multi-container-app.md
+          href: ../app-service/tutorial-multi-container-app.md
           maintainContext: true
         - name: PHP と MySQL
-          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          href: ../app-service/tutorial-php-mysql-app.md
           maintainContext: true
 - name: サンプル
   items:
@@ -138,6 +144,8 @@
           href: concepts-server-parameters.md
     - name: 開発
       items:
+        - name: アプリケーションのベスト プラクティス
+          href: app-development-best-practices.md
         - name: ドライバーとツールの互換性
           href: concepts-compatibility.md
         - name: アプリケーション開発
@@ -148,10 +156,14 @@
           href: concepts-aks.md
         - name: Java
           items:
-            - name: Spring Data JDBC の構成
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
-            - name: Spring Data JPA の構成
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
+            - name: Java と JDBC の使用
+              href: connect-java.md
+            - name: Spring Data JDBC の使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data JPA の使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data R2DBC の使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
     - name: レプリケーション
       items:
         - name: データイン レプリケーション
@@ -191,7 +203,11 @@
         - name: ユーザーの作成
           href: howto-create-users.md
         - name: Connection strings
-          href: howto-connection-string.md
+          items:
+            - name: アプリケーションの接続
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: SSL の構成
           href: howto-configure-ssl.md
         - name: TLS の構成

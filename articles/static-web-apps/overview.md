@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488921"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835784"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
 
@@ -44,7 +44,7 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Static Web Apps でできること
 
-- [Azure Functions](https://azure.microsoft.com/services/functions/) バックエンドと共に [Angular](https://angular.io/)、[React](https://reactjs.org/)、[Svelte](https://svelte.dev/)、[Vue](https://vuejs.org/) などのフレームワークとライブラリを使用した**最新の JavaScript アプリケーションの構築**。
+- [Azure Functions](apis.md) バックエンドと共に [Angular](getting-started.md#tabpanel_CeZOj-G++Q_angular)、[React](getting-started.md#tabpanel_CeZOj-G++Q_react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) などのフレームワークとライブラリを使用した**最新の JavaScript アプリケーションの構築**。
 - [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) などのフレームワークを使用した**静的サイトの発行**。
 - [Next.js](deploy-nextjs.md) や [Nuxt.js](deploy-nuxtjs.md) などのフレームワークを使用した **Web アプリケーションのデプロイ**。
 

@@ -1,27 +1,22 @@
 ---
 title: Windows Virtual Desktop のホスト プール Azure portal - Azure
 description: Azure portal を使用して Windows Virtual Desktop のホスト プールを作成する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362936"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002656"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
 >[!IMPORTANT]
->このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Windows Virtual Desktop Fall 2019 を使用して作成したオブジェクトは、Azure portal では管理できません。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[この記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Windows Virtual Desktop (classic) を使用して作成したオブジェクトは、Azure portal では管理できません。
 
 ホスト プールは、Windows Virtual Desktop 環境内にある 1 つまたは複数の同一の仮想マシン (VM) をまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
 
@@ -64,7 +59,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 6. ホスト プールの一意の名前を入力します。
 
 7. [場所] フィールドで、ホスト プールの作成先にしたいリージョンをドロップダウン メニューから選択します。
-   
+
    ご自分が選択したリージョンに関連付けられている Azure 地域は、このホスト プールとその関連オブジェクトのメタデータが格納される場所です。 サービス メタデータの格納先にしたい地域内のリージョンを選択していることを確認します。
 
      > [!div class="mx-imgBorder"]
@@ -143,7 +138,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
     > [!div class="mx-imgBorder"]
     > ![ドロップダウン メニューで使用可能なポートの一覧を示すセキュリティ グループ ページのスクリーンショット。](media/available-ports.png)
-    
+
     **[高度]** を選択した場合は、既に構成が済んでいる既存のネットワーク セキュリティ グループを選択します。
 
 10. その後、特定のドメインと組織単位に仮想マシンを参加させるかどうかを選択します。 **[はい]** を選択した場合は、参加するドメインを指定します。 また、仮想マシンの配置先にする特定の組織単位を追加することもできます。
@@ -156,7 +151,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
 ## <a name="workspace-information"></a>ワークスペース情報
 
-ホスト プールのセットアップ プロセスでは、既定でデスクトップ アプリケーション グループが作成されます。 ホスト プールを意図したとおりに機能させるには、このアプリ グループをユーザーまたはユーザー グループに発行する必要があります。また、アプリ グループをワークスペースに登録する必要があります。 
+ホスト プールのセットアップ プロセスでは、既定でデスクトップ アプリケーション グループが作成されます。 ホスト プールを意図したとおりに機能させるには、このアプリ グループをユーザーまたはユーザー グループに発行する必要があります。また、アプリ グループをワークスペースに登録する必要があります。
 
 デスクトップ アプリ グループをワークスペースに登録するには:
 
@@ -170,10 +165,10 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
     ここではタグを追加できます。これにより、管理者にとってわかりやすいように、メタデータを使用してオブジェクトをグループ化できます。
 
-4. 完了したら、 **[確認および作成]** を選択します。 
+4. 完了したら、 **[確認および作成]** を選択します。
 
      >[!NOTE]
-     >[確認および作成] の検証プロセスでは、パスワードがセキュリティ標準を満たしているかどうか、またアーキテクチャが正常かどうかはチェックされません。そのため、これらのいずれの点についても問題がないかご自身でチェックする必要があります。 
+     >[確認および作成] の検証プロセスでは、パスワードがセキュリティ標準を満たしているかどうか、またアーキテクチャが正常かどうかはチェックされません。そのため、これらのいずれの点についても問題がないかご自身でチェックする必要があります。
 
 5. ご自分のデプロイの情報を確認し、すべての内容が適切であることを確かめます。 完了したら **[作成]** を選択します。 これにより、デプロイ プロセスが開始され、次のオブジェクトが作成されます。
 

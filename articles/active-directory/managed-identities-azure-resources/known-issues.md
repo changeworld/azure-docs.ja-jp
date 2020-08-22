@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 08/06/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 484f5443702b1151dc3f83af11b5f12a2c0a177d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855135"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902237"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -55,9 +55,12 @@ ms.locfileid: "85855135"
 
 いいえ、Azure Cloud Services で Azure リソースのマネージド ID をサポートする予定はありません。
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure リソースのマネージド ID は Active Directory Authentication Library (ADAL) または Microsoft Authentication Library (MSAL) で動作しますか?
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>マネージド ID に関連付けられる資格情報は何ですか? その有効期間とローテーションの頻度は?
 
-いいえ、Azure リソースのマネージド ID は、ADAL または MSAL とまだ統合されていません。 REST エンドポイントを使用して Azure リソースのマネージド ID のトークンを取得する方法については、「[Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法](how-to-use-vm-token.md)」を参照してください。
+> [!NOTE]
+> マネージド ID の認証方法は、内部的な実装の詳細であり、予告なく変更されます。
+
+マネージド ID には、証明書ベースの認証が使用されます。 各マネージド ID の資格情報は有効期限が 90 日で、45 日後にローテーションされます。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID のセキュリティ境界は何ですか?
 
@@ -73,7 +76,7 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
 
-いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
+いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure ロールの割り当てを許可する必要があります。
 - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
 - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
 

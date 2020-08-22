@@ -1,20 +1,16 @@
 ---
 title: Azure Arc for servers (プレビュー) の概要
 description: Azure Arc for servers を使用して、Azure の外部でホストされているマシンを Azure リソースと同じように管理する方法について説明します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
-ms.date: 03/24/2020
+ms.custom: references_regions
+ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: f11eedaf5f70cb24fa6c1588b7f26b2eed4734ce
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482192"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121801"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Azure Arc for servers (プレビュー) とは?
 
@@ -28,10 +24,15 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-Azure Arc for servers (プレビュー) は、接続済みのマシンに関して次のシナリオをサポートします。
+マシンを Azure Arc for server (プレビュー) に接続すると、次の構成管理タスクを実行できるようになります。
 
 - Azure 仮想マシンのポリシーの割り当てと同じエクスペリエンスを使用して [Azure Policy のゲスト構成](../../governance/policy/concepts/guest-configuration.md)を割り当てます。
-- Log Analytics エージェントによって収集されたログ データ。マシンが登録されている Log Analytics ワークスペースに格納されます。 ハイブリッド マシンからのログ データに、リソース ID など、マシンに固有のプロパティが含まれるようになりました。それを利用し、[resource-context](../../azure-monitor/platform/design-logs-deployment.md#access-mode) ログ アクセスをサポートできます。
+
+- [Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出してそのプロセスや、アプリケーションが通信する他のリソースとの依存関係を監視します。
+
+- Azure 以外の Windows または Linux マシンでサポートされている [Azure VM 拡張機能](manage-vm-extensions.md)を使用して、Azure Automation State Configuration や Azure Monitor Log Analytics ワークスペースなどの他の Azure サービスによるデプロイを簡略化します。 これには、カスタム スクリプト拡張機能を使用した、デプロイ後の構成またはソフトウェアのインストールの実行が含まれます。
+
+ハイブリッド マシンから Log Analytics ワークスペースに収集および格納されるログ データには、リソース ID など、マシンに固有のプロパティが含まれるようになりました。 これを使用して、[リソース コンテキスト](../../azure-monitor/platform/design-logs-deployment.md#access-mode) ログ アクセスをサポートできます。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -42,7 +43,7 @@ Azure Arc for servers (プレビュー) では、特定のリージョンのみ�
 - 西ヨーロッパ
 - SoutheastAsia
 
-ほとんどの場合、インストール スクリプトを作成するときに選択する場所は、マシンの場所に最も近い Azure リージョンにする必要があります。 保存データは、指定したリージョンを含む Azure geography 内に格納されます。データ所在地に関する要件がある場合は、これがリージョンの選択に影響する可能性もあります。 マシンが接続されている Azure リージョンが障害の影響を受ける場合、接続されたマシンは影響を受けませんが、Azure を使用した管理操作を完了できない可能性があります。 リージョンの障害が発生した場合の回復力のために、地理的に冗長なサービスを提供する複数の場所がある場合は、各場所のマシンを別の Azure リージョンに接続することをお勧めします。
+ほとんどの場合、インストール スクリプトを作成するときに選択する場所は、マシンの場所に最も近い Azure リージョンにする必要があります。 保存データは、指定したリージョンを含む Azure geography 内に格納されます。データ所在地に関する要件がある場合は、これがリージョンの選択に影響する可能性もあります。 マシンが接続されている Azure リージョンが障害の影響を受ける場合、接続されたマシンは影響を受けませんが、Azure を使用した管理操作を完了できない可能性があります。 リージョンの障害が発生したときに地理的に冗長なサービスを提供する複数の場所がある場合は、各場所のマシンを別の Azure リージョンに接続することをお勧めします。
 
 ### <a name="agent-status"></a>エージェントの状態
 

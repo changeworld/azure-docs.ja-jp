@@ -3,16 +3,16 @@ title: Azure Recovery Services コンテナーとサーバーの管理
 description: この記事では、Recovery Services コンテナーの [概要] ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 1b3cc317b8a26b16bbeda9793f87d089f2fbc59f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234605"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054896"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
-この記事では、Recovery Services コンテナーの **[概要]** ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。 一覧から Recovery Services コンテナーを開くと、選択したコンテナーの **[概要]** ダッシュボードが開きます。 このダッシュボードでは、コンテナーについてのさまざまな詳細が提供されます。 "*タイル*" で、重大アラートと警告アラートの状態、進行中のバックアップ ジョブと失敗したバックアップ ジョブ、使用されているローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の量が示されます。 Azure VM をコンテナーにバックアップする場合、[ **[バックアップの事前チェックの状態]** タイルには重大項目または警告項目が表示されます](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)。 次の図は、**Contoso-vault** に対する **[概要]** ダッシュボードです。 **[バックアップ項目]** タイルでは、コンテナーに 9 つの項目が登録されていることが示されています。
+この記事では、Recovery Services コンテナーの **[概要]** ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。 一覧から Recovery Services コンテナーを開くと、選択したコンテナーの **[概要]** ダッシュボードが開きます。 このダッシュボードでは、コンテナーについてのさまざまな詳細が提供されます。 "*タイル*" で、重大アラートと警告アラートの状態、進行中のバックアップ ジョブと失敗したバックアップ ジョブ、使用されているローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の量が示されます。 Azure VM をコンテナーにバックアップする場合、[ **[バックアップの事前チェックの状態]** タイルには重大項目または警告項目が表示されます](#backup-pre-check-status)。 次の図は、**Contoso-vault** に対する **[概要]** ダッシュボードです。 **[バックアップ項目]** タイルでは、コンテナーに 9 つの項目が登録されていることが示されています。
 
 ![Recovery Services コンテナーのダッシュボード](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -178,7 +178,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 ![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-仮想マシンの一覧には、関連付けられているリソース グループ、前回の[バックアップの事前チェック](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)、前回のバックアップの状態、最新の復元ポイントの日時など、有用なデータが表示されます。 最後の列の省略記号をクリックすると、一般的なタスクをトリガーするメニューが開きます。 列で提供される役立つデータは、バックアップの種類ごとに異なります。
+仮想マシンの一覧には、関連付けられているリソース グループ、前回の[バックアップの事前チェック](#backup-pre-check-status)、前回のバックアップの状態、最新の復元ポイントの日時など、有用なデータが表示されます。 最後の列の省略記号をクリックすると、一般的なタスクをトリガーするメニューが開きます。 列で提供される役立つデータは、バックアップの種類ごとに異なります。
 
 ![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
@@ -287,4 +287,4 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
-* Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
+* Azure Backup の詳細については、「 [Azure Backup の概要](./backup-overview.md)

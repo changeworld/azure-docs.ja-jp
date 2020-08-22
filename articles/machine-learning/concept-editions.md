@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555535"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927421"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure Machine Learning の Enterprise および Basic エディション 
 
@@ -112,7 +112,7 @@ Basic のワークスペースを Enterprise Edition にアップグレードす
 
 | 機能     | Edition                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [ロールベースのアクセス制御](how-to-assign-roles.md) (RBAC) のサポート                                           | All                     |
+| [Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-assign-roles.md) のサポート                                           | All                     |
 | コンピューティングの [Virtual Network (VNet)](how-to-enable-virtual-network.md) のサポート                                         | All                     |
 | エンドポイント認証のスコア付け                                                    | All                     |
 | [ワークスペースでの Private Link](how-to-configure-private-link.md)                                                            | All                     |

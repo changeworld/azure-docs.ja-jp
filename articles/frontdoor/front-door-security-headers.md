@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: ルール エンジンを使用してセキュリティ ヘッダーを追加する - Azure Front Door
 description: この記事では、Azure Front Door でルール エンジンを使用し、セキュリティ ヘッダーを構成する方法について説明します
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5f07a57e0d41a5e7c546bc89ca7a0b5ac5fce5de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232136"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512233"
 ---
 # <a name="add-security-headers-with-rules-engine"></a>ルール エンジンを使用してセキュリティ ヘッダーを追加する
 

@@ -1,7 +1,7 @@
 ---
 title: Azure 仮想ネットワークを作成、変更、削除する
 titlesuffix: Azure Virtual Network
-description: Azure で仮想ネットワークを作成、変更、削除する方法について説明します。
+description: 仮想ネットワークを作成および削除し、既存の仮想ネットワークの DNS サーバーや IP アドレス空間などの設定を変更します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710033"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265247"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 

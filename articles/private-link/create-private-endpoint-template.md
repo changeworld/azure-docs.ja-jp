@@ -1,6 +1,6 @@
 ---
 title: Azure Private Link でプライベート エンドポイントを作成する
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用してプライベート エンドポイントを作成します。
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してプライベート エンドポイントを作成します。
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071503"
 ---
-# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してプライベート エンドポイントを作成する
+# <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート エンドポイントを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用してプライベート エンドポイントを作成します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してプライベート エンドポイントを作成します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 このクイックスタートは、[Azure portal](create-private-endpoint-portal.md)、[Azure PowerShell](create-private-endpoint-powershell.md)、または [Azure CLI](create-private-endpoint-cli.md) を使用して完了することもできます。
 
-## <a name="prerequisite"></a>前提条件
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>前提条件
 
 アクティブなサブスクリプションを含む Azure アカウントが必要です。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このテンプレートでは、Azure SQL Database のインスタンスに使用するプライベート エンドポイントを作成します。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -50,9 +52,9 @@ ms.locfileid: "84817964"
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): 仮想マシンのネットワーク インターフェイス。
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines): SQL Database インスタンスへのプライベート エンドポイントとのプライベート接続をテストするための仮想マシン。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Azure Resource Manager テンプレートを Azure にデプロイする方法を次に示します。
+ARM テンプレートを Azure にデプロイする方法を次に示します。
 
 1. Azure にサインインしてテンプレートを開くために、 **[Azure に配置する]** を選択します。 このテンプレートによって、プライベート エンドポイント、SQL Database のインスタンス、ネットワーク インフラストラクチャ、および検証する仮想マシンが作成されます。
 
@@ -66,7 +68,7 @@ Azure Resource Manager テンプレートを Azure にデプロイする方法�
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
 > [!NOTE]
-> Azure Resource Manager テンプレートにより、仮想マシン myVm<b>{uniqueid}</b> リソースと SQL Database sqlserver<b>{uniqueid}</b> リソースの一意の名前が生成されます。 **{uniqueid}** は、実際に生成された値に置き換えてください。
+> ARM テンプレートにより、仮想マシン myVm<b>{uniqueid}</b> リソースと SQL Database sqlserver<b>{uniqueid}</b> リソースの一意の名前が生成されます。 **{uniqueid}** は、実際に生成された値に置き換えてください。
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 

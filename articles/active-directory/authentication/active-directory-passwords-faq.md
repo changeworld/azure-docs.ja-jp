@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826470"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051290"
 ---
-# <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
+# <a name="self-service-password-reset-frequently-asked-questions"></a>セルフサービス パスワード リセットについてよく寄せられる質問
 
-パスワードのリセットについてのあらゆる問題に関するよくあるご質問 (FAQ) を次に示します。
+セルフサービス パスワード リセットについてのあらゆる問題に関するよくあるご質問 (FAQ) を次に示します。
 
 ここで解決できない Azure Active Directory (Azure AD) やセルフサービス パスワード リセット (SSPR) に関する一般的な質問がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
 
@@ -38,7 +38,7 @@ ms.locfileid: "83826470"
 
   > **A:** はい。 パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (https://aka.ms/ssprsetup) で、認証情報を登録できます。 ユーザーは、アクセス パネル (https://myapps.microsoft.com) で登録することもできます。 アクセス パネルで登録するには、自分のプロフィール画像を選び、 **[プロファイル]** を選んで、 **[パスワード リセットの登録]** オプションを選ぶ必要があります。
   >
-  >
+  > [統合された登録](concept-registration-mfa-sspr-combined.md)を有効にすると、ユーザーは SSPR と Azure Multi-Factor Authentication の両方に同時に登録できます。
 * **Q:グループに対してパスワード リセットを有効にし、その後全員に対してパスワード リセットを有効にする場合、ユーザーは再登録する必要がありますか。**
 
   > **A:** いいえ。 認証データを設定したユーザーは、再登録する必要はありません。

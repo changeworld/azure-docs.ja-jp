@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143901"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513147"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
@@ -110,7 +110,7 @@ Virtual WAN には、高度なルーティング機能強化があります。 �
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>グローバル VNET ピアリング
 
-グローバル VNet ピアリングには、異なるリージョンにある 2 つの VNet を接続するメカニズムが用意されています。 Virtual WAN では、仮想ネットワーク接続によって VNet が仮想ハブと接続されます。 ユーザーはグローバル VNet ピアリングを明示的に設定する必要がありません。 仮想ハブに接続された VNet は、VNet ピアリング料金が発生する同じリージョンにあります。 別のリージョンの仮想ハブに接続された VNet には、グローバル VNet ピアリング料金が発生します。
+グローバル VNet ピアリングには、異なるリージョンにある 2 つの VNet を接続するメカニズムが用意されています。 Virtual WAN では、仮想ネットワーク接続によって VNet が仮想ハブと接続されます。 ユーザーはグローバル VNet ピアリングを明示的に設定する必要がありません。 同じリージョンの仮想ハブに接続された VNet には、VNet ピアリング料金が発生します。 別のリージョンの仮想ハブに接続された VNet には、グローバル VNet ピアリング料金が発生します。
 
 ### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute トラフィックの暗号化
 
@@ -124,9 +124,9 @@ Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機�
 
 ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用する場合は、次を考慮してください。
 
-* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
+* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 17 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
 
-* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
+* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 17 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 

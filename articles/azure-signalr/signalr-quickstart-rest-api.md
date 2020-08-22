@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548130"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045016"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -126,7 +126,7 @@ Version | API 状態 | Door | 固有
 
 以下に示したのは、特定のバージョンごとに利用可能な API の一覧です。
 
-API | `1.0-preview` | `1.0`
+API | 1.0-preview | 1.0
 --- | --- | ---
 [全員にブロードキャストする](#broadcast) | **&#x2713;** | **&#x2713;**
 [グループにブロードキャストする](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -242,7 +242,7 @@ API Version | API HTTP メソッド | 要求 URL
 応答の状態コード | 説明
 ---|---
 `200` | サービスは良好
-`503` | サービス利用不可
+`5xx` | サービス エラー
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

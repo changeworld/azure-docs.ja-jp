@@ -1,19 +1,14 @@
 ---
 title: ハイブリッド マシンを大規模に Azure に接続する
 description: この記事では、Azure Arc for servers (プレビュー) を利用する Azure に、サービス プリンシパルを使用してマシンを接続する方法について説明します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103791"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121818"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する
 
@@ -76,7 +71,7 @@ PowerShell を使用してサービス プリンシパルを作成するには�
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>エージェントをインストールして Azure に接続する
 
-以下の手順では、スクリプト テンプレートを使用して、ハイブリッド マシンに Connected Machine エージェントをインストールし、構成します。このテンプレートでは、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」という記事で説明されているのと同様の手順が実行されます。 違いは、サービス プリンシパルを使用して `azcmagent` コマンドを実行し、Azure Arc への接続を確立する最後の手順です。 
+以下の手順では、スクリプト テンプレートを使用して、ハイブリッド マシンに Connected Machine エージェントをインストールし、構成します。このテンプレートでは、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」という記事で説明されているのと同様の手順が実行されます。 違いは、サービス プリンシパルを使用して `azcmagent` コマンドを実行し、Azure Arc への接続を確立する最後の手順です。
 
 以下に、サービス プリンシパル用に使用する `azcmagent` コマンドを構成する設定を示します。
 
@@ -110,6 +105,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>このスクリプトは、64 ビット版の Windows PowerShell からの実行のみをサポートしています。
+>
+
 ### <a name="linux-installation-script"></a>Linux インストール スクリプト
 
 次に示すのは、サービス プリンシパルを使用して、完全に自動化された非対話型のエージェント インストールをサポートするように変更された、Linux インストール スクリプト用の Connected Machine エージェントの例です。
@@ -131,12 +130,15 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>**Azcmagent** を実行するには、Linux マシンに対する*ルート* アクセス許可が必要です。
+
 エージェントをインストールし、Azure Arc for servers (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
 
 ![成功したサーバー接続](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) を使用した監視の有効化などの方法です。
+- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
 - [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-intro.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。

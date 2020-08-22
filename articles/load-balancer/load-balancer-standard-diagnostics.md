@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272697"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090452"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
@@ -46,6 +46,9 @@ Standard Load Balancer をさまざまに構成することで、次のメトリ
 | バイト カウンター |  パブリックおよび内部ロード バランサー | Standard Load Balancer は、フロントエンドごとに処理されたデータ量を報告します。 バックエンド インスタンス間でバイト数が均等に配布されていないことがわかります。 Azure の Load Balancer アルゴリズムはフローに基づいているため、これは予期されていることです。 | Average |
 | パケット カウンター |  パブリックおよび内部ロード バランサー | Standard Load Balancer は、フロントエンドごとに処理されたパケット数を報告します。| Average |
 
+  >[!NOTE]
+  >NVA またはファイアウォールを介して内部ロード バランサーからトラフィックの分散を使用する場合、SYN パケット、バイト カウンター、パケット カウンターの各メトリックは使用できず、0 として表示されます。 
+  
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Azure Portal でロード バランサーのメトリックを表示する
 
 Azure Portal の [メトリック] ページでは、ロード バランサーのメトリックが公開されます。このページは、特定のリソースのロード バランサー リソース ページと、Azure Monitor のページの両方から表示できます。 

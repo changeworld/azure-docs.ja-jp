@@ -1,4 +1,4 @@
-- name: Stream Analytics のドキュメント
+- name: Azure Stream Analytics のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -53,6 +53,9 @@
       href: develop-locally.md
     - name: セキュリティ
       items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: ジョブの入力の種類
@@ -119,7 +122,7 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: エラー ポリシー
       href: stream-analytics-output-error-policy.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 管理する
       items:

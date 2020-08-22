@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044143"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314222"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
@@ -184,16 +184,6 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
      ![不正な呼び出しに関する 2 つのタイルが表示されている完成した Power BI ダッシュボード](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>Power BI についての詳細情報
-
-このチュートリアルで紹介しているのは、データセットに関するほんの数種類の視覚エフェクトの作成方法です。 Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。 他のアイデアについては、次のリソースを参照してください。
-
-* Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
-* Power BI に対する Streaming Analytics ジョブ出力の構成および Power BI グループの使用について詳しくは、「[Stream Analytics の出力](stream-analytics-define-outputs.md)」記事の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションをご覧ください。 
-* Power BI の一般的な使い方については、「[Power BI サービスのダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)」をご覧ください。
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>制限事項とベスト プラクティスについて
 現在、Power BI は、およそ 1 秒に 1 回呼び出すことができます。 ストリーミング ビジュアルでは、15 KB のパケットがサポートされます。 これを超えると、ストリーミング ビジュアルは失敗します (ただし、プッシュは動作し続けます)。 このような制限から必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。 1 秒あたりのデータ プッシュを 1 回以内に抑え、かつスループットの要件の範囲内にクエリを抑えるために、タンブリング ウィンドウやホッピング ウィンドウの使用をお勧めします。
 
@@ -234,12 +224,9 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
 Power BI で承認が更新されると、承認の領域に緑色のアラートが表示され、問題が解決されたことがわかります。
 
-## <a name="get-help"></a>ヘルプの参照
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+* [Stream Analytics の出力](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

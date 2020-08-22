@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112638"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171241"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -60,6 +60,7 @@ ms.locfileid: "84112638"
 - Azure Blob Storage の場合、`lastModified` はコンテナーと BLOB に適用されますが、仮想フォルダーには適用されません。
 - `lastModified` フィルターは現在、子項目のフィルター処理に適用されますが、指定されたフォルダーまたはファイル自体には適用されません。
 - フォルダー/ファイルに対するワイルドカード フィルターは、Get Metadata アクティビティではサポートされていません。
+- バイナリ ファイル、JSON ファイル、または XML ファイルからメタデータを取得する場合、`structure` および `columnCount` はサポートされません。
 
 **リレーショナル データベース**
 

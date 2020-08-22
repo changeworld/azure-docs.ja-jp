@@ -4,6 +4,8 @@
   items:
     - name: Data Lake Analytics とは
       href: data-lake-analytics-overview.md
+    - name: Data Lake Analytics の新機能
+      href: data-lake-analytics-whats-new.md
 - name: はじめに
   items:
     - name: Azure portal
@@ -25,9 +27,12 @@
   items:
     - name: セキュリティ
       items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
           href: security-baseline.md
-- name: 方法
+- name: 操作方法ガイド
   items:
     - name: Data Lake Analytics の管理
       items:

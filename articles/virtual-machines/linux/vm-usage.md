@@ -3,113 +3,107 @@ title: Azure 仮想マシンの使用量について
 description: 仮想マシンの使用量の詳細について
 services: virtual-machines
 documentationcenter: ''
-author: mmccrory
-manager: gwallace
-editor: ''
-tags: azure-virtual-machine
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines-linux
-ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
-ms.author: memccror
-ms.openlocfilehash: fe3c8a3b5d63c67813a5098742392d5658e5c204
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 04536836c4d061249201c82f738aa41501f0847e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74034230"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828865"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
-Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)に関するページをご覧ください。
+Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../../cost-management-billing/understand/review-individual-bill.md)に関するページをご覧ください。
 
 ## <a name="download-your-usage-details"></a>使用量の詳細のダウンロード
-最初に、[使用量の詳細をダウンロード](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
+最初に、[使用量の詳細をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
 
 
-| フィールド             | 意味                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | サンプル値                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 使用日         | リソースが使用された日付。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  “11/23/2017”                                                                                                                                                                                                                                                                                                                                                     |
-| 測定 ID           | この使用量を占めるサービスのうち、最も上位のものを示します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | "Virtual Machines"                                                                                                                                                                                                                                                                                                                                               |
-| 測定サブカテゴリ | 課金測定の識別子です。 <ul><li>コンピューティング時間の使用量は、VM サイズ + OS (Windows、Windows 以外) + リージョンごとに測定されます。</li><li>Premium ソフトウェアの使用量は、ソフトウェアの種類ごとに測定されます。 Premium ソフトウェア イメージのほとんどについて、コア サイズごとに異なる測定があります。 詳細については、[コンピューティング価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/)をご覧ください。</li></ul>                                                                                                                                                                                                                                                                                                                                         | "2005544f-659d-49c9-9094-8e0aea1be3a5"                                                                                                                                                                                                                                                                                                                           |
-| 測定名         | Azure の各サービスに固有です。 コンピューティングについては、常に "コンピューティング時間" です。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | "コンピューティング時間"                                                                                                                                                                                                                                                                                                                                                  |
-| 測定リージョン       | データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |  "東日本"                                                                                                                                                                                                                                                                                                                                                       |
-| ユニット               | サービスが課金される単位を特定します。 コンピューティング リソースは時間単位で課金されます。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | "時間"                                                                                                                                                                                                                                                                                                                                                          |
-| 使用量           | その日に消費されたリソースの量。 コンピューティングについては、VM が実行されていた特定の時間に対して分単位で課金されます (最大 6 桁の精度)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    "1"、"0.5"                                                                                                                                                                                                                                                                                                                                                    |
-| リソースの場所  | リソースが実行されているデータ センターを特定します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "東日本"                                                                                                                                                                                                                                                                                                                                                        |
-| 使用サービス   | 使用した Azure プラットフォーム サービス。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft.Compute"                                                                                                                                                                                                                                                                                                                                              |
-| リソース グループ     | デプロイされたリソースが実行されるリソース グループ。 詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/virtual-machines/linux/vm-usage)」を参照してください。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    "MyRG"                                                                                                                                                                                                                                                                                                                                                        |
-| インスタンス ID        | リソースの識別子。 識別子には、リソースの作成時に指定した名前が含まれています。 VM については、インスタンス ID には、SubscriptionId、ResourceGroupName、および VMName (または、スケール セットの使用量についてはスケール セット名) が含まれます。                                                                                                                                                                                                                                                                                                                                                                                                                    | "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1"<br><br>or<br><br>"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1"                                                                                           |
-| Tags               | この列には、ユーザーが指定したリソース タグが含まれます。 タグは、課金記録のグループ化に使用できます。 [Virtual Machines にタグを付ける](tag.md)方法を確認してください。 Resource Manager VM でのみ使用できます。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{"myDepartment":"RD","myUser":"myName"}"                                                                                                                                                                                                                                                                                                                        |
-| 追加情報    | サービス固有のメタデータ。 VM については、追加情報フィールドに次のデータが設定されます。 <ul><li>イメージの種類: 実行した特定のイメージ。 以下の「イメージの種類」で、サポートされている文字列の完全な一覧を確認してください。</li><li>サービスの種類: デプロイしたサイズ。</li><li>VMName: VM の名前。 このフィールドは、スケール セット VM にのみ設定されます。 スケール セット VM の VM 名が必要な場合は、上記のインスタンス ID 文字列で確認できます。</li><li>UsageType: これが表す使用量の種類を指定します。<ul><li>ComputeHR は、Standard_D1_v2 など、基になる VM のコンピューティング時間の使用量です。</li><li>ComputeHR_SW は、VM が Microsoft R Server などの Premium ソフトウェアを使用している場合の、Premium ソフトウェア料金です。</li></ul></li></ul>    | Virtual Machines {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}<br><br>Virtual Machine Scale Sets {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}<br><br>Premium Software {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
+| フィールド | 意味 | サンプル値 | 
+|---|---|---|
+| 使用日 | リソースが使用された日付 | `11/23/2017` |
+| 測定 ID | この使用量を占めるサービスのうち、最も上位のものを示します| `Virtual Machines`|
+| 測定サブカテゴリ | 課金測定の識別子です。 <br><br> コンピューティング時間の使用量は、VM サイズ + OS (Windows、Windows 以外) + リージョンごとに測定されます。 <br><br> Premium ソフトウェアの使用量は、ソフトウェアの種類ごとに測定されます。 Premium ソフトウェア イメージのほとんどについて、コア サイズごとに異なる測定があります。 詳細については、[コンピューティング価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/)をご覧ください</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| 測定名| Azure の各サービスに固有です。 コンピューティングについては、常に "コンピューティング時間" です。| `Compute Hours`|
+| 測定リージョン| データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。|  `JA East`|
+| ユニット| サービスが課金される単位を特定します。 コンピューティング リソースは時間単位で課金されます。| `Hours`|
+| 使用量| その日に消費されたリソースの量。 コンピューティングについては、VM が実行されていた特定の時間に対して分単位で課金されます (最大 6 桁の精度)。| `1, 0.5`|
+| リソースの場所  | リソースが実行されているデータ センターを特定します。| `JA East`|
+| 使用サービス | 使用した Azure プラットフォーム サービス。| `Microsoft.Compute`|
+| リソース グループ | デプロイされたリソースが実行されるリソース グループ。 詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。|`MyRG`|
+| インスタンス ID | リソースの識別子。 識別子には、リソースの作成時に指定した名前が含まれています。 VM については、インスタンス ID には、SubscriptionId、ResourceGroupName、および VMName (または、スケール セットの使用量についてはスケール セット名) が含まれます。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>or<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Tags| この列には、ユーザーが指定したリソース タグが含まれます。 タグは、課金記録のグループ化に使用できます。 [Virtual Machines にタグを付ける](tag.md)方法を確認してください。 Resource Manager VM でのみ使用できます。| `{"myDepartment":"RD","myUser":"myName"}`|
+| 追加情報 | サービス固有のメタデータ。 VM については、追加情報フィールドに次のデータが設定されます。 <br><br> イメージの種類: 実行した特定のイメージ。 以下の「イメージの種類」で、サポートされている文字列の完全な一覧を確認してください。<br><br> サービスの種類: デプロイしたサイズ。<br><br> VMName: VM の名前。 このフィールドは、スケール セット VM にのみ設定されます。 スケール セット VM の VM 名が必要な場合は、上記のインスタンス ID 文字列で確認できます。<br><br> UsageType: これが表す使用量の種類を指定します。<br><br> ComputeHR は、Standard_D1_v2 など、基になる VM のコンピューティング時間の使用量です。<br><br> ComputeHR_SW は、VM が Microsoft R Server などの Premium ソフトウェアを使用している場合の、Premium ソフトウェア料金です。 | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium ソフトウェア<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>イメージの種類
 Azure ギャラリーの一部のイメージについては、イメージの種類が [追加情報] フィールドに設定されます。 これにより、ユーザーが仮想マシンにデプロイしたものを理解し、追跡できます。 デプロイしたイメージに基づいて、このフィールドに設定される値は次のとおりです。
-  - BitRock 
-  - Canonical 
-  - FreeBSD 
-  - Open Logic 
-  - Oracle 
-  - SLES for SAP 
-  - Windows Server 2012 R2 プレビューの SQL Server 14 プレビュー 
-  - SUSE
-  - SUSE Premium
-  - StorSimple Cloud Appliance 
-  - Red Hat
-  - Red Hat for SAP Business Applications     
-  - Red Hat for SAP HANA 
-  - Windows クライアント BYOL 
-  - Windows Server BYOL 
-  - Windows Server プレビュー 
+- BitRock 
+- Canonical FreeBSD 
+- Open Logic 
+- Oracle 
+- SLES for SAP 
+- Windows Server 2012 R2 プレビューの SQL Server 14 プレビュー 
+- SUSE
+- SUSE Premium
+- StorSimple Cloud Appliance 
+- Red Hat
+- Red Hat for SAP Business Applications     
+- Red Hat for SAP HANA 
+- Windows クライアント BYOL 
+- Windows Server BYOL 
+- Windows Server プレビュー 
 
 ## <a name="service-type"></a>サービスの種類
-[追加情報] フィールドのサービスの種類フィールドは、デプロイした VM サイズと正確に対応します。 Premium Storage VM (SSD ベース) と Premium Storage 以外の VM (HDD ベース) の価格は同じです。 Standard\_DS2\_v2 などの SSD ベースのサイズをデプロイする場合は、[測定サブカテゴリ] 列の SSD 以外のサイズ ('Standard\_D2\_v2 VM') と、[追加情報] フィールドの SSD サイズ ('Standard\_DS2\_v2') を確認します。
+[追加情報] フィールドのサービスの種類フィールドは、デプロイした VM サイズと正確に対応します。 Premium Storage VM (SSD ベース) と Premium Storage 以外の VM (HDD ベース) の価格は同じです。 Standard\_DS2\_v2 などの SSD ベースのサイズをデプロイすると、[測定サブカテゴリ] 列に SSD 以外のサイズ (`Standard\_D2\_v2 VM`) が表示され、[追加情報] フィールドに SSD サイズ (`Standard\_DS2\_v2`) が表示されます。
 
 ## <a name="region-names"></a>リージョン名
 使用量の詳細の [リソースの場所] フィールドに設定されているリージョン名は、Azure Resource Manager で使用されているリージョン名とは異なります。 リージョンの値のマッピングを次に示します。
 
-|    **Resource Manager のリージョン名**       |    **使用量の詳細のリージョン名**    |
-|--------------------------|------------------------------------------|
-|    australiaeast         |    オーストラリア東部                               |
-|    australiasoutheast    |    オーストラリア南東部                          |
-|    brazilsouth           |    ブラジル南部                              |
-|    CanadaCentral         |    カナダ中部                            |
-|    CanadaEast            |    カナダ東部                               |
-|    CentralIndia          |    インド中部                            |
-|    centralus             |    米国中部                            |
-|    chinaeast             |    中国東部                            |
-|    chinanorth            |    中国北部                           |
-|    eastasia              |    東アジア                             |
-|    eastus                |    米国東部                               |
-|    eastus2               |    米国東部 2                             |
-|    GermanyCentral        |    ドイツ中部                            |
-|    GermanyNortheast      |    ドイツ北東部                          |
-|    japaneast             |    東日本                               |
-|    japanwest             |    西日本                               |
-|    KoreaCentral          |    韓国中部                            |
-|    KoreaSouth            |    韓国南部                              |
-|    northcentralus        |    米国中北部                      |
-|    northeurope           |    北ヨーロッパ                          |
-|    southcentralus        |    米国中南部                      |
-|    southeastasia         |    東南アジア                        |
-|    SouthIndia            |    インド南部                              |
-|    UKNorth               |    英国北部                              |
-|    uksouth               |    英国南部                              |
-|    UKSouth2              |    英国南部 2                            |
-|    ukwest                |    英国西部                               |
-|    USDoDCentral          |    US DoD Central                        |
-|    USDoDEast             |    US DoD East                           |
-|    USGovArizona          |    USGov アリゾナ                         |
-|    usgoviowa             |    USGov アイオワ州                            |
-|    USGovTexas            |    USGov テキサス                           |
-|    usgovvirginia         |    USGov バージニア州                        |
-|    westcentralus         |    米国中西部                       |
-|    westeurope            |    西ヨーロッパ                           |
-|    WestIndia             |    インド西部                               |
-|    westus                |    米国西部                               |
-|    westus2               |    米国西部 2                             |
+| **Resource Manager のリージョン名** | **使用量の詳細のリージョン名** |
+|---|---|
+| australiaeast |オーストラリア東部|
+| australiasoutheast | オーストラリア南東部|
+| brazilsouth | ブラジル南部|
+| CanadaCentral | カナダ中部|
+| CanadaEast | カナダ東部|
+| CentralIndia | インド中部|
+| centralus | 米国中部|
+| chinaeast | 中国東部|
+| chinanorth | 中国北部|
+| eastasia | 東アジア|
+| eastus | 米国東部|
+| eastus2 | 米国東部 2|
+| GermanyCentral | ドイツ中部|
+| GermanyNortheast | ドイツ北東部|
+| japaneast | 東日本|
+| japanwest | 西日本|
+| KoreaCentral | 韓国中部|
+| KoreaSouth | 韓国南部|
+| northcentralus | 米国中北部|
+| northeurope | 北ヨーロッパ|
+| southcentralus | 米国中南部|
+| southeastasia | 東南アジア|
+| SouthIndia | インド南部|
+| UKNorth | 英国北部|
+| uksouth | 英国南部|
+| UKSouth2 | 英国南部 2|
+| ukwest | 英国西部|
+| USDoDCentral | US DoD Central|
+| USDoDEast | US DoD East|
+| USGovArizona | USGov アリゾナ|
+| usgoviowa | USGov アイオワ州|
+| USGovTexas | USGov テキサス|
+| usgovvirginia | USGov バージニア州|
+| westcentralus | 米国中西部|
+| westeurope | 西ヨーロッパ|
+| WestIndia | インド西部|
+| westus | 米国西部|
+| westus2 | 米国西部 2|
 
 
 ## <a name="virtual-machine-usage-faq"></a>仮想マシンの使用量に関する FAQ
@@ -132,7 +126,7 @@ ComputeHR は、基になるインフラストラクチャ コストの使用状
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Premium ソフトウェアに料金が発生してるかどうかを確認するには、どうすればよいですか。
 ニーズに最適な VM イメージを確認するときは、必ず [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute) をよく調べてください。 イメージには、ソフトウェア プラン料金があります。 "Free" と表示されている場合、ソフトウェアに対して追加コストは発生しません。 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>使用サービスにおける Microsoft.ClassicCompute と Microsoft.Compute の違いは何ですか。
-Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイしたクラシック リソースを表します。 Resource Manager でデプロイする場合、使用サービスには Microsoft.Compute が設定されます。 詳細については、[Azure のデプロイメント モデル](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)に関するページをご覧ください。
+Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイしたクラシック リソースを表します。 Resource Manager でデプロイする場合、使用サービスには Microsoft.Compute が設定されます。 詳細については、[Azure のデプロイメント モデル](../../azure-resource-manager/management/deployment-models.md)に関するページをご覧ください。
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>仮想マシンの使用量に対して、[InstanceID] フィールドが空白になるのはなぜですか。
 クラシック デプロイ モデルでデプロイする場合、InstanceID 文字列は使用できません。
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>VM のタグが使用量の詳細に表示されないのはなぜですか。
@@ -143,6 +137,4 @@ Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイし
 Premium Storage 対応の VM の料金は、Premium Storage 非対応の VM と同じです。 異なるのはストレージ コストのみです。 詳細については、[ストレージの価格ページ](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
-)」を参照してください。
-
+使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。

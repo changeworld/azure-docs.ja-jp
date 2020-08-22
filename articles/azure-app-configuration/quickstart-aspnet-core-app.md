@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027717"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373523"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -242,6 +242,8 @@ Azure Cloud Shell で作業している場合は、 *[Web プレビュー]* 、 
 ![[Web プレビュー] ボタンを見つける](./media/quickstarts/cloud-shell-web-preview.png)
 
 プレビュー用のポートを構成するよう求めるメッセージが表示されたら、「5000」と入力し、 *[開いて参照する]* を選択します。  Web ページには、"Data from Azure App Configuration" と表示されます。
+
+![クイックスタート アプリを起動する](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

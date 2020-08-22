@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 553fd4e49d274fcf4c25356764182d54b91149e4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121848"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036642"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
@@ -186,6 +186,8 @@ Microsoft AppSource でのオファー情報の表示例を次に示します。
 
 このセクションでは、顧客にオファーを表示するときに使用されるロゴや画像を指定できます。 画像はすべて .png 形式である必要があります。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
@@ -196,6 +198,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します。
 - **小** (48 x 48)
 - **大** (216 x 216)
 
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 
@@ -295,7 +298,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します。
     - **[未開始]** – セクションは着手されておらず、完了する必要があります。
     - **[未完了]** - 修正が必要なエラーがセクションにあり、追加の情報を入力する必要があります。 セクションに戻って更新してください。
     - **[完了]** – セクションが完了しています。必須のデータはすべて入力済みであり、エラーはありません。 オファーを送信するには、オファーのセクションがすべて完了状態でなければなりません。
-- **[認定の注意書き]** セクションで、アプリの理解に役立つ補足事項に加えて、テストの指示を認定チームに提供し、アプリが確実に正しくテストされるようにします。
+- **[認定の注意書き]** セクションで、アプリの理解に役立つ補足事項に加えて、テストの指示を認定チームに提供し、アプリが確実に正しくテストされるようにします。 テスト手順と最初の発行の完了の詳細については、「[AppSource Dynamics 365 Finance and Operations の機能検証](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation)」を参照してください。
 - **[送信]** を選択して、公開するためにオファーを送信する。 お客様が確認して承認できるようにオファーのプレビュー バージョンが利用可能になったら、それを知らせるメールが Microsoft から届きます。 パートナー センターに戻り、オファーに対して **[一般公開する]** を選択して、オファーを一般に公開します。
 
 ## <a name="next-step"></a>次のステップ

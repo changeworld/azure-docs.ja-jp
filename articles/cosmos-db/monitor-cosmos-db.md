@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850290"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130190"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB の監視
 
@@ -23,7 +23,7 @@ Azure リソースに依存するクリティカルなアプリケーション�
 
 * **Azure Cosmos DB ポータルからの監視:** Azure Cosmos アカウントの **[メトリック]** タブ内で使用可能なメトリックを使用して監視できます。 このタブのメトリックには、スループット、ストレージ、可用性、待機時間、一貫性、システム レベルのメトリックが含まれます。 既定では、これらのメトリックの保有期間は 7 日間です。 詳細については、この記事の「[Azure Cosmos DB から収集したデータの監視](#monitoring-from-azure-cosmos-db)」を参照してください。
 
-* **Azure Monitor のメトリックを使用した監視:** Azure Cosmos アカウントのメトリックを監視し、Azure Monitor からダッシュボードを作成することができます。 既定では、Azure Monitor は Azure Cosmos DB メトリックを収集するため、何も明示的に構成する必要はありません。 これらのメトリックは 1 分単位で収集されます。粒度は、選択したメトリックによって異なる場合があります。 既定では、これらのメトリックの保有期間は 30 日間です。 前のオプションで使用できるほとんどのメトリックも、これらのメトリックで利用できます。 詳細については、この記事の「[メトリック データの分析」](#analyze-metric-data)を参照してください。
+* **Azure Monitor のメトリックを使用した監視:** Azure Cosmos アカウントのメトリックを監視し、Azure Monitor からダッシュボードを作成することができます。 既定では、Azure Monitor は Azure Cosmos DB メトリックを収集するため、何も明示的に構成する必要はありません。 これらのメトリックは 1 分単位で収集されます。粒度は、選択したメトリックによって異なる場合があります。 既定では、これらのメトリックの保有期間は 30 日間です。 前のオプションで使用できるほとんどのメトリックも、これらのメトリックで利用できます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 詳細については、この記事の「[メトリック データの分析」](#analyze-metric-data)を参照してください。
 
 * **Azure Monitor の診断ログを使用した監視:** Azure Cosmos アカウントのログを監視し、Azure Monitor からダッシュボードを作成することができます。 1 秒単位で発生するイベントやトレースなどのテレメトリは、ログとして格納されます。 たとえば、コンテナーのスループットが変化した場合、Cosmos アカウントのプロパティが変更されます。これらのイベントはログ内でキャプチャされます。 収集したデータに対してクエリを実行することで、これらのログを分析できます。 詳細については、この記事の「[ログ データの分析](#analyze-log-data)」を参照してください。
 

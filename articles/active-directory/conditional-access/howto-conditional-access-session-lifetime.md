@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552114"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874777"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -106,8 +106,6 @@ Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azu
 ![サインイン頻度が構成された条件付きアクセス ポリシー](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
 Azure AD 登録済み Windows デバイスでは、デバイスへのサインインはプロンプトと見なされます。 たとえば、Office アプリのサインイン頻度を 24 時間に構成している場合、Azure AD 登録済み Windows デバイスのユーザーは、デバイスにサインインすることによって、サインイン頻度ポリシーを満たし、Office アプリを開いたときに再度プロンプトされることはありません。
-
-同じブラウザー セッションで実行している別の Web アプリに異なるサインイン頻度を構成している場合は、同じブラウザー セッションで実行しているすべてのアプリが単一のセッション トークンを共有するので、最も厳しいポリシーが両方のアプリに適用されます。
 
 ### <a name="policy-2-persistent-browser-session"></a>ポリシー 2:永続的ブラウザー セッション
 

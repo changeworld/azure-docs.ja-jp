@@ -1,19 +1,19 @@
 ---
 title: Weather Services の概念 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Weather Services に適用される概念について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f38ef2c337564d2b36d3939b3ed03130437e35ea
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221767"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132111"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
 

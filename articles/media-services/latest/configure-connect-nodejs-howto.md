@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8e54fec584f8961dfc44a7c93f95772ea03e1259
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74896095"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424428"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
@@ -27,7 +28,7 @@ ms.locfileid: "74896095"
 ## <a name="prerequisites"></a>前提条件
 
 - [Node.js](https://nodejs.org/en/download/) をインストールします。
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
 
 > [!IMPORTANT]
 > [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
@@ -70,7 +71,7 @@ npm install azure-arm-mediaservices
 
 1. 好みのエディターを使用して .js ファイルを作成します。
 1. ファイルを開き、次のコードを貼り付けます。
-1. "endpoint config" セクションの値を、[アクセス API](access-api-cli-how-to.md) から取得した値に設定します。
+1. "endpoint config" セクションの値を、[アクセス API](./access-api-howto.md) から取得した値に設定します。
 
 ```js
 'use strict';
@@ -131,4 +132,3 @@ node index.js
 ## <a name="next-steps"></a>次のステップ
 
 Media Services の [Node.js リファレンス](/javascript/api/overview/azure/mediaservices/management) ドキュメントを調べて、node.js で Media Services API を使用する方法が示されている[サンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)をご覧ください。
-

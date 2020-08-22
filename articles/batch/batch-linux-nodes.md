@@ -3,13 +3,13 @@ title: 仮想マシンのコンピューティング ノードで Linux を実�
 description: Azure Batch の Linux 仮想マシンのプールで並列コンピューティング ワークロードを処理する方法について説明します。
 ms.topic: how-to
 ms.date: 06/01/2018
-ms.custom: H1Hack27Feb2017, tracking-python
-ms.openlocfilehash: 05e23093a00eab70db683c10eae59ef27152d2f7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-python
+ms.openlocfilehash: bc4c98472609ef906d59159fb31d396071bf6a8d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145050"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853010"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 

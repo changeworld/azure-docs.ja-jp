@@ -5,18 +5,18 @@ description: Azure Machine Learning でモデルの公平性を評価する方�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 4f791ef9e18032ce6773f4262586431e693b43b2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: ec0c39bad8a7c12822e5ebf5cd4a958aa8653050
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206728"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844645"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning と Fairlearn オープンソース パッケージを使用して ML モデルの公平性を評価する (プレビュー)
 
@@ -142,7 +142,7 @@ pip install fairlearn==0.4.6
         return registered_model.id
 
     # Call the register_model function 
-    lr_reg_id = register_model("fairness_linear_regression", unmitigated_predictor)
+    lr_reg_id = register_model("fairness_linear_regression", lr_predictor)
     ```
 
 3. 公平性のメトリックを事前計算します。
@@ -152,7 +152,7 @@ pip install fairlearn==0.4.6
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
     sf = { 'Race': A_test.Race, 'Sex': A_test.Sex}
-    ys_pred = unmitigated_predictor.predict(X_test)
+    ys_pred = { lr_reg_id:lr_predictor.predict(X_test) }
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
     dash_dict = _create_group_metric_set(y_true=Y_test,
@@ -207,7 +207,7 @@ pip install fairlearn==0.4.6
 
     視覚化ダッシュボードとその内容の詳細については、Fairlearn の[ユーザー ガイド](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)を参照してください。
 
-s## 複数のモデルの公平性に関する分析情報をアップロードする
+## <a name="upload-fairness-insights-for-multiple-models"></a>複数のモデルの公平性に関する分析情報をアップロードする
 
 複数のモデルを比較し、公平性の評価がどのように異なるかを知りたい場合は、複数のモデルを視覚化ダッシュボードに渡して、そのパフォーマンスと公平性のトレードオフをナビゲートすることができます。
 

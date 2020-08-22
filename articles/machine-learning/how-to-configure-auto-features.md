@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 05/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 94595bac2febdef1d3739703f0fa49c9ef15f218
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205698"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166622"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動機械学習での特徴量化
 
@@ -64,7 +64,7 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 | ------------- | ------------- |
 |**高カーディナリティまたは差異なしの特徴の削除*** |これらの特徴をトレーニング セットと検証セットから削除します。 これには、まったく値が存在しない特徴、すべての行の値が同じである特徴、高いカーディナリティ (ハッシュ、ID、GUID など) の特徴に適用します。|
 |**欠損値の補完*** |数値特徴の場合、その列の平均値で補完します。<br/><br/>カテゴリ特徴の場合、出現回数が最も多い値で補完します。|
-|**その他の特徴の生成*** |DateTime の特徴:年、月、日、曜日、年の通算日、四半期、年の通算週、時間、分、秒。<br/><br/>テキストの特徴:ユニグラム、バイグラム、トライグラムに基づく期間の頻度。|
+|**その他の特徴の生成*** |DateTime の特徴:年、月、日、曜日、年の通算日、四半期、年の通算週、時間、分、秒。<br><br> *予測タスクの場合*、次の追加の DateTime 機能が作成されます:ISO の年、半期、カレンダーの月の文字列、週、曜日の文字列、四半期の日、年の日、午前/午後 (時間が正午より前の場合は 0、それ以外の場合は 1)、午前/午後の文字列、時間 (12 時間ベース)<br/><br/>テキストの特徴:ユニグラム、バイグラム、トライグラムに基づく期間の頻度。 詳細については、[BERT を使用してこれを実行する方法](#bert-integration)に関する記事を参照してください。|
 |**変換とエンコード***|一意の値がほとんどない数値特徴を、カテゴリ特徴に変換します。<br/><br/>カーディナリティの低いカテゴリ特徴の場合、ワンホット エンコードが使用されます。 カーディナリティが高いカテゴリ特徴の場合、ワンホット ハッシュ エンコードが使用されます。|
 |**ワードの埋め込み**|事前トレーニングされたモデルを使用してテキスト トークンのベクトルをセンテンス ベクトルに変換するテキスト特性化機能です。 ドキュメント内の各ワードの埋め込みベクトルは、ドキュメント特徴ベクトルを生成するために他のものと集約されます。|
 |**ターゲット エンコード**|カテゴリ特徴の場合、このステップは、回帰の問題について各カテゴリを平均ターゲット値にマップされます。分類の問題については、各クラスのクラス確率にマップされます。 マッピングの過剰適合および疎データ カテゴリによって発生するノイズを削減するために、頻度ベースの重み付けと k フォールド クロス検証が適用されます。|
@@ -106,7 +106,7 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 **欠損特徴量値の補完** |Passed <br><br><br> 完了| トレーニング データで、不足している機能の値が検出されませんでした。 [不足している値の補完](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)の詳細を確認してください。 <br><br> 不足している特徴の値が、トレーニング データで検出され、補完されました。
 **高カーディナリティの特徴量の処理** |Passed <br><br><br> 完了| 入力が分析され、高カーディナリティの特徴は検出されませんでした。 <br><br> 高カーディナリティの特徴が入力で検出され、処理されました。
 **検証分割処理** |完了| 検証構成は `'auto'` に設定されており、トレーニング データには "*20,000 行未満*" が含まれていました。 <br> トレーニング済みモデルの各イテレーションは、クロス検証を使用して検証されました。 [検証データ](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)の詳細を確認してください。 <br><br> 検証構成は `'auto'` に設定されており、トレーニング データには "*20,000 行超*" が含まれていました。 <br> 入力データはトレーニング データセットと検証データセットに分割され、モデルが検証されます。
-**クラス均衡の検出** |Passed <br><br><br><br><br> 通知済み | 入力が分析され、すべてのクラスがトレーニング データ内で均衡が取られます。 サンプルの数と比率によって測定され、データセット内で各クラスに適正な表現がある場合、データセットは均衡が取れていると見なされます。 <br><br><br> 入力で、不均衡なクラスが検出されました。 モデルのバイアスを修正するには、バランスの問題を修正します。 [不均衡なデータ](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)の詳細を確認してください。
+**クラス均衡の検出** |Passed <br><br>通知済み <br><br>完了 | 入力が分析され、すべてのクラスがトレーニング データ内で均衡が取られます。 サンプルの数と比率によって測定され、データセット内で各クラスに適正な表現がある場合、データセットは均衡が取れていると見なされます。 <br><br><br> 入力で、不均衡なクラスが検出されました。 モデルのバイアスを修正するには、バランスの問題を修正します。 [不均衡なデータ](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)の詳細を確認してください。<br><br><br> 入力で不均衡なクラスが検出され、スイープ ロジックによって分散の適用が決定されました。
 **メモリの問題の検出** |Passed <br><br><br><br> 完了 |<br> 選択された値 (期間、ラグ、ローリング ウィンドウ) が分析され、潜在的なメモリ不足の問題は検出されませんでした。 時系列[予測構成](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)の詳細を確認してください。 <br><br><br>選択された値 (期間、ラグ、ローリング ウィンドウ) が分析され、実験でメモリが不足する可能性があります。 ラグまたはローリング ウィンドウの構成がオフになっています。
 **頻度の検出** |Passed <br><br><br><br> 完了 |<br> 時系列が分析され、すべてのデータ ポイントが検出済みの頻度でアラインされます。 <br> <br> 時系列が分析され、検出された頻度にアラインしないデータ ポイントが検出されました。 このようなデータ ポイントはデータセットから削除されました。 [時系列予測のデータの準備](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)の詳細を確認してください。
 
@@ -114,13 +114,13 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 
 ML モデルのトレーニングに使用されたデータと特徴から適切な予測が得られるよう、特徴量化の設定をカスタマイズすることができます。
 
-特徴量化をカスタマイズするには、`AutoMLConfig` オブジェクトで  `"featurization": FeaturizationConfig` を指定します。 Azure Machine Learning Studio を実験に使用している場合、[方法に関する記事](how-to-use-automated-ml-for-ml-models.md#customize-featurization)を参照してください。
+特徴量化をカスタマイズするには、`AutoMLConfig` オブジェクトで  `"featurization": FeaturizationConfig` を指定します。 Azure Machine Learning Studio を実験に使用している場合、[方法に関する記事](how-to-use-automated-ml-for-ml-models.md#customize-featurization)を参照してください。 予測のタスクの種類用に特徴量化をカスタマイズするには、[予測の方法](how-to-auto-train-forecast.md#customize-featurization)に関する記事を参照してください。
 
 サポートされるカスタマイズは次のとおりです。
 
 |カスタマイズ|定義|
 |--|--|
-|**列の目的の更新**|指定した列の特徴の種類をオーバーライドします。|
+|**列の目的の更新**|指定した列の自動検出された特徴の種類をオーバーライドします。|
 |**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在、*Imputer* (平均値、最頻値、中央値) と *HashOneHotEncoder* がサポートされています。|
 |**列の削除** |特徴量化から削除する列を指定します。|
 |**ブロック トランスフォーマー**| 特徴量化プロセスで使用されるブロック トランスフォーマーを指定します。|
@@ -138,6 +138,52 @@ featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strate
 featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
 featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
+
+## <a name="bert-integration"></a>BERT 統合 
+[BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) は、自動 ML の特徴量化層で使用されます。 この層では、列にフリー テキストやその他の種類のデータ (タイムスタンプや単純な数値など) が含まれているかどうかを検出し、それに応じて特徴量化を行います。 BERT の場合、ユーザーが指定したラベルを使用してモデルをファインチューニング/トレーニングした後、タイムスタンプベースの特徴 (曜日など) や多くの一般的なデータセットに含まれている数値などの他の特徴と一緒に、特徴としてドキュメントの埋め込み (BERT の場合、これらは特殊な [CLS] トークンに関連付けられた最終的な非表示状態です) を出力します。 
+
+BERT を有効にするには、トレーニングに GPU コンピューティングを使用する必要があります。 CPU コンピューティングを使用した場合、AutoML は、BERT ではなく、BiLSTM DNN 特徴抽出器を有効にします。 BERT を呼び出すには、automl_settings に "enable_dnn:True" を設定し、GPU コンピューティング (例: vm_size = "STANDARD_NC6"、またはそれ以上の GPU) を使用する必要があります。 例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)をご覧ください。
+
+BERT の場合、AutoML は次の手順を実行します (これらの項目が発生するためには、automl_settings に "enable_dnn:True" を設定する必要があることに注意してください)。
+
+1. すべてのテキスト列のトークン化を含む前処理 (最終的なモデルの特徴量化の概要には "StringCast" トランスフォーマーが表示されます)。 `get_featurization_summary()` メソッドを使用してモデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)を参照してください。
+
+```python
+text_transformations_used = []
+for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
+    text_transformations_used.extend(column_group['Transformations'])
+text_transformations_used
+```
+
+2. すべてのテキスト列を 1 つのテキスト列に連結します。そのため、最終的なモデルには "StringConcatTransformer" が表示されます。 
+
+> [!NOTE]
+> BERT の実装では、トレーニング サンプルのテキストの長さの合計は 128 トークンに制限されています。 つまり、すべてのテキスト列を連結した長さは、最大で 128 トークンになることが理想です。 理想的には、複数の列がある場合は、この条件が満たされるように各列を切り詰める必要があります。 たとえば、データに 2 つのテキスト列がある場合は、データを AutoML に供給する前に、両方のテキスト列を切り詰めてそれぞれ 64 トークンになるようにする必要があります (最終的に連結されたテキスト列で、両方の列を等しく表す必要があると仮定した場合)。 長さが 128 トークンを超える連結列の場合、BERT のトークナイザー層により、この入力は 128 トークンに切り詰められます。
+
+3. 特徴量のスイープ手順で、AutoML は、BERT を、データ サンプルのベースライン (bag-of-words 特徴量) と比較し、BERT によって精度が向上するかどうかを判断します。 AutoML は、BERT のパフォーマンスがベースラインよりも優れていると判断すると、最適な特徴量化戦略としてテキストの特徴量化に BERT を使用して、データ全体の特徴量化を進めます。 その場合、最終的なモデルには "PretrainedTextDNNTransformer" と表示されます。
+
+BERT は通常、他のほとんどの特徴抽出器よりも長く実行されます。 処理速度を上げるには、クラスターにより多くのコンピューティング リソースを提供します。 AutoML は、可能な場合、BERT トレーニングを複数のノードに分散します (最大 8 ノード)。 これを行うには、[max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) を 1 より大きい値に設定します。 パフォーマンスを向上させるには、RDMA 機能 ("STANDARD_NC24r"、"STANDARD_NC24rs_V3" など) を持つ SKU を使用することをお勧めします
+
+AutoML では現在約 100 の言語がサポートされており、データセットの言語に応じて、適切な BERT モデルが選択されます。 ドイツ語のデータの場合は、ドイツ語の BERT モデルが使用されます。 英語の場合は、英語の BERT モデルが使用されます。 その他のすべての言語では、多言語 BERT モデルが使用されます。
+
+次のコードでは、データセットの言語が "deu" ([ISO 分類](https://iso639-3.sil.org/code/deu)でドイツ語を示す 3 文字の言語コード) に指定されているため、ドイツ語の BERT モデルがトリガーされます。
+
+```python
+from azureml.automl.core.featurization import FeaturizationConfig
+
+featurization_config = FeaturizationConfig(dataset_language='deu')
+
+automl_settings = {
+    "experiment_timeout_minutes": 120,
+    "primary_metric": 'accuracy', 
+# All other settings you want to use 
+    "featurization": featurization_config,
+    
+  "enable_dnn": True, # This enables BERT DNN featurizer
+    "enable_voting_ensemble": False,
+    "enable_stack_ensemble": False
+}
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -2,13 +2,13 @@
 title: チュートリアル:Azure VMware Solution (AVS) で VM をデプロイするためのコンテンツ ライブラリを作成する
 description: この Azure VMware Solution (AVS) のチュートリアルでは、コンテンツ ライブラリを作成して、AVS プライベート クラウドに VM をデプロイします。
 ms.topic: tutorial
-ms.date: 07/10/2020
-ms.openlocfilehash: bdea4304baa92fadc4d6c3d0060f99cf37af5f77
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/16/2020
+ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259423"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612794"
 ---
 # <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>チュートリアル:Azure VMware Solution (AVS) で VM をデプロイするためのコンテンツ ライブラリを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "86259423"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、NSX-T 論理スイッチ セグメントと管理された DHCP サービスが必要です。  詳細については、「[Azure VMWare Solution (AVS) プレビューで DHCP を管理する方法](manage-dhcp.md)」を参照してください。
+このチュートリアルを完了するには、NSX-T 論理スイッチ セグメントと管理された DHCP サービスが必要です。  詳細については、「[Azure VMware Solution (AVS) プレビューで DHCP を管理する方法](manage-dhcp.md)」を参照してください。
 
 ## <a name="create-a-content-library"></a>コンテンツ ライブラリを作成する
 

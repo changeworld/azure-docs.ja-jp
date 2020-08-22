@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391827"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986273"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
-このチュートリアルでは、Azure Digital Twins インスタンスとやり取りするためのコマンド ライン クライアント アプリケーションを実装したサンプル アプリケーションを紹介します。 このクライアント アプリは、[クライアント アプリのコーディングに関するチュートリアル](tutorial-code.md)で作成したアプリに似ています。
+このチュートリアルでは、Azure Digital Twins インスタンスとやり取りするためのコマンド ライン クライアント アプリケーションを実装したサンプル アプリケーションを紹介します。 このクライアント アプリは、"[*クライアント アプリのコーディングに関するチュートリアル*](tutorial-code.md)" で作成したアプリに似ています。
 
 このサンプルを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins アクションを実行することができます。 サンプル コードを見て、Azure Digital Twins の API について学んだり、サンプル プロジェクトに自由に変更を加えながら、独自のコマンドを実装する練習をしたりすることもできます。
 
@@ -78,7 +78,7 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
 > 独自のモデルを作成してみたい場合は、*Room* モデルのコードを新しいファイルに貼り付けて、 *.json* という拡張子で *AdtSampleApp\SampleClientApp\Models* フォルダーに保存してください。 その後、望みのものを表現するために、自由にプロパティやリレーションシップを追加してみましょう。 このフォルダーにある他のサンプル モデルも参考にしてください。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 DTDL パーサー ライブラリをベースに構築されています。詳細については、[方法:モデルの解析および検証](how-to-use-parser.md)に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
 
 ### <a name="get-started-with-the-command-line-app"></a>コマンド ライン アプリを使ってみる
 
@@ -129,7 +129,7 @@ CreateModels Room
 ```
 
 モデルを上書きすることはできないので、今度はサービス エラーが返されます。
-既存のモデルを削除する方法について詳しくは、[カスタム モデルを管理する方法](how-to-manage-model.md)に関するページを参照してください。
+既存のモデルを削除する方法について詳しくは、"[*カスタム モデルを管理する方法*](how-to-manage-model.md)" に関するページを参照してください。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -285,7 +285,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルのプロジェクトは、次のチュートリアル (「[チュートリアル: エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)」) の土台となっています。 次のチュートリアルに進む場合は、ここで設定したリソースを残しておいてください。この Azure Digital Twins インスタンスと構成済みのサンプル アプリを引き続き使用します。
+このチュートリアルのプロジェクトは、次のチュートリアル ("[*エンド ツー エンドのソリューションを接続する方法のチュートリアル*](tutorial-end-to-end.md)") の土台となっています。 次のチュートリアルに進む場合は、ここで設定したリソースを残しておいてください。この Azure Digital Twins インスタンスと構成済みのサンプル アプリを引き続き使用します。
 * この場合、サンプル アプリの `DeleteAllTwins` コマンドと `DeleteAllModels` コマンドをそれぞれ使用して、ツインとモデルをインスタンスから消去してください。 次のチュートリアルに備えて白紙の状態にすることができます。
 
 このチュートリアルで作成したリソースが不要であれば、次の手順に従って削除してください。
@@ -316,10 +316,10 @@ az ad app delete --id <your-application-ID>
 次のチュートリアルに進み、サンプル コマンド ライン アプリと他の Azure サービスとを組み合わせて、データ ドリブンのエンド ツー エンドのシナリオに取り組んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)
+> [*チュートリアル:エンド ツー エンドのソリューションを接続する*](tutorial-end-to-end.md)"
 
 または、次のチュートリアルの概念ドキュメントを参照し、ここで扱った要素についてさらに理解を深めましょう。
-* [概念:カスタム モデル](concepts-models.md)
+* "[*概念: カスタム モデル*](concepts-models.md)"
 
 また、次のハウツー記事を足がかりとして、このチュートリアルで学んだプロセスについてさらに詳しい知識を身に付けることもできます。
-* [Azure Digital Twins CLI を使用する](how-to-use-cli.md)
+* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)"

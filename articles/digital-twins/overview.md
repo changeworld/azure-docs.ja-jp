@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0e17ecea6c85329b22310ebe1d06e2fe63cdd773
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257992"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042821"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
-**Azure Digital Twins** は、環境全体の包括的なデジタル モデルの作成を可能にする IoT プラットフォームです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
+**Azure Digital Twins** は、環境全体のデジタル モデルに基づいたナレッジ グラフの作成を可能にする、サービスとしてのプラットフォーム (PaaS) オファリングです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
 
 Azure Digital Twins に加えて、ご自分の分野の専門知識を活用して、次のようなカスタマイズされた接続済みソリューションを構築します。
 * あらゆる環境をモデル化し、デジタル ツインをスケーラブルで安全な方法で実現する
@@ -44,7 +44,7 @@ DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plu
 
 Azure Digital Twins のデジタル モデルは、現実世界のライブの最新の表現です。 カスタム DTDL モデルのリレーションシップを使用して、ご自分の環境を表す**ライブ グラフ**にツインを接続します。
 
-Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](https://github.com/Azure-Samples/digital-twins-explorer) を使用して確認できます。
+Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
 
 次に、視覚化の例を示します。
 
@@ -94,16 +94,16 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 > [!IMPORTANT]
 > 現在、Azure Digital Twins はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳細については、「[*Microsoft Azure プレビューの追加使用条件*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-パブリック プレビュー期間中の Azure Digital Twins の制限の一覧については、[参照:パブリック プレビュー サービスの制限](reference-service-limits.md)に関するページを参照してください。
+パブリック プレビュー期間中の Azure Digital Twins の制限の一覧については、[*参照:パブリック プレビューのサービスの制限*](reference-service-limits.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 以前のプレビュー リリースの Azure Digital Twins を使用していた場合は、次の変更点を確認してください。
-* [概要:以前のリリースとの違い](overview-differences.md)
+* "[*概要: 以前のリリースとの違い*](overview-differences.md)
 
 または、最初のチュートリアルに進み、Azure Digital Twins の使用について詳しく確認してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:クライアント アプリをコーディングする](tutorial-code.md)
+> [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)

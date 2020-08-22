@@ -3,18 +3,18 @@ title: REST API を使用して Azure ファイル共有をバックアップす
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、REST API を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710611"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036744"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API で Azure Backup を使用して Azure ファイル共有をバックアップする
 
 この記事では、REST API で Azure Backup を使用して Azure ファイル共有をバックアップする方法について説明します。
 
-この記事では、ファイル共有のバックアップを構成するための Recovery Services コンテナーとポリシーを既に作成してあるものとします。 まだ行っていない場合、新しいコンテナーとポリシーの作成については、[コンテナーの作成](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault)と[ポリシーの作成する](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)に関する REST API のチュートリアルを参照してください。
+この記事では、ファイル共有のバックアップを構成するための Recovery Services コンテナーとポリシーを既に作成してあるものとします。 まだ行っていない場合、新しいコンテナーとポリシーの作成については、[コンテナーの作成](./backup-azure-arm-userestapi-createorupdatevault.md)と[ポリシーの作成する](./backup-azure-arm-userestapi-createorupdatepolicy.md)に関する REST API のチュートリアルを参照してください。
 
 この記事では、次のリソースを使用します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "84710611"
 
 ### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>保護されていない Azure ファイル共有のストレージ アカウントを検出する
 
-コンテナーでは、Recovery Services コンテナーにバックアップできるファイル共有が存在するサブスクリプション内のすべての Azure ストレージ アカウントを検出する必要があります。 これは、[refresh 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 この非同期の *POST* 操作により、コンテナーによって、現在のサブスクリプション内で保護されていないすべての Azure ファイル共有の最新の一覧が取得されて、"キャッシュ" されます。 ファイル共有が "キャッシュ" されると、Recovery Services でファイル共有にアクセスして保護できるようになります。
+コンテナーでは、Recovery Services コンテナーにバックアップできるファイル共有が存在するサブスクリプション内のすべての Azure ストレージ アカウントを検出する必要があります。 これは、[refresh 操作](/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 この非同期の *POST* 操作により、コンテナーによって、現在のサブスクリプション内で保護されていないすべての Azure ファイル共有の最新の一覧が取得されて、"キャッシュ" されます。 ファイル共有が "キャッシュ" されると、Recovery Services でファイル共有にアクセスして保護できるようになります。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
@@ -56,7 +56,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Responses
 
-"refresh" 操作は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
+"refresh" 操作は[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときに 202 (Accepted)、その操作が完了したときに 200 (OK)。
 
@@ -106,9 +106,9 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Recovery Services コンテナーで保護できるストレージ アカウントの一覧を取得する
+### <a name="get-list-of-storage-accounts-with-file-shares-that-can-be-backed-up-with-recovery-services-vault"></a>Recovery Services コンテナーでバックアップできるファイル共有を持つストレージ アカウントの一覧を取得する
 
-"キャッシュ" が完了していることを確認するには、そのサブスクリプションで保護可能なすべてのストレージ アカウントの一覧を表示します。 その後、応答で目的のストレージ アカウントを見つけます。 これを行うには、[GET ProtectableContainers](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) 操作を使用します。
+"キャッシュ" が完了していることを確認するには、Recovery Services コンテナーにバックアップできるファイル共有が存在するサブスクリプション内のすべてのストレージ アカウントの一覧を表示します。 その後、応答で目的のストレージ アカウントを見つけます。 これを行うには、[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list) 操作を使用します。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -160,7 +160,7 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>ストレージ アカウントを Recovery Services コンテナーに登録する
 
-このステップは、前にストレージ アカウントをコンテナーに登録していない場合にのみ必要です。 コンテナーへの登録は、[ProtectionContainers-Register 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)を使用して行うことができます。
+このステップは、前にストレージ アカウントをコンテナーに登録していない場合にのみ必要です。 コンテナーへの登録は、[ProtectionContainers-Register 操作](/rest/api/backup/protectioncontainers/register)を使用して行うことができます。
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -209,7 +209,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
  }
 ```
 
-要求本文と他の詳細の定義の完全な一覧については、「[保護コンテナー - 登録](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)」をご覧ください。
+要求本文と他の詳細の定義の完全な一覧については、「[保護コンテナー - 登録](/rest/api/backup/protectioncontainers/register#azurestoragecontainer)」をご覧ください。
 
 これは非同期操作であり、次の 2 つの応答が返されます: 操作が受け入れられると "202 Accepted"、操作が完了すると "200 OK"。  操作の状態を追跡するには、Location ヘッダーを使用して操作の最新の状態を取得します。
 
@@ -241,7 +241,7 @@ protectionContainers/StorageContainer;Storage;AzureFiles;testvault2",
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>ストレージ アカウントで保護されていないすべてのファイル共有を照会する
 
-[保護コンテナー - 照会](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire)操作を使用して、ストレージ アカウント内にある保護可能な項目について照会できます。 これは非同期操作であり、結果を追跡するには Location ヘッダーを使用する必要があります。
+[保護コンテナー - 照会](/rest/api/backup/protectioncontainers/inquire)操作を使用して、ストレージ アカウント内にある保護可能な項目について照会できます。 これは非同期操作であり、結果を追跡するには Location ヘッダーを使用する必要があります。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -276,7 +276,7 @@ Date  : Mon, 27 Jan 2020 10:53:05 GMT
 
 ### <a name="select-the-file-share-you-want-to-back-up"></a>バックアップするファイル共有を選択する
 
-[GET backupprotectableItems](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) 操作を使用して、サブスクリプションに存在するすべての保護可能な項目の一覧を表示し、バックアップ対象のファイル共有を探すことができます。
+[GET backupprotectableItems](/rest/api/backup/backupprotectableitems/list) 操作を使用して、サブスクリプションに存在するすべての保護可能な項目の一覧を表示し、バックアップ対象のファイル共有を探すことができます。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
@@ -351,7 +351,7 @@ Status Code:200
 
 ### <a name="enable-backup-for-the-file-share"></a>ファイル共有のバックアップを有効にする
 
-関連するファイル共有をフレンドリ名で "識別した" 後、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細を確認する方法については、[ポリシーの一覧取得 API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) に関する記事を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)を参照してください。
+関連するファイル共有をフレンドリ名で "識別した" 後、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細を確認する方法については、[ポリシーの一覧取得 API](/rest/api/backup/backuppolicies/list) に関する記事を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](./backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。
 
 保護を有効にすることは、"保護された項目" を作成する非同期の *PUT* 操作です。
 
@@ -471,7 +471,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 | ---------- | -------------------------- | --------------------------------- |
 | Properties | AzurefilesharebackupReques | BackupRequestResource プロパティ |
 
-要求本文の定義の完全な一覧およびその他の詳細については、[保護された項目のバックアップをトリガーすることに関する REST API ドキュメント](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)を参照してください。
+要求本文の定義の完全な一覧およびその他の詳細については、[保護された項目のバックアップをトリガーすることに関する REST API ドキュメント](/rest/api/backup/backups/trigger#request-body)を参照してください。
 
 要求本文の例
 
@@ -489,7 +489,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="responses"></a>Responses
 
-オンデマンド バックアップのトリガーは[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)として扱われます。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
+オンデマンド バックアップのトリガーは[非同期操作](../azure-resource-manager/management/async-operations.md)として扱われます。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときに 202 (Accepted)、その操作が完了したときに 200 (OK)。
 
@@ -540,7 +540,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-バックアップ ジョブは実行時間が長い操作のため、[REST API を使用したジョブの監視に関するドキュメント](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)で説明されているように、ジョブを追跡する必要があります。
+バックアップ ジョブは実行時間が長い操作のため、[REST API を使用したジョブの監視に関するドキュメント](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明されているように、ジョブを追跡する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

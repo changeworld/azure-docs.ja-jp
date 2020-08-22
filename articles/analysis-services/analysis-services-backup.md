@@ -4,17 +4,18 @@ description: この記事では、モデルのメタデータとデータを Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: references_regions
+ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871300"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506997"
 ---
-# <a name="backup-and-restore"></a>バックアップと復元
+# <a name="analysis-services-database-backup-and-restore"></a>Analysis Services データベースのバックアップと復元
 
 Azure Analysis Services の表形式モデル データベースのバックアップは、オンプレミスの Analysis Services の場合とほぼ同じです。 主な違いは、バックアップ ファイルの保存場所です。 バックアップ ファイルは、[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)のコンテナーに保存する必要があります。 既存のストレージ アカウントとコンテナーを使用できるほか、ご利用のサーバーのストレージを構成する際にストレージ アカウントとコンテナーを作成することもできます。
 

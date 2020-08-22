@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080926"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 
-エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。 たとえば、MP4 ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードし、サムネイルを作成し、オーバーレイを作成します。 タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、およびその他のファイルが含まれます。 出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ JSON ファイルの名前は、`<source_file_name>_manifest.json` (`BigBuckBunny_manifest.json` など) になります。  
+エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。 たとえば、MP4 ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードし、サムネイルを作成し、オーバーレイを作成します。 タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、およびその他のファイルが含まれます。 出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ JSON ファイルの名前は、`<source_file_name>_manifest.json` (`BigBuckBunny_manifest.json` など) になります。 ソース ファイル名 (切り詰めなし) を見つけるには、すべての *_metadata.json をスキャンして、その中のファイルパス文字列のクエリを実行する必要があります。
 
 Media Services では、メタデータを生成するために入力資産は事前にスキャンされません。 入力メタデータは、入力資産がジョブで処理されるときに、成果物としてのみ生成されます。 そのため、この成果物は、出力資産に書き込まれます。 入力資産と出力資産のメタデータの生成には、異なるツールが使用されます。 したがって、入力メタデータには、出力メタデータとは若干異なるスキーマがあります。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143910"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375662"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -233,9 +233,17 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 
 ER 間の転送は常に Global Reach 経由で行われます。 仮想ハブ ゲートウェイは、DC または Azure リージョンにデプロイされます。 2 つの ExpressRoute 回線が Global Reach 経由で接続されている場合、トラフィックがエッジ ルーターから仮想ハブ DC まで到達する必要はありません。
 
-### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Azure Virtual WAN 回線または VPN 接続に重みの概念はありますか。
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-expressroute-circuits-or-vpn-connections"></a>Azure Virtual WAN ExpressRoute 回線または VPN 接続に重みの概念はありますか。
 
 複数の ExpressRoute 回線が仮想ハブに接続されている場合、接続のルーティングの重みによって、仮想ハブ内の ExpressRoute で一方の回線をもう一方より優先するメカニズムが提供されます。 VPN 接続に重みを設定するメカニズムはありません。 Azure では常に、1 つのハブ内の VPN 接続より ExpressRoute 接続が優先されます。
+
+### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Virtual WAN では、Azure から送信されるトラフィックに対して、VPN より ExpressRoute が優先されますか。
+
+はい 
+
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Virtual WAN ハブに ExpressRoute 回線と VPN サイトが接続されている場合、VPN 接続ルートが ExpressRoute より優先される原因は何ですか。
+
+ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エッジ ルーターは、オンプレミスと Azure の間の通信での最初のノードになります。 これらのエッジ ルーターは、Virtual WAN ExpressRoute ゲートウェイと通信します。次に、Virtual WAN のあらゆるゲートウェイの間のルートをすべて制御する仮想ハブ ルーターからルートを学習します。 Microsoft エッジ ルーターは、オンプレミスから学習したルートより高い優先順位を持つ仮想ハブ ExpressRoute ルートを処理します。 VPN サイトの AS パスが長い場合を除き、VPN 接続が仮想ハブのプライマリ メディアとなって、そこからルートが学習される場合は (ExpressRoute と VPN の間のフェールオーバー シナリオなど)、何らかの理由により、仮想ハブは引き続き ExpressRoute ゲートウェイと VPN 学習ルートを共有します。これにより、Microsoft エッジ ルーターでは、オンプレミス ルートより VPN ルートが優先されます。 
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>2 つのハブ (ハブ 1 と 2) が接続されていて、両方のハブに対して (蝶ネクタイのような形で) 接続されている ExpressRoute 回線がある場合、ハブ 2 に接続されている VNet に到達するために、ハブ 1 に接続されている VNet のパスはどのようなものですか。
 
@@ -244,6 +252,10 @@ ER 間の転送は常に Global Reach 経由で行われます。 仮想ハブ �
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
 
 IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。
+
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>さまざまな Virtual WAN 機能を自動化するスクリプトで使用される、推奨される API バージョンは何ですか。
+
+最小バージョンとして 05-01-2020 (2020 年 5 月 1 日) が必要です。 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Basic タイプの Virtual WAN と Standard タイプの Virtual WAN の違いは何ですか。
 

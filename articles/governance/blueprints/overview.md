@@ -3,12 +3,12 @@ title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970928"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530401"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 
@@ -39,7 +39,7 @@ ARM テンプレートとブループリントのどちらかを選ぶ必要は�
 
 [ポリシー](../policy/overview.md)は、デプロイ時のリソース プロパティと、既に存在するリソースのリソース プロパティに焦点を合わせた、既定での許可と明示的な拒否のシステムです。 サブスクリプションに含まれるリソースが要件と標準に準拠していることを確認することによって、クラウドのガバナンスを支援します。
 
-ブループリントにポリシーを含めると、ブループリントの割り当て時に適切なパターンやデザインを作成できます。 このポリシー追加により、承認済みまたは予想されている変更しか環境に対して行えないことが保証され、ブループリントの意図に対する継続的なコンプライアンスが確保されます。
+ブループリントにポリシーを含めると、ブループリントの割り当て時に、適切なパターンや設計を作成できます。 このポリシー追加により、承認済みまたは予想されている変更しか環境に対して行えないことが保証され、ブループリントの意図に対する継続的なコンプライアンスが確保されます。
 
 ポリシーは、数多くの "_アーティファクト_" の 1 つとしてブループリント定義に含めることができます。 また、ブループリントでは、ポリシーおよびイニシアティブでパラメーターを使用することもできます。
 
@@ -103,7 +103,7 @@ ARM テンプレートとブループリントのどちらかを選ぶ必要は�
 
 以下の組み込みロールを使用できます。
 
-|RBAC ロール | 説明 |
+|Azure ロール | 説明 |
 |-|-|
 |[所有者](../../role-based-access-control/built-in-roles.md#owner) | 他のアクセス許可に加えて、すべての Azure Blueprint 関連のアクセス許可が含まれます。 |
 |[Contributor](../../role-based-access-control/built-in-roles.md#contributor) | 他のアクセス許可に加えて、ブループリント定義を作成および削除できますが、ブループリントの割り当てのアクセス許可は持っていません。 |

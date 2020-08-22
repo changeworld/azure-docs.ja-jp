@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275395"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141535"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -261,13 +261,15 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 **データ型**: 1 つ以上の要求スキーマ エントリを含む JSON BLOB
 
 **概要:** このプロパティは、基本要求セットやコア要求セットのほか、ポリシーの影響を受けるトークンにどの要求を提示するかを定義します。
-このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース (**値**または**ソース/ID ペア**) と、どの要求としてデータが出力されるか (**要求の種類**) を指定します。
+このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース (**Value**、**Source/ID ペア**、または**Source/ExtensionID ペア**) と、どの要求としてデータを出力するか (**要求の種類**) を指定します。
 
 ### <a name="claim-schema-entry-elements"></a>要求スキーマ エントリ要素
 
 **値:** 値要素では、静的な値が、要求に出力されるデータとして定義されます。
 
-**ソース/ID ペア:** ソース要素と ID 要素では、要求内のデータのソースが定義されます。 
+**ソース/ID ペア:** ソース要素と ID 要素では、要求内のデータのソースが定義されます。  
+
+**Source/ExtensionID ペア:** Source と ExtensionID 要素は、要求内のデータのソースであるディレクトリ スキーマ拡張属性を定義します。 詳細については、「[要求でディレクトリ スキーマ拡張属性を使用する](active-directory-schema-extensions.md)」を参照してください。
 
 ソース要素を次のいずれかの値に設定します。 
 
@@ -327,7 +329,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | facsimiletelephonenumber | ファックスの電話番号 |
 | User | assignedroles | ユーザーに割り当てられたアプリ ロールの一覧|
 | アプリケーション、リソース、対象ユーザー | displayName | 表示名 |
-| アプリケーション、リソース、対象ユーザー | objected | ObjectID |
+| アプリケーション、リソース、対象ユーザー | objectid | ObjectID |
 | アプリケーション、リソース、対象ユーザー | tags | サービス プリンシパル タグ |
 | [会社] | tenantcountry | テナントの国/リージョン |
 
@@ -362,7 +364,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 |TransformationMethod|想定される入力|想定される出力|説明|
 |-----|-----|-----|-----|
 |Join|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
-|ExtractMailPrefix|電子メールまたは UPN|UPN|ExtensionAttributes 1-15 または、UPN やユーザーのメール アドレス値 (johndoe@contoso.com など) を格納するその他のあらゆるスキーマ拡張。 メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
+|ExtractMailPrefix|電子メールまたは UPN|抽出された文字列|ExtensionAttributes 1-15 または、UPN やユーザーのメール アドレス値 (johndoe@contoso.com など) を格納するその他のあらゆるスキーマ拡張。 メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
 
 **InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
 
@@ -416,7 +418,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
-要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、「[New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)」を参照してください。
+要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、「[New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)」を参照してください。
 
 要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。 
 
@@ -435,6 +437,9 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ### <a name="example-claims-mapping-policies"></a>要求のマッピング ポリシーのサンプル
 
 Azure AD では、特定のサービス プリンシパルに対するトークンに発行された要求をカスタマイズできる場合、多くのシナリオが考えられます。 このセクションでは、要求のマッピング ポリシーの種類を使用する方法を理解するうえで役に立つ、一般的なシナリオをいくつか取り上げて説明します。
+
+> [!NOTE]
+> 要求のマッピングポリシーを作成するときに、トークンのディレクトリ スキーマ拡張属性から要求を出力することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
 
 #### <a name="prerequisites"></a>前提条件
 
@@ -527,4 +532,5 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 
 ## <a name="see-also"></a>関連項目
 
-SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。
+- SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。
+- 拡張属性の詳細については、[要求でのディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。

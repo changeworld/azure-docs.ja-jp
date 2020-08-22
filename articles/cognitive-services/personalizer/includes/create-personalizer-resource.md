@@ -2,28 +2,21 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
-ms.author: diberry
-ms.openlocfilehash: b1013b261e9449aef45f629c729579f4c87c1f6b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 07/30/2020
+ms.openlocfilehash: 0be0343bc79f8e8f62e49056c8c1042df412e8bd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378454"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461125"
 ---
 ## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 
 
-リソースからキーを取得した後、[環境変数](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)を 2 つ作成します。
-
-* `PERSONALIZER_RESOURCE_KEY` (リソース キー)。
-* `PERSONALIZER_RESOURCE_ENDPOINT` (リソース エンドポイント)。
-
-Azure portal では、キーとエンドポイントのどちらの値も **[クイック スタート]** ページで取得できます。
+リソースからキーを取得した後、値でコードを編集できるように、これら 2 つの値をコピーします。 Azure portal の **[クイックスタート]** ページで、キーとエンドポイントのどちらの値も取得できます。

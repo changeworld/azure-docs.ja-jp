@@ -3,26 +3,25 @@ title: 仮想マシン プランの価格 - Azure Marketplace
 description: 仮想マシン プランの価格を指定する 3 つの方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b3d38c59d4c79e908aeef857164603a2a5160e05
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115504"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271724"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
-==================================
+# <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 
 > [!NOTE]
-> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
+> Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 切り替えにより、小さな変更が加えられました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの切り替え後もコードが引き続き動作することを確認してください。 CPP API は、パートナー センターへの切り替え前に既に統合されている既存の製品に対してのみ使用してください。新しい製品では、パートナー センター申請 API を使用する必要があります。
 
 仮想マシン プランの価格を指定する方法は、カスタマイズされたコア価格、コアごとの価格、およびスプレッドシート価格の 3 つを提供します。
 
-
-<a name="customized-core-pricing"></a>カスタマイズされたコア価格
------------------------
+## <a name="customized-core-pricing"></a>カスタマイズされたコア価格
 
 価格は、リージョンとコアの組み合わせごとに固有です。 販売リスト内のすべてのリージョンを、定義の **virtualMachinePricing**/**regionPrices** セクションで指定する必要があります。  要求で、[リージョン](#regions)ごとに正しい通貨コードを使用します。  次の例はこれらの要件を示しています。
 
@@ -66,9 +65,7 @@ ms.locfileid: "86115504"
      }
 ```
 
-
-<a name="per-core-pricing"></a>コアごとの価格
-----------------
+## <a name="per-core-pricing"></a>コアごとの価格
 
 この場合、発行元は、SKU に米国ドルの 1 つの価格を指定し、他の価格はすべて自動的に生成されます。 コアごとの価格は、要求の**単一**のパラメーターで指定されます。
 
@@ -84,9 +81,7 @@ ms.locfileid: "86115504"
      }
 ```
 
-
-<a name="spreadsheet-pricing"></a>スプレッドシート価格
--------------------
+## <a name="spreadsheet-pricing"></a>スプレッドシート価格
 
 発行元は、価格のスプレッドシートを一時的な保存場所にアップロードし、他のファイル成果物のように、要求に URI を含めます。 スプレッドシートは、続いてアップロードされ、指定された価格スケジュールを評価するために変換され、最終的に価格情報でオファーを更新します。 オファーに対する後続の GET 要求は、スプレッドシート URI とリージョンの評価された価格を返します。
 
@@ -101,14 +96,11 @@ ms.locfileid: "86115504"
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日に追加された新しいコア サイズ
----------------------------
+## <a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日に追加された新しいコア サイズ
 
 2019 年 7 月 2 日に、(コア数に基づく) 新しい Azure 仮想マシン サイズに対する新しい料金の追加が VM の発行元に通知されました。  新しい料金は、コア サイズが 10、44、48、60、120、208、416 に対するものです。  既存の VM の場合、これらのコア サイズの新しい価格は、現在の価格に基づいて自動的に計算されます。  発行元は、2019 年 8 月 1 日までに追加料金を確認し、必要な変更を行う必要があります。  この日を過ぎて、発行元がまだ再パブリッシュを行っていない場合、これらの新しいコア サイズに対して自動的に計算された価格が有効になります。
 
-
-<a name="regions"></a>リージョン
--------
+## <a name="regions"></a>リージョン
 
 次の表は、カスタマイズされたコア価格に対して指定できるさまざまなリージョンと、それぞれに対応する通貨コードを示します。
 

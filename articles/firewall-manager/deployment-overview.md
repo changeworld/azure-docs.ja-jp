@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565797"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055039"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager のデプロイ概要
 
@@ -65,6 +65,15 @@ Azure Firewall Manager をデプロイする方法は複数ありますが、次
 > - 1 つのリージョンで仮想 WAN ごとに複数のハブを使用することはできません。 ただし、リージョンに複数の仮想 WAN を追加して、これを実現することができます。
 > - vWAN のハブの IP 空間を重複させることはできません。
 > - ハブ VNet 接続は、ハブと同じリージョンにある必要があります。
+>
+> その他の既知の問題については、「[Azure Firewall Manager とは](overview.md#known-issues)」を参照してください。
+
+## <a name="convert-virtual-networks"></a>仮想ネットワークの変換
+
+既存の仮想ネットワークをハブ仮想ネットワークに変換する場合、次の情報が当てはまります。
+
+- 仮想ネットワークに既に Azure Firewall がある場合、既存のファイアウォールに関連付けるファイアウォール ポリシーを選択します。 ファイアウォール ポリシーによってファイアウォール規則が置き換えられている間、ファイアウォール プロビジョニング状態は更新中になります。 プロビジョニング状態中も、ファイアウォールはトラフィックを処理し続けるので、ダウンタイムは発生しません。 Firewall Manager または Azure PowerShell を使用して既存の規則をファイアウォール ポリシーにインポートできます。
+- 仮想ネットワークに Azure Firewall が関連付けられていない場合、ファイアウォールがデプロイされ、新しいファイアウォールにファイアウォール ポリシーが関連付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 

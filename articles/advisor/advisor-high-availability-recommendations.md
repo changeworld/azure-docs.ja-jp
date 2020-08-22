@@ -3,12 +3,12 @@ title: Advisor によるアプリケーションの信頼性の向上
 description: Azure Advisor を使用すると、Bus Critical な Azure デプロイの信頼性を確認し、向上させることができます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124624"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057672"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor を使用してアプリケーションの信頼性を向上させる
 
@@ -59,7 +59,7 @@ Traffic Manager プロファイルが地理的なルーティング用に構成�
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Azure ストレージ アカウントでデータの論理的な削除を使用し、データを誤って上書きまたは削除した後にデータを保存して復旧する
 
-ストレージ アカウントで[論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)を有効にすると、削除された BLOB は完全には削除されずに、論理的に削除された状態に切り替わります。 データを上書きした場合、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 論理的な削除を使用すると、不注意な削除や上書きから回復できます。 Advisor によって、論理的な削除が有効になっていない Azure ストレージ アカウントが特定され、有効にするように提案が行われます。
+ストレージ アカウントで[論理的な削除](../storage/blobs/soft-delete-overview.md)を有効にすると、削除された BLOB は完全には削除されずに、論理的に削除された状態に切り替わります。 データを上書きした場合、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 論理的な削除を使用すると、不注意な削除や上書きから回復できます。 Advisor によって、論理的な削除が有効になっていない Azure ストレージ アカウントが特定され、有効にするように提案が行われます。
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>接続の回復性を高めるために VPN ゲートウェイをアクティブ/アクティブに構成する
 
@@ -107,7 +107,7 @@ Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタ�
 2020 年 7 月 1 日から、HDInsight 3.6 で Spark 2.1 または 2.2 を使用して新しい Spark クラスターを作成することはできません。 HDInsight 4.0 で Spark 2.3 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま動作しますが、Microsoft からのサポートはありません。 
 
 ## <a name="enable-virtual-machine-replication"></a>仮想マシンのレプリケーションを有効にする
-他のリージョンへのレプリケーションが有効になっていない仮想マシンは、リージョンの障害に対する回復性がありません。 仮想マシンをレプリケートすることによって、Azure リージョンの障害時にビジネスへの悪影響が低減されます。 Advisor は、レプリケーションが有効になっていない VM を検出し、有効にすることを推奨します。 レプリケーションを有効にすると、障害が発生した場合に、リモートの Azure リージョンで仮想マシンをすばやく起動できます。 [仮想マシンのレプリケーション](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)の詳細を確認してください。
+他のリージョンへのレプリケーションが有効になっていない仮想マシンは、リージョンの障害に対する回復性がありません。 仮想マシンをレプリケートすることによって、Azure リージョンの障害時にビジネスへの悪影響が低減されます。 Advisor は、レプリケーションが有効になっていない VM を検出し、有効にすることを推奨します。 レプリケーションを有効にすると、障害が発生した場合に、リモートの Azure リージョンで仮想マシンをすばやく起動できます。 [仮想マシンのレプリケーション](../site-recovery/azure-to-azure-quickstart.md)の詳細を確認してください。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 

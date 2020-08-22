@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ad01155259ea03806f56c6e75b315ff85b606220
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302474"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542740"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal
 
@@ -27,7 +27,7 @@ Azure で仮想マシン (VM) を削除するとき、既定では、その VM �
 
     **[ディスク]** ブレードに、すべてのディスクの一覧が表示されます。 **[所有者]** 列が " **-** " になっているディスクは、接続されていないディスクです。
 
-    [![](media/disks-find-unattached-portal/managed-disk-unattached-owner.png "Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk")](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [![[所有者] 列が "-" である場合は非接続ディスクであるマネージド ディスク ブレードのスクリーンショット。](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. 接続されていない削除するディスクを選択すると、ディスクのブレードが開きます。
 1. ディスクのブレードで、ディスクの状態が非接続になっていることを確認し、 **[削除]** を選択します。
@@ -61,4 +61,4 @@ VM に接続されていないアンマネージド ディスクがあり、そ�
 
 接続されていないストレージ アカウントを自動的に検索して削除する方法については、[CLI](linux/find-unattached-disks.md) または [PowerShell](windows/find-unattached-disks.md) の記事を参照してください。
 
-詳細については、「[ストレージ アカウントを削除する](../storage/common/storage-account-create.md#delete-a-storage-account)」および [PowerShell を使用した孤立したディスクの特定](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)に関するページを参照してください。
+詳細については、「[ストレージ アカウントを削除する](../storage/common/storage-account-create.md#delete-a-storage-account)」および [PowerShell を使用した孤立したディスクの特定](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell)に関するページを参照してください。

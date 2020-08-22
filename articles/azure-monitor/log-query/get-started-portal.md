@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798257"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874233"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>チュートリアル:Log Analytics クエリの使用方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "85798257"
 ## <a name="open-log-analytics"></a>Log Analytics を開く
 Log Analytics を使用するには、Azure アカウントにサインインする必要があります。 Azure アカウントがない場合は、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-このチュートリアルの大部分の手順は、サンプル データが豊富に含まれる[こちらのデモ環境](https://portal.loganalytics.io/demo)を使用して完了できます。 デモ環境では、クエリの保存およびダッシュボードへの結果のピン留めは実行できません。
+このチュートリアルの大部分の手順は、サンプル データが豊富に含まれる[こちらのデモ環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)を使用して完了できます。 デモ環境では、クエリの保存およびダッシュボードへの結果のピン留めは実行できません。
 
 Azure Monitor を使用して 1 つ以上の Azure リソースに関するログ データを収集している場合は、ご自分の環境を使用してもかまいません。 Log Analytics ワークスペースを開くには、Azure Monitor の左側のナビゲーションで **[ログ]** を選択します。 
 
@@ -189,7 +189,7 @@ Log Analytics の結果テーブルまたはグラフを Azure の共有ダッ�
    
    クエリを関数として保存する場合は、他のクエリでこのクエリを参照するための短い名前となる **[関数のエイリアス]** を指定します。
    
-1. **クエリ エクスプローラー**でこのクエリに使用する **[カテゴリ]** を指定します。
+1. Log Analytics ワークスペース内で作業している場合は、クエリに使用する**クエリ エクスプローラー**で **[カテゴリ]** を指定します (Application Insights クエリでは、カテゴリを使用できません)。
    
 1. **[保存]** を選択します。
    
@@ -202,6 +202,10 @@ Log Analytics の結果テーブルまたはグラフを Azure の共有ダッ�
 
 ### <a name="export-and-share-queries"></a>クエリのエクスポートと共有
 クエリをエクスポートするには、上部バーで **[エクスポート]** を選択してから、ドロップダウン リストで **[CSV へエクスポート - すべての列]** 、 **[CSV へエクスポート - 表示されている列]** 、または **[Power BI へエクスポート (M Query)]** を選択します。
+
+次のビデオでは、Log Analytics を Excel と統合する方法について説明しています。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
 
 クエリへのリンクを共有するには、上部バーで **[リンクのコピー]** を選択してから、 **[クエリへのリンクのコピー]** 、 **[クエリ テキストのコピー]** 、または **[Copy query results]\(クエリの結果のコピー\)** を選択してクリップボードにコピーします。 クエリ リンクは、同じワークスペースにアクセス可能な他のユーザーに送信できます。
 

@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565351"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029945"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する
 
@@ -254,7 +254,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> 補間の設定  
  補間を使用することにより、スコアリングに使用される傾きの形状を設定できます。 スコアリングは高から低なので、傾きは常に減少ですが、補間により下向きの傾きの曲線が決まります。 次の補間を使用できます。  
 
-|||  
+| 補間 | 説明 |  
 |-|-|  
 |`linear`|最大および最小の範囲内にある項目の場合、項目に適用されるブーストは一定の減少量で行われます。 線形はスコアリング プロファイルの既定の補間です。|  
 |`constant`|開始と終了の範囲内にある項目については、一定のブーストが順位の結果に適用されます。|  

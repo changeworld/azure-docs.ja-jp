@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019763"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](https://docs.microsoft.com/graph/extensibility-overview
@@ -33,8 +33,8 @@ ms.locfileid: "85357462"
 
 インストール ウィザードのカスタム設定パスで、どの追加属性を同期するかを構成します。
 
->[!NOTE]
->[使用可能な属性] ボックスでは、大文字と小文字は区別されます。
+> [!NOTE]
+> バージョン 1.2.65.0 以前の Azure AD Connect では、 **[使用可能な属性]** の検索ボックスで大文字と小文字が区別されます。
 
 ![スキーマ拡張機能のウィザード](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

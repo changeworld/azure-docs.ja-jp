@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684710"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420075"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>検索トラフィック分析用のテレメトリ データを収集する
 
@@ -77,9 +78,9 @@ private static TelemetryClient _telemetryClient;
 
 // Add a constructor that accepts a telemetry client:
 public HomeController(TelemetryClient telemetry)
-    {
-        _telemetryClient = telemetry;
-    }
+{
+    _telemetryClient = telemetry;
+}
 ```
 
 **JavaScript を使用する**
@@ -110,7 +111,8 @@ var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchC
 var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
 var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
 string searchId = string.Empty;
-if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues)){
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
+{
     searchId = headerValues.FirstOrDefault();
 }
 ```
@@ -141,14 +143,15 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 **C# を使用する**
 
 ```csharp
-var properties = new Dictionary <string, string> {
+var properties = new Dictionary <string, string> 
+{
     {"SearchServiceName", <service name>},
     {"SearchId", <search Id>},
     {"IndexName", <index name>},
     {"QueryTerms", <search terms>},
     {"ResultCount", <results count>},
     {"ScoringProfile", <scoring profile used>}
-    };
+};
 _telemetryClient.TrackEvent("Search", properties);
 ```
 
@@ -156,12 +159,12 @@ _telemetryClient.TrackEvent("Search", properties);
 
 ```javascript
 appInsights.trackEvent("Search", {
-SearchServiceName: <service name>,
-SearchId: <search id>,
-IndexName: <index name>,
-QueryTerms: <search terms>,
-ResultCount: <results count>,
-ScoringProfile: <scoring profile used>
+  SearchServiceName: <service name>,
+  SearchId: <search id>,
+  IndexName: <index name>,
+  QueryTerms: <search terms>,
+  ResultCount: <results count>,
+  ScoringProfile: <scoring profile used>
 });
 ```
 
@@ -181,12 +184,13 @@ ScoringProfile: <scoring profile used>
 **C# を使用する**
 
 ```csharp
-var properties = new Dictionary <string, string> {
+var properties = new Dictionary <string, string> 
+{
     {"SearchServiceName", <service name>},
     {"SearchId", <search id>},
     {"ClickedDocId", <clicked document id>},
     {"Rank", <clicked document position>}
-    };
+};
 _telemetryClient.TrackEvent("Click", properties);
 ```
 

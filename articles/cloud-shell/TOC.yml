@@ -32,6 +32,8 @@
       href: msi-authorization.md
     - name: Cloud Shell の埋め込み
       href: embed-cloud-shell.md
+    - name: Azure Virtual Network の Cloud Shell
+      href: private-vnet.md
 - name: Cloud Shell エディターの使用
   href: using-cloud-shell-editor.md
 - name: トラブルシューティングと制限事項

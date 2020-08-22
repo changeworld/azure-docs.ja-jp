@@ -10,15 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134685"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056365"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> Azure Machine Learning R SDK は現在、パブリック プレビューの段階にあります。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このチュートリアルでは、Azure Machine Learning R SDK (プレビュー) を使用して、自動車事故における死亡の可能性を予測するロジスティック回帰モデルを作成します。 Azure Machine Learning のクラウド リソースと R を組み合わせて、モデルのトレーニングとデプロイのためのスケーラブルな環境を実現する方法について見ていきましょう。  
 
@@ -98,22 +102,15 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 * リモートのコンピューティング先を作成して、トレーニングに使用する
 
 ### <a name="install-required-packages"></a>必要なパッケージをインストールする
-
- * CRAN から最新バージョンをインストールします。
-
-    ```R
-    # install the latest version from CRAN
-    install.packages("azuremlsdk")
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+コンピューティング インスタンスには、CRAN の R SDK の最新バージョンが既にインストールされています。 代わりに GitHub から開発バージョンをインストールして、最新のバグ修正プログラムを取得する場合は、次のコードを実行してください。
     
-* または、GitHub から開発バージョンをインストールします。
+```R
+remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+azuremlsdk::install_azureml()
+```
 
-    ```R
-    # or install the development version from GitHub
-    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+> [!WARNING]
+> インストール プロセス中に "`Would you like to install Miniconda? [Y/n]:`" というメッセージが表示された場合は、"`n`" で応答してください。コンピューティング インスタンスには既に Anaconda がインストールされているため、Miniconda のインストールは必要ありません。
 
 先に進んで、**azuremlsdk** パッケージをインポートします。
 

@@ -4,16 +4,16 @@ description: この記事では、Linux IaaS VM の Microsoft Azure Disk Encrypt
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d28d7bd85326e8a4cf27dba1f3f605b64477c5aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829939"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374042"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux VM に対する Azure Disk Encryption に関する FAQ
 
@@ -154,15 +154,15 @@ XFS データ ディスクの暗号化は、EncryptFormatAll パラメーター�
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>暗号化された VM をバックアップおよび復元することはできますか。 
 
-Azure Backup には、同じサブスクリプションおよびリージョン内の暗号化された VM をバックアップおよび復元するメカニズムが用意されています。  手順については、「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)」をご覧ください。  暗号化された VM を別のリージョンに復元することは、現在サポートされていません。  
+Azure Backup には、同じサブスクリプションおよびリージョン内の暗号化された VM をバックアップおよび復元するメカニズムが用意されています。  手順については、「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する](../../backup/backup-azure-vms-encryption.md)」をご覧ください。  暗号化された VM を別のリージョンに復元することは、現在サポートされていません。  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>質問したり、フィードバックを提供したりするにはどこに移動すればよいですか。
 
-ご質問やフィードバックは、[Azure Disk Encryption についての Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)に投稿してください。
+ご質問やフィードバックは、[Azure Disk Encryption についての Microsoft Q&A 質問ページ](/answers/topics/azure-disk-encryption.html)に投稿してください。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。
 
 - [Azure Disk Encryption の概要](disk-encryption-overview.md)
-- [Azure Security Center でディスクの暗号化を適用する](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Azure Security Center でディスクの暗号化を適用する](../../security-center/security-center-virtual-machine-protection.md)
+- [保存時の Azure データの暗号化](../../security/fundamentals/encryption-atrest.md)

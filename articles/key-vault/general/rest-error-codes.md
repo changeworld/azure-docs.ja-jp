@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427703"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424377"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API のエラー コード
  
@@ -134,7 +134,7 @@ HTTP 403 は、顧客のアプリケーションが、顧客が考えている�
 
 ### <a name="troubleshooting-403"></a>403 のトラブルシューティング
 
-まず、ログ記録を有効にします。 その方法については、[Azure Key Vault のログ記録](logging.md)に関するページをご覧ください。
+まず、ログ記録を有効にします。 その方法については、「[Azure Key Vault のログ記録](logging.md)」を参照してください。
 
 ログ記録を有効にすると、403 の原因がアクセス ポリシーとファイアウォール ポリシーのどちらであるかを判断できます。
 

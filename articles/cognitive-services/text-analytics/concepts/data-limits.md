@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142369"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986816"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
@@ -38,10 +38,7 @@ ms.locfileid: "84142369"
 
 #### <a name="version-3"></a>[Version 3](#tab/version-3)
 
-> [!NOTE]
-> v3 API 要求がこれらの制限を超えている一方で v2 の制限内にある場合、API 応答で警告が返されます。 2020 年 7 月 15 日以降は、代わりに 400 エラー コードが返されます。 
-
-API の v3 では、次の制限が変更されています。 以下の制限を超えると、API 応答で警告が生成されます。
+API の v3 では、次の制限が変更されています。 以下の制限を超えると、HTTP 400 エラー コードが生成されます。
 
 
 | 機能 | 要求あたりのドキュメントの最大数 | 
@@ -71,9 +68,9 @@ API の v3 では、次の制限が変更されています。 以下の制限�
 | レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
 |---------------|---------------------|---------------------|
 | S/マルチサービス | 1000                | 1000                |
-| S0/F0         | 100                 | 該当なし                 |
-| S1            | 200                 | 該当なし                 |
-| S2            | 該当なし                 | 該当なし                 |
+| S0/F0         | 100                 | 300                 |
+| S1            | 200                 | 300                 |
+| S2            | 該当なし                 | 300                 |
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 

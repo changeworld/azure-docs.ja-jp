@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
-ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000953"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services ライブ イベント エラー コード
 
@@ -26,7 +26,7 @@ ms.locfileid: "82791053"
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-ライブイベントの [Event Grid](https://docs.microsoft.com/azure/event-grid/) イベントにサブスクライブすると、[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) イベントの次のいずれかのエラーが表示されることがあります。
+ライブイベントの [Event Grid](../../event-grid/index.yml) イベントにサブスクライブすると、[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) イベントの次のいずれかのエラーが表示されることがあります。
 
 | 結果コード | 説明 |
 | ----------- | ----------- |

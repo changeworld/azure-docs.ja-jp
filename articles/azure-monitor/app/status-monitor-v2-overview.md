@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499275"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318948"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
@@ -76,13 +76,14 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 
 テレメトリの表示:
 
-* パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します。
-* 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
+* パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+* 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
 * より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
-* [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
+* [ダッシュボードを作成](./overview-dashboard.md)します。
 
 テレメトリの追加:
 
 * サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
-* Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
-* トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
+* Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](./javascript.md)を追加します。
+* トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](./asp-net.md)します。
+

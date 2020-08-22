@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849484"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043883"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault での CSR の作成とマージ
 
@@ -80,6 +80,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 9.  CA によって要求が署名されたら、証明書ファイルを戻し、同じ [証明書の操作] 画面で**署名された要求をマージ**します。
 
 証明書要求が正常にマージされました。
+
+## <a name="adding-more-information-to-csr"></a>CSR への詳細情報の追加
+
+CSR を作成する際に、次のような詳細情報を追加する必要が生じることがあります: 
+    - 国:
+    - 市区町村、
+    - 都道府県、
+    - 組織、
+    - 組織単位。これらの情報はすべて、CSR の作成時に subjectName で定義することにより追加できます。
+
+例
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+
+>[!Note]
+>CSR でこれらの詳細情報がすべて含まれた DV 証明書を要求している場合、CA では要求内のすべての情報を検証できるとは限らないため、要求が拒否される可能性があります。 OV 証明書を要求している場合は、その情報すべてを CSR に追加する方が適切です。
+
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

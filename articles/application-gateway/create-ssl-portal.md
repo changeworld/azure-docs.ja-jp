@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 04/22/2019
+ms.date: 07/24/2020
 ms.author: victorh
-ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: baadd52a931a28e1502fe0da2286d541db9face4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024495"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290124"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する
 
@@ -158,7 +158,7 @@ Export-PfxCertificate `
 
 5. **[HTTP 設定]** には **[新規作成]** を選択して新しい HTTP 設定を作成します。 HTTP 設定によって、ルーティング規則の動作が決まります。 開いた **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** として「*myHTTPSetting*」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。 
 
-   ![新しいアプリケーション ゲートウェイの作成:HTTP 設定](./media/create-ssl-portal/application-gateway-create-httpsetting.png)
+   :::image type="content" source="./media/create-ssl-portal/application-gateway-create-httpsetting.png" alt-text="新しいアプリケーション ゲートウェイの作成: HTTP 設定":::
 
 6. **[ルーティング規則の追加]** ウィンドウで **[追加]** を選択してルーティング規則を保存し、 **[構成]** タブに戻ります。
 
@@ -250,7 +250,7 @@ Export-PfxCertificate `
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/create-ssl-portal/application-gateway-ag-address.png)
 
-2. ブラウザーのアドレス バーに「*https://\<自分のアプリケーション ゲートウェイ IP アドレス\>* 」と入力します。
+2. ブラウザーのアドレス バーに「*https://\<your application gateway ip address\>* 」と入力します。
 
    自己署名証明書を使用した場合、セキュリティ警告を受け入れるには **[詳細]** (Chrome では **[Advanced]\(詳細設定\)** ) を選択し、Web ページへ移動します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 2d291af3cc6175b371f71fb63402ecb45afcba34
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9c2345c93a163464ea735400c9269e2e3fc27ecf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223450"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488178"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 
@@ -154,9 +154,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* Availability Zones がサポートされているリージョンにマネージド ドメインを作成した場合は、ネットワーク セキュリティ グループを作成して、マネージド ドメインの仮想ネットワーク内のトラフィックを制限します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
-    * ネットワーク セキュリティ グループと必要な規則を作成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、ネットワーク セキュリティ グループを自動的に作成および構成するように求められます。
-* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+* マネージド ドメインに対する仮想ネットワーク内のトラフィックを制限するためのネットワーク セキュリティ グループを作成します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
+    * ネットワーク セキュリティ グループと必要な規則を作成するには、まず `Install-Script -Name New-AaddsNetworkSecurityGroup` コマンドを使用して `New-AzureAddsNetworkSecurityGroup` スクリプトをインストールした後、`New-AaddsNetworkSecurityGroup` を実行します。 マネージド ドメインに必要な規則が作成されます。
+* [Azure AD DS とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="complete-powershell-script"></a>完全な PowerShell スクリプト
 
@@ -241,9 +241,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* Availability Zones がサポートされているリージョンにマネージド ドメインを作成した場合は、ネットワーク セキュリティ グループを作成して、マネージド ドメインの仮想ネットワーク内のトラフィックを制限します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
-    * ネットワーク セキュリティ グループと必要な規則を作成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、ネットワーク セキュリティ グループを自動的に作成および構成するように求められます。
-* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+* マネージド ドメインに対する仮想ネットワーク内のトラフィックを制限するためのネットワーク セキュリティ グループを作成します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
+    * ネットワーク セキュリティ グループと必要な規則を作成するには、まず `Install-Script -Name New-AaddsNetworkSecurityGroup` コマンドを使用して `New-AzureAddsNetworkSecurityGroup` スクリプトをインストールした後、`New-AaddsNetworkSecurityGroup` を実行します。 マネージド ドメインに必要な規則が作成されます。
+* [Azure AD DS とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

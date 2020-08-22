@@ -2,33 +2,37 @@
 title: Azure Arc
 summary: Azure Arc は、Azure Resource Manager の機能を Linux および Windows サーバーに拡張するほか、オンプレミス、マルチクラウド、エッジにわたるあらゆるインフラストラクチャに Kubernetes クラスターを拡張します。 Azure Arc を使用すると、顧客は場所を問わず Azure データ サービスを実行できるため、データを常に最新の状態に保つ機能、(数時間ではなく) 数秒でのデプロイ、インフラストラクチャでの動的なスケーラビリティなど、クラウド イノベーションの利点を実感できます。
 metadata:
-  title: サーバー向け Azure Arc
+  title: Azure Arc
   description: Azure でオンプレミスのマシンを管理する方法について説明します
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 08/13/2020
   ms.author: magoedte
-  ms.openlocfilehash: 8493a5d90656206c5498fafbc2b0a2743cd973a7
-  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/27/2020
-  ms.locfileid: "85482345"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212782"
 landingContent:
-- title: Azure Arc の概要
+- title: Azure Arc について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Arc の詳細
+    - text: Azure Arc とは
       url: https://aka.ms/Azure-Arc-Info
-- title: サーバー向け Azure Arc を使用してマシンを Azure に接続する
+- title: Azure Arc 対応サーバーを使用してマシンを Azure に接続する
   linkLists:
   - linkListType: overview
     links:
-    - text: サーバー向け Azure Arc とは
+    - text: Azure Arc 対応サーバーとは
       url: ./servers/overview.md
   - linkListType: quickstart
+    links:
+    - text: Arc 対応サーバー エージェントを有効にする
+      url: ./servers/learn/quick-enable-hybrid-vm.md
+  - linkListType: how-to-guide
     links:
     - text: Azure portal から Azure Arc へのマシンの接続
       url: ./servers/onboard-portal.md
@@ -36,25 +40,29 @@ landingContent:
       url: ./servers/onboard-service-principal.md
     - text: PowerShell DSC を使用してマシンを Azure に接続する
       url: ./servers/onboard-dsc.md
+    - text: Azure VM 拡張機能の管理と使用
+      url: ./servers/manage-vm-extensions.md
 - title: Azure Arc を使用して Kubernetes クラスターを Azure に接続する
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Arc 対応 Kubernetes とは
       url: ./kubernetes/overview.md
-  - linkListType: how-to-guide
+  - linkListType: quickstart
     links:
     - text: クラスターの接続
       url: ./kubernetes/connect-cluster.md
-    - text: 接続されたクラスターで GitOps を使用する
+  - linkListType: how-to-guide
+    links:
+    - text: GitOps を使用して構成をデプロイする
       url: ./kubernetes/use-gitops-connected-cluster.md
-    - text: Helm で GitOps を使用する
+    - text: GitOps を使用して Helm グラフをデプロイする
       url: ./kubernetes/use-gitops-with-helm.md
-    - text: Azure Monitor for containers を使用する
-      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
-    - text: Azure Policy を使用する
+    - text: Azure Policy を使用して GitOps を適用する
       url: ./kubernetes/use-azure-policy.md
+    - text: Azure Monitor を使用してコンテナーを監視する
+      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+    - text: Azure Policy を使用した受付制御ポリシー
+      url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
     - text: Azure IoT Edge ワークロードをデプロイする
       url: ./kubernetes/deploy-azure-iot-edge-workloads.md
-    - text: サービス プリンシパルのオンボード
-      url: ./kubernetes/create-onboarding-service-principal.md

@@ -4,16 +4,16 @@ description: Azure スポット VM を使用してコストを節約する方法
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 06/26/2020
+ms.topic: how-to
+ms.date: 07/20/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c83f754fdc236cc7a08f5a6a6e62ca3cf620b536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81d57aa573201f1471701af3d03e1b14f1afd612
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506050"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292183"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure でスポット VM を使用する
 

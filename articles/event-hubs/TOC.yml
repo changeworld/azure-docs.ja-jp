@@ -75,7 +75,7 @@
     - name: Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する
       href: event-hubs-kafka-stream-analytics.md
     - name: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
-      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      href: /azure/databricks/scenarios/databricks-stream-from-eventhubs
       maintainContext: true
 - name: サンプル
   items:
@@ -124,6 +124,9 @@
           href: network-security.md
         - name: 組み込みのセキュリティ制御
           href: event-hubs-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: AMQP 1.0 プロトコル ガイド
@@ -185,6 +188,8 @@
           href: event-hubs-kafka-flink-tutorial.md
         - name: Apache Kafka Connect をハブと統合する (プレビュー)
           href: event-hubs-kafka-connect-tutorial.md
+        - name: Apache Kafka Connect (プレビュー) を Debezium と統合する
+          href: event-hubs-kafka-connect-debezium.md
         - name: Akka Streams をイベント ハブに接続する
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: FAQ - Kafka 用の Event Hubs
@@ -196,18 +201,18 @@
         - name: 診断ログの設定
           href: event-hubs-diagnostic-logs.md
         - name: Event Hubs を使用して Azure Diagnostics データをストリーミングする
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: スループット単位の自動スケール
           href: event-hubs-auto-inflate.md
         - name: Event Hubs 管理ライブラリ
           href: event-hubs-management-libraries.md
     - name: セキュリティで保護
       items:
-        - name: IP ファイアウォールの構成
+        - name: 特定の IP アドレスからのアクセスの許可
           href: event-hubs-ip-filtering.md
-        - name: 仮想ネットワーク サービス エンドポイントの構成
+        - name: 特定の仮想ネットワークからのアクセスの許可
           href: event-hubs-service-endpoints.md
-        - name: プライベート エンドポイントの構成
+        - name: プライベート エンドポイント経由のアクセスの許可
           href: private-link-service.md
         - name: 顧客管理キーの構成
           href: configure-customer-managed-key.md
@@ -289,6 +294,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: Quotas (クォータ)
       href: event-hubs-quotas.md
+    - name: Apache Kafka の構成
+      href: apache-kafka-configurations.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

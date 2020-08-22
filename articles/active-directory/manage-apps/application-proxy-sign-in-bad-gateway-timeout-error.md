@@ -83,7 +83,7 @@ ms.locfileid: "85367752"
 
 ## <a name="check-all-required-ports-are-open"></a>必要なすべてのポートが開いていることを確認する
 
-必要なすべてのポートが開いていることを確認します。 必要なポートについては、「ポートを開く」セクション - 「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。 必要なすべてのポートが開いている場合は、次のセクションに移動します。
+必要なすべてのポートが開いていることを確認します。 必要なポートについては、「[チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)」の「ポートを開く」セクションを参照してください。 必要なすべてのポートが開いている場合は、次のセクションに移動します。
 
 ## <a name="check-for-other-connector-errors"></a>その他のコネクタ エラーを確認する
 

@@ -92,7 +92,7 @@
     - name: よく寄せられる質問
       href: relay-faq.md
     - name: ブログ
-      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+      href: /archive/blogs/servicebus/
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 料金計算ツール

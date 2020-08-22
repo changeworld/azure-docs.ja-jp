@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398226"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508789"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -62,27 +62,33 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 5. ホーム ディレクトリに移動します。
 
-    ```azurepowershell-interactive 
-    cd  
+    ```azurepowershell-interactive
+    cd
     ```
 
-6. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
+6. 次のコマンドを実行します。 これにより、Azure AD 要求に使用する認証済みアカウントが接続されます
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
+    Connect-AzureAD
+    ```
+
+7. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
+
+    ```azurepowershell-interactive
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
     ```
 
-7. 次のスクリプトを実行します。 このスクリプトは、 **[Azure Active Directory]**  >  **[概要]** ページから取得できるテナント ID を要求します。
+8. 次のスクリプトを実行します。 このスクリプトは、 **[Azure Active Directory]**  >  **[概要]** ページから取得できるテナント ID を要求します。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
-8. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>生成された資格情報を使用してデバイス データを統合する
 
@@ -132,7 +138,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
     ![[センサー] ページ](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="assign-devices"></a>デバイスの割り当て  
+## <a name="assign-devices"></a>デバイスの割り当て
 
 センサー データが流れるようになったら、センサーを配置したファームにそれを割り当てることができます。
 

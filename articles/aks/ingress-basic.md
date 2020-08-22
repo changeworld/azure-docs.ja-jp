@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで基本的な NGINX イングレス コントローラーをインストールして構成する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: bb7ac1d76e93a95fedc1dfdbfd67d2b057db60e3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499819"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927053"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
 
@@ -163,10 +163,10 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 次の例では、*EXTERNAL_IP* へのトラフィックが `aks-helloworld-one` という名前のサービスにルーティングされます。 *EXTERNAL_IP/hello-world-two* へのトラフィックは、`aks-helloworld-two` サービスにルーティングされます。 静的資産の場合、*EXTERNAL_IP/static* へのトラフィックは `aks-helloworld-one` という名前のサービスにルーティングされます。
 
-`hello-world-ingress.yaml` という名前のファイルを作成し、次の例の YAML 内にコピーします。
+*hello-world-ingress.yaml* という名前のファイルを作成し、次の例の YAML 内にコピーします。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -182,13 +182,13 @@ spec:
       - backend:
           serviceName: aks-helloworld-one
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: aks-helloworld-two
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static

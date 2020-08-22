@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103961"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836005"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
-この記事では、旧バージョンの Azure Migrate の使用方法に関する情報を提供します。
+この記事では、旧バージョンの Azure Migrate の使用方法に関する情報を提供します。 
 
 
 Azure Migrate サービスのバージョンには、次の 2 つがあります。
 
 - **現在のバージョン**: Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 このバージョンの新機能については[こちらを参照してください](whats-new.md)。
-- **以前のバージョン**: 旧バージョンの Azure Migrate (オンプレミスの VMware VM の評価のみサポート) を使用している場合、今後は最新バージョンを使用してください。 旧バージョンで作成した Azure Migrate プロジェクトを今後も使用する必要がある場合にできることとできないことは、以下のとおりです。
+- **以前のバージョン**: 旧バージョンの Azure Migrate (オンプレミスの VMware VM の評価のみサポート) を使用している場合、今後は最新バージョンを使用してください。 以前のバージョンのプロジェクトは、この記事ではクラシック プロジェクトと呼ばれています。 旧バージョンで作成した Azure Migrate プロジェクトを今後も使用する必要がある場合にできることとできないことは、以下のとおりです。
     - 移行プロジェクトは作成できなくなります。
     - 新しく検出を行わないことをお勧めします。
     - 既存のプロジェクトには引き続きアクセスできます。
@@ -31,7 +31,7 @@ Azure Migrate サービスのバージョンには、次の 2 つがあります
 
 ## <a name="upgrade-between-versions"></a>バージョン間でアップグレードする
 
-旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](how-to-add-tool-first-time.md)して、それに評価と移行ツールを追加する必要があります。
+旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](how-to-add-tool-first-time.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
 
 ## <a name="find-projects-from-previous-version"></a>旧バージョンのプロジェクトを探す
 
@@ -39,7 +39,16 @@ Azure Migrate サービスのバージョンには、次の 2 つがあります
 
 1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索して選択します。 
 2. Azure Migrate ダッシュボードに、通知と、過去の Azure Migrate プロジェクトにアクセスするためのリンクが表示されます。
-3. リンクをクリックして、v1 のプロジェクトを開きます。
+3. リンクをクリックしてクラシック プロジェクトを開きます。
+
+## <a name="delete-projects-from-previous-version"></a>旧バージョンのプロジェクトを削除する
+
+旧バージョンのプロジェクトを検索して削除するには、以下のようにします。
+
+1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索して選択します。 
+2. Azure Migrate ダッシュボードに、通知と、過去の Azure Migrate プロジェクトにアクセスするためのリンクが表示されます。
+3. リンクをクリックしてクラシック プロジェクトを開きます。
+4. 削除するプロジェクトを選択して削除します。 
 
 
 ## <a name="create-an-assessment"></a>評価を作成する
@@ -92,7 +101,7 @@ Azure に未対応 |  この VM は Azure では起動しません。 たとえ�
 --- | --- | ---
 **ブートの種類** | BIOS がサポートされています。 UEFI はサポートされていません。 | ブートの種類が UEFI の場合は条件付きで対応します。
 **コア** | マシンのコア数が、Azure VM でサポートされる最大コア数 (128) 以下。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が考慮されます。<br/>アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | 制限以下の場合は対応します。
-**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](../virtual-machines/windows/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
+**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](../virtual-machines/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
 **ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | 制限内であれば対応します。
 **ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | 制限内であれば対応します。
 
@@ -118,7 +127,7 @@ Windows Client 7、8、10 | Azure は、[Visual Studio サブスクリプショ�
 Windows 10 Pro デスクトップ | Azure は、[マルチ テナント ホスティング権限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)にサポートを提供します。 | Azure に条件付きで対応
 Windows Vista、XP Professional | サポート対象外。 マシンが Azure で起動する可能性はありますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。
 Linux | Azure はこれらの [Linux オペレーティング システム](../virtual-machines/linux/endorsed-distros.md)をサポートしています。 他の Linux オペレーティング システムも Azure で起動する可能性はありますが、Azure に移行する前に、サポート対象バージョンへの OS のアップグレードをお勧めします。 | Azure に対応 (バージョンがサポートされている場合)。<br/><br/>条件付きで対応 (バージョンがサポートされていない場合)。
-他のオペレーティング システム<br/><br/> 例: Oracle Solaris、Apple Mac OS、FreeBSD など | Azure では、これらのオペレーティング システムはサポートされません。 マシンは Azure で起動できますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前にサポート対象の OS のインストールをお勧めします。  
+他のオペレーティング システム<br/><br/> 例: Oracle Solaris、Apple macOS、FreeBSD など | Azure では、これらのオペレーティング システムはサポートされません。 マシンは Azure で起動できますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前にサポート対象の OS のインストールをお勧めします。  
 vCenter Server で **[Other]\(その他\)** と指定された OS | この場合、Azure Migrate は OS を識別できません。 | 対応不明。 VM で実行している OS が Azure でサポートされることを確認します。
 32 ビット オペレーティング システム | マシンは Azure で起動できますが、Azure がフル サポートを提供しない可能性があります。 | 条件付きで Azure に対応。Azure に移行する前に、マシンの OS を 32 ビット OS から 64 ビット OS にアップグレードすることをご検討ください。
 
@@ -201,7 +210,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 1. プロジェクトに Log Analytics ワークスペースをアタッチするには、 **[概要]** の **[基本]** に移動し、 **[構成が必要]** をクリックします。
 2. 新しいワークスペースを作成することも、既存のワークスペースをアタッチすることもできます。
   - 新しいワークスペースを作成する場合は、名前を指定します。 移行プロジェクトと同じ [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内にあるリージョンにワークスペースが作成されます。
-  - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるワークスペースは、[サポートされている Service Map リージョン](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)内で作成されたもののみです。 ワークスペースをアタッチするには、ワークスペースへの "閲覧者" アクセスがあることを確認してください。
+  - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるワークスペースは、[サポートされている Service Map リージョン](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)内で作成されたもののみです。 ワークスペースをアタッチするには、ワークスペースへの "閲覧者" アクセスがあることを確認してください。
 
 > [!NOTE]
 > 移行プロジェクトに関連付けられているワークスペースは変更できません。
@@ -254,7 +263,7 @@ System Center Operations Manager 2012 R2 以降によって監視されている
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - Windows および Linux オペレーティング システムの[依存関係エージェントのサポート](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)に関する詳細を確認してください。
-- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)をご覧ください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
 
 >[!NOTE]
 > システムの前提条件や Dependency Agent のデプロイ方法についての概要を紹介するために引用されている Azure Monitor for VMs の記事は、Service Map ソリューションにも当てはまります。

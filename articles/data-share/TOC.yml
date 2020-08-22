@@ -6,6 +6,11 @@
       href: overview.md
     - name: サポートされているデータ ストア
       href: supported-data-stores.md
+- name: クイックスタート
+  items:
+    - name: データ共有の作成 - ARM テンプレート
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: チュートリアル
   expanded: true
   items:
@@ -19,6 +24,8 @@
       href: terminology.md
     - name: ロールと要件
       href: concepts-roles-permissions.md
+    - name: 価格について
+      href: concepts-pricing.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -29,12 +36,12 @@
   items:
     - name: モニター
       href: how-to-monitor.md
-    - name: データセット マッピングの構成
-      href: how-to-configure-mapping.md
     - name: トラブルシューティング
       href: data-share-troubleshoot.md
     - name: データセットの追加
       href: how-to-add-datasets.md
+    - name: データセット マッピングの構成
+      href: how-to-configure-mapping.md
     - name: 受信者の追加
       href: how-to-add-recipients.md
     - name: 招待の削除
@@ -54,7 +61,7 @@
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: azure-cli-references-for-data-share.md
+      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
 - name: リソース
   items:
     - name: Microsoft Q&A 質問ページ

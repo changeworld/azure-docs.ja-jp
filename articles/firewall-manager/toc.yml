@@ -44,7 +44,7 @@
       href: migrate-to-policy.md
     - name: DNS の設定
       href: dns-settings.md
-    - name: 複数のパブリック IP のデプロイ
+    - name: 複数のパブリック IP のデプロイ - PowerShell
       href: multiple-public-ip-powershell.md
 - name: リファレンス
   items:

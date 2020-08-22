@@ -3,12 +3,12 @@ title: Language Understanding (LUIS) とは
 description: Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675981"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538039"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -61,7 +61,7 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
 
 ## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行
 
-アプリがトレーニングされてエンドポイントに発行された後は、クライアント アプリケーションによって、予測[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API に発話が送信されます。 API によって、分析のために発話にアプリが適用され、予測結果が JSON 形式で返されます。
+アプリがトレーニングされてエンドポイントに発行された後は、クライアント アプリケーションによって、予測[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API に発話が送信されます。 API によって、分析のために発話にモデルが適用され、予測結果が JSON 形式で返されます。
 
 エンドポイントからの JSON 形式の応答には、少なくとも、クエリの発話と上位スコアの意図が含まれます。 以下の **Contact Type** エンティティや全体的なセンチメントなどのデータを抽出することもできます。
 

@@ -5,16 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891612"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324184"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
-以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ビューと [[トランザクション診断]](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
+以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](./app-map.md) ビューと [[トランザクション診断]](./transaction-diagnostics.md) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](./api-custom-events-metrics.md#trackdependency)を使えば手動で追跡することができます。
 
 ## <a name="net"></a>.NET
 
@@ -62,7 +62,7 @@ ms.locfileid: "82891612"
 
 > [!NOTE]
 > *リアクティブ プログラミング サポートを除く。
-> <br>†[JVM エージェント](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java)のインストールが必要。
+> <br>†[JVM エージェント](./java-agent.md#install-the-application-insights-agent-for-java)のインストールが必要。
 
 ## <a name="nodejs"></a>Node.js
 
@@ -88,9 +88,10 @@ ms.locfileid: "82891612"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [.NET](../../azure-monitor/app/asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
-- [Java](../../azure-monitor/app/java-agent.md) のカスタム依存関係追跡を設定します。
-- [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
-- [カスタム依存関係テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)。
-- Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- [.NET](./asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
+- [Java](./java-agent.md) のカスタム依存関係追跡を設定します。
+- [OpenCensus Python](./opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
+- [カスタム依存関係テレメトリを記述します](./api-custom-events-metrics.md#trackdependency)。
+- Application Insights の型とデータ モデルについては、[データ モデル](./data-model.md)に関するページを参照してください。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

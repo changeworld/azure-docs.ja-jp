@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009120"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする
 
@@ -30,10 +30,11 @@ ms.locfileid: "85253360"
 
 条件付きアクセスでは、これらのクライアント アプリはアプリ保護ポリシーで保護されることが知られています。 アプリ保護ポリシーの詳細については、「[アプリ保護ポリシーの概要](/intune/apps/app-protection-policy)」を参照してください
 
-適格なクライアント アプリの一覧については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md)に関するページを参照してください。
+> [!WARNING]
+> 一部のアプリケーションは、承認済みアプリケーションとしてサポートされないか、アプリケーション保護ポリシーをサポートしません。 適格なクライアント アプリの一覧については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md#require-app-protection-policy)に関するページを参照してください。
 
 > [!NOTE]
->    OR 句は、ポリシー内で使用され、ユーザーが、**アプリの保護ポリシーを必須にする**または**承認済みクライアント アプリを必須にする**のいずれかの付与の制御をサポートするアプリを利用できるようにします。 **アプリ保護ポリシーを必須にする**付与の制御がサポートされているアプリの詳細については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md)に関するページを参照してください。
+> 付与の制御の [選択したコントロールのいずれかが必要] は、 OR 句と似ています。 これは、ポリシー内で使用され、ユーザーが **[アプリの保護ポリシーが必要]** または **[承認済みクライアント アプリを必須にする]** のいずれかの付与の制御をサポートするアプリを利用できるようにします。 アプリが両方のポリシーでサポートされている場合は、 **[アプリの保護ポリシーが必要]** が適用されます。 **アプリ保護ポリシーを必須にする**付与の制御がサポートされているアプリの詳細については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md#require-app-protection-policy)に関するページを参照してください。
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>シナリオ 1:Office 365 アプリで、承認済みアプリとアプリ保護ポリシーの使用を必須にする
 

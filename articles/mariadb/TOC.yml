@@ -145,7 +145,11 @@
         - name: ユーザーの作成
           href: howto-create-users.md
         - name: Connection strings
-          href: howto-connection-string.md
+          items:
+            - name: アプリケーションの接続
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: SSL の構成
           href: howto-configure-ssl.md
         - name: TLS の構成

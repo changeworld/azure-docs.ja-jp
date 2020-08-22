@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360131"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447094"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
 > [!NOTE]
@@ -61,7 +61,7 @@ ms.locfileid: "85360131"
 
     a. **エンタープライズ管理者の資格情報を提供する**: デバイスをライトバックする必要があるフォレストのエンタープライズ管理者の資格情報を提供すると、Azure AD Connect はデバイス ライトバックの構成の間にフォレストを自動的に準備します。
 
-    b. **PowerShell スクリプトをダウンロードする**: Azure AD Connect は、デバイス ライトバック用に Active Directory を準備できる PowerShell スクリプトを自動生成します。 Azure AD Connect にエンタープライズ管理者の資格情報を提供できない場合、PowerShell スクリプトをダウンロードすることをお勧めします。 ダウンロードした PowerShell スクリプト **CreateDeviceContainer.psq** を、デバイスがライトバックされるフォレストのエンタープライズ管理者に提供します。
+    b. **PowerShell スクリプトをダウンロードする**: Azure AD Connect は、デバイス ライトバック用に Active Directory を準備できる PowerShell スクリプトを自動生成します。 Azure AD Connect にエンタープライズ管理者の資格情報を提供できない場合、PowerShell スクリプトをダウンロードすることをお勧めします。 ダウンロードした PowerShell スクリプト **CreateDeviceContainer.ps1** を、デバイスがライトバックされるフォレストのエンタープライズ管理者に提供します。
     ![Active Directory フォレストを準備する](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Active Directory フォレストを準備するため、次の操作が実行されます。

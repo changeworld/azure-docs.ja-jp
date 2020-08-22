@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment での Azure VM の評価
 description: Azure Migrate Server Assessment での評価について説明します
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108003"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825992"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate での Azure VM の評価:Server Assessment
 
@@ -152,7 +152,7 @@ Azure VM の評価では、Server Assessment によりオンプレミスの VM �
 --- | --- | ---
 **ブートの種類** | Azure は、ブートの種類が UEFI ではなく BIOS として VM をサポートします。 | ブートの種類が UEFI の場合は条件付きで対応
 **コア** | 各マシンのコア数は、Azure VM でサポートされる最大コア数の 128 コア以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 評価設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合、Azure Migrate は快適性係数を適用せずに、割り当てられているコアの数を使用します。 | コア数が制限内であれば対応
-**RAM** | 各マシンの RAM のサイズは、Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> VM でサポートされる最大サイズの 3892 GB 以下である必要があります。 [詳細については、こちらを参照してください](../virtual-machines/windows/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されている RAM が比較で考慮されます。 快適性係数が指定されている場合、使用されている RAM に快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられている RAM が使用されます。<br/><br/> | RAM の容量が制限内であれば対応
+**RAM** | 各マシンの RAM のサイズは、Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> VM でサポートされる最大サイズの 3892 GB 以下である必要があります。 [詳細については、こちらを参照してください](../virtual-machines/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されている RAM が比較で考慮されます。 快適性係数が指定されている場合、使用されている RAM に快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられている RAM が使用されます。<br/><br/> | RAM の容量が制限内であれば対応
 **ストレージ ディスク** | ディスクの割り当てサイズは、32 TB 以下である必要があります。 Azure では、Azure Ultra SSD ディスクにより 64 TB のディスクがサポートされますが、Azure Migrate: Server Assessment では、Ultra SSD がまだサポートされていないため、現時点では、ディスク サイズの上限である 32 TB のチェックが行われます。 <br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | ディスクのサイズと数が制限内であれば対応
 **ネットワーク** | マシンに接続されているネットワーク インターフェイス (NIC) の数は 32 個以下である必要があります。 | NIC 数が制限内であれば対応
 

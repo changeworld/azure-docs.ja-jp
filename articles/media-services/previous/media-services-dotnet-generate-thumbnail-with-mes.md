@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964755"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836447"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法 
 
@@ -282,7 +282,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 上記の例ではすべて、画像のみを生成するエンコード タスクを送信する方法を説明していますが、ビデオ/オーディオ エンコードをサムネイルの生成と組み合わせることもできます。 次の JSON および XML プリセットは、**Media Encoder Standard** にエンコード中にサムネイルを生成するよう指示します。
 
 ### <a name="json-preset"></a><a id="json"></a>JSON プリセット
-スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
+スキーマの詳細については、[こちら](./media-services-mes-schema.md)の記事をご覧ください。
 
 ```json
     {
@@ -347,7 +347,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML プリセット
-スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
+スキーマの詳細については、[こちら](./media-services-mes-schema.md)の記事をご覧ください。
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -576,4 +576,3 @@ namespace EncodeAndGenerateThumbnails
 
 ## <a name="see-also"></a>参照
 [Media Services Encoding の概要](media-services-encode-asset.md)
-

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185621"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270582"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -28,7 +28,7 @@ Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークス
 
 Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。
 
-ワークスペースはあっても、それが Automation アカウントにリンクされていない場合は、Automation の機能を有効にすると、Hybrid Runbook Worker のサポートを含む Azure Automation の機能が追加されます。 Log Analytics ワークスペースで Azure Automation 機能のいずれかを有効にすると (具体的には、[Update Management](automation-update-management.md) または[変更履歴とインベントリ](change-tracking.md))、worker コンポーネントがエージェント マシンに自動的にプッシュされます。
+ワークスペースはあっても、それが Automation アカウントにリンクされていない場合は、Automation の機能を有効にすると、Hybrid Runbook Worker のサポートを含む Azure Automation の機能が追加されます。 Log Analytics ワークスペースで Azure Automation 機能のいずれかを有効にすると (具体的には、[Update Management](update-management/update-mgmt-overview.md) または[変更履歴とインベントリ](change-tracking.md))、worker コンポーネントがエージェント マシンに自動的にプッシュされます。
 
    ワークスペースに Update Management 機能を追加するには、次の PowerShell コマンドレットを実行します。
 
@@ -77,7 +77,7 @@ Hybrid Runbook Worker のその他のネットワーク要件については、[
 Automation アカウントの Hybrid Runbook Worker グループに worker マシンを追加できます。 Azure Automation 機能と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用している場合、Automation Runbook をサポートする必要があることに注意してください。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
 
 >[!NOTE]
->Azure Automation [Update Management](automation-update-management.md) を有効にすると、オペレーティング システムの更新の管理をサポートするために、Log Analytics ワークスペースに接続された Windows マシンはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このワーカーは、Automation アカウントで既に定義されている Hybrid Runbook Worker グループには登録されません。
+>Azure Automation [Update Management](update-management/update-mgmt-overview.md) を有効にすると、オペレーティング システムの更新の管理をサポートするために、Log Analytics ワークスペースに接続された Windows マシンはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このワーカーは、Automation アカウントで既に定義されている Hybrid Runbook Worker グループには登録されません。
 
 ## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンの有効化
 
@@ -138,9 +138,15 @@ PowerShell コマンドライン シェルで、ダウンロードしたスク�
 スクリプトの実行後、Azure での認証が求められます。 サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用してサインインする必要があります。
 
 ```powershell-interactive
-.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <nameOfAutomationAccount> -AAResourceGroupName <nameOfResourceGroup>`
--OMSResourceGroupName <nameOfOResourceGroup> -HybridGroupName <nameOfHRWGroup> `
--SubscriptionID <subscriptionId> -WorkspaceName <nameOfLogAnalyticsWorkspace>
+$NewOnPremiseHybridWorkerParameters = @{
+  AutomationAccountName = <nameOfAutomationAccount>
+  AAResourceGroupName   = <nameOfResourceGroup>
+  OMSResourceGroupName  = <nameOfResourceGroup>
+  HybridGroupName       = <nameOfHRWGroup>
+  SubscriptionID        = <subscriptionId>
+  WorkspaceName         = <nameOfLogAnalyticsWorkspace>
+}
+.\New-OnPremiseHybridWorker.ps1 @NewOnPremiseHybridWorkerParameters
 ```
 
 ### <a name="step-4---install-nuget"></a>手順 4 - NuGet をインストールする
@@ -169,11 +175,11 @@ Heartbeat
 
 検索結果には、マシンのハートビート レコードが表示されます。これにより、エージェントがサービスに接続され、レポートが送信されていることが示されます。 既定では、各エージェントからその割り当て済みのワークスペースにハートビート レコードが転送されます。 エージェントのインストールとセットアップを完了するには、次の手順を使用します。
 
-1. エージェント マシンを追加するには、この機能を有効にします。 Update Management と Azure VM については「[Azure VM の有効化](automation-onboard-solutions-from-automation-account.md#enable-azure-vms)」を、Azure 以外の VMについては「[ワークスペースでのマシンの有効化](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。 変更履歴と VM については「[Azure VM の有効化](automation-enable-changes-from-auto-acct.md#enable-azure-vms)」を、Azure 以外の VMについては「[ワークスペースでのマシンの有効化](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)」を参照してください。
+1. エージェント マシンを追加するには、この機能を有効にします。 Update Management と Azure VM については、「[Automation アカウントから Update Management を有効にする](update-management/update-mgmt-enable-automation-account.md)」、[Azure portal を参照して Update Management を有効にする方法](update-management/update-mgmt-enable-portal.md)に関するページ、「[Runbook から Update Management を有効にする](update-management/update-mgmt-enable-runbook.md)」、または「[Azure VM から Update Management を有効にする](update-management/update-mgmt-enable-vm.md)」を参照してください。 変更履歴と VM については「[Azure VM の有効化](automation-enable-changes-from-auto-acct.md#enable-azure-vms)」を、Azure 以外の VMについては「[ワークスペースでのマシンの有効化](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)」を参照してください。
 
 2. Hybrid Runbook Worker のバージョンを確認するには、`C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` を参照し、**version** サブフォルダーを確認します。
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>手順 3 - Runbook 環境をインストールして、Azure Automation に接続する
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>手順 2 - Runbook 環境をインストールして、Azure Automation に接続する
 
 Log Analytics ワークスペースにレポートを送信するようにエージェントを構成すると、Azure Automation 機能により、`Add-HybridRunbookWorker` コマンドレットを含む `HybridRegistration` PowerShell モジュールがプッシュダウンされます。 マシンに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
 
@@ -202,7 +208,7 @@ Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 
 * 必要に応じて、`Verbose` パラメーターを設定して、インストールの詳細を取得します。
 
-### <a name="step-4----install-powershell-modules"></a>手順 4 - PowerShell モジュールをインストールする
+### <a name="step-3----install-powershell-modules"></a>手順 3 - PowerShell モジュールをインストールする
 
 Runbook は、Azure Automation 環境にインストールされているモジュールで定義されているアクティビティとコマンドレットをすべて使用できます。 これらのモジュールはオンプレミス マシンに自動的に配置されないため、手動でインストールする必要があります。 Azure モジュールは例外です。 このモジュールは既定でインストールされ、すべての Azure サービスのコマンドレットと Azure Automation のアクティビティにアクセスできます。
 

@@ -1,31 +1,30 @@
 ---
-title: 時系列モデル - Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights プレビューの時系列モデルについて説明します。
+title: タイム シリーズ モデル - Azure Time Series Insights Gen2 | Microsoft Docs
+description: Azure Time Series Insights Gen2 のタイム シリーズ モデルについて学習します。
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5a22987b1d67f9e9f8384e5376343af2f91b5e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049401"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141722"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューの時系列モデル
+# <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 のタイム シリーズ モデル
 
-この記事ではタイム シリーズ モデルに関して、機能、および Azure Time Series Insights プレビュー環境で独自のモデルの構築と更新を開始する方法について説明します。
+この記事ではタイム シリーズ モデルに関して、機能、および Azure Time Series Insights Gen2 環境で独自のモデルのビルドと更新を開始する方法について説明します。
 
 > [!TIP]
 >
 > * タイム シリーズ モデルのライブによる実例については、 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境を参照してください。
-> * タイム シリーズ モデル UI の操作方法については、[Azure Time Series Insights プレビュー エクスプローラー](time-series-insights-update-explorer.md)に関するページを参照してください。
-> * Time Series Insights Web エクスプローラーを使用して[タイム シリーズ モデルを操作する方法](time-series-insights-update-how-to-tsm.md)について説明します。
+> * Azure Time Series Insights Gen2 Explorer を使用して、[タイム シリーズ モデルを操作する方法](/azure/time-series-insights/how-to-edit-your-model)について学習します。
 
 ## <a name="summary"></a>まとめ
 
@@ -58,7 +57,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 ### <a name="key-capabilities"></a>主な機能
 
-時系列データのコンテキスト化をシンプルかつ簡単に管理できるようにするため、タイム シリーズ モデルでは、Time Series Insights プレビューで次の機能が使用できるようになっています。 これは以下のことに役立ちます。
+タイム シリーズ データのコンテキスト化をシンプルかつ簡単に管理できるようにするため、タイム シリーズ モデルでは、Time Series Insights Gen2 で次の機能が使用できるようになっています。 これは以下のことに役立ちます。
 
 * スカラー関数を活用した計算や数式の作成と管理、操作の集計などを行う。
 * 親子関係を定義して、ナビゲーション、検索、および参照を有効にする。
@@ -72,11 +71,11 @@ Contoso は初期データと視覚化ソリューションに満足していま
 * [タイム シリーズ モデルの階層](#time-series-model-hierarchies)
 * [タイム シリーズ モデルの型](#time-series-model-types)
 
-これらのコンポーネントは、時系列モデルを指定し、Azure Time Series Insights データを整理するために組み合わされています。
+これらのコンポーネントは、タイム シリーズ モデルを指定し、データを整理するために組み合わされています。
 
 [![タイム シリーズ モデルの概要グラフ](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-時系列モデルは、[Time Series Insights プレビュー](time-series-insights-update-how-to-tsm.md)インターフェイスを使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) を使用して管理できます。
+タイム シリーズ モデルは、[Azure Time Series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) を使用して管理できます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 
@@ -88,7 +87,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 *インスタンス フィールド*は、階層レベルの値、製造元、演算子などを含めることができる説明情報のコレクションです。
 
-Time Series Insights 環境に対してイベント ソースが構成されると、インスタンスが自動的に検出され、時系列モデルで作成されます。 インスタンスは、タイム シリーズ モデルのクエリを使用して Time Series Insights エクスプローラーで作成または更新できます。
+Azure Time Series Insights Gen2 環境に対してイベント ソースが構成された後、インスタンスが自動的に検出され、タイム シリーズ モデルで作成されます。 インスタンスは、タイム シリーズ モデルのクエリを使用して Azure Time Series Insights Gen2 Explorer で作成または更新できます。
 
 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)には、いくつかのライブ インスタンスの例が用意されています。
 
@@ -130,15 +129,15 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 ```
 
 > [!TIP]
-> Time Series Insights インスタンス API ならびに作成、読み取り、更新、および削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[インスタンス API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)を参照してください。
+> インスタンス API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)に関する記事と、[インスタンス API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)を参照してください。
 
 ## <a name="time-series-model-hierarchies"></a>タイム シリーズ モデルの階層
 
 タイム シリーズ モデルの*階層*を使用すると、プロパティ名とそのリレーションシップを指定して、インスタンスを整理できます。
 
-特定の Time Series Insights 環境で複数の階層を構成できます。 タイム シリーズ モデルのインスタンスは、単一の階層または複数の階層にマップできます (多対多のリレーションシップ)。
+特定の Azure Time Series Insights Gen2 環境で複数の階層を構成できます。 タイム シリーズ モデルのインスタンスは、単一の階層または複数の階層にマップできます (多対多のリレーションシップ)。
 
-[Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples) クライアント インターフェイスには、標準のインスタンスと型の階層が表示されます。
+[Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)には、標準のインスタンスと型の階層が表示されます。
 
 [![タイム シリーズ モデルの階層の例](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -187,7 +186,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 * `ManufactureDate` は親である `year` と子である `month` を持つ階層を定義します。 各 `ManufactureDate` は複数の `years` を持つことができ、それぞれさらに複数の `months` を持つことができます。
 
 > [!TIP]
-> Time Series Insights インスタンス API と CRUD のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[階層 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)を参照してください。
+> 階層 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[階層 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api)を参照してください。
 
 ### <a name="hierarchy-example"></a>階層の例
 
@@ -217,13 +216,13 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 | ID4 | "building" = "1000"、"floor" = "10"  |
 | ID5 | "building"、"floor"、"room" のどれも設定されていない。 |
 
-タイム シリーズ **ID1** と **ID4** は、階層 **H1** の一部として [Azure Time Series Insights エクスプローラー](time-series-insights-update-explorer.md)に表示されます。それは完全に定義され、適切に並べられた *building*、*floor*、および *room* パラメーターを持つためです。
+タイム シリーズ **ID1** と **ID4** は、階層 **H1** の一部として、[Azure Time Series Insights Gen2 Explorer](time-series-insights-update-explorer.md) に表示されます。これは完全に定義され、適切に並べられた *building*、*floor*、*room* パラメーターがあるためです。
 
 他のものは、指定されたデータ階層に準拠していないため、*親が未設定のインスタンス*に分類されます。
 
 ## <a name="time-series-model-types"></a>タイム シリーズ モデルの型
 
-タイム シリーズ モデルの "*型*" は、計算を行うための変数や数式を定義するのに役立ちます。 型は、特定の Time Series Insights インスタンスに関連付けられます。
+タイム シリーズ モデルの "*型*" は、計算を行うための変数や数式を定義するのに役立ちます。 型は特定のインスタンスに関連付けられています。
 
 1 つの型は、1 つまたは複数の変数を持つことができます。 たとえば、タイム シリーズ モデル インスタンスの型が "*温度センサー*" の場合は、その型を、"*平均温度*"、"*最低温度*"、"*最高温度*" という変数から構成することができます。
 
@@ -232,7 +231,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 [![タイム シリーズ モデルの種類の例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Time Series Insights インスタンス API と CRUD のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[型 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)を参照してください。
+> 型 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[型 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api)を参照してください。
 
 ### <a name="type-properties"></a>型のプロパティ
 
@@ -266,7 +265,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
         "Interpolated Speed": {
           "kind": "numeric",
           "value": {
-              "tsx": "$event.[speed].Double"
+              "tsx": "$event['Speed-Sensor'].Double"
           },
           "filter": null,
           "interpolation": {
@@ -276,7 +275,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
               }
           },
           "aggregation": {
-              "tsx": "left($value)"
+              "tsx": "right($value)"
           }
         }
       }
@@ -285,113 +284,12 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 }
 ```
 
-### <a name="variables"></a>変数
-
-Time Series Insights 型には、イベントに対する式および計算ルールを指定する多数の変数が含まれている場合があります。
-
-各変数には、*数値*、*カテゴリ別*、および*集計*の 3 *種類*のうちのいずれかを指定できます。
-
-* **数値**の種類は、連続する値を処理します。
-* **カテゴリ別**の種類は、定義されている不連続値のセットを処理します。
-* **集計**の値は、1 種類の複数の変数 (すべて数値、またはすべてカテゴリ別) を結合します。
-
-次の表に、各変数の種類に関連するプロパティを示します。
-
-[![タイム シリーズ モデルの変数テーブル](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
-
-#### <a name="numeric-variables"></a>数値変数
-
-| 変数のプロパティ | 説明 |
-| --- | ---|
-| 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
-| 変数の値 | デバイスまたはセンサーからの計算、またはタイム シリーズ式を使用して変換された計算に使用されるテレメトリ値。 数値の種類の変数は、*Double* 型である必要があります。|
-| 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ*と*線形*補間オプションを数値変数に使用できます。 |
-| 変数の集計 | *Avg*、*Min*、*Max*、*Sum*、*Count*、*First*、*Last* および time-weighted (*Avg*、*Min*、*Max*、*Sum*、*Left*) 演算子を使用した計算がサポートされています。 |
-
-変数は、次の JSON の例に準拠しています。
-
-```JSON
-"Interpolated Speed": {
-  "kind": "numeric",
-  "value": {
-    "tsx": "$event.[speed].Double"
-  },
-  "filter": null,
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span": "P1D"
-    }
-  },
-  "aggregation": {
-    "tsx": "left($value)"
-  }
-}
-```
-
-#### <a name="categorical-variables"></a>カテゴリ別変数
-
-| 変数のプロパティ | 説明 |
-| --- | ---|
-| 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
-| 変数の値 | デバイスまたはセンサーからの計算に使用されるテレメトリ値。 カテゴリ別の種類の変数は、*Long* または *String* である必要があります。 |
-| 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ*補間オプションは、カテゴリ別変数に使用できます。 |
-| 変数のカテゴリ | カテゴリによって、デバイスまたはセンサーからの値とラベルの間のマッピングが作成されます。 |
-| 変数の既定のカテゴリ | 既定のカテゴリは、"categories" プロパティでマップされていないすべての値を対象としています。 |
-
-変数は、次の JSON の例に準拠しています。
-
-```JSON
-"Status": {
-  "kind": "categorical",
-  "value": {
-     "tsx": "toLong($event.[Status].Double)"
-},
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span" : "PT1M"
-    }
-  },
-  "categories": [
-    {
-      "values": [0, 1, 2],
-      "label": "Good"
-    },
-    {
-      "values": [3],
-      "label": "Bad"
-    }
-  ],
-  "defaultCategory": {
-    "label": "Not Applicable"
-  }
-}
-```
-
-#### <a name="aggregate-variables"></a>集計変数
-
-| 変数のプロパティ | 説明 |
-| --- | ---|
-| 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
-| 変数の集計 | *Avg*、*Min*、*Max*、*Sum*、*Count*、*First*、*Last*を使用した計算をサポートします。 |
-
-変数は、次の JSON の例に準拠しています。
-
-```JSON
-"Aggregate Speed": {
-  "kind": "aggregate",
-  "filter": null,
-  "aggregation": {
-    "tsx": "avg($event.Speed.Double)"
-  }
-}
-```
-
-変数は、タイムシリーズモデルの型定義に格納され、[クエリ API](concepts-query-overview.md) を使用してインラインで指定し、格納されている定義をオーバーライドできます。
+タイム シリーズ モデルの型には、イベントに対する式および計算ルールを指定する多数の変数を含めることができます。 タイム シリーズ モデル変数を定義する方法の詳細については、[こちら](./concepts-variables.md)を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 
-* [データのクエリ](concepts-query-overview.md)について学習する。
+* API を使用してモデルを編集する方法の詳細について、[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)のリファレンス ドキュメントを参照します。
 
-* [タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)の参照ドキュメントを確認する。
+* [タイム シリーズ モデル変数](./concepts-variables.md)を使用して作成できる数式と計算を確認します
+
+* Azure Time Series Insights Gen2 での[データのクエリ](concepts-query-overview.md)について学習します

@@ -1,20 +1,20 @@
 ---
-title: Microsoft コマーシャル マーケットプレースで Power BI アプリ オファーを作成する
+title: Microsoft AppSource で Power BI アプリ オファーを作成する
 description: Power BI アプリ オファーを作成し、Microsoft AppSource に公開する方法について学習します。
-author: anbene
-ms.author: mingshen
+author: navits09
+ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980351"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030762"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource 用の Power BI アプリを作成する
+# <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
 この記事では、Power BI アプリ オファーを作成し、Microsoft [AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
 
@@ -202,6 +202,8 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。
 
@@ -212,6 +214,8 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 - **大** (216 x 216)
 
 両方のロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

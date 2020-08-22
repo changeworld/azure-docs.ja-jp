@@ -3,12 +3,12 @@ title: Azure DevTest Labs でラボにアーティファクト リポジトリ�
 description: Azure DevTest Labs でラボにアーティファクト リポジトリを追加する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013459"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 New-AzResourceGroupDeployment が正常に実行されると、このコマンドは、プロビジョニング状態 (成功) やテンプレートに関するすべての出力などの重要な情報を出力します。
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
-このセクションでは、ラボにアーティファクト リポジトリを追加するために使用できるサンプルの PowerShell スクリプトを示します。 Azure PowerShell がない場合は、そのインストールのための詳細な手順について [Azure PowerShell をインストールして構成する方法](/powershell/azure/overview?view=azps-1.2.0)に関するページを参照してください。
+このセクションでは、ラボにアーティファクト リポジトリを追加するために使用できるサンプルの PowerShell スクリプトを示します。 Azure PowerShell がない場合は、そのインストールのための詳細な手順について [Azure PowerShell をインストールして構成する方法](/powershell/azure/?view=azps-1.2.0)に関するページを参照してください。
 
 ### <a name="full-script"></a>完全なスクリプト
 いくつかの詳細メッセージやコメントを含む完全なスクリプトを次に示します。

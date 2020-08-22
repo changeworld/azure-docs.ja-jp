@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185587"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447929"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -203,7 +203,7 @@ Microsoft サービスに対する既定の収集の頻度は 30 分です。 **
 
 - Automation アカウントで機能を有効にするには、「[Automation アカウントで変更履歴とインベントリを有効にする](automation-enable-changes-from-auto-acct.md)」を参照してください。
 
-- Azure portal にブラウザーでアクセスすることによってこの機能を有効にするには、「[Azure portal での Change Tracking とインベントリの有効化](automation-onboard-solutions-from-browse.md)に関する記事を参照してください。
+- Azure portal にブラウザーでアクセスすることによってこの機能を有効にするには、「[Azure portal での Change Tracking とインベントリの有効化](automation-enable-changes-from-browse.md)に関する記事を参照してください。
 
 - Runbook で機能を有効にするには、「[Runbook で変更履歴とインベントリを有効にする](automation-enable-changes-from-runbook.md)」を参照してください。
 

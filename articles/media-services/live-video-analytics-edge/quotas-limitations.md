@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge のクォータ - Azure
 description: この記事では、Live Video Analytics on IoT Edge のクォータと制限について説明します。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091812"
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限
 
@@ -47,11 +47,8 @@ ms.locfileid: "84260345"
 * シグナル ゲート プロセッサ
    * RTSP ソースのすぐ下流にある必要があります。
 * 資産シンク 
-   * このようなノードは、グラフ トポロジごとに最大 1 つ許可されます。
-      * 資産シンクが使用されている場合、ファイル シンクは存在できません。その逆も同様です。
    * RTSP ソースまたはシグナル ゲート プロセッサのすぐ下流にある必要があります。
 * ファイル シンク
-   * このようなノードは、グラフ トポロジごとに最大 1 つ許可されます (資産シンクに関する上記のメモを参照してください)。
    * シグナル ゲート プロセッサのすぐに下流にある必要があります。
    * HTTP 拡張プロセッサまたはモーション検出プロセッサのすぐ下流に存在することはできません。
 * IoT Hub シンク

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115755"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -162,9 +162,9 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 4. 次の値を該当するフィールドに入力し、 **[OK]** をクリックします。
    - **キー パス**:***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
-   - **値の名前**: ***https***。
-   - **値の型**:***REG_DWORD***。
-   - **値のデータ**:***00000001***。
+   - **値の名前**: ***https***
+   - **値の型**:***REG_DWORD***
+   - **値のデータ**:***00000001***
  
      ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso16.png)
  

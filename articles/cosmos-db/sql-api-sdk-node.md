@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 67b85c34c72d8c4b4dc7cecaeb74a9b164133702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f280e6754d40ad5dc8cbfa4b760e090d0b5b81aa
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391963"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846481"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -25,18 +26,20 @@ ms.locfileid: "85391963"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |リソース  |Link  |
 |---------|---------|
 |SDK のダウンロード  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
-|SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-cosmos-js#installation)
+|SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-sdk-for-js)
 |SDK への参加 | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | サンプル | [Node.js コード サンプル](sql-api-nodejs-samples.md)
 | 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started.md)
@@ -56,7 +59,7 @@ ms.locfileid: "85391963"
 * ユーザーが部分再試行オプションを指定したときのバグを修正しました
 
 ### <a name="303"></a><a name="3.0.3"></a>3.0.3
-* require で呼び出されたモジュールが Webpack によって解決されないようにしました
+* require で呼び出されたモジュールが webpack によって解決されないようにしました
 
 ### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * RU が集計クエリに対して常に 0 として報告されるという、長い間未処理だったバグを修正しました
@@ -182,7 +185,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>ブラウザー エクスペリエンスの向上
-ブラウザー内で v2 SDK を使用することはできましたが、理想的なエクスペリエンスではありませんでした。 いくつかの node.js 組み込みライブラリをポリフィルし、Webpack やパーセルなどのバンドラーを使用する必要がありました。 v3 SDK を使用すると、ブラウザー ユーザーがすぐに利用できるエクスペリエンスが大幅に向上します。
+ブラウザー内で v2 SDK を使用することはできましたが、理想的なエクスペリエンスではありませんでした。 いくつかの node.js 組み込みライブラリをポリフィルし、webpack やパーセルなどのバンドラーを使用する必要がありました。 v3 SDK を使用すると、ブラウザー ユーザーがすぐに利用できるエクスペリエンスが大幅に向上します。
 
 * 要求の内部構造を fetch に置き換えました (#245)
 * バッファーの使用を削除しました (#330)
@@ -309,21 +312,21 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ### <a name="1121"></a><a name="1.12.1"></a>1.12.1
 * ドキュメントに Unicode の特殊文字 (LS、PS) が含まれている場合の executeStoredProcedure のバグを修正しました。
 * パーティション キーで Unicode 文字が使用されているドキュメントを処理する際のバグを修正しました。
-* 名前メディアでコレクションを作成するためのサポートを修正しました。 GitHub Issue #114。
-* アクセス許可承認トークンのサポートを修正しました。 GitHub Issue #178。
+* 名前メディアでコレクションを作成するためのサポートを修正しました。 GitHub 問題 #114。
+* アクセス許可承認トークンのサポートを修正しました。 GitHub 問題 #178。
 
 ### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * ConsistentPrefix と呼ばれる新しい[一貫性レベル](consistency-levels.md)に対応するようになりました。
 * UriFactory のサポートを追加しました。
-* Unicode サポートのバグを修正しました。 GitHub Issue #171。
+* Unicode サポートのバグを修正しました。 GitHub 問題 #171。
 
 ### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
 * クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
 * Azure Cosmos DB Emulator に対して実行しているときに TLS 検証を無効にするオプションを追加しました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
-* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 GitHub Issue #107。
-* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 GitHub Issue #155。
+* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 GitHub 問題 #107。
+* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 GitHub 問題 #155。
 
 ### <a name="1102"></a><a name="1.10.2"></a>1.10.2
 * SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。
@@ -409,17 +412,8 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
 
-新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
-
-提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
-
-> [!WARNING]
-> SQL API 用のノード クライアント SDK の **1.x** バージョンはすべて、**2020 年 8 月 30 日**に廃止されます。 これはクライアント側のノード SDK にのみ影響し、サーバー側のスクリプト (ストアド プロシージャ、トリガー、および UDF) には影響しません。
-> 
->
-<br/>
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |

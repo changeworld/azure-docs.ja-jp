@@ -3,12 +3,13 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655624"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922318"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -31,11 +32,11 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 **機能** | **詳細**
 --- | ---
 **サブスクリプション内のコンテナー数** | 1 つのサブスクリプションで、最大 500 個の Recovery Services コンテナー。
-**コンテナー内のマシン数** | 1 つのコンテナーで、最大 1,000 台の Azure VM。<br/><br/> 1 つのコンテナーに最大で 50 MABS を登録することができます。
-**[データ ソース]** | 個々の[データ ソース](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined)の最大サイズは 54,400 GB です。 この制限は、Azure VM のバックアップには適用されません。 コンテナーにバックアップできるデータの総量には、制限は適用されません。
+**コンテナー内のマシン数** | すべてのワークロード (Azure VM、SQL Server VM、MABS サーバーなど) で最大2000 個のデータソースを 1 つのコンテナーで保護できます。<br><br>1 つのコンテナーで、最大 1,000 台の Azure VM。<br/><br/> 1 つのコンテナーに最大で 50 MABS を登録することができます。
+**[データ ソース]** | 個々の[データ ソース](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)の最大サイズは 54,400 GB です。 この制限は、Azure VM のバックアップには適用されません。 コンテナーにバックアップできるデータの総量には、制限は適用されません。
 **コンテナーへのバックアップ回数** | **Azure VM:** 1 日あたり 1 回。<br/><br/>**DPM/MABS で保護されたマシン:** 1 日に 2 回。<br/><br/> **MARS エージェントを使用し直接バックアップされるマシン:** 1 日に 3 回。
 **コンテナー間のバックアップ** | バックアップは 1 つのリージョン内です。<br/><br/> バックアップする VM が含まれるすべての Azure リージョンにコンテナーが必要です。 異なるリージョンにバックアップすることはできません。
-**コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
+**コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](./backup-azure-move-recovery-services-vault.md)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
 
@@ -56,7 +57,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 **制限** | **詳細**
 --- | ---
-**Azure VM のデータ ディスク数** | [Azure VM バックアップのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)を確認してください。
+**Azure VM のデータ ディスク数** | [Azure VM バックアップのサポート マトリックス](./backup-support-matrix-iaas.md#vm-storage-support)を確認してください。
 **Azure VM のデータ ディスク サイズ** | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM のバックアップ オプション
@@ -105,10 +106,7 @@ Azure Backup では、転送中のデータと保存データの暗号化をサ�
 ### <a name="data-security"></a>データのセキュリティ
 
 - バックアップ データは、暗号化された形式で Recovery Services コンテナーに格納されます。
-- このデータのロックを解除するパスフレーズを持っているのはお客様だけです。 Microsoft は、どの時点でも、バックアップ データの暗号化を解除できません。
-
-    > [!WARNING]
-    > コンテナーの設定後、お客様だけが暗号化キーにアクセスできます。 Microsoft がコピーを保持することはなく、キーにアクセスすることもできません。 キーを紛失した場合、Microsoft はバックアップ データを復旧できません。
+- MARS エージェントを使用してオンプレミスのサーバーからデータをバックアップする場合、データは Azure Backup にアップロードする前にパスフレーズを使用して暗号化され、Azure Backup からダウンロードされた後に初めて暗号化が解除されます。
 - Azure VM をバックアップする場合は、仮想マシン*内*で暗号化を設定する必要があります。
 - Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。
 - Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。

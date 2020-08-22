@@ -5,16 +5,16 @@ ms.subservice: sizes
 documentationcenter: ''
 author: sasha-melamed
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 028de173c5cda1e95de9dd64d6ccd2a6b0ad7eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674315"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835580"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>ストレージ最適化済み仮想マシンのサイズ
 
@@ -36,3 +36,5 @@ ms.locfileid: "84674315"
 [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
 [Windows](windows/storage-performance.md) または [Linux](linux/storage-performance.md) 用の Lsv2 シリーズの仮想マシンでパフォーマンスを最適化する方法について説明します。
+
+Azure での VM の名前付け方法の詳細については、「[Azure 仮想マシンのサイズの名前付け規則](./vm-naming-conventions.md)」を参照してください。

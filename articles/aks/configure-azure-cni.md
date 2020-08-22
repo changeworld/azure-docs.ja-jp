@@ -4,12 +4,12 @@ description: Azure Kubernetes サービス (AKS) で Azure CNI (高度な) ネ�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416853"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872431"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -87,7 +87,7 @@ AKS クラスターのノードごとの最大ポッド数は 250 です。 ノ�
 
 ### <a name="configure-maximum---existing-clusters"></a>最大値の構成 - 既存のクラスター
 
-新しいノード プールを作成するときに、ノードごとの maxPod 設定を定義することができます。 既存のクラスターでノードごとの maxPod の設定値を増やす必要がある場合は、新しく必要な maxPod カウントで新しいノード プールを追加します。 ポッドを新しいプールに移行した後、古いプールを削除します。 クラスター内の古いプールを削除するには、システム ノード プールのドキュメント [system-node-pools] の定義に従って、ノード プール モードを設定していることを確認してください。
+新しいノード プールを作成するときに、ノードごとの maxPod 設定を定義することができます。 既存のクラスターでノードごとの maxPod の設定値を増やす必要がある場合は、新しく必要な maxPod カウントで新しいノード プールを追加します。 ポッドを新しいプールに移行した後、古いプールを削除します。 クラスター内の古いプールを削除するには、[システム ノード プールのドキュメント][system-node-pools]の定義に従ってノード プール モードを設定していることを確認してください。
 
 ## <a name="deployment-parameters"></a>展開のパラメーター
 

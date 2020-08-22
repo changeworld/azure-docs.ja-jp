@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのデプロイを計画する
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610593"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281329"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 
@@ -51,7 +51,7 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 
 エフェメラル OS ディスクは特定の Service Fabric の機能ではなく、Service Fabric ノードの種類にマップされる Azure "*仮想マシン スケール セット*" の機能です。 これらを Service Fabric で使用するには、クラスターの Azure Resource Manager テンプレートで次のものが必要です。
 
-1. ノードの種類で、エフェメラル OS ディスクに対して[サポートされている Azure VM サイズ](../virtual-machines/windows/ephemeral-os-disks.md)が指定されており、その VM サイズに、OS ディスク サイズをサポートするのに十分なキャッシュ サイズが含まれていることを確認します (下記の「*注意*」を参照)。次に例を示します。
+1. ノードの種類で、エフェメラル OS ディスクに対して[サポートされている Azure VM サイズ](../virtual-machines/ephemeral-os-disks.md)が指定されており、その VM サイズに、OS ディスク サイズをサポートするのに十分なキャッシュ サイズが含まれていることを確認します (下記の「*注意*」を参照)。次に例を示します。
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 > 移行するには、ユーザーは、エフェメラル ディスクを含む新しい nodeType を[追加](./virtual-machine-scale-set-scale-node-type-scale-out.md)して、ワークロードをその新しい nodeType に移動させ、既存の nodeType を[削除](./service-fabric-how-to-remove-node-type.md)する必要があります。
 >
 
-詳細およびその他の構成オプションについては、「[Azure VM のエフェメラル OS ディスク](../virtual-machines/windows/ephemeral-os-disks.md)」を参照してください。 
+詳細およびその他の構成オプションについては、「[Azure VM のエフェメラル OS ディスク](../virtual-machines/ephemeral-os-disks.md)」を参照してください。 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>クラスターの耐久性レベルと信頼性レベルを選択する

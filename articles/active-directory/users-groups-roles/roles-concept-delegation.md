@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556871b55de60ee592622f9f93c7b7123ba2ed32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731972"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498227"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory での管理の委任
 
@@ -38,7 +38,7 @@ ms.locfileid: "84731972"
 
 Azure AD ポータルでは、[任意のロールのメンバー全員を表示](directory-manage-roles-portal.md)できます。これは、ご自身のデプロイを確認したり、アクセス許可の委任したりするうえで役立ちます。
 
-Azure AD における管理アクセスではなく、Azure リソースへのアクセス委任について興味がある場合は、[ロールベースのアクセス制御 (RBAC) ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+Azure AD における管理アクセスではなく、Azure リソースへのアクセス委任について興味がある場合は、[Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
 ## <a name="delegation-planning"></a>計画の委任
 

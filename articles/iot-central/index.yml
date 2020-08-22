@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 0c433c2d09f101a9ab3fb9d1225e47741908b3bf
-  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+  ms.openlocfilehash: fee76e6782fb01c6d18fd19c8c97d9f2c310c7ab
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82562187"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080679"
 highlightedContent:
   items:
   - title: IoT Central とは
@@ -43,9 +43,6 @@ conceptualContent:
     - url: ./core/howto-set-up-template.md
       itemType: how-to-guide
       text: デバイス テンプレートを設定する
-    - url: ./core/tutorial-connect-pnp-device.md
-      itemType: tutorial
-      text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
     footerLink:
       url: ./core/index.yml
       text: 詳細情報
@@ -71,9 +68,9 @@ conceptualContent:
     - url: ./core/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: テレメトリ ルールを作成する
-    - url: ./core/howto-export-data.md
+    - url: ./core/howto-use-data-export.md
       itemType: how-to-guide
-      text: Azure で宛先にデータをエクスポートする
+      text: クラウドの宛先にデータをエクスポートする - プレビュー
     footerLink:
       url: ./core/index.yml
       text: 詳細情報
@@ -94,6 +91,8 @@ productDirectory:
       url: ./retail/tutorial-iot-central-connected-logistics.md
     - text: デジタル流通センター アプリケーションを作成する
       url: ./retail/tutorial-iot-central-digital-distribution-center.md
+    - text: ビデオ分析アプリケーションを作成する
+      url: ./retail/tutorial-video-analytics-create-app.md
   - title: ヘルスケア業界向けの構築
     imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
     links:

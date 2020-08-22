@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 43172cb08bb1e31c8cff891628ca6ef85cb8c864
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f350aae32909de2b9be4384d921f7507a158f6ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404409"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243855"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "81404409"
 > * Azure Storage の画像にメタデータをアタッチする
 > * Azure Storage Explorer を使用して画像のメタデータを確認する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-computer-vision-credentials"></a>Computer Vision の資格情報を追加する
 
-次に、お客様のアプリが Computer Vision リソースにアクセスできるように、必要な資格情報を追加します
+次に、お客様のアプリが Computer Vision リソースにアクセスできるように、必要な資格情報を追加します。
 
 Visual Studio でお客様の ASP.NET Web アプリケーションを開き、プロジェクトのルートにある **Web.config** ファイルに移動します。 次のステートメントをファイルの `<appSettings>` セクションに追加します。このとき、`VISION_KEY` を前の手順でコピーしたキーに置き換え、`VISION_ENDPOINT` をその前の手順で保存した URL に置き換えます。
 

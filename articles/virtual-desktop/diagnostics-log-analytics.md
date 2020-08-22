@@ -1,27 +1,22 @@
 ---
 title: Windows Virtual Desktop の診断ログ分析 - Azure
 description: Windows Virtual Desktop の診断機能でログ分析を使用する方法について説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209387"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005109"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)を参照してください。
 
 Windows Virtual Desktop では、他の多くの Azure サービスと同様に、監視やアラートに [Azure Monitor](../azure-monitor/overview.md) が使用されます。 これにより、管理者は 1 つのインターフェイス経由で問題を特定できます。 サービスでは、ユーザーと管理者の両方のアクションに対してアクティビティ ログが作成されます。 各アクティビティ ログは、次のカテゴリに分類されます。
 
@@ -133,52 +128,16 @@ Azure portal または Azure Monitor 上で Log Analytics ワークスペース�
 
 ## <a name="example-queries"></a>クエリの例
 
-次のクエリの例では、システムで最も頻繁に発生するアクティビティのレポートが診断機能によってどのように生成されるかを示しています。
+Azure Monitor Log Analytics UI を使用したサンプル クエリへのアクセス:
+1. Log Analytics ワークスペースにアクセスし、 **[ログ]** を選択します。 クエリ UI の例が自動的に表示されます。
+1. フィルターを **[カテゴリ]** に変更します。
+1. **[Windows Virtual Desktop]** を選択して、使用可能なクエリを確認します。
+1. **[実行]** を選択して、選択したクエリを実行します。
 
-ユーザーによって行われた接続の一覧を取得するには、次のコマンドレットを実行します。
+サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/log-query/saved-queries.md)」を参照してください。
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+次のクエリ一覧では、1 人のユーザーの接続情報または問題を確認できます。 これらのクエリは、[Log Analytics クエリ エディター](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
 
-ユーザーのフィード アクティビティを表示するには:
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 1 人のユーザーのすべての接続を検索するには:
 
@@ -199,7 +158,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 ユーザーによるセッション継続時間を確認するには:
 
@@ -224,7 +182,7 @@ WVDErrors
 |take 100
 ```
 
-特定のエラーが発生したかどうかを調べるには:
+他のユーザーに対して特定のエラーが発生したかどうかを確認するには:
 
 ```kusto
 WVDErrors
@@ -232,27 +190,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-すべてのユーザーにわたってエラーの発生を確認するには:
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-ユーザーが開いたアプリに対してクエリを実行するには、このクエリを実行します。
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- ユーザーが完全なデスクトップを開いた場合、セッション内でのユーザーによるアプリの使用は WVDCheckpoints テーブルのチェックポイントとして追跡されません。
 >- WVDConnections テーブル内の ResourcesAlias 列は、ユーザーが完全なデスクトップと公開済みアプリのどちらに接続しているかを示します。 この列には、接続中に開いた最初のアプリのみが表示されます。 ユーザーが開いた公開済みアプリは、WVDCheckpoints 内で追跡されます。

@@ -3,15 +3,16 @@ title: Azure CLI のサンプル
 description: Azure CLI のサンプル
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 2d855a524129bb56248e270d43b300e5dfe97e27
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ecc195017b99da576cba9944613c76bea3c31abf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207449"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498720"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux 仮想マシン用の Azure CLI サンプル
 

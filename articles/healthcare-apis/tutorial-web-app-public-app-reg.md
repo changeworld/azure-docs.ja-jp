@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 58e21e46edfe1d03d42bf2202bcf1f22282631a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "84870455"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852975"
 ---
 # <a name="client-application-registration"></a>クライアント アプリケーションの登録
 前のチュートリアルでは、Azure API for FHIR をデプロイしてセットアップしました。 これで、Azure API for FHIR のセットアップが完了したので、パブリック クライアント アプリケーションを登録します。 詳細またはトラブルシューティングについては、[パブリック クライアント アプリの登録](register-public-azure-ad-client-app.md)に関する完全な攻略ガイドで読むことができますが、主な手順については、このチュートリアルの以下の部分で紹介しています。
@@ -23,22 +23,37 @@ ms.locfileid: "84870455"
 1. **[アプリの登録]**  -->  **[新しい登録]** の順に選択します
 1. アプリケーションの名前を設定し、リダイレクト URI を https://www.getpostman.com/oauth2/callback にセットアップします
 
-
-![クライアント アプリケーションの登録](media/tutorial-web-app/reg-public-app.png)
+   :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="[アプリケーションの登録] ペインのスクリーンショット。アプリケーション名とリダイレクト URL の例が表示されています。":::
 
 ## <a name="client-application-settings"></a>クライアント アプリケーションの設定
-クライアント アプリケーションが登録されたら、[概要] ページからアプリケーション (クライアント) ID をコピーします。 この値は、後でクライアントにアクセスするときに必要になります。
 
-![アプリ ID をコピーする](media/tutorial-web-app/app-id.png)
+クライアント アプリケーションを登録したら、[概要] ページからアプリケーション (クライアント) ID とテナント ID をコピーします。 この 2 つの値は、後でクライアントにアクセスするときに必要になります。
 
-次に、正しい認証オプションを設定します。 左側で **[認証]** を選択します。 **[アクセス トークン]** と **[ID トークン]** チェック ボックスをオンにします。 このチュートリアルの 4 番目の部分で Web アプリケーションを作成するときの準備として、リダイレクト URI をセットアップすることもできます。 そうするには、リダイレクト URI の一覧に https://\<WEB-APP-NAME>.azurewebsites.net を追加します。 [Web アプリを記述する](tutorial-web-app-write-web-app.md)手順で別の名前を選択する場合は、ここに戻って更新する必要があります。
+:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="クライアント アプリケーションを設定するペインのスクリーンショット。アプリケーション ID とディレクトリ ID が強調表示されています。":::
 
-![アプリの認証設定](media/tutorial-web-app/app-authentication.png)
+### <a name="connect-with-web-app"></a>Web アプリと接続する
 
-これで認証を正しくセットアップできたので、API のアクセス許可を設定します。 
-1. **[API のアクセス許可]** を選択し、 **[アクセス許可の追加]** をクリックします
-1. **[所属する組織で使用している API]** で、Azure Healthcare APIs (Azure 医療 API) を検索します
-1. **user_impersonation** を選択し、 **[アクセス許可の追加]** をクリックします
+Azure API for FHIR と接続する [Web アプリ](tutorial-web-app-write-web-app.md)を作成し終わったら、適切な認証オプションを設定する必要もあります。 
+
+1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。 
+
+1. 新しいプラットフォーム構成を追加するには、 **[Web]** を選択します。
+
+1. このチュートリアルの 4 番目の部分で Web アプリケーションを作成するときの準備として、リダイレクト URI をセットアップします。 これを行うには、リダイレクト URI の一覧に `https://\<WEB-APP-NAME>.azurewebsites.net` を追加します。 [Web アプリを記述する](tutorial-web-app-write-web-app.md)手順で別の名前を選択する場合は、ここに戻って更新する必要があります。
+
+1. **[アクセス トークン]** と **[ID トークン]** のチェック ボックスをオンにします。
+
+   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="アプリの認証設定を行うブレードのスクリーンショット。プラットフォームを追加する手順が強調表示されています。":::
+
+## <a name="add-api-permissions"></a>API アクセス許可を追加する
+
+これで適切な認証をセットアップできたので、API のアクセス許可を設定します。
+
+1. **[API のアクセス許可]** を選択し、 **[アクセス許可の追加]** をクリックします。
+1. **[所属する組織で使用している API]** で、Azure Healthcare API を検索します。
+1. **[user_impersonation]** を選択し、 **[アクセス許可の追加]** をクリックします。
+
+:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="API のアクセス許可を追加するブレードのスクリーンショット。API のアクセス許可を追加する手順が強調表示されています。":::
 
 ## <a name="next-steps"></a>次の手順
 これで、パブリック クライアント アプリケーションをセットアップできました。 次のチュートリアルでは、Postman を通じてこのアプリケーションをテストし、アクセスできるようにする手順を説明します。

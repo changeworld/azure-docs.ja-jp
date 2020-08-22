@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060307"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化する
 [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) を使用すると、お使いの検索サービスに関する操作ログとサービス メトリックを Azure Storage アカウントに格納できます。 このページでは、Power BI テンプレート アプリを使用してその情報を視覚化する方法について説明します。 このアプリでは、検索、インデックス作成、操作、サービスのメトリックに関する情報など、お使いの検索サービスに関する詳細な分析情報が提供されます。
@@ -27,12 +27,12 @@ Power BI テンプレート アプリである **Azure Cognitive Search: Analyze
     1. Azure portal 上で Azure Cognitive Search サービスに移動します
     1. 左側の列の [監視] セクションで、 **[診断設定]** を選択します
 
-        ![](media/search-monitor-logs-powerbi/diagnostic-settings.png)
+        ![Azure Cognitive Search サービスの [監視] セクションで [診断設定] を選択する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/diagnostic-settings.png)
 
     1. **[+ 診断設定を追加する]** を選択します
     1. **[ストレージ アカウントへのアーカイブ]** をオンにし、使用するストレージ アカウントの情報を入力して、 **[OperationLogs]** と **[AllMetrics]** をオンにします
 
-        ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
+        ![[診断設定] ページでメトリックおよびリソース ログを選択する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
     1. **[保存]** を選びます。
 
 1. ログ記録を有効にしたら、検索サービスを使用してログとメトリックの生成を始めます。 これらのログを含むコンテナーが Blob Storage に表示されるまで最大 1 時間かかります。 検索トラフィック ログの **insights-logs-operationlogs** コンテナーと、メトリックの **insights-metrics-pt1m** コンテナーが表示されます。
@@ -41,48 +41,48 @@ Power BI テンプレート アプリである **Azure Cognitive Search: Analyze
 
 1. アプリをインストールした後、Power BI でアプリの一覧からそのアプリを選択します。
 
-    ![](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
+    ![アプリの一覧から選択する Azure Cognitive Search アプリを示すスクリーンショット。](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
 
 1. **[接続]** を選択してデータを接続します。
 
-    ![](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
+    ![Azure Cognitive Search アプリでデータに接続する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
 
 1. ログとメトリックが含まれているストレージ アカウントの名前を入力します。 このアプリの既定では、過去 10 日間のデータが参照されますが、この値は **Days** パラメーターを使用して変更できます。
 
-    ![](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
+    ![Azure Cognitive Search に接続するページで問い合わせるストレージ アカウント名と日数を入力する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
 
 1. 認証方法として **[キー]** を選択し、お使いのストレージ アカウント キーを指定します。 プライバシー レベルとして **[非公開]** を選択します。 [サインイン] をクリックして、読み込みプロセスを開始します。
 
-    ![](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
+    ![Azure Cognitive Search に接続するページで認証方法、アカウント キー、プライバシー レベルを入力する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
 
 1. データが最新の情報に更新されるまで待ちます。 どれだけの量のデータがあるかによって、これには時間がかかる場合があります。 次のインジケーターに基づいて、データがまだ更新中かどうかを確認できます。
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
+    ![データ更新ページで情報を読む方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
 
 1. データ更新が完了したら、 **[Azure Cognitive Search Report]\(Azure Cognitive Search レポート\)** を選択してレポートを表示します。
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
+    ![データ更新ページで Azure Cognitive Search Report を選択する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
 
 1. レポートを開いた後にページを更新し、レポートにデータが表示されるようにしてください。
 
-    ![](media/search-monitor-logs-powerbi/powerbi-search.png)
+    ![Azure Cognitive Search Power BI レポートのスクリーンショット。](media/search-monitor-logs-powerbi/powerbi-search.png)
 
 ## <a name="how-to-change-the-app-parameters"></a>アプリのパラメーターを変更する方法
 別のストレージ アカウントのデータを視覚化する場合や、何日分のデータにクエリを実行するかを変更する場合は、次の手順に従って、**Days** パラメーターと **StorageAccount** パラメーターを変更します。
 
 1. Power BI アプリに移動し、Azure Cognitive Search アプリを見つけて、 **[アプリの編集]** ボタンを選択してワークスペースを表示します。
 
-    ![](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
+    ![Azure Cognitive Search アプリの [アプリの編集] ボタンを選択する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
 
 1. データセットのオプションから **[設定]** を選択します。
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
+    ![Azure Cognitive Search データセット オプションから [設定] を選択する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
 
 1. [データセット] タブで、パラメーターの値を変更し、 **[適用]** を選択します。 接続に問題がある場合は、同じページでデータ ソースの資格情報を更新します。
 
 1. ワークスペースに戻り、データセットのオプションから **[今すぐ更新]** を選択します。
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
+    ![Azure Congnitive Search データセット オプションから [今すぐ更新] を選択する方法を示すスクリーンショット。](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
 
 1. レポートを開くと、更新されたデータが表示されます。 また、最新のデータを表示するために、レポートを最新の情報に更新することが必要な場合もあります。
 

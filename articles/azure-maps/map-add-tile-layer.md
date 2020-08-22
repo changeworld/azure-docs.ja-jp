@@ -1,6 +1,6 @@
 ---
 title: マップにタイル レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップにタイル レイヤーをオーバーレイする方法を示します。 タイル レイヤーを使用すると、マップに画像をレンダリングできます。
+description: マップに画像をスーパーインポーズする方法について説明します。 Azure Maps Web SDK を使用して気象レーダーのオーバーレイが含まれるタイル レイヤーをマップに追加する例を参照してください。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: c96916c029c9c49ad7d4c493fed8859354508ebe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242306"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010176"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 

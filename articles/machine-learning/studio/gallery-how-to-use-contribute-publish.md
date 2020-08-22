@@ -1,6 +1,5 @@
 ---
-title: Azure AI ギャラリー
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): Azure AI Gallery - Azure'
 description: Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709030"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431195"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -29,7 +31,7 @@ ms.locfileid: "84709030"
 Azure AI ギャラリーには、Microsoft とデータ サイエンス コミュニティのメンバーから投稿された多数のさまざまなリソースが含まれています。 これには以下が含まれます。
 
 * **実験** - ギャラリーには、Azure Machine Learning Studio (クラシック) で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
-* **チュートリアル** - 機械学習のテクノロジと概念の紹介や、機械学習に関するさまざまな問題を解決するための高度な手法の説明を行うさまざまなチュートリアルを使用できます。
+* **チュートリアル**: Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
 * **コレクション** - コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー リソースをグループ化できます。
 * **カスタム モジュール** - Studio (クラシック) ワークスペースにカスタム モジュールをダウンロードして、独自の実験で使用できます。
 * **Jupyter Notebook** - Jupyter Notebook には、単一の対話型のキャンバスにコード、データ視覚化、およびドキュメントが含まれています。 ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。

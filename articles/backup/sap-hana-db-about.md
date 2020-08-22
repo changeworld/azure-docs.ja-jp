@@ -3,12 +3,12 @@ title: Azure VM での SAP HANA データベースバックアップについて
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースをバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503508"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533446"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM での SAP HANA データベースバックアップについて
 
@@ -60,7 +60,7 @@ Azure Backup を使用して SAP HANA データベースをバックアップお
 
 [Backint 認定の Azure SAP HANA バックアップ ソリューション](#backup-architecture)は、データベースのバックアップと回復に使用できます。
 
-[Azure VM バックアップ](backup-azure-vms-introduction.md)は、OS と他の非データベース ディスクのバックアップに使用できます。 VM のバックアップは毎日 1 回実行され、すべてのディスク (**書き込みアクセラレータ (WA) ディスク**と **UltraDisks** を除く) がバックアップされます。 データベースは Azure SAP HANA バックアップ ソリューションを使用してバックアップされているため、ディスクの除外機能 (現在プレビュー段階) を使用して、OS と非データベース ディスクのみのファイル整合バックアップを作成できます。
+[Azure VM バックアップ](backup-azure-vms-introduction.md)は、OS と他の非データベース ディスクのバックアップに使用できます。 VM のバックアップは毎日 1 回実行され、(**書き込みアクセラレータ (WA) ディスク**と **Ultra Disk** を除く) すべてのディスクがバックアップされます。 データベースは Azure SAP HANA バックアップ ソリューションを使用してバックアップされているため、[Azure 仮想マシンの選択的なディスク バックアップと復元](selective-disk-backup-restore.md)機能を使用して、OS と非データベース ディスクのみのファイル整合バックアップを作成できます。
 
 >[!NOTE]
 > Azure VM バックアップで事前/事後スクリプトを使用すると、データベースのデータ ボリュームのアプリ整合バックアップが可能になります。 ただし、ログ領域が WA ディスクに存在する場合は、これらのディスクのスナップショットを取得しても、ログ領域の整合性は保証されない場合があります。 HANA には、まさにこの理由により、ログ バックアップを生成する明示的な方法があります。 お使いの SAP HANA で同じようにして、Azure SAP HANA バックアップを使用してバックアップすることができます。

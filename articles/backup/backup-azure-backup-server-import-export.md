@@ -3,12 +3,12 @@ title: DPM と Azure Backup Server のオフライン バックアップ
 description: Azure Backup では、Azure Import/Export サービスを使用してネットワークからデータを送信できます。 この記事では、DPM と Azure Backup Server でのオフライン バックアップ ワークフローについて説明します。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067347"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM と Azure Backup Server (MABS) のオフライン バックアップのワークフロー
 
@@ -49,7 +49,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
 * DPM または MABS サーバーで、Microsoft Edge または Internet Explorer 11 がインストールされ、JavaScript が有効になっていることを確認します。
 * Recovery Services コンテナーと同じサブスクリプションを使って、Azure ストレージ アカウントを作成します。
-* Azure Active Directory アプリケーションを作成するのに[必要なアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)があることを確認します。 オフライン バックアップ ワークフローは、Azure ストレージ アカウントに関連付けられているサブスクリプションに Azure Active Directory アプリケーションを作成します。 アプリケーションの目的は、オフライン バックアップ ワークフローに必要な、Azure インポート サービスに対するセキュリティで保護されて範囲を制限されたアクセスを、Azure Backup に提供することです。
+* Azure Active Directory アプリケーションを作成するのに[必要なアクセス許可](../active-directory/develop/howto-create-service-principal-portal.md)があることを確認します。 オフライン バックアップ ワークフローは、Azure ストレージ アカウントに関連付けられているサブスクリプションに Azure Active Directory アプリケーションを作成します。 アプリケーションの目的は、オフライン バックアップ ワークフローに必要な、Azure インポート サービスに対するセキュリティで保護されて範囲を制限されたアクセスを、Azure Backup に提供することです。
 * Azure ストレージ アカウントを含むサブスクリプションに Microsoft.ImportExport リソース プロバイダーを登録します。 リソース プロバイダーを登録するには:
     1. メイン メニューで **[サブスクリプション]** をクリックします。
     2. 複数のサブスクリプションをサブスクライブしている場合は、オフライン バックアップに使っているサブスクリプションを選びます。 使っているサブスクリプションが 1 つだけの場合は、そのサブスクリプションが表示されます。
@@ -64,7 +64,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
 ## <a name="workflow"></a>ワークフロー
 
-このセクションの情報は、オフライン バックアップ ワークフローを完了するためのものなので、このデータを Azure データセンターに配信したり、Azure Storage にアップロードしたりできます。 インポート サービスやプロセスの他の側面について質問がある場合は、上記で参照した [サービスの概要に関するページ](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) を参照してください。
+このセクションの情報は、オフライン バックアップ ワークフローを完了するためのものなので、このデータを Azure データセンターに配信したり、Azure Storage にアップロードしたりできます。 インポート サービスやプロセスの他の側面について質問がある場合は、上記で参照した [サービスの概要に関するページ](../storage/common/storage-import-export-service.md) を参照してください。
 
 ## <a name="initiate-offline-backup"></a>オフライン バックアップを開始する
 
@@ -188,7 +188,7 @@ Azure インポート ジョブの処理にかかる時間は状況に応じて�
 
 ### <a name="monitor-azure-import-job-status"></a>Azure インポート ジョブの状態の監視
 
-Azure portal で **[インポート/エクスポート ジョブ]** ページに移動してジョブを選ぶことにより、インポート ジョブの状態を監視できます。 インポート ジョブの状態について詳しくは、[ストレージのインポート/エクスポート サービス](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)に関するページをご覧ください。
+Azure portal で **[インポート/エクスポート ジョブ]** ページに移動してジョブを選ぶことにより、インポート ジョブの状態を監視できます。 インポート ジョブの状態について詳しくは、[ストレージのインポート/エクスポート サービス](../storage/common/storage-import-export-service.md)に関するページをご覧ください。
 
 ### <a name="complete-the-workflow"></a>ワークフローを完了する
 

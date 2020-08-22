@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126231"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406250"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>アクセス制御ポリシーを使用して Key Vault の認証を提供する
 
@@ -39,7 +39,7 @@ Key Vault のアクセス制御の詳細については、「[Azure Key Vault �
    - [Azure CLI を使用してキー コンテナーを作成する](../secrets/quick-create-cli.md)
    - [Azure PowerShell を使用してキー コンテナーを作成する](../secrets/quick-create-powershell.md)
    - [Azure portal を使用してキー コンテナーを作成する](../secrets/quick-create-portal.md)。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。 別の方法として、[Azure portal](https://portal.azure.com) を使用することもできます。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。 別の方法として、[Azure portal](https://portal.azure.com) を使用することもできます。
 
 ## <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
 
@@ -155,7 +155,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <ApplicationID-of-yo
 Azure PowerShell を使用する場合、これを行うには、[Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) コマンドレットに objectId を渡します。 
 
 ```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys create,decrypt,delete,encrypt,get,list,unwrapKey,wrapKey -PermissionsToSecrets get,list,set,delete -ObjectId <Id>
+Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -PermissionsToKeys create,decrypt,delete,encrypt,get,list,unwrapKey,wrapKey -PermissionsToSecrets get,list,set,delete -ObjectId <Id>
 
 ```
 

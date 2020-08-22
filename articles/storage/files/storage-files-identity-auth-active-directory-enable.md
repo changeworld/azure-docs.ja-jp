@@ -5,18 +5,18 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 7999f042b8a67bed8ef01cccec5890b1a2d58ebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e8299a5acd7cbd3a6fd3cd76af33f4a798ad12
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510222"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832996"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概要 - SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証
 
-[Azure Files](storage-files-introduction.md)  では、次の 2 種類の Domain Services を介したサーバー メッセージ ブロック (SMB) 経由の ID ベース認証がサポートされています: Azure Active Directory Domain Services (Azure AD DS) およびオンプレミスの Active Directory Domain Services (AD DS)。 ID ベースのいずれかの認証方法を使用すると、Azure ファイル共有にアクセスするプロセスと既存の ID ベースの認証プロセスを統合でき、個別に管理する必要はありません。 この一連の記事では、Azure ファイル共有での認証用にオンプレミスの AD DS を有効にして構成する方法に重点を置いて説明します。
+[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 選択するドメイン サービスによって設定は異なります。 この一連の記事では、Azure ファイル共有での認証用にオンプレミスの AD DS を有効にして構成する方法に重点を置いて説明します。
 
 Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 
@@ -47,6 +47,8 @@ Azure ファイル共有に対する AD DS 認証を有効にする前に、次�
 
 - オンプレミス マシンまたは Azure VM をオンプレミスの AD DS にドメイン参加させます。 ドメインに参加させる方法については、「[コンピューターをドメインに参加させる](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain)」を参照してください。
 
+    マシンが AD DS にドメイン参加していない場合でも、マシンで AD ドメイン コントローラーが認識されていれば、認証に AD 資格情報を利用することはできます。
+
 - Azure ストレージ アカウントを選択または作成します。  最適なパフォーマンスが得られるように、共有にアクセスする予定のクライアントと同じリージョンに、ストレージ アカウントをデプロイすることをお勧めします。 次に、ストレージ アカウント キーを使用して、[Azure ファイル共有をマウントします](storage-how-to-use-files-windows.md)。 ストレージ アカウント キーを使ってマウントすると、接続が検証されます。
 
     ファイル共有を含むストレージ アカウントが、Azure AD DS 認証用にまだ構成されていないことを確認します。 ストレージ アカウントで Azure Files Azure AD DS 認証が有効になっている場合は、オンプレミスの AD DS を使用するように変更する前に無効にする必要があります。 これは、Azure AD DS 環境で構成された既存の ACL を、適切なアクセス許可を適用するために再構成する必要があることを意味します。
@@ -57,7 +59,7 @@ Azure ファイル共有に対する AD DS 認証を有効にする前に、次�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
+AD DS を使用した Azure Files 認証は、[すべての Azure パブリックおよび Gov リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
 
 ## <a name="overview"></a>概要
 
@@ -81,7 +83,7 @@ Azure ファイル共有の AD DS 認証を有効にすると、オンプレミ�
 
 ![Files AD ワークフロー図](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-Azure ファイル共有へのアクセスに使用される ID は、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) モデルを使用して共有レベルのファイル アクセス許可を適用するために、Azure AD に同期する必要があります。 既存のファイル サーバーから引き継がれたファイルまたはディレクトリの [Windows スタイルの DACL](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) は保持され、適用されます。 これにより、エンタープライズ AD DS 環境とのシームレスな統合が提供されます。 オンプレミス ファイル サーバーを Azure ファイル共有に置き換えると、既存のユーザーは、使用されている資格情報を変更することなく、シングル サインオン エクスペリエンスで現在のクライアントから Azure ファイル共有にアクセスできるようになります。  
+Azure ファイル共有へのアクセスに使用される ID は、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) モデルを使用して共有レベルのファイル アクセス許可を適用するために、Azure AD に同期する必要があります。 既存のファイル サーバーから引き継がれたファイルまたはディレクトリの [Windows スタイルの DACL](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) は保持され、適用されます。 これにより、エンタープライズ AD DS 環境とのシームレスな統合が提供されます。 オンプレミス ファイル サーバーを Azure ファイル共有に置き換えると、既存のユーザーは、使用されている資格情報を変更することなく、シングル サインオン エクスペリエンスで現在のクライアントから Azure ファイル共有にアクセスできるようになります。  
 
 ## <a name="next-steps"></a>次のステップ
 

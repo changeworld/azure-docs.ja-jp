@@ -1,21 +1,19 @@
 ---
 title: Windows Virtual Desktop とは - Azure
 description: Windows Virtual Desktop の概要
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248613"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002368"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
+# <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
 Windows Virtual Desktop は、クラウド上で実行されるデスクトップおよびアプリの仮想化サービスです。
 
@@ -78,7 +76,7 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
   * Azure AD Connect (ハイブリッド組織向け)
   * Azure AD Domain Services (ハイブリッドまたはクラウド組織向け)
 * Windows Server Active Directory を含むか、またはこのディレクトリに接続されている仮想ネットワークが含まれる Azure サブスクリプション
-  
+
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
 * [標準ドメイン参加済み](../active-directory-domain-services/active-directory-ds-comparison.md)または [Hybrid AD 参加済み](../active-directory/devices/hybrid-azuread-join-plan.md)であること。 仮想マシンを Azure AD に参加させることはできません。
@@ -105,7 +103,7 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (プレビュー)](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
@@ -128,7 +126,7 @@ Windows Virtual Desktop は、次の x64 オペレーティング システム �
 
 Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、または Windows 10 Enterprise KN オペレーティング システム イメージがサポートされていません。 また、Windows 7 では、セクター サイズの制限により、マネージド Azure Storage でホストされている VHD または VHDX ベースのプロファイル ソリューションもサポートされていません。
 
-利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。 
+利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。
 
 |オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
 |--------------------------------------|:------:|:------:|:------:|:------:|
@@ -143,9 +141,9 @@ Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、
 
 ## <a name="next-steps"></a>次のステップ
 
-Windows Virtual Desktop Fall 2019 リリースを使用している場合は、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」のチュートリアルを開始できます。
+Windows Virtual Desktop (クラシック) を使用している場合は、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」のチュートリアルを開始できます。
 
-Windows Virtual Desktop Spring 2020 リリースを使用している場合は、代わりにホスト プールを作成する必要があります。 作業を開始するには、次のチュートリアルに進んでください。
+Azure Resource Manager 統合で Windows Virtual Desktop を使用している場合は、代わりにホスト プールを作成する必要があります。 作業を開始するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)

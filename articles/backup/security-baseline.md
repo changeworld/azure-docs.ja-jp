@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a7d12a2be7f2e3d3556d6c8c3303b2ddb8b8738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 72c038bda88ecc9b7518f1f764a41bd4c49f52c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503491"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589420"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Backup 用の Azure セキュリティ ベースライン
 
@@ -28,7 +28,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**ガイダンス**:適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
+**ガイダンス**: 適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -36,7 +36,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**:適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
+**ガイダンス**: 適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -62,7 +62,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
 
-**ガイダンス**:適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
+**ガイダンス**: 適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -336,7 +336,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
+**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
 
 - [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
@@ -350,7 +350,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Azure AD ログインを使用するように Azure Backup を構成する方法](../app-service/configure-authentication-provider-aad.md)
 
-- [AAD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: はい
 
@@ -446,7 +446,7 @@ Recovery Services コンテナーの開発、テスト、運用向けに個別�
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
-**ガイダンス**:現時点では使用できません。Azure Backup では、データの識別、分類、損失防止機能はまだ使用できません。
+**ガイダンス**: 現時点では使用できません。Azure Backup では、データの識別、分類、損失防止機能はまだ使用できません。
 
 Microsoft では、Azure Backup 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
@@ -480,7 +480,7 @@ Microsoft では、Azure Backup 用の基になるインフラストラクチャ
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
+**ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの組み込みロールが提供されます。これらは、バックアップ共同作成者、バックアップ オペレーター、バックアップ リーダーです。 バックアップ組み込みロールをさまざまなバックアップ管理アクションにマップできます。
 
@@ -558,7 +558,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4:バックツーバックの脆弱性スキャンを比較する
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -672,7 +672,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -738,7 +738,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -902,7 +902,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 - [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Azure Backup での暗号化について](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
+- [Azure Backup での暗号化について](./backup-encryption.md)
 
 **Azure Security Center の監視**: 適用なし
 

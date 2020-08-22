@@ -2,14 +2,14 @@
 title: Azure Migrate のサポート マトリックス
 description: Azure Migrate サービスに対するサポートの設定および制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 04/19/2020
+ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 8350f557efd9224d92388835f55871cb861eda25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022720"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -21,14 +21,16 @@ ms.locfileid: "86108755"
 
 **デプロイ** | **詳細** 
 --- | --- 
-**アプリ固有の検出** | VMware VM 上で実行されているアプリ、ロール、および機能を検出できます。 現在、この機能は検出のみに限定されています。 評価は現在マシン レベルです。 アプリ、役割、または機能に固有の評価はまだ提供されていません。 
-**オンプレミスの評価** | VMware VM、Hyper-V VM、および物理サーバー上で実行されているオンプレミスのワークロードとデータを評価します。 Azure Migrate Server Assessment と Microsoft Data Migration Assistant (DMA) や、その他のツールと ISV オファリングを使用して評価します。
-**Azure へのオンプレミスの移行** | 物理サーバー、VMware VM、Hyper-V VM、物理サーバー、クラウドベースの VM で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) や、その他のツールと ISV オファリングを使用して移行します。
+**検出** | マシンのメタデータと動的なパフォーマンス データを検出できます。
+**アプリ検出** | VMware VM 上で実行されているアプリ、ロール、および機能を検出できます。 現在、この機能は検出のみに限定されています。 評価は現在マシン レベルです。 アプリ、役割、または機能ベースの評価はまだ提供されていません。 
+**評価** | VMware VM、Hyper-V VM、および物理サーバー上で実行されているオンプレミスのワークロードとデータを評価します。 Azure Migrate Server Assessment、Microsoft Data Migration Assistant (DMA)、さらにその他のツールと ISV オファリングを使用して評価します。
+**移行** | 物理サーバー、VMware VM、Hyper-V VM、物理サーバー、クラウドベースの VM で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) や、その他のツールと ISV オファリングを使用して移行します。
 
 > [!NOTE]
 > 現在、ISV ツールは Azure Government で Azure Migrate にデータを送信できません。 統合された Microsoft ツールを使用するか、パートナー ツールを単独で使用できます。
 
 ## <a name="supported-tools"></a>サポートされているツール
+
 
 次の表に、具体的なツールのサポートをまとめてあります。
 
@@ -73,21 +75,25 @@ VMware エージェントレス移行用のキー コンテナーの作成 | エ
 
 ## <a name="supported-geographies-public-cloud"></a>サポートされている地域 (パブリック クラウド)
 
-Azure Migrate プロジェクトは、パブリック クラウドの複数の地域で作成できます。 プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+Azure Migrate プロジェクトは、パブリック クラウドの複数の地域で作成できます。
+
+- プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。
+- プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+- プロジェクトを作成するときに、地域を選択します。 プロジェクトと関連リソースは、地域のいずれかのリージョンに作成されます。 このリージョンは、Azure Migrate サービスによって割り当てられます。
 
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
 アジア太平洋 | 東アジアまたは東南アジア
 オーストラリア | オーストラリア東部またはオーストラリア南東部
 ブラジル | ブラジル南部
-カナダ | カナダ中部またはカナダ東部
+Canada | カナダ中部またはカナダ東部
 ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
 フランス | フランス中部
 インド | インド中部またはインド南部
 日本 |  東日本または西日本
 韓国 | 韓国中部または韓国南部
 イギリス | 英国南部または英国西部
-米国 | 米国中部または米国西部 2
+United States | 米国中部または米国西部 2
 
 
 ## <a name="supported-geographies-azure-government"></a>サポートされている地域 (Azure Government)

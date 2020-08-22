@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 51b6be8b4deffd81da6c0b714bc6afeff4b06ab2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437168"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073944"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 
@@ -177,7 +177,7 @@ Windows アプリの場合、ポータルで直接サポートされていない
 ## <a name="additional-resources"></a>その他のリソース
 
 * [継続的なデプロイに関する一般的な問題の調査](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
-* [Azure PowerShell の使用](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell の使用](/powershell/azure/)
 * [Git のドキュメント](https://git-scm.com/documentation)
 * [プロジェクト Kudu](https://github.com/projectkudu/kudu/wiki)
 

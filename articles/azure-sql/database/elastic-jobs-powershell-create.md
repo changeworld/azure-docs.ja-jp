@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 093214241757bdc3973d88d5a0e6f3157c6178c7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 84f3bbc01d7161dd6d7002102cc006dfae3ce3e4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251133"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118163"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[エラスティック ジョブ](job-automation-overview.md#elastic-database-jobs-preview)を使用すると、複数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
+[エラスティック ジョブ (プレビュー)](job-automation-overview.md#elastic-database-jobs-preview) を使用すると、多数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
 
 このチュートリアルでは、複数のデータベースにわたってクエリを実行するために必要な手順を学習します。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 23ec482de740cc1ac8800a5de1c0e3be1f055df7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 79ad95179f4ad6d332a848e59ca341b8a9f90b1f
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045486"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258224"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -44,7 +44,8 @@ ms.locfileid: "86045486"
 
 ### <a name="file-sharing-and-global-file-caching"></a>ファイル共有とグローバル ファイル キャッシュ
 
-* [Talon / Azure NetApp Files デプロイ](https://youtu.be/91LKb1qsLIM)
+* [Build Your Own Azure NFS?Wrestling Linux File Shares into Cloud](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares) (独自の Azure NFS の構築: Linux ファイル共有をクラウドに移行する)
+* [グローバル ファイル キャッシュ / Azure NetApp Files のデプロイ](https://youtu.be/91LKb1qsLIM)
 
 ### <a name="sql-server"></a>SQL Server
 
@@ -84,8 +85,10 @@ ms.locfileid: "86045486"
 
 ### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
 
+* [Windows Virtual Desktop での Azure NetApp Files 利用のメリット](solutions-windows-virtual-desktop.md)
 * [Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
+* [エンタープライズ規模の Windows Virtual Desktop](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 
 ## <a name="hpc-solutions"></a>HPC ソリューション
 

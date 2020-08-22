@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675844"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028653"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
@@ -47,7 +47,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-[New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) を使用して、メンテナンス構成を作成します。 この例では、ホストを対象とした *myConfig* という名前のメンテナンス構成を作成します。 
+[New-AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration) を使用して、メンテナンス構成を作成します。 この例では、ホストを対象とした *myConfig* という名前のメンテナンス構成を作成します。 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -61,7 +61,7 @@ $config = New-AzMaintenanceConfiguration `
 
 同じ名前の構成を別の場所に作成しようとすると、エラーが発生します。 構成名は、サブスクリプションに対して一意である必要があります。
 
-[Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration) を使用して、使用可能なメンテナンス構成に対してクエリを実行できます。
+[Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration) を使用して、使用可能なメンテナンス構成に対してクエリを実行できます。
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
@@ -69,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ## <a name="assign-the-configuration"></a>構成を割り当てる
 
-[New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) を使用して、分離された VM または Azure Dedicated Host に構成を割り当てます。
+[New-AzConfigurationAssignment](/powershell/module/az.maintenance/new-azconfigurationassignment) を使用して、分離された VM または Azure Dedicated Host に構成を割り当てます。
 
 ### <a name="isolated-vm"></a>分離された VM
 
@@ -106,7 +106,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>保留中の更新プログラムを確認する
 
-[Get-AzMaintenanceUpdat](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) を使用して、保留中の更新プログラムがあるかどうかを確認します。 ログインしている VM と異なる場合は、`-subscription` を使用して、VM の Azure サブスクリプションを指定します。
+[Get-AzMaintenanceUpdat](/powershell/module/az.maintenance/get-azmaintenanceupdate) を使用して、保留中の更新プログラムがあるかどうかを確認します。 ログインしている VM と異なる場合は、`-subscription` を使用して、VM の Azure サブスクリプションを指定します。
 
 表示する更新プログラムがない場合、このコマンドは何も返しません。 それ以外の場合は、PSApplyUpdate オブジェクトが返されます。
 
@@ -152,7 +152,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>更新プログラムの適用
 
-[New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) を使用して、保留中の更新プログラムを適用します。
+[New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) を使用して、保留中の更新プログラムを適用します。
 
 ### <a name="isolated-vm"></a>分離された VM
 
@@ -183,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>更新プログラムの状態の確認
-更新プログラムの状態を確認するには、[Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) を使用します。 次に示すコマンドは、`-ApplyUpdateName` パラメーターに `default` を使用して、最新の更新プログラムの状態を表示します。 更新プログラムの名前を置き換えて ([New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) コマンドによって返されます)、特定の更新プログラムの状態を取得できます。
+更新プログラムの状態を確認するには、[Get-AzApplyUpdate](/powershell/module/az.maintenance/get-azapplyupdate) を使用します。 次に示すコマンドは、`-ApplyUpdateName` パラメーターに `default` を使用して、最新の更新プログラムの状態を表示します。 更新プログラムの名前を置き換えて ([New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) コマンドによって返されます)、特定の更新プログラムの状態を取得できます。
 
 ```text
 Status         : Completed
@@ -227,7 +227,7 @@ Get-AzApplyUpdate `
 
 ## <a name="remove-a-maintenance-configuration"></a>メンテナンスの構成を削除する
 
-[Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) を使用して、メンテナンス構成を削除します。
+[Remove-AzMaintenanceConfiguration](/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) を使用して、メンテナンス構成を削除します。
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `

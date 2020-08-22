@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770683"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081053"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
 
@@ -69,7 +69,7 @@ App Service には、デプロイ センターを介して、コンテナーの[
 
 ### <a name="use-github-actions"></a>GitHub Actions を使用する
 
-[GitHub Actions](containers/deploy-container-github-action.md) を使用して、コンテナーのデプロイを自動化することもできます。  次のワークフロー ファイルは、コミット ID を使ってコンテナーをビルドしてタグ付けし、それをコンテナー レジストリにプッシュし、指定したサイト スロットを新しいイメージ タグで更新します。
+[GitHub Actions](deploy-container-github-action.md) を使用して、コンテナーのデプロイを自動化することもできます。  次のワークフロー ファイルは、コミット ID を使ってコンテナーをビルドしてタグ付けし、それをコンテナー レジストリにプッシュし、指定したサイト スロットを新しいイメージ タグで更新します。
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps

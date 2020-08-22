@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 78e3bbfe910ebc3d7f21167c2a15f0c255fdc8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fe084d931ee735f9eaecc58ca5445ae56a951cc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904798"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121053"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する
 
@@ -102,9 +102,9 @@ var pca = PublicClientApplicationBuilder
 
 ##### <a name="find-more-app-building-parameters"></a>他のアプリ ビルド パラメーターを見つける
 
-`PublicClientApplicationBuilder` で使用できるすべてのメソッドの一覧については、[メソッドの一覧](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)を参照してください。
+`PublicClientApplicationBuilder` で使用できるすべてのメソッドの一覧については、[メソッドの一覧](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)を参照してください。
 
-`PublicClientApplicationOptions` で公開されるすべてのオプションの説明については、[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)を参照してください。
+`PublicClientApplicationOptions` で公開されるすべてのオプションの説明については、[リファレンス ドキュメント](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)を参照してください。
 
 ## <a name="tasks-for-xamarin-ios"></a>Xamarin iOS のタスク
 

@@ -6,14 +6,14 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fe2867343f07a7b1a7dd3d8eb2b44dd1ec1e271
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72254905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086542"
 ---
-# <a name="additional-documentation"></a>その他のドキュメント 
+# <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge Filer に関するその他のドキュメント
 
 この docs.microsoft.com Web サイトの外部のリソースには、Microsoft Azure FXT Edge Filer のハイブリッド キャッシュを理解し、使用するために役立つものがあります。
 

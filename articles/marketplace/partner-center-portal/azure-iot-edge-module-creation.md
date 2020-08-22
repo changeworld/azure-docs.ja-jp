@@ -1,20 +1,20 @@
 ---
 title: パートナー センターを使用して Azure Marketplace で Azure IoT Edge モジュールのオファーを作成する
-description: パートナー センターを使用して、Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する方法について説明します
+description: パートナー センターを使用して、Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: anbene
-ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: how-to
+author: keferna
+ms.author: keferna
+ms.date: 08/07/2020
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119295"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167183"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する
+# <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
 この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
@@ -51,9 +51,9 @@ ms.locfileid: "86119295"
 このページには、ユーザーの選択に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
 - オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
-- オファーが公開中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
 - オファーがプレビューの場合 - [公開する](publishing-status.md#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [公開を取り消す](update-existing-offer.md#cancel-publishing)
+- 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
@@ -194,6 +194,8 @@ IoT Edge モジュールのオファーには、説明の一番下に、次の�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
@@ -207,6 +209,8 @@ IoT Edge モジュールのオファーには、説明の一番下に、次の�
 - **ワイド (255 x 115)**
 
 4 つすべてのロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
@@ -284,15 +288,17 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 **[下書きの保存]** を選択してから、次のセクション「プランの概要」に進みます。
 
-### <a name="plan-overview"></a>プランの概要
+## <a name="plan-overview"></a>プランの概要
 
-このタブでは、パートナー センターの同じオファー内でさまざまなプラン オプションを指定できます。 このようなプランは以前、SKU、つまり、Stock Keeping Unit と呼ばれていました。 プランの違いとは、グローバル クラウド、Government クラウド、プランで参照される画像など、利用できるクラウドの違いです。 マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+このタブでは、パートナー センターの同じオファー内でさまざまなプラン オプションを指定できます。 プラン (以前は SKU と呼ばれていました) は、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 プランの作成後、 **[プランの概要]** タブが表示されます。
 
 - プラン名
 - 価格モデル
-- クラウドの可用性 (グローバルまたは Government)
+- Azure リージョン (グローバルまたは Government)
 - 現在の公開状態
 - 利用できるアクション
 
@@ -301,7 +307,7 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 - **下書きを削除する**:プランの状態が下書きの場合。
 - **販売プランを停止する**:プランの状態が一般公開の場合。
 
-#### <a name="create-new-plan"></a>新しいプランを作成する
+### <a name="create-new-plan"></a>新しいプランを作成する
 
 **[新しいプランの作成]** を選択します。 **[新しいプラン]** ダイアログ ボックスが表示されます。
 
@@ -329,11 +335,11 @@ IoT Edge モジュールのオファーのすべてのプランは、自動的�
 
 #### <a name="azure-government-certifications"></a>Azure Government の認定資格
 
-このオプションは、 **[クラウドの使用可能性]** で **[Azure Government]** を選択した場合にのみ表示されます。
+このオプションは、 **[Azure リージョン]** で **[Azure Government]** を選択した場合にのみ表示されます。
 
 Azure Government サービスでは、特定の政府の規制および要件の対象となるデータが処理されます。 FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4、CJIS などです。 これらのプログラムの認定資格を認識させるため、認定資格について説明するリンクを 100 個まで提供することができます。 プログラムのリスト登録に直接リンクするか、独自の Web サイトにリンクできます。 これらのリンクは、Azure Government の顧客にのみ表示されます。
 
-## <a name="plan-listing"></a>プランのリスト登録
+### <a name="plan-listing"></a>プランのリスト登録
 
 このタブには、同じオファー内の異なるプラン別に特定の情報が表示されます。
 
@@ -345,7 +351,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 (オファーではなく) プランについて簡単にまとめた説明です。 この概要は Azure Marketplace の検索結果に表示されます。最大 100 文字を入力できます。
 
-### <a name="plan-description"></a>プラン説明
+### <a name="plan-description"></a>プランの説明
 
 このプラン独特の要素やオファーに含まれる他のプラントの違いを説明します。 オファーについては説明しないでください。プランの説明だけです。 この説明は Azure Marketplace と Azure portal のオファーのリスト登録ページに表示されます。 プラン概要に入力したものと同じ内容にすることができます。最大 2,000 文字を入力できます。
 
@@ -373,7 +379,7 @@ Azure Marketplace でのプランの詳細の例を次に示します (表示さ
 2. プラン名
 3. プラン説明
 
-## <a name="availability"></a>可用性
+### <a name="availability"></a>可用性
 
 公開したオファーを非表示にし、マーケットプレースで顧客がそれを検索、閲覧、購入できないようにする場合、[可用性] タブで **[プランの非表示]** チェックボックスを選択します。
 
@@ -452,7 +458,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 - 名前 #1:RefreshRate
 - 値 #1:60
 
-**既定の環境変数**。 環境変数は、構成プロセスを容易にする補足情報をモジュールに提供します。 環境変数は名前と値のペアを使用して作成されます。 既定の環境変数の名前と値はそれぞれ、512 文字未満にする必要があり須磨。最大 5 つを定義できます。 既定値に必要なパラメーターでは意味をなさないとき (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。
+**既定の環境変数**。 環境変数は、構成プロセスを容易にする補足情報をモジュールに提供します。 環境変数は名前と値のペアを使用して作成されます。 既定の環境変数の名前と値はそれぞれ、512 文字未満にする必要があります。最大 5 つを定義できます。 既定値に必要なパラメーターでは意味をなさないとき (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。
 
 たとえば、モジュールが開始される前に使用条件に同意する必要がある場合は、次の環境変数を定義できます。
 
@@ -467,7 +473,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 ## <a name="review-and-publish"></a>レビューと公開
 
-オファーの必須セクションをすべて完了したら、レビューと発行のためにそれを送信することができます。
+オファーの必須セクションをすべて完了したら、レビューと公開のためにそれを送信することができます。
 
 ポータルの右上隅で、 **[レビューと公開]** を選択します。
 

@@ -4,15 +4,15 @@ description: インクルード ファイル
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 07/20/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df78133f602466681da64d2666a311e1649c598f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028799"
 ---
 スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
@@ -26,10 +26,6 @@ VM は、容量または設定した最大価格に基づいて削除できま�
 *[割り当てを解除する]* ポリシーでは､VM が停止済み/割り当て解除済み状態に移行され､後でもう一度デプロイすることができます｡ ただし､割り当てが成功する保証はありません｡ 割り当てを解除された VM はクォータに影響を及ぼし、基になるディスクのストレージ コストが課金されます。 
 
 VM が排除されるときに、VM を削除したい場合は、排除ポリシーを *[削除]* に設定できます。 排除された VM は基になるディスクと共に削除されるので、ストレージの料金が引き続き発生することはありません。 
-
-> [!NOTE]
->
-> 現在、ポータルでは、削除オプションとして `Delete` がサポートされていません。`Delete` を設定するには、PowerShell、CLI、およびテンプレートを使用する必要があります。
 
 [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md) を通じて VM 内通知を受け取ることができます。 これにより、VM が排除されつつある場合には通知が送られ、排除される前にジョブを完了し、タスクのシャットダウンを実行するために 30 秒が与えられます。 
 
@@ -54,19 +50,14 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 
 スポット VM は、Microsoft Azure China 21Vianet を除き、任意のリージョンにデプロイできます。
 
-一部のサブスクリプション チャネルはサポートされていません。
-
 <a name="channel"></a>
 
-| Azure チャンネル               | Azure スポット VM の利用可否       |
-|------------------------------|-----------------------------------|
-| Enterprise Agreement         | はい                               |
-| 従量課金制                | はい                               |
-| クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| メリット                     | 使用不可                     |
-| スポンサー                    | はい                               |
-| 無料試用版                   | 使用不可                     |
+現在サポートされている[オファーの種類](https://azure.microsoft.com/support/legal/offer-details/)は次のとおりです。
 
+-   Enterprise Agreement
+-   従量課金制
+-   スポンサー
+- クラウド サービス プロバイダー (CSP) の場合、パートナーにお問い合わせください
 
 
 ## <a name="pricing"></a>価格

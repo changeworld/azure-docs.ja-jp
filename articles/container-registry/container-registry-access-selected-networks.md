@@ -3,12 +3,12 @@ title: パブリック レジストリ アクセスの構成
 description: 選択したパブリック IP アドレスまたはアドレス範囲から Azure Container Registry へのアクセスを有効にする IP ルールを構成します。
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702090"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523827"
 ---
 # <a name="configure-public-ip-network-rules"></a>パブリック IP ネットワーク ルールを構成する
 
@@ -101,6 +101,13 @@ az acr update --name myContainerRegistry --public-network-enabled true
 1. **[パブリック アクセス]** タブの **[Allow public network access]\(パブリック ネットワーク アクセスを許可する\)** で、 **[すべてのネットワーク]** を選択します。 次に、 **[保存]** を選択します。
 
 ![すべてのネットワークからのパブリック アクセス][acr-access-all-networks]
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+パブリック ネットワーク ルールが設定されている場合、またはレジストリへのパブリック アクセスが拒否された場合は、許可されていないパブリック ネットワークからレジストリにログインしようとすると失敗します。 プロキシのアクセス ルールが設定されていない場合も、HTTPS プロキシの内側からクライアントにアクセスすることはできません。 `Error response from daemon: login attempt failed with status: 403 Forbidden` や `Looks like you don't have access to registry` のようなエラー メッセージが表示されます。
+
+これらのエラーは、ネットワーク アクセス ルールで許可されている HTTPS プロキシを使用しているにも関わらず、プロキシがクライアント環境で適切に構成されていない場合にも発生する可能性があります。 Docker クライアントと Docker デーモンの両方がプロキシの動作用に構成されていることを確認します。 詳細については、Docker ドキュメントの [HTTP/HTTPS プロキシ](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

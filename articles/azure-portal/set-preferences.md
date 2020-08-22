@@ -5,22 +5,23 @@ services: azure-portal
 keywords: 設定, タイムアウト, 言語, 地域
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 07/30/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ce638bf61c69fb732d94d537218aabaeaa9a7c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763960"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461938"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Azure portal の基本設定を設定する
 
 独自の基本設定を実現するために Azure portal の既定の設定を変更できます。 次の一覧に示した各設定を変更できます。
 
 * [非アクティブ セッションのタイムアウト](#change-the-idle-duration-for-inactive-sign-out)
+* [既定のサブスクリプション](#choose-your-default-subscription)
 * [既定のビュー](#choose-your-default-view)
 * [ポータルのメニュー モード](#choose-a-portal-menu-mode)
 * [配色およびハイコントラスト テーマ](#choose-a-theme)
@@ -55,9 +56,21 @@ ms.locfileid: "84763960"
 > 管理者として Azure portal のすべてのユーザーに対して非アクティブ タイムアウト設定を適用する場合は、[Azure portal のユーザーにディレクトリ レベルの非アクティブ タイムアウトを設定する](admin-timeout.md)ことに関するページを参照してください
 >
 
+### <a name="choose-your-default-subscription"></a>既定のサブスクリプションを選択する
+
+Azure portal にサインインするときに、既定で開かれるサブスクリプションを変更できます。 これは、使用するプライマリ サブスクリプションがありますが、時々他のものを使用する場合に便利です。 
+
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="サブスクリプションによってリソース リストをフィルター処理します。":::
+
+1. 上部ナビゲーションでディレクトリおよびサブスクリプションのフィルター アイコンを選択します。
+1. ポータルを起動するときに、既定のサブスクリプションとして使用するサブスクリプションを選択します。 
+
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="ポータルを起動するときに、既定のサブスクリプションとして使用するサブスクリプションを選択します。"::: 
+
+
 ### <a name="choose-your-default-view"></a>既定のビューを選択する 
 
-Azure portal にサインインすると既定で開かれるページを変更できます。
+Azure portal にサインインするときに、既定で開かれるページを変更できます。
 
    ![既定のビューが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/default-view.png)
 

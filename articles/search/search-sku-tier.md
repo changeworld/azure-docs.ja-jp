@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 07/14/2020
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119218"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553973"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -23,14 +23,17 @@ Azure Cognitive Search サービスを作成すると、サービスの有効期
 
 ## <a name="feature-availability-by-tier"></a>階層による機能の使用の可否
 
-ほとんどすべての機能は Free を含むすべての階層で利用できますが、十分な容量を提供しない限り、リソースを集中的に使用する機能やワークフローは適切に機能しない可能性があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
-
 次の表では、階層に関連する機能の制約について説明します。
 
 | 機能 | 制限事項 |
 |---------|-------------|
 | [インデクサー](search-indexer-overview.md) | インデクサーは S3 HD では使用できません。 |
+| [AI エンリッチメント](search-security-manage-encryption-keys.md) | Free レベルで実行されますが、推奨されていません。 |
 | [顧客が管理する暗号化キー](search-security-manage-encryption-keys.md) | Free レベルでは使用できません。 |
+| [IP ファイアウォール アクセス](service-configure-firewall.md) | Free レベルでは使用できません。 |
+| [Azure Private Link との統合](service-create-private-endpoint.md) | Free レベルでは使用できません。 |
+
+ほとんどの機能は Free を含むすべてのレベルで利用できますが、リソースを集中的に使用する機能は、十分な容量が提供されない場合、適切に機能しない可能性があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 
 ## <a name="tiers-skus"></a>レベル (SKU)
 
@@ -57,10 +60,19 @@ Azure Cognitive Search サービスを作成すると、サービスの有効期
 
 Azure Cognitive Search 上に構築されたソリューションでは、次のようなコストが発生する場合があります。
 
-+ 最小の構成 (1 つのパーティションとレプリカ) で 24 時間 365 日実行されるサービス自体の固定費
-+ スケールアップ (レプリカまたはパーティションの追加) 時の増分コスト
-+ 帯域幅料金 (送信データ転送) 
-+ Cognitive Search (AI エンリッチメントのために Cognitive Services を接続、またはナレッジ ストアのために Azure Storage を使用)
++ 最小の構成 (1 つのパーティションとレプリカ) で 24 時間 365 日実行されるサービス自体の費用
+
++ 容量の追加 (レプリカまたはパーティション)
+
++ 帯域幅料金 (送信データ転送)
+
++ 特定の機能に必要なアドオンサービス:
+
+  + AI エンリッチメント ([Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) が必要)
+  + ナレッジ ストア ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要)
+  + インクリメンタル エンリッチメント ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要。AI エンリッチメントに適用される)
+  + カスタマー マネージド キーと二重暗号化 ([Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) が必要)
+  + インターネットにアクセスできないモデル用のプライベート エンドポイント ([Azure Private Link が必要](https://azure.microsoft.com/pricing/details/private-link/))
 
 ### <a name="service-costs"></a>サービスのコスト
 
@@ -72,7 +84,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 ### <a name="bandwidth-charges"></a>帯域幅の料金
 
-[Azure Cognitive Search インデクサー](search-indexer-overview.md)を使用すると、サービスの場所によっては、課金に影響することがあります。 Azure Cognitive Search サービスをデータと同じリージョンに作成すれば、データ エグレス料金が発生する事態を回避できます。 以下に、[帯域幅の価格に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)の情報の一部を示します。
+[インデクサー](search-indexer-overview.md)を使用すると、使用するサービスの場所によっては、課金に影響することがあります。 Azure Cognitive Search サービスをデータと同じリージョンに作成すれば、データ エグレス料金が発生する事態を回避できます。 以下に、[帯域幅の価格に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)の情報の一部を示します。
 
 + Azure 上のあらゆるサービスへのインバウンド データと、Azure Cognitive Search からのアウトバウンド データには料金が課金されません。
 + マルチサービス ソリューションでは、すべてのサービスが同じリージョンにあれば、伝送データに料金はかかりません。
@@ -108,7 +120,7 @@ SU は、サービスによって使用される "*レプリカ*" と "*パー�
 
 ## <a name="how-to-manage-costs"></a>コストを管理する方法
 
-次の推奨事項は、コストを最小限に抑えるのに役立ちます。
+次の推奨事項は、コストを削減し、コストをより効果的に管理するのに役立ちます。
 
 + 帯域幅の料金を最小限に抑えるかなくすために、すべてのリソースを同一のリージョンか可能な限り少ないリージョンに作成します。
 
@@ -141,7 +153,7 @@ Azure Cognitive Search では、容量は*レプリカ*と*パーティション
 
 通常、必要となるインデックスの数は、ビジネス要件によって規定されます。 たとえば、ドキュメントの大規模なリポジトリ用にグローバル インデックスが必要な場合があります。 また、リージョン、アプリケーション、またはビジネス分野に基づいて複数のインデックスが必要な場合があります。
 
-インデックスのサイズを特定するには、インデックスを 1 つ[構築](search-create-index-portal.md)する必要があります。 そのサイズは、インポートされたデータと、suggester、フィルタリング、並べ替えの有効化など、インデックス構成に基づきます。 構成がサイズに与える影響については、「[基本インデックスの作成](search-what-is-an-index.md)」を参照してください
+インデックスのサイズを特定するには、インデックスを 1 つ[構築](search-what-is-an-index.md)する必要があります。 そのサイズは、インポートされたデータと、suggester、フィルタリング、並べ替えの有効化など、インデックス構成に基づきます。
 
 全文検索の場合、主要データ構造は[転置インデックス](https://en.wikipedia.org/wiki/Inverted_index)構造であり、ソース データとは異なる特性があります。 転置インデックスのサイズと複雑性はコンテンツによって決まり、必ずしもそれにフィードするデータ量によって決まるものではありません。 冗長性の高い大規模なデータ ソースは、変動の多いコンテンツを含む小さいデータセットよりも、インデックスのサイズが小さくなることがあります。 そのため、元のデータ セットのサイズに基づいてインデックスのサイズを推測できることはほとんどありません。
 
@@ -155,7 +167,7 @@ Azure Cognitive Search では、容量は*レプリカ*と*パーティション
 
 + [Free サービスを作成](search-create-service-portal.md)します。
 + 小さな代表的なデータセットを準備します。
-+ [ポータルで最初のインデックスを構築](search-create-index-portal.md)し、そのサイズをメモします。 機能と属性はストレージに影響を与えます。 たとえば、suggester (Search-as-you-type クエリ) を追加すると、ストレージ要件が増加します。 同じデータ セットを使用する場合、各フィールドに異なる属性を設定してインデックスの複数のバージョンを作成し、ストレージ要件がどのように変化するかを確認してみてください。 詳細については、[基本的なインデックスの作成に関するページの「ストレージへの影響」](search-what-is-an-index.md#index-size)を参照してください。
++ [ポータルで最初のインデックスを構築](search-get-started-portal.md)し、そのサイズをメモします。 機能と属性はストレージに影響を与えます。 たとえば、suggester (Search-as-you-type クエリ) を追加すると、ストレージ要件が増加します。 同じデータ セットを使用する場合、各フィールドに異なる属性を設定してインデックスの複数のバージョンを作成し、ストレージ要件がどのように変化するかを確認してみてください。 詳細については、[基本的なインデックスの作成に関するページの「ストレージへの影響」](search-what-is-an-index.md#index-size)を参照してください。
 
 大まかな見積もりが得られたら、2 つのインデックス (開発用と運用用) の量を予測するためにこの値を 2 倍にし、それに応じてレベルを選択します。
 
@@ -171,7 +183,7 @@ Azure Cognitive Search では、容量は*レプリカ*と*パーティション
     + サイズの大きなインデックスの作成とクエリの負荷への対応が必要になることがわかっている場合は、S2 または S3 の高レベルから始めます。
     + 社内のビジネス アプリケーションのように、インデックスを付けるデータの量が多く、クエリの負荷が比較的低い場合は、Storage Optimized (L1 または L2) から始めます。
 
-1. [最初のインデックスを構築](search-create-index-portal.md)して、ソース データがどのようにインデックスに変換されるかを特定します。 これは、インデックスのサイズを推測する唯一の方法です。
+1. [最初のインデックスを構築](search-what-is-an-index.md)して、ソース データがどのようにインデックスに変換されるかを特定します。 これは、インデックスのサイズを推測する唯一の方法です。
 
 1. ポータルで、[ストレージ、サービス制限、クエリ量、および待機時間を監視](search-monitor-usage.md)します。 秒あたりのクエリ数、調整されたクエリ数、および検索の待ち時間がポータルに表示されます。 これらすべての値が、適切なレベルを選択したかどうかを判断するために役立ちます。 
 

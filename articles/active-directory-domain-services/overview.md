@@ -10,18 +10,20 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6efd33b9f8825b5b5699b6106dadafec851ed454
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734556"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488552"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
 Azure Active Directory Domain Services (Azure AD DS) では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos/NTLM 認証など) が提供されます。 クラウドでドメイン コントローラー (DC) のデプロイ、管理、修正プログラムの適用を行わなくても、これらのドメイン サービスを使用することができます。
 
-マネージド ドメインは、DNS 名前空間および対応するディレクトリです。 マネージド ドメインは既存の Azure AD テナントと統合されるので、ユーザーは既存の資格情報を使用してサインインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、リフト アンド シフト方式でオンプレミスのリソースをよりスムーズに Azure に移行できます。
+Azure AD DS のマネージド ドメインを作成するときは、一意の名前空間を定義します。 この名前空間はドメイン名であり (*aaddscontoso.com* など)、2 つのドメイン コントローラー (DC) が選択した Azure リージョンにデプロイされます。 この DC のデプロイは、レプリカ セットと呼ばれます。 マネージド ドメインは既存の Azure AD テナントと統合されるので、ユーザーは既存の資格情報を使用してサインインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、リフト アンド シフト方式でオンプレミスのリソースをよりスムーズに Azure に移行できます。
+
+マネージド ドメインを拡張して、Azure AD テナントごとに複数のレプリカ セットを使用できます。 レプリカ セットは、Azure AD DS がサポートされている任意の Azure リージョンの、ピアリングされた任意の仮想ネットワークに追加できます。 異なる Azure リージョンにレプリカ セットを追加することで、ある Azure リージョンがオフラインになった場合に、レガシ アプリケーションの地理的なディザスター リカバリーが実現されます。 レプリカ セットは現在プレビュー段階です。 詳細については、[マネージド ドメインのレプリカ セットの概念と機能][concepts-replica-sets]に関するページを参照してください。
 
 Azure AD DS は、既存の Azure AD テナントと統合されます。 この統合により、ユーザーは既存の資格情報を使用して、マネージド ドメインに接続されているサービスおよびアプリケーションにサインインできます。 また、既存のグループとユーザー アカウントを使用して、リソースへのアクセスをセキュリティで保護することもできます。 これらの機能により、オンプレミスのリソースを Azure に円滑にリフトアンドシフトすることができます。
 
@@ -150,3 +152,4 @@ Azure AD DS と他の ID ソリューションとの比較、および同期の�
 [forest-trusts]: concepts-resource-forest.md
 [administration-concepts]: administration-concepts.md
 [synchronization]: synchronization.md
+[concepts-replica-sets]: concepts-replica-sets.md

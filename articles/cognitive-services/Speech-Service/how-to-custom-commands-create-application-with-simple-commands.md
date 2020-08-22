@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362409"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284168"
 ---
 # <a name="create-application-with-simple-commands"></a>単純なコマンドを使用してアプリケーションを作成する
 
@@ -97,7 +97,7 @@ ms.locfileid: "85362409"
 1. **[完了ルール]** セクションに戻り、 **[保存]** を選択してすべての変更を保存します。 
 
 
- > [!NOTE]
+    > [!NOTE]
     > コマンドに付属する既定の完了ルールを使用する必要はありません。 必要に応じて、既定の完了ルールを削除し、独自のルールを追加することができます。
 
 ### <a name="try-it-out"></a>試してみる

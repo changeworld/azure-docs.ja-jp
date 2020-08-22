@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: PowerShell を使用して Azure VM をバックアップする
       href: tutorial-backup-azure-vm.md
-    - name: ディスクの復元
+    - name: Azure CLI を使用した VM の復元
       href: tutorial-restore-disk.md
     - name: 個々のファイルの復元
       href: tutorial-restore-files.md
@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Backup のアーキテクチャ
       href: backup-architecture.md
+    - name: ガイダンスとベスト プラクティス
+      href: guidance-best-practices.md
 - name: ハウツー ガイド
   items:
     - name: Recovery Services コンテナー
@@ -121,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: Linux を実行中の Azure VM のアプリ整合性バックアップを構成する
               href: backup-azure-linux-app-consistent.md
+            - name: 選択的ディスク バックアップ
+              href: selective-disk-backup-restore.md
         - name: 復元
           items:
             - name: Azure VM の復元について
@@ -142,7 +146,11 @@
         - name: 概要
           href: backup-azure-sql-database.md
         - name: バックアップ
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: コンテナーから複数の SQL Server VM をバックアップする
+              href: backup-sql-server-database-azure-vms.md
+            - name: VM ペインから SQL Server VM をバックアップする
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: 復元
           href: restore-sql-database-azure-vm.md
         - name: 管理する
@@ -283,8 +291,10 @@
       items:
         - name: 概要
           href: offline-backup-overview.md
-        - name: Azure Data Box を使用したオフライン バックアップ
+        - name: Azure Data Box を使用したオフライン バックアップ (MARS)
           href: offline-backup-azure-data-box.md
+        - name: Azure Data Box を使用したオフライン バックアップ (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: Import/Export を使用したオフライン バックアップ (MARS)
           href: backup-azure-backup-import-export.md
         - name: Import/Export を使用したオフライン バックアップ (DPM/MABS)
@@ -375,6 +385,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: 組み込みのセキュリティ制御
           href: backup-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: トラブルシューティング

@@ -4,12 +4,12 @@ description: Azure Batch サービスを使用したソリューションの開�
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1a3b2bb080e80e5ddc5ac12413f312dcd930d03f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c7484e59391be8f4853c2394bff20c6d9676dec9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958023"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032194"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API とツールの概要
 
@@ -65,7 +65,7 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 
 これらのコマンド ライン ツールには、Batch サービスや Batch Management API と同じ機能が備わっています。 
 
-- [Batch PowerShell コマンドレット](/powershell/module/az.batch/): [Azure PowerShell](/powershell/azure/overview) モジュールの Azure Batch コマンドレットを使用すると、PowerShell で Batch リソースを管理できます。
+- [Batch PowerShell コマンドレット](/powershell/module/az.batch/): [Azure PowerShell](/powershell/azure/) モジュールの Azure Batch コマンドレットを使用すると、PowerShell で Batch リソースを管理できます。
 - [Azure CLI](/cli/azure):Azure CLI は、Batch サービスや Batch Management サービスなどの多くの Azure サービスを操作するためのシェル コマンドを提供するクロスプラットフォーム ツールセットです。 Batch での Azure CLI の使用について詳しくは、「[Azure CLI で Batch リソースを管理する](batch-cli-get-started.md)」を参照してください。
 
 ## <a name="other-tools-for-application-development"></a>その他のアプリケーション開発用ツール

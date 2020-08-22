@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071896"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
 
@@ -53,7 +53,7 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 
 ![スムーズ ストリーミング用の Windows ストア アプリケーションの例][PlayerApplication]
 
-Windows ストア アプリケーションの開発の詳細については、「 [Windows 8 用の優れたアプリケーションの開発](https://msdn.microsoft.com/windows/apps/br229512.aspx)」をご覧ください。 このレッスンは、次の工程で構成されています。
+Windows ストア アプリケーションの開発の詳細については、「 [Windows 8 用の優れたアプリケーションの開発](https://developer.microsoft.com/en-us/windows/)」をご覧ください。 このレッスンは、次の工程で構成されています。
 
 1. Windows ストア プロジェクトの作成
 2. ユーザー インターフェイスの設計 (XAML)
@@ -1045,4 +1045,3 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

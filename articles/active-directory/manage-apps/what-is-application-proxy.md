@@ -6,18 +6,17 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976508"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164582"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -100,7 +99,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 * [**フォームまたはパスワード ベースの認証**](application-proxy-configure-single-sign-on-password-vaulting.md)。 この認証方法では、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインオンします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。 このシナリオでは、認証は Azure AD によって処理されます。
 * [**SAML 認証**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 SAML ベースのシングル サインオンは、SAML 2.0 または WS-Federation のいずれかのプロトコルを使用するアプリケーションでサポートされます。 SAML によるシングル サインオンでは、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。
 
-サポートされている方法の詳細については、「[シングル サインオンの方法の選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)」を参照してください。
+サポートされている方法の詳細については、「[シングル サインオンの方法の選択](sso-options.md#choosing-a-single-sign-on-method)」を参照してください。
 
 ### <a name="security-benefits"></a>セキュリティ上の利点
 

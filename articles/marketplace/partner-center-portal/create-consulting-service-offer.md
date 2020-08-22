@@ -1,18 +1,18 @@
 ---
 title: コンサルティング サービス オファーを作成する - Microsoft コマーシャル マーケットプレース
 description: パートナー センターを使用して、コンサルティング サービス オファーを Microsoft AppSource または Azure Marketplace に公開する方法について説明します。
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203815"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032596"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
 
@@ -202,6 +202,8 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 オファーで使用するロゴと画像を提供します。 画像はすべて .png 形式である必要があります。 ぼやけた画像は拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
@@ -213,6 +215,9 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 - **大 (216 x 216)**
 
 すべてのロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+
+-   小のロゴ (48 x 48 ピクセル) は Azure Marketplace の検索結果と、Microsoft AppSource のメイン ページおよび検索結果ページに表示されます。 
+-   大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルの間) は、Azure Marketplace と Microsoft AppSource のオファーの一覧ページに表示されます。
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 

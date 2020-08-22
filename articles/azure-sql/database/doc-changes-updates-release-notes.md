@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981375"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121461"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,10 +50,9 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 | 特徴量 | 詳細 |
 | ---| --- |
-| 新しい Fsv2 シリーズおよび M シリーズ ハードウェア世代| 詳細については、「[Hardware generations](service-tiers-vcore.md#hardware-generations)」(ハードウェアの世代) を参照してください。|
 | 単一データベースとエラスティック プールでの高速データベース復旧 | 詳しくは、「[高速データベース復旧](../accelerated-database-recovery.md)」をご覧ください。|
 | データの検出と分類  |詳しくは、[Azure SQL Database と Azure Synapse Analytics のデータ検出と分類](data-discovery-and-classification-overview.md)に関する記事をご覧ください。|
-| エラスティック データベース ジョブ | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
+| Elastic Database ジョブ (プレビュー) | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](elastic-query-overview.md)に関する記事をご覧ください。 |
 | エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](elastic-transactions-overview.md)。 |
 | Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](connect-query-portal.md)」をご覧ください。|
@@ -98,8 +97,8 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
-|[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|回避策あり| |
-|[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|自動的に軽減済み| |
+|[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|解決済み|2020 年 6 月|
+|[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|解決済み|2020 年 6 月|
 |[リソース グループに対するアクセス許可が SQL Managed Instance に適用されない](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020 年 2 月|回避策あり||
 |[ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|回避策あり||
 |[SQL Agent ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|回避策あり||
@@ -138,7 +137,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>リソース グループに対するアクセス許可が SQL Managed Instance に適用されない
 
-リソース グループ (RG) に SQL Managed Instance 共同作成者 RBAC ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
+リソース グループ (RG) に SQL Managed Instance 共同作成者 Azure ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
 
 **回避策**:ユーザーの SQL Managed Instance 共同作成者ロールをサブスクリプション レベルで設定します。
 

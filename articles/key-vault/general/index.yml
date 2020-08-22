@@ -11,12 +11,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/19/2019
-  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: ada202a8683b64144f2adacc759b9461472e4a31
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81422406"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262570"
 landingContent:
 - title: Azure Key Vault について
   linkLists:
@@ -24,12 +24,14 @@ landingContent:
     links:
     - text: Azure Key Vault とは?
       url: overview.md
+    - text: 論理的な削除に関する重要なニュース
+      url: soft-delete-change.md
   - linkListType: concept
     links:
     - text: 基本的な概念
       url: basic-concepts.md
     - text: 論理的な削除
-      url: overview-soft-delete.md
+      url: soft-delete-overview.md
     - text: Throttling
       url: overview-throttling.md
 - title: チュートリアル
@@ -38,10 +40,10 @@ landingContent:
     links:
     - text: Web アプリケーションからの Key Vault
       url: tutorial-net-create-vault-azure-web-app.md
-    - text: Key Vault と Azure Windows 仮想マシン
-      url: tutorial-net-windows-virtual-machine.md
-    - text: Key Vault と Python - Windows
-      url: tutorial-python-windows-virtual-machine.md
+    - text: .NET の仮想マシンを使用する Key Vault
+      url: tutorial-net-virtual-machine.md
+    - text: Python の仮想マシンを使用する Key Vault
+      url: tutorial-python-virtual-machine.md
 - title: Security
   linkLists:
   - linkListType: overview
@@ -60,6 +62,20 @@ landingContent:
       url: managed-identity.md
     - text: アクセス ポリシーを使用する
       url: group-permissions-for-apps.md
+- title: クライアント ライブラリ
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Key Vault 用クライアント ライブラリ
+      url: client-libraries.md
+    - text: .NET クライアント ライブラリ
+      url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - text: Python クライアント ライブラリ
+      url: /python/api/overview/azure/key-vault-index?view=azure-python
+    - text: Java クライアント ライブラリ
+      url: https://azure.github.io/azure-sdk-for-java/keyvault.html
+    - text: Node.js クライアント ライブラリ
+      url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
 - title: Microsoft Learn
   linkLists:
   - linkListType: learn

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4873c1c998f62b6180df73a04852704665a4125d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075836"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
 
@@ -28,7 +28,6 @@ ms.locfileid: "85831422"
 新機能がすべてのリージョンにロールアウトされるのに伴い、機能の可用性について、ご使用のインスタンスにデプロイされているバージョン、および最新のリリース ノートを確認してください。 バージョンを確認するには、SQL Server Management Studio (SSMS) を介してお使いの SQL プールに接続して `SELECT @@VERSION;` を実行し、現在のバージョンを返します。 このバージョンで、お使いの SQL プールに適用されているリリースを確認してください。 出力の日付によって、SQL プールに適用されるリリースの月が識別されます。 これは、サービスレベルの機能強化にのみ適用されます。 
 
 ツールの機能強化については、リリース ノートに適切なバージョンがインストールされていることを確認してください。 
-
 
 > [!NOTE]
 > SELECT @@VERSION によって返される製品名は、Microsoft Azure SQL Data Warehouse から Microsoft Azure Synapse Analytics に変更されます。 変更を行う前に、Microsoft から詳細な通知を送信します。 この変更は、使用しているアプリケーション コード内の SELECT @@VERSION の結果から製品名を解析する顧客に関連しています。 製品のブランド変更が原因でアプリケーション コードが変更されるのを回避するには、次のコマンドを使用して、データベースの製品名とバージョンを SERVERPROPERTY に照会してください。バージョン番号 XX.X.XXXXX.X (製品名なし) を返すには、次のコマンドを使用します。
@@ -42,11 +41,13 @@ ms.locfileid: "85831422"
 > ```
 
 ## <a name="july-2020"></a>2020 年 7 月
+
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 |**列レベルの暗号化 (パブリック プレビュー)**|Transact-SQL を使用してデータの列に対称暗号化を適用することで、Synapse SQL データ ウェアハウス内の機密情報を保護します。 列レベルの暗号化には、証明書、パスワード、対称キー、または非対称キーでさらに保護される対称キーを使用してデータを暗号化するために使用できる、組み込み関数が用意されています。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)」を参照してください。|
 |**互換性レベルのサポート (GA)**|ユーザーはこのリリースで、Synapse SQL エンジンの特定のバージョンの Transact-SQL 言語とクエリ処理の動作を使用できるよう、データベースの互換性レベルを設定できるようになりました。 詳細については、「[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」と「[データベース スコープ構成の変更](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。|
 |**行レベルのセキュリティ**|このリリースには、RLS が適用された行に対する更新および削除の操作の改善が含まれています。 このリリースでは、組み込み関数で DML ターゲット テーブルの列が参照されていない場合、"is_rolemember" のような組み込み関数での更新操作と削除操作は成功します。 この改善の前は、これらの操作は、基になる DML 操作での制限のために失敗しました。|
+|**DBCC SHRINKDATABASE (GA)**|指定したデータベース内のデータ ファイルとログ ファイルのサイズを圧縮できるようになりました。 詳細については、この[ドキュメント](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)を参照してください。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 

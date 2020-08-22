@@ -5,17 +5,18 @@ description: Azure Kubernetes Service を使用して Web サービスとして 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 16465ff823fab1b13f43aec33cb41f9b26b5c054
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392558"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120832"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,8 +35,15 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 * Azure Machine Learning SDK、Machine Learning CLI、または [Azure Machine Learning Studio](https://ml.azure.com) を使って、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
 * 既存の AKS クラスターを Azure Machine Learning のワークスペースにアタッチします。 Azure Machine Learning SDK、Machine Learning CLI、または Azure Machine Learning Studio を使って、クラスターをアタッチできます。
 
+AKS クラスターと AML ワークスペースは異なるリソース グループに配置できます。
+
 > [!IMPORTANT]
 > 作成またはアタッチのプロセスは、1 回限りのタスクです。 AKS クラスターがワークスペースに接続されると、デプロイに使用できます。 不要になった AKS クラスターは、デタッチまたは削除できます。 デタッチまたは削除したクラスターには、デプロイできなくなります。
+
+> [!IMPORTANT]
+> Web サービスにデプロイする前にローカルでデバッグすることをお勧めします。 詳細については、「[ローカル デバッグ](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)」を参照してください。
+>
+> Azure Machine Learning の[ローカルの Notebook へのデプロイ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)に関する記事を参照することもできます
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,11 +63,32 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 - この記事の __CLI__ スニペットは、`inferenceconfig.json` ドキュメントを作成済みであることを前提としています。 このドキュメントの作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
+- Basic Load Balancer (BLB) ではなく Standard Load Balancer (SLB) をクラスターにデプロイする必要がある場合は、AKS ポータル、CLI、または SDK でクラスターを作成し、AML ワークスペースにアタッチしてください。
+
+- [API サーバーへのアクセスが有効な承認済みの IP 範囲](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)を持つ AKS クラスターを接続する場合は、AKS クラスターの AML コントロール プレーンの IP 範囲を有効にします。 AML コントロール プレーンは、ペアになっているリージョンにまたがってデプロイされ、AKS クラスター上に推論ポッドをデプロイします。 API サーバーにアクセスできない場合、推論ポッドをデプロイすることはできません。 AKS クラスターで IP 範囲を有効にする場合、[ペアになっているリージョン]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)の両方に対して [IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)を使用します。
+
+__承認済みの IP 範囲は、Standard Load Balancer でのみ機能します。__
+ 
+ - コンピューティング名はワークスペース内で一意にする必要があります
+   - 名前は必須であり、3 文字から 24 文字の長さにする必要があります。
+   - 有効な文字は、大文字、小文字、数字、- 文字です。
+   - 名前の先頭は文字である必要があります
+   - 名前は、Azure リージョン内のすべての既存のコンピューティングで一意である必要があります。 選択した名前が一意でない場合は、アラートが表示されます
+   
+ - GPU ノードまたは FPGA ノード (または特定の SKU) にモデルをデプロイする場合は、特定の SKU でクラスターを作成する必要があります。 既存のクラスターにセカンダリ ノード プールを作成し、そのセカンダリ ノード プールにモデルをデプロイすることはサポートされていません。
+ 
+ 
+
+
+
 ## <a name="create-a-new-aks-cluster"></a>新しい AKS クラスターを作成する
 
-**推定所要時間**: 約 20 分です。
+**推定所要時間**: 約 10 分。
 
 AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
+ 
+Azure Machine Learning で、Private Link が有効な Azure Kubernetes サービスの使用がサポートされるようになりました。
+プライベート AKS クラスターを作成するには、[こちら](https://docs.microsoft.com/azure/aks/private-clusters)のドキュメントに従ってください
 
 > [!TIP]
 > Azure Virtual Network を使用して AKS クラスターをセキュリティで保護する場合は、まず仮想ネットワークを作成する必要があります。 詳細については、[Azure Virtual Network での実験と推論の安全な実行](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。
@@ -80,6 +109,13 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # For example, to create a dev/test cluster, use:
 # prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
+# Example configuration to use an existing virtual network
+# prov_config.vnet_name = "mynetwork"
+# prov_config.vnet_resourcegroup_name = "mygroup"
+# prov_config.subnet_name = "default"
+# prov_config.service_cidr = "10.0.0.0/16"
+# prov_config.dns_service_ip = "10.0.0.10"
+# prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
 aks_name = 'myaks'
 # Create the cluster
@@ -156,6 +192,9 @@ cluster_name = 'myexistingcluster'
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
+
+# Wait for the attach process to complete
+aks_target.wait_for_completion(show_output = True)
 ```
 
 この例で使われているクラス、メソッド、パラメーターの詳細については、次のリファレンス ドキュメントをご覧ください。
@@ -232,6 +271,30 @@ VS Code の使用については、「[モデルを展開して管理する](tut
 
 > [!IMPORTANT]
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。
+
+### <a name="understand-the-deployment-processes"></a>デプロイ プロセスについて
+
+"デプロイ" という用語は、Kubernetes と Azure Machine Learning の両方で使用されます。 これらの 2 つのコンテキストでは、"デプロイ"の意味が異なります。 Kubernetes では、`Deployment` は具体的なエンティティで、宣言型の YAML ファイルで指定されます。 Kubernetes の `Deployment` には、定義されたライフサイクルが定義されており、`Pods` や `ReplicaSets` などの他の Kubernetes エンティティと具体的な関係があります。 Kubernetes については、「[What is Kubernetes?](https://aka.ms/k8slearning)」 (Kubernetes とは) にあるドキュメントとビデオを参照してください。
+
+Azure Machine Learning では、"デプロイ"は、「プロジェクト リソースを使用可能にする、およびクリーンアップする」というより一般的な意味で使用されます。 Azure Machine Learning でデプロイ部分が考慮される手順は、次のとおりです。
+
+1. プロジェクト フォルダー内のファイルの解凍。.amlignore または .gitignore で指定されたファイルは無視されます
+1. コンピューティング クラスターのスケール アップ (Kubernetes 関連)
+1. Dockerfile のビルドまたは計算ノードへのダウンロード (Kubernetes 関連)
+    1. システムにより、次のハッシュが計算されます。 
+        - 基本イメージ 
+        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)」を参照してください)
+        - Conda 定義 YAML ([Azure Machine Learning でのソフトウェア環境の作成と使用](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)に関するページを参照してください)
+    1. システムでは、ワークスペース Azure Container Registry (ACR) の検索で、このハッシュがキーとして使用されます
+    1. 見つからない場合、グローバル ACR で一致するものが検索されます
+    1. 見つからない場合、システムでは新しいイメージがビルドされます (これはキャッシュされ、ワークスペース ACR に登録されます)
+1. 計算ノード上の一時記憶域への圧縮されたプロジェクト ファイルのダウンロード
+1. プロジェクト ファイルの解凍
+1. `python <entry script> <arguments>` を実行する計算ノード
+1. ログ、モデル ファイル、`./outputs` に書き込まれたその他のファイルの、ワークスペースに関連付けられているストレージ アカウントへの保存
+1. 一時記憶域の削除など、コンピューティングのスケールダウン (Kubernetes 関連)
+
+AKS を使用している場合、コンピューティングのスケールアップおよびスケールダウンは、ビルドされた、または上記で見つかった Dockerfile を使用して、Kubernetes により制御されます。 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>制御されたロールアウト (プレビュー) を使用して AKS にモデルをデプロイする
 
@@ -370,15 +433,12 @@ print(token)
 >
 > トークンを取得するには、Azure Machine Learning SDK または [az ml service get-access-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) コマンドを使用する必要があります。
 
-## <a name="update-the-web-service"></a>Web サービスを更新する
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
-
 ## <a name="next-steps"></a>次のステップ
 
 * [仮想ネットワーク内で実験と推論を安全に実行する](how-to-enable-virtual-network.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
+* [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)

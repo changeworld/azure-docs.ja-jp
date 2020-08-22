@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078716"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) にリソースを追加する
 
@@ -127,7 +127,7 @@ ISE でカスタム コネクタを使用するには、ISE 内から直接こ�
 
    ![カスタム コネクタを選択して編集する](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 
-1. [OpenAPI 定義](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)または [SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector) から通常の方法でコネクタを作成して続行します。
+1. [OpenAPI 定義](/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)または [SOAP](/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector) から通常の方法でコネクタを作成して続行します。
 
 1. ISE でカスタム コネクタを管理するには、[統合サービス環境の管理](../logic-apps/ise-manage-integration-service-environment.md)に関する記事を参照してください。
 

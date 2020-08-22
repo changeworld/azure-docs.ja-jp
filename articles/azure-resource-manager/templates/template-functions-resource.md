@@ -3,12 +3,12 @@ title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89241558164505573e098bdf580af6542c6095c5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099253"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372384"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
@@ -138,6 +138,7 @@ list* の使用例を次の表にまとめています。
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Microsoft.BotService/botServices/channels | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
@@ -664,7 +665,7 @@ reference 関数を使用してコピー ループの `count` プロパティの
 
 ### <a name="remarks"></a>解説
 
-`resourceGroup()` 関数は、[サブスクリプション レベルでデプロイ](deploy-to-subscription.md)されたテンプレートで使用できません。 リソース グループにデプロイされているテンプレートでのみ使用できます。 親テンプレートがサブスクリプションにデプロイされていても、リソース グループをターゲットとする[リンク済みまたは入れ子になったテンプレート (内側のスコープを持つ)](linked-templates.md) で `resourceGroup()` 関数を使用することができます。 そのシナリオでは、リンク済みまたは入れ子になったテンプレートはリソース グループ レベルでデプロイされます。 サブスクリプション レベル デプロイでのリソース グループのターゲット設定の詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-resource-group-deployment.md)」を参照してください。
+`resourceGroup()` 関数は、[サブスクリプション レベルでデプロイ](deploy-to-subscription.md)されたテンプレートで使用できません。 リソース グループにデプロイされているテンプレートでのみ使用できます。 親テンプレートがサブスクリプションにデプロイされていても、リソース グループをターゲットとする[リンク済みまたは入れ子になったテンプレート (内側のスコープを持つ)](linked-templates.md) で `resourceGroup()` 関数を使用することができます。 そのシナリオでは、リンク済みまたは入れ子になったテンプレートはリソース グループ レベルでデプロイされます。 サブスクリプション レベル デプロイでのリソース グループのターゲット設定の詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-scope-deployment.md)」を参照してください。
 
 resourceGroup 関数の一般的な用途では、リソース グループと同じ場所にリソースを作成します。 次の例では、既定のパラメーター値にリソース グループの場所を使用します。
 
@@ -679,7 +680,7 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 
 resourceGroup 関数を使用して、リソース グループからリソースにタグを適用することもできます。 詳細については、「[リソース グループからタグを適用する](../management/tag-resources.md#apply-tags-from-resource-group)」を参照してください。
 
-入れ子になっているテンプレートを使用して複数のリソース グループにデプロイするとき、resourceGroup 関数を評価するためのスコープを指定できます。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-resource-group-deployment.md)」を参照してください。
+入れ子になっているテンプレートを使用して複数のリソース グループにデプロイするとき、resourceGroup 関数を評価するためのスコープを指定できます。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-scope-deployment.md)」を参照してください。
 
 ### <a name="resource-group-example"></a>リソース グループの例
 
@@ -721,7 +722,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループまたはサブスクリプションのスコープでデプロイする場合にのみ、この値を指定します。 |
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループのスコープでデプロイする場合にのみ、この値を指定します。 |
@@ -861,7 +862,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -889,7 +890,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 ### <a name="remarks"></a>解説
 
-入れ子になっているテンプレートを使用して複数のサブスクリプションにデプロイするとき、サブスクリプション関数を評価するためのスコープを指定できます。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-resource-group-deployment.md)」を参照してください。
+入れ子になっているテンプレートを使用して複数のサブスクリプションにデプロイするとき、サブスクリプション関数を評価するためのスコープを指定できます。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-scope-deployment.md)」を参照してください。
 
 ### <a name="subscription-example"></a>サブスクリプションの例
 
@@ -917,7 +918,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |

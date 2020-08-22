@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254669"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438912"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -55,7 +55,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
   - 既定のアウトバウンド規則は削除しないでください。
   - アウトバウンド接続を拒否する他のアウトバウンド規則は作成しないでください。
 
-- **AzureLoadBalancer** タグからのトラフィックを許可する必要があります。
+- **AzureLoadBalancer** タグからで宛先サブネットが **[すべて]** のトラフィックを許可する必要があります。
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway アクセスを少数のソース IP に限定する
 
@@ -65,7 +65,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 2. [バックエンド正常性状態通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)のために、ソースが **GatewayManager** サービス タグ、宛先が **[すべて]** 、宛先ポートが Application Gateway v1 SKU の 65503 ～ 65534、および v2 SKU のポート 65200 ～ 65535 である着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
 3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と仮想ネットワーク通信 (*VirtualNetwork* タグ) を受信方向で許可します。
 4. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
-5. インターネットのすべての宛先への送信トラフィックを許可します。
+5. すべての宛先に対してインターネットへの送信トラフィックを許可します。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート
 
@@ -74,7 +74,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 - **v1**
 
-   v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
+   v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。 0\.0.0.0/0 をオンプレミスにリダイレクトする必要があるシナリオ (強制トンネリング) は、v1 ではサポートされていません。
 
 - **v2**
 
@@ -122,7 +122,15 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 ## <a name="front-end-ip"></a>フロントエンド IP
 
-アプリケーション ゲートウェイは、パブリック IP アドレス、プライベート IP アドレス、またはその両方を持つように構成できます。 パブリック IP が必要となるのは、インターネットに接続している仮想 IP (VIP) を介してインターネット上でクライアントがアクセスする必要があるバックエンドをホストするときです。 
+アプリケーション ゲートウェイは、パブリック IP アドレス、プライベート IP アドレス、またはその両方を持つように構成できます。 パブリック IP が必要となるのは、インターネットに接続している仮想 IP (VIP) を介してインターネット上でクライアントがアクセスする必要があるバックエンドをホストするときです。
+
+> [!NOTE]
+> 現在、Application Gateway V2 はプライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
+>* プライベート IP とパブリック IP
+>* パブリック IP のみ
+>
+> 詳細については、「[Application Gateway に関してよく寄せられる質問](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)」を参照してください。
+
 
 パブリック IP は、インターネットに公開されない内部エンドポイントには必要ありません。 これは、"*内部ロード バランサー*" (ILB) エンドポイントまたはプライベート フロントエンド IP と呼ばれます。 アプリケーション ゲートウェイ ILB は、インターネットに接続されていない内部の基幹業務アプリケーションで便利です。 また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層に役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または TLS ターミネーションが必要です。
 
@@ -146,7 +154,7 @@ Azure portal を使用してアプリケーション ゲートウェイを作成
 
 - (すべてのドメインに対する) すべての要求を受け入れ、バックエンド プールに転送する場合は、基本を選択します。 [基本リスナーのアプリケーション ゲートウェイを作成する方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)に関するページを参照してください。
 
-- *ホスト* ヘッダーまたはホスト名に基づいて異なるバックエンド プールに要求を転送する場合は、マルチサイト リスナーを選択します。ここで、受信要求と一致するホスト名も指定する必要があります。 これは、アプリケーション ゲートウェイが複数の Web サイトを同じパブリック IP アドレスとポートでホストするために、HTTP 1.1 ホスト ヘッダーを利用しているためです。
+- "*ホスト*" ヘッダーまたはホスト名に基づいて異なるバックエンド プールに要求を転送する場合は、マルチサイト リスナーを選択します。ここで、受信要求と一致するホスト名も指定する必要があります。 これは、アプリケーション ゲートウェイが複数の Web サイトを同じパブリック IP アドレスとポートでホストするために、HTTP 1.1 ホスト ヘッダーを利用しているためです。 詳細については、[Application Gateway を使用した複数サイトのホスティング](multiple-site-overview.md)に関するページを参照してください。
 
 #### <a name="order-of-processing-listeners"></a>リスナーを処理する順序
 
@@ -279,12 +287,16 @@ HTTP から HTTPS へのリダイレクトの詳細については、以下を�
 - [PowerShell を使用して外部サイトにトラフィックをリダイレクトする](redirect-external-site-powershell.md)
 - [CLI を使用して外部サイトにトラフィックをリダイレクトする](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>HTTP ヘッダー設定を書き換える
+### <a name="rewrite-http-headers-and-url"></a>HTTP ヘッダーと URL を書き換える
 
-この設定で、要求パケットと応答パケットがクライアントとバックエンド プール間を移動する間に、HTTP 要求および応答ヘッダーが追加、削除、または更新されます。 詳細については、次を参照してください。
+書き換え規則を使用すると、要求および応答パケットがアプリケーション ゲートウェイを通じてクライアントとバックエンド プールの間を移動する際に、HTTP(S) 要求と応答ヘッダーや URL パスとクエリ文字列パラメーターを追加、削除、または更新できます。
 
- - [HTTP ヘッダーの書き換えの概要](rewrite-http-headers.md)
+ヘッダーおよび URL パラメーターは、静的な値に設定するか、その他のヘッダーやサーバー変数に設定できます。 クライアント IP アドレスを抽出する、バックエンドに関する機密情報を削除する、セキュリティを追加するなど、重要なユース ケースで役立ちます。
+詳細については、次を参照してください。
+
+ - [HTTP ヘッダーと URL の書き換えの概要](rewrite-http-headers-url.md)
  - [HTTP ヘッダーの書き換えの構成](rewrite-http-headers-portal.md)
+ - [URL の書き換えの構成](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -357,7 +369,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 > [!NOTE]
 > 対応する HTTP 設定が明示的にリスナーに関連付けられていない限り、カスタム プローブはバックエンド プールの正常性を監視しません。
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>バックエンド アドレスからホスト名を選択する
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>バックエンド アドレスからホスト名を選択する
 
 この機能によって、要求の *host* ヘッダーが、バックエンド プールのホスト名に動的に設定されます。 これには IP アドレスまたは FQDN が使用されます。
 

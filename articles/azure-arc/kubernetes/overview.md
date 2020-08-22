@@ -9,12 +9,12 @@ ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050056"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -24,9 +24,8 @@ Kubernetes クラスターを Azure に接続するには、クラスター管�
 
 Azure Arc 対応 Kubernetes では、転送中のデータをセキュリティで保護する業界標準の SSL がサポートされます。 また、保存中は Azure Cosmos DB データベースに暗号化された状態で格納されるので、データの機密性が確保されます。
  
- > [!NOTE]
-> Azure Arc 対応 Kubernetes はプレビュー段階にあります。 運用環境のワークロード用にはお勧めしません。 
-
+> [!NOTE]
+> Azure Arc 対応 Kubernetes はプレビュー段階です。 運用環境のワークロード用にはお勧めしません。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ 
 
@@ -40,7 +39,6 @@ Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされ�
 
 * Kubernetes 用の Azure Policy を使用してポリシーを適用する。 
 
- 
 ## <a name="supported-regions"></a>サポートされているリージョン 
 
 Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポートされています。 

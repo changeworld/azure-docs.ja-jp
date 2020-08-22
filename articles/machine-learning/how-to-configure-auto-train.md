@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 025d3b1e0ce2f46cc689d74fe659facf026dc215
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202593"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852499"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -212,26 +212,26 @@ AutoML がクロス検証を適用して、[モデルのオーバーフィット
 時系列 `forecasting` タスクでは、構成オブジェクトに追加のパラメーターが必要です。
 
 1. `time_column_name`:有効な時系列を含むトレーニング データ内の列の名前を定義する必須のパラメーターです。
-1. `max_horizon`:トレーニング データの周期性に基づいて予測する時間の長さを定義します。 たとえば、1 日の時間グレインのトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
-1. `grain_column_names`:トレーニング データ内の個々の時系列データを含む列の名前を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列をグレインの列として定義します。 グレインやグループごとに個別の時系列と予測が作成されます。 
+1. `forecast_horizon`:予測する今後の期間の数を定義します。 整数の horizon は、時系列頻度の単位です。 たとえば、頻度が毎日のトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
+1. `time_series_id_column_names`:タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別する列を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列を時系列識別子として定義します。 グループごとに個別の予測が作成されます。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。
 
 以下で使用されている設定の例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)のページを参照してください。
 
 ```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
+# Setting Store and Brand as time series identifiers for training.
+time_series_id_column_names = ['Store', 'Brand']
+nseries = data.groupby(time_series_id_column_names).ngroups
 
-# View the number of time series data with defined grains
+# View the number of time series data with defined time series identifiers
 print('Data contains {0} individual time-series.'.format(nseries))
 ```
 
 ```python
 time_series_settings = {
     'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
+    'time_series_id_column_names': time_series_id_column_names,
     'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
+    'forecast_horizon': n_test_periods
 }
 
 automl_config = AutoMLConfig(task = 'forecasting',
@@ -342,7 +342,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 ### <a name="explore-model-metrics"></a>モデル メトリックを探索する
 
-トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-track-experiments.md#view-run-details)に関するセクションをご覧ください。
+トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)に関するセクションをご覧ください。
 
 Web サービスにデプロイするためのモデルをダウンロードまたは登録する方法の詳細については、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: BLOB のホット、クール、アーカイブ アクセス層 - Azure Storage
-description: Azure Storage アカウントのホット、クール、アーカイブ アクセス層。
+description: Azure Blob Storage のホット、クール、およびアーカイブ アクセス層について説明します。 階層制御がサポートされるストレージ アカウントを確認します。 ブロック BLOB ストレージ オプションを比較します。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919918"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849728"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -248,7 +248,7 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 
 ホット アクセス層内の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントの BLOB と同じになります。 クール アクセス層内の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントの BLOB と類似しています (ミリ秒)。 アーカイブ アクセス層の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントのいずれにおいても数時間に及びます。
 
-クール アクセス層内の BLOB は、ホット アクセス層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。 詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)」を参照してください。
+クール アクセス層内の BLOB は、ホット アクセス層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。 詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_5/)」を参照してください。
 
 **ホット、クール、アーカイブの各層間で操作は同じですか。**
 
