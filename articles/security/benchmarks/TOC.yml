@@ -89,6 +89,8 @@
       href: ../../data-lake-analytics/security-baseline.md
     - name: DDOS Protection のセキュリティ ベースライン
       href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Event Grid のセキュリティ ベースライン
+      href: ../../event-grid/security-baseline.md
     - name: Event Hubs のセキュリティ ベースライン
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute のセキュリティ ベースライン
