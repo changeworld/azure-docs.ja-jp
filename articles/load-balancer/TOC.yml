@@ -134,8 +134,10 @@
           href: load-balancer-troubleshoot.md
         - name: 一般的なデプロイ エラーのトラブルシューティング
           href: load-balancer-common-deployment-errors.md
-        - name: 送信接続に関する一般的な問題の解決
+        - name: 送信接続に関する一般的な問題のトラブルシューティング
           href: troubleshoot-outbound-connection.md
+        - name: リソース正常性と受信の可用性に関する問題のトラブルシューティング
+          href: troubleshoot-rhc.md
 - name: リファレンス
   items:
     - name: コード サンプル

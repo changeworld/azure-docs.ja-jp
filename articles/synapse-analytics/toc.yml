@@ -204,6 +204,8 @@
               href: ./spark/apache-spark-concepts.md
             - name: Delta Lake とは
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Delta Lake 機能の概要
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark のパフォーマンス
               href: ./spark/apache-spark-performance.md
             - name: Apache Spark の自動スケール動作
@@ -234,7 +236,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: アーキテクチャ
+            - name: Architecture
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md
@@ -454,6 +456,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: ストレージ内のデータのクエリ
