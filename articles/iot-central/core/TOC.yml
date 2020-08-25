@@ -61,7 +61,7 @@
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
-    - name: アーキテクチャ
+    - name: Architecture
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
@@ -163,6 +163,10 @@
               href: howto-manage-preferences.md
             - name: ライブ チャットの切り替え
               href: howto-show-hide-chat.md
+    - name: トラブルシューティング
+      items: null
+      '-name': Device connections
+      href: troubleshoot-connection.md
 - name: リファレンス
   items:
     - name: Azure CLI
