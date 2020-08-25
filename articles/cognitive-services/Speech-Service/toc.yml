@@ -3,10 +3,8 @@
 - name: 概要
   expanded: true
   items:
-    - name: 音声サービスとは
+    - name: Speech Service の概要
       href: overview.md
-    - name: Speech Service を無料で試す
-      href: get-started.md
     - name: 言語と音声のサポート
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md
