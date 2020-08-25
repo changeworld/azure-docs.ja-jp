@@ -2,17 +2,17 @@
 title: クライアント アプリをコーディングする
 titleSuffix: Azure Digital Twins
 description: .NET (C#) SDK を使用してクライアント アプリの最小限のコードを記述するチュートリアル。
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d063418bb8e78bf306dda8fc558bb0e3005dbd0a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584898"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723471"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure Digital Twins API を使用したコーディング
 

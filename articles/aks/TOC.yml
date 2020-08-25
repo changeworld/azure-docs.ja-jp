@@ -366,6 +366,8 @@
           href: ssh.md
         - name: Linux のパフォーマンス ツール
           href: troubleshoot-linux.md
+        - name: Resource Health のイベントを確認する (プレビュー)
+          href: aks-resource-health.md
 - name: リファレンス
   items:
     - name: Azure CLI

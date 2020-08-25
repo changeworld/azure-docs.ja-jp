@@ -262,6 +262,8 @@
           href: howto-read-replicas-powershell.md
     - name: トラブルシューティング
       items:
+        - name: 一般的なエラーのトラブルシューティング
+          href: howto-troubleshoot-common-errors.md
         - name: 接続エラーのトラブルシューティング
           href: howto-troubleshoot-common-connection-issues.md
         - name: クエリ パフォーマンスのトラブルシューティング
