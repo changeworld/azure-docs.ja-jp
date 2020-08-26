@@ -3,15 +3,16 @@ title: Azure Reserved VM Instances の割引を理解する
 description: Azure Reserved VM Instance の割引が、実行中の仮想マシンにどのように適用されるのかを説明します。
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192217"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686447"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure の予約割引が仮想マシンに適用されるしくみ
 
@@ -93,7 +94,7 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 
 使用量データで *ConsumedService* の値を確認して、その使用量が予約割引の対象であるかどうかを判断してください。
 
-インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)」を参照してください。
 
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ

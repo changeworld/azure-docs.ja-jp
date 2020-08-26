@@ -3,15 +3,16 @@ title: 追加 Azure サブスクリプションの作成
 description: Azure portal で新しい Azure サブスクリプションを作成する方法を説明します。 課金アカウントのフォームに関する情報を参照して、使用可能なその他のリソースを確認してください。
 author: amberbhargava
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: df303801daba0509177e48565b3ddbe7674013e8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460968"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689968"
 ---
 # <a name="create-an-additional-azure-subscription"></a>追加 Azure サブスクリプションの作成
 
