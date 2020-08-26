@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: メール通知の設定
       href: security-center-provide-security-contact-details.md
+    - name: ARM テンプレートを使用してアラートへの自動応答を作成する
+      href: quickstart-automation-alert.md
 - name: チュートリアル
   items:
     - name: 計画と運用のガイド
@@ -151,6 +153,8 @@
           href: workflow-automation.md
         - name: レコメンデーションのエクスポート
           href: continuous-export.md
+    - name: Asset Inventory によるリソースの管理
+      href: asset-inventory.md
     - name: 他のツールおよびサービスとの統合
       items:
         - name: Windows Admin Center との統合

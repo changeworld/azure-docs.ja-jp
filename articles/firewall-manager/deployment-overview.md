@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372367"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055039"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager のデプロイ概要
 
@@ -65,6 +65,8 @@ Azure Firewall Manager をデプロイする方法は複数ありますが、次
 > - 1 つのリージョンで仮想 WAN ごとに複数のハブを使用することはできません。 ただし、リージョンに複数の仮想 WAN を追加して、これを実現することができます。
 > - vWAN のハブの IP 空間を重複させることはできません。
 > - ハブ VNet 接続は、ハブと同じリージョンにある必要があります。
+>
+> その他の既知の問題については、「[Azure Firewall Manager とは](overview.md#known-issues)」を参照してください。
 
 ## <a name="convert-virtual-networks"></a>仮想ネットワークの変換
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131737"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827341"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>エンド ツー エンドのソリューションを構築する
 
@@ -95,6 +95,20 @@ Query
 
 このセクションでは、事前に作成された関数アプリを発行し、Azure Active Directory (Azure AD) ID を割り当てることで、関数アプリから Azure Digital Twins に確実にアクセスできるようにします。 これらの手順が完了すると、このチュートリアルで以降、関数アプリに含まれている関数を使用できるようになります。 
 
+_**AdtE2ESample**_ プロジェクトが開かれた状態の Visual Studio ウィンドウに戻ります。関数アプリは、_**SampleFunctionsApp**_ プロジェクト ファイルにあります。 *[ソリューション エクスプローラー]* ペインに表示されています。
+
+### <a name="update-dependencies"></a>依存関係を更新する
+
+アプリを発行する前に、依存関係が最新であることを確認するようにお勧めします。含まれているすべてのパッケージが最新バージョンであることを確認してください。
+
+*[ソリューション エクスプローラー]* ペインで、 *[SampleFunctionsApp] > [依存関係]* の順に展開します。 *[パッケージ]* を右クリックし、 *[NuGet パッケージの管理]* を選択します。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp プロジェクトの [NuGet パッケージの管理]" border="false":::
+
+これで、NuGet パッケージ マネージャーが開かれます。 *[更新]* タブを選択し、更新するパッケージがある場合は、 *[すべてのパッケージを選択]* ボックスをオンにします。 次に、 *[更新]* をクリックします。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: NuGet パッケージ マネージャーですべてのパッケージを更新するように選択する":::
+
 ### <a name="publish-the-app"></a>アプリの発行
 
 _**AdtE2ESample**_ プロジェクトが開いた状態の Visual Studio ウィンドウに戻り、 *[ソリューション エクスプローラー]* ペインから _**[SampleFunctionsApp]**_ プロジェクト ファイルを右クリックして **[発行]** をクリックします。
@@ -134,19 +148,21 @@ Visual Studio のメイン ウィンドウに再度 *[発行]* ペインが表�
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Visual Studio で Azure 関数を発行する: 発行":::
 
 > [!NOTE]
-> 次のようなポップアップが表示されることがあります。:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio で Azure 関数を発行する: 資格情報" border="false":::
-> その場合は、 **[Attempt to retrieve credentials from Azure]\(Azure から資格情報の取得を試みる\)** を選択して **[保存]** を選択してください。
+> 次のようなポップアップが表示される場合は、以下のようにします。:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio で Azure 関数を発行する: 資格情報" border="false":::
+> **[Attempt to retrieve credentials from Azure]\(Azure から資格情報の取得を試みる\)** 、 **[保存]** の順に選択します。
 >
-> 「*Functions ランタイムのバージョンが Azure で実行されているバージョンと一致しない*」という警告が表示された場合は、プロンプトに従って最新の Azure Functions ランタイム バージョンにアップグレードします。 この問題は、このチュートリアルの冒頭にある「*前提条件*」で推奨されているバージョンよりも古いバージョンの Visual Studio を使用している場合に発生する可能性があります。
+> "*Azure で関数のバージョンをアップグレード*" するようにという警告や、"*関数ランタイムのバージョンが Azure で実行されているバージョンと一致しない*" という警告が表示される場合は、次のようにしてください。
+>
+> 画面の指示に従って、最新の Azure Functions ランタイム バージョンにアップグレードします。 この問題は、このチュートリアルの冒頭にある「*前提条件*」で推奨されているバージョンよりも古いバージョンの Visual Studio を使用している場合に発生する可能性があります。
 
 ### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
 
-次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*所有者*" アクセス許可を付与します。
+次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*Azure Digital Twins 所有者 (プレビュー)* " ロールを付与します。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。
 
-Azure Cloud Shell で次のコマンドを使用して、関数アプリがデジタル ツイン インスタンスを参照する目的で使用するアプリケーション設定を構成します。
+Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azure Digital Twins インスタンスを参照する目的で使用するアプリケーション設定を構成します。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 次のコマンドを使用して、システムによって管理される ID を作成します。 出力の *principalId* フィールドを書き留めてください。
@@ -155,7 +171,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-その *principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*所有者*" ロールに割り当てます。
+出力からの *principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*Azure Digital Twins 所有者 (プレビュー)* " ロールに割り当てます。
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -339,7 +355,7 @@ az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-出力から `provisioningState` フィールドを探し、その値が "Succeeded" になっていることを確認します。
+出力から `provisioningState` フィールドを探し、その値が "Succeeded" になっていることを確認します。 また、エンドポイントがまだ作成されているという意味で、"Provisioning" と表示される場合もあります。 この場合は、数秒待ってからコマンドを再実行して、正常に完了したことを確認します。
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="エンドポイントの provisioningState が Succeeded であることを示すクエリの結果":::
 
@@ -354,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 このコマンドからは、作成したルートについての情報が出力されます。
+
+>[!NOTE]
+>エンドポイント (前の手順のもの) は、それらを使用するイベント ルートをセットアップする前に、プロビジョニングを完了している必要があります。 エンドポイントの準備ができていないためにルートの作成が失敗する場合は、数分待ってからやり直してください。
 
 #### <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
 

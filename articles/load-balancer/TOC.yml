@@ -4,11 +4,7 @@
   items:
     - name: Azure Load Balancer の概要
       href: load-balancer-overview.md
-    - name: 新機能
-      href: whats-new.md
-    - name: よく寄せられる質問
-      href: load-balancer-faqs.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: パブリック ロード バランサ―の作成 - ポータル
       href: quickstart-load-balancer-standard-public-portal.md
@@ -47,6 +43,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 新機能
+      href: whats-new.md
     - name: コンポーネント
       href: components.md
     - name: 概念
@@ -130,14 +128,16 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: 送信専用のロード バランサーの構成
       href: egress-only.md
-- name: トラブルシューティング
-  items:
-    - name: Azure Load Balancer のトラブルシューティング
-      href: load-balancer-troubleshoot.md
-    - name: 一般的なデプロイ エラーのトラブルシューティング
-      href: load-balancer-common-deployment-errors.md
-    - name: 送信接続に関する一般的な問題の解決
-      href: troubleshoot-outbound-connection.md
+    - name: トラブルシューティング
+      items:
+        - name: Azure Load Balancer のトラブルシューティング
+          href: load-balancer-troubleshoot.md
+        - name: 一般的なデプロイ エラーのトラブルシューティング
+          href: load-balancer-common-deployment-errors.md
+        - name: 送信接続に関する一般的な問題のトラブルシューティング
+          href: troubleshoot-outbound-connection.md
+        - name: リソース正常性と受信の可用性に関する問題のトラブルシューティング
+          href: troubleshoot-rhc.md
 - name: リファレンス
   items:
     - name: コード サンプル
@@ -175,3 +175,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 製品の更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
+    - name: よく寄せられる質問
+      href: load-balancer-faqs.md

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519699"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042326"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項のエクスポート
 
@@ -31,12 +31,14 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 ## <a name="availability"></a>可用性
 
-- リリース状態: **一般提供**
-- 必要なロールとアクセス許可:
-    - エクスポート構成を含むサブスクリプション上での**閲覧者**
-    - リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)
-    - ターゲット リソースに対する書き込みアクセス許可も必要になります
-- クラウド:   ✔ 商用クラウド   ✔ US Gov   ✘ China Gov、その他の Gov
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般公開|
+|価格:|Free レベル|
+|必要なロールとアクセス許可:|エクスポート構成を含むサブスクリプション上での**閲覧者**<br>リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)<br>ターゲット リソースに対する書き込みアクセス許可も必要になります|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>連続エクスポートを設定する

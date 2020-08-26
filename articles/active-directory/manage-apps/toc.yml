@@ -91,16 +91,6 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: リモート アクセス ソリューションの比較
           href: application-proxy-migration.md
-    - name: アプリを市場に導入する
-      items:
-        - name: マルチテナント アプリケーションの SSO を有効にする
-          href: isv-sso-content.md
-        - name: マルチテナント アプリケーション用に Azure テナントを作成する
-          href: isv-tenant-multi-tenant-app.md
-        - name: マルチテナント フェデレーションを選択する
-          href: isv-choose-multi-tenant-federation.md
-        - name: マルチテナント アプリケーション用のドキュメントを作成する
-          href: isv-create-sso-documentation.md
 - name: 操作方法ガイド
   expanded: false
   items:

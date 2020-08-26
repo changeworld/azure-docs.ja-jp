@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: d0872657bbca169ab1671b1f44c36c967e71fa63
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-dotnet, mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 37e9ffc96c6bd072a5d0406f059458bfc0a06199
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495486"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207822"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>Azure CLI を使用して Docker Hub から Docker コンテナーに ASP.NET Core アプリを作成する
 

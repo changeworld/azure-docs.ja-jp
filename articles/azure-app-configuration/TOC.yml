@@ -62,8 +62,14 @@
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: CI/CD パイプラインとの統合
-      href: integrate-ci-cd-pipeline.md
+    - name: CI/CD パイプラインの統合
+      items:
+        - name: Azure Pipelines を使用したプッシュ
+          href: push-kv-devops-pipeline.md
+        - name: GitHub Actions を使用したプッシュ
+          href: concept-github-action.md
+        - name: エクスポートした構成を使用したプロジェクトのビルド
+          href: integrate-ci-cd-pipeline.md
     - name: Helm を使用して Kubernetes デプロイと統合する
       href: integrate-kubernetes-deployment-helm.md
 - name: サンプル
@@ -81,8 +87,6 @@
       href: concept-point-time-snapshot.md
     - name: 機能の管理
       href: concept-feature-management.md
-    - name: GitHub Actions を使用した同期
-      href: concept-github-action.md
     - name: イベント処理
       href: concept-app-configuration-event.md
     - name: セキュリティ
@@ -153,7 +157,7 @@
       href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
     - name: ビデオ
       items:
-        - name: 作業の開始
+        - name: App Configuration の概要
           href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
         - name: 機能の管理
           href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
@@ -161,5 +165,7 @@
           href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
         - name: Cloud Native Show の Azure App Configuration
           href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
+        - name: Azure Friday での機能フィルター処理
+          url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
     - name: 製品フィードバックの提供
       href: 'https://github.com/Azure/AppConfiguration/issues'

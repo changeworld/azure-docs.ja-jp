@@ -28,6 +28,12 @@
               href: connect-nodejs.md
             - name: Java
               href: connect-java.md
+            - name: Java と Spring Data JDBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Java と Spring Data JPA
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Java と Spring Data R2DBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
             - name: Ruby
               href: connect-ruby.md
             - name: PHP
@@ -38,7 +44,7 @@
               href: connect-go.md
     - name: Hyperscale (Citus)
       items:
-        - name: DB の作成 - ポータル
+        - name: サーバー グループの作成 - ポータル
           href: quickstart-create-hyperscale-portal.md
 - name: チュートリアル
   items:
@@ -153,20 +159,20 @@
               href: concepts-aks.md
             - name: Java
               items:
+                - name: Java と JDBC の使用
+                  href: connect-java.md
                 - name: Spring Data JDBC の構成
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data JPA の構成
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                - name: Spring Data R2DBC の構成
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
         - name: レプリケーション
           items:
             - name: 読み取りレプリカ
               href: concepts-read-replicas.md
             - name: 論理デコード
               href: concepts-logical.md
-        - name: リージョン間の移動
-          items:
-            - name: Azure portal
-              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: 分散データ
@@ -339,6 +345,10 @@
               href: howto-read-replicas-cli.md
             - name: 読み取りレプリカの管理 (Azure PowerShell)
               href: howto-read-replicas-powershell.md
+        - name: リージョン間の移動
+          items:
+            - name: Azure portal
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: ユーザーの作成

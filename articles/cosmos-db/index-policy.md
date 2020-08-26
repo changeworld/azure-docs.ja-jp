@@ -4,18 +4,18 @@ description: Azure Cosmos DB でのインデックス作成の自動化とパフ
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 08/11/2020
 ms.author: tisande
-ms.openlocfilehash: e3981e828e7ffe401be3b72f68185c272ab11645
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760823"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077596"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
-Azure Cosmos DB では、すべてのコンテナーに、コンテナーの項目のインデックスを作成する方法を指示するインデックス作成ポリシーがあります。 新しく作成したコンテナーの既定のインデックス作成ポリシーでは、すべての項目のプロパティに対してインデックスが作成され、文字列または数値には範囲インデックスが、Point 型の GeoJSON オブジェクトには空間インデックスが適用されます。 これにより、インデックス作成とインデックス管理を事前に考慮することなく、高いクエリ パフォーマンスを得ることができます。
+Azure Cosmos DB では、すべてのコンテナーに、コンテナーの項目のインデックスを作成する方法を指示するインデックス作成ポリシーがあります。 新しく作成したコンテナーの既定のインデックス作成ポリシーでは、あらゆる項目のあらゆるプロパティのインデックスが作成され、任意の文字列または数値に範囲インデックスが適用されます。 これにより、インデックス作成とインデックス管理を事前に考慮することなく、高いクエリ パフォーマンスを得ることができます。
 
 状況によっては、この自動動作を、自分の要件にさらに適合するようにオーバーライドできます。 "*インデックス作成モード*" を設定し、"*プロパティ パス*" を含めるか除外することで、コンテナーのインデックス作成ポリシーをカスタマイズできます。
 

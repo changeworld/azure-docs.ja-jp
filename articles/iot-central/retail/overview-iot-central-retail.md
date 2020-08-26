@@ -8,23 +8,20 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 9427b007bc047e2f01db2dad02e06bf0ab0f5dea
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001381"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032293"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した小売ソリューションの構築
-
-
 
 IoT Central は、エンタープライズ レベルの IoT ソリューションの開発、管理、および保守に関連する負担とコストを削減する IoT アプリ プラットフォームです。 Azure IoT Central を使用して構築することを選択すると、複雑で絶えず進化する IoT インフラストラクチャをただ維持し、更新するだけでなく、IoT データによってビジネスを変革することに時間、予算、エネルギーを集中させる機会が得られます。
 
 この記事では、小売業向けに特化したいくつかの IoT Central アプリケーション テンプレートについて説明します。 ソリューション ビルダーは、これらのテンプレートを活用することで、サプライ チェーンの最適化、顧客の店舗内エクスペリエンスの向上、より効率的な在庫追跡を実現する IoT ソリューションを構築できます。
 
-> [!div class="mx-imgBorder"]
-> ![Azure IoT Retail の概要](./media/overview-iot-central-retail/retail-app-templates.png)
+:::image type="content" source="media/overview-iot-central-retail/retail-app-templates.png" alt-text="Azure IoT Retail の概要":::
 
 以下のセクションでは、これらのアプリケーション テンプレートの機能について説明します。
 
@@ -44,17 +41,15 @@ IoT センサーを使用すると、気温、湿度、傾き、衝撃、光、�
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。
 
-> [!div class="mx-imgBorder"]
-> ![コネクテッド ロジスティクスのダッシュボード](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="コネクテッド ロジスティクスのダッシュボード":::
 
-> [!div class="mx-imgBorder"]
-> ![コネクテッド ロジスティクスのダッシュボード](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="コネクテッド ロジスティクスのダッシュボード":::
 
 詳細については、[コネクテッド ロジスティクス アプリケーション テンプレートのデプロイと説明](./tutorial-iot-central-connected-logistics.md)に関するページを参照してください。
 
 ## <a name="digital-distribution-center"></a>デジタル流通センター
 
-製造元と小売業者が世界各地で存在感を確立するにつれて、それぞれのサプライ チェーンは事業を拡大し、ますます複雑になります。 消費者は、多彩な商品が提供されることや、それらの商品が購入後 1 日か 2 日で手元に届くことを期待するようになっています。 流通センターは、このような傾向に順応すると同時に、抱えている非効率性の問題を克服することを求められています。 
+製造元と小売業者が世界各地で存在感を確立するにつれて、それぞれのサプライ チェーンは事業を拡大し、ますます複雑になります。 消費者は、多彩な商品が提供されることや、それらの商品が購入後 1 日か 2 日で手元に届くことを期待するようになっています。 流通センターは、このような傾向に順応すると同時に、抱えている非効率性の問題を克服することを求められています。
 
 現在、手作業に頼っている場合は、流通センターのコストの 55% から 65% を選別と梱包が占めることになります。 さらに、手動による選別と梱包は、通常、自動化されたシステムよりも時間がかかるうえ、スタッフ配置のニーズの急速な変動により、出荷量に対する対応はさらに困難になります。 この季節変動により、スタッフの離職率が高まり、コストのかかるエラーも発生しやすくなります。
 
@@ -69,8 +64,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。 
 
-> [!div class="mx-imgBorder"]
-> ![デジタル流通センターのダッシュボード](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="デジタル流通センターのダッシュボード":::
 
 詳細については、[デジタル流通センター アプリケーション テンプレートのデプロイと説明](./tutorial-iot-central-digital-distribution-center.md)に関するページを参照してください。
 
@@ -82,8 +76,8 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 アプリケーション テンプレートは次の目的で使用できます。
 
-* さまざまな IoT センサーを IoT Central アプリケーション インスタンスに接続する。
-* 環境内のセンサー ネットワークとあらゆるゲートウェイ デバイスの正常性を監視および管理する。
+* さまざまな種類の IoT センサーを IoT Central アプリケーション インスタンスに接続する。
+* 環境内のセンサー ネットワークの正常性とあらゆるゲートウェイ デバイスを監視および管理する。
 * 店舗内の環境条件に関するカスタム ルールを作成し、ストア マネージャー向けのアラートをトリガーする。
 * 店舗内の環境条件を、小売店チームがカスタマー エクスペリエンスの向上に使用できる分析情報に変換する。
 * 集約された分析情報を既存または新規のビジネス アプリケーションにエクスポートして、販売スタッフに有益かつタイムリーな情報を提供する。
@@ -92,8 +86,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。 
 
-> [!div class="mx-imgBorder"]
-> ![ストア内分析条件監視](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="ストア内分析条件監視":::
 
 詳細については、[Azure IoT Central でのストア内分析アプリケーションの作成](./tutorial-in-store-analytics-create-app.md)に関するページを参照してください。
 
@@ -105,8 +98,8 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 アプリケーション テンプレートは次の目的で使用できます。
 
-* さまざまな IoT センサーを IoT Central アプリケーション インスタンスに接続する。
-* 環境内のセンサー ネットワークとあらゆるゲートウェイ デバイスの正常性を監視および管理する。
+* さまざまな種類の IoT センサーを IoT Central アプリケーション インスタンスに接続する。
+* 環境内のセンサー ネットワークの正常性とあらゆるゲートウェイ デバイスを監視および管理する。
 * 店舗内の清算条件に関するカスタム ルールを作成し、販売スタッフ向けのアラートをトリガーする。
 * 店舗内の清算条件を、小売店チームがカスタマー エクスペリエンスの向上に使用できる分析情報に変換する。
 * 集約された分析情報を既存または新規のビジネス アプリケーションにエクスポートして、販売スタッフに有益かつタイムリーな情報を提供する。
@@ -115,8 +108,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。 
 
-> [!div class="mx-imgBorder"]
-> ![ストア内分析レジ](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="ストア内分析レジ":::
 
 詳細については、[Azure IoT Central でのストア内分析アプリケーションの作成](./tutorial-in-store-analytics-create-app.md)に関するページを参照してください。
 
@@ -136,8 +128,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。
 
-> [!div class="mx-imgBorder"]
-> ![スマート インベントリの管理のダッシュボード](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="スマート インベントリの管理のダッシュボード":::
 
 詳細については、[スマート インベントリの管理アプリケーション テンプレートのデプロイと説明](./tutorial-iot-central-smart-inventory-management.md)に関するページを参照してください。
 
@@ -157,10 +148,32 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。
 
-> [!div class="mx-imgBorder"]
-> ![マイクロフルフィルメント センター](./media/overview-iot-central-retail/MFC-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="マイクロフルフィルメント センター":::
 
 詳細については、[マイクロフルフィルメント センター アプリケーション テンプレートのデプロイと説明](./tutorial-micro-fulfillment-center.md)に関するページを参照してください。
+
+## <a name="video-analytics---object-and-motion-detection"></a>ビデオ分析 - オブジェクトとモーションの検出
+
+"*IoT Central の Video analytics - object and motion detection (ビデオ分析 - 物体とモーションの検出)* " アプリケーション テンプレートを使用すると、インテリジェント エッジ カメラを使用して物体と動きを検出するソリューションのデプロイ、管理、監視を簡単に体験できます。
+
+ビデオ分析アプリケーションには、IoT Edge で実行される[ライブ ビデオ分析 (LVA)](#live-video-analytics) モジュールが使用されます。 LVA モジュールは、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームとなります。 このプラットフォームを使用すると、物体検出とモーション検出によって、ビデオ分析アプリケーションなどの IoT ソリューションを拡張することができます。
+
+アプリケーション テンプレートには、次の 4 つのアプリケーション ダッシュボードが含まれています。
+
+* **Setup (セットアップ)** : アプリケーションの設計に関する情報を提供します。カメラを追加したり削除したりすることができます。
+* **Manage (管理)** : カメラを管理することができます。 たとえば、カメラを構成したり、状態情報を確認したり、カメラを起動したりすることができます。
+* **Real Cameras (実際のカメラ)** : 検出数やカメラ イベントなど、実際のカメラからの情報を確認できます。
+* **Monitor (監視)** : すべてのカメラからの詳細な情報を確認できます。
+
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="ビデオ分析 - オブジェクトとモーションの検出":::
+
+このソリューションのアーキテクチャについて詳しくは、[ビデオ分析アプリケーションのアーキテクチャ](architecture-video-analytics.md)に関するページを参照してください。
+
+ソリューションをデプロイする方法については、[Azure IoT Central でビデオ分析アプリケーションを作成する](tutorial-video-analytics-create-app.md)方法に関するチュートリアルを参照してください。
+
+### <a name="live-video-analytics"></a>ライブ ビデオ分析
+
+ライブ ビデオ分析は、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームとなります。 このプラットフォームは、ライブ ビデオをキャプチャ、録画、分析し、その結果 (ビデオやビデオ分析など) を Azure サービスに発行する機能を備えています。 Azure サービスは、クラウドやエッジで実行されている場合があります。 このプラットフォームを使用すると、ビデオ分析で IoT ソリューションを拡張することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

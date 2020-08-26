@@ -1,14 +1,14 @@
 ---
 title: IRS 1075 ブループリント サンプルのコントロール
 description: IRS 1075 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 05/13/2020
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: 0cd69a35cb4ad30a565a2392f7109c74d75de4d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b7208a475d35674cc1abb6932a04681a11f7e89b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659817"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653751"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルのコントロール マッピング
 
@@ -31,7 +31,7 @@ ms.locfileid: "83659817"
 
 ## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) アカウント管理 | ロールベースのスキーム
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールはエラーを起こしやすいため、カスタム RBAC ルールがどこに実装されているかを理解しておくと、実装のニーズや適切性を確認するために役に立ちます。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールはエラーを起こしやすいため、カスタム RBAC ルールがどこに実装されているかを理解しておくと、実装のニーズや適切性を確認するために役に立ちます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - カスタム RBAC 規則の使用監査
@@ -63,7 +63,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) 最小限の特権 | ユーザー特権の確認
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的に確認する必要があるアカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。 これらのアカウント インジケーターを確認すれば、最小限の特権コントロールが実装されているかどうかを確かめることができます。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的に確認する必要があるアカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。 これらのアカウント インジケーターを確認すれば、最小限の特権コントロールが実装されているかどうかを確かめることができます。
 
 - 最大 3 人の所有者をサブスクリプションに対して指定する必要がある
 - 指定されたメンバーのいずれかが Administrators グループに含まれている Windows VM を監査する

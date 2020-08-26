@@ -2,14 +2,14 @@
 title: Azure App Services のパフォーマンスを監視する | Microsoft Docs
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373166"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079707"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -396,6 +396,12 @@ APPINSIGHTS_JAVASCRIPT_ENABLED=true を使用する場合 (この場合、コン
 これは、APPINSIGHTS_JAVASCRIPT_ENABLED アプリケーション設定が true に設定されており、同時に content-encoding が存在することが原因です。 このシナリオはまだサポートされていません。 回避策は、アプリケーション設定から APPINSIGHTS_JAVASCRIPT_ENABLED を削除することです。 残念ながら、これは、クライアント/ブラウザー側の JavaScript インストルメンテーションがまだ必要な場合、Web ペーでは手動の SDK 参照が必要であることを意味します。 JavaScript SDK での手動のインストルメンテーションに関する[手順](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup)に従ってください。
 
 Application Insights エージェント/拡張機能の最新情報については、[リリース ノート](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)のページを参照してください。
+
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Web アプリでデプロイされた既定の Web サイトでは、クライアント側の自動監視はサポートされません
+
+Azure App Services で `ASP.NET` または `.NET Core` ランタイムを使用して Web アプリを作成すると、1 つの静的な HTML ページがスターター Web サイトとしてデプロイされます。 静的な Web ページには、IIS の .NET マネージド Web パーツも読み込まれます。 これにより、サーバー側のコードなし監視をテストすることはできますが、クライアント側の自動監視はサポートされません。
+
+Azure App Services Web アプリで ASP.NET または ASP.NET Core に対するクライアント側のコードなし監視をテストする場合は、[ASP.NET Core Web アプリの作成](../../app-service/quickstart-dotnetcore.md)と [ASP.NET Framework Web アプリの作成](../../app-service/quickstart-dotnet-framework.md)に関する公式のガイドに従って、この記事にある監視を有効にするための手順を使用することをお勧めします。
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP および WordPress はサポートされていない
 

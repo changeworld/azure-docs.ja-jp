@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 95a966799b4cb66b74d998df9c58958b9b89ecdb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374220"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836770"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
-Azure Sentinel では、 [ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して、Azure のユーザー、グループ、およびサービスに割り当てることができる [組み込みロール](../role-based-access-control/built-in-roles.md)が提供されています。
+Azure Sentinel では、 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して、Azure のユーザー、グループ、およびサービスに割り当てることができる [組み込みロール](../role-based-access-control/built-in-roles.md) が提供されています。
 
-RBAC を使用して、セキュリティ運用チーム内でロールを作成して割り当て、Azure Sentinel への適切なアクセス権を付与します。 さまざまなロールを使用して、Azure Sentinel のユーザーが表示および実行できることをきめ細かく制御できます。 RBAC ロールは、Azure Sentinel ワークスペースで直接割り当てるか (下記の注を参照してください)、またはワークスペースが属しているサブスクリプションまたはリソース グループで割り当てることができます (これは、Azure Sentinel が継承するものです)。
+RBAC を使用して、セキュリティ運用チーム内でロールを作成して割り当て、Azure Sentinel への適切なアクセス権を付与します。 さまざまなロールを使用して、Azure Sentinel のユーザーが表示および実行できることをきめ細かく制御できます。 Azure ロールは、Azure Sentinel ワークスペースで直接割り当てるか (下記の注を参照してください)、またはワークスペースが属しているサブスクリプションまたはリソース グループで割り当てることができます (これは、Azure Sentinel が継承するものです)。
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Azure Sentinel で作業するためのロール
 
@@ -64,7 +64,7 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 ### <a name="other-roles-you-might-see-assigned"></a>割り当てられる可能性のあるその他のロール
 
-Azure Sentinel 固有の RBAC ロールの割り当てでは、Azure および Log Analytics の他の RBAC ロールが他の目的でユーザーに割り当てられている可能性があります。 これらのロールでは、Azure Sentinel ワークスペースや他のリソースへのアクセスを含む広範なアクセス許可のセットが付与されていることに注意してください。
+Azure Sentinel 固有の Azure ロールの割り当てでは、Azure および Log Analytics の他の Azure ロールが他の目的でユーザーに割り当てられている可能性があります。 これらのロールでは、Azure Sentinel ワークスペースや他のリソースへのアクセスを含む広範なアクセス許可のセットが付与されていることに注意してください。
 
 - **Azure ロール:** [所有者](../role-based-access-control/built-in-roles.md#owner)、[共同作成者](../role-based-access-control/built-in-roles.md#contributor)、および[閲覧者](../role-based-access-control/built-in-roles.md#reader)です。 Azure ロールによって、Log Analytics ワークスペースや Azure Sentinel リソースなど、すべての Azure リソースへのアクセス権が付与されます。
 

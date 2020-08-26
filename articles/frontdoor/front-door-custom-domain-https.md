@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160087"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808773"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -68,6 +68,9 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 4. [保存] をクリックします。
 
 5. [ドメインの検証](#validate-the-domain)に進みます。
+
+> [!NOTE]
+> AFD マネージドの証明書の場合、DigiCert の 64 文字の制限が適用されます。 制限を超えた場合、検証は失敗します。
 
 
 ### <a name="option-2-use-your-own-certificate"></a>オプション 2:独自の証明書を使用する

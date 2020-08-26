@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
-ms.custom: tracking-python
-ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247066"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876259"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 
@@ -27,6 +27,8 @@ ms.locfileid: "86247066"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
@@ -301,10 +303,8 @@ ms.locfileid: "86247066"
 
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
-提供終了になった SDK を使用した Azure Cosmos DB への要求は、サービスによって拒否されます。
-
 > [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの Python SDK for SQL API は、**2016 年 2 月 29 日**に廃止されました。 また、Python SDK for SQL API の 1.x と 2.x のバージョンはすべて、**2020 年 8 月 30 日**に廃止されます。
+> 2022 年 8 月 31 日以降、Azure Cosmos DB では、Azure Cosmos DB Python SDK for SQL API バージョン 1.x または 2.x に対するバグ修正、新機能の追加、サポートの提供は行われません。 アップグレードしない場合でも、SDK バージョン 1.x および 2.x から送信される要求は、引き続き Azure Cosmos DB サービスによって処理されます。
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |

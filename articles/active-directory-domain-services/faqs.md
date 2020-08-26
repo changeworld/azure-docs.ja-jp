@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734777"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116701"
 ---
-# <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
+# <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 
 このページには、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。
 
@@ -117,7 +117,11 @@ Azure AD UI または PowerShell を使用して Azure AD ディレクトリに�
 はい。 "*AAD DC 管理者*" グループのメンバーには、マネージド ドメインの DNS レコードを変更できる "*DNS 管理者*" 特権が付与されています。 これらのユーザーは、マネージド ドメインに参加している Windows Server を実行しているマシン上で DNS マネージャー コンソールを使用して、DNS を管理できます。 DNS マネージャー コンソールを使用するには、"*リモート サーバー管理ツール*" オプション機能の一部である "*DNS サーバー ツール*" をサーバーにインストールします。 詳細については、「[Azure AD Domain Services マネージド ドメインで DNS を管理する](manage-dns.md)」を参照してください。
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>マネージド ドメインのパスワード有効期間ポリシーとはどのようなものですか。
-Azure AD Domain Services のマネージド ドメインの既定のパスワード有効期間は 90 日間です。 このパスワード有効期間は、Azure AD で構成されているパスワード有効期間と同期されません。 そのため、ユーザーのパスワードが、マネージド ドメインでは期限切れだが、Azure AD ではまだ有効なことがあります。 このような場合、ユーザーは Azure AD のパスワードを変更する必要があり、この新しいパスワードがマネージド ドメインに同期されます。 また、ユーザー アカウントの "*password-does-not-expire*" 属性と "*user-must-change-password-at-next-logon*" 属性は、マネージド ドメインに同期されません。
+Azure AD Domain Services のマネージド ドメインの既定のパスワード有効期間は 90 日間です。 このパスワード有効期間は、Azure AD で構成されているパスワード有効期間と同期されません。 そのため、ユーザーのパスワードが、マネージド ドメインでは期限切れだが、Azure AD ではまだ有効なことがあります。 このような場合、ユーザーは Azure AD のパスワードを変更する必要があり、この新しいパスワードがマネージド ドメインに同期されます。 マネージド ドメインの既定のパスワードの有効期間を変更する場合、[カスタム パスワード ポリシーを作成して構成](password-policy.md)することができます。
+
+さらに、*DisablePasswordExpiration* の Azure AD パスワード ポリシーはマネージド ドメインに同期されます。 *DisablePasswordExpiration* が Azure AD のユーザーに適用されると、マネージド ドメインの同期されたユーザーの *UserAccountControl* 値に *DONT_EXPIRE_PASSWORD* が適用されます。
+
+ユーザーが Azure AD でパスワードをリセットすると、*forceChangePasswordNextSignIn=True* 属性が適用されます。 マネージド ドメインでは、この属性が Azure AD から同期されます。 マネージド ドメインで、Azure AD から同期されたユーザーに *forceChangePasswordNextSignIn* が設定されていることが検出されると、マネージド ドメインの *pwdLastSet* 属性は *0* に設定され、これによって、現在設定されているパスワードが無効になります。
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services は、AD アカウントに、 ロックアウトから保護する機能を提供しますか?
 はい。 管理対象ドメインに、2 分以内に無効なパスワードの試行が5回行われると、ユーザーのアカウントは、30 分ロックアウトされます。 30 分後、ユーザー アカウントは、自動的にロック解除されます。 マネージド ドメインでの無効なパスワードの試行によっては、Azure AD のユーザー アカウントはロックアウトされません。 ユーザー アカウントは、Azure AD Domain Services の管理対象ドメイン内でだけ、ロックアウトされます。 詳細については、「[マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー](password-policy.md)」を参照してください。

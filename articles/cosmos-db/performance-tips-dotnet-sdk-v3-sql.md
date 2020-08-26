@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850248"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987258"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -107,7 +107,7 @@ TCP は直接モードでのみサポートされるため、ゲートウェイ 
 
 アクセス頻度が低く、ゲートウェイ モード アクセスと比べて接続数が多い場合は、次のことが可能です。
 
-* [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン >= 4.6.1 および .net core バージョン >= 2.0 で有効)。このプロパティにより、SDK はさまざまな Azure Cosmos DB の宛先エンドポイントのために一時的なポートの小さなプールを使用できます。
+* [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン >= 4.6.1 および .NET Core バージョン >= 2.0 で有効)。このプロパティにより、SDK は異なる Azure Cosmos DB の宛先エンドポイントに対して一時的なポートの小さなプールを使用できます。
 * [CosmosClientOptions.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) プロパティを構成します。これは 10 分以上である必要があります。 推奨値は 20 分から 24 時間です。
 
 <a id="same-region"></a>

@@ -1,18 +1,18 @@
 ---
-title: RBAC のロールとアクセス許可
-description: Azure のロールベースのアクセス制御 (RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
+title: Azure のロールとアクセス許可
+description: Azure のロールベースのアクセス制御 (Azure RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74893486"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920077"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
-Azure Container Registry サービスは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する [組み込みの Azure ロール](../role-based-access-control/built-in-roles.md) のセットをサポートします。 Azure の[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) を使用して、ユーザー、サービス プリンシパル、またはレジストリと対話する必要のある他の ID に特定のアクセス許可を割り当てます。 
+Azure Container Registry サービスは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する [組み込みの Azure ロール](../role-based-access-control/built-in-roles.md) のセットをサポートします。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) を使用して、レジストリを操作する必要があるユーザー、サービス プリンシパル、またはその他の ID に特定のアクセス許可を割り当てます。 
 
 | ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager) | [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [イメージ データを削除する](#delete-image-data) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -85,7 +85,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、またはその他の Azure ツールを使用した Azure ID への RBAC ロールの割り当てについてさらに理解します。
+* [Azure portal](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、またはその他の Azure ツールを使用した Azure ID への Azure ロールの割り当てについてさらに理解します。
 
 * Azure Container Registry の[認証オプション](container-registry-authentication.md)について理解します。
 

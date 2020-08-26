@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d4938d2e4649d62ab656b6854e8176fd82b59a8f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475653"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587737"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "87475653"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ### <a name="verify-your-permissions"></a>アクセス許可を確認する
 
@@ -49,9 +49,9 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 
    Red Hat アカウントにログインするか、お使いのビジネス メール アドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
 
-2. **[Download pull secret]\(プル シークレットのダウンロード\) を選択します。**
+2. クラスターを初めて作成する場合は、[**OpenShift 製品ページ**](https://developers.redhat.com/products/codeready-containers)を参照してください。 登録後に、[**Red Hat OpenShift Cluster Manager ページ**](https://cloud.redhat.com/openshift/)に移動し、 **[Download pull secret]\(プル シークレットのダウンロード\)** をクリックすると、ARO クラスターで使用するプル シークレットをダウンロードできます。
 
-保存されている `pull-secret.txt` ファイルは安全な場所に保管してください。このファイルは、クラスターを作成するたびに使用します。
+保存済みの `pull-secret.txt` ファイルは安全な場所に保管してください。 Red Hat または認定パートナーのサンプルやオペレーターを含むクラスターを作成する必要がある場合は、クラスターを作成するたびにこのファイルが使用されます。
 
 `az aro create` コマンドを実行する場合は、`--pull-secret @pull-secret.txt` パラメーターを使用してプル シークレットを参照できます。 `pull-secret.txt` ファイルを格納したディレクトリから `az aro create` を実行します。 それ以外の場合は、`@pull-secret.txt` を `@<path-to-my-pull-secret-file>` で置き換えます。
 

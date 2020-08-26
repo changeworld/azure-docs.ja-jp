@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028245"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119523"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -507,6 +507,8 @@ Mac 環境では、次の手順に従います。
 - 接続の問題が発生した場合は、[トレース ファイルを収集](#trace-files)し、それらを圧縮して、[Azure portal](https://portal.azure.com) からサポート チケットを開いてください。
 
 - "**サービス利用不可**" というメッセージが表示された場合、エミュレーターがネットワーク スタックの初期化に失敗している可能性があります。 Pulse Secure クライアントまたは Juniper Networks クライアントのネットワーク フィルター ドライバーが問題の原因である可能性があるため、これらのクライアントがインストールされているかどうかを確認してください。 通常、サード パーティのネットワーク フィルター ドライバーをアンインストールすると、問題が解決されます。 このほか、/DisableRIO オプションを指定してエミュレーターを起動する方法もあります。このオプションを使うと、エミュレーターのネットワーク通信が通常の Winsock に切り替わります。 
+
+- **"禁止"、"メッセージ": "転送プロトコルまたは暗号で禁止された暗号化を使用して要求が行われています。アカウントの SSL/TLS の許可されている最小プロトコル設定を確認してください..."** の接続の問題が発生した場合、これは OS のグローバルな変更 (Insider Preview ビルド 20170 など) または既定として TLS 1.3 を有効にするブラウザーの設定が原因である可能性があります。 SDK を使用して Cosmos エミュレーターに対して要求を実行すると、同様のエラーが発生する場合があります。例: **Microsoft.Azure.Documents.DocumentClientException: 転送プロトコルまたは暗号で禁止された暗号化を使用して要求が行われています。アカウントの SSL/TLS の許可されている最小プロトコル設定を確認してください**。 Cosmos エミュレーターは TLS 1.2 プロトコルのみを受け入れて動作するため、この時点ではこれが予想されます。 回避策として、設定を変更し、TLS 1.2 を既定の設定にすることをお勧めします。たとえば、IIS マネージャーで [サイト]、[Default Web Site] の順に移動し、ポート 8081 の [サイト バインド] を見つけて、TLS 1.3 を無効にするように編集します。 [設定] オプションを使用して、Web ブラウザーに対して同様の操作を実行できます。
 
 - エミュレーターの実行中に、ご利用のコンピューターがスリープ モードになった場合や、そのコンピューターで OS を更新した場合、"**サービスは現在使用できません**" というメッセージが表示される可能性があります。 Windows 通知トレイに表示されているアイコンを右クリックし、 **[Reset Data]\(データのリセット\)** を選択して、エミュレーターのデータをリセットします。
 

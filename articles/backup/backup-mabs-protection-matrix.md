@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538736"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036727"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 
@@ -23,6 +23,9 @@ MABS v3 UR1 には次のマトリックスを使用します。
 * MABS のインストール – MABS をインストールしようとしているコンピューター/場所。
 
 * 保護と回復 – サポートされているストレージ コンテナーやサポートされているデプロイなどのワークロードに関する詳細情報を一覧表示します。
+
+>[!NOTE]
+>32 ビット保護エージェントのサポートは、MABS v3 UR1 では非推奨となっています。 「[32 ビット保護エージェントの廃止](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation)」を参照してください。
 
 ## <a name="protection-support-matrix"></a>保護のサポート マトリックス
 
@@ -54,7 +57,7 @@ MABS v3 UR1 には次のマトリックスを使用します。
 
 | **[ワークロード]** | **Version**                               | **Azure Backup Server のインストール**                      | **サポートされる Azure Backup Server** | **保護と回復**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Hyper-V または VMware ゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2 または Windows Server 2016 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)に関するページを参照してください。 |
+| Linux        | Hyper-V または VMware ゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)に関するページを参照してください。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 

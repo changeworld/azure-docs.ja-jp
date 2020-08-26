@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4bed27654b3482300d3d102d545b44373c53dde0
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439789"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064844"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の C IoT Edge モジュールを開発する
 
@@ -58,6 +58,8 @@ C で IoT Edge モジュールを開発するには、開発用マシンに次�
 
 * Visual Studio Code 用の [C/C++ 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)。
 
+このチュートリアルでは、Azure IoT C SDK のインストールは必須ではありませんが、インストールすると intellisense やプログラム定義の読み取りなどの便利な機能を使用できるようになります。 インストールについては、[Azure IoT C SDK とライブラリ](https://github.com/Azure/azure-iot-sdk-c)に関するページを参照してください。
+
 ## <a name="create-a-module-project"></a>モジュール プロジェクトを作成する
 
 以下の手順では、Visual Studio Code と Azure IoT Tools 拡張機能を使用して、C の IoT Edge モジュール プロジェクトを作成します。 プロジェクト テンプレートが作成されたら、新しいコードを追加して、報告されたプロパティに基づいてモジュールがメッセージをフィルター処理するようにします。
@@ -72,7 +74,7 @@ C で IoT Edge モジュールを開発するには、開発用マシンに次�
 
 3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |

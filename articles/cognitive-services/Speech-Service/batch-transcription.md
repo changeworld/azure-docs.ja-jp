@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099764"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053918"
 ---
 # <a name="what-is-batch-transcription"></a>バッチ文字起こしとは
 
@@ -346,4 +346,4 @@ Batch 文字起こしでは、オーディオの読み取りや、文字起こ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [Speech to Text v3 API リファレンス](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

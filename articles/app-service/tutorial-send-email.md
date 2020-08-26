@@ -3,13 +3,13 @@ title: 'チュートリアル: Logic Apps を使用してメールを送信す�
 description: App Service アプリからビジネス プロセスを呼び出す方法について説明します。 メール、ツイート、Facebook の投稿を送信したり、メーリング リストに追加したりできます。
 ms.topic: tutorial
 ms.date: 04/08/2020
-ms.custom: mvc
-ms.openlocfilehash: 874c67b0d8d29c163fa5f36b3d100f1d2a013d53
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080968"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212851"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 

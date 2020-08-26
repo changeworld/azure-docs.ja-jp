@@ -3,12 +3,12 @@ title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105270"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163239"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -17,6 +17,9 @@ ms.locfileid: "86105270"
 Azure Sentinel によって、セキュリティ分析と脅威インテリジェンスが実現され、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションが提供されます。 Azure Lighthouse を使用すると、テナントをまたがる複数の Azure Sentinel ワークスペースの大規模な管理を行うことができます。 これにより、複数のワークスペースでクエリを実行、あるいはブックを作成し、接続されたデータ ソースからのデータを視覚化および監視して洞察を得るなどのシナリオが実現します。 クエリやプレイブックなどの IP は管理テナントに残りますが、顧客テナントでセキュリティ管理を実行するために使用できます。
 
 このトピックでは、テナント間の可視性およびマネージド セキュリティ サービスのためのスケーラブルな方法で、[Azure Sentinel](../../sentinel/overview.md) を使用する方法の概要について説明します。
+
+> [!TIP]
+> このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
 
 ## <a name="architectural-considerations"></a>アーキテクチャに関する考慮事項
 

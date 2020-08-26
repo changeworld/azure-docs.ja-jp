@@ -1,18 +1,18 @@
 ---
 title: Azure Files のデプロイの計画 | Microsoft Docs
-description: Azure Files のデプロイを計画するときの考慮事項について説明します。
+description: Azure Files デプロイの計画について理解します。 Azure File Sync を使用し、Azure ファイル共有を直接マウントするか、オンプレミスでキャッシュできます。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370361"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037169"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 

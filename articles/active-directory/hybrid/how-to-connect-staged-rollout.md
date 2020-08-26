@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019830"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053224"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
@@ -51,6 +51,8 @@ ms.locfileid: "87019830"
 
 -   特定の AD フォレストで *シームレス SSO* を有効にするには、ドメイン管理者である必要があります。
 
+-  Hybrid Azure AD または Azure AD 参加を展開する場合、Windows 10 1903 Update にアップグレードする必要があります。
+
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -82,7 +84,7 @@ ms.locfileid: "87019830"
 
 - 段階的なロールアウトで、セキュリティ グループを初めて追加する時点では、UX タイムアウトを回避するために、200 ユーザーに制限されます。グループを追加した後、必要に応じて、そのグループにさらにユーザーを直接追加できます。
 
-- ユーザーが段階的にロールアウトされている間は、パスワードの有効期限ポリシーが 90 日に設定されます。これをカスタマイズするオプションはありません。 
+- ユーザーが段階的にロールアウトしている間、EnforceCloudPasswordPolicyForPasswordSyncedUsers が有効な場合、パスワードの有効期限ポリシーは 90 日に設定され、これをカスタマイズするオプションはありません。 
 
 
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる

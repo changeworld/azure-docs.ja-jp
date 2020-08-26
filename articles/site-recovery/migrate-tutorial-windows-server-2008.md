@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery を使用して Windows Server 2008 サーバーを Azure に移行する
-description: この記事では、Azure Site Recovery を使用して、オンプレミスの Windows Server 2008 マシンを Azure に移行する方法について説明します。
+title: Azure Migrate または Site Recovery を使用して Windows Server 2008 サーバーを Azure に移行する
+description: この記事では、オンプレミスの Windows Server 2008 マシンを Azure に移行する方法について説明したうえで、Azure Migrate をお勧めします。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503822"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845563"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
@@ -31,9 +31,11 @@ ms.locfileid: "87503822"
 
 ## <a name="migrate-with-azure-migrate"></a>Azure Migrate を使用した移行
 
-マシンを Azure に移行する際は、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用することをお勧めします。 Azure Migrate は、Azure Migrate、その他の Azure サービス、サードパーティ製のツールを使用して、オンプレミス マシンを評価して Azure に移行するための一元的なハブを提供します。 Azure Site Recovery は、移行でなくディザスター リカバリーのみに使用してください。
+マシンを Azure に移行する際は、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用することをお勧めします。 
 
-Azure Migrate は、Windows Server 2008 を実行しているサーバーの移行をサポートしています。
+- Azure Migrate は、サーバーの移行専用に設計されています。
+- Azure Migrate は、オンプレミスのマシンの検出、評価、および Azure への移行を行うための中心的なハブを提供します。 Azure Site Recovery は、移行でなくディザスター リカバリーのみに使用してください。
+- Azure Migrate は、Windows Server 2008 を実行しているサーバーの移行をサポートしています。
 
 
 ## <a name="migrate-with-site-recovery"></a>Site Recovery を使用した移行

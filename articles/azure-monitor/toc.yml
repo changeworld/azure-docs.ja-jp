@@ -482,18 +482,16 @@
           href: platform/autoscale-resource-log-schema.md
     - name: 警告
       items:
-        - name: アプリケーション アラート ルール
-          items:
-            - name: 可用性
-              href: app/monitor-web-app-availability.md
-            - name: メトリック アラート
-              href: ./platform/alerts-log.md
         - name: メトリック アラート ルール
           items:
             - name: メトリック アラートの管理
               href: platform/alerts-metric.md
+            - name: 可用性
+              href: app/monitor-web-app-availability.md
             - name: 動的しきい値の使用
               href: platform/alerts-dynamic-thresholds.md
+            - name: 多くの時系列に対する単一のアラート
+              href: platform/alerts-metric-multiple-time-series-single-rule.md
             - name: ログのメトリック アラート
               href: platform/alerts-metric-logs.md
             - name: Resource Manager テンプレートの使用
@@ -652,13 +650,19 @@
                   href: app/opencensus-python-dependency.md
                 - name: Requests
                   href: app/opencensus-python-request.md
-            - name: Web ページ
+            - name: JavaScript
               items:
                 - name: クライアント側の JavaScript
                   displayname: 'SPA, Single Page Applications, React, JS, Angular'
                   href: app/javascript.md
                 - name: JavaScript のソース マップ
                   href: app/source-map-support.md
+                - name: プラグイン
+                  items:
+                    - name: React プラグイン
+                      href: app/javascript-react-plugin.md
+                    - name: React Native プラグイン
+                      href: app/javascript-react-native-plugin.md
                 - name: トラブルシューティング
                   items:
                     - name: SDK 読み込みエラー

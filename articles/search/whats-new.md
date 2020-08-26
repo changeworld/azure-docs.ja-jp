@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c5990faab1e06961a2c3d577a4677d2e1d504699
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553931"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904066"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -31,7 +31,7 @@ ms.locfileid: "87553931"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK for .NET | Azure SDK チームによってリリースされた .NET クライアント ライブラリです。他の .NET クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としていますが、ナレッジストア、geo フィルター、[FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet) はまだサポートしていません。 | 一般提供されています。 </br> NuGet から [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)をインストールします。 |
+| [Azure.Search.Documents クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK for .NET | Azure SDK チームによってリリースされた .NET クライアント ライブラリです。他の .NET クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としていますが、ナレッジ ストア、地理空間型、[FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet) はまだサポートしていません。 <br/><br/>詳細については、[インデックスの作成に関するクイックスタート](search-get-started-dotnet.md)および [Azure.Search.Documents (v11) へのアップグレード](search-dotnet-sdk-migration-version-11.md)に関するページをご覧ください。 | 一般提供されています。 </br> NuGet から [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)をインストールします。 |
 | [azure.search.documents クライアント ライブラリ](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK for Python| Azure SDK チームによってリリースされた Python クライアント ライブラリです。他の Python クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> PyPI から [azure-search-documents パッケージ](https://pypi.org/project/azure-search-documents/)をインストールします。 |
 | [@azure/search-documents クライアント ライブラリ](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK for JavaScript | Azure SDK チームによってリリースされた JavaScript クライアント ライブラリです。他の JavaScript クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> npm から [@azure/search-documents パッケージ](https://www.npmjs.com/package/@azure/search-documents)をインストールします。 |
 

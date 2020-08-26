@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 487177b4a114ba7537ac4f1aa74a4e2472455d4b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369562"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066068"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -195,8 +195,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
 
 ### <a name="directory-writers"></a>[ディレクトリ ライター](#directory-writers-permissions)
-
-これは、[同意フレームワーク](../develop/quickstart-register-app.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+このロールのユーザーは、ユーザー、グループ、およびサービス プリンシパルの基本情報の読み取りと更新が可能です。 このロールは、[同意フレームワーク](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)をサポートしていないアプリケーションにのみ割り当てます。 このロールをユーザーに割り当てることはできません。
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 管理者/CRM 管理者](#crm-service-administrator-permissions)
 
@@ -270,6 +269,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 * ゲスト招待元
 * ヘルプデスク管理者
 * メッセージ センター閲覧者
+* パスワード管理者
 * レポート閲覧者
 
 > [!IMPORTANT]
@@ -391,7 +391,7 @@ Modern Commerce ユーザー ロールを持つユーザーは、通常、他の
 
 ### <a name="privileged-role-administrator"></a>[特権ロール管理者](#privileged-role-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 さらに、このロールは、Privileged Identity Management と管理単位のすべての側面を管理できます。
+このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 Azure AD ロールに割り当てることができるグループの作成と管理が可能です。 さらに、このロールは、Privileged Identity Management と管理単位のすべての側面を管理できます。
 
 > [!IMPORTANT]
 > このロールは、全体管理者ロールを含むすべての Azure AD ロールの割り当てを管理する権限を付与します。 このロールには、Azure AD でユーザーの作成や更新などの特権付きの機能が含まれていません。 ただし、このロールが割り当てられたユーザーは、追加のロールを割り当てることで、自分または他のユーザーの追加の特権を付与できます。
@@ -506,7 +506,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 | --- | --- |
 |一般的なアクセス許可|<p>ユーザーとグループを作成する</p><p>ユーザー ビューの作成と管理</p><p>Office サポート チケットの管理<p>パスワードの有効期限ポリシーを更新する|
 | <p>すべての管理者を含むすべてのユーザーに対して</p>|<p>ライセンスを管理する</p><p>ユーザー プリンシパル名を除くすべてのユーザーのプロパティを管理する</p>
-| 管理者以外のユーザー、または次の制限付き管理者ロールのいずれかに対してのみ:<ul><li>ディレクトリ リーダー<li>ゲスト招待元<li>ヘルプデスク管理者<li>メッセージ センター閲覧者<li>レポート閲覧者<li>ユーザー管理者|<p>削除と復元</p><p>無効化と有効化</p><p>更新トークンを無効にする</p><p>ユーザー プリンシパル名を含むすべてのユーザーのプロパティを管理する</p><p>[パスワードのリセット]</p><p>(FIDO) デバイス キーを更新する</p>|
+| 管理者以外のユーザー、または次の制限付き管理者ロールのいずれかに対してのみ:<ul><li>ディレクトリ リーダー<li>グループ管理者<li>ゲスト招待元<li>ヘルプデスク管理者<li>メッセージ センター閲覧者<li>パスワード管理者<li>レポート閲覧者<li>ユーザー管理者|<p>削除と復元</p><p>無効化と有効化</p><p>更新トークンを無効にする</p><p>ユーザー プリンシパル名を含むすべてのユーザーのプロパティを管理する</p><p>[パスワードのリセット]</p><p>(FIDO) デバイス キーを更新する</p>|
 
 > [!IMPORTANT]
 > このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 次に例を示します。
@@ -545,11 +545,11 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 | microsoft.directory/appRoleAssignments/update | Azure Active Directory での appRoleAssignments の更新。 |
 | microsoft.directory/appRoleAssignments/delete | Azure Active Directory での appRoleAssignments の削除。 |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
-| microsoft.directory/connectorGroups/everything/read | Azure Active Directory でのアプリケーション プロキシ コネクタ グループ プロパティの読み取り。 |
-| microsoft.directory/connectorGroups/everything/update | Azure Active Directory でのアプリケーション プロキシ コネクタ グループ プロパティの更新。 |
+| microsoft.directory/connectorGroups/allProperties/read | Azure Active Directory でのアプリケーション プロキシ コネクタ グループ プロパティの読み取り。 |
+| microsoft.directory/connectorGroups/allProperties/update | Azure Active Directory でのアプリケーション プロキシ コネクタ グループ プロパティの更新。 |
 | microsoft.directory/connectorGroups/create | Azure Active Directory でのアプリケーション プロキシ コネクタ グループの作成。 |
 | microsoft.directory/connectorGroups/delete | Azure Active Directory でのアプリケーション プロキシ コネクタ グループの削除。 |
-| microsoft.directory/connectors/everything/read | Azure Active Directory でのアプリケーション プロキシ コネクタのすべてのプロパティの読み取り。 |
+| microsoft.directory/connectors/allProperties/read | Azure Active Directory でのアプリケーション プロキシ コネクタのすべてのプロパティの読み取り。 |
 | microsoft.directory/connectors/create | Azure Active Directory でのアプリケーション プロキシ コネクタの作成。 |
 | microsoft.directory/policies/applicationConfiguration/basic/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
 | microsoft.directory/policies/applicationConfiguration/basic/update | Azure Active Directory での policies.applicationConfiguration プロパティの更新。 |
@@ -747,6 +747,9 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | Azure Active Directory での directoryRoleTemplates の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/domains/allProperties/allTasks | Azure Active Directory での domains の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/groups/allProperties/allTasks | Azure Active Directory での groups の作成と削除、およびすべてのプロパティの読み取りと更新。 |
+| microsoft.directory/groupsAssignableToRoles/allProperties/update | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの更新。 |
+| microsoft.directory/groupsAssignableToRoles/create | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの作成。 |
+| microsoft.directory/groupsAssignableToRoles/delete | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの削除。 |
 | microsoft.directory/groupSettings/allProperties/allTasks | Azure Active Directory での groupSettings の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/groupSettingTemplates/allProperties/allTasks | Azure Active Directory での groupSettingTemplates の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/loginTenantBranding/allProperties/allTasks | Azure Active Directory での loginTenantBranding の作成と削除、およびすべてのプロパティの読み取りと更新。 |
@@ -997,22 +1000,36 @@ Azure AD Connect サービスでのみ使用されます。
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.directory/groups/create | Azure Active Directory での groups の作成。 |
-| microsoft.directory/groups/createAsOwner | Azure Active Directory での groups の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
 | microsoft.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
-| microsoft.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
+| microsoft.directory/groups/assignLicense | Azure Active Directory でのグループのライセンスの管理。 |
+| microsoft.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。  |
+| microsoft.directory/groups/classification/update | Azure Active Directory でのグループの分類プロパティの更新。 |
+| microsoft.directory/groups/create | Azure Active Directory での groups の作成。 |
+| microsoft.directory/groups/groupType/update | Azure Active Directory でのグループの groupType プロパティの更新。 |
 | microsoft.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
 | microsoft.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
+| microsoft.directory/groups/reprocessLicenseAssignment | Azure Active Directory でのグループのライセンス割り当ての再処理。 |
+| microsoft.directory/groups/securityEnabled/update | Azure Active Directory でのグループの secutiryEnabled プロパティの更新。 |
 | microsoft.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
+| microsoft.directory/groups/visibility/update | グループの可視性プロパティの更新 |
 | microsoft.directory/groupSettings/basic/update | Azure Active Directory での groupSettings の基本プロパティの更新。 |
 | microsoft.directory/groupSettings/create | Azure Active Directory での groupSettings の作成。 |
 | microsoft.directory/groupSettings/delete | Azure Active Directory での groupSettings の削除。 |
+| microsoft.directory/oAuth2PermissionGrants/basic/update | Azure Active Directory での oAuth2PermissionGrants の基本プロパティの更新。 |
+| microsoft.directory/oAuth2PermissionGrants/create | Azure Active Directory での oAuth2PermissionGrants の作成。 |
+| microsoft.directory/servicePrincipals/synchronizationCredentials/manage | アプリケーション プロビジョニングのシークレットと資格情報の管理。 |
+| microsoft.directory/servicePrincipals/synchronizationJobs/manage | アプリケーション プロビジョニングの同期ジョブの開始、再開、および一時停止。 |
+| microsoft.directory/servicePrincipals/synchronizationSchema/manage | アプリケーション プロビジョニングの同期ジョブとスキーマの作成と管理。 |
 | microsoft.directory/users/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
 | microsoft.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
 | microsoft.directory/users/basic/update | Azure Active Directory での users の基本プロパティの更新。 |
-| microsoft.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
+| microsoft.directory/users/disable | Azure Active Directory でのユーザー アカウントの無効化。 |
+| microsoft.directory/users/enable | Azure Active Directory でのユーザー アカウントの有効化 |
+| microsoft.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化と、ユーザーに対する次回サインイン時の再認証の要求 |
 | microsoft.directory/users/manager/update | Azure Active Directory での users.manager プロパティの更新。 |
-| microsoft.directory/users/userPrincipalName/update | Azure Active Directory での users.userPrincipalName プロパティの更新。 |
+| microsoft.directory/users/reprocessLicenseAssignment | Azure Active Directory でのユーザーのライセンス割り当ての再処理。 |
+| microsoft.directory/users/userPrincipalName /update | Azure Active Directory での users.userPrincipalName プロパティの更新。 |
+
 
 ### <a name="exchange-service-administrator-permissions"></a>Exchange サービス管理者のアクセス許可
 
@@ -1409,7 +1426,6 @@ Office アプリのクラウド サービスを管理すること (ポリシー�
 | microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
-| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 | microsoft.office365.userCommunication/allEntities/allTasks | 新機能のメッセージを表示できるかどうかを読み取って、更新します。 |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
@@ -1581,7 +1597,10 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
+| microsoft.directory/groupsAssignableToRoles/allProperties/update | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの更新。 |
+| microsoft.directory/groupsAssignableToRoles/create | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの作成。 |
+| microsoft.directory/groupsAssignableToRoles/delete | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの削除。 |
+| microsoft.directory/privilegedIdentityManagement/allEntities/allTasks | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.directory/servicePrincipals/appRoleAssignedTo/allTasks | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取りと構成。 |
 | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/allTasks | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取りと構成。 |
 | microsoft.directory/administrativeUnits/allProperties/allTasks | 管理単位 (メンバーを含む) の作成と管理。 |
@@ -1892,7 +1911,7 @@ CRM サービス管理者 | Dynamics 365 管理者 | 44367163-eba1-44c3-98af-f57
 デバイス ユーザー | 非推奨 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 ディレクトリ リーダー | ディレクトリ閲覧者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 ディレクトリ同期アカウント | 使用するべきではないため、表示されません | d29b2b05-8046-44ba-8758-1e26182fcf32
-ディレクトリ ライター | 使用するべきではないため、表示されません | 9360feb5-f418-4baa-8175-e2a00bac4301
+ディレクトリ ライター | ディレクトリ ライター | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange サービス管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID ユーザー フロー管理者 | 外部 ID ユーザー フロー管理者 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部 ID ユーザー フロー属性管理者 | 外部 ID ユーザー フロー属性管理者 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c7eebfee771a9c65901bd89336e49c026a944a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7bb4422eb17353dc4e1895de8dcb2c427c6d0d15
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528861"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079401"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -91,7 +91,7 @@ Linux: CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.8
 Ubuntu | Ubuntu 14.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 (すべての 7. *x*、8. *x* バージョンのサポートが含まれます [(サポートされているカーネル バージョンの確認)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、[SP5](https://support.microsoft.com/help/4570609) [(サポートされているカーネル バージョンの確認)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [(サポートされているカーネル バージョンの確認)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3 または SUSE Linux Enterprise Server 11 SP4<br/> レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、レプリケーションを無効にし、アップグレードの後に再び有効にします。
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [7.8](https://support.microsoft.com/help/4573888/)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)、[8.2](https://support.microsoft.com/help/4573888/) <br/><br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[8.0](https://support.microsoft.com/help/4573888/)、[8.2](https://support.microsoft.com/help/4573888/)  <br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>すべての UEK カーネルと RedHat カーネル <= 3.10.0-1062.* での実行がサポートされています。 残りの RedHat カーネルのサポートは、9.36 で、8 月末まで利用できます。
 
 > [!Note]
 > Windows の各バージョンについては、Azure Site Recovery では [長期サービス チャネル (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) のビルドのみがサポートされます。  現時点では、[半期チャネル](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)のリリースはサポートされていません。
@@ -169,6 +169,9 @@ BTRFS | \- BTRFS は[更新プログラム ロールアップ 34](https://suppor
 レプリケートされた VM のディスク サイズの変更 | フェールオーバー前に VM プロパティで直接的に、ソース VM でサポートされます。 レプリケーションを無効にしたり、もう一度有効にしたりする必要はありません。<br/><br/> フェールオーバー後にソース VM を変更した場合、変更はキャプチャされません。<br/><br/> フェールオーバー後に Azure VM のディスク サイズを変更する場合は、フェールバックすると、Site Recovery で更新プログラム付きの新しい VM が作成されます。
 レプリケートされた VM のディスクの追加 | サポートされていません。<br/> VM のレプリケーションを無効にし、ディスクを追加してから、レプリケーションを再び有効にします。
 
+> [!NOTE]
+> ディスク ID に対する変更はサポートされていません。 たとえば、ディスクのパーティション分割が GPT から MBR、またはその逆に変更された場合は、ディスク ID が変更されます。 このようなシナリオでは、レプリケーションが中断され、新しいセットアップが必要になります。 
+
 ## <a name="network"></a>ネットワーク
 
 **コンポーネント** | **サポートされています**
@@ -229,7 +232,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー GPT パーティション | \- 5 個のパーティションが[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) (モビリティ サービスのバージョン 9.25) 以降でサポートされています。 以前は 4 個までサポートしていました。
 ReFS | Resilient File System は、モビリティ サービスのバージョン 9.23 以降でサポートされています。
-ゲスト/サーバー EFI/UEFI ブート | - Site Recovery モビリティ エージェント バージョン 9.30 以降のすべての [Azure Marketplace UEFI OS](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-images-in-azure-marketplace) でサポートされています。 <br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 [詳細情報。](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+ゲスト/サーバー EFI/UEFI ブート | - Site Recovery モビリティ エージェント バージョン 9.30 以降のすべての [Azure Marketplace UEFI OS](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) でサポートされています。 <br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 [詳細情報。](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>レプリケーション チャネル
 

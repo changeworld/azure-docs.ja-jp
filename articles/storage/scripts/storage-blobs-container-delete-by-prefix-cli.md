@@ -1,6 +1,6 @@
 ---
 title: Azure CLI のサンプル スクリプト - プレフィックスでコンテナーを削除する | Microsoft Docs
-description: コンテナー名のプレフィックスに基づいて Azure Storage Blob コンテナーを削除します。
+description: コンテナー名のプレフィックスに基づいて Azure Storage Blob コンテナーを削除した後、デプロイをクリーンアップします。 スクリプト サンプルで使用されているコマンドについては、ヘルプ リンクを参照してください。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66869b7dc38e11b614ebc89538c2c195122b5bb3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aeccf255004cd4512fbc591942324341504b20f7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479559"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901880"
 ---
 # <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>Azure CLI スクリプトを使用して、コンテナー名のプレフィックスに基づいてコンテナーを削除する
 
@@ -41,7 +41,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、コンテナー名のプレフィックスに基づいてコンテナーを削除します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](/cli/azure/storage/account) | 特定のリソース グループに Azure Storage アカウントを作成します。 |

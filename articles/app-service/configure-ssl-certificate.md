@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146412"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987173"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -64,6 +64,7 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 - ワイルドカード証明書はサポートされません。
 - ネイキッド ドメインはサポートされていません。
 - エクスポートはできません。
+- App Service Environment (ASE) ではサポートされません。
 - A レコードはサポートされません。 たとえば、A レコードでは自動更新が機能しません。
 
 > [!NOTE]

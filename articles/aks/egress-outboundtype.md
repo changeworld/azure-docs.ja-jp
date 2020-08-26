@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244448"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067360"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする
 
@@ -60,7 +60,7 @@ AKS クラスターは、種類がロード バランサーまたはユーザー
 
 `userDefinedRouting` を設定しても、エグレス パスは AKS によって自動的に構成されません。 エグレス セットアップは、ユーザーが行う必要があります。
 
-AKS クラスターは、事前に構成されたサブネットを持つ既存の仮想ネットワークにデプロイする必要があります。これは、Standard Load Balancer (SLB) アーキテクチャを使用している場合、明示的なエグレスを確立する必要があるためです。 このため、このアーキテクチャでは、ファイアウォール、ゲートウェイ、プロキシなどのアプライアンスにエグレス トラフィックを明示的に送信するか、Standard Load Balancer またはアプライアンスに割り当てられたパブリック IP によってネットワーク アドレス変換 (NAT) を実行できるようにする必要があります。
+AKS クラスターは、事前に構成されたサブネットを持つ既存の仮想ネットワークにデプロイする必要があります。これは、Standard Load Balancer (SLB) アーキテクチャを使用していない場合に、明示的なエグレスを確立する必要があるためです。 このため、このアーキテクチャでは、ファイアウォール、ゲートウェイ、プロキシなどのアプライアンスにエグレス トラフィックを明示的に送信するか、Standard Load Balancer またはアプライアンスに割り当てられたパブリック IP によってネットワーク アドレス変換 (NAT) を実行できるようにする必要があります。
 
 AKS リソース プロバイダーによって Standard ロード バランサー (SLB) がデプロイされます。 このロード バランサーには規則が構成されておらず、[規則が構成されるまで料金はかかりません](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS によって、SLB フロントエンドのパブリック IP アドレスが自動的にプロビジョニングされたり、ロード バランサーのバックエンド プールが自動的に構成されたりすることは**ありません**。
 

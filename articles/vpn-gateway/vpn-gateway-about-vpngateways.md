@@ -1,6 +1,6 @@
 ---
 title: Azure VPN Gateway について
-description: VPN ゲートウェイとは何か、および VPN ゲートウェイを使用して Azure 仮想ネットワークに接続する方法について説明します。 これには、IPsec/IKE サイト間クロスプレミスおよび VNet 間 VNet ソリューション、およびポイント対サイト VPN が含まれます。
+description: VPN ゲートウェイとは何か、また VPN ゲートウェイを使用して、サイト間、VNet 間、ポイント対サイトの IPsec IKE VPN 仮想ネットワークに接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ec008fa97c75f5ae7c79e2b98efc9005df1014f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c195fd3c6d3de518a70070327de5c12d5d210b6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300049"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036880"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 

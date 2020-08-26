@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 9ab1e2ed4aeace0ec98cb358f32a07f64c3dfea2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9a03b5636af4a60c4abf563e073e22c970b8a02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075041"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921779"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 と Azure Blob Storage の比較
 
@@ -33,7 +33,7 @@ ms.locfileid: "87075041"
 | データ操作 - 承認 |POSIX アクセス制御リスト (ACL)。  Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 |アカウントレベルの承認には、[アカウント アクセス キー](../storage/common/storage-account-keys-manage.md)を使用します<br>アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用します |
 | データ操作 - 監査 |使用可能。 詳細については、 [こちら](data-lake-store-diagnostic-logs.md) をご覧ください。 |利用可能 |
 | 保存データの暗号化 |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用</li></ul></ul> |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用 (プレビュー)</li></ul><li>クライアント側暗号化</li></ul> |
-| 管理操作 (アカウントの作成など) |[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) |[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) |
+| 管理操作 (アカウントの作成など) |アカウント管理用の [Azure ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) |アカウント管理用の [Azure ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) |
 | Developer SDK |.NET、Java、Python、Node.js |.NET、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS |
 | 分析ワークロードのパフォーマンス |並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 |並列分析ワークロードに最適化されたパフォーマンス。 |
 | サイズ制限 |アカウント サイズ、ファイル サイズ、ファイル数に制限はありません。 |特定の制限事項については、[Standard ストレージ アカウントのスケーラビリティ ターゲット](../storage/common/scalability-targets-standard-account.md)に関する記事と「[BLOB ストレージのスケーラビリティとパフォーマンス ターゲット](../storage/blobs/scalability-targets.md)」を参照してください。 より大きなアカウント制限については [Azure サポート](https://azure.microsoft.com/support/faq/)への問い合わせで入手可能 |
@@ -41,5 +41,3 @@ ms.locfileid: "87075041"
 | サービスの状態 |一般公開 |一般公開 |
 | リージョン別の提供状況 |詳細については、 [こちら](https://azure.microsoft.com/regions/#services) |すべての Azure リージョンで使用可能 |
 | Price |詳細については、 [価格](https://azure.microsoft.com/pricing/details/data-lake-store/) |詳細については、 [価格](https://azure.microsoft.com/pricing/details/storage/) |
-
-

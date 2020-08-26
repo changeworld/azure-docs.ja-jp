@@ -22,6 +22,8 @@
       href: concepts-twins-graph.md
     - name: クエリ言語
       href: concepts-query-language.md
+    - name: クエリ単位
+      href: concepts-query-units.md
     - name: 他のサービスとの統合
       href: concepts-integration.md
     - name: イベント ルート
@@ -172,6 +174,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL 検証ツール (サンプル)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+        - name: DPS と IoT Hub の統合サンプル
+          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
     - name: Azure ツール
       items:
         - name: Azure Cloud Shell

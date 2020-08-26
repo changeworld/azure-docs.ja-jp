@@ -5,13 +5,13 @@ ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: a1fdc9e37084b1e8064bf642ff84646149c32ee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
+ms.openlocfilehash: fd7f860eb6e18edeb2096c12102e74c7446d050f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050668"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213763"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>チュートリアル:Azure SQL Database を使用して Azure に ASP.NET アプリをデプロイする
 

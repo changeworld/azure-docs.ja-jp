@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync のデプロイ | Microsoft Docs
-description: Azure File Sync をデプロイする方法を、開始から終了まで説明します。
+description: Azure portal、PowerShell、または Azure CLI を使用して Azure File Sync をデプロイする方法について最初から最後まで説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386692"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903852"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -20,11 +20,22 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 この記事に記載されている手順を完了する前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」と「[Azure File Sync のデプロイの計画](storage-sync-files-planning.md)」を読むことを強くお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
     - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」
     - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
-* Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされる Windows Server のバージョンと推奨されるシステム リソースの詳細については、[Windows ファイル サーバーの考慮事項](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
-* Az PowerShell モジュールは、PowerShell 5.1 または PowerShell 6+ のどちらでも使用できます。 Azure File Sync 用の Az PowerShell モジュールは、サポートされているすべてのシステム (Windows 以外のシステムを含む) で使用できますが、サーバー登録コマンドレットは常に、登録している Windows Server インスタンスで実行する必要があります (これは直接、または PowerShell リモート処理経由で行うことができます)。 Windows Server 2012 R2 では、 **$PSVersionTable** オブジェクトの **PSVersion** プロパティの値を調べることによって、少なくとも PowerShell 5.1.\* を実行していることを確認できます。
+1. Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされる Windows Server のバージョンと推奨されるシステム リソースの詳細については、[Windows ファイル サーバーの考慮事項](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
+    - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」
+    - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
+1. Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされる Windows Server のバージョンと推奨されるシステム リソースの詳細については、[Windows ファイル サーバーの考慮事項](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
+
+1. Az PowerShell モジュールは、PowerShell 5.1 または PowerShell 6+ のどちらでも使用できます。 Azure File Sync 用の Az PowerShell モジュールは、サポートされているすべてのシステム (Windows 以外のシステムを含む) で使用できますが、サーバー登録コマンドレットは常に、登録している Windows Server インスタンスで実行する必要があります (これは直接、または PowerShell リモート処理経由で行うことができます)。 Windows Server 2012 R2 では、 **$PSVersionTable** オブジェクトの **PSVersion** プロパティの値を調べることによって、少なくとも PowerShell 5.1.\* を実行していることを確認できます。
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -37,7 +48,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
     > [!Important]  
     > PowerShell から直接登録するのではなく、サーバー登録 UI を使用する予定がある場合は、PowerShell 5.1 を使用する必要があります。
 
-* PowerShell 5.1 を使用することを選択した場合は、少なくとも .NET 4.7.2 がインストールされていることを確認してください。 詳細については、使用しているシステムで「[.NET Framework のバージョンおよび依存関係](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)」を参照してください。
+1. PowerShell 5.1 を使用することを選択した場合は、少なくとも .NET 4.7.2 がインストールされていることを確認してください。 詳細については、使用しているシステムで「[.NET Framework のバージョンおよび依存関係](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)」を参照してください。
 
     > [!Important]  
     > Windows Server Core で .NET 4.7.2+ をインストールする場合は、`quiet` フラグと `norestart` フラグを指定してインストールする必要があります。そうしないと、インストールが失敗します。 たとえば、.NET 4.8 をインストールする場合、コマンドは次のようになります。
@@ -45,10 +56,51 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Az PowerShell モジュール。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
+1. Az PowerShell モジュール。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
      
     > [!Note]  
     > Az PowerShell モジュールをインストールするときに、Az.StorageSync モジュールが自動的にインストールされるようになりました。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
+    - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」
+    - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
+1. Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされる Windows Server のバージョンと推奨されるシステム リソースの詳細については、[Windows ファイル サーバーの考慮事項](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
+
+1. [Azure CLI のインストール](/cli/azure/install-azure-cli)
+
+   必要に応じて、Azure Cloud Shell を使用してこのチュートリアルの手順を完了することもできます。  Azure Cloud Shell は、ブラウザーを介して使用する対話型のシェル環境です。  次のいずれかの方法で Cloud Shell を起動します。
+
+   - コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[使ってみる]** によって Azure Cloud Shell が開きますが、コードが Cloud Shell に自動的にコピーされることはありません。
+
+   - [https://shell.azure.com](https://shell.azure.com) に移動して Cloud Shell を開きます
+
+   - [Azure portal](https://portal.azure.com) の右上にあるメニュー バーの **[Cloud Shell]** ボタンを選択します
+
+1. サインインします。
+
+   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
+
+   ```azurecli
+   az login
+   ```
+
+    ターミナルに表示される手順に従って、認証プロセスを完了します。
+
+1. Azure CLI 拡張機能 [az filesync](/cli/azure/ext/storagesync/storagesync) をインストールする
+
+   ```azurecli
+   az extension add --name storagesync
+   ```
+
+   拡張機能のリファレンス **storagesync** をインストールすると、次の警告が表示されます。
+
+   ```output
+   The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
+   ```
+
+---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Azure File Sync で使用する Windows Server の準備
 フェールオーバー クラスターの各サーバー ノードなど、Azure File Sync で使用する各サーバーで、**Internet Explorer セキュリティ強化の構成**を無効にします。 これは、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
@@ -87,6 +139,10 @@ if ($installType -ne "Server Core") {
     Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 }
 ``` 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
 
 ---
 
@@ -155,6 +211,10 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
+
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
@@ -207,6 +267,9 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
 
 ---
 
@@ -242,6 +305,9 @@ Azure File Sync エージェントがインストールされると、サーバ�
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
 
 ---
 
@@ -312,6 +378,27 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az storagesync sync-group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) コマンドを使用して、新しい同期グループを作成します。  すべての CLI コマンドでリソース グループを既定に設定するには、[az configure](/cli/azure/reference-index#az-configure) を使用します。
+
+```azurecli
+az storagesync sync-group create --resource-group myResourceGroupName \
+                                 --name myNewSyncGroupName \
+                                 --storage-sync-service myStorageSyncServiceName \
+```
+
+[az storagesync sync-group cloud-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) コマンドを使用して、新しいクラウド エンドポイントを作成します。
+
+```azurecli
+az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
+                                                --storage-sync-service myStorageSyncServiceName \
+                                                --sync-group-name mySyncGroupName \
+                                                --name myNewCloudEndpointName \
+                                                --storage-account mystorageaccountname \
+                                                --azure-file-share-name azure-file-share-name
+```
+
 ---
 
 ## <a name="create-a-server-endpoint"></a>サーバー エンドポイントを作成する
@@ -363,6 +450,34 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath 
 }
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az storagesync sync-group server-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) コマンドを使用して、新しいサーバー エンドポイントを作成します。
+
+```azurecli
+# Create a new sync group server endpoint 
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --server-local-path d:\myPath
+                                                 --storage-sync-service myStorageSyncServiceNAme
+                                                 --sync-group-name mySyncGroupName
+
+# Create a new sync group server endpoint with additional optional parameters
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
+                                                 --server-local-path d:\myPath \
+                                                 --storage-sync-service myStorageSyncServiceName \
+                                                 --sync-group-name mySyncGroupName \
+                                                 --cloud-tiering on \
+                                                 --offline-data-transfer on \
+                                                 --offline-data-transfer-share-name myfilesharename \
+                                                 --tier-files-older-than-days 15 \
+                                                 --volume-free-space-percent 85 \
+
 ```
 
 ---

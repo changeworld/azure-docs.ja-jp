@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: aab914caa2647146639aa366f558c80bebcfde54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809939"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121614"
 ---
 # <a name="vm-sizes"></a>VM サイズ
 
@@ -76,7 +76,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 
 `standard` サイズの VM の容量制限に含まれるモデルまたはシーンの多角形の数を確認するには、次の 2 つの方法があります。
 * モデル変換側で、[変換出力 json ファイル](../how-tos/conversion/get-information.md)を取得し、[*inputStatistics* セクション](../how-tos/conversion/get-information.md#the-inputstatistics-section)の `numFaces` エントリを調べます
-* アプリケーションで動的なコンテンツが処理されている場合、レンダリングされるポリゴンの数は実行時に動的に照会できます。 [パフォーマンス評価クエリ](../overview/features/performance-queries.md#performance-assessment-queries)を使用し、`FrameStatistics` 構造体の `polygonsRendered` メンバーを調べます。 この非同期クエリの後でユーザーが操作を実行できるようにするため、チェッカーボードの背景のフェードインでは常に遅延が発生します。 たとえば、ユーザーは、モデルのインスタンスを非表示にしたり削除したりすることができます。
+* アプリケーションで動的なコンテンツが処理されている場合、レンダリングされるポリゴンの数は実行時に動的に照会できます。 [パフォーマンス評価クエリ](../overview/features/performance-queries.md#performance-assessment-queries)を使用し、`FrameStatistics` 構造体の `polygonsRendered` メンバーを調べます。 レンダラーが多角形の制限に達した場合、`polygonsRendered` フィールドは `bad` に設定されます。 この非同期クエリの後でユーザーが操作を実行できるようにするため、チェッカーボードの背景のフェードインでは常に遅延が発生します。 たとえば、ユーザーは、モデルのインスタンスを非表示にしたり削除したりすることができます。
 
 ## <a name="pricing"></a>価格
 
