@@ -1,32 +1,32 @@
 ---
-title: VM サイズ
-description: 割り当てることができる個別の VM サイズについて説明します
+title: サーバーのサイズ
+description: 割り当てることができる個別のサーバー サイズについて説明します。
 author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b9479c2ab5b63440a03bd74d2503930108a49091
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121614"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511187"
 ---
-# <a name="vm-sizes"></a>VM サイズ
+# <a name="server-sizes"></a>サーバーのサイズ
 
-レンダリング サービスは、`Standard` と `Premium` と呼ばれる Azure の 2 種類の異なるマシンで動作できます。
+Azure Remote Rendering は、`Standard` と `Premium` の 2 つのサーバー構成で使用できます。
 
 ## <a name="polygon-limits"></a>多角形の制限
 
-`Standard` VM サイズには、**2,000 万多角形**のハード制限があります。 `Premium` サイズにはそのような制限はありません。
+サーバーのサイズが `Standard` の Remote Rendering には、2,000 万多角形の最大シーン サイズがあります。 サイズが `Premium` の Remote Rendering に最大のハード制限は適用されませんが、コンテンツがサービスのレンダリング機能を超えた場合はパフォーマンスが低下する可能性があります。
 
-Standard VM のレンダラーがこの制限に達すると、レンダリングの背景がチェッカーボードに切り替わります。
+'Standard' のサーバー サイズでレンダラーがこの制限に達すると、レンダリングがチェッカーボードの背景に切り替えられます。
 
 ![チェッカーボード](media/checkerboard.png)
 
-## <a name="allocate-the-vm"></a>VM を割り当てる
+## <a name="specify-the-server-size"></a>サーバーのサイズを指定する
 
-レンダリング セッションの初期化時に、望ましい VM の種類を指定する必要があります。 実行中のセッション内では変更できません。 次のコード例では、VM サイズを指定する必要がある場所を示します。
+レンダリング セッションの初期化時に、望ましいサーバー構成の種類を指定する必要があります。 実行中のセッション内では変更できません。 次のコード例は、サーバーのサイズを指定する必要がある場所を示しています。
 
 ```cs
 async void CreateRenderingSession(AzureFrontend frontend)
@@ -51,7 +51,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 }
 ```
 
-[PowerShell スクリプトの例](../samples/powershell-example-scripts.md)では、`arrconfig.json` ファイル内で VM のサイズを指定する必要があります。
+[PowerShell スクリプトの例](../samples/powershell-example-scripts.md)では、`arrconfig.json` ファイル内で望ましいサーバーのサイズを指定する必要があります。
 
 ```json
 {
@@ -74,13 +74,13 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 
 ### <a name="how-to-determine-the-number-of-polygons"></a>多角形の数を確認する方法
 
-`standard` サイズの VM の容量制限に含まれるモデルまたはシーンの多角形の数を確認するには、次の 2 つの方法があります。
+`standard` の構成サイズの予算制限に寄与するモデルまたはシーンの多角形の数を確認するには、次の 2 つの方法があります。
 * モデル変換側で、[変換出力 json ファイル](../how-tos/conversion/get-information.md)を取得し、[*inputStatistics* セクション](../how-tos/conversion/get-information.md#the-inputstatistics-section)の `numFaces` エントリを調べます
 * アプリケーションで動的なコンテンツが処理されている場合、レンダリングされるポリゴンの数は実行時に動的に照会できます。 [パフォーマンス評価クエリ](../overview/features/performance-queries.md#performance-assessment-queries)を使用し、`FrameStatistics` 構造体の `polygonsRendered` メンバーを調べます。 レンダラーが多角形の制限に達した場合、`polygonsRendered` フィールドは `bad` に設定されます。 この非同期クエリの後でユーザーが操作を実行できるようにするため、チェッカーボードの背景のフェードインでは常に遅延が発生します。 たとえば、ユーザーは、モデルのインスタンスを非表示にしたり削除したりすることができます。
 
 ## <a name="pricing"></a>価格
 
-VM の種類ごとの価格の詳細については、「[Remote Rendering の価格](https://azure.microsoft.com/pricing/details/remote-rendering)」ページを参照してください。
+構成の種類ごとの価格の詳細な内訳については、「[Remote Rendering の価格](https://azure.microsoft.com/pricing/details/remote-rendering)」のページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [PowerShell スクリプトの例](../samples/powershell-example-scripts.md)

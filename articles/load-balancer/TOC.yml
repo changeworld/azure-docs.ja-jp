@@ -16,6 +16,8 @@
       href: quickstart-load-balancer-standard-public-template.md
     - name: 内部ロード バランサ―の作成 - Azure PowerShell
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: 内部ロード バランサーの作成 - Azure CLI
+      href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true
 - name: チュートリアル
   items:

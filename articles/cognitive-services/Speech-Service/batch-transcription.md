@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053918"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214059"
 ---
 # <a name="what-is-batch-transcription"></a>バッチ文字起こしとは
 
@@ -63,7 +63,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 
 Batch 文字起こし API では、次の形式がサポートされています。
 
-| Format | コーデック | Bitrate | サンプル レート                     |
+| Format | コーデック | サンプルごとのビット数 | サンプル レート             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
 | MP3    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |

@@ -509,6 +509,8 @@
       href: monitor-resource-reference.md
     - name: 機械学習パイプライン YAML のリファレンス
       href: reference-pipeline-yaml.md
+    - name: ソブリン クラウドのパリティ
+      href: reference-machine-learning-cloud-parity.md
 - name: リソース
   items:
     - name: リリース ノート

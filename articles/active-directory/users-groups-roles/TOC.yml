@@ -62,12 +62,14 @@
           href: users-revoke-access.md
         - name: 非管理対象ディレクトリのアカウントを削除する
           href: users-close-account.md
-        - name: B2B ユーザーの追加
-          href: ../external-identities/what-is-b2b.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: B2B ユーザーへのロールの割り当て
-          href: ../external-identities/add-guest-to-role.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: 動的グループと B2B
-          href: ../external-identities/use-dynamic-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: ゲスト ユーザーを追加する
+          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: ゲスト ユーザーにロールを割り当てる
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: ゲスト ユーザーのアクセスを制限する
+          href: users-restrict-guest-permissions.md
+        - name: 動的グループとゲスト
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: ディレクトリの管理
       items:
         - name: Azure AD 組織

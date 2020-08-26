@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826536"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245572"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-自動フェールオーバー グループを使用して、サーバー上のデータベースのグループや、マネージド インスタンス内のすべてのデータベースの別のリージョンへのレプリケーションとフェールオーバーを管理することができます。 これは、既存の[アクティブ geo レプリケーション](active-geo-replication-overview.md)機能に基づく宣言型の抽象化であり、geo レプリケーション対応データベースの大規模なデプロイと管理を簡素化するように設計されています。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて Azure サービスに委任することもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL Database や SQL Managed Instance の可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 フェールオーバー グループには、通常同じアプリケーションによって使用される、1 つまたは複数のデータベースを含めることができます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを、別のリージョンの 1 つのセカンダリ サーバーまたはインスタンスのみへのレプリケートがサポートされます。
+自動フェールオーバー グループ機能を使用すると、サーバー上のデータベースのグループ、またはマネージド インスタンス内のすべてのデータベースの別のリージョンへのレプリケーションやフェールオーバーを管理できます。 これは、既存の[アクティブ geo レプリケーション](active-geo-replication-overview.md)機能に基づく宣言型の抽象化であり、geo レプリケーション対応データベースの大規模なデプロイと管理を簡素化するように設計されています。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて Azure サービスに委任することもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL Database や SQL Managed Instance の可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 フェールオーバー グループには、通常同じアプリケーションによって使用される、1 つまたは複数のデータベースを含めることができます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを、別のリージョンの 1 つのセカンダリ サーバーまたはインスタンスのみへのレプリケートがサポートされます。
 
 > [!NOTE]
 > 同じまたは異なるリージョンで複数の Azure SQL Database セカンダリが必要な場合は、[アクティブ geo レプリケーション](active-geo-replication-overview.md)を使用してください。
@@ -203,7 +203,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 1. 計画されたフェールオーバーを実行して、プライマリ サーバーを B に切り替えます。サーバー A が新しいセカンダリ サーバーになります。 フェールオーバーによって、数分間のダウンタイムが発生する場合があります。 実際の時間は、フェールオーバー グループのサイズによって異なります。
 2. サーバー B の各データベースの追加のセカンダリを、[アクティブ geo レプリケーション](active-geo-replication-overview.md)を使用してサーバー C に作成します。 サーバー B の各データベースには、2 つのセカンダリがあり、1 つはサーバー A に、もう 1 つはサーバー C にあります。これにより、移行中、プライマリ データベースが確実に保護された状態を維持できます。
 3. フェールオーバー グループを削除します。 この時点では、ログインは失敗します。 これは、フェールオーバー グループ リスナーの SQL エイリアスが削除されていて、ゲートウェイがフェールオーバー グループの名前を認識しないためです。
-4. サーバー A と C の間で同じ名前のフェールオーバー グループを再作成します。この時点で、ログインは失敗しなくなります。
+4. サーバー B と C の間で同じ名前のフェールオーバー グループを再作成します。この時点で、ログインは失敗しなくなります。
 5. B のすべてのプライマリ データベースを新しいフェールオーバー グループに追加します。
 6. フェールオーバー グループの計画されたフェールオーバーを実行して B と C を切り替えます。これで、サーバー C がプライマリになり、B がセカンダリになります。 サーバー A 上のすべてのセカンダリ データベースは、自動的に C のプライマリにリンクされます。手順 1 と同様に、フェールオーバーによって数分間のダウンタイムが発生する場合があります。
 7. サーバー A を削除します。A のすべてのデータベースは自動的に削除されます。
@@ -231,7 +231,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 > [!IMPORTANT]
 > サブネットに作成された最初のマネージド インスタンスにより、同じサブネット内のそれ以降のすべてのインスタンスに対する DNS ゾーンが決まります。 つまり、同じサブネットの 2 つのインスタンスが異なる DNS ゾーンに属することはできません。
 
-プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ SQL Managed Instance の作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance)」を参照してください。
+プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ SQL Managed Instance の作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)」を参照してください。
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>2 つのインスタンス間のレプリケーション トラフィックを有効にする
 
@@ -398,7 +398,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>フェールオーバー グループのプログラムによる管理
 
-前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関する記事を参照してください。
+前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページをご覧ください。
 
 ### <a name="manage-sql-database-failover"></a>SQL Database のフェールオーバーを管理する
 

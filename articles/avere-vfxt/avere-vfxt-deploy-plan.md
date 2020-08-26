@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT システムの計画 - Azure
-description: Avere vFXT for Azure をデプロイする前に行う計画について説明します
+description: ニーズに適した Avere vFXT for Azure クラスターを計画します。 Azure Marketplace にアクセスしたり、仮想マシンを作成したりする前に確認する質問について説明します。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922678"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272792"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT システムの計画
 

@@ -2,19 +2,17 @@
 title: Recovery Services コンテナーの概要
 description: Recovery Services コンテナーの概要と Azure Backup コンテナーとの比較。
 ms.topic: conceptual
-ms.date: 08/10/2018
-ms.openlocfilehash: 0e1d061c6baf31fad2e937a604098f0baff6086d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 08/17/2020
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041903"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587754"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
 この記事では、Recovery Services コンテナーの機能について説明します。 Recovery Services コンテナーは、データを格納する Azure のストレージ エンティティです。 データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。 Recovery Services コンテナーを使用すると、IaaS VM (Linux または Windows) や Azure SQL データベースなどのさまざまな Azure サービスのバックアップ データを保持できます。 Recovery Services コンテナーは、System Center DPM、Windows Server、Azure Backup Server などをサポートします。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 Recovery Services コンテナーは、Azure の Azure Resource Manager モデルに基づいていて、以下のような機能を提供します。
-
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Recovery Services コンテナーと Backup コンテナーの比較
 
 - **強化されたバックアップ データの保護機能**:Recovery Services コンテナーの場合、Azure Backup によってクラウド バックアップを保護するセキュリティ機能が提供されます。 このセキュリティ機能により、バックアップをセキュリティで保護することができ、運用サーバーとバックアップ サーバーが侵害された場合でもデータを安全に回復できます。 [詳細情報](backup-azure-security-feature.md)
 
@@ -34,10 +32,19 @@ Recovery Services コンテナーは、経時的に作成されたバックア�
 
 - ストレージの冗長性の詳細については、[geo](../storage/common/storage-redundancy.md) と[ローカル](../storage/common/storage-redundancy.md)の冗長性に関する記事を参照してください。
 
-### <a name="additional-resources"></a>その他のリソース
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>Recovery Services コンテナーの暗号化設定
 
-- [コンテナーでサポートされているシナリオとサポートされていないシナリオ](backup-support-matrix.md#vault-support)
-- [コンテナーについてよく寄せられる質問](backup-azure-backup-faq.md)
+この項では、Recovery Services コンテナーに格納されているバックアップ データを暗号化するために使用できるオプションについて説明します。
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>プラットフォーム マネージド キーを使用したバックアップ データの暗号化
+
+既定では、すべてのデータが、プラットフォーム マネージド キーを使用して暗号化されます。 この暗号化を有効にするためにユーザーが明示的なアクションを実行する必要はありません。 これは、Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
+
+自分が所有して管理している暗号化キーを使用してデータを暗号化することを選択できます。 Azure Backup を使用すると、自分のバックアップの暗号化に、Azure Key Vault に格納されているご自身の RSA キーを使用でききます。 バックアップの暗号化に使用される暗号化キーは、ソースに使用されているものと異なることがあります。 データは、AES 256 ベースのデータ暗号化キー (DEK) を使用して保護され、このキーは、ご自身のキーを使用して保護されます。 これにより、データとキーを完全に制御できます。 暗号化を許可するには、Recovery Services コンテナーに、Azure Key Vault の暗号化キーへのアクセスが許可されている必要があります。 キーの無効化とアクセスの取り消しは、必要に応じていつでも可能です。 ただし、コンテナーに対する項目の保護を試みるには、事前にキーを使って暗号化を有効にしておく必要があります。
+
+[カスタマー マネージド キーを使用](encryption-at-rest-with-cmk.md)してバックアップ データを暗号化する方法に関する記事をお読みください。
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
@@ -47,9 +54,15 @@ Azure Advisor では、バックアップされていない VM についての[�
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>その他のリソース
+
+- [コンテナーでサポートされているシナリオとサポートされていないシナリオ](backup-support-matrix.md#vault-support)
+- [コンテナーについてよく寄せられる質問](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>次のステップ
 
-次の記事を参照してください。</br>
-[IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)</br>
-[Azure Backup Server のバックアップ](backup-azure-microsoft-azure-backup.md)</br>
-[Windows Server のバックアップ](backup-windows-with-mars-agent.md)
+次の記事を参照してください。
+
+- [IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)
+- [Azure Backup Server のバックアップ](backup-azure-microsoft-azure-backup.md)
+- [Windows Server のバックアップ](backup-windows-with-mars-agent.md)

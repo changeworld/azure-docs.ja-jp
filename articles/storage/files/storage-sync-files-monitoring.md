@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031083"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271058"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 
@@ -70,7 +70,7 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 次の表に、監視するシナリオの例とアラートに使用する適切なメトリックを示します。
 
-| 通信の種類 | アラートに使用するメトリック |
+| シナリオ | アラートに使用するメトリック |
 |-|-|
 | サーバー エンドポイントの正常性が原因でポータルにエラーが表示される | 同期セッションの結果 |
 | ファイルがサーバーまたはクラウド エンドポイントへの同期に失敗する | ファイルが同期していない |
@@ -135,7 +135,7 @@ Azure File Sync エージェントがインストールされている **Windows
 
 同期の正常性
 
-- 同期セッションが完了すると、イベント ID 9102 がログに記録されます。 同期セッションが正常に終了している (**HResult = 0**) かどうか、および項目単位の同期エラーがあるかどうかを確認する場合は、このイベントを使用します。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)および[項目単位のエラー](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関するドキュメントを参照してください。
+- 同期セッションが完了すると、イベント ID 9102 がログに記録されます。 同期セッションが正常に終了している (**HResult = 0**) かどうか、および項目単位の同期エラーがあるかどうか (**PerItemErrorCount**) を確認する場合は、このイベントを使用します。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)および[項目単位のエラー](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関するドキュメントを参照してください。
 
   > [!Note]  
   > 同期セッション全体が失敗する場合や、PerItemErrorCount が 0 以外の場合があります。 しかし、それでも同期セッションは進行し、一部のファイルは正常に同期します。 このことは、Applied フィールド (AppliedFileCount、AppliedDirCount、AppliedTombstoneCount、AppliedSizeBytes) で確認できます。 このフィールドでは、成功したセッションの数が示されます。 行内に失敗した同期セッションが複数あるのに、Applied の数が増えている場合は、サポート チケットを開く前に、時間をとって同期の再試行を待ちます。
@@ -156,12 +156,13 @@ Azure File Sync エージェントがインストールされている **Windows
   - イベント ID 9016 は、ボリュームの非実体化の結果を示します。 次に例を示します。空き領域の割合、セッション内の非実体化されたファイルの数、非実体化が失敗したファイルの数。
   - イベント ID 9029 では、サーバー エンドポイントの非実体化セッション情報が提供されます。 次に例を示します。セッション内の試行されたファイルの数、セッション内の階層化されたファイルの数、既に階層化されているファイルの数。
   
-- サーバー上の呼び戻しアクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの *[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent]* の下) にあるイベント ID 9005、9006、9009、および 9059 を使用します。
+- サーバー上の呼び戻しアクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの *[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent]* の下) にあるイベント ID 9005、9006、9009、9059、および 9071 を使用します。
 
   - イベント ID 9005 は、サーバー エンドポイントの呼び戻しの信頼性を示します。 次に例を示します。アクセスされた一意のファイルの合計数、アクセスが失敗した一意のファイルの合計数。
   - イベント ID 9006 は、サーバー エンドポイントの呼び戻しエラーの分布を示します。 次に例を示します。失敗した要求の合計数、ErrorCode。 エラー コードごとに 1 つのイベントがログ記録されます。
   - イベント ID 9009 では、サーバー エンドポイントの呼び戻しセッション情報が提供されます。 次に例を示します。DurationSeconds、CountFilesRecallSucceeded、CountFilesRecallFailed。
   - イベント ID 9059 では、サーバー エンドポイントのアプリケーション呼び戻し分布が提供されます。 次に例を示します。ShareId、Application Name、TotalEgressNetworkBytes。
+  - イベント ID 9071 では、サーバー エンドポイントの、クラウドを使った階層化の効率性が示されます。 次に例を示します。TotalDistinctFileCountCacheHit、TotalDistinctFileCountCacheMiss、TotalCacheHitBytes、TotalCacheMissBytes.
 
 ### <a name="performance-counters"></a>パフォーマンス カウンター
 
@@ -171,7 +172,7 @@ Azure File Sync エージェントがインストールされている **Windows
 
 パフォーマンス モニターでは、Azure File Sync の以下のパフォーマンス カウンターを使用できます。
 
-| パフォーマンス オブジェクト\カウンター名 | Description |
+| パフォーマンス オブジェクト\カウンター名 | 説明 |
 |-|-|
 | AFS Bytes Transferred\Downloaded Bytes/sec | 1 秒あたりのダウンロードされたバイト数。 |
 | AFS Bytes Transferred\Uploaded Bytes/sec | 1 秒あたりのアップロードされたバイト数。 |

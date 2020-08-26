@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032596"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606152"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
 
@@ -38,7 +38,7 @@ ms.locfileid: "88032596"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-consulting-service.png)
 
 >[!NOTE]
->オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+>オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 
@@ -216,7 +216,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 すべてのロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
 
--   小のロゴ (48 x 48 ピクセル) は Azure Marketplace の検索結果と、Microsoft AppSource のメイン ページおよび検索結果ページに表示されます。 
+-   小のロゴ (48 x 48 ピクセル) は、Azure Marketplace の検索結果、Microsoft AppSource のメイン ページ、および検索結果ページに表示されます。 
 -   大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルの間) は、Azure Marketplace と Microsoft AppSource のオファーの一覧ページに表示されます。
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)

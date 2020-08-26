@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166741"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606357"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "88166741"
    ![左側のナビゲーション メニューの画像。](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
@@ -315,7 +315,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 (オファーではなく) ソフトウェア プランの簡単な概要です。 この概要は Azure Marketplace の検索結果に表示されます。最大 100 文字を入力できます。
 
-### <a name="plan-description"></a>プランの説明
+### <a name="plan-description"></a>プラン説明
 
 このソフトウェア プラン独特の要素やオファーに含まれる他のプランとの違いを説明します。 オファーについては説明しないでください。プランの説明だけです。 この説明は Azure Marketplace と Azure portal の **[オファーのリスト登録]** ページに表示されます。 プラン概要に入力したものと同じ内容にすることができます。最大 2,000 文字を入力できます。
 

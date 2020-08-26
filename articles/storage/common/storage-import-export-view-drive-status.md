@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8110b98c055a211203fb937990e860fc8dea74f4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923613"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520464"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export ジョブの状態を表示する
 
 この記事では、Azure Import/Export ジョブのドライブとジョブの状態を表示する方法について説明します。 Azure Import/Export サービスは、Azure BLOB と Azure Files に大量のデータを安全に転送するために使用されます。 このサービスは、Azure BLOB Storage からデータをエクスポートするためにも使われます。  
 
 ## <a name="view-job-and-drive-status"></a>ジョブとドライブの状態を表示する
-Azure Portal から、インポート ジョブまたはエクスポート ジョブの状態を追跡できます。 **[インポート/エクスポート]** タブをクリックします。ジョブの一覧がページに表示されます。
+Azure Portal で **[インポート/エクスポート]** タブを選択すると、インポート ジョブまたはエクスポート ジョブの状態を追跡できます。ジョブの一覧がページに表示されます。
 
 ![ジョブの状態の追跡](./media/storage-import-export-service/jobstate.png)
 
@@ -28,7 +28,7 @@ Azure Portal から、インポート ジョブまたはエクスポート ジ�
 
 ドライブの処理状況に応じて、次のジョブの状態のいずれかが表示されます。
 
-| ジョブの状態 | Description |
+| ジョブの状態 | 説明 |
 |:--- |:--- |
 | 作成 | ジョブが作成された後、ジョブの状態は**Creating** (作成) に設定されます。 ジョブが **Creating** 状態である間、Import/Export サービスはドライブがデータ センターにまだ配送されていないものと見なします。 ジョブはこの状態に最大 2 週間留まることができ、その後はサービスによって自動的に削除されます。 |
 | 発送 | パッケージを発送したら、Azure Portal で追跡情報を更新する必要があります。  これにより、ジョブは **Shipping** (発送) 状態になります。 ジョブは、**Shipping** 状態に最大 2 週間留まります。 
@@ -44,11 +44,11 @@ Azure Portal から、インポート ジョブまたはエクスポート ジ�
 
 次の表では、ジョブ内の各ドライブの状態がたどる経過について説明しています。
 
-| ドライブの状態 | Description |
+| ドライブの状態 | 説明 |
 |:--- |:--- |
 | 指定済み | インポート ジョブの場合、Azure portal からジョブが作成されたときのドライブの初期状態は **Specified** (指定済み) です。 エクスポート ジョブの場合、ジョブの作成時にドライブは指定されないので、ドライブの初期状態は**Received** (受取済み) です。 |
 | 受取済み | Import/Export サービスがインポート ジョブの配送業者から受け取ったドライブを処理すると、ドライブの状態は**Received** (受取済み) に変わります。 エクスポート ジョブの場合は、**Received** (受取済み) がドライブの初期状態になります。 |
-| NeverReceived | ジョブのパッケージが到着したものの、パッケージにドライブが含まれていなかった場合は、ドライブの状態は **NeverReceived** (未着) になります。 また、出荷情報を受信してから 2 週間経過してもパッケージがデータ センターに到着しない場合にも、このドライブ状態が設定されます。 |
+| NeverReceived | ジョブのパッケージが到着したものの、パッケージにドライブが含まれていなかった場合は、ドライブの状態は **NeverReceived** (未着) になります。 また、データ センターにパッケージがまだ配送されておらず、少なくとも 2 週間前にサービスが出荷情報を受信している場合も、ドライブはこの状態になります。 |
 | 転送 | ドライブから Azure Storage へのデータ転送が開始されると、ドライブの状態は**Transferring** (転送) に変わります。 |
 | 完了 | すべてのデータがエラーなく正常に転送されると、ドライブの状態は**Completed** (完了) に変わります。
 | CompletedMoreInfo | ドライブとストレージ間でのデータ コピー中に何らかの問題が発生した場合は、ドライブの状態は **CompletedMoreInfo** (完了、情報あり) に変わります。 この情報には、エラー、警告、または BLOB の上書きに関する情報メッセージが含まれる場合があります。
@@ -60,10 +60,10 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 
 次の表は、ドライブのエラー状態と、各状態に対して実行されるアクションを示したものです。
 
-| ドライブの状態 | イベント | 解決方法/次の手順 |
+| ドライブの状態 | Event | 解決方法/次の手順 |
 |:--- |:--- |:--- |
 | NeverReceived | **NeverReceived** としてマークされたドライブ (ジョブの出荷プロセスを通じて受け取られなかったドライブ) は、別便で配送されます。 | 運用チームはドライブを **Received** にします。 |
-| 該当なし | ジョブの対象でないドライブは、別のジョブを通じてデータ センターに配送されます。 | これらのドライブは追加ドライブとしてマークされ、元のパッケージに関連付けられたジョブが完了したときに、ユーザーに返送されます。 |
+| 該当なし | ジョブの対象でないドライブは、別のジョブを通じてデータ センターに配送されます。 | ドライブは追加ドライブとしてマークされます。 元のパッケージに関連付けられたジョブが完了したときに、ユーザーに返送されます。 |
 
 ## <a name="time-to-process-job"></a>ジョブの処理の所要時間
 インポート/エクスポート ジョブの処理にかかる時間は、次のような多くの要因によって異なります。
@@ -73,11 +73,10 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 -  ジョブの種類とコピーされているデータのサイズ
 -  ジョブに含まれるディスクの数 
 
-Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 REST API を使用すると、Azure portal に投稿される状態に加えて、ジョブの進行状況を追跡できます。 [List Jobs](/previous-versions/azure/dn529083(v=azure.100)) 操作 API 呼び出しの達成率パラメーターでは、コピーの進捗率が示されます。
+Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 Azure portal に投稿される状態に加えて、REST API を使用してジョブの進行状況を追跡できます。 [List Jobs](/previous-versions/azure/dn529083(v=azure.100)) 操作 API 呼び出しの達成率パラメーターを使用すると、コピーの進捗率が表示されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [WAImportExport ツールを設定する](storage-import-export-tool-how-to.md)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 * [Azure Import Export REST API サンプル](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

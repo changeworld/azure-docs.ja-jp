@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/09/2020
+ms.date: 08/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114899"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190668"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -130,9 +130,9 @@ Azure リソースを削除しても、関連付けられているメトリッ�
         }
 ```
 
-## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Azure portal を使用してメトリック アラート ルールの Resource Manager テンプレートをエクスポートする
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Azure portal を使用してメトリック アラート ルールの Azure Resource Manager テンプレートをエクスポートする
 
-メトリック アラート ルールの Resource Manager テンプレートをエクスポートすると、その JSON の構文とプロパティを解釈したり、将来のデプロイを自動化するために使用したりできます。
+メトリック アラート ルールの Resource Manager テンプレートのエクスポートは、その JSON 構文やプロパティを理解するために役立ち、将来のデプロイを自動化するために使用できます。
 1. ポータルの **[リソース グループ]** セクションに移動し、ルールが含まれているリソース グループを選択します。
 2. [概要] セクションで、 **[非表示の型の表示]** チェックボックスをオンにします。
 3. **[種類]** フィルターで、 *[microsoft.insights/metricalerts]* を選択します。
@@ -207,7 +207,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 
    - プラットフォーム メトリックの場合: **メトリックの表示名**ではなく、[Azure Monitor でサポートされているメトリックのページ](./metrics-supported.md)の**メトリック**名を使用していることを確認します
 
-   - カスタム メトリックの場合: メトリックが既に出力されていること (まだ存在していないカスタム メトリックに対してアラート ルールを作成することはできないため)、およびカスタム メトリックの名前空間を指定していることを確認します ([こちら](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)の ARM テンプレートの例を参照)
+   - カスタム メトリックの場合: メトリックが既に出力されていること (まだ存在していないカスタム メトリックに対してアラート ルールを作成することはできません)、およびカスタム メトリックの名前空間を指定していることを確認します ([ここ](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)にある Resource Manager テンプレートの例を参照)。
 
 - [ログに関するメトリック アラート](./alerts-metric-logs.md)を作成する場合は、適切な依存関係が含まれていることを確認します。 [サンプル テンプレート](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)を参照してください。
 

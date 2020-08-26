@@ -1,19 +1,19 @@
 ---
 title: アーキテクチャ:グローバル転送ネットワーク アーキテクチャ
 titleSuffix: Azure Virtual WAN
-description: Virtual WAN のグローバル トランジット ネットワーク アーキテクチャについて説明します
+description: クラウド ワークロード間でユビキタスな Any-to-Any 接続を有効にすることで、Azure Virtual WAN でグローバル トランジット ネットワークを実現することについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056892"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212704"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 

@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006334"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263012"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -53,7 +53,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 1. 復元する VM に関連付けられているコンテナーで、 **[バックアップ アイテム]**  >  **[Azure 仮想マシン]** を選択します。
 1. VM を選択します。 既定では、VM ダッシュボードには過去 30 日間の復旧ポイントが表示されます。 30 日前よりも古い復旧ポイントを表示することや、日付、時間範囲、スナップショット整合性の種類をフィルターにして復旧ポイントを探すことができます。
-1. VM を復元するには、 **[VM の復元]** をクリックします。
+1. VM を復元するには、 **[VM の復元]** を選択します。
 
     ![復元ポイント](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 ## <a name="restore-disks"></a>ディスクを復元する
 
-[復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかを実行できます:
+[復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかのアクションを実行できます。
 
 - 復元操作の間に生成されるテンプレートを使用して設定をカスタマイズし、VM のデプロイを開始します。 既定のテンプレート設定を編集し、VM デプロイのテンプレートを送信します。
 - 既存の VM に、[復元されたディスクをアタッチ](../virtual-machines/windows/attach-managed-disk-portal.md)します。
@@ -95,7 +95,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 1. **[リソース グループ]** で、復元されたディスクの既存のリソース グループを選択するか、グローバルに一意の名前を持つ新しいリソース グループを作成します。
 1. **[ステージングの場所]** で、VHD のコピー先となるストレージ アカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
-    ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![[リソース グループ] と [ステージングの場所] を選択します](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. **[復元]** を選択して復元操作をトリガーします。
 
