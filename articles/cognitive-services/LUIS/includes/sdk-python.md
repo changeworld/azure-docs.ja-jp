@@ -148,7 +148,7 @@ LUIS アプリのモデルの中で最も重要なオブジェクトが、意図
 
 エンティティ作成コードによって、サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が `Quantity` サブエンティティに適用されます。
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="エンティティ作成コードによって、サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が "Quantity" サブエンティティに適用されます。":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="エンティティ作成コードによって、サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が Quantity サブエンティティに適用されます。":::
 
 [!code-python[Create entities](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringAddEntities)]
 
