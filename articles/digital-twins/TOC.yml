@@ -88,6 +88,8 @@
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
           href: how-to-integrate-time-series-insights.md
+        - name: Logic Apps との統合
+          href: how-to-integrate-logic-apps.md
     - name: トラブルシューティング
       items:
         - name: Azure Monitor のメトリックを表示する

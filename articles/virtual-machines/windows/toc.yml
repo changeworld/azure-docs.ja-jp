@@ -282,7 +282,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: スポット VM
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 一時ディスクを使用しない Azure VM
           href: ../azure-vms-no-temp-disk.md
         - name: Azure VM のサイズの名前付け規則
@@ -879,15 +879,15 @@
             - name: ホスト時の暗号化を有効にする - PowerShell
               href: disks-enable-host-based-encryption-powershell.md
             - name: ホスト時の暗号化を有効にする - ポータル
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: カスタマー マネージド キーを有効にする - PowerShell
               href: disks-enable-customer-managed-keys-powershell.md
             - name: カスタマー マネージド キーを有効にする - ポータル
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 保存時の二重暗号化を有効にする
               href: disks-enable-double-encryption-at-rest-powershell.md
             - name: 保存時の二重暗号化を有効にする - ポータル
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 移行と変換
           items:
             - name: Standard と Premium 間でディスクを変換する
@@ -911,7 +911,7 @@
         - name: アタッチされていないディスクの検出 - ポータル
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクに関する FAQ
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: ネットワークの管理
       href: ps-common-network-ref.md
       items:

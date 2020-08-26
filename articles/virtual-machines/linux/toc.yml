@@ -297,7 +297,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: スポット VM
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 一時ディスクを使用しない Azure VM
           href: ../azure-vms-no-temp-disk.md
         - name: Azure VM のサイズの名前付け規則
@@ -984,15 +984,15 @@
             - name: ホスト時の暗号化を有効にする - CLI
               href: disks-enable-host-based-encryption-cli.md
             - name: ホスト時の暗号化を有効にする - ポータル
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: カスタマー マネージド キーを有効にする - CLI
               href: disks-enable-customer-managed-keys-cli.md
             - name: カスタマー マネージド キーを有効にする - ポータル
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 保存時の二重暗号化を有効にする - CLI
               href: disks-enable-double-encryption-at-rest-cli.md
             - name: 保存時の二重暗号化を有効にする - ポータル
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行と変換
           items:
             - name: Azure Site Recovery を使用した Premium Storage への移行
@@ -1024,7 +1024,7 @@
         - name: File Storage を使用する
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: ディスクに関する FAQ
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: ネットワークの管理
       items:
         - name: Create virtual network
