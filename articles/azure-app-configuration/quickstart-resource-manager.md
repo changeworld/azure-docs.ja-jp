@@ -9,12 +9,12 @@ ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 9b609d4571d6240f428a0210aa5108ff19dc753b
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7b7dd00d3495c24733ecdc213e0e25f8bc9640eb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235181"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661471"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>クイック スタート:App Configuration と Resource Manager テンプレートを使用した VM の自動デプロイ (ARM テンプレート)
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-templates"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)からのものです。 [1 つ目のテンプレート](https://azure.microsoft.comresources/templates/101-app-configuration-store/)は、App Configuration ストアを作成するものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)からのものです。 [1 つ目のテンプレート](https://azure.microsoft.com/resources/templates/101-app-configuration-store/)は、App Configuration ストアを作成するものです。
 
 :::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
 
