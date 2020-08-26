@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fcefdfd163bcbd9cd2adfcba6bf6711b9bee18
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d9229137c999157d2cea112ebb5e6e8b169eed96
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041675"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192771"
 ---
 # <a name="workflow-automation"></a>ワークフローの自動化
 
@@ -32,7 +32,7 @@ ms.locfileid: "88041675"
 |----|:----|
 |リリース状態:|一般公開|
 |価格:|Free レベル|
-|必要なロールとアクセス許可:|エクスポート構成を含むサブスクリプション上での**閲覧者**<br>リソース グループ上での**セキュリティ管理者ロール**または**所有者**<br>ターゲット リソースに対する書き込みアクセス許可も必要になります<br><br>Azure Logic Apps のワークフローを操作するには、次のロジック アプリのロール/アクセス許可も必要です。<br> - [ロジック アプリのオペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)のアクセス許可が必要。または、ロジック アプリの読み取り/トリガーのアクセス権 (このロールでは、ロジック アプリを作成したり編集したりすることはできません。既存のものを*実行*するだけです)<br> - [ロジック アプリの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)のアクセス許可は、ロジック アプリの作成と変更に必要です<br>ロジック アプリのコネクタを使用する場合は、それぞれのサービス (たとえば、Outlook/Teams/Slack のインスタンス) にサインインするために追加の資格情報が必要になることがあります。|
+|必要なロールとアクセス許可:|リソース グループ上での**セキュリティ管理者ロール**または**所有者**<br>ターゲット リソースに対する書き込みアクセス許可も必要になります<br><br>Azure Logic Apps のワークフローを操作するには、次のロジック アプリのロール/アクセス許可も必要です。<br> - [ロジック アプリのオペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)のアクセス許可が必要。または、ロジック アプリの読み取り/トリガーのアクセス権 (このロールでは、ロジック アプリを作成したり編集したりすることはできません。既存のものを*実行*するだけです)<br> - [ロジック アプリの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)のアクセス許可は、ロジック アプリの作成と変更に必要です<br>ロジック アプリのコネクタを使用する場合は、それぞれのサービス (たとえば、Outlook/Teams/Slack のインスタンス) にサインインするために追加の資格情報が必要になることがあります。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
 
@@ -44,7 +44,8 @@ ms.locfileid: "88041675"
 
     [![ワークフローの自動化の一覧](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
-    このページで、新しい自動化ルールを作成したり、既存のものを有効化、無効化、または削除したりすることができます。  
+    このページで、新しい自動化ルールを作成したり、既存のものを有効化、無効化、または削除したりすることができます。
+
 1. 新しいワークフローを定義するには、 **[Add workflow automation]\(ワークフローの自動化の追加\)** をクリックします。 
 
     新しい自動化のオプションを含むウィンドウが表示されます。 ここで、以下を入力できます。
@@ -86,9 +87,9 @@ ms.locfileid: "88041675"
 
 ## <a name="manually-trigger-a-logic-app"></a>ロジック アプリを手動でトリガーする
 
-セキュリティ アラートまたは[クイック修復のレコメンデーション](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation)を提供する任意の推奨事項を表示しているときに、ロジック アプリを手動で実行することもできます。
+セキュリティのアラートまたは推奨事項を表示しているときに、ロジック アプリを手動で実行することもできます。
 
-ロジック アプリを手動で実行するには、アラートまたはクイック修復のレコメンデーションをサポートする推奨事項を開き、 **[Trigger Logic App]\(ロジック アプリのトリガー\)** をクリックします。
+ロジック アプリを手動で実行するには、アラートまたは推奨事項を開き、 **[ロジック アプリのトリガー]** をクリックします。
 
 [![ロジック アプリを手動でトリガーする](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 

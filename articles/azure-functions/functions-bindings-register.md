@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031126"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224783"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 
@@ -53,7 +53,7 @@ Azure Functions Core Tools、Visual Studio Code を使用するすべてのロ�
 
 ## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet パッケージ
 
-C# クラス ライブラリベースの関数プロジェクトについては、クラスではないプロジェクト専用に設計された拡張機能バンドルをインストールしてください。 
+C# クラス ライブラリ ベースの関数プロジェクトについては、拡張機能を直接インストールする必要があります。 拡張機能バンドルは、C# クラス ライブラリ ベースではないプロジェクト専用に設計されています。
 
 ### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a> Visual Studio を使用する C\# クラス ライブラリ
 
@@ -83,6 +83,6 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 例の中の `<TARGET_VERSION>` を `3.0.0-beta5` などの特定のバージョンのパッケージに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。Functions ランタイム 1.x または 2.x に対応する主要なバージョンは、バインデイングのリファレンス記事に示されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバンドの例](./functions-bindings-example.md)

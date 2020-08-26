@@ -1,6 +1,6 @@
 ---
 title: Azure Network Watcher のインスタンスの作成 | Microsoft Docs
-description: Azure リージョンで Network Watcher を有効にする方法について説明します。
+description: Azure portal またはその他のテクノロジを使用して Azure リージョンに Azure Network Watcher を作成する方法と、Network Watcher を削除する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846855"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272163"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher のインスタンスの作成
 
@@ -125,7 +125,7 @@ New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWa
 Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで Network Watcher のインスタンスが作成できました。利用可能な機能については、以下をご覧ください。
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 06/15/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 03a51cc8aa86f40b5333bd79e95e6d02be1adfc4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066068"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213840"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -89,11 +89,11 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 > [!IMPORTANT]
 > このロールのユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーの資格情報を変更するということは、そのユーザーの ID とアクセス許可を引き受けることができるということを意味します。 次に例を示します。
 >
->- 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、認証管理者に付与されていないAzure AD およびその他の場所への特権アクセス許可がある場合があります。 認証管理者は、このパスからアプリケーション所有者の ID を引き受け、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を引き受けることができる場合があります。
->- 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
->- グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
->- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
->- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
+>* 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、認証管理者に付与されていないAzure AD およびその他の場所への特権アクセス許可がある場合があります。 認証管理者は、このパスからアプリケーション所有者の ID を引き受け、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を引き受けることができる場合があります。
+>* 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
+>* グループ メンバーシップを管理できるセキュリティ グループと Microsoft 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+>* Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
+>* 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理者](#azure-devops-administrator-permissions)
 
@@ -206,7 +206,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="exchange-administrator"></a>[Exchange 管理者](#exchange-service-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 また、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 また、すべての Microsoft 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "Exchange サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Exchange 管理者" になります。 [Exchange 管理センター](https://go.microsoft.com/fwlink/p/?LinkID=529144)では "Exchange Online 管理者" になります。
@@ -277,7 +277,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 >
 >- 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびヘルプデスク管理者に付与されていない場所への特権アクセス許可がある場合があります。 ヘルプデスク管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
 >- 機密情報や個人情報または Azure の重要な構成にアクセスする可能性がある Azure サブスクリプション所有者。
->- グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+>- グループ メンバーシップを管理できるセキュリティ グループと Microsoft 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
 >- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
 >- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
@@ -467,7 +467,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 ### <a name="sharepoint-administrator"></a>[SharePoint 管理者](#sharepoint-service-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、すべての Office 365 グループを作成および管理し、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、[管理者の役割](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)に関する記事をご覧ください。
+このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、すべての Microsoft 365 グループを作成および管理し、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、[管理者の役割](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)に関する記事をご覧ください。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "SharePoint サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"SharePoint 管理者" になります。
@@ -496,7 +496,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 ### <a name="teams-service-administrator"></a>[Teams サービス管理者](#teams-service-administrator-permissions)
 
-このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールはさらに、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
+このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールはさらに、すべての Microsoft 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
 
 ### <a name="user-administrator"></a>[ユーザー管理者](#user-administrator-permissions)
 
@@ -513,7 +513,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 >
 >- 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびユーザー管理者に付与されていない場所への特権アクセス許可がある場合があります。 ユーザー管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
 >- 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
->- グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+>- グループ メンバーシップを管理できるセキュリティ グループと Microsoft 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
 >- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
 >- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
@@ -1030,7 +1030,6 @@ Azure AD Connect サービスでのみ使用されます。
 | microsoft.directory/users/reprocessLicenseAssignment | Azure Active Directory でのユーザーのライセンス割り当ての再処理。 |
 | microsoft.directory/users/userPrincipalName /update | Azure Active Directory での users.userPrincipalName プロパティの更新。 |
 
-
 ### <a name="exchange-service-administrator-permissions"></a>Exchange サービス管理者のアクセス許可
 
 Exchange 製品のすべての側面を管理できます。
@@ -1045,11 +1044,11 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
-| microsoft.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
-| microsoft.directory/groups/unified/create | Office 365 グループを作成します。 |
-| microsoft.directory/groups/unified/delete | Office 365 グループを削除します。 |
-| microsoft.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
-| microsoft.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
+| microsoft.directory/groups/unified/basic/update | Microsoft 365 グループの基本プロパティを更新します。 |
+| microsoft.directory/groups/unified/create | Microsoft 365 グループを作成します。 |
+| microsoft.directory/groups/unified/delete | Microsoft 365 グループを削除します。 |
+| microsoft.directory/groups/unified/members/update | Microsoft 365 グループのメンバーシップを更新します。 |
+| microsoft.directory/groups/unified/owners/update | Microsoft 365 グループの所有権を更新します。 |
 | microsoft.office365.exchange/allEntities/allTasks | Exchange Online の全側面の管理。 |
 | microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
@@ -1759,11 +1758,11 @@ SharePoint サービスのすべての側面を管理できます。
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
-| microsoft.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
-| microsoft.directory/groups/unified/create | Office 365 グループを作成します。 |
-| microsoft.directory/groups/unified/delete | Office 365 グループを削除します。 |
-| microsoft.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
-| microsoft.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
+| microsoft.directory/groups/unified/basic/update | Microsoft 365 グループの基本プロパティを更新します。 |
+| microsoft.directory/groups/unified/create | Microsoft 365 グループを作成します。 |
+| microsoft.directory/groups/unified/delete | Microsoft 365 グループを削除します。 |
+| microsoft.directory/groups/unified/members/update | Microsoft 365 グループのメンバーシップを更新します。 |
+| microsoft.directory/groups/unified/owners/update | Microsoft 365 グループの所有権を更新します。 |
 | microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | microsoft.office365.sharepoint でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
@@ -1834,11 +1833,11 @@ Microsoft Teams サービスを管理できます。
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.directory/groups/hiddenMembers/read | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
-| microsoft.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
-| microsoft.directory/groups/unified/create | Office 365 グループを作成します。 |
-| microsoft.directory/groups/unified/delete | Office 365 グループを削除します。 |
-| microsoft.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
-| microsoft.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
+| microsoft.directory/groups/unified/basic/update | Microsoft 365 グループの基本プロパティを更新します。 |
+| microsoft.directory/groups/unified/create | Microsoft 365 グループを作成します。 |
+| microsoft.directory/groups/unified/delete | Microsoft 365 グループを削除します。 |
+| microsoft.directory/groups/unified/members/update | Microsoft 365 グループのメンバーシップを更新します。 |
+| microsoft.directory/groups/unified/owners/update | Microsoft 365 グループの所有権を更新します。 |
 | microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |

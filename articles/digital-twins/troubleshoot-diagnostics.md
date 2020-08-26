@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003582"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612403"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
@@ -57,7 +57,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
 
 診断設定を構成するとき **[カテゴリの詳細]** で選択できるログ カテゴリの詳細を次に示します。
 
-| ログのカテゴリ | Description |
+| ログのカテゴリ | 説明 |
 | --- | --- |
 | ADTModelsOperation | モデルに関連するすべての API 呼び出しをログに記録します |
 | ADTQueryOperation | クエリに関連するすべての API 呼び出しをログに記録します |
@@ -70,7 +70,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
 | --- | --- |
 | Write | PUT と PATCH |
 | Read | GET |
-| 削除 | Del |
+| 削除 | DELETE |
 | アクション | POST |
 
 各カテゴリに記録される操作と対応する [Azure Digital Twins REST API 呼び出し](https://docs.microsoft.com/rest/api/azure-digitaltwins/)の一覧を次に示します。 
@@ -88,7 +88,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
 | ADTEventRoutesOperation | Microsoft.DigitalTwins/eventroutes/write | イベント ルート追加 API |
 |  | Microsoft.DigitalTwins/eventroutes/read | イベント ルートの ID による取得とリスト API |
 |  | Microsoft.DigitalTwins/eventroutes/delete | イベント ルートの削除 API |
-|  | Microsoft.DigitalTwins/eventroutes/action | エンドポイント サービスへのイベントの送信 (API 呼び出しではない) |
+|  | Microsoft.DigitalTwins/eventroutes/action | エンドポイント サービスにイベントを発行しようとしてエラーが発生した (API 呼び出しではない) |
 | ADTDigitalTwinsOperation | Microsoft.DigitalTwins/digitaltwins/write | Digital Twins の追加、リレーションシップの追加、更新、コンポーネントの更新 |
 |  | Microsoft.DigitalTwins/digitaltwins/read | Digital Twins の ID による取得、コンポーネントの取得、ID によるリレーションシップの取得、受信リレーションシップのリスト、リレーションシップのリスト |
 |  | Microsoft.DigitalTwins/digitaltwins/delete | Digital Twins の削除、リレーションシップの削除 |
