@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422447"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798178"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>[組織] ページから接続済み組織を管理する
 
@@ -30,7 +30,7 @@ ms.locfileid: "87422447"
 - **その他の組織**。 その他の組織は、ご自分の職場または学校アカウントを使用して前にサインインしたことがあるグループです。 これらの組織からの脱退は、いつでも実行できます。
 
 >[!Important]
->この記事は、職場または学校アカウントに接続されている組織情報を更新するユーザーを対象としています。 従業員のグループとユーザーの管理、およびその他の用途に関する情報を探している管理者の場合は、「[Enterprise ユーザー管理のドキュメント](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index)」を参照してください。
+>この記事は、職場または学校アカウントに接続されている組織情報を更新するユーザーを対象としています。 従業員のグループとユーザーの管理、およびその他の用途に関する情報を探している管理者の場合は、「[Enterprise ユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
 
 ## <a name="view-your-organizations"></a>組織を表示する
 
@@ -61,7 +61,7 @@ ms.locfileid: "87422447"
 
 組織を表示した後、次のことができます。
 
-- [セキュリティ情報](user-help-security-info-overview.md)を表示または管理する。
+- [セキュリティ情報](./security-info-setup-signin.md)を表示または管理する。
 
 - 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する。
 

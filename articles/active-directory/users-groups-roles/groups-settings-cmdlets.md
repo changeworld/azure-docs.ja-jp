@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58fc6726811ac01b585dd51b2086966f7a3f7c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 63f0c55823899be8eb4146860787aede2cd2d6b5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213592"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797906"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -28,11 +28,11 @@ ms.locfileid: "88213592"
 > [!IMPORTANT]
 > 一部の設定には、Azure Active Directory Premium P1 ライセンスが必要です。 詳細については、「[テンプレート設定](#template-settings)」の表を参照してください。
 
-管理者でないユーザーがセキュリティ グループを作成できないようにするには、「[Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` を設定します。
+管理者でないユーザーがセキュリティ グループを作成できないようにするには、「[Set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` を設定します。
 
 Microsoft 365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成されます。 最初は、ディレクトリには Settings オブジェクトが表示されません。これは、ディレクトリが既定の設定で構成されているためです。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリの Microsoft 365 グループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループの Microsoft 365 グループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、Microsoft 365 グループへのゲストのアクセスを管理するために使用します。 
 
-コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azure/active-directory/overview)」を参照してください。 公開版のバージョン 2 モジュールは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/)からインストールできます。
+コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/overview)」を参照してください。 公開版のバージョン 2 モジュールは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/)からインストールできます。
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell コマンドレットのインストール
 

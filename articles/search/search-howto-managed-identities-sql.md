@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553140"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924131"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する (プレビュー)
 
@@ -44,7 +44,7 @@ ms.locfileid: "88553140"
 
 次の手順でデータベースに接続する際には、検索サービス上でデータベースへのアクセスが許可されるように、データベースに対する管理者アクセス権がある Azure Active Directory (Azure AD) アカウントで接続を行う必要があります。
 
-[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)の手順に従って、ご自身の Azure AD アカウントにデータベースへの管理者アクセス権を付与してください。
+[こちら](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-database)の手順に従って、ご自身の Azure AD アカウントにデータベースへの管理者アクセス権を付与してください。
 
 ### <a name="3---assign-the-search-service-permissions"></a>3 - 検索サービスにアクセス許可を割り当てる
 
@@ -97,9 +97,9 @@ ms.locfileid: "88553140"
 
 ### <a name="5---create-the-data-source"></a>5 - データ ソースを作成する
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、Azure SQL Database のデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
+[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、Azure SQL Database のデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用してデータ ソースを作成する場合、データ ソースには次の必須プロパティが必要です。
+[REST API](/rest/api/searchservice/create-data-source) を使用してデータ ソースを作成する場合、データ ソースには次の必須プロパティが必要です。
 
 * **name** は、Search サービス内のデータ ソースの一意の名前です。
 * **型**は、`azuresql` です
@@ -109,7 +109,7 @@ ms.locfileid: "88553140"
         * *Initial Catalog|Database=**データベース名**;ResourceId=/subscriptions/**お使いのサブスクリプション ID**/resourceGroups/**お使いのリソース グループ名**/providers/Microsoft.Sql/servers/**お使いの SQL Server 名**/;Connection Timeout=**接続タイムアウトの長さ**;*
 * **container** には、インデックスを作成する対象のテーブルまたはビューの名前を指定します。
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して Azure SQL データ ソース オブジェクトを作成する方法の例:
+[REST API](/rest/api/searchservice/create-data-source) を使用して Azure SQL データ ソース オブジェクトを作成する方法の例:
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -144,7 +144,7 @@ api-key: [admin key]
 }
 ```
 
-インデックスの作成の詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
+インデックスの作成の詳細については、[インデックスの作成](/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
 ### <a name="7---create-the-indexer"></a>7 - インデクサーを作成する
 
@@ -169,13 +169,13 @@ api-key: [admin key]
 
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
+インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-インデクサーからデータ ソースへの接続を試みたときに、クライアントではサーバーへのアクセスが許可されていないことを示すエラーを受信した場合は、[一般的なインデクサー エラー](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting)に関する記事を参照してください。
+インデクサーからデータ ソースへの接続を試みたときに、クライアントではサーバーへのアクセスが許可されていないことを示すエラーを受信した場合は、[一般的なインデクサー エラー](./search-indexer-troubleshooting.md)に関する記事を参照してください。
 
 ## <a name="see-also"></a>関連項目
 

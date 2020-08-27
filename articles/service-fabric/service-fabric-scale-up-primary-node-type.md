@@ -4,12 +4,12 @@ description: ノードの種類を追加して Service Fabric クラスターを
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: eecf398359470f6e5e151c53eb63b3cb56efbe39
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056756"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854615"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>ノードの種類を追加して Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
 この記事では、クラスターにノードの種類を追加して Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。
@@ -43,7 +43,7 @@ $resourceGroupName = "myResourceGroup"
 $location = "WestUS"
 
 New-AzResourceGroup `
-    -Name $resourceGroupName
+    -Name $resourceGroupName `
     -Location $location
 ```
 3. テンプレート ファイル内のパラメーター値を入力します。 
@@ -56,7 +56,7 @@ $parameterFilePath = "C:\AzureDeploy.Parameters.json"
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
+    -TemplateParameterFile $parameterFilePath
 ```
 
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>クラスターに新しいプライマリ ノード タイプを追加する

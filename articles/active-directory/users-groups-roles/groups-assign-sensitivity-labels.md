@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f80b986a9d1a3b2be9aa413ce4175d8eb88bc4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213833"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795323"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 
-Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)によって公開されている秘密度ラベルを Microsoft 365 グループに適用することがサポートされています。 秘密度ラベルは、Outlook、Microsoft Teams、SharePoint などのサービス全体で、グループに対して適用されます。 現在、この機能はパブリック GA 段階にあります。 Office 365 アプリのサポートの詳細については、[Office 365 での秘密度ラベルのサポート](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)に関する記事を参照してください。
+Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)によって公開されている秘密度ラベルを Microsoft 365 グループに適用することがサポートされています。 秘密度ラベルは、Outlook、Microsoft Teams、SharePoint などのサービス全体で、グループに対して適用されます。 現在、この機能はパブリック GA 段階にあります。 Office 365 アプリのサポートの詳細については、[Office 365 での秘密度ラベルのサポート](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > この機能を構成するには、Azure AD 組織にアクティブな Azure Active Directory Premium P1 ライセンスが少なくとも 1 つ必要です。
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
     ```
 
     > [!NOTE]
-    > この Azure AD 組織に対してグループ設定が作成されていない場合は、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
+    > この Azure AD 組織に対してグループ設定が作成されていない場合は、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](./groups-settings-cmdlets.md)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
 
 1. 次に、現在のグループ設定を表示します。
 
@@ -145,7 +145,7 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Microsoft Teams、Microsoft 365 グループ、SharePoint サイトで秘密度ラベルを使用する](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Microsoft Teams、Microsoft 365 グループ、SharePoint サイトで秘密度ラベルを使用する](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Azure AD PowerShell スクリプトを使用して、ラベルのポリシーを手動で変更した後にグループを更新する](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
-- [グループの設定を編集する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
-- [PowerShell コマンドを使用してグループを管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)
+- [グループの設定を編集する](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [PowerShell コマンドを使用してグループを管理する](./groups-settings-v2-cmdlets.md)
