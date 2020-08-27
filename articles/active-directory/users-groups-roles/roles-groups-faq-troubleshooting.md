@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208188"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798297"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>クラウド グループに割り当てられているロールのトラブルシューティング
 
@@ -40,8 +40,8 @@ ms.locfileid: "88208188"
 
 **A:** そのユーザーは、ロールを割り当て可能なグループの所有者である可能性があります。 特権の昇格を避けるため、ロールを割り当て可能なグループの所有者は保護されています。 たとえば、Contoso_Security_Admins というグループがセキュリティ管理者ロールに割り当てられており、Bob がそのグループの所有者で、Alice は組織内のパスワード管理者であるとします。 この保護が存在しないとすれば、Alice が Bob の資格情報をリセットして、Bob の ID を引き継ぐことが可能になります。 そうなると、Alice は自身や他のユーザーを Contoso_Security_Admins グループに追加して、その組織のセキュリティ管理者になることができてしまいます。 あるユーザーがグループの所有者であるかどうかを確認するには、そのユーザーの所有オブジェクトの一覧を取得し、そのグループのいずれかで isAssignableToRole が true に設定されているかどうかを確認します。 設定されている場合、そのユーザーは保護対象であり、この動作は仕様によるものです。 所有オブジェクトの取得については、次のドキュメントを参照してください。
 
-- [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [List ownedObjects](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
+- [List ownedObjects](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
 
 **質問:** Azure AD ロールに割り当てることができるグループ (具体的には、isAssignableToRole プロパティが true に設定されているグループ) にアクセス レビューを作成できますか?  
 
