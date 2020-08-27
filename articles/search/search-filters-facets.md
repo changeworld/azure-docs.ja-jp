@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5771a6e615535a9a158e6378cd36b6e0df58bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084213"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923128"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Cognitive Search でファセット フィルターを作成する方法 
 
@@ -38,7 +38,7 @@ ms.locfileid: "87084213"
 
 ファセットは、インデックスの作成時に `facetable` 属性を `true` に設定することで、フィールドごとに有効になります。 通常、エンド ユーザーが選択したファセットに基づいて検索アプリケーションがこのようなフィールドでフィルター処理を行うことができるように、これらのフィールドの `filterable` 属性も `true` に設定する必要があります。 
 
-REST API を使用してインデックスを作成すると、ファセット ナビゲーションで使用される可能性があるすべての[フィールドの型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)が、既定で `facetable` とマークされます。
+REST API を使用してインデックスを作成すると、ファセット ナビゲーションで使用される可能性があるすべての[フィールドの型](/rest/api/searchservice/supported-data-types)が、既定で `facetable` とマークされます。
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
@@ -77,11 +77,11 @@ REST API を使用してインデックスを作成すると、ファセット �
 ```
 
 > [!Note]
-> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
+> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](./search-get-started-powershell.md)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
-(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
+(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](./search-get-started-dotnet.md#1---create-an-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
 
 ## <a name="add-facet-filters-to-a-query"></a>クエリへのファセット フィルターの追加
 
@@ -124,5 +124,5 @@ Azure Cognitive Search のファセット ナビゲーションの課題の 1 �
 ## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search のフィルター](search-filters.md)
-+ [Index REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Index REST API の作成](/rest/api/searchservice/create-index)
++ [Search Documents REST API](/rest/api/searchservice/search-documents)

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209468"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799062"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -211,7 +211,7 @@ PowerShell または Graph API でグループを削除しようとした場合�
 
 - 大きなグループ (例: ユーザーが 100,000 人) に対してライセンスを割り当てるまたはライセンスを変更すると、パフォーマンスに影響が及ぶことがあります。 特に、Azure AD のオートメーションによって生成される変更の量によっては、Azure AD とオンプレミスのシステム間のディレクトリの同期のパフォーマンスに悪影響を及ぼす可能性があります。
 
-- 動的なグループを使用してユーザーのメンバーシップを管理している場合は、ユーザーがそのグループのメンバーであることを確認します。これは、ライセンスを割り当てるうえで必要です。 そうでない場合は、動的なグループの[メンバーシップ ルールの処理状態を確認](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)します。
+- 動的なグループを使用してユーザーのメンバーシップを管理している場合は、ユーザーがそのグループのメンバーであることを確認します。これは、ライセンスを割り当てるうえで必要です。 そうでない場合は、動的なグループの[メンバーシップ ルールの処理状態を確認](./groups-create-rule.md)します。
 
 - 負荷が高い状況では、グループのライセンス変更や、既存のライセンスがあるグループのメンバー シップ変更を処理する場合に時間がかかることがあります。 ユーザー数が 60K 以下のグループ サイズの変更処理にかかっている時間が 24 時間を超えた場合には、[サポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) Microsoft に調査を依頼してください。 
 
