@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504944"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690325"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS のデプロイ
 
@@ -247,7 +247,7 @@ ms.locfileid: "88504944"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -353,9 +353,9 @@ SAP インストール マニュアルによると、Oracle 関連のファイ�
 tempfiles に適した領域の量を決定するには、既存のシステムで tempfiles のサイズを確認することができます。
 
 ### <a name="storage-configuration"></a>ストレージの構成
-NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。 すべてのデータベース ファイルは、Managed Disks (推奨) または VHD 上の NTFS ファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)または [Azure Managed Disks](../../windows/managed-disks-overview.md) に基づいています。 
+NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。 すべてのデータベース ファイルは、Managed Disks (推奨) または VHD 上の NTFS ファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)または [Azure Managed Disks](../../managed-disks-overview.md) に基づいています。 
 
-[Azure Managed Disks](../../windows/managed-disks-overview.md) の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Premium SSD](../../windows/disks-types.md) の使用も強くお勧めします。
+[Azure Managed Disks](../../managed-disks-overview.md) の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Premium SSD](../../disks-types.md) の使用も強くお勧めします。
 
 ネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、次を参照してください。
 
@@ -442,11 +442,11 @@ SAP インストール マニュアルによると、Oracle 関連のファイ�
 
 ### <a name="storage-configuration"></a>ストレージの構成
 
-Azure 上の Oracle Database ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)または [Azure Managed Disks](../../windows/managed-disks-overview.md) に基づいています。
+Azure 上の Oracle Database ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)または [Azure Managed Disks](../../managed-disks-overview.md) に基づいています。
 
-Oracle Linux UEK カーネルでは、[Azure Premium SSD](../../windows/premium-storage-performance.md#disk-caching) をサポートするには少なくとも UEK バージョン 4 が必要です。
+Oracle Linux UEK カーネルでは、[Azure Premium SSD](../../premium-storage-performance.md#disk-caching) をサポートするには少なくとも UEK バージョン 4 が必要です。
 
-[Azure マネージド ディスク](../../windows/managed-disks-overview.md)の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium SSD](../../windows/disks-types.md) の使用も強くお勧めします。
+[Azure マネージド ディスク](../../managed-disks-overview.md)の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium SSD](../../disks-types.md) の使用も強くお勧めします。
 
 ネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、「 
 

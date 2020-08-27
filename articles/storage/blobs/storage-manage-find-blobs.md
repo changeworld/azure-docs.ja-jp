@@ -3,17 +3,17 @@ title: BLOB インデックスを使用して Azure Blob Storage でデータを
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、および検出のためのクエリを実行する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 08/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ed70a05e0a6213ce00a6e0514f0741e8abbaeef9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499876"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690376"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)
 

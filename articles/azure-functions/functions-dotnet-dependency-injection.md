@@ -1,18 +1,18 @@
 ---
 title: .NET Azure Functions で依存関係の挿入を使用する
 description: .NET 関数にサービスを登録して使用するために、依存関係の挿入を使用する方法について学習します
-author: craigshoemaker
+author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/15/2020
-ms.author: cshoe
+ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6fe6079ca4cdf76757088cbdc00dd1af3c2225ea
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603865"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642369"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 

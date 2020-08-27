@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ec0c39bad8a7c12822e5ebf5cd4a958aa8653050
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a0f06c2db0a5bf196ae610efadd85ef1df8defe8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844645"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691311"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning と Fairlearn オープンソース パッケージを使用して ML モデルの公平性を評価する (プレビュー)
 
@@ -33,7 +33,7 @@ ms.locfileid: "87844645"
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning の公平性 SDK 
 
-Azure Machine Learning の公平性 SDK `azureml-contrib-fairness` では、オープンソースの Python パッケージ [Fairlearn](http://fairlearn.github.io) が Azure Machine Learning 内に統合されます。 Azure Machine Learning 内での Fairlearn の統合について詳しくは、これらの[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)をご覧ください。 Fairlearn の詳細については、[サンプル ガイド](https://fairlearn.github.io/auto_examples/notebooks/index.html)と[サンプル ノートブック](https://github.com/fairlearn/fairlearn/tree/master/notebooks)を参照してください。 
+Azure Machine Learning の公平性 SDK `azureml-contrib-fairness` では、オープンソースの Python パッケージ [Fairlearn](http://fairlearn.github.io) が Azure Machine Learning 内に統合されます。 Azure Machine Learning 内での Fairlearn の統合について詳しくは、これらの[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)をご覧ください。 Fairlearn の詳細については、[サンプル ガイド](https://fairlearn.github.io/auto_examples/)と[サンプル ノートブック](https://github.com/fairlearn/fairlearn/tree/master/notebooks)を参照してください。 
 
 次のコマンドを使用して、`azureml-contrib-fairness` および `fairlearn` パッケージをインストールします。
 ```bash

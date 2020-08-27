@@ -4,23 +4,25 @@ description: コンテナーまたは BLOB レベルで BLOB データを分離�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/04/2020
+ms.date: 08/25/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564148"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870257"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>暗号化スコープの作成と管理 (プレビュー)
 
 暗号化スコープ (プレビュー) を使用すると、個々の BLOB またはコンテナー レベルで暗号化を管理できます。 暗号化スコープでは、ストレージ アカウント内のセキュリティで保護されたエンクレーブで BLOB データを分離します。 暗号化スコープを使用すると、異なる顧客が所有する、同じストレージ アカウントに存在するデータの間にセキュリティで保護された境界を作成できます。 暗号化スコープの詳細については、[Blob Storage の暗号化スコープ (プレビュー)](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview) に関する記事を参照してください。
 
 この記事では、暗号化スコープを作成する方法について説明します。 また、BLOB またはコンテナーを作成するときに暗号化スコープを指定する方法についても説明します。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>暗号化スコープの作成
 

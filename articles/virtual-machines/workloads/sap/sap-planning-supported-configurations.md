@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833336"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648991"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
 Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](./hana-overview-architecture.md) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](./hana-supported-scenario.md)」をご覧ください。 
@@ -215,7 +215,7 @@ SUSE では、Pacemaker に基づくマルチ SID クラスターもサポート
 SAP HANA スケールアウト シナリオは、[SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に列記されている HANA 認定 Azure VM のサブセットについてサポートされています。 "Clustering" 列が "Yes" になっているすべての VM は、OLAP または S/4HANA のスケールアウトに使用できます。スタンバイを使用しない構成は、次の Azure Storage の種類でサポートされます。 
 
 - Azure Premium Storage (/hana/log ボリューム用の Azure 書き込みアクセラレータを含む)
-- [Ultra Disk](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra Disk](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 スタンバイ ノードを使用する OLAP または S/4HANA の SAP HANA スケールアウト構成は、Azure NetApp Files でホストされる NFS 共有でのみサポートされています。
