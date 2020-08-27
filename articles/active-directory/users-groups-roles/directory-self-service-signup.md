@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192711"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795357"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
@@ -64,7 +64,7 @@ AllowEmailVerifiedUsers と AllowAdHocSubscriptions は、マネージド ディ
 Flow および Power Apps の試用版サインアップの詳細については、次の記事を参照してください。
 
 * [既存のユーザーが Power BI の使用を開始できないようにするにはどうすればよいですか。](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [組織における Flow の Q&A](https://docs.microsoft.com/flow/organization-q-and-a)
+* [組織における Flow の Q&A](/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>これらの管理機能の連携について
 これら 2 つのパラメーターを組み合わせて使用すると、セルフサービス サインアップをさらに細かく管理できるようになります。 たとえば、次のコマンドによりユーザーはセルフサービス サインアップを実行できますが、 Azure AD のアカウントを既に持っている場合に限定されます (つまり、まずメール検証済みのアカウントを作成する必要があるユーザーは、セルフサービス サインアップを実行できません)。
