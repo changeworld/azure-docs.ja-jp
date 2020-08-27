@@ -3,15 +3,15 @@ title: Azure DevTest Labs でデータ ディスクを仮想マシンにアタ�
 description: Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする方法について説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 222bf06dc07cc2538bc0512b4a41b7bd91bc1ebf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287562"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653921"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
-[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
+[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
 
 この機能は、個々の仮想マシンの外部でストレージまたはソフトウェアを管理する場合に便利です。 ストレージまたはソフトウェアがデータ ディスク内に既に存在する場合、そのデータ ディスクを所有するユーザーが所有する任意の VM に対して、アタッチ、デタッチ、再アタッチを簡単に行えます。
 

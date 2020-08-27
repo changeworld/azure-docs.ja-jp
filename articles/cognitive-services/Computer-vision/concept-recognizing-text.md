@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: cb931d0b9c3dd4d3fa0fa69f69f5f90fc37ea8f6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207224"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929195"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 

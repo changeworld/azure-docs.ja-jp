@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831109"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654652"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -118,7 +118,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 
 原則として、次を行う必要があります。
 
-- Standard HDD よりも Premium SSD を使用する。 使用できるディスクの種類の詳細については、[ディスクの種類の選択](../../windows/disks-types.md)に関する記事を参照してください。
+- Standard HDD よりも Premium SSD を使用する。 使用できるディスクの種類の詳細については、[ディスクの種類の選択](../../disks-types.md)に関する記事を参照してください。
 - アンマネージド ディスクよりも Azure Managed Disks を使用する
 - ディスク構成に十分な IOPS と I/O スループットが構成されていることを確認する
 - コスト効率に優れたストレージ構成を確保するため /hana/data と /hana/log volume を組み合わせる

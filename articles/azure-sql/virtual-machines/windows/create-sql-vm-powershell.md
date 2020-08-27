@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c4a43d113df09d88e8b93028c68dcf04f718fad
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003884"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654006"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell を使用して Azure Virtual Machines 上の SQL Server をプロビジョニングする方法
 
@@ -60,7 +60,7 @@ $ResourceGroupName = "sqlvm2"
 
 ストレージ アカウントと、仮想マシンで使用するストレージの種類を定義します。
 
-必要に応じて変更してから、以下のコマンドレットを実行し、これらの変数を初期化します。 運用環境のワークロードには [Premium SSD](../../../virtual-machines/windows/disks-types.md#premium-ssd) を使用することをお勧めします。
+必要に応じて変更してから、以下のコマンドレットを実行し、これらの変数を初期化します。 運用環境のワークロードには [Premium SSD](../../../virtual-machines/disks-types.md#premium-ssd) を使用することをお勧めします。
 
 ```powershell
 $StorageName = $ResourceGroupName + "storage"

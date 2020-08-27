@@ -4,23 +4,23 @@ description: Azure Kubernetes Service (AKS) クラスターで Ultra Disks を�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986833"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650181"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での Azure Ultra Disks の使用 (プレビュー)
 
-[Azure Ultra Disks](../virtual-machines/linux/disks-enable-ultra-ssd.md) は、ステートフル アプリケーションに高スループット、高 IOPS、および一貫性のある低待機時間のディスク ストレージを提供します。 Ultra Disks の主なメリットの 1 つが、エージェント ノードを再起動することなく、SSD のパフォーマンスをワークロードと共に動的に変更する機能です。 Ultra Disks は、データ量の多いワークロードに適しています。
+[Azure Ultra Disks](../virtual-machines/disks-enable-ultra-ssd.md) は、ステートフル アプリケーションに高スループット、高 IOPS、および一貫性のある低待機時間のディスク ストレージを提供します。 Ultra Disks の主なメリットの 1 つが、エージェント ノードを再起動することなく、SSD のパフォーマンスをワークロードと共に動的に変更する機能です。 Ultra Disks は、データ量の多いワークロードに適しています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 この機能は、クラスターの作成時またはノード プールの作成時にのみ設定できます。
 
 > [!IMPORTANT]
-> Azure Ultra Disks では、特定の VM シリーズだけでなく、これらのディスクをサポートする可用性ゾーンとリージョンにデプロイされたノードプールが必要です。 [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください。
+> Azure Ultra Disks では、特定の VM シリーズだけでなく、これらのディスクをサポートする可用性ゾーンとリージョンにデプロイされたノードプールが必要です。 [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -64,7 +64,7 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>制限事項
-- [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください
+- [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください
 - Ultra Disks でサポートされているサイズの範囲は 100 から 1500 です
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Ultra Disks を使用できる新しいクラスターを作成する
@@ -226,7 +226,7 @@ Events:
 
 ## <a name="next-steps"></a>次のステップ
 
-- Ultra Disks の詳細については、「[Azure Ultra ディスクの使用](../virtual-machines/linux/disks-enable-ultra-ssd.md)」を参照してください。
+- Ultra Disks の詳細については、「[Azure Ultra ディスクの使用](../virtual-machines/disks-enable-ultra-ssd.md)」を参照してください。
 - ストレージのベスト プラクティスの詳細については、「[Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]」を参照してください
 
 <!-- LINKS - external -->
@@ -240,7 +240,7 @@ Events:
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e5fb19b0d8d94b5ccc07c465c3e9f3bf0de50ab7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843048"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652595"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -157,30 +157,6 @@ REST API では、要求の本文が次の構造の JSON ドキュメントで�
 
 > [!IMPORTANT]
 > データの構造は、サービス内のスコアリング スクリプトとモデルで予期される内容と一致する必要があります。 スコアリング スクリプトでは、データがモデルに渡される前に変更される可能性があります。
-
-たとえば、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例のモデルでは、10 個の数値の配列が予期されます。 この例のスコアリング スクリプトでは、要求から Numpy 配列が作成され、モデルに渡されます。 次の例には、このサービスで予期されるデータが示されています。
-
-```json
-{
-    "data": 
-        [
-            [
-                0.0199132141783263, 
-                0.0506801187398187, 
-                0.104808689473925, 
-                0.0700725447072635, 
-                -0.0359677812752396, 
-                -0.0266789028311707, 
-                -0.0249926566315915, 
-                -0.00259226199818282, 
-                0.00371173823343597, 
-                0.0403433716478807
-            ]
-        ]
-}
-```
-
-Web サービスでは、1 つの要求で複数のデータ セットを受け入れることができます。 応答の配列を含む JSON ドキュメントが返されます。
 
 ### <a name="binary-data"></a>Binary Data
 

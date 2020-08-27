@@ -3,13 +3,13 @@ title: アクティブ ラーニングの提案される質問 - QnA Maker
 description: アクティブ ラーニングを使用してナレッジ ベースの質を向上させます。 既存の質問の削除や変更は行わずに、レビュー、承認、却下を行います。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc7aebc3df2d14c78230d112e3e807d8d98fb047
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9bed80ac8c80fb4cecf06b979e0403e34645db01
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406981"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919133"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
