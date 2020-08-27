@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 15c3f2de30509a7dc6836f5d39fac4c0ea8b7f25
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513070"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854329"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの管理ディスクの使用
 
@@ -263,7 +263,7 @@ REST API の仕様の詳細については、[マネージド ディスク作成
 * マネージド ディスクを使用した完全なテンプレートについては、次の Azure クイック スタート リポジトリのリンクを参照してください。
     * [マネージド ディスクを使用した Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [マネージド ディスクを使用した Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* マネージド ディスクの詳細については、「[Azure Managed Disks の概要](~/articles/virtual-machines/windows/managed-disks-overview.md)」のドキュメントを参照してください。
+* マネージド ディスクの詳細については、「[Azure Managed Disks の概要](managed-disks-overview.md)」のドキュメントを参照してください。
 * 仮想マシン リソースのテンプレートについては、[Microsoft.Compute/virtualMachines テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachines) ドキュメントを参照してください。
 * ディスク リソースのテンプレートについては、[Microsoft.Compute/disks テンプレート リファレンス](/azure/templates/microsoft.compute/disks) ドキュメントを参照してください。
 * Azure VM Scale Sets で管理ディスクを使う方法については、[スケール セットでデータ ディスクを使用する](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks)方法に関する文書を参照してください。

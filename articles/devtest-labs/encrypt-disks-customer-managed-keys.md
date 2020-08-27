@@ -3,17 +3,17 @@ title: Azure DevTest Labs でカスタマー マネージド キーを使用し�
 description: Azure DevTest Labs でカスタマー マネージド キーを使用してオペレーティング システム (OS) のディスクを暗号化する方法について説明します。
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566201"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815923"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタマー マネージド キーを使用してオペレーティング システム (OS) のディスクを暗号化する
 サーバー側暗号化 (SSE) によってデータが保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 SSE では、Azure のマネージド ディスク (OS およびデータ ディスク) に格納されているお使いのデータをクラウドに永続化するときに、既定で保存時に自動的に暗号化されます。 Azure での[ディスク暗号化](../virtual-machines/windows/disk-encryption.md)について確認してください。 
 
-DevTest Labs では、ラボの一部として作成されたすべての OS ディスクとデータ ディスクが、プラットフォームで管理されるキーを使用して暗号化されます。 ただし、ラボの所有者は、独自のキーを使用してラボの仮想マシンの OS ディスクを暗号化することを選択できます。 独自のキーを使用して暗号化を管理する場合は、ラボの OS ディスク内のデータの暗号化に使用する**カスタマー マネージド キー**を指定できます。 カスタマー マネージド キーを使用したサーバー側暗号化 (SSE) と、その他のマネージド ディスクの暗号化の種類の詳細については、「[カスタマー マネージド キー](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)」を参照してください。 また、[カスタマー マネージド キーを使用する場合の制限](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions)に関するページも参照してください。
+DevTest Labs では、ラボの一部として作成されたすべての OS ディスクとデータ ディスクが、プラットフォームで管理されるキーを使用して暗号化されます。 ただし、ラボの所有者は、独自のキーを使用してラボの仮想マシンの OS ディスクを暗号化することを選択できます。 独自のキーを使用して暗号化を管理する場合は、ラボの OS ディスク内のデータの暗号化に使用する**カスタマー マネージド キー**を指定できます。 カスタマー マネージド キーを使用したサーバー側暗号化 (SSE) と、その他のマネージド ディスクの暗号化の種類の詳細については、「[カスタマー マネージド キー](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)」を参照してください。 また、[カスタマー マネージド キーを使用する場合の制限](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions)に関するページも参照してください。
 
 
 > [!NOTE]
@@ -25,7 +25,7 @@ DevTest Labs では、ラボの一部として作成されたすべての OS デ
 
 ## <a name="pre-requisites"></a>前提条件
 
-1. ディスク暗号化が設定されていない場合は、この記事の手順に従って、[Key Vault とディスク暗号化セットを設定](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault)します。 ディスク暗号化セットの次の要件に注意してください。 
+1. ディスク暗号化が設定されていない場合は、この記事の手順に従って、[Key Vault とディスク暗号化セットを設定](../virtual-machines/disks-enable-customer-managed-keys-portal.md)します。 ディスク暗号化セットの次の要件に注意してください。 
 
     - ディスク暗号化セットは、**ラボと同じリージョンおよびサブスクリプション**にある必要があります。 
     - ラボの OS ディスクを暗号化するために使用されるディスク暗号化セットに対する少なくとも**閲覧者レベルのアクセス許可**がユーザー (ラボ所有者) にあることを確認します。 

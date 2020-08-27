@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603946"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853022"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -180,7 +180,7 @@ ms.locfileid: "88603946"
 
 * [シングル サインオンのために Azure AD と統合されたアプリケーション](../manage-apps/what-is-application-management.md) (SaaS、基幹業務など)。
 
-* グループ [メンバーシップ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) (Azure AD と同期されるか、Azure AD または Office 365 (Microsoft Teams を含む) で作成されるもの)。
+* グループ [メンバーシップ](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD と同期されるか、Azure AD または Office 365 (Microsoft Teams を含む) で作成されるもの)。
 
 * リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](/entitlement-management-overview.md)。
 
@@ -283,7 +283,7 @@ ms.locfileid: "88603946"
 
 * Azure AD または Azure サブスクリプションで特権ロールを割り当てる
 
-[サンプル スクリプト](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.)を参照してください。 このスクリプトは、テナントに招待された外部 ID が使用される場所を示します。 外部ユーザーの Azure AD におけるグループ メンバーシップ、ロールの割り当て、アプリケーションの割り当てを確認できます。 このスクリプトにより、SharePoint リソースへの直接の権利割り当て (グループは使用しない) など、Azure AD の外部での割り当てが示されることはありません。
+[サンプル スクリプト](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse)を参照してください。 このスクリプトは、テナントに招待された外部 ID が使用される場所を示します。 外部ユーザーの Azure AD におけるグループ メンバーシップ、ロールの割り当て、アプリケーションの割り当てを確認できます。 このスクリプトにより、SharePoint リソースへの直接の権利割り当て (グループは使用しない) など、Azure AD の外部での割り当てが示されることはありません。
 
 グループまたはアプリケーションのアクセス レビューを作成するとき、レビュー担当者のフォーカスを [アクセス権を持つ全員] または [ゲスト ユーザーのみ] から選択できます。 [ゲスト ユーザーのみ] を選択すると、レビュー担当者には、リソースにアクセスできる Azure AD B2B の外部 ID にフォーカスしたリストが提示されます。
 
@@ -389,7 +389,7 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Azure AD と Azure リソースのロールのレビューの計画
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) は、企業が Azure AD 内のリソースへの特権アクセスを管理する方法を簡略化します。 これにより、[Azure AD](../users-groups-roles/directory-assign-admin-roles.md) と [Azure リソース](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)の両方で特権ロールのリストが大幅に縮小され、ディレクトリの全体的なセキュリティが向上します。
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) は、企業が Azure AD 内のリソースへの特権アクセスを管理する方法を簡略化します。 これにより、[Azure AD](../users-groups-roles/directory-assign-admin-roles.md) と [Azure リソース](../../role-based-access-control/built-in-roles.md)の両方で特権ロールのリストが大幅に縮小され、ディレクトリの全体的なセキュリティが向上します。
 
 アクセス レビューを利用すると、レビュー担当者は、ユーザーが引き続きロールに所属する必要があるかどうかを証明できます。 アクセス パッケージのアクセス レビューと同様に、Azure AD ロールおよび Azure リソースのレビューは PIM の管理者ユーザーの操作に統合されています。 次のロールの割り当てを定期的にレビューすることを推奨します。
 
@@ -452,9 +452,9 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 | ハウツー記事 | 説明 |
 | - | - |
- [アクセス レビューの作成](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| PIM で Azure AD の特権ロールのアクセス レビューを作成します |
-| [アクセスの自己レビュー](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
-| [アクセス レビューの完了](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| アクセス レビューを表示して結果を適用します |
+ [アクセス レビューの作成](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PIM で Azure AD の特権ロールのアクセス レビューを作成します |
+| [アクセスの自己レビュー](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
+| [アクセス レビューの完了](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| アクセス レビューを表示して結果を適用します |
 
 
 ### <a name="review-azure-resource-roles"></a>Azure リソースのロールのレビュー
@@ -467,14 +467,14 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 | ハウツー記事| 説明 |
 | - | -|
-| [アクセス レビューの作成](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| PIM で Azure リソースの特権ロールのアクセス レビューを作成します |
-| [アクセスの自己レビュー](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
-| [アクセス レビューの完了](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| アクセス レビューを表示して結果を適用します |
+| [アクセス レビューの作成](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PIM で Azure リソースの特権ロールのアクセス レビューを作成します |
+| [アクセスの自己レビュー](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
+| [アクセス レビューの完了](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| アクセス レビューを表示して結果を適用します |
 
 
 ## <a name="use-the-access-reviews-api"></a>アクセス レビュー API の使用
 
-レビュー可能なリソースを操作および管理するには、[Graph API のメソッド](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)および[ロールとアプリケーションのアクセス許可の承認チェック](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)に関するページを参照してください。 Microsoft Graph API のアクセス レビュー関連のメソッドは、アプリケーションとユーザー両方のコンテキストで使用できます。 アプリケーション コンテキストでスクリプトを実行する場合、API の実行に使用するアカウント (サービス プリンシパル) には、アクセス レビュー情報をクエリするための "AccessReview.Read.All" アクセス許可が付与されている必要があります。
+レビュー可能なリソースを操作および管理するには、[Graph API のメソッド](/graph/api/resources/accessreviews-root?view=graph-rest-beta)および[ロールとアプリケーションのアクセス許可の承認チェック](/graph/api/resources/accessreviews-root?view=graph-rest-beta)に関するページを参照してください。 Microsoft Graph API のアクセス レビュー関連のメソッドは、アプリケーションとユーザー両方のコンテキストで使用できます。 アプリケーション コンテキストでスクリプトを実行する場合、API の実行に使用するアカウント (サービス プリンシパル) には、アクセス レビュー情報をクエリするための "AccessReview.Read.All" アクセス許可が付与されている必要があります。
 
 アクセス レビュー用の Graph API を使用して自動化するアクセス レビューのタスクで一般的なものは次のとおりです。
 
@@ -519,4 +519,3 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 * [Azure AD Privileged Identity Management とは](../privileged-identity-management/pim-configure.md)
 
- 

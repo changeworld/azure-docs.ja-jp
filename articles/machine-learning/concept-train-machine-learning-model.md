@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876905"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651762"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -90,7 +90,7 @@ Estimator を使用すると、広く使われている ML フレームワーク
 * [チュートリアル:バッチ スコアリングに Azure Machine Learning パイプラインを使用する](tutorial-pipeline-batch-scoring-classification.md)
 * [例:機械学習パイプラインの場合の Jupyter Notebook の例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [例:自動機械学習を使用したパイプライン](https://aka.ms/pl-automl)
-* [例:Estimator を使用したパイプライン](https://aka.ms/pl-estimator)
+* [例:Estimator を使用したパイプライン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
 
 ### <a name="understand-what-happens-when-you-submit-a-training-job"></a>トレーニング ジョブを送信したときの動作を理解する
 

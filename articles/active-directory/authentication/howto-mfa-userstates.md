@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565776"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719497"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>ユーザーごとの Azure Multi-Factor Authentication を有効にしてサインイン イベントのセキュリティを確保する
 
@@ -76,7 +76,7 @@ Azure AD ライセンスに条件付きアクセスが含まれておらず、�
 
 1. 開いたポップアップ ウィンドウで選択内容を確認します。
 
-ユーザーを有効にした後は、ユーザーにメールで通知します。 次回のサインイン時に登録を要求するプロンプトが表示されることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 詳細については、開始をサポートするための [Azure Multi-Factor Authentication エンドユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)を参照してください。
+ユーザーを有効にした後は、ユーザーにメールで通知します。 次回のサインイン時に登録を要求するプロンプトが表示されることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 詳細については、開始をサポートするための [Azure Multi-Factor Authentication エンドユーザー ガイド](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
 
 ## <a name="change-state-using-powershell"></a>PowerShell を使用して状態を変更する
 

@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262774"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761510"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -195,8 +195,8 @@ VM を新しいリソース グループに移動した後は、その VM を同
 
 ### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>バックアップの保有期間の設定を表示するにはどうすればよいですか。
 
-現在、保有期間の設定は、VM に割り当てられているバックアップ ポリシーに基づいて、バックアップ項目 (VM) レベルで表示できます。 
+現在、保有期間の設定は、VM に割り当てられているバックアップ ポリシーに基づいて、バックアップ項目 (VM) レベルで表示できます。
 
 バックアップの保有期間の設定を表示する方法の 1 つとして、Azure portal で VM のバックアップ項目の[ダッシュボード](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard)にアクセスする方法があります。 バックアップ ポリシーへのリンクをクリックすると、その VM に関連付けられているすべての日、週、月、および年単位の保有ポイントの保有期間を表示できます。
 
-また、[バックアップ エクスプローラー](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer)を使用して、すべての VM の保有期間の設定を 1 つのウィンドウに表示することもできます。 任意の Recovery Services コンテナーからバックアップ エクスプローラーに移動し、 **[バックアップ項目]** タブに移動して [詳細ビュー] を選択して、各 VM の詳細な保有期間の情報を確認します。  
+また、[バックアップ エクスプローラー](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer)を使用して、すべての VM の保有期間の設定を 1 つのウィンドウに表示することもできます。 任意の Recovery Services コンテナーからバックアップ エクスプローラーに移動し、 **[バックアップ項目]** タブに移動して [詳細ビュー] を選択して、各 VM の詳細な保有期間の情報を確認します。

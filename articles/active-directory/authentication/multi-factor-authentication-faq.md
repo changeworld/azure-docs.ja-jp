@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035079"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718868"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -259,6 +259,6 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 ここで質問に対する回答が見つからない場合は、次のサポート オプションをご利用いただけます。
 
 * [Microsoft サポート技術情報](https://support.microsoft.com)を検索して、一般的な技術上の問題の解決方法を探します。
-* このコミュニティで技術的な質問と回答を検索して参照したり、[Azure Active Directory の Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html) で独自の質問を投稿したりできます。
+* このコミュニティで技術的な質問と回答を検索して参照したり、[Azure Active Directory の Q&A](/answers/topics/azure-active-directory.html) で独自の質問を投稿したりできます。
 * さらにサポートが必要な場合は、[Azure Multi-Factor Authentication Server サポート](https://support.microsoft.com/oas/default.aspx?prid=14947)を通して、サポートのプロに問い合わせてください。 お問い合わせの際は、問題に関する情報をできるだけお知らせいただくと役に立ちます。 エラーが表示されたページ、具体的なエラー コード、具体的な ID、エラーが表示されたユーザーの ID などの情報をご提供ください。
 * 従来の PhoneFactor をご利用中で、パスワードのリセットについてご質問がある場合やサポートを必要とされている場合は、[phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) のメール アドレスを使用してサポート ケースを開いてください。

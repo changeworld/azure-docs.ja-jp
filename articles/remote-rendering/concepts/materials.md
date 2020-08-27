@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2bc356060bacd1c04ecb3d3dd10b8322ae40b8ba
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7e8b670a084e80fcd7f48dcb6e97a943c90bdf0e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758675"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893036"
 ---
 # <a name="materials"></a>素材
 
@@ -65,17 +65,17 @@ void SetMaterialColorToGreen(Material material)
 ```cpp
 void SetMaterialColorToGreen(ApiHandle<Material> material)
 {
-    if (*material->MaterialSubType() == MaterialType::Color)
+    if (material->GetMaterialSubType() == MaterialType::Color)
     {
         ApiHandle<ColorMaterial> colorMaterial = material.as<ColorMaterial>();
-        colorMaterial->AlbedoColor({ 0, 1, 0, 1 });
+        colorMaterial->SetAlbedoColor({ 0, 1, 0, 1 });
         return;
     }
 
-    if (*material->MaterialSubType() == MaterialType::Pbr)
+    if (material->GetMaterialSubType() == MaterialType::Pbr)
     {
         ApiHandle<PbrMaterial> pbrMat = material.as<PbrMaterial>();
-        pbrMat->AlbedoColor({ 0, 1, 0, 1 });
+        pbrMat->SetAlbedoColor({ 0, 1, 0, 1 });
         return;
     }
 }

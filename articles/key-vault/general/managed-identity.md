@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0c81f88821d841002ef2489c727071e9629da9e1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586158"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750777"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>マネージド ID で Key Vault の認証を提供する
 
@@ -114,6 +114,6 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 - [Azure Key Vault セキュリティ: ID 管理とアクセス管理](overview-security.md#identity-and-access-management)
 - [アクセス制御ポリシーを使用して Key Vault の認証を提供する](group-permissions-for-apps.md)
-- [キー コンテナーをセキュリティで保護する](secure-your-key-vault.md)).
+- [キー コンテナーをセキュリティで保護する](secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](developers-guide.md)
 - [Azure Key Vault のベスト プラクティス](best-practices.md)を確認する

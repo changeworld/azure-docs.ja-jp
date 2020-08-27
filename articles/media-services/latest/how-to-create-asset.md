@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4d1e5e48e70cee1cf75b1d6605837695d26dcbf0
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 65b0b276dcda58810f44494c14f06dd412d633f6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608680"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719293"
 ---
 # <a name="create-an-asset"></a>アセットを作成する
 
@@ -36,10 +36,6 @@ ms.locfileid: "88608680"
 
 [!INCLUDE [Create an asset with CLI](./includes/task-create-asset-cli.md)]
 
-## <a name="cli-shell"></a>[CLI シェル](#tab/clishell/)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
-
 ## <a name="example-script"></a>サンプル スクリプト
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/create-asset/Create-Asset.sh "Create an asset")]
@@ -53,6 +49,10 @@ ms.locfileid: "88608680"
 ### <a name="using-curl"></a>cURL の使用
 
 [!INCLUDE [media-services-cli-instructions.md](./includes/task-create-asset-curl.md)]
+
+## <a name="using-postman"></a>Postman の使用
+
+[!INCLUDE[Create an asset with Postman](./includes/task-create-asset-postman.md)]
 
 ## <a name="net"></a>[.NET](#tab/net/)
 
