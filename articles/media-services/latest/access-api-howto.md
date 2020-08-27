@@ -3,7 +3,7 @@ title: Azure AD Authentication の概要
 description: Azure Active Directory (Azure AD) Authentication にアクセスして Azure Media Services API を利用する方法を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: juliako
-ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.author: inhenkel
+ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035806"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654839"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API にアクセスするための資格情報を取得する  
 
@@ -38,9 +38,9 @@ Azure AD 認証を使用して Azure Media Services API にアクセスする場
 - Azure アカウント。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)で作業を開始してください。 
 - Media Services アカウント。 詳細については、「[Azure ポータルを使用した Azure Media Services アカウントの作成](create-account-howto.md)」を参照してください。
 
-## <a name="use-the-azure-portal"></a>Azure ポータルの使用
+## <a name="portal"></a>[ポータル](#tab/portal/)
 
-### <a name="api-access"></a>API アクセス 
+### <a name="api-access"></a>API アクセス
 
 **[API アクセス]** ページでは、API への接続に使用する認証方法を選択できます。 このページには、API に接続するために必要な値も表示されます。
 
@@ -70,7 +70,7 @@ Azure AD テナントにアプリケーションを登録し、アプリケー�
 
 **[Media Services API に接続する]** セクションから、ユーザー アプリケーションに接続するための資格情報をコピーします。 テキスト値を取得したり、JSON または XML ブロックをコピーしたりできます。
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
+## <a name="cli"></a>[CLI](#tab/cli/)
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 

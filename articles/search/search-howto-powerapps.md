@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 04/25/2020
-ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/21/2020
+ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565828"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751041"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>チュートリアル:Power Apps から Cognitive Search インデックスに対してクエリを実行する
 
@@ -92,7 +92,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
 1. *select* では、次のようにします。 **[既定値]** を `HotelName,Description,Address/City` に設定し、 **[必須]** を *[いいえ]* に設定して、 **[可視性]** を *[なし]* に設定します。  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="バージョン パラメーターのメタデータ" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="選択パラメーターのメタデータ" border="true":::
 
 1. *api-version* では: **[既定値]** を `2020-06-30` に設定し、 **[必須]** を *[はい]* に設定して、 **[可視性]** を *[内部]* に設定します。  
 

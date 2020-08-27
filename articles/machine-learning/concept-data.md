@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff335cd6276083eb76efd74a4921d2bae96cd7c9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875304"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651796"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -118,5 +118,4 @@ Azure Machine Learning を使用すると、ラベル付けプロジェクトの
 ## <a name="next-steps"></a>次のステップ 
 
 + [こちらの手順を使用](how-to-create-register-datasets.md)して、Azure Machine Learning Studio に、または Python SDK でデータセットを作成します。
-+ [サンプル ノートブック](https://aka.ms/dataset-tutorial)を使用して、データセットのトレーニング例を試してみてください。
-+ データ ドリフトの例については、こちらの[データ ドリフトのチュートリアル](https://aka.ms/datadrift-notebook)を参照してください。
++ [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)を使用して、データセットのトレーニング例を試してみてください。

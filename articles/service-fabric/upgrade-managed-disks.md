@@ -3,16 +3,16 @@ title: Azure Managed Disks を使用するためにクラスター ノードを�
 description: クラスターのダウンタイムをほとんどまたはまったく発生させずに、Azure Managed Disks を使用するように既存の Service Fabric クラスターをアップグレードする方法を次に示します。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192306"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717525"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure Managed Disks を使用するためにクラスター ノードをアップグレードする
 
-[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) は、Azure Virtual Machines でデータの永続的な記憶域として使用できる、お勧めのディスク ストレージ サービスです。 お使いのノードの種類の基になっている仮想マシン スケール セットを、マネージド ディスクを使用するようにアップグレードすることで、Service Fabric ワークロードの回復性を向上させることができます。 クラスターのダウンタイムをほとんどまたはまったく発生させずに、Azure Managed Disks を使用するように既存の Service Fabric クラスターをアップグレードする方法を次に示します。
+[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) は、Azure Virtual Machines でデータの永続的な記憶域として使用できる、お勧めのディスク ストレージ サービスです。 お使いのノードの種類の基になっている仮想マシン スケール セットを、マネージド ディスクを使用するようにアップグレードすることで、Service Fabric ワークロードの回復性を向上させることができます。 クラスターのダウンタイムをほとんどまたはまったく発生させずに、Azure Managed Disks を使用するように既存の Service Fabric クラスターをアップグレードする方法を次に示します。
 
 マネージド ディスクを使用するために Service Fabric クラスター ノードをアップグレードする一般的な方法は次のとおりです。
 
@@ -365,7 +365,7 @@ foreach($name in $nodeNames){
 
 具体的には、次の方法を学習します。
 
-* [Service Fabric クラスターのプライマリ ノード タイプをスケールアップする](service-fabric-scale-up-node-type.md)
+* [Service Fabric クラスターのプライマリ ノード タイプをスケールアップする](service-fabric-scale-up-primary-node-type.md)
 
 * [マネージド ディスクを使用するためにスケール セット テンプレートを変換する](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 

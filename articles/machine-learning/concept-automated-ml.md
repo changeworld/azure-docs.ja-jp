@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290026"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652102"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -201,8 +201,6 @@ ms.locfileid: "87290026"
 * 個々の店舗の売上予測
 * 数百基の油井の予測メンテナンス
 * 個々のユーザーのエクスペリエンスの調整。
-
-詳細については、GitHub の[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)に関するページを参照してください。
 
 ## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning での自動 ML
 

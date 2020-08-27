@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038027"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719072"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>チュートリアル:ビデオ分析 (物体とモーションの検出) アプリケーションを監視、管理する
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| ResourceGroup |
 |amsAccountName| AccountName|
 
-アプリケーションの **[監視]** ダッシュボードに移動します。 次に、 **[Inference Event Video]\(推論イベント ビデオ\)** タイルで、キャプチャされた物体検出のいずれかのハイパーリンクをクリックします。 ローカル ビデオ プレーヤーによって表示されたページにビデオが表示されます。
+**camera-003** デバイスに移動し、 **[ダッシュボード]** タブを選択します。次に、 **[Inference Event Video]\(推論イベント ビデオ\)** タイルで、キャプチャされた物体検出のいずれかのハイパーリンクをクリックします。 ローカル ビデオ プレーヤーによって表示されたページにビデオが表示されます。
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="ビデオ スニペット":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>アプリケーション ダッシュボードのシミュレートされたデバイスを変更する
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>アプリケーション ダッシュボードのシミュレートされたデバイスを変更する
 
 アプリケーション ダッシュボードには最初、IoT Central のシミュレートされたデバイスから生成されたテレメトリやプロパティが表示されています。 実際のカメラや Live555 シミュレーターから生成されたテレメトリが表示されるようにタイルを構成するには、これらの手順に従います。
 
-1. **[Real Camera Monitor]\(実際のカメラ モニター\)** ダッシュボードに移動します。
+1. **[(Sample) Real Camera Monitor]\((サンプル) 実際のカメラ モニター\)** アプリケーション ダッシュボードに移動します。
 1. **[編集]** を選択します。
+1. **[Note]\(メモ\)** タイルを選択して削除します。
+1. ダッシュボードのタイトルを *[Real Camera Monitor]\(実際のカメラ モニター\)* に変更します。
 1. **[Inference Count]\(推論数\)** タイルで、構成アイコンを選択します。
 1. **[グラフの構成]** セクションで、**LVA Edge Object Detector** デバイス グループから実際のカメラを少なくとも 1 つ選択します。
 1. `AI Inference Interface/Inference Count` テレメトリ フィールドを選択します。
 1. **[Update]\(更新\)** を選択します。
-
-   
 
 1. 以上の手順を次のタイルについても行います。
     1. **[検出]** 円グラフ: `AI Inference Interface/Inference/entity/tag/value` テレメトリ タイプを使用します。

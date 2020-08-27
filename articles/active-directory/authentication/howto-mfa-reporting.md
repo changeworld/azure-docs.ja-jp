@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c550576a5bd762d3333aa8a533ee6106369193c3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418238"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719514"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>サインイン レポートを使用して Azure Multi-Factor Authentication イベントを確認する
 
@@ -90,7 +90,7 @@ Azure Multi-Factor Authentication イベントを確認して理解するため�
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>MFA に登録されているユーザーを PowerShell がレポート
 
-最初に、[MSOnline V1 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0)がインストールされていることを確認します。
+最初に、[MSOnline V1 PowerShell モジュール](/powershell/azure/active-directory/overview?view=azureadps-1.0)がインストールされていることを確認します。
 
 以下の PowerShell を使用して、MFA に登録しているユーザーを識別します。 この一連のコマンドでは、無効になっているユーザーは、Azure AD に対して認証を行うことができないため、除外されます。
 
