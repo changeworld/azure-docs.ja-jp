@@ -4,12 +4,12 @@ description: この記事では、Azure PowerShell のサンプル スクリプ�
 ms.topic: sample
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: a60320c165499ed1fb02fa544deec0e304d447df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c45ee26bef0f9afbb0b9d03f1dcafee21a894f8a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513644"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757559"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>PowerShell を使用して、暗号化された Azure 仮想マシンをバックアップする
 

@@ -6,12 +6,12 @@ ms.service: azure-policy
 ms.topic: include
 ms.date: 08/07/2020
 ms.author: dacoulte
-ms.openlocfilehash: e22594a50a9c0d814ef7d66443f8253f5832cb1d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9fcaca3f89217f649eb970ec70514a5735222782
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038488"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854060"
 ---
 Azure Policy では、オブジェクトの種類ごとに最大数があります。 _Scope_ というエントリは、サブスクリプションまたは[管理グループ](../articles/governance/management-groups/overview.md)のいずれかを意味します。
 
@@ -26,4 +26,4 @@ Azure Policy では、オブジェクトの種類ごとに最大数がありま�
 | イニシアチブ定義 | パラメーター | 100 |
 | ポリシーとイニシアティブの割り当て | 除外 (notScopes) | 400 |
 | ポリシー規則 | 入れ子になった条件 | 512 |
-| 修復タスク | リソース | 1000 |
+| 修復タスク | リソース | 500 |

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 05a70274e075ddda8770e57c71a7f55807cf3dcc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: how-to, devx-track-python,contperfq1
+ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182138"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782755"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

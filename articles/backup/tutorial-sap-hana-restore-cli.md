@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure CLI を使用して、Azu
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 282f0ee61ffae455d6d3e49ea445d5ddc2fe56ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500829"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762285"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースを復元する
 
@@ -302,7 +302,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
     hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
     ```
 
-    上のコマンドの内容は次のとおりです。
+    上記のコマンドでは:
 
     * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
     * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a51cc8aa86f40b5333bd79e95e6d02be1adfc4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2a2bb8b98bfb936421c0522d4637a288d20a708b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213840"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795407"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -146,10 +146,10 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 場所 | できること
 ----- | ----------
 [Microsoft 365 コンプライアンス センター](https://protection.office.com) | Microsoft 365 サービス全体での組織のデータの保護および管理<br>コンプライアンス アラートの管理
-[コンプライアンス マネージャー](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
-[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理<br><br>このロールには、Office 365 セキュリティ/コンプライアンス センターのロールベースのアクセス制御の[コンプライアンス管理者ロール グループ](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)と同じアクセス許可が付与されています。
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Intune のすべての監査データの表示
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br>データ管理下のすべての組み込みレポートの表示
+[コンプライアンス マネージャー](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
+[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理<br><br>このロールには、Office 365 セキュリティ/コンプライアンス センターのロールベースのアクセス制御の[コンプライアンス管理者ロール グループ](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)と同じアクセス許可が付与されています。
+[Intune](/intune/role-based-access-control) | Intune のすべての監査データの表示
+[Cloud App Security](/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br>データ管理下のすべての組み込みレポートの表示
 
 ### <a name="compliance-data-administrator"></a>[コンプライアンス データ管理者](#compliance-data-administrator-permissions)
 
@@ -158,10 +158,10 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 場所 | できること
 ----- | ----------
 [Microsoft 365 コンプライアンス センター](https://protection.office.com) | Microsoft 365 サービス全体のコンプライアンス関連ポリシーの監視<br>コンプライアンス アラートの管理
-[コンプライアンス マネージャー](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
-[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理<br><br>このロールには、Office 365 セキュリティ/コンプライアンス センターのロールベースのアクセス制御の[コンプライアンス データ管理者ロール グループ](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)と同じアクセス許可が付与されています。
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Intune のすべての監査データの表示
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br>データ管理下のすべての組み込みレポートの表示
+[コンプライアンス マネージャー](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
+[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理<br><br>このロールには、Office 365 セキュリティ/コンプライアンス センターのロールベースのアクセス制御の[コンプライアンス データ管理者ロール グループ](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)と同じアクセス許可が付与されています。
+[Intune](/intune/role-based-access-control) | Intune のすべての監査データの表示
+[Cloud App Security](/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br>データ管理下のすべての組み込みレポートの表示
 
 ### <a name="conditional-access-administrator"></a>[条件付きアクセス管理者](#conditional-access-administrator-permissions)
 
@@ -171,7 +171,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="customer-lockbox-access-approver"></a>[カスタマー ロックボックスのアクセス承認者](#customer-lockbox-access-approver-permissions)
 
-組織内の[カスタマー ロックボックス要求](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests)を管理します。 彼らはカスタマー ロックボックス要求の電子メール通知を受信し、Microsoft 365 管理センターから要求の承認と拒否を行うことができます。 カスタマー ロックボックス機能を有効または無効にすることもできます。 グローバル管理者のみが、このロールに割り当てられているユーザーのパスワードをリセットできます。
+組織内の[カスタマー ロックボックス要求](/office365/admin/manage/customer-lockbox-requests)を管理します。 彼らはカスタマー ロックボックス要求の電子メール通知を受信し、Microsoft 365 管理センターから要求の承認と拒否を行うことができます。 カスタマー ロックボックス機能を有効または無効にすることもできます。 グローバル管理者のみが、このロールに割り当てられているユーザーのパスワードをリセットできます。
 
 ### <a name="desktop-analytics-administrator"></a>[デスクトップ Analytics 管理者](#desktop-analytics-administrator-permissions)
 
@@ -195,11 +195,11 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
 
 ### <a name="directory-writers"></a>[ディレクトリ ライター](#directory-writers-permissions)
-このロールのユーザーは、ユーザー、グループ、およびサービス プリンシパルの基本情報の読み取りと更新が可能です。 このロールは、[同意フレームワーク](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)をサポートしていないアプリケーションにのみ割り当てます。 このロールをユーザーに割り当てることはできません。
+このロールのユーザーは、ユーザー、グループ、およびサービス プリンシパルの基本情報の読み取りと更新が可能です。 このロールは、[同意フレームワーク](../develop/quickstart-register-app.md)をサポートしていないアプリケーションにのみ割り当てます。 このロールをユーザーに割り当てることはできません。
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 管理者/CRM 管理者](#crm-service-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、[サービス管理者ロールを使用した Azure AD 組織の管理](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)に関する記事をご覧ください。
+このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、[サービス管理者ロールを使用した Azure AD 組織の管理](/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)に関する記事をご覧ください。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "Dynamics 365 サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Dynamics 365 管理者" になります。
@@ -224,12 +224,12 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 この管理者は、Azure AD 組織と外部 ID プロバイダー間のフェデレーションを管理します。 このロールが割り当てられたユーザーは、新しい ID プロバイダーを追加し、使用可能なすべての設定 (認証パス、サービス ID、割り当てられたキー コンテナーなど) を構成できます。 このユーザーは、Azure AD 組織が外部 ID プロバイダーからの認証を信頼できるようにすることができます。 その結果としてエンド ユーザー エクスペリエンスに及ぼす影響は、組織の種類によって異なります。
 
-* 従業員とパートナー向けの Azure AD 組織: (たとえば Gmail との) フェデレーションの追加は、まだ招待に応じていないすべてのゲストの招待にすぐに影響します。 「[Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)」を参照してください。
-* Azure Active Directory B2C 組織:(たとえば Facebook、または別の Azure AD 組織との) フェデレーションの追加は、ユーザー フロー (組み込みポリシーとも呼ばれます) で ID プロバイダーがオプションとして追加されるまで、エンド ユーザー フローにすぐに影響することはありません。 例については、[ID プロバイダーとしての Microsoft アカウントの構成](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)に関するページを参照してください。 ユーザー フローを変更するには、"B2C ユーザー フロー管理者" の制限されたロールが必要です。
+* 従業員とパートナー向けの Azure AD 組織: (たとえば Gmail との) フェデレーションの追加は、まだ招待に応じていないすべてのゲストの招待にすぐに影響します。 「[Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](../external-identities/google-federation.md)」を参照してください。
+* Azure Active Directory B2C 組織:(たとえば Facebook、または別の Azure AD 組織との) フェデレーションの追加は、ユーザー フロー (組み込みポリシーとも呼ばれます) で ID プロバイダーがオプションとして追加されるまで、エンド ユーザー フローにすぐに影響することはありません。 例については、[ID プロバイダーとしての Microsoft アカウントの構成](../../active-directory-b2c/identity-provider-microsoft-account.md)に関するページを参照してください。 ユーザー フローを変更するには、"B2C ユーザー フロー管理者" の制限されたロールが必要です。
 
 ### <a name="global-administrator--company-administrator"></a>[全体管理者/会社の管理者](#company-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 さらに全体管理者は、[アクセスを昇格させる](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)ことで、すべての Azure サブスクリプションと管理グループを管理できます。 これにより、全体管理者は各 Azure AD テナントを使用して、すべての Azure リソースに対するフル アクセスを取得できます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 さらに全体管理者は、[アクセスを昇格させる](../../role-based-access-control/elevate-access-global-admin.md)ことで、すべての Azure サブスクリプションと管理グループを管理できます。 これにより、全体管理者は各 Azure AD テナントを使用して、すべての Azure リソースに対するフル アクセスを取得できます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "社内管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
@@ -247,8 +247,8 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 >- [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
 >- [Office セキュリティ/コンプライアンス センター](https://sip.protection.office.com/homepage) - グローバル閲覧者は、SCC 監査ログを読み取ることも、コンテンツ検索を実行することも、セキュリティ スコアを確認することもできません。
 >- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
->- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
->- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](https://docs.microsoft.com/azure/information-protection/reports-aip)のみでサポートされ、Azure AD 組織が [統合ラベル付けプラットフォーム](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
+>- [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
+>- [Azure Information Protection](/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](/azure/information-protection/reports-aip)のみでサポートされ、Azure AD 組織が [統合ラベル付けプラットフォーム](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
 >
 > 以上の機能は現在、開発中です。
 >
@@ -259,7 +259,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="guest-inviter"></a>[ゲスト招待元](#guest-inviter-permissions)
 
-このロールが割り当てられたユーザーは、 **[メンバーは招待ができる]** ユーザー設定が [いいえ] に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
+このロールが割り当てられたユーザーは、 **[メンバーは招待ができる]** ユーザー設定が [いいえ] に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーションとは](../external-identities/what-is-b2b.md)」をご覧ください。 その他の権限は含まれません。
 
 ### <a name="helpdesk-administrator"></a>[ヘルプデスク管理者](#helpdesk-administrator-permissions)
 
@@ -281,7 +281,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 >- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
 >- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
-ユーザーのサブセットに管理アクセス許可を委任する、およびポリシーを適用するには、[管理単位 (現在、パブリック プレビュー段階にあります)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units) を使用します。
+ユーザーのサブセットに管理アクセス許可を委任する、およびポリシーを適用するには、[管理単位 (現在、パブリック プレビュー段階にあります)](./directory-administrative-units.md) を使用します。
 
 このロールは、[Azure portal](https://portal.azure.com/) で以前は "パスワード管理者" と呼ばれていました。 Azure AD での名前である "ヘルプデスク管理者" は、Azure AD PowerShell および Microsoft Graph API での名前に一致するようになりました。
 
@@ -297,7 +297,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="intune-administrator"></a>[Intune 管理者](#intune-service-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)」を参照してください。
+このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](/intune/role-based-access-control)」を参照してください。
 
 このロールでは、すべてのセキュリティ グループを作成および管理できます。 ただし、Intune 管理者には Office グループに対する管理者権限がありません。 つまり、管理者は、組織内のすべての Office グループの所有者およびメンバーシップを更新することはできません。 ただし、自分で作成した Office グループを管理することはできます。これは、エンド ユーザーの特権の一部として提供されます。 そのため、自分が作成したすべての Office グループ (セキュリティ グループではありません) は、自分の 250 のクォータに対してカウントする必要があります。
 
@@ -324,14 +324,14 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 使用しないでください。 このロールは、Commerce から自動的に割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。 詳細は以下を参照してください。
 
-Modern Commerce ユーザー ロールは、特定のユーザーに Microsoft 365 管理センターにアクセスして、**ホーム**、**課金**、**サポート**の左側のナビゲーション エントリを表示するためのアクセス許可を付与します。 これらの領域で利用可能なコンテンツは、ユーザーが自分自身または組織のために購入した製品を管理するために、ユーザーに割り当てられた[コマース固有のロール](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)によって制御されます。 これには、請求書の支払いや、課金アカウントや課金プロファイルへのアクセスなどのタスクが含まれる場合があります。 
+Modern Commerce ユーザー ロールは、特定のユーザーに Microsoft 365 管理センターにアクセスして、**ホーム**、**課金**、**サポート**の左側のナビゲーション エントリを表示するためのアクセス許可を付与します。 これらの領域で利用可能なコンテンツは、ユーザーが自分自身または組織のために購入した製品を管理するために、ユーザーに割り当てられた[コマース固有のロール](../../cost-management-billing/manage/understand-mca-roles.md)によって制御されます。 これには、請求書の支払いや、課金アカウントや課金プロファイルへのアクセスなどのタスクが含まれる場合があります。 
 
 Modern Commerce ユーザー ロールを持つユーザーは、通常、他の Microsoft 購入システムの管理権限を持っていますが、管理センターへのアクセスに使用されるグローバル管理者ロールまたは課金管理者ロールは持っていません。 
 
 **Modern Commerce ユーザー ロールが割り当てられるタイミング**
 
-* **Microsoft 365 管理センターでのセルフサービス購入** – セルフサービス購入により、ユーザーは新製品を自分で購入またはサインアップして、新製品を試す機会が得られます。 これらの製品は管理センターで管理されています。 セルフサービス購入を行うユーザーには、コマース システムでのロールと Modern Commerce ユーザー ロールが割り当てられ、これにより、管理センターで購入を管理できるようになります。 管理者は [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) を使用して、(Power BI、Power Apps、Power Automate に対する) セルフサービス購入をブロックできます。 詳細については、「[セルフサービスによる購入に関するよくあるご質問](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)」を参照してください。  
-* **Microsoft コマーシャル マーケットプレースからの購入** - セルフサービス購入と同様に、ユーザーが Microsoft AppSource または Azure Marketplace から製品またはサービスを購入するときに、グローバル管理者ロールまたは課金管理者ロールを持っていない場合は、Modern Commerce ユーザー ロールが割り当てられます。 場合によっては、ユーザーがこれらの購入をブロックされる場合があります。 詳細については、[Microsoft コマーシャル マーケットプレース](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)に関するページを参照してください。
+* **Microsoft 365 管理センターでのセルフサービス購入** – セルフサービス購入により、ユーザーは新製品を自分で購入またはサインアップして、新製品を試す機会が得られます。 これらの製品は管理センターで管理されています。 セルフサービス購入を行うユーザーには、コマース システムでのロールと Modern Commerce ユーザー ロールが割り当てられ、これにより、管理センターで購入を管理できるようになります。 管理者は [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) を使用して、(Power BI、Power Apps、Power Automate に対する) セルフサービス購入をブロックできます。 詳細については、「[セルフサービスによる購入に関するよくあるご質問](/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)」を参照してください。  
+* **Microsoft コマーシャル マーケットプレースからの購入** - セルフサービス購入と同様に、ユーザーが Microsoft AppSource または Azure Marketplace から製品またはサービスを購入するときに、グローバル管理者ロールまたは課金管理者ロールを持っていない場合は、Modern Commerce ユーザー ロールが割り当てられます。 場合によっては、ユーザーがこれらの購入をブロックされる場合があります。 詳細については、[Microsoft コマーシャル マーケットプレース](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)に関するページを参照してください。
 * **Microsoft からの提案** – 提案は、組織が Microsoft の製品やサービスを購入するための Microsoft からの正式なオファーです。 提案に同意する人が Azure AD でグローバル管理者ロールまたは課金管理者ロールを持っていない場合、提案を完了するためのコマース固有のロールと、管理センターにアクセスするための Modern Commerce ユーザー ロールの両方が割り当てられます。 管理センターにアクセスするときは、そのコマース固有のロールによって承認された機能のみを使用できます。
 * **コマース固有のロール** – 一部のユーザーには、コマース固有のロールが割り当てられます。 ユーザーがグローバル管理者または課金管理者でない場合は、管理センターにアクセスできるように、Modern Commerce ユーザー ロールを取得します。  
 
@@ -362,7 +362,7 @@ Modern Commerce ユーザー ロールを持つユーザーは、通常、他の
 
 ### <a name="power-bi-administrator"></a>[Power BI 管理者](#power-bi-service-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Power BI 管理者の役割について](https://docs.microsoft.com/power-bi/service-admin-role)」を参照してください。
+このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Power BI 管理者の役割について](/power-bi/service-admin-role)」を参照してください。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "Power BI サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Power BI 管理者" になります。
@@ -416,31 +416,31 @@ Modern Commerce ユーザー ロールを持つユーザーは、通常、他の
 --- | ---
 [Microsoft 365 セキュリティ センター](https://protection.office.com) | Microsoft 365 サービス全体のセキュリティ関連ポリシーの監視<br>セキュリティの脅威とアラートの管理<br>レポートの表示
 Identity Protection Center | セキュリティ閲覧者ロールのすべてのアクセス許可<br>さらに、パスワードのリセットを除く Identity Protection センターのすべての操作を行う権限
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>Azure AD ロールの割り当てまたは設定を管理することは**できません**
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>Azure AD ロールの割り当てまたは設定を管理することは**できません**
 [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | セキュリティ ポリシーの管理<br>セキュリティの脅威の表示、調査、対応<br>レポートの表示
 Azure Advanced Threat Protection | 疑わしいセキュリティ アクティビティの監視と対応
 Windows Defender ATP および EDR | ロールを割り当てる<br>コンピューター グループを管理する<br>エンドポイントの脅威の検出と自動修復の構成<br>アラートの表示、調査、対応
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | ユーザー、デバイス、登録、構成、アプリケーション情報の表示<br>Intune に変更を加えることはできません
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 管理者の追加、ポリシーと設定の追加、ログのアップロード、ガバナンス アクションの実行
-[Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます
-[Office 365 サービス正常性](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
+[Intune](/intune/role-based-access-control) | ユーザー、デバイス、登録、構成、アプリケーション情報の表示<br>Intune に変更を加えることはできません
+[Cloud App Security](/cloud-app-security/manage-admins) | 管理者の追加、ポリシーと設定の追加、ログのアップロード、ガバナンス アクションの実行
+[Azure Security Center](../../role-based-access-control/built-in-roles.md) | セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます
+[Office 365 サービス正常性](/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
 [スマート ロックアウト](../authentication/howto-password-smart-lockout.md) | サインイン イベントが失敗したときのロックアウトのしきい値と期間を定義します。
 [パスワード保護](../authentication/concept-password-ban-bad.md) | カスタムの禁止パスワードの一覧またはオンプレミスのパスワード保護を構成します。
 
 ### <a name="security-operator"></a>[セキュリティ オペレーター](#security-operator-permissions)
 
-このロールのユーザーはアラートを管理できるほか、Microsoft 365 セキュリティ センター、Azure Active Directory、Identity Protection、Privileged Identity Management、および Office 365 セキュリティ/コンプライアンス センターにおけるすべての情報を含むセキュリティ関連機能への読み取り専用グローバル アクセス権があります。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)」をご覧ください。
+このロールのユーザーはアラートを管理できるほか、Microsoft 365 セキュリティ センター、Azure Active Directory、Identity Protection、Privileged Identity Management、および Office 365 セキュリティ/コンプライアンス センターにおけるすべての情報を含むセキュリティ関連機能への読み取り専用グローバル アクセス権があります。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](/office365/securitycompliance/permissions-in-the-security-and-compliance-center)」をご覧ください。
 
 場所 | できること
 --- | ---
 [Microsoft 365 セキュリティ センター](https://protection.office.com) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティの脅威アラートの表示、調査、対応
 Identity Protection Center | セキュリティ閲覧者ロールのすべてのアクセス許可<br>さらに、パスワードのリセットを除く Identity Protection センターのすべての操作を行う権限
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | セキュリティ閲覧者ロールのすべてのアクセス許可
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | セキュリティ閲覧者ロールのすべてのアクセス許可
 [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティ アラートの表示、調査、対応
 Windows Defender ATP および EDR | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティ アラートの表示、調査、対応
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | セキュリティ閲覧者ロールのすべてのアクセス許可
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | セキュリティ閲覧者ロールのすべてのアクセス許可
-[Office 365 サービス正常性](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
+[Intune](/intune/role-based-access-control) | セキュリティ閲覧者ロールのすべてのアクセス許可
+[Cloud App Security](/cloud-app-security/manage-admins) | セキュリティ閲覧者ロールのすべてのアクセス許可
+[Office 365 サービス正常性](/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
 
 ### <a name="security-reader"></a>[Security Reader](#security-reader-permissions)
 
@@ -450,13 +450,13 @@ Windows Defender ATP および EDR | セキュリティ閲覧者ロールのす�
 --- | ---
 [Microsoft 365 セキュリティ センター](https://protection.office.com) | Microsoft 365 サービス全体のセキュリティ関連ポリシーの表示<br>セキュリティの脅威とアラートの表示<br>レポートの表示
 Identity Protection Center | 各セキュリティ機能の全セキュリティ レポートと設定情報の閲覧<br><ul><li>スパム対策<li>暗号化<li>データ損失の防止<li>マルウェア対策<li>高度な脅威保護<li>フィッシング詐欺対策<li>メールフロー ルール
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Azure AD Privileged Identity Management に表示されるすべての情報への読み取り専用アクセス権を持ちます。Azure AD ロール割り当てに関するポリシーとレポート、およびセキュリティ レビュー。<br>Azure AD Privileged Identity Management へのサインアップおよびそれに対する変更を行うことは**できません**。 このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格がある場合、Privileged Identity Management ポータルまたは PowerShell からそれらのロールを有効化することができます。
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Azure AD Privileged Identity Management に表示されるすべての情報への読み取り専用アクセス権を持ちます。Azure AD ロール割り当てに関するポリシーとレポート、およびセキュリティ レビュー。<br>Azure AD Privileged Identity Management へのサインアップおよびそれに対する変更を行うことは**できません**。 このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格がある場合、Privileged Identity Management ポータルまたは PowerShell からそれらのロールを有効化することができます。
 [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | セキュリティ ポリシーの表示<br>セキュリティの脅威の表示および調査<br>レポートの表示
 Windows Defender ATP および EDR | アラートを表示して調査します。 Windows Defender ATP でロールベースのアクセス制御を有効にすると、Azure AD セキュリティ閲覧者ロールなどの読み取り専用アクセス許可を持つユーザーは、Windows Defender ATP ロールが割り当てられるまで、アクセス権を失います。
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | ユーザー、デバイス、登録、構成、アプリケーション情報の表示。 Intune に変更を加えることはできません。
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる
-[Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません
-[Office 365 サービス正常性](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
+[Intune](/intune/role-based-access-control) | ユーザー、デバイス、登録、構成、アプリケーション情報の表示。 Intune に変更を加えることはできません。
+[Cloud App Security](/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる
+[Azure Security Center](../../role-based-access-control/built-in-roles.md) | 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません
+[Office 365 サービス正常性](/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
 
 ### <a name="service-support-administrator"></a>[サービス サポート管理者](#service-support-administrator-permissions)
 
@@ -477,7 +477,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype for Business/Lync 管理者](#lync-service-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視して、Teams と Skype for Business の管理センターにアクセスすることができます。 アカウントには、Teams のライセンスが付与されている必要もあります。そうでないと、Teams の PowerShell コマンドレットを実行できません。 詳細については、[Skype for Business の管理者ロール](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)に関するページを参照してください。Teams のライセンス情報については、[Skype for Business と Microsoft Teams アドオンのライセンス](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)に関するページを参照してください
+このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視して、Teams と Skype for Business の管理センターにアクセスすることができます。 アカウントには、Teams のライセンスが付与されている必要もあります。そうでないと、Teams の PowerShell コマンドレットを実行できません。 詳細については、[Skype for Business の管理者ロール](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)に関するページを参照してください。Teams のライセンス情報については、[Skype for Business と Microsoft Teams アドオンのライセンス](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)に関するページを参照してください
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "Lync サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com/) では、"Skype for Business 管理者" になります。

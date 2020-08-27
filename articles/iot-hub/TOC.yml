@@ -188,6 +188,9 @@
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
         - name: IoT デプロイのセキュリティ保護
           href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: X.509 CA 証明書を使用したセキュリティ保護
       items:
         - name: X.509 CA 証明書セキュリティの概要

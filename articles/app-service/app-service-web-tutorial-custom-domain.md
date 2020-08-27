@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190061"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782313"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -277,7 +277,7 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>アプリの CNAME レコード マッピングを有効にする
 
-これで、ワイルドカード名と一致するすべてのサブドメインをアプリに追加できるようになりました (たとえば、`sub1.contoso.com` および `sub2.contoso.com` は、どちらも `*.contoso.com` に一致します)。
+これで、ワイルドカード名と一致するすべてのサブドメインをアプリに追加できるようになりました (たとえば、`sub1.contoso.com`、`sub2.contoso.com`、`*.contoso.com` は、いずれも `*.contoso.com` に一致します)。
 
 Azure Portal のアプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。
 

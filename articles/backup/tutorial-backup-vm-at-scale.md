@@ -4,12 +4,12 @@ description: このチュートリアルでは、Recovery Services コンテナ�
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263420"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757508"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -136,7 +136,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. コンテキスト メニューで、 **[今すぐバックアップ]** を選択します。
 
-    ![コンテキスト メニュー](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![コンテキスト メニュー - [今すぐバックアップ] の選択](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     [今すぐバックアップ] メニューが開きます。
 
@@ -166,7 +166,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. **[バックアップ項目]** メニューで、省略記号を選択してコンテキスト メニューを開きます。
 
-    ![コンテキスト メニュー](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![[バックアップ項目] メニューでコンテキスト メニューを開く](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. コンテキスト メニューで、 **[バックアップの停止]** を選択して [バックアップの停止] メニューを開きます。
 

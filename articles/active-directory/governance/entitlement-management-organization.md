@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586573"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783945"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -43,8 +43,8 @@ Azure Active Directory (Azure AD) のエンタイトルメント管理を利用�
 Azure AD ディレクトリまたはドメインのユーザーの認証方法は、認証の種類によって異なります。 接続された組織の認証の種類は次のとおりです。
 
 - Azure AD
-- [直接フェデレーション](../b2b/direct-federation.md)
-- [ワンタイム パスコード](../b2b/one-time-passcode.md) (ドメイン)
+- [直接フェデレーション](../external-identities/direct-federation.md)
+- [ワンタイム パスコード](../external-identities/one-time-passcode.md) (ドメイン)
 
 接続された組織を追加する方法のデモについては、次のビデオをご覧ください。
 
@@ -79,7 +79,7 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 1. **[追加]** を選択して、Azure AD ディレクトリまたはドメインを追加します。 現時点では、接続されている組織ごとに Azure AD ディレクトリまたはドメインを 1 つのみ追加できます。
 
     > [!NOTE]
-    > Azure AD ディレクトリまたはドメインのすべてのユーザーはこのアクセス パッケージを要求できます。 これには、ディレクトリに関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure AD 企業間 (B2B) の許可リストまたは拒否リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../b2b/allow-deny-list.md)」を参照してください。
+    > Azure AD ディレクトリまたはドメインのすべてのユーザーはこのアクセス パッケージを要求できます。 これには、ディレクトリに関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure AD 企業間 (B2B) の許可リストまたは拒否リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../external-identities/allow-deny-list.md)」を参照してください。
 
 1. Azure AD ディレクトリまたはドメインを追加した後、 **[選択]** を選択します。
 
@@ -89,7 +89,7 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 
 1. **[スポンサー]** タブを選択し、この接続された組織のオプションのスポンサーを追加します。
 
-    スポンサーとは、この接続された組織との関係の連絡先となる、自分のディレクトリ内に既に存在する内部または外部のユーザーです。 内部スポンサーは、自分のディレクトリ内のメンバー ユーザーです。 外部スポンサーは、以前に招待され、自分のディレクトリ内に既に存在する、接続されている組織のゲスト ユーザーです。 スポンサーは、この接続されている組織内のユーザーがこのアクセス パッケージへのアクセスを要求したときに、承認者として利用できます。 ゲスト ユーザーを自分のディレクトリに招待する方法については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../b2b/add-users-administrator.md)」を参照してください。
+    スポンサーとは、この接続された組織との関係の連絡先となる、自分のディレクトリ内に既に存在する内部または外部のユーザーです。 内部スポンサーは、自分のディレクトリ内のメンバー ユーザーです。 外部スポンサーは、以前に招待され、自分のディレクトリ内に既に存在する、接続されている組織のゲスト ユーザーです。 スポンサーは、この接続されている組織内のユーザーがこのアクセス パッケージへのアクセスを要求したときに、承認者として利用できます。 ゲスト ユーザーを自分のディレクトリに招待する方法については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../external-identities/add-users-administrator.md)」を参照してください。
 
     **[追加/削除]** を選択すると開くペインで、組織内または組織外のスポンサーを選択できます。 このウィンドウには、自分のディレクトリ内のユーザーとグループのフィルター処理されていない一覧が表示されます。
 
@@ -134,9 +134,9 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 
 ## <a name="managing-a-connected-organization-programmatically"></a>プログラムによる接続された組織の管理
 
-Microsoft Graph を使用して、接続されている組織を作成、一覧表示、更新、および削除することもできます。 委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを持つ適切なロールのユーザーは、API を呼び出して、[connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) オブジェクトを管理し、それに対してスポンサーを設定できます。
+Microsoft Graph を使用して、接続されている組織を作成、一覧表示、更新、および削除することもできます。 委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを持つ適切なロールのユーザーは、API を呼び出して、[connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) オブジェクトを管理し、それに対してスポンサーを設定できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [外部ユーザーのアクセス権の管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
+- [外部ユーザーのアクセス権の管理](./entitlement-management-external-users.md)
 - [自分のディレクトリ外のユーザーのアクセス権の管理](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

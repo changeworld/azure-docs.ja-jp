@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure CLI を使用して、Azu
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489505"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762404"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースをバックアップする
 
@@ -19,7 +19,7 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 > [!div class="checklist"]
 >
-> * Recovery Services コンテナーの作成
+> * Recovery Services コンテナーを作成する
 > * SAP HANA インスタンスを登録し、そこでデータベースを検出する
 > * SAP HANA データベースでバックアップを有効にする
 > * オンデマンド バックアップをトリガーする
@@ -30,7 +30,7 @@ SAP HANA で[現在サポートされているシナリオ](./sap-hana-backup-su
 
 CLI をローカルにインストールして使用する場合は、Azure CLI バージョン xx.xxx.x 以降を使用する必要があります。 CLI のバージョンを調べるには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 Recovery Services コンテナーは、Azure VM や Azure VM 上で実行されているワークロード (SQL や HANA データベースなど) といった各保護リソースのバックアップ データを格納する論理コンテナーです。 保護されたリソースのバックアップ ジョブを実行すると、Recovery Services コンテナー内に復元ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
@@ -71,7 +71,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 Azure サービスで SAP HANA インスタンス (SAP HANA がインストールされている VM) を検出するには、SAP HANA マシン上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行する必要があります。 スクリプトを実行する前に、[前提条件](./tutorial-backup-sap-hana-db.md#prerequisites)がすべて満たされていることを確認してください。 スクリプトで実行される処理の詳細については、「[事前登録スクリプトで実行される処理](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)」セクションをご参照ください。
 
-スクリプトを実行すると、前に作成した Recovery Services コンテナーに SAP HANA インスタンスを登録できます。 インスタンスを登録するには、[az backup container register](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) コマンドレットを使用します。 *VMResourceId* は、SAP HANA をインストールするために作成した VM のリソース ID です。
+このスクリプトを実行すると、前に作成した Recovery Services コンテナーに SAP HANA インスタンスを登録できます。 インスタンスを登録するには、[az backup container register](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) コマンドレットを使用します。 *VMResourceId* は、SAP HANA をインストールするために作成した VM のリソース ID です。
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \

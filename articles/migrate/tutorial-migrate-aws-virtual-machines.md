@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、AWS VM を Azu
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611434"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762421"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -379,7 +379,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 **回答:** 現時点では、このワークフローのために評価のインポートがサポートされていません。 回避策として、評価をエクスポートしてから手動で、「レプリケーションを有効にする」の手順の間に VM の推奨事項を選択できます。
   
 **質問:** AWS VM の検出を試みているときに "Failed to fetch BIOS GUID (BIOS GUID をフェッチできませんでした)" というエラーが発生する   
-**回答:** AWS VM でサポートされているオペレーティング システムを確認してください。  
+**回答:** 認証には、擬似ユーザーではなく、常にルート ログインを使用してください。 また、AWS VM でサポートされているオペレーティング システムを確認してください。  
 
 **質問:** レプリケーションの状態が進んでいない    
 **回答:** レプリケーション アプライアンスが要件を満たしているかどうかを調べます。 レプリケーション アプライアンスの TCP ポート 9443 とデータ転送用の HTTPS 443 で、必要なポートが有効になっていることを確認します。 同じプロジェクトに、古い複製バージョンのレプリケーション アプライアンスが接続されていないことを確認します。   
