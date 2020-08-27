@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 7adf9a9701eb2492f0b13a26af1dbaf8de631373
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d0497162c8535b80b7e9d9a564b12dc6966a4120
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021366"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891438"
 ---
 # <a name="cut-planes"></a>切断面
 
@@ -47,11 +47,11 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
 {
     ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
-    cutPlane->Normal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
+    cutPlane->SetNormal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
     Color4Ub fadeColor;
     fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
-    cutPlane->FadeColor(fadeColor);
-    cutPlane->FadeLength(0.05f); // gradient width: 5cm
+    cutPlane->SetFadeColor(fadeColor);
+    cutPlane->SetFadeLength(0.05f); // gradient width: 5cm
 }
 ```
 
