@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263029"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685410"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -36,10 +36,10 @@ Microsoft Visual Studio のサブスクリプションが必要です | コン�
 必要なストレージ パフォーマンスの VM が見つかりません | そのマシンに必要なストレージ パフォーマンス (1 秒あたりの入力/出力操作数 (IOPS) とスループット) が Azure VM のサポート範囲を超えています。 移行前に、そのマシンのストレージ要件を緩和します。
 必要なネットワーク パフォーマンスの VM が見つかりません | そのマシンに必要なネットワーク パフォーマンス (入力/出力) が Azure VM のサポート範囲を超えています。 そのマシンのネットワーク要件を緩和します。
 指定した場所で VM が見つかりません | 移行前に、別のターゲットの場所を指定します。
-不適切なディスクが 1 つ以上あります | VM に接続されている 1 つ以上のディスクで、Azure の要件が満たされていません。<br/><br/> Azure Migrate: 現在、Server Assessment では、Ultra SSD ディスクはサポートされておらず、Premium マネージド ディスクのディスク制限 (32 TB) に基づいてディスクが評価されます。<br/><br/> VM に接続されている各ディスクについて、ディスクのサイズが (Ultra SSD ディスクでサポートされている) 64 TB 未満であることを確認します。<br/><br/> そうでない場合は、Azure に移行する前にディスクのサイズを減らすか、または Azure で複数のディスクを使用して[ストライピングし](../virtual-machines/windows/premium-storage-performance.md#disk-striping)、ストレージの上限を高くします。 各ディスクで必要とされるパフォーマンス (IOPS とスループット) が Azure の[仮想マシンの管理ディスク](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)でサポートされていることを確認してください。
+不適切なディスクが 1 つ以上あります | VM に接続されている 1 つ以上のディスクで、Azure の要件が満たされていません。<br/><br/> Azure Migrate: 現在、Server Assessment では、Ultra SSD ディスクはサポートされておらず、Premium マネージド ディスクのディスク制限 (32 TB) に基づいてディスクが評価されます。<br/><br/> VM に接続されている各ディスクについて、ディスクのサイズが (Ultra SSD ディスクでサポートされている) 64 TB 未満であることを確認します。<br/><br/> そうでない場合は、Azure に移行する前にディスクのサイズを減らすか、または Azure で複数のディスクを使用して[ストライピングし](../virtual-machines/premium-storage-performance.md#disk-striping)、ストレージの上限を高くします。 各ディスクで必要とされるパフォーマンス (IOPS とスループット) が Azure の[仮想マシンの管理ディスク](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)でサポートされていることを確認してください。
 不適切なネットワーク アダプターが 1 つ以上あります。 | 移行前に、マシンから未使用のネットワーク アダプターを削除します。
 ディスクの数が制限を超えています | 移行前に、マシンから未使用のディスクを削除します。
-ディスクのサイズが制限を超えています | Azure Migrate: 現在、Server Assessment では、Ultra SSD ディスクはサポートされておらず、Premium ディスクの制限 (32 TB) に基づいてディスクが評価されます。<br/><br/> ただし、Azure では (Ultra SSD ディスクでサポートされる) 最大 64 TB のディスク サイズまでサポートされています。 移行の前にディスクを 64 TB 未満に圧縮するか、または Azure で複数のディスクを使用して[ストライピングし](../virtual-machines/windows/premium-storage-performance.md#disk-striping)、ストレージの上限を高くします。
+ディスクのサイズが制限を超えています | Azure Migrate: 現在、Server Assessment では、Ultra SSD ディスクはサポートされておらず、Premium ディスクの制限 (32 TB) に基づいてディスクが評価されます。<br/><br/> ただし、Azure では (Ultra SSD ディスクでサポートされる) 最大 64 TB のディスク サイズまでサポートされています。 移行の前にディスクを 64 TB 未満に圧縮するか、または Azure で複数のディスクを使用して[ストライピングし](../virtual-machines/premium-storage-performance.md#disk-striping)、ストレージの上限を高くします。
 指定した場所でディスクを使用できません | 移行前に、ディスクがターゲットの場所にあることを確認します。
 指定した冗長性でディスクを使用できません | 評価の設定 (既定では LRS) で定義されているストレージの冗長性の種類をディスクで使用する必要があります。
 内部エラーが原因でディスクの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。

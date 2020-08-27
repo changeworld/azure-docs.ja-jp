@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49a12203c833fc817b1898e6179d7f812d0a994e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084196"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923111"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Cognitive Search での言語によるフィルター処理の方法 
 
@@ -37,11 +37,11 @@ Azure Cognitive Search のクエリは、単一のインデックスを対象に
   ![不動産のサンプルの [フィールド名] 画面を示すスクリーンショット。 フィールドのグループが強調表示され、言語アナライザーの割り当てが、強調表示されているフィールドの言語にどのように対応しているかが示されています。](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> フィールド定義と言語アナライザーを紹介するコード例については、[インデックスの定義 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) と[インデックスの定義 (REST)](search-create-index-rest-api.md) に関するセクションを参照してください。
+> フィールド定義と言語アナライザーを紹介するコード例については、[インデックスの定義 (.NET)](./search-get-started-dotnet.md) と[インデックスの定義 (REST)](./search-get-started-powershell.md) に関するセクションを参照してください。
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
-(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
+(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](./search-get-started-dotnet.md)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
 
 ## <a name="constrain-the-query-and-trim-results"></a>クエリの制限と結果のトリミング
 
@@ -63,7 +63,6 @@ parameters =
 ## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search のフィルター](search-filters.md)
-+ [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
++ [言語アナライザー](/rest/api/searchservice/language-support)
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
-+ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-
++ [Search Documents REST API](/rest/api/searchservice/search-documents)
