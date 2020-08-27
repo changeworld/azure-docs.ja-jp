@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553166"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936590"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>マネージド ID を使用して、データ ソースへのインデクサー接続を設定する (プレビュー)
 
@@ -31,7 +31,7 @@ Azure Cognitive Search の[インデクサー](search-indexer-overview.md)は、
 
 ## <a name="using-managed-identities"></a>マネージド ID の使用
 
-[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) は、Azure Active Directory (Azure AD) で自動管理される ID を Azure サービスで使用できるようにする機能です。 Azure Cognitive Search でこの機能を使用すると、資格情報が含まれていない接続文字列を使用してデータ ソース オブジェクトを作成できます。 その場合、検索サービスには、ロールベースのアクセス制御 (RBAC) によってデータ ソースへのアクセスが許可されます。
+[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動管理される ID を Azure サービスで使用できるようにする機能です。 Azure Cognitive Search でこの機能を使用すると、資格情報が含まれていない接続文字列を使用してデータ ソース オブジェクトを作成できます。 その場合、検索サービスには、ロールベースのアクセス制御 (RBAC) によってデータ ソースへのアクセスが許可されます。
 
 マネージド ID を使用してデータ ソースを設定することで、データ ソースの資格情報を変更しても、インデクサーでは引き続きデータソースに接続できるようになります。 また、アカウント キーを含めたり、Key Vault を使用してアカウント キーを取得したりしなくても、コード内にデータ ソース オブジェクトを作成することができます。
 

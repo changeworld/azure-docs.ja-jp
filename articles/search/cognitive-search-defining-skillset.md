@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214066"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935451"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search で AI エンリッチメント パイプラインにスキルセットを作成する方法 
 
@@ -49,14 +49,14 @@ ms.locfileid: "88214066"
 ![仮定のエンリッチメント パイプライン](media/cognitive-search-defining-skillset/sample-skillset.png "仮定のエンリッチメント パイプライン")
 
 
-このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure Cognitive Search にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を参照してください。
+このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure Cognitive Search にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](/rest/api/searchservice/create-indexer)を参照してください。
 
 
 この図で、"*ドキュメント クラッキング*" のステップは自動的に行われます。 基本的に、Azure Cognitive Search では、よく知られているファイルを開く方法を把握しており、各ドキュメントから抽出されたテキストを含む "*content*" フィールドが作成されます。 白いボックスは組み込みエンリッチャーで、ドットのある "Bing Entity Search" ボックスは、作成するカスタム エンリッチャーを表します。 図に示すように、スキルセットには、3 つのスキルが含まれています。
 
 ## <a name="skillset-definition-in-rest"></a>REST でのスキルセットの定義
 
-スキルセットは、スキルの配列として定義されます。 スキルごとに、入力ソースと生成される出力の名前を定義します。 [スキルセット REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-skillset)に関するページに従って、前の図に対応するスキルセットを定義することができます。 
+スキルセットは、スキルの配列として定義されます。 スキルごとに、入力ソースと生成される出力の名前を定義します。 [スキルセット REST API の作成](/rest/api/searchservice/create-skillset)に関するページに従って、前の図に対応するスキルセットを定義することができます。 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -281,4 +281,4 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 ## <a name="next-steps"></a>次のステップ
 
-エンリッチメント パイプラインとスキルセットについて学習したので、引き続き[スキルセットの注釈を参照する方法](cognitive-search-concept-annotations-syntax.md)または[インデックス内のフィールドに出力をマップする方法](cognitive-search-output-field-mapping.md)を確認してください。 
+エンリッチメント パイプラインとスキルセットについて学習したので、引き続き[スキルセットの注釈を参照する方法](cognitive-search-concept-annotations-syntax.md)または[インデックス内のフィールドに出力をマップする方法](cognitive-search-output-field-mapping.md)を確認してください。

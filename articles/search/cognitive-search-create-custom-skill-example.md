@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46170a0eede92584b8ac4cc77ad61ca673cae65c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113818"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935485"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
 
@@ -481,5 +481,5 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 + [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
 + [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [スキルセットを作成する (REST)](/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

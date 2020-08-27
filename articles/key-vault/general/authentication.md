@@ -7,12 +7,12 @@ ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589984"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930861"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 
@@ -112,14 +112,9 @@ Azure Key Vault はシークレット管理ソリューションであり、ア�
 1. 証明書を作成する
 
     * オプション 1: [OpenSSL](https://www.openssl.org/) を使用して証明書を作成します (テスト専用。運用環境では自己署名証明書を使用しないでください)
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
     * オプション 2:キー コンテナーを使用して証明書を作成します。 [Azure Key Vault で証明書を作成する](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
 
-1. 証明書を PEM 形式でダウンロードします
+1. 証明書を PEM/PFX 形式でダウンロードします
 1. Azure portal にログインし、Azure Active Directory に移動します
 1. [アプリの登録] をクリックします
 1. パート 1 で作成したサービス プリンシパルを選択します。

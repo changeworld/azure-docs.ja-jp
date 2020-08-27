@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214031"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935366"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI によって強化されたフィールドを検索可能なインデックスにマップする方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "88214031"
 * スキルセットはありませんが、Cosmos DB データベースから複合型にインデックスを作成しています。 その複合型のノードにアクセスして、インデックスのフィールドにマップしたいと考えています。
 
 > [!NOTE]
-> 最近、出力フィールド マッピングで関数をマッピングする機能を有効にしました。 マッピング関数の詳細については、「[フィールド マッピング関数](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)」を参照してください。
+> 最近、出力フィールド マッピングで関数をマッピングする機能を有効にしました。 マッピング関数の詳細については、「[フィールド マッピング関数](./search-indexer-field-mappings.md#field-mapping-functions)」を参照してください。
 
 ## <a name="use-outputfieldmappings"></a>outputFieldMappings の使用
 
