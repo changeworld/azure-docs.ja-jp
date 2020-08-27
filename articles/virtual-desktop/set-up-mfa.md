@@ -51,7 +51,7 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
    - Windows Virtual Desktop (クラシック) を使用している場合は、次の 2 つのアプリを選択します。
        - **Windows Virtual Desktop** (アプリ ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
        - **Windows Virtual Desktop クライアント** (アプリ ID fa4345a4-a730-4230-84a8-7d9651b86739)
-   - Windows Virtual Desktop (クラシック) を使用している場合は、代わりに次の 2 つのアプリを選択します。
+   - Windows Virtual Desktopを使用している場合は、代わりに次の 2 つのアプリを選択します。
        -  **Windows Virtual Desktop** (アプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
        -  **Windows Virtual Desktop クライアント** (アプリ ID a85cf173-4192-42f8-81fa-777a763e6e2c)
 
