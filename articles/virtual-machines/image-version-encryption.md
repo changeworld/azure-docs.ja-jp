@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245555"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816492"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
 
@@ -27,9 +27,9 @@ ms.locfileid: "88245555"
 
 この記事では、お使いのイメージに使用するディスク暗号化が既に設定されている必要があります。
 
-- カスタマー マネージド キーのみを [Azure portal](./windows/disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset) で使用する場合は、**サーバー側の暗号化でカスタマー マネージド キーを有効にする**方法に関するページを参照してください。
+- カスタマー マネージド キーのみを [Azure portal](./disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset) で使用する場合は、**サーバー側の暗号化でカスタマー マネージド キーを有効にする**方法に関するページを参照してください。
 
-- プラットフォーム マネージド キーとユーザー マネージド キーの両方を (二重暗号化)、[Azure portal](./windows/disks-enable-double-encryption-at-rest-portal.md) または [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md) で使用する場合は、**保存時の二重暗号化を有効にする**方法に関するページを参照してください。
+- プラットフォーム マネージド キーとユーザー マネージド キーの両方を (二重暗号化)、[Azure portal](./disks-enable-double-encryption-at-rest-portal.md) または [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md) で使用する場合は、**保存時の二重暗号化を有効にする**方法に関するページを参照してください。
     > [!IMPORTANT]
     > Azure portal にアクセスするには、このリンク[https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates)を使用します。 現時点では、このリンクを使用しないと、パブリックの Azure portal には保存時の二重暗号化が表示されません。
 

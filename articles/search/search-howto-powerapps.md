@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751041"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918045"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>チュートリアル:Power Apps から Cognitive Search インデックスに対してクエリを実行する
 
@@ -261,5 +261,4 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 Power Apps を使用すると、カスタム アプリの迅速なアプリケーション開発が可能になります。 これで、検索インデックスに接続する方法がわかりました。次は、カスタム Power App で豊富な視覚エクスペリエンスを作成する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [Power Apps の学習カタログ](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
-
+> [Power Apps の学習カタログ](/powerapps/learning-catalog/get-started)

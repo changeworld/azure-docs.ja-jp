@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: ca75aea393e4850eb302cb03914296d7c1eaa951
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517653"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686073"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 
@@ -179,7 +179,7 @@ Atlassian Cloud に対する Azure AD SSO を構成してテストするには�
       
    1. Azure AD テナントの属性マッピング (Office 365 ライセンスなし) 
 
-      a. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 要求をクリックします。
+      a. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 要求をクリックします。
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          

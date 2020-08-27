@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9de0609361e67d5251b25df798b61a4ab13e432c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387423"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869101"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -116,7 +116,7 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **ネットワークとストレージ** | 最新情報については、Site Recovery の[ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#network)と[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#storage)の前提条件を確認してください。 Azure Migrate の場合も、ネットワークとストレージの要件は同じです。
 **Azure の要件** | 最新情報については、Site Recovery に使用する [Azure ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)の要件を確認してください。 VMware の移行に関する要件は、Azure Migrate の場合も同じです。
 **モビリティ サービス** | 移行対象となる各 VM に、Mobility Service エージェントがインストールされている必要があります。
-**UEFI ブート** | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
+**UEFI ブート** | サポートされています。
 **ターゲット ディスク** | VM は、Azure 内のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
 **ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
 **ディスクの制限** |  VM あたり最大 63 台のディスク。
@@ -125,7 +125,7 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **独立ディスク** | サポートされています。
 **パススルー ディスク** | サポートされています。
 **NFS** | VM 上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。
-**iSCSI ターゲット** | iSCSI ターゲットを含む VM は、エージェントレス移行ではサポートされていません。
+**iSCSI ターゲット** | サポートされています。
 **マルチパス IO** | サポートされていません。
 **ストレージ vMotion** | サポートされています
 **チーミングされた NIC** | サポートされていません。

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afc9a32c4f0fa5b4b6a2f6c0ec56bbc35b6dde68
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244494"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799300"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -110,7 +110,7 @@ User | 自分が所有する Microsoft 365 グループを更新できます<br>
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Microsoft 365 グループの有効期限日を取得する方法
 
-Microsoft 365 グループの有効期限は、ユーザーが有効期限や最終更新日などのグループの詳細を表示できるアクセス パネルに加え、Microsoft Graph REST API ベータ版からも取得できます。 Microsoft Graph ベータ版では、グループ プロパティとして expirationDateTime が有効になりました。 これは GET 要求で取得できます。 詳細については、[こちらの例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)を参照してください。
+Microsoft 365 グループの有効期限は、ユーザーが有効期限や最終更新日などのグループの詳細を表示できるアクセス パネルに加え、Microsoft Graph REST API ベータ版からも取得できます。 Microsoft Graph ベータ版では、グループ プロパティとして expirationDateTime が有効になりました。 これは GET 要求で取得できます。 詳細については、[こちらの例](/graph/api/group-get?view=graph-rest-beta#example)を参照してください。
 
 > [!NOTE]
 > アクセス パネルでグループのメンバーシップを管理するには、Azure Active Directory の [Groups General Setting]\(グループの全般設定\) で [Restrict access to Groups in Access Panel]\(アクセス パネルのグループへのアクセスを制限する\) を [いいえ] に設定する必要があります。
@@ -172,11 +172,10 @@ PowerShell コマンドレットを使用して、Azure AD 組織の Microsoft 3
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)を参照してください。
+次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups)を参照してください。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy
-- Get-AzureADMSGroupLifecyclePolicy
 - Set-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup

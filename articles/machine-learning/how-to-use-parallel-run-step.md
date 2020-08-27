@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507116"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651201"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -202,7 +202,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>お使いの推論スクリプトを記述する
 
 >[!Warning]
->次のコードは、[サンプル ノートブック](https://aka.ms/batch-inference-notebooks)で使用されるサンプルに過ぎません。 ご自身のシナリオに合わせて、独自のスクリプトを作成する必要があります。
+>次のコードは、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)で使用されるサンプルに過ぎません。 ご自身のシナリオに合わせて、独自のスクリプトを作成する必要があります。
 
 スクリプトには 2 つの関数が "*必ず必要*" です。
 - `init()`:この関数は、後で推論するためのコストのかかる準備、または一般的な準備を行うときに使用します。 たとえば、これを使って、モデルをグローバル オブジェクトに読み込みます。 この関数は、プロセスの開始時に 1 回だけ呼び出されます。
@@ -214,7 +214,7 @@ model = Model.register(model_path="models/",
 %%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://aka.ms/batch-inference-notebooks)
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
 # for the implementation script.
 
 import os
@@ -421,7 +421,7 @@ df.head(10)
 
 ## <a name="next-steps"></a>次のステップ
 
-エンド ツー エンドで動作するこのプロセスを確認するには、[バッチ推論のノートブック](https://aka.ms/batch-inference-notebooks)をお試しください。 
+エンド ツー エンドで動作するこのプロセスを確認するには、[バッチ推論のノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)をお試しください。 
 
 ParallelRunStep のデバッグとトラブルシューティングのガイダンスについては、[攻略ガイド](how-to-debug-parallel-run-step.md)を参照してください。
 

@@ -3,18 +3,18 @@ title: .NET プログラミング ガイド - Azure Event Hubs （レガシー�
 description: この記事では、Azure .NET SDK を使用して Azure Event Hubs 用のコードを記述する方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5be30d7786fa094a55badb7b38ff2116a6013b6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074838"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934023"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs の .NET プログラミング ガイド (レガシー Microsoft.Azure.EventHubs パッケージ)
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](./event-hubs-about.md)」を参照してください。
 
 > [!WARNING]
-> このガイドは、以前の**Microsoft.Azure.EventHubs**パッケージに関するものです。 最新の[Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md)パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)することをお勧めします。  
+> このガイドは、以前の**Microsoft.Azure.EventHubs**パッケージに関するものです。 最新の[Azure.Messaging.EventHubs](event-hubs-dotnet-standard-getstarted-send.md)パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)することをお勧めします。  
 
 
 ## <a name="event-publishers"></a>イベント発行元
