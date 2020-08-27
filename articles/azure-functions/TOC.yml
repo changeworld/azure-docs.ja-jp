@@ -175,6 +175,7 @@
               href: functions-develop-vs.md
             - name: コア ツールの開発
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: 関数の作成
           items:
             - name: HTTP トリガー

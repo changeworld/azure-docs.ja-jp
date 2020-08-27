@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 270e5ba1879b229fbe9f5e6c8692bd8b4e9eebc7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585459"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688642"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "88585459"
 サービスのスケーリングを開始すると、キー コンテナーに送信される要求の数が増加します。 これにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。 キー コンテナーのパフォーマンス メトリックを監視し、特定のしきい値についてアラートを受け取ることができます。監視を構成するためのステップバイステップ ガイドについては、[こちら](https://docs.microsoft.com/azure/key-vault/general/alert)をご覧ください。
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>キー コンテナー オブジェクトごとにアクセス制御を割り当てるにはどうすればよいですか? 
-シークレット、キー、または証明書ごとのアクセス制御機能の提供状況が通知されます。詳細については、[こちら](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/.32213176-per-secret-key-certificate-access-control)をご覧ください。
+シークレット、キー、または証明書ごとのアクセス制御機能の提供状況が通知されます。詳細については、[こちら](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)をご覧ください。
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>アクセス制御ポリシーを使用して Key Vault の認証を提供するにはどうすればよいですか?
 Key Vault に対してクラウドベースのアプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス]( https://docs.microsoft.com/azure/key-vault/general/managed-identity)に関する記事をご覧ください。

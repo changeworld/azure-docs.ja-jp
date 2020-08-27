@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590389"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648668"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>仮想マシン スケール セットとは
 Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 仮想マシン スケール セットを使用すると、コンピューティング、ビッグ データ、コンテナー ワークロードなどの分野で大規模なサービスを構築できます。
@@ -40,7 +40,7 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
 
 - **大規模に動作する**
     - スケール セットでは、最大 1,000 個の VM インスタンスがサポートされます。 独自のカスタム VM イメージを作成してアップロードする場合、上限は 600 個の VM インスタンスになります。
-    - 運用環境のワークロードで最高のパフォーマンスを実現するには、[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) を使用してください。
+    - 運用環境のワークロードで最高のパフォーマンスを実現するには、[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) を使用してください。
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>仮想マシンとスケール セットの違い

@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be8a714d57d0f84b195c9f3846964aa2bf2525b
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605084"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783656"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -158,7 +158,7 @@ ms.locfileid: "88605084"
 
 ## <a name="create-reviews-via-apis"></a>API を使用してレビューを作成する
 
-API を使ってアクセス レビューを作ることもできます。 グループおよびアプリケーション ユーザーのアクセス レビューを管理するために Azure portal で行うことは、Microsoft Graph API を使って行うこともできます。 詳しくは、[Azure AD アクセス レビュー API リファレンス](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)のページをご覧ください。 コード サンプルについては、「[Example of retrieving Azure AD Access Reviews via Microsoft Graph (Microsoft Graph を使用して Azure AD アクセス レビューを取得する例)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)」をご覧ください。
+API を使ってアクセス レビューを作ることもできます。 グループおよびアプリケーション ユーザーのアクセス レビューを管理するために Azure portal で行うことは、Microsoft Graph API を使って行うこともできます。 詳しくは、[Azure AD アクセス レビュー API リファレンス](/graph/api/resources/accessreviews-root?view=graph-rest-beta)のページをご覧ください。 コード サンプルについては、「[Example of retrieving Azure AD Access Reviews via Microsoft Graph (Microsoft Graph を使用して Azure AD アクセス レビューを取得する例)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
