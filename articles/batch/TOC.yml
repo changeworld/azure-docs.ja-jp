@@ -134,6 +134,8 @@
           href: batch-sig-images.md
         - name: マネージド イメージ リソースを使用してプールを作成する
           href: batch-custom-images.md
+        - name: ディスク暗号化が有効になっているプールを作成する
+          href: disk-encryption.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md
         - name: パブリック IP アドレスのプールを作成する

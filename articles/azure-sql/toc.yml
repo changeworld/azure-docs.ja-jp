@@ -986,9 +986,11 @@
                 - name: ライセンス モデル
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Edition
+                - name: エディションを変更する
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: バージョンを変更する
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: ストレージ
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Key Vault の統合
@@ -1024,6 +1026,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性グループ
                   items:
+                    - name: Azure portal
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
                     - name: PowerShell または Az CLI
                       href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure クイック スタート テンプレート

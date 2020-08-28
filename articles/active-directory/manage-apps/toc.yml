@@ -43,7 +43,7 @@
           href: plan-an-application-integration.md
         - name: ギャラリーに記載されていないアプリの計画
           href: non-gallery-apps.md
-        - name: アクセス パネルのデプロイの計画
+        - name: マイ アプリのデプロイの計画
           href: access-panel-deployment-plan.md
         - name: 開発者向けのガイダンス
           href: developer-guidance-for-integrating-applications.md
@@ -246,7 +246,7 @@
               href: application-types.md
             - name: 予期しないユーザーが割り当てられる
               href: ways-users-get-assigned-to-applications.md
-        - name: アクセス パネルのトラブルシューティング
+        - name: マイ アプリのトラブルシューティング
           items:
             - name: ブラウザー拡張機能の管理
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: サインインできない
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: ブラウザー拡張機能のインストール時のエラー
-              href: access-panel-extension-problem-installing.md
             - name: セルフサービス アプリ アクセスの使用時のエラー
               href: access-panel-troubleshoot-self-service-access.md
         - name: オンプレミス アプリのトラブルシューティング

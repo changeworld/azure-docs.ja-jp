@@ -6,9 +6,9 @@
     - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning と Studio (クラシック)
-      displayName: 'AML, Studio, designer'
-      href: compare-azure-ml-to-studio-classic.md
+    - name: Azure Machine Learning スタジオとは
+      displayName: 'AML, studio, designer'
+      href: overview-what-is-machine-learning-studio.md
     - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -436,6 +436,8 @@
           href: how-to-create-your-first-pipeline.md
         - name: ML パイプラインのステップ間でのデータの移動 (Python)
           href: how-to-move-data-in-out-of-pipelines.md
+        - name: ML パイプラインをデプロイする (Python)
+          href: how-to-deploy-pipelines.md
         - name: パイプラインのスケジュールを設定する (Python)
           href: how-to-schedule-pipelines.md
         - name: パイプラインをトリガーする

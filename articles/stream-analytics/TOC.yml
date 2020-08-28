@@ -73,12 +73,34 @@
         - name: 出力の概要
           href: stream-analytics-define-outputs.md
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
-        - name: Cosmos DB に出力する
-          href: stream-analytics-documentdb-output.md
-        - name: Azure SQL DB に出力する
+        - name: Azure Data Lake Storage Gen 1
+          href: azure-data-lake-storage-gen1-output.md
+        - name: Azure SQL データベース
+          href: sql-database-output.md
+        - name: SQL データベースのパフォーマンス
           href: stream-analytics-sql-output-perf.md
+        - name: Azure Synapse Analytics
+          href: azure-synapse-analytics-output.md
+        - name: Blob Storage と Azure Data Lake Gen 2
+          href: blob-storage-azure-data-lake-gen2-output.md
         - name: BLOB のカスタム パス パターン
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+        - name: Event Hubs
+          href: event-hubs-output.md
+        - name: Power BI
+          href: power-bi-output.md
+        - name: テーブル ストレージ
+          href: table-storage-output.md
+        - name: Service Bus キュー
+          href: service-bus-queues-output.md
+        - name: Service Bus トピック
+          href: service-bus-topics-output.md
+        - name: Azure Cosmos DB
+          href: azure-cosmos-db-output.md
+        - name: Cosmos DB の最適化
+          href: stream-analytics-documentdb-output.md
+        - name: Azure Functions
+          href: azure-functions-output.md
     - name: 関数を使用したクエリの拡張
       items:
         - name: 関数の概要

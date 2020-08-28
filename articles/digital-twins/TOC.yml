@@ -6,6 +6,10 @@
       href: overview.md
     - name: 以前のリリースとの違い
       href: overview-differences.md
+- name: クイックスタート
+  items:
+    - name: サンプル シナリオの探索
+      href: quickstart-adt-explorer.md
 - name: チュートリアル
   items:
     - name: クライアント アプリをコーディングする
@@ -76,6 +80,8 @@
       items:
         - name: IoT Hub からテレメトリを取り込む
           href: how-to-ingest-iot-hub-data.md
+        - name: Logic Apps との統合
+          href: how-to-integrate-logic-apps.md
     - name: 出力を接続する
       items:
         - name: エンドポイントとルートを管理する
@@ -88,8 +94,6 @@
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
           href: how-to-integrate-time-series-insights.md
-        - name: Logic Apps との統合
-          href: how-to-integrate-logic-apps.md
     - name: トラブルシューティング
       items:
         - name: Azure Monitor のメトリックを表示する

@@ -27,13 +27,13 @@
     - name: イベントの送受信
       items:
         - name: .NET (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
+          href: event-hubs-java-get-started-send.md
         - name: Python (azure-eventhub バージョン 5)
-          href: get-started-python-send-v2.md
+          href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs バージョン 5)
-          href: get-started-node-send-v2.md
+          href: event-hubs-node-get-started-send.md
         - name: Go
           href: event-hubs-go-get-started-send.md
         - name: C (送信のみ)
@@ -43,13 +43,9 @@
     - name: イベントの送受信 (古いバージョン/パッケージ)
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python (azure-eventhub バージョン 1)
-          href: event-hubs-python-get-started-send.md
-        - name: JavaScript (azure/event-hubs バージョン 2)
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: イベントのキャプチャ
@@ -58,9 +54,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 5)
-          href: get-started-capture-python-v2.md
-        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 1)
+        - name: Python を使用したキャプチャ データの読み取り
           href: event-hubs-capture-python.md
     - name: Apache Kafka 用 Event Hubs へのストリーム配信
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md

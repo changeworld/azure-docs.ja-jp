@@ -172,6 +172,10 @@
               href: manage/pay-by-invoice.md
             - name: 追加のサブスクリプションを作成する
               href: manage/create-subscription.md
+            - name: プログラムによってサブスクリプションを作成する
+              href: manage/programmatically-create-subscription.md
+            - name: EA サブスクリプションを作成するためのアクセスを許可する
+              href: manage/grant-access-to-create-subscription.md
             - name: サブスクリプション情報のエクスポート
               href: manage/export-subscriptions.md
             - name: クレジット カードの変更

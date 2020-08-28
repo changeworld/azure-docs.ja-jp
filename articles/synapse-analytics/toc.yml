@@ -34,8 +34,10 @@
       href: release-notes.md
 - name: クイックスタート
   items:
-    - name: Synapse ワークスペースを作成する
+    - name: Azure portal を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace.md
+    - name: Azure CLI を使用して Synapse ワークスペースを作成する
+      href: quickstart-create-workspace-cli.md
     - name: Synapse Studio を使用する
       href: quickstart-synapse-studio.md
     - name: Power BI ワークスペースをリンクする
@@ -236,7 +238,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Architecture
+            - name: アーキテクチャ
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md

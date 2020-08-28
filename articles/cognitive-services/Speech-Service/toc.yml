@@ -520,17 +520,11 @@
           href: speech-container-faq.md
 - name: Speech SDK
   items:
-    - name: 概要
-      items:
-        - name: Speech SDK について
-          href: speech-sdk.md
-        - name: シナリオの利用可否
-          href: scenario-availability.md
-    - name: クイック スタート
-      items:
-        - name: Speech SDK を設定する
-          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-          href: quickstarts/setup-platform.md
+    - name: Speech SDK の概要
+      href: speech-sdk.md
+    - name: Speech SDK を設定する
+      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+      href: quickstarts/setup-platform.md
     - name: 操作方法ガイド
       items:
         - name: ログの有効化

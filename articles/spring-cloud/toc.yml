@@ -10,14 +10,21 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Spring Cloud アプリを起動する - ポータル
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Spring Cloud アプリを起動する - Azure CLI
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Spring Cloud アプリを起動する - ソース
-      href: spring-cloud-launch-from-source.md
-    - name: Spring Cloud アプリを起動する - Maven
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: 最初のアプリを起動する
+      href: spring-cloud-quickstart.md
+    - name: マイクロサービスをビルドして実行する
+      expanded: true
+      items:
+        - name: サンプル アプリの概要
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Azure Spring Cloud サービスのプロビジョニング
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: 構成サーバーを設定する
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: アプリをビルドして配置する
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: ログ、メトリック、トレースの使用
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: チュートリアル
   items:
     - name: アプリを手動でスケーリングする

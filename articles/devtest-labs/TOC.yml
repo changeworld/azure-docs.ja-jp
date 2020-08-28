@@ -8,7 +8,7 @@
       href: lab-services-overview.md
 - name: クイック スタート
   items:
-    - name: ラボを作成する - Resource Manager テンプレート
+    - name: ラボの作成 - Resource Manager テンプレート
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
 - name: チュートリアル
@@ -75,6 +75,8 @@
       items:
         - name: ラボを作成する
           href: devtest-lab-create-lab.md
+        - name: ネットワークが分離されたラボを作成する
+          href: network-isolation.md
         - name: Resource Manager テンプレートを使ってラボを作成または変更する
           href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
         - name: ラボ仮想マシンのリソース グループを指定する

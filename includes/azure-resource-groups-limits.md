@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424745"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748867"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "84424745"
 | リソースの種類ごとのリソース グループあたりのリソース数 |800 - リソースの種類によっては、800 の制限を超えることがあります。 「[リソース グループあたり 800 インスタンスに制限されないリソース](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)」を参照してください。 |
 | デプロイ履歴でのリソース グループあたりのデプロイ数 |800<sup>1</sup> |
 | デプロイあたりのリソース数 |800 |
-| 一意のスコープあたりの管理ロック数 |20 |
+| 一意の[スコープ](../articles/azure-resource-manager/management/overview.md#understand-scope)あたりの管理ロック数  |20 |
 | リソースまたはリソース グループあたりのタグ数 |50 |
 | タグ キーの長さ |512 |
 | タグ値の長さ |256 |
