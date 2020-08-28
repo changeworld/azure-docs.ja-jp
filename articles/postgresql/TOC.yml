@@ -166,7 +166,7 @@
                 - name: Spring Data JPA の構成
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data R2DBC の構成
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql
         - name: レプリケーション
           items:
             - name: 読み取りレプリカ

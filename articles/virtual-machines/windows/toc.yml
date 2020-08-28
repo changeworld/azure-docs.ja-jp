@@ -82,7 +82,7 @@
             - name: マネージド ディスクをコピーする
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
             - name: VHD からスナップショットを作成する
@@ -124,7 +124,7 @@
             - name: マネージド ディスクのコピー
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
             - name: スナップショットのコピー
