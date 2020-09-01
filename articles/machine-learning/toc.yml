@@ -216,6 +216,13 @@
         - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: コンピューティング リソースの作成
+      items:
+        - name: Studio の使用
+          href: how-to-create-attach-compute-studio.md
+        - name: Python SDK の使用
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-create-attach-compute-sdk.md
     - name: 環境の設定方法
       items:
         - name: 開発環境をセットアップする
@@ -265,7 +272,7 @@
         - name: データにアクセスする
           items:
             - name: Azure Storage への接続
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: データストアからデータを取得する
               displayName: 'data, data set, register, access data'
@@ -286,7 +293,7 @@
               href: how-to-differential-privacy.md
     - name: モデルをトレーニングする
       items:
-        - name: トレーニング環境をセットアップする
+        - name: トレーニングの実行の送信
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: ML に Estimator を使用する

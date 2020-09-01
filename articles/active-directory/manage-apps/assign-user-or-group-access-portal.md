@@ -12,16 +12,16 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799504"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642029"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 
-この記事では、Azure portal 内から、または PowerShell を使用して、Azure Active Directory (Azure AD) 内のエンタープライズ アプリケーションにユーザーまたはグループを割り当てる方法について説明します。 アプリケーションにユーザーを割り当てると、ユーザーが簡単にアクセスできるように、[[マイ アプリ] アクセス パネル](https://myapps.microsoft.com/)にアプリケーションが表示されます。 アプリケーションでロールが公開されている場合は、ユーザーに特定のロールを割り当てることもできます。
+この記事では、Azure portal 内から、または PowerShell を使用して、Azure Active Directory (Azure AD) 内のエンタープライズ アプリケーションにユーザーまたはグループを割り当てる方法について説明します。 アプリケーションにユーザーを割り当てると、簡単にアクセスできるように、アプリケーションがユーザーの [[マイ アプリ]](https://myapps.microsoft.com/) に表示されます。 アプリケーションでロールが公開されている場合は、ユーザーに特定のロールを割り当てることもできます。
 
 制御を強化するために、[ユーザー割り当てを必要とする](#configure-an-application-to-require-user-assignment)ように、特定の種類のエンタープライズ アプリケーションを構成できます。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "87799504"
 
 このオプションを **[いいえ]** に設定したため、またはアプリケーションで別の SSO モードが使用されているため割り当てが "*不要*" な場合、ユーザーは、アプリケーションへの直接リンクがあるか、アプリケーションの **[プロパティ]** ページに **[ユーザーのアクセス URL]** がある場合にアプリケーションにアクセスできます。 
 
-この設定は、アプリケーションが [マイ アプリ] アクセス パネルに表示されるかどうかには影響しません。 アプリケーションにユーザーまたはグループを割り当てると、アプリケーションはユーザーの [マイ アプリ] アクセス パネルに表示されます。 背景については、「[アプリへのアクセスの管理](what-is-access-management.md)」を参照してください。
+この設定は、アプリケーションが [マイ アプリ] に表示されるかどうかには影響しません。 アプリケーションにユーザーまたはグループを割り当てると、アプリケーションはユーザーの [マイ アプリ] アクセス パネルに表示されます。 背景については、「[アプリへのアクセスの管理](what-is-access-management.md)」を参照してください。
 
 
 アプリケーションにユーザーの割り当てを要求するには:
@@ -161,7 +161,7 @@ ms.locfileid: "87799504"
 ## <a name="related-articles"></a>関連記事
 
 - [エンドユーザーによるアプリケーションへのアクセスに関する詳細情報](end-user-experiences.md)
-- [Azure AD アクセス パネルのデプロイを計画する](access-panel-deployment-plan.md)
+- [Azure AD マイ アプリのデプロイを計画する](access-panel-deployment-plan.md)
 - [アプリへのアクセスの管理](what-is-access-management.md)
  
 ## <a name="next-steps"></a>次のステップ

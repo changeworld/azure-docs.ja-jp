@@ -41,6 +41,8 @@
       href: location-condition.md
     - name: What if ツール
       href: what-if-tool.md
+    - name: 継続的アクセス評価
+      href: concept-continuous-access-evaluation.md
     - name: カスタム コントロール
       href: controls.md
     - name: クラシック ポリシーの移行

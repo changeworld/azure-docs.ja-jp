@@ -154,7 +154,7 @@
         - name: トラブルシューティング
           items:
             - name: デバイスの問題
-              href: azure-stack-edge-troubleshoot.md
+              href: azure-stack-edge-gpu-troubleshoot.md
             - name: 注文の問題
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: Microsoft サポートに問い合わせる
