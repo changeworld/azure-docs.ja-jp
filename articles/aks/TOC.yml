@@ -129,6 +129,8 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service 診断の概要
       href: concepts-diagnostics.md
+    - name: 持続可能なソフトウェア エンジニアリング
+      href: concepts-sustainable-software-engineering.md
 - name: 操作方法ガイド
   items:
     - name: クラスターの操作
