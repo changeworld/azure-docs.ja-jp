@@ -5,14 +5,14 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 09/18/2019
+ms.date: 08/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607111"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852939"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute とは
 ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365 などの Microsoft クラウド サービスへの接続を確立できます。
@@ -111,6 +111,10 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 
 ## <a name="faq"></a>よく寄せられる質問
 ExpressRoute に関してよく寄せられる質問については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
+
+## <a name="whats-new"></a><a name="new"></a>新機能
+
+RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute)ページで、最新の ExpressRoute 機能の更新を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 * [ExpressRoute 接続モデル](expressroute-connectivity-models.md)について説明します。

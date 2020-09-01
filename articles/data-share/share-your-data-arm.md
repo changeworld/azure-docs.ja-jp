@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:組織の外部と共有する - Azure Data Share
-description: クイックスタート - Azure Data Share と Resource Manager テンプレートを使用して顧客やパートナーとデータを共有する
+title: 組織の外部と共有する (ARM テンプレート) - Azure Data Share のクイックスタート
+description: このクイックスタートでは、Azure Data Share と Resource Manager テンプレートを使用して顧客やパートナーとデータを共有する方法について説明します。
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575651"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654108"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>チュートリアル:Azure Data Share と Resource Manager テンプレートを使用してデータを共有する
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>クイック スタート:Azure Data Share と Resource Manager テンプレートを使用してデータを共有する
 
 Azure Resource Manager テンプレートを使用して Azure ストレージ アカウントから新しい Azure データ共有を設定し、Azure 組織の外部の顧客やパートナーとのデータの共有を開始する方法を学習します。 サポートされているデータ ストアの一覧については、「[Azure Data Share でサポートされているデータ ストア](./supported-data-stores.md)」を参照してください。
 
@@ -101,4 +101,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure データ共有を作成し、受信者を招待する方法について説明しました。 データ コンシューマーがデータ共有を受け入れて受信できるようにする方法については、続けて[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルを行ってください。
+このクイックスタートでは、Azure データ共有を作成し、受信者を招待する方法について説明しました。 データ コンシューマーがデータ共有を受け入れて受信できるようにする方法については、続けて[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルを行ってください。
