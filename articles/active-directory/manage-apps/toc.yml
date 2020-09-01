@@ -238,12 +238,6 @@
               href: application-types.md
             - name: 予期しないユーザーが割り当てられる
               href: ways-users-get-assigned-to-applications.md
-        - name: マイ アプリのトラブルシューティング
-          items:
-            - name: アプリが表示されない
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: 予期しないアプリが表示される
-              href: access-panel-troubleshoot-unexpected-application.md
         - name: オンプレミス アプリのトラブルシューティング
           items:
             - name: アプリケーション プロキシのトラブルシューティング
