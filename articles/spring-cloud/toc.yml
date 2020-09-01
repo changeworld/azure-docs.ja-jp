@@ -5,8 +5,6 @@
   items:
     - name: Azure Spring Cloud とは
       href: spring-cloud-overview.md
-    - name: Spring マイクロサービス アプリ用の Java とベース OS
-      href: spring-cloud-principles-microservice-apps.md
 - name: クイックスタート
   expanded: true
   items:
