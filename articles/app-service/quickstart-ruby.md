@@ -6,19 +6,19 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083953"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961337"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>App Service で Ruby on Rails アプリを作成する
 
-[Azure App Service on Linux](overview.md#app-service-on-linux) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタート チュートリアルでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して App Service on Linux に Ruby on Rails アプリをデプロイする方法を示します。
+[Azure App Service on Linux](overview.md#app-service-on-linux) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタート チュートリアルでは、[Cloud Shell](../cloud-shell/overview.md) を使用して App Service on Linux に Ruby on Rails アプリをデプロイする方法を示します。
 
 > [!NOTE]
-> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用する場合や、サポートされていない Ruby バージョンを使用する場合は、[カスタム コンテナーで実行](containers/quickstart-docker-go.md)する必要があります。
+> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用する場合や、サポートされていない Ruby バージョンを使用する場合は、[カスタム コンテナーで実行](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux)する必要があります。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 

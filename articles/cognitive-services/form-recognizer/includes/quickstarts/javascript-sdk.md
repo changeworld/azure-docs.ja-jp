@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 1c24eba79c26c4540e9d97a3e2b6646fd0b5439c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: cc72fa9e05dd25ef2d63f126f0fbb45841cb799c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864726"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934355"
 ---
 > [!IMPORTANT]
 > * Form Recognizer SDK は現在、From Recognizer サービスの v2.0 を対象としています。
