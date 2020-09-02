@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/16/2018
+ms.date: 08/26/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27144dcd4c7d7490aba3626264e1cb4b64fbb162
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 348d436d1cb1fa838a34c9ebe86f5e37f0f85803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019201"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930565"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure Portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする
 
 Azure リソースのマネージド ID は、Azure Active Directory のマネージド ID を Azure サービスに提供します。 この ID を使用すると、コード内に資格情報を埋め込む必要なく、Azure AD の認証をサポートするサービスに認証することができます。 
 
-この記事では、Azure Portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする方法について説明します。
+この記事では、Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,13 +40,13 @@ Azure リソースのマネージド ID は、Azure Active Directory のマネ�
 1. Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインして、ユーザー割り当てマネージド ID を作成します。
 2. 検索ボックスに "*マネージド ID*" と入力して、 **[サービス]** の下で **[マネージド ID]** をクリックします。
 3. **[追加]** をクリックして、 **[ユーザー割り当てマネージド ID の作成]** ウィンドウの次のフィールドに値を入力します。
-   - **[リソース名]** :これは、ユーザー割り当てマネージド ID の名前です。たとえば、UAI1 とします。
-   - **サブスクリプション**:ユーザー割り当てマネージド ID を作成するサブスクリプションを選択します。
-   - **リソース グループ**:ユーザー割り当てマネージド ID を含める新しいリソース グループを作成するか、 **[既存のものを使用]** を選択して既存のリソース グループにユーザー割り当てマネージド ID を作成します。
-   - **[場所]** :ユーザー割り当てマネージド ID をデプロイする場所を選択します。たとえば、 **[米国西部]** などです。
-4. **Create** をクリックしてください。
-
-![ユーザー割り当てマネージド ID を作成する](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+    - **サブスクリプション**:ユーザー割り当てマネージド ID を作成するサブスクリプションを選択します。
+    - **[リソース グループ]** :ユーザー割り当てマネージド ID を作成するリソースグループを選択するか、 **[新規作成]** をクリックして新しいリソースグループを作成します。
+    - **[リージョン]** :ユーザー割り当てマネージド ID をデプロイするリージョンを選択します。たとえば、 **[米国西部]** などです。
+    - **Name**:これは、ユーザー割り当てマネージド ID の名前です。たとえば、UAI1 とします。
+    ![ユーザー割り当てマネージド ID を作成する](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+4. **[確認と作成]** をクリックして変更を確認します。
+5. **Create** をクリックしてください。
 
 ## <a name="list-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID を一覧表示する
 

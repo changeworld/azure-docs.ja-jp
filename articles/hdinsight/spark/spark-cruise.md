@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: f26addda79d57a055f7b431968319138d499ef18
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272922"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649059"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight での SparkCruise
 
@@ -58,7 +58,7 @@ SparkCruise は、Spark 2.3 または 2.4 を使用するすべての HDInsight 
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-`analyze` コマンドは、クエリ プランを解析し、ワークロードの表形式表現を作成します。 次に、`views` コマンドは、よく使用されるサブプラン式を識別し、将来の具体化と再利用のために興味深いサブプラン式を選択します。 出力は、今後の Spark SQL クエリの注釈を含むフィードバック ファイルです。 
+`analyze` コマンドは、クエリ プランを解析し、ワークロードの表形式表現を作成します。 このワークロード テーブルのクエリは、[HDInsight SparkCruise Samples](https://github.com/Azure-Samples/azure-sparkcruise-samples) リポジトリに含まれている *WorkloadInsights* ノートブックを使用して実行できます。 次に、`views` コマンドは、よく使用されるサブプラン式を識別し、将来の具体化と再利用のために興味深いサブプラン式を選択します。 出力は、今後の Spark SQL クエリの注釈を含むフィードバック ファイルです。 
 
 `show` コマンドを実行すると、次のテキストのような出力が表示されます。
 
@@ -146,8 +146,9 @@ drwxr-xr-x   - root root          0 2020-07-24 17:21 /peregrine/views/9409467400
 sudo /opt/peregrine/analyze/peregrine.sh clean
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
+* [ワークロードの分析情報ノートブックを使用して、SparkCruise の利点を確認する](https://github.com/Azure-Samples/azure-sparkcruise-samples/tree/main/SparkCruise)
 * [Azure HDInsight IO キャッシュを使用して Apache Spark のワークロードのパフォーマンスを改善する](apache-spark-improve-performance-iocache.md)
 * [HDInsight で Apache Spark ジョブを最適化する](./apache-spark-perf.md)
 * [SparkCruise: Spark でのハンズフリー計算の再利用](https://people.cs.umass.edu/~aroy/sparkcruise-vldb19.pdf)

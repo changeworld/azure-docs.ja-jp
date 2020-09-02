@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589386"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890469"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -56,7 +56,7 @@ Azure VM のバックアップを行うには、お使いの仮想マシンの�
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>意図しない削除からのバックアップ データの保護
 
-Azure Backup には、削除後もバックアップ データを保護するためのセキュリティ機能が用意されています。 論理的な削除では、ユーザーが VM のバックアップを削除した場合、バックアップ データは追加で 14 日間保持されるので、データを失うことなくそのバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 [論理的な削除の詳細については、こちらを参照してください](backup-azure-security-feature-cloud.md)。
+Azure Backup には、削除後もバックアップ データを保護するためのセキュリティ機能が用意されています。 論理的な削除では、ユーザーが VM のバックアップを削除した場合、バックアップ データは追加で 14 日間保持されるので、データを失うことなくそのバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間の保有期間中は、ユーザーへのコストは発生しません。 [論理的な削除の詳細については、こちらを参照してください](backup-azure-security-feature-cloud.md)。
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>疑わしいアクティビティの監視とアラート
 

@@ -16,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: マシンの監視
       href: ./learn/tutorial-enable-vm-insights.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      items:
-        - name: Arc 対応サーバー
-          href: policy-samples.md
 - name: 概念
   items:
     - name: セキュリティ
@@ -57,3 +51,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

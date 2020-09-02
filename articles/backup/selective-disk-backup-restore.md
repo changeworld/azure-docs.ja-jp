@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシン バックアップ ソ�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566235"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824748"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
@@ -190,7 +190,7 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 ## <a name="using-powershell"></a>PowerShell の使用
 
-Azure PS バージョン 3.7.0 以上を使用していることを確認します。
+Azure PowerShell バージョン 3.7.0 以上を使用していることを確認します。
 
 ### <a name="enable-backup-with-powershell"></a>PowerShell を使用してバックアップを有効にする
 

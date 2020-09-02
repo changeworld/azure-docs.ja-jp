@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190504"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757287"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -121,6 +121,18 @@ ms.locfileid: "88190504"
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure Machine Learning SDK のインストールが次の例外で失敗する:ModuleNotFoundError:'ruamel' という名前のモジュールはありません、または 'ImportError:ruamel.yaml という名前のモジュールはありません'**
+   
+   この問題は、Python 用 Azure Machine Learning SDK のすべてのリリース バージョンの conda ベース環境で、最新の pip (>20.1.1) に Python 用 Azure Machine Learning SDK をインストールしたときに発生します。 次の回避策を参照してください。
+
+    * conda ベース環境に Python SDK をインストールしないでください。代わりに conda 環境を作成し、新しく作成されたユーザー環境に SDK をインストールします。 最新の pip は、その新しい conda 環境で動作します。
+
+    * Docker でイメージを作成するときに、conda ベース環境から切り替えることができない場合は、pip<=20.1.1 を Docker ファイルにピン留めしてください。
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * **パッケージをインストールする際の Databricks のエラー**
 
     追加のパッケージがインストールされていると、Azure Databricks で Azure Machine Learning SDK のインストールが失敗します。 `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、ライブラリ バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連したもので、Azure Machine Learning SDK には関連はありません。 他のライブラリでもこの問題が発生する場合があります。 例:

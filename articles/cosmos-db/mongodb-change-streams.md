@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b5bf7cc74a5444e5f51aaddb1d088f6b0c1e52a8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036710"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798892"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API での変更ストリーム
 
@@ -21,26 +21,6 @@ Azure Cosmos DB の MongoDB 用 API での[変更フィード](change-feed.md)�
 
 > [!NOTE]
 > 変更ストリームを使用するには、Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降を使用してアカウントを作成します。 変更ストリームの例を以前のバージョンに対して実行すると、エラー `Unrecognized pipeline stage name: $changeStream` が表示されることがあります。
-
-## <a name="current-limitations"></a>現在の制限
-
-変更ストリームを使用する場合、次の制限が適用されます。
-
-* `operationType` および `updateDescription` プロパティは、出力ドキュメントではまだサポートされていません。
-* `insert`、`update`、`replace` の操作の種類は、現在サポートされています。 
-* 削除操作またはその他のイベントは、まだサポートされていません。
-
-これらの制限により、前の例で示したように、$match ステージ、$project ステージ、および fullDocument オプションが必要になります。
-
-Azure Cosmos DB の SQL API での変更フィードとは異なり、変更ストリームの使用や、リース コンテナーのニーズのために、個別の[変更フィード プロセッサ ライブラリ](change-feed-processor.md)はありません。 現在、変更ストリームを処理するための [Azure Functions トリガー](change-feed-functions.md)はサポートされていません。
-
-## <a name="error-handling"></a>エラー処理
-
-変更ストリームを使用するときは、次のエラー コードとメッセージがサポートされます。
-
-* **HTTP エラー コード 16500** - 変更ストリームが調整されると、空のページが返されます。
-
-* **NamespaceNotFound (OperationType 無効化)** - 存在しないコレクションで変更ストリームを実行した場合、またはコレクションが削除された場合は、`NamespaceNotFound` エラーが返されます。 出力ドキュメントでは `operationType` プロパティを返すことができないため、`operationType Invalidate` エラーの代わりに、`NamespaceNotFound` エラーが返されます。
 
 ## <a name="examples"></a>例
 
@@ -156,15 +136,17 @@ var cursor = db.coll.watch(
 変更ストリームを使用する場合、次の制限が適用されます。
 
 * `operationType` および `updateDescription` プロパティは、出力ドキュメントではまだサポートされていません。
-* `insert`、`update`、`replace` の操作の種類は、現在サポートされています。 削除操作またはその他のイベントは、まだサポートされていません。
+* `insert`、`update`、`replace` の操作の種類は、現在サポートされています。 ただし、削除操作またはその他のイベントは、まだサポートされていません。
 
 これらの制限により、前の例で示したように、$match ステージ、$project ステージ、および fullDocument オプションが必要になります。
+
+Azure Cosmos DB の SQL API での変更フィードとは異なり、変更ストリームの使用や、リース コンテナーのニーズのために、個別の[変更フィード プロセッサ ライブラリ](change-feed-processor.md)はありません。 現在、変更ストリームを処理するための [Azure Functions トリガー](change-feed-functions.md)はサポートされていません。
 
 ## <a name="error-handling"></a>エラー処理
 
 変更ストリームを使用するときは、次のエラー コードとメッセージがサポートされます。
 
-* **HTTP エラー コード 429** - 変更ストリームが調整されると、空のページが返されます。
+* **HTTP エラー コード 16500** - 変更ストリームが調整されると、空のページが返されます。
 
 * **NamespaceNotFound (OperationType 無効化)** - 存在しないコレクションで変更ストリームを実行した場合、またはコレクションが削除された場合は、`NamespaceNotFound` エラーが返されます。 出力ドキュメントでは `operationType` プロパティを返すことができないため、`operationType Invalidate` エラーの代わりに、`NamespaceNotFound` エラーが返されます。
 

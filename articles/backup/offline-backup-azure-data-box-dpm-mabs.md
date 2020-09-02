@@ -3,12 +3,12 @@ title: DPM および MABS の Azure Data Box を使用したオフライン バ�
 description: Azure Data Box を使用して、DPM および MABS からオフラインで初期バックアップ データをシード処理することができます。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 8b585dc46eb2bdd54e48950ca861f0edc8f0a7ed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 33515cdd943f3816328bfd77d831288c5ee0a608
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186828"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890027"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理 (プレビュー)
 
@@ -67,7 +67,7 @@ DPM または MABS で実行されている MARS エージェントは、[最新
 オフライン バックアップをトリガーする前に、必要な Data Box デバイスが確実に "*配信済み*" の状態になるようにします。 要件に最適な SKU を注文するには、「[バックアップ データのサイズとサポートされている Data Box SKU](#backup-data-size-and-supported-data-box-skus)」を参照してください。 Data Box デバイスを注文して受け取るには、[こちらの記事](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered)の手順に従ってください。
 
 > [!IMPORTANT]
-> **[アカウントの種類]** には *[BlobStorage]* を選択しないでください。 DPM または MABS サーバーには、ページ BLOB をサポートするアカウントが必要ですが、これは、 *[BlobStorage]* が選択されているとサポートされません。 Azure Data Box ジョブのターゲット ストレージ アカウントを作成するときは、 **[アカウントの種類]** として **[Storage V2 (general purpose v2)]\(Storage V2 (汎用 V2)\)** を選択します。
+> **[アカウントの種類]** として *[BlobStorage]* を選択しないでください。 DPM または MABS サーバーには、ページ BLOB をサポートするアカウントが必要ですが、これは、 *[BlobStorage]* が選択されているとサポートされません。 Azure Data Box ジョブのターゲット ストレージ アカウントを作成するときは、 **[アカウントの種類]** として **[Storage V2 (general purpose v2)]\(Storage V2 (汎用 V2)\)** を選択します。
 
 ![Azure Data Box をセットアップする](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -234,7 +234,7 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 2. オフライン シード処理が構成されている他のサーバーがなく、`AzureOfflineBackup_<Azure User Id>` アプリケーションに依存する他のサーバーがない場合は、**Azure portal > [Azure Active Directory] > [アプリの登録]** からこのアプリケーションを削除します。
 
    > [!NOTE]
-   > アプリケーション `AzureOfflineBackup_<Azure User Id>` に他のオフライン シード処理が構成されていないこと、およびこのアプリケーションに依存している他のサーバーがないことを確認します。 **[設定] > [キー]** の [公開キー] セクションの下に移動します。そこに他の**公開キー**が追加されていてはなりません。 参考のために次のスクリーンショットをご覧ください。
+   > アプリケーション `AzureOfflineBackup_<Azure User Id>` に他のオフライン シード処理が構成されていないこと、およびこのアプリケーションに依存している他のサーバーがないことを確認します。 [公開鍵] セクションの **[設定] > [キー]** に移動します。 他の**公開キー**は追加しないでください。 参考のために次のスクリーンショットをご覧ください。
    >
    > ![公開キー](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 
@@ -243,7 +243,7 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 オフライン バックアップを構成しようとしている DPM または MABS サーバーから、次の操作を行います。
 
 1. **[Manage computer certificate application]\(コンピューター証明書の管理アプリケーション\)**  >  **[個人用]** タブの順に開き、`CB_AzureADCertforOfflineSeeding_<ResourceId>` という名前の証明書を探します。
-2. 上記の証明書を選択し、**[すべてのタスク]** を右クリックして、秘密キーなしの .cer 形式で **[エクスポート]** します。
+2. 上記の証明書を選択し、 **[すべてのタスク]** を右クリックして、秘密キーなしの .cer 形式で **[エクスポート]** します。
 3. **ポイント 2** に記載されている Azure オフライン バックアップ アプリケーションにアクセスします。 **[設定]**  >  **[キー]**  >  **[公開キーのアップロード]** で、前の手順でエクスポートされた証明書をアップロードします。
 
    ![公開キーをアップロードする](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
@@ -260,7 +260,7 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 6. 前の手順で追加された文字列を右クリックして、 **[変更]** を選択します。 値として、**ポイント 2** でエクスポートした証明書の拇印を入力し、 **[OK]** を選択します。
 7. 拇印の値を取得するには、証明書をダブルクリックして、 **[詳細]** を選択し、拇印フィールドが表示されるまで下方向にスクロールします。 **[拇印]** を選択して、値をコピーします。
 
-   ![Certificate](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
+   ![拇印の値](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
 ## <a name="next-steps"></a>次のステップ
 

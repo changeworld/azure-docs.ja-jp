@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587601"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796954"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 この呼び出しでは、ツイン データが JSON 文字列として返されます。 
 
-> [!TIP]
-> `GetDigitalTwin` を使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。
+`GetDigitalTwin` を使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。
+
+>[!TIP]
+>ツインの `displayName` はモデル メタデータの一部であるため、ツイン インスタンスのデータを取得するときには表示されません。 この値を表示するには、[モデルから取得する](how-to-manage-model.md#retrieve-models)ことができます。
 
 1 つの API 呼び出しを使用して複数のツインを取得するには、クエリ API の例を、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
 

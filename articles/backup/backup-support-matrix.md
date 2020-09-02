@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612522"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892186"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -145,7 +145,7 @@ Backup では、次の表にまとめられているように、バックアッ�
 
 ## <a name="cross-region-restore"></a>リージョンをまたがる復元
 
-Azure Backup に、データの可用性と回復性の機能を強化するために、リージョンをまたがる復元機能が追加されました。これにより、お客様は、セカンダリ リージョンにデータを完全に復元することができます。 この機能を構成するには、[リージョンをまたがる復元の設定に関する記事](backup-create-rs-vault.md#set-cross-region-restore)を参照してください。 この機能は、次の管理の種類でサポートされています。
+Azure Backup に、データの可用性と回復性の機能を強化するために、リージョンをまたがる復元機能が追加されました。これにより、セカンダリ リージョンにデータを完全に復元することができます。 この機能を構成するには、[リージョンをまたがる復元の設定に関する記事](backup-create-rs-vault.md#set-cross-region-restore)を参照してください。 この機能は、次の管理の種類でサポートされています。
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
