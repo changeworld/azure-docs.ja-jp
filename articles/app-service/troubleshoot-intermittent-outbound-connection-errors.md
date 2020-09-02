@@ -6,13 +6,13 @@ manager: barbkess
 ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
-ms.custom: security-recommendations
-ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: security-recommendations,fasttrack-edit
+ms.openlocfilehash: 39073169fbc4558492a47f78f0840a0e314b3ee8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447909"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763560"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -120,7 +120,7 @@ PHP では接続プールがサポートされていませんが、バックエ�
 * [ロード テスト](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test)では、現実に即したデータを、安定したフィード速度でシミュレートするようにしてください。 現実的なストレス下でアプリおよび関数をテストすることで、SNAT ポートの枯渇の問題を事前に識別し、解決することができます。
 * バックエンド サービスが迅速に応答を返せることを確認します。 Azure SQL データベースのパフォーマンスの問題のトラブルシューティングについては、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)」を参照してください。
 * App Service プランをより多くのインスタンスにスケールアウトします。 スケーリングの詳細については、[Azure App Service でのアプリのスケーリング](https://docs.microsoft.com/azure/app-service/manage-scale-up)に関する記事を参照してください。 App Service プランの各ワーカー インスタンスには、いくつかの SNAT ポートが割り当てられています。 より多くのインスタンスに使用量を分散させた場合、インスタンスあたりの SNAT ポート使用数が、一意のリモート エンドポイントあたり 100 件の送信接続という推奨制限値を下回る可能性があります。
-* 1 つの送信 IP アドレスが割り当てられ、接続数と SNAT ポート数の制限がずっと大きい [App Service Environment (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase) への移行を検討してください。
+* 1 つの送信 IP アドレスが割り当てられ、接続数と SNAT ポート数の制限がずっと大きい [App Service Environment (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase) への移行を検討してください。 ASE のインスタンスごとの SNAT ポートの数は、[Azure ロード バランサーの事前割り当てテーブル](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatporttable)に基づいています。つまり、ASE のワーカー インスタンスの数が 1 から 50 である場合、インスタンスごとに事前割り当てされているポートは 1024 であり、ASE のワーカー インスタンスの数が 51 から 100 である場合は、インスタンスごとに事前割り当てされているポートは 512 になります。
 
 制限はワーカーのサイズによって設定されるため、送信 TCP 制限の回避は解決しやすい問題です。 制限については、[TCP 接続でのサンドボックスの VM 間数値制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)に関するページで確認できます。
 

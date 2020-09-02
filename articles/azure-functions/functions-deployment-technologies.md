@@ -4,12 +4,12 @@ description: Azure Functions にコードをデプロイするさまざまな方
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905127"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641961"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -203,6 +203,12 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 | TypeScript (Node.js) | | | | | | |
 
 <sup>*</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
+
+## <a name="deployment-behaviors"></a>デプロイ動作
+
+デプロイすると、すべての既存実行に完了またはタイムアウトが許可されます。その後、新しいコードが読み込まれ、要求の処理が開始されます。
+
+この移行をさらに制御する必要がある場合、デプロイ スロットを使用してください。
 
 ## <a name="deployment-slots"></a>デプロイ スロット
 

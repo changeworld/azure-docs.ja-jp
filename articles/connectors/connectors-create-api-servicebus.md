@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461618"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853301"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -78,27 +78,30 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
    **[1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]** トリガーのように、1 つ以上のメッセージを返すトリガーもあります。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
 
+    > [!NOTE]
+    > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回のトリガー実行時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、1 分おきにメッセージを確認するようにオートコンプリートのトリガーを設定したが、Service Bus 側でロック期間が 30 秒に設定されている場合、結果的に、メッセージの自動入力時、"ロック期限切れ" エラーが発生します。 ポーリング間隔より長い値にロック期間を設定する必要があります。
+
 1. トリガーを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示された際は次の手順に従います。
 
    1. 接続の名前を指定し、Service Bus 名前空間を選択します。
 
-      ![Service Bus 接続を作成する (パート 1)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![接続名の指定と Service Bus 名前空間の選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       手動で接続文字列を入力する場合は、 **[接続情報を手動で入力する]** を選択します。 接続文字列がない場合は、[接続文字列の検索方法](#permissions-connection-string)に関するセクションを参照してください。
 
    1. Service Bus ポリシーを選択し、 **[作成]** を選択します。
 
-      ![Service Bus 接続を作成する (パート 2)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![Service Bus ポリシーの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. キューやトピックなどのメッセージング エンティティを選択します。 ここでは、Service Bus キューを選択します。
    
-      ![Service Bus キューを選択する](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![Service Bus キューの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. 選択したトリガーで必要な情報を指定します。 その他の使用可能なプロパティをアクションに追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なプロパティを選択します。
 
    この例のトリガーの場合、キューをチェックするためのポーリング間隔と頻度を選択します。
 
-   ![ポーリング間隔を設定する](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Service Bus トリガーのポーリング間隔設定を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    使用可能なトリガーとプロパティの詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。
 
@@ -120,29 +123,29 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
    この例では、 **[メッセージの送信]** というアクションを選択します。
 
-   ![Service Bus アクションを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![Service Bus アクションの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. アクションを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示された際は次のステップに従います。
 
    1. 接続の名前を指定し、Service Bus 名前空間を選択します。
 
-      ![Service Bus 接続を作成する (パート 1)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![接続名の指定と Service Bus 名前空間の選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       手動で接続文字列を入力する場合は、 **[接続情報を手動で入力する]** を選択します。 接続文字列がない場合は、[接続文字列の検索方法](#permissions-connection-string)に関するセクションを参照してください。
 
    1. Service Bus ポリシーを選択し、 **[作成]** を選択します。
 
-      ![Service Bus 接続を作成する (パート 2)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![Service Bus ポリシーの選択と [作成] ボタンの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. キューやトピックなどのメッセージング エンティティを選択します。 ここでは、Service Bus キューを選択します。
 
-      ![Service Bus キューを選択する](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![Service Bus キューの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. 選択したアクションで必要な詳細を指定します。 その他の使用可能なプロパティをアクションに追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なプロパティを選択します。
 
    たとえば、 **[コンテンツ]** および **[コンテンツ タイプ]** プロパティを選択してアクションに追加します。 次に、送信するメッセージのコンテンツを指定します。
 
-   ![メッセージの内容と詳細を指定する](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![メッセージのコンテンツの種類と詳細を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    使用可能なアクションとプロパティの詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。
 

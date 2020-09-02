@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054002"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919524"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 
@@ -25,7 +25,11 @@ ms.locfileid: "88054002"
 v6.x 以前から v7.x 以降にアップグレードする場合、すべてのコンポーネントが .NET 2.0 から .NET 4.5 に変わります。 また、すべてのコンポーネントに Microsoft Visual C++ 2015 再頒布可能 Update 1 以降が必要です。 これらのコンポーネントの x86 および x64 バージョンがまだインストールされていない場合、MFA Server のインストーラーは両方のバージョンをインストールします。 ユーザー ポータルとモバイル アプリ Web サービスが異なるサーバーで動いている場合、コンポーネントをアップグレードする前にこれらのパッケージをインストールする必要があります。 最新の Microsoft Visual C++ 2015 再頒布可能 Update は [Microsoft ダウンロード センター](https://www.microsoft.com/download/)で見つかります。 
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+>
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+>
+> 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 アップグレードの手順:
 

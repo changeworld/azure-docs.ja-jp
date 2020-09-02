@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの診断設定を使用する
 description: この記事では、Azure Backup の新旧の診断イベントの使用方法を説明します。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 2b562ee7fc4afbc28119aa36cfa071291dd61f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612624"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826669"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services コンテナーの診断設定を使用する
 
@@ -29,7 +29,7 @@ Azure Backup には、次の診断機能が用意されています。 各イベ
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-AzureBackupReport [レガシ イベント](#legacy-event)を使用している場合は、できるだけ早く上のイベントを使用するように切り替えることをお勧めします。
+まだ[レガシ イベント](#legacy-event)の AzureBackupReport を使用している場合は、上記のイベントを使用するように切り替えることをお勧めします。
 
 詳細については、「[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)」を参照してください。
 

@@ -3,14 +3,14 @@ title: Azure Automation への Windows Hybrid Runbook Worker のデプロイ
 description: この記事では、お使いのローカル データ センターまたはクラウド環境内の Windows ベースのマシン上で Runbook を実行するために使用できる Hybrid Runbook Worker をデプロイする方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270582"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660514"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -29,6 +29,9 @@ Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークス
 Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。
 
 ワークスペースはあっても、それが Automation アカウントにリンクされていない場合は、Automation の機能を有効にすると、Hybrid Runbook Worker のサポートを含む Azure Automation の機能が追加されます。 Log Analytics ワークスペースで Azure Automation 機能のいずれかを有効にすると (具体的には、[Update Management](update-management/update-mgmt-overview.md) または[変更履歴とインベントリ](change-tracking.md))、worker コンポーネントがエージェント マシンに自動的にプッシュされます。
+
+> [!NOTE]
+> Update Management または変更履歴とインベントリ機能を有効にすると、Azure Automation では、Log Analytics ワークスペースと Automation アカウントのリンクに特定のリージョンのみがサポートされます。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。 いずれの機能でも有効にする前に、Azure Automation の [Azure の価格](https://azure.microsoft.com/pricing/details/automation/)情報を確認します。
 
    ワークスペースに Update Management 機能を追加するには、次の PowerShell コマンドレットを実行します。
 
@@ -123,9 +126,6 @@ Windows Hybrid Runbook Worker をインストールして構成するには、�
 | `SubscriptionID` | Mandatory | お使いの Automation アカウントに関連付けられている Azure サブスクリプションの識別子。 |
 | `TenantID` | 省略可能 | Automation アカウントに関連付けられているテナント組織の識別子。 |
 | `WorkspaceName` | 省略可能 | Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。 |
-
-> [!NOTE]
-> 機能を有効にすると、Azure Automation では、Log Analytics ワークスペースと Automation アカウントのリンクに特定のリージョンのみがサポートされます。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>手順 2 - Windows PowerShell コマンド ウィンドウを開く
 

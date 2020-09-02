@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c852d416b73ba29b22efe63996835deac3a5277d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1f97fddb07e56946e37c04d9b9685412782c560
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167676"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659757"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,8 @@ ms.locfileid: "88167676"
    ---|---
    ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。 ワークスペース名では、大文字と小文字は区別されません。
    サブスクリプション |使用する Azure サブスクリプションを選択します。
-   Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 
+   Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 既存のリソース グループを使用するには、*共同作成者*または*所有者*のロールが必要です。  アクセスの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」の記事をご覧ください。
+   場所 | ユーザーとデータ リソースに最も近い場所を選択し、ワークスペースを作成します。
    場所 | ユーザーとデータ リソースに最も近い場所を選択し、ワークスペースを作成します。
    ワークスペースのエディション | **[Basic]** または **[Enterprise]** を選択します。  このワークスペース エディションによって、アクセスでき、価格設定の対象となる機能が決まります。 詳細については、[Basic および Enterprise Edition のオファリング](overview-what-is-azure-ml.md#sku)に関するページを参照してください。 
 

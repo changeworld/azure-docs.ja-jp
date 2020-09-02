@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 1755c2d572b44f1e0d8597a108ca83d429405f25
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565657"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761697"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -408,7 +408,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>次のステップ
 
-- [キュー ストレージ メッセージを書き込む (出力バインド)](./functions-bindings-storage-blob-output.md)
+- [BLOB ストレージ メッセージの書き込み (出力バインド)](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

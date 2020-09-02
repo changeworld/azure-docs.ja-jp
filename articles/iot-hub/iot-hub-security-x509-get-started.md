@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7bf31f7b16fa987bb9c710835d1a3aff8214604
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307286"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783265"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -49,6 +49,9 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>IoT ハブに X.509 CA 証明書を登録する
 
 次の手順では、ポータルを使用して IoT ハブに新しい証明機関を追加する方法を示します。
+
+> [!NOTE]
+> IoT ハブに登録可能な X.509 CA 証明書の最大数は 25 です。 詳細については、「[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)」を参照してください。
 
 1. Azure portal で、対象の IoT ハブに移動し、ハブのために **[設定]**  >  **[証明書]** の順に選択します。
 

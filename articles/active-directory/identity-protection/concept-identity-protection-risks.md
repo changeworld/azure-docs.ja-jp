@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507435"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815054"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -39,6 +39,7 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | リスク検出 | 説明 |
 | --- | --- |
 | 漏洩した資格情報 | このリスク検出の種類は、ユーザーの有効な資格情報が漏洩したことを示します。 サイバー犯罪者は、正規ユーザーの有効なパスワードを侵害した場合、その資格情報を共有することがよくあります。 この共有は、一般に、闇サイトや貼り付けサイトに公開したり、資格情報を闇市場で取引したり販売したりすることで行われます。 Microsoft の漏洩した資格情報サービスで、闇サイト、貼り付けサイト、またはその他のソースからユーザー資格情報が取得された場合は、有効な一致を見つけるために Azure AD ユーザーの現在の有効な資格情報に対してチェックされます。 漏洩した資格情報の詳細については、「[一般的な質問](#common-questions)」を参照してください。 |
+| パスワード スプレー | パスワード スプレー攻撃とは、複数のユーザー名に対し、よく使われるパスワードを片っ端から試して不正アクセスしようとする攻撃です。 このリスク検出は、パスワード スプレー攻撃が実行されたときにトリガーされます。 |
 | Azure AD 脅威インテリジェンス | このリスク検出の種類は、Microsoft の内部および外部の脅威インテリジェンスのソースに基づいて、特定のユーザーにとって異常であったり、既知の攻撃パターンに一致したりするユーザー アクティビティを示します。 |
 
 ### <a name="sign-in-risk"></a>サインイン リスク

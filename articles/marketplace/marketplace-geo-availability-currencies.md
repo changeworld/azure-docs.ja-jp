@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136339"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826771"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
@@ -172,12 +172,19 @@ ms.locfileid: "88136339"
 
 ## <a name="how-we-convert-currency"></a>通貨の換算方法
 
-すべての種類の有料オファーについて、ISV は価格を米国ドルで入力するか、現地通貨で価格をアップロードするかを選択できます。 米国ドルで入力された価格は、ページが保存されるときに自動的に、現地通貨に変換されます。 パートナー センターで使用される料金は、毎日更新されます。 ISV は価格をエクスポートして、換算後の相当額を確認できます。
+すべての種類の有料オファーについて、価格を米国ドルで入力するか、現地通貨で価格をアップロードするかを選択できます。 米国ドルで入力された価格は、ページが保存されるときに自動的に、現地通貨に変換されます。 パートナー センターで使用される料金は、毎日更新されます。 価格をエクスポートして、換算後の相当額を確認できます。
 
 発行前に価格を調整するには、価格スプレッドシートをエクスポートして変更し、変更を含むスプレッドシートをアップロードするだけです。
 
 > [!NOTE]
 > プランの市場の価格は、発行した後では変更できません。 発行前に価格が正しいことを確かめるために、価格スプレッドシートをエクスポートして各市場の価格を確認してください。
+
+オファーの価格は、常に現地通貨で顧客に表示されます。 パートナー センターで選択した価格は、パートナー センターに価格を保存したときの為替レートに従って、顧客の現地通貨に換算されます。 オンライン ストアで顧客に表示される価格は、オファーを再発行しない限り変更されません。
+
+Microsoft では、顧客からは顧客の現地通貨で支払いを受け取り、皆様には皆様の現地通貨で支払います。 Microsoft では、購入日の為替レートを使用して、顧客の現地通貨を皆様の現地通貨に換算します。
+
+> [!NOTE]
+> Microsoft では、Microsoft Treasury 為替レートを使用してオファー価格を換算します。
 
 ## <a name="retrieving-currency-information-by-api"></a>API による通貨情報の取得
 

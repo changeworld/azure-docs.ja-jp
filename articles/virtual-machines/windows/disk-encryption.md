@@ -8,14 +8,14 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448923"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815591"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>PowerShell 用 Azure Disk Storage のサーバー側暗号化
 
 サーバー側暗号化 (SSE) によってデータが保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 SSE では、Azure マネージド ディスク (OS およびデータ ディスク) に格納されているお使いのデータをクラウドに永続化するときに、既定で暗号化します。 
 
@@ -84,8 +84,8 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [PowerShell](disks-enable-host-based-encryption-powershell.md) または [Azure portal](disks-enable-host-based-encryption-portal.md) のいずれかで、ホストでの暗号化を使用してエンドツーエンドの暗号化を有効にします。
-- [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) または [Azure portal](disks-enable-double-encryption-at-rest-portal.md) のいずれかを使用して、マネージド ディスクの保存時の二重暗号化を有効にします。
-- [PowerShell](disks-enable-customer-managed-keys-powershell.md) または [Azure portal](disks-enable-customer-managed-keys-portal.md) のいずれかを使用して、マネージド ディスクのカスタマー マネージド キーを有効にします。
+- [PowerShell](disks-enable-host-based-encryption-powershell.md) または [Azure portal](../disks-enable-host-based-encryption-portal.md) のいずれかで、ホストでの暗号化を使用してエンドツーエンドの暗号化を有効にします。
+- [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) または [Azure portal](../disks-enable-double-encryption-at-rest-portal.md) のいずれかを使用して、マネージド ディスクの保存時の二重暗号化を有効にします。
+- [PowerShell](disks-enable-customer-managed-keys-powershell.md) または [Azure portal](../disks-enable-customer-managed-keys-portal.md) のいずれかを使用して、マネージド ディスクのカスタマー マネージド キーを有効にします。
 - [カスタマー マネージド キーで暗号化されたディスクを作成するための Azure Resource Manager テンプレートを探索する](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Azure Key Vault とは](../../key-vault/general/overview.md)

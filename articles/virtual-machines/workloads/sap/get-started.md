@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/18/2020
+ms.date: 08/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 538ea1746e92b3ec7d45f06031cfdc965e286d7a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603840"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871379"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -88,6 +88,10 @@ SAP コンポーネントへの Azure サービスの統合については、以
 
 ## <a name="change-log"></a>変更履歴
 
+- 2020 年 8 月 25 日: [WSFC と共有ディスクを使用した SAP ASCS/SCS の HA ガイド](./sap-high-availability-guide-wsfc-shared-disk.md)、[WSFC と共有ディスクを使用して SAP ASCS/SCS 用に Azure インフラストラクチャを準備](./sap-high-availability-infrastructure-wsfc-shared-disk.md)に関するページ、[WSFC と共有ディスクを使用した SAP NW HA のインストール](./sap-high-availability-guide-wsfc-shared-disk.md)に関するページでの変更。Azure 共有ディスクを使用するオプションを紹介し、SAP ERS2 アーキテクチャをドキュメント化するためのものです。
+- 2020 年 8 月 25 日: [WSFC と Azure 共有ディスクを使用した SAP ASCS/SCS のマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)のリリース
+- 2020 年 8 月 25 日: [WSFC および Azure NetApp Files (SMB) を使用した SAP ASCS/SCS の HA ガイド](./high-availability-guide-windows-netapp-files-smb.md)、[WSFC とファイル共有を使用して SAP ASCS/SCS 用に Azure インフラストラクチャを準備](./sap-high-availability-infrastructure-wsfc-file-share.md)に関するページ、[WSFC と共有ディスクを使用した SAP ASCS/SCS のマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)、[WSFC および SOFS ファイル共有を使用した SAP ASCS/SCS のマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-file-share.md)での変更。コンテンツの更新と、WFC と共有ディスクを使用した SAP ASCS/SCS の HA ガイドの再構成の結果として行われました。 
+- 2020 年 8 月 21 日: タイプ I および II の HLI ユニットで使用可能なオペレーティング システムとして、新しい OS リリースを [HANA Large Instances と互換性のあるオペレーティング システム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance)に追加
 - 2020 年 8 月 18 日:[RHEL での ANF を使用した SAP HANA の高可用性のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)のリリース
 - 2020 年 8 月 17 日:Azure Site Recovery を使用して SAP NetWeaver システムをオンプレミスから Azure に移行するための情報を「[SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)」に追加しました
 - 2020 年 8 月 14 日:Db2 のディスク構成に関するアドバイスを「[SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)」に関する記事に追加しました

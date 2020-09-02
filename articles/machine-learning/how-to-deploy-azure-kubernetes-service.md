@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6c85a7315fe05bb4fedabd176295523c2fa95d81
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120832"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855232"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,9 @@ Azure Machine Learning を使って Azure Kubernetes Service (AKS) 上の Web �
 - GPU や Field Programmable Gate Array (FPGA) などの __ハードウェア アクセラレーション__ オプション。
 
 > [!IMPORTANT]
-> クラスター スケーリングは、Azure Machine Learning SDK では提供されません。 AKS クラスターでのノードのスケーリングの詳細については、「[Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする](../aks/scale-cluster.md)」をご覧ください。
+> クラスター スケーリングは、Azure Machine Learning SDK では提供されません。 AKS クラスターにおけるノードのスケーリングの詳細については、以下を参照してください 
+- [AKS クラスターでノードの数を手動でスケールする](../aks/scale-cluster.md)
+- [AKS でクラスター オートスケーラーを設定する](../aks/cluster-autoscaler.md)
 
 Azure Kubernetes Service にデプロイするときは、__ご利用のワークスペースに接続されている__ AKS クラスターにデプロイします。 AKS クラスターをワークスペースに接続するには、次の 2 つの方法があります。
 
@@ -65,9 +67,16 @@ AKS クラスターと AML ワークスペースは異なるリソース グル�
 
 - Basic Load Balancer (BLB) ではなく Standard Load Balancer (SLB) をクラスターにデプロイする必要がある場合は、AKS ポータル、CLI、または SDK でクラスターを作成し、AML ワークスペースにアタッチしてください。
 
+- パブリック IP の作成を制限する Azure Policy がある場合、AKS クラスターの作成は失敗します。 AKS では、[エグレス トラフィック](https://docs.microsoft.com/azure/aks/limit-egress-traffic)にパブリック IP が必要です。 この記事では、いくつかの FQDN を除き、パブリック IP を介したクラスターからのエグレス トラフィックをロックダウンするためのガイダンスも提供します。 パブリック IP を有効にするには、次の 2 つの方法があります。
+  - クラスターで、BLB または SLB で既定で作成されるパブリック IP を使用する
+  - クラスターをパブリック IP なしで作成し、パブリック IP を[こちら](https://docs.microsoft.com/azure/aks/egress-outboundtype)に記載されているようにユーザ定義のルートを使用したファイアウォールで設定する 
+  
+  AML コントロール プレーンからこのパブリック IP への通信はありません。 これはデプロイのため、AKS コントロール プレーンと通信します。 
+
 - [API サーバーへのアクセスが有効な承認済みの IP 範囲](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)を持つ AKS クラスターを接続する場合は、AKS クラスターの AML コントロール プレーンの IP 範囲を有効にします。 AML コントロール プレーンは、ペアになっているリージョンにまたがってデプロイされ、AKS クラスター上に推論ポッドをデプロイします。 API サーバーにアクセスできない場合、推論ポッドをデプロイすることはできません。 AKS クラスターで IP 範囲を有効にする場合、[ペアになっているリージョン]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)の両方に対して [IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)を使用します。
 
-__承認済みの IP 範囲は、Standard Load Balancer でのみ機能します。__
+
+  承認済みの IP 範囲は、Standard Load Balancer でのみ機能します。
  
  - コンピューティング名はワークスペース内で一意にする必要があります
    - 名前は必須であり、3 文字から 24 文字の長さにする必要があります。
@@ -76,10 +85,6 @@ __承認済みの IP 範囲は、Standard Load Balancer でのみ機能します
    - 名前は、Azure リージョン内のすべての既存のコンピューティングで一意である必要があります。 選択した名前が一意でない場合は、アラートが表示されます
    
  - GPU ノードまたは FPGA ノード (または特定の SKU) にモデルをデプロイする場合は、特定の SKU でクラスターを作成する必要があります。 既存のクラスターにセカンダリ ノード プールを作成し、そのセカンダリ ノード プールにモデルをデプロイすることはサポートされていません。
- 
- 
-
-
 
 ## <a name="create-a-new-aks-cluster"></a>新しい AKS クラスターを作成する
 
@@ -228,6 +233,10 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 ## <a name="deploy-to-aks"></a>AKS にデプロイする
 
 Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した __デプロイ構成__ を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+
+> [!NOTE]
+> デプロイされるモデルの数は、デプロイごとに 1,000 モデル (コンテナーごと) に制限されます。
+
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 

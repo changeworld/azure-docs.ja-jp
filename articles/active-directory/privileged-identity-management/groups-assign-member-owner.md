@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1dcc98366e37455f462fe1a0740aa161201912f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505691"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869655"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる
 
@@ -33,19 +33,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 これらの手順に従って、ユーザーを特権アクセス グループのメンバーまたは所有者の適用対象にすることができます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロール権限を使用して、Azure portal の [Privileged Identity Management](https://portal.azure.com/) にサインインします。
+1. 全体管理者またはグループ所有者のアクセス許可を持つ [Azure AD にサインイン](https://aad.portal.azure.com)します。
+1. **[グループ]** を選択し、管理対象とする、ロールを割り当て可能なグループを選択します。 リストを検索またはフィルター処理することができます。
 
-    Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
+    ![PIM で管理する、ロールを割り当て可能なグループを見つける](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. **[Azure AD Privileged Identity Management]** を開きます。
+1. グループを開き、 **[特権アクセス (プレビュー)]** を選択します。
 
-1. **[特権アクセス (プレビュー)]** を選択します。
-
-1. グループ名を検索し、 **[グループの種類]** を使用して一覧をフィルター処理し、管理するグループを選択できます。
-
-    ![管理する特権アクセス グループの一覧](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. **[管理]** で、 **[割り当て]** を選択します。
+    ![Privileged Identity Management エクスペリエンスを開く](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. **[割り当ての追加]** を選択します。
 
@@ -77,21 +72,20 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 既存のロールの割り当てを更新または削除するには、次の手順を実行します。
 
-1. **[Azure AD Privileged Identity Management]** を開きます。
+1. 全体管理者またはグループ所有者のアクセス許可を持つ [Azure AD にサインイン](https://aad.portal.azure.com)します。
+1. **[グループ]** を選択し、管理対象とする、ロールを割り当て可能なグループを選択します。 リストを検索またはフィルター処理することができます。
 
-1. **[特権アクセス (プレビュー)]** を選択します。
+    ![PIM で管理する、ロールを割り当て可能なグループを見つける](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. グループ名を検索し、 **[グループの種類]** を使用して一覧をフィルター処理し、管理するグループを選択できます。
+1. グループを開き、 **[特権アクセス (プレビュー)]** を選択します。
 
-    ![管理する特権アクセス グループの一覧](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. **[管理]** で、 **[割り当て]** を選択します。
+    ![Privileged Identity Management エクスペリエンスを開く](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. 更新または削除するロールを選択します。
 
 1. **[資格のあるロール]** タブまたは **[アクティブなロール]** タブでロールの割り当てを見つけます。
 
-    ![ロールの割り当ての更新または削除](./media/groups-assign-member-owner/groups-add-assignment.png)
+    ![ロールの割り当ての更新または削除](./media/groups-assign-member-owner/groups-bring-under-management.png)
 
 1. **[更新]** または **[削除]** を選択して、ロールの割り当てを更新または削除します。
 

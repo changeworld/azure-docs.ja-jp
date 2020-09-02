@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510795"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782330"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -75,6 +75,8 @@ ms.locfileid: "88510795"
 |クリンゴン語|   `tlh-Latn`  |
 |クリンゴン語 (plqaD)|   `tlh-Piqd`  |
 |韓国語 |`ko`   |
+|クルド語 (中央)  |`ku`   |
+|クルド語 (北) |`kmr`  |
 |ラトビア語|   `lv`    |
 |リトアニア語|    `lt`    |
 |マダガスカル語|  `mg`    |
@@ -158,6 +160,7 @@ ms.locfileid: "88510795"
 |マレー語| `ms`        |
 |マルタ語|   `mt`    |
 |ノルウェー語| `nb`    |
+|パシュトウ語|    `ps`    |
 |ペルシャ語|   `fa`    |
 |ポーランド語|    `pl`    |
 |ポルトガル語 (ブラジル)|   `pt-br` |
@@ -194,19 +197,19 @@ ms.locfileid: "88510795"
 | 簡体中国語 | `zh-Hans` | 中国語簡体字 `Hans`| <--> | 中国語繁体字 `Hant`|
 | 繁体中国語 | `zh-Hant` | 中国語繁体字 `Hant`| <--> | ラテン語 `Latn` |
 | 繁体中国語 | `zh-Hant` | 中国語繁体字 `Hant`| <--> | 中国語簡体字 `Hans` |
-| グジャラート語 | `gu`  | グジャラート語 `Gujr` | --> | ラテン語 `Latn` |
+| グジャラート語 | `gu`  | グジャラート語 `Gujr` | <--> | ラテン語 `Latn` |
 | ヘブライ語 | `he` | ヘブライ語 `Hebr` | <--> | ラテン語 `Latn` |
 | ヒンディー語 | `hi` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
 | 日本語 | `ja` | 日本語 `Jpan` | <--> | ラテン語 `Latn` |
-| カンナダ語 | `kn` | カンナダ語 `Knda` | --> | ラテン語 `Latn` |
-| マラヤーラム語 | `ml` | マラヤーラム語 `Mlym` | --> | ラテン語 `Latn` |
-| マラーティー語 | `mr` | デーヴァナーガリー `Deva` | --> | ラテン語 `Latn` |
+| カンナダ語 | `kn` | カンナダ語 `Knda` | <--> | ラテン語 `Latn` |
+| マラヤーラム語 | `ml` | マラヤーラム語 `Mlym` | <--> | ラテン語 `Latn` |
+| マラーティー語 | `mr` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
 | オディア語 | `or` | オリヤー語 `Orya` | <--> | ラテン語 `Latn` |
 | パンジャーブ語 | `pa` | グルムキー文字 `Guru`  | <--> | ラテン語 `Latn`  |
 | セルビア語 (キリル) | `sr-Cyrl` | キリル語 `Cyrl`  | --> | ラテン語 `Latn` |
 | セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
-| タミル語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
-| テルグ語 | `te` | テルグ語 `Telu` | --> | ラテン語 `Latn` |
+| タミル語 | `ta` | タミール語 `Taml` | <--> | ラテン語 `Latn` |
+| テルグ語 | `te` | テルグ語 `Telu` | <--> | ラテン語 `Latn` |
 | タイ語 | `th` | タイ語 `Thai` | --> | ラテン語 `Latn` |
 
 ### <a name="dictionary"></a>Dictionary
@@ -296,6 +299,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | フランス語      | `fr`          |
 | ドイツ語      | `de`          |
 | ギリシャ語      | `el`          |
+| グジャラート語| `gu`    |
 | ヘブライ語      | `he`          |
 | ヒンディー語      | `hi`          |
 | ハンガリー語      | `hu`          |
@@ -309,11 +313,14 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | ラトビア語      | `lv`          |
 | リトアニア語      | `lt`          |
 | マダガスカル語| `mg`    |
+| マレー語|    `ms`        |
 | マオリ語| `mi`  |
+| マラーティー語| `mr`  |
 | ノルウェー語      | `nb`          |
 | ペルシャ語      | `fa`          |
 | ポーランド語      | `pl`          |
 | ポルトガル語 (ブラジル) | `pt-br` |
+| パンジャーブ語|`pa`|
 | ルーマニア語      | `ro`          |
 | ロシア語      | `ru`          |
 | サモア語|   `sm`    |
@@ -325,6 +332,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | タイ語      | `th`          |
 | トルコ語      | `tr`          |
 | ウクライナ語      | `uk`          |
+| ウルドゥ語| `ur`    |
 | ベトナム語      | `vi`          |
 | ウェールズ語 | `cy` |
 
