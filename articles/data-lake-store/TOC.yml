@@ -22,11 +22,6 @@
       href: data-lake-store-get-started-powershell.md
     - name: Azure CLI の使用
       href: data-lake-store-get-started-cli-2.0.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 方法
   items:
     - name: データの読み込みと移動
@@ -177,6 +172,9 @@
       href: /azure/templates/microsoft.datalakestore/allversions
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dls'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

@@ -10,9 +10,6 @@
     - name: インデックス
       displayName: 'template, sample'
       href: ./samples/index.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./samples/policy-samples.md
 - name: 概念
   items:
     - name: Azure の委任されたリソース管理
@@ -95,6 +92,9 @@
       href: /rest/api/managedservices/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-reference.md
 - name: リソース
   items:
     - name: Azure Lighthouse 用の Microsoft Q&A

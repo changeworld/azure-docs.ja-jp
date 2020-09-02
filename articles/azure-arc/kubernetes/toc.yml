@@ -4,12 +4,6 @@
   items:
     - name: Arc 対応 Kubernetes について
       href: overview.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      items:
-        - name: Arc 対応 Kubernetes
-          href: policy-samples.md
 - name: 操作方法ガイド
   items:
     - name: Azure Arc への接続
@@ -34,3 +28,8 @@
           href: deploy-azure-iot-edge-workloads.md
     - name: トラブルシューティング
       href: Troubleshooting.md
+- name: リファレンス
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

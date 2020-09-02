@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - クラスターをアップグレードする
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: クラスターとワークロード
@@ -388,6 +383,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

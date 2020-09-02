@@ -152,9 +152,6 @@
               href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する
               href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
     - name: イメージング
@@ -582,7 +579,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -1150,6 +1147,9 @@
     - name: Resource Manager テンプレート
       displayName: ARM
       href: /azure/templates/microsoft.compute/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: リソース
   items:
     - name: Q & A

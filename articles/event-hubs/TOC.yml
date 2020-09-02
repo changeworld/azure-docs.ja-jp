@@ -75,9 +75,6 @@
   items:
     - name: コード サンプル
       href: event-hubs-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Event Hubs の用語
@@ -290,6 +287,9 @@
       href: event-hubs-quotas.md
     - name: Apache Kafka の構成
       href: apache-kafka-configurations.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

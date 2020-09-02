@@ -94,8 +94,6 @@
       href: template-samples.md
     - name: コード サンプル
       href: /samples/browse/?term=Event+Grid
-    - name: Azure Policy の組み込み
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Event Grid の用語
@@ -296,6 +294,9 @@
           href: /azure/templates/microsoft.eventgrid/topics
     - name: SDK
       href: sdk-overview.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

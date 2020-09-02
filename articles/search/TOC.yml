@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST サンプル
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: フルテキスト検索
@@ -496,6 +493,9 @@
           items:
             - name: 名前付きエンティティの認識
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure コミュニティ サポート

@@ -44,9 +44,6 @@
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: セキュリティ
@@ -268,6 +265,9 @@
           href: batch-task-complete-event.md
         - name: タスク失敗イベント
           href: batch-task-fail-event.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure の更新情報

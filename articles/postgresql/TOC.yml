@@ -73,9 +73,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 単一サーバー
@@ -393,6 +390,9 @@
           href: reference-hyperscale-parameters.md
         - name: システム テーブル
           href: reference-hyperscale-metadata.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

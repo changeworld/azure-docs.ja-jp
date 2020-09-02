@@ -543,7 +543,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md
@@ -657,6 +657,8 @@
           href: instance-metadata-service.md
         - name: 入れ子になった仮想化の有効化
           href: nested-virtualization.md
+        - name: VM ゲストの自動修正プログラム (プレビュー)
+          href: automatic-vm-guest-patching.md
     - name: プラットフォームのメンテナンス
       items:
         - name: メンテナンスの通知

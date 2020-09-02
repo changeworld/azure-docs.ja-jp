@@ -4,6 +4,8 @@
   items:
     - name: Azure Arc 対応サーバーについて
       href: overview.md
+    - name: Connected Machine エージェントの新機能
+      href: agent-release-notes.md
 - name: クイックスタート
   items:
     - name: Arc 対応サーバー エージェントを有効にする

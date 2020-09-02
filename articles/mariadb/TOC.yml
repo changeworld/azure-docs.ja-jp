@@ -38,9 +38,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB とサーバー
@@ -244,6 +241,9 @@
       href: /azure/templates/microsoft.dbformariadb/allversions
     - name: 管理ストアド プロシージャ
       href: reference-stored-procedures.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

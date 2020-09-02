@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: バックアップされた SAP HANA データベースの管理 - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: サポート マトリックス
@@ -428,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: コンプライアンス

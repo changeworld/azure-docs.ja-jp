@@ -273,7 +273,9 @@
               href: msal-net-adfs-support.md
             - name: MSAL.NET への移行
               href: msal-net-migration.md
-            - name: ブローカーを使用する Xamarin アプリの MSAL.NET への移行
+            - name: ブローカーを使用する Xamarin Android アプリの MSAL.NET への移行
+              href: msal-net-migration-android-broker.md
+            - name: ブローカーを使用する Xamarin iOS アプリの MSAL.NET への移行
               href: msal-net-migration-ios-broker.md
             - name: Web ブラウザーの考慮事項
               href: msal-net-web-browsers.md

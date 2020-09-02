@@ -49,20 +49,22 @@
   items:
     - name: .NET
       items:
-        - name: リモート ファイルのエンコードとストリーム配信 (REST)
-          href: stream-files-tutorial-with-rest.md
         - name: リモート ファイルのエンコードとストリーム配信 (.NET)
           href: stream-files-dotnet-quickstart.md
-        - name: アップロードされたファイルのエンコードとストリーム配信
+        - name: アップロードされたファイルのエンコードとストリーム配信 (.NET)
           href: stream-files-tutorial-with-api.md
-        - name: ライブ ストリーム配信
+        - name: .NET を使用したライブ ストリーム配信
           href: stream-live-tutorial-with-api.md
-        - name: ビデオの分析
+        - name: .NET を使用したビデオの分析
           href: analyze-videos-tutorial-with-api.md
         - name: AES-128 を使用した動的な暗号化
           href: protect-with-aes128.md
         - name: DRM を使用した動的な暗号化
           href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: リモート ファイルのエンコードとストリーム配信 (REST)
+          href: stream-files-tutorial-with-rest.md
     - name: CLI
       items:
         - name: リモート ファイルのエンコードとストリーム配信 (CLI)

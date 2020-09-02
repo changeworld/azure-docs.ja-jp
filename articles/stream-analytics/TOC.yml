@@ -40,9 +40,6 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ストリーミング分析テクノロジの選択
@@ -655,6 +652,9 @@
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
       href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Stream Analytics プレビュー
