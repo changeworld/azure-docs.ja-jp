@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 580d3cea94e3c550954fc0fa1aa6f2c3a73e9386
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554724"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683863"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Onfido を構成するためのチュートリアル
 
@@ -136,7 +136,7 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 | {your_tenant_extensions_app_objectid}                  | テナントのストレージ アプリケーションのオブジェクト ID                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_app_insights_instrumentation_key} | App Insights インスタンスのインストルメンテーション キー *| 01234567-89ab-cdef-0123-456789abcdef|
 |{your_ui_file_base_url}| ご自分の UI の **ocean_blue**、**dist**、**assets** フォルダーが配置されている場所の URL | https://yourstorage.blob.core.windows.net/UI/|
-| {your_app_service_URL}                                 | 設定したアプリ サービスの URL                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | 設定したアプリ サービスの URL                                             | `https://yourapp.azurewebsites.net`          |
 
 \* App Insights は別のテナントに配置できます。 この手順は省略可能です。 必要でない場合は、対応する TechnicalProfiles および OrchestrationSteps を削除します。
 

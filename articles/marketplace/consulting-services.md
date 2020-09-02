@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607443"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814724"
 ---
 # <a name="consulting-service-offers"></a>コンサルティング サービス オファー
 
@@ -72,40 +72,40 @@ Microsoft Azure に基づくコンサルティング サービスおよび管理
 
 システム インテグレーター パートナーは、次の 20 の国/地域でコンサルティング サービス オファーを提供できます。
 
-| 国  | (続き)   | (続き)  | (続き)  |
+| 国 | (続き) |  (続き) |  (続き) |
 |---------|----------|----------|----------|
 | オーストラリア | ベルギー | Canada | デンマーク |
 | フィンランド  | フランス | ドイツ  | インド   |
 | イタリア    | 日本  |  メキシコ  |  オランダ  |
 |  ニュージーランド  |  ノルウェー  |  ポーランド  | 南アフリカ |
 |  スウェーデン  | スイス  |  United States  | イギリス  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでコンサルティング サービスに登録する
 
-最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。 登録要件の完全なチェックリストについては、[マーケットプレースで公開元になる](become-publisher.md)ことに関する記事を参照してください。 
+最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。 登録要件の完全なチェックリストについては、[マーケットプレースで公開元になる](become-publisher.md)ことに関する記事を参照してください。
 
 ## <a name="prepare-your-publishing-artifacts"></a>成果物の公開を準備する
 登録前に、対象の顧客に対してご自身のサービスやソリューションの価値を明確に示すのに役立つコンテンツの収集や準備を開始できます。 
 
 |新しい公開元の設定  |
-|---------|
-|MPN ID     |
-|会社のロゴ (48 x 48、216 x 216 ピクセル)     |
-|リードの宛先     |
-||
+| - |
+| MPN ID |
+| 会社のロゴ (48 x 48、216 x 216 ピクセル) |
+| リードの宛先 |
+|
 
 |新しいオファーの設定  |
-|---------|
-|オファーの名前 (200 文字) と説明 (2,000 文字)    |
-|コンピテンシー     |
-|国/リージョンの可用性     |
-|契約の期間     |
-|該当する業界、カテゴリ、検索キーワード     |
-|製品の概要ビデオ    |
-|スクリーンショット (最大 5 個、1280 x 720 ピクセル)     |
-|マーケティング ドキュメント (最大 3 個)     |
-||
+| - |
+| オファーの名前 (200 文字) と説明 (2,000 文字) |
+| コンピテンシー  |
+| 国/リージョンの可用性 |
+| 契約の期間  |
+| 該当する業界、カテゴリ、検索キーワード |
+| 製品の概要ビデオ |
+| スクリーンショット (最大 5 個、1280 x 720 ピクセル) |
+| マーケティング ドキュメント (最大 3 個) |
+|
 
 ## <a name="the-publishing-process"></a>公開のプロセス
 
