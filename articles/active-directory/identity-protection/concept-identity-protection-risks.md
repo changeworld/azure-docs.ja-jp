@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815054"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047107"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -39,7 +39,6 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | リスク検出 | 説明 |
 | --- | --- |
 | 漏洩した資格情報 | このリスク検出の種類は、ユーザーの有効な資格情報が漏洩したことを示します。 サイバー犯罪者は、正規ユーザーの有効なパスワードを侵害した場合、その資格情報を共有することがよくあります。 この共有は、一般に、闇サイトや貼り付けサイトに公開したり、資格情報を闇市場で取引したり販売したりすることで行われます。 Microsoft の漏洩した資格情報サービスで、闇サイト、貼り付けサイト、またはその他のソースからユーザー資格情報が取得された場合は、有効な一致を見つけるために Azure AD ユーザーの現在の有効な資格情報に対してチェックされます。 漏洩した資格情報の詳細については、「[一般的な質問](#common-questions)」を参照してください。 |
-| パスワード スプレー | パスワード スプレー攻撃とは、複数のユーザー名に対し、よく使われるパスワードを片っ端から試して不正アクセスしようとする攻撃です。 このリスク検出は、パスワード スプレー攻撃が実行されたときにトリガーされます。 |
 | Azure AD 脅威インテリジェンス | このリスク検出の種類は、Microsoft の内部および外部の脅威インテリジェンスのソースに基づいて、特定のユーザーにとって異常であったり、既知の攻撃パターンに一致したりするユーザー アクティビティを示します。 |
 
 ### <a name="sign-in-risk"></a>サインイン リスク
@@ -57,6 +56,7 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | ユーザーに対するセキュリティ侵害を管理者が確認しました | オフライン | この検出は、管理者が "危険なユーザー" UI で、または riskyUsers API を使用して、[ユーザーに対するセキュリティ侵害を確認しますか?] を選択したことを示します。 このユーザーに対するセキュリティが侵害されたことを確認した管理者を調べるには、ユーザーのリスク履歴を (UI または API 経由で) 確認します。 |
 | 悪意のある IP アドレス | オフライン | この検出は、悪意のある IP アドレスからのサインインを示します。 IP アドレスは、その IPアドレスまたはその他の IP 評価ソースから受信した無効な資格情報によるエラー率の高さに基づいて、悪意があるとみなされます。 |
 | 受信トレイに対する疑わしい操作ルール | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) によって検出されます。 ユーザーの受信トレイでメッセージまたはフォルダーを削除または移動する疑わしいルールが設定されている場合、この検出によって環境がプロファイルされ、アラートがトリガーされます。 この検出は、ユーザー アカウントが侵害されていること、メッセージが意図的に非表示にされていること、組織内でスパムまたはマルウェアを配信するためにメールボックスが使用されていることを示唆している可能性があります。 |
+| パスワード スプレー | オフライン | パスワード スプレー攻撃とは、複数のユーザー名に対し、よく使われるパスワードを片っ端から試して不正アクセスしようとする攻撃です。 このリスク検出は、パスワード スプレー攻撃が実行されたときにトリガーされます。 |
 | あり得ない移動 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel) によって検出されます。 この検出は、(1 つまたは複数のセッションにおける) 2 つのユーザー アクティビティが地理的に離れている場所で、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短い時間内に発生したことを示します。これは、別のユーザーが同じ資格情報を使用していることを示唆します。 |
 
 ### <a name="other-risk-detections"></a>その他のリスク検出
