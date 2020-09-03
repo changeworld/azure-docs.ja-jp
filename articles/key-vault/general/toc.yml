@@ -39,9 +39,6 @@
   items:
     - name: Key Vault のコード サンプル
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 基本的な概念
@@ -90,6 +87,8 @@
           href: managed-identity.md
         - name: アクセス制御ポリシーを使用する
           href: group-permissions-for-apps.md
+        - name: Azure ロールベースのアクセス制御 (プレビュー) を使用する
+          href: rbac-guide.md
         - name: アクセスに関する問題をトラブルシューティングする
           href: troubleshooting-access-issues.md
     - name: 開発
@@ -163,6 +162,9 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

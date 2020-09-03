@@ -9,18 +9,20 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 08/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 27082499263af6eedd7d9d628b7b1746a9177672
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 99101f31ec955c822c784180dd8b04bfb8e5f73c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606837"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291604"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure Media Services v3 のアセット
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services では、[アセット](/rest/api/media/assets)は中核的な概念です。 アセットでは、メディアの入力 (たとえば、アップロードまたはライブ取り込みを通して)、メディアの出力 (ジョブ出力から)、およびメディアの公開 (ストリーム配信の場合) を行います。 
 

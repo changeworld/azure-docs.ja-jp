@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762373"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291298"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -22,7 +22,7 @@ Spring Cloud Config は、分散システムで外部化された構成用に、
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-* 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。 Azure Spring Cloud サービスを設定し、起動するには、「[クイックスタート: Azure CLI を使用して Java Spring アプリケーションを起動する](spring-cloud-quickstart-launch-app-cli.md)」を参照してください。
+* 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。 Azure Spring Cloud サービスを設定し、起動するには、「[クイックスタート: Azure CLI を使用して Java Spring アプリケーションを起動する](spring-cloud-quickstart.md)」を参照してください。
 
 ## <a name="restriction"></a>Restriction
 

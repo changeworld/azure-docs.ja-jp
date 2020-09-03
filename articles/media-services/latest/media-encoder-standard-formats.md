@@ -3,25 +3,27 @@ title: Standard Encoder の形式およびコーデック - Azure
 description: この記事では、StandardEncoderPreset で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6e9c0a3d9100bc447314f5874107363c6bf5d8a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053234"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289445"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standard Encoder の形式およびコーデック
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](customize-encoder-presets-how-to.md)」を参照してください。
 

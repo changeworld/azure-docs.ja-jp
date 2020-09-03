@@ -3,14 +3,14 @@ title: Azure Functions の PowerShell 開発者向けリファレンス
 description: PowerShell を使用して関数を開発する方法について説明します。
 author: eamonoreilly
 ms.topic: conceptual
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933505"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071161"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 

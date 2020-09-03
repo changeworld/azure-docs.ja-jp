@@ -7,12 +7,13 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a4d8a919d1881f61e490f135cc8fb1659c64cbd3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: d5d66ca05390af5f6fef91ca959f1db3d547d3fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871124"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014049"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Azure Cosmos DB の "要求ヘッダーが大きすぎる" メッセージを診断してトラブルシューティングする
 "要求ヘッダーが大きすぎる" メッセージは、HTTP エラー コード 400 でスローされます。 このエラーは、要求ヘッダーのサイズが大きくなりすぎて、最大許容サイズを超えている場合に発生します。 最新バージョンの SDK を使用することをお勧めします。 バージョン 3.x または 2.x では、ヘッダー サイズのトレースが例外メッセージに追加されるため、少なくともこれらのバージョンを使用してください。
