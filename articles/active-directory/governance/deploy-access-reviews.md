@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853022"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011346"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -182,7 +182,7 @@ ms.locfileid: "88853022"
 
 * グループ [メンバーシップ](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD と同期されるか、Azure AD または Office 365 (Microsoft Teams を含む) で作成されるもの)。
 
-* リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](/entitlement-management-overview.md)。
+* リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](/azure/active-directory/governance/entitlement-management-overview)。
 
 * Privileged Identity Management で定義された [Azure AD ロールと Azure リソース ロール](../privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
@@ -422,7 +422,7 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 | ハウツー記事| 説明 |
 | - | - |
 | [アクセス レビューの作成](entitlement-management-access-reviews-create.md)| アクセス パッケージのレビューを有効にします。 |
-| [アクセス レビューの実行](/entitlement-management-access-reviews-review-access.md)| アクセス パッケージに割り当てられている他のユーザーのアクセス レビューを実行します。 |
+| [アクセス レビューの実行](entitlement-management-access-reviews-review-access.md)| アクセス パッケージに割り当てられている他のユーザーのアクセス レビューを実行します。 |
 | [割り当てられたアクセス パッケージを自己レビューする](entitlement-management-access-reviews-self-review.md)| 割り当てられたアクセス パッケージの自己レビュー |
 
 
