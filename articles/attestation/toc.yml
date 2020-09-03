@@ -15,7 +15,7 @@
     - name: 構成証明ポリシーの作成と署名
       href: author-sign-policy.md
     - name: SGX 構成証明コード サンプル
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: 例
   items:
     - name: 構成証明ポリシー

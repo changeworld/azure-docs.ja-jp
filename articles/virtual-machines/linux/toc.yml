@@ -85,15 +85,15 @@
         - name: ストレージの管理
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 同じまたは別のサブスクリプションにマネージド ディスクをコピーする
               href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 同じまたは別のサブスクリプションにスナップショットをコピーする
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: ネットワークの仮想マシン
@@ -127,21 +127,21 @@
             - name: WordPress がインストールされている VM の作成
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 管理 OS ディスクから VM を作成する
-              href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: スナップショットから VM を作成する
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: ストレージの管理
           items:
             - name: 同じまたは別のサブスクリプションの VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: VHD からスナップショットを作成する
-              href: ../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 同じサブスクリプションまたは別のサブスクリプションにスナップショットをコピーする
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 仮想マシンの監視
@@ -189,7 +189,7 @@
         - name: VM サイズ
           href: ../sizes.md
         - name: 第 2 世代 VM
-          href: generation-2.md
+          href: ../generation-2.md
         - name: 汎用
           items:
             - name: 概要
@@ -351,7 +351,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -674,7 +674,7 @@
     - name: VM の管理
       items:
         - name: VM の使用状況
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: 一般的な CLI タスク
           href: cli-manage.md
         - name: VM サイズの変更
@@ -937,7 +937,7 @@
           href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
-            - name: アーキテクチャ
+            - name: Architecture
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md

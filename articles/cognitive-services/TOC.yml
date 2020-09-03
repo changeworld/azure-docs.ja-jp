@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Cognitive Services とは
-      href: Welcome.md
+      href: what-are-cognitive-services.md
     - name: Cognitive Services ドキュメントの新着情報
       href: whats-new-docs.md
     - name: Cognitive Services と機械学習

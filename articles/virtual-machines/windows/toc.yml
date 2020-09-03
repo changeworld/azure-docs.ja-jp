@@ -70,23 +70,23 @@
             - name: VHD からの VM のアップロード
               href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
             - name: OS ディスクのアタッチ
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
             - name: スナップショットからの VM
               href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
         - name: ストレージの管理
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
             - name: マネージド ディスクをコピーする
               href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
             - name: VHD からスナップショットを作成する
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
             - name: スナップショットをコピーする
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: セキュリティで保護
@@ -118,15 +118,15 @@
         - name: ストレージの管理
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
             - name: マネージド ディスクのコピー
               href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
             - name: スナップショットのコピー
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: ネットワーク
@@ -172,7 +172,7 @@
         - name: VM サイズ
           href: ../sizes.md
         - name: 第 2 世代 VM
-          href: generation-2.md
+          href: ../generation-2.md
         - name: 汎用
           items:
             - name: 概要
@@ -335,7 +335,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -621,7 +621,7 @@
     - name: VM の管理
       items:
         - name: VM の使用状況
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: 一般的な PowerShell タスク
           href: ps-common-ref.md
         - name: VM サイズの変更
