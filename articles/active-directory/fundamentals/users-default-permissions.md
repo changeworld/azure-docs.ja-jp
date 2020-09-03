@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042a881cc6021842dec126c92ff13f306f79dad1
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: f96d307f8cc5aa248ffe3bc7c6b0d569ac0910ea
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705233"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320836"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
 
 ## <a name="member-and-guest-users"></a>メンバーとゲスト ユーザー
-受け取る既定のアクセス許可のセットは、ユーザーがテナントのネイティブ メンバー (メンバー ユーザー) かどうか、またはユーザーが B2B コラボレーション ゲスト (ゲスト ユーザー) としての別のディレクトリからのユーザーかどうかによって異なります。 ゲスト ユーザーの追加の詳細については、「[Azure AD B2B コラボレーションとは](../b2b/what-is-b2b.md)」を参照してください。
+受け取る既定のアクセス許可のセットは、ユーザーがテナントのネイティブ メンバー (メンバー ユーザー) かどうか、またはユーザーが B2B コラボレーション ゲスト (ゲスト ユーザー) としての別のディレクトリからのユーザーかどうかによって異なります。 ゲスト ユーザーの追加の詳細については、「[Azure AD B2B コラボレーションとは](../external-identities/what-is-b2b.md)」を参照してください。
 * メンバー ユーザーは、アプリケーションの登録、自分のプロファイル写真と携帯電話番号の管理、自分のパスワードの変更、B2B ゲストの招待を行うことができます。 さらに、すべてのディレクトリ情報を読むことができます (いくつか例外があります)。 
 * ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 自分のプロファイルの管理や自分のパスワードの変更、他のユーザー、グループ、アプリに関する情報の取得を行うことができますが、すべてのディレクトリ情報を読み取ることはできません。 たとえば、ゲスト ユーザーは、ユーザー、グループ、およびその他のディレクトリ オブジェクトを列挙できません。 ゲストを管理者ロールに追加することができ、追加すると、ロールに含まれる読み取りと書き込みのすべてのアクセス許可が付与されます。 また、ゲストは他のゲストを招待することもできます。
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) では、すべてのユーザーに既定の�
 権限 | 設定の説明
 ---------- | ------------
 ユーザーはアプリケーションを登録できる | このオプションを [いいえ] に設定すると、ユーザーはアプリケーション登録を作成できません。 この場合、特定のユーザーをアプリケーション開発者ロールに追加することで、そのユーザーにこの機能を付与できます。
-ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。 詳細については、「[LinkedIn アカウント接続のデータ共有と同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)」を参照してください。
+ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。 詳細については、「[LinkedIn アカウント接続のデータ共有と同意](../users-groups-roles/linkedin-user-consent.md)」を参照してください。
 セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Office 365 グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーは Office 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Office 365 グループを作成できます。 その場合でも、全体管理者とユーザー管理者は Office 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、管理者以外の管理者が Azure AD 管理ポータルを使用して Azure AD リソースの読み取りと管理を行うことができます。 [はい] の場合、管理者以外はすべて、管理ポータルでの Azure AD データへのアクセスが制限されます。<p>**注**: この設定では、PowerShell または他のクライアント (Visual Studio など) を使用した Azure AD データへのアクセスは制限されません。[はい] に設定した場合、特定の非管理者ユーザーに Azure AD 管理ポータルを使用する権限を付与するには、ディレクトリ閲覧者ロールなどの管理ロールを割り当ててください。<p>このロールでは、メンバー ユーザーが既定で所有している (ゲストとサービス プリンシパルは所有していない) 基本的なディレクトリ情報を読み取ることができます。
@@ -65,9 +65,9 @@ Azure AD 管理ポータルへのアクセスを制限する | このオプシ�
 権限 | 設定の説明
 ---------- | ------------
 Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス制限 (プレビュー)) | このオプションをゲスト ユーザーに設定すると、メンバーがメンバー ユーザーのアクセス許可のすべてをゲスト ユーザーに付与する場合と同じアクセス権が既定で与えられます。<p>このオプションをゲスト ユーザーに設定すると、アクセスは自分のディレクトリ オブジェクトのプロパティおよびメンバーシップに制限され、既定でゲストのアクセスが自分のユーザー プロファイルのみに制限されます。 ユーザー プリンシパル名または objectId で検索する場合でも、他のユーザーへのアクセスは許可されなくなりました。 グループ メンバーシップを含むグループへのアクセスも許可されなくなりました。 この設定では、Microsoft Teams など、他の Microsoft サービスのグループへのアクセスは禁止されません。 詳細については、[Microsoft Teams のゲストのアクセス]()に関する記事を参照してください。<p>このアクセス許可の設定に関係なく、ゲスト ユーザーを管理者の役割に追加できます。
-ゲストは招待ができる | このオプションを [はい] に設定すると、ゲストは他のゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
-メンバーは招待ができる | [メンバーは招待ができる] オプションを [はい] に設定すると、自分のディレクトリの管理者以外のメンバーがゲストを招待できるようになります。 詳しくは、[B2B コラボレーションの招待の委任](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
-管理者とゲスト招待元ロールのユーザーは招待ができる | このオプションを [はい] に設定すると、管理者と "ゲスト招待元" ロールのユーザーがゲストを招待できます。 [はい] に設定すると、[メンバーは招待ができる] 設定に関係なく、ゲスト招待元ロールのユーザーはゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#assign-the-guest-inviter-role-to-a-user)に関する記事を参照してください。
+ゲストは招待ができる | このオプションを [はい] に設定すると、ゲストは他のゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
+メンバーは招待ができる | [メンバーは招待ができる] オプションを [はい] に設定すると、自分のディレクトリの管理者以外のメンバーがゲストを招待できるようになります。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
+管理者とゲスト招待元ロールのユーザーは招待ができる | このオプションを [はい] に設定すると、管理者と "ゲスト招待元" ロールのユーザーがゲストを招待できます。 [はい] に設定すると、[メンバーは招待ができる] 設定に関係なく、ゲスト招待元ロールのユーザーはゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user)に関する記事を参照してください。
 
 ## <a name="object-ownership"></a>オブジェクトの所有権
 

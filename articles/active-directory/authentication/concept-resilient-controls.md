@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716301"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049572"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -92,7 +92,7 @@ ms.locfileid: "88716301"
 
 ### <a name="contingencies-for-user-lockout"></a>ユーザー ロックアウトのコンティンジェンシー
 
-または、組織でコンティンジェンシー ポリシーを作成することもできます。 コンティンジェンシー ポリシーを作成するには、ビジネス継続性、運用コスト、財務コスト、セキュリティ リスクの間のトレードオフ条件を定義する必要があります。 たとえば、ユーザーのサブセット、アプリのサブセット、クライアントのサブセット、または場所のサブセットに対してのみ、コンティンジェンシー ポリシーをアクティブにする場合があります。 コンティンジェンシー ポリシーでは、軽減策が実装されていないときの中断中に、管理者とエンド ユーザーに対して、アプリとリソースへのアクセス権が付与されます。 Microsoft では、コンティンジェンシー ポリシーを使用しない場合は[レポート専用モード](../conditional-access/howto-conditional-access-report-only.md)で有効にしておき、ポリシーをオンにすることが必要になった場合に備えて、管理者がそれらの潜在的な影響を監視できるようにすることをお勧めしています。
+または、組織でコンティンジェンシー ポリシーを作成することもできます。 コンティンジェンシー ポリシーを作成するには、ビジネス継続性、運用コスト、財務コスト、セキュリティ リスクの間のトレードオフ条件を定義する必要があります。 たとえば、ユーザーのサブセット、アプリのサブセット、クライアントのサブセット、または場所のサブセットに対してのみ、コンティンジェンシー ポリシーをアクティブにする場合があります。 コンティンジェンシー ポリシーでは、軽減策が実装されていないときの中断中に、管理者とエンド ユーザーに対して、アプリとリソースへのアクセス権が付与されます。 Microsoft では、コンティンジェンシー ポリシーを使用しない場合は[レポート専用モード](../conditional-access/howto-conditional-access-insights-reporting.md)で有効にしておき、ポリシーをオンにすることが必要になった場合に備えて、管理者がそれらの潜在的な影響を監視できるようにすることをお勧めしています。
 
  中断中の危険な状態を理解することは、リスクを軽減するのに役立ち、計画プロセスの重要な一部です。 コンティンジェンシー計画を作成するには、まず、組織での次のビジネス要件を決定します。
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604781"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050864"
 ---
 # <a name="examine-the-video-indexer-output"></a>Video Indexer の出力を調べる
 
@@ -27,7 +27,7 @@ ms.locfileid: "88604781"
 
 ![洞察](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-この記事では、Video Indexer の出力 (JSON コンテンツ) を調べます。 使用できる機能と分析情報については、[Video Indexer の分析情報](video-indexer-overview.md#video-insights)に関する記事を参照してください。
+この記事では、Video Indexer の出力 (JSON コンテンツ) を調べます。 <br/>使用できる機能と分析情報については、[Video Indexer の分析情報](video-indexer-overview.md#video-insights)に関する記事を参照してください。
 
 > [!NOTE]
 > Video Indexer のすべてのアクセス トークンの有効期限は 1 時間です。

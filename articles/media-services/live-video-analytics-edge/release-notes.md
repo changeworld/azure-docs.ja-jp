@@ -2,13 +2,13 @@
 title: Live Video Analytics on IoT Edge リリース ノート - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: bad21297c5174c107a8eb03da0e2ed57ee7355d3
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/19/2020
+ms.openlocfilehash: 23c2362d46a0b9bfe2fc2fbe31e00d0a42f80cfa
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750206"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055449"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Live Video Analytics on IoT Edge リリース ノート
 

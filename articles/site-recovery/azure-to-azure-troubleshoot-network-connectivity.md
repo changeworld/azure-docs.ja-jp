@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835886"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049691"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
@@ -80,11 +80,8 @@ Office 365 認証と ID IP4 エンドポイントへの接続を確立できま�
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad-tag":::
 
-1. ターゲットの場所に対応する Site Recovery IP に対して、HTTPS ポート 443 アウトバウンド規則を作成します。
-
-   | 場所 | Site Recovery IP アドレス | Site Recovery 監視 IP アドレス |
-   | --- | --- | --- |
-   | 米国中部 | 40.69.144.231 | 52.165.34.144 |
+1. 上記のセキュリティ規則と同様に、ターゲットの場所に対応する NSG 上の "EventHub.CentralUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、Site Recovery 監視にアクセスできるようになります。
+1. NSG 上の "AzureSiteRecovery" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
 #### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中部
 
@@ -100,11 +97,8 @@ Office 365 認証と ID IP4 エンドポイントへの接続を確立できま�
    - **[宛先サービス タグ]** : _AzureActiveDirectory_
    - **[宛先ポート範囲]** : _443_
 
-1. ソースの場所に対応する Site Recovery IP に対して、HTTPS ポート 443 アウトバウンド規則を作成します。
-
-   | 場所 | Site Recovery IP アドレス | Site Recovery 監視 IP アドレス |
-   | --- | --- | --- |
-   | 米国東部 | 13.82.88.226 | 104.45.147.24 |
+1. 上記のセキュリティ規則と同様に、ソースの場所に対応する NSG 上の "EventHub.EastUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、Site Recovery 監視にアクセスできるようになります。
+1. NSG 上の "AzureSiteRecovery" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
 
