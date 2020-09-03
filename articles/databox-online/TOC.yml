@@ -71,17 +71,17 @@
           items:
             - name: kubectl を使用
               items:
-                - name: Kubernetes クラスターにアクセスする。
+                - name: Kubernetes クラスターへのアクセス
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
-                - name: ステートレス アプリを公開する
+                - name: ステートレス アプリ
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
-                - name: ステートフル アプリをデプロイする (静的プロビジョニング)
+                - name: 静的にプロビジョニングされたステートフル アプリ
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
-                - name: ステートフル アプリをデプロイする (動的プロビジョニング)
+                - name: 動的にプロビジョニングされたステートフル アプリ
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
             - name: IoT Edge を使用
               items:
-                - name: ステートレス アプリを公開する
+                - name: ステートレス アプリ
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
             - name: Azure Arc を使用
               items:
@@ -119,8 +119,8 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: 証明書エラーのトラブルシューティングを行う
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-            - name: C# モジュールの開発
-              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: C# モジュールの開発
+          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Edge コンピューティングを管理する
           href: azure-stack-edge-j-series-manage-compute.md
         - name: ストレージ ゲートウェイを管理する

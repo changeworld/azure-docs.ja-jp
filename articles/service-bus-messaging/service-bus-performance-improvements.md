@@ -3,12 +3,13 @@ title: Azure Service Bus を使用したパフォーマンス向上のための�
 description: Service Bus を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a81e6fa1c6097f46bbfa3016beb1b7780ad3c351
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2bd5a1598448722f46a91b889b0778e80ad4e140
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065303"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012060"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 

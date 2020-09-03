@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 92cc742fce101b67bfb359381b4eabf9cf2a404e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869577"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068985"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力
 
@@ -24,7 +24,7 @@ Stream Analytics ジョブの出力を作成、編集、テストするには、
 
 | 出力の種類 | パーティション分割 | セキュリティ | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Azure Active Directory ユーザー </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|はい|Azure Active Directory ユーザー </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|はい。有効にする必要があります。|SQL ユーザー認証 </br> MSI (プレビュー)|
 |[Azure Synapse Analytics (プレビュー)](azure-synapse-analytics-output.md)|いいえ|SQL ユーザー認証|
 |[Blob Storage と Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|はい|MSI </br> アクセス キー|
