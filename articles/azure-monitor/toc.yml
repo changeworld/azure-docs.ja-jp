@@ -144,7 +144,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -160,6 +160,8 @@
       href: platform/partners.md
     - name: セキュリティ
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./platform/security-controls-policy.md
