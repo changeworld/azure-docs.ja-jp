@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208641"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962011"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -815,7 +815,7 @@ Web アプリが複数のインスタンス上で稼働している場合、継�
 
 ## <a name="filters"></a>フィルター
 
-関数のフィルター (プレビュー) は、独自のロジックで WebJobs 実行パイプラインをカスタマイズする方法を提供します。 フィルターは [ASP.NET Core フィルター](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)に似ています。 関数またはクラスに適用される宣言型の属性として実装することができます。 詳細については、[関数フィルター](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters)を参照してください。
+関数のフィルター (プレビュー) は、独自のロジックで WebJobs 実行パイプラインをカスタマイズする方法を提供します。 フィルターは [ASP.NET Core フィルター](/aspnet/core/mvc/controllers/filters)に似ています。 関数またはクラスに適用される宣言型の属性として実装することができます。 詳細については、[関数フィルター](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters)を参照してください。
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 

@@ -7,12 +7,13 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 4e7b1fdbcbf85aa4c64a38deeeb03ede9a0e4b87
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871141"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021937"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Azure Cosmos DB .NET SDK の要求タイムアウト例外を診断してトラブルシューティングする
 HTTP 408 エラーは、タイムアウト制限が発生する前に SDK が要求を完了できなかった場合に発生します。
