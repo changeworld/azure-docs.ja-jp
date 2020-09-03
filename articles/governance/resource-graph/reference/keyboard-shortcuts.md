@@ -4,12 +4,12 @@ description: Azure portal の Azure Resource Graph エクスプローラーで�
 ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: f5995498f2b95828a7c03dbcd5669491e62de2e7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848688"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146438"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Resource Graph エクスプローラーのキーボード ショートカット
 
@@ -22,7 +22,6 @@ ms.locfileid: "88848688"
 |コメント化する/コメントを解除する |<kbd>Ctrl</kbd> + <kbd>/</kbd> | <kbd>Cmd</kbd>+<kbd>/</kbd> |
 |インデントを解除する |<kbd>CTRL</kbd>+<kbd>[</kbd> |<kbd>Cmd</kbd>+<kbd>[</kbd> |
 |インデントを追加する |<kbd>Ctrl</kbd> + <kbd>]</kbd> |<kbd>Cmd</kbd>+<kbd>]</kbd> |
-|すべて選択する |<kbd>Ctrl</kbd> + <kbd>A</kbd> |<kbd>Cmd</kbd>+<kbd>A</kbd> |
 |行を下へ移動する |<kbd>ALT</kbd>+<kbd>↓</kbd> |<kbd>Option</kbd>+<kbd>↓</kbd> |
 |行を上へ移動する |<kbd>ALT</kbd>+<kbd>↑</kbd> |<kbd>Option</kbd>+<kbd>↑</kbd> |
 |Replace |<kbd>Ctrl</kbd> + <kbd>F</kbd> |<kbd>Cmd</kbd>+<kbd>ALT</kbd>+<kbd>F</kbd> |

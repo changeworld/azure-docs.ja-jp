@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: ルーター構成サンプル'
 description: Cisco IOS-XE と Juniper MX シリーズ ルーターのこれらのインターフェイスとルーティング構成のサンプルは、Azure ExpressRoute を使用する場合の例として使用します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
-ms.author: osamaz
-ms.openlocfilehash: fdf50dc6b4c0976a713a1d436ac9af7c1bd9701b
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 3bc850f02884ae0547c2ecf56a46a57a4e66a752
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190795"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397408"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>ルーティングをセットアップして管理するためのルーター構成のサンプル
 このページでは、Azure ExpressRoute を使用する場合の、Cisco IOS-XE と Juniper MX シリーズ ルーターのインターフェイスとルーティング構成のサンプルを示します。
