@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799113"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047481"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Storage Explorer を使ってデータを操作する
 
@@ -95,7 +95,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 * Azure Cosmos DB アカウントまたはデータベースを右クリックし、 **[ポータルで開く]** を選択して、Azure ポータルのブラウザーでリソースを管理できます。
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="ポータルで開く":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="ポータルで開く":::
 
 * Azure Cosmos DB アカウント、データベース、コレクションを **[クイック アクセス]** に追加することもできます。
 * **[Search from Here]\(ここから検索\)** は、選択したパスのキーワード検索を有効にします。
@@ -106,25 +106,25 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 #### <a name="create-a-database"></a>データベースを作成する
 
--   Azure Cosmos DB アカウントを右クリックし、 **[データベースの作成]** を選択し、データベース名を入力し、**Enter** キーを押します。
+- Azure Cosmos DB アカウントを右クリックし、 **[データベースの作成]** を選択し、データベース名を入力し、**Enter** キーを押します。
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Azure Cosmos アカウント内にデータベースを作成する":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Azure Cosmos アカウント内にデータベースを作成する":::
 
 #### <a name="delete-a-database"></a>データベースの削除
 
 - データベースを右クリックし、 **[データベースの削除]** を選択し、ポップアップ ウィンドウで **[はい]** を選択します。 データベース ノードが削除され、Azure Cosmos DB アカウントが自動的に更新されます。
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="1 つ目のデータベースを削除する":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="1 つ目のデータベースを削除する":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="2 つ目のデータベースを削除する":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="2 つ目のデータベースを削除する":::
 
 #### <a name="create-a-collection"></a>コレクションの作成
 
 1. データベースを右クリックし、 **[コレクションの作成]** をクリックし、 **[コレクション ID]** や **[ストレージ容量]** などの情報を指定します。 **[OK]** をクリックして終了します。
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="データベースに最初のコレクションを作成する":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="データベースに最初のコレクションを作成する":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="データベースに 2 つ目のコレクションを作成する":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="データベースに 2 つ目のコレクションを作成する":::
 
 2. パーティション キーを指定できるように **[無制限]** を選択し、 **[OK]** を選択して完了します。
 
@@ -146,7 +146,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 - 新しいドキュメントを作成するには、左側のウィンドウで **[ドキュメント]** を開き、右側のウィンドウで **[新しいドキュメント]** を選択し、内容を編集し、 **[保存]** を選択します。 既存のドキュメントを更新して **[保存]** を選択することもできます。 **[破棄]** をクリックすることで、変更を破棄できます。
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="新しいドキュメントの作成":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="新しいドキュメントの作成":::
 
 #### <a name="delete-a-document"></a>ドキュメントの削除
 
@@ -156,7 +156,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 - [SQL クエリ](how-to-sql-query.md)を入力してドキュメントをフィルターし、 **[適用]** を選択します。
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="特定のドキュメントを照会する":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="特定のドキュメントを照会する":::
 
 ### <a name="graph-management"></a>Graph の管理
 
@@ -165,7 +165,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 1. 新しい頂点を作成するには、左側のウィンドウから **Graph** を開き、 **[New Vertex]\(新しい頂点\)** を選択して内容を編集し、 **[OK]** を選択します。
 2. 既存の頂点を変更するには、右側のウィンドウにあるペン アイコンを選択します。
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="グラフの頂点を変更する":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="グラフの頂点を変更する":::
 
 #### <a name="delete-a-graph"></a>グラフの削除
 
@@ -175,7 +175,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 - [Gremlin クエリ](gremlin-support.md)を入力してグラフ フィルターを編集し、 **[フィルターの適用]** を選択します。
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="グラフ クエリを実行する":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="グラフ クエリを実行する":::
 
 ### <a name="table-management"></a>テーブル管理
 
@@ -184,33 +184,34 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 1. 新しいテーブルを作成するには、左側のウィンドウから **[エンティティ]** を開き、 **[追加]** を選択して、 **[エンティティの追加]** ダイアログで内容を編集し、 **[プロパティの追加]** ボタンをクリックしてプロパティを追加したら、 **[挿入]** を選択します。
 2. テーブルに変更を加えるには、 **[編集]** を選択して内容に変更を加え、 **[更新]** を選択します。
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="テーブルを作成および変更する":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="テーブルを作成および変更する":::
 
 #### <a name="import-and-export-table"></a>データのインポートとエクスポート
 
 1. インポートするには、 **[インポート]** ボタンを選択して既存のテーブルを選択します。
 2. エクスポートするには、 **[エクスポート]** ボタンを選択してエクスポート先を選択します。
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="テーブルをインポートまたはエクスポートする":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="テーブルをインポートまたはエクスポートする":::
 
 #### <a name="delete-entities"></a>エンティティの削除
 
 - エンティティを選択し、 **[削除]** ボタンを選択します。
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="テーブルを削除する":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="テーブルを削除する":::
 
 #### <a name="query-table"></a>テーブルの照会
 
 - **[クエリ]** ボタンをクリックし、クエリ条件を入力したら、 **[クエリの実行]** ボタンを選択します。 **[Close Query]\(クエリを閉じる\)** ボタンをクリックして [クエリ] ウィンドウを閉じます。
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="テーブルからデータを照会する":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="テーブルからデータを照会する":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>ストアド プロシージャ、トリガー、および UDF の管理
 
 * ストアド プロシージャを作成するには、左側のツリーで **[ストアド プロシージャ]** を右クリックし、 **[ストアド プロシージャ]** を選択し、左側のウィンドウで名前を入力し、右側のウィンドウでストアド プロシージャのスクリプトを入力し、 **[作成]** を選択します。
 * 既存のストアド プロシージャをダブルクリックし、更新を行った後、 **[更新]** をクリックして保存するか、 **[破棄]** を選択して変更を取り消すこともできます。
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="ストアド プロシージャを作成および管理する":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="ストアド プロシージャを作成および管理する":::
+
 * **トリガー**と **UDF** に対する操作は、**ストアド プロシージャ**に対する操作に似ています。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652595"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018095"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,7 +179,7 @@ REST API では、要求の本文が次の構造の JSON ドキュメントで�
 
 ## <a name="call-the-service-c"></a>サービスを呼び出す (C#)
 
-この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```csharp
 using System;
@@ -268,7 +268,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>サービスを呼び出す (Go)
 
-この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```go
 package main
@@ -360,7 +360,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>サービスを呼び出す (Java)
 
-この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```java
 import java.io.IOException;
@@ -440,7 +440,7 @@ public class App {
 
 ## <a name="call-the-service-python"></a>サービスを呼び出す (Python)
 
-この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```python
 import requests

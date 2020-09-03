@@ -16,6 +16,8 @@
       href: add-application-portal.md
     - name: アプリを構成する
       href: add-application-portal-configure.md
+    - name: アプリにユーザーを割り当てる
+      href: add-application-portal-assign-users.md
     - name: シングル サインオンを設定する
       href: add-application-portal-setup-sso.md
     - name: アプリを削除する

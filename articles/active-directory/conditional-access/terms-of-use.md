@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184348"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948914"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -50,7 +50,7 @@ Azure AD Terms of Use では、以下のことができます。
 - 利用規約に同意したユーザーと同意していないユーザーを一覧表示する。
 - プライバシー規制の順守に役立つ。
 - コンプライアンスおよび監査のために利用規約アクティビティのログを表示する。
-- [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) を使用して利用規約を作成および管理する (現在プレビューの段階)。
+- [Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) を使用して利用規約を作成および管理する (現在プレビューの段階)。
 
 ## <a name="prerequisites"></a>前提条件
 

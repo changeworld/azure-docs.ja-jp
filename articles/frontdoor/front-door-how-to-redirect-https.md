@@ -2,17 +2,17 @@
 title: Azure portal を使用して HTTP から HTTPS にリダイレクトする Front Door を作成する
 description: Azure portal を使用して、HTTP から HTTPS にトラフィックがリダイレクトされる Front Door を作成する方法について説明します。
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: 05699c827af251b890de4c6f195df5872bfbe364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: fe2159f0eeb9d01081e6a25e7a88ceff4f1e361c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743611"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399692"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトする Front Door を作成する
 
