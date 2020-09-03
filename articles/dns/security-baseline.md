@@ -6,13 +6,13 @@ ms.service: dns
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: ea4f3072df7ef6d25736ca3abdeb72abaf2971a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860402"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225668"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS 用の Azure セキュリティ ベースライン
 
@@ -488,7 +488,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
-**ガイダンス**: Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に分析的に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
+**ガイダンス**: Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
 
 さらに、タグを使用してサブスクリプションをマークし、Azure リソース (特に、機密データを処理するもの) を識別して分類するための命名システムを作成します。  インシデントが発生した Azure リソースと環境の重要度に基づいてアラートの修復に優先順位を付けることは、お客様の責任です。
 

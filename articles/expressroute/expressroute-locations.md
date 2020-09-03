@@ -2,18 +2,18 @@
 title: '接続プロバイダーと場所: Azure ExpressRoute | Microsoft Docs'
 description: この記事では、サービスが提供されている場所と Azure リージョンに接続する方法の詳細について説明します。 接続プロバイダーごとにソートされています。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2020
-ms.author: cherylmc
-ms.openlocfilehash: e47f555e33b9b6d3548f82485767184c89236731
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.author: duau
+ms.openlocfilehash: 5ec526596c20edffb42f50adbfc6ffca173e42ca
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927631"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395252"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 

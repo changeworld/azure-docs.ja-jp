@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782330"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300223"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -155,6 +155,7 @@ ms.locfileid: "88782330"
 |スワヒリ語| `sw`    |
 |クリンゴン語|   `tlh-Latn`  |
 |韓国語 |`ko`   |
+|クルド語 (中央)  |`ku-Arab`  |
 |ラトビア語|   `lv`    |
 |リトアニア語|    `lt`    |
 |マレー語| `ms`        |
@@ -283,10 +284,12 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 
 | Language    | 言語コード |
 |:----------- |:-------------:|
+|アフリカーンス語| `af`|
 | アラビア語       | `ar`          |
 | ベンガル語      | `bn`          |
 | ボスニア語 (ラテン)      | `bs`          |
 | ブルガリア語      | `bg`          |
+|カタロニア語|   `ca`    |
 | 簡体中国語      | `zh-Hans`          |
 |中国語 (繁体字)|   `zh-Hant`   |
 | クロアチア語      | `hr`          |
@@ -295,6 +298,8 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | オランダ語      | `nl`          |
 | 英語    | `en`     |
 | エストニア語      | `et`          |
+|フィジー語|    `fj`    |
+|フィリピン語|  `fil`   |
 | フィンランド語      | `fi`          |
 | フランス語      | `fr`          |
 | ドイツ語      | `de`          |
@@ -308,12 +313,14 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | アイルランド語 | `ga`  |
 | イタリア語      | `it`          |
 | 日本語      | `ja`          |
+|カンナダ語|`kn`|
 | スワヒリ語|    `sw`    |
 | 韓国語      | `ko`          |
 | ラトビア語      | `lv`          |
 | リトアニア語      | `lt`          |
 | マダガスカル語| `mg`    |
 | マレー語|    `ms`        |
+|マルタ語|   `mt`    |
 | マオリ語| `mi`  |
 | マラーティー語| `mr`  |
 | ノルウェー語      | `nb`          |
@@ -329,7 +336,9 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | スロベニア語      | `sl`          |
 | スペイン語      | `es`          |
 | スウェーデン語      | `sv`          |
+|タヒチ語|  `ty`    |
 | タイ語      | `th`          |
+|トンガ語|    `to`    |
 | トルコ語      | `tr`          |
 | ウクライナ語      | `uk`          |
 | ウルドゥ語| `ur`    |
@@ -358,7 +367,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 |グジャラート語|
 |ヒンディー語|
 |イタリア語|
-|日本語|
+|Japanese|
 |韓国語|
 |マラーティー語|
 |ノルウェー語|
@@ -398,7 +407,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 |ハンガリー語|
 |インドネシア語|
 |イタリア語|
-|日本語|
+|Japanese|
 |韓国語|
 |マレー語|
 |ノルウェー語|
