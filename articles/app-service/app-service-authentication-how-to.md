@@ -4,12 +4,12 @@ description: App Service でさまざまなシナリオに合わせて認証お�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272316"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962470"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -146,7 +146,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 任意の言語またはフレームワークで記述されたコードで、これらのヘッダーから必要な情報を取得できます。 ASP.NET 4.6 アプリの場合は、 **ClaimsPrincipal** が自動的に適切な値に設定されます。 ただし、ASP.NET Core では、App Service のユーザー要求と統合する認証ミドルウェアが提供されません。 回避策については、「[MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)」を参照してください。
 
-アプリで[トークン ストア](overview-authentication-authorization.md#token-store)が有効になっている場合は、`/.auth/me` を呼び出して認証されたユーザーの追加の詳細を取得することもできます。 Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。 詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)」と「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)」を参照してください。
+アプリで[トークン ストア](overview-authentication-authorization.md#token-store)が有効になっている場合は、`/.auth/me` を呼び出して認証されたユーザーの追加の詳細を取得することもできます。 Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。 詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity)」と「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info)」を参照してください。
 
 ## <a name="retrieve-tokens-in-app-code"></a>アプリ コードでのトークンの取得
 
@@ -489,7 +489,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 
 ##### <a name="from-the-azure-cli"></a>Azure CLI から
 
-Azure CLI を使用して、[az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
+Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +520,7 @@ CLI 出力に `runtimeVersion` フィールドが表示されます。 次の出
 
 #### <a name="update-the-current-runtime-version"></a>現在のランタイム バージョンの更新
 
-Azure CLI を使用すると、[az webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
+Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -530,7 +530,7 @@ az webapp auth update --name <my_app_name> \
 
 `<my_app_name>` をご自分のアプリの名前に置き換えます。 また、`<my_resource_group>` をアプリのリソース グループの名前に置き換えます。 また、`<version>` を 1.x ランタイムの有効なバージョン、または最新バージョンの `~1` に置き換えます。 さまざまなランタイム バージョンのリリース ノートを [こちら] (https://github.com/Azure/app-service-announcements) ) で検索して、ピン留め先となるバージョンを特定することができます。
 
-このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](https://docs.microsoft.com/cli/azure/install-azure-cli)使用して、[az ログイン](https://docs.microsoft.com/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
+このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
