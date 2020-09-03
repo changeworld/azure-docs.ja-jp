@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654278"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055687"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 
@@ -20,6 +20,10 @@ AKS では、ノード上のイメージのアップグレードがサポート�
 AKS によって提供される最新のイメージについて知りたい場合、詳細については [AKS のリリース ノート](https://github.com/Azure/AKS/releases)をご覧ください。
 
 お使いのクラスターの Kubernetes バージョンのアップグレードの詳細については、「[AKS クラスターのアップグレード][upgrade-cluster]」をご覧ください。
+
+## <a name="limitations"></a>制限事項
+
+* AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
 
 ## <a name="install-the-aks-cli-extension"></a>AKS CLI 拡張機能をインストールする
 

@@ -4,12 +4,12 @@ description: データの保存場所と Azure Arc 対応サーバー (プレビ
 ms.topic: reference
 ms.date: 08/25/2020
 ms.custom: references_regions
-ms.openlocfilehash: 028398c27dde9760192d366b9e8a91dca8e429cf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8f207f5889c1764eebcc6081960ff70c0d5bca3a
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860404"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048858"
 ---
 # <a name="azure-arc-enabled-servers-preview-data-residency"></a>Azure Arc 対応サーバー (プレビュー): データの保存場所
 
@@ -34,4 +34,4 @@ Arc 対応サーバー (プレビュー) では、データが格納されるリ
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure の回復性](/architecture/reliability/architect)の設計について詳細を確認する。
+[Azure の回復性](/azure/architecture/reliability/architect)の設計について詳細を確認する。

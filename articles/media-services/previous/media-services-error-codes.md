@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042831"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263679"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services エラー コード
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Microsoft Azure Media Services を使用する場合は、Media Services でサポートされていないアクションに対する認証トークンの有効期限切れなどの問題によって、サービスから HTTP エラー コードを受け取ることがあります。 Media Services やそれらが原因となって返されることがある **HTTP エラー コード** の一覧を次に示します。  
 
 ## <a name="400-bad-request"></a>400 Bad Request

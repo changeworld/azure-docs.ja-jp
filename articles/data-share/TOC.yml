@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: クイックスタート
   items:
-    - name: データ共有の作成 - Azure portal
+    - name: データの共有 - Azure portal
       href: share-your-data-portal.md
-    - name: データ共有の作成 - ARM テンプレート
+    - name: データの共有 - ARM テンプレート
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: チュートリアル
@@ -39,6 +39,10 @@
   items:
     - name: ソース別にデータを共有および受信する
       items:
+        - name: Azure Storage からの共有
+          href: how-to-share-from-storage.md
+        - name: Azure SQL Database または Synapse Analytics からの共有
+          href: how-to-share-from-sql.md
         - name: Azure Data Explorer からの共有
           href: /azure/data-explorer/data-share
           maintainContext: true

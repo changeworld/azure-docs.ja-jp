@@ -3,12 +3,12 @@ title: Azure Backup Server で Modern Backup Storage を使用する
 description: Azure Backup Server の新機能について説明します。 この記事では、Backup Server インストールをアップグレードする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825870"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378238"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Server へのストレージの追加
 
@@ -105,7 +105,7 @@ Modern Backup Storage を使用するように保護グループを更新する�
 
    ![メンバーの保護の停止](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. **[グループから削除]** ダイアログ ボックスで、記憶域プールの使用済みディスク領域と利用可能な空き領域を確認します。 既定では、ディスク上の復旧ポイントをそのままにし、関連付けられている保有ポリシーごとの有効期限が切れるようにします。 **[OK]** をクリックします。
+2. **[グループから削除]** ダイアログ ボックスで、記憶域プールの使用済みディスク領域と利用可能な空き領域を確認します。 既定では、ディスク上の復旧ポイントをそのままにし、関連付けられている保有ポリシーごとの有効期限が切れるようにします。 **[OK]** を選択します。
 
    空き記憶域プールに使用済みディスク領域をすぐに返す場合は、 **[ディスク上のレプリカを削除]** チェック ボックスを選択し、そのメンバーに関連付けられているバックアップ データ (および復旧ポイント) を削除します。
 

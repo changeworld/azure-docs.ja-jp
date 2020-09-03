@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611451"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958514"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
@@ -57,7 +57,7 @@ App Service でアプリを作成すると、App Service プランに入れら�
 
 このように、App Service プランは App Service アプリのスケール ユニットです。 プランが 5 つの VM インスタンスを実行するように構成されている場合、プラン内のすべてのアプリが 5 つすべてのインスタンスで実行されます。 プランが自動スケール用に構成されている場合は、プラン内のすべてのアプリが自動スケール設定に基づいて一緒にスケールアウトされます。
 
-アプリのスケールアウトについては、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」をご覧ください。
+アプリのスケールアウトについては、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md)」をご覧ください。
 
 <a name="cost"></a>
 

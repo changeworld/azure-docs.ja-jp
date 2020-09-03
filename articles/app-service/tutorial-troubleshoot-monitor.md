@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 106427a6b26386e6ff881862f836e9108a27aa96
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c34cf47a5b8c20c10b160ac6e55309b3c18448f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082329"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959019"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>チュートリアル:Azure Monitor を使用した App Service アプリのトラブルシューティング
 
@@ -18,9 +18,9 @@ ms.locfileid: "88082329"
 > Azure Monitor と App Service の統合は[プレビュー](https://aka.ms/appsvcblog-azmon)段階です。
 >
 
-このチュートリアルでは、[Azure Monitor](overview.md) を使用して [App Service](https://docs.microsoft.com/azure/azure-monitor/overview) アプリのトラブルシューティングを行う方法について説明します。 このサンプル アプリには、メモリを使い果たして HTTP 500 エラーを引き起こすことを意図したコードが含まれているため、Azure Monitor を使用して問題を診断して修正できます。 完了すると、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) と統合された App Service on Linux でサンプル アプリが動作するようになります。
+このチュートリアルでは、[Azure Monitor](overview.md) を使用して [App Service](../azure-monitor/overview.md) アプリのトラブルシューティングを行う方法について説明します。 このサンプル アプリには、メモリを使い果たして HTTP 500 エラーを引き起こすことを意図したコードが含まれているため、Azure Monitor を使用して問題を診断して修正できます。 完了すると、[Azure Monitor](../azure-monitor/overview.md) と統合された App Service on Linux でサンプル アプリが動作するようになります。
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) は、クラウドおよびオンプレミス環境からテレメトリを収集、分析し、それに対応する包括的なソリューションを提供することで、アプリケーションやサービスの可用性とパフォーマンスを最大限に高めます。
+[Azure Monitor](../azure-monitor/overview.md) は、クラウドおよびオンプレミス環境からテレメトリを収集、分析し、それに対応する包括的なソリューションを提供することで、アプリケーションやサービスの可用性とパフォーマンスを最大限に高めます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "88082329"
 このチュートリアルを完了するには、次のものが必要です。
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI](/cli/azure/install-azure-cli)
 - [Git](https://git-scm.com/)
 
 ## <a name="create-azure-resources"></a>Azure リソースを作成する
@@ -73,12 +73,12 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 
 ### <a name="create-a-diagnostic-setting"></a>診断設定の作成
 
-診断設定を使用すると、特定の Azure サービスのメトリックを Azure Monitor ログに収集し、ログ クエリを使用して、他の監視データと組み合わせて分析することができます。 このチュートリアルでは、Web サーバーと標準出力またはエラー ログを有効にします。 ログの種類と説明の完全な一覧については、「[サポートされるログの種類](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types)」を参照してください。
+診断設定を使用すると、特定の Azure サービスのメトリックを Azure Monitor ログに収集し、ログ クエリを使用して、他の監視データと組み合わせて分析することができます。 このチュートリアルでは、Web サーバーと標準出力またはエラー ログを有効にします。 ログの種類と説明の完全な一覧については、「[サポートされるログの種類](./troubleshoot-diagnostic-logs.md#supported-log-types)」を参照してください。
 
 次のコマンドを実行して、AppServiceConsoleLogs (標準出力またはエラー) と AppServiceHTTPLogs (Web サーバー ログ) の診断設定を作成します。 _\<app-name>_ と _\<workspace-name>_ を独自の値で置き換えます。 
 
 > [!NOTE]
-> 最初の 2 つのコマンド `resourceID` と `workspaceID` は、`az monitor diagnostic-settings create` コマンドで使用する変数です。 このコマンドの詳細については、「[Azure CLI を使用して診断設定を作成する](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli)」を参照してください。
+> 最初の 2 つのコマンド `resourceID` と `workspaceID` は、`az monitor diagnostic-settings create` コマンドで使用する変数です。 このコマンドの詳細については、「[Azure CLI を使用して診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli)」を参照してください。
 >
 
 ```bash
@@ -129,7 +129,7 @@ Azure Portal で、Log Analytics ワークスペースを選びます。
 
 ### <a name="log-queries"></a>ログ クエリ
 
-ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 ログ クエリを使用して、AppServiceHTTPLogs と AppServiceConsoleLogs の両方でログを特定します。 ログ クエリの詳細については、[ログ クエリの概要](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)に関するページを参照してください。
+ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 ログ クエリを使用して、AppServiceHTTPLogs と AppServiceConsoleLogs の両方でログを特定します。 ログ クエリの詳細については、[ログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>ログ クエリを使用して AppServiceHTTPLogs を確認する
 

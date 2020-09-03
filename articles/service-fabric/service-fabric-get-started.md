@@ -4,13 +4,13 @@ description: ランタイム、SDK、およびツールをインストールし�
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.custom: sfrev
-ms.openlocfilehash: 005a04833b95e893758fda768113801c5a4f6f66
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: sfrev, devx-track-azurepowershell
+ms.openlocfilehash: 57e5fe236e117932c3cbc2fcf2479f89aaa261d9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207470"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069071"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
