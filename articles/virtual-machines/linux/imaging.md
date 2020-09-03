@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815302"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319544"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure での Linux イメージの取り込みと作成
 
@@ -46,7 +46,7 @@ Azure では、一般化されたイメージと専用イメージの 2 種類�
 
 ### <a name="generalized-images"></a>一般化されたイメージ
 
-一般化されたイメージとは、初回起動時にセットアップを完了する必要があるイメージです。 たとえば、初回起動時に、ホスト名、管理者ユーザー、その他の VM 固有の構成を設定します。 これは、イメージを複数回再利用する場合や、作成時にパラメーターを渡す必要がある場合に便利です。 一般化されたイメージに Azure エージェントが含まれている場合、エージェントはパラメーターを処理し、初期構成が完了したことをプラットフォームに送り返します。 このプロセスは**プロビジョニング**と呼ばれています。 
+一般化されたイメージとは、初回起動時にセットアップを完了する必要があるイメージです。 たとえば、初回起動時に、ホスト名、管理者ユーザー、その他の VM 固有の構成を設定します。 これは、イメージを複数回再利用する場合や、作成時にパラメーターを渡す必要がある場合に便利です。 一般化されたイメージに Azure エージェントが含まれている場合、エージェントはパラメーターを処理し、初期構成が完了したことをプラットフォームに送り返します。 このプロセスは[プロビジョニング](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)と呼ばれています。 
 
 プロビジョニングを行うには、プロビジョナーがイメージに含まれている必要があります。 次の 2 つのプロビジョナーがあります。
 - [Azure Linux エージェント](../extensions/agent-linux.md)
