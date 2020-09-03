@@ -5,12 +5,12 @@ keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, 
 ms.topic: overview
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 22fe99e1552a9612adfbc455d60852f1591a1a54
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 98d801f6a34feb40d56215f8b6257a68ec628e10
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752150"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320054"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -64,7 +64,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 |`When does your store open?`|StoreHoursAndLocation|open|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
-モデルの構築には、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API シリーズ、[**LUIS ポータル**](https://www.luis.ai)、またはその両方を使用します。 [ポータル](get-started-portal-build-app.md)と [SDK クライアント ライブラリ](quickstart-sdk.md)を使用して構築する方法について確認してください。
+モデルの構築には、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API シリーズ、[**LUIS ポータル**](https://www.luis.ai)、またはその両方を使用します。 [ポータル](get-started-portal-build-app.md)と [SDK クライアント ライブラリ](azure-sdk-quickstart.md)を使用して構築する方法について確認してください。
 
 ## <a name="step-2-get-the-query-prediction"></a>手順 2:クエリ予測を取得する
 
@@ -126,7 +126,7 @@ LUIS は、既存の LUIS リソースの一部として Text Analytics の機�
 
 ## <a name="learn-with-the-quickstarts"></a>クイックスタートで学習する
 
-[ポータル](get-started-portal-build-app.md)と [SDK クライアント ライブラリ](quickstart-sdk.md)を使用したハンズオン クイックスタートで LUIS について学習します。
+[ポータル](get-started-portal-build-app.md)と [SDK クライアント ライブラリ](azure-sdk-quickstart.md)を使用したハンズオン クイックスタートで LUIS について学習します。
 
 
 ## <a name="next-steps"></a>次のステップ

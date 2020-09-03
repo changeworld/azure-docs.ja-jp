@@ -3,12 +3,12 @@ title: はじめに
 description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution の機能とメリットについて学習します。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752133"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005056"
 ---
 # <a name="what-is-azure-vmware-solution-preview"></a>Azure VMware Solution プレビューとは
 
@@ -46,7 +46,7 @@ Azure VMware Solution プライベート クラウドと VMware ソフトウェ�
 
 ## <a name="monitoring-your-private-cloud"></a>プライベート クラウドの監視
 
-[Azure Monitor のログ](../azure-monitor/overview.md)を使用して、対象の Azure VMware Solution プライベート クラウドで実行されている仮想マシンのログを収集できます。 オンプレミス VM で実行するのと同じクエリを使用して、Azure VMware Solution プライベート クラウドで実行されている Linux および Windows 仮想マシンに [MMA エージェントをダウンロードしてインストール](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)できます。 仮想マシンで通常実行するのと同じクエリをまったく同じように実行できます。 クエリの作成の詳細については、[クエリの作成方法](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)に関する記事を参照してください。
+[Azure Monitor のログ](../azure-monitor/overview.md)を使用して、対象の Azure VMware Solution プライベート クラウドで実行されている仮想マシンのログを収集できます。 オンプレミス VM で実行するのと同じクエリを使用して、Azure VMware Solution プライベート クラウドで実行されている Linux および Windows 仮想マシンに [MMA エージェントをダウンロードしてインストール](../azure-monitor/platform/log-analytics-agent.md#installation-options)できます。 仮想マシンで通常実行するのと同じクエリをまったく同じように実行できます。 クエリの作成の詳細については、[クエリの作成方法](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
