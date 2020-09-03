@@ -10,12 +10,13 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: 82131ab4e1f990af25c669131e20c789a0f74dcf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 975952a0a084286bdbc19ce02c1192d076cf3600
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518659"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001401"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 

@@ -11,17 +11,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 06/12/2019
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765014"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291417"
 ---
 # <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services は、さまざまなプロトコルでビデオやオーディオを配信し、テキストも配信します。 MPEG-DASH や HLS/CMAF を使用してライブ ストリームを発行し、その後、ビデオやオーディオと一緒に発行するときには、Microsoft のサービスにより、IMSC 1.1 互換 TTML で文字起こしされ、テキストが配信されます。 この配信は、MPEG-4 Part 30 (ISO/IEC 14496-30) フラグメントにパッケージ化されます。 HLS/TS による配信を使用する場合、テキストはチャンク VTT として配信されます。
 
