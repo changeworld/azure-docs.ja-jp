@@ -241,11 +241,8 @@
   items:
     - name: 意図認識のドキュメント
       href: index-intent-recognition.yml
-    - name: クイック スタート
-      items:
-        - name: 音声、意図、エンティティを認識する
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-          href: quickstarts/intent-recognition.md
+    - name: 意図認識のクイックスタート
+      href: quickstarts/intent-recognition.md
     - name: 操作方法ガイド
       items:
         - name: LUIS、C# を使って音声から意図を認識する
@@ -466,18 +463,14 @@
           href: custom-keyword-basics.md
 - name: Speaker Recognition
   items:
-    - name: 概要
-      items:
-        - name: Speaker Recognition とは
-          href: speaker-recognition-overview.md
-        - name: Speaker Recognition の基礎
-          href: speaker-recognition-basics.md
+    - name: Speaker Recognition の概要
+      href: speaker-recognition-overview.md
+    - name: Speaker Recognition のクイックスタート
+      href: get-started-speaker-recognition.md
     - name: リファレンス
       items:
-        - name: REST API
-          items:
-            - name: Speaker Recognition REST API
-              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+        - name: Speaker Recognition REST API
+          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: ドキュメントのホスト

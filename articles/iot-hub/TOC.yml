@@ -171,8 +171,10 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: セキュリティ
+    - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: 推奨事項
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 徹底的なセキュリティ

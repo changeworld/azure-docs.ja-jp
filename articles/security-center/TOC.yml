@@ -130,6 +130,7 @@
         - name: アラートへの応答を自動化する
           href: workflow-automation.md
         - name: アラートのエクスポート
+          displayName: continuous
           href: continuous-export.md
     - name: セキュリティのレコメンデーションを使用してセキュリティを強化する
       items:
@@ -150,6 +151,7 @@
         - name: レコメンデーションへの応答を自動化する
           href: workflow-automation.md
         - name: レコメンデーションのエクスポート
+          displayName: continuous
           href: continuous-export.md
     - name: Asset Inventory によるリソースの管理
       href: asset-inventory.md

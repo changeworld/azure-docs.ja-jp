@@ -23,6 +23,8 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: セキュリティの概要
+          href: security-overview.md
 - name: 操作方法ガイド
   items:
     - name: Azure Arc への接続

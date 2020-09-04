@@ -219,9 +219,10 @@
     - name: コンピューティング リソースの作成
       items:
         - name: Studio の使用
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-studio.md
         - name: Python SDK の使用
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-sdk.md
     - name: 環境の設定方法
       items:
@@ -477,9 +478,6 @@
         - name: 並列実行ステップのデバッグとトラブルシューティング
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: 機械学習パイプラインの反復処理と進化
-          displayName: modularizing testing
-          href: concept-pipeline-practices-tips.md
     - name: CI/CD 用の Azure Pipelines
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context

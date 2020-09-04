@@ -10,12 +10,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 04/02/2020
-  ms.openlocfilehash: a79d3de89399e9ed89598c5f08efb756291246ca
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.openlocfilehash: 9a61e3796fdd228ffee52d8bf7611946c873460a
+  ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87287864"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89378102"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -38,7 +38,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: 新しい SaaS オファーを作成する
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: ./create-new-saas-offer.md
     - text: マーケティングのベスト プラクティス
       url: ./gtm-marketing-best-practices.md
     - text: クラウド ソリューション プロバイダー
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: SaaS オファー
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: create-new-saas-offer.md
     - text: 仮想マシンのオファー
       url: ./marketplace-virtual-machines.md
     - text: Azure アプリケーション プラン

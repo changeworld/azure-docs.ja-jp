@@ -86,7 +86,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -148,6 +148,10 @@
       items:
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+        - name: PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.appconfiguration/'
+        - name: Terraform
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

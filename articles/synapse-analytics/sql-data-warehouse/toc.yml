@@ -72,7 +72,7 @@
           href: pause-and-resume-compute-powershell.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: sql-data-warehouse-overview-manage-security.md
@@ -222,8 +222,6 @@
               href: sql-data-warehouse-develop-user-defined-schemas.md
             - name: 変数の代入
               href: sql-data-warehouse-develop-variable-assignment.md
-            - name: ビュー
-              href: sql-data-warehouse-develop-views.md
     - name: クエリ実行
       items:
         - name: 動的 SQL

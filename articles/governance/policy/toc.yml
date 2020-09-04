@@ -93,6 +93,9 @@
     - name: 新しいポリシーの影響の評価
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 推奨ポリシー
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: 規制コンプライアンス
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
