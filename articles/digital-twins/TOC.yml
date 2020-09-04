@@ -82,6 +82,8 @@
       items:
         - name: IoT Hub からテレメトリを取り込む
           href: how-to-ingest-iot-hub-data.md
+        - name: DPS を使用したデバイスの自動管理
+          href: how-to-provision-using-device-provisioning-service.md
         - name: Logic Apps との統合
           href: how-to-integrate-logic-apps.md
     - name: 出力を接続する
@@ -183,7 +185,9 @@
         - name: DTDL 検証ツール (サンプル)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
         - name: DPS と IoT Hub の統合サンプル
-          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
+        - name: Azure Digital Twins のカスタム Swagger
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
     - name: Azure ツール
       items:
         - name: Azure Cloud Shell

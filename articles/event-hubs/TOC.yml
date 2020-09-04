@@ -125,8 +125,12 @@
       maintainContext: true
 - name: 操作方法ガイド
   items:
-    - name: リージョン間で移動する
-      href: move-across-regions.md
+    - name: 詳細ビュー
+      items:
+        - name: 名前空間を別のリージョンに移動する
+          href: move-across-regions.md
+        - name: 専用クラスターを別のリージョンに移動する
+          href: move-cluster-across-regions.md
     - name: パーティションを動的に追加する
       href: dynamically-add-partitions.md
     - name: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する

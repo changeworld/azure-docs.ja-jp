@@ -39,6 +39,10 @@
       href: application-management-fundamentals.md
     - name: 一般的なアプリ管理シナリオ
       href: common-scenarios.md
+    - name: テナントでのアプリの表示
+      href: application-types.md
+    - name: アプリへのユーザーの割り当て
+      href: ways-users-get-assigned-to-applications.md
     - name: クラウド アプリの統合の計画
       items:
         - name: アプリ統合の概要
@@ -85,7 +89,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -114,7 +118,7 @@
           href: grant-admin-consent.md
         - name: 管理者の同意ワークフローの構成 (プレビュー)
           href: configure-admin-consent-workflow.md
-        - name: ユーザーまたはグループをアプリに割り当てる
+        - name: アプリのユーザー割り当ての管理
           href: assign-user-or-group-access-portal.md
         - name: アプリに付与されるアクセス許可の確認
           href: manage-application-permissions.md
@@ -124,8 +128,6 @@
           href: access-panel-manage-self-service-access.md
         - name: アプリへのユーザーのアクセスを削除する方法
           href: methods-for-removing-user-access.md
-        - name: ユーザーまたはグループのアクセスの削除
-          href: remove-user-or-group-access-portal.md
         - name: ユーザーに対してアプリを非表示にする
           href: hide-application-from-user-portal.md
         - name: ユーザー サインインの無効化
@@ -203,11 +205,7 @@
     - name: トラブルシューティング
       items:
         - name: アプリの追加のトラブルシューティング
-          items:
-            - name: 一般的な問題 - ギャラリー アプリ
-              href: adding-gallery-app-common-problems.md
-            - name: 一般的な問題 - ギャラリー以外のアプリ
-              href: adding-non-gallery-app-common-problems.md
+          href: troubleshoot-adding-apps.md
         - name: ユーザーのサインインをトラブルシューティングする
           items:
             - name: 予期しない同意プロンプト
@@ -234,12 +232,6 @@
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: フェデレーションの構成の一般的な問題 - ギャラリー以外のアプリ
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: アプリの一覧および割り当てのトラブルシューティング
-          items:
-            - name: テナントのアプリケーション一覧の管理
-              href: application-types.md
-            - name: 予期しないユーザーが割り当てられる
-              href: ways-users-get-assigned-to-applications.md
         - name: オンプレミス アプリのトラブルシューティング
           items:
             - name: アプリケーション プロキシのトラブルシューティング
