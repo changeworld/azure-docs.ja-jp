@@ -89,7 +89,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: Security
+        - name: セキュリティ
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -206,6 +206,10 @@
       items:
         - name: アプリの追加のトラブルシューティング
           href: troubleshoot-adding-apps.md
+        - name: パスワードベースのシングル サインオンのトラブルシューティング
+          href: troubleshoot-password-based-sso.md
+        - name: Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法
+          href: troubleshoot-saml-based-sso.md
         - name: ユーザーのサインインをトラブルシューティングする
           items:
             - name: 予期しない同意プロンプト
@@ -224,14 +228,6 @@
               href: application-sign-in-problem-federated-sso-gallery.md
             - name: カスタム開発されたアプリに関する問題
               href: application-sign-in-problem-custom-dev.md
-        - name: シングル サインオンのトラブルシューティング
-          items:
-            - name: パスワードベースのシングル サインオンのトラブルシューティング
-              href: troubleshoot-password-based-sso.md
-            - name: フェデレーションの構成の一般的な問題 - ギャラリー アプリ
-              href: configure-federated-single-sign-on-gallery-applications-problems.md
-            - name: フェデレーションの構成の一般的な問題 - ギャラリー以外のアプリ
-              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
         - name: オンプレミス アプリのトラブルシューティング
           items:
             - name: アプリケーション プロキシのトラブルシューティング
