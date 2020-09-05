@@ -109,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: Batch での証明書の使用
           href: batch-certificates.md
-    - name: アプリケーション パッケージの使用
-      href: batch-application-packages.md
     - name: ファイルとアプリケーションをプール ノードにコピーする
       items:
         - name: プール ノードへのアプリケーションとデータのコピー

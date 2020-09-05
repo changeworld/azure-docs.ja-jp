@@ -229,7 +229,7 @@
     - name: 準備のロードマップ
       href: security-center-readiness-roadmap.md
     - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Stack Overflow の Azure Security Center
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: ビデオ
