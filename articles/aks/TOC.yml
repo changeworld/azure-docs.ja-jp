@@ -187,6 +187,14 @@
           href: azure-netapp-files.md
         - name: Azure Ultra Disks の使用 (プレビュー)
           href: use-ultra-disks.md
+        - name: CSI ストレージ ドライバー
+          items:
+            - name: CSI ストレージ ドライバーを有効にする (プレビュー)
+              href: csi-storage-drivers.md
+            - name: Azure Disk CSI ドライバー (プレビュー)
+              href: azure-disk-csi.md
+            - name: Azure Files CSI ドライバー (プレビュー)
+              href: azure-files-csi.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用
@@ -252,9 +260,9 @@
           href: update-credentials.md
         - name: Azure Active Directory の統合の有効化
           items:
-            - name: AKS マネージド AAD
+            - name: AKS マネージド Azure AD
               href: managed-aad.md
-            - name: AAD 統合 (レガシ)
+            - name: Azure AD 統合 (レガシ)
               href: azure-ad-integration-cli.md
         - name: Kubernetes 承認での Azure RBAC の使用 (プレビュー)
           href: manage-azure-rbac.md

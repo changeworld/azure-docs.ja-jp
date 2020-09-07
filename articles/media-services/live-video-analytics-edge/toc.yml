@@ -93,10 +93,10 @@
       href: troubleshoot-how-to.md
 - name: リファレンス
   items:
-    - name: HTTP データ コントラクト
-      href: http-data-contract.md
-    - name: gRPC データ コントラクト
-      href: grpc-data-contract.md
+    - name: HTTP 拡張プロトコル
+      href: http-extension-protocol.md
+    - name: gRPC 拡張プロトコル
+      href: grpc-extension-protocol.md
     - name: 推論メタデータ スキーマ
       href: inference-metadata-schema.md
     - name: ダイレクト メソッド

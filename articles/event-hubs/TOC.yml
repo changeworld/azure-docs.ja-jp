@@ -64,7 +64,7 @@
   items:
     - name: Event Hubs データ ストリームでデータの異常を視覚化する
       href: event-hubs-tutorial-visualize-anomalies.md
-    - name: キャプチャされたデータを SQL Data Warehouse に格納する
+    - name: キャプチャされたデータを Azure Synapse Analytics に格納する
       href: store-captured-data-data-warehouse.md
     - name: Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する
       href: event-hubs-kafka-stream-analytics.md

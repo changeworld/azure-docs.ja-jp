@@ -59,6 +59,8 @@
               href: ./marketplace-criteria-content-validation.md
             - name: クラウド ソリューション プロバイダー
               href: ./cloud-solution-providers.md
+            - name: コネクト プログラムのオンボード ガイド
+              href: ./cloud-partner-portal/business-applications-isv-program.md
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
