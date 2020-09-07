@@ -32,7 +32,7 @@ ms.locfileid: "88271993"
 > | **全般** |  |  |
 > | [共同作成者](#contributor) | すべてのリソースを管理するためのフル アクセスを付与しますが、Azure RBAC でのロールの割り当ては許可されません。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [所有者](#owner) | Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスを付与します。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [閲覧者](#reader) | すべてのリソースを表示しますが、変更を加えることはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [閲覧者](#reader) | すべてのリソースを表示できますが、変更を加えることはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [ユーザー アクセス管理者](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Compute** |  |  |
 > | [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
