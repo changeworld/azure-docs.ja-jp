@@ -42,7 +42,7 @@
               href: ./iot-edge-module.md
             - name: コンサルティング サービス
               href: ./consulting-services.md
-            - name: Office 365、Dynamics 365、Power BI
+            - name: Microsoft 365、Dynamics 365、Power BI
               href: ./appsource-offer-publishing-guide.md
             - name: Azure AD によるオファー認証を有効にする
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -60,7 +60,7 @@
             - name: クラウド ソリューション プロバイダー
               href: ./cloud-solution-providers.md
             - name: コネクト プログラムのオンボード ガイド
-              href: ./cloud-partner-portal/business-applications-isv-program.md
+              href: ./business-applications-isv-program.md
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:

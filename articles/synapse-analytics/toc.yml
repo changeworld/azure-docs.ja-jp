@@ -124,7 +124,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Spark プール履歴サーバー
               href: ./spark/apache-spark-history-server.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -920,7 +920,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 質問と回答
-      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
+      href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

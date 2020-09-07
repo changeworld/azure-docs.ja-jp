@@ -262,6 +262,8 @@
           href: how-to-connect-health-diagnose-sync-errors.md
         - name: Azure AD Connect Health のアラート カタログ
           href: how-to-connect-health-alert-catalog.md
+        - name: Azure AD Connect Health のデータ取得
+          href: how-to-connect-health-data-retrieval.md
     - name: Azure AD Connect 同期を管理する
       items:
         - name: ステージング サーバーとディザスター リカバリー

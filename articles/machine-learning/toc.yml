@@ -312,6 +312,8 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: カスタム Docker イメージを使用したトレーニング
+          href: how-to-train-with-custom-image.md
         - name: トレーニングの追跡と監視
           items:
             - name: 実行の開始、監視、または取り消し
