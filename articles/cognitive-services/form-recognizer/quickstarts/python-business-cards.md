@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 5e27aaebc015f47e0fcdb5da81770d49b86ad000
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823906"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934329"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>クイック スタート:Python で Form Recognizer REST API を使用して名刺のデータを抽出する
 
@@ -38,33 +38,35 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="analyze-a-business-card"></a>名刺を分析する
 
-名刺の分析を開始するには、下の Python スクリプトを使用して **[Analyze Business Card](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** API を呼び出します。 スクリプトを実行する前に、次の変更を行います。
+名刺の分析を開始するには、下の Python スクリプトを使用して **[Analyze Business Card](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)** API を呼び出します。 スクリプトを実行する前に、次の変更を行います。
 
-1. `<Endpoint>` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
-1. `<path to your business card>` を、ローカル フォーム ドキュメントのパスに置き換えます。
+1. `<endpoint>` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `<path to your business card>` を自分の名刺画像または PDF へのローカル パスに置き換えます。
 1. `<subscription key>` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
+1. `<file type>` を "image/jpeg"、"image/png"、"application/pdf"、または "image/tiff" に置き換えます。
 
     ```python
-    ########### Python Form Recognizer Async Business cards #############
+    ########### Python Form Recognizer Async Business Cards #############
 
     import json
     import time
     from requests import get, post
     
     # Endpoint URL
-    endpoint = r"<Endpoint>"
+    endpoint = r"<endpoint>"
     apim_key = "<subscription key>"
     post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
+    content_type = "<file type>"
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': content_type,
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     
     params = {
-        "includeTextDetails": True
+        "includeTextDetails": True  # True to output all recognized text
     }
     
     with open(source, "rb") as f:
@@ -86,15 +88,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python form-recognizer-businesscards.py` 」のように入力します。
 
-**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。これは、スクリプトによってコンソールに出力されます。 このヘッダーに含まれる操作 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。 次の例の値では、`operations/` の後ろの文字列が操作 ID です。
+**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。これは、スクリプトによってコンソールに出力されます。 このヘッダーには、長時間実行されている操作の状態に対するクエリを実行して結果を取得するために使用できる、結果 ID が含まれています。 次の例の値では、`operations/` の後ろの文字列が結果 ID です。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>名刺の結果を取得する
 
-**Analyze Business Card** API を呼び出した後に **[Get Analyze Business Card Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。 Python スクリプトの末尾に次のコードを追加します。 操作 ID の値が、新しい API 呼び出しで使用されます。 このスクリプトでは、結果が得られるまで一定の間隔で API が呼び出されます。 間隔は 1 秒以上あけることをお勧めします。
+**Analyze Business Card** API を呼び出した後に **[Get Analyze Business Card Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。 Python スクリプトの末尾に次のコードを追加します。 結果 ID の値が、新しい API 呼び出しで使用されます。 このスクリプトでは、結果が得られるまで一定の間隔で API が呼び出されます。 間隔は 1 秒以上あけることをお勧めします。
 
 ```python
 n_tries = 10
@@ -129,7 +131,7 @@ while n_try < n_tries:
 ### <a name="examine-the-response"></a>結果の確認
 ![Contoso 社の名刺](../media/business-card-english.jpg)
 
-このサンプルは、Form Recognizer から返された JSON 出力を示しています。 この例では、読みやすくするためにサンプルの一部が省略されています。
+このサンプルは、Form Recognizer から返された JSON 出力を示しています。 読みやすくするために、一部が省略されています。
 
 ```json
 {
@@ -243,7 +245,7 @@ while n_try < n_tries:
 }
 ```
 
-このスクリプトでは、**Analyze Business Card** 操作が完了するまで、コンソールに応答が出力されます。 `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 会社名、名、姓、電話番号など、大切なキーと値のペアが存在する場所です。
+このスクリプトでは、**Analyze Business Card** 操作が完了するまで、コンソールに応答が出力されます。 `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 これは、会社名、名、姓、電話番号など、有益な連絡先情報が表示される場所です。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -251,4 +253,4 @@ while n_try < n_tries:
 このクイックスタートでは、Python で Form Recognizer REST API を使用して、名刺の内容を抽出しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを参照します。
 
 > [!div class="nextstepaction"]
-> [REST API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

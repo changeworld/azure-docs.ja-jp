@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604705"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304084"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -249,9 +249,12 @@ ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エ
 
 現在の動作では、VNet 対 VNet 接続の場合、ハブ間よりも ExpressRoute 回線パスが優先されます。 しかし、これは仮想 WAN セットアップではお勧めできません。 Virtual WAN チームは、ExpressRoute パスよりハブ間を優先できるようにするための修正に取り組んでいます。 複数の ExpressRoute 回線 (異なるプロバイダー) を 1 つのハブに接続し、リージョン間のトラフィック フローに対して Virtual WAN によって提供されるハブ間接続を使用することをお勧めします。
 
+### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>ハブは、Virtual WAN 内の別のリソース グループに作成できますか。
+はい。 このオプションは、現在、PowerShell を介してのみ使用可能です。 Virtual WAN ポータルでは、Virtual WAN リソース自体と同じリソース グループ内のハブが必須となります。
+
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
 
-IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。
+IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv4 および IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。 
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>さまざまな Virtual WAN 機能を自動化するスクリプトで使用される、推奨される API バージョンは何ですか。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893981"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055466"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>ADT エクスプローラーを使用して、サンプル Azure Digital Twins シナリオを精査する
 
@@ -26,6 +26,10 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 1. 事前構築済みのモデルとグラフ データをアップロードしてサンプル シナリオを構築する
 1. 作成されたシナリオ グラフを精査する
 1. グラフに変更を加える
+
+ここで使用するサンプル グラフは、2 つのフロアと 2 つの部屋から成る建物を表します。 グラフの外観は次のとおりです。
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面"Floor1" という円が "contains" という矢印によって "Room1" という円に接続されている。"Floor0" という円が "contains" という矢印によって "Room0" という円に接続されている。"Floor1" と "Floor0" は接続されていない。":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -98,7 +102,7 @@ ADT エクスプローラーで使用される Web 構成の設定は、これ�
 「[前提条件](#prerequisites)」セクションで前もって収集した重要な情報を入力します。
 * アプリケーション (クライアント) ID
 * ディレクトリ (テナント) ID
-* ADT の URL (*https://<instance host name>* 形式)
+* ADT の URL (*https://<インスタンスのホスト名>* 形式)
 
 >[!NOTE]
 > 同じアイコンを選択して [サインイン] ボックスを呼び出すことで、この情報はいつでも再表示して編集することができます。 指定した値は維持されます。
@@ -137,14 +141,14 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 3. Azure アカウントへのサインインを求めるポップアップ ダイアログに従います。
 
 >[!NOTE]
->次のようなエラー メッセージが表示されることがあります。:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Error: Error fetching models: ClientAuthError: Error opening popup window. This can happen if you are using IE or if popups are blocked in the browser.  (エラー: モデルをフェッチしているときにエラーが発生しました: ClientAuthError: ポップアップ ウィンドウを開いているときにエラーが発生しました。これは、IE を使用しているか、ポップアップがブラウザーでブロックされている場合に発生します。) という、一番下に [閉じる] ボタンを備えたポップアップが表示される" border="false"::: 
+>次のようなエラー メッセージが表示されることがあります。:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text=""Error: Error fetching models: ClientAuthError: Error opening popup window. This can happen if you are using IE or if popups are blocked in the browser. " (エラー: モデルをフェッチしているときにエラーが発生しました: ClientAuthError: ポップアップ ウィンドウを開いているときにエラーが発生しました。これは、IE を使用しているか、ポップアップがブラウザーでブロックされている場合に発生します。) という、一番下に [閉じる] ボタンを備えたポップアップが表示される" border="false"::: 
 > ポップアップ ブロッカーを無効にするか、別のブラウザーを使用してみてください。
 
 ADT エクスプローラーによって、これらのモデル ファイルが Azure Digital Twins インスタンスにアップロードされます。 これらは、フレンドリ名と完全なモデル ID と共に *[モデル ビュー]* ボックスに表示されます。 *[モデルの表示]* という情報バブルをクリックすると、それらの背後にある DTDL コードが表示されます。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Floor (dtmi:example:Floor;1) と Room (dtmi:example:Room;1) という 2 つのモデルの定義が一覧表示されている [モデル ビュー] ボックス。各モデルの [モデルの表示] アイコン (円の中にアルファベットの i) が強調表示されている。" lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Floor (dtmi:example:Floor;1) と Room (dtmi:example:Room;1) という 2 つのモデルの定義が一覧表示されている [モデル ビュー] ボックス。各モデルの [モデルの表示] アイコン (円の中にアルファベットの "i") が強調表示されている。" lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -170,7 +174,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-ファイル セレクター ボックスで再び *client/examples* フォルダーに移動し、_**buildingScenario.xlsx**_ スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 [OK] をタップします。
+ファイル セレクター ボックスで、*Azure_Digital_Twins_samples/AdtSampleApp/SampleClientApp* フォルダーに移動し、_**buildingScenario.xlsx**_ スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 [OK] をタップします。
 
 数秒後、ADT エクスプローラーで *[インポート]* ビューが開き、読み込みの対象となるグラフのプレビューが表示されます。
 
@@ -188,7 +192,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="グラフのインポートに成功したことを示すダイアログ ボックス。Import successful.49 twins imported.50 relationships imported. (インポートに成功しました。49 個のツインがインポートされました。50 個のリレーションシップがインポートされました。) と表示されている。" lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="グラフのインポートに成功したことを示すダイアログ ボックス。"Import successful.49 twins imported.50 relationships imported." (インポートに成功しました。49 個のツインがインポートされました。50 個のリレーションシップがインポートされました。) と表示されている。" lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -206,7 +210,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 次は、アップロードしたサンプル シナリオのグラフを確認しましょう。
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="ツイン グラフが存在する [グラフ ビュー] ボックスのビュー。floor1 という円が contains という矢印によって room1 という円に接続されている。floor0 という円が contains という矢印によって room0 という円に接続されている。":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="ツイン グラフが存在する [グラフ ビュー] ボックスのビュー。"floor1" という円が "contains" という矢印によって "room1" という円に接続されている。"floor0" という円が "contains" という矢印によって "room0" という円に接続されている。":::
 
 円 (グラフの "ノード") はデジタル ツインを表し、線はリレーションシップを表しています。 *Floor0* ツインには *Room0* が、そして *Floor1* ツインには *Room1* が含まれていることがわかります。
 
@@ -220,7 +224,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room0 のプロパティが表示されている。たとえば、$dtId フィールドは Room0、Temperature フィールドは 70、Humidity フィールドは 30 となっている。" lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room0 のプロパティが表示されている。たとえば、$dtId フィールドは "Room0"、Temperature フィールドは 70、Humidity フィールドは 30 となっている。" lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -232,7 +236,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room1 のプロパティが表示されている。たとえば、$dtId フィールドは Room1、Temperature フィールドは 80、Humidity フィールドは 60 となっている。" lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room1 のプロパティが表示されている。たとえば、$dtId フィールドは "Room1"、Temperature フィールドは 80、Humidity フィールドは 60 となっている。" lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -271,7 +275,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Room0 のプロパティを表示する [Property Explorer]\(プロパティ エクスプローラー\) ボックス。温度の値が編集可能な状態で 76 と表示されている。また、[保存] アイコンが強調表示されている。" lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Room0 のプロパティを表示する [Property Explorer]\(プロパティ エクスプローラー\) ボックス。温度の値が編集可能な状態で "76" と表示されている。また、[保存] アイコンが強調表示されている。" lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::

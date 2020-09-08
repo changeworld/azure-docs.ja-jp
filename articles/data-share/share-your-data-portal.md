@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 7dd81afb3189055c194b8a94b4bcbdf48f85d6f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658395"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269643"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Data Share を使用してデータを共有する
 
@@ -47,7 +47,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. デプロイが完了したら、 **[リソースに移動]** を選択します。
 
-## <a name="create-a-data-share"></a>データ共有を作成する
+## <a name="create-a-share"></a>共有を作成する
 
 1. Data Share の [概要] ページに移動します。
 
@@ -57,15 +57,15 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. **［作成］** を選択します
 
-1. ご自分のデータ共有の詳細を入力します。 名前、共有の種類、共有の内容の説明、利用規約 (省略可能) を指定します。 
+1. 共有の詳細を入力します。 名前、共有の種類、共有の内容の説明、利用規約 (省略可能) を指定します。 
 
    ![EnterShareDetails](./media/enter-share-details.png "共有の詳細を入力する") 
 
 1. **[続行]** をクリックします。
 
-1. データ共有にデータセットを追加するには、**[Add Datasets]\(データセットの追加\)** を選択します。 
+1. 共有にデータセットを追加するには、 **[データセットの追加]** を選択します。 
 
-   ![データセット](./media/datasets.png "データセット")
+   ![共有にデータセットを追加する](./media/datasets.png "データセット")
 
 1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure SQL Data Warehouse から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
 

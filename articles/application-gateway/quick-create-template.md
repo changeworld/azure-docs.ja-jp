@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:Resource Manager テンプレートを使用した Web トラフィックのルーティング
 titleSuffix: Azure Application Gateway
-description: Resource Manager テンプレートを使用して、Web トラフィックをバックエンド プール内の仮想マシンにルーティングする Azure Application Gateway を作成する方法を説明します。
+description: このクイックスタートでは、Resource Manager テンプレートを使用して、Web トラフィックをバックエンド プール内の仮想マシンに転送する Azure Application Gateway を作成する方法を説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: f492521469281615d4182294feaefffff688bd21
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961688"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>クイック スタート:Azure Application Gateway を使用して Web トラフィックを転送する - ARM テンプレート
 

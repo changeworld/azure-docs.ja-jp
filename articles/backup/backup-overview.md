@@ -4,12 +4,12 @@ description: Azure Backup サービスの概要を紹介し、このサービス
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: da4f9b4814e93a964105a7ed3ea4addaecd43864
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9954c8fa6affca7d2c2b73d7176280587d749476
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611230"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017891"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -34,7 +34,7 @@ Azure Backup には、以下のような主な利点があります。
 - **オンプレミス バックアップのオフロード**: Azure Backup では、お客様のオンプレミス リソースをクラウドにバックアップするためのシンプルなソリューションが提供されます。 複雑なオンプレミス バックアップ ソリューションをデプロイせずに、短期および長期のバックアップを行えます。
 - **Azure IaaS VM のバックアップ**: Azure Backup では、元のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 バックアップは、復旧ポイントの管理機能をビルトインで備えた Recovery Services コンテナーに格納されます。 構成とスケーラビリティは単純で、バックアップは最適化され、必要に応じて簡単に復元することができます。
 - **容易なスケーリング** - Azure Backup では、Azure クラウドの基盤となる機能と無制限のスケールを使用して、高可用性を実現します。その際、保守と監視のオーバーヘッドは発生しません。
-- **無制限のデータ転送が可能**: Azure Backup では、転送する受信データまたは送信データの量に制限がなく、転送されるデータに料金はかかりません。
+- **無制限のデータ転送が可能**: Azure Backup では、転送するインバウンド データまたはアウトバウンド データの量に制限がなく、転送されるデータに料金はかかりません。
   - 送信データとは、復元操作中に Recovery Services コンテナーから転送されるデータを指します。
   - Azure Import/Export サービスを使用してオフライン初期バックアップを実行し、大量のデータをインポートした場合は、受信データに対してコストがかかります。  [詳細については、こちらを参照してください](backup-azure-backup-import-export.md)。
 - **データの安全性の確保**: Azure Backup には、[転送中](backup-azure-security-feature.md)のデータと[保存](backup-azure-security-feature-cloud.md)データを保護するためのソリューションがあります。

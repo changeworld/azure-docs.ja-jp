@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 739d300faf77564891b2b783a3eb1cca50373015
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718355"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322281"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
 Cost Management での予算は、組織のアカウンタビリティを計画および推進するのに役立ちます。 予算では、特定の期間中に消費またはサブスクライブする Azure サービスを考慮することができます。 コストを事前に管理するために支出を他のユーザーに通知したり、支出の時間変化を監視したりするのに役立ちます。 作成した予算のしきい値を超えた場合は、通知のみがトリガーされます。 どのリソースも影響を受けることはなく、消費が停止されることはありません。 予算を使用して、コストを分析するときに支出を比較および追跡できます。
 
-コストと使用状況データは通常 20 時間以内に利用できるようになり、予算は 12 時間から 14 時間ごとにこれらのコストに対して評価されます。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
+コストと使用状況データは通常 8 時間から 24 時間以内に利用できるようになり、予算は 12 時間から 14 時間ごとにこれらのコストに対して評価されます。 [コストと使用状況データの更新](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention)の詳細を把握するようにしてください。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
 
 将来の有効期限日を選択した場合、期間 (月、四半期、または年) の最後に、予算は自動的に同じ予算金額にリセットされます。 同じ予算金額でリセットされるため、予算を計上される通貨金額が将来の期間では異なる場合は、別の予算を作成する必要があります。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873927"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230927"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Spark 機械学習アプリケーションを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "87873927"
 
 このアプリケーションは、Spark の [ML パイプライン](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)を使用してドキュメントの分類を実行します。 ML パイプラインは、DataFrame の上に構築された高レベル API の統一されたセットを提供します。 DataFrame は、ユーザーが実用的な機械学習パイプラインを作成して調整するのに役立ちます。 パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。 アプリケーションを作成するには、次の手順を実行します。
 
-1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、[Jupyter Notebook の作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)に関するページをご覧ください。
+1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、「[Jupyter Notebook ファイルの作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)」をご覧ください。
 
 1. このシナリオに必要な型をインポートします。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
 

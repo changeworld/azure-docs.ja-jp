@@ -36,6 +36,8 @@
   items:
     - name: Azure portal を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace.md
+    - name: テンプレートを使用したデプロイ
+      href: quickstart-deployment-template-workspaces.md
     - name: Azure CLI を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace-cli.md
     - name: Synapse Studio を使用する
@@ -124,7 +126,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Spark プール履歴サーバー
               href: ./spark/apache-spark-history-server.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -210,6 +212,8 @@
               href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark のパフォーマンス
               href: ./spark/apache-spark-performance.md
+            - name: Hyperspace のインデックスを使用した Apache Spark のパフォーマンス最適化
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Apache Spark の自動スケール動作
               href: ./spark/apache-spark-autoscale.md
         - name: 開発
@@ -240,7 +244,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: アーキテクチャ
+            - name: Architecture
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md

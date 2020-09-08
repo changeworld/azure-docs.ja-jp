@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、AWS VM を Azu
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 386f5cbefe8ad6a375437eea7fea75b5fb5a7f65
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762421"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048535"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -20,6 +20,7 @@ ms.locfileid: "88762421"
 
 このチュートリアルでは、次の内容を学習します。
 > [!div class="checklist"]
+>
 > * 移行の前提条件を確認します。
 > * Azure Migrate: Server Migration を使用して Azure リソースを準備します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。 Azure Migrate を操作するために、自分の Azure アカウントとリソースのアクセス許可を設定します。
 > * 移行用の AWS EC2 インスタンスを準備します。
@@ -57,7 +58,7 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
 
 ## <a name="prerequisites"></a>前提条件 
 
-- 移行する AWS VM で、サポートされている OS バージョンが実行されていることを確認します。 AWS VM は、移行目的では物理マシンのように処理されます。 物理サーバーの移行ワークフローについては、[サポートされているオペレーティングシステム](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)に関するページを参照してください。 実際の移行を進める前に、テスト移行 (テスト フェールオーバー) を実行し、VM が想定どおりに動作するかどうかを検証することをお勧めします。
+- 移行する AWS VM で、サポートされている OS バージョンが実行されていることを確認します。 AWS VM は、移行目的では物理マシンのように処理されます。 物理サーバーの移行ワークフローについては、[サポートされているオペレーティング システムおよびカーネル バージョン](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)に関するページを参照してください。 *hostnamectl* や *uname -a* のような標準コマンドを使用して、Linux VM の OS とカーネル バージョンを確認できます。  実際の移行を進める前に、テスト移行 (テスト フェールオーバー) を実行し、VM が想定どおりに動作するかどうかを検証することをお勧めします。
 - AWS VM が、Azure への移行で[サポートされる構成](./migrate-support-matrix-physical-migration.md#physical-server-requirements)に準拠していることを確認します。
 - Azure にレプリケートする AWS VM が、[Azure VM の要件](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠していることを確認します。
 - Azure に VM を移行する前に、それらに対するいくつかの変更が必要です。
@@ -252,7 +253,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。 
 5. **[ゲストの資格情報]** では、前の[レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
  
-    ![VM をレプリケートする](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![[レプリケート] 設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. **[仮想マシン]** の **[評価から移行設定をインポートしますか?]** は、既定の設定である **[いいえ。移行設定を手動で指定します]** のままにしておきます。
 7. 移行したい各 VM を確認します。 その後、 **[次へ:ターゲット設定]** をクリックします。
 
@@ -381,11 +382,23 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 **質問:** AWS VM の検出を試みているときに "Failed to fetch BIOS GUID (BIOS GUID をフェッチできませんでした)" というエラーが発生する   
 **回答:** 認証には、擬似ユーザーではなく、常にルート ログインを使用してください。 また、AWS VM でサポートされているオペレーティング システムを確認してください。  
 
-**質問:** レプリケーションの状態が進んでいない    
+**質問:** レプリケーションの状態が進んでいない   
 **回答:** レプリケーション アプライアンスが要件を満たしているかどうかを調べます。 レプリケーション アプライアンスの TCP ポート 9443 とデータ転送用の HTTPS 443 で、必要なポートが有効になっていることを確認します。 同じプロジェクトに、古い複製バージョンのレプリケーション アプライアンスが接続されていないことを確認します。   
 
 **質問:** リモートの Windows 管理サービスからの HTTP ステータス コード 504 のために、Azure Migrate を使用して AWS インスタンスを検出できない    
-**回答:** Azure Migrate アプライアンスの要件と URL アクセスのニーズを必ず確認してください。 アプライアンスの登録をブロックしているプロキシ設定がないことを確認します。   
+**回答:** Azure Migrate アプライアンスの要件と URL アクセスのニーズを必ず確認してください。 アプライアンスの登録をブロックしているプロキシ設定がないことを確認します。
+
+**質問:** AWS VM を Azure に移行する前に、何か変更を加える必要がありますか   
+**回答:** EC2 VM を Azure に移行する前に、これらの変更を行うことが必要になる場合があります。
+
+- VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、AWS に固有のものである可能性があり、Azure への移行後には有効ではありません。 
+- VM が PV VM (準仮想化) であり HVM VM ではない場合、準仮想化された VM は AWS のカスタム ブート シーケンスを使用するため、Azure 上ではそのままでは実行できない可能性があります。 Azure への移行を実行する前に、PV ドライバーをアンインストールすることで、この課題を解決できる場合もあります。  
+- 最終的な移行の前に、必ずテスト移行を実行することをお勧めします。  
+
+
+**質問:** Amazon Linux オペレーティング システムを実行している AWS VM を移行することはできますか  
+**回答:** Amazon Linux OS は AWS でのみサポートされているため、Amazon Linux を実行する VM をそのまま移行することはできません。
+Amazon Linux で実行されているワークロードを移行するには、Azure で CentOS/RHEL VM を起動し、関連するワークロード移行方法を使用して、AWS Linux マシンで実行されているワークロードを移行します。 たとえば、ワークロードによっては、移行を支援するためのワークロード固有のツール (Web サーバーの場合のデータベースやデプロイのツールなど) が存在する場合もあります。
 
 ## <a name="next-steps"></a>次のステップ
 
