@@ -1,18 +1,18 @@
 ---
 title: Azure Storage 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Storage に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 99d5f217d2f8ea51a8697bdcf71ba34f3ac3087b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7b3d75e5dbb1f2baf4f0723f6aadee0a3b8ae886
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380261"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486819"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>Azure Storage 用の Azure Policy 規制コンプライアンス コントロール
 
