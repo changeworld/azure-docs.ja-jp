@@ -1,46 +1,46 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Azure 通知ハブを作成する
-description: Azure Resource Manager テンプレートを使用して Azure 通知ハブを作成する方法を説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure 通知ハブを作成する方法を説明します。
 services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sethm
-ms.date: 05/15/2020
+ms.date: 08/04/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 2165351bee4ee260e768c10b23e26bf095779cad
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996671"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684645"
 ---
-# <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用して通知ハブを作成する
+# <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して通知ハブを作成する
 
 Azure Notification Hubs は、すべてのバックエンド (クラウドまたはオンプレミス) からすべてのプラットフォーム (iOS、Android、Windows、Kindle など) に通知を送信できる、使いやすいスケールアウトされたプッシュ エンジンです。 このサービスの詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Notification Hubs 名前空間と、その名前空間内に **MyHub** という名前の通知ハブを作成します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Notification Hubs 名前空間と、その名前空間内に **MyHub** という名前の通知ハブを作成します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
-[なし] :
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="create-a-notification-hubs-namespace-and-hub"></a>Notification Hubs 名前空間とハブを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-notification-hub/)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-notification-hub/)からのものです。
+:::code language="json" source="~/quickstart-templates/101-notification-hub/azuredeploy.json":::
 
-:::code language="json" source="~/quickstart-templates/101-notification-hub/azuredeploy.json" range="1-45" highlight="22-40":::
-
-* [Microsoft.NotificationHubs/namespaces](/azure/templates/microsoft.notificationhubs/2017-04-01/namespaces)
-* [Microsoft.NotificationHubs/namespaces/notificationHubs](/azure/templates/microsoft.notificationhubs/2017-04-01/namespaces/notificationhubs)
+* [Microsoft.NotificationHubs/namespaces](/azure/templates/microsoft.notificationhubs/namespaces)
+* [Microsoft.NotificationHubs/namespaces/notificationHubs](/azure/templates/microsoft.notificationhubs/namespaces/notificationhubs)
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -68,7 +68,7 @@ az notification-hub namespace show --resource-group ContosoNotificationsGroup --
 
 ---
 The output looks similar to: null
-':::image type="content" source="media/create-notification-hub-template/verify-deploy.png" alt-text="Verify deployment"::': null
+:::image type="content" source="media/create-notification-hub-template/verify-deploy.png" alt-text="Verify deployment"::: null
 ---
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
@@ -86,4 +86,4 @@ Write-Host "Press [ENTER] to continue..."
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [チュートリアル:初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

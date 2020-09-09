@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: c91731d70d5db59ecf5daa726fd42ee42c58f51e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6de08faee78deeb86117084b420eb5043153f62d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116308"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186048"
 ---
 # <a name="ssis-migration-with-azure-sql-managed-instance-as-the-database-workload-destination"></a>データベース ワークロードの宛先として Azure SQL マネージド インスタンスを使用した SSIS の移行
 
@@ -32,7 +32,9 @@ SSISDB の移行は、次の記事で説明されているように、DMS を使
 
 ## <a name="ssis-jobs-to-sql-managed-instance-agent"></a>SSIS ジョブを SQL Database Managed Instance エージェントに移行する
 
-SQL マネージド インスタンスには、オンプレミスの SQL Server エージェントと同様に、ネイティブの第一級のスケジューラがあります。  SSIS ジョブの移行ツールはまだ使用できないため、スクリプト/手動コピーを使用して、オンプレミスの SQL Server エージェントから SQL マネージド インスタンス エージェントに移行する必要があります。
+SQL マネージド インスタンスには、オンプレミスの SQL Server エージェントと同様に、ネイティブの第一級のスケジューラがあります。  [Azure SQL Managed Instance エージェント経由で SSIS パッケージを実行](how-to-invoke-ssis-package-managed-instance-agent.md)できます。
+
+SSIS ジョブの移行ツールはまだ使用できないため、スクリプト/手動コピーを使用して、オンプレミスの SQL Server エージェントから SQL マネージド インスタンス エージェントに移行する必要があります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

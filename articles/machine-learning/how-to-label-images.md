@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147022"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307201"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
@@ -37,11 +37,9 @@ ms.locfileid: "86147022"
 
 1. 左側にある **[データのラベル付け]** を選択し、プロジェクトを特定します。  
 
-1. 一覧でプロジェクト名を選択します。
-
 ## <a name="understand-the-labeling-task"></a>ラベル付けタスクを理解する
 
-プロジェクトを選択したら、ページの上部にある **[ラベル データ]** を選択します。
+データのラベル付けプロジェクトのテーブルで、ご自分のプロジェクトの **[ラベル リンク]** を選択します。
 
 対象のプロジェクトに固有の指示が表示されます。 これらには、取り扱うデータの種類、意思決定方法、その他の関連情報について説明しています。 この情報を読んだ後、ページの上部にある **[タスク]** を選択します。  または、ページの下部にある **[ラベル付けの開始]** を選択します。
 
@@ -65,6 +63,10 @@ Azure では、ページ上のすべての画像にタグを付け終わると�
 手元にあるデータのタグを送信すると、Azure によって作業キューの新しい画像セットを使ってページが更新されます。
 
 ### <a name="assisted-machine-learning-preview"></a>支援型機械学習 (プレビュー) 
+
+> [!IMPORTANT]
+> 支援型機械学習は現在、パブリック プレビューの段階です。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 機械学習アルゴリズムがトリガーされる可能性があります。 プロジェクトでこれらのアルゴリズムを有効にした場合、次のメッセージが表示されることがあります。
 

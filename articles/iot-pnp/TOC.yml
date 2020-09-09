@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: 複数のコンポーネント デバイスに接続する (Python)
       href: tutorial-multiple-components-python.md
+    - name: MQTT を使用してデバイスを接続する
+      href: tutorial-use-mqtt.md
 - name: 概念
   items:
     - name: アーキテクチャ
@@ -67,6 +69,8 @@
       href: howto-use-iot-pnp-cli.md
     - name: デジタル ツインを管理する
       href: howto-manage-digital-twin.md
+    - name: デバイスを認定する
+      href: howto-certify-device.md
 - name: リファレンス
   items:
     - name: ライブラリと SDK
