@@ -830,7 +830,7 @@ VHD デプロイ用の次の Azure Resource Manager テンプレートのいず�
 | userStorageAccountName | ストレージ アカウントの名前。 |
 | sNameForPublicIP | パブリック IP の DNS 名。小文字にする必要があります。 |
 | subscriptionId | Azure サブスクリプションの識別子。 |
-| 場所 | リソース グループの標準的な Azure 地理的場所。 |
+| Location | リソース グループの標準的な Azure 地理的場所。 |
 | vmName | 仮想マシンの名前。 |
 | vaultName | キー コンテナーの名前。 |
 | vaultResourceGroup | Key Vault のリソース グループ。 |
