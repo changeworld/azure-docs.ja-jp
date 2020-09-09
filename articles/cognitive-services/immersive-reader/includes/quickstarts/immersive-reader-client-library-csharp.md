@@ -3,19 +3,19 @@ title: イマーシブ リーダー C# クライアント ライブラリのク�
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
-ms.author: pasta
+ms.author: nitinme
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: ae0ed771bc00b2541db721af54bf277ff36042f9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f3d694a1e1eb368a97d994ebe9885c279ff44463
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921778"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505399"
 ---
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 

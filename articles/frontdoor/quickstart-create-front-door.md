@@ -3,7 +3,7 @@ title: クイック スタート:Azure Front Door Service を使用して高可�
 description: このクイックスタートでは、Azure Front Door Service を使用して、グローバル Web アプリケーションの高可用性とハイパフォーマンスを実現する方法について説明します。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.assetid: ''
 ms.service: frontdoor
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
-ms.author: sharadag
-ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: duau
+ms.openlocfilehash: 16ebfe7ae39d63f455e39c677acc61b31d40bb5a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82133401"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569239"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する
 
@@ -165,5 +165,3 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
 次の記事に進んで、フロント ドアにカスタム ドメインを追加する方法を学習してください。
 > [!div class="nextstepaction"]
 > [カスタム ドメインの追加](front-door-custom-domain.md)
-
-ルーティング トラフィックの詳細については、「[Front Door ルーティング方法](front-door-routing-methods.md)」を参照してください。

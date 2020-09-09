@@ -4,15 +4,15 @@ description: ハイパフォーマンス コンピューティングのための
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c898b0d5a58654547cb6205ee0c845c9cfa4aa9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053679"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611750"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
 
@@ -65,11 +65,11 @@ Azure HPC Cache を使用できる場所については、[リージョン別の
 * US Gov アリゾナ
 * US Gov バージニア州
 
-## <a name="service-availability"></a>サービスの提供状況
+<!-- ## Service availability
 
-Azure HPC Cache で使用する各サブスクリプションへのアクセスを依頼する必要があります。 この制限は、サービス品質を保証するのに役立ちます。
+You must request access for each subscription you will use with Azure HPC Cache. This restriction helps ensure service quality.
 
-アクセスを依頼するには、[こちらのフォーム](https://aka.ms/onboard-hpc-cache)に入力してください。 サブスクリプションがアクセス一覧に追加された後に、キャッシュを作成できます。
+Request access by filling out [this form](https://aka.ms/onboard-hpc-cache). After your subscription is added to the access list, you can create caches. -->
 
 ## <a name="next-steps"></a>次のステップ
 

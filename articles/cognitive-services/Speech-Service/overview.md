@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825360"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569307"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
@@ -90,7 +90,7 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 
 ほとんどの一般的なプログラミング言語向けのクイックスタートが提供されています。それぞれ基本的な設計パターンを学び、いずれも 10 分もかからずにコードを実行できるように作られています。 それぞれの機能のクイックスタートについては、次の各記事を参照してください。
 
-* [音声テキスト変換のクイックスタート](speech-to-text-basics.md)
+* [音声テキスト変換のクイックスタート](get-started-speech-to-text.md)
 * [テキスト読み上げのクイックスタート](get-started-text-to-speech.md)
 * [音声翻訳のクイックスタート](speech-translation-basics.md)
 * [意図認識のクイックスタート](quickstarts/intent-recognition.md)

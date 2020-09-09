@@ -1,13 +1,11 @@
 ---
-ms.openlocfilehash: 38d96ccb9f2c7b24e57b1096996df1ea760aca37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691135"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566913"
 ---
-## <a name="generate-and-deploy-the-deployment-manifest"></a>配置マニフェストを生成してデプロイする
-
 エッジ デバイスにデプロイされるモジュールは、配置マニフェストによって定義されます。 また、これらのモジュールの構成設定も定義されます。 
 
 マニフェストをテンプレート ファイルから生成して、エッジ デバイスにデプロイするには、これらの手順に従います。

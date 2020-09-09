@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: dce42f1b8bfe58e4d147ba1c982cb770590dfa92
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1a9dc47888110836239c59f6a7542f71f753dd3a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845121"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568185"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>クイック スタート:Python v12 SDK で BLOB を管理する
 
@@ -82,10 +82,10 @@ pip install azure-storage-blob
 
     ```python
     import os, uuid
-    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
 
     try:
-        print("Azure Blob storage v12 - Python quickstart sample")
+        print("Azure Blob storage v" + __version__ + " - Python quickstart sample")
         # Quick start code goes here
     except Exception as ex:
         print('Exception:')
@@ -292,5 +292,5 @@ BLOB ストレージのサンプル アプリを確認するには、以下に�
 > [!div class="nextstepaction"]
 > [Azure BLOB ストレージ SDK v12 の Python サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* 詳細については、「[Python 用 Azure Storage クライアント ライブラリ](/azure/developer/python/sdk/storage/overview?view=storage-py-v12)」を参照してください。
+* 詳細については、「[Python 用 Azure Storage クライアント ライブラリ](/azure/developer/python/sdk/storage/overview)」を参照してください。
 * チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Python 開発者向けの Azure](/azure/python/)」を参照してください。
