@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352047"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856051"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
@@ -25,11 +25,11 @@ IoT プラグ アンド プレイ デバイスが実装するテレメトリ、�
 
 詳細については、「[モデル内の IoT プラグ アンド プレイ コンポーネント](concepts-components.md)」を参照してください。
 
-## <a name="model-discovery"></a>モデル検出
+## <a name="identify-the-model"></a>モデルを識別する
 
 実装するモデルをアナウンスするために、IoT プラグ アンド プレイ デバイスでは、`USERNAME` フィールドに `model-id` を追加することにより、MQTT 接続パケットにモデル ID を含めます。
 
-デバイスに実装されるモデルを検出するために、サービスでは以下からモデル ID を取得できます。
+デバイスに実装されるモデルを識別するには、サービスを使用して以下でモデル ID を取得できます。
 
 - デバイス ツインの `modelId` フィールド。
 - デジタル ツインの `$metadata.$model` フィールド。
@@ -127,7 +127,7 @@ IoT プラグ アンド プレイ デバイスが実装するテレメトリ、�
 
 デバイスでは、報告されたプロパティを送信することで、プロパティを受け取ったことを確認する必要があります。 報告されたプロパティには次のものが含まれます。
 
-- `value` - デバイスが受け取った値。
+- `value` - プロパティの実際の値 (通常は受信した値。ただし、デバイスは別の値を報告するように決定できます)。
 - `ac` - HTTP 状態コードを使用する受信確認コード。
 - `av` - 目的のプロパティの `$version` を参照する確認バージョン。
 - `ad` - 省略可能な受信確認の説明。

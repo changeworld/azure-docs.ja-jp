@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 2c292ee601114a58e38b9e509efa53be2d3c93d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328035"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799804"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs を有効にする
 この記事では、Azure Policy を使用して、Azure 仮想マシンまたは Azure Arc (プレビュー) に接続されたハイブリッド仮想マシンで Azure Monitor for VMs を有効にする方法について説明します。 Azure Policy を使用すると、Azure 環境全体にわたって Azure Monitor for VMs に必要なエージェントをインストールし、各仮想マシンが作成されたら VM に対する監視を自動的に有効にするポリシー定義を割り当てることができます。 Azure Monitor for VMs には、環境内の準拠していない VM を検出して修復できる機能が用意されています。 この機能は、Azure Policy を直接操作する代わりに使用します。
 
-Azure Policy に精通していない場合は、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../platform/deploy-scale.md)」にある簡単な概要を参照してください。
+Azure Policy に精通していない場合は、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」にある簡単な概要を参照してください。
 
 > [!NOTE]
-> Azure 仮想マシン スケール セットで Azure Policy を使用するか、または Azure 仮想マシンを有効にするために Azure Policy を直接操作するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../platform/deploy-scale.md#azure-monitor-for-vms-and-virtual-machine-agents)」を参照してください。
+> Azure 仮想マシン スケール セットで Azure Policy を使用するか、または Azure 仮想マシンを有効にするために Azure Policy を直接操作するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md#azure-monitor-for-vms)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 - [Log Analytics ワークスペースを作成して構成](vminsights-configure-workspace.md)します。

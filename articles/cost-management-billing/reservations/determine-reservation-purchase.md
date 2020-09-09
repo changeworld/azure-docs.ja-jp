@@ -4,15 +4,16 @@ description: この記事は、購入すべき予約を判断するのに役立�
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759897"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684747"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>購入する予約を判断する
 
@@ -38,7 +39,7 @@ Promo シリーズの VM は予約割引が適用されないので、分析対�
 
 1 日の使用量が 24 時間未満のリソースは無視してください。
 
-インスタンス サイズ ファミリー レベルで分析したい場合は、インスタンス サイズの柔軟性の値を [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) から取得できます。 その値とご自身のデータとを結合して分析を行ってください。 インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+インスタンス サイズ ファミリー レベルで分析したい場合は、インスタンス サイズの柔軟性の値を [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) から取得できます。 その値とご自身のデータとを結合して分析を行ってください。 インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)」を参照してください。
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Azure Synapse Analytics 予約インスタンスを購入するにあたって使用量を分析する
 

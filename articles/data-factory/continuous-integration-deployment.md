@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336924"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815812"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -113,7 +113,7 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
     h. **[配置モード]** で **[Incremental]\(増分\)** を選択します。
 
     > [!WARNING]
-    > **[配置モード]** で **[完全]** を選択すると、Resource Manager テンプレートに定義されていないターゲット リソース グループ内のすべてのリソースを含め、既存のリソースが削除される可能性があります。
+    > 完全なデプロイ モードでは、リソース グループに存在していても、新しい Resource Manager テンプレート内で指定されていないリソースは、**削除**されます。 詳細については、「[Azure Resource Manager のデプロイ モード](../azure-resource-manager/templates/deployment-modes.md)」を参照してください。
 
     ![データ ファクトリの運用環境デプロイ](media/continuous-integration-deployment/continuous-integration-image9.png)
 

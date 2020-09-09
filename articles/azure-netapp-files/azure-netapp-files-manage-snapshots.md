@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 85990aee5143c9ccc0362a00597a748763977204
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281550"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080217"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
@@ -47,8 +47,24 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
 スナップショット ポリシーを使用して、ボリュームのスナップショットが自動的に取得されるようにスケジュールすることができます。 必要に応じてスナップショット ポリシーを変更したり、不要になったスナップショット ポリシーを削除したりすることもできます。  
 
-> [!IMPORTANT] 
-> スナップショット ポリシー機能を使用するには、ホワイトリスト登録が必要です。 この機能を要求するには、お使いのサブスクリプション ID を記載したメールを anffeedback@microsoft.com までお送りください。
+### <a name="register-the-feature"></a>機能を登録する
+
+**スナップショット ポリシー**機能は、現在プレビュー段階です。 この機能を初めて使用する場合は、まず機能を登録する必要があります。 
+
+1. 機能を登録します。 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
+
+2. 機能の登録の状態を確認します。 
+
+    > [!NOTE]
+    > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
 
 ### <a name="create-a-snapshot-policy"></a>スナップショット ポリシーを作成する 
 

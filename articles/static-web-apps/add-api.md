@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: d6a25e7c36118f6a11bd1a177159bc9050ee69ca
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431023"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691498"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
 
@@ -147,7 +147,7 @@ Visual Studio Code を [Azure Functions Core Tools](../azure-functions/functions
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Visual Studio Code を使用して新しい Azure Functions を作成する":::
 
-1. Core Tools が実行されている状態で、次の URL に移動して、API が正しく実行されていることを確認します。<http://localhost:7071/api/message>
+1. Core Tools が実行されている状態で、次の URL に移動して、API が正しく実行されていることを確認します。`http://localhost:7071/api/message`
 
    ブラウザーの応答は、次の例のようになります。
 

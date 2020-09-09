@@ -1,23 +1,18 @@
 ---
 title: Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする
-description: この記事では、Windows PowerShell DSC を使用して、Azure Arc for servers (プレビュー) を利用する Azure にマシンを接続する方法について説明します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
+description: この記事では、Windows PowerShell DSC を使用して、Azure Arc 対応サーバー (プレビュー) を利用する Azure にマシンを接続する方法について学習します。
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809614"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213078"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする方法
 
-[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) を使用して、Windows コンピューターのソフトウェアのインストールと構成を自動化できます。 この記事では、DSC を使用して Azure Arc for servers Connected Machine エージェントをハイブリッド Windows マシンにインストールする方法について説明します。
+[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) を使用して、Windows コンピューターのソフトウェアのインストールと構成を自動化できます。 この記事では、DSC を使用して Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントをハイブリッド Windows マシンにインストールする方法について説明します。
 
 ## <a name="requirements"></a>必要条件
 
@@ -25,7 +20,7 @@ ms.locfileid: "87809614"
 
 - [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC モジュール
 
-- マシンを Azure Arc for servers に非対話的に接続するためのサービス プリンシパル。 Arc for servers のサービス プリンシパルをまだ作成していない場合は、「[大規模なオンボード用にサービス プリンシパルを作成する](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」セクションの手順に従ってください。
+- マシンを Azure Arc 対応サーバー (プレビュー) に非対話的に接続するためのサービス プリンシパル。 Arc 対応サーバー (プレビュー) のサービス プリンシパルをまだ作成していない場合は、「[大規模なオンボーディング用にサービス プリンシパルを作成する](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」セクションの手順に従ってください。
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>ConnectedMachine DSC モジュールをインストールする
 
@@ -49,7 +44,7 @@ ms.locfileid: "87809614"
 
 このモジュールのリソースは、Azure Connected Machine Agent の構成を管理するように設計されています。 また、`AzureConnectedMachineDsc\examples` フォルダーにある PowerShell スクリプト `AzureConnectedMachineAgent.ps1` も含まれています。 コミュニティ リソースを使用して、ダウンロードとインストールが自動化され、Azure Arc との接続が確立されます。このスクリプトでは、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」に説明されているものに似た手順が実行されます。
 
-マシンでプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、[こちら](onboard-portal.md#configure-the-agent-proxy-setting)に記載されているコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。 コマンドを手動で実行する代わりに、[ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) モジュールを使用して DSC でこの手順を実行できます。
+マシンでプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、[こちら](manage-agent.md#update-or-remove-proxy-settings)に記載されているコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。 コマンドを手動で実行する代わりに、[ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) モジュールを使用して DSC でこの手順を実行できます。
 
 >[!NOTE]
 >DSC で実行できるようにするには、localhost の構成を実行している場合でも PowerShell のリモート コマンドを受信するように Windows を構成する必要があります。 環境を簡単に正しく構成するには、管理者特権の PowerShell ターミナルで `Set-WsManQuickConfig -Force` を実行するだけです。
@@ -81,7 +76,7 @@ PowerShell スクリプトに渡して使用するパラメーターを次に示
 
 3. これにより、`C:\dsc` という名前の新しいフォルダーに、`localhost.mof file` が作成されます。
 
-エージェントをインストールし、Azure Arc for servers (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
+エージェントをインストールし、Azure Arc 対応サーバー (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
 
 ## <a name="adding-to-existing-configurations"></a>既存の構成への追加
 

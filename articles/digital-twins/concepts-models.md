@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131635"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042634"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -26,7 +26,7 @@ Azure Digital Twins の重要な特性は、独自のボキャブラリを定義
 
 Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) を使用して定義されます。 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 
 
-Azure Digital Twins では、DTDL "*バージョン 2*" を使用します。 このバージョンの DTDL の詳細については、GitHub で次の仕様ドキュメントを参照してください: [*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+Azure Digital Twins では、DTDL "**_バージョン 2_**" が使用されます。 このバージョンの DTDL の詳細については、GitHub で次の仕様ドキュメントを参照してください: [*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 Azure Digital Twins での DTDL "_バージョン 1_" の使用は、非推奨になっています。
 
 > [!TIP] 
 > DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。 Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
@@ -36,8 +36,8 @@ Azure Digital Twins では、DTDL "*バージョン 2*" を使用します。 �
 モデル定義内では、最上位レベルのコード項目は**インターフェイス**です。 これにより、モデル全体がカプセル化され、モデルの残りの部分はインターフェイス内で定義されます。 
 
 DTDL モデルのインターフェイスには、以下の各フィールドをゼロ個、1 個、または複数個、含めることができます。
-* **Property** - プロパティは、エンティティの状態を表すデータ フィールドです (多くのオブジェクト指向プログラミング言語のプロパティと同様)。 期限付きのデータ イベントであるテレメトリとは異なり、プロパティはバックアップ用ストレージを備えていて、いつでも読み取ることができます。
-* **Telemetry** - テレメトリ フィールドは測定値またはイベントを表し、多くの場合、デバイスのセンサーの読み取りを説明するために使用されます。 テレメトリは、デジタル ツインに格納されません。どこかに送信されるように準備されたデータ イベントのストリームのようなものです。 
+* **Property** - プロパティは、エンティティの状態を表すデータ フィールドです (多くのオブジェクト指向プログラミング言語のプロパティと同様)。 プロパティはバッキング ストレージを備えていて、いつでも読み取ることができます。
+* **Telemetry** - テレメトリ フィールドは測定値またはイベントを表し、多くの場合、デバイスのセンサーの読み取りを説明するために使用されます。 プロパティとは異なり、テレメトリはデジタル ツインに格納されません。これは、発生時に処理される必要がある一連の期限付きデータ イベントです。 プロパティとテレメトリの違いの詳細については、下の「[*プロパティとテレメトリ*](#properties-vs-telemetry)」セクションを参照してください。
 * **Component** - コンポーネントを使用すると、必要に応じてモデル インターフェイスを他のインターフェイスの組み合わせとして構築できます。 コンポーネントの例として、"*電話*" のモデルの定義に使用される *frontCamera* インターフェイス (およびもう 1 つのコンポーネント インターフェイスである *backCamera*) があります。 最初に *frontCamera* のインターフェイスを独自のモデルであるかのように定義する必要があります。その後、*Phone* を定義するときに、それを参照できます。
 
     コンポーネントを使用するのは、ソリューションの不可欠な要素でありながら、個別の ID を必要とせず、ツイン グラフで独立して作成、削除、および再配置する必要がないものを記述する場合です。 エンティティがツイン グラフ内で独立した存在になるようにするには、それらを異なるモデルの個別のデジタル ツインとして表現し、"*リレーションシップ*" (次の箇条書き項目を参照) で接続します。
@@ -47,7 +47,25 @@ DTDL モデルのインターフェイスには、以下の各フィールドを
 * **Relationship** - リレーションシップを使用すると、あるデジタル ツインと他のデジタル ツインの関係性を表すことができます。 リレーションシップは、さまざまなセマンティックな意味を表すことができます。たとえば、*contains* ("フロアが部屋を含む")、*cools* ("hvac が部屋を冷房する")、*isBilledTo* ("コンプレッサーがユーザーに請求される") などです。リレーションシップにより、ソリューションは相互に関連するエンティティのグラフを提供できます。
 
 > [!NOTE]
-> DTDL の仕様では、**Commands** も定義されています。これは、デジタル ツインに対して実行できるメソッドです (リセット コマンドや、ファンをオンまたはオフに切り替えるためのコマンドなど)。 ただし、"*Azure Digital Twins では現在、コマンドがサポートされていません*"。
+> [DTDL の仕様](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)では、**Commands** も定義されています。これは、デジタル ツインに対して実行できるメソッドです (リセット コマンドや、ファンをオンまたはオフに切り替えるためのコマンドなど)。 ただし、"*Azure Digital Twins では現在、コマンドがサポートされていません*"。
+
+### <a name="properties-vs-telemetry"></a>プロパティとテレメトリ
+
+Azure Digital Twins の DTDL の**プロパティ**と**テレメトリ**のフィールドを区別するための追加のガイダンスを次に示します。
+
+Azure Digital Twins モデルのプロパティとテレメトリの違いは次のとおりです。
+* **プロパティ**には、バッキング ストレージがあることが想定されています。 これは、プロパティをいつでも読み取って、その値を取得できることを意味します。 プロパティが書き込み可能であれば、プロパティに値を格納することもできます。  
+* **テレメトリ**は、イベントのストリームに似たものであり、存続期間の短い一連のデータ メッセージです。 イベントのリッスンおよびその発生時に実行するアクションを設定していないと、後でイベントをトレースできません。 後でそこに戻って読み取ることはできません。 
+  - C# の用語では、テレメトリは C# イベントに似ています。 
+  - IoT の用語では、テレメトリは通常、デバイスによって送信される 1 つの測定値です。
+
+**テレメトリ**は、IoT デバイスで多く使用されます。多くのデバイスには、生成される測定値を格納する能力もその必要性もないためです。 これらは単に、"テレメトリ" イベントのストリームとして送信されます。 この場合、テレメトリ フィールドの最新の値について、いつでもデバイスに照会できるわけではありません。 代わりに、デバイスからのメッセージをリッスンし、メッセージが到着したときにアクションを実行する必要があります。 
+
+そのため、Azure Digital Twins でモデルを設計する際は、ほとんどの場合**プロパティ**を使用して、ツインをモデル化することになると考えられます。 これにより、バッキング ストレージが得られ、データ フィールドの読み取りとクエリを行うことができます。
+
+多くの場合、テレメトリとプロパティは連携して、デバイスからのデータのイングレスを処理します。 Azure Digital Twins へのすべてのイングレスは [API](how-to-use-apis-sdks.md) を通じて行われるため、通常はイングレス関数を使用してデバイスからテレメトリまたはプロパティのイベントを読み取り、それに応じて ADT でプロパティを設定します。 
+
+Azure Digital Twins API からテレメトリ イベントを発行することもできます。 他のテレメトリと同様に、これは存続期間の短いイベントであり、リスナーによる処理が必要です。
 
 ### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure Digital Twins DTDL の実装の仕様
 
@@ -204,14 +222,7 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 ## <a name="validating-models"></a>モデルの検証
 
-> [!TIP]
-> ご自分のモデルは、ご自分の Azure Digital Twins インスタンスにアップロードする前に、オフラインで検証することをお勧めします。
-
-モデル ドキュメントを検証して、DTDL が正しいことを確認するために、言語に依存しないサンプルが用意されています。 これはこちらにあります。[**DTDL 検証ツール サンプル**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)
-
-DTDL 検証ツールのサンプルは、NuGet でクライアント側ライブラリとして提供されている .NET DTDL パーサー ライブラリに基づいて構築されています。[**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). また、このライブラリを直接使用し、自分独自の検証ソリューションを設計することもできます。 パーサー ライブラリを使用する場合は、Azure Digital Twins が実行されているバージョンと互換性のあるバージョンを使用するようにしてください。 プレビュー期間中のこれのバージョンは、*3.7.0* です。
-
-使用例を含むパーサー ライブラリの詳細については、"[*モデルを解析および検証する方法*](how-to-use-parser.md)" に関するページを参照してください。
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

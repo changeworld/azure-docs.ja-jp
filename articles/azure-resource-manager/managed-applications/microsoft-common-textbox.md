@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063848"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474310"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 要素
 
@@ -29,6 +29,7 @@ ms.locfileid: "87063848"
     "label": "Name",
     "defaultValue": "contoso123",
     "toolTip": "Use only allowed characters",
+    "placeholder": "",
     "constraints": {
         "required": true,
         "validations": [
@@ -60,6 +61,7 @@ ms.locfileid: "87063848"
 - `isValid` プロパティには、true または false に評価される式が格納されます。 式内で、テキスト ボックスが有効かどうかを決定する条件を定義します。
 - `message` プロパティはテキスト ボックスの値の検証に失敗したときに表示される文字列です。
 - `required` が **false** に設定されている場合、`regex` の値を指定することができます。 このシナリオでは、テキスト ボックスに正常に検証を完了できる値を指定する必要はありません。 指定する場合、正規表現パターンと一致する必要があります。
+- `placeholder` プロパティは、ユーザーが編集を開始したときに消えるヘルプ テキストです。 `placeholder` と `defaultValue` の両方が定義されている場合は、`defaultValue` が優先され、表示されます。
 
 ## <a name="example"></a>例
 

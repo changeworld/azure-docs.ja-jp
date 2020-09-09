@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328062"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642165"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>ハイブリッド仮想マシンで Azure Monitor for VMs を有効にする
 この記事では、Azure の外部 (オンプレミスやその他のクラウド環境を含む) の仮想マシンで Azure Monitor for VMs を有効にする方法について説明します。
 
 > [!IMPORTANT]
-> ハイブリッド VM を有効にするための推奨される方法では、Azure VM と同様のプロセスを使用して VM で Azure Monitor for VMs を有効にてきるように、まず [Azure Arc for servers](/azure-arc/servers/overview.md) を有効にします。 この記事では、Azure Arc を使用しないことを選択した場合にハイブリッド VM をオンボードする方法について説明します。
+> ハイブリッド VM を有効にするための推奨される方法では、Azure VM と同様のプロセスを使用して VM で Azure Monitor for VMs を有効にてきるように、まず [Azure Arc for servers](../../azure-arc/servers/overview.md) を有効にします。 この記事では、Azure Arc を使用しないことを選択した場合にハイブリッド VM をオンボードする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +31,7 @@ Azure の外部の仮想マシンには、Azure VM で使用されるものと�
 Log Analytics エージェントのデプロイの詳細については、「[Windows コンピューターを Azure Monitor に接続する](../platform/agent-windows.md)」または「[Linux コンピューターを Azure Monitor に接続する](../platform/agent-linux.md)」を参照してください。 この記事では、依存関係エージェントに関する詳細を提供します。 
 
 ## <a name="firewall-requirements"></a>ファイアウォールの要件
-Log Analytics エージェントのファイアウォールの要件は、「[Log Analytics エージェントの概要](..//platform/log-analytics-agent.md#network-requirements)」で提供されています。 Azure Monitor for VMs マップの Dependency Agent でデータ自体が送信されることはないため、ファイアウォールやポートを変更する必要はありません。 マップ データは、Log Analytics エージェントによって常に Azure Monitor サービスに直接、または、ご利用の IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合には、[Operations Management Suite ゲートウェイ](../../azure-monitor/platform/gateway.md)を経由して送信されます。
+Log Analytics エージェントのファイアウォールの要件は、「[Log Analytics エージェントの概要](../platform/log-analytics-agent.md#network-requirements)」で提供されています。 Azure Monitor for VMs マップの Dependency Agent でデータ自体が送信されることはないため、ファイアウォールやポートを変更する必要はありません。 マップ データは、Log Analytics エージェントによって常に Azure Monitor サービスに直接、または、ご利用の IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合には、[Operations Management Suite ゲートウェイ](../../azure-monitor/platform/gateway.md)を経由して送信されます。
 
 
 ## <a name="dependency-agent"></a>依存関係エージェント
@@ -43,8 +43,8 @@ Dependency Agent は、以下の場所からダウンロードできます。
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.5.10940 | C27A56D0BE9CF162DF73292DFBB2083F5FF749F2B80FCAD2545BC8B14B64A8D7  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.5.10940 | 71B4E1DA5116E61E03317C49C6702B5069F01A0C9A7CB860F6ACFAF5C198740E |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする
@@ -158,7 +158,7 @@ Dependency Agent のインストールに成功しても、マップにご利用
 
     **Linux**:"microsoft-dependency-agent" という実行中のプロセスを探します。
 
-2. 現在、利用されているのは[無料の価格レベルの Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) ですか? 無料プランでは、一意のコンピューターを最大 5 台まで使用できます。 前の 5 台からデータが送信されなくなった場合でも、以降のコンピューターはマップに表示されません。
+2. 現在、利用されているのは[無料の価格レベルの Analytics](./solutions.md) ですか? 無料プランでは、一意のコンピューターを最大 5 台まで使用できます。 前の 5 台からデータが送信されなくなった場合でも、以降のコンピューターはマップに表示されません。
 
 3. コンピューターからログとパフォーマンス データが Azure Monitor ログに送信されていますか? コンピューターに対して次のクエリを実行します。
 

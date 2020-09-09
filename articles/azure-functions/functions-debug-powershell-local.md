@@ -1,17 +1,17 @@
 ---
 title: PowerShell Azure Functions をローカル環境でデバッグする
-description: PowerShell を使用して関数を開発する方法について説明します。
+description: ローカルで実行するときに PowerShell 関数をデバッグする方法について説明します。
 author: tylerleonhardt
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082989"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799368"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
@@ -242,6 +242,16 @@ PowerShell 拡張機能では `Debug-Runspace` が使われており、それは
 Azure Functions ランタイムでは、`run.ps1` スクリプトが実際に呼び出される前にいくつかのコマンドが実行されるため、デバッガーが `Microsoft.Azure.Functions.PowerShellWorker.psm1` または `Microsoft.Azure.Functions.PowerShellWorker.psd1` の中で中断される可能性があります。
 
 この中断が発生した場合は、`continue` または `c` コマンドを実行して、このブレークポイントをスキップします。 その後は、予期されるブレークポイントで停止します。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+デバッグ中に問題が発生した場合は、次の点を確認する必要があります。
+
+| ○ | アクション |
+|------|------|
+| ターミナルから `func --version` を実行します。 `func` が見つからないというエラーが表示される場合は、ローカルの `path` 変数に Core Tools (func.exe) がない可能性があります。| [Core Tools を再インストールします](functions-run-local.md#v2)。|  
+| Visual Studio Code では、既定のターミナルが func.exe にアクセスできる必要があります。 Linux 用 Windows サブシステム (WSL) などの Core Tools がインストールされていない既定のターミナルを使用していないことを確認します。  | Visual Studio Code の既定のシェルを PowerShell 7 (推奨) または Windows PowerShell 5.1 に設定します。|
+  
 
 ## <a name="next-steps"></a>次のステップ
 

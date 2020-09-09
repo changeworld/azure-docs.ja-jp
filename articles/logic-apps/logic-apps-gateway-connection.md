@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/18/2020
+ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386182"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661199"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
-["*オンプレミス データ ゲートウェイ*" をローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した後、ロジック アプリからオンプレミスのデータ ソースにアクセスするには、その前に Azure でゲートウェイ インストール用のゲートウェイ リソースを作成する必要があります。 その後は、Azure Logic Apps で利用できる[オンプレミスのコネクタ](../connectors/apis-list.md#on-premises-connectors)に使用するトリガーとアクションで、このゲートウェイ リソースを選択できます。
+["*オンプレミス データ ゲートウェイ*" をローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した後、ロジック アプリからオンプレミスのデータ ソースにアクセスするには、その前に Azure でゲートウェイ インストール用のゲートウェイ リソースを作成する必要があります。 その後は、Azure Logic Apps で利用できる[オンプレミスのコネクタ](../connectors/apis-list.md#on-premises-connectors)に使用するトリガーとアクションで、このゲートウェイ リソースを選択できます。 Azure Logic Apps では、データ ゲートウェイを介した読み取り操作と書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
 
 この記事では、以前に[ローカル コンピューターにインストールされたゲートウェイ](../logic-apps/logic-apps-gateway-install.md)の Azure ゲートウェイ リソースを作成する方法を示します。 ゲートウェイの詳細については、「[ゲートウェイのしくみ](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
 
@@ -48,7 +48,7 @@ Azure Logic Apps では、オンプレミス データ ゲートウェイで、�
 * SQL Server
 * Teradata
 
-Azure Logic Apps では、データ ゲートウェイを介した読み取り操作と書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。 ゲートウェイ自体では追加のコストは発生しませんが、これらのコネクタや Azure Logic Apps のその他の操作に [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)が適用されます。
+REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ ソースに接続する[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成することもできます。 ゲートウェイ自体では追加のコストは発生しませんが、これらのコネクタや Azure Logic Apps のその他の操作に [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 

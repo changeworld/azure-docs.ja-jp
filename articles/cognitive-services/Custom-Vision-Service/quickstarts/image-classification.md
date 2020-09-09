@@ -1,22 +1,22 @@
 ---
-title: クイック スタート:Custom Vision SDK を使用して画像の分類を作成する
+title: クイック スタート:Custom Vision クライアント ライブラリを使用して画像の分類を作成する
 description: クイック スタート:Custom Vision SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.date: 08/17/2020
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 89ac56655b7f844689fa3d948141ad0190da02b4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 805a88824d0fdf3102fb56ebcb02eb0d6dfa36bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406038"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919380"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk"></a>クイック スタート:Custom Vision SDK を使って画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-client-library"></a>クイック スタート:Custom Vision クライアント ライブラリを使って画像分類プロジェクトを作成する
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial.md)]

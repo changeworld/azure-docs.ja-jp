@@ -1,27 +1,27 @@
 ---
 title: Azure Blob Storage でのネットワーク ファイル システム 3.0 のサポート (プレビュー) | Microsoft Docs
-description: Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 このサポートにより、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。
+description: Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 このサポートにより、Windows と Linux のクライアントでは、オンプレミスで実行されている Azure 仮想マシン (VM) またはコンピューターから Blob Storage 内のコンテナーをマウントできます。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372894"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166979"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)
 
-Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 このサポートにより、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。 
+Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 このサポートにより、Windows または Linux のクライアントでは、オンプレミスの Azure 仮想マシン (VM) またはコンピューターから Blob Storage 内のコンテナーをマウントできます。 
 
 > [!NOTE]
-> Azure BLOB Storage での NFS 3.0 プロトコルのサポートはパブリック プレビュー段階であり、次のリージョンで利用できます。米国東部、米国中部、およびカナダ中部。
+> Azure BLOB Storage での NFS 3.0 プロトコルのサポートはパブリック プレビュー段階であり、次のリージョンで利用できます。米国東部、米国中部、米国中西部、オーストラリア南東部、北ヨーロッパ、英国西部、韓国中部、韓国南部、カナダ中部。
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>一般的なワークフロー:ストレージ アカウント コンテナーのマウント
 
@@ -41,7 +41,7 @@ Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プ
 
 7. コンテナーをマウントします。
 
-詳細な手順については、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Linux で Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
+詳細な手順については、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
 
 > [!IMPORTANT]
 > これらのタスクは、順序どおりに実行することが重要です。 アカウントで NFS 3.0 プロトコルを有効にする前に、作成したコンテナーをマウントすることはできません。 また、アカウントで NFS 3.0 プロトコルを有効にすると、それを無効にすることはできません。
@@ -113,7 +113,7 @@ Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プ
 
 ## <a name="next-steps"></a>次のステップ
 
-開始するには、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Linux で Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
+開始するには、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
 
 
 

@@ -3,14 +3,14 @@ title: カスタム イメージを使用して Linux 上で Azure Functions を
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: mvc, tracking-python
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d6061cd449a33ccf1bb461ada090c0412d1e94ae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87485220"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146863"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -81,17 +81,19 @@ func init LocalFunctionsProject --worker-runtime node --language typescript --do
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 ---
+
+`-DjavaVersion` パラメーターは、使用する Java のバージョンを Functions Runtime に指示します。 プレビュー段階にある Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 `-DjavaVersion` を指定しない場合、Maven の既定値は Java 8 になります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
 
 Maven により、デプロイ時にプロジェクトの生成を終了するための値の入力が求められます。   
 入力を求められたら、次の値を入力します。
@@ -106,8 +108,6 @@ Maven により、デプロイ時にプロジェクトの生成を終了する�
 「`Y`」と入力するか、Enter キーを押して確認します。
 
 Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
-
-Azure で Java 11 上で実行するには、pom.xml ファイルの値を変更する必要があります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
 ::: zone-end
 `--docker` オプションによって、プロジェクトの `Dockerfile` が生成されます。これにより、Azure Functions および選択されたランタイムで使用するための適切なカスタム コンテナーが定義されます。
 
@@ -159,14 +159,6 @@ mvn azure-functions:run
 ## <a name="build-the-container-image-and-test-locally"></a>コンテナー イメージを作成してローカルでテストする
 
 (省略可) プロジェクト フォルダーのルートにある *Dockerfile* を確認します。 Dockerfile には、Linux 上で関数アプリを実行するために必要な環境が記述されています。  Azure Functions でサポートされている基本イメージの詳細な一覧については、[Azure Functions 基本イメージ ページ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
-
-::: zone pivot="programming-language-java"  
-Java 11 (プレビュー) 上で実行している場合は、生成された Dockerfile の `JAVA_VERSION` ビルド引数を次のように変更します。 
-
-```docker
-ARG JAVA_VERSION=11
-```
-::: zone-end
     
 ルート プロジェクト フォルダーで、[docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドを実行し、名前に `azurefunctionsimage`、タグに `v1.0.0` を指定します。 `<DOCKER_ID>` を Docker Hub アカウント ID で置換します。 このコマンドでは、コンテナーの Docker イメージがビルドされます。
 
@@ -311,17 +303,17 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
     1. 左側のナビゲーション パネルで **[関数]** を選択し、検証する関数を選択します。
 
-        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+        ![Azure portal で関数を選択する](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
     1. **[関数の URL の取得]** を選択します。
 
-        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
+        ![Azure portal から関数 URL を取得する](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
     
     1. ポップアップ ウィンドウで、 **[default (function key)]\(既定 (関数キー)\)** を選択し、URL をクリップボードにコピーします。 `?code=` に続く文字列がキーです
 
-        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+        ![既定の関数アクセス キーを選択する](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
 
 
     > [!NOTE]  
@@ -496,7 +488,7 @@ Azure Functions を使用すると、独自の統合コードを記述するこ�
 1. ルート フォルダーで `docker build` コマンドを再度実行します。今回は、タグ内のバージョンを `v1.0.1` に更新します。 以前と同様に、`<docker_id>` を Docker Hub アカウント ID に置き換えてください。
 
     ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. `docker push` を使用して、更新済みのイメージをリポジトリにプッシュして戻します。
