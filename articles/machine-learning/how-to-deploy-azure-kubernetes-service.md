@@ -274,7 +274,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
 
-### <a name="using-vs-code"></a>VS コードを使用する
+### <a name="using-vs-code"></a>VS Code を使用する
 
 VS Code の使用については、「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」を参照してください。
 
