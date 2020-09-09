@@ -62,7 +62,7 @@
       href: walkthroughs-azure-data-lake.md
     - name: SQL Server での R、Python、T-SQL の使用
       href: walkthroughs-sql-server.md
-    - name: SQL DW での T-SQL と Python の使用
+    - name: Azure Synapse Analytics での T-SQL と Python の使用
       href: walkthroughs-sql-data-warehouse.md
 - name: ユーティリティとツール
   items:
@@ -209,7 +209,7 @@
     - name: TDSP を使用している組織
       items:
         - name: New Signature
-          href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
+          href: 'https://newsignature.com/services/'
         - name: BlueGranite
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
     - name: Microsoft の関連リソース

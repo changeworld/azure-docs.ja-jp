@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 7469d60095026c8a016fc1ecaa1a4f92361800f3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771157"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019381"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>クイック スタート:Azure Stack 仮想マシンを Security Center にオンボードする
 Azure サブスクリプションをオンボードした後、Azure Stack Marketplace から **Azure Monitor, Update and Configuration Management** 仮想マシン拡張機能を追加することにより、Security Center を有効にして、Azure Stack で動作している仮想マシンを保護できます。
@@ -29,7 +29,7 @@ Azure サブスクリプションをオンボードした後、Azure Stack Marke
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-このクイック スタートを開始する前に、Security Center の Standard レベルの Azure サブスクリプションを用意する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard レベルは、30 日間無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+このクイックスタートを開始する前に、Security Center の Standard レベルの Azure サブスクリプションを用意する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard レベルは、30 日間無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ## <a name="select-your-workspace-in-azure-security-center"></a>Azure Security Center のワークスペースの選択
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをオンボードした後、Azure Stack Marke
 7. 必要な構成設定の指定が終了したら、 **[OK]** をクリックします。
 8. 拡張機能のインストールが完了すると、その状態が **[プロビジョニング成功]** と表示されます。 Security Center ポータルに仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 
-Windows 用エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)に関するページを参照してください。
+Windows 用エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)に関するページを参照してください。
 
 エージェントの問題に対する Linux のトラブルシューティングについては、[Azure Log Analytics Linux エージェントのトラブルシューティング](../azure-monitor/platform/agent-linux-troubleshoot.md)に関するページを参照してください。
 

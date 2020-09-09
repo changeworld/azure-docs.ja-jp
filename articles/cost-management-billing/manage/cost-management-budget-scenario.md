@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: bfe790924d639a35644a1b8438755d1146dcded7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281839"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690189"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -285,28 +286,26 @@ Cost Management の[予算機能](../costs/tutorial-acm-create-budgets.md)を使
                 "startDate": "2018-06-01T00:00:00Z",
                 "endDate": "2018-10-31T00:00:00Z"
                 },
-                "filters": {
-                },
+                "filters": {},
             "notifications": {
                 "Actual_GreaterThan_80_Percent": {
                     "enabled": true,
                     "operator": "GreaterThan",
                     "threshold": 80,
-                    "contactEmails": [
-                    ],
-                    "contactRoles": [
-                    ],
+                    "contactEmails": [],
+                    "contactRoles": [],
                     "contactGroups": [
-                    "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}
+                        "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}"
                     ]
                 },
-            "Actual_EqualTo_100_Percent": {
-                    "operator": "EqualTo",
-                    "threshold": 100,
-                    "contactGroups": [
-                "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}"
-                    ]
-                }
+               "Actual_EqualTo_100_Percent": {
+                       "operator": "EqualTo",
+                       "threshold": 100,
+                       "contactGroups": [
+                           "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}"
+                       ]
+                   }
+               }
             }
         }
     ```
