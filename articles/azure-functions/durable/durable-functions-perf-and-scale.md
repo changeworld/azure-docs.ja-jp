@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762124"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853706"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -22,13 +22,13 @@ ms.locfileid: "84762124"
 
 **履歴**テーブルは、タスク ハブ内のすべてのオーケストレーション インスタンスの履歴イベントを含む Azure Storage テーブルです。 このテーブルの名前は、*TaskHubName*History の形式になります。 インスタンスが実行されると、新しい行がこのテーブルに追加されます。 このテーブルのパーティション キーは、オーケストレーションのインスタンス ID から派生します。 ほとんどの場合、インスタンス ID はランダムであり、Azure Storage での内部パーティションの最適な分散が確保されます。
 
-オーケストレーション インスタンスを実行する必要があるときには、履歴テーブルの適切な行がメモリに読み込まれます。 その後、これらの "*履歴イベント*" がオーケストレーター関数コードに再生され、以前にチェックポイントされた状態に戻されます。 このように実行履歴を使用した状態の再構築は、[イベント ソーシング パターン](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)の影響を受けます。
+オーケストレーション インスタンスを実行する必要があるときには、履歴テーブルの適切な行がメモリに読み込まれます。 その後、これらの "*履歴イベント*" がオーケストレーター関数コードに再生され、以前にチェックポイントされた状態に戻されます。 このように実行履歴を使用した状態の再構築は、[イベント ソーシング パターン](/azure/architecture/patterns/event-sourcing)の影響を受けます。
 
 ## <a name="instances-table"></a>インスタンス テーブル
 
 **インスタンス** テーブルは、タスク ハブ内のすべてのオーケストレーションおよびエンティティ インスタンスの状態を含む別の Azure Storage テーブルです。 インスタンスが作成されると、このテーブルに新しい行が追加されます。 このテーブルのパーティション キーはオーケストレーション インスタンス ID またはエンティティ キーであり、行キーは固定定数です。 オーケストレーションまたはエンティティ インスタンスごとに 1 行があります。
 
-このテーブルは、`GetStatusAsync` (.NET) API と `getStatus` (JavaScript) API の他に、[status query HTTP API](durable-functions-http-api.md#get-instance-status) からのインスタンス クエリ要求を満たすために使用されます。 最終的には、前述の**履歴**テーブルの内容との整合性が維持されます。 このように別の Azure Storage テーブルを使用したインスタンス クエリ操作への効率的な対応は、[コマンド クエリ責務分離 (CQRS) パターン](https://docs.microsoft.com/azure/architecture/patterns/cqrs)の影響を受けます。
+このテーブルは、`GetStatusAsync` (.NET) API と `getStatus` (JavaScript) API の他に、[status query HTTP API](durable-functions-http-api.md#get-instance-status) からのインスタンス クエリ要求を満たすために使用されます。 最終的には、前述の**履歴**テーブルの内容との整合性が維持されます。 このように別の Azure Storage テーブルを使用したインスタンス クエリ操作への効率的な対応は、[コマンド クエリ責務分離 (CQRS) パターン](/azure/architecture/patterns/cqrs)の影響を受けます。
 
 ## <a name="internal-queue-triggers"></a>内部キュー トリガー
 
@@ -224,6 +224,10 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 たとえば、`durableTask/extendedSessionIdleTimeoutInSeconds` を 30 秒に設定した場合、実行時間の短いオーケストレーターまたはエンティティ関数の 1 回の実行時間が 1 秒未満であっても、30 秒間メモリが占有されることになります。 また、前述の `durableTask/maxConcurrentOrchestratorFunctions` クォータにもカウントされるので、他のオーケストレーターまたはエンティティ関数の実行を妨げる可能性があります。
 
 オーケストレーターおよびエンティティ関数に対する延長セッションの具体的な効果については、次のセクションで説明します。
+
+> [!NOTE]
+> 延長セッションは現在、C# や F# など、.NET 言語でのみサポートされています。 その他のプラットフォームで `extendedSessionsEnabled` を `true` に設定すると、ランタイム問題が発生することがあります。たとえば、警告なく、アクティビティやオーケストレーションでトリガーされる関数の実行に失敗します。
+
 
 ### <a name="orchestrator-function-replay"></a>オーケストレーター関数の再生
 

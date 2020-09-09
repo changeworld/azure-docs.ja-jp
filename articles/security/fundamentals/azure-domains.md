@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2020
 ms.author: memildin
-ms.openlocfilehash: f12a137d4cf182837e2f2212923b97cb7dc5f34a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 63b00682af3de8c558a6ef69dd6cb8b9a7d5f2b4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057774"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433201"
 ---
 # <a name="reference-list-of-azure-domains-not-comprehensive"></a>Azure ドメインの参照一覧 (一部)
 
@@ -48,5 +48,5 @@ ms.locfileid: "86057774"
 |[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) と [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)|*.azureedge.net|
 |[Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)|*.table.core.windows.net|
 |[Azure の Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)|*.trafficmanager.net|
-|[Azure Websites](https://azure.microsoft.com/resources/videos/playlists/websites/)|*.azurewebsites.net|
+|Azure Websites|*.azurewebsites.net|
 |[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualstudio.com|

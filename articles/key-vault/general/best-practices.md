@@ -1,6 +1,6 @@
 ---
 title: Key Vault を使用するためのベスト プラクティス - Azure Key Vault | Microsoft Docs
-description: このドキュメントでは、Key Vault を使用するためのいくつかのベスト プラクティスについて説明します。
+description: アクセスの制御、別のキー コンテナーを使用する状況、バックアップ、ログ、回復オプションなど、Azure Key Vault のベスト プラクティスについて説明します。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cec3ad4e113fd6ee3f4e30ad2a6877b886a958e0
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213076"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189880"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault を使用するためのベスト プラクティス
 
@@ -56,5 +56,5 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 ## <a name="turn-on-recovery-options"></a>回復オプションの有効化
 
-1. [論理的な削除](overview-soft-delete.md)を有効にします。
+1. [論理的な削除](soft-delete-overview.md)を有効にします。
 2. 論理的な削除が有効になってもシークレットまたはコンテナーの強制削除を防ぐには、パージ保護を有効にします。

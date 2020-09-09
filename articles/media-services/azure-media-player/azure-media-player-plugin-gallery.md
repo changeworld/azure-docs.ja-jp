@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263739"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282485"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player プラグイン ギャラリー #
 
@@ -20,7 +20,7 @@ ms.locfileid: "84263739"
 | プラグイン名                         | デモ URL                    | ソース コード                | 説明    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | 追加機能                 | | | |
-| **新しい情報!** AMP360Video                | [デモ](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | このプラグインを使用すると、VR 対応デバイスまたはデスクトップの AMP で 360 ビデオを視覚化できます。 詳細なドキュメントは、[こちら](https://doc\.babylonjs\.com/extensions/amp360video)でご覧いただけます。 |
+| **新しい情報!** AMP360Video                | [デモ](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | このプラグインを使用すると、VR 対応デバイスまたはデスクトップの AMP で 360 ビデオを視覚化できます。 詳細なドキュメントは、[こちら](https://doc.babylonjs.com/extensions/amp360video)でご覧いただけます。 |
 |  Sprite Tip                         | [デモ](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Services (AMS) Media Encoder Standard (MES) から生成されたビデオ サムネイル画像スプライトのタイムライン レンダリングに使用される Azure Media Player (AMP) プラグイン。 |
 | Diagnostics Overlay                 | [デモ](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | このプラグインには、以下のものが表示されます。すべての主要パラメーター、ビデオの統計情報、ビデオ再生ライフサイクルのすべてのイベント、および保護されている場合は DRM 保護情報 (キー ID、ライセンスの取得 URL など)。                                                                                                                                                                      |
 | Frame rate and Timecode calculator | 使用可能なデモはありません | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | このプラグインは、最初の MPEG-DASH ビデオ フラグメントの `tfhd`/`trun` MP4 ボックスに基づいてビデオのフレーム レートを計算し、MPEG-DASH クライアント マニフェストからタイム スケール値を解析します。また、プレーヤーから特定の絶対時間のタイムコードを生成する手段を備え、また、そのタイムコードからプレーヤーの絶対時間を得ることもできます。 |

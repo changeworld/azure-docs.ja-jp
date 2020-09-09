@@ -22,8 +22,6 @@
       href: howto-health-data-triage.md
     - name: デバイスの接続
       items:
-        - name: MXChip IoT DevKit を準備して接続する
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Rigado Cascade 500 を準備して接続する
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Azure CLI を使用してデバイスの接続性を監視する

@@ -4,15 +4,16 @@ description: パートナーに関連するポータル管理トピックにつ�
 author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f316cc8926692ed3d58128483e7d9a6ff8e2af8f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b9e96415c07ba317091be61dcac319aacafcdfe8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298178"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689951"
 ---
 # <a name="azure-ea-portal-administration-for-partners"></a>パートナー向けの Azure EA ポータル管理
 

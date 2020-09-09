@@ -1,6 +1,6 @@
 ---
 title: アーカイブ層から BLOB データをリハイドレートする
-description: データにアクセスできるように、アーカイブ ストレージから BLOB をリハイドレートします。
+description: BLOB データにアクセスできるように、アーカイブ ストレージから BLOB をリハイドレートします。 アーカイブ済み BLOB をオンライン層にコピーします。
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: cbaa1d34eb8fe44b1c367d8fa3f84687fe7568e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433181"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035146"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
 
@@ -94,7 +94,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to Hot using Standard priority rehydrate
 $blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")

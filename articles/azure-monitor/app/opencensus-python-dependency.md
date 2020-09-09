@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: abfd5e104bd4854781a0d3c9d08544506279518a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499462"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850085"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python を使用した依存関係の追跡
 
 依存関係は、アプリケーションによって呼び出される外部コンポーネントです。 依存関係データは、OpenCensus Python とそのさまざまな統合を使用して収集されます。 その後、データは Azure Monitor の Application Insights に `dependencies` テレメトリとして送信されます。
 
-まず、最新の [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
+まず、最新の [OpenCensus Python SDK](./opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
 
 ## <a name="in-process-dependencies"></a>プロセス内の依存関係
 
@@ -170,8 +170,9 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アプリケーション マップ](../../azure-monitor/app/app-map.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) のクエリ](../../azure-monitor/log-query/log-query-overview.md)
-* [トランザクションの診断](../../azure-monitor/app/transaction-diagnostics.md)
+* [アプリケーション マップ](./app-map.md)
+* [可用性](./monitor-web-app-availability.md)
+* [Search](./diagnostic-search.md)
+* [Log (Analytics) のクエリ](../log-query/log-query-overview.md)
+* [トランザクションの診断](./transaction-diagnostics.md)
+

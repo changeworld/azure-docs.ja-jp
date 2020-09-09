@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 2103c93e553cc5e1e94941b1567bd3c0f168eabf
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: d89d46e3365a97d9deea8a89de2d9a1d5799cb72
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127393"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836056"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>チュートリアル:Azure Notification Hubs (バージョン 2.0.4) を使用して iOS アプリにプッシュ通知を送信する
 
@@ -456,7 +456,7 @@ ms.locfileid: "85127393"
 
 通知の送信方法を確認できるチュートリアルの一覧を次に示します。
 
-- Azure Mobile Apps:Notification Hubs に統合されている Mobile Apps バックエンドから通知を送信する方法の例については、「 [iOS アプリへのプッシュ通知の追加](/azure/app-service-mobile/app-service-mobile-ios-get-started-push)」を参照してください。
+- Azure Mobile Apps:Notification Hubs に統合されている Mobile Apps バックエンドから通知を送信する方法の例については、「 [iOS アプリへのプッシュ通知の追加](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)」を参照してください。
 - ASP.NET:  [Notification Hubs を使用してユーザーにプッシュ通知を送信する方法](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)。
 - Azure Notification Hubs Java SDK: Java からの通知を送信するには「 [Java から Notification Hubs を使用する方法](notification-hubs-java-push-notification-tutorial.md)」を参照してください。 これは Android の開発用に Eclipse でテストされています。
 - PHP:  [PHP から Notification Hubs を使用する方法](notification-hubs-php-push-notification-tutorial.md)。
@@ -491,7 +491,7 @@ iOS でプッシュ通知をテストするには、物理 iOS デバイスに�
 - [登録管理](notification-hubs-push-notification-registration-management.md)
 - [タグの使用](notification-hubs-tags-segment-push-message.md)
 - [カスタム テンプレートの使用](notification-hubs-templates-cross-platform-push-messages.md)
-- [Service Bus access control with shared access signatures](/azure/service-bus-messaging/service-bus-sas) (共有アクセス署名による Service Bus のアクセスの制御)
+- [Service Bus access control with shared access signatures](../service-bus-messaging/service-bus-sas.md) (共有アクセス署名による Service Bus のアクセスの制御)
 - [プログラムによる SAS トークンの生成](/rest/api/eventhub/generate-sas-token)
 - [Apple のセキュリティ: 一般的な暗号化](https://developer.apple.com/security/)
 - [UNIX エポック時間](https://en.wikipedia.org/wiki/Unix_time)

@@ -2,16 +2,17 @@
 title: Azure Application Insights における分散トレース | Microsoft Docs
 description: OpenCensus プロジェクトでパートナーシップを使用した分散トレースに対する Microsoft のサポートに関する情報を提供します
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c1e6f3f6c4ee0abe1a25d5a9182f6e4e1a9d0f4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539994"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929229"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 
@@ -55,5 +56,6 @@ OpenCensus Web サイトには、[Python](https://opencensus.io/api/python/trace
 ## <a name="next-steps"></a>次のステップ
 
 * [OpenCensus Python の使用ガイド](https://opencensus.io/api/python/trace/usage.html)
-* [アプリケーション マップ](./../../azure-monitor/app/app-map.md)
-* [エンドツーエンドのパフォーマンスの監視](./../../azure-monitor/learn/tutorial-performance.md)
+* [アプリケーション マップ](./app-map.md)
+* [エンドツーエンドのパフォーマンスの監視](../learn/tutorial-performance.md)
+

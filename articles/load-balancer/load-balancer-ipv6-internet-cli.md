@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 03bedba280fca4c051685eabdfa47eaaf00f05d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001575"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する
 
@@ -268,7 +268,7 @@ NIC を作成し、それらを NAT 規則、ロード バランサー規則、�
 
 ## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>バックエンドの VM のリソースの作成および各 NIC の関連付け
 
-VM を作成するには、ストレージ アカウントが必要です。 負荷分散には、VM を可用性セットのメンバーにする必要があります。 VM の作成の詳細については、[PowerShell で Azure VM を作成する方法](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関するページを参照してください。
+VM を作成するには、ストレージ アカウントが必要です。 負荷分散には、VM を可用性セットのメンバーにする必要があります。 VM の作成の詳細については、[PowerShell で Azure VM を作成する方法](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関するページを参照してください。
 
 1. PowerShell 変数を設定します。
 

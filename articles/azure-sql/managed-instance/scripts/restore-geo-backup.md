@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 658bedad3b74bf30ba23562ebf025af4781f1034
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0c6ca03f535201059f107d6b53bc423b92d1c1c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073372"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>PowerShell を使用して Azure SQL Managed Instance データベースを別の geo リージョンに復元する
 
@@ -82,6 +82,6 @@ Remove-AzResourceGroup -ResourceGroupName $TargetResourceGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 Azure SQL Database 用の PowerShell サンプル スクリプトは、他にも [Azure SQL Database 用の PowerShell スクリプト](../../database/powershell-script-content-guide.md)のページでご覧いただけます。

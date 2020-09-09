@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499241"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327907"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 
@@ -30,7 +30,7 @@ Application Insights で一定期間にわたってユーザーの行動を追�
 - セッション:セッション ID を含みます。
 
 > [!NOTE]
-> これは、Application Insights でユーザー アクティビティを追跡するための手動の手順を概説した高度な記事です。 多くの Web アプリケーションでは、**これらの手順は必要ありません**。ユーザー アクティビティを自動的に追跡するには、既定のサーバー側 SDK と[クライアント/ブラウザー側 JavaScript SDK](../../azure-monitor/app/website-monitoring.md ) で十分であるためです。 サーバー側 SDK に加えて[クライアント側監視](../../azure-monitor/app/website-monitoring.md )を構成していない場合は、まずそれを構成し、ユーザー行動分析ツールが期待どおりに機能しているかどうかをテストして確認します。
+> これは、Application Insights でユーザー アクティビティを追跡するための手動の手順を概説した高度な記事です。 多くの Web アプリケーションでは、**これらの手順は必要ありません**。ユーザー アクティビティを自動的に追跡するには、既定のサーバー側 SDK と[クライアント/ブラウザー側 JavaScript SDK](./website-monitoring.md) で十分であるためです。 サーバー側 SDK に加えて[クライアント側監視](./website-monitoring.md)を構成していない場合は、まずそれを構成し、ユーザー行動分析ツールが期待どおりに機能しているかどうかをテストして確認します。
 
 ## <a name="choosing-user-ids"></a>ユーザー ID の選択
 
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [ユーザー、セッション、およびイベント](usage-segmentation.md)
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
-    - [ブック](../../azure-monitor/platform/workbooks-overview.md)
+    - [ブック](../platform/workbooks-overview.md)
+

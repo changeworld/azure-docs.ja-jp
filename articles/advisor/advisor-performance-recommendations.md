@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 45fb1f8844067cb34b415c3897db3b1233ab5c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124488"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653309"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -16,18 +16,18 @@ Azure Advisor のパフォーマンスに関する推奨事項は、ビジネス
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Traffic Manager プロファイルの DNS Time to Live を短縮して迅速に正常なエンドポイントにフェールオーバーする
 
-Azure Traffic Manager プロファイルで[有効期限 (TTL) 設定](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations)を使用すると、特定のエンドポイントがクエリに応答しなくなった場合にエンドポイントを切り替える時間を指定できます。 TTL 値を減らすと、クライアントは機能しているエンドポイントに短時間でルーティングされます。
+Azure Traffic Manager プロファイルで[有効期限 (TTL) 設定](../traffic-manager/traffic-manager-performance-considerations.md)を使用すると、特定のエンドポイントがクエリに応答しなくなった場合にエンドポイントを切り替える時間を指定できます。 TTL 値を減らすと、クライアントは機能しているエンドポイントに短時間でルーティングされます。
 
 Azure Advisor によって、長い TTL が構成されている Traffic Manager プロファイルが特定されます。 プロファイルが [Fast Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/) 用に構成されているかどうかに応じて、TTL を 20 秒または 60 秒のいずれかに構成することをお勧めします。
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>SQL Database Advisor を使用してデータベースのパフォーマンスを向上させる
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>SQL Database Advisor を使用してデータベースのパフォーマンスを向上させる (一時的に無効)
 
 Azure Advisor では、すべての Azure リソースに関して一貫性のある推奨事項が一元的にまとめて示されます。 SQL Database Advisor と統合して、データベースのパフォーマンスを向上させるための推奨事項を生成します。 SQL Database Advisor は、データベースの使用履歴を分析することで、パフォーマンスを評価します。 その後、データベースの一般的なワークロードを実行する上で最適な推奨事項が提示されます。
 
 > [!NOTE]
 > 推奨事項を取得する前に、データベースを約 1 週間使用する必要があり、その 1 週間にある程度の一貫性のあるアクティビティが存在する必要があります。 SQL Database Advisor は、ランダムでむらのあるアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。
 
-詳細については、[SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/) に関するページを参照してください。
+詳細については、[SQL Database Advisor](../azure-sql/database/database-advisor-implement-performance-recommendations.md) に関するページを参照してください。
 
 ## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>信頼性とパフォーマンスを向上させるために、ストレージ クライアント ライブラリを最新バージョンにアップグレードする
 
@@ -39,7 +39,7 @@ Azure Advisor では、App Service のエクスペリエンスを向上させ、
 * アプリの実行時にメモリや CPU のリソースが使い尽くされるインスタンスの検出と軽減オプションの提供。
 * Web アプリやデータベースなどのリソースの配置によってパフォーマンスの向上とコストの削減を実現できるインスタンスの検出。
 
-詳細については、「[Azure App Service のベスト プラクティス](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)」を参照してください。
+詳細については、「[Azure App Service のベスト プラクティス](../app-service/app-service-best-practices.md)」を参照してください。
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>マネージド ディスクを使用してディスク I/O スロットリングを防ぐ
 
@@ -51,32 +51,32 @@ Advisor によって、ストレージ アカウントに大量のトランザ�
 
 Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage アカウントを使用する仮想マシンのディスクでは、ソリッド ステート ドライブ (SSD) にデータを格納します。 アプリケーションで最適なパフォーマンスを実現するには、高い IOPS を必要とする仮想マシン ディスクは Premium Storage に移行することをお勧めします。
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>SQL Data Warehouse テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Azure Synapse Analytics テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
 
-データ スキューは、ワークロードの実行時に不要なデータ移動やリソースのボトルネックを引き起こす可能性があります。 Advisor によって、15% を超える分散データ スキューが検出されます。 データを再配分して、テーブルの分散キーの選択を見直すことをお勧めします。 スキューの識別と除去の詳細については、[スキューのトラブルシューティング](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)に関する記事を参照してください。
+データ スキューは、ワークロードの実行時に不要なデータ移動やリソースのボトルネックを引き起こす可能性があります。 Advisor によって、15% を超える分散データ スキューが検出されます。 データを再配分して、テーブルの分散キーの選択を見直すことをお勧めします。 スキューの識別と除去の詳細については、[スキューのトラブルシューティング](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)に関する記事を参照してください。
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>SQL Data Warehouse テーブルの古いテーブル統計情報を作成するか更新してクエリのパフォーマンスを向上させる
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Azure Synapse Analytics テーブルの古いテーブル統計を作成するか更新してクエリのパフォーマンスを向上させる
 
-Advisor によって最新の[テーブル統計](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)状態がないテーブルが特定され、統計の作成または更新が推奨されます。 Azure SQL Data Warehouse のクエリ オプティマイザーでは、最新の統計が使用され、クエリ結果のカーディナリティまたは行数が推定されます。 このような推定値を使用すると、クエリ オプティマイザーでクエリ プランを作成し、最速のパフォーマンスを実現することができます。
+Advisor によって最新の[テーブル統計](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md)状態がないテーブルが特定され、統計の作成または更新が推奨されます。 Azure Synapse Analytics のクエリ オプティマイザーでは、最新の統計が使用され、クエリ結果のカーディナリティまたは行数が推定されます。 このような推定値を使用すると、クエリ オプティマイザーでクエリ プランを作成し、最速のパフォーマンスを実現することができます。
 
 ## <a name="improve-mysql-connection-management"></a>MySQL 接続管理を向上させる
 
 Advisor の分析には、MySQL サーバーに接続するアプリケーションで接続が効率的に管理されていない可能性が示されることがあります。 このような状態は、不必要なリソース消費とアプリケーション待機時間の全体的な増加につながる可能性があります。 接続管理を向上させるには、有効期間の短い接続の数を減らし、不要なアイドル状態の接続を排除することをお勧めします。 こうした機能強化は、ProxySQL のようなサーバー側の接続プーラーを構成することで実現できます。
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>スケールアップして SQL Data Warehouse テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>スケールアップして Azure Synapse Analytics テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
 
-Azure Advisor を使用すると、SQL Data Warehouse テーブルのキャッシュ使用率が高く、ヒット率が低いかどうかを検出できます。 この状態は、SQL Data Warehouse インスタンスのパフォーマンスに影響を与える可能性がある高いキャッシュ削除を示しています。 Advisor によって、SQL Data Warehouse インスタンスをスケールアップし、ワークロードに十分なキャッシュ容量を割り当てることが推奨されます。
+Azure Advisor を使用すると、Azure Synapse Analytics テーブルのキャッシュ使用率が高く、ヒット率が低いかどうかを検出できます。 この状態はキャッシュ削除が多いことを示し、Azure Synapse Analytics インスタンスのパフォーマンスに影響を及ぼす可能性があります。 Advisor によって、ワークロードに十分なキャッシュ容量を割り当てられるように、Azure Synapse Analytics インスタンスをスケールアップすることが推奨されます。
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse のテーブルをレプリケートされたテーブルに変換し、クエリのパフォーマンスを向上させる
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>Azure Synapse Analytics のテーブルをレプリケートされたテーブルに変換し、クエリのパフォーマンスを向上させる
 
 Advisor によって、レプリケートされておらず、変換によってメリットが得られるテーブルが特定されます。 このようなテーブルを変換することをお勧めします。 推奨事項は以下に基づいています。
 - レプリケートされるテーブルのサイズ。 
 - 列数です。 
 - テーブルの分散の種類。 
-- SQL Data Warehouse テーブルのパーティション数。 
+- Azure Synapse Analytics テーブルのパーティション数。 
 
-コンテキストに対する推奨では、追加のヒューリスティックが提供される場合があります。 この推奨事項が決定される方法の詳細については、[SQL Data Warehouse の推奨事項](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)に関する記事を参照してください。 
+コンテキストに対する推奨では、追加のヒューリスティックが提供される場合があります。 この推奨事項が決定される方法の詳細については、[Azure Synapse Analytics の推奨事項](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)に関する記事を参照してください。 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>ストレージ アカウントを Azure Resource Manager に移行して最新の Azure 機能を手に入れる
 
@@ -88,7 +88,7 @@ Advisor によって、レプリケートされておらず、変換によって
 Advisor を使用すると、クラシック デプロイ モデルを使用しているスタンドアロンのストレージ アカウントがすべて特定して、Resource Manager デプロイ モデルに移行することを推奨します。
 
 > [!NOTE]
-> Azure Monitor のクラシック アラートは 2019 年 8 月に廃止されました。 新しいプラットフォームでアラート機能を保持するには、Resource Manager を使用するようにクラシック ストレージ アカウントをアップグレードすることをお勧めします。 詳細については、[クラシック アラートの廃止](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)に関するページを参照してください。
+> Azure Monitor のクラシック アラートは 2019 年 8 月に廃止されました。 新しいプラットフォームでアラート機能を保持するには、Resource Manager を使用するようにクラシック ストレージ アカウントをアップグレードすることをお勧めします。 詳細については、[クラシック アラートの廃止](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)に関するページを参照してください。
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>サブスクリプションの上限に到達しないようにストレージ アカウントを設計する
 
@@ -120,17 +120,17 @@ Advisor によって、サポートされていないバージョンの Kubernet
 長期間にわたって CPU の使用率が高いと、ワークロードのクエリ パフォーマンスが低速に陥る可能性があります。 CPU サイズを増やすと、データベース クエリのランタイムを最適化し、全体のパフォーマンスを向上させることができます。 Advisor によって、CPU 使用率が高く CPU 制約があるワークロードを実行している可能性が高いサーバーが特定され、コンピューティングのスケーリングが推奨されます。
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Azure Database for MySQL、Azure Database for PostgreSQL、および Azure Database for MariaDB サーバーのメモリの制約を減らすか、メモリ最適化 SKU に移行します。
-キャッシュ ヒット率が低いと、クエリ パフォーマンスが低下し IOPS が高くなる可能性があります。 この状態は、不適切なクエリ プランまたはメモリを集中的に使用するワークロードによって発生する可能性があります。 クエリ プランを修正するか、Azure Database for PostgreSQL、Azure Database for MySQL、または Azure Database for MariaDB サーバーの [メモリを増やす](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)と、データベース ワークロードの実行を最適化するために役立ちます。 Azure Advisor によって、この高いバッファー プール チャーンの影響を受けるサーバーが特定されます。 次のいずれかの操作を実行することをお勧めします。 
+キャッシュ ヒット率が低いと、クエリ パフォーマンスが低下し IOPS が高くなる可能性があります。 この状態は、不適切なクエリ プランまたはメモリを集中的に使用するワークロードによって発生する可能性があります。 クエリ プランを修正するか、Azure Database for PostgreSQL、Azure Database for MySQL、または Azure Database for MariaDB サーバーの [メモリを増やす](../postgresql/concepts-pricing-tiers.md)と、データベース ワークロードの実行を最適化するために役立ちます。 Azure Advisor によって、この高いバッファー プール チャーンの影響を受けるサーバーが特定されます。 次のいずれかの操作を実行することをお勧めします。 
 - クエリ プランを修正する
 - より多くのメモリを持つ SKU に移行する 
 - ストレージ サイズを増やして IOPS を増やす。
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Azure Database for MySQL または Azure Database for PostgreSQL の読み取りレプリカを使用して、読み取りの負荷が高いワークロードの読み取りをスケールアウトする
-Advisor を使用すると、サーバー上での過去 7 日間にわたる書き込みに対する読み取りの比率など、ワークロードベースのヒューリステックを活用して、読み取りの負荷が高いワークロードを特定できます。 読み取りまたは書き込みの比率が高い Azure Database for PostgreSQL または Azure Database for MySQL のリソースがあると、CPU またはメモリの競合が発生し、クエリのパフォーマンスが低下する可能性があります。  [レプリカ](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)を追加すると、レプリカ サーバーへの読み取りをスケールアウトし、プライマリ サーバーでの CPU またはメモリの制約を回避できます。 Advisor によってワークロードの読み取りの負荷が高いサーバーが特定され、 [読み取りレプリカ](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) を追加して読み取りワークロードの一部をオフロードすることが推奨されます。
+Advisor を使用すると、サーバー上での過去 7 日間にわたる書き込みに対する読み取りの比率など、ワークロードベースのヒューリステックを活用して、読み取りの負荷が高いワークロードを特定できます。 読み取りまたは書き込みの比率が高い Azure Database for PostgreSQL または Azure Database for MySQL のリソースがあると、CPU またはメモリの競合が発生し、クエリのパフォーマンスが低下する可能性があります。  [レプリカ](../postgresql/howto-read-replicas-portal.md)を追加すると、レプリカ サーバーへの読み取りをスケールアウトし、プライマリ サーバーでの CPU またはメモリの制約を回避できます。 Advisor によってワークロードの読み取りの負荷が高いサーバーが特定され、 [読み取りレプリカ](../postgresql/concepts-read-replicas.md) を追加して読み取りワークロードの一部をオフロードすることが推奨されます。
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Azure Database for MySQL、Azure Database for PostgreSQL、または Azure Database for MariaDB サーバーをより高い SKU に拡張して接続の制約を防ぐ
-データベース サーバーへの新しい接続ごとにメモリが占有されます。 メモリの [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)が原因でサーバーへの接続がエラーになっている場合は、データベース サーバーのパフォーマンスが低下します。 Azure Advisor によって、実行中のサーバーのうち、多数の接続エラーが発生しているものが特定されます。 次のいずれかのアクションを実行して、サーバーの接続制限をアップグレードし、サーバーにより多くのメモリを割り当てることが推奨されます。
+データベース サーバーへの新しい接続ごとにメモリが占有されます。 メモリの [上限](../postgresql/concepts-limits.md)が原因でサーバーへの接続がエラーになっている場合は、データベース サーバーのパフォーマンスが低下します。 Azure Advisor によって、実行中のサーバーのうち、多数の接続エラーが発生しているものが特定されます。 次のいずれかのアクションを実行して、サーバーの接続制限をアップグレードし、サーバーにより多くのメモリを割り当てることが推奨されます。
 - コンピューティングをスケールアップする。 
 - メモリ最適化 SKU を使用する (これにより、コアあたりのコンピューティングが増えます)。
 
@@ -152,6 +152,22 @@ Advisor によって、既定のインデックス作成ポリシーが使用さ
 
 Azure Advisor によって、100 のクエリ ページ サイズを使用している Azure Cosmos DB コンテナーが特定されます。 高速なスキャンのために、-1 のページ サイズの使用が推奨されます。 [MaxItemCount の詳細を確認してください。](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>お使いの HBase クラスターで、クラスターのパフォーマンスの向上に高速書き込み機能を使用することを検討する
+Azure Advisor は過去 7 日間のシステム ログを分析し、お使いのクラスターで次のシナリオが発生したかどうかを識別します。
+1. WAL の同期時に長い待機時間が発生 
+2. 大量の書き込み要求 (1 時間に 1000 を超える avg_write_requests/second/node)
+
+これらの条件は、クラスターで書き込み時に長い待機時間が発生していることを示しています。 これは、お使いのクラスターで大量のワークロードが実行されたことが原因である可能性があります。お使いのクラスターのパフォーマンスを向上させるには、Azure HDInsight HBase の高速書き込み機能の利用を検討することをお勧めします。 HDInsight の Apache HBase クラスター用高速書き込み機能では、クラウド ストレージを使用する代わりに、Premium SSD マネージド ディスクをすべての RegionServer (ワーカー ノード) にアタッチします。 その結果、書き込み待機時間が短縮され、アプリケーションの回復性が向上します。 この機能の詳細については、[こちら](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)を参照してください。
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>パフォーマンスの向上に、Azure Data Explorer のテーブルのキャッシュ期間 (ポリシー) を確認する (プレビュー)
+この推奨事項では、構成されているキャッシュ期間 (ポリシー) より過去のクエリが多い Azure Data Explorer のテーブルが表示されます (キャッシュ範囲外のデータにアクセスするクエリの割合で、上位 10 個のテーブルが示されます)。 クラスターのパフォーマンスを向上させるために推奨されるアクション:このテーブルのクエリを、(定義されたポリシー内で) 必要最小限の時間範囲に制限します。 または、時間範囲全体のデータが必要な場合は、キャッシュ期間を推奨される値に増やします。
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>MySQL の一時テーブルのサイズを最適化してパフォーマンスを向上させる
+Advisor で、一時テーブルのパラメーター設定が低いため、お使いの MySQL サーバーで不要な I/O オーバーヘッドが発生している可能性があることが解析されました。 これにより、ディスク ベースの不要なトランザクションが発生し、パフォーマンスが低下する可能性があります。 "tmp_table_size" パラメーターと "max_heap_table_size" パラメーターの値を大きくして、ディスク ベースのトランザクションの数を減らすことをお勧めします。 [詳細情報](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>ノード間にワークロードを分散させるためにサーバー グループ内でデータを分散させる
+コーディネーター上には残っているが、データは分散されないサーバー グループが Advisor により識別されました。 これに基づき、Hyperscale (Citus) のメリットをすべて得るために、お使いのサーバー グループ内のワーカー ノードにデータを分散させることが Advisor によって推奨されています。 これによって、サーバー グループ内の各ノードのリソースが活用され、クエリのパフォーマンスが向上します。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2135201) 
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
@@ -168,4 +184,4 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

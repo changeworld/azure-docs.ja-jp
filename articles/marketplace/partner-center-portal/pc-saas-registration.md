@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109265"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548337"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
 
@@ -80,7 +82,7 @@ Post<br>
 
 |  プロパティ名     |  必須         |  説明 |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant-type`      |  True      |  付与タイプ。 `"client_credentials"`を使用します。 |
+|  `grant_type`      |  True      |  付与タイプ。 `"client_credentials"`を使用します。 |
 |  `client_id`       |  True      |  Azure AD アプリに関連付けられているクライアントまたはアプリの識別子。 |
 |  `client_secret`   |  True      |  Azure AD アプリに関連付けられているシークレット。 |
 |  `resource`        |  True      |  トークンを要求されたターゲット リソース。 この場合、Marketplace SaaS API は常にターゲット リソースであるため、`20e940b3-4c77-4b0b-9a53-9e16a1b010a7` を使用します。 |

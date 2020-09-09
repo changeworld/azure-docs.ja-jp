@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics でパフォーマンス向上のために Spark ジョブを最適化する
+title: パフォーマンスのための Spark ジョブの最適化
 description: この記事では、Azure Synapse Analytics の Apache Spark の概要と、さまざまな概念について説明します。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089262"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark ジョブ (プレビュー) を最適化する
 

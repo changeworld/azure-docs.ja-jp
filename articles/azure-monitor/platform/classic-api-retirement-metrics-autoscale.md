@@ -4,12 +4,12 @@ description: メトリックおよび自動スケーリングのクラシック 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505433"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317384"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 
@@ -21,7 +21,7 @@ Azure Monitor (最初のリリース時には Azure Insights という名前だ�
 
 Azure ポータル、[新しい Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)、PowerShell、CLI、または Resource Manager テンプレートを介して自動スケーリングを管理する場合、操作は必要ありません。  
 
-Azure ポータルまたはさまざまな[監視パートナー サービス](../../azure-monitor/platform/partners.md)を介してメトリックを使用する場合、操作は必要ありません。 Microsoft では監視パートナーと協力して、新しい API への移行を行っています。
+Azure ポータルまたはさまざまな[監視パートナー サービス](./partners.md)を介してメトリックを使用する場合、操作は必要ありません。 Microsoft では監視パートナーと協力して、新しい API への移行を行っています。
 
 ## <a name="who-is-affected"></a>影響を受けるユーザー
 
@@ -89,3 +89,4 @@ Azure サービスやそのワークロードに直接影響はありません�
 
 - [Azure Monitor の新しい REST API](/rest/api/monitor/) 
 - [新しい Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

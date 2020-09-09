@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.custom: tracking-python
-ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: dbfb90abcf301cb22a84ba28359c6cb0bfaacfd6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851617"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021087"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>チュートリアル:SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 
@@ -28,34 +28,35 @@ ms.locfileid: "85851617"
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-
 ## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> SQL API を使用して優先リージョンに接続する
 
-[グローバル分散](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、接続ポリシーを設定して行います。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SQL SDK によって最適なエンドポイントが選択されます。
+[グローバル分散](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SQL SDK によって最適なエンドポイントが選択されます。
 
-この優先リストは、SQL SDK を使用して接続を初期化する際に指定されます。 SDK は、Azure リージョンの順序付きリストである省略可能なパラメーター "PreferredLocations" を受け取ります。
+この優先リストは、SQL SDK を使用して接続を初期化する際に指定されます。 SDK は、Azure リージョンの順序指定済みリストである省略可能なパラメーター `PreferredLocations` を受け取ります。
 
-SDK は、すべての書き込みを現在の書き込みリージョンに自動的に送信します。
+SDK は、すべての書き込みを現在の書き込みリージョンに自動的に送信します。 すべての読み取りは、優先される場所リストの最初の利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストにある次のリージョンを試します。
 
-すべての読み取りは、PreferredLocations リストの最初の利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストにある次のリージョンを試します。これが繰り返されます。
+SDK は、優先される場所で指定されたリージョンからの読み取りのみを試みます。 このため、4 つのリージョンで Azure Cosmos アカウントが利用できるものの、クライアントが `PreferredLocations` 内で読み取り (非書き込み) リージョンを 2 つだけ指定している場合には、`PreferredLocations` で指定されていない読み取りリージョンからは読み取りが行われません。 `PreferredLocations` リストで指定された読み取りリージョンが利用できない場合は、書き込みリージョンから読み取りが行われます。
 
-SDK は、PreferredLocations で指定されたリージョンからの読み取りのみを試みます。 このため、4 つのリージョンでデータベース アカウントが利用できるものの、クライアントが PreferredLocations の読み取り (非書き込み) リージョンを 2 つだけ指定している場合などには、PreferredLocations で指定されていない読み取りリージョンからは読み取りが処理されません。 PreferredLocations で指定された読み取りリージョンが利用できない場合は、書き込みリージョンから読み取りが処理されます。
+アプリケーションは、`WriteEndpoint` と `ReadEndpoint` の 2 つのプロパティをチェックすることで、SDK によって選択された現在の書き込みエンドポイントと読み取りエンドポイントを確認できます。これらのプロパティは SDK バージョン 1.8 以上で利用可能です。 `PreferredLocations` プロパティが設定されていない場合、すべての要求が現在の書き込みリージョンから処理されます。
 
-アプリケーションは、WriteEndpoint と ReadEndpoint の 2 つのプロパティをチェックすることで、SDK によって選択された現在の書き込みエンドポイントと読み取りエンドポイントを確認できます。これらのプロパティは SDK バージョン 1.8 以上で利用可能です。
-
-PreferredLocations プロパティが設定されていない場合、すべての要求が現在の書き込みリージョンから処理されます。
+優先される場所を指定せずに `setCurrentLocation` メソッドを使用すると、SDK は、クライアントが実行されている現在のリージョンに基づいて、優先される場所を自動的に設定します。 SDK は、各リージョンを、現在のリージョンとの距離に基づいて並べ替えます。
 
 ## <a name="net-sdk"></a>.NET SDK
+
 SDK はコードに変更を加えることなく使用できます。 この場合、SDK は読み取りと書き込みの両方を現在の書き込みリージョンに自動的に転送します。
 
-.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。 このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。 文字列値は、「[Azure のリージョン][regions]」ページのリージョン名の列に従って書式設定されます。先頭と末尾の文字のそれぞれ前後にはスペースはありません。
+.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。 このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。 文字列値は、「[Azure のリージョン][regions]」ページのリージョン名の列に従って書式設定されます。先頭文字の前と末尾の文字の後ろにはスペースはありません。
 
 現在の書き込みエンドポイントと読み取りエンドポイントはそれぞれ、DocumentClient.WriteEndpoint と DocumentClient.ReadEndpoint で確認することができます。
 
 > [!NOTE]
 > エンドポイントの URL は、有効期間が長い定数と見なさないでください。 これらは任意のタイミングでサービスによって更新される可能性があります。 SDK はこの変更を自動的に処理します。
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET V2 SDK を使用している場合は、`PreferredLocations` プロパティを使用して、優先リージョンを設定します。
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -78,6 +79,54 @@ DocumentClient docClient = new DocumentClient(
 // connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
+
+または、`SetCurrentLocation` プロパティを使用して、近接度に基づいて優先される場所が選択されるようにすることもできます。
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET V3 SDK を使用している場合は、`ApplicationPreferredRegions` プロパティを使用して、優先リージョンを設定します。
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+または、`ApplicationRegion` プロパティを使用して、近接度に基づいて優先される場所が選択されるようにすることもできます。
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
 
 ## <a name="nodejsjavascript"></a>Node.js と JavaScript
 

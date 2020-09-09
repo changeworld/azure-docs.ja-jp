@@ -3,16 +3,17 @@ title: Azure Cost Management での一般的なコスト分析の使用
 description: この記事では、Azure Cost Management で一般的なコスト分析タスクの結果を取得する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 130d313c1ca549f3a4e6f1ec1bbac2a16a753709
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c03bf5e52ae7f6b259c7b744e6033d760af23dd0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142515"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683676"
 ---
 # <a name="common-cost-analysis-uses"></a>一般的なコスト分析の使用
 

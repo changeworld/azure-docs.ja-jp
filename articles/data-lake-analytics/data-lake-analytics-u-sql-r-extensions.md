@@ -3,17 +3,15 @@ title: Azure Data Lake Analytics で R を使用した U-SQL スクリプトの�
 description: Azure Data Lake Analytics を使用して U-SQL スクリプトで R コードを実行する方法を説明します。 ファイルから R コード インラインまたは参照を埋め込みます。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 40e79202f68a377597fbe144843edbbf38fd77c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110506"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127402"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で R コードを使用した U-SQL スクリプトの拡張
 

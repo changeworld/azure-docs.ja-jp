@@ -3,12 +3,12 @@ title: 監視とログ記録 - Azure
 description: この記事では、Live Video Analytics on IoT Edge の監視とログ記録の概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260575"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934295"
 ---
 # <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -98,7 +98,26 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
      }
    }
    ```
-モジュールによって出力されたイベントは [IoT Edge ハブ](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)に送信され、そこから他の送信先にルーティングできます。 
+モジュールによって出力されたイベントは [IoT Edge ハブ](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)に送信され、そこから他の送信先にルーティングできます。 
+
+### <a name="timestamps-in-analytic-events"></a>分析イベントのタイムスタンプ
+上記のとおり、ビデオ分析の一部として生成されたイベントには、タイムスタンプが関連付けられています。 グラフ トポロジの一部として[ライブ ビデオを記録した](video-recording-concept.md)場合は、このタイムスタンプを使用すると、記録したビデオ内のどこで特定のイベントが発生したかを見つけることができます。 次に示すのは、[Azure Media Service 資産](terminology.md#asset)に記録されたビデオのタイムラインに分析イベントのタイムスタンプをマップする方法に関するガイドラインです。
+
+まず、`eventTime` 値を抽出します。 [時間範囲フィルター](playback-recordings-how-to.md#time-range-filters)でこの値を使用して、記録から適切な部分を取得します。 たとえば、`eventTime` の 30 秒前に開始し、30 秒後に終了するビデオを取り込むことができます。 上記の例では、`eventTime` が 2020-05-12T23:33:09.381Z の場合、+/- 30 秒間の時間枠に対する HLS マニフェストの要求は次のようになります。
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+上記の URL は、メディアのプレイリストが含まれる、いわゆる[マスター プレイリスト](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)を返します。 メディアのプレイリストには、次のようなエントリが含まれます。
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+上記のエントリは、タイムスタンプ値 `143039375031270` で開始するビデオ フラグメントが使用可能であることを報告しています。 分析イベントの `timestamp` 値には、メディアのプレイリストと同じタイムスケールが使用されます。また、この値を使用して、関連するビデオ フラグメントの識別、および適切なフレームのシークを行うことができます。
+
+詳細については、HLS でのフレームに正確なシークに関して数多くある[記事](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS)のいずれかを参照してください。
 
 ## <a name="controlling-events"></a>イベントの制御
 
@@ -110,7 +129,7 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
    
 分析イベントは、モーション検出プロセッサや HTTP 拡張プロセッサなどのノードによって生成され、それらは IoT ハブ シンクを使用して IoT Edge Hub に送信されます。 
 
-[上記のすべてのイベントのルーティング](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)は、$EdgeHub モジュール ツインの必要なプロパティ (配置マニフェスト内) を使用して制御できます。
+[上記のすべてのイベントのルーティング](../../iot-edge/module-composition.md#declare-routes)は、$EdgeHub モジュール ツインの必要なプロパティ (配置マニフェスト内) を使用して制御できます。
 
 ```
  "$edgeHub": {
@@ -126,14 +145,14 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
  }
 ```
 
-上の例では、lvaEdge は Live Video Analytics on IoT Edge モジュールの名前で、ルーティング規則は[ルートの宣言](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)で定義されているスキーマに従います。
+上の例では、lvaEdge は Live Video Analytics on IoT Edge モジュールの名前で、ルーティング規則は[ルートの宣言](../../iot-edge/module-composition.md#declare-routes)で定義されているスキーマに従います。
 
 > [!NOTE]
 > 分析イベントが IoT Edge Hub に確実に到着するようにするには、任意のモーション検出プロセッサ ノードや任意の HTTP 拡張機能プロセッサ ノードの下流に IoT ハブ シンクノードがある必要があります。
 
 ## <a name="event-schema"></a>イベント スキーマ
 
-イベントは Edge デバイス上で生成され、Edge またはクラウドで使用できます。 Live Video Analytics on IoT Edge によって生成されるイベントは、Azure IoT Hub によって確立された[ストリーミング メッセージング パターン](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) (システム プロパティ、アプリケーション プロパティ、および本文を含む) に準拠しています。
+イベントは Edge デバイス上で生成され、Edge またはクラウドで使用できます。 Live Video Analytics on IoT Edge によって生成されるイベントは、Azure IoT Hub によって確立された[ストリーミング メッセージング パターン](../../iot-hub/iot-hub-devguide-messages-construct.md) (システム プロパティ、アプリケーション プロパティ、および本文を含む) に準拠しています。
 
 ### <a name="summary"></a>まとめ
 
@@ -200,7 +219,7 @@ subject プロパティを使用すると、汎用イベントをそれを生成
 
 ## <a name="logging"></a>ログ記録
 
-他の IoT Edge モジュールと同様に、Edge デバイスで[コンテナーのログを調べる](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues)こともできます。 ログに書き込まれる情報は、[次のモジュール ツイン](module-twin-configuration-schema.md) プロパティによって制御できます。
+他の IoT Edge モジュールと同様に、Edge デバイスで[コンテナーのログを調べる](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)こともできます。 ログに書き込まれる情報は、[次のモジュール ツイン](module-twin-configuration-schema.md) プロパティによって制御できます。
 
 * logLevel
 
@@ -222,7 +241,7 @@ subject プロパティを使用すると、汎用イベントをそれを生成
 
 場合によっては、Azure サポートの問題解決を支援するため、上記のログより詳細なログを生成することが必要になる場合があります。 これを実現するには、次の 2 つの手順を実行します。
 
-まず、createOptions を使用して、[モジュール ストレージをデバイス ストレージにリンク](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage)します。 クイックスタートから[配置マニフェスト テンプレート](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json)を確認すると、次のように表示されます。
+まず、createOptions を使用して、[モジュール ストレージをデバイス ストレージにリンク](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage)します。 クイックスタートから[配置マニフェスト テンプレート](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json)を確認すると、次のように表示されます。
 
 ```
 "createOptions": {

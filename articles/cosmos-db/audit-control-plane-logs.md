@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414184"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023689"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB コントロール プレーン操作を監査する方法
 
@@ -27,9 +27,9 @@ Azure Cosmos DB のコントロール プレーンとは、Azure Cosmos アカ�
 
 ## <a name="disable-key-based-metadata-write-access"></a>キー ベースのメタデータ書き込みアクセスを無効にする
 
-Azure Cosmos DB でコントロール プレーン操作を監査する前に、アカウントでのキーベースのメタデータ書き込みアクセスを無効にします。 キーベースのメタデータ書き込みアクセスが無効になっている場合、アカウント キーを使用して Azure Cosmos アカウントに接続しているクライアントは、アカウントにアクセスできません。 書き込みアクセスを無効にするには、`disableKeyBasedMetadataWriteAccess` プロパティを true に設定します。 このプロパティを設定すると、適切なロールベースのアクセス制御 (RBAC) ロールと資格情報を持つユーザーは、すべてのリソースに変更を加えることができます。 このプロパティを設定する方法の詳細については、「[SDK からの変更を防止する](role-based-access-control.md#preventing-changes-from-cosmos-sdk)」の記事を参照してください。 
+Azure Cosmos DB でコントロール プレーン操作を監査する前に、アカウントでのキーベースのメタデータ書き込みアクセスを無効にします。 キーベースのメタデータ書き込みアクセスが無効になっている場合、アカウント キーを使用して Azure Cosmos アカウントに接続しているクライアントは、アカウントにアクセスできません。 書き込みアクセスを無効にするには、`disableKeyBasedMetadataWriteAccess` プロパティを true に設定します。 このプロパティを設定すると、適切なロールベースのアクセス制御 (RBAC) ロールと資格情報を持つユーザーは、すべてのリソースに変更を加えることができます。 このプロパティを設定する方法の詳細については、「[SDK からの変更を防止する](role-based-access-control.md#prevent-sdk-changes)」の記事を参照してください。 
 
-`disableKeyBasedMetadataWriteAccess` が有効になった後で、SDK ベースのクライアントで作成または更新操作を実行すると、「"*Azure Cosmos DB エンドポイント経由での 'ContainerNameorDatabaseName' リソースに対する "POST" 操作は許可されません*"」エラーが返されます。 お使いのアカウントでのこのような操作へのアクセスを有効にするか、Azure Resource Manager、Azure CLI、または Azure PowerShell を使用して作成/更新操作を実行する必要があります。 切り替えて戻るには、[Cosmos SDK からの変更の防止](role-based-access-control.md#preventing-changes-from-cosmos-sdk)に関する記事の説明に従って、Azure CLI を使用して disableKeyBasedMetadataWriteAccess を **false** に設定します。 `disableKeyBasedMetadataWriteAccess` の値を、true ではなく false に変更してください。
+`disableKeyBasedMetadataWriteAccess` が有効になった後で、SDK ベースのクライアントで作成または更新操作を実行すると、「"*Azure Cosmos DB エンドポイント経由での 'ContainerNameorDatabaseName' リソースに対する "POST" 操作は許可されません*"」エラーが返されます。 お使いのアカウントでのこのような操作へのアクセスを有効にするか、Azure Resource Manager、Azure CLI、または Azure PowerShell を使用して作成/更新操作を実行する必要があります。 切り替えて戻るには、[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事の説明に従って、Azure CLI を使用して disableKeyBasedMetadataWriteAccess を **false** に設定します。 `disableKeyBasedMetadataWriteAccess` の値を、true ではなく false に変更してください。
 
 メタデータ書き込みアクセスを無効にする場合は、次の点を考慮してください。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539331"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318319"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -48,7 +48,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     ```
   人間が判読できるユーザー名だけでなく、特定のユーザーまで直接追跡できる GUID も忘れずに検索してください。
 * *デバイス ID*:ユーザー ID と同様、デバイス ID も "プライベート" と見なされる場合があります。 上に記載されているユーザー ID の場合と同じ方法を使用して、これが問題となるかもしれないテーブルを特定します。 
-* *カスタム データ*:Log Analytics では、カスタム ログとカスタム フィールド、[HTTP データ コレクター API](../../azure-monitor/platform/data-collector-api.md)、システムのイベント ログの一部として収集されるカスタム データなど、さまざまな方法による収集が可能です。 これらはすべてプライベート データを含んでいる可能性があり、そのようなデータが存在するかどうかを確認するために調べる必要があります。
+* *カスタム データ*:Log Analytics では、カスタム ログとカスタム フィールド、[HTTP データ コレクター API](./data-collector-api.md)、システムのイベント ログの一部として収集されるカスタム データなど、さまざまな方法による収集が可能です。 これらはすべてプライベート データを含んでいる可能性があり、そのようなデータが存在するかどうかを確認するために調べる必要があります。
 * *ソリューションによって収集されたデータ*: ソリューションのメカニズムは変更可能です。そのため、コンプライアンスを確保するために、ソリューションによって生成されたすべてのテーブルを確認することをお勧めします。
 
 ### <a name="application-data"></a>アプリケーション データ
@@ -124,5 +124,6 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 >  消去操作の大部分は、Application Insights で使用されるデータ プラットフォームへの影響が大きいため、SLA よりもずっと短期間に完了する場合があります。**消去操作の完了についての SLA は、30 日に設定されています**。
 
 ## <a name="next-steps"></a>次のステップ
-- Log Analytics のデータの収集方法、処理方法、保護方法については、「[Log Analytics データのセキュリティ](../../azure-monitor/platform/data-security.md)」をご覧ください。
-- Application Insights のデータが収集、処理、セキュリティ保護される方法について詳しくは、[Application Insights データのセキュリティ](../../azure-monitor/app/data-retention-privacy.md)に関するページをご覧ください。
+- Log Analytics のデータの収集方法、処理方法、保護方法については、「[Log Analytics データのセキュリティ](./data-security.md)」をご覧ください。
+- Application Insights のデータが収集、処理、セキュリティ保護される方法について詳しくは、[Application Insights データのセキュリティ](../app/data-retention-privacy.md)に関するページをご覧ください。
+

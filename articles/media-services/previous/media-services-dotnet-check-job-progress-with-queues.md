@@ -14,19 +14,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962681"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267770"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-エンコード ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 [Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md) に通知を配信するように Media Services を構成し、 この Queue Storage から通知を取得することで、ジョブの進行状況を監視します。 
+エンコード ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 [Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md) に通知を配信するように Media Services を構成し、 この Queue Storage から通知を取得することで、ジョブの進行状況を監視します。 
 
 キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。 Queue Storage メッセージング アーキテクチャは、信頼性と拡張性に優れています。 Queue Storage のメッセージのポーリングには、他のメソッドを使用することをお勧めします。
 
@@ -37,10 +40,10 @@ Media Services 通知をリッスンする 1 つの一般的なシナリオは�
 ## <a name="considerations"></a>考慮事項
 Queue Storage を使用する Media Services アプリケーションを開発する場合は、次の点を考慮してください。
 
-* Queue Storage では、先入先出法 (FIFO) の順次配送を保証しません。 詳細については、「 [Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
+* Queue Storage では、先入先出法 (FIFO) の順次配送を保証しません。 詳細については、「 [Azure キューと Service Bus キューの比較](/previous-versions/azure/hh767287(v=azure.100))」をご覧ください。
 * Queue Storage はプッシュ サービスではありません。 キューをポーリングする必要があります。
-* キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)」をご覧ください。
-* Queue Storage には、注意すべきいくつかの制限事項と特性があります。 これらについては、[Azure キューと Azure Service Bus キューの比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)に関する記事で説明しています。
+* キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](/rest/api/storageservices/queue-service-rest-api)」をご覧ください。
+* Queue Storage には、注意すべきいくつかの制限事項と特性があります。 これらについては、[Azure キューと Azure Service Bus キューの比較](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)に関する記事で説明しています。
 
 ## <a name="net-code-example"></a>.NET コード例
 

@@ -1,7 +1,7 @@
 ---
 title: Widevine ライセンス テンプレートを使用した Azure Media Services v3 の概要
 description: このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,15 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2020
-ms.author: juliako
-ms.openlocfilehash: 8cd79ffc619a74d3f339fe88daad89d21f230510
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8ea0eab6d420a4b74de93a1d35e178d6c57c2ad9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964262"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298931"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Widevine ライセンス テンプレートを使用した Media Services v3 の概要
 
@@ -112,7 +113,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 
 ## <a name="configure-your-widevine-license-with-net"></a>.NET を使用した Widevine ライセンスの構成 
 
-Media Services には、Widevine ライセンスを構成するためのクラスが用意されています。 ライセンスを構築するには、JSON を [WidevineTemplate](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) に渡します。
+Media Services には、Widevine ライセンスを構成するためのクラスが用意されています。 ライセンスを構築するには、JSON を [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) に渡します。
 
 テンプレートを構成するには、次の操作を実行できます。
 
@@ -258,7 +259,7 @@ public class WidevineTemplate
 
 #### <a name="configure-the-license"></a>ライセンスの構成
 
-前のセクションで定義したクラスを使用して、[WidevineTemplate](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) を構成するための JSON を作成します。
+前のセクションで定義したクラスを使用して、[WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) を構成するための JSON を作成します。
 
 ```csharp
 private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTempate()

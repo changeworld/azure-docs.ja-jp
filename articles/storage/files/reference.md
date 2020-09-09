@@ -1,30 +1,30 @@
 ---
-title: Azure ファイル共有ストレージのリファレンス
+title: Azure Files のリファレンス
 description: Azure Storage API リファレンス、readme ファイル、クライアント ライブラリ パッケージが見つかります。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: ffe3777882cd857ffb776bbadb41da0fb88d994e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5799b7ec9f6ecce1b9203345446b2d3240beb80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976525"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527848"
 ---
-# <a name="azure-file-shares-storage-reference"></a>Azure ファイル共有ストレージのリファレンス
+# <a name="azure-files-reference"></a>Azure Files のリファレンス
 
-Azure ファイル共有ストレージ API リファレンス、ライブラリ パッケージ、readme ファイル、概要記事が見つかります。
+Azure Files API リファレンス、ライブラリ パッケージ、readme ファイル、概要記事が見つかります。
 
 ## <a name="net-client-libraries"></a>.NET クライアント ライブラリ
 
-次の表は、Azure ファイル共有 .NET API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Files .NET API のリファレンスおよびサンプル ドキュメントをまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [.NET 用 Azure ファイル共有クライアント ライブラリ v12](/dotnet/api/overview/azure/storage.files.shares-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
+| 12.x | [.NET 用 Azure Files クライアント ライブラリ v12](/dotnet/api/overview/azure/storage.files.shares-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
 | 11.x | [Microsoft.Azure.Storage.File 名前空間](/dotnet/api/microsoft.azure.storage.file) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET での Azure Files 用の開発](/azure/storage/files/storage-dotnet-how-to-use-files) |
 
 ### <a name="storage-management"></a>記憶域の管理
@@ -45,11 +45,11 @@ Azure ファイル共有ストレージ API リファレンス、ライブラリ
 
 ## <a name="java-client-libraries"></a>Java クライアント ライブラリ
 
-次の表は、Azure ファイル共有 Java API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Files Java API のリファレンスおよびサンプル ドキュメントをまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Java 用 Azure ファイル共有クライアント ライブラリ](/java/api/overview/azure/storage-file-share-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
+| 12.x | [Java 用 Azure Files クライアント ライブラリ](/java/api/overview/azure/storage-file-share-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
 | 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java を使用して Azure Files 用に開発する](/azure/storage/files/storage-java-how-to-use-file-storage) |
 
 ### <a name="storage-management"></a>記憶域の管理
@@ -62,7 +62,7 @@ Azure ファイル共有ストレージ API リファレンス、ライブラリ
 
 ## <a name="python-client-libraries"></a>Python クライアント ライブラリ
 
-次の表は、Azure ファイル共有 Python API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Files Python API のリファレンスおよびサンプル ドキュメントをまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -71,16 +71,16 @@ Azure ファイル共有ストレージ API リファレンス、ライブラリ
 
 ## <a name="javascript-client-libraries"></a>JavaScript クライアント ライブラリ
 
-次の表は、Azure ファイル共有 JavaScript API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Files JavaScript API のリファレンスおよびサンプル ドキュメントをまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [JavaScript 用 Azure Storage ファイル共有クライアント ライブラリ](/javascript/api/overview/azure/storage-file-share-readme) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-file-share) | [使用例](/javascript/api/overview/azure/storage-file-share-readme#examples) |
+| 12.x | [JavaScript 用 Azure Files クライアント ライブラリ](/javascript/api/overview/azure/storage-file-share-readme) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-file-share) | [使用例](/javascript/api/overview/azure/storage-file-share-readme#examples) |
 | 10.x | [@azure/storage-file](/javascript/api/@azure/storage-file) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-file) | &nbsp; |
 
 ## <a name="rest-apis"></a>REST API
 
-次の表は、Azure ファイル共有 REST API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Files REST API のリファレンスおよびサンプル ドキュメントをまとめたものです。
 
 | リファレンス ドキュメント | 概要 |
 | ----------------------- | -------- |

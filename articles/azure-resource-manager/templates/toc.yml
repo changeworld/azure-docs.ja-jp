@@ -23,7 +23,7 @@
             - name: データ サイエンス仮想マシン
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
-              href: ../../machine-learning/tutorial-resource-manager-workspace.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Analytics
           items:
             - name: Analysis Services
@@ -210,8 +210,10 @@
     - name: Template Specs
       items:
         - name: リンク済みテンプレートで作成する
+          displayName: template specs
           href: template-specs-create-linked.md
         - name: リンク済みテンプレートとしてデプロイする
+          displayName: template specs
           href: template-specs-deploy-linked-template.md
     - name: 高度なテンプレート
       items:
@@ -302,6 +304,8 @@
         - name: デプロイ スクリプト
           displayName: custom script
           href: deployment-script-template.md
+        - name: デプロイ スクリプト開発環境を作成する
+          href: deployment-script-template-configure-dev.md
         - name: テンプレートをモジュール化する
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
@@ -364,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: Tenant
           href: deploy-to-tenant.md
-        - name: クロス リソース グループ
-          href: cross-resource-group-deployment.md
+        - name: スコープをまたいだデプロイ
+          href: cross-scope-deployment.md
     - name: パラメーターを指定する
       items:
         - name: パラメーター ファイルを作成する

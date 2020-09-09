@@ -3,17 +3,18 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849872"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683540"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -123,9 +124,9 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Azure の使用料金を表示するためのポリシーを有効にする
 
-パートナーは次の情報を使用して、顧客の Azure 使用料金を表示するためのポリシーを有効にします。
+ポリシーを表示および更新するには、**管理エージェント** グループのメンバーである必要があります。 次の情報を使用して、顧客が Azure 使用料金を表示できるポリシーを有効にします。
 
-Azure portal で、パートナー テナントにサインインし、 **[Cost Management + Billing]\(コスト管理と課金\)** を選択します。 関連する Microsoft Partner Agreement の課金アカウントを選択し、 **[顧客]** を選択します。 顧客の一覧は課金アカウントに関連付けられています。
+Azure portal で、パートナー テナントにサインインし、 **[Cost Management + Billing]\(コスト管理と課金\)** を選択します。 [課金スコープ] 領域内で、関連する課金スコープを選択し、 **[顧客]** を選択します。 顧客の一覧は課金アカウントに関連付けられています。
 
 顧客の一覧で、コストの表示を許可する顧客を選択します。
 
@@ -140,7 +141,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 コスト ポリシーが **[はい]** に設定されている場合、顧客テナントに関連付けられているサブスクリプション ユーザーは、従量課金制の料金で使用料金を確認できます。
 
-コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。
+コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。 直接パートナーまたは間接プロバイダーの全体管理者/管理エージェントは、[顧客更新 API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) を使用して、各顧客のコスト表示ポリシーを大規模に設定することもできます。
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>顧客テナントのサブスクリプション コストを表示する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999107"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>OS の起動に関するトラブルシューティングを行う - Windows Update のインストール容量
 
@@ -49,7 +49,7 @@ ms.locfileid: "83663310"
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 1. リモート デスクトップ接続を使用して、修復 VM に接続します。
 
 ### <a name="free-up-space-on-the-disk"></a>ディスク上の領域を解放する
@@ -60,10 +60,10 @@ ms.locfileid: "83663310"
 - ディスク クリーンアップを実行します。
 - ドライブをデフラグします。
 
-1. ディスクがいっぱいかどうかを確認します。 ディスクのサイズが 1 TB 未満の場合は、[PowerShell を使用](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)して最大 1 TB まで拡張します。
+1. ディスクがいっぱいかどうかを確認します。 ディスクのサイズが 1 TB 未満の場合は、[PowerShell を使用](../windows/expand-os-disk.md)して最大 1 TB まで拡張します。
 1. ディスクが既に 1 TB の場合は、ディスク クリーンアップを実行する必要があります。
-   1. [破損した VM から](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)データ ディスクを切断します。
-   1. データ ディスクを、[機能している VM に](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)接続します。
+   1. [破損した VM から](../windows/detach-disk.md)データ ディスクを切断します。
+   1. データ ディスクを、[機能している VM に](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)接続します。
    1. [ディスク クリーンアップ ツール](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) を使用して、空き領域を増やします。
 1. サイズ変更とクリーンアップが完了したら、次のコマンドを使用してドライブをデフラグします。
 
@@ -123,4 +123,4 @@ ms.locfileid: "83663310"
    
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、VM を再構築します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構築します。

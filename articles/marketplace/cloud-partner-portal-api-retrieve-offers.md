@@ -4,26 +4,26 @@ description: パブリッシャーの名前空間に含まれるオファーを�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: ab5f09d0d81d8a6aa526576faea0b11a6536381a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113481"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271962"
 ---
-<a name="retrieve-offers"></a>オファーを取得する
-===============
+# <a name="retrieve-offers"></a>オファーを取得する
 
 > [!NOTE]
-> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
+> Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 切り替えにより、小さな変更が加えられました。 「[Cloud パートナー ポータルの API リファレンス](./cloud-partner-portal-api-overview.md)」に記載されている変更内容を調べて、パートナー センターへの切り替え後もコードが引き続き動作することを確認してください。 CPP API は、パートナー センターへの切り替え前に既に統合されている既存の製品に対してのみ使用してください。新しい製品では、パートナー センター申請 API を使用する必要があります。
 
 パブリッシャーの名前空間に含まれるオファーを要約した一覧を取得します。
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI パラメーター
---------------
+## <a name="uri-parameters"></a>URI パラメーター
 
 | **名前**         |  **説明**                         |  **データの種類** |
 | -------------    |  ------------------------------------    |  -----------   |
@@ -31,19 +31,15 @@ ms.locfileid: "86113481"
 |  api-version     | API の最新バージョン                    |    Date        |
 |  |  |
 
+## <a name="header"></a>ヘッダー
 
-<a name="header"></a>ヘッダー
-------
-
-|  **名前**        |         **Value**       |
+|  **Name**        |         **Value**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  承認   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
-
-<a name="body-example"></a>本文の例
-------------
+## <a name="body-example"></a>本文の例
 
 ### <a name="response"></a>Response
 
@@ -77,7 +73,6 @@ ms.locfileid: "86113481"
 |  changedTime    | オファーが最後に変更されたときの UTC 日時                                                                              |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>応答状態コード
 
 | **コード**  |  **説明**                                                                                                   |
@@ -87,7 +82,6 @@ ms.locfileid: "86113481"
 |  403      | `Forbidden` - クライアントは、指定の名前空間にアクセスできません。                                          |
 |  404      | `Not found` - 指定のエンティティが存在しません。                                                                 |
 |  |  |
-
 
 ### <a name="offer-status"></a>オファーの状態
 

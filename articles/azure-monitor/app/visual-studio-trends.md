@@ -7,12 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744129"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318166"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。
@@ -21,7 +21,7 @@ Application Insights Trends ツールを使用すると、Web アプリケーシ
 
 ## <a name="configure-your-web-app-for-application-insights"></a>Application Insights 向けの Web アプリの構成
 
-これがまだ完了していない場合は、[Web アプリを Application Insights 向けに構成します](../../azure-monitor/app/app-insights-overview.md)。 これにより、Application Insights ポータルにテレメトリを送信できます。 Trends ツールはそこからテレメトリを読み取ります。
+これがまだ完了していない場合は、[Web アプリを Application Insights 向けに構成します](./app-insights-overview.md)。 これにより、Application Insights ポータルにテレメトリを送信できます。 Trends ツールはそこからテレメトリを読み取ります。
 
 Application Insights Trends は、Visual Studio 2015 Update 3 以降で利用できます。
 
@@ -98,7 +98,7 @@ Trends ツールでは、同じ時系列の他のバブルと比べて異常な�
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 |  |  |
 | --- | --- |
-| **[Visual Studio での Application Insights の操作](../../azure-monitor/app/visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/visual-studio-trends/34.png) |
-| **[データの追加](../../azure-monitor/app/asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/visual-studio-trends/64.png) |
-| **[Application Insights ポータルの操作](../../azure-monitor/app/overview-dashboard.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/visual-studio-trends/62.png) |
+| **[Visual Studio での Application Insights の操作](./visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/visual-studio-trends/34.png) |
+| **[データの追加](./asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/visual-studio-trends/64.png) |
+| **[Application Insights ポータルの操作](./overview-dashboard.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/visual-studio-trends/62.png) |
 

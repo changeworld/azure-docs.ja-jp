@@ -4,16 +4,16 @@ description: 要求テレメトリ用の Application Insights データ モデ�
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807657"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320563"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ:Application Insights データ モデル
 
-要求テレメトリ項目 ([Application Insights](../../azure-monitor/app/app-insights-overview.md)) は、アプリケーションに対する外部要求によってトリガーされた実行の論理シーケンスを表します。 すべての要求の実行は、一意の `ID` と、すべての実行パラメーターが含まれる `url` によって識別されます。 要求は、論理的な `name` によってグループ化でき、要求の `source` が定義されます。 コードの実行は、`success` または `fail`という結果になる可能性があり、特定の `duration` を持っています。 成功した実行と失敗した実行は、どちらも `resultCode` によってさらにグループ化することができます。 要求テレメトリの開始時刻は、エンベロープ レベルで定義されます。
+要求テレメトリ項目 ([Application Insights](./app-insights-overview.md)) は、アプリケーションに対する外部要求によってトリガーされた実行の論理シーケンスを表します。 すべての要求の実行は、一意の `ID` と、すべての実行パラメーターが含まれる `url` によって識別されます。 要求は、論理的な `name` によってグループ化でき、要求の `source` が定義されます。 コードの実行は、`success` または `fail`という結果になる可能性があり、特定の `duration` を持っています。 成功した実行と失敗した実行は、どちらも `resultCode` によってさらにグループ化することができます。 要求テレメトリの開始時刻は、エンベロープ レベルで定義されます。
 
 要求テレメトリは、カスタムの `properties` と `measurements` を使用する標準的な機能拡張モデルをサポートします。
 
@@ -27,7 +27,7 @@ Application Insights Web SDK は、要求の名前の大文字小文字を "そ�
 
 ## <a name="id"></a>id
 
-要求呼び出しインスタンスの識別子。 要求とその他のテレメトリ項目を相関付けるために使用されます。 ID はグローバルに一意である必要があります。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
+要求呼び出しインスタンスの識別子。 要求とその他のテレメトリ項目を相関付けるために使用されます。 ID はグローバルに一意である必要があります。 詳細については、[相関付け](./correlation.md)に関するページを参照してください。
 
 最大長:128 文字
 
@@ -39,7 +39,7 @@ Application Insights Web SDK は、要求の名前の大文字小文字を "そ�
 
 ## <a name="source"></a>source
 
-要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
+要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](./correlation.md)に関するページを参照してください。
 
 最大長:1024 文字
 
@@ -73,7 +73,8 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 
 ## <a name="next-steps"></a>次のステップ
 
-- [カスタム要求テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)。
+- [カスタム要求テレメトリを記述します](./api-custom-events-metrics.md#trackrequest)。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
-- Application Insights で [ASP.NET Core を構成する](../../azure-monitor/app/asp-net.md)方法を確認します。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- Application Insights で [ASP.NET Core を構成する](./asp-net.md)方法を確認します。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

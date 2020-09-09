@@ -3,12 +3,12 @@ title: Azure Application Insights からの Stream Analytics のエクスポー�
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324354"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -16,7 +16,7 @@ ms.locfileid: "86539960"
 この例では、Application Insights からデータを取得し、一部のフィールドの名前を変更して処理した後、Power BI にパイプするアダプターを作成します。
 
 > [!WARNING]
-> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](../../azure-monitor/app/export-power-bi.md )があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
+> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](./export-power-bi.md)があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
 > 
 > 
 
@@ -55,7 +55,7 @@ ms.locfileid: "86539960"
 
     ![イベントの種類の選択](./media/export-stream-analytics/080.png)
 
-1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
+1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](./diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
 2. エクスポートされたデータを検査します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
@@ -186,7 +186,7 @@ FROM flat
 
 ## <a name="see-results-in-power-bi"></a>Power BI で結果を確認します。
 > [!WARNING]
-> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](../../azure-monitor/app/export-power-bi.md )があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
+> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](./export-power-bi.md)があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
 > 
 > 
 
@@ -211,4 +211,5 @@ Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデ�
 ## <a name="next-steps"></a>次のステップ
 * [連続エクスポート](export-telemetry.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
+

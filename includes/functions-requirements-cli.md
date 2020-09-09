@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 9e9f9c71701ceb1c76bc162f22e166b4565e731b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e969520e226999bc2b104fb4f757619832eaa165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062684"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944348"
 ---
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
@@ -39,15 +39,15 @@ ms.locfileid: "86062684"
 + [Python 3.8 (64 ビット)](https://www.python.org/downloads/release/python-382/)、[Python 3.7 (64 ビット)](https://www.python.org/downloads/release/python-375/)、[Python 3.6 (64 ビット)](https://www.python.org/downloads/release/python-368/)。これらは Azure Functions でサポートされています。 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
-+ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
-
-+ [.NET Core SDK 2.2 以上](https://www.microsoft.com/net/download)
++ [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8。
++ [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8。 
+
+    > [!IMPORTANT]
+    > + Java 11 に対する Functions のサポートは現在プレビューの段階にあり、Maven アーキタイプでは既定で Java 8 デプロイが作成されます。 代わりに、Java 11 で関数アプリを実行する場合は、Java 11 の値を使用して pom.xml ファイルを手動で更新する必要があります。 詳細については、「[Java のバージョン](../articles/azure-functions/functions-reference-java.md#java-versions)」を参照してください。 
+    > + このクイックスタートを行うには、`JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 
-> [!IMPORTANT]
-> このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
 ::: zone-end

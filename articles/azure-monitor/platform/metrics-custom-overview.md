@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506975"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639904"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
-Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 
+Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](./metrics-supported.md)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 
 
 より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。 これらの**カスタム** メトリックは、アプリケーション テレメトリ、Azure リソース上で実行されるエージェント、またはアウトサイドイン型の監視システムによって収集し、Azure Monitor に直接送信することができます。 Azure のリソースおよびアプリケーションのカスタム メトリックが Azure Monitor に発行されたら、Azure によって出力された標準メトリックと共に、それらのメトリックを参照、クエリしたり、メトリックに基づいたアラートを設定したりできます。
 
@@ -26,9 +26,10 @@ Azure Monitor のカスタム メトリックは現在、パブリック プレ�
 
 カスタム メトリックは複数の方法で Azure Monitor に送信できます。
 - Azure Application Insights SDK を使用してアプリケーションをインストルメント化し、カスタム テレメトリを Azure Monitor に送信する。 
+- [Windows または Linux Azure VM](azure-monitor-agent-overview.md) に Azure Monitor エージェント (プレビュー) をインストールし、[データ収集ルール](data-collection-rule-azure-monitor-agent.md)を使用してパフォーマンス カウンターを Azure Monitor メトリックに送信する。
 - [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[仮想マシン スケール セット](collect-custom-metrics-guestos-resource-manager-vmss.md)、[クラシック VM](collect-custom-metrics-guestos-vm-classic.md)、または[クラシック Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) に Windows Azure 診断 (WAD) 拡張機能をインストールして、パフォーマンス カウンターを Azure Monitor に送信する。 
 - [InfluxData Telegraf エージェント](collect-custom-metrics-linux-telegraf.md)を Azure Linux VM にインストールし、Azure Monitor 出力プラグインを使用してメトリックを送信する。
-- [Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
+- [Azure Monitor REST API](./metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
 
 ## <a name="pricing-model-and-retention"></a>価格モデルと保持期間
 
@@ -37,7 +38,7 @@ Azure Monitor のカスタム メトリックは現在、パブリック プレ�
 カスタム メトリックは、[プラットフォーム メトリックと同じ時間](data-platform-metrics.md#retention-of-metrics)保持されます。 
 
 > [!NOTE]  
-> Application Insights SDK を介して Azure Monitor に送信されたメトリックは、取り込まれたログ データとして課金されます。 追加のメトリック料金が発生するのは、Application Insights 機能の [[カスタム メトリック ディメンションに関するアラートを有効にします]](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) が選択されている場合のみです。 このチェックボックスにより、カスタム メトリック API を使用して Azure Monitor メトリック データベースにデータが送信され、より複雑なアラートが実行可能になります。  詳細については、[Application Insights の価格モデル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)と、[お客様のリージョンでの価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。
+> Application Insights SDK を介して Azure Monitor に送信されたメトリックは、取り込まれたログ データとして課金されます。 追加のメトリック料金が発生するのは、Application Insights 機能の [[カスタム メトリック ディメンションに関するアラートを有効にします]](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) が選択されている場合のみです。 このチェックボックスにより、カスタム メトリック API を使用して Azure Monitor メトリック データベースにデータが送信され、より複雑なアラートが実行可能になります。  詳細については、[Application Insights の価格モデル](../app/pricing.md#pricing-model)と、[お客様のリージョンでの価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。
 
 
 ## <a name="how-to-send-custom-metrics"></a>カスタム メトリックを送信する方法
@@ -46,8 +47,8 @@ Azure Monitor にカスタム メトリックを送信するときは、報告�
 
 ### <a name="authentication"></a>認証
 Azure Monitor にカスタム メトリックを送信するには、メトリックを送信する側のエンティティで、要求の **Bearer** ヘッダーに有効な Azure Active Directory (Azure AD) トークンが存在する必要があります。 有効なベアラー トークンを取得するいくつかの方法がサポートされています。
-1. [Azure リソースの管理 ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 Azure リソース自身 (VM など) に ID を付与します。 マネージド サービス ID (MSI) は、特定の操作を実行するためのアクセス許可をリソースに提供するように設計されています。 たとえば、自身に関するメトリックをリソースが出力できるようにします。 リソース (またはその MSI) には、別のリソースに対する "**メトリックの発行元の監視**" アクセス許可を付与することもできます。 このアクセス許可を付与すると、その MSI で他のリソースのメトリックも生成できるようになります。
-2. [Azure AD サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 このシナリオでは、Azure リソースについてのメトリックを出力するためのアクセス許可を Azure AD アプリケーション (またはサービス) に割り当てることができます。
+1. [Azure リソースの管理 ID](../../active-directory/managed-identities-azure-resources/overview.md)。 Azure リソース自身 (VM など) に ID を付与します。 マネージド サービス ID (MSI) は、特定の操作を実行するためのアクセス許可をリソースに提供するように設計されています。 たとえば、自身に関するメトリックをリソースが出力できるようにします。 リソース (またはその MSI) には、別のリソースに対する "**メトリックの発行元の監視**" アクセス許可を付与することもできます。 このアクセス許可を付与すると、その MSI で他のリソースのメトリックも生成できるようになります。
+2. [Azure AD サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)。 このシナリオでは、Azure リソースについてのメトリックを出力するためのアクセス許可を Azure AD アプリケーション (またはサービス) に割り当てることができます。
 要求を認証するために、Azure Monitor は Azure AD 公開キーを使用してアプリケーション トークンを検証します。 既存の "**メトリックの発行元の監視**" ロールには、既にこのアクセス許可が付与されています。 これは Azure portal で入手できます。 サービス プリンシパルには、どのようなリソースについてのカスタム メトリックをそれが出力するのかに応じて、必要なスコープで "**メトリックの発行元の監視**" ロールを付与することができます。 (たとえば、サブスクリプション、リソース グループ、または特定のリソース)。
 
 > [!TIP]  
@@ -235,6 +236,7 @@ Azure Monitor では、カスタム メトリックの使用に次の制限が�
  - [仮想マシン スケール セット](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (クラシック)](collect-custom-metrics-guestos-vm-classic.md)
  - [Telegraf エージェントを使用した Linux 仮想マシン](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](./metrics-store-custom-rest-api.md)
  - [従来の Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  
+

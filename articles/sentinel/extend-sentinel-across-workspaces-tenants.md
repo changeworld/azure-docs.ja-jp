@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816446"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519015"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -110,6 +110,12 @@ Azure Sentinel では、[1 つのクエリでの複数のワークスペース](
 | ブックを対話形式で編集する | 既存のブックを変更する高度なユーザーは、その中のクエリを編集し、エディターのワークスペース セレクターを使用して対象のワークスペースを選択できます。 | このオプションを使用すると、パワー ユーザーは既存のブックを簡単に変更して、複数のワークスペースで作業できます。 |
 |
 
+### <a name="cross-workspace-hunting"></a>クロスワークスペースの検出
+
+Azure Sentinel には事前に読み込まれたクエリ例が用意されており、初めて使用するときや、テーブルとクエリ言語に不慣れなときに役立ちます。 これらの組み込み検出クエリは、Microsoft セキュリティ研究員が新しいクエリを追加し、既存のクエリを微調整しながら継続的に開発しているもので、新しい検出を探し、セキュリティ ツールによって検出されていない侵入の兆候を特定するためのエントリ ポイントが提供されます。  
+
+クロスワークスペース検出機能により、脅威探索で、上記のような union 演算子と workspace () 式を使用して、新しい検索クエリを作成したり、既存のものを適合させたりして、複数のワークスペースを対象とすることができます。
+
 ## <a name="cross-workspace-management-using-automation"></a>自動化を使用するクロスワークスペース管理
 
 複数の Azure Sentinel ワークスペースを構成して管理するには、Azure Sentinel 管理 API の使用を自動化する必要があります。 アラート ルール、ハンティング クエリ、ブック、プレイブックなど、Azure Sentinel リソースのデプロイを自動化する方法の詳細については、「[Azure Sentinel の拡張: API、統合、管理の自動化](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885)」を参照してください。
@@ -122,8 +128,6 @@ Azure Sentinel では、[1 つのクエリでの複数のワークスペース](
 次の機能は、ワークスペース間ではサポートされていません。
 
 - スケジュールされたアラート ルールを、クロスワークスペース クエリを使用してワークスペース間で実行することはできません。
-
-- ハンティング クエリでは、クロスワークスペース クエリはサポートされていません。
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Azure Lighthouse を使用したテナント間でのワークスペースの管理
 

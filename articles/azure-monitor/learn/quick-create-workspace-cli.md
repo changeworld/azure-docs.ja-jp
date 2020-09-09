@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d7c3613a0ddce217e9d07c3fc2eba55b78c53a1b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7421162ed68a879d9f935a3efd5c6267e159a648
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324303"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
@@ -24,8 +24,8 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 
 環境内の Azure VM、Windows VM、Linux VM などの他のソースについては、次のトピックを参照してください。
 
-* [Azure Virtual Machines に関するデータの収集](../learn/quick-collect-azurevm.md)
-* [ハイブリッド Linux コンピューターからのデータの収集](../learn/quick-collect-linux-computer.md)
+* [Azure Virtual Machines に関するデータの収集](./quick-collect-azurevm.md)
+* [ハイブリッド Linux コンピューターからのデータの収集](./quick-collect-linux-computer.md)
 * [ハイブリッド Windows コンピューターからのデータの収集](quick-collect-windows-computer.md)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
@@ -133,3 +133,4 @@ CLI をローカルにインストールして使用することを選択する�
 * Operations Manager 管理グループに報告するエージェントからデータを収集して Log Analytics ワークスペースに格納するには、[データ ソースとして System Center Operations Manager を追加](../platform/om-agents.md)します。  
 * 階層内のコレクションのメンバーであるコンピュータをインポートするには、[構成マネージャー](../platform/collect-sccm.md)に接続します。  
 * 使用可能な[監視ソリューション](../insights/solutions.md)と、ソリューションをワークスペースに対して追加または削除する方法を確認します。
+
