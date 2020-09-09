@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290985"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474327"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
 
@@ -42,6 +42,7 @@ Application Gateway では、マルチサイト HTTP(S) リスナーを使用し
 
 >[!NOTE]
 >現在この機能は、[Azure PowerShell](tutorial-multiple-sites-powershell.md) と [Azure CLI](tutorial-multiple-sites-cli.md) によってのみ利用できます。 ポータルでは近日中にサポートされるようになります。
+> ポータルのサポートは完全に利用できるわけではないため、HostNames パラメーターのみを使用している場合、リスナーはポータルに基本リスナーとして表示され、リスナー リスト ビューのホスト名の列には構成されているホスト名が表示されないことに注意してください。 ワイルドカード リスナーを変更する場合は、ポータルでサポートされるまで、Azure PowerShell または CLI を確実に使用してください。
 
 [Azure PowerShell](tutorial-multiple-sites-powershell.md) の場合は、`-HostName` ではなく `-HostNames` を使用する必要があります。 HostNames を使用すると、最大 5 つのホスト名をコンマ区切り値として指定でき、ワイルドカード文字を使用できます。 たとえば、`-HostNames "*.contoso.com,*.fabrikam.com"` のように指定します。
 

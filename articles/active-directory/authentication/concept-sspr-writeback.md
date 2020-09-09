@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027599"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717440"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 SSPR 書き戻しの使用を開始するには、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](tutorial-enable-writeback.md)
+> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>パスワード ライトバックのしくみ
 
@@ -140,7 +140,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
    * 管理者による強制的なパスワード変更 (パスワードの期限切れなど)。
    * 管理者により[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行された管理者によるセルフサービス パスワード リセット。
    * [Azure portal](https://portal.azure.com) から管理者が開始したエンドユーザーのパスワードのリセット。
-   * [Microsoft Graph API ベータ版](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)から管理者が開始したエンドユーザーのパスワードのリセット。
+   * [Microsoft Graph API ベータ版](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)から管理者が開始したエンドユーザーのパスワードのリセット。
 
 ## <a name="unsupported-writeback-operations"></a>サポートされないライトバック操作
 
@@ -149,7 +149,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
 * **サポートされないエンドユーザーの操作**
    * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API を使った、エンド ユーザーによるパスワードのリセット。
 * **サポートされない管理者の操作**
-   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API ベータ版](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
+   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API ベータ版](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
    * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット。
    * すべての管理者は、パスワード リセット ツールを使用して自身のパスワード ライトバック用パスワードをリセットすることはできません。
 
@@ -161,4 +161,4 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
 SSPR 書き戻しの使用を開始するには、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](tutorial-enable-writeback.md)
+> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](./tutorial-enable-sspr-writeback.md)

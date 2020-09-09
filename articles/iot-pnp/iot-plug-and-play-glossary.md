@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337315"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854211"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
 
@@ -54,6 +54,10 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 - デバイス接続文字列を使用すると、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)は、IoT ハブ上のデバイス向けエンドポイントに接続できます。 デバイス上のクライアント コードでは、この接続文字列を使用して、IoT ハブとのセキュリティで保護された接続を確立します。
 - IoT Hub 接続文字列を使用すると、バックエンドのソリューションやツールは IoT ハブ上のサービス向けエンドポイントに安全に接続できます。 これらのソリューションやツールは、その IoT ハブと、それに接続されているデバイスを管理します。
+
+## <a name="device-certification"></a>デバイス認定
+
+IoT プラグ アンド プレイ デバイス認定プログラムは、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
 
 ## <a name="device-model"></a>デバイスのモデル
 
@@ -98,10 +102,6 @@ IoT プラグ アンド プレイ デバイスは、データの収集や他の�
 ## <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
 IoT プラグ アンド プレイ [デバイス](#iot-plug-and-play-device)は、データをソリューションとやり取りするときに一連の[規則](concepts-convention.md)に従うことが想定されています。
-
-## <a name="model-discovery"></a>モデル検出
-
-[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)から IoT ソリューションに接続すると、そのソリューションでは、[デバイス モデル](#device-model)を検索することで、デバイスの機能を検出できます。 このソリューションでは、[モデル リポジトリ](#model-repository)またはその他の場所にあるデバイス モデルを見つけることができます。
 
 ## <a name="model-id"></a>モデル ID
 

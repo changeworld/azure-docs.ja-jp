@@ -3,7 +3,7 @@ title: マネージド ID に関する FAQ と既知の問題 - Azure AD
 description: Azure リソースのマネージド ID に関する既知の問題。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/12/2017
-ms.author: markvi
+ms.date: 08/06/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019065"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260222"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -76,7 +76,7 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
 
-いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
+いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure ロールの割り当てを許可する必要があります。
 - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
 - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
 
@@ -86,8 +86,8 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>リソースのマネージド ID に必要な Azure RBAC アクセス許可は何ですか? 
 
-- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
-- ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当て。
+- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
+- ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当て。
 
 
 

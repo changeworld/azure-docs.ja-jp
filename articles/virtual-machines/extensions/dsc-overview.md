@@ -15,12 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
-ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010922"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079576"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 

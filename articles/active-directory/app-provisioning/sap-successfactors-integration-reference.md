@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: 4aac13bf34394c359837ecd7a85abd78495bc4b4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283114"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808458"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory のプロビジョニングと SAP SuccessFactors の統合方法 
 
@@ -33,7 +33,7 @@ Azure AD プロビジョニング サービスでは、基本認証を使用し�
 Azure AD プロビジョニング サービスと SuccessFactors の間の接続をさらにセキュリティで保護するには、次の手順のようにして、SuccessFactors の IP 許可リストに Azure AD の IP 範囲を追加できます。
 
 1. Azure パブリック クラウドの[最新の IP 範囲](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードします 
-1. ファイルを開き、タグ **AzureActiveDirectory** と **AzureActiveDirectoryDomainServices** を検索します 
+1. ファイルを開き、**AzureActiveDirectory** タグを検索します 
 
    >[!div class="mx-imgBorder"] 
    >![Azure AD の IP 範囲](media/sap-successfactors-integration-reference/azure-active-directory-ip-range.png)

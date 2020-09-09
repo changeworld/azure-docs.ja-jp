@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072436"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832741"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でデータ形式間の XML 変換マップを作成する
 
@@ -36,7 +36,7 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 
 前提条件が整ったら、ロジック アプリの作成を開始します。  
 
-1. ロジック アプリを作成し、マップが含まれている[統合アカウントにリンク](../logic-apps/logic-apps-enterprise-integration-accounts.md "ロジック アプリに統合アカウントをリンクする方法を学習する")します。
+1. ロジック アプリを作成し、マップが含まれている[統合アカウントにリンク](./logic-apps-enterprise-integration-create-integration-account.md "ロジック アプリに統合アカウントをリンクする方法を学習する")します。
 2. ロジック アプリに **Request** トリガーを追加します  
    ![Request トリガーが選択されている "Microsoft のマネージド API を表示" ドロップダウンのスクリーンショット。 このドロップダウンは Visual Studio Enterprise Integration SDK を使用して作成されたロジック アプリにあります。](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. まず **[アクションの追加]**  を選択し、 **[XML の変換]** アクションを追加します。  
@@ -136,4 +136,3 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 ## <a name="learn-more"></a>詳細情報
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")  
 * [マップについての詳細情報](../logic-apps/logic-apps-enterprise-integration-maps.md "Enterprise Integration マップについて学習する")  
-

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 07/28/2020
-ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/07/2020
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386437"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816526"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で Azure 仮想マシン オファーを作成する
 
@@ -242,19 +242,24 @@ Azure Marketplace の検索結果で表示される、お客様のオファー�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 画像がぼやけていると、送信が拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターによって使用される https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace のロゴ
 
-オファーのロゴの PNG ファイルを次の 4 つの画像サイズで指定します。
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、これらを別の画像に置き換えることもできます。
 
-- **小** (48 &times; 48 ピクセル)
-- **中** (90 &times; 90 ピクセル)
-- **大** (216 &times; 216 ピクセル)
-- **ワイド** (255 &times; 115 ピクセル)
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **中** (90 x 90 px、省略可能)
+- **小** (48 x 48 px、省略可能)
 
-4 つのロゴはすべて必須で、これらは Azure Marketplace のさまざまな登録情報に表示されます。
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 
@@ -287,6 +292,8 @@ Azure Marketplace の検索結果で表示される、お客様のオファー�
 ## <a name="plan-overview"></a>プランの概要
 
 パートナー センターの同じオファー内で、さまざまなプラン オプションを提供できます。 オファーには少なくとも 1 つのプラン (以前は SKU と呼ばれていました) が必要です。これは、収益化対象ユーザー、Azure リージョン、機能、または VM イメージごとに変えることができます。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 プランの作成後、 **[プランの概要]** タブを選択して以下を表示します。
 

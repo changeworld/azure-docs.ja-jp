@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408120"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705556"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -26,13 +26,13 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むように設計されており、パートナーは、Microsoft の現場と協力し、商用マーケットプレースをラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。
 
-ベネフィットは、オファーが[リスト、試用版、トランザクション](determine-your-listing-type.md#choose-a-publishing-option)のいずれであるかによって異なります。
+ベネフィットは、オファーが[リスト、試用版、トランザクション](determine-your-listing-type.md#choose-a-listing-option)のいずれであるかによって異なります。
 
 パートナーがオファーを発行すると、資格に基づいて、報酬チームのメンバーから連絡があります。
 
 トランザクション パートナーの場合は、コマーシャル マーケットプレース プラットフォームを通じて請求売上が拡大すると、レベルごとにさらに多くのベネフィットを得られます。
 
-ネットショップで発行する最小要件は MPNID であるため、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのコマーシャル マーケットプレースを通じてビジネスを強化できます。
+オンライン ストアには最低で MPNID があれば発行することができます。したがって、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのコマーシャル マーケットプレースを通じてビジネスを強化できます。
 
 パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 

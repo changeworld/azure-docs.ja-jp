@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050679"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012349"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -20,7 +20,7 @@ ms.locfileid: "87050679"
 ## <a name="service-updates-and-releases"></a>サービスの更新とリリース
 
 * リリース情報については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)を参照してください。
-* プレビュー段階の機能については、「[AKS Preview Features and Related Projects](https://github.com/Azure/AKS/blob/master/previews.md)」(AKS のプレビュー機能と関連プロジェクト) を参照してください。
+* プレビュー段階の機能については、「[AKS Preview Features and Related Projects](https://awesomeopensource.com/projects/aks?categoryPage=11)」(AKS のプレビュー機能と関連プロジェクト) を参照してください。
 
 ## <a name="managed-features-in-aks"></a>AKS のマネージド機能
 
@@ -149,7 +149,7 @@ AKS では、アップストリームの Kubernetes プロジェクト内の安�
 アルファまたはベータの機能は、次の 2 つのシナリオで、一般的に利用可能になる前にロール アウトされる場合があります。
 
 * お客様が AKS の製品、サポート、またはエンジニアリング チームと会って、これらの新機能を試すことを要求した。
-* これらの機能が[機能フラグによって有効になっており](https://github.com/Azure/AKS/blob/master/previews.md)、 お客様がこれらの機能を使用することを明示的に選択する必要がある。
+* これらの機能が[機能フラグによって有効になっており](https://awesomeopensource.com/projects/aks?categoryPage=11)、 お客様がこれらの機能を使用することを明示的に選択する必要がある。
 
 ## <a name="preview-features-or-feature-flags"></a>プレビュー機能または機能フラグ
 

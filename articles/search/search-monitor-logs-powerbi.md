@@ -7,15 +7,15 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2caf4c66cdbb11ed42c4131ef1584c372ec10332
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060307"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935111"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化する
-[Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) を使用すると、お使いの検索サービスに関する操作ログとサービス メトリックを Azure Storage アカウントに格納できます。 このページでは、Power BI テンプレート アプリを使用してその情報を視覚化する方法について説明します。 このアプリでは、検索、インデックス作成、操作、サービスのメトリックに関する情報など、お使いの検索サービスに関する詳細な分析情報が提供されます。
+[Azure Cognitive Search](./search-what-is-azure-search.md) を使用すると、お使いの検索サービスに関する操作ログとサービス メトリックを Azure Storage アカウントに格納できます。 このページでは、Power BI テンプレート アプリを使用してその情報を視覚化する方法について説明します。 このアプリでは、検索、インデックス作成、操作、サービスのメトリックに関する情報など、お使いの検索サービスに関する詳細な分析情報が提供されます。
 
 Power BI テンプレート アプリである **Azure Cognitive Search: Analyze Logs and Metrics** を [Power BI アプリのマーケットプレース](https://appsource.microsoft.com/marketplace/apps)で見つけることができます。
 
@@ -23,7 +23,7 @@ Power BI テンプレート アプリである **Azure Cognitive Search: Analyze
 
 1. 検索サービスに対してメトリックとリソースのログを有効にします。
 
-    1. ログをアーカイブできる [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成するか、既存のアカウントを特定します
+    1. ログをアーカイブできる [Azure Storage アカウント](../storage/common/storage-account-create.md)を作成するか、既存のアカウントを特定します
     1. Azure portal 上で Azure Cognitive Search サービスに移動します
     1. 左側の列の [監視] セクションで、 **[診断設定]** を選択します
 
@@ -98,8 +98,8 @@ Power BI テンプレート アプリである **Azure Cognitive Search: Analyze
 1. データセットがまだ更新中であるかどうかを確認します。 更新状態インジケーターは、上記の手順 8 に示されています。 まだ更新中の場合は、更新が完了するまで待ってから、レポートを開いて最新の状態に更新します。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Cognitive Search の詳細情報](https://docs.microsoft.com/azure/search/)
+[Azure Cognitive Search の詳細情報](./index.yml)
 
-[Power BI とは?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Power BI とは?](/power-bi/fundamentals/power-bi-overview)
 
-[Power BI サービスのデザイナー向けの基本的な概念](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[Power BI サービスのデザイナー向けの基本的な概念](/power-bi/service-basic-concepts)

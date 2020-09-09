@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 999c443a63ceb2ebb59fc0de72ecb09d1ccc3905
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062613"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890503"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Backup 用の Azure セキュリティ ベースライン
 
@@ -28,7 +28,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**ガイダンス**:適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
+**ガイダンス**: 適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -36,7 +36,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**:適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
+**ガイダンス**: 適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -262,7 +262,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**:Azure AD には既定のパスワードという概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションとマーケットプレース サービスについては、お客様が責任を負うものとします。
+**ガイダンス**: Azure AD には既定のパスワードという概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションとマーケットプレース サービスについては、お客様が責任を負うものとします。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -350,7 +350,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Azure AD ログインを使用するように Azure Backup を構成する方法](../app-service/configure-authentication-provider-aad.md)
 
-- [AAD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: はい
 
@@ -446,7 +446,7 @@ Recovery Services コンテナーの開発、テスト、運用向けに個別�
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
-**ガイダンス**:現時点では使用できません。Azure Backup では、データの識別、分類、損失防止機能はまだ使用できません。
+**ガイダンス**: 現時点では使用できません。Azure Backup では、データの識別、分類、損失防止機能はまだ使用できません。
 
 Microsoft では、Azure Backup 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
@@ -580,7 +580,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
-**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
@@ -672,7 +672,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -698,7 +698,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12:コンピューティング リソース内でスクリプトを実行するユーザーの機能を制限する
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -902,7 +902,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 - [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Azure Backup での暗号化について](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
+- [Azure Backup での暗号化について](./backup-encryption.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -970,7 +970,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 

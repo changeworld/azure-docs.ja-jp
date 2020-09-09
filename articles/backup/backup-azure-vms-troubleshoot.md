@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371738"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892339"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -93,8 +93,8 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 * このサービスを再起動できない場合は、次の手順に従って**分散トランザクション コーディネーター** サービスを再インストールします。
   * MSDTC サービスを停止します
   * コマンド プロンプト (cmd) を開きます
-  * コマンド "msdtc -uninstall" を実行します
-  * コマンド "msdtc -install" を実行します
+  * `msdtc -uninstall` コマンドを実行します。
+  * `msdtc -install` コマンドを実行します。
   * MSDTC サービスを起動します
 * Windows サービス **COM+ システム アプリケーション**を開始します。 **COM+ システム アプリケーション**が開始したら、Azure portal からバックアップ ジョブをトリガーします。</ol>
 
@@ -165,9 +165,9 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 エラー コード:ExtensionFailedSnapshotLimitReachedError  <br/>
 エラー メッセージ:接続されている一部のディスクでスナップショットの制限を超えたため、スナップショット操作に失敗しました
 
-接続されている一部のディスクでスナップショットの制限を超えたため、スナップショット操作に失敗しました。 次のトラブルシューティング手順を完了してから、操作を再試行してください。
+接続されている一部のディスクでスナップショットの制限を超えたため、スナップショット操作に失敗しました。 次のトラブルシューティング手順を完了してから、必要な操作を再試行してください。
 
-* 必要のないディスク BLOB スナップショットを削除します。 ディスク BLOB を削除しないように注意してください。削除するのはスナップショット BLOB だけです。
+* 必要のないディスク BLOB スナップショットを削除します。必要のないディスク BLOB スナップショットを削除します。 ディスク BLOB を削除しないように注意してください。 スナップショット BLOB のみを削除する必要があります。
 * VM ディスクのストレージ アカウントで論理的な削除が有効になっている場合は、論理的な削除のリテンション期間を、常に既存のスナップショットが許可される最大値未満になるように構成します。
 * バックアップされた VM で Azure Site Recovery が有効になっている場合は、次の手順を実行します。
 
@@ -183,7 +183,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 **手順 1.** :ホストを介してスナップショットを作成する
 
-管理者特権での (管理者) コマンド プロンプトで、次のコマンドを実行します。
+管理者特権での (管理者) コマンド プロンプトから、次のコマンドを実行します。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
@@ -192,7 +192,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 これにより、ゲストではなくホストを介して確実にスナップショットが作成されます。 バックアップ操作を再試行します。
 
-**手順 2**:VM の負荷が少ない (たとえば、CPU/IOps が低い) 時間帯へのバックアップ スケジュールの変更を試みます。
+**手順 2**:VM の負荷が少ない (たとえば、CPU または IOps が低い) 時間帯へのバックアップ スケジュールの変更を試みます
 
 **手順 3**:[VM のサイズの増加](https://azure.microsoft.com/blog/resize-virtual-machines/)を試み、操作を再試行します。
 
@@ -289,23 +289,23 @@ VM 上のすべてのドライブで BitLocker をオフにして、VSS の問�
 
 通常、VM エージェントは、Azure ギャラリーから作成された仮想マシン内に既に存在しています。 しかし、オンプレミスのデータセンターから移行された仮想マシンには VM エージェントがインストールされていません。 それらの仮想マシンについては、VM エージェントを明示的にインストールする必要があります。
 
-#### <a name="windows-vms"></a>Windows VM
+#### <a name="windows-vms---set-up-the-agent"></a>Windows VM - エージェントの設定
 
 * [エージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを完了するには、管理者特権が必要です。
 * クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)して、エージェントがインストールされたことを示します。 この手順は、Azure Resource Manager 仮想マシンの場合は必要ありません。
 
-#### <a name="linux-vms"></a>Linux VM
+#### <a name="linux-vms---set-up-the-agent"></a>Linux VM - エージェントの設定
 
 * ディストリビューション リポジトリから最新バージョンのエージェントをインストールします。 パッケージ名について詳しくは、[Linux エージェント リポジトリ](https://github.com/Azure/WALinuxAgent)をご覧ください。
 * クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)し、エージェントがインストールされていることを確認します。 このステップは、Resource Manager 仮想マシンの場合は必要ありません。
 
 ### <a name="update-the-vm-agent"></a>VM エージェントの更新
 
-#### <a name="windows-vms"></a>Windows VM
+#### <a name="windows-vms---update-the-agent"></a>Windows VM - エージェントの更新
 
 * VM エージェントを更新するには、[VM エージェント バイナリ](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 エージェントを更新する前に、VM エージェントの更新中にバックアップ操作が発生していないことを確認します。
 
-#### <a name="linux-vms"></a>Linux VM
+#### <a name="linux-vms---update-the-agent"></a>Linux VM - エージェントの更新
 
 * Linux VM エージェントを更新するには、[Linux VM エージェントの更新](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json)に関する記事の手順に従います。
 
