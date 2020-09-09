@@ -4,12 +4,12 @@ description: Web アプリに対する要求の失敗率の異常な変化を通
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315939"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420211"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](./app-insights-overview.md) では、Web アプリで要求の失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーにアラートを送信します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 アラートの詳細には、問題のトリアージと診断に役立つよう、失敗の特性および関連するアプリケーション データの分析が表示されます。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -20,7 +20,7 @@ ms.locfileid: "87315939"
 
 アラートの例を次に示します。
 
-[![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/013.png" alt-text="失敗箇所周辺のクラスター分析を示すスマート検出のアラートのサンプル。" lightbox="./media/proactive-failure-diagnostics/013.png":::
 
 アラートの詳細には次の内容が表示されます。
 
@@ -72,11 +72,11 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 [アラート] ページを開きます。 エラーの異常アラート ルールが、手動で設定したすべてのアラートと共に含まれており、現在アラート状態にあるかどうかを確認できます。
 
-[![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Application Insights リソース ページで、[アラート] タイル、[アラート ルールの管理] の順にクリックします。" lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 アラートをクリックして構成します。
 
-[![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="ルールの構成画面。" lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 エラーの異常アラート ルールを無効にしたり削除したりすることはできますが、同じ Application Insights リソースに別のルールを作成することはできません。
 
@@ -298,7 +298,7 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 [エラーの診断] をクリックすると、問題の詳細を確認して解決するのに役立ちます。
 
-[![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="診断検索。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 要求の割合と影響を受けるユーザーの数から、問題の緊急度を判断できます。 上の例では、78.5% という失敗率が通常の失敗率である 2.2% と比較され、異常事態が発生していることを示しています。 一方、影響を受けたユーザー数は 46 人のみです。 それが自分のアプリであれば、その深刻度を評価できます。
 
@@ -306,13 +306,13 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 この例では、要求の制限を超えたため、SQL Database から例外が発生しました。
 
-[![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="失敗した要求の詳細。" lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>最新のアラートを確認する
 
 Application Insights リソース ページで **[アラート]** をクリックすると、直近の発生アラートが表示されます。
 
-[![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="アラートの概要。" lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>違い...
 失敗の異常のスマート検出は、Application Insights の類似しているが異なる他の機能を補完します。

@@ -59,10 +59,18 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks のセキュリティ ベースライン
       href: ../../azure-databricks/security-baseline.md
+    - name: Azure DNS のセキュリティ ベースライン
+      href: ../../dns/security-baseline.md
     - name: Azure Firewall のセキュリティ ベースライン
       href: ../../firewall/security-baseline.md
     - name: Azure Functions のセキュリティ ベースライン
       href: ../../azure-functions/security-baseline.md
+    - name: Azure IoT Hub のセキュリティ ベースライン
+      href: ../../iot-hub/security-baseline.md
+    - name: Azure Monitor のセキュリティ ベースライン
+      href: ../../azure-monitor/security-baseline.md
+    - name: Azure Machine Learning のセキュリティ ベースライン
+      href: ../../machine-learning/security-baseline.md
     - name: Azure Policy のセキュリティ ベースライン
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Resource Graph のセキュリティ ベースライン
@@ -87,6 +95,8 @@
       href: ../../data-lake-analytics/security-baseline.md
     - name: DDOS Protection のセキュリティ ベースライン
       href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Event Grid のセキュリティ ベースライン
+      href: ../../event-grid/security-baseline.md
     - name: Event Hubs のセキュリティ ベースライン
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute のセキュリティ ベースライン

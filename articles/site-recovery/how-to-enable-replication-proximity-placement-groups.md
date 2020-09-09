@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 6e87b54e2641b1e4a8cfdc134a2190bd56e4f61c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384023"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827675"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>近接配置グループで実行されている Azure 仮想マシンを別のリージョンにレプリケートする
 
@@ -42,7 +42,7 @@ ms.locfileid: "87384023"
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>近接配置グループ内の仮想マシンに対する Site Recovery の設定
 
 > [!NOTE]
-> ターゲットの近接配置グループの一意の ID が手元にあることを確認します。 新しい近接配置グループを作成している場合は、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group)のコマンドを確認し、既存の近接配置グループを使用している場合は、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)のコマンドを使用します。
+> ターゲットの近接配置グループの一意の ID が手元にあることを確認します。 新しい近接配置グループを作成している場合は、[こちら](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group)のコマンドを確認し、既存の近接配置グループを使用している場合は、[こちら](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)のコマンドを使用します。
 
 ### <a name="azure-to-azure"></a>Azure から Azure
 
@@ -73,9 +73,9 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
 
 #Data disk
 $datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName $datadiskResourceGroup
-$datadiskId1 = $datadisk.Id
-$RecoveryReplicaDiskAccountType = $datadisk.Sku.Name
-$RecoveryTargetDiskAccountType = $datadisk.Sku.Name
+$datadiskId1 = $datadisk[0].Id
+$RecoveryReplicaDiskAccountType = $datadisk[0].Sku.Name
+$RecoveryTargetDiskAccountType = $datadisk[0].Sku.Name
 
 $DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 60f2a1992750950b50995fcf36513e44e377004d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386607"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489692"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して Parquet および JSON ファイルで入れ子にされた型に対してクエリを実行する
 
@@ -203,7 +203,7 @@ FROM
 
 構造 `MapOfPersons` は `VARCHAR` 列として返され、JSON 文字列としてフォーマットされます。
 
-## <a name="projecting-values-from-repeated-columns"></a>繰り返される列からの値の射影
+## <a name="project-values-from-repeated-columns"></a>繰り返される列から値を射影する
 
 一部の列にスカラー値の配列 (`[1,2,3]` など) がある場合は、次のスクリプトを使用して、それらを簡単に展開し、メインの行と結合することができます。
 

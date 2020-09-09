@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services 出力メタデータのスキーマ | Microsoft Docs
 description: この記事では、Azure Media Services 出力メタデータのスキーマの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080926"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289373"
 ---
 # <a name="output-metadata"></a>出力メタデータ
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。 たとえば、MP4 ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードし、サムネイルを作成し、オーバーレイを作成します。 タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、およびその他のファイルが含まれます。 出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ JSON ファイルの名前は、`<source_file_name>_manifest.json` (`BigBuckBunny_manifest.json` など) になります。 ソース ファイル名 (切り詰めなし) を見つけるには、すべての *_metadata.json をスキャンして、その中のファイルパス文字列のクエリを実行する必要があります。
 

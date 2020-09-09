@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfbad53fd2361752824292e0ade82f3ac231916
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094666"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268759"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>Azure AD の登録サービスに TLS 1.2 を適用する
 
@@ -52,7 +52,7 @@ Azure AD Device Registration サービスを使用しているか、プロキシ
 
 ## <a name="update-ad-fs-servers"></a>AD FS サーバーを更新する
 
-Azure AD Device Registration サービスとの通信に使用されるすべての AD FS サーバーで、TLS 1.2 が有効になっていることを確認する必要があります。 この構成を有効にする方法や確認する方法については、「[AD FS の SSL/TLS プロトコルおよび暗号スイートの管理](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください。
+Azure AD Device Registration サービスとの通信に使用されるすべての AD FS サーバーで、TLS 1.2 が有効になっていることを確認する必要があります。 この構成を有効にする方法や確認する方法については、「[AD FS の SSL/TLS プロトコルおよび暗号スイートの管理](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください。
 
 ## <a name="client-updates"></a>クライアント更新
 
@@ -68,4 +68,4 @@ Azure AD Device Registration サービスとの通信に使用されるすべて
 
 ## <a name="next-steps"></a>次のステップ
 
-[TLS/SSL の概要 (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/tls-ssl-schannel-ssp-overview)
+[TLS/SSL の概要 (Schannel SSP)](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)

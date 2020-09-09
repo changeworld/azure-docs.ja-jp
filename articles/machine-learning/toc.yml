@@ -6,9 +6,9 @@
     - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning と Studio (クラシック)
-      displayName: 'AML, Studio, designer'
-      href: compare-azure-ml-to-studio-classic.md
+    - name: Azure Machine Learning スタジオとは
+      displayName: 'AML, studio, designer'
+      href: overview-what-is-machine-learning-studio.md
     - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -72,9 +72,6 @@
       items:
         - name: CLI を使用したトレーニングとデプロイ
           href: tutorial-train-deploy-model-cli.md
-        - name: Resource Manager テンプレートを使用してワークスペースを作成する
-          displayName: Resource Manager
-          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning 拡張機能の設定
@@ -153,39 +150,45 @@
       href: concept-ml-pipelines.md
     - name: エンタープライズ対応とセキュリティ
       items:
-        - name: エンタープライズ セキュリティとガバナンス
+        - name: エンタープライズ セキュリティの概要
+          displayName: authorization authentication encryption aad azure active directory
+          href: concept-enterprise-security.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: ID およびアクセス管理
           items:
-            - name: エンタープライズ セキュリティの概要
-              displayName: authorization authentication encryption aad azure active directory
-              href: concept-enterprise-security.md
+            - name: 認証の設定
+              displayName: 'authentication, auth, oauth'
+              href: how-to-setup-authentication.md
             - name: ユーザーとロールを管理する
               href: how-to-assign-roles.md
+            - name: AKS デプロイで Azure AD ID を使用する
+              href: how-to-use-azure-ad-identity.md
+        - name: ネットワークのセキュリティ
+          items:
             - name: 仮想ネットワークの使用
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Private Link を使用する
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: TLS を使用して Web サービスをセキュリティで保護する
-              displayName: ssl
+            - name: セキュリティで保護された Web サービスを構成する
+              displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
+            - name: ファイアウォールを構成する
+              href: how-to-access-azureml-behind-firewall.md
+        - name: データ保護
+          items:
             - name: 回復性を高める
               displayName: 'high availability, disaster recovery'
               href: how-to-high-availability-machine-learning.md
-            - name: AKS デプロイで Azure AD ID を使用する
-              href: how-to-use-azure-ad-identity.md
             - name: ストレージ アクセス キーの再生成
               href: how-to-change-storage-access-key.md
-            - name: Azure Firewall の使用
-              href: how-to-access-azureml-behind-firewall.md
-            - name: 安全なコーディング
-              href: concept-secure-code-best-practice.md
-              displayName: security threat
-        - name: 認証の設定
-          displayName: 'authentication, auth, oauth'
-          href: how-to-setup-authentication.md
         - name: Azure Machine Learning の監視
           href: monitor-azure-machine-learning.md
+        - name: 安全なコーディング
+          href: concept-secure-code-best-practice.md
+          displayName: security threat
     - name: 信頼できる ML
       items:
         - name: 信頼できる ML の概要
@@ -213,6 +216,14 @@
         - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: コンピューティング リソースの作成
+      items:
+        - name: Studio の使用
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
+          href: how-to-create-attach-compute-studio.md
+        - name: Python SDK の使用
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
+          href: how-to-create-attach-compute-sdk.md
     - name: 環境の設定方法
       items:
         - name: 開発環境をセットアップする
@@ -262,7 +273,7 @@
         - name: データにアクセスする
           items:
             - name: Azure Storage への接続
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: データストアからデータを取得する
               displayName: 'data, data set, register, access data'
@@ -283,7 +294,7 @@
               href: how-to-differential-privacy.md
     - name: モデルをトレーニングする
       items:
-        - name: トレーニング環境をセットアップする
+        - name: トレーニングの実行の送信
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: ML に Estimator を使用する
@@ -301,6 +312,8 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: カスタム Docker イメージを使用したトレーニング
+          href: how-to-train-with-custom-image.md
         - name: トレーニングの追跡と監視
           items:
             - name: 実行の開始、監視、または取り消し
@@ -433,6 +446,8 @@
           href: how-to-create-your-first-pipeline.md
         - name: ML パイプラインのステップ間でのデータの移動 (Python)
           href: how-to-move-data-in-out-of-pipelines.md
+        - name: ML パイプラインをデプロイする (Python)
+          href: how-to-deploy-pipelines.md
         - name: パイプラインのスケジュールを設定する (Python)
           href: how-to-schedule-pipelines.md
         - name: パイプラインをトリガーする
@@ -457,17 +472,14 @@
         - name: パイプラインのデバッグとトラブルシューティングを行う
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: Application Insights でパイプラインをデバッグする
-          href: how-to-debug-pipelines-application-insights.md
+        - name: パイプライン データを Application Insights にログする
+          href: how-to-log-pipelines-application-insights.md
         - name: 並列実行ステップの使用
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
         - name: 並列実行ステップのデバッグとトラブルシューティング
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: 機械学習パイプラインの反復処理と進化
-          displayName: modularizing testing
-          href: concept-pipeline-practices-tips.md
     - name: CI/CD 用の Azure Pipelines
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
@@ -506,6 +518,8 @@
       href: monitor-resource-reference.md
     - name: 機械学習パイプライン YAML のリファレンス
       href: reference-pipeline-yaml.md
+    - name: ソブリン クラウドのパリティ
+      href: reference-machine-learning-cloud-parity.md
 - name: リソース
   items:
     - name: リリース ノート

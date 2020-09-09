@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326071"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825363"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -35,7 +35,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 ## <a name="enable-service-map"></a>Service Map を有効にする
 
 1. Service Map ソリューションを [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) から有効にします。または、[Solutions Gallery からの監視ソリューションの追加](solutions.md)に関するページで説明されている手順に従って有効にします。
-1. データを取得する各コンピューターの [Windows に Dependency Agent をインストールするか](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)、[Linux に Dependency Agent をインストールします](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 Dependency Agent は近隣のコンピューターへの接続を監視することができるため、すべてのコンピューターにエージェントが必要とは限りません。
+1. データを取得する各コンピューターの [Windows に Dependency Agent をインストールするか](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows)、[Linux に Dependency Agent をインストールします](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux)。 Dependency Agent は近隣のコンピューターへの接続を監視することができるため、すべてのコンピューターにエージェントが必要とは限りません。
 
 Log Analytics ワークスペースから Azure Portal 内の Service Map にアクセスして、左側のウィンドウから **[ソリューション]** オプションを選択します。<br><br> ![ワークスペースで [ソリューション] オプションを選択します](./media/service-map/select-solution-from-workspace.png)。<br> ソリューションの一覧から **[ServiceMap(workspaceName)]** を選択し、Service Map ソリューションの概要ページで、Service Map の概要タイルをクリックします。<br><br> ![Service Map の概要タイル](./media/service-map/service-map-summary-tile.png)。
 
@@ -603,4 +603,3 @@ Service Map にマシンは表示されるがプロセスまたは接続デー�
 ## <a name="suggestions"></a>検索候補
 
 サービス マップやこのドキュメントについてフィードバックはありますか。  [UserVoice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)では、機能を提案したり、既存の提案に投票することができます。
-

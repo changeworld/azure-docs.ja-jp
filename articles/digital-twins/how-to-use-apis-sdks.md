@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 39dd9604cf0e58eda94acf6528ab31eca26355d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373244"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936777"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -43,7 +43,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
 * **Query** - 開発者は、Query カテゴリを使用して、複数のリレーションシップにわたる[ツイングラフで一連の Digital Twins を検索できます](how-to-query-graph.md)。
 * **EventRoutes** - EventRoutes カテゴリには、システムを通してダウンストリーミング サービスに[データをルーティングする](concepts-route-events.md) API が含まれています。
 
-パブリック プレビューの最新のデータ プレーン API バージョンは、**2020-05-31-preview** です。__
+パブリック プレビューの最新のデータ プレーン API バージョンは、**2020-05-31-preview** です。__ データ プレーン操作に対する _2020-03-01-preview_ API バージョンは非推奨になりました。
 
 データ プレーン API を使用するには
 * API を直接呼び出すには、次の操作を実行します。
@@ -65,7 +65,7 @@ Azure Digital Twins .NET (C#) SDK は、Azure SDK for .Net に含まれていま
 > [!NOTE]
 > SDK の設計の詳細については、[Azure SDK の一般的な設計原則](https://azure.github.io/azure-sdk/general_introduction.html)と特定の [.NET 設計ガイドライン](https://azure.github.io/azure-sdk/dotnet_introduction.html)を参照してください。
 
-SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージも必要です。
+SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージの最新バージョンも必要です。
 
 * Visual Studio では、NuGet パッケージ マネージャーを使用してパッケージを追加できます。そのためには、[ツール] > [NuGet パッケージ マネージャー] > [ソリューションの NuGet パッケージの管理] の順に選択します。** 
 * .NET コマンド ライン ツールを使用して、次のコマンドを実行できます。
@@ -143,7 +143,7 @@ await foreach (string twin in result)
 
 #### <a name="serialization-helpers"></a>シリアル化のヘルパー
 
-前述のように、コア SDK メソッドはツイン データを JSON として返します。 ただし、SDK にはシリアル化のためのヘルパー クラスも含まれています。 これらのヘルパー関数を使用すると、基本的な情報にアクセスするためのツイン データをすばやく作成したり、逆シリアル化したりすることができます。
+シリアル化のヘルパーは、基本情報にアクセスするためのツイン データを、迅速に作成または逆シリアル化するために SDK 内で使用できるヘルパー関数です。 コア SDK メソッドは、既定でツイン データを JSON として返すため、これらのヘルパー クラスを使用して、ツイン データをさらに分割するのに役立ちます。
 
 使用できるヘルパー クラスは次のとおりです。
 * `BasicDigitalTwin`:デジタル ツインのコアデータを表します。
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>リレーションシップを作成する
 
-`BasicDigitalTwin` クラスを使用すると、ツイン インスタンスでリレーションシップを作成するためのデータを準備できます。
+`BasicRelationship` クラスを使用すると、ツイン インスタンスでリレーションシップを作成するためのデータを準備できます。
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();
@@ -284,7 +284,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 portal のホームページで、Azure Digital Twins インスタンスを検索して詳細を取得します。 Azure Digital Twins インスタンスのメニューから **[メトリック]** オプションを選択して、 *[メトリック]* ページを表示します。
 
-:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
+:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
 
 ここから、インスタンスのメトリックを表示したり、カスタム ビューを作成したりできます。
 

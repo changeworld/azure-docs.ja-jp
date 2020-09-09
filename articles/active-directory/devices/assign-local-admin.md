@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371177"
+ms.locfileid: "87419820"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
@@ -72,9 +72,9 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 >[!NOTE]
 > 現在、この機能はプレビュー段階にあります。
 
-Windows 10 2004 更新プログラム以降では、Azure AD グループを使用して、[制限されたグループ](Windows/client-management/mdm/restrictedgroups) MDM ポリシーで Azure AD 参加済みデバイスの管理者特権を管理できます。 このポリシーを使用すると、Azure AD 参加済みデバイスのローカル管理者グループに個々のユーザーまたは Azure AD グループを割り当てることができ、さまざまなデバイス グループに対して個別の管理者をきめ細かく構成できます。 
+Windows 10 2004 更新プログラム以降では、Azure AD グループを使用して、[制限されたグループ](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM ポリシーで Azure AD 参加済みデバイスの管理者特権を管理できます。 このポリシーを使用すると、Azure AD 参加済みデバイスのローカル管理者グループに個々のユーザーまたは Azure AD グループを割り当てることができ、さまざまなデバイス グループに対して個別の管理者をきめ細かく構成できます。 
 
-現時点では、Intune にはこのポリシーを管理するための UI がなく、[OMA-URI のカスタム設定](mem/intune/configuration/custom-settings-windows-10)を使用して構成する必要があります。 このポリシーに関する考慮事項は次のとおりです。 
+現時点では、Intune にはこのポリシーを管理するための UI がなく、[OMA-URI のカスタム設定](/mem/intune/configuration/custom-settings-windows-10)を使用して構成する必要があります。 このポリシーに関する考慮事項は次のとおりです。 
 
 - ポリシーを使用して Azure AD グループを追加するには、Groups API を実行して取得できるグループの SID が必要です。 SID は、Groups API の `securityIdentifier` プロパティで定義されています。
 - 制限されたグループ ポリシーが適用されると、グループの現在のメンバーでメンバー一覧にないものは削除されます。 したがって、このポリシーを新しいメンバーまたはグループに適用すると、既存の管理者 (つまり、デバイスを参加させたユーザー)、デバイス管理者ロール、グローバル管理者ロールが、デバイスから削除されます。 既存のメンバーが削除されないようにするには、制限されたグループ ポリシーのメンバー一覧の一部として、それらを構成する必要があります。 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 95cb1181f841ce5f958b8a85697d7261f442b410
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799601"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855451"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web API:コード構成
 
@@ -71,7 +71,7 @@ Microsoft.Identity.Web では、構成またはコードの両方で証明書を
 
 ## <a name="startupcs"></a>Startup.cs
 
-Microsoft.Identity.Web を使用して、Web API でダウンストリーム Web API を呼び出したい場合、*Startup.cs* 内で `.AddMicrosoftWebApiAuthentication(Configuration)` の後に `.AddMicrosoftWebApiCallsWebApi()` 行を追加して、トークン キャッシュの実装 (例: `.AddInMemoryTokenCaches()`) を選択します。
+Microsoft.Identity.Web を使用して、Web API でダウンストリーム Web API を呼び出したい場合、*Startup.cs* 内で `.AddMicrosoftIdentityWebApi(Configuration)` の後に `.EnableTokenAcquisitionToCallDownstreamApi()` 行を追加して、トークン キャッシュの実装 (例: `.AddInMemoryTokenCaches()`) を選択します。
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -82,9 +82,10 @@ public class Startup
   public void ConfigureServices(IServiceCollection services)
   {
    // ...
-   services.AddMicrosoftWebApiAuthentication(Configuration)
-           .AddMicrosoftWebApiCallsWebApi(Configuration)
-           .AddInMemoryTokenCaches();
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+                .EnableTokenAcquisitionToCallDownstreamApi()
+                .AddInMemoryTokenCaches();
   // ...
   }
   // ...
@@ -92,8 +93,6 @@ public class Startup
 ```
 
 Web アプリと同様に、さまざまなトークン キャッシュの実装を選択できます。 詳細については、GitHub 上の「[Microsoft identity web wiki - トークン キャッシュのシリアル化](https://aka.ms/ms-id-web/token-cache-serialization)」を参照してください。
-
-Web API に特定のスコープが必要であることがわかっている場合は、必要に応じて `AddMicrosoftWebApiCallsWebApi` に引数として渡すことができます。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -176,7 +175,7 @@ Python Web API は、クライアントから受信したベアラー トーク�
 
 ## <a name="protocol"></a>Protocol
 
-OBO プロトコルの詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)」をご覧ください。
+OBO プロトコルの詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](./v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

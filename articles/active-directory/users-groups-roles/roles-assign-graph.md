@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057927"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798518"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory で Microsoft Graph API を使用してカスタム管理者ロールを割り当てる 
 
@@ -136,7 +136,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-管理単位のスコープに対しては、組み込みロールのサブセットのみが有効です。 管理単位でサポートされている組み込みロールの一覧については、[このドキュメント](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles)を参照してください。
+管理単位のスコープに対しては、組み込みロールのサブセットのみが有効です。 管理単位でサポートされている組み込みロールの一覧については、[このドキュメント](./roles-admin-units-assign-roles.md)を参照してください。
 
 ## <a name="get-operations-on-roleassignment"></a>RoleAssignment での GET 操作
 

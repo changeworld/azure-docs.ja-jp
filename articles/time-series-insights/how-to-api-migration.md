@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171770"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163953"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>新しい Azure Time Series Insights Gen2 API バージョンへの移行
 
@@ -23,7 +23,7 @@ ms.locfileid: "87171770"
 
 パブリック プレビュー段階のとき (2020 年 7 月 16 日より前) に Azure Time Series Insights Gen2 環境を作成していた場合は、この記事で説明されている手順に従って、一般公開されている新しいバージョンの API を使用するように TSI 環境を更新してください。
 
-新しい API バージョンは `2020-07-31` であり、更新された[タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)を使用します。
+新しい API バージョンは `2020-07-31` であり、更新された[タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)を使用します。
 
 ユーザーは、それぞれの環境の[タイム シリーズ モデル変数](./concepts-variables.md)、保存されたクエリ、Power BI のクエリ、および API エンドポイントの呼び出しを行うすべてのカスタム ツールを移行する必要があります。 移行プロセスに関してご不明な点や懸念事項がある場合は、Azure portal を通じてサポート チケットを送信し、この情報をお伝えください。
 
@@ -95,7 +95,7 @@ Power BI コネクタを使用してクエリを生成していた場合、そ�
     - [Delete、Get 操作](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [一覧](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-次の REST エンドポイントについては、URI で API バージョンを `2020-07-31` に更新し、`tsx` プロパティのすべての出現箇所で、更新された[タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)が使用されていることを確認する必要があります。
+次の REST エンドポイントについては、URI で API バージョンを `2020-07-31` に更新し、`tsx` プロパティのすべての出現箇所で、更新された[タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)が使用されていることを確認する必要があります。
 
 - 型 API
   - [Put 操作](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -286,7 +286,7 @@ Power BI コネクタを使用してクエリを生成していた場合、そ�
 
 あるいは、`value` を `$event['Bar-Pressure-Offset'].Double` にすることもできます。 データ型が指定されていない場合、データ型は常に Double と見なされます。 特殊文字 (`-`) をエスケープするには、角かっこ表記を使用する必要があります。
 
-#### <a name="getaggregateseries"></a>GetAggregateSeries
+#### <a name="aggregateseries"></a>AggregateSeries
 
 古い要求本文 (`2018-11-01-preview` で使用):
 
@@ -355,7 +355,7 @@ Power BI コネクタを使用してクエリを生成していた場合、そ�
 
 #### <a name="invalidinput"></a>InvalidInput
 
-次のエラーが表示される場合は、新しい API バージョン (`2020-07-31`) を使用していますが、TSX の構文が更新されていません。 [タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)と、上記の移行の例を参照してください。 API 要求を再送信する前に、すべての `tsx` プロパティが正しく更新されていることを確認してください。
+次のエラーが表示される場合は、新しい API バージョン (`2020-07-31`) を使用していますが、TSX の構文が更新されていません。 [タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)と、上記の移行の例を参照してください。 API 要求を再送信する前に、すべての `tsx` プロパティが正しく更新されていることを確認してください。
 
 ```JSON
 {

@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3699213fe61c64d7677ba026a8df54ccbbfe4b33
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352023"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475483"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能をインストールして使用する
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT ハブなどの Azure リソースを管理するためのオープンソースのクロス プラットフォーム コマンドライン ツールです。 Azure CLI は、Windows、Linux、および MacOS で使用できます。 Azure CLI は [Azure Cloud Shell](https://shell.azure.com) にもプレインストールされています。 Azure CLI を使用すると、拡張機能をインストールしなくても、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを管理できます。
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT ハブなどの Azure リソースを管理するためのオープンソースのクロス プラットフォーム コマンドライン ツールです。 Azure CLI は、Windows、Linux、macOS で使用できます。 Azure CLI を使用すると、拡張機能をインストールしなくても、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを管理できます。
 
 Azure CLI の Azure IoT 拡張機能は、IoT プラグ アンド プレイ プレビュー デバイスとの対話とテストに使用されるコマンドライン ツールです。 拡張機能は、次のことに使用できます。
 
@@ -51,9 +51,6 @@ Azure サブスクリプションにサインインするには、次のコマ�
 ```azurecli
 az login
 ```
-
-> [!NOTE]
-> Azure クラウド シェルを使用している場合は、自動的にサインインされるので、前のコマンドを実行する必要はありません。
 
 Azure CLI 用 Azure IoT 拡張機能を使用するには、以下が必要です。
 
@@ -109,6 +106,65 @@ az iot pnp twin invoke-command --cn getMaxMinReport -n {iothub_name} -d {device_
 az iot hub monitor-events -n {iothub_name} -d {device_id} -i {interface_id}
 ```
 
+### <a name="manage-models-in-the-model-repository"></a>モデル リポジトリ内のモデルを管理する
+
+Azure CLI のモデル リポジトリ コマンドを使用して、リポジトリ内のモデルを管理できます。
+
+#### <a name="create-model-repository"></a>モデル リポジトリを作成する
+
+テナントの最初のユーザーである場合、テナント用の新しい IoT プラグ アンド プレイ会社リポジトリを作成します。
+
+```azurecli
+az iot pnp repo create
+```
+
+#### <a name="manage-model-repository-tenant-roles"></a>モデル リポジトリのテナント ロールを管理する
+
+ユーザーまたはサービス プリンシパルに対して、特定のリソースへのロール割り当てを作成します。
+
+たとえば、テナントに対する **ModelsCreator** のロールを user@consoso.com に付与します。
+
+```azurecli
+az iot pnp role-assignment create --resource-id {tenant_id} --resource-type Tenant --subject-id {user@contoso.com} --subject-type User --role ModelsCreator
+```
+
+または、特定のモデルに対する **ModelAdministrator** のロールを user@consoso.com に付与します。
+
+```azurecli
+az iot pnp role-assignment create --resource-id {model_id} --resource-type Model --subject-id {user@contoso.com} --subject-type User --role ModelAdministrator
+```
+
+#### <a name="create-a-model"></a>モデルを作成する
+
+会社のリポジトリに新しいモデルを作成します。
+
+```azurecli
+az iot pnp model create --model {model_json or path_to_file}
+```
+
+#### <a name="search-a-model"></a>モデルを検索する
+
+特定のキーワードに一致するモデルの一覧を表示します。
+
+```azurecli
+az iot pnp model list -q {search_keyword}
+```
+
+#### <a name="publish-a-model"></a>モデルを公開する
+
+会社のリポジトリに存在するデバイス モデルをパブリック リポジトリに公開します。
+
+たとえば、`dtmi:com:example:ClimateSensor;1` という ID のモデルを公開します。
+
+```azurecli
+az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
+```
+
+モデルを公開するには、次の要件を満たしている必要があります。
+
+- 会社または組織のテナントは、Microsoft パートナーである必要があります。 
+- ユーザーまたはサービス プリンシパルは、リポジトリ テナントの **Publisher** ロールのメンバーである必要があります。
+
 ## <a name="next-steps"></a>次のステップ
 
-このハウツー記事では、Azure CLI 用 Azure IoT 拡張機能をインストールして使用し、プラグ アンド プレイ デバイスと対話する方法を学習しました。 次は、[デバイスで Azure IoT Explorer](./howto-use-iot-explorer.md) を使用する方法について学習することをお勧めします。
+このハウツー記事では、Azure CLI 用の Azure IoT 拡張機能をインストールして使用し、IoT プラグ アンド プレイ デバイスと対話する方法を学習しました。 次は、[デバイスで Azure IoT Explorer](./howto-use-iot-explorer.md) を使用する方法について学習することをお勧めします。

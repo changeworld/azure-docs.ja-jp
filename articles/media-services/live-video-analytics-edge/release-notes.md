@@ -2,13 +2,13 @@
 title: Live Video Analytics on IoT Edge リリース ノート - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 28260728532d9db52b8d36488c2e456bd11803ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/19/2020
+ms.openlocfilehash: 23c2362d46a0b9bfe2fc2fbe31e00d0a42f80cfa
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091781"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055449"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Live Video Analytics on IoT Edge リリース ノート
 
@@ -21,12 +21,35 @@ ms.locfileid: "87091781"
 * バグの修正
 * 非推奨の機能
 
+## <a name="august-19-2020"></a>2020 年 8 月 19 日
+
+モジュールの 2020 年 8 月の更新に関するこのリリース タグは次のとおりです。
+
+```
+mcr.microsoft.com/media/live-video-analytics:1.0.3
+```
+
+> [!NOTE]
+> クイックスタートおよびチュートリアルでは、配置マニフェストで 1 のタグ (live-video-analytics:1) を使用します。 そのため、このようなマニフェストを再配置するだけで、エッジとデバイスでモジュールが更新されます。
+
+## <a name="new-features"></a>新機能 
+
+* gRPC フレームワークを使用して、IoT Edge の Live Video Analytics とカスタム拡張機能間でデータ コンテンツ転送のパフォーマンスを向上させることができるようになりました。 [ここ](analyze-live-video-use-your-grpc-model-quickstart.md)を参照して開始します。
+* Live Video Analytics のリージョン デプロイの範囲が広くなり、クラウド サービスのみが更新されました。  
+* Live Video Analytics を世界中の 25 の追加リージョンで使用できるようになりました。 使用可能なすべてのリージョンの[一覧](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)を次に示します。  
+* クイック スタートの[セットアップ](https://aka.ms/lva-edge/setup-resources-for-samples)でも、新しいリージョンがサポートされるように更新されました。
+    * 既にリソースをセットアップしているユーザーには、アクションが呼び出されません。
+
+## <a name="bug-fixes"></a>バグの修正 
+
+* セットアップ スクリプトで非推奨の Azure 拡張機能の使用を削除
+
 ## <a name="july-13-2020"></a>2020 年 7 月 13 日
 
 モジュールの 2020 年 7 月の更新に関するこのリリース タグは次のとおりです。
 
 ```
-     mcr.microsoft.com/media/live-video-analytics:1.0.2
+mcr.microsoft.com/media/live-video-analytics:1.0.2
 ```
 
 > [!NOTE]

@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.custom: devx-track-csharp
+ms.openlocfilehash: be18718513e8624db00d502228a3e5af6076d9d7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513334"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007079"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>チュートリアル:マネージド ID と .NET を使用して Key Vault を Azure Web アプリに接続する
 
@@ -140,7 +141,7 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 
 ### <a name="create-a-remote-web-app"></a>リモート Web アプリを作成する
 
-`myAppServicePlan` App Service プランに [Azure Web アプリ](../../app-service/containers/app-service-linux-intro.md)を作成します。 
+`myAppServicePlan` App Service プランに [Azure Web アプリ](../../app-service/overview.md#app-service-on-linux)を作成します。 
 
 > [!Important]
 > Key Vault と同様、Azure Web アプリにも一意の名前を付ける必要があります。 次の例の \<your-webapp-name\> は、実際の Web アプリの名前に置き換えてください。
