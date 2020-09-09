@@ -69,6 +69,8 @@
           href: tokens-overview.md
         - name: アクセス トークンの要求
           href: access-tokens.md
+    - name: ポリシー キー
+      href: policy-keys-overview.md
     - name: ユーザー フローとポリシー
       items:
         - name: ユーザー フロー

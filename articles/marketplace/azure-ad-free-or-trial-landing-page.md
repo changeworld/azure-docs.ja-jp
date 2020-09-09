@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/03/2020
+ms.openlocfilehash: 655caa05eff16bcf3e598dccd3c9845928b2fcff
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921386"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378833"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する
 
@@ -21,7 +21,7 @@ ms.locfileid: "87921386"
 
 ## <a name="overview"></a>概要
 
-ランディング ページは、サービスとしてのソフトウェア (SaaS) オファーのための "ロビー" と考えることができます。 顧客がアプリを取得することを選択すると、その SaaS アプリケーションへのサブスクリプションをアクティブ化して構成するために、コマーシャル マーケットプレースはその顧客をランディング ページに移動します。 サービスとしてのソフトウェア (SaaS) オファーを作成した場合は、パートナー センターで、[Microsoft 経由で販売する](partner-center-portal/create-new-saas-offer.md)かどうかを選択できます。 Microsoft コマーシャル マーケットプレースでオファーを一覧表示するだけで、Microsoft 経由で販売しない場合は、潜在顧客がそのオファーをどのように操作できるかを指定できます。 **[今すぐ入手 (無料)]** または **[無料試用版]** 一覧オプションを有効にする場合は、ユーザーが無料サブスクリプションまたは無料試用版にアクセスするために移動できるランディング ページの URL を指定する必要があります。
+ランディング ページは、サービスとしてのソフトウェア (SaaS) オファーのための "ロビー" と考えることができます。 顧客がアプリを取得することを選択すると、その SaaS アプリケーションへのサブスクリプションをアクティブ化して構成するために、コマーシャル マーケットプレースはその顧客をランディング ページに移動します。 サービスとしてのソフトウェア (SaaS) オファーを作成した場合は、パートナー センターで、[Microsoft 経由で販売する](plan-saas-offer.md#listing-options)かどうかを選択できます。 Microsoft コマーシャル マーケットプレースでオファーを一覧表示するだけで、Microsoft 経由で販売しない場合は、潜在顧客がそのオファーをどのように操作できるかを指定できます。 **[今すぐ入手 (無料)]** または **[無料試用版]** 一覧オプションを有効にする場合は、ユーザーが無料サブスクリプションまたは無料試用版にアクセスするために移動できるランディング ページの URL を指定する必要があります。
 
 ランディング ページの目的は、単純に、無料試用版または無料サブスクリプションをアクティブ化できるようにユーザーを受け付けることです。 Azure Active Directory (Azure AD) と Microsoft Graph を使用して、ユーザーのシングル サインオン (SSO) を有効にしたり、無料試用版または無料サブスクリプションをアクティブ化するために使用できるユーザーに関する重要な詳細 (名前、メール アドレス、組織など) を取得したりします。
 
@@ -38,12 +38,12 @@ ms.locfileid: "87921386"
 
 1. ランディング ページでの [Azure AD アプリ登録を作成](#create-an-azure-ad-app-registration)します。
 2. アプリの[開始点としてコード サンプルを使用](#use-a-code-sample-as-a-starting-point)します。
-3. 要求と共に送信された、ログオン後に Azure AD から受信された [ID トークンにエンコードされている要求から情報を読み取り](#read-information-from-claims-encoded-in-the-id-token)ます。
+3. 要求と共に送信された、サインイン後に Azure AD から受信された [ID トークンにエンコードされている要求から情報を読み取り](#read-information-from-claims-encoded-in-the-id-token)ます。
 4. [Microsoft Graph API を使用](#use-the-microsoft-graph-api)して、必要に応じて追加情報を収集します。
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD アプリの登録を作成する
 
-コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 ユーザーはマーケットプレースに到達し、[Azure AD アカウントまたは Microsoft アカウント (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) で認証されます。 一覧表示のみのオファーから無料試用版サブスクリプションを取得した後、ユーザーはコマーシャル マーケットプレースからランディング ページの URL に移動して、SaaS アプリケーションへのサブスクリプションをアクティブ化して管理します。 ユーザーが Azure AD SSO でアプリケーションにサインインできるようにする必要があります。 (ランディング ページの URL は、そのオファーの [[技術的な構成] ページ](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)で指定されます)。
+コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 ユーザーはマーケットプレースに到達し、[Azure AD アカウントまたは Microsoft アカウント (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) で認証されます。 一覧表示のみのオファーから無料試用版サブスクリプションを取得した後、ユーザーはコマーシャル マーケットプレースからランディング ページの URL に移動して、SaaS アプリケーションへのサブスクリプションをアクティブ化して管理します。 ユーザーが Azure AD SSO でアプリケーションにサインインできるようにする必要があります。 (ランディング ページの URL は、オファーの [[技術的な構成]](plan-saas-offer.md#technical-information) ページで指定されます。)
 
 ID を使用するための最初の手順として、ランディング ページが Azure AD アプリケーションとして登録されていることを確認します。 アプリケーションを登録すると、Azure AD を使用してユーザーを認証したり、ユーザー リソースへのアクセスを要求したりできるようになります。 これは、アプリケーションの定義と見なすことができます。これにより、サービスは、アプリの設定に基づいてアプリにトークンを発行する方法を認識できるようになります。
 
@@ -103,4 +103,4 @@ Azure AD に登録されているほとんどのアプリは、会社の Azure A
 > MSA テナント (テナント ID は `9188040d-6c67-4c5b-b112-36a304b66dad`) のアカウントでは、ID トークンで既に収集されている内容より詳細な情報は返されません。 そのため、これらのアカウントでは Graph API へのこの呼び出しをスキップできます。
 
 ## <a name="next-steps"></a>次のステップ
-- [コマーシャル マーケットプレースで SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)
+- [コマーシャル マーケットプレースでの SaaS オファーの作成方法](create-new-saas-offer.md)

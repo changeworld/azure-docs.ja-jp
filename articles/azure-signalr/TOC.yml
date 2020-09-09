@@ -35,6 +35,8 @@
   items:
     - name: Azure SignalR Service の内部
       href: signalr-concept-internals.md
+    - name: サービス モード
+      href: concept-service-mode.md
     - name: ASP.NET Core SignalR をスケーリングする
       href: signalr-concept-scale-aspnet-core.md
     - name: サーバーレス

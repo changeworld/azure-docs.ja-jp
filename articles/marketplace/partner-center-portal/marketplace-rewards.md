@@ -8,18 +8,18 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4d307b2a16262645919423ef89c0d87636639bf1
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705046"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378714"
 ---
 # <a name="marketplace-rewards"></a>Marketplace 報酬
 
 Marketplace 報酬によって、認識アクティビティから始めて最初の顧客の獲得まで、成長の特定の段階でパートナーにサポートが提供されます。 Microsoft コマーシャル マーケットプレースで成長するにつれて、顧客の変換と取引の成立に役立つように設計された新しいベネフィットを利用できるようになります。
 
-プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むのに役立ち、パートナーは、Microsoft の現場と協力し、商用マーケットプレースをプラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。
+プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むのに役立ち、パートナーは、Microsoft の現場と協力し、コマーシャル マーケットプレースをプラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。
 
 ベネフィットは、オファーが[リスト、試用版、トランザクション](../determine-your-listing-type.md#choose-a-listing-option)のいずれであるかによって異なります。
 
@@ -36,9 +36,9 @@ Marketplace Rewards プログラムの資格を確認するには、パートナ
 始める手順は簡単です。
 
 1. Microsoft AppSource または Azure Marketplace でオファーを発行します。
-2. パートナー センター [ダッシュボード](https://partner.microsoft.com/dashboard/directory)に移動し、[Marketplace Rewards] ページの **[Sales and Marketing benefits]\(営業とマーケティングのベネフィット\)** タブを選択し、ベネフィットの一覧を表示します。
-3. 営業とマーケティングのベネフィットを有効にするには、最初に会社のマーケティングの連絡先を割り当てる必要があります。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
-4. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
+1. ベネフィットの一覧を確認するには、パートナー センターの [[Marketplace Rewards]](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) ページに移動し、 **[Sales and Marketing benefits]\(営業とマーケティングのベネフィット\)** タブを選択します。
+1. 営業とマーケティングのベネフィットを有効にするには、最初に会社のマーケティングの連絡先を割り当てる必要があります。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
+1. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
 
     1. 一覧からユーザーを選択します。 割り当てるユーザーが一覧にない場合は、 **[アカウント設定]** で新しいユーザーを追加できます。
     1. 会社のパートナー センター アカウントに関連付けられているメール アドレスとは異なるユーザーのメール アドレスを入力します。 指定されたマーケティングの連絡先のメール アドレスには、Marketplace Rewards のベネフィットを使用するための手順がメールで送信されます。
@@ -48,7 +48,7 @@ Marketplace Rewards プログラムの資格を確認するには、パートナ
 ## <a name="technical-benefits"></a>技術上のメリット
 
 1. 技術上のベネフィットを使用すると、クラウドおよびハイブリッド ソリューションのプリセールス、設計、デプロイ、アプリ開発の各段階で技術的なサポートを依頼できます。 サポートを依頼するには、依頼フォームに入力して、 **[要求の送信]** を選択します。
-2. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
+1. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
 
 >[!NOTE]
 >オファーを発行してから 4 週間経ってもメッセージを受け取らない場合は、パートナー センターに問い合わせて、組織内の誰がオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。 所有者がわからない場合、または所有者が退職した場合は、 https://aka.ms/marketplacepublishersupport でサポート チケットを開いてください。

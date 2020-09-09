@@ -102,6 +102,7 @@
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: リージョン
+      displayName: location
       href: regions.md
     - name: FAQ
       href: faq.md

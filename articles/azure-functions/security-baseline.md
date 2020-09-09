@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 32905383b046148893492640fe42fc721d1944dd
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810243"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394093"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions 用の Azure セキュリティ ベースライン
 
@@ -28,7 +28,7 @@ Azure Functions 用の Azure セキュリティ ベースラインには、ご�
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**ガイダンス**: Azure Functions アプリを Azure 仮想ネットワークと統合します。 Premium プランで実行されている Functions アプリには、"VNet 統合" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。  Azure 仮想ネットワークを使用すると、Azure Functions などの Azure リソースの多くを、インターネットにルーティングできないネットワークに配置することができます。
+**ガイダンス**: Azure Functions アプリを Azure 仮想ネットワークと統合します。 Premium プランで実行されている関数アプリには、"VNet 統合" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。  Azure 仮想ネットワークを使用すると、Azure Functions などの Azure リソースの多くを、インターネットにルーティングできないネットワークに配置することができます。
 
 - [Functions を Azure 仮想ネットワークに統合する方法](./functions-create-vnet.md)
 
@@ -56,16 +56,16 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**:運用環境で、Azure Functions エンドポイントを完全に保護するには、次の Functions アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
-- Functions アプリの App Service 認証および承認をオンにする
+**ガイダンス**:運用環境で、Azure 関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
+- 関数アプリの App Service 認証および承認をオンにする
 - 要求の認証に Azure API Management (APIM) を使用する、または
-- Azure App Service Environment に Functions アプリをデプロイする。
+- Azure App Service Environment に関数アプリをデプロイする。
 
-また、運用環境の Azure Functions のリモート デバッグが無効になっていることを確認します。 さらに、クロスオリジン リソース共有 (CORS) では、すべてのドメインが Azure Function アプリにアクセスすることを許可しないでください。 Azure Functions アプリの操作に必要なドメインのみを許可します。
+また、運用環境の Azure Functions のリモート デバッグが無効になっていることを確認します。 さらに、クロスオリジン リソース共有 (CORS) では、すべてのドメインが Azure Function アプリにアクセスすることを許可しないでください。 Azure 関数アプリの操作に必要なドメインのみを許可します。
 
 受信トラフィックをさらに検査するために、ネットワーク構成の一部として Azure Web アプリケーション ファイアウォール (WAF) をデプロイすることを検討します。 WAF の診断設定を有効にし、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースにログを取り込みます。 
 
-- [運用環境で Azure Functions エンドポイントをセキュリティで保護する方法](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
+- [運用環境で Azure 関数エンドポイントをセキュリティで保護する方法](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -75,8 +75,8 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**: Functions アプリに関連付けられた仮想ネットワーク上で DDoS Protection 標準を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のパブリック IP アドレスとの通信を拒否します。
-さらに、すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、Azure Functions アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
+**ガイダンス**: 関数アプリに関連付けられた仮想ネットワーク上で DDoS Protection 標準を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のパブリック IP アドレスとの通信を拒否します。
+さらに、すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、Azure 関数アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
 
 - [Azure Functions のネットワーク オプション](./functions-networking-options.md)
 
@@ -179,7 +179,7 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 - Function App には HTTPS 経由でのみアクセスできるようにする
 - 関数アプリでは最新の TLS バージョンを使用する必要がある
 
-また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
+また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -595,9 +595,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (AD) ロールベースのアクセス制御 (RBAC) を使用して、Azure 関数コントロール プレーン (Azure portal) へのアクセスを制御します。 
+**ガイダンス**: Azure ロールベースのアクセス制御 (RBAC) を使用して、Azure 関数コントロール プレーン (Azure portal) へのアクセスを制御します。 
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -695,7 +695,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
-**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
@@ -960,7 +960,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [App Service と Azure Functions でマネージド ID を使用する方法](../app-service/overview-managed-identity.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/managed-identity.md)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 - [App Service と Azure Functions の Key Vault 参照を使用する](../app-service/app-service-key-vault-references.md)
 
@@ -1133,7 +1135,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Functions な�
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 

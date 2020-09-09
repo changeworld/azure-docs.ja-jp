@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e73f53fe983c1ebe77044993a281847ad362a840
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 379cecf8e810b8689533d5c162e983b762fc76a4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496775"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393583"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Azure セキュリティ ベースライン
 
@@ -547,9 +547,9 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Database for MySQL コントロール プレーン (Azure portal など) へのアクセスを制御します。 (データベース自体内の) データ プレーン アクセスの場合は、SQL クエリを使用してユーザーを作成し、ユーザーのアクセス許可を構成します。 RBAC は、データベース内のユーザーのアクセス許可には影響しません。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Database for MySQL コントロール プレーン (Azure portal など) へのアクセスを制御します。 (データベース自体内の) データ プレーン アクセスの場合は、SQL クエリを使用してユーザーを作成し、ユーザーのアクセス許可を構成します。 Azure RBAC は、データベース内のユーザーのアクセス許可には影響しません。
 
-Azure で RBAC を構成する方法: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Azure RBAC を構成する方法: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 Azure Database for MySQL の SQL を使用してユーザー アクセスを構成する方法: https://docs.microsoft.com/azure/mysql/howto-create-users
 
@@ -892,9 +892,11 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-マネージド ID で Key Vault の認証を提供する方法: https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault に対して認証する方法: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault のアクセス ポリシーを割り当てる方法: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center の監視**: はい
 
@@ -1057,7 +1059,7 @@ NIST の出版物を参照してください。IT の計画と機能に関する
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 Azure Security Center のセキュリティ連絡先を設定する方法: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 

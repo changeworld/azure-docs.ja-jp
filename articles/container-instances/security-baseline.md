@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259161"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393430"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances の Azure セキュリティ ベースライン
 
@@ -155,7 +155,7 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。 
+**ガイダンス**: Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。 
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -259,7 +259,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
-**ガイダンス**:異常な動作がないかログの分析と監視を行って、定期的に結果を確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 
+**ガイダンス**: 異常な動作がないかログの分析と監視を行って、定期的に結果を確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 
 
 * [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
@@ -407,7 +407,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
+**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
 
 * [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
@@ -557,9 +557,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure AD RBAC を使用して、Azure Container Instances のデータとリソースへのアクセスを制御します。 
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Container Instances のデータとリソースへのアクセスを制御します。 
 
-* [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -923,13 +923,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: コンテナー イメージを Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+**ガイダンス**: コンテナー イメージを Azure Container Registry 内に保存し、Azure RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
 
-* [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [コンテナー レジストリの RBAC を理解する](../container-registry/container-registry-roles.md)
+* [コンテナー レジストリの Azure RBAC について](../container-registry/container-registry-roles.md)
 
-* [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -948,7 +948,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
 
-**ガイダンス**:適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -988,7 +988,9 @@ Azure Policy を使用して、サブスクリプションで作成できるリ�
 
 * [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/managed-identity.md)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 * [Azure Container Instances でマネージド ID を使用する方法](./container-instances-managed-identity.md)
 

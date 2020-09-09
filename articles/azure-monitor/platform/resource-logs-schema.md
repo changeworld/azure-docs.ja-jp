@@ -3,13 +3,13 @@ title: Azure リソース ログでサポートされているサービスとス
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/15/2020
-ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/01/2020
+ms.openlocfilehash: 133847abada718acbf42baf723e598c132d64e14
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782126"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392614"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -54,9 +54,6 @@ ms.locfileid: "88782126"
 | Application Gateway |[Application Gateway のログ記録](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch のログ記録](../../batch/batch-diagnostics.md) |
-| Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database for PostgreSQL | [Azure Database for PostgreSQL のログ](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure Data Explorer | [Azure Data Explorer のログ](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Azure Cognitive Services のログ記録](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Azure Container Registry のログ記録](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [CDN の Azure ログ](../../cdn/cdn-azure-diagnostic-logs.md) |
@@ -64,7 +61,11 @@ ms.locfileid: "88782126"
 | Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics のログへのアクセス](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store のログへのアクセス](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Azure Databricks | [Azure Databricks の診断ログ](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
+| Azure Data Explorer | [Azure Data Explorer のログ](/azure/data-explorer/using-diagnostic-logs) |
+| Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL のログ](../../postgresql/concepts-server-logs.md#resource-logs) |
+| Azure Databricks | [Azure Databricks の診断ログ](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Digital Twins | [Azure Digital Twins の診断を設定する](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs のログ](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | スキーマは使用できません。 |
 | Azure Firewall | スキーマは使用できません。 |
@@ -84,6 +85,7 @@ ms.locfileid: "88782126"
 | Traffic Manager | [Traffic Manager のログのスキーマ](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 仮想ネットワーク | スキーマは使用できません。 |
 | 仮想ネットワーク ゲートウェイ | スキーマは使用できません。 |
+
 
 
 ## <a name="next-steps"></a>次の手順
