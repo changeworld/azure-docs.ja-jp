@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087182"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318030"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -34,7 +34,7 @@ Azure SQL Analytics は、すべての Azure SQL データベースを対象に�
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [診断設定](../platform/diagnostic-settings.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
-| [Azure Storage アカウント](../platform/collect-azure-metrics-logs.md) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
+| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
 | [Windows エージェント](../platform/agent-windows.md) | いいえ | Azure SQL Analytics では、Windows のダイレクト エージェントは使用されません。 |
 | [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | Azure SQL Analytics では、Linux のダイレクト エージェントは使用されません。 |
 | [System Center Operations Manager 管理グループ](../platform/om-agents.md) | いいえ | Operations Manager エージェントから Azure Monitor への直接の接続は、Azure SQL Analytics では使用されません。 |
@@ -56,7 +56,7 @@ Azure SQL Analytics は、すべての Azure SQL データベースを対象に�
 
 ## <a name="configuration"></a>構成
 
-[Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) を Log Analytics ワークスペースに追加します。
+[Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) を Log Analytics ワークスペースに追加します。
 
 ### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーミングするように Azure SQL Database を構成する
 
@@ -297,3 +297,4 @@ Azure SQL Analytics は無料で使用できますが、毎月割り当てられ
 - Azure Monitor で[ログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な Azure SQL データを表示します。
 - Azure SQL データを表示する[独自のダッシュ ボードを作成](../learn/tutorial-logs-dashboards.md)します。
 - Azure SQL の特定のイベントが発生した場合の[アラートを作成](../platform/alerts-overview.md)します。
+

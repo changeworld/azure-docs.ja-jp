@@ -13,17 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223433"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015137"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
 
@@ -164,7 +164,7 @@ ms.locfileid: "86223433"
     }
     ```
 
-    UWP アプリでのユーザーの場所の取得の詳細については、[ユーザーの場所の取得](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx)に関するページを参照してください。
+    UWP アプリでのユーザーの場所の取得の詳細については、[ユーザーの場所の取得](/windows/uwp/maps-and-location/get-location)に関するページを参照してください。
 5. 位置情報の取得機能が正しく動作することを確認するために、メイン ページ (`MainPage.xaml.cs`) のコードを開いてください。 `MainPage` コンストラクター内に `Loaded` イベントの新しいイベント ハンドラーを作成します。
 
     ```csharp
@@ -393,7 +393,7 @@ ms.locfileid: "86223433"
 
 このソリューションを運用環境に対応させるには、いくつかの手順を実行する必要があります。
 
-1. 最初に、ジオフェンスが動的であることを確認する必要があります。 それには、Bing API を使用した何らかの追加の作業で、既存のデータ ソース内の新しい境界をアップロードできることが必要です。 詳細については、[Bing Spatial Data Services API ドキュメント](https://msdn.microsoft.com/library/ff701734.aspx)を参照してください。
+1. 最初に、ジオフェンスが動的であることを確認する必要があります。 それには、Bing API を使用した何らかの追加の作業で、既存のデータ ソース内の新しい境界をアップロードできることが必要です。 詳細については、[Bing Spatial Data Services API ドキュメント](/bingmaps/spatial-data-services/)を参照してください。
 2. 次に、適切な参加者に対して確実に通知を配信するために、 [タグ付け](notification-hubs-tags-segment-push-message.md)によってターゲットを指定する場合があります。
 
-このチュートリアルに示されているソリューションでは、多様なターゲット プラットフォームが存在する可能性のあるシナリオが説明されているため、ジオフェンシングがシステム固有の機能に制限されません。 しかし、ユニバーサル Windows プラットフォームには、 [細かい設定なしにジオフェンスを検出](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence)する機能が備わっています。
+このチュートリアルに示されているソリューションでは、多様なターゲット プラットフォームが存在する可能性のあるシナリオが説明されているため、ジオフェンシングがシステム固有の機能に制限されません。 しかし、ユニバーサル Windows プラットフォームには、 [細かい設定なしにジオフェンスを検出](/windows/uwp/maps-and-location/set-up-a-geofence)する機能が備わっています。
