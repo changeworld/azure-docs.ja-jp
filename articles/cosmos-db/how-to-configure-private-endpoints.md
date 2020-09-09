@@ -58,7 +58,7 @@ Azure portal を使用して、次の手順で既存の Azure Cosmos アカウ�
     |||
 
 1. **[Next:構成]** を選択します。
-1. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
+1. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |

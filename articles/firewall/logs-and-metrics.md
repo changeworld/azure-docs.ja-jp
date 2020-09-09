@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086593"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827224"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリック
 
@@ -125,7 +125,7 @@ Azure Firewall では、次のメトリックを利用できます。
 
     単位: パーセント
 
-   ファイアウォールにパブリック IP アドレスを追加すると、より多くの SNAT ポートが使用可能になり、SNAT ポートの使用率が低下します。 さらに、さまざまな理由 (CPU やスループットなど) に応じてファイアウォールをスケールアウトすると、追加の SNAT ポートも使用できるようになります。 実際には、サービスがスケールアウトされると、パブリック IP アドレスを追加しなくても、SNAT ポートの使用率の割合が低下する可能性があります。使用可能なパブリック IP アドレスの数を直接制御して、ファイアウォールで使用可能なポートを増やすことができます。 ただし、ファイアウォールのスケーリングを直接制御することはできません。 現在、SNAT ポートは、最初の 5 つのパブリック IP アドレスに対してのみ追加されます。   
+   ファイアウォールにパブリック IP アドレスを追加すると、より多くの SNAT ポートが使用可能になり、SNAT ポートの使用率が低下します。 さらに、さまざまな理由 (CPU やスループットなど) に応じてファイアウォールをスケールアウトすると、追加の SNAT ポートも使用できるようになります。 実際には、サービスがスケールアウトされると、パブリック IP アドレスを追加しなくても、SNAT ポートの使用率の割合が低下する可能性があります。使用可能なパブリック IP アドレスの数を直接制御して、ファイアウォールで使用可能なポートを増やすことができます。 ただし、ファイアウォールのスケーリングを直接制御することはできません。
 
 
 ## <a name="next-steps"></a>次のステップ

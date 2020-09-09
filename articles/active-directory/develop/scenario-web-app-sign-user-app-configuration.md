@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 64b38d0e776a0e3dab155704dcc368cc738c278e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026341"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855419"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>ユーザーをサインインさせる Web アプリ:コード構成
 
@@ -225,7 +225,7 @@ Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認�
 
 1. [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) および [Microsoft.Identity.Web.UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet パッケージをプロジェクトに追加します。 Microsoft.AspNetCore.Authentication.AzureAD.UI NuGet パッケージが存在する場合は削除します。
 
-2. `AddMicrosoftWebAppAuthentication` メソッドと `AddMicrosoftIdentityUI` メソッドを使用するように `ConfigureServices` のコードを更新します。
+2. `AddMicrosoftIdentityWebAppAuthentication` メソッドと `AddMicrosoftIdentityUI` メソッドを使用するように `ConfigureServices` のコードを更新します。
 
    ```c#
    public class Startup
@@ -234,7 +234,7 @@ Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認�
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
+     services.AddMicrosoftIdentityWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -259,16 +259,16 @@ Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認�
    ```
 
 上記のコードには、以下が含まれます。
-- `AddMicrosoftWebAppAuthentication` 拡張メソッドは、**Microsoft.Identity.Web** に定義されています。 それでは次のことが行われます。
+- `AddMicrosoftIdentityWebAppAuthentication` 拡張メソッドは、**Microsoft.Identity.Web** に定義されています。 それでは次のことが行われます。
   - 認証サービスが追加されます。
   - 構成ファイルを読み取るためのオプションが構成されます (ここでは、"AzureAD" セクションから)。
   - 機関が Microsoft ID プラットフォーム エンドポイントになるように OpenID Connect オプションが構成されます。
   - トークンの発行者が検証されます。
   - 名前に対応する要求が、ID トークンの `preferred_username` 要求からマップされるようにします。
 
-- 構成オブジェクトに加えて、`AddMicrosoftWebAppAuthentication` を呼び出すときに構成セクションの名前を指定できます。 既定では、これは `AzureAd` です。
+- 構成オブジェクトに加えて、`AddMicrosoftIdentityWebAppAuthentication` を呼び出すときに構成セクションの名前を指定できます。 既定では、これは `AzureAd` です。
 
-- `AddMicrosoftWebAppAuthentication` には、高度なシナリオのためのその他のパラメーターがあります。 たとえば、OpenID Connect ミドルウェア イベントをトレースすると、認証が機能しない場合の Web アプリケーションのトラブルシューティングに役立ちます。 省略可能なパラメーター `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` を `true` に設定すると、HTTP 応答から `HttpContext.User` 内のユーザーの ID への進行に合わせて、ASP.NET Core ミドルウェアのセットによって情報がどのように処理されるかが表示されます。
+- `AddMicrosoftIdentityWebAppAuthentication` には、高度なシナリオのためのその他のパラメーターがあります。 たとえば、OpenID Connect ミドルウェア イベントをトレースすると、認証が機能しない場合の Web アプリケーションのトラブルシューティングに役立ちます。 省略可能なパラメーター `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` を `true` に設定すると、HTTP 応答から `HttpContext.User` 内のユーザーの ID への進行に合わせて、ASP.NET Core ミドルウェアのセットによって情報がどのように処理されるかが表示されます。
 
 - `AddMicrosoftIdentityUI` 拡張メソッドは、**Microsoft.Identity.Web.UI** に定義されています。 サインインおよびサインアウトを処理する既定のコントローラーが提供されます。
 
@@ -345,21 +345,21 @@ Session(app)
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
+> [サインインとサインアウト](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
+> [サインインとサインアウト](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
+> [サインインとサインアウト](./scenario-web-app-sign-user-sign-in.md?tabs=java)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)
+> [サインインとサインアウト](./scenario-web-app-sign-user-sign-in.md?tabs=python)
 
 ---

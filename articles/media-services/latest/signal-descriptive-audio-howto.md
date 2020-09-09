@@ -3,23 +3,25 @@ title: Azure Media Services v3 を使用した説明オーディオ トラック
 description: Media Services v3 を使用してファイルのアップロード、ビデオのエンコード、説明オーディオ トラックの追加、コンテンツのストリーム配信を行うには、このチュートリアルの手順に従います。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.custom: ''
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: 99e0a78ea1aed0ecf08618c919e7949c5645de5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.custom: devx-track-csharp
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072076"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291264"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>説明オーディオ トラックの通知
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ナレーション トラックをビデオに追加することで、目が不自由なクライアントがナレーションを聞いて動画の内容を追うことができます。 Media Services v3 では、マニフェスト ファイルのオーディオ トラックに注釈を付けることによって、説明オーディオ トラックを通知します。
 

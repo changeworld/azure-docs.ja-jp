@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 7732f83dfd44cbf686e2d076c665c980962b19d5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292353"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831449"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure における仮想マシンの分離性
 
@@ -59,7 +59,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 **A**: 分離されたサイズが正式に非推奨となる 12 か月前に通知が送付されます。
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>Q:シルバーまたはゴールドの持続性層を利用している Azure Service Fabric ユーザーです。 この変更の影響はありますか?
-**A**: いいえ。 Service Fabric の[持続性層](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)で提供されている保証は、この変更の後も引き続き機能します。 その他の理由で物理的なハードウェアの分離が必要な場合、上記のいずれかのアクションを実行する必要があります。 
+**A**: いいえ。 Service Fabric の[持続性層](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)で提供されている保証は、この変更の後も引き続き機能します。 その他の理由で物理的なハードウェアの分離が必要な場合、上記のいずれかのアクションを実行する必要があります。 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>Q:D15_v2 や DS15_v2 の分離に関する廃止のマイルストーンはどのようになっていますか? 
 **A**: 

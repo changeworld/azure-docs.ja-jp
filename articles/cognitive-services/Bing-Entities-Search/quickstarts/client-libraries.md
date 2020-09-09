@@ -11,13 +11,13 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.author: aahi
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: e67460c4feadcf2d530e8396fb7ada734ecd4c5b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 0486d906d5146874ef4665b410e6f4731afbc43d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931890"
 ---
 # <a name="quickstart-use-the-bing-entity-search-client-library"></a>クイック スタート:Bing Entity Search クライアント ライブラリを使用する
 

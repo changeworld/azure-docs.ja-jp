@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 81e2abc1b4fd0c540b08f96e6b34c16fca3319f1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 59df49d320b23686a3d053335ea2b95e98125b28
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132018"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135557"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -1267,6 +1267,20 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |requests/failed|いいえ|失敗した要求|Count|Count|失敗としてマークされた HTTP 要求の数。 ほとんどの場合、応答コードが 400 以上で、かつ 401 に等しくない要求です。|request/performanceBucket、request/resultCode、operation/synthetic、cloud/roleInstance、cloud/roleName|
 |要求/率|いいえ|サーバー要求率|CountPerSecond|Average|1 秒あたりのサーバー要求数による率|request/performanceBucket、request/resultCode、operation/synthetic、cloud/roleInstance、request/success、cloud/roleName|
 |traces/count|はい|トレース|Count|Count|トレース ドキュメント数|trace/severityLevel、operation/synthetic、cloud/roleName、cloud/roleInstance|
+
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+
+|メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
+|---|---|---|---|---|---|---|
+|c2d.property.read.failure|はい|Failed Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの失敗数)|Count|合計|IoT Central から開始されて失敗した、すべてのプロパティ読み取りの数|ディメンションなし|
+|c2d.property.read.success|Yes|Successful Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの成功数)|Count|合計|IoT Central から開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
+|c2d.property.update.failure|はい|Failed Device Property Updates from IoT Central (IoT Central からのデバイス プロパティ更新の失敗数)|Count|合計|IoT Central から開始されて失敗した、すべてのプロパティ更新の数|ディメンションなし|
+|c2d.property.update.success|はい|Successful Device Property Updates from IoT Central (IoT Central からのデバイス プロパティ更新の成功数)|Count|合計|IoT Central から開始されて成功した、すべてのプロパティ更新の数|ディメンションなし|
+|connectedDeviceCount|いいえ|Total Connected Devices (接続されたデバイスの総数)|Count|Average|IoT Central に接続されているデバイスの数|ディメンションなし|
+|d2c.property.read.failure|Yes|Failed Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの失敗数)|Count|合計|デバイスから開始されて失敗した、すべてのプロパティ読み取りの数|ディメンションなし|
+|d2c.property.read.success|Yes|Successful Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
+|d2c.property.update.failure|Yes|Failed Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の失敗数)|Count|合計|デバイスから開始されて失敗した、すべてのプロパティ更新の数|ディメンションなし|
+|d2c.property.update.success|Yes|Successful Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ更新の数|ディメンションなし|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798642"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783588"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -78,7 +78,7 @@ ms.locfileid: "87798642"
 - Azure AD では、Azure AD Connect を使用して Windows Server Active Directory から同期されたグループまたは、Exchange Online で配布グループとして作成されたグループのメンバーシップを変更できません。  
 - 動的グループのメンバーシップはメンバーの追加または削除によって更新することはできないため、動的グループのメンバーシップはエンタイトルメント管理での使用には適していません。
 
-詳細については、「[グループを比較する](https://docs.microsoft.com/office365/admin/create-groups/compare-groups)」と「[Office 365 Groups および Microsoft Teams](https://docs.microsoft.com/microsoftteams/office-365-groups)」を参照してください。
+詳細については、「[グループを比較する](/office365/admin/create-groups/compare-groups)」と「[Office 365 Groups および Microsoft Teams](/microsoftteams/office-365-groups)」を参照してください。
 
 1. **[リソースのロールをアクセス パッケージに追加する]** ページで、 **[Groups and Teams]\(Groups と Teams\)** をクリックして [グループの選択] ウィンドウを開きます。
 
@@ -178,7 +178,7 @@ Azure AD では、ユーザーにアクセス パッケージが割り当てら�
 
 エンタイトルメント管理では、Azure AD で、アクセス パッケージ内の割り当てとリソースの一括変更が 1 日に数回処理されます。 そのため、割り当てを行ったりアクセス パッケージのリソース ロールを変更したりする場合は、Azure AD でその変更を行うのに最大 24 時間かかり、それに加えてそれらの変更を他の Microsoft Online Services や接続されている SaaS アプリケーションに伝達する時間がかかる可能性があります。 変更がほんの一部のオブジェクトにしか影響しない場合は、変更が Azure AD で適用された後、Azure AD の他のコンポーネントがその変更を検出して SaaS アプリケーションを更新するのに数分しかかからない可能性があります。 変更が何千ものオブジェクトに影響する場合、変更にはさらに長い時間がかかります。 たとえば、2 つのアプリケーションと 100 のユーザー割り当てを含むアクセス パッケージがあり、そのアクセス パッケージに SharePoint サイトのロールを追加する場合は、すべてのユーザーがその SharePoint サイトのロールに含められるまで遅延が発生する場合があります。 Azure AD 監査ログ、Azure AD プロビジョニング ログ、および SharePoint サイトの監査ログで、進行状況を監視することができます。
 
-チームのメンバーを削除すると、Office 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)」を参照してください。
+チームのメンバーを削除すると、Office 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](/microsoftteams/office-365-groups#group-membership)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0a7a5f21ee868da2b9c3a6c7dc8bb5968531d0d0
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420534"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824204"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,6 +32,13 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 + [Azure Virtual Network サービス](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)と [IP ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)の両方に関する全般かつ実用的な知識。
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
+
++ リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure のロールベースのアクセス制御 (RBAC) で次のアクションへのアクセス許可を持っている必要があります。
+
+    - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/join/action"。
+    - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
+
+    ネットワークでの RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
 
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 
@@ -85,7 +92,7 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 
 ワークスペースとストレージ アカウントは、相互にアクセスできるように、同一の仮想ネットワークに追加します。
 
-1. ワークスペースを仮想ネットワークに接続するため、[Azure Private Link を有効化](how-to-configure-private-link.md)します。 この機能は現在プレビュー段階であり、米国東部、米国西部 2、米国中南部の各リージョンでご利用いただけます。
+1. ワークスペースを仮想ネットワークに接続するため、[Azure Private Link を有効化](how-to-configure-private-link.md)します。 この機能は現在プレビュー段階であり、米国東部および米国西部 2 のリージョンでご利用いただけます。
 
 1. ストレージ アカウントを仮想ネットワークに接続するため、[ファイアウォールと仮想ネットワークの設定を構成](#use-a-storage-account-for-your-workspace)します。
 
@@ -359,6 +366,12 @@ Azure Machine Learning コンピューティングで[強制トンネリング](
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+
+        > [!TIP]
+        > 米国バージニア、米国アリゾナ、または中国東部 2 のリージョンを使用している場合、これらのコマンドは IP アドレスを返しません。 代わりに、次のいずれかのリンクを使用して IP アドレスの一覧をダウンロードします。
+        >
+        > * [Azure Government の Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=57063)
+        > * [Azure China の Azure IP 範囲とサービス タグ](https://www.microsoft.com//download/details.aspx?id=57062)
     
     UDR を追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 __[次ホップの種類]__ を __[インターネット]__ に設定します。 次の図に、Azure portal でのこの UDR の例を示します。
 

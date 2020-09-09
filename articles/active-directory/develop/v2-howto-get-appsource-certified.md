@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 18102b5501bcfca0aabc6609b8472aa45c23ec7f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 08acaf4f0171e586ff2cc3f52134395fb5925df7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172526"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118809"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する
 
@@ -40,7 +40,7 @@ AppSource でスタンドアロン SaaS アプリケーションを一覧表示�
 
 *シングル テナント アプリケーション*は、定義された Azure AD インスタンスのユーザーからのサインインのみを許可するアプリケーションです。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure AD インスタンスに各ユーザーをゲスト アカウントとして追加したあと、シングルテナント アプリケーションにサインインできるようになります。 
 
-[Azure AD B2B コラボレーション](../b2b/what-is-b2b.md)を使用して Azure AD にゲスト アカウントとしてユーザーを追加できます。また、この処理は[プログラム](../../active-directory-b2c/code-samples.md)で実行できます。 B2B を使用する場合、ユーザーは、サインインに招待が必要ないセルフサービス ポータルを作成できます。 詳細については、「[Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)」を参照してください。
+[Azure AD B2B コラボレーション](../external-identities/what-is-b2b.md)を使用して Azure AD にゲスト アカウントとしてユーザーを追加できます。また、この処理は[プログラム](../../active-directory-b2c/code-samples.md)で実行できます。 B2B を使用する場合、ユーザーは、サインインに招待が必要ないセルフサービス ポータルを作成できます。 詳細については、「[Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル](../external-identities/self-service-portal.md)」を参照してください。
 
 シングルテナント アプリケーションで*お問い合わせ*エクスペリエンスを有効にすることはできますが、AppSource でお勧めしているシングルクリック/無料試用版のエクスペリエンスを有効にする場合は、代わりにアプリケーションのマルチテナント機能を有効にします。
 
@@ -114,6 +114,3 @@ Microsoft のコンテンツ改善のため、次のコメント セクション
 
 - Azure AD のサインインをサポートするアプリケーションの作成の詳細については、「[Azure AD の認証シナリオ](authentication-flows-app-scenarios.md)」を参照してください。
 - AppSource で SaaS アプリケーションを一覧表示する方法については、[AppSource パートナーの情報](https://appsource.microsoft.com/partners)に関するページをご覧ください
-
-
-

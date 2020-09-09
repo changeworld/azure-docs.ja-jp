@@ -3,17 +3,17 @@ title: 'ExpressRoute と S2S VPN の共存する接続の構成: クラシック
 description: この記事では、クラシック デプロイ モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を構成する手順について説明します。
 documentationcenter: na
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: charwen
-ms.openlocfilehash: 673c0e7af4be330f3d63d2fe6ed68c73142da5d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 4291e0df9f3a99cb45d4f96d4a316f9bb29a9c79
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084808"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396150"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>ExpressRoute 接続とサイト間接続の共存の構成 (クラシック)
 > [!div class="op_single_selector"]

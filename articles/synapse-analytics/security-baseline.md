@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370276"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210898"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Synapse Analytics 用の Azure セキュリティ ベースライン
 
@@ -584,7 +584,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) を使用して、Synapse SQL プール内の Azure SQL データベースに対するアクセスを管理します。
+**ガイダンス**:Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Synapse SQL プール内の Azure SQL データベースに対するアクセスを管理します。
 
 ユーザー アカウントのデータベースのロール メンバーシップとオブジェクト レベルのアクセス許可によって制御されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。
 
@@ -880,7 +880,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4:セキュリティで保護されたオペレーティング システムの構成を維持する
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -934,7 +934,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1014,7 +1014,7 @@ App Service、Data lake Storage、Blob Storage、Azure SQL Server などの非�
 
 **ガイダンス**: Synapse SQL プールのスナップショットは 1 日を通して自動的に取得され、7 日間利用できる復元ポイントが作成されます。 この保持期間は変更できません。 SQL プールでは、8 時間の RPO (回復ポイントの目標) がサポートされています。 プライマリ リージョンのデータ ウェアハウスを、過去 7 日間に作成されたいずれかのスナップショットから復元することができます。 必要に応じて、手動でスナップショットをトリガーできることに注意してください。
 
-* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL プールにおけるバックアップと復元](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1040,7 +1040,7 @@ App Service、Data lake Storage、Blob Storage、Azure SQL Server などの非�
 
 * [Azure Key Vault のキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [既存の SQL プールを復元する方法](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
 

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: 950d85f391504095ceaaa10996145ca832b6db19
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 53bd4905cf4b8829d65ce2b10c85260ff3f8926c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432730"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210520"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue サービスを使用して Node.js でキューを作成および削除する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "87432730"
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial) に関するページをご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/quickstart-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial) に関するページをご覧ください。
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -195,7 +195,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
   if(!error){
     // Messages retrieved
-    for(var index in result){
+    for(var index in results){
       // text is available in result[index].messageText
       var message = results[index];
       queueSvc.deleteMessage(queueName, message.messageId, message.popReceipt, function(error, deleteResponse){
@@ -341,7 +341,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [Azure Portal]: https://portal.azure.com
 
-[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)
+[Azure App Service での Node.js Web アプリの作成](../../app-service/quickstart-nodejs.md)
 
 [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 

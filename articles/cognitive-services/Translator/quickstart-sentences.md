@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 6b703eb006638d91b664c7694f99f380be6bd809
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 96187c179a43f78627af8da4a9966ea29da3f480
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405393"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921336"
 ---
 # <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>クイック スタート:Translator を使用して文の長さを調べる
 

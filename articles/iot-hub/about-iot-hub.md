@@ -30,7 +30,7 @@ IoT Hub の機能を使うと、製造で使われる産業機器の管理、医
 
 ## <a name="scale-your-solution"></a>ソリューションをスケール調整する
 
-IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT ハブのスケーリングについて詳しくは、[IoT Hub のスケーリング](iot-hub-scaling.md?branch=release-iotbasic)に関するページを参照してください。 IoT Hub で提供される複数階層のサービスと、スケーラビリティ ニーズへの最適な対応について詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/iot-hub/)を参照してください。
+IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT Hub のスケーリングについて詳しくは、[IoT Hub のスケーリング](iot-hub-scaling.md?branch=release-iotbasic)に関するページを参照してください。 IoT Hub で提供される複数階層のサービスと、スケーラビリティ ニーズへの最適な対応について詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/iot-hub/)を参照してください。
 
 ## <a name="secure-your-communications"></a>通信のセキュリティ保護
 
@@ -40,7 +40,7 @@ IoT Hub が提供するセキュリティで保護された通信チャネルを
 
 * ユーザーは、デバイスのアクセスを完全に制御でき、デバイスごとのレベルで接続を制御できます。
 
-* [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) は、デバイスの初期起動時に、正しい IoT ハブに対してデバイスを自動的にプロビジョニングします。
+* [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) は、デバイスの初期起動時に、正しい IoT Hub に対してデバイスを自動的にプロビジョニングします。
 
 * 複数の認証の種類により、さまざまなデバイス機能がサポートされています。
 
@@ -114,7 +114,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 ## <a name="quotas-and-limits"></a>クォータと制限
 
-各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 詳細については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 クォータ制限の詳細については、次のいずれかの記事を参照してください。
+各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT Hub の数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 詳細については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 クォータ制限の詳細については、次のいずれかの記事を参照してください。
 
 * [Azure サブスクリプション サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
@@ -124,7 +124,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 エンド ツー エンドの IoT ソリューションを試すには、IoT Hub のクイック スタートをご覧ください。
 
-* [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)
+* [クイック スタート: デバイスから IoT Hub への利用統計情報の送信](quickstart-send-telemetry-node.md)
 
 Azure IoT を使用して IoT ソリューションを構築してデプロイする方法の詳細については、以下のページを参照してください。
 

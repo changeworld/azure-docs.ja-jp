@@ -3,12 +3,12 @@ title: Azure 仮想マシン復元プロセスについて
 description: Azure Backup サービスで Azure Virtual Machines を復元する方法を説明します
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: a604e146dbe387675e9ed82030639921cfc03167
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067473"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761391"
 ---
 # <a name="about-azure-vm-restore"></a>Azure VM の復元について
 
@@ -46,12 +46,6 @@ ms.locfileid: "87067473"
 | [VM 内の特定のファイルを復元する](./backup-azure-restore-files-from-vm.md) | 復元ポイントを選択し、ファイルを参照して選択し、バックアップされた VM と同じ (または互換性のある) OS に復元します。 |  復元する特定のファイルがわかっている場合は、VM 全体を復元するのではなく、このオプションを使用します。 |
 | [暗号化された VM を復元する](./backup-azure-vms-encryption.md) | ポータルからディスクを復元し、次に PowerShell を使用して VM を作成します | <li> [Azure Active Directory (AAD) を使用した暗号化された VM](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [AAD を使用しない暗号化された VM](../virtual-machines/windows/disk-encryption-windows.md) <li> [*AAD 使用なし*](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app)に移行される *AAD を使用した*暗号化された VM |
 | [リージョンをまたがる復元](./backup-azure-arm-restore-vms.md#cross-region-restore) | 新しい VM を作成するか、セカンダリ リージョン (Azure のペアになっているリージョン) にディスクを復元します | <li> **完全な停止**:リージョンをまたがる復元機能では、セカンダリ リージョンでデータの復旧を待つ時間がありません。 Azure で停止が宣言される前でも、セカンダリ リージョンで復元を開始できます。 <li> **部分的な停止**:ダウンタイムは、Azure Backup によって、バックアップしたデータが格納されている特定のストレージ クラスターで、または Azure Backup と、バックアップしたデータに関連付けられているストレージ クラスターを接続しているネットワークでも、発生する可能性があります。 リージョンをまたがる復元では、セカンダリ リージョンでバックアップされたデータのレプリカを使用して、セカンダリ リージョンで復元を実行できます。 <li> **停止なし**:セカンダリ リージョンのデータを使用して、ビジネス継続性とディザスター リカバリー (BCDR) ドリルを監査またはコンプライアンス目的で実施することができます。 これにより、プライマリ リージョンでビジネス継続性とディザスター リカバリー ドリルのための完全な停止や部分的な停止が発生していない場合でも、セカンダリ リージョンで、バックアップされたデータの復元を実行できます。  |
-
-------
-
-
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

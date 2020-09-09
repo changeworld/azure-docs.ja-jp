@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19e7a7972af55173f19d5784b2a6ac78ae14a0f0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 908d9386f08c5de863d1d435c54d65cb85feef7a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124971"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181665"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -62,12 +62,13 @@ Azure Private Link には次のような利点があります。
 |Azure Relay | すべてのパブリック リージョン      |  | プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| すべてのパブリック リージョン<br/> すべての Government リージョン       |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | すべてのパブリック リージョン      | PremiumV2 Windows および Linux とエラスティック Premium 機能でサポートされています  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | 米国東部、米国西部 2、米国中南部      |  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Azure Machine Learning | 米国東部、米国中南部、米国西部 2      |  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | すべてのパブリック リージョン |  | プレビュー | |
 | Azure IoT Hub | すべてのパブリック リージョン    |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | 米国東部、米国西部 2、米国中南部      |  | プレビュー   <br/> [詳細情報](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
 | Azure File Sync | すべてのパブリック リージョン      | |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | 米国東部、米国西部 2、米国中南部、米国中西部、フランス中部、東アジア、英国南部、US Gov バージニア、US Gov アリゾナ  | | GA <br/> [詳細情報](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 最新情報については、[Azure Private Link の更新情報ページ](https://azure.microsoft.com/updates/?product=private-link)をご覧ください。
 

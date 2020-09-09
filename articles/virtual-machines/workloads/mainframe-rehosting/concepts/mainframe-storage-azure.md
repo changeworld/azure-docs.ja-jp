@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042599"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652850"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>メインフレーム ストレージを Azure に移動する
 
@@ -45,7 +45,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 
 マイクロソフトは、Azure でホストされるアプリケーションのためにペタバイト相当のストレージを提供し、お客様には複数のストレージ オプションがあります。 これらは、ハイ パフォーマンスのための SSD ストレージから、大容量ストレージおよびアーカイブのための低コスト BLOB ストレージまで、多岐にわたります。 また Azure は、ストレージのデータ冗長性オプションを提供しますが、これはメインフレーム環境でのセットアップにはさらに手間がかかるものです。
 
-次の表にまとめるように、Azure ストレージは [Azure Disks](../../../windows/managed-disks-overview.md)、[Azure Files](../../../../storage/files/storage-files-introduction.md)、および [Azure Blobs](../../../../storage/blobs/storage-blobs-overview.md) として提供されます。 [それぞれを使用する状況](../../../../storage/common/storage-introduction.md)について詳しく説明します。
+次の表にまとめるように、Azure ストレージは [Azure Disks](../../../managed-disks-overview.md)、[Azure Files](../../../../storage/files/storage-files-introduction.md)、および [Azure Blobs](../../../../storage/blobs/storage-blobs-overview.md) として提供されます。 [それぞれを使用する状況](../../../../storage/common/storage-introduction.md)について詳しく説明します。
 
 <!-- markdownlint-disable MD033 -->
 
@@ -108,7 +108,7 @@ BLOB ストレージは、Azure 上で最大のストレージ容量を提供し
 - [Azure 仮想マシンでのメインフレーム リホスト](../overview.md)
 - [メインフレーム コンピューティングを Azure に移行する](mainframe-compute-Azure.md)
 - [Azure BLOB、Azure Files、Azure ディスクの使い分け](../../../../storage/common/storage-introduction.md)
-- [Azure VM ワークロード向けの Standard SSD マネージド ディスク](../../../windows/disks-types.md#standard-ssd)
+- [Azure VM ワークロード向けの Standard SSD マネージド ディスク](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM リソース
 

@@ -4,12 +4,12 @@ description: この記事では、バックアップ エクスプローラーを
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092798"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824414"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>バックアップ エクスプローラーを使用してバックアップを監視する
 

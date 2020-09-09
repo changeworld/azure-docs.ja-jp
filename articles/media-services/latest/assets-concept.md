@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: アセットとは何か、および Azure Media Services によってどのように使用されるかについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 03/09/2020
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6c9f69a39f725b082771b66959a219581c281ed5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99101f31ec955c822c784180dd8b04bfb8e5f73c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043520"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291604"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure Media Services v3 のアセット
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services では、[アセット](/rest/api/media/assets)は中核的な概念です。 アセットでは、メディアの入力 (たとえば、アップロードまたはライブ取り込みを通して)、メディアの出力 (ジョブ出力から)、およびメディアの公開 (ストリーム配信の場合) を行います。 
 
@@ -42,7 +44,7 @@ Media Services は、アカウントが汎用 v2 (GPv2) ストレージを使用
 
 ## <a name="next-steps"></a>次のステップ
 
-[Media Services でアセットを管理する](manage-asset-concept.md)
+[Media Services の概要](media-services-overview.md)
 
 ## <a name="see-also"></a>関連項目
 

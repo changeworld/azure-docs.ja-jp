@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 334c8128ab7869d38700668b6f46a6b2a6f96d28
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f9ef048fa7cc4b795f409326988e3276743b6992
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269361"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648957"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
 
@@ -97,7 +97,7 @@ Premium Storage キャッシュ:サポートされています
 
 料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報:[ディスクの種類](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -4,12 +4,12 @@ description: ロールベースのアクセス制御を使用して、Recovery S
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371704"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533463"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 
@@ -28,9 +28,9 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>バックアップ管理アクションへの組み込みバックアップ ロールのマッピング
 
-次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の RBAC ロールを示します。
+次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の Azure ロールを示します。
 
-| 管理操作 | 必要最小限 RBAC ロール | 必要なスコープ |
+| 管理操作 | 必要最小限 Azure ロール | 必要なスコープ |
 | --- | --- | --- |
 | Recovery Services コンテナーの作成 | Backup Contributor | コンテナーを含むリソース グループ |
 | Azure VM のバックアップの有効化 | Backup Operator | コンテナーを含むリソース グループ |
@@ -77,7 +77,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure ポータルでの RBAC の基本について説明します。
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure portal での RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
