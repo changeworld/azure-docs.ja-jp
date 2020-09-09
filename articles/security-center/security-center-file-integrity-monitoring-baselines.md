@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73664411"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278087"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>ファイルの整合性の監視 (FIM) を使用してベースラインを比較する
 
@@ -41,7 +41,7 @@ FIM レジストリ ハイブの既定値は、一般的なセキュリティ領
 >[!NOTE]
 > 再帰的なチェックは、カスタムのレジストリ パスではなく、推奨されるセキュリティ ハイブにのみ適用されます。  
 
-## <a name="adding-a-custom-registry-check"></a>カスタム のレジストリ チェックの追加
+## <a name="add-a-custom-registry-check"></a>カスタムのレジストリ チェックの追加
 
 FIM ベースラインは、オペレーティング システムとサポートするアプリケーションの既知の正常な状態の特性を識別することから始めます。  この例では、Windows Server 2008 以降のパスワード ポリシーの構成について説明します。
 
@@ -73,14 +73,14 @@ FIM ベースラインは、オペレーティング システムとサポート
 
       ![レジストリに対する FIM を有効にする](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Windows ファイルに対する変更の追跡
+## <a name="track-changes-to-windows-files"></a>Windows ファイルに対する変更の追跡
 
 1. **[Windows ファイル変更を追跡するための追加]** ウィンドウの **[パスの入力]** テキスト ボックスに、追跡するファイルが含まれているフォルダーを入力します。次の図の例では、**Contoso の Web アプリ**は **ContosWebApp** フォルダー構造内の D:\ ドライブにあります。  
 1. 設定クラスの名前を入力し、再帰を有効にして、ワイルドカード (*) サフィックスで最上位のフォルダーを指定することで、カスタムの Windows ファイルのエントリを作成します。
 
     ![ファイルに対する FIM を有効にする](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>変更データの取得
+## <a name="retrieve-change-data"></a>変更データの取得
 
 ファイルの整合性の監視データは、Azure Log Analytics / ConfigurationChange テーブル セット内にあります。  
 

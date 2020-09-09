@@ -6,13 +6,13 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 4a02fc8a04da658b3b6cbbb41e57114d6c4a0527
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005132"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231488"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics 用の Azure セキュリティ ベースライン
 
@@ -334,7 +334,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD には、Data Lake Analytics リソースに対するクライアントのアクセスをきめ細かく制御するロールベースのアクセス制御 (RBAC) が用意されています。
+**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、Data Lake Analytics リソースに対するクライアントのアクセスをきめ細かく制御できます。
 
 * [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -404,7 +404,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループを使用して分離を実装します。 Data Lake Analytics を制限して、アプリケーションやエンタープライズ環境で必要とされる Data Lake Analytics リソースへのアクセス レベルを制御できます。 ファイアウォール ルールが構成されている場合、指定された一連のネットワークを介してデータを要求するアプリケーションのみが、Data Lake Analytics リソースにアクセスできます。 Azure AD RBAC を使用して Azure Data Lake Analytics へのアクセスを制御できます。
+**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループを使用して分離を実装します。 Data Lake Analytics を制限して、アプリケーションやエンタープライズ環境で必要とされる Data Lake Analytics リソースへのアクセス レベルを制御できます。 ファイアウォール ルールが構成されている場合、指定された一連のネットワークを介してデータを要求するアプリケーションのみが、Data Lake Analytics リソースにアクセスできます。 Azure RBAC を使用して Azure Data Lake Analytics へのアクセスを制御できます。
 
 * [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -456,11 +456,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: ロールベースのアクセス制御 (RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
 
-* [ロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure RBAC の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 **Azure Security Center の監視**: 現在は使用できません
 

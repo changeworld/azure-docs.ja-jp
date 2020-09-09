@@ -3,12 +3,12 @@ title: Azure VM での SQL Server の論理的な削除、および Azure VM ワ
 description: Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードでの SAP HANA の論理的な削除について説明します。これにより、バックアップのセキュリティが強化されます。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4e001ee460d9b7106d928da32b1620fb117c6b5a
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825173"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022294"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除
 
@@ -109,7 +109,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoint
 
 ### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Azure PowerShell を使用して削除操作を元に戻す
 
-まず、(削除予定など) 論理的な削除状態にある関連バックアップ項目をフェッチします。
+まず、論理的な削除状態 (つまり、削除される予定) の関連バックアップ項目をフェッチします。
 
 ```powershell
 Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}

@@ -5,21 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425084"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944408"
 ---
 一部の種類のディスクでのみ、共有ディスクを有効にできます。 現在のところ、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 共有ディスクが有効になっているマネージド ディスクはそれぞれ、次の制約を受けます。制限はディスクの種類別に整理されています。
 
 ### <a name="ultra-disks"></a>Ultra ディスク
 
-Ultra ディスクには、共有ディスクとは関係なく、独自の制限リストがあります。 Ultra ディスクの制限については、「[Azure Ultra ディスクの使用](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md)」を参照してください。
+Ultra ディスクには、共有ディスクとは関係なく、独自の制限リストがあります。 Ultra ディスクの制限については、「[Azure Ultra ディスクの使用](../articles/virtual-machines/disks-enable-ultra-ssd.md)」を参照してください。
 
 Ultra ディスクを共有するとき、次の追加制限があります。
 
@@ -30,7 +30,7 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 
 ### <a name="premium-ssds"></a>Premium SSD
 
-- 現在、米国中西部リージョンのみでサポートされています。
+- 現在、[一部のリージョン](#regional-availability)でのみサポートされています。
 - Azure Resource Manager または SDK サポートに現在、制限されています。 
 - OS ディスクではなく、データ ディスクでのみ有効にすることができます。
 - **ReadOnly** ホスト キャッシュは、`maxShares>1` の Premium SSD では使用できません。
@@ -39,5 +39,27 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 - [近接配置グループ (PPG)](../articles/virtual-machines/windows/proximity-placement-groups.md) を使用する場合は、ディスクを共有するすべての仮想マシンが同じ PPG に含まれている必要があります。
 - Windows Server フェールオーバー クラスターの一部のバージョンでは、ベーシック ディスクのみを使用できます。詳細については、「[フェールオーバー クラスタリングのハードウェア要件と記憶域オプション](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)」を参照してください。
 - Azure Backup および Azure Site Recovery のサポートは、まだ使用できません。
+
+#### <a name="regional-availability"></a>リージョン別の提供状況
+
+共有 Premium SSD は、次のリージョンでのみサポートされています。
+
+- 米国東部
+- 米国東部 2
+- 米国西部
+- 米国西部 2
+- 米国中西部
+- 米国中南部
+- 米国中北部
+- 米国中部
+- 西ヨーロッパ
+- 北ヨーロッパ
+- 韓国中部
+- カナダ中部
+- カナダ東部
+- 東日本
+- 西日本
+- US Gov バージニア州
+- US Gov アリゾナ
 
 共有 Premium SSD の使用に興味をお持ちの場合は、[サインアップしてアクセスしてください](https://aka.ms/AzureSharedDiskGASignUp)。

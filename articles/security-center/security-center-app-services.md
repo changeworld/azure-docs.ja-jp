@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9fc5fac95d1fca743b8242f253d15be9a4b70853
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080796"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277597"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web アプリと API を保護する
 
@@ -32,7 +32,7 @@ App Service プランを有効にすると、Security Center では、App Servic
 Security Center では、Web 上のアプリに対する一般的な攻撃を監視する目的で、クラウドの規模と、クラウド プロバイダーとしての Azure に与えられる視界が活用されます。 Security Center では、Azure でホストされる複数のアプリケーションをスキャンし、脆弱性を特定することで、攻撃者が偵察段階でも、アプリケーションに対する攻撃を発見したり、新しい攻撃を特定したりできます。 Security Center はまた、Azure ネイティブ サービスとして、この PaaS の計算ノードをカバーするホストベースのセキュリティ分析を提供するというユニークな位置にもあります。Security Center では、既に悪用されている、Web アプリケーションに対する攻撃を検出できます。 詳細については、[Azure App Service に対する脅威保護](threat-protection.md#app-services)に関する記事を参照してください。
 
 
-## <a name="enabling-monitoring-and-protection-of-app-service"></a>App Service の監視と保護を有効にする
+## <a name="enable-monitoring-and-protection-of-app-service"></a>App Service の監視と保護を有効にする
 
 1. Azure portal で Security Center を選択します。
 2. **[Pricing & settings]\(価格と設定\)** に移動し、サブスクリプションを選択します。

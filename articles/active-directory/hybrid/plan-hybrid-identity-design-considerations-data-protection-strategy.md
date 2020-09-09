@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a01f5a87092f0111a5dbf9d180e785a47bd70a0b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67109367"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279059"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -37,7 +37,7 @@ ms.locfileid: "67109367"
 
 認証が済むと、ユーザー プリンシパル名 (UPN) が認証トークンから読み取られます。 次に、認証システムは、ユーザーのドメインに対応するレプリケートされたパーティションとコンテナーを特定します。 ユーザーの存在、有効状態、ロールに関する情報は、承認システムがターゲット テナントへのアクセスをそのセッションのユーザーに対して承認するかどうかを決定するのに役立ちます。 承認された特定のアクション (具体的には、ユーザーの作成やパスワードのリセットなど) を実行すると、テナント管理者がコンプライアンスへの取り組みや調査の管理に使う監査証跡が作成されます。
 
-データの量や帯域幅の可用性などの考慮事項によって、インターネット接続を使用してオンプレミスのデータ センターから Azure Storage にデータを移動することが必ずしも適していない場合があります。 [Azure Storage Import/Export Service](../../storage/common/storage-import-export-service.md) は、BLOB ストレージ内の大容量データを配置/取得するためのハードウェア ベースのオプションを提供します。 このオプションでは、[BitLocker で暗号化された](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2) ハード ディスク ドライブを直接 Azure のデータセンターに発送していただき、クラウド オペレーターがストレージ アカウントにコンテンツをアップロードしたり、Azure のデータをドライブにダウンロードしたりした後に返送します。 このプロセスで受け付けできるのは、(ジョブのセットアップ中にサービス自体によって生成された BitLocker キーを使用して) 暗号化されたディスクのみです。 BitLocker キーは別途 Azure に提供されるため、帯域外でキーが共有されます。
+データの量や帯域幅の可用性などの考慮事項によって、インターネット接続を使用してオンプレミスのデータ センターから Azure Storage にデータを移動することが必ずしも適していない場合があります。 [Azure Storage Import/Export Service](../../storage/common/storage-import-export-service.md) は、BLOB ストレージ内の大容量データを配置/取得するためのハードウェア ベースのオプションを提供します。 このオプションでは、[BitLocker で暗号化された](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) ハード ディスク ドライブを直接 Azure のデータセンターに発送していただき、クラウド オペレーターがストレージ アカウントにコンテンツをアップロードしたり、Azure のデータをドライブにダウンロードしたりした後に返送します。 このプロセスで受け付けできるのは、(ジョブのセットアップ中にサービス自体によって生成された BitLocker キーを使用して) 暗号化されたディスクのみです。 BitLocker キーは別途 Azure に提供されるため、帯域外でキーが共有されます。
 
 転送中のデータは、さまざまなシナリオで発生する可能性があるため、Microsoft Azure では[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)を使用して、ホストレベルとゲストレベルのファイアウォール、IP パケットのフィルタリング、ポートのブロック、HTTPS エンドポイントなどの手段を採用しながら、テナントのトラフィックを相互に分離していることを知っておくと役立ちます。 ただし、インフラストラクチャ間やインフラストラクチャとお客様 (オンプレミス) の間など、Azure の内部通信の大部分も暗号化されます。 もう 1 つの重要なシナリオが Azure データセンター内での通信です。マイクロソフトでは、VM が別の VM の IP アドレスで偽装や盗聴を一切できないようにするためにネットワークを管理しています。 Azure Storage または SQL Databases にアクセスする場合、または Cloud Services に接続する場合は、TLS/SSL が使用されます。 この場合、TLS/SSL 証明書の取得とテナント インフラストラクチャへのデプロイは、お客様の管理者が行います。 同じデプロイ内の Virtual Machines 間を移動するデータ トラフィック、または Microsoft Azure Virtual Network 経由で単一デプロイのテナント間を移動するデータ トラフィックは、HTTPS や SSL/TLS などの暗号化された通信プロトコルを介して保護できます。
 
@@ -52,7 +52,7 @@ ms.locfileid: "67109367"
 | VPN | | |X |
 
 > [!NOTE]
-> 各 Azure サービスが準拠している認定の詳細については、[Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/)の[製品ごとのコンプライアンス](https://azure.microsoft.com/support/trust-center/services/)をお読みください。
+> 各 Azure サービスが準拠している認定の詳細については、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)の[製品ごとのコンプライアンス](https://azure.microsoft.com/support/trust-center/services/)をお読みください。
 > データ保護のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。 必ず、データの状態ごとに使用可能なすべてのオプションを使用してください。
 >
 >
@@ -61,9 +61,9 @@ ms.locfileid: "67109367"
 
 Azure AD を使用してハイブリッド ID インフラストラクチャを管理する利点の 1 つは、プロセスがエンド ユーザーから見て完全に透過的な点です。 ユーザーが共有リソースにアクセスしようとする場合、リソースの認証が必要となり、ユーザーは、トークンを取得してリソースにアクセスするために、Azure AD に認証要求を送信する必要があります。 このプロセス全体はバックグラウンドで発生し、ユーザーが介入することはありません。 
 
-データのプライバシーを懸念する組織では、一般的に、使用するソリューションにデータ分類が不可欠です。 現在のオンプレミス インフラストラクチャで既にデータ分類を使っている場合は、ユーザー ID の主要リポジトリとして Azure AD を使うことができます。 オンプレミスでのデータ分類に使用されている一般的なツールは [Data Classification Toolkit](https://msdn.microsoft.com/library/Hh204743.aspx) for Windows Server 2012 R2 です。 このツールは、プライベート クラウド内のファイル サーバーにあるデータを識別、分類、保護するのに役立ちます。 Windows Server 2012 の[自動ファイル分類](https://technet.microsoft.com/library/hh831672.aspx)を使ってこのタスクを実現することもできます。
+データのプライバシーを懸念する組織では、一般的に、使用するソリューションにデータ分類が不可欠です。 現在のオンプレミス インフラストラクチャで既にデータ分類を使っている場合は、ユーザー ID の主要リポジトリとして Azure AD を使うことができます。 オンプレミスでのデータ分類に使用されている一般的なツールは [Data Classification Toolkit](/previous-versions/tn-archive/hh204743(v=technet.10)) for Windows Server 2012 R2 です。 このツールは、プライベート クラウド内のファイル サーバーにあるデータを識別、分類、保護するのに役立ちます。 Windows Server 2012 の[自動ファイル分類](/windows-server/identity/solution-guides/deploy-automatic-file-classification--demonstration-steps-)を使ってこのタスクを実現することもできます。
 
-組織がデータ分類を配置していないが、オンプレミスで新しいサーバーを追加せずに機密ファイルを保護する必要がある場合、Microsoft [Azure Rights Management Service](https://technet.microsoft.com/library/JJ585026.aspx)を使用できます。  Azure RMS では、暗号化、ID、承認ポリシーを使用してファイルと電子メールを保護し、携帯電話、タブレット、PC などの複数のデバイスで動作します。 Azure RMS はクラウド サービスであるため、保護されたコンテンツを共有する前に、他の組織との信頼関係を明示的に構成する必要はありません。 既に Office 365 や Azure AD ディレクトリが組織にある場合、組織間のコラボレーションが自動的にサポートされます。 また、Azure Active Directory 同期サービス (AAD Sync) または Azure AD Connect を使用することにより、Azure RMS でオンプレミスの Active Directory アカウントの共通 ID をサポートするために必要なディレクトリ属性のみを同期することもできます。
+組織がデータ分類を配置していないが、オンプレミスで新しいサーバーを追加せずに機密ファイルを保護する必要がある場合、Microsoft [Azure Rights Management Service](/azure/information-protection/what-is-azure-rms)を使用できます。  Azure RMS では、暗号化、ID、承認ポリシーを使用してファイルと電子メールを保護し、携帯電話、タブレット、PC などの複数のデバイスで動作します。 Azure RMS はクラウド サービスであるため、保護されたコンテンツを共有する前に、他の組織との信頼関係を明示的に構成する必要はありません。 既に Office 365 や Azure AD ディレクトリが組織にある場合、組織間のコラボレーションが自動的にサポートされます。 また、Azure Active Directory 同期サービス (AAD Sync) または Azure AD Connect を使用することにより、Azure RMS でオンプレミスの Active Directory アカウントの共通 ID をサポートするために必要なディレクトリ属性のみを同期することもできます。
 
 コンテンツ管理で重要な部分は、どのユーザーがどのリソースにアクセスするかを理解することです。したがって、ID 管理ソリューションの場合、機能豊富なログ記録機能が重要です。 Azure AD では、30 日間にわたり次を記録するログを提供します。
 
@@ -102,14 +102,14 @@ Azure Active Directory では、何千もの SaaS アプリケーションやオ
 * 証明書
 
 > [!NOTE]
-> Azure で使用できる各プロトコルとその機能の詳細については、「 [Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx) 」をお読みください。
+> Azure で使用できる各プロトコルとその機能の詳細については、「 [Azure Active Directory の認証プロトコル](/previous-versions/azure/dn151124(v=azure.100)) 」をお読みください。
 >
 >
 
 Azure AD のサポートを使用すると、モバイル ビジネス アプリケーションでも簡単な Mobile Services の認証エクスペリエンスを使用できるため、従業員は会社の Active Directory 資格情報を使用してモバイル アプリケーションにサインインできます。 この機能により、既にサポートしている ID プロバイダー (Microsoft アカウント、Facebook ID、Google ID、Twitter ID など) と共に、Azure AD が Mobile Services の ID プロバイダーとしてサポートされます。 オンプレミスのアプリケーションで、会社の AD DS にあるユーザーの資格情報が使われている場合、クラウドのユーザーやパートナーからのアクセスを透過的にする必要があります。 (クラウド ベースの) Web アプリケーション、Web API、Microsoft クラウド サービス、サード パーティの SaaS アプリケーション、ネイティブの (モバイル) クライアント アプリケーションに対するユーザーの条件付きアクセス制御を管理できます。また、すべてのセキュリティ、監査、レポートの利点を 1 か所で活用できます。 ただし、非運用環境の実装で、またはユーザー数を限定して、これを検証することをお勧めします。
 
 > [!TIP]
-> AD DS にあるようなグループ ポリシーが Azure AD にはないことを確認しておくことが必要です。 デバイスのポリシーを適用するには、[Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) などのモバイル デバイス管理ソリューションが必要です。
+> AD DS にあるようなグループ ポリシーが Azure AD にはないことを確認しておくことが必要です。 デバイスのポリシーを適用するには、[Microsoft Intune](/mem/intune/) などのモバイル デバイス管理ソリューションが必要です。
 >
 >
 
@@ -121,7 +121,7 @@ Azure AD を使ってユーザーが認証されたら、そのユーザーが�
 
 1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。
 
-2. Azure portal へのアクセス制御: Azure では、ロールベースのアクセス制御 (RBAC) を使用して、ポータルへのアクセスを制御することもできます。 この方法により、ユーザーが Azure Portal で実行できる操作の数を会社が制限できます。 RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
+2. Azure portal へのアクセス制御: Azure では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ポータルへのアクセスを制御することもできます。 この方法により、ユーザーが Azure Portal で実行できる操作の数を会社が制限できます。 Azure RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
 
    - グループベースのロールの割り当て: ご利用のローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。 これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。 また、Azure AD Premium の委任されたグループ管理機能も使用できます。
    - Azure の組み込みロールの使用: 所有者、共同作成者、閲覧者の 3 つのロールを使って、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに確実に付与できます。

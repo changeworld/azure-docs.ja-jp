@@ -1,7 +1,7 @@
 ---
 title: Web API を呼び出すモバイル アプリを登録する | Azure
 titleSuffix: Microsoft identity platform
-description: Web API を呼び出すモバイル アプリを構築する方法 (アプリのコード構成) について説明します
+description: Web API を呼び出すモバイル アプリを構築する方法 (アプリの登録) について説明します
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652641"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047675"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する
 
@@ -40,7 +40,7 @@ B2C の機関およびポリシーを渡すソーシャル ID を使用してユ
 
 詳細については、「[シナリオとサポートされている認証フロー](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)」と「[シナリオとサポートされているプラットフォームと言語](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)」を参照してください。
 
-## <a name="platform-configuration-and-redirect-uris"></a>プラットフォーム構成とリダイレクト URI  
+## <a name="platform-configuration-and-redirect-uris"></a>プラットフォーム構成とリダイレクト URI
 
 ### <a name="interactive-authentication"></a>対話型認証
 
@@ -72,20 +72,20 @@ B2C の機関およびポリシーを渡すソーシャル ID を使用してユ
 
 リダイレクト URI を手動で構成する場合は、アプリケーション マニフェストを介して行えます。 マニフェストの推奨される形式は次のとおりです。
 
-- **iOS**: `msauth.<BUNDLE_ID>://auth` 
+- **iOS**: `msauth.<BUNDLE_ID>://auth`
   - たとえば、「`msauth.com.yourcompany.appName://auth`」と入力します。
 - **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Android の署名のハッシュは、KeyTool コマンドを通じて、リリース キーまたはデバッグ キーを使用して生成できます。
 
 ### <a name="username-password-authentication"></a>ユーザー名とパスワード認証
 
-アプリでユーザー名とパスワード認証のみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 このフローは、Microsoft ID プラットフォーム バージョン 2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。 
+アプリでユーザー名とパスワード認証のみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 このフローは、Microsoft ID プラットフォーム バージョン 2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。
 
 ただし、アプリケーションをパブリック クライアント アプリケーションとして識別する必要があります。 これを行うには、アプリケーションの **[認証]** セクションから開始します。 **[詳細設定]** サブセクションの **[既定のクライアントの種類]** 段落で、 **[アプリケーションは、パブリック クライアントとして扱います]** の質問に対して **[はい]** を選択します。
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-モバイル アプリケーションでは、サインインしたユーザーの代わりに API を呼び出せます。 アプリは、委任されたアクセス許可を要求する必要があります。 これらのアクセス許可は、スコープとも呼ばれます。 必要なエクスペリエンスに応じて、Azure portal を使用して、委任されたアクセス許可を静的に要求できます。 または、これらを実行時に動的に要求することができます。 
+モバイル アプリケーションでは、サインインしたユーザーの代わりに API を呼び出せます。 アプリは、委任されたアクセス許可を要求する必要があります。 これらのアクセス許可は、スコープとも呼ばれます。 必要なエクスペリエンスに応じて、Azure portal を使用して、委任されたアクセス許可を静的に要求できます。 または、これらを実行時に動的に要求することができます。
 
 アクセス許可を静的に登録すれば、管理者は簡単にアプリを承認できます。 静的な登録をお勧めします。
 

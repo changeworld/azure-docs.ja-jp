@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530119"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050677"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -39,10 +39,14 @@ Azure Migrate アプライアンスに関する詳細を示します。
 - テンプレートを使用しない場合、または Azure Government を利用している場合は、PowerShell スクリプトを使用して VMware または Hyper-V 用のアプライアンスをデプロイできます。
 - 物理サーバーの場合は、必ずスクリプトを使用してアプライアンスをデプロイします。
 
-
 ## <a name="how-does-the-appliance-connect-to-azure"></a>アプライアンスはどのように Azure に接続しますか。
 
-アプライアンスはインターネット経由で接続できます。または、Azure ExpressRoute をパブリックまたは Microsoft ピアリングで使用できます。
+アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。
+
+- Azure Migrate レプリケーション トラフィックに Azure ExpressRoute を使用するには、Microsoft ピアリングまたは既存のパブリック ピアリングが必要です (新しい ER 作成では、パブリック ピアリングは非推奨となっています)。
+- プライベート ピアリング (のみ) が有効になっている Azure ExpressRoute 経由のレプリケーションはサポートされていません。
+
+Microsoft ピアリングが構成された Azure ExpressRoute は、レプリケーション トラフィックの推奨ルーティング ドメインです。
 
 ## <a name="does-appliance-analysis-affect-performance"></a>アプライアンス分析はパフォーマンスに影響しますか。
 
@@ -53,7 +57,6 @@ Azure Migrate アプライアンスでは、パフォーマンス データを�
 ダウンロードしたテンプレートを使用してアプライアンス VM を作成する場合、Azure Migrate アプライアンスに必要な通信規則およびファイアウォール規則を設定したままにしておくと、コンポーネント (ウイルス対策など) をテンプレートに追加できます。
 
 ## <a name="what-network-connectivity-is-required"></a>どのようなネットワーク接続が必要ですか。
-
 
 アプライアンスは Azure の URL にアクセスできる必要があります。 URL リストを[確認してください](migrate-appliance.md#url-access)。
 
@@ -99,9 +102,11 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 いいえ。 [Azure Migrate アプライアンス](migrate-appliance.md) と vCenter Server との間には一対一のマッピングが存在します。 複数の vCenter Server インスタンス上の VM を検出する場合は、複数のアプライアンスをデプロイする必要があります。 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate のプロジェクトは複数のアプライアンスを持つことができますか。
+
 1 つのプロジェクトに複数のアプライアンスをアタッチすることができます。 ただし、1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。 
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate アプライアンス/レプリケーション アプライアンスは同じ vCenter に接続できますか。
+
 はい。 Azure Migrate アプライアンス (評価とエージェントレスの VMware 移行に使用) とレプリケーション アプライアンス (VMware VM のエージェントベースの移行に使用) の両方を、同じ vCenter サーバーに追加できます。
 
 

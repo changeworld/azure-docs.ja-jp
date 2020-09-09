@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656548"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231318"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
@@ -58,7 +58,7 @@ Logic Apps REST API を呼び出して ISE を作成するには、この HTTPS 
 
 ## <a name="request-body"></a>要求本文
 
-ISE の作成時に使用するプロパティを記述する要求本文の構文を次に示します。 `TrustedRoot` の場所にインストールされている自己署名証明書の使用を許可する ISE を作成するには、ISE 定義の `properties` セクションに `certificates` オブジェクトを含めます。 既存の ISE の場合、`certificates` オブジェクトに対してのみ、PATCH 要求を送信できます。 自己署名証明書の使用の詳細については、「[HTTP コネクタ - 自己署名入り証明書](../connectors/connectors-native-http.md#self-signed)」も参照してください。
+ISE の作成時に使用するプロパティを記述する要求本文の構文を次に示します。 `TrustedRoot` の場所にインストールされている自己署名証明書の使用を許可する ISE を作成するには、ISE 定義の `properties` セクションに `certificates` オブジェクトを含めます。 既存の ISE の場合、`certificates` オブジェクトに対してのみ、PATCH 要求を送信できます。 自己署名証明書の使用の詳細については、[アクセスとデータのセキュリティ保護 - 他のサービスやシステムへの発信呼び出しのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)に関するページを参照してください。
 
 ```json
 {

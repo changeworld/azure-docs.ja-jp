@@ -3,12 +3,12 @@ title: メディア グラフの概念 - Azure
 description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、メディア グラフの概念の詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798841"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048426"
 ---
 # <a name="media-graph"></a>メディア グラフ
 
@@ -37,19 +37,28 @@ IoT Edge の Live Video Analytics では、"グラフ トポロジ" と "グラ�
 
 ## <a name="media-graph-states"></a>メディア グラフの状態  
 
-メディア グラフは、次のいずれかの状態になります。
+グラフ トポロジとグラフ インスタンスのライフサイクルを次の状態ダイアグラムに示します。
 
-* 非アクティブ –メディア グラフが構成済みで、アクティブではない状態を表します。
-* アクティブ化中 – メディア グラフがインスタンス化されている (つまり、非アクティブとアクティブの間の遷移状態) ときの状態です。
-* アクティブ – メディア グラフがアクティブになっているときの状態です。 
+![グラフ トポロジとグラフ インスタンスのライフサイクル](./media/media-graph/graph-topology-lifecycle.svg)
 
-    > [!NOTE]
-    >  メディア グラフは、データが流れていない間もアクティブにすることができます (たとえば、入力ビデオ ソースがオフラインになった場合など)。
-* 非アクティブ化中 – メディア グラフがアクティブから非アクティブに遷移しているときの状態です。
+まず、[グラフ トポロジの作成](direct-methods.md#graphtopologyset)から始めます。 次に、このトポロジを使用して処理するライブ ビデオ フィードごとに、[グラフ インスタンスを作成](direct-methods.md#graphinstanceset)します。 
 
-次の図は、メディア グラフのステート マシンを示しています。
+このグラフ インスタンスは、`Inactive` (アイドル) 状態になります。
 
-![メディア グラフのステート マシン](./media/media-graph/media-graph-state-machine.png)
+ライブ ビデオ フィードをグラフ インスタンスに送信する準備ができたら、[アクティブ化](direct-methods.md#graphinstanceactivate)します。 グラフ インスタンスは一時的に `Activating` 状態に移行し、成功した場合は `Active` 状態に移行します。 `Active` 状態では、メディアが処理されます (グラフ インスタンスで入力データが受け取られた場合)。
+
+> [!NOTE]
+>  グラフ インスタンスは、データが流れていない間もアクティブにすることができます (たとえば、カメラがオフラインになった場合など)。
+> Azure サブスクリプションは、グラフ インスタンスがアクティブ状態である時に対して課金されます。
+
+他のライブ ビデオ フィードを処理する場合は、同じトポロジに対して他のグラフ インスタンスを作成してアクティブ化するプロセスを繰り返します。
+
+ライブ ビデオ フィードの処理が完了したら、グラフ インスタンスを[非アクティブ化](direct-methods.md#graphinstancedeactivate)します。 グラフ インスタンスは、一時的に `Deactivating` 状態に移行し、持っているデータがフラッシュされた後、`Inactive` 状態に戻ります。
+
+グラフ インスタンスが `Inactive` 状態にある場合にのみ、そのグラフ インスタンスを[削除](direct-methods.md#graphinstancedelete)できます。
+
+特定のグラフ トポロジを参照するすべてのグラフ インスタンスが削除された後、[そのグラフ トポロジを削除](direct-methods.md#graphtopologydelete)することができます。
+
 
 ## <a name="sources-processors-and-sinks"></a>ソース、プロセッサ、およびシンク  
 

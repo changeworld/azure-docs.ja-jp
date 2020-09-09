@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056807"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182124"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
@@ -267,16 +267,15 @@ az aks update \
 *outboundIPs* \* 64,000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*
  
 たとえば、*nodeVMs* が 3 で、*desiredAllocatedOutboundPorts* が 50,000 の場合、必要な *outboundIPs* は 3 以上です。 必要最低限の量より多くの送信 IP 容量を組み込むことをお勧めします。 また、送信 IP 容量を計算するときは、クラスター オートスケーラーと、ノード プールのアップグレードの可能性を考慮する必要があります。 クラスター オートスケーラーについては、現在のノード数と最大ノード数を確認し、高い方の値を使用します。 アップグレードについては、アップグレードが可能なすべてのノード プールに対して追加のノード VM を考慮します。
- 
+
 - *IdleTimeoutInMinutes* を既定の 30 分とは異なる値に設定する場合は、ワークロードで送信接続が必要な時間を考慮します。 また、AKS の外部で使用される *Standard* SKU ロード バランサーの既定のタイムアウト値が 4 分であることを考慮します。 特定の AKS ワークロードをより正確に反映するように *IdleTimeoutInMinutes* の値を設定すると、使用されなくなった接続と関連付けられることによる SNAT の枯渇を減らすのに役立ちます。
 
 > [!WARNING]
 > *AllocatedOutboundPorts* と *IdleTimeoutInMinutes* の値を変更すると、ロード バランサーの動作が大幅に変更される可能性があるため、トレードオフおよびアプリケーションの接続パターンをよく理解してから変更してください。これらの値を変更する前に、後の [SNAT のトラブルシューティングに関するセクション][troubleshoot-snat]を確認し、[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules-overview]および[Azure での送信接続][azure-lb-outbound-connections]を確認して、変更の影響を完全に理解してください。
 
-
 ## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>受信トラフィックを特定の IP 範囲に制限する
 
-既定では、ロード バランサーの仮想ネットワークに関連付けられているネットワーク セキュリティ グループ (NSG) には、すべての受信外部トラフィックを許可する規則があります。 この規則を更新して、受信トラフィックに特定の IP 範囲のみを許可することができます。 次のマニフェストでは *loadBalancerSourceRanges* を使用して、受信外部トラフィックの新しい IP 範囲を指定します。
+次のマニフェストでは *loadBalancerSourceRanges* を使用して、受信外部トラフィックの新しい IP 範囲を指定します。
 
 ```yaml
 apiVersion: v1
@@ -292,6 +291,9 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+> [!NOTE]
+> 受信外部トラフィックは、ロード バランサーから AKS クラスターの仮想ネットワークに流れます。 この仮想ネットワークには、ロード バランサーからのすべての受信トラフィックを許可するネットワーク セキュリティ グループ (NSG) があります。 この NSG は *LoadBalancer* という種類の[サービス タグ][service-tags]を使用して、ロード バランサーからのトラフィックを許可します。
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>インバウンド接続時にクライアントの IP を維持する
 
@@ -322,7 +324,7 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | パブリック IP 上の DNS ラベルの名前   | **パブリック** サービスの DNS ラベル名を指定します。 空の文字列に設定すると、パブリック IP の DNS エントリは使用されません。
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` または `false`                     | 別のサービスと共有される可能性のある Azure セキュリティ規則を使用してサービスを公開する必要があることを指定します。公開できるサービス数が増えるとサービスの特異性は低下します。 この注釈は、ネットワーク セキュリティ グループの Azure [拡張セキュリティ規則](../virtual-network/security-overview.md#augmented-security-rules)機能に依存します。 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | リソース グループの名前            | クラスター インフラストラクチャと同一のリソース グループ (ノード リソース グループ) 内にないロード バランサーのパブリック IP のリソース グループを指定します。
-| `service.beta.kubernetes.io/azure-allowed-service-tags`           | 許可されるサービス タグの一覧          | 許可される[サービス タグ](../virtual-network/security-overview.md#service-tags)をコンマで区切った一覧指定します。
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | 許可されるサービス タグの一覧          | 許可される[サービス タグ][service-tags]をコンマで区切った一覧指定します。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP アイドル タイムアウト (分)          | ロード バランサーで TCP 接続のアイドル タイムアウトが発生するまでの時間を分数で指定します。 既定値は 4 で、これが最小値です。 最大値は 30 です。 整数を指定する必要があります。
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | SLB の `enableTcpReset` を無効にします。
 
@@ -424,3 +426,4 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
+[service-tags]: ../virtual-network/security-overview.md#service-tags

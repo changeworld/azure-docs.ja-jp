@@ -5,18 +5,18 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 976cb096ca654c38d7c4c2534bc6938026be5771
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188714"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397034"
 ---
-# <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL) 
+# <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL)
 
-Azure Cosmos DB は、**Time to Live** (TTL) を使用して、一定の期間が経過したらアイテムをコンテナーから自動的に削除する機能を提供します。 既定では、コンテナー レベルで Time to Live を設定し、項目ごとに値をオーバーライドできます。 コンテナー レベルまたは項目レベルで TTL を設定すると、項目が最後に変更されてからその期間が経過した後で、Azure Cosmos DB によってそれらの項目が自動的に削除されます。 Time to Live 値は秒数で構成します。 TTL を構成すると、TTL 値に基づいてシステムが自動的に期限切れアイテムを削除します。クライアント アプリケーションが明示的に発行する削除操作は必要ありません。
+Azure Cosmos DB は、**Time to Live** (TTL) を使用して、一定の期間が経過したらアイテムをコンテナーから自動的に削除する機能を提供します。 既定では、コンテナー レベルで Time to Live を設定し、項目ごとに値をオーバーライドできます。 コンテナー レベルまたは項目レベルで TTL を設定すると、項目が最後に変更されてからその期間が経過した後で、Azure Cosmos DB によってそれらの項目が自動的に削除されます。 Time to Live 値は秒数で構成します。 TTL を構成すると、TTL 値に基づいてシステムが自動的に期限切れアイテムを削除します。クライアント アプリケーションが明示的に発行する削除操作は必要ありません。 TTL の最大値は 2147483647 です。
 
 期限切れアイテムの削除は、残っている[要求ユニット](request-units.md)、つまりユーザー要求によってまだ消費されていない要求ユニットを消費するバックグラウンド タスクです。 TTL の期限が切れた後であっても、要求のためにコンテナーが過負荷の状態で、使用できる RU が十分にない場合、データの削除は遅延します。 削除操作を実行するのに十分な RU が利用可能になると、データは削除されます。 たとえデータの削除が遅延しても、TTL の期限が切れた後は、どんなクエリによっても (どんな API によっても) データが返されることはありません。
 
@@ -30,7 +30,7 @@ Time to Live 値は秒数で設定され、項目が最後に変更された時�
 
    - 値が存在し "-1" (無限) に設定されている場合、既定で項目は期限切れになりません。
 
-   - 設定されており、値がいずれかの数 ( *"n"* ) に設定されている場合、項目は最終変更時刻から *"n"* 秒後に期限切れになります。
+   - 設定されており、値がいずれかの数 (*"n"*) に設定されている場合、項目は最終変更時刻から *"n"* 秒後に期限切れになります。
 
 2. **項目の Time to Live** (`ttl` を使用):
 

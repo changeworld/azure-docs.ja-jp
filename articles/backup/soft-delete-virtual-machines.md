@@ -4,12 +4,12 @@ description: 仮想マシンの論理的な削除によって、バックアッ�
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889828"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022243"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>仮想マシンの論理的な削除
 
@@ -82,7 +82,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Azure PowerShell を使用して削除操作を元に戻す
 
-まず、(削除予定など) 論理的な削除状態にある関連バックアップ項目をフェッチします。
+まず、論理的な削除状態 (つまり、削除される予定) の関連バックアップ項目をフェッチします。
 
 ```powershell
 

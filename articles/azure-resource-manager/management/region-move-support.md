@@ -4,14 +4,14 @@ description: Azure リージョン間で移動できる Azure リソースの種
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040957"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948115"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動のサポート
 
@@ -121,6 +121,7 @@ ms.locfileid: "87040957"
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
@@ -1027,6 +1028,14 @@ ms.locfileid: "87040957"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | Query |  いいえ |  
+
+## <a name="microsoftresources"></a>Microsoft.Resources
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | リージョンの移動 |
+> | ------------- | ----------- |
+> | deploymentScripts |  はい<br/><br/>[Microsoft.Resources リソースを新しいリージョンに移動する](microsoft-resources-move-regions.md) |
+> | templateSpecs |  はい<br/><br/>[Microsoft.Resources リソースを新しいリージョンに移動する](microsoft-resources-move-regions.md) |  
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 

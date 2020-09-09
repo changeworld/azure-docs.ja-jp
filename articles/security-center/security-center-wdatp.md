@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da21a002e6ea0bbbf528b911b7386b1dfc9c76f8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089704"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277920"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
@@ -55,7 +55,7 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 構成されると、データが格納されている場所を変更することはできません。 データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットしてください。
 
 
-## <a name="onboarding-servers-to-security-center"></a>Security Center にサーバーをオンボードする 
+## <a name="onboard-servers-to-security-center"></a>Security Center へのサーバーのオンボード 
 
 サーバーを Security Center にオンボードするには、Microsoft Defender ATP サーバーのオンボードから **[Azure Security Center に移動]** をクリックしてサーバーをオンボードします。
 

@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3006522f75ed732c08e453a266e660cf4c577917
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5fc01efc386a950cdc53e7928009c67a355962e4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815370"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182266"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -125,7 +125,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 16.04 LTS | [9.33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-generic から 4.4.0-178-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-99-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1082-azure </br> 4.15.0-101-generic および 4.4.0-179-generic (9.33 ホットフィックス修正プログラムを適用)**|
 16.04 LTS | 9.32 | 4.4.0-21-generic から 4.4.0-171-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-74-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1066-azure|
 |||
-18.04 LTS | [9.36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-generic ～ 4.15.0-112-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic ～ 5.0.0-58-generic </br> 5.3.0-19-generic ～ 5.3.0-65-generic </br> 5.4.0-37-generic ～ 5.4.0-42-generic</br> 4.15.0-1009-azure ～ 4.15.0-1092-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure ～ 5.3.0-1032-azure </br> 5.4.0-1020-azure ～ 5.4.0-1022-azure|
+18.04 LTS | [9.36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-generic ～ 4.15.0-112-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic ～ 5.0.0-58-generic </br> 5.3.0-19-generic ～ 5.3.0-65-generic </br> 5.4.0-37-generic ～ 5.4.0-42-generic</br> 4.15.0-1009-azure ～ 4.15.0-1092-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure ～ 5.3.0-1032-azure </br> 5.4.0-1020-azure ～ 5.4.0-1022-azure </br> 5.0.0-60-generic & 5.3.0-1035-azure (9.36 ホット フィックス パッチを適用)**|
 18.04 LTS | [9.34](https://support.microsoft.com/help/4570609)、[9.35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-generic から 4.15.0-108-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-52-generic </br> 5.3.0-19-generic から 5.3.0-61-generic </br> 4.15.0-1009-azure から 4.15.0-1089-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1031-azure </br> 4.15.0-109-generic、5.0.0-53-generic、5.3.0-62-generic、4.15.0-1091-azure、5.3.0-1032-azure (9.35 ホット フィックス修正プログラムを適用)**|
 18.04 LTS | [9.33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-generic から 4.15.0-99-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-47-generic </br> 5.3.0-19-generic から 5.3.0-51-generic </br> 4.15.0-1009-azure から 4.15.0-1082-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1020-azure </br> 4.15.0-101-generic、5.0.0-48-generic、5.3.0-1022-azure、5.3.0-53-generic (9.33 ホットフィックス修正プログラムを適用)**|
 18.04 LTS | 9.32| 4.15.0-20-generic から 4.15.0-74-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-37-generic </br> 5.3.0-19-generic から 5.3.0-24-generic </br> 4.15.0-1009-azure から 4.15.0-1037-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1028-azure </br> 5.3.0-1007-azure から 5.3.0-1009-azure|

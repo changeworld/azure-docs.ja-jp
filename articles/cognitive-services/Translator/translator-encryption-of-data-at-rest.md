@@ -1,20 +1,20 @@
 ---
 title: Translator による保存データの暗号化
 titleSuffix: Azure Cognitive Services
-description: Translator による保存データの暗号化。
+description: Microsoft では、ユーザーはカスタマー マネージド キー (CMK) と呼ばれる独自のキーで Cognitive Services サブスクリプションを管理することができます。 この記事では、Translator での保存データの暗号化と、CMK を有効化および管理する方法について説明します。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310837"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079202"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Translator による保存データの暗号化
 
@@ -34,7 +34,7 @@ Microsoft マネージド暗号化キーのみをサポートするサブスク�
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault でのカスタマー マネージド キー
 
-ユーザー独自のキーを使用してサブスクリプションを管理するためのオプションもあります。 カスタマー マネージド キー (CMK、Bring Your Own Key (BYOK) とも呼ばれます) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
+サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 カスタマー マネージド キー (CMK) と呼ばれるユーザー独自のキーを使用してサブスクリプションを管理するオプションもあります。 CMK を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。 CMK がサブスクリプション用に構成されている場合は、Azure Key Vault で暗号化キーを制御しながら、2 つ目の保護レイヤーを提供する二重暗号化を利用できます。
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Translator サービスのすべての価格レベルで利用できます。 カスタマー マネージド キーを使用できるように要求するには、[Translator カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。要求の状態について連絡を差し上げるまで、約 3 から 5 営業日かかります。 要求によっては、お客様は待ち行列に登録され、スペースが利用できるようになってから承認される場合があります。 Translator サービスでの CMK の使用が承認されたら、新しい Translator リソースを作成する必要があります。 Translator リソースが作成されたら、Azure Key Vault を使用してマネージド ID を設定できます。
@@ -44,8 +44,6 @@ Translator 用のカスタマー マネージド キーを有効にするには�
 1. Translator または Cognitive Services の新しいリージョン リソースを作成します。 これはグローバル リソースでは機能しません。
 2. Azure portal でマネージド ID を有効にし、カスタマー マネージド キーの情報を追加します。
 3. カスタム翻訳ツールで新しいワークスペースを作成し、このサブスクリプション情報を関連付けます。
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 ### <a name="enable-customer-managed-keys"></a>カスタマー マネージド キーを有効にする
 

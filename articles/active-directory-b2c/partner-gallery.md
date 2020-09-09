@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab9a9785f2f995a6f8df766603e3fc3b9a894be5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814233"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049870"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -31,6 +31,7 @@ ISV パートナー ネットワークは、Microsoft のソリューション�
 | :--- | :--- |
 | ![ロゴ](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) は、組織がボット攻撃、アカウント乗っ取り攻撃、および不正なアカウント開設を防ぐのに役立つ不正行為防止ソリューション プロバイダーです。
 | ![ロゴ](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) は、詐欺を防ぐためにユーザー属性に基づいてリスク評価を行う、本人確認および証明プロバイダーです。|
+| ![ロゴ](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) は、パスワードを公開キー暗号化に置き換えることによって、不正行為、フィッシング、および資格情報の再利用を排除する、真のパスワードレス認証プロバイダーです。|
 | ![ロゴ](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) は、ID 検証ソリューション、不正行為防止ソリューション、コンプライアンス ソリューションなどを備えた ID の検証および証明プロバイダーです。|
 | ![ロゴ](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) は、ユーザーがカード リーダー、パスワード、2 要素認証、および複数の PIN コードを使用せずに安全にサインインできる、eiDAS (Electronic Identification, Authentication and Trust Services) に準拠したデジタル ID ソリューションです。 |
 | ![ロゴ](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) は ID 検証サービスです。リアルタイムの自動 ID 検証が可能になり、顧客データが保護されます。 |

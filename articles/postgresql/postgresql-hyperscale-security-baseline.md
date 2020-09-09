@@ -6,13 +6,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: debbc47204aca2fbea1307bd4b692921725e5fd0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563910"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231301"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale
 
@@ -347,13 +347,13 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **責任**: 共有
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) を使用して、Hyperscale (Citus) コントロール プレーン (Azure portal など) へのアクセスを制御します。 RBAC は、データベース内のユーザーのアクセス許可には影響しません。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Hyperscale (Citus) コントロール プレーン (Azure portal など) へのアクセスを制御します。 Azure RBAC は、データベース内のユーザーのアクセス許可には影響しません。
 
 データベース レベルでユーザーの特権を変更するには、PgAdmin や psql などのツールを使用して、標準的な PostgreSQL コマンドを使用します。
 
-- [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 - [Azure Database for PostgreSQL の SQL を使用してユーザー アクセスを構成する方法](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: daff4d1e43f5cc27e52e8bf26f48f30147800ae8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 0e24c08c9689394fa6efdbc03d960c597496e8ad
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839836"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231250"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard 用の Azure セキュリティ ベースライン
 
@@ -262,11 +262,11 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
 **ガイダンス**: Azure DDoS Protection プランに関する作業を行うには、使用するアカウントがネットワークの共同作業者ロール、または特定のアクションが割り当てられたカスタム ロールに、割り当てられている必要があります。
 
-- [Azure DDoS Protection でロールベースのアクセス制御を管理する](../../virtual-network/manage-ddos-protection.md)
+- [Azure DDoS Protection で Azure ロールベースのアクセス制御 (Azure RBAC) を管理する](../../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 

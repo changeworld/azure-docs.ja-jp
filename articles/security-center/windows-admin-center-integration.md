@@ -1,21 +1,21 @@
 ---
-title: Windows Admin Center と Azure Security Center の統合方法 | Microsoft Docs
+title: Azure Security Center を使用して Windows Admin Center サーバーを保護する方法
 description: この記事では、Azure Security Center と Windows Admin Center を統合する方法について説明します
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 9eae210818cf623078090503deefc6295dab7164
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076361"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277495"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center と Windows Admin Center の統合
+# <a name="protect-windows-admin-center-resources-with-security-center"></a>Security Center を使用した Windows Admin Center リソースの保護
 
 Windows Admin Center は、Windows サーバーの管理ツールです。 システム管理者は、この 1 つの場所から、最もよく使う管理ツールの大部分にアクセスできます。 Windows Admin Center 内で、オンプレミス サーバーを Azure Security Center に直接オンボードできます。 その後、Windows Admin Center のエクスペリエンス内で直接、セキュリティに関する推奨事項とアラートの概要を確認できます。
 
@@ -31,7 +31,7 @@ Windows Admin Center は、Windows サーバーの管理ツールです。 シ�
 
 これらの 2 つのツールを組み合わせることにより、Security Center という単一のビューを通じてあらゆるリソースのセキュリティ情報をすべて把握し、Windows Admin Center で管理されているオンプレミス サーバー、VM、およびその他の PaaS ワークロードを保護することができます。
 
-## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Windows Admin Center で管理されているサーバーを Security Center にオンボードする
+## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Windows Admin Center で管理されているサーバーを Security Center にオンボードする
 
 1. Windows Admin Center で、いずれかのサーバーを選択し、 **[ツール]** ウィンドウで Azure Security Center 拡張機能を選択します。
 
@@ -54,13 +54,13 @@ Windows Admin Center は、Windows サーバーの管理ツールです。 シ�
     > オンボーディング後、推奨事項が表示されるまでにしばらく時間がかかる場合があります。 実際、サーバーの稼働状況によっては、アラートを "*まったく*" 受信しないこともあります。 テスト アラートを生成してアラートが正常に機能していることをテストするには、[アラートの検証手順](security-center-alert-validation.md)の指示に従います。
 
 
-## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Windows Admin Center でセキュリティに関する推奨事項とアラートを確認する
+## <a name="view-security-recommendations-and-alerts-in-windows-admin-center"></a>Windows Admin Center でセキュリティに関する推奨事項とアラートを確認する
 
 オンボードが完了すると、Windows Admin Center の Azure Security Center 領域で直接アラートと推奨事項を確認できます。 推奨事項またはアラートをクリックすると、それが Azure portal に表示されます。 そこでは、追加の情報と、問題を修復する方法も確認できます。
 
 [![Windows Admin Center に表示される Security Center のレコメンデーションとアラート](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
-## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Windows Admin Center で管理されているサーバーのセキュリティに関する推奨事項とアラートを Security Center で確認する
+## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Windows Admin Center で管理されているサーバーのセキュリティに関する推奨事項とアラートを Security Center で確認する
 Azure Security Center から:
 
 * すべての Windows Admin Center サーバーのセキュリティに関する推奨事項を表示するには、 **[計算とアプリ]** を開き、 **[VM とコンピューター]** タブをクリックします。次に示すように、リソース "サーバー" で一覧をフィルター処理します。

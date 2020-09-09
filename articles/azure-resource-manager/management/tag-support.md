@@ -3,12 +3,12 @@ title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 91c6d5930a9066e73355a0c8e6021b1e7c20802d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855076"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231522"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -264,6 +264,9 @@ ms.locfileid: "88855076"
 > | サービス (service) | はい | はい |
 > | validateServiceName | いいえ | いいえ |
 
+> [!NOTE]
+> Azure API Management では、各サービスに対して最大 15 個のタグ名/値のペアの作成のみがサポートされています。
+
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
@@ -330,7 +333,7 @@ ms.locfileid: "88855076"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | automationAccounts | はい | はい |
-> | automationAccounts / configurations | ○ | はい |
+> | automationAccounts / configurations | はい | はい |
 > | automationAccounts / jobs | いいえ | いいえ |
 > | automationAccounts / privateEndpointConnectionProxies | いいえ | いいえ |
 > | automationAccounts / privateEndpointConnections | いいえ | いいえ |
@@ -938,7 +941,7 @@ ms.locfileid: "88855076"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | workspaces | はい | ○ |
+> | workspaces | ○ | はい |
 > | workspaces / dbWorkspaces | いいえ | いいえ |
 > | workspaces / storageEncryption | いいえ | いいえ |
 > | workspaces / virtualNetworkPeerings | いいえ | いいえ |
@@ -1584,7 +1587,7 @@ ms.locfileid: "88855076"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | classicDevServices | ○ | はい |
+> | classicDevServices | はい | はい |
 > | updateCommunicationPreference | いいえ | いいえ |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
@@ -1619,7 +1622,7 @@ ms.locfileid: "88855076"
 > | mediaservices / streamingLocators | いいえ | いいえ |
 > | mediaservices / streamingPolicies | いいえ | いいえ |
 > | mediaservices / transforms | いいえ | いいえ |
-> | mediaservices / transforms / jobs | いいえ | × |
+> | mediaservices / transforms / jobs | × | いいえ |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Spring
 
@@ -1653,9 +1656,9 @@ ms.locfileid: "88855076"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | ○ | いいえ |
+> | netAppAccounts | はい | いいえ |
 > | netAppAccounts / accountBackups | いいえ | いいえ |
-> | netAppAccounts / capacityPools | ○ | いいえ |
+> | netAppAccounts / capacityPools | はい | いいえ |
 > | netAppAccounts / capacityPools / volumes | はい | いいえ |
 > | netAppAccounts / capacityPools / volumes / snapshots | いいえ | いいえ |
 
@@ -1723,9 +1726,9 @@ ms.locfileid: "88855076"
 > | privateDnsZones / SOA | いいえ | いいえ |
 > | privateDnsZones / SRV | いいえ | いいえ |
 > | privateDnsZones / TXT | いいえ | いいえ |
-> | privateDnsZones / virtualNetworkLinks | はい | ○ |
-> | privateEndpoints | はい | ○ |
-> | privateLinkServices | はい | ○ |
+> | privateDnsZones / virtualNetworkLinks | ○ | はい |
+> | privateEndpoints | ○ | はい |
+> | privateLinkServices | ○ | はい |
 > | publicIPAddresses | はい | はい |
 > | publicIPPrefixes | はい | はい |
 > | routeFilters | はい | はい |
@@ -1884,7 +1887,7 @@ ms.locfileid: "88855076"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | Workspaces | はい | ○ |
+> | Workspaces | ○ | はい |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -2225,7 +2228,7 @@ ms.locfileid: "88855076"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | storageSyncServices | はい | ○ |
+> | storageSyncServices | ○ | はい |
 > | storageSyncServices / registeredServers | いいえ | いいえ |
 > | storageSyncServices / syncGroups | いいえ | いいえ |
 > | storageSyncServices / syncGroups / cloudEndpoints | いいえ | いいえ |

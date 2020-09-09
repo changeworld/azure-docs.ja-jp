@@ -4,12 +4,12 @@ description: この記事では、Azure Backup の監視アラートと Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892560"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181495"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup の監視アラート - FAQ
 
@@ -19,7 +19,7 @@ ms.locfileid: "88892560"
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Log Analytics (LA) ワークスペースへのレポート データの流入が開始されたかどうかを確認するにはどうすればよいですか?
 
-構成した LA ワークスペースに移動し、 **[ログ]** メニュー項目に移動して、[query CoreAzureBackup | take 1]\(CoreAzureBackup に対するクエリ | テイク 1\) を実行します。 返されるレコードがある場合は、ワークスペースへのデータの流入が開始されたことを意味します。 最初のデータ プッシュには最大 24 時間かかる場合があります。
+構成した LA ワークスペースに移動します。 **[ログ]** メニュー項目に移動し、クエリ `CoreAzureBackup | take 1` を実行します。 返されるレコードがある場合は、ワークスペースへのデータの流入が開始されたことを意味します。 最初のデータ プッシュには最大 24 時間かかる場合があります。
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>LA ワークスペースへのデータプッシュの頻度はどのくらいですか?
 
@@ -50,13 +50,13 @@ LA ワークスペースを作成した後は、最大 2 年間データを保�
 
 ## <a name="recovery-services-vault"></a>Recovery Services コンテナー
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Backup エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。
 
-Azure portal に Azure バックアップ エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
+Azure portal に Azure Backup エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。
 
-アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
+アラートは、Azure Backup が失敗してから 20 分以内に発生します。
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>通知が設定されているのに、電子メールが送信されないことはありますか。
 

@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046715"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230978"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Azure Time Series Insights Gen2 からのデータを Power BI で視覚化する
 
@@ -52,20 +52,20 @@ Azure Time Series Insights 環境を Power BI に接続するには、次の手�
 
 作業を開始するには:
 
-1. Azure Time Series Insights Gen2 Explorer を開き、データをキュレーションします。
+1. Azure Time Series Insights Explorer を開き、データをキュレーションします。
 1. 満足できるビューを作成したら、 **[その他の操作]** ドロップダウン メニューに移動して、 **[Power BI に接続]** を選択します。
 
-    [![Azure Time Series Insights Gen2 Explorer でのエクスポート](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights Explorer のエクスポート](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. このタブ内でパラメーターを設定します。
 
    1. 表示する相対時間枠を指定します。 既存のビューに問題がなければ、 **[Existing timeframe]\(既存の時間枠\)** のままにします。
-   
-   1. **[Aggregated]\(集計\)** と **[生イベント]** のどちらかを選択します。 
-   
+
+   1. **[Aggregated]\(集計\)** と **[生イベント]** のどちらかを選択します。
+
        > [!NOTE]
-       > 後で Power BI により、いつでもデータを集計できますが、集計後に生データに戻すことはできません。 
-       
+       > 後で Power BI により、いつでもデータを集計できますが、集計後に生データに戻すことはできません。
+
        > [!NOTE]
        > 生イベント レベル データには、25 万までのイベント数の制限があります。
 
@@ -89,7 +89,7 @@ Azure Time Series Insights 環境を Power BI に接続するには、次の手�
     [![Power BI を Azure Time Series Insights に接続する](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     または、 **[Azure]** タブに移動し、 **[Azure Time Series Insights (Beta)]** を選択して、 **[接続]** をクリックします。
-    
+
 1. サード パーティのリソースに接続するためのアクセス許可を求めるメッセージ ダイアログ ボックスが表示されます。 **[続行]** を選択します。
 
     [![[Create Custom Query]\(カスタム クエリの作成\) を選択する](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
@@ -112,17 +112,17 @@ Azure Time Series Insights 環境を Power BI に接続するには、次の手�
 
     [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  **[視覚化]** 列で、希望する視覚化を選択します。 たとえば、 **[折れ線グラフ]** を選択します。 これにより、空の折れ線グラフがキャンバスに追加されます。
+1. **[視覚化]** 列で、希望する視覚化を選択します。 たとえば、 **[折れ線グラフ]** を選択します。 これにより、空の折れ線グラフがキャンバスに追加されます。
 
-1.  **[フィールド]** 一覧で **[_Timestamp]\(_タイムスタンプ\)** を選択し、 **[軸]** フィールドにドラッグして項目を X 軸に沿って表示します。 必ず、 **[軸]** の値として **[_Timestamp]\(_タイムスタンプ\)** に切り替えます (既定は **[日付の階層]** です)。
+1. **[フィールド]** 一覧で **[_Timestamp]\(_タイムスタンプ\)** を選択し、 **[軸]** フィールドにドラッグして項目を X 軸に沿って表示します。 必ず、 **[軸]** の値として **[_Timestamp]\(_タイムスタンプ\)** に切り替えます (既定は **[日付の階層]** です)。
 
     [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  再び **[フィールド]** の一覧で **[TimeSeriesId]** を選択し、 **[値]** フィールドにドラッグして項目を Y 軸に表示します。
+1. 再び **[フィールド]** の一覧で **[TimeSeriesId]** を選択し、 **[値]** フィールドにドラッグして項目を Y 軸に表示します。
 
     [![折れ線グラフを作成する](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  キャンバスに別のグラフを追加するには、キャンバス上の折れ線グラフの外側の任意の場所をクリックして、このプロセスを繰り返します。
+1. キャンバスに別のグラフを追加するには、キャンバス上の折れ線グラフの外側の任意の場所をクリックして、このプロセスを繰り返します。
 
     [![追加のグラフを作成して共有する](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 

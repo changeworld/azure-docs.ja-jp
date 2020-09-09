@@ -1,14 +1,14 @@
 ---
 title: コードとしてのポリシー ワークフローの設計
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
-ms.date: 07/23/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131499"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047328"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
 
@@ -110,7 +110,8 @@ Policy as Code ワークフローの詳細を説明する前に、次の定義�
 > [!NOTE]
 > 強制モードは便利ですが、これはさまざまな条件下でポリシー定義を完全にテストすることの代替手段ではありません。 ポリシー定義は、`PUT` および `PATCH` REST API 呼び出し、準拠リソースおよび非準拠リソース、およびリソースに不足しているプロパティなどのエッジ ケースを使用してテストする必要があります。
 
-割り当てがデプロイされたら、ポリシー SDK を使用して、新しい割り当ての[コンプライアンス データ](../how-to/get-compliance-data.md)を取得します。 ポリシーおよび割り当てのテストに使用する環境には、準拠リソースと非準拠リソースの両方が必要です。 コードの適切な単体テストと同様に、リソースが想定どおりであること、および偽陽性や偽陰性がないことをテストする必要があります。 期待したもののみにテストおよび検証を行った場合、予期しないまたは未確認の影響をポリシーから受ける可能性があります。 詳細については、「[新しい Azure ポリシー定義の影響を評価する](./evaluate-impact.md)」を参照してください。
+割り当てがデプロイされたら、ポリシー SDK または [Azure Policy コンプライアンス スキャン GitHub アクション](https://github.com/marketplace/actions/azure-policy-compliance-scan)を使用して、新しい割り当ての[コンプライアンス データを取得](../how-to/get-compliance-data.md)します。 ポリシーおよび割り当てのテストに使用する環境には、準拠リソースと非準拠リソースの両方が必要です。
+コードの適切な単体テストと同様に、リソースが想定どおりであること、および偽陽性や偽陰性がないことをテストする必要があります。 期待したもののみにテストおよび検証を行った場合、予期しないまたは未確認の影響をポリシーから受ける可能性があります。 詳細については、「[新しい Azure ポリシー定義の影響を評価する](./evaluate-impact.md)」を参照してください。
 
 ### <a name="enable-remediation-tasks"></a>修復タスクを有効にする
 

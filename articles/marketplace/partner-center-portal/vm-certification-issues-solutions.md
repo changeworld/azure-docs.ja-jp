@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225380"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181444"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>仮想マシンの認定中の問題と解決策 
 
@@ -84,7 +84,7 @@ Visual Studio、または Office のライセンスされた製品をインス�
 
 承認されたベースの選択の詳細については、[Azure 仮想マシンの技術資産の作成](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)に関する記事を参照してください。
 
-## <a name="tool-kit-test-case-execution-failed"></a>ツールキットのテスト ケースの実行に失敗した
+## <a name="tool-kit-test-case-execution-failed"></a>ツールキットのテスト ケースの実行に失敗した 
 
 Microsoft 認定ツールキットを使用すると、テスト ケースを実行し、VHD またはイメージに Azure 環境との互換性があることを確認できます。
 
@@ -113,7 +113,7 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
  
 |シナリオ|テスト ケース|エラー|解決策|
 |---|---|---|---|
-|1|Linux エージェント バージョンのテスト ケース|Linux エージェントの最小バージョンは 2.241 以降です。 この要件は、2020 年 5 月 1 日以降必須になりました。|[要求を送信](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)するには、必要なバージョンでイメージを更新する必要があります。|
+|1|Linux エージェント バージョンのテスト ケース|Linux エージェントの最小バージョンは 2.2.41 以降です。 この要件は、2020 年 5 月 1 日以降必須になりました。|Linux エージェントのバージョンを更新して、2.241 以降にしてください。 詳細については、[Linux エージェントのバージョン更新ページ](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を参照してください。|
 |2|Bash 履歴テスト ケース|送信したイメージ内の Bash 履歴のサイズが 1 キロバイト (KB) を超えると、エラーが表示されます。 潜在的な機密情報が Bash 履歴ファイルにキャプチャされることのないように、このサイズは 1 KB に制限されています。|この問題を解決するには、動作している他の VM に VHD をマウントし、必要な変更 ( *.bash* 履歴ファイルを削除するなど) を行って、サイズを 1 KB 以下に削減します。|
 |3|必要なカーネル パラメーターのテスト ケース|このエラーは、**console** の値が **ttyS0** に設定されていない場合に発生します。 次のコマンドを実行して確認します。<br>`cat /proc/cmdline`|**console** の値を **ttyS0** に設定し、要求を再送信します。|
 |4|ClientAlive 間隔のテスト ケース|ツールキットの結果で、このテスト ケースに対して失敗の結果が返された場合は、**ClientAliveInterval** の値が不適切です。|**ClientAliveInterval** の値を 235 以下に設定してから、要求を再送信してください。|
@@ -363,7 +363,8 @@ Azure Marketplace から取得したすべてのイメージを再利用する�
    4.    バージョン – 例外を要求する VM オファーのバージョン
    5.   例外の種類 – テスト、ロックダウンされた VM、カスタム テンプレート
    6.   要求の理由 – この例外の理由と、除外されるテストに関する情報 
-   7.   添付ファイル - 重要な証拠のドキュメントをすべて添付します。 ロックダウンされた VM の場合は、テスト レポートを添付します。カスタム テンプレートの場合は、添付ファイルとしてカスタム ARM テンプレートを提供します。 ロックダウンされた VM の場合のレポートや、カスタム テンプレートの場合のカスタム ARM テンプレートの添付に失敗すると、要求は拒否されます。
+   7. タイムライン - この例外の要求が終了する日付 
+   8.   添付ファイル - 重要な証拠のドキュメントをすべて添付します。 ロックダウンされた VM の場合は、テスト レポートを添付します。カスタム テンプレートの場合は、添付ファイルとしてカスタム ARM テンプレートを提供します。 ロックダウンされた VM の場合のレポートや、カスタム テンプレートの場合のカスタム ARM テンプレートの添付に失敗すると、要求は拒否されます。
 
 
 ## <a name="next-steps"></a>次のステップ

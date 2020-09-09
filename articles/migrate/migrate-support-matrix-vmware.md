@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 評価サポート
 description: Azure Migrate Server Assessment を使用した VMware VM の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3d975b35ff5db9bf77ed33e040eb49b6b15f3cf9
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387032"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277784"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -33,13 +33,14 @@ VMware VM を Azure に移行する場合は、[移行のサポート マトリ�
 
 **VMware** | **詳細**
 --- | ---
-**vCenter Server** | 検出および評価対象のマシンは、vCenter Server バージョン 5.5、6.0、6.5、または 6.7 で管理されている必要があります。
+**vCenter Server** | 検出および評価対象のマシンは、vCenter Server バージョン 5.5、6.0、6.5、6.7、または 7.0 で管理されている必要があります。<br/><br/> アプライアンスで ESXi ホストの詳細を指定した VMware VM の検出は、現在サポートされていません。
 **アクセス許可** | Server Assessment には、検出および評価用に vCenter Server の読み取り専用アカウントが必要です。<br/><br/> アプリケーションの検出または依存関係の視覚化を行う場合、このアカウントには、 **[Virtual Machines]**  >  **[Guest Operations]\(ゲスト操作\)** に対して有効になっている特権が必要です。
 
 ## <a name="vm-requirements"></a>VM の要件
 **VMware** | **詳細**
 --- | ---
 **VMware VM** | すべてのオペレーティング システムを、移行のために評価することができます。 
+**Storage** | SCSI、IDE、および SATA ベースのコントローラーに接続されているディスクがサポートされています。
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件

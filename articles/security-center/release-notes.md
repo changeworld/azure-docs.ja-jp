@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 9836b7f223d1ac9617adc06578eb50652894b0da
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723964"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279382"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -159,11 +159,11 @@ Kubernetes ワークロードが既定で確実に保護されるように、Sec
 
 今回の更新プログラムから、このチェックは削除され、脆弱性評価ツールを 'カスタム' Windows および Linux マシンに展開できるようになりました。 カスタム イメージは、マーケットプレースの既定値からユーザーが変更したものです。
 
-統合された脆弱性評価拡張機能 (Qualys を使用) をより多くのマシンに展開できるようになりましたが、サポートは、「[Qualys の組み込み脆弱性スキャナーのデプロイ](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)」に記載されている OS を使用している場合にのみ受けることができます。
+統合された脆弱性評価拡張機能 (Qualys を使用) をより多くのマシンに展開できるようになりましたが、サポートは、「[統合された脆弱性スキャナーを Standard レベルの VM にデプロイする](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms)」に記載されている OS を使用している場合にのみ受けることができます
 
-[仮想マシン向けの統合された脆弱性スキャナー (Standard レベルのみ)](built-in-vulnerability-assessment.md) の詳細について確認してください。
+[仮想マシン向けの統合された脆弱性スキャナー (Standard レベルのみ)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner) の詳細について確認してください。
 
-Qualys または Rapid7 からプライベートにライセンス提供された独自の脆弱性評価ソリューションを使用する方法の詳細については、「[パートナーの脆弱性スキャン ソリューションをデプロイする](partner-vulnerability-assessment.md)」を参照してください。
+Qualys または Rapid7 からプライベートにライセンス提供された独自の脆弱性評価ソリューションを使用する方法の詳細については、「[パートナーの脆弱性スキャン ソリューションをデプロイする](deploy-vulnerability-assessment-vm.md)」を参照してください。
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure Files と Azure Data Lake Storage Gen2 を含むように拡張された Azure Storage の脅威の防止 (プレビュー)
@@ -415,7 +415,7 @@ Security Center の Standard レベルに、追加料金なしで仮想マシン
 
 "組み込みの脆弱性評価ソリューションを仮想マシンで有効にする (Qualys を利用)"
 
-詳しくは、[仮想マシンに対する Security Center の統合脆弱性評価](built-in-vulnerability-assessment.md)に関するページを参照してください。
+詳しくは、[仮想マシンに対する Security Center の統合脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)に関するページを参照してください。
 
 
 
@@ -489,7 +489,7 @@ Azure Policy でカスタム イニシアチブを作成し、それにポリシ
 
 さらに、カスタム推奨事項のメタデータを編集するオプションも追加されました。 メタデータ オプションには、重要度、修復手順、脅威情報などが含まれます。  
 
-詳しくは、「[詳細情報でのカスタム推奨事項の拡張](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information)」を参照してください。
+詳しくは、「[詳細情報でのカスタム推奨事項の拡張](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information)」を参照してください。
 
 
 

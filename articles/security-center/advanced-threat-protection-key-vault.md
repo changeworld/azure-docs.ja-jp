@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7025b091b83a56b7b3df18c3f42cb84b163560bb
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77914808"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277767"
 ---
 # <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 用 Threat Protection (プレビュー)
 
@@ -21,7 +21,7 @@ Azure Key Vault 用 Advanced Threat Protection によって、セキュリティ
 
 Security Center で異常なアクティビティが検出されると、アラートが表示されます。 また、サブスクリプション管理者に、不審なアクティビティの詳細と、特定された脅威を調査して修復する方法に関する推奨事項をメールで送信することもできます。
 
-## <a name="configuring-threat-protection-from-security-center"></a>Security Center から Threat Protection を構成する
+## <a name="configure-threat-protection-from-security-center"></a>Security Center から Threat Protection を構成する
 
 既定では、Security Center の Standard 価格レベルにサブスクライブすると、すべての Key Vault アカウントで Advanced Threat Protection が有効になります。 詳細については、[価格](security-center-pricing.md)に関するページをご覧ください。
 
