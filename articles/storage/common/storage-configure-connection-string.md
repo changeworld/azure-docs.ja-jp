@@ -141,5 +141,5 @@ EndpointSuffix=core.chinacloudapi.cn;
 ## <a name="next-steps"></a>次のステップ
 
 * [ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../common/storage-use-azurite.md)
-* [Azure ストレージ エクスプローラー](storage-explorers.md)
+* [Azure Storage Explorer](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)
