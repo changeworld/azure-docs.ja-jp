@@ -4,15 +4,15 @@ description: Azure portal で VM シリーズの vCPU クォータ制限の引�
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: de06375dad5999a29691435317e62585a2ea7f64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117167"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>標準クォータ: VM シリーズでの制限の引き上げ
 
@@ -26,7 +26,7 @@ Azure Resource Manager は、仮想マシン向けに次の 2 タイプの vCPU 
 * 1 つ目のレベルは、すべての VM シリーズでの "*リージョンの vCPU の合計の制限*" です。
 * 2 つ目のレベルは、Dv3 シリーズの vCPU などの、"*VM シリーズあたりの vCPU の制限*" です。
 
-新しいスポット VM をデプロイする場合、その VM シリーズの新規および既存の vCPU 使用量の合計が、その特定の VM シリーズの承認されたスポット vCPU クォータを超えることはできません。 さらに、すべての VM シリーズにわたってデプロイされる新規および既存の vCPU の合計数が、サブスクリプションに対して承認されているリージョンの vCPU の合計のクォータを超えることはできません。 これらのクォータのいずれかを超えている場合には、VM のデプロイは許可されません。
+新しいスポット VM をデプロイする場合は常に、すべてのスポット VM インスタンスの新規および既存の vCPU 使用量の合計が、承認されたスポット vCPU クォータ制限を超えてはいけません。 スポット クォータを超えた場合、スポット VM のデプロイは許可されません。
 
 VM シリーズの vCPU クォータ制限の引き上げは、Azure portal を使用して要求できます。 VM シリーズのクォータを増やすと、リージョンの vCPU の合計の制限が同じ量だけ自動的に増えます。
 
@@ -61,11 +61,11 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
    ![クォータを引き上げるサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. **ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。
+1. **次へ:ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。
 
    ![[詳細の指定] リンク](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
@@ -91,7 +91,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
       ![新しい vCPU 制限を選択する](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
 
    ![クォータの詳細で追加の場所を指定する](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
@@ -120,13 +120,13 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
    ![クォータを引き上げるために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
 1. **[クォータの詳細]** で次の手順を実行します。
 
-   1. **[Deployment model]/(デプロイ モデル/)** で適切なモデルを選択し、 **[Locations]/(場所/)** で場所を選択します。
+   1. **[Deployment model]\(デプロイ モデル\)** で適切なモデルを選択し、 **[Locations]\(場所\)** で場所を選択します。
 
       ![クォータの詳細を入力する](./media/resource-manager-core-quotas-request/quota-details-deployment-rm-locations.png)
 
@@ -146,7 +146,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
       ![新しい vCPU 制限を選択する](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。
 
    このステップでは、これ以前の場所であなたが選択した SKU シリーズがプリロードされます。 追加のシリーズに適用したいクォータ制限を入力します。
 

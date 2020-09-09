@@ -4,15 +4,15 @@ description: 現在は Resource Manager モデルに置き換えられている�
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afdb8b2b677321239f240e74d49711195ac186c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76835637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763909"
 ---
 # <a name="classic-deployment-model"></a>クラシック デプロイ モデル
 
@@ -46,7 +46,7 @@ Azure portal で **[ヘルプとサポート]** を使用してサポート リ�
 
    ![クォータを増やすサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![増やすクォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -86,7 +86,7 @@ Azure portal で **[使用量 + クォータ]** を使用してサポート リ�
 
    ![クォータを増やすために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **[クォータの種類]** として **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** として **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![[クォータの種類] を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
