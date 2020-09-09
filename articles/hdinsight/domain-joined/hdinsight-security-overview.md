@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 08/24/2020
+ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367106"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292981"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -59,7 +59,7 @@ Apache Ranger および Ambari 監査ログと ssh アクセス ログにアク�
 
 データの保護は、組織のセキュリティとコンプライアンス要件を満たすために重要です。 許可されていない従業員からデータへのアクセスを制限すると共に、暗号化する必要があります。
 
-Azure Storage および Azure Data Lake Storage Gen1/Gen2 はどちらも、保存データの透過的なサーバー側[暗号化](../../storage/common/storage-service-encryption.md)をサポートしています。 セキュリティで保護された HDInsight クラスターは、保存データのサーバー側暗号化とシームレスに連携します。
+HDInsight では、プラットフォーム マネージド キーと[カスタマー マネージド キー](../disk-encryption.md)の両方による保存時のデータ暗号化がサポートされます。 転送中のデータの暗号化は、TLS と IPSec の両方で処理されます。 詳細については、「[Azure HDInsight での転送中の暗号化](encryption-in-transit.md)」を参照してください。
 
 ### <a name="compliance"></a>コンプライアンス
 
@@ -79,7 +79,7 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 |  | ストレージ アカウントで [[安全な転送が必須]](../../storage/common/storage-require-secure-transfer.md) プロパティを有効にします。 | Customer |
 |  | [Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)および仮想ネットワークを構成する | Customer |
 |  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | Customer |
-|  | 転送中のデータに対して [TLS 暗号化](../../storage/common/storage-security-tls.md)が有効になっていることを確認する。 | Customer |
+|  | クラスター内通信に TLS と IPSec を使用するには、[転送中の暗号化](./encryption-in-transit.md)の機能が有効になっていることを確認します。 | Customer |
 |  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
 |  | [カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
 | アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | Customer |

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944374"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135438"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -27,6 +27,9 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 
 1 つの診断設定では、各送信先を 1 つだけ定義することができます。 特定の種類の複数の送信先 (たとえば、2 つの異なる Log Analytics ワークスペース) にデータを送信する場合は、複数の設定を作成します。 各リソースには、最大 5 つの診断設定を作成できます。
 
+次のビデオでは、診断設定を使用してプラットフォーム ログをルーティングする手順について説明します。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
+
 > [!NOTE]
 > [プラットフォーム メトリック](metrics-supported.md)は、[Azure Monitor のメトリック](data-platform-metrics.md)へと自動的に送信されます。 診断設定を使用すると、特定の Azure サービスのメトリックを Azure Monitor ログに送信し、特定の制限で[ログ クエリ](../log-query/log-query-overview.md)を使用して他の監視データと組み合わせて分析することができます。 
 >  
@@ -34,38 +37,28 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 *例*: ブロックチェーンに関する "IOReadBytes" メトリックは、ノード レベルごとに探索してグラフ化できます。 ただし、診断設定を使用してエクスポートすると、エクスポートされたメトリックは、すべてのノードのすべての読み取りバイト数として表されます。 また、内部の制限により、すべてのメトリックが Azure Monitor ログまたは Log Analytics にエクスポート可能であるとは限りません。 詳細については、[エクスポート可能なメトリック一覧](metrics-supported-export-diagnostic-settings.md)をご覧ください。 
 >  
 >  
-> 特定のメトリックのこれらの制限を回避するには、[メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) を使用してこれらを抽出し、[Azure Monitor データ コレクター API](data-collector-api.md) を使用して Azure Monitor ログにインポートすることをお勧めします。  
+> 特定のメトリックのこれらの制限を回避するには、[メトリック REST API](/rest/api/monitor/metrics/list) を使用してこれらを抽出し、[Azure Monitor データ コレクター API](data-collector-api.md) を使用して Azure Monitor ログにインポートすることをお勧めします。  
 
 
 ## <a name="destinations"></a>変換先
-
-プラットフォーム ログとメトリックは、次の表の送信先に送信できます。 その送信先にデータを送信する方法の詳細については、次の表の各リンクを参照してください。
+プラットフォーム ログとメトリックは、次の表の送信先に送信できます。 
 
 | 到着地 | 説明 |
 |:---|:---|
-| [Log Analytics ワークスペース](#log-analytics-workspace) | Log Analytics ワークスペースにログとメトリックを送信すると、強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 |
-| [Event Hubs](#event-hub) | Event Hubs にログとメトリックを送信すると、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。 |
-| [Azure Storage アカウント](#azure-storage) | Azure ストレージ アカウントにログとメトリックをアーカイブすると、監査、スタティック分析、またはバックアップに役立ちます。 Azure Monitor ログや Log Analytics ワークスペースと比較すると、Azure ストレージはコストが低く、ログを無期限に保持することができます。 |
+| [Log Analytics ワークスペース](design-logs-deployment.md) | Log Analytics ワークスペースにログとメトリックを送信すると、強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 |
+| [Event Hubs](/azure/event-hubs/) | Event Hubs にログとメトリックを送信すると、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。  |
+| [Azure Storage アカウント](/azure/storage/blobs/) | Azure ストレージ アカウントにログとメトリックをアーカイブすると、監査、スタティック分析、またはバックアップに役立ちます。 Azure Monitor ログや Log Analytics ワークスペースと比較すると、Azure ストレージはコストが低く、ログを無期限に保持することができます。  |
 
 
-## <a name="prerequisites"></a>前提条件
-診断設定の送信先は、必要なアクセス許可を使用して作成する必要があります。 各送信先の前提条件については、以下のセクションを参照してください。
+### <a name="destination-requirements"></a>送信先の要件
 
-### <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-ワークスペースがまだない場合は、[新しいワークスペースを作成します](../learn/quick-create-workspace.md)。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ワークスペースはログを送信するリソースと同じサブスクリプションに属している必要はありません。
+診断設定の送信先は、診断設定の作成前に作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、送信先はログを送信するリソースと同じサブスクリプションに属している必要はありません。 次の表では、リージョン制限など、送信先別の固有要件をまとめてあります。
 
-### <a name="event-hub"></a>イベント ハブ
-イベント ハブをまだ用意していない場合は、[イベント ハブを作成します](../../event-hubs/event-hubs-create.md)。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っており、さらに両方のサブスクリプションが同じ AAD テナントに入っている限り、Event Hubs 名前空間は、ログを出力するサブスクリプションと同じサブスクリプションに属している必要はありません。
-
-名前空間の共有アクセス ポリシーでは、ストリーミング メカニズムが保有するアクセス許可が定義されます。 Event Hubs にストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 ご利用の Event Hubs 名前空間については、その共有アクセス ポリシーを Azure portal の [構成] タブで作成または変更できます。 ストリーミングを含めるように診断設定を更新するには、その Event Hubs の承認規則に対する ListKey アクセス許可が必要です。 
-
-
-### <a name="azure-storage"></a>Azure Storage
-[Azure ストレージ アカウント](../../storage/common/storage-account-create.md)をまだお持ちでない場合は作成します。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセス権を持っている限り、ストレージ アカウントはログを送信するリソースと同じサブスクリプションに属している必要はありません。
-
-データへのアクセスをより適切に制御できるように、他の非監視データが格納されている既存のストレージ アカウントは使用しないでください。 アクティビティ ログとリソース ログを一緒にアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じストレージ アカウントを使用できます。
-
-データを不変ストレージに送信するには、「[BLOB ストレージの不変ポリシーを設定および管理する](../../storage/blobs/storage-blob-immutability-policies-manage.md)」の説明に従って、ストレージ アカウントの不変ポリシーを設定します。 この記事のすべての手順に従う必要があります。これには、保護された追加 BLOB の書き込みの有効化が含まれます。
+| 到着地 | 要件 |
+|:---|:---|
+| Log Analytics ワークスペース | ワークスペースは、監視対象のリソースと同じリージョンにする必要がありません。|
+| Event Hubs | 名前空間の共有アクセス ポリシーでは、ストリーミング メカニズムが保有するアクセス許可が定義されます。 Event Hubs にストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 ストリーミングを含めるように診断設定を更新するには、その Event Hubs の承認規則に対する ListKey アクセス許可が必要です。<br><br>イベント ハブ名前空間は、リソースがリージョン別の場合、監視対象のリソースと同じリソースにする必要があります。 |
+| Azure ストレージ アカウント | データへのアクセスをより適切に制御できるように、他の非監視データが格納されている既存のストレージ アカウントは使用しないでください。 アクティビティ ログとリソース ログを一緒にアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じストレージ アカウントを使用できます。<br><br>データを不変ストレージに送信するには、「[BLOB ストレージの不変ポリシーを設定および管理する](../../storage/blobs/storage-blob-immutability-policies-manage.md)」の説明に従って、ストレージ アカウントの不変ポリシーを設定します。 この記事のすべての手順に従う必要があります。これには、保護された追加 BLOB の書き込みの有効化が含まれます。<br><br>ストレージ アカウントは、リソースがリージョン別の場合、監視対象のリソースと同じリソースにする必要があります。 |
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2 アカウントは、Azure portal では有効なオプションとして表示されていますが、診断設定の送信先としては現在サポートされていません。
@@ -86,7 +79,7 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
 
       ![診断設定](media/diagnostic-settings/menu-monitor.png)
 
-   - アクティビティ ログの場合は、 **[Azure Monitor]** メニューの **[アクティビティ ログ]** 、 **[診断設定]** の順にクリックします。 アクティビティ ログのレガシ構成が無効になっていることを確認してください。 詳細については、「[既存の設定を無効にする](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log)」を参照してください。
+   - アクティビティ ログの場合は、 **[Azure Monitor]** メニューの **[アクティビティ ログ]** 、 **[診断設定]** の順にクリックします。 アクティビティ ログのレガシ構成が無効になっていることを確認してください。 詳細については、「[既存の設定を無効にする](./activity-log.md#legacy-collection-methods)」を参照してください。
 
         ![診断設定](media/diagnostic-settings/menu-activity-log.png)
 
@@ -141,7 +134,7 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
 
 ## <a name="create-using-powershell"></a>PowerShell を使用して作成する
 
-[Azure PowerShell](powershell-quickstart-samples.md) を使用して診断設定を作成するには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) コマンドレットを使用します。 パラメーターの説明については、このコマンドレットのドキュメントを参照してください。
+[Azure PowerShell](../samples/powershell-samples.md) を使用して診断設定を作成するには、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) コマンドレットを使用します。 パラメーターの説明については、このコマンドレットのドキュメントを参照してください。
 
 > [!IMPORTANT]
 > この方法を Azure アクティビティ ログに使用することはできません。 代わりに、[Azure Monitor での Resource Manager テンプレートを使用した診断設定の作成](diagnostic-settings-template.md)に関するページを参照して、Resource Manager テンプレートを作成し、それを PowerShell を使用してデプロイします。
@@ -154,7 +147,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Azure CLI を使用して作成する
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) を使用して診断設定を作成するには、[az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) コマンドを使用します。 パラメーターの説明については、このコマンドのドキュメントを参照してください。
+[Azure CLI](/cli/azure/monitor?view=azure-cli-latest) を使用して診断設定を作成するには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) コマンドを使用します。 パラメーターの説明については、このコマンドのドキュメントを参照してください。
 
 > [!IMPORTANT]
 > この方法を Azure アクティビティ ログに使用することはできません。 代わりに、[Azure Monitor での Resource Manager テンプレートを使用した診断設定の作成](diagnostic-settings-template.md)に関するページを参照して、Resource Manager テンプレートを作成し、それを CLI を使用してデプロイします。
@@ -176,10 +169,10 @@ az monitor diagnostic-settings create  \
 Resource Manager テンプレートを使用して診断設定を作成または更新するには、「[Azure Monitor の診断設定用の Resource Manager テンプレートのサンプル](../samples/resource-manager-diagnostic-settings.md)」を参照してください。
 
 ## <a name="create-using-rest-api"></a>REST API を使用して作成する
-[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して診断設定を作成または更新するには、「[診断設定](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)」を参照してください。
+[Azure Monitor REST API](/rest/api/monitor/) を使用して診断設定を作成または更新するには、「[診断設定](/rest/api/monitor/diagnosticsettings)」を参照してください。
 
 ## <a name="create-using-azure-policy"></a>Azure Policy を使用して作成する
-診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](deploy-scale.md)」を参照してください。
+診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

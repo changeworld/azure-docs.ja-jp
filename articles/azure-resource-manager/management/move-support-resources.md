@@ -3,12 +3,12 @@ title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079511"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -288,19 +288,19 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
+> [!IMPORTANT]
+> 従量課金 SKU に設定されている API Management サービスは移動できません。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | checkfeedbackrequired | いいえ | いいえ |
-> | checknameavailability | いいえ | いいえ |
-> | checkservicenameavailability | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-> | reportfeedback | いいえ | いいえ |
-> | サービス (service) | はい | はい |
-> | validateservicename | いいえ | いいえ |
-
-> [!IMPORTANT]
-> 従量課金 SKU に設定されている API Management サービスは移動できません。
+> | checkfeedbackrequired | いいえ | × |
+> | checknameavailability | いいえ | × |
+> | checkservicenameavailability | いいえ | × |
+> | operations | いいえ | × |
+> | reportfeedback | いいえ | × |
+> | サービス (service) | はい | ○ |
+> | validateservicename | いいえ | × |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -330,15 +330,15 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
+> [!IMPORTANT]
+> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | apiapps | いいえ | いいえ |
-> | appidentities | いいえ | いいえ |
+> | apiapps | いいえ | × |
+> | appidentities | いいえ | × |
 > | gateways | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -375,24 +375,24 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | automationaccounts | はい | はい |
-> | automationaccounts/configurations | はい | はい |
-> | automationaccounts / jobs | いいえ | いいえ |
-> | automationaccounts / privateendpointconnectionproxies | いいえ | いいえ |
-> | automationaccounts / privateendpointconnections | いいえ | いいえ |
-> | automationaccounts / privatelinkresources | いいえ | いいえ |
-> | automationaccounts/runbooks | はい | はい |
-> | automationaccounts / softwareupdateconfigurations | いいえ | いいえ |
-> | automationaccounts / webhooks | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-
 > [!IMPORTANT]
 > Runbook は Automation アカウントと同じリソース グループに存在する必要があります。
 >
 > 詳しくは、「[Azure Automation アカウントを別のサブスクリプションに移動する](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)」をご覧ください。
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | automationaccounts | ○ | はい |
+> | automationaccounts/configurations | ○ | はい |
+> | automationaccounts / jobs | × | いいえ |
+> | automationaccounts / privateendpointconnectionproxies | × | いいえ |
+> | automationaccounts / privateendpointconnections | × | いいえ |
+> | automationaccounts / privatelinkresources | × | × |
+> | automationaccounts/runbooks | ○ | ○ |
+> | automationaccounts / softwareupdateconfigurations | × | いいえ |
+> | automationaccounts / webhooks | × | いいえ |
+> | operations | × | × |
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
@@ -626,21 +626,21 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
+> [!IMPORTANT]
+> 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 「[ネットワーク リソースの移動ガイダンス](./move-limitations/networking-move-limitations.md)」を参照してください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | いいえ | いいえ |
-> | locations | いいえ | いいえ |
+> | checknameavailability | × | いいえ |
+> | locations | × | いいえ |
 > | locations / operationresults | いいえ | いいえ |
-> | locations / operationsstatus | いいえ | いいえ |
-> | operations | いいえ | いいえ |
+> | locations / operationsstatus | × | いいえ |
+> | operations | × | × |
 > | redis | はい | はい |
 > | redis / eventgridfilters | いいえ | いいえ |
-> | redis / privatelinkresources | いいえ | いいえ |
-> | redisenterprise | いいえ | いいえ |
-
-> [!IMPORTANT]
-> 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 「[ネットワーク リソースの移動ガイダンス](./move-limitations/networking-move-limitations.md)」を参照してください。
+> | redis / privatelinkresources | × | いいえ |
+> | redisenterprise | × | × |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -700,16 +700,16 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
+> [!IMPORTANT]
+> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | certificateorders | はい | はい |
-> | certificateorders / certificates | いいえ | いいえ |
-> | operations | いいえ | いいえ |
+> | certificateorders | はい | ○ |
+> | certificateorders / certificates | いいえ | × |
+> | operations | いいえ | × |
 > | validatecertificateregistrationinformation | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
 
 ## <a name="microsoftchangeanalysis"></a>Microsoft.ChangeAnalysis
 
@@ -720,105 +720,105 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | capabilities | いいえ | いいえ |
-> | checkdomainnameavailability | いいえ | いいえ |
+> | capabilities | × | いいえ |
+> | checkdomainnameavailability | × | いいえ |
 > | domainnames | はい | いいえ |
-> | domainnames / capabilities | いいえ | いいえ |
-> | domainnames / internalloadbalancers | いいえ | いいえ |
-> | domainnames / servicecertificates | いいえ | いいえ |
-> | domainnames / slots | いいえ | いいえ |
-> | domainnames / slots / roles | いいえ | いいえ |
-> | domainnames / slots / roles / metricdefinitions | いいえ | いいえ |
-> | domainnames / slots / roles / metrics | いいえ | いいえ |
-> | movesubscriptionresources | いいえ | いいえ |
-> | operatingsystemfamilies | いいえ | いいえ |
-> | operatingsystems | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-> | operationstatuses | いいえ | いいえ |
-> | quotas | いいえ | いいえ |
-> | resourcetypes | いいえ | いいえ |
-> | validatesubscriptionmoveavailability | いいえ | いいえ |
+> | domainnames / capabilities | × | いいえ |
+> | domainnames / internalloadbalancers | × | いいえ |
+> | domainnames / servicecertificates | × | いいえ |
+> | domainnames / slots | × | いいえ |
+> | domainnames / slots / roles | × | いいえ |
+> | domainnames / slots / roles / metricdefinitions | × | いいえ |
+> | domainnames / slots / roles / metrics | × | いいえ |
+> | movesubscriptionresources | × | いいえ |
+> | operatingsystemfamilies | × | いいえ |
+> | operatingsystems | × | いいえ |
+> | operations | × | いいえ |
+> | operationstatuses | × | いいえ |
+> | quotas | × | いいえ |
+> | resourcetypes | × | いいえ |
+> | validatesubscriptionmoveavailability | × | × |
 > | virtualmachines | はい | いいえ |
-> | virtualmachines / diagnosticsettings | いいえ | いいえ |
-> | virtualmachines / metricdefinitions | いいえ | いいえ |
-> | virtualmachines / metrics | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+> | virtualmachines / diagnosticsettings | × | いいえ |
+> | virtualmachines / metricdefinitions | × | いいえ |
+> | virtualmachines / metrics | いいえ | × |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
 
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | classicinfrastructureresources | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+> | classicinfrastructureresources | × | × |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | capabilities | いいえ | いいえ |
+> | capabilities | × | いいえ |
 > | expressroutecrossconnections | いいえ | いいえ |
-> | expressroutecrossconnections / peerings | いいえ | いいえ |
-> | gatewaysupporteddevices | いいえ | いいえ |
-> | networksecuritygroups | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-> | quotas | いいえ | いいえ |
-> | reservedips | いいえ | いいえ |
-> | virtualnetworks | いいえ | いいえ |
-> | virtualnetworks / remotevirtualnetworkpeeringproxies | いいえ | いいえ |
-> | virtualnetworks / virtualnetworkpeerings | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+> | expressroutecrossconnections / peerings | × | いいえ |
+> | gatewaysupporteddevices | × | いいえ |
+> | networksecuritygroups | × | いいえ |
+> | operations | × | いいえ |
+> | quotas | × | いいえ |
+> | reservedips | × | いいえ |
+> | virtualnetworks | × | いいえ |
+> | virtualnetworks / remotevirtualnetworkpeeringproxies | × | いいえ |
+> | virtualnetworks / virtualnetworkpeerings | × | いいえ |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | capabilities | いいえ | いいえ |
-> | checkstorageaccountavailability | いいえ | いいえ |
-> | disks | いいえ | いいえ |
-> | images | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-> | osimages | いいえ | いいえ |
-> | osplatformimages | いいえ | いいえ |
-> | publicimages | いいえ | いいえ |
-> | quotas | いいえ | いいえ |
+> | capabilities | × | いいえ |
+> | checkstorageaccountavailability | × | いいえ |
+> | disks | × | いいえ |
+> | images | × | いいえ |
+> | operations | × | いいえ |
+> | osimages | × | いいえ |
+> | osplatformimages | × | いいえ |
+> | publicimages | × | いいえ |
+> | quotas | × | × |
 > | storageaccounts | はい | いいえ |
-> | storageaccounts / blobservices | いいえ | いいえ |
-> | storageaccounts / fileservices | いいえ | いいえ |
+> | storageaccounts / blobservices | × | いいえ |
+> | storageaccounts / fileservices | × | いいえ |
 > | storageaccounts / metricdefinitions | いいえ | いいえ |
-> | storageaccounts / metrics | いいえ | いいえ |
-> | storageaccounts / queueservices | いいえ | いいえ |
-> | storageaccounts / services | いいえ | いいえ |
-> | storageaccounts / services / diagnosticsettings | いいえ | いいえ |
-> | storageaccounts / services / metricdefinitions | いいえ | いいえ |
-> | storageaccounts / services / metrics | いいえ | いいえ |
-> | storageaccounts / tableservices | いいえ | いいえ |
-> | storageaccounts / vmimages | いいえ | いいえ |
-> | vmimages | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+> | storageaccounts / metrics | × | いいえ |
+> | storageaccounts / queueservices | × | いいえ |
+> | storageaccounts / services | × | いいえ |
+> | storageaccounts / services / diagnosticsettings | × | いいえ |
+> | storageaccounts / services / metricdefinitions | × | いいえ |
+> | storageaccounts / services / metrics | × | いいえ |
+> | storageaccounts / tableservices | × | いいえ |
+> | storageaccounts / vmimages | × | いいえ |
+> | vmimages | × | × |
 
 ## <a name="microsoftclassicsubscription"></a>Microsoft.ClassicSubscription
 
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | operations | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+> | operations | いいえ | × |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
@@ -844,53 +844,53 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
+> [!IMPORTANT]
+> [Virtual Machines move guidance (仮想マシンの移動のガイダンス)](./move-limitations/virtual-machines-move-limitations.md) に関する記事をご覧ください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | availabilitysets | はい | はい |
-> | diskaccesses | いいえ | いいえ |
-> | diskencryptionsets | いいえ | いいえ |
-> | disks | はい | はい |
-> | galleries | いいえ | いいえ |
-> | galleries/images | いいえ | いいえ |
-> | galleries/images/versions | いいえ | いいえ |
-> | hostgroups | いいえ | いいえ |
-> | hostgroups/hosts | いいえ | いいえ |
+> | diskaccesses | いいえ | × |
+> | diskencryptionsets | いいえ | × |
+> | disks | はい | ○ |
+> | galleries | いいえ | × |
+> | galleries/images | いいえ | × |
+> | galleries/images/versions | いいえ | × |
+> | hostgroups | いいえ | × |
+> | hostgroups/hosts | いいえ | × |
 > | images | はい | はい |
-> | locations | いいえ | いいえ |
-> | locations / artifactpublishers | いいえ | いいえ |
-> | locations / capsoperations | いいえ | いいえ |
-> | locations / diskoperations | いいえ | いいえ |
-> | locations / loganalytics | いいえ | いいえ |
-> | locations / operations | いいえ | いいえ |
-> | locations / publishers | いいえ | いいえ |
-> | locations / runcommands | いいえ | いいえ |
-> | locations / usages | いいえ | いいえ |
-> | locations / virtualmachines | いいえ | いいえ |
-> | locations / vmsizes | いいえ | いいえ |
-> | locations / vsmoperations | いいえ | いいえ |
+> | locations | いいえ | × |
+> | locations / artifactpublishers | いいえ | × |
+> | locations / capsoperations | いいえ | × |
+> | locations / diskoperations | いいえ | × |
+> | locations / loganalytics | いいえ | × |
+> | locations / operations | いいえ | × |
+> | locations / publishers | いいえ | × |
+> | locations / runcommands | いいえ | × |
+> | locations / usages | いいえ | × |
+> | locations / virtualmachines | いいえ | × |
+> | locations / vmsizes | いいえ | × |
+> | locations / vsmoperations | いいえ | × |
 > | operations | いいえ | いいえ |
-> | proximityplacementgroups | はい | はい |
+> | proximityplacementgroups | はい | ○ |
 > | restorepointcollections | いいえ | いいえ |
-> | restorepointcollections / restorepoints | いいえ | いいえ |
-> | sharedvmextensions | いいえ | いいえ |
-> | sharedvmimages | いいえ | いいえ |
-> | sharedvmimages/versions | いいえ | いいえ |
-> | スナップショット | はい | はい |
-> | sshpublickeys | いいえ | いいえ |
+> | restorepointcollections / restorepoints | いいえ | × |
+> | sharedvmextensions | いいえ | × |
+> | sharedvmimages | いいえ | × |
+> | sharedvmimages/versions | いいえ | × |
+> | スナップショット | はい | ○ |
+> | sshpublickeys | いいえ | × |
 > | virtualmachines | はい | はい |
-> | virtualmachines/extensions | はい | はい |
-> | virtualmachines / metricdefinitions | いいえ | いいえ |
-> | virtualmachines / runcommands | いいえ | いいえ |
-> | virtualmachinescalesets | はい | はい |
-> | virtualmachinescalesets / extensions | いいえ | いいえ |
-> | virtualmachinescalesets / networkinterfaces | いいえ | いいえ |
-> | virtualmachinescalesets / publicipaddresses | いいえ | いいえ |
-> | virtualmachinescalesets / virtualmachines | いいえ | いいえ |
-> | virtualmachinescalesets / virtualmachines / networkinterfaces | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [Virtual Machines move guidance (仮想マシンの移動のガイダンス)](./move-limitations/virtual-machines-move-limitations.md) に関する記事をご覧ください。
+> | virtualmachines/extensions | はい | ○ |
+> | virtualmachines / metricdefinitions | いいえ | × |
+> | virtualmachines / runcommands | いいえ | × |
+> | virtualmachinescalesets | はい | ○ |
+> | virtualmachinescalesets / extensions | いいえ | × |
+> | virtualmachinescalesets / networkinterfaces | いいえ | × |
+> | virtualmachinescalesets / publicipaddresses | いいえ | × |
+> | virtualmachinescalesets / virtualmachines | いいえ | × |
+> | virtualmachinescalesets / virtualmachines / networkinterfaces | いいえ | × |
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
@@ -1613,25 +1613,25 @@ ms.locfileid: "86539229"
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | clusters | はい | はい |
-> | clusters/applications | いいえ | いいえ |
-> | clusters / operationresults | いいえ | いいえ |
-> | locations | いいえ | いいえ |
-> | locations / azureasyncoperations | いいえ | いいえ |
-> | locations / billingspecs | いいえ | いいえ |
-> | locations / capabilities | いいえ | いいえ |
-> | locations / operationresults | いいえ | いいえ |
-> | locations / usages | いいえ | いいえ |
-> | locations / validatecreaterequest | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-
 > [!IMPORTANT]
 > HDInsight クラスターは、新しいサブスクリプションまたはリソース グループに移動できます。 ただし、HDInsight クラスターにリンクされているネットワーク リソース (仮想ネットワーク、NIC、ロード バランサーなど) をサブスクリプション間で移動することはできません。 また、クラスターの仮想マシンに接続されている NIC を新しいリソース グループに移動することはできません。
 >
 > HDInsight クラスターを新しいサブスクリプションに移動するときは、まず、他のリソース (ストレージ アカウントなど) を移動します。 その後、HDInsight クラスターを単独で移動します。
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | clusters | はい | ○ |
+> | clusters/applications | × | いいえ |
+> | clusters / operationresults | × | いいえ |
+> | locations | × | いいえ |
+> | locations / azureasyncoperations | × | いいえ |
+> | locations / billingspecs | × | いいえ |
+> | locations / capabilities | × | いいえ |
+> | locations / operationresults | いいえ | いいえ |
+> | locations / usages | × | いいえ |
+> | locations / validatecreaterequest | いいえ | × |
+> | operations | × | × |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 
@@ -1699,26 +1699,29 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
+> [!IMPORTANT]
+> 新しいサブスクリプションへの移動によって[サブスクリプション クォータ](azure-subscription-service-limits.md#azure-monitor-limits)を超えないようにします。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | actiongroups | はい | はい |
-> | activitylogalerts | いいえ | いいえ |
-> | alertrules | はい | はい |
-> | autoscalesettings | はい | はい |
-> | baseline | いいえ | いいえ |
-> | calculatebaseline | いいえ | いいえ |
+> | actiongroups | はい | ○ |
+> | activitylogalerts | いいえ | × |
+> | alertrules | はい | ○ |
+> | autoscalesettings | はい | ○ |
+> | baseline | いいえ | × |
+> | calculatebaseline | いいえ | × |
 > | components | はい | はい |
-> | components / events | いいえ | いいえ |
+> | components / events | いいえ | × |
 > | components / linkedstorageaccounts | いいえ | いいえ |
-> | components / metadata | いいえ | いいえ |
-> | components / metrics | いいえ | いいえ |
-> | components / pricingplans | いいえ | いいえ |
-> | components / query | いいえ | いいえ |
-> | datacollectionrules | いいえ | いいえ |
+> | components / metadata | いいえ | × |
+> | components / metrics | いいえ | × |
+> | components / pricingplans | いいえ | × |
+> | components / query | いいえ | × |
+> | datacollectionrules | いいえ | × |
 > | diagnosticsettings | いいえ | いいえ |
-> | diagnosticsettingscategories | いいえ | いいえ |
-> | eventcategories | いいえ | いいえ |
+> | diagnosticsettingscategories | いいえ | × |
+> | eventcategories | いいえ | × |
 > | eventtypes | いいえ | いいえ |
 > | extendeddiagnosticsettings | いいえ | いいえ |
 > | guestdiagnosticsettings | いいえ | いいえ |
@@ -1754,9 +1757,6 @@ ms.locfileid: "86539229"
 > | Workbooks | はい | はい |
 > | workbooktemplates | はい | はい |
 
-> [!IMPORTANT]
-> 新しいサブスクリプションへの移動によって[サブスクリプション クォータ](azure-subscription-service-limits.md#azure-monitor-limits)を超えないようにします。
-
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
@@ -1779,6 +1779,9 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
+> [!IMPORTANT]
+> ディスクの暗号化に使用されるキー コンテナーは、同じサブスクリプション内のリソース グループに移動したり、サブスクリプション間で移動したりすることはできません。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
@@ -1795,9 +1798,6 @@ ms.locfileid: "86539229"
 > | vaults / accesspolicies | いいえ | いいえ |
 > | vaults / eventgridfilters | いいえ | いいえ |
 > | vaults / secrets | いいえ | いいえ |
-
-> [!IMPORTANT]
-> ディスクの暗号化に使用されるキー コンテナーは、同じサブスクリプション内のリソース グループに移動したり、サブスクリプション間で移動したりすることはできません。
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
@@ -2115,6 +2115,9 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
+> [!IMPORTANT]
+> [ネットワークの移動ガイダンス](./move-limitations/networking-move-limitations.md)をご覧ください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
@@ -2166,79 +2169,76 @@ ms.locfileid: "86539229"
 > | loadbalancers | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
 > | localnetworkgateways | はい | はい |
 > | locations | いいえ | いいえ |
-> | locations / autoapprovedprivatelinkservices | いいえ | いいえ |
-> | locations / availabledelegations | いいえ | いいえ |
-> | locations / availableprivateendpointtypes | いいえ | いいえ |
-> | locations / availableservicealiases | いいえ | いいえ |
-> | locations / baremetaltenants | いいえ | いいえ |
-> | locations / batchnotifyprivateendpointsforresourcemove | いいえ | いいえ |
-> | locations / batchvalidateprivateendpointsforresourcemove | いいえ | いいえ |
-> | locations / checkacceleratednetworkingsupport | いいえ | いいえ |
-> | locations / checkdnsnameavailability | いいえ | いいえ |
-> | locations / checkprivatelinkservicevisibility | いいえ | いいえ |
-> | locations / commitinternalazurenetworkmanagerconfiguration | いいえ | いいえ |
-> | locations / effectiveresourceownership | いいえ | いいえ |
-> | locations / nfvoperationresults | いいえ | いいえ |
+> | locations / autoapprovedprivatelinkservices | いいえ | × |
+> | locations / availabledelegations | いいえ | × |
+> | locations / availableprivateendpointtypes | いいえ | × |
+> | locations / availableservicealiases | いいえ | × |
+> | locations / baremetaltenants | いいえ | × |
+> | locations / batchnotifyprivateendpointsforresourcemove | いいえ | × |
+> | locations / batchvalidateprivateendpointsforresourcemove | いいえ | × |
+> | locations / checkacceleratednetworkingsupport | いいえ | × |
+> | locations / checkdnsnameavailability | いいえ | × |
+> | locations / checkprivatelinkservicevisibility | いいえ | × |
+> | locations / commitinternalazurenetworkmanagerconfiguration | いいえ | × |
+> | locations / effectiveresourceownership | いいえ | × |
+> | locations / nfvoperationresults | いいえ | × |
 > | locations / nfvoperations | いいえ | いいえ |
-> | locations / operationresults | いいえ | いいえ |
-> | locations / operations | いいえ | いいえ |
-> | locations / servicetags | いいえ | いいえ |
-> | locations / setresourceownership | いいえ | いいえ |
-> | locations / supportedvirtualmachinesizes | いいえ | いいえ |
-> | locations / usages | いいえ | いいえ |
-> | locations / validateresourceownership | いいえ | いいえ |
-> | locations / virtualnetworkavailableendpointservices | いいえ | いいえ |
+> | locations / operationresults | いいえ | × |
+> | locations / operations | いいえ | × |
+> | locations / servicetags | いいえ | × |
+> | locations / setresourceownership | いいえ | × |
+> | locations / supportedvirtualmachinesizes | いいえ | × |
+> | locations / usages | いいえ | × |
+> | locations / validateresourceownership | いいえ | × |
+> | locations / virtualnetworkavailableendpointservices | いいえ | × |
 > | natgateways | いいえ | × |
-> | networkexperimentprofiles | いいえ | いいえ |
-> | networkintentpolicies | はい | はい |
-> | networkinterfaces | はい | はい |
-> | networkprofiles | いいえ | いいえ |
+> | networkexperimentprofiles | いいえ | × |
+> | networkintentpolicies | はい | ○ |
+> | networkinterfaces | はい | ○ |
+> | networkprofiles | いいえ | × |
 > | networksecuritygroups | はい | はい |
 > | networkwatchers | はい | いいえ |
-> | networkwatchers/connectionmonitors | はい | いいえ |
-> | networkwatchers/flowlogs | はい | いいえ |
+> | networkwatchers/connectionmonitors | ○ | いいえ |
+> | networkwatchers/flowlogs | ○ | いいえ |
 > | networkwatchers/pingmeshes | はい | いいえ |
-> | operations | いいえ | いいえ |
-> | p2svpngateways | いいえ | いいえ |
-> | privatednsoperationresults | いいえ | いいえ |
-> | privatednsoperationstatuses | いいえ | いいえ |
-> | privatednszones | はい | はい |
-> | privatednszones / a | いいえ | いいえ |
-> | privatednszones / aaaa | いいえ | いいえ |
-> | privatednszones / all | いいえ | いいえ |
-> | privatednszones / cname | いいえ | いいえ |
-> | privatednszones / mx | いいえ | いいえ |
-> | privatednszones / ptr | いいえ | いいえ |
-> | privatednszones / soa | いいえ | いいえ |
-> | privatednszones / srv | いいえ | いいえ |
-> | privatednszones / txt | いいえ | いいえ |
+> | operations | いいえ | × |
+> | p2svpngateways | いいえ | × |
+> | privatednsoperationresults | いいえ | × |
+> | privatednsoperationstatuses | いいえ | × |
+> | privatednszones | はい | ○ |
+> | privatednszones / a | いいえ | × |
+> | privatednszones / aaaa | いいえ | × |
+> | privatednszones / all | いいえ | × |
+> | privatednszones / cname | いいえ | × |
+> | privatednszones / mx | いいえ | × |
+> | privatednszones / ptr | いいえ | × |
+> | privatednszones / soa | いいえ | × |
+> | privatednszones / srv | いいえ | × |
+> | privatednszones / txt | いいえ | × |
 > | privatednszones/virtualnetworklinks | はい | はい |
-> | privatednszonesinternal | いいえ | いいえ |
-> | privateendpointredirectmaps | いいえ | いいえ |
-> | privateendpoints | はい | はい |
-> | privatelinkservices | いいえ | いいえ |
+> | privatednszonesinternal | いいえ | × |
+> | privateendpointredirectmaps | いいえ | × |
+> | privateendpoints | はい | ○ |
+> | privatelinkservices | いいえ | × |
 > | publicipaddresses | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
-> | publicipprefixes | はい | はい |
-> | routefilters | いいえ | いいえ |
-> | routetables | はい | はい |
-> | securitypartnerproviders | はい | はい |
-> | serviceendpointpolicies | はい | はい |
-> | trafficmanagergeographichierarchies | いいえ | いいえ |
-> | trafficmanagerprofiles | はい | はい |
-> | trafficmanagerprofiles / heatmaps | いいえ | いいえ |
+> | publicipprefixes | はい | ○ |
+> | routefilters | いいえ | × |
+> | routetables | はい | ○ |
+> | securitypartnerproviders | はい | ○ |
+> | serviceendpointpolicies | はい | ○ |
+> | trafficmanagergeographichierarchies | いいえ | × |
+> | trafficmanagerprofiles | はい | ○ |
+> | trafficmanagerprofiles / heatmaps | いいえ | × |
 > | trafficmanagerusermetricskeys | いいえ | いいえ |
-> | virtualhubs | いいえ | いいえ |
-> | virtualnetworkgateways | はい | はい |
-> | virtualnetworks | はい | はい |
-> | virtualnetworktaps | いいえ | いいえ |
+> | virtualhubs | いいえ | × |
+> | virtualnetworkgateways | はい | ○ |
+> | virtualnetworks | はい | ○ |
+> | virtualnetworktaps | いいえ | × |
 > | virtualrouters | はい | はい |
-> | virtualwans | いいえ | いいえ |
-> | vpngateways (仮想 WAN) | いいえ | いいえ |
-> | vpnserverconfigurations | いいえ | いいえ |
-> | vpnsites (仮想 WAN) | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [ネットワークの移動ガイダンス](./move-limitations/networking-move-limitations.md)をご覧ください。
+> | virtualwans | いいえ | × |
+> | vpngateways (仮想 WAN) | いいえ | × |
+> | vpnserverconfigurations | いいえ | × |
+> | vpnsites (仮想 WAN) | いいえ | × |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
@@ -2272,6 +2272,11 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
+> [!IMPORTANT]
+> 新しいサブスクリプションへの移行によって、[サブスクリプション クォータ](azure-subscription-service-limits.md#azure-monitor-limits)が超えることがないようにします。
+>
+> Automation アカウントがリンクされているワークスペースは移動できません。 移動操作を開始する前に、リンクされている Automation アカウントは必ず解除してください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
@@ -2281,19 +2286,14 @@ ms.locfileid: "86539229"
 > | locations | いいえ | いいえ |
 > | locations / operationstatuses | いいえ | いいえ |
 > | operations | いいえ | いいえ |
-> | storageinsightconfigs | いいえ | いいえ |
+> | storageinsightconfigs | いいえ | × |
 > | workspaces | はい | はい |
 > | workspaces / datasources | いいえ | いいえ |
 > | workspaces / linkedservices | いいえ | いいえ |
 > | workspaces / linkedstorageaccounts | いいえ | いいえ |
 > | workspaces / metadata | いいえ | いいえ |
 > | workspaces / query | いいえ | いいえ |
-> | workspaces / scopedprivatelinkproxies | いいえ | いいえ |
-
-> [!IMPORTANT]
-> 新しいサブスクリプションへの移行によって、[サブスクリプション クォータ](azure-subscription-service-limits.md#azure-monitor-limits)が超えることがないようにします。
->
-> Automation アカウントがリンクされているワークスペースは移動できません。 移動操作を開始する前に、リンクされている Automation アカウントは必ず解除してください。
+> | workspaces / scopedprivatelinkproxies | いいえ | × |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -2406,29 +2406,29 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
+> [!IMPORTANT]
+> [Recovery Services の移動のガイダンス](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | backupprotecteditems | いいえ | いいえ |
-> | locations | いいえ | いいえ |
-> | locations / allocatedstamp | いいえ | いいえ |
-> | locations / allocatestamp | いいえ | いいえ |
-> | locations / backupaadproperties | いいえ | いいえ |
-> | locations / backupcrossregionrestore | いいえ | いいえ |
-> | locations / backupcrrjob | いいえ | いいえ |
-> | locations / backupcrrjobs | いいえ | いいえ |
-> | locations / backupcrroperationresults | いいえ | いいえ |
-> | locations / backupcrroperationsstatus | いいえ | いいえ |
+> | backupprotecteditems | いいえ | × |
+> | locations | いいえ | × |
+> | locations / allocatedstamp | いいえ | × |
+> | locations / allocatestamp | いいえ | × |
+> | locations / backupaadproperties | いいえ | × |
+> | locations / backupcrossregionrestore | いいえ | × |
+> | locations / backupcrrjob | いいえ | × |
+> | locations / backupcrrjobs | いいえ | × |
+> | locations / backupcrroperationresults | いいえ | × |
+> | locations / backupcrroperationsstatus | いいえ | × |
 > | locations / backupprevalidateprotection | いいえ | いいえ |
-> | locations / backupstatus | いいえ | いいえ |
-> | locations / backupvalidatefeatures | いいえ | いいえ |
-> | locations / checknameavailability | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-> | replicationeligibilityresults | いいえ | いいえ |
+> | locations / backupstatus | いいえ | × |
+> | locations / backupvalidatefeatures | いいえ | × |
+> | locations / checknameavailability | いいえ | × |
+> | operations | いいえ | × |
+> | replicationeligibilityresults | いいえ | × |
 > | vaults | はい | はい |
-
-> [!IMPORTANT]
-> [Recovery Services の移動のガイダンス](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
 
@@ -2532,17 +2532,17 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
+> [!IMPORTANT]
+> 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | いいえ | いいえ |
-> | checkservicenameavailability | いいえ | いいえ |
-> | operations | いいえ | いいえ |
+> | checknameavailability | × | いいえ |
+> | checkservicenameavailability | × | いいえ |
+> | operations | × | いいえ |
 > | resourcehealthmetadata | いいえ | いいえ |
 > | searchservices | はい | はい |
-
-> [!IMPORTANT]
-> 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -2748,12 +2748,15 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
+> [!IMPORTANT]
+> データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure Synapse Analytics データベースに適用されます。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | いいえ | いいえ |
-> | instancepools | いいえ | いいえ |
-> | locations | はい | はい |
+> | instancepools | × | いいえ |
+> | locations | はい | ○ |
 > | locations / administratorazureasyncoperation | いいえ | いいえ |
 > | locations / administratoroperationresults | いいえ | いいえ |
 > | locations / auditingsettingsazureasyncoperation | いいえ | いいえ |
@@ -2853,7 +2856,7 @@ ms.locfileid: "86539229"
 > | managedinstances / tdecertificates | いいえ | いいえ |
 > | managedinstances / vulnerabilityassessments | いいえ | いいえ |
 > | operations | いいえ | いいえ |
-> | servers | はい | はい |
+> | servers | はい | ○ |
 > | servers / administratoroperationresults | いいえ | いいえ |
 > | servers / administrators | いいえ | いいえ |
 > | servers / advisors | いいえ | いいえ |
@@ -2862,8 +2865,8 @@ ms.locfileid: "86539229"
 > | servers / auditingsettings | いいえ | いいえ |
 > | servers / automatictuning | いいえ | いいえ |
 > | servers / communicationlinks | いいえ | いいえ |
-> | servers / connectionpolicies | いいえ | いいえ |
-> | servers/databases | はい | はい |
+> | servers / connectionpolicies | × | × |
+> | servers/databases | はい | ○ |
 > | servers / databases / advisors | いいえ | いいえ |
 > | servers / databases / auditingpolicies | いいえ | いいえ |
 > | servers / databases / auditingsettings | いいえ | いいえ |
@@ -2902,9 +2905,9 @@ ms.locfileid: "86539229"
 > | servers / extendedauditingsettings | いいえ | いいえ |
 > | servers / failovergroups | いいえ | いいえ |
 > | servers / import | いいえ | いいえ |
-> | servers / importexportoperationresults | いいえ | いいえ |
+> | servers / importexportoperationresults | × | × |
 > | servers/jobaccounts | はい | はい |
-> | servers/jobagents | はい | はい |
+> | servers/jobagents | ○ | ○ |
 > | servers / jobagents / jobs | いいえ | いいえ |
 > | servers / jobagents / jobs / executions | いいえ | いいえ |
 > | servers / jobagents / jobs / steps | いいえ | いいえ |
@@ -2919,11 +2922,8 @@ ms.locfileid: "86539229"
 > | servers / tdecertificates | いいえ | いいえ |
 > | servers / usages | いいえ | いいえ |
 > | servers / virtualnetworkrules | いいえ | いいえ |
-> | servers / vulnerabilityassessments | いいえ | いいえ |
+> | servers / vulnerabilityassessments | いいえ | × |
 > | virtualclusters | はい | はい |
-
-> [!IMPORTANT]
-> データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure Synapse Analytics データベースに適用されます。
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
@@ -3012,17 +3012,17 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
+> [!IMPORTANT]
+> 実行中状態の Stream Analytics ジョブは移動できません。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | clusters | いいえ | いいえ |
-> | locations | いいえ | いいえ |
-> | locations / quotas | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-> | streamingjobs | はい | はい |
-
-> [!IMPORTANT]
-> 実行中状態の Stream Analytics ジョブは移動できません。
+> | clusters | いいえ | × |
+> | locations | いいえ | × |
+> | locations / quotas | いいえ | × |
+> | operations | いいえ | × |
+> | streamingjobs | はい | ○ |
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 
@@ -3110,17 +3110,17 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
+> [!IMPORTANT]
+> Azure DevOps のサブスクリプションを変更するには、[change the Azure subscription used for billing (課金に使用される Azure サブスクリプションの変更)](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) に関する記事をご覧ください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | account | いいえ | いいえ |
-> | account / extension | いいえ | いいえ |
-> | account/project | いいえ | いいえ |
-> | checknameavailability | いいえ | いいえ |
+> | account | いいえ | × |
+> | account / extension | いいえ | × |
+> | account/project | いいえ | × |
+> | checknameavailability | いいえ | × |
 > | operations | いいえ | いいえ |
-
-> [!IMPORTANT]
-> Azure DevOps のサブスクリプションを変更するには、[change the Azure subscription used for billing (課金に使用される Azure サブスクリプションの変更)](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) に関する記事をご覧ください。
 
 ## <a name="microsoftvmware"></a>Microsoft.VMware
 
@@ -3178,28 +3178,31 @@ ms.locfileid: "86539229"
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
+> [!IMPORTANT]
+> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
+
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | availablestacks | いいえ | いいえ |
-> | billingmeters | いいえ | いいえ |
-> | certificates | いいえ | はい |
-> | checknameavailability | いいえ | いいえ |
-> | connectiongateways | はい | はい |
-> | connections | はい | はい |
-> | customapis | はい | はい |
-> | deletedsites | いいえ | いいえ |
-> | deploymentlocations | いいえ | いいえ |
-> | georegions | いいえ | いいえ |
-> | hostingenvironments | いいえ | いいえ |
-> | hostingenvironments / eventgridfilters | いいえ | いいえ |
-> | hostingenvironments / multirolepools | いいえ | いいえ |
-> | hostingenvironments / workerpools | いいえ | いいえ |
-> | ishostingenvironmentnameavailable | いいえ | いいえ |
+> | availablestacks | いいえ | × |
+> | billingmeters | いいえ | × |
+> | certificates | いいえ | [はい] |
+> | checknameavailability | いいえ | × |
+> | connectiongateways | はい | ○ |
+> | connections | はい | ○ |
+> | customapis | はい | ○ |
+> | deletedsites | いいえ | × |
+> | deploymentlocations | いいえ | × |
+> | georegions | いいえ | × |
+> | hostingenvironments | いいえ | × |
+> | hostingenvironments / eventgridfilters | いいえ | × |
+> | hostingenvironments / multirolepools | いいえ | × |
+> | hostingenvironments / workerpools | いいえ | × |
+> | ishostingenvironmentnameavailable | いいえ | × |
 > | ishostnameavailable | いいえ | いいえ |
-> | isusernameavailable | いいえ | いいえ |
-> | kubeenvironments | はい | はい |
-> | listsitesassignedtohostname | いいえ | いいえ |
+> | isusernameavailable | いいえ | × |
+> | kubeenvironments | はい | ○ |
+> | listsitesassignedtohostname | いいえ | × |
 > | locations | いいえ | いいえ |
 > | locations / apioperations | いいえ | いいえ |
 > | locations / connectiongatewayinstallations | いいえ | いいえ |
@@ -3232,9 +3235,6 @@ ms.locfileid: "86539229"
 > | staticsites | いいえ | いいえ |
 > | validate | いいえ | いいえ |
 > | verifyhostingenvironmentvnet | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
 
 ## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
 

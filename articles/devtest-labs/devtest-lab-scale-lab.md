@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボのクォータと制限のスケール | 
 description: この記事では、Azure DevTest Labs でラボをスケーリングする方法について説明します。 使用量のクォータと制限を確認し、増加を要求します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9c999760a649d4df4b34221633491b8ece784f52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477093"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533956"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs でのクォータと制限のスケール
 お気づきかもしれませんが、DevTest Labs での作業時に、一部の Azure リソースに一定の既定の制限があります。これは、DevTest Labs サービスに影響する場合があります。 これらの制限は、**クォータ**と呼ばれます。
@@ -20,7 +20,7 @@ ms.locfileid: "85477093"
 
 たとえば、各サブスクリプションの既定のクォータが 20 コアだとします。 ラボにそれぞれ 4 コアを備えた VM を作成する場合、作成できる VM の数は 5 つのみです。
 
-Azure リソースの最も一般的な一部のクォータについては、[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)に関する記事をご覧ください。 ラボで最も一般的に使用されるリソース、またクォータが発生する可能性のあるリソースには、VM コア、パブリック IP アドレス、ネットワーク インターフェイス、マネージド ディスク、RBAC ロール割り当て、ExpressRoute 回線などがあります。
+Azure リソースの最も一般的な一部のクォータについては、[Azure サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)に関する記事をご覧ください。 ラボで最も一般的に使用されるリソース、またクォータが発生する可能性のあるリソースには、VM コア、パブリック IP アドレス、ネットワーク インターフェイス、マネージド ディスク、Azure ロール割り当て、ExpressRoute 回線などがあります。
 
 ## <a name="view-your-usage-and-quotas"></a>使用量とクォータの表示
 次の手順では、特定の Azure リソースのサブスクリプションの現在のクォータや、使用した各クォータの割合を表示する方法を説明します。
@@ -37,7 +37,7 @@ Azure リソースの最も一般的な一部のクォータについては、[A
    ![クォータと使用量](./media/devtest-lab-scale-lab/devtestlab-view-quotas-new.png)
 
 ## <a name="requesting-more-resources-in-your-subscription"></a>サブスクリプションのリソースの引き上げを要求する
-クォータの上限に達した場合、[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)に関する記事の説明に従って、サブスクリプションのリソースの既定の制限を最大限増やすことができます。
+クォータの上限に達した場合、[Azure サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)に関する記事の説明に従って、サブスクリプションのリソースの既定の制限を最大限増やすことができます。
 
 [Azure ポータル](https://go.microsoft.com/fwlink/p/?LinkID=525040)を使用してクォータの引き上げを要求するには、次の手順に従います。
 

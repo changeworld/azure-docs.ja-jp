@@ -4,16 +4,17 @@ description: チュートリアル:このチュートリアルでは、Event Gri
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b6b6466675c8fa258af8370798cadd88e3b25a83
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322503"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997831"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>チュートリアル:Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する
 
-Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) は、Event Hubs のストリーミング データを Azure Blob Storage アカウントまたは Azure Data Lake Store に自動的に配信するもっとも簡単な方法です。 その後、データを処理して、SQL Data Warehouse や Cosmos DB などの選択した他の宛先ストレージに配信できます。 このチュートリアルでは、[Event Grid](https://docs.microsoft.com/azure/event-grid/overview) によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
+Event Hubs [Capture](./event-hubs-capture-overview.md) は、Event Hubs のストリーミング データを Azure Blob Storage アカウントまたは Azure Data Lake Store に自動的に配信するもっとも簡単な方法です。 その後、データを処理して、SQL Data Warehouse や Cosmos DB などの選択した他の宛先ストレージに配信できます。 このチュートリアルでは、[Event Grid](../event-grid/overview.md) によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
@@ -178,7 +179,4 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 ## <a name="next-steps"></a>次のステップ 
 Data Warehouse で強力なデータ視覚化ツールを使用して、実用的な分析情報を取得できます。
 
-[SQL Data Warehouse での Power BI の使用方法](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)に関する記事を参照してください。
-
-
-
+[SQL Data Warehouse での Power BI の使用方法](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)に関する記事を参照してください。

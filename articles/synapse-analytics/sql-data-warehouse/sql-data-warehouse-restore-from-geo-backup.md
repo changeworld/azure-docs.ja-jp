@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075821"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL プールの geo リストア
 
@@ -36,7 +36,7 @@ Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup](/p
 > Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000**c**) を指定します。
 >
 
-1. 開始する前に、必ず [Azure PowerShell をインストール](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
+1. 開始する前に、必ず [Azure PowerShell をインストール](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
 2. PowerShell を開きます。
 3. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
 4. 復元するデータ ウェアハウスを含むサブスクリプションを選択します。

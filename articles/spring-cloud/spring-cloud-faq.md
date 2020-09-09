@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 9cdbe0630060c9155187e1f62aba3d7a40ceae98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610474"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800372"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -160,6 +161,21 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 * 公式の、安定した Pivotal Spring ライブラリを使用することをお勧めします。 非公式版、ベータ版、またはフォーク済みバージョンの Pivotal Spring ライブラリにはサービス レベル アグリーメント (SLA) のサポートがありません。
 
 移行したら、CPU/RAM のメトリックやネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
+
+## <a name="trouble-shooting"></a>トラブルシューティング
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>サービス レジストリがまれに利用できなくなると、どのような影響がありますか?
+
+あまり起こることではありませんが、次のようなエラーが発生することがあります。 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+これはアプリケーションのログに記録されたエラーです。 ネットワークが不安定などの問題により、速度が極端に低下した Spring フレームワークによって発生した問題です。 
+
+Eureka クライアントには、それに対処するハートビートと再試行ポリシーの両方が備わっているため、ユーザー エクスペリエンスに影響はありません。 一時的なエラーと考えられるので、無視してかまいません。
+
+この点については、今後ユーザーのアプリケーションからこのエラーが返されないよう改善する予定です。
+
 
 ## <a name="next-steps"></a>次のステップ
 

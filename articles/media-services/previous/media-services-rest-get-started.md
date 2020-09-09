@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 258d91e763bd8e1507492109f9c01010f95b94c0
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c21ddd0aacde277f4cf796f133a3169a69798dda
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170838"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264472"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要  
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このクイックスタートでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。
 
@@ -34,7 +36,7 @@ ms.locfileid: "86170838"
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
+[![ビデオ オン デマンド アプリケーションを開発するために Azure Media Services オブジェクト データ モデルで最もよく使用されるオブジェクトの一部を示す図。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 REST API を使用して Media Services での開発を始めるには、次の前提条件が必要です。
@@ -56,7 +58,7 @@ REST API を使用して Media Services での開発を始めるには、次の�
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使います (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
 
-この記事で使用する AMS REST エンティティの詳細については、[Azure Media Services REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)に関するページをご覧ください。 また、「[Azure Media Services の概念](media-services-concepts.md)」も参照してください。
+この記事で使用する AMS REST エンティティの詳細については、[Azure Media Services REST API リファレンス](/rest/api/media/operations/azure-media-services-rest-api-reference)に関するページをご覧ください。 また、「[Azure Media Services の概念](media-services-concepts.md)」も参照してください。
 
 >[!NOTE]
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
@@ -153,7 +155,7 @@ Date: Sun, 18 Jan 2015 22:06:40 GMT
 ```
 
 ### <a name="create-an-assetfile"></a>AssetFile を作成する
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは常に資産に関連付けられており、資産には 1 つまたは複数の Assetfile を含む場合があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[AssetFile](/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは常に資産に関連付けられており、資産には 1 つまたは複数の Assetfile を含む場合があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
 デジタル メディア ファイルを blob コンテナーにアップロードした後、 **MERGE** HTTP 要求を使用して、メディア ファイル (トピックの後半に表示) に関する情報と共に AssetFile を更新します。
 
@@ -217,7 +219,7 @@ Date: Mon, 19 Jan 2015 00:34:07 GMT
 ```
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>書き込みのアクセス許可を持つ AccessPolicy を作成する
-すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。 そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。 作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。 AccessPolicies について詳しくは、[AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) をご覧ください。
+すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。 そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。 作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。 AccessPolicies について詳しくは、[AccessPolicy](/rest/api/media/operations/accesspolicy) をご覧ください。
 
 次の例は、AccessPolicy を作成する方法を示します。
 
@@ -270,7 +272,7 @@ Date: Sun, 18 Jan 2015 22:18:06 GMT
 
 ### <a name="get-the-upload-url"></a>アップロード URL を取得する
 
-実際のアップロード URL を受信するには、SAS Locator　を作成します。 Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。 特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。 これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。 詳細については、「 [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)」をご覧ください。
+実際のアップロード URL を受信するには、SAS Locator　を作成します。 Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。 特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。 これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。 詳細については、「 [Locator](/rest/api/media/operations/locator)」をご覧ください。
 
 SAS URL には次の形式があります。
 
@@ -280,7 +282,7 @@ SAS URL には次の形式があります。
 
 * 特定の資産に関連付けられている 5 つの一意の Locator を同時に使用することはできません。 
 * すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。 これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。 また、StartTime 値は YYYY-MM-DDTHH:mm:ssZ ("2014-05-23T17:53:50Z" など) の DateTime 形式である必要があります。    
-* Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。 この問題は、[SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) と Origin Locator の両方に当てはまります。
+* Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。 この問題は、[SAS URL](../../storage/common/storage-sas-overview.md) と Origin Locator の両方に当てはまります。
 
 次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケーターの場合は "1"、オンデマンド配信元ロケーターの場合は "2")。 返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
 
@@ -348,7 +350,7 @@ AccessPolicy と Locator を設定すると、実際のファイルは、Azure S
 >
 >
 
-Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)をご覧ください。
+Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](/rest/api/storageservices/blob-service-rest-api)をご覧ください。
 
 ### <a name="update-the-assetfile"></a>AssetFile を更新する
 ファイルをアップロードしたので、FileAsset サイズ (およびその他) の情報を更新します。 次に例を示します。
@@ -429,7 +431,7 @@ HTTP/1.1 204 No Content
 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 
-Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、資産ファイルの実際の作業を実行するアトミック タスクで構成されます (詳細については、[ジョブ](https://docs.microsoft.com/rest/api/media/operations/job)と[タスク](https://docs.microsoft.com/rest/api/media/operations/task)の説明を参照してください)。
+Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、資産ファイルの実際の作業を実行するアトミック タスクで構成されます (詳細については、[ジョブ](/rest/api/media/operations/job)と[タスク](/rest/api/media/operations/task)の説明を参照してください)。
 
 冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services は、一連のアダプティブ ビットレート MP4 ファイルを次のいずれかの形式に動的にパッケージ化できます:HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH。
 
@@ -487,7 +489,7 @@ Date: Mon, 19 Jan 2015 07:54:09 GMT
 ### <a name="create-a-job"></a>ジョブの作成
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。 REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。タスクは、Job エンティティの Tasks ナビゲーション プロパティまたは OData バッチ処理を使用して、インラインで定義できます。 Media Services SDK は、バッチ処理を使用します。 ただし、この記事のコード例では、読みやすくするためにタスクをインラインで定義します。 バッチ処理の詳細については、 [Open Data Protocol (OData) のバッチ処理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
 
-次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。 次のドキュメント セクションには、Media Encoder Standard プロセッサがサポートしている [タスク プリセット](https://msdn.microsoft.com/library/mt269960) の一覧が含まれています。  
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。 次のドキュメント セクションには、Media Encoder Standard プロセッサがサポートしている [タスク プリセット](/azure/media-services/previous/media-services-mes-presets-overview) の一覧が含まれています。  
 
 **HTTP 要求**
 
@@ -768,7 +770,7 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 * ストリーミング コンテンツの配信元 URL を作成する
 
 ### <a name="creating-the-accesspolicy-with-read-permission"></a>読み取りアクセス許可を持つ AccessPolicy を作成する
-メディア コンテンツをダウンロードおよびストリーミングする前に、まず読み取りアクセス許可を持つ AccessPolicy を定義し、クライアントのために有効にする配信メカニズムの種類を指定する適切な Locator エンティティを作成します。 使用できるプロパティの詳細については、「 [AccessPolicy エンティティ プロパティ](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties)」をご覧ください。
+メディア コンテンツをダウンロードおよびストリーミングする前に、まず読み取りアクセス許可を持つ AccessPolicy を定義し、クライアントのために有効にする配信メカニズムの種類を指定する適切な Locator エンティティを作成します。 使用できるプロパティの詳細については、「 [AccessPolicy エンティティ プロパティ](/rest/api/media/operations/accesspolicy#accesspolicy_properties)」をご覧ください。
 
 次の例では、指定された Asset の読み取りアクセス許可のために AccessPolicy を指定する方法を示します。
 
@@ -867,9 +869,9 @@ Date: Mon, 14 May 2012 21:41:32 GMT
 AccessPolicy と Locator を設定したら、Azure Storage REST API を使用してファイルをダウンロードできます。  
 
 > [!NOTE]
-> 前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。 例: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? 。 。 。
+> 前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。 例: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? 。 。 .
 
-Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)をご覧ください。
+Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](/rest/api/storageservices/blob-service-rest-api)をご覧ください。
 
 以前 (エンコード アダプティブ MP4 セットに) を実行して、エンコード ジョブでの結果としてある複数の MP4 ファイルを段階的にダウンロードできます。 次に例を示します。    
 

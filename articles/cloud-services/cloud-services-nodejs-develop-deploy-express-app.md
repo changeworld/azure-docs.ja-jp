@@ -1,7 +1,7 @@
 ---
 title: Node.js Express アプリをビルドして Azure Cloud Services にデプロイする
 titleSuffix: Azure Cloud Services
-description: Node.js で Express.js アプリケーションをビルドして、Azure Cloud Services にデプロイします
+description: このチュートリアルを使用し、Express モジュールを使用して新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -10,12 +10,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 493e577f3edbf15a563c255b65cbed4619a09857
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80b7e80e3636b2005594706e17b088b833c7bce7
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920018"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142453"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Express を使用して Node.js Web アプリケーションをビルドし、Azure Cloud Services にデプロイする
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84302604"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069154"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>ブート エラーのトラブルシューティング - ディスク読み取りエラーが発生しました
 
@@ -27,7 +27,7 @@ ms.locfileid: "84302604"
 
 ## <a name="symptoms"></a>現象
 
-[起動診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、スクリーンショットには次のようなメッセージが表示されます: "ディスク読み取りエラーが発生しました。 Press Ctrl+Alt+Del to restart' has been found for your virtual machine. (オペレーティング システムが見つかりませんでした。オペレーティング システムが含まれていないすべてのドライバーを切断してください。再起動するには Ctrl + Alt + Del キーを押してください)" が表示されます。
+[起動診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、スクリーンショットには次のようなメッセージが表示されます: "ディスク読み取りエラーが発生しました。 Press Ctrl+Alt+Del to restart' has been found for your virtual machine. (オペレーティング システムが見つかりませんでした。オペレーティング システムが含まれていないすべてのドライバーを切断してください。再起動するには Ctrl + Alt + Del キーを押してください)" が表示されます。
 
    ![エラー メッセージ:ディスク読み取りエラーが発生しました。 Ctrl+Alt+Del キーを押して再起動してください。](./media/disk-read-error-occurred/1.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "84302604"
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 1. リモート デスクトップ接続を使用して、修復 VM に接続します。
 
 ### <a name="set-partition-status-to-active"></a>パーティションの状態をアクティブに設定する
@@ -143,4 +143,4 @@ ms.locfileid: "84302604"
    
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、VM を再構築します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構築します。

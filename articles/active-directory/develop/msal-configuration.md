@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479421"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854916"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
 
@@ -58,14 +58,14 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
     "audience": {
         "type": "AzureADandPersonalMicrosoftAccount"
     },
-    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken or acquireTokenSilent call
+    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken call
 },
 // Example AzureAD My Organization
 {
     "type": "AAD",
     "audience": {
         "type": "AzureADMyOrg",
-        "tenantId": "contoso.com" // Provide your specific tenant ID here
+        "tenant_id": "contoso.com" // Provide your specific tenant ID here
     }
 },
 // Example AzureAD Multiple Organizations

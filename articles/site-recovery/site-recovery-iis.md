@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131330"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083771"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
@@ -102,12 +102,14 @@ DNS が動的 DNS 更新用に構成されている場合、仮想マシンは�
 
 接続文字列が IP アドレスを使用してデータベース仮想マシンを参照する場合は、フェールオーバー後に接続文字列を更新する必要があります。 たとえば、次の接続文字列では、IP アドレス 127.0.1.2 でデータベースを参照しています。
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-        <connectionStrings>
-        <add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
-        </connectionStrings>
-        </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<connectionStrings>
+<add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
+</connectionStrings>
+</configuration>
+```
 
 Web 層の接続文字列を更新するには、復旧計画のグループ 3 の後に、[IIS 接続更新スクリプト](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc)を追加します。
 

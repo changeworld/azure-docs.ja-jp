@@ -5,17 +5,18 @@ description: ご利用のワークスペースで使用される Azure ストレ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483314"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387066"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +26,7 @@ Azure Machine Learning で使用される Azure ストレージ アカウント�
 セキュリティ上の理由から、Azure ストレージ アカウントのアクセス キーを変更することが必要になる場合があります。 アクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning を更新する必要があります。 Azure Machine Learning では、ストレージ アカウントはモデル ストレージ用に使用される場合とデータストアとして使用される場合の両方があります。
 
 > [!IMPORTANT]
-> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)を有効にしている場合は、必ずこの記事に従って資格情報を更新してください。 データストアの登録を解除し、同じ名前で再登録すると失敗します。
+> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)を有効にしている場合は、必ずこの記事に従って資格情報を更新してください。 データストアの登録を解除し、同じ名前で再登録すると失敗します。
 
 ## <a name="prerequisites"></a>前提条件
 

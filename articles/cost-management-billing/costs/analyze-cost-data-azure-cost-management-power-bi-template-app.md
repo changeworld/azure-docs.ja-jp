@@ -3,24 +3,28 @@ title: Power BI アプリを使用して Azure のコストを分析する
 description: この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/16/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888200"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685053"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
 この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。 このアプリは、Power BI で Azure のコストを分析および管理するのに役立ちます。 このアプリを使用して、コストや使用傾向を監視し、支出を削減するためのコスト最適化オプションを特定することができます。
 
-このアプリは Power BI Desktop にダウンロードします。 このアプリはそのまま使用することも、既定のフィルター、ビュー、視覚化を拡張して必要に応じてカスタマイズすることもできます。 次に、これを使用して追加データを結合し、カスタマイズされたレポートを作成して、全体的なビジネス コストを総合的に把握します。
+このアプリはそのまま使用することも、既定のフィルター、ビュー、視覚化を拡張して必要に応じてカスタマイズすることもできます。 次に、これを使用して追加データを結合し、カスタマイズされたレポートを作成して、全体的なビジネス コストを総合的に把握します。
 
 Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) をお持ちのお客様のみサポートしています。
+
+> [!NOTE]
+> Power BI テンプレート アプリでは、PBIX ファイルのダウンロードをサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 

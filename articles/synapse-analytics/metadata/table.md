@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics の共有メタデータ テーブル
+title: 共有メタデータ テーブル
 description: Azure Synapse Analytics には共有メタデータ モデルが用意されていて、Apache Spark でテーブルを作成することにより、データを複製しなくても、SQL オンデマンド (プレビュー) と SQL プール エンジンからそのテーブルにアクセスできるようになります。
 services: sql-data-warehouse
 author: MikeRys
@@ -9,12 +9,13 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 257847a34821ad48d0491472cf7365932f7740c0
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080783"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018741"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
@@ -24,7 +25,7 @@ Azure Synapse Analytics では、さまざまなワークスペース計算エ�
 
 Spark ジョブによってデータベースが作成されると、Spark を使用してその内部にテーブルを作成できます (ストレージ形式として Parquet を使用)。 これらのテーブルではすぐに、任意の Azure Synapse ワークスペース Spark プールによってクエリを実行できるようになります。 これらは、アクセス許可の対象となる任意の Spark ジョブから使用することもできます。
 
-Spark で作成、管理される外部テーブルは、SQL オンデマンドの対応する同期済みデータベースと同じ名前の外部テーブルとして使用することもできます。 テーブルの同期については、「[SQL での Spark テーブルの公開](#exposing-a-spark-table-in-sql)」で詳しく説明します。
+Spark で作成、管理される外部テーブルは、SQL オンデマンドの対応する同期済みデータベースと同じ名前の外部テーブルとして使用することもできます。 テーブルの同期については、「[SQL での Spark テーブルの公開](#expose-a-spark-table-in-sql)」で詳しく説明します。
 
 テーブルは SQL オンデマンドに非同期的に同期されるため、表示されるまでに遅延が発生します。
 
@@ -34,9 +35,9 @@ Spark を使用して、Spark で作成されたデータベースを管理し�
 
 SQL オンデマンドでそのようなデータベースにオブジェクトを作成したり、データベースの削除を試みたりすると、操作は成功しますが、元の Spark データベースは変更されません。
 
-## <a name="exposing-a-spark-table-in-sql"></a>SQL での Spark テーブルの公開
+## <a name="expose-a-spark-table-in-sql"></a>SQL での Spark テーブルの公開
 
-### <a name="which-spark-tables-are-shared"></a>共有される Spark テーブル
+### <a name="shared-spark-tables"></a>共有 Spark テーブル
 
 Spark には、Azure Synapse によって自動的に SQL で公開されるテーブルが 2 種類あります。
 
@@ -50,7 +51,7 @@ Spark には、Azure Synapse によって自動的に SQL で公開されるテ�
 
 Azure Synapse では現在、SQL エンジンを使用して Parquet 形式でデータを格納するマネージドおよび外部 Spark テーブルのみが共有されます。 他の形式に基づくテーブルは自動的に同期されません。 SQL エンジンがテーブルの基になる形式をサポートしている場合は、自分の SQL データベースの外部テーブルとして、このようなテーブルを明示的に同期することができます。
 
-### <a name="how-are-spark-tables-shared"></a>Spark テーブルの共有方法
+### <a name="share-spark-tables"></a>Spark テーブルを共有する
 
 次のプロパティを使用して、SQL エンジンで外部テーブルとして公開される共有可能なマネージドおよび外部 Spark テーブル:
 
@@ -96,7 +97,7 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark で Parquet がベースのマネージド テーブルを作成し、SQL オンデマンドでクエリを実行する
 
-このシナリオでは、`mytestdb` という名前の Spark データベースを用意します。 「[Spark データベースの作成と接続 - SQL オンデマンド](database.md#create--connect-to-spark-database---sql-on-demand)」を参照してください。
+このシナリオでは、`mytestdb` という名前の Spark データベースを用意します。 「[SQL オンデマンドを使用して Spark データベースを作成して接続する](database.md#create-and-connect-to-spark-database-with-sql-on-demand)」を参照してください。
 
 次のコマンドを実行し、SparkSQL を使用してマネージド Spark テーブルを作成します。
 
@@ -153,7 +154,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="creating-an-external-table-backed-by-parquet-in-spark-and-querying-it-from-sql-on-demand"></a>Spark で Parquet がベースの外部テーブルを作成し、SQL オンデマンドでクエリを実行する
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark で Parquet がベースの外部テーブルを作成し、SQL オンデマンドでクエリを実行する
 
 この例では、前の例でマネージド テーブル用に作成した Parquet データ ファイルに対して外部 Spark テーブルを作成します。
 

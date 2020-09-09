@@ -1,6 +1,6 @@
 ---
 title: マップでのポイント データのクラスタリング | Microsoft Azure Maps
-description: この記事では、ポイント データをクラスタリングし、Microsoft Azure Maps Web SDK を使用してマップ上にレンダリングする方法を学習します。
+description: マップでポイント データをクラスター化する方法について説明します。 Azure Maps Web SDK を使用してデータをクラスター化し、クラスターのマウス イベントに応答して、クラスター集計を表示する方法を確認してください。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen
-ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804573"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009054"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 

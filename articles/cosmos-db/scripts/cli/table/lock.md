@@ -6,22 +6,22 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 06/03/2020
-ms.openlocfilehash: d8ace63ed99b8fc857f61b9211068e37e3bac412
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.date: 07/29/2020
+ms.openlocfilehash: b6041bf493cf3cb6dcff5f52bdb0950afbbc5108
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84514561"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431477"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-table-api-table-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos DB Table API テーブルのリソース ロックを作成する
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択する場合、このトピックでは、Azure CLI バージョン 2.6.0 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI のバージョン 2.9.1 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 > [!IMPORTANT]
-> `disableKeyBasedMetadataWriteAccess` プロパティが有効にされている状態で Cosmos DB アカウントが最初にロックされない限り、リソース ロックは、ユーザーが Cosmos DB Table SDK、Azure Storage Table SDK、アカウント キーを介して接続されるツール、または Azure portal に接続して行った変更に対しては機能しません。 このプロパティを有効にする方法の詳細については、[SDK からの変更の防止](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk)に関するページを参照してください。
+> `disableKeyBasedMetadataWriteAccess` プロパティが有効にされている状態で Cosmos DB アカウントが最初にロックされない限り、リソース ロックは、ユーザーが Cosmos DB Table SDK、Azure Storage Table SDK、アカウント キーを介して接続されるツール、または Azure portal に接続して行った変更に対しては機能しません。 このプロパティを有効にする方法の詳細については、[SDK からの変更の防止](../../../role-based-access-control.md#prevent-sdk-changes)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

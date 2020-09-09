@@ -3,12 +3,12 @@ title: Registry サービス階層と機能
 description: Azure Container Registry の Basic、Standard、および Premium サービス階層 (SKU) の機能と制限について説明します。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 35f5d4ebd4a2b427aadc6e82e265a7da9b6409f8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 66cb5d7c3cdca45f7a44f0f23bfa449d5ade6dbf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683432"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512616"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry サービス階層
 
@@ -24,7 +24,7 @@ Basic、Standard、および Premium 階層は、すべて同じプログラム�
 
 ## <a name="service-tier-features-and-limits"></a>サービス階層の機能と制限
 
-次の表に、Basic、Standard、および Premium サービス階層の機能と制限について説明します。
+次の表に、Basic、Standard、および Premium サービス レベルの機能とレジストリの制限について説明します。
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 

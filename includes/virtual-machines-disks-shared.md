@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cafde6ed66e5b636be60533abafcd6f221fe33a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502515"
 ---
-Azure 共有ディスク (プレビュー) は、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
+Azure 共有ディスクは、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -29,6 +29,10 @@ Azure 共有ディスク (プレビュー) は、マネージド ディスクを
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
 
+### <a name="operating-system-requirements"></a>オペレーティング システムの要件
+
+共有ディスクは、複数のオペレーティング システムでサポートされます。 サポートされているオペレーティング システムについては、「[Windows](#windows)」または「[Linux](#linux)」セクションを参照してください。
+
 ## <a name="disk-sizes"></a>ディスク サイズ
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
@@ -37,23 +41,25 @@ Azure 共有ディスク (プレビュー) は、マネージド ディスクを
 
 ### <a name="windows"></a>Windows
 
-WSFC (クラスター ノード通信のすべてのコア インフラストラクチャを処理する) 上に構築されているほとんどの Windows ベースのクラスタリングでは、ことで、アプリケーションが並列アクセス パターンを活用できるようにしています。 WSFC では、ご使用の Windows Server のバージョンに応じて、CSV と非 CSV ベースのオプションの両方が有効になります。 詳細については、「[フェールオーバー クラスターを作成する](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)」を参照してください。
+Azure 共有ディスクは、Windows Server 2008 以降でサポートされています。 ほとんどの Windows ベースのクラスタリングは、クラスタ ノード通信のためのすべてのコアインフラストラクチャを処理し、アプリケーションで並列アクセス パターンを利用できるように WSFC 上にビルドされています。 WSFC では、ご使用の Windows Server のバージョンに応じて、CSV と非 CSV ベースのオプションの両方が有効になります。 詳細については、「[フェールオーバー クラスターを作成する](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)」を参照してください。
 
 WSFC で実行される一般的なアプリケーションには、次のようなものがあります。
 
 - [Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
-- スケールアウト ファイル サーバー (SoFS)
+- スケールアウト ファイル サーバー (SoFS) [テンプレート] (https://aka.ms/azure-shared-disk-sofs-template)
+- SAP ASCS/SCS [テンプレート] (https://aka.ms/azure-shared-disk-sapacs-template)
 - 汎用のファイル サーバー (IW ワークロード)
 - リモート デスクトップ サーバー ユーザー プロファイル ディスク (RDS UPD)
-- SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
 
-Linux クラスターでは、[Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker) などのクラスター マネージャーを利用できます。 Pacemaker は [Corosync](http://corosync.github.io/corosync/) 上に構築され、高可用性環境にデプロイされたアプリケーションのクラスター通信を可能にします。 一般的なクラスター化されたファイルシステムには、[ocfs2](https://oss.oracle.com/projects/ocfs2/) と [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2) があります。 [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) や [sg_persist](https://linux.die.net/man/8/sg_persist) などのユーティリティを使用して、予約と登録を操作できます。
+Azure 共有ディスクは、以下でサポートされています。
+- [SUSE SLE for SAP および SUSE SLE HA 15 SP1 以上](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [Ubuntu 18.04 以降](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
+- [RHEL 8 バージョンの RHEL 開発者向けプレビュー](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
+- [Oracle Enterprise Linux] (https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
-#### <a name="ubuntu"></a>Ubuntu
-
-Azure 共有ディスクで Corosync と Pacemaker を使用して Ubuntu の高可用性を設定する方法の詳細については、「[Ubuntu Community Discourse](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)」を参照してください。
+Linux クラスターでは、[Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker) などのクラスター マネージャーを利用できます。 Pacemaker は [Corosync](http://corosync.github.io/corosync/) 上に構築され、高可用性環境にデプロイされたアプリケーションのクラスター通信を可能にします。 一般的なクラスター化されたファイルシステムには、[ocfs2](https://oss.oracle.com/projects/ocfs2/) と [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2) があります。 SCSI 永続的予約 (SCSI PR) または STONITH Block Device (SBD) ベースのクラスター モデルを使用して、ディスクへのアクセスを調節することができます。 SCSI PR を使用する場合は、[fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) や [sg_persist](https://linux.die.net/man/8/sg_persist) などのユーティリティを使用して、予約と登録を操作できます。
 
 ## <a name="persistent-reservation-flow"></a>永続的な予約フロー
 
@@ -85,11 +91,12 @@ Azure 共有ディスクで Corosync と Pacemaker を使用して Ubuntu の高
 
 Ultra ディスクから追加のスロットルが与えられ、スロットルが合計で 2 つになります。 このため、Ultra ディスク予約フローは前セクションの説明のとおりに動作できます。あるいは、パフォーマンスをさらに細かく調整したり、分配したりできます。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="予約所有者、登録済み、その他に対する読み取り専用または読み取り/書き込みのアクセス権を示すテーブルの画像。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="予約所有者、登録済み、その他に対する`ReadOnly` または `Read/Write` のアクセス権を示す表の画像。":::
 
 ## <a name="performance-throttles"></a>パフォーマンス スロットル
 
 ### <a name="premium-ssd-performance-throttles"></a>Premium SSD パフォーマンス スロットル
+
 Premium SSD では、ディスクの IOPS とスループットが固定になります。たとえば、P30 の IOPS は 5000 です。 ディスクが 2 つの VM 間で共有される場合でも、5 つの VM 間で共有される場合でも、この値は変わりません。 ディスク上限に 1 つの VM で到達することもあれば、ディスク上限が 2 つ以上の VM 間で分割されることもあります。 
 
 ### <a name="ultra-disk-performance-throttles"></a>Ultra ディスク パフォーマンス スロットル
@@ -101,8 +108,8 @@ Ultra ディスクには、変更可能な属性を公開して変更を許可�
 |---------|---------|
 |DiskIOPSReadWrite     |書き込みアクセス権のある共有ディスクをマウントするすべての VM で許可される IOPS の合計数。         |
 |DiskMBpsReadWrite     |書き込みアクセス権のある共有ディスクをマウントするすべての VM で許可される合計スループット (毎秒 MB)。         |
-|DiskIOPSReadOnly*     |読み取り専用として共有ディスクをマウントするすべての VM で許可される IOPS の合計数。         |
-|DiskMBpsReadOnly*     |読み取り専用として共有ディスクをマウントするすべての VM で許可される合計スループット (毎秒 MB)。         |
+|DiskIOPSReadOnly*     |`ReadOnly` として共有ディスクをマウントするすべての VM で許可される IOPS の合計数。         |
+|DiskMBpsReadOnly*     |`ReadOnly` として共有ディスクをマウントするすべての VM で許可される合計スループット (毎秒 MB)。         |
 
 \* 共有 Ultra ディスクのみに適用
 
@@ -122,18 +129,22 @@ Ultra ディスクには、変更可能な属性を公開して変更を許可�
 
 ##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>クラスター共有ボリュームを使用する 2 つのノード クラスター
 
-次は、クラスター化された共有ボリュームを使用する 2 ノード WSFC の例です。 この構成では、両方の VM でディスクに同時に書き込みアクセスできます。その結果、2 つの VM 間で ReadWrite スロットルが分割され、ReadOnly スロットルは使用されません。
+次は、クラスター化された共有ボリュームを使用する 2 ノード WSFC の例です。 この構成では、両方の VM でディスクに同時に書き込みアクセスできます。その結果、2 つの VM 間で `ReadWrite` スロットルが分割され、`ReadOnly` スロットルは使用されません。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 2 ノード Ultra の例":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>クラスター共有ボリュームのない 2 つのノード クラスター
 
-次は、クラスター化された共有ボリュームを使用しない 2 ノード WSFC の例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に ReadWrite スロットルが使用され、ReadOnly スロットルはセカンダリでのみ使用されます。
+次は、クラスター化された共有ボリュームを使用しない 2 ノード WSFC の例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に `ReadWrite` スロットルが使用され、`ReadOnly` スロットルはセカンダリでのみ使用されます。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 2 ノードで CSV Ultra ディスクなしの例":::
 
 ##### <a name="four-node-linux-cluster"></a>4 ノード Linux クラスター
 
-次は、シングル ライターが 1 つ、スケールアウト リーダーが 3 つ与えられた 4 ノード Linux クラスターの例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に ReadWrite スロットルが使用され、ReadOnly スロットルはセカンダリ VM によって分割されます。
+次は、シングル ライターが 1 つ、スケールアウト リーダーが 3 つ与えられた 4 ノード Linux クラスターの例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に `ReadWrite` スロットルが使用され、`ReadOnly` スロットルはセカンダリ VM によって分割されます。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="4 ノード Ultra の調整例":::
+
+#### <a name="ultra-pricing"></a>Ultra の価格
+
+Ultra 共有ディスクは、プロビジョニング済みの容量、プロビジョニング済みの IOPS の合計 (diskIOPSReadWrite + diskIOPSReadOnly) とプロビジョニング済みのスループット MBps の合計 (diskMBpsReadWrite + diskMBpsReadOnly) に基づいて課金されます。 追加の VM マウントごとに追加料金は発生しません。 たとえば、次の構成の Ultra 共有ディスク (diskSizeGB:1024、DiskIOPSReadWrite:10000、DiskMBpsReadWrite:600、DiskIOPSReadOnly:100、DiskMBpsReadOnly:1) は、2 台の VM にマウントされているか、5台の VM にマウントされているかに関係なく、1024 GiB、10100 IOPS、および 601 MBps で課金されます。

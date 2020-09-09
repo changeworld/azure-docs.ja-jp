@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232697"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283488"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -62,7 +62,7 @@ Azure Marketplace では、静的コード分析を実行してコード レビ�
 
 ### <a name="verify-your-applications-outputs"></a>アプリケーションの出力を確認する
 
-視覚的に、またはドキュメント内で提示するすべての出力を、常にエンコードおよびエスケープする必要があります。 [エスケープ](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29) ("*出力エンコード*" とも呼ばれます) は、信頼されていないデータがインジェクション攻撃の手段にならないようにするために使用されます。 エスケープとデータの入力規則を組み合わせると、システム全体のセキュリティを強化する多重防御手段が提供されます。
+視覚的に、またはドキュメント内で提示するすべての出力を、常にエンコードおよびエスケープする必要があります。 [エスケープ](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29) ("*出力エンコード*" とも呼ばれます) は、信頼されていないデータがインジェクション攻撃の手段にならないようにするために使用されます。 エスケープとデータの入力規則を組み合わせると、システム全体のセキュリティを強化する多重防御手段が提供されます。
 
 エスケープでは、すべてのものが "*出力*" として表示されることが確認されます。 また、エスケープにより、データが実行を目的としたものではないことがインタープリターで認識され、攻撃の実行が防止されます。 これは、"*クロスサイト スクリプティング*" (XSS) と呼ばれる別の一般的な攻撃手法です。
 

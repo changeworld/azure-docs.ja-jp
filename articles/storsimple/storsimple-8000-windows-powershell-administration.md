@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999519"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -29,7 +29,7 @@ Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイス�
 
 > [!NOTE]
 > * Windows PowerShell for StorSimple コマンドレットを使用すると、シリアル コンソールから、または Windows PowerShell リモート処理経由で StorSimple デバイスを管理できます。 このインターフェイスで使用できる個々のコマンドレットの詳細については、「 [Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)」を参照してください。
-> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)」を参照してください。
+> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)」を参照してください。
 
 
 Windows PowerShell for StorSimple には、次のいずれかの方法でアクセスできます。

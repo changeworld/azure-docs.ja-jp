@@ -4,16 +4,16 @@ description: この記事では、Windows VM 用の Microsoft Azure Disk Encrypt
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1934470413ef1b0c757820e6539adcd43783acd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4650df71acb088fafc1280d31d9abfb398e06741
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284491"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption 
 
@@ -81,7 +81,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) は、コマンド ラインから Azure リソースを管理できるように最適化されています。|
 | BitLocker |[BitLocker](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831713(v=ws.11)) は、Windows VM でディスク暗号化を有効にするために使用される、業界で認められた Windows ボリューム暗号化テクノロジです。 |
 | キー暗号化キー (KEK) | シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントと「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。 |
-| PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/overview)に関するページをご覧ください。 |
+| PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/)に関するページをご覧ください。 |
 
 
 ## <a name="next-steps"></a>次のステップ

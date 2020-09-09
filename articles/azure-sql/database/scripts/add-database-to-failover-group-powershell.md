@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 6750d7bf4d5593807a35c38fe92b568d1bc06bd7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cbd9d08c788dee69990ef08a4fe80dfe03270167
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049452"
 ---
 # <a name="use-powershell-to-add-a-database-to-a-failover-group"></a>PowerShell を使用してフェールオーバー グループにデータベースを追加する
 
@@ -61,6 +61,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の SQL Database 用の PowerShell サンプル スクリプトは、[Azure SQL Database 用の PowerShell スクリプト](../powershell-script-content-guide.md)のページにあります。

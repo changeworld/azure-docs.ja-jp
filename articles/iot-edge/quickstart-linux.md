@@ -9,23 +9,24 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a5829057aed913ea824cbd2fd6b52369b5e70d88
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801846"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384805"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
 このクイックスタートでは、コンテナー化されたコードを Linux IoT Edge 仮想デバイスに配置して、Azure IoT Edge をテストします。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイス用に Azure 仮想マシンを使用することをお勧めします。これにより、IoT Edge サービスがインストールされているテスト マシンをすばやく作成でき、さらにテストが完了したら削除することができます。
 
 このクイック スタートでは、次の方法について説明します。
-
-1. IoT Hub を作成します。
-2. IoT Edge デバイスを IoT ハブに登録します。
-3. IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
-4. モジュールを IoT Edge デバイスにリモートで展開する。
+> [!div class="checklist"]
+>
+> * IoT Hub を作成します。
+> * IoT Edge デバイスを IoT ハブに登録します。
+> * IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+> * モジュールを IoT Edge デバイスにリモートで展開する。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart-linux/install-edge-full.png)
 
@@ -63,7 +64,7 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 
 このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、ハブを作成済みである場合は、その IoT ハブを使用することができます。
 
-次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 `{hub_name}` は、実際の IoT ハブの一意の名前に置き換えてください。
+次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 `{hub_name}` は、実際の IoT ハブの一意の名前に置き換えてください。 IoT ハブの作成には数分かかることがあります。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -113,17 +114,10 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 次の CLI コマンドを使用して、構築済みの [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) テンプレートに基づいて IoT Edge デバイスを作成します。
 
-* bash またはクラウド シェル ユーザーの場合は、次のコマンドをテキスト エディターにコピーし、プレースホルダーのテキストを実際の情報に置き換えてから、bash またはクラウド シェル ウィンドウにコピーします。
+* bash または Cloud Shell ユーザーの場合は、次のコマンドをテキスト エディターにコピーし、プレースホルダーのテキストを実際の情報に置き換えてから、bash または Cloud Shell ウィンドウにコピーします。
 
    ```azurecli-interactive
-   az deployment group create \
-   --resource-group IoTEdgeResources \
-   --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
-   --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password' \
-   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * PowerShell ユーザーの場合は、次のコマンドを PowerShell ウィンドウにコピーし、プレースホルダーのテキストを実際の情報に置き換えます。
@@ -233,10 +227,19 @@ IoT Edge のチュートリアルに進む場合は、このクイック スタ�
 
 新しいリソース グループで仮想マシンと IoT ハブを作成した場合、そのグループと関連するすべてのリソースを削除できます。 リソース グループの内容を再確認して、残しておくべきものがないことを確認してください。 グループ全体を削除したくない場合は、リソースを個別に削除してもかまいません。
 
-**IoTEdgeResources** グループを削除します。
+> [!IMPORTANT]
+> リソース グループを削除すると、元に戻すことができません。
+
+**IoTEdgeResources** グループを削除します。 リソース グループを削除するのに数分かかる場合があります。
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+リソース グループが削除されたことは、リソース グループの一覧を表示することによって確認できます。
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>次のステップ

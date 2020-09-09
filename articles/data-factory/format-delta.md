@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044529"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory での差分形式
 
@@ -22,6 +22,8 @@ ms.locfileid: "86225028"
 
 > [!NOTE]
 > データ フローをマッピングするための差分形式コネクタは現在、パブリック プレビューとして利用できます。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
@@ -37,7 +39,7 @@ ms.locfileid: "86225028"
 | ファイル システム | Delta Lake のコンテナーまたはファイル システム | はい | String | fileSystem |
 | フォルダー パス | Delta Lake の直接 | はい | String | folderPath |
 | [圧縮の種類] | 差分テーブルの圧縮の種類 | no | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 圧縮レベル | 圧縮を可能な限り短時間で完了させるか、圧縮後のファイルを最適に圧縮するかを選択します。 | `compressedType` を指定した場合は必須。 | compressionLevel |
+| 圧縮レベル | 圧縮を可能な限り短時間で完了させるか、圧縮後のファイルを最適に圧縮するかを選択します。 | `compressedType` を指定した場合は必須。 | `Optimal` または `Fastest` | compressionLevel |
 | タイム トラベル | 差分テーブルの古いスナップショットにクエリを実行するかどうかを選択します | no | タイムスタンプ別のクエリ:Timestamp <br> バージョン別のクエリ:Integer | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>Import schema
@@ -73,7 +75,7 @@ source(output(movieId as integer,
 | ファイル システム | Delta Lake のコンテナーまたはファイル システム | はい | String | fileSystem |
 | フォルダー パス | Delta Lake の直接 | はい | String | folderPath |
 | [圧縮の種類] | 差分テーブルの圧縮の種類 | no | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 圧縮レベル | 圧縮を可能な限り短時間で完了させるか、圧縮後のファイルを最適に圧縮するかを選択します。 | `compressedType` を指定した場合は必須。 | compressionLevel |
+| 圧縮レベル | 圧縮を可能な限り短時間で完了させるか、圧縮後のファイルを最適に圧縮するかを選択します。 | `compressedType` を指定した場合は必須。 | `Optimal` または `Fastest` | compressionLevel |
 | VACUUM | 古いバージョンのテーブルに保持しきい値を時間単位で指定します。 0 以下の既定値は 30 日です。 | はい | Integer | vacuum |
 | 更新方法 | Delta Lake で許可される更新操作を指定します。 挿入ではない方法については、行にマークを付けるために、先行する行の変更変換が必要です。 | はい | `true` または `false` | deletable <br> insertable <br> updateable <br> upsertable |
 

@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - カスタム ドメインをセットアップする | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - カスタム ドメインをセットアップする
+description: API Management サービスのプロキシまたはポータル エンドポイントにカスタム ドメインを設定する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: ed3cda35b416eb171b8bb7970fcce38a1f916f30
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 16da7891b5321006708dc59ec8d482754beb7d9e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253034"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853264"
 ---
 # <a name="set-up-custom-domain"></a>カスタム ドメインのセットアップ
 
@@ -45,6 +45,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure API Management 用 Azure PowerShell サンプルは、[PowerShell サンプル](../powershell-samples.md)のページにあります。

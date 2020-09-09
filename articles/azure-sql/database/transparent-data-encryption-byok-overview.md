@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514725"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387117"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キー コンテナーと SQL Database/マネージド インスタンスは、同じ Azure Active Directory テナントに属している必要があります。 キー コンテナーとサーバーのテナント間の対話はサポートされていません。 後でリソースを移動するには、AKV を使用して TDE を再構成する必要があります。 リソースの移動の詳細については、[こちら](../../azure-resource-manager/management/move-resource-group-and-subscription.md)をご覧ください。
 
-- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](../../key-vault/general/overview-soft-delete.md)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧*と*消去*アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) または [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete) を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
+- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](../../key-vault/general/soft-delete-overview.md)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧*と*消去*アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) または [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete) を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
 
 - Azure Active Directory ID を使用して、サーバーまたはマネージド インスタンスにキー コンテナーへのアクセス権 (get、wrapKey、unwrapKey) を付与します。 Azure portal を使用すると、Azure AD ID が自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
 

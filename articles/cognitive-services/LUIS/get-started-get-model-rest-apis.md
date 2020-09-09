@@ -1,23 +1,23 @@
 ---
-title: クイック スタート:REST API で意図を取得する - LUIS
+title: クイック スタート:REST API を使用してモデルを変更する - LUIS
 titleSuffix: Azure Cognitive Services
 description: この REST API のクイックスタートでは、利用可能なパブリック LUIS アプリを使用して、会話形式のテキストからユーザーの意図を判断します。
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18, tracking-python
+ms.custom: seodec18, devx-track-python, devx-track-javascript, devx-track-csharp
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/03/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: a4d84aa6dc24bc7d293200e20d60c5fe349a769d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a62b12ccbc6f7d96dc1a2a9b49ab5eec0175f49d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608572"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078641"
 ---
 # <a name="quickstart-change-model-with-rest-apis"></a>クイック スタート:REST API を使用してモデルを変更する
 

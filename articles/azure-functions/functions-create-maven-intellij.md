@@ -5,13 +5,13 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556579"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373370"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
@@ -44,7 +44,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 2. Azure アカウントにサインインするには、サイドバーの **Azure Explorer** を開き、上部のバーにある **[Azure サインイン]** アイコンをクリックします (または [IDEA] メニューから **[ツール]/[Azure]/ [Azure サインイン]** をクリックします)。
     ![IntelliJ Azure サインイン コマンド][intellij-azure-login]
 
-3. **[Azure サインイン]** ウィンドウで、 **[Device Login]\(デバイスのログイン\)** を選択し、次に **[サインイン]** をクリックします ([他のサインイン オプション](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
+3. **[Azure サインイン]** ウィンドウで、 **[Device Login]\(デバイスのログイン\)** を選択し、次に **[サインイン]** をクリックします ([他のサインイン オプション](/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
 
    ![[デバイスのログイン] が選択されている [Azure サインイン] ウィンドウ][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 HTTP でトリガーされる関数を含む Java 関数プロジェクトを作成し、ローカル コンピューターでそれを実行し、Azure にデプロイしました。 次は以下の方法で関数を拡張します。
 
 > [!div class="nextstepaction"]
-> [Azure Storage キュー出力バインドを追加する](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [Azure Storage キュー出力バインドを追加する](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

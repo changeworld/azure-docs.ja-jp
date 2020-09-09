@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4e5d4af74ab54479a49963369cb99dbc19fca848
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 413616034dfe7d1f13612ba12ba86014af62c704
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505279"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325629"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 
@@ -42,14 +42,14 @@ Azure Monitor のログには、種類ごとに異なるプロパティ セッ�
 |  | 説明 |
 |:---|:---|
 | **分析** | Azure portal で [Log Analytics](../log-query/get-started-portal.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力なデータ エクスプローラー分析エンジンを使用してログ データを対話形式で分析します。<br>Azure portal で [Application Insights 分析コンソール](../log-query/log-query-overview.md)を使用してログ クエリを記述し、Application Insights からログ データを対話形式で分析します。 |
-| **視覚化** | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](../platform/workbooks-overview.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
+| **視覚化** | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](./workbooks-overview.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
 | **Alert** | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](action-groups.md)を実行する、[ログ警告ルール](alerts-log.md)を構成します。<br>メトリックとして抽出された特定のログ データ ログに対して[メトリック警告ルール](alerts-metric-logs.md)を構成します。 |
 | **取得** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
-| **エクスポート** | [Logic Apps](~/articles/logic-apps/index.yml) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |
+| **エクスポート** | [Logic Apps](../../logic-apps/index.yml) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |
 
 
 ## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Azure Monitor ログのデータの構造
-Azure Monitor ログによって収集されたデータは、[Log Analytics ワークスペース](../platform/design-logs-deployment.md)に格納されます。 各ワークスペースには、それぞれに特定のソースからのデータが格納される複数のテーブルが含まれます。 すべてのテーブルで共有される[いくつかの一般的なプロパティ](log-standard-properties.md)がありますが、格納されるデータの種類に応じたそれぞれに固有のプロパティ セットもあります。 新しいワークスペースには標準のテーブル セットが作成され、ワークスペースに書き込むさまざまな監視ソリューションと他のサービスによってテーブルが追加されます。
+Azure Monitor ログによって収集されたデータは、[Log Analytics ワークスペース](./design-logs-deployment.md)に格納されます。 各ワークスペースには、それぞれに特定のソースからのデータが格納される複数のテーブルが含まれます。 すべてのテーブルで共有される[いくつかの一般的なプロパティ](log-standard-properties.md)がありますが、格納されるデータの種類に応じたそれぞれに固有のプロパティ セットもあります。 新しいワークスペースには標準のテーブル セットが作成され、ワークスペースに書き込むさまざまな監視ソリューションと他のサービスによってテーブルが追加されます。
 
 Application Insights からのログ データではワークスペースと同じ Log Analytics エンジンが使用されますが、監視対象のアプリケーションごとに個別に格納されます。 各アプリケーションには、アプリケーションの要求、例外、ページ ビューなど、データを保持するための標準のテーブル セットがあります。
 
@@ -133,3 +133,4 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 - [Azure Monitor データ プラットフォーム](data-platform.md)の詳細を確認します。
 - [Azure Monitor でのメトリック](data-platform-metrics.md)を確認します。
 - Azure のさまざまなリソースで[入手できる監視データ](data-sources.md)を確認します。
+

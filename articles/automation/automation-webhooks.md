@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015104"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>webhook から Runbook を開始する
 
@@ -133,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-Runbook ジョブの完了時期と Webhook からの完了状態は、クライアントからは判別できません。 この情報は、[Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) や [Azure Automation API](/rest/api/automation/job) などの別のメカニズムでジョブ ID を使用して確認できます。
+Runbook ジョブの完了時期と Webhook からの完了状態は、クライアントからは判別できません。 この情報は、[Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) や [Azure Automation API](/rest/api/automation/job) などの別のメカニズムでジョブ ID を使用して確認できます。
 
 ## <a name="renew-a-webhook"></a>Webhook を更新する
 

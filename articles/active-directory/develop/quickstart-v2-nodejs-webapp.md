@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
+ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339907"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552681"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -52,7 +52,7 @@ ms.locfileid: "85339907"
 
 1. アプリのページの一覧から **[認証]** を選択します。
     - **[リダイレクト URI]** セクションで、コンボボックスの **[Web]** を選択し、リダイレクト URI の「`http://localhost:3000/auth/openid/return`」を入力します。
-    - **[詳細設定]** セクションの **[ログアウト URL]** を「`http://localhost:3000`」に設定します。
+    - **[詳細設定]** セクションの **[ログアウト URL]** を「`https://localhost:3000`」に設定します。
     - このサンプルでは、ユーザーのサインインに[暗黙的な許可のフロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)が有効になっている必要があるため、 **[詳細設定] > [暗黙の付与]** セクションで、 **[ID トークン]** をチェックします。
 
 1. **[保存]** を選択します。

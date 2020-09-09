@@ -1,5 +1,5 @@
 ---
-title: SQL オンデマンド (プレビュー) で Apache Spark for Azure Synapse の外部テーブル定義を同期する
+title: SQL オンデマンド (プレビュー) で Apache Spark の外部テーブル定義を同期する
 description: SQL オンデマンド (プレビュー) を使用して Spark テーブルに対してクエリを実行する方法の概要
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: db6b2d95bf8f38495296885d14260b9900af1d51
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046837"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で Apache Spark for Azure Synapse の外部テーブル定義を同期する
 
@@ -35,7 +35,7 @@ SELECT * FROM [db].dbo.[spark_table]
 ```
 
 > [!NOTE]
-> Spark 外部テーブル列の追加、削除、または変更は、SQL オンデマンドの外部テーブルには反映されません。
+> Spark 外部テーブルの列の追加、削除、または変更コマンドは、SQL オンデマンドの外部テーブルには反映されません。
 
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Apache Spark データ型から SQL データ型へのマッピング
 

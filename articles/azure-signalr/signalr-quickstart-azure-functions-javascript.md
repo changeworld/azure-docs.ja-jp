@@ -7,12 +7,13 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: e947864633bf66005a39c89e7d81aef0c96c93e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 74f0a1c163380b88986b6866e346a5f044772a0e
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85829586"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050558"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
 
@@ -31,13 +32,21 @@ Azure SignalR Service を使用すると、アプリケーションに対して�
 > [!NOTE]
 > このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -70,9 +79,15 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
     ![SignalR Service の作成](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -80,3 +95,5 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 > [!div class="nextstepaction"]
 > [VS Code で Azure Functions をデプロイする](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)

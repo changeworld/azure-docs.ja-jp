@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223603"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003628"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 
@@ -289,8 +290,8 @@ ms.locfileid: "86223603"
 <!-- Links -->
 [Notification Hubs のサンプル (英語)]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
-[Azure Service Bus]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure Service Bus]: ../service-bus-messaging/service-bus-messaging-overview.md
+[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure WebJob]: ../app-service/webjobs-create.md
-[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Azure Portal]: https://portal.azure.com/

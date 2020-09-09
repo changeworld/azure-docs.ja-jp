@@ -4,12 +4,12 @@ description: Azure Monitor を使用して、Azure Backup ワークロードを�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714833"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827156"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -56,7 +56,7 @@ Log Analytics ワークスペースの **[ログ]** セクションを開き、�
 
 アラートと監視のすべての要件を Log Analytics 単独で満たすことも、Log Analytics を使用して組み込みの通知を補うこともできます。
 
-詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)」と「[Azure Portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)」を参照してください。
+詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-log.md)」と「[Azure Portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」を参照してください。
 
 ### <a name="sample-kusto-queries"></a>サンプル Kusto クエリ
 
@@ -180,7 +180,7 @@ Log Analytics ワークスペースの **[ログ]** セクションを開き、�
 
 2. 操作名を選択すると、関連する詳細が表示されます。
 3. **[新しいアラート ルール]** を選択して **[ルールの作成]** ページを開きます。
-4. 「[Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)」の手順に従って、アラートを作成します。
+4. 「[Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-activity-log.md)」の手順に従って、アラートを作成します。
 
    ![新しいアラート ルール](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
@@ -193,8 +193,8 @@ Azure Monitor では、アクティビティ ログと Log Analytics ワーク�
 アクティビティ ログを使用して通知を受け取ることはできますが、大規模な監視にはアクティビティ ログではなく Log Analytics を使用することを強くお勧めします。 理由は次のとおりです。
 
 - **シナリオの制限**:アクティビティ ログを使用した通知は、Azure VM バックアップにのみ適用されます。 通知は、Recovery Services コンテナーごとに設定する必要があります。
-- **定義の一致**:スケジュール済みバックアップ アクティビティは、アクティビティ ログの最新定義と一致しません。 代わりに、[リソース ログ](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace)と一致します。 この一致によって、アクティビティ ログ チャネルを通過するデータが変更された場合に、予期しない影響が発生します。
-- **アクティビティ ログ チャネルの問題**:Recovery Services コンテナーでは、Azure Backup から取り込まれたアクティビティ ログは、新しいモデルに従ったものになっています。 残念ながら、この変更は、Azure Government、Azure Germany、および Azure China 21Vianet のアクティビティ ログの生成に影響します。 これらのクラウド サービスのユーザーが Azure Monitor のアクティビティ ログからアラートを作成または構成した場合、アラートはトリガーされません。 また、すべての Azure パブリック リージョンにおいて、ユーザーが [Recovery Services のアクティビティ ログを Log Analytics ワークスペースに収集](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)した場合、それらのログは表示されません。
+- **定義の一致**:スケジュール済みバックアップ アクティビティは、アクティビティ ログの最新定義と一致しません。 代わりに、[リソース ログ](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)と一致します。 この一致によって、アクティビティ ログ チャネルを通過するデータが変更された場合に、予期しない影響が発生します。
+- **アクティビティ ログ チャネルの問題**:Recovery Services コンテナーでは、Azure Backup から取り込まれたアクティビティ ログは、新しいモデルに従ったものになっています。 残念ながら、この変更は、Azure Government、Azure Germany、および Azure China 21Vianet のアクティビティ ログの生成に影響します。 これらのクラウド サービスのユーザーが Azure Monitor のアクティビティ ログからアラートを作成または構成した場合、アラートはトリガーされません。 また、すべての Azure パブリック リージョンにおいて、ユーザーが [Recovery Services のアクティビティ ログを Log Analytics ワークスペースに収集](../azure-monitor/platform/activity-log.md)した場合、それらのログは表示されません。
 
 Azure Backup で保護されるすべてのワークロードでは、大規模な監視とアラートのためには Log Analytic ワークスペースを使用してください。
 

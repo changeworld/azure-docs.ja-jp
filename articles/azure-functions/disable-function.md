@@ -3,12 +3,13 @@ title: Azure Functions で関数を無効にする方法
 description: Azure Functions で関数を無効または有効にする方法を学びます。
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848741"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213150"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
@@ -45,6 +46,21 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 > [!NOTE]  
 > ポータルに統合されたテスト機能では、`Disabled` 設定が無視されます。 つまり、ポータルの **[テスト]** ウィンドウから開始した場合、関数は無効にされていても実行されます。 
+
+## <a name="localsettingsjson"></a>local.settings.json
+
+関数は、ローカルで実行する場合と同じ方法で無効にすることができます。 `HttpExample` という名前の関数を無効にするには、次のように、local.settings.json ファイルの Values コレクションにエントリを追加します。
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
+    "AzureWebJobs.HttpExample.Disabled": "true"
+  }
+}
+``` 
 
 ## <a name="other-methods"></a>その他の方法
 

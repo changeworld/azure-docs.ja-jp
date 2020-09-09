@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボのポリシーの管理 | Microsoft Docs
 description: VM サイズ、ユーザーごとの VM の最大数、シャットダウンの自動化など、ラボのポリシーを定義する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290416"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのすべてのポリシーを管理
 
@@ -70,7 +70,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 1. 指定した自動シャットダウン時刻の 15 分前に通知を送信するオプションに対して **[はい]** または **[いいえ]** を指定します。 **[はい]** を選択した場合は、通知が投稿または送信される webhook の URL エンドポイントまたはメール アドレスを入力します。 ユーザーは通知を受信し、シャットダウンを遅らせるオプションが表示されます。
 
-   webhook の詳細については、「[webhook または API Azure Function を作成する](../azure-functions/functions-create-a-web-hook-or-api-function.md)」を参照してください。 
+   webhook の詳細については、「[webhook または API Azure Function を作成する](../azure-functions/functions-bindings-http-webhook.md)」を参照してください。 
 
 1. **[保存]** を選択します。
 
@@ -129,4 +129,3 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 * [カスタム イメージを作成する](devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。 この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
 * [Marketplace イメージを構成する](devtest-lab-configure-marketplace-images.md) - Azure DevTest Labs では、Azure Marketplace イメージを基にした VM を作成することができます。 この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
 * [ラボで VM を作成する](devtest-lab-add-vm.md) - 基本イメージ (カスタムまたは Marketplace) から VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
-

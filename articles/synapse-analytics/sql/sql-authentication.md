@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 280fea29b79db58d0974aaba961db9c7a7df3dad
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a4b61b89921b41476ff1c2196502092809862a82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045792"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495501"
 ---
 # <a name="sql-authentication"></a>SQL 認証
 
@@ -102,7 +102,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
    パフォーマンスを向上させるため、ログイン (サーバー レベルのプリンシパル) はデータベース レベルで一時的にキャッシュされます。 認証キャッシュを更新する方法については、「 [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」をご覧ください。
 
-3. `master` データベースで、[CREATE USER](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用してユーザーを作成します。 このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。サンプル ステートメントは、次のとおりです。
+3. [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用してデータベース ユーザーを作成します。 このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。サンプル ステートメントは、次のとおりです。
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -110,11 +110,11 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用して、新しいユーザーを `master` の **dbmanager** データベース ロールに追加します。 サンプル ステートメントは、次のとおりです。
+4. [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) プロシージャを使用して、`master` の **dbmanager** データベース ロールに新しいユーザーを追加します (プロビジョニングされた SQL では [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントがサポートされないことに注意してください)。 サンプル ステートメントは、次のとおりです。
 
    ```sql
-   ALTER ROLE dbmanager ADD MEMBER Mary;
-   ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
+   EXEC sp_addrolemember 'dbmanager', 'Mary'; 
+   EXEC sp_addrolemember 'dbmanager', 'mike@contoso.com]'; 
    ```
 
    > [!NOTE]
@@ -151,7 +151,7 @@ GRANT ALTER ANY USER TO Mary;
 
 データベースのフル コントロールを他のユーザーに与えるには、そのユーザーを **db_owner** 固定データベース ロールのメンバーにします。
 
-Azure SQL Database で、`ALTER ROLE` ステートメントを使用します。
+Azure SQL Database または Synapse Serverless で、`ALTER ROLE` ステートメントを使用します。
 
 ```sql
 ALTER ROLE db_owner ADD MEMBER Mary;

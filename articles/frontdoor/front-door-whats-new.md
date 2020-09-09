@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure Front Door の最近の変更点
 description: Azure Front Door は継続的に変更されていますが、この記事ではその最新一覧を提供します。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: d00ed607322205daefd80c111b83483524c4a742
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26e3e242a5085e228e426ad2cba51b1f1982ad74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321522"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521481"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Azure Front Door の新着情報
 

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 05/11/2020
-ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043610"
 ---
 # <a name="known-issues"></a>既知の問題 #
 
@@ -50,7 +50,7 @@ ms.locfileid: "83124637"
 
 - オーディオのみの資産は、AzureHtml5JS テクノロジで再生されません。
   - オーディオのない資産を再生したい場合は、[Azure Media Services Explorer ツール](https://aka.ms/amse)を使用して、空のオーディオを挿入してください。
-  - サイレント オーディオを挿入する手順は、[こちら](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)でご覧いただけます。
+  - サイレント オーディオを挿入する手順は、[こちら](../previous/media-services-advanced-encoding-with-mes.md#silent_audio)でご覧いただけます。
 
 ## <a name="flash"></a>点滅 ##
 
