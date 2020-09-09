@@ -155,7 +155,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     1. **[SAML Request Method]\(SAML 要求メソッド\)** 一覧で、 **[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
 
-    1. **[Issuer]/(発行者/)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
+    1. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
     1. **[SAML 2.0 Endpoint URL]\(SAML 2.0 エンドポイント URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
