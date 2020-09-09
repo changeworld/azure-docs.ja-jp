@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296671"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854944"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -51,7 +51,7 @@ Azure Spatial Anchors はマネージド クラウド サービスの開発者�
 
 **Q:Azure Spatial Anchors ではどのようにデータが格納されますか?**
 
-**A:** すべてのデータは、Microsoft によって管理されるデータ暗号化キーを使用して暗号化され、格納されます。
+**A:** すべてのデータは、Microsoft によって管理されるデータ暗号化キーを使用して暗号化され、格納されます。また、すべてのデータは、リージョンごとにリソース単位で格納されます。
 
 **Q:Azure Spatial Anchors を使用すると、環境に関するどのような情報が送信されて、サービスに格納されますか?環境の画像は送信されて格納されますか?**
 
@@ -88,9 +88,9 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 
 つまり、このサービスを提供するコンピューティングとストレージの両方がこれらのリージョン内にあります。 ただし、クライアントの場所に制限はありません。 
 
-**Q:Azure Spatial Anchors には課金されますか? いつ課金されるようになりますか?**
+**Q:Azure Spatial Anchors には課金されますか?**
 
-**A:** プレビュー期間中の料金について詳しくは、[価格に関するページ](https://azure.microsoft.com/pricing/details/spatial-anchors/)をご覧ください。
+**A:** 価格の詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/spatial-anchors/)をご覧ください。
 
 ## <a name="technical-faqs"></a>技術的な FAQ
 

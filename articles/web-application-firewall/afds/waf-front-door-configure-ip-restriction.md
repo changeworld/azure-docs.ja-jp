@@ -87,7 +87,7 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 IP 制限ポリシーの構成を始める前に、ご自分の CLI 環境をセットアップして、Azure Front Door プロファイルを作成します。
 
 #### <a name="set-up-the-azure-cli-environment"></a>Azure CLI 環境をセットアップする
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールするか、Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 続く CLI コマンドで **[試してみる]** ボタンを選択し、次に、開いた Cloud Shell セッションでご自分の Azure アカウントにサインインします。 セッションが開始されたら、`az extension add --name front-door` を入力して Azure Front Door 拡張機能を追加します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールするか、Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 続く CLI コマンドで **[使ってみる]** ボタンを選択し、次に、開いた Cloud Shell セッションでご自分の Azure アカウントにサインインします。 セッションが開始されたら、`az extension add --name front-door` を入力して Azure Front Door 拡張機能を追加します。
  2. Bash でローカルに CLI を使用している場合は、`az login` を使って Azure にサインインします。
 
 #### <a name="create-an-azure-front-door-profile"></a>Azure Front Door プロファイルを作成する

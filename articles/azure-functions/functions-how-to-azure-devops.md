@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 0e47078e9f7620e72524ccf91e942d4e15a6b5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559116"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210222"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
