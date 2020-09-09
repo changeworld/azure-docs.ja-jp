@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 44d58b4e68e9f846b6bdb87765e96bcab90274a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083601"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923740"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -54,17 +54,15 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 * [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
 * [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell、Azure CLI でのファイル システムのサポート
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>アクセス制御リスト (ACL) を再帰的に設定するためのサポート
 
-- get および set ACL 操作は現在、再帰的ではありません。
+親ディレクトリから子項目に ACL 変更を再帰的に適用する機能は、[パブリック プレビュー](recursive-access-control-lists.md)にあります。 この機能の現在のリリースでは、PowerShell、.NET SDK、および Python SDK を使用して ACL の変更を適用できます。 Java SDK、Azure CLI、Azure portal、または Azure Storage Explorer のサポートはまだ提供されていません。
 
 <a id="known-issues-tools"></a>
 
@@ -74,7 +72,7 @@ AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/s
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 バージョン  `1.6.0` 以降のみを使用します。
 

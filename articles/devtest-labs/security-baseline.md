@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387831"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212309"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -258,6 +258,110 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 **責任:** Customer
 
+## <a name="data-protection"></a>データ保護
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
+
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
+**ガイダンス:** 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
+
+- [タグを作成して使用する方法](../azure-resource-manager/resource-group-using-tags.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
+**ガイダンス:** 開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure DevTest Labs のインスタンスは、仮想ネットワークとサブネットで分離し、適切にタグ付けする必要があります。 
+
+- [追加の Azure サブスクリプションを作成する方法](../billing/billing-create-subscription.md)
+- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [DevTest Labs の仮想ネットワークを構成する方法](devtest-lab-configure-vnet.md)
+- [タグを作成して使用する方法](../azure-resource-manager/resource-group-using-tags.md)
+- [DevTest Labs のタグを作成して使用する方法](devtest-lab-add-tag.md)
+
+**Azure Security Center の監視**: 現在は使用できません
+
+**責任:** Customer
+
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
+**ガイダンス:** まだ使用できません。Azure DevTest Labs では、データの識別、分類、損失防止機能はまだ使用できません。
+
+Microsoft では、Azure DevTest Labs の基盤となるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
+
+- [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center の監視**: 現在は使用できません
+
+**責任:** 共有
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
+**ガイダンス:** Azure DevTest Labs では、TLS で暗号化された通信が既定で必要です。 現在、TLS バージョン 1.2 がサポートされています。 お使いのクライアント ライブラリまたはツールで TLS がサポートされていない場合は、Azure portal または管理 API を使用して、暗号化されていない接続を有効にすることができます。 暗号化された接続ができない場合は、ラボとクライアント アプリケーションを仮想ネットワークに配置することをお勧めします。
+
+[DevTest Labs の転送シナリオでの暗号化を理解する](https://techcommunity.microsoft.com/t5/azure-developer-community-blog/azure-devtest-labs-enforcing-tls-1-2-starting-may-01-2020/ba-p/1236279)
+
+**Azure Security Center の監視**: はい
+
+**責任:** 共有
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
+**ガイダンス:** Azure DevTest Labs では、データの識別、分類、損失防止機能はまだ使用できません。 機密情報が含まれているインスタンスにタグを付け、コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
+
+Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
+
+- [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center の監視**: 現在は使用できません
+
+**責任:** Customer
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
+**ガイダンス:** Azure DevTest Labs 内のラボへのアクセスを制御するには、Azure Active Directory (Azure AD) のロールベース アクセス制御 (RBAC) を使用します。
+
+- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+- [DevTest Labs でのロールについて理解する](devtest-lab-add-devtest-user.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7:ホストベースのデータ損失防止を使用してアクセス制御を実施する
+**ガイダンス:** DevTest Labs の一部として作成されたコンピューティング リソースでの準拠に必要な場合は、ホストベースの自動データ損失防止ソリューションなどのサードパーティ ツールを実装して、データがシステムからコピーされた場合でもデータへのアクセス制御を実施します。
+
+Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
+
+- [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** 適用なし
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
+**ガイダンス:** Azure DevTest Labs では、次の顧客データが格納されます。
+
+- 成果物の適用から生成されたデプロイ ログと拡張ログが含まれる[成果物の結果](add-artifact-vm.md)
+- 数式から仮想マシンを作成するために使用される[数式ドキュメント](devtest-lab-manage-formulas.md)
+- ラボ仮想マシン用の OS ディスクとデータ ディスク 
+
+成果物の結果と数式ドキュメントは、すべてのラボ デプロイの一部として作成される Azure ストレージ アカウントに送信されます。 Azure Storage 内のデータは、利用可能な最強のブロック暗号の 1 つである 256 ビット AES 暗号化を使って透過的に暗号化および暗号化解除され、FIPS 140-2 に準拠しています。 Azure Storage 暗号化を無効にすることはできません。 Microsoft のマネージド キーを利用してストレージ アカウントを暗号化することも、独自のキーで暗号化を管理することもできます。 詳細については、[ラボ ストレージ アカウントに対する暗号化](encrypt-storage.md)に関するページを参照してください。
+
+既定では、ラボのすべての OS ディスクとデータ ディスクは、プラットフォーム マネージド キーで暗号化されます。 すべてのマネージド ディスク、スナップショット、イメージ、および既存のマネージド ディスクに書き込まれるデータは、保存時に、プラットフォーム マネージド キーを使用して自動的に暗号化されます。 ラボの所有者は、カスタマー マネージド キーで暗号化されるようにラボの OS ディスクを構成できます。 ラボのデータ ディスクに対するカスタマー マネージド キーを使用した暗号化は、現在、ラボ自体で構成することはできません。 ただし、現在、サブスクリプション管理者は、サブスクリプション内のラボ ディスクに対してこの設定を構成できます。 詳細については、[カスタマー マネージド キーを使用したラボの DevTest Labs OS ディスクの暗号化](encrypt-disks-customer-managed-keys.md)に関するページを参照してください。
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** 共有
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
+**ガイダンス:** DevTest Labs インスタンスおよび他の重要なリソースまたは関連リソースへの変更が発生したときにアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
+
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [DevTest Labs アクティビティ ログ イベントのアラートを作成する方法](create-alerts.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+
+
 ## <a name="vulnerability-management"></a>脆弱性の管理
 *詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
@@ -275,7 +379,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 **ガイダンス:** DevTest Labs 内でホストされている Windows および Linux VM に最新のセキュリティ更新プログラムが確実にインストールされるようにするには、Azure Update Management を使用します。 Windows VM については、Windows Update が有効になっていて、自動的に更新するよう設定されていることを確認します。 現在、この設定は DevTest Labs を通じて構成することはできませんが、ラボ管理者またはサブスクリプション管理者は、サブスクリプション内の基になるコンピューティング VM でこの設定を構成できます。 
 
-- [Azure で VM に対して Update Management を構成する方法](../automation/automation-update-management.md)
+- [Azure で VM に対して Update Management を構成する方法](../automation/update-management/update-mgmt-overview.md)
 - [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/security-center-policy-definitions.md)
 
 **Azure Security Center の監視**: 適用なし
@@ -289,10 +393,10 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 サブスクリプション管理者は、Azure Update Management ソリューションを使用して、DevTest Labs VM の更新プログラムと修正プログラムを管理することもできます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-- [Azure の Update Management ソリューション](../automation/automation-update-management.md)
-- [Azure VM の更新プログラムとパッチの管理](../automation/automation-tutorial-update-management.md)
+- [Azure の Update Management ソリューション](../automation/update-management/update-mgmt-overview.md)
+- [VM の更新プログラムとパッチを管理する](../automation/update-management/update-mgmt-overview.md)
 
-**Azure Security Center の監視**: 適用なし
+**Azure Security Center の監視:** 適用なし
 
 **責任:** Customer
 
@@ -372,7 +476,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **責任:** Customer
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6:コンピューティング リソース内の承認されていないソフトウェア アプリケーションを監視する
-**ガイダンス:** Azure Automation は、ワークロードとリソースの展開、運用、および使用停止を完全に制御します。 サブスクリプション管理者は、Azure 仮想マシンのインベントリを利用して、サブスクリプション内の DevTest Labs VM 上のすべてのソフトウェアに関する情報の収集を自動化できます。 ソフトウェアの名前、バージョン、発行元、および更新時刻の各プロパティは、Azure portal から入手できます。 インストール日やその他の情報にアクセスするには、お客様はゲストレベルの診断を有効にし、Windows イベント ログを Log Analytics ワークスペースに取り込む必要があります。
+**ガイダンス:** Azure Automation は、ワークロードとリソースの展開、運用、および使用停止を完全に制御します。 サブスクリプション管理者は、Azure 仮想マシンのインベントリを使用して、サブスクリプション内の DevTest Labs VM 上のすべてのソフトウェアに関する情報の収集を自動化できます。 ソフトウェアの名前、バージョン、発行元、および更新時刻の各プロパティは、Azure portal から入手できます。 インストール日やその他の情報にアクセスするには、お客様はゲストレベルの診断を有効にし、Windows イベント ログを Log Analytics ワークスペースに取り込む必要があります。
 
 ソフトウェア アプリケーションの監視のための変更の追跡の使用に加えて、Azure Security Center の適応型アプリケーション制御では、マシン上で実行されているアプリケーションを分析し、このインテリジェンスから許可リストを作成するために機械学習を使用します。 この機能により、アプリケーション許可リスト ポリシーを構成して維持するプロセスが大幅に簡略化されるため、環境で望ましくないソフトウェアが使用されることを回避できます。 監査モードまたは強制モードを構成できます。 監査モードでは、保護された VM に対するアクティビティが監査されるだけです。 強制モードでは規則が強制され、実行が許可されていないアプリケーションが確実にブロックされます。 
 
@@ -421,7 +525,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10:承認されたソフトウェア タイトルのインベントリを管理する
-**ガイダンス:** 適応型アプリケーション制御は、DevTest Labs でホストされている Azure および Azure 以外のマシン (Windows および Linux) 上でどのアプリケーションが実行できるかを制御できる、Azure Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 DevTest Labs でホストされている基になるコンピューティング リソースに対してこの設定を構成できるようにするには、サブスクリプション管理者である必要があることに注意してください。 この設定が組織の要件を満たしていない場合は、サードパーティ製ソリューションを実装します。
+**ガイダンス:** 適応型アプリケーション制御は、DevTest Labs でホストされている Azure および Azure 以外のマシン (Windows および Linux) 上でどのアプリケーションが実行できるかを制御できる、Azure Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 DevTest Labs でホストされている基になるコンピューティング リソースに対してこの設定を構成するには、サブスクリプション管理者である必要があることに注意してください。 この設定が組織の要件を満たしていない場合は、サードパーティ製ソリューションを実装します。
 
 - [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
@@ -461,6 +565,156 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 - [サブスクリプション決定ガイド](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
 **Azure Security Center の監視:** 利用不可
+
+**責任:** Customer
+
+## <a name="secure-configuration"></a>セキュリティで保護された構成
+**詳細については、「セキュリティ コントロール: セキュリティで保護された構成」を参照してください。**
+
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
+**ガイダンス:** DevTest Labs の一部として作成された Azure リソースの構成を監査または適用するには、Azure Policy エイリアスを使用してカスタム ポリシーを作成します。 組み込みの Azure Policy 定義を使用することもできます。
+
+また、Azure Resource Manager には、テンプレートを JavaScript Object Notation (JSON) でエクスポートする機能があり、構成が確実に組織のセキュリティ要件を満たすかそれを超えるように確認する必要があります。
+
+また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
+
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
+- [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
+- [セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2:セキュリティで保護されたオペレーティング システムの構成を確立する
+**ガイダンス:** DevTest Labs の一部として作成されたすべての基になるコンピューティング リソースのセキュリティ構成を維持するには、Azure Security Center の推奨事項を使用します。 さらに、カスタム オペレーティング システム イメージまたは Azure Automation State Configuration または DevTest Labs の成果物を使用して、組織に必要なオペレーティング システムのセキュリティ構成を確立できます。
+
+- [Azure Security Center の推奨事項を監視する方法](../security-center/security-center-recommendations.md)
+- [セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)
+- [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
+- [VHD をアップロードし、それを使用して Azure で新しい Windows VM を作成する](../virtual-machines/windows/upload-generalized-managed.md)
+- [Azure CLI を使用してカスタム ディスクから Linux VM を作成する](../virtual-machines/linux/upload-vhd.md)
+- [カスタム イメージを作成して複数の DevTest Labs に配布する](image-factory-save-distribute-custom-images.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** 適用なし
+
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
+**ガイダンス:** DevTest Labs の一部として作成された Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の **deny** と **deploy if not exist** を使用します。 また、Azure Resource Manager テンプレートを使用して、組織に必要な Azure リソースのセキュリティ構成を維持できます。
+
+- [Azure Policy の効果について](../governance/policy/concepts/effects.md)
+- [コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
+- [Azure Resource Manager テンプレートの概要](../azure-resource-manager/templates/overview.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4:セキュリティで保護されたオペレーティング システムの構成を維持する
+**ガイダンス:** ラボの一部として作成された基になる Azure コンピューティング リソースに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。 また、Azure Resource Manager テンプレート、カスタム オペレーティング システム イメージ、または Azure Automation State Configuration を使用して、組織に必要なオペレーティング システムのセキュリティ構成を維持できます。 イメージ ファクトリ ソリューションを使用することもできます。これは、必要なすべての構成で定期的にイメージをビルドして配布する、コードとしての構成ソリューションです。
+
+また、Microsoft によって公開された Azure Marketplace の仮想マシン イメージは、Microsoft によって管理および維持されます。
+
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
+- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [DevTest Labs でイメージ ファクトリを作成する方法](image-factory-create.md)
+
+**Azure Security Center の監視**: はい
+
+**責任:** 共有
+
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
+**ガイダンス:** カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) (Azure DevOps に統合されている場合) で定義された特定のユーザー、組み込みセキュリティ グループ、またはグループに対するアクセス許可を付与または拒否できます。
+
+- [Azure Repos Git チュートリアル](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [アクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure DevTest Labs と Azure DevOps ワークフローの統合](devtest-lab-dev-ops.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
+**ガイダンス:** カスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 Shared Image Gallery を使用すると、それを必要とする特定のラボとイメージを共有できます。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を使用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+
+- [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Azure DevTest Labs 用の Shared Image Gallery を構成する](configure-shared-image-gallery.md)
+- [コンテナー レジストリの RBAC を理解する](../container-registry/container-registry-roles.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7:システム構成管理ツールをデプロイする
+**ガイダンス:** Azure Policy を使用して、Azure リソースの標準的なセキュリティ構成を定義して実装します。 DevTest Labs で作成された Azure リソースのネットワーク構成を監査または適用するには、Azure Policy エイリアスを使用してカスタム ポリシーを作成します。 また、特定のリソースに関連する組み込みのポリシー定義を使用することもできます。 さらに、Azure Automation を使用して、構成の変更をデプロイすることもできます。
+
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
+- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
+**ガイダンス:** Azure Automation State Configuration は、あらゆるクラウドまたはオンプレミスのデータセンターにある Desired State Configuration (DSC) ノードの管理構成サービスです。 マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。 また、組織のポリシーに確実に従うようにすべてのラボ コンピューターにインストールできるカスタム成果物を作成することもできます。 
+
+- [Azure Automation State Configuration による管理のためのマシンのオンボード](../automation/automation-dsc-onboarding.md)
+- [DevTest Labs 仮想マシン用のカスタム成果物の作成](devtest-lab-artifact-author.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:Azure サービスの自動構成監視を実装する
+**ガイダンス:** Azure Security Center を使用して、DevTest Labs で作成された Azure リソースのベースライン スキャンを実行します。 さらに、Azure Policy を使用して Azure リソース構成をアラート送信および監査します。
+
+- [Azure Security Center の推奨事項を修復する方法](../security-center/security-center-remediate-recommendations.md)
+ 
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
+**ガイダンス:** Azure Security Center を使用して、コンテナーの OS と Docker の設定のベースライン スキャンを実行します。
+
+- [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/security-center-container-recommendations.md)
+
+**Azure Security Center の監視:** 適用なし
+
+**責任:** Customer
+
+### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
+**ガイダンス:** マネージド サービス ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。
+
+- [マネージド ID を構成して DevTest Labs に Azure Resource Manager 環境をデプロイする](use-managed-identities-environments.md)
+- [マネージド ID を構成して DevTest Labs に仮想マシンをデプロイする](enable-managed-identities-lab-vms.md)
+- [キー コンテナーを作成する方法](../key-vault/quick-create-portal.md)
+- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/managed-identity.md)
+
+**Azure Security Center の監視:** はい
+
+**責任:** Customer
+
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
+**ガイダンス:** マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
+
+- [マネージド ID を構成して DevTest Labs に Azure Resource Manager 環境をデプロイする](use-managed-identities-environments.md)
+- [マネージド ID を構成して DevTest Labs に仮想マシンをデプロイする](enable-managed-identities-lab-vms.md)
+ 
+**Azure Security Center の監視:** はい
+
+**責任:** Customer
+
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13:意図しない資格情報の公開を排除する
+**ガイダンス:** コード内で資格情報を特定する資格情報スキャナーを実装します。 また、資格情報スキャナーを使うと、検出された資格情報を、Azure Key Vault などのより安全な場所に移動しやすくなります。
+
+- 資格情報スキャナーを設定する方法
+
+**Azure Security Center の監視:** 適用なし
 
 **責任:** Customer
 
@@ -561,7 +815,7 @@ Azure Disk Encryption を使用している場合は、ディスク暗号化キ�
 
 - [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 - [Microsoft Security Response Center のインシデントの構造](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
-- [独自のインシデント対応計画を作成するために NIST のコンピューター セキュリティ インシデント対応ガイドを利用する](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [独自のインシデント対応計画を作成するために NIST のコンピューター セキュリティ インシデント対応ガイドを使用する](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure Security Center の監視:** 適用なし
 

@@ -3,25 +3,21 @@ title: チュートリアル:Azure Active Directory で SAP SuccessFactors の�
 description: Azure AD から SAP SuccessFactors への属性の書き戻しを構成する方法について説明します
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215868b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 5181cc0f6457c5eb98cca828ecb91c52f47f3fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273542"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533998"
 ---
-# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors-preview"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する (プレビュー)
+# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
 
 ## <a name="overview"></a>概要

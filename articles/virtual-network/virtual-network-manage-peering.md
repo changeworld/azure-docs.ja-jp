@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291876"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416504"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -118,7 +118,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 - グローバル ピアリングの作成では、ピアリングされた仮想ネットワークは Azure パブリック クラウドの任意のリージョン、または China クラウド リージョン、あるいは Government クラウド リージョンに存在できます。 クラウド間ではピアリングできません。 たとえば、Azure パブリック クラウドの VNet は Azure 中国クラウドの VNet にピアリングすることはできません。
 - 仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Basic 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 Basic Load Balancer のサポートは、同じリージョン内でのみ存在します。 Standard Load Balancer のサポートは VNet Peering と Global VNet Peering の両方に存在します。 Global VNet Peering 経由では機能しない Basic Load Balancer を使用するサービスについては、[こちら](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)を参照してください。
 - グローバルにピアリングされた仮想ネットワークおよびローカルにピアリングされた仮想ネットワークでは、リモート ゲートウェイを使用でき、ゲートウェイ転送を許可できます。
-- 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 AD テナントをまだ持っていない場合は、[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant)できます。 ポータルでは、異なる Azure Active Directory テナントに関連付けられているサブスクリプションからの仮想ネットワーク間のピアリングはサポートされていません。 CLI、PowerShell、またはテンプレートを使用できます。
+- 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 AD テナントをまだ持っていない場合は、[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant)できます。
 - ピアリングする仮想ネットワークの IP アドレス空間が重複していてはいけません。
 - 仮想ネットワークを別の仮想ネットワークとピアリングした後に、仮想ネットワークのアドレス空間に対してアドレス範囲の追加または削除を実行することはできません。 アドレス範囲を追加または削除するには、ピアリングを削除し、アドレス範囲を追加または削除してからピアリングを再作成します。 仮想ネットワークに対してアドレス範囲を追加または削除するには、[仮想ネットワークの管理](manage-virtual-network.md)に関するページを参照してください。
 - Resource Manager を使用してデプロイされた 2 つの仮想ネットワーク、または Resource Manager を使用してデプロイされた仮想ネットワークとクラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをピアリングできます。 クラシック デプロイ モデルを使用して作成された 2 つの仮想ネットワークをピアリングすることはできません。 Azure デプロイ モデルの知識がない場合は、[Azure デプロイ モデルの概要](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 クラシック デプロイ モデルを使って作成された 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使用して接続できます。

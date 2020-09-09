@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d9d06433e2b915b8a96375bb39157adbce6ef2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027663"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716318"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -139,7 +139,7 @@ SSPR で使用できる認証方法は次のとおりです。
 >
 > 認証アプリを方法として含む SSPR ポリシーを構成する場合、1 つの方法を必須にするときは追加の方法を少なくとも 1 つ選択する必要があります。2 つの方法を必須として構成するときは、追加の方法を少なくとも 2 つ選択する必要があります。
 >
-> この要件の理由は、現在の SSPR 登録エクスペリエンスに認証アプリを登録するオプションが含まれていないためです。 認証アプリを登録するオプションは、新しい[統合された登録エクスペリエンス](concept-registration-mfa-sspr-converged.md)に含まれています。
+> この要件の理由は、現在の SSPR 登録エクスペリエンスに認証アプリを登録するオプションが含まれていないためです。 認証アプリを登録するオプションは、新しい[統合された登録エクスペリエンス](./concept-registration-mfa-sspr-combined.md)に含まれています。
 >
 > 認証アプリだけ (1 つの方法が必須の場合)、または認証アプリと追加の方法を 1 つだけ (2 つの方法が必須の場合) を使用するポリシーを許可すると、ユーザーは新しい統合された登録エクスペリエンスを使用するように構成されるまで、SSPR の登録をブロックされる可能性があります。
 
@@ -191,13 +191,13 @@ Azure AD によって現在のハイブリッド接続が確認され、Azure po
 * Azure AD Connect はオンラインであり、オンプレミスのライトバック クライアントに接続されていますが、 インストールされている Azure AD Connect のバージョンが古いようです。 最新の接続機能と重要なバグ フィックスを確実に入手するため、[Azure AD Connect のアップグレード](../hybrid/how-to-upgrade-previous-version.md)をご検討ください。
 * インストールされている Azure AD Connect のバージョンが古いため、残念ながらオンプレミスのライトバック クライアントの状態を確認できません。 [Azure AD Connect をアップグレードし](../hybrid/how-to-upgrade-previous-version.md)、接続の状態を確認できるようにしてください。
 * 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 [Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
-* パスワード ライトバックが正しく構成されていないため、残念ながらオンプレミスのライトバック クライアントに接続できません。 [パスワード ライトバックを構成し](howto-sspr-writeback.md)、接続を復元してください。
+* パスワード ライトバックが正しく構成されていないため、残念ながらオンプレミスのライトバック クライアントに接続できません。 [パスワード ライトバックを構成し](./tutorial-enable-sspr-writeback.md)、接続を復元してください。
 * 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 これはマイクロソフト側の一時的な問題が原因の可能性があります。 問題が解決しない場合は、[Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
 
 SSPR 書き戻しの使用を開始するには、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](tutorial-enable-writeback.md)
+> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>オンプレミス ディレクトリへのパスワード ライトバック
 
@@ -223,7 +223,7 @@ SSPR を使用すると、管理者によって開始されたパスワードの
 
 * **既存の Azure AD テナントがあるパートナー組織のユーザー**:パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Office 365 のお客様に追加料金は発生しません。
 * **セルフ サービス サインアップを使ってサインアップしたユーザー**:パートナーを組んでいる組織が[セルフ サービス サインアップ](../users-groups-roles/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録したメールを使ってパスワードをリセットできます。
-* **B2B ユーザー**:新しい [Azure AD B2B 機能](../b2b/what-is-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
+* **B2B ユーザー**:新しい [Azure AD B2B 機能](../external-identities/what-is-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
 
 このシナリオをテストするには、これらのパートナー ユーザーのいずれかで https://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている場合、パスワードのリセットは予想どおりに機能します。
 

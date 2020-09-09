@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 06/25/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319696"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167642"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -141,6 +141,47 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
   "workspaceid": "<GUID>"
 }
 ```
+
+### <a name="virtual-network-and-private-endpoint"></a>仮想ネットワークとプライベート エンドポイント
+
+> [!IMPORTANT]
+> Azure Machine Learning ワークスペースでの Azure Private Link の使用は、現在パブリック プレビュー段階です。 この機能は**米国東部**と**米国西部 2** リージョン でのみ利用できます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+ワークスペースへのアクセスを仮想ネットワークに制限する場合、次のパラメーターを使用できます。
+
+* `--pe-name`:作成するプライベート エンドポイントの名前。
+* `--pe-auto-approval`:ワークスペースへのプライベート エンドポイント接続を自動的に承認するかどうか。
+* `--pe-resource-group`:プライベート エンドポイントを作成するリソース グループ。 仮想ネットワークが含まれているグループと同じグループでなければなりません。
+* `--pe-vnet-name`:プライベート エンドポイントを作成する既存の仮想ネットワーク。
+* `--pe-subnet-name`:プライベート エンドポイントを作成するサブネットの名前。 既定値は `default` です。
+
+お使いのワークスペースでのプライベート エンドポイントと仮想ネットワークの使用の詳細については、[ネットワークの分離とプライバシー](how-to-enable-virtual-network.md)に関する記事を参照してください。
+
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>カスタマー マネージド キーと High Business Impact ワークスペース
+
+既定では、ワークスペースのメトリックとメタデータは、Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。 
+
+__Enterprise__ バージョンの Azure Machine Learning を作成する場合は、独自のキーを使用できます。 これを行うと、Azure サブスクリプションにメトリックとメタデータを格納する Azure Cosmos DB インスタンスが作成されます。 `--cmk-keyvault` パラメーターを使用して、キーを格納する Azure Key Vault を指定し、`--resource-cmk-uri` を使用してコンテナー内のキーの URL を指定します。
+
+> [!IMPORTANT]
+> `--cmk-keyvault` と `--resource-cmk-uri` パラメーターを使用する前に、まず次のアクションを実行する必要があります。
+>
+> 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、__Machine Learning アプリ__ (ID とアクセスの管理) を承認します。
+> 1. [カスタマー マネージド キーの構成](/azure/cosmos-db/how-to-setup-cmk)に関する記事の手順に従って以下を行います。
+>     * Azure Cosmos DB プロバイダーを登録する
+>     * Azure Key Vault を作成して構成する
+>     * キーを生成する
+>
+>     Azure Cosmos DB インスタンスを手動で作成する必要はありません。ワークスペースの作成時に作成されます。 この Azure Cosmos DB インスタンスは、`<your-resource-group-name>_<GUID>` というパターンに基づく名前を使用して、別のリソース グループ内に作成されます。
+>
+> ワークスペースの作成後にこの設定を変更することはできません。 ワークスペースによって使用されている Azure Cosmos DB を削除する場合は、それを使用しているワークスペースも削除する必要があります。
+
+お客様のワークスペースで Microsoft が収集するデータを制限するには、`--hbi-workspace` パラメーターを使用します。 
+
+> [!IMPORTANT]
+> High Business Impact の選択は、ワークスペースの作成時にのみ実行できます。 ワークスペースの作成後にこの設定を変更することはできません。
+
+カスタマー マネージド キーと High Business Impact ワークスペースの詳細については、「[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
 
 ### <a name="use-existing-resources"></a>既存のリソースの使用
 

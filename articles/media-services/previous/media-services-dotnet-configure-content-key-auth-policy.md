@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e05c7a8388b662731c04ac4098d6eecb1d89fe4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bdaa823a14d99a16aa0f2e71483086d883b0515f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060155"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263775"
 ---
 # <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 

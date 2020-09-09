@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024828"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448087"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hybrid Runbook Worker の概要
 
@@ -90,13 +90,13 @@ Azure Government で Azure Automation Hybrid Runbook Worker を使用すると�
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Hybrid Runbook Worker の Update Management
 
-Azure Automation [Update Management](automation-update-management.md) を有効にすると、Log Analytics ワークスペースに接続されたマシンはすべて Hybrid Runbook Worker として自動的に構成されます。 各 worker は、対象の Runbook を更新の管理でサポートできます。
+Azure Automation [Update Management](update-management/update-mgmt-overview.md) を有効にすると、Log Analytics ワークスペースに接続されたマシンはすべて Hybrid Runbook Worker として自動的に構成されます。 各 worker は、対象の Runbook を更新の管理でサポートできます。
 
 このように構成されたマシンは、Automation アカウントで既に定義された Hybrid Runbook Worker グループには登録されません。 このマシンを Hybrid Runbook Worker グループに追加できますが、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用する必要があります。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Hybrid Runbook Worker の Update Management アドレス
 
-Hybrid Runbook Worker に必要な標準のアドレスとポートに加えて、Update Management には、「[ネットワークの計画](automation-update-management.md#ports)」セクションで説明されている追加のネットワーク構成要件があります。
+Hybrid Runbook Worker に必要な標準のアドレスとポートに加えて、Update Management には、「[ネットワークの計画](update-management/update-mgmt-overview.md#ports)」セクションで説明されている追加のネットワーク構成要件があります。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Azure Automation State Configuration
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387780"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642386"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -285,7 +285,7 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 
 - [カスタム ポータルからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [アクセス パネルからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [マイ アプリからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [アプリケーションのサインイン ページでのエラー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 
@@ -324,3 +324,5 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 [SSO アクセス](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 [アプリケーション SSO チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+[ホワイトペーパーのダウンロード - シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)

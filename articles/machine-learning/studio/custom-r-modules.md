@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 4b4251a426d33c0a3b8cc7584d2bf6375dcd0f79
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2b050e8c70de4edc39c8ddad71d2169d5308607b
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287236"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429383"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio (classic) 用のカスタム R モジュールを定義する
 
-**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 このトピックでは、カスタム R Studio (クラシック) を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084052"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533905"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 
@@ -76,9 +76,9 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 - **閲覧者** は、既存の Azure リソースを表示できます。
 
-![Azure ロールベースのアクセス制御](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure ロールベースのアクセス制御 (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
-残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
+Azure の残りの Azure ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
 
 「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
 

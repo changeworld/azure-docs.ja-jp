@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop (クラシック) の診断ログ分析 - Azure
 description: Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する方法について説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285069"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997678"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する
 
@@ -36,7 +34,7 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 
 診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)必要があります。
 
-ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)」の指示に従って、次の情報を取得します。
+ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 
 - ワークスペース ID
 - ワークスペースの主キー

@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374169"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078250"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Monitor のメトリックに移行する
 
-Azure Storage では、メトリックが Azure Monitor プラットフォームに統合されるようになりました。 **2023 年 8 月 31 日**をもって、Storage Analytics メトリック ("*クラシック メトリック*" とも呼ばれます) は廃止されます。 クラシック メトリックを使用している場合は、その日より前に Azure Monitor のメトリックに移行するようにしてください。 この記事は、移行を行う際に役立ちます。
+**2023 年 8 月 31 日**をもって、Storage Analytics メトリック ("*クラシック メトリック*" とも呼ばれます) は廃止されます。 クラシック メトリックを使用している場合は、その日より前に Azure Monitor のメトリックに移行するようにしてください。 この記事は、移行を行う際に役立ちます。
 
 ## <a name="steps-to-complete-the-transition"></a>移行を行うための手順
 

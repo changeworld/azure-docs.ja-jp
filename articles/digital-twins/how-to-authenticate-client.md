@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4d235280ae4a600994eb93ec08c7a13630f9682f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131584"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930045"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -38,18 +39,19 @@ Azure Digital Twins 用の API と SDK の詳細については、"[*Azure Digit
 
 選択するツールによっては、Visual Studio パッケージ マネージャーまたは `dotnet` コマンド ライン ツールを使用して、パッケージを含めることができます。 
 
-.NET SDK を使用して認証するには、[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) ライブラリに定義されている資格情報の取得方法のいずれかを使用します。
-
-一般的に使用される 2 つを以下に示します。 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet). この方法は、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet). この方法は、Azure Functions を使用する場合など、[マネージド ID (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) が必要な場合に適しています。 
-
 次の using ステートメントも必要です。
 
 ```csharp
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
+.NET SDK を使用して認証するには、[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) ライブラリに定義されている資格情報の取得方法のいずれかを使用します。 次に、一般的に使用される 2 つの方法を示します (同じアプリケーションで一緒に使用される場合もあります)。
+
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) は、対話型アプリケーションを対象とし、認証された SDK クライアントを作成するために使用できます
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) は、マネージド ID (MSI) を必要とする場合に適しており、Azure Functions を操作する場合に適しています
+
+### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential メソッド
+[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。
 
 対話型ブラウザーの資格情報を使用して、認証された SDK クライアントを作成するには、このコードを追加します。
 
@@ -78,7 +80,9 @@ try
 >[!NOTE]
 > 前述のように、クライアント ID、テナント ID およびインスタンス URL をコードに直接配置することはできますが、代わりに、コードでこれらの値を構成ファイルまたは環境変数から取得することをお勧めします。
 
-その後、Azure 関数で、このようにマネージド ID の資格情報を使用できます。
+### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential メソッド
+ [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) メソッドは、Azure Functions を使用する場合など、[マネージド ID (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) が必要な場合に適しています。
+Azure 関数で、次のようにマネージド ID の資格情報を使用できます。
 
 ```csharp
 ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f2d9407d9c7172839027e2650486695244f67889
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352016"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475687"
 ---
 # <a name="iot-plug-and-play-preview-architecture"></a>IoT プラグ アンド プレイ プレビューのアーキテクチャ
 
@@ -79,5 +79,5 @@ IoT ハブは以下を実現します。
 ここでは IoT プラグ アンド プレイ ソリューションのアーキテクチャの概要を説明しました。次の手順では以下の詳細を確認してください。
 
 - [モデル リポジトリ](./concepts-model-repository.md)
-- [モデル検出プロセス](./concepts-model-discovery.md)
+- [デジタル ツイン モデルの統合](./concepts-model-discovery.md)
 - [IoT プラグ アンド プレイ向けの開発](./concepts-developer-guide.md)

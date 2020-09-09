@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: bc0e003e7c767fb3441e26787f5687473ac51f44
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5daa15dd01be3726ea1ff8e093d1fe94d1755122
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292973"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432929"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio (classic) でアルゴリズムを最適化するためにパラメーターを選択する
 
-**適用対象:** ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic) 
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 このトピックでは、Azure Machine Learning Studio (クラシック) でアルゴリズムに適したハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
 
