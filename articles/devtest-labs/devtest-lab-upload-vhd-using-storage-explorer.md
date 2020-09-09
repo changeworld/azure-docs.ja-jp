@@ -3,18 +3,18 @@ title: Storage Explorer を使用して Azure DevTest Labs に VHD ファイル�
 description: Microsoft Azure Storage Explorer を使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ccdf27488147bc4840d1e505ba2761bf328d6a32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480764"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654516"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer を使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 この記事では、[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示します。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure のディスクと VHD の詳細については、「[マネージド ディスクの概要](../virtual-machines/linux/managed-disks-overview.md)」を参照してください。
+Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 この記事では、[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示します。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure のディスクと VHD の詳細については、「[マネージド ディスクの概要](../virtual-machines/managed-disks-overview.md)」を参照してください。
 
 ## <a name="step-by-step-instructions"></a>詳細な手順
 

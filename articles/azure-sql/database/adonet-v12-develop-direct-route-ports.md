@@ -4,19 +4,19 @@ description: ADO.NET から Azure SQL Database へのクライアント接続で
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-dotnet
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
-ms.openlocfilehash: 85d8d288a8b2d0f256294b0c8975afc367e6e381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73bd3a86d34f36c3737db62e531dc2f79c0db8b5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736052"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928328"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Azure クラウド境界内でクライアントを実行している場合、�
 * ADO.NET 4.5 は、2012 年 8 月 15 日にリリースされました。 .NET チームのブログのお知らせは [こちら](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)からご利用になれます。
   * ADO.NET 4.5.1 についてのブログの投稿は、 [こちら](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)からご利用になれます。
 
-* Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux、macOS https://www.microsoft.com/download/details.aspx?id=56567
+* Microsoft ODBC Driver 17 for SQL Server https://aka.ms/downloadmsodbcsql
 
 * リダイレクト https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362 を介して Azure SQL Database V12 に接続する
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077551"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 
@@ -44,8 +44,9 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信�
     | Type          | **[パブリック]** を選択します。       |
     | SKU           | **[Standard]** を選択します。       |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
-    | パブリック IP アドレス名  | *MyPip*   |
+    | パブリック IP アドレス名  | *myPip*   |
     | 割り当て| 静的 |
+    | 可用性ゾーン | **[ゾーン冗長]** を選択します。 |
 
 1. 完了したら、 **[確認および作成]** を選択します。 
 1. 検証に合格したら、 **[作成]** を選択します。 
@@ -55,11 +56,11 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信�
 ## <a name="create-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 Windows Server イメージまたは Linux イメージ (RHEL、CentOS、Ubuntu、SLES など) を含むスケール セットをデプロイできます。
 
-1. 検索ボックスに「**スケール セット**」と入力します。 結果の **[マーケットプレース]** で、 **[仮想マシン スケール セット]** を選択します。 **[仮想マシン スケール セットを作成する]** ページが開きます。 
+1. 検索ボックスに「**スケール セット**」と入力します。 結果の **[マーケットプレース]** で、 **[仮想マシン スケール セット]** を選択します。 **[仮想マシン スケール セット]** ページで **[作成]** を選択すると、 **[仮想マシン スケール セットの作成]** ページが開きます。 
 1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myVMSSResourceGroup*」と入力し、 **[OK]** を選択します。 
 1. スケール セットの名前として「*myScaleSet*」と入力します。
 1. **[リージョン]** で、自分の地域に近いリージョンを選択します。
-1. **[オーケストレーター]** の **[ScaleSet VMs] (スケールセット VM)** の既定値はそのままにします。
+1. **オーケストレーション モード**には、既定値の **[ScaleSet VM]** をそのまま使用します。
 1. **[イメージ]** のマーケットプレース イメージを選択します。 この例では、 *[Ubuntu Server 18.04 LTS]* を選択しました。
 1. 目的のユーザー名を入力して、任意の認証の種類を選択します。
    - **パスワード**は、12 文字以上で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 つの要件のうち、3 つを満たしている必要があります。 詳細については、[ユーザー名とパスワードの要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)を参照してください。

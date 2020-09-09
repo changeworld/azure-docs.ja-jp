@@ -9,12 +9,12 @@ ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309936"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723726"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -24,9 +24,20 @@ Kubernetes クラスターを Azure に接続するには、クラスター管�
 
 Azure Arc 対応 Kubernetes では、転送中のデータをセキュリティで保護する業界標準の SSL がサポートされます。 また、保存中は Azure Cosmos DB データベースに暗号化された状態で格納されるので、データの機密性が確保されます。
  
- > [!NOTE]
-> Azure Arc 対応 Kubernetes はプレビュー段階にあります。 運用環境のワークロード用にはお勧めしません。 
+> [!NOTE]
+> Azure Arc 対応 Kubernetes はプレビュー段階です。 運用環境のワークロード用にはお勧めしません。
 
+## <a name="supported-kubernetes-distributions"></a>サポートされている Kubernetes ディストリビューション
+
+Azure Arc 対応 Kubernetes は、Cloud Native Computing Foundation (CNCF) で認定されたすべての Kubernetes クラスター (Azure 上の AKS エンジン、Azure Stack Hub 上の AKS エンジン、GKE、EKS、VMware vSphere クラスターなど) で動作します。
+
+次のディストリビューションについて、Azure Arc 対応 Kubernetes の機能が Arc チームによってテストされています。
+* Red Hat OpenShift 4.3
+* Rancher RKE 1.0.8
+* Canonical Charmed Kubernetes 1.18
+* AKS Engine
+* Azure Stack Hub 上の AKS エンジン
+* クラスター API プロバイダー Azure
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ 
 
@@ -40,13 +51,12 @@ Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされ�
 
 * Kubernetes 用の Azure Policy を使用してポリシーを適用する。 
 
- 
 ## <a name="supported-regions"></a>サポートされているリージョン 
 
 Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポートされています。 
 
 * 米国東部 
-* 西ヨーロッパ 
+* 西ヨーロッパ
 
 ## <a name="next-steps"></a>次のステップ
 

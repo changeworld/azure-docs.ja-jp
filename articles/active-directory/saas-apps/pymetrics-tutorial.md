@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と pymetrics の統合 | Microsoft Docs
 description: Azure Active Directory と pymetrics の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 24ce810a-a50f-4e62-a7be-8144977b366e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea300148f421577e6f3ace961d06127fc9f2b536
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: fda55400b2b0c8b6f00cb08f2a5e8de9b9b4e866
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801174"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553259"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と pymetrics の統合
 
@@ -96,11 +92,7 @@ pymetrics に対する Azure AD SSO を構成してテストするには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[pymetrics クライアント サポート チーム](mailto:solutions-engineering@pymetrics.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. pymetrics アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
-
-    ![image](common/default-attributes.png)
-
-1. その他に、pymetrics アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. pymetrics アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次の表に、既定の属性の一覧を示します。 これらの属性は値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
     | 名前 | ソース属性|
     | --------------- | --------- |

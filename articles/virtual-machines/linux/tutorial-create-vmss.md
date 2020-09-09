@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: linux
 ms.date: 06/01/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: d005cf64089abee07c44f584366fee9cd26c2c0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: dad876868e632f5a9ca0f6ca484714868e452279
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085420"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498159"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを作成して Linux 上に高可用性アプリをデプロイする
 

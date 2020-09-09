@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kisi Physical Security の統合 | Microsoft Docs
 description: Azure Active Directory と Kisi Physical Security の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ee67ca73-2f8e-40b7-a4f3-69fecd2f3308
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556fd1f9fe4ba5753d882fa81c6d5a89051bcd91
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 8543eb83e9a642f377d5d3abd261a545cefc7e5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605034"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534957"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>チュートリアル:Azure Active Directory のシングル サインオン (SSO) と Kisi Physical Security の統合
 
@@ -85,9 +81,12 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://identity.kms.kisi.io/saml/<DOMAIN>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://api.kisi.io/saml/metadata` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://identity.kms.kisi.io/saml/<DOMAIN>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://api.kisi.io/saml/consume/<DOMAIN>` のパターンを使用して URL を入力します
+
+    > [!NOTE] 
+    > `DOMAIN` は、Kisi によって組織に割り当てられる小文字の英数字識別子であり、組織の DNS ドメイン名と同じものでは**ありません**。*
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -101,7 +100,7 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
     ![image](common/default-attributes.png)
 
 1. その他に、Kisi Physical Security アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
-    
+
     | 名前 | ソース属性|
     | ---------------| --------- |
     | FirstName | User.givenname |
@@ -119,7 +118,7 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。
    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
@@ -150,7 +149,7 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
 
 このセクションでは、Britta Simon というユーザーを Kisi Physical Security 内に作成します。 Kisi Physical Security では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Kisi Physical Security にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 

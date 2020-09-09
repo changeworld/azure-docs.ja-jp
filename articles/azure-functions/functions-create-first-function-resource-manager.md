@@ -1,24 +1,28 @@
 ---
 title: Azure Resource Manager テンプレートを使用して初めての関数を作成する
-description: Azure Resource Manager テンプレートを使用して、HTTP によってトリガーされる単純なサーバーレス関数を作成し、Azure にデプロイします。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、HTTP によってトリガーされる単純なサーバーレス関数を作成し、Azure にデプロイします。
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740200"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642267"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートから Azure Functions リソースを作成してデプロイする
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>クイック スタート:ARM テンプレートから Azure Functions リソースを作成してデプロイする
 
-この記事では、Azure Resource Manager テンプレートを使用して、HTTP 要求に応答する関数を作成します。 
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、HTTP 要求に応答する関数を作成します。 
 
 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,13 +52,11 @@ ms.locfileid: "84740200"
 
 プロジェクトをローカルで作成したら、Azure で新しい関数を実行するために必要なリソースを作成します。 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>Azure にサーバーレス関数アプリを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic)からのものです。
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json":::
 
 このテンプレートでは、次の 4 つの Azure リソースが作成されます。
 
@@ -63,7 +65,7 @@ ms.locfileid: "84740200"
 + [**Microsoft.Web/sites**](/azure/templates/microsoft.web/sites): 関数アプリを作成します。
 + [**microsoft.insights/components**](/azure/templates/microsoft.insights/components): 監視用の Application Insights インスタンスを作成します。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive
