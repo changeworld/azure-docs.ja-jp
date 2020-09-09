@@ -4,21 +4,26 @@ description: Azure Portal を使用して、サーバーレス実行のための
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
+ms.openlocfilehash: 770b1076f1a711cd863c5d3d468a3ec87ea54e7b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123620"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212730"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
 Azure Functions を使用すると、最初に仮想マシン (VM) を作成したり、Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。 この記事では、Azure Functions を使用して Azure portal で "hello world" の HTTP トリガー関数を作成する方法について説明します。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[関数をローカルで開発](functions-develop-local.md)し、Azure の関数アプリに公開することをお勧めします。  
+次のいずれかのリンクを使用して、選択したローカル開発環境と言語で作業を開始します。
 
-C# の開発者は、ポータルではなく、[Visual Studio 2019 で最初の関数を作成する](functions-create-your-first-function-visual-studio.md)ことを検討してください。 
+| Visual Studio Code | ターミナル/コマンド プロンプト | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[C# で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Java で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-java)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Python で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-python) |&bull;&nbsp;[C# で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Java で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Python で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) | [C# で作業を開始する](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

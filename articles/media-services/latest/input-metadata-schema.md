@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services v3 入力メタデータのスキーマ
 description: この記事では、Azure Media Services v3 入力メタデータのスキーマの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095561"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295563"
 ---
-# <a name="input-metadata"></a>入力メタデータ 
+# <a name="input-metadata"></a>入力メタデータ
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。  タスクが完了すると、出力資産が生成されます。 出力資産には、ビデオ、オーディオ、サムネイル、マニフェスト、およびその他のファイルが含まれます。 
 

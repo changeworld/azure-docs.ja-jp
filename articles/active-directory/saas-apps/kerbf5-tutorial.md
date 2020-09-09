@@ -1,27 +1,22 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合 | Microsoft Docs
+title: チュートリアル:Azure AD シングル サインオンと F5 の統合 | Microsoft Docs
 description: Azure Active Directory と F5 の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 39382eab-05fe-4dc2-8792-62d742dfb4e1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b48b8c1282f90788846b9dc3b64a5ea1ee018a3c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232187"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535987"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -282,45 +277,45 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 Access Policy Manager (APM) がユーザーの認証に使用するドメイン コントローラーと資格情報を指定するには、APM で Active Directory AAA サーバーを構成します。
 
-1.    [Main]\(メイン\) タブで、 **[Access Policy]\(アクセス ポリシー\) > [AAA Servers]\(AAA サーバー\) > [Active Directory]** の順にクリックします。 Active Directory サーバーのリスト画面が表示されます。
+1. [Main]\(メイン\) タブで、 **[Access Policy]\(アクセス ポリシー\) > [AAA Servers]\(AAA サーバー\) > [Active Directory]** の順にクリックします。 Active Directory サーバーのリスト画面が表示されます。
 
-2.    **Create** をクリックしてください。 新しいサーバーのプロパティ画面が表示されます。
+2. **Create** をクリックしてください。 新しいサーバーのプロパティ画面が表示されます。
 
-3.    **[Name]\(名前\)** フィールドに、認証サーバーの一意の名前を入力します。
+3. **[Name]\(名前\)** フィールドに、認証サーバーの一意の名前を入力します。
 
-4.    **[Domain Name]\(ドメイン名\)** フィールドに、Windows ドメインの名前を入力します。
+4. **[Domain Name]\(ドメイン名\)** フィールドに、Windows ドメインの名前を入力します。
 
-5.    **[Server Connection]\(サーバー接続\)** 設定で、次のいずれかのオプションを選択します。
+5. **[Server Connection]\(サーバー接続\)** 設定で、次のいずれかのオプションを選択します。
 
-    * AAA サーバーの高可用性を設定するには、 **[Use Pool]\(プールを使用する\)** を選択します。
+   * AAA サーバーの高可用性を設定するには、 **[Use Pool]\(プールを使用する\)** を選択します。
 
-    * スタンドアロンの機能用に AAA サーバーを設定するには、 **[Direct]\(直接\)** を選択します。
+   * スタンドアロンの機能用に AAA サーバーを設定するには、 **[Direct]\(直接\)** を選択します。
 
-6.    **[Direct]\(直接\)** を選択した場合は、 **[Domain Controller]\(ドメイン コントローラー\)** フィールドに名前を入力します。
+6. **[Direct]\(直接\)** を選択した場合は、 **[Domain Controller]\(ドメイン コントローラー\)** フィールドに名前を入力します。
 
-7.    **[Use Pool]\(プールを使用する\)** を選択した場合は、プールを構成します。
+7. **[Use Pool]\(プールを使用する\)** を選択した場合は、プールを構成します。
 
-    * **[Domain Controller Pool Name]\(ドメイン コントローラーのプール名\)** フィールドに名前を入力します。
+   * **[Domain Controller Pool Name]\(ドメイン コントローラーのプール名\)** フィールドに名前を入力します。
 
-    * プール内の**ドメイン コントローラー**を指定するために、それぞれの IP アドレスとホスト名を入力し、 **[Add]\(追加\)** ボタンをクリックします。
+   * プール内の**ドメイン コントローラー**を指定するために、それぞれの IP アドレスとホスト名を入力し、 **[Add]\(追加\)** ボタンをクリックします。
 
-    * AAA サーバーの正常性を監視するために、正常性モニターを選択することもできます。この場合に適切なのは **gateway_icmp** モニターのみです。 **[Server Pool Monitor]\(サーバー プール モニター\)** リストから選択してください。
+   * AAA サーバーの正常性を監視するために、正常性モニターを選択することもできます。この場合に適切なのは **gateway_icmp** モニターのみです。 **[Server Pool Monitor]\(サーバー プール モニター\)** リストから選択してください。
 
-8.    **[Admin Name]\(管理者名\)** フィールドに、Active Directory の管理者権限を持つ管理者の名前 (大文字と小文字が区別されます) を入力します。 APM では、 **[Admin Name]\(管理者名\)** および **[Admin Password]\(管理者パスワード\)** フィールドの情報を AD クエリに使用します。 Active Directory が匿名クエリ向けに構成されている場合は、管理者名を指定する必要がありません。 それ以外の場合は、パスワード関連機能をサポートするために、Active Directory サーバーへのバインド、ユーザー グループ情報のフェッチ、Active Directory パスワード ポリシーのフェッチを行うのに十分な権限を持つアカウントが必要です (たとえば、AD クエリ アクションで [Prompt user to change password before expiration]\(有効期限が切れる前にパスワードの変更をユーザーに促す\) オプションを選択した場合、APM はパスワード ポリシーをフェッチする必要があります)。この構成で管理者アカウント情報を指定しなかった場合は、APM ではユーザー アカウントを使用して情報がフェッチされます。 これは、ユーザー アカウントに必要な権限がある場合に機能します。
+8. **[Admin Name]\(管理者名\)** フィールドに、Active Directory の管理者権限を持つ管理者の名前 (大文字と小文字が区別されます) を入力します。 APM では、 **[Admin Name]\(管理者名\)** および **[Admin Password]\(管理者パスワード\)** フィールドの情報を AD クエリに使用します。 Active Directory が匿名クエリ向けに構成されている場合は、管理者名を指定する必要がありません。 それ以外の場合は、パスワード関連機能をサポートするために、Active Directory サーバーへのバインド、ユーザー グループ情報のフェッチ、Active Directory パスワード ポリシーのフェッチを行うのに十分な権限を持つアカウントが必要です (たとえば、AD クエリ アクションで [Prompt user to change password before expiration]\(有効期限が切れる前にパスワードの変更をユーザーに促す\) オプションを選択した場合、APM はパスワード ポリシーをフェッチする必要があります)。この構成で管理者アカウント情報を指定しなかった場合は、APM ではユーザー アカウントを使用して情報がフェッチされます。 これは、ユーザー アカウントに必要な権限がある場合に機能します。
 
-9.    **[Admin Password]\(管理者パスワード\)** フィールドに、ドメイン名に関連付けられている管理者パスワードを入力します。
+9. **[Admin Password]\(管理者パスワード\)** フィールドに、ドメイン名に関連付けられている管理者パスワードを入力します。
 
-10.    **[Verify Admin Password]\(管理者パスワードの確認\)** フィールドに、 **[Domain Name]\(ドメイン名\)** 設定に関連付けられている管理者パスワードを再度入力します。
+10. **[Verify Admin Password]\(管理者パスワードの確認\)** フィールドに、 **[Domain Name]\(ドメイン名\)** 設定に関連付けられている管理者パスワードを再度入力します。
 
-11.    **[Group Cache Lifetime]\(グループ キャッシュの有効期間\)** フィールドに日数を入力します。 既定の有効期間は 30 日です。
+11. **[Group Cache Lifetime]\(グループ キャッシュの有効期間\)** フィールドに日数を入力します。 既定の有効期間は 30 日です。
 
-12.    **[Password Security Object Cache Lifetime]\(パスワード セキュリティ オブジェクト キャッシュの有効期間\)** フィールドに日数を入力します。 既定の有効期間は 30 日です。
+12. **[Password Security Object Cache Lifetime]\(パスワード セキュリティ オブジェクト キャッシュの有効期間\)** フィールドに日数を入力します。 既定の有効期間は 30 日です。
 
-13.    **[Kerberos Preauthentication Encryption Type]\(Kerberos 事前認証暗号化の種類\)** リストから暗号化の種類を選択します。 既定値は **[None]\(なし\)** です。 暗号化の種類を指定した場合は、BIG-IP システムにより、最初の認証サービス要求 (AS-REQ) パケット内に Kerberos 事前認証データが追加されます。
+13. **[Kerberos Preauthentication Encryption Type]\(Kerberos 事前認証暗号化の種類\)** リストから暗号化の種類を選択します。 既定値は **[None]\(なし\)** です。 暗号化の種類を指定した場合は、BIG-IP システムにより、最初の認証サービス要求 (AS-REQ) パケット内に Kerberos 事前認証データが追加されます。
 
-14.    **[Timeout]\(タイムアウト\)** フィールドに、AAA サーバーのタイムアウト間隔 (秒) を入力します (この設定は省略可能です)。
+14. **[Timeout]\(タイムアウト\)** フィールドに、AAA サーバーのタイムアウト間隔 (秒) を入力します (この設定は省略可能です)。
 
-15.    **[Finished]\(完了\)** をクリックします。 新しいサーバーがリストに表示されます。 これで、新しい Active Directory サーバーが Active Directory サーバー リストに追加されます。
+15. **[Finished]\(完了\)** をクリックします。 新しいサーバーがリストに表示されます。 これで、新しい Active Directory サーバーが Active Directory サーバー リストに追加されます。
 
     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure17.png)
 

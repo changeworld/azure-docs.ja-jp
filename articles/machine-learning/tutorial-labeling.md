@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536166"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319271"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクトを作成する 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,9 +146,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. [Machine Learning Studio](https://ml.azure.com) で、左側にある **[データのラベル付け]** を選択してプロジェクトを特定します。  
 
-1. 一覧でプロジェクト名を選択します。
-
-1. プロジェクト名の下の **[ラベル データ]** を選択します。
+1. プロジェクトの **[ラベル リンク]** を選択します。
 
 1. 指示を読み、 **[タスク]** を選択します。
 

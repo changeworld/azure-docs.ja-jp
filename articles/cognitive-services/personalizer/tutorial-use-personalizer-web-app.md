@@ -3,12 +3,13 @@ title: Web アプリの使用 - Personalizer
 description: Personalizer ループを使用して C# .NET Web アプリをカスタマイズし、アクション (特徴を伴う) およびコンテキストの特徴に基づいてユーザーに適切なコンテンツを提供します。
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133131"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935621"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>チュートリアル:.NET Web アプリに Personalizer を追加する
 
@@ -41,7 +42,7 @@ Personalizer ループを使用して C# .NET Web アプリをカスタマイズ
 * コーヒー
 * soup
 
-Personalizer がアクションについて学習できるようにするには、各 Rank API 要求で_アクションと特徴_および_コンテキストの特徴_の両方を送信します。
+Personalizer によるアクションについての学習を補助するには、各 Rank API 要求で "_アクションと特徴_" および "_コンテキストの特徴_" の両方を送信します。
 
 モデルの**特徴**は、Web アプリのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも_ありません_。
 

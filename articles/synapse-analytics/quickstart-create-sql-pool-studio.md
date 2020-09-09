@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Synapse Studio を使用して Synapse SQL プール (プレビュー) を作成する
+title: クイック スタート:Synapse Studio を使用して Synapse SQL プールを作成する
 description: このガイドの手順に従って、Synapse Studio を使用して新しい Synapse SQL プールを作成します。
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274273"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036575"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>クイック スタート:Synapse Studio を使用して Synapse SQL プール (プレビュー) を作成する
+# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>クイック スタート:Synapse Studio を使用して Synapse SQL プールを作成する
 
 Azure Synapse Analytics には、データの取り込み、変換、モデル化、分析に役立つさまざまな分析エンジンが用意されています。 SQL プールには、T-SQL ベースのコンピューティングとストレージの機能が用意されています。 お使いの Synapse ワークスペースに SQL プールを作成した後、データを読み込み、モデル化し、処理し、提供して、分析情報を迅速に得ることができます。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076102"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -82,8 +82,9 @@ ms.locfileid: "86518913"
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>任意のリージョン (ソース リージョンを除く) にコンテナーを作成する
 
-1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-1. **[リソースの作成]**  >  **[管理ツール]**  >  **[Backup and Site Recovery]** の順に選択します。
+1. [Azure ポータル](https://portal.azure.com)
+1. 検索で、「Recovery Services」と入力し、[Recovery Services コンテナー] をクリックします
+1. [Recovery Services コンテナー] メニューの [+追加] をクリックします。
 1. **[名前]** に、フレンドリ名 **ContosoVMVault** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 1. リソース グループ **ContosoRG** を作成します。
 1. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域を参照してください。
