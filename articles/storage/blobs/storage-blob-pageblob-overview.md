@@ -9,12 +9,13 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223297"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018843"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -34,6 +35,10 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 * オンプレミスからクラウドへのアプリケーションとデータのライブ マイグレーション:オンプレミスの VM の実行を続けながら、オンプレミス データをコピーし、REST API を使用して Azure のページ BLOB に直接書き込みます。 ターゲットが書き込まれたら、そのデータを使用して Azure VM にすばやくフェールオーバーできます。 このようにして、最小限のダウンタイムで VM と仮想ディスクをオンプレミスからクラウドに移行できます。これは、VM の使用を続けている間にバックグラウンドでデータの移行が行われて、フェールオーバーに必要なダウンタイムが短縮されるためです (数分)。
 * [SAS ベース](../common/storage-sas-overview.md)の共有アクセス。コンカレンシー制御のサポートによる複数のリーダーと単一のライターのようなシナリオを実現できます。
 
+## <a name="pricing"></a>価格
+
+ページ BLOB で提供されるストレージの種類には、それぞれ独自の価格モデルがあります。 Premium ページ BLOB はマネージド ディスクの価格モデルに従いますが、標準ページ BLOB は、使用されたサイズと各トランザクションに対して課金されます。 詳細については、[Azure ページ BLOB の価格ページ](https://azure.microsoft.com/pricing/details/storage/page-blobs/)を参照してください。
+
 ## <a name="page-blob-features"></a>ページ BLOB の機能
 
 ### <a name="rest-api"></a>REST API
@@ -46,13 +51,13 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>指定したサイズの空のページ BLOB を作成する
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 最初に、コンテナーへの参照を取得します。 ページ BLOB を作成するには、[GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) メソッドを呼び出してから、[PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) メソッドを呼び出します。 作成する BLOB の最大サイズを渡します。 サイズは 512 バイトの倍数にする必要があります。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ページ BLOB を作成するには、まず、次の例で示すように、**StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount*) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、**CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー (*testvhds*) の作成を示しています。 次に、**CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、**CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
 
@@ -83,13 +88,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 #### <a name="resizing-a-page-blob"></a>ページ BLOB のサイズを変更する
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 ページ BLOB のサイズを作成後に変更するには、[Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) メソッドを使用します。 要求するサイズは 512 バイトの倍数でなければなりません。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ページ BLOB のサイズを作成後に変更するには、[Resize](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize) メソッドを使用します。 要求するサイズは 512 バイトの倍数でなければなりません。
 
@@ -101,13 +106,13 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 
 #### <a name="writing-pages-to-a-page-blob"></a>ページ BLOB にページを書き込む
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 ページを書き込むには、[PageBlobClient.UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages) メソッドを使用します。  
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ページを書き込むには、[CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) メソッドを使用します。  
 
@@ -130,13 +135,13 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 #### <a name="reading-pages-from-a-page-blob"></a>ページ BLOB からページを読み取る
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 ページを読み取るには、[PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) メソッドを使用して、ページ BLOB から一定範囲のバイトを読み取ります。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ページを読み取るには、[CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) メソッドを使用して、ページ BLOB から特定の範囲のバイトを読み取ります。 
 
@@ -155,13 +160,13 @@ pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSiz
 
 データがほとんど設定されていない BLOB がある場合は、0 バイトの送信に対する支払いを回避したり、ダウンロードの待機時間を短縮したりするために、有効なページ領域だけをダウンロードすることもできます。  
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 データに裏付けられているページを確認するには、[PageBlobClient.GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges) を使用します。 その後、返される範囲を列挙し、各範囲内のデータをダウンロードできます。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 データによって提供されるページを確認するには、[CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges) を使用します。 その後、返される範囲を列挙し、各範囲内のデータをダウンロードできます。 
 

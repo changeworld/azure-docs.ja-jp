@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: チュートリアル:ルール エンジンを構成する - Azure Front Door
 description: この記事では、Azure portal と CLI の両方でルール エンジンを構成する方法のチュートリアルを提供します。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2ab9bc72aa30ddb16d0719827b6d7baeab86c057
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321564"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491308"
 ---
 # <a name="configure-your-rules-engine"></a>ルール エンジンを構成する
 

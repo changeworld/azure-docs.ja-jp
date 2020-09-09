@@ -1,6 +1,6 @@
 ---
 title: 静的パブリック IP アドレスを持つ VM を作成する - PowerShell | Microsoft Docs
-description: PowerShell を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。
+description: PowerShell を使用して静的パブリック IP アドレスを持つ仮想マシン (VM) を作成します。 静的パブリック IP アドレスは、変更されないアドレスです。
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 03a619a647da247347492076e9fd36414565bf33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca83836771af8448f6510ab27d0ac5f2973b35c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703147"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287708"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>PowerShell を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 

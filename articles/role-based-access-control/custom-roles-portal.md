@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2020
+ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791199"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511723"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する
 
@@ -204,17 +204,7 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
 ### <a name="add-wildcard-permissions"></a>ワイルドカード アクセス許可を追加する
 
-選択した開始方法によっては、アクセス許可の一覧にワイルドカード (\*) を含むアクセス許可が表示される場合があります。 ワイルドカード (\*) を使用すると、指定された文字列に一致するものすべてにアクセス許可が拡張されます。 たとえば、Azure Cost Management とエクスポートに関連するすべてのアクセス許可を追加したいとします。 次のすべてのアクセス許可を追加できます。
-
-```
-Microsoft.CostManagement/exports/action
-Microsoft.CostManagement/exports/read
-Microsoft.CostManagement/exports/write
-Microsoft.CostManagement/exports/delete
-Microsoft.CostManagement/exports/run/action
-```
-
-これらのアクセス許可をすべて追加する代わりに、ワイルドカード アクセス許可を追加するだけで済みます。 たとえば、次のワイルドカード アクセス許可は、前の 5 つのアクセス許可に相当します。 これには、今後追加される可能性があるエクスポートのアクセス許可も含まれます。
+選択した開始方法によっては、アクセス許可の一覧にワイルドカード (`*`) を含むアクセス許可が表示される場合があります。 ワイルドカード (`*`) を使用すると、指定されたアクション文字列に一致するものすべてにアクセス許可が拡張されます。 たとえば、次のワイルドカード文字列は、Azure Cost Management およびエクスポートに関連するすべてのアクセス許可を追加します。 これには、今後追加される可能性があるエクスポートのアクセス許可も含まれます。
 
 ```
 Microsoft.CostManagement/exports/*
@@ -224,7 +214,7 @@ Microsoft.CostManagement/exports/*
 
 ### <a name="exclude-permissions"></a>アクセス許可を除外する
 
-ロールにワイルドカード (\*) アクセス許可があり、そのワイルドカード アクセス許可から特定のアクセス許可を除外または削減する場合は、それらを除外できます。 たとえば、次のようなワイルドカード アクセス許可があるとします。
+ロールにワイルドカード (`*`) アクセス許可があり、そのワイルドカード アクセス許可から特定のアクセス許可を除外または削減する場合は、それらを除外できます。 たとえば、次のようなワイルドカード アクセス許可があるとします。
 
 ```
 Microsoft.CostManagement/exports/*
@@ -269,7 +259,7 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="step-6-json"></a>手順 6:JSON
 
-**[JSON]** タブには、JSON 形式のカスタム ロールが表示されます。 必要に応じて、JSON を直接編集できます。 ワイルドカード (\*) アクセス許可を追加する場合は、このタブを使用する必要があります。
+**[JSON]** タブには、JSON 形式のカスタム ロールが表示されます。 必要に応じて、JSON を直接編集できます。 ワイルドカード (`*`) アクセス許可を追加する場合は、このタブを使用する必要があります。
 
 1. JSON を編集するには、 **[編集]** をクリックします。
 

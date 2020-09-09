@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: ec6165ba8ab33beba0b50d6b589b3d31269d7b1e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e4127024404489d0aa8478a9cbd073773f8b512a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114437"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423934"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Cosmos アカウントを作成する
 
@@ -61,7 +61,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 Azure Cosmos DB アカウントの作成後、次の手順を実行します。
 1. 新しいブラウザー ウィンドウを開いて [https://portal.azure.com](https://portal.azure.com) に移動します。
-1. 左側のバーにある Azure Cosmos DB のロゴ ( ![Azure Portal の Azure Cosmos DB アイコン](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) ) をクリックして、自分が所有しているすべての Azure Cosmos DB を表示します。
+1. 左側のバーにある Azure Cosmos DB ロゴ (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png":::) をクリックして、自分が所有しているすべての Azure Cosmos DB を表示します。
 1. 先ほど作成した Azure Cosmos DB アカウントをクリックして **[概要]** タブを選択し、下へスクロールして、データベースが置かれている場所のマップを表示します。 
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure portal の新しい Azure Cosmos DB アカウント":::

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a30ea70c623c8456ae97c8ca9475e4989784edf
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995852"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124155"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -127,6 +127,30 @@ Azure CLI を使用して表示される同じカスタム ロールを次に示
 | `NotDataActions`</br>`notDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
 | `AssignableScopes`</br>`assignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。 詳細については、「[AssignableScopes](role-definitions.md#assignablescopes)」を参照してください。 |
 
+## <a name="wildcard-permissions"></a>ワイルドカードのアクセス許可
+
+`Actions`、`NotActions`、`DataActions`、および `NotDataActions` では、アクセス許可の定義でワイルドカード (`*`) をサポートしています。 ワイルドカード (`*`) を使用すると、指定されたアクション文字列に一致するものすべてにアクセス許可が拡張されます。 たとえば、Azure Cost Management とエクスポートに関連するすべてのアクセス許可を追加したいとします。 次のすべてのアクション文字列を追加できます。
+
+```
+Microsoft.CostManagement/exports/action
+Microsoft.CostManagement/exports/read
+Microsoft.CostManagement/exports/write
+Microsoft.CostManagement/exports/delete
+Microsoft.CostManagement/exports/run/action
+```
+
+これらの文字列をすべて追加する代わりに、ワイルドカードの文字列を追加するだけで済みます。 たとえば、次のワイルドカードの文字列は、前の 5 つの文字列に相当します。 これには、今後追加される可能性があるエクスポートのアクセス許可も含まれます。
+
+```
+Microsoft.CostManagement/exports/*
+```
+
+また、1 つの文字列に複数のワイルドカードを含めることもできます。 たとえば、次の文字列は、Cost Management のすべてのクエリ アクセス許可を表します。
+
+```
+Microsoft.CostManagement/*/query/*
+```
+
 ## <a name="steps-to-create-a-custom-role"></a>カスタム ロールの作成手順
 
 カスタム ロールを作成するには、次の基本的な手順に従う必要があります。
@@ -168,7 +192,7 @@ Azure CLI を使用して表示される同じカスタム ロールを次に示
 - `DataActions` が含まれるカスタム ロールを管理グループのスコープで割り当てることはできません。
 - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。
 
-カスタム ロールと管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)」をご覧ください。
+カスタム ロールと管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)」をご覧ください。
 
 ## <a name="input-and-output-formats"></a>入力形式と出力形式
 

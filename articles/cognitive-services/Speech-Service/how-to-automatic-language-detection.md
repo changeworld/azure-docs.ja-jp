@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: df8fe6301a629e4f21478d6da4d892afec44c889
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 1fc7e7da62aa92812a124f920f5c59ebf8e50fcc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934618"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>音声テキスト変換の自動言語検出
 
@@ -25,7 +26,7 @@ ms.locfileid: "85601226"
 この記事では、`AutoDetectSourceLanguageConfig` を利用して `SpeechRecognizer` オブジェクトを構築し、検出された言語を取得する方法について説明します。
 
 > [!IMPORTANT]
-> この機能は、C#、C++、Java、Python、Objective-C 用の Speech SDK でのみ利用できます。
+> この機能は、C#、C++、Java、Python、JavaScript、Objective-C 用の Speech SDK でのみ利用できます。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Speech SDK による自動言語検出
 
@@ -239,4 +240,24 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech SDK のリファレンス ドキュメント](speech-sdk.md)
+::: zone pivot="programming-language-csharp"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-java"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-python"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494)を参照してください
+::: zone-end
+
+* [Speech SDK のリファレンス ドキュメント](speech-sdk.md)

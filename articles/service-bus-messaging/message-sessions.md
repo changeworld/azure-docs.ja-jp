@@ -3,12 +3,12 @@ title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: この記事では、セッションを使用して、関連メッセージのバインドなしシーケンスの結合および順序指定処理を有効にする方法を説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341182"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511298"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
 Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および**要求 - 応答**のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
@@ -31,7 +31,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 フラグは、ポータルの次のチェック ボックスを使用して設定します。
 
-![][2]
+![[Enable sessions]\(セッションを有効にする\) オプションが選択されて赤枠で囲まれている [キューの作成] ダイアログ ボックスのスクリーンショット。][2]
 
 > [!NOTE]
 > キューまたはサブスクリプションでセッションが有効になっている場合、クライアント アプリケーションでは通常のメッセージを送受信***できなくなります***。 すべてのメッセージは、(セッション ID を設定することで) セッションの一部として送信し、セッションを受信することで受信する必要があります。
@@ -42,7 +42,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 セッションは、順序指定の送信を維持し保証しながら、インターリーブされたメッセージ ストリームの同時逆多重化を提供します。
 
-![][1]
+![セッション機能で順序指定の送信が維持される方法を示す図。][1]
 
 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) (C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)) を呼び出します。 リアクティブなコールバック モデルでは、セッション ハンドラーが登録されます。
 

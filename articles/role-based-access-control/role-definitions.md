@@ -15,12 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511638"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure ロールの定義について
 
@@ -90,7 +90,7 @@ assignableScopes []
 
 ### <a name="role-definition-example"></a>ロールの定義の例
 
-Azure PowerShell と Azure CLI に表示される[共同作成者](built-in-roles.md#contributor)ロールの定義を次に示します。 `Actions` 以下のワイルドカード (`*`) 操作は、このロールに割り当てられたプリンシパルがすべてのアクションを実行できること、つまりすべてを管理できることを示します。 これには、今後、Azure が新しいリソースの種類を追加するときに定義されるアクションも含まれます。 `NotActions` 以下の操作は `Actions` から引かれます。 [共同作成者](built-in-roles.md#contributor)ロールの場合、`NotActions` は、リソースに対するアクセスを管理するこのロールの機能を削除し、リソースへのアクセスも割り当てます。
+Azure PowerShell と Azure CLI に表示される[共同作成者](built-in-roles.md#contributor)ロールの定義を次に示します。 `Actions` 以下のワイルドカード (`*`) 操作は、このロールに割り当てられたプリンシパルがすべてのアクションを実行できること、つまりすべてを管理できることを示します。 これには、今後、Azure が新しいリソースの種類を追加するときに定義されるアクションも含まれます。 `NotActions` 以下の操作は `Actions` から引かれます。 [共同作成者](built-in-roles.md#contributor)ロールの場合、`NotActions` は、リソースに対するアクセスを管理するこのロールの機能を削除し、Azure Blueprint の割り当ても管理します。
 
 Azure PowerShell に表示される共同作成者ロール:
 

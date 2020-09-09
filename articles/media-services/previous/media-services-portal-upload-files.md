@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3327304916c30863bb4de4b4d18c41ba3c58270d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00035782a17936405b2b042035220dde87da12b1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982562"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257060"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure Portal での Media Services アカウントへのファイルのアップロード 
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure Portal での Media Services アカウントへのファイルのアップロード
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-upload-files.md)
@@ -30,7 +32,7 @@ ms.locfileid: "84982562"
 > 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 ポータルを使用した最新のアップロード ファイルについては、「[ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信](../latest/manage-assets-quickstart.md)」を参照してください。<br/>また、次の項目も確認してください。[Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 ポータルを使用した最新のアップロード ファイルについては、「[ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信](../latest/manage-assets-quickstart.md)」を参照してください。<br/>また、次の項目も確認してください。[Media Services v3](../latest/index.yml)。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Media Services で、デジタル ファイルをアセットにアップロードします。 アセットには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (および各ファイルのメタデータ) を含めることができます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
@@ -65,5 +67,3 @@ Media Services では、処理するファイルに対して、最大ファイ�
 * [アップロードしたアセットのエンコード](media-services-portal-encode.md)方法を学ぶ。
 
 * また、Azure Functions を使用すると、構成したコンテナーにファイルが到着したときにエンコード ジョブをトリガーすることもできます。 詳しくは、「[Media Services:Integrating Azure Media Services with Azure Functions and Logic Apps (Media Services: Azure Media Services と Azure Functions および Logic Apps の統合)](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/)」のサンプルをご覧ください。
-
-

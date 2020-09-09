@@ -12,16 +12,16 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 900e76fff3e5ccf88fa1e25ebea97f26e406a358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042541"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Micro Focus Enterprise Server 5.0 を AKS にデプロイする
 
-別の[アーティクル](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)では、Docker コンテナーで Micro Focus Enterprise Server 5.0 を実行する手順について説明しました。 それに続くものとして、さらに Azure Kubernetes Service (AKS) に作成した Docker イメージをデプロイする方法について説明します。
+別の[アーティクル](./run-enterprise-server-container.md)では、Docker コンテナーで Micro Focus Enterprise Server 5.0 を実行する手順について説明しました。 それに続くものとして、さらに Azure Kubernetes Service (AKS) に作成した Docker イメージをデプロイする方法について説明します。
 
 Azure Kubernetes Service は、Kubernetes に基づく管理されたオーケストレーション サービスです。 これにより、コンテナー ホストのクラスター全体で Docker コンテナー (およびその他のコンテナー ベースのアプリケーション) をデプロイ、拡張、および管理することができます。
 

@@ -3,19 +3,20 @@ title: Microsoft 顧客契約の課金ロール - Azure
 description: Microsoft 顧客契約の Azure での請求先アカウントの課金ロールについて説明します。
 author: amberbhargava
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.subservice: billing
+ms.topic: how-to
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f0ace05d6a4df65282bd56cca8e7895b0dc24edf
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207214"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686549"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure での Microsoft 顧客契約の管理ロールを理解する
 
-Microsoft 顧客契約の請求先アカウントを管理するには、以下のセクションで説明されているロールを使用します。 これらのロールはリソース アクセスを制御する目的で Azure に与えられる組み込みロールに追加されるものです。 詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+Microsoft 顧客契約の請求先アカウントを管理するには、以下のセクションで説明されているロールを使用します。 これらのロールはリソース アクセスを制御する目的で Azure に与えられる組み込みロールに追加されるものです。 詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 Microsoft の顧客契約にアクセスできるかどうかを確認します。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499360"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318999"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights エージェント API リファレンス
 
@@ -638,14 +638,15 @@ Timeout Reached. Stopping...
 
   テレメトリの表示:
  - パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
-- 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
+- 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
 - より高度なクエリのために[分析](../log-query/log-query-overview.md)を使用します。
-- [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
+- [ダッシュボードを作成](./overview-dashboard.md)します。
  
  テレメトリの追加:
  - サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
-- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
-- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
+- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](./javascript.md)を追加します。
+- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](./asp-net.md)します。
  
  Application Insights エージェントをさらに活用する:
  - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
+

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080354"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -32,7 +32,7 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Linux 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳細については、[Linux VM の監視方法](../linux/tutorial-monitoring.md)に関する記事を参照してください。
+- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳細については、[Linux VM の監視方法](../linux/tutorial-monitor.md)に関する記事を参照してください。
 - Chef または Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Chef のドキュメント](https://docs.chef.io/azure_portal.html)または [Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、VM で実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](custom-script-linux.md)に関するページを参照してください。
@@ -65,7 +65,7 @@ Linux エージェントは複数の OS で実行されますが、拡張機能�
 > [!IMPORTANT]
 > ゲスト ファイアウォールを使用して *168.63.129.16* へのアクセスをブロックした場合、上記のアクセス許可とは関係なく、拡張機能はエラーになります。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](../../virtual-network/security-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
 
 エージェントのトラフィック要求をリダイレクトするために、Linux エージェントはプロキシ サーバーのサポートを備えています。 ただし、このプロキシ サーバーのサポートは拡張機能には適用されません。 プロキシを使用するには、個々の拡張機能を構成する必要があります。
 
@@ -259,7 +259,7 @@ Goal state agent: 2.2.18
 
 'Goal state agent' は自動更新バージョンです。
 
-エージェントの自動更新を常に有効にする ([AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)) ことを強くお勧めします。 有効にしていない場合、エージェントを手動で更新し続ける必要があり、バグおよびセキュリティの修正プログラムは提供されません。
+エージェントの自動更新を常に有効にする ([AutoUpdate.Enabled=y](./update-linux-agent.md)) ことを強くお勧めします。 有効にしていない場合、エージェントを手動で更新し続ける必要があり、バグおよびセキュリティの修正プログラムは提供されません。
 
 #### <a name="extension-updates"></a>拡張機能の更新プログラム
 

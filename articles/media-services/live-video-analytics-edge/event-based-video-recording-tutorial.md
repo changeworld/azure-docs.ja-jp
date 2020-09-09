@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011772"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -32,9 +32,9 @@ ms.locfileid: "84765201"
 * [Live Video Analytics on IoT Edge の用語](terminology.md)
 * [メディア グラフの概念](media-graph-concept.md) 
 * [イベントベースのビデオ記録](event-based-video-recording-concept.md)
-* [チュートリアル:IoT Edge モジュールを開発する](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [チュートリアル:IoT Edge モジュールを開発する](../../iot-edge/tutorial-develop-for-linux.md)
 * [deployment.*.template.json を編集する方法](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
-* [IoT Edge 配置マニフェスト内でルートを宣言する方法](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)に関するセクション
+* [IoT Edge 配置マニフェスト内でルートを宣言する方法](../../iot-edge/module-composition.md#declare-routes)に関するセクション
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +52,7 @@ ms.locfileid: "84765201"
 * Azure IoT Hub
 * Azure ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 内の Linux VM ([IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)がインストール済み)
+* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge-linux.md)がインストール済み)
 
 ## <a name="concepts"></a>概念
 
@@ -135,9 +135,9 @@ src/edge/deployment.objectCounter.template.json を開きます。 **modules** �
 * **rtspsim**: これは RTSP シミュレーターです。
 * **objectCounter**: これは、yolov3 の結果から特定のオブジェクトを検索するモジュールです。
 
-ObjectCounter モジュールについては、"image" 値に使用される (${MODULES.objectCounter}) 文字列を参照してください。 これは、IoT Edge モジュールの開発に関する[チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)に基づいています。 Visual Studio Code は、objectCounter モジュールのコードが src/edge/modules/objectCounter にあることを自動的に認識します。 
+ObjectCounter モジュールについては、"image" 値に使用される (${MODULES.objectCounter}) 文字列を参照してください。 これは、IoT Edge モジュールの開発に関する[チュートリアル](../../iot-edge/tutorial-develop-for-linux.md)に基づいています。 Visual Studio Code は、objectCounter モジュールのコードが src/edge/modules/objectCounter にあることを自動的に認識します。 
 
-IoT Edge 配置マニフェスト内でルートを宣言する方法に関する[このセクション](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)を参照してください。 次に、テンプレート JSON ファイル内でルートを確認します。 次の方法に注目してください。
+IoT Edge 配置マニフェスト内でルートを宣言する方法に関する[このセクション](../../iot-edge/module-composition.md#declare-routes)を参照してください。 次に、テンプレート JSON ファイル内でルートを確認します。 次の方法に注目してください。
 
 * LVAToObjectCounter は、objectCounter モジュール内の特定のエンドポイントに特定のイベントを送信するために使用されます。
 * ObjectCounterToLVA は、lvaEdge モジュール内の特定のエンドポイント (IoT Hub ソース ノード) にトリガー イベントを送信するために使用されます。
@@ -150,7 +150,7 @@ IoT Edge 配置マニフェスト内でルートを宣言する方法に関す�
 
 エッジ デバイスにデプロイされるモジュールとそれらのモジュールの構成設定は、配置マニフェストによって定義されます。 マニフェストをテンプレート ファイルから生成して、エッジ デバイスにデプロイするには、これらの手順に従います。
 
-Visual Studio Code を使用し、[こちらの手順](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution)に従って Docker にサインインします。 次に、 **[Build and Push IoT Edge Solution]\(IoT Edge ソリューションをビルドしてプッシュする\)** を選択します。 この手順では、src/edge/deployment.objectCounter.template.json を使用します。
+Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution)に従って Docker にサインインします。 次に、 **[Build and Push IoT Edge Solution]\(IoT Edge ソリューションをビルドしてプッシュする\)** を選択します。 この手順では、src/edge/deployment.objectCounter.template.json を使用します。
 
 ![IoT Edge ソリューションをビルドしてプッシュする](./media/event-based-video-recording-tutorial/build-push.png)
 
@@ -259,7 +259,7 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 
 ## <a name="interpret-the-results"></a>結果を解釈する 
 
-メディア グラフを実行すると、Live Video Analytics on IoT Edge モジュールによって、特定の診断イベントと操作イベントが IoT Edge ハブに送信されます。 これらのイベントは、Visual Studio Code の **[出力]** ウィンドウに表示されるメッセージです。 メッセージには、body セクションと applicationProperties セクションが含まれます。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」を参照してください。
+メディア グラフを実行すると、Live Video Analytics on IoT Edge モジュールによって、特定の診断イベントと操作イベントが IoT Edge ハブに送信されます。 これらのイベントは、Visual Studio Code の **[出力]** ウィンドウに表示されるメッセージです。 メッセージには、body セクションと applicationProperties セクションが含まれます。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
 
 次のメッセージ内のアプリケーションのプロパティと body の内容は、Live Video Analytics モジュールによって定義されています。
 
@@ -413,4 +413,4 @@ applicationProperties の subject セクションが、このメッセージの�
 ## <a name="next-steps"></a>次のステップ
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラを検索するには、[ONVIF 準拠製品のページ](https://www.onvif.org/conformant-products/)でプロファイル G、S、または T に準拠しているデバイスを検索します。
-* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)に関するページの手順に従います。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録します。
+* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge-linux.md)に関するページの手順に従います。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録します。

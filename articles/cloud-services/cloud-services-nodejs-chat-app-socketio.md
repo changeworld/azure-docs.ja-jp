@@ -1,6 +1,6 @@
 ---
 title: Socket.io を使用する Node.js アプリケーション - Azure
-description: Azure でホストされる Node.js アプリケーションで Socket.IO を使用する方法を説明します。
+description: このチュートリアルを使用し、Azure で Socket.IO ベースのチャット アプリケーションをホストする方法について説明します。 Socket.IO は、node.js のサーバーとクライアントにリアルタイム通信を提供します。
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 5bea3bec68217881729f1daf8d75837e1d67e8ce
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919962"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142470"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 
@@ -34,7 +35,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 ## <a name="create-a-cloud-service-project"></a>クラウド サービス プロジェクトの作成
 次の手順では、Socket.IO アプリケーションをストリーミングするクラウド サービス プロジェクトを作成します。
 
-1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、 **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
+1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
     ![Azure PowerShell アイコン][powershell-menu]
 2. **c:\\node** というディレクトリを作成します。
@@ -61,7 +62,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
     ![new-azureservice および add-azurenodeworkerrole コマンドレットの出力](./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png)
 
 ## <a name="download-the-chat-example"></a>チャットのサンプルのダウンロード
-このプロジェクトでは、 [Socket.IO GitHub]にあるチャットのサンプルを使用します。 次の手順を実行して、サンプルをダウンロードし、先ほど作成したプロジェクトに追加します。
+このプロジェクトでは、 [Socket.IO GitHub リポジトリ]にあるチャットのサンプルを使用します。 次の手順を実行して、サンプルをダウンロードし、先ほど作成したプロジェクトに追加します。
 
 1. **[複製]** ボタンを使用して、リポジトリのローカル コピーを作成します。 **[ZIP]** ボタンを使用してプロジェクトをダウンロードすることもできます。
 
@@ -165,7 +166,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Cloud Services でホストされる基本的なチャット アプリケーションを作成する方法を説明しました。 Azure Web サイトでこのアプリケーションをホストする方法については、「[Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する][chatwebsite]」を参照してください。
 
 詳細については、 [Node.js デベロッパー センター](https://docs.microsoft.com/azure/developer/javascript/)を参照してください。

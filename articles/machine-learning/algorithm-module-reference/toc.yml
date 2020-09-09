@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: デシジョン フォレスト回帰
           href: decision-forest-regression.md
+        - name: 高速フォレスト分位点回帰
+          href: fast-forest-quantile-regression.md
         - name: 線形回帰
           href: linear-regression.md
         - name: ニューラル ネットワーク回帰
           href: neural-network-regression.md
+        - name: ポワソン回帰
+          href: poisson-regression.md
     - name: クラスタリング
       items:
         - name: K-Means クラスタリング
@@ -188,3 +192,5 @@
       href: web-service-input-output.md
 - name: モジュールのエラーとトラブルシューティング
   href: designer-error-codes.md
+- name: グラフ検索のクエリ構文
+  href: graph-search-syntax.md

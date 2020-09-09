@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, 比較, SDK, 相違点, ハードウェア, ソフトウェア
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67454186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031577"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect と Kinect Windows v2 の比較
 
@@ -22,8 +22,8 @@ Azure Kinect DK ハードウェアおよびソフトウェア開発キットに�
 
 次の表に、Azure Kinect 開発キットと Kinect for Windows v2 の高レベルの相違点を示します。
 
-|    |      | Azure Kinect DK |  Kinect for Windows v2 |
-|----------|---------------|--------| ------------|
+| 特徴量 | Type | Azure Kinect DK | Kinect for Windows v2 |
+| ------- | ---- | --------------- | --------------------- |
 | **オーディオ** | 詳細  | 7 つのマイクの循環配列 | 4 つのマイクの線形段階的配列 |
 | **モーション センサー** | 詳細 | 3 軸加速度計 3 軸ジャイロ | 3 軸加速度計 |
 | **RGB カメラ**    | 詳細 | 3840 x 2160 px @30 fps | 1920 x 1080 px @30 fps |

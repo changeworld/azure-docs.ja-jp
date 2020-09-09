@@ -16,19 +16,19 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: tracking-python
-ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-python
+ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220067"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852329"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST API)](https://msdn.microsoft.com/library/dn223264.aspx)」の記事にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
+MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST API)](/previous-versions/azure/reference/dn223264(v=azure.100))」の記事にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
 
 > [!NOTE]
 > これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。 サンプルは Python 3.4 を使用して作成されました。
@@ -68,7 +68,7 @@ hub.send_windows_notification(wns_payload)
 
 まだ実行していない場合は、「[Notification Hubs の使用]」のチュートリアルの、バックエンドを実装する必要のある最後のセクションまで従ってください。
 
-REST ラッパーすべての実装の詳細については、 [MSDN の記事](https://msdn.microsoft.com/library/dn530746.aspx)を参照してください。 このセクションでは、Notification Hubs REST エンドポイントにアクセスし、通知を送信するために必要な主要な手順の Python 実装について説明します。
+REST ラッパーすべての実装の詳細については、 [MSDN の記事](/previous-versions/azure/reference/dn530746(v=azure.100))を参照してください。 このセクションでは、Notification Hubs REST エンドポイントにアクセスし、通知を送信するために必要な主要な手順の Python 実装について説明します。
 
 1. 接続文字列を解析する
 2. 認証トークンを生成する
@@ -103,7 +103,7 @@ class NotificationHub:
 
 ### <a name="create-security-token"></a>セキュリティ トークンを作成する
 
-セキュリティ トークンの作成の詳細については、 [こちら](https://msdn.microsoft.com/library/dn495627.aspx)をご覧ください。
+セキュリティ トークンの作成の詳細については、 [こちら](/previous-versions/azure/reference/dn495627(v=azure.100))をご覧ください。
 現在の要求の URI と接続文字列から抽出された資格情報に基づいてトークンを作成するには、`NotificationHub` クラスに次のメソッドを追加します。
 
 ```python
@@ -164,7 +164,7 @@ class Notification:
 
 このクラスは、ネイティブ通知の本文またはテンプレート通知の一連のプロパティ、形式 (ネイティブなプラットフォームまたはテンプレート) とプラットフォーム固有のプロパティ (Apple の有効期限プロパティや WNS ヘッダーなど) を含む一連のヘッダーのコンテナーです。
 
-使用可能なすべてのオプションについては、[Notification Hubs REST API のドキュメント](https://msdn.microsoft.com/library/dn495827.aspx)および特定の通知プラットフォームの形式を参照してください。
+使用可能なすべてのオプションについては、[Notification Hubs REST API のドキュメント](/previous-versions/azure/reference/dn495827(v=azure.100))および特定の通知プラットフォームの形式を参照してください。
 
 次に、このクラスを使用して、`NotificationHub` クラス内に通知の送信メソッドを記述します。
 
@@ -293,7 +293,7 @@ def send_template_notification(self, properties, tags=""):
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>デバッグ プロパティを使用して、詳細なログ記録を有効にする
 
 Notification Hub の初期化中にデバッグ プロパティを有効にすると、HTTP 要求に関する詳細なログ情報や応答ダンプ、さらには詳細な通知メッセージの送信結果が書き込まれます。
-[Notification Hubs TestSend プロパティ](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100))は、通知の送信結果に関する詳細情報を返します。
+[Notification Hubs TestSend プロパティ](/previous-versions/azure/reference/dn495827(v=azure.100))は、通知の送信結果に関する詳細情報を返します。
 これを使用するには、次のコードを使用して初期化します。
 
 ```python
@@ -456,9 +456,9 @@ hub.send_template_notification(template_payload)
 
 <!-- URLs -->
 [Python REST ラッパー サンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[Notification Hubs の使用]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[ニュース速報チュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[ローカライズ版のニュース速報チュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Notification Hubs の使用]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[ニュース速報チュートリアル]: ./notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[ローカライズ版のニュース速報チュートリアル]: ./notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

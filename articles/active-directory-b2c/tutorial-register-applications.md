@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:アプリケーションを登録する
 titleSuffix: Azure AD B2C
-description: Azure portal を使用して Azure Active Directory B2C に Web アプリケーションを登録する方法について説明します。
+description: このチュートリアルでは、Azure portal を使用して Azure Active Directory B2C に Web アプリケーションを登録する方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2ac8baf0e2aa9555efb6d6b4f39787d9a7bf9508
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fd062bd0e58ecc714e4f450c93384e47e743b65
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499904"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922015"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C に Web アプリケーションを登録する
 
@@ -62,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 アプリケーションの登録が完了したら、暗黙的な許可フローを有効にします。
 
-1. **[管理]** で、 **[認証]** を選択します。
+1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
 1. **[暗黙的な許可]** で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。
 1. **[保存]** を選択します。
 
@@ -95,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
 1. **[Azure AD B2C - アプリの登録]** ページで、作成したアプリケーション (例: *webapp1*) を選択します。
-1. **[管理]** で、 **[証明書とシークレット]** を選択します。
+1. 左側のメニューで、 **[管理]** の **[証明書とシークレット]** を選択します。
 1. **[新しいクライアント シークレット]** を選択します。
 1. **[説明]** ボックスにクライアント シークレットの説明を入力します。 たとえば、*clientsecret1* のようにします。
 1. **[有効期限]** で、シークレットが有効な期間を選択してから、 **[追加]** を選択します。

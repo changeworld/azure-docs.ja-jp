@@ -3,12 +3,12 @@ title: クイック スタート:Go を使用してイベントを送受信す�
 description: クイック スタート:この記事では、Azure Event Hubs からイベントを送信する Go アプリケーションを作成するためのチュートリアルを提供します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002456"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>クイック スタート:Go を使用して Event Hubs との間でイベントを送受信する
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -126,7 +126,7 @@ log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 
 ### <a name="create-a-storage-account-and-container"></a>Storage アカウントとコンテナーの作成
 
-パーティションのリースやイベント ストリーム内のチェックポイントなどの状態は、Azure Storage コンテナーを使用して受信者間で共有されます。 Go SDK を使用してストレージ アカウントとコンテナーを作成できますが、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の手順に従って作成することもできます。
+パーティションのリースやイベント ストリーム内のチェックポイントなどの状態は、Azure Storage コンテナーを使用して受信者間で共有されます。 Go SDK を使用してストレージ アカウントとコンテナーを作成できますが、「[Azure ストレージ アカウントについて](../storage/common/storage-account-create.md)」の手順に従って作成することもできます。
 
 Go SDK を使用して Storage の成果物を作成するためのサンプルは、[Go のサンプル リポジトリ](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage)と、このチュートリアルに対応するサンプルで入手できます。
 

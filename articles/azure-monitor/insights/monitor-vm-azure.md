@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945394"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326190"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
@@ -133,12 +133,12 @@ az monitor diagnostic-settings create \
 | メニュー オプション | 説明 |
 |:---|:---|
 | 概要 | 仮想マシンのホストの[プラットフォームのメトリック](../platform/data-platform-metrics.md)を表示します。 グラフをクリックすると、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)でこのデータを操作することができます。 |
-| アクティビティ ログ | 現在の仮想マシンに対してフィルター処理された[アクティビティ ログ](../platform/activity-log-view.md)のエントリ。 |
-| 洞察 | 現在選択されている仮想マシンのマップを使用して [Azure Monitor for VMs](../insights/vminsights-overview.md) を開きます。 |
+| アクティビティ ログ | 現在の仮想マシンに対してフィルター処理された[アクティビティ ログ](../platform/activity-log.md#view-the-activity-log)のエントリ。 |
+| 洞察 | 現在選択されている仮想マシンのマップを使用して [Azure Monitor for VMs](./vminsights-overview.md) を開きます。 |
 | 警告 | 現在の仮想マシンの[アラート](../platform/alerts-overview.md)を表示します。  |
 | メトリック | 現在の仮想マシンに設定されているスコープを使用して、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)を開きます。 |
 | 診断設定 | 現在の仮想マシンに対して[診断拡張機能](../platform/diagnostics-extension-overview.md)を有効にして構成します。 |
-| Advisor の推奨事項 | [Azure Advisor](/azure/advisor/) からの現在の仮想マシンに関する推奨事項。 |
+| Advisor の推奨事項 | [Azure Advisor](../../advisor/index.yml) からの現在の仮想マシンに関する推奨事項。 |
 | ログ | 現在の仮想マシンに設定されている[スコープ](../log-query/scope.md)を使用して、[Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics) を開きます。 |
 | 接続モニター | [Network Watcher 接続モニター](../../network-watcher/connection-monitor-preview.md)を開いて、現在の仮想マシンと他の仮想マシンとの間の接続を監視します。 |
 
@@ -226,7 +226,7 @@ Event
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) を使用すると、仮想マシン上のワークロードを詳細に監視できます。 監視プラットフォームと実装に関するさまざまな戦略の比較については、「[クラウド監視ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/)」を参照してください。
+System Center Operations Manager (SCOM) を使用すると、仮想マシン上のワークロードを詳細に監視できます。 監視プラットフォームと実装に関するさまざまな戦略の比較については、「[クラウド監視ガイド](/azure/cloud-adoption-framework/manage/monitor/)」を参照してください。
 
 使用し続ける予定の既存の SCOM 環境がある場合は、それを Azure Monitor と統合して追加の機能を提供することができます。 Azure Monitor によって使用される Log Analytics エージェントは、監視対象の仮想マシンが両方にデータを送信できるように、SCOM で使用されるものと同じです。 Azure Monitor for VMs にエージェントを追加して、上で指定したように追加データを収集するようにワークスペースを構成する必要は依然としてありますが、仮想マシンは引き続き SCOM 環境で既存の管理パックを変更せずに実行できます。
 

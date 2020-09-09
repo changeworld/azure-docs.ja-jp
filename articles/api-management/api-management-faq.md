@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050335"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -77,7 +77,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
 3. API Management で、目的のユーザーに **API Management サービス共同作成者**ロールを割り当てます。
 
-新しく追加した共同作成者は Azure PowerShell [コマンドレット](/powershell/azure/overview)を使用できます。 次の手順に従って、管理者としてサインインできます。
+新しく追加した共同作成者は Azure PowerShell [コマンドレット](/powershell/azure/)を使用できます。 次の手順に従って、管理者としてサインインできます。
 
 1. `Connect-AzAccount` コマンドレットを使用してサインインします。
 2. `Set-AzContext -SubscriptionID <subscriptionGUID>` を使用して、このサービスが含まれているサブスクリプションのコンテキストを設定します。
