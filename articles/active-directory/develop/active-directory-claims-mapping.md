@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141535"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853373"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -143,7 +143,6 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | onprem_sid |
 | openid2_id |
 | password |
-| platf |
 | polids |
 | pop_jwk |
 | preferred_username |
@@ -248,11 +247,11 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 
 **概要:** このプロパティは、基本要求セットが、このポリシーの影響を受けるトークンに含まれるかどうかを判断します。
 
-- True に設定されている場合、基本要求セット内のすべての要求が、ポリシーの影響を受けるトークンに出力されます。 
+- True に設定されている場合、基本要求セット内のすべての要求が、ポリシーの影響を受けるトークンに出力されます。
 - False に設定されている場合、基本要求セット内の要求は、同じポリシーの要求スキーマ プロパティに個別に追加されない限り、トークンに追加されません。
 
-> [!NOTE] 
-> コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。 
+> [!NOTE]
+> コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。
 
 ### <a name="claims-schema"></a>要求スキーマ
 
@@ -267,14 +266,14 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 
 **値:** 値要素では、静的な値が、要求に出力されるデータとして定義されます。
 
-**ソース/ID ペア:** ソース要素と ID 要素では、要求内のデータのソースが定義されます。  
+**ソース/ID ペア:** ソース要素と ID 要素では、要求内のデータのソースが定義されます。
 
 **Source/ExtensionID ペア:** Source と ExtensionID 要素は、要求内のデータのソースであるディレクトリ スキーマ拡張属性を定義します。 詳細については、「[要求でディレクトリ スキーマ拡張属性を使用する](active-directory-schema-extensions.md)」を参照してください。
 
-ソース要素を次のいずれかの値に設定します。 
+ソース要素を次のいずれかの値に設定します。
 
-- "user":要求のデータは、ユーザー オブジェクトのプロパティです。 
-- "application":要求のデータは、アプリケーション (クライアント) のサービス プリンシパルのプロパティです。 
+- "user":要求のデータは、ユーザー オブジェクトのプロパティです。
+- "application":要求のデータは、アプリケーション (クライアント) のサービス プリンシパルのプロパティです。
 - "resource":要求のデータは、リソースのサービス プリンシパルのプロパティです。
 - "audience":要求のデータは、トークン (クライアントかリソースのいずれかのサービス プリンシパル) の対象ユーザーであるサービス プリンシパルのプロパティです。
 - "company":要求のデータは、リソース テナントの会社のオブジェクトのプロパティです。
@@ -349,7 +348,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 **文字列:** ClaimsTransformation
 
-**データ型**: 1 つ以上の変換エントリを含む JSON BLOB 
+**データ型**: 1 つ以上の変換エントリを含む JSON BLOB
 
 **概要:** このプロパティを使用して、共通の変換をソース データに適用し、要求スキーマで指定された要求の出力データを生成します。
 
@@ -368,7 +367,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 **InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
 
-- **ClaimTypeReferenceId** は要求スキーマ エントリの ID 要素と結合され、該当する入力要求を検索します。 
+- **ClaimTypeReferenceId** は要求スキーマ エントリの ID 要素と結合され、該当する入力要求を検索します。
 - **TransformationClaimType** は、この入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
 
 **InputParameters:** InputParameters 要素を使用して、定数値を変換に渡します。 この要素には 2 つの属性があります。**Value** と **ID** です。
@@ -420,7 +419,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、「[New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)」を参照してください。
 
-要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。 
+要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -464,20 +463,20 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 この例では、リンクされたサービス プリンシパルに対して発行されたトークンから、基本要求セットを削除するポリシーを作成します。
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、トークンから基本要求セットを削除します。
-   1. ポリシーを作成するには、このコマンドを実行します。 
-    
+   1. ポリシーを作成するには、このコマンドを実行します。
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
    2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。
-    
+
       ``` powershell
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
    1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
-   2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
-     
+   2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -487,21 +486,21 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国/リージョン要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
-   1. ポリシーを作成するには、次のコマンドを実行します。  
-     
+   1. ポリシーを作成するには、次のコマンドを実行します。
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
+
    2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。
-     
-      ``` powershell  
+
+      ``` powershell
       Get-AzureADPolicy
       ```
-1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
+1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
    1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
-   2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
-     
+   2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -512,20 +511,20 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
    1. ポリシーを作成するには、次のコマンドを実行します。
-     
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
-   2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。 
-     
+
+   2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。
+
       ``` powershell
       Get-AzureADPolicy
       ```
-1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
+1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
    1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
-   2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。 
-     
+   2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```

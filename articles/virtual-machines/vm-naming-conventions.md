@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: a49d1cc47515e698737bf833af09d30da16712a6
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 13894e534dc8d6dd89baf75ea2bd3b6500b718f7
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832327"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650963"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Azure 仮想マシンのサイズの名前付け規則
 
@@ -28,7 +28,7 @@ ms.locfileid: "87832327"
 | ファミリ | VM ファミリのシリーズを示します| 
 | \* サブファミリ | 特殊化された VM を区別するためにのみ使用されます|
 | vCPU の数| VM の vCPU の数を示します |
-| 追加機能 | 1 つ以上の小文字により、次のような追加機能が示されます。 <br> a = AMD ベースのプロセッサ <br> d = ディスク (ローカル一時ディスクが存在します)。これは、新しい Azure VM 用です。「[Ddv4 および Ddsv4 シリーズ](./ddv4-ddsv4-series.md)」を参照してください <br> h = 休止状態対応 <br> i = 分離サイズ <br> l = 低メモリ。メモリ集中型のサイズよりも少ないメモリ量 <br> m = メモリ集中型。特定のサイズの最大メモリ容量 <br> t = 最少メモリ。特定のサイズの最小メモリ容量 <br> r = RDMA 対応 <br> s = Premium Storage 対応。[Ultra SSD](./windows/disks-types.md#ultra-disk) を使用できる可能性が含まれます (注: M128、M64 などの一部の新しいサイズでは、s 属性がなくても、Premium Storage がサポートされます)<br> |
+| 追加機能 | 1 つ以上の小文字により、次のような追加機能が示されます。 <br> a = AMD ベースのプロセッサ <br> d = ディスク (ローカル一時ディスクが存在します)。これは、新しい Azure VM 用です。「[Ddv4 および Ddsv4 シリーズ](./ddv4-ddsv4-series.md)」を参照してください <br> h = 休止状態対応 <br> i = 分離サイズ <br> l = 低メモリ。メモリ集中型のサイズよりも少ないメモリ量 <br> m = メモリ集中型。特定のサイズの最大メモリ容量 <br> t = 最少メモリ。特定のサイズの最小メモリ容量 <br> r = RDMA 対応 <br> s = Premium Storage 対応。[Ultra SSD](./disks-types.md#ultra-disk) を使用できる可能性が含まれます (注: M128、M64 などの一部の新しいサイズでは、s 属性がなくても、Premium Storage がサポートされます)<br> |
 | \* アクセラレータの種類 | 特殊化された SKU および GPU SKU でハードウェア アクセラレータの種類を示します。 名前にハードウェア アクセラレータが含まれるのは、2020 年第 3 四半期以降に公開された新しい特殊化された SKU および GPU SKU だけです。 |
 | Version | VM ファミリ シリーズのバージョンを示します |
 

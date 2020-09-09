@@ -2,17 +2,17 @@
 title: データを処理するための Azure 関数を設定する
 titleSuffix: Azure Digital Twins
 description: デジタル ツインにアクセスしてトリガーできる Azure 関数を作成する方法について説明します。
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 66f514f4c5d299ef11efda541f16f4ef2fe61aed
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589403"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930164"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -84,7 +84,7 @@ namespace FunctionSample
 
 関数アプリと Azure Digital Twins のやり取りには、[.NET (C#) 用の Azure IoT Digital Twin クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)を使用します。 この SDK を使用するには、次のパッケージをプロジェクトに含める必要があります。
 * `Azure.DigitalTwins.Core` (バージョン `1.0.0-preview.2`)
-* `Azure.Identity` (バージョン `1.1.1`)
+* `Azure.Identity`
 
 Azure Functions を適切に設定するように Azure SDK パイプラインを構成するには、以下も必要です。
 * `Azure.Net.Http`
@@ -95,8 +95,8 @@ Azure Functions を適切に設定するように Azure SDK パイプライン�
 次の using ステートメントを Azure 関数に追加します。
 
 ```csharp
-using Azure.Identity;
 using Azure.DigitalTwins.Core;
+using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
@@ -157,7 +157,7 @@ Functions アプリから Azure Digital Twins にアクセスできるように�
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-その *principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*所有者*" ロールに割り当てます。
+*principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*Azure Digital Twins 所有者 (プレビュー)* " ロールに割り当てます。 これにより、インスタンスでデータ プレーン アクティビティを実行するアクセス許可が、関数アプリに与えられます。
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"

@@ -9,15 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/04/2020
+ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+metadata ms.custom: contperfq1
+ms.openlocfilehash: 61ba06054e86d544ae4ab1edbdef8d86667ef3b2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036676"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796580"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの一般的な問題
 
@@ -31,14 +32,10 @@ Azure Active Directory (Azure AD) 組織では、2 要素認証 (2FV) を有効�
 
 2FV では、_知っている_何かに加えて、_持っている_何か必要とされるため、2FV の安全性はパスワードだけの場合よりも高くなります。 ユーザーの物理的な電話を持っているハッカーはいないのです。
 
-<center>
-
-![認証方法の概念画像](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
 >[!Important]
->管理者の方は、 Azure AD 環境の設定と管理方法の詳細については、「[Azure AD のドキュメント](https://docs.microsoft.com/azure/active-directory)」をご参照ください。
->
->また、このコンテンツの対象は、職場または学校アカウント、つまり勤務先から支給されるアカウント (alain@contoso.com など) での使用のみです。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントと 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページをご参照ください。
+>管理者の方は、 Azure AD 環境の設定と管理方法の詳細については、「[Azure AD のドキュメント](../index.yml)」をご参照ください。
+
+このコンテンツは、職場または学校アカウント、つまり勤務先から支給されるアカウント (dritan@contoso.com など) での使用をサポートすることを目的としています。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントでの 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページをご参照ください。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>自分のモバイル デバイスを持っていません
 

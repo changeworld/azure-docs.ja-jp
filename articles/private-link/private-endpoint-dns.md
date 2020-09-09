@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1896caaa0cba1f62dc1466124b393337fa8c83
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985786"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918130"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -33,6 +33,9 @@ ms.locfileid: "87985786"
 提案されたプライベート ドメイン名に解決をリダイレクトするために、Azure サービスによってパブリック DNS サービスに正規名の DNS レコード (CNAME) が作成されます。 この解決は、プライベート エンドポイントのプライベート IP アドレスでオーバーライドすることができます。 
  
 アプリケーションで接続 URL を変更する必要はありません。 パブリック DNS サービスを使用して解決を試行すると、DNS サーバーによってプライベート エンドポイントに対する解決が行われます。 このプロセスは既存のアプリケーションには影響しません。 
+
+> [!IMPORTANT]
+> 特定の種類にプライベート DNS ゾーンを既に使用しているプライベート ネットワークは、プライベート エンドポイント接続が与えられていない場合、パブリック リソースにのみ接続できます。それ以外の場合、DNS 解決シーケンスを完了するには、プライベート DNS ゾーンに、対応する DNS 構成が必要になります。 
 
 Azure サービスについては、次の表に示すように、推奨されるゾーン名を使用します。
 

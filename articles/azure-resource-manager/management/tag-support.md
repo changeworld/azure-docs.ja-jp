@@ -2,13 +2,13 @@
 title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.date: 08/25/2020
+ms.openlocfilehash: 91c6d5930a9066e73355a0c8e6021b1e7c20802d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272435"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855076"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -28,6 +28,7 @@ ms.locfileid: "88272435"
 > - [Microsoft.AppPlatform](#microsoftappplatform)
 > - [Microsoft.Attestation](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
+> - [Microsoft.Automanage](#microsoftautomanage)
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AVS](#microsoftavs)
 > - [Microsoft.Azure.Geneva](#microsoftazuregeneva)
@@ -51,6 +52,7 @@ ms.locfileid: "88272435"
 > - [Microsoft.ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.Codespaces](#microsoftcodespaces)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
@@ -78,6 +80,7 @@ ms.locfileid: "88272435"
 > - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
 > - [Microsoft.DesktopVirtualization](#microsoftdesktopvirtualization)
 > - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft.DeviceUpdate](#microsoftdeviceupdate)
 > - [Microsoft.DevOps](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
@@ -180,7 +183,6 @@ ms.locfileid: "88272435"
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [Microsoft.VMware](#microsoftvmware)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Microsoft.VMwareOnAzure](#microsoftvmwareonazure)
 > - [Microsoft.VnfManager](#microsoftvnfmanager)
 > - [Microsoft.VSOnline](#microsoftvsonline)
 > - [Microsoft.Web](#microsoftweb)
@@ -225,6 +227,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
+> | advisorScore | いいえ | いいえ |
 > | configuration | いいえ | いいえ |
 > | generateRecommendations | いいえ | いいえ |
 > | metadata | いいえ | いいえ |
@@ -268,6 +271,7 @@ ms.locfileid: "88272435"
 > | ------------- | ----------- | ----------- |
 > | configurationStores | はい | はい |
 > | configurationStores / eventGridFilters | いいえ | いいえ |
+> | configurationStores / keyValues | いいえ | いいえ |
 
 ## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
 
@@ -291,6 +295,8 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
+> | accessReviewScheduleDefinitions | いいえ | いいえ |
+> | accessReviewScheduleSettings | いいえ | いいえ |
 > | classicAdministrators | いいえ | いいえ |
 > | dataAliases | いいえ | いいえ |
 > | denyAssignments | いいえ | いいえ |
@@ -300,13 +306,23 @@ ms.locfileid: "88272435"
 > | 権限 | いいえ | いいえ |
 > | policyAssignments | いいえ | いいえ |
 > | policyDefinitions | いいえ | いいえ |
+> | policyExemptions | いいえ | いいえ |
 > | policySetDefinitions | いいえ | いいえ |
 > | privateLinkAssociations | いいえ | いいえ |
 > | providerOperations | いいえ | いいえ |
-> | resourceManagementPrivateLinks | いいえ | いいえ |
+> | resourceManagementPrivateLinks | はい | はい |
 > | roleAssignments | いいえ | いいえ |
 > | roleAssignmentsUsageMetrics | いいえ | いいえ |
 > | roleDefinitions | いいえ | いいえ |
+
+## <a name="microsoftautomanage"></a>Microsoft.Automanage
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | タグのサポート | コスト レポートのタグ |
+> | ------------- | ----------- | ----------- |
+> | accounts | はい | はい |
+> | configurationProfileAssignments | いいえ | いいえ |
+> | configurationProfilePreferences | はい | はい |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -314,7 +330,7 @@ ms.locfileid: "88272435"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | automationAccounts | はい | はい |
-> | automationAccounts / configurations | はい | はい |
+> | automationAccounts / configurations | ○ | はい |
 > | automationAccounts / jobs | いいえ | いいえ |
 > | automationAccounts / privateEndpointConnectionProxies | いいえ | いいえ |
 > | automationAccounts / privateEndpointConnections | いいえ | いいえ |
@@ -323,19 +339,26 @@ ms.locfileid: "88272435"
 > | automationAccounts / softwareUpdateConfigurations | いいえ | いいえ |
 > | automationAccounts / webhooks | いいえ | いいえ |
 
->[!NOTE]
->Azure Automation では、各 Automation リソースに対して最大 15 個のタグ名/値のペアの作成のみがサポートされています。
-> 
+> [!NOTE]
+> Azure Automation では、各 Automation リソースに対して最大 15 個のタグ名/値のペアの作成のみがサポートされています。
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | privateClouds | はい | ○ |
+> | privateClouds | はい | はい |
 > | privateClouds / authorizations | いいえ | いいえ |
 > | privateClouds / clusters | いいえ | いいえ |
+> | privateClouds / globalReachConnections | いいえ | いいえ |
 > | privateClouds / hcxEnterpriseSites | いいえ | いいえ |
+> | privateClouds / workloadNetworks | いいえ | いいえ |
+> | privateClouds / workloadNetworks / dhcpConfigurations | いいえ | いいえ |
+> | privateClouds / workloadNetworks / gateways | いいえ | いいえ |
+> | privateClouds / workloadNetworks / portMirroringProfiles | いいえ | いいえ |
+> | privateClouds / workloadNetworks / segments | いいえ | いいえ |
+> | privateClouds / workloadNetworks / virtualMachines | いいえ | いいえ |
+> | privateClouds / workloadNetworks / vmGroups | いいえ | いいえ |
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
 
@@ -354,6 +377,7 @@ ms.locfileid: "88272435"
 > | ------------- | ----------- | ----------- |
 > | b2cDirectories | はい | いいえ |
 > | b2ctenants | いいえ | いいえ |
+> | guestUsages | はい | はい |
 
 ## <a name="microsoftazuredata"></a>Microsoft.AzureData
 
@@ -361,12 +385,10 @@ ms.locfileid: "88272435"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | dataControllers | はい | はい |
-> | hybridDataManagers | はい | ○ |
-> | postgresInstances | はい | ○ |
-> | sqlInstances | はい | はい |
-> | sqlManagedInstances | はい | ○ |
-> | sqlServerInstances | はい | ○ |
-> | sqlServerRegistrations | はい | ○ |
+> | postgresInstances | はい | はい |
+> | sqlManagedInstances | はい | はい |
+> | sqlServerInstances | はい | はい |
+> | sqlServerRegistrations | はい | はい |
 > | sqlServerRegistrations / sqlServers | いいえ | いいえ |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
@@ -375,8 +397,8 @@ ms.locfileid: "88272435"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | cloudManifestFiles | いいえ | いいえ |
-> | edgeSubscriptions | はい | ○ |
-> | registrations | はい | ○ |
+> | edgeSubscriptions | はい | はい |
+> | registrations | はい | はい |
 > | registrations / customerSubscriptions | いいえ | いいえ |
 > | registrations / products | いいえ | いいえ |
 
@@ -385,14 +407,14 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | clusters | はい | ○ |
+> | clusters | はい | はい |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | batchAccounts | はい | ○ |
+> | batchAccounts | はい | はい |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -432,6 +454,7 @@ ms.locfileid: "88272435"
 > | billingAccounts / billingProfiles / pricesheetDownloadOperations | いいえ | いいえ |
 > | billingAccounts / billingProfiles / products | いいえ | いいえ |
 > | billingAccounts / billingProfiles / transactions | いいえ | いいえ |
+> | billingAccounts / billingProfiles / validateDetachPaymentMethodEligibility | いいえ | いいえ |
 > | billingAccounts / billingRoleAssignments | いいえ | いいえ |
 > | billingAccounts / billingRoleDefinitions | いいえ | いいえ |
 > | billingAccounts / billingSubscriptions | いいえ | いいえ |
@@ -688,12 +711,23 @@ ms.locfileid: "88272435"
 > | storageAccounts / vmImages | いいえ | いいえ |
 > | vmImages | いいえ | いいえ |
 
+## <a name="microsoftcodespaces"></a>Microsoft.Codespaces
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | タグのサポート | コスト レポートのタグ |
+> | ------------- | ----------- | ----------- |
+> | plans | はい | はい |
+> | registeredSubscriptions | いいえ | いいえ |
+
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | accounts | はい | はい |
+> | accounts / privateEndpointConnectionProxies | いいえ | いいえ |
+> | accounts / privateEndpointConnections | いいえ | いいえ |
+> | accounts / privateLinkResources | いいえ | いいえ |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -709,6 +743,7 @@ ms.locfileid: "88272435"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | availabilitySets | はい | はい |
+> | cloudServices | はい | はい |
 > | diskAccesses | はい | はい |
 > | diskEncryptionSets | はい | はい |
 > | disks | はい | はい |
@@ -860,6 +895,7 @@ ms.locfileid: "88272435"
 > | ExternalSubscriptions / Forecast | いいえ | いいえ |
 > | ExternalSubscriptions / Query | いいえ | いいえ |
 > | Forecast | いいえ | いいえ |
+> | 洞察 | いいえ | いいえ |
 > | クエリ | いいえ | いいえ |
 > | registrations | いいえ | いいえ |
 > | Reportconfigs | いいえ | いいえ |
@@ -888,21 +924,21 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | jobs | はい | ○ |
+> | jobs | はい | はい |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | DataBoxEdgeDevices | はい | ○ |
+> | DataBoxEdgeDevices | はい | はい |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | workspaces | ○ | はい |
+> | workspaces | はい | ○ |
 > | workspaces / dbWorkspaces | いいえ | いいえ |
 > | workspaces / storageEncryption | いいえ | いいえ |
 > | workspaces / virtualNetworkPeerings | いいえ | いいえ |
@@ -912,23 +948,18 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | catalogs | はい | ○ |
-> | datacatalogs | はい | はい |
-> | datacatalogs / datasources | いいえ | いいえ |
-> | datacatalogs / datasources / scans | いいえ | いいえ |
-> | datacatalogs / datasources / scans / datasets | いいえ | いいえ |
-> | datacatalogs / datasources / scans / triggers | いいえ | いいえ |
+> | catalogs | はい | はい |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | dataFactories | はい | いいえ |
+> | dataFactories | はい | はい |
 > | dataFactories / diagnosticSettings | いいえ | いいえ |
 > | dataFactories / metricDefinitions | いいえ | いいえ |
 > | dataFactorySchema | いいえ | いいえ |
-> | factories | はい | いいえ |
+> | factories | はい | はい |
 > | factories / integrationRuntimes | いいえ | いいえ |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -936,7 +967,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | accounts | はい | ○ |
+> | accounts | はい | はい |
 > | accounts / dataLakeStoreAccounts | いいえ | いいえ |
 > | accounts / storageAccounts | いいえ | いいえ |
 > | accounts / storageAccounts / containers | いいえ | いいえ |
@@ -947,7 +978,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | accounts | はい | ○ |
+> | accounts | はい | はい |
 > | accounts / eventGridFilters | いいえ | いいえ |
 > | accounts / firewallRules | いいえ | いいえ |
 
@@ -965,14 +996,14 @@ ms.locfileid: "88272435"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | BackupVaults | はい | はい |
-> | ResourceOperationGateKeepers | はい | ○ |
+> | ResourceOperationGateKeepers | はい | はい |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | accounts | はい | ○ |
+> | accounts | はい | はい |
 > | accounts / shares | いいえ | いいえ |
 > | accounts / shares / datasets | いいえ | いいえ |
 > | accounts / shares / invitations | いいえ | いいえ |
@@ -988,7 +1019,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | servers | はい | ○ |
+> | servers | はい | はい |
 > | servers / advisors | いいえ | いいえ |
 > | servers / keys | いいえ | いいえ |
 > | servers / privateEndpointConnectionProxies | いいえ | いいえ |
@@ -1022,6 +1053,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
+> | flexibleServers | はい | はい |
 > | serverGroups | はい | はい |
 > | servers | はい | はい |
 > | servers / advisors | いいえ | いいえ |
@@ -1035,7 +1067,6 @@ ms.locfileid: "88272435"
 > | servers / virtualNetworkRules | いいえ | いいえ |
 > | servers / topQueryStatistics | いいえ | いいえ |
 > | serversv2 | はい | はい |
-> | singleServers | はい | はい |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1078,6 +1109,14 @@ ms.locfileid: "88272435"
 > | ProvisioningServices | はい | はい |
 > | usages | いいえ | いいえ |
 
+## <a name="microsoftdeviceupdate"></a>Microsoft.DeviceUpdate
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | タグのサポート | コスト レポートのタグ |
+> | ------------- | ----------- | ----------- |
+> | accounts | はい | はい |
+> | accounts / instances | はい | はい |
+
 ## <a name="microsoftdevops"></a>Microsoft.DevOps
 
 > [!div class="mx-tableFixed"]
@@ -1119,6 +1158,7 @@ ms.locfileid: "88272435"
 > | ------------- | ----------- | ----------- |
 > | databaseAccountNames | いいえ | いいえ |
 > | databaseAccounts | はい | はい |
+> | restorableDatabaseAccounts | いいえ | いいえ |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
@@ -1301,10 +1341,10 @@ ms.locfileid: "88272435"
 > | devices | はい | はい |
 > | registeredSubscriptions | いいえ | いいえ |
 > | vendors | いいえ | いいえ |
-> | vendors / skus | いいえ | いいえ |
-> | vendors / vnfs | いいえ | いいえ |
-> | virtualNetworkFunctionSkus | いいえ | いいえ |
-> | vnfs | はい | はい |
+> | vendors / vendorskus | いいえ | いいえ |
+> | vendors / vendorskus / previewSubscriptions | いいえ | いいえ |
+> | virtualnetworkfunctions | はい | はい |
+> | virtualnetworkfunctionvendors | いいえ | いいえ |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1397,6 +1437,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
+> | 拡張機能 | いいえ | いいえ |
 > | sourceControlConfigurations | いいえ | いいえ |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -1451,6 +1492,9 @@ ms.locfileid: "88272435"
 > | workspaces | はい | はい |
 > | workspaces / computes | いいえ | いいえ |
 > | workspaces / eventGridFilters | いいえ | いいえ |
+> | workspaces / inferenceEndpoints | はい | はい |
+> | workspaces / inferenceEndpoints / deployments | はい | はい |
+> | workspaces / linkedServices | いいえ | いいえ |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -1460,6 +1504,7 @@ ms.locfileid: "88272435"
 > | applyUpdates | いいえ | いいえ |
 > | configurationAssignments | いいえ | いいえ |
 > | maintenanceConfigurations | はい | はい |
+> | publicMaintenanceConfigurations | いいえ | いいえ |
 > | updates | いいえ | いいえ |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -1515,6 +1560,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
+> | macc | いいえ | いいえ |
 > | offers | いいえ | いいえ |
 > | offerTypes | いいえ | いいえ |
 > | offerTypes / publishers | いいえ | いいえ |
@@ -1538,7 +1584,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | classicDevServices | はい | はい |
+> | classicDevServices | ○ | はい |
 > | updateCommunicationPreference | いいえ | いいえ |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
@@ -1561,46 +1607,46 @@ ms.locfileid: "88272435"
 > | mediaservices / contentKeyPolicies | いいえ | いいえ |
 > | mediaservices / eventGridFilters | いいえ | いいえ |
 > | mediaservices / liveEventOperations | いいえ | いいえ |
-> | mediaservices / liveEvents | はい | ○ |
+> | mediaservices / liveEvents | はい | はい |
 > | mediaservices / liveEvents / liveOutputs | いいえ | いいえ |
-> | mediaservices / liveEvents / privateEndpointConnectionProxies | いいえ | いいえ |
 > | mediaservices / liveOutputOperations | いいえ | いいえ |
 > | mediaservices / mediaGraphs | いいえ | いいえ |
+> | mediaservices / privateEndpointConnectionOperations | いいえ | いいえ |
+> | mediaservices / privateEndpointConnectionProxies | いいえ | いいえ |
+> | mediaservices / privateEndpointConnections | いいえ | いいえ |
 > | mediaservices / streamingEndpointOperations | いいえ | いいえ |
 > | mediaservices / streamingEndpoints | はい | はい |
-> | mediaservices / streamingEndpoints / privateEndpointConnectionProxies | いいえ | いいえ |
 > | mediaservices / streamingLocators | いいえ | いいえ |
 > | mediaservices / streamingPolicies | いいえ | いいえ |
-> | mediaservices / streamingPrivateEndpointConnectionProxyOperations | いいえ | いいえ |
 > | mediaservices / transforms | いいえ | いいえ |
-> | mediaservices / transforms / jobs | いいえ | いいえ |
+> | mediaservices / transforms / jobs | いいえ | × |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | appClusters | はい | ○ |
+> | appClusters | はい | はい |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | assessmentProjects | はい | ○ |
-> | migrateprojects | はい | ○ |
-> | moveCollections | はい | ○ |
-> | projects | はい | ○ |
+> | assessmentProjects | はい | はい |
+> | migrateprojects | はい | はい |
+> | moveCollections | はい | はい |
+> | projects | はい | はい |
 
 ## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | holographicsBroadcastAccounts | はい | ○ |
-> | objectUnderstandingAccounts | はい | ○ |
-> | remoteRenderingAccounts | はい | ○ |
-> | spatialAnchorsAccounts | はい | ○ |
+> | holographicsBroadcastAccounts | はい | はい |
+> | objectUnderstandingAccounts | はい | はい |
+> | remoteRenderingAccounts | はい | はい |
+> | spatialAnchorsAccounts | はい | はい |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1610,7 +1656,7 @@ ms.locfileid: "88272435"
 > | netAppAccounts | ○ | いいえ |
 > | netAppAccounts / accountBackups | いいえ | いいえ |
 > | netAppAccounts / capacityPools | ○ | いいえ |
-> | netAppAccounts / capacityPools / volumes | ○ | いいえ |
+> | netAppAccounts / capacityPools / volumes | はい | いいえ |
 > | netAppAccounts / capacityPools / volumes / snapshots | いいえ | いいえ |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -1618,61 +1664,61 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | applicationGateways | はい | ○ |
-> | applicationGatewayWebApplicationFirewallPolicies | はい | ○ |
-> | applicationSecurityGroups | はい | ○ |
+> | applicationGateways | はい | はい |
+> | applicationGatewayWebApplicationFirewallPolicies | はい | はい |
+> | applicationSecurityGroups | はい | はい |
 > | azureFirewallFqdnTags | いいえ | いいえ |
-> | azureFirewalls | ○ | いいえ |
+> | azureFirewalls | はい | いいえ |
 > | bastionHosts | はい | いいえ |
 > | bgpServiceCommunities | いいえ | いいえ |
-> | connections | はい | ○ |
-> | ddosCustomPolicies | はい | ○ |
-> | ddosProtectionPlans | はい | ○ |
-> | dnsOperationStatuses | いいえ | × |
-> | dnszones | はい | ○ |
-> | dnszones / A | いいえ | × |
-> | dnszones / AAAA | いいえ | × |
-> | dnszones / all | いいえ | × |
-> | dnszones / CAA | いいえ | × |
-> | dnszones / CNAME | いいえ | × |
-> | dnszones / MX | いいえ | × |
-> | dnszones / NS | いいえ | × |
-> | dnszones / PTR | いいえ | × |
-> | dnszones / recordsets | いいえ | × |
-> | dnszones / SOA | いいえ | × |
-> | dnszones / SRV | いいえ | × |
-> | dnszones / TXT | いいえ | × |
-> | expressRouteCircuits | はい | ○ |
-> | expressRouteCrossConnections | はい | ○ |
-> | expressRouteGateways | はい | ○ |
-> | expressRoutePorts | はい | ○ |
-> | expressRouteServiceProviders | いいえ | × |
-> | firewallPolicies | はい | ○ |
+> | connections | はい | はい |
+> | ddosCustomPolicies | はい | はい |
+> | ddosProtectionPlans | はい | はい |
+> | dnsOperationStatuses | いいえ | いいえ |
+> | dnszones | はい | はい |
+> | dnszones / A | いいえ | いいえ |
+> | dnszones / AAAA | いいえ | いいえ |
+> | dnszones / all | いいえ | いいえ |
+> | dnszones / CAA | いいえ | いいえ |
+> | dnszones / CNAME | いいえ | いいえ |
+> | dnszones / MX | いいえ | いいえ |
+> | dnszones / NS | いいえ | いいえ |
+> | dnszones / PTR | いいえ | いいえ |
+> | dnszones / recordsets | いいえ | いいえ |
+> | dnszones / SOA | いいえ | いいえ |
+> | dnszones / SRV | いいえ | いいえ |
+> | dnszones / TXT | いいえ | いいえ |
+> | expressRouteCircuits | はい | はい |
+> | expressRouteCrossConnections | はい | はい |
+> | expressRouteGateways | はい | はい |
+> | expressRoutePorts | はい | はい |
+> | expressRouteServiceProviders | いいえ | いいえ |
+> | firewallPolicies | はい | はい |
 > | frontdoors | はい。ただし、制限あり ([下記の注](#frontdoor)を参照) | はい |
 > | frontdoorWebApplicationFirewallManagedRuleSets | はい。ただし、制限あり ([下記の注](#frontdoor)を参照) | いいえ |
 > | frontdoorWebApplicationFirewallPolicies | はい。ただし、制限あり ([下記の注](#frontdoor)を参照) | はい |
-> | getDnsResourceReference | いいえ | × |
-> | internalNotify | いいえ | × |
-> | loadBalancers | はい | ○ |
-> | localNetworkGateways | はい | ○ |
-> | natGateways | はい | ○ |
-> | networkIntentPolicies | はい | ○ |
-> | networkInterfaces | はい | ○ |
-> | networkProfiles | はい | ○ |
+> | getDnsResourceReference | いいえ | いいえ |
+> | internalNotify | いいえ | いいえ |
+> | loadBalancers | はい | はい |
+> | localNetworkGateways | はい | はい |
+> | natGateways | はい | はい |
+> | networkIntentPolicies | はい | はい |
+> | networkInterfaces | はい | はい |
+> | networkProfiles | はい | はい |
 > | networkSecurityGroups | はい | はい |
-> | networkWatchers | はい | ○ |
+> | networkWatchers | はい | はい |
 > | networkWatchers / connectionMonitors | はい | いいえ |
-> | networkWatchers / flowLogs | いいえ | × |
-> | networkWatchers / lenses | ○ | いいえ |
-> | networkWatchers / pingMeshes | ○ | いいえ |
-> | p2sVpnGateways | はい | ○ |
-> | privateDnsOperationStatuses | いいえ | × |
+> | networkWatchers / flowLogs | いいえ | いいえ |
+> | networkWatchers / lenses | はい | いいえ |
+> | networkWatchers / pingMeshes | はい | いいえ |
+> | p2sVpnGateways | はい | はい |
+> | privateDnsOperationStatuses | いいえ | いいえ |
 > | privateDnsZones | はい | はい |
-> | privateDnsZones / A | いいえ | × |
-> | privateDnsZones / AAAA | いいえ | × |
-> | privateDnsZones / all | いいえ | × |
-> | privateDnsZones / CNAME | いいえ | × |
-> | privateDnsZones / MX | いいえ | × |
+> | privateDnsZones / A | いいえ | いいえ |
+> | privateDnsZones / AAAA | いいえ | いいえ |
+> | privateDnsZones / all | いいえ | いいえ |
+> | privateDnsZones / CNAME | いいえ | いいえ |
+> | privateDnsZones / MX | いいえ | いいえ |
 > | privateDnsZones / PTR | いいえ | いいえ |
 > | privateDnsZones / SOA | いいえ | いいえ |
 > | privateDnsZones / SRV | いいえ | いいえ |
@@ -1680,23 +1726,23 @@ ms.locfileid: "88272435"
 > | privateDnsZones / virtualNetworkLinks | はい | ○ |
 > | privateEndpoints | はい | ○ |
 > | privateLinkServices | はい | ○ |
-> | publicIPAddresses | はい | ○ |
-> | publicIPPrefixes | はい | ○ |
-> | routeFilters | はい | ○ |
-> | routeTables | はい | ○ |
-> | serviceEndpointPolicies | はい | ○ |
+> | publicIPAddresses | はい | はい |
+> | publicIPPrefixes | はい | はい |
+> | routeFilters | はい | はい |
+> | routeTables | はい | はい |
+> | serviceEndpointPolicies | はい | はい |
 > | trafficManagerGeographicHierarchies | いいえ | いいえ |
-> | trafficmanagerprofiles | はい | ○ |
+> | trafficmanagerprofiles | はい | はい |
 > | trafficmanagerprofiles/heatMaps | いいえ | いいえ |
 > | trafficManagerUserMetricsKeys | いいえ | いいえ |
-> | virtualHubs | はい | ○ |
-> | virtualNetworkGateways | はい | ○ |
+> | virtualHubs | はい | はい |
+> | virtualNetworkGateways | はい | はい |
 > | virtualNetworks | はい | はい |
 > | virtualNetworks / subnets | いいえ | いいえ |
-> | virtualNetworkTaps | はい | ○ |
-> | virtualWans | ○ | いいえ |
-> | vpnGateways | はい | ○ |
-> | vpnSites | はい | ○ |
+> | virtualNetworkTaps | はい | はい |
+> | virtualWans | はい | いいえ |
+> | vpnGateways | はい | はい |
+> | vpnSites | はい | はい |
 > | webApplicationFirewallPolicies | はい | はい |
 
 <a id="frontdoor"></a>
@@ -1717,7 +1763,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | namespaces | ○ | いいえ |
+> | namespaces | はい | いいえ |
 > | namespaces / notificationHubs | はい | いいえ |
 
 ## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
@@ -1725,28 +1771,29 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | osNamespaces | はい | ○ |
+> | osNamespaces | はい | はい |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | HyperVSites | はい | ○ |
-> | ImportSites | はい | ○ |
-> | ServerSites | はい | ○ |
-> | VMwareSites | はい | ○ |
+> | HyperVSites | はい | はい |
+> | ImportSites | はい | はい |
+> | MasterSites | はい | はい |
+> | ServerSites | はい | はい |
+> | VMwareSites | はい | はい |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | clusters | はい | ○ |
+> | clusters | はい | はい |
 > | deletedWorkspaces | いいえ | いいえ |
 > | linkTargets | いいえ | いいえ |
 > | storageInsightConfigs | いいえ | いいえ |
-> | workspaces | はい | ○ |
+> | workspaces | はい | はい |
 > | workspaces / dataExports | いいえ | いいえ |
 > | workspaces / dataSources | いいえ | いいえ |
 > | workspaces / linkedServices | いいえ | いいえ |
@@ -1782,6 +1829,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
+> | attestations | いいえ | いいえ |
 > | policyEvents | いいえ | いいえ |
 > | policyMetadata | いいえ | いいえ |
 > | policyStates | いいえ | いいえ |
@@ -1858,7 +1906,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | namespaces | はい | ○ |
+> | namespaces | はい | はい |
 > | namespaces / authorizationrules | いいえ | いいえ |
 > | namespaces / hybridconnections | いいえ | いいえ |
 > | namespaces / hybridconnections / authorizationrules | いいえ | いいえ |
@@ -1871,7 +1919,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | Query | はい | ○ |
+> | Query | はい | はい |
 > | resourceChangeDetails | いいえ | いいえ |
 > | resourceChanges | いいえ | いいえ |
 > | resources | いいえ | いいえ |
@@ -1898,9 +1946,9 @@ ms.locfileid: "88272435"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | calculateTemplateHash | いいえ | いいえ |
-> | deployments | ○ | いいえ |
+> | deployments | はい | いいえ |
 > | deployments / operations | いいえ | いいえ |
-> | deploymentScripts | はい | ○ |
+> | deploymentScripts | はい | はい |
 > | deploymentScripts / logs | いいえ | いいえ |
 > | リンク | いいえ | いいえ |
 > | notifyResourceJobs | いいえ | いいえ |
@@ -1944,6 +1992,7 @@ ms.locfileid: "88272435"
 > | automations | はい | はい |
 > | AutoProvisioningSettings | いいえ | いいえ |
 > | Compliances | いいえ | いいえ |
+> | connectors | いいえ | いいえ |
 > | dataCollectionAgents | いいえ | いいえ |
 > | deviceSecurityGroups | いいえ | いいえ |
 > | discoveredSecuritySolutions | いいえ | いいえ |
@@ -1955,7 +2004,10 @@ ms.locfileid: "88272435"
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | いいえ | いいえ |
 > | iotSecuritySolutions / iotAlerts | いいえ | いいえ |
 > | iotSecuritySolutions / iotAlertTypes | いいえ | いいえ |
+> | iotSecuritySolutions / iotRecommendations | いいえ | いいえ |
+> | iotSecuritySolutions / iotRecommendationTypes | いいえ | いいえ |
 > | jitNetworkAccessPolicies | いいえ | いいえ |
+> | jitPolicies | いいえ | いいえ |
 > | policies | いいえ | いいえ |
 > | pricings | いいえ | いいえ |
 > | regulatoryComplianceStandards | いいえ | いいえ |
@@ -2004,6 +2056,7 @@ ms.locfileid: "88272435"
 > | officeConsents | いいえ | いいえ |
 > | settings | いいえ | いいえ |
 > | threatIntelligence | いいえ | いいえ |
+> | watchlists | いいえ | いいえ |
 
 ## <a name="microsoftserialconsole"></a>Microsoft.SerialConsole
 
@@ -2038,29 +2091,29 @@ ms.locfileid: "88272435"
 > | applications | はい | はい |
 > | clusters | はい | はい |
 > | clusters/applications | いいえ | いいえ |
-> | containerGroups | はい | ○ |
-> | containerGroupSets | はい | ○ |
-> | edgeclusters | はい | ○ |
+> | containerGroups | はい | はい |
+> | containerGroupSets | はい | はい |
+> | edgeclusters | はい | はい |
 > | edgeclusters / applications | いいえ | いいえ |
-> | managedclusters | はい | ○ |
+> | managedclusters | はい | はい |
 > | managedclusters / nodetypes | いいえ | いいえ |
-> | networks | はい | ○ |
-> | secretstores | はい | ○ |
+> | networks | はい | はい |
+> | secretstores | はい | はい |
 > | secretstores / certificates | いいえ | いいえ |
 > | secretstores / secrets | いいえ | いいえ |
-> | volumes | はい | ○ |
+> | volumes | はい | はい |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | applications | はい | ○ |
-> | containerGroups | はい | ○ |
-> | gateways | はい | ○ |
-> | networks | はい | ○ |
-> | secrets | はい | ○ |
-> | volumes | はい | ○ |
+> | applications | はい | はい |
+> | containerGroups | はい | はい |
+> | gateways | はい | はい |
+> | networks | はい | はい |
+> | secrets | はい | はい |
+> | volumes | はい | はい |
 
 ## <a name="microsoftservices"></a>Microsoft.Services
 
@@ -2069,14 +2122,14 @@ ms.locfileid: "88272435"
 > | ------------- | ----------- | ----------- |
 > | providerRegistrations | いいえ | いいえ |
 > | providerRegistrations / resourceTypeRegistrations | いいえ | いいえ |
-> | rollouts | はい | ○ |
+> | rollouts | はい | はい |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | SignalR | はい | ○ |
+> | SignalR | はい | はい |
 > | SignalR / eventGridFilters | いいえ | いいえ |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
@@ -2091,9 +2144,9 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | applicationDefinitions | はい | ○ |
-> | applications | はい | ○ |
-> | jitRequests | はい | ○ |
+> | applicationDefinitions | はい | はい |
+> | applications | はい | はい |
+> | jitRequests | はい | はい |
 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
@@ -2133,9 +2186,9 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | SqlVirtualMachineGroups | はい | ○ |
+> | SqlVirtualMachineGroups | はい | はい |
 > | SqlVirtualMachineGroups / AvailabilityGroupListeners | いいえ | いいえ |
-> | SqlVirtualMachines | はい | ○ |
+> | SqlVirtualMachines | はい | はい |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -2156,7 +2209,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | caches | はい | ○ |
+> | caches | はい | はい |
 > | caches / storageTargets | いいえ | いいえ |
 > | usageModels | いいえ | いいえ |
 
@@ -2172,7 +2225,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | storageSyncServices | はい | はい |
+> | storageSyncServices | はい | ○ |
 > | storageSyncServices / registeredServers | いいえ | いいえ |
 > | storageSyncServices / syncGroups | いいえ | いいえ |
 > | storageSyncServices / syncGroups / cloudEndpoints | いいえ | いいえ |
@@ -2196,7 +2249,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | storageSyncServices | はい | ○ |
+> | storageSyncServices | はい | はい |
 > | storageSyncServices / registeredServers | いいえ | いいえ |
 > | storageSyncServices / syncGroups | いいえ | いいえ |
 > | storageSyncServices / syncGroups / cloudEndpoints | いいえ | いいえ |
@@ -2208,14 +2261,14 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | managers | はい | ○ |
+> | managers | はい | はい |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | clusters | はい | ○ |
+> | clusters | はい | はい |
 > | streamingjobs | はい (下記の「注」を参照) | はい |
 
 > [!NOTE]
@@ -2226,7 +2279,11 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
+> | acceptChangeTenant | いいえ | いいえ |
+> | aliases | いいえ | いいえ |
 > | cancel | いいえ | いいえ |
+> | changeTenantRequest | いいえ | いいえ |
+> | changeTenantStatus | いいえ | いいえ |
 > | CreateSubscription | いいえ | いいえ |
 > | 有効化 (enable) | いいえ | いいえ |
 > | rename | いいえ | いいえ |
@@ -2239,20 +2296,21 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | privateLinkHubs | はい | ○ |
-> | workspaces | はい | ○ |
-> | workspaces / bigDataPools | はい | ○ |
+> | privateLinkHubs | はい | はい |
+> | workspaces | はい | はい |
+> | workspaces / bigDataPools | はい | はい |
 > | workspaces / operationStatuses | いいえ | いいえ |
-> | workspaces / sqlPools | はい | ○ |
+> | workspaces / sqlDatabases | はい | はい |
+> | workspaces / sqlPools | はい | はい |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | 環境 | ○ | いいえ |
+> | 環境 | はい | いいえ |
 > | environments / accessPolicies | いいえ | いいえ |
-> | environments/eventsources | ○ | いいえ |
+> | environments/eventsources | はい | いいえ |
 > | environments / referenceDataSets | はい | いいえ |
 
 ## <a name="microsofttoken"></a>Microsoft.Token
@@ -2260,7 +2318,7 @@ ms.locfileid: "88272435"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | stores | はい | ○ |
+> | stores | はい | はい |
 > | stores / accessPolicies | いいえ | いいえ |
 > | stores / services | いいえ | いいえ |
 > | stores / services / tokens | いいえ | いいえ |
@@ -2293,13 +2351,6 @@ ms.locfileid: "88272435"
 > | dedicatedCloudNodes | はい | はい |
 > | dedicatedCloudServices | はい | はい |
 > | virtualMachines | はい | はい |
-
-## <a name="microsoftvmwareonazure"></a>Microsoft.VMwareOnAzure
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | タグのサポート | コスト レポートのタグ |
-> | ------------- | ----------- | ----------- |
-> | privateClouds | はい | はい |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
 

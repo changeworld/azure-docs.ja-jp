@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827862"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654261"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -26,7 +26,7 @@ Azure には、複数の種類のクラウド ストレージが用意されて�
 
 [Azure ファイル共有](storage-files-introduction.md)は、汎用ファイル データに適しています。 このデータには、オンプレミスの SMB または NFS 共有を使用する対象となるあらゆるデータが含まれています。 [Azure File Sync](storage-sync-files-planning.md) を使用すると、Windows サーバーが実行中のオンプレミス サーバーに複数の Azure ファイル共有のコンテンツをキャッシュできます。
 
-オンプレミス サーバーで現在実行中のアプリケーションの場合、ファイルを Azure ファイル共有に格納することが適している場合もあります。 アプリケーションを Azure に移動し、Azure ファイル共有を共有ストレージとして使用できます。 このシナリオでは、[Azure Disk](../../virtual-machines/windows/managed-disks-overview.md) を考慮することもできます。
+オンプレミス サーバーで現在実行中のアプリケーションの場合、ファイルを Azure ファイル共有に格納することが適している場合もあります。 アプリケーションを Azure に移動し、Azure ファイル共有を共有ストレージとして使用できます。 このシナリオでは、[Azure Disk](../../virtual-machines/managed-disks-overview.md) を考慮することもできます。
 
 クラウド アプリケーションによっては、SMB、マシンローカル データ アクセス、および共有アクセスに依存しないものもあります。 これらのアプリでは、[Azure BLOB](../blobs/storage-blobs-overview.md) のようなオブジェクト ストレージが多くの場合に最適です。
 

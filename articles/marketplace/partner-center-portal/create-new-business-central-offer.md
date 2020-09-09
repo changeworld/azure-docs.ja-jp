@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031479"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817053"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central オファーの作成
 
@@ -29,7 +29,7 @@ ms.locfileid: "88031479"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 
@@ -182,16 +182,16 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
-オファーのロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **小** (48 x 48 px、省略可能)
 
-オファーのロゴを 2 つのサイズでアップロードします。
-
-* **小** (48 x 48 ピクセル)
-* **大** (216 x 216 ピクセル)
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。

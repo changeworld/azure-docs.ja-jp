@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922318"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892186"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -79,8 +79,8 @@ Linux マシンをバックアップをしたい場合に何がサポートさ�
 --- | ---
 **Linux を実行しているオンプレミスのマシンの直接バックアップ** | サポートされていません。 MARS エージェントは Windows マシンにのみインストールできます。
 **エージェント拡張機能を使用した Linux を実行している Azure VM のバックアップ** | [カスタム スクリプト](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ。<br/><br/> ファイルレベルの回復。<br/><br/> 復旧ポイントまたはディスクから VM を作成することによる復元。
-**DPM を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。
-**MABS を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。
+**DPM を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMware 上の Linux ゲスト VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMware Linux ゲスト VM の VM の復元。
+**MABS を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMware 上の Linux ゲスト VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMware Linux ゲスト VM の VM の復元。
 **MABS または DPM を使用した Linux Azure VM のバックアップ** | サポートされていません。
 
 ## <a name="daylight-saving-time-support"></a>夏時間のサポート
@@ -145,7 +145,7 @@ Backup では、次の表にまとめられているように、バックアッ�
 
 ## <a name="cross-region-restore"></a>リージョンをまたがる復元
 
-Azure Backup に、データの可用性と回復性の機能を強化するために、リージョンをまたがる復元機能が追加されました。これにより、お客様は、セカンダリ リージョンにデータを完全に復元することができます。 この機能を構成するには、[リージョンをまたがる復元の設定に関する記事](backup-create-rs-vault.md#set-cross-region-restore)を参照してください。 この機能は、次の管理の種類でサポートされています。
+Azure Backup に、データの可用性と回復性の機能を強化するために、リージョンをまたがる復元機能が追加されました。これにより、セカンダリ リージョンにデータを完全に復元することができます。 この機能を構成するには、[リージョンをまたがる復元の設定に関する記事](backup-create-rs-vault.md#set-cross-region-restore)を参照してください。 この機能は、次の管理の種類でサポートされています。
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |

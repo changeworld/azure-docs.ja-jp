@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: bbb0f530d95c78b8b5da178ee1544830ac3f7132
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080628"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660598"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>クイック スタート:Service Bus のトピックとサブスクリプションを Node.js および azure/service-bus パッケージで使用する方法
 このチュートリアルでは、新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して Service Bus トピックにメッセージを送り、Service Bus サブスクリプションからメッセージを受け取る Node.js プログラムの記述方法を学習します。 このパッケージではより高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)が使用されます。一方、以前の [azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されていました。 サンプルは JavaScript で記述されています。
@@ -86,7 +86,7 @@ Service Bus トピックでサポートされているメッセージの最大�
 Service Bus サブスクリプションとのやりとりは、[ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) クラスをインスタンス化し、それを使用して [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient) クラスをインスタンス化することから始まります。 サブスクリプション クライアントを取得したら、受信側を作成し、[receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) または [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) メソッドを使用して、メッセージを受信できます。
 
 1. [Visual Studio Code](https://code.visualstudio.com/) など、お好みのエディターを開きます
-2. `recieve.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードでは、サブスクリプションから 10 件のメッセージを受信してみます。 受信する実際の数は、サブスクリプションのメッセージの数とネットワーク待機時間によって異なります。
+2. `receive.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードでは、サブスクリプションから 10 件のメッセージを受信してみます。 受信する実際の数は、サブスクリプションのメッセージの数とネットワーク待機時間によって異なります。
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -117,7 +117,7 @@ Service Bus サブスクリプションとのやりとりは、[ServiceBusClient
     });
     ```
 3. 上記のコードで、接続文字列と、トピックおよびサブスクリプションの名前を入力します。
-4. その後、コマンド プロンプトで `node receiveMessages.js` コマンドを実行して、このファイルを実行します。
+4. その後、コマンド プロンプトで `node receive.js` コマンドを実行して、このファイルを実行します。
 
 お疲れさまでした。 これで、Service Bus サブスクリプションからメッセージが受信されました。
 

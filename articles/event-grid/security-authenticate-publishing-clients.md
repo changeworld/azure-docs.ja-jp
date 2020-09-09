@@ -3,12 +3,13 @@ title: Event Grid のカスタム トピックまたはドメインにイベン�
 description: この記事では、Event Grid のカスタム トピックにイベントを発行するクライアントを認証するさまざまな方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e934ce0d8f5e31dc8dd7592a2e553cd278af2b10
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837399"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019115"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>発行クライアントを認証する (Azure Event Grid)
 この記事では、**アクセス キー**または **Shared Access Signature (SAS)** トークンを使用して、Azure Event Grid のトピックまたはドメインにイベントを発行するクライアントを認証する方法について説明します。 SAS トークンを使用することをお勧めしますが、キー認証はプログラミングが簡単で、既存の多くの Webhook 発行元と互換性があります。  

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1b32ae55030cc24c8892b204ff7330269993a483
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094810"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961569"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境での可用性ゾーンのサポート
 
@@ -77,18 +77,16 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
     ]
 ```
 
-アプリがゾーン冗長になるようにするには、2 つのゾーン ILB ASE をデプロイする必要があります。 2 つのゾーン ILB ASE は、別々の可用性ゾーンに存在する必要があります。 次に、それぞれの ILB ASE にアプリをデプロイする必要があります。 アプリが作成されたら、負荷分散ソリューションを構成する必要があります。 推奨されるソリューションは、ゾーン ILB ASE の[ゾーン冗長 Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) アップストリームをデプロイすることです。 
+アプリがゾーン冗長になるようにするには、2 つのゾーン ILB ASE をデプロイする必要があります。 2 つのゾーン ILB ASE は、別々の可用性ゾーンに存在する必要があります。 次に、それぞれの ILB ASE にアプリをデプロイする必要があります。 アプリが作成されたら、負荷分散ソリューションを構成する必要があります。 推奨されるソリューションは、ゾーン ILB ASE の[ゾーン冗長 Application Gateway](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) アップストリームをデプロイすることです。 
 
 ## <a name="in-region-data-residency"></a>リージョンのデータの保存場所 ##
 
 可用性ゾーンにデプロイされた ILB ASE には、ゾーン ILB ASE がデプロイされているリージョン内のユーザー データのみが格納されます。 Web サイトのファイル コンテンツ、ユーザーが指定した設定、および App Service に格納されているシークレットは、いずれもゾーン ILB ASE がデプロイされているリージョン内に残ります。
 
-ユーザーは、「可用性ゾーンに App Service Environment をデプロイする方法」の項で説明した手順に従って、単一リージョンのデータの保存場所となるようにしてください。 これらの手順に従って App Service Environment を構成することにより、可用性ゾーンにデプロイされた App Service Environment で、リージョンのデータの保存場所の要件が満たされます ([Azure セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に指定されている要件を含む)。
+ユーザーは、「可用性ゾーンに App Service Environment をデプロイする方法」の項で説明した手順に従って、単一リージョンのデータの保存場所となるようにしてください。 これらの手順に従って App Service Environment を構成することにより、可用性ゾーンにデプロイされた App Service Environment で、リージョンのデータの保存場所の要件が満たされます ([Azure トラスト センター](https://azuredatacentermap.azurewebsites.net/)に指定されている要件を含む)。
 
 ユーザーは、次の手順に従って、1 つのリージョンにデータが格納されるように App Service Environment が適切に構成されていることを検証できます。 
 
 1. [リソース エクスプローラー](https://resources.azure.com)を使用して、App Service Environment の ARM リソースに移動します。  ASE は *providers/Microsoft. Web/hostingEnvironments* の下に一覧表示されます。
 2. *zones* プロパティが ARM JSON 構文のビューに存在し、値が "1"、"2"、または "3" の単一値の JSON 配列が含まれている場合、ASE はゾーン形式でにデプロイされており、ユーザー データは同じリージョンに残ります。
 2. *zones* プロパティが存在しない場合、または前に指定した有効なゾーン値がプロパティにない場合、ASE はゾーン形式でデプロイされておらず、ユーザー データは同じリージョンに排他的に格納されません。
-
-

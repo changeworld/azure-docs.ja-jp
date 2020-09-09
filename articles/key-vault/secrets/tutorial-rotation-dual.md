@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542197"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482784"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
-Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/managed-identity.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはパスワードが使用されます。 アクセス キーとパスワードはたびたびローテーションする必要があります。
+Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/authentication.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはパスワードが使用されます。 アクセス キーとパスワードはたびたびローテーションする必要があります。
 
 このチュートリアルでは、2 セットの認証資格情報を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault にシークレットとして格納されている Azure ストレージ アカウント キーをローテーションします。 :
 
@@ -91,7 +91,7 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 1. **[確認および作成]** を選択します。
 1. **[作成]**
 
-   ![[確認および作成]](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![最初のストレージ アカウントを確認して作成します](../media/secrets/rotation-dual/dual-rotation-2.png)
 
 上記の手順を完了すると、ストレージ アカウント、サーバー ファーム、関数アプリ、Application Insights を使用できるようになります。 デプロイが完了すると、以下の画面が表示されます。![デプロイ完了](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
@@ -136,13 +136,13 @@ az keyvault secret set --name storageKey --vault-name akvrotation-kv --value <ke
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey
 ```
-`CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。![シークレットの表示](../media/secrets/rotation-dual/dual-rotation-4.png)
+`CredentialId` が別の `keyName` に更新され、`value` が再生成されたことに注意してください ![最初のストレージ アカウントに対する az keyvault secret show の出力](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 アクセス キーを取得して値を確認します。
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![アクセス キー リスト](../media/secrets/rotation-dual/dual-rotation-5.png)
+![最初のストレージ アカウントに対する az storage account keys list の出力](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-additional-storage-accounts-for-rotation"></a>ローテーションに使用するストレージ アカウントをもう 1 つ追加する
 
@@ -164,7 +164,7 @@ az storage account keys list -n akvrotationstorage
 1. **[確認および作成]** を選択します。
 1. **[作成]**
 
-   ![[確認および作成]](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![2 つ目のストレージ アカウントを確認して作成します](../media/secrets/rotation-dual/dual-rotation-7.png)
 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>もう 1 つのストレージ アカウントのアクセス キーを Key Vault に追加する
 
@@ -182,7 +182,7 @@ az storage account keys list -n akvrotationstorage2
 取得した値を **key2Value** と **storageAccountResourceId** に反映します。
 
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
+tomorrowDate=`date -d tomorrow -Iseconds -u | awk -F'+' '{print $1"Z"}'`
 az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 
@@ -190,13 +190,13 @@ az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <k
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey2
 ```
-`CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。![シークレットの表示](../media/secrets/rotation-dual/dual-rotation-8.png)
+`CredentialId` が別の `keyName` に更新され、`value` が再生成されたことに注意してください ![2 つ目のストレージ アカウントに対する az keyvault secret show の出力](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 アクセス キーを取得して値を確認します。
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![アクセス キー リスト](../media/secrets/rotation-dual/dual-rotation-9.png)
+![2 つ目のストレージ アカウントに対する az storage account keys list の出力](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>公開されている Key Vault デュアル資格情報ローテーション関数
 

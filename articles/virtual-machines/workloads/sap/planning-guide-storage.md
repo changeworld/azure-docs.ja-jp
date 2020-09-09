@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510863"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653615"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -36,7 +36,7 @@ Standard HDD、Standard SSD、Azure Premium Storage、Ultra Disk からなる Mi
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 
-マネージド ディスクは Azure Resource Manager のリソースの種類で、Azure ストレージ アカウントに格納されている VHD の代わりに使用できます。 マネージド ディスクはアタッチ先の仮想マシンの [「可用性セット」][virtual-machines-manage-availability] に自動的に配置され、それによって仮想マシンと仮想マシンで実行されているサービスの可用性が向上します。 詳細については、[概要についての記事](../../windows/managed-disks-overview.md)を参照してください。
+マネージド ディスクは Azure Resource Manager のリソースの種類で、Azure ストレージ アカウントに格納されている VHD の代わりに使用できます。 マネージド ディスクはアタッチ先の仮想マシンの [「可用性セット」][virtual-machines-manage-availability] に自動的に配置され、それによって仮想マシンと仮想マシンで実行されているサービスの可用性が向上します。 詳細については、[概要についての記事](../../managed-disks-overview.md)を参照してください。
 
 回復性に関連して、マネージド ディスクの利点を次の例で示します。
 
@@ -61,7 +61,7 @@ Azure にデプロイするスタックのさまざまなコンポーネント�
 - NetWeaver または S/4HANA のグローバル トランスポート ディレクトリを含むファイル共有または共有ディスク。 これらの共有の内容は、複数の VM で実行されているソフトウェアによって使用されるか、高可用性フェールオーバー クラスターのシナリオを構築するために使用されます。
 - EDI プロセスや類似するもの用の、/sapmnt ディレクトリまたは一般的なファイル共有。 これらの共有の内容は、複数の VM で実行されているソフトウェアによって使用されるか、高可用性フェールオーバー クラスターのシナリオを構築するために使用されます。
 
-次のいくつかのセクションで、上記の 4 つのシナリオに適用されるさまざまな Azure Storage の種類と、SAP ワークロードに対するそれらの使用可能性について説明します。 さまざまな種類の Azure Storage の用途を表す一般的な分類については、「[Azure で利用できるディスクの種類](../../linux/disks-types.md)」を参照してください。 SAP ワークロードに対して使用する Azure Storage の種類が違っても、推奨事項が大きく異なることはありません。
+次のいくつかのセクションで、上記の 4 つのシナリオに適用されるさまざまな Azure Storage の種類と、SAP ワークロードに対するそれらの使用可能性について説明します。 さまざまな種類の Azure Storage の用途を表す一般的な分類については、「[Azure で利用できるディスクの種類](../../disks-types.md)」を参照してください。 SAP ワークロードに対して使用する Azure Storage の種類が違っても、推奨事項が大きく異なることはありません。
 
 S/4HANA の SAP NetWeaver またはアプリケーション レイヤー用の Azure Storage の種類に関するサポートの制限については、[SAP サポート ノート 2015553](https://launchpad.support.sap.com/#/notes/2015553) を参照してください。SAP HANA 認定のサポート対象 Azure Storage の種類については、「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を参照してください。
 
@@ -123,7 +123,7 @@ Azure Premium SSD は、以下のことを実現する目的で導入されま�
 * IOPS とスループットの SLA
 * I/O 待機時間の変動の低減
 
-この種類のストレージは、DBMS ワークロード、数ミリ秒台という短い待機時間が求められるストレージ トラフィック、IOPS に基づく SLA をターゲットにしています。Azure Premium Storage の場合のスループット コストの基準は、このようなディスクに格納されている実際のデータ量ではなく、このようなディスクのサイズ カテゴリであり、ディスク内に格納されているデータの量は関係ありません。 なお、Premium Storage では、「[Premium SSD](../../linux/disks-types.md#premium-ssd)」の記事に示されているサイズ カテゴリに直接マップされないディスクを作成することもできます。 この記事からの結論は次のとおりです。
+この種類のストレージは、DBMS ワークロード、数ミリ秒台という短い待機時間が求められるストレージ トラフィック、IOPS に基づく SLA をターゲットにしています。Azure Premium Storage の場合のスループット コストの基準は、このようなディスクに格納されている実際のデータ量ではなく、このようなディスクのサイズ カテゴリであり、ディスク内に格納されているデータの量は関係ありません。 なお、Premium Storage では、「[Premium SSD](../../disks-types.md#premium-ssd)」の記事に示されているサイズ カテゴリに直接マップされないディスクを作成することもできます。 この記事からの結論は次のとおりです。
 
 - ストレージは範囲別に編成されています。 たとえば、容量が 513 GiB から 1024 GiB までの範囲にあるディスクでは、同じ機能と同じ月額コストが共有されます。
 - GiB あたりの IOPS は、サイズ カテゴリ間で線形になりません。 32 GiB より小さいディスクの場合、GiB あたりの IOPS レートが高くなります。 32 GiB を超えて 1024 GiB までのディスクの場合、GiB あたりの IOPS レートは、GiB あたり 4 から 5 IOPS です。 32,767 GiB までの大容量ディスクになると、GiB あたりの IOPS レートは 1 を下回るようになります。
@@ -184,8 +184,8 @@ Azure Ultra Disk では、Azure IaaS VM 用に高スループット、高 IOPS�
 Ultra ディスクを作成するとき、次の 3 つのディメンションを定義できます。
 
 - ディスクの容量。 範囲は 4 GiB から 65,536 GiB までです。
-- ディスクに対してプロビジョニングされた IOPS。 ディスク容量には、さまざまな最大値が適用されます。 詳細については、「[Ultra Disk](../../linux/disks-types.md#ultra-disk)」の記事を参照してください。
-- プロビジョニングされたストレージ帯域幅。 ディスクの容量に応じて、さまざまな最大帯域幅が適用されます。 詳細については、「[Ultra Disk](../../linux/disks-types.md#ultra-disk)」の記事を参照してください。
+- ディスクに対してプロビジョニングされた IOPS。 ディスク容量には、さまざまな最大値が適用されます。 詳細については、「[Ultra Disk](../../disks-types.md#ultra-disk)」の記事を参照してください。
+- プロビジョニングされたストレージ帯域幅。 ディスクの容量に応じて、さまざまな最大帯域幅が適用されます。 詳細については、「[Ultra Disk](../../disks-types.md#ultra-disk)」の記事を参照してください。
 
 1 個のディスクのコストは、特定のディスクに対して個別に定義できる 3 つのディメンションによって決まります。 
 

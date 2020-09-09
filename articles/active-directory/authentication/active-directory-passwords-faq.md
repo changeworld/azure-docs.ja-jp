@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051290"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716335"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>セルフサービス パスワード リセットについてよく寄せられる質問
 
 セルフサービス パスワード リセットについてのあらゆる問題に関するよくあるご質問 (FAQ) を次に示します。
 
-ここで解決できない Azure Active Directory (Azure AD) やセルフサービス パスワード リセット (SSPR) に関する一般的な質問がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
+ここで解決できない Azure Active Directory (Azure AD) やセルフサービス パスワード リセット (SSPR) に関する一般的な質問がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](/answers/topics/azure-active-directory.html)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
 
 この FAQ は、次のセクションに分かれています。
 
@@ -197,7 +197,7 @@ ms.locfileid: "87051290"
   >
 * **Q:ユーザーのオンプレミスのパスワードの有効期限が切れたときに Office ポータルに通知できますか。**
 
-  > **A:** はい。現在、Active Directory フェデレーション サービス (AD FS) を使っている場合は通知できるようになりました。 AD FS を使っている場合は、「[Sending password policy claims with AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)」(AD FS でパスワード ポリシー要求を送信する) の手順に従ってください。 パスワード ハッシュ同期を使っている場合は、現時点では通知できません。 マイクロソフトではパスワードのポリシーをオンプレミスのディレクトリから同期していないため、有効期限切れの通知をクラウドに送信できません。 いずれの場合でも、[PowerShell を使ってパスワードの有効期限が迫っていることをユーザーに通知する](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)ことは可能です。
+  > **A:** はい。現在、Active Directory フェデレーション サービス (AD FS) を使っている場合は通知できるようになりました。 AD FS を使っている場合は、「[Sending password policy claims with AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)」(AD FS でパスワード ポリシー要求を送信する) の手順に従ってください。 パスワード ハッシュ同期を使っている場合は、現時点では通知できません。 マイクロソフトではパスワードのポリシーをオンプレミスのディレクトリから同期していないため、有効期限切れの通知をクラウドに送信できません。 いずれの場合でも、[PowerShell を使ってパスワードの有効期限が迫っていることをユーザーに通知する](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)ことは可能です。
   >
   >
 * **Q:ユーザーがパスワードを変更するのをブロックできますか。**
@@ -243,7 +243,7 @@ ms.locfileid: "87051290"
 
 * **Q:パスワード ライトバックは、バックグラウンドでどのように動作しますか。**
 
-  > **A:** パスワード ライトバックを有効にした場合の動作とシステム内でデータがオンプレミスの環境に戻る経路について詳しくは、[パスワード ライトバックのしくみ](howto-sspr-writeback.md)に関する記事を参照してください。
+  > **A:** パスワード ライトバックを有効にした場合の動作とシステム内でデータがオンプレミスの環境に戻る経路について詳しくは、[パスワード ライトバックのしくみ](./tutorial-enable-sspr-writeback.md)に関する記事を参照してください。
   >
   >
 * **Q:パスワード ライトバックが機能するにはどれくらいの時間がかかりますか。パスワード ハッシュ同期のような同期遅延がありますか。**
@@ -273,7 +273,7 @@ ms.locfileid: "87051290"
   >
 * **Q:パスワード ライトバックはセキュリティで保護されていますか。ハッキングされないようにするにはどうすればよいですか。**
 
-  > **A:** はい。パスワード ライトバックはセキュリティで保護されています。 パスワード ライトバック サービスによって実装される多層セキュリティについて詳しくは、[パスワード ライトバックの概要](howto-sspr-writeback.md)の記事の[パスワード ライトバックのセキュリティ モデル](concept-sspr-writeback.md#password-writeback-security)に関するセクションをご覧ください。
+  > **A:** はい。パスワード ライトバックはセキュリティで保護されています。 パスワード ライトバック サービスによって実装される多層セキュリティについて詳しくは、[パスワード ライトバックの概要](./tutorial-enable-sspr-writeback.md)の記事の[パスワード ライトバックのセキュリティ モデル](concept-sspr-writeback.md#password-writeback-security)に関するセクションをご覧ください。
   >
   >
 
@@ -286,7 +286,7 @@ ms.locfileid: "87051290"
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
+* [パスワード ライトバックの概要とその必要性](./tutorial-enable-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)

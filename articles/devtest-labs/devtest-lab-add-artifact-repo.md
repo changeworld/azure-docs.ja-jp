@@ -31,7 +31,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
 
 1. アーティファクトまたは Resource Manager テンプレートの定義を含む GitHub リポジトリのホーム ページに移動します。
-2. **[複製またはダウンロード]** を選択します。
+2. **[Clone or download]\(複製またはダウンロード\)** を選択します。
 3. **[HTTPS clone URL]** ボタンをクリックして、URL をクリップボードにコピーします。 後で使用するために URL を保存します。
 4. GitHub の右上隅にあるプロファイル画像を選択し、 **[Settings]** を選択します。
 5. **[Personal settings (個人設定)]** メニューの左側で、 **[Personal access tokens (個人用アクセス トークン)]** を選択します。

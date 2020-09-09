@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f48b30e0e4e76a4cf4c855008776f6b7541ad5a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850655"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589352"
 ---
 # <a name="scenario-azure-firewall---custom"></a>シナリオ:Azure Firewall - カスタム
 
 Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 このシナリオでは、VNet 間ではトラフィックを直接ルーティングする一方、"VNet 対インターネットまたはブランチ" と "ブランチ対 VNet" のトラフィック フローには Azure Firewall を使用することを目標とします。
 
-## <a name="design"></a><a name="design"></a>デザイン
+## <a name="design"></a><a name="design"></a>設計
 
 必要なルート テーブルの数を明らかにするには、各セルで接続元 (行) が接続先 (列) と通信できるかどうかを表す、接続マトリックスを作成します。 このシナリオの接続マトリックスは簡易的なものですが、他のシナリオの一貫性を持たせるために参照することができます。
 
@@ -40,8 +40,10 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
   * 関連付けられたルート テーブル: **[Default]**
   * ルート テーブルへの伝達: **[Default]**
 
+> [!NOTE]
+> 各リージョンで 1 つのセキュリティ保護付き仮想ハブを含む個別の Virtual WAN インスタンスを作成した後、サイト間 VPN 経由で各 Virtual WAN を互いに接続することができます。
 
-仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
 ## <a name="workflow"></a><a name="workflow"></a>ワークフロー
 

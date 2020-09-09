@@ -2,17 +2,17 @@
 title: リンクされたテンプレートとしてテンプレート スペックをデプロイする
 description: リンクされたデプロイに既存のテンプレート スペックをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 5d4824ea432d804418fda2cdc90d49154d496722
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094608"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918385"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>チュートリアル:リンクされたテンプレートとしてテンプレート スペックをデプロイする (プレビュー)
 
-[リンクされたデプロイ](linked-templates.md#linked-template)を使用して既存の[テンプレート スペック](template-specs.md)をデプロイする方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 テンプレート スペックを作成したら、Azure PowerShell を使用してテンプレート スペックをデプロイできます。 リンクされたテンプレートを使用し、ソリューションの一部としてテンプレート スペックをデプロイすることもできます。
+[リンクされたデプロイ](linked-templates.md#linked-template)を使用して既存の[テンプレート スペック](template-specs.md)をデプロイする方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 テンプレート スペックを作成したら、Azure PowerShell または Azure CLI を使用してテンプレート スペックをデプロイできます。 リンクされたテンプレートを使用し、ソリューションの一部としてテンプレート スペックをデプロイすることもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -117,9 +117,22 @@ ARM テンプレートにテンプレート スペックをデプロイするに
 
 テンプレート スペック ID は、[`resourceID()`](template-functions-resource.md#resourceid) 関数を使用して生成します。 templateSpec が現在のデプロイと同じリソース グループ内にある場合、resourceID () 関数のリソース グループ引数は省略できます。  リソース ID をパラメーターとして直接渡すこともできます。 ID を取得するには、次の構文を使用します。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell-interactive
 $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli-interactive
+id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+```
+
+> [!NOTE]
+> テンプレート スペック ID の取得および Windows PowerShell の変数への割り当てに関する既知の問題があります。
+
+---
 
 テンプレート スペックにパラメーターを渡す構文は次のとおりです。
 
@@ -138,6 +151,8 @@ $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateS
 
 リンクされたテンプレートをデプロイすると、Web アプリケーションとストレージ アカウントの両方がデプロイされます。 デプロイは、他の ARM テンプレートのデプロイと同じです。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name webRG `
@@ -147,6 +162,21 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
   -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+az deployment group create \
+  --resource-group webRG \
+  --template-file "c:\Templates\deployTS\azuredeploy.json"
+
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

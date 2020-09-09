@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054274"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749610"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -94,7 +94,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 | Azure リソース                          | 説明 |
 |:----------------------------------------|:---|
 | ネットワーク インターフェイス カード                  | Azure AD DS は、Windows Server 上で Azure VM として実行されている 2 つのドメイン コントローラー (DC) 上でマネージド ドメインをホストします。 各 VM には、仮想ネットワークのサブネットに接続する仮想ネットワーク インターフェイスがあります。 |
-| 動的標準パブリック IP アドレス      | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)」を参照してください。 |
+| 動的標準パブリック IP アドレス      | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/public-ip-addresses.md)」を参照してください。 |
 | Azure Standard Load Balancer            | Azure AD DS では、ネットワーク アドレス変換 (NAT) および負荷分散 (セキュリティで保護された LDAP と共に使用する場合) に Standard SKU のロード バランサーを使用します。 Azure Load Balancer の詳細については、[Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)に関する記事を参照してください。 |
 | ネットワーク アドレス変換 (NAT) 規則 | Azure AD DS では、ロード バランサーに対して 3 つの NAT 規則が作成され、使用されます。セキュリティで保護された HTTP トラフィックに関する 1 つの規則と、セキュリティで保護された PowerShell リモート処理に関する 2 つの規則です。 |
 | 負荷分散規則                     | マネージド ドメインが TCP ポート 636 上のセキュリティで保護された LDAP 用に構成されている場合、トラフィックを分散する 3 つの規則がロード バランサーに対して作成され、使用されます。 |
@@ -104,7 +104,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 
 ## <a name="network-security-groups-and-required-ports"></a>ネットワーク セキュリティ グループと必要なポート
 
-[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) には、Azure 仮想ネットワーク内のトラフィックへのネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 ネットワーク セキュリティ グループは、サービスが認証および管理機能を提供できるようにする一連の規則を含むマネージド ドメインを展開するときに作成されます。 この既定のネットワーク セキュリティ グループは、マネージド ドメインがデプロイされる仮想ネットワーク サブネットに関連付けられています。
+[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) には、Azure 仮想ネットワーク内のトラフィックへのネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 ネットワーク セキュリティ グループは、サービスが認証および管理機能を提供できるようにする一連の規則を含むマネージド ドメインを展開するときに作成されます。 この既定のネットワーク セキュリティ グループは、マネージド ドメインがデプロイされる仮想ネットワーク サブネットに関連付けられています。
 
 マネージド ドメインで認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの規則が必要です。 マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
 

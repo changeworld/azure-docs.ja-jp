@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: b6d8a73dd4f4e7c1a1e430b6f5ea494ed51d20c0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211696"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961484"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -28,15 +28,15 @@ App Service の主な機能として、次のようなものがあります。
 * **マネージド運用環境** - App Service が自動的に[パッチを適用し、OS と言語フレームワークを管理](overview-patch-os-runtime.md)します。 高品質なアプリの作成に専念し、プラットフォームにまつわる問題は Azure に任せましょう。
 * **コンテナー化と Docker** - アプリを Docker でコンテナー化し、App Service でカスタムの Windows または Linux コンテナーをホストできます。 Docker Compose で複数コンテナー アプリを実行できます。 Docker のスキルを App Service に直接移行できます。
 * **DevOps の最適化** - [継続的インテグレーションと継続的デプロイ](deploy-continuous-deployment.md)を、Azure DevOps、GitHub、BitBucket、Docker Hub、または Azure Container Registry で設定できます。 [テスト環境やステージング環境](deploy-staging-slots.md)を介して更新を反映できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azure/) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。
-* **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](manage-scale-up.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
+* **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](manage-scale-up.md)または[スケールアウト](../azure-monitor/platform/autoscale-get-started.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP など)、SaaS サービス (Salesforce など)、インターネット サービス (Facebook など) 向けに用意された 50 を超える[コネクタ](../connectors/apis-list.md)から選択できます。 また、[ハイブリッド接続](app-service-hybrid-connections.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 * **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/en-us/trustcenter)しています。 [Azure Active Directory](configure-authentication-provider-aad.md)、[Google](configure-authentication-provider-google.md)、[Facebook](configure-authentication-provider-facebook.md)、[Twitter](configure-authentication-provider-twitter.md)、または [Microsoft アカウント](configure-authentication-provider-microsoft.md)でユーザーを認証します。 [IP アドレス制限](app-service-ip-restrictions.md)を作成し、[サービス ID を管理](overview-managed-identity.md)します。
 * **アプリケーション テンプレート** - WordPress、Joomla、Drupal など、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にある詳細な一覧からアプリケーション テンプレートを選択します。
 * **Visual Studio と Visual Studio Code の統合** - Visual Studio と Visual Studio Code の専用ツールを使用することで、作成、デプロイ、デバッグの作業を効率化することができます。
 * **API とモバイル機能** - App Service は、RESTful API シナリオに対してターンキー CORS サポートを提供するほか、認証、オフライン データ同期、プッシュ通知などを有効にして、モバイル アプリのシナリオを簡素化します。
-* **サーバーレス コード** - コード スニペットまたはスクリプトをオンデマンドで実行します。その際、インフラストラクチャを明示的にプロビジョニングまたは管理する必要はありません。また、コードによって実際に使用されたコンピューティング時間のみが課金対象となります ([Azure Functions](/azure/azure-functions/) に関するページを参照)。
+* **サーバーレス コード** - コード スニペットまたはスクリプトをオンデマンドで実行します。その際、インフラストラクチャを明示的にプロビジョニングまたは管理する必要はありません。また、コードによって実際に使用されたコンピューティング時間のみが課金対象となります ([Azure Functions](../azure-functions/index.yml) に関するページを参照)。
 
-App Service の他に、Azure では Web サイトと Web アプリケーションをホストするために利用できるサービスも提供しています。 ほとんどの場合は、App Service が最適な方法になります。  マイクロサービス アーキテクチャの場合は、[Azure Spring-Cloud サービス](/azure/spring-cloud/)または [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。  また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) の利用を検討してください。 これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](overview-compare.md)」を参照してください。
+App Service の他に、Azure では Web サイトと Web アプリケーションをホストするために利用できるサービスも提供しています。 ほとんどの場合は、App Service が最適な方法になります。  マイクロサービス アーキテクチャの場合は、[Azure Spring-Cloud サービス](../spring-cloud/index.yml)または [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。  また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) の利用を検討してください。 これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](/azure/architecture/guide/technology-choices/compute-decision-tree)」を参照してください。
 
 ## <a name="app-service-on-linux"></a>App Service on Linux
 
@@ -44,7 +44,7 @@ App Service では、サポートされているアプリケーション スタ�
 
 ### <a name="built-in-languages-and-frameworks"></a>組み込みの言語とフレームワーク
 
-App Service on Linux では、さまざまな言語に固有の組み込みイメージがサポートされています。 コードをデプロイするだけで済みます。 以下の言語がサポートされています。Node.js、Java (JRE 8 と JRE 11)、PHP、Python、.NET Core、および Ruby。 [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行して、最新の言語とサポートされているバージョンを表示します。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、カスタム コンテナーを使用してデプロイできます。
+App Service on Linux では、さまざまな言語に固有の組み込みイメージがサポートされています。 コードをデプロイするだけで済みます。 以下の言語がサポートされています。Node.js、Java (JRE 8 と JRE 11)、PHP、Python、.NET Core、および Ruby。 [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行して、最新の言語とサポートされているバージョンを表示します。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、カスタム コンテナーを使用してデプロイできます。
 
 ### <a name="limitations"></a>制限事項
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 897262dcdb8cbacd512f19823da375e2c603b97e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037944"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762779"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でビデオ分析 (物体とモーションの検出) アプリケーションを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "88037944"
 
 ## <a name="initial-setup"></a>初期セットアップ
 
-これらのチュートリアルでは、いくつかの構成ファイルを更新して使用します。 これらのファイルの初期バージョンは、[LVA-gateway](https://github.com/Azure/live-video-analytics) GitHub リポジトリで入手できます。 このリポジトリには、scratchpad というテキスト ファイルも用意されています。デプロイするサービスの構成値を記録する際に、ダウンロードしてご利用ください。
+これらのチュートリアルでは、いくつかの構成ファイルを更新して使用します。 これらのファイルの初期バージョンは、[LVA-gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) GitHub リポジトリで入手できます。 このリポジトリには、scratchpad というテキスト ファイルも用意されています。デプロイするサービスの構成値を記録する際に、ダウンロードしてご利用ください。
 
 これらのファイルのコピーを保存するための *lva-configuration* というフォルダーをローカル コンピューターに作成します。 次の各リンクを右クリックし、 **[名前を付けて保存]** を選択して、*lva-configuration* フォルダーにファイルを保存します。
 
@@ -98,7 +98,7 @@ Media Services アカウントを作成する際:
 
 新しいビデオ分析アプリケーションを作成するには:
 
-1. **ビデオ分析 (物体とモーションの検出)** アプリケーション テンプレートを選択します。 このテンプレートには、チュートリアルで使用するデバイス用のデバイス テンプレートが含まれています。 このテンプレートには、ビデオを監視するためのオペレーター ダッシュボードも備わっています。
+1. **ビデオ分析 (物体とモーションの検出)** アプリケーション テンプレートを選択します。 このテンプレートには、チュートリアルで使用するデバイス用のデバイス テンプレートが含まれています。 このテンプレートには、カメラの監視や管理などのタスクを実行するためにオペレーターが使用できるサンプル ダッシュボードが含まれています。
 
 1. 必要に応じて、わかりやすい**アプリケーション名**を選びます。 このアプリケーションは、Northwind Traders という架空の小売店に基づいています。 このチュートリアルでは、*Northwind Traders video analytics* という**アプリケーション名**を使用します。
 

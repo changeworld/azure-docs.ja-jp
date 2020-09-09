@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 0c78245a64fa9bcb7faef2c07973d1d7b5080e76
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843098"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648787"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 
@@ -163,7 +163,7 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
    print(feature_tensor.shape)
    ```
 
-1. 分類子を追加します。 この分類子は ImageNet データ セットでトレーニングされています。  転移学習およびカスタマイズされた重みのトレーニングの例は、[サンプル ノートブック](https://aka.ms/aml-notebooks)のセットに含まれています。
+1. 分類子を追加します。 この分類子は ImageNet データ セットでトレーニングされています。  転移学習およびカスタマイズされた重みのトレーニングの例は、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)のセットに含まれています。
 
    ```python
    classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -405,7 +405,7 @@ converted_model.delete()
 
 次のノートブック、ビデオ、およびブログをご覧ください。
 
-+ 各種の[サンプル ノートブック](https://aka.ms/aml-accel-models-notebooks)
++ 各種の[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/accelerated-models)
 + FPGA の Web サービスをセキュリティで保護するには、[Web サービスのセキュリティ保護](how-to-secure-web-service.md)に関するドキュメントを参照してください。
 + [Hyperscale hardware:ML at scale on top of Azure + FPGA (ハイパースケール ハードウェア: Azure + FPGA 基盤の大規模 ML):Build 2018 (ビデオ)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [Microsoft の FPGA ベースの構成可能なクラウドについて (ビデオ)](https://channel9.msdn.com/Events/Build/2017/B8063)

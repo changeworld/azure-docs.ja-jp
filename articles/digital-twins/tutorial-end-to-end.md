@@ -1,5 +1,5 @@
 ---
-title: エンド ツー エンドのソリューションを接続する
+title: チュートリアル:エンド ツー エンドのソリューションを接続する"
 titleSuffix: Azure Digital Twins
 description: デバイス データによって駆動されるエンド ツー エンドの Azure Digital Twins ソリューションを構築するチュートリアル。
 author: baanders
@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827341"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401777"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>エンド ツー エンドのソリューションを構築する
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
 Azure Digital Twins インスタンスは、環境のライブ データによって駆動される完全なエンド ツー エンドのソリューションを設定するために、デバイスとデータの管理を目的とした他の Azure サービスに接続することができます。
 
 このチュートリアルでは次のことを行います。
-* Azure Digital Twins インスタンスを設定する
-* サンプル ビルディング シナリオを把握し、事前に作成されたコンポーネントをインスタンス化する
-* [Azure Functions](../azure-functions/functions-overview.md) アプリを使用して、[IoT Hub](../iot-hub/about-iot-hub.md) デバイスから、シミュレートしたテレメトリをデジタル ツインのプロパティにルーティングする
-* Azure Functions、エンドポイント、ルートを使用してデジタル ツインの通知を処理することにより、**ツイン グラフ**全体に変更を反映させる
+> [!div class="checklist"]
+> * Azure Digital Twins インスタンスを設定する
+> * サンプル ビルディング シナリオを把握し、事前に作成されたコンポーネントをインスタンス化する
+> * [Azure Functions](../azure-functions/functions-overview.md) アプリを使用して、[IoT Hub](../iot-hub/about-iot-hub.md) デバイスから、シミュレートしたテレメトリをデジタル ツインのプロパティにルーティングする
+> * Azure Functions、エンドポイント、ルートを使用してデジタル ツインの通知を処理することにより、**ツイン グラフ**全体に変更を反映させる
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -365,6 +366,8 @@ Event Grid トピックと Azure Digital Twins エンドポイントに付けた
 
 次に、先ほど作成した Azure Digital Twins エンドポイントにイベントを送信する Azure Digital Twins ルートを作成します。
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 ```azurecli
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
@@ -433,7 +436,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 このチュートリアルで作成したリソースが不要であれば、次の手順に従って削除してください。 
 
-Azure Cloud Shell から [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、両方の Azure Functions アプリが、ストレージなど、関連するリソースを含め、削除されます。
+[Azure Cloud Shell](https://shell.azure.com) から [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 これにより、リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、Azure Functions アプリが、両方の機能やストレージなどの関連するリソースを含めて削除されます。
 
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
@@ -448,14 +451,13 @@ az group delete --name <your-resource-group>
 az ad app delete --id <your-application-ID>
 ```
 
-最後に、ダウンロードしたプロジェクトのサンプル フォルダーをローカル コンピューターから削除します。
+最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダーを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、デバイスのライブ データによって駆動される Azure Digital Twins を紹介するエンド ツー エンドのシナリオを作成しました。
 
 今度は、次のチュートリアルの概念ドキュメントを参照し、ここで扱った要素についてさらに理解を深めましょう。
-* "[*概念: カスタム モデル*](concepts-models.md)"
 
-または、次のハウツー記事を足がかりとして、このチュートリアルで学んだプロセスについてさらに詳しい知識を身に付けることもできます。
-* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> "[*概念: カスタム モデル*](concepts-models.md)"

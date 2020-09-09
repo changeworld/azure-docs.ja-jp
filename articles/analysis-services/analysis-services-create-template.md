@@ -6,14 +6,14 @@ ms.author: owend
 tags: azure-resource-manager
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: 249c678fb6d55f01a9f06e4e1db5f41fa85a700f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553072"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230791"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>クイック スタート:サーバーの作成 - ARM テンプレート
 
@@ -34,7 +34,7 @@ ms.locfileid: "87553072"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
+:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
 
 このテンプレートには、1 つの [Microsoft.AnalysisServices/servers](/azure/templates/microsoft.analysisservices/servers) リソースがファイアウォール規則と共に定義されています。
 
@@ -105,6 +105,5 @@ Write-Host "Press [ENTER] to continue..."
 
 このクイックスタートでは、ARM テンプレートを使用して、新しいリソース グループと Azure Analysis Services サーバー リソースを作成しました。 テンプレートを使用してサーバー リソースを作成したら、以下のことを検討してください。
 
-- [クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)
-- [ポータルからサンプル モデルを追加する](analysis-services-create-sample-model.md)
-- [サーバー管理者とユーザー ロールを構成する](tutorials/analysis-services-tutorial-roles.md)
+> [!div class="nextstepaction"]
+> [クイック スタート: サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)   

@@ -3,17 +3,17 @@ title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830344"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869203"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -435,7 +435,8 @@ OS support: Windows
 - **filters** – 省略可能。更新プログラムを含めるか除外するフィルターを指定できます。
 - **updateLimit** – 省略可能。インストールできる更新プログラムの数を定義します。既定値は 1000 です。
  
- 
+> [!NOTE]
+> Windows Update カスタマイザーは、保留中の Windows の再起動や、まだ実行中のアプリケーションのインストールがある場合に失敗する可能性があります。このエラー `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` は、通常、customization.log で確認できます。 Windows Update を実行する前に、Windows の再起動を取り入れることや、インライン コマンドやスクリプトに "sleep" や待機のコマンド (https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) を追加して、アプリケーションにインストールを完了するのに十分な時間を与えることをお勧めします。
 
 ### <a name="generalize"></a>Generalize 
 既定の Azure Image Builder では、イメージを "一般化" するため、各イメージ カスタマイズ フェーズの最後に "プロビジョニング解除" コードも実行されます。 一般化とは、複数の VM を作成するために再利用できるようにイメージを設定するプロセスです。 Windows VM の Azure Image Builder では、Sysprep が使われます。 Linux の Azure Image Builder では、"waagent -deprovision" が使われます。 
@@ -533,17 +534,16 @@ az resource show \
 イメージの出力は、マネージド イメージ リソースになります。
 
 ```json
-"distribute": [
-        {
-"type":"managedImage",
+{
+       "type":"managedImage",
        "imageId": "<resource ID>",
        "location": "<region>",
        "runOutputName": "<name>",
        "artifactTags": {
             "<name": "<value>",
-             "<name>": "<value>"
-               }
-         }]
+            "<name>": "<value>"
+        }
+}
 ```
  
 配布のプロパティ:

@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンをターゲットにす�
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 Azure でホストされる関数アプリのランタイム バージョンを指定する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 74ee0d382dcd468aed118a7de330eef95b329402
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a7d86ef26d50d60389ae09bf3245ed97fea2c3e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830871"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926577"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
@@ -42,19 +42,16 @@ Azure Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_
 > [!IMPORTANT]
 > ランタイム バージョンは `FUNCTIONS_EXTENSION_VERSION` の設定によって決定されますが、この変更はその設定の直接の変更によってではなく、Azure Portal で行う必要があります。 これは、ポータルが変更を検証し、必要に応じてその他の関連する変更を行うためです。
 
-### <a name="from-the-azure-portal"></a>Azure portal から
+# <a name="portal"></a>[ポータル](#tab/portal)
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 > [!NOTE]
 > Azure portal では、既に関数が含まれている関数アプリのランタイム バージョンを変更することはできません。
 
-### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>Azure CLI から
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-Azure CLI から `FUNCTIONS_EXTENSION_VERSION` を表示および設定することもできます。
-
->[!NOTE]
->その他の設定はランタイム バージョンの影響を受ける可能性があるため、ポータルでバージョンを変更する必要があります。 ランタイム バージョンを変更すると、ポータルで自動的に、Node.js のバージョンやランタイム スタックなどのその他の必要な更新が行われます。  
+Azure CLI から `FUNCTIONS_EXTENSION_VERSION` を表示および設定することもできます。  
 
 Azure CLI を使用して、[az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) コマンドで現在のランタイム バージョンを表示します。
 
@@ -93,16 +90,36 @@ az functionapp config appsettings list --name <function_app> \
 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) コマンドで、関数アプリの `FUNCTIONS_EXTENSION_VERSION` の設定を更新できます。
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <function_app> \
---resource-group <my_resource_group> \
---settings FUNCTIONS_EXTENSION_VERSION=<version>
+az functionapp config appsettings set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--settings FUNCTIONS_EXTENSION_VERSION=<VERSION>
 ```
 
-`<function_app>` をお使いの関数アプリの名前に置き換えます。 また、`<my_resource_group>` をお使いの関数アプリのリソース グループの名前に置き換えます。 また、`<version>` を 1.x ランタイムの有効なバージョンまたはバージョン 2.x の `~2` に置き換えます。
+`<FUNCTION_APP>` をお使いの関数アプリの名前に置き換えます。 また、`<RESOURCE_GROUP>` をお使いの関数アプリのリソース グループの名前に置き換えます。 また、`<VERSION>` を特定のバージョンか、`~3`、`~2`、または `~1` に置き換えます。
 
 このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+Azure Functions ランタイムを確認するには、次のコマンドレットを使用します。 
+
+```powershell
+Get-AzFunctionAppSetting -Name "<FUNCTION_APP>" -ResourceGroupName "<RESOURCE_GROUP>"
+```
+
+`<FUNCTION_APP>` をお使いの関数アプリの名前に、`<RESOURCE_GROUP>` をリソース グループの名前に置き換えます。 `FUNCTIONS_EXTENSION_VERSION` 設定の現在の値がハッシュ テーブルに返されます。
+
+Functions ランタイムを変更するには、次のスクリプトを実行します。
+
+```powershell
+Update-AzFunctionAppSetting -Name "<FUNCTION_APP>" -ResourceGroupName "<RESOURCE_GROUP>" -AppSetting @{"FUNCTIONS_EXTENSION_VERSION" = "<VERSION>"} -Force
+```
+
+以前と同様に、`<FUNCTION_APP>` をお使いの関数アプリ名に置き換え、`<RESOURCE_GROUP>` をリソース グループの名前に置き換えます。 また、 `<VERSION>` を特定のバージョンまたはメジャー バージョン (`~2` や `~3` など) に置き換えます。 返されたハッシュ テーブルで `FUNCTIONS_EXTENSION_VERSION` 設定の更新された値を確認できます。 
+
+---
+
+アプリケーション設定に変更が加えられると、関数アプリが再起動します。
 
 ## <a name="next-steps"></a>次のステップ
 

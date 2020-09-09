@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006334"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826516"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -53,7 +53,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 1. 復元する VM に関連付けられているコンテナーで、 **[バックアップ アイテム]**  >  **[Azure 仮想マシン]** を選択します。
 1. VM を選択します。 既定では、VM ダッシュボードには過去 30 日間の復旧ポイントが表示されます。 30 日前よりも古い復旧ポイントを表示することや、日付、時間範囲、スナップショット整合性の種類をフィルターにして復旧ポイントを探すことができます。
-1. VM を復元するには、 **[VM の復元]** をクリックします。
+1. VM を復元するには、 **[VM の復元]** を選択します。
 
     ![復元ポイント](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -65,7 +65,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
     - **新規作成**: 新しい VM を作成する場合、このオプションを使用します。 単純な設定で VM を作成することも、ディスクを復元して、カスタマイズされた VM を作成することもできます。
     - **既存のものを置き換える**:既存の VM 上のディスクを置き換える場合、このオプションを使用します。
 
-        ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/restore-configuration.png)
+        ![仮想マシンの復元の構成ウィザード](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 1. 選択した復元オプションの設定を指定します。
 
@@ -79,13 +79,13 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 1. **[仮想ネットワーク]** で、VM が配置される VNet を選択します。 サブスクリプションに関連付けられているすべての VNet が表示されます。 サブネットを選択します。 最初のサブネットが既定で選択されています。
 1. **[ステージングの場所]** で、VM のストレージ アカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
-    ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
+    ![復元の構成ウィザード - 復元オプションを選択する](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 1. **[復元]** を選択して復元操作をトリガーします。
 
 ## <a name="restore-disks"></a>ディスクを復元する
 
-[復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかを実行できます:
+[復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかのアクションを実行できます。
 
 - 復元操作の間に生成されるテンプレートを使用して設定をカスタマイズし、VM のデプロイを開始します。 既定のテンプレート設定を編集し、VM デプロイのテンプレートを送信します。
 - 既存の VM に、[復元されたディスクをアタッチ](../virtual-machines/windows/attach-managed-disk-portal.md)します。
@@ -95,7 +95,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 1. **[リソース グループ]** で、復元されたディスクの既存のリソース グループを選択するか、グローバルに一意の名前を持つ新しいリソース グループを作成します。
 1. **[ステージングの場所]** で、VHD のコピー先となるストレージ アカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
-    ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![[リソース グループ] と [ステージングの場所] を選択します](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. **[復元]** を選択して復元操作をトリガーします。
 
@@ -184,7 +184,7 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>アンマネージドの VM およびディスクをマネージドとして復元する
 
-復元の際に[アンマネージド ディスク](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)を[マネージド ディスク](../virtual-machines/windows/managed-disks-overview.md)として復元するオプションが用意されています。 既定では、アンマネージドの VM およびディスクは、アンマネージドの VM およびディスクとして復元されます。 ただし、マネージドの VM およびディスクとして復元することを選択できるようになりました。 これらの復元はスナップショット フェーズからはトリガーされず、コンテナー フェーズからのみトリガーされます。 この機能は、アンマネージドの暗号化された VM では使用できません。
+復元の際に[アンマネージド ディスク](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)を[マネージド ディスク](../virtual-machines/managed-disks-overview.md)として復元するオプションが用意されています。 既定では、アンマネージドの VM およびディスクは、アンマネージドの VM およびディスクとして復元されます。 ただし、マネージドの VM およびディスクとして復元することを選択できるようになりました。 これらの復元はスナップショット フェーズからはトリガーされず、コンテナー フェーズからのみトリガーされます。 この機能は、アンマネージドの暗号化された VM では使用できません。
 
 ![マネージド ディスクとして復元する](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032885"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948200"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
-[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)は、承認されたユーザーによるクラウド アプリへのアクセスを制御できるようにする、Azure Active Directory (Azure AD) の機能です。 環境内で条件付きアクセス ポリシーから予期される事柄を知るにはどうすればよいでしょうか。 この質問に答えるために、**条件付きアクセスの What If ツール**を使用できます。
+[条件付きアクセス](./overview.md)は、承認されたユーザーによるクラウド アプリへのアクセスを制御できるようにする、Azure Active Directory (Azure AD) の機能です。 環境内で条件付きアクセス ポリシーから予期される事柄を知るにはどうすればよいでしょうか。 この質問に答えるために、**条件付きアクセスの What If ツール**を使用できます。
 
 この記事では、このツールを使用して、条件付きアクセス ポリシーをテストする方法について説明します。
 
@@ -105,4 +105,4 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 ## <a name="next-steps"></a>次のステップ
 
 - 条件付きアクセス ポリシー アプリケーションの詳細については、「[条件付きアクセスに関する分析情報とレポート](howto-conditional-access-insights-reporting.md)」のポリシーのレポート専用モードを参照してください。
-- 環境に条件付きアクセス ポリシーを構成する準備ができたら、[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)に関するページを参照してください。 
+- 環境に条件付きアクセス ポリシーを構成する準備ができたら、[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)に関するページを参照してください。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032293"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719226"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した小売ソリューションの構築
 
@@ -160,20 +160,20 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 アプリケーション テンプレートには、次の 4 つのアプリケーション ダッシュボードが含まれています。
 
-* **Setup (セットアップ)** : アプリケーションの設計に関する情報を提供します。カメラを追加したり削除したりすることができます。
-* **Manage (管理)** : カメラを管理することができます。 たとえば、カメラを構成したり、状態情報を確認したり、カメラを起動したりすることができます。
-* **Real Cameras (実際のカメラ)** : 検出数やカメラ イベントなど、実際のカメラからの情報を確認できます。
-* **Monitor (監視)** : すべてのカメラからの詳細な情報を確認できます。
+* **Getting Started (はじめに)** : アプリケーション テンプレートの使用を開始するのに役立つリソースへのリンクを提供します。
+* **Demo Dashboard (デモ ダッシュボード)** : 接続されたカメラから表示できる情報の種類を示します。
+* **(Sample) Real Camera Management ((サンプル) 実際のカメラ管理)** : シミュレートされたカメラを使用して、アプリケーションからカメラを管理する方法を示します。
+* **(Sample) Real Camera Monitor ((サンプル) 実際のカメラ監視)** : シミュレートされたカメラを使用して、アプリケーションからカメラを監視する方法を示します。
 
 :::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="ビデオ分析 - オブジェクトとモーションの検出":::
 
 このソリューションのアーキテクチャについて詳しくは、[ビデオ分析アプリケーションのアーキテクチャ](architecture-video-analytics.md)に関するページを参照してください。
 
-ソリューションをデプロイする方法については、[Azure IoT Central でビデオ分析アプリケーションを作成する](tutorial-video-analytics-create-app.md)方法に関するチュートリアルを参照してください。
+ソリューションをデプロイする方法については、[Azure IoT Central でビデオ分析アプリケーションを作成する](tutorial-video-analytics-deploy.md)方法に関するチュートリアルを参照してください。
 
 ### <a name="live-video-analytics"></a>ライブ ビデオ分析
 
-ライブ ビデオ分析は、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームとなります。 このプラットフォームは、ライブ ビデオをキャプチャ、録画、分析し、その結果 (ビデオやビデオ分析など) を Azure サービスに発行する機能を備えています。 Azure サービスは、クラウドやエッジで実行されている場合があります。 このプラットフォームを使用すると、ビデオ分析で IoT ソリューションを拡張することができます。
+[ライブ ビデオ分析](https://github.com/Azure/live-video-analytics)は、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームとなります。 このプラットフォームは、ライブ ビデオをキャプチャ、録画、分析し、その結果 (ビデオやビデオ分析など) を Azure サービスに発行する機能を備えています。 Azure サービスは、クラウドやエッジで実行されている場合があります。 このプラットフォームを使用すると、ビデオ分析で IoT ソリューションを拡張することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -184,4 +184,5 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 * [デジタル流通センター アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-digital-distribution-center.md)。
 * [スマート インベントリの管理アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-smart-inventory-management.md)。
 * [マイクロフルフィルメント センター アプリケーション テンプレートをデプロイして調べる](./tutorial-micro-fulfillment-center.md)。
+* [ビデオ分析アプリケーション テンプレートをデプロイして調べる](./tutorial-video-analytics-deploy.md)。
 * [IoT Central の概要](../preview/overview-iot-central.md)に関するページで、IoT Central の詳細について確認する。

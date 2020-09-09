@@ -1,6 +1,6 @@
 ---
 title: Azure Managed Disks のサーバー側暗号化 - Azure CLI
-description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。また、カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。
+description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。また、マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。
 author: roygara
 ms.date: 07/10/2020
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0a1f97cc7467d115ecc8462a301e45f90d73818
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449153"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816900"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
@@ -21,7 +21,7 @@ ms.locfileid: "87449153"
 
 Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](/windows/desktop/seccng/cng-portal)」を参照してください。
 
-サーバー側の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 
+サーバー側での暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 
 
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 
@@ -80,7 +80,7 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [CLI](disks-enable-host-based-encryption-cli.md) または [Azure portal](disks-enable-host-based-encryption-portal.md) のいずれかで、ホストでの暗号化を使用してエンドツーエンドの暗号化を有効にします。
-- [CLI](disks-enable-double-encryption-at-rest-cli.md) または [Azure portal](disks-enable-double-encryption-at-rest-portal.md) のいずれかを使用して、マネージド ディスクの保存時の二重暗号化を有効にします。
-- [CLI](disks-enable-customer-managed-keys-cli.md) または [Azure portal](disks-enable-customer-managed-keys-portal.md) のいずれかを使用して、マネージド ディスクのカスタマー マネージド キーを有効にします。
+- [CLI](disks-enable-host-based-encryption-cli.md) または [Azure portal](../disks-enable-host-based-encryption-portal.md) のいずれかで、ホストでの暗号化を使用してエンドツーエンドの暗号化を有効にします。
+- [CLI](disks-enable-double-encryption-at-rest-cli.md) または [Azure portal](../disks-enable-double-encryption-at-rest-portal.md) のいずれかを使用して、マネージド ディスクの保存時の二重暗号化を有効にします。
+- [CLI](disks-enable-customer-managed-keys-cli.md) または [Azure portal](../disks-enable-customer-managed-keys-portal.md) のいずれかを使用して、マネージド ディスクのカスタマー マネージド キーを有効にします。
 - [Azure Key Vault とは](../../key-vault/general/overview.md)

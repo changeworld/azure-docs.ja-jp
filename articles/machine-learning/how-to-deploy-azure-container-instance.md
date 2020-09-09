@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cbba0dd5341ad148831ac3b1f94685bf2beddd5a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541126"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855276"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,6 +58,7 @@ Azure Container Instances にモデルをデプロイするには、必要なコ
 > [!NOTE]
 > * ACI が適しているのは、サイズが 1 GB 未満の小さいモデルのみです。 
 > * より大きいモデルの開発テストには、単一ノードの AKS を使用することをお勧めします。
+> * デプロイされるモデルの数は、デプロイごとに 1,000 モデル (コンテナーごと) に制限されます。 
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 
@@ -89,9 +90,9 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。 
 
-## <a name="using-vs-code"></a>VS コードを使用する
+## <a name="using-vs-code"></a>VS Code　を使用する
 
-[VS コードを使用したモデルのデプロイ](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)に関する記事を参照してください。
+[VS Code を使用したモデルのデプロイ](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > テストするための ACI コンテナーを事前に作成する必要はありません。 ACI コンテナーは必要に応じて作成されます。

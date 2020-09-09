@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: e7199b6d54a0150845bfc09c38e002e6cc298ee7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 08/20/2020
+ms.openlocfilehash: 883eede5296f3f280bf30c9a459c02a9243f9081
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066731"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719531"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -159,7 +159,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 この認証を有効にする前に、次の考慮事項を確認してください。
 
-* ロジック アプリへの受信呼び出しには、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの認証スキームのみを使用できます。 OAuth トークンに対しては[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみがサポートされ、これは Request トリガーに対してのみサポートされます。
+* ロジック アプリへの受信呼び出しには、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの認証スキームのみを使用できます。 一方のスキームを使用してももう一方は無効になりませんが、両方を同時に使用すると、どちらのスキームを選択するかサービスで判断できないため、エラーが発生します。 OAuth トークンに対しては[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみがサポートされ、これは Request トリガーに対してのみサポートされます。
 
 * ロジック アプリは、承認ポリシーの最大数に制限されている必要があります。 各承認ポリシーには、[クレーム](../active-directory/develop/developer-glossary.md#claim)の最大数もあります。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)に関するページを参照してください。
 
@@ -240,7 +240,7 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 ],
 ```
 
-`accessControl` セクションの詳細については、「[Azure Resource Manager テンプレートで受信 IP 範囲を制限する](#restrict-inbound-ip-template)」と [Microsoft.Logic ワークフロー テンプレートのリファレンス](/templates/microsoft.logic/2019-05-01/workflows)に関する記事を参照してください。
+`accessControl` セクションの詳細については、「[Azure Resource Manager テンプレートで受信 IP 範囲を制限する](#restrict-inbound-ip-template)」と [Microsoft.Logic ワークフロー テンプレートのリファレンス](/azure/templates/microsoft.logic/2019-05-01/workflows)に関する記事を参照してください。
 
 <a name="restrict-inbound-ip"></a>
 
@@ -725,7 +725,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 * 送信要求に認証を追加します。
 
-  HTTP、HTTP + Swagger、Webhook など、送信呼び出しを行う HTTP ベースのトリガーまたはアクションを使用するときは、ロジック アプリによって送信される要求に認証を追加できます。 たとえば、次の認証の種類を選択できます。
+  HTTP など、送信呼び出しを行う HTTP ベースのトリガーまたはアクションを使用するときは、ロジック アプリによって送信される要求に認証を追加できます。 たとえば、次の認証の種類を選択できます。
 
   * [基本認証](#basic-authentication)
 
@@ -786,13 +786,13 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 次の表では、認証の種類を選択できるトリガーとアクションで使用できる認証の種類を示します。
 
-| 認証の種類 | 可用性 |
-|---------------------|--------------|
+| 認証の種類 | サポートされているトリガーとアクション |
+|---------------------|--------------------------------|
 | [Basic](#basic-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [クライアント証明書](#client-certificate-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [管理対象 ID](#managed-identity-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
+| [管理対象 ID](#managed-identity-authentication) | Azure API Management、Azure App Services、Azure Functions、HTTP |
 |||
 
 <a name="basic-authentication"></a>
@@ -952,7 +952,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 ### <a name="managed-identity-authentication"></a>マネージド ID の認証
 
-[[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに Azure Active Directory (Azure AD) で保護された他のリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての "*単一の*" ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+[特定のトリガーまたはアクション](#add-authentication-outbound)で [[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに Azure Active Directory (Azure AD) で保護された他のリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての*単一*の ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
 
 1. ロジック アプリでマネージド ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
 

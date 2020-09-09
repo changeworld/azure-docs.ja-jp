@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420823"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079117"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する
 
@@ -32,6 +32,10 @@ Firewall Manager では、ハブ仮想ネットワーク アーキテクチャ�
 > * サーバーをデプロイする
 > * ファイアウォール ポリシーを作成してハブをセキュリティで保護する
 > * ファイアウォールをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>ハブとスポークのアーキテクチャを作成する
 
@@ -270,6 +274,10 @@ DNAT 規則を追加して、リモート デスクトップを **Srv-Workload-0
 
 これで、ファイアウォールのネットワーク規則が機能していることを確認できました。
 * リモート デスクトップを別の仮想ネットワークにあるサーバーに接続できます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+ファイアウォール リソースのテストが完了したら、 **fw-manager** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,17 +3,16 @@ title: 'BGP と Azure VPN Gateway: 概要'
 description: ネットワーク間でルーティングと到達可能性の情報を交換するための標準インターネット プロトコルである、Azure VPN の Border Gateway Protocol (BGP) について説明します。
 services: vpn-gateway
 author: yushwang
-manager: rossort
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 368532eb05ade95a979029871733e057cbdcd6d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 464d00cbeddbacd617b1d2c88f9e5f68cc5d996e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035554"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400876"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>BGP と Azure VPN Gateway について
 この記事では、Azure VPN ゲートウェイでの BGP (Border Gateway Protocol) のサポートの概要を説明します。

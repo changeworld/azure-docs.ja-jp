@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431195"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691260"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
 **適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 **[Azure AI ギャラリー](https://gallery.azure.ai)** は、Azure AI を使用して構築されたソリューションを入手および共有するためのコミュニティ主導のサイトです。
 このギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
@@ -34,7 +34,6 @@ Azure AI ギャラリーには、Microsoft とデータ サイエンス コミ�
 * **チュートリアル**: Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
 * **コレクション** - コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー リソースをグループ化できます。
 * **カスタム モジュール** - Studio (クラシック) ワークスペースにカスタム モジュールをダウンロードして、独自の実験で使用できます。
-* **Jupyter Notebook** - Jupyter Notebook には、単一の対話型のキャンバスにコード、データ視覚化、およびドキュメントが含まれています。 ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。
 
 ## <a name="discover-and-contribute"></a>検出と投稿
 
@@ -49,12 +48,12 @@ LinkedIn や Twitter の共有機能を使用するか、またはリンクを�
 
 サインインすると、ギャラリー コミュニティのメンバーになります。 これにより、リソースをダウンロードするか、または独自のギャラリー項目を投稿することで、あなたが見つけたソリューションを他のユーザーが利用できるようになります。
 
-**実験**、**カスタム モジュール**、および **Jupyter Notebook** をダウンロードして、独自の分析ソリューションの開発に使用できます。
+**実験**、**カスタム モジュール**をダウンロードして、独自の分析ソリューションの開発に使用できます。
 **実験**、**チュートリアル**、および**コレクション**をギャラリーに投稿できます。
 
-## <a name="download-experiments-modules-notebooks"></a>実験、モジュール、ノートブックのダウンロード
+## <a name="download-experiments-modules"></a>実験、モジュールのダウンロード
 
-独自の Machine Learning Studio (クラシック) ワークスペースに**実験**、**カスタム モジュール**、および **Jupyter Notebook** をダウンロードして、独自のソリューションの開発に使用できます。
+独自の Machine Learning Studio (classic) ワークスペースに**実験**、**カスタム モジュール**をダウンロードして、独自のソリューションの開発に使用できます。
 
 AI ギャラリー内からリソースをダウンロードするには:
 

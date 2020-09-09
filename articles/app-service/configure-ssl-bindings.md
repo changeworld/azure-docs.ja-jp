@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078633"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962640"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
-この記事では、証明書バインドを作成することで [App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)の[カスタム ドメイン](app-service-web-tutorial-custom-domain.md)をセキュリティで保護する方法について説明します。 完了したら、カスタム DNS 名 (`https://www.contoso.com` など) の `https://` エンドポイントで App Service アプリにアクセスできます。 
+この記事では、証明書バインドを作成することで [App Service アプリ](./index.yml)または[関数アプリ](../azure-functions/index.yml)の[カスタム ドメイン](app-service-web-tutorial-custom-domain.md)をセキュリティで保護する方法について説明します。 完了したら、カスタム DNS 名 (`https://www.contoso.com` など) の `https://` エンドポイントで App Service アプリにアクセスできます。 
 
 ![カスタム TLS/SSL 証明書を使用した Web アプリ](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "88078633"
 
 この攻略ガイドに従うには:
 
-- [App Service アプリを作成する](/azure/app-service/)
+- [App Service アプリを作成する](./index.yml)
 - [ドメイン名をアプリにマップする](app-service-web-tutorial-custom-domain.md)か、[Azure で購入して構成する](manage-custom-dns-buy-domain.md)
 - [プライベート証明書をアプリに追加する](configure-ssl-certificate.md)
 
@@ -168,4 +168,4 @@ App Service では、[TLS 終了](https://wikipedia.org/wiki/TLS_termination_pro
 ## <a name="more-resources"></a>その他のリソース
 
 * [Azure App Service のご自分のコードから TLS/SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
-* [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [FAQ:App Service 証明書](./faq-configuration-and-management.md)

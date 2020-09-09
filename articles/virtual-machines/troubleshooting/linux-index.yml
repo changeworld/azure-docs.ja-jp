@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 78310d35361a3c34992e9fb3f08d8432b4ec4fb8
-  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+  ms.openlocfilehash: 7367bc378cf2a271d69d78cd08c4d1252b11fd62
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88650526"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816390"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -88,7 +88,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 仮想ディスクの FAQ
-      url: ../linux/faq-for-disks.md
+      url: ../faq-for-disks.md
     - text: VM のサイズを変更するときの割り当てエラーのトラブルシューティング
       url: ./allocation-failure.md
     - text: VM の一時ドライブについて
