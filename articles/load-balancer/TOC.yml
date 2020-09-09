@@ -4,31 +4,35 @@
   items:
     - name: Azure Load Balancer の概要
       href: load-balancer-overview.md
-    - name: 新機能
-      href: whats-new.md
-    - name: よく寄せられる質問
-      href: load-balancer-faqs.md
-- name: クイック スタート
+- name: クイックスタート
   items:
-    - name: ロード バランサーの作成 - ポータル
+    - name: パブリック ロード バランサ―の作成 - ポータル
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: ロード バランサーの作成 - Azure CLI
+    - name: パブリック ロード バランサーの作成 - PowerShell
+      href: quickstart-load-balancer-standard-public-powershell.md
+    - name: パブリック ロード バランサ―の作成 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: ロード バランサーの作成 - Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
-    - name: ロード バランサーの作成 - ARM テンプレート
+    - name: パブリック ロード バランサ―の作成 - Resource Manager テンプレート
       href: quickstart-load-balancer-standard-public-template.md
-    - name: 内部ロード バランサーの作成 - ポータル
-      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: 内部ロード バランサ―の作成 - Azure PowerShell
+      href: quickstart-load-balancer-standard-internal-portal.md
+    - name: 内部ロード バランサ―の作成 - PowerShell
+      href: quickstart-load-balancer-standard-internal-powershell.md
     - name: 内部ロード バランサーの作成 - Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: 内部ロード バランサーの作成 - Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
-      href: load-balancer-get-started-ilb-arm-template.md
+      href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true
 - name: チュートリアル
   items:
+    - name: 内部ロード バランサー
+      items:
+        - name: 内部ロード バランサーの作成 - ポータル
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: 内部ロード バランサーの作成 - Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: 内部ロード バランサーの作成 - Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: 可用性ゾーン間で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
@@ -73,6 +77,8 @@
       href: load-balancer-security-controls.md
     - name: バックエンド プールの管理
       href: backend-pool-management.md
+    - name: Standard Load Balancer と Virtual Machine Scale Sets
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 方法
   items:
     - name: 仮想マシン スケール セット
@@ -91,14 +97,6 @@
           href: upgrade-basicInternal-standard.md
         - name: 内部ロード バランサーのアップグレード - 送信接続が必要
           href: upgrade-InternalBasic-To-PublicStandard.md
-    - name: 送信の規則を構成する
-      items:
-        - name: ポータル
-          href: configure-load-balancer-outbound-portal.md
-        - name: Azure CLI
-          href: configure-load-balancer-outbound-cli.md
-        - name: Azure PowerShell
-          href: configure-load-balancer-outbound-powershell.md
     - name: IPv6 を使用してパブリック ロード バランサーを作成する
       items:
         - name: Azure CLI
@@ -130,14 +128,18 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部ロード バランサー - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-- name: トラブルシューティング
-  items:
-    - name: Azure Load Balancer のトラブルシューティング
-      href: load-balancer-troubleshoot.md
-    - name: 一般的なデプロイ エラーのトラブルシューティング
-      href: load-balancer-common-deployment-errors.md
-    - name: 送信接続に関する一般的な問題の解決
-      href: troubleshoot-outbound-connection.md
+    - name: 送信専用のロード バランサーの構成
+      href: egress-only.md
+    - name: トラブルシューティング
+      items:
+        - name: Azure Load Balancer のトラブルシューティング
+          href: load-balancer-troubleshoot.md
+        - name: 一般的なデプロイ エラーのトラブルシューティング
+          href: load-balancer-common-deployment-errors.md
+        - name: 送信接続に関する一般的な問題のトラブルシューティング
+          href: troubleshoot-outbound-connection.md
+        - name: リソース正常性と受信の可用性に関する問題のトラブルシューティング
+          href: troubleshoot-rhc.md
 - name: リファレンス
   items:
     - name: コード サンプル
@@ -175,3 +177,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 製品の更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
+    - name: よく寄せられる質問
+      href: load-balancer-faqs.md

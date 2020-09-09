@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077929"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -138,7 +138,7 @@ PNS は、通知の送信に関するいかなる SLA も保証しません。 �
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>プッシュ通知の配信のセキュリティ モデルは何ですか。
 
-Azure Notification Hubs では、[Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) ベースのセキュリティ モデルを使用しています。 Shared Access Signature トークンはルートの名前空間レベルや詳細な通知ハブ レベルで使用できます。 メッセージ アクセス許可の送信や、通知アクセス許可のリッスンなど、さまざまな承認規則に従うように、Shared Access Signature トークンを設定できます。 詳細については、[Notification Hubs のセキュリティ モデル]に関するドキュメントを参照してください。
+Azure Notification Hubs では、[Shared Access Signature](../storage/common/storage-sas-overview.md) ベースのセキュリティ モデルを使用しています。 Shared Access Signature トークンはルートの名前空間レベルや詳細な通知ハブ レベルで使用できます。 メッセージ アクセス許可の送信や、通知アクセス許可のリッスンなど、さまざまな承認規則に従うように、Shared Access Signature トークンを設定できます。 詳細については、[Notification Hubs のセキュリティ モデル]に関するドキュメントを参照してください。
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>プッシュ通知内の機密情報を含むペイロードはどのように扱えばよいですか。
 
@@ -203,15 +203,15 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs の価格]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Notification Hubs REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[Notification Hubs REST API]: /previous-versions/azure/reference/dn530746(v=azure.100)
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
-[バックエンド登録のガイダンス]: https://msdn.microsoft.com/library/azure/dn743807.aspx
-[バックエンド登録のガイダンス 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
-[Notification Hubs のセキュリティ モデル]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Notification Hubs の安全なプッシュのチュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Notification Hubs のトラブルシューティング]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[バックエンド登録のガイダンス]: /previous-versions/azure/azure-services/dn743807(v=azure.100)
+[バックエンド登録のガイダンス 2]: /previous-versions/azure/azure-services/dn530747(v=azure.100)
+[Notification Hubs のセキュリティ モデル]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
+[Notification Hubs の安全なプッシュのチュートリアル]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
+[Notification Hubs のトラブルシューティング]: ./notification-hubs-push-notification-fixer.md
 [Notification Hubs のメトリック]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[登録のエクスポートとインポート]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
+[登録のエクスポートとインポート]: ./export-modify-registrations-bulk.md
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

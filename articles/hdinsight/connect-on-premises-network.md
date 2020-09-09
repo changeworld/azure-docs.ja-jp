@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 0d76bf29efeb40f9f29f80b6e3e6414f5e9b6fc8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086559"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -45,7 +45,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 ## <a name="prerequisites"></a>前提条件
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](./hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
 * Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-virtual-network-configuration"></a>仮想ネットワーク構成を作成する

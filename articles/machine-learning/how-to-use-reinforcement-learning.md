@@ -5,17 +5,17 @@ description: Azure Machine Learning の強化学習 (プレビュー) を使用�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.custom: tracking-python
-ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203274"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650827"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -34,7 +34,7 @@ ms.locfileid: "86203274"
 > * 実験を送信して実行を開始する
 > * 結果の表示
 
-この記事は、Azure Machine Learning ノートブックの [GitHub リポジトリ](https://aka.ms/azureml-rl-notebooks)にある [RLlib Pong の例](https://aka.ms/azureml-rl-pong)が基になっています。
+この記事は、Azure Machine Learning ノートブックの [GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)にある [RLlib Pong の例](https://aka.ms/azureml-rl-pong)が基になっています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -168,6 +168,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(head_compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="worker-computing-cluster"></a>ワーカー コンピューティング クラスター
 
@@ -431,4 +433,4 @@ run.wait_for_completion()
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、IMPALA 学習エージェントを使用して強化学習エージェントをトレーニングする方法について学習しました。 その他の例については、[Azure Machine Learning 強化学習の GitHub リポジトリ](https://aka.ms/azureml-rl-notebooks)を参照してください。
+この記事では、IMPALA 学習エージェントを使用して強化学習エージェントをトレーニングする方法について学習しました。 その他の例については、[Azure Machine Learning 強化学習の GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)を参照してください。

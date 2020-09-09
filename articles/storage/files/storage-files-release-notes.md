@@ -1,19 +1,19 @@
 ---
 title: Azure File Sync エージェントのリリース ノート | Microsoft Docs
-description: Azure File Sync エージェントのリリース ノート。
+description: Azure File Sync エージェントのリリース ノートを読み、Azure Files で組織のファイル共有を集中管理できるようにします。
 services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 6/26/2020
+ms.date: 7/28/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00590c2b12e8600b2a650444b97b6558e3a52da1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484062"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904940"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,7 +25,7 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
-| V10.1 リリース - [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | サポート対象 - フライティング |
+| V10.1 リリース - [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | サポートされています |
 | 2020 年 5 月の更新プログラム ロールアップ - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | サポートされています |
 | V10 リリース - [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | サポートされています |
 | 2019 年 12 月の更新プログラム ロールアップ - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12日 | サポートされています |

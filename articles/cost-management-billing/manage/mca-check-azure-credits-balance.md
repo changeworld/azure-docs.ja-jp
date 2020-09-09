@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 06/24/2019
+ms.subservice: billing
+ms.topic: how-to
+ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361508"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690580"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
 

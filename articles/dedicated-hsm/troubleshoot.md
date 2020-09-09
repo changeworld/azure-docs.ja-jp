@@ -1,5 +1,5 @@
 ---
-title: 専用 HSM とは - Azure Dedicated HSM | Microsoft Docs
+title: Dedicated HSM のトラブルシューティング - Azure Dedicated HSM |Microsoft Docs
 description: Azure Dedicated HSM の概要では、FIPS 140-2 レベル 3 認定を満たす Azure 内でのキーの保管機能について説明します
 services: dedicated-hsm
 author: msmbaldwin
@@ -9,18 +9,18 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209574"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590457"
 ---
-# <a name="troubleshooting"></a>トラブルシューティング
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
 Azure Dedicated HSM サービスには、明確に区別される 2 つの側面があります。 1 つは、HSM デバイスとその基になるネットワーク コンポーネントの Azure への登録とデプロイです。 もう 1 つは、特定のワークロードやアプリケーションでの使用またはそれらとの統合に備えた HSM デバイスの構成です。 Azure で使用される Thales Luna Network の HSM デバイスは、Thales から直接購入できる製品と同じですが、Azure ではリソースという位置付けになるため、独自の考慮事項がいくつか発生します。 ここでは、重要な情報への注目度を高め、周知徹底するために、それらの考慮事項とそれに伴うトラブルシューティングのための分析情報やベスト プラクティスについて取り上げています。 サービスの使用開始後は、Microsoft へのサポート リクエストか Thales への直接の問い合わせを通じて、信頼性の高い情報を入手できます。 
 

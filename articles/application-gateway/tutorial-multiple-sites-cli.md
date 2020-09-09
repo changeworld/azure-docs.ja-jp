@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806262"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502760"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLI を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "84806262"
 > * バックエンド プールを含んだ仮想マシン スケール セットの作成
 > * ドメインの CNAME レコードの作成
 
-![マルチサイト ルーティングの例](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 好みに応じて、[Azure PowerShell](tutorial-multiple-sites-powershell.md) を使ってこの手順を実行することもできます。
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>バックエンド リスナーの追加
+### <a name="add-listeners"></a>リスナーの追加
 
-[az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) を使用して、トラフィックのルーティングに必要なバックエンド リスナーを追加します。
+[az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) を使用して、トラフィックのルーティングに必要なリスナーを追加します。
+
+>[!NOTE]
+> Application Gateway または WAF v2 SKU では、リスナーごとに最大 5 つのホスト名を構成することもできます。ホスト名にワイルドカード文字を使用できます。 詳細については、「[リスナーにおけるワイルドカードのホスト名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)」を参照してください。
+>Azure CLI を使用してリスナーで複数のホスト名とワイルドカード文字を使用するには、`--host-name` ではなく `--host-names` を使用する必要があります。 host-names を使用すると、最大 5 つのホスト名をコンマ区切り値として指定できます。 たとえば、`--host-names "*.contoso.com,*.fabrikam.com"` のように指定します。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

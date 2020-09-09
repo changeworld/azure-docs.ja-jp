@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.custom: mvc
-ms.openlocfilehash: 6af5fa85306db885359d3de66a9a50f187015b75
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6c17c746dfe0ce81da4cfe486b830837c37cdda4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023956"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496034"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-powershell"></a>チュートリアル:PowerShell を使用して Azure Database for MariaDB を設計する
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > Az.MariaDb PowerShell モジュールがプレビュー段階にある間は、次のコマンドを使用して、Az PowerShell モジュールとは別にインストールする必要があります: `Install-Module -Name Az.MariaDb -AllowPrerelease`。
 > Az.MariaDb PowerShell モジュールは一般提供されると、将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-Azure Database for MariaDB サービスを初めて使用する場合は、**Microsoft.DBforMariaDB** リソース プロバイダーを登録する必要があります。
+Azure Database for MariaDB サービスを初めて使用する場合は、**Microsoft.DBforMariaDB** リソースプロバイダーを登録する必要があります。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMariaDB
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 `New-AzMariaDbServer` コマンドレットを使用して Azure Database for MariaDB サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
-次の例では、**米国西部**リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MariaDB サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行で使用されているパスワードは MariaDB サーバー管理者アカウントのパスワードであるため、これを記録しておきます。
+次の例では、**米国西部**リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MariaDB サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MariaDB サーバー管理者アカウントのパスワードであるため、これを記録しておきます。
 
 > [!TIP]
 > サーバー名は DNS 名に対応しており、Azure 内でグローバルに一意であることが必要です。
@@ -91,7 +91,7 @@ New-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku G
 
 ## <a name="configure-a-firewall-rule"></a>ファイアウォール規則を構成する
 
-`New-AzMariaDbFirewallRule` コマンドレットを使用して、Azure Database for MariaDB のサーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則を使用すると、`mysql` コマンドライン ツールや MariaDB Workbench などの外部アプリケーションは、Azure Database for MariaDB サービスのファイアウォールを経由してサーバーに接続できるようになります。
+`New-AzMariaDbFirewallRule` コマンドレットを使用して、Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、`mysql` コマンドライン ツールや MariaDB Workbench などの外部アプリケーションが、Azure Database for MariaDB サービス ファイアウォールを経由してサーバーに接続できるようになります。
 
 次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、**AllowMyIP** と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
 

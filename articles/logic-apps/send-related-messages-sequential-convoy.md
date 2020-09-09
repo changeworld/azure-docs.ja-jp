@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987604"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048669"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Azure Logic Apps のシーケンシャルなコンボイを使用して、関連するメッセージを Azure Service Bus で送信する
 
-関連付けられたメッセージを特定の順序で送信する必要がある場合は、[Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用するときに "[*シーケンシャルなコンボイ*" パターン](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
+関連付けられたメッセージを特定の順序で送信する必要がある場合は、[Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用するときに "[*シーケンシャルなコンボイ*" パターン](/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
 
 たとえば、"Session 1" という名前のセッションのメッセージが 10 個あり、"Session 2" という名前のセッションのメッセージが 5 個あり、すべてが同じ [Service Bus キュー](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)に送信されるとします。 キューにあるメッセージを処理するロジック アプリを作成し、"Session 1" のすべてのメッセージが 1 回のトリガー実行によって処理され、"Session 2" のすべてのメッセージが次のトリガー実行によって処理されるようにすることができます。
 
@@ -29,7 +29,7 @@ ms.locfileid: "84987604"
 
 このテンプレートの JSON ファイルを確認するには、[GitHub: service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json) を参照してください。
 
-詳細については、[Azure アーキテクチャのクラウド設計パターンの「シーケンシャルなコンボイ パターン」](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)を参照してください。
+詳細については、[Azure アーキテクチャのクラウド設計パターンの「シーケンシャルなコンボイ パターン」](/azure/architecture/patterns/sequential-convoy)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -202,7 +202,7 @@ ms.locfileid: "84987604"
   | **頻度** | はい | **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** | メッセージの有無を確認するときに繰り返しで使用される時間の単位。 <p>**ヒント**:**タイム ゾーン**または**開始時刻**を追加するには、 **[新しいパラメーターの追加]** の一覧からこれらのプロパティを選択します。 |
   |||||
 
-  トリガーの詳細については、「[Service Bus - メッセージがキューに着信したとき (ピーク ロック)](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))」を参照してください。 このトリガーの出力は [ServiceBusMessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage) です。
+  トリガーの詳細については、「[Service Bus - メッセージがキューに着信したとき (ピーク ロック)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))」を参照してください。 このトリガーの出力は [ServiceBusMessage](/connectors/servicebus/#servicebusmessage) です。
 
 セッション初期化の後、このワークフローでは **[変数を初期化する]** アクションを使用してブール変数を作成します。これは、最初は `false` に設定され、次の条件が満たされたことを示します。 
 
@@ -422,4 +422,4 @@ ms.locfileid: "84987604"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Service Bus コネクタのトリガーとアクション](https://docs.microsoft.com/connectors/servicebus/)についての詳細情報
+* [Service Bus コネクタのトリガーとアクション](/connectors/servicebus/)についての詳細情報

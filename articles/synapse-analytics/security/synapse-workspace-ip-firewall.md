@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics で IP ファイアウォール規則を構成する
+title: IP ファイアウォール規則を構成する
 description: Azure Synapse Analytics で IP ファイアウォール規則を構成する方法を説明した記事
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 255714fcf69a8ed72cf1f306e5aafabd49a199ca
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194401"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503924"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics の IP ファイアウォール規則 (プレビュー)
 
@@ -35,7 +35,7 @@ IP ファイアウォール規則を Synapse ワークスペースに追加す�
 
 ![Azure portal での Azure Synapse ワークスペース IP の構成。](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
-## <a name="connecting-to-synapse-from-your-own-network"></a>独自のネットワークから Synapse に接続する
+## <a name="connect-to-synapse-from-your-own-network"></a>独自のネットワークから Synapse に接続する
 
 Synapse Studio を使用して、Synapse ワークスペースに接続できます。 また、SQL Server Management Studio (SSMS) を使用して、ワークスペース内の SQL リソース (SQL プールと SQL オンデマンド) に接続することもできます。
 
@@ -49,4 +49,4 @@ Synapse Studio を使用して、Synapse ワークスペースに接続できま
 
 [Azure Synapse ワークスペース](../quickstart-create-workspace.md)を作成する
 
-[マネージド ワークスペース VNet](./synapse-workspace-managed-vnet.md) を使用して Azure Synapse ワークスペースを作成する
+[マネージド ワークスペース仮想ネットワーク](./synapse-workspace-managed-vnet.md)を使用して Azure Synapse ワークスペースを作成する

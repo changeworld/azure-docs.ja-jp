@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: ea9865d35b25b5691f702b91c6255f0f703c3e90
-  ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+  ms.openlocfilehash: ac8900298670323551a25d4ef7ac3f7b44249c5a
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/03/2020
-  ms.locfileid: "84310038"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88209890"
 landingContent:
 - title: Azure Dev Spaces について
   linkLists:
@@ -32,18 +32,6 @@ landingContent:
     links:
     - text: Azure Dev Spaces のインストール
       url: how-to/install-dev-spaces.md
-- title: マイクロサービスの開発とテスト
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: マイクロサービスを実行してデバッグする
-      url: quickstart-netcore.md
-    - text: 一連のマイクロサービスでチームと共同作業を行う
-      url: quickstart-team-development.md
-  - linkListType: how-to-guide
-    links:
-    - text: CI/CD パイプラインで Dev Spaces を統合してエンドツーエンドのテストを改善する
-      url: how-to/setup-cicd.md
 - title: 高度なシナリオ
   linkLists:
   - linkListType: how-to-guide
@@ -65,6 +53,6 @@ landingContent:
     - text: Azure Dev Spaces で GitHub アクションを使用する
       url: how-to/github-actions.md
     - text: Visual Studio Code を使用して Local Process with Kubernetes を利用する
-      url: how-to/local-process-kubernetes-vs-code.md
+      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
     - text: Visual Studio を使用して Local Process with Kubernetes を利用する
-      url: how-to/local-process-kubernetes-visual-studio.md
+      url: /visualstudio/containers/local-process-kubernetes

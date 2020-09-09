@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure Front Door アーキテクチャのルール エンジンと用語
 description: この記事では、Azure Front Door のルール エンジン機能の概要を示します。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: ee981d08e53765003e88870d35b291a5802e6848
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1332f4b21f971d23055c158c2aebdd3316f1bd39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322020"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512216"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Azure Front Door のルール エンジンとは 
 

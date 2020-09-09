@@ -1,30 +1,34 @@
 ---
-title: SQL Server VM を作成する (Azure Resource Manager テンプレート)
-description: Azure Resource Manager テンプレートを使用して、Azure 仮想マシン (VM) に SQL Server を作成する方法を学習します。
+title: ARM テンプレートを使用して SQL Server VM を作成する
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure 仮想マシン (VM) に SQL Server を作成する方法を説明します。
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852502"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660209"
 ---
-# <a name="create-sql-server-vm-azure-resource-manager-template"></a>SQL Server VM を作成する (Azure Resource Manager テンプレート)
+# <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して SQL Server VM を作成する
 
-この Azure Resource Manager テンプレートを使用して、Azure 仮想マシン (VM) に SQL Server をデプロイします。 
+この Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure 仮想マシン (VM) に SQL Server をデプロイします。 
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
 SQL Server VM ARM テンプレートには、次のものが必要です。
 
-- 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)。 
+- 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) または [PowerShell](/powershell/scripting/install/installing-powershell)。 
 - [仮想ネットワーク](../../../virtual-network/quick-create-portal.md)と[サブネット](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)が準備された構成済みの[リソース グループ](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -33,7 +37,7 @@ SQL Server VM ARM テンプレートには、次のものが必要です。
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json" highlight="169-310":::
+:::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json":::
 
 このテンプレートには、次の 5 つの Azure リソースが定義されています。 
 
@@ -43,7 +47,7 @@ SQL Server VM ARM テンプレートには、次のものが必要です。
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Azure に仮想マシンを作成します。 
 - [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): 仮想マシンを SQL VM リソース プロバイダーに登録します。 
 
-その他の Azure VM 上の SQL Server のテンプレートについては、[クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine)をご覧ください。
+その他の Azure VM 上の SQL Server のテンプレートについては、[クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)をご覧ください。
 
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
@@ -116,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [ チュートリアル: 初めての Azure Resource Manager テンプレートを作成およびデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 SQL Server VM をデプロイするその他の方法については、以下を参照してください。 
 - [Azure Portal](create-sql-vm-portal.md)

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 2b0b85792fe1266d2ec6478561193ef0c80ac98f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224300"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083380"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
 Azure CLI は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 この記事では、Azure CLI を使用して Azure Marketplace イメージから Oracle Database 12c データベースをデプロイする方法を説明します。 さらに、手順に従って Azure 仮想マシン (VM) に Data Guard をインストールして構成する方法を説明します。
 
-始める前に、Azure CLI がインストールされていることを確認します。 詳細については、[Azure CLI のインストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
+始める前に、Azure CLI がインストールされていることを確認します。 詳細については、[Azure CLI のインストール ガイド](/cli/azure/install-azure-cli)を参照してください。
 
 ## <a name="prepare-the-environment"></a>環境の準備
 ### <a name="assumptions"></a>前提条件
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットの作成は省略可能ですが、作成することをお勧めします。 詳細については、[Azure 可用性セットのガイドライン](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に関する記事をご覧ください。
+可用性セットの作成は省略可能ですが、作成することをお勧めします。 詳細については、[Azure 可用性セットのガイドライン](../../windows/infrastructure-example.md)に関する記事をご覧ください。
 
 ```azurecli
 az vm availability-set create \

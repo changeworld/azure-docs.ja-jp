@@ -59,6 +59,10 @@
           href: tutorial-postgresql-azure-postgresql-online-portal.md
         - name: Azure DB for PostgreSQL へ (Az CLI)
           href: tutorial-postgresql-azure-postgresql-online.md
+    - name: Azure DB for PostgreSQL の移行 - 単一サーバー
+      items:
+        - name: Azure DB for PostgreSQL へ (ポータル)
+          href: tutorial-azure-postgresql-to-azure-postgresql-online-portal.md
     - name: RDS PostgreSQL の移行
       items:
         - name: Azure DB for PostgreSQL へ

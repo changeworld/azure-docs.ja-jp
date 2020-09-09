@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498968"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798909"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -38,7 +38,9 @@ Network Performance Monitor では、次の 3 つの広範な機能が提供さ�
 NPM は、次のリージョンのいずれかでホストされているワークスペースから、世界の任意の部分のネットワークまたはアプリケーション間の接続を監視できます。
 * 北ヨーロッパ
 * 西ヨーロッパ
+* スイス北部
 * フランス中部
+* 南アフリカ北部
 * カナダ中部
 * 米国西部
 * 米国中西部
@@ -58,6 +60,7 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 韓国中部
 * インド中部
 * 米国政府バージニア州
+* 米国政府アリゾナ州
 * 中国東部 2
 
 
@@ -65,6 +68,9 @@ ExpressRoute モニターのサポート対象リージョンの一覧は、[こ
 
 
 ## <a name="set-up-and-configure"></a>セットアップと構成
+
+> [!NOTE]
+> Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) または OMS Linux エージェントとも呼ばれます。
 
 ### <a name="install-and-configure-agents"></a>エージェントのインストールと構成 
 
@@ -110,7 +116,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成 
 
-1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順も使用できます。 
+1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されている手順も使用できます。 
 2. Log Analytics ワークスペースを開いて、 **[概要]** タイルを選びます。 
 3. "*このソリューションにはさらに構成が必要です*" というメッセージが表示されている **[Network Performance Monitor]** タイルを選択します。
 
@@ -288,3 +294,4 @@ Azure portal を介してアラートを作成する NPM ユーザーの場合:
 
 ## <a name="next-steps"></a>次のステップ 
 [パフォーマンスの監視](network-performance-monitor-performance-monitor.md)、[サービス接続の監視](network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](network-performance-monitor-expressroute.md)の詳細情報を確認します。 
+

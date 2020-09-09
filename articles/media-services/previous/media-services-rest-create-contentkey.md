@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 373b863441eb21b52a18bbaece10779260eaeb7a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166198"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256975"
 ---
 # <a name="create-content-keys-with-rest"></a>REST でコンテンツ キーを作成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
@@ -41,7 +44,7 @@ Media Services では、暗号化されたアセットを送信できます。 *
 1. 16 バイトの AES キー (CommonEncryption と EnvelopeEncryption 向け) か 32 バイトの AES キー (StorageEncryption 向け) をランダムに生成します。 
    
     これが資産のコンテンツ キーになります。つまり、この資産に関連付けるすべてのファイルは、暗号化の際に同じコンテンツ キーを使う必要があります。 
-2. [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
+2. [GetProtectionKeyId](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) メソッドと [GetProtectionKey](/rest/api/media/operations/rest-api-functions#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
 3. X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
    
    Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。  具体例については、「 [EncryptSymmetricKeyData function](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)」 (EncryptSymmetricKeyData 関数) を参照してください。
@@ -268,4 +271,3 @@ HTTP/1.1 204 No Content
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

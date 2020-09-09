@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と PolicyStat の統合 | Microsoft Docs
 description: Azure Active Directory と PolicyStat の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af5eb0f1-1c8e-4809-b0c4-8ccfb915ca42
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142029"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
 
@@ -40,6 +36,9 @@ PolicyStat と Azure AD の統合を構成するには、次のものが必要�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * PolicyStat でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

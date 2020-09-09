@@ -9,16 +9,17 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e58cef5ae1fc727235539a91e80e424e6ed3be34
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887876"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496374"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI で特殊化されたイメージ バージョンを使用してスケール セットを作成する
 
-共有イメージ ギャラリーに格納されている[特殊化されたイメージ バージョン](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)からスケール セットを作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、「[一般化されたイメージからスケール セットを作成する](instance-generalized-image-version-cli.md)」を参照してください。
+共有イメージ ギャラリーに格納されている[特殊化されたイメージ バージョン](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)からスケール セットを作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、「[一般化されたイメージからスケール セットを作成する](instance-generalized-image-version-cli.md)」を参照してください。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.4.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -60,6 +61,3 @@ az vmss create \
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-
-
-

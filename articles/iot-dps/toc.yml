@@ -99,6 +99,8 @@
       href: concepts-security.md
     - name: TLS サポート
       href: tls-support.md
+    - name: 仮想ネットワークのサポート
+      href: virtual-network-support.md
     - name: サービス
       href: concepts-service.md
     - name: DPS IP アドレスについて

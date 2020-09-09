@@ -14,12 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2c5ef71059fd3ba96299624818a13ebe1ae0929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 94ac7282375660308f8dab37ae5bd874828f778a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737854"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074748"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell を使用して Azure Virtual Machines 上の SQL Server をプロビジョニングする方法
 
@@ -60,7 +61,7 @@ $ResourceGroupName = "sqlvm2"
 
 ストレージ アカウントと、仮想マシンで使用するストレージの種類を定義します。
 
-必要に応じて変更してから、以下のコマンドレットを実行し、これらの変数を初期化します。 運用環境のワークロードには [Premium SSD](../../../virtual-machines/windows/disks-types.md#premium-ssd) を使用することをお勧めします。
+必要に応じて変更してから、以下のコマンドレットを実行し、これらの変数を初期化します。 運用環境のワークロードには [Premium SSD](../../../virtual-machines/disks-types.md#premium-ssd) を使用することをお勧めします。
 
 ```powershell
 $StorageName = $ResourceGroupName + "storage"
@@ -152,7 +153,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、両方の用途を兼ねた単一のディスクを作成します。 後から [Add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) コマンドレットを使用して追加のディスクを接続すると、SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納できます。 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、新しいリソース グループ内に標準ストレージ アカウントを作成します。 前に初期化した、ストレージ アカウント名、ストレージ SKU 名、および場所の変数を指定します。
+仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、両方の用途を兼ねた単一のディスクを作成します。 後から [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) コマンドレットを使用して追加のディスクを接続すると、SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納できます。 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、新しいリソース グループ内に標準ストレージ アカウントを作成します。 前に初期化した、ストレージ アカウント名、ストレージ SKU 名、および場所の変数を指定します。
 
 このコマンドレットを実行し、新しいストレージ アカウントを作成します。
 

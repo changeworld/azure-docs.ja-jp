@@ -24,7 +24,7 @@
 - name: 操作方法
   items:
     - name: Service Health イベントのアラートの構成
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: Azure Portal を使用したサービス正常性通知の表示
       href: service-notifications.md
     - name: Webhook 経由でアラートを外部のシステムに送信する

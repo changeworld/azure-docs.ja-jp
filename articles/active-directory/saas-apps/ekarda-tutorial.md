@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Ekarda の統合 | Microsoft Docs
 description: Azure Active Directory と Ekarda の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8e2945aa-46fc-41bc-a530-3807a5dcb76a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3790da8674732c50d55a85c84367f0d2fe3e08f5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b1cf45fd57e159993cdb3a677c505911d013122e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255694"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Ekarda の統合
 
@@ -151,12 +147,12 @@ Ekarda で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. **[管理]**  ->  **[マイ アカウント]** をクリックします。
 
-    ![Ekarda の構成](./media/ekarda-tutorial/ekarda.PNG)    
+    ![Ekarda の構成](./media/ekarda-tutorial/ekarda.png)    
 
 1. ページの下部に、 **[SAML SETTINGS] (SAML の設定)** セクションが表示されます。ここで、その SAML 統合を構成します。
 1. 次のページで、以下の手順を実行します。
 
-    ![Ekarda の構成](./media/ekarda-tutorial/ekarda1.PNG)
+    ![Ekarda の構成](./media/ekarda-tutorial/ekarda1.png)
 
     a. **[Service Provider metadata] (サービス プロバイダーのメタデータ)** リンクをクリックし、それをファイルとしてコンピューターに保存します。
 
@@ -188,13 +184,14 @@ Ekarda で Azure AD SSO を構成してテストするには、次の構成要�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Ekarda を試す](https://aad.portal.azure.com/)
 
+- [Ekarda のエンタープライズ eCard ソリューション](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise)を使用すると、会社のロゴが入った eCards を顧客や同僚に送信できるように、任意の数のスタッフをプロビジョニングできます。 SSO ソリューションとして Ekarda をプロビジョニングする方法の詳細については、[こちら](https://support.ekarda.com/#SSO-Implementation)を参照してください。
+
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Ekarda を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

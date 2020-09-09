@@ -4,16 +4,16 @@ description: メトリック テレメトリ用の Application Insights デー�
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540011"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320580"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
+[Application Insights](./app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
 
 事前集計メトリック テレメトリは、その集計期間が 1 分間であることを前提としています。
 
@@ -65,6 +65,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [カスタムのイベントとメトリックのための Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
+- [カスタムのイベントとメトリックのための Application Insights API](./api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

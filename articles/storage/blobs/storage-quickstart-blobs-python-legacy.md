@@ -3,21 +3,24 @@ title: クイック スタート:Python 用 Azure Blob Storage クライアン�
 description: このクイック スタートでは、ストレージ アカウントとコンテナーをオブジェクト (BLOB) ストレージ内に作成します。 その後、Python 用のストレージ クライアント ライブラリ v2.1 を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: seo-python-october2019, devx-track-python
+ms.openlocfilehash: a01b6e644ce3afda451d94d3e00eda278a645adf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561339"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851326"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>クイック スタート:Python v2.1 SDK で BLOB を管理する
 
 このクイックスタートでは、Python を使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 ここでは、BLOB のアップロード、ダウンロード、一覧表示のほか、コンテナーの作成と削除を行います。
+
+> [!NOTE]
+> このクイックスタートでは、Azure Blob Storage クライアント ライブラリのレガシー バージョンを使用します。 最新バージョンで始めるには、「[クイックスタート: Python v12 SDK で BLOB を管理する](storage-quickstart-blobs-python.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -220,4 +223,4 @@ BLOB ストレージを使用する Python 開発の詳細については、以�
  
 このクイック スタートでは、Python を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 
 
-Storage Explorer と BLOB の詳細については、「[ストレージ エクスプローラーを使用した Azure BLOB ストレージリソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+Storage Explorer と BLOB の詳細については、「[Storage Explorer を使用した Azure BLOB ストレージリソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。

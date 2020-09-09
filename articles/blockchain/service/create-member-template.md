@@ -2,18 +2,16 @@
 title: Azure Resource Manager テンプレートを使用して Azure Blockchain Service メンバーを作成する
 description: Azure Resource Manager テンプレートを使用して Azure Blockchain Service メンバーを作成する方法を学習します。
 services: azure-resource-manager
-author: PatAltimore
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.author: patricka
-ms.date: 06/04/2020
-ms.openlocfilehash: 8eabb6806dee96871648ea419ba36d768d32a2ab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: subject-armqs, references_regions
+ms.date: 07/16/2020
+ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078168"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642012"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Blockchain Service メンバーを作成する
 
@@ -33,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json" range="1-84" highlight="52-80":::
+:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json":::
 
 テンプレート内に定義されている Azure リソース:
 
@@ -51,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     --------|------------
     サブスクリプション | サービスに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group | 新しいリソース グループ名を作成するか、サブスクリプションの既存のリソース グループ名を選択します。
-    場所 | メンバーを作成する場所を選択します。 コンソーシアムのメンバーの場所は全員同じにする必要があります。 デプロイに使用できる場所は *westeurope、eastus、southeastasia、westeurope、northeurope、westus2*、および *japaneast* です。
+    場所 | メンバーを作成する場所を選択します。 コンソーシアムのメンバーの場所は全員同じにする必要があります。 デプロイに使用できる場所は *westeurope、eastus、southeastasia、westeurope、northeurope、westus2*、および *japaneast* です。 一部のリージョンでは、機能が利用できない場合があります。 Azure Blockchain Data Manager は、次の Azure リージョンで利用できます: 米国東部と西ヨーロッパ) で運営される基本的な Web サイトの 2 つのインスタンス。
     メンバー名 | Azure Blockchain Service のメンバーの一意の名前を選択します。 ブロックチェーン メンバー名に使用できるのは、小文字と数字のみです。 先頭の文字は英字にする必要があります。 値の長さは 2 から 20 文字にする必要があります。
     コンソーシアム名 | 一意の名前を入力します。 コンソーシアムの詳細については、「[Azure Blockchain Service のコンソーシアム](consortium.md)」を参照してください。
     メンバー パスワード | メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。

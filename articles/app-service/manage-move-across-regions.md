@@ -4,14 +4,14 @@ description: リージョン間で App Service リソースを移動する方法
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945479"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524856"
 ---
-# <a name="move-an-app-service-app-to-another-region"></a>App Service アプリを別のリージョンに移動する
+# <a name="move-an-app-service-resource-to-another-region"></a>App Service リソースを別のリージョンに移動する
 
 この記事では、App Service リソースを別の Azure リージョンに移動する方法について説明します。 さまざまな理由により、リソースを別のリージョンに移動する場合があります。 たとえば、新しい Azure リージョンを利用するため、特定のリージョンでのみ利用可能な機能やサービスをデプロイするため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためです。
 

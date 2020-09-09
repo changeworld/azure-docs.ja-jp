@@ -1,19 +1,17 @@
 ---
 title: Azure Data Lake Analytics U-SQL 開発者向けの Apache Spark について理解する
 description: この記事では、U-SQL 開発者が違いを理解するのに役立つ Apache Spark の概念について説明します。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-for-usql-developers
 ms.date: 10/15/2019
-ms.openlocfilehash: cb865ec4f5182a868450d1ff7c561a62f7ca3919
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 567574e65fcc1db3ef9e8aea73c6a59be0594f72
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106409"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132298"
 ---
 # <a name="understand-apache-spark-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark について
 

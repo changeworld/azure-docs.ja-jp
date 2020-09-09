@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 500d5242d5185a8014283918c1f3a22c5c22cf48
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505127"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325595"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
@@ -733,7 +733,8 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 ## <a name="next-steps"></a>次のステップ
 
-* [監視の概要](../../azure-monitor/overview.md)に関するページを確認します。
+* [監視の概要](../overview.md)に関するページを確認します。
 * [Azure Monitor のサポートされるメトリック](metrics-supported.md)を表示します。
 * [Microsoft Azure Monitor REST API リファレンス](/rest/api/monitor/)を確認します。
 * [Azure 管理ライブラリ](/previous-versions/azure/reference/mt417623(v=azure.100))を確認します。
+

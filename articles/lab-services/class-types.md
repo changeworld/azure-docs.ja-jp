@@ -3,12 +3,12 @@ title: Azure Lab Services における各種クラスの例 | Microsoft Docs
 description: Azure Lab Services を使用してラボを設定できる、いくつかの種類のクラスを提供します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8564f5ece9d6df7db852c5ac16f00f1455d013ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001625"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>クラスの種類の概要 - Azure Lab Services
 
@@ -45,11 +45,6 @@ Linux でのシェル スクリプトの作成を教えるためのラボを設�
 [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) を使用する方法を学生に教えるために必要なツールを使用して、Azure Lab Services でテンプレート マシンを設定することができます。 Jupyter Notebooks は、ノートブックと呼ばれる単一のキャンバス上でリッチ テキストと実行可能な [Python](https://www.python.org/) ソース コードを簡単に組み合わせることができるオープンソース プロジェクトです。 ノートブックを実行すると、入力と出力の線形レコードが生成されます。  これらの出力には、テキスト、情報テーブル、散布図などを含めることができます。
 
 この種類のラボを設定する方法の詳細については、「[Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する](class-type-jupyter-notebook.md)」を参照してください。
-
-## <a name="mobile-app-development-with-android-studio"></a>Android Studio を使用したモバイル アプリ開発
-モバイル アプリケーション開発の入門クラスを教えるためのラボを Azure Lab Services で設定することができます。 このクラスでは、[Google Play ストア](https://play.google.com/store/apps)に発行できる Android モバイル アプリを重点的に取り上げます。  学生は、[Android Studio](https://developer.android.com/studio) を使用してアプリケーションをビルドする方法を学習します。  [Visual Studio Emulator for Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) は、そのアプリケーションをローカルでテストするために使用されます。
-
-この種類のラボを設定する方法の詳細については、[Android Studio でのモバイル アプリケーション開発を教えるためのラボの設定](class-type-mobile-dev-android-studio.md)に関するページを参照してください。
 
 ## <a name="big-data-analytics"></a>ビッグ データ分析
 ビッグ データ分析クラスを教えるための GPU ラボを設定できます。 この種類のクラスでは、学生は大量のデータを処理し、機械と統計の学習のアルゴリズムを適用してデータの分析情報を導き出す方法について学習します。 学生の主な目的は、ビッグ データを格納、管理、および処理するためのツールを提供する Apache Hadoop のオープンソース ソフトウェア パッケージなどのデータ分析ツールを使用する方法について学習することです。 

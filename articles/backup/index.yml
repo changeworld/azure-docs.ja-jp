@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: 719fb5891fff560ba621b7af88f27387a4f7fce2
-  ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+  ms.openlocfilehash: f78a311125340f447cb0f2dda960e34c289c123a
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/17/2020
-  ms.locfileid: "84906957"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88650844"
 landingContent:
 - title: Azure Backup について
   linkLists:
@@ -149,4 +149,4 @@ landingContent:
     - text: Azure Backup サービスの更新プログラム
       url: https://azure.microsoft.com/updates/?product=backup
     - text: Azure Backup Microsoft Q&A 質問ページ
-      url: https://docs.microsoft.com/answers/topics/azure-backup.html
+      url: /answers/topics/azure-backup.html

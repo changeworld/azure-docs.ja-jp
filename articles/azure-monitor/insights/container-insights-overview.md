@@ -3,12 +3,12 @@ title: コンテナー用 Azure Monitor の概要 | Microsoft Docs
 description: この記事では、AKS Container Insights ソリューションを監視するコンテナーに対する Azure Monitor と、Azure の AKS クラスターと Container Instances の正常性を監視することによって提供される価値について説明します。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: d176a84d72c92eddd4ffd4fcd1011bda172e5cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85adae1b79609f13be6bb73eb4e57000beda6d77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337920"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320274"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
@@ -17,7 +17,7 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 - [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) にホストされているマネージド Kubernetes クラスター
 - [AKS エンジン](https://github.com/Azure/aks-engine)を使用して、Azure でホストされた自己管理の Kubernetes クラスター
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910)またはオンプレミスでホストされた自己管理の Kubernetes クラスター
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910)またはオンプレミスでホストされた自己管理の Kubernetes クラスター
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/overview.md) (プレビュー)
 
@@ -40,7 +40,7 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 * 平均的な負荷、および最大の負荷がかかったときのクラスターの動作を理解します。 この知識は、容量ニーズを特定し、クラスターが維持できる最大負荷を判断するのに役立ちます。
 * ノードまたはコンテナーの CPU およびメモリの使用率がしきい値を超えた場合や、インフラストラクチャまたはノードの正常性ロールアップで正常性状態の変更がクラスターで発生した場合に、事前に通知または記録するようにアラートを構成します。
 * [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
-* オンプレミスの [AKS エンジンにデプロイされた](https://github.com/Azure/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)を監視します。
+* オンプレミスの [AKS エンジンにデプロイされた](https://github.com/Azure/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)を監視します。
 * [Azure Red Hat OpenShift にデプロイされた](../../openshift/intro-openshift.md)コンテナー ワークロードを監視します。
 
     >[!NOTE]
@@ -51,7 +51,7 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 
 Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点は以下のとおりです。
 
-- Windows にはメモリ RSS メトリックがないため、Windows ノードとコンテナーでこれを使用することはできません。 [ワーキング セット](https://docs.microsoft.com/windows/win32/memory/working-set) メトリックは使用できます。
+- Windows にはメモリ RSS メトリックがないため、Windows ノードとコンテナーでこれを使用することはできません。 [ワーキング セット](/windows/win32/memory/working-set) メトリックは使用できます。
 - Windows ノードではディスク ストレージ容量の情報を使用できません。
 - ポッド環境のみが監視され、Docker 環境は対象外です。
 - プレビュー リリースでは、最大 30 の Windows Server コンテナーがサポートされます。 この制限は、Linux コンテナーには適用されません。
@@ -66,8 +66,9 @@ Windows Server クラスターを監視する場合の、Linux クラスター�
 
 ![コンテナーに対する Azure Monitor にアクセスする方法の概要](./media/container-insights-overview/azmon-containers-experience.png)
 
-構成、監査、リソースの使用率を確認するために、AKS の外部で実行される Docker および Windows コンテナー ホストを監視および管理する必要がある場合は、[コンテナー監視ソリューション](../../azure-monitor/insights/containers.md)を参照してください。
+構成、監査、リソースの使用率を確認するために、AKS の外部で実行される Docker および Windows コンテナー ホストを監視および管理する必要がある場合は、[コンテナー監視ソリューション](./containers.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Kubernetes クラスターの監視を開始するには、「[Azure Monitor for containers を有効にする方法](container-insights-onboard.md)」を確認し、監視を有効にするための要件と使用できる方法を把握してください。
+

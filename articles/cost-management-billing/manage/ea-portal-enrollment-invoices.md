@@ -3,16 +3,17 @@ title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/06/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 983cf6e7c9596d40f9db6221739af86175c58e87
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044874"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689866"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -228,7 +229,7 @@ Azure エンタープライズ ポータルでは、IEEE 標準の銀行型丸�
 
 ### <a name="azure-prepayment-and-unbilled-usage"></a>Azure 前払いと未請求の使用量
 
-Azure の Azure 前払いは、Azure サービスに対する前払い金額です。 Azure 前払いは、サービスを使用すると消費されます。 ファーストパーティの Azure サービスは、Azure 前払いに対して課金されます。 しかし、一部の料金は個別に請求され、Azure Marketplace サービスでは Azure 前払いは消費されません。
+Azure 前払いは、Azure サービスに対する前払い金額です。 Azure 前払いは、サービスを使用すると消費されます。 ファーストパーティの Azure サービスは、Azure 前払いに対して課金されます。 しかし、一部の料金は個別に請求され、Azure Marketplace サービスでは Azure 前払いは消費されません。
 
 ### <a name="charges-billed-separately"></a>個別請求の料金
 

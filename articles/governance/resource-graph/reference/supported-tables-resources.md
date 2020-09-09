@@ -1,15 +1,15 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 06/04/2020
+ms.date: 08/10/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 91b8a88fd056db2fd8495c85dccbcc08f4a94fda
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970571"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066000"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -19,6 +19,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
+- microsoft.advisor/recommendations/suppressions
 - microsoft.advisor/suppressions
 
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
@@ -184,7 +185,6 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.desktopvirtualization/applicationgroups
 - microsoft.desktopvirtualization/hostpools
 - microsoft.desktopvirtualization/workspaces
-- microsoft.detonationservice/detonationinstances
 - microsoft.devices/elasticpools
 - microsoft.devices/elasticpools/iothubtenants
 - microsoft.devices/iothubs

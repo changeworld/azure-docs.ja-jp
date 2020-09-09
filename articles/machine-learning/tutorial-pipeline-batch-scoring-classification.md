@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
+author: lobrien
+ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: de1d548be7f426f42b369ae7607bd6f798b42317
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.custom: contperfq4, devx-track-python
+ms.openlocfilehash: 600b19ffac61f8f7c7336f114c6b52c6bc88b5ad
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296170"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489512"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
@@ -286,7 +286,7 @@ from azureml.pipeline.steps import ParallelRunConfig
 parallel_run_config = ParallelRunConfig(
     environment=env,
     entry_script="batch_scoring.py",
-    source_directory="scripts",
+    source_directory=".",
     output_action="append_row",
     mini_batch_size="20",
     error_threshold=1,

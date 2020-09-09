@@ -1,37 +1,41 @@
 ---
 title: DMS のインスタンスを作成する (Azure Resource Manager テンプレート)
-description: Azure Resource Manager テンプレートを使用して、Database Migration Service を作成する方法を学習します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Database Migration Service を作成する方法を学習します。
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 9e0d537a948e960c90737cc3f367940a0ffca74c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852480"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661182"
 ---
-# <a name="create-instance-of-azure-database-migration-service-azure-resource-manager-template"></a>Azure Database Migration Service のインスタンスを作成する (Azure Resource Manager テンプレート)
+# <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Database Migration Service のインスタンスを作成する
 
-この Azure Resource Manager テンプレートを使用して、Azure Database Migration Service のインスタンスをデプロイします。 
+この Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Database Migration Service のインスタンスをデプロイします。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-database-migration-simple-deploy%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure Database Migration Service の ARM テンプレートには、次のものが必要です。 
 
-- 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)。 
+- 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) または [PowerShell](/powershell/scripting/install/installing-powershell)。 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json" highlight="33-75":::
+:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json":::
 
 テンプレートには、次の 3 つの Azure リソースが定義されています。 
 
@@ -39,7 +43,7 @@ Azure Database Migration Service の ARM テンプレートには、次のもの
 - [Microsoft.Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets): サブネットを作成します。 
 - [Microsoft.DataMigration/services](/azure/templates/microsoft.datamigration/services): Azure Database Migration Service のインスタンスをデプロイします。 
 
-その他の Azure Database Migration Service のテンプレートについては、[クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration)を参照してください。
+その他の Azure Database Migration Service のテンプレートについては、[クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration&pageNumber=1&sort=Popular)を参照してください。
 
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
@@ -105,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [ チュートリアル: 初めての Azure Resource Manager テンプレートを作成およびデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Azure Database Migration Service をデプロイするその他の方法については、以下を参照してください。 
 - [Azure Portal](quickstart-create-data-migration-service-portal.md)

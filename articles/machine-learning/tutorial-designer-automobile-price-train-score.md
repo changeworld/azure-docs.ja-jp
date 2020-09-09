@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2922b5d3aa6cee0f1222c041a0e9728936754c21
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200033"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812987"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,6 +37,8 @@ ms.locfileid: "86200033"
 >このチュートリアルの完成版をサンプル パイプラインとして入手できます。
 >
 >これを見つけるには、ワークスペースのデザイナーに移動します。 **[新しいパイプライン]** セクションで **[Sample 1 - Regression:Automobile Price Prediction(Basic)]\(サンプル 1 - 回帰: 自動車価格の予測 (Basic)\)** を選択してください。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-new-pipeline"></a>新しいパイプラインを作成する
 
@@ -102,13 +104,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 使用するデータセットを把握するために、データを視覚化することができます。
 
-1. **Automobile price data (Raw)** モジュールを選択します。
-
-1. キャンバスの右側にある [モジュールの詳細] ペインで **[Outputs + log]\(出力 + ログ\)** を選択します。
-
-1. グラフ アイコンを選択してデータを視覚化します。
-    
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="ここに代替テキストを追加。":::
+1. **[Automobile price data (Raw)]** を右クリックし、 **[視覚化]** を選択します。
 
 1. データ ウィンドウで別の列を選択して、それぞれの情報を表示します。
 
@@ -289,9 +285,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 実行が完了したら、パイプラインの実行結果を確認できます。 まず、回帰モデルによって生成された予測に注目します。
 
-1. **[Score Model]\(モデルのスコア付け\)** モジュールを選択して、その出力を表示します。
-
-1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Outputs + logs]\(出力 + ログ\)** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
+1. **[Score Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
@@ -301,9 +295,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 テスト データセットに対してトレーニング済みのモデルがどの程度の精度で実行されたかを **[Evaluate Model]\(モデルの評価\)** を使用して確認します。
 
-1. **[Evaluate Model]\(モデルの評価\)** モジュールを選択して、その出力を表示します。
-
-1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Outputs + logs]\(出力 + ログ\)** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
+1. **[Evaluate Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
 
 作成したモデルに対して、以下の統計値が表示されます。
 

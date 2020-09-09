@@ -3,16 +3,16 @@ title: カスタム Azure Resource Manager ロールを作成し、サービス 
 description: この記事では、Azure CLI を使用して、カスタム Azure Resource Manager ロールを作成し、Live Video Analytics on IoT Edge のサービス プリンシパルに割り当てる方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043180"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>カスタム Azure Resource Manager ロールを作成し、サービス プリンシパルに割り当てる
 
-Live Video Analytics on IoT Edge モジュール インスタンスが正常に機能するには、アクティブな Azure Media Services アカウントが必要です。 Live Video Analytics on IoT Edge モジュールと Azure Media Services アカウントのリレーションシップは、一連のモジュール ツイン プロパティを使用して確立されます。 これらのツイン プロパティのうちの 1 つが[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)で、モジュール インスタンスが Media Services アカウントと通信して必要な操作をトリガーできるようします。 誤用の可能性や、エッジ デバイスからの偶発的なデータの漏えいを最小限に抑えるために、このサービス プリンシパルに最小限の特権を与える必要があります。
+Live Video Analytics on IoT Edge モジュール インスタンスが正常に機能するには、アクティブな Azure Media Services アカウントが必要です。 Live Video Analytics on IoT Edge モジュールと Azure Media Services アカウントのリレーションシップは、一連のモジュール ツイン プロパティを使用して確立されます。 これらのツイン プロパティのうちの 1 つが[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)で、モジュール インスタンスが Media Services アカウントと通信して必要な操作をトリガーできるようします。 誤用の可能性や、エッジ デバイスからの偶発的なデータの漏えいを最小限に抑えるために、このサービス プリンシパルに最小限の特権を与える必要があります。
 
 この記事では、Azure Cloud Shell を使用してカスタム Azure Resource Manager ロールを作成する手順について説明します。このロールはその後、サービス プリンシパルの作成に使用されます。
 
@@ -23,7 +23,7 @@ Live Video Analytics on IoT Edge モジュール インスタンスが正常に�
 * 所有者サブスクリプションがある Azure サブスクリプション。
 * アプリを作成し、サービス プリンシパルをロールに割り当てるための特権を持つ Azure Active Directory。
 
-自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)に関するページを参照してください。
+自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)に関するページを参照してください。
 
 ## <a name="overview"></a>概要  
 
@@ -49,7 +49,7 @@ Media Service アカウントをお持ちでない場合は、次の手順を使
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. [リソース グループ](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)と[ストレージ アカウント](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)を作成します。
+1. [リソース グループ](/cli/azure/group?view=azure-cli-latest#az-group-create)と[ストレージ アカウント](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)を作成します。
 1. ここで、Cloud Shell で次のコマンド テンプレートを使用して、Azure Media Service アカウントを作成します。
 
     ```
@@ -85,8 +85,8 @@ az ams account sp create --account-name < yourAMSAccountName > --resource-group 
 ```
 1. パスワード認証を使用したサービス プリンシパルの出力には、パスワード キー (この場合は "AadSecret" パラメーター) が含まれます。 
 
-    この値は必ずコピーしてください。取得することはできません。 パスワードを忘れた場合は、[サービス プリンシパルの資格情報をリセット](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials)します。
-1. appId とテナント キーは、それぞれ "AadClientId" と "AadTenantId" として出力に表示されます。 これらは、サービス プリンシパル認証で使用されます。 これらの値を記録してください。ただし、[az ad sp list](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) を使用していつでも取得できます。
+    この値は必ずコピーしてください。取得することはできません。 パスワードを忘れた場合は、[サービス プリンシパルの資格情報をリセット](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials)します。
+1. appId とテナント キーは、それぞれ "AadClientId" と "AadTenantId" として出力に表示されます。 これらは、サービス プリンシパル認証で使用されます。 これらの値を記録してください。ただし、[az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) を使用していつでも取得できます。
 
 ### <a name="create-a-custom-role-definition"></a>カスタム ロールの定義の作成  
 
@@ -171,7 +171,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 “objectId” : “<yourObjectId>”,
 ```
 
-[az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) コマンド テンプレートを使用して、カスタム ロールとサービス プリンシパルをリンクします。
+[az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) コマンド テンプレートを使用して、カスタム ロールとサービス プリンシパルをリンクします。
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

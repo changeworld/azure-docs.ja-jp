@@ -7,15 +7,15 @@ editor: edprice
 ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502335"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831415"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上の IBM DB2 pureScale
 
@@ -67,7 +67,7 @@ Azure 上での高可用性とスケーラビリティをサポートするた�
 
 -   DB2 pureScale クラスター。 Azure 上で必要なコンピューティング リソースの種類は、設定に依存します。 一般的には、次の 2 つの方法を使用できます。
 
-    -   マルチノードの、ハイパフォーマンス コンピューティング (HPC) 形式のネットワークを使用する。この場合、小規模から中規模サイズのインスタンスから共有ストレージにアクセスします。 この HPC タイプの構成では、Azure のメモリ最適化 E シリーズまたはストレージ最適化 L シリーズの[仮想マシン](../windows/sizes.md)によって、必要なコンピューティング性能が提供されます。
+    -   マルチノードの、ハイパフォーマンス コンピューティング (HPC) 形式のネットワークを使用する。この場合、小規模から中規模サイズのインスタンスから共有ストレージにアクセスします。 この HPC タイプの構成では、Azure のメモリ最適化 E シリーズまたはストレージ最適化 L シリーズの[仮想マシン](../sizes.md)によって、必要なコンピューティング性能が提供されます。
 
     -   データ エンジンに使用する大規模な仮想マシン インスタンスの数を減らす。 大規模なインスタンスの場合、大量のメモリ内ワークロードには最大のメモリ最適化 [M シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/series/)の仮想マシンが理想的です。 DB2 の実行に使用される論理パーティション (LPAR) のサイズによっては、専用のインスタンスが必要になる場合があります。
 

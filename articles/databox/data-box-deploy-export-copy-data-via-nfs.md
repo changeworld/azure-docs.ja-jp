@@ -34,8 +34,8 @@ ms.locfileid: "86208908"
 開始する前に次の点を確認します。
 
 1. Azure Data Box を注文済みであること。
-    - インポート注文については、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-ordered.md)を完了していること。
-    - エクスポート注文については、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-export-ordered.md)を完了していること。
+    - インポート注文については、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-ordered.md)」を参照してください。
+    - エクスポート注文については、「[チュートリアル: Azure Data Box の注文](data-box-deploy-export-ordered.md)に関するページを参照してください。
 2. Data Box の受け取りが済んでいて、ポータル内での注文の状態が **[配信済み]** であること。
 3. Data Box のデータのコピー先となるホスト コンピューターが用意されていること。 このホスト コンピューターは次の条件を満たしている必要があります。
    * [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。

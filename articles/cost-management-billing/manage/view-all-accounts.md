@@ -1,18 +1,19 @@
 ---
 title: Azure portal での請求先アカウントの表示
-description: Azure portal で請求先アカウントを表示する方法について説明します。
+description: Azure portal で課金アカウントを表示する方法について説明します。 Enterprise Agreement、Microsoft 顧客契約、Microsoft Partner Agreement のスコープ情報を参照してください。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 75529d03435e92dfff26dac81f4f7e59585b6fe9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255247"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686396"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
 

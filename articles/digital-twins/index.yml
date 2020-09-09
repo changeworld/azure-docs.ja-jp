@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 105a9de63f13a7a6460638ad967be40edd0783a4
-  ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+  ms.openlocfilehash: eabae1050b4892de8c30f460834d1ae4da934198
+  ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/26/2020
-  ms.locfileid: "85392150"
+  ms.lasthandoff: 08/26/2020
+  ms.locfileid: "88890938"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -23,7 +23,13 @@ landingContent:
     links:
     - text: Azure Digital Twins とは
       url: overview.md
-- title: チュートリアルを開始する
+- title: クイックスタートの概要
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サンプル シナリオの探索
+      url: quickstart-adt-explorer.md
+- title: チュートリアルによる掘り下げ
   linkLists:
   - linkListType: tutorial
     links:
@@ -59,11 +65,11 @@ landingContent:
       url: how-to-use-cli.md
   - linkListType: how-to-guide
     links:
-    - text: Azure Digital Twins インスタンスを作成する
-      url: how-to-set-up-instance.md
+    - text: インスタンスと認証を設定する
+      url: how-to-set-up-instance-scripted.md
   - linkListType: how-to-guide
     links:
-    - text: クライアント アプリケーションを認証する
+    - text: アプリ認証コードを作成する
       url: how-to-authenticate-client.md
 - title: API リファレンス
   linkLists:

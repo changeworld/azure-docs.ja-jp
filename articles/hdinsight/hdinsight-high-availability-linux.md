@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f97b4877d87acec923812fd0289d5161529dbe7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081034"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
@@ -268,7 +268,7 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 ノードのサイズを選択できるのは、クラスターの作成中のみです。 「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できるまざまな VM サイズの一覧を確認できます。
 
-クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell モジュール Az](/powershell/azureps-cmdlets-docs)、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用してサイズを指定する方法について説明します。
+クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell モジュール Az](/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用してサイズを指定する方法について説明します。
 
 * **Azure ポータル**:クラスターを作成するときに、クラスターによって使用されるノードのサイズを設定できます。
 
@@ -284,6 +284,6 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 * [Apache Ambari REST リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Azure CLI のインストールと構成](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Azure PowerShell モジュール Az をインストールして構成します](/powershell/azure/overview)。
+* [Azure PowerShell モジュール Az をインストールして構成します](/powershell/azure/)。
 * [Apache Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
 * [Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-provision-linux-clusters.md)

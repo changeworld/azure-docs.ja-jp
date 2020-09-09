@@ -7,18 +7,18 @@ ms.date: 05/02/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085556"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>イメージを作成し、ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする 
 
 Azure Image Builder では、スクリプトの使用、または GitHub や Azure Storage などの複数の場所からのファイルのコピーがサポートされています。これらを使うには、それらが Azure Image Builder に外部からアクセスできる必要がありますが、SAS トークンを使って Azure Storage BLOB を保護できます。
 
-この記事では、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法を示します。ここで、サービスにより、イメージをカスタマイズするために[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使って Azure Storage 内のファイルにアクセスされるので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要がありません。
+この記事では、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法を示します。ここで、サービスにより、イメージをカスタマイズするために[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使って Azure Storage 内のファイルにアクセスされるので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要がありません。
 
 次の例では、2 つのリソース グループを作成します。1 つはカスタム イメージ用に使われ、もう 1 つはスクリプト ファイルを含む Azure ストレージ アカウントをホストします。 これは、ビルド成果物またはイメージ ファイルが Image Builder の外部の別のストレージ アカウントに存在することがある、現実のシナリオをシミュレートするものです。 ユーザー割り当て ID を作成した後、それにスクリプト ファイルに対する読み取りアクセス許可を付与しますが、そのファイルへのパブリック アクセスは設定しません。 その後、シェル カスタマイザーを使ってそのスクリプトをストレージ アカウントからダウンロードし、実行します。
 
@@ -95,7 +95,7 @@ az group create -n $strResourceGroup -l $location
 
 ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定します。
 
-Image Builder は、指定された[ユーザー ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) を使用して、リソース グループにイメージを挿入します。 この例では、イメージの配布を実行するためのきめ細かなアクションを含む Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、リソース グループにイメージを挿入します。 この例では、イメージの配布を実行するためのきめ細かなアクションを含む Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located

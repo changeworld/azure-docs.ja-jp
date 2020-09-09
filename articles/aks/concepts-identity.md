@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 560f7b958e04b55a7d642c9f95750812b86d32bc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251724"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007082"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -19,17 +19,17 @@ Kubernetes クラスターに対する認証の実行、アクセス制御と認
 
 この記事では、AKS で認証とアクセス許可の割り当てを行うために役立つ中心概念を紹介します。
 
-- [Kubernetes のロールベースのアクセス制御 (RBAC)](#kubernetes-role-based-access-controls-rbac)
+- [Kubernetes のロールベースのアクセス制御 (RBAC)](#kubernetes-role-based-access-control-rbac)
   - [ロールと ClusterRoles](#roles-and-clusterroles)
   - [RoleBindings と ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Kubernetes サービス アカウント](#kubernetes-service-accounts)
 - [Azure Active Directory の統合](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-controls-rbac)
+- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
   - [AKS リソースへのアクセスを認可するための Azure RBAC](#azure-rbac-to-authorize-access-to-the-aks-resource)
   - [Kubernetes 認可に対する Azure RBAC (プレビュー)](#azure-rbac-for-kubernetes-authorization-preview)
 
 
-## <a name="kubernetes-role-based-access-controls-rbac"></a>Kubernetes のロールベースのアクセス制御 (RBAC)
+## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes のロールベースのアクセス制御 (RBAC)
 
 ユーザーが行うことのできるアクションの詳細なフィルター処理を提供するため、Kubernetes ではロールベースのアクセス制御 (RBAC) が使用されます。 この制御メカニズムを使用して、ユーザーまたはユーザー グループに対して、リソースの作成または変更、実行中のアプリケーション ワークロードのログの表示などの操作を行うアクセス許可を割り当てることができます。 これらのアクセス許可は、付与するスコープを単一の名前空間にすることも、AKS クラスター全体にすることもできます。 Kubernetes の RBAC では、アクセス許可を定義する "*ロール*" を作成し、それらのロールを "*ロールのバインド*" を使用してユーザーに割り当てます。
 
@@ -73,9 +73,7 @@ Azure Active Directory (AD) の統合によって、AKS クラスターのセキ
 
 Azure AD が統合された AKS クラスターでは、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与できます。 `kubectl` 構成コンテキストを取得するには、ユーザーは、[az aks get-credentials][az-aks-get-credentials] コマンドを実行します。 その後、ユーザーが `kubectl` を使用して AKS クラスターにアクセスすると、Azure AD 資格情報でサインインするように求められます。 このアプローチでは、ユーザー アカウントの管理とパスワードの資格情報のために 1 つのソースが提供されます。 ユーザーは、クラスター管理者によって定義されているリソースにのみアクセスできます。
 
-Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][open-id-connect]を参照してください。 Kubernetes クラスターの内部からは、[Webhook トークン認証][webhook-token-docs]を使用して認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。
-
-Kubernetes クラスターの内部からは、webhook トークン認証を使って認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。
+Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][openid-connect]を参照してください。 Kubernetes クラスターの内部からは、[Webhook トークン認証][webhook-token-docs]を使用して認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。
 
 ### <a name="webhook-and-api-server"></a>Webhook と API サーバー
 
@@ -97,7 +95,7 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
  
 **AKS と AAD を統合する方法については、[こちら](managed-aad.md)を参照してください。**
 
-## <a name="azure-role-based-access-controls-rbac"></a>Azure のロールベースのアクセス制御
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC)
 
 Azure RBAC は [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
 
@@ -105,11 +103,11 @@ Azure RBAC は [Azure Resource Manager](../azure-resource-manager/management/ove
 
 Azure の RBAC では、適用されるアクセス許可の概要を説明する*ロール定義*を作成します。 その後、ユーザーまたはグループに、特定の "*スコープ*" (個々のリソース、リソース グループ、またはサブスクリプション全体) に対する "*ロールの割り当て*" によって、このロール定義が割り当てられます。
 
-詳細については、「[Azure RBAC とは][azure-rbac]」を参照してください。
+詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは][azure-rbac]」
 
 AKS クラスターを完全に運用するには、次の 2 つのレベルのアクセスが必要です。 
 1. [Azure サブスクリプションの AKS リソースへのアクセス](#azure-rbac-to-authorize-access-to-the-aks-resource)。 このプロセスでは、AKS API を使用してクラスターのスケーリングやアップグレードを制御したり、kubeconfig をプルしたりすることができます。
-2. Kubernetes API へのアクセス。 このアクセスは、[Kubernetes RBAC](#kubernetes-role-based-access-controls-rbac) (従来) によって、または [Kubernetes の認可のための Azure RBAC と AKS の統合](#azure-rbac-for-kubernetes-authorization-preview)によって制御されます
+2. Kubernetes API へのアクセス。 このアクセスは、[Kubernetes RBAC](#kubernetes-role-based-access-control-rbac) (従来) によって、または [Kubernetes の認可のための Azure RBAC と AKS の統合](#azure-rbac-for-kubernetes-authorization-preview)によって制御されます
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>AKS リソースへのアクセスを認可するための Azure RBAC
 
@@ -121,7 +119,7 @@ Kubernetes API へのアクセスを提供する kubeconfig ファイルへの�
 
 ### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に対する Azure RBAC (プレビュー)
 
-Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使用されることにより、ユーザーは、Azure RBAC ロールの定義とロールの割り当てを使用して、Azure AD と統合された K8s クラスター リソースのアクセス許可と割り当てを管理できます。
+Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使用されることにより、ユーザーは、Azure ロールの定義とロールの割り当てを使用して、Azure AD と統合された K8s クラスター リソースのアクセス許可と割り当てを管理できます。
 
 ![Kubernetes 認可に対する Azure RBAC のフロー](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 

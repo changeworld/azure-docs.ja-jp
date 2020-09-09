@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure コンテナー サービスのドキュメント | Microsoft Docs
   description: Azure コンテナー サービスを使用して、クラウドベースのコンテナー アプリケーションを管理および開発する方法について説明します。
   ms.topic: hub-page
-  ms.openlocfilehash: c83db23fda2fe5895a8d4400a26be463ec8d2d6a
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86260697"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080849"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -41,7 +41,7 @@ conceptualContent:
       text: 詳細情報
   - title: AKS アプリケーションのテストと開発
     links:
-    - url: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
+    - url: /visualstudio/containers/overview-local-process-kubernetes
       itemType: concept
       text: Local Process with Kubernetes のしくみ
     - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
@@ -61,7 +61,7 @@ conceptualContent:
     - url: ../app-service/configure-ssl-bindings.md
       itemType: tutorial
       text: SSL バインディングを使用してカスタム ドメインをセキュリティで保護する
-    - url: ../app-service/app-service-web-get-started-windows-container.md
+    - url: ../app-service/quickstart-custom-container.md
       itemType: get-started
       text: カスタム Windows コンテナーを実行する
     - url: ../app-service/containers/quickstart-docker.md

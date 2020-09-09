@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187712"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797940"
 ---
-# <a name="troubleshoot"></a>トラブルシューティング
+# <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats のトラブルシューティング
 
-この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[サポート フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
+この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[Q&A サポート フォーラム](https://aka.ms/farmbeatssupport)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
 
 > [!NOTE]
   > 4 月中に FarmBeats をインストールし、ジョブが空のエラー メッセージで失敗する場合は、重要な保健機関や安全機関へのサポートを優先するために、インストールにバッチ クォータが割り当てられていない可能性があります。 詳細については、 [こちら](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) をご覧ください。 ジョブを正常に実行するには、Batch アカウントへの VM の割り当てを要求する必要があります。
@@ -58,8 +58,8 @@ ms.locfileid: "86187712"
 
 **是正措置**:
 
-1. FarmBeats Datahub リソース グループにアクセスします。
-2. **イベント ハブ** (DatafeedEventHubNamespace) を選択し、受信メッセージの数を確認します。
+1. FarmBeats リソース グループにアクセスします。
+2. **イベント ハブ**名前空間 ("sensor-partner-eh-namespace-xxxx") を選択し、[Event Hubs] をクリックして、パートナーに割り当てられているイベント ハブの受信メッセージの数を確認します
 3. 以下のいずれかを実行します。
 
    - "*受信メッセージがない*" 場合は、デバイス パートナーにお問い合わせください。  

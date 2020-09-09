@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221223"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299951"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell を使用して別のギャラリーからイメージをコピーする
 
@@ -100,7 +100,7 @@ Get-AzGalleryImageDefinition `
 }
 ```
 
-[New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) コマンドレットと上記の出力の情報を使用して、対象のギャラリーに新しいイメージ定義を作成します。
+[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) コマンドレットと上記の出力の情報を使用して、対象のギャラリーに新しいイメージ定義を作成します。
 
 
 この例では、*myDestinationGallery* というギャラリー内のイメージ定義に *myDestinationImgDef* という名前が付けられています。
@@ -114,7 +114,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
    -Name 'myDestinationImgDef' `
    -OsState specialized `
    -OsType Windows `
-   -HyperVGeneration v1
+   -HyperVGeneration v1 `
    -Publisher 'myPublisher' `
    -Offer 'myOffer' `
    -Sku 'mySKU'
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用してイメージ バージョンを作成します。 対象のギャラリーにイメージ バージョンを作成するには、`--managed-image` パラメーターでソース イメージの ID を渡す必要があります。 
+[New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用してイメージ バージョンを作成します。 対象のギャラリーにイメージ バージョンを作成するには、`--managed-image` パラメーターでソース イメージの ID を渡す必要があります。 
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
 >
-> また、イメージ バージョンを作成するときに、`-StorageAccountType Premium_LRS` を追加してイメージを Premium ストレージに格納することや、`-StorageAccountType Standard_ZRS` を追加して[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> また、イメージ バージョンを作成するときに、`-StorageAccountType Premium_LRS` を追加してイメージを Premium ストレージに格納することや、`-StorageAccountType Standard_ZRS` を追加して[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)に格納することもできます。
 >
 
 

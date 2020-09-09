@@ -1,6 +1,6 @@
 ---
 title: Microsoft Security Code Analysis のオンボード ガイド
-description: この記事では、Microsoft Security Code Analysis 拡張機能のインストールについて説明します
+description: Microsoft Security Code Analysis 拡張機能をオンボードおよびインストールする方法について説明します。 前提条件を参照し、その他のリソースを確認してください。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362059"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543029"
 ---
 # <a name="onboarding-and-installing"></a>オンボードとインストール
 
@@ -50,7 +50,7 @@ Microsoft Security Code Analysis の使用を開始するための前提条件:
 
 - Zones - 連絡先の詳細: cloudsupport@zones.com
 - Wortell - 連絡先の詳細: info@wortell.nl
-- Logicalis - 連絡先の詳細: Matthew.Curtis@us.logicalis.com 
+- Logicalis - 連絡先の詳細: logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>パートナーになる
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでホストベース
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244312"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986867"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) でのホストベースの暗号化 (プレビュー)
 
@@ -27,18 +27,18 @@ ms.locfileid: "86244312"
 
 - `aks-preview` CLI 拡張機能 v0.4.55 以降がインストールされていることを確認します
 - `Microsoft.Compute` の `EncryptionAtHost` 機能フラグが有効になっていることを確認します。
-- `Microsoft.ContainerService` の `EncryptionAtHost` 機能フラグが有効になっていることを確認します。
+- `Microsoft.ContainerService` の `EnableEncryptionAtHostPreview` 機能フラグが有効になっていることを確認します。
 
 ### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost` プレビュー機能の登録
 
-ホストベースの暗号化を使用する AKS クラスターを作成するには、サブスクリプションで `EncryptionAtHost` 機能フラグを有効にする必要があります。
+ホストベースの暗号化を使用する AKS クラスターを作成するには、サブスクリプションで `EnableEncryptionAtHostPreview` および `EncryptionAtHost` 機能フラグを有効にする必要があります。
 
 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EncryptionAtHost` 機能フラグを登録します。
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 
-az feature register --namespace "Microsoft.ContainerService"  --name "EncryptionAtHost"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
@@ -46,7 +46,7 @@ az feature register --namespace "Microsoft.ContainerService"  --name "Encryption
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EncryptionAtHost')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 準備ができたら、[az provider register][az-provider-register] コマンドを使用して、`Microsoft.ContainerService` および `Microsoft.Compute` の各リソース プロバイダーの登録を更新します。
@@ -57,11 +57,7 @@ az provider register --namespace Microsoft.Compute
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> - [AKS のサポート ポリシー](support-policies.md)
-> - [Azure サポートに関する FAQ](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 

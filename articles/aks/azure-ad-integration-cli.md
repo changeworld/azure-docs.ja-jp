@@ -1,19 +1,19 @@
 ---
-title: Azure Active Directory と Azure Kubernetes Service を統合する
-description: Azure CLI を使用して Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法を学習する
+title: Azure Active Directory と Azure Kubernetes Service を統合する (レガシ)
+description: Azure CLI を使用して Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法を学習します (レガシ)
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252081"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612420"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する (レガシ)
 
 Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにログインできます。 また、クラスター オペレーターが、ユーザーの ID またはディレクトリ グループ メンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成することもできます。
 
@@ -21,9 +21,13 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 
 この記事で使用されているサンプル スクリプトの完成版については、[Azure CLI のサンプルの AKS と Azure AD の統合][complete-script]に関するページを参照してください。
 
+> [!Important]
+> AKS には、サーバーまたはクライアント アプリケーションの管理を必要としない、改善された新しい [AKS マネージド Azure AD][managed-aad] エクスペリエンスが備わっています。 移行する場合は、[こちら][managed-aad-migrate]の手順に従ってください。
+
 ## <a name="the-following-limitations-apply"></a>次の制限事項が適用されます。
 
 - Azure AD は、RBAC が有効なクラスターでのみ有効にすることができます。
+- Azure AD のレガシ統合は、クラスター作成時にのみ有効にすることができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -76,7 +80,7 @@ serverApplicationSecret=$(az ad sp credential reset \
     --query password -o tsv)
 ```
 
-Azure AD には、次のアクションを実行するためのアクセス許可が必要です。
+Azure AD サービス プリンシパルには、次のアクションを実行するためのアクセス許可が必要です。
 
 * ディレクトリ データの読み取り
 * サインインとユーザー プロファイルの読み取り
@@ -277,6 +281,8 @@ ID とリソース管理に関するベスト プラクティスについては�
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[managed-aad]: managed-aad.md
+[managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration

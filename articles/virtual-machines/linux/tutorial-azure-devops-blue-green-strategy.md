@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: a98989ed48e515cafeca27ae492c83efca6002c4
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080133"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux 仮想マシンのブルーグリーン デプロイ戦略を構成する
 
@@ -29,7 +29,7 @@ Azure Pipelines では、仮想マシンにデプロイするための機能が�
 
 ### <a name="configure-cicd-on-virtual-machines"></a>仮想マシンで CI/CD を構成する
 
-[配置グループ](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)には、ターゲットとして仮想マシンを追加できます。 それらを複数マシン更新のターゲットにすることができます。 マシンへのデプロイ後は、配置グループ内の **[デプロイ履歴]** を表示します。 このビューで、VM からパイプラインに、そこからさらにコミットまで追跡できます。
+[配置グループ](/azure/devops/pipelines/release/deployment-groups)には、ターゲットとして仮想マシンを追加できます。 それらを複数マシン更新のターゲットにすることができます。 マシンへのデプロイ後は、配置グループ内の **[デプロイ履歴]** を表示します。 このビューで、VM からパイプラインに、そこからさらにコミットまで追跡できます。
 
 ### <a name="blue-green-deployments"></a>ブルーグリーン デプロイ
 
@@ -88,5 +88,5 @@ Azure は簡単に始めることができます。 Azure DevOps Projects を使
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Azure DevOps Projects を使用して Azure 仮想マシンにデプロイする](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Azure 仮想マシン スケール セットへのアプリの継続的デプロイを導入する](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [Azure DevOps Projects を使用して Azure 仮想マシンにデプロイする](../../devops-project/azure-devops-project-vms.md)
+- [Azure 仮想マシン スケール セットへのアプリの継続的デプロイを導入する](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

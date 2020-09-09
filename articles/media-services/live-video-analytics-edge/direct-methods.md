@@ -3,16 +3,16 @@ title: Live Video Analytics on IoT Edge でダイレクト メソッドを使用
 description: Live Video Analytics on IoT Edge では、いくつかのダイレクト メソッドが公開されています。 ダイレクト メソッドは、このトピックで説明する規則に基づいています。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260805"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091829"
 ---
 # <a name="direct-methods"></a>ダイレクト メソッド
 
-Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことができるダイレクト メソッドがいくつか公開されています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 この方法は、デバイスが応答できるかどうかに応じて即座に実行するアクションが異なるシナリオで便利です。 詳細については、「[IoT Hub からのダイレクト メソッドの呼び出しについて](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods)」を参照してください。
+Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことができるダイレクト メソッドがいくつか公開されています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 この方法は、デバイスが応答できるかどうかに応じて即座に実行するアクションが異なるシナリオで便利です。 詳細については、「[IoT Hub からのダイレクト メソッドの呼び出しについて](../../iot-hub/iot-hub-devguide-direct-methods.md)」を参照してください。
 
 このトピックでは、これらのメソッドと規則について説明します。
 

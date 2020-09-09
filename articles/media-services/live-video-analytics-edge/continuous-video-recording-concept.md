@@ -3,12 +3,12 @@ title: 継続的なビデオ記録 - Azure
 description: 継続的なビデオ記録 (CVR) とは、ビデオ ソースからの継続的なビデオ記録プロセスのことを指します。 このトピックでは、CVR について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260625"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043311"
 ---
 # <a name="continuous-video-recording"></a>継続的なビデオ記録  
 
@@ -34,7 +34,7 @@ Live Video Analytics on IoT Edge は、エッジ デバイスがときどきク�
     "localMediaCacheMaximumSizeMiB": "2048",
     "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
-後者 2 つのプロパティは、回復性がある記録に関連しています (両方とも資産シンク ノードの必須プロパティです)。 LocalMediaCachePath プロパティは、資産シンクに、そのフォルダー パスを使用して、資産にアップロードする前にメディア データをキャッシュするように指示します。 [この](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module)記事を読むと、エッジ モジュールがデバイスのローカル ストレージをどのように利用できるかを理解することができます。 LocalMediaCacheMaximumSizeMiB プロパティは、資産シンクがキャッシュとして使用できるディスク領域を定義します (1 MiB = 1024 * 1024 バイト)。 
+後者 2 つのプロパティは、回復性がある記録に関連しています (両方とも資産シンク ノードの必須プロパティです)。 LocalMediaCachePath プロパティは、資産シンクに、そのフォルダー パスを使用して、資産にアップロードする前にメディア データをキャッシュするように指示します。 [この](../../iot-edge/how-to-access-host-storage-from-module.md)記事を読むと、エッジ モジュールがデバイスのローカル ストレージをどのように利用できるかを理解することができます。 LocalMediaCacheMaximumSizeMiB プロパティは、資産シンクがキャッシュとして使用できるディスク領域を定義します (1 MiB = 1024 * 1024 バイト)。 
 
 エッジ モジュールが非常に長い時間接続を失い、キャッシュフォルダーに格納されているコンテンツが localMediaCacheMaximumSizeMiB 値に達すると、資産シンクは、最も古いデータから、キャッシュからのデータの破棄を開始します。 たとえば、デバイスの接続が午前 10 時に失われ、キャッシュが午後 6 時に上限に達した場合、資産シンクは午前 10 時に記録されたデータの削除を開始します。 
 

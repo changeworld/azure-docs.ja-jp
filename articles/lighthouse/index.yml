@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Lighthouse ドキュメント
-summary: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
+summary: Azure Lighthouse により、クロステナントおよびマルチテナントの管理が実現し、リソースやテナント間での自動化やスケーラビリティの向上と統制機能の強化が可能になります。
 metadata:
   title: Azure Lighthouse ドキュメント
   description: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 04/14/2020
-  ms.openlocfilehash: 8599ddc8a4216b97be6d5bf183eea68654ff65a4
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.date: 07/20/2020
+  ms.openlocfilehash: 40352965db20c12e589f52f76869032d1f5f1b10
+  ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86111543"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88659876"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
     - text: Azure Monitor ログを使用する
       url: ./how-to/monitor-at-scale.md
     - text: 委任変更の監視
-      url: ./how-to/monitor-at-scale.md
+      url: ./how-to/monitor-delegation-changes.md
     - text: Azure Policy をデプロイする
       url: ./how-to/policy-at-scale.md
     - text: 修復できるポリシーをデプロイする

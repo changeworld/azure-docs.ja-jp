@@ -2,19 +2,20 @@
 title: 非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 titleSuffix: Azure Maps
 description: 非対話型の Azure AD ロールベースのアクセス制御と Azure Maps Web SDK を使用してシングル ページ アプリケーションを構成する方法。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d33fbdf2e95faaa82c13b4fc0d52ea3f188c3f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988444"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006419"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 
@@ -99,14 +100,14 @@ Azure AD の認証を行うセキュリティで保護された Web サービス
         });
     ```
 
-## <a name="grant-role-based-access"></a>ロールベースのアクセスを付与する
+## <a name="grant-role-based-access"></a>ロールベースのアクセス権を付与する
 
-*ロールベースのアクセス制御* (RBAC) 付与するには、システム割り当て ID を 1 つ以上の Azure ロールの定義に割り当てます。 Azure Maps に使用できる RBAC ロールの定義を表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。
+"*Azure ロールベースのアクセス制御 (Azure RBAC)* " のアクセス権を付与するには、システム割り当て ID を 1 つ以上の Azure ロールの定義に割り当てます。 Azure Maps に使用できる Azure ロールの定義を表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。
 
 1. **[Azure Maps アカウント]** にアクセスします。 **[アクセス制御 (IAM)]**  >  **[ロールの割り当て]** の順に選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![RBAC の付与](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Azure RBAC を使用してアクセス権を付与する](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. **[ロールの割り当て]** タブの **[ロール]** で、 **[Azure Maps データ閲覧者]** や **[Azure Maps データ共同作成者]** などの組み込みの Azure Maps ロールの定義を選択します。 **[アクセスの割り当て先]** で、 **[関数アプリ]** を選択します。 プリンシパルを名前で選択します。 次に、 **[保存]** を選択します。
 

@@ -3,18 +3,18 @@ title: Microsoft ID プラットフォームのドキュメント
 summary: Microsoft ID プラットフォームは、認証サービス、オープンソース ライブラリ、およびアプリケーション管理ツールです。 Microsoft が提供するクイックスタート、チュートリアル、コード サンプルを使用して、標準ベースの最新の認証ソリューションを作成する方法について説明します。 ユーザーと顧客が自分の Microsoft ID またはソーシャル アカウントを使用してサインインし、API または Microsoft Graph などの Microsoft API へのアクセスを承認するアプリケーションを構築します。
 metadata:
   ms.topic: landing-page
-  ms.date: 07/13/2020
-  author: CelesteDG
-  ms.author: celested
+  ms.date: 08/11/2020
+  author: mmacy
+  ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 689fb9953f6de9c717d774e222824c5b3701527e
-  ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2020
-  ms.locfileid: "86230351"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88690291"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -76,14 +76,14 @@ landingContent:
       url: quickstart-v2-ios.md
     - text: Windows デスクトップ (WPF)
       url: quickstart-v2-windows-desktop.md
-- title: Web API をセキュリティで保護する
+- title: Web API
   linkLists:
   - linkListType: get-started
     links:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET Core
-      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+      url: /samples/azure-samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/calling-a-web-api-in-an-aspnet-core-web-application-using-azure-ad/
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -91,12 +91,38 @@ landingContent:
     - text: Microsoft Graph API を使用する
       url: microsoft-graph-intro.md
     - text: Microsoft Graph 認証の概要
-      url: https://docs.microsoft.com/graph/auth/
-- title: SAML 2.0
+      url: /graph/auth/
+- title: プロトコル
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: OAuth 2.0 と OpenID Connect
+      url: active-directory-v2-protocols.md
+    - text: SAML 2.0
+      url: active-directory-saml-protocol-reference.md
+- title: 企業-顧客間 (B2C)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD B2C とは
+      url: ../../active-directory-b2c/overview.md
+    - text: 技術と機能の概要
+      url: ../../active-directory-b2c/technical-overview.md
+- title: マネージド ID
   linkLists:
   - linkListType: get-started
     links:
-    - text: Azure AD で SAML プロトコルを使用する方法
-      url: active-directory-saml-protocol-reference.md
-    - text: Azure AD での SAML SSO
-      url: single-sign-on-saml-protocol.md
+    - text: Azure リソースのマネージド ID について
+      url: ../managed-identities-azure-resources/overview.md
+    - text: マネージド ID と Azure VM
+      url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
+- title: ドキュメントの最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: エラーと例外を処理する - Android
+      url: msal-android-handling-exceptions.md
+    - text: 要求のディレクトリ スキーマ拡張属性
+      url: active-directory-schema-extensions.md
+    - text: MSAL.js 2.0 認証コード + PKCE および CORS
+      url: quickstart-v2-javascript-auth-code.md

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, tracking-python
+ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086621"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873757"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -47,11 +47,11 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 
 HDInsight Spark クラスターは、Anaconda のインストール付きで作成されます。 クラスターには 2 つの Python インストールが存在します (Anaconda Python 2.7 と Python 3.5)。 次の表に、Spark、Livy、および Jupyter 向けの既定の Python 設定を示します。
 
-| |Python 2.7|Python 3.5|
+|設定 |Python 2.7|Python 3.5|
 |----|----|----|
 |Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|既定で 2.7 に設定|該当なし|
-|Livy|既定で 2.7 に設定|該当なし|
+|Spark のバージョン|既定で 2.7 に設定|該当なし|
+|Livy バージョン|既定で 2.7 に設定|該当なし|
 |Jupyter|PySpark カーネル|PySpark3 カーネル|
 
 ## <a name="safely-install-external-python-packages"></a>外部 Python パッケージを安全にインストールする

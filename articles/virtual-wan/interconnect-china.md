@@ -9,6 +9,7 @@ ms.date: 03/25/2020
 ms.author: sukishen
 ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83747606"

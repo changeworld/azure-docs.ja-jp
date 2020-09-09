@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して Azure VM を別のリージョンに移動する
+title: Azure Site Recovery を使用して Azure IaaS VM を別のリージョンに移動する
 description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移動します。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 09a00d2c6a889f396e5c18da29530c94a624568b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076102"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -82,8 +82,9 @@ ms.locfileid: "86134438"
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>任意のリージョン (ソース リージョンを除く) にコンテナーを作成する
 
-1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-1. **[リソースの作成]**  >  **[管理ツール]**  >  **[Backup and Site Recovery]** の順に選択します。
+1. [Azure ポータル](https://portal.azure.com)
+1. 検索で、「Recovery Services」と入力し、[Recovery Services コンテナー] をクリックします
+1. [Recovery Services コンテナー] メニューの [+追加] をクリックします。
 1. **[名前]** に、フレンドリ名 **ContosoVMVault** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 1. リソース グループ **ContosoRG** を作成します。
 1. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域を参照してください。

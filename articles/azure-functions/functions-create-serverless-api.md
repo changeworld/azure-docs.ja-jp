@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083023"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
@@ -47,7 +47,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 1. **[保存]** を選択します。
 
-HTTP 関数のカスタマイズの詳細については、[Azure Functions の HTTP バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)に関する記事をご覧ください。
+HTTP 関数のカスタマイズの詳細については、[Azure Functions の HTTP バインド](./functions-bindings-http-webhook.md)に関する記事をご覧ください。
 
 ### <a name="test-your-api"></a>API のテスト
 
@@ -74,8 +74,8 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
-- [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) 内の API アプリ
-- [App Service on Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro) 内の Docker コンテナー
+- [Azure App Service](../app-service/overview.md) 内の API アプリ
+- [App Service on Linux](../app-service/containers/app-service-linux-intro.md) 内の Docker コンテナー
 - その他のホストされている API
 
 プロキシについて詳しくは、「[Azure Functions プロキシの操作]」をご覧ください。
@@ -86,7 +86,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 
 ### <a name="setting-up-the-frontend-environment"></a>フロントエンド環境のセットアップ
 
-「[Function App を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した関数アプリはバックエンドとして機能します。
+「[Function App を作成する](./functions-create-first-azure-function.md#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した関数アプリはバックエンドとして機能します。
 
 1. ポータルで新しいフロントエンドの Function App に移動します。
 1. **[プラットフォーム機能]** 、 **[アプリケーションの設定]** の順に選択します。
@@ -126,7 +126,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 
 このモック API を作成するには、新しいプロキシを作成します (今回は [App Service Editor](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) を使用します)。 作成を開始するには、Azure Portal で Function App に移動します。 **[プラットフォーム機能]** を選択し、 **[開発ツール]** で **[App Service Editor]** を見つけます。 App Service Editor が新しいタブで開きます。
 
-左側のナビゲーションで、`proxies.json` を選択します。 このファイルには、すべてのプロキシの構成が格納されます。 [Functions のデプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)のいずれかを使用する場合、このファイルはソース管理で保持します。 このファイルの詳細については、[Proxies の詳細な構成](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)に関するページをご覧ください。
+左側のナビゲーションで、`proxies.json` を選択します。 このファイルには、すべてのプロキシの構成が格納されます。 [Functions のデプロイ方法](./functions-continuous-deployment.md)のいずれかを使用する場合、このファイルはソース管理で保持します。 このファイルの詳細については、[Proxies の詳細な構成](./functions-proxies.md#advanced-configuration)に関するページをご覧ください。
 
 ここまでの手順に従っていれば、proxies.json ファイルは次のようになっているはずです。
 
@@ -180,7 +180,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 }
 ```
 
-このコードにより、`backendUri` プロパティを指定せずに、新しいプロキシ `GetUserByName` が追加されます。 別のリソースを呼び出す代わりに、応答のオーバーライドによって Proxies からの既定の応答を変更します。 要求と応答のオーバーライドは、バックエンド URL と併用することもできます。 この手法は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合がある、レガシ システムにプロキシする際に特に役立ちます。 要求と応答のオーバーライドの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies)に関する記事をご覧ください。
+このコードにより、`backendUri` プロパティを指定せずに、新しいプロキシ `GetUserByName` が追加されます。 別のリソースを呼び出す代わりに、応答のオーバーライドによって Proxies からの既定の応答を変更します。 要求と応答のオーバーライドは、バックエンド URL と併用することもできます。 この手法は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合がある、レガシ システムにプロキシする際に特に役立ちます。 要求と応答のオーバーライドの詳細については、[Proxies での要求と応答の変更](./functions-proxies.md)に関する記事をご覧ください。
 
 ブラウザーまたはお使いの REST クライアントを使用して `<YourProxyApp>.azurewebsites.net/api/users/{username}` エンドポイントを呼び出し、モック API をテストします。 _{username}_ をユーザー名を表す文字列値に必ず置き換えてください。
 
@@ -190,10 +190,10 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 
 次のリファレンスは、API の開発をさらに進める際に役立ちます。
 
-- [Azure Functions での HTTP のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Azure Functions での HTTP のバインド](./functions-bindings-http-webhook.md)
 - [Azure Functions プロキシの操作]
-- [Azure Functions API (プレビュー) のドキュメント](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
+- [Azure Functions API (プレビュー) のドキュメント](./functions-openapi-definition.md)
 
 
-[Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[Azure Functions プロキシの操作]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Create your first function]: ./functions-create-first-azure-function.md
+[Azure Functions プロキシの操作]: ./functions-proxies.md

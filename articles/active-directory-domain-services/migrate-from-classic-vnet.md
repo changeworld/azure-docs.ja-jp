@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 08/10/2020
 ms.author: iainfou
-ms.openlocfilehash: e2802445bbb80a4412787362a3ee9aaee4adcd40
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223501"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054291"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure Active Directory Domain Services の移行
 
@@ -197,6 +197,12 @@ Azure PowerShell を使用して、マネージド ドメインを移行用に�
     ```powershell
     $creds = Get-Credential
     ```
+    
+1. Azure サブスクリプション ID の変数を定義します。 必要に応じて、[Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) コマンドレットを使用して、サブスクリプション ID を一覧化して表示することができます。 次のコマンドで、ご自身のサブスクリプション ID を指定します。
+
+   ```powershell
+   $subscriptionId = 'yourSubscriptionId'
+   ```
 
 1. 次に、 *-Prepare* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *aaddscontoso.com* など、ご自身のマネージド ドメインの *-ManagedDomainFqdn* を指定します。
 
@@ -204,7 +210,8 @@ Azure PowerShell を使用して、マネージド ドメインを移行用に�
     Migrate-Aadds `
         -Prepare `
         -ManagedDomainFqdn aaddscontoso.com `
-        -Credentials $creds
+        -Credentials $creds `
+        -SubscriptionId $subscriptionId
     ```
 
 ## <a name="migrate-the-managed-domain"></a>マネージド ドメインを移行する
@@ -224,7 +231,8 @@ Migrate-Aadds `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 マネージド ドメインの移行準備が整ったことがスクリプトで検証されたら、「*Y*」を入力して移行プロセスを開始します。
@@ -310,7 +318,8 @@ Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 ### <a name="restore"></a>復元
@@ -335,7 +344,7 @@ Resource Manager デプロイ モデルへの移行後に問題が発生した�
 <!-- INTERNAL LINKS -->
 [azure-bastion]: ../bastion/bastion-overview.md
 [network-considerations]: network-considerations.md
-[azure-powershell]: /powershell/azure/overview
+[azure-powershell]: /powershell/azure/
 [network-ports]: network-considerations.md#network-security-groups-and-required-ports
 [Connect-AzAccount]: /powershell/module/az.accounts/connect-azaccount
 [Set-AzContext]: /powershell/module/az.accounts/set-azcontext

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: f3eed03c585ba6b48a21b36c21cb77585456fc2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c64a38295754e4754326dec126bfbc36e1bef61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523334"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime の IP アドレス
 
@@ -25,7 +25,7 @@ ms.locfileid: "84660272"
 Azure Integration Runtime によって使用される IP アドレスは、Azure Integration Runtime が配置されているリージョンによって異なります。 同じリージョン内の "*すべての*" Azure Integration Runtime は、同じ IP アドレス範囲を使用します。
 
 > [!IMPORTANT]  
-> データ フローでは、固定 IP 範囲の使用がサポートされません。
+> マネージド仮想ネットワークを有効にするデータ フローと Azure Integration Runtime では、固定 IP 範囲の使用はサポートされていません。
 >
 > これらの IP 範囲は、データ移動、パイプライン、および外部アクティビティの実行に使用できます。 これらの IP 範囲は、Azure Integration Runtime からの受信アクセスについて、データストア/ネットワーク セキュリティ グループ (NSG)/ファイアウォールでホワイトリストに登録するために使用できます。 
 
