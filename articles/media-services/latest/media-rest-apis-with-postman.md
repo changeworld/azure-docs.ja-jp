@@ -52,10 +52,10 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 ### <a name="configure-the-environment"></a>環境の構成 
 
 1. **Postman** アプリを開きます。
-2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
+2. 画面の右側で、 **[Manage environment]\(環境の管理\)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
-4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
+4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[Import]\(インポート\)** をクリックします。
 2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 
@@ -70,7 +70,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
    
 ### <a name="configure-the-collection"></a>コレクションの構成
 
-1. **[インポート]** をクリックしてコレクション ファイルをインポートします。
+1. **[Import]\(インポート\)** をクリックしてコレクション ファイルをインポートします。
 1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Media Services v3.postman_collection.json` ファイルを参照します。
 3. **Media Services v3.postman_collection.json** ファイルを選択します。
 
