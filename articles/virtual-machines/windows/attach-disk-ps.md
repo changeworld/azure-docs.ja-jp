@@ -23,7 +23,7 @@ ms.locfileid: "87825448"
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 * Premium SSD を使用するには、[Premium Storage に対応した VM の種類](../sizes-memory.md) (DS シリーズや GS シリーズなどの仮想マシン) が必要です。
 
-この記事では、[Azure Cloud Shell](../../cloud-shell/overview.md) で Azure PowerShell を使用します。これは常に最新のバージョンに更新されています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
+この記事では、[Azure Cloud Shell](../../cloud-shell/overview.md) で Azure PowerShell を使用します。これは常に最新のバージョンに更新されています。 Cloud Shell を開くには、コード ブロックの上部にある **[使ってみる]** を選択します。
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>空のデータ ディスクを仮想マシンに追加する
 
