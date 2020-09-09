@@ -28,7 +28,7 @@ Azure Functions 用の Azure セキュリティ ベースラインには、ご�
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**ガイダンス**: Azure Functions アプリを Azure 仮想ネットワークと統合します。 Premium プランで実行されている関数アプリには、"VNet 統合" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。  Azure 仮想ネットワークを使用すると、Azure Functions などの Azure リソースの多くを、インターネットにルーティングできないネットワークに配置することができます。
+**ガイダンス**: Azure Functions アプリを Azure 仮想ネットワークと統合します。 Premium プランで実行されている Functions アプリには、"VNet 統合" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。  Azure 仮想ネットワークを使用すると、Azure Functions などの Azure リソースの多くを、インターネットにルーティングできないネットワークに配置することができます。
 
 - [Functions を Azure 仮想ネットワークに統合する方法](./functions-create-vnet.md)
 
@@ -56,16 +56,16 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**:運用環境で、Azure 関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
-- 関数アプリの App Service 認証および承認をオンにする
+**ガイダンス**:運用環境で、Azure Functions エンドポイントを完全に保護するには、次の Functions アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
+- Functions アプリの App Service 認証および承認をオンにする
 - 要求の認証に Azure API Management (APIM) を使用する、または
-- Azure App Service Environment に関数アプリをデプロイする。
+- Azure App Service Environment に Functions アプリをデプロイする。
 
-また、運用環境の Azure Functions のリモート デバッグが無効になっていることを確認します。 さらに、クロスオリジン リソース共有 (CORS) では、すべてのドメインが Azure Function アプリにアクセスすることを許可しないでください。 Azure 関数アプリの操作に必要なドメインのみを許可します。
+また、運用環境の Azure Functions のリモート デバッグが無効になっていることを確認します。 さらに、クロスオリジン リソース共有 (CORS) では、すべてのドメインが Azure Function アプリにアクセスすることを許可しないでください。 Azure Functions アプリの操作に必要なドメインのみを許可します。
 
 受信トラフィックをさらに検査するために、ネットワーク構成の一部として Azure Web アプリケーション ファイアウォール (WAF) をデプロイすることを検討します。 WAF の診断設定を有効にし、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースにログを取り込みます。 
 
-- [運用環境で Azure 関数エンドポイントをセキュリティで保護する方法](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
+- [運用環境で Azure Functions エンドポイントをセキュリティで保護する方法](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -75,8 +75,8 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**: 関数アプリに関連付けられた仮想ネットワーク上で DDoS Protection 標準を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のパブリック IP アドレスとの通信を拒否します。
-さらに、すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、Azure 関数アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
+**ガイダンス**: Functions アプリに関連付けられた仮想ネットワーク上で DDoS Protection 標準を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のパブリック IP アドレスとの通信を拒否します。
+さらに、すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、Azure Functions アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
 
 - [Azure Functions のネットワーク オプション](./functions-networking-options.md)
 
