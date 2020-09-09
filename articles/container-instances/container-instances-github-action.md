@@ -45,7 +45,7 @@ ms.locfileid: "88755009"
 
   ![GitHub の [フォーク] ボタン (マーク済み) のスクリーンショット](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* リポジトリに対して Actions が有効になっていることを確認します。 フォークされたリポジトリに移動し、 **[設定]**  >  **[Actions]\(アクション\)** を選択します。 **[Actions permissions]\(アクションのアクセス許可\)** で、 **[Enable local and third party Actions for this repository]\(このリポジトリに対してローカルおよびサード パーティのアクションを有効にする\)** が選択されていることを確認します。
+* リポジトリに対して Actions が有効になっていることを確認します。 フォークされたリポジトリに移動し、 **[Settings]\(設定\)**  >  **[Actions]\(アクション\)** を選択します。 **[Actions permissions]\(アクションのアクセス許可\)** で、 **[Enable local and third party Actions for this repository]\(このリポジトリに対してローカルおよびサード パーティのアクションを有効にする\)** が選択されていることを確認します。
 
 ## <a name="configure-github-workflow"></a>GitHub ワークフローを構成する
 
