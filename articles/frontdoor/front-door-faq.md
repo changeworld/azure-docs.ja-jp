@@ -3,20 +3,20 @@ title: Azure Front Door - よく寄せられる質問
 description: このページでは、Azure Front Door に関してよく寄せられる質問の回答を示します
 services: frontdoor
 documentationcenter: ''
-author: sohamnchatterjee
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
-ms.author: sohamnc
-ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.author: duau
+ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760415"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399737"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 

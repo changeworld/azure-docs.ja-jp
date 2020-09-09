@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ae98f74092c3955a54c0817082e8f29c1b251237
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533395"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934516"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -192,7 +192,7 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > ニューラル音声でのみ、話し方を調整できます。
 
-既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、<mstts:express-as> 要素を使用してカスタム サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
+既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、 `mstts:express-as`  要素を使用してカスタム サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`

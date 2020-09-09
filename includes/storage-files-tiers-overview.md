@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 24f92443acddb17c0a2d337f51dbf9183996c49f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7fd91e898c12a13e35ae8b9055ebb5a57de2a051
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520526"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272141"
 ---
 Azure Files では、Premium、トランザクション最適化、ホット、クールの 4 つの異なるストレージのサービス レベルが提供されており、お客様のシナリオのパフォーマンスと価格の要件に合わせて共有を調整できます。
 
@@ -30,9 +30,31 @@ Premium ファイル共有は、プロビジョニングされる課金モデル
 - オーストラリア中部 2
 - オーストラリア東部
 - オーストラリア南東部
+- ブラジル南部
+- カナダ東部
+- カナダ中部
 - フランス中部
 - フランス南部
+- ドイツ北部 (パブリック)
+- ドイツ中西部 (パブリック)
+- インド中部
+- インド南部
+- インド西部
+- 東日本
+- 西日本
 - 韓国中部
 - 韓国南部
+- ノルウェー東部
+- ノルウェー西部
+- 南アフリカ北部
+- 南アフリカ西部
+- スイス北部
+- スイス西部
+- アラブ首長国連邦中部
+- アラブ首長国連邦北部
+- 英国南部
+- 英国西部
+- 米国中北部
+- 米国中南部
 
 ホットまたはクール ファイル共有をデプロイするには、[ホットまたはクール ファイル共有の作成](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share)に関する記事を参照してください。 

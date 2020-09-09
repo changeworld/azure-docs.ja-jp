@@ -7,14 +7,14 @@ ms.topic: include
 author: dannyevers
 ms.author: mingshen
 ms.reviewer: trkeya
-ms.date: 08/07/2020
-ms.openlocfilehash: 5dcf1f932e72473b6d4bc2442b19b5a674becaa4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/18/2020
+ms.openlocfilehash: 3659b9dbdd6108a650ffc44169bed1d33b140345
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031497"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815634"
 ---
--   小のロゴ (48 x 48 ピクセル) は、Azure Marketplace での検索結果に表示されます。
--   中のロゴ (90 x 90 ピクセル) は、Microsoft Azure で新しいリソースを作成すると表示されます。
--   大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルの間) は、Azure Marketplace のオファーの一覧ページに表示されます。
+- 大のロゴは、Azure Marketplace のオファーのリスト登録ページに表示されます。
+- 中のロゴ (任意) は、Microsoft Azure で新しいリソースを作成すると表示されます。
+- 小のロゴ (任意) は、Azure Marketplace での検索結果に表示されます。

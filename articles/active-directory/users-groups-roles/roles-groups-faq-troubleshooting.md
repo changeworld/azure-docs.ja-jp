@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475908"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798297"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>クラウド グループに割り当てられているロールのトラブルシューティング
 
@@ -40,8 +40,8 @@ ms.locfileid: "87475908"
 
 **A:** そのユーザーは、ロールを割り当て可能なグループの所有者である可能性があります。 特権の昇格を避けるため、ロールを割り当て可能なグループの所有者は保護されています。 たとえば、Contoso_Security_Admins というグループがセキュリティ管理者ロールに割り当てられており、Bob がそのグループの所有者で、Alice は組織内のパスワード管理者であるとします。 この保護が存在しないとすれば、Alice が Bob の資格情報をリセットして、Bob の ID を引き継ぐことが可能になります。 そうなると、Alice は自身や他のユーザーを Contoso_Security_Admins グループに追加して、その組織のセキュリティ管理者になることができてしまいます。 あるユーザーがグループの所有者であるかどうかを確認するには、そのユーザーの所有オブジェクトの一覧を取得し、そのグループのいずれかで isAssignableToRole が true に設定されているかどうかを確認します。 設定されている場合、そのユーザーは保護対象であり、この動作は仕様によるものです。 所有オブジェクトの取得については、次のドキュメントを参照してください。
 
-- [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [List ownedObjects](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
+- [List ownedObjects](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
 
 **質問:** Azure AD ロールに割り当てることができるグループ (具体的には、isAssignableToRole プロパティが true に設定されているグループ) にアクセス レビューを作成できますか?  
 
@@ -51,7 +51,7 @@ ms.locfileid: "87475908"
 
 **A:** はい、できます。 グローバル管理者とユーザー管理者には、任意のグループをアクセス パッケージに配置する権限があります。 グローバル管理者には何も変更はありませんが、ユーザー管理者ロールのアクセス許可には若干の変更が加えられています。 ロールを割り当て可能なグループをアクセス パッケージに配置するには、ユーザー管理者であると同時に、ロールを割り当て可能なそのグループの所有者でもある必要があります。 エンタープライズ ライセンス管理でアクセス パッケージを作成できるユーザーの完全な表を次に示します。
 
-Azure AD ディレクトリ ロール | エンタイトルメント管理ロール | セキュリティ グループの追加\* | Office 365 グループの追加\* | アプリの追加 | SharePoint Online サイトの追加
+Azure AD ディレクトリ ロール | エンタイトルメント管理ロール | セキュリティ グループの追加\* | Microsoft 365 グループの追加\* | アプリの追加 | SharePoint Online サイトの追加
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 全体管理者 | 該当なし | ✔️ | ✔️ | ✔️  | ✔️
 ユーザー管理者  | 該当なし  | ✔️  | ✔️  | ✔️

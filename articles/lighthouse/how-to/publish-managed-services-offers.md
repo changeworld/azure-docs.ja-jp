@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 07/28/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167222"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589726"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -22,8 +22,19 @@ ms.locfileid: "88167222"
 
 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../cost-management-billing/manage/link-partner-id.md)。
 
-> [!NOTE]
-> オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure Lighthouse への顧客のオンボード](onboard-customer.md)」をご覧ください。
+オファーを Azure Marketplace に発行しない場合や、すべての要件を満たしていない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure Lighthouse への顧客のオンボード](onboard-customer.md)」をご覧ください。
+
+次の表は、顧客をオンボードするために、マネージド サービス オファーを発行するか、Azure Resource Manager テンプレートを使用するかを判断するのに役立ちます。
+
+|**考慮事項**  |**マネージド サービス オファー**  |**ARM テンプレート**  |
+|---------|---------|---------|
+|[パートナー センター アカウント](../../marketplace/partner-center-portal/create-account.md)が必要   |はい         |いいえ        |
+|[Silver または Gold Cloud Platform コンピテンシー レベル](/partner-center/learn-about-competencies)または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) が必要      |はい         |いいえ         |
+|新規顧客は Azure Marketplace を通して利用可能     |はい     |いいえ       |
+|特定の顧客に対してオファーを制限できる     |はい (プライベート オファーを使用する場合のみ。これは、クラウド ソリューション プロバイダー (CSP) プログラムのリセラーを通して確立されたサブスクリプションでは使用できません)         |はい         |
+|顧客が Azure portal で同意する必要がある     |はい     |いいえ   |
+|オートメーションを使用して複数のサブスクリプション、リソースグループ、または顧客をオンボードできる |いいえ     |はい    |
+|新しい組み込みロールと Azure Lighthouse 機能への即座のアクセス     |常にではない (しばらく延期の後に一般公開)         |はい         |
 
 ## <a name="create-your-offer"></a>プランを作成する
 

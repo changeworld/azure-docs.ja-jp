@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4672c5cab5977b000bd5095f3868864ae0c267ed
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005756"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224358"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
 
@@ -58,10 +58,13 @@ __Q:既存の ADAL アプリの動作は停止しますか?__
 A:いいえ。 既存のアプリは、変更しなくても引き続き動作します。 2022 年 6 月 30 日以降も維持する予定がある場合は、その安全性を確保するためにアプリを MSAL に更新することを検討してください。しかし、既存の機能を維持する上で、MSAL への移行は必須ではありません。
 
 __Q:どのアプリで ADAL を使用しているかを知る方法はありますか?__  
-A:アプリケーションのソース コードがある場合は、上記の移行ガイドを参照して、アプリで使用しているライブラリを判別し、それを MSAL に移行する方法を確認できます。 ISV と提携している場合は、直接連絡して、MSAL への移行の過程を理解することをお勧めします。 アプリケーションのソース コードにアクセスできない場合は、[サポート リクエストを開いて](developer-support-help-options.md#open-a-support-request)、登録されているアプリケーションと各アプリケーションで使用されているライブラリの一覧を取得することができます。
+A:アプリケーションのソース コードがある場合は、上記の移行ガイドを参照して、アプリで使用しているライブラリを判別し、それを MSAL に移行する方法を確認できます。 ISV と提携している場合は、直接連絡して、MSAL への移行の過程を理解することをお勧めします。
 
 __Q:MSAL への移行に投資すべき理由を教えてください。__  
 A:MSAL には、増分同意、シングル サインオン、トークン キャッシュ管理など、ADAL には含まれない新機能が含まれています。 また、ADAL とは異なり、MSAL は 2022 年 6 月 30 日以降のセキュリティ更新プログラムを引き続き受けることができます。 [詳細については、こちらを参照してください](msal-overview.md)。
+
+__Q:Microsoft は独自のアプリを MSAL に更新しますか?__  
+はい。 Microsoft は、MSAL の継続的なセキュリティと機能の向上によるメリットが得られるよう、サポート終了期限までにアプリケーションを MSAL に移行する作業を行っています。
 
 __Q:ADAL から MSAL にアプリを移行するのに役立つツールはリリースされますか?__  
 A:いいえ。 ライブラリ間の違いにより、そのようなツールの開発やメンテナンスには、MSAL の改良に当てられるリソースをつぎ込む必要があります。 ただし、アプリケーションで必要な変更を行うための、前述の一連の移行ガイドを提供致します。

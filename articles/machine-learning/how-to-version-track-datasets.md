@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4ae0ebaec011634153e4ac9bbe43ef519c58a251
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d57122ee98eb6612f43d09ecff4797038ceaf5f2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845886"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654091"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -192,4 +192,4 @@ model = run.register_model(model_name='keras-mlp-mnist',
 ## <a name="next-steps"></a>次のステップ
 
 * [データセットを使ってトレーニングする](how-to-train-with-datasets.md)
-* [その他のサンプル データセット ノートブック](https://aka.ms/dataset-tutorial)
+* [その他のサンプル データセット ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)

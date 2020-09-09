@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211909"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961671"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET Core アプリを構成する
 
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ::: zone pivot="platform-windows"  
 
-ASP.NET Core プロジェクトのプロジェクト ファイルにターゲット フレームワークを設定します。 詳細については、.NET Core ドキュメントの「[使用する .NET Core バージョンを選択する](https://docs.microsoft.com/dotnet/core/versions/selection)」を参照してください。
+ASP.NET Core プロジェクトのプロジェクト ファイルにターゲット フレームワークを設定します。 詳細については、.NET Core ドキュメントの「[使用する .NET Core バージョンを選択する](/dotnet/core/versions/selection)」を参照してください。
 
 ::: zone-end
 
@@ -128,7 +128,7 @@ namespace SomeNamespace
 たとえば、App Service と *appsettings.json* で同じ名前のアプリ設定を構成した場合は、App Service の値が *appsettings.json* の値よりも優先されます。 ローカルの *appsettings.json* 値ではアプリをローカルでデバッグできますが、App Service の値では実稼働設定の製品内でアプリを実行できます。 接続文字列は同じように機能します。 これにより、コード リポジトリの外部にアプリケーション シークレットを保存し、コードを変更することなく適切な値にアクセスできます。
 
 > [!NOTE]
-> *appsettings. json* の[階層型の構成データ](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)は、.NET Core に標準の `:` 区切り記号を使用してアクセスされることに注意してください。 App Service で特定の階層型構成設定をオーバーライドするには、キーにアプリ設定名を同じ区切り形式で設定します。 [Cloud Shell](https://shell.azure.com) で次の例を実行できます。
+> *appsettings. json* の[階層型の構成データ](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)は、.NET Core に標準の `:` 区切り記号を使用してアクセスされることに注意してください。 App Service で特定の階層型構成設定をオーバーライドするには、キーにアプリ設定名を同じ区切り形式で設定します。 [Cloud Shell](https://shell.azure.com) で次の例を実行できます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -144,7 +144,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-ASP.NET Core には、[App Service 用の組み込みのログ プロバイダー](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service)が用意されています。 プロジェクトの *Program.cs* で、次の例に示すように、`ConfigureLogging` 拡張メソッドを使用してそのプロバイダーをアプリケーションに追加します。
+ASP.NET Core には、[App Service 用の組み込みのログ プロバイダー](/aspnet/core/fundamentals/logging/#azure-app-service)が用意されています。 プロジェクトの *Program.cs* で、次の例に示すように、`ConfigureLogging` 拡張メソッドを使用してそのプロバイダーをアプリケーションに追加します。
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -159,11 +159,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-その後、[標準の .NET Core パターン](https://docs.microsoft.com/aspnet/core/fundamentals/logging)を使用して、ログを構成して生成できます。
+その後、[標準の .NET Core パターン](/aspnet/core/fundamentals/logging)を使用して、ログを構成して生成できます。
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-App Service での ASP.NET Core アプリのトラブルシューティングの詳細については、「[Azure App Service と IIS での ASP.NET Core のトラブルシューティング](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis)」を参照してください
+App Service での ASP.NET Core アプリのトラブルシューティングの詳細については、「[Azure App Service と IIS での ASP.NET Core のトラブルシューティング](/aspnet/core/test/troubleshoot-azure-iis)」を参照してください
 
 ## <a name="get-detailed-exceptions-page"></a>例外の詳細ページを表示する
 
@@ -177,9 +177,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されるかどうかをアプリのロジックで認識する必要がある場合は、*Startup.cs* で Forwarded Headers Middleware を構成します。
 
-- `Startup.ConfigureServices` で、`X-Forwarded-For` ヘッダーと `X-Forwarded-Proto` ヘッダーを転送するように [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) を使ってミドルウェアを構成します。
+- `Startup.ConfigureServices` で、`X-Forwarded-For` ヘッダーと `X-Forwarded-Proto` ヘッダーを転送するように [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) を使ってミドルウェアを構成します。
 - ミドルウェアが App Service のロード バランサーを信頼できるようにするために、既知のネットワークにプライベート IP アドレス範囲を追加します。
-- 他のミドルウェアを呼び出す前に、`Startup.Configure` 内で [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) メソッドを呼び出します。
+- 他のミドルウェアを呼び出す前に、`Startup.Configure` 内で [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) メソッドを呼び出します。
 
 3 つの要素をすべてまとめると、次の例のようなコードになります。
 
@@ -208,7 +208,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-詳細については、「[プロキシ サーバーとロード バランサーを使用するために ASP.NET Core を構成する](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)」を参照してください。
+詳細については、「[プロキシ サーバーとロード バランサーを使用するために ASP.NET Core を構成する](/aspnet/core/host-and-deploy/proxy-load-balancer)」を参照してください。
 
 ::: zone pivot="platform-linux"
 
@@ -231,4 +231,3 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 > [App Service Linux の FAQ](faq-app-service-linux.md)
 
 ::: zone-end
-

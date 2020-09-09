@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: af5324373359cea643a3e31b6bb94e614ddb7e36
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082854"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723862"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor のデータ収集ルール (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。
@@ -44,7 +44,7 @@ ms.locfileid: "88082854"
 |:---|:---|
 | 拡張機能 | VM 拡張機能に基づいたデータ ソース |
 | performanceCounters | Windows と Linux の両方のパフォーマンス カウンター |
-| syslog | Linux 仮想マシンの syslog イベント |
+| syslog | Linux の Syslog イベント |
 | windowsEventLogs | Windows イベント ログ |
 
 
@@ -54,9 +54,9 @@ ms.locfileid: "88082854"
 | 制限 | 値 |
 |:---|:---|
 | データ ソースの最大数 | 10 |
-| パフォーマンスのカウンター指定子の最大数 | 100 |
+| パフォーマンス カウンターのカウンター指定子の最大数 | 100 |
 | SysLog 内のファシリティ名の最大数 | 20 |
-| EventLog 内の XPath クエリの最大数 | 100 |
+| イベントログ内の XPath クエリの最大数 | 100 |
 | データ フローの最大数 | 10 |
 | データ ストリームの最大数 | 10 |
 | 拡張機能の最大数 | 10 |
@@ -68,7 +68,7 @@ ms.locfileid: "88082854"
 現在、DCR を作成する方法は 2 つあります。
 
 - [Azure portal を使用](data-collection-rule-azure-monitor-agent.md)してデータ収集ルールを作成し、1 つまたは複数の仮想マシンに関連付けます。
-- データ収集ルールを JSON で直接編集し、REST API を使用して送信します。
+- データ収集ルールを JSON で直接編集し、[REST API を使用して送信します](https://docs.microsoft.com/rest/api/monitor/datacollectionrules)。
 
 ## <a name="sample-data-collection-rule"></a>データ収集ルールのサンプル
 以下のデータ収集ルールのサンプルは Azure 管理エージェントを使用した仮想マシン用で、次の詳細が含まれています。
@@ -83,8 +83,7 @@ ms.locfileid: "88082854"
   - cron ファシリティからデバッグ、重大、および緊急イベントを収集します。
   - syslog ファシリティからアラート、重大、および緊急イベントを収集します。
 - 変換先
-  - すべてのデータを centralTeamWorkspace という名前の Log Analytics ワークスペースに送信します。
-  - パフォーマンス データを現在のサブスクリプションの Azure Monitor メトリックに送信します。
+  - すべてのデータを centralWorkspace という名前の Log Analytics ワークスペースに送信します。
 
 ```json
 {
@@ -157,7 +156,7 @@ ms.locfileid: "88082854"
             ]
           },
           {
-            "name": "sylogBase",
+            "name": "syslogBase",
             "streams": [
               "Microsoft-Syslog"
             ],

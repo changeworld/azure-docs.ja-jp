@@ -8,17 +8,20 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 03/04/2020
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0a2e4d1ac5cf0945ab75e58bb42d23d10d6c89aa
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b3decdd4a2855382b27cb426d7fb030b46a2458c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607240"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298030"
 ---
 # <a name="download-the-results-of-a-job"></a>ジョブの結果をダウンロードする
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services では、ご利用のビデオを処理するとき (エンコードや分析など)、自分の[ジョブ](transforms-jobs-concept.md)の結果を格納するために出力[アセット](assets-concept.md)を作成する必要があります。 Media Service と Storage API を使用して、それらの結果をローカル フォルダーにダウンロードすることができます。 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.custom: include file
-ms.openlocfilehash: 76020b3c1f28e5b5f6363aef181b76bc93a9613e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 63cb53dc60a718892d4bf86140e7fd51303bd61c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293839"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761723"
 ---
 ### <a name="the-data-model-of-the-schema"></a>スキーマのデータ モデル
 
@@ -25,7 +25,7 @@ ms.locfileid: "87293839"
 | **分類** | string | インシデント終了の分類 |
 | **ClassificationComment** | string | インシデント終了の分類のコメント |
 | **ClassificationReason** | string | インシデント終了の分類の理由 |
-| **ClosureTime** | DATETIME | インシデントが最後に閉じられたときのタイムスタンプ (UTC) |
+| **ClosedTime** | DATETIME | インシデントが最後に閉じられたときのタイムスタンプ (UTC) |
 | **コメント** | 動的 | インシデント コメント |
 | **CreatedTime** | DATETIME | インシデントが作成されたときのタイムスタンプ (UTC) |
 | **説明** | string | インシデントの説明 |

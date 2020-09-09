@@ -3,7 +3,7 @@ title: Azure VMSS でマネージド ID を構成する - Azure AD
 description: Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924497"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262675"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -37,7 +37,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     > [!NOTE]
     > Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
-    - 仮想マシン スケール セットからシステム割り当てマネージド ID を有効化および削除するための[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
+    - 仮想マシン スケール セットからシステム割り当てマネージド ID を有効化および削除するための[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 

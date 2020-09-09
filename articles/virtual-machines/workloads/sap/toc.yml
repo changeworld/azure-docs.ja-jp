@@ -227,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP マルチ SID
           items:
+            - name: (A)SCS インスタンス用の Azure 共有ディスクを使用した Windows
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
@@ -299,6 +301,8 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/sap-hana/hanainstance
+    - name: Azure PowerShell
+      href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: リソース
   items:
     - name: Azure のロードマップ

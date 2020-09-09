@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b3f279b28bf78114556623865a9f132174c6e41
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550540"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297316"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hightail の統合
 
@@ -109,7 +109,7 @@ Hightail で Azure AD SSO を構成してテストするには、次の構成要
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Hightail アプリでシングル サインオンを構成する前に、電子メール ドメインを Hightail チームのホワイト リストに登録し、そのドメインを使用するすべてのユーザーがシングル サインオン機能を利用できるようにします。
+> Hightail アプリでシングル サインオンを構成する前に、電子メール ドメインを Hightail チームの許可リストに追加し、そのドメインを使用するすべてのユーザーがシングル サインオン機能を利用できるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

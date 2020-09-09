@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: 5aa6b3717925146607f3785ad5ea5fb940e8c236
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503399"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716675"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換する
 
@@ -39,7 +39,7 @@ ms.locfileid: "87503399"
 * [Liquid テンプレートの言語](https://shopify.github.io/liquid/)に関する基本的な知識
 
   > [!NOTE]
-  > **[Transform JSON to JSON - Liquid]\(JSON を JSON に変換 - Liquid\)** アクションは、[Liquid の DotLiquid 実装](https://github.com/dotliquid/dotliquid)に従います。これは、特定のケースにおいて [Liquid の Shopify 実装](https://shopify.github.io/liquid)とは異なります。 詳細については、「[Liquid テンプレートに関する考慮事項](#template-considerations)」を参照してください。
+  > **[Transform JSON to JSON - Liquid]\(JSON を JSON に変換 - Liquid\)** アクションは、[Liquid の DotLiquid 実装](https://github.com/dotliquid/dotliquid)に従います。これは、特定のケースにおいて [Liquid の Shopify 実装](https://shopify.github.io/liquid)とは異なります。 詳細については、「[Liquid テンプレートに関する考慮事項](#liquid-template-considerations)」を参照してください。
 
 ## <a name="create-the-template"></a>テンプレートを作成する
 

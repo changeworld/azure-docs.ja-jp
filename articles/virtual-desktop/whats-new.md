@@ -3,16 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/07/2020
+ms.date: 09/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: references_regions
+ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003532"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319816"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -24,6 +25,31 @@ Windows Virtual Desktop は定期的に更新されます。 この記事では�
 - バグの修正
 
 この記事は毎月更新されます。 こちらを頻繁に確認して、新しい更新プログラムに関する最新情報を入手してください。
+
+## <a name="august-2020"></a>2020 年 8 月
+
+2020 年 8 月における変更点は次のとおりです。
+
+- 次の Azure リージョンで、パフォーマンスの向上により接続の待ち時間が短縮されています。 
+
+    - イギリス
+    - フランス
+    - ノルウェー
+    - 韓国
+
+   [エクスペリエンス予測ツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)を使用すると、これらの変更がユーザーに与える影響を大まかに理解できます。
+
+- Microsoft Store リモート デスクトップ クライアント (v10.2.1522+) の一般提供が開始されました。 このバージョンの Microsoft Store リモート デスクトップ クライアントは、Windows Virtual Desktop と互換性があります。 また、ユーザー エクスペリエンスを向上させるために、更新された UI flows も導入されました。 この更新には、流暢なデザイン、ライト モードとダーク モード、およびその他の多くの興味深い変更が含まれています。 また、クライアントが書き直され、基になるリモート デスクトップ プロトコル (RDP) エンジンに、iOS、macOS、および Android クライアントと同じものが使用されるようになりました。 これにより、すべてのプラットフォームに新しい機能をより迅速に提供できます。 [クライアントをダウンロード](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab)して、お試しください。
+
+- Teams デスクトップ クライアント (バージョン 1.3.00.21759) でチャット、チャネル、予定表に UTC タイム ゾーンのみが表示されていた問題が修正されました。 更新されたクライアントでは、代わりにリモート セッションのタイム ゾーンが表示されるようになりました。
+
+- Azure Advisor が Windows Virtual Desktop の一部になりました。 Azure portal から Windows Virtual Desktop にアクセスすると、お使いの Windows Virtual Desktop 環境を最適化するための推奨事項を確認できます。 [Azure Advisor](azure-advisor.md) の詳細情報。
+
+- Azure CLI で Windows Virtual Desktop (`az desktopvirtualization`) がサポートされ、Windows Virtual Desktop のデプロイを自動化できるようになりました。 拡張コマンドの一覧については、「[desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest)」をご覧ください。
+
+- Windows Virtual Desktop の Azure Resource Manager インターフェイスとの完全な互換性が確保されるようにデプロイ テンプレートが更新されました。 このテンプレートは [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) で見つけることができます。
+
+- Windows Virtual Desktop US Gov ポータルがパブリック プレビューになりました。 詳細については、[こちらのお知らせ](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/)を参照してください。
 
 ## <a name="july-2020"></a>2020 年 7 月  
 
@@ -105,9 +131,7 @@ Windows Virtual Desktop 用の Microsoft Teams に対していくつかの機能
 
 詳細については、[こちらのブログ記事](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
-
-今後の計画については、[Microsoft 365 Windows 仮想デスクトップ ロードマップ](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)に関するページを参照してください。
+## <a name="client-updates"></a>クライアント更新
 
 Windows Virtual Desktop およびリモート デスクトップ サービスに関するクライアント向けの更新プログラムについては、次の記事を参照してください。
 
@@ -116,3 +140,8 @@ Windows Virtual Desktop およびリモート デスクトップ サービスに
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="next-steps"></a>次のステップ
+
+今後の計画については、[Microsoft 365 Windows 仮想デスクトップ ロードマップ](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)に関するページを参照してください。
+

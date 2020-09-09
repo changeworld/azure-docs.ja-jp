@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837161"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783724"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -43,28 +43,7 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure 仮想マシン スケール セットと Azure Load Balancer
-
-仮想マシン スケール セットとロード バランサーを操作する場合は、次の項目を考慮する必要があります。
-
-* **複数の仮想マシン スケール セットで同じロード バランサーを使用することはできません**。
-* **ポート フォワーディングとインバウンド NAT 規則**:
-  * 各仮想マシン スケール セットにインバウンド NAT 規則が必要です。
-  * スケール セットが作成された後、ロード バランサーの正常性プローブに使用される負荷分散ルールのバックエンド ポートを変更することはできません。 ポートを変更するには、Azure 仮想マシン スケール セットを更新し、ポートを更新してから正常性プローブを再度構成することで、正常性プローブを削除できます。
-  * ロード バランサーのバックエンド プールで仮想マシン スケール セットを使用している場合は、既定のインバウンド NAT 規則が自動的に作成されます。
-* **インバウンド NAT プール**:
-  * インバウンド NAT プールはインバウンド NAT 規則のコレクションです。 1 つのインバウンド NAT プールで複数の仮想マシン スケール セットをサポートすることはできません。
-* **負荷分散規則**:
-  * ロード バランサーのバックエンド プールで仮想マシン スケール セットを使用している場合は、既定の負荷分散規則が自動的に作成されます。
-* **アウトバウンド規則**:
-  *  既に負荷分散規則によって参照されているバックエンド プールのアウトバウンド規則を作成するには、まずインバウンド負荷分散規則が作成されたポータルで **[暗黙的なアウトバウンド規則の作成]** を **[いいえ]** としてマークする必要があります。
-
-  :::image type="content" source="./media/vmsslb.png" alt-text="負荷分散規則の作成" border="true":::
-
-既存の Azure Load Balancer で仮想マシン スケール セットをデプロイするには、次の方法を使用できます。
-
-* [Azure portal を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](../load-balancer/configure-vm-scale-set-portal.md)。
-* [Azure PowerShell を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](../load-balancer/configure-vm-scale-set-powershell.md)。
-* [Azure CLI を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](../load-balancer/configure-vm-scale-set-cli.md)。
+自分のシナリオに基づき、お使いの Standard Load Balancer で Virtual Machine Scale Sets を構成する方法の詳細については、[Azure Load Balancer と Virtual Machine Scale Sets](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) に関するページを参照してください。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway を参照するスケール セットを作成する
 アプリケーション ゲートウェイを使うスケール セットを作成するには、次の ARM テンプレート構成のように、スケール セットの ipConfigurations セクションにおいてアプリケーション ゲートウェイのバックエンド アドレス プールを参照します。

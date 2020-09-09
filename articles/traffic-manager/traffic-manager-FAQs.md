@@ -3,20 +3,20 @@ title: Azure Traffic Manager - よくあるご質問
 description: この記事では、Traffic Manager に関してよく寄せられる質問に対する回答を示します。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: rohink
-ms.openlocfilehash: 2a3293cac15636ddf29df24cc1eff471aee25ec1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: duau
+ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926537"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400179"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 

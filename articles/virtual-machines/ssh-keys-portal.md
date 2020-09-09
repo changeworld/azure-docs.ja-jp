@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041750"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929442"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Azure portal で SSH キーを生成して格納する
 
@@ -28,7 +28,7 @@ Linux VM で SSH キーを作成し、使用することの詳細については
 
 1. [Azure portal](https://portal.azure.com) を開きます。
 
-1. ページ上部で、「*SSH*」と入力して検索します。 * *[Marketplace]* で、 **[SSH キー]** を選択します。
+1. ページ上部で、「*SSH*」と入力して検索します。 **[Marketplace]** で、 **[SSH キー]** を選択します。
 
 1. **[SSH キー]** ページで、 **[作成]** を選択します。
 
@@ -89,6 +89,20 @@ SSH 公開キーをアップロードして Azure に格納することもでき
 1. 検証が完了した後、 **[作成]** を選択します。 
 
 キーがアップロードされたら、VM を作成するときに、そのキーを使用することを選択できます。
+
+## <a name="list-keys"></a>キーのリスト
+
+ポータルで作成された SSH キーは、リソースとして保存されるので、リソース ビューをフィルター処理してそのすべての SSH キーを表示できます。
+
+1. ポータルで **[すべてのリソース]** を選択します。
+1. フィルターで **[タイプ]** を選択し、 **[すべて選択]** オプションを選択解除して一覧をクリアします。
+1. フィルターに「**SSH**」と入力し、 **[SSH キー]** を選択します。
+
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="すべての SSH キーを表示するように一覧をフィルター処理する方法を示したスクリーンショット。":::
+
+## <a name="get-the-public-key"></a>公開キーを取得する
+
+公開キーが必要な場合は、キーのポータル ページから簡単にコピーできます。 (最後のセクションのプロセスを使用して) キーを一覧表示し、一覧からキーを選択するだけです。 キーのページが開き、キーの横にある **[クリップボードにコピー]** アイコンをクリックしてコピーできます。
 
 ## <a name="next-steps"></a>次の手順
 

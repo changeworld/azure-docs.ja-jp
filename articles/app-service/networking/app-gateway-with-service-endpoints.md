@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080934"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958935"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>サービス エンドポイントと Application Gateway の統合
 App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、App Service (マルチテナント) を使用して構成し、ILB と外部 ASE に関する考慮事項について説明します。
@@ -84,6 +84,6 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 ## <a name="next-steps"></a>次のステップ
-App Service Environment の詳細については、[App Service Environment に関するドキュメント](https://docs.microsoft.com/azure/app-service/environment)を参照してください。
+App Service Environment の詳細については、[App Service Environment に関するドキュメント](/azure/app-service/environment)を参照してください。
 
 Web アプリをさらにセキュリティで保護するために、Application Gateway の Web アプリケーション ファイアウォールに関する情報は、[Azure Web アプリケーション ファイアウォールのドキュメント](../../web-application-firewall/ag/ag-overview.md)に記載されています。

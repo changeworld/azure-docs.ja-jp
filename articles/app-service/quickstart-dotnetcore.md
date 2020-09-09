@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212678"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961535"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -59,8 +59,8 @@ Web アプリを発行するには、まず、アプリの発行先となる新�
 
 App Service の設定の一環として、次のものを作成します。
 
-- サービスのすべての Azure リソースを格納する新しい[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/overview#terminology)。
-- アプリをホストする Web サーバー ファームの場所、サイズ、および機能を指定する新しい[ホスティング プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)。
+- サービスのすべての Azure リソースを格納する新しい[リソース グループ](../azure-resource-manager/management/overview.md#terminology)。
+- アプリをホストする Web サーバー ファームの場所、サイズ、および機能を指定する新しい[ホスティング プラン](./overview-hosting-plans.md)。
 
 App Service を作成して Web アプリを発行するには、次の手順に従います。
 
@@ -160,7 +160,7 @@ Web アプリの **[概要]** ページには、参照、停止、開始、再�
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-[App Service on Linux](overview.md#app-service-on-linux) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、App Service on Linux に [.NET Core](https://docs.microsoft.com/aspnet/core/) アプリを作成する方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用してアプリを作成し、Git を使用してアプリに .NET Core コードをデプロイします。
+[App Service on Linux](overview.md#app-service-on-linux) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、App Service on Linux に [.NET Core](/aspnet/core/) アプリを作成する方法を示します。 [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用してアプリを作成し、Git を使用してアプリに .NET Core コードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -322,4 +322,4 @@ git push azure master
 > [!div class="nextstepaction"]
 > [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)
 
-::: zone-end  
+::: zone-end

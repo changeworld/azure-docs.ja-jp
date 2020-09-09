@@ -8,22 +8,18 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513062"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145928"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>仮想ハブのルーティングを構成する方法
 
 仮想ハブには、サイト間 VPN ゲートウェイ、ExpressRoute ゲートウェイ、ポイント対サイト ゲートウェイ、Azure Firewall などの複数のゲートウェイを含めることができます。 仮想ハブのルーティング機能は、Border Gateway Protocol (BGP) を使用してゲートウェイ間のすべてのルーティング (トランジット ルーティングを含む) を管理するルーターによって提供されます。 また、このルーターは、仮想ハブに接続する仮想ネットワーク間の転送接続を提供し、最大 50 Gbps の合計スループットをサポートできます。 これらのルーティング機能は、Standard Virtual WAN のお客様に適用されます。
 
 詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
-
-> [!NOTE]
-> これらの機能の一部は、まだロールアウト中の可能性があります。これは、8 月 17 日までに完了する予定です。
->
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>ルート テーブルの作成
 

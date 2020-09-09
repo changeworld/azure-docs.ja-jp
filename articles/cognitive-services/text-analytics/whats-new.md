@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121852"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930912"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
@@ -27,14 +27,16 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 
 * v3 の `/keyphrases`、`/pii`、および `/languages` の各エンドポイントのモデル バージョン `2020-07-01` では、次のものが追加されています。
     * 固有表現認識を目的とした、追加の政府および国に固有の[エンティティ カテゴリ](named-entity-types.md?tabs=personal)。
+    * 感情分析 v3 でのノルウェー語およびトルコ語のサポート。
 * 公開されている[データ制限](concepts/data-limits.md)を超える v3 API 要求に対して、HTTP 400 エラーが返されるようになりました。 
+* オフセットを返すエンドポイントでは、オプションの `stringIndexType` パラメーターがサポートされるようになりました。このパラメーターは、サポートされている[文字列インデックス スキーム](concepts/text-offsets.md)と一致するように、返された `offset` と `length` の値を調整します。
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>Text Analytics for health コンテナーの 8 月の更新
 
 次の更新は、Text Analytics health コンテナーの 8 月のリリースのみに固有のものです。
 
 * Text Analytics for health の新しいモデルバージョン: `2020-07-24`
-* Text Analytics for health 要求を送信するための新しい URL: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* Text Analytics for health 要求を送信するための新しい URL:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (この新しいコンテナー イメージに含まれるデモ Web アプリを使用するには、ブラウザー キャッシュのクリアが必要になることに注意してください)
 
 JSON 応答の次のプロパティが変更されました。
 

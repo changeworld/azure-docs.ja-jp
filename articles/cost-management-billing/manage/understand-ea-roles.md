@@ -4,15 +4,16 @@ description: Azure の Enterprise 管理者ロールについて説明します�
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b712a212a12cadb10473b9e4751239a48bf5cdc7
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 787614afa1c71eee075a2e3efa81fa0cba17d1ba
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245980"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686464"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure エンタープライズ ロールの管理
 

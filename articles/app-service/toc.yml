@@ -79,9 +79,6 @@
       href: samples-powershell.md
     - name: Resource Manager テンプレート
       href: samples-resource-manager-templates.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
     - name: Terraform
       href: samples-terraform.md
 - name: 概念
@@ -92,9 +89,9 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -285,6 +282,9 @@
       href: /rest/api/appservice/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.web/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: App Service ブログ
@@ -310,7 +310,7 @@
     - name: クックブック
       items:
         - name: 参照アーキテクチャ
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: デプロイ スクリプト
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: トラブルシューティング

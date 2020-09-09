@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b594bcac8ef50a3f5fbe6a2424bf5dbfe9f180cd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019733"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278991"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -37,7 +37,7 @@ ms.locfileid: "87019733"
 
 **Q:シームレス SSO は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。**
 
-シームレス SSO は Azure Government クラウドで使用できます。 詳細については、「[Azure Government のハイブリッド ID に関する考慮事項](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)」を参照してください。
+シームレス SSO は Azure Government クラウドで使用できます。 詳細については、「[Azure Government のハイブリッド ID に関する考慮事項](./reference-connect-government-cloud.md)」を参照してください。
 
 **Q:どのアプリケーションがシームレス SSO の `domain_hint` または `login_hint` パラメーター機能を利用していますか。**
 
@@ -64,9 +64,9 @@ Azure AD にこれらのパラメーターを送信でき、その結果、シ�
 
 はい。 [こちら](how-to-connect-install-custom.md)で示されているように、Azure AD Connect で構成されている場合、シームレス SSO はユーザー名として `Alternate ID` をサポートしています。 すべての Office 365 アプリケーションで `Alternate ID` をサポートしているわけではありません。 サポートの説明については、それぞれのアプリケーションのドキュメントを参照してください。
 
-**Q:[Azure AD Join](../active-directory-azureadjoin-overview.md) とシームレス SSO のシングル サインオン エクスペリエンスの違いは何ですか。**
+**Q:[Azure AD Join](../devices/overview.md) とシームレス SSO のシングル サインオン エクスペリエンスの違いは何ですか。**
 
-[Azure AD Join](../active-directory-azureadjoin-overview.md) の場合、SSO は、デバイスが Azure AD に登録されているユーザーに提供されます。 そのデバイスは、必ずしもドメインに参加する必要があるとは限りません。 SSO は、Kerberos ではなく、"*プライマリ更新トークン*" (*PRT*) を使用して提供されます。 Windows 10 デバイスで、最適なユーザー エクスペリエンスが実現します。 SSO は、Microsoft Edge ブラウザーで自動的に実行されます。 ブラウザー拡張機能を使用することで Chrome でも動作します。
+[Azure AD Join](../devices/overview.md) の場合、SSO は、デバイスが Azure AD に登録されているユーザーに提供されます。 そのデバイスは、必ずしもドメインに参加する必要があるとは限りません。 SSO は、Kerberos ではなく、"*プライマリ更新トークン*" (*PRT*) を使用して提供されます。 Windows 10 デバイスで、最適なユーザー エクスペリエンスが実現します。 SSO は、Microsoft Edge ブラウザーで自動的に実行されます。 ブラウザー拡張機能を使用することで Chrome でも動作します。
 
 テナントでは、Azure AD Join とシームレス SSO の両方をご利用いただけます。 この 2 つは補完的な機能です。 両方の機能が有効な場合は、Azure AD Join がシームレス SSO に優先します。
 
@@ -85,7 +85,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
    **手順 1.シームレス SSO が有効になっている AD フォレストのリストの取得**
 
-   1. 最初に [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
+   1. 最初に [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
    2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
    3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
@@ -130,11 +130,13 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
    Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
 
-   1. 最初に [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
+   1. 最初に [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
    2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
    3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
    5. `Enable-AzureADSSO -Enable $false` を呼び出します。
+   
+   この時点では、シームレス SSO は無効ですが、シームレス SSO を有効に戻したい場合のために、ドメインでは構成されたままです。 ドメインに対するシームレス SSO の構成を完全に削除するには、上記の手順 5 を完了した後で、`Disable-AzureADSSOForest -DomainFqdn <fqdn>` のコマンドレットを呼び出します。
 
    >[!IMPORTANT]
    >PowerShell を使用してシームレス SSO を無効にしても、Azure AD Connect での状態は変更されません。 シームレス SSO は、 **[ユーザー サインインの変更]** ページに有効と表示されます。
@@ -143,7 +145,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
    Azure AD Connect を使用してシームレス SSO を無効にした場合は、以下のタスクの 1 から 4 を実行します。 PowerShell を使ってシームレス SSO を無効にした場合は、次のタスク 5 に進んでください。
 
-   1. 最初に [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
+   1. 最初に [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
    2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
    3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。

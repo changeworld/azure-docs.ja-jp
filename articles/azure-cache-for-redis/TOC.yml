@@ -94,9 +94,11 @@
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Azure CLI でデプロイして管理する
           href: cli-samples.md
-        - name: Azure Cache for Redis をプロビジョニングする
+        - name: Redis キャッシュを作成する - ARM テンプレート
+          displayName: Resource Manager
           href: cache-redis-cache-arm-provision.md
-        - name: Azure Cache for Redis で Web アプリをプロビジョニングする
+        - name: Redis キャッシュで Web アプリを作成する - ARM テンプレート
+          displayName: Resource Manager
           href: cache-web-app-arm-with-redis-cache-provision.md
     - name: 管理する
       items:
@@ -159,7 +161,8 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.cache/allversions
     - name: Azure Policy の組み込み
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Redis コマンド
       href: 'https://redis.io/commands#'
 - name: リソース

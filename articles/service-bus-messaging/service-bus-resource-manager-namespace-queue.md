@@ -8,12 +8,12 @@ ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 0b611babebd12c8c1c0a9ea5a357e8a7d6064fe3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 69cffb6000df9d8b058d92231c130ea8a601e6d2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064453"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660633"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-arm-template"></a>クイック スタート:Service Bus の名前空間とキューを ARM テンプレートで作成する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue)からのものです。
 
-:::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
+:::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json":::
 
 このテンプレートに定義されているリソースは次のとおりです。
 

@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 306afb2bfba7c222798bbfd1bef334387b6f9771
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c510d6f1cc2aa4a7e71f64e0c296e14a9896614e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080081"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717984"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service 向けの PHP アプリを構成する
 
@@ -276,8 +276,8 @@ App Service の既定の PHP イメージでは Apache が使用されていて�
 App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -408,15 +408,15 @@ echo "expose_php = Off" >> ini/setting.ini
 
 追加の拡張機能を有効にするには、次の手順に従います。
 
-アプリのルート ディレクトリに `bin` ディレクトリを追加して、その中に `.so` 拡張ファイル (たとえば、*mongodb.so*) を配置します。 拡張機能が Azure の PHP バージョンと互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
+アプリのルート ディレクトリに `bin` ディレクトリを追加して、その中に `.dll` 拡張ファイル (たとえば、*mongodb.dll*) を配置します。 拡張機能が Azure の PHP バージョンと互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
 
 変更をデプロイします。
 
 [PHP_INI_SYSTEM ディレクティブのカスタマイズ](#customize-php_ini_system-directives)の手順に従って、[extension](https://www.php.net/manual/ini.core.php#ini.extension) または [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) ディレクティブを使用したカスタム *.ini* ファイルに拡張機能を追加します。
 
 ```
-extension=d:\home\site\wwwroot\bin\mongodb.so
-zend_extension=d:\home\site\wwwroot\bin\xdebug.so
+extension=d:\home\site\wwwroot\bin\mongodb.dll
+zend_extension=d:\home\site\wwwroot\bin\xdebug.dll
 ```
 
 変更内容を有効にするには、アプリを再起動します。

@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて物理サ�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420789"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927376"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -40,6 +40,7 @@ Azure Migrate と連携するように Azure を設定します。
 **Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。 
 **リソースプロバイダーの登録 (評価のみ)** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Azure Migrate:Server Assessment によってマシンを検出し、評価します。<br/><br/> アプライアンスの登録中、リソースプロバイダーはアプライアンスで選択されたサブスクリプションに登録されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 **Azure AD アプリの作成 (評価のみ)** | アプライアンスを登録するとき、Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信に使用される Azure Active Directory (Azure AD) アプリが作成されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> Azure AD アプリを作成するためのアクセス許可が必要です (アプリケーション開発者ロールで利用可能)。
+**キー コンテナーの作成** | キー コンテナーはアプライアンスの登録の一部として作成され、その構成中にアプライアンスでダウンロードされた証明書の管理に使用されます。<br/><br/>Azure Migrate がキー コンテナーを作成できるようにするには、Azure アカウントにAzure Migrate プロジェクトが存在するリソース グループに対する共同作成者のアクセス許可が必要です。
 
 
 ### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる 

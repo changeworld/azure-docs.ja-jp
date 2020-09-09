@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2020
-ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/25/2020
+ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036591"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826822"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -72,3 +72,7 @@ HBase の場合、以下の JIRA が移植されます。
 
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
 このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)を参照してください。
+
+## <a name="known-issues"></a>既知の問題
+
+Azure portal で、SSH 認証の種類の公開キーを使用して Azure HDInsight クラスターを作成するときにエラーが発生する問題が修正されました。 ユーザーが **[確認と作成]** をクリックすると、"SSH ユーザー名に含まれる 3 文字以上連続する文字列を使用することはできません" というエラーを受け取ります。 この問題は修正されましたが、CTRL + F5 キーを押してブラウザーのキャッシュを更新し、修正されたビューを読み込む必要がある場合があります。 この問題の回避策は、ARM テンプレートを使用してクラスターを作成することでした。 

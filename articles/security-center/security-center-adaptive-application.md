@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037017"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691481"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -83,7 +83,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
     - **推奨なし** - アプリケーションの許可リストが定義されておらず、機能がサポートされていないマシン。 マシンは次の理由により、このタブに表示される場合があります。
       - Log Analytics エージェントが欠落している
       - Log Analytics エージェントによってイベントが送信されていない
-      - GPO またはローカル セキュリティ ポリシーによって既存の [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker) ポリシーが有効になっている Windows マシンである
+      - GPO またはローカル セキュリティ ポリシーによって既存の [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ポリシーが有効になっている Windows マシンである
 
       > [!TIP]
       > マシンのグループごとに固有の推奨事項を定義するには、Security Center では少なくとも 2 週間分のデータが必要です。 最近作成されたか、あるいは Standard レベルでのみ最近有効にされたサブスクリプションに属しているマシンは、 **[推奨なし]** タブの下に表示されます。

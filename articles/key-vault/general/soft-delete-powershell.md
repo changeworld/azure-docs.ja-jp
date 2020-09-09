@@ -1,20 +1,21 @@
 ---
 title: Azure Key Vault - PowerShell で論理的な削除を使用する方法
-description: PowerShell コード スニペットを使用した論理的な削除のユース ケースの例
+description: Azure PowerShell を使用して、キー コンテナーとキー コンテナー オブジェクトの回復を可能にする Azure Key Vault の論理的な削除機能を使用する方法について説明します。
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 251159c4fcf27ceb4d8b0dddeecbe501c7346e9e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136475"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073235"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 

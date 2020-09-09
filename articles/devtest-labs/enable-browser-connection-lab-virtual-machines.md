@@ -3,12 +3,12 @@ title: Azure DevTest Labs 仮想マシンでブラウザー接続を有効にす
 description: DevTest Labs が Azure Bastion と統合されました。これにより、ラボの所有者は、すべてのラボ仮想マシンへのブラウザーを使用したアクセスを有効にできます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8c78b872855b3fe21f2cb41d394c599aeca7a790
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272353"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870495"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs 仮想マシンでブラウザー接続を有効にする 
 DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 最初に、ラボ仮想マシンでブラウザー接続を有効にする必要があります。
@@ -19,14 +19,12 @@ DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたこと�
 この記事では、ラボ仮想マシンでブラウザー接続を有効にする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件 
-既存のラボの仮想ネットワークに Bastion ホストをデプロイするか、 **(または)** Bastion が構成されている仮想ネットワークにラボを接続します。 
-
+- 既存のラボの仮想ネットワークに Bastion ホストをデプロイするか、 **(または)** Bastion が構成されている仮想ネットワークにラボを接続します。
 仮想ネットワークで Bastion ホストをデプロイする方法については、「[Azure Bastion ホストを作成する](../bastion/bastion-create-host-portal.md)」を参照してください。 Bastion ホストを作成するときに、ラボの仮想ネットワークを選択します。 
-
-最初に、Bastion 仮想ネットワークに 2 番目のサブネットを作成する必要があります。これは、AzureBastionSubnet の中に Bastion 以外のリソースを作成することが許可されていないためです。 
+- ラボ ユーザーは、Bastion ホスト、および Bastion が構成されている仮想ネットワークで**閲覧者**ロールを持っている必要があります。 
 
 ## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Bastion 仮想ネットワークに 2 番目のサブネットを作成する
-Azure Bastion サブネットにラボ VM を作成することはできません。 次の図に示すように、Bastion 仮想ネットワーク内に別のサブネットを作成します。
+最初に、Bastion 仮想ネットワークに 2 番目のサブネットを作成する必要があります。これは、AzureBastionSubnet の中に Bastion 以外のリソースを作成することが許可されていないためです。 次の図に示すように、Bastion 仮想ネットワーク内に別のサブネットを作成します。
 
 ![Azure Bastion 仮想ネットワーク内の 2 番目のサブネット](./media/connect-virtual-machine-through-browser/second-subnet.png)
 

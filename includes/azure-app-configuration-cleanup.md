@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116990"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88638969"
 ---
 この記事で作成したリソースを引き続き試用しない場合は、ここで作成したリソース グループを削除して課金されないようにしてください。
 
@@ -22,7 +22,7 @@ ms.locfileid: "88116990"
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 1. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 
-1. 結果一覧からリソース グループを選択し、行を右クリックするか**省略記号** (**...**) ボタンを使用してコンテキスト メニューを開きます。
+1. 結果一覧でリソース グループ名を選択し、概要を表示します。
 1. **[リソース グループの削除]** を選択します。
 1. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
 

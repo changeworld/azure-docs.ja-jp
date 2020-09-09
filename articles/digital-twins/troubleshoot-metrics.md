@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905205"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003883"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -24,7 +24,7 @@ ms.locfileid: "87905205"
 
 1. Azure Digital Twins インスタンスを作成します。 Azure Digital Twins インスタンスを設定する方法については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-scripted.md)に関するページを参照してください。
 
-2. [Azure portal](https:/portal.azure.com) で Azure Digital Twins インスタンスを見つけます (ポータルの検索バーに名前を入力して、そのページを開くことができます)。 
+2. [Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスを見つけます (ポータルの検索バーに名前を入力して、そのページを開くことができます)。 
 
     インスタンスのメニューから、 **[メトリック]** を選択します。
    
@@ -88,9 +88,9 @@ API 要求に関連するメトリック:
 
 | メトリック | メトリックの表示名 | ユニット | 集計の種類| 説明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted | Messages Routed (ルーティングされたメッセージ) (プレビュー) | Count | 合計 | Event Hub、Service Bus、Event Grid など、エンドポイントの Azure サービスにルーティングされたメッセージの数。 | 操作、 <br>結果 |
-| RoutingFailureRate | Routing Failure Rate (ルーティングの失敗率) (プレビュー) | Percent | Average | イベントが Azure Digital Twins からエンドポイントの Azure サービス (Event Hub、Service Bus、Event Grid など) にルーティングされるときにエラーが発生するイベントの割合。 | 操作、 <br>結果 |
-| RoutingLatency | Routing Latency (ルーティングの待機時間) (プレビュー) | ミリ秒 | Average | イベントが Azure Digital Twins からルーティングされてから、Event Hub、Service Bus、Event Grid などのエンドポイントの Azure サービスにポストされるまでの経過時間。 | 操作、 <br>結果 |
+| MessagesRouted | Messages Routed (ルーティングされたメッセージ) (プレビュー) | Count | 合計 | Event Hub、Service Bus、Event Grid など、エンドポイントの Azure サービスにルーティングされたメッセージの数。 | エンドポイントの種類、 <br>結果 |
+| RoutingFailureRate | Routing Failure Rate (ルーティングの失敗率) (プレビュー) | Percent | Average | イベントが Azure Digital Twins からエンドポイントの Azure サービス (Event Hub、Service Bus、Event Grid など) にルーティングされるときにエラーが発生するイベントの割合。 | エンドポイントの種類、 <br>結果 |
+| RoutingLatency | Routing Latency (ルーティングの待機時間) (プレビュー) | ミリ秒 | Average | イベントが Azure Digital Twins からルーティングされてから、Event Hub、Service Bus、Event Grid などのエンドポイントの Azure サービスにポストされるまでの経過時間。 | エンドポイントの種類、 <br>結果 |
 
 ## <a name="dimensions"></a>Dimensions
 
@@ -100,7 +100,7 @@ API 要求に関連するメトリック:
 | --- | --- |
 | 認証 | OAuth |
 | 操作 (API 要求用) | Microsoft.DigitalTwins/digitaltwins/delete、 <br>Microsoft.DigitalTwins/digitaltwins/write、 <br>Microsoft.DigitalTwins/digitaltwins/read、 <br>Microsoft.DigitalTwins/eventroutes/read、 <br>Microsoft.DigitalTwins/eventroutes/write、 <br>Microsoft.DigitalTwins/eventroutes/delete、 <br>Microsoft.DigitalTwins/models/read、 <br>Microsoft.DigitalTwins/models/write、 <br>Microsoft.DigitalTwins/models/delete、 <br>Microsoft.DigitalTwins/query/action |
-| 操作 (ルーティング用) | Event Grid、 <br>Event Hub、 <br>Service Bus |
+| エンドポイントの種類 | Event Grid、 <br>Event Hub、 <br>Service Bus |
 | Protocol | HTTPS |
 | 結果 | 成功、 <br>障害 |
 | 状態コード | 200、404、500 など。 |

@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065439"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962232"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>プライベート エンドポイントおよび VNet 統合と安全に接続された 2 つの Web アプリを作成する
 
-この記事では、以下の手順に従い、[プライベート エンドポイント](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)とリージョン [VNet 統合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)を使用して、2 つの Web アプリ (フロントエンドとバックエンド) を安全に接続する例について説明します。
+この記事では、以下の手順に従い、[プライベート エンドポイント](../networking/private-endpoint.md)とリージョン [VNet 統合](../web-sites-integrate-with-vnet.md)を使用して、2 つの Web アプリ (フロントエンドとバックエンド) を安全に接続する例について説明します。
 - VNet をデプロイします
 - 統合用の最初のサブネットを作成します
 - プライベート エンドポイント用の 2 番目のサブネットを作成します。特定のパラメーターを設定して、ネットワーク ポリシーを無効にする必要があります
 - PremiumV2 タイプ (プライベート エンドポイント機能に必要な最小 SKU) の App Service プランを 1 つデプロイします
-- プライベート DNS ゾーンを使用する特定のアプリ設定を使用して、フロントエンド Web アプリを作成します。詳細は[こちら](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones)を参照してください
+- プライベート DNS ゾーンを使用する特定のアプリ設定を使用して、フロントエンド Web アプリを作成します。詳細は[こちら](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)を参照してください
 - フロントエンド Web アプリを統合サブネットに接続します
 - バックエンド Web アプリを作成します
 - Web アプリのプライベート リンク ゾーンの名前 (privatelink.azurewebsites.net) を使用して、DNS プライベート ゾーンを作成します
@@ -31,7 +31,7 @@ ms.locfileid: "88065439"
 
 ## <a name="how-to-use-terraform-in-azure"></a>Azure で Terraform を使用する方法
 
-Azure で Terraform を使用する方法については、[Azure のドキュメント](https://docs.microsoft.com/azure/developer/terraform/)を参照してください。
+Azure で Terraform を使用する方法については、[Azure のドキュメント](/azure/developer/terraform/)を参照してください。
 
 ## <a name="the-complete-terraform-file"></a>完全な Terraform ファイル
 
@@ -149,4 +149,4 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## <a name="next-steps"></a>次のステップ
 
 
-> [Azure での Terraform の使用について詳細を参照](https://docs.microsoft.com/azure/developer/terraform/)
+> [Azure での Terraform の使用について詳細を参照](/azure/developer/terraform/)

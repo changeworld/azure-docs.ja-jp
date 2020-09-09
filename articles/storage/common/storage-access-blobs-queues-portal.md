@@ -1,23 +1,24 @@
 ---
-title: Azure portal を使用した BLOB またはキュー データへのアクセス
+title: Azure portal で BLOB またはキュー データへのアクセスの承認方法を選択する
 titleSuffix: Azure Storage
 description: Azure portal を使用して BLOB またはキュー データにアクセスするときに、ポータルは Azure Storage に要求を公開せずに行います。 Azure Storage へのこれらの要求は、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して認証および許可できます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/14/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: contperfq1
+ms.openlocfilehash: 7ab0899f49fc28d787e6b53945558709353c4512
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534177"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691447"
 ---
-# <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure portal を使用した BLOB またはキュー データへのアクセス
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>Azure portal で BLOB またはキュー データへのアクセスの承認方法を選択する
 
 [Azure portal](https://portal.azure.com) を使用して BLOB またはキュー データにアクセスするときに、ポータルは Azure Storage に要求を公開せずに行います。 Azure Storage への要求は、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して承認できます。 ポータルでは、どの方法を使用しているかを示し、適切なアクセス許可がある場合は、それら 2 つを切り替えることができます。  
 

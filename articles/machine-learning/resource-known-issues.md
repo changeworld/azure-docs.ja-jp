@@ -3,20 +3,20 @@ title: 既知の問題とトラブルシューティング
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のエラーを見つけて修正するための支援を得ます。 既知の問題、トラブルシューティング、および対処方法について説明します。
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/06/2020
-ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/13/2020
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120764"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757287"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -121,6 +121,18 @@ ms.locfileid: "88120764"
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure Machine Learning SDK のインストールが次の例外で失敗する:ModuleNotFoundError:'ruamel' という名前のモジュールはありません、または 'ImportError:ruamel.yaml という名前のモジュールはありません'**
+   
+   この問題は、Python 用 Azure Machine Learning SDK のすべてのリリース バージョンの conda ベース環境で、最新の pip (>20.1.1) に Python 用 Azure Machine Learning SDK をインストールしたときに発生します。 次の回避策を参照してください。
+
+    * conda ベース環境に Python SDK をインストールしないでください。代わりに conda 環境を作成し、新しく作成されたユーザー環境に SDK をインストールします。 最新の pip は、その新しい conda 環境で動作します。
+
+    * Docker でイメージを作成するときに、conda ベース環境から切り替えることができない場合は、pip<=20.1.1 を Docker ファイルにピン留めしてください。
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * **パッケージをインストールする際の Databricks のエラー**
 
     追加のパッケージがインストールされていると、Azure Databricks で Azure Machine Learning SDK のインストールが失敗します。 `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、ライブラリ バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連したもので、Azure Machine Learning SDK には関連はありません。 他のライブラリでもこの問題が発生する場合があります。 例:
@@ -250,6 +262,27 @@ import time
 time.sleep(600)
 ```
 
+* **リアルタイム エンドポイントのためのログ記録:**
+
+リアルタイム エンドポイントのログは、お客様のデータです。 リアルタイム エンドポイントのトラブルシューティングでは、次のコードを使用してログを有効にできます。 
+
+Web サービス エンドポイントの監視の詳細については、[この記事](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models)を参照してください。
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+複数のテナントがある場合は、`ws = Workspace.from_config()` の前に次の認証コードを追加する必要が生じることがあります
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
+```
+
 ## <a name="train-models"></a>モデルをトレーニングする
 
 * **ModuleErrors (モジュール名が指定されていない)** :Azure ML で実験を送信する際に ModuleErrors が発生した場合、トレーニング スクリプトではパッケージがインストールされていることを期待しているのに、それが追加されていないことを意味します。 パッケージ名を指定すると、Azure ML により、トレーニングの実行に使用される環境にパッケージがインストールされます。 
@@ -348,7 +381,7 @@ time.sleep(600)
 
 次のエラーに対して、これらのアクションを実行します。
 
-|エラー  | 解像度  |
+|エラー  | 解決方法  |
 |---------|---------|
 |Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |

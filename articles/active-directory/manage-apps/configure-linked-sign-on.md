@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 2269a8f7f58d35fee5e2ca30a77af5e8cba83678
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459336"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641978"
 ---
 # <a name="configure-linked-sign-on"></a>リンクされたサインオンの構成
 
 アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 このクイックスタート ガイドでは、SAML ベースの SSO を設定します。 他に、**リンク**というオプションがあります。 この記事では、リンクのオプションについて詳しく説明します。
 
-**[リンク]** オプションを使用すると、ユーザーが組織の[マイ アプリ](https://myapplications.microsoft.com/)、または Office 365 ポータルでアプリを選択するときにターゲットとなる場所を構成できます。
+**[リンク]** オプションを使用すると、ユーザーが組織の[マイ アプリ](https://myapps.microsoft.com/)、または Office 365 ポータルでアプリを選択するときにターゲットとなる場所を構成できます。
 
 リンク オプションが役立つ一般的なシナリオには、次のようなものがあります。
 - Active Directory フェデレーション サービス (AD FS) など、現在フェデレーションを使用しているカスタム Web アプリケーションにリンクを追加する。
@@ -35,7 +35,7 @@ ms.locfileid: "87459336"
 
 短時間で利用できるようにするには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 シングル サインオンを構成するクイックスタートでは、 **[リンク]** オプションも表示されます。 
 
-**[リンク]** オプションは Azure AD を使用したサインオン機能を提供しません。 このオプションは、[マイ アプリ](https://myapplications.microsoft.com/)、または Microsoft 365 アプリ ランチャーでアプリを選択したときにユーザーが送信される場所が設定されるだけです。
+**[リンク]** オプションは Azure AD を使用したサインオン機能を提供しません。 このオプションは、[マイ アプリ](https://myapps.microsoft.com/)、または Microsoft 365 アプリ ランチャーでアプリを選択したときにユーザーが送信される場所が設定されるだけです。
 
 > [!IMPORTANT] 
 > 一部のシナリオでは、**エンタープライズ アプリケーション**内のアプリケーションのナビゲーションに **[シングル サインオン]** オプションが表示されません。 
@@ -48,7 +48,7 @@ ms.locfileid: "87459336"
 
 アプリのリンクを設定するには、 **[シングル サインオン]** ページで **[リンク]** を選択します。 リンクを入力し、 **[保存]** を選択します。 これらのオプションをどこで検索すればいいかの情報が必要ですか。 [一連のクイックスタート](view-applications-portal.md)をご覧ください。
  
-アプリを構成したら、これにユーザーとグループを割り当てます。 ユーザーを割り当てるときに、アプリケーションが[マイ アプリ](https://myapplications.microsoft.com/)、または Microsoft 365 アプリ ランチャーに表示されるタイミングを制御できます。
+アプリを構成したら、これにユーザーとグループを割り当てます。 ユーザーを割り当てるときに、アプリケーションが[マイ アプリ](https://myapps.microsoft.com/)、または Microsoft 365 アプリ ランチャーに表示されるタイミングを制御できます。
 
 ## <a name="next-steps"></a>次のステップ
 

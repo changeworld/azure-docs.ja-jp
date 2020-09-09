@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 4566d32682c8d0345c66d99ba5e4fd58695a325d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424741"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798093"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>マイ アカウント ポータルで設定を表示または変更する
 
@@ -47,7 +47,7 @@ ms.locfileid: "87424741"
 
 マイ アカウント ポータルの設定を変更した後、次のことができます。
 
-- [セキュリティ情報](user-help-security-info-overview.md)を表示または管理する。
+- [セキュリティ情報](./security-info-setup-signin.md)を表示または管理する。
 
 - 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する。
 

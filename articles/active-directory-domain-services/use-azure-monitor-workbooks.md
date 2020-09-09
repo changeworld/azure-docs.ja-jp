@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419599"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722740"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
@@ -123,4 +123,4 @@ Azure Monitor ブック内のすべてのグラフとテーブルは、Kusto ク
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
 [azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
-[kusto-queries]: https://docs.microsoft.com/azure/kusto/query/tutorial?pivots=azuredataexplorer
+[kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

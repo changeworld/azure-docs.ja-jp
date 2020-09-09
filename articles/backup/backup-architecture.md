@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835733"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824034"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -193,9 +193,8 @@ Azure VM ではディスクを使用して、そのオペレーティング シ�
 
 VM 用のディスク ストレージと使用可能なディスクの種類について詳しくは、以下の記事をご覧ください。
 
-- [Windows VM 用の Azure マネージド ディスク](../virtual-machines/windows/managed-disks-overview.md)
-- [Linux VM 用の Azure マネージド ディスク](../virtual-machines/linux/managed-disks-overview.md)
-- [VM で利用できるディスクの種類](../virtual-machines/windows/disks-types.md)
+- [Linux VM 用の Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)
+- [VM で利用できるディスクの種類](../virtual-machines/disks-types.md)
 
 ### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Premium Storage を使用する Azure VM のバックアップと復元
 
@@ -204,7 +203,7 @@ Azure Backup で Premium Storage を使用して、Azure VM をバックアッ�
 - Premium Storage での VM のバックアップの処理中、Backup サービスによって、ストレージ アカウントに *AzureBackup-* という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。
 - Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 詳細については、「[Premium ページ BLOB ストレージ アカウントのスケーラビリティ ターゲット](../storage/blobs/scalability-targets-premium-page-blobs.md)」を参照してください。 ステージングの場所は変更しないでください。
 - バックアップ ジョブが完了した後、ステージングの場所は削除されます。
-- ステージングの場所に使用されるストレージの価格は、[Premium Storage の価格](../virtual-machines/windows/disks-types.md#billing)に準じます。
+- ステージングの場所に使用されるストレージの価格は、[Premium Storage の価格](../virtual-machines/disks-types.md#billing)に準じます。
 
 Premium Storage を使用して Azure VM を復元する場合、Premium または Standard Storage に復元できます。 通常は、Premium Storage に復元します。 ただし、VM のファイルのサブセットのみ必要な場合は、Standard Storage に復元する方がコス効果が高くなる可能性があります。
 

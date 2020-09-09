@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835988"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258542"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 
@@ -212,6 +212,9 @@ Lower_case_table_name は既定で 1 に設定されます。MySQL 5.6 および
 "Row size too large (> 8126) (行のサイズが大きすぎます (> 8126))" などのエラーが表示された場合は、**innodb_strict_mode** パラメーターをオフにすることができます。 サーバー パラメーター **innodb_strict_mode** をサーバー レベルでグローバルに変更することはできません。行データのサイズが 8 kb を超える場合、エラーが表示されずにデータが切り捨てられ、データが失われる可能性があるためです。 ページ サイズの制限に合うようにスキーマを変更することをお勧めします。 
 
 このパラメーターは、`init_connect` を使用してセッション レベルで設定できます。 セッション レベルで **innodb_strict_mode** を設定するには、「[設定パラメーターが一覧に含まれていない](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)」を参照してください。
+
+> [!NOTE]
+> 読み取りレプリカ サーバーがある場合は、マスター サーバーのセッション レベルで **innodb_strict_mode** をオフに設定すると、レプリケーションが中断されます。 読み取りレプリカがある場合は、このパラメーターをオフに設定されたままにすることをお勧めします。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

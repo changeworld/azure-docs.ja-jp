@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828661"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795594"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory でのカスタム管理者ロール (プレビュー)
 
@@ -46,7 +46,7 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 
 1. 状況に応じて、Azure AD は次のいずれかのアクションを実行します。
 
-    - ユーザーのアクセス トークン内の [wids 要求](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)に基づいて、ユーザーのロール メンバーシップを評価します。
+    - ユーザーのアクセス トークン内の [wids 要求](../develop/access-tokens.md)に基づいて、ユーザーのロール メンバーシップを評価します。
     - アクションが実行されるリソースに対して直接またはグループ メンバーシップを介してユーザーに適用されるすべてのロールの割り当てを取得します。
 
 1. Azure AD は、API 呼び出しでのアクションが、このリソースに対してユーザーが持っているロールに含まれるかどうかを判別します。

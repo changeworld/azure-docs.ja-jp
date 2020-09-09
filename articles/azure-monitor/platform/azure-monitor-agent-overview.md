@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: e38d59ff1eb31dd5fc3ecf6b7df6b12504141d5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082850"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705777"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -107,7 +107,7 @@ Azure Monitor エージェントは、次の表に示す詳細で [Azure VM 拡�
 |:---|:---|:---|
 | Publisher | Microsoft.Azure.Monitor  | Microsoft.Azure.Monitor |
 | 型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 0.9 |
+| TypeHandlerVersion  | 1.0 | 1.5 |
 
 PowerShell または CLI を使用して、次のような仮想マシン エージェントをインストールするには、いずれかの方法を使用して Azure Monitor エージェントをインストールします。 または、ポータルを使用して、Azure サブスクリプションの仮想マシンでエージェントをインストールし、データ収集を構成できます。この手順については、「[Azure Monitor エージェント用のデータ収集の構成 (プレビュー)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)」を参照してください。
 
@@ -116,14 +116,14 @@ PowerShell または CLI を使用して、次のような仮想マシン エー
 # <a name="cli"></a>[CLI](#tab/CLI1)
 
 ```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --version 1.0 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
 
 ```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -Version 1.0 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 
@@ -133,14 +133,14 @@ Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publ
 # <a name="cli"></a>[CLI](#tab/CLI2)
 
 ```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --version 0.9 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -Version 0.9 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 

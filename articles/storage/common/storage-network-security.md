@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 9c95501c4e17e0afaa082c3e02c29934435c1a19
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3ec4e6ee49052657210fffa8976b661c1a9e5948
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032505"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827462"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -396,7 +396,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure IoT Hub                  | Microsoft.Devices/IotHubs              | IoT ハブからのデータを BLOB ストレージに書き込むことができます。 [詳細情報](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースでは、BLOB ストレージに実験の出力、モデル、およびログを書き込み、データを読み取ります。 [詳細については、こちらを参照してください](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
-| Azure SQL Data Warehouse       | Microsoft.Sql                          | PolyBase を使用した特定の SQL データベース インスタンスからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure Synapse Analytics (旧称 SQL Data Warehouse)       | Microsoft.Sql                          | COPY ステートメントまたは PolyBase を使用して、特定の SQL データベースからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure SQL データベース       | Microsoft.Sql                          | ストレージ アカウントからデータの[インポート](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)したり、ファイアウォールの背後にあるストレージ アカウントに監査データを[書き込んだり](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall)することができます。 |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細については、こちらを参照してください](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse ワークスペース          | Synapse Analytics から Azure Storage のデータにアクセスできるようにします。 |

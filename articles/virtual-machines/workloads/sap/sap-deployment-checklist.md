@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511144"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651728"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -110,9 +110,9 @@ ms.locfileid: "88511144"
            -  [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 サイズ設定では*キャッシュされていないディスクの最大スループット*を検討することが重要です。
    2. ストレージ。
         - ドキュメント「[SAP ワークロードの Azure Storage の種類](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)」を確認してください。
-        - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../windows/disks-types.md#standard-ssd)を使用します。
-        - 一般に、[Azure Standard HDD ディスク](../../windows/disks-types.md#standard-hdd)を使用することはお勧めしません。
-        - リモートでのパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](../../windows/disks-types.md#premium-ssd) を使用します。
+        - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../disks-types.md#standard-ssd)を使用します。
+        - 一般に、[Azure Standard HDD ディスク](../../disks-types.md#standard-hdd)を使用することはお勧めしません。
+        - リモートでのパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](../../disks-types.md#premium-ssd) を使用します。
         - [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用します。
         - M シリーズの DBMS ログ ドライブには、Azure 書き込みアクセラレータを使用します。 [書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)に関する記事に記載されている書き込みアクセラレータの制限と使用方法に注意してください。
         - DBMS のさまざまな種類については、[一般的な SAP 関連の DBMS ドキュメント](./dbms_guide_general.md)と、一般ドキュメントで参照されている DBMS ごとの個別ドキュメントを確認してください。

@@ -4,18 +4,18 @@ description: Azure App Service が OS とランタイムを更新する方法、
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961518"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
 この記事では、[App Service](overview.md) で OS またはソフトウェアに関する特定のバージョン情報を取得する方法について説明します。 
 
-App Service はサービスとしてのプラットフォームです。これは、OS およびアプリケーション スタックが Azure によって自動的に管理されることを意味します。ユーザーが管理するのはアプリケーションとそのデータのみです。 [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/) では、OS およびアプリケーション スタックをより詳細に制御できます。 このことを念頭に置いても、App Service ユーザーが次のような情報を把握することは役に立ちます。
+App Service はサービスとしてのプラットフォームです。これは、OS およびアプリケーション スタックが Azure によって自動的に管理されることを意味します。ユーザーが管理するのはアプリケーションとそのデータのみです。 [Azure Virtual Machines](../virtual-machines/index.yml) では、OS およびアプリケーション スタックをより詳細に制御できます。 このことを念頭に置いても、App Service ユーザーが次のような情報を把握することは役に立ちます。
 
 -   OS の更新プログラムが適用される方法と時期
 -   App Service で重大な脆弱性 (ゼロデイなど) に対してパッチが適用される方法
@@ -25,7 +25,7 @@ App Service はサービスとしてのプラットフォームです。これ�
 
 ## <a name="how-and-when-are-os-updates-applied"></a>OS の更新プログラムが適用される方法と時期
 
-Azure では、2 つのレベルで OS のパッチ適用が管理されます。1 つが物理サーバーで、もう 1 つが App Service リソースを実行するゲスト仮想マシン (VM) です。 どちらも、月例[パッチ火曜日](https://technet.microsoft.com/security/bulletins.aspx)スケジュールに従って毎月更新されます。 これらの更新プログラムは、Azure サービスの高可用性 SLA を保証する方法で、自動的に適用されます。 
+Azure では、2 つのレベルで OS のパッチ適用が管理されます。1 つが物理サーバーで、もう 1 つが App Service リソースを実行するゲスト仮想マシン (VM) です。 どちらも、月例[パッチ火曜日](/security-updates/)スケジュールに従って毎月更新されます。 これらの更新プログラムは、Azure サービスの高可用性 SLA を保証する方法で、自動的に適用されます。 
 
 更新プログラムが適用される方法の詳細については、「[Demystifying the magic behind App Service OS updates (App Service OS 更新プログラムの背後にあるマジックをわかりやすく説明する)](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)」を参照してください。
 
@@ -55,7 +55,7 @@ Azure では、2 つのレベルで OS のパッチ適用が管理されます�
 
 ### <a name="new-major-and-minor-versions"></a>新しいメジャー バージョンとマイナー バージョン
 
-新しいメジャー バージョンまたはマイナー バージョンが追加された場合、それは既存のバージョンとサイド バイ サイドでインストールされます。 アプリを新しいバージョンに手動でアップグレードできます。 構成ファイル (`web.config` や `package.json` など) でランタイム バージョンを構成した場合、同じ方法でアップグレードする必要があります。 App Service 設定を使用してランタイム バージョンを構成した場合、[Azure Portal](https://portal.azure.com) でそれを変更できます。または、次の例に示すように、[Cloud Shell](../cloud-shell/overview.md) で [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) コマンドを実行して変更することができます。
+新しいメジャー バージョンまたはマイナー バージョンが追加された場合、それは既存のバージョンとサイド バイ サイドでインストールされます。 アプリを新しいバージョンに手動でアップグレードできます。 構成ファイル (`web.config` や `package.json` など) でランタイム バージョンを構成した場合、同じ方法でアップグレードする必要があります。 App Service 設定を使用してランタイム バージョンを構成した場合、[Azure Portal](https://portal.azure.com) でそれを変更できます。または、次の例に示すように、[Cloud Shell](../cloud-shell/overview.md) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを実行して変更することができます。
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -86,7 +86,7 @@ OS の重要な情報へのアクセスはロックダウンされています�
 | Java バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `java -version` |  
 
 > [!NOTE]  
-> レジストリの場所 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` にアクセスします。ここには ["KB" パッチ](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)に関する情報が格納され、ロックダウンされています。
+> レジストリの場所 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` にアクセスします。ここには ["KB" パッチ](/security-updates/SecurityBulletins/securitybulletins)に関する情報が格納され、ロックダウンされています。
 >
 >
 

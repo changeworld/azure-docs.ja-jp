@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506398"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650470"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
 Azure は、SAP HANA を実行する Azure VM に適した、異なる種類のストレージを提供します。 SAP HANA のデプロイのために検討できる **SAP HANA 認定の Azure ストレージの種類**は次のとおりです。 
 
 - Azure Premium SSD または Premium Storage 
-- [Ultra Disk](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra Disk](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-これらのディスクの種類の詳細については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」と[ディスクの種類の選択](../../linux/disks-types.md)に関する記事をご覧ください。
+これらのディスクの種類の詳細については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」と[ディスクの種類の選択](../../disks-types.md)に関する記事をご覧ください。
 
 Azure では、Azure Standard および Premium Storage の 2 つの VHD デプロイ方法を提供しています。 Azure ブロック ストレージのデプロイには、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)のご利用をお勧めします。 
 
@@ -59,7 +59,7 @@ DBMS システムではストレージの待ち時間が短いことが重要で
 
 HANA のストレージ構成を選択する際の基本原則は次のとおりです。
 
-- 「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」および[ディスクの種類の選択](../../linux/disks-types.md)に関する記事に基づいて、ストレージの種類を決定します。
+- 「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」および[ディスクの種類の選択](../../disks-types.md)に関する記事に基づいて、ストレージの種類を決定します。
 - VM のサイズ設定や決定を行うときは、VM の全体的な I/O スループットと IOPS の上限を考慮します。 VM の全体的なストレージ スループットについては、「[メモリ最適化済み仮想マシンのサイズ](../../sizes-memory.md)」をご覧ください。
 - ストレージ構成を決定するときは、 **/hana/data** ボリューム構成で VM の全体的なスループットの上限を超えないようにします。 セーブポイントの書き込みにより、SAP HANA は I/O を積極的に発行できます。 セーブポイントを書き込むと、 **/hana/data** ボリュームのスループットの上限にすぐに達する可能性があります。 **/hana/data** ボリュームが構築されているディスクのスループットが、VM で許可されるスループットよりも高い場合、セーブポイントの書き込みで使用されるスループットが、再実行ログ書き込みのスループット要求の妨げとなる状況に陥る可能性があります。 アプリケーションのスループットに影響を与える可能性のある状況
 - Azure Premium Storage を使用している場合、最も安価な構成は、論理ボリューム マネージャーを使用して、 **/hana/data** および **/hana/log** ボリュームを構築するためのストライプ セットを構築することです。
@@ -218,7 +218,7 @@ Ultra Disk 上の **/hana/log** など、その他のボリュームの場合、
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>SAP HANA 用の Azure Ultra Disk ストレージ構成
-もう 1 つの Azure Storage の種類は、[Azure Ultra Disk](../../windows/disks-types.md#ultra-disk) と呼ばれます。 これまでに提供されていた Azure Storage と Ultra Disk との大きな違いは、ディスク機能がディスク サイズにバインドされなくなることです。 顧客として、Ultra Disk に次の機能を定義できます。
+もう 1 つの Azure Storage の種類は、[Azure Ultra Disk](../../disks-types.md#ultra-disk) と呼ばれます。 これまでに提供されていた Azure Storage と Ultra Disk との大きな違いは、ディスク機能がディスク サイズにバインドされなくなることです。 顧客として、Ultra Disk に次の機能を定義できます。
 
 - 4 GiB から 65,536 GiB のディスク範囲のサイズ
 - 100 IOPS から 160K IOPS の IOPS の範囲 (最大値は VM の種類によっても異なる)

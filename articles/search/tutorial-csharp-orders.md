@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9819615039a6dd6aceec796a3ec1c7338f6f3968
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420636"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998528"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して検索結果を並べ替える
 
@@ -462,8 +462,8 @@ ms.locfileid: "87420636"
 
 4. ここで、これらの概念を結び付ける必要があります。 ただし、これらのコード スニペットはチュートリアルの範囲内ですので、地図ベースのアプリの作成は読者向けの演習として残っています。 この例をさらに発展させるには、都市名を半径と共に入力するか、または地図上の地点を探して半径を選択することを検討してください。 これらのオプションの詳細については、次のリソースを参照してください。
 
-* [Azure Maps のドキュメント](https://docs.microsoft.com/azure/azure-maps/)
-* [Azure Maps Search サービスを使用して住所を検索する](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Azure Maps のドキュメント](../azure-maps/index.yml)
+* [Azure Maps Search サービスを使用して住所を検索する](../azure-maps/how-to-search-for-address.md)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>スコアリング プロファイルに基づいて結果を並べ替える
 
@@ -959,7 +959,7 @@ ms.locfileid: "87420636"
 
 ### <a name="resources"></a>リソース
 
-詳細については、次の「[スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)」を参照してください。
+詳細については、次の「[スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する](/azure/search/index-add-scoring-profiles)」を参照してください。
 
 ## <a name="takeaways"></a>重要なポイント
 
@@ -975,4 +975,4 @@ ms.locfileid: "87420636"
 
 この一連の C# チュートリアルを完了しました。Azure Cognitive Search API に関する貴重な知識が得られたことでしょう。
 
-さらなるリファレンスやチュートリアルについては、[Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) や、[Azure Cognitive Search ドキュメント](https://docs.microsoft.com/azure/search/)のその他のチュートリアルをぜひ参考にしてください。
+さらなるリファレンスやチュートリアルについては、[Microsoft Learn](/learn/browse/?products=azure) や、[Azure Cognitive Search ドキュメント](./index.yml)のその他のチュートリアルをぜひ参考にしてください。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553973"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922805"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -98,7 +98,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 | 操作 | 課金への影響 |
 |-----------|----------------|
 | ドキュメント解析、テキスト抽出 | Free |
-| ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成**で、[imageAction](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
+| ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成**で、[imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
 | [組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md) | Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 |
 | カスタム スキル | カスタム スキルは、自分が提供する機能です。 カスタム スキルを使用した場合のコストは、カスタム コードで他の従量制サービスを呼び出しているかどうかによって決まります。 |
 
@@ -130,7 +130,7 @@ SU は、サービスによって使用される "*レプリカ*" と "*パー�
 
 + インデックス作成などのリソースを大量に消費する操作に対してはスケールアップし、通常のクエリ ワークロードに対して再調整してスケールダウンします。 Azure Cognitive Search の最小構成 (1 つのパーティションと 1 つのレプリカで構成された 1 つの SU) から開始し、ユーザー アクティビティを監視して、容量の増加に対するニーズを示す使用パターンを特定します。 予測可能なパターンがある場合は、スケールをアクティビティと同期できることがあります (これを自動化するにはコードを記述する必要があります)。
 
-また、支出に関連する組み込みツールと機能については、[課金とコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started) に関するページを参照してください。
+また、支出に関連する組み込みツールと機能については、[課金とコスト管理](../cost-management-billing/manage/getting-started.md) に関するページを参照してください。
 
 検索サービスを一時的にシャットダウンすることはできません。 専用リソースは常に動作し、サービスの有効期間中、お客様専用として割り当てられています。 サービスの削除は永続的なものであり、関連付けられているデータも削除されます。
 
@@ -175,7 +175,7 @@ Azure Cognitive Search では、容量は*レプリカ*と*パーティション
 
 専用のリソースでは、より長いサンプリングと処理時間に対応でき、開発段階でのインデックスの量、サイズ、クエリ量についてより現実的な見積もりを求めることができます。 課金対象のレベルから始め、開発プロジェクトが成熟するのに応じて再評価するお客様もいます。
 
-1. [各レベルのサービス制限を確認](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits)して、より低いレベルで、必要なインデックス数に対応できるかどうかを判断してください。 Basic、S1、S2 レベルでのインデックス制限は、それぞれ 15、50、200 です。 Storage Optimized レベルは、少数の非常に大きいインデックスをサポートするように設計されているため、10 インデックスに制限されています。
+1. [各レベルのサービス制限を確認](./search-limits-quotas-capacity.md#index-limits)して、より低いレベルで、必要なインデックス数に対応できるかどうかを判断してください。 Basic、S1、S2 レベルでのインデックス制限は、それぞれ 15、50、200 です。 Storage Optimized レベルは、少数の非常に大きいインデックスをサポートするように設計されているため、10 インデックスに制限されています。
 
 1. [課金対象レベルでサービスを作成します](search-create-service-portal.md)。
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513042"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855915"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 
@@ -33,7 +33,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 
 クラシック デプロイ モデル スタックと Resource Manager スタックとで、データ プレーンに違いはありません。 両者の違いは、移行プロセス時にクラシック デプロイ モデルのリソースが Resource Manager スタックにおける表現に自動で変換される点にあります。 したがって、Resource Manager スタックのリソースは、新しいツール、API、SDK を使って管理する必要があります。
 
-![管理/コントロール プレーンとデータ プレーンの違いを示す図](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![管理/コントロール プレーンとデータ プレーンの違いを示す図](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 
 移行のワークフローを次に示します。
 
-![移行のワークフローを示す図](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![移行のワークフローを示す図](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > 以降のセクションで説明する操作はすべてべき等です。 サポートされていない機能や構成エラー以外の問題が発生した場合、準備、中止、またはコミットの操作を再試行してください。 Azure でもう一度アクションが試行されます。
@@ -94,17 +94,17 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 準備操作が完了すると、クラシック デプロイ モデルと Resource Manager の両方でリソースを視覚化するためのオプションが表示されます。 クラシック デプロイ モデルのすべてのクラウド サービスに対して、`cloud-service-name>-Migrated`というパターンのリソース グループ名が Azure Platform で作成されます。
 
 > [!NOTE]
-> 移行されるリソースのために作成されたリソース グループの名前 (つまり "-Migrated") は選択できません。 ただし、移行の完了後には、Azure Resource Manager の移動機能を使用して、リソースを任意のリソース グループに移動できます。 詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](~/articles/resource-group-move-resources.md)」を参照してください。
+> 移行されるリソースのために作成されたリソース グループの名前 (つまり "-Migrated") は選択できません。 ただし、移行の完了後には、Azure Resource Manager の移動機能を使用して、リソースを任意のリソース グループに移動できます。 詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 次の 2 つのスクリーンショットには、準備操作が正常に終了した後の結果が表示されています。 最初のスクリーンショットには、元のクラウド サービスを含むリソース グループが表示されています。 2 番目のスクリーンショットには、"-Migrated" の付いた新しいリソース グループが表示されています。ここには、同じ Azure Resource Manager リソースが含まれています。
 
-![元のクラウド サービスを示すスクリーンショット](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![元のクラウド サービスを示すスクリーンショット](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![準備操作時の Azure Resource Manager リソースを示すスクリーンショット](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![準備操作時の Azure Resource Manager リソースを示すスクリーンショット](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 ここで、準備フェーズ完了後のリソースを概観しておきましょう。 データ プレーンのリソースは同じであることに注意してください。 管理プレーン (クラシック デプロイ モデル) とコントロール プレーン (Resource Manager) の両方で表されています。
 
-![準備フェーズの図](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![準備フェーズの図](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > クラシック デプロイ モデルの仮想ネットワーク内にない VM は、この移行フェーズで "停止済みかつ割り当て解除済み" になります。
@@ -124,7 +124,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 ### <a name="abort"></a>中止
 この手順は省略可能です。クラシック デプロイ モデルに対する変更を元に戻し、移行を中止したい場合に使用します。 リソースの (準備手順で作成された) Resource Manager メタデータは、この操作で削除されます。 
 
-![中止手順の図](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![中止手順の図](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +139,13 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 >
 >
 
-![コミット手順の図](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![コミット手順の図](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>移行フローチャート
 
 次のフローチャートで移行の流れを示します。
 
-![Screenshot that shows the migration steps](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>クラシック デプロイ モデル リソースから Resource Manager リソースへの変換
 次の表では、リソースはクラシック デプロイ モデルと Resource Manager で呼称が異なる場合があります。 その他の機能とリソースは現在サポートされていません。

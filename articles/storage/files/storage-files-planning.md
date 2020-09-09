@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037169"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705913"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -36,7 +37,7 @@ Azure ファイル共有をストレージ アカウントにデプロイする�
 
 ## <a name="identity"></a>ID
 Azure ファイル共有にアクセスするには、ファイル共有のユーザーを認証し、共有へのアクセスを承認する必要があります。 これは、ファイル共有にアクセスするユーザーの ID に基づいて行われます。 Azure Files は、次の 3 つの主な ID プロバイダーと統合されています。
-- **オンプレミス Active Directory Domain Services (AD DS、またはオンプレミス AD DS)** (プレビュー):Azure ストレージ アカウントは、Windows Server ファイル サーバーや NAS デバイスと同様に、顧客所有の Active Directory Domain Services ドメインに参加させることができます。 ドメイン コントローラーは、Azure VM や、別のクラウド プロバイダーの VM としてもオンプレミスにデプロイできます。Azure Files は、ドメイン コントローラーがホストされている場所に依存しません。 ストレージ アカウントがドメインに参加すると、エンド ユーザーは、PC にサインインしたユーザー アカウントを使用してファイル共有をマウントできます。 AD ベースの認証では、Kerberos 認証プロトコルが使用されます。
+- **オンプレミス Active Directory Domain Services (AD DS、またはオンプレミス AD DS)** :Azure ストレージ アカウントは、Windows Server ファイル サーバーや NAS デバイスと同様に、顧客所有の Active Directory Domain Services ドメインに参加させることができます。 ドメイン コントローラーは、Azure VM や、別のクラウド プロバイダーの VM としてもオンプレミスにデプロイできます。Azure Files は、ドメイン コントローラーがホストされている場所に依存しません。 ストレージ アカウントがドメインに参加すると、エンド ユーザーは、PC にサインインしたユーザー アカウントを使用してファイル共有をマウントできます。 AD ベースの認証では、Kerberos 認証プロトコルが使用されます。
 - **Azure Active Directory Domain Services (Azure AD DS)** :Azure AD DS では、Azure リソースに使用できる Microsoft が管理するドメイン コントローラーが提供されます。 Azure AD DS ドメインにストレージ アカウントを参加させることで、顧客所有の Active Directory ドメインに参加させる場合と同様の利点が得られます。 このデプロイ オプションは、AD ベースのアクセス許可を必要とするアプリケーションのリフトアンドシフト シナリオに最も役立ちます。 Azure AD DS では AD ベースの認証が提供されるため、このオプションでも Kerberos 認証プロトコルが使用されます。
 - **Azure ストレージ アカウント キー**:Azure ファイル共有は、Azure ストレージ アカウント キーを使用してマウントすることもできます。 この方法でファイル共有をマウントするために、ストレージ アカウント名がユーザー名として使用され、ストレージ アカウント キーがパスワードとして使用されます。 ストレージ アカウント キーを使用して Azure ファイル共有をマウントすることは、実質的には管理者の操作です。これは、マウントされたファイル共有には、ACL がある場合でも、共有上のすべてのファイルとフォルダーに対する完全なアクセス許可が付与されるためです。 ストレージ アカウント キーを使用して SMB 経由でマウントする場合は、NTLMv2 認証プロトコルが使用されます。
 
@@ -103,7 +104,7 @@ Advanced Threat Protection (ATP) for Azure Storage には、ストレージ ア�
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-一般に、Azure Files の機能とその他のサービスとの相互運用性は Premium ファイル共有と Standard ファイル共有で同じですが、重要な違いがいくつかあります。
+一般に、Azure Files の機能とその他のサービスとの相互運用性は Premium ファイル共有と Standard ファイル共有 (トランザクションの最適化、ホットとクールのファイル共有を含む) で同じですが、重要な違いがいくつかあります。
 - **課金モデル**
     - Premium ファイル共有は、プロビジョニングされた課金モデルを使用して課金されます。これは、実際に要求するストレージの量ではなく、プロビジョニングするストレージの量に対して料金を支払うことを意味します。 
     - Standard ファイル共有は従量課金制モデルを使用して課金されます。これには、実際に消費しているストレージの量に対するストレージの基本コストと、共有の使用方法に基づく追加のトランザクション コストが含まれます。 Standard ファイル共有では、Azure ファイル共有の使用 (読み取り、書き込み、マウント) 量が増えると、課金が増加します。

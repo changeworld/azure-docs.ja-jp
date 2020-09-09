@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534806"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870580"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault セキュリティ
 
@@ -99,4 +99,4 @@ Key Vault のログによって、コンテナーに対して実行されたア�
 
 - [Azure Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)
 - [RBAC:組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
-- [Azure Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)
+

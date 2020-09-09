@@ -3,12 +3,13 @@ title: Azure Event Hubs - さまざまなプロトコルを使用してイベン
 description: この記事では、さまざまなプロトコル (AMQP、Apache Kafka、および HTTPS) を使用するコンシューマーとプロデューサーが、Azure Event Hubs の使用時にイベントを交換する方法を示しています。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002507"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010321"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>さまざまなプロトコルを使用するコンシューマーとプロデューサー間でイベントを交換する: AMQP、Kafka、HTTPS
 Azure Event Hubs は、コンシューマーとプロデューサー用に 3 つのプロトコルをサポートしています: AMQP、Kafka、HTTPS です。 これらのプロトコルのそれぞれにメッセージの独自の表示方法があるため、当然、次のような疑問が生じます。アプリケーションがあるプロトコルでイベント ハブにイベントを送信し、それを別のプロトコルで使用する場合、イベントがコンシューマーに表示されるときにイベントのさまざまな部分や値はどのように見えるのでしょうか。 この記事では、プロデューサーとコンシューマーの両方で、イベント内の値がコンシューマー側アプリケーションによって正しく解釈されるようにするためのベスト プラクティスについて説明します。

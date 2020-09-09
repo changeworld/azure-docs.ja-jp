@@ -2,18 +2,18 @@
 title: Azure Table Storage の設計におけるリレーションシップのモデル化 | Microsoft Docs
 description: Azure Table Storage のソリューションを設計する場合のモデル化プロセスについて理解します。 一対多、一対一、継承のリレーションシップについて確認します。
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8c803a7b11aee3d57d6145bed296bd40ddd9bb5e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036047"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271194"
 ---
 # <a name="modeling-relationships"></a>リレーションシップのモデル化
 この記事では、Azure Table Storage ソリューションの設計に役立つモデル化プロセスについて説明します。
@@ -51,7 +51,7 @@ ms.locfileid: "88036047"
 <td>
 <ul>
 <li>1 回の操作で部署エンティティを更新できる。</li>
-<li>従業員エンティティを更新、挿入、削除するたびに部署エンティティを変更する必要がある場合は、一貫性を維持するために EGT を使用できます。 たとえば、部署ごとの従業員数を管理する場合などです。</li>
+<li>従業員エンティティを更新、挿入、削除するたびに部署エンティティを変更する必要がある場合は、一貫性を維持するためにエンティティ グループ トランザクション* (EGT) を使用できます。 たとえば、部署ごとの従業員数を管理する場合などです。</li>
 </ul>
 </td>
 <td>
@@ -93,6 +93,9 @@ ms.locfileid: "88036047"
 </tr>
 </table>
 
+*詳細については、「[エンティティ グループ トランザクション](table-storage-design.md#entity-group-transactions)」を参照してください  
+
+
 これらの選択肢のうちのどれを選ぶか、また、どの長所と短所の影響が最も大きいかは、アプリケーションのシナリオによって異なります。 たとえば、部署エンティティを変更する頻度、すべての従業員クエリに追加の部署情報が必要かどうか、パーティションまたはストレージ アカウントのスケーラビリティの制限までどのくらいあるのか、などがあります。  
 
 ## <a name="one-to-one-relationships"></a>一対一のリレーションシップ
@@ -120,7 +123,7 @@ Table service でのリレーションシップのモデル化には何とおり
 クライアント コードの同じテーブル内の複数のエンティティ種類の詳細については、このガイドで後述する異種のエンティティ種類の使用に関するセクションを参照してください。 クライアント コードでエンティティの種類を認識する方法の例が示されています。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テーブルの設計パターン](table-storage-design-patterns.md)
 - [クエリに対応した設計](table-storage-design-for-query.md)

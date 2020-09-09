@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b168328f64f599de109dbd0a5bd95c0a26f5f902
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082882"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961858"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 
@@ -55,7 +55,7 @@ Webhook URL をコピーします。 Docker Hub に対する Webhook を追加�
 
 ## <a name="automate-with-cli"></a>CLI で自動化する
 
-Azure CLI を使用して CI/CD を構成するには、[az webapp deployment container config](https://docs.microsoft.com/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) コマンドを実行して、Webhook URL を生成します。 URL を使用して、DockerHub または Azure Container Registry を構成できます。
+Azure CLI を使用して CI/CD を構成するには、[az webapp deployment container config](/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) コマンドを実行して、Webhook URL を生成します。 URL を使用して、DockerHub または Azure Container Registry を構成できます。
 
 ```azurecli-interactive
 az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true

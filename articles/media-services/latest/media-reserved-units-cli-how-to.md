@@ -3,25 +3,27 @@ title: CLI を使用してメディア占有ユニットをスケーリングす
 description: このトピックでは、CLI を使用して、Azure Media Services でのメディア処理をスケーリングする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/09/2020
-ms.author: juliako
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6715014485b227713447ce5d552cf7ba79737845
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85013ccc5c82cf1b9d1d40a4e10450838d5d3195
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053220"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289411"
 ---
 # <a name="scaling-media-processing"></a>メディア処理のスケーリング
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services を使用してメディア占有ユニット (MRU) を管理することで、お使いのアカウントで実行されるメディア処理をスケーリングできます。 MRU によって、メディア処理タスクが処理される速度が決定されます。 予約ユニットの種類は、以下から選択できます:**S1**、**S2**、**S3**。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。 
 

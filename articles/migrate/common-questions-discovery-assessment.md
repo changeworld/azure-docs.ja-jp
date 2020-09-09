@@ -3,12 +3,12 @@ title: Azure Migrate での検出、評価、および依存関係分析に関�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d4f833926541bafbae211caff37e5974b57e1047
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263505"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019013"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -181,13 +181,13 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 エージェントベースの依存関係の視覚化の場合:
 
 - [依存関係エージェントをインストールするスクリプト](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)を使用してください。
-- MMA の場合は、[コマンドラインまたはオートメーションを使用](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)するか、[スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
+- MMA の場合は、[コマンドラインまたはオートメーションを使用](../azure-monitor/platform/log-analytics-agent.md#installation-options)するか、[スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
 - スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と [Intigua](https://www.intigua.com/intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA ではどのようなオペレーティング システムがサポートされていますか?
 
-- [MMA でサポートする Windows オペレーティング システムの一覧はこちら](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)を参照してください。
-- [MMA でサポートする Linux オペレーティング システムの一覧はこちら](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)を参照してください。
+- [MMA でサポートする Windows オペレーティング システムの一覧はこちら](../azure-monitor/platform/log-analytics-agent.md#installation-options)を参照してください。
+- [MMA でサポートする Linux オペレーティング システムの一覧はこちら](../azure-monitor/platform/log-analytics-agent.md#installation-options)を参照してください。
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>1 時間以上にわたる依存関係を視覚化することはできますか?
 

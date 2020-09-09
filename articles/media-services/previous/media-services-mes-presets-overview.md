@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038444"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261477"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Media Encoder Standard (MES) 用のタスク プリセット
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 **Media Encoder Standard** で事前に定義された一連のシステム エンコードを使って、エンコード ジョブを作成できます。 Media Services でのストリーミング用にビデオをエンコードする場合は、"アダプティブ ストリーミング" プリセットを使うことをお勧めします。 このプリセットを指定すると、Media Encoder Standard は[ビットレート ラダーを自動生成](media-services-autogen-bitrate-ladder-with-mes.md)します。 
 

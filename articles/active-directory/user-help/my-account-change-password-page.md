@@ -11,19 +11,19 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422515"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798195"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>[パスワードの変更] ページで、職場または学校のアカウントのパスワードを変更します。
 
 パスワードを覚えており、ロックアウトされていない場合は、 **[マイ アカウント]** ポータルの **[パスワードの変更]** ページを使用して、職場または学校アカウントの既存のパスワードを更新することができます。 パスワードを覚えていない場合、アカウントからロックアウトされている場合、または組織からパスワードを受け取ったことがない場合は、ご自分のセキュリティ情報とモバイル デバイスを使用してパスワードをリセットすることができます。
 
 >[!Important]
->この記事は、既存の職場または学校アカウントの既知のパスワードを更新しようとしているユーザーを対象としています。 Xbox、Hotmail、Outlook.com などの個人アカウントを回復しようとしているユーザーの場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。 従業員または他のユーザーのセルフサービス パスワード リセットをテストする方法の詳細情報が必要な管理者の場合は、[セルフサービス パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)に関する記事を参照してください。
+>この記事は、既存の職場または学校アカウントの既知のパスワードを更新しようとしているユーザーを対象としています。 Xbox、Hotmail、Outlook.com などの個人アカウントを回復しようとしているユーザーの場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。 従業員または他のユーザーのセルフサービス パスワード リセットをテストする方法の詳細情報が必要な管理者の場合は、[セルフサービス パスワード リセット](../authentication/tutorial-enable-sspr.md)に関する記事を参照してください。
 
 ## <a name="update-a-password-from-the-change-password-page"></a>[パスワードの変更] ページからパスワードを更新する
 
@@ -45,7 +45,7 @@ ms.locfileid: "87422515"
 
 パスワードを変更した後、次のことができます。
 
-- [セキュリティ情報](user-help-security-info-overview.md)を表示または管理する。
+- [セキュリティ情報](./security-info-setup-signin.md)を表示または管理する。
 
 - 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する。
 

@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847637"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650827"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -34,7 +34,7 @@ ms.locfileid: "87847637"
 > * 実験を送信して実行を開始する
 > * 結果の表示
 
-この記事は、Azure Machine Learning ノートブックの [GitHub リポジトリ](https://aka.ms/azureml-rl-notebooks)にある [RLlib Pong の例](https://aka.ms/azureml-rl-pong)が基になっています。
+この記事は、Azure Machine Learning ノートブックの [GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)にある [RLlib Pong の例](https://aka.ms/azureml-rl-pong)が基になっています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -433,4 +433,4 @@ run.wait_for_completion()
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、IMPALA 学習エージェントを使用して強化学習エージェントをトレーニングする方法について学習しました。 その他の例については、[Azure Machine Learning 強化学習の GitHub リポジトリ](https://aka.ms/azureml-rl-notebooks)を参照してください。
+この記事では、IMPALA 学習エージェントを使用して強化学習エージェントをトレーニングする方法について学習しました。 その他の例については、[Azure Machine Learning 強化学習の GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)を参照してください。

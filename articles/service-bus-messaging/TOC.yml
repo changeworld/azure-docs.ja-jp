@@ -72,9 +72,6 @@
   items:
     - name: Service Bus サンプル
       href: service-bus-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Premium メッセージング
@@ -117,6 +114,8 @@
           href: network-security.md
 - name: 操作方法ガイド
   items:
+    - name: リージョン間で移動する
+      href: move-across-regions.md
     - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
       href: deprecate-service-bus-management.md
     - name: 名前空間の作成
@@ -270,6 +269,9 @@
       href: service-bus-messaging-sql-filter.md
     - name: SQLRuleAction 構文
       href: service-bus-messaging-sql-rule-action.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: よく寄せられる質問

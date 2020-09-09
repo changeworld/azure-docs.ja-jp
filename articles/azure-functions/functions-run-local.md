@@ -4,13 +4,13 @@ description: Azure 関数を Azure Functions で実行する前に、ローカ�
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037033"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929493"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -37,7 +37,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 + **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
 
-特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
+特定のコンピューターには、1 つのバージョンの Core Tools のみをインストールできます。 特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -165,6 +165,9 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 func init MyFunctionProj
 ```
 
+>[!IMPORTANT]
+> Java では、HTTP でトリガーされる最初の関数と共に、Maven アーキタイプを使用してローカル関数プロジェクトを作成します。 次のコマンドを使用して、Java プロジェクト `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` を作成します。 Maven アーキタイプの使用例については、[コマンド ラインのクイックスタート](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)に関する記事を参照してください。  
+
 プロジェクト名を指定すると、その名前の新しいフォルダーの作成と初期化が実行されます。 それ以外の場合は、現在のフォルダーが初期化されます。  
 バージョン 3.x/2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 
 
@@ -254,20 +257,21 @@ Azure Functions ランタイム バージョン 2.x では、関数で使用す�
 
   ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
 
-+ Core Tools を使用して、次のいずれかのコマンドで Azure から接続文字列をダウンロードします。
++ プロジェクトのルートから Core Tools を使用して、次のいずれかのコマンドで Azure から接続文字列をダウンロードします。
 
   + 既存の関数アプリからすべての設定をダウンロードします。
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + 特定のストレージ アカウントの接続文字列を取得します。
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。
+    Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。 これらのコマンドは、local.settings.json ファイル内のすべての既存の設定を上書きします。 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>関数を作成する
 
@@ -334,6 +338,14 @@ Functions プロジェクトを実行するには、Functions ホストを実行
 ```
 func start --build
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```
+mvn clean package 
+mvn azure-functions:run
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
@@ -504,6 +516,9 @@ Azure で ローカル コードを関数アプリに発行するには、`publi
 ```
 func azure functionapp publish <FunctionAppName>
 ```
+
+>[!IMPORTANT]
+> Java では、Maven を使用して、ローカル プロジェクトが Azure に発行されます。 コマンド `mvn azure-functions:deploy` を実行して、Azure に発行します。 Azure リソースは、初期デプロイ中に作成されます。
 
 このコマンドにより、Azure の既存の関数アプリに公開されます。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドでは[リモート ビルド](functions-deployment-technologies.md#remote-build)が使用され、アプリがデプロイされて、[デプロイ パッケージから実行](run-functions-from-deployment-package.md)されます。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
 

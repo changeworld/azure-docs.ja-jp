@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905596"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824952"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -222,7 +222,6 @@ Azure Digital Twins でクエリを実行する際のヒントを次に示しま
         AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
         ```
 * プロパティの名前と値では大文字と小文字が区別されるため、モデルで定義されている正確な名前を使用するよう注意してください。 プロパティ名のスペルが間違っているか、大文字と小文字が正しくない場合、結果セットは空になり、エラーは返されません。
-
 
 ## <a name="next-steps"></a>次のステップ
 

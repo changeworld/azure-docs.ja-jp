@@ -1,19 +1,22 @@
 ---
 title: Azure Key Vault と Kubernetes の統合
 description: このチュートリアルでは、シークレット ストア コンテナー ストレージ インターフェイス (CSI) ドライバーを使用して Azure キー コンテナーにアクセスしてシークレットを取得し、Kubernetes ポッドにマウントします。
-author: rkarlin
-ms.author: rkarlin
+author: ShaneBala-keyvault
+ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 06/04/2020
-ms.openlocfilehash: 9a13ede1c9dcd23b829d08ed9e3c6fc10248e191
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 08/25/2020
+ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510047"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869186"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
+
+> [!IMPORTANT]
+> CSI ドライバーは、Azure テクニカル サポートではサポートされていないオープン ソース プロジェクトです。 CSI ドライバー Key Vault 統合に関連するすべてのフィードバックと問題を、このページの下部にある github リンクで報告してください。 このツールはユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
 
 このチュートリアルでは、シークレット ストア コンテナー ストレージ インターフェイス (CSI) ドライバーを使用して Azure キー コンテナーにアクセスしてシークレットを取得し、そのシークレットを Kubernetes ポッドにマウントします。
 
@@ -107,7 +110,7 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
 
 ## <a name="create-your-own-secretproviderclass-object"></a>独自の SecretProviderClass オブジェクトを作成する
 
-シークレット ストア CSI ドライバーのプロバイダー固有のパラメーターを使用して独自のカスタム SecretProviderClass オブジェクトを作成するには、[このテンプレートを使用](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass.yaml)します。 このオブジェクトにより、自分のキー コンテナーへのアクセス権が ID に提供されます。
+シークレット ストア CSI ドライバーのプロバイダー固有のパラメーターを使用して独自のカスタム SecretProviderClass オブジェクトを作成するには、[このテンプレートを使用](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml)します。 このオブジェクトにより、自分のキー コンテナーへのアクセス権が ID に提供されます。
 
 サンプルの SecretProviderClass YAML ファイルで、不足しているパラメーターを入力します。 次のパラメーターが必要です。
 
@@ -141,12 +144,12 @@ spec:
     keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
                                               #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
-    cloudName: ""                             # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
+    cloudName: ""                                # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
     objects:  |
       array:
         - |
           objectName: secret1                 # [REQUIRED] object name
-                                              #     az keyvault secret list --vault-name “contosoKeyVault5”
+                                              #     az keyvault secret list --vault-name "contosoKeyVault5"
                                               #     the above command will display a list of secret names from your key vault
           objectType: secret                  # [REQUIRED] object types: secret, key, or cert
           objectVersion: ""                   # [OPTIONAL] object versions, default to latest if empty

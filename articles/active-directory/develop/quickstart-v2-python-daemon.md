@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6d4710f0b8756ea9b7f824b8b0aa1221ad8b30f0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120390"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683744"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -193,7 +193,7 @@ app = msal.ConfidentialClientApplication(
 > |---------|---------|
 > | `config["secret"]` | Azure Portal 上でアプリケーションに対して作成されるクライアント シークレット。 |
 > | `config["client_id"]` | Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。 |
-> | `config["authority"]`    | ユーザーが認証するための STS エンドポイント。 通常、パブリック クラウド上では <https://login.microsoftonline.com/{tenant}> です。{tenant} はご自分のテナントの名前またはテナント ID です。|
+> | `config["authority"]`    | ユーザーが認証するための STS エンドポイント。 通常、パブリック クラウド上では `https://login.microsoftonline.com/{tenant}` です。{tenant} はご自分のテナントの名前またはテナント ID です。|
 
 詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)をご覧ください。
 

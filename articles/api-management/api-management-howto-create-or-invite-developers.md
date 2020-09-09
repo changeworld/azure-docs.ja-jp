@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9ec482af2878ba302a4658314723b96fb9a42999
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904889"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566133"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management でユーザー アカウントを管理する方法
 
@@ -40,7 +40,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 3. 適切なユーザー情報を入力します。
 4. **[追加]** をクリックします。
 
-    ![［新しいユーザーを追加する］](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
+    ![新しいユーザーの追加](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
 既定では、新しく作成された開発者アカウントは**アクティブ**になり、**開発者**グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「 [グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
 

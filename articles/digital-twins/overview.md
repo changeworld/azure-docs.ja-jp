@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 0e17ecea6c85329b22310ebe1d06e2fe63cdd773
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042821"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003849"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -105,5 +105,4 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 または、最初のチュートリアルに進み、Azure Digital Twins の使用について詳しく確認してください。
 
-> [!div class="nextstepaction"]
-> [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)
+[*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)

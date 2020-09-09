@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
-ms.date: 07/25/2020
+ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541789"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798535"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -37,6 +37,9 @@ Azure Resource Graph では、次のことができます。
 
 - 各リソース プロバイダーへの個別の呼び出しを行う必要なく、リソース プロバイダーから返されるプロパティにアクセスする。
 - リソースに加えられた変更の過去 14 日間分の履歴を表示して、どのプロパティがいつ変更されたかを確認する。 (プレビュー)
+
+> [!NOTE]
+> "_プレビュー_" 機能として、一部の `type` オブジェクトは、Resource Manager 以外の追加のプロパティを備えています。 詳細については、「[拡張プロパティ (プレビュー)](./concepts/query-language.md#extended-properties)」を参照してください。
 
 ## <a name="how-resource-graph-is-kept-current"></a>Resource Graph が最新の状態に保たれるしくみ
 

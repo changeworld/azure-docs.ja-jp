@@ -11,16 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f6a432ad30fa3ce24693a00478f2194caaa11ff9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5e4ad7ba75edd1899cbe2d7cd7d3b1b6c124ce35
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267651"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>.NET で Encoder Standard を使用してサムネイルを生成する方法
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Encoder Standard を使用してビデオ入力から 1 つまたは複数の [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)、または [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 画像ファイル形式のサムネイルを生成することができます。
 

@@ -5,15 +5,15 @@ author: laurenhughes
 ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.date: 08/17/2020
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562789"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055687"
 ---
-# <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>プレビュー - Azure Kubernetes Service (AKS) ノード イメージのアップグレード
+# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 
 AKS では、ノード上のイメージのアップグレードがサポートされているため、最新の OS とランタイムの更新プログラムを使用して最新の状態にすることができます。 AKS は、最新の更新プログラムを使用して 1 週間に 1 つの新しいイメージを提供するため、Linux または Windows の修正プログラムを含む最新の機能については、ノードのイメージを定期的にアップグレードすることをお勧めします。 この記事では、AKS クラスター ノード イメージをアップグレードする方法と、Kubernetes のバージョンをアップグレードせずにノード プール イメージを更新する方法について説明します。
 
@@ -21,23 +21,13 @@ AKS によって提供される最新のイメージについて知りたい場�
 
 お使いのクラスターの Kubernetes バージョンのアップグレードの詳細については、「[AKS クラスターのアップグレード][upgrade-cluster]」をご覧ください。
 
-## <a name="register-the-node-image-upgrade-preview-feature"></a>ノード イメージのアップグレードのプレビュー機能を登録する
+## <a name="limitations"></a>制限事項
 
-プレビュー期間中にノード イメージのアップグレード機能を使用するには、この機能を登録する必要があります。
+* AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
 
-```azurecli
-# Register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "NodeImageUpgradePreview"
-```
+## <a name="install-the-aks-cli-extension"></a>AKS CLI 拡張機能をインストールする
 
-登録が完了するまでに数分かかります。 次のコマンドを使用して、機能が登録されていることを確認します。
-
-```azurecli
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodeImageUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-プレビュー中、ノード イメージのアップグレードを使用するには、*aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用した後、[az extension update][az-extension-update] コマンドを使用して、使用可能な更新プログラムがあるかどうかを確認します。
+次のコア CLI バージョンがリリースされる前にノード イメージ アップグレードを使用するには、*aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用した後、[az extension update][az-extension-update] コマンドを使用して、使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli
 # Install the aks-preview extension
@@ -46,12 +36,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>すべてのノード プールのすべてのノードをアップグレードする
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e4403252396aab91fa960ed7258d433e27db950a
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 63cdb27663cb1a2d8de1a97a2f352b05ff57a3f4
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258243"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489886"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル:CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -136,7 +136,7 @@ az network vnet create \
 ```
 
 ```azurecli
-az network vnet create \
+az network vnet subnet create \
   --vnet-name myHSM-vnet \
   --resource-group myRG \
   --name hsmsubnet \

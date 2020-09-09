@@ -41,7 +41,7 @@ ms.locfileid: "87851647"
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
-Azure Notebooks の概要と基本的な使用方法については、「[Azure ノートブックを作成する](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)」の手順に従ってください。
+Azure Notebooks の概要と基本的な使用方法については、「[Azure Notebook を作成する](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)」の手順に従ってください。
 
 > [!Note]
 > このプロジェクトの Jupyter Notebook ファイルは、[Weather Maps Jupyter Notebook リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)からダウンロードできます。

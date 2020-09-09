@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009662"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234992"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -126,6 +126,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 以下の *[API アクセス許可の要求]* ページで、 *[所属する組織で使用している API]* タブに切り替えて、"*azure digital twins*" を探します。 検索結果から "*Azure Digital Twins*" を選択して、Azure Digital Twins API に対するアクセス許可の割り当てを続行します。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Azure Digital Twins が表示された [API アクセス許可の要求] ページの検索結果のビュー":::
+
+>[!NOTE]
+> Azure Digital Twins の以前の (2020 年 7 月より前の) パブリック プレビューで作成されたサービス インスタンスがサブスクリプション内にまだある場合は、代わりに *Azure Smart Spaces Service* を検索する必要があります。 これは同じ API セットの古い名前であり、操作手順に変更はありません。
 
 次に、これらの API に対して付与するアクセス許可を選択します。 **[Read (1)]\(読み取り (1)\)** アクセス許可を展開して、 *[Read.Write]\(読み取り.書き込み\)* と示されたチェック ボックスをオンにし、このアプリ登録に読み取りおよび書き込みのアクセス許可を付与します。
 

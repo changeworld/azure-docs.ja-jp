@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072019"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258607"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概要
 

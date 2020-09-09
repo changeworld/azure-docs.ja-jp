@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512977"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718919"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "87512977"
 
 ![ユーザーの登録済みのセキュリティ情報を示しているマイ プロファイル](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](../user-help/user-help-security-info-overview.md)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
+新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](../user-help/security-info-setup-signin.md)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
 
 Azure AD の結合されたセキュリティ情報の登録は、Azure US Government、Azure Germany、Azure China 21Vianet などの各国のクラウドでは現在利用できません。
 

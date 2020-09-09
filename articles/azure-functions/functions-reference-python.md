@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850748"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642199"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -87,7 +87,6 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
 * *requirements.txt*:Azure に公開するときにシステムによってインストールされるパッケージの一覧が含まれます。
 * *host.json*:関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
 * *.funcignore*:(省略可能) Azure に発行しないファイルを宣言します。
-* *.gitignore*:(省略可能) git リポジトリから除外されるファイル (local.settings.json など) を宣言します。
 * *Dockerfile*:(省略可能) [カスタム コンテナー](functions-create-function-linux-custom-image.md)でプロジェクトを発行するときに使用されます。
 
 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。

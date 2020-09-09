@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475670"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856051"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
@@ -127,7 +127,7 @@ IoT プラグ アンド プレイ デバイスが実装するテレメトリ、�
 
 デバイスでは、報告されたプロパティを送信することで、プロパティを受け取ったことを確認する必要があります。 報告されたプロパティには次のものが含まれます。
 
-- `value` - デバイスが受け取った値。
+- `value` - プロパティの実際の値 (通常は受信した値。ただし、デバイスは別の値を報告するように決定できます)。
 - `ac` - HTTP 状態コードを使用する受信確認コード。
 - `av` - 目的のプロパティの `$version` を参照する確認バージョン。
 - `ad` - 省略可能な受信確認の説明。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003239"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235674"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>方法: Azure AD における属性マッピングの式を記述する
 
@@ -193,7 +193,7 @@ DateFromNum(129699324000000000)
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
+| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされている形式については、[/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings) を参照してください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 ---
@@ -394,7 +394,7 @@ Left("John Doe", 3)
 ### <a name="numfromdate"></a>NumFromDate
 **関数:**<br> NumFromDate(value)
 
-**説明:**<br> NumFromDate 関数は、DateTime 値を、[accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
+**説明:**<br> NumFromDate 関数は、DateTime 値を、[accountExpires](/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
 
 **パラメーター:**<br> 
 

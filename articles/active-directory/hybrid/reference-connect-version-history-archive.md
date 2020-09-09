@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a62694790505dcf8355b3011387d9bdfd036b6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8fc18ff248ce7f522539a92ef1b2226a29689be8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057044"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275982"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect:バージョンのリリース履歴アーカイブ
 
@@ -166,7 +166,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 
-- Azure AD Connect の Ping Federate 統合が一般提供となりました。 [Azure AD と Ping Federate のフェデレーションについて詳しくは、こちらをご覧ください](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)。
+- Azure AD Connect の Ping Federate 統合が一般提供となりました。 [Azure AD と Ping Federate のフェデレーションについて詳しくは、こちらをご覧ください](./plan-connect-user-signin.md#federation-with-pingfederate)。
 - Azure AD Connect は、Azure AD 信頼のバックアップを更新のたびに AD FS に作成し、さらに、必要に応じて簡単に復元できるよう別個のファイルにそれを格納するようになりました。 [Azure AD Connect における Azure AD の信頼管理と新機能の詳細をご覧ください](https://aka.ms/fedtrustinaadconnect)。
 - 通常の電子メール アドレスを変更したり、グローバル アドレス一覧に対してアカウントを非表示にしたりする際に発生した問題のトラブルシューティングを支援するトラブルシューティング ツールが導入されました。
 - Azure AD Connect が更新されて、最新の SQL Server 2012 Native Client が追加されました。
@@ -402,7 +402,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 この脆弱性が Azure AD Connect 構成の侵害に使用されたかどうかを確認するには、サービス アカウントのパスワードが最後にリセットされた日付を確認する必要があります。  予期しないタイムスタンプがある場合は、イベント ログでそのパスワードのリセット イベントをさらに調査する必要があります。
 
-詳しくは、[マイクロソフト セキュリティ アドバイザリ 4056318](https://technet.microsoft.com/library/security/4056318) をご覧ください
+詳しくは、[マイクロソフト セキュリティ アドバイザリ 4056318](/security-updates/securityadvisories/2017/4056318) をご覧ください
 
 ## <a name="116490"></a>1.1.649.0
 状態:2017 年 10 月 27 日
@@ -443,7 +443,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect のアップグレードが失敗して "*Unable to upgrade the Synchronization Service*"(同期サービスをアップグレードできません) というエラーが表示される問題を修正しました。 また、今後は同期サービスの起動時にイベント エラー "*The service was unable to start because the version of the database is newer than the version of the binaries installed*"(データベースのバージョンが、インストールされているバイナリのバージョンよりも新しいため、サービスを開始できませんでした) が表示されることはありません。 この問題は、アップグレードを実行している管理者が、Azure AD Connect で使用されている SQL サーバーに対して sysadmin 権限を持っていない場合に発生します。 この修正により、Azure AD Connect ではアップグレード時に、管理者が ADSync データベースに対する db_owner 権限を持っていることのみが求められます。
 
-* [シームレス シングル サインオン](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)を有効にしているお客様に影響を与える、Azure AD Connect のアップグレードの問題を修正しました。 Azure AD Connect をアップグレードした後に、シームレス シングル サインオンが引き続き有効で完全に機能するにもかかわらず、Azure AD Connect ウィザードに "無効" と間違って表示されます。 この修正により、この機能がウィザードで正しく "有効" と表示されるようになりました。
+* [シームレス シングル サインオン](./how-to-connect-sso.md)を有効にしているお客様に影響を与える、Azure AD Connect のアップグレードの問題を修正しました。 Azure AD Connect をアップグレードした後に、シームレス シングル サインオンが引き続き有効で完全に機能するにもかかわらず、Azure AD Connect ウィザードに "無効" と間違って表示されます。 この修正により、この機能がウィザードで正しく "有効" と表示されるようになりました。
 
 * Azure AD Connect ウィザードで、ソース アンカーに関連する変更が行われていない場合にも、 *[構成の準備完了]* ページに "*ソース アンカーの構成*" メッセージが常に表示される問題を修正しました。
 
@@ -457,7 +457,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期
 > [!NOTE]
-> 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、[組み込みスケジューラ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)を使用する必要があります。
+> 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、[組み込みスケジューラ](./how-to-connect-sync-feature-scheduler.md)を使用する必要があります。
 #### <a name="fixed-issues"></a>修正された問題
 * Azure AD Connect ウィザードで、オンプレミス Active Directory からの変更を同期するために必要な AD Connector アカウントを作成するときに、PublicFolder オブジェクトの読み取りに必要なアクセス許可がアカウントに正しく割り当てられません。 この問題は、高速インストールとカスタム インストールの両方に影響します。 今回の変更により、この問題が修正されました。
 
@@ -470,7 +470,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="ad-fs-management"></a>AD FS の管理
 #### <a name="fixed-issue"></a>修正された問題
-* [ソース アンカーとしての ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) 機能の使用に関連する問題を修正しました。 この問題は、ユーザーのサインイン方法として *AD FS とのフェデレーション*を構成しているお客様に影響します。 ウィザードで *[ソース アンカーの構成]* タスクを実行すると、Azure AD Connect では、immutableId のソース属性として *ms-DS-ConsistencyGuid を使用するように切り替わります。 この変更の一環として、Azure AD Connect は、AD FS で ImmutableId の要求規則を更新しようとします。 ただし、Azure AD Connect には AD FS の構成に必要な管理者の資格情報がないため、このステップは失敗していました。 この修正により、 *[ソース アンカーの構成]* タスクを実行すると、AD FS の管理者の資格情報を入力するように求めるメッセージが Azure AD Connect に表示されるようになります。
+* [ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能の使用に関連する問題を修正しました。 この問題は、ユーザーのサインイン方法として *AD FS とのフェデレーション*を構成しているお客様に影響します。 ウィザードで *[ソース アンカーの構成]* タスクを実行すると、Azure AD Connect では、immutableId のソース属性として *ms-DS-ConsistencyGuid を使用するように切り替わります。 この変更の一環として、Azure AD Connect は、AD FS で ImmutableId の要求規則を更新しようとします。 ただし、Azure AD Connect には AD FS の構成に必要な管理者の資格情報がないため、このステップは失敗していました。 この修正により、 *[ソース アンカーの構成]* タスクを実行すると、AD FS の管理者の資格情報を入力するように求めるメッセージが Azure AD Connect に表示されるようになります。
 
 
 
@@ -485,7 +485,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * [シームレス シングル サインオン](how-to-connect-sso.md)を有効にしているお客様に影響する、Azure AD Connect のアップグレードに関する既知の問題があります。 Azure AD Connect をアップグレードすると、機能は引き続き有効であるにもかかわらず、ウィザードには無効と表示されます。 この問題は、今後のリリースで修正される予定です。 この表示の問題が気になるお客様は、ウィザードでシームレス シングル サインオンを有効にすることで、問題を手動で修正できます。
 
 #### <a name="fixed-issues"></a>修正された問題
-* [ソース アンカーとしての ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) 機能を有効する際に Azure AD Connect でオンプレミスの AD FS の要求規則を更新できない問題を修正しました。 この問題は、Azure AD Connect の既存のデプロイでサインインの方法として AD FS が構成されている場合に、上記機能を有効にしようとすると発生します。 この問題は、ウィザードで AD FS の要求規則の更新に先立ち ADFS の資格情報の入力を求めるプロンプトを表示していなかったことによるものです。
+* [ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能を有効する際に Azure AD Connect でオンプレミスの AD FS の要求規則を更新できない問題を修正しました。 この問題は、Azure AD Connect の既存のデプロイでサインインの方法として AD FS が構成されている場合に、上記機能を有効にしようとすると発生します。 この問題は、ウィザードで AD FS の要求規則の更新に先立ち ADFS の資格情報の入力を求めるプロンプトを表示していなかったことによるものです。
 * オンプレミスの AD フォレストで NTLM が無効になっている場合に Azure AD Connect のインストールが失敗する問題を修正しました。 この問題は、Kerberos 認証に必要なセキュリティ コンテキストを作成するときに、Azure AD Connect ウィザードが完全に修飾された資格情報を提供しないことによるものです。 それが原因で Kerberos 認証が失敗し、Azure AD Connect ウィザードは NTLM の使用に戻ります。
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期
@@ -631,16 +631,16 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 #### <a name="fixed-issues"></a>修正された問題
 
-* パスワード ライトバックによって Azure AD 管理者がオンプレミスの AD 特権ユーザー アカウントのパスワードをリセットできる、という問題を修正しました。 この問題は、特権アカウントに対するパスワードのリセット アクセス許可が、Azure AD Connect に付与されている場合に発生します。 このバージョンの Azure AD Connect で問題を解決するには、オンプレミスの AD 特権ユーザー アカウントの所有者でない Azure AD 管理者が、任意の AD 特権ユーザー アカウントのパスワードをリセットできないようにします。 詳しくは、[セキュリティ アドバイザリ 4033453](https://technet.microsoft.com/library/security/4033453) を参照してください。
+* パスワード ライトバックによって Azure AD 管理者がオンプレミスの AD 特権ユーザー アカウントのパスワードをリセットできる、という問題を修正しました。 この問題は、特権アカウントに対するパスワードのリセット アクセス許可が、Azure AD Connect に付与されている場合に発生します。 このバージョンの Azure AD Connect で問題を解決するには、オンプレミスの AD 特権ユーザー アカウントの所有者でない Azure AD 管理者が、任意の AD 特権ユーザー アカウントのパスワードをリセットできないようにします。 詳しくは、[セキュリティ アドバイザリ 4033453](/security-updates/SecurityAdvisories/2017/4033453) を参照してください。
 
-* Azure AD Connect がオンプレミスの AD ms-DS-ConsistencyGuid 属性へのライトバックを行わないという、[ソース アンカーとしての ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) 機能に関連する問題を修正しました。 この問題は、オンプレミスの AD フォレストに複数の Azure AD Connect が追加され、" *[複数のディレクトリにユーザー ID が存在します] オプション*" が選択されているときに発生します。 このような構成が使用されている場合、結果の同期ルールでは、メタバースの sourceAnchorBinary 属性が設定されません。 sourceAnchorBinary 属性は、ms-DS-ConsistencyGuid 属性のソース属性として使用されます。 このため、ms-DSConsistencyGuid 属性へのライトバックが行われません。 この問題を修正するために、メタバースの sourceAnchorBinary 属性が常に設定されるように、次の同期規則が更新されました。
+* Azure AD Connect がオンプレミスの AD ms-DS-ConsistencyGuid 属性へのライトバックを行わないという、[ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能に関連する問題を修正しました。 この問題は、オンプレミスの AD フォレストに複数の Azure AD Connect が追加され、" *[複数のディレクトリにユーザー ID が存在します] オプション*" が選択されているときに発生します。 このような構成が使用されている場合、結果の同期ルールでは、メタバースの sourceAnchorBinary 属性が設定されません。 sourceAnchorBinary 属性は、ms-DS-ConsistencyGuid 属性のソース属性として使用されます。 このため、ms-DSConsistencyGuid 属性へのライトバックが行われません。 この問題を修正するために、メタバースの sourceAnchorBinary 属性が常に設定されるように、次の同期規則が更新されました。
   * AD からの受信 - InetOrgPerson AccountEnabled.xml
   * AD からの受信 - InetOrgPerson Common.xml
   * AD からの受信 - ユーザー AccountEnabled.xml
   * AD からの受信 - ユーザー Common.xml
   * AD からの受信 - ユーザー結合 SOAInAAD.xml
 
-* [ソース アンカーとしての ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) 機能が有効になっていなくても、"AD への送信 – ユーザー ImmutableId" 同期規則は引き続き Azure AD Connect に追加されたままです。 これが原因で問題が発生することはなく、ms-DS-ConsistencyGuid 属性のライトバックも行われません。 混乱を避けるために、機能が有効の場合にのみ同期規則が追加されるロジックが追加されました。
+* [ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能が有効になっていなくても、"AD への送信 – ユーザー ImmutableId" 同期規則は引き続き Azure AD Connect に追加されたままです。 これが原因で問題が発生することはなく、ms-DS-ConsistencyGuid 属性のライトバックも行われません。 混乱を避けるために、機能が有効の場合にのみ同期規則が追加されるロジックが追加されました。
 
 * パスワード ハッシュ同期がエラー イベント 611 で失敗する問題を修正しました。 この問題は、1 つ以上のドメイン コントローラーがオンプレミスの AD から削除された後に発生します。 パスワード同期サイクルの終了時、オンプレミスの AD によって発行された同期 Cookie には、削除されたドメイン コントローラーの、USN (Update Sequence Number) 値が 0 の呼び出し ID が含まれています。 パスワード同期マネージャーは、USN 値 0 を含む同期 Cookie を保持できないため、エラー イベント 611 で失敗します。 次の同期サイクル中、パスワード同期マネージャーは、USN 値 0 を含まない、最後に保持された同期 Cookie を再利用します。 これにより、同じパスワードの変更が再同期されます。 この修正により、パスワード同期マネージャーは同期 Cookie を正しく保持します。
 
@@ -648,12 +648,12 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 
-* 以前は、[ソース アンカーとしての ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) 機能は、新しいデプロイでのみ使用できました。 現在、この機能は、既存のでデプロイでも使用することができます。 具体的には次のとおりです。
+* 以前は、[ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能は、新しいデプロイでのみ使用できました。 現在、この機能は、既存のでデプロイでも使用することができます。 具体的には次のとおりです。
   * 機能にアクセスするには、Azure AD Connect ウィザードを開始し、"*ソース アンカーの更新*" オプションを選択します。
   * このオプションは、objectGuid を sourceAnchor 属性として使用している既存のデプロイにのみ表示されます。
   * オプションを構成するとき、オンプレミス Active Directory の ms-DS-ConsistencyGuid 属性の状態がウィザードによって検証されます。 この属性がディレクトリ内のどのユーザー オブジェクトに対しても構成されていない場合は、ms-DS-ConsistencyGuid が sourceAnchor 属性として使用されます。 ディレクトリ内の 1 つ以上のユーザー オブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されており、sourceAnchor 属性としては適さないため、ソース アンカーの変更を続行できないと判断されます。 この属性が、既存のアプリケーションで使用されていないことが確実である場合は、サポートに連絡してエラーの抑制方法を入手する必要があります。
 
-* デバイス オブジェクトの **userCertificate** 属性に固有の機能として、Azure AD Connect は、Azure AD との同期の前に、[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)ときに必要な証明書の値を探して、それ以外の部分を除外できるようになりました。 この動作を有効にするために、既定の同期規則 "AAD への送信 - デバイス結合 SOAInAD" が更新されました。
+* デバイス オブジェクトの **userCertificate** 属性に固有の機能として、Azure AD Connect は、Azure AD との同期の前に、[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](../devices/hybrid-azuread-join-plan.md)ときに必要な証明書の値を探して、それ以外の部分を除外できるようになりました。 この動作を有効にするために、既定の同期規則 "AAD への送信 - デバイス結合 SOAInAD" が更新されました。
 
 * Azure AD Connect が、オンプレミス AD **publicDelegates** 属性への Exchange Online **cloudPublicDelegates** 属性のライトバックをサポートするようになりました。 これにより、オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できるシナリオが有効になります。 この機能をサポートするために、既定の同期規則 "AD への送信 – ユーザー Exchange ハイブリッド PublicDelegates ライトバック" が新しく追加されました。 この同期規則は、Exchange ハイブリッド機能が有効になっている場合にのみ、Azure AD Connect に追加されます。
 
@@ -844,7 +844,7 @@ Azure AD Connect Sync
 * Azure AD テナント上に、そのテナントで [パスワードの同期] 機能が有効になっているかどうかを示すサービス構成が存在します。 以前は、アクティブなステージング サーバーがある場合、Azure AD Connect はサービス構成を簡単に誤って構成しました。 現在、Azure AD Connect は、サービス構成をアクティブな Azure AD Connect サーバーだけと整合性のある状態に保持しようとします。
 * Azure AD Connect ウィザードは現在、オンプレミス AD で AD のごみ箱が有効になっていないかどうかを検出し、警告を返します。
 * 以前は、バッチ内のオブジェクトの合計サイズが特定のしきい値を超えている場合、Azure AD へのエクスポートはタイムアウトし、失敗しました。 現在、この問題が発生した場合、同期サービスは個別の、より小さなバッチでのオブジェクトの再送信を再度試みます。
-* 同期サービス キー管理アプリケーションが Windows の [スタート] メニューから削除されました。 暗号化キーの管理は、miiskmu.exe を使用してコマンド ライン インターフェイス経由で引き続きサポートされます。 暗号化キーの管理については、[Azure AD Connect 同期の暗号化キーの破棄](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key)の記事を参照してください。
+* 同期サービス キー管理アプリケーションが Windows の [スタート] メニューから削除されました。 暗号化キーの管理は、miiskmu.exe を使用してコマンド ライン インターフェイス経由で引き続きサポートされます。 暗号化キーの管理については、[Azure AD Connect 同期の暗号化キーの破棄](./how-to-connect-sync-change-serviceacct-pass.md#abandoning-the-adsync-service-account-encryption-key)の記事を参照してください。
 * 以前は、Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 現在、このプロセスは必要なくなりました。
 
 デスクトップ SSO
@@ -1072,7 +1072,7 @@ AD FS の管理
 
 **新しくサポートされたシナリオ:**
 
-* 複数のオンプレミス Exchange 組織がサポートされました。 詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))」を参照してください。
+* 複数のオンプレミス Exchange 組織がサポートされました。 詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))」を参照してください。
 
 **修正された問題:**
 

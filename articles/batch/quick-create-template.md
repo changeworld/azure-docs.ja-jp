@@ -4,12 +4,12 @@ description: Azure CLI で Batch ジョブを実行する方法を簡単に説�
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: c59e8891678d9fc1af7c4fe78e4ee2d267ec99b4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 606862b31ba4921e39e693735507fca39282091c
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511390"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642403"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Batch アカウントを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "88511390"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json" range="1-80" highlight="36-69":::
+:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 

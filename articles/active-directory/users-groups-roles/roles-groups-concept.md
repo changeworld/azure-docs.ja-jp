@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65aed14ec7f644f2792aaecde5c8bccfffdd8081
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078446"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798314"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) には、Azure AD の組み込みロールに�
 グループのメンバーにロールへの継続的なアクセスを許可しない場合は、Azure AD Privileged Identity Management を使用できます。 Azure AD ロールの有資格メンバーとしてグループを割り当てます。 その後、グループの各メンバーは、そのグループが割り当てられているロールに対して割り当てをアクティブにすることができます。 その後、一定期間、ロールの割り当てをアクティブ化できます。
 
 > [!Note]
-> PIM で Azure AD ロールにグループを割り当てられるようにするには、Privileged Identity Management の更新バージョンが必要です。 Azure AD 組織で Privileged Identity Management API を利用しているため、以前のバージョンの PIM を使用している可能性があります。 エイリアス pim_preview@microsoft.com に連絡して、組織を動かし、API を更新してください。 詳細については、[PIM の Azure AD ロールと機能](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features)に関する記事を参照してください。
+> PIM で Azure AD ロールにグループを割り当てられるようにするには、Privileged Identity Management の更新バージョンが必要です。 Azure AD 組織で Privileged Identity Management API を利用しているため、以前のバージョンの PIM を使用している可能性があります。 エイリアス pim_preview@microsoft.com に連絡して、組織を動かし、API を更新してください。 詳細については、[PIM の Azure AD ロールと機能](../privileged-identity-management/azure-ad-roles-features.md)に関する記事を参照してください。
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>ロールに割り当てるための特別なグループの作成を強制する理由
 
@@ -60,12 +60,12 @@ Azure AD を使用すると、グループに対して isAssignableToRole とい
 
 - グループを介してロールが割り当てられている場合、動的グループを作成または変更することはできません。
 - **[マネージド ユーザー サインインの段階的なロールアウトを有効にする]** 機能は、グループを介した割り当てをサポートしていません。
-- *Azure AD P2 ライセンス供与されたお客様のみ*:Azure AD と Privileged Identity Management の両方を使用して、グループをアクティブとしてロールに割り当てないでください。 これにより、ユーザーが PIM でアクティブなロールの割り当てを確認できなくなる問題や、その PIM 割り当てを削除できなくなる問題が発生します。 このシナリオでは、資格のある割り当ては影響を受けません。 この割り当てを試みると、次のような予期しない動作が発生する可能性があります。
+- *Azure AD P2 ライセンス供与されたお客様のみ*:Azure AD と Privileged Identity Management (PIM) の両方を使用して、グループをアクティブとしてロールに割り当てないでください。 具体的に言うと、作成時にはロール割り当て可能グループにロールを割り当てません。"*そして*" PIM を使用して後でそのグループにロールを割り当てます。 これにより、ユーザーが PIM でアクティブなロールの割り当てを確認できなくなる問題や、その PIM 割り当てを削除できなくなる問題が発生します。 このシナリオでは、資格のある割り当ては影響を受けません。 この割り当てを試みると、次のような予期しない動作が発生する可能性があります。
   - ロールの割り当ての終了時刻が正しく表示されない可能性があります。
   - PIM ポータルで、 **[自分のロール]** に、割り当ての付与を行った方法の数 (1 つまたは複数のグループを介して、および直接) に関係なく、1 つのロールの割り当てのみが表示される可能性があります。
 - *Azure AD P2 ライセンス供与されたお客様のみ*: グループを削除した後でも、PIM UI でそのロールの有資格メンバーとして表示されます。 機能的には問題ありません。これは、Azure portal のキャッシュの問題にすぎません。  
 - Exchange 管理センターでは、グループを介したロールのメンバーシップがまだ認識されませんが、PowerShell コマンドレットは機能します。
-- Azure Information Protection ポータル (クラシック ポータル) では、グループを介したロール メンバーシップがまだ認識されません。 [統合型の秘密度ラベル付けプラットフォームに移行](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels)してから、Office 365 Security & Compliance センターを使用して、グループの割り当てを使用してロールを管理することができます。
+- Azure Information Protection ポータル (クラシック ポータル) では、グループを介したロール メンバーシップがまだ認識されません。 [統合型の秘密度ラベル付けプラットフォームに移行](/azure/information-protection/configure-policy-migrate-labels)してから、Office 365 Security & Compliance センターを使用して、グループの割り当てを使用してロールを管理することができます。
 
 これらの問題は現在修正中です。
 
