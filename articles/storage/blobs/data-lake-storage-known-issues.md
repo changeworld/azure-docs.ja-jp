@@ -72,7 +72,7 @@ AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/s
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 バージョン  `1.6.0` 以降のみを使用します。
 
