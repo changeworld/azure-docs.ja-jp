@@ -1,20 +1,20 @@
 ---
 title: マップに HTML マーカーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップに HTML マーカーを追加する方法を示します。
-author: Philmea
-ms.author: philmea
+description: マップに HTML マーカーを追加する方法について説明します。 Azure Maps Web SDK を使用してマーカーをカスタマイズし、ポップアップとマウス イベントをマーカーに追加する方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 58954a98215fd353c5944486446dab5664e5349c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119273"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035435"
 ---
 # <a name="add-html-markers-to-the-map"></a>マップに HTML マーカーを追加する
 

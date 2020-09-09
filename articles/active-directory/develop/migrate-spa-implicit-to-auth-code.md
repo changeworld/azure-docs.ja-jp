@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 0c7fe0629724217f36d3b28e74aaafdfd15c9a61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027089"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>暗黙的な許可から承認ワークフロー フローに JavaScript のシングルページ アプリを移行する
-
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 Microsoft Authentication Library for JavaScript (MSAL.js) v2.0 では、Microsoft ID プラットフォームでのシングルページ アプリケーションに対する、PKCE、CORS を使用した承認コード フローがサポートされます。 以降のセクションの手順に従い、暗黙的な許可を使用する MSAL.js 1.x アプリケーションを、MSAL.js 2.0+ (以下 *2.x*) と承認コード フローに移行します。
 

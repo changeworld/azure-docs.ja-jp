@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496061"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387338"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics の共有メタデータ
 
@@ -40,7 +40,7 @@ Azure Synapse Analytics では、さまざまなワークスペース計算エ�
 
 オブジェクトの同期は非同期に行われます。 オブジェクトが SQL コンテキストに表示されるまでには、数秒のわずかな遅延が発生します。 一度表示されると、それに対してクエリを実行できますが、それに対するアクセス権を持つ SQL エンジンによって更新または変更されることはありません。
 
-## <a name="which-metadata-objects-are-shared"></a>共有されるメタデータ オブジェクト
+## <a name="shared-metadata-objects"></a>共有メタデータ オブジェクト
 
 Spark を使用すると、データベース、外部テーブル、マネージド テーブル、およびビューを作成できます。 Spark ビューでは、定義する Spark SQL ステートメントを処理するために Spark エンジンが必要であり、SQL エンジンでは処理できないため、Parquet ストレージ形式を使用するデータベースおよび含まれている外部テーブルとマネージド テーブルのみが、ワークスペースの SQL エンジンと共有されます。 Spark ビューは、Spark プール インスタンス間でのみ共有されます。
 

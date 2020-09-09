@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753560"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407695"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム 
 
@@ -45,13 +45,10 @@ Data Factory には 3 種類の統合ランタイム (IR) が用意されてい�
 
 IR の種類 | パブリック ネットワーク | プライベート ネットワーク
 ------- | -------------- | ---------------
-Azure | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ | &nbsp;
+Azure | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ
 セルフホステッド | データの移動<br/>アクティビティのディスパッチ | データの移動<br/>アクティビティのディスパッチ
 Azure-SSIS | SSIS パッケージ実行 | SSIS パッケージ実行
 
-次の図は、さまざまな統合ランタイムを組み合わせて使用し、優れたデータ統合機能やネットワークのサポートを提供する方法を示しています。
-
-![各種の統合ランタイム](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure 統合ランタイム
 
@@ -63,7 +60,7 @@ Azure Integration Runtime では以下が可能です。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR のネットワーク環境
 
-Azure Integration Runtime では、だれでもアクセス可能なエンドポイントを使用して、データ ストアやコンピューティング サービスへの接続がサポートされます。 Azure Virtual Network 環境にはセルフホステッド統合ランタイムを使用します。
+Azure Integration Runtime では、だれでもアクセス可能なエンドポイントを使用して、データ ストアやコンピューティング サービスへの接続がサポートされます。 マネージド仮想ネットワークを有効にすると、Azure Integration Runtime では、プライベート ネットワーク環境でプライベート リンク サービスを使用したデータ ストアへの接続がサポートされます。
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR のコンピューティング リソースとスケーリング
 Azure 統合ランタイムは、Azure 内のフル マネージドのサーバーレス コンピューティングを提供します。  インフラストラクチャのプロビジョニング、ソフトウェアのインストール、修正プログラムの適用、容量のスケーリングについて心配する必要はありません。  さらに、実際の使用時間分だけのお支払いになります。
@@ -124,7 +121,11 @@ Azure-SSIS ランタイムの詳細については、次の記事をご覧くだ
 
 ## <a name="integration-runtime-location"></a>統合ランタイムの場所
 
-Data Factory の場所とは、データ ファクトリのメタデータが格納され、パイプラインのトリガーが開始される場所のことです。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。 この動作は[グローバルに使用できる IR](https://azure.microsoft.com/global-infrastructure/services/) によって実現し、データのコンプライアンス、効率性、ネットワークのエグレスのコストの削減が保証されます。
+### <a name="relationship-between-factory-location-and-ir-location"></a>ファクトリの場所と IR の場所の関係
+
+顧客がデータ ファクトリ インスタンスを作成する際は、データ ファクトリの場所を指定する必要があります。 Data Factory の場所とは、データ ファクトリのメタデータが格納され、パイプラインのトリガーが開始される場所のことです。 ファクトリのメタデータは、お客様が選択したリージョンにのみ格納され、他のリージョンには格納されません。
+
+ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。 この動作は[グローバルに使用できる IR](https://azure.microsoft.com/global-infrastructure/services/) によって実現し、データのコンプライアンス、効率性、ネットワークのエグレスのコストの削減が保証されます。
 
 IR の場所は、そのバックエンドのコンピューティングの場所を定義するほか、実質的にデータの移動、アクティビティのディスパッチ、SSIS パッケージの実行が行われる場所を定義します。 IR の場所は、それが属しているデータ ファクトリの場所とは別にすることができます。 
 
@@ -132,7 +133,7 @@ IR の場所は、そのバックエンドのコンピューティングの場�
 
 Azure IR の特定の場所を設定することができます。その場合は、その特定のリージョンでアクティビティの実行やディスパッチが行われます。
 
-既定の設定である自動解決の Azure IR を使用することを選択した場合は、次のようになります。
+パブリック ネットワークで、既定の設定である自動解決の Azure IR を使用することを選択した場合、
 
 - コピー アクティビティの場合、ADF は可能な限り、シンク データ ストアの場所を自動的に検出し、同じリージョン (使用可能な場合) または同じ地理的な場所の最も近いリージョンのどちらかにある IR を使用しようとします。シンク データ ストアのリージョンを検出できない場合は、代わりにデータ ファクトリのリージョン内の IR が使用されます。
 
@@ -150,6 +151,8 @@ Azure IR の特定の場所を設定することができます。その場合�
 
   > [!TIP] 
   > 可能な場合は、Data Flow を対応するデータ ストアと同じリージョンで実行することをお勧めします。 これを実現するには、Azure IR を自動解決するか (データ ストアの場所が Data Factory の場所と同じ場合)、データ ストアと同じリージョンに新しい Azure IR インスタンスを作成し、そこでデータ フローを実行します。 
+
+自動解決 Azure IR に対してマネージド仮想ネットワークを有効にすると、ADF ではデータ ファクトリ リージョンの IR が使用されます。 
 
 アクティビティの実行時に有効になっている IR の場所は、UI 上のパイプラインのアクティビティの監視ビューまたはアクティビティの監視のペイロードで監視できます。
 

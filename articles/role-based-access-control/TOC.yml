@@ -26,17 +26,17 @@
       href: tutorial-custom-role-powershell.md
     - name: カスタム ロールの作成 - CLI
       href: tutorial-custom-role-cli.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ベスト プラクティス
       href: best-practices.md
     - name: Azure 管理の条件付きアクセス
       href: conditional-access-azure-management.md
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 操作方法ガイド
   items:
     - name: ロール定義の一覧表示
@@ -126,6 +126,9 @@
           href: /azure/templates/microsoft.authorization/roleassignments
         - name: ロールの定義
           href: /azure/templates/microsoft.authorization/roledefinitions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855937"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387372"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。
@@ -78,7 +78,7 @@ Security Center によって作成されたワークスペースを選択する�
 1. サブスクリプションに設定された価格レベルに従い、ワークスペースで Security Center ソリューションが自動的に有効になります。 
 
 > [!NOTE]
-> Security Center で作成されたワークスペースの Log Analytics 価格レベルは、Security Center の課金に影響しません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。 Free レベルの場合、既定のワークスペースで *SecurityCenterFree* ソリューションが有効化されます。 Standard レベルの場合、既定のワークスペースで *Security* ソリューションが有効化されます。
+> Security Center で作成されたワークスペースの Log Analytics 価格レベルは、Security Center の課金に影響しません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。 Free レベルの場合、既定のワークスペースで *SecurityCenterFree* ソリューションが有効化されます。 standard レベルの場合、既定のワークスペースで *Security* ソリューションが有効化されます。
 > Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 既存の Log Analytics アカウントの詳細については、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.md)」を参照してください。
@@ -150,7 +150,7 @@ Azure Security Center 内でデータ収集レベルを選択した場合、そ�
 
 
 > [!NOTE]
-> これらのセキュリティ イベントは、Security Center の Standard レベルでのみ使用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+> これらのセキュリティ イベントは、Security Center の standard レベルでのみ使用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 これらのセットは、一般的なシナリオに対応するように設計されています。 実装前に、どのセットがニーズに合うかを必ず評価してください。
 >
 >
@@ -211,15 +211,17 @@ Security Center によって、Log Analytics エージェント拡張機能は�
     - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.md)」をご覧ください。
  
 ### <a name="turn-off-automatic-provisioning"></a>自動プロビジョニングを無効にする<a name="offprovisioning"></a>
-リソースの自動プロビジョニングは、セキュリティ ポリシーでこの設定をオフにすることで、いつでも無効にすることができます。 
+Log Analytics エージェントの自動プロビジョニングをオフにするには:
 
+1. ポータルの Security Center のメニューで、 **[価格と設定]** を選択します。
+2. 関連するサブスクリプションを選択します。
 
-1. Security Center のメイン メニューに戻り、[セキュリティ ポリシー] を選択します。
-2. 自動プロビジョニングを無効にするサブスクリプションの行で、 **[設定の編集]** をクリックします。
-3. **[セキュリティ ポリシー - データ収集]** ページの **[自動プロビジョニング]** で、 **[オフ]** を選択します。
-4. **[保存]** を選択します。
+   ![サブスクリプションの選択][7]
 
-   ![自動プロビジョニングの無効化][6]
+3. **[データ収集]** を選択します。
+4. **[Auto Provisioning]\(自動プロビジョニング\)** で **[オフ]** を選択して、自動プロビジョニングを無効にします。
+5. **[保存]** を選択します。 
+
 
 自動プロビジョニングを無効 (オフ) にすると、既定のワークスペース構成セクションは表示されません。
 
@@ -294,10 +296,10 @@ Log Analytics エージェントを手動でインストールして、Security 
 
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、Security Center のデータ収集と自動プロビジョニングのしくみについて説明しました。 Security Center の詳細については、次のページを参照してください。
+この記事では、Security Center のデータ収集と自動プロビジョニングのしくみについて説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
 
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+* 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
 
 
 

@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981375"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236575"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,10 +50,9 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 | 特徴量 | 詳細 |
 | ---| --- |
-| 新しい Fsv2 シリーズおよび M シリーズ ハードウェア世代| 詳細については、「[Hardware generations](service-tiers-vcore.md#hardware-generations)」(ハードウェアの世代) を参照してください。|
 | 単一データベースとエラスティック プールでの高速データベース復旧 | 詳しくは、「[高速データベース復旧](../accelerated-database-recovery.md)」をご覧ください。|
 | データの検出と分類  |詳しくは、[Azure SQL Database と Azure Synapse Analytics のデータ検出と分類](data-discovery-and-classification-overview.md)に関する記事をご覧ください。|
-| エラスティック データベース ジョブ | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
+| Elastic Database ジョブ (プレビュー) | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](elastic-query-overview.md)に関する記事をご覧ください。 |
 | エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](elastic-transactions-overview.md)。 |
 | Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](connect-query-portal.md)」をご覧ください。|
@@ -98,8 +97,9 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
-|[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|回避策あり| |
-|[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|自動的に軽減済み| |
+|[サービス プリンシパルから Azure AD および AKV にアクセスできません](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|回避策あり||
+|[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|解決済み|2020 年 6 月|
+|[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|解決済み|2020 年 6 月|
 |[リソース グループに対するアクセス許可が SQL Managed Instance に適用されない](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020 年 2 月|回避策あり||
 |[ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|回避策あり||
 |[SQL Agent ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|回避策あり||
@@ -125,6 +125,11 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |セキュリティで保護された接続を使用する外部 (Azure 以外) メール サーバーのデータベース メール機能||解決済み|2019 年 10 月|
 |包含データベースは、SQL Managed Instance 内でサポートされている||解決済み|2019 年 8 月|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>サービス プリンシパルから Azure AD および AKV にアクセスできません
+
+場合によっては、Azure AD および Azure Key Vault (AKV) サービスへのアクセスに使用されるサービス プリンシパルに問題が存在することがあります。 そのため、この問題は SQL Managed Instance での Azure AD 認証および Transparent Database Encryption (TDE) の使用に影響します。 これは、断続的な接続の問題として発生する可能性があります。または、CREATE LOGIN/USER FROM EXTERNAL PROVIDER または EXECUTE AS LOGIN/USER などのステートメントを実行できない場合に発生する可能性があります。 新しい Azure SQL Managed Instance 上でカスタマー マネージド キーを使用して TDE を設定しても、状況によっては機能しないことがあります。
+
+**回避策**:更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの後でこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の[[Active Directory 管理者] ブレード](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal) にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラーメッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある
 
@@ -138,7 +143,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>リソース グループに対するアクセス許可が SQL Managed Instance に適用されない
 
-リソース グループ (RG) に SQL Managed Instance 共同作成者 RBAC ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
+リソース グループ (RG) に SQL Managed Instance 共同作成者 Azure ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
 
 **回避策**:ユーザーの SQL Managed Instance 共同作成者ロールをサブスクリプション レベルで設定します。
 

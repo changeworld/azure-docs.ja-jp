@@ -11,44 +11,31 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610221"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522909"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>コピー アクティビティでのデータ整合性の検証 (プレビュー)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないデータが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないデータをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたオブジェクト名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 
+ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 
 
 > [!IMPORTANT]
 > この機能は現在プレビュー段階にあり、次のような制限があります (これらの制限については現在対応中です)。
->- データ整合性の検証は、コピー アクティビティで 'PreserveHierarchy' 動作が指定された、ファイル ベースのストア間でのバイナリ ファイルのコピーのみで使用できます。 表形式データをコピーする場合、コピー アクティビティではデータ整合性の検証をまだ使用できません。
 >- コピー アクティビティのセッション ログ設定で、スキップされた整合性のないファイルのログの記録を有効にした場合、コピー アクティビティが失敗した際のログ ファイルの完全性が 100% 保証されることはありません。
 >- 現状では、セッション ログには整合性のないファイルのみが含まれ、正常にコピーされたファイルはログに記録されません。
 
-## <a name="supported-data-stores"></a>サポートされているデータ ストア
+## <a name="supported-data-stores-and-scenarios"></a>サポートされているデータ ストアおよびシナリオ
 
-### <a name="source-data-stores"></a>ソース データ ストア
-
--   [Azure BLOB Storage](connector-azure-blob-storage.md)
--   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure File Storage](connector-azure-file-storage.md)
--   [Amazon S3](connector-amazon-simple-storage-service.md)
--   [ファイル システム](connector-file-system.md)
--   [HDFS](connector-hdfs.md)
-
-### <a name="destination-data-stores"></a>コピー先データ ストア
-
--   [Azure BLOB Storage](connector-azure-blob-storage.md)
--   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure File Storage](connector-azure-file-storage.md)
--   [ファイル システム](connector-file-system.md)
+-   データ整合性の検証は、FTP、sFTP、および HTTP を除くすべてのコネクタでサポートされています。 
+-   ステージング コピー シナリオでは、データ整合性の検証はサポートされていません。
+-   バイナリ ファイルをコピーする場合は、コピー アクティビティで "PreserveHierarchy" 動作が設定されている場合にのみ、データ整合性の検証を使用できます。
+-   データ整合性の検証を有効にし、単一のコピー アクティビティで複数のバイナリ ファイルをコピーする場合は、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、残りのファイルをコピーし続けることができます。 
+-   データ整合性の検証を有効にし、単一のコピー アクティビティでテーブルをコピーする場合、コピー元から読み取られた行の数が、コピー先にコピーされた行の数とスキップされた互換性のない行の数の合計と異なると、コピー アクティビティは失敗します。
 
 
 ## <a name="configuration"></a>構成
@@ -85,16 +72,15 @@ ms.locfileid: "84610221"
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | このプロパティに true を設定した場合、ソース ストアとコピー先ストアの間でのデータ整合性を確保するために、ソース ストアからコピー先ストアにコピーされた各オブジェクトのファイル サイズ、lastModifiedDate、および MD5 チェックサムがコピー アクティビティにより確認されます。 このオプションを有効にすると、コピーのパフォーマンスが影響を受けることに注意してください。  | True<br/>False (既定値) | いいえ
-dataInconsistency | 整合性のないデータをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つです。<br/> -True: 整合性のないデータをスキップして、残りの部分をコピーします。<br/> -False: 整合性のないデータが見つかった場合、コピー アクティビティを中止します。<br/>このプロパティは、validateDataConsistency を True に設定した場合にのみ有効であることに注意してください。  | True<br/>False (既定値) | いいえ
-logStorageSettings | セッション ログにより、スキップされたオブジェクトをログに記録できるようにするために指定可能な、プロパティのグループです。 | | いいえ
+validateDataConsistency | バイナリ ファイルのコピー時にこのプロパティに true を設定した場合、ソース ストアとコピー先ストアの間でのデータ整合性を確保するために、ソース ストアからコピー先ストアにコピーされた各バイナリ ファイルのファイル サイズ、lastModifiedDate、および MD5 チェックサムがコピー アクティビティにより確認されます。 表形式データをコピーする場合、コピー元から読み取られた行の合計数が、コピー先にコピーされた行の数とスキップされた互換性のない行の数の合計と同じになるように、ジョブの完了後にコピー アクティビティにより合計行数が確認されます。 このオプションを有効にすると、コピーのパフォーマンスが影響を受けることに注意してください。  | True<br/>False (既定値) | いいえ
+dataInconsistency | 整合性のないファイルをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つです。 <br/> -True: 整合性のないファイルをスキップして、残りの部分をコピーします。<br/> - False: 整合性のないファイルが見つかった場合、コピー アクティビティを中止します。<br/>このプロパティは、バイナリ ファイルをコピーしていて validateDataConsistency を True に設定した場合にのみ有効であることに注意してください。  | True<br/>False (既定値) | いいえ
+logStorageSettings | スキップされたファイルをセッション ログでログに記録できるようにするために指定できるプロパティのグループです。 | | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
 path | ログ ファイルのパス。 | ログ ファイルを格納するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
 >[!NOTE]
->- ステージング コピー シナリオでは、データの整合性はサポートされていません。 
->- Azure Blob または Azure Data Lake Storage Gen2 との間でファイルをコピーするとき、ADF では、[Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) と [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、レベル MD5 チェックサム検証がブロックされます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
->- ADF では、ストレージ ストア間でファイルをコピーしたとき、サイズ検証がファイリングされます。
+>- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) と [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
+>- ADF では、ストレージ ストア間でバイナリ ファイルをコピーするとき、ファイル サイズ検証が行われます。
 
 ## <a name="monitoring"></a>監視
 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199884"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652102"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -136,7 +136,7 @@ ms.locfileid: "86199884"
 
 + Azure Machine Learning Studio:[これらの手順に従って](how-to-use-automated-ml-for-ml-models.md#customize-featurization)、 **[View additional configuration]\(追加構成の表示\)** セクションで **[Automatic featurization]\(自動特性付け\)** を有効にします。
 
-+ Python SDK:[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトで `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` を指定します。 詳細については、[特徴量化の有効化] (how-to-configure-auto-features.md) を参照してください。 
++ Python SDK:[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトで `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` を指定します。 [特性付けを有効にする](how-to-configure-auto-features.md)方法に関する詳細を参照してください。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> アンサンブル モデル
 
@@ -201,8 +201,6 @@ ms.locfileid: "86199884"
 * 個々の店舗の売上予測
 * 数百基の油井の予測メンテナンス
 * 個々のユーザーのエクスペリエンスの調整。
-
-詳細については、GitHub の[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)に関するページを参照してください。
 
 ## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning での自動 ML
 

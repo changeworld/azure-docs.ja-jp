@@ -7,15 +7,15 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521107"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585935"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault のバックアップ
 
@@ -27,7 +27,7 @@ Azure Key Vault は、可用性を維持し、データの損失を防ぐうえ�
 
 Key Vault を使用すると、障害状況下で可用性を維持し、ユーザーの介入なしに自動的に要求をペア リージョンにフェールオーバーできます。 詳細については、「[Azure Key Vault の可用性と冗長性](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)」を参照してください。
 
-不注意や悪意によってシークレットが削除されないようにする場合は、キー コンテナーに論理的な削除と消去保護の機能を構成します。 詳細については、「[Azure Key Vault の論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)」を参照してください。
+不注意や悪意によってシークレットが削除されないようにする場合は、キー コンテナーに論理的な削除と消去保護の機能を構成します。 詳細については、「[Azure Key Vault の論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
 

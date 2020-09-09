@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: rohogue
-ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515456"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082768"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング
 
@@ -20,7 +20,7 @@ ms.locfileid: "85515456"
 この記事では、ポートを確認する方法および NAS システムへのルート アクセスを有効にする方法の詳細を説明します。 また、NFS ストレージ ターゲットの作成が失敗する原因となることがある、あまり一般的でない問題に関する詳細情報も含まれています。
 
 > [!TIP]
-> このガイドを使用する前に、[NFS ストレージ ターゲットの前提条件](hpc-cache-prereqs.md#nfs-storage-requirements)に関するページを参照してください。
+> このガイドを使用する前に、[NFS ストレージ ターゲットの前提条件](hpc-cache-prerequisites.md#nfs-storage-requirements)に関するページを参照してください。
 
 ご自分の問題に対する解決策がここに記載されていない場合は、[サポート チケットを開いてください](hpc-cache-support-ticket.md)。そうすれば、Microsoft サービスおよびサポートがお客様と協力して問題を調査し、解決することができます。
 

@@ -3,15 +3,15 @@ title: Azure CLI を使用して Linux 環境を作成する
 description: Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511128"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829018"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -324,7 +324,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
 ```
 
 ## <a name="create-a-virtual-nic"></a>仮想 NIC の作成
-仮想ネットワーク インターフェイス カード (NIC) は使用時に規則を適用可能なため、プログラム上で使用できます。 [VM サイズ](sizes.md)に応じて、複数の仮想 NIC を VM にアタッチできます。 次の [az network nic create](/cli/azure/network/nic) コマンドでは、*myNic* という名前の NIC を作成し、ネットワーク セキュリティ グループに関連付けます。 また、この仮想 NIC に *myPublicIP* というパブリック IP アドレスも関連付けています。
+仮想ネットワーク インターフェイス カード (NIC) は使用時に規則を適用可能なため、プログラム上で使用できます。 [VM サイズ](../sizes.md)に応じて、複数の仮想 NIC を VM にアタッチできます。 次の [az network nic create](/cli/azure/network/nic) コマンドでは、*myNic* という名前の NIC を作成し、ネットワーク セキュリティ グループに関連付けます。 また、この仮想 NIC に *myPublicIP* というパブリック IP アドレスも関連付けています。
 
 ```azurecli
 az network nic create \

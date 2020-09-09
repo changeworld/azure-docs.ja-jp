@@ -1,6 +1,6 @@
 ---
 title: 'パフォーマンスをチューニングする: Hive、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 の Hive パフォーマンス チューニング ガイドライン。
+description: Hive、HDInsight、および Azure Data Lake Storage Gen2 を使用する I/O 集中型クエリのチューニング ガイドラインについて説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106313"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034772"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Hive、HDInsight & Azure Data Lake Storage Gen2
 
@@ -74,5 +74,5 @@ Data Lake Storage Gen2 を使用してパフォーマンスを向上させる鍵
 
 Hive クエリをチューニングする際に役立つ、いくつかのブログを次に示します。
 * [HDInsight の Hadoop に対する Hive クエリの最適化](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Hive クエリ パフォーマンスのトラブルシューティング](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [Azure HDInsight で Apache Hive クエリを最適化する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query)
 * [HDInsight での Hive の最適化に関する刺激的なトーク](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

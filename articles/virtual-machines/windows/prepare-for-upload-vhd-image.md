@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610219"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056246"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -62,7 +62,7 @@ Azure VM のサポート ポリシーについては、「[Microsoft Azure 仮�
 
 ### <a name="use-powershell-to-convert-the-disk"></a>PowerShell を使用してディスクを変換する
 
-PowerShell で [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、仮想ディスクを変換できます。 このコマンドレットのインストールに関する情報が必要な場合は、[こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)をクリックしてください。
+PowerShell で [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、仮想ディスクを変換できます。 このコマンドレットのインストールに関する情報が必要な場合は、[こちら](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)をクリックしてください。
 
 次の例は、ディスクを VHDX から VHD に変換します。 また、ディスクを容量可変ディスクを容量固定ディスクに変換します。
 
@@ -86,7 +86,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 
 ### <a name="use-powershell-to-resize-the-disk"></a>PowerShell を使用してディスクのサイズを変更する
 
-PowerShell で [Resize-VHD](/powershell/module/hyper-v/resize-vhd) コマンドレットを使用して、仮想ディスクのサイズを変更できます。 このコマンドレットのインストールに関する情報が必要な場合は、[こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)をクリックしてください。
+PowerShell で [Resize-VHD](/powershell/module/hyper-v/resize-vhd) コマンドレットを使用して、仮想ディスクのサイズを変更できます。 このコマンドレットのインストールに関する情報が必要な場合は、[こちら](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)をクリックしてください。
 
 次の例では、Azure のアラインメント要件を満たすために、ディスクのサイズを 100.5 MiB から 101 MiB に変更します。
 
@@ -138,7 +138,7 @@ SFC スキャンが完了したら、Windows 更新プログラムをインス�
    netsh.exe winhttp reset proxy
    ```
 
-    VM で特定のプロキシを使用する必要がある場合は、次のように Azure の IP アドレス ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) にプロキシ例外を追加します。これにより VM は Azure に接続できます。
+    VM で特定のプロキシを使用する必要がある場合は、次のように Azure の IP アドレス ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) にプロキシ例外を追加します。これにより VM は Azure に接続できます。
 
     ```
     $proxyAddress='<your proxy server>'
@@ -472,7 +472,7 @@ Sysprep は、個人データをすべて削除し、コンポーネントをい
 1 つのディスクから 1 つの VM のみを作成する場合は、Sysprep を使用する必要はありません。 代わりに、*特殊化されたイメージ*から VM を作成することができます。 特殊化されたディスクから VM を作成する方法については、以下を参照してください。
 
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
-- [特殊化された VHD ディスクからの VM の作成](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [特殊化された VHD ディスクからの VM の作成](./create-vm-specialized-portal.md)
 
 一般化されたイメージを作成する場合は、Sysprep を実行する必要があります。 詳しくは、「[How to use Sysprep: An Introduction](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))」 (Sysprep の使用方法: 概要) をご覧ください。
 
@@ -488,6 +488,7 @@ Windows ベースのコンピューターにインストールされているロ
 
 1. Windows VM にサインインします。
 1. PowerShell セッションを管理者として実行します。
+1. panther ディレクトリ (C:\Windows\Panther) を削除します。
 1. ディレクトリを `%windir%\system32\sysprep` に変更します 次に、`sysprep.exe` を実行します。
 1. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
 
@@ -519,4 +520,4 @@ Windows ベースのコンピューターにインストールされているロ
 ## <a name="next-steps"></a>次のステップ
 
 - [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)
-- [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](troubleshoot-activation-problems.md)
+- [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](../troubleshooting/troubleshoot-activation-problems.md)

@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118938"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320053"
 ---
 # <a name="managed-application-metered-billing"></a>マネージド アプリケーションの従量制課金 
 
@@ -109,21 +111,13 @@ Marketplace の測定サービスで使用されるディメンションは、�
 
 ## <a name="get-support"></a>サポートを受ける
 
-次のいずれかのケースが該当する場合は、サポート チケットを開くことができます。
+次のいずれかの問題が発生した場合は、サポート チケットを開くことができます。
 
 * Marketplace の測定サービス API に関する技術的な問題。
 * お客様の側でのエラーまたはバグが原因でエスカレートする必要がある問題 (例: 間違った使用状況イベント)。
 * 従量制課金に関連するその他の問題。
 
-サポート チケットを送信するには、次の手順に従ってください。
-
-1. [サポート ページ](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。 マーケットプレース サポートのため、製品ファミリを **[Cloud and Online Services]\(クラウドとオンライン サービス\)** として、製品を **[Marketplace パブリッシャー]** として指定します。 この事前設定されたドロップダウン メニューの選択は変更しないでください。
-2. [Select the product version]\(製品バージョンの選択\) で、 **[Live offer management]\(ライブ オファー管理\)** を選択します。
-3. [Select a category that best describe the issue]\(問題を最もよく表しているカテゴリを選択する\) で、 **[Azure Applications offer] (Azure アプリケーション オファー)** を選択します。
-4. [Select a problem that best describes the issue]\(問題を最もよく表している問題を選択する\) で、 **[metered billing]\(従量制課金\)** を選択します。
-5. **[次へ]** を選択すると、 **[問題の詳細]** ページが表示され、問題の詳細を入力できます。
-
-発行元サポート オプションについては、「[パートナー センターでの商業マーケットプレース プログラムのサポート](support.md)」をご覧ください。
+「[パートナー センターでの商業マーケットプレース プログラムのサポート](./support.md)」の手順に従って、公開元のサポート オプションを理解し、Microsoft のサポート チケットを開きます。
 
 ## <a name="next-steps"></a>次のステップ
 

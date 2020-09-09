@@ -1,20 +1,20 @@
 ---
 title: マップに多角形レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK で地図上に多角形およびマルチ ポリゴンをレンダリングする方法について説明します。
-author: Philmea
-ms.author: philmea
+description: マップに多角形または円を追加する方法について説明します。 Azure Maps Web SDK を使用して幾何学図形をカスタマイズし、それらの更新や維持を容易にする方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 58262be34a716a04e9779454a30e845d691f3a6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648529"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037713"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>マップに多角形レイヤーを追加する
 

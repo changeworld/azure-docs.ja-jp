@@ -4,15 +4,16 @@ description: EA のお客様が Azure Marketplace を使用する方法につい
 author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: acb818cf2a892a3a71f2f59b0a44041767b846d0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 91079310d4d566a65c6e8bc7f913ba92d04dece1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044925"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689934"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 

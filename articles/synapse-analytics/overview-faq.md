@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807878"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287500"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (ワークスペース プレビュー) のよく寄せられる質問
 
@@ -32,6 +32,8 @@ A:Azure Synapse は、BI、AI、および継続的インテリジェンスのた
 - すべてのレイヤーのワークスペース アクティビティで発生するイベントを容易に監視し、最適化、対応、デバッグをすばやく行う。
 - エンジンをまたいでメタデータを管理する。 Spark テーブルを作成すると、ご自分の Azure Synapse データベースでそれを自動的に使用できるようになります。
 - 一元的なユーザー エクスペリエンスを通じてデータを操作する。 Synapse Studio では、ビッグ データ開発者、データ エンジニア、DBA、データ アナリスト、データ サイエンティストが同じプラットフォームに集約されます。
+
+詳しくは、[Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is) に関する記事をご覧ください。
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>Q:Azure Synapse Analytics の主なコンポーネントは何ですか
 

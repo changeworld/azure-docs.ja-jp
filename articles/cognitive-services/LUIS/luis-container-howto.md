@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039009"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547394"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
 
@@ -26,7 +26,7 @@ Language Understanding (LUIS) コンテナーは、トレーニング済みま�
 
 [![Cognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +53,7 @@ LUIS コンテナーを実行するには、次の前提条件を確認してく
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
-このコンテナーでは、以下の設定に関して最小値と推奨値がサポートされます。
+次の表は、コンテナー ホストの最小値と推奨値の一覧です。 要件は、トラフィック量によって変わる場合があります。
 
 |コンテナー| 最小値 | 推奨 | TPS<br>(最小、最大)|
 |-----------|---------|-------------|--|

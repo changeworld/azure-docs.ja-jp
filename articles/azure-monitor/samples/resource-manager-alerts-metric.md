@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515378"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322297"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Monitor のメトリック アラート ルール用の Resource Manager テンプレート サンプル
 
@@ -23,7 +23,7 @@ ms.locfileid: "86515378"
 メトリック アラート ルールで使用可能なリソース一覧については、「[Azure Monitor のメトリック アラートでサポートされるリソース](../platform/alerts-metric-near-real-time.md)」を参照してください。 アラート ルールのスキーマとプロパティについては、「[メトリック アラート - 作成または更新](/rest/api/monitor/metricalerts/createorupdate)」を参照してください。
 
 > [!NOTE]
-> リソースの種類のメトリック アラートを作成するためのリソース テンプレート、つまり Azure Log Analytics ワークスペース `Microsoft.OperationalInsights/workspaces` には、追加の手順が必要です。 詳細については、[ログのメトリック アラート - リソース テンプレート編](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)に関するページを参照してください。
+> リソースの種類のメトリック アラートを作成するためのリソース テンプレート、つまり Azure Log Analytics ワークスペース `Microsoft.OperationalInsights/workspaces` には、追加の手順が必要です。 詳細については、[ログのメトリック アラート - リソース テンプレート編](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)に関するページを参照してください。
 
 
 
@@ -3127,7 +3127,7 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
 
 
 ## <a name="availability-test-with-metric-alert"></a>メトリック アラートを使用した可用性テスト
-[Application Insights 可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)を使用すると、世界中のさまざまな場所から Web サイトやアプリケーションの可用性を監視することができます。 可用性テストに失敗した場所が所定の数に達すると、可用性テスト アラートから通知が届きます。 可用性テスト アラートの対象となるリソースの種類は、メトリック アラートと同じです (Microsoft.Insights/metricAlerts)。 次のサンプルでは、単純な可用性テストおよび関連するアラートを作成します。
+[Application Insights 可用性テスト](../app/monitor-web-app-availability.md)を使用すると、世界中のさまざまな場所から Web サイトやアプリケーションの可用性を監視することができます。 可用性テストに失敗した場所が所定の数に達すると、可用性テスト アラートから通知が届きます。 可用性テスト アラートの対象となるリソースの種類は、メトリック アラートと同じです (Microsoft.Insights/metricAlerts)。 次のサンプルでは、単純な可用性テストおよび関連するアラートを作成します。
 
 > [!NOTE]
 > `&amp`; は、& の HTML エンティティ参照です。 URL パラメーターは、1 つの & で分離されていますが、HTML で URL を記述した場合は、エンコードする必要があります。 そのため、pingURL パラメーターの値に "&" が含まれている場合は、"`&amp`;" を使用してエスケープする必要があります。
@@ -3266,3 +3266,4 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
 - [Azure Monitor の他のサンプル テンプレートを入手します](resource-manager-samples.md)。
 - [アラートの詳細を確認する](../platform/alerts-overview.md)
 - [Resource Manager テンプレートを使用してアクション グループを作成するサンプルを入手します](resource-manager-action-groups.md)
+

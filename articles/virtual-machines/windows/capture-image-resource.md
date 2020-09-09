@@ -5,16 +5,16 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508799"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236609"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
@@ -39,13 +39,15 @@ Windows VM を一般化するには、次の手順に従います。
 
 1. Windows VM にサインインします。
    
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを `%windir%\system32\sysprep` に変更し、`sysprep.exe`を実行します。
+2. 管理者としてコマンド プロンプト ウィンドウを開きます。 
+
+3. panther ディレクトリ (C:\Windows\Panther) を削除します。 次に、ディレクトリを %windir%\system32\sysprep に変更して、`sysprep.exe` を実行します。
    
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスを選択します。
+4. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスを選択します。
    
-4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
+5. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
    
-5. **[OK]** を選択します。
+6. **[OK]** を選択します。
    
     ![Sysprep の開始](./media/upload-generalized-managed/sysprepgeneral.png)
 

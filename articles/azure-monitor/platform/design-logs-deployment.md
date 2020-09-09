@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201285"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551324"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -25,7 +25,7 @@ Log Analytics ワークスペースには次の情報が示されます。
 
 * データ ストレージの地理的な場所。
 * 推奨される設計戦略のいずれかに従ってさまざまなユーザーにアクセス権を付与することによるデータの分離。
-* [価格レベル](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[リテンション期間](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)、[データ キャッピング](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)などの設定の構成のスコープ。
+* [価格レベル](./manage-cost-storage.md#changing-pricing-tier)、[リテンション期間](./manage-cost-storage.md#change-the-data-retention-period)、[データ キャッピング](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)などの設定の構成のスコープ。
 
 この記事では、設計と移行に関する考慮事項の詳しい概要、アクセス制御の概要、および IT 組織に推奨される設計の実装について説明します。
 
@@ -47,12 +47,12 @@ Log Analytics ワークスペースには次の情報が示されます。
 
 Log Analytics エージェントを使用してデータを収集している場合は、エージェントのデプロイを計画するために次のことを理解しておく必要があります。
 
-* Windows エージェントからデータを収集するには、[1 つまたは複数のワークスペースにレポートするように各エージェントを構成](../../azure-monitor/platform/agent-windows.md)できます。これは、System Center Operations Manager 管理グループにレポートしている場合でも同様です。 Windows エージェントでは、最大 4 つのワークスペースを報告できます。
+* Windows エージェントからデータを収集するには、[1 つまたは複数のワークスペースにレポートするように各エージェントを構成](./agent-windows.md)できます。これは、System Center Operations Manager 管理グループにレポートしている場合でも同様です。 Windows エージェントでは、最大 4 つのワークスペースを報告できます。
 * Linux エージェントでは、マルチホームがサポートされず、1 つのワークスペースにしかレポートできません。
 
 System Center Operations Manager 2012 R2 以降を使用している場合:
 
-* 各 Operations Manager 管理グループは、[1 つのワークスペースにのみ接続](../platform/om-agents.md)できます。 
+* 各 Operations Manager 管理グループは、[1 つのワークスペースにのみ接続](./om-agents.md)できます。 
 * 管理グループにレポートしている Linux コンピューターは、Log Analytics ワークスペースに直接レポートするように構成する必要があります。 Linux コンピューターが既にワークスペースに直接レポートしており、それらを Operations Manager で監視する場合は、次の手順に従って、[Operations Manager の管理グループにレポート](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)します。 
 * Windows コンピューターに Log Analytics Windows エージェントをインストールし、ワークスペースに統合された Operations Manager と別のワークスペースの両方にレポートさせることができます。
 
@@ -127,17 +127,25 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 
 ## <a name="ingestion-volume-rate-limit"></a>取り込みボリュームと取り込み率の制限
 
-Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 インジェスト率の既定のしきい値は、ワークスペースあたり **6 GB/分**に設定されています。 これは概算値であり、実際のサイズはログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 この上限は、エージェントまたは[データ コレクター API](data-collector-api.md) から送信されるデータには適用されません。
+Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ボリューム レート制限は、マルチテナント環境における突然のインジェスト スパイクから Azure Monitor の顧客を隔離するためのものです。 ワークスペースでは、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が定義されており、これは約 **6 GB/分** (非圧縮) に変換されます。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 ボリューム レート制限は、[診断設定](diagnostic-settings.md)、[Data Collector API](data-collector-api.md) またはエージェントを使用して Azure リソースから送信されたかどうかにかかわらず、すべてのインジェスト データに適用されます。
 
-1 つのワークスペースに高い比率でデータを送信すると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの*操作*テーブルにイベントが送信されます。 インジェスト ボリュームがインジェスト率の制限を超えている場合、または間もなくそれに達すると予測される場合は、LAIngestionRate@microsoft.com にメールを送信するかサポート リクエストを開いて、ワークスペースの増加を要求できます。
- 
-ワークスペース内でのそのようなイベントの通知を受け取るには、ゼロより大きい結果数のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。
+ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータを送信すると、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開いて、その引き上げをリクエストできます。 
 
-``` Kusto
+ワークスペースでインジェスト ボリューム レート制限に近づいたときまたは達したときに通知を受けるには、ゼロより大きい結果数、5 分の評価期間、5 分の頻度のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。
+
+インジェストボリューム レートがしきい値の 80% に到達:
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
+
+インジェストボリューム レートがしきい値に到達:
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 
 ## <a name="recommendations"></a>推奨事項
@@ -166,3 +174,4 @@ Application Insights や Azure Monitor for VMs など、異なるチームによ
 ## <a name="next-steps"></a>次のステップ
 
 このガイドで推奨されているセキュリティのアクセス許可と制御を実装するには、[ログへのアクセスの管理](manage-access.md)に関する記事を参照してください。
+

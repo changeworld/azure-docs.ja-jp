@@ -116,9 +116,6 @@
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
       href: samples-cli.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: マイクロサービスを理解する
@@ -143,6 +140,9 @@
           href: cluster-security-certificates.md
         - name: Service Fabric での証明書管理
           href: cluster-security-certificate-management.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
           href: security-baseline.md
     - name: 用語
@@ -632,7 +632,7 @@
             - name: Azure Pipelines を使用した継続的インテグレーションの設定
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Jenkins を使用した Linux アプリケーションのデプロイ
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: リバース プロキシの設定と構成
       items:
         - name: リバース プロキシの設定と構成
@@ -668,7 +668,7 @@
                 - name: プログラムによるスケールアウト
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: プライマリ ノード タイプのスケールアップ
-                  href: service-fabric-scale-up-node-type.md
+                  href: service-fabric-scale-up-primary-node-type.md
                 - name: ノード タイプの追加
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
                 - name: ノード タイプを削除する
@@ -892,6 +892,9 @@
           href: service-fabric-service-model-schema-element-groups.md
     - name: 環境変数
       href: service-fabric-environment-variables-reference.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

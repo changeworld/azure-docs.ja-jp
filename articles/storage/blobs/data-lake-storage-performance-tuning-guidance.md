@@ -1,6 +1,6 @@
 ---
 title: パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する | Microsoft Docs
-description: Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン
+description: パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する方法を理解します。 データの取り込み、データセットの構造などについて説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106392"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905407"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
 
@@ -47,7 +47,7 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (マッパー)   | [リンク](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [リンク](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>データ セットの構成
 

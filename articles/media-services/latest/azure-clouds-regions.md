@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196235"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258658"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 が存在するクラウドとリージョン
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services v3 は、Azure Resource Manager マニフェストを通して、グローバル Azure、Azure Government、Azure Germany、Azure China 21Vianet で使用できます。 ただし、すべての Azure クラウドで Media Services のすべての機能を使用できるわけではありません。 このドキュメントでは、Media Services v3 の主要コンポーネントの使用可能性を示します。
 
@@ -53,7 +55,7 @@ Azure Media Services v3 は、Azure Resource Manager マニフェストを通し
 
 ### <a name="region-code-name"></a>リージョン コード名
 
-**location** パラメーターを指定する必要がある場合は、**location** 値としてリージョンのコード名を指定する必要があります。 お使いのアカウントが存在し、呼び出しがルーティングされるリージョンのコード名を取得するには、次の行を [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) で実行できます
+**location** パラメーターを指定する必要がある場合は、**location** 値としてリージョンのコード名を指定する必要があります。 お使いのアカウントが存在し、呼び出しがルーティングされるリージョンのコード名を取得するには、次の行を [Azure CLI](/cli/azure/?view=azure-cli-latest) で実行できます
 
 ```azurecli-interactive
 az account list-locations
@@ -80,32 +82,32 @@ az account list-locations
 
 ### <a name="global-azure"></a>グローバル Azure
 
-|エンドポイント||
-| --- | --- |
+| サービス | エンドポイント |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | 認証 | `https://login.microsoftonline.com/` |
 | トークン対象ユーザー | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
-|エンドポイント||
-| --- | --- |
+| サービス | エンドポイント |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | 認証 | `https://login.microsoftonline.us/` |
 | トークン対象ユーザー | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Germany
 
-| エンドポイント ||
-| --- | --- |  
+| サービス | エンドポイント |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | 認証 | `https://login.microsoftonline.de/` |
 | トークン対象ユーザー | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
-|エンドポイント||
-| --- | --- |
+| サービス | エンドポイント |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 認証 | `https://login.chinacloudapi.cn/` |
 | トークン対象ユーザー |  `https://management.core.chinacloudapi.cn/` |
