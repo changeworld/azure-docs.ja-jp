@@ -1,83 +1,48 @@
 ---
-title: IoT プラグ アンド プレイ プレビュー モデル検出を実装する | Microsoft Docs
-description: ソリューション ビルダーとして、IoT プラグ アンド プレイ モデル検出をソリューションに実装する方法について説明します。
-author: prashmo
-ms.author: prashmo
+title: IoT プラグ アンド プレイ モデルをソリューションに使用する | Microsoft Docs
+description: ソリューション ビルダーが IoT プラグ アンド プレイ モデルを IoT ソリューションにどのように使用できるかについて説明します。
+author: arunmannengal
+ms.author: arunmann
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337383"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475245"
 ---
-# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT プラグ アンド プレイ プレビュー モデル検出を IoT ソリューションに実装する
+# <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Iot ソリューションで IoT プラグ アンド プレイを使用する
 
-この記事では、ソリューション ビルダーが IoT プラグ アンド プレイ プレビュー モデル検出を IoT ソリューションに実装する方法について説明します。 モデル検出では、次の方法について記述します。
+この記事では、IoT ソリューションにおいて、IoT プラグ アンド プレイ デバイスのモデル ID を識別し、次にそのモデル定義を取得する方法について説明します。
 
-- IoT プラグ アンド プレイ デバイスで、モデル ID を登録します。
-- IoT ソリューションを使用して、デバイスに実装されているインターフェイスを取得します。
+IoT ソリューションには、大きく分けて次の 2 つのカテゴリがあります。
 
-IoT ソリューションには、大きく分けて 2 つのカテゴリがあります。
+- "*専用のソリューション*" は、ソリューションに接続する IoT プラグ アンド プレイ デバイスの既知のモデル セットで機能します。 ソリューションを開発するときに、これらのモデルを使用します。
 
-- "*専用の IoT ソリューション*" は、既知の IoT プラグ アンド プレイ デバイス モデルのセットと連携して機能します。
+- "*モデル駆動型ソリューション*" は、任意の IoT プラグ アンド プレイ デバイスのモデルで機能します。 モデル駆動型ソリューションの構築はより複雑ですが、今後追加される可能性がある任意のデバイスでソリューションが機能するという利点があります。 モデル駆動型 IoT ソリューションでは、モデルを取得し、それを使用することで、デバイスが実装するテレメトリ、プロパティ、およびコマンドが決定されます。
 
-- "*モデル駆動型 IoT ソリューション*" は、任意の IoT プラグ アンド プレイ デバイスで使用できます。 モデル駆動型ソリューションのビルドはより複雑ですが、今後追加されるすべてのデバイスでソリューションが動作するという利点があります。
+IoT プラグ アンド プレイ モデルを使用するには、IoT ソリューションで次のことを行います。
 
-    モデル駆動型 IoT ソリューションをビルドするには、IoT プラグ アンド プレイ インターフェイス プリミティブ (テレメトリ、プロパティ、コマンド) に対してロジックを構築する必要があります。 ソリューションのロジックは、複数のテレメトリ、プロパティ、コマンドの機能を組み合わせることによってデバイスを表します。
+1. ソリューションに接続されている IoT プラグ アンド プレイ デバイスによって実装されるモデルのモデル ID を識別します。
 
-この記事では、両方の種類のソリューションでモデル検出を実装する方法について説明します。
+1. そのモデル ID を使用して、接続されているデバイスのモデル定義をモデル リポジトリまたはカスタム ストアから取得します。
 
-## <a name="model-discovery"></a>モデル検出
+## <a name="identify-model-id"></a>モデル ID を識別する
 
-デバイスに実装されているモデルを検出するには、ソリューションでイベントベースの検出またはツインベースの検出を使用することで、モデル ID を取得します。
+IoT プラグ アンド プレイ デバイスが IoT Hub に接続されると、それによって実装されているモデルのモデル ID が IoT Hub に登録されます。
 
-### <a name="event-based-discovery"></a>イベントベースの検出
+IoT Hub は、デバイス接続フローの一環としてデバイス モデル ID を使用してソリューションに通知します。
 
-IoT プラグ アンド プレイ デバイスから IoT Hub に接続すると、実装されているモデルが登録されます。 この登録により、[Digital Twin 変更イベント](concepts-digital-twin.md#digital-twin-change-events)通知が生成されます。 デジタル ツイン イベントのルーティングを有効にする方法については、「[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)」を参照してください。
+ソリューションでは、次の 3 つの方法のいずれかを使用して、IoT プラグ アンド プレイ デバイスのモデル ID を取得できます。
 
-このソリューションでは、次のスニペットに示すイベントを使用して、接続している IoT プラグ アンド プレイ デバイスについて把握し、そのモデル ID を取得することができます。
+### <a name="get-device-twin-api"></a>Get Device Twin API
 
-```json
-iothub-connection-device-id:sample-device
-iothub-enqueuedtime:7/22/2020 8:02:27 PM
-iothub-message-source:digitalTwinChangeEvents
-correlation-id:100f322dc2c5
-content-type:application/json-patch+json
-content-encoding:utf-8
-[
-  {
-    "op": "replace",
-    "path": "/$metadata/$model",
-    "value": "dtmi:com:example:TemperatureController;1"
-  }
-]
-```
+このソリューションでは、[Get Device Twin](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) API を使用して、IoT プラグ アンド プレイ デバイスのモデル ID を取得することができます。
 
-このイベントは、デバイス モデル ID が追加または更新されるとトリガーされます。
-
-### <a name="twin-based-discovery"></a>ツインベースの検出
-
-ソリューションで特定のデバイスの機能について把握するには、[Get Digital Twin](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API を使用して情報を取得することができます。
-
-次のデジタル ツイン スニペットでは、`$metadata.$model` に IoT プラグ アンド プレイ デバイスのモデル ID が含まれています。
-
-```json
-{
-    "$dtId": "sample-device",
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
-次のスニペットに示すように、ソリューションで **Get Twin** を使用して、デバイス ツインからモデル ID を取得することもできます。
+次のデバイス ツイン応答スニペットでは、IoT プラグ アンド プレイ デバイスのモデル ID が `modelId` に含まれています。
 
 ```json
 {
@@ -101,16 +66,79 @@ content-encoding:utf-8
 }
 ```
 
-## <a name="model-resolution"></a>モデルの解決
+### <a name="get-digital-twin-api"></a>Get Digital Twin API
 
-ソリューションでは、モデルの解決を使用して、モデル ID からモデルを構成するインターフェイスにアクセスします。 
+ソリューションでは、[Get Digital Twin](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API を使用して、IoT プラグ アンド プレイ デバイスによって実装されたモデルのモデル ID を取得できます。
 
-- ソリューションでは、これらのインターフェイスをファイルとしてローカル フォルダーに保存することを選択できます。 
-- ソリューションには[モデル リポジトリ](concepts-model-repository.md)を使用できます。
+次のデジタル ツイン応答スニペットでは、IoT プラグ アンド プレイ デバイスのモデル ID が `$metadata.$model` に含まれています。
+
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
+
+### <a name="digital-twin-change-event-notification"></a>デジタル ツインの変更イベント通知
+
+デバイスの接続により、[Digital Twin 変更イベント](concepts-digital-twin.md#digital-twin-change-events)通知が生成されます。 ソリューションは、このイベント通知をサブスクライブする必要があります。 デジタル ツイン イベントのルーティングを有効にする方法については、「[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)」を参照してください。
+
+このソリューションでは、次のスニペットに示すイベントを使用して、接続している IoT プラグ アンド プレイ デバイスについて把握し、そのモデル ID を取得することができます。
+
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
+
+## <a name="retrieve-a-model-definition"></a>モデル定義を取得する
+
+ソリューションでは、上記で識別されたモデル ID を使用して、対応するモデル定義が取得されます。
+
+ソリューションでモデル定義を取得するには、次のいずれかのオプションを使用します。
+
+### <a name="model-repository"></a>モデル リポジトリ
+
+ソリューションでは、[モデル リポジトリ](concepts-model-repository.md)を使用して、モデルが取得されます。 デバイス ビルダーまたはソリューション ビルダーのいずれも、ソリューションがモデルを取得できるように、モデルを事前にリポジトリにアップロードしておく必要があります。
+
+新しいデバイス接続用のモデル ID を識別したら、次の手順を行います。
+
+1. モデル リポジトリからのモデル ID を使用して、モデル定義を取得します。 詳細については、[モデルの取得](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)に関するページを参照してください。
+
+1. 接続されたデバイスのモデル定義を使用すれば、デバイスの機能を列挙できます。
+
+1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service-node.md)のを許可することができます。
+
+### <a name="custom-store"></a>カスタム ストア
+
+ソリューションでは、これらのモデル定義をローカル ファイル システムまたはパブリック ファイル ストアに格納することも、カスタム実装を使用することもできます。
+
+新しいデバイス接続用のモデル ID を識別したら、次の手順を行います。
+
+1. ご利用のカスタム ストアからのモデル ID を使用して、モデル定義を取得します。
+
+1. 接続されたデバイスのモデル定義を使用すれば、デバイスの機能を列挙できます。 
+
+1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service-node.md)のを許可することができます。  
 
 ## <a name="next-steps"></a>次のステップ
 
-ここまでで IoT ソリューションのモデル検出について学びました。次は [Azure IoT プラットフォーム](overview-iot-plug-and-play.md)の詳細について学び、別の機能をソリューションに使用してみてください。
+IoT プラグ アンド プレイ モデルを IoT ソリューションに統合する方法を学習したので、次に推奨されるいくつかのステップを以下に示します。
 
 - [ソリューションからのデバイスの操作](quickstart-service-node.md)
 - [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)

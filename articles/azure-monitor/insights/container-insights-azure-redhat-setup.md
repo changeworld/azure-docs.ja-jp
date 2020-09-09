@@ -3,14 +3,14 @@ title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v3.x
 description: この記事では、Azure Red Hat OpenShift バージョン 3 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317979"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816645"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する 
 
 Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エンジン クラスター用の監視エクスペリエンスを提供するものです。 この記事では、[Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3 およびバージョン 3 のサポートされている最新バージョンでホストされている Kubernetes クラスターの監視を有効にし、類似した監視エクスペリエンスを実現する方法について説明します。
 

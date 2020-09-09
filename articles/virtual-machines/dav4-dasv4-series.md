@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 06fe0cf14346b9a1a5a1f3c093abeec1d1be159a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2548f002b2006b5d241c323ae880704bbe95301e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292502"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649926"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 および Dasv4 シリーズ
 
@@ -81,7 +81,7 @@ Easv4 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセ
 
 料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報:[ディスクの種類](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>次のステップ
 

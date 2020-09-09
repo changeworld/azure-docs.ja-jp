@@ -3,12 +3,12 @@ title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371245"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080815"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)
 
@@ -57,7 +57,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 1. コマンド プロンプトで、次のコマンドを実行します。 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
 2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元する場合のみです。
 
@@ -66,7 +66,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 1. まず、名前空間に対して nslookup を実行します。
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
 

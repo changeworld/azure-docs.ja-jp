@@ -1,7 +1,7 @@
 ---
 title: 一般的なセキュリティ要件を解決するためのプレイブック
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: この記事では、Azure SQL Database および Azure SQL Managed Instance の一般的なセキュリティ要件とベスト プラクティスについて説明します
+description: この記事では、Azure SQL Database および Azure SQL Managed Instance の一般的なセキュリティ要件とベスト プラクティスについて説明します。
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371789"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541721"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -291,7 +291,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
 - システムにアクセスするユーザーの包括的階層 (および自動化されたプロセス) を特定します。
 
 - 必要なユーザー グループにしたがってロールを作成し、ロールにアクセス許可を割り当てます。
-  - Azure portal での、または PowerShell 自動化を使用した管理レベルのタスクには、RBAC ロールを使用します。 要件に一致する組み込みロールを見つけるか、使用可能なアクセス許可を使用して Azure カスタム ロールを作成します。
+  - Azure portal での、または PowerShell 自動化を使用した管理レベルのタスクには、Azure ロールを使用します。 要件に一致する組み込みロールを見つけるか、使用可能なアクセス許可を使用して Azure カスタム ロールを作成します。
   - サーバー全体のタスク (新しいログイン、データベースの作成) のサーバー ロールをマネージド インスタンスに作成します。
   - データベース レベルのタスクに対するデータベース ロールを作成します。
 
@@ -318,7 +318,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
 
 - 組み込みロールで付与されるアクセス許可が多すぎる場合や不十分な場合は、ユーザー定義ロールを作成して使用します。
 
-- ロールの割り当ては、T-SQL の SQL エージェント ジョブ ステップ内で、または RBAC ロール用の Azure PIM を使用して一時的に行うこともできます。これは、動的な職務の分離 (DSD) とも呼ばれます。
+- ロールの割り当ては、T-SQL の SQL エージェント ジョブ ステップ内で、または Azure ロール用の Azure PIM を使用して一時的に行うこともできます。これは、動的な職務の分離 (DSD) とも呼ばれます。
 
 - DBA が暗号化キーやキー ストアにアクセスできないことを確認し、次に、キーにアクセスできるセキュリティ管理者がデータベースにアクセスできないことを確認します。 [拡張キー管理 (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) を使用すると、このような分離を簡単に実現できます。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用して EKM を実装できます。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328030"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824581"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>PowerShell を使用して Azure Monitor for VMs を有効にする
 この記事では、PowerShell を使用して、Azure 仮想マシンで Azure Monitor for VMs を有効にする方法について説明します。 この手順は、次に対して使用できます。
@@ -35,7 +35,7 @@ ms.locfileid: "87328030"
 
 このスクリプトは、仮想マシンまたは仮想マシン スケール セットごとに、Log Analytics エージェントと依存関係エージェント用の VM 拡張機能が既にインストールされているかどうかを確認します。 両方の拡張機能がインストールされている場合、このスクリプトはその再インストールを試みます。 両方の拡張機能がインストールされていない場合、このスクリプトはそれらをインストールします。
 
-`Enable-AzureRM` 互換性エイリアスを有効にした Azure PowerShell モジュール Az バージョン 1.0.0 以降を使用していることを確認します。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+`Enable-AzureRM` 互換性エイリアスを有効にした Azure PowerShell モジュール Az バージョン 1.0.0 以降を使用していることを確認します。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 スクリプトの引数の詳細と使用例の一覧を取得するには、`Get-Help` を実行します。
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: edb84810b7391242e9ac90b1502c18f9af4e4698
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433172"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641043"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics での一般的なクエリ パターン
 
@@ -863,10 +863,10 @@ From
 
 ```SQL
 SELECT *
-FROM intput TIMESTAMP BY time OVER ATM_id
+FROM input TIMESTAMP BY time OVER ATM_id
 MATCH_RECOGNIZE (
-    PARTITON BY ATM_id
     LIMIT DURATION(minute, 1)
+    PARTITON BY ATM_id
     MEASURES
         First(Warning.ATM_id) AS ATM_id,
         First(Warning.Operation_Id) AS First_Warning_Operation_id,

@@ -5,27 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/10/2019
-ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289094"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759735"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
 
 > [!IMPORTANT]
-> Azure Monitor のビューは段階的に廃止され、追加機能を提供する[ブック](workbooks-overview.md)に置き換えられています。 既存のビューをブックに変換する方法の詳細については、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](view-designer-conversion-overview.md)」を参照してください。 今後数か月間で実行される手順については、次の表を参照してください。
-> 
-> | Change | この意味 | 予定日 |
-> |:---|:---|:---|
-> | ビュー デザイナー経由で作成される新しいビューの作成が無効になります。 | Azure portal で新しいカスタム ビューを作成して保存できなくなります。| 2020 年 11 月 |
-> | ビュー デザイナーを使用した既存のビューの編集関数が無効になります。 | 既存のカスタム ビューを変更して、変更を保存できなくなります。 | 2020 年 11 月 |
-> | Log Analytics ワークスペースへのビューのデプロイが無効になります | ARM を使用してカスタム ビューを Log Analytics ワークスペースにデプロイできなくなります。 | 2021 年 3 月 |
-> | Azure portal でビュー デザイナーを使用できなくなります | ポータルのエクスペリエンスで、ビュー デザイナーはサポートされなくなります。 | 2021 年 6 月 |
-> | ワークスペースの概要からカスタム ビューが削除されます | カスタム ビュー データにアクセスできなくなります。 | 2021 年 12 月 |
+> Azure Monitor のビューは、追加の機能が提供される[ブック](workbooks-overview.md)に切り替えられました。 既存のビューをブックに変換する方法の詳細については、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](view-designer-conversion-overview.md)」を参照してください。
  
 
 

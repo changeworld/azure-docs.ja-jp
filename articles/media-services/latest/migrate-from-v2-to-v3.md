@@ -3,26 +3,28 @@ title: Azure Media Services v2 から v3 への移行 | Microsoft Docs
 description: この記事では、Azure Media Services v3 で導入された変更点と、2 つのバージョンの違いについて説明します。 Media Services v2 から v3 への移行のガイダンスも提供します。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
 keywords: Azure Media Services, ストリーム, ブロードキャスト, ライブ, オフライン
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: c9ec677e356f5d4e70a49c9de10f0fdb2039917d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: b4e79a2aab5ca72ff8263bfc5734757bbff41005
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078062"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297741"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >この URL (`https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us`) をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 

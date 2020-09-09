@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012257"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845699"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process の活用: Azure Synapse Analytics の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で Azure Synapse Analytics を使用して、機械学習モデルを構築し、デプロイする方法を説明します。 構築される二項分類モデルでは、乗車でチップが支払われるかどうかを予測します。  モデルには、多クラス分類 (チップがあるかどうかを問わない) と回帰 (支払われたチップ金額の分布) が含まれます。

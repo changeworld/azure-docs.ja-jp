@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564046"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376640"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -388,7 +388,7 @@ public class QueueTriggerDemo {
 - メッセージが見つかると、ランタイムは 2 秒間待機してから、別のメッセージを確認します
 - メッセージが見つからない場合は、約 4 秒間待機してから再試行します。
 - 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。
-- 最大待ち時間は、[host.json ファイル](functions-host-json.md#queues)内の `maxPollingInterval` プロパティで構成できます。
+- 最大待ち時間は、[host.json ファイル](functions-host-json-v1.md#queues)内の `maxPollingInterval` プロパティで構成できます。
 
 ローカル開発の場合、最大ポーリング間隔は既定で 2 秒に設定されます。
 
@@ -400,7 +400,7 @@ public class QueueTriggerDemo {
 
 新しいバッチを取得するためのバッチ サイズとしきい値は、[host.json ファイル](functions-host-json.md#queues)で構成できます。 関数アプリ内のキューによってトリガーされる関数の並列実行を最小限に抑えたい場合は、このバッチ サイズを 1 に設定できます。 この設定によってコンカレンシーが解消されるのは、関数アプリが 1 つの仮想マシン (VM) 上で実行される場合に限ります。 
 
-キュー トリガーは、関数がキュー メッセージを複数回処理することを自動的に防止します。関数をべき等として記述する必要はありません。
+キュー トリガーは、関数がキュー メッセージを複数回同時に処理することを自動的に防止します。
 
 ## <a name="hostjson-properties"></a>host.json プロパティ
 
@@ -408,7 +408,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>次のステップ
 
-- [キュー ストレージ メッセージを書き込む (出力バインド)](./functions-bindings-storage-blob-output.md)
+- [BLOB ストレージ メッセージの書き込み (出力バインド)](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

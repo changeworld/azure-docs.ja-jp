@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: 21eb3d9862c8fa2b840117d5f0e9fbd0ad2214c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4cdc3efc766daff38b566e71f06dc4db0f38fe7a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091744"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255513"
 ---
-# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services v2 REST API 呼び出し用に Postman を構成する  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services v2 REST API 呼び出し用に Postman を構成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313338"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795240"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -71,7 +71,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`nbf` |  int、UNIX タイムスタンプ | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。|
 |`exp` |  int、UNIX タイムスタンプ | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。  この時刻よりも前でも、リソースによってトークンが拒否される可能性があることに注意してください。たとえば、認証での変更が必要な場合や、トークンの取り消しが検出された場合です。 |
 | `c_hash`| String |コード ハッシュは、ID トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
-|`at_hash`| String |アクセス トークン ハッシュは、ID トークンが OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
+|`at_hash`| String |アクセス トークン ハッシュは、ID トークンが `/authorize` エンドポイントから OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) を参照してください。 これは、`/token` エンドポイントからの ID トークンでは返されません。 |
 |`aio` | 不透明な文字列 | Azure AD がトークン再利用のためにデータの記録に使用する内部の要求。 無視してください。|
 |`preferred_username` | String | ユーザーを表すプライマリ ユーザー名です。 電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。 その値は、変更可能であり、時間の経過と共に変化することがあります。 これは変更可能であるため、この値は、承認の決定には使用できません。 この要求を受け取るには `profile` スコープが必要です。|
 |`email` | String | `email` 要求は、電子メール アドレスを持つゲスト アカウントに対して既定で使用されます。  アプリでは、[オプション要求](active-directory-optional-claims.md)である `email` を使用して、管理対象ユーザー (リソースと同じテナントのユーザー) の電子メール要求を要求できます。  v2.0 エンドポイントでは、アプリで `email` OpenID Connect スコープを要求することもできます (要求を取得するためにオプション要求とスコープの両方を要求する必要はありません)。  電子メール要求では、ユーザーのプロファイル情報からアドレス指定可能なメールのみがサポートされます。 |
@@ -80,7 +80,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`oid` | 文字列、GUID | Microsoft ID システム (ここではユーザー アカウント) のオブジェクトに対する変更不可の識別子です。 この ID によって、複数のアプリケーションでユーザーが一意に識別されます。同じユーザーにサインインする 2 つの異なるアプリケーションは `oid` 要求で同じ値を受け取ります。 Microsoft Graph は、この ID を、指定されたユーザー アカウントの `id` プロパティとして返します。 `oid` では複数のアプリがユーザーを関連付けることができるため、この要求を受け取るには `profile` スコープが必要です。 1 人のユーザーが複数のテナントに存在する場合、そのユーザーのオブジェクト ID はテナントごとに異なります。つまり、ユーザーが同じ資格情報で各アカウントにログインしても、それらは異なるアカウントと見なされます。 `oid` 要求は GUID であり、再利用することはできません。 |
 |`roles`| 文字列の配列 | ログインしているユーザーに割り当てられた一連のロール。 |
 |`rh` | 不透明な文字列 |Azure がトークンの再検証に使用する内部要求。 無視してください。 |
-|`sub` | 文字列、GUID | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 サブジェクトはペアワイズ識別子で、特定のアプリケーション ID に一意です。 1 人のユーザーが 2 つの異なるクライアント ID を使用して 2 つの異なるアプリにサインインすると、そのアプリは、サブジェクト要求に対して 2 つの異なる値を受け取ることになります。 この動作が求められているかどうかは、アーキテクチャやプライバシーの要件によって異なります。 |
+|`sub` | String | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 サブジェクトはペアワイズ識別子で、特定のアプリケーション ID に一意です。 1 人のユーザーが 2 つの異なるクライアント ID を使用して 2 つの異なるアプリにサインインすると、そのアプリは、サブジェクト要求に対して 2 つの異なる値を受け取ることになります。 この動作が求められているかどうかは、アーキテクチャやプライバシーの要件によって異なります。 |
 |`tid` | 文字列、GUID | ユーザーが属している Azure AD テナントを表す GUID です。 職場または学校アカウントの場合、GUID はユーザーが属している組織の不変のテナント ID です。 個人アカウントでは、この値は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 この要求を受け取るには `profile` スコープが必要です。 |
 |`unique_name` | String | トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は特定の時点で一意ですが、電子メールやその他の識別子は再利用される場合があり、この値は他のアカウントで再表示される可能性があるため、表示目的でのみ使用してください。 v1.0 `id_tokens` のみで発行されます。 |
 |`uti` | 不透明な文字列 | Azure がトークンの再検証に使用する内部要求。 無視してください。 |

@@ -3,12 +3,12 @@ title: イベント プロセッサ ホストを使用してイベントを受�
 description: この記事では、チェックポイント処理、リース、および並列でのイベントの読み込みの管理を簡素化する、Azure Event Hubs のイベント プロセッサ ホストについて説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002524"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936182"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
 > [!NOTE]
@@ -192,10 +192,10 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 イベント プロセッサ ホストについて学習した後は、Event Hubs の詳細について次の記事を参照してください。
 
 - Event Hubs の使用
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

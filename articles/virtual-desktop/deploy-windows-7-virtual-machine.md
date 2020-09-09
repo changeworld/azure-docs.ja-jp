@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする - Azure
 description: Windows Virtual Desktop で Windows 7 仮想マシンを構成してデプロイする方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6cb4a31e3360f3f9f8c9ed4684c30295489d27d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285155"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007575"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
 
@@ -24,7 +22,7 @@ Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイする
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、「[Create a host pool with PowerShell](create-host-pools-powershell.md)」 (PowerShell を使用してホスト プールを作成する) の手順に従って、ホスト プールを作成します。 ポータルを使用している場合、「[Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順 1 から 9 までの指示に従ってください。 その後、 **[確認と作成]** を選択し、空のホスト プールを作成します。 
+開始する前に、「[Create a host pool with PowerShell](create-host-pools-powershell.md)」 (PowerShell を使用してホスト プールを作成する) の手順に従って、ホスト プールを作成します。 ポータルを使用している場合、「[Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順 1 から 9 までの指示に従ってください。 その後、 **[確認と作成]** を選択し、空のホスト プールを作成します。
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Windows 7 仮想マシンを構成する
 
@@ -49,9 +47,9 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
      ```
 
 12. [こちら](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0)の指示に従って、登録トークンを取得します。
-      
+
       - 代わりに Azure portal を使用する場合、VM を追加するホスト プールの [概要] ページに進み、そこでトークンを作成することもできます。
-  
+
 13. [Windows 7 用 Windows Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
 14. [Windows 7 用 Windows Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
 15. Windows Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。

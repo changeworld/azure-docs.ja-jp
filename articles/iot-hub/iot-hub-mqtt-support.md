@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307626"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924191"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -437,7 +437,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 ## <a name="next-steps"></a>次のステップ
 
-MQTT プロトコルについて詳しくは、[MQTT のドキュメント](https://mqtt.org/documentation)をご覧ください。
+MQTT プロトコルについて詳しくは、[MQTT のドキュメント](https://mqtt.org/)をご覧ください。
 
 IoT Hub のデプロイの計画に関する詳細については、以下をご覧ください。
 

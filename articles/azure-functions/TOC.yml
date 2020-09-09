@@ -18,7 +18,7 @@
       items:
         - name: Visual Studio Code
           href: ./functions-create-first-function-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
           href: functions-create-first-azure-function-azure-cli.md
@@ -29,7 +29,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: バインディング拡張機能を登録する
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: バインディングの式のパターン
           href: functions-bindings-expressions-patterns.md
         - name: バインディングの戻り値の利用
@@ -174,6 +175,7 @@
               href: functions-develop-vs.md
             - name: コア ツールの開発
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: 関数の作成
           items:
             - name: HTTP トリガー
@@ -272,8 +274,6 @@
           displayName: 'app setting, application setting'
         - name: ランタイム バージョンの設定
           href: set-runtime-version.md
-        - name: 手動による拡張機能の登録
-          href: install-update-binding-extensions-manual.md
         - name: 関数の無効化
           href: disable-function.md
         - name: geo ディザスター リカバリー
@@ -399,6 +399,8 @@
                 - name: 出力
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Dapr
+          href: 'https://github.com/dapr/azure-functions-extension'
         - name: Event Grid
           items:
             - name: 概要
@@ -432,6 +434,8 @@
             - name: 出力
               href: functions-bindings-event-iot-output.md
               displayName: Azure IoT Hubs
+        - name: Kafka
+          href: 'https://github.com/azure/azure-functions-kafka-extension'
         - name: HTTP と webhook
           items:
             - name: 概要
@@ -443,8 +447,6 @@
             - name: 出力
               href: functions-bindings-http-webhook-output.md
               displayName: HTTP
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
           href: functions-bindings-mobile-apps.md
         - name: Notification Hubs
@@ -460,6 +462,8 @@
             - name: 出力
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
+        - name: RabbitMQ
+          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus

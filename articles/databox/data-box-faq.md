@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090758"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823983"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -57,11 +57,23 @@ A.  Data Box を利用できる国や地域については、「[利用可能な
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. Data Box では、どのリージョンでデータを保存できますか?
 A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国、日本、オーストラリア、およびカナダでサポートされています。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
 
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Q. 特定の国の場所にあるソース データを別の国/地域の Azure リージョンにインポートしたり、ある国の Azure リージョンから別の国/地域にデータをエクスポートしたりする方法はありますか?
+
+Data Box は配送先と同じ国/地域内でのデータ インジェストまたはエグレスのみをサポートし、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国/リージョンにも、また EU のどの国/リージョンからも Data Box を配送できます。
+
+たとえばインポート シナリオで、カナダにあるオンプレミスのデータを Azure 米国西部ストレージ アカウントに移行する場合、次のようにして実現できます。
+
+1. カナダでストレージ アカウントを選択することによって、カナダで Data Box を注文します。 デバイスは、カナダの Azure データセンターから、注文の作成時に指定された (カナダの) 出荷先住所に出荷されます。
+
+2. Data Box へのオンプレミス データ コピーが完了したら、そのデバイスをカナダの Azure データセンターに返送します。 Data Box に存在するデータは、注文の作成時に選択したカナダの Azure リージョンの移行先のストレージ アカウントにアップロードされます。
+
+3. その後、AzCopy などのツールを使用して、米国西部のストレージ アカウントにデータをコピーできます。 この手順では、Data Box の課金に含まれていない [Standard Storage](https://azure.microsoft.com/pricing/details/storage/) と [帯域幅の料金](https://azure.microsoft.com/pricing/details/bandwidth/)が発生します。
+
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. Data Box に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box に関して何か問題が発生した場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)にお問い合わせください。
 
 ### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Q. Data Box を紛失しました。 デバイスを紛失した場合に料金は発生しますか?
-A: はい。 デバイスを紛失したり破損したりした場合は料金が発生します。 この料金については、[価格のページ](https://azure.microsoft.com/pricing/details/storage/databox/)および[製品のサービス利用規約](https://www.microsoft.com/licensing/product-licensing/products)内で説明されています。
+A. はい。 デバイスを紛失したり破損したりした場合は料金が発生します。 この料金については、[価格のページ](https://azure.microsoft.com/pricing/details/storage/databox/)および[製品のサービス利用規約](https://www.microsoft.com/licensing/product-licensing/products)内で説明されています。
 
 
 ## <a name="order-device"></a>デバイスの注文
@@ -94,16 +106,16 @@ A. 前回の注文を複製することができます。 複製することで�
 A.  Azure portal で、対象の Data Box の注文に移動し、 **[デバイスの詳細]** に移動します。 ロック解除パスワードをコピーします。 Data Box で、このパスワードを使用してローカル Web UI にログインします。 詳細については、[チュートリアルの Azure Data Box の開梱、配線、接続](data-box-deploy-set-up.md)に関するページを参照してください。
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>Q. Linux ホスト コンピューターを使用して、Data Box に接続してデータをコピーすることはできますか?
-A:  はい。 Data Box を使用して、SMB クライアントと NFS クライアントに接続できます。 詳細については、ホスト コンピューターに関して[サポートされるオペレーティング システム](data-box-system-requirements.md)の一覧を参照してください。
+A.  はい。 Data Box を使用して、SMB クライアントと NFS クライアントに接続できます。 詳細については、ホスト コンピューターに関して[サポートされるオペレーティング システム](data-box-system-requirements.md)の一覧を参照してください。
 
 ### <a name="q-my-data-box-is-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Q. Data Box は配送されましたが、この注文をキャンセルしようと思っています。 [キャンセル] ボタンが利用できないのはなぜでしょうか?
-A.  注文をキャンセルできるのは、Data Box を注文してから、注文が処理される前までです。 Data Box の注文が処理されると、注文はキャンセルできなくなります。 
+A:  注文をキャンセルできるのは、Data Box を注文してから、注文が処理される前までです。 Data Box の注文が処理されると、注文はキャンセルできなくなります。 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>Q. Data Box を複数のホスト コンピューターに同時に接続して、データを転送することはできますか?
 A. はい。 複数のホスト コンピューターを Data Box に接続してデータを転送したり、複数のコピー ジョブを並列で実行することができます。 詳細については、[チュートリアルの Azure Data Box へのデータのコピー](data-box-deploy-copy-data.md)に関するページを参照してください。
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Q. Data Box の両方の 10 GbE インターフェイスに接続してデータを転送できますか?
-A: はい。 Data Box の両方の 10 GbE インターフェイスに接続して、同時にデータをコピーすることができます。 データをコピーする方法の詳細については、[チュートリアルの Azure Data Box へのデータのコピー](data-box-deploy-copy-data.md)に関するページを参照してください。
+A. はい。 Data Box の両方の 10 GbE インターフェイスに接続して、同時にデータをコピーすることができます。 データをコピーする方法の詳細については、[チュートリアルの Azure Data Box へのデータのコピー](data-box-deploy-copy-data.md)に関するページを参照してください。
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -183,7 +195,7 @@ A.  はい。 Data Box では、最大 10 件のストレージ アカウント�
 A. デバイスが到着時に破損していたり、改ざんの兆候がある場合は、デバイスを使用しないでください。 [Microsoft サポートに連絡して](data-box-disk-contact-microsoft-support.md)、早急にデバイスを返却してください。 デバイスを交換する場合は、新しい Data Box の注文を作成することもできます。 この場合、交換用のデバイスには請求されません。
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. Data Box の注文を自分で受け取ることはできますか? 自分で選択した運送業者を利用して Data Box を返送できますか?
-A: はい。 また、Microsoft では、自己管理型の発送に対応しています。 Data Box を注文するときに、自己管理型の発送オプションを選択できます。 詳細については、[Data Box の自己管理型の発送](data-box-portal-customer-managed-shipping.md)に関するページを参照してください。
+A. はい。 また、Microsoft では、自己管理型の発送に対応しています。 Data Box を注文するときに、自己管理型の発送オプションを選択できます。 詳細については、[Data Box の自己管理型の発送](data-box-portal-customer-managed-shipping.md)に関するページを参照してください。
 
 ### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>Q. Data Box デバイスは配送中に国/リージョンの境を越えますか?
 A. すべての Data Box デバイスは配送先と同じ国/リージョン内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国/リージョンにも、また EU のどの国/リージョンからもデバイスを配送できます。 これは、Data Box デバイスと Data Box Heavy デバイスの両方に適用されます。
@@ -205,7 +217,7 @@ A.  移動中では、Data Box の次の機能によりデータを保護でき�
 詳細については、「[Data Box のセキュリティ機能](data-box-security.md)」を参照してください。  
 
 ### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. インポート注文で [配送の準備] が完了しており、デバイスをシャット ダウンします。 それでも Data Box にデータをさらに追加できますか?
-A: はい。 デバイスを起動して、データをさらに追加できます。 データのコピーが完了したら、 **[配送の準備]** をもう一度実行する必要があります。
+A. はい。 デバイスを起動して、データをさらに追加できます。 データのコピーが完了したら、 **[配送の準備]** をもう一度実行する必要があります。
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. デバイスは届いたのですが、起動しません。 返送する方法を教えてください。
 A. デバイスが起動しない場合は、Azure portal で、該当する注文に移動してください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。 詳細については、「[配送先住所ラベルのダウンロード](data-box-portal-admin.md#download-shipping-label)」を参照してください。

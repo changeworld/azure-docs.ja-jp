@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798785"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783639"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -135,11 +135,11 @@ ms.locfileid: "87798785"
 
 Microsoft Graph を使用して、アクセス パッケージを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、次のことを行うことができます
 
-1. [カタログ内の accessPackageResources を一覧表示し](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) を作成します。
-1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
-1. [accessPackage を作成します](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta)。
-1. [accessPackageAssignmentPolicy を作成します](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
-1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) を作成します。
+1. [カタログ内の accessPackageResources を一覧表示し](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) を作成します。
+1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
+1. [accessPackage を作成します](/graph/api/accesspackage-post?view=graph-rest-beta)。
+1. [accessPackageAssignmentPolicy を作成します](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
+1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) を作成します。
 
 ## <a name="next-steps"></a>次のステップ
 

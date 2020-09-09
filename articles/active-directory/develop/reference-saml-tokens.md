@@ -13,12 +13,12 @@ ms.date: 06/22/2018
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 59ba97ccc0bc4a1a273873d638ef3f519b91e530
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284440"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114967"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML のトークン リファレンス
 
@@ -154,7 +154,7 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* Microsoft Graph API を使用してトークンの有効期間ポリシーを管理する方法の詳細については、[ポリシー リソース](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)に関するページをご覧ください。
+* Microsoft Graph API を使用してトークンの有効期間ポリシーを管理する方法の詳細については、[ポリシー リソース](/graph/api/resources/policy?view=graph-rest-beta)に関するページをご覧ください。
 * PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
 * [カスタムの要求と省略可能な要求](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)をアプリケーションのトークンに追加します。
 * [SAML で シングル サインオン (SSO)](single-sign-on-saml-protocol.md) を使用します。

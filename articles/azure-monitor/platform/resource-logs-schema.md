@@ -4,12 +4,12 @@ description: Azure リソース ログでサポートされているサービス
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: a6504f28b891fb16bd588b899b7a0402b65b4e44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318285"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782126"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -64,6 +64,7 @@ ms.locfileid: "87318285"
 | Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics のログへのアクセス](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store のログへのアクセス](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Azure Databricks | [Azure Databricks の診断ログ](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs のログ](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | スキーマは使用できません。 |
 | Azure Firewall | スキーマは使用できません。 |

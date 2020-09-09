@@ -1,14 +1,14 @@
 ---
 title: REST API を使用して Azure ファイル共有をバックアップする
-description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、REST API を使用してバックアップする方法について説明します
+description: REST API を使用して、Azure ファイル共有を Recovery Services コンテナーでバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055015"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824867"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API で Azure Backup を使用して Azure ファイル共有をバックアップする
 
@@ -54,13 +54,13 @@ POST URI には、`{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Responses
+#### <a name="responses-to-the-refresh-operation"></a>更新操作に対する応答
 
 "refresh" 操作は[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときに 202 (Accepted)、その操作が完了したときに 200 (OK)。
 
-##### <a name="example-responses"></a>応答の例
+##### <a name="example-responses-to-the-refresh-operation"></a>更新操作に対する応答の例
 
 *POST* 要求が送信されると、202 (Accepted) 応答が返されます。
 
@@ -106,9 +106,9 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Recovery Services コンテナーで保護できるストレージ アカウントの一覧を取得する
+### <a name="get-list-of-storage-accounts-with-file-shares-that-can-be-backed-up-with-recovery-services-vault"></a>Recovery Services コンテナーでバックアップできるファイル共有を持つストレージ アカウントの一覧を取得する
 
-"キャッシュ" が完了していることを確認するには、そのサブスクリプションで保護可能なすべてのストレージ アカウントの一覧を表示します。 その後、応答で目的のストレージ アカウントを見つけます。 これを行うには、[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list) 操作を使用します。
+"キャッシュ" が完了していることを確認するには、Recovery Services コンテナーにバックアップできるファイル共有が存在するサブスクリプション内のすべてのストレージ アカウントの一覧を表示します。 その後、応答で目的のストレージ アカウントを見つけます。 これを行うには、[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list) 操作を使用します。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -373,7 +373,7 @@ GET backupprotectableitems 操作の応答本文の ID 属性を使用して、*
 または、保護コンテナーと保護可能な項目の応答の**名前**属性を参照することもできます。
 
 >[!NOTE]
->常に、応答の名前属性を取得し、この要求に入力します。 コンテナー名の形式または保護された項目名の形式を、ハードコーディングしたり、作成したりしないでください。 作成したりハードコーディングしたりすると、後でコンテナー名の形式または保護された項目名の形式が変更された場合、API 呼び出しは失敗します。
+>常に、応答の名前属性を取得し、この要求に入力します。 コンテナー名の形式や保護された項目名の形式を、ハードコーディングしたり、作成したりしないでください。 作成したりハードコーディングしたりすると、後でコンテナー名の形式または保護された項目名の形式が変更された場合、API 呼び出しは失敗します。
 
 <br>
 
@@ -487,13 +487,13 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses-to-the-on-demand-backup-operation"></a>オンデマンド バックアップ操作への応答
 
 オンデマンド バックアップのトリガーは[非同期操作](../azure-resource-manager/management/async-operations.md)として扱われます。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときに 202 (Accepted)、その操作が完了したときに 200 (OK)。
 
-### <a name="example-responses"></a>応答の例
+### <a name="example-responses-to-the-on-demand-backup-operation"></a>オンデマンド バックアップ操作への応答の例
 
 オンデマンド バックアップの *POST* 要求を送信したときの最初の応答は、場所のヘッダーまたは Azure-async-header を含む 202 (Accepted) です。
 

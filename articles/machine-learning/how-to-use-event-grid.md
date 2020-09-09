@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319492"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650419"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
@@ -199,7 +199,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 開始する前に、次の操作を行います。
 
-* データセット モニターを設定して、ワークスペース内の[データの誤差を検出する]( https://aka.ms/datadrift)
+* データセット モニターを設定して、ワークスペース内の[データの誤差を検出する](how-to-monitor-datasets.md)
 * 発行される [Azure Data Factory パイプライン](https://docs.microsoft.com/azure/data-factory/)を作成する。
 
 この例では、単純な Data Factory パイプラインを使用してファイルを blob ストアにコピーし、発行された Machine Learning パイプラインを実行します。 このシナリオの詳細については、[Azure Data Factory の Machine Learning の手順](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)を設定する方法を参照してください。

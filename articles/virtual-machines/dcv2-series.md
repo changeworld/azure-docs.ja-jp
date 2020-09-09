@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: c5074a81625f38cf94d5acd9751414bad4a9c3e8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292457"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649892"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
@@ -58,7 +58,7 @@ Premium Storage キャッシュ:サポート対象*
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報: [ディスクの種類](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>次のステップ
 

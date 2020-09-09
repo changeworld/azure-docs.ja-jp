@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254312"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542248"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -57,7 +57,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 1. Azure Portal で Wingtip Tickets SaaS テナント単位データベース デプロイ テンプレートを開くには、 **[Azure にデプロイ]** ボタンを選択します。
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![[Azure にデプロイ] というラベルの付いたボタンが示されている画像。](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. テンプレートの必要なパラメーターに値を入力します。
 
@@ -86,8 +86,8 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 > zip ファイルを外部ソースからダウンロードして抽出すると、実行可能なコンテンツ (スクリプトと DLL) が Windows によってブロックされる場合があります。 スクリプトを展開する前に、手順に従って .zip ファイルのブロックを解除してください。 ブロック解除により、スクリプトの実行が許可されます。
 
 1. [WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]を参照します。
-1. **[複製またはダウンロード]** を選択します。
-1. **[Download ZIP]/(ZIP をダウンロード/)** を選択し、ファイルを保存します。
+1. **[Clone or download]\(複製またはダウンロード\)** を選択します。
+1. **[Download ZIP]\(ZIP をダウンロード\)** を選択し、ファイルを保存します。
 1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
 1. **[全般]** タブで **[ブロックの解除]**  >  **[適用]** と選択します。
 1. **[OK]** を選択し、ファイルを展開します。

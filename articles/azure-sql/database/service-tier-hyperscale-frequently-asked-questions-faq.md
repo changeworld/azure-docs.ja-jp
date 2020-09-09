@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024019"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500148"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -331,7 +331,7 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>計算レプリカのスケールアップとスケールダウンにかかる時間
 
-コンピューティングのスケールアップまたはスケールダウンには、データ サイズに関係なく、5 分から 10 分かかります。
+コンピューティングのスケールアップまたはスケールダウンには、データ サイズに関係なく、通常、最大 2 分かかります。
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>スケールアップ/スケールダウン操作の進行中にデータベースはオフラインになるか
 

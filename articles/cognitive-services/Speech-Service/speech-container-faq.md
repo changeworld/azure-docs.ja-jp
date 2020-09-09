@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918470"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>音声サービスコンテナーの良くある質問(FAQ)
 
@@ -305,7 +306,7 @@ Websocket が正しくセットアップされていることがわかります�
 - リリースビルドでアサートが発生します (プロセスを終了します)。
 
 回避策として、コード内での連続認識の使用に切り替えるか、またはコンテナー内の対話型エンドポイントまたは連続エンドポイントに接続することができます。
-コードでは、エンドポイントを <host:port>/speech/recognition/interactive/cognitiveservices/v1 に設定します
+コードでは、エンドポイントを `host:port`/speech/recognition/interactive/cognitiveservices/v1 に設定します
 
 さまざまなモードについては、以下の音声モード参照してください：
 

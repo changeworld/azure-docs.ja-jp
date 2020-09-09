@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088735"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816730"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -42,7 +42,7 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 - [プラットフォームで開始されるメンテナンス](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (例: VM の再起動、ライブ マイグレーション、ホストの更新を保持するメモリ)
 - 仮想マシンは、じきに故障することが予測されている[劣化したホスト ハードウェア](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)で実行されています。
 - ユーザーが開始するメンテナンス (たとえば、ユーザーによる再起動や VM の再デプロイ)
-- [スポット VM](spot-vms.md) および[スポット スケール セット](../../virtual-machine-scale-sets/use-spot.md) インスタンスの削除。
+- [スポット VM](../spot-vms.md) および[スポット スケール セット](../../virtual-machine-scale-sets/use-spot.md) インスタンスの削除。
 
 ## <a name="the-basics"></a>基本操作  
 

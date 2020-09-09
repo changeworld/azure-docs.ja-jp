@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services のパッケージ化と配信元エラー | Microsoft Docs
 description: このトピックでは、Azure Media Services ストリーミング エンドポイント (配信元) サービスから通知されることがあるエラーについて説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 05/07/2019
-ms.author: juliako
-ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: 8442c52052a2016da002d392c6fe0834b3813229
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091982"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295327"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー 
+# <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー
 
 このトピックでは、Azure Media Services [ストリーミング エンドポイント サービス](streaming-endpoint-concept.md)から通知されることがあるエラーについて説明します。
 
