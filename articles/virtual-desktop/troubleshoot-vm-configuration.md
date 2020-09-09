@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop セッション ホストのトラブルシューティング - Azure
 description: Windows Virtual Desktop セッション ホスト仮想マシンを構成しているときに発生する問題を解決する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f0665aa8427371fa458039d73297fa0e02b4eb4d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286378"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005218"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -138,8 +136,8 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 **解決策:** 次の手順でエージェント レジストリ エラーを修正します。
 
-1. 登録トークンが既に存在する場合は、Remove-AzWvdRegistrationInfo を使用してそれを削除します。 
-2. **New-AzWvdRegistrationInfo** コマンドレットを実行して、新しいトークンを生成します。 
+1. 登録トークンが既に存在する場合は、Remove-AzWvdRegistrationInfo を使用してそれを削除します。
+2. **New-AzWvdRegistrationInfo** コマンドレットを実行して、新しいトークンを生成します。
 3. *-ExpriationTime* パラメーターが 3 日に設定されていることを確認します。
 
 ### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>エラー:Get-AzWvdSessionHost を実行したとき、Windows Virtual Desktop Agent からハートビートが報告されません
@@ -305,7 +303,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 制限時間が経過すると、「このコンピューターで利用できるリモート デスクトップ クライアント アクセス ライセンスがないため、リモート セッションは切断されました」というエラー メッセージが表示されます。
 
-これらのメッセージのいずれかが表示された場合は、イメージに最新の Windows 更新プログラムがインストールされていないか、グループ ポリシーでリモート デスクトップ ライセンス モードを設定していることを意味します。 次のセクションの手順に従って、グループ ポリシーの設定を確認し、Windows 10 Enterprise マルチセッションのバージョンを特定して、対応する更新プログラムをインストールしてください。  
+これらのメッセージのいずれかが表示された場合は、イメージに最新の Windows 更新プログラムがインストールされていないか、グループ ポリシーでリモート デスクトップ ライセンス モードを設定していることを意味します。 次のセクションの手順に従って、グループ ポリシーの設定を確認し、Windows 10 Enterprise マルチセッションのバージョンを特定して、対応する更新プログラムをインストールしてください。
 
 >[!NOTE]
 >Windows Virtual Desktop では、ホスト プールに Windows Server セッション ホストが含まれている場合は、RDS クライアント アクセス ライセンス (CAL) のみが必要です。 RDS CAL を構成する方法については、「[クライアント アクセス ライセンス (CAL) を使用して RDS 展開をライセンスする](/windows-server/remote/remote-desktop-services/rds-client-access-license/)」を参照してください。

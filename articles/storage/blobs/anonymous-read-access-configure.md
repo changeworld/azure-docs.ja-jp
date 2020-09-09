@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289255"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534313"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -50,7 +50,9 @@ Azure Storage では、コンテナーと BLOB へのオプションの匿名パ
 > [!IMPORTANT]
 > ストレージ アカウントでパブリック アクセスを禁止すると、そのストレージ アカウント内のすべてのコンテナーのパブリック アクセス設定がオーバーライドされます。 ストレージ アカウントでパブリック アクセスを禁止すると、以後、そのアカウントに対する匿名要求は失敗します。 この設定を変更する前に、ストレージ アカウントのデータに匿名でアクセスしている可能性があるクライアント アプリケーションへの影響を理解しておいてください。 詳細については、「[コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ](anonymous-read-access-prevent.md)」を参照してください。
 
-ストレージ アカウントのパブリック アクセスを許可または禁止するには、Azure portal または Azure CLI を使用して、アカウントの **blobPublicAccess** プロパティを構成します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
+ストレージ アカウントのパブリック アクセスを許可または禁止するには、アカウントの **AllowBlobPublicAccess** プロパティを構成します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
+
+**AllowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントではパブリック アクセスが許可されます。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -62,64 +64,118 @@ Azure portal でストレージ アカウントのパブリック アクセス�
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="アカウントの BLOB パブリック アクセスを許可または禁止する方法を示すスクリーンショット":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用したストレージ アカウントのパブリック アクセスを許可または禁止するには、[Azure PowerShell バージョン 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) 以降をインストールします。 次に、新規または既存のストレージ アカウントに **AllowBlobPublicAccess** プロパティを構成します。
+
+次の例では、ストレージ アカウントを作成し、明示的に **AllowBlobPublicAccess** プロパティを **true** に設定します。 次に、ストレージ アカウントを更新して **AllowBlobPublicAccess** プロパティを **false** に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+
+```powershell
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+$location = "<location>"
+
+# Create a storage account with AllowBlobPublicAccess set to true (or null).
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property for the newly created storage account.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+
+# Set AllowBlobPublicAccess set to false
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してストレージ アカウントのパブリック アクセスを許可または禁止するには、まず、[az resource show](/cli/azure/resource#az-resource-show) コマンドを実行してストレージ アカウントのリソース ID を取得します。 次に、[az resource update](/cli/azure/resource#az-resource-update) コマンドを実行して、ストレージ アカウントの **allowBlobPublicAccess** プロパティを設定します。 パブリック アクセスを許可するには、**allowBlobPublicAccess** プロパティを true に設定します。禁止するには、**false** に設定します。
+Azure CLI を使用したストレージ アカウントのパブリック アクセスを許可または禁止するには、Azure CLI バージョン 2.9.0 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 次に、新規または既存のストレージ アカウントに **allowBlobPublicAccess** プロパティを構成します。
 
-次の例では、ストレージ アカウントのパブリック BLOB アクセスを禁止します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、ストレージ アカウントを作成し、明示的に **allowBlobPublicAccess** プロパティを **true** に設定します。 次に、ストレージ アカウントを更新して **allowBlobPublicAccess** プロパティを **false** に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```azurecli-interactive
-storage_account_id=$(az resource show \
-    --name anonpublicaccess \
-    --resource-group storagesamples-rg \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --kind StorageV2 \
+    --location <location> \
+    --allow-blob-public-access true
 
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowBlobPublicAccess=false
-    ```
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
+
+az storage account update \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --allow-blob-public-access false
+
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
 ```
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+テンプレートを使用したストレージ アカウントのパブリック アクセスを許可または禁止するには、**AllowBlobPublicAccess** プロパティを **true** または **false** に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
+
+1. Azure portal で、 **[リソースの作成]** を選択します。
+1. **[Marketplace を検索]** で「**template deployment**」と入力し、**Enter** キーを押します。
+1. **[テンプレートのデプロイ] (カスタム テンプレートを使用したデプロイ) (プレビュー)** 、 **[作成]** 、 **[エディターで独自のテンプレートを作成する]** の順に選択します。
+1. テンプレート エディターで、次の JSON を貼り付けて新しいアカウントを作成し、**AllowBlobPublicAccess** プロパティを **true** または **false** に設定します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'template')]"
+        },
+        "resources": [
+            {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "<location>",
+            "properties": {
+                "allowBlobPublicAccess": false
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "Standard_GRS"
+            },
+            "kind": "StorageV2",
+            "tags": {}
+            }
+        ]
+    }
+    ```
+
+1. テンプレートを保存します。
+1. リソース グループ パラメーターを指定し、 **[レビューと作成]** ボタンを選択してテンプレートをデプロイし、**allowBlobPublicAccess** プロパティが構成されたストレージ アカウントを作成します。
 
 ---
 
 > [!NOTE]
 > ストレージ アカウントのパブリック アクセスを禁止しても、そのストレージ アカウントでホストされている静的な Web サイトには影響しません。 **$web** コンテナーは常にパブリック アクセスが可能です。
+>
+> ストレージ アカウントのパブリック アクセス設定を更新した後、変更が完全に反映されるまでに最大で 30 秒かかることがあります。
 
-## <a name="check-whether-public-access-is-allowed-for-a-storage-account"></a>ストレージ アカウントのパブリック アクセスが許可されているかどうかを確認する
+BLOB パブリック アクセスを許可または禁止するには、Azure Storage リソース プロバイダーのバージョンが 2019-04-01 以降である必要があります。 詳細については、「[Azure Storage Resource Provider REST API](/rest/api/storagerp/)」 (Azure ストレージ リソース プロバイダー REST API) をご覧ください。
 
-ストレージ アカウントのパブリック アクセスが許可されているかどうかを確認するには、**allowBlobPublicAccess** プロパティの値を取得します。 多数のストレージ アカウントを対象にこのプロパティをまとめて確認するには、Azure Resource Graph エクスプローラーを使用します。
-
-> [!IMPORTANT]
-> **allowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントではパブリック アクセスが許可されます。
-
-### <a name="check-whether-public-access-is-allowed-for-a-single-storage-account"></a>1 つのストレージ アカウントのパブリック アクセスが許可されているかどうかを確認する
-
-1 つのストレージ アカウントのパブリック アクセスが許可されているかどうかを Azure CLI を使用して確認するには、[az resource show](/cli/azure/resource#az-resource-show) コマンドを実行して、**allowBlobPublicAccess** プロパティのクエリを実行します。
-
-```azurecli-interactive
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowBlobPublicAccess \
-    --output tsv
-```
-
-### <a name="check-whether-public-access-is-allowed-for-a-set-of-storage-accounts"></a>ストレージ アカウントのセットのパブリック アクセスが許可されているかどうかを確認する
-
-ストレージ アカウントのセット全体でパブリック アクセスが許可されているかどうかを最も効率よく確認するには、Azure portal で Azure Resource Graph エクスプローラーを使用します。 Resource Graph エクスプローラーの使用方法については、「[クイックスタート: Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](/azure/governance/resource-graph/first-query-portal)」を参照してください。
-
-Resource Graph エクスプローラーで次のクエリを実行すると、ストレージ アカウントの一覧が返され、各アカウントの **allowBlobPublicAccess** プロパティの値が表示されます。
-
-```kusto
-resources
-| where type =~ 'Microsoft.Storage/storageAccounts'
-| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
-| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
-| order by subscriptionId, resourceGroup, name asc
-```
+このセクションの例では、ストレージ アカウントの **AllowBlobPublicAccess** プロパティを読み取り、パブリック アクセスが現在許可されているのか、禁止されているかを確認する方法を示しました。 匿名アクセスが禁止されるようにアカウントのパブリック アクセス設定が構成されていることを確認する方法の詳細については、「[匿名パブリック アクセスの修正](anonymous-read-access-prevent.md#remediate-anonymous-public-access)」を参照してください。
 
 ## <a name="set-the-public-access-level-for-a-container"></a>コンテナーのパブリック アクセス レベルの設定
 
@@ -131,9 +187,7 @@ resources
 - **BLOB に限定したパブリック読み取りアクセス:** コンテナー内の BLOB は匿名要求で読み取り可能ですが、コンテナー データは匿名では使用できません。 匿名クライアントはコンテナー内の BLOB を列挙することはできません。
 - **コンテナーとその BLOB に対するパブリック読み取りアクセス:** コンテナーと BLOB のデータは、コンテナーのアクセス許可設定とコンテナーのメタデータを除いて、匿名要求によって読み取ることができます。 クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
 
-個々の BLOB のパブリック アクセス レベルを変更することはできません。 パブリック アクセス レベルは、コンテナー レベルでのみ設定されます。
-
-コンテナーのパブリック アクセス レベルを設定するには、Azure portal または Azure CLI を使用します。 コンテナーの作成時にコンテナーのパブリック アクセス レベルを設定するか、既存のコンテナーでこの設定を更新することができます。
+個々の BLOB のパブリック アクセス レベルを変更することはできません。 パブリック アクセス レベルは、コンテナー レベルでのみ設定されます。 コンテナーの作成時にコンテナーのパブリック アクセス レベルを設定することも、既存のコンテナーで設定を更新することもできます。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -151,44 +205,81 @@ Azure portal で 1 つ以上の既存のコンテナーのパブリック アク
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="パブリック アクセスが禁止されているときはコンテナーのパブリック アクセス レベルの設定がブロックされることを示すスクリーンショット":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用して 1 つ以上のコンテナーのパブリック アクセス レベルを更新するには、[Set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) コマンドを呼び出します。 アカウント キー、接続文字列、または Shared Access Signature (SAS) を渡すことによって、この操作を承認します。 コンテナーのパブリック アクセス レベルを設定する[コンテナー ACL の設定](/rest/api/storageservices/set-container-acl)操作では、Azure AD による承認はサポートされていません。 詳細については、「[Blob および queue データ操作を呼び出す権限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」を参照してください。
+
+次の例では、パブリック アクセスが無効なコンテナーを作成し、コンテナーとその BLOB への匿名アクセスが許可されるようにコンテナーのパブリック アクセス設定を更新します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+
+```powershell
+# Set variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Get context object.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+# Create a new container with public access setting set to Off.
+$containerName = "<container>"
+New-AzStorageContainer -Name $containerName -Permission Off -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+
+# Update the container's public access setting to Container.
+Set-AzStorageContainerAcl -Container $containerName -Permission Container -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+```
+
+ストレージ アカウントのパブリック アクセスが禁止されている場合、コンテナーのパブリック アクセス レベルは設定できません。 コンテナーのパブリック アクセス レベルを設定しようとすると、ストレージ アカウントでパブリック アクセスが許可されていないことを知らせるエラーが Azure Storage から返されます。
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して 1 つ以上のコンテナーのパブリック アクセス レベルを更新するには、[az storage container set permission](/cli/azure/storage/container#az-storage-container-set-permission) コマンドを実行します。 アカウント キー、接続文字列、または Shared Access Signature (SAS) を渡すことによって、この操作を承認します。 コンテナーのパブリック アクセス レベルを設定する[コンテナー ACL の設定](/rest/api/storageservices/set-container-acl)操作では、Azure AD による承認はサポートされていません。 詳細については、「[Blob および queue データ操作を呼び出す権限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」を参照してください。
 
-次の例では、コンテナーのパブリック アクセス設定を変更して、コンテナーとその BLOB への匿名アクセスを有効にします。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、パブリック アクセスが無効なコンテナーを作成し、コンテナーとその BLOB への匿名アクセスが許可されるようにコンテナーのパブリック アクセス設定を更新します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```azurecli-interactive
+az storage container create \
+    --name <container-name> \
+    --account-name <account-name> \
+    --resource-group <resource-group>
+    --public-access off \
+    --account-key <account-key> \
+    --auth-mode key
+
+az storage container show-permission \
+    --name <container-name> \
+    --account-name <account-name> \
+    --account-key <account-key> \
+    --auth-mode key
+
 az storage container set-permission \
     --name <container-name> \
     --account-name <account-name> \
     --public-access container \
     --account-key <account-key> \
     --auth-mode key
-```
 
-ストレージ アカウントのパブリック アクセスが禁止されている場合、コンテナーのパブリック アクセス レベルは設定できません。 コンテナーのパブリック アクセス レベルを設定しようとすると、ストレージ アカウントでパブリック アクセスが許可されていないことを知らせるエラーが発生します。
-
----
-
-## <a name="check-the-container-public-access-setting"></a>コンテナーのパブリック アクセス設定の確認
-
-1 つ以上のコンテナーのパブリック アクセス設定を確認するために、Azure portal、PowerShell、Azure CLI、いずれかの Azure Storage クライアント ライブラリ、または Azure Storage リソース プロバイダーを使用できます。 以下のセクションで、いくつかの例を示します。  
-
-### <a name="check-the-public-access-setting-for-a-single-container"></a>1 つのコンテナーのパブリック アクセス設定の確認
-
-Azure CLI を使用して 1 つ以上のコンテナーのパブリック アクセス レベルを取得するには、[az storage container show permission](/cli/azure/storage/container#az-storage-container-show-permission) コマンドを実行します。 アカウント キー、接続文字列、または Shared Access Signature (SAS) を渡すことによって、この操作を承認します。 コンテナーのパブリック アクセス レベルを返す[コンテナー ACL の取得](/rest/api/storageservices/get-container-acl)操作では、Azure AD による承認はサポートされていません。 詳細については、「[Blob および queue データ操作を呼び出す権限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」を参照してください。
-
-次の例では、コンテナーのパブリック アクセス設定を読み取ります。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
-
-```azurecli-interactive
 az storage container show-permission \
     --name <container-name> \
     --account-name <account-name> \
-    --account-key <account-key>
+    --account-key <account-key> \
     --auth-mode key
 ```
 
-### <a name="check-the-public-access-setting-for-a-set-of-containers"></a>複数のコンテナーのパブリック アクセス設定の確認
+ストレージ アカウントのパブリック アクセスが禁止されている場合、コンテナーのパブリック アクセス レベルは設定できません。 コンテナーのパブリック アクセス レベルを設定しようとすると、ストレージ アカウントでパブリック アクセスが許可されていないことを知らせるエラーが Azure Storage から返されます。
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+該当なし。
+
+---
+
+## <a name="check-the-public-access-setting-for-a-set-of-containers"></a>複数のコンテナーのパブリック アクセス設定の確認
 
 コンテナーを一覧表示してパブリック アクセス設定を確認することによって、1 つ以上のストレージ アカウントのどのコンテナーがパブリック アクセス用に構成されているかを確認できます。 この方法は、ストレージ アカウントに多数のコンテナーが含まれていない場合や、少数のストレージ アカウントにまたがって設定を確認する場合に実用的な選択肢です。 ただし、多数のコンテナーを列挙しようとすると、パフォーマンスが低下する可能性があります。
 

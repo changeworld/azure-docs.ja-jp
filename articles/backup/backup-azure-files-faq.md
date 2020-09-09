@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382714"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824731"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -36,7 +36,7 @@ ms.locfileid: "87382714"
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>ファイル共有のバックアップを構成するためにコンテナーを変更できないのはなぜですか?
 
-ストレージ アカウントが既にコンテナーに登録されているか、またはストレージ アカウント内の他のファイル共有がコンテナーを使用して保護されている場合、ストレージ アカウント内のすべてのファイル共有は同じコンテナーによってのみ保護できるため、それを変更するオプションが与えられません。 コンテナーを変更する必要がある場合は、接続されているコンテナーから[ストレージ アカウント内のすべてのファイル共有の保護を停止](manage-afs-backup.md#stop-protection-on-a-file-share)し、ストレージアカウントの[登録を解除](manage-afs-backup.md#unregister-a-storage-account)してから、保護する別のコンテナーを選択する必要があります。
+ストレージ アカウントが既にコンテナーに登録されているか、またはストレージ アカウント内の他のファイル共有がコンテナーを使用して保護されている場合、それを変更するオプションが与えられません。 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。 コンテナーを変更する必要がある場合は、接続されているコンテナーから[ストレージ アカウント内のすべてのファイル共有の保護を停止](manage-afs-backup.md#stop-protection-on-a-file-share)し、ストレージ アカウントの[登録を解除](manage-afs-backup.md#unregister-a-storage-account)してから、保護する別のコンテナーを選択する必要があります。
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>自分のファイル共有のバックアップ先コンテナーを変更することはできますか?
 

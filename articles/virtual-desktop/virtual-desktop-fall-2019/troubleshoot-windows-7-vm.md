@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop (classic) 上の Windows 7 仮想マシン - Azure
 description: Windows Virtual Desktop (classic) 環境における Windows 7 仮想マシン (VM) の問題を解決する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d71b4472b16372927db56b20eca4fcbde0cc625
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286344"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005416"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (classic) での Windows 7 仮想マシンのトラブルシューティング
 
@@ -47,7 +45,7 @@ Windows Virtual Desktop でリモート デスクトップ ユーザー グル�
 2. エラー メッセージが表示された仮想マシンを選択します。
 3. **[コマンドの実行]** を選択します。
 4. `<username>` を、追加するユーザーの名前に置き換えて、次のコマンドを実行します。
-   
+
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add
    ```

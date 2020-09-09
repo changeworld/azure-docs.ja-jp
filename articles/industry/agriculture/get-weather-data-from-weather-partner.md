@@ -5,16 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281023"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429266"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>気象パートナーから気象データを取得する
 
-Azure FarmBeats を利用すると、Docker ベースのコネクタ フレームワークを使用して、気象データ プロバイダーから気象データを取り込むことができます。 気象データ プロバイダーでは、このフレームワークを使用して、FarmBeats と統合できる Docker を実装します。 現在、[DTN](https://www.dtn.com/dtn-content-integration/) 気象データ プロバイダーのみがサポートされています。
+Azure FarmBeats を利用すると、Docker ベースのコネクタ フレームワークを使用して、気象データ プロバイダーから気象データを取り込むことができます。 気象データ プロバイダーでは、このフレームワークを使用して、FarmBeats と統合できる Docker を実装します。 現在、次の気象データ プロバイダーがサポートされています。
+
+  ![FarmBeats パートナー](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 気象データを使用して、実用的な分析情報を生成し、FarmBeats で AI または ML のモデルを構築することができます。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Storage を使用してクラウドに画像データをアップロードする | Microsoft Docs
-description: Web アプリで Azure Blob Storage を使用してアプリ データを格納します
+description: Web アプリで Azure Blob Storage を使用して、ストレージ アカウントにアプリ データを格納します。 このチュートリアルでは、Azure Storage に画像を格納したりその画像を表示したりする Web アプリを作成します。
 author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 15d18372b9123602e6d6f05b9259e50a74f7eb39
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 14a342e2b7b08113721527855b81a904c2a2e743
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433275"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001316"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする
 

@@ -1,18 +1,18 @@
 ---
 title: AzCopy v10 を使用して Azure Files をコピー先またはコピー元としてデータを転送する | Microsoft Docs
-description: AzCopy とファイル ストレージでデータを転送します。
+description: AzCopy とファイル ストレージでデータを転送します。 AzCopy は、ストレージ アカウントとの間で BLOB またはファイルをコピーするためのコマンドライン ツールです。 Azure Files で AzCopy を使用します。
 author: normesta
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7123a90505e5068422d76f22042deac46e721218
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292725"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871243"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 
@@ -306,7 +306,8 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 >
 > |シナリオ|フラグ|
 > |---|---|
-> |ダウンロードの際に MD5 ハッシュを検証する厳密さを指定します。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
+> |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
 > |パターンに基づいてファイルを除外します。|**--exclude-path**|
 > |同期に関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 > 

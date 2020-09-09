@@ -1,19 +1,17 @@
 ---
 title: Android から Windows Virtual Desktop に接続する - Azure
 description: Android クライアントを使用して Windows Virtual Desktop に接続する方法。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1d0aebffa5f3d27a77928c2a1c7461384bf99ce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 79d88d218d04d00def19bdd2aa98f76d2f128de1
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387882"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007762"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Android クライアントを使用して Windows Virtual Desktop に接続する
 

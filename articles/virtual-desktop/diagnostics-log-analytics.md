@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop の診断ログ分析 - Azure
 description: Windows Virtual Desktop の診断機能でログ分析を使用する方法について説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292604"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006807"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
@@ -50,7 +48,7 @@ Log Analytics を使用するには、まず、ワークスペースを作成す
 - Azure portal を使用する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
 - PowerShell を使用する場合は、「[PowerShell を使用して Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace-posh.md)」を参照してください。
 
-ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)」の指示に従って、次の情報を取得します。
+ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 
 - ワークスペース ID
 - ワークスペースの主キー
@@ -134,7 +132,7 @@ Azure Monitor Log Analytics UI を使用したサンプル クエリへのアク
 1. Log Analytics ワークスペースにアクセスし、 **[ログ]** を選択します。 クエリ UI の例が自動的に表示されます。
 1. フィルターを **[カテゴリ]** に変更します。
 1. **[Windows Virtual Desktop]** を選択して、使用可能なクエリを確認します。
-1. **[実行]** を選択して、選択したクエリを実行します。 
+1. **[実行]** を選択して、選択したクエリを実行します。
 
 サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/log-query/saved-queries.md)」を参照してください。
 

@@ -6,25 +6,28 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337264"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421656"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure Private Link を使用した Azure Cache for Redis (プレビュー)
 Azure プライベート エンドポイントは、Azure Private Link を使用した Azure Cache for Redis にプライベートかつ安全に接続するネットワーク インターフェイスです。 
 
 この記事では、Azure portal を使って Azure Cache、Azure 仮想ネットワーク、プライベート エンドポイントを作成する方法について説明します。  
 
+> [!IMPORTANT]
+> このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。 
+> 
+
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション -  [無料アカウントを作成します](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-  > この機能は現在プレビュー段階です。ご興味がある場合は[お問い合わせください](mailto:azurecache@microsoft.com)。
-  >
-
+> この機能は現在プレビュー段階です。ご興味がある場合は[お問い合わせください](mailto:azurecache@microsoft.com)。
+>
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 1. キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383887"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489709"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87383887"
 
 `OPENROWSET` 関数を使用すると、ファイルの URL を指定することによって、CSV ファイルの内容を読み取ることができます。
 
-### <a name="reading-csv-file"></a>CSV ファイルの読み取り
+### <a name="read-a-csv-file"></a>csv ファイルの読み取り
 
 `CSV` ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にファイルの URL を指定し、csv `FORMAT` および 2.0 `PARSER_VERSION` を指定することです。 ファイルが一般公開されている場合、または Azure AD ID でこのファイルにアクセスできる場合は、次の例に示すようなクエリを使用して、ファイルの内容を表示することができます。
 
@@ -46,7 +46,7 @@ from openrowset(
 
 オプション `firstrow` は、この場合のヘッダーを表す CSV ファイルの最初の行をスキップするために使用されます。 このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム ID で保護されている場合は、[SQL ログインのためのサーバー レベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
 
-### <a name="using-data-source"></a>データ ソースの使用
+### <a name="data-source-usage"></a>データ ソースの使用状況
 
 前の例では、ファイルへの完全なパスを使用しています。 別の方法として、ストレージのルート フォルダーを示す場所を持つ外部データ ソースを作成します。
 
@@ -68,7 +68,7 @@ from openrowset(
     ) as rows
 ```
 
-データ ソースが SAS キーまたはカスタム ID で保護されている場合は、[データベース スコープ資格情報を使用してデータ ソース](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)を構成できます。
+データ ソースが SAS キーまたはカスタム ID で保護されている場合は、[データベーススコープ資格情報を使用してデータ ソース](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)を構成できます。
 
 ### <a name="explicitly-specify-schema"></a>スキーマを明示的に指定する
 
@@ -214,7 +214,7 @@ WHERE
 > [!NOTE]
 > FIELDQUOTE の既定値は二重引用符であるため、このクエリでは、FIELDQUOTE パラメーターを省略した場合と同じ結果が返されます。
 
-## <a name="escaping-characters"></a>文字のエスケープ
+## <a name="escape-characters"></a>エスケープ文字
 
 次のクエリは、ファイル (ヘッダー行があり、Unix スタイルの改行、コンマ区切りの列、および値内のフィールド区切り記号 (コンマ) に使用されるエスケープ文字を含む) を読み取る方法を示しています。 他の例と比較して、ファイルの場所が異なることに注意してください。
 
@@ -246,7 +246,7 @@ WHERE
 > [!NOTE]
 > ESCAPECHAR が指定されていない場合、このクエリは失敗します。"Slov,enia" 内のコンマが、国/地域名の一部ではなく、フィールド区切り記号として扱われることがその理由です。 "Slov,enia" は 2 つの列として扱われます。 そのため、特定の行には、他の行よりも列が 1 つ多く存在し、WITH 句で定義した列数より 1 つ多くなります。
 
-### <a name="escaping-quoting-characters"></a>引用符文字のエスケープ
+### <a name="escape-quoting-characters"></a>引用符文字のエスケープ
 
 次のクエリは、ファイル (ヘッダー行があり、Unix スタイルの改行、コンマ区切りの列、および値内のエスケープされた二重引用符文字を含む) を読み取る方法を示しています。 他の例と比較して、ファイルの場所が異なることに注意してください。
 
@@ -306,7 +306,7 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>列のサブセットを返す
+## <a name="return-a-subset-of-columns"></a>列のサブセットの選択
 
 ここまで、WITH を使用し、すべての列をリストして CSV ファイル スキーマを指定してきました。 クエリにおいて実際に必要な列だけを指定するには、必要な各列に対して序数を使用します。 また、関心のない列も省略します。
 

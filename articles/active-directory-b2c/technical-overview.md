@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281924"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921675"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -262,7 +262,4 @@ Azure AD B2C では、ユーザーが Web アプリにいつサインアップ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory B2C の機能と技術的な側面について詳しく見てきたので、B2C テナントを作成してサービスを開始してください。
-
-> [!div class="nextstepaction"]
-> [チュートリアル:Azure Active Directory B2C テナントを作成する >](tutorial-create-tenant.md)
+Azure Active Directory B2C の機能と技術的な側面について詳しく見てきたので、[Azure Active Directory B2C テナントの作成に関するチュートリアル](tutorial-create-tenant.md)に取り組んでみましょう。

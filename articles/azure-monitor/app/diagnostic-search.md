@@ -18,7 +18,7 @@ ms.locfileid: "87324456"
 
 ## <a name="where-do-you-see-search"></a>検索が表示される場所
 
-### <a name="in-the-azure-portal"></a>Azure ポータルで次の操作を行います。
+### <a name="in-the-azure-portal"></a>Azure Portal で次の操作を行います。
 
 [Application Insights] でお使いのアプリケーションの [概要] タブ から診断検索を開くことができます (上部バーの中にあります)。または、左側のメニューから開くことができます。
 

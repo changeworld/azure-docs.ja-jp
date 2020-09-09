@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87335564"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797804"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -111,7 +111,8 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | デバイスおよびモジュールの自動構成<sup>1</sup> | 有料の SKU ハブあたり 100 構成。 無料の SKU ハブあたり 20 構成。 |
 | IoT Edge の自動デプロイ<sup>1</sup> | デプロイあたり 50 モジュール。 有料の SKU ハブあたり 100 デプロイ (多層デプロイを含む)。 無料の SKU ハブあたり 10 デプロイ。 |
 | ツイン<sup>1</sup> | 必要なプロパティ セクションと報告されたプロパティ セクションの最大サイズはそれぞれ 32 KB です。 タグ セクションの最大サイズは 8 KB です。 |
-| 共有アクセス ポリシー | 共有アクセス ポリシーの最大数は 16 です |
+| 共有アクセス ポリシー | 共有アクセス ポリシーの最大数は 16 です。 |
+| x509 CA 証明書 | IoT Hub に登録可能な x509 CA 証明書の最大数は 25 です。 |
 
 <sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。
 

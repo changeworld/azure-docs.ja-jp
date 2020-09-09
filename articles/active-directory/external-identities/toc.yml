@@ -30,10 +30,10 @@
     - name: 概念
       expanded: false
       items:
+        - name: External Identities の価格
+          href: external-identities-pricing.md
         - name: B2B のベスト プラクティス
           href: b2b-fundamentals.md
-        - name: B2B ライセンス
-          href: licensing-guidance.md
         - name: B2B と Office 365 の外部共有
           href: o365-external-user.md
         - name: 招待の利用

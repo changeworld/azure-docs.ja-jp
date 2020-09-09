@@ -4,15 +4,16 @@ description: Azure Databricks の事前購入割引が使用状況に適用さ�
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 380c4c7fdcccf45d83adaf355c2cc12da0b327fc
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f5a2102cedfa2b8631c1eb7ff6a3ff2452d315e3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460322"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690529"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks の事前購入割引が適用される方法
 

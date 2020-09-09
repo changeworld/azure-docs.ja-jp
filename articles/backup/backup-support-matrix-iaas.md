@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d00f6ee8c10144a7c9fd65101dd21ccb7deeb0a6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289481"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825258"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -32,13 +32,6 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 バックアップ サーバーに Azure VM をバックアップする  | ファイル/フォルダー/ボリューム、システム状態/ベア メタル ファイル、アプリ データを System Center DPM または Microsoft Azure Backup Server (MABS) にバックアップします。<br/><br/> その後、DPM/MABS がバックアップ コンテナーにバックアップします。 | VM に DPM/MABS 保護エージェントをインストールします。 MARS エージェントは DPM/MABS にインストールされます。| ファイル/フォルダー/ボリューム、システム状態/ベア メタル ファイル、アプリ データを復元します。
 
 [バックアップ サーバーを使用した](backup-architecture.md#architecture-back-up-to-dpmmabs)バックアップと[サポート要件](backup-support-matrix-mabs-dpm.md)の詳細をご確認ください。
-
->[!NOTE]
-> **Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。**
->
->現在、Azure Backup では、仮想マシン バックアップ ソリューションを使用して、VM 内のすべてのディスク (オペレーティング システムとデータ) をまとめてバックアップすることがサポートされています。 ディスクを除外する機能を使用すると、VM の多数のデータ ディスクから 1 つまたは複数のデータ ディスクのバックアップを作成することができます。 これにより、バックアップと復元のニーズに応じた効率的で費用対効果の高いソリューションが提供されます。 各復旧ポイントには、バックアップ操作に含まれるディスクのデータが含まれています。これにより、復元操作中に特定の復旧ポイントから復元されたディスクのサブセットを使用できるようになります。 これは、スナップショットからの復元とコンテナーからの復元の両方に適用されます。
->
->プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
 
 ## <a name="supported-backup-actions"></a>サポートされているバックアップ アクション
 
@@ -144,11 +137,11 @@ VM がマネージド ディスクに移行されたときよりも前の復元�
 
 **Compute** | **サポート**
 --- | ---
-VM サイズ |少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ。<br/><br/> [詳細情報。](../virtual-machines/windows/sizes.md)
+VM サイズ |少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ。<br/><br/> [詳細情報。](../virtual-machines/sizes.md)
 [可用性セット](../virtual-machines/availability.md#availability-sets)で VM をバックアップする | サポートされています。<br/><br/> VM をすばやく作成するオプションを使用して、可用性セットで VM を復元することはできません。 代わりに、VM を復元する場合は、ディスクを復元し、それを使用して VM をデプロイするか、ディスクを復元し、それを使用して既存のディスクを交換します。
 [Hybrid Use Benefit (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) を使用してデプロイ済みの VM をバックアップする | サポートされています。
 [スケール セット](../virtual-machine-scale-sets/overview.md)でデプロイ済みの VM をバックアップする |サポートされています。 障害ドメインの場合は、[オーケストレーション モード](../virtual-machine-scale-sets/orchestration-modes.md)を 2 に設定する必要があります。 可用性セットはサポートされていません。
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) からデプロイ済みの VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。 VM としてバックアップされた Azure Marketplace VM は、購入情報が必要であるため、復元されません。 ディスクとしてのみ復元されます。
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) からデプロイされた VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。 VM としてバックアップされた Azure Marketplace VM は、購入情報が必要であるため、復元されません。 ディスクとしてのみ復元されます。
 カスタム イメージ (サード パーティ) からデプロイ済みの VM をバックアップする |サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
 Azure に移行済みの VM をバックアップする| サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でのデータとアプリケーションの整合性は提供されません。
@@ -156,13 +149,13 @@ Azure に移行済みの VM をバックアップする| サポートされて�
 ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
 Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元される場合、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
 ロックされた Azure VM のバックアップ | アンマネージド VM では、サポートされていません。 <br><br> マネージド VM ではサポートされています。
-[スポット VM](../virtual-machines/windows/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
+[スポット VM](../virtual-machines/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 最大 32 ディスクの Azure VM のバックアップのサポートは、国内クラウド (Azure Government、Azure China 21Vianet、および Azure Germany) を除くすべてのリージョンでパブリック プレビュー段階にあります。<br><br> アンマネージド ディスクまたはクラシック VM を使用した Azure VM のバックアップは、最大 16 台のディスクしかサポートされません。
+Azure VM のデータ ディスク数 | 最大 32 台のディスクを使用した Azure VM のバックアップのサポートは、すべてのリージョンでパブリック プレビュー段階にあります。<br><br> アンマネージド ディスクまたはクラシック VM を使用した Azure VM のバックアップは、最大 16 台のディスクしかサポートされません。
 データ ディスク サイズ | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
@@ -172,7 +165,7 @@ Azure VM のデータ ディスク数 | 最大 32 ディスクの Azure VM の�
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。
 共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用した VM のバックアップはサポートされていません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
-[共有ディスク](../virtual-machines/windows/disks-shared-enable.md) | サポートされていません。
+[共有ディスク](../virtual-machines/disks-shared-enable.md) | サポートされていません。
 
 ## <a name="vm-network-support"></a>VM ネットワークのサポート
 
@@ -201,7 +194,7 @@ Azure へのネットワーク トラフィック:
 - サーバーから Recovery Services コンテナーへのバックアップ トラフィックは、Advanced Encryption Standard 256 を使用して暗号化されます。
 - バックアップ データは、セキュリティで保護された HTTPS リンク経由で送信されます。
 - バックアップ データは、暗号化された形式で Recovery Services コンテナーに格納されます。
-- このデータのロックを解除するパスフレーズを持っているのはお客様だけです。 Microsoft は、どの時点でも、バックアップ データの暗号化を解除できません。
+- このデータのロックを解除する暗号化キーを持っているのはお客様だけです。 Microsoft は、どの時点でも、バックアップ データの暗号化を解除できません。
 
   > [!WARNING]
   > コンテナーを設定すると、設定したユーザーのみが暗号化キーにアクセスできます。 Microsoft がコピーを保持することはなく、キーにアクセスすることもできません。 キーを紛失した場合、Microsoft はバックアップ データを復旧できません。
@@ -215,8 +208,8 @@ Azure へのネットワーク トラフィック:
 **マシン** | **転送中** | **保存時**
 --- | --- | ---
 オンプレミスの Windows マシン (DPM または MABS なし) | ![はい][green] | ![はい][green]
-Azure VM | ![はい][green] | ![[はい]][green]
-オンプレミス VM または Azure VM (DPM あり) | ![○][green] | ![[はい]][green]
+Azure VM | ![はい][green] | ![はい][green]
+オンプレミス VM または Azure VM (DPM あり) | ![はい][green] | ![はい][green]
 オンプレミス VM または Azure VM (MABS あり) | ![はい][green] | ![はい][green]
 
 ## <a name="vm-compression-support"></a>VM の圧縮のサポート
@@ -230,7 +223,7 @@ Backup では、次の表にまとめられているように、バックアッ�
 --- | --- | ---
 オンプレミスの Windows マシン (DPM または MABS なし) | NA | ![はい][green]
 Azure VM | N/A | NA
-オンプレミス VM または Azure VM (DPM あり) | ![○][green] | ![[はい]][green]
+オンプレミス VM または Azure VM (DPM あり) | ![はい][green] | ![はい][green]
 オンプレミス VM または Azure VM (MABS あり) | ![はい][green] | ![はい][green]
 
 ## <a name="next-steps"></a>次のステップ

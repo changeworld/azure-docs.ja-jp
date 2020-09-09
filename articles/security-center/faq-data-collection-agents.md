@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: a143752a5a6cbd32bf18fc5544831bb860097d3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089857"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011856"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -51,9 +51,9 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 次のページの説明に従って、このエージェントでサポートされているオペレーティング システムのいずれかがマシンで実行されていることを確認してください。
 
-* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
-* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
 詳細については、[Log Analytics エージェントによって収集されたデータ](security-center-enable-data-collection.md)に関する記事をご覧ください。
 

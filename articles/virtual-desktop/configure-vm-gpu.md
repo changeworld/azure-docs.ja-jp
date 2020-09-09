@@ -1,18 +1,16 @@
 ---
 title: Windows Virtual Desktop の GPU を構成する - Azure
 description: Windows Virtual Desktop で GPU アクセラレーションを使用したレンダリングとエンコードを有効にする方法。
-services: virtual-desktop
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a80e9940aff69d351fde7512cfc38a12d6029f74
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291498"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612641"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
@@ -53,12 +51,12 @@ Windows Virtual Desktop でサポートされているのは、Azure によっ�
 1. ローカル管理者特権を持つアカウントを使って、VM のデスクトップに接続します。
 2. [スタート] メニューを開き、「gpedit.msc」と入力して、グループ ポリシー エディターを開きます。
 3. ツリーで、 **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[リモート セッション環境]** に移動します。
-4. ポリシー **[すべてのリモート デスクトップ サービス セッションにハードウェアの既定のグラフィックス アダプターを使用する]** を選択し、このポリシーを **[有効]** に設定して、リモート セッションでの GPU レンダリングを有効にします。
+4. ポリシー **[Use hardware graphics adapters for all Remote Desktop Services sessions] (すべてのリモート デスクトップ サービス セッションにハードウェアのグラフィックス アダプターを使用する)** を選択し、このポリシーを **[有効]** に設定して、リモート セッションでの GPU レンダリングを有効にします。
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU アクセラレーションを使用するフレーム エンコードを構成する
 
 リモート デスクトップでは、リモート デスクトップ クライアントへの送信用にアプリとデスクトップでレンダリングされるすべてのグラフィックスが (GPU または CPU のどちらでレンダリングされるかに関係なく) エンコードされます。 画面の一部が頻繁に更新される場合、画面のこの部分はビデオ コーデック (H.264/AVC) を使用してエンコードされます。 既定では、リモート デスクトップによるこのエンコードに、使用可能な GPU は利用されません。 セッション ホストのグループ ポリシーを構成して、GPU アクセラレーションを使用するフレーム エンコードを有効にします。 上記の手順に続けて次のようにします。
- 
+
 >[!NOTE]
 >GPU アクセラレーションを使用するフレーム エンコードは、NVv4 シリーズの VM では使用できません。
 

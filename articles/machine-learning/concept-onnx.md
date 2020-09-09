@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 09b1fa31ff8f93ea86a80092b43d071df6cd74e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012760"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -87,7 +87,7 @@ ONNX モデルを作成してデプロイする Python ノートブックの例�
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-他の言語で使用するためのサンプルについては、「[ONNX ランタイム Github](https://github.com/microsoft/onnxruntime/tree/master/samples)」を参照してください。
+他の言語で使用するためのサンプルについては、[ONNX ランタイム の GitHub](https://github.com/microsoft/onnxruntime/tree/master/samples) を参照してください。
 
 ## <a name="more-info"></a>詳細情報
 

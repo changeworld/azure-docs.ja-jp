@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287229"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890916"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -34,7 +34,7 @@ ms.locfileid: "87287229"
 
 + ワークスペースには、Azure Machine Learning の実行に必要な Python 環境で構成されたクラウド リソースである [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)を含めることができます。
 
-+ [ユーザー ロール](how-to-assign-roles.md)を使用すると、お使いのワークスペースを、他のユーザー、チーム、またはプロジェクトと共有できます。
++ [ユーザー ロール](how-to-assign-roles.md)を使用すると、お使いのワークスペースを他のユーザー、チーム、またはプロジェクトと共有できます。
 + [コンピューティング ターゲット](concept-azure-machine-learning-architecture.md#compute-targets)は、ご自身の実験の実行に使用されます。
 + ワークスペースを作成すると、[関連するリソース](#resources)も自動的に作成されます。
 + [実験](concept-azure-machine-learning-architecture.md#experiments)は、ご自身のモデルの構築に使用するトレーニング実行です。  
@@ -117,8 +117,16 @@ Azure portal を使用して、[ワークスペースを Basic から Enterprise
 > [!NOTE]
 > 新しいバージョンを作成するだけでなく、既存の Azure サービスを使用することもできます。
 
+### <a name="azure-storage-account"></a>Azure ストレージ アカウント
+
+ワークスペースで既定で作成される Azure Storage アカウントは、汎用 v1 アカウントです。 「[汎用 v2 ストレージ アカウントにアップグレードする](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)」の記事の手順に従って、ワークスペースを作成した後に汎用 v2 にアップグレードできます。
+
 > [!IMPORTANT]
-> 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層型名前空間 (Azure Data Lake Storage Gen2 で使用) を含めることもできません。 ワークスペースの "_既定_" のストレージ アカウントでは、Premium Storage と階層型名前空間のどちらもサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+> 汎用 v2 にアップグレードした後は、ストレージ アカウントで階層型名前空間を有効にしないでください。
+
+既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの_既定の_ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

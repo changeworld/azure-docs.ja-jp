@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace のマネージド サービス オファー
-description: マネージド サービス オファーを使用すると、サービス プロバイダーは Azure Marketplace の顧客にリソース管理オファーを販売できます。
+description: 管理サービス オファーを使用すると、Azure Marketplace の顧客にリソース管理オファーを販売できます。
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406862"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163324"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
@@ -18,7 +18,7 @@ ms.locfileid: "87406862"
 
 マネージド サービス オファーにより、Azure Lighthouse に顧客をオンボードするプロセスが効率化されます。 顧客は、Azure Marketplace でオファーを購入すると、オンボードするサブスクリプションやリソース グループを指定できるようになります。
 
-その後、組織内のユーザーは、オファーを作成するときに定義されたアクセス権に従い、[Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用して、組織のテナント内からそれらのリソースに対して作業できるようになります。 これは、顧客のリソースにアクセスできる Azure Active Directory (Azure AD) ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されているロールを通じて行われます。 個々のユーザー アカウントやアプリケーション アカウントではなく、Azure AD グループに権限を割り当てるので、アクセス要件が変わった場合にユーザーを個別に追加、削除できます。
+その後、組織内のユーザーは、オファーを作成するときに定義されたアクセス権に従い、[Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用して、管理テナント内からそれらのリソースに対して作業できるようになります。 これは、顧客のリソースにアクセスできる Azure Active Directory (Azure AD) ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されているロールを通じて行われます。 個々のユーザー アカウントやアプリケーション アカウントではなく、Azure AD グループに権限を割り当てるので、アクセス要件が変わった場合にユーザーを個別に追加、削除できます。
 
 ## <a name="public-and-private-offers"></a>パブリック オファーとプライベート オファー
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124907"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563553"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う
 
@@ -146,11 +146,11 @@ Azure Data Factory バージョン 2 で出力されるメトリックの一部�
 | TriggerCancelledRuns                  | キャンセルしたトリガー実行の回数メトリック            | Count    | 合計                | 1 分の枠内でキャンセルされたトリガー実行の合計数。 |
 | TriggerFailedRuns                    | 失敗したトリガー実行の回数メトリック              | Count    | 合計                | 1 分の枠内で失敗したトリガー実行の合計数。 |
 | TriggerSucceededRuns                 | 成功したトリガー実行の回数メトリック           | Count    | 合計                | 1 分の枠内で成功したトリガー実行の合計数。 |
-| SSISIntegrationRuntimeStartCancelled  | キャンセルされた SSIS IR 開始回数のメトリック           | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS IR 開始の合計数。 |
-| SSISIntegrationRuntimeStartFailed    | 失敗した SSIS IR 開始回数のメトリック             | Count    | 合計                | 1 分の枠内で失敗した SSIS IR 開始の合計数。 |
-| SSISIntegrationRuntimeStartSucceeded | 成功した SSIS IR 開始回数のメトリック          | Count    | 合計                | 1 分の枠内で成功した SSIS IR 開始の合計数。 |
-| SSISIntegrationRuntimeStopStuck      | スタックした SSIS IR 停止回数のメトリック               | Count    | 合計                | 1 分の枠内でスタックした SSIS IR 停止の合計数。 |
-| SSISIntegrationRuntimeStopSucceeded  | 成功した SSIS IR 停止回数のメトリック           | Count    | 合計                | 1 分の枠内で成功した SSIS IR 停止の合計数。 |
+| SSISIntegrationRuntimeStartCancelled  | キャンセルされた SSIS 統合ランタイム開始メトリック           | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS 統合ランタイム開始の合計数。 |
+| SSISIntegrationRuntimeStartFailed    | 失敗した SSIS 統合ランタイム開始メトリック             | Count    | 合計                | 1 分の枠内で失敗した SSIS 統合ランタイム開始の合計数。 |
+| SSISIntegrationRuntimeStartSucceeded | 成功した SSIS 統合ランタイム開始メトリック          | Count    | 合計                | 1 分の枠内で成功した SSIS 統合ランタイム開始の合計数。 |
+| SSISIntegrationRuntimeStopStuck      | 停止した SSIS 統合ランタイム停止メトリック               | Count    | 合計                | 1 分の枠内で停止した SSIS 統合ランタイム停止の合計数。 |
+| SSISIntegrationRuntimeStopSucceeded  | 成功した SSIS 統合ランタイム停止メトリック           | Count    | 合計                | 1 分の枠内で成功した SSIS 統合ランタイム停止の合計数。 |
 | SSISPackageExecutionCancelled         | キャンセルされた SSIS パッケージ実行回数のメトリック  | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS パッケージ実行の合計数。 |
 | SSISPackageExecutionFailed           | 失敗した SSIS パッケージ実行回数のメトリック    | Count    | 合計                | 1 分の枠内で失敗した SSIS パッケージ実行の合計数。 |
 | SSISPackageExecutionSucceeded        | 成功した SSIS パッケージ実行回数のメトリック | Count    | 合計                | 1 分の枠内で成功した SSIS パッケージ実行の合計数。 |

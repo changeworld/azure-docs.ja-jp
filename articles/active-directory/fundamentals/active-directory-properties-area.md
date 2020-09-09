@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797395"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321975"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory を使用して組織のプライバシー情報を追加する
 この記事では、テナント管理者が Azure portal を使用して、組織の Azure Active Directory (Azure AD) テナントにプライバシー関連の情報を追加する方法について説明します。
@@ -56,5 +56,5 @@ ms.locfileid: "87797395"
 4. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Active Directory B2B コラボレーションの招待の利用](../b2b/redemption-experience.md)
+- [Azure Active Directory B2B コラボレーションの招待の利用](../external-identities/redemption-experience.md)
 - [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
