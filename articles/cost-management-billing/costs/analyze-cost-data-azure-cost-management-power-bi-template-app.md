@@ -76,7 +76,7 @@ Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https
 
 **[Top 5 Usage drivers]\(上位 5 つの使用量ドライバー)** - このレポートには、上位 5 つの MeterCategory および対応する MeterName によるフィルター処理されたコストの概要が表示されます。
 
-**[Windows Server AHB Usage]/(Windows Server AHB 使用量/)** - このレポートには、Azure ハイブリッド特典が有効になっている仮想マシンの数が表示されます。 また、仮想マシンによって使用されるコア/vCPU の数も表示されます。
+**[Windows Server AHB Usage]\(Windows Server AHB 使用量\)** - このレポートには、Azure ハイブリッド特典が有効になっている仮想マシンの数が表示されます。 また、仮想マシンによって使用されるコア/vCPU の数も表示されます。
 
 ![Azure ハイブリッド特典の完全なレポート](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
