@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008677"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458334"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Table Storage のパフォーマンスとスケーラビリティのチェックリスト
 
@@ -197,7 +197,7 @@ Azure Storage のエラー コードの詳細については、「[状態コー�
 
 ストレージ サービス Version 2013-08-15 より、Table service では、テーブル データの転送用に、XML ベースの AtomPub 形式に代えて JSON を使用できるようになりました。 JSON を使用することにより、ペイロード サイズが 75% 程度に抑えられ、アプリケーションのパフォーマンスを大幅に引き上げることができます。
 
-詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[テーブル サービス操作のペイロード形式](https://msdn.microsoft.com/library/azure/dn535600.aspx)」をご覧ください。
+詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)」と、「[テーブル サービス操作のペイロード形式](https://msdn.microsoft.com/library/azure/dn535600.aspx)」をご覧ください。
 
 ### <a name="disable-nagle"></a>Nagle の無効化
 

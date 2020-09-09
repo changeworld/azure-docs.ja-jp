@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815183"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437702"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -102,17 +102,17 @@ Identity Protection にユーザーがにアクセスするためには、セキ
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 機能 | 詳細 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free / Office 365 アプリ |
+| 機能 | 詳細  | Azure AD Free / Office 365 アプリ | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| リスク ポリシー | ユーザー リスク ポリシー (Identity Protection 経由) | はい | いいえ | いいえ |
-| リスク ポリシー | サインイン リスク ポリシー (Identity Protection または条件付きアクセス経由) | はい | いいえ | いいえ |
-| セキュリティ レポート | 概要 | はい | いいえ | いいえ |
-| セキュリティ レポート | 危険なユーザー | フル アクセス | 限定的な情報 | 限定的な情報 |
-| セキュリティ レポート | リスクの高いサインイン | フル アクセス | 限定的な情報 | 限定的な情報 |
-| セキュリティ レポート | リスク検出 | フル アクセス | 限定的な情報 | いいえ |
-| 通知 | 危険な状態のユーザーが検出されたアラート | はい | いいえ | いいえ |
-| 通知 | 週間ダイジェスト | はい | いいえ | いいえ |
-| | MFA 登録ポリシー | はい | いいえ | いいえ |
+| リスク ポリシー | ユーザー リスク ポリシー (Identity Protection 経由)  | いいえ | いいえ |はい | 
+| リスク ポリシー | サインイン リスク ポリシー (Identity Protection または条件付きアクセス経由)  | いいえ |  いいえ |はい |
+| セキュリティ レポート | 概要 |  いいえ | いいえ |はい |
+| セキュリティ レポート | 危険なユーザー  | 限定的な情報 | 限定的な情報 | フル アクセス|
+| セキュリティ レポート | リスクの高いサインイン  | 限定的な情報 | 限定的な情報 | フル アクセス|
+| セキュリティ レポート | リスク検出   | いいえ | 限定的な情報| フル アクセス|
+| 通知 | 危険な状態のユーザーが検出されたアラート  | いいえ | いいえ |はい |
+| 通知 | 週間ダイジェスト| いいえ | いいえ | はい | 
+| | MFA 登録ポリシー | いいえ | いいえ | はい |
 
 ## <a name="next-steps"></a>次のステップ
 
