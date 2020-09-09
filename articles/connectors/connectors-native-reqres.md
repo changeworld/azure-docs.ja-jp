@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289436"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
@@ -24,7 +24,7 @@ ms.locfileid: "86261384"
 
 * 別のロジック アプリからの HTTPS 呼び出しを受信して応答する。
 
-Request トリガーは、ロジック アプリへの受信呼び出しの承認のために [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) をサポートしています。 この認証を有効にする方法の詳細については、[Azure Logic Apps でのセキュリティで保護されたアクセスとデータ - Azure AD OAuth 認証を有効にする](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)方法に関する記事を参照してください。
+Request トリガーは、ロジック アプリへの受信呼び出しの承認のために [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) をサポートしています。 この認証を有効にする方法の詳細については、[Azure Logic Apps でのセキュリティで保護されたアクセスとデータ - Azure AD OAuth 認証を有効にする](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)方法に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ Request トリガーは、ロジック アプリへの受信呼び出しの承�
 
 ## <a name="transport-layer-security-tls"></a>トランスポート層セキュリティ (TLS)
 
-* 受信呼び出しでは、トランスポート層セキュリティ (TLS) 1.2 *のみ*をサポートしています。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 詳細については、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem) を参照してください。 送信呼び出しでは、ターゲット エンドポイントの機能に応じて TLS 1.0、1.1、1.2 をサポートしています。
+* 受信呼び出しでは、トランスポート層セキュリティ (TLS) 1.2 *のみ*をサポートしています。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 詳細については、[TLS 1.0 の問題の解決](/security/solving-tls1-problem) を参照してください。 送信呼び出しでは、ターゲット エンドポイントの機能に応じて TLS 1.0、1.1、1.2 をサポートしています。
 
 * 受信呼び出しでは、次の暗号スイートをサポートしています。
 
@@ -287,3 +287,4 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Logic Apps のコネクタ](../connectors/apis-list.md)
+

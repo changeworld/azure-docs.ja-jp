@@ -3,12 +3,12 @@ title: Azure Backup を使用して Azure に SAP HANA データベースをバ�
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1db5bb8cd49fb45f1d34b5748d820a16724372e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667320"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892492"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -16,7 +16,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 この記事では、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について学習します。
 > [!div class="checklist"]
 >
 > * コンテナーを作成して構成する
@@ -25,7 +25,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 > * オンデマンド バックアップ ジョブを実行する
 
 >[!NOTE]
->RHEL (7.4、7.6、7.7、または 8.1) の SAP HANA バックアップ プレビューの[使用を開始](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)します。 その他のクエリについては、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
+>2020 年 8 月 1 日の時点で、RHEL (7.4、7.6、7.7、8.1) 用の SAP HANA バックアップは一般提供されています。
 
 >[!NOTE]
 >**Azure VM での SQL Server の論理的な削除と Azure VM ワークロードでの SAP HANA の論理的な削除**が、プレビューで利用できるようになりました。<br>
@@ -53,25 +53,25 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 #### <a name="private-endpoints"></a>プライベート エンドポイント
 
-プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からの IP アドレスが使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 [こちら](https://docs.microsoft.com/azure/backup/private-endpoints)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
+プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からの IP アドレスが使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 [こちら](./private-endpoints.md)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
 
 #### <a name="nsg-tags"></a>NSG タグ
 
-ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、*Azure AD* および *Azure Storage* に対して同様の [NSG 規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
+ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、*Azure AD* および *Azure Storage* に対して同様の [NSG 規則](../virtual-network/security-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
 
 1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
 
 1. **[設定]** で **[送信セキュリティ規則]** を選択します。
 
-1. **[追加]** を選択します。 [セキュリティ規則の設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が *[サービス タグ]* に、 **[宛先サービス タグ]** が *[AzureBackup]* に設定されていることを確認します。
+1. **[追加]** を選択します。 [セキュリティ規則の設定](../virtual-network/manage-network-security-group.md#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が *[サービス タグ]* に、 **[宛先サービス タグ]** が *[AzureBackup]* に設定されていることを確認します。
 
 1. **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
 
-Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。
+Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 
-Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を使用してアプリケーション規則を作成します。 これにより、Azure Backup へのすべての発信アクセスが許可されます。
+Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQDN タグ](../firewall/fqdn-tags.md)を使用してアプリケーション規則を作成します。 これにより、Azure Backup へのすべての発信アクセスが許可されます。
 
 #### <a name="allow-access-to-service-ip-ranges"></a>サービスの IP 範囲へのアクセスを許可する
 
@@ -85,7 +85,7 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | [この記事](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します |
+| Azure AD      | [この記事](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
@@ -173,7 +173,7 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
 
 7. **[OK]** をクリックしてポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 8. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
-    * **[ログ バックアップ]** で、 **[有効化]** を選択します。  SAP HANA ではすべてのログ バックアップが管理されるため、これを無効にすることはできません。
+    * **[ログ バックアップ]** で、 **[有効化]** を選択します。  すべてのログ バックアップは SAP HANA で管理されるため、これを無効にすることはできません。
     * 頻度とリテンション期間の制御を設定します。
 
     > [!NOTE]
@@ -183,7 +183,7 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
 10. バックアップ ポリシーの定義が完了した後、 **[OK]** をクリックします。
 
 > [!NOTE]
-> 各ログ バックアップは、復旧チェーンを形成するために、以前の完全バックアップにチェーンされています。 この完全バックアップは、前回のログ バックアップのリテンション期間が終了するまで保持されます。 これは、完全バックアップのリテンション期間を追加して、すべてのログが確実に復旧されるようにすることを意味します。 ユーザーが、週単位の完全バックアップ、日単位の差分、2 時間ごとのログを実行しているとしましょう。 これらのすべてが 30 日間保持されます。 ただし、週単位の完全バックアップは、次の完全バックアップが利用可能になった後、すなわち 30 + 7 日後に、クリーンアップまたは削除することができます。 たとえば、週単位の完全バックアップが 11 月 16 日に行われたとします。 保持ポリシーに従って、12 月 16 日まで保持されます。 この完全バックアップに対する前回のログ バックアップは、11 月 22 日に予定されている次の完全バックアップの前に行われます。 このログが 12 月 22 日までに利用可能になるまでは、11 月 16 日の完全バックアップは削除されません。 そのため、11 月 16 日の完全バックアップは、12 月 22 日までは保持されます。
+> 各ログ バックアップは、復旧チェーンを形成するために、以前の完全バックアップにチェーンされています。 この完全バックアップは、前回のログ バックアップのリテンション期間が終了するまで保持されます。 これは、完全バックアップのリテンション期間を追加して、すべてのログが確実に復旧されるようにすることを意味します。 ユーザーが、週単位の完全バックアップ、日単位の差分、2 時間ごとのログを実行しているとしましょう。 これらのすべてが 30 日間保持されます。 ただし、週単位の完全バックアップは、次の完全バックアップが利用可能になった後でのみ、すなわち 30 + 7 日後に、実際にクリーンアップまたは削除することができます。 たとえば、週単位の完全バックアップが 11 月 16 日に行われたとします。 保持ポリシーに従って、12 月 16 日まで保持されます。 この完全バックアップに対する前回のログ バックアップは、11 月 22 日に予定されている次の完全バックアップの前に行われます。 このログが 12 月 22 日までに利用可能になるまでは、11 月 16 日の完全バックアップは削除されません。 そのため、11 月 16 日の完全バックアップは、12 月 22 日までは保持されます。
 
 ## <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 
@@ -199,17 +199,19 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
 Azure Backup でバックアップされているデータベースの (HANA Studio を使用する) ローカル バックアップを作成する場合は、次の操作を行います。
 
 1. データベースの完全バックアップまたはログ バックアップがすべて完了するまで待ちます。 SAP HANA Studio/Cockpit で状態を確認します。
-2. ログ バックアップを無効にし、関連するデータベースのファイル システムにバックアップ カタログを設定します。
-3. これを行うには、**systemdb** >  **[構成]**  >  **[データベースの選択]**  >  **[Filter (Log)]\(フィルター (ログ)\)** の順にダブルクリックします。
-4. **[enable_auto_log_backup]** を **[No]** に設定します。
-5. **[log_backup_using_backint]** を **[False]** に設定します。
-6. データベースのオンデマンド完全バックアップを作成します。
-7. 完全バックアップとカタログ バックアップが完了するまで待ちます。
-8. 前の設定を Azure のものに戻します。
+1. ログ バックアップを無効にし、関連するデータベースのファイル システムにバックアップ カタログを設定します。
+1. これを行うには、**systemdb** >  **[構成]**  >  **[データベースの選択]**  >  **[Filter (Log)]\(フィルター (ログ)\)** の順にダブルクリックします。
+1. **[enable_auto_log_backup]** を **[No]** に設定します。
+1. **[log_backup_using_backint]** を **[False]** に設定します。
+1. **[catalog_backup_using_backint]** を **[False]** に設定します。
+1. データベースのオンデマンド完全バックアップを作成します。
+1. 完全バックアップとカタログ バックアップが完了するまで待ちます。
+1. 前の設定を Azure のものに戻します。
     * **[enable_auto_log_backup]** を **[Yes]** に設定します。
     * **[log_backup_using_backint]** を **[True]** に設定します。
+    * **[catalog_backup_using_backint]** を **[True]** に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure VM で稼働している SAP HANA データベースを復元する](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)方法を学習する
-* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)方法を学習します
+* [Azure VM で稼働している SAP HANA データベースを復元する](./sap-hana-db-restore.md)方法を学習する
+* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](./sap-hana-db-manage.md)方法を学習する

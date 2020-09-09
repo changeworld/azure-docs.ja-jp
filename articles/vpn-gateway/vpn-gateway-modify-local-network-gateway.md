@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/19/2017
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 41157f26e4f87e59d5a0276ff72012ae20b70fbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b235d278cb3061f17068f4e5a3edf5e8f8899f17
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986012"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392461"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更
 
@@ -28,7 +28,7 @@ ms.locfileid: "84986012"
 
 ## <a name="before-you-begin"></a><a name="before"></a>開始する前に
 
-Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
+Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/) 」を参照してください。
 
 ## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>IP アドレスのプレフィックスを変更する
 

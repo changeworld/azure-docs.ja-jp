@@ -3,12 +3,13 @@ title: PowerShell スクリプト - 削除されたファイル共有の削除�
 description: Azure PowerShell スクリプトを使用して、誤って削除されたファイル共有の削除を取り消す方法について説明します。
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 99cd980e13b3b9b9a7a450520218c76ccf26fd69
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513236"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079865"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>誤って削除されたファイル共有の削除を取り消す PowerShell スクリプト
 
@@ -154,7 +155,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="prerequisites"></a>前提条件
 
-1. スクリプトを実行する前に、[このリンク](//powershell/azure/install-az-ps)から最新の Azure PowerShell Az モジュールをインストールしてください。
+1. スクリプトを実行する前に、[このリンク](/powershell/azure/install-az-ps)から最新の Azure PowerShell Az モジュールをインストールしてください。
 2. 次の詳細は、スクリプトのさまざまなパラメーターの値として渡す必要があるため、手元に置いておいてください。
 
     * **-SubscriptionId** - ファイル共有が存在するサブスクリプションの ID。

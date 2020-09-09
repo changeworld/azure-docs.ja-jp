@@ -9,23 +9,24 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536523"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384805"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
 このクイックスタートでは、コンテナー化されたコードを Linux IoT Edge 仮想デバイスに配置して、Azure IoT Edge をテストします。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイス用に Azure 仮想マシンを使用することをお勧めします。これにより、IoT Edge サービスがインストールされているテスト マシンをすばやく作成でき、さらにテストが完了したら削除することができます。
 
 このクイック スタートでは、次の方法について説明します。
-
-1. IoT Hub を作成します。
-2. IoT Edge デバイスを IoT ハブに登録します。
-3. IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
-4. モジュールを IoT Edge デバイスにリモートで展開する。
+> [!div class="checklist"]
+>
+> * IoT Hub を作成します。
+> * IoT Edge デバイスを IoT ハブに登録します。
+> * IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+> * モジュールを IoT Edge デバイスにリモートで展開する。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart-linux/install-edge-full.png)
 
@@ -116,14 +117,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 * bash または Cloud Shell ユーザーの場合は、次のコマンドをテキスト エディターにコピーし、プレースホルダーのテキストを実際の情報に置き換えてから、bash または Cloud Shell ウィンドウにコピーします。
 
    ```azurecli-interactive
-   az deployment group create \
-   --resource-group IoTEdgeResources \
-   --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
-   --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password' \
-   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * PowerShell ユーザーの場合は、次のコマンドを PowerShell ウィンドウにコピーし、プレースホルダーのテキストを実際の情報に置き換えます。

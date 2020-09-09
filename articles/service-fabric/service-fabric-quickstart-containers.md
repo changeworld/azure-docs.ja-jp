@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260509"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089619"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Windows コンテナーをデプロイする
 
@@ -86,7 +86,7 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
 
 次のサンプル スクリプトでは、X.509 証明書で保護される 5 つのノードの Service Fabric クラスターを作成します。 コマンドで自己署名証明書を作成し、それを新しい Key Vault にアップロードします。 証明書はローカル ディレクトリにもコピーされます。 このスクリプトを使用したクラスターの作成の詳細については、「[Service Fabric クラスターの作成](scripts/service-fabric-powershell-create-secure-cluster-cert.md)」を参照してください。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールします。
 
 次のスクリプトを実行する前に、PowerShell で `Connect-AzAccount` を実行して Azure との接続を作成します。
 

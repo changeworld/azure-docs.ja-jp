@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539739"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326173"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -96,7 +96,7 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
 
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション 
-一部のサービスでは、Azure Monitor の標準機能を超えるツールが提供されています。 [分析情報](../insights/insights-overview.md)では、Azure Monitor データ プラットフォームと標準機能に基づいてカスタマイズされた監視エクスペリエンスが提供されます。 [ソリューション](../insights/solutions.md)では、Azure Monitor ログに基づいて構築された定義済みの監視ロジックが提供されます。 
+一部のサービスでは、Azure Monitor の標準機能を超えるツールが提供されています。 [分析情報](./insights-overview.md)では、Azure Monitor データ プラットフォームと標準機能に基づいてカスタマイズされた監視エクスペリエンスが提供されます。 [ソリューション](./solutions.md)では、Azure Monitor ログに基づいて構築された定義済みの監視ロジックが提供されます。 
 
 サービスに Azure Monitor の分析情報がある場合は、各リソースのメニューの **[監視]** からアクセスできます。 すべての分析情報とソリューションには、**Azure Monitor** のメニューからアクセスします。
 
@@ -164,3 +164,4 @@ REST API を使用して、リソースから収集された監視データを�
 ## <a name="next-steps"></a>次のステップ
 
 * さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/resource-logs-schema.md)」を参照してください。  
+

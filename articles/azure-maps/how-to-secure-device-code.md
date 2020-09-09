@@ -2,19 +2,19 @@
 title: 入力制約付きデバイスを Azure AD と Azure Maps REST API で保護する方法
 titleSuffix: Azure Maps
 description: Azure AD へのサインインをサポートし、Azure Maps REST API を呼び出すブラウザーレス アプリケーションを構成する方法。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b9e75a25237a76c7fa6d300e01bb4d42db75fe08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91d73ad14cac77e4b00e90ec11791ef141436b7e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988467"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126748"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>入力制約付きデバイスを Azure AD と Azure Maps REST API で保護する
 

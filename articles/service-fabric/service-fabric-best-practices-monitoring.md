@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 0ee44ae12ba0f7f4d91de12ff2fa0730f8831b61
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261159"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529252"
 ---
-# <a name="monitoring-and-diagnostics"></a>監視と診断
+# <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断のベスト プラクティス
 
 [監視と診断](./service-fabric-diagnostics-overview.md)は、あらゆるクラウド環境でアプリケーションやサービスを開発、テスト、およびデプロイするために非常に重要です。 たとえば、アプリケーションの使われ方、Service Fabric プラットフォームによって実行されたアクション、パフォーマンス カウンターでのリソースの使用状況、クラスターの全体的な正常性を追跡できます。 この情報を使って、問題の診断と修正を行い、再発を防ぐことができます。
 

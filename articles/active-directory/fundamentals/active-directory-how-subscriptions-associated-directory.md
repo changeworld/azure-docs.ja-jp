@@ -2,7 +2,7 @@
 title: ご利用のテナントに既存の Azure サブスクリプションを追加する - Azure AD
 description: 既存の Azure サブスクリプションを Azure Active Directory テナントに追加する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc81cca10bacc581e72c7caa70a0b74b7ae99f9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95c3ad5fa66e1327c1fe646303f268ae4e84bd89
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604218"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825023"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 すべてのユーザーに、認証のための *ホーム* ディレクトリが 1 つあります。 ユーザーは、他のディレクトリのゲストになることもできます。 Azure AD では、各ユーザーのホーム ディレクトリとゲスト ディレクトリの両方を確認できます。
 
 > [!Important]
-> サブスクリプションを別のディレクトリに関連付けると、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
+> サブスクリプションを別のディレクトリに関連付けると、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
 >
 > そのサブスクリプションが別のディレクトリに関連付けられている場合は、ポリシー割り当てもサブスクリプションから削除されます。
 >
@@ -85,7 +85,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 サブスクリプションを別のディレクトリに関連付けた後、次のタスクを実行しないと操作が再開されない場合があります。
 
-- キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/general/subscription-move-fix.md)」を参照してください。
+- キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/general/move-subscription.md)」を参照してください。
 
 - リソースにシステム割り当てマネージド ID を使用していた場合は、それらの ID を再度有効にする必要があります。 ユーザー割り当てマネージド ID を使用していた場合は、それらの ID を再作成する必要があります。 マネージド ID を再度有効にするか再作成した後、それらの ID に割り当てられているアクセス許可を再確立する必要があります。 詳細については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」を参照してください。
 
@@ -95,6 +95,6 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 - 新しい Azure AD テナントを作成するには、「[クイックスタート:Azure Active Directory で新しいテナントを作成する](active-directory-access-create-new-tenant.md)」を参照してください。
 
-- Microsoft Azure がリソース アクセスを制御する仕組みについて詳しくは、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
+- Microsoft Azure によってリソース アクセスを制御する方法の詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
 - Azure AD でロールを割り当てる方法について詳しくは、「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。

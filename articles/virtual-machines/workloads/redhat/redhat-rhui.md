@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250351"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869220"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -49,7 +49,7 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 
 ### <a name="images-connected-to-non-eus-repositories"></a>EUS 以外のリポジトリに接続されているイメージ
 
-EUS 以外のリポジトリに接続されている RHEL イメージから VM をプロビジョニングした場合は、`sudo yum update` を実行すると、最新の RHEL マイナー バージョンにアップグレードされます。 たとえば、RHEL 7.4 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.7 VM (RHEL7 ファミリ内の最新のマイナー バージョン) にアップグレードされます。
+EUS 以外のリポジトリに接続されている RHEL イメージから VM をプロビジョニングした場合は、`sudo yum update` を実行すると、最新の RHEL マイナー バージョンにアップグレードされます。 たとえば、RHEL 7.4 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.8 VM (RHEL7 ファミリ内の最新のマイナー バージョン) にアップグレードされます。
 
 EUS 以外のリポジトリに接続されているイメージでは、SKU にマイナー バージョン番号は含まれません。 この SKU は、URN (イメージのフルネーム) 内の 3 番目の要素です。 たとえば、次のイメージはすべて EUS 以外のリポジトリに接続されています。
 
@@ -86,7 +86,7 @@ Extended Update Support (EUS) リポジトリは、VM をプロビジョニン�
 本書の執筆時点では、RHEL <= 7.4 の EUS サポートは終了しています。 詳細については、[Red Hat ドキュメント](https://access.redhat.com/support/policy/updates/errata/#Long_Support)の「Red Hat Enterprise Linux の延長メンテナンス」セクションを参照してください。
 * RHEL 7.4 EUS サポートは、2019 年 8 月 31 日に終了します
 * RHEL 7.5 EUS サポートは、2020 年 4 月 30 日に終了します
-* RHEL 7.6 EUS サポートは、2020 年 10 月 31 日に終了します
+* RHEL 7.6 EUS サポートは、2021 年 5 月 31 日に終了します
 * RHEL 7.7 EUS サポートは、2021 年 8 月 30 日に終了します
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM を EUS に切り替える (特定のマイナー バージョンにバージョン ロックする)
@@ -168,7 +168,7 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 >新しい Azure US Government のイメージでは、2020 年 1 月現在、上記の「Azure Global」ヘッダーの下に記載されているパブリック IP を使用します。
 
 >[!NOTE]
->また、Azure Germany はパブリックなドイツ リージョンを優先した結果廃止されたことにも注意してください。 Azure Germany のお客様向けの推奨事項は、[こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)の手順を使用してパブリック RHUI をポイントすることです。
+>また、Azure Germany はパブリックなドイツ リージョンを優先した結果廃止されたことにも注意してください。 Azure Germany のお客様向けの推奨事項は、[こちら](#manual-update-procedure-to-use-the-azure-rhui-servers)の手順を使用してパブリック RHUI をポイントすることです。
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI インフラストラクチャ
 

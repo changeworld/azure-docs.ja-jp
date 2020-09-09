@@ -2,13 +2,14 @@
 title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732474"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206742"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -295,7 +296,7 @@ Functions プロジェクトをローカルで実行するには、これらの�
 
     | Language | 要件 |
     | -------- | --------- |
-    | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI ツール](/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 以降](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) 推奨|

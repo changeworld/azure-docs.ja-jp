@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ecfd6bf9d20309619155bf35c87bdb4c08665f73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-java
+ms.openlocfilehash: 09553f587916e8204541b36f259a450d72c1b270
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169546"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322943"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java から Notification Hubs を使用する方法
 
@@ -30,7 +31,7 @@ ms.locfileid: "86169546"
 このトピックでは、新しい Azure Notification Hub Java SDK の主な機能について説明します。Azure Notification Hub Java SDK は、完全にサポートされている公式の SDK です。
 このプロジェクトはオープンソースのプロジェクトであるため、[Java SDK] で SDK コード全体を表示できます。
 
-MSDN のトピック「 [Notification Hubs の REST API](https://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、通常は、Notification Hub REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。 この Java SDK は、これらの REST インターフェイスを使用して、Java で Thin ラッパーを提供します。
+MSDN のトピック「 [Notification Hubs の REST API](/previous-versions/azure/reference/dn223264(v=azure.100))」の説明にあるように、通常は、Notification Hub REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。 この Java SDK は、これらの REST インターフェイスを使用して、Java で Thin ラッパーを提供します。
 
 現在、SDK のサポート対象は次のとおりです。
 
@@ -387,7 +388,7 @@ Java コードを実行すると、ターゲット デバイスに表示され�
   * [認証されたユーザーへのクロスプラットフォーム通知の送信]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Get started tutorial]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Notification Hubs の使用]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [ニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [ローカライズ ニュース速報の送信]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md

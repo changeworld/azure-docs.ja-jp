@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510821"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590117"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure ファイル共有で論理的な削除を有効にする
 
@@ -22,6 +22,8 @@ Azure Storage では、アプリケーションまたは他のストレージ �
 以下のセクションでは、既存のストレージ アカウントで Azure ファイル共有の論理的な削除を有効にして使用する方法について説明します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+## <a name="getting-started"></a>作業の開始
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ストレージ アカウントに移動し、 **[File service]** の下にある **[論理的な削除]** を選択します。
@@ -32,6 +34,12 @@ Azure Storage では、アプリケーションまたは他のストレージ �
 :::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="ストレージ アカウントの論理的な削除の設定ペインのスクリーンショット。ファイル共有セクション、有効トグル、保有期間の設定、および保存が強調表示されています。これにより、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+## <a name="prerequisite"></a>前提条件
+
+論理的な削除のコマンドレットは、現在、Az.Storage モジュールの [2.1.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) と [2.3.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) バージョンでのみ使用できます。 
+
+## <a name="getting-started"></a>作業の開始
 
 論理的な削除を有効にするには、ファイル クライアントのサービスのプロパティを更新する必要があります。 次の例では、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。
 
@@ -70,7 +78,7 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-論理的に削除されたファイル共有を復元するには、次のコマンドを使用します。
+論理的な削除のコマンドレットは、Az.Storage モジュールの 2.1.1-preview バージョンで使用できます。 論理的に削除されたファイル共有を復元するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -91,7 +99,7 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-次のコマンドを使用して、ストレージ アカウントで論理的な削除を無効にすることができます。
+論理的な削除のコマンドレットは、Az.Storage モジュールの 2.1.1-preview バージョンで使用できます。 次のコマンドを使用して、ストレージ アカウントで論理的な削除を無効にすることができます。
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

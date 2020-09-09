@@ -1,19 +1,20 @@
 ---
 title: シンプルなデータ レイヤーの追加 | Microsoft Azure Maps
 description: Azure Maps Web SDK によって提供される、空間 IO モジュールを使用してシンプルなデータ レイヤーを追加する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885958"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282808"
 ---
 # <a name="add-a-simple-data-layer"></a>シンプルなデータ レイヤーの追加
 

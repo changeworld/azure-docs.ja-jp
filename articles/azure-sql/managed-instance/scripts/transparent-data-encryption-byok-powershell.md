@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 11/05/2019
-ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: c812dfa0be3e5ced40b7f347639aeb2540b75351
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708437"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871532"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Key Vault の独自のキーを使用した SQL Managed Instance での Transparent Data Encryption
 
@@ -39,12 +39,12 @@ PowerShell をローカルで使用する場合も、Azure Cloud Shell を使用
 
 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="sample-scripts"></a>サンプルのスクリプト
+## <a name="sample-scripts"></a>サンプルのスクリプト 
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)をご覧ください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)をご覧ください。
 
 SQL Managed Instance 用の PowerShell サンプル スクリプトは、他にも [Azure SQL Managed Instance 用の PowerShell スクリプト](../../database/powershell-script-content-guide.md)のページでご覧いただけます。

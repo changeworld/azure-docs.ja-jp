@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.topic: how-to
 ms.date: 06/04/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 6dd3efb3e8bbe902d3c8267aff714a8e7f77acc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: a0241864a5eafe8783aea463197f86ff949ea9ed
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738840"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853383"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用してモデル メトリックを追跡し、ML モデルをデプロイする (プレビュー)
 
@@ -47,7 +47,7 @@ ms.locfileid: "84738840"
  MLflow Tracking は、メトリックのログ機能と成果物の保存機能を提供します。他の方法では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用している場合にのみこれらの機能を利用できます。
 
 
-| | MLflow&nbsp;Tracking & Deployment | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
+| 機能 | MLflow&nbsp;Tracking & Deployment | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | ワークスペースの管理 |   | ✓ | ✓ | ✓ |
 | データ ストアの使用  |   | ✓ | ✓ | |

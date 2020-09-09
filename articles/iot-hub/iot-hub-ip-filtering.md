@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: 742706f4daa518faf06e5c8b735e679f345f1279
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849864"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074719"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -125,7 +125,7 @@ az resource update -n <iothubName> -g <resourceGroupName> --resource-type Micros
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) を使用して、IoT Hub の IP フィルターを取得および設定できます。
+[Azure PowerShell](/powershell/azure/) を使用して、IoT Hub の IP フィルターを取得および設定できます。
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name

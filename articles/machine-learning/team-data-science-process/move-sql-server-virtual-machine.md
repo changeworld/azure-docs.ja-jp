@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 82ef70677dd0ede4ddfdd0899747c18f335da5a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012180"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
 
@@ -44,7 +44,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * **Azure ストレージ アカウント**。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 * **Azure VM 上に SQL Server**がプロビジョニングされていること。 手順については、「 [高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)」を参照してください。
-* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
+* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。

@@ -3,20 +3,18 @@ title: チュートリアル:Azure Notebook - Personalizer
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure Notebook で Personalizer ループ システムをシミュレートします。これにより、顧客が注文すべきコーヒーの種類が提案されます。 ユーザーとその好みはユーザー データセットに格納されます。 また、コーヒーに関する情報もあり、コーヒー データセットに格納されます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
-ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608487"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509911"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 
@@ -625,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>新しい学習ポリシーを確認する
 
-Azure ノートブックに戻り、同じループ (ただし、反復処理は 2,000 回のみ) を実行して続行します。 Azure portal のメトリック グラフを定期的に更新して、サービスに対する呼び出しの合計を確認します。 約 4,000 万件の呼び出し (ループを反復するたびにランクと報酬の呼び出しが 1 回) がある場合は、反復処理が行われます。
+Azure Notebooks ファイルに戻り、同じループ (ただし、反復処理は 2,000 回のみ) を実行して続行します。 Azure portal のメトリック グラフを定期的に更新して、サービスに対する呼び出しの合計を確認します。 約 4,000 万件の呼び出し (ループを反復するたびにランクと報酬の呼び出しが 1 回) がある場合は、反復処理が行われます。
 
 ```python
 # max iterations

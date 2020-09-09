@@ -4,12 +4,12 @@ description: Azure Backup Server のインストールと登録、およびア�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 3d27b6d96dfd6c815cedc6194e6bb6e8a101dec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735919"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893019"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -20,25 +20,58 @@ ms.locfileid: "83735919"
 Microsoft Azure Backup Server (MABS) のトラブルシューティングを開始する前に、以下の検証を実行することをお勧めします。
 
 - [Microsoft Azure Recovery Services (MARS) エージェントが最新であることを確認する](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します
-- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
-- 登録が失敗する場合は、Azure Backup Server をインストールしようとしているサーバーが別のコンテナーにまだ登録されていないことを確認します。
+- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- 登録が失敗する場合は、Azure Backup Server をインストールしようとしているサーバーが別のコンテナーにまだ登録されていないことを確認します
 - プッシュ インストールが失敗する場合は、DPM エージェントが既に存在するかどうかを確認してください。 その場合は、エージェントをアンインストールしてからインストールをやり直してください。
-- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられていないことを確認する](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
+- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられていないことを確認する](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - SQL Agent サービスが実行中で、MABS サーバーで自動に設定されていることを確認する<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>MABS サーバーのウイルス対策を構成する
+
+MABS は、ほとんどの一般的なウイルス対策ソフトウェア製品との互換性を備えています。 競合を回避するため、次の手順をお勧めします。
+
+1. **リアルタイム監視の無効化** - 次を対象としたウイルス対策ソフトウェアによるリアルタイム監視を無効にします。
+    - `C:\Program Files<MABS Installation path>\XSD` フォルダー
+    - `C:\Program Files<MABS Installation path>\Temp` フォルダー
+    - Modern Backup Storage ボリュームのドライブ文字
+    - レプリカと転送ログ: これを行うには、`Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` フォルダーにある **dpmra.exe** のリアルタイム監視を無効にします。 リアルタイム監視を実行すると、ウイルス対策ソフトウェアが、保護されたサーバーに MABS が同期するたびにレプリカをスキャンし、MABS がレプリカに変更を適用するたびに影響されたファイルをすべてスキャンするため、パフォーマンスが低下します。
+    - 管理者コンソール: パフォーマンスへの影響を回避するには、**csc.exe** プロセスのリアルタイム監視を無効にします。 **csc.exe** プロセスは C\# コンパイラです。リアルタイム監視を実行すると、**csc.exe** プロセスで XML メッセージが生成されるときに出力されるファイルをウイルス対策ソフトウェアがスキャンするため、パフォーマンスが低下します。 **CSC.exe** は、次の場所にあります。
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - MABS サーバーにインストールされている MARS エージェントの場合は、次のファイルと場所を除外することをお勧めします。
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` (プロセス)
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - スクラッチの位置 (標準の場所を使用していない場合)
+2. **保護されたサーバーのリアルタイム監視の無効化**: 保護されたサーバーの `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` フォルダーにある **dpmra.exe** のリアルタイム監視を無効にします。
+3. **保護されたサーバーおよび MABS サーバーにある感染したファイルの削除を目的としたウイルス対策ソフトウェアの構成**: レプリカおよび回復ポイントのデータ破損を回避するため、感染ファイルを自動的にクリーニングまたは検疫するのではなく、削除するようにウイルス対策ソフトウェアを構成します。 自動的にクリーニングまたは検疫すると、ウイルス対策ソフトウェアによってファイルが変更され、MABS が検出できない変更が行われる可能性があります。
+
+整合性のある同期を手動で実行する必要があります。 レプリカが不整合とマークされていても、ウイルス対策ソフトウェアがレプリカからファイルを削除するたびにジョブを確認します。
+
+### <a name="mabs-installation-folders"></a>MABS インストール フォルダー
+
+DPM の既定のインストール フォルダーは次のとおりです。
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+次のコマンドを実行して、インストール フォルダーのパスを検索することもできます。
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>無効なコンテナーの資格情報が指定されました
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| コンテナーへの登録 | 無効なコンテナーの資格情報が指定されました。 ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。 | 推奨される操作: <br> <ul><li> コンテナーから最新の資格情報ファイルをダウンロードしてから、やり直します。 <br>(または)</li> <li> 前記の方法で解決できなかった場合は、資格情報を別のローカル ディレクトリにダウンロードするか、新しいコンテナーを作成します。 <br>(または)</li> <li> [この記事](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided)で説明されているように、日時の設定を更新します。 <br>(または)</li> <li> c:\windows\temp にあるファイルの数が 65,000 を超えているか確認します。 古いファイルを別の場所に移動するか、Temp フォルダー内のアイテムを削除します。 <br>(または)</li> <li> 証明書の状態を確認します。 <br> a. (コントロール パネルで) **[コンピューター証明書の管理]** を開きます。 <br> b. **[個人]** ノードとその子ノードの **[証明書]** を展開します。<br> c.  **Microsoft Azure Tools** 証明書を削除します。 <br> d. Azure Backup クライアントで登録を再試行します。 <br> (または) </li> <li> グループ ポリシーが存在するかどうか確認します。 </li></ul> |
+| コンテナーへの登録 | 無効なコンテナーの資格情報が指定されました。 ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。 | 推奨される操作: <br> <ul><li> コンテナーから最新の資格情報ファイルをダウンロードしてから、やり直します。 <br>(または)</li> <li> 前記の方法で解決できなかった場合は、資格情報を別のローカル ディレクトリにダウンロードするか、新しいコンテナーを作成します。 <br>(または)</li> <li> [この記事](./backup-azure-mars-troubleshoot.md#invalid-vault-credentials-provided)で説明されているように、日時の設定を更新します。 <br>(または)</li> <li> c:\windows\temp にあるファイルの数が 65,000 を超えているか確認します。 古いファイルを別の場所に移動するか、Temp フォルダー内のアイテムを削除します。 <br>(または)</li> <li> 証明書の状態を確認します。 <br> a. (コントロール パネルで) **[コンピューター証明書の管理]** を開きます。 <br> b. **[個人]** ノードとその子ノードの **[証明書]** を展開します。<br> c.  **Microsoft Azure Tools** 証明書を削除します。 <br> d. Azure Backup クライアントで登録を再試行します。 <br> (または) </li> <li> グループ ポリシーが存在するかどうか確認します。 </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>レプリカに整合性がありません
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動の整合性チェック オプションが有効になっていることを確認してください。 レプリケーション オプションと整合性チェックの詳細については、[この記事](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)を参照してください。<br> <ol><li> システム状態のバックアップまたは BMR バックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているか確認してください。</li><li> DPM または Microsoft Azure Backup Server 上の DPM 記憶域プールにおいて領域関連の問題が存在するか確認し、必要に応じて記憶域を割り当てます。</li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態である場合は、手動で開始するように設定します。 サーバーでサービスを開始します。 DPM または Microsoft Azure Backup Server コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
+| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動の整合性チェック オプションが有効になっていることを確認してください。 レプリケーション オプションと整合性チェックの詳細については、[この記事](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)を参照してください。<br> <ol><li> システム状態または BMR のバックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているか確認してください。</li><li> DPM または Microsoft Azure Backup Server 上の DPM 記憶域プールにおいて領域関連の問題が存在するか確認し、必要に応じて記憶域を割り当てます。</li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態である場合は、手動で開始するように設定します。 サーバーでサービスを開始します。 DPM または Microsoft Azure Backup Server コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>オンライン回復ポイントを作成できませんでした
 
@@ -50,7 +83,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| 復元 | **エラー コード**:CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error:100110 <br/> <br/>**エラー メッセージ**:元の DPM サーバーと外部の DPM サーバーを同じコンテナーに登録する必要があります | **原因**:この問題は、外部 DPM の復旧オプションを使用して元のサーバーから代替サーバーにファイルを復元しようとしているときに、復旧先のサーバーと、データのバックアップ元のサーバーが同じ Recovery Services コンテナーに関連付けられていない場合に発生します。<br/> <br/>**対処法**: この問題を解決するには、元のサーバーと代替サーバーの両方を必ず同じコンテナーに登録します。|
+| 復元 | **エラー コード**:CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error:100110 <br/> <br/>**エラー メッセージ**:元の DPM サーバーと外部の DPM サーバーを同じコンテナーに登録する必要があります | **原因**:この問題は、外部 DPM の回復オプションを使用して配信元サーバーから代替サーバーにファイルを復元しようとしているときに、復旧先のサーバーと、データのバックアップ元のサーバーが同じ Recovery Services コンテナーに関連付けられていない場合に発生します。<br/> <br/>**対処法**: この問題を解決するには、元のサーバーと代替サーバーの両方を必ず同じコンテナーに登録します。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM のオンライン復旧ポイント作成ジョブが失敗します
 
@@ -62,7 +95,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| 保護されたサーバーへのエージェントのプッシュ | \<ServerName> の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**。 <ul><li> 信頼されていないドメインのコンピューターを接続している場合は、[こちらの手順](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)に従います。 <br> (または) </li><li> 信頼されているドメインのコンピューターを接続している場合は、[このブログ](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)で説明されている手順でトラブルシューティングを行います。 <br>(または)</li><li> トラブルシューティングの一環としてウイルス対策ソフトウェアを無効にします。 それで問題が解決する場合は、[この記事](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)で推奨されているとおりにウイルス対策の設定を変更します。</li></ul> |
+| 保護されたサーバーへのエージェントのプッシュ | \<ServerName> の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**。 <ul><li> 信頼されていないドメインのコンピューターを接続している場合は、[こちらのステップ](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)に従います。 <br> (または) </li><li> 信頼されているドメインのコンピューターを接続している場合は、[このブログ](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)で説明されているステップを使用してトラブルシューティングを行います。 <br>(または)</li><li> トラブルシューティングの一環としてウイルス対策ソフトウェアを無効にします。 それで問題が解決する場合は、[この記事](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)で推奨されているとおりにウイルス対策の設定を変更します。</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>セットアップでレジストリのメタデータを更新できません
 
@@ -75,7 +108,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| 保護されたサーバーへのエージェントのプッシュ | サーバーに対して指定された資格情報が無効です。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br> [この記事](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)に示されているように、保護エージェントを運用サーバーに手動でインストールします。|
+| 保護されたサーバーへのエージェントのプッシュ | サーバーに対して指定された資格情報が無効です。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br> [この記事](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)に示されているように、保護エージェントを運用サーバーに手動でインストールします。|
 | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした (ID:100050) | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br>1.管理者特権のコマンド プロンプトから、コマンド **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe** を実行します。 Internet Explorer のウィンドウが開きます。 <br/> 2. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。 <br/> 3.プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<br/> 4.マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL](install-mars-agent.md#verify-internet-access) と [IP アドレス](install-mars-agent.md#verify-internet-access)が許可されることを確認します。|
 | Azure Backup エージェントインストールに失敗しました | Microsoft Azure Recovery Services のインストールに失敗しました。 Microsoft Azure Recovery Services のインストールによってシステムに対して実行されたすべての変更はロールバックされました。 (ID: 4024) | Azure エージェントを手動でインストールします。
 
@@ -84,9 +117,9 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
 | 保護グループの構成 | DPM は、保護されたコンピューター (保護されたコンピューター名) 上のアプリケーション コンポーネントを列挙できませんでした。 | 保護グループの構成 UI 画面で、関連するデータソースまたはコンポーネント レベルで **[更新]** を選択します。 |
-| 保護グループの構成 | 保護を構成できません | 保護されるサーバーが SQL Server の場合は、[この記事](https://docs.microsoft.com/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)で説明されているように、保護されたコンピューターのシステム アカウント (NTAuthority\System) に sysadmin ロールのアクセス許可が付与されていることを確認してください。
-| 保護グループの構成 | この保護グループの記憶域プールには十分な空き領域がありません。 | 記憶域プールに追加するディスクには、[パーティションを含めることはできません](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 ディスク上の既存のボリュームを削除します。 それから記憶域プールに追加します。|
-| ポリシーの変更 |バックアップ ポリシーを変更できませんでした。 エラー:サービスの内部エラー [0x29834] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作を再試行してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 | **原因:**<br/>このエラーが発生する状況は 3 つあります。セキュリティ設定が有効になっている場合、リテンション期間の範囲を前に指定した最小値より小さくなるように減らす場合、そしてサポートされていないバージョンを使用している場合です。 (サポートされていないバージョンは、Microsoft Azure Backup Server バージョン 2.0.9052 より前のバージョンおよび Azure Backup Server 更新プログラム 1 です。) <br/>**推奨される操作:**<br/> ポリシーに関連する更新プログラムを続行するには、指定した最小リテンション期間を超えるようにリテンション期間を設定します。 (最小リテンション期間は、毎日だと 7 日、毎週だと 4 週間、毎月だと 3 週間、毎年だと 1 年です。) <br><br>他にもお勧めの方法として、バックアップ エージェントおよび Azure Backup Server を更新して、すべてのセキュリティ更新プログラムを適用する方法があります。 |
+| 保護グループの構成 | 保護を構成できません | 保護されるサーバーが SQL Server の場合は、[この記事](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)で説明されているように、保護されたコンピューターのシステム アカウント (NTAuthority\System) に sysadmin ロールのアクセス許可が付与されていることを確認してください。
+| 保護グループの構成 | この保護グループの記憶域プールには十分な空き領域がありません。 | 記憶域プールに追加するディスクには、[パーティションを含めることはできません](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 ディスク上の既存のボリュームを削除します。 それから記憶域プールに追加します。|
+| ポリシーの変更 |バックアップ ポリシーを変更できませんでした。 エラー:サービスの内部エラー [0x29834] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作を再試行してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 | **原因:**<br/>このエラーが発生する状況は 3 つあります。セキュリティ設定が有効になっている場合、保持期間を前に指定した最小値より小さくなるように減らす場合、そしてサポートされていないバージョンを使用している場合です。 (サポートされていないバージョンは、Microsoft Azure Backup Server バージョン 2.0.9052 より前のバージョンおよび Azure Backup Server 更新プログラム 1 です。) <br/>**推奨される操作:**<br/> ポリシーに関連する更新プログラムを続行するには、指定した最小リテンション期間を超えるようにリテンション期間を設定します。 (最小リテンション期間は、毎日だと 7 日、毎週だと 4 週間、毎月だと 3 週間、毎年だと 1 年です。) <br><br>他にもお勧めの方法として、バックアップ エージェントおよび Azure Backup Server を更新して、すべてのセキュリティ更新プログラムを適用する方法があります。 |
 
 ## <a name="backup"></a>バックアップ
 
@@ -96,7 +129,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | バックアップ | システム状態だけをバックアップする場合は、保護されたコンピューターにシステム状態のバックアップを格納するのに十分な空き領域があることを確認してください。 | <ol><li>保護されたマシンに Windows Server バックアップがインストールされていることを確認します。</li><li>保護されたコンピューターにシステム状態のための十分な領域があることを確認します。 これを確認する最も簡単な方法として、保護されたコンピューターに移動し、Windows Server バックアップを開き、選択項目をクリックして BMR を選択します。 必要な領域量が UI に表示されます。 **WSB** >  **[ローカル バックアップ]**  >  **[バックアップのスケジュール]**  >  **[バックアップの構成の選択]**  >  **[サーバー全体]** (サイズが表示される) と開きます。 このサイズを検証に使用します。</li></ol>
 | バックアップ | BMR のバックアップの失敗 | BMR サイズが大きい場合は、一部のアプリケーション ファイルを OS ドライブに移動して、再試行してください。 |
 | バックアップ | 新しい Microsoft Azure Backup Server 上の VMware VM を再保護するオプションが、追加可能と表示されません。 | VMware のプロパティが、Microsoft Azure Backup Server の提供終了になった古いインスタンスを参照しています。 この問題を解決するには、次の手順を実行します。<br><ol><li>VCenter (SC-VMM に相当) で、 **[概要]** タブ、 **[カスタム属性]** と移動します。</li>  <li>**DPMServer** 値から、古い Microsoft Azure Backup Server 名を削除します。</li>  <li>新しい Microsoft Azure Backup Server に戻り、PG を変更します。  **[更新]** ボタンを選択すると、保護の追加に使用できるチェック ボックスが VM に表示されます。</li></ol> |
-| バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | 「[DPM サーバーでのウイルス対策ソフトウェアの実行](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)」という記事で提案されているようにウイルス対策の設定を変更してみてください。|
+| バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | 「[DPM サーバーでのウイルス対策ソフトウェアの実行](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)」という記事で提案されているようにウイルス対策の設定を変更してみてください。|
 
 ## <a name="change-passphrase"></a>パスフレーズの変更
 
@@ -109,7 +142,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| Office 365 アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> Office 365 アカウントを使用しようとしています。 <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが "受信コネクタで匿名のリレーを許可する" ように設定されていることを確認します。 これを構成する方法の詳細については、「[受信コネクタの匿名の中継を許可する](https://docs.microsoft.com/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)」を参照してください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を O365 にリレーする](https://docs.microsoft.com/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)ように設定します。<br><br>  ドメイン\ユーザー*ではなく*、必ず user\@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。
+| Office 365 アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> Office 365 アカウントを使用しようとしています。 <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが "受信コネクタで匿名のリレーを許可する" ように設定されていることを確認します。 これを構成する方法の詳細については、「[受信コネクタの匿名の中継を許可する](/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)」を参照してください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を O365 にリレーする](/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)ように設定します。<br><br>  ドメイン\ユーザー*ではなく*、必ず user\@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。
 
 ## <a name="common-issues"></a>一般的な問題
 

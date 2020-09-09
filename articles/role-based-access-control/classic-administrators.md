@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076439"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -30,7 +30,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 ## <a name="add-a-co-administrator"></a>共同管理者を追加する
 
 > [!TIP]
-> 共同管理者を追加する必要があるのは、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/powershell/module/servicemanagement/azure)を使用して Azure クラシック デプロイを管理する必要がある場合だけです。 クラシック リソースの管理に Azure portal だけを使用する場合は、ユーザーに従来の管理者を追加する必要はありません。
+> 共同管理者を追加する必要があるのは、[Azure サービス管理 PowerShell モジュール](/powershell/module/servicemanagement/azure.service)を使用して Azure クラシック デプロイを管理する必要がある場合だけです。 クラシック リソースの管理に Azure portal だけを使用する場合は、ユーザーに従来の管理者を追加する必要はありません。
 
 1. [Azure portal](https://portal.azure.com) にサービス管理者または共同管理者としてサインインします。
 

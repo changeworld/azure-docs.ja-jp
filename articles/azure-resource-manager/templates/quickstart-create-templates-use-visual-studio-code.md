@@ -2,15 +2,15 @@
 title: テンプレートを作成する - Visual Studio Code
 description: Visual Studio Code と Azure Resource Manager ツールの拡張機能を使用して Resource Manager テンプレートを操作する方法について説明します。
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058148"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034985"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 `arm!` を選択して、Azure リソース グループのデプロイの対象となるテンプレートを作成します。
 
-![Azure Resource Manager のスキャフォールディングを示す画像](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Azure Resource Manager のスキャフォールディング スニペットを示す画像](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 このスニペットは、ARM テンプレートの基本的な構成要素を作成します。
 
@@ -68,7 +68,7 @@ Visual Studio Code 言語モードが *JSON* から *Azure Resource Manager テ�
 
 ここでは、ストレージ アカウント名を指定するためのパラメーターを作成して使用します。
 
-parameters ブロックにカーソルを置き、キャリッジ リターンを追加して「`par`」と入力し、`arm-param-value` スニペットを選択します。 このアクションにより、ジェネリック パラメーターがテンプレートに追加されます。
+parameters ブロックにカーソルを置き、キャリッジ リターンを追加して「`"`」と入力し、`new-parameter` スニペットを選択します。 このアクションにより、ジェネリック パラメーターがテンプレートに追加されます。
 
 ![ARM テンプレートに追加されているパラメーターを示す画像](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 
@@ -102,7 +102,7 @@ ARM テンプレート パラメーター ファイルを使用すると、環�
 
 このアクションにより、新しいパラメーター ファイルが作成され、作成元のテンプレートにマップされます。 テンプレートを選択しているときに、Visual Studio Code ステータス バーで現在のテンプレートまたはパラメーターのファイル マッピングを表示および変更できます。
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![Visual Studio Code ステータス バーにテンプレートまたはパラメーターのファイル マッピングを示す画像。](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 パラメーター ファイルがテンプレートにマップされたので、拡張機能がテンプレートとパラメーター ファイルの両方を同時に検証します。 この検証を実際に確認するには、パラメーター ファイルの `storageAccountName` パラメーターに 2 文字の値を追加し、ファイルを保存します。
 

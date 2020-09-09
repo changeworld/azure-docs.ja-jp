@@ -3,12 +3,12 @@ title: Web アプリのパフォーマンスの監視 - Azure Application Insigh
 description: 開発運用サイクルへの Application Insights の組み込み
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669694"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324490"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -85,7 +85,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 ![Power BI view of Application Insights telemetry](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>スマート検出
-[プロアクティブ診断](../../azure-monitor/app/proactive-diagnostics.md)は最新の機能です。 特別な構成なしで、Application Insights はアプリの障害発生率の異常な増加を自動的に検出してアラートを生成します。 この機能は、偶発的なエラーの背景と、要求の数に比例して単純に増加したエラーを無視できるほどスマートです。 そのため、たとえば、依存するサービスのいずれかで障害が発生した場合や、デプロイしたばかりの新しいビルドがうまく動作していない場合、電子メールを確認してすぐにそれを把握できます (他のアプリをトリガーできるように webhook も用意されています)。
+[プロアクティブ診断](./proactive-diagnostics.md)は最新の機能です。 特別な構成なしで、Application Insights はアプリの障害発生率の異常な増加を自動的に検出してアラートを生成します。 この機能は、偶発的なエラーの背景と、要求の数に比例して単純に増加したエラーを無視できるほどスマートです。 そのため、たとえば、依存するサービスのいずれかで障害が発生した場合や、デプロイしたばかりの新しいビルドがうまく動作していない場合、電子メールを確認してすぐにそれを把握できます (他のアプリをトリガーできるように webhook も用意されています)。
 
 テレメトリの詳細な分析を毎日実行し、検出が困難なパフォーマンスの異常なパターンを検出するのが、この機能のもう 1 つの側面です。 たとえば、特定の地理的領域または特定のブラウザーのバージョンに関連付けられたパフォーマンスの低下を検出できます。
 
@@ -110,7 +110,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 ![アプリケーション マップ](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
-[Analytics](../../azure-monitor/app/analytics.md)を使用すれば、強力な SQL に似た言語で任意のクエリを記述することができます。  さまざまなパースペクティブが接続されるため、アプリ スタック全体を診断するのが簡単で、ビジネス メトリックおよび顧客満足度とサービスのパフォーマンスを関連付ける適切な質問をすることができます。 
+[Analytics](../log-query/log-query-overview.md)を使用すれば、強力な SQL に似た言語で任意のクエリを記述することができます。  さまざまなパースペクティブが接続されるため、アプリ スタック全体を診断するのが簡単で、ビジネス メトリックおよび顧客満足度とサービスのパフォーマンスを関連付ける適切な質問をすることができます。 
 
 ポータルに格納されているすべてのテレメトリ インスタンスとメトリックの生データを照会できます。 言語には、フィルター、結合、集計などの操作が含まれています。 フィールドを計算し、統計的な分析を実行できます。 テーブルとグラフ両方の視覚エフェクトがあります。
 
@@ -145,9 +145,9 @@ Log4N、NLog、System.Diagnostics.Trace などのトレース ログ記録フレ
 Application Insights では、アラートが発生したときに、作業項目追跡システムに自動的に作業項目を作成できます。
 
 ## <a name="but-what-about"></a>詳細について
-* [プライバシーと記憶域](../../azure-monitor/app/data-retention-privacy.md) - テレメトリは Azure のセキュリティで保護されたサーバー上に保持されます。
+* [プライバシーと記憶域](./data-retention-privacy.md) - テレメトリは Azure のセキュリティで保護されたサーバー上に保持されます。
 * パフォーマンス - 影響は非常に低いです。 テレメトリはバッチ処理されます。
-* [価格](../../azure-monitor/app/pricing.md) - 無料で開始することができ、容量が少ない間は無料期間を継続できます。
+* [価格](./pricing.md) - 無料で開始することができ、容量が少ない間は無料期間を継続できます。
 
 
 ## <a name="video"></a>ビデオ
@@ -157,7 +157,7 @@ Application Insights では、アラートが発生したときに、作業項�
 ## <a name="next-steps"></a>次のステップ
 Application Insights の操作は簡単です。 主なオプションは次のとおりです。
 
-* [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)、および [Azure App Service](../../azure-monitor/app/app-insights-overview.md) 用。
-* 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](../../azure-monitor/app/asp-net.md) または [Java](../../azure-monitor/app/java-get-started.md) アプリだけでなく、[Node.js](../../azure-monitor/app/nodejs.md) や[他の種類](../../azure-monitor/app/platforms.md)のホストでも実行できます。 
-* 短いコード スニペットを追加して、 [任意の Web ページ](../../azure-monitor/app/javascript.md) をインストルメント化します。
+* [IIS サーバー](./monitor-performance-live-website-now.md)、および [Azure App Service](./app-insights-overview.md) 用。
+* 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](./asp-net.md) または [Java](./java-get-started.md) アプリだけでなく、[Node.js](./nodejs.md) や[他の種類](./platforms.md)のホストでも実行できます。 
+* 短いコード スニペットを追加して、 [任意の Web ページ](./javascript.md) をインストルメント化します。
 

@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
+title: PowerShell を使用して AKS クラスター上に Windows Server コンテナーを作成する
 description: 迅速に Kubernetes クラスターを作成し、PowerShell を使用して Azure Kubernetes Service (AKS) で Windows Server コンテナーにアプリケーションをデプロイする方法について説明します。
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bf446c858e40014a4085721d646f819e08542064
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250874"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497887"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>PowerShell を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 

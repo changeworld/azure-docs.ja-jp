@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボのライセンスされたイメージの
 description: Azure Portal を使って Azure DevTest Labs でライセンスされたイメージを有効にする方法について説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6a4023a0107acf5aa4cabc2178d17f7be40301f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481019"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286514"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
 
@@ -50,7 +50,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
     ![[プログラムによるデプロイの構成] ウィンドウ](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > データ サイエンス VM は、データ分析、機械学習、AI トレーニングでよく使用される一般的なツールを使用して事前インストール、構成、テストされた Azure 仮想マシン イメージです。 「[Linux および Windows 用の Azure データ サイエンス仮想マシンの概要](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)」に、DSVM の詳細情報が記載されています。
+   > データ サイエンス VM は、データ分析、機械学習、AI トレーニングでよく使用される一般的なツールを使用して事前インストール、構成、テストされた Azure 仮想マシン イメージです。 「[Linux および Windows 用の Azure データ サイエンス仮想マシンの概要](../machine-learning/data-science-virtual-machine/overview.md)」に、DSVM の詳細情報が記載されています。
    >
    >
 
@@ -78,7 +78,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
 
-- [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Custom images or formulas? (カスタム イメージか数式か?)](./devtest-lab-faq.md#blog-post)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>次のステップ

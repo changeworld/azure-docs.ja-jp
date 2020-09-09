@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: ff4822b513ed2aea6a18ba45bffc1d060ee2410e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 23f31e8d36d6ba615b21a4043c7d39716fc6d89a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937466"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653496"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>Azure で仮想マシンを作成する場合に VHD がサポートされない
 
@@ -48,21 +48,20 @@ ErrorMessage: The specified cookie value in VHD footer indicates that disk 'disk
 
 この問題を解決するには、1 MB の配置に準拠するようにディスクのサイズを変更します。
 
-- Windows で問題を解決するには、[Resize-VHD PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/hyper-v/resize-vhd)を使用します。 **Resize-VHD** は Azure PowerShell コマンドレットではないことに注意してください。
+- Windows で問題を解決するには、[Resize-VHD PowerShell コマンドレット](/powershell/module/hyper-v/resize-vhd)を使用します。 **Resize-VHD** は Azure PowerShell コマンドレットではないことに注意してください。
 
-  1. [Windows Server に Hyper-V のロールをインストールする](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
-  1. [仮想ディスクを容量固定の VHD に変換する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#convert-the-virtual-disk-to-a-fixed-size-vhd)
+  1. [Windows Server に Hyper-V のロールをインストールする](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
+  1. [仮想ディスクを容量固定の VHD に変換する](../windows/prepare-for-upload-vhd-image.md#convert-the-virtual-disk-to-a-fixed-size-vhd)
 
-- Linux で問題を解決するには、[qemu-img コマンド](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)を使用します。
+- Linux で問題を解決するには、[qemu-img コマンド](../linux/create-upload-generic.md)を使用します。
 
 Azure VM を作成するための VHD を作成およびアップロードする方法については、以下の記事を参照してください。
 
-- [Azure CLI 1.0 を使用してカスタム ディスク イメージをアップロードし、Linux VM を作成する](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
-- [Windows Server VHD の作成と Azure へのアップロード](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+- [Azure CLI 1.0 を使用してカスタム ディスク イメージをアップロードし、Linux VM を作成する](../linux/upload-vhd.md)
+- [Windows Server VHD の作成と Azure へのアップロード](../windows/upload-generalized-managed.md)
 
 引き続き問題が発生する場合は、VHD が破損している可能性があります。 このような場合は、VHD を最初から再構築することをお勧めします。
 
-詳細については、次の記事を参照してください。
+詳しくは、次の資料を参照してください。
 
-- [Windows VHD の場合](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#about-vhds)
-- [Linux VHD の場合](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds#about-vhds)
+- [VHD について](../managed-disks-overview.md)

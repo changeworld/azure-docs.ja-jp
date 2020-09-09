@@ -6,16 +6,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: e7c73bf45adba0638074b9d2ab1bab28970ed9b8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a1b0dff9421f493958554c659043c49ff2874379
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185434"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015002"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>チュートリアル:PowerShell Runbook を作成する
 
-このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成する手順について説明します。 PowerShell Runbook は、Windows PowerShell に基づきます。 Azure ポータルのテキスト エディターを使用して、Runbook のコードを直接編集します。
+このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成する手順について説明します。 PowerShell Runbook は、Windows PowerShell に基づきます。 Azure portal のテキスト エディターを使用して、Runbook のコードを直接編集することができます。
 
 > [!div class="checklist"]
 > * 簡単な PowerShell Runbook を作成する
@@ -144,15 +144,15 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
    # Wrap authentication in retry logic for transient network failures
    $logonAttempt = 0
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }
@@ -174,15 +174,15 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
 
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }
@@ -205,15 +205,15 @@ Runbook をテストして発行しましたが、これまでのところ役に
    Disable-AzContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }
@@ -240,15 +240,15 @@ Runbook をテストして発行しましたが、これまでのところ役に
    Disable-AzContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }

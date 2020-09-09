@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390790"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800468"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -46,7 +46,7 @@ Azure Digital Twins は、**イベント ルート**を使用して、サービ�
 
 コンピューティング リソースは、セキュリティとアクセス許可を個別に確立する必要もあります。
 
-デジタル ツイン イベントを処理するように Azure 関数を設定する手順については、[方法: データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページを参照してください。
+デジタル ツイン イベントを処理するように Azure 関数を設定する手順については、[*方法:データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)に関するページを参照してください。
 
 ## <a name="create-an-endpoint"></a>エンドポイントの作成
 
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * `endpoint-name` は、イベント ハブ、Event Grid、Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
 
-`EventRoutes.Add` に渡されるイベント ルート オブジェクトは、[**filter** パラメーター](./how-to-manage-routes.md#filter-events)を使用して、このルートに続くイベントの種類を制限することもできます。
+`EventRoutes.Add` に渡されるイベント ルート オブジェクトは、[**filter** パラメーター](./how-to-manage-routes-apis-cli.md#filter-events)を使用して、このルートに続くイベントの種類を制限することもできます。
 
 ルートは、[Azure Digital Twins CLI](how-to-use-cli.md) を使用して作成することもできます。
 
@@ -90,7 +90,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 ## <a name="next-steps"></a>次のステップ
 
 イベント ルートを設定および管理する方法を見る:
-* [エンドポイントとルートを管理する](how-to-manage-routes.md)に関するページ
+* [*方法:エンドポイントとルートを管理する*](how-to-manage-routes-apis-cli.md)
 
 または、Azure Functions を使用して Azure Digital Twins 内でイベントをルーティングする方法を見る:
-* [データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページ
+* [*方法:データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)

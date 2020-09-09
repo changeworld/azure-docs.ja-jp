@@ -5,19 +5,19 @@ tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: 02c664f6a2bf80ac2f219995be5efd6235db8da0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 8a214deb0cde5ffd6dee6d31377c3c898a363b27
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169561"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073847"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>FTP を使用して Web アプリにファイルをアップロードする
 
-このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、FTP ([WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx) 経由) を使用して Web アプリのコードをデプロイします。
+このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、FTP ([WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile?view=netcore-3.1) 経由) を使用して Web アプリのコードをデプロイします。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -46,6 +46,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

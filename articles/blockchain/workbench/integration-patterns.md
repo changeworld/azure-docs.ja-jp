@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview のスマート コントラク�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254635"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538355"
 ---
 # <a name="smart-contract-integration-patterns"></a>スマート コントラクトの統合パターン
 
@@ -134,7 +134,7 @@ Azure Blockchain Workbench REST API によって、分散型台帳に対する�
 -   状態の変化は、ダウンストリームのコンシューマーにイベントとして表れます。
 -   ダウンストリームのコンシューマーはイベントを受け取り、外部コードの実行をトリガーします。
 
-![外部プロセスへの遷移の制御](./media/integration-patterns/transition-external-process.png)
+![この図は、イベントが分散元帳に送信される原因となった、コントラクト内の状態の変化を示しています。 その後、Blockchain Workbench はイベントを取得して、発行します。](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>スマート コントラクトからの制御の復帰
 
@@ -142,7 +142,7 @@ Azure Blockchain Workbench REST API によって、分散型台帳に対する�
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench の直接配信で想定される形式
 
-![](./media/integration-patterns/direct-delivery.png)
+![この図は、Service Bus を介して Blockchain Workbench によって取得される外部システムからの API メッセージを示しています。 Blockchain Workbench は、エージェントに代わって、メッセージをトランザクションとして分散型台帳に送信します。 それはコントラクトに渡され、それにより状態が変化します。](./media/integration-patterns/direct-delivery.png)
 
 このモデルでは、上記のプロセスに続いて、コントラクトへの通信とその後の状態変更が発生します。
 

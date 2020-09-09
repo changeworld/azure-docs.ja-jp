@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986388"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017279"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を Intelligent Insights でトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -168,7 +168,7 @@ MAXDOP サーバー構成オプションを既定値のゼロ (0) に設定す�
 
 ラッチの競合を処理する方法の 1 つは、連続したインデックス キーを連番でないキーに置き換えて、インデックスの範囲に挿入を均等に分散することです。 通常、インデックスの先頭列がワークロードを比例的に配分します。 検討すべきもうひとつの方法は、テーブル パーティションです。 パーティション テーブルの計算列でハッシュ パーティション分割のスキーマを作成することは、ラッチの過剰な競合を軽減するための一般的な方法です。 ページラッチの IO 競合の場合、インデックスの導入がパフォーマンスの問題の軽減に役立ちます。
 
-詳しくは、「[Diagnose and resolve latch contention on SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf)」(SQL Server でのラッチの競合の診断と対応) (PDF をダウンロード) をご覧ください。
+詳しくは、「[Diagnose and resolve latch contention on SQL Server](http://databaser.net/moniwiki/pds/PerformanceTuning/SQLServerLatchContention.pdf)」(SQL Server でのラッチの競合の診断と対応) (PDF をダウンロード) をご覧ください。
 
 ## <a name="missing-index"></a>インデックスの不足
 

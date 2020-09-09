@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: e078f81db75dd6b89a65ff2d00bb2805ea912d0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007930"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics 拡張機能のスキーマ
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure コンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 仮想マシンおよびその他のコンピューティング リソースで Diagnostics 拡張機能を構成するために使用するスキーマについて詳細に説明します。
@@ -157,7 +157,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**EtwEventSourceProviderConfiguration**|[EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 |**EtwManifestProviderConfiguration**|必須属性:<br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 
 
@@ -165,7 +165,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
- [EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。  
+ [EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)から生成されたイベントの収集を構成します。  
 
 |子要素|説明|  
 |--------------------|-----------------|  
@@ -208,7 +208,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
 |子要素|説明|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。 値は、[UnitType クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)で使用できます。 |
+|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。 値は、[UnitType クラス](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)で使用できます。 |
 |**sinks** | 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Azure Monitor や Event Hubs です。 なお、Event Hubs にアップロードするイベントにリソース ID を含めるには、*Metrics* 要素の下に *resourceId* プロパティを追加します。|    
 
 

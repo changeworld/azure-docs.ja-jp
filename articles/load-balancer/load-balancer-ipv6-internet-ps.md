@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001589"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーの作成を開始する
 
@@ -199,7 +199,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 
 ## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>仮想マシンを作成して新しく作成された NIC を割り当てる
 
-VM の作成に関する詳細については、「 [リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+VM の作成に関する詳細については、「 [リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
 1. 可用性セットとストレージ アカウントの作成
 

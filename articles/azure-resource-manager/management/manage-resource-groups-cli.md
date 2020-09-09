@@ -5,12 +5,13 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 205f96a6ce9b730f98a0c676c3c0a289680e36f2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2b6abcaf7f774b576a4850cd523bca27adfec488
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057536"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827114"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLI を使用した Azure Resource Manager リソース グループの管理
 
@@ -75,7 +76,7 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 
 ## <a name="deploy-a-resource-group-and-resources"></a>リソース グループとリソースをデプロイする
 
-Resource Manager テンプレートを使用して、リソース グループを作成し、そのグループにリソースをデプロイできます。 詳しくは、「[リソース グループを作成してリソースをデプロイする](../templates/deploy-to-subscription.md#resource-group-and-resources)」をご覧ください。
+Resource Manager テンプレートを使用して、リソース グループを作成し、そのグループにリソースをデプロイできます。 詳しくは、「[リソース グループを作成してリソースをデプロイする](../templates/deploy-to-subscription.md#resource-groups)」をご覧ください。
 
 ## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
 
@@ -144,7 +145,7 @@ az group export --name $resourceGroupName
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 詳しくは、[RBAC と Azure CLI を使用したアクセスの管理](../../role-based-access-control/role-assignments-cli.md)に関する記事をご覧ください。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳しくは、[RBAC と Azure CLI を使用したアクセスの管理](../../role-based-access-control/role-assignments-cli.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803968"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325187"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
 
-VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../../azure-monitor/log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 ## <a name="map-records"></a>Map レコード
 
@@ -473,6 +473,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../../azure-monitor/log-query/get-started-portal.md)に関するページを参照してログ クエリを作成してください。
+* Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../log-query/get-started-portal.md)に関するページを参照してログ クエリを作成してください。
 
-* [検索クエリの記述方法](../../azure-monitor/log-query/search-queries.md)を参照してください。
+* [検索クエリの記述方法](../log-query/search-queries.md)を参照してください。
+

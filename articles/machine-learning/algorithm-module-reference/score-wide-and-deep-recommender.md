@@ -1,5 +1,5 @@
 ---
-title: 画像モデルのスコア付け
+title: ワイドかつディープなレコメンダーのスコア付けモジュールを使用する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning でワイドかつディープなレコメンダーのスコア付けモジュールを使用して、データセットに対するレコメンデーション予測をスコア付けする方法について説明します。
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: 1d566d270f9e4b7017171a79fddf58090e21cdec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739803"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192751"
 ---
 # <a name="score-wide-and-deep-recommender"></a>ワイドかつディープなレコメンダーのスコア付け
 
@@ -147,9 +147,6 @@ ms.locfileid: "84739803"
 
 - 1 列目には、ユーザーの識別子が含まれます。
 - それ以降の列は、 **[Maximum number of items to recommend to a user]\(ユーザーに推奨される項目の最大数\)** で設定した値に応じて生成されます。 各列には、推奨される項目が含まれます (識別子順)。 レコメンデーションはユーザーと項目のアフィニティを基準に並べ替えられ、最もアフィニティの高い列が **[Item 1]\(項目 1\)** の列に配置されます。
-
-> [!WARNING]
-> このスコア付きデータセットは、[Evaluate Recommender](evaluate-recommender.md) モジュールを使用して評価することはできません。
 
 ##  <a name="technical-notes"></a>テクニカル ノート
 

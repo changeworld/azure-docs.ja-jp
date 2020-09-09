@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
-ms.custom: tracking-python
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735564"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931184"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>クイック スタート:Text Analytics クライアント ライブラリを使用する
 

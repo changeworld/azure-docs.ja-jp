@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628287"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042668"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -26,12 +26,16 @@ ms.locfileid: "84628287"
 
 ## <a name="availability"></a>可用性
 
-- リリース状態: **一般提供**
-- 必要なロール: **ワークスペースの所有者**は、FIM を有効/無効にすることができます (詳細については、[Log Analytics での Azure のロール](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。 **閲覧者**は結果を表示できます。
-- クラウド:
-    - ✔ 商用クラウド
-    - ✔ US Gov クラウド
-    - ✘ China Gov / その他の Gov
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般公開|
+|価格:|Standard レベル|
+|必要なロールとアクセス許可:|**ワークスペースの所有者**は、FIM を有効/無効にすることができます (詳細については、[Log Analytics での Azure のロール](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。<br>**閲覧者**は結果を表示できます。|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
+
+
 
 
 ## <a name="what-is-fim-in-security-center"></a>Security Center の FIM とは
@@ -46,7 +50,7 @@ Security Center のファイルの整合性の監視では、Windows ファイ�
 Security Center が監視することをお勧めする、FIM を簡単に有効にすることができるエンティティがあります。 独自の FIM ポリシーまたは監視するエンティティを定義することもできます。 このチュートリアルでは、その実行方法を示します。
 
 > [!NOTE]
-> ファイルの整合性の監視 (FIM) 機能は、Windows コンピューター、Linux コンピューター、および VM で動作し、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 FIM は、Log Analytics ワークスペースにデータをアップロードします。 データ料金は、アップロードするデータの量に基づいて適用されます。 詳細については、「[Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」をご覧ください。
+> ファイルの整合性の監視 (FIM) 機能は、Windows と Linux コンピューターおよび VM で動作し、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 FIM は、Log Analytics ワークスペースにデータをアップロードします。 データ料金は、アップロードするデータの量に基づいて適用されます。 詳細については、「[Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」をご覧ください。
 
 FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 ファイルの整合性の監視を有効にすると、種類が**ソリューション**である **Change Tracking** リソースを使用できるようになります。 データ収集の頻度の詳細については、Azure Change Tracking の「[変更の追跡データ収集の詳細](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)」を参照してください。
 

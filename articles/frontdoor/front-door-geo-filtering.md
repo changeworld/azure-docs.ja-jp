@@ -3,7 +3,7 @@ title: Azure Front Door のドメインに対する geo フィルタリング | 
 description: この記事では、Azure Front Door の geo フィルタリング ポリシーについて説明します
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: kumud
+ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 98c86d839868eb0714c7106d5267d1c55e6e99d5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 558d1c098f07f8e09a6a68a065cac9b7b38cfbf3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739313"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399652"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリングとは
+# <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリング
 
 既定では、Azure Front Door は、要求を行っているユーザーの場所に関係なくユーザーの要求に応答します。 ただし、場合によっては、国/リージョンごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国/リージョンからのアクセスを許可したりブロックしたりすることができます。 
 
@@ -62,7 +62,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | BW | ボツワナ|
 | BY | ベラルーシ|
 | BZ | ベリーズ|
-| CA | カナダ|
+| CA | Canada|
 | CD | コンゴ民主共和国|
 | CF | 中央アフリカ共和国|
 | CH | スイス|
@@ -198,7 +198,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | 米国|
+| US | United States|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|
