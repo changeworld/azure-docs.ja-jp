@@ -71,7 +71,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
 2. **[バックアップの停止]** を選択します。
 
-    ![Azure ポータルから VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
+    ![Azure Portal から VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
 
 3. ドロップ ダウン メニューから **[バックアップ データを削除]** を選択します。
 
@@ -83,7 +83,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 6. 一覧からリソース グループを選択します。 サンプルの VM クイック スタート コマンドを使用していた場合、リソース グループの名前は *myResourceGroup* です。
 7. **[リソース グループの削除]** を選択します。 確認のために、リソース グループ名を入力し、 **[削除]** を選択します。
 
-    ![Azure ポータルでリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group.png)
+    ![Azure Portal でリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group.png)
 
 ## <a name="next-steps"></a>次のステップ
 
