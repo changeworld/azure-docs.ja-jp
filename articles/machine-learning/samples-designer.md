@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206332"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812939"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) のパイプラインとデータセットのサンプル
 
@@ -25,6 +25,8 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://aka.ms/AMLFree)を作成してください。
 * Enterprise SKU の Azure Machine Learning ワークスペース。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="use-sample-pipelines"></a>サンプル パイプラインを使用する
 
@@ -53,9 +55,9 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 1. パイプラインの実行が完了したら、パイプラインをレビューし、各モジュールの出力を表示して詳細を確認できます。 モジュールの出力を表示するには、次の手順を使用します。
 
-   1. キャンバス内のモジュールを選択します。
+   1. 出力を表示するキャンバス内のモジュールを右クリックします。
+   1. **[可視化]** を選択します。
 
-   1. キャンバスの右側にある [モジュールの詳細] ペインで **[Outputs + logs]\(出力 + ログ\)** を選択します。 グラフ アイコン (![可視化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)) を選択すると、各モジュールの結果が表示されます。 
 
    このサンプルは、最も一般的な機械学習シナリオの一部の出発点として使用してください。
 

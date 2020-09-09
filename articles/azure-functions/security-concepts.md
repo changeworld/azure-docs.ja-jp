@@ -3,20 +3,20 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259424"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850714"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
-サーバーレス関数の開発、デプロイ、操作に関するセキュリティ計画は、多くの点において Web ベースやクラウド ホスト型のアプリケーションのものと非常に似通っています。 [Azure App Service](/azure/app-service/) には、関数アプリ向けのホスティング インフラストラクチャが用意されています。 この記事では、関数コードを実行する場合のセキュリティ戦略と、App Service を利用して関数をセキュリティで保護する方法について説明します。 
+サーバーレス関数の開発、デプロイ、操作に関するセキュリティ計画は、多くの点において Web ベースやクラウド ホスト型のアプリケーションのものと非常に似通っています。 [Azure App Service](../app-service/index.yml) には、関数アプリ向けのホスティング インフラストラクチャが用意されています。 この記事では、関数コードを実行する場合のセキュリティ戦略と、App Service を利用して関数をセキュリティで保護する方法について説明します。 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-[Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に準拠した一連のセキュリティ推奨事項については、「[Azure Functions 用の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
+[Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に準拠した一連のセキュリティ推奨事項については、「[Azure Functions 用の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
 
 ## <a name="secure-operation"></a>操作をセキュリティで保護する 
 
@@ -71,6 +71,18 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 アクセス キーの詳細については、[HTTP トリガーのバインドに関する記事](functions-bindings-http-webhook-trigger.md#obtaining-keys)を参照してください。
 
+
+#### <a name="secret-repositories"></a>シークレット リポジトリ
+
+既定では、キーは、`AzureWebJobsStorage` 設定によって指定されたアカウントの Blob Storage コンテナーに格納されます。 特定のアプリケーション設定を使用して、この動作をオーバーライドし、キーを別の場所に格納することができます。
+
+|場所  |設定 | 値 | 説明  |
+|---------|---------|---------|---------|
+|別のストレージ アカウント     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 指定された SAS URL に基づいて、2 番目のストレージ アカウントの Blob Storage にキーを格納します。 キーは、関数アプリに固有のシークレットを使用して、格納される前に暗号化されます。 |
+|ファイル システム   | `AzureWebJobsSecretStorageType`   |  `files`       | キーはファイル システムに保存されており、関数アプリに固有のシークレットを使用して、格納の前に暗号化されます。 |
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | コンテナーには、ホスティング リソースのシステム割り当てマネージド ID に対応するアクセス ポリシーが必要です。 アクセス ポリシーでは、`Get`、`Set`、`List`、`Delete` というシークレットのアクセス許可を、その ID に付与することを必要としています。 <br/>ローカルで実行している場合は、開発者 ID が使用され、設定は [local.settings.json file](functions-run-local.md#local-settings-file) に含まれている必要があります。 | 
+|Kubernetes シークレット  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (省略可) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Kubernetes で Functions ランタイムを実行する場合にのみサポートされます。 `AzureWebJobsKubernetesSecretName` が設定されていない場合、リポジトリは読み取り専用と見なされます。 この場合は、デプロイの前に値を生成する必要があります。 Kubernetes にデプロイすると、Azure Functions Core Tools によって値が自動的に生成されます。|
+
 ### <a name="authenticationauthorization"></a>認証/承認
 
 関数キーによって、望ましくないアクセスをある程度軽減することはできますが、関数エンドポイントを完全に保護する唯一の方法は、関数にアクセスするクライアントについて肯定的な認証を実装することです。 そのうえで、ID に基づいて承認の判断を行えます。  
@@ -83,7 +95,7 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 #### <a name="user-management-permissions"></a>ユーザー管理のアクセス許可
 
-関数では、組み込みの [Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) がサポートされます。 関数でサポートされる RBAC ロールは、[共同作成者](../role-based-access-control/built-in-roles.md#contributor)、[所有者](../role-based-access-control/built-in-roles.md#owner)、および[閲覧者](../role-based-access-control/built-in-roles.md#owner)です。 
+関数では、組み込みの [Azure のロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) がサポートされます。 関数でサポートされる Azure ロールは、[共同作成者](../role-based-access-control/built-in-roles.md#contributor)、[所有者](../role-based-access-control/built-in-roles.md#owner)、および[閲覧者](../role-based-access-control/built-in-roles.md#owner)です。 
 
 アクセス許可は、関数アプリ レベルで有効です。 ほとんどの関数アプリレベルのタスクを実行するには、共同作成者ロールが必要です。 関数アプリの削除は、所有者ロールでのみ行えます。 
 
@@ -207,4 +219,3 @@ scm エンドポイントを個別に用意することで、仮想ネットワ�
 
 + [Azure Functions 用の Azure セキュリティ ベースライン](security-baseline.md)
 + [Azure Functions 診断](functions-diagnostics.md)
-        

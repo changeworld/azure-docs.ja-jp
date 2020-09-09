@@ -1,17 +1,17 @@
 ---
 title: AzureRM PowerShell スクリプトを使用して StorSimple デバイスを管理する
-description: Azure Resource Manager スクリプトを使用して StorSimple ジョブを自動化する方法について説明します
+description: Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple 8000 シリーズ デバイスを管理する方法について説明します。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 009e8c7e1cb59d68f3d3aa15de32ec47083095f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513088"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183260"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する
 
@@ -54,8 +54,8 @@ ms.locfileid: "85513088"
 開始する前に、次の要件が満たされていることを確認します。
 
 *   Azure PowerShell がインストールされている。 Azure PowerShell モジュールをインストールするには、次の手順を実行します。
-    * Windows 環境では、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)」の手順に従います。 StorSimple の Windows Server ホストに Azure PowerShell をインストールできます (Windows Server ホストを使用している場合)。
-    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux)」の手順に従います。
+    * Windows 環境では、「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-az-ps)」の手順に従います。 StorSimple の Windows Server ホストに Azure PowerShell をインストールできます (Windows Server ホストを使用している場合)。
+    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](/powershell/azure/install-az-ps)」の手順に従います。
 
 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 

@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Whimsical の統合 | Microsoft Docs
 description: Azure Active Directory と Whimsical の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3a1bab37-e0a8-4710-a927-b80bea80d9f5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401ca1a22b47555f530e1785e25653269403812c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ee5fe4a856e75e9833b9d69dd24efd932f760a91
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662213"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523335"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Whimsical の統合
 
@@ -37,7 +33,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Whimsical でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Whimsical チーム ワークスペース。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -93,9 +89,9 @@ Whimsical で Azure AD SSO を構成してテストするには、次の構成�
     **[サインオン URL]** ボックスに、`https://whimsical.com/@<TENANT_NAME>` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Whimsical クライアント サポート チーム](mailto:help@whimsical.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 ご使用の特定の値は、Whimsical ワークスペース設定内の SAML セットアップ画面に表示されます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Whimsical アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. Whimsical アプリケーションでは、特定の形式の SAML アサーションが想定されるため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
@@ -146,7 +142,11 @@ Whimsical で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-whimsical-sso"></a>Whimsical SSO の構成
 
-**Whimsical** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Whimsical サポート チーム](mailto:help@whimsical.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Whimsical** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** を[ワークスペース設定](https://whimsical.com/workspace/settings)にアップロードする必要があります。
+
+![Whimsical ワークスペース SAML のセットアップ](media/whimsical-tutorial/saml-setup.png)
+
+**フェデレーション メタデータ XML** のアップロードは、SAML SSO 接続を設定するために Whimsical で実行する必要がある唯一の手順です。
 
 ### <a name="create-whimsical-test-user"></a>Whimsical テスト ユーザーの作成
 

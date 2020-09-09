@@ -5,13 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
+ms.custom: devx-track-javascript, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 944257c93e00dca77507f26db15f7bf45fbb387e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482124"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936420"
 ---
 # <a name="connection-strings"></a>Connection strings
 
@@ -31,12 +32,12 @@ ms.locfileid: "85482124"
 
 - ファイアウォールの例外またはプロキシのリダイレクト 
 
-    イントラネット Web サーバーの監視が必要な場合、以前のソリューションでは、お使いの構成に個々のサービスエンド ポイントを追加するようにお客様に求めていました。 詳細については、[このページ](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)を参照してください。 
+    イントラネット Web サーバーの監視が必要な場合、以前のソリューションでは、お使いの構成に個々のサービスエンド ポイントを追加するようにお客様に求めていました。 詳細については、[このページ](../faq.md#can-i-monitor-an-intranet-web-server)を参照してください。 
     接続文字列により、この作業の設定が 1 つですみ、より優れた代替方法が提供されます。 プレフィックスとサフィックスを修正するだけで、すべてのエンドポイントを適切なサービスに自動的に設定してリダイレクトすることができます。 
 
 - ソブリン クラウド環境またはハイブリッド クラウド環境
 
-    ユーザーは、定義された [Azure Government リージョン](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)にデータを送信できます。
+    ユーザーは、定義された [Azure Government リージョン](../../azure-government/compare-azure-government-global-azure.md#application-insights)にデータを送信できます。
     接続文字列を使用すると、イントラネット サーバーまたはハイブリッド クラウド設定のエンドポイント設定を定義できます。 
 
 ## <a name="getting-started"></a>作業の開始
@@ -274,14 +275,15 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 実行時に開始する:
 
-* [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
+* [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](./azure-vm-vmss-apps.md)
+* [IIS サーバー](./monitor-performance-live-website-now.md)
+* [Azure Web Apps](./azure-web-apps.md)
 
 開発時に開始する:
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
+

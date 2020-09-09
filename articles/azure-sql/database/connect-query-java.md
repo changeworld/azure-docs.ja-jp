@@ -8,13 +8,14 @@ ms.service: sql-database
 ms.subservice: development
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 06/26/2020
-ms.openlocfilehash: 59124928e9bfb75265e3556e37d65a3b30c851d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/05/2020
+ms.custom: devx-track-java
+ms.openlocfilehash: 4269ac63b7c1af219d8158953abbc0919a2256b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515077"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833591"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Azure SQL Database で Java と JDBC を使用する
 
@@ -136,7 +137,7 @@ az sql db create \
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>7.4.1.jre8</version>
+            <version>8.2.2.jre8</version>
         </dependency>
     </dependencies>
 </project>

@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071200"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -54,9 +54,11 @@ Azure でマシンを起動するには、Azure 環境で、いくつかのド�
 
     ハイドレーションが必要な場合は、次の結果を示します。
 
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system doesn't meet no-hydration requirement.
+    This system doesn't meet no-hydration requirement.
+    ```
 
     VM がハイドレーションなしの要件を満たしている場合、スクリプトは「このシステムはハイドレーションなしの要件を満たしている」という結果を示します。 この場合、すべてのドライバーとサービスが Azure で必要な状態にあり、VM にハイドレーションは必要ありません。
 
@@ -65,12 +67,14 @@ Azure でマシンを起動するには、Azure 環境で、いくつかのド�
     `.\Script-no-hydration.ps1 -set`
     
     これによりドライバーのスタートアップの種類が変換され、次のような結果が示されます。
-    
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
-        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system is now no-hydration compatible. 
+    Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0
+
+    This system is now no-hydration compatible.
+    ```
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>仮想マシンで [接続] ボタンが灰色表示されているために、/RDP/SSH をフェールオーバーされた仮想マシンに接続できない
 
@@ -116,11 +120,15 @@ RDP を使用してマシンに接続できても、シリアル コンソール
 
 * マシンの OS が Red Hat または Oracle Linux 7.*/8.0 の場合は、ルート アクセス許可を使用してフェールオーバー Azure VM で次のコマンドを実行します。 コマンドを実行した後に VM を再起動します。
 
-        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```
 
 * マシンの OS が CentOS 7.* の場合は、ルート アクセス許可を使用してフェールオーバー Azure VM で次のコマンドを実行します。 コマンドを実行した後に VM を再起動します。
 
-        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>予期しないシャット ダウンのメッセージ (イベント ID 6008)
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Key Vault - CLI で論理的な削除を使用する方法
-description: CLI コード スニペットを使用した論理的な削除のユース ケース
+description: Azure CLI を使用して、キー コンテナーとキー コンテナー オブジェクトの回復を可能にする Azure Key Vault の論理的な削除機能を使用する方法について説明します。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: f98df33b3efc697e349ddeae31439dd2fb701d91
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: how-to
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202022"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585663"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>新しいキー コンテナー
 
-新しいキー コンテナーの論理的な削除は、作成時に create コマンドに論理的な削除を有効にするフラグを追加することで有効にできます。
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+論理的な削除は、既定ですべてのキー コンテナーで自動的に有効になります。 2020 年 12 月 31 日までに、論理的な削除を有効にしていない新しいキー コンテナーを作成することはできなくなります。
 
 ### <a name="verify-soft-delete-enablement"></a>論理的な削除が有効になっていることを確認する
 
@@ -245,6 +241,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>その他のリソース
 
-- Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](overview-soft-delete.md)」をご覧ください。
+- Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](soft-delete-overview.md)」をご覧ください。
 - Azure Key Vault の使用方法の概要については、「[Azure Key Vault とは](overview.md)」をご覧ください。
 

@@ -3,17 +3,17 @@ title: 'ポイント対サイトの証明書を生成してエクスポートす
 description: Linux (strongSwan) CLI を使用して、自己署名ルート証明書を作成し、公開キーをエクスポートし、クライアント証明書を生成します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
-author: anzaman
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 08/14/2019
+ms.date: 09/02/2020
 ms.author: alzam
-ms.openlocfilehash: 89f6014b548bd3dd66622d15149051e6b28e94b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be5bb042649b0fe425077b5b3feb3cea728218c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984599"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394008"
 ---
 # <a name="generate-and-export-certificates"></a>証明書を生成してエクスポートする
 

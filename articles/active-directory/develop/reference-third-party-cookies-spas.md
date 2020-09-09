@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311757"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>サードパーティの Cookie がブロックされている Safari やその他のブラウザーで ITP を扱う
 
@@ -46,7 +46,7 @@ Microsoft ID プラットフォームの場合、SPA とネイティブ クラ�
 
 SPA にはさらに 2 つの制約があります。
 
-* ログイン エンドポイントで CORS を有効にするには、[リダイレクト URI が `spa` という種類としてマークされている必要があります](v2-oauth2-auth-code-flow.md#setup-required-for-single-page-apps)。
+* ログイン エンドポイントで CORS を有効にするには、[リダイレクト URI が `spa` という種類としてマークされている必要があります](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps)。
 * `spa` リダイレクト URI に認可コード フローを通じて発行される更新トークンには、90 日の有効期間ではなく、24 時間の有効期間があります。
 
 ![SPA アプリのコード フロー](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)

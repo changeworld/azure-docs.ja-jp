@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273203"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
-Application Gateway と Web アプリケーション ファイアウォール (WAF) は、Standard_v2 SKU と WAF_v2 SKU でも使用できます。 v2 SKU では、パフォーマンスが強化され、自動スケールダウン、ゾーン冗長、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 Standard SKU と WAF SKU の既存機能は、[比較](#differences-from-v1-sku)セクションで示されているいくつかの例外を除き、新しい v2 SKU でも引き続きサポートされます。
+Application Gateway は、Standard_v2 SKU で利用できます。 Web アプリケーション ファイアウォール (WAF) は、WAF_v2 SKU で利用できます。 v2 SKU では、パフォーマンスが強化され、自動スケールダウン、ゾーン冗長、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 Standard SKU と WAF SKU の既存機能は、[比較](#differences-from-v1-sku)セクションで示されているいくつかの例外を除き、新しい v2 SKU でも引き続きサポートされます。
 
 新しい v2 SKU には、次の拡張機能が含まれます。
 
@@ -148,7 +148,7 @@ Azure Application Gateways は常に可用性が高くなるようにデプロ�
 
 次の表では、各 SKU で使用できる機能を比較しています。
 
-|                                                   | v1 SKU   | v2 SKU   |
+| 特徴量                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | 自動スケール                                       |          | &#x2713; |
 | ゾーン冗長性                                   |          | &#x2713; |

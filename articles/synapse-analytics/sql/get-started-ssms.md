@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Synapse SQL に接続してクエリを実行する'
+title: SQL Server Management Studio (SSMS) を使用して Synapse SQL に接続する
 description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行します。
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077719"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Synapse SQL に接続する
 > [!div class="op_single_selector"]

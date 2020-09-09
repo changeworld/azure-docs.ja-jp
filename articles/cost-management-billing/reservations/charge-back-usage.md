@@ -3,15 +3,16 @@ title: Azure Reservation コストのチャージ バック
 description: Azure Reservation コストのチャージバックを表示する方法について学習します。
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/14/2020
+ms.subservice: reservations
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 22e2ee897236a2e079f0ce6e230502d5242a02e8
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4387a1aa5b22c9808f36364b71f89a71736958b8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714350"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689475"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Azure Reservation コストのチャージ バック
 

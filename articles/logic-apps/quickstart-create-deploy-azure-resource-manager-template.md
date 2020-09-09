@@ -7,16 +7,16 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 06/30/2020
-ms.openlocfilehash: 466b9258962c27457962ce51b72d2aeb2c029cc2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569507"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078118"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してロジック アプリ ワークフローを作成してデプロイする
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[数百のコネクタ](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)から選択することで、データ、アプリ、クラウドベースのサービス、オンプレミスのシステムを統合する自動化されたワークフローを作成して実行するのに役立つクラウド サービスです。 このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイし、1 時間ごとのスケジュールで Azure の状態を確認する基本的なロジック アプリを作成するプロセスに焦点を当てます。 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[数百のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)から選択することで、データ、アプリ、クラウドベースのサービス、オンプレミスのシステムを統合する自動化されたワークフローを作成して実行するのに役立つクラウド サービスです。 このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイし、1 時間ごとのスケジュールで Azure の状態を確認する基本的なロジック アプリを作成するプロセスに焦点を当てます。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -32,11 +32,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートでは、[**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)テンプレートを使用します。これは、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) を確認できます。
 
-クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の "[*組み込み*" アクション](https://docs.microsoft.com/azure/connectors/apis-list#connector-types)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
+クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の "[*組み込み*" アクション](../connectors/apis-list.md#connector-types)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
 
 このテンプレートでは、次の Azure リソースを作成します。
 
-* [**Microsoft.Logic/workflows**](https://docs.microsoft.com/azure/templates/microsoft.logic/workflows)。ロジック アプリのワークフローを作成します。
+* [**Microsoft.Logic/workflows**](/azure/templates/microsoft.logic/workflows)。ロジック アプリのワークフローを作成します。
 
 Azure Logic Apps の他のクイック スタート テンプレートについては、ギャラリーの [Microsoft.Logic](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic) テンプレートを確認してください。
 
@@ -49,9 +49,9 @@ Azure Logic Apps の他のクイック スタート テンプレートについ�
 | オプション | 説明 |
 |--------|-------------|
 | [Azure Portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Azure 環境で前提条件が満たされており、ARM テンプレートの使用に慣れている場合は、これらの手順が、Azure に直接サインインし、Azure portal でクイック スタート テンプレートを開くのに役立ちます。 詳細については、「[ARM テンプレートと Azure portal でリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md)」を参照してください。 |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure コマンド ライン インターフェイス (Azure CLI) は、Azure リソースを作成および管理するためのコマンド セットです。 これらのコマンドを実行するには、Azure CLI バージョン 2.6 以降が必要です。 ご利用の CLI のバージョンを確認するには、「`az --version`」と入力します。 詳細については、以下のトピックを参照してください。 <p><p>- [Azure CLI とは](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell には、Azure リソースの管理に Azure Resource Manager モデルを使用する一連のコマンドレットが用意されています。 詳細については、以下のトピックを参照してください。 <p><p>- [Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [Azure PowerShell Az モジュールの概要](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-| [Azure Resource Management REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure では、サービス リソースに対する作成、取得、更新、または削除アクセスに使用する HTTP 操作 (メソッド) をサポートするサービス エンドポイントである、Representational State Transfer (REST) API が提供されます。 詳細については、[Azure REST API の概要](https://docs.microsoft.com/rest/api/azure/)に関するページを参照してください。 |
+| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure コマンド ライン インターフェイス (Azure CLI) は、Azure リソースを作成および管理するためのコマンド セットです。 これらのコマンドを実行するには、Azure CLI バージョン 2.6 以降が必要です。 ご利用の CLI のバージョンを確認するには、「`az --version`」と入力します。 詳細については、以下のトピックを参照してください。 <p><p>- [Azure CLI とは](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Azure CLI の概要](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell には、Azure リソースの管理に Azure Resource Manager モデルを使用する一連のコマンドレットが用意されています。 詳細については、以下のトピックを参照してください。 <p><p>- [Azure PowerShell の概要](/powershell/azure/azurerm/overview) <br>- [Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az) <br>- [Azure PowerShell の概要](/powershell/azure/get-started-azureps) |
+| [Azure Resource Management REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure では、サービス リソースに対する作成、取得、更新、または削除アクセスに使用する HTTP 操作 (メソッド) をサポートするサービス エンドポイントである、Representational State Transfer (REST) API が提供されます。 詳細については、[Azure REST API の概要](/rest/api/azure/)に関するページを参照してください。 |
 |||
 
 <a name="deploy-azure-portal"></a>
@@ -97,7 +97,7 @@ read
 
 詳細については、以下のトピックを参照してください。
 
-* [Azure CLI: az deployment group](https://docs.microsoft.com/cli/azure/deployment/group)
+* [Azure CLI: az deployment group](/cli/azure/deployment/group)
 * [ARM テンプレートと Azure CLI でリソースをデプロイする](../azure-resource-manager/templates/deploy-cli.md)
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -117,8 +117,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 詳細については、以下のトピックを参照してください。
 
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
+* [Azure PowerShell: New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
+* [Azure PowerShell: New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)
 * [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
 
 #### <a name="rest-api"></a>[REST API](#tab/rest-api)
@@ -143,8 +143,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
    詳細については、以下のトピックを参照してください。
 
-   * [Azure REST API リファレンス - Azure REST API を呼び出す方法](https://docs.microsoft.com/rest/api/azure/)
-   * [Resource Management REST API: リソース グループ - 作成または更新](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate)。
+   * [Azure REST API リファレンス - Azure REST API を呼び出す方法](/rest/api/azure/)
+   * [Resource Management REST API: リソース グループ - 作成または更新](/rest/api/resources/resourcegroups/createorupdate)。
 
 1. リソース グループにクイック スタート テンプレートをデプロイするには、Resource Management REST API に送信する要求でこの構文に従います。
 
@@ -165,7 +165,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
    ```
 
-   詳細については、[Resource Management REST API: デプロイ - 作成または更新](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate)に関するページを参照してください。
+   詳細については、[Resource Management REST API: デプロイ - 作成または更新](/rest/api/resources/deployments/createorupdate)に関するページを参照してください。
 
 1. デプロイに使用する値 (Azure リージョン、クイック スタート テンプレートへのリンク、デプロイ時に使用するクイック スタート テンプレートの値を含む[パラメーター ファイル](../azure-resource-manager/templates/template-parameters.md)へのリンクなど) を指定するには、Resource Management REST API に送信する要求本文でこの構文に従います。
 
@@ -191,7 +191,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    | `location`| <*Azure-region*> | デプロイに使用する Azure リージョン。 この例では、`West US` を使用します。 |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | デプロイに使用するクイック スタート テンプレートの URL の場所: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*quickstart-template-parameter-file-URL*> | デプロイに使用するクイック スタート テンプレートのパラメーター ファイルの URL の場所: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>Resource Manager パラメーター ファイルの詳細については、これらのトピックを参照してください。 <p><p>- [Resource Manager パラメーター ファイルを作成する](../azure-resource-manager/templates/parameter-files.md) <br>- [チュートリアル:パラメーター ファイルを使用して ARM テンプレートをデプロイする](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
-   | `mode` | <*deployment-mode*> | 増分更新または完全更新のいずれかを実行します。 この例では `Incremental` を使用します。これが既定値です。 詳しくは、「[Azure Resource Manager のデプロイ モード](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes)」を参照してください。 |
+   | `mode` | <*deployment-mode*> | 増分更新または完全更新のいずれかを実行します。 この例では `Incremental` を使用します。これが既定値です。 詳しくは、「[Azure Resource Manager のデプロイ モード](../azure-resource-manager/templates/deployment-modes.md)」を参照してください。 |
    |||
 
    次に例を示します。
@@ -215,7 +215,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 詳細については、以下のトピックを参照してください。
 
-* [Resource Management REST API](https://docs.microsoft.com/rest/api/resources/)
+* [Resource Management REST API](/rest/api/resources/)
 * [ARM テンプレートと Resource Manager REST API を使用してリソースをデプロイする](../azure-resource-manager/templates/deploy-rest.md)
 
 ---
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-詳細については、[Azure CLI: az logic workflow show](https://docs.microsoft.com/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) に関する記述を参照してください。
+詳細については、[Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) に関する記述を参照してください。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -255,7 +255,7 @@ Get-AzLogicApp -Name $logicAppName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-詳細については、[Azure PowerShell: Get-AzLogicApp](https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapp) に関する記述を参照してください。
+詳細については、[Azure PowerShell: Get-AzLogicApp](/powershell/module/az.logicapp/get-azlogicapp) に関する記述を参照してください。
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -276,7 +276,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
 ```
 
-詳細については、[Logic Apps REST API: Workflows - Get](https://docs.microsoft.com/rest/api/logic/workflows/get) に関する記述を参照してください。
+詳細については、[Logic Apps REST API: Workflows - Get](/rest/api/logic/workflows/get) に関する記述を参照してください。
 
 ---
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-詳細については、[Azure CLI: az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) に関する記述を参照してください。
+詳細については、[Azure CLI: az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) に関する記述を参照してください。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -313,7 +313,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-詳細については、[Azure PowerShell: Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) に関するページを参照してください。
+詳細については、[Azure PowerShell: Remove-AzResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) に関するページを参照してください。
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -333,7 +333,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroup
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01
 ```
 
-詳細については、[Resource Management REST API: リソース グループ - 削除](https://docs.microsoft.com/rest/api/resources/resourcegroups/delete)に関するページを参照してください。
+詳細については、[Resource Management REST API: リソース グループ - 削除](/rest/api/resources/resourcegroups/delete)に関するページを参照してください。
 
 ---
 

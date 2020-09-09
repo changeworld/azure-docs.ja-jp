@@ -1,19 +1,17 @@
 ---
 title: Azure Data Lake Analytics U-SQL 開発者向けの Apache Spark コードの概念について説明します。
 description: この記事では、U-SQL 開発者が、Spark コードの概念を理解する上で役立つ Apache Spark の概念について説明します。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: d7cdcd5a3b176b60bb7801b37a831f8feb08c21f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106494"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132349"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark コードについて
 
@@ -131,7 +129,7 @@ U-SQL の型システムは .NET 型システムに基づいており、Spark �
 詳細については、次を参照してください。
 
 - [org.apache.spark.sql.types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
-- [Spark SQL および DataFrames 型](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
+- [Spark SQL および DataFrames 型](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
 - [Scala 値の型](https://www.scala-lang.org/api/current/scala/AnyVal.html)
 - [pyspark.sql.types](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.types)
 

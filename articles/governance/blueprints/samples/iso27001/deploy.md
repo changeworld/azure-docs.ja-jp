@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含むスタンドアロンの ISO 27001 ブループリント サンプルのデプロイ手順です。
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 9eaf559f0c1e6c99d3a2469d63eddea1c1ae9867
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006808"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルをデプロイする
 

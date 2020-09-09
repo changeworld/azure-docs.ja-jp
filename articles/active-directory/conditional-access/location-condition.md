@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253224"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055379"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -190,11 +190,11 @@ Azure AD にプロキシされる IPv6 トラフィックの大部分は、Micro
 
 クラウドでホストされているプロキシまたは VPN ソリューションを使用する場合、ポリシーの評価中に Azure AD が使用する IP アドレスは、プロキシの IP アドレスです。 ユーザーのパブリック IP アドレスを含む X-Forwarded-For (XFF) ヘッダーは、信頼できるソースから送信されたという検証が行われないために IP アドレスの偽装方法となることが多く、使用されません。
 
-クラウド プロキシが配置されている場合は、ドメインに参加するデバイスを要求するために使用されるポリシーを使用できます。または AD FS の企業ネットワーク要求を使用できます。
+クラウド プロキシが配置されている場合は、Hybrid Azure AD Join を使用したデバイスを要求するために使用されるポリシーを使用できます。または AD FS の企業ネットワーク要求を使用できます。
 
 ### <a name="api-support-and-powershell"></a>API のサポートと PowerShell
 
-ネームド ロケーションでは、API と PowerShell はまだサポートされていません。
+ネームド ロケーションに対して Graph API のプレビュー バージョンを利用できます。詳細については、[namedLocation API](/graph/api/resources/namedlocation?view=graph-rest-beta) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

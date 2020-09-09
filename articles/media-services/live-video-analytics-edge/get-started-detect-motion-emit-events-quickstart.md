@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816905"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067696"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -34,7 +34,7 @@ ms.locfileid: "84816905"
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 内の Linux VM ([IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)がインストール済み)
+* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge-linux.md)がインストール済み)
 
 このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 
@@ -84,7 +84,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>ダイレクト メソッドの使用
+## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
 ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 詳細については、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関する記事を参照してください。 
 
@@ -561,7 +561,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 次の詳細に注目します。
 
-* メッセージには、`body` セクションと `applicationProperties` セクションが含まれています。 詳細については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」を参照してください。
+* メッセージには、`body` セクションと `applicationProperties` セクションが含まれています。 詳細については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
 * `applicationProperties` 内の `subject` は、メッセージの生成元の `MediaGraph` 内のノードを参照しています。 今回のケースでは、メッセージはモーション検出プロセッサから生成されています。
 * `applicationProperties` 内の `eventType` は、このイベントが分析イベントであることを示しています。
 * `eventTime` 値は、イベントが発生した時刻です。

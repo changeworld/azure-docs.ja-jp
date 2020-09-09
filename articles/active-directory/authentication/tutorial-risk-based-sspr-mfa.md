@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116063"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419633"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>チュートリアル:ユーザー サインインのリスク検出を使用して、Azure Multi-Factor Authentication またはパスワードの変更をトリガーする
 
 ユーザーを保護するために、危険な動作に自動的に対処するリスクベースのポリシーを Azure Active Directory (Azure AD) で構成することができます。 Azure AD Identity Protection ポリシーを使用すると、サインイン試行を自動的にブロックしたり、パスワードの変更の要求や Azure Multi-Factor Authentication の要求といった追加のアクションを要求したりできます。 これらのポリシーは、既存の Azure AD 条件付きアクセス ポリシーと連携して、組織の追加の保護レイヤーとして機能します。 ユーザーがこれらのポリシーのいずれかで危険な動作をトリガーすることは決してないと思われますが、セキュリティを侵害しようとする試みがあった場合、組織は保護されます。
+
+> [!IMPORTANT]
+> このチュートリアルでは、リスクベースの Azure Multi-Factor Authentication を有効にする方法を管理者に示します。
+>
+> IT チームが Azure Multi-Factor Authentication を使用する機能を有効にしていない場合、またはサインイン時に問題が発生した場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -34,7 +39,7 @@ ms.locfileid: "83116063"
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも Azure AD Premium P2 試用版ライセンスが有効になっている、動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P2 または試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
 * セルフサービス パスワード リセット用に構成された Azure AD と Azure Multi-Factor Authentication

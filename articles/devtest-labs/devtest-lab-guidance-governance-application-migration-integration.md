@@ -4,12 +4,12 @@ description: この記事では、アプリケーションの移行と統合の�
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481580"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289358"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。
@@ -50,14 +50,14 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 カスタム組織イメージを DevTest Labs 環境に展開する簡単に反復可能なプロセスをセットアップするにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer
-[イメージ ファクトリ パターンに関するこちらのビデオ](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)をご覧ください。 これは高度なシナリオであり、提供されているスクリプトはサンプル スクリプトのみです。 何らかの変更が必要な場合は、環境で使用されるスクリプトを自分で管理および保守する必要があります。
+[イメージ ファクトリ パターンに関するこちらのビデオ](./devtest-lab-faq.md#blog-post)をご覧ください。 これは高度なシナリオであり、提供されているスクリプトはサンプル スクリプトのみです。 何らかの変更が必要な場合は、環境で使用されるスクリプトを自分で管理および保守する必要があります。
 
 DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ パイプラインを作成します。
 
-- [概要:Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [イメージ ファクトリ – パート 3:カスタム イメージを保存して複数のラボに配布する](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+- [概要:Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](./devtest-lab-faq.md#blog-post)
+- [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](./devtest-lab-faq.md#blog-post)
+- [イメージ ファクトリ – パート 3:カスタム イメージを保存して複数のラボに配布する](./devtest-lab-faq.md#blog-post)
+- [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](./devtest-lab-faq.md#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>ネットワーク構成を設定するパターン
 

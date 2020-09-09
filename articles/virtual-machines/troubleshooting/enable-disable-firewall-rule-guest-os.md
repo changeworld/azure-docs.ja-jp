@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058761"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする
 
@@ -77,7 +77,7 @@ VM がオンラインで、同じ仮想ネットワーク上の別の VM でア�
 
 VM がオンラインで、同じ仮想ネットワーク上の別の VM でアクセスできる場合、もう一方の VM を使用して次の軽減策を行うことができます。
 
-1.  トラブルシューティング用の VM で、[PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)をダウンロードします。
+1.  トラブルシューティング用の VM で、[PSTools](/sysinternals/downloads/pstools)をダウンロードします。
 
 2.  CMD インスタンスを開き、内部 IP (DIP) を通してVM にアクセスします。 
 

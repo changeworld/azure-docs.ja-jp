@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539807"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323521"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights でのユーザー、セッション、およびイベントの分析
 
-ユーザーが Web アプリをいつ使い、どのページに最も興味があり、ユーザーがどこにいて、どのようなブラウザーやオペレーティング システムを使っているかを確認しましょう。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスを使用してビジネスおよび使用状況テレメトリを分析します。
+ユーザーが Web アプリをいつ使い、どのページに最も興味があり、ユーザーがどこにいて、どのようなブラウザーやオペレーティング システムを使っているかを確認しましょう。 [Azure Application Insights](./app-insights-overview.md) サービスを使用してビジネスおよび使用状況テレメトリを分析します。
 
 ![Application Insights ユーザーのスクリーンショット](./media/usage-segmentation/0001-users.png)
 
@@ -29,9 +29,9 @@ Application Insights ポータルのユーザー、セッション、または�
 
 * **ユーザー ツール**:アプリとその機能を使用したユーザーの数。  ブラウザーの Cookie に格納されている匿名 ID を使用してユーザーがカウントされます。 複数のブラウザーまたはコンピューターを使用する 1 人のユーザーは、複数のユーザーとしてカウントされます。
 * **セッション ツール**:アプリの特定のページおよび機能を含むユーザー アクティビティのセッション数。 セッションは、ユーザーの非アクティブ状態が 30 分続いた後、または継続した 24 時間の使用の後、カウントされます。
-* **イベント ツール**:アプリの特定のページと機能が使用された回数。 ページ ビューは、([インストルメント化した場合](../../azure-monitor/app/javascript.md)) ブラウザーがアプリからページを読み込むときにカウントされます。 
+* **イベント ツール**:アプリの特定のページと機能が使用された回数。 ページ ビューは、([インストルメント化した場合](./javascript.md)) ブラウザーがアプリからページを読み込むときにカウントされます。 
 
-    カスタム イベントは、アプリで実行される操作の 1 回の出現を表します。通常、ボタン クリック、タスクの完了などのユーザー操作です。 コードをアプリに挿入して、[カスタム イベントを生成](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)します。
+    カスタム イベントは、アプリで実行される操作の 1 回の出現を表します。通常、ボタン クリック、タスクの完了などのユーザー操作です。 コードをアプリに挿入して、[カスタム イベントを生成](./api-custom-events-metrics.md#trackevent)します。
 
 ## <a name="querying-for-certain-users"></a>特定のユーザーのクエリ実行
 
@@ -62,5 +62,6 @@ Application Insights ポータルのユーザー、セッション、または�
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
     - [ユーザー フロー](usage-flows.md)
-    - [ブック](../../azure-monitor/platform/workbooks-overview.md)
+    - [ブック](../platform/workbooks-overview.md)
     - [ユーザー コンテキストの追加](usage-send-user-context.md)
+

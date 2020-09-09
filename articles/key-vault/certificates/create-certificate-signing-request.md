@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849484"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716114"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault での CSR の作成とマージ
 
@@ -81,9 +81,28 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 証明書要求が正常にマージされました。
 
+## <a name="adding-more-information-to-csr"></a>CSR への詳細情報の追加
+
+CSR を作成する際に、次のような詳細情報を追加する必要が生じることがあります: 
+    - 国:
+    - 市区町村、
+    - 都道府県、
+    - 組織、
+    - 組織単位。これらの情報はすべて、CSR の作成時に subjectName で定義することにより追加できます。
+
+例
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+
+>[!Note]
+>CSR でこれらの詳細情報がすべて含まれた DV 証明書を要求している場合、CA では要求内のすべての情報を検証できるとは限らないため、要求が拒否される可能性があります。 OV 証明書を要求している場合は、その情報すべてを CSR に追加する方が適切です。
+
+
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-発行された証明書が Azure portal で "無効" 状態になっている場合は、 **[証明書の操作]** に進み、その証明書のエラー メッセージを確認してください。
+- **エラーの種類「指定された X.509 証明書の内容のエンド エンティティ証明書の公開キーが、指定された秘密キーの公開部分と一致しません。証明書が有効かどうかをご確認ください」** 。このエラーは、CSR を、開始された同じ CSR 要求とマージしない場合に発生することがあります。 CSR が作成されるたびに、署名された要求をマージするときに一致する必要がある秘密キーが作成されます。
+    
+- 発行された証明書が Azure portal で "無効" 状態になっている場合は、 **[証明書の操作]** に進み、その証明書のエラー メッセージを確認してください。
 
 詳しくは、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
 

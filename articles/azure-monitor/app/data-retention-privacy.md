@@ -3,12 +3,13 @@ title: Azure Application Insights でのデータ保持と保存 | Microsoft Doc
 description: データ保持およびプライバシー ポリシー ステートメント
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540062"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929331"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -38,24 +39,24 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
 データ ソースは 3 つあります。
 
-* SDK は[開発時](../../azure-monitor/app/asp-net.md)または[実行時](../../azure-monitor/app/monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](../../azure-monitor/app/javascript.md) もあります。ページと共にエンド ユーザーのブラウザーに読み込まれます。
+* SDK は[開発時](./asp-net.md)または[実行時](./monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](./javascript.md) もあります。ページと共にエンド ユーザーのブラウザーに読み込まれます。
   
-  * それぞれの SDK にはさまざまな [モジュール](../../azure-monitor/app/configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
+  * それぞれの SDK にはさまざまな [モジュール](./configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
   * デプロイ時に SDK をインストールする場合、標準のモジュールに加え、その API を利用し、独自の製品利用統計情報を送信できます。 このカスタム製品利用統計情報にあらゆるデータを含め、送信できます。
-* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](../../azure-monitor/app/java-agent.md)にそのようなエージェントがあります。
-* [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) は Microsoft が実行するプロセスであり、定期的な間隔で要求を Web アプリに送信します。 結果は Application Insights サービスに送信されます。
+* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](./java-agent.md)にそのようなエージェントがあります。
+* [可用性テスト](./monitor-web-app-availability.md) は Microsoft が実行するプロセスであり、定期的な間隔で要求を Web アプリに送信します。 結果は Application Insights サービスに送信されます。
 
 ### <a name="what-kinds-of-data-are-collected"></a>どのような種類のデータが収集されますか。
 主なカテゴリは次のとおりです。
 
-* [Web サーバー製品利用統計情報](../../azure-monitor/app/asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 `Session id`.
-* [Web ページ](../../azure-monitor/app/javascript.md) - ページ、ユーザーとセッションの数。 ページの読み込み時間。 例外。 AJAX 呼び出し。
+* [Web サーバー製品利用統計情報](./asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 `Session id`.
+* [Web ページ](./javascript.md) - ページ、ユーザーとセッションの数。 ページの読み込み時間。 例外。 AJAX 呼び出し。
 * パフォーマンス カウンター - メモリ、CPU、IO、ネットワーク占有率。
 * クライアントとサーバーのコンテキスト - OS、ロケール、デバイスの種類、ブラウザー、画面の解像度。
-* [例外](../../azure-monitor/app/asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、`build id`、CPU タイプ。 
-* [依存関係](../../azure-monitor/app/asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。 URI または接続文字列、期間、成功、コマンド。
-* [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) - テストとステップの期間、応答。
-* [トレース ログ](../../azure-monitor/app/asp-net-trace-logs.md)と[カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
+* [例外](./asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、`build id`、CPU タイプ。 
+* [依存関係](./asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。 URI または接続文字列、期間、成功、コマンド。
+* [可用性テスト](./monitor-web-app-availability.md) - テストとステップの期間、応答。
+* [トレース ログ](./asp-net-trace-logs.md)と[カスタム テレメトリ](./api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
 
 [詳細](#data-sent-by-application-insights)。
 
@@ -71,16 +72,16 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 ![F12 を押し、[ネットワーク] タブを開きます。](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>送信前に製品利用統計情報を絞り込むコードを記述できますか。
-[製品利用統計情報プロセッサ プラグイン](../../azure-monitor/app/api-filtering-sampling.md)を記述することで可能です。
+[製品利用統計情報プロセッサ プラグイン](./api-filtering-sampling.md)を記述することで可能です。
 
 ## <a name="how-long-is-the-data-kept"></a>データはどれだけの期間保持されますか。
-生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 730 日間保持されます。 30、60、90、120、180、270、365、550 または 730 日間の[リテンション期間を選択](./pricing.md#change-the-data-retention-period)できます。 730 日以上データを保持する必要がある場合は、[連続エクスポート](../../azure-monitor/app/export-telemetry.md)を使用して、データ インジェスト中にストレージ アカウントにコピーすることができます。 
+生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 730 日間保持されます。 30、60、90、120、180、270、365、550 または 730 日間の[リテンション期間を選択](./pricing.md#change-the-data-retention-period)できます。 730 日以上データを保持する必要がある場合は、[連続エクスポート](./export-telemetry.md)を使用して、データ インジェスト中にストレージ アカウントにコピーすることができます。 
 
 90 日より長く保持されるデータには、追加料金が発生します。 Application Insights の価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
 
-[デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)は 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
+[デバッグ スナップショット](./snapshot-debugger.md)は 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 お客様と、組織アカウントを持っている場合はチーム メンバーが、データを見ることができます。 
@@ -92,9 +93,6 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 
 ## <a name="where-is-the-data-held"></a>データが保持されている場所はどこですか。
 * 新しい Application Insights リソースを作成するときに場所を選択できます。 リージョンごとの Application Insights の可用性の詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=all)を参照してください。
-
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
-* いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
 Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](https://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
@@ -233,7 +231,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights に格納される個人データ
 
-この件については、[Application Insights の個人データに関する記事](../../azure-monitor/platform/personal-data-mgmt.md)に詳しく説明されています。
+この件については、[Application Insights の個人データに関する記事](../platform/personal-data-mgmt.md)に詳しく説明されています。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>ユーザーは Application Insights を無効にできますか。
 直接無効にすることはできません。 ユーザーが Application Insights を無効にするために操作できるスイッチはありません。
@@ -286,7 +284,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [ApplicationInsights.config を編集して、データの一部をオフにする][config]ことができます
 
 > [!NOTE]
-> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../../azure-monitor/platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](./ip-collection.md)のオプションについての説明をご覧ください。
+> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](./ip-collection.md)のオプションについての説明をご覧ください。
 
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [https://www.maxmind.com](https://www.maxmind.com) から入手できます。
@@ -295,13 +293,14 @@ SDK はプラットフォームごとに異なり、インストールできる�
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085488"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -63,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 [az storage share create](/cli/azure/storage/share) を使用して、File Storage 共有を作成します。 
 
-共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
+共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)」を参照してください。
 
 この例では、10-GiB クォータを使用して、*myshare* という名前の共有を作成します。 
 
@@ -111,4 +111,3 @@ Linux VM を再起動すると、マウントされた SMB 共有はシャット
 - [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md)
 - [Linux VM へのディスクの追加](add-disk.md)
 - [Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)
-

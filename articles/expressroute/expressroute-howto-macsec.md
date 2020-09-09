@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: MACsec を構成する'
 description: この記事では、お使いのエッジ ルーターと Microsoft のエッジ ルーターの間の接続をセキュリティで保護するように MACsec を構成する際に役立ちます。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: cherylmc
-ms.openlocfilehash: a73a99d1e6200faf9feb227f562f5b77b0461f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 8ee7f42a4b05def7c2239c7a1e5bcef54f6f7e50
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737055"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395776"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct ポートで MACsec を構成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "84737055"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    キー コンテナーまたはリソース グループが既にある場合、それを再利用できます。 ただし、既存のキー コンテナーで [**soft-delete** 機能](../key-vault/general/overview-soft-delete.md)を有効にすることが非常に重要です。 soft-delete が有効になっていない場合は、次のコマンドを使用して有効にできます。
+    キー コンテナーまたはリソース グループが既にある場合、それを再利用できます。 ただし、既存のキー コンテナーで [**soft-delete** 機能](../key-vault/general/soft-delete-overview.md)を有効にすることが非常に重要です。 soft-delete が有効になっていない場合は、次のコマンドを使用して有効にできます。
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
