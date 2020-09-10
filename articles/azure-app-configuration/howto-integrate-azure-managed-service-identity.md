@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0525f305e130247fd88ee2858c79cbfd0a15283e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206836"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400825"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -73,7 +73,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
     ![マネージド ID の追加](./media/add-managed-identity.png)
 
-1. 省略可能:Key Vault へのアクセスも許可する場合は、[マネージド ID で Key Vault の認証を提供する](https://docs.microsoft.com/azure/key-vault/managed-identity)の指示に従ってください。
+1. 省略可能:Key Vault へのアクセスも許可する場合は、「[Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/assign-access-policy-portal)」の指示に従ってください。
 
 ## <a name="use-a-managed-identity"></a>マネージド ID の使用
 

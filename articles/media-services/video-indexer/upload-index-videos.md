@@ -10,12 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904260"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268827"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -166,7 +167,7 @@ SingleBitrate の場合、出力ごとに Standard Encoder コストが適用さ
 
 次の C# コード スニペットは、すべての Video Indexer API の使用方法を示しています。
 
-#### <a name="instructions-for-running-this-code-sample"></a>このコード サンプルを実行するための手順
+**次のコード サンプルを実行するための手順**
 
 このコードをお使いの開発プラットフォームにコピーした後、次の 2 つのパラメーターを指定する必要があります。API Management 認証キーとビデオの URL。
 

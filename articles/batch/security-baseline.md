@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963871"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400978"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 用の Azure セキュリティ ベースライン
 
@@ -416,7 +416,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-Azure Security Center でユーザーの ID とアクセス アクティビティを監視する方法:
+Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
@@ -596,13 +596,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Batch アカウント、Batch プール、ストレージ アカウントを含む Azure リソースの管理プレーンへのアクセスを制御するには、Azure Active Directory (AAD) のロールベースのアクセス制御 (RBAC) を使用します。
+**ガイダンス**: Batch アカウント、Batch プール、ストレージ アカウントを含む Azure リソースの管理プレーンへのアクセスを制御するには、Azure のロールベースのアクセス制御 (Azure RBAC) を使用します。
 
 Azure RBAC を理解する:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-Azure で RBAC を構成する方法:
+Azure RBAC を構成する方法:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -942,13 +942,13 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: Azure Batch プールにカスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
+**ガイダンス**: Azure Batch プールにカスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
-Azure での RBAC を理解する:
+Azure RBAC を理解する:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
-Azure で RBAC を構成する方法:
+Azure RBAC を構成する方法:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
@@ -1014,13 +1014,17 @@ Azure マネージド ID と統合する方法:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Azure Key Vault を作成する方法:
+キー コンテナーを作成する方法:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-マネージド ID で Key Vault の認証を提供する方法:
+Key Vault に対して認証を行う方法:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault のアクセス ポリシーを割り当てる方法:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center の監視**: はい
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory で緊急時にユーザー アクセスを取り消す | Microsoft Docs
-description: Azure Active Directory の Azure AD 管理センターでユーザーを一括追加します
+description: Azure Active Directory でユーザーのすべてのアクセスを取り消す方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798416"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147135"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 
@@ -38,7 +38,7 @@ ms.locfileid: "88798416"
 
 その後、Azure AD によってその承認ポリシーが再評価されます。 ユーザーがまだ承認されている場合、Azure AD によって新しいアクセス トークンと更新トークンが発行されます。
 
-アクセス トークンは、トークンの有効期間 (通常は約 1 時間) より短い時間内にアクセスを取り消す必要がある場合に、セキュリティ上の問題になることがあります。 このため、Microsoft は、Office 365 アプリケーションに[継続的アクセス評価](../fundamentals/concept-fundamentals-continuous-access-evaluation.md)を行うために積極的に取り組んでいます。これにより、アクセス トークンをほぼリアルタイムで確実に無効化できます。  
+アクセス トークンは、トークンの有効期間 (通常は約 1 時間) より短い時間内にアクセスを取り消す必要がある場合に、セキュリティ上の問題になることがあります。 このため、Microsoft は、Office 365 アプリケーションに[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)を行うために積極的に取り組んでいます。これにより、アクセス トークンをほぼリアルタイムで確実に無効化できます。  
 
 ## <a name="session-tokens-cookies"></a>セッション トークン (Cookie)
 

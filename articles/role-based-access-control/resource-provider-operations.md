@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272045"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227765"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -797,6 +797,7 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/applicationGateways/privateEndpointConnections/read | Application Gateway PrivateEndpoint 接続を取得します |
 > | Microsoft.Network/applicationGateways/privateEndpointConnections/write | Application Gateway PrivateEndpoint 接続を更新します |
 > | Microsoft.Network/applicationGateways/privateEndpointConnections/delete | Application Gateway PrivateEndpoint 接続を削除します |
+> | Microsoft.Network/applicationGateways/privateLinkConfigurations/read | Application Gateway プライベート リンク構成を取得します |
 > | Microsoft.Network/applicationGateways/privateLinkResources/read | ApplicationGateway PrivateLink リソースを取得します |
 > | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/read | Application Gateway WAF ポリシーを取得します。 |
 > | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/write | Application Gateway WAF ポリシーを作成するか、Application Gateway WAF ポリシーを更新します。 |
@@ -880,6 +881,9 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/dnszones/TXT/read | "TXT" タイプのレコード セットを JSON 形式で取得します。 レコード セットには、レコードの一覧と、TTL、タグ、および ETag が含まれます。 |
 > | Microsoft.Network/dnszones/TXT/write | DNS ゾーン内の "TXT" タイプのレコード セットを作成または更新します。 レコード セットの現在のレコードが指定されたレコードに置き換えられます。 |
 > | Microsoft.Network/dnszones/TXT/delete | 指定された名前の "TXT" タイプのレコード セットを DNS ゾーンから削除します。 |
+> | Microsoft.Network/dscpConfiguration/write | DSCP 構成を書き込む操作。 |
+> | Microsoft.Network/dscpConfiguration/read | DSCP 構成を書き込む操作。 |
+> | Microsoft.Network/dscpConfiguration/join/action | DSCP 構成を結合します。 |
 > | Microsoft.Network/expressRouteCircuits/read | ExpressRouteCircuit を取得します。 |
 > | Microsoft.Network/expressRouteCircuits/write | ExpressRouteCircuit を作成するか、既存の ExpressRouteCircuit を更新します。 |
 > | Microsoft.Network/expressRouteCircuits/join/action | Express Route 回線を結合します。 警告不可能です。 |
@@ -916,6 +920,7 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/expressRoutePorts/write | ExpressRoutePorts を作成または更新します |
 > | Microsoft.Network/expressRoutePorts/join/action | Express Route ポートを結合します。 警告不可能です。 |
 > | Microsoft.Network/expressRoutePorts/delete | ExpressRoutePorts を削除します |
+> | Microsoft.Network/expressRoutePorts/generateloa/action | ExpressRoutePorts の LOA を生成します。 |
 > | Microsoft.Network/expressRoutePorts/links/read | ExpressRouteLink を取得します |
 > | Microsoft.Network/expressRoutePortsLocations/read | ExpressRoute ポートの場所を取得します |
 > | Microsoft.Network/expressRouteServiceProviders/read | Express Route サービス プロバイダーを取得します。 |
@@ -2041,6 +2046,10 @@ Azure サービス:[Azure Search](../search/index.yml)
 > | Microsoft.Search/searchServices/privateEndpointConnectionProxies/write | 指定されたパラメーターでプライベート エンドポイント接続プロキシを作成するか、指定されたプライベート エンドポイント接続プロキシのプロパティまたはタグを更新します |
 > | Microsoft.Search/searchServices/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシの一覧を返すか、指定されたプライベート エンドポイント接続プロキシのプロパティを取得します |
 > | Microsoft.Search/searchServices/privateEndpointConnectionProxies/delete | 既存のプライベート エンドポイント接続プロキシを削除します |
+> | Microsoft.Search/searchServices/sharedPrivateLinkResources/write | 指定されたパラメーターを使用して新しい共有プライベート リンク リソースを作成するか、指定された共有プライベート リンク リソースのプロパティを更新します |
+> | Microsoft.Search/searchServices/sharedPrivateLinkResources/read | 共有プライベート リンク リソースの一覧を返すか、指定された共有プライベート リンク リソースのプロパティを取得します |
+> | Microsoft.Search/searchServices/sharedPrivateLinkResources/delete | 既存の共有プライベート リンク リソースを削除します |
+> | Microsoft.Search/searchServices/sharedPrivateLinkResources/operationStatuses/read | 実行時間の長い共有プライベート リンク リソース操作の詳細を取得します |
 
 ### <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
@@ -2075,9 +2084,18 @@ Azure サービス:[Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.SignalRService/SignalR/privateEndpointConnections/read | プライベート エンドポイント接続を読み取ります |
 > | Microsoft.SignalRService/SignalR/privateLinkResources/read | すべての SignalR Private Link リソースを一覧表示します |
 > | **DataAction** | **説明** |
-> | Microsoft.SignalRService/SignalR/serverConnection/write | サーバー接続を開始します。 |
+> | Microsoft.SignalRService/SignalR/serverConnection/action | サーバー接続を開始します。 |
+> | Microsoft.SignalRService/SignalR/clientConnection/action | グループのクライアント接続を追加または削除するか、クライアント接続を閉じます。 |
+> | Microsoft.SignalRService/SignalR/user/action | グループのユーザーを追加または削除します。 |
+> | Microsoft.SignalRService/SignalR/clientConnection/read | 接続の存在を確認します。 |
+> | Microsoft.SignalRService/SignalR/clientConnection/write | クライアント接続にメッセージを直接送信します。 |
+> | Microsoft.SignalRService/SignalR/group/read | グループの存在を確認します。 |
+> | Microsoft.SignalRService/SignalR/group/write | 1 つまたは一部のグループのクライアント接続にメッセージをブロードキャストします。 |
+> | Microsoft.SignalRService/SignalR/hub/write | このハブに接続されているすべてのクライアント接続にメッセージをブロードキャストします。 |
 > | Microsoft.SignalRService/SignalR/service/accessKey/action | ClientToken に署名するための一時的な AccessKey を取得します。 |
 > | Microsoft.SignalRService/SignalR/service/clientToken/action | クライアント接続を開始するための ClientToken を取得します。 |
+> | Microsoft.SignalRService/SignalR/user/read | ユーザーの存在と、グループに含まれていたかどうかを確認します。 |
+> | Microsoft.SignalRService/SignalR/user/write | 複数のクライアント接続を持つ可能性のあるユーザーにメッセージを送信します。 |
 
 ### <a name="microsoftweb"></a>microsoft.web
 
@@ -4386,6 +4404,12 @@ Azure サービス:[Event Hubs](../event-hubs/index.yml)
 > | Microsoft.EventHub/namespaces/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを取得します |
 > | Microsoft.EventHub/namespaces/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを作成します |
 > | Microsoft.EventHub/namespaces/privateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシを削除します |
+> | Microsoft.EventHub/namespaces/privateEndpointConnectionProxies/operationstatus/read | 非同期のプライベート エンドポイント操作の状態を取得します |
+> | Microsoft.EventHub/namespaces/privateEndpointConnections/read | プライベート エンドポイント接続を取得します |
+> | Microsoft.EventHub/namespaces/privateEndpointConnections/write | プライベート エンドポイント接続を作成または更新します |
+> | Microsoft.EventHub/namespaces/privateEndpointConnections/delete | プライベート エンドポイント接続を削除します |
+> | Microsoft.EventHub/namespaces/privateEndpointConnections/operationstatus/read | 非同期のプライベート エンドポイント操作の状態を取得します |
+> | Microsoft.EventHub/namespaces/privateLinkResources/read | プライベート エンドポイント接続をサポートするリソースの種類を取得します |
 > | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 名前空間の診断設定リソースの説明の一覧を取得します。 |
 > | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 名前空間の診断設定リソースの説明の一覧を取得します。 |
 > | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/logDefinitions/read | 名前空間のログ リソースの説明の一覧を取得します。 |
@@ -5082,6 +5106,15 @@ Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/workspaces/experiments/runs/read | Machine Learning Services ワークスペース内の実行を取得します |
 > | Microsoft.MachineLearningServices/workspaces/experiments/runs/write | Machine Learning Services ワークスペース内の実行を作成または更新します |
 > | Microsoft.MachineLearningServices/workspaces/features/read | Machine Learning Services ワークスペースで有効なすべての機能が取得されます |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/read | Machine Learning Services ワークスペース内の推論エンドポイントを取得します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/write | Machine Learning Services ワークスペース内の推論エンドポイントを作成または更新します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/delete | Machine Learning Services ワークスペース内の推論エンドポイントを削除します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/checkNameAvailability/read | Machine Learning Services ワークスペース内の推論エンドポイントの名前を確認します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/deployments/read | Machine Learning Services ワークスペース内の推論エンドポイントのデプロイを取得します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/deployments/write | Machine Learning Services ワークスペース内の推論エンドポイントのデプロイを作成または更新します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/deployments/delete | Machine Learning Services ワークスペース内の推論エンドポイントのデプロイを削除します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/deployments/checkNameAvailability/read | Machine Learning Services ワークスペース内の推論エンドポイントのデプロイの名前を確認します |
+> | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/deployments/skus/read | Machine Learning Services ワークスペース内の推論エンドポイントのデプロイに対するスケール SKU 設定を取得します |
 > | Microsoft.MachineLearningServices/workspaces/labeling/export/action | Machine Learning Services ワークスペースのラベル付けプロジェクトのラベルがエクスポートされます |
 > | Microsoft.MachineLearningServices/workspaces/labeling/labels/read | Machine Learning Services ワークスペースのラベル付けプロジェクトのラベルが取得されます |
 > | Microsoft.MachineLearningServices/workspaces/labeling/labels/write | Machine Learning Services ワークスペースのラベル付けプロジェクトのラベルが作成されます |
@@ -5307,6 +5340,9 @@ Azure サービス:[Notification Hubs](../notification-hubs/index.yml)
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | 名前空間の承認規則を削除します。 名前空間の既定の承認規則は削除できません。  |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/listkeys/action | 名前空間への接続文字列を取得します。 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/regenerateKeys/action | 名前空間の承認規則では、Primary/SecondaryKey を再生成します。再生成する必要があるキーを指定します。 |
+> | Microsoft.NotificationHubs/namespaces/diagnosticSettings/read | 名前空間の診断設定リソースの説明の一覧を取得します。 |
+> | Microsoft.NotificationHubs/namespaces/diagnosticSettings/write | 名前空間の診断設定リソースの説明の一覧を取得します。 |
+> | Microsoft.NotificationHubs/namespaces/logDefinitions/read | 名前空間のログ リソースの説明の一覧を取得します。 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/write | Notification Hub を作成し、そのプロパティを更新します。 プロパティには、主に、PNS 資格情報、 承認規則、TTL が含まれます。 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/read | Notification Hub リソースの説明の一覧を取得します。 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/Delete | Notification Hub リソースを削除します。 |
@@ -6006,6 +6042,12 @@ Azure サービス:[Azure Relay](../service-bus-relay/relay-what-is-it.md)
 > | Microsoft.Relay/namespaces/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを取得します |
 > | Microsoft.Relay/namespaces/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを作成します |
 > | Microsoft.Relay/namespaces/privateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシを削除します |
+> | Microsoft.Relay/namespaces/privateEndpointConnectionProxies/operationstatus/read | 非同期のプライベート エンドポイント操作の状態を取得します |
+> | Microsoft.Relay/namespaces/privateEndpointConnections/read | プライベート エンドポイント接続を取得します |
+> | Microsoft.Relay/namespaces/privateEndpointConnections/write | プライベート エンドポイント接続を作成または更新します |
+> | Microsoft.Relay/namespaces/privateEndpointConnections/delete | プライベート エンドポイント接続を削除します |
+> | Microsoft.Relay/namespaces/privateEndpointConnections/operationstatus/read | 非同期のプライベート エンドポイント操作の状態を取得します |
+> | Microsoft.Relay/namespaces/privateLinkResources/read | プライベート エンドポイント接続をサポートするリソースの種類を取得します |
 > | Microsoft.Relay/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 名前空間の診断設定リソースの説明の一覧を取得します。 |
 > | Microsoft.Relay/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 名前空間の診断設定リソースの説明の一覧を取得します。 |
 > | Microsoft.Relay/namespaces/providers/Microsoft.Insights/logDefinitions/read | 名前空間のログ リソースの説明の一覧を取得します。 |
@@ -6077,6 +6119,12 @@ Azure サービス:[Service Bus](../service-bus/index.md)
 > | Microsoft.ServiceBus/namespaces/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを取得します |
 > | Microsoft.ServiceBus/namespaces/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを作成します |
 > | Microsoft.ServiceBus/namespaces/privateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシを削除します |
+> | Microsoft.ServiceBus/namespaces/privateEndpointConnectionProxies/operationstatus/read | 非同期のプライベート エンドポイント操作の状態を取得します |
+> | Microsoft.ServiceBus/namespaces/privateEndpointConnections/read | プライベート エンドポイント接続を取得します |
+> | Microsoft.ServiceBus/namespaces/privateEndpointConnections/write | プライベート エンドポイント接続を作成または更新します |
+> | Microsoft.ServiceBus/namespaces/privateEndpointConnections/delete | プライベート エンドポイント接続を削除します |
+> | Microsoft.ServiceBus/namespaces/privateEndpointConnections/operationstatus/read | 非同期のプライベート エンドポイント操作の状態を取得します |
+> | Microsoft.ServiceBus/namespaces/privateLinkResources/read | プライベート エンドポイント接続をサポートするリソースの種類を取得します |
 > | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 名前空間の診断設定リソースの説明の一覧を取得します。 |
 > | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 名前空間の診断設定リソースの説明の一覧を取得します。 |
 > | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/logDefinitions/read | 名前空間のログ リソースの説明の一覧を取得します。 |
@@ -6511,6 +6559,9 @@ Azure サービス:[Azure Sentinel](../sentinel/index.yml)
 > | Microsoft.SecurityInsights/threatintelligence/metrics/action | 脅威インテリジェンス メトリックを収集します |
 > | Microsoft.SecurityInsights/threatintelligence/bulkDelete/action | 脅威インテリジェンスを一括削除します |
 > | Microsoft.SecurityInsights/threatintelligence/bulkTag/action | 脅威インテリジェンスに一括でタグを付けます |
+> | Microsoft.SecurityInsights/Watchlists/read | ウォッチリストを取得します |
+> | Microsoft.SecurityInsights/Watchlists/write | ウォッチリストを作成します |
+> | Microsoft.SecurityInsights/Watchlists/delete | ウォッチリストを削除します |
 
 ## <a name="devops"></a>DevOps
 
@@ -7213,14 +7264,85 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/LogProfiles/Delete | アクティビティ ログのログ プロファイルを削除します |
 > | Microsoft.Insights/LogProfiles/Read | アクティビティ ログのログ プロファイルを読み取ります |
 > | Microsoft.Insights/Logs/Read | すべてのログからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/AADDomainServicesAccountLogon/Read | AADDomainServicesAccountLogon テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADDomainServicesAccountManagement/Read | AADDomainServicesAccountManagement テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADDomainServicesDirectoryServiceAccess/Read | AADDomainServicesDirectoryServiceAccess テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADDomainServicesLogonLogoff/Read | AADDomainServicesLogonLogoff テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADDomainServicesPolicyChange/Read | AADDomainServicesPolicyChange テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADDomainServicesPrivilegeUse/Read | AADDomainServicesPrivilegeUse テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADDomainServicesSystemSecurity/Read | AADDomainServicesSystemSecurity テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADManagedIdentitySignInLogs/Read | AADManagedIdentitySignInLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADNonInteractiveUserSignInLogs/Read | AADNonInteractiveUserSignInLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AADServicePrincipalSignInLogs/Read | AADServicePrincipalSignInLogs テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/ADAssessmentRecommendation/Read | ADAssessmentRecommendation テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/AddonAzureBackupAlerts/Read | AddonAzureBackupAlerts テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AddonAzureBackupJobs/Read | AddonAzureBackupJobs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AddonAzureBackupPolicy/Read | AddonAzureBackupPolicy テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AddonAzureBackupProtectedInstance/Read | AddonAzureBackupProtectedInstance テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AddonAzureBackupStorage/Read | AddonAzureBackupStorage テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFActivityRun/Read | ADFActivityRun テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/ADFPipelineRun/Read | ADFPipelineRun テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFSSISIntegrationRuntimeLogs/Read | ADFSSISIntegrationRuntimeLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFSSISPackageEventMessageContext/Read | ADFSSISPackageEventMessageContext テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFSSISPackageEventMessages/Read | ADFSSISPackageEventMessages テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFSSISPackageExecutableStatistics/Read | ADFSSISPackageExecutableStatistics テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFSSISPackageExecutionComponentPhases/Read | ADFSSISPackageExecutionComponentPhases テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFSSISPackageExecutionDataStatistics/Read | ADFSSISPackageExecutionDataStatistics テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADFTriggerRun/Read | ADFTriggerRun テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/ADReplicationResult/Read | ADReplicationResult テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ADSecurityAssessmentRecommendation/Read | ADSecurityAssessmentRecommendation テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/ADTDigitalTwinsOperation/Read | ADTDigitalTwinsOperation テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADTEventRoutesOperation/Read | ADTEventRoutesOperation テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADTModelsOperation/Read | ADTModelsOperation テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ADTQueryOperation/Read | ADTQueryOperation テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AegDeliveryFailureLogs/Read | AegDeliveryFailureLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AegPublishFailureLogs/Read | AegPublishFailureLogs テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/Alert/Read | Alert テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/AlertHistory/Read | AlertHistory テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/AmlComputeClusterEvent/Read | AmlComputeClusterEvent テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AmlComputeClusterNodeEvent/Read | AmlComputeClusterNodeEvent テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AmlComputeCpuGpuUtilization/Read | AmlComputeCpuGpuUtilization テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AmlComputeJobEvent/Read | AmlComputeJobEvent テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AmlRunStatusChangedEvent/Read | AmlRunStatusChangedEvent テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ApiManagementGatewayLogs/Read | ApiManagementGatewayLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppAvailabilityResults/Read | AppAvailabilityResults テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppBrowserTimings/Read | AppBrowserTimings テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppCenterError/Read | AppCenterError テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppDependencies/Read | AppDependencies テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppEvents/Read | AppEvents テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppExceptions/Read | AppExceptions テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/ApplicationInsights/Read | ApplicationInsights テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/AppMetrics/Read | AppMetrics テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppPageViews/Read | AppPageViews テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppPerformanceCounters/Read | AppPerformanceCounters テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppPlatformLogsforSpring/Read | AppPlatformLogsforSpring テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppPlatformSystemLogs/Read | AppPlatformSystemLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppRequests/Read | AppRequests テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServiceAntivirusScanLogs/Read | AppServiceAntivirusScanLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServiceAppLogs/Read | AppServiceAppLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServiceAuditLogs/Read | AppServiceAuditLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServiceConsoleLogs/Read | AppServiceConsoleLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServiceEnvironmentPlatformLogs/Read | AppServiceEnvironmentPlatformLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServiceFileAuditLogs/Read | AppServiceFileAuditLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServiceHTTPLogs/Read | AppServiceHTTPLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppServicePlatformLogs/Read | AppServicePlatformLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppSystemEvents/Read | AppSystemEvents テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AppTraces/Read | AppTraces テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AuditLogs/Read | AuditLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AutoscaleEvaluationsLog/Read | AutoscaleEvaluationsLog テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/AutoscaleScaleActionsLog/Read | AutoscaleScaleActionsLog テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/AWSCloudTrail/Read | AWSCloudTrail テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/AzureActivity/Read | AzureActivity テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/AzureAssessmentRecommendation/Read | AzureAssessmentRecommendation テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AzureDevOpsAuditing/Read | AzureDevOpsAuditing テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/AzureDiagnostics/Read | AzureDiagnostics テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/AzureMetrics/Read | AzureMetrics テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/BaiClusterEvent/Read | BaiClusterEvent テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/BaiClusterNodeEvent/Read | BaiClusterNodeEvent テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/BaiJobEvent/Read | BaiJobEvent テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/BehaviorAnalytics/Read | BehaviorAnalytics テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/BlockchainApplicationLog/Read | BlockchainApplicationLog テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/BlockchainProxyLog/Read | BlockchainProxyLog テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/BoundPort/Read | BoundPort テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/CommonSecurityLog/Read | CommonSecurityLog テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ComputerGroup/Read | ComputerGroup テーブルからデータを読み取ります。 |
@@ -7229,7 +7351,22 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/ContainerImageInventory/Read | ContainerImageInventory テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ContainerInventory/Read | ContainerInventory テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ContainerLog/Read | ContainerLog テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/ContainerNodeInventory/Read | ContainerNodeInventory テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/ContainerRegistryLoginEvents/Read | ContainerRegistryLoginEvents テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/ContainerRegistryRepositoryEvents/Read | ContainerRegistryRepositoryEvents テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/ContainerServiceLog/Read | ContainerServiceLog テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/CoreAzureBackup/Read | CoreAzureBackup テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksAccounts/Read | DatabricksAccounts テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksClusters/Read | DatabricksClusters テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksDBFS/Read | DatabricksDBFS テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksInstancePools/Read | DatabricksInstancePools テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksJobs/Read | DatabricksJobs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksNotebook/Read | DatabricksNotebook テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksSecrets/Read | DatabricksSecrets テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksSQLPermissions/Read | DatabricksSQLPermissions テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksSSH/Read | DatabricksSSH テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksTables/Read | DatabricksTables テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/DatabricksWorkspace/Read | DatabricksWorkspace テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/DeviceAppCrash/Read | DeviceAppCrash テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DeviceAppLaunch/Read | DeviceAppLaunch テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DeviceCalendar/Read | DeviceCalendar テーブルからデータを読み取ります。 |
@@ -7244,6 +7381,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/DeviceSleepState/Read | DeviceSleepState テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DHAppFailure/Read | DHAppFailure テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DHAppReliability/Read | DHAppReliability テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/DHCPActivity/Read | DHCPActivity テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/DHDriverReliability/Read | DHDriverReliability テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DHLogonFailures/Read | DHLogonFailures テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DHLogonMetrics/Read | DHLogonMetrics テーブルからデータを読み取ります。 |
@@ -7252,15 +7390,28 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/DHWipAppLearning/Read | DHWipAppLearning テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DnsEvents/Read | DnsEvents テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/DnsInventory/Read | DnsInventory テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/Dynamics365Activity/Read | Dynamics365Activity テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/ETWEvent/Read | ETWEvent テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/Event/Read | Event テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ExchangeAssessmentRecommendation/Read | ExchangeAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ExchangeOnlineAssessmentRecommendation/Read | ExchangeOnlineAssessmentRecommendation テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/FailedIngestion/Read | FailedIngestion テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/FunctionAppLogs/Read | FunctionAppLogs テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/Heartbeat/Read | Heartbeat テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/HuntingBookmark/Read | HuntingBookmark テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/IISAssessmentRecommendation/Read | IISAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/InboundConnection/Read | InboundConnection テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/InsightsMetrics/Read | InsightsMetrics テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/IntuneAuditLogs/Read | IntuneAuditLogs テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/IntuneDeviceComplianceOrg/Read | IntuneDeviceComplianceOrg テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/IntuneOperationalLogs/Read | IntuneOperationalLogs テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/IoTHubDistributedTracing/Read | IoTHubDistributedTracing テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/KubeEvents/Read | KubeEvents テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/KubeHealth/Read | KubeHealth テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/KubeMonAgentEvents/Read | KubeMonAgentEvents テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/KubeNodeInventory/Read | KubeNodeInventory テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/KubePodInventory/Read | KubePodInventory テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/KubeServices/Read | KubeServices テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/LinuxAuditLog/Read | LinuxAuditLog テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAApplication/Read | MAApplication テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAApplicationHealth/Read | MAApplicationHealth テーブルからデータを読み取ります。 |
@@ -7271,6 +7422,8 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/MAApplicationReadiness/Read | MAApplicationReadiness テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MADeploymentPlan/Read | MADeploymentPlan テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MADevice/Read | MADevice テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MADeviceNotEnrolled/Read | MADeviceNotEnrolled テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MADeviceNRT/Read | MADeviceNRT テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MADevicePnPHealth/Read | MADevicePnPHealth テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MADevicePnPHealthAlternativeVersions/Read | MADevicePnPHealthAlternativeVersions テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MADevicePnPHealthIssues/Read | MADevicePnPHealthIssues テーブルからデータを読み取ります。 |
@@ -7278,19 +7431,27 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/MADriverInstanceReadiness/Read | MADriverInstanceReadiness テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MADriverReadiness/Read | MADriverReadiness テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeAddin/Read | MAOfficeAddin テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MAOfficeAddinEntityHealth/Read | MAOfficeAddinEntityHealth テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MAOfficeAddinHealth/Read | MAOfficeAddinHealth テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MAOfficeAddinHealthEventNRT/Read | MAOfficeAddinHealthEventNRT テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MAOfficeAddinHealthIssues/Read | MAOfficeAddinHealthIssues テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeAddinInstance/Read | MAOfficeAddinInstance テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeAddinInstanceReadiness/Read | MAOfficeAddinInstanceReadiness テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeAddinReadiness/Read | MAOfficeAddinReadiness テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeApp/Read | MAOfficeApp テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MAOfficeAppCrashesNRT/Read | MAOfficeAppCrashesNRT テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MAOfficeAppHealth/Read | MAOfficeAppHealth テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeAppInstance/Read | MAOfficeAppInstance テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MAOfficeAppInstanceHealth/Read | MAOfficeAppInstanceHealth テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MAOfficeAppReadiness/Read | MAOfficeAppReadiness テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MAOfficeAppSessionsNRT/Read | MAOfficeAppSessionsNRT テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MAOfficeBuildInfo/Read | MAOfficeBuildInfo テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeCurrencyAssessment/Read | MAOfficeCurrencyAssessment テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeCurrencyAssessmentDailyCounts/Read | MAOfficeCurrencyAssessmentDailyCounts テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeDeploymentStatus/Read | MAOfficeDeploymentStatus テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MAOfficeDeploymentStatusNRT/Read | MAOfficeDeploymentStatusNRT テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MAOfficeMacroErrorNRT/Read | MAOfficeMacroErrorNRT テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MAOfficeMacroGlobalHealth/Read | MAOfficeMacroGlobalHealth テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MAOfficeMacroHealth/Read | MAOfficeMacroHealth テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeMacroHealthIssues/Read | MAOfficeMacroHealthIssues テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAOfficeMacroIssueInstanceReadiness/Read | MAOfficeMacroIssueInstanceReadiness テーブルからデータを読み取ります。 |
@@ -7303,7 +7464,16 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/MAWindowsCurrencyAssessment/Read | MAWindowsCurrencyAssessment テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAWindowsCurrencyAssessmentDailyCounts/Read | MAWindowsCurrencyAssessmentDailyCounts テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/MAWindowsDeploymentStatus/Read | MAWindowsDeploymentStatus テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/MAWindowsDeploymentStatusNRT/Read | MAWindowsDeploymentStatusNRT テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/MAWindowsSysReqInstanceReadiness/Read | MAWindowsSysReqInstanceReadiness テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/McasShadowItReporting/Read | McasShadowItReporting テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MicrosoftAzureBastionAuditLogs/Read | MicrosoftAzureBastionAuditLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MicrosoftDataShareReceivedSnapshotLog/Read | MicrosoftDataShareReceivedSnapshotLog テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MicrosoftDataShareSentSnapshotLog/Read | MicrosoftDataShareSentSnapshotLog テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MicrosoftDataShareShareLog/Read | MicrosoftDataShareShareLog テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MicrosoftDynamicsTelemetryPerformanceLogs/Read | MicrosoftDynamicsTelemetryPerformanceLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MicrosoftDynamicsTelemetrySystemMetricsLogs/Read | MicrosoftDynamicsTelemetrySystemMetricsLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/MicrosoftHealthcareApisAuditLogs/Read | MicrosoftHealthcareApisAuditLogs テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/NetworkMonitoring/Read | NetworkMonitoring テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/OfficeActivity/Read | OfficeActivity テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/Operation/Read | Operation テーブルからデータを読み取ります。 |
@@ -7319,18 +7489,33 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/SecurityBaselineSummary/Read | SecurityBaselineSummary テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/SecurityDetection/Read | SecurityDetection テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/SecurityEvent/Read | SecurityEvent テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/SecurityIncident/Read | SecurityIncident テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/SecurityIoTRawEvent/Read | SecurityIoTRawEvent テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/SecurityNestedRecommendation/Read | SecurityNestedRecommendation テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/SecurityRecommendation/Read | SecurityRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ServiceFabricOperationalEvent/Read | ServiceFabricOperationalEvent テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ServiceFabricReliableActorEvent/Read | ServiceFabricReliableActorEvent テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/ServiceFabricReliableServiceEvent/Read | ServiceFabricReliableServiceEvent テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/SfBAssessmentRecommendation/Read | SfBAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/SfBOnlineAssessmentRecommendation/Read | SfBOnlineAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/SharePointOnlineAssessmentRecommendation/Read | SharePointOnlineAssessmentRecommendation テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/SignalRServiceDiagnosticLogs/Read | SignalRServiceDiagnosticLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/SigninLogs/Read | SigninLogs テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/SPAssessmentRecommendation/Read | SPAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/SQLAssessmentRecommendation/Read | SQLAssessmentRecommendation テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/SqlDataClassification/Read | SqlDataClassification テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/SQLQueryPerformance/Read | SQLQueryPerformance テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/SqlVulnerabilityAssessmentResult/Read | SqlVulnerabilityAssessmentResult テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/StorageBlobLogs/Read | StorageBlobLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/StorageFileLogs/Read | StorageFileLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/StorageQueueLogs/Read | StorageQueueLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/StorageTableLogs/Read | StorageTableLogs テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/SucceededIngestion/Read | SucceededIngestion テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/Syslog/Read | Syslog テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/SysmonEvent/Read | SysmonEvent テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/Tables.Custom/Read | カスタム ログからデータを読み取っています。 |
+> | Microsoft.Insights/Logs/ThreatIntelligenceIndicator/Read | ThreatIntelligenceIndicator テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/TSIIngress/Read | TSIIngress テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/UAApp/Read | UAApp テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/UAComputer/Read | UAComputer テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/UAComputerRank/Read | UAComputerRank テーブルからデータを読み取ります。 |
@@ -7347,6 +7532,12 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/UpdateRunProgress/Read | UpdateRunProgress テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/UpdateSummary/Read | UpdateSummary テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/Usage/Read | Usage テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/UserAccessAnalytics/Read | UserAccessAnalytics テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/UserPeerAnalytics/Read | UserPeerAnalytics テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/VMBoundPort/Read | VMBoundPort テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/VMComputer/Read | VMComputer テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/VMConnection/Read | VMConnection テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/VMProcess/Read | VMProcess テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/W3CIISLog/Read | W3CIISLog テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/WaaSDeploymentStatus/Read | WaaSDeploymentStatus テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/WaaSInsiderStatus/Read | WaaSInsiderStatus テーブルからデータを読み取ります。 |
@@ -7354,11 +7545,19 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/WDAVStatus/Read | WDAVStatus テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/WDAVThreat/Read | WDAVThreat テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/WindowsClientAssessmentRecommendation/Read | WindowsClientAssessmentRecommendation テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/WindowsEvent/Read | WindowsEvent テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/WindowsFirewall/Read | WindowsFirewall テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/WindowsServerAssessmentRecommendation/Read | WindowsServerAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/WireData/Read | WireData テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/WorkloadMonitoringPerf/Read | WorkloadMonitoringPerf テーブルからデータを読み取ります |
 > | Microsoft.Insights/Logs/WUDOAggregatedStatus/Read | WUDOAggregatedStatus テーブルからデータを読み取ります。 |
 > | Microsoft.Insights/Logs/WUDOStatus/Read | WUDOStatus テーブルからデータを読み取ります。 |
+> | Microsoft.Insights/Logs/WVDCheckpoints/Read | WVDCheckpoints テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/WVDConnections/Read | WVDConnections テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/WVDErrors/Read | WVDErrors テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/WVDFeeds/Read | WVDFeeds テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/WVDHostRegistrations/Read | WVDHostRegistrations テーブルからデータを読み取ります |
+> | Microsoft.Insights/Logs/WVDManagement/Read | WVDManagement テーブルからデータを読み取ります |
 > | Microsoft.Insights/MetricAlerts/Write | メトリック アラートを作成または更新します |
 > | Microsoft.Insights/MetricAlerts/Delete | メトリック アラートを削除します |
 > | Microsoft.Insights/MetricAlerts/Read | メトリック アラートを読み取ります |
@@ -7576,9 +7775,18 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/DeviceCleanup/read | DeviceCleanup テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceConnectSession/read | DeviceConnectSession テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceEtw/read | DeviceEtw テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceEvents/read | DeviceEvents テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceFileEvents/read | DeviceFileEvents テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceHardwareHealth/read | DeviceHardwareHealth テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceHealth/read | DeviceHealth テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceHeartbeat/read | DeviceHeartbeat テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceImageLoadEvents/read | DeviceImageLoadEvents テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceInfo/read | DeviceInfo テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceLogonEvents/read | DeviceLogonEvents テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceNetworkEvents/read | DeviceNetworkEvents テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceNetworkInfo/read | DeviceNetworkInfo テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceProcessEvents/read | DeviceProcessEvents テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/DeviceRegistryEvents/read | DeviceRegistryEvents テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceSkypeHeartbeat/read | DeviceSkypeHeartbeat テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceSkypeSignIn/read | DeviceSkypeSignIn テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceSleepState/read | DeviceSleepState テーブルからデータを読み取ります。 |
@@ -7629,6 +7837,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightStormLogs/read | HDInsightStormLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightStormMetrics/read | HDInsightStormMetrics テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightStormTopologyMetrics/read | HDInsightStormTopologyMetrics テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/HealthStateChangeEvent/read | HealthStateChangeEvent テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | Heartbeat テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/HuntingBookmark/read | HuntingBookmark テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | IISAssessmentRecommendation テーブルからデータを読み取ります。 |
@@ -7712,6 +7921,8 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/Operation/read | Operation テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/OutboundConnection/read | OutboundConnection テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/Perf/read | Perf テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/PowerBIDatasetsTenantPreview/read | PowerBIDatasetsTenantPreview テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/PowerBIDatasetsWorkspacePreview/read | PowerBIDatasetsWorkspacePreview テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ProtectionStatus/read | ProtectionStatus テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/requests/read | requests テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/SCCMAssessmentRecommendation/read | SCCMAssessmentRecommendation テーブルからデータを読み取ります。 |
@@ -7919,9 +8130,6 @@ Azure サービス:[Azure Policy](../governance/policy/overview.md)、[Azure RBA
 > | Microsoft.Authorization/policyDefinitions/read | ポリシー定義に関する情報を取得します。 |
 > | Microsoft.Authorization/policyDefinitions/write | カスタムのポリシー定義を作成します。 |
 > | Microsoft.Authorization/policyDefinitions/delete | ポリシー定義を削除します。 |
-> | Microsoft.Authorization/policyExemptions/read | ポリシー適用除外についての情報を取得します。 |
-> | Microsoft.Authorization/policyExemptions/write | 指定されたスコープでのポリシー適用除外を作成します。 |
-> | Microsoft.Authorization/policyExemptions/delete | 指定されたスコープでのポリシー適用除外を削除します。 |
 > | Microsoft.Authorization/policySetDefinitions/read | ポリシー セットの定義に関する情報を取得します。 |
 > | Microsoft.Authorization/policySetDefinitions/write | カスタム ポリシー セットの定義を作成します。 |
 > | Microsoft.Authorization/policySetDefinitions/delete | ポリシー セットの定義を削除します。 |
@@ -9076,12 +9284,14 @@ Azure サービス: コア
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | Microsoft.Subscription/CreateSubscription/action | Azure サブスクリプションを作成します。 |
-> | Microsoft.Subscription/register/action | Microsoft.Subscription リソース プロバイダーにサブスクリプションを登録します。 |
 > | Microsoft.Subscription/cancel/action | サブスクリプションを取り消します。 |
 > | Microsoft.Subscription/rename/action | サブスクリプションの名前を変更します。 |
-> | Microsoft.Subscription/SubscriptionDefinitions/read | 管理グループ内の Azure サブスクリプションの定義を取得します。 |
-> | Microsoft.Subscription/SubscriptionDefinitions/write | Azure サブスクリプションの定義を作成します。 |
+> | Microsoft.Subscription/enable/action | サブスクリプションを有効にします。 |
+> | Microsoft.Subscription/CreateSubscription/action | Azure サブスクリプションを作成します。 |
+> | Microsoft.Subscription/register/action | Microsoft.Subscription リソース プロバイダーにサブスクリプションを登録します。 |
+> | Microsoft.Subscription/updateTenant/action | サブスクリプションのテナントを更新します。 |
+> | Microsoft.Subscription/aliases/write | サブスクリプションの別名を作成します。 |
+> | Microsoft.Subscription/Subscriptions/write | サブスクリプションを作成または更新します。 |
 
 ## <a name="intune"></a>Intune
 

@@ -3,31 +3,33 @@ title: 待機してイベントに応答する
 description: Azure Logic Apps を使用して、サービス エンドポイントでのイベントに基づいてトリガー、一時停止、および再開するワークフローを自動化します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656279"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227901"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用して、自動化されたイベントベースのワークフローを作成して実行する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込み HTTP Webhook コネクタを使用すると、ロジック アプリを構築することで、HTTP または HTTPS エンドポイントで発生する特定のイベントに基づいて待機したり実行されたりするワークフローを自動化できます。 たとえば、定期的にサービス エンドポイントを確認、つまり "*ポーリング*" するのではなく、特定のイベントを待ってからワークフローをトリガーし、指定されたアクションを実行することでそのエンドポイントを監視するロジック アプリを作成できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および組み込みの HTTP Webhook コネクタを使用すると、サービス エンドポイントをサブスクライブし、特定のイベントを待機し、それらのイベントに基づいて実行する自動化されたタスクとワークフローを作成でき、そのエンドポイントを定期的に確認または*ポーリング*する必要はありません。
 
-イベントベースのワークフローの例を次に示します。
+Webhook ベースのワークフローの例を次に示します。
 
 * [Azure イベント ハブ](https://github.com/logicappsio/EventHubAPI)からアイテムが到着するのを待ってからロジック アプリの実行をトリガーする。
 * 承認を待ってからワークフローを続行する。
 
+この記事では、ロジック アプリがサービス エンドポイントでのイベントを受信してそれに応答できるように Webhook トリガーと Webhook アクションを使用する方法について説明します。
+
 ## <a name="how-do-webhooks-work"></a>Webhook のしくみ
 
-HTTP Webhook トリガーは、イベントに基づいており、新しい項目の定期的な確認 (ポーリング) に依存しません。 Webhook トリガーで開始するロジック アプリを保存したり、ロジック アプリを無効から有効に変更したりすると、Webhook トリガーは、特定のサービスまたはエンドポイントに "*コールバック URL*" を登録して、そのサービスまたはエンドポイントを "*サブスクライブ*" します。 その後、このトリガーは、そのサービスまたはエンドポイントが URL を呼び出すまで待ち、その結果、ロジック アプリの実行が開始されます。 [要求トリガー](connectors-native-reqres.md)と同様に、ロジック アプリは、指定されたイベントが発生するとすぐに起動します。 トリガーを削除してロジック アプリを保存したり、ロジック アプリを有効から無効に変更したりすると、トリガーはサービスまたはエンドポイントから "*サブスクライブを解除*" します。
+Webhook トリガーは、イベントに基づいており、新しい項目の定期的な確認 (ポーリング) に依存しません。 Webhook トリガーで開始するロジック アプリを保存したり、ロジック アプリを無効から有効に変更したりすると、Webhook トリガーは、指定されたサービス エンドポイントに "*コールバック URL*" を登録して、そのエンドポイントを "*サブスクライブ*" します。 その後、このトリガーは、そのサービス エンドポイントが URL を呼び出すまで待ち、その結果、ロジック アプリの実行が開始されます。 [要求トリガー](connectors-native-reqres.md)と同様に、ロジック アプリは、指定されたイベントが発生するとすぐに起動します。 Webhook トリガーを削除してロジック アプリを保存したり、ロジック アプリを有効から無効に変更したりすると、トリガーはサービスまたはエンドポイントから "*サブスクライブを解除*" します。
 
-HTTP Webhook アクションもイベントに基づいており、特定のサービスまたはエンドポイントに "*コールバック URL*" を登録することで、そのサービスまたはエンドポイントを "*サブスクライブ*" します。 Webhook アクションがロジック アプリのワークフローを一時停止し、サービスまたはエンドポイントが URL を呼び出すまで待った後、ロジック アプリの実行が再開されます。 次のような場合、アクション ロジック アプリはサービスまたはエンドポイントから "*サブスクライブを解除*" します。
+Webhook アクションもイベントに基づいており、指定されたサービス エンドポイントに "*コールバック URL*" を登録することで、そのエンドポイントを "*サブスクライブ*" します。 Webhook アクションがロジック アプリのワークフローを一時停止し、サービス エンドポイントが URL を呼び出すまで待った後、ロジック アプリの実行が再開されます。 次のような場合、Webhook アクションはサービス エンドポイントの "*サブスクライブを解除*" します。
 
 * Webhook アクションが正常に終了したとき
 * 応答を待機しているときにロジック アプリの実行がキャンセルされた場合
@@ -35,27 +37,16 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 
 たとえば、Office 365 Outlook コネクタの[**承認メールの送信**](connectors-create-api-office365-outlook.md)アクションは、このパターンに従う Webhook アクションの一例です。 Webhook アクションを使用することで、このパターンをあらゆるサービスに適用できます。
 
-> [!NOTE]
-> Logic Apps では、HTTP Webhook のトリガーまたはアクションに対するコールバックを受け取るときは、トランスポート層セキュリティ (TLS) 1.2 が適用されます。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-
 詳細については、以下のトピックを参照してください。
 
-* [HTTP Webhook トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Webhook とサブスクリプション](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [Webhook をサポートするカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
 
+[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL)) や [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) などの、ロジック アプリへの受信呼び出しの暗号化、セキュリティ、認可については、[アクセスとデータのセキュリティ保護 - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)に関するページを参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * 必要に応じて[ロジック アプリの Webhook トリガー](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)または[ロジック アプリの Webhook アクション](../logic-apps/logic-apps-create-api-app.md#webhook-actions)のサブスクライブおよびサブスクライブ解除パターンをサポートする、既にデプロイ済みのエンドポイントまたは API の URL
 
@@ -147,11 +138,7 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 
    これで、アクションが実行されるとターゲット サービスでサブスクライブ エンドポイントが呼び出され、コールバック URL が登録されます。 その後、ロジック アプリはワークフローを一時停止して、ターゲット サービスがコールバック URL に `HTTP POST` 要求を送信するのを待ちます。 このイベントが発生すると、アクションは要求内のすべてのデータをワークフローに渡します。 操作が正常に完了すると、アクションはエンドポイントからサブスクライブ解除され、ロジック アプリは残りのワークフローの実行を続行します。
 
-## <a name="connector-reference"></a>コネクタのレファレンス
-
-互いに類似するトリガーおよびアクション パラメーターの詳細については、[HTTP Webhook のパラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)に関するページを参照してください。
-
-### <a name="output-details"></a>出力の詳細
+## <a name="trigger-and-action-outputs"></a>トリガーとアクションの出力
 
 ここでは、以下の情報を返す HTTP Webhook トリガーまたはアクションからの出力の詳細情報を示します。
 
@@ -173,6 +160,11 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||
 
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+互いに類似するトリガーおよびアクション パラメーターの詳細については、[HTTP Webhook のパラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+* [アクセスとデータのセキュリティ保護 - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [Logic Apps のコネクタ](../connectors/apis-list.md)

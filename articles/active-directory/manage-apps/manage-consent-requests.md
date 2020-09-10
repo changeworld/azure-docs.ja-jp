@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f7dc1d4b0f6678f02c4f5d152edf2ae9af063d1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763195"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392444"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 
@@ -100,7 +100,7 @@ Microsoft は、エンドユーザーによるアプリケーションの同意�
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>特定のユーザーに代わって同意を許可する
 
-管理者は、組織全体に同意を許可するのではなく、[Microsft Graph API](https://docs.microsoft.com/graph/use-the-api) を使用して、1 人のユーザーに代わって委任されたアクセス許可に同意を許可することもできます。 詳細については、「[ユーザーの代わりにアクセスを取得](https://docs.microsoft.com/graph/auth-v2-user)」を参照してください。
+管理者は、組織全体に同意を許可するのではなく、[Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) を使用して、1 人のユーザーに代わって委任されたアクセス許可に同意を許可することもできます。 詳細については、「[ユーザーの代わりにアクセスを取得](https://docs.microsoft.com/graph/auth-v2-user)」を参照してください。
 
 ## <a name="limiting-user-access-to-applications"></a>アプリケーションへのユーザー アクセスを制限する
 
@@ -108,13 +108,25 @@ Microsoft は、エンドユーザーによるアプリケーションの同意�
 
 その他の複雑なシナリオの処理方法などについての詳細な概要については、[Azure AD を使用したアプリケーション アクセス管理](what-is-access-management.md)に関する記事を参照してください。
 
+## <a name="disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする
+
+ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、同意する理由または同意しない理由の詳細については、「[ユーザーおよび管理者の同意について](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)」をご覧ください。
+
+**ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする**には、次の手順に従います。
+1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
+4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
+5.  **[ユーザー設定]** をクリックします。
+6.  **[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** トグルを **[いいえ]** に設定し、 **[保存]** をクリックして、今後のすべてのユーザーの同意操作を無効にします。
+
 ## <a name="next-steps"></a>次のステップ
 
 [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
 
 [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 
-[エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)
+[Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)
 
 [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
 

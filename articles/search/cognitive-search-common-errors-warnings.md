@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935553"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378357"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -349,3 +349,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告:Cosmos DB コレクション "X" には、Lazy インデックス作成ポリシーがあります。 一部のデータが失われるおそれがあります
 
 [Lazy](/azure/cosmos-db/index-policy#indexing-mode) インデックス作成ポリシーを持つコレクションには、一貫性のあるクエリを実行できません。そのため、インデクサーにはデータがありません。 この警告を回避するには、インデックス作成ポリシーを Consistent に変更します。
+
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>警告:The document contains very long words (longer than 64 characters).(ドキュメントに非常に長い単語が含まれています (64 文字を超えています)。) These words may result in truncated and/or unreliable model predictions. (これらの単語は切り捨てられたり、モデルの予測の信頼性が低下したりする可能性があります。)
+
+この警告は Text Analytics サービスから渡されます。  ドキュメントに長い URL が含まれている (多くの場合、キー フレーズや影響力のあるセンチメントなどではない) などの場合、この警告を無視しても安全です。  単語が 64 文字を超えると、64 文字に切り捨てられるため、モデルの予測に影響を与える可能性があります。  

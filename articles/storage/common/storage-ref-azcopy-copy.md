@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9d5a9e071cc1b2ac81e8cacea8c974181fbb3b6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281992"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070396"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -263,6 +263,8 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 **--include-path** string コピーするときにこれらのパスのみを含めます。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: `myFolder;myFolder/subDirName/file.pdf`)。
 
 **--include-pattern** string コピーするときにこれらのファイルのみを含めます。 このオプションでは、ワイルドカード文字 (*) がサポートされます。 `;` を使用してファイルを区切ります。
+
+**--list-of-versions** string 各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB をポイントしている必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属していることを確認します。 AzCopy は、指定されたバージョンをコピー先フォルダーにダウンロードします。 詳細については、「[前のバージョンの BLOB をダウンロードする](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)」を参照してください。
 
 **--log-level** string ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 既定値は `INFO` です。 
 

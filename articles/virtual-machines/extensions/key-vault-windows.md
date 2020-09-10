@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 70dcee1cce49c658a60e98821a3ce60ec443408a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f4a345fe62a1d13a6be7dc71ecc0529fec2a6a4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932578"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401505"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -206,7 +206,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 次の制限/要件に注意してください。
 - Key Vault の制限:
   - デプロイ時に存在している必要があります 
-  - MSI を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されていること
+  - マネージド ID を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されている必要があります。 「[Key Vault に対して認証を行う方法](/azure/key-vault/general/authentication)」および「[Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/general/assign-access-policy-cli)」をご覧ください。
 
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート

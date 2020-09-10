@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 22b00b41c7fce0af57fd9f92b0f42bbd9412afda
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87771136"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304088"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -42,7 +42,7 @@ ms.locfileid: "87771136"
 | モデル API | 1 秒あたりの要求回数 | 100 | はい |
 | Digital Twins API | 1 秒あたりの要求回数 | 1,000 | はい |
 | クエリ API | 1 秒あたりの要求回数 | 500 | はい |
-| クエリ API | 1 秒あたりのクエリ単位数 | 4,000 | はい |
+| クエリ API | 1 秒あたりの[クエリ単位数](../articles/digital-twins/concepts-query-units.md) | 4,000 | はい |
 | イベント ルート API | 1 秒あたりの要求回数 | 100 | はい |
 
 ### <a name="other-limits"></a>その他の制限

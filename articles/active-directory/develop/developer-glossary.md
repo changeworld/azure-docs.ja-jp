@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117245"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178826"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -164,7 +164,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 ロールは、リソースによって定義される文字列 ("経費承認者"、"読み取り専用"、"Directory.ReadWrite.All" など) です。[Azure portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [appRoles プロパティ][Graph-Sp-Resource]に格納されます。 Azure Portal は、ユーザーを "ユーザー" ロールに割り当てたり、"アプリケーション" ロールに対するクライアント [アプリケーションのアクセス許可](#permissions)を構成したりするためにも使用します。
 
-Microsoft Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][Graph-Perm-Scopes]に関するページを参照してください。 実装手順の例については、[RBAC と Azure portal を使用してアクセスを管理する方法][AAD-RBAC]に関するページを参照してください。
+Microsoft Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][Graph-Perm-Scopes]に関するページを参照してください。 実装手順の例については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する][AAD-RBAC]」をご覧ください。
 
 ## <a name="scopes"></a>スコープ
 

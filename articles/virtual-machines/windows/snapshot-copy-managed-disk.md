@@ -1,6 +1,6 @@
 ---
-title: 仮想ハード ドライブのスナップショットを Azure 上に作成する
-description: バックアップまたは問題のトラブルシューティングに使うために、Azure VM のコピーを作成する方法について説明します。
+title: ポータルまたは PowerShell を使用して仮想ハード ドライブのスナップショットを作成する
+description: バックアップまたは問題のトラブルシューティングに使うために、ポータルまたは PowerShell を使用して Azure VM のコピーを作成する方法について説明します。
 author: roygara
 manager: twooley
 ms.service: virtual-machines-windows
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074133"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322315"
 ---
-# <a name="create-a-snapshot"></a>スナップショットの作成
+# <a name="create-a-snapshot-using-the-portal-or-powershell"></a>ポータルまたは PowerShell を使用してスナップショットを作成する
 
 スナップショットは、仮想ハード ドライブ (VHD) の完全な読み取り専用コピーです。 バックアップ、または仮想マシン (VM) の問題を解決するために、OS またはデータ ディスク VHD のスナップショットを取得できます。
 

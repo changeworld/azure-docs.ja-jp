@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f60fba6a0b3a4d891fe19b7d75ab9c9fde278629
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826771"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393804"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
@@ -57,7 +57,7 @@ ms.locfileid: "88826771"
 | クロアチア                             | HR        | EUR          |
 | キュラソー島                             | CW        | USD          |
 | キプロス                              | CY        | EUR          |
-| チェコ共和国                      | CZ        | EUR          |
+| チェコ                      | CZ        | EUR          |
 | デンマーク                             | DK        | DKK          |
 | ドミニカ共和国                  | DO        | USD          |
 | エクアドル                             | EC        | USD          |
@@ -99,7 +99,6 @@ ms.locfileid: "88826771"
 | リトアニア                           | LT        | EUR          |
 | ルクセンブルク                          | LU        | EUR          |
 | 中華人民共和国マカオ特別行政区                           | MO        | USD          |
-| 北マケドニア                     | MK        | USD          |
 | マレーシア                            | MY        | USD          |
 | マルタ                               | MT        | EUR          |
 | モーリシャス                           | MU        | USD          |
@@ -115,6 +114,7 @@ ms.locfileid: "88826771"
 | ニュージーランド                         | NZ        | NZD          |
 | ニカラグア                           | NI        | USD          |
 | ナイジェリア                             | NG        | USD          |
+| 北マケドニア                     | MK        | USD          |
 | ノルウェー                              | NO        | NOK          |
 | オマーン                                | OM        | USD          |
 | パキスタン                            | PK        | USD          |
@@ -166,7 +166,7 @@ ms.locfileid: "88826771"
 | ジンバブエ                            | ZW        | USD          |
 |   |   |   |
 
-\* ブラジルでご利用のお客様の場合、クラウド ソリューション プロバイダー (CSP) 経由のマーケットプレースでは USD が使用されます。
+\* ブラジルでご利用のお客様の場合、クラウド ソリューション プロバイダー (CSP) 経由の商業マーケットプレースでは USD が使用されます。
 
 \** Free および BYOL VM イメージのみ。
 

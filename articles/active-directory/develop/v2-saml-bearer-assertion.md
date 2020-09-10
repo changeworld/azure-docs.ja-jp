@@ -2,7 +2,7 @@
 title: Microsoft ID プラットフォームと SAML ベアラー アサーション フロー | Azure
 description: SAML ベアラー アサーション フローを使用して、ユーザーに資格情報の入力を求めずに Microsoft Graph からデータをフェッチする方法について説明します。
 services: active-directory
-author: umeshbarapatre
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.custom: aaddev
-ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114695"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227918"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 SAML ベアラー アサーション フロー
 OAuth 2.0 SAML ベアラー アサーション フローでは、クライアントが既存の信頼関係を使用する必要があるときに、SAML アサーションを使用して OAuth アクセス トークンを要求することができます。 SAML アサーションに適用される署名は、承認されたアプリの認証を提供します。 SAML アサーションは、ID プロバイダーによって発行され、サービス プロバイダーによって使用される XML セキュリティ トークンです。 サービス プロバイダーは、セキュリティ関連の目的でアサーションの対象を識別するために、そのコンテンツに依存します。
@@ -28,7 +27,7 @@ SAML ベアラー アサーション フローは、ユーザーに資格情報�
 
 ブラウザーベースの対話型サインインを実行して SAML アサーションを取得してから、OAuth で保護された API (Microsoft Graph など) にアクセスを追加するアプリケーションの場合、API のアクセス トークンを取得する OAuth 要求を行うことができます。 ユーザーを認証するためにブラウザーが Azure AD にリダイレクトされると、ブラウザーは SAML サインインからセッションを取得し、ユーザーは資格情報を入力する必要はありません。
 
-OAuth SAML ベアラー アサーション フローは、Azure Active Directory との間で認証連携された Active Directory フェデレーション サービス (ADFS) などの ID プロバイダーを使用して認証されるユーザーに対してもサポートされます。  ADFS から取得した SAML アサーションを OAuth フローで使用して、ユーザーを認証できます。
+OAuth SAML ベアラー アサーション フローは、Azure Active Directory との間で認証連携された Active Directory フェデレーション サービス (ADFS) などの ID プロバイダーを使用して認証されるユーザーに対してのみサポートされます。  ADFS から取得した SAML アサーションを OAuth フローで使用して、ユーザーを認証できます。
 
 ![OAuth フロー](./media/v2-saml-bearer-assertion/1.png)
 

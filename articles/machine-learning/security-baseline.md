@@ -6,13 +6,13 @@ ms.service: machine-learning
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 9d288c8d3f521467c8d15e027e2530ff879b37af
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 4a7132221d2db58e4dea0e41f2761f4f395b9632
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642509"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401403"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning の Azure セキュリティ ベースライン
 
@@ -94,7 +94,7 @@ Azure Firewall を使用して、Azure Machine Learning ワークスペースと
 
 **ガイダンス**:悪意のあるトラフィックを検出およびブロックできるように、組織の各ネットワーク境界に任意のファイアウォール ソリューションをデプロイします。
 
-ペイロード検査能力を備えた IDS または IPS 機能をサポートする Azure Marketplace からのプランを選択します。  ペイロード検査が要件でない場合は、Azure Firewall の脅威インテリジェンスを使用できます。 Azure Firewall の脅威インテリジェンス ベースのフィルター処理は、既知の悪意のある IP アドレスおよびドメインとの間のトラフィックを警告処理および (または) ブロックするために使用されます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。
+ペイロード検査能力を備えた IDS または IPS 機能をサポートする Azure Marketplace からのプランを選択します。  ペイロード検査が要件でない場合は、Azure Firewall の脅威インテリジェンスを使用できます。 Azure Firewall の脅威インテリジェンス ベースのフィルター処理は、既知の悪意のある IP アドレスおよびドメインとの間のトラフィックに対してアラートを送信したりブロックしたりするために使用されます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。
 
 - [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -270,9 +270,9 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 Azure Machine Learning では、さまざまなコンピューティング リソース (ユーザー独自のコンピューティング リソース含む) にわたって、さまざまなサポートが提供されています。 ユーザーの組織がコンピューティング リソースを所有している場合は、Azure Cloud Services および Virtual Machines 向け Microsoft Antimalware のマルウェア対策イベントの収集を有効にします。
 
-- [仮想マシンに対して Microsoft Antimalware を構成する方法](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [仮想マシンに対して Microsoft Antimalware を構成する方法](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [クラウド サービスに対して Microsoft Antimalware 拡張機能を構成する方法](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [クラウド サービスに対して Microsoft Antimalware 拡張機能を構成する方法](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [Microsoft Antimalware について](../security/fundamentals/antimalware.md)
 
@@ -979,7 +979,9 @@ Azure Machine Learning では、カスタマー マネージド キーを使用�
 
 - [キー コンテナーを作成する方法](/azure/key-vault/quick-create-portal)
 
-- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/managed-identity)
+- [Key Vault に対して認証を行う方法](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [Key Vault のアクセス ポリシーを割り当てる方法](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center の監視**: はい
 
@@ -1120,7 +1122,7 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
-**ガイダンス**: Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に分析的に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
+**ガイダンス**: Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
 
 さらに、タグを使用してサブスクリプションをマークし、Azure リソース (特に、機密データを処理するもの) を識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいてアラートの修復に優先順位を付けることは、お客様の責任です。
 

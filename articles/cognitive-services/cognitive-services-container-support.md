@@ -8,17 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 9/01/2020
 ms.author: aahi
-ms.openlocfilehash: 69984f9dbd94bcdca2e272a5bdebbb7fc1464dae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 501cdde95cfdf0277fe3e260e8cc929664af257e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104412"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321441"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
+![法的情報 ](./media/cognitive-services-container-support/banner.png)
+<!--
+> [!IMPORTANT]
+> On June 11, 2020, Microsoft announced that it will not sell facial recognition technology to police departments in the United States until strong regulation, grounded in human rights, has been enacted. As such, customers may not use facial recognition features or features included in Azure Services, such as Face or Video Indexer, if a customer is, or is allowing use of such services by or for, a police department in the United States.
+-->
 Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure で利用できるものと同じリッチな API を使用できます。また、[Docker コンテナー](https://www.docker.com/what-container)に付随するサービスをデプロイおよびホストできる柔軟性があります。 コンテナー サポートは現在、以下を含む Azure Cognitive Services のサブセットで使用できます。
 
 > [!div class="checklist"]
@@ -60,6 +65,7 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 | [Speech Service API][sp-containers-cstt] | F0、S0 | **カスタム音声変換** | カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。 |
 | [Speech Service API][sp-containers-tts] | F0、S0 | **テキスト読み上げ** | テキストを自然な音声に変換します。 |
 | [Speech Service API][sp-containers-ctts] | F0、S0 | **カスタム テキスト読み上げ** | カスタム モデルを使用してテキストを自然な音声に変換します。 |
+| [Speech Service API][sp-containers-ntts] | F0、S0 | **ニューラル テキスト読み上げ** | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 |
 | [Text Analytics][ta-containers-keyphrase] | F0、S | **キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | 主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
 | [Text Analytics][ta-containers-language] | F0、S | **言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
 | [Text Analytics][ta-containers-sentiment] | F0、S | **感情分析 v3** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | 肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 このバージョンの感情分析からは、各ドキュメントとその中の文のセンチメント ラベル (たとえば、"*肯定的*"、"*否定的*") が返されます。 |

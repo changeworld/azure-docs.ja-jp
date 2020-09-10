@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651201"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647229"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>コンピューティング ターゲットを作成する
 
-Azure Machine Learning での "*コンピューティング*" (または "*コンピューティング先*") とは、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 次のコードを実行して、CPU に基づいた [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) ターゲットを作成します。
+Azure Machine Learning での "*コンピューティング*" (または "*コンピューティング先*") とは、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 次のコードを実行して、CPU に基づいた [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) ターゲットを作成します。
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>データ入力を作成する
 
-バッチ推論の入力は、並列処理のためにパーティション分割するデータです。 バッチ推論パイプラインは、[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) を通じてデータ入力を受け入れます。
+バッチ推論の入力は、並列処理のためにパーティション分割するデータです。 バッチ推論パイプラインは、[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) を通じてデータ入力を受け入れます。
 
-`Dataset` は Azure Machine Learning でデータを探索、変換、および管理するためのものです。 [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) と [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) の 2 種類があります。 この例では、入力として `FileDataset` を使用します。 `FileDataset` により、お使いのコンピューターにファイルをダウンロードしたり、マウントしたりできます。 データセットを作成することにより、データ ソースの場所への参照を作成します。 データセットにサブセット変換を適用した場合は、それらの変換もデータセットに格納されます。 データは既存の場所に残るので、追加のストレージ コストは発生しません。
+`Dataset` は Azure Machine Learning でデータを探索、変換、および管理するためのものです。 [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) と [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) の 2 種類があります。 この例では、入力として `FileDataset` を使用します。 `FileDataset` により、お使いのコンピューターにファイルをダウンロードしたり、マウントしたりできます。 データセットを作成することにより、データ ソースの場所への参照を作成します。 データセットにサブセット変換を適用した場合は、それらの変換もデータセットに格納されます。 データは既存の場所に残るので、追加のストレージ コストは発生しません。
 
 Azure Machine Learning データセットの詳細については、[データセットの作成とアクセス (プレビュー)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) に関するページをご覧ください。
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-バッチ推論パイプラインの実行時に動的データ入力を使用する場合は、`Dataset` 入力を [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) として定義できます。 バッチ推論パイプラインの実行を再送信するたびに、入力データセットを指定できます。
+バッチ推論パイプラインの実行時に動的データ入力を使用する場合は、`Dataset` 入力を [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) として定義できます。 バッチ推論パイプラインの実行を再送信するたびに、入力データセットを指定できます。
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>出力を作成する
 
-パイプラインのステップ間での中間データの転送には、[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) オブジェクトが使用されます。 この例では、これを推論の出力に使用します。
+パイプラインのステップ間での中間データの転送には、[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) オブジェクトが使用されます。 この例では、これを推論の出力に使用します。
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>パイプラインを作成して実行する
 
-次に、パイプラインを実行します。 まず、ご自身のワークスペース参照、および作成したパイプラインのステップを使用して、[`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) オブジェクトを作成します。 `steps` パラメーターは、ステップの配列です。 この場合、バッチ推論用のステップは 1 つだけです。 複数のステップが含まれたパイプラインを作成する場合は、この配列内にステップを順に配置します。
+次に、パイプラインを実行します。 まず、ご自身のワークスペース参照、および作成したパイプラインのステップを使用して、[`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) オブジェクトを作成します。 `steps` パラメーターは、ステップの配列です。 この場合、バッチ推論用のステップは 1 つだけです。 複数のステップが含まれたパイプラインを作成する場合は、この配列内にステップを順に配置します。
 
 次に、`Experiment.submit()` 関数を使用して、実行するパイプラインを送信します。
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 バッチ推論ジョブは完了するまでに時間がかかることがあります。 この例では、Jupyter ウィジェットを使用して、進行状況を監視しています。 以下を使用して、ジョブの進行状況を監視することもできます。
 
 * Azure Machine Learning Studio。 
-* [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) オブジェクトからのコンソール出力。
+* [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true) オブジェクトからのコンソール出力。
 
 ```python
 from azureml.widgets import RunDetails

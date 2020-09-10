@@ -1,23 +1,24 @@
 ---
 title: Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する - Azure Blockchain Service
 description: Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用して、スマート コントラクト関数をトリガーし、スマート コントラクト イベントに応答します。
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077046"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230536"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する
 
-[Azure Logic Apps](../../logic-apps/index.yml) で [Ethereum ブロックチェーン コネクタ](/connectors/blockchainethereum/)を使用することにより、スマート コントラクト アクションを実行し、スマート コントラクト イベントに応答できます。 たとえば、ブロックチェーン台帳から情報を返す REST ベースのマイクロサービスを作成するとします。 ロジック アプリを使用すると、ブロックチェーン台帳に格納されている情報を照会する HTTP 要求を受け入れることができます。
+[Azure Logic Apps](../../logic-apps/index.yml) で [Ethereum ブロックチェーン コネクタ](/connectors/blockchainethereum/)を使用することにより、スマート コントラクト アクションを実行し、スマート コントラクト イベントに応答できます。 この記事では、Ethereum ブロックチェーン コネクタを使用して、ブロックチェーン情報を別のサービスに送信したり、ブロックチェーン関数を呼び出したりする方法について説明します。 たとえば、ブロックチェーン台帳から情報を返す REST ベースのマイクロサービスを作成するとします。 ロジック アプリを使用すると、ブロックチェーン台帳に格納されている情報を照会する HTTP 要求を受け入れることができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-オプションの前提条件である「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了します。 このクイックスタートでは、[Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) のインストール方法とブロックチェーン開発環境の設定方法について説明しています。
+- オプションの前提条件である「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了します。 このクイックスタートでは、[Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) のインストール方法とブロックチェーン開発環境の設定方法について説明しています。
+- Azure Logic Apps を初めて使用する場合は、Microsoft Learn のモジュールの「[Azure Logic Apps の概要](/learn/modules/intro-to-logic-apps/)」および「[カスタム コネクタを使用して Logic Apps ワークフローから API を呼び出す](/learn/modules/logic-apps-and-custom-connectors/)」を確認することを検討してください。
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
@@ -33,7 +34,7 @@ Azure Logic Apps は、システムとサービスを統合する必要がある
 
 すべてのロジック アプリは必ずトリガーから起動され、トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。
 
-Ethereum ブロックチェーン コネクタには、1 つのトリガーといくつかのアクションが備わっています。 使用するトリガーまたはアクションは、シナリオによって異なります。
+Ethereum ブロックチェーン コネクタには、1 つのトリガーといくつかのアクションが備わっています。 使用するトリガーまたはアクションは、シナリオによって異なります。 この記事の中で、実際のシナリオに最も適したセクションに従ってください。
 
 実際のワークフローで
 

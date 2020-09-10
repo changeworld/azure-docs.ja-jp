@@ -5,16 +5,16 @@ services: key-vault
 author: ghogen
 manager: jillfra
 ms.service: key-vault
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588485"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378867"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -201,6 +201,6 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルに従っている場合、お使いのキー コンテナーへのアクセス許可は、ご自分の Azure サブスクリプションで実行するように設定されますが、これは運用環境のシナリオには適していない可能性があります。 マネージド ID を作成して、アプリの Key Vault へのアクセスを管理できます。 「[マネージド ID で Key Vault の認証を提供する](/azure/key-vault/managed-identity)」を参照してください。
+このチュートリアルに従っている場合、お使いのキー コンテナーへのアクセス許可は、ご自分の Azure サブスクリプションで実行するように設定されますが、これは運用環境のシナリオには適していない可能性があります。 マネージド ID を作成して、アプリの Key Vault へのアクセスを管理できます。 [Key Vault に対して認証を行う方法](/azure/key-vault/general/authentication)および [Key Vault アクセス ポリシーの割り当て](/azure/key-vault/general/assign-access-policy-portal)に関するページを参照してください。
 
 Key Vault の開発の詳細については、「[Key Vault 開発者ガイド](developers-guide.md)」を参照してください。

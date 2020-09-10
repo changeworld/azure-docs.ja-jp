@@ -1,20 +1,20 @@
 ---
 title: Speech サービスによる保存データの暗号化
 titleSuffix: Azure Cognitive Services
-description: Speech サービスによる保存データの暗号化。
+description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、音声サービスによる保存データの暗号化について説明します。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b9b76b2eb5e9536561f73a92b6911a2f82122a1b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198664"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078097"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Speech サービスによる保存データの暗号化
 

@@ -3,12 +3,12 @@ title: カスタマー マネージド キーを使用したバックアップ �
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892645"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378289"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -66,7 +66,7 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 
     ![Identity settings](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. **[状態]** を **[オン]** に変更し、 **[保存]** をクリックします。
+1. **[状態]** を **[On]** に変更し、 **[保存]** を選択します。
 
 1. オブジェクト ID が生成されます。これがコンテナーのシステム割り当てマネージド ID です。
 
@@ -82,13 +82,13 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 
     ![キーのアクセス許可を割り当てる](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. **[プリンシパルの選択]** に移動し、検索ボックスで名前またはマネージド ID を使用して、ご自身のコンテナーを検索します。 表示されたら、そのコンテナーを選択し、ペインの下部にある **[選択]** をクリックします。
+1. **[プリンシパルの選択]** に移動し、検索ボックスで名前またはマネージド ID を使用して、ご自身のコンテナーを検索します。 表示されたら、そのコンテナーを選択し、ペインの下部にある **[選択]** を選択します。
 
     ![プリンシパルの選択](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. 完了したら、 **[追加]** をクリックして、新しいアクセス ポリシーを追加します。
+1. 完了したら、 **[追加]** を選択して新しいアクセス ポリシーを追加します。
 
-1. **[保存]** をクリックして、Azure キー コンテナーのアクセス ポリシーに加えた変更を保存します。
+1. **[保存]** を選択して、Azure キー コンテナーのアクセス ポリシーに加えた変更を保存します。
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure キー コンテナーで論理的な削除と消去保護を有効にする
 
@@ -148,7 +148,7 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 
     ![暗号化の設定](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. **[暗号化の設定]** にある **[更新]** をクリックします。
+1. **[暗号化の設定]** にある **[更新]** を選択します。
 
 1. [暗号化の設定] ペインで、 **[独自のキーを使用する]** を選択し、次のいずれかの方法を使用してキーの指定を続行します。 **自分が使用するキーが、有効な状態の RSA 2048 キーであることを確認してください。**
 
@@ -160,7 +160,7 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 
         ![Key Vault からのキーの選択](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
 
 1. **暗号化キーの更新についての進行状況の追跡:** Recovery Services コンテナーの**アクティビティ ログ**を使用して、キー割り当ての進行状況を追跡することができます。 間もなく、状態が **[成功]** に変わります。 コンテナーでは、指定したキーを KEK として使用して、すべてのデータを暗号化するようになります。
 
@@ -242,7 +242,7 @@ Azure VM で実行されているバックアップ SAP HANA または SQL デ�
 
 いいえ。コンテナーに項目を保護しようとしたことが過去にあってはなりません。
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>CMK 暗号化を使用しているコンテナーがあります。 バックアップ項目がコンテナー内に保護されている場合でも、後でプラットフォーム マネージド キーを使用した暗号化に戻すことはできますか。
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>CMK 暗号化を使用しているコンテナーがあります。 バックアップ項目がコンテナー内に保護されている場合でも、後でプラットフォーム マネージド キーを使用した暗号化に戻すことはできますか。
 
 いいえ。いったん CMK 暗号化を有効にすると、プラットフォーム マネージド キーを使用するように戻すことはできません。 使用するキーは、実際の要件に応じて変更することができます。
 

@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079117"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536004"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する
 
@@ -109,30 +109,6 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 8. **［作成］** を選択します
 
 手順を繰り返して、 **[Spoke-02]** 仮想ネットワークを接続します: 接続名 - **hub-spoke-02**
-
-### <a name="configure-the-hub-and-spoke-routing"></a>ハブとスポークのルーティングを構成する
-
-Azure portal から Cloud Shell を開き、次の Azure PowerShell を実行して、必要なハブとスポークのルーティングを構成します。 ピアリングされたスポークおよびブランチ接続では、伝達を **NONE** に設定する必要があります。 こうすることで、スポーク間の Any-to-Any 通信を防ぎ、代わりに既定ルートを使用してトラフィックをファイアウォールにルーティングすることができます。
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
 
 ## <a name="deploy-the-servers"></a>サーバーをデプロイする
 

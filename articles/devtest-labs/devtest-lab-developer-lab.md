@@ -3,12 +3,12 @@ title: 開発者のための Azure DevTest Labs の使用 | Microsoft Docs
 description: 開発者の要件を満たすために使うことができる Azure DevTest Labs 機能のほか、ラボをセットアップするための詳細な手順について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293027"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296245"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>開発者のための Azure DevTest Labs の使用
 Azure DevTest Labs を使うと多くの重要なシナリオを実装できますが、主要なシナリオの 1 つは、DevTest Labs を使って開発者のために開発用コンピューターをホストすることです。 このシナリオでは、DevTest Labs には次のような利点があります。
@@ -43,7 +43,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    
    | タスク | 学習内容 |
    | --- | --- |
-   | [Azure Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージをホワイトリストに登録し、開発者に必要なイメージのみを利用できるようにする方法について学びます。|
+   | [Azure Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージで、開発者に必要なイメージのみを選択できるようにする方法について説明します。|
    | [カスタム イメージの作成](devtest-lab-create-template.md) |必要なソフトウェアを事前にインストールしてカスタム イメージを作成し、開発者がそのカスタム イメージを使って VM を迅速に作成できるようにします。|
    | [イメージ ファクトリについて](./devtest-lab-faq.md#blog-post) |イメージ ファクトリを設定して使う方法を説明するビデオをご覧ください。|
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141927"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146736"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
 
@@ -33,7 +33,7 @@ Azure Machine Learning では、異なるコンピューティング リソー�
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-[モデル トレーニングのためのコンピューティング ターゲットの設定と使用](how-to-set-up-training-targets.md)に関するページを参照してください。
+[モデル トレーニングのためのコンピューティング ターゲットの使用](how-to-set-up-training-targets.md)に関するページをご覧ください。
 
 ## <a name="deployment-targets"></a><a name="deploy"></a>デプロイ ターゲット
 
@@ -46,10 +46,10 @@ Azure Machine Learning では、異なるコンピューティング リソー�
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning コンピューティング (マネージド)
 
-マネージド コンピューティング リソースは、Azure Machine Learning によって作成され、管理されます。 このコンピューティングは、機械学習ワークロード向けに最適化されています。 Azure Machine Learning コンピューティング クラスターと[コンピューティング インスタンス](concept-compute-instance.md)だけがマネージド コンピューティングです。 今後、他のマネージド コンピューティング リソースが追加される予定です。
+マネージド コンピューティング リソースは、Azure Machine Learning によって作成され、管理されます。 このコンピューティングは、機械学習ワークロード向けに最適化されています。 Azure Machine Learning コンピューティング クラスターと[コンピューティング インスタンス](concept-compute-instance.md)だけがマネージド コンピューティングです。 
 
 Azure Machine Learning コンピューティング インスタンスまたはコンピューティング クラスターは次の場所から作成できます。
-* Azure Machine Learning Studio
+* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) と [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) クラス
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (プレビュー)
@@ -68,7 +68,7 @@ Azure Machine Learning コンピューティング インスタンスまたは�
 
 
 > [!NOTE]
-> コンピューティング クラスターがアイドル状態の場合、ノードは 0 に自動スケーリングされるため、使用されていないときは料金がかかりません。  ただし、コンピューティング *インスタンス*は常にオンであり、自動スケーリングされません。  追加コストを回避するには、使用していないときに[コンピューティング インスタンスを停止](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)します。
+> コンピューティング クラスターがアイドル状態の場合、ノードは 0 に自動スケーリングされるため、使用されていないときは料金がかかりません。  ただし、コンピューティング *インスタンス*は常にオンであり、自動スケーリングされません。  追加コストを回避するには、使用していないときに[コンピューティング インスタンスを停止](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)します。 
 
 ### <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
 
@@ -107,5 +107,5 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 ## <a name="next-steps"></a>次のステップ
 
 具体的には、次の方法を学習します。
-* [モデルをトレーニングするためのコンピューティング ターゲットを設定する](how-to-set-up-training-targets.md)
+* [モデルをトレーニングするためのコンピューティング ターゲットを使用する](how-to-set-up-training-targets.md)
 * [モデルをコンピューティング ターゲットにデプロイする](how-to-deploy-and-where.md)

@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892577"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178522"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -386,11 +386,11 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 
 管理者だけがスクリプトを実行できます。管理者特権モードで実行する必要があります。 スクリプトは、事前生成済みの一連の手順のみを実行し、いかなる外部ソースからの入力も受け入れません。
 
-スクリプトを実行するには、Azure portal、PowerShell、または CLI でスクリプトの生成時に承認されたユーザーに対してのみ表示されるパスワードが必要です。 これは、承認されたユーザーがスクリプトのダウンロードと、スクリプトの実行の責任も負うようにするためです。
+スクリプトを実行するには、Azure portal、PowerShell、または CLI でスクリプトの生成時に、許可されているユーザーに対してのみ表示されるパスワードが必要です。 これは、承認されたユーザーがスクリプトのダウンロードと、スクリプトの実行の責任も負うようにするためです。
 
 #### <a name="browse-files-and-folders"></a>ファイルとフォルダーを参照する
 
-ファイルとフォルダーを参照するために、スクリプトではマシン内の iSCSI イニシエーターを使用して、iSCSI ターゲットとして構成されている復旧ポイントに接続します。 ここで、いずれかまたはすべてのコンポーネントを誰かが模倣、なりすましをしようとしているシナリオが想定できます。
+ファイルとフォルダーを参照するために、マシン内の iSCSI イニシエーターをスクリプトで使用して、iSCSI ターゲットとして構成されている復旧ポイントに接続します。 ここで、いずれかまたはすべてのコンポーネントを誰かが模倣、なりすましをしようとしているシナリオが想定できます。
 
 Microsoft では、各コンポーネントの相互の認証ができるように、相互の CHAP 認証メカニズムを使用しています。 つまり、偽のイニシエーターが iSCSI ターゲットに接続したり、偽のターゲットがスクリプトを実行するマシンに接続するのは非常に困難です。
 

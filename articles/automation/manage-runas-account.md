@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2d6e026f87211260a2cf45c0623806cc024b44e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3e5f75a5ff9c6baff9bbefea7846ffe78655c6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530668"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401760"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを管理する
 
@@ -186,7 +186,7 @@ Key Vault と実行アカウントのサービス プリンシパルでカスタ
 * Key Vault にアクセス許可を付与します。
 * アクセス ポリシーを設定します。
 
-PowerShell ギャラリーの [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) スクリプトを使用して、実行アカウントに Key Vault へのアクセス許可を付与することができます。 Key Vault へのアクセス許可の設定について詳しくは、[アプリケーションに対する Key Vault へのアクセス許可の付与](../key-vault/general/group-permissions-for-apps.md)に関するページを参照してください。
+PowerShell ギャラリーの [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) スクリプトを使用して、実行アカウントに Key Vault へのアクセス許可を付与することができます。 Key Vault へのアクセス許可の設定について詳しくは、「[Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/general/assign-access-policy-powershell)」を参照してください。
 
 ## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>実行アカウントの間違った構成に関する問題を解決する
 
