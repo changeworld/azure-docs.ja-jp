@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587979"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298349"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -55,9 +55,16 @@ ms.locfileid: "88587979"
     * インスタンス用: *リソース グループ*の名前。 既存のリソース グループを使用するか、または作成するリソース グループの新しい名前を入力できます。
     * インスタンス用: Azure Digital Twins インスタンスの*名前*。 新しいインスタンスの名前は、サブスクリプションのリージョン内で一意である必要があります (つまり、サブスクリプションのリージョン内に、選択した名前を既に使用している別の Azure Digital Twins インスタンスが存在する場合は、異なる名前を選択するよう求められます)。
     * アプリ登録用: 登録に関連付ける *Azure AD アプリケーション表示名*。 このアプリの登録では、[Azure Digital Twins API](how-to-use-apis-sdks.md) に対するアクセス許可を構成します。 後で、クライアント アプリはこのアプリ登録に対して認証し、結果として API への構成済みのアクセス許可が付与されます。
-    * アプリ登録用: Azure AD アプリケーションの *Azure AD アプリケーション 応答 URL*。 `http://localhost` を使用できます。
+    * アプリ登録用: Azure AD アプリケーションの *Azure AD アプリケーション 応答 URL*。 `http://localhost` を使用してください。 スクリプトによりその "*パブリック クライアント/ネイティブ (モバイルとデスクトップ)* " URI が設定されます。
 
 このスクリプトは Azure Digital Twins インスタンスを作成し、Azure ユーザーにそのインスタンスの *[Azure Digital Twins 所有者 (プレビュー)]* ロールを割り当てた後、使用するクライアント アプリに対して Azure AD アプリ登録を設定します。
+
+>[!NOTE]
+>現在のところ、スクリプト化されたセットアップには**既知の問題**があります。一部のユーザー (特に、個人の [Microsoft アカウント (MSA) のユーザー](https://account.microsoft.com/account)) に対して、 **"_Azure Digital Twins Owner (プレビュー)_ " にロールの割り当てを作成できないことがあります**。
+>
+>ロール割り当ての妥当性はこの記事の後半にある「[*ユーザー ロールの割り当てを確認する*](#verify-user-role-assignment)」セクションで確認できます。また、必要に応じて、[Azure portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) または [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) を使用して手動でロール割り当てを設定できます。
+>
+>この問題の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)」を参照してください。
 
 このスクリプトからの出力ログの抜粋を次に示します。
 
@@ -127,5 +134,9 @@ ms.locfileid: "88587979"
 
 ## <a name="next-steps"></a>次のステップ
 
-クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法について説明します。
+Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
+
+または、クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法を確認します。
 * [*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)

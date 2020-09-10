@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995038"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146659"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning を使用した分散トレーニング
 
@@ -50,7 +50,7 @@ ms.locfileid: "82995038"
 
 ## <a name="next-steps"></a>次のステップ
 
-* Python SDK を使用して[トレーニング環境をセットアップする](how-to-set-up-training-targets.md)方法を確認します。
+* Python SDK を利用し、[モデル トレーニング用のコンピューティング ターゲットを使用する](how-to-set-up-training-targets.md)方法について学習します。
 * 技術的な例については、[リファレンス アーキテクチャ シナリオ](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)を参照してください。
 * [TensorFlow を使用して ML モデルをトレーニングする](how-to-train-tensorflow.md)。
 * [PyTorch を使用してモデルをトレーニングする](how-to-train-pytorch.md)。 

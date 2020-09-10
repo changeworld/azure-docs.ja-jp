@@ -3,22 +3,24 @@ title: Azure Media Services v3 リリース ノート | Microsoft Docs
 description: 常に最新の開発情報を把握していただけるよう、この記事では Azure Media Services v3 の最新の更新情報を提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 055a3e9ec360e5b2c29cedd0f26c976c269f92bb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072138"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400621"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
@@ -35,6 +37,18 @@ ms.locfileid: "87072138"
 > [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 >
 > 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
+
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="dynamic-encryption"></a>動的暗号化
+レガシ PlayReady Protected Interoperable File Format (PIFF 1.1) 暗号化のサポートが Dynamic Packager で利用できるようになりました。 これにより、Microsoft が公開した Common Encryption 標準 (CENC) の早期ドラフトを実装した Samsung 製および LG 製のレガシ スマート TV セットのサポートが提供されます。  PIFF 1.1 形式は、Silverlight クライアント ライブラリによって以前サポートされていた暗号化形式としても知られています。 現在、この暗号化形式の唯一のユース ケース シナリオは、PIFF 1.1 暗号化によるスムーズ ストリーミングのみがサポートされている一部のリージョンで相当な数のスマート テレビが残っているレガシ スマート TV 市場をターゲットにすることです。 
+
+新しい PIFF 1.1 暗号化サポートを使用するには、ストリーミング ロケーターの URL パスで暗号化値を "piff" に変更します。 詳細については、[コンテンツ保護の概要](content-protection-overview.md)に関するページを参照してください。
+例: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PIFF 1.1 のサポートは、初期の "Silverlight" バージョンの Common Encryption を実装したスマート TV (Samsung、LG) で下位互換性を保つためのソリューションとして提供されています。 PIFF 形式は、PIFF 1.1 バージョンの PlayReady 暗号化をサポートしている 2009 から 2015 年に出荷された Samsung または LG 製レガシ スマート TV をサポートするために必要な場合のみ使用することをお勧めします。 
 
 ## <a name="july-2020"></a>2020 年 7 月
 

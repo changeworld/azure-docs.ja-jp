@@ -1,27 +1,27 @@
 ---
 title: BLOB のスナップショット
 titleSuffix: Azure Storage
-description: BLOB の読み取り専用スナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。
+description: BLOB のスナップショットのしくみとその課金方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/19/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640601"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295404"
 ---
 # <a name="blob-snapshots"></a>BLOB のスナップショット
 
 スナップショットは、ある時点で作成された読み取り専用の BLOB です。
 
 > [!NOTE]
-> BLOB バージョン管理 (プレビュー) は、BLOB の以前のバージョンを維持するための代替手段になります。 詳細については、「[BLOB バージョン管理 (プレビュー)](versioning-overview.md)」を参照してください。
+> BLOB バージョン管理により、BLOB の以前のバージョンを維持するための優れた方法が提供されます。 詳細については、「[BLOB のバージョン管理](versioning-overview.md)」を参照してください。
 
 ## <a name="about-blob-snapshots"></a>BLOB スナップショットについて
 
@@ -31,7 +31,6 @@ ms.locfileid: "88640601"
 
 > [!NOTE]
 > すべてのスナップショットがベース BLOB の URI を共有します。 ベース BLOB とスナップショットの唯一の違いは、追加される **DateTime** 値です。
->
 
 BLOB に対するスナップショットの数に制限はありません。 スナップショットは、個別に、またはベース BLOB の [Delete Blob](/rest/api/storageservices/delete-blob) 操作の一部として明示的に削除されるまで保持されます。 ベース BLOB に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。
 
@@ -42,8 +41,6 @@ BLOB のスナップショットを作成すると、BLOB のシステム プロ
 VHD ファイルは、VM ディスクの現時点の情報と状態の格納に使用します。 ディスクを VM 内から切断するか、VM をシャットダウンしてから、その VHD ファイルのスナップショットを撮ることができます。 このスナップショットを後に使用して、その時点での VHD ファイルを取得して VM を再作成することができます。
 
 ## <a name="understand-how-snapshots-accrue-charges"></a>スナップショットの課金方法について
-
-スナップショット (BLOB の読み取り専用コピー) を作成すると、別途データ ストレージ料金がアカウントに課金される場合があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
 
 ### <a name="important-billing-considerations"></a>課金に関する重要な考慮事項
 
@@ -65,34 +62,99 @@ VHD ファイルは、VM ディスクの現時点の情報と状態の格納に�
 
 ブロック BLOB とそのスナップショットについて料金が発生するしくみを次のシナリオで説明します。
 
+## <a name="pricing-and-billing"></a>価格と課金
+
+スナップショット (BLOB の読み取り専用コピー) を作成すると、別途データ ストレージ料金がアカウントに課金される場合があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
+
+BLOB のバージョンと同様に、BLOB のスナップショットは、アクティブなデータと同じレートで課金されます。 スナップショットの課金方法は、ベース BLOB またはそのいずれかのスナップショット (バージョン) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+
+BLOB またはスナップショットの層を変更していない場合は、その BLOB、そのスナップショット、およびそれが持つ可能性があるすべてのバージョンにわたるデータの一意のブロックに対して課金されます。 詳細については、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」を参照してください。
+
+BLOB またはスナップショットの層を変更した場合は、BLOB スナップショットが最終的に同じ層になるかどうかに関係なく、オブジェクト全体に対して課金されます。 詳細については、「[BLOB 層が明示的に設定されている場合の課金](#billing-when-the-blob-tier-has-been-explicitly-set)」を参照してください。
+
+BLOB のバージョンの課金の詳細については、「[BLOB のバージョン管理](versioning-overview.md)」を参照してください。
+
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>BLOB 層が明示的に設定されていない場合の課金
+
+ベース BLOB またはそのいずれかのスナップショットに対して BLOB 層を明示的に設定していない場合は、BLOB、そのスナップショット、およびそれが持つ可能性があるすべてのバージョンにわたる一意のブロックまたはページについて課金されます。 BLOB とそのスナップショット間で共有されるデータは、1 回だけ課金されます。 BLOB が更新されると、ベース BLOB 内のデータはそのスナップショットに格納されているデータから分岐し、一意のデータはブロックまたはページごとに課金されます。
+
+ブロック BLOB 内のブロックを置き換えた場合、以後そのブロックは一意のブロックとして課金されます。 そのブロックに割り当てられているブロック ID とデータが、スナップショット側と同じであっても変わりません。 ブロックが再度コミットされると、そのブロックはスナップショット内の対応するブロックから分岐し、そのデータに対する料金が発生します。 これは、まったく同じデータでページ BLOB 内のページを更新した場合にも当てはまります。
+
+BLOB ストレージには、2 つのブロックに同一のデータが含まれているかどうかを判断する手段はありません。 アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。 料金は一意のブロックに対して発生するため、その BLOB にスナップショットまたはバージョンがある場合に BLOB を更新すると、一意のブロックが増え、追加料金が発生することを考慮することが重要です。
+
+BLOB にスナップショットがある場合は、ブロック BLOB に対して更新操作を呼び出し、更新されるブロックの数をできる限り少なくします。 ブロックの詳細な制御を許可する書き込み操作は、[Put Block](/rest/api/storageservices/put-block) と [Put Block List](/rest/api/storageservices/put-block-list) です。 一方、[Put Blob](/rest/api/storageservices/put-blob) 操作では、BLOB の内容全体が置き換えられるため、追加料金が発生する可能性があります。
+
+次のシナリオでは、BLOB 層が明示的に設定されていないときに、ブロック BLOB とそのスナップショットに対して料金が発生するしくみを示します。
+
 #### <a name="scenario-1"></a>シナリオ 1
 
 シナリオ 1 では、スナップショットが作成されてからベース BLOB は更新されていません。したがって、料金の発生対象は、一意のブロックである 1、2、3 のみです。
 
-![Azure Storage のリソース](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![ベース BLOB とスナップショットでの一意のブロックに対する課金を示す図 1。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>シナリオ 2
 
 シナリオ 2 では、ベース BLOB は更新されていますが、スナップショットは更新されていません。 更新されたのはブロック 3 です。格納されているデータと ID が同じでも、スナップショット内のブロック 3 とは異なります。 このため、4 ブロック分の料金がアカウントに課金されます。
 
-![Azure Storage のリソース](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![ベース BLOB とスナップショットでの一意のブロックに対する課金を示す図 2。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>シナリオ 3
 
 シナリオ 3 では、ベース BLOB は更新されていますが、スナップショットは更新されていません。 ベース BLOB のブロック 3 がブロック 4 に置き換わっていますが、スナップショット側はブロック 3 のままです。 このため、4 ブロック分の料金がアカウントに課金されます。
 
-![Azure Storage のリソース](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![ベース BLOB とスナップショットでの一意のブロックに対する課金を示す図 3。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>シナリオ 4
 
 シナリオ 4 では、ベース BLOB が完全に更新されており、元のブロックは 1 つも含まれていません。 このため、8 つある一意のブロックすべてについての料金がアカウントに課金されます。
 
-![Azure Storage のリソース](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![ベース BLOB とスナップショットでの一意のブロックに対する課金を示す図 4。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > BLOB 全体を上書きするメソッドを呼び出さずに、個別のブロックを更新してコストを抑えるようにします。
 
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>BLOB 層が明示的に設定されている場合の課金
+
+BLOB またはスナップショット (またはバージョン) の BLOB 層が明示的に設定されている場合、元の層のオブジェクトとブロックが共有されているかどうかにかかわらず、新しい層におけるオブジェクトのコンテンツの完全な長さに対して課金されます。 また、元の層の最も古いバージョンのコンテンツの完全な長さに対しても課金されます。 元の層に残っているすべてのバージョンまたはスナップショットについては、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」で説明されているように、共有できる一意のブロックに対して課金されます。
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>新しい層への BLOB の移動
+
+次の表では、BLOB またはスナップショットを新しい層に移動する場合の課金の動作について説明します。
+
+| BLOB 層の明示的な設定対象 | 課金の対象 |
+|-|-|
+| スナップショットがあるベース BLOB | 新しい層のベース BLOB と、元の層の最も古いスナップショット、および他のスナップショットの一意のブロック。<sup>1</sup> |
+| 前のバージョンとスナップショットがあるベース BLOB | 新しい層のベース BLOB、元の層の最も古いバージョン、元の層の最も古いスナップショット、および他のバージョンまたはスナップショットの一意のブロック。<sup>1</sup> |
+| スナップショット | 新しい層のスナップショットと、元の層のベース BLOB、および他のスナップショットの一意のブロック。<sup>1</sup> |
+
+<sup>1</sup> 元の層から移動されていない他の以前のバージョンまたはスナップショットがある場合、それらのバージョンまたはスナップショットは、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」で説明されているように、それに含まれる一意のブロックの数に基づいて課金されます。
+
+次の図は、スナップショットを持つ BLOB を別の層に移動した場合のオブジェクトの課金方法を示したものです。
+
+:::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="スナップショットを持つ BLOB が明示的に階層化されたときのオブジェクトの課金方法を示す図。":::
+
+BLOB、バージョン、またはスナップショットに対する層の明示的な設定を、元に戻すことはできません。 BLOB を新しい層に移動した後、元の層に戻すと、元の層の他のオブジェクトとブロックが共有されている場合でも、オブジェクトのコンテンツの完全な長さに対して課金されます。
+
+BLOB、バージョン、またはスナップショットの層を明示的に設定する操作には、次のものがあります。
+
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
+- 層を指定した [Put Blob](/rest/api/storageservices/put-blob)
+- 層を指定した [Put Block List](/rest/api/storageservices/put-block-list)
+- 層を指定した [Copy Blob](/rest/api/storageservices/copy-blob)
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>論理的な削除が有効になっている場合の BLOB の削除
+
+BLOB の論理的な削除が有効になっている場合に、層が明示的に設定されているベース BLOB を削除または上書きすると、論理的に削除された BLOB の以前のすべてのバージョンまたはスナップショットが、コンテンツの完全な長さで課金されます。 BLOB のバージョン管理と論理的な削除の連携のしくみの詳細については、「[BLOB のバージョン管理と論理的な削除](versioning-overview.md#blob-versioning-and-soft-delete)」を参照してください。
+
+次の表では、バージョン管理が有効か無効かによる、論理的に削除される BLOB の課金動作を説明します。 バージョン管理が有効になっている場合、BLOB を論理的に削除すると、新しいバージョンが作成されます。 バージョン管理が無効になっている場合、BLOB を論理的に削除すると、論理的な削除のスナップショットが作成されます。
+
+| ベース BLOB を明示的に層を設定して上書きする場合 | 課金の対象 |
+|-|-|
+| BLOB の論理的な削除とバージョン管理の両方が有効になっている場合 | 層に関係なく、すべての既存バージョンがコンテンツ全体の長さで。 |
+| BLOB の論理的な削除は有効になっているが、バージョン管理は無効になっている場合 | 層に関係なく、すべての既存の論理的な削除のスナップショットがコンテンツ全体の長さで。 |
+
 ## <a name="next-steps"></a>次のステップ
 
+- [BLOB のバージョン管理](versioning-overview.md)
 - [.NET での BLOB スナップショットの作成と管理](snapshots-manage-dotnet.md)
 - [増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ](../../virtual-machines/windows/incremental-snapshots.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3f21fa2df32644ff1c415db656fc3b0beed03965
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690257"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292777"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
@@ -153,7 +153,7 @@ SCIM RFC では複数のエンドポイントが定義されています。 /Use
 * SCIM プロトコルのセクション 3.4.2 に従って、ID と管理者によるユーザーの照会をサポートする。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID とメンバーによるグループの照会をサポートする。  
 * アプリケーションに対する Azure AD の認証と承認のために、単一のベアラー トークンを受け入れる。
-* ユーザー `active=false` の論理削除とユーザー `active=true` の復元をサポートします。
+* ユーザー `active=false` の論理削除とユーザー `active=true` の復元をサポートする (ユーザーがアクティブかどうかに関係なく、要求でユーザー オブジェクトが返される必要があります)。 ユーザーが返されないのは、アプリケーションから完全削除されているときです。 
 
 Azure AD との互換性を確保するために、SCIM エンドポイントの実装時は次の一般的なガイドラインに従ってください。
 
@@ -746,7 +746,7 @@ TLS 1.2 暗号スイートの最低条件:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範囲
-Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory と AzureActiveDirectoryDomainServices の IP 範囲で動作します。 AzureActiveDirectory の IP 範囲のみへの統合を行う作業が進行中です。 
+Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory の IP 範囲で動作します。 AzureActiveDirectory タグの下に一覧表示されている IP 範囲を追加し、Azure AD プロビジョニング サービスからアプリケーションへのトラフィックを許可できます。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>手順 3:SCIM エンドポイントを構築する
 

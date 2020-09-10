@@ -1,20 +1,20 @@
 ---
 title: Language Understanding サービスでの保存データの暗号化
 titleSuffix: Azure Cognitive Services
-description: Language Understanding サービスでの保存データの暗号化。
+description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、Language Understanding (LUIS) での保存データの暗号化と、CMK を有効化および管理する方法について説明します。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052695"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078131"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Language Understanding サービスでの保存データの暗号化
 
@@ -26,7 +26,7 @@ ms.locfileid: "85052695"
 
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 
-サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自のキーを使用してサブスクリプションを管理するためのオプションもあります。 カスタマー マネージド キー (CMK) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
+サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 カスタマー マネージド キー (CMK) と呼ばれているユーザー独自のキーを使用してサブスクリプションを管理するオプションもあります。 CMK を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault でのカスタマー マネージド キー
 
@@ -39,10 +39,6 @@ ms.locfileid: "85052695"
 カスタマー マネージド キーを使用できるようにするには、 [LUIS サービス カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。 要求の状態について連絡を差し上げるまで、約 3 から 5 営業日かかります。 要求によっては、お客様は待ち行列に登録され、スペースが利用できるようになってから承認される場合があります。 LUIS での CMK の使用が承認されたら、Azure portal から新しい Language Understanding リソースを作成し、価格レベルとして E0 を選択する必要があります。 新しい SKU は、CMK を除き、既に使用可能な F0 SKU と同じように機能します。 ユーザーは、F0 を新しい E0 SKU にアップグレードすることはできません。
 
 ![LUIS サブスクリプションの図](../media/cognitive-services-encryption/luis-subscription.png)
-
-### <a name="regional-availability"></a>リージョン別の提供状況
-
-カスタマー マネージド キーは、すべての [オーサリング リージョン](luis-reference-regions.md)で利用できます。 
 
 ### <a name="limitations"></a>制限事項
 

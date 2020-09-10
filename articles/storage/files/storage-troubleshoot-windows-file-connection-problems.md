@@ -4,15 +4,15 @@ description: Windows での Azure Files に関する問題のトラブルシュ�
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 05/31/2019
+ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797787"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269371"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -344,14 +344,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 コマンドレットでは、以下のチェックが順番に実行されて、障害に関するガイダンスが提供されます。
-1. CheckPort445Connectivity: SMB 接続に対してポート 445 が開いていることを確認します。
-2. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します
-3. CheckADObject: ストレージ アカウントを表すオブジェクトが Active Directory にあり、正しい SPN (サービス プリンシパル名) を持っていることを確認します。
-4. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 
-5. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。
-6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。
-7. CheckAadUserHasSid: Azure AD ユーザーが AD の SID を持っているかどうかを確認します。この確認を行う際、ユーザーは、パラメーター -ObjectId を使用して Azure AD ユーザーのオブジェクト ID を入力する必要があります。 
-8. CheckStorageAccountDomainJoined: ストレージ アカウントのプロパティを確認して、AD 認証が有効になっており、アカウントの AD プロパティが設定されていることを確認します。
+1. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。 パスワードが正しくない場合、[Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) を実行してパスワードをリセットできます。 
+2. CheckADObject: ストレージ アカウントを表すオブジェクトが Active Directory にあり、正しい SPN (サービス プリンシパル名) を持っていることを確認します。 SPN が正しくセットアップされていない場合、デバッグ コマンドレットで返される Set-AD コマンドレットを実行して SPN を構成してください。
+3. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します。 クライアント コンピューターが AD にドメイン参加していない場合、ドメイン参加方法についてはこちらの[記事](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK)を参照してください。
+4. CheckPort445Connectivity: SMB 接続に対してポート 445 が開いていることを確認します。 必要なポートが開いていない場合、Azure Files の接続問題について、トラブルシューティング ツール [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) を参照してください。
+5. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。 
+6. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 有効な Kerberos トークンがない場合、klist get cifs/storage-account-name.file.core.windows.net コマンドレットを実行し、エラー コードを調べ、チケット取得失敗の根本原因を探ります。
+7. CheckStorageAccountDomainJoined: AD 認証が有効になっており、アカウントの AD プロパティが設定されているかどうかを確認します。 有効になっていない場合、[こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable)の指示を参照し、Azure Files で AD DS 認証を有効にします。 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない
 

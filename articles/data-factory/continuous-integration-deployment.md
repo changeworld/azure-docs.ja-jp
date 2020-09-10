@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 08/31/2020
+ms.openlocfilehash: 582a9eb4c98e89602e35e2ee424a00adc54a88e3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815812"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229550"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -335,6 +335,16 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
 
 ```json
 {
+    "Microsoft.DataFactory/factories": {
+        "properties": {
+            "globalParameters": {
+                "*": {
+                    "value": "="
+                }
+            }
+        },
+        "location": "="
+    },
     "Microsoft.DataFactory/factories/pipelines": {
     },
     "Microsoft.DataFactory/factories/dataflows": {
@@ -390,7 +400,6 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
             "typeProperties": {
                 "scope": "="
             }
-
         }
     },
     "Microsoft.DataFactory/factories/linkedServices": {
@@ -427,7 +436,8 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
                     "aadResourceId": "=",
                     "sasUri": "|:-sasUri:secureString",
                     "sasToken": "|",
-                    "connectionString": "|:-connectionString:secureString"
+                    "connectionString": "|:-connectionString:secureString",
+                    "hostKeyFingerprint": "="
                 }
             }
         },
@@ -450,8 +460,8 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
                     "fileName": "="
                 }
             }
-        }}
-}
+        }
+    }
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>例: 既存の Azure Databricks 対話型クラスター ID のパラメーター化
@@ -460,6 +470,16 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
 
 ```json
 {
+    "Microsoft.DataFactory/factories": {
+        "properties": {
+            "globalParameters": {
+                "*": {
+                    "value": "="
+                }
+            }
+        },
+        "location": "="
+    },
     "Microsoft.DataFactory/factories/pipelines": {
     },
     "Microsoft.DataFactory/factories/dataflows": {
@@ -625,6 +645,8 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 
     - データ ファクトリのエンティティは相互に依存しています。 たとえば、トリガーはパイプラインに依存し、パイプラインはデータセットや他のパイプラインに依存しています。 リソースのサブセットを選択的に発行すると、予期しない動作やエラーにつながる可能性があります。
     - まれに、選択的な発行が必要になった場合は、修正プログラムの使用を検討してください。 詳細については、「[運用環境への修正プログラムの適用](#hotfix-production-environment)」を参照してください。
+
+- Azure Data Factory チームは、データ ファクトリ内の個々のエンティティ (パイプライン、データセットなど) に RBAC 制御を割り当てることを推奨していません。 たとえば、開発者がパイプラインまたはデータセットにアクセスできる場合、データ ファクトリ内のすべてのパイプラインまたはデータセットにアクセスできるはずです。 データ ファクトリ内に実装する RBAC ロールが多いと感じられる場合、2 つ目のデータ ファクトリのデプロイを検討してください。
 
 -   非公開のブランチから発行することはできません。
 

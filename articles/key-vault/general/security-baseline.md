@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e9c4d70bcd0b991d90c68d310f94b21757fe2437
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830215"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400468"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 用の Azure セキュリティ ベースライン
 
@@ -411,7 +411,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
 
-**ガイダンス**: Azure Active Directory (AAD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときにログとアラートを生成します。 AAD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 追加のログ記録を行うには、Azure Security Center のリスク検出アラートを Azure Monitor に送信し、アクショングループを使用してカスタムのアラートまたは通知を構成します。
+**ガイダンス**: Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全ではないアクティビティが発生したときにログとアラートを生成します。 Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 追加のログ記録を行うには、Azure Security Center のリスク検出アラートを Azure Monitor に送信し、アクショングループを使用してカスタムのアラートまたは通知を構成します。
 
 Azure Key Vault 用 Advanced Threat Protection (ATP) を有効にして、疑わしいアクティビティに関するアラートを生成します。
 
@@ -445,7 +445,7 @@ Azure Active Directory 条件付きアクセスの場所の条件の概要: http
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: Key Vault などの Azure リソースの主要な認証および承認システムとして Azure Active Directory (AAD) を使用します。 これにより、ロールベースのアクセス制御 (RBAC) で機密性の高いリソースを管理できるようになります。
+**ガイダンス**: Key Vault などの Azure リソースの主要な認証および承認システムとして Azure Active Directory (Azure AD) を使用します。 これにより、ロールベースのアクセス制御 (RBAC) で機密性の高いリソースを管理できるようになります。
 
  
 
@@ -460,7 +460,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure Active Directory (AAD) のログを確認して、Azure Key Vault 管理者ロールを持つ古いアカウントを検出します。 また、AAD アクセス レビューを使用して、グループ メンバーシップ、Azure Key Vault へのアクセスに使用される可能性のあるエンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的 (たとえば、90 日ごと) に確認し、正当なユーザーだけが継続してアクセスできるようにする必要があります。
+**ガイダンス**: Azure Active Directory (Azure AD) のログを確認して、Azure Key Vault 管理者ロールを持つ古いアカウントを検出します。 また、Azure AD アクセス レビューを使用して、グループ メンバーシップ、Azure Key Vault へのアクセスに使用される可能性のあるエンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的 (たとえば、90 日ごと) に確認し、正当なユーザーだけが継続してアクセスできるようにする必要があります。
 
 Azure Active Directory のレポートと監視のドキュメント:
 
@@ -1009,11 +1009,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 キー コンテナーを作成する方法:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-マネージド ID で Key Vault の認証を提供する方法: 
+Key Vault に対して認証を行う方法:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault のアクセス ポリシーを割り当てる方法:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center の監視**: はい
 
@@ -1025,16 +1029,13 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
   
 
-Azure マネージド ID と統合する方法: 
+* [Azure マネージド ID と統合する方法](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
+* [キー コンテナーを作成する方法](quick-create-portal.md)
 
-キー コンテナーを作成する方法: 
+* [Key Vault に対して認証を行う方法](authentication.md)
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal    
-
-マネージド ID で Key Vault の認証を提供する方法:  
-https://docs.microsoft.com/azure/key-vault/managed-identity
+* [Key Vault のアクセス ポリシーを割り当てる方法](assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 

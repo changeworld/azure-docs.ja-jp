@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0847329bc1bc1a2d6242a9485453a3daf315c3fe
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799093"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318320"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -51,7 +51,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 **A:** 既定では、Azure サブスクリプションにサインアップしたユーザーには、Azure リソースの所有者ロールが割り当てられます。 所有者は、Microsoft アカウントと、Azure サブスクリプションが関連付けられているディレクトリの職場または学校アカウントのどちらも使用できます。  このロールには、Azure Portal でのサービスの管理が許可されます。
 
-他のユーザーが同じサブスクリプションを使用してサービスにサインインしてアクセスする必要がある場合は、適切な[組み込みロール](../../role-based-access-control/built-in-roles.md)を割り当てることができます。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+他のユーザーが同じサブスクリプションを使用してサービスにサインインしてアクセスする必要がある場合は、適切な[組み込みロール](../../role-based-access-control/built-in-roles.md)を割り当てることができます。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 全体管理者は、すべての Azure AD ディレクトリ機能にアクセスできます。 Azure AD には、ディレクトリおよび ID 関連の機能を管理するために異なる管理者ロールのセットがあります。 これらの管理者は、Azure portal のさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」と「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
@@ -92,14 +92,14 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 **A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](https://myapps.microsoft.com)が用意されています。 Office 365 を利用している方は、これと同じ機能の多くを [Office 365 ポータル](https://portal.office.com)で使用できます。
 
-詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください。
+詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ---
 **Q:Azure AD はオンプレミスのインフラストラクチャの管理に役立ちますか?**
 
 **A:** はい。 Azure AD Premium Edition には Azure AD Connect Health が用意されています。 Azure AD Connect Health では、オンプレミスの ID インフラストラクチャと同期サービスを監視、分析できます。  
 
-詳細については、「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](../hybrid/whatis-hybrid-identity-health.md)」を参照してください。  
+詳細については、「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](../hybrid/whatis-azure-ad-connect.md)」を参照してください。  
 
 ---
 ## <a name="password-management"></a>パスワード管理
@@ -112,7 +112,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 **A:** パスワード ライトバックはリアルタイムで行われます。
 
-詳細については、「[パスワード管理の概要](../authentication/quickstart-sspr.md)」を参照してください。
+詳細については、「[パスワード管理の概要](../authentication/tutorial-enable-sspr.md)」を参照してください。
 
 ---
 **Q:管理者によって管理されるパスワードでパスワード ライトバックを使用できますか?**
@@ -184,8 +184,8 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 詳細については、次を参照してください。
 
-* [Azure AD の認証シナリオ](../develop/authentication-scenarios.md)
-* [Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+* [Azure AD の認証シナリオ](../develop/authentication-vs-authorization.md)
+* [Active Directory の認証プロトコル](/previous-versions/azure/dn151124(v=azure.100))
 * [Azure AD でのアプリケーションのシングル サインオン](../manage-apps/what-is-single-sign-on.md)
 
 ---

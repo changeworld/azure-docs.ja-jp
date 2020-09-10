@@ -8,18 +8,18 @@ ms.date: 8/14/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 2fc2db54217756ba0f4f7d643b1bc12ad2668209
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848664"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401063"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>カスタム コネクタを使用して Logic Apps と統合する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、アプリとサービス全体のワークフローを自動化するのに役立つクラウド サービスです。 Logic Apps を Azure Digital Twins API に接続すると、Azure Digital Twins とそのデータに関するそのような自動化されたフローを作成できます。
 
-現在、Azure Digital Twins に、Logic Apps 用の認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更された[カスタム Azure Digital Twins Swagger ファイル](https://github.com/Azure-Samples/digital-twins-custom-swaggers/blob/main/LogicApps/preview/2020-05-31-preview/digitaltwins.json)を使用して、[**カスタム Logic Apps コネクタ**](../logic-apps/custom-connector-overview.md)を作成します。
+現在、Azure Digital Twins に、Logic Apps 用の認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更された[カスタム Azure Digital Twins Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) を使用して、[**カスタム Logic Apps コネクタ**](../logic-apps/custom-connector-overview.md)を作成します。
 
 この記事では、[Azure portal](https://portal.azure.com) を使用して、Azure Digital Twins インスタンスに Logic Apps を接続するために使用できる**カスタム コネクタを作成**します。 その後、シナリオの例にこの接続を使用する**ロジック アプリを作成**します。ここでは、タイマーによってトリガーされるイベントにより、Azure Digital Twins インスタンスのツインが自動的に更新されます。 
 
@@ -77,9 +77,9 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 次に、作成したコネクタを Azure Digital Twins に接続するように構成します。
 
-まず、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger をダウンロードします。 [こちらのリンク](https://github.com/Azure-Samples/digital-twins-custom-swaggers/blob/main/LogicApps/preview/2020-05-31-preview/digitaltwins.json)から *digitaltwins.json* をダウンロードします。
+まず、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger をダウンロードします。 *[ZIP のダウンロード]* ボタンを押し、[このリンク](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)から **Azure Digital Twins Custom Swaggers** サンプルをダウンロードします。 ダウンロードした *Azure_Digital_Twins_Custom_Swaggers.zip* フォルダーに移動し、解凍します。 このチュートリアル用のカスタム Swagger は *Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.json* にあります。
 
-次に、Azure portal のコネクタの [概要] ページで、 *[編集]* クリックします。
+次に、[Azure portal](https://portal.azure.com) のコネクタの [概要] ページに進み、 *[編集]* を押します。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="前のステップで作成したコネクタの [概要] ページ。[編集] ボタンが強調して示されている":::
 
@@ -87,7 +87,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 * **カスタム コネクタ**
     - API エンドポイント: REST (既定値のまま)
     - インポート モード: OpenAPI ファイル (既定値のまま)
-    - ファイル: これは、前にダウンロードしたカスタム Swagger ファイルです。 *[インポート]* をクリックし、コンピューター上のファイルを見つけて、 *[開く]* をクリックします。
+    - ファイル: これは、前にダウンロードしたカスタム Swagger ファイルです。 *[インポート]* を押し、お使いのコンピューターでファイルを見つけ (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.json*)、 *[開く]* を押します。
 * **一般情報**
     - アイコン、アイコンの背景色、説明: 任意の値を入力します。
     - スキーム: HTTPS (既定値のまま)
@@ -118,7 +118,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 [リダイレクト URL] フィールドに戻り、生成された値をコピーします。 次の手順で使用します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの [リダイレクト URL] フィールドの値が、https://logic-apis-westus2.consent.azure-apim.net/redirect になっている。値をコピーするボタンが強調して示されている。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの [リダイレクト URL] フィールドの値が、"https://logic-apis-westus2.consent.azure-apim.net/redirect" になっている。値をコピーするボタンが強調して示されている。":::
 
 コネクタを作成するために必要な情報は、これですべてです ([セキュリティ] に続けて [定義] ステップを行う必要はありません)。 *[Logic Apps カスタム コネクタの編集]* ペインを閉じてかまいません。
 

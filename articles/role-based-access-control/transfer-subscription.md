@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029979"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400546"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)
 
@@ -28,18 +28,21 @@ ms.locfileid: "87029979"
 
 この記事では、サブスクリプションを別の Azure AD ディレクトリに移転し、移転後にいくつかのリソースを再作成するために実行できる基本的な手順について説明します。
 
+> [!NOTE]
+> Azure クラウド サービス プロバイダー (CSP) のサブスクリプションでは、サブスクリプションに対する Azure AD ディレクトリの変更はサポートされていません。
+
 ## <a name="overview"></a>概要
 
 別の Azure AD ディレクトリへの Azure サブスクリプションの移転は、慎重に計画して実行する必要がある複雑なプロセスです。 多くの Azure サービスでは、セキュリティ プリンシパル (ID) が通常どおりに動作するか、他の Azure リソースを管理する必要があります。 この記事では、セキュリティ プリンシパルに大きく依存する Azure サービスのほとんどについて説明しますが、これは包括的なものではありません。
 
 > [!IMPORTANT]
-> サブスクリプションを移転するには、プロセスを完了するためにダウンタイムが必要です。
+> 一部のシナリオでサブスクリプションを移転する場合、プロセスの完了にダウンタイムが必要なことがあります。 自分の移転でダウンタイムが必要になるかどうかを評価するには、慎重に計画する必要があります。
 
 次の図では、サブスクリプションを別のディレクトリに移転するときに従う必要がある基本的な手順を示します。
 
 1. 移転を準備する
 
-1. Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
+1. Azure サブスクリプションを別のディレクトリに移転する
 
 1. ロールの割り当て、カスタム ロール、マネージド ID などのリソースをターゲット ディレクトリで再作成する
 
@@ -70,10 +73,10 @@ ms.locfileid: "87029979"
 | カスタム ロール | はい | はい | [カスタム ロールを一覧表示する](#save-custom-roles) | すべてのカスタム ロールは完全に削除されます。 カスタム ロールとロールの割り当てを再作成する必要があります。 |
 | システム割り当てのマネージド ID | はい | はい | [マネージド ID を一覧表示する](#list-role-assignments-for-managed-identities) | マネージド ID を無効にして、再度有効にする必要があります。 ロールの割り当てを再作成する必要があります。 |
 | ユーザー割り当て済みマネージド ID | はい | はい | [マネージド ID を一覧表示する](#list-role-assignments-for-managed-identities) | マネージド ID を削除して再作成し、適切なリソースにアタッチする必要があります。 ロールの割り当てを再作成する必要があります。 |
-| Azure Key Vault | はい | はい | [Key Vault アクセス ポリシーを一覧表示する](#list-other-known-resources) | キー コンテナーに関連付けられているテナント ID を更新する必要があります。 アクセス ポリシーを削除して、新しく追加する必要があります。 |
-| Azure SQL データベースと Azure AD 認証 | はい | いいえ | [Azure SQL データベースと Azure AD 認証を確認する](#list-other-known-resources) |  |  |
+| Azure Key Vault | はい | はい | [Key Vault アクセス ポリシーを一覧表示する](#list-key-vaults) | キー コンテナーに関連付けられているテナント ID を更新する必要があります。 アクセス ポリシーを削除して、新しく追加する必要があります。 |
+| Azure AD 認証が統合された Azure SQL データベース | はい | いいえ | [Azure SQL データベースと Azure AD 認証を確認する](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure Storage と Azure Data Lake Storage Gen2 | はい | はい |  | すべての ACL を再作成する必要があります。 |
-| Azure Data Lake Storage Gen1 | はい |  |  | すべての ACL を再作成する必要があります。 |
+| Azure Data Lake Storage Gen1 | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure Files | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure File Sync | はい | はい |  |  |
 | Azure Managed Disks | はい | 該当なし |  |  |
@@ -81,7 +84,8 @@ ms.locfileid: "87029979"
 | Azure Active Directory Domain Services | はい | いいえ |  |  |
 | アプリの登録 | はい | はい |  |  |
 
-ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、移転されるのと同じサブスクリプションに含まれていないキー コンテナーへの依存関係がある場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
+> [!WARNING]
+> ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの**ではない**サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -218,9 +222,9 @@ ms.locfileid: "87029979"
 キー コンテナーを作成すると、そのキー コンテナーは、それが作成されたサブスクリプションの既定の Azure Active Directory テナント ID に自動的に関連付けられます。 また、すべてのアクセス ポリシー エントリがこのテナント ID に関連付けられます。 詳細については、「[Azure Key Vault を別のサブスクリプションに移動する](../key-vault/general/move-subscription.md)」を参照してください。
 
 > [!WARNING]
-> ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、移転されるのと同じサブスクリプションに含まれていないキー コンテナーへの依存関係がある場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
+> ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの**ではない**サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
 
-- キー コンテナーがある場合は、[az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) を使用してアクセス ポリシーの一覧を表示します。 詳細については、「[アクセス制御ポリシーを使用して Key Vault の認証を提供する](../key-vault/key-vault-group-permissions-for-apps.md)」を参照してください。
+- キー コンテナーがある場合は、[az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) を使用してアクセス ポリシーの一覧を表示します。 詳細については、[キー コンテナーへのアクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-cli.md)に関するページを参照してください。
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -228,7 +232,7 @@ ms.locfileid: "87029979"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL データベースと Azure AD 認証の一覧を表示する
 
-- Azure SQL データベースと Azure AD 認証を使用しているかどうかを確認するには、[az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) と [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../sql-database/sql-database-aad-authentication-configure.md)」を参照してください。
+- Azure AD 認証が統合されている Azure SQL データベースを使用しているかどうかを確認するには、[az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) と [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照してください。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -258,16 +262,21 @@ ms.locfileid: "87029979"
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-billing-ownership"></a>手順 2:課金所有権を移転する
+## <a name="step-2-transfer-the-subscription"></a>手順 2:サブスクリプションを移転する
 
-このステップでは、サブスクリプションの課金所有権を、ソース ディレクトリからターゲット ディレクトリに移転します。
+この手順では、サブスクリプションを、ソース ディレクトリからターゲット ディレクトリに移転します。 この手順は、課金所有権も移転するかどうかによって変わります。
 
 > [!WARNING]
-> サブスクリプションの課金所有権を移転すると、ソース ディレクトリ内のすべてのロールの割り当てが**完全に**削除されて復元できなくなります。 サブスクリプションの課金所有権を移転すると、元に戻すことはできません。 このステップを実行する前に、これまでの手順を完了していることを確認してください。
+> サブスクリプションを移転すると、ソース ディレクトリ内のすべてのロールの割り当てが**完全に**削除されて復元できなくなります。 サブスクリプションの移転は、元に戻すことはできません。 このステップを実行する前に、これまでの手順を完了していることを確認してください。
 
-1. 「[Azure サブスクリプションの課金所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)」の手順に従ってください。 サブスクリプションを別の Azure AD ディレクトリに移転するには、 **[サブスクリプション Azure AD テナント]** チェック ボックスをオンにする必要があります。
+1. 課金所有権も別のアカウントに移転するかどうかを決定します。
 
-1. 所有権の移転が完了したら、この記事に戻り、ターゲット ディレクトリにリソースを再作成します。
+1. サブスクリプションを別のディレクトリに移転します。
+
+    - 現在の課金所有権を維持する場合は、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」の手順に従ってください。
+    - 課金所有権も移転する場合は、「[Azure サブスクリプションの課金所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)」の手順に従ってください。 サブスクリプションを別のディレクトリに移転するには、 **[サブスクリプション Azure AD テナント]** チェック ボックスをオンにする必要があります。
+
+1. サブスクリプションの移転が完了したら、この記事に戻り、ターゲット ディレクトリにリソースを再作成します。
 
 ## <a name="step-3-re-create-resources"></a>手順 3:リソースを再作成する
 

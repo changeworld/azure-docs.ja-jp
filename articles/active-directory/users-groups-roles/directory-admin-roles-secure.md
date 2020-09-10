@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795917"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179574"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -310,11 +310,11 @@ Azure Active Directory がオンプレミスの Active Directory に接続され
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>ホストされる仮想マシン内で、特権アカウントのインベントリを行う
 
-通常は、すべての Azure サブスクリプションまたはリソースへの無制限のアクセス許可をユーザーに付与する必要はありません。 Azure AD 管理者ロールを使用して、ユーザーが自分のジョブを実行するために必要なアクセス許可のみを付与します。 Azure AD 管理者ロールを使用して、ある管理者がサブスクリプションで VM のみを管理できるようにし、他の管理者が同じサブスクリプション内で SQL データベースを管理できるようにすることができます。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。
+通常は、すべての Azure サブスクリプションまたはリソースへの無制限のアクセス許可をユーザーに付与する必要はありません。 Azure AD 管理者ロールを使用して、ユーザーが自分のジョブを実行するために必要なアクセス許可のみを付与します。 Azure AD 管理者ロールを使用して、ある管理者がサブスクリプションで VM のみを管理できるようにし、他の管理者が同じサブスクリプション内で SQL データベースを管理できるようにすることができます。 詳細については、[Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)に関するページを参照してください。
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Azure AD 管理者ロールに対して PIM を実装する
 
-Azure AD 管理者ロールと共に Privileged Identity Management を使用して、Azure リソースへのアクセスを管理、制御、監視します。 PIM を使用した保護では、特権の露出時間を短縮し、レポートとアラートを通じて使用状況の可視性を高めます。 詳しくは、[Privileged Identity Management での Azure リソースへの RBAC アクセスの管理](../../role-based-access-control/best-practices.md)に関する記事をご覧ください。
+Azure AD 管理者ロールと共に Privileged Identity Management を使用して、Azure リソースへのアクセスを管理、制御、監視します。 PIM を使用した保護では、特権の露出時間を短縮し、レポートとアラートを通じて使用状況の可視性を高めます。 詳細については、「[Azure AD Privileged Identity Management とは](../privileged-identity-management/pim-configure.md)」を参照してください。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure ログ統合を使用して、関連する Azure ログを SIEM システムに送信する
 

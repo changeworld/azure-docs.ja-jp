@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475909"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401675"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Azure Active Directory でロールを割り当て可能なグループを作成する
 
-ロールを割り当てることができるグループは、'isAssignableToRole' プロパティを True に設定して作成したものか、Azure AD ポータルで **[グループに Azure AD ロールを割り当てることができる]** をオンにして作成したものだけです。 このグループ属性を使用すると、そのグループを Azure Active Directory (Azure AD) のロールに割り当てることができるようになります。 この記事では、この特別な種類のグループを作成する方法について説明します。
+ロールを割り当てることができるグループは、'isAssignableToRole' プロパティを True に設定して作成したものか、Azure AD ポータルで **[グループに Azure AD ロールを割り当てることができる]** をオンにして作成したものだけです。 このグループ属性を使用すると、そのグループを Azure Active Directory (Azure AD) のロールに割り当てることができるようになります。 この記事では、この特別な種類のグループを作成する方法について説明します。 **注:** isAssignableToRole プロパティが true に設定されているグループは、動的メンバーシップ型になりません。 詳細については、[グループを使用して Azure AD ロール割り当てを管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)方法に関するページを参照してください。
 
 ## <a name="using-azure-ad-admin-center"></a>Azure AD 管理センターの使用
 

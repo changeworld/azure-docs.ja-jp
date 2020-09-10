@@ -3,39 +3,25 @@ title: Azure Kubernetes Service (AKS) でカスタマーマネージド キー�
 description: 独自のキー (BYOK) を使用して AKS OS ディスクとデータ ディスクを暗号化します。
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796886"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297758"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する
 
-Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーの制御を強化するために、AKS クラスターの OS ディスクとデータ ディスクの両方の暗号化に使用する目的で[カスタマーマネージド キー][customer-managed-keys]を提供できます。
+Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーの制御を強化するために、AKS クラスターの OS ディスクとデータ ディスクの両方の暗号化に使用する目的でカスタマーマネージド キーを提供できます。 [Linux][customer-managed-keys-linux] と [Windows][customer-managed-keys-windows] のカスタマー マネージド キーについて学習してください。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="limitations"></a>制限事項
+* データ ディスク暗号化サポートは、Kubernetes バージョン 1.17 以上を実行している AKS クラスターに制限されます。
+* カスタマー マネージド キーによる OS とデータ ディスクの暗号化は、AKS クラスターの作成時にのみ、有効にできます。
 
-* この記事では、*新しい AKS クラスター*を作成することを想定しています。
-
+## <a name="prerequisites"></a>前提条件
 * Key Vault を使用してマネージド ディスクを暗号化する場合、*Azure Key Vault* の論理的な削除と消去保護を有効にする必要があります。
-
-* Azure CLI バージョン 2.0.79 以降および aks-preview 0.4.26 拡張機能が必要です
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="install-latest-aks-cli-preview-extension"></a>最新の AKS CLI プレビュー拡張機能をインストールする
-
-カスタマーマネージド キーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.26 以上が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+* Azure CLI バージョン 2.11.1 以降を必要とします。
 
 ## <a name="create-an-azure-key-vault-instance"></a>Azure Key Vault インスタンスを作成する
 
@@ -155,11 +141,6 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="limitations"></a>制限事項
-
-* データ ディスクの暗号化は、Kubernetes バージョン 1.17 以降でサポートされます
-* カスタマーマネージド キーによる暗号化は、現在、新しい AKS クラスターのみを対象としています。既存のクラスターはアップグレードできません
-
 ## <a name="next-steps"></a>次のステップ
 
 [AKS クラスターのセキュリティに関するベスト プラクティス][best-practices-security]を確認する
@@ -171,6 +152,7 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
-[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

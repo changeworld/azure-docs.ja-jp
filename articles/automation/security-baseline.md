@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562686"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400519"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -146,7 +146,7 @@ Azure 仮想マシン上でホストされる Hybrid Runbook Worker を使用し
 
 **ガイダンス**: Azure Policy を使用して、Azure Automation によって使用されるネットワーク リソースの標準的なセキュリティ構成を定義し、実装します。
 
-Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境アーティファクトを単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。
+Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure RBAC コントロール、ポリシーなどの主要な環境アーティファクトを単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -162,7 +162,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、R
 
 **ガイダンス**: ネットワークのセキュリティおよびトラフィック フローに関連する NSG およびその他のリソースにタグを使用します。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可する規則のビジネス ニーズや期間 (など) を指定します。
 
-すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ([タグとその値が必要] など) を使用します。
+すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ("タグとその値が必要" など) を使用します。
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
@@ -570,11 +570,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure AD RBAC を使用して、組み込みのロール定義を利用して Azure Automation リソースへのアクセスを制御し、最小特権または ' 必要最低限' のアクセス モデルに従って Automation リソースにアクセスするユーザーにアクセス権を割り当てます。 Hybrid Runbook Worker を使用する場合は、これらの仮想マシンのマネージド ID を利用して、サービス プリンシパルの使用を回避します。マルチテナントまたは Hybrid Runbook Worker の両方を使用する場合は、runbook worker の ID に対して、適切なスコープが設定された RBAC アクセス許可を確実に適用してください。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、組み込みのロール定義を利用して Azure Automation リソースへのアクセスを制御し、最小特権または ' 必要最低限' のアクセス モデルに従って Automation リソースにアクセスするユーザーにアクセス権を割り当てます。 Hybrid Runbook Worker を使用する場合は、これらの仮想マシンのマネージド ID を利用して、サービス プリンシパルの使用を回避します。マルチテナントまたは Hybrid Runbook Worker の両方を使用する場合は、runbook worker の ID に対して、適切なスコープが設定された Azure RBAC アクセス許可を確実に適用してください。
 
-* [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 * [Hybrid Runbook Worker に対する Runbook のアクセス許可](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
@@ -968,9 +968,9 @@ Hybrid Runbook Worker 機能を使用する場合は、デプロイ用に Azure 
 
 Hybrid Runbook Worker 機能を使用する場合は、ストレージ アカウントにあるカスタム OS イメージへのアクセスが、承認されたユーザーのみがアクセスできるように適切に制限されていることを確認してください。
 
-* [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1042,7 +1042,9 @@ Hybrid Runbook Worker 機能を使用する場合は、任意のクラウドま�
 
 * [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/managed-identity.md)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 

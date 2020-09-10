@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 0d8e2ee684bc08ec23e052229d50b7e9d62c0ecb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/02/2020
+ms.openlocfilehash: 5a40328274fbc776ea02efa0a86422763794d5be
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328077"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378816"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー
 
@@ -51,8 +51,8 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 | プロセスの手順 | 発行元のアクション | 発行元での推奨または必須 |
 | ------------ | ------------- | ------------- |
-| 1.購入者は、Azure AD の ID を使用してコマーシャル マーケットプレースにログインし、SaaS オファーを選択します。 | 発行元には、必要な操作はありません。 | 適用なし |
-| 2.購入後、購入者は Azure Marketplace の **[アカウントの構成]** または AppSource の **[今すぐ構成]** を選択します。これにより、購入者はこのオファー用の発行元のランディング ページへ誘導されます。 購入者は Azure AD SSO を使用して発行元の SaaS アプリケーションにログインできる必要があり、Azure AD 管理者の承認を必要としない最小限の同意のみが必ず求められます。 | Azure AD または Microsoft アカウント (MSA) ID でユーザーを受信し、必要な追加のプロビジョニングやセットアップが容易になるように、オファーの[ランディング ページ](azure-ad-transactable-saas-landing-page.md)を設計します。 | 必須 |
+| 1.購入者は、Azure AD の ID を使用してコマーシャル マーケットプレースにサインインし、SaaS オファーを選択します。 | 発行元には、必要な操作はありません。 | 適用なし |
+| 2.購入後、購入者は Azure Marketplace の **[アカウントの構成]** または AppSource の **[今すぐ構成]** を選択します。これにより、購入者はこのオファー用の発行元のランディング ページへ誘導されます。 購入者は Azure AD SSO を使用して発行元の SaaS アプリケーションにサインインできる必要があり、Azure AD 管理者の承認を必要としない最小限の同意のみが必ず求められます。 | Azure AD または Microsoft アカウント (MSA) ID でユーザーを受信し、必要な追加のプロビジョニングやセットアップが容易になるように、オファーの[ランディング ページ](azure-ad-transactable-saas-landing-page.md)を設計します。 | 必須 |
 | 3.発行元は、SaaS フルフィルメント API からの購入の詳細情報を要求します。 | ランディング ページのアプリケーション ID から生成された[アクセス トークン](./partner-center-portal/pc-saas-registration.md)を使用し、[解決エンドポイントを呼び出して](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)購入に関する詳細情報を取得します。 | 必須 |
 | 4.発行者は、Azure AD と Microsoft Graph API を通して、発行元の SaaS アプリケーションで購入者をプロビジョニングするために必要な会社とユーザーの詳細を収集します。  | Azure AD ユーザー トークンを分解して、名前と電子メールを調べます。または、[Microsoft Graph API を呼び出し](https://docs.microsoft.com/graph/use-the-api)、委任されたアクセス許可を使用して、ログインしているユーザーに関する[情報を取得](https://docs.microsoft.com/graph/api/user-get)します。 | 必須 |
 ||||
@@ -88,5 +88,6 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)
-- [取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](./azure-ad-transactable-saas-landing-page.md)
+- [取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](azure-ad-transactable-saas-landing-page.md)
+- [コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する](azure-ad-free-or-trial-landing-page.md)
+- [コマーシャル マーケットプレースでの SaaS オファーの作成方法](create-new-saas-offer.md)

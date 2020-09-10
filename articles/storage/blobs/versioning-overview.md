@@ -1,25 +1,25 @@
 ---
-title: BLOB のバージョン管理 (プレビュー)
+title: BLOB のバージョン管理
 titleSuffix: Azure Storage
-description: BLOB ストレージのバージョン管理 (プレビュー) では、以前のバージョンのオブジェクトが自動的に維持され、タイムスタンプで識別されます。 以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
+description: Blob Storage のバージョン管理では、以前のバージョンのオブジェクトが自動的に維持され、タイムスタンプで識別されます。 以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056535"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297671"
 ---
-# <a name="blob-versioning-preview"></a>BLOB のバージョン管理 (プレビュー)
+# <a name="blob-versioning"></a>BLOB のバージョン管理
 
-BLOB ストレージのバージョン管理 (プレビュー) を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
+Blob Storage のバージョン管理を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
 
 BLOB のバージョン管理はストレージ アカウントに対して有効になり、ストレージ アカウント内のすべての BLOB に適用されます。 ストレージ アカウントに対して BLOB のバージョン管理を有効にした後、Azure Storage によって、ストレージ アカウント内のすべての BLOB のバージョンが自動的に維持されます。
 
@@ -30,6 +30,8 @@ BLOB のバージョン管理を有効にする方法については、「[BLOB 
 > [!IMPORTANT]
 > ストレージ アカウントやコンテナーが誤って削除された場合、BLOB のバージョン管理はその復旧には役立ちません。 ストレージ アカウントが誤って削除されないようにするには、ストレージ アカウント リソースに対して **CannotDelete** ロックを構成します。 Azure リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
 
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
 ## <a name="how-blob-versioning-works"></a>BLOB のバージョン管理のしくみ
 
 バージョンによって、指定された時点での BLOB の状態がキャプチャされます。 ストレージ アカウントに対して BLOB のバージョン管理が有効になっている場合、BLOB が変更または削除されるたびに、Azure Storage によって新しいバージョンの BLOB が自動的に作成されます。
@@ -39,6 +41,10 @@ BLOB のバージョン管理を有効にする方法については、「[BLOB 
 バージョン管理が有効になっている BLOB を削除すると、削除される前の BLOB の状態をキャプチャするバージョンが Azure Storage によって作成されます。 その後、現在のバージョンの BLOB は削除されますが、BLOB のバージョンは保持されるため、必要に応じて再作成することができます。 
 
 BLOB のバージョンは変更できません。 既存の BLOB のバージョンの内容やメタデータを変更することはできません。
+
+BLOB のバージョン管理は、汎用 v2、ブロック BLOB、Blob Storage の各アカウントで使用できます。 階層型名前空間が Azure Data Lake Storage Gen2 で使用できるストレージ アカウントは、現在、サポートされていません。
+
+バージョン 2019-10-10 以降の Azure Storage REST API では、BLOB のバージョン管理がサポートされています。
 
 ### <a name="version-id"></a>バージョン ID
 
@@ -60,7 +66,7 @@ BLOB のバージョン管理が有効になっている場合、BLOB に対す�
 
 次の図は、書き込み操作が BLOB のバージョンにどのように影響するかを示しています。 BLOB が作成されると、その BLOB が現在のバージョンになります。 同じ BLOB が変更されると、BLOB の以前の状態を保存するために新しいバージョンが作成され、更新された BLOB が現在のバージョンになります。
 
-:::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="書き込み操作がバージョン管理された BLOB にどのように影響するかを示す図":::
+:::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="書き込み操作がバージョン管理された BLOB にどのように影響するかを示す図。":::
 
 > [!NOTE]
 > ストレージ アカウントに対してバージョン管理を有効にする前に作成された BLOB には、バージョン ID はありません。 BLOB が変更されると、その変更された BLOB が現在のバージョンになり、更新前の BLOB の状態を保存するためにバージョンが作成されます。 バージョンには、その作成時刻であるバージョン ID が割り当てられます。
@@ -73,11 +79,11 @@ BLOB を削除すると、現在のバージョンの BLOB が以前のバージ
 
 次の図は、バージョン管理された BLOB に対する削除操作の影響を示しています。
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="バージョン管理された BLOB の削除を示す図":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="バージョン管理された BLOB の削除を示す図。":::
 
 新しいデータを BLOB に書き込むと、新しいバージョンの BLOB が作成されます。 次の図に示すように、既存のバージョンは影響を受けません。
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="削除後のバージョン管理された BLOB の再作成を示す図":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="削除後のバージョン管理された BLOB の再作成を示す図。":::
 
 ### <a name="blob-types"></a>BLOB の種類
 
@@ -106,7 +112,7 @@ BLOB を削除すると、現在のバージョンの BLOB が以前のバージ
 
 ## <a name="enable-or-disable-blob-versioning"></a>BLOB のバージョン管理を有効または無効にする
 
-BLOB のバージョン管理を有効または無効にする方法については、「[BLOB のバージョン管理を有効または無効にする](versioning-enable.md)」を参照してください。
+BLOB のバージョン管理を有効または無効にする方法については、「[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)」をご覧ください。
 
 BLOB のバージョン管理を無効にしても、既存の BLOB、バージョン、スナップショットは削除されません。 BLOB のバージョン管理を無効にした場合、既存のすべてのバージョンはストレージ アカウントで引き続きアクセス可能です。 その後、新しいバージョンは作成されません。
 
@@ -116,7 +122,7 @@ BLOB のバージョン管理を無効にしても、既存の BLOB、バージ�
 
 次の図は、バージョン管理が無効になった後に BLOB を変更すると、バージョン管理されない BLOB がどのように作成されるかを示しています。 BLOB に関連付けられている既存のすべてのバージョンが保持されます。
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="バージョン管理が無効になった後に変更されたベース BLOB を示す図":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="バージョン管理が無効になった後に変更されたベース BLOB を示す図。":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB のバージョン管理と論理的な削除
 
@@ -132,7 +138,7 @@ BLOB のバージョン管理を無効にしても、既存の BLOB、バージ�
 
 次の図は、BLOB または BLOB のバージョンを削除した場合の動作を示しています。
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="論理的な削除が有効になっているバージョンの削除を示す図":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="論理的な削除が有効になっているバージョンの削除を示す図。":::
 
 ストレージ アカウントに対してバージョン管理と論理的な削除の両方が有効になっている場合、BLOB または BLOB のバージョンが変更または削除されるときに、論理的に削除されたスナップショットは作成されません。
 
@@ -144,7 +150,7 @@ BLOB のバージョン管理を無効にしても、既存の BLOB、バージ�
 
 次の図は、**Undelete Blob** 操作で論理的に削除された BLOB のバージョンを復元する方法と、**Copy Blob** 操作で現在のバージョンの BLOB を復元する方法を示しています。
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="論理的に削除されたバージョンを復元する方法を示す図":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="論理的に削除されたバージョンを復元する方法を示す図。":::
 
 論理的な削除の保有期間が経過した後、論理的に削除された BLOB のバージョンは完全に削除されます。
 
@@ -163,7 +169,7 @@ BLOB のスナップショットは、ある時点で作成された BLOB の読
 
 次の図は、バージョン管理された BLOB のスナップショットを作成した場合の動作を示しています。 この図では、バージョン ID が 2 および 3 の BLOB バージョンとスナップショットに同一のデータが含まれています。
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="バージョン管理された BLOB のスナップショットを示す図 ":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="バージョン管理された BLOB のスナップショットを示す図。":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>BLOB のバージョンに対する操作を承認する
 
@@ -194,134 +200,99 @@ BLOB バージョンの署名済みリソースは、`bv` です。 詳細につ
 |----------------|----------------|------------------------|
 | 削除         | x              | BLOB バージョンを削除します。 |
 
-## <a name="about-the-preview"></a>プレビューについて
-
-次のリージョンでは、BLOB のバージョン管理はプレビューでご利用いただけます。
-
-- 米国東部 2
-- 米国中部
-- 北ヨーロッパ
-- 西ヨーロッパ
-- フランス中部
-- カナダ東部
-- カナダ中部
-
-> [!IMPORTANT]
-> BLOB のバージョン管理のプレビューは、非運用環境のみでの使用を意図されています。 運用環境のサービス レベル契約(SLA) は現在使用できません。
-
-バージョン 2019-10-10 以降の Azure Storage REST API では、BLOB のバージョン管理がサポートされています。
-
-### <a name="storage-account-support"></a>ストレージ アカウントのサポート
-
-BLOB のバージョン管理は、次の種類のストレージ アカウントで使用できます。
-
-- 汎用 v2 ストレージ アカウント
-- ブロック BLOB ストレージ アカウント
-- BLOB ストレージ アカウント
-
-ストレージ アカウントが汎用 v1 アカウントの場合は、Azure portal を使用して、汎用 v2 アカウントにアップグレードします。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
-
-階層型名前空間が Azure Data Lake Storage Gen2 で使用できるストレージ アカウントは、現在、サポートされていません。
-
-### <a name="register-for-the-preview"></a>プレビューに登録する
-
-BLOB のバージョン管理プレビューに登録するには、PowerShell または Azure CLI を使用して、サブスクリプションに機能を登録するための要求を送信します。 要求が承認された後、新規または既存の汎用 v2、BLOB ストレージ、または Premium ブロック BLOB ストレージ アカウントを使用して、BLOB のバージョン管理を有効にすることができます。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-PowerShell を使用して登録を行うには、[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドを呼び出します。
-
-```powershell
-# Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az-feature-register) コマンドを呼び出します。
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>登録の状態を確認する
-
-登録の状態を確認するには、PowerShell または Azure CLI を使用します。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-PowerShell での登録の状態を確認するには、[Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) コマンドを呼び出します。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az-feature-show) コマンドを呼び出します。
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name Versioning
-```
-
----
-
 ## <a name="pricing-and-billing"></a>価格と課金
 
 BLOB のバージョン管理を有効にすると、アカウントに追加のデータ ストレージ料金が発生する可能性があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
 
-BLOB のスナップショットと同様に、BLOB のバージョンは、アクティブなデータと同じレートで課金されます。 バージョンでブロックまたはページをそのベース BLOB と共有している場合は、バージョンとベース BLOB の間で共有されていない追加のブロックまたはページに対してのみ料金が発生します。
+BLOB のスナップショットと同様に、BLOB のバージョンは、アクティブなデータと同じレートで課金されます。 バージョンの課金方法は、ベース BLOB またはそのいずれかのバージョン (またはスナップショット) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+
+BLOB またはバージョンの層を変更していない場合は、その BLOB、そのバージョン、およびそれが持つ可能性があるすべてのスナップショットにわたるデータの一意のブロックに対して課金されます。 詳細については、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」を参照してください。
+
+BLOB またはバージョンの層を変更した場合は、BLOB とバージョンが最終的に同じ層になるかどうかに関係なく、オブジェクト全体に対して課金されます。 詳細については、「[BLOB 層が明示的に設定されている場合の課金](#billing-when-the-blob-tier-has-been-explicitly-set)」を参照してください。
 
 > [!NOTE]
 > 頻繁に上書きされるデータに対してバージョン管理を有効にすると、ストレージ容量の料金が増えたり、操作を一覧表示している間の待ち時間が長くなったりすることがあります。 これらの問題を軽減するには、頻繁に上書きされるデータを、バージョン管理が無効になっている別のストレージ アカウントに格納します。
 
-### <a name="important-billing-considerations"></a>課金に関する重要な考慮事項
+BLOB のスナップショットの課金の詳細については、「[BLOB のスナップショット](snapshots-overview.md)」を参照してください。
 
-BLOB のバージョン管理を有効にするときは、必ず次の点を考慮してください。
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>BLOB 層が明示的に設定されていない場合の課金
 
-- ストレージ アカウントには、一意のブロックまたはページに対する料金が発生します。それらが BLOB と以前のバージョンの BLOB のどちらに含まれているかは関係ありません。 ベースになっている BLOB を更新するまでは、BLOB に関連付けられているバージョンについて、アカウントに追加料金が発生することはありません。 BLOB を更新した後、その以前のバージョンから分岐されます。 この場合、各 BLOB またはバージョンの一意のブロックまたはページに対して課金されます。
-- ブロック BLOB 内のブロックを置き換えた場合、以後そのブロックは一意のブロックとして課金されます。 これは、ブロックのブロック ID とデータが同じである場合でも当てはまります。 ブロックが再度コミットされた後、バージョン内の対応するブロックから分岐し、そのデータに対する料金が発生します。 これは、まったく同じデータでページ BLOB 内のページを更新した場合にも当てはまります。
-- BLOB ストレージには、2 つのブロックに同一のデータが含まれているかどうかを判断する手段はありません。 アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。 料金は一意のブロックに対して発生するため、バージョン管理が有効になっている場合に BLOB を更新すると、一意のブロックが増ええ、追加料金が発生することを考慮することが重要です。
-- BLOB のバージョン管理が有効になっている場合は、ブロック BLOB に対して更新操作を設計し、可能な限り少ない数のブロックが更新されるようにします。 ブロックの詳細な制御を許可する書き込み操作は、[Put Block](/rest/api/storageservices/put-block) と [Put Block List](/rest/api/storageservices/put-block-list) です。 一方、[Put Blob](/rest/api/storageservices/put-blob) 操作では、BLOB の内容全体が置き換えられるため、追加料金が発生する可能性があります。
+ベース BLOB またはそのいずれかのバージョンに対して BLOB 層を明示的に設定していない場合は、BLOB、そのバージョン、およびそれが持つ可能性があるすべてのスナップショットにわたる一意のブロックまたはページについて課金されます。 BLOB とそのバージョン間で共有されるデータは、1 回だけ課金されます。 BLOB が更新されると、ベース BLOB 内のデータはそのバージョンに格納されているデータから分岐し、一意のデータはブロックまたはページごとに課金されます。
 
-### <a name="versioning-billing-scenarios"></a>バージョン管理の課金シナリオ
+ブロック BLOB 内のブロックを置き換えた場合、以後そのブロックは一意のブロックとして課金されます。 これは、ブロックのブロック ID とデータが前のバージョンと同じである場合にも当てはまります。 再度コミットされた後のブロックは、前のバージョンの対応するブロックから分岐し、そのデータに対する料金が発生します。 これは、まったく同じデータでページ BLOB 内のページを更新した場合にも当てはまります。
 
-ブロック BLOB とそのバージョンについて料金が発生するしくみを、次のシナリオで説明します。
+BLOB ストレージには、2 つのブロックに同一のデータが含まれているかどうかを判断する手段はありません。 アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。 料金は一意のブロックに対して発生するため、バージョン管理が有効になっている場合に BLOB を更新すると、一意のブロックが増え、追加料金が発生することに留意することが重要です。
+
+BLOB のバージョン管理が有効になっているときは、ブロック BLOB に対して更新操作を呼び出し、可能な限り少ない数のブロックが更新されるようにします。 ブロックの詳細な制御を許可する書き込み操作は、[Put Block](/rest/api/storageservices/put-block) と [Put Block List](/rest/api/storageservices/put-block-list) です。 一方、[Put Blob](/rest/api/storageservices/put-blob) 操作では、BLOB の内容全体が置き換えられるため、追加料金が発生する可能性があります。
+
+次のシナリオでは、BLOB 層が明示的に設定されていないときに、ブロック BLOB とそのバージョンについて料金が発生するしくみを示します。
 
 #### <a name="scenario-1"></a>シナリオ 1
 
-シナリオ 1 では、BLOB に以前のバージョンがあります。 バージョンが作成されてから BLOB は更新されていません。したがって、一意のブロックである 1、2、3 に対してのみ、料金が発生します。
+シナリオ 1 では、BLOB に前のバージョンがあります。 バージョンが作成されてから BLOB は更新されていません。したがって、一意のブロックである 1、2、3 に対してのみ、料金が発生します。
 
-![Azure Storage のリソース](./media/versioning-overview/versions-billing-scenario-1.png)
+![ベース BLOB と前のバージョンでの一意のブロックに対する課金を示す図 1。](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>シナリオ 2
 
 シナリオ 2 では、BLOB の 1 つのブロック (図のブロック 3) が更新されています。 更新されたブロックに同じデータと ID が含まれている場合でも、以前のバージョンのブロック 3 と同じではありません。 このため、4 ブロック分の料金がアカウントに課金されます。
 
-![Azure Storage のリソース](./media/versioning-overview/versions-billing-scenario-2.png)
+![ベース BLOB と前のバージョンでの一意のブロックに対する課金を示す図 2。](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>シナリオ 3
 
 シナリオ 3 では、BLOB は更新されていますが、バージョンは更新されていません。 ベース BLOB のブロック 3 がブロック 4 に置き換わっていますが、以前のバージョンでは引き続きブロック 3 が反映されています。 このため、4 ブロック分の料金がアカウントに課金されます。
 
-![Azure Storage のリソース](./media/versioning-overview/versions-billing-scenario-3.png)
+![ベース BLOB と前のバージョンでの一意のブロックに対する課金を示す図 3。](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>シナリオ 4
 
-シナリオ 4 では、ベース BLOB が完全に更新されており、元のブロックは 1 つも含まれていません。 その結果、アカウントには、8 つ (ベース BLOB の 4 つと、以前のバージョンの 4 つ) のすべての一意のブロックの料金が課金されます。 このシナリオは、Put Blob 操作で BLOB に書き込む場合に発生する可能性があります。これは、ベース BLOB の内容全体が置き換えられるためです。
+シナリオ 4 では、ベース BLOB が完全に更新されており、元のブロックは 1 つも含まれていません。 その結果、アカウントには、8 つ (ベース BLOB の 4 つと、以前のバージョンの 4 つ) のすべての一意のブロックの料金が課金されます。 このシナリオは、[Put Blob](/rest/api/storageservices/put-blob) 操作で BLOB に書き込む場合に発生する可能性があります。これは、ベース BLOB の内容全体が置き換えられるためです。
 
-![Azure Storage のリソース](./media/versioning-overview/versions-billing-scenario-4.png)
+![ベース BLOB と前のバージョンでの一意のブロックに対する課金を示す図 4。](./media/versioning-overview/versions-billing-scenario-4.png)
+
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>BLOB 層が明示的に設定されている場合の課金
+
+BLOB またはバージョン (またはスナップショット) の BLOB 層が明示的に設定されている場合、元の層のオブジェクトとブロックが共有されているかどうかにかかわらず、新しい層におけるオブジェクトのコンテンツの完全な長さに対して課金されます。 また、元の層の最も古いバージョンのコンテンツの完全な長さに対しても課金されます。 元の層に残っているそれ以外の以前のバージョンまたはスナップショットについては、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」で説明されているように、共有できる一意のブロックに対して課金されます。
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>新しい層への BLOB の移動
+
+次の表では、BLOB またはバージョンを新しい層に移動する場合の課金の動作について説明します。
+
+| BLOB 層の明示的な設定対象 | 課金の対象 |
+|-|-|
+| 前のバージョンがあるベース BLOB | 新しい層のベース BLOB と、元の層の最も古いバージョン、および他のバージョンの一意のブロック。<sup>1</sup> |
+| 前のバージョンとスナップショットがあるベース BLOB | 新しい層のベース BLOB、元の層の最も古いバージョン、元の層の最も古いスナップショット、および他のバージョンまたはスナップショットの一意のブロック。<sup>1</sup> |
+| 前のバージョン | 新しい層のバージョンと、元の層のベース BLOB、および他のバージョンの一意のブロック。<sup>1</sup> |
+
+<sup>1</sup> 元の層から移動されていない他の以前のバージョンまたはスナップショットがある場合、それらのバージョンまたはスナップショットは、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」で説明されているように、それに含まれる一意のブロックの数に基づいて課金されます。
+
+次の図は、バージョン管理された BLOB を別の層に移動した場合のオブジェクトの課金方法を示したものです。
+
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="バージョン管理された BLOB が明示的に階層化されたときのオブジェクトの課金方法を示す図。":::
+
+BLOB、バージョン、またはスナップショットに対する層の明示的な設定を、元に戻すことはできません。 BLOB を新しい層に移動した後、元の層に戻すと、元の層の他のオブジェクトとブロックが共有されている場合でも、オブジェクトのコンテンツの完全な長さに対して課金されます。
+
+BLOB、バージョン、またはスナップショットの層を明示的に設定する操作には、次のものがあります。
+
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
+- 層を指定した [Put Blob](/rest/api/storageservices/put-blob)
+- 層を指定した [Put Block List](/rest/api/storageservices/put-block-list)
+- 層を指定した [Copy Blob](/rest/api/storageservices/copy-blob)
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>論理的な削除が有効になっている場合の BLOB の削除
+
+BLOB の論理的な削除が有効になっている場合に、層が明示的に設定されているベース BLOB を削除または上書きすると、論理的に削除された BLOB の以前のすべてのバージョンが、コンテンツの完全な長さで課金されます。 BLOB のバージョン管理と論理的な削除の連携のしくみの詳細については、「[BLOB のバージョン管理と論理的な削除](#blob-versioning-and-soft-delete)」を参照してください。
+
+次の表では、バージョン管理が有効か無効かによる、論理的に削除される BLOB の課金動作を説明します。 バージョン管理が有効になっている場合、BLOB を論理的に削除すると、バージョンが作成されます。 バージョン管理が無効になっている場合、BLOB を論理的に削除すると、論理的な削除のスナップショットが作成されます。
+
+| ベース BLOB を明示的に層を設定して上書きする場合 | 課金の対象 |
+|-|-|
+| BLOB の論理的な削除とバージョン管理の両方が有効になっている場合 | 層に関係なく、すべての既存バージョンがコンテンツ全体の長さで。 |
+| BLOB の論理的な削除は有効になっているが、バージョン管理は無効になっている場合 | 層に関係なく、すべての既存の論理的な削除のスナップショットがコンテンツ全体の長さで。 |
 
 ## <a name="see-also"></a>関連項目
 
-- [BLOB のバージョン管理を有効にする](versioning-enable.md)
+- [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)
 - [BLOB のスナップショットの作成](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Azure Storage BLOB の論理的な削除](storage-blob-soft-delete.md)

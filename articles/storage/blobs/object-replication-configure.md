@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c28e869bff1d0e921a1e5a952dbfcb21ee97d16b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566065"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228326"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>ブロック BLOB のオブジェクト レプリケーションを構成する (プレビュー)
 
@@ -24,6 +24,8 @@ ms.locfileid: "88566065"
 オブジェクト レプリケーションを構成するときに、ソース ストレージ アカウントと宛先アカウントを指定するレプリケーション ポリシーを作成します。 レプリケーション ポリシーには、ソース コンテナーと宛先コンテナーを指定し、ソース コンテナー内のどのブロック BLOB をレプリケートするかを示す 1 つ以上のルールが含まれています。
 
 この記事では、Azure portal、PowerShell、または Azure CLI を使用して、ストレージ アカウントのオブジェクト レプリケーションを構成する方法について説明します。 Azure Storage リソース プロバイダーのクライアント ライブラリのいずれかを使用して、オブジェクト レプリケーションを構成することもできます。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-a-replication-policy-and-rules"></a>レプリケーション ポリシーとルールを作成する
 
@@ -34,7 +36,7 @@ ms.locfileid: "88566065"
 開始する前に、次の機能プレビューに登録していることを確認してください。
 
 - [オブジェクト レプリケーション (プレビュー)](object-replication-overview.md)
-- [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
+- [BLOB バージョン管理](versioning-overview.md)
 - [Azure Blob Storage の変更フィードのサポート (プレビュー)](storage-blob-change-feed.md)
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)

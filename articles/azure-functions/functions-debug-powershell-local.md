@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799368"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177093"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
@@ -65,6 +65,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 ## <a name="set-the-attach-point"></a>アタッチ ポイントを設定する
 
 どのような PowerShell 関数でも、デバッグするには、デバッガーをアタッチするために停止する必要があります。 `Wait-Debugger` コマンドレットは実行を停止して、デバッガーを待機します。
+
+>[!NOTE]
+>PowerShell 7 を使用するとき、コードに `Wait-Debugger` 呼び出しを追加する必要はありません。
 
 開発者が行う必要があるのは、次のように、`if` ステートメントのすぐ上に `Wait-Debugger` コマンドレットの呼び出しを追加することだけです。
 

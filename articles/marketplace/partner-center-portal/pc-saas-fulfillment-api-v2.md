@@ -7,20 +7,20 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a98207ef5b03f77a4f741894ec210f7551c5933
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305144"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378136"
 ---
-# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
+# <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
 
 この記事では、パートナーがその SaaS オファーを Microsoft AppSource と Azure Marketplace で販売できるようにする API について説明します。 発行者が取引可能な SaaS オファーをパートナー センターで公開するには、これらの API との統合を実装する必要があります。
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>SaaS サブスクリプション ライフサイクルの管理
 
-Azure Marketplace では、エンド カスタマーによる購入後の SaaS サブスクリプションのライフサイクル全体が管理されます。  また、実際の SaaS サブスクリプションのアクティブ化と使用、更新、サブスクリプションの取り消しを駆動するメカニズムとして、ランディング ページ、Fulfillment API、Operations API、Webhook が使用されています。  エンド カスタマーは、Microsoft が保持している SaaS サブスクリプションの状態に基づいて請求されます。 
+コマーシャル マーケットプレースでは、エンド カスタマーによる購入後の SaaS サブスクリプションのライフサイクル全体が管理されます。  また、実際の SaaS サブスクリプションのアクティブ化と使用、更新、サブスクリプションの取り消しを駆動するメカニズムとして、ランディング ページ、Fulfillment API、Operations API、Webhook が使用されています。  エンド カスタマーは、Microsoft が保持している SaaS サブスクリプションの状態に基づいて請求されます。 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS サブスクリプションの状態
 
@@ -35,7 +35,7 @@ SaaS サブスクリプションの状態と適用可能なアクションを示
 アカウントの作成が行われるようにするには:
 
 1. 顧客は Microsoft AppSource または Azure portal での購入が正常に終了した後に、SaaS オファーで使用可能な **[構成]** ボタンをクリックする必要があります。 または、顧客が購入後すぐに受け取る電子メールでそうします。
-2. その後、購入について Microsoft からパートナーへの通知が行われます。このために、token パラメーター (マーケットプレースでの購入 ID トークン) を含むランディング ページの URL が新しいブラウザー タブで開かれます。
+2. その後、新しいブラウザー タブで token パラメーター (コマーシャル マーケットプレースでの購入 ID トークン) を含むランディング ページの URL が開かれることで、Microsoft からパートナーに対して購入に関する通知が行われます。
 
 このような呼び出しの例として `https://contoso.com/signup?token=<blob>` がありますが、パートナー センターでは、この SaaS オファーのランディング ページの URL は `https://contoso.com/signup` として構成されています。 このトークンにより、SaaS の購入と顧客を一意に識別する ID が発行者に提供されます。
 
@@ -46,12 +46,12 @@ SaaS サブスクリプションの状態と適用可能なアクションを示
 
 次に、`x-ms-marketplace-token header` ヘッダー パラメーターの値として [SaaS Resolve API](#resolve-a-purchased-subscription) を呼び出すことによって、発行者から Microsoft に "*トークン*" を返す必要があります。  Resolve API 呼び出しの結果として、購入の一意の ID、購入されたオファーの ID、購入されたプランの ID などの SaaS 購入の詳細を表すトークンが交換されます。
 
-ランディング ページでは、顧客は Azure Active Directory (AAD) シングル サインオン (SSO) を使用して新規または既存の SaaS アカウントにログオンする必要があります。
+ランディング ページでは、顧客は Azure Active Directory (Azure AD) シングル サインオン (SSO) を使用して、新規または既存の SaaS アカウントにログオンする必要があります。
 
 発行者は、Microsoft によってこのフローに要求されるユーザー エクスペリエンスを提供するために、SSO ログインを実装する必要があります。  SSO を構成するときに、マルチテナント Azure AD アプリケーションを使用し、職場と学校のアカウントの両方または個人の Microsoft アカウントを許可するようにしてください。  この要件は、ランディング ページと、Microsoft 資格情報を使用して既にログインしているときに SaaS サービスにリダイレクトされるユーザーにのみ適用されます。 SaaS サービスへのすべてのログインに適用されるわけではありません。
 
 > [!NOTE]
->SSO ログインで、管理者がアプリに対するアクセス許可を付与する必要がある場合、パートナー センターでのオファーの説明で、管理者レベルのアクセス許可が必要であることを明記する必要があります。 これは、[マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)に準拠するためです。
+>SSO ログインで、管理者がアプリに対するアクセス許可を付与する必要がある場合、パートナー センターでのオファーの説明で、管理者レベルのアクセス許可が必要であることを明記する必要があります。 これは、[コマーシャル マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)に準拠するためです。
 
 ログインした後、顧客は発行者側で SaaS 構成を完了する必要があります。 その後、発行者は、SaaS アカウントのプロビジョニングが完了したことを示す通知を Marketplace に送信するために、[Activate Subscription API](#activate-a-subscription) を呼び出す必要があります。
 これにより、顧客の請求サイクルが開始されます。 Activate Subscription API 呼び出しが失敗した場合、顧客は購入に対して請求されません。
@@ -67,18 +67,18 @@ SaaS サブスクリプションが既にアクティブになっていて、顧
 
 #### <a name="being-updated-subscribed"></a>更新中 (サブスクライブ済み)
 
-このアクションは、既存のアクティブな SaaS サブスクリプションに対する更新が、Microsoft と発行者の両方によって処理されている最中であることを意味します。 このような更新は以下のように開始できます。
+このアクションは、既存のアクティブな SaaS サブスクリプションに対する更新が、Microsoft と発行者の両方によって処理されている最中であることを意味します。 このような更新は、次のユーザーによって開始することができます。
 
-* 顧客によってマーケットプレースから
-* CSP によってマーケットプレースから
-* 顧客によって発行者の SaaS サイトから (CSP が行った購入には適用されません)
+- コマーシャル マーケットプレースから顧客によって。
+- コマーシャル マーケットプレースから CSP によって。
+- 発行者の SaaS サイトから顧客によって (CSP が行った購入には適用されません)。
 
 SaaS サブスクリプションに対して 2 種類の更新ができます。
 
-1. 顧客がサブスクリプションに対して別のプランを選択した場合に、プランを更新します。
-1. 顧客がサブスクリプションの購入済みシート数を変更したときに、数量を更新します。
+- 顧客がサブスクリプションに対して別のプランを選択した場合に、プランを更新します。
+- 顧客がサブスクリプションの購入済みシート数を変更したときに、数量を更新します。
 
-アクティブなサブスクリプションのみを更新できます。 サブスクリプションが更新されている間、その状態は Microsoft 側でアクティブなままになります。
+アクティブなサブスクリプションのみを更新できます。 サブスクリプションが更新されている間は、Microsoft 側ではアクティブな状態のままとなります。
 
 ##### <a name="update-initiated-from-the-marketplace"></a>マーケットプレースから開始された更新
 
@@ -129,9 +129,9 @@ Microsoft は、サブスクリプションを自動的に取り消す前に、3
 1. 発行者は、このサブスクリプションを発行者側で再び完全に運用可能にします。
 1. 発行者は、成功の状態を持つ [Patch Operation API](#update-the-status-of-an-operation) を呼び出します。  
 1. その後、復帰が成功し、顧客に SaaS サブスクリプションの請求が再び行われます。 
-1. 失敗の状態を持つ Patch が送信された場合、復帰プロセスは Microsoft 側で完了しません。 サブスクリプションは中断されたままになります。
+1. 失敗の状態の Patch が送信された場合、Microsoft 側では復帰プロセスが完了しません。 サブスクリプションは中断されたままになります。
 
-失敗の状態を持つ Patch が送信された場合、復帰プロセスは Microsoft 側で完了しません。  サブスクリプションは中断されたままになります。
+失敗の状態の Patch が送信された場合、Microsoft 側では復帰プロセスが完了しません。  サブスクリプションは中断されたままになります。
 
 中断されたサブスクリプションのみを復帰させることができます。  SaaS サブスクリプションを復帰させている間、その状態は中断のままになります。  この操作が完了すると、サブスクリプションの状態はアクティブになります。
 
@@ -976,6 +976,6 @@ Forbidden.  認証トークンが無効であるか、期限切れか、指定�
 
 ## <a name="next-steps"></a>次のステップ
 
-マーケットプレースにおける SaaS オファーのその他のオプションについては、Marketplace の[測定サービス API](marketplace-metering-service-apis.md) を参照してください。
+コマーシャル マーケットプレースでの SaaS オファーのその他のオプションについては、[コマーシャル マーケットプレースの測定サービス API](marketplace-metering-service-apis.md) を参照してください。
 
 このドキュメントで説明されている API の上に構築された [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) を確認して使用します。

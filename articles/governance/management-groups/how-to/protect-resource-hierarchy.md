@@ -1,14 +1,14 @@
 ---
 title: リソース階層を保護する方法 - Azure のガバナンス
 description: 既定の管理グループの設定を含む階層設定を使用して、リソース階層を保護する方法について説明します。
-ms.date: 08/10/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: e73a72339b58a30a3fc5b1008ea1b70e449f77c7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056620"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401695"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>リソース階層を保護する方法
 
@@ -31,7 +31,26 @@ ms.locfileid: "88056620"
 
 新しいサブスクリプションに対して既定の管理グループを定義できるようにすることで、組織全体のガバナンス構成要素をルート管理グループに適用し、それとは別に、新しいサブスクリプションに適したポリシー割り当てまたは Azure ロールの割り当てを持つ管理グループを、定義することができます。
 
-この設定を構成するには、[階層設定](/rest/api/resources/hierarchysettings) REST API エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 `{rootMgID}` をルート管理グループの ID に置き換え、`{defaultGroupID}` を既定の管理グループにする管理グループの ID に置き換えます。
+### <a name="set-default-management-group-in-portal"></a>ポータルで既定の管理グループを設定する
+
+Azure portal でこの設定を構成するには、次の手順を実行します。
+
+1. 検索バーを使用し、[管理グループ] を検索して選択します。
+
+1. ルート管理グループで、管理グループの名前の横にある **[詳細]** を選択します。
+
+1. **[設定]** で、 **[階層設定]** を選択します。
+
+1. **[Change default management group]\(既定の管理グループの変更\)** ボタンを選択します。
+
+   > [!NOTE]
+   > **[Change default management group]\(既定の管理グループの変更\)** ボタンが無効になっている場合は、表示されている管理グループがルート管理グループではないか、セキュリティ プリンシパルが階層設定の変更に必要なアクセス許可を持っていないかのいずれかです。
+
+1. 階層から管理グループを選択して、 **[選択]** ボタンを使用します。
+
+### <a name="set-default-management-group-with-rest-api"></a>REST API を使用して既定の管理グループを設定する
+
+REST API を使用してこの設定を構成するために、[階層設定](/rest/api/resources/hierarchysettings)エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 `{rootMgID}` をルート管理グループの ID に置き換え、`{defaultGroupID}` を既定の管理グループにする管理グループの ID に置き換えます。
 
 - REST API URI
 
@@ -55,7 +74,24 @@ ms.locfileid: "88056620"
 
 既定では、すべてのユーザーがテナント内に新しい管理グループを作成できます。 テナントの管理者は、管理グループ階層内の整合性と適合性を維持するために、これらのアクセス許可を特定のユーザーのみに提供したい場合があります。 有効にした場合、ユーザーは新しい子管理グループを作成するために、ルート管理グループに対する `Microsoft.Management/managementGroups/write` 操作が必要になります。
 
-この設定を構成するには、[階層設定](/rest/api/resources/hierarchysettings) REST API エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 この値は _boolean_ であるため、値として **true** または **false** を指定します。 **true** の値を指定すると、管理グループ階層を保護するこの方法が有効になります。
+### <a name="set-default-management-group-in-portal"></a>ポータルで既定の管理グループを設定する
+
+Azure portal でこの設定を構成するには、次の手順を実行します。
+
+1. 検索バーを使用し、[管理グループ] を検索して選択します。
+
+1. ルート管理グループで、管理グループの名前の横にある **[詳細]** を選択します。
+
+1. **[設定]** で、 **[階層設定]** を選択します。
+
+1. **[Require permissions for creating new management groups.]\(新しい管理グループを作成するためのアクセス許可が必要です。\)** オプションを オンに切り替えます。
+
+   > [!NOTE]
+   > **[Require permissions for creating new management groups.]\(新しい管理グループを作成するためのアクセス許可が必要です。\)** の切り替えが 無効になっている場合は、表示されている管理グループがルート管理グループではないか、セキュリティ プリンシパルが階層設定の変更に必要なアクセス許可を持っていないかのいずれかです。
+
+### <a name="set-require-authorization-with-rest-api"></a>REST API を使用して承認の要求を設定する
+
+REST API を使用してこの設定を構成するために、[階層設定](/rest/api/resources/hierarchysettings)エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 この値は _boolean_ であるため、値として **true** または **false** を指定します。 **true** の値を指定すると、管理グループ階層を保護するこの方法が有効になります。
 
 - REST API URI
 

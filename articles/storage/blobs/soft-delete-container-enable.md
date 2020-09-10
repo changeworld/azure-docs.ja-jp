@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066663"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230077"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>コンテナーの論理的な削除を有効にして管理する (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "88066663"
 
 アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、コンテナーの論理的な削除を有効にすることをお勧めします。 この記事では、コンテナーの論理的な削除を有効にする方法について説明します。 プレビューへの登録方法など、コンテナーの論理的な削除について詳しくは、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」をご覧ください。
 
-エンド ツー エンドのデータ保護では、BLOB の論理的な削除と BLOB のバージョン管理 (プレビュー) も有効にすることをお勧めします。 BLOB の論理的な削除も有効にする方法については、[BLOB の論理的な削除の有効化と管理](soft-delete-blob-enable.md)に関する記事をご覧ください。 BLOB のバージョン管理を有効にする方法については、「[BLOB のバージョン管理 (プレビュー)](versioning-overview.md)」をご覧ください。
+エンドツーエンドのデータ保護では、BLOB の論理的な削除と BLOB のバージョン管理も有効にすることをお勧めします。 BLOB の論理的な削除も有効にする方法については、[BLOB の論理的な削除の有効化と管理](soft-delete-blob-enable.md)に関する記事をご覧ください。 BLOB のバージョン管理を有効にする方法については、[BLOB のバージョン管理](versioning-overview.md)に関するページをご覧ください。
 
 ## <a name="enable-container-soft-delete"></a>コンテナーの論理的な削除を有効にする
 
@@ -101,4 +101,4 @@ Azure Resource Manager テンプレートを使用してコンテナーの論理
 
 - [コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)
 - [BLOB の論理的な削除](soft-delete-blob-overview.md)
-- [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
+- [BLOB バージョン管理](versioning-overview.md)

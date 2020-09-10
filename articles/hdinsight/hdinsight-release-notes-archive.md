@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036625"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292522"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
@@ -779,7 +779,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [*HIVE-17621*](https://issues.apache.org/jira/browse/HIVE-17621): HCatInputFormat の分割計算中は Hive サイト設定が無視される。
 
--   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: ホワイトリスト/ブラックリストの config にテーブルまたはパーティションの選択キャッシュを許可し、事前ウォームアップ中での読み取りを許可する。
+-   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: 承認済み/未承認の config にテーブルまたはパーティションの選択キャッシュを許可し、事前ウォームアップ中での読み取りを許可する。
 
 -   [*HIVE-17636*](https://issues.apache.org/jira/browse/HIVE-17636): blobstore に multiple\_agg.q test を追加する。
 

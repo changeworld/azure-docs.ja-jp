@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60ab0bd6093149aee4c9ee22f8b517dfd2460c09
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067982"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400564"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway の機能
 
@@ -22,7 +22,7 @@ ms.locfileid: "87067982"
 
 Application Gateway には、次のような機能があります。
 
-- [Secure Sockets Layer (SSL/TLS) ターミネーション](#secure-sockets-layer-ssltls-termination)
+- [Secure Sockets Layer (SSL/TLS) 終了](#secure-sockets-layer-ssltls-termination)
 - [自動スケーリング](#autoscaling)
 - [ゾーン冗長性](#zone-redundancy)
 - [静的 VIP](#static-vip)
@@ -38,9 +38,9 @@ Application Gateway には、次のような機能があります。
 - [HTTP ヘッダーと URL の書き換え](#rewrite-http-headers-and-url)
 - [サイズ設定](#sizing)
 
-## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) ターミネーション
+## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) 終了
 
-Application Gateway は、ゲートウェイの SSL ターミネーションをサポートします。その後、通常、トラフィックは、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 これは、セキュリティ要件やコンプライアンス要件が理由であったり、セキュリティで保護された接続以外はアプリケーションで受け入れられないためであったりします。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL/TLS 暗号化がサポートされています。
+Application Gateway は、ゲートウェイの SSL 終了をサポートします。その後、通常、トラフィックは、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 これは、セキュリティ要件やコンプライアンス要件が理由であったり、セキュリティで保護された接続以外はアプリケーションで受け入れられないためであったりします。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL/TLS 暗号化がサポートされています。
 
 詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください
 
@@ -147,7 +147,7 @@ Application Gateway と WAF v2 SKU では、要求/応答パケットがクラ�
 
 ## <a name="sizing"></a>サイズ変更
 
-Application Gateway Standard_v2 は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 この SKU では、異なるインスタンスのサイズは提供されません。 v2 のパフォーマンスと料金の詳細については、[v2 SKU の自動スケーリング](application-gateway-autoscaling-zone-redundant.md#pricing)に関するページをご覧ください。
+Application Gateway Standard_v2 は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 この SKU では、異なるインスタンスのサイズは提供されません。 v2 のパフォーマンスと料金の詳細については、[v2 の自動スケーリング](application-gateway-autoscaling-zone-redundant.md)に関するページと[価格の理解](understanding-pricing.md)に関するページをご覧ください。
 
 Application Gateway Standard は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 

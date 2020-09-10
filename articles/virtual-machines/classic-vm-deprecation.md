@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: de590168ecf4febe3c18442a6dc6c1c2eba4dc51
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754805"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297605"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023 年 3 月 1 日までに IaaS リソースを Azure Resource Manager に移行する 
 
@@ -39,15 +39,22 @@ ms.locfileid: "88754805"
 
 - Azure Resource Manager への移行の計画をすぐに開始します。 
 
-- 影響を受けるすべての VM の一覧を作成します。 [Azure portal VM ブレード](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)の VM の種類 "Virtual Machines (クラシック)" は、サブスクリプション内のすべての影響を受ける VM です。 
+- 影響を受けるすべての VM の一覧を作成します。 
+    - [Azure portal VM ブレード](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)の VM の種類 "Virtual Machines (クラシック)" は、サブスクリプション内のすべての影響を受ける VM です。 
+    - また、[Portal](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) または [Power Shell](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) を使用して Azure Resource Graph にクエリを実行し、フラグが設定されたすべての Virtual Machines (クラシック)、および選択したサブスクリプションの関連情報の一覧を表示することもできます。 
+    - これらの Virtual Machines (クラシック) を含むすべてのサブスクリプションの一覧と併せて、サブスクリプションの所有者に電子メールを送信しました。 この一覧を作成する際に使用してください。 
 
 - [Linux](./linux/migration-classic-resource-manager-plan.md) および [Windows](./windows/migration-classic-resource-manager-plan.md) のクラシック VM を Azure Resource Manager に移行する場合の[詳細について学習](./windows/migration-classic-resource-manager-overview.md)します。
 
 - 詳細については、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](./migration-classic-resource-manager-faq.md)」を参照してください
 
+- "検証、準備、コミット" という 3 つの簡単な手順を使用して既存の VM を移行するには、[プラットフォーム サポート移行ツール](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)を使用して計画を開始することをお勧めします。 
+    - このツールは、最小限のダウンタイムで VM を移行するように設計されています。 
+    - 最初の手順である "検証" は、既存のデプロイに影響しません。また、移行についてサポートされていないすべてのシナリオの一覧を提供します。 
+    - [回避策の一覧](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview#unsupported-features-and-configurations)を確認して、デプロイを修正し、移行に向けて準備を行います。 
+    - すべての検証エラーを修正した後は、準備とコミットの手順で問題が発生しないようにすることが理想的です。 コミットが成功すると、デプロイは Azure Resource Manager にライブ マイグレーションされ、Azure Resource Manager によって公開される新しい API を使用して管理することができるようになります。 
+    - このツールが移行に適していない場合は、この移行に適した[他のコンピューティング オファリング](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree)を調べることができます。 Azure のコンピューティング オファリングにはさまざまな種類があるため、これらのオファリングに対しては、プラットフォームでサポートされている移行パスを提供することができません。  
 - 技術的な質問、問題、および許可リストへのサブスクリプションの追加については、[サポートにお問い合わせ](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})ください。
-
-- FAQ に含まれていないその他の質問およびフィードバックについては、下にコメントを残してください。
 
 - ビジネスへの影響を防ぐためにできるだけ早く移行を完了し、Azure Resource Manager によって提供される改善されたパフォーマンス、セキュリティ、および新しい機能を活用してください。 
 

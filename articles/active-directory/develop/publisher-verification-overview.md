@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120781"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068475"
 ---
 # <a name="publisher-verification-preview"></a>発行者の確認 (プレビュー)
 
@@ -42,13 +42,13 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 
 -  [確認](/partner-center/verification-responses)プロセスが完了している有効な [Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントの MPN ID。 この MPN アカウントは、パートナーの組織の[パートナー グローバル アカウント (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) である必要があります。 
 
--  DNS 検証済みの[カスタム ドメイン](../fundamentals/add-custom-domain.md)が含まれる Azure AD テナント。 カスタム ドメインは、前のステップで確認の間に使用されたメール アドレスのドメインと一致している必要があります。 
+-  [パブリッシャー ドメイン](howto-configure-publisher-domain.md)が構成されている、Azure AD テナントに登録されたアプリ。
 
--  前に使用したのと同じドメインを使用して[パブリッシャー ドメイン](howto-configure-publisher-domain.md)が構成されている、Azure AD テナントに登録されたアプリ。 
+-  MPN アカウント検証時に使用つれる電子メール アカウントのドメインは、アプリで構成されているパブリッシャー ドメインに一致するか、Azure AD に追加された、DNS で検証済みの[カスタム ドメイン](../fundamentals/add-custom-domain.md)に一致する必要があります。 
 
 -  確認を実行するユーザーは、Azure AD でのアプリの登録とパートナー センターでの MPN アカウントの両方を変更することが、許可されている必要があります。 
 
-    -  Azure AD では、このユーザーは、アプリの所有者であるか、または次のいずれかの[ロール](../users-groups-roles/directory-assign-admin-roles.md)を持っている必要があります: アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
+    -  Azure AD では、このユーザーは次の[ロール](../users-groups-roles/directory-assign-admin-roles.md)のいずれかに属する必要があります。アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
 
     -  パートナー センターでは、このユーザーには次のいずれかの[ロール](/partner-center/permissions-overview)が必要です: MPN 管理者、アカウント管理者、全体管理者 (これは、Azure AD で管理されている共有ロールです)。
     

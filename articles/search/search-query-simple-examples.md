@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918028"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294868"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Cognitive Search で簡単なクエリを作成する
 
@@ -37,13 +37,13 @@ Azure Cognitive Search では、[単純なクエリ構文](query-simple-syntax.m
 
 要求ヘッダーを指定した後は、**search=** 文字列のみを入れ替えることで、この記事のすべてのクエリに対して要求ヘッダーを再利用できます。 
 
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-header.png)
+  ![Postman の要求ヘッダーの設定パラメーター](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>要求 URL を設定する
 
 要求は、Azure Cognitive Search のエンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
 
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman の要求ヘッダーの GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL は、次の要素から構成されます。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651917"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226796"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -24,7 +24,7 @@ Azure Machine Learning コンピューティング インスタンスは、デ�
 
 コンピューティング インスタンスは、機械学習のためにクラウド内で完全に構成され管理される自分の開発環境として使用します。 また、開発やテストのためのトレーニングや推論のコンピューティング ターゲットとして使用することもできます。  
 
-実稼働レベルのモデルのトレーニングの場合は、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)を使用してください。 実稼働レベルのモデル デプロイの場合は [Azure Kubernetes Service クラスター](how-to-deploy-azure-kubernetes-service.md)を使用してください。
+実稼働レベルのモデルのトレーニングの場合は、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-sdk.md#amlcompute)を使用してください。 実稼働レベルのモデル デプロイの場合は [Azure Kubernetes Service クラスター](how-to-deploy-azure-kubernetes-service.md)を使用してください。
 
 ## <a name="why-use-a-compute-instance"></a>コンピューティング インスタンスを使用する理由
 
@@ -138,18 +138,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>コンピューティング インスタンスを作成する
 
-Azure Machine Learning Studio のワークスペースで、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから新しいコンピューティング インスタンスを作成します。
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="新しいコンピューティング インスタンスの作成":::
-
-
-|フィールド  |説明  |
-|---------|---------|
-|コンピューティング名     |  <li>名前は必須であり、3 文字から 24 文字の長さにする必要があります。</li><li>有効な文字は、大文字、小文字、数字、 **-** 文字です。</li><li>名前の先頭は文字である必要があります</li><li>名前は、Azure リージョン内のすべての既存のコンピューティングで一意である必要があります。 選択した名前が一意でない場合は、アラートが表示されます</li><li>名前に **-** 文字が使用されている場合は、その後に少なくとも 1 文字を続ける必要があります</li>     |
-|仮想マシンのタイプ |  CPU または GPU を選択します。 このタイプは作成後に変更することはできません     |
-|仮想マシンのサイズ     |  サポートされる仮想マシンのサイズがお客様のリージョンで制限されている可能性があります。 [利用可能な製品のリスト](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)に関するページを確認してください     |
-|SSH アクセスの有効化/無効化     |   SSH アクセスは既定では無効になっています。  SSH アクセスは、 作成後に変更することはできません。 [VS Code Remote](how-to-set-up-vs-code-remote.md) を使用して対話形式でデバッグする場合は、アクセスを有効にする必要があります   |
-|詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](how-to-enable-virtual-network.md#compute-instance)に関するページを参照してください。        |
+Azure Machine Learning Studio のワークスペースで、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから[新しいコンピューティング インスタンス](how-to-create-attach-compute-studio.md#compute-instance)を作成します。 
 
 インスタンスを作成することもできます
 * [統合ノートブックのエクスペリエンス](tutorial-1st-experiment-sdk-setup.md#azure)から直接
@@ -158,7 +147,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 * Azure Machine Learning SDK を使用して
 * [Azure Machine Learning 用の CLI 拡張機能](reference-azure-machine-learning-cli.md#computeinstance)から
 
-コンピューティング インスタンスの作成に適用される、VM ファミリのクォータごとのリージョンごとの専用コア数とリージョンの合計クォータ は、Azure Machine Learning のトレーニング コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。
+コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、VM ファミリ クォータ別およびリージョン合計クォータ別に、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。
 
 ## <a name="compute-target"></a>コンピューティング ターゲット
 

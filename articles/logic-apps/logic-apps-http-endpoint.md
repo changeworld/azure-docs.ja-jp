@@ -1,44 +1,39 @@
 ---
-title: ロジック アプリを呼び出し、トリガーし、入れ子にする
-description: Azure Logic Apps でロジック アプリ ワークフローの呼び出し、トリガー、または入れ子を行う HTTPS エンドポイントを設定する
+title: Request トリガーを使用し、ロジック アプリを呼び出し、トリガーし、入れ子にする
+description: Azure Logic Apps でロジック アプリ ワークフローを呼び出し、トリガーし、または入れ子にする HTTPS エンドポイントを設定する
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078669"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230808"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTPS エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います
 
-ロジック アプリが他のサービスからの受信要求を受信できるようにロジック アプリを URL 経由で呼び出し可能にするには、同期 HTTPS エンドポイントをそのロジック アプリ上のトリガーとしてネイティブに公開できます。 この機能を設定するときに、ロジック アプリを他のロジック アプリの内部で入れ子にすることもできます。それにより、呼び出し可能なエンドポイントのパターンを作成できます。
-
-呼び出し可能なエンドポイントを設定するには、次のいずれかのトリガーの種類を使用できます。それにより、ロジック アプリが受信要求を受信できるようになります。
+ロジック アプリを URL 経由で呼び出せて、他のサービスから入ってくる要求を受信できるようにするため、ロジック アプリで要求ベースのトリガーを使用し、同期 HTTPS エンドポイントをネイティブで公開できます。 この機能があれば、他のロジック アプリから自分のロジック アプリを呼び出し、呼び出し可能エンドポイントのパターンを作成できます。 入ってくる呼び出しを処理するための呼び出し可能エンドポイントを設定するには、次のいずれかのトリガー タイプを使用できます。
 
 * [Request](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
-* [ApiConnectionWebhook の種類](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)を持ち、受信 HTTPS 要求を受信できるマネージド コネクタ トリガー
+* [ApiConnectionWebhook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり、受信 HTTPS 要求を受信できるマネージド コネクタ トリガー
 
-> [!NOTE]
-> これらの例では要求トリガーを使用しますが、前の一覧にある HTTPS 要求ベースの任意のトリガーを使用できます。 すべての原則がこれらの他のトリガーの種類にも同様に適用されます。
+この記事では、Request トリガーを使用してロジック アプリで呼び出し可能エンドポイントを作成し、別のロジック アプリからそのエンドポイントを呼び出す方法について説明します。 原則はすべて、入ってくる要求を受け取るための他のトリガー タイプに同じように適用されます。
 
-ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」および[クイックスタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
+[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL)) や [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) などの、ロジック アプリへの受信呼び出しの暗号化、セキュリティ、認可については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへのアクセス」のセクション](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* 呼び出し可能なエンドポイントを作成するトリガーを使用するロジック アプリ。 空のロジック アプリか、または現在のトリガーを置き換える既存のロジック アプリから始めることができます。 この例では、空のロジック アプリから始めます。
+* 呼び出し可能なエンドポイントを作成するトリガーを使用するロジック アプリ。 空のロジック アプリか、現在のトリガーを置き換える既存のロジック アプリから始めることができます。 この例では、空のロジック アプリから始めます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」および[クイックスタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 ## <a name="create-a-callable-endpoint"></a>呼び出し可能なエンドポイントを作成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで、空のロジック アプリを作成して開きます。
-
-   この例では要求トリガーを使用しますが、受信 HTTPS 要求を受信できる任意のトリガーを使用できます。 すべての原則がこれらのトリガーにも同様に適用されます。 要求トリガーの詳細については、「[Azure Logic Apps で受信 HTTPS 要求を受信して応答する](../connectors/connectors-native-reqres.md)」を参照してください。
 
 1. 検索ボックスで、 **[組み込み]** を選択します。 検索ボックスに、フィルターとして「`request`」と入力します。 トリガーの一覧から、 **[HTTP 要求の受信時]** を選択します。
 
@@ -408,3 +403,4 @@ ms.locfileid: "87078669"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する](../connectors/connectors-native-reqres.md)
+* [Azure Logic Apps におけるアクセスとデータのセキュリティ保護 - アクセス - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

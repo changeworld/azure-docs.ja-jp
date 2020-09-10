@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919677"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179353"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure Multi-Factor Authentication のセッションの有効期間を理解する
 
 Azure Active Directory (Azure AD) には、ユーザーが再認証を必要とする頻度を決定する設定が複数あります。 この再認証は、パスワード、FIDO、パスワードレス Microsoft Authenticator などの第 1 要素を使用するか、多要素認証 (MFA) を実行するためである場合があります。 これらの再認証の設定は、必要に応じて、独自の環境と目的のユーザー エクスペリエンスに合わせて構成することができます。
+
+ユーザー サインインの頻度に関する Azure AD の既定の構成は、90 日間のローリング ウィンドウです。 ユーザーに資格情報を求めることはしばしば目的にかなっているように思われますが、不足の結果に終わる可能性があります。 考えることなしに資格情報を入力するようにユーザーが訓練されている場合、悪意のある資格情報プロンプトに情報を意図せず渡してしまうことがあります。
+
+ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化操作などがあります。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)ことができます。
 
 この記事では、推奨される構成と、さまざまな設定のしくみと相互作用について説明します。
 
@@ -35,6 +39,7 @@ Azure Active Directory (Azure AD) には、ユーザーが再認証を必要と�
 * Office 365 アプリのライセンスまたは Free レベルの Azure AD をお使いの場合:
     * [マネージド デバイス](../devices/overview.md)または[シームレス SSO](../hybrid/how-to-connect-sso.md) を使用して、アプリケーション間でシングル サインオン (SSO) を有効にします。
     * *[Remain signed-in] (サインインしたままの状態を続ける)* オプションを有効にしたままにして、ユーザーに同意するようガイドします。
+* モバイル デバイス シナリオの場合、ユーザーが Microsoft Authenticator アプリを必ず使用するようにします。 このアプリは他の Azure AD フェデレーション アプリとして使用され、デバイスの認証プロンプトを減らします。
 
 この調査では、ほとんどのテナントに対してこれらの設定が適切であることが示されています。 これらの *[MFA を記憶する]* や *[Remain signed-in] (サインインしたままの状態を続ける)* などの設定の組み合わせによっては、ユーザーが認証を頻繁に行うように求めるメッセージが表示される可能性があります。 通常の再認証プロンプトでは、ユーザーの生産性が低下し、攻撃に対して脆弱になる可能性があります。
 
@@ -71,11 +76,11 @@ Azure AD Premium 1 のライセンスをお持ちの場合は、*永続ブラウ
 
 ### <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶  
 
-この設定では、1 ～ 60 日の間の値を設定でき、ブラウザーでユーザーがサインイン時に **[今後 X 日間はこのメッセージを表示しない]** オプションを選択したときに永続的な Cookie が設定されます。
+この設定では、1 日から 365 日までの間の値を設定でき、ブラウザーでユーザーがサインイン時に **[今後 X 日間はこのメッセージを表示しない]** オプションを選択したときに永続的な Cookie が設定されます。
 
 ![サインイン要求の承認を求めるメッセージの例のスクリーンショット](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-この設定によって Web アプリの認証回数が減りますが、Office クライアントなどの最新の認証クライアントで認証回数が増えます。 これらのクライアントでは、通常、パスワードのリセットまたは 90 日の非アクティブな状態の経過後にのみメッセージが表示されます。 ただし、 *[MFA を記憶する]* の最大値は 60 日です。 **[Remain signed-in] (サインインしたままの状態を続ける)** または条件付きアクセス ポリシーと組み合わせて使用すると、認証要求の数が増える場合があります。
+この設定によって Web アプリの認証回数が減りますが、Office クライアントなどの最新の認証クライアントで認証回数が増えます。 これらのクライアントでは、通常、パスワードのリセットまたは 90 日の非アクティブな状態の経過後にのみメッセージが表示されます。 ただし、この値を 90 日間より短く設定すると Office クライアントの既定 MFA プロンプトが短縮され、再認証の頻度が増加します。 **[Remain signed-in] (サインインしたままの状態を続ける)** または条件付きアクセス ポリシーと組み合わせて使用すると、認証要求の数が増える場合があります。
 
 *[MFA を記憶する]* を使用していて、Azure AD Premium 1 のライセンスをお持ちの場合は、これらの設定を条件付きアクセスのサインイン頻度に移行することを検討してください。 それ以外の場合は、代わりに *[サインインしたままにする]* の使用を検討してください。
 

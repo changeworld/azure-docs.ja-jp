@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 883eede5296f3f280bf30c9a459c02a9243f9081
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.date: 08/27/2020
+ms.openlocfilehash: 9dc63de56a71ab07f513efefe2cf068f6a7be7b0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719531"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276050"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -19,11 +19,11 @@ Azure Logic Apps では、[Azure Storage](../storage/index.yml) を利用して�
 
 Azure Logic Apps 内の機密データへのアクセスをさらに制御し保護するために、次の領域のセキュリティを追加して設定できます。
 
-* [要求ベースのトリガーへのアクセス](#secure-triggers)
+* [要求ベースのトリガーへの受信呼び出しへのアクセス](#secure-inbound-requests)
 * [ロジック アプリの操作へのアクセス](#secure-operations)
 * [実行履歴の入出力へのアクセス](#secure-run-history)
 * [パラメーターの入力へのアクセス](#secure-action-parameters)
-* [ロジック アプリから呼び出されたサービスとシステムへのアクセス](#secure-outbound-requests)
+* [他のサービスやシステムへの送信呼び出しへのアクセス](#secure-outbound-requests)
 * [特定のコネクタに対する接続の作成のブロック](#block-connections)
 * [ロジック アプリの分離に関するガイダンス](#isolation-logic-apps)
 * [Azure Logic Apps に対する Azure セキュリティ ベースライン](../logic-apps/security-baseline.md)
@@ -34,18 +34,29 @@ Azure でのセキュリティの詳細については、次のトピックを�
 * [保存時の Azure Disk Encryption](../security/fundamentals/encryption-atrest.md)
 * [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)
 
-<a name="secure-triggers"></a>
+<a name="secure-inbound-requests"></a>
 
-## <a name="access-to-request-based-triggers"></a>要求ベースのトリガーへのアクセス
+## <a name="access-for-inbound-calls-to-request-based-triggers"></a>要求ベースのトリガーへの受信呼び出しへのアクセス
 
-着信した呼び出しや要求を受け取る要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [Webhook](../connectors/connectors-native-webhook.md) トリガーなど) がロジック アプリで使用されている場合、承認されたクライアントだけがそのロジック アプリを呼び出すことができるように、アクセスを制限できます。 ロジック アプリで受信するすべての要求は、これまではSecure Sockets Layer (SSL) と呼ばれていたトランスポート層セキュリティ (TLS) プロトコルで暗号化され、セキュリティ保護されます。
+ロジック アプリが要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [HTTP Webhook](../connectors/connectors-native-webhook.md) トリガーなど) を介して受信する受信呼び出しによって、暗号化がサポートされており、以前は Secure Sockets Layer (SSL) と呼ばれていた[少なくともトランスポート層セキュリティ (TLS) 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security) でセキュリティ保護されます。 Logic Apps で、Request トリガーへの受信呼び出し、または HTTP Webhook トリガーもしくはアクションへのコールバックが受信されるときに、このバージョンが適用されます。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 詳細については、[TLS 1.0 の問題の解決](/security/solving-tls1-problem) を参照してください。
 
-この種類のトリガーへのアクセスをセキュリティで保護するためのオプションを次に示します。
+受信呼び出しでは、次の暗号スイートをサポートしています。
 
-* [Shared Access Signature の生成](#sas)
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+ご利用のロジック アプリへの受信呼び出しを受信するトリガーへのアクセスを制限して、承認されたクライアントのみがそのロジック アプリを呼び出せるようにするには、他に次の方法があります。
+
+* [Shared Access Signature (SAS) の生成](#sas)
 * [Azure Active Directory Open Authentication の有効化 (Azure AD OAuth)](#enable-oauth)
+* [Azure API Management でロジック アプリを公開する](#azure-api-management)
 * [受信 IP アドレスの制限](#restrict-inbound-ip-addresses)
-* [Azure Active Directory Open Authentication (Azure AD OAuth) またはその他のセキュリティを追加](#add-authentication)
 
 <a name="sas"></a>
 
@@ -108,9 +119,21 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 <a name="enable-oauth"></a>
 
-### <a name="enable-azure-active-directory-oauth"></a>Azure Active Directory OAuth の有効化
+### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Azure Active Directory Open Authentication の有効化 (Azure AD OAuth)
 
-[Request トリガー](../connectors/connectors-native-reqres.md)で開始されるロジック アプリの場合は、Request トリガーへの受信呼び出しの認可ポリシーを定義または追加することによって、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を有効にすることができます。 ロジック アプリが認証トークンを含む受信要求を受信すると、Azure Logic Apps は、トークンのクレームを各承認ポリシーのクレームと比較します。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
+[Request トリガー](../connectors/connectors-native-reqres.md)で開始されるロジック アプリの場合は、Request トリガーへの受信呼び出しの認可ポリシーを定義または追加することによって、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を有効にすることができます。
+
+この認証を有効にする前に、次の考慮事項を確認してください。
+
+* Request トリガーへの受信呼び出しでは、Azure AD OAuth で、Request トリガーでのみサポートされている認証トークンを使用したものか、[Shared Access Signature (SAS) URL](#sas) を使用したもののうちいずれか 1 つの認証スキームのみを使用できます。両方のスキームを使用することはできません。
+
+  一方のスキームを使用してももう一方は無効になりませんが、両方を同時に使用すると、どちらのスキームを選択するかサービスで判断できないため、エラーが発生します。 また、OAuth 認証トークンに対しては[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみがサポートされ、これは Request トリガーに対してのみサポートされます。 認証トークンには、Authorization ヘッダーで `Bearer-type` を指定する必要があります。
+
+* ロジック アプリは、承認ポリシーの最大数に制限されている必要があります。 各承認ポリシーには、[クレーム](../active-directory/develop/developer-glossary.md#claim)の最大数もあります。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)に関するページを参照してください。
+
+* 承認ポリシーには、少なくとも**発行者**要求が含まれている必要があり、その Azure AD 発行者 ID の値は `https://sts.windows.net/` または `https://login.microsoftonline.com/` (OAuth V2) で始まっています。 アクセス トークンの詳細については、「[Microsoft ID プラットフォーム アクセス トークン](../active-directory/develop/access-tokens.md)」を参照してください。
+
+ロジック アプリが OAuth 認証トークンを含む受信要求を受信すると、Azure Logic Apps によって、トークンのクレームが各承認ポリシーのクレームと比較されます。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
 
 たとえば、ロジック アプリに、**発行者**と**対象ユーザー**という 2 つのクレームの種類が必要な認可ポリシーがあるとします。 このサンプルでデコードした[アクセス トークン](../active-directory/develop/access-tokens.md)には、次の両方のクレームの種類が含まれています。
 
@@ -155,16 +178,6 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 }
 ```
 
-#### <a name="considerations-for-enabling-azure-oauth"></a>Azure OAuth の有効化に関する考慮事項
-
-この認証を有効にする前に、次の考慮事項を確認してください。
-
-* ロジック アプリへの受信呼び出しには、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの認証スキームのみを使用できます。 一方のスキームを使用してももう一方は無効になりませんが、両方を同時に使用すると、どちらのスキームを選択するかサービスで判断できないため、エラーが発生します。 OAuth トークンに対しては[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみがサポートされ、これは Request トリガーに対してのみサポートされます。
-
-* ロジック アプリは、承認ポリシーの最大数に制限されている必要があります。 各承認ポリシーには、[クレーム](../active-directory/develop/developer-glossary.md#claim)の最大数もあります。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)に関するページを参照してください。
-
-* 承認ポリシーには、少なくとも**発行者**要求が含まれている必要があり、その Azure AD 発行者 ID の値は `https://sts.windows.net/` または `https://login.microsoftonline.com/` (OAuth V2) で始まっています。 アクセス トークンの詳細については、「[Microsoft ID プラットフォーム アクセス トークン](../active-directory/develop/access-tokens.md)」を参照してください。
-
 <a name="define-authorization-policy-portal"></a>
 
 #### <a name="define-authorization-policy-in-azure-portal"></a>Azure portal で認可ポリシーを定義する
@@ -203,6 +216,9 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 
 ロジック アプリをデプロイするために ARM テンプレートで OAuth Azure AD を有効にするには、[ロジック アプリのリソース定義](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)の `properties` セクションで、`triggers` オブジェクトを含む `accessControl` オブジェクトを追加します (存在しない場合)。 `triggers` オブジェクトで、次の構文に従って 1 つ以上の認可ポリシーを定義する `openAuthenticationPolicies` オブジェクトを追加します。
 
+> [!NOTE]
+> `claims` 配列には、少なくとも、Azure AD 発行者 ID として `https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まる値が使用された `iss` クレームが含まれている必要があります。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。
+
 ```json
 "resources": [
    {
@@ -220,7 +236,7 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
                         "claims": [
                            {
                               "name": "<claim-name>",
-                              "values": "<claim-value>"
+                              "value": "<claim-value>"
                            }
                         ]
                      }
@@ -241,6 +257,12 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 ```
 
 `accessControl` セクションの詳細については、「[Azure Resource Manager テンプレートで受信 IP 範囲を制限する](#restrict-inbound-ip-template)」と [Microsoft.Logic ワークフロー テンプレートのリファレンス](/azure/templates/microsoft.logic/2019-05-01/workflows)に関する記事を参照してください。
+
+<a name="azure-api-management"></a>
+
+### <a name="expose-your-logic-app-with-azure-api-management"></a>Azure API Management でロジック アプリを公開する
+
+ロジック アプリにさらに[認証](../active-directory/develop/authentication-vs-authorization.md)プロトコルを追加するには、[Azure API Management](../api-management/api-management-key-concepts.md) サービスの使用を検討してください。 このサービスでは、ロジック アプリを API として公開でき、あらゆるエンドポイント向けの監視、セキュリティ、ポリシー、ドキュメントが豊富に提供されています。 API Management では、ロジック アプリ用にパブリック エンドポイントまたはプライベート エンドポイントを公開できます。 このエンドポイントへのアクセスを承認するには、Azure AD OAuth ([クライアント証明書](#client-certificate-authentication))、またはそのエンドポイントへのアクセスを承認するためのその他のセキュリティ標準を使用できます。 API Management で要求が受け取られると、サービスによって要求がお客様のロジック アプリに送信されます。さらに、必要な変換または制限もその過程で行われます。 API Management のみにロジック アプリの呼び出しを許可するには、[ロジック アプリの受信 IP アドレスを制限](#restrict-inbound-ip)します。
 
 <a name="restrict-inbound-ip"></a>
 
@@ -311,12 +333,6 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
    "outputs": {}
 }
 ```
-
-<a name="add-authentication"></a>
-
-### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>Azure Active Directory Open Authentication またはその他のセキュリティを追加
-
-ロジック アプリにさらに[認証](../active-directory/develop/authentication-vs-authorization.md)プロトコルを追加するには、[Azure API Management](../api-management/api-management-key-concepts.md) サービスの使用を検討してください。 このサービスでは、ロジック アプリを API として公開でき、あらゆるエンドポイント向けの監視、セキュリティ、ポリシー、ドキュメントが豊富に提供されています。 API Management では、ロジック アプリ用にパブリック エンドポイントまたはプライベート エンドポイントを公開できます。 このエンドポイントへのアクセスを承認するために、[Azure Active Directory Open Authentication](#azure-active-directory-oauth-authentication) (Azure AD OAuth)、[クライアント証明書](#client-certificate-authentication)、またはその他のセキュリティ標準を使用できます。 API Management で要求が受け取られると、サービスによって要求がお客様のロジック アプリに送信されます。さらに、必要な変換または制限もその過程で行われます。 API Management のみがロジック アプリをトリガーできるようにするには、ロジック アプリの受信 IP 範囲の設定を使用できます。
 
 <a name="secure-operations"></a>
 
@@ -719,13 +735,21 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 <a name="secure-outbound-requests"></a>
 
-## <a name="access-to-services-and-systems-called-from-logic-apps"></a>ロジック アプリから呼び出されたサービスとシステムへのアクセス
+## <a name="access-for-outbound-calls-to-other-services-and-systems"></a>他のサービスやシステムへの送信呼び出しへのアクセス
 
-ロジック アプリから呼び出しまたは要求を受信するエンドポイントをセキュリティで保護するためのいくつかの方法を次に示します。
+ターゲット エンドポイントの機能に基づき、[HTTP トリガーまたは HTTP アクション](../connectors/connectors-native-http.md)によって送信される送信呼び出しにより、暗号化がサポートされ、以前は Secure Sockets Layer (SSL) と呼ばれていた [トランスポート層セキュリティ (TLS) 1.0、1.1、または 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security) によってセキュリティ保護されます。 Logic Apps は、サポートされている可能な限り最高のバージョンを使用して、ターゲット エンドポイントとネゴシエートします。 たとえば、ターゲット エンドポイントで 1.2 がサポートされている場合、HTTP トリガーまたはアクションで最初に使用されるのは 1.2 となります。 それ以外の場合、コネクタは、2 番目に高いサポート バージョンを使用します。
 
-* 送信要求に認証を追加します。
+TLS/SSL 自己署名証明書に関する情報を次に示します。
 
-  HTTP など、送信呼び出しを行う HTTP ベースのトリガーまたはアクションを使用するときは、ロジック アプリによって送信される要求に認証を追加できます。 たとえば、次の認証の種類を選択できます。
+* グローバルなマルチテナント Azure 環境でのロジック アプリの場合、HTTP コネクタは自己署名の TLS/SSL 証明書を許可しません。 ロジック アプリがサーバーに対して HTTP 呼び出しを行い、TLS/SSL 自己署名証明書を提示すると、`TrustFailure` エラーが発生して HTTP 呼び出しは失敗します。
+
+* [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、HTTP コネクタは TLS/SSL ハンドシェイクに自己署名証明書を許可します。 ただし、最初に Logic Apps REST API を使用して、既存の ISE または新しい ISE で[自己署名証明書のサポートを有効](../logic-apps/create-integration-service-environment-rest-api.md#request-body)にして、`TrustedRoot` の場所に公開証明書をインストールする必要があります。
+
+ロジック アプリから送信された呼び出しを処理するエンドポイントに対するセキュリティ保護を容易にするには、他に次の方法があります。
+
+* [送信要求に認証を追加します](#add-authentication-outbound)。
+
+  HTTP トリガーまたはアクションを使用して送信呼び出しを送信する場合は、ロジック アプリによって送信される要求への認証を追加できます。 たとえば、次の認証の種類を選択できます。
 
   * [基本認証](#basic-authentication)
 
@@ -734,8 +758,6 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
   * [Active Directory OAuth 認証](#azure-active-directory-oauth-authentication)
 
   * [マネージド ID の認証](#managed-identity-authentication)
-
-  詳しくは、後の「[送信呼び出しに認証を追加する](#add-authentication-outbound)」をご覧ください。
 
 * ロジック アプリの IP アドレスからのアクセスを制限する。
 
@@ -776,7 +798,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 <a name="add-authentication-outbound"></a>
 
-## <a name="add-authentication-to-outbound-calls"></a>送信呼び出しに認証を追加する
+### <a name="add-authentication-to-outbound-calls"></a>送信呼び出しに認証を追加する
 
 HTTP および HTTPS エンドポイントでは、さまざまな種類の認証がサポートされています。 これらのエンドポイントへの送信呼び出しまたは要求の送信に使用するトリガーとアクションによっては、認証の種類を指定できます。 ロジック アプリ デザイナーでは、認証の種類の選択がサポートされているトリガーとアクションには、 **[認証]** プロパティがあります。 ただし、このプロパティが既定で常に表示されるとは限りません。 このような場合は、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[認証]** を選択します。
 
@@ -869,7 +891,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
-Request トリガーでは、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を使用して、ロジック アプリの [Azure AD 承認ポリシー](#enable-oauth)を設定した後に着信呼び出しを認証できます。 **Active Directory OAuth** の認証の種類を提供するその他のすべてのトリガーとアクションについては、次のプロパティ値を指定します。
+Request トリガーでは、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を使用して、ロジック アプリの [Azure AD 承認ポリシー](#enable-oauth)を設定した後に受信呼び出しを認証できます。 **Active Directory OAuth** の認証の種類を提供するその他のすべてのトリガーとアクションについては、次のプロパティ値を指定します。
 
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|

@@ -4,24 +4,25 @@ description: .NET クライアント ライブラリを使用して、Azure Stor
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/20/2019
+ms.date: 09/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a7ca195bdfb05baff6100b3481903f9ca0841dc6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446858"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320666"
 ---
 # <a name="copy-a-blob-with-net"></a>.NET を使用して BLOB をコピーする
 
-この記事では、Azure Storage アカウントを使用して BLOB をコピーする方法について説明します。 また、非同期のコピー操作を中止する方法も示します。 コード例では [.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用します。
+この記事では、Azure Storage アカウントを使用して BLOB をコピーする方法について説明します。 また、非同期のコピー操作を中止する方法も示します。 コード例では [.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用します。
 
 ## <a name="about-copying-blobs"></a>BLOB のコピーについて
 
-同じストレージ アカウント内で BLOB をコピーすると、同期操作になります。 アカウントをまたいでコピーする場合は、非同期操作です。 [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) および [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) メソッドは、状態を確認またはコピー操作を中止するために使用されるコピー ID の値を返します。
+同じストレージ アカウント内で BLOB をコピーすると、同期操作になります。 アカウントをまたいでコピーする場合は、非同期操作です。
 
 コピー操作のコピー元 BLOB にできるのは、ブロック BLOB、アペンド BLOB、ページ BLOB、またはスナップショットです。 コピー先 BLOB が既に存在する場合、コピー元 BLOB と同じ BLOB の種類である必要があります。 既存のコピー先 BLOB は上書きされます。
 
@@ -30,8 +31,6 @@ ms.locfileid: "87446858"
 常に、コピー元の BLOB またはファイル全体がコピーされます。 バイト範囲またはブロックのセットのコピーはサポートされていません。
 
 BLOB がコピーされると、そのシステム プロパティが同じ値でコピー先 BLOB にコピーされます。
-
-すべての種類の BLOB で、コピー先 BLOB の [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet) プロパティをチェックしてコピー操作の状態を取得できます。 コピーが完了すると、最終 BLOB がコミットされます。
 
 コピー操作は、次のいずれかの形態で実行できます。
 
@@ -43,12 +42,29 @@ BLOB がコピーされると、そのシステム プロパティが同じ値�
 
 ## <a name="copy-a-blob"></a>BLOB をコピーする
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
 BLOB をコピーするには、次のいずれかのメソッドを呼び出します。
 
-- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
-- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopyFromUri](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.startcopyfromuri)
+- [StartCopyFromUriAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.startcopyfromuriasync)
 
-次のコード例では、前に作成した BLOB への参照を取得し、同じコンテナー内の新しい BLOB にコピーします。
+**StartCopyFromUri** メソッドと **StartCopyFromUriAsync** メソッドは、コピー操作に関する情報が含まれる [CopyFromUriOperation](/dotnet/api/azure.storage.blobs.models.copyfromurioperation) オブジェクトを返します。
+
+次のコード例では、以前に作成した BLOB を表す [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) を取得し、同じコンテナー内の新しい BLOB にコピーします。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_CopyBlob":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+BLOB をコピーするには、次のいずれかのメソッドを呼び出します。
+
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync)
+
+**StartCopy** および **StartCopyAsync** メソッドは、状態を確認またはコピー操作を中止するために使用されるコピー ID の値を返します。
+
+次のコード例では、以前に作成した BLOB への参照を取得し、同じコンテナー内の新しい BLOB にコピーします。
 
 ```csharp
 private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
@@ -62,7 +78,8 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
         // Get a block blob from the container to use as the source.
         sourceBlob = container.ListBlobs().OfType<CloudBlockBlob>().FirstOrDefault();
 
-        // Lease the source blob for the copy operation to prevent another client from modifying it.
+        // Lease the source blob for the copy operation 
+        // to prevent another client from modifying it.
         // Specifying null for the lease interval creates an infinite lease.
         leaseId = await sourceBlob.AcquireLeaseAsync(null);
 
@@ -82,7 +99,6 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
             Console.WriteLine("Completion time: {0}", destBlob.CopyState.CompletionTime);
             Console.WriteLine("Bytes copied: {0}", destBlob.CopyState.BytesCopied.ToString());
             Console.WriteLine("Total bytes: {0}", destBlob.CopyState.TotalBytes.ToString());
-            Console.WriteLine();
         }
     }
     catch (StorageException e)
@@ -107,13 +123,29 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 }
 ```
 
+---
+
 ## <a name="abort-a-blob-copy-operation"></a>BLOB コピー操作の中止
 
-コピー操作を中止した結果は、ブロック BLOB、アペンド BLOB、ページ BLOB の場合、長さゼロのコピー先 BLOB です。 ただし、コピー先 BLOB のメタデータは新しい値になります。これは、コピー元 BLOB からコピーされるか、[StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) または [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) 呼び出しで明示的に設定された値です。 コピー前のメタデータを元のまま維持するには、`StartCopy` または `StartCopyAsync` を呼び出す前にコピー先 BLOB のスナップショットを作成します。
+コピー操作を中止した結果は、ブロック BLOB、アペンド BLOB、ページ BLOB の場合、長さゼロのコピー先 BLOB です。 ただし、コピー先 BLOB のメタデータは、コピー元 BLOB からコピーされた値、またはコピー操作中に明示的に設定された値に変わります。 コピー前のメタデータを元のまま維持するには、いずれかのコピー方法を呼び出す前に、コピー先 BLOB のスナップショットを作成します。
 
-進行中の BLOB コピー操作を中止すると、コピー先 BLOB の [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) は [CopyStatus.Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet) に設定されます。
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-[AbortCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy?view=azure-dotnet) および [AbortCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync?view=azure-dotnet) メソッドは、進行中の BLOB コピー操作をキャンセルし、長さがゼロで完全なメタデータを持つコピー先 BLOB を残します。
+コピー先 BLOB の [BlobProperties.CopyStatus](/dotnet/api/azure.storage.blobs.models.blobproperties.copystatus) プロパティをチェックして、コピー操作の状態を取得できます。 コピーが完了すると、最終 BLOB がコミットされます。
+
+進行中の BLOB コピー操作を中止すると、コピー先 BLOB のコピーの状態は [CopyStatus.Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus) に設定されます。
+
+[AbortCopyFromUri](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuri) メソッドと [AbortCopyFromUriAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuriasync) メソッドによって、進行中の BLOB コピー操作がキャンセルされます。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_StopBlobCopy":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+コピー先 BLOB の [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status) プロパティをチェックして、コピー操作の状態を取得できます。 コピーが完了すると、最終 BLOB がコミットされます。
+
+進行中の BLOB コピー操作を中止すると、コピー先 BLOB のコピーの状態は [CopyStatus.Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus) に設定されます。
+
+[AbortCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy) メソッドと [AbortCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync) メソッドによって、進行中の BLOB コピー操作がキャンセルされます。
 
 ```csharp
 // Fetch the destination blob's properties before checking the copy state.
@@ -126,6 +158,8 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
     Console.WriteLine("Copy operation {0} has been aborted.", copyId);
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

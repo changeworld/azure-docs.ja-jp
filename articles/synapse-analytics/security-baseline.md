@@ -6,13 +6,13 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: bbec83c655d568b43b319f30a96da0a8fc1effe8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210898"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230655"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Synapse Analytics 用の Azure セキュリティ ベースライン
 
@@ -138,7 +138,7 @@ Azure Synapse SQL プールに対するサービス エンドポイントを使�
 
 **ガイダンス**:Azure Policy を使用して、SQL プールに関連するリソースに対するネットワーク セキュリティ構成を定義して実装します。 "Microsoft.Sql" 名前空間を使用してカスタム ポリシー定義を定義するか、または Azure SQL Database およびサーバーのネットワーク保護のために設計されたいずれかの組み込みのポリシー定義を使用できます。 Azure SQL Database サーバーに適用できる組み込みのネットワーク セキュリティ ポリシーの例を次に示します。"SQL Server は仮想ネットワーク サービス エンドポイントを使用する必要がある"。
 
-Azure Resource Management テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化するには、Azure Blueprints を使用します。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
+Azure Blueprints を使用して、Azure Resource Management テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化します。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
 
 * [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -446,7 +446,7 @@ SQL Server 監査では、サーバー監査を作成できます。これには
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure Active Directory では、古いアカウントの検出に役立つログが提供されます。 また、Azure Active Directory アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザーのアクセスを定期的にレビューして、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
+**ガイダンス**:Azure Active Directory では、古いアカウントの検出に役立つログが提供されます。 また、Azure Active Directory アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザーのアクセスを定期的にレビューして、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
 SQL 認証の使用時は、データベース内に包含データベース ユーザーを作成します。 1 人以上のデータベース ユーザーを、そのユーザー グループにとって適切な特定のアクセス許可を持つカスタム データベース ロールに必ず配置します。
 
@@ -582,7 +582,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
 **ガイダンス**:Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Synapse SQL プール内の Azure SQL データベースに対するアクセスを管理します。
 

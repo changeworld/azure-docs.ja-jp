@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bf4974fdd0c587bd537c63a454b5d5efeb54415b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705777"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378493"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -93,7 +93,7 @@ Azure Monitor エージェントでは、現在次のオペレーティング �
   - Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup>これらのディストリビューションで Syslog データを送信するには、rsyslog を削除し、syslog-ng をインストールする必要があります。
+> <sup>1</sup>これらのディストリビューションで Syslog データを送信するには、エージェントのインストール後、一度 rsyslog サービスを再起動する必要があります。
 
 
 ## <a name="security"></a>セキュリティ

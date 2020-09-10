@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 04a984a2dfa473502fd9e534e52b60b33be52757
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 1b0600b164186097bc41a7e4d655e32bb2d0acbd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88704962"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318779"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -144,6 +144,8 @@ BYOL のコスト構造は次のとおりです。
 |Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 90% を支払います   |   1 か月あたり $80.00 <br> \* 1 か月あたり $90.00    |
 |Microsoft は、ライセンス コストの 20% を受け取ります <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 10% を受け取ります。  |  1 か月あたり $20.00 <br> \* $10.00     |
 
+### <a name="reduced-service-fee"></a>サービス料金の減額
+
 コマーシャル マーケットプレースで公開する特定のオファーに関しては、([Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の説明に従って) Microsoft によって Marketplace サービス料金が 20% から 10% に減額されます。 お客様のオファーが対象となるには、オファーが Microsoft によって Azure IP 共同販売インセンティブの対象に指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブ対象 SaaS、VM、マネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーに適用されます。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
@@ -183,6 +185,7 @@ BYOL のコスト構造は次のとおりです。
 
 - オファーの価格モデルには関係なく、取引の公開オプションには Microsoft アカウントと財務情報が必要です。
 - 必須の財務情報には、支払い受取口座と税プロファイルが含まれます。
+- パブリッシャーは[サポートされている国またはリージョン](sell-from-countries.md)に住んでいる必要があります。
 
 これらのアカウントの設定の詳細については、「[パートナー センターで商業マーケットプレース アカウントを管理する方法](partner-center-portal/manage-account.md)」を参照してください。
 

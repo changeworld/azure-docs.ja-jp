@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ef76f3dafc02e89008ae164e3d868c628291766
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086604"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075309"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>資格情報の管理に ID ブローカー (プレビュー) を使用する
 
@@ -98,6 +98,8 @@ ID ブローカーを有効にした後も、ドメイン アカウントを使�
 
 SSH 認証を使用するには、Azure AD DS でハッシュを使用できるようにする必要があります。 管理シナリオ用にのみ SSH を使用する場合は、クラウド専用アカウントを 1 つ作成し、それを使用してクラスターに SSH 接続することができます。 その他のユーザーは、Azure AD DS でパスワード ハッシュを使用できるようにしなくても、Ambari または HDInsight ツール (IntelliJ プラグインなど) を使用できます。
 
+認証問題を解決するには、この[ガイド](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)を参照してください。
+
 ## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>ID ブローカーのセットアップで OAuth を使用して HDInsight ゲートウェイに接続するクライアント
 
 ID ブローカーのセットアップでは、ゲートウェイに接続するカスタム アプリやクライアントを、必要な OAuth トークンを最初に取得するように更新できます。 この[ドキュメント](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)の手順に従って、次の情報を含むトークンを取得できます。
@@ -105,6 +107,12 @@ ID ブローカーのセットアップでは、ゲートウェイに接続す�
 *   OAuth リソース URI: `https://hib.azurehdinsight.net` 
 * アプリID: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   アクセス許可: (名前: Cluster.ReadWrite、ID:8f89faa0-ffef-4007-974d-4989b39ad77d)
+
+OAuth トークンの取得後、クラスター ゲートウェイへの HTTP 要求の認証ヘッダーでそれを使用できます (例: <clustername>-int.azurehdinsight.net)。 たとえば、Livy API へのサンプル curl コマンドは次のようになります。
+    
+```bash
+curl -k -v -H "Authorization: TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By: UPN"
+``` 
 
 ## <a name="next-steps"></a>次のステップ
 

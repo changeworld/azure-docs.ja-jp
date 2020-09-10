@@ -1,28 +1,29 @@
 ---
-title: BLOB のバージョン管理を有効にして管理する (プレビュー)
+title: BLOB のバージョン管理を有効にして管理する
 titleSuffix: Azure Storage
-description: Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理を有効にする (プレビュー) 方法について説明します。
+description: Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理を有効にする方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067275"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230672"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>BLOB のバージョン管理を有効にして管理する (プレビュー)
+# <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 
-BLOB ストレージのバージョン管理 (プレビュー) を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
+BLOB ストレージのバージョン管理を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
 
-この記事では、Azure portal または Azure Resource Manager テンプレートを使用してストレージ アカウントの BLOB のバージョン管理を有効または無効にする方法について説明します。
+この記事では、Azure portal または Azure Resource Manager テンプレートを使用してストレージ アカウントの BLOB のバージョン管理を有効または無効にする方法について説明します。 BLOB のバージョン管理については、[BLOB のバージョン管理](versioning-overview.md)に関するページをご覧ください。
 
-BLOB のバージョン管理を有効にする前に、プレビューに登録する必要があります。 プレビューへの登録方法を含め、BLOB のバージョン管理の詳細については、「[BLOB のバージョン管理 (プレビュー)](versioning-overview.md)」を参照してください。
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>BLOB のバージョン管理を有効にする
 
@@ -72,7 +73,7 @@ Azure portal でテンプレートを使用してリソースをデプロイす�
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>BLOB を変更して新しいバージョンをトリガーする
 
-次のコード例は、.NET バージョン [12.5.0-preview.5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) 以降用の Azure Storage クライアント ライブラリを使用して、新しいバージョンの作成をトリガーする方法を示しています。 この例を実行する前に、ストレージ アカウントのバージョン管理が有効になっていることをご確認ください。
+次のコード例は、.NET バージョン [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) 以降用の Azure Storage クライアント ライブラリを使用して、新しいバージョンの作成をトリガーする方法を示しています。 この例を実行する前に、ストレージ アカウントのバージョン管理が有効になっていることをご確認ください。
 
 この例では、ブロック BLOB を作成してから、BLOB のメタデータを更新します。 BLOB のメタデータを更新すると、新しいバージョンの作成がトリガーされます。 この例では、初期バージョンと現在のバージョンを取得し、現在のバージョンにのみメタデータが含まれていることを示します。
 
@@ -158,5 +159,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
+- [BLOB バージョン管理](versioning-overview.md)
 - [Azure Storage Blob の論理的な削除](soft-delete-overview.md)

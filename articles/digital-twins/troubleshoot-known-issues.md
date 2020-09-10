@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921071"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290780"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -21,19 +21,28 @@ ms.locfileid: "88921071"
 
 Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client Error:Bad Request for url: http://localhost:50342/oauth2/token" を受け取り、その後に完全なスタック トレースが示されることがあります。
 
+Azure Digital Twins では特に、これは次のコマンド グループに影響します。
+* `az dt route`
+* `az dt model`
+* `az dt twin`
+
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
-これは、`az login` コマンドを再実行し、その後のログイン手順を完了することによって解決できます。
+これは、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することによって解決できます。 この後、コマンドを再実行できるようになります。
 
-この後、コマンドを再実行できるようになります。
+別の解決策としては、コンピューターに [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
 
 ### <a name="possible-causes"></a>考えられる原因
 
 これは Cloud Shell の既知の問題の結果です。"[*Cloud Shell からのトークンの取得が断続的に失敗し、400 Client Error:Bad Request を受け取る*](https://github.com/Azure/azure-cli/issues/11749)"
 
+これは、Azure Digital Twins インスタンスの認証トークンと、Cloud Shell の既定方式である[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) ベースの認証に問題があることを示しています。 `az login` を実行するトラブルシューティングの手順では、マネージド ID 認証から別の認証方式に切り替えて、この問題を回避することができます。
+
+これは、`az dt` または `az dt endpoint` コマンド グループからの Azure Digital Twins コマンドには影響しません。なぜなら、これらのコマンドでは別のタイプの認証トークン (ARM ベース) を使用し、Cloud Shell のマネージド ID 認証でも問題が発生しないからです。
+
 ## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
 
-ユーザーによっては、[*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)* ](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトでは失敗として示されませんが、*Azure Digital Twins 所有者 (プレビュー)* ロールがユーザーに正常に割り当てられておらず、これは、今後その他のリソースを作成する機能に影響します。
+ユーザーによっては、[*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)* ](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトでは失敗として示されませんが、*Azure Digital Twins 所有者 (プレビュー)* ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
 
 スクリプトの実行後にロールの割り当てが正常に設定されたかどうかを確認するには、セットアップの記事にある「[*ユーザー ロールの割り当てを確認する*](how-to-set-up-instance-scripted.md#verify-user-role-assignment)」の手順に従ってください。 ユーザーに対してこのロールが表示されていない場合、この問題による影響があります。
 
@@ -47,7 +56,7 @@ Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client E
 
 ### <a name="possible-causes"></a>考えられる原因
 
-個人の [Microsoft アカウント (MSA)](https://account.microsoft.com/account) でログインしているユーザーの場合、このようなコマンドにおいてユーザーの識別に使用されるユーザーのプリンシパル ID が、ユーザーのログイン メールとは異なる場合があります。そのため、スクリプトによってこれを検出し、使用してロールを適切に割り当てることが困難になります。
+個人の [Microsoft アカウント (MSA)](https://account.microsoft.com/account) でログインしているユーザーの場合、このようなコマンドにおいてユーザーの識別に使用されるユーザーのプリンシパル ID が、ユーザーのサインイン メールとは異なる場合があります。そのため、スクリプトによってこれを検出し、使用してロールを適切に割り当てることが困難になります。
 
 ## <a name="issue-with-interactive-browser-authentication"></a>対話型ブラウザーの認証に関する問題
 
@@ -64,11 +73,11 @@ Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client E
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
-解決するには、Azure.Identity バージョン **1.2.2** を使用するようにアプリケーションを更新します。 このバージョンのライブラリを使用することで、ブラウザーが想定どおりに読み込まれ、認証されるはずです。
+解決するには、`Azure.Identity` バージョン **1.2.2** を使用するようにアプリケーションを更新します。 このバージョンのライブラリを使用することで、ブラウザーが想定どおりに読み込まれ、認証されるはずです。
 
 ### <a name="possible-causes"></a>考えられる原因
 
-これは、最新版 Azure.Identity ライブラリ (バージョン **1.2.0**) の未解決問題に関連しています。[*InteractiveBrowserCredential の使用時に認証に失敗します*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
+これは、最新版 `Azure.Identity` ライブラリ (バージョン **1.2.0**) の未解決問題に関連しています。[*InteractiveBrowserCredential の使用時に認証に失敗します*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
 
 この問題は、Azure Digital Twins アプリケーションでバージョン **1.2.0** を使用している場合や、バージョンを指定せずにライブラリをプロジェクトに追加した場合 (これによっても最新バージョンが規定で使用されます) に発生します。
 

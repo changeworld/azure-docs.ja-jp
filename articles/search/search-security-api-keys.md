@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7cd6e61b8614e4c8ff5d54232972865c81cbb3ff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928872"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294783"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの管理者 API キーを作成する
 
@@ -21,7 +21,7 @@ Search サービスへのすべての HTTP 要求には、対象のサービス�
 
 キーは、サービスのプロビジョニング中に検索サービスで作成されます。 [Azure portal](https://portal.azure.com) でキーの値を表示および取得することができます。
 
-![ポータル ページの [設定] の [キー] セクション](media/search-manage/azure-search-view-keys.png)
+![ポータル ページ、設定の取得、キー セクション](media/search-manage/azure-search-view-keys.png)
 
 ## <a name="what-is-an-api-key"></a>API キーとは
 
@@ -47,7 +47,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
 3. サービスを選択し、[概要] ページで **[設定]**  > **[キー]** の順に移動して管理者キーとクエリ キーを表示します。
 
-   ![ポータル ページの [設定] の [キー] セクション](media/search-security-overview/settings-keys.png)
+   ![ポータル ページ、設定の表示、キー セクション](media/search-security-overview/settings-keys.png)
 
 ## <a name="create-query-keys"></a>クエリ キーを作成する
 

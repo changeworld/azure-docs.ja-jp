@@ -8,20 +8,24 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bff99cdd44763c0df6bb5b2dd863b27728c23fcd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744600"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318687"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
+
+[!INCLUDE [regulation](./includes/regulation.md)]
 
 Video Indexer (VI) は、Azure Media Services AI ソリューションであり、Azure Cognitive Services ブランドの一部です。 Video Indexer では、複数のチャンネル (音声、ボーカル、ビジュアル) に基づく機械学習モデルを使用して、(データ分析やコーディング スキルを必要としない) 詳細な分析情報を抽出する機能を提供します。 さらに、モデルのカスタマイズとトレーニングを行うことができます。 このサービスを使用すると、ディープ検索が可能になり、運用コストが削減され、新しい収益化の機会が可能になり、(エントリ バリアが低い) ビデオの大規模なアーカイブで新しいユーザー エクスペリエンスを生み出します。
 
 Video Indexer で分析情報の抽出を開始するには、アカウントを作成してビデオをアップロードする必要があります。 Video Indexer にビデオをアップロードすると、さまざまな AI モデルを実行することで、ビジュアルとオーディオの両方が分析されます。 Video Indexer でビデオを分析すると、分析情報が AI モデルによって抽出されます。
+
+Video Indexer アカウントを作成し、それを Media Services に接続すると、その Media Services アカウントに関連付けられている Azure ストレージ アカウントにメディアとメタデータのファイルが格納されます。 詳細については、「[Azure に接続された Video Indexer アカウントを作成する](connect-to-azure.md)」を参照してください。
 
 次の図はイラストであり、バックエンドで Video Indexer がどのように機能するかについての技術的な説明ではありません。
 

@@ -1,27 +1,29 @@
 ---
-title: テキスト読み上げ - 音声サービス
+title: テキスト読み上げの概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 事前設定の音声を選択するか、独自のカスタム音声を作成します。
+description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 この記事は、テキスト読み上げサービスの利点と機能の概要になっています。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: cog-serv-seo-aug-2020
+keywords: テキスト読み上げ
+ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167710"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401182"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスで、テキストを人間のような合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を作成することもできます。 標準音声は、45 を超える言語とロケールで 75 種類以上が用意されています。ニューラル音声は、一部の言語とロケールで 5 種類が用意されています。 サポートされている音声、言語、ロケールの一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
+この概要では、お使いのアプリケーション、ツール、デバイスでテキストを人間のような合成音声に変換することを可能にするテキスト読み上げの利点と機能について説明します。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を作成することもできます。 標準音声は、45 を超える言語とロケールで 75 種類以上が用意されています。ニューラル音声は、一部の言語とロケールで 5 種類が用意されています。 サポートされている音声、言語、ロケールの一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
 > [!NOTE]
 > Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API または Custom Speech をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。

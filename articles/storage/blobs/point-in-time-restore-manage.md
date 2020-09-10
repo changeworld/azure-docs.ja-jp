@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a4c68454807cb26ac62799b598f146680e37c42
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445442"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230179"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>ブロック BLOB でポイントインタイム リストアを有効にして管理する (プレビュー)
 
@@ -184,4 +184,4 @@ $job | Wait-Job
 - [ブロック BLOB のポイントインタイム リストア (プレビュー)](point-in-time-restore-overview.md)
 - [論理的な削除](soft-delete-overview.md)
 - [変更フィード (プレビュー)](storage-blob-change-feed.md)
-- [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
+- [BLOB バージョン管理](versioning-overview.md)

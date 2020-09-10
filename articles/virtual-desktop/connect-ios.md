@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79db3db5a46700f55c1dc759443cae194660372d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007643"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230043"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>iOS クライアントを使用して Windows Virtual Desktop に接続する
 
@@ -36,14 +36,15 @@ ms.locfileid: "88007643"
 2. **[Feed URL]\(フィード URL\)** フィールドにフィード URL を入力します。 フィード URL には、URL またはメール アドレスのいずれかを指定できます。
    - URL を使用する場合は、管理者によって付与されたものを使用します。 通常、URL は <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> です。
    - 電子メールを使用するには、電子メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者がそのようにサーバーを構成した場合)。
-3. **[Next]\(次へ\)** をタップします。
+   - US Gov ポータルから接続するには、<https://rdweb.wvd.azure.us/api/arm/feeddiscovery> を使用します。
+3. **[Next]** \(次へ\) をタップします。
 4. メッセージが表示されたら、資格情報を入力します。
    - **[User name]\(ユーザー名\)** 。リソースへのアクセス許可を持つユーザー名を指定します。
    - **[パスワード]** には、ユーザー名に関連付けられているパスワードを指定します。
    - 管理者が追加の要素を指定するように認証を構成した場合、そのように求められることもあります。
 5. **[保存]** をタップします。
 
-この後、接続センターにリモート リソースが表示されるはずです。
+その後、接続センターにリモート リソースが表示されます。
 
 フィードをサブスクライブすると、フィードのコンテンツが定期的に自動的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
 

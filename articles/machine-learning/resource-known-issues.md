@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757287"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230383"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -185,6 +185,8 @@ ms.locfileid: "88757287"
 
 * **AmlCompute の作成に関する問題**:まれにですが、GA リリースの前に Azure portal から Azure Machine Learning ワークスペースを作成したユーザーが、そのワークスペースに AmlCompute を作成できないことがあります。 サービスにサポート リクエストを送るか、ポータルまたは SDK を使って新しいワークスペースを作成することで、すぐにブロックを解除することができます。
 
+* **Azure Container Registry では現在、リソース グループ名に Unicode 文字を使用できません**:そのリソース グループ名に Unicode 文字が含まれているため、ACR 要求が失敗する可能性があります。 この問題を軽減するため、別の名前を付けたリソース グループで ACR を作成することをお勧めします。
+
 ## <a name="work-with-data"></a>データの処理
 
 ### <a name="overloaded-azurefile-storage"></a>オーバーロードされた AzureFile ストレージ
@@ -208,7 +210,7 @@ ms.locfileid: "88757287"
 
 ### <a name="data-labeling-projects"></a>プロジェクトのラベル付けデータ
 
-|問題  |解決方法  |
+|問題  |解像度  |
 |---------|---------|
 |BLOB データストアに作成されたデータセットしか使用できない。     |  これは、現在のリリースの既知の制限です。       |
 |作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される。     | ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。         |
@@ -316,6 +318,26 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>自動化された機械学習
 
+* **AutoML 依存関係の最近のアップグレードで互換性がなくなります**:SDK のバージョン 1.13.0 以降、前のパッケージでピン留めした旧バージョンと今回ピン留めする新バージョンとの間に互換性がないことに起因し、古い SDK でモデルが読み込まれません。 次のようなエラーが表示されます。
+  * モジュールが見つかりません:例: `No module named 'sklearn.decomposition._truncated_svd`、
+  * インポート エラー:例: `ImportError: cannot import name 'RollingOriginValidator'`、
+  * 属性エラー:例: `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  この問題を回避するには、AutoML SDK トレーニング バージョンに基づき、次の 2 つの手順のいずれかを行います。
+  1. AutoML SDK トレーニング バージョンが 1.13.0 より新しい場合、`pandas == 0.25.1` と `sckit-learn==0.22.1` が必要です。 バージョンが一致しない場合、下に示すように、scikit-learn と pandas を適切なバージョンにアップグレードします。
+  
+  ```bash
+     pip install --upgrade pandas==0.25.1
+     pip install --upgrade scikit-learn==0.22.1
+  ```
+  
+  2. AutoML SDK トレーニング バージョンが 1.12.0 以前の場合、`pandas == 0.23.4` と `sckit-learn==0.20.3` が必要です。 バージョンが一致しない場合、下に示すように、scikit-learn と pandas を適切なバージョンにダウングレードします。
+  
+  ```bash
+    pip install --upgrade pandas==0.23.4
+    pip install --upgrade scikit-learn==0.20.3
+  ```
+ 
 * **TensorFlow**: SDK のバージョン 1.5.0 以降の自動機械学習では、TensorFlow モデルは既定ではインストールされません。 自動 ML 実験で TensorFlow をインストールして使用するには、CondaDependecies を使用して tensorflow==1.12.0 をインストールしてください。 
  
    ```python
@@ -381,7 +403,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 次のエラーに対して、これらのアクションを実行します。
 
-|エラー  | 解決方法  |
+|エラー  | 解像度  |
 |---------|---------|
 |Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |

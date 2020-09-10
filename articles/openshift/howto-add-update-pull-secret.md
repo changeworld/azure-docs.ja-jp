@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: プル シークレット、aro、openshift、Red Hat
-ms.openlocfilehash: 3351052db63f095bfca5f0b91f26e1013319c582
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094921"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294749"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 クラスターで Red Hat プル シークレットを追加または更新する
 
-このガイドでは、既存の Azure Red Hat OpenShift 4.x クラスターで Red Hat プル シークレットを追加または更新する方法について説明します。
+このガイドでは、既存の Azure Red Hat OpenShift (ARO) 4.x クラスターでの Red Hat プル シークレットの追加および更新について説明します。
 
 クラスターを初めて作成する場合は、クラスターの作成時にプル シークレットを追加できます。 Red Hat プル シークレットを使用して ARO クラスターを作成する方法の詳細については、「[Azure Red Hat OpenShift 4 クラスターを作成する](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional)」を参照してください。
 
@@ -29,13 +29,13 @@ Red Hat プル シークレットを追加せずに ARO クラスターを作成
 
 このセクションでは、Red Hat プル シークレットからの追加の値でプル シークレットを更新する手順について説明します。
 
-1. 次のコマンドを実行して、openshift-config 名前空間で `pull-secret` という名前のシークレットをフェッチし、個別のファイルに保存します。 
+1. 次のコマンドを実行して、`openshift-config` 名前空間で `pull-secret` という名前のシークレットをフェッチし、個別のファイルに保存します。 
 
     ```console
     oc get secrets pull-secret -n openshift-config -o template='{{index .data ".dockerconfigjson"}}' | base64 -d > pull-secret.json
     ```
 
-    次のように出力されます (実際のシークレット値は削除されていることに注意してください)。
+    出力は次のようになります。 (実際のシークレット値は削除されていることに注意してください。)
 
     ```json
     {
@@ -47,7 +47,7 @@ Red Hat プル シークレットを追加せずに ARO クラスターを作成
     }
     ```
 
-2. [Red Hat OpenShift クラスター マネージャー ポータル](https://cloud.redhat.com/openshift/install/azure/aro-provisioned)に移動し、 **[Download pull secret] (プル シークレットのダウンロード)** をクリックします。 Red Hat のプル シークレットは次のように表示されます (実際のシークレット値は削除されていることに注意してください)。
+2. [Red Hat OpenShift クラスター マネージャー ポータル](https://cloud.redhat.com/openshift/install/azure/aro-provisioned)に移動して、 **[Download pull secret]\(プル シークレットのダウンロード\)** を選択します。 Red Hat プル シークレットは、次のようになります。 (実際のシークレット値は削除されていることに注意してください。)
 
     ```json
     {
@@ -75,7 +75,7 @@ Red Hat プル シークレットを追加せずに ARO クラスターを作成
 3. Red Hat プル シークレットで見つかったエントリを追加して、クラスターから取得したプル シークレット ファイルを編集します。 
 
     > [!IMPORTANT]
-    > Red Hat プル シークレットからの `cloud.openshift.com` エントリを含めると、クラスターで Red Hat への利用統計情報の送信が開始されます。 このセクションは、利用統計情報を送信する場合にのみ含めてください。 それ以外の場合は、次のセクションを省略してください。
+    > Red Hat プル シークレットからの `cloud.openshift.com` エントリを含めると、クラスターで Red Hat への利用統計情報の送信が開始されます。 このセクションは、利用統計情報を送信する場合にのみ含めてください。 それ以外の場合は、次のセクションを省略してください。    
     > ```json
     > {
     >         "cloud.openshift.com": {
@@ -86,13 +86,14 @@ Red Hat プル シークレットを追加せずに ARO クラスターを作成
 
     > [!CAUTION]
     > プル シークレットからの `arosvc.azurecr.io` エントリは削除したり、変更したりしないでください。 このセクションは、クラスターが正常に機能するために必要です。
+
     ```json
     "arosvc.azurecr.io": {
                 "auth": "<my-aroscv.azurecr.io-secret>"
             }
     ```
 
-    最終ファイルは次のように表示されます (実際のシークレット値は削除されていることに注意してください)。
+    最終ファイルは次のようになります。 (実際のシークレット値は削除されていることに注意してください。)
 
     ```json
     {
@@ -120,20 +121,21 @@ Red Hat プル シークレットを追加せずに ARO クラスターを作成
     }
     ```
 
-4. 有効な json ファイルであることを確認してください。 Json を検証するには、さまざまな方法があります。 次の例では、jq を使用します。
+4. 有効な JSON ファイルであることを確認してください。 JSON を検証するには、さまざまな方法があります。 次の例では、jq を使用します。
+
     ```json
     cat pull-secret.json | jq
     ```
 
     > [!NOTE]
-    > ファイル内にエラーがある場合は、`parse error` が表示される可能性があります。
+    > ファイル内にエラーがある場合は、`parse error` が表示されます。
 
 ## <a name="add-your-pull-secret-to-your-cluster"></a>クラスターにプル シークレットを追加する
 
-次のコマンドを実行してプル シークレットを追加します。
+次のコマンドを実行して、プル シークレットを追加します。
 
 > [!NOTE]
-> このコマンドを実行すると、クラスター ノードが更新されるたびに 1 つずつ再起動されます。 
+> このコマンドを実行すると、クラスター ノードが更新され、その都度 1 つずつ再起動されます。 
 
 ```console
 oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson=./pull-secret.json
@@ -151,7 +153,7 @@ Red Hat オペレーターが有効になるように、次のオブジェクト
 oc edit configs.samples.operator.openshift.io/cluster -o yaml
 ```
 
-`spec.architectures.managementState` および `status.architecture.managementState` の値を `Removed` から `Managed` に変更します。 
+`spec.architectures.managementState` 値と `status.architecture.managementState` 値を `Removed` から `Managed` に変更します。 
 
 次の YAML スニペットには、編集された YAML ファイルの関連セクションのみが表示されています。
 
@@ -175,13 +177,13 @@ status:
   version: 4.3.27
 ```
 
-次に、次のコマンドを実行してオペレーター ハブ構成ファイルを編集します。  
+次に、次のコマンドを実行して、オペレーター ハブ構成ファイルを編集します。  
 
 ```console
 oc edit operatorhub cluster -o yaml
 ```
 
-有効にする任意のソースで `Spec.Sources.Disabled` および `Status.Sources.Disabled` の値を `true` から `false` に変更します。
+有効にする任意のソースに対して、`Spec.Sources.Disabled` 値と `Status.Sources.Disabled` 値を `true` から `false` に変更します。
 
 次の YAML スニペットには、編集された YAML ファイルの関連セクションのみが表示されています。
 
@@ -226,7 +228,7 @@ openshift-marketplace   redhat-operators      Red Hat Operators     grpc   Red H
 
 認定オペレーターと Red Hat オペレーターが表示されない場合は、しばらく待ってから再度試してください。
 
-プル シークレットが更新され、正常に動作していることを確認するには、OperatorHub を開き、Red Hat で検証されたオペレーターを確認します。 たとえば、OpenShift Container Storage オペレーターが使用可能かどうかを確認し、インストールするアクセス許可を持っているかどうかを確認します。
+プル シークレットが更新され、正常に動作していることを確認するには、OperatorHub を開き、Red Hat で確認されたオペレーターについて確認します。 たとえば、OpenShift Container Storage オペレーターが使用可能かどうかを確認し、インストールするためのアクセス許可を持っているかどうかを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 Red Hat プル シークレットの詳細については、「[イメージ プル シークレットの使用](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html)」を参照してください。

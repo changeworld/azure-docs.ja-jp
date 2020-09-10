@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 93f7107af18d6720784bd2f249e51a9c96705d3f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612386"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378578"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項のエクスポート
 
@@ -36,12 +36,12 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 |リリース状態:|一般公開|
 |価格:|Free レベル|
 |必要なロールとアクセス許可:|リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)<br>ターゲット リソースに対する書き込みアクセス許可も必要になります|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![はい](./media/icons/yes-icon.png) 中国政府 (Event Hub に)、その他の政府|
 |||
 
 
 
-## <a name="setting-up-a-continuous-export"></a>連続エクスポートを設定する
+## <a name="set-up-a-continuous-export"></a>連続エクスポートを設定する
 
 連続エクスポート先として Log Analytics ワークスペースまたは Azure Event Hubs のどちらを設定する場合でも、次の手順を実行する必要があります。
 
@@ -60,7 +60,7 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 1. **[保存]** を選択します。
 
 
-## <a name="setting-up-continuous-export-via-the-rest-api"></a>REST API による連続エクスポートの設定
+## <a name="set-up-continuous-export-via-the-rest-api"></a>REST API を利用し、連続エクスポートを設定する
 
 連続エクスポート機能は、Azure Security Center の[自動化 API](https://docs.microsoft.com/rest/api/securitycenter/automations) を使用して構成と管理を行うことができます。 この API を使用して、以下の選択可能な出力先にエクスポートするための自動化を作成または更新します。
 
@@ -83,7 +83,7 @@ API には、Azure portal からは使用できない追加の機能が用意さ
 
 
 
-## <a name="configuring-siem-integration-via-azure-event-hubs"></a>Azure Event Hubs を使用した SIEM 統合の構成
+## <a name="configure-siem-integration-via-azure-event-hubs"></a>Azure Event Hubs を使用して SIEM 統合を構成する
 
 Azure Event Hubs は、ストリーミング データをプログラムで使用するための優れたソリューションです。 Azure Security Center のアラートと推奨事項に関して、これはサードパーティの SIEM と統合するための推奨される方法です。
 

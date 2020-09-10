@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 7448da5149bb859f25de2110aa929a40f872c26b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386454"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378901"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="[新しいファイルの作成]":::
 
 1. ファイルに名前を付けます。 
-1. Jupyter Notebook Files の場合は、ファイルの種類として **[Python Notebook]\(Python ノートブック\)** を選択します。
+1. Jupyter Notebook Files の場合は、ファイルの種類として **[ノートブック]** を選択します。
 1. ファイル ディレクトリを選択します。
 1. **［作成］** を選択します
 

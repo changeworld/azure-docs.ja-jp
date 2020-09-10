@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077935"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292726"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
@@ -33,7 +33,7 @@ ms.locfileid: "85077935"
 アクセス レビューを実行する最初の手順は、アクセス レビューを見つけて開くことです。
 
 >[!IMPORTANT]
-> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべてのメールを確実に受信するため、azure-noreply@microsoft.com を信頼できる宛先のリストに追加してください。
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対する自分のアクセスをレビューするように求めるメールの例を次に示します。
 
@@ -97,7 +97,7 @@ ms.locfileid: "85077935"
     > [!NOTE]
     > **[アクセス レビュー]** タイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
 
-3. **[使ってみる]** をクリックします。 これはページ上部のバナーにあります。クリックすると新しいマイ アクセス エクスペリエンスに移ります。
+3. **[試してみる]** をクリックします。 これはページ上部のバナーにあります。クリックすると新しいマイ アクセス エクスペリエンスに移ります。
 
     ![プレビュー期間中に表示される、新しいエクスペリエンスが利用可能であることを示すバナーと、アプリとグループに対して保留中になっているアクセス レビューの一覧](./media/review-your-access/banner-your-access.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "85077935"
 ### <a name="email"></a>Email
 
 >[!IMPORTANT]
-> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべてのメールを確実に受信するため、azure-noreply@microsoft.com を信頼できる宛先のリストに追加してください。
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 電子メール メッセージの例は次のとおりです。
 

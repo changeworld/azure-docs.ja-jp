@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183635"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294715"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -377,9 +377,9 @@ A. 通常、マルチパスのパスが表示されないのはマルチパス �
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-Q. 自分のデバイスがホワイトリストに登録されているかどうかわかりません。
+Q. 自分のデバイスが許可されているかどうかわかりません。
 
-A. ご使用のデバイスがホワイトリストに登録されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
+A. ご使用のデバイスが許可されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
 
 ```console
 multipathd -k
@@ -449,4 +449,3 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 
 * [CentOS での MPIO の設定](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux トレーニング ガイド](http://linux-training.be/linuxsys.pdf)
-

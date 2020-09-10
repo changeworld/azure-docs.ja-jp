@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902356"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321244"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる
 
@@ -28,10 +28,10 @@ Azure Active Directory (Azure AD) で、Azure AD リソースを管理するた�
 
 ## <a name="assign-roles"></a>ロールを割り当てる
 
-ユーザーに Azure AD ロールを割り当てる一般的な方法は、ユーザーの **[Assigned roles]\(割り当てられているロール\)** ページです。 Privileged Identity Management (PIM) を使用して、ユーザーの資格を構成し、ジャストインタイムでロールに設定することもできます。 PIM の使用方法については、「[Privileged Identity Management のドキュメント](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)」をご覧ください。
+ユーザーに Azure AD ロールを割り当てる一般的な方法は、ユーザーの **[Assigned roles]\(割り当てられているロール\)** ページです。 Privileged Identity Management (PIM) を使用して、ユーザーの資格を構成し、ジャストインタイムでロールに設定することもできます。 PIM の使用方法については、「[Privileged Identity Management のドキュメント](../privileged-identity-management/index.yml)」をご覧ください。
 
 > [!Note]
-> Azure AD Premium P2 ライセンス プランを所有しており、既に PIM を使用している場合、すべてのロール管理タスクは [Privileged Identity Management エクスペリエンス](../users-groups-roles/directory-manage-roles-portal.md)で実行されます。
+> Azure AD Premium P2 ライセンス プランを所有しており、既に PIM を使用している場合、すべてのロール管理タスクは [Privileged Identity Management エクスペリエンス](../users-groups-roles/directory-manage-roles-portal.md)で実行されます。 この機能では現在、一度に 1 つだけのロールに割り当てることができます。 現在のところ、複数のロールを選択し、一度にユーザーに割り当てることはできません。
 >
 > ![既に PIM を使用していて Premium P2 ライセンスを所有しているユーザーの Azure AD ロールは PIM で管理される](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
@@ -79,6 +79,6 @@ Azure Active Directory (Azure AD) で、Azure AD リソースを管理するた�
 
 - [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 
-- [別のディレクトリからのゲスト ユーザーの追加](../b2b/what-is-b2b.md)
+- [別のディレクトリからのゲスト ユーザーの追加](../external-identities/what-is-b2b.md)
 
 [Azure Active Directory のユーザー管理に関するドキュメント](../users-groups-roles/index.yml)で、その他のその他のユーザー管理タスクについて確認できます。

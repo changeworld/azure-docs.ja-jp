@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/02/2020
+ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921268"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378799"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する
 
@@ -38,15 +38,15 @@ ms.locfileid: "87921268"
 次のセクションで、ランディング ページを作成する手順について説明します。
 
 1. ランディング ページ用の [Azure AD アプリの登録を作成する](#create-an-azure-ad-app-registration)。
-2. アプリの[開始点としてコード サンプルを使用する](#use-a-code-sample-as-a-starting-point)。
-3. コマーシャル マーケットプレースによって URL に追加された[マーケットプレース購入 ID トークンを解決する](#resolve-the-marketplace-purchase-identification-token)。
-4. [ID トークン内にエンコードされている要求から情報を読み取る](#read-information-from-claims-encoded-in-the-id-token)。これはログイン後に Azure AD から受信されるものであり、要求と共に送信されます。
-5. [Microsoft Graph API を使用](#use-the-microsoft-graph-api)して、必要に応じて追加情報を収集する。
-6. [2 つの Azure AD アプリを使用して、運用環境のセキュリティを向上させる](#use-two-azure-ad-apps-to-improve-security-in-production)。
+1. アプリの[開始点としてコード サンプルを使用する](#use-a-code-sample-as-a-starting-point)。
+1. [2 つの Azure AD アプリを使用して、運用環境のセキュリティを向上させる](#use-two-azure-ad-apps-to-improve-security-in-production)。
+1. コマーシャル マーケットプレースによって URL に追加された[マーケットプレース購入 ID トークンを解決する](#resolve-the-marketplace-purchase-identification-token)。
+1. [ID トークン内にエンコードされている要求から情報を読み取る](#read-information-from-claims-encoded-in-the-id-token)。これはサインイン後に Azure AD から受信されるものであり、要求と共に送信されます。
+1. [Microsoft Graph API を使用](#use-the-microsoft-graph-api)して、必要に応じて追加情報を収集します。
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD アプリの登録を作成する
 
-コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 マーケットプレースにアクセスした購入者は、[Azure AD アカウントまたは Microsoft アカウント (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) で認証されています。 購入後、購入者はコマーシャル マーケットプレースからランディング ページ URL に移動し、SaaS アプリケーションのサブスクリプションをアクティブにして管理します。 購入者が Azure AD SSO を使用してアプリケーションにサインインできるようにする必要があります。 (ランディング ページの URL は、オファーの [[技術的な構成]](partner-center-portal/offer-creation-checklist.md#technical-configuration-page) ページで指定されます。)
+コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 マーケットプレースにアクセスした購入者は、[Azure AD アカウントまたは Microsoft アカウント (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) で認証されています。 購入後、購入者はコマーシャル マーケットプレースからランディング ページ URL に移動し、SaaS アプリケーションのサブスクリプションをアクティブにして管理します。 購入者が Azure AD SSO を使用してアプリケーションにサインインできるようにする必要があります。 (ランディング ページの URL は、オファーの [[技術的な構成]](plan-saas-offer.md#technical-information) ページで指定されます。)
 
 ID を使用するには、最初の手順として、ランディング ページが Azure AD アプリケーションとして登録されていることを確認する必要があります。 アプリケーションを登録すると、Azure AD を使用してユーザーを認証し、ユーザー リソースへのアクセスを要求できるようになります。 これは、アプリケーションの定義と見なすことができます。これにより、サービスは、アプリにトークンを発行する方法をそのアプリの設定に基づいて識別できるようになります。
 
@@ -82,7 +82,7 @@ Azure AD ログインが有効化されているシンプルな Web サイトを
 購入者がランディング ページにリダイレクトされると、URL パラメーターにトークンが追加されます。 このトークンは、Azure AD によって発行されたトークンやサービス間認証に使用されるアクセス トークンとは別のもので、[SaaS Fulfillment API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) 解決呼び出しによってサブスクリプションの詳細を取得するための入力として使用されます。 SaaS Fulfillment API へのすべての呼び出しと同様に、サービス間の要求の認証は、アプリのサービス間認証用 Azure AD アプリケーション ID ユーザーに基づくアクセス トークンを使用して行われます。
 
 > [!NOTE]
-> ほとんどの場合、2 つ目のシングル テナント アプリケーションからこの呼び出しを行うことをお勧めします。 この記事で後述する「[2 つの Azure AD アプリを使用して、運用環境のセキュリティを向上する](#use-two-azure-ad-apps-to-improve-security-in-production)」を参照してください。
+> ほとんどの場合、2 つ目のシングル テナント アプリケーションからこの呼び出しを行うことをお勧めします。 この記事で前に紹介した「[2 つの Azure AD アプリを使用して、運用環境のセキュリティを向上する](#use-two-azure-ad-apps-to-improve-security-in-production)」を参照してください。
 
 ### <a name="request-an-access-token"></a>アクセス トークンを要求する
 
@@ -131,4 +131,4 @@ Azure AD に登録されているほとんどのアプリは、委任された�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)
+- [コマーシャル マーケットプレースでの SaaS オファーの作成方法](create-new-saas-offer.md)

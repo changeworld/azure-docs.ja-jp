@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 1a645a333db9b24005639f4adbb2913a2b887b66
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607145"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055670"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>パートナー センターの [Marketplace の分析情報] ダッシュボード
 
@@ -67,6 +67,9 @@ Azure Marketplace または AppSource のオファーにユーザーがアクセ
 ## <a name="marketplace-insights-summary"></a>Marketplace の分析情報の概要
 
 Marketplace の分析情報の概要セクションには、選択した日付範囲の**ページ アクセス**、**Call to Action**、**ユニーク ビジター**の数が表示されます。
+
+>[!NOTE]
+>Marketplace の分析情報ダッシュボードにはクリックストリーム データ データがありますが、これをリードのターゲット エンドポイントで生成されたリードに相関付けることはできません。
 
 ### <a name="page-visits"></a>ページ アクセス
 

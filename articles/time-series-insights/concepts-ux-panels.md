@@ -1,6 +1,6 @@
 ---
-title: Gen2 Explorer でデータを視覚化する - Azure Time Series Insights Gen2| Microsoft Docs
-description: Azure Time Series Insights Gen2 エクスプローラーで使用できる機能とオプションについて説明します。
+title: TSI Explorer でデータを視覚化する - Azure Time Series Insights Gen2 | Microsoft Docs
+description: Azure Time Series Insights Explorer で使用できる機能とオプションについて説明します。
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -8,22 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164157"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227051"
 ---
-# <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 エクスプローラー
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
 この記事では、Azure Time Series Insights Gen2 [デモ環境](https://insights.timeseries.azure.com/preview/demo)内で使用できるさまざまな機能とオプションについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Time Series Insights Gen2 エクスプローラーを使用するには、次のことが必要です。
+Azure Time Series Insights Explorer を使用するには、次のことが必要です。
 
 * Azure Time Series Insights Gen2 環境がプロビジョニングされていること。 インスタンスのプロビジョニングの詳細については、[Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) のチュートリアルをお読みください。
 * 作成した Azure Time Series Insights Gen2 環境への[データ アクセスをアカウントに対して提供](./time-series-insights-data-access.md)します。 自分自身と同じように他のユーザーにもアクセスを提供できます。
@@ -31,11 +31,11 @@ Azure Time Series Insights Gen2 エクスプローラーを使用するには、
   * [イベント ハブに接続する方法](./time-series-insights-how-to-add-an-event-source-eventhub.md)を参照してください
   * [IoT ハブに接続する方法](./time-series-insights-how-to-add-an-event-source-iothub.md)を参照してください
 
-## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 エクスプローラーを調べる
+## <a name="explore-the-azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer を試す
 
-Azure Time Series Insights Gen2 エクスプローラーは次の 7 つの要素で構成されます。
+Azure Time Series Insights Explorer は次の 7 つの要素で構成されます。
 
-[![Azure Time Series Insights Gen2 エクスプローラーの概要](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
+[![Azure Time Series Insights Explorer の概要](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
 1. [環境パネル](#1-environment-panel):すべての Azure Time Series Insights Gen2 環境を表示します。
 1. [ナビゲーション バー](#2-navigation-bar):**分析**ページと**モデル** ページを切り替えることができます。
@@ -193,7 +193,7 @@ URL リンクをチームと共有するには、新しい **[Share]\(共有\)**
 > [!TIP]
 > プロフィール アイコンを選択して言語を選択することもできます。
 
-Azure Time Series Insights Gen2 エクスプローラーでは、2 つのテーマがサポートされています。
+Azure Time Series Insights Explorer では 2 つのテーマがサポートされています。
 
 * **ライト テーマ**:このドキュメントで示されている既定のテーマです。
 * **ダーク テーマ**:次に示すように Explorer をレンダリングします。
@@ -204,7 +204,7 @@ Azure Time Series Insights Gen2 エクスプローラーでは、2 つのテー�
 
 ### <a name="gen2-terms-panel"></a>Gen2 の条件パネル
 
-このセクションは、更新された UI での Explorer の使用を試みる既存の Gen 1 環境のみに適用されます。 Gen 1 製品と Gen2 製品を組み合わせて使用できます。 更新された Explorer には、既存の UI からいくつかの機能が追加されていますが、新しい Azure Time Series Insights Gen2 エクスプローラーで Gen 1 環境向けの完全な UI エクスペリエンスを利用できます。
+このセクションは、更新された UI での Explorer の使用を試みる既存の Gen 1 環境のみに適用されます。 Gen 1 製品と Gen2 製品を組み合わせて使用できます。 更新された Explorer には、既存の UI からいくつかの機能が追加されていますが、新しい Azure Time Series Insights Explorer で Gen 1 環境向けの完全な UI エクスペリエンスを利用できます。
 
 階層の代わりに、Azure Time Series Insights Gen2 条件パネルが表示されます。 条件パネルでは、環境内でのクエリを定義できます。 これは、述語に基づいてデータをフィルター処理するために使用することもできます。
 

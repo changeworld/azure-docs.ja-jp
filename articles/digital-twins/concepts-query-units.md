@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5334a1196ac8044c56e615cf8894b44646b48fb4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88615095"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067707"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure Digital Twins のクエリ ユニット 
 
@@ -20,7 +20,9 @@ Azure Digital Twins の**クエリ ユニット (QU)** は、[クエリ API](htt
 
 Azure Digital Twins でサポートされているクエリ操作を実行するために必要なシステム リソース (CPU、IOPS、メモリなど) を抽象化し、代わりにクエリ ユニットで使用状況を追跡できるようにします。
 
-クエリを実行するために消費される QU の数は、クエリの複雑さの影響を受けます。 
+クエリの実行で消費されるクエリ ユニットの量は以下によって左右されます。
+* クエリの複雑性 
+* 結果セットのサイズ (つまり、結果を 10 個返すクエリは、複雑性が同じながら結果を 1 個だけ返すクエリよりたくさんの QU を消費します)
 
 この記事では、クエリ ユニットの概要と、クエリ ユニットの消費を追跡する方法について説明します。
 

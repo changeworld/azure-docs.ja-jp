@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: c14d300e2c09316e0665ece3f3e15f7036d5b9a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dfeafc34547cff663a13ee7be78e2d6819c2ca19
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525077"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295599"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 認証: P2S OpenVPN プロトコル接続用に VPN クライアントを構成する
 
@@ -20,6 +20,8 @@ ms.locfileid: "86525077"
 
 > [!NOTE]
 > Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
+>
+> Azure AD 認証では、Windows 10 でのみ利用できる Azure VPN クライアントが必要になります。
 >
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>クライアント プロファイルの操作

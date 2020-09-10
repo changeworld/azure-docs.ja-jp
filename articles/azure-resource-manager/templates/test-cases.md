@@ -2,15 +2,15 @@
 title: テスト ツールキットのテスト ケース
 description: ARM テンプレート テスト ツールキットによって実行されるテストについて説明します。
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c18a2658ba1af9370699004860d1743603e8143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255846"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378119"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットの既定のテスト ケース
 
@@ -100,6 +100,37 @@ ms.locfileid: "85255846"
         "type": "SecureString"
     }
 }
+```
+
+## <a name="environment-urls-cant-be-hardcoded"></a>環境 URL をハードコーディングできない
+
+テスト名: **DeploymentTemplate Must Not Contain Hardcoded Uri** (DeploymentTemplate にはハードコーディングされた Uri を含めることができない)
+
+テンプレート内の環境 URL はハードコーディングしないでください。 代わりに、[環境関数](template-functions-deployment.md#environment)を使用し、展開中、これらの URL を動的に取得します。 ブロックされている URL ホストの一覧については、[テスト ケース](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)を参照してください。
+
+URL がハードコーディングされているため、次の例ではこのテストに**不合格**となります。
+
+```json
+"variables":{
+    "AzureURL":"https://management.azure.com"
+}
+```
+
+[concat](template-functions-string.md#concat) または [uri](template-functions-string.md#uri) と共に使用されているときも、テストは**不合格**になります。
+
+```json
+"variables":{
+    "AzureSchemaURL1": "[concat('https://','gallery.azure.com')]",
+    "AzureSchemaURL2": "[uri('gallery.azure.com','test')]"
+}
+```
+
+次の例は、このテストで**合格**になります。
+
+```json
+"variables": {
+    "AzureSchemaURL": "[environment().gallery]"
+},
 ```
 
 ## <a name="location-uses-parameter"></a>場所にはパラメーターを使用する
@@ -203,7 +234,7 @@ ms.locfileid: "85255846"
 
 リソースの場所は、[テンプレート式](template-expressions.md)または `global` に設定する必要があります。 テンプレート式では、通常、前のテストで説明した場所パラメーターが使用されます。
 
-次の例は、場所が式または `global` でないため、このテストで**不合格**になります。
+場所が式でも  **でもないため、次の例ではこのテストに**不合格`global`になります。
 
 ```json
 {
@@ -351,7 +382,7 @@ ms.locfileid: "85255846"
 
 ## <a name="artifacts-parameter-defined-correctly"></a>成果物パラメーターが正しく定義されている
 
-テスト名: **artifacts-parameter** (成果物パラメーター)
+テスト名: **artifacts parameter** (成果物パラメーター)
 
 `_artifactsLocation` と `_artifactsLocationSasToken` のパラメーターを指定する場合は、正しい既定値と型を使用します。 このテストに合格するには、次の条件が満たされている必要があります。
 
@@ -514,9 +545,9 @@ concat 関数を使用してリソース ID を作成しないでください。
 
 `reference` と `list*` は、`concat` を使用してリソース ID を作成すると、テストで**不合格**になります。
 
-## <a name="dependson-cant-be-conditional"></a>dependsOn を条件付きにすることはできない
+## <a name="dependson-best-practices"></a>dependsOn ベスト プラクティス
 
-テスト名: **DependsOn Must Not Be Conditional** (dependsOn を条件付きにしてはならない)
+テスト名: **DependsOn Best Practices** (DependsOn ベスト プラクティス)
 
 デプロイの依存関係を設定するときに、[if](template-functions-logical.md#if) 関数を使用して条件をテストしないでください。 あるリソースが[条件付きでデプロイされる](conditional-resource-deployment.md)リソースに依存している場合は、任意のリソースと同様に依存関係を設定します。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
 
@@ -572,7 +603,7 @@ concat 関数を使用してリソース ID を作成しないでください。
 
 ## <a name="use-stable-vm-images"></a>安定した VM イメージを使用する
 
-テスト名: **Virtual-Machines-Should-Not-Be-Preview** (仮想マシンがプレビューであってはならない)
+テスト名: **Virtual Machines Should Not Be Preview** (仮想マシンはプレビューにしない)
 
 仮想マシンではプレビュー イメージを使用しないでください。
 

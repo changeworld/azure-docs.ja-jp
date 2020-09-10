@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f4bf3974cd561626c280dc65aa5fc78d0c9a159b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 7ff8f3d18564140b4654b1591eec5c0e1f40b7cf
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056501"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077910"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
@@ -255,6 +255,28 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 | **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 
 詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) に関するリファレンス ドキュメントを参照してください。
+
+#### <a name="download-previous-versions-of-a-blob"></a>前のバージョンの BLOB をダウンロードする
+
+[BLOB のバージョン管理](../blobs/versioning-enable.md)を有効にした場合、BLOB の以前のバージョンを 1 つでも複数でもダウンロードできます。 
+
+まず、[バージョン ID](../blobs/versioning-overview.md) の一覧が含まれるテキスト ファイルを作成します。 各バージョン ID は別個の行に表示する必要があります。 次に例を示します。 
+
+```
+2020-08-17T05:50:34.2199403Z
+2020-08-17T05:50:34.5041365Z
+2020-08-17T05:50:36.7607103Z
+```
+
+次に、[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--list-of-versions` オプションと共に使用します。 バージョンの一覧を含むテキスト ファイルの場所を指定します (例: `D:\\list-of-versions.txt`)。  
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-directory-path>' --list-of-versions '<list-of-versions-file>'`|
+| **例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+| **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+
+ダウンロードしたファイルの名前はそれぞれ、バージョン ID から始まり、それに BLOB の名前が続きます。 
 
 ## <a name="copy-blobs-between-storage-accounts"></a>ストレージ アカウント間で BLOB をコピーする
 

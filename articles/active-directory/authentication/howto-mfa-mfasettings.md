@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027701"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179405"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -242,12 +242,9 @@ Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用す�
 
 組織がオンプレミスのアプリケーションに MFA を提供するために NPS 拡張機能をデプロイしている場合は、認証が試行されるとき、常にソース IP アドレスが NPS サーバーとして表示されます。
 
-| Azure AD テナントの種類 | 信頼できる IP 機能のオプション |
-|:--- |:--- |
-| マネージド |**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。 最大 50 件の信頼できる IP 範囲を構成できます。|
-| フェデレーション |**すべてのフェデレーション ユーザー**: 組織の内部からサインインするすべてのフェデレーション ユーザーは、2 段階認証をバイパスできます。 ユーザーは、Active Directory フェデレーション サービス (AD FS) によって発行される要求を使用して認証をバイパスします。<br/>**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。 |
+| Azure AD テナントの種類 | 信頼できる IP 機能のオプション | |:--- |:--- |2 段階 | マネージド |**特定の範囲の IP アドレス**: 管理者は、会社のイントラネットからサインインするユーザーの多要素認証をバイパスできる IP アドレスの範囲を指定します。 最大 50 件の信頼できる IP 範囲を構成できます。| | フェデレーション |**フェデレーション ユーザー全員**: 組織の内部からサインインするフェデレーション ユーザーは全員、多要素認証をバイパスできます。 ユーザーは、Active Directory フェデレーション サービス (AD FS) によって発行される要求を使用して認証をバイパスします。<br/>**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの多要素認証をバイパスできる IP アドレスの範囲を指定します。 |
 
-信頼できる IP のバイパスは、会社のイントラネット内からのみ機能します。 **[すべてのフェデレーション ユーザー]** オプションを選択したときに、ユーザーが会社のイントラネットの外部からサインインした場合は、2 段階認証を使用してそのユーザーを認証する必要があります。 ユーザーが AD FS 要求を提示している場合でもプロセスは同じです。
+信頼できる IP のバイパスは、会社のイントラネット内からのみ機能します。 **[すべてのフェデレーション ユーザー]** オプションを選択した場合、ユーザーが会社のイントラネットの外部からサインインするときは、多要素認証を使用してそのユーザーを認証する必要があります。 ユーザーが AD FS 要求を提示している場合でもプロセスは同じです。
 
 ### <a name="end-user-experience-inside-of-corpnet"></a>企業ネットワーク内のエンドユーザー エクスペリエンス
 
@@ -278,14 +275,14 @@ Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用す�
 1. **[MFA の信頼できる IP の構成]** を選択します。
 1. **[サービス設定]** ページの **[信頼できる IP]** で、次の 2 つのオプションのいずれかを選択します。
 
-   * **[For requests from federated users originating from my intranet]\(イントラネット内のフェデレーション ユーザーから送信された要求\)** : このオプションを選択するには、チェック ボックスをオンにします。 企業ネットワークからサインインするすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 規則が存在しない場合は、AD FS で次の規則を作成します。
+   * **[For requests from federated users originating from my intranet]\(イントラネット内のフェデレーション ユーザーから送信された要求\)** : このオプションを選択するには、チェック ボックスをオンにします。 企業ネットワークからサインインするフェデレーション ユーザーは全員、AD FS によって発行されるクレームを使用して、多要素認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 規則が存在しない場合は、AD FS で次の規則を作成します。
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **[For requests from a specific range of public IPs]\(特定範囲の IP から送信された要求\)** : このオプションを選択するには、CIDR 表記を使用して、テキスト ボックスに IP アドレスを入力します。
       * xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の範囲の IP アドレスの場合は、**xxx.xxx.xxx.0/24** などの表記を使用します。
       * 単一の IP アドレスの場合は、**xxx.xxx.xxx.xxx/32** などの表記を使用します。
-      * 最大で 50 の IP アドレス範囲を入力します。 これらの IP アドレスからサインインしているユーザーは、2 段階認証をバイパスします。
+      * 最大で 50 の IP アドレス範囲を入力します。 これらの IP アドレスからサインインしたユーザーは、多要素認証をバイパスします。
 
 1. **[保存]** を選択します。
 
@@ -298,20 +295,20 @@ Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用す�
 1. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
 1. **[サービス設定]** ページの **[信頼できる IP]** で、次の 2 つのオプションのいずれか (または両方) を選択します。
 
-   * **[For requests from federated users on my intranet]\(イントラネット内のフェデレーション ユーザーから送信された要求\)** :このオプションを選択するには、チェック ボックスをオンにします。 企業ネットワークからサインインするすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 規則が存在しない場合は、AD FS で次の規則を作成します。
+   * **[For requests from federated users on my intranet]\(イントラネット内のフェデレーション ユーザーから送信された要求\)** :このオプションを選択するには、チェック ボックスをオンにします。 企業ネットワークからサインインするフェデレーション ユーザーは全員、AD FS によって発行されるクレームを使用して、多要素認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 規則が存在しない場合は、AD FS で次の規則を作成します。
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **[For requests from a specified range of IP address subnets]\(特定範囲の IP アドレスのサブネットから送信された要求\)** : このオプションを選択するには、CIDR 表記を使用して、テキスト ボックスに IP アドレスを入力します。
       * xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の範囲の IP アドレスの場合は、**xxx.xxx.xxx.0/24** などの表記を使用します。
       * 単一の IP アドレスの場合は、**xxx.xxx.xxx.xxx/32** などの表記を使用します。
-      * 最大で 50 の IP アドレス範囲を入力します。 これらの IP アドレスからサインインしているユーザーは、2 段階認証をバイパスします。
+      * 最大で 50 の IP アドレス範囲を入力します。 これらの IP アドレスからサインインしたユーザーは、多要素認証をバイパスします。
 
 1. **[保存]** を選択します。
 
 ## <a name="verification-methods"></a>検証方法
 
-サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、[アカウントへの多要素認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
 
 次の検証方法を使用できます。
 
@@ -336,25 +333,25 @@ Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用す�
 
 ## <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶
 
-_[Multi-Factor Authentication を記憶する]_ 機能を使用すると、ユーザーは、Multi-Factor Authentication を使用して正常にデバイスにサインインした後、一定の日数の間、以降の検証をバイパスすることができます。 この機能により、ユーザーが同じデバイスで MFA を実行する必要がある回数を最小限に抑えることができるので、使いやすさが向上します。
+_[Multi-Factor Authentication を記憶する]_ 機能を使用すると、ユーザーは、Multi-Factor Authentication を使用して正常にデバイスにサインインした後、一定の日数の間、以降の検証をバイパスすることができます。 使いやすさを向上させ、かつユーザーが同じデバイスに対して MFA を実行する必要がある回数を最小限に抑えるには、90 日以上の期間を選択します。
 
 > [!IMPORTANT]
 > アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[MFA セッションを取り消す](howto-mfa-userdevicesettings.md)必要があります。
 >
-> 復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 [2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)に関する記事に記載されているように、各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
+> 復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは多要素認証を再度実行する必要があります。 [多要素認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)に関する記事に記載されているように、各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 
 ### <a name="how-the-feature-works"></a>機能のしくみ
 
 Multi-Factor Authentication の記憶機能では、ブラウザーでユーザーがサインイン時に **[今後 X 日間はこのメッセージを表示しない]** オプションを選択したときに永続的な Cookie を設定します。 Cookie の有効期限が切れるまでは、同じブラウザーからユーザーが再度 Multi-Factor Authentication を求められることはありません。 そのユーザーが同じデバイスで異なるブラウザーを開くか、Cookie をクリアした場合は、再度、認証が求められます。
 
-ブラウザーではないアプリケーションでは、アプリで先進認証がサポートされているかどうかに関係なく、 **[今後 X 日間はこのメッセージを表示しない]** オプションは表示されません。 これらのアプリでは、新しいアクセス トークンが 1 時間おきに支給される _更新トークン_ が使用されます。 更新トークンの検証時に、前回の 2 段階認証が設定されている日数内に実行されたことが Azure AD によって確認されます。
+ブラウザーではないアプリケーションでは、アプリで先進認証がサポートされているかどうかに関係なく、 **[今後 X 日間はこのメッセージを表示しない]** オプションは表示されません。 これらのアプリでは、新しいアクセス トークンが 1 時間おきに支給される _更新トークン_ が使用されます。 更新トークンの検証時に、前回の多要素認証が設定されている日数内に実行されたことが Azure AD によって確認されます。
 
-この機能を使用すると、Web アプリでの認証回数 (通常は毎回プロンプトが表示される) が減ります。 この機能では、先進認証クライアントの認証の回数 (通常は 90 日ごとにプロンプトが表示される) が増えます。 条件付きアクセス ポリシーと組み合わされた場合の認証数を増やすこともできます。
+この機能を使用すると、Web アプリでの認証回数 (通常は毎回プロンプトが表示される) が減ります。 より短い期間が構成されている場合、この機能では、先進認証クライアントの認証の回数 (通常は 90 日ごとにプロンプトが表示される) が増える場合があります。 条件付きアクセス ポリシーと組み合わされた場合の認証数を増やすこともできます。
 
 > [!IMPORTANT]
-> ユーザーが Azure Multi-Factor Authentication Server またはサードパーティの多要素認証ソリューションを介して AD FS の 2 段階認証を行う場合、 **[Multi-Factor Authentication を記憶する]** 機能は、AD FS の **[サインインしたままにする]** 機能とは互換性がありません。
+> ユーザーが Azure Multi-Factor Authentication Server またはサードパーティの多要素認証ソリューションを介して AD FS の多要素認証を行う場合、 **[Multi-Factor Authentication を記憶する]** 機能は、AD FS の **[サインインしたままにする]** 機能とは互換性がありません。
 >
-> ユーザーが AD FS の **[サインインしたままにする]** を選択し、さらに Multi-Factor Authentication に対してデバイスを信頼済みとしてマークした場合、**Multi-Factor Authentication を記憶する** 日数が過ぎるとユーザーは自動的に確認されません。 Azure AD は新たに 2 段階認証を行うよう要求しますが、AD FS は、2 段階認証を再実行するのではなく、元の Multi-Factor Authentication 要求と日付を含むトークンを返します。 **その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。**
+> ユーザーが AD FS の **[サインインしたままにする]** を選択し、さらに Multi-Factor Authentication に対してデバイスを信頼済みとしてマークした場合、**Multi-Factor Authentication を記憶する** 日数が過ぎるとユーザーは自動的に確認されません。 Azure AD によって、新たに多要素認証を行うように要求されても、AD FS によって多要素認証が再実行されるのでなく、元の Multi-Factor Authentication クレームおよび日付を含むトークンが返されます。 **その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。**
 >
 > **Multi-Factor Authentication の記憶**機能は、B2B ユーザーとは互換性がなく、招待されたテナントにサインインしても B2B ユーザーには表示されません。
 >
@@ -366,8 +363,8 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 1. Azure portal で、**Azure Active Directory** を検索して選択し、 **[ユーザー]** を選択します。
 1. **[Multi-Factor Authentication]** を選択します。
 1. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
-1. **[サービス設定]** ページの **[manage remember multi-factor authentication]\(Multi-Factor Authentication の記憶の管理\)** で、 **[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする]** オプションを選択します。
-1. 信頼済みデバイスで 2 段階認証のバイパスを許可する日数を設定します。 既定値は 14 日です。
+1. **[サービス設定]** ページの **[Multi-Factor Authentication を記憶する]** で、 **[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする]** オプションを選択します。
+1. 信頼できるデバイスが多要素認証をバイパスできるようにする日数を設定します。 最適なユーザー エクスペリエンスを実現するには、期間を *90* 日以上に延長します。
 1. **[保存]** を選択します。
 
 ### <a name="mark-a-device-as-trusted"></a>デバイスを信頼済みとマークする

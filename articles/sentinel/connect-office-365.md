@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Office 365 のログを接続する | Microsoft Docs
-description: Office 365 のログ コネクタを使用して、Exchange と SharePoint (OneDrive を含む) で実行中のユーザーと管理者のアクティビティに関する情報を取得する方法について説明します。
+description: Office 365 のログ コネクタを使用し、Exchange、Teams、SharePoint (OneDrive を含む) でユーザーと管理者の実行中のアクティビティに関する情報を取得する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,18 +12,22 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559335"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178928"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Azure Sentinel に Office 365 のログを接続する
 
-[Office 365](https://docs.microsoft.com/office/) のログ コネクタは、**Exchange** および **SharePoint** (**OneDrive** を含む) で実行中のユーザーと管理者のアクティビティに関する情報を Azure Sentinel に取り込みます。 この情報には、ファイルのダウンロード、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作などのアクションの詳細と、アクションを実行したユーザーの詳細が含まれます。 Office 365 のログを Azure Sentinel に接続することで、ブックでのこのデータの表示と分析、カスタム アラートの作成のためのこのデータに対するクエリの実行、調査プロセスの改善のためのこのデータの組み込みが可能になり、Office 365 のセキュリティをより深く把握できるようになります。
+[Office 365](https://docs.microsoft.com/office/) のログ コネクタは、**Exchange**、**SharePoint** (**OneDrive** を含む)、そして今回追加された **Teams** でユーザーと管理者の実行中のアクティビティに関する情報を Azure Sentinel に取り込みます。 この情報には、ファイルのダウンロード、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作、Teams イベント (チャット イベント、チーム イベント、メンバー イベント、チャンネル イベントなど) などのアクションの詳細と、アクションを実行したユーザーの詳細が含まれます。 Office 365 のログを Azure Sentinel に接続することで、ブックでのこのデータの表示と分析、カスタム アラートの作成のためのこのデータに対するクエリの実行、調査プロセスの改善のためのこのデータの組み込みが可能になり、Office 365 のセキュリティをより深く把握できるようになります。
+
+> [!IMPORTANT]
+> Office 365 ログ コネクタの **Microsoft Teams ログ向け拡張機能**は現在、パブリック プレビューの段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,20 +44,27 @@ ms.locfileid: "85559335"
 
 
    > [!NOTE]
-   > 前述のように、またコネクタ ページの **[データ型]** の下に表示されるように、現在、Azure Sentinel Office 365 コネクタでは、Microsoft Exchange と SharePoint (OneDrive を含む) からのみ、監査ログの取り込みがサポートされています。 ただし、[Teams のデータ](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761) または[他の Office のデータ](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)を Azure Sentinel に取り込みたい場合には、いくつかの外部ソリューションを使用できます。 
+   > 前述のように、またコネクタ ページの **[データ型]** の下に表示されるように、現在、Azure Sentinel Office 365 コネクタでは、Microsoft Exchange、SharePoint (OneDrive を含む)、**そして今回追加された Teams** からのみ、監査ログの取り込みがサポートされています。 ただし、[他の Office のデータ](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)を Azure Sentinel に取り込むことに関心をお持ちの場合は、外部ソリューションがいくつか存在します。 
 
 ## <a name="enable-the-office-365-log-connector"></a>Office 365 ログ コネクタを有効にする
 
+### <a name="instructions-tab"></a>[手順] タブ
+
 1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
 
-1. **[Data connectors]\(データ コネクタ\)** の一覧で **[Office 365]** をクリックし、右下にある **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
+1. **データ コネクタ** ギャラリーから、 **[Office 365]** を選択し、プレビュー ペインで **[コネクタ ページを開く]** を選択します。
 
 1. **[構成]** というラベルのセクションで、Azure Sentinel に接続する Office 365 アクティビティ ログのチェック ボックスをオンにし、 **[変更を適用]** をクリックします。 
 
    > [!NOTE]
    > 以前に複数のテナントを Azure Sentinel に接続し、その際にこれをサポートする古いバージョンの Office 365 コネクタを使用した場合は、各テナントから収集するログを表示して変更することができます。 テナントをさらに追加することはできませんが、以前に追加したテナントを削除することはできます。
 
-1. Log Analytics で Office 365 のログ データに対してクエリを実行するには、クエリ ウィンドウの最初の行に「`OfficeActivity`」と入力します。
+### <a name="next-steps-tab"></a>[次のステップ] タブ
+
+- **Office 365** ログ コネクタにバンドルされている推奨ブック、クエリ サンプル、分析ルール テンプレートを参照し、SharePoint、OneDrive、Exchange、Teams ログ データに関する分析情報を取得します。
+
+- **ログ**で Office 365 ログ データに対してクエリを手動実行するには、クエリ ウィンドウの最初の行に「`OfficeActivity`」と入力します。
+   - 特定のログ タイプに対してクエリをフィルター処理するには、クエリの 2 行目に「`| where OfficeWorkload == "<logtype>"`」と入力します。 *\<logtype\>* は `SharePoint`、`OneDrive`、`Exchange`、`MicrosoftTeams` のいずれかになります。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Office 365 を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。

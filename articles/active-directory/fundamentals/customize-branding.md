@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f664f55f2870f4f0e06f3a96a3f2b7ae91e7a378
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a76a20d2cbc8a7b12b283c2858a13e9343499335
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796796"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321295"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Office 365 など) にユーザーが サインインするときに表示されます。
@@ -80,7 +80,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
         - **サインイン ページの背景色**。 帯域幅が小さい接続状況で背景画像の代わりに表示される 16 進数の色を指定します (たとえば、白は #FFFFFF)。 バナー ロゴまたは組織のプライマリ カラーを使用することをお勧めします。
 
-        - **正方形のロゴ イメージ**。 新しい Windows 10 Enterprise デバイスのセットアップ プロセス中にユーザーに表示される組織のロゴの .png (推奨) または .jpg 画像を選択します。 この画像は Windows 認証でのみ使用され、デプロイで [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) を使用しているテナント、または他の Windows 10 エクスペリエンスのパスワード入力ページにのみ表示されます。 場合によっては、同意ダイアログに表示されることもあります。
+        - **正方形のロゴ イメージ**。 新しい Windows 10 Enterprise デバイスのセットアップ プロセス中にユーザーに表示される組織のロゴの .png (推奨) または .jpg 画像を選択します。 この画像は Windows 認証でのみ使用され、デプロイで [Windows Autopilot]( /windows/deployment/windows-autopilot/windows-10-autopilot) を使用しているテナント、または他の Windows 10 エクスペリエンスのパスワード入力ページにのみ表示されます。 場合によっては、同意ダイアログに表示されることもあります。
         
             この画像のサイズは 240 x 240 ピクセルを超えることはできず、ファイル サイズは 10 KB 未満である必要があります。 背景とロゴの背景が調和しない可能性があるため、透過画像を使用することをお勧めします。 さらに、画像の周囲にパディングを追加しないことをお勧めします。これを行うとロゴが小さくなる可能性があります。
     
@@ -88,7 +88,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
         
         - **サインインしたままにする表示オプション**。 ユーザーが明示的にサインアウトするまで Azure AD にサインインしたままにすることを選択できます。 **[いいえ]** を選択した場合、このオプションは非表示になり、ユーザーはブラウザーを閉じて再度開くたびにサインインする必要があります。
 
-            サインインしたままにしておくオプションの構成とトラブルシューティングについて詳しくは、「[Azure AD アカウントの [サインインの状態を維持しますか?] プロンプトを構成する](keep-me-signed-in.md)」をご覧ください
+            この機能は既定のブランド オブジェクトでのみ利用できます。言語固有のオブジェクトでは利用できません。 サインインしたままにしておくオプションの構成とトラブルシューティングについて詳しくは、「[Azure AD アカウントの [サインインの状態を維持しますか?] プロンプトを構成する](keep-me-signed-in.md)」をご覧ください
         
             >[!NOTE]
             >SharePoint Online と Office 2010 の一部の機能は、ユーザーがサインインしたままにすることを選択できるかどうかに依存します。 このオプションを **[いいえ]** に設定すると、ユーザーにサインインを求める追加のメッセージが予期せず表示されることがあります。
@@ -134,7 +134,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
     **[Contoso – 会社のブランド]** ページが更新され、新しいフランス語の構成が表示されます。
 
-    ![[Contoso - 会社のブランド] ページ。既定の構成を表示](media/customize-branding/company-branding-french-config.png)
+    ![Contoso - 会社のブランド ページ。新しい言語構成が表示されています](media/customize-branding/company-branding-french-config.png)
 
 ## <a name="add-your-custom-branding-to-pages"></a>ページにカスタム ブランドを追加するには
 ページにカスタム ブランドを追加するには、URL の末尾を `?whr=yourdomainname` テキストを使用して変更します。 この変更は、多要素認証 (MFA) 設定ページ、セルフサービス パスワード リセット (SSPR) 設定 ページ、サインイン ページを含むさまざまなページに反映されます。

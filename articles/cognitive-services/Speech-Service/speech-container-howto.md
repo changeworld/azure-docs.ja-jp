@@ -8,30 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 09/02/2020
 ms.author: aahi
-ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b242530b09f399a84f10a40ea35e21c1119f52b1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518324"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321041"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
 コンテナーを使用すると、独自の環境で一部の Speech サービス API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Speech コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 4 つの異なるコンテナーを利用できます。 2 つの標準コンテナーは、**音声テキスト変換**と**テキスト読み上げ**です。 2 つのカスタム コンテナーは、**カスタム音声変換**と**カスタム テキスト読み上げ**です。 Speech コンテナーの[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)は、クラウド ベースの Azure Speech サービスと同じです。
+Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 5 つの異なるコンテナーを利用できます。 2 つの標準コンテナーは、**音声テキスト変換**と**テキスト読み上げ**です。 2 つのカスタム コンテナーは、**カスタム音声変換**と**カスタム テキスト読み上げ**です。 さらに高度なモデルを使用することで、**Neural Text-to-speech** による自然な発話が実現します。 Speech コンテナーの[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)は、クラウド ベースの Azure Speech サービスと同じです。
 
 > [!IMPORTANT]
 > 現在のところ、音声コンテナーはすべて、[パブリック "ゲート付き" プレビュー](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)の一部として提供されています。 音声コンテナーが一般公開 (GA) になるときは告知があります。
 
 | 機能 | 特徴 | 最新 |
 |--|--|--|
-| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.3.1 |
-| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.3.1 |
-| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.5.0 |
-| カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.5.0 |
+| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.4.0 |
+| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.4.0 |
+| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.6.0 |
+| カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.6.0 |
+| Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.1.0 |
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
@@ -44,6 +45,7 @@ Speech コンテナーを使用する前の前提条件は次のとおりです�
 | Docker エンジン | [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br> |
 | Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。 |
 | Speech リソース | これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Speech_ リソース。 どちらの値も、Azure portal の **Speech** の [概要] ページと [キー] ページで確認できます。 コンテナーを起動するには、両方が必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント |
+
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -74,31 +76,13 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 次の表に、各 Speech コンテナーに割り当てるリソースの最小値と推奨値を示します。
 
-# <a name="speech-to-text"></a>[音声テキスト変換](#tab/stt)
-
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
 | 音声テキスト変換 | 2 コア、2 GB のメモリ | 4 コア、4 GB メモリ |
-
-# <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
-
-| コンテナー | 最小値 | 推奨 |
-|-----------|---------|-------------|
 | カスタム音声変換 | 2 コア、2 GB のメモリ | 4 コア、4 GB メモリ |
-
-# <a name="text-to-speech"></a>[テキスト読み上げ](#tab/tts)
-
-| コンテナー | 最小値 | 推奨 |
-|-----------|---------|-------------|
 | テキスト読み上げ | 1 コア、2 GB メモリ | 2 コア、3 GB のメモリ |
-
-# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
-
-| コンテナー | 最小値 | 推奨 |
-|-----------|---------|-------------|
 | カスタム テキスト読み上げ | 1 コア、2 GB メモリ | 2 コア、3 GB のメモリ |
-
-***
+| Neural Text-to-speech | 6 コア、12 GB のメモリ | 8 コア、16 GB のメモリ |
 
 * 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
 
@@ -128,6 +112,12 @@ Speech のコンテナー イメージは、次のコンテナー レジスト�
 | コンテナー | リポジトリ |
 |-----------|------------|
 | テキスト読み上げ | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+
+# <a name="neural-text-to-speech"></a>[Neural Text-to-speech](#tab/ntts)
+
+| コンテナー | リポジトリ |
+|-----------|------------|
+| Neural Text-to-speech | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest` |
 
 # <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
@@ -165,7 +155,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 次のタグは、この形式の例です。
 
 ```
-2.3.1-amd64-en-us-preview
+2.4.0-amd64-en-us-preview
 ```
 
 **音声テキスト変換**コンテナーのサポートされている全ロケールについては、「[音声テキスト変換イメージ タグ](../containers/container-image-tags.md#speech-to-text)」を参照してください。
@@ -207,13 +197,45 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 次のタグは、この形式の例です。
 
 ```
-1.5.0-amd64-en-us-ariarus-preview
+1.6.0-amd64-en-us-ariarus-preview
 ```
 
 サポートされているロケールと**テキスト読み上げ**コンテナーの対応音声についてはすべて、「[テキスト読み上げイメージ タグ](../containers/container-image-tags.md#text-to-speech)」を参照してください。
 
 > [!IMPORTANT]
-> *標準 Text-to-speech* HTTP POST を構築するとき、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#standard-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-AriaRUS` という音声名が与えられます。
+> *Text-to-speech* HTTP POST を構築するときは、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#standard-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-AriaRUS` という音声名が与えられます。
+
+# <a name="neural-text-to-speech"></a>[Neural Text-to-speech](#tab/ntts)
+
+#### <a name="docker-pull-for-the-neural-text-to-speech-container"></a>Neural Text-to-speech コンテナー用の docker pull
+
+Container Preview レジストリからコンテナー イメージをダウンロードするには、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用します。
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest
+```
+
+> [!IMPORTANT]
+> `latest` タグにより、`en-US` ロケールと `arianeural` 音声がプルされます。 追加のロケールについては、[Neural Text-to-speech ロケール](#neural-text-to-speech-locales)に関する記事を参照してください。
+
+#### <a name="neural-text-to-speech-locales"></a>Neural Text-to-speech ロケール
+
+`latest` を除くすべてのタグは、次の形式であり、大文字と小文字が区別されます。
+
+```
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+```
+
+次のタグは、この形式の例です。
+
+```
+1.1.0-amd64-en-us-arianeural-preview
+```
+
+サポートされているロケール、および **Neural Text-to-speech** コンテナーの対応音声についてはすべて、[Neural Text-to-speech イメージ タグ](../containers/container-image-tags.md#neural-text-to-speech)に関する記事を参照してください。
+
+> [!IMPORTANT]
+> *Neural Text-to-speech* HTTP POST を構築するときは、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#neural-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-AriaNeural` という音声名が与えられます。
 
 # <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
@@ -243,7 +265,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 # <a name="speech-to-text"></a>[音声テキスト変換](#tab/stt)
 
-*Speech-to-text* コンテナーを実行するには、次の `docker run` コマンドを実行します。
+標準 "*音声テキスト変換*" コンテナーを実行するには、次の `docker run` コマンドを実行します。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -341,7 +363,7 @@ ApiKey={API_KEY}
 
 # <a name="text-to-speech"></a>[テキスト読み上げ](#tab/tts)
 
-*Text-to-speech* コンテナーを実行するには、次の `docker run` コマンドを実行します。
+標準 "*テキスト読み上げ*" コンテナーを実行するには、次の `docker run` コマンドを実行します。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -353,8 +375,27 @@ ApiKey={API_KEY}
 
 このコマンドは、次の操作を行います。
 
-* コンテナー イメージから *Text-to-speech* コンテナーを実行します
+* コンテナー イメージから標準 "*テキスト読み上げ*" コンテナーを実行します。
 * 1 つの CPU コアと 2 ギガバイト (GB) のメモリを割り当てます。
+* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
+* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
+# <a name="neural-text-to-speech"></a>[Neural Text-to-speech](#tab/ntts)
+
+*Neural Text-to-speech* コンテナーを実行するには、次の `docker run` コマンドを実行します。
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
+containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+このコマンドは、次の操作を行います。
+
+* コンテナー イメージから *Neural Text-to-speech* コンテナーを実行します。
+* 6 つの CPU コアと 12 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
@@ -413,16 +454,20 @@ ApiKey={API_KEY}
 
 | Containers | SDK ホスト URL | Protocol |
 |--|--|--|
-| 音声変換およびカスタム音声変換 | `ws://localhost:5000` | WS |
-| テキスト読み上げおよびカスタム テキスト読み上げ | `http://localhost:5000` | HTTP |
+| 標準音声テキスト変換とカスタム音声テキスト変換 | `ws://localhost:5000` | WS |
+| テキスト読み上げ (標準、カスタム、Neural を含む) | `http://localhost:5000` | HTTP |
 
 WSS プロトコルと HTTPS プロトコルを使用する方法については、[コンテナー セキュリティ](../cognitive-services-container-support.md#azure-cognitive-services-container-security)に関するセクションを参照してください。
+
+### <a name="speech-to-text-standard-and-custom"></a>音声テキスト変換 (標準およびカスタム)
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
 
 #### <a name="analyze-sentiment"></a>感情を分析する
 
 Text Analytics API 資格情報[をコンテナーに指定した](#analyze-sentiment-on-the-speech-to-text-output)場合は、Speech SDK を使用して、センチメント分析で音声認識要求を送信できます。 *シンプル*な形式または*詳細*な形式のいずれかを使用するよう、API 応答を構成できます。
+> [!NOTE]
+> Speech サービス Python SDK の v1.13 では、感情分析の問題が特定されています。 Speech サービス Python SDK で感情分析を使用している場合は、v1.12 以前のバージョンを使用してください。
 
 # <a name="simple-format"></a>[シンプルな形式](#tab/simple-format)
 
@@ -535,7 +580,7 @@ speech_config.set_service_property(
 )
 ```
 
-### <a name="text-to-speech-or-custom-text-to-speech"></a>テキスト読み上げまたはカスタム テキスト読み上げ
+### <a name="text-to-speech-standard-neural-and-custom"></a>テキスト読み上げ (標準、Neural、カスタム)
 
 [!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 
@@ -578,6 +623,7 @@ Speech コンテナーは、Azure アカウントの *Speech* リソースを使
   * *カスタム音声変換*
   * *テキスト読み上げ*
   * *カスタム テキスト読み上げ*
+  * *Neural Text-to-speech*
 * コンテナー イメージは、Azure のコンテナー レジストリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。
 * REST API (テキスト読み上げのみ) を使用するか、SDK (音声変換またはテキスト読み上げ) を使用するかにかかわらず、コンテナーのホスト URI を指定します。 
